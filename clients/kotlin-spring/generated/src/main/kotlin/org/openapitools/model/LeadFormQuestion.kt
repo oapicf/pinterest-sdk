@@ -40,7 +40,7 @@ data class LeadFormQuestion(
     @get:Size(min=0,max=5) 
     @Schema(example = "null", description = "Question options for a custom question.")
     @get:JsonProperty("custom_question_options") val customQuestionOptions: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
 }
 

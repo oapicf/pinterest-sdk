@@ -60,10 +60,10 @@ pub enum ProductGroupsSlashAnalyticsError {
 /// Add one or more product groups from your catalog to an existing ad group. (Product groups added to an ad group are a 'product group promotion.')
 pub async fn product_group_promotions_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, product_group_promotion_create_request: models::ProductGroupPromotionCreateRequest) -> Result<models::ProductGroupPromotionResponse, Error<ProductGroupPromotionsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_product_group_promotion_create_request = product_group_promotion_create_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_product_group_promotion_create_request = product_group_promotion_create_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/product_group_promotions", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/product_group_promotions", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -72,7 +72,7 @@ pub async fn product_group_promotions_slash_create(configuration: &configuration
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_product_group_promotion_create_request);
+    req_builder = req_builder.json(&p_body_product_group_promotion_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -102,10 +102,10 @@ pub async fn product_group_promotions_slash_create(configuration: &configuration
 /// Get a product group promotion by id
 pub async fn product_group_promotions_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, product_group_promotion_id: &str) -> Result<models::ProductGroupPromotionResponse, Error<ProductGroupPromotionsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_product_group_promotion_id = product_group_promotion_id;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_product_group_promotion_id = product_group_promotion_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), product_group_promotion_id=crate::apis::urlencode(p_product_group_promotion_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), product_group_promotion_id=crate::apis::urlencode(p_path_product_group_promotion_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -143,39 +143,39 @@ pub async fn product_group_promotions_slash_get(configuration: &configuration::C
 /// List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  <b>Note:</b> ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
 pub async fn product_group_promotions_slash_list(configuration: &configuration::Configuration, ad_account_id: &str, product_group_promotion_ids: Option<Vec<String>>, entity_statuses: Option<Vec<String>>, ad_group_id: Option<&str>, page_size: Option<i32>, order: Option<&str>, bookmark: Option<&str>) -> Result<models::ProductGroupPromotionsList200Response, Error<ProductGroupPromotionsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_product_group_promotion_ids = product_group_promotion_ids;
-    let p_entity_statuses = entity_statuses;
-    let p_ad_group_id = ad_group_id;
-    let p_page_size = page_size;
-    let p_order = order;
-    let p_bookmark = bookmark;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_product_group_promotion_ids = product_group_promotion_ids;
+    let p_query_entity_statuses = entity_statuses;
+    let p_query_ad_group_id = ad_group_id;
+    let p_query_page_size = page_size;
+    let p_query_order = order;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/product_group_promotions", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/product_group_promotions", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_product_group_promotion_ids {
+    if let Some(ref param_value) = p_query_product_group_promotion_ids {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("product_group_promotion_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("product_group_promotion_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_entity_statuses {
+    if let Some(ref param_value) = p_query_entity_statuses {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("entity_statuses".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("entity_statuses", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_ad_group_id {
+    if let Some(ref param_value) = p_query_ad_group_id {
         req_builder = req_builder.query(&[("ad_group_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
-        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_order {
+        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -213,10 +213,10 @@ pub async fn product_group_promotions_slash_list(configuration: &configuration::
 /// Update multiple existing Product Group Promotions (by product_group_id)
 pub async fn product_group_promotions_slash_update(configuration: &configuration::Configuration, ad_account_id: &str, product_group_promotion_update_request: models::ProductGroupPromotionUpdateRequest) -> Result<models::ProductGroupPromotionResponse, Error<ProductGroupPromotionsSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_product_group_promotion_update_request = product_group_promotion_update_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_product_group_promotion_update_request = product_group_promotion_update_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/product_group_promotions", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/product_group_promotions", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -225,7 +225,7 @@ pub async fn product_group_promotions_slash_update(configuration: &configuration
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_product_group_promotion_update_request);
+    req_builder = req_builder.json(&p_body_product_group_promotion_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -255,42 +255,42 @@ pub async fn product_group_promotions_slash_update(configuration: &configuration
 /// Get analytics for the specified product groups in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
 pub async fn product_groups_slash_analytics(configuration: &configuration::Configuration, ad_account_id: &str, start_date: String, end_date: String, product_group_ids: Vec<String>, columns: Vec<String>, granularity: models::Granularity, click_window_days: Option<i32>, engagement_window_days: Option<i32>, view_window_days: Option<i32>, conversion_report_time: Option<&str>) -> Result<Vec<models::ProductGroupAnalyticsResponseInner>, Error<ProductGroupsSlashAnalyticsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_start_date = start_date;
-    let p_end_date = end_date;
-    let p_product_group_ids = product_group_ids;
-    let p_columns = columns;
-    let p_granularity = granularity;
-    let p_click_window_days = click_window_days;
-    let p_engagement_window_days = engagement_window_days;
-    let p_view_window_days = view_window_days;
-    let p_conversion_report_time = conversion_report_time;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_start_date = start_date;
+    let p_query_end_date = end_date;
+    let p_query_product_group_ids = product_group_ids;
+    let p_query_columns = columns;
+    let p_query_granularity = granularity;
+    let p_query_click_window_days = click_window_days;
+    let p_query_engagement_window_days = engagement_window_days;
+    let p_query_view_window_days = view_window_days;
+    let p_query_conversion_report_time = conversion_report_time;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/product_groups/analytics", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/product_groups/analytics", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("start_date", &p_start_date.to_string())]);
-    req_builder = req_builder.query(&[("end_date", &p_end_date.to_string())]);
+    req_builder = req_builder.query(&[("start_date", &p_query_start_date.to_string())]);
+    req_builder = req_builder.query(&[("end_date", &p_query_end_date.to_string())]);
     req_builder = match "multi" {
-        "multi" => req_builder.query(&p_product_group_ids.into_iter().map(|p| ("product_group_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => req_builder.query(&[("product_group_ids", &p_product_group_ids.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        "multi" => req_builder.query(&p_query_product_group_ids.into_iter().map(|p| ("product_group_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("product_group_ids", &p_query_product_group_ids.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
     req_builder = match "csv" {
-        "multi" => req_builder.query(&p_columns.into_iter().map(|p| ("columns".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => req_builder.query(&[("columns", &p_columns.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        "multi" => req_builder.query(&p_query_columns.into_iter().map(|p| ("columns".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("columns", &p_query_columns.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
-    req_builder = req_builder.query(&[("granularity", &p_granularity.to_string())]);
-    if let Some(ref param_value) = p_click_window_days {
-        req_builder = req_builder.query(&[("click_window_days", &param_value.to_string())]);
+    req_builder = req_builder.query(&[("granularity", &p_query_granularity.to_string())]);
+    if let Some(ref param_value) = p_query_click_window_days {
+        req_builder = req_builder.query(&[("click_window_days", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_engagement_window_days {
-        req_builder = req_builder.query(&[("engagement_window_days", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_engagement_window_days {
+        req_builder = req_builder.query(&[("engagement_window_days", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_view_window_days {
-        req_builder = req_builder.query(&[("view_window_days", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_view_window_days {
+        req_builder = req_builder.query(&[("view_window_days", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_conversion_report_time {
-        req_builder = req_builder.query(&[("conversion_report_time", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_conversion_report_time {
+        req_builder = req_builder.query(&[("conversion_report_time", &serde_json::to_string(param_value)?)]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());

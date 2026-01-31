@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedByBusinessId** | Pointer to **string** | Unique identifier for the business that created the invite/request. | [optional] 
-**CreatedByUserId** | Pointer to **string** | Unique identifier for the user that created the invite/request. | [optional] 
-**User** | Pointer to [**BusinessAccessUserSummary**](BusinessAccessUserSummary.md) | Metadata for the user that updated the invite/request. | [optional] 
 **Id** | Pointer to **string** | Unique identifier of the invite/request. | [optional] 
 **InviteData** | Pointer to [**BaseInviteDataResponseInviteData**](BaseInviteDataResponseInviteData.md) |  | [optional] 
 **IsReceivedInvite** | Pointer to **bool** | Indicates whether the invite/request was received. | [optional] 
+**User** | Pointer to **map[string]interface{}** | Metadata for the user that updated the invite/request. | [optional] 
+**CreatedByBusinessId** | Pointer to **string** | Unique identifier for the business that created the invite/request. | [optional] 
+**CreatedByUserId** | Pointer to **string** | Unique identifier for the user that created the invite/request. | [optional] 
 
 ## Methods
 
@@ -29,81 +29,6 @@ will change when the set of required properties is changed
 NewInviteBusinessRoleBindingWithDefaults instantiates a new InviteBusinessRoleBinding object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCreatedByBusinessId
-
-`func (o *InviteBusinessRoleBinding) GetCreatedByBusinessId() string`
-
-GetCreatedByBusinessId returns the CreatedByBusinessId field if non-nil, zero value otherwise.
-
-### GetCreatedByBusinessIdOk
-
-`func (o *InviteBusinessRoleBinding) GetCreatedByBusinessIdOk() (*string, bool)`
-
-GetCreatedByBusinessIdOk returns a tuple with the CreatedByBusinessId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedByBusinessId
-
-`func (o *InviteBusinessRoleBinding) SetCreatedByBusinessId(v string)`
-
-SetCreatedByBusinessId sets CreatedByBusinessId field to given value.
-
-### HasCreatedByBusinessId
-
-`func (o *InviteBusinessRoleBinding) HasCreatedByBusinessId() bool`
-
-HasCreatedByBusinessId returns a boolean if a field has been set.
-
-### GetCreatedByUserId
-
-`func (o *InviteBusinessRoleBinding) GetCreatedByUserId() string`
-
-GetCreatedByUserId returns the CreatedByUserId field if non-nil, zero value otherwise.
-
-### GetCreatedByUserIdOk
-
-`func (o *InviteBusinessRoleBinding) GetCreatedByUserIdOk() (*string, bool)`
-
-GetCreatedByUserIdOk returns a tuple with the CreatedByUserId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreatedByUserId
-
-`func (o *InviteBusinessRoleBinding) SetCreatedByUserId(v string)`
-
-SetCreatedByUserId sets CreatedByUserId field to given value.
-
-### HasCreatedByUserId
-
-`func (o *InviteBusinessRoleBinding) HasCreatedByUserId() bool`
-
-HasCreatedByUserId returns a boolean if a field has been set.
-
-### GetUser
-
-`func (o *InviteBusinessRoleBinding) GetUser() BusinessAccessUserSummary`
-
-GetUser returns the User field if non-nil, zero value otherwise.
-
-### GetUserOk
-
-`func (o *InviteBusinessRoleBinding) GetUserOk() (*BusinessAccessUserSummary, bool)`
-
-GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUser
-
-`func (o *InviteBusinessRoleBinding) SetUser(v BusinessAccessUserSummary)`
-
-SetUser sets User field to given value.
-
-### HasUser
-
-`func (o *InviteBusinessRoleBinding) HasUser() bool`
-
-HasUser returns a boolean if a field has been set.
 
 ### GetId
 
@@ -179,6 +104,81 @@ SetIsReceivedInvite sets IsReceivedInvite field to given value.
 `func (o *InviteBusinessRoleBinding) HasIsReceivedInvite() bool`
 
 HasIsReceivedInvite returns a boolean if a field has been set.
+
+### GetUser
+
+`func (o *InviteBusinessRoleBinding) GetUser() map[string]interface{}`
+
+GetUser returns the User field if non-nil, zero value otherwise.
+
+### GetUserOk
+
+`func (o *InviteBusinessRoleBinding) GetUserOk() (*map[string]interface{}, bool)`
+
+GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUser
+
+`func (o *InviteBusinessRoleBinding) SetUser(v map[string]interface{})`
+
+SetUser sets User field to given value.
+
+### HasUser
+
+`func (o *InviteBusinessRoleBinding) HasUser() bool`
+
+HasUser returns a boolean if a field has been set.
+
+### GetCreatedByBusinessId
+
+`func (o *InviteBusinessRoleBinding) GetCreatedByBusinessId() string`
+
+GetCreatedByBusinessId returns the CreatedByBusinessId field if non-nil, zero value otherwise.
+
+### GetCreatedByBusinessIdOk
+
+`func (o *InviteBusinessRoleBinding) GetCreatedByBusinessIdOk() (*string, bool)`
+
+GetCreatedByBusinessIdOk returns a tuple with the CreatedByBusinessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedByBusinessId
+
+`func (o *InviteBusinessRoleBinding) SetCreatedByBusinessId(v string)`
+
+SetCreatedByBusinessId sets CreatedByBusinessId field to given value.
+
+### HasCreatedByBusinessId
+
+`func (o *InviteBusinessRoleBinding) HasCreatedByBusinessId() bool`
+
+HasCreatedByBusinessId returns a boolean if a field has been set.
+
+### GetCreatedByUserId
+
+`func (o *InviteBusinessRoleBinding) GetCreatedByUserId() string`
+
+GetCreatedByUserId returns the CreatedByUserId field if non-nil, zero value otherwise.
+
+### GetCreatedByUserIdOk
+
+`func (o *InviteBusinessRoleBinding) GetCreatedByUserIdOk() (*string, bool)`
+
+GetCreatedByUserIdOk returns a tuple with the CreatedByUserId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedByUserId
+
+`func (o *InviteBusinessRoleBinding) SetCreatedByUserId(v string)`
+
+SetCreatedByUserId sets CreatedByUserId field to given value.
+
+### HasCreatedByUserId
+
+`func (o *InviteBusinessRoleBinding) HasCreatedByUserId() bool`
+
+HasCreatedByUserId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

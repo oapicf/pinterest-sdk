@@ -241,6 +241,8 @@ pub enum BoardsSlashUpdateResponse {
 }
 
 
+
+
 /// Boards
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -250,6 +252,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// BoardSectionsSlashCreate - POST /v5/boards/{board_id}/sections
     async fn board_sections_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -263,6 +266,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// BoardSectionsSlashDelete - DELETE /v5/boards/{board_id}/sections/{section_id}
     async fn board_sections_slash_delete(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -275,6 +279,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// BoardSectionsSlashList - GET /v5/boards/{board_id}/sections
     async fn board_sections_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -287,6 +292,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// BoardSectionsSlashListPins - GET /v5/boards/{board_id}/sections/{section_id}/pins
     async fn board_sections_slash_list_pins(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -299,6 +305,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// BoardSectionsSlashUpdate - PATCH /v5/boards/{board_id}/sections/{section_id}
     async fn board_sections_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -312,6 +319,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// BoardsSlashCreate - POST /v5/boards
     async fn boards_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -324,6 +332,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// BoardsSlashDelete - DELETE /v5/boards/{board_id}
     async fn boards_slash_delete(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -336,6 +345,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// BoardsSlashGet - GET /v5/boards/{board_id}
     async fn boards_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -348,6 +358,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// BoardsSlashList - GET /v5/boards
     async fn boards_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -359,6 +370,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// BoardsSlashListPins - GET /v5/boards/{board_id}/pins
     async fn boards_slash_list_pins(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -371,6 +383,7 @@ pub trait Boards<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// BoardsSlashUpdate - PATCH /v5/boards/{board_id}
     async fn boards_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

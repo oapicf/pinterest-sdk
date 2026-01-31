@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
+import org.openapitools.api.TermsApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -31,7 +32,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${api.base-path:/v5}")
+@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
 class TermsApiController() {
 
     @Operation(
@@ -47,10 +48,12 @@ Example: the term 'workout' would list related terms like 'one song workout', 'y
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/terms/related"],
+        value = [PATH_TERMS_RELATED_LIST /* "/terms/related" */],
         produces = ["application/json"]
     )
-    fun termsRelatedList(@NotNull @Parameter(description = "List of input terms.", required = true) @Valid @RequestParam(value = "terms", required = true) terms: kotlin.collections.List<kotlin.String>): ResponseEntity<RelatedTerms> {
+    fun termsRelatedList(
+        @NotNull @Parameter(description = "List of input terms.", required = true) @Valid @RequestParam(value = "terms", required = true) terms: kotlin.collections.List<kotlin.String>
+    ): ResponseEntity<RelatedTerms> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -67,10 +70,20 @@ Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', 
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/terms/suggested"],
+        value = [PATH_TERMS_SUGGESTED_LIST /* "/terms/suggested" */],
         produces = ["application/json"]
     )
-    fun termsSuggestedList(@NotNull @Parameter(description = "Input term.", required = true) @Valid @RequestParam(value = "term", required = true) term: kotlin.String,@Min(1) @Max(10) @Parameter(description = "Max suggested terms to return.", schema = Schema(defaultValue = "4")) @Valid @RequestParam(value = "limit", required = false, defaultValue = "4") limit: kotlin.Int): ResponseEntity<List<kotlin.String>> {
+    fun termsSuggestedList(
+        @NotNull @Parameter(description = "Input term.", required = true) @Valid @RequestParam(value = "term", required = true) term: kotlin.String,
+        @Min(value=1) @Max(value=10) @Parameter(description = "Max suggested terms to return.", schema = Schema(defaultValue = "4")) @Valid @RequestParam(value = "limit", required = false, defaultValue = "4") limit: kotlin.Int
+    ): ResponseEntity<List<kotlin.String>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    companion object {
+        //for your own safety never directly reuse these path definitions in tests
+        const val BASE_PATH: String = "/v5"
+        const val PATH_TERMS_RELATED_LIST: String = "/terms/related"
+        const val PATH_TERMS_SUGGESTED_LIST: String = "/terms/suggested"
     }
 }

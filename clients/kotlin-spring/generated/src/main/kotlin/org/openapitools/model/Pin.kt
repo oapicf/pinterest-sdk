@@ -110,7 +110,7 @@ data class Pin(
     @field:Valid
     @Schema(example = "{\"90d\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3},\"lifetime_metrics\":{\"pin_click\":7,\"impression\":2,\"clickthrough\":3,\"reaction\":10,\"comment\":2}}", description = "Pin metrics with associated time intervals if any.")
     @get:JsonProperty("pin_metrics") val pinMetrics: kotlin.Any? = null
-    ) {
+) {
 
 }
 

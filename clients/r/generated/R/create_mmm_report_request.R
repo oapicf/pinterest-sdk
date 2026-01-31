@@ -7,6 +7,7 @@
 #' @title CreateMMMReportRequest
 #' @description CreateMMMReportRequest Class
 #' @format An \code{R6Class} generator object
+#' @field countries A List of countries for filtering list(\link{TargetingAdvertiserCountry}) [optional]
 #' @field report_name Name of the Marketing Mix Modeling (MMM) report character
 #' @field start_date Metric report start date (UTC). Format: YYYY-MM-DD character
 #' @field end_date Metric report end date (UTC). Format: YYYY-MM-DD character
@@ -14,13 +15,13 @@
 #' @field level Level of the report character
 #' @field targeting_types List of targeting types list(\link{MMMReportingTargetingType})
 #' @field columns Metric and entity columns list(\link{MMMReportingColumn})
-#' @field countries A List of countries for filtering list(\link{TargetingAdvertiserCountry}) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CreateMMMReportRequest <- R6::R6Class(
   "CreateMMMReportRequest",
   public = list(
+    `countries` = NULL,
     `report_name` = NULL,
     `start_date` = NULL,
     `end_date` = NULL,
@@ -28,7 +29,6 @@ CreateMMMReportRequest <- R6::R6Class(
     `level` = NULL,
     `targeting_types` = NULL,
     `columns` = NULL,
-    `countries` = NULL,
 
     #' @description
     #' Initialize a new CreateMMMReportRequest class.
@@ -127,6 +127,10 @@ CreateMMMReportRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CreateMMMReportRequestObject <- list()
+      if (!is.null(self$`countries`)) {
+        CreateMMMReportRequestObject[["countries"]] <-
+          lapply(self$`countries`, function(x) x$toSimpleType())
+      }
       if (!is.null(self$`report_name`)) {
         CreateMMMReportRequestObject[["report_name"]] <-
           self$`report_name`
@@ -155,10 +159,6 @@ CreateMMMReportRequest <- R6::R6Class(
         CreateMMMReportRequestObject[["columns"]] <-
           lapply(self$`columns`, function(x) x$toSimpleType())
       }
-      if (!is.null(self$`countries`)) {
-        CreateMMMReportRequestObject[["countries"]] <-
-          lapply(self$`countries`, function(x) x$toSimpleType())
-      }
       return(CreateMMMReportRequestObject)
     },
 
@@ -169,6 +169,9 @@ CreateMMMReportRequest <- R6::R6Class(
     #' @return the instance of CreateMMMReportRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`countries`)) {
+        self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[TargetingAdvertiserCountry]", loadNamespace("openapi"))
+      }
       if (!is.null(this_object$`report_name`)) {
         self$`report_name` <- this_object$`report_name`
       }
@@ -196,9 +199,6 @@ CreateMMMReportRequest <- R6::R6Class(
       if (!is.null(this_object$`columns`)) {
         self$`columns` <- ApiClient$new()$deserializeObj(this_object$`columns`, "array[MMMReportingColumn]", loadNamespace("openapi"))
       }
-      if (!is.null(this_object$`countries`)) {
-        self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[TargetingAdvertiserCountry]", loadNamespace("openapi"))
-      }
       self
     },
 
@@ -220,6 +220,7 @@ CreateMMMReportRequest <- R6::R6Class(
     #' @return the instance of CreateMMMReportRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[TargetingAdvertiserCountry]", loadNamespace("openapi"))
       self$`report_name` <- this_object$`report_name`
       self$`start_date` <- this_object$`start_date`
       self$`end_date` <- this_object$`end_date`
@@ -233,7 +234,6 @@ CreateMMMReportRequest <- R6::R6Class(
       self$`level` <- this_object$`level`
       self$`targeting_types` <- ApiClient$new()$deserializeObj(this_object$`targeting_types`, "array[MMMReportingTargetingType]", loadNamespace("openapi"))
       self$`columns` <- ApiClient$new()$deserializeObj(this_object$`columns`, "array[MMMReportingColumn]", loadNamespace("openapi"))
-      self$`countries` <- ApiClient$new()$deserializeObj(this_object$`countries`, "array[TargetingAdvertiserCountry]", loadNamespace("openapi"))
       self
     },
 

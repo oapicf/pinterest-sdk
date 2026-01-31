@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type ImageDetails* = object
   ## 
   width*: int
-  height*: int
+  height*: Option[int]
   url*: string
+

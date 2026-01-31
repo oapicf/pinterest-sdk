@@ -15,7 +15,7 @@ Feature | HTTP request | Description
 
 
 # **multi_pins_analytics**
-> multi_pins_analytics (pin_ids: LIST [STRING_32] ; start_date: DATE ; end_date: DATE ; metric_types: LIST [PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER] ; app_types:  detachable STRING_32 ; ad_account_id:  detachable STRING_32 ): detachable STRING_TABLE [STRING_TABLE]
+> multi_pins_analytics (pin_ids: LIST [STRING_32] ; start_date: DATE ; end_date: DATE ; metric_types: LIST [STRING_32] ; app_types:  detachable STRING_32 ; ad_account_id:  detachable STRING_32 ): detachable STRING_TABLE [STRING_TABLE]
 
 
 Get multiple Pin analytics
@@ -30,7 +30,7 @@ Name | Type | Description  | Notes
  **pin_ids** | [**LIST [STRING_32]**](STRING_32.md)| List of Pin IDs. | [default to null]
  **start_date** | **DATE**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **end_date** | **DATE**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
- **metric_types** | [**LIST [PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER]**](PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER.md)| Pin metric types to get data for. | [default to null]
+ **metric_types** | [**LIST [STRING_32]**](STRING_32.md)| Pin metric types to get data for. | [default to null]
  **app_types** | **STRING_32**| Apps or devices to get data for, default is all. | [optional] [default to ALL]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pins_analytics**
-> pins_analytics (pin_id: STRING_32 ; start_date: DATE ; end_date: DATE ; metric_types: LIST [PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER] ; app_types:  detachable STRING_32 ; split_field:  detachable STRING_32 ; ad_account_id:  detachable STRING_32 ): detachable STRING_TABLE [PIN_ANALYTICS_METRICS_RESPONSE]
+> pins_analytics (pin_id: STRING_32 ; start_date: DATE ; end_date: DATE ; metric_types: LIST [STRING_32] ; app_types:  detachable STRING_32 ; split_field:  detachable STRING_32 ; ad_account_id:  detachable STRING_32 ): detachable STRING_TABLE [PIN_ANALYTICS_METRICS_RESPONSE]
 
 
 Get Pin analytics
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
  **pin_id** | **STRING_32**| Unique identifier of a Pin. | [default to null]
  **start_date** | **DATE**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **end_date** | **DATE**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
- **metric_types** | [**LIST [PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER]**](PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | [default to null]
+ **metric_types** | [**LIST [STRING_32]**](STRING_32.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | [default to null]
  **app_types** | **STRING_32**| Apps or devices to get data for, default is all. | [optional] [default to ALL]
  **split_field** | **STRING_32**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to NO_SPLIT]
  **ad_account_id** | **STRING_32**| Unique identifier of an ad account. | [optional] [default to null]

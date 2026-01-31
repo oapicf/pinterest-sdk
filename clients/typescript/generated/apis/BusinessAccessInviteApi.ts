@@ -297,10 +297,7 @@ export class BusinessAccessInviteApiRequestFactory extends BaseAPIRequestFactory
 
         // Query Params
         if (inviteType !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(inviteType, "InviteType", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
-            }
+            requestContext.setQueryParam("invite_type", ObjectSerializer.serialize(inviteType, "InviteType", ""));
         }
 
         // Query Params

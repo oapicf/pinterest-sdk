@@ -15,16 +15,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreateMMMReportResponseData  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BulkReportingJobStatus reportStatus;
 
   @ApiModelProperty(value = "")
+
   private String token;
 
   @ApiModelProperty(value = "")
+
   private String message;
 
   @ApiModelProperty(example = "success", value = "")
+
   private String status;
  /**
    * Get reportStatus

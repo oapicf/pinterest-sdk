@@ -9,9 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_delete_member_access_result
 
 type DeleteMemberAccessResultsResponseArray* = object
   ## 
-  items*: seq[DeleteMemberAccessResult] ## List of member asset permissions that were deleted.
+  items*: Option[seq[DeleteMemberAccessResult]] ## List of member asset permissions that were deleted.
+
+
+# Custom JSON deserialization for DeleteMemberAccessResultsResponseArray with custom field names
+proc to*(node: JsonNode, T: typedesc[DeleteMemberAccessResultsResponseArray]): DeleteMemberAccessResultsResponseArray =
+  result = DeleteMemberAccessResultsResponseArray()
+  if node.kind == JObject:
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[DeleteMemberAccessResult] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, DeleteMemberAccessResult))
+        result.items = some(arr)
+
+# Custom JSON serialization for DeleteMemberAccessResultsResponseArray with custom field names
+proc `%`*(obj: DeleteMemberAccessResultsResponseArray): JsonNode =
+  result = newJObject()
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

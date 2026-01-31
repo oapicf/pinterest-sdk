@@ -9,7 +9,58 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type ObjectiveType* = object
-  ## Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"WEB_CONVERSION\", \"CATALOG_SALES\", \"VIDEO_COMPLETION\"] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\"WEB_SESSIONS\"] is DEPRECATED. For update, only draft campaigns may update objective type.
+type ObjectiveType* {.pure.} = enum
+  AWARENESS
+  CONSIDERATION
+  VIDEOVIEW
+  WEBCONVERSION
+  CATALOGSALES
+  WEBSESSIONS
+  VIDEOCOMPLETION
+
+func `%`*(v: ObjectiveType): JsonNode =
+  result = case v:
+    of ObjectiveType.AWARENESS: %"AWARENESS"
+    of ObjectiveType.CONSIDERATION: %"CONSIDERATION"
+    of ObjectiveType.VIDEOVIEW: %"VIDEO_VIEW"
+    of ObjectiveType.WEBCONVERSION: %"WEB_CONVERSION"
+    of ObjectiveType.CATALOGSALES: %"CATALOG_SALES"
+    of ObjectiveType.WEBSESSIONS: %"WEB_SESSIONS"
+    of ObjectiveType.VIDEOCOMPLETION: %"VIDEO_COMPLETION"
+
+func `$`*(v: ObjectiveType): string =
+  result = case v:
+    of ObjectiveType.AWARENESS: $("AWARENESS")
+    of ObjectiveType.CONSIDERATION: $("CONSIDERATION")
+    of ObjectiveType.VIDEOVIEW: $("VIDEO_VIEW")
+    of ObjectiveType.WEBCONVERSION: $("WEB_CONVERSION")
+    of ObjectiveType.CATALOGSALES: $("CATALOG_SALES")
+    of ObjectiveType.WEBSESSIONS: $("WEB_SESSIONS")
+    of ObjectiveType.VIDEOCOMPLETION: $("VIDEO_COMPLETION")
+
+proc to*(node: JsonNode, T: typedesc[ObjectiveType]): ObjectiveType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ObjectiveType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("AWARENESS"):
+    return ObjectiveType.AWARENESS
+  of $("CONSIDERATION"):
+    return ObjectiveType.CONSIDERATION
+  of $("VIDEO_VIEW"):
+    return ObjectiveType.VIDEOVIEW
+  of $("WEB_CONVERSION"):
+    return ObjectiveType.WEBCONVERSION
+  of $("CATALOG_SALES"):
+    return ObjectiveType.CATALOGSALES
+  of $("WEB_SESSIONS"):
+    return ObjectiveType.WEBSESSIONS
+  of $("VIDEO_COMPLETION"):
+    return ObjectiveType.VIDEOCOMPLETION
+  else:
+    raise newException(ValueError, "Invalid enum value for ObjectiveType: " & strVal)
+

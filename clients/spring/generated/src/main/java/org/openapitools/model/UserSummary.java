@@ -19,14 +19,14 @@ import javax.annotation.Generated;
  * UserSummary
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserSummary {
 
   private @Nullable String username;
 
   private @Nullable String type;
 
-  public UserSummary username(String username) {
+  public UserSummary username(@Nullable String username) {
     this.username = username;
     return this;
   }
@@ -38,15 +38,15 @@ public class UserSummary {
   
   @Schema(name = "username", example = "username", description = "Username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("username")
-  public String getUsername() {
+  public @Nullable String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@Nullable String username) {
     this.username = username;
   }
 
-  public UserSummary type(String type) {
+  public UserSummary type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -58,11 +58,11 @@ public class UserSummary {
   
   @Schema(name = "type", example = "user", description = "Always \"user\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public String getType() {
+  public @Nullable String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 

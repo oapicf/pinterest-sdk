@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_bulk_upsert_status
 
 type BulkUpsertStatusResponse* = object
   ## ID of the bulk request.
-  status*: BulkUpsertStatus
-  resultUrl*: string
+  status*: Option[BulkUpsertStatus]
+  resultUrl*: Option[string]
+
+
+# Custom JSON deserialization for BulkUpsertStatusResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[BulkUpsertStatusResponse]): BulkUpsertStatusResponse =
+  result = BulkUpsertStatusResponse()
+  if node.kind == JObject:
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+    if node.hasKey("result_url") and node["result_url"].kind != JNull:
+      result.resultUrl = some(to(node["result_url"], typeof(result.resultUrl.get())))
+
+# Custom JSON serialization for BulkUpsertStatusResponse with custom field names
+proc `%`*(obj: BulkUpsertStatusResponse): JsonNode =
+  result = newJObject()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.resultUrl.isSome():
+    result["result_url"] = %obj.resultUrl.get()
+

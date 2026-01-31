@@ -2,41 +2,47 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.MediaUploadAllOfUploadParameters;
 import org.openapitools.model.MediaUploadType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Media upload that has been registered but not uploaded/processed yet.
- **/
+ * Media upload that has been registered but not uploaded/processed yet.
+ */
 @ApiModel(description="Media upload that has been registered but not uploaded/processed yet.")
 
 public class MediaUpload  {
   
-  @ApiModelProperty(value = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.")
  /**
-   * Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
-  **/
+  * Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
+  */
+  @ApiModelProperty(value = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.")
+
   private String mediaId;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private MediaUploadType mediaType;
 
-  @ApiModelProperty(example = "https://pinterest-media-upload.s3-accelerate.amazonaws.com/", value = "The URL where you will POST your media file.")
  /**
-   * The URL where you will POST your media file.
-  **/
+  * The URL where you will POST your media file.
+  */
+  @ApiModelProperty(example = "https://pinterest-media-upload.s3-accelerate.amazonaws.com/", value = "The URL where you will POST your media file.")
+
   private String uploadUrl;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private MediaUploadAllOfUploadParameters uploadParameters;
  /**
    * Unique identifier for this media upload. Used to track status and for attaching during Pin creation.

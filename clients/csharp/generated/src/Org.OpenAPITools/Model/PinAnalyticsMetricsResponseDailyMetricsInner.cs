@@ -167,8 +167,7 @@ namespace Org.OpenAPITools.Model
                             date = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "metrics":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                metrics = new Option<Dictionary<string, decimal>?>(JsonSerializer.Deserialize<Dictionary<string, decimal>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            metrics = new Option<Dictionary<string, decimal>?>(JsonSerializer.Deserialize<Dictionary<string, decimal>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

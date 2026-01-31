@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,19 +8,22 @@ import org.openapitools.model.PinMediaMetadata;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Pin with a mix of images and videos.
- **/
+ * Pin with a mix of images and videos.
+ */
 @ApiModel(description="Pin with a mix of images and videos.")
 
 public class PinMediaWithImageAndVideo extends PinMedia {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid PinMediaMetadata> items = new ArrayList<>();
  /**
    * Get items

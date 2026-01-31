@@ -18,20 +18,36 @@ import .*
 
 
 /**
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
+ * 
  * @param refreshToken 
  * @param refreshTokenExpiresIn 
+ * @param accessToken 
+ * @param tokenType 
+ * @param expiresIn 
+ * @param scope 
+ * @param responseType 
  */
 object OauthAccessTokenResponseIntegrationRefreshs : BaseTable<OauthAccessTokenResponseIntegrationRefresh>("OauthAccessTokenResponseIntegrationRefresh") {
     val refreshToken = text("refresh_token")
     val refreshTokenExpiresIn = int("refresh_token_expires_in")
+    val accessToken = text("access_token")
+    val tokenType = text("token_type")
+    val expiresIn = int("expires_in")
+    val scope = text("scope")
+    val responseType = text("response_type").transform({ OauthAccessTokenResponseIntegrationRefresh.ResponseType.valueOf(it ?: "authorization_code") }, { it.value }) /* null */
+
 
     /**
      * Create an entity of type OauthAccessTokenResponseIntegrationRefresh from the model
      */
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = OauthAccessTokenResponseIntegrationRefresh(
         refreshToken = row[refreshToken] ?: "" /* kotlin.String */,
-        refreshTokenExpiresIn = row[refreshTokenExpiresIn] ?: 0 /* kotlin.Int */
+        refreshTokenExpiresIn = row[refreshTokenExpiresIn] ?: 0 /* kotlin.Int */,
+        accessToken = row[accessToken] ?: "" /* kotlin.String */,
+        tokenType = row[tokenType] ?: "" /* kotlin.String */,
+        expiresIn = row[expiresIn] ?: 0 /* kotlin.Int */,
+        scope = row[scope] ?: "" /* kotlin.String */,
+        responseType = row[responseType]  /* kotlin.String? */
     )
 
     /**
@@ -51,6 +67,11 @@ object OauthAccessTokenResponseIntegrationRefreshs : BaseTable<OauthAccessTokenR
         this.apply {
             set(OauthAccessTokenResponseIntegrationRefreshs.refreshToken, entity.refreshToken)
             set(OauthAccessTokenResponseIntegrationRefreshs.refreshTokenExpiresIn, entity.refreshTokenExpiresIn)
+            set(OauthAccessTokenResponseIntegrationRefreshs.accessToken, entity.accessToken)
+            set(OauthAccessTokenResponseIntegrationRefreshs.tokenType, entity.tokenType)
+            set(OauthAccessTokenResponseIntegrationRefreshs.expiresIn, entity.expiresIn)
+            set(OauthAccessTokenResponseIntegrationRefreshs.scope, entity.scope)
+            set(OauthAccessTokenResponseIntegrationRefreshs.responseType, entity.responseType)
         }
     }
 

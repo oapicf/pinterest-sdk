@@ -54,24 +54,6 @@
       //expect(instance).to.be.a(PinterestSdk.InviteBusinessRoleBinding);
     });
 
-    it('should have the property createdByBusinessId (base name: "created_by_business_id")', function() {
-      // uncomment below and update the code to test the property createdByBusinessId
-      //var instance = new PinterestSdk.InviteBusinessRoleBinding();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property createdByUserId (base name: "created_by_user_id")', function() {
-      // uncomment below and update the code to test the property createdByUserId
-      //var instance = new PinterestSdk.InviteBusinessRoleBinding();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property user (base name: "user")', function() {
-      // uncomment below and update the code to test the property user
-      //var instance = new PinterestSdk.InviteBusinessRoleBinding();
-      //expect(instance).to.be();
-    });
-
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
       //var instance = new PinterestSdk.InviteBusinessRoleBinding();
@@ -86,6 +68,24 @@
 
     it('should have the property isReceivedInvite (base name: "is_received_invite")', function() {
       // uncomment below and update the code to test the property isReceivedInvite
+      //var instance = new PinterestSdk.InviteBusinessRoleBinding();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property user (base name: "user")', function() {
+      // uncomment below and update the code to test the property user
+      //var instance = new PinterestSdk.InviteBusinessRoleBinding();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property createdByBusinessId (base name: "created_by_business_id")', function() {
+      // uncomment below and update the code to test the property createdByBusinessId
+      //var instance = new PinterestSdk.InviteBusinessRoleBinding();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property createdByUserId (base name: "created_by_user_id")', function() {
+      // uncomment below and update the code to test the property createdByUserId
       //var instance = new PinterestSdk.InviteBusinessRoleBinding();
       //expect(instance).to.be();
     });

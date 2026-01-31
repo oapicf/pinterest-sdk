@@ -87,7 +87,6 @@ Private/OpenAPIAudienceCategory.cpp
 Private/OpenAPIAudienceCommon.cpp
 Private/OpenAPIAudienceCreateCustomRequest.cpp
 Private/OpenAPIAudienceCreateRequest.cpp
-Private/OpenAPIAudienceCreateRequest1AudienceType.cpp
 Private/OpenAPIAudienceDataParty.cpp
 Private/OpenAPIAudienceDefinition.cpp
 Private/OpenAPIAudienceDefinitionResponse.cpp
@@ -288,7 +287,6 @@ Private/OpenAPICatalogsItemsDeleteDiscontinuedBatchRequest.cpp
 Private/OpenAPICatalogsItemsFilters.cpp
 Private/OpenAPICatalogsItemsPostFilters.cpp
 Private/OpenAPICatalogsItemsRequest.cpp
-Private/OpenAPICatalogsItemsRequestLanguage.cpp
 Private/OpenAPICatalogsItemsUpdateBatchRequest.cpp
 Private/OpenAPICatalogsItemsUpsertBatchRequest.cpp
 Private/OpenAPICatalogsList200Response.cpp
@@ -647,7 +645,6 @@ Private/OpenAPIPinMediaWithVideos.cpp
 Private/OpenAPIPinPromotionSummaryStatus.cpp
 Private/OpenAPIPinUpdate.cpp
 Private/OpenAPIPinUpdateCarouselSlotsInner.cpp
-Private/OpenAPIPinsAnalyticsMetricTypesParameterInner.cpp
 Private/OpenAPIPinsApi.cpp
 Private/OpenAPIPinsApiOperations.cpp
 Private/OpenAPIPinsList200Response.cpp
@@ -877,7 +874,6 @@ Public/OpenAPIAudienceCategory.h
 Public/OpenAPIAudienceCommon.h
 Public/OpenAPIAudienceCreateCustomRequest.h
 Public/OpenAPIAudienceCreateRequest.h
-Public/OpenAPIAudienceCreateRequest1AudienceType.h
 Public/OpenAPIAudienceDataParty.h
 Public/OpenAPIAudienceDefinition.h
 Public/OpenAPIAudienceDefinitionResponse.h
@@ -1078,7 +1074,6 @@ Public/OpenAPICatalogsItemsDeleteDiscontinuedBatchRequest.h
 Public/OpenAPICatalogsItemsFilters.h
 Public/OpenAPICatalogsItemsPostFilters.h
 Public/OpenAPICatalogsItemsRequest.h
-Public/OpenAPICatalogsItemsRequestLanguage.h
 Public/OpenAPICatalogsItemsUpdateBatchRequest.h
 Public/OpenAPICatalogsItemsUpsertBatchRequest.h
 Public/OpenAPICatalogsList200Response.h
@@ -1435,7 +1430,6 @@ Public/OpenAPIPinMediaWithVideos.h
 Public/OpenAPIPinPromotionSummaryStatus.h
 Public/OpenAPIPinUpdate.h
 Public/OpenAPIPinUpdateCarouselSlotsInner.h
-Public/OpenAPIPinsAnalyticsMetricTypesParameterInner.h
 Public/OpenAPIPinsApi.h
 Public/OpenAPIPinsApiOperations.h
 Public/OpenAPIPinsList200Response.h

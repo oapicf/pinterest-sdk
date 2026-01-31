@@ -23,6 +23,7 @@ CreateMMMReportRequest::~CreateMMMReportRequest()
 void
 CreateMMMReportRequest::__init()
 {
+	//new std::list()std::list> countries;
 	//report_name = std::string();
 	//start_date = std::string();
 	//end_date = std::string();
@@ -30,12 +31,16 @@ CreateMMMReportRequest::__init()
 	//level = std::string();
 	//new std::list()std::list> targeting_types;
 	//new std::list()std::list> columns;
-	//new std::list()std::list> countries;
 }
 
 void
 CreateMMMReportRequest::__cleanup()
 {
+	//if(countries != NULL) {
+	//countries.RemoveAll(true);
+	//delete countries;
+	//countries = NULL;
+	//}
 	//if(report_name != NULL) {
 	//
 	//delete report_name;
@@ -71,11 +76,6 @@ CreateMMMReportRequest::__cleanup()
 	//delete columns;
 	//columns = NULL;
 	//}
-	//if(countries != NULL) {
-	//countries.RemoveAll(true);
-	//delete countries;
-	//countries = NULL;
-	//}
 	//
 }
 
@@ -84,6 +84,30 @@ CreateMMMReportRequest::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *countriesKey = "countries";
+	node = json_object_get_member(pJsonObject, countriesKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<TargetingAdvertiserCountry> new_list;
+			TargetingAdvertiserCountry inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("TargetingAdvertiserCountry")) {
+					jsonToValue(&inst, temp_json, "TargetingAdvertiserCountry", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			countries = new_list;
+		}
+		
+	}
 	const gchar *report_nameKey = "report_name";
 	node = json_object_get_member(pJsonObject, report_nameKey);
 	if (node !=NULL) {
@@ -187,30 +211,6 @@ CreateMMMReportRequest::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *countriesKey = "countries";
-	node = json_object_get_member(pJsonObject, countriesKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<TargetingAdvertiserCountry> new_list;
-			TargetingAdvertiserCountry inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("TargetingAdvertiserCountry")) {
-					jsonToValue(&inst, temp_json, "TargetingAdvertiserCountry", "");
-				} else {
-					
-					inst.fromJson(json_to_string(temp_json, false));
-					
-				}
-				new_list.push_back(inst);
-			}
-			countries = new_list;
-		}
-		
-	}
 }
 
 CreateMMMReportRequest::CreateMMMReportRequest(char* json)
@@ -223,6 +223,31 @@ CreateMMMReportRequest::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("TargetingAdvertiserCountry")) {
+		list<TargetingAdvertiserCountry> new_list = static_cast<list <TargetingAdvertiserCountry> > (getCountries());
+		node = converttoJson(&new_list, "TargetingAdvertiserCountry", "array");
+	} else {
+		node = json_node_alloc();
+		list<TargetingAdvertiserCountry> new_list = static_cast<list <TargetingAdvertiserCountry> > (getCountries());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<TargetingAdvertiserCountry>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			TargetingAdvertiserCountry obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+		
+	}
+
+
+	
+	const gchar *countriesKey = "countries";
+	json_object_set_member(pJsonObject, countriesKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getReportName();
 		node = converttoJson(&obj, "std::string", "");
@@ -318,37 +343,24 @@ CreateMMMReportRequest::toJson()
 	
 	const gchar *columnsKey = "columns";
 	json_object_set_member(pJsonObject, columnsKey, node);
-	if (isprimitive("TargetingAdvertiserCountry")) {
-		list<TargetingAdvertiserCountry> new_list = static_cast<list <TargetingAdvertiserCountry> > (getCountries());
-		node = converttoJson(&new_list, "TargetingAdvertiserCountry", "array");
-	} else {
-		node = json_node_alloc();
-		list<TargetingAdvertiserCountry> new_list = static_cast<list <TargetingAdvertiserCountry> > (getCountries());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-		for (list<TargetingAdvertiserCountry>::iterator it = new_list.begin(); it != new_list.end(); it++) {
-			mygerror = NULL;
-			TargetingAdvertiserCountry obj = *it;
-			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
-			json_array_add_element(json_array, node_temp);
-			g_clear_error(&mygerror);
-		}
-		json_node_init_array(node, json_array);
-		json_array_unref(json_array);
-		
-	}
-
-
-	
-	const gchar *countriesKey = "countries";
-	json_object_set_member(pJsonObject, countriesKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::list<TargetingAdvertiserCountry>
+CreateMMMReportRequest::getCountries()
+{
+	return countries;
+}
+
+void
+CreateMMMReportRequest::setCountries(std::list <TargetingAdvertiserCountry> countries)
+{
+	this->countries = countries;
 }
 
 std::string
@@ -433,18 +445,6 @@ void
 CreateMMMReportRequest::setColumns(std::list <MMMReportingColumn> columns)
 {
 	this->columns = columns;
-}
-
-std::list<TargetingAdvertiserCountry>
-CreateMMMReportRequest::getCountries()
-{
-	return countries;
-}
-
-void
-CreateMMMReportRequest::setCountries(std::list <TargetingAdvertiserCountry> countries)
-{
-	this->countries = countries;
 }
 
 

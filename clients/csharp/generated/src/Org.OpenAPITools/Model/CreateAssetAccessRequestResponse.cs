@@ -140,12 +140,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "exceptions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exceptions = new Option<List<CreateAssetAccessRequestErrorMessageInner>?>(JsonSerializer.Deserialize<List<CreateAssetAccessRequestErrorMessageInner>>(ref utf8JsonReader, jsonSerializerOptions));
+                            exceptions = new Option<List<CreateAssetAccessRequestErrorMessageInner>?>(JsonSerializer.Deserialize<List<CreateAssetAccessRequestErrorMessageInner>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "invites":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                invites = new Option<Dictionary<string, string>?>(JsonSerializer.Deserialize<Dictionary<string, string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            invites = new Option<Dictionary<string, string>?>(JsonSerializer.Deserialize<Dictionary<string, string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

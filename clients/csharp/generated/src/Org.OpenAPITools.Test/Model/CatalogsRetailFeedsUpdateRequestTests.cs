@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -53,6 +52,15 @@ namespace Org.OpenAPITools.Test.Model
         {
             // TODO uncomment below to test "IsType" CatalogsRetailFeedsUpdateRequest
             //Assert.IsType<CatalogsRetailFeedsUpdateRequest>(instance);
+        }
+
+        /// <summary>
+        /// Test the property 'CatalogType'
+        /// </summary>
+        [Fact]
+        public void CatalogTypeTest()
+        {
+            // TODO unit test for the property 'CatalogType'
         }
 
         /// <summary>
@@ -116,15 +124,6 @@ namespace Org.OpenAPITools.Test.Model
         public void StatusTest()
         {
             // TODO unit test for the property 'Status'
-        }
-
-        /// <summary>
-        /// Test the property 'CatalogType'
-        /// </summary>
-        [Fact]
-        public void CatalogTypeTest()
-        {
-            // TODO unit test for the property 'CatalogType'
         }
 
         /// <summary>

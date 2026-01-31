@@ -13,7 +13,7 @@
 /*
  * OAIOauthAccessTokenRequestRefresh.h
  *
- * A request to exchange a refresh token for a new access token.
+ * 
  */
 
 #ifndef OAIOauthAccessTokenRequestRefresh_H
@@ -39,11 +39,6 @@ public:
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
 
-    QString getGrantType() const;
-    void setGrantType(const QString &grant_type);
-    bool is_grant_type_Set() const;
-    bool is_grant_type_Valid() const;
-
     QString getRefreshToken() const;
     void setRefreshToken(const QString &refresh_token);
     bool is_refresh_token_Set() const;
@@ -59,15 +54,16 @@ public:
     bool is_refresh_on_Set() const;
     bool is_refresh_on_Valid() const;
 
+    QString getGrantType() const;
+    void setGrantType(const QString &grant_type);
+    bool is_grant_type_Set() const;
+    bool is_grant_type_Valid() const;
+
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
     void initializeModel();
-
-    QString m_grant_type;
-    bool m_grant_type_isSet;
-    bool m_grant_type_isValid;
 
     QString m_refresh_token;
     bool m_refresh_token_isSet;
@@ -80,6 +76,10 @@ private:
     bool m_refresh_on;
     bool m_refresh_on_isSet;
     bool m_refresh_on_isValid;
+
+    QString m_grant_type;
+    bool m_grant_type_isSet;
+    bool m_grant_type_isValid;
 };
 
 } // namespace OpenAPI

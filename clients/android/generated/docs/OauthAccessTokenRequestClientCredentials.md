@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**grantType** | [**GrantTypeEnum**](#GrantTypeEnum) |  | 
 **scope** | **String** |  | 
+**grantType** | [**GrantTypeEnum**](#GrantTypeEnum) |  | 
 
 
 ## Enum: GrantTypeEnum

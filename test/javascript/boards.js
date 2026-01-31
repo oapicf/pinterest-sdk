@@ -13,7 +13,7 @@ describe('boards', function() {
 
       const apiClient = PinterestSdk.ApiClient.instance;
       var pinterestOAuth2 = apiClient.authentications['pinterest_oauth2'];
-      pinterestOAuth2.accessToken = "SOME INVALID TOKEN"
+      pinterestOAuth2.accessToken = "SOME INVALID TOKEN";
       
       const boardsApi = new PinterestSdk.BoardsApi();
       boardsApi.boardsListPins('12345', {}, callback);

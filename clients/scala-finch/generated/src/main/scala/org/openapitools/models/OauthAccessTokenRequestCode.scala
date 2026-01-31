@@ -7,14 +7,14 @@ import io.circe.java8.time._
 import org.openapitools._
 
 /**
- * A request to exchange an authorization code for an access token.
- * @param grantUnderscoretype 
+ * 
  * @param code 
  * @param redirectUnderscoreuri 
+ * @param grantUnderscoretype 
  */
-case class OauthAccessTokenRequestCode(grantUnderscoretype: String,
-                code: String,
-                redirectUnderscoreuri: String
+case class OauthAccessTokenRequestCode(code: String,
+                redirectUnderscoreuri: String,
+                grantUnderscoretype: String
                 )
 
 object OauthAccessTokenRequestCode {

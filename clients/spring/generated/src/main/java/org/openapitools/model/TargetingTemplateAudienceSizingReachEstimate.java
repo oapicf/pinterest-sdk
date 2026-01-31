@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("TargetingTemplateAudienceSizing_reach_estimate")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateAudienceSizingReachEstimate {
 
   private @Nullable Long estimate;
@@ -30,7 +30,7 @@ public class TargetingTemplateAudienceSizingReachEstimate {
 
   private @Nullable Long upperBound;
 
-  public TargetingTemplateAudienceSizingReachEstimate estimate(Long estimate) {
+  public TargetingTemplateAudienceSizingReachEstimate estimate(@Nullable Long estimate) {
     this.estimate = estimate;
     return this;
   }
@@ -42,15 +42,15 @@ public class TargetingTemplateAudienceSizingReachEstimate {
   
   @Schema(name = "estimate", example = "63492000", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("estimate")
-  public Long getEstimate() {
+  public @Nullable Long getEstimate() {
     return estimate;
   }
 
-  public void setEstimate(Long estimate) {
+  public void setEstimate(@Nullable Long estimate) {
     this.estimate = estimate;
   }
 
-  public TargetingTemplateAudienceSizingReachEstimate lowerBound(Long lowerBound) {
+  public TargetingTemplateAudienceSizingReachEstimate lowerBound(@Nullable Long lowerBound) {
     this.lowerBound = lowerBound;
     return this;
   }
@@ -62,15 +62,15 @@ public class TargetingTemplateAudienceSizingReachEstimate {
   
   @Schema(name = "lower_bound", example = "47619000", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lower_bound")
-  public Long getLowerBound() {
+  public @Nullable Long getLowerBound() {
     return lowerBound;
   }
 
-  public void setLowerBound(Long lowerBound) {
+  public void setLowerBound(@Nullable Long lowerBound) {
     this.lowerBound = lowerBound;
   }
 
-  public TargetingTemplateAudienceSizingReachEstimate upperBound(Long upperBound) {
+  public TargetingTemplateAudienceSizingReachEstimate upperBound(@Nullable Long upperBound) {
     this.upperBound = upperBound;
     return this;
   }
@@ -82,11 +82,11 @@ public class TargetingTemplateAudienceSizingReachEstimate {
   
   @Schema(name = "upper_bound", example = "79365000", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("upper_bound")
-  public Long getUpperBound() {
+  public @Nullable Long getUpperBound() {
     return upperBound;
   }
 
-  public void setUpperBound(Long upperBound) {
+  public void setUpperBound(@Nullable Long upperBound) {
     this.upperBound = upperBound;
   }
 

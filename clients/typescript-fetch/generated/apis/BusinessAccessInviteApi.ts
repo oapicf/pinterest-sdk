@@ -123,8 +123,12 @@ export class BusinessAccessInviteApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read", "biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/requests/assets/access`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/requests/assets/access`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -173,8 +177,12 @@ export class BusinessAccessInviteApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/invites`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/invites`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -223,8 +231,12 @@ export class BusinessAccessInviteApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read", "biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/invites/assets/access`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/invites/assets/access`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -273,8 +285,12 @@ export class BusinessAccessInviteApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/invites`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/invites`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -334,8 +350,12 @@ export class BusinessAccessInviteApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/invites`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/invites`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -376,8 +396,11 @@ export class BusinessAccessInviteApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read", "biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/invites`;
+
         const response = await this.request({
-            path: `/businesses/invites`,
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,

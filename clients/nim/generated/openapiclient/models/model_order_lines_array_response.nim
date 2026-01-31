@@ -9,9 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_order_lines
 
 type OrderLinesArrayResponse* = object
   ## 
-  items*: seq[OrderLines]
+  items*: Option[seq[OrderLines]]
+
+
+# Custom JSON deserialization for OrderLinesArrayResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[OrderLinesArrayResponse]): OrderLinesArrayResponse =
+  result = OrderLinesArrayResponse()
+  if node.kind == JObject:
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[OrderLines] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, OrderLines))
+        result.items = some(arr)
+
+# Custom JSON serialization for OrderLinesArrayResponse with custom field names
+proc `%`*(obj: OrderLinesArrayResponse): JsonNode =
+  result = newJObject()
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

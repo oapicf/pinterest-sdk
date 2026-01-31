@@ -37,7 +37,7 @@ use PHPUnit\Framework\TestCase;
  * OauthAccessTokenResponseIntegrationRefreshTest Class Doc Comment
  *
  * @category    Class
- * @description A successful OAuth access token response for the refresh token flow, with an added refresh token.
+ * @description OauthAccessTokenResponseIntegrationRefresh
  * @package     OpenAPI\Server\Tests\Model
  * @author      openapi-generator contributors
  * @link        https://github.com/openapitools/openapi-generator
@@ -84,6 +84,28 @@ class OauthAccessTokenResponseIntegrationRefreshTest extends TestCase
     {
         $this->assertTrue(class_exists(OauthAccessTokenResponseIntegrationRefresh::class));
         $this->assertInstanceOf(OauthAccessTokenResponseIntegrationRefresh::class, $this->object);
+    }
+
+    /**
+     * Test attribute "refreshToken"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyRefreshToken(): void
+    {
+        $this->markTestSkipped('Test for property refreshToken not implemented');
+    }
+
+    /**
+     * Test attribute "refreshTokenExpiresIn"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyRefreshTokenExpiresIn(): void
+    {
+        $this->markTestSkipped('Test for property refreshTokenExpiresIn not implemented');
     }
 
     /**
@@ -139,27 +161,5 @@ class OauthAccessTokenResponseIntegrationRefreshTest extends TestCase
     public function testPropertyScope(): void
     {
         $this->markTestSkipped('Test for property scope not implemented');
-    }
-
-    /**
-     * Test attribute "refreshToken"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyRefreshToken(): void
-    {
-        $this->markTestSkipped('Test for property refreshToken not implemented');
-    }
-
-    /**
-     * Test attribute "refreshTokenExpiresIn"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyRefreshTokenExpiresIn(): void
-    {
-        $this->markTestSkipped('Test for property refreshTokenExpiresIn not implemented');
     }
 }

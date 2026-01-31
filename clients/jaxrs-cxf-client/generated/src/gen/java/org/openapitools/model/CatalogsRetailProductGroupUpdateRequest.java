@@ -1,18 +1,18 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 import org.openapitools.model.Country;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for updating a retail product group.
- **/
+ * Request object for updating a retail product group.
+ */
 @ApiModel(description="Request object for updating a retail product group.")
 
 public class CatalogsRetailProductGroupUpdateRequest  {
@@ -47,25 +47,31 @@ RETAIL(String.valueOf("RETAIL"));
     }
 }
 
-  @ApiModelProperty(value = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
  /**
-   * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-  **/
+  * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+  */
+  @ApiModelProperty(value = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
   @ApiModelProperty(value = "")
+
   private CatalogsProductGroupFiltersRequest filters;
 
   @ApiModelProperty(value = "")
+
   private Country country;
 
   @ApiModelProperty(value = "")
+
   private CatalogsLocale locale;
  /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.

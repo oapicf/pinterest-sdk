@@ -117,7 +117,7 @@ private:
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="explicitFollowing">Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void boards_user_follows_list(const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<bool> &explicitFollowing, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void boards_user_follows_list( const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<bool> &explicitFollowing, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Follow user
     /// </summary>
@@ -126,7 +126,7 @@ private:
     /// </remarks>
     /// <param name="username">A valid username</param>
     /// <param name="followUserRequest">Follow a user.</param>
-    virtual void follow_user_update(const std::string &username, const org::openapitools::server::model::FollowUserRequest &followUserRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void follow_user_update( const std::string &username, const org::openapitools::server::model::FollowUserRequest &followUserRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List followers
     /// </summary>
@@ -135,14 +135,14 @@ private:
     /// </remarks>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void followers_list(const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void followers_list( const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List linked businesses
     /// </summary>
     /// <remarks>
     /// Get a list of your linked business accounts.
     /// </remarks>
-    virtual void linked_business_accounts_get(Pistache::Http::ResponseWriter &response) = 0;
+    virtual void linked_business_accounts_get( Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Unverify website
     /// </summary>
@@ -150,7 +150,7 @@ private:
     /// Unverifu a website verified by the signed-in user.
     /// </remarks>
     /// <param name="website">Website with path or domain only</param>
-    virtual void unverify_website_delete(const std::optional<std::string> &website, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void unverify_website_delete( const std::optional<std::string> &website, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get user account analytics
     /// </summary>
@@ -167,7 +167,7 @@ private:
     /// <param name="metricTypes">Metric types to get data for, default is all.  (optional, default to std::vector&lt;std::shared_ptr&lt;std::string&gt;&gt;())</param>
     /// <param name="splitField">How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to &quot;NO_SPLIT&quot;)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void user_account_analytics(const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::string> &fromClaimedContent, const std::optional<std::string> &pinFormat, const std::optional<std::string> &appTypes, const std::optional<std::string> &contentType, const std::optional<std::string> &source, const std::optional<std::vector<std::string>> &metricTypes, const std::optional<std::string> &splitField, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void user_account_analytics( const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::string> &fromClaimedContent, const std::optional<std::string> &pinFormat, const std::optional<std::string> &appTypes, const std::optional<std::string> &contentType, const std::optional<std::string> &source, const std::optional<std::vector<std::string>> &metricTypes, const std::optional<std::string> &splitField, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get user account top pins analytics
     /// </summary>
@@ -186,7 +186,7 @@ private:
     /// <param name="numOfPins">Number of pins to include, default is 10. Max is 50. (optional, default to 10)</param>
     /// <param name="createdInLastNDays">Get metrics for pins created in the last \&quot;n\&quot; days. (optional, default to 0)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void user_account_analytics_top_pins(const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::string> &sortBy, const std::optional<std::string> &fromClaimedContent, const std::optional<std::string> &pinFormat, const std::optional<std::string> &appTypes, const std::optional<std::string> &contentType, const std::optional<std::string> &source, const std::optional<std::vector<std::string>> &metricTypes, const std::optional<int32_t> &numOfPins, const std::optional<int32_t> &createdInLastNDays, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void user_account_analytics_top_pins( const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::string> &sortBy, const std::optional<std::string> &fromClaimedContent, const std::optional<std::string> &pinFormat, const std::optional<std::string> &appTypes, const std::optional<std::string> &contentType, const std::optional<std::string> &source, const std::optional<std::vector<std::string>> &metricTypes, const std::optional<int32_t> &numOfPins, const std::optional<int32_t> &createdInLastNDays, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get user account top video pins analytics
     /// </summary>
@@ -205,7 +205,7 @@ private:
     /// <param name="numOfPins">Number of pins to include, default is 10. Max is 50. (optional, default to 10)</param>
     /// <param name="createdInLastNDays">Get metrics for pins created in the last \&quot;n\&quot; days. (optional, default to 0)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void user_account_analytics_top_video_pins(const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::string> &sortBy, const std::optional<std::string> &fromClaimedContent, const std::optional<std::string> &pinFormat, const std::optional<std::string> &appTypes, const std::optional<std::string> &contentType, const std::optional<std::string> &source, const std::optional<std::vector<std::string>> &metricTypes, const std::optional<int32_t> &numOfPins, const std::optional<int32_t> &createdInLastNDays, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void user_account_analytics_top_video_pins( const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::string> &sortBy, const std::optional<std::string> &fromClaimedContent, const std::optional<std::string> &pinFormat, const std::optional<std::string> &appTypes, const std::optional<std::string> &contentType, const std::optional<std::string> &source, const std::optional<std::vector<std::string>> &metricTypes, const std::optional<int32_t> &numOfPins, const std::optional<int32_t> &createdInLastNDays, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List following interests
     /// </summary>
@@ -215,7 +215,7 @@ private:
     /// <param name="username">A valid username</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void user_account_followed_interests(const std::string &username, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void user_account_followed_interests( const std::string &username, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get user account
     /// </summary>
@@ -223,7 +223,7 @@ private:
     /// Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void user_account_get(const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void user_account_get( const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List following
     /// </summary>
@@ -235,7 +235,7 @@ private:
     /// <param name="feedType">Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to &quot;&quot;)</param>
     /// <param name="explicitFollowing">Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void user_following_get(const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<UserFollowingFeedType> &feedType, const std::optional<bool> &explicitFollowing, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void user_following_get( const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<UserFollowingFeedType> &feedType, const std::optional<bool> &explicitFollowing, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get user websites
     /// </summary>
@@ -244,7 +244,7 @@ private:
     /// </remarks>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void user_websites_get(const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void user_websites_get( const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Verify website
     /// </summary>
@@ -253,7 +253,7 @@ private:
     /// </remarks>
     /// <param name="userWebsiteVerifyRequest">Verify a website.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void verify_website_update(const org::openapitools::server::model::UserWebsiteVerifyRequest &userWebsiteVerifyRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void verify_website_update( const org::openapitools::server::model::UserWebsiteVerifyRequest &userWebsiteVerifyRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get user verification code for website claiming
     /// </summary>
@@ -261,7 +261,7 @@ private:
     /// Get verification code for user to install on the website to claim it.
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void website_verification_get(const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void website_verification_get( const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

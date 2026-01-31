@@ -53,42 +53,99 @@ func NewAudienceSharingAPIController(s AudienceSharingAPIServicer, opts ...Audie
 func (c *AudienceSharingAPIController) Routes() Routes {
 	return Routes{
 		"AdAccountsAudiencesSharedAccountsList": Route{
+			"AdAccountsAudiencesSharedAccountsList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/audiences/shared/accounts",
 			c.AdAccountsAudiencesSharedAccountsList,
 		},
 		"UpdateAdAccountToAdAccountSharedAudience": Route{
+			"UpdateAdAccountToAdAccountSharedAudience",
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared",
 			c.UpdateAdAccountToAdAccountSharedAudience,
 		},
 		"UpdateAdAccountToBusinessSharedAudience": Route{
+			"UpdateAdAccountToBusinessSharedAudience",
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/audiences/businesses/shared",
 			c.UpdateAdAccountToBusinessSharedAudience,
 		},
 		"SharedAudiencesForBusinessList": Route{
+			"SharedAudiencesForBusinessList",
 			strings.ToUpper("Get"),
 			"/v5/businesses/{business_id}/audiences",
 			c.SharedAudiencesForBusinessList,
 		},
 		"BusinessAccountAudiencesSharedAccountsList": Route{
+			"BusinessAccountAudiencesSharedAccountsList",
 			strings.ToUpper("Get"),
 			"/v5/businesses/{business_id}/audiences/shared/accounts",
 			c.BusinessAccountAudiencesSharedAccountsList,
 		},
 		"UpdateBusinessToAdAccountSharedAudience": Route{
+			"UpdateBusinessToAdAccountSharedAudience",
 			strings.ToUpper("Patch"),
 			"/v5/businesses/{business_id}/audiences/ad_accounts/shared",
 			c.UpdateBusinessToAdAccountSharedAudience,
 		},
 		"UpdateBusinessToBusinessSharedAudience": Route{
+			"UpdateBusinessToBusinessSharedAudience",
 			strings.ToUpper("Patch"),
 			"/v5/businesses/{business_id}/audiences/businesses/shared",
 			c.UpdateBusinessToBusinessSharedAudience,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the AudienceSharingAPIController
+func (c *AudienceSharingAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"AdAccountsAudiencesSharedAccountsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/audiences/shared/accounts",
+			c.AdAccountsAudiencesSharedAccountsList,
+		},
+		Route{
+			"UpdateAdAccountToAdAccountSharedAudience",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared",
+			c.UpdateAdAccountToAdAccountSharedAudience,
+		},
+		Route{
+			"UpdateAdAccountToBusinessSharedAudience",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/audiences/businesses/shared",
+			c.UpdateAdAccountToBusinessSharedAudience,
+		},
+		Route{
+			"SharedAudiencesForBusinessList",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/audiences",
+			c.SharedAudiencesForBusinessList,
+		},
+		Route{
+			"BusinessAccountAudiencesSharedAccountsList",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/audiences/shared/accounts",
+			c.BusinessAccountAudiencesSharedAccountsList,
+		},
+		Route{
+			"UpdateBusinessToAdAccountSharedAudience",
+			strings.ToUpper("Patch"),
+			"/v5/businesses/{business_id}/audiences/ad_accounts/shared",
+			c.UpdateBusinessToAdAccountSharedAudience,
+		},
+		Route{
+			"UpdateBusinessToBusinessSharedAudience",
+			strings.ToUpper("Patch"),
+			"/v5/businesses/{business_id}/audiences/businesses/shared",
+			c.UpdateBusinessToBusinessSharedAudience,
+		},
+	}
+}
+
+
 
 // AdAccountsAudiencesSharedAccountsList - List accounts with access to an audience owned by an ad account
 func (c *AudienceSharingAPIController) AdAccountsAudiencesSharedAccountsList(w http.ResponseWriter, r *http.Request) {

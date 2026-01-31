@@ -7,12 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ConversionTagCreate, () {
-    // Conversion tag name.
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
     // Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
     // bool aemEnabled (default value: false)
     test('to test the property `aemEnabled`', () async {
@@ -52,6 +46,12 @@ void main() {
     // Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
     // bool aemLocEnabled (default value: false)
     test('to test the property `aemLocEnabled`', () async {
+      // TODO
+    });
+
+    // Conversion tag name.
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

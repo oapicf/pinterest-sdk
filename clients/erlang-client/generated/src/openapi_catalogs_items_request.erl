@@ -6,7 +6,7 @@
 
 -type openapi_catalogs_items_request() ::
     #{ 'country' := openapi_country:openapi_country(),
-       'language' := openapi_catalogs_items_request_language:openapi_catalogs_items_request_language(),
+       'language' := binary(),
        'filters' := openapi_catalogs_items_post_filters:openapi_catalogs_items_post_filters()
      }.
 

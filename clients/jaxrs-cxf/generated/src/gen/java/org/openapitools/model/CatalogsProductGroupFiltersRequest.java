@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,23 +9,28 @@ import org.openapitools.model.CatalogsProductGroupFiltersRequestAnyOf1;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
- **/
+ * Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
+ */
 @ApiModel(description="Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.")
 
 public class CatalogsProductGroupFiltersRequest  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();
  /**
    * Get anyOf

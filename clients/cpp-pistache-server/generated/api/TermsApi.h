@@ -86,7 +86,7 @@ private:
     /// Get a list of terms logically related to each input term. &lt;p/&gt; Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
     /// </remarks>
     /// <param name="terms">List of input terms.</param>
-    virtual void terms_related_list(const std::optional<std::vector<std::string>> &terms, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void terms_related_list( const std::optional<std::vector<std::string>> &terms, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List suggested terms
     /// </summary>
@@ -95,7 +95,7 @@ private:
     /// </remarks>
     /// <param name="term">Input term.</param>
     /// <param name="limit">Max suggested terms to return. (optional, default to 4)</param>
-    virtual void terms_suggested_list(const std::optional<std::string> &term, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void terms_suggested_list( const std::optional<std::string> &term, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -13,7 +13,7 @@
 /*
  * OAIInviteBusinessRoleBinding.h
  *
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+ * 
  */
 
 #ifndef OAIInviteBusinessRoleBinding_H
@@ -22,7 +22,7 @@
 #include <QJsonObject>
 
 #include "OAIBaseInviteDataResponse_invite_data.h"
-#include "OAIBusinessAccessUserSummary.h"
+#include "OAIObject.h"
 #include <QString>
 
 #include "OAIEnum.h"
@@ -41,21 +41,6 @@ public:
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
 
-    QString getCreatedByBusinessId() const;
-    void setCreatedByBusinessId(const QString &created_by_business_id);
-    bool is_created_by_business_id_Set() const;
-    bool is_created_by_business_id_Valid() const;
-
-    QString getCreatedByUserId() const;
-    void setCreatedByUserId(const QString &created_by_user_id);
-    bool is_created_by_user_id_Set() const;
-    bool is_created_by_user_id_Valid() const;
-
-    OAIBusinessAccessUserSummary getUser() const;
-    void setUser(const OAIBusinessAccessUserSummary &user);
-    bool is_user_Set() const;
-    bool is_user_Valid() const;
-
     QString getId() const;
     void setId(const QString &id);
     bool is_id_Set() const;
@@ -71,23 +56,26 @@ public:
     bool is_is_received_invite_Set() const;
     bool is_is_received_invite_Valid() const;
 
+    OAIObject getUser() const;
+    void setUser(const OAIObject &user);
+    bool is_user_Set() const;
+    bool is_user_Valid() const;
+
+    QString getCreatedByBusinessId() const;
+    void setCreatedByBusinessId(const QString &created_by_business_id);
+    bool is_created_by_business_id_Set() const;
+    bool is_created_by_business_id_Valid() const;
+
+    QString getCreatedByUserId() const;
+    void setCreatedByUserId(const QString &created_by_user_id);
+    bool is_created_by_user_id_Set() const;
+    bool is_created_by_user_id_Valid() const;
+
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
     void initializeModel();
-
-    QString created_by_business_id;
-    bool m_created_by_business_id_isSet;
-    bool m_created_by_business_id_isValid;
-
-    QString created_by_user_id;
-    bool m_created_by_user_id_isSet;
-    bool m_created_by_user_id_isValid;
-
-    OAIBusinessAccessUserSummary user;
-    bool m_user_isSet;
-    bool m_user_isValid;
 
     QString id;
     bool m_id_isSet;
@@ -100,6 +88,18 @@ private:
     bool is_received_invite;
     bool m_is_received_invite_isSet;
     bool m_is_received_invite_isValid;
+
+    OAIObject user;
+    bool m_user_isSet;
+    bool m_user_isValid;
+
+    QString created_by_business_id;
+    bool m_created_by_business_id_isSet;
+    bool m_created_by_business_id_isValid;
+
+    QString created_by_user_id;
+    bool m_created_by_user_id_isSet;
+    bool m_created_by_user_id_isValid;
 };
 
 } // namespace OpenAPI

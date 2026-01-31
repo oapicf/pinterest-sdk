@@ -20,14 +20,14 @@ import javax.annotation.Generated;
  * AdGroupAudienceSizingResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupAudienceSizingResponse {
 
   private @Nullable BigDecimal audienceSizeLowerBound;
 
   private @Nullable BigDecimal audienceSizeUpperBound;
 
-  public AdGroupAudienceSizingResponse audienceSizeLowerBound(BigDecimal audienceSizeLowerBound) {
+  public AdGroupAudienceSizingResponse audienceSizeLowerBound(@Nullable BigDecimal audienceSizeLowerBound) {
     this.audienceSizeLowerBound = audienceSizeLowerBound;
     return this;
   }
@@ -39,15 +39,15 @@ public class AdGroupAudienceSizingResponse {
   @Valid 
   @Schema(name = "audience_size_lower_bound", example = "100000", description = "The lower confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("audience_size_lower_bound")
-  public BigDecimal getAudienceSizeLowerBound() {
+  public @Nullable BigDecimal getAudienceSizeLowerBound() {
     return audienceSizeLowerBound;
   }
 
-  public void setAudienceSizeLowerBound(BigDecimal audienceSizeLowerBound) {
+  public void setAudienceSizeLowerBound(@Nullable BigDecimal audienceSizeLowerBound) {
     this.audienceSizeLowerBound = audienceSizeLowerBound;
   }
 
-  public AdGroupAudienceSizingResponse audienceSizeUpperBound(BigDecimal audienceSizeUpperBound) {
+  public AdGroupAudienceSizingResponse audienceSizeUpperBound(@Nullable BigDecimal audienceSizeUpperBound) {
     this.audienceSizeUpperBound = audienceSizeUpperBound;
     return this;
   }
@@ -59,11 +59,11 @@ public class AdGroupAudienceSizingResponse {
   @Valid 
   @Schema(name = "audience_size_upper_bound", example = "150000", description = "The upper confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("audience_size_upper_bound")
-  public BigDecimal getAudienceSizeUpperBound() {
+  public @Nullable BigDecimal getAudienceSizeUpperBound() {
     return audienceSizeUpperBound;
   }
 
-  public void setAudienceSizeUpperBound(BigDecimal audienceSizeUpperBound) {
+  public void setAudienceSizeUpperBound(@Nullable BigDecimal audienceSizeUpperBound) {
     this.audienceSizeUpperBound = audienceSizeUpperBound;
   }
 

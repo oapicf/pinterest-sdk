@@ -31,7 +31,7 @@ import javax.validation.Valid;
   TopPinsAnalyticsResponseDateAvailability.JSON_PROPERTY_LATEST_AVAILABLE_TIMESTAMP,
   TopPinsAnalyticsResponseDateAvailability.JSON_PROPERTY_IS_REALTIME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TopPinsAnalyticsResponseDateAvailability   {
   public static final String JSON_PROPERTY_LATEST_AVAILABLE_TIMESTAMP = "latest_available_timestamp";
   @JsonProperty(JSON_PROPERTY_LATEST_AVAILABLE_TIMESTAMP)

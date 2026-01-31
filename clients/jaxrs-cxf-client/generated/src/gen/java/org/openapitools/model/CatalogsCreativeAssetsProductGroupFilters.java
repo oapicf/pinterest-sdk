@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,21 +7,24 @@ import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilterKeys;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFiltersAllOf;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFiltersAnyOf;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object holding a group of filters for a creative assets product group
- **/
+ * Object holding a group of filters for a creative assets product group
+ */
 @ApiModel(description="Object holding a group of filters for a creative assets product group")
 
 public class CatalogsCreativeAssetsProductGroupFilters  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<CatalogsCreativeAssetsProductGroupFilterKeys> anyOf = new ArrayList<>();
 
   @ApiModelProperty(required = true, value = "")
+
   private List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
  /**
    * Get anyOf

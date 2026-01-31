@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_currency
 
@@ -19,18 +21,18 @@ type OrderLineType* {.pure.} = enum
 type SSIOCreateInsertionOrderRequest* = object
   ## 
   startDate*: string ## Starting date of time period. Format: YYYY-MM-DD
-  endDate*: string ## End date of time period. Format: YYYY-MM-DD
+  endDate*: Option[string] ## End date of time period. Format: YYYY-MM-DD
   poNumber*: string ## The po number
-  budgetAmount*: float ## If Budget order line, the budget amount.
+  budgetAmount*: Option[float] ## If Budget order line, the budget amount.
   billingContactFirstname*: string ## The billing contact first name
   billingContactLastname*: string ## The billing contact last name
   billingContactEmail*: string ## The billing contact email
   mediaContactFirstname*: string ## The media contact first name
   mediaContactLastname*: string ## The media contact last name
   mediaContactEmail*: string ## The media contact email
-  agencyLink*: string ## URL link for agency
-  userEmail*: string ## The email of user submitting the insertion order
-  acceptedTermsTime*: int ## The UTC timestamp (to the nearest sec) of when terms were accepted
+  agencyLink*: Option[string] ## URL link for agency
+  userEmail*: Option[string] ## The email of user submitting the insertion order
+  acceptedTermsTime*: Option[int] ## The UTC timestamp (to the nearest sec) of when terms were accepted
   pmpId*: string ## The pmp id
   orderName*: string ## The order name
   orderLineType*: OrderLineType ## Type can be Budget or Perpetual
@@ -38,17 +40,109 @@ type SSIOCreateInsertionOrderRequest* = object
   billtoCompanyId*: string ## The bill-to company id
   billtoBusinessAddressId*: string ## The bill-to business address id
   billtoBillingAddressId*: string ## The bill-to billing address id
-  estimatedMonthlySpend*: float ## If Ongoing (perpetual) order line, the estimated monthly spend
+  estimatedMonthlySpend*: Option[float] ## If Ongoing (perpetual) order line, the estimated monthly spend
   currencyInfo*: Currency
 
 func `%`*(v: OrderLineType): JsonNode =
-  let str = case v:
-    of OrderLineType.BUDGET: "BUDGET"
-    of OrderLineType.PERPETUALS: "PERPETUALS"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of OrderLineType.BUDGET: %"BUDGET"
+    of OrderLineType.PERPETUALS: %"PERPETUALS"
 func `$`*(v: OrderLineType): string =
   result = case v:
-    of OrderLineType.BUDGET: "BUDGET"
-    of OrderLineType.PERPETUALS: "PERPETUALS"
+    of OrderLineType.BUDGET: $("BUDGET")
+    of OrderLineType.PERPETUALS: $("PERPETUALS")
+
+proc to*(node: JsonNode, T: typedesc[OrderLineType]): OrderLineType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum OrderLineType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("BUDGET"):
+    return OrderLineType.BUDGET
+  of $("PERPETUALS"):
+    return OrderLineType.PERPETUALS
+  else:
+    raise newException(ValueError, "Invalid enum value for OrderLineType: " & strVal)
+
+
+# Custom JSON deserialization for SSIOCreateInsertionOrderRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[SSIOCreateInsertionOrderRequest]): SSIOCreateInsertionOrderRequest =
+  result = SSIOCreateInsertionOrderRequest()
+  if node.kind == JObject:
+    if node.hasKey("start_date"):
+      result.startDate = to(node["start_date"], string)
+    if node.hasKey("end_date") and node["end_date"].kind != JNull:
+      result.endDate = some(to(node["end_date"], typeof(result.endDate.get())))
+    if node.hasKey("po_number"):
+      result.poNumber = to(node["po_number"], string)
+    if node.hasKey("budget_amount") and node["budget_amount"].kind != JNull:
+      result.budgetAmount = some(to(node["budget_amount"], typeof(result.budgetAmount.get())))
+    if node.hasKey("billing_contact_firstname"):
+      result.billingContactFirstname = to(node["billing_contact_firstname"], string)
+    if node.hasKey("billing_contact_lastname"):
+      result.billingContactLastname = to(node["billing_contact_lastname"], string)
+    if node.hasKey("billing_contact_email"):
+      result.billingContactEmail = to(node["billing_contact_email"], string)
+    if node.hasKey("media_contact_firstname"):
+      result.mediaContactFirstname = to(node["media_contact_firstname"], string)
+    if node.hasKey("media_contact_lastname"):
+      result.mediaContactLastname = to(node["media_contact_lastname"], string)
+    if node.hasKey("media_contact_email"):
+      result.mediaContactEmail = to(node["media_contact_email"], string)
+    if node.hasKey("agency_link") and node["agency_link"].kind != JNull:
+      result.agencyLink = some(to(node["agency_link"], typeof(result.agencyLink.get())))
+    if node.hasKey("user_email") and node["user_email"].kind != JNull:
+      result.userEmail = some(to(node["user_email"], typeof(result.userEmail.get())))
+    if node.hasKey("accepted_terms_time") and node["accepted_terms_time"].kind != JNull:
+      result.acceptedTermsTime = some(to(node["accepted_terms_time"], typeof(result.acceptedTermsTime.get())))
+    if node.hasKey("pmp_id"):
+      result.pmpId = to(node["pmp_id"], string)
+    if node.hasKey("order_name"):
+      result.orderName = to(node["order_name"], string)
+    if node.hasKey("order_line_type"):
+      result.orderLineType = to(node["order_line_type"], OrderLineType)
+    if node.hasKey("accepted_terms_id"):
+      result.acceptedTermsId = to(node["accepted_terms_id"], string)
+    if node.hasKey("billto_company_id"):
+      result.billtoCompanyId = to(node["billto_company_id"], string)
+    if node.hasKey("billto_business_address_id"):
+      result.billtoBusinessAddressId = to(node["billto_business_address_id"], string)
+    if node.hasKey("billto_billing_address_id"):
+      result.billtoBillingAddressId = to(node["billto_billing_address_id"], string)
+    if node.hasKey("estimated_monthly_spend") and node["estimated_monthly_spend"].kind != JNull:
+      result.estimatedMonthlySpend = some(to(node["estimated_monthly_spend"], typeof(result.estimatedMonthlySpend.get())))
+    if node.hasKey("currency_info"):
+      result.currencyInfo = to(node["currency_info"], Currency)
+
+# Custom JSON serialization for SSIOCreateInsertionOrderRequest with custom field names
+proc `%`*(obj: SSIOCreateInsertionOrderRequest): JsonNode =
+  result = newJObject()
+  result["start_date"] = %obj.startDate
+  if obj.endDate.isSome():
+    result["end_date"] = %obj.endDate.get()
+  result["po_number"] = %obj.poNumber
+  if obj.budgetAmount.isSome():
+    result["budget_amount"] = %obj.budgetAmount.get()
+  result["billing_contact_firstname"] = %obj.billingContactFirstname
+  result["billing_contact_lastname"] = %obj.billingContactLastname
+  result["billing_contact_email"] = %obj.billingContactEmail
+  result["media_contact_firstname"] = %obj.mediaContactFirstname
+  result["media_contact_lastname"] = %obj.mediaContactLastname
+  result["media_contact_email"] = %obj.mediaContactEmail
+  if obj.agencyLink.isSome():
+    result["agency_link"] = %obj.agencyLink.get()
+  if obj.userEmail.isSome():
+    result["user_email"] = %obj.userEmail.get()
+  if obj.acceptedTermsTime.isSome():
+    result["accepted_terms_time"] = %obj.acceptedTermsTime.get()
+  result["pmp_id"] = %obj.pmpId
+  result["order_name"] = %obj.orderName
+  result["order_line_type"] = %obj.orderLineType
+  result["accepted_terms_id"] = %obj.acceptedTermsId
+  result["billto_company_id"] = %obj.billtoCompanyId
+  result["billto_business_address_id"] = %obj.billtoBusinessAddressId
+  result["billto_billing_address_id"] = %obj.billtoBillingAddressId
+  if obj.estimatedMonthlySpend.isSome():
+    result["estimated_monthly_spend"] = %obj.estimatedMonthlySpend.get()
+  result["currency_info"] = %obj.currencyInfo
+

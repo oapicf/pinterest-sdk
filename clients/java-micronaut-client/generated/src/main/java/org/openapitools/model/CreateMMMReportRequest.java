@@ -31,19 +31,22 @@ import javax.annotation.Generated;
  * CreateMMMReportRequest
  */
 @JsonPropertyOrder({
+  CreateMMMReportRequest.JSON_PROPERTY_COUNTRIES,
   CreateMMMReportRequest.JSON_PROPERTY_REPORT_NAME,
   CreateMMMReportRequest.JSON_PROPERTY_START_DATE,
   CreateMMMReportRequest.JSON_PROPERTY_END_DATE,
   CreateMMMReportRequest.JSON_PROPERTY_GRANULARITY,
   CreateMMMReportRequest.JSON_PROPERTY_LEVEL,
   CreateMMMReportRequest.JSON_PROPERTY_TARGETING_TYPES,
-  CreateMMMReportRequest.JSON_PROPERTY_COLUMNS,
-  CreateMMMReportRequest.JSON_PROPERTY_COUNTRIES
+  CreateMMMReportRequest.JSON_PROPERTY_COLUMNS
 })
 @JsonTypeName("CreateMMMReportRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-01-26T05:35:55.554977681Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class CreateMMMReportRequest {
+    public static final String JSON_PROPERTY_COUNTRIES = "countries";
+    private List<TargetingAdvertiserCountry> countries = null;
+
     public static final String JSON_PROPERTY_REPORT_NAME = "report_name";
     private String reportName;
 
@@ -131,9 +134,6 @@ public class CreateMMMReportRequest {
     public static final String JSON_PROPERTY_COLUMNS = "columns";
     private List<MMMReportingColumn> columns = new ArrayList<>();
 
-    public static final String JSON_PROPERTY_COUNTRIES = "countries";
-    private List<TargetingAdvertiserCountry> countries = null;
-
     public CreateMMMReportRequest(String reportName, String startDate, String endDate, GranularityEnum granularity, LevelEnum level, List<MMMReportingTargetingType> targetingTypes, List<MMMReportingColumn> columns) {
         this.reportName = reportName;
         this.startDate = startDate;
@@ -142,6 +142,36 @@ public class CreateMMMReportRequest {
         this.level = level;
         this.targetingTypes = targetingTypes;
         this.columns = columns;
+    }
+
+    public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
+        this.countries = countries;
+        return this;
+    }
+
+    public CreateMMMReportRequest addCountriesItem(TargetingAdvertiserCountry countriesItem) {
+        if (this.countries == null) {
+            this.countries = new ArrayList<>();
+        }
+        this.countries.add(countriesItem);
+        return this;
+    }
+
+    /**
+     * A List of countries for filtering
+     * @return countries
+     */
+    @Nullable
+    @JsonProperty(JSON_PROPERTY_COUNTRIES)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public List<TargetingAdvertiserCountry> getCountries() {
+        return countries;
+    }
+
+    @JsonProperty(JSON_PROPERTY_COUNTRIES)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCountries(List<TargetingAdvertiserCountry> countries) {
+        this.countries = countries;
     }
 
     public CreateMMMReportRequest reportName(String reportName) {
@@ -311,36 +341,6 @@ public class CreateMMMReportRequest {
         this.columns = columns;
     }
 
-    public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
-        this.countries = countries;
-        return this;
-    }
-
-    public CreateMMMReportRequest addCountriesItem(TargetingAdvertiserCountry countriesItem) {
-        if (this.countries == null) {
-            this.countries = new ArrayList<>();
-        }
-        this.countries.add(countriesItem);
-        return this;
-    }
-
-    /**
-     * A List of countries for filtering
-     * @return countries
-     */
-    @Nullable
-    @JsonProperty(JSON_PROPERTY_COUNTRIES)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public List<TargetingAdvertiserCountry> getCountries() {
-        return countries;
-    }
-
-    @JsonProperty(JSON_PROPERTY_COUNTRIES)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCountries(List<TargetingAdvertiserCountry> countries) {
-        this.countries = countries;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -350,25 +350,26 @@ public class CreateMMMReportRequest {
             return false;
         }
         CreateMMMReportRequest createMMMReportRequest = (CreateMMMReportRequest) o;
-        return Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
+        return Objects.equals(this.countries, createMMMReportRequest.countries) &&
+            Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
             Objects.equals(this.startDate, createMMMReportRequest.startDate) &&
             Objects.equals(this.endDate, createMMMReportRequest.endDate) &&
             Objects.equals(this.granularity, createMMMReportRequest.granularity) &&
             Objects.equals(this.level, createMMMReportRequest.level) &&
             Objects.equals(this.targetingTypes, createMMMReportRequest.targetingTypes) &&
-            Objects.equals(this.columns, createMMMReportRequest.columns) &&
-            Objects.equals(this.countries, createMMMReportRequest.countries);
+            Objects.equals(this.columns, createMMMReportRequest.columns);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(reportName, startDate, endDate, granularity, level, targetingTypes, columns, countries);
+        return Objects.hash(countries, reportName, startDate, endDate, granularity, level, targetingTypes, columns);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class CreateMMMReportRequest {\n");
+        sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
         sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
         sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
         sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
@@ -376,7 +377,6 @@ public class CreateMMMReportRequest {
         sb.append("    level: ").append(toIndentedString(level)).append("\n");
         sb.append("    targetingTypes: ").append(toIndentedString(targetingTypes)).append("\n");
         sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
-        sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
         sb.append("}");
         return sb.toString();
     }

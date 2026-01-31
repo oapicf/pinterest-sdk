@@ -19,23 +19,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class LeadFormQuestion  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private LeadFormQuestionType questionType;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private LeadFormQuestionFieldType customQuestionFieldType;
 
-  @ApiModelProperty(value = "Question label for a custom question.")
  /**
-   * Question label for a custom question.
-  **/
+  * Question label for a custom question.
+  */
+  @ApiModelProperty(value = "Question label for a custom question.")
+
   private String customQuestionLabel;
 
-  @ApiModelProperty(value = "Question options for a custom question.")
  /**
-   * Question options for a custom question.
-  **/
+  * Question options for a custom question.
+  */
+  @ApiModelProperty(value = "Question options for a custom question.")
+
   private List<String> customQuestionOptions;
  /**
    * Get questionType

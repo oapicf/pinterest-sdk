@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "invites":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                invites = new Option<List<CreateAssetInvitesRequestItem>?>(JsonSerializer.Deserialize<List<CreateAssetInvitesRequestItem>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            invites = new Option<List<CreateAssetInvitesRequestItem>?>(JsonSerializer.Deserialize<List<CreateAssetInvitesRequestItem>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

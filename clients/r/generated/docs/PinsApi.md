@@ -31,7 +31,7 @@ library(openapi)
 var_pin_ids <- c("inner_example") # array[character] | List of Pin IDs.
 var_start_date <- "start_date_example" # character | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 var_end_date <- "end_date_example" # character | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-var_metric_types <- c(pins_analytics_metric_types_parameter_inner$new()) # array[PinsAnalyticsMetricTypesParameterInner] | Pin metric types to get data for.
+var_metric_types <- c("IMPRESSION") # array[character] | Pin metric types to get data for.
 var_app_types <- "ALL" # character | Apps or devices to get data for, default is all. (Optional)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
  **pin_ids** | list( **character** )| List of Pin IDs. | 
  **start_date** | **character**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **end_date** | **character**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **metric_types** | list( [**PinsAnalyticsMetricTypesParameterInner**](pins_analytics_metric_types_parameter_inner.md) )| Pin metric types to get data for. | 
+ **metric_types** | Enum [IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE, SAVE_RATE, TOTAL_COMMENTS, TOTAL_REACTIONS, USER_FOLLOW, PROFILE_VISIT, VIDEO_MRC_VIEW, VIDEO_10S_VIEW, QUARTILE_95_PERCENT_VIEW, VIDEO_V50_WATCH_TIME, VIDEO_START, VIDEO_AVG_WATCH_TIME] | Pin metric types to get data for. | 
  **app_types** | Enum [ALL, MOBILE, TABLET, WEB] | Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 
 
@@ -97,7 +97,7 @@ library(openapi)
 var_pin_id <- "pin_id_example" # character | Unique identifier of a Pin.
 var_start_date <- "start_date_example" # character | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 var_end_date <- "end_date_example" # character | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-var_metric_types <- c(pins_analytics_metric_types_parameter_inner$new()) # array[PinsAnalyticsMetricTypesParameterInner] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+var_metric_types <- c("IMPRESSION") # array[character] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 var_app_types <- "ALL" # character | Apps or devices to get data for, default is all. (Optional)
 var_split_field <- "NO_SPLIT" # character | How to split the data into groups. Not including this param means data won't be split. (Optional)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
  **pin_id** | **character**| Unique identifier of a Pin. | 
  **start_date** | **character**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **end_date** | **character**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **metric_types** | list( [**PinsAnalyticsMetricTypesParameterInner**](pins_analytics_metric_types_parameter_inner.md) )| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
+ **metric_types** | Enum [IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE, SAVE_RATE, TOTAL_COMMENTS, TOTAL_REACTIONS, USER_FOLLOW, PROFILE_VISIT, VIDEO_MRC_VIEW, VIDEO_10S_VIEW, QUARTILE_95_PERCENT_VIEW, VIDEO_V50_WATCH_TIME, VIDEO_START, VIDEO_AVG_WATCH_TIME] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
  **app_types** | Enum [ALL, MOBILE, TABLET, WEB] | Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **split_field** | Enum [NO_SPLIT, APP_TYPE] | How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to &quot;NO_SPLIT&quot;]
  **ad_account_id** | **character**| Unique identifier of an ad account. | [optional] 

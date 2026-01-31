@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type UpdateMemberResult* = object
   ## 
-  businessRole*: string ## The access level a member has to the business. Values are case-sensitive. <br> - EMPLOYEE: Can only view and access assets you assign to them. They cannot see details about other employees, partners, or other assets. <br> - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access.
-  memberId*: string ## Unique identifier of the business member.
+  businessRole*: Option[string] ## The access level a member has to the business. Values are case-sensitive. <br> - EMPLOYEE: Can only view and access assets you assign to them. They cannot see details about other employees, partners, or other assets. <br> - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access.
+  memberId*: Option[string] ## Unique identifier of the business member.
+
+
+# Custom JSON deserialization for UpdateMemberResult with custom field names
+proc to*(node: JsonNode, T: typedesc[UpdateMemberResult]): UpdateMemberResult =
+  result = UpdateMemberResult()
+  if node.kind == JObject:
+    if node.hasKey("business_role") and node["business_role"].kind != JNull:
+      result.businessRole = some(to(node["business_role"], typeof(result.businessRole.get())))
+    if node.hasKey("member_id") and node["member_id"].kind != JNull:
+      result.memberId = some(to(node["member_id"], typeof(result.memberId.get())))
+
+# Custom JSON serialization for UpdateMemberResult with custom field names
+proc `%`*(obj: UpdateMemberResult): JsonNode =
+  result = newJObject()
+  if obj.businessRole.isSome():
+    result["business_role"] = %obj.businessRole.get()
+  if obj.memberId.isSome():
+    result["member_id"] = %obj.memberId.get()
+

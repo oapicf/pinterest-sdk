@@ -30,12 +30,10 @@ import javax.annotation.Generated;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsHotelReportParameters.class, name = "HOTEL"),
-  @JsonSubTypes.Type(value = CatalogsRetailReportParameters.class, name = "RETAIL"),
-  @JsonSubTypes.Type(value = CatalogsHotelReportParameters.class, name = "CatalogsHotelReportParameters"),
-  @JsonSubTypes.Type(value = CatalogsRetailReportParameters.class, name = "CatalogsRetailReportParameters")
+  @JsonSubTypes.Type(value = CatalogsRetailReportParameters.class, name = "RETAIL")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface CatalogsReportParameters {
     public CatalogsType getCatalogType();
 }

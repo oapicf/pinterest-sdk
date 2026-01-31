@@ -31,7 +31,10 @@ Protected Class AudienceCreateRequest
 
 
 	#tag Property, Flags = &h0
-		audience_type As OpenAPIClient.Models.AudienceCreateRequest1AudienceType
+		#tag Note
+			<a href="/docs/reference/glossary/#Audience Types">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+		#tag EndNote
+		audience_type As String
 	#tag EndProperty
 
 
@@ -108,7 +111,7 @@ Protected Class AudienceCreateRequest
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="AudienceCreateRequest1AudienceType"
+			Type="AudienceType"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

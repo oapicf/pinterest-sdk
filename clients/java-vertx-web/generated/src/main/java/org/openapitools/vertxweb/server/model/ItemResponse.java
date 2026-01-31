@@ -23,20 +23,24 @@ public class ItemResponse   {
   
   private CatalogsType catalogType;
   private String itemId;
-  private List<ItemValidationEvent> errors = new ArrayList<>();
+  private List<Pin> pins;
+  private CatalogsCreativeAssetsAttributes attributes;
   private String hotelId;
   private String creativeAssetsId;
+  private List<ItemValidationEvent> errors = new ArrayList<>();
 
   public ItemResponse () {
 
   }
 
-  public ItemResponse (CatalogsType catalogType, String itemId, List<ItemValidationEvent> errors, String hotelId, String creativeAssetsId) {
+  public ItemResponse (CatalogsType catalogType, String itemId, List<Pin> pins, CatalogsCreativeAssetsAttributes attributes, String hotelId, String creativeAssetsId, List<ItemValidationEvent> errors) {
     this.catalogType = catalogType;
     this.itemId = itemId;
-    this.errors = errors;
+    this.pins = pins;
+    this.attributes = attributes;
     this.hotelId = hotelId;
     this.creativeAssetsId = creativeAssetsId;
+    this.errors = errors;
   }
 
     
@@ -58,12 +62,21 @@ public class ItemResponse   {
   }
 
     
-  @JsonProperty("errors")
-  public List<ItemValidationEvent> getErrors() {
-    return errors;
+  @JsonProperty("pins")
+  public List<Pin> getPins() {
+    return pins;
   }
-  public void setErrors(List<ItemValidationEvent> errors) {
-    this.errors = errors;
+  public void setPins(List<Pin> pins) {
+    this.pins = pins;
+  }
+
+    
+  @JsonProperty("attributes")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
   }
 
     
@@ -84,6 +97,15 @@ public class ItemResponse   {
     this.creativeAssetsId = creativeAssetsId;
   }
 
+    
+  @JsonProperty("errors")
+  public List<ItemValidationEvent> getErrors() {
+    return errors;
+  }
+  public void setErrors(List<ItemValidationEvent> errors) {
+    this.errors = errors;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -96,14 +118,16 @@ public class ItemResponse   {
     ItemResponse itemResponse = (ItemResponse) o;
     return Objects.equals(catalogType, itemResponse.catalogType) &&
         Objects.equals(itemId, itemResponse.itemId) &&
-        Objects.equals(errors, itemResponse.errors) &&
+        Objects.equals(pins, itemResponse.pins) &&
+        Objects.equals(attributes, itemResponse.attributes) &&
         Objects.equals(hotelId, itemResponse.hotelId) &&
-        Objects.equals(creativeAssetsId, itemResponse.creativeAssetsId);
+        Objects.equals(creativeAssetsId, itemResponse.creativeAssetsId) &&
+        Objects.equals(errors, itemResponse.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
+    return Objects.hash(catalogType, itemId, pins, attributes, hotelId, creativeAssetsId, errors);
   }
 
   @Override
@@ -113,9 +137,11 @@ public class ItemResponse   {
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

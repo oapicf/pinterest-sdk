@@ -1,26 +1,29 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  *  This field contains multiple options to a quiz question.
- **/
+ *  This field contains multiple options to a quiz question.
+ */
 @ApiModel(description=" This field contains multiple options to a quiz question.")
 
 public class QuizPinOption  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BigDecimal id;
 
   @ApiModelProperty(value = "")
+
   private String text;
  /**
    * Get id

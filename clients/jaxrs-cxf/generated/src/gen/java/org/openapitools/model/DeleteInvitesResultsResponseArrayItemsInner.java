@@ -15,11 +15,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DeleteInvitesResultsResponseArrayItemsInner  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private DeleteInvitesResultsResponseArrayItemsInnerException exception;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BaseInviteDataResponse invite;
  /**
    * Get exception

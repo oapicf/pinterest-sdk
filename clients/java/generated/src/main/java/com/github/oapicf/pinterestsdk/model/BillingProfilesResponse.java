@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BillingProfilesResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BillingProfilesResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -413,15 +413,10 @@ public class BillingProfilesResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("card_type");
-    openapiFields.add("status");
-    openapiFields.add("advertiser_id");
-    openapiFields.add("payment_method_brand");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "card_type", "status", "advertiser_id", "payment_method_brand"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -433,7 +428,7 @@ public class BillingProfilesResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!BillingProfilesResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in BillingProfilesResponse is not found in the empty JSON string", BillingProfilesResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in BillingProfilesResponse is not found in the empty JSON string", BillingProfilesResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -441,32 +436,32 @@ public class BillingProfilesResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!BillingProfilesResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BillingProfilesResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `BillingProfilesResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("card_type") != null && !jsonObj.get("card_type").isJsonNull()) && !jsonObj.get("card_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `card_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("card_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `card_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("card_type").toString()));
       }
       // validate the optional field `card_type`
       if (jsonObj.get("card_type") != null && !jsonObj.get("card_type").isJsonNull()) {
         CardTypeEnum.validateJsonElement(jsonObj.get("card_type"));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       // validate the optional field `status`
       if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
         StatusEnum.validateJsonElement(jsonObj.get("status"));
       }
       if ((jsonObj.get("advertiser_id") != null && !jsonObj.get("advertiser_id").isJsonNull()) && !jsonObj.get("advertiser_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `advertiser_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiser_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `advertiser_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("advertiser_id").toString()));
       }
       if ((jsonObj.get("payment_method_brand") != null && !jsonObj.get("payment_method_brand").isJsonNull()) && !jsonObj.get("payment_method_brand").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `payment_method_brand` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payment_method_brand").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `payment_method_brand` to be a primitive type in the JSON string but got `%s`", jsonObj.get("payment_method_brand").toString()));
       }
       // validate the optional field `payment_method_brand`
       if (jsonObj.get("payment_method_brand") != null && !jsonObj.get("payment_method_brand").isJsonNull()) {

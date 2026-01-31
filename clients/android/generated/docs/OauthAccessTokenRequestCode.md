@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**grantType** | [**GrantTypeEnum**](#GrantTypeEnum) |  | 
 **code** | **String** |  | 
 **redirectUri** | **String** |  | 
+**grantType** | [**GrantTypeEnum**](#GrantTypeEnum) |  | 
 
 
 ## Enum: GrantTypeEnum

@@ -12,24 +12,15 @@
 /**
  * Summary status for ad group
  */
-export type AdGroupSummaryStatus = 'RUNNING' | 'PAUSED' | 'NOT_STARTED' | 'COMPLETED' | 'ADVERTISER_DISABLED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT';
-
 export const AdGroupSummaryStatus = {
-
-    Running: 'RUNNING' as AdGroupSummaryStatus,
-
-    Paused: 'PAUSED' as AdGroupSummaryStatus,
-
-    NotStarted: 'NOT_STARTED' as AdGroupSummaryStatus,
-
-    Completed: 'COMPLETED' as AdGroupSummaryStatus,
-
-    AdvertiserDisabled: 'ADVERTISER_DISABLED' as AdGroupSummaryStatus,
-
-    Archived: 'ARCHIVED' as AdGroupSummaryStatus,
-
-    Draft: 'DRAFT' as AdGroupSummaryStatus,
-
-    DeletedDraft: 'DELETED_DRAFT' as AdGroupSummaryStatus
-};
+    Running: 'RUNNING',
+    Paused: 'PAUSED',
+    NotStarted: 'NOT_STARTED',
+    Completed: 'COMPLETED',
+    AdvertiserDisabled: 'ADVERTISER_DISABLED',
+    Archived: 'ARCHIVED',
+    Draft: 'DRAFT',
+    DeletedDraft: 'DELETED_DRAFT'
+} as const;
+export type AdGroupSummaryStatus = typeof AdGroupSummaryStatus[keyof typeof AdGroupSummaryStatus];
 

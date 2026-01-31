@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**grantType** | **String** |  | 
 **code** | **String** |  | 
 **redirectUri** | **String** |  | 
+**grantType** | **String** |  | 
 
 
 

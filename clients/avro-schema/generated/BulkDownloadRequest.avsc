@@ -36,9 +36,9 @@
     },
     {
       "name": "output_format",
-      "type": ["null", "model.BulkOutputFormat"],
+      "type": ["model.BulkOutputFormat", "null"],
       "doc": "",
-      "default": null
+      "default": BulkOutputFormat.JSON
     }
   ]
 

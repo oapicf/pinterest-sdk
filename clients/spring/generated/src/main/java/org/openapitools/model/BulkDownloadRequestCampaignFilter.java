@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("BulkDownloadRequest_campaign_filter")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkDownloadRequestCampaignFilter {
 
   private @Nullable String startTime;
@@ -41,7 +41,7 @@ public class BulkDownloadRequestCampaignFilter {
   @Valid
   private List<ObjectiveType> objectiveType = new ArrayList<>();
 
-  public BulkDownloadRequestCampaignFilter startTime(String startTime) {
+  public BulkDownloadRequestCampaignFilter startTime(@Nullable String startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -53,15 +53,15 @@ public class BulkDownloadRequestCampaignFilter {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "start_time", example = "1622848072", description = "Unix UTC timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_time")
-  public String getStartTime() {
+  public @Nullable String getStartTime() {
     return startTime;
   }
 
-  public void setStartTime(String startTime) {
+  public void setStartTime(@Nullable String startTime) {
     this.startTime = startTime;
   }
 
-  public BulkDownloadRequestCampaignFilter endTime(String endTime) {
+  public BulkDownloadRequestCampaignFilter endTime(@Nullable String endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -73,15 +73,15 @@ public class BulkDownloadRequestCampaignFilter {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "end_time", example = "1622848072", description = "Unix UTC timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_time")
-  public String getEndTime() {
+  public @Nullable String getEndTime() {
     return endTime;
   }
 
-  public void setEndTime(String endTime) {
+  public void setEndTime(@Nullable String endTime) {
     this.endTime = endTime;
   }
 
-  public BulkDownloadRequestCampaignFilter name(String name) {
+  public BulkDownloadRequestCampaignFilter name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -93,11 +93,11 @@ public class BulkDownloadRequestCampaignFilter {
   
   @Schema(name = "name", example = "campaign name", description = "Campaign name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 

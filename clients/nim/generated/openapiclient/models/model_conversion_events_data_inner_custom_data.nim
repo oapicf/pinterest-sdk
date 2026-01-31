@@ -9,20 +9,81 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_conversion_events_data_inner_custom_data_contents_inner
 
 type ConversionEventsDataInnerCustomData* = object
   ## Object containing other custom data.
-  currency*: string ## The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
-  value*: string ## Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
-  contentIds*: seq[string] ## List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
-  contentName*: string ## The name of the page or product associated with the event.
-  contentCategory*: string ## The category of the content associated with the event.
-  contentBrand*: string ## The brand of the content associated with the event.
-  contents*: seq[ConversionEvents_data_inner_custom_data_contents_inner] ## A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
-  numItems*: int64 ## Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
-  orderId*: string ## The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
-  searchString*: string ## The search string related to the user conversion event.
-  optOutType*: string ## Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
-  np*: string ## Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
+  currency*: Option[string] ## The ISO-4217 currency code. If not provided, we will default to the advertiser's currency set during account creation. Your campaign performance needs this field to report right ROAS/CPA.
+  value*: Option[string] ## Total value of the event. Accepted as a string in the request; it will be parsed into a double. For example, if there are two items in a checkout event, the value should be the total price. We recommend to use pre-tax, pre-shipping final value.
+  contentIds*: Option[seq[string]] ## List of products IDs. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
+  contentName*: Option[string] ## The name of the page or product associated with the event.
+  contentCategory*: Option[string] ## The category of the content associated with the event.
+  contentBrand*: Option[string] ## The brand of the content associated with the event.
+  contents*: Option[seq[ConversionEvents_data_inner_custom_data_contents_inner]] ## A list of objects containing information about products, such as price and quantity. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
+  numItems*: Option[int64] ## Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
+  orderId*: Option[string] ## The order ID. We recommend sending order_id to help us deduplicate events when necessary. This also helps to run other measurement products at Pinterest.
+  searchString*: Option[string] ## The search string related to the user conversion event.
+  optOutType*: Option[string] ## Flags for different privacy rights laws to opt out users of sharing personal information. Values should be comma separated. Please follow the <a href=\"https://help.pinterest.com/en/business/article/limited-data-processing\" target=\"_blank\">Help Center</a> and <a href=\"/docs/api-features/conversion-overview/\" target=\"_blank\">dev site</a> for specific opt_out_type set up.
+  np*: Option[string] ## Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.
+
+
+# Custom JSON deserialization for ConversionEventsDataInnerCustomData with custom field names
+proc to*(node: JsonNode, T: typedesc[ConversionEventsDataInnerCustomData]): ConversionEventsDataInnerCustomData =
+  result = ConversionEventsDataInnerCustomData()
+  if node.kind == JObject:
+    if node.hasKey("currency") and node["currency"].kind != JNull:
+      result.currency = some(to(node["currency"], typeof(result.currency.get())))
+    if node.hasKey("value") and node["value"].kind != JNull:
+      result.value = some(to(node["value"], typeof(result.value.get())))
+    if node.hasKey("content_ids") and node["content_ids"].kind != JNull:
+      result.contentIds = some(to(node["content_ids"], typeof(result.contentIds.get())))
+    if node.hasKey("content_name") and node["content_name"].kind != JNull:
+      result.contentName = some(to(node["content_name"], typeof(result.contentName.get())))
+    if node.hasKey("content_category") and node["content_category"].kind != JNull:
+      result.contentCategory = some(to(node["content_category"], typeof(result.contentCategory.get())))
+    if node.hasKey("content_brand") and node["content_brand"].kind != JNull:
+      result.contentBrand = some(to(node["content_brand"], typeof(result.contentBrand.get())))
+    if node.hasKey("contents") and node["contents"].kind != JNull:
+      result.contents = some(to(node["contents"], typeof(result.contents.get())))
+    if node.hasKey("num_items") and node["num_items"].kind != JNull:
+      result.numItems = some(to(node["num_items"], typeof(result.numItems.get())))
+    if node.hasKey("order_id") and node["order_id"].kind != JNull:
+      result.orderId = some(to(node["order_id"], typeof(result.orderId.get())))
+    if node.hasKey("search_string") and node["search_string"].kind != JNull:
+      result.searchString = some(to(node["search_string"], typeof(result.searchString.get())))
+    if node.hasKey("opt_out_type") and node["opt_out_type"].kind != JNull:
+      result.optOutType = some(to(node["opt_out_type"], typeof(result.optOutType.get())))
+    if node.hasKey("np") and node["np"].kind != JNull:
+      result.np = some(to(node["np"], typeof(result.np.get())))
+
+# Custom JSON serialization for ConversionEventsDataInnerCustomData with custom field names
+proc `%`*(obj: ConversionEventsDataInnerCustomData): JsonNode =
+  result = newJObject()
+  if obj.currency.isSome():
+    result["currency"] = %obj.currency.get()
+  if obj.value.isSome():
+    result["value"] = %obj.value.get()
+  if obj.contentIds.isSome():
+    result["content_ids"] = %obj.contentIds.get()
+  if obj.contentName.isSome():
+    result["content_name"] = %obj.contentName.get()
+  if obj.contentCategory.isSome():
+    result["content_category"] = %obj.contentCategory.get()
+  if obj.contentBrand.isSome():
+    result["content_brand"] = %obj.contentBrand.get()
+  if obj.contents.isSome():
+    result["contents"] = %obj.contents.get()
+  if obj.numItems.isSome():
+    result["num_items"] = %obj.numItems.get()
+  if obj.orderId.isSome():
+    result["order_id"] = %obj.orderId.get()
+  if obj.searchString.isSome():
+    result["search_string"] = %obj.searchString.get()
+  if obj.optOutType.isSome():
+    result["opt_out_type"] = %obj.optOutType.get()
+  if obj.np.isSome():
+    result["np"] = %obj.np.get()
+

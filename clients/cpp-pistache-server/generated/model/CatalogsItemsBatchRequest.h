@@ -23,8 +23,8 @@
 #include "Country.h"
 #include "CatalogsItemsCreateBatchRequest.h"
 #include "CatalogsItemsDeleteBatchRequest.h"
-#include "CatalogsItemsRequest_language.h"
 #include "CatalogsItemsUpdateBatchRequest.h"
+#include <string>
 #include "ItemDeleteBatchRecord.h"
 #include "CatalogsItemsDeleteDiscontinuedBatchRequest.h"
 #include "CatalogsItemsUpsertBatchRequest.h"
@@ -73,10 +73,10 @@ public:
     org::openapitools::server::model::Country getCountry() const;
     void setCountry(org::openapitools::server::model::Country const& value);
     /// <summary>
-    /// 
+    /// We recommend using the CatalogsLocale values.
     /// </summary>
-    org::openapitools::server::model::CatalogsItemsRequest_language getLanguage() const;
-    void setLanguage(org::openapitools::server::model::CatalogsItemsRequest_language const& value);
+    std::string getLanguage() const;
+    void setLanguage(std::string const& value);
     /// <summary>
     /// 
     /// </summary>
@@ -93,7 +93,7 @@ public:
 protected:
     org::openapitools::server::model::Country m_Country;
 
-    org::openapitools::server::model::CatalogsItemsRequest_language m_Language;
+    std::string m_Language;
 
     org::openapitools::server::model::BatchOperation m_Operation;
 

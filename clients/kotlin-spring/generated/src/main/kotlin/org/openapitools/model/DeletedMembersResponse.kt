@@ -21,7 +21,7 @@ data class DeletedMembersResponse(
 
     @Schema(example = "[\"809944451643622187\",\"383791336903426391\"]", description = "List of members whose business membership have been terminated.")
     @get:JsonProperty("deleted_members") val deletedMembers: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
 }
 

@@ -15,7 +15,6 @@
 
 typedef struct catalogs_retail_batch_request_t catalogs_retail_batch_request_t;
 
-#include "catalogs_items_request_language.h"
 #include "catalogs_retail_batch_request_items_inner.h"
 #include "country.h"
 
@@ -32,7 +31,7 @@ pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_e catalogs_retail_b
 typedef struct catalogs_retail_batch_request_t {
     pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_e catalog_type; //enum
     pinterest_rest_api_country__e country; //referenced enum
-    struct catalogs_items_request_language_t *language; //model
+    pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_e language; //enum
     list_t *items; //nonprimitive container
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -41,7 +40,7 @@ typedef struct catalogs_retail_batch_request_t {
 __attribute__((deprecated)) catalogs_retail_batch_request_t *catalogs_retail_batch_request_create(
     pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
-    catalogs_items_request_language_t *language,
+    pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_e language,
     list_t *items
 );
 

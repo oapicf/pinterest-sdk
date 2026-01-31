@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_keyword_metrics
 
 type KeywordMetricsResponse* = object
   ## 
-  keyword*: string ## Keyword name, e.g., \"keyword\":\"fashion outfits\"
-  metrics*: KeywordMetrics
+  keyword*: Option[string] ## Keyword name, e.g., \"keyword\":\"fashion outfits\"
+  metrics*: Option[KeywordMetrics]
+
+
+# Custom JSON deserialization for KeywordMetricsResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[KeywordMetricsResponse]): KeywordMetricsResponse =
+  result = KeywordMetricsResponse()
+  if node.kind == JObject:
+    if node.hasKey("keyword") and node["keyword"].kind != JNull:
+      result.keyword = some(to(node["keyword"], typeof(result.keyword.get())))
+    if node.hasKey("metrics") and node["metrics"].kind != JNull:
+      result.metrics = some(to(node["metrics"], typeof(result.metrics.get())))
+
+# Custom JSON serialization for KeywordMetricsResponse with custom field names
+proc `%`*(obj: KeywordMetricsResponse): JsonNode =
+  result = newJObject()
+  if obj.keyword.isSome():
+    result["keyword"] = %obj.keyword.get()
+  if obj.metrics.isSome():
+    result["metrics"] = %obj.metrics.get()
+

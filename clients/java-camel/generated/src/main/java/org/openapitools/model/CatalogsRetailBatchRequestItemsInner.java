@@ -43,14 +43,10 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsCreateRetailItem.class, name = "CREATE"),
   @JsonSubTypes.Type(value = CatalogsDeleteRetailItem.class, name = "DELETE"),
   @JsonSubTypes.Type(value = CatalogsUpdateRetailItem.class, name = "UPDATE"),
-  @JsonSubTypes.Type(value = CatalogsUpsertRetailItem.class, name = "UPSERT"),
-  @JsonSubTypes.Type(value = CatalogsCreateRetailItem.class, name = "CatalogsCreateRetailItem"),
-  @JsonSubTypes.Type(value = CatalogsDeleteRetailItem.class, name = "CatalogsDeleteRetailItem"),
-  @JsonSubTypes.Type(value = CatalogsUpdateRetailItem.class, name = "CatalogsUpdateRetailItem"),
-  @JsonSubTypes.Type(value = CatalogsUpsertRetailItem.class, name = "CatalogsUpsertRetailItem")
+  @JsonSubTypes.Type(value = CatalogsUpsertRetailItem.class, name = "UPSERT")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailBatchRequestItemsInner {
 
   private String itemId;
@@ -61,7 +57,7 @@ public class CatalogsRetailBatchRequestItemsInner {
   public enum OperationEnum {
     DELETE("DELETE");
 
-    private String value;
+    private final String value;
 
     OperationEnum(String value) {
       this.value = value;

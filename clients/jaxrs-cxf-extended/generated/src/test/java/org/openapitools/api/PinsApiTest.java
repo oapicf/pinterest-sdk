@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -20,13 +20,13 @@ import org.openapitools.model.Pin;
 import org.openapitools.model.PinAnalyticsMetricsResponse;
 import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
-import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
 
+import javax.validation.Valid;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
@@ -81,7 +81,7 @@ public class PinsApiTest {
         List<@Pattern(regexp = "^\\d+$")String> pinIds = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = null;
+        List<String> metricTypes = null;
         String appTypes = null;
         String adAccountId = null;
 
@@ -103,7 +103,7 @@ public class PinsApiTest {
         String pinId = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = null;
+        List<String> metricTypes = null;
         String appTypes = null;
         String splitField = null;
         String adAccountId = null;

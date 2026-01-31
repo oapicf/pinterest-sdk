@@ -84,7 +84,6 @@ docs/AudienceCategory.md
 docs/AudienceCommon.md
 docs/AudienceCreateCustomRequest.md
 docs/AudienceCreateRequest.md
-docs/AudienceCreateRequest1AudienceType.md
 docs/AudienceDataParty.md
 docs/AudienceDefinition.md
 docs/AudienceDefinitionResponse.md
@@ -273,7 +272,6 @@ docs/CatalogsItemsDeleteDiscontinuedBatchRequest.md
 docs/CatalogsItemsFilters.md
 docs/CatalogsItemsPostFilters.md
 docs/CatalogsItemsRequest.md
-docs/CatalogsItemsRequestLanguage.md
 docs/CatalogsItemsUpdateBatchRequest.md
 docs/CatalogsItemsUpsertBatchRequest.md
 docs/CatalogsList200Response.md
@@ -618,7 +616,6 @@ docs/PinMediaWithVideos.md
 docs/PinPromotionSummaryStatus.md
 docs/PinUpdate.md
 docs/PinUpdateCarouselSlotsInner.md
-docs/PinsAnalyticsMetricTypesParameterInner.md
 docs/PinsApi.md
 docs/PinsList200Response.md
 docs/PinsSaveRequest.md
@@ -875,7 +872,6 @@ src/main/scala/org/openapitools/client/model/AudienceCategory.scala
 src/main/scala/org/openapitools/client/model/AudienceCommon.scala
 src/main/scala/org/openapitools/client/model/AudienceCreateCustomRequest.scala
 src/main/scala/org/openapitools/client/model/AudienceCreateRequest.scala
-src/main/scala/org/openapitools/client/model/AudienceCreateRequest1AudienceType.scala
 src/main/scala/org/openapitools/client/model/AudienceDataParty.scala
 src/main/scala/org/openapitools/client/model/AudienceDefinition.scala
 src/main/scala/org/openapitools/client/model/AudienceDefinitionResponse.scala
@@ -1053,7 +1049,6 @@ src/main/scala/org/openapitools/client/model/CatalogsItemsDeleteDiscontinuedBatc
 src/main/scala/org/openapitools/client/model/CatalogsItemsFilters.scala
 src/main/scala/org/openapitools/client/model/CatalogsItemsPostFilters.scala
 src/main/scala/org/openapitools/client/model/CatalogsItemsRequest.scala
-src/main/scala/org/openapitools/client/model/CatalogsItemsRequestLanguage.scala
 src/main/scala/org/openapitools/client/model/CatalogsItemsUpdateBatchRequest.scala
 src/main/scala/org/openapitools/client/model/CatalogsItemsUpsertBatchRequest.scala
 src/main/scala/org/openapitools/client/model/CatalogsList200Response.scala
@@ -1387,7 +1382,6 @@ src/main/scala/org/openapitools/client/model/PinMediaWithVideos.scala
 src/main/scala/org/openapitools/client/model/PinPromotionSummaryStatus.scala
 src/main/scala/org/openapitools/client/model/PinUpdate.scala
 src/main/scala/org/openapitools/client/model/PinUpdateCarouselSlotsInner.scala
-src/main/scala/org/openapitools/client/model/PinsAnalyticsMetricTypesParameterInner.scala
 src/main/scala/org/openapitools/client/model/PinsList200Response.scala
 src/main/scala/org/openapitools/client/model/PinsSaveRequest.scala
 src/main/scala/org/openapitools/client/model/PinterestTagEventData.scala

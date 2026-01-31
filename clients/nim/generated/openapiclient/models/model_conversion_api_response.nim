@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_conversion_api_response_events_inner
 
@@ -17,3 +19,23 @@ type ConversionApiResponse* = object
   numEventsReceived*: int ## Total number of events received in the request.
   numEventsProcessed*: int ## Number of events that were successfully processed from the events.
   events*: seq[ConversionApiResponse_events_inner] ## Specific messages for each event received. The order will match the order in which the events were received in the request.
+
+
+# Custom JSON deserialization for ConversionApiResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[ConversionApiResponse]): ConversionApiResponse =
+  result = ConversionApiResponse()
+  if node.kind == JObject:
+    if node.hasKey("num_events_received"):
+      result.numEventsReceived = to(node["num_events_received"], int)
+    if node.hasKey("num_events_processed"):
+      result.numEventsProcessed = to(node["num_events_processed"], int)
+    if node.hasKey("events"):
+      result.events = to(node["events"], seq[ConversionApiResponse_events_inner])
+
+# Custom JSON serialization for ConversionApiResponse with custom field names
+proc `%`*(obj: ConversionApiResponse): JsonNode =
+  result = newJObject()
+  result["num_events_received"] = %obj.numEventsReceived
+  result["num_events_processed"] = %obj.numEventsProcessed
+  result["events"] = %obj.events
+

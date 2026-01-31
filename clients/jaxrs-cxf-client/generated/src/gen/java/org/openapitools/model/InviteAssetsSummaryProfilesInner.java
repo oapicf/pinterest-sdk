@@ -11,16 +11,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class InviteAssetsSummaryProfilesInner  {
   
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of a business profile.")
  /**
-   * Unique identifier of a business profile.
-  **/
+  * Unique identifier of a business profile.
+  */
+  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of a business profile.")
+
   private String id;
 
-  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
  /**
-   * Permission levels member or partner has on an asset.
-  **/
+  * Permission levels member or partner has on an asset.
+  */
+  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
+
   private List<String> permissions = new ArrayList<>();
  /**
    * Unique identifier of a business profile.

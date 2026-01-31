@@ -23,8 +23,7 @@ import ../models/model_pin
 import ../models/model_pin_analytics_metrics_response
 import ../models/model_pin_create
 import ../models/model_pin_update
-import ../models/model_pins_analytics_metric_types_parameter_inner
-import ../models/model_pins_list_200_response
+import ../models/model_pins_list200response
 import ../models/model_pins_save_request
 
 const basepath = "https://api.pinterest.com/v5"
@@ -32,10 +31,7 @@ const basepath = "https://api.pinterest.com/v5"
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -45,101 +41,121 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc multiPinsAnalytics*(httpClient: HttpClient, pinIds: seq[string], startDate: string, endDate: string, metricTypes: seq[pins_analytics_metric_types_parameter_inner], appTypes: string, adAccountId: string): (Option[Table[string, map]], Response) =
+proc multiPinsAnalytics*(httpClient: HttpClient, pinIds: seq[string], startDate: string, endDate: string, metricTypes: seq[MetricTypes], appTypes: string, adAccountId: string): (Option[Table[string, map]], Response) =
   ## Get multiple Pin analytics
-  let query_for_api_call = encodeQuery([
-    ("pin_ids", $pinIds.join(",")), # List of Pin IDs.
-    ("start_date", $startDate), # Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-    ("end_date", $endDate), # Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    ("app_types", $appTypes), # Apps or devices to get data for, default is all.
-    ("metric_types", $metricTypes.join(",")), # Pin metric types to get data for.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("pin_ids", $pinIds.join(",")))
+  query_params_list.add(("start_date", $startDate))
+  query_params_list.add(("end_date", $endDate))
+  if $appTypes != "":
+    query_params_list.add(("app_types", $appTypes))
+  query_params_list.add(("metric_types", $metricTypes.join(",")))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/pins/analytics" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/pins/analytics" & "?" & url_encoded_query_params)
   constructResult[Table[string, map]](response)
 
 
-proc pinsAnalytics*(httpClient: HttpClient, pinId: string, startDate: string, endDate: string, metricTypes: seq[pins_analytics_metric_types_parameter_inner], appTypes: string, splitField: string, adAccountId: string): (Option[Table[string, PinAnalyticsMetricsResponse]], Response) =
+proc pinsAnalytics*(httpClient: HttpClient, pinId: string, startDate: string, endDate: string, metricTypes: seq[MetricTypes], appTypes: string, splitField: string, adAccountId: string): (Option[Table[string, PinAnalyticsMetricsResponse]], Response) =
   ## Get Pin analytics
-  let query_for_api_call = encodeQuery([
-    ("start_date", $startDate), # Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-    ("end_date", $endDate), # Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    ("app_types", $appTypes), # Apps or devices to get data for, default is all.
-    ("metric_types", $metricTypes.join(",")), # Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
-    ("split_field", $splitField), # How to split the data into groups. Not including this param means data won't be split.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("start_date", $startDate))
+  query_params_list.add(("end_date", $endDate))
+  if $appTypes != "":
+    query_params_list.add(("app_types", $appTypes))
+  query_params_list.add(("metric_types", $metricTypes.join(",")))
+  if $splitField != "":
+    query_params_list.add(("split_field", $splitField))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/pins/{pin_id}/analytics" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/pins/{pin_id}/analytics" & "?" & url_encoded_query_params)
   constructResult[Table[string, PinAnalyticsMetricsResponse]](response)
 
 
 proc pinsCreate*(httpClient: HttpClient, pinCreate: PinCreate, adAccountId: string): (Option[Pin], Response) =
   ## Create Pin
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/pins" & "?" & query_for_api_call, $(%pinCreate))
+  let response = httpClient.post(basepath & "/pins" & "?" & url_encoded_query_params, $(%pinCreate))
   constructResult[Pin](response)
 
 
 proc pinsDelete*(httpClient: HttpClient, pinId: string, adAccountId: string): Response =
   ## Delete Pin
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
-  httpClient.delete(basepath & fmt"/pins/{pin_id}" & "?" & query_for_api_call)
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
+  httpClient.delete(basepath & fmt"/pins/{pin_id}" & "?" & url_encoded_query_params)
+
 
 
 proc pinsGet*(httpClient: HttpClient, pinId: string, pinMetrics: bool, adAccountId: string): (Option[Pin], Response) =
   ## Get Pin
-  let query_for_api_call = encodeQuery([
-    ("pin_metrics", $pinMetrics), # Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $pinMetrics != "":
+    query_params_list.add(("pin_metrics", $pinMetrics))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/pins/{pin_id}" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/pins/{pin_id}" & "?" & url_encoded_query_params)
   constructResult[Pin](response)
 
 
 proc pinsList*(httpClient: HttpClient, bookmark: string, pageSize: int, pinFilter: string, includeProtectedPins: bool, pinType: string, creativeTypes: seq[CreativeTypes], adAccountId: string, pinMetrics: bool): (Option[pins_list_200_response], Response) =
   ## List Pins
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("pin_filter", $pinFilter), # Pin filter.
-    ("include_protected_pins", $includeProtectedPins), # Specify if return pins from protected boards
-    ("pin_type", $pinType), # The type of pins to return, currently only enabled for private pins
-    ("creative_types", $creativeTypes.join(",")), # Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-    ("pin_metrics", $pinMetrics), # Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $pinFilter != "":
+    query_params_list.add(("pin_filter", $pinFilter))
+  if $includeProtectedPins != "":
+    query_params_list.add(("include_protected_pins", $includeProtectedPins))
+  if $pinType != "":
+    query_params_list.add(("pin_type", $pinType))
+  if creativeTypes.len > 0:
+    query_params_list.add(("creative_types", $creativeTypes.join(",")))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  if $pinMetrics != "":
+    query_params_list.add(("pin_metrics", $pinMetrics))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/pins" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/pins" & "?" & url_encoded_query_params)
   constructResult[pins_list_200_response](response)
 
 
 proc pinsSave*(httpClient: HttpClient, pinId: string, pinsSaveRequest: PinsSaveRequest, adAccountId: string): (Option[Pin], Response) =
   ## Save Pin
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & fmt"/pins/{pin_id}/save" & "?" & query_for_api_call, $(%pinsSaveRequest))
+  let response = httpClient.post(basepath & fmt"/pins/{pin_id}/save" & "?" & url_encoded_query_params, $(%pinsSaveRequest))
   constructResult[Pin](response)
 
 
 proc pinsUpdate*(httpClient: HttpClient, pinId: string, pinUpdate: PinUpdate, adAccountId: string): (Option[Pin], Response) =
   ## Update Pin
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.patch(basepath & fmt"/pins/{pin_id}" & "?" & query_for_api_call, $(%pinUpdate))
+  let response = httpClient.patch(basepath & fmt"/pins/{pin_id}" & "?" & url_encoded_query_params, $(%pinUpdate))
   constructResult[Pin](response)
 

@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * AdAccountsCountryResponseData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountsCountryResponseData {
 
   private @Nullable AdCountry code;
@@ -33,7 +33,7 @@ public class AdAccountsCountryResponseData {
 
   private @Nullable String name;
 
-  public AdAccountsCountryResponseData code(AdCountry code) {
+  public AdAccountsCountryResponseData code(@Nullable AdCountry code) {
     this.code = code;
     return this;
   }
@@ -45,15 +45,15 @@ public class AdAccountsCountryResponseData {
   @Valid 
   @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public AdCountry getCode() {
+  public @Nullable AdCountry getCode() {
     return code;
   }
 
-  public void setCode(AdCountry code) {
+  public void setCode(@Nullable AdCountry code) {
     this.code = code;
   }
 
-  public AdAccountsCountryResponseData currency(String currency) {
+  public AdAccountsCountryResponseData currency(@Nullable String currency) {
     this.currency = currency;
     return this;
   }
@@ -65,15 +65,15 @@ public class AdAccountsCountryResponseData {
   
   @Schema(name = "currency", example = "Dollars", description = "Country currency.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("currency")
-  public String getCurrency() {
+  public @Nullable String getCurrency() {
     return currency;
   }
 
-  public void setCurrency(String currency) {
+  public void setCurrency(@Nullable String currency) {
     this.currency = currency;
   }
 
-  public AdAccountsCountryResponseData index(BigDecimal index) {
+  public AdAccountsCountryResponseData index(@Nullable BigDecimal index) {
     this.index = index;
     return this;
   }
@@ -85,15 +85,15 @@ public class AdAccountsCountryResponseData {
   @Valid 
   @Schema(name = "index", example = "1", description = "Country index", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("index")
-  public BigDecimal getIndex() {
+  public @Nullable BigDecimal getIndex() {
     return index;
   }
 
-  public void setIndex(BigDecimal index) {
+  public void setIndex(@Nullable BigDecimal index) {
     this.index = index;
   }
 
-  public AdAccountsCountryResponseData name(String name) {
+  public AdAccountsCountryResponseData name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -105,11 +105,11 @@ public class AdAccountsCountryResponseData {
   
   @Schema(name = "name", example = "United States of America", description = "Country name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 

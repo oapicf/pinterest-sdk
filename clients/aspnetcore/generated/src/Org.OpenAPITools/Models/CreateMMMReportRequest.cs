@@ -27,6 +27,13 @@ namespace Org.OpenAPITools.Models
     public partial class CreateMMMReportRequest : IEquatable<CreateMMMReportRequest>
     {
         /// <summary>
+        /// A List of countries for filtering
+        /// </summary>
+        /// <value>A List of countries for filtering</value>
+        [DataMember(Name="countries", EmitDefaultValue=false)]
+        public List<TargetingAdvertiserCountry> Countries { get; set; }
+
+        /// <summary>
         /// Name of the Marketing Mix Modeling (MMM) report
         /// </summary>
         /// <value>Name of the Marketing Mix Modeling (MMM) report</value>
@@ -134,13 +141,6 @@ namespace Org.OpenAPITools.Models
         public List<MMMReportingColumn> Columns { get; set; }
 
         /// <summary>
-        /// A List of countries for filtering
-        /// </summary>
-        /// <value>A List of countries for filtering</value>
-        [DataMember(Name="countries", EmitDefaultValue=false)]
-        public List<TargetingAdvertiserCountry> Countries { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -148,6 +148,7 @@ namespace Org.OpenAPITools.Models
         {
             var sb = new StringBuilder();
             sb.Append("class CreateMMMReportRequest {\n");
+            sb.Append("  Countries: ").Append(Countries).Append("\n");
             sb.Append("  ReportName: ").Append(ReportName).Append("\n");
             sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             sb.Append("  EndDate: ").Append(EndDate).Append("\n");
@@ -155,7 +156,6 @@ namespace Org.OpenAPITools.Models
             sb.Append("  Level: ").Append(Level).Append("\n");
             sb.Append("  TargetingTypes: ").Append(TargetingTypes).Append("\n");
             sb.Append("  Columns: ").Append(Columns).Append("\n");
-            sb.Append("  Countries: ").Append(Countries).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -193,6 +193,12 @@ namespace Org.OpenAPITools.Models
 
             return 
                 (
+                    Countries == other.Countries ||
+                    Countries != null &&
+                    other.Countries != null &&
+                    Countries.SequenceEqual(other.Countries)
+                ) && 
+                (
                     ReportName == other.ReportName ||
                     ReportName != null &&
                     ReportName.Equals(other.ReportName)
@@ -228,12 +234,6 @@ namespace Org.OpenAPITools.Models
                     Columns != null &&
                     other.Columns != null &&
                     Columns.SequenceEqual(other.Columns)
-                ) && 
-                (
-                    Countries == other.Countries ||
-                    Countries != null &&
-                    other.Countries != null &&
-                    Countries.SequenceEqual(other.Countries)
                 );
         }
 
@@ -247,6 +247,8 @@ namespace Org.OpenAPITools.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
+                    if (Countries != null)
+                    hashCode = hashCode * 59 + Countries.GetHashCode();
                     if (ReportName != null)
                     hashCode = hashCode * 59 + ReportName.GetHashCode();
                     if (StartDate != null)
@@ -261,8 +263,6 @@ namespace Org.OpenAPITools.Models
                     hashCode = hashCode * 59 + TargetingTypes.GetHashCode();
                     if (Columns != null)
                     hashCode = hashCode * 59 + Columns.GetHashCode();
-                    if (Countries != null)
-                    hashCode = hashCode * 59 + Countries.GetHashCode();
                 return hashCode;
             }
         }

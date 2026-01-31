@@ -49,11 +49,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdsCreditRedeemResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"success\" : false,\n  \"errorMessage\" : \"The offer has already been redeemed by this advertiser\",\n  \"errorCode\" : 2708\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -61,7 +61,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdsCreditRedeemResponse>(exampleJson)
-            : default(AdsCreditRedeemResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -85,16 +85,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdsCreditsDiscountsGet200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"active\" : true,\n    \"discountType\" : \"COUPON\",\n    \"discountCurrency\" : \"USD\",\n    \"discountInMicroCurrency\" : 125000000,\n    \"title\" : \"Ads Credits\",\n    \"remainingDiscountInMicroCurrency\" : 125000000,\n    \"advertiser_id\" : \"12312451231\"\n  }, {\n    \"active\" : true,\n    \"discountType\" : \"COUPON\",\n    \"discountCurrency\" : \"USD\",\n    \"discountInMicroCurrency\" : 125000000,\n    \"title\" : \"Ads Credits\",\n    \"remainingDiscountInMicroCurrency\" : 125000000,\n    \"advertiser_id\" : \"12312451231\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdsCreditsDiscountsGet200Response>(exampleJson)
-            : default(AdsCreditsDiscountsGet200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -119,16 +119,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(BillingProfilesGet200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"payment_method_brand\" : \"VISA\",\n    \"id\" : \"12312451231\",\n    \"card_type\" : \"VISA\",\n    \"status\" : \"INVALID\",\n    \"advertiser_id\" : \"12312451231\"\n  }, {\n    \"payment_method_brand\" : \"VISA\",\n    \"id\" : \"12312451231\",\n    \"card_type\" : \"VISA\",\n    \"status\" : \"INVALID\",\n    \"advertiser_id\" : \"12312451231\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<BillingProfilesGet200Response>(exampleJson)
-            : default(BillingProfilesGet200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -152,11 +152,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(SSIOAccountResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"billto_infos\" : [ {\n    \"us_terms_id\" : \"a2S1N000000bKIOUA2\",\n    \"row_terms_id\" : \"a2S1N000000bKHhUAM\",\n    \"us_terms\" : \"This Insertion Order (\\"IO\\") is subject to the Pinterest Addendum To IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0), as executed by Pinterest, Inc. and GroupM Worldwide LLC on May 7, 2014 and Amendment No. 1 to Pinterest Addendum to IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0) as executed by Pinterest, Inc. and GroupM Worldwide LLC on August 20, 2015. The parties agree that Agency may apply any of the budget listed on this IO to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees.The terms of the Addendum supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.\",\n    \"row_terms\" : \"The IO is governed by the terms available at\r\nhttps://business.pinterest.com/en-gb/pinterest-advertising-services-agreement\",\n    \"addresses\" : [ {\n      \"order_legal_entity\" : \"PIN US OU\",\n      \"purpose\" : \"Billing\",\n      \"display\" : \"475 Brannan Street, San Francisco, CA 94103\",\n      \"address_id\" : \"a1C1N000004MUrLUAW\"\n    }, {\n      \"order_legal_entity\" : \"PIN US OU\",\n      \"purpose\" : \"Billing\",\n      \"display\" : \"475 Brannan Street, San Francisco, CA 94103\",\n      \"address_id\" : \"a1C1N000004MUrLUAW\"\n    } ],\n    \"io_terms\" : \"The IO is governed by the terms available at https://business.pinterest.com/en/pinterest-advertising-services-agreement/. If a budget is listed on this IO, the parties agree that Advertiser (or if applicable, its Agency) may apply any of the budget to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees. The terms of the Agreement supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.\",\n    \"io_terms_id\" : \"a2S1N000000bKHgUAM\",\n    \"io_type\" : \"Pinterest Paper\",\n    \"id\" : \"0011N00001LW8kAQAT\"\n  }, {\n    \"us_terms_id\" : \"a2S1N000000bKIOUA2\",\n    \"row_terms_id\" : \"a2S1N000000bKHhUAM\",\n    \"us_terms\" : \"This Insertion Order (\\"IO\\") is subject to the Pinterest Addendum To IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0), as executed by Pinterest, Inc. and GroupM Worldwide LLC on May 7, 2014 and Amendment No. 1 to Pinterest Addendum to IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0) as executed by Pinterest, Inc. and GroupM Worldwide LLC on August 20, 2015. The parties agree that Agency may apply any of the budget listed on this IO to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees.The terms of the Addendum supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.\",\n    \"row_terms\" : \"The IO is governed by the terms available at\r\nhttps://business.pinterest.com/en-gb/pinterest-advertising-services-agreement\",\n    \"addresses\" : [ {\n      \"order_legal_entity\" : \"PIN US OU\",\n      \"purpose\" : \"Billing\",\n      \"display\" : \"475 Brannan Street, San Francisco, CA 94103\",\n      \"address_id\" : \"a1C1N000004MUrLUAW\"\n    }, {\n      \"order_legal_entity\" : \"PIN US OU\",\n      \"purpose\" : \"Billing\",\n      \"display\" : \"475 Brannan Street, San Francisco, CA 94103\",\n      \"address_id\" : \"a1C1N000004MUrLUAW\"\n    } ],\n    \"io_terms\" : \"The IO is governed by the terms available at https://business.pinterest.com/en/pinterest-advertising-services-agreement/. If a budget is listed on this IO, the parties agree that Advertiser (or if applicable, its Agency) may apply any of the budget to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees. The terms of the Agreement supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.\",\n    \"io_terms_id\" : \"a2S1N000000bKHgUAM\",\n    \"io_type\" : \"Pinterest Paper\",\n    \"id\" : \"0011N00001LW8kAQAT\"\n  } ],\n  \"eligible\" : true,\n  \"can_edit\" : true,\n  \"currency\" : \"USD\",\n  \"error\" : \"No Error\",\n  \"pmp_names\" : [ {\n    \"name\" : \"Bidalgo\",\n    \"id\" : \"0011N00001LW2aSQAT\"\n  }, {\n    \"name\" : \"Bidalgo\",\n    \"id\" : \"0011N00001LW2aSQAT\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -164,7 +164,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SSIOAccountResponse>(exampleJson)
-            : default(SSIOAccountResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -190,11 +190,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(SSIOCreateInsertionOrderResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"pin_order_id\" : \"pin_order_id\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -202,7 +202,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SSIOCreateInsertionOrderResponse>(exampleJson)
-            : default(SSIOCreateInsertionOrderResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -228,11 +228,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(SSIOEditInsertionOrderResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"pin_order_id\" : \"pin_order_id\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -240,7 +240,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SSIOEditInsertionOrderResponse>(exampleJson)
-            : default(SSIOEditInsertionOrderResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -266,11 +266,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(SsioInsertionOrdersStatusGetByAdAccount200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"creation_time\" : \"2017-06-21T23:11:11.000Z\",\n    \"pin_order_id\" : \"0Q01N0000015hekSAB\",\n    \"status\" : \"Approved\"\n  }, {\n    \"creation_time\" : \"2017-06-21T23:11:11.000Z\",\n    \"pin_order_id\" : \"0Q01N0000015hekSAB\",\n    \"status\" : \"Approved\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -278,7 +278,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SsioInsertionOrdersStatusGetByAdAccount200Response>(exampleJson)
-            : default(SsioInsertionOrdersStatusGetByAdAccount200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -303,11 +303,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(SSIOInsertionOrderStatusResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"creation_time\" : \"2017-06-21T23:11:11.000Z\",\n  \"pin_order_id\" : \"0Q01N0000015hekSAB\",\n  \"status\" : \"Approved\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -315,7 +315,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SSIOInsertionOrderStatusResponse>(exampleJson)
-            : default(SSIOInsertionOrderStatusResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -342,11 +342,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(SsioOrderLinesGetByAdAccount200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"end_date\" : \"2020-10-05\",\n    \"pmp_name\" : \"pmp_name\",\n    \"salesforce_order_line_id\" : \"salesforce_order_line_id\",\n    \"billing_contact_firstname\" : \"Mary\",\n    \"ads_manager_order_line_id\" : \"ads_manager_order_line_id\",\n    \"currency_info\" : \"USD\",\n    \"bill_to_company_name\" : \"Home Depot Inc.\",\n    \"billing_contact_email\" : \"mail@test.com\",\n    \"estimated_monthly_spend\" : 0.8008281904610115,\n    \"media_contact_email\" : \"mail@test.com\",\n    \"billing_contact_lastname\" : \"Smith\",\n    \"order_name\" : \"order_name\",\n    \"agency_link\" : \"\",\n    \"po_number\" : \"po_number\",\n    \"accepted_terms_id\" : \"accepted_terms_id\",\n    \"accepted_terms_time\" : \"2020-10-06T13:07:04.000Z\",\n    \"pin_order_id\" : \"pin_order_id\",\n    \"media_contact_lastname\" : \"Doe\",\n    \"last_modified_date_time\" : \"2020-10-06T13:07:04.000Z\",\n    \"start_date\" : \"2018-03-01\",\n    \"media_contact_firstname\" : \"John\",\n    \"budget_amount\" : 5000000\n  }, {\n    \"end_date\" : \"2020-10-05\",\n    \"pmp_name\" : \"pmp_name\",\n    \"salesforce_order_line_id\" : \"salesforce_order_line_id\",\n    \"billing_contact_firstname\" : \"Mary\",\n    \"ads_manager_order_line_id\" : \"ads_manager_order_line_id\",\n    \"currency_info\" : \"USD\",\n    \"bill_to_company_name\" : \"Home Depot Inc.\",\n    \"billing_contact_email\" : \"mail@test.com\",\n    \"estimated_monthly_spend\" : 0.8008281904610115,\n    \"media_contact_email\" : \"mail@test.com\",\n    \"billing_contact_lastname\" : \"Smith\",\n    \"order_name\" : \"order_name\",\n    \"agency_link\" : \"\",\n    \"po_number\" : \"po_number\",\n    \"accepted_terms_id\" : \"accepted_terms_id\",\n    \"accepted_terms_time\" : \"2020-10-06T13:07:04.000Z\",\n    \"pin_order_id\" : \"pin_order_id\",\n    \"media_contact_lastname\" : \"Doe\",\n    \"last_modified_date_time\" : \"2020-10-06T13:07:04.000Z\",\n    \"start_date\" : \"2018-03-01\",\n    \"media_contact_firstname\" : \"John\",\n    \"budget_amount\" : 5000000\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -354,7 +354,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SsioOrderLinesGetByAdAccount200Response>(exampleJson)
-            : default(SsioOrderLinesGetByAdAccount200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

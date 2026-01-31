@@ -60,10 +60,10 @@ pub enum AdAccountsSubscriptionsSlashPostError {
 /// Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 pub async fn ad_accounts_subscriptions_slash_del_by_id(configuration: &configuration::Configuration, ad_account_id: &str, subscription_id: &str) -> Result<(), Error<AdAccountsSubscriptionsSlashDelByIdError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_subscription_id = subscription_id;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_subscription_id = subscription_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), subscription_id=crate::apis::urlencode(p_subscription_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), subscription_id=crate::apis::urlencode(p_path_subscription_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -90,10 +90,10 @@ pub async fn ad_accounts_subscriptions_slash_del_by_id(configuration: &configura
 /// Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 pub async fn ad_accounts_subscriptions_slash_get_by_id(configuration: &configuration::Configuration, ad_account_id: &str, subscription_id: &str) -> Result<models::AdAccountGetSubscriptionResponse, Error<AdAccountsSubscriptionsSlashGetByIdError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_subscription_id = subscription_id;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_subscription_id = subscription_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), subscription_id=crate::apis::urlencode(p_subscription_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), subscription_id=crate::apis::urlencode(p_path_subscription_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -131,17 +131,17 @@ pub async fn ad_accounts_subscriptions_slash_get_by_id(configuration: &configura
 /// Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 pub async fn ad_accounts_subscriptions_slash_get_list(configuration: &configuration::Configuration, ad_account_id: &str, page_size: Option<i32>, bookmark: Option<&str>) -> Result<models::AdAccountsSubscriptionsGetList200Response, Error<AdAccountsSubscriptionsSlashGetListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_page_size = page_size;
-    let p_bookmark = bookmark;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_page_size = page_size;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/leads/subscriptions", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/leads/subscriptions", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -179,10 +179,10 @@ pub async fn ad_accounts_subscriptions_slash_get_list(configuration: &configurat
 /// Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 pub async fn ad_accounts_subscriptions_slash_post(configuration: &configuration::Configuration, ad_account_id: &str, ad_account_create_subscription_request: models::AdAccountCreateSubscriptionRequest) -> Result<models::AdAccountCreateSubscriptionResponse, Error<AdAccountsSubscriptionsSlashPostError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_ad_account_create_subscription_request = ad_account_create_subscription_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_ad_account_create_subscription_request = ad_account_create_subscription_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/leads/subscriptions", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/leads/subscriptions", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -191,7 +191,7 @@ pub async fn ad_accounts_subscriptions_slash_post(configuration: &configuration:
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_ad_account_create_subscription_request);
+    req_builder = req_builder.json(&p_body_ad_account_create_subscription_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

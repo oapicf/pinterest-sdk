@@ -1,65 +1,83 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Integration metadata
- **/
+ * Integration metadata
+ */
 @ApiModel(description="Integration metadata")
 
 public class IntegrationMetadata  {
   
   @ApiModelProperty(value = "")
+
   private String id;
 
   @ApiModelProperty(value = "")
+
   private String externalBusinessId;
 
   @ApiModelProperty(value = "")
+
   private String connectedMerchantId;
 
   @ApiModelProperty(value = "")
+
   private String connectedUserId;
 
   @ApiModelProperty(value = "")
+
   private String connectedAdvertiserId;
 
   @ApiModelProperty(value = "")
+
   private String connectedLbaId;
 
   @ApiModelProperty(value = "")
+
   private String connectedTagId;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BigDecimal partnerAccessTokenExpiry;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BigDecimal partnerRefreshTokenExpiry;
 
   @ApiModelProperty(value = "")
+
   private String scopes;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BigDecimal createdTimestamp;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BigDecimal updatedTimestamp;
 
   @ApiModelProperty(value = "")
+
   private String additionalId1;
 
   @ApiModelProperty(value = "")
+
   private String partnerMetadata;
  /**
    * Get id

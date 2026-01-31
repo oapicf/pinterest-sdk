@@ -67,12 +67,8 @@ class BulkController extends Controller
 
         $bulkDownloadRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BulkDownloadRequest::class);
 
-        try {
-            $apiResult = $this->api->bulkDownloadCreate($adAccountId, $bulkDownloadRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->bulkDownloadCreate($adAccountId, $bulkDownloadRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BulkDownloadResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -124,14 +120,10 @@ class BulkController extends Controller
 
 
 
-        $includeDetails = $request->bool('includeDetails');
+        $includeDetails = $request->boolean('includeDetails');
 
-        try {
-            $apiResult = $this->api->bulkRequestGet($adAccountId, $bulkRequestId, $includeDetails);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->bulkRequestGet($adAccountId, $bulkRequestId, $includeDetails);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BulkUpsertStatusResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -171,12 +163,8 @@ class BulkController extends Controller
 
         $bulkUpsertRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BulkUpsertRequest::class);
 
-        try {
-            $apiResult = $this->api->bulkUpsertCreate($adAccountId, $bulkUpsertRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->bulkUpsertCreate($adAccountId, $bulkUpsertRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BulkUpsertResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

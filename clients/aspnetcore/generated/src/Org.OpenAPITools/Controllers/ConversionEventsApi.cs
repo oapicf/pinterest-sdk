@@ -61,21 +61,21 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ConversionApiResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 422 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(422, default(DetailedError));
+            // return StatusCode(422, default);
             //TODO: Uncomment the next line to return response 429 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(429, default(Error));
+            // return StatusCode(429, default);
             //TODO: Uncomment the next line to return response 503 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(503, default(Error));
+            // return StatusCode(503, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"num_events_processed\" : 6,\n  \"num_events_received\" : 0,\n  \"events\" : [ {\n    \"error_message\" : \"error_message\",\n    \"warning_message\" : \"warning_message\",\n    \"status\" : \"processed\"\n  }, {\n    \"error_message\" : \"error_message\",\n    \"warning_message\" : \"warning_message\",\n    \"status\" : \"processed\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -88,7 +88,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ConversionApiResponse>(exampleJson)
-            : default(ConversionApiResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

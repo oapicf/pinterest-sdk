@@ -1,20 +1,21 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.MediaUploadType;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Media upload request
- **/
+ * Media upload request
+ */
 @ApiModel(description="Media upload request")
 
 public class MediaUploadRequest  {
   
   @ApiModelProperty(required = true, value = "")
+
   private MediaUploadType mediaType;
  /**
    * Get mediaType

@@ -13,8 +13,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the LeadFormCreateRequest type satisfies the MappedNullable interface at compile time
@@ -23,35 +21,28 @@ var _ MappedNullable = &LeadFormCreateRequest{}
 // LeadFormCreateRequest struct for LeadFormCreateRequest
 type LeadFormCreateRequest struct {
 	// Internal name of the lead form.
-	Name NullableString `json:"name"`
+	Name NullableString `json:"name,omitempty"`
 	// A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-	PrivacyPolicyLink NullableString `json:"privacy_policy_link"`
+	PrivacyPolicyLink NullableString `json:"privacy_policy_link,omitempty"`
 	// Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
-	HasAcceptedTerms bool `json:"has_accepted_terms"`
+	HasAcceptedTerms *bool `json:"has_accepted_terms,omitempty"`
 	// A message for people who complete the form to let them know what happens next.
-	CompletionMessage NullableString `json:"completion_message"`
+	CompletionMessage NullableString `json:"completion_message,omitempty"`
 	Status *LeadFormStatus `json:"status,omitempty"`
 	// Additional disclosure language to be included in the lead form.
 	DisclosureLanguage NullableString `json:"disclosure_language,omitempty"`
 	// List of questions to be displayed on the lead form.
-	Questions []LeadFormQuestion `json:"questions"`
+	Questions []LeadFormQuestion `json:"questions,omitempty"`
 	// List of additional policy links to be displayed on the lead form.
 	PolicyLinks []LeadFormCommonPolicyLinksInner `json:"policy_links,omitempty"`
 }
-
-type _LeadFormCreateRequest LeadFormCreateRequest
 
 // NewLeadFormCreateRequest instantiates a new LeadFormCreateRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLeadFormCreateRequest(name NullableString, privacyPolicyLink NullableString, hasAcceptedTerms bool, completionMessage NullableString, questions []LeadFormQuestion) *LeadFormCreateRequest {
+func NewLeadFormCreateRequest() *LeadFormCreateRequest {
 	this := LeadFormCreateRequest{}
-	this.Name = name
-	this.PrivacyPolicyLink = privacyPolicyLink
-	this.HasAcceptedTerms = hasAcceptedTerms
-	this.CompletionMessage = completionMessage
-	this.Questions = questions
 	return &this
 }
 
@@ -63,18 +54,16 @@ func NewLeadFormCreateRequestWithDefaults() *LeadFormCreateRequest {
 	return &this
 }
 
-// GetName returns the Name field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LeadFormCreateRequest) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LeadFormCreateRequest) GetNameOk() (*string, bool) {
@@ -84,23 +73,39 @@ func (o *LeadFormCreateRequest) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// SetName sets field value
+// HasName returns a boolean if a field has been set.
+func (o *LeadFormCreateRequest) HasName() bool {
+	if o != nil && o.Name.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *LeadFormCreateRequest) SetName(v string) {
 	o.Name.Set(&v)
 }
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *LeadFormCreateRequest) SetNameNil() {
+	o.Name.Set(nil)
+}
 
-// GetPrivacyPolicyLink returns the PrivacyPolicyLink field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *LeadFormCreateRequest) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetPrivacyPolicyLink returns the PrivacyPolicyLink field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LeadFormCreateRequest) GetPrivacyPolicyLink() string {
-	if o == nil || o.PrivacyPolicyLink.Get() == nil {
+	if o == nil || IsNil(o.PrivacyPolicyLink.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.PrivacyPolicyLink.Get()
 }
 
-// GetPrivacyPolicyLinkOk returns a tuple with the PrivacyPolicyLink field value
+// GetPrivacyPolicyLinkOk returns a tuple with the PrivacyPolicyLink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LeadFormCreateRequest) GetPrivacyPolicyLinkOk() (*string, bool) {
@@ -110,47 +115,71 @@ func (o *LeadFormCreateRequest) GetPrivacyPolicyLinkOk() (*string, bool) {
 	return o.PrivacyPolicyLink.Get(), o.PrivacyPolicyLink.IsSet()
 }
 
-// SetPrivacyPolicyLink sets field value
+// HasPrivacyPolicyLink returns a boolean if a field has been set.
+func (o *LeadFormCreateRequest) HasPrivacyPolicyLink() bool {
+	if o != nil && o.PrivacyPolicyLink.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivacyPolicyLink gets a reference to the given NullableString and assigns it to the PrivacyPolicyLink field.
 func (o *LeadFormCreateRequest) SetPrivacyPolicyLink(v string) {
 	o.PrivacyPolicyLink.Set(&v)
 }
+// SetPrivacyPolicyLinkNil sets the value for PrivacyPolicyLink to be an explicit nil
+func (o *LeadFormCreateRequest) SetPrivacyPolicyLinkNil() {
+	o.PrivacyPolicyLink.Set(nil)
+}
 
-// GetHasAcceptedTerms returns the HasAcceptedTerms field value
+// UnsetPrivacyPolicyLink ensures that no value is present for PrivacyPolicyLink, not even an explicit nil
+func (o *LeadFormCreateRequest) UnsetPrivacyPolicyLink() {
+	o.PrivacyPolicyLink.Unset()
+}
+
+// GetHasAcceptedTerms returns the HasAcceptedTerms field value if set, zero value otherwise.
 func (o *LeadFormCreateRequest) GetHasAcceptedTerms() bool {
-	if o == nil {
+	if o == nil || IsNil(o.HasAcceptedTerms) {
 		var ret bool
 		return ret
 	}
-
-	return o.HasAcceptedTerms
+	return *o.HasAcceptedTerms
 }
 
-// GetHasAcceptedTermsOk returns a tuple with the HasAcceptedTerms field value
+// GetHasAcceptedTermsOk returns a tuple with the HasAcceptedTerms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LeadFormCreateRequest) GetHasAcceptedTermsOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HasAcceptedTerms) {
 		return nil, false
 	}
-	return &o.HasAcceptedTerms, true
+	return o.HasAcceptedTerms, true
 }
 
-// SetHasAcceptedTerms sets field value
+// HasHasAcceptedTerms returns a boolean if a field has been set.
+func (o *LeadFormCreateRequest) HasHasAcceptedTerms() bool {
+	if o != nil && !IsNil(o.HasAcceptedTerms) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasAcceptedTerms gets a reference to the given bool and assigns it to the HasAcceptedTerms field.
 func (o *LeadFormCreateRequest) SetHasAcceptedTerms(v bool) {
-	o.HasAcceptedTerms = v
+	o.HasAcceptedTerms = &v
 }
 
-// GetCompletionMessage returns the CompletionMessage field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetCompletionMessage returns the CompletionMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LeadFormCreateRequest) GetCompletionMessage() string {
-	if o == nil || o.CompletionMessage.Get() == nil {
+	if o == nil || IsNil(o.CompletionMessage.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.CompletionMessage.Get()
 }
 
-// GetCompletionMessageOk returns a tuple with the CompletionMessage field value
+// GetCompletionMessageOk returns a tuple with the CompletionMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LeadFormCreateRequest) GetCompletionMessageOk() (*string, bool) {
@@ -160,9 +189,27 @@ func (o *LeadFormCreateRequest) GetCompletionMessageOk() (*string, bool) {
 	return o.CompletionMessage.Get(), o.CompletionMessage.IsSet()
 }
 
-// SetCompletionMessage sets field value
+// HasCompletionMessage returns a boolean if a field has been set.
+func (o *LeadFormCreateRequest) HasCompletionMessage() bool {
+	if o != nil && o.CompletionMessage.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCompletionMessage gets a reference to the given NullableString and assigns it to the CompletionMessage field.
 func (o *LeadFormCreateRequest) SetCompletionMessage(v string) {
 	o.CompletionMessage.Set(&v)
+}
+// SetCompletionMessageNil sets the value for CompletionMessage to be an explicit nil
+func (o *LeadFormCreateRequest) SetCompletionMessageNil() {
+	o.CompletionMessage.Set(nil)
+}
+
+// UnsetCompletionMessage ensures that no value is present for CompletionMessage, not even an explicit nil
+func (o *LeadFormCreateRequest) UnsetCompletionMessage() {
+	o.CompletionMessage.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -239,26 +286,34 @@ func (o *LeadFormCreateRequest) UnsetDisclosureLanguage() {
 	o.DisclosureLanguage.Unset()
 }
 
-// GetQuestions returns the Questions field value
+// GetQuestions returns the Questions field value if set, zero value otherwise.
 func (o *LeadFormCreateRequest) GetQuestions() []LeadFormQuestion {
-	if o == nil {
+	if o == nil || IsNil(o.Questions) {
 		var ret []LeadFormQuestion
 		return ret
 	}
-
 	return o.Questions
 }
 
-// GetQuestionsOk returns a tuple with the Questions field value
+// GetQuestionsOk returns a tuple with the Questions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LeadFormCreateRequest) GetQuestionsOk() ([]LeadFormQuestion, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Questions) {
 		return nil, false
 	}
 	return o.Questions, true
 }
 
-// SetQuestions sets field value
+// HasQuestions returns a boolean if a field has been set.
+func (o *LeadFormCreateRequest) HasQuestions() bool {
+	if o != nil && !IsNil(o.Questions) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuestions gets a reference to the given []LeadFormQuestion and assigns it to the Questions field.
 func (o *LeadFormCreateRequest) SetQuestions(v []LeadFormQuestion) {
 	o.Questions = v
 }
@@ -305,62 +360,31 @@ func (o LeadFormCreateRequest) MarshalJSON() ([]byte, error) {
 
 func (o LeadFormCreateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name.Get()
-	toSerialize["privacy_policy_link"] = o.PrivacyPolicyLink.Get()
-	toSerialize["has_accepted_terms"] = o.HasAcceptedTerms
-	toSerialize["completion_message"] = o.CompletionMessage.Get()
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
+	}
+	if o.PrivacyPolicyLink.IsSet() {
+		toSerialize["privacy_policy_link"] = o.PrivacyPolicyLink.Get()
+	}
+	if !IsNil(o.HasAcceptedTerms) {
+		toSerialize["has_accepted_terms"] = o.HasAcceptedTerms
+	}
+	if o.CompletionMessage.IsSet() {
+		toSerialize["completion_message"] = o.CompletionMessage.Get()
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 	if o.DisclosureLanguage.IsSet() {
 		toSerialize["disclosure_language"] = o.DisclosureLanguage.Get()
 	}
-	toSerialize["questions"] = o.Questions
+	if !IsNil(o.Questions) {
+		toSerialize["questions"] = o.Questions
+	}
 	if !IsNil(o.PolicyLinks) {
 		toSerialize["policy_links"] = o.PolicyLinks
 	}
 	return toSerialize, nil
-}
-
-func (o *LeadFormCreateRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"privacy_policy_link",
-		"has_accepted_terms",
-		"completion_message",
-		"questions",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varLeadFormCreateRequest := _LeadFormCreateRequest{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLeadFormCreateRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = LeadFormCreateRequest(varLeadFormCreateRequest)
-
-	return err
 }
 
 type NullableLeadFormCreateRequest struct {

@@ -67,7 +67,7 @@ data class PinterestTagEventData(
 
     @Schema(example = "How to style your Parker Boots", description = "Video title. For example, \"How to style your Parker Boots\".")
     @get:JsonProperty("video_title") val videoTitle: kotlin.String? = null
-    ) {
+) {
 
 }
 

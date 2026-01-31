@@ -218,7 +218,6 @@ OpenAPI/src/model/AudienceCategory.fs
 OpenAPI/src/model/AudienceCommon.fs
 OpenAPI/src/model/AudienceCreateCustomRequest.fs
 OpenAPI/src/model/AudienceCreateRequest.fs
-OpenAPI/src/model/AudienceCreateRequest1AudienceType.fs
 OpenAPI/src/model/AudienceDataParty.fs
 OpenAPI/src/model/AudienceDefinition.fs
 OpenAPI/src/model/AudienceDefinitionResponse.fs
@@ -396,7 +395,6 @@ OpenAPI/src/model/CatalogsItemsDeleteDiscontinuedBatchRequest.fs
 OpenAPI/src/model/CatalogsItemsFilters.fs
 OpenAPI/src/model/CatalogsItemsPostFilters.fs
 OpenAPI/src/model/CatalogsItemsRequest.fs
-OpenAPI/src/model/CatalogsItemsRequestLanguage.fs
 OpenAPI/src/model/CatalogsItemsUpdateBatchRequest.fs
 OpenAPI/src/model/CatalogsItemsUpsertBatchRequest.fs
 OpenAPI/src/model/CatalogsList200Response.fs
@@ -730,7 +728,6 @@ OpenAPI/src/model/PinMediaWithVideos.fs
 OpenAPI/src/model/PinPromotionSummaryStatus.fs
 OpenAPI/src/model/PinUpdate.fs
 OpenAPI/src/model/PinUpdateCarouselSlotsInner.fs
-OpenAPI/src/model/PinsAnalyticsMetricTypesParameterInner.fs
 OpenAPI/src/model/PinsList200Response.fs
 OpenAPI/src/model/PinsSaveRequest.fs
 OpenAPI/src/model/PinterestTagEventData.fs

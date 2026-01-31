@@ -25,7 +25,6 @@
 #include "OAIPinAnalyticsMetricsResponse.h"
 #include "OAIPinCreate.h"
 #include "OAIPinUpdate.h"
-#include "OAIPins_analytics_metric_types_parameter_inner.h"
 #include "OAIPins_list_200_response.h"
 #include "OAIPins_save_request.h"
 #include <QList>
@@ -84,8 +83,8 @@ public:
     void setResponseHeaders(const QMultiMap<QString,QString>& headers);
 
 Q_SIGNALS:
-    void multiPins_analytics(QList<QString> pin_ids, QDate start_date, QDate end_date, QList<OAIPins_analytics_metric_types_parameter_inner> metric_types, QString app_types, QString ad_account_id);
-    void pins_analytics(QString pin_id, QDate start_date, QDate end_date, QList<OAIPins_analytics_metric_types_parameter_inner> metric_types, QString app_types, QString split_field, QString ad_account_id);
+    void multiPins_analytics(QList<QString> pin_ids, QDate start_date, QDate end_date, QList<QString> metric_types, QString app_types, QString ad_account_id);
+    void pins_analytics(QString pin_id, QDate start_date, QDate end_date, QList<QString> metric_types, QString app_types, QString split_field, QString ad_account_id);
     void pins_create(OAIPinCreate oai_pin_create, QString ad_account_id);
     void pins_delete(QString pin_id, QString ad_account_id);
     void pins_get(QString pin_id, bool pin_metrics, QString ad_account_id);

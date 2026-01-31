@@ -46,8 +46,8 @@ class AudienceCreateRequest
     * Audience description.
     * @param string $description
     *
-    * 
-    * @param \OpenAPI\Server\Model\AudienceCreateRequest1AudienceType $audienceType
+    * &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+    * @param \OpenAPI\Server\Model\AudienceType $audienceType
     */
 
     public function __construct(
@@ -55,7 +55,7 @@ class AudienceCreateRequest
         public string $name,
         public \OpenAPI\Server\Model\AudienceRule $rule,
         public string $description,
-        public \OpenAPI\Server\Model\AudienceCreateRequest1AudienceType $audienceType,
+        public \OpenAPI\Server\Model\AudienceType $audienceType,
     ) {}
 }
 

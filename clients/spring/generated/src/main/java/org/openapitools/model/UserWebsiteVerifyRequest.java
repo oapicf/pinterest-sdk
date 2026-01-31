@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "UserWebsiteVerifyRequest", description = "User website verification request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserWebsiteVerifyRequest {
 
   private @Nullable String website;
@@ -36,7 +36,7 @@ public class UserWebsiteVerifyRequest {
     
     DNSTXT("DNSTXT");
 
-    private String value;
+    private final String value;
 
     VerificationMethodEnum(String value) {
       this.value = value;
@@ -65,7 +65,7 @@ public class UserWebsiteVerifyRequest {
 
   private VerificationMethodEnum verificationMethod = VerificationMethodEnum.METATAG;
 
-  public UserWebsiteVerifyRequest website(String website) {
+  public UserWebsiteVerifyRequest website(@Nullable String website) {
     this.website = website;
     return this;
   }
@@ -77,11 +77,11 @@ public class UserWebsiteVerifyRequest {
   
   @Schema(name = "website", example = "pintest-website-12345678.test/test_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("website")
-  public String getWebsite() {
+  public @Nullable String getWebsite() {
     return website;
   }
 
-  public void setWebsite(String website) {
+  public void setWebsite(@Nullable String website) {
     this.website = website;
   }
 

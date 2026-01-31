@@ -9,8 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AdAccountCreateSubscriptionRequestPartnerMetadata* = object
   ## Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
-  subscriberKey*: string ## Text field value that uniquely identifies a subscriber.
+  subscriberKey*: Option[string] ## Text field value that uniquely identifies a subscriber.
+
+
+# Custom JSON deserialization for AdAccountCreateSubscriptionRequestPartnerMetadata with custom field names
+proc to*(node: JsonNode, T: typedesc[AdAccountCreateSubscriptionRequestPartnerMetadata]): AdAccountCreateSubscriptionRequestPartnerMetadata =
+  result = AdAccountCreateSubscriptionRequestPartnerMetadata()
+  if node.kind == JObject:
+    if node.hasKey("subscriber_key") and node["subscriber_key"].kind != JNull:
+      result.subscriberKey = some(to(node["subscriber_key"], typeof(result.subscriberKey.get())))
+
+# Custom JSON serialization for AdAccountCreateSubscriptionRequestPartnerMetadata with custom field names
+proc `%`*(obj: AdAccountCreateSubscriptionRequestPartnerMetadata): JsonNode =
+  result = newJObject()
+  if obj.subscriberKey.isSome():
+    result["subscriber_key"] = %obj.subscriberKey.get()
+

@@ -56,13 +56,13 @@ export interface CustomerList {
     exceptions?: object;
 }
 export namespace CustomerList {
-    export type StatusEnum = 'PROCESSING' | 'READY' | 'TOO_SMALL' | 'UPLOADING';
     export const StatusEnum = {
-        Processing: 'PROCESSING' as StatusEnum,
-        Ready: 'READY' as StatusEnum,
-        TooSmall: 'TOO_SMALL' as StatusEnum,
-        Uploading: 'UPLOADING' as StatusEnum
-    };
+        Processing: 'PROCESSING',
+        Ready: 'READY',
+        TooSmall: 'TOO_SMALL',
+        Uploading: 'UPLOADING'
+    } as const;
+    export type StatusEnum = typeof StatusEnum[keyof typeof StatusEnum];
 }
 
 

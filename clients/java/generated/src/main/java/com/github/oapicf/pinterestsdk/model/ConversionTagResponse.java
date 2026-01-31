@@ -53,7 +53,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionTagResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagResponse {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
@@ -345,19 +345,10 @@ public class ConversionTagResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ad_account_id");
-    openapiFields.add("code_snippet");
-    openapiFields.add("enhanced_match_status");
-    openapiFields.add("id");
-    openapiFields.add("last_fired_time_ms");
-    openapiFields.add("name");
-    openapiFields.add("status");
-    openapiFields.add("version");
-    openapiFields.add("configs");
+    openapiFields = new HashSet<String>(Arrays.asList("ad_account_id", "code_snippet", "enhanced_match_status", "id", "last_fired_time_ms", "name", "status", "version", "configs"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -369,7 +360,7 @@ public class ConversionTagResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ConversionTagResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ConversionTagResponse is not found in the empty JSON string", ConversionTagResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ConversionTagResponse is not found in the empty JSON string", ConversionTagResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -377,32 +368,32 @@ public class ConversionTagResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ConversionTagResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConversionTagResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ConversionTagResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("ad_account_id") != null && !jsonObj.get("ad_account_id").isJsonNull()) && !jsonObj.get("ad_account_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
       }
       if ((jsonObj.get("code_snippet") != null && !jsonObj.get("code_snippet").isJsonNull()) && !jsonObj.get("code_snippet").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `code_snippet` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code_snippet").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `code_snippet` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code_snippet").toString()));
       }
       // validate the optional field `enhanced_match_status`
       if (jsonObj.get("enhanced_match_status") != null && !jsonObj.get("enhanced_match_status").isJsonNull()) {
         EnhancedMatchStatusType.validateJsonElement(jsonObj.get("enhanced_match_status"));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the optional field `status`
       if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
         EntityStatus.validateJsonElement(jsonObj.get("status"));
       }
       if ((jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) && !jsonObj.get("version").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("version").toString()));
       }
       // validate the optional field `configs`
       if (jsonObj.get("configs") != null && !jsonObj.get("configs").isJsonNull()) {

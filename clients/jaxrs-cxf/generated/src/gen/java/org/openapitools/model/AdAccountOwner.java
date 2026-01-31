@@ -11,16 +11,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdAccountOwner  {
   
-  @ApiModelProperty(value = "Public username for the user account")
  /**
-   * Public username for the user account
-  **/
+  * Public username for the user account
+  */
+  @ApiModelProperty(value = "Public username for the user account")
+
   private String username;
 
-  @ApiModelProperty(value = "The owning account's user ID.")
  /**
-   * The owning account's user ID.
-  **/
+  * The owning account's user ID.
+  */
+  @ApiModelProperty(value = "The owning account's user ID.")
+
   private String id;
  /**
    * Public username for the user account

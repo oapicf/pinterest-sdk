@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationRecord", description = "Integration record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationRecord {
 
   private @Nullable String id;
@@ -60,7 +60,7 @@ public class IntegrationRecord {
 
   private @Nullable Integer updatedTime;
 
-  public IntegrationRecord id(String id) {
+  public IntegrationRecord id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -72,11 +72,11 @@ public class IntegrationRecord {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
@@ -120,7 +120,7 @@ public class IntegrationRecord {
     this.connectedMerchantId = connectedMerchantId;
   }
 
-  public IntegrationRecord connectedUserId(String connectedUserId) {
+  public IntegrationRecord connectedUserId(@Nullable String connectedUserId) {
     this.connectedUserId = connectedUserId;
     return this;
   }
@@ -132,11 +132,11 @@ public class IntegrationRecord {
   
   @Schema(name = "connected_user_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_user_id")
-  public String getConnectedUserId() {
+  public @Nullable String getConnectedUserId() {
     return connectedUserId;
   }
 
-  public void setConnectedUserId(String connectedUserId) {
+  public void setConnectedUserId(@Nullable String connectedUserId) {
     this.connectedUserId = connectedUserId;
   }
 
@@ -360,7 +360,7 @@ public class IntegrationRecord {
     this.additionalId1 = additionalId1;
   }
 
-  public IntegrationRecord createdTime(Integer createdTime) {
+  public IntegrationRecord createdTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -372,15 +372,15 @@ public class IntegrationRecord {
   
   @Schema(name = "created_time", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
-  public Integer getCreatedTime() {
+  public @Nullable Integer getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
-  public IntegrationRecord updatedTime(Integer updatedTime) {
+  public IntegrationRecord updatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -392,11 +392,11 @@ public class IntegrationRecord {
   
   @Schema(name = "updated_time", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")
-  public Integer getUpdatedTime() {
+  public @Nullable Integer getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 

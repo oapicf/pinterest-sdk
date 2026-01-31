@@ -9,9 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_update_member_result
 
 type UpdateMemberResultsResponseArray* = object
   ## 
-  items*: seq[UpdateMemberResult] ## List of members with updated business access role.
+  items*: Option[seq[UpdateMemberResult]] ## List of members with updated business access role.
+
+
+# Custom JSON deserialization for UpdateMemberResultsResponseArray with custom field names
+proc to*(node: JsonNode, T: typedesc[UpdateMemberResultsResponseArray]): UpdateMemberResultsResponseArray =
+  result = UpdateMemberResultsResponseArray()
+  if node.kind == JObject:
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[UpdateMemberResult] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, UpdateMemberResult))
+        result.items = some(arr)
+
+# Custom JSON serialization for UpdateMemberResultsResponseArray with custom field names
+proc `%`*(obj: UpdateMemberResultsResponseArray): JsonNode =
+  result = newJObject()
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

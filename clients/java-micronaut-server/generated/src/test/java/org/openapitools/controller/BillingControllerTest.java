@@ -97,7 +97,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@7156f7c3");
+            .accept("[Ljava.lang.String;@2c189612");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdsCreditRedeemResponse.class);
@@ -145,7 +145,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4bc733ed");
+            .accept("[Ljava.lang.String;@7abbc708");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -197,7 +197,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@50334476");
+            .accept("[Ljava.lang.String;@101e09d8");
         request.getParameters()
             .add("is_active", String.valueOf(false)) // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -247,7 +247,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@747236fd");
+            .accept("[Ljava.lang.String;@134458bb");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOAccountResponse.class);
@@ -295,7 +295,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@325c3f5f");
+            .accept("[Ljava.lang.String;@7b04f4c7");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOCreateInsertionOrderResponse.class);
@@ -343,7 +343,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@40f62aa2");
+            .accept("[Ljava.lang.String;@5f23ef28");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOEditInsertionOrderResponse.class);
@@ -391,7 +391,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@a2cc63e");
+            .accept("[Ljava.lang.String;@3f137ddd");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -442,7 +442,7 @@ public class BillingControllerTest {
             put("pin_order_id", "0Q01N0000015hekSVDFDC");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6f0ccc58");
+            .accept("[Ljava.lang.String;@ea37b04");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOInsertionOrderStatusResponse.class);
@@ -491,7 +491,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3cf9a021");
+            .accept("[Ljava.lang.String;@52dd14db");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 

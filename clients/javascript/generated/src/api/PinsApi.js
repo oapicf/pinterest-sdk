@@ -18,7 +18,6 @@ import Pin from '../model/Pin';
 import PinAnalyticsMetricsResponse from '../model/PinAnalyticsMetricsResponse';
 import PinCreate from '../model/PinCreate';
 import PinUpdate from '../model/PinUpdate';
-import PinsAnalyticsMetricTypesParameterInner from '../model/PinsAnalyticsMetricTypesParameterInner';
 import PinsList200Response from '../model/PinsList200Response';
 import PinsSaveRequest from '../model/PinsSaveRequest';
 
@@ -55,7 +54,7 @@ export default class PinsApi {
      * @param {Array.<String>} pinIds List of Pin IDs.
      * @param {Date} startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param {Date} endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param {Array.<module:model/PinsAnalyticsMetricTypesParameterInner>} metricTypes Pin metric types to get data for.
+     * @param {Array.<module:model/String>} metricTypes Pin metric types to get data for.
      * @param {Object} opts Optional parameters
      * @param {module:model/String} [appTypes = 'ALL')] Apps or devices to get data for, default is all.
      * @param {String} [adAccountId] Unique identifier of an ad account.
@@ -122,7 +121,7 @@ export default class PinsApi {
      * @param {String} pinId Unique identifier of a Pin.
      * @param {Date} startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param {Date} endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param {Array.<module:model/PinsAnalyticsMetricTypesParameterInner>} metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+     * @param {Array.<module:model/String>} metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
      * @param {Object} opts Optional parameters
      * @param {module:model/String} [appTypes = 'ALL')] Apps or devices to get data for, default is all.
      * @param {module:model/String} [splitField = 'NO_SPLIT')] How to split the data into groups. Not including this param means data won't be split.

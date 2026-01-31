@@ -7,17 +7,18 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
-/**
- * A successful OAuth access token response for the authorization code flow.
- **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "A successful OAuth access token response for the authorization code flow.")
+
 public class OauthAccessTokenResponseCode   {
   
+  private String refreshToken;
+
+  private Integer refreshTokenExpiresIn;
+
 
 public enum ResponseTypeEnum {
 
@@ -59,9 +60,43 @@ public enum ResponseTypeEnum {
 
   private String scope;
 
-  private String refreshToken;
+  /**
+   **/
+  public OauthAccessTokenResponseCode refreshToken(String refreshToken) {
+    this.refreshToken = refreshToken;
+    return this;
+  }
 
-  private Integer refreshTokenExpiresIn;
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("refresh_token")
+  @NotNull
+  public String getRefreshToken() {
+    return refreshToken;
+  }
+  public void setRefreshToken(String refreshToken) {
+    this.refreshToken = refreshToken;
+  }
+
+
+  /**
+   **/
+  public OauthAccessTokenResponseCode refreshTokenExpiresIn(Integer refreshTokenExpiresIn) {
+    this.refreshTokenExpiresIn = refreshTokenExpiresIn;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("refresh_token_expires_in")
+  @NotNull
+  public Integer getRefreshTokenExpiresIn() {
+    return refreshTokenExpiresIn;
+  }
+  public void setRefreshTokenExpiresIn(Integer refreshTokenExpiresIn) {
+    this.refreshTokenExpiresIn = refreshTokenExpiresIn;
+  }
+
 
   /**
    **/
@@ -157,44 +192,6 @@ public enum ResponseTypeEnum {
   }
 
 
-  /**
-   **/
-  public OauthAccessTokenResponseCode refreshToken(String refreshToken) {
-    this.refreshToken = refreshToken;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("refresh_token")
-  @NotNull
-  public String getRefreshToken() {
-    return refreshToken;
-  }
-  public void setRefreshToken(String refreshToken) {
-    this.refreshToken = refreshToken;
-  }
-
-
-  /**
-   **/
-  public OauthAccessTokenResponseCode refreshTokenExpiresIn(Integer refreshTokenExpiresIn) {
-    this.refreshTokenExpiresIn = refreshTokenExpiresIn;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("refresh_token_expires_in")
-  @NotNull
-  public Integer getRefreshTokenExpiresIn() {
-    return refreshTokenExpiresIn;
-  }
-  public void setRefreshTokenExpiresIn(Integer refreshTokenExpiresIn) {
-    this.refreshTokenExpiresIn = refreshTokenExpiresIn;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -205,18 +202,18 @@ public enum ResponseTypeEnum {
       return false;
     }
     OauthAccessTokenResponseCode oauthAccessTokenResponseCode = (OauthAccessTokenResponseCode) o;
-    return Objects.equals(this.responseType, oauthAccessTokenResponseCode.responseType) &&
+    return Objects.equals(this.refreshToken, oauthAccessTokenResponseCode.refreshToken) &&
+        Objects.equals(this.refreshTokenExpiresIn, oauthAccessTokenResponseCode.refreshTokenExpiresIn) &&
+        Objects.equals(this.responseType, oauthAccessTokenResponseCode.responseType) &&
         Objects.equals(this.accessToken, oauthAccessTokenResponseCode.accessToken) &&
         Objects.equals(this.tokenType, oauthAccessTokenResponseCode.tokenType) &&
         Objects.equals(this.expiresIn, oauthAccessTokenResponseCode.expiresIn) &&
-        Objects.equals(this.scope, oauthAccessTokenResponseCode.scope) &&
-        Objects.equals(this.refreshToken, oauthAccessTokenResponseCode.refreshToken) &&
-        Objects.equals(this.refreshTokenExpiresIn, oauthAccessTokenResponseCode.refreshTokenExpiresIn);
+        Objects.equals(this.scope, oauthAccessTokenResponseCode.scope);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(responseType, accessToken, tokenType, expiresIn, scope, refreshToken, refreshTokenExpiresIn);
+    return Objects.hash(refreshToken, refreshTokenExpiresIn, responseType, accessToken, tokenType, expiresIn, scope);
   }
 
   @Override
@@ -224,13 +221,13 @@ public enum ResponseTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenResponseCode {\n");
     
+    sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
+    sb.append("    refreshTokenExpiresIn: ").append(toIndentedString(refreshTokenExpiresIn)).append("\n");
     sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
     sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("    expiresIn: ").append(toIndentedString(expiresIn)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
-    sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
-    sb.append("    refreshTokenExpiresIn: ").append(toIndentedString(refreshTokenExpiresIn)).append("\n");
     sb.append("}");
     return sb.toString();
   }

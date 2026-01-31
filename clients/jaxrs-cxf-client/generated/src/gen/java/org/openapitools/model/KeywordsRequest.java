@@ -12,16 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class KeywordsRequest  {
   
-  @ApiModelProperty(required = true, value = "Keyword JSON array. Each array element has 3 fields")
  /**
-   * Keyword JSON array. Each array element has 3 fields
-  **/
+  * Keyword JSON array. Each array element has 3 fields
+  */
+  @ApiModelProperty(required = true, value = "Keyword JSON array. Each array element has 3 fields")
+
   private List<KeywordsCommon> keywords = new ArrayList<>();
 
-  @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
  /**
-   * Keyword parent entity ID (advertiser, campaign, ad group).
-  **/
+  * Keyword parent entity ID (advertiser, campaign, ad group).
+  */
+  @ApiModelProperty(example = "383791336903426391", required = true, value = "Keyword parent entity ID (advertiser, campaign, ad group).")
+
   private String parentId;
  /**
    * Keyword JSON array. Each array element has 3 fields

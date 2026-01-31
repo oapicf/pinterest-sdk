@@ -9,13 +9,42 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_item_processing_status
 import model_item_validation_event
 
 type CreativeAssetsProcessingRecord* = object
   ## Object describing an item processing record
-  creativeAssetsId*: string ## The catalog creative assets id in the merchant namespace
-  errors*: seq[ItemValidationEvent] ## Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
-  warnings*: seq[ItemValidationEvent] ## Array with the validation warnings for the item processing record
-  status*: ItemProcessingStatus
+  creativeAssetsId*: Option[string] ## The catalog creative assets id in the merchant namespace
+  errors*: Option[seq[ItemValidationEvent]] ## Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
+  warnings*: Option[seq[ItemValidationEvent]] ## Array with the validation warnings for the item processing record
+  status*: Option[ItemProcessingStatus]
+
+
+# Custom JSON deserialization for CreativeAssetsProcessingRecord with custom field names
+proc to*(node: JsonNode, T: typedesc[CreativeAssetsProcessingRecord]): CreativeAssetsProcessingRecord =
+  result = CreativeAssetsProcessingRecord()
+  if node.kind == JObject:
+    if node.hasKey("creative_assets_id") and node["creative_assets_id"].kind != JNull:
+      result.creativeAssetsId = some(to(node["creative_assets_id"], typeof(result.creativeAssetsId.get())))
+    if node.hasKey("errors") and node["errors"].kind != JNull:
+      result.errors = some(to(node["errors"], typeof(result.errors.get())))
+    if node.hasKey("warnings") and node["warnings"].kind != JNull:
+      result.warnings = some(to(node["warnings"], typeof(result.warnings.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+
+# Custom JSON serialization for CreativeAssetsProcessingRecord with custom field names
+proc `%`*(obj: CreativeAssetsProcessingRecord): JsonNode =
+  result = newJObject()
+  if obj.creativeAssetsId.isSome():
+    result["creative_assets_id"] = %obj.creativeAssetsId.get()
+  if obj.errors.isSome():
+    result["errors"] = %obj.errors.get()
+  if obj.warnings.isSome():
+    result["warnings"] = %obj.warnings.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+

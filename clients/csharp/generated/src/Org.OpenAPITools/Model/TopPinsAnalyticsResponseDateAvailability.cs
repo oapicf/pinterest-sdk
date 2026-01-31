@@ -140,12 +140,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "latest_available_timestamp":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                latestAvailableTimestamp = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            latestAvailableTimestamp = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "is_realtime":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isRealtime = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isRealtime = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

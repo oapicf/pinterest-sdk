@@ -110,8 +110,12 @@ export class ProductGroupPromotionsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/product_group_promotions`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/product_group_promotions`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -158,8 +162,13 @@ export class ProductGroupPromotionsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+        urlPath = urlPath.replace(`{${"product_group_promotion_id"}}`, encodeURIComponent(String(requestParameters['productGroupPromotionId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))).replace(`{${"product_group_promotion_id"}}`, encodeURIComponent(String(requestParameters['productGroupPromotionId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -222,8 +231,12 @@ export class ProductGroupPromotionsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/product_group_promotions`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/product_group_promotions`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -271,8 +284,12 @@ export class ProductGroupPromotionsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/product_group_promotions`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/product_group_promotions`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -383,8 +400,12 @@ export class ProductGroupPromotionsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/product_groups/analytics`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/product_groups/analytics`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

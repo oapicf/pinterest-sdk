@@ -182,7 +182,6 @@ app/model/AudienceCategory.scala
 app/model/AudienceCommon.scala
 app/model/AudienceCreateCustomRequest.scala
 app/model/AudienceCreateRequest.scala
-app/model/AudienceCreateRequest1AudienceType.scala
 app/model/AudienceDataParty.scala
 app/model/AudienceDefinition.scala
 app/model/AudienceDefinitionResponse.scala
@@ -360,7 +359,6 @@ app/model/CatalogsItemsDeleteDiscontinuedBatchRequest.scala
 app/model/CatalogsItemsFilters.scala
 app/model/CatalogsItemsPostFilters.scala
 app/model/CatalogsItemsRequest.scala
-app/model/CatalogsItemsRequestLanguage.scala
 app/model/CatalogsItemsUpdateBatchRequest.scala
 app/model/CatalogsItemsUpsertBatchRequest.scala
 app/model/CatalogsList200Response.scala
@@ -694,7 +692,6 @@ app/model/PinMediaWithVideos.scala
 app/model/PinPromotionSummaryStatus.scala
 app/model/PinUpdate.scala
 app/model/PinUpdateCarouselSlotsInner.scala
-app/model/PinsAnalyticsMetricTypesParameterInner.scala
 app/model/PinsList200Response.scala
 app/model/PinsSaveRequest.scala
 app/model/PinterestTagEventData.scala

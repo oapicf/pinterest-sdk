@@ -210,10 +210,6 @@ namespace Org.OpenAPITools.Model
             CatalogsDeleteCreativeAssetsItem? catalogsDeleteCreativeAssetsItem = null;
             CatalogsUpdateCreativeAssetsItem? catalogsUpdateCreativeAssetsItem = null;
             CatalogsUpsertCreativeAssetsItem? catalogsUpsertCreativeAssetsItem = null;
-            CatalogsCreateCreativeAssetsItem? catalogsCreateCreativeAssetsItem = null;
-            CatalogsDeleteCreativeAssetsItem? catalogsDeleteCreativeAssetsItem = null;
-            CatalogsUpdateCreativeAssetsItem? catalogsUpdateCreativeAssetsItem = null;
-            CatalogsUpsertCreativeAssetsItem? catalogsUpsertCreativeAssetsItem = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -247,26 +243,6 @@ namespace Org.OpenAPITools.Model
                             catalogsUpdateCreativeAssetsItem = JsonSerializer.Deserialize<CatalogsUpdateCreativeAssetsItem>(ref utf8JsonReaderCatalogsUpdateCreativeAssetsItem, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("UPSERT") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsUpsertCreativeAssetsItem = utf8JsonReader;
-                            catalogsUpsertCreativeAssetsItem = JsonSerializer.Deserialize<CatalogsUpsertCreativeAssetsItem>(ref utf8JsonReaderCatalogsUpsertCreativeAssetsItem, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsCreateCreativeAssetsItem") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsCreateCreativeAssetsItem = utf8JsonReader;
-                            catalogsCreateCreativeAssetsItem = JsonSerializer.Deserialize<CatalogsCreateCreativeAssetsItem>(ref utf8JsonReaderCatalogsCreateCreativeAssetsItem, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsDeleteCreativeAssetsItem") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsDeleteCreativeAssetsItem = utf8JsonReader;
-                            catalogsDeleteCreativeAssetsItem = JsonSerializer.Deserialize<CatalogsDeleteCreativeAssetsItem>(ref utf8JsonReaderCatalogsDeleteCreativeAssetsItem, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsUpdateCreativeAssetsItem") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsUpdateCreativeAssetsItem = utf8JsonReader;
-                            catalogsUpdateCreativeAssetsItem = JsonSerializer.Deserialize<CatalogsUpdateCreativeAssetsItem>(ref utf8JsonReaderCatalogsUpdateCreativeAssetsItem, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsUpsertCreativeAssetsItem") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsUpsertCreativeAssetsItem = utf8JsonReader;
                             catalogsUpsertCreativeAssetsItem = JsonSerializer.Deserialize<CatalogsUpsertCreativeAssetsItem>(ref utf8JsonReaderCatalogsUpsertCreativeAssetsItem, jsonSerializerOptions);
@@ -307,31 +283,6 @@ namespace Org.OpenAPITools.Model
             if (operation.IsSet && operation.Value == null)
                 throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsCreativeAssetsBatchItem.");
 
-            if (catalogsCreateCreativeAssetsItem != null)
-                return new CatalogsCreativeAssetsBatchItem(catalogsCreateCreativeAssetsItem);
-
-            if (catalogsDeleteCreativeAssetsItem != null)
-                return new CatalogsCreativeAssetsBatchItem(catalogsDeleteCreativeAssetsItem);
-
-            if (catalogsUpdateCreativeAssetsItem != null)
-                return new CatalogsCreativeAssetsBatchItem(catalogsUpdateCreativeAssetsItem);
-
-            if (catalogsUpsertCreativeAssetsItem != null)
-                return new CatalogsCreativeAssetsBatchItem(catalogsUpsertCreativeAssetsItem);
-
-            if (catalogsCreateCreativeAssetsItem != null)
-                return new CatalogsCreativeAssetsBatchItem(catalogsCreateCreativeAssetsItem);
-
-            if (catalogsDeleteCreativeAssetsItem != null)
-                return new CatalogsCreativeAssetsBatchItem(catalogsDeleteCreativeAssetsItem);
-
-            if (catalogsUpdateCreativeAssetsItem != null)
-                return new CatalogsCreativeAssetsBatchItem(catalogsUpdateCreativeAssetsItem);
-
-            if (catalogsUpsertCreativeAssetsItem != null)
-                return new CatalogsCreativeAssetsBatchItem(catalogsUpsertCreativeAssetsItem);
-
-            throw new JsonException();
             Option<CatalogsCreateCreativeAssetsItem?> catalogsCreateCreativeAssetsItemParsedValue = catalogsCreateCreativeAssetsItem == null
                 ? default
                 : new Option<CatalogsCreateCreativeAssetsItem?>(catalogsCreateCreativeAssetsItem);

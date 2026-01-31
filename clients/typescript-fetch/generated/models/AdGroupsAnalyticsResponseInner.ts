@@ -71,7 +71,7 @@ export function AdGroupsAnalyticsResponseInnerToJSONTyped(value?: AdGroupsAnalyt
         
             ...value,
         'AD_GROUP_ID': value['aDGROUPID'],
-        'DATE': value['dATE'] == null ? undefined : ((value['dATE']).toISOString().substring(0,10)),
+        'DATE': value['dATE'] == null ? value['dATE'] : value['dATE'].toISOString().substring(0,10),
     };
 }
 

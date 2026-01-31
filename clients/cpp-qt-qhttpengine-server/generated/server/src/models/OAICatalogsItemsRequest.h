@@ -22,8 +22,8 @@
 #include <QJsonObject>
 
 #include "OAICatalogsItemsPostFilters.h"
-#include "OAICatalogsItemsRequest_language.h"
 #include "OAICountry.h"
+#include <QString>
 
 #include "OAIEnum.h"
 #include "OAIObject.h"
@@ -46,8 +46,8 @@ public:
     bool is_country_Set() const;
     bool is_country_Valid() const;
 
-    OAICatalogsItemsRequest_language getLanguage() const;
-    void setLanguage(const OAICatalogsItemsRequest_language &language);
+    QString getLanguage() const;
+    void setLanguage(const QString &language);
     bool is_language_Set() const;
     bool is_language_Valid() const;
 
@@ -66,7 +66,7 @@ private:
     bool m_country_isSet;
     bool m_country_isValid;
 
-    OAICatalogsItemsRequest_language language;
+    QString language;
     bool m_language_isSet;
     bool m_language_isValid;
 

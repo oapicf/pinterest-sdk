@@ -8,28 +8,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class IntegrationLogsInvalidLogResponseRejectedLogsInner  {
   
-  @ApiModelProperty(value = "Index of the log in the batch.")
  /**
-   * Index of the log in the batch.
-  **/
+  * Index of the log in the batch.
+  */
+  @ApiModelProperty(value = "Index of the log in the batch.")
+
   private Integer logIndex;
 
-  @ApiModelProperty(required = true, value = "The field name containing an invalid value.")
  /**
-   * The field name containing an invalid value.
-  **/
+  * The field name containing an invalid value.
+  */
+  @ApiModelProperty(required = true, value = "The field name containing an invalid value.")
+
   private String field;
 
-  @ApiModelProperty(required = true, value = "The value that is invalid.")
  /**
-   * The value that is invalid.
-  **/
+  * The value that is invalid.
+  */
+  @ApiModelProperty(required = true, value = "The value that is invalid.")
+
   private String value;
 
-  @ApiModelProperty(required = true, value = "The reason the value is invalid.")
  /**
-   * The reason the value is invalid.
-  **/
+  * The reason the value is invalid.
+  */
+  @ApiModelProperty(required = true, value = "The reason the value is invalid.")
+
   private String reason;
  /**
    * Index of the log in the batch.

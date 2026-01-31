@@ -5,13 +5,6 @@ context("Test OauthAccessTokenRequestCode")
 
 model_instance <- OauthAccessTokenRequestCode$new()
 
-test_that("grant_type", {
-  # tests for the property `grant_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`grant_type`, "EXPECTED_RESULT")
-})
-
 test_that("code", {
   # tests for the property `code` (character)
 
@@ -24,4 +17,11 @@ test_that("redirect_uri", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`redirect_uri`, "EXPECTED_RESULT")
+})
+
+test_that("grant_type", {
+  # tests for the property `grant_type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`grant_type`, "EXPECTED_RESULT")
 })

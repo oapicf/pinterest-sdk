@@ -30,17 +30,14 @@ import ../models/model_error
 import ../models/model_invite_type
 import ../models/model_respond_to_invites_response_array
 import ../models/model_update_invites_results_response_array
-import ../models/model_get_invites_200_response
+import ../models/model_get_invites200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -61,8 +58,7 @@ proc assetAccessRequestsCreate*(httpClient: HttpClient, businessId: string, crea
 proc cancelInvitesOrRequests*(httpClient: HttpClient, businessId: string, cancelInvitesBody: CancelInvitesBody): (Option[DeleteInvitesResultsResponseArray], Response) =
   ## Cancel invites/requests
   httpClient.headers["Content-Type"] = "application/json"
-
-  let response = httpClient.delete(basepath & fmt"/businesses/{business_id}/invites", $(%cancelInvitesBody))
+  let response = httpClient.request(basepath & fmt"/businesses/{business_id}/invites", httpMethod = HttpDelete, body = $(%cancelInvitesBody))
   constructResult[DeleteInvitesResultsResponseArray](response)
 
 
@@ -84,15 +80,20 @@ proc createMembershipOrPartnershipInvites*(httpClient: HttpClient, businessId: s
 
 proc getInvites*(httpClient: HttpClient, businessId: string, isMember: bool, inviteStatus: seq[InviteStatus], inviteType: InviteType, bookmark: string, pageSize: int): (Option[get_invites_200_response], Response) =
   ## Get invites/requests
-  let query_for_api_call = encodeQuery([
-    ("is_member", $isMember), # A boolean field to indicate whether the invite is to create a partnership or a membership.
-    ("invite_status", $inviteStatus.join(",")), # A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
-    ("invite_type", $inviteType), # Invite type to filter invites by. Only invites of the specified type will be returned.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $isMember != "":
+    query_params_list.add(("is_member", $isMember))
+  if inviteStatus.len > 0:
+    query_params_list.add(("invite_status", $inviteStatus.join(",")))
+  if $inviteType != "":
+    query_params_list.add(("invite_type", $inviteType))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/invites" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/invites" & "?" & url_encoded_query_params)
   constructResult[get_invites_200_response](response)
 
 

@@ -12,7 +12,8 @@
 type CatalogsRetailBatchRequest {
   catalog_type: CatalogTypeEnum
   country: Country
-  language: CatalogsItemsRequestLanguage
+  # We recommend using the CatalogsLocale values.
+  language: LanguageEnum
   # Array with catalogs item operations
   items: [CatalogsRetailBatchRequestItemsInner!]
 }
@@ -20,7 +21,8 @@ type CatalogsRetailBatchRequest {
 input CatalogsRetailBatchRequestInput {
     catalog_type: CatalogTypeEnum
     country: Country
-    language: CatalogsItemsRequestLanguageInput
+    # We recommend using the CatalogsLocale values.
+    language: LanguageEnumInput
     # Array with catalogs item operations
     items: [CatalogsRetailBatchRequestItemsInnerInput]
 }

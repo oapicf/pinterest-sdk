@@ -2,8 +2,8 @@ package org.openapitools.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.AudienceCreateRequest1AudienceType;
 import org.openapitools.model.AudienceRule;
+import org.openapitools.model.AudienceType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -13,17 +13,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 
 
 @JsonTypeName("AudienceCreateRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceCreateRequest   {
   private String adAccountId;
   private String name;
   private AudienceRule rule;
   private String description;
-  private AudienceCreateRequest1AudienceType audienceType;
+  private AudienceType audienceType;
 
   public AudienceCreateRequest() {
   }
@@ -32,7 +33,7 @@ public class AudienceCreateRequest   {
   public AudienceCreateRequest(
     @JsonProperty(required = true, value = "name") String name,
     @JsonProperty(required = true, value = "rule") AudienceRule rule,
-    @JsonProperty(required = true, value = "audience_type") AudienceCreateRequest1AudienceType audienceType
+    @JsonProperty(required = true, value = "audience_type") AudienceType audienceType
   ) {
     this.name = name;
     this.rule = rule;
@@ -119,21 +120,22 @@ public class AudienceCreateRequest   {
   }
 
   /**
+   * &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
    **/
-  public AudienceCreateRequest audienceType(AudienceCreateRequest1AudienceType audienceType) {
+  public AudienceCreateRequest audienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.")
   @JsonProperty(required = true, value = "audience_type")
-  @NotNull @Valid public AudienceCreateRequest1AudienceType getAudienceType() {
+  @NotNull public AudienceType getAudienceType() {
     return audienceType;
   }
 
   @JsonProperty(required = true, value = "audience_type")
-  public void setAudienceType(AudienceCreateRequest1AudienceType audienceType) {
+  public void setAudienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
   }
 

@@ -10,50 +10,49 @@ import Foundation
 import AnyCodable
 #endif
 
-/** An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated. */
 public struct InviteBusinessRoleBinding: Codable, JSONEncodable, Hashable {
 
     public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    /** Unique identifier for the business that created the invite/request. */
-    public var createdByBusinessId: String?
-    /** Unique identifier for the user that created the invite/request. */
-    public var createdByUserId: String?
-    /** Metadata for the user that updated the invite/request. */
-    public var user: BusinessAccessUserSummary?
     /** Unique identifier of the invite/request. */
     public var id: String?
     public var inviteData: BaseInviteDataResponseInviteData?
     /** Indicates whether the invite/request was received. */
     public var isReceivedInvite: Bool?
+    /** Metadata for the user that updated the invite/request. */
+    public var user: AnyCodable?
+    /** Unique identifier for the business that created the invite/request. */
+    public var createdByBusinessId: String?
+    /** Unique identifier for the user that created the invite/request. */
+    public var createdByUserId: String?
 
-    public init(createdByBusinessId: String? = nil, createdByUserId: String? = nil, user: BusinessAccessUserSummary? = nil, id: String? = nil, inviteData: BaseInviteDataResponseInviteData? = nil, isReceivedInvite: Bool? = nil) {
-        self.createdByBusinessId = createdByBusinessId
-        self.createdByUserId = createdByUserId
-        self.user = user
+    public init(id: String? = nil, inviteData: BaseInviteDataResponseInviteData? = nil, isReceivedInvite: Bool? = nil, user: AnyCodable? = nil, createdByBusinessId: String? = nil, createdByUserId: String? = nil) {
         self.id = id
         self.inviteData = inviteData
         self.isReceivedInvite = isReceivedInvite
+        self.user = user
+        self.createdByBusinessId = createdByBusinessId
+        self.createdByUserId = createdByUserId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case createdByBusinessId = "created_by_business_id"
-        case createdByUserId = "created_by_user_id"
-        case user
         case id
         case inviteData = "invite_data"
         case isReceivedInvite = "is_received_invite"
+        case user
+        case createdByBusinessId = "created_by_business_id"
+        case createdByUserId = "created_by_user_id"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(createdByBusinessId, forKey: .createdByBusinessId)
-        try container.encodeIfPresent(createdByUserId, forKey: .createdByUserId)
-        try container.encodeIfPresent(user, forKey: .user)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(inviteData, forKey: .inviteData)
         try container.encodeIfPresent(isReceivedInvite, forKey: .isReceivedInvite)
+        try container.encodeIfPresent(user, forKey: .user)
+        try container.encodeIfPresent(createdByBusinessId, forKey: .createdByBusinessId)
+        try container.encodeIfPresent(createdByUserId, forKey: .createdByUserId)
     }
 }
 

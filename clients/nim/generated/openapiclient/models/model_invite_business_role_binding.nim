@@ -9,15 +9,52 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_base_invite_data_response_invite_data
-import model_business_access_user_summary
+import model_object
 
 type InviteBusinessRoleBinding* = object
-  ## An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
-  createdByBusinessId*: string ## Unique identifier for the business that created the invite/request.
-  createdByUserId*: string ## Unique identifier for the user that created the invite/request.
-  user*: BusinessAccessUserSummary ## Metadata for the user that updated the invite/request.
-  id*: string ## Unique identifier of the invite/request.
-  inviteData*: BaseInviteDataResponse_invite_data
-  isReceivedInvite*: bool ## Indicates whether the invite/request was received.
+  ## 
+  id*: Option[string] ## Unique identifier of the invite/request.
+  inviteData*: Option[BaseInviteDataResponse_invite_data]
+  isReceivedInvite*: Option[bool] ## Indicates whether the invite/request was received.
+  user*: Option[JsonNode] ## Metadata for the user that updated the invite/request.
+  createdByBusinessId*: Option[string] ## Unique identifier for the business that created the invite/request.
+  createdByUserId*: Option[string] ## Unique identifier for the user that created the invite/request.
+
+
+# Custom JSON deserialization for InviteBusinessRoleBinding with custom field names
+proc to*(node: JsonNode, T: typedesc[InviteBusinessRoleBinding]): InviteBusinessRoleBinding =
+  result = InviteBusinessRoleBinding()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("invite_data") and node["invite_data"].kind != JNull:
+      result.inviteData = some(to(node["invite_data"], typeof(result.inviteData.get())))
+    if node.hasKey("is_received_invite") and node["is_received_invite"].kind != JNull:
+      result.isReceivedInvite = some(to(node["is_received_invite"], typeof(result.isReceivedInvite.get())))
+    if node.hasKey("user") and node["user"].kind != JNull:
+      result.user = some(to(node["user"], typeof(result.user.get())))
+    if node.hasKey("created_by_business_id") and node["created_by_business_id"].kind != JNull:
+      result.createdByBusinessId = some(to(node["created_by_business_id"], typeof(result.createdByBusinessId.get())))
+    if node.hasKey("created_by_user_id") and node["created_by_user_id"].kind != JNull:
+      result.createdByUserId = some(to(node["created_by_user_id"], typeof(result.createdByUserId.get())))
+
+# Custom JSON serialization for InviteBusinessRoleBinding with custom field names
+proc `%`*(obj: InviteBusinessRoleBinding): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.inviteData.isSome():
+    result["invite_data"] = %obj.inviteData.get()
+  if obj.isReceivedInvite.isSome():
+    result["is_received_invite"] = %obj.isReceivedInvite.get()
+  if obj.user.isSome():
+    result["user"] = %obj.user.get()
+  if obj.createdByBusinessId.isSome():
+    result["created_by_business_id"] = %obj.createdByBusinessId.get()
+  if obj.createdByUserId.isSome():
+    result["created_by_user_id"] = %obj.createdByUserId.get()
+

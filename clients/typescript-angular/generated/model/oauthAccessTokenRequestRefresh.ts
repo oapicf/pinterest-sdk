@@ -9,25 +9,22 @@
  */
 
 
-/**
- * A request to exchange a refresh token for a new access token.
- */
 export interface OauthAccessTokenRequestRefresh { 
-    grant_type: OauthAccessTokenRequestRefresh.GrantTypeEnum;
     refresh_token: string;
     scope?: string;
     /**
      * Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
      */
     refresh_on?: boolean;
+    grant_type: OauthAccessTokenRequestRefresh.GrantTypeEnum;
 }
 export namespace OauthAccessTokenRequestRefresh {
-    export type GrantTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
     export const GrantTypeEnum = {
-        AuthorizationCode: 'authorization_code' as GrantTypeEnum,
-        RefreshToken: 'refresh_token' as GrantTypeEnum,
-        ClientCredentials: 'client_credentials' as GrantTypeEnum
-    };
+        AuthorizationCode: 'authorization_code',
+        RefreshToken: 'refresh_token',
+        ClientCredentials: 'client_credentials'
+    } as const;
+    export type GrantTypeEnum = typeof GrantTypeEnum[keyof typeof GrantTypeEnum];
 }
 
 

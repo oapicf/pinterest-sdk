@@ -9,11 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_related_terms_related_terms_list_inner
 
 type RelatedTerms* = object
   ## 
-  id*: string ## First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"
-  relatedTermCount*: int ## Total number of related terms returned
-  relatedTermsList*: seq[RelatedTerms_related_terms_list_inner] ## The id of the advertiser.
+  id*: Option[string] ## First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"
+  relatedTermCount*: Option[int] ## Total number of related terms returned
+  relatedTermsList*: Option[seq[RelatedTerms_related_terms_list_inner]] ## The id of the advertiser.
+
+
+# Custom JSON deserialization for RelatedTerms with custom field names
+proc to*(node: JsonNode, T: typedesc[RelatedTerms]): RelatedTerms =
+  result = RelatedTerms()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("related_term_count") and node["related_term_count"].kind != JNull:
+      result.relatedTermCount = some(to(node["related_term_count"], typeof(result.relatedTermCount.get())))
+    if node.hasKey("related_terms_list") and node["related_terms_list"].kind != JNull:
+      result.relatedTermsList = some(to(node["related_terms_list"], typeof(result.relatedTermsList.get())))
+
+# Custom JSON serialization for RelatedTerms with custom field names
+proc `%`*(obj: RelatedTerms): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.relatedTermCount.isSome():
+    result["related_term_count"] = %obj.relatedTermCount.get()
+  if obj.relatedTermsList.isSome():
+    result["related_terms_list"] = %obj.relatedTermsList.get()
+

@@ -20,14 +20,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AdvancedAuctionOperationError", description = "Error which occurred when applying a bid options operation to a specific item.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionOperationError {
 
   private @Nullable Integer code;
 
   private @Nullable String message;
 
-  public AdvancedAuctionOperationError code(Integer code) {
+  public AdvancedAuctionOperationError code(@Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -39,15 +39,15 @@ public class AdvancedAuctionOperationError {
   
   @Schema(name = "code", example = "6", description = "The error code for the item bid option operation validation error", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public Integer getCode() {
+  public @Nullable Integer getCode() {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@Nullable Integer code) {
     this.code = code;
   }
 
-  public AdvancedAuctionOperationError message(String message) {
+  public AdvancedAuctionOperationError message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -59,11 +59,11 @@ public class AdvancedAuctionOperationError {
   
   @Schema(name = "message", example = "Bid in micro currency should be non-negative", description = "Message describing the item bid option operation validation error", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
-  public String getMessage() {
+  public @Nullable String getMessage() {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 

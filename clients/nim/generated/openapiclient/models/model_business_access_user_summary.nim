@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type BusinessAccessUserSummary* = object
   ## Metadata of the member/partner that has access to the asset.
-  email*: string ## Email of the business member/partner.
-  id*: string ## Unique identifier of the business member/partner.
-  username*: string ## Username of the business member/partner.
+  email*: Option[string] ## Email of the business member/partner.
+  id*: Option[string] ## Unique identifier of the business member/partner.
+  username*: Option[string] ## Username of the business member/partner.
+

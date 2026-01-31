@@ -115,8 +115,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "keywords":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                keywords = new Option<List<KeywordUpdate>?>(JsonSerializer.Deserialize<List<KeywordUpdate>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            keywords = new Option<List<KeywordUpdate>?>(JsonSerializer.Deserialize<List<KeywordUpdate>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

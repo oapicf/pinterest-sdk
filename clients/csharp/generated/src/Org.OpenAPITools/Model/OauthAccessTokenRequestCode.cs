@@ -27,7 +27,7 @@ using Org.OpenAPITools.Client;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// A request to exchange an authorization code for an access token.
+    /// OauthAccessTokenRequestCode
     /// </summary>
     public partial class OauthAccessTokenRequestCode : IValidatableObject
     {
@@ -154,9 +154,9 @@ namespace Org.OpenAPITools.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class OauthAccessTokenRequestCode {\n");
-            sb.Append("  GrantType: ").Append(GrantType).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  RedirectUri: ").Append(RedirectUri).Append("\n");
+            sb.Append("  GrantType: ").Append(GrantType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -4,6 +4,7 @@ import org.openapitools.api.*;
 import org.openapitools.model.*;
 
 
+
 import java.util.Date;
 import org.openapitools.model.Error;
 import java.util.Map;
@@ -11,7 +12,6 @@ import org.openapitools.model.Pin;
 import org.openapitools.model.PinAnalyticsMetricsResponse;
 import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
-import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
 
@@ -25,11 +25,11 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2025-05-10T05:40:40.818990358Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface PinsApiService {
-      Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds,Date startDate,Date endDate,List<PinsAnalyticsMetricTypesParameterInner> metricTypes,String appTypes,String adAccountId,SecurityContext securityContext)
+      Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds,Date startDate,Date endDate,List<String> metricTypes,String appTypes,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
-      Response pinsAnalytics(String pinId,Date startDate,Date endDate,List<PinsAnalyticsMetricTypesParameterInner> metricTypes,String appTypes,String splitField,String adAccountId,SecurityContext securityContext)
+      Response pinsAnalytics(String pinId,Date startDate,Date endDate,List<String> metricTypes,String appTypes,String splitField,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
       Response pinsCreate(PinCreate pinCreate,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
@@ -43,4 +43,6 @@ public interface PinsApiService {
       throws NotFoundException;
       Response pinsUpdate(String pinId,PinUpdate pinUpdate,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
+
+
 }

@@ -137,16 +137,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "num_events_received":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numEventsReceived = new Option<int?>(utf8JsonReader.GetInt32());
+                            numEventsReceived = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "num_events_processed":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numEventsProcessed = new Option<int?>(utf8JsonReader.GetInt32());
+                            numEventsProcessed = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "events":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                events = new Option<List<ConversionApiResponseEventsInner>?>(JsonSerializer.Deserialize<List<ConversionApiResponseEventsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            events = new Option<List<ConversionApiResponseEventsInner>?>(JsonSerializer.Deserialize<List<ConversionApiResponseEventsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -20,14 +20,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BookClosedResponse", description = "Creation fields")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BookClosedResponse {
 
   private @Nullable Boolean conversionMetricsReady;
 
   private @Nullable Boolean nonConversionMetricsReady;
 
-  public BookClosedResponse conversionMetricsReady(Boolean conversionMetricsReady) {
+  public BookClosedResponse conversionMetricsReady(@Nullable Boolean conversionMetricsReady) {
     this.conversionMetricsReady = conversionMetricsReady;
     return this;
   }
@@ -39,15 +39,15 @@ public class BookClosedResponse {
   
   @Schema(name = "conversion_metrics_ready", example = "false", description = "Are conversion metrics ready?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_metrics_ready")
-  public Boolean getConversionMetricsReady() {
+  public @Nullable Boolean getConversionMetricsReady() {
     return conversionMetricsReady;
   }
 
-  public void setConversionMetricsReady(Boolean conversionMetricsReady) {
+  public void setConversionMetricsReady(@Nullable Boolean conversionMetricsReady) {
     this.conversionMetricsReady = conversionMetricsReady;
   }
 
-  public BookClosedResponse nonConversionMetricsReady(Boolean nonConversionMetricsReady) {
+  public BookClosedResponse nonConversionMetricsReady(@Nullable Boolean nonConversionMetricsReady) {
     this.nonConversionMetricsReady = nonConversionMetricsReady;
     return this;
   }
@@ -59,11 +59,11 @@ public class BookClosedResponse {
   
   @Schema(name = "non_conversion_metrics_ready", example = "false", description = "Are non-conversion metrics ready?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("non_conversion_metrics_ready")
-  public Boolean getNonConversionMetricsReady() {
+  public @Nullable Boolean getNonConversionMetricsReady() {
     return nonConversionMetricsReady;
   }
 
-  public void setNonConversionMetricsReady(Boolean nonConversionMetricsReady) {
+  public void setNonConversionMetricsReady(@Nullable Boolean nonConversionMetricsReady) {
     this.nonConversionMetricsReady = nonConversionMetricsReady;
   }
 

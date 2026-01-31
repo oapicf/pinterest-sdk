@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **PreferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **DefaultCountry** | [**Country**](Country.md) |  | [optional] 
 **DefaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
-**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
+**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to "ACTIVE"]
 
 ## Examples
 

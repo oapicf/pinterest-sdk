@@ -43,7 +43,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="preferredProcessingSchedule">preferredProcessingSchedule</param>
         /// <param name="defaultCountry">defaultCountry</param>
         /// <param name="defaultAvailability">defaultAvailability</param>
-        /// <param name="status">status</param>
+        /// <param name="status">status (default to &quot;ACTIVE&quot;)</param>
         [JsonConstructor]
         public CatalogsFeedsCreateRequest(string name, CatalogsFormat format, string location, Option<NullableCurrency?> defaultCurrency = default, Option<CatalogsFeedsCreateRequestDefaultLocale?> defaultLocale = default, Option<CatalogsFeedCredentials?> credentials = default, Option<CatalogsFeedProcessingSchedule?> preferredProcessingSchedule = default, Option<Country?> defaultCountry = default, Option<ProductAvailabilityType?> defaultAvailability = default, Option<CatalogsStatus?> status = default)
         {
@@ -281,16 +281,13 @@ namespace Org.OpenAPITools.Model
                                 defaultCurrency = new Option<NullableCurrency?>(NullableCurrencyValueConverter.FromStringOrDefault(defaultCurrencyRawValue));
                             break;
                         case "default_locale":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                defaultLocale = new Option<CatalogsFeedsCreateRequestDefaultLocale?>(JsonSerializer.Deserialize<CatalogsFeedsCreateRequestDefaultLocale>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            defaultLocale = new Option<CatalogsFeedsCreateRequestDefaultLocale?>(JsonSerializer.Deserialize<CatalogsFeedsCreateRequestDefaultLocale>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "credentials":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                credentials = new Option<CatalogsFeedCredentials?>(JsonSerializer.Deserialize<CatalogsFeedCredentials>(ref utf8JsonReader, jsonSerializerOptions));
+                            credentials = new Option<CatalogsFeedCredentials?>(JsonSerializer.Deserialize<CatalogsFeedCredentials>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "preferred_processing_schedule":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                preferredProcessingSchedule = new Option<CatalogsFeedProcessingSchedule?>(JsonSerializer.Deserialize<CatalogsFeedProcessingSchedule>(ref utf8JsonReader, jsonSerializerOptions));
+                            preferredProcessingSchedule = new Option<CatalogsFeedProcessingSchedule?>(JsonSerializer.Deserialize<CatalogsFeedProcessingSchedule>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "default_country":
                             string? defaultCountryRawValue = utf8JsonReader.GetString();

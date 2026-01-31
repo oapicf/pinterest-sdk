@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_object
 
@@ -20,30 +22,98 @@ type Status* {.pure.} = enum
 
 type CustomerList* = object
   ## 
-  adAccountId*: string ## Associated ad account ID.
-  createdTime*: float ## Creation time. Unix timestamp in seconds.
-  id*: string ## Customer list ID.
-  name*: string ## Customer list name.
-  numBatches*: float ## Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
-  numRemovedUserRecords*: float ## Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
-  numUploadedUserRecords*: float ## Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
-  status*: Status ## Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-  `type`*: string ## Always \"customerlist\".
-  updatedTime*: float ## Last update time. Unix timestamp in seconds.
-  exceptions*: object ## Customer list errors
+  adAccountId*: Option[string] ## Associated ad account ID.
+  createdTime*: Option[float] ## Creation time. Unix timestamp in seconds.
+  id*: Option[string] ## Customer list ID.
+  name*: Option[string] ## Customer list name.
+  numBatches*: Option[float] ## Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
+  numRemovedUserRecords*: Option[float] ## Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
+  numUploadedUserRecords*: Option[float] ## Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
+  status*: Option[Status] ## Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
+  `type`*: Option[string] ## Always \"customerlist\".
+  updatedTime*: Option[float] ## Last update time. Unix timestamp in seconds.
+  exceptions*: Option[JsonNode] ## Customer list errors
 
 func `%`*(v: Status): JsonNode =
-  let str = case v:
-    of Status.PROCESSING: "PROCESSING"
-    of Status.READY: "READY"
-    of Status.TOOSMALL: "TOO_SMALL"
-    of Status.UPLOADING: "UPLOADING"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Status.PROCESSING: %"PROCESSING"
+    of Status.READY: %"READY"
+    of Status.TOOSMALL: %"TOO_SMALL"
+    of Status.UPLOADING: %"UPLOADING"
 func `$`*(v: Status): string =
   result = case v:
-    of Status.PROCESSING: "PROCESSING"
-    of Status.READY: "READY"
-    of Status.TOOSMALL: "TOO_SMALL"
-    of Status.UPLOADING: "UPLOADING"
+    of Status.PROCESSING: $("PROCESSING")
+    of Status.READY: $("READY")
+    of Status.TOOSMALL: $("TOO_SMALL")
+    of Status.UPLOADING: $("UPLOADING")
+
+proc to*(node: JsonNode, T: typedesc[Status]): Status =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Status, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("PROCESSING"):
+    return Status.PROCESSING
+  of $("READY"):
+    return Status.READY
+  of $("TOO_SMALL"):
+    return Status.TOOSMALL
+  of $("UPLOADING"):
+    return Status.UPLOADING
+  else:
+    raise newException(ValueError, "Invalid enum value for Status: " & strVal)
+
+
+# Custom JSON deserialization for CustomerList with custom field names
+proc to*(node: JsonNode, T: typedesc[CustomerList]): CustomerList =
+  result = CustomerList()
+  if node.kind == JObject:
+    if node.hasKey("ad_account_id") and node["ad_account_id"].kind != JNull:
+      result.adAccountId = some(to(node["ad_account_id"], typeof(result.adAccountId.get())))
+    if node.hasKey("created_time") and node["created_time"].kind != JNull:
+      result.createdTime = some(to(node["created_time"], typeof(result.createdTime.get())))
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("num_batches") and node["num_batches"].kind != JNull:
+      result.numBatches = some(to(node["num_batches"], typeof(result.numBatches.get())))
+    if node.hasKey("num_removed_user_records") and node["num_removed_user_records"].kind != JNull:
+      result.numRemovedUserRecords = some(to(node["num_removed_user_records"], typeof(result.numRemovedUserRecords.get())))
+    if node.hasKey("num_uploaded_user_records") and node["num_uploaded_user_records"].kind != JNull:
+      result.numUploadedUserRecords = some(to(node["num_uploaded_user_records"], typeof(result.numUploadedUserRecords.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], Status))
+    if node.hasKey("type") and node["type"].kind != JNull:
+      result.`type` = some(to(node["type"], typeof(result.`type`.get())))
+    if node.hasKey("updated_time") and node["updated_time"].kind != JNull:
+      result.updatedTime = some(to(node["updated_time"], typeof(result.updatedTime.get())))
+    if node.hasKey("exceptions") and node["exceptions"].kind != JNull:
+      result.exceptions = some(to(node["exceptions"], typeof(result.exceptions.get())))
+
+# Custom JSON serialization for CustomerList with custom field names
+proc `%`*(obj: CustomerList): JsonNode =
+  result = newJObject()
+  if obj.adAccountId.isSome():
+    result["ad_account_id"] = %obj.adAccountId.get()
+  if obj.createdTime.isSome():
+    result["created_time"] = %obj.createdTime.get()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.numBatches.isSome():
+    result["num_batches"] = %obj.numBatches.get()
+  if obj.numRemovedUserRecords.isSome():
+    result["num_removed_user_records"] = %obj.numRemovedUserRecords.get()
+  if obj.numUploadedUserRecords.isSome():
+    result["num_uploaded_user_records"] = %obj.numUploadedUserRecords.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.`type`.isSome():
+    result["type"] = %obj.`type`.get()
+  if obj.updatedTime.isSome():
+    result["updated_time"] = %obj.updatedTime.get()
+  if obj.exceptions.isSome():
+    result["exceptions"] = %obj.exceptions.get()
+

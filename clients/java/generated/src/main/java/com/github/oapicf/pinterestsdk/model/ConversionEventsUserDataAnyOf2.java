@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionEventsUserDataAnyOf2
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventsUserDataAnyOf2 {
   public static final String SERIALIZED_NAME_EM = "em";
   @SerializedName(SERIALIZED_NAME_EM)
@@ -217,16 +217,10 @@ public class ConversionEventsUserDataAnyOf2 {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("em");
-    openapiFields.add("hashed_maids");
-    openapiFields.add("client_ip_address");
-    openapiFields.add("client_user_agent");
+    openapiFields = new HashSet<String>(Arrays.asList("em", "hashed_maids", "client_ip_address", "client_user_agent"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("client_ip_address");
-    openapiRequiredFields.add("client_user_agent");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("client_ip_address", "client_user_agent"));
   }
 
   /**
@@ -238,7 +232,7 @@ public class ConversionEventsUserDataAnyOf2 {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ConversionEventsUserDataAnyOf2.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ConversionEventsUserDataAnyOf2 is not found in the empty JSON string", ConversionEventsUserDataAnyOf2.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ConversionEventsUserDataAnyOf2 is not found in the empty JSON string", ConversionEventsUserDataAnyOf2.openapiRequiredFields.toString()));
         }
       }
 
@@ -246,30 +240,30 @@ public class ConversionEventsUserDataAnyOf2 {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ConversionEventsUserDataAnyOf2.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConversionEventsUserDataAnyOf2` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ConversionEventsUserDataAnyOf2` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ConversionEventsUserDataAnyOf2.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the optional json data is an array if present
       if (jsonObj.get("em") != null && !jsonObj.get("em").isJsonNull() && !jsonObj.get("em").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `em` to be an array in the JSON string but got `%s`", jsonObj.get("em").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `em` to be an array in the JSON string but got `%s`", jsonObj.get("em").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("hashed_maids") != null && !jsonObj.get("hashed_maids").isJsonNull() && !jsonObj.get("hashed_maids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `hashed_maids` to be an array in the JSON string but got `%s`", jsonObj.get("hashed_maids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `hashed_maids` to be an array in the JSON string but got `%s`", jsonObj.get("hashed_maids").toString()));
       }
       if (!jsonObj.get("client_ip_address").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `client_ip_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_ip_address").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `client_ip_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_ip_address").toString()));
       }
       if (!jsonObj.get("client_user_agent").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `client_user_agent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_user_agent").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `client_user_agent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_user_agent").toString()));
       }
   }
 

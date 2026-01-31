@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLogClientError", description = "System error details included in the log sent by the client.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogClientError {
 
   private @Nullable String cause;
@@ -41,7 +41,7 @@ public class IntegrationLogClientError {
 
   private @Nullable String stackTrace;
 
-  public IntegrationLogClientError cause(String cause) {
+  public IntegrationLogClientError cause(@Nullable String cause) {
     this.cause = cause;
     return this;
   }
@@ -53,15 +53,15 @@ public class IntegrationLogClientError {
   @Size(max = 512) 
   @Schema(name = "cause", description = "Original cause of the error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cause")
-  public String getCause() {
+  public @Nullable String getCause() {
     return cause;
   }
 
-  public void setCause(String cause) {
+  public void setCause(@Nullable String cause) {
     this.cause = cause;
   }
 
-  public IntegrationLogClientError columnNumber(Integer columnNumber) {
+  public IntegrationLogClientError columnNumber(@Nullable Integer columnNumber) {
     this.columnNumber = columnNumber;
     return this;
   }
@@ -73,15 +73,15 @@ public class IntegrationLogClientError {
   
   @Schema(name = "column_number", description = "Column number in the line of the file that raised the error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("column_number")
-  public Integer getColumnNumber() {
+  public @Nullable Integer getColumnNumber() {
     return columnNumber;
   }
 
-  public void setColumnNumber(Integer columnNumber) {
+  public void setColumnNumber(@Nullable Integer columnNumber) {
     this.columnNumber = columnNumber;
   }
 
-  public IntegrationLogClientError fileName(String fileName) {
+  public IntegrationLogClientError fileName(@Nullable String fileName) {
     this.fileName = fileName;
     return this;
   }
@@ -93,15 +93,15 @@ public class IntegrationLogClientError {
   @Size(max = 256) 
   @Schema(name = "file_name", description = "Filename where the error happened.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("file_name")
-  public String getFileName() {
+  public @Nullable String getFileName() {
     return fileName;
   }
 
-  public void setFileName(String fileName) {
+  public void setFileName(@Nullable String fileName) {
     this.fileName = fileName;
   }
 
-  public IntegrationLogClientError lineNumber(Integer lineNumber) {
+  public IntegrationLogClientError lineNumber(@Nullable Integer lineNumber) {
     this.lineNumber = lineNumber;
     return this;
   }
@@ -113,15 +113,15 @@ public class IntegrationLogClientError {
   
   @Schema(name = "line_number", description = "Line number where the error happened.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("line_number")
-  public Integer getLineNumber() {
+  public @Nullable Integer getLineNumber() {
     return lineNumber;
   }
 
-  public void setLineNumber(Integer lineNumber) {
+  public void setLineNumber(@Nullable Integer lineNumber) {
     this.lineNumber = lineNumber;
   }
 
-  public IntegrationLogClientError message(String message) {
+  public IntegrationLogClientError message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -133,15 +133,15 @@ public class IntegrationLogClientError {
   @Size(max = 512) 
   @Schema(name = "message", description = "Human-readable description of the error.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
-  public String getMessage() {
+  public @Nullable String getMessage() {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 
-  public IntegrationLogClientError messageDetail(String messageDetail) {
+  public IntegrationLogClientError messageDetail(@Nullable String messageDetail) {
     this.messageDetail = messageDetail;
     return this;
   }
@@ -153,15 +153,15 @@ public class IntegrationLogClientError {
   @Size(max = 1024) 
   @Schema(name = "message_detail", description = "More detail about the message.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message_detail")
-  public String getMessageDetail() {
+  public @Nullable String getMessageDetail() {
     return messageDetail;
   }
 
-  public void setMessageDetail(String messageDetail) {
+  public void setMessageDetail(@Nullable String messageDetail) {
     this.messageDetail = messageDetail;
   }
 
-  public IntegrationLogClientError name(String name) {
+  public IntegrationLogClientError name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -173,15 +173,15 @@ public class IntegrationLogClientError {
   @Size(max = 256) 
   @Schema(name = "name", description = "Filename where the error happened.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public IntegrationLogClientError number(Integer number) {
+  public IntegrationLogClientError number(@Nullable Integer number) {
     this.number = number;
     return this;
   }
@@ -193,15 +193,15 @@ public class IntegrationLogClientError {
   
   @Schema(name = "number", description = "Integer that specifies the error code.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("number")
-  public Integer getNumber() {
+  public @Nullable Integer getNumber() {
     return number;
   }
 
-  public void setNumber(Integer number) {
+  public void setNumber(@Nullable Integer number) {
     this.number = number;
   }
 
-  public IntegrationLogClientError stackTrace(String stackTrace) {
+  public IntegrationLogClientError stackTrace(@Nullable String stackTrace) {
     this.stackTrace = stackTrace;
     return this;
   }
@@ -213,11 +213,11 @@ public class IntegrationLogClientError {
   
   @Schema(name = "stack_trace", description = "Stack trace of where the error happened.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("stack_trace")
-  public String getStackTrace() {
+  public @Nullable String getStackTrace() {
     return stackTrace;
   }
 
-  public void setStackTrace(String stackTrace) {
+  public void setStackTrace(@Nullable String stackTrace) {
     this.stackTrace = stackTrace;
   }
 

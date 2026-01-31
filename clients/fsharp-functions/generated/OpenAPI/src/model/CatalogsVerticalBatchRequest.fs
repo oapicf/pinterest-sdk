@@ -6,7 +6,6 @@ open Newtonsoft.Json
 open OpenAPI.Model.CatalogsCreativeAssetsBatchItem
 open OpenAPI.Model.CatalogsCreativeAssetsBatchRequest
 open OpenAPI.Model.CatalogsHotelBatchRequest
-open OpenAPI.Model.CatalogsItemsRequestLanguage
 open OpenAPI.Model.CatalogsRetailBatchRequest
 open OpenAPI.Model.Country
 
@@ -21,7 +20,7 @@ module CatalogsVerticalBatchRequest =
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
     [<JsonProperty(PropertyName = "language")>]
-    Language : CatalogsItemsRequestLanguage;
+    Language : string;
     [<JsonProperty(PropertyName = "items")>]
     Items : CatalogsCreativeAssetsBatchItem[];
     [<JsonProperty(PropertyName = "catalog_id")>]

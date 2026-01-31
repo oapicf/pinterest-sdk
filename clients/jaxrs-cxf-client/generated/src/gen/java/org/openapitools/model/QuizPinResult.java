@@ -1,32 +1,37 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * The result, and link out, based on the user’s choice.
- **/
+ * The result, and link out, based on the user’s choice.
+ */
 @ApiModel(description="The result, and link out, based on the user’s choice.")
 
 public class QuizPinResult  {
   
   @ApiModelProperty(value = "")
+
   private String organicPinId;
 
   @ApiModelProperty(value = "")
+
   private String androidDeepLink;
 
   @ApiModelProperty(value = "")
+
   private String iosDeepLink;
 
   @ApiModelProperty(value = "")
+
   private String destinationUrl;
 
   @ApiModelProperty(value = "")
+
   private BigDecimal resultId;
  /**
    * Get organicPinId

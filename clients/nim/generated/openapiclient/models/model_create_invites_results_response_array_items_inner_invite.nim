@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_business_access_user_summary
 
 type CreateInvitesResultsResponseArrayItemsInnerInvite* = object
   ## An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.
-  id*: string ## Unique identifier of the invite/request.
-  user*: BusinessAccessUserSummary ## Metadata for the member/partner that was sent the invite/request.
+  id*: Option[string] ## Unique identifier of the invite/request.
+  user*: Option[BusinessAccessUserSummary] ## Metadata for the member/partner that was sent the invite/request.
+

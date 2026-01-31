@@ -12,16 +12,10 @@
  */
 
 /**
- * A request to exchange a refresh token for a new access token.
  * @export
  * @interface OauthAccessTokenRequestRefresh
  */
 export interface OauthAccessTokenRequestRefresh {
-    /**
-     * @type {string}
-     * @memberof OauthAccessTokenRequestRefresh
-     */
-    grant_type: OauthAccessTokenRequestRefreshGrantTypeEnum;
     /**
      * @type {string}
      * @memberof OauthAccessTokenRequestRefresh
@@ -38,6 +32,11 @@ export interface OauthAccessTokenRequestRefresh {
      * @memberof OauthAccessTokenRequestRefresh
      */
     refresh_on?: boolean;
+    /**
+     * @type {string}
+     * @memberof OauthAccessTokenRequestRefresh
+     */
+    grant_type: OauthAccessTokenRequestRefreshGrantTypeEnum;
 }
 
 /**

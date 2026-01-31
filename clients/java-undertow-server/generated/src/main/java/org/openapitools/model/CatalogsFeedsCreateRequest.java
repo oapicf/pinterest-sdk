@@ -33,7 +33,7 @@ import org.openapitools.model.ProductAvailabilityType;
  */
 
 @ApiModel(description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2025-05-10T05:39:45.096615976Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedsCreateRequest   {
   
   private NullableCurrency defaultCurrency;
@@ -45,7 +45,7 @@ public class CatalogsFeedsCreateRequest   {
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private Country defaultCountry;
   private ProductAvailabilityType defaultAvailability;
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   /**
    */

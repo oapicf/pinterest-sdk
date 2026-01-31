@@ -147,8 +147,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "action":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                action = new Option<AuthRespondInvitesBodyInvitesInnerAction?>(JsonSerializer.Deserialize<AuthRespondInvitesBodyInvitesInnerAction>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            action = new Option<AuthRespondInvitesBodyInvitesInnerAction?>(JsonSerializer.Deserialize<AuthRespondInvitesBodyInvitesInnerAction>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "invite_id":
                             inviteId = new Option<string?>(utf8JsonReader.GetString()!);

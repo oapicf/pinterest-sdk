@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequest;
 import org.openapitools.model.CatalogsFeedCredentials;
@@ -22,13 +21,14 @@ import org.openapitools.model.ProductAvailabilityType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for creating a feed.
- **/
+ * Request object for creating a feed.
+ */
 @ApiModel(description="Request object for creating a feed.")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
@@ -40,56 +40,78 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsVerticalFeedsCreateRequest  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private NullableCurrency defaultCurrency;
 
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
  /**
-   * A human-friendly name associated to a given feed.
-  **/
+  * A human-friendly name associated to a given feed.
+  */
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
+
   private String name;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFormat format;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsFeedCredentials credentials;
 
-  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
  /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  **/
+  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  */
+  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+
   private String location;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsType catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private Country defaultCountry;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private ProductAvailabilityType defaultAvailability;
 
   @ApiModelProperty(value = "")
-  private CatalogsStatus status;
 
-  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.")
+  @Valid
+
+  private CatalogsStatus status = "ACTIVE";
+
  /**
-   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
-  **/
+  * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+  */
+  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.")
+
   private String catalogId;
  /**
    * Get defaultCurrency

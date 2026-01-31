@@ -17,7 +17,7 @@ import javax.validation.Valid;
 /**
  * Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2025-05-10T05:39:37.342741110Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CatalogsHotelFeedsCreateRequest   {
   @JsonProperty("default_currency")
@@ -72,7 +72,7 @@ public class CatalogsHotelFeedsCreateRequest   {
   @JsonProperty("status")
   @Valid
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   public CatalogsHotelFeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;

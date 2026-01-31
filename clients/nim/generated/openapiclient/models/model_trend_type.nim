@@ -9,7 +9,43 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type TrendType* = object
-  ## 
+type TrendType* {.pure.} = enum
+  Growing
+  Monthly
+  Yearly
+  Seasonal
+
+func `%`*(v: TrendType): JsonNode =
+  result = case v:
+    of TrendType.Growing: %"growing"
+    of TrendType.Monthly: %"monthly"
+    of TrendType.Yearly: %"yearly"
+    of TrendType.Seasonal: %"seasonal"
+
+func `$`*(v: TrendType): string =
+  result = case v:
+    of TrendType.Growing: $("growing")
+    of TrendType.Monthly: $("monthly")
+    of TrendType.Yearly: $("yearly")
+    of TrendType.Seasonal: $("seasonal")
+
+proc to*(node: JsonNode, T: typedesc[TrendType]): TrendType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum TrendType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("growing"):
+    return TrendType.Growing
+  of $("monthly"):
+    return TrendType.Monthly
+  of $("yearly"):
+    return TrendType.Yearly
+  of $("seasonal"):
+    return TrendType.Seasonal
+  else:
+    raise newException(ValueError, "Invalid enum value for TrendType: " & strVal)
+

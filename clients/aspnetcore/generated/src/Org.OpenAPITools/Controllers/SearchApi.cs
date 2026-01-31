@@ -51,11 +51,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(SearchPartnerPins200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"alt_text\" : \"alt_text\",\n    \"link\" : \"https://www.pinterest.com/\",\n    \"description\" : \"description\",\n    \"media\" : \"{}\",\n    \"title\" : \"title\"\n  }, {\n    \"alt_text\" : \"alt_text\",\n    \"link\" : \"https://www.pinterest.com/\",\n    \"description\" : \"description\",\n    \"media\" : \"{}\",\n    \"title\" : \"title\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -63,7 +63,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SearchPartnerPins200Response>(exampleJson)
-            : default(SearchPartnerPins200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -88,16 +88,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(SearchUserBoardsGet200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"owner\" : \"{}\",\n    \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\",\n    \"name\" : \"Summer Recipes\",\n    \"pin_count\" : 5,\n    \"created_at\" : \"2020-01-01T20:10:40Z\",\n    \"description\" : \"My favorite summer recipes\",\n    \"collaborator_count\" : 17,\n    \"privacy\" : \"PUBLIC\",\n    \"id\" : \"549755885175\",\n    \"media\" : {\n      \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ],\n      \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\"\n    },\n    \"follower_count\" : 13\n  }, {\n    \"owner\" : \"{}\",\n    \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\",\n    \"name\" : \"Summer Recipes\",\n    \"pin_count\" : 5,\n    \"created_at\" : \"2020-01-01T20:10:40Z\",\n    \"description\" : \"My favorite summer recipes\",\n    \"collaborator_count\" : 17,\n    \"privacy\" : \"PUBLIC\",\n    \"id\" : \"549755885175\",\n    \"media\" : {\n      \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ],\n      \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\"\n    },\n    \"follower_count\" : 13\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SearchUserBoardsGet200Response>(exampleJson)
-            : default(SearchUserBoardsGet200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -123,11 +123,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(PinsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"note\" : \"note\",\n    \"board_owner\" : \"{}\",\n    \"media_source\" : \"{}\",\n    \"pin_metrics\" : {\n      \"90d\" : {\n        \"pin_click\" : 7,\n        \"impression\" : 2,\n        \"clickthrough\" : 3\n      },\n      \"lifetime_metrics\" : {\n        \"pin_click\" : 7,\n        \"impression\" : 2,\n        \"clickthrough\" : 3,\n        \"reaction\" : 10,\n        \"comment\" : 2\n      }\n    },\n    \"is_owner\" : true,\n    \"link\" : \"https://www.pinterest.com/\",\n    \"created_at\" : \"2020-01-01T20:10:40Z\",\n    \"description\" : \"description\",\n    \"has_been_promoted\" : true,\n    \"media\" : \"{}\",\n    \"title\" : \"title\",\n    \"board_section_id\" : \"board_section_id\",\n    \"dominant_color\" : \"#6E7874\",\n    \"alt_text\" : \"alt_text\",\n    \"board_id\" : \"board_id\",\n    \"creative_type\" : \"creative_type\",\n    \"parent_pin_id\" : \"parent_pin_id\",\n    \"id\" : \"813744226420795884\",\n    \"is_standard\" : true\n  }, {\n    \"note\" : \"note\",\n    \"board_owner\" : \"{}\",\n    \"media_source\" : \"{}\",\n    \"pin_metrics\" : {\n      \"90d\" : {\n        \"pin_click\" : 7,\n        \"impression\" : 2,\n        \"clickthrough\" : 3\n      },\n      \"lifetime_metrics\" : {\n        \"pin_click\" : 7,\n        \"impression\" : 2,\n        \"clickthrough\" : 3,\n        \"reaction\" : 10,\n        \"comment\" : 2\n      }\n    },\n    \"is_owner\" : true,\n    \"link\" : \"https://www.pinterest.com/\",\n    \"created_at\" : \"2020-01-01T20:10:40Z\",\n    \"description\" : \"description\",\n    \"has_been_promoted\" : true,\n    \"media\" : \"{}\",\n    \"title\" : \"title\",\n    \"board_section_id\" : \"board_section_id\",\n    \"dominant_color\" : \"#6E7874\",\n    \"alt_text\" : \"alt_text\",\n    \"board_id\" : \"board_id\",\n    \"creative_type\" : \"creative_type\",\n    \"parent_pin_id\" : \"parent_pin_id\",\n    \"id\" : \"813744226420795884\",\n    \"is_standard\" : true\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -135,7 +135,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<PinsList200Response>(exampleJson)
-            : default(PinsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

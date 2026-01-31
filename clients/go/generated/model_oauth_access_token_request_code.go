@@ -20,11 +20,11 @@ import (
 // checks if the OauthAccessTokenRequestCode type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OauthAccessTokenRequestCode{}
 
-// OauthAccessTokenRequestCode A request to exchange an authorization code for an access token.
+// OauthAccessTokenRequestCode struct for OauthAccessTokenRequestCode
 type OauthAccessTokenRequestCode struct {
-	GrantType string `json:"grant_type"`
 	Code string `json:"code"`
 	RedirectUri string `json:"redirect_uri"`
+	GrantType string `json:"grant_type"`
 }
 
 type _OauthAccessTokenRequestCode OauthAccessTokenRequestCode
@@ -33,10 +33,11 @@ type _OauthAccessTokenRequestCode OauthAccessTokenRequestCode
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOauthAccessTokenRequestCode(grantType string, code string, redirectUri string) *OauthAccessTokenRequestCode {
+func NewOauthAccessTokenRequestCode(code string, redirectUri string, grantType string) *OauthAccessTokenRequestCode {
 	this := OauthAccessTokenRequestCode{}
 	this.Code = code
 	this.RedirectUri = redirectUri
+	this.GrantType = grantType
 	return &this
 }
 
@@ -46,30 +47,6 @@ func NewOauthAccessTokenRequestCode(grantType string, code string, redirectUri s
 func NewOauthAccessTokenRequestCodeWithDefaults() *OauthAccessTokenRequestCode {
 	this := OauthAccessTokenRequestCode{}
 	return &this
-}
-
-// GetGrantType returns the GrantType field value
-func (o *OauthAccessTokenRequestCode) GetGrantType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.GrantType
-}
-
-// GetGrantTypeOk returns a tuple with the GrantType field value
-// and a boolean to check if the value has been set.
-func (o *OauthAccessTokenRequestCode) GetGrantTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.GrantType, true
-}
-
-// SetGrantType sets field value
-func (o *OauthAccessTokenRequestCode) SetGrantType(v string) {
-	o.GrantType = v
 }
 
 // GetCode returns the Code field value
@@ -120,6 +97,30 @@ func (o *OauthAccessTokenRequestCode) SetRedirectUri(v string) {
 	o.RedirectUri = v
 }
 
+// GetGrantType returns the GrantType field value
+func (o *OauthAccessTokenRequestCode) GetGrantType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.GrantType
+}
+
+// GetGrantTypeOk returns a tuple with the GrantType field value
+// and a boolean to check if the value has been set.
+func (o *OauthAccessTokenRequestCode) GetGrantTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GrantType, true
+}
+
+// SetGrantType sets field value
+func (o *OauthAccessTokenRequestCode) SetGrantType(v string) {
+	o.GrantType = v
+}
+
 func (o OauthAccessTokenRequestCode) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -130,9 +131,9 @@ func (o OauthAccessTokenRequestCode) MarshalJSON() ([]byte, error) {
 
 func (o OauthAccessTokenRequestCode) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["grant_type"] = o.GrantType
 	toSerialize["code"] = o.Code
 	toSerialize["redirect_uri"] = o.RedirectUri
+	toSerialize["grant_type"] = o.GrantType
 	return toSerialize, nil
 }
 
@@ -141,9 +142,9 @@ func (o *OauthAccessTokenRequestCode) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"grant_type",
 		"code",
 		"redirect_uri",
+		"grant_type",
 	}
 
 	allProperties := make(map[string]interface{})

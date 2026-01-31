@@ -15,15 +15,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdsAnalyticsMetricsFilter  {
   
   @ApiModelProperty(required = true, value = "")
+
   private AdsAnalyticsFilterColumn field;
 
   @ApiModelProperty(required = true, value = "")
+
   private AdsAnalyticsFilterOperator operator;
 
-  @ApiModelProperty(required = true, value = "List of values for filtering")
  /**
-   * List of values for filtering
-  **/
+  * List of values for filtering
+  */
+  @ApiModelProperty(required = true, value = "List of values for filtering")
+
   private List<BigDecimal> values = new ArrayList<>();
  /**
    * Get field

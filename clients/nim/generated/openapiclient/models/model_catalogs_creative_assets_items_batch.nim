@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_batch_operation_status
 import model_catalogs_type
@@ -16,9 +18,47 @@ import model_creative_assets_processing_record
 
 type CatalogsCreativeAssetsItemsBatch* = object
   ## Object describing the catalogs creative assets items batch
-  batchId*: string ## Id of the catalogs items batch
+  batchId*: Option[string] ## Id of the catalogs items batch
   createdTime*: string ## Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
   completedTime*: string ## Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
-  status*: BatchOperationStatus
+  status*: Option[BatchOperationStatus]
   catalogType*: CatalogsType
-  items*: seq[CreativeAssetsProcessingRecord] ## Array with the catalogs items processing records part of the catalogs items batch
+  items*: Option[seq[CreativeAssetsProcessingRecord]] ## Array with the catalogs items processing records part of the catalogs items batch
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsItemsBatch with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsItemsBatch]): CatalogsCreativeAssetsItemsBatch =
+  result = CatalogsCreativeAssetsItemsBatch()
+  if node.kind == JObject:
+    if node.hasKey("batch_id") and node["batch_id"].kind != JNull:
+      result.batchId = some(to(node["batch_id"], typeof(result.batchId.get())))
+    if node.hasKey("created_time"):
+      result.createdTime = to(node["created_time"], string)
+    if node.hasKey("completed_time"):
+      result.completedTime = to(node["completed_time"], string)
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogsType)
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[CreativeAssetsProcessingRecord] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, CreativeAssetsProcessingRecord))
+        result.items = some(arr)
+
+# Custom JSON serialization for CatalogsCreativeAssetsItemsBatch with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsItemsBatch): JsonNode =
+  result = newJObject()
+  if obj.batchId.isSome():
+    result["batch_id"] = %obj.batchId.get()
+  result["created_time"] = %obj.createdTime
+  result["completed_time"] = %obj.completedTime
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  result["catalog_type"] = %obj.catalogType
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

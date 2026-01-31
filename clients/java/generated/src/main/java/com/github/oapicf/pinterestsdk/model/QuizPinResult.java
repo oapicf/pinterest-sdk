@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * The result, and link out, based on the user’s choice.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinResult {
   public static final String SERIALIZED_NAME_ORGANIC_PIN_ID = "organic_pin_id";
   @SerializedName(SERIALIZED_NAME_ORGANIC_PIN_ID)
@@ -226,15 +226,10 @@ public class QuizPinResult {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("organic_pin_id");
-    openapiFields.add("android_deep_link");
-    openapiFields.add("ios_deep_link");
-    openapiFields.add("destination_url");
-    openapiFields.add("result_id");
+    openapiFields = new HashSet<String>(Arrays.asList("organic_pin_id", "android_deep_link", "ios_deep_link", "destination_url", "result_id"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -246,7 +241,7 @@ public class QuizPinResult {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!QuizPinResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in QuizPinResult is not found in the empty JSON string", QuizPinResult.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in QuizPinResult is not found in the empty JSON string", QuizPinResult.openapiRequiredFields.toString()));
         }
       }
 
@@ -254,21 +249,21 @@ public class QuizPinResult {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!QuizPinResult.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `QuizPinResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `QuizPinResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("organic_pin_id") != null && !jsonObj.get("organic_pin_id").isJsonNull()) && !jsonObj.get("organic_pin_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `organic_pin_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organic_pin_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `organic_pin_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organic_pin_id").toString()));
       }
       if ((jsonObj.get("android_deep_link") != null && !jsonObj.get("android_deep_link").isJsonNull()) && !jsonObj.get("android_deep_link").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `android_deep_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("android_deep_link").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `android_deep_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("android_deep_link").toString()));
       }
       if ((jsonObj.get("ios_deep_link") != null && !jsonObj.get("ios_deep_link").isJsonNull()) && !jsonObj.get("ios_deep_link").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ios_deep_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ios_deep_link").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ios_deep_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ios_deep_link").toString()));
       }
       if ((jsonObj.get("destination_url") != null && !jsonObj.get("destination_url").isJsonNull()) && !jsonObj.get("destination_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `destination_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destination_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `destination_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destination_url").toString()));
       }
   }
 

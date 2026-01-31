@@ -56,7 +56,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Catalogs Creative Asset Feed object
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsFeed {
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -467,38 +467,10 @@ public class CatalogsCreativeAssetsFeed {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("created_at");
-    openapiFields.add("id");
-    openapiFields.add("updated_at");
-    openapiFields.add("name");
-    openapiFields.add("format");
-    openapiFields.add("catalog_type");
-    openapiFields.add("credentials");
-    openapiFields.add("location");
-    openapiFields.add("preferred_processing_schedule");
-    openapiFields.add("status");
-    openapiFields.add("default_currency");
-    openapiFields.add("default_locale");
-    openapiFields.add("default_country");
-    openapiFields.add("catalog_id");
+    openapiFields = new HashSet<String>(Arrays.asList("created_at", "id", "updated_at", "name", "format", "catalog_type", "credentials", "location", "preferred_processing_schedule", "status", "default_currency", "default_locale", "default_country", "catalog_id"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("updated_at");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("format");
-    openapiRequiredFields.add("catalog_type");
-    openapiRequiredFields.add("credentials");
-    openapiRequiredFields.add("location");
-    openapiRequiredFields.add("preferred_processing_schedule");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("default_currency");
-    openapiRequiredFields.add("default_locale");
-    openapiRequiredFields.add("default_country");
-    openapiRequiredFields.add("catalog_id");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("created_at", "id", "updated_at", "name", "format", "catalog_type", "credentials", "location", "preferred_processing_schedule", "status", "default_currency", "default_locale", "default_country", "catalog_id"));
   }
 
   /**
@@ -510,7 +482,7 @@ public class CatalogsCreativeAssetsFeed {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsCreativeAssetsFeed.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsCreativeAssetsFeed is not found in the empty JSON string", CatalogsCreativeAssetsFeed.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsCreativeAssetsFeed is not found in the empty JSON string", CatalogsCreativeAssetsFeed.openapiRequiredFields.toString()));
         }
       }
 
@@ -518,22 +490,22 @@ public class CatalogsCreativeAssetsFeed {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsCreativeAssetsFeed.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsCreativeAssetsFeed` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsCreativeAssetsFeed` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CatalogsCreativeAssetsFeed.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the required field `format`
       CatalogsFormat.validateJsonElement(jsonObj.get("format"));
@@ -542,7 +514,7 @@ public class CatalogsCreativeAssetsFeed {
       // validate the required field `credentials`
       CatalogsFeedCredentials.validateJsonElement(jsonObj.get("credentials"));
       if (!jsonObj.get("location").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
       }
       // validate the required field `preferred_processing_schedule`
       CatalogsFeedProcessingSchedule.validateJsonElement(jsonObj.get("preferred_processing_schedule"));
@@ -551,12 +523,12 @@ public class CatalogsCreativeAssetsFeed {
       // validate the required field `default_currency`
       NullableCurrency.validateJsonElement(jsonObj.get("default_currency"));
       if (!jsonObj.get("default_locale").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `default_locale` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_locale").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `default_locale` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_locale").toString()));
       }
       // validate the required field `default_country`
       Country.validateJsonElement(jsonObj.get("default_country"));
       if ((jsonObj.get("catalog_id") != null && !jsonObj.get("catalog_id").isJsonNull()) && !jsonObj.get("catalog_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `catalog_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `catalog_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_id").toString()));
       }
   }
 

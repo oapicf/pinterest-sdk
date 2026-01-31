@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object for creating a creative assets product group.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsProductGroupCreateRequest {
   /**
    * Gets or Sets catalogType
@@ -288,19 +288,10 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("catalog_type");
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("filters");
-    openapiFields.add("catalog_id");
+    openapiFields = new HashSet<String>(Arrays.asList("catalog_type", "name", "description", "filters", "catalog_id"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("catalog_type");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("filters");
-    openapiRequiredFields.add("catalog_id");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("catalog_type", "name", "filters", "catalog_id"));
   }
 
   /**
@@ -312,7 +303,7 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsCreativeAssetsProductGroupCreateRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsCreativeAssetsProductGroupCreateRequest is not found in the empty JSON string", CatalogsCreativeAssetsProductGroupCreateRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsCreativeAssetsProductGroupCreateRequest is not found in the empty JSON string", CatalogsCreativeAssetsProductGroupCreateRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -320,32 +311,32 @@ public class CatalogsCreativeAssetsProductGroupCreateRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsCreativeAssetsProductGroupCreateRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsCreativeAssetsProductGroupCreateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsCreativeAssetsProductGroupCreateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CatalogsCreativeAssetsProductGroupCreateRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("catalog_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `catalog_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `catalog_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_type").toString()));
       }
       // validate the required field `catalog_type`
       CatalogTypeEnum.validateJsonElement(jsonObj.get("catalog_type"));
       if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the required field `filters`
       CatalogsCreativeAssetsProductGroupFilters.validateJsonElement(jsonObj.get("filters"));
       if (!jsonObj.get("catalog_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `catalog_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `catalog_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_id").toString()));
       }
   }
 

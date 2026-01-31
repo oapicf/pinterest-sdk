@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CampaignsAnalyticsResponseInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CampaignsAnalyticsResponseInner {
   public static final String SERIALIZED_NAME_C_A_M_P_A_I_G_N_I_D = "CAMPAIGN_ID";
   @SerializedName(SERIALIZED_NAME_C_A_M_P_A_I_G_N_I_D)
@@ -194,13 +194,10 @@ public class CampaignsAnalyticsResponseInner {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("CAMPAIGN_ID");
-    openapiFields.add("DATE");
+    openapiFields = new HashSet<String>(Arrays.asList("CAMPAIGN_ID", "DATE"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("CAMPAIGN_ID");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("CAMPAIGN_ID"));
   }
 
   /**
@@ -212,19 +209,19 @@ public class CampaignsAnalyticsResponseInner {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CampaignsAnalyticsResponseInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignsAnalyticsResponseInner is not found in the empty JSON string", CampaignsAnalyticsResponseInner.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CampaignsAnalyticsResponseInner is not found in the empty JSON string", CampaignsAnalyticsResponseInner.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CampaignsAnalyticsResponseInner.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("CAMPAIGN_ID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `CAMPAIGN_ID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CAMPAIGN_ID").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `CAMPAIGN_ID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CAMPAIGN_ID").toString()));
       }
   }
 
@@ -285,7 +282,7 @@ public class CampaignsAnalyticsResponseInner {
                    else if (entry.getValue().getAsJsonPrimitive().isBoolean())
                      instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
                    else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                     throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
                  } else if (entry.getValue().isJsonArray()) {
                      instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
                  } else { // JSON object

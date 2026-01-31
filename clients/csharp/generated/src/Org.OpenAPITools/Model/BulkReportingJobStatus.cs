@@ -189,7 +189,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BulkReportingJobStatus bulkReportingJobStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(bulkReportingJobStatus.ToString());
+            writer.WriteStringValue(BulkReportingJobStatusValueConverter.ToJsonValue(bulkReportingJobStatus).ToString());
         }
     }
 
@@ -220,14 +220,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the BulkReportingJobStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="bulkReportingJobStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BulkReportingJobStatus? bulkReportingJobStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(bulkReportingJobStatus?.ToString() ?? "null");
+            writer.WriteStringValue(bulkReportingJobStatus.HasValue ? BulkReportingJobStatusValueConverter.ToJsonValue(bulkReportingJobStatus.Value).ToString() : "null");
         }
     }
 }

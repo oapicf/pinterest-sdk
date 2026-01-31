@@ -78,7 +78,6 @@ docs/AudienceCategory.md
 docs/AudienceCommon.md
 docs/AudienceCreateCustomRequest.md
 docs/AudienceCreateRequest.md
-docs/AudienceCreateRequest1AudienceType.md
 docs/AudienceDataParty.md
 docs/AudienceDefinition.md
 docs/AudienceDefinitionResponse.md
@@ -256,7 +255,6 @@ docs/CatalogsItemsDeleteDiscontinuedBatchRequest.md
 docs/CatalogsItemsFilters.md
 docs/CatalogsItemsPostFilters.md
 docs/CatalogsItemsRequest.md
-docs/CatalogsItemsRequestLanguage.md
 docs/CatalogsItemsUpdateBatchRequest.md
 docs/CatalogsItemsUpsertBatchRequest.md
 docs/CatalogsList200Response.md
@@ -590,7 +588,6 @@ docs/PinMediaWithVideos.md
 docs/PinPromotionSummaryStatus.md
 docs/PinUpdate.md
 docs/PinUpdateCarouselSlotsInner.md
-docs/PinsAnalyticsMetricTypesParameterInner.md
 docs/PinsList200Response.md
 docs/PinsSaveRequest.md
 docs/PinterestTagEventData.md
@@ -900,7 +897,6 @@ openapi3graphql-server/model/audience_category.graphql
 openapi3graphql-server/model/audience_common.graphql
 openapi3graphql-server/model/audience_create_custom_request.graphql
 openapi3graphql-server/model/audience_create_request.graphql
-openapi3graphql-server/model/audience_create_request_1_audience_type.graphql
 openapi3graphql-server/model/audience_data_party.graphql
 openapi3graphql-server/model/audience_definition.graphql
 openapi3graphql-server/model/audience_definition_response.graphql
@@ -1078,7 +1074,6 @@ openapi3graphql-server/model/catalogs_items_delete_discontinued_batch_request.gr
 openapi3graphql-server/model/catalogs_items_filters.graphql
 openapi3graphql-server/model/catalogs_items_post_filters.graphql
 openapi3graphql-server/model/catalogs_items_request.graphql
-openapi3graphql-server/model/catalogs_items_request_language.graphql
 openapi3graphql-server/model/catalogs_items_update_batch_request.graphql
 openapi3graphql-server/model/catalogs_items_upsert_batch_request.graphql
 openapi3graphql-server/model/catalogs_list_200_response.graphql
@@ -1412,7 +1407,6 @@ openapi3graphql-server/model/pin_media_with_videos.graphql
 openapi3graphql-server/model/pin_promotion_summary_status.graphql
 openapi3graphql-server/model/pin_update.graphql
 openapi3graphql-server/model/pin_update_carousel_slots_inner.graphql
-openapi3graphql-server/model/pins_analytics_metric_types_parameter_inner.graphql
 openapi3graphql-server/model/pins_list_200_response.graphql
 openapi3graphql-server/model/pins_save_request.graphql
 openapi3graphql-server/model/pinterest_tag_event_data.graphql

@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing an hotel item batch record
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpdateHotelItem {
   public static final String SERIALIZED_NAME_HOTEL_ID = "hotel_id";
   @SerializedName(SERIALIZED_NAME_HOTEL_ID)
@@ -224,16 +224,10 @@ public class CatalogsUpdateHotelItem {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("hotel_id");
-    openapiFields.add("operation");
-    openapiFields.add("attributes");
+    openapiFields = new HashSet<String>(Arrays.asList("hotel_id", "operation", "attributes"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("hotel_id");
-    openapiRequiredFields.add("operation");
-    openapiRequiredFields.add("attributes");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("hotel_id", "operation", "attributes"));
   }
 
   /**
@@ -245,7 +239,7 @@ public class CatalogsUpdateHotelItem {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsUpdateHotelItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsUpdateHotelItem is not found in the empty JSON string", CatalogsUpdateHotelItem.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsUpdateHotelItem is not found in the empty JSON string", CatalogsUpdateHotelItem.openapiRequiredFields.toString()));
         }
       }
 
@@ -253,22 +247,22 @@ public class CatalogsUpdateHotelItem {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsUpdateHotelItem.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsUpdateHotelItem` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsUpdateHotelItem` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CatalogsUpdateHotelItem.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("hotel_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `hotel_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hotel_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `hotel_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hotel_id").toString()));
       }
       if (!jsonObj.get("operation").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `operation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `operation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("operation").toString()));
       }
       // validate the required field `operation`
       OperationEnum.validateJsonElement(jsonObj.get("operation"));

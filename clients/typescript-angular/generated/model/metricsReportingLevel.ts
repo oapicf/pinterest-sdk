@@ -12,34 +12,20 @@
 /**
  * Level of the reporting request
  */
-export type MetricsReportingLevel = 'ADVERTISER' | 'ADVERTISER_TARGETING' | 'CAMPAIGN' | 'CAMPAIGN_TARGETING' | 'AD_GROUP' | 'AD_GROUP_TARGETING' | 'PIN_PROMOTION' | 'PIN_PROMOTION_TARGETING' | 'KEYWORD' | 'PRODUCT_GROUP' | 'PRODUCT_GROUP_TARGETING' | 'PRODUCT_ITEM' | 'PRODUCT_ITEM_TARGETING';
-
 export const MetricsReportingLevel = {
-
-    Advertiser: 'ADVERTISER' as MetricsReportingLevel,
-
-    AdvertiserTargeting: 'ADVERTISER_TARGETING' as MetricsReportingLevel,
-
-    Campaign: 'CAMPAIGN' as MetricsReportingLevel,
-
-    CampaignTargeting: 'CAMPAIGN_TARGETING' as MetricsReportingLevel,
-
-    AdGroup: 'AD_GROUP' as MetricsReportingLevel,
-
-    AdGroupTargeting: 'AD_GROUP_TARGETING' as MetricsReportingLevel,
-
-    PinPromotion: 'PIN_PROMOTION' as MetricsReportingLevel,
-
-    PinPromotionTargeting: 'PIN_PROMOTION_TARGETING' as MetricsReportingLevel,
-
-    Keyword: 'KEYWORD' as MetricsReportingLevel,
-
-    ProductGroup: 'PRODUCT_GROUP' as MetricsReportingLevel,
-
-    ProductGroupTargeting: 'PRODUCT_GROUP_TARGETING' as MetricsReportingLevel,
-
-    ProductItem: 'PRODUCT_ITEM' as MetricsReportingLevel,
-
-    ProductItemTargeting: 'PRODUCT_ITEM_TARGETING' as MetricsReportingLevel
-};
+    Advertiser: 'ADVERTISER',
+    AdvertiserTargeting: 'ADVERTISER_TARGETING',
+    Campaign: 'CAMPAIGN',
+    CampaignTargeting: 'CAMPAIGN_TARGETING',
+    AdGroup: 'AD_GROUP',
+    AdGroupTargeting: 'AD_GROUP_TARGETING',
+    PinPromotion: 'PIN_PROMOTION',
+    PinPromotionTargeting: 'PIN_PROMOTION_TARGETING',
+    Keyword: 'KEYWORD',
+    ProductGroup: 'PRODUCT_GROUP',
+    ProductGroupTargeting: 'PRODUCT_GROUP_TARGETING',
+    ProductItem: 'PRODUCT_ITEM',
+    ProductItemTargeting: 'PRODUCT_ITEM_TARGETING'
+} as const;
+export type MetricsReportingLevel = typeof MetricsReportingLevel[keyof typeof MetricsReportingLevel];
 

@@ -32,7 +32,8 @@ enum class ConversionAttributionWindowDays(@get:JsonValue val value: kotlin.Int)
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.Int): ConversionAttributionWindowDays {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionAttributionWindowDays'")
         }
     }
 }

@@ -15,8 +15,6 @@ No summary available.
 
 No description available.
 
-.PARAMETER Name
-Conversion tag name.
 .PARAMETER AemEnabled
 Whether Automatic Enhanced Match email is enabled. See <a href=""https://help.pinterest.com/en/business/article/enhanced-match"" target=""_blank"">Enhanced match</a> for more information.
 .PARAMETER MdFrequency
@@ -31,6 +29,8 @@ Whether Automatic Enhanced Match gender is enabled. See <a href=""https://help.p
 Whether Automatic Enhanced Match birthdate is enabled. See <a href=""https://help.pinterest.com/en/business/article/enhanced-match"" target=""_blank"">Enhanced match</a> for more information.
 .PARAMETER AemLocEnabled
 Whether Automatic Enhanced Match location is enabled. See <a href=""https://help.pinterest.com/en/business/article/enhanced-match"" target=""_blank"">Enhanced match</a> for more information.
+.PARAMETER Name
+Conversion tag name.
 .OUTPUTS
 
 ConversionTagCreate<PSCustomObject>
@@ -40,29 +40,29 @@ function Initialize-ConversionTagCreate {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Name},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
         ${AemEnabled} = $false,
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Decimal]]
         ${MdFrequency} = 1,
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
         ${AemFnlnEnabled} = $false,
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
         ${AemPhEnabled} = $false,
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
         ${AemGeEnabled} = $false,
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
         ${AemDbEnabled} = $false,
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
-        ${AemLocEnabled} = $false
+        ${AemLocEnabled} = $false,
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Name}
     )
 
     Process {
@@ -75,7 +75,6 @@ function Initialize-ConversionTagCreate {
 
 
         $PSO = [PSCustomObject]@{
-            "name" = ${Name}
             "aem_enabled" = ${AemEnabled}
             "md_frequency" = ${MdFrequency}
             "aem_fnln_enabled" = ${AemFnlnEnabled}
@@ -83,6 +82,7 @@ function Initialize-ConversionTagCreate {
             "aem_ge_enabled" = ${AemGeEnabled}
             "aem_db_enabled" = ${AemDbEnabled}
             "aem_loc_enabled" = ${AemLocEnabled}
+            "name" = ${Name}
         }
 
 
@@ -120,7 +120,7 @@ function ConvertFrom-JsonToConversionTagCreate {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in ConversionTagCreate
-        $AllProperties = ("name", "aem_enabled", "md_frequency", "aem_fnln_enabled", "aem_ph_enabled", "aem_ge_enabled", "aem_db_enabled", "aem_loc_enabled")
+        $AllProperties = ("aem_enabled", "md_frequency", "aem_fnln_enabled", "aem_ph_enabled", "aem_ge_enabled", "aem_db_enabled", "aem_loc_enabled", "name")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -180,7 +180,6 @@ function ConvertFrom-JsonToConversionTagCreate {
         }
 
         $PSO = [PSCustomObject]@{
-            "name" = ${Name}
             "aem_enabled" = ${AemEnabled}
             "md_frequency" = ${MdFrequency}
             "aem_fnln_enabled" = ${AemFnlnEnabled}
@@ -188,6 +187,7 @@ function ConvertFrom-JsonToConversionTagCreate {
             "aem_ge_enabled" = ${AemGeEnabled}
             "aem_db_enabled" = ${AemDbEnabled}
             "aem_loc_enabled" = ${AemLocEnabled}
+            "name" = ${Name}
         }
 
         return $PSO

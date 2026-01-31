@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -74,15 +73,6 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Description'
-        /// </summary>
-        [Fact]
-        public void DescriptionTest()
-        {
-            // TODO unit test for the property 'Description'
-        }
-
-        /// <summary>
         /// Test the property 'Filters'
         /// </summary>
         [Fact]
@@ -116,6 +106,15 @@ namespace Org.OpenAPITools.Test.Model
         public void LocaleTest()
         {
             // TODO unit test for the property 'Locale'
+        }
+
+        /// <summary>
+        /// Test the property 'Description'
+        /// </summary>
+        [Fact]
+        public void DescriptionTest()
+        {
+            // TODO unit test for the property 'Description'
         }
     }
 }

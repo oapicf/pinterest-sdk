@@ -33,7 +33,6 @@
 #include "PinAnalyticsMetricsResponse.h"
 #include "PinCreate.h"
 #include "PinUpdate.h"
-#include "Pins_analytics_metric_types_parameter_inner.h"
 #include "Pins_list_200_response.h"
 #include "Pins_save_request.h"
 #include <map>
@@ -104,7 +103,7 @@ private:
     /// <param name="metricTypes">Pin metric types to get data for.</param>
     /// <param name="appTypes">Apps or devices to get data for, default is all. (optional, default to &quot;ALL&quot;)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void multi_pins_analytics(const std::optional<std::vector<std::string>> &pinIds, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<org::openapitools::server::model::Pins_analytics_metric_types_parameter_inner>> &metricTypes, const std::optional<std::string> &appTypes, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void multi_pins_analytics( const std::optional<std::vector<std::string>> &pinIds, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<std::string>> &metricTypes, const std::optional<std::string> &appTypes, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Pin analytics
     /// </summary>
@@ -118,7 +117,7 @@ private:
     /// <param name="appTypes">Apps or devices to get data for, default is all. (optional, default to &quot;ALL&quot;)</param>
     /// <param name="splitField">How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to &quot;NO_SPLIT&quot;)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void pins_analytics(const std::string &pinId, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<org::openapitools::server::model::Pins_analytics_metric_types_parameter_inner>> &metricTypes, const std::optional<std::string> &appTypes, const std::optional<std::string> &splitField, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void pins_analytics( const std::string &pinId, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<std::string>> &metricTypes, const std::optional<std::string> &appTypes, const std::optional<std::string> &splitField, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create Pin
     /// </summary>
@@ -127,7 +126,7 @@ private:
     /// </remarks>
     /// <param name="pinCreate">Create a new Pin.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void pins_create(const org::openapitools::server::model::PinCreate &pinCreate, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void pins_create( const org::openapitools::server::model::PinCreate &pinCreate, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete Pin
     /// </summary>
@@ -136,7 +135,7 @@ private:
     /// </remarks>
     /// <param name="pinId">Unique identifier of a Pin.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void pins_delete(const std::string &pinId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void pins_delete( const std::string &pinId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Pin
     /// </summary>
@@ -146,7 +145,7 @@ private:
     /// <param name="pinId">Unique identifier of a Pin.</param>
     /// <param name="pinMetrics">Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void pins_get(const std::string &pinId, const std::optional<bool> &pinMetrics, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void pins_get( const std::string &pinId, const std::optional<bool> &pinMetrics, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Pins
     /// </summary>
@@ -161,7 +160,7 @@ private:
     /// <param name="creativeTypes">Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional, default to std::vector&lt;std::shared_ptr&lt;std::string&gt;&gt;())</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
     /// <param name="pinMetrics">Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)</param>
-    virtual void pins_list(const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &pinFilter, const std::optional<bool> &includeProtectedPins, const std::optional<std::string> &pinType, const std::optional<std::vector<std::string>> &creativeTypes, const std::optional<std::string> &adAccountId, const std::optional<bool> &pinMetrics, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void pins_list( const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &pinFilter, const std::optional<bool> &includeProtectedPins, const std::optional<std::string> &pinType, const std::optional<std::vector<std::string>> &creativeTypes, const std::optional<std::string> &adAccountId, const std::optional<bool> &pinMetrics, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Save Pin
     /// </summary>
@@ -171,7 +170,7 @@ private:
     /// <param name="pinId">Unique identifier of a Pin.</param>
     /// <param name="pinsSaveRequest">Request object used to save an existing pin</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void pins_save(const std::string &pinId, const org::openapitools::server::model::Pins_save_request &pinsSaveRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void pins_save( const std::string &pinId, const org::openapitools::server::model::Pins_save_request &pinsSaveRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update Pin
     /// </summary>
@@ -181,7 +180,7 @@ private:
     /// <param name="pinId">Unique identifier of a Pin.</param>
     /// <param name="pinUpdate"></param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void pins_update(const std::string &pinId, const org::openapitools::server::model::PinUpdate &pinUpdate, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void pins_update( const std::string &pinId, const org::openapitools::server::model::PinUpdate &pinUpdate, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

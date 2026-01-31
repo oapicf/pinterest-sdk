@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_list_products_by_catalog_based_filter_request
 import model_catalogs_creative_assets_product_group_filters
@@ -17,23 +19,38 @@ import model_catalogs_locale
 import model_catalogs_retail_list_products_by_catalog_based_filter_request
 import model_country
 
-type CatalogType* {.pure.} = enum
-  CREATIVEASSETS
+# OneOf type
+type CatalogsVerticalsListProductsByCatalogBasedFilterRequestKind* {.pure.} = enum
+  CatalogsRetailListProductsByCatalogBasedFilterRequestVariant
+  CatalogsHotelListProductsByCatalogBasedFilterRequestVariant
+  CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestVariant
 
 type CatalogsVerticalsListProductsByCatalogBasedFilterRequest* = object
   ## Request object to list products for a given catalog_id and product group filter.
-  catalogType*: CatalogType
-  catalogId*: string ## Catalog id pertaining to the creative assets product group.
-  filters*: CatalogsCreativeAssetsProductGroupFilters
-  country*: Country
-  locale*: CatalogsLocale
+  case kind*: CatalogsVerticalsListProductsByCatalogBasedFilterRequestKind
+  of CatalogsVerticalsListProductsByCatalogBasedFilterRequestKind.CatalogsRetailListProductsByCatalogBasedFilterRequestVariant:
+    CatalogsRetailListProductsByCatalogBasedFilterRequestValue*: CatalogsRetailListProductsByCatalogBasedFilterRequest
+  of CatalogsVerticalsListProductsByCatalogBasedFilterRequestKind.CatalogsHotelListProductsByCatalogBasedFilterRequestVariant:
+    CatalogsHotelListProductsByCatalogBasedFilterRequestValue*: CatalogsHotelListProductsByCatalogBasedFilterRequest
+  of CatalogsVerticalsListProductsByCatalogBasedFilterRequestKind.CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestVariant:
+    CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestValue*: CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest
 
-func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
+proc to*(node: JsonNode, T: typedesc[CatalogsVerticalsListProductsByCatalogBasedFilterRequest]): CatalogsVerticalsListProductsByCatalogBasedFilterRequest =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsVerticalsListProductsByCatalogBasedFilterRequest(kind: CatalogsVerticalsListProductsByCatalogBasedFilterRequestKind.CatalogsRetailListProductsByCatalogBasedFilterRequestVariant, CatalogsRetailListProductsByCatalogBasedFilterRequestValue: to(node, CatalogsRetailListProductsByCatalogBasedFilterRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailListProductsByCatalogBasedFilterRequest: ", e.msg
+  try:
+    return CatalogsVerticalsListProductsByCatalogBasedFilterRequest(kind: CatalogsVerticalsListProductsByCatalogBasedFilterRequestKind.CatalogsHotelListProductsByCatalogBasedFilterRequestVariant, CatalogsHotelListProductsByCatalogBasedFilterRequestValue: to(node, CatalogsHotelListProductsByCatalogBasedFilterRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelListProductsByCatalogBasedFilterRequest: ", e.msg
+  try:
+    return CatalogsVerticalsListProductsByCatalogBasedFilterRequest(kind: CatalogsVerticalsListProductsByCatalogBasedFilterRequestKind.CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestVariant, CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestValue: to(node, CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsVerticalsListProductsByCatalogBasedFilterRequest. JSON: " & $node)
 
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: CatalogType): string =
-  result = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"

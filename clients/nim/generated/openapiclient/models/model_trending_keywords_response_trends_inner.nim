@@ -9,13 +9,46 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_trending_keywords_response_trends_inner_time_series
 
 type TrendingKeywordsResponseTrendsInner* = object
   ## 
-  keyword*: string ## The keyword that is trending.
-  pctGrowthWow*: int ## The week-over-week percent change in search volume for this keyword.<br /> For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth.
-  pctGrowthMom*: int ## The month-over-month percent change in search volume for this keyword.<br /> For example, a value of \"400\" would represent a 400% increase in searches in the last 30 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% month-over-month growth.
-  pctGrowthYoy*: int ## The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.
-  timeSeries*: TrendingKeywordsResponse_trends_inner_time_series
+  keyword*: Option[string] ## The keyword that is trending.
+  pctGrowthWow*: Option[int] ## The week-over-week percent change in search volume for this keyword.<br /> For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth.
+  pctGrowthMom*: Option[int] ## The month-over-month percent change in search volume for this keyword.<br /> For example, a value of \"400\" would represent a 400% increase in searches in the last 30 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% month-over-month growth.
+  pctGrowthYoy*: Option[int] ## The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.
+  timeSeries*: Option[TrendingKeywordsResponse_trends_inner_time_series]
+
+
+# Custom JSON deserialization for TrendingKeywordsResponseTrendsInner with custom field names
+proc to*(node: JsonNode, T: typedesc[TrendingKeywordsResponseTrendsInner]): TrendingKeywordsResponseTrendsInner =
+  result = TrendingKeywordsResponseTrendsInner()
+  if node.kind == JObject:
+    if node.hasKey("keyword") and node["keyword"].kind != JNull:
+      result.keyword = some(to(node["keyword"], typeof(result.keyword.get())))
+    if node.hasKey("pct_growth_wow") and node["pct_growth_wow"].kind != JNull:
+      result.pctGrowthWow = some(to(node["pct_growth_wow"], typeof(result.pctGrowthWow.get())))
+    if node.hasKey("pct_growth_mom") and node["pct_growth_mom"].kind != JNull:
+      result.pctGrowthMom = some(to(node["pct_growth_mom"], typeof(result.pctGrowthMom.get())))
+    if node.hasKey("pct_growth_yoy") and node["pct_growth_yoy"].kind != JNull:
+      result.pctGrowthYoy = some(to(node["pct_growth_yoy"], typeof(result.pctGrowthYoy.get())))
+    if node.hasKey("time_series") and node["time_series"].kind != JNull:
+      result.timeSeries = some(to(node["time_series"], typeof(result.timeSeries.get())))
+
+# Custom JSON serialization for TrendingKeywordsResponseTrendsInner with custom field names
+proc `%`*(obj: TrendingKeywordsResponseTrendsInner): JsonNode =
+  result = newJObject()
+  if obj.keyword.isSome():
+    result["keyword"] = %obj.keyword.get()
+  if obj.pctGrowthWow.isSome():
+    result["pct_growth_wow"] = %obj.pctGrowthWow.get()
+  if obj.pctGrowthMom.isSome():
+    result["pct_growth_mom"] = %obj.pctGrowthMom.get()
+  if obj.pctGrowthYoy.isSome():
+    result["pct_growth_yoy"] = %obj.pctGrowthYoy.get()
+  if obj.timeSeries.isSome():
+    result["time_series"] = %obj.timeSeries.get()
+

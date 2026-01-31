@@ -9,8 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type LeadsExportCreateResponse* = object
   ## 
-  leadsExportId*: string ## ID for the leads export job
+  leadsExportId*: Option[string] ## ID for the leads export job
+
+
+# Custom JSON deserialization for LeadsExportCreateResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[LeadsExportCreateResponse]): LeadsExportCreateResponse =
+  result = LeadsExportCreateResponse()
+  if node.kind == JObject:
+    if node.hasKey("leads_export_id") and node["leads_export_id"].kind != JNull:
+      result.leadsExportId = some(to(node["leads_export_id"], typeof(result.leadsExportId.get())))
+
+# Custom JSON serialization for LeadsExportCreateResponse with custom field names
+proc `%`*(obj: LeadsExportCreateResponse): JsonNode =
+  result = newJObject()
+  if obj.leadsExportId.isSome():
+    result["leads_export_id"] = %obj.leadsExportId.get()
+

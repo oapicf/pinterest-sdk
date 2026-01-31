@@ -20,12 +20,6 @@ import { mapValues } from '../runtime';
  */
 export interface ConversionTagCreate {
     /**
-     * Conversion tag name.
-     * @type {string}
-     * @memberof ConversionTagCreate
-     */
-    name: string;
-    /**
      * Whether Automatic Enhanced Match email is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information.
      * @type {boolean}
      * @memberof ConversionTagCreate
@@ -67,6 +61,12 @@ export interface ConversionTagCreate {
      * @memberof ConversionTagCreate
      */
     aemLocEnabled?: boolean | null;
+    /**
+     * Conversion tag name.
+     * @type {string}
+     * @memberof ConversionTagCreate
+     */
+    name: string;
 }
 
 /**
@@ -87,7 +87,6 @@ export function ConversionTagCreateFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'name': json['name'],
         'aemEnabled': json['aem_enabled'] == null ? undefined : json['aem_enabled'],
         'mdFrequency': json['md_frequency'] == null ? undefined : json['md_frequency'],
         'aemFnlnEnabled': json['aem_fnln_enabled'] == null ? undefined : json['aem_fnln_enabled'],
@@ -95,6 +94,7 @@ export function ConversionTagCreateFromJSONTyped(json: any, ignoreDiscriminator:
         'aemGeEnabled': json['aem_ge_enabled'] == null ? undefined : json['aem_ge_enabled'],
         'aemDbEnabled': json['aem_db_enabled'] == null ? undefined : json['aem_db_enabled'],
         'aemLocEnabled': json['aem_loc_enabled'] == null ? undefined : json['aem_loc_enabled'],
+        'name': json['name'],
     };
 }
 
@@ -109,7 +109,6 @@ export function ConversionTagCreateToJSONTyped(value?: ConversionTagCreate | nul
 
     return {
         
-        'name': value['name'],
         'aem_enabled': value['aemEnabled'],
         'md_frequency': value['mdFrequency'],
         'aem_fnln_enabled': value['aemFnlnEnabled'],
@@ -117,6 +116,7 @@ export function ConversionTagCreateToJSONTyped(value?: ConversionTagCreate | nul
         'aem_ge_enabled': value['aemGeEnabled'],
         'aem_db_enabled': value['aemDbEnabled'],
         'aem_loc_enabled': value['aemLocEnabled'],
+        'name': value['name'],
     };
 }
 

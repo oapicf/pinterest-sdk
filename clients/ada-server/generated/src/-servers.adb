@@ -2845,7 +2845,7 @@ package body .Servers is
        Pin_Ids : in Swagger.UString_Vectors.Vector;
        Start_Date : in Swagger.Date;
        End_Date : in Swagger.Date;
-       Metric_Types : in .Models.PinsAnalyticsMetricTypesParameterInner_Type_Vectors.Vector;
+       Metric_Types : in Swagger.UString_Vectors.Vector;
        App_Types : in Swagger.Nullable_UString;
        Ad_Account_Id : in Swagger.Nullable_UString;
        Result  : out ;
@@ -2870,7 +2870,7 @@ package body .Servers is
        Pin_Id : in Swagger.UString;
        Start_Date : in Swagger.Date;
        End_Date : in Swagger.Date;
-       Metric_Types : in .Models.PinsAnalyticsMetricTypesParameterInner_Type_Vectors.Vector;
+       Metric_Types : in Swagger.UString_Vectors.Vector;
        App_Types : in Swagger.Nullable_UString;
        Split_Field : in Swagger.Nullable_UString;
        Ad_Account_Id : in Swagger.Nullable_UString;

@@ -14,11 +14,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeletePartnerAssetsResultsResponseArray  {
   
-  @ApiModelProperty(value = "List of terminated asset access.")
-  @Valid
  /**
-   * List of terminated asset access.
-  **/
+  * List of terminated asset access.
+  */
+  @ApiModelProperty(value = "List of terminated asset access.")
+
+  @Valid
+
   private List<DeletePartnerAssetsResult> items = new ArrayList<>();
  /**
    * List of terminated asset access.

@@ -9,7 +9,1263 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type Country* = object
-  ## Country ID from ISO 3166-1 alpha-2.
+type Country* {.pure.} = enum
+  AD
+  AE
+  AF
+  AG
+  AI
+  AL
+  AM
+  AO
+  AQ
+  AR
+  AS
+  AT
+  AU
+  AW
+  AX
+  AZ
+  BA
+  BB
+  BD
+  BE
+  BF
+  BG
+  BH
+  BI
+  BJ
+  BL
+  BM
+  BN
+  BO
+  BQ
+  BR
+  BS
+  BT
+  BV
+  BW
+  BY
+  BZ
+  CA
+  CC
+  CD
+  CF
+  CG
+  CH
+  CI
+  CK
+  CL
+  CM
+  CN
+  CO
+  CR
+  CU
+  CV
+  CW
+  CX
+  CY
+  CZ
+  DE
+  DJ
+  DK
+  DM
+  DO
+  DZ
+  EC
+  EE
+  EG
+  EH
+  ER
+  ES
+  ET
+  FI
+  FJ
+  FK
+  FM
+  FO
+  FR
+  GA
+  GB
+  GD
+  GE
+  GF
+  GG
+  GH
+  GI
+  GL
+  GM
+  GN
+  GP
+  GQ
+  GR
+  GS
+  GT
+  GU
+  GW
+  GY
+  HK
+  HM
+  HN
+  HR
+  HT
+  HU
+  ID
+  IE
+  IL
+  IM
+  IN
+  IO
+  IQ
+  IR
+  IS
+  IT
+  JE
+  JM
+  JO
+  JP
+  KE
+  KG
+  KH
+  KI
+  KM
+  KN
+  KR
+  KW
+  KY
+  KZ
+  LA
+  LB
+  LC
+  LI
+  LK
+  LR
+  LS
+  LT
+  LU
+  LV
+  LY
+  MA
+  MC
+  MD
+  ME
+  MF
+  MG
+  MH
+  MK
+  ML
+  MM
+  MN
+  MO
+  MP
+  MQ
+  MR
+  MS
+  MT
+  MU
+  MV
+  MW
+  MX
+  MY
+  MZ
+  NA
+  NC
+  NE
+  NF
+  NG
+  NI
+  NL
+  NO
+  NP
+  NR
+  NU
+  NZ
+  OM
+  PA
+  PE
+  PF
+  PG
+  PH
+  PK
+  PL
+  PM
+  PN
+  PR
+  PS
+  PT
+  PW
+  PY
+  QA
+  RE
+  RO
+  RS
+  RU
+  RW
+  SA
+  SB
+  SC
+  SD
+  SE
+  SG
+  SH
+  SI
+  SJ
+  SK
+  SL
+  SM
+  SN
+  SO
+  SR
+  SS
+  ST
+  SV
+  SX
+  SY
+  SZ
+  TC
+  TD
+  TF
+  TG
+  TH
+  TJ
+  TK
+  TL
+  TM
+  TN
+  TO
+  TR
+  TT
+  TV
+  TW
+  TZ
+  UA
+  UG
+  UM
+  US
+  UY
+  UZ
+  VA
+  VC
+  VE
+  VG
+  VI
+  VN
+  VU
+  WF
+  WS
+  YE
+  YT
+  ZA
+  ZM
+  ZW
+
+func `%`*(v: Country): JsonNode =
+  result = case v:
+    of Country.AD: %"AD"
+    of Country.AE: %"AE"
+    of Country.AF: %"AF"
+    of Country.AG: %"AG"
+    of Country.AI: %"AI"
+    of Country.AL: %"AL"
+    of Country.AM: %"AM"
+    of Country.AO: %"AO"
+    of Country.AQ: %"AQ"
+    of Country.AR: %"AR"
+    of Country.AS: %"AS"
+    of Country.AT: %"AT"
+    of Country.AU: %"AU"
+    of Country.AW: %"AW"
+    of Country.AX: %"AX"
+    of Country.AZ: %"AZ"
+    of Country.BA: %"BA"
+    of Country.BB: %"BB"
+    of Country.BD: %"BD"
+    of Country.BE: %"BE"
+    of Country.BF: %"BF"
+    of Country.BG: %"BG"
+    of Country.BH: %"BH"
+    of Country.BI: %"BI"
+    of Country.BJ: %"BJ"
+    of Country.BL: %"BL"
+    of Country.BM: %"BM"
+    of Country.BN: %"BN"
+    of Country.BO: %"BO"
+    of Country.BQ: %"BQ"
+    of Country.BR: %"BR"
+    of Country.BS: %"BS"
+    of Country.BT: %"BT"
+    of Country.BV: %"BV"
+    of Country.BW: %"BW"
+    of Country.BY: %"BY"
+    of Country.BZ: %"BZ"
+    of Country.CA: %"CA"
+    of Country.CC: %"CC"
+    of Country.CD: %"CD"
+    of Country.CF: %"CF"
+    of Country.CG: %"CG"
+    of Country.CH: %"CH"
+    of Country.CI: %"CI"
+    of Country.CK: %"CK"
+    of Country.CL: %"CL"
+    of Country.CM: %"CM"
+    of Country.CN: %"CN"
+    of Country.CO: %"CO"
+    of Country.CR: %"CR"
+    of Country.CU: %"CU"
+    of Country.CV: %"CV"
+    of Country.CW: %"CW"
+    of Country.CX: %"CX"
+    of Country.CY: %"CY"
+    of Country.CZ: %"CZ"
+    of Country.DE: %"DE"
+    of Country.DJ: %"DJ"
+    of Country.DK: %"DK"
+    of Country.DM: %"DM"
+    of Country.DO: %"DO"
+    of Country.DZ: %"DZ"
+    of Country.EC: %"EC"
+    of Country.EE: %"EE"
+    of Country.EG: %"EG"
+    of Country.EH: %"EH"
+    of Country.ER: %"ER"
+    of Country.ES: %"ES"
+    of Country.ET: %"ET"
+    of Country.FI: %"FI"
+    of Country.FJ: %"FJ"
+    of Country.FK: %"FK"
+    of Country.FM: %"FM"
+    of Country.FO: %"FO"
+    of Country.FR: %"FR"
+    of Country.GA: %"GA"
+    of Country.GB: %"GB"
+    of Country.GD: %"GD"
+    of Country.GE: %"GE"
+    of Country.GF: %"GF"
+    of Country.GG: %"GG"
+    of Country.GH: %"GH"
+    of Country.GI: %"GI"
+    of Country.GL: %"GL"
+    of Country.GM: %"GM"
+    of Country.GN: %"GN"
+    of Country.GP: %"GP"
+    of Country.GQ: %"GQ"
+    of Country.GR: %"GR"
+    of Country.GS: %"GS"
+    of Country.GT: %"GT"
+    of Country.GU: %"GU"
+    of Country.GW: %"GW"
+    of Country.GY: %"GY"
+    of Country.HK: %"HK"
+    of Country.HM: %"HM"
+    of Country.HN: %"HN"
+    of Country.HR: %"HR"
+    of Country.HT: %"HT"
+    of Country.HU: %"HU"
+    of Country.ID: %"ID"
+    of Country.IE: %"IE"
+    of Country.IL: %"IL"
+    of Country.IM: %"IM"
+    of Country.IN: %"IN"
+    of Country.IO: %"IO"
+    of Country.IQ: %"IQ"
+    of Country.IR: %"IR"
+    of Country.IS: %"IS"
+    of Country.IT: %"IT"
+    of Country.JE: %"JE"
+    of Country.JM: %"JM"
+    of Country.JO: %"JO"
+    of Country.JP: %"JP"
+    of Country.KE: %"KE"
+    of Country.KG: %"KG"
+    of Country.KH: %"KH"
+    of Country.KI: %"KI"
+    of Country.KM: %"KM"
+    of Country.KN: %"KN"
+    of Country.KR: %"KR"
+    of Country.KW: %"KW"
+    of Country.KY: %"KY"
+    of Country.KZ: %"KZ"
+    of Country.LA: %"LA"
+    of Country.LB: %"LB"
+    of Country.LC: %"LC"
+    of Country.LI: %"LI"
+    of Country.LK: %"LK"
+    of Country.LR: %"LR"
+    of Country.LS: %"LS"
+    of Country.LT: %"LT"
+    of Country.LU: %"LU"
+    of Country.LV: %"LV"
+    of Country.LY: %"LY"
+    of Country.MA: %"MA"
+    of Country.MC: %"MC"
+    of Country.MD: %"MD"
+    of Country.ME: %"ME"
+    of Country.MF: %"MF"
+    of Country.MG: %"MG"
+    of Country.MH: %"MH"
+    of Country.MK: %"MK"
+    of Country.ML: %"ML"
+    of Country.MM: %"MM"
+    of Country.MN: %"MN"
+    of Country.MO: %"MO"
+    of Country.MP: %"MP"
+    of Country.MQ: %"MQ"
+    of Country.MR: %"MR"
+    of Country.MS: %"MS"
+    of Country.MT: %"MT"
+    of Country.MU: %"MU"
+    of Country.MV: %"MV"
+    of Country.MW: %"MW"
+    of Country.MX: %"MX"
+    of Country.MY: %"MY"
+    of Country.MZ: %"MZ"
+    of Country.NA: %"NA"
+    of Country.NC: %"NC"
+    of Country.NE: %"NE"
+    of Country.NF: %"NF"
+    of Country.NG: %"NG"
+    of Country.NI: %"NI"
+    of Country.NL: %"NL"
+    of Country.NO: %"NO"
+    of Country.NP: %"NP"
+    of Country.NR: %"NR"
+    of Country.NU: %"NU"
+    of Country.NZ: %"NZ"
+    of Country.OM: %"OM"
+    of Country.PA: %"PA"
+    of Country.PE: %"PE"
+    of Country.PF: %"PF"
+    of Country.PG: %"PG"
+    of Country.PH: %"PH"
+    of Country.PK: %"PK"
+    of Country.PL: %"PL"
+    of Country.PM: %"PM"
+    of Country.PN: %"PN"
+    of Country.PR: %"PR"
+    of Country.PS: %"PS"
+    of Country.PT: %"PT"
+    of Country.PW: %"PW"
+    of Country.PY: %"PY"
+    of Country.QA: %"QA"
+    of Country.RE: %"RE"
+    of Country.RO: %"RO"
+    of Country.RS: %"RS"
+    of Country.RU: %"RU"
+    of Country.RW: %"RW"
+    of Country.SA: %"SA"
+    of Country.SB: %"SB"
+    of Country.SC: %"SC"
+    of Country.SD: %"SD"
+    of Country.SE: %"SE"
+    of Country.SG: %"SG"
+    of Country.SH: %"SH"
+    of Country.SI: %"SI"
+    of Country.SJ: %"SJ"
+    of Country.SK: %"SK"
+    of Country.SL: %"SL"
+    of Country.SM: %"SM"
+    of Country.SN: %"SN"
+    of Country.SO: %"SO"
+    of Country.SR: %"SR"
+    of Country.SS: %"SS"
+    of Country.ST: %"ST"
+    of Country.SV: %"SV"
+    of Country.SX: %"SX"
+    of Country.SY: %"SY"
+    of Country.SZ: %"SZ"
+    of Country.TC: %"TC"
+    of Country.TD: %"TD"
+    of Country.TF: %"TF"
+    of Country.TG: %"TG"
+    of Country.TH: %"TH"
+    of Country.TJ: %"TJ"
+    of Country.TK: %"TK"
+    of Country.TL: %"TL"
+    of Country.TM: %"TM"
+    of Country.TN: %"TN"
+    of Country.TO: %"TO"
+    of Country.TR: %"TR"
+    of Country.TT: %"TT"
+    of Country.TV: %"TV"
+    of Country.TW: %"TW"
+    of Country.TZ: %"TZ"
+    of Country.UA: %"UA"
+    of Country.UG: %"UG"
+    of Country.UM: %"UM"
+    of Country.US: %"US"
+    of Country.UY: %"UY"
+    of Country.UZ: %"UZ"
+    of Country.VA: %"VA"
+    of Country.VC: %"VC"
+    of Country.VE: %"VE"
+    of Country.VG: %"VG"
+    of Country.VI: %"VI"
+    of Country.VN: %"VN"
+    of Country.VU: %"VU"
+    of Country.WF: %"WF"
+    of Country.WS: %"WS"
+    of Country.YE: %"YE"
+    of Country.YT: %"YT"
+    of Country.ZA: %"ZA"
+    of Country.ZM: %"ZM"
+    of Country.ZW: %"ZW"
+
+func `$`*(v: Country): string =
+  result = case v:
+    of Country.AD: $("AD")
+    of Country.AE: $("AE")
+    of Country.AF: $("AF")
+    of Country.AG: $("AG")
+    of Country.AI: $("AI")
+    of Country.AL: $("AL")
+    of Country.AM: $("AM")
+    of Country.AO: $("AO")
+    of Country.AQ: $("AQ")
+    of Country.AR: $("AR")
+    of Country.AS: $("AS")
+    of Country.AT: $("AT")
+    of Country.AU: $("AU")
+    of Country.AW: $("AW")
+    of Country.AX: $("AX")
+    of Country.AZ: $("AZ")
+    of Country.BA: $("BA")
+    of Country.BB: $("BB")
+    of Country.BD: $("BD")
+    of Country.BE: $("BE")
+    of Country.BF: $("BF")
+    of Country.BG: $("BG")
+    of Country.BH: $("BH")
+    of Country.BI: $("BI")
+    of Country.BJ: $("BJ")
+    of Country.BL: $("BL")
+    of Country.BM: $("BM")
+    of Country.BN: $("BN")
+    of Country.BO: $("BO")
+    of Country.BQ: $("BQ")
+    of Country.BR: $("BR")
+    of Country.BS: $("BS")
+    of Country.BT: $("BT")
+    of Country.BV: $("BV")
+    of Country.BW: $("BW")
+    of Country.BY: $("BY")
+    of Country.BZ: $("BZ")
+    of Country.CA: $("CA")
+    of Country.CC: $("CC")
+    of Country.CD: $("CD")
+    of Country.CF: $("CF")
+    of Country.CG: $("CG")
+    of Country.CH: $("CH")
+    of Country.CI: $("CI")
+    of Country.CK: $("CK")
+    of Country.CL: $("CL")
+    of Country.CM: $("CM")
+    of Country.CN: $("CN")
+    of Country.CO: $("CO")
+    of Country.CR: $("CR")
+    of Country.CU: $("CU")
+    of Country.CV: $("CV")
+    of Country.CW: $("CW")
+    of Country.CX: $("CX")
+    of Country.CY: $("CY")
+    of Country.CZ: $("CZ")
+    of Country.DE: $("DE")
+    of Country.DJ: $("DJ")
+    of Country.DK: $("DK")
+    of Country.DM: $("DM")
+    of Country.DO: $("DO")
+    of Country.DZ: $("DZ")
+    of Country.EC: $("EC")
+    of Country.EE: $("EE")
+    of Country.EG: $("EG")
+    of Country.EH: $("EH")
+    of Country.ER: $("ER")
+    of Country.ES: $("ES")
+    of Country.ET: $("ET")
+    of Country.FI: $("FI")
+    of Country.FJ: $("FJ")
+    of Country.FK: $("FK")
+    of Country.FM: $("FM")
+    of Country.FO: $("FO")
+    of Country.FR: $("FR")
+    of Country.GA: $("GA")
+    of Country.GB: $("GB")
+    of Country.GD: $("GD")
+    of Country.GE: $("GE")
+    of Country.GF: $("GF")
+    of Country.GG: $("GG")
+    of Country.GH: $("GH")
+    of Country.GI: $("GI")
+    of Country.GL: $("GL")
+    of Country.GM: $("GM")
+    of Country.GN: $("GN")
+    of Country.GP: $("GP")
+    of Country.GQ: $("GQ")
+    of Country.GR: $("GR")
+    of Country.GS: $("GS")
+    of Country.GT: $("GT")
+    of Country.GU: $("GU")
+    of Country.GW: $("GW")
+    of Country.GY: $("GY")
+    of Country.HK: $("HK")
+    of Country.HM: $("HM")
+    of Country.HN: $("HN")
+    of Country.HR: $("HR")
+    of Country.HT: $("HT")
+    of Country.HU: $("HU")
+    of Country.ID: $("ID")
+    of Country.IE: $("IE")
+    of Country.IL: $("IL")
+    of Country.IM: $("IM")
+    of Country.IN: $("IN")
+    of Country.IO: $("IO")
+    of Country.IQ: $("IQ")
+    of Country.IR: $("IR")
+    of Country.IS: $("IS")
+    of Country.IT: $("IT")
+    of Country.JE: $("JE")
+    of Country.JM: $("JM")
+    of Country.JO: $("JO")
+    of Country.JP: $("JP")
+    of Country.KE: $("KE")
+    of Country.KG: $("KG")
+    of Country.KH: $("KH")
+    of Country.KI: $("KI")
+    of Country.KM: $("KM")
+    of Country.KN: $("KN")
+    of Country.KR: $("KR")
+    of Country.KW: $("KW")
+    of Country.KY: $("KY")
+    of Country.KZ: $("KZ")
+    of Country.LA: $("LA")
+    of Country.LB: $("LB")
+    of Country.LC: $("LC")
+    of Country.LI: $("LI")
+    of Country.LK: $("LK")
+    of Country.LR: $("LR")
+    of Country.LS: $("LS")
+    of Country.LT: $("LT")
+    of Country.LU: $("LU")
+    of Country.LV: $("LV")
+    of Country.LY: $("LY")
+    of Country.MA: $("MA")
+    of Country.MC: $("MC")
+    of Country.MD: $("MD")
+    of Country.ME: $("ME")
+    of Country.MF: $("MF")
+    of Country.MG: $("MG")
+    of Country.MH: $("MH")
+    of Country.MK: $("MK")
+    of Country.ML: $("ML")
+    of Country.MM: $("MM")
+    of Country.MN: $("MN")
+    of Country.MO: $("MO")
+    of Country.MP: $("MP")
+    of Country.MQ: $("MQ")
+    of Country.MR: $("MR")
+    of Country.MS: $("MS")
+    of Country.MT: $("MT")
+    of Country.MU: $("MU")
+    of Country.MV: $("MV")
+    of Country.MW: $("MW")
+    of Country.MX: $("MX")
+    of Country.MY: $("MY")
+    of Country.MZ: $("MZ")
+    of Country.NA: $("NA")
+    of Country.NC: $("NC")
+    of Country.NE: $("NE")
+    of Country.NF: $("NF")
+    of Country.NG: $("NG")
+    of Country.NI: $("NI")
+    of Country.NL: $("NL")
+    of Country.NO: $("NO")
+    of Country.NP: $("NP")
+    of Country.NR: $("NR")
+    of Country.NU: $("NU")
+    of Country.NZ: $("NZ")
+    of Country.OM: $("OM")
+    of Country.PA: $("PA")
+    of Country.PE: $("PE")
+    of Country.PF: $("PF")
+    of Country.PG: $("PG")
+    of Country.PH: $("PH")
+    of Country.PK: $("PK")
+    of Country.PL: $("PL")
+    of Country.PM: $("PM")
+    of Country.PN: $("PN")
+    of Country.PR: $("PR")
+    of Country.PS: $("PS")
+    of Country.PT: $("PT")
+    of Country.PW: $("PW")
+    of Country.PY: $("PY")
+    of Country.QA: $("QA")
+    of Country.RE: $("RE")
+    of Country.RO: $("RO")
+    of Country.RS: $("RS")
+    of Country.RU: $("RU")
+    of Country.RW: $("RW")
+    of Country.SA: $("SA")
+    of Country.SB: $("SB")
+    of Country.SC: $("SC")
+    of Country.SD: $("SD")
+    of Country.SE: $("SE")
+    of Country.SG: $("SG")
+    of Country.SH: $("SH")
+    of Country.SI: $("SI")
+    of Country.SJ: $("SJ")
+    of Country.SK: $("SK")
+    of Country.SL: $("SL")
+    of Country.SM: $("SM")
+    of Country.SN: $("SN")
+    of Country.SO: $("SO")
+    of Country.SR: $("SR")
+    of Country.SS: $("SS")
+    of Country.ST: $("ST")
+    of Country.SV: $("SV")
+    of Country.SX: $("SX")
+    of Country.SY: $("SY")
+    of Country.SZ: $("SZ")
+    of Country.TC: $("TC")
+    of Country.TD: $("TD")
+    of Country.TF: $("TF")
+    of Country.TG: $("TG")
+    of Country.TH: $("TH")
+    of Country.TJ: $("TJ")
+    of Country.TK: $("TK")
+    of Country.TL: $("TL")
+    of Country.TM: $("TM")
+    of Country.TN: $("TN")
+    of Country.TO: $("TO")
+    of Country.TR: $("TR")
+    of Country.TT: $("TT")
+    of Country.TV: $("TV")
+    of Country.TW: $("TW")
+    of Country.TZ: $("TZ")
+    of Country.UA: $("UA")
+    of Country.UG: $("UG")
+    of Country.UM: $("UM")
+    of Country.US: $("US")
+    of Country.UY: $("UY")
+    of Country.UZ: $("UZ")
+    of Country.VA: $("VA")
+    of Country.VC: $("VC")
+    of Country.VE: $("VE")
+    of Country.VG: $("VG")
+    of Country.VI: $("VI")
+    of Country.VN: $("VN")
+    of Country.VU: $("VU")
+    of Country.WF: $("WF")
+    of Country.WS: $("WS")
+    of Country.YE: $("YE")
+    of Country.YT: $("YT")
+    of Country.ZA: $("ZA")
+    of Country.ZM: $("ZM")
+    of Country.ZW: $("ZW")
+
+proc to*(node: JsonNode, T: typedesc[Country]): Country =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Country, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("AD"):
+    return Country.AD
+  of $("AE"):
+    return Country.AE
+  of $("AF"):
+    return Country.AF
+  of $("AG"):
+    return Country.AG
+  of $("AI"):
+    return Country.AI
+  of $("AL"):
+    return Country.AL
+  of $("AM"):
+    return Country.AM
+  of $("AO"):
+    return Country.AO
+  of $("AQ"):
+    return Country.AQ
+  of $("AR"):
+    return Country.AR
+  of $("AS"):
+    return Country.AS
+  of $("AT"):
+    return Country.AT
+  of $("AU"):
+    return Country.AU
+  of $("AW"):
+    return Country.AW
+  of $("AX"):
+    return Country.AX
+  of $("AZ"):
+    return Country.AZ
+  of $("BA"):
+    return Country.BA
+  of $("BB"):
+    return Country.BB
+  of $("BD"):
+    return Country.BD
+  of $("BE"):
+    return Country.BE
+  of $("BF"):
+    return Country.BF
+  of $("BG"):
+    return Country.BG
+  of $("BH"):
+    return Country.BH
+  of $("BI"):
+    return Country.BI
+  of $("BJ"):
+    return Country.BJ
+  of $("BL"):
+    return Country.BL
+  of $("BM"):
+    return Country.BM
+  of $("BN"):
+    return Country.BN
+  of $("BO"):
+    return Country.BO
+  of $("BQ"):
+    return Country.BQ
+  of $("BR"):
+    return Country.BR
+  of $("BS"):
+    return Country.BS
+  of $("BT"):
+    return Country.BT
+  of $("BV"):
+    return Country.BV
+  of $("BW"):
+    return Country.BW
+  of $("BY"):
+    return Country.BY
+  of $("BZ"):
+    return Country.BZ
+  of $("CA"):
+    return Country.CA
+  of $("CC"):
+    return Country.CC
+  of $("CD"):
+    return Country.CD
+  of $("CF"):
+    return Country.CF
+  of $("CG"):
+    return Country.CG
+  of $("CH"):
+    return Country.CH
+  of $("CI"):
+    return Country.CI
+  of $("CK"):
+    return Country.CK
+  of $("CL"):
+    return Country.CL
+  of $("CM"):
+    return Country.CM
+  of $("CN"):
+    return Country.CN
+  of $("CO"):
+    return Country.CO
+  of $("CR"):
+    return Country.CR
+  of $("CU"):
+    return Country.CU
+  of $("CV"):
+    return Country.CV
+  of $("CW"):
+    return Country.CW
+  of $("CX"):
+    return Country.CX
+  of $("CY"):
+    return Country.CY
+  of $("CZ"):
+    return Country.CZ
+  of $("DE"):
+    return Country.DE
+  of $("DJ"):
+    return Country.DJ
+  of $("DK"):
+    return Country.DK
+  of $("DM"):
+    return Country.DM
+  of $("DO"):
+    return Country.DO
+  of $("DZ"):
+    return Country.DZ
+  of $("EC"):
+    return Country.EC
+  of $("EE"):
+    return Country.EE
+  of $("EG"):
+    return Country.EG
+  of $("EH"):
+    return Country.EH
+  of $("ER"):
+    return Country.ER
+  of $("ES"):
+    return Country.ES
+  of $("ET"):
+    return Country.ET
+  of $("FI"):
+    return Country.FI
+  of $("FJ"):
+    return Country.FJ
+  of $("FK"):
+    return Country.FK
+  of $("FM"):
+    return Country.FM
+  of $("FO"):
+    return Country.FO
+  of $("FR"):
+    return Country.FR
+  of $("GA"):
+    return Country.GA
+  of $("GB"):
+    return Country.GB
+  of $("GD"):
+    return Country.GD
+  of $("GE"):
+    return Country.GE
+  of $("GF"):
+    return Country.GF
+  of $("GG"):
+    return Country.GG
+  of $("GH"):
+    return Country.GH
+  of $("GI"):
+    return Country.GI
+  of $("GL"):
+    return Country.GL
+  of $("GM"):
+    return Country.GM
+  of $("GN"):
+    return Country.GN
+  of $("GP"):
+    return Country.GP
+  of $("GQ"):
+    return Country.GQ
+  of $("GR"):
+    return Country.GR
+  of $("GS"):
+    return Country.GS
+  of $("GT"):
+    return Country.GT
+  of $("GU"):
+    return Country.GU
+  of $("GW"):
+    return Country.GW
+  of $("GY"):
+    return Country.GY
+  of $("HK"):
+    return Country.HK
+  of $("HM"):
+    return Country.HM
+  of $("HN"):
+    return Country.HN
+  of $("HR"):
+    return Country.HR
+  of $("HT"):
+    return Country.HT
+  of $("HU"):
+    return Country.HU
+  of $("ID"):
+    return Country.ID
+  of $("IE"):
+    return Country.IE
+  of $("IL"):
+    return Country.IL
+  of $("IM"):
+    return Country.IM
+  of $("IN"):
+    return Country.IN
+  of $("IO"):
+    return Country.IO
+  of $("IQ"):
+    return Country.IQ
+  of $("IR"):
+    return Country.IR
+  of $("IS"):
+    return Country.IS
+  of $("IT"):
+    return Country.IT
+  of $("JE"):
+    return Country.JE
+  of $("JM"):
+    return Country.JM
+  of $("JO"):
+    return Country.JO
+  of $("JP"):
+    return Country.JP
+  of $("KE"):
+    return Country.KE
+  of $("KG"):
+    return Country.KG
+  of $("KH"):
+    return Country.KH
+  of $("KI"):
+    return Country.KI
+  of $("KM"):
+    return Country.KM
+  of $("KN"):
+    return Country.KN
+  of $("KR"):
+    return Country.KR
+  of $("KW"):
+    return Country.KW
+  of $("KY"):
+    return Country.KY
+  of $("KZ"):
+    return Country.KZ
+  of $("LA"):
+    return Country.LA
+  of $("LB"):
+    return Country.LB
+  of $("LC"):
+    return Country.LC
+  of $("LI"):
+    return Country.LI
+  of $("LK"):
+    return Country.LK
+  of $("LR"):
+    return Country.LR
+  of $("LS"):
+    return Country.LS
+  of $("LT"):
+    return Country.LT
+  of $("LU"):
+    return Country.LU
+  of $("LV"):
+    return Country.LV
+  of $("LY"):
+    return Country.LY
+  of $("MA"):
+    return Country.MA
+  of $("MC"):
+    return Country.MC
+  of $("MD"):
+    return Country.MD
+  of $("ME"):
+    return Country.ME
+  of $("MF"):
+    return Country.MF
+  of $("MG"):
+    return Country.MG
+  of $("MH"):
+    return Country.MH
+  of $("MK"):
+    return Country.MK
+  of $("ML"):
+    return Country.ML
+  of $("MM"):
+    return Country.MM
+  of $("MN"):
+    return Country.MN
+  of $("MO"):
+    return Country.MO
+  of $("MP"):
+    return Country.MP
+  of $("MQ"):
+    return Country.MQ
+  of $("MR"):
+    return Country.MR
+  of $("MS"):
+    return Country.MS
+  of $("MT"):
+    return Country.MT
+  of $("MU"):
+    return Country.MU
+  of $("MV"):
+    return Country.MV
+  of $("MW"):
+    return Country.MW
+  of $("MX"):
+    return Country.MX
+  of $("MY"):
+    return Country.MY
+  of $("MZ"):
+    return Country.MZ
+  of $("NA"):
+    return Country.NA
+  of $("NC"):
+    return Country.NC
+  of $("NE"):
+    return Country.NE
+  of $("NF"):
+    return Country.NF
+  of $("NG"):
+    return Country.NG
+  of $("NI"):
+    return Country.NI
+  of $("NL"):
+    return Country.NL
+  of $("NO"):
+    return Country.NO
+  of $("NP"):
+    return Country.NP
+  of $("NR"):
+    return Country.NR
+  of $("NU"):
+    return Country.NU
+  of $("NZ"):
+    return Country.NZ
+  of $("OM"):
+    return Country.OM
+  of $("PA"):
+    return Country.PA
+  of $("PE"):
+    return Country.PE
+  of $("PF"):
+    return Country.PF
+  of $("PG"):
+    return Country.PG
+  of $("PH"):
+    return Country.PH
+  of $("PK"):
+    return Country.PK
+  of $("PL"):
+    return Country.PL
+  of $("PM"):
+    return Country.PM
+  of $("PN"):
+    return Country.PN
+  of $("PR"):
+    return Country.PR
+  of $("PS"):
+    return Country.PS
+  of $("PT"):
+    return Country.PT
+  of $("PW"):
+    return Country.PW
+  of $("PY"):
+    return Country.PY
+  of $("QA"):
+    return Country.QA
+  of $("RE"):
+    return Country.RE
+  of $("RO"):
+    return Country.RO
+  of $("RS"):
+    return Country.RS
+  of $("RU"):
+    return Country.RU
+  of $("RW"):
+    return Country.RW
+  of $("SA"):
+    return Country.SA
+  of $("SB"):
+    return Country.SB
+  of $("SC"):
+    return Country.SC
+  of $("SD"):
+    return Country.SD
+  of $("SE"):
+    return Country.SE
+  of $("SG"):
+    return Country.SG
+  of $("SH"):
+    return Country.SH
+  of $("SI"):
+    return Country.SI
+  of $("SJ"):
+    return Country.SJ
+  of $("SK"):
+    return Country.SK
+  of $("SL"):
+    return Country.SL
+  of $("SM"):
+    return Country.SM
+  of $("SN"):
+    return Country.SN
+  of $("SO"):
+    return Country.SO
+  of $("SR"):
+    return Country.SR
+  of $("SS"):
+    return Country.SS
+  of $("ST"):
+    return Country.ST
+  of $("SV"):
+    return Country.SV
+  of $("SX"):
+    return Country.SX
+  of $("SY"):
+    return Country.SY
+  of $("SZ"):
+    return Country.SZ
+  of $("TC"):
+    return Country.TC
+  of $("TD"):
+    return Country.TD
+  of $("TF"):
+    return Country.TF
+  of $("TG"):
+    return Country.TG
+  of $("TH"):
+    return Country.TH
+  of $("TJ"):
+    return Country.TJ
+  of $("TK"):
+    return Country.TK
+  of $("TL"):
+    return Country.TL
+  of $("TM"):
+    return Country.TM
+  of $("TN"):
+    return Country.TN
+  of $("TO"):
+    return Country.TO
+  of $("TR"):
+    return Country.TR
+  of $("TT"):
+    return Country.TT
+  of $("TV"):
+    return Country.TV
+  of $("TW"):
+    return Country.TW
+  of $("TZ"):
+    return Country.TZ
+  of $("UA"):
+    return Country.UA
+  of $("UG"):
+    return Country.UG
+  of $("UM"):
+    return Country.UM
+  of $("US"):
+    return Country.US
+  of $("UY"):
+    return Country.UY
+  of $("UZ"):
+    return Country.UZ
+  of $("VA"):
+    return Country.VA
+  of $("VC"):
+    return Country.VC
+  of $("VE"):
+    return Country.VE
+  of $("VG"):
+    return Country.VG
+  of $("VI"):
+    return Country.VI
+  of $("VN"):
+    return Country.VN
+  of $("VU"):
+    return Country.VU
+  of $("WF"):
+    return Country.WF
+  of $("WS"):
+    return Country.WS
+  of $("YE"):
+    return Country.YE
+  of $("YT"):
+    return Country.YT
+  of $("ZA"):
+    return Country.ZA
+  of $("ZM"):
+    return Country.ZM
+  of $("ZW"):
+    return Country.ZW
+  else:
+    raise newException(ValueError, "Invalid enum value for Country: " & strVal)
+

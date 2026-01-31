@@ -12,14 +12,10 @@
 /**
  * The status of the operation performed by the batch
  */
-export type BatchOperationStatus = 'PROCESSING' | 'COMPLETED' | 'FAILED';
-
 export const BatchOperationStatus = {
-
-    Processing: 'PROCESSING' as BatchOperationStatus,
-
-    Completed: 'COMPLETED' as BatchOperationStatus,
-
-    Failed: 'FAILED' as BatchOperationStatus
-};
+    Processing: 'PROCESSING',
+    Completed: 'COMPLETED',
+    Failed: 'FAILED'
+} as const;
+export type BatchOperationStatus = typeof BatchOperationStatus[keyof typeof BatchOperationStatus];
 

@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_object
 
 type Paginated* = object
   ## 
-  items*: seq[object]
-  bookmark*: string
+  items*: seq[JsonNode]
+  bookmark*: Option[string]
+

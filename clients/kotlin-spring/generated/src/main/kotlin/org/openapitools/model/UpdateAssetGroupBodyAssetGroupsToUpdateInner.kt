@@ -43,7 +43,7 @@ data class UpdateAssetGroupBodyAssetGroupsToUpdateInner(
 
     @Schema(example = "null", description = "A list of asset ids to remove from the asset group.")
     @get:JsonProperty("assets_to_remove") val assetsToRemove: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
 }
 

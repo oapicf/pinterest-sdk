@@ -13,11 +13,29 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
+ * 
  * @export
  * @interface OauthAccessTokenResponseEverlastingRefresh
  */
 export interface OauthAccessTokenResponseEverlastingRefresh  {
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenResponseEverlastingRefresh
+     */
+    refreshToken: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof OauthAccessTokenResponseEverlastingRefresh
+     */
+    refreshTokenExpiresIn: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof OauthAccessTokenResponseEverlastingRefresh
+     */
+    refreshTokenExpiresAt: number;
     /**
      * 
      * @type {string}
@@ -48,36 +66,18 @@ export interface OauthAccessTokenResponseEverlastingRefresh  {
      * @memberof OauthAccessTokenResponseEverlastingRefresh
      */
     scope: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof OauthAccessTokenResponseEverlastingRefresh
-     */
-    refreshToken: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof OauthAccessTokenResponseEverlastingRefresh
-     */
-    refreshTokenExpiresIn: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof OauthAccessTokenResponseEverlastingRefresh
-     */
-    refreshTokenExpiresAt: number;
 }
 
 export function OauthAccessTokenResponseEverlastingRefreshFromJSON(json: any): OauthAccessTokenResponseEverlastingRefresh {
     return {
+        'refreshToken': json['refresh_token'],
+        'refreshTokenExpiresIn': json['refresh_token_expires_in'],
+        'refreshTokenExpiresAt': json['refresh_token_expires_at'],
         'responseType': !exists(json, 'response_type') ? undefined : json['response_type'],
         'accessToken': json['access_token'],
         'tokenType': json['token_type'],
         'expiresIn': json['expires_in'],
         'scope': json['scope'],
-        'refreshToken': json['refresh_token'],
-        'refreshTokenExpiresIn': json['refresh_token_expires_in'],
-        'refreshTokenExpiresAt': json['refresh_token_expires_at'],
     };
 }
 
@@ -86,14 +86,14 @@ export function OauthAccessTokenResponseEverlastingRefreshToJSON(value?: OauthAc
         return undefined;
     }
     return {
+        'refresh_token': value.refreshToken,
+        'refresh_token_expires_in': value.refreshTokenExpiresIn,
+        'refresh_token_expires_at': value.refreshTokenExpiresAt,
         'response_type': value.responseType,
         'access_token': value.accessToken,
         'token_type': value.tokenType,
         'expires_in': value.expiresIn,
         'scope': value.scope,
-        'refresh_token': value.refreshToken,
-        'refresh_token_expires_in': value.refreshTokenExpiresIn,
-        'refresh_token_expires_at': value.refreshTokenExpiresAt,
     };
 }
 

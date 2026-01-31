@@ -11,15 +11,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Interest  {
   
   @ApiModelProperty(value = "")
+
   private String canonicalUrl;
 
   @ApiModelProperty(example = "903972677830", value = "")
+
   private String id;
 
   @ApiModelProperty(example = "man cave", value = "")
+
   private String key;
 
   @ApiModelProperty(example = "Man cave", value = "")
+
   private String name;
  /**
    * Get canonicalUrl

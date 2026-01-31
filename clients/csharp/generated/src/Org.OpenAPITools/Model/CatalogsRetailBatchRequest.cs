@@ -36,10 +36,10 @@ namespace Org.OpenAPITools.Model
         /// </summary>
         /// <param name="catalogType">catalogType</param>
         /// <param name="country">country</param>
-        /// <param name="language">language</param>
+        /// <param name="language">We recommend using the CatalogsLocale values.</param>
         /// <param name="items">Array with catalogs item operations</param>
         [JsonConstructor]
-        public CatalogsRetailBatchRequest(CatalogTypeEnum catalogType, Country country, CatalogsItemsRequestLanguage language, List<CatalogsRetailBatchRequestItemsInner> items)
+        public CatalogsRetailBatchRequest(CatalogTypeEnum catalogType, Country country, LanguageEnum language, List<CatalogsRetailBatchRequestItemsInner> items)
         {
             CatalogType = catalogType;
             Country = country;
@@ -115,10 +115,1548 @@ namespace Org.OpenAPITools.Model
         public Country Country { get; set; }
 
         /// <summary>
-        /// Gets or Sets Language
+        /// We recommend using the CatalogsLocale values.
         /// </summary>
+        /// <value>We recommend using the CatalogsLocale values.</value>
+        public enum LanguageEnum
+        {
+            /// <summary>
+            /// Enum AfZA for value: af-ZA
+            /// </summary>
+            AfZA = 1,
+
+            /// <summary>
+            /// Enum ArSA for value: ar-SA
+            /// </summary>
+            ArSA = 2,
+
+            /// <summary>
+            /// Enum BgBG for value: bg-BG
+            /// </summary>
+            BgBG = 3,
+
+            /// <summary>
+            /// Enum BnIN for value: bn-IN
+            /// </summary>
+            BnIN = 4,
+
+            /// <summary>
+            /// Enum CsCZ for value: cs-CZ
+            /// </summary>
+            CsCZ = 5,
+
+            /// <summary>
+            /// Enum DaDK for value: da-DK
+            /// </summary>
+            DaDK = 6,
+
+            /// <summary>
+            /// Enum De for value: de
+            /// </summary>
+            De = 7,
+
+            /// <summary>
+            /// Enum ElGR for value: el-GR
+            /// </summary>
+            ElGR = 8,
+
+            /// <summary>
+            /// Enum EnAU for value: en-AU
+            /// </summary>
+            EnAU = 9,
+
+            /// <summary>
+            /// Enum EnCA for value: en-CA
+            /// </summary>
+            EnCA = 10,
+
+            /// <summary>
+            /// Enum EnGB for value: en-GB
+            /// </summary>
+            EnGB = 11,
+
+            /// <summary>
+            /// Enum EnIN for value: en-IN
+            /// </summary>
+            EnIN = 12,
+
+            /// <summary>
+            /// Enum EnUS for value: en-US
+            /// </summary>
+            EnUS = 13,
+
+            /// <summary>
+            /// Enum Es419 for value: es-419
+            /// </summary>
+            Es419 = 14,
+
+            /// <summary>
+            /// Enum EsAR for value: es-AR
+            /// </summary>
+            EsAR = 15,
+
+            /// <summary>
+            /// Enum EsES for value: es-ES
+            /// </summary>
+            EsES = 16,
+
+            /// <summary>
+            /// Enum EsMX for value: es-MX
+            /// </summary>
+            EsMX = 17,
+
+            /// <summary>
+            /// Enum FiFI for value: fi-FI
+            /// </summary>
+            FiFI = 18,
+
+            /// <summary>
+            /// Enum Fr for value: fr
+            /// </summary>
+            Fr = 19,
+
+            /// <summary>
+            /// Enum FrCA for value: fr-CA
+            /// </summary>
+            FrCA = 20,
+
+            /// <summary>
+            /// Enum HeIL for value: he-IL
+            /// </summary>
+            HeIL = 21,
+
+            /// <summary>
+            /// Enum HiIN for value: hi-IN
+            /// </summary>
+            HiIN = 22,
+
+            /// <summary>
+            /// Enum HrHR for value: hr-HR
+            /// </summary>
+            HrHR = 23,
+
+            /// <summary>
+            /// Enum HuHU for value: hu-HU
+            /// </summary>
+            HuHU = 24,
+
+            /// <summary>
+            /// Enum IdID for value: id-ID
+            /// </summary>
+            IdID = 25,
+
+            /// <summary>
+            /// Enum It for value: it
+            /// </summary>
+            It = 26,
+
+            /// <summary>
+            /// Enum Ja for value: ja
+            /// </summary>
+            Ja = 27,
+
+            /// <summary>
+            /// Enum KoKR for value: ko-KR
+            /// </summary>
+            KoKR = 28,
+
+            /// <summary>
+            /// Enum MsMY for value: ms-MY
+            /// </summary>
+            MsMY = 29,
+
+            /// <summary>
+            /// Enum NbNO for value: nb-NO
+            /// </summary>
+            NbNO = 30,
+
+            /// <summary>
+            /// Enum Nl for value: nl
+            /// </summary>
+            Nl = 31,
+
+            /// <summary>
+            /// Enum PlPL for value: pl-PL
+            /// </summary>
+            PlPL = 32,
+
+            /// <summary>
+            /// Enum PtBR for value: pt-BR
+            /// </summary>
+            PtBR = 33,
+
+            /// <summary>
+            /// Enum PtPT for value: pt-PT
+            /// </summary>
+            PtPT = 34,
+
+            /// <summary>
+            /// Enum RoRO for value: ro-RO
+            /// </summary>
+            RoRO = 35,
+
+            /// <summary>
+            /// Enum RuRU for value: ru-RU
+            /// </summary>
+            RuRU = 36,
+
+            /// <summary>
+            /// Enum SkSK for value: sk-SK
+            /// </summary>
+            SkSK = 37,
+
+            /// <summary>
+            /// Enum SvSE for value: sv-SE
+            /// </summary>
+            SvSE = 38,
+
+            /// <summary>
+            /// Enum TeIN for value: te-IN
+            /// </summary>
+            TeIN = 39,
+
+            /// <summary>
+            /// Enum ThTH for value: th-TH
+            /// </summary>
+            ThTH = 40,
+
+            /// <summary>
+            /// Enum TlPH for value: tl-PH
+            /// </summary>
+            TlPH = 41,
+
+            /// <summary>
+            /// Enum Tr for value: tr
+            /// </summary>
+            Tr = 42,
+
+            /// <summary>
+            /// Enum UkUA for value: uk-UA
+            /// </summary>
+            UkUA = 43,
+
+            /// <summary>
+            /// Enum ViVN for value: vi-VN
+            /// </summary>
+            ViVN = 44,
+
+            /// <summary>
+            /// Enum ZhCN for value: zh-CN
+            /// </summary>
+            ZhCN = 45,
+
+            /// <summary>
+            /// Enum ZhTW for value: zh-TW
+            /// </summary>
+            ZhTW = 46,
+
+            /// <summary>
+            /// Enum AM for value: AM
+            /// </summary>
+            AM = 47,
+
+            /// <summary>
+            /// Enum AR for value: AR
+            /// </summary>
+            AR = 48,
+
+            /// <summary>
+            /// Enum AZ for value: AZ
+            /// </summary>
+            AZ = 49,
+
+            /// <summary>
+            /// Enum BG for value: BG
+            /// </summary>
+            BG = 50,
+
+            /// <summary>
+            /// Enum BN for value: BN
+            /// </summary>
+            BN = 51,
+
+            /// <summary>
+            /// Enum BS for value: BS
+            /// </summary>
+            BS = 52,
+
+            /// <summary>
+            /// Enum CA for value: CA
+            /// </summary>
+            CA = 53,
+
+            /// <summary>
+            /// Enum CS for value: CS
+            /// </summary>
+            CS = 54,
+
+            /// <summary>
+            /// Enum DA for value: DA
+            /// </summary>
+            DA = 55,
+
+            /// <summary>
+            /// Enum DV for value: DV
+            /// </summary>
+            DV = 56,
+
+            /// <summary>
+            /// Enum DZ for value: DZ
+            /// </summary>
+            DZ = 57,
+
+            /// <summary>
+            /// Enum DE for value: DE
+            /// </summary>
+            DE = 58,
+
+            /// <summary>
+            /// Enum EL for value: EL
+            /// </summary>
+            EL = 59,
+
+            /// <summary>
+            /// Enum EN for value: EN
+            /// </summary>
+            EN = 60,
+
+            /// <summary>
+            /// Enum ES for value: ES
+            /// </summary>
+            ES = 61,
+
+            /// <summary>
+            /// Enum ET for value: ET
+            /// </summary>
+            ET = 62,
+
+            /// <summary>
+            /// Enum FA for value: FA
+            /// </summary>
+            FA = 63,
+
+            /// <summary>
+            /// Enum FI for value: FI
+            /// </summary>
+            FI = 64,
+
+            /// <summary>
+            /// Enum FR for value: FR
+            /// </summary>
+            FR = 65,
+
+            /// <summary>
+            /// Enum HE for value: HE
+            /// </summary>
+            HE = 66,
+
+            /// <summary>
+            /// Enum HI for value: HI
+            /// </summary>
+            HI = 67,
+
+            /// <summary>
+            /// Enum HR for value: HR
+            /// </summary>
+            HR = 68,
+
+            /// <summary>
+            /// Enum HU for value: HU
+            /// </summary>
+            HU = 69,
+
+            /// <summary>
+            /// Enum HY for value: HY
+            /// </summary>
+            HY = 70,
+
+            /// <summary>
+            /// Enum ID for value: ID
+            /// </summary>
+            ID = 71,
+
+            /// <summary>
+            /// Enum IN for value: IN
+            /// </summary>
+            IN = 72,
+
+            /// <summary>
+            /// Enum IS for value: IS
+            /// </summary>
+            IS = 73,
+
+            /// <summary>
+            /// Enum IT for value: IT
+            /// </summary>
+            IT = 74,
+
+            /// <summary>
+            /// Enum IW for value: IW
+            /// </summary>
+            IW = 75,
+
+            /// <summary>
+            /// Enum JA for value: JA
+            /// </summary>
+            JA = 76,
+
+            /// <summary>
+            /// Enum KA for value: KA
+            /// </summary>
+            KA = 77,
+
+            /// <summary>
+            /// Enum KM for value: KM
+            /// </summary>
+            KM = 78,
+
+            /// <summary>
+            /// Enum KO for value: KO
+            /// </summary>
+            KO = 79,
+
+            /// <summary>
+            /// Enum LO for value: LO
+            /// </summary>
+            LO = 80,
+
+            /// <summary>
+            /// Enum LT for value: LT
+            /// </summary>
+            LT = 81,
+
+            /// <summary>
+            /// Enum LV for value: LV
+            /// </summary>
+            LV = 82,
+
+            /// <summary>
+            /// Enum MK for value: MK
+            /// </summary>
+            MK = 83,
+
+            /// <summary>
+            /// Enum MN for value: MN
+            /// </summary>
+            MN = 84,
+
+            /// <summary>
+            /// Enum MS for value: MS
+            /// </summary>
+            MS = 85,
+
+            /// <summary>
+            /// Enum MY for value: MY
+            /// </summary>
+            MY = 86,
+
+            /// <summary>
+            /// Enum NB for value: NB
+            /// </summary>
+            NB = 87,
+
+            /// <summary>
+            /// Enum NE for value: NE
+            /// </summary>
+            NE = 88,
+
+            /// <summary>
+            /// Enum NL for value: NL
+            /// </summary>
+            NL = 89,
+
+            /// <summary>
+            /// Enum NO for value: NO
+            /// </summary>
+            NO = 90,
+
+            /// <summary>
+            /// Enum PL for value: PL
+            /// </summary>
+            PL = 91,
+
+            /// <summary>
+            /// Enum PT for value: PT
+            /// </summary>
+            PT = 92,
+
+            /// <summary>
+            /// Enum RO for value: RO
+            /// </summary>
+            RO = 93,
+
+            /// <summary>
+            /// Enum RU for value: RU
+            /// </summary>
+            RU = 94,
+
+            /// <summary>
+            /// Enum SK for value: SK
+            /// </summary>
+            SK = 95,
+
+            /// <summary>
+            /// Enum SL for value: SL
+            /// </summary>
+            SL = 96,
+
+            /// <summary>
+            /// Enum SQ for value: SQ
+            /// </summary>
+            SQ = 97,
+
+            /// <summary>
+            /// Enum SR for value: SR
+            /// </summary>
+            SR = 98,
+
+            /// <summary>
+            /// Enum SV for value: SV
+            /// </summary>
+            SV = 99,
+
+            /// <summary>
+            /// Enum TL for value: TL
+            /// </summary>
+            TL = 100,
+
+            /// <summary>
+            /// Enum UK for value: UK
+            /// </summary>
+            UK = 101,
+
+            /// <summary>
+            /// Enum VI for value: VI
+            /// </summary>
+            VI = 102,
+
+            /// <summary>
+            /// Enum TE for value: TE
+            /// </summary>
+            TE = 103,
+
+            /// <summary>
+            /// Enum TH for value: TH
+            /// </summary>
+            TH = 104,
+
+            /// <summary>
+            /// Enum TR for value: TR
+            /// </summary>
+            TR = 105,
+
+            /// <summary>
+            /// Enum XX for value: XX
+            /// </summary>
+            XX = 106,
+
+            /// <summary>
+            /// Enum ZH for value: ZH
+            /// </summary>
+            ZH = 107
+        }
+
+        /// <summary>
+        /// Returns a <see cref="LanguageEnum"/>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static LanguageEnum LanguageEnumFromString(string value)
+        {
+            if (value.Equals("af-ZA"))
+                return LanguageEnum.AfZA;
+
+            if (value.Equals("ar-SA"))
+                return LanguageEnum.ArSA;
+
+            if (value.Equals("bg-BG"))
+                return LanguageEnum.BgBG;
+
+            if (value.Equals("bn-IN"))
+                return LanguageEnum.BnIN;
+
+            if (value.Equals("cs-CZ"))
+                return LanguageEnum.CsCZ;
+
+            if (value.Equals("da-DK"))
+                return LanguageEnum.DaDK;
+
+            if (value.Equals("de"))
+                return LanguageEnum.De;
+
+            if (value.Equals("el-GR"))
+                return LanguageEnum.ElGR;
+
+            if (value.Equals("en-AU"))
+                return LanguageEnum.EnAU;
+
+            if (value.Equals("en-CA"))
+                return LanguageEnum.EnCA;
+
+            if (value.Equals("en-GB"))
+                return LanguageEnum.EnGB;
+
+            if (value.Equals("en-IN"))
+                return LanguageEnum.EnIN;
+
+            if (value.Equals("en-US"))
+                return LanguageEnum.EnUS;
+
+            if (value.Equals("es-419"))
+                return LanguageEnum.Es419;
+
+            if (value.Equals("es-AR"))
+                return LanguageEnum.EsAR;
+
+            if (value.Equals("es-ES"))
+                return LanguageEnum.EsES;
+
+            if (value.Equals("es-MX"))
+                return LanguageEnum.EsMX;
+
+            if (value.Equals("fi-FI"))
+                return LanguageEnum.FiFI;
+
+            if (value.Equals("fr"))
+                return LanguageEnum.Fr;
+
+            if (value.Equals("fr-CA"))
+                return LanguageEnum.FrCA;
+
+            if (value.Equals("he-IL"))
+                return LanguageEnum.HeIL;
+
+            if (value.Equals("hi-IN"))
+                return LanguageEnum.HiIN;
+
+            if (value.Equals("hr-HR"))
+                return LanguageEnum.HrHR;
+
+            if (value.Equals("hu-HU"))
+                return LanguageEnum.HuHU;
+
+            if (value.Equals("id-ID"))
+                return LanguageEnum.IdID;
+
+            if (value.Equals("it"))
+                return LanguageEnum.It;
+
+            if (value.Equals("ja"))
+                return LanguageEnum.Ja;
+
+            if (value.Equals("ko-KR"))
+                return LanguageEnum.KoKR;
+
+            if (value.Equals("ms-MY"))
+                return LanguageEnum.MsMY;
+
+            if (value.Equals("nb-NO"))
+                return LanguageEnum.NbNO;
+
+            if (value.Equals("nl"))
+                return LanguageEnum.Nl;
+
+            if (value.Equals("pl-PL"))
+                return LanguageEnum.PlPL;
+
+            if (value.Equals("pt-BR"))
+                return LanguageEnum.PtBR;
+
+            if (value.Equals("pt-PT"))
+                return LanguageEnum.PtPT;
+
+            if (value.Equals("ro-RO"))
+                return LanguageEnum.RoRO;
+
+            if (value.Equals("ru-RU"))
+                return LanguageEnum.RuRU;
+
+            if (value.Equals("sk-SK"))
+                return LanguageEnum.SkSK;
+
+            if (value.Equals("sv-SE"))
+                return LanguageEnum.SvSE;
+
+            if (value.Equals("te-IN"))
+                return LanguageEnum.TeIN;
+
+            if (value.Equals("th-TH"))
+                return LanguageEnum.ThTH;
+
+            if (value.Equals("tl-PH"))
+                return LanguageEnum.TlPH;
+
+            if (value.Equals("tr"))
+                return LanguageEnum.Tr;
+
+            if (value.Equals("uk-UA"))
+                return LanguageEnum.UkUA;
+
+            if (value.Equals("vi-VN"))
+                return LanguageEnum.ViVN;
+
+            if (value.Equals("zh-CN"))
+                return LanguageEnum.ZhCN;
+
+            if (value.Equals("zh-TW"))
+                return LanguageEnum.ZhTW;
+
+            if (value.Equals("AM"))
+                return LanguageEnum.AM;
+
+            if (value.Equals("AR"))
+                return LanguageEnum.AR;
+
+            if (value.Equals("AZ"))
+                return LanguageEnum.AZ;
+
+            if (value.Equals("BG"))
+                return LanguageEnum.BG;
+
+            if (value.Equals("BN"))
+                return LanguageEnum.BN;
+
+            if (value.Equals("BS"))
+                return LanguageEnum.BS;
+
+            if (value.Equals("CA"))
+                return LanguageEnum.CA;
+
+            if (value.Equals("CS"))
+                return LanguageEnum.CS;
+
+            if (value.Equals("DA"))
+                return LanguageEnum.DA;
+
+            if (value.Equals("DV"))
+                return LanguageEnum.DV;
+
+            if (value.Equals("DZ"))
+                return LanguageEnum.DZ;
+
+            if (value.Equals("DE"))
+                return LanguageEnum.DE;
+
+            if (value.Equals("EL"))
+                return LanguageEnum.EL;
+
+            if (value.Equals("EN"))
+                return LanguageEnum.EN;
+
+            if (value.Equals("ES"))
+                return LanguageEnum.ES;
+
+            if (value.Equals("ET"))
+                return LanguageEnum.ET;
+
+            if (value.Equals("FA"))
+                return LanguageEnum.FA;
+
+            if (value.Equals("FI"))
+                return LanguageEnum.FI;
+
+            if (value.Equals("FR"))
+                return LanguageEnum.FR;
+
+            if (value.Equals("HE"))
+                return LanguageEnum.HE;
+
+            if (value.Equals("HI"))
+                return LanguageEnum.HI;
+
+            if (value.Equals("HR"))
+                return LanguageEnum.HR;
+
+            if (value.Equals("HU"))
+                return LanguageEnum.HU;
+
+            if (value.Equals("HY"))
+                return LanguageEnum.HY;
+
+            if (value.Equals("ID"))
+                return LanguageEnum.ID;
+
+            if (value.Equals("IN"))
+                return LanguageEnum.IN;
+
+            if (value.Equals("IS"))
+                return LanguageEnum.IS;
+
+            if (value.Equals("IT"))
+                return LanguageEnum.IT;
+
+            if (value.Equals("IW"))
+                return LanguageEnum.IW;
+
+            if (value.Equals("JA"))
+                return LanguageEnum.JA;
+
+            if (value.Equals("KA"))
+                return LanguageEnum.KA;
+
+            if (value.Equals("KM"))
+                return LanguageEnum.KM;
+
+            if (value.Equals("KO"))
+                return LanguageEnum.KO;
+
+            if (value.Equals("LO"))
+                return LanguageEnum.LO;
+
+            if (value.Equals("LT"))
+                return LanguageEnum.LT;
+
+            if (value.Equals("LV"))
+                return LanguageEnum.LV;
+
+            if (value.Equals("MK"))
+                return LanguageEnum.MK;
+
+            if (value.Equals("MN"))
+                return LanguageEnum.MN;
+
+            if (value.Equals("MS"))
+                return LanguageEnum.MS;
+
+            if (value.Equals("MY"))
+                return LanguageEnum.MY;
+
+            if (value.Equals("NB"))
+                return LanguageEnum.NB;
+
+            if (value.Equals("NE"))
+                return LanguageEnum.NE;
+
+            if (value.Equals("NL"))
+                return LanguageEnum.NL;
+
+            if (value.Equals("NO"))
+                return LanguageEnum.NO;
+
+            if (value.Equals("PL"))
+                return LanguageEnum.PL;
+
+            if (value.Equals("PT"))
+                return LanguageEnum.PT;
+
+            if (value.Equals("RO"))
+                return LanguageEnum.RO;
+
+            if (value.Equals("RU"))
+                return LanguageEnum.RU;
+
+            if (value.Equals("SK"))
+                return LanguageEnum.SK;
+
+            if (value.Equals("SL"))
+                return LanguageEnum.SL;
+
+            if (value.Equals("SQ"))
+                return LanguageEnum.SQ;
+
+            if (value.Equals("SR"))
+                return LanguageEnum.SR;
+
+            if (value.Equals("SV"))
+                return LanguageEnum.SV;
+
+            if (value.Equals("TL"))
+                return LanguageEnum.TL;
+
+            if (value.Equals("UK"))
+                return LanguageEnum.UK;
+
+            if (value.Equals("VI"))
+                return LanguageEnum.VI;
+
+            if (value.Equals("TE"))
+                return LanguageEnum.TE;
+
+            if (value.Equals("TH"))
+                return LanguageEnum.TH;
+
+            if (value.Equals("TR"))
+                return LanguageEnum.TR;
+
+            if (value.Equals("XX"))
+                return LanguageEnum.XX;
+
+            if (value.Equals("ZH"))
+                return LanguageEnum.ZH;
+
+            throw new NotImplementedException($"Could not convert value to type LanguageEnum: '{value}'");
+        }
+
+        /// <summary>
+        /// Returns a <see cref="LanguageEnum"/>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static LanguageEnum? LanguageEnumFromStringOrDefault(string value)
+        {
+            if (value.Equals("af-ZA"))
+                return LanguageEnum.AfZA;
+
+            if (value.Equals("ar-SA"))
+                return LanguageEnum.ArSA;
+
+            if (value.Equals("bg-BG"))
+                return LanguageEnum.BgBG;
+
+            if (value.Equals("bn-IN"))
+                return LanguageEnum.BnIN;
+
+            if (value.Equals("cs-CZ"))
+                return LanguageEnum.CsCZ;
+
+            if (value.Equals("da-DK"))
+                return LanguageEnum.DaDK;
+
+            if (value.Equals("de"))
+                return LanguageEnum.De;
+
+            if (value.Equals("el-GR"))
+                return LanguageEnum.ElGR;
+
+            if (value.Equals("en-AU"))
+                return LanguageEnum.EnAU;
+
+            if (value.Equals("en-CA"))
+                return LanguageEnum.EnCA;
+
+            if (value.Equals("en-GB"))
+                return LanguageEnum.EnGB;
+
+            if (value.Equals("en-IN"))
+                return LanguageEnum.EnIN;
+
+            if (value.Equals("en-US"))
+                return LanguageEnum.EnUS;
+
+            if (value.Equals("es-419"))
+                return LanguageEnum.Es419;
+
+            if (value.Equals("es-AR"))
+                return LanguageEnum.EsAR;
+
+            if (value.Equals("es-ES"))
+                return LanguageEnum.EsES;
+
+            if (value.Equals("es-MX"))
+                return LanguageEnum.EsMX;
+
+            if (value.Equals("fi-FI"))
+                return LanguageEnum.FiFI;
+
+            if (value.Equals("fr"))
+                return LanguageEnum.Fr;
+
+            if (value.Equals("fr-CA"))
+                return LanguageEnum.FrCA;
+
+            if (value.Equals("he-IL"))
+                return LanguageEnum.HeIL;
+
+            if (value.Equals("hi-IN"))
+                return LanguageEnum.HiIN;
+
+            if (value.Equals("hr-HR"))
+                return LanguageEnum.HrHR;
+
+            if (value.Equals("hu-HU"))
+                return LanguageEnum.HuHU;
+
+            if (value.Equals("id-ID"))
+                return LanguageEnum.IdID;
+
+            if (value.Equals("it"))
+                return LanguageEnum.It;
+
+            if (value.Equals("ja"))
+                return LanguageEnum.Ja;
+
+            if (value.Equals("ko-KR"))
+                return LanguageEnum.KoKR;
+
+            if (value.Equals("ms-MY"))
+                return LanguageEnum.MsMY;
+
+            if (value.Equals("nb-NO"))
+                return LanguageEnum.NbNO;
+
+            if (value.Equals("nl"))
+                return LanguageEnum.Nl;
+
+            if (value.Equals("pl-PL"))
+                return LanguageEnum.PlPL;
+
+            if (value.Equals("pt-BR"))
+                return LanguageEnum.PtBR;
+
+            if (value.Equals("pt-PT"))
+                return LanguageEnum.PtPT;
+
+            if (value.Equals("ro-RO"))
+                return LanguageEnum.RoRO;
+
+            if (value.Equals("ru-RU"))
+                return LanguageEnum.RuRU;
+
+            if (value.Equals("sk-SK"))
+                return LanguageEnum.SkSK;
+
+            if (value.Equals("sv-SE"))
+                return LanguageEnum.SvSE;
+
+            if (value.Equals("te-IN"))
+                return LanguageEnum.TeIN;
+
+            if (value.Equals("th-TH"))
+                return LanguageEnum.ThTH;
+
+            if (value.Equals("tl-PH"))
+                return LanguageEnum.TlPH;
+
+            if (value.Equals("tr"))
+                return LanguageEnum.Tr;
+
+            if (value.Equals("uk-UA"))
+                return LanguageEnum.UkUA;
+
+            if (value.Equals("vi-VN"))
+                return LanguageEnum.ViVN;
+
+            if (value.Equals("zh-CN"))
+                return LanguageEnum.ZhCN;
+
+            if (value.Equals("zh-TW"))
+                return LanguageEnum.ZhTW;
+
+            if (value.Equals("AM"))
+                return LanguageEnum.AM;
+
+            if (value.Equals("AR"))
+                return LanguageEnum.AR;
+
+            if (value.Equals("AZ"))
+                return LanguageEnum.AZ;
+
+            if (value.Equals("BG"))
+                return LanguageEnum.BG;
+
+            if (value.Equals("BN"))
+                return LanguageEnum.BN;
+
+            if (value.Equals("BS"))
+                return LanguageEnum.BS;
+
+            if (value.Equals("CA"))
+                return LanguageEnum.CA;
+
+            if (value.Equals("CS"))
+                return LanguageEnum.CS;
+
+            if (value.Equals("DA"))
+                return LanguageEnum.DA;
+
+            if (value.Equals("DV"))
+                return LanguageEnum.DV;
+
+            if (value.Equals("DZ"))
+                return LanguageEnum.DZ;
+
+            if (value.Equals("DE"))
+                return LanguageEnum.DE;
+
+            if (value.Equals("EL"))
+                return LanguageEnum.EL;
+
+            if (value.Equals("EN"))
+                return LanguageEnum.EN;
+
+            if (value.Equals("ES"))
+                return LanguageEnum.ES;
+
+            if (value.Equals("ET"))
+                return LanguageEnum.ET;
+
+            if (value.Equals("FA"))
+                return LanguageEnum.FA;
+
+            if (value.Equals("FI"))
+                return LanguageEnum.FI;
+
+            if (value.Equals("FR"))
+                return LanguageEnum.FR;
+
+            if (value.Equals("HE"))
+                return LanguageEnum.HE;
+
+            if (value.Equals("HI"))
+                return LanguageEnum.HI;
+
+            if (value.Equals("HR"))
+                return LanguageEnum.HR;
+
+            if (value.Equals("HU"))
+                return LanguageEnum.HU;
+
+            if (value.Equals("HY"))
+                return LanguageEnum.HY;
+
+            if (value.Equals("ID"))
+                return LanguageEnum.ID;
+
+            if (value.Equals("IN"))
+                return LanguageEnum.IN;
+
+            if (value.Equals("IS"))
+                return LanguageEnum.IS;
+
+            if (value.Equals("IT"))
+                return LanguageEnum.IT;
+
+            if (value.Equals("IW"))
+                return LanguageEnum.IW;
+
+            if (value.Equals("JA"))
+                return LanguageEnum.JA;
+
+            if (value.Equals("KA"))
+                return LanguageEnum.KA;
+
+            if (value.Equals("KM"))
+                return LanguageEnum.KM;
+
+            if (value.Equals("KO"))
+                return LanguageEnum.KO;
+
+            if (value.Equals("LO"))
+                return LanguageEnum.LO;
+
+            if (value.Equals("LT"))
+                return LanguageEnum.LT;
+
+            if (value.Equals("LV"))
+                return LanguageEnum.LV;
+
+            if (value.Equals("MK"))
+                return LanguageEnum.MK;
+
+            if (value.Equals("MN"))
+                return LanguageEnum.MN;
+
+            if (value.Equals("MS"))
+                return LanguageEnum.MS;
+
+            if (value.Equals("MY"))
+                return LanguageEnum.MY;
+
+            if (value.Equals("NB"))
+                return LanguageEnum.NB;
+
+            if (value.Equals("NE"))
+                return LanguageEnum.NE;
+
+            if (value.Equals("NL"))
+                return LanguageEnum.NL;
+
+            if (value.Equals("NO"))
+                return LanguageEnum.NO;
+
+            if (value.Equals("PL"))
+                return LanguageEnum.PL;
+
+            if (value.Equals("PT"))
+                return LanguageEnum.PT;
+
+            if (value.Equals("RO"))
+                return LanguageEnum.RO;
+
+            if (value.Equals("RU"))
+                return LanguageEnum.RU;
+
+            if (value.Equals("SK"))
+                return LanguageEnum.SK;
+
+            if (value.Equals("SL"))
+                return LanguageEnum.SL;
+
+            if (value.Equals("SQ"))
+                return LanguageEnum.SQ;
+
+            if (value.Equals("SR"))
+                return LanguageEnum.SR;
+
+            if (value.Equals("SV"))
+                return LanguageEnum.SV;
+
+            if (value.Equals("TL"))
+                return LanguageEnum.TL;
+
+            if (value.Equals("UK"))
+                return LanguageEnum.UK;
+
+            if (value.Equals("VI"))
+                return LanguageEnum.VI;
+
+            if (value.Equals("TE"))
+                return LanguageEnum.TE;
+
+            if (value.Equals("TH"))
+                return LanguageEnum.TH;
+
+            if (value.Equals("TR"))
+                return LanguageEnum.TR;
+
+            if (value.Equals("XX"))
+                return LanguageEnum.XX;
+
+            if (value.Equals("ZH"))
+                return LanguageEnum.ZH;
+
+            return null;
+        }
+
+        /// <summary>
+        /// Converts the <see cref="LanguageEnum"/> to the json value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public static string LanguageEnumToJsonValue(LanguageEnum value)
+        {
+            if (value == LanguageEnum.AfZA)
+                return "af-ZA";
+
+            if (value == LanguageEnum.ArSA)
+                return "ar-SA";
+
+            if (value == LanguageEnum.BgBG)
+                return "bg-BG";
+
+            if (value == LanguageEnum.BnIN)
+                return "bn-IN";
+
+            if (value == LanguageEnum.CsCZ)
+                return "cs-CZ";
+
+            if (value == LanguageEnum.DaDK)
+                return "da-DK";
+
+            if (value == LanguageEnum.De)
+                return "de";
+
+            if (value == LanguageEnum.ElGR)
+                return "el-GR";
+
+            if (value == LanguageEnum.EnAU)
+                return "en-AU";
+
+            if (value == LanguageEnum.EnCA)
+                return "en-CA";
+
+            if (value == LanguageEnum.EnGB)
+                return "en-GB";
+
+            if (value == LanguageEnum.EnIN)
+                return "en-IN";
+
+            if (value == LanguageEnum.EnUS)
+                return "en-US";
+
+            if (value == LanguageEnum.Es419)
+                return "es-419";
+
+            if (value == LanguageEnum.EsAR)
+                return "es-AR";
+
+            if (value == LanguageEnum.EsES)
+                return "es-ES";
+
+            if (value == LanguageEnum.EsMX)
+                return "es-MX";
+
+            if (value == LanguageEnum.FiFI)
+                return "fi-FI";
+
+            if (value == LanguageEnum.Fr)
+                return "fr";
+
+            if (value == LanguageEnum.FrCA)
+                return "fr-CA";
+
+            if (value == LanguageEnum.HeIL)
+                return "he-IL";
+
+            if (value == LanguageEnum.HiIN)
+                return "hi-IN";
+
+            if (value == LanguageEnum.HrHR)
+                return "hr-HR";
+
+            if (value == LanguageEnum.HuHU)
+                return "hu-HU";
+
+            if (value == LanguageEnum.IdID)
+                return "id-ID";
+
+            if (value == LanguageEnum.It)
+                return "it";
+
+            if (value == LanguageEnum.Ja)
+                return "ja";
+
+            if (value == LanguageEnum.KoKR)
+                return "ko-KR";
+
+            if (value == LanguageEnum.MsMY)
+                return "ms-MY";
+
+            if (value == LanguageEnum.NbNO)
+                return "nb-NO";
+
+            if (value == LanguageEnum.Nl)
+                return "nl";
+
+            if (value == LanguageEnum.PlPL)
+                return "pl-PL";
+
+            if (value == LanguageEnum.PtBR)
+                return "pt-BR";
+
+            if (value == LanguageEnum.PtPT)
+                return "pt-PT";
+
+            if (value == LanguageEnum.RoRO)
+                return "ro-RO";
+
+            if (value == LanguageEnum.RuRU)
+                return "ru-RU";
+
+            if (value == LanguageEnum.SkSK)
+                return "sk-SK";
+
+            if (value == LanguageEnum.SvSE)
+                return "sv-SE";
+
+            if (value == LanguageEnum.TeIN)
+                return "te-IN";
+
+            if (value == LanguageEnum.ThTH)
+                return "th-TH";
+
+            if (value == LanguageEnum.TlPH)
+                return "tl-PH";
+
+            if (value == LanguageEnum.Tr)
+                return "tr";
+
+            if (value == LanguageEnum.UkUA)
+                return "uk-UA";
+
+            if (value == LanguageEnum.ViVN)
+                return "vi-VN";
+
+            if (value == LanguageEnum.ZhCN)
+                return "zh-CN";
+
+            if (value == LanguageEnum.ZhTW)
+                return "zh-TW";
+
+            if (value == LanguageEnum.AM)
+                return "AM";
+
+            if (value == LanguageEnum.AR)
+                return "AR";
+
+            if (value == LanguageEnum.AZ)
+                return "AZ";
+
+            if (value == LanguageEnum.BG)
+                return "BG";
+
+            if (value == LanguageEnum.BN)
+                return "BN";
+
+            if (value == LanguageEnum.BS)
+                return "BS";
+
+            if (value == LanguageEnum.CA)
+                return "CA";
+
+            if (value == LanguageEnum.CS)
+                return "CS";
+
+            if (value == LanguageEnum.DA)
+                return "DA";
+
+            if (value == LanguageEnum.DV)
+                return "DV";
+
+            if (value == LanguageEnum.DZ)
+                return "DZ";
+
+            if (value == LanguageEnum.DE)
+                return "DE";
+
+            if (value == LanguageEnum.EL)
+                return "EL";
+
+            if (value == LanguageEnum.EN)
+                return "EN";
+
+            if (value == LanguageEnum.ES)
+                return "ES";
+
+            if (value == LanguageEnum.ET)
+                return "ET";
+
+            if (value == LanguageEnum.FA)
+                return "FA";
+
+            if (value == LanguageEnum.FI)
+                return "FI";
+
+            if (value == LanguageEnum.FR)
+                return "FR";
+
+            if (value == LanguageEnum.HE)
+                return "HE";
+
+            if (value == LanguageEnum.HI)
+                return "HI";
+
+            if (value == LanguageEnum.HR)
+                return "HR";
+
+            if (value == LanguageEnum.HU)
+                return "HU";
+
+            if (value == LanguageEnum.HY)
+                return "HY";
+
+            if (value == LanguageEnum.ID)
+                return "ID";
+
+            if (value == LanguageEnum.IN)
+                return "IN";
+
+            if (value == LanguageEnum.IS)
+                return "IS";
+
+            if (value == LanguageEnum.IT)
+                return "IT";
+
+            if (value == LanguageEnum.IW)
+                return "IW";
+
+            if (value == LanguageEnum.JA)
+                return "JA";
+
+            if (value == LanguageEnum.KA)
+                return "KA";
+
+            if (value == LanguageEnum.KM)
+                return "KM";
+
+            if (value == LanguageEnum.KO)
+                return "KO";
+
+            if (value == LanguageEnum.LO)
+                return "LO";
+
+            if (value == LanguageEnum.LT)
+                return "LT";
+
+            if (value == LanguageEnum.LV)
+                return "LV";
+
+            if (value == LanguageEnum.MK)
+                return "MK";
+
+            if (value == LanguageEnum.MN)
+                return "MN";
+
+            if (value == LanguageEnum.MS)
+                return "MS";
+
+            if (value == LanguageEnum.MY)
+                return "MY";
+
+            if (value == LanguageEnum.NB)
+                return "NB";
+
+            if (value == LanguageEnum.NE)
+                return "NE";
+
+            if (value == LanguageEnum.NL)
+                return "NL";
+
+            if (value == LanguageEnum.NO)
+                return "NO";
+
+            if (value == LanguageEnum.PL)
+                return "PL";
+
+            if (value == LanguageEnum.PT)
+                return "PT";
+
+            if (value == LanguageEnum.RO)
+                return "RO";
+
+            if (value == LanguageEnum.RU)
+                return "RU";
+
+            if (value == LanguageEnum.SK)
+                return "SK";
+
+            if (value == LanguageEnum.SL)
+                return "SL";
+
+            if (value == LanguageEnum.SQ)
+                return "SQ";
+
+            if (value == LanguageEnum.SR)
+                return "SR";
+
+            if (value == LanguageEnum.SV)
+                return "SV";
+
+            if (value == LanguageEnum.TL)
+                return "TL";
+
+            if (value == LanguageEnum.UK)
+                return "UK";
+
+            if (value == LanguageEnum.VI)
+                return "VI";
+
+            if (value == LanguageEnum.TE)
+                return "TE";
+
+            if (value == LanguageEnum.TH)
+                return "TH";
+
+            if (value == LanguageEnum.TR)
+                return "TR";
+
+            if (value == LanguageEnum.XX)
+                return "XX";
+
+            if (value == LanguageEnum.ZH)
+                return "ZH";
+
+            throw new NotImplementedException($"Value could not be handled: '{value}'");
+        }
+
+        /// <summary>
+        /// We recommend using the CatalogsLocale values.
+        /// </summary>
+        /// <value>We recommend using the CatalogsLocale values.</value>
         [JsonPropertyName("language")]
-        public CatalogsItemsRequestLanguage Language { get; set; }
+        public LanguageEnum Language { get; set; }
 
         /// <summary>
         /// Array with catalogs item operations
@@ -178,7 +1716,7 @@ namespace Org.OpenAPITools.Model
 
             Option<CatalogsRetailBatchRequest.CatalogTypeEnum?> catalogType = default;
             Option<Country?> country = default;
-            Option<CatalogsItemsRequestLanguage?> language = default;
+            Option<CatalogsRetailBatchRequest.LanguageEnum?> language = default;
             Option<List<CatalogsRetailBatchRequestItemsInner>?> items = default;
 
             while (utf8JsonReader.Read())
@@ -207,12 +1745,12 @@ namespace Org.OpenAPITools.Model
                                 country = new Option<Country?>(CountryValueConverter.FromStringOrDefault(countryRawValue));
                             break;
                         case "language":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                language = new Option<CatalogsItemsRequestLanguage?>(JsonSerializer.Deserialize<CatalogsItemsRequestLanguage>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            string? languageRawValue = utf8JsonReader.GetString();
+                            if (languageRawValue != null)
+                                language = new Option<CatalogsRetailBatchRequest.LanguageEnum?>(CatalogsRetailBatchRequest.LanguageEnumFromStringOrDefault(languageRawValue));
                             break;
                         case "items":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                items = new Option<List<CatalogsRetailBatchRequestItemsInner>?>(JsonSerializer.Deserialize<List<CatalogsRetailBatchRequestItemsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            items = new Option<List<CatalogsRetailBatchRequestItemsInner>?>(JsonSerializer.Deserialize<List<CatalogsRetailBatchRequestItemsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;
@@ -244,7 +1782,7 @@ namespace Org.OpenAPITools.Model
             if (items.IsSet && items.Value == null)
                 throw new ArgumentNullException(nameof(items), "Property is not nullable for class CatalogsRetailBatchRequest.");
 
-            return new CatalogsRetailBatchRequest(catalogType.Value!.Value!, country.Value!.Value!, language.Value!, items.Value!);
+            return new CatalogsRetailBatchRequest(catalogType.Value!.Value!, country.Value!.Value!, language.Value!.Value!, items.Value!);
         }
 
         /// <summary>
@@ -271,9 +1809,6 @@ namespace Org.OpenAPITools.Model
         /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CatalogsRetailBatchRequest catalogsRetailBatchRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (catalogsRetailBatchRequest.Language == null)
-                throw new ArgumentNullException(nameof(catalogsRetailBatchRequest.Language), "Property is required for class CatalogsRetailBatchRequest.");
-
             if (catalogsRetailBatchRequest.Items == null)
                 throw new ArgumentNullException(nameof(catalogsRetailBatchRequest.Items), "Property is required for class CatalogsRetailBatchRequest.");
 
@@ -282,8 +1817,8 @@ namespace Org.OpenAPITools.Model
             var countryRawValue = CountryValueConverter.ToJsonValue(catalogsRetailBatchRequest.Country);
             writer.WriteString("country", countryRawValue);
 
-            writer.WritePropertyName("language");
-            JsonSerializer.Serialize(writer, catalogsRetailBatchRequest.Language, jsonSerializerOptions);
+            var languageRawValue = CatalogsRetailBatchRequest.LanguageEnumToJsonValue(catalogsRetailBatchRequest.Language);
+            writer.WriteString("language", languageRawValue);
             writer.WritePropertyName("items");
             JsonSerializer.Serialize(writer, catalogsRetailBatchRequest.Items, jsonSerializerOptions);
         }

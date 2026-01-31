@@ -20,14 +20,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedProductCounts", description = "The counts can be null early in the process.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedProductCounts {
 
   private @Nullable Integer original;
 
   private @Nullable Integer ingested;
 
-  public CatalogsFeedProductCounts original(Integer original) {
+  public CatalogsFeedProductCounts original(@Nullable Integer original) {
     this.original = original;
     return this;
   }
@@ -39,15 +39,15 @@ public class CatalogsFeedProductCounts {
   
   @Schema(name = "original", description = "The number of products in the feed file.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("original")
-  public Integer getOriginal() {
+  public @Nullable Integer getOriginal() {
     return original;
   }
 
-  public void setOriginal(Integer original) {
+  public void setOriginal(@Nullable Integer original) {
     this.original = original;
   }
 
-  public CatalogsFeedProductCounts ingested(Integer ingested) {
+  public CatalogsFeedProductCounts ingested(@Nullable Integer ingested) {
     this.ingested = ingested;
     return this;
   }
@@ -59,11 +59,11 @@ public class CatalogsFeedProductCounts {
   
   @Schema(name = "ingested", description = "The number of products successfully ingested from the feed file.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ingested")
-  public Integer getIngested() {
+  public @Nullable Integer getIngested() {
     return ingested;
   }
 
-  public void setIngested(Integer ingested) {
+  public void setIngested(@Nullable Integer ingested) {
     this.ingested = ingested;
   }
 

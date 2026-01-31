@@ -39,11 +39,6 @@ public:
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
 
-    QString getName() const;
-    void setName(const QString &name);
-    bool is_name_Set() const;
-    bool is_name_Valid() const;
-
     bool isAemEnabled() const;
     void setAemEnabled(const bool &aem_enabled);
     bool is_aem_enabled_Set() const;
@@ -79,15 +74,16 @@ public:
     bool is_aem_loc_enabled_Set() const;
     bool is_aem_loc_enabled_Valid() const;
 
+    QString getName() const;
+    void setName(const QString &name);
+    bool is_name_Set() const;
+    bool is_name_Valid() const;
+
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
     void initializeModel();
-
-    QString m_name;
-    bool m_name_isSet;
-    bool m_name_isValid;
 
     bool m_aem_enabled;
     bool m_aem_enabled_isSet;
@@ -116,6 +112,10 @@ private:
     bool m_aem_loc_enabled;
     bool m_aem_loc_enabled_isSet;
     bool m_aem_loc_enabled_isValid;
+
+    QString m_name;
+    bool m_name_isSet;
+    bool m_name_isValid;
 };
 
 } // namespace OpenAPI

@@ -101,14 +101,23 @@ TermsOfServiceApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling TermsOfServiceApi$TermsOfServiceGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling TermsOfServiceApi$TermsOfServiceGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling TermsOfServiceApi$TermsOfServiceGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`include_html`) && is.null(`include_html`)) {
+        stop("Invalid value for `include_html` when calling TermsOfServiceApi$TermsOfServiceGet, `include_html` is not nullable")
+      }
 
+      if (!missing(`tos_type`) && is.null(`tos_type`)) {
+        stop("Invalid value for `tos_type` when calling TermsOfServiceApi$TermsOfServiceGet, `tos_type` is not nullable")
+      }
 
       query_params[["include_html"]] <- `include_html`
 

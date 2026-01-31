@@ -1,28 +1,30 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Error which occurred when applying a bid options operation to a specific item.
- **/
+ * Error which occurred when applying a bid options operation to a specific item.
+ */
 @ApiModel(description="Error which occurred when applying a bid options operation to a specific item.")
 
 public class AdvancedAuctionOperationError  {
   
-  @ApiModelProperty(example = "6", value = "The error code for the item bid option operation validation error")
  /**
-   * The error code for the item bid option operation validation error
-  **/
+  * The error code for the item bid option operation validation error
+  */
+  @ApiModelProperty(example = "6", value = "The error code for the item bid option operation validation error")
+
   private Integer code;
 
-  @ApiModelProperty(example = "Bid in micro currency should be non-negative", value = "Message describing the item bid option operation validation error")
  /**
-   * Message describing the item bid option operation validation error
-  **/
+  * Message describing the item bid option operation validation error
+  */
+  @ApiModelProperty(example = "Bid in micro currency should be non-negative", value = "Message describing the item bid option operation validation error")
+
   private String message;
  /**
    * The error code for the item bid option operation validation error

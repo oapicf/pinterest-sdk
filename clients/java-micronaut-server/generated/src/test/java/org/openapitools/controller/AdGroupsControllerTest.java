@@ -107,7 +107,7 @@ public class AdGroupsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6333048b");
+            .accept("[Ljava.lang.String;@215a0c9b");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -165,7 +165,7 @@ public class AdGroupsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@1d4746c8");
+            .accept("[Ljava.lang.String;@283d6ae4");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdGroupAudienceSizingResponse.class);
@@ -213,7 +213,7 @@ public class AdGroupsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@1d0e0179");
+            .accept("[Ljava.lang.String;@59343f6a");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BidFloor.class);
@@ -261,7 +261,7 @@ public class AdGroupsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@7921a40c");
+            .accept("[Ljava.lang.String;@4dfa7064");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdGroupArrayResponse.class);
@@ -309,7 +309,7 @@ public class AdGroupsControllerTest {
             put("ad_group_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2cde0ff");
+            .accept("[Ljava.lang.String;@3c359394");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdGroupResponse.class);
@@ -362,7 +362,7 @@ public class AdGroupsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@259b8768");
+            .accept("[Ljava.lang.String;@7f9ca4bc");
         request.getParameters()
             .add("campaign_ids", Arrays.asList("example")) // The query format should be multi
             .add("ad_group_ids", Arrays.asList("example")) // The query format should be multi
@@ -427,7 +427,7 @@ public class AdGroupsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@48735f6b");
+            .accept("[Ljava.lang.String;@72b0b4a");
         request.getParameters()
             .add("ad_group_ids", Arrays.asList("example")) // The query format should be multi
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -487,7 +487,7 @@ public class AdGroupsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@3c0693ad");
+            .accept("[Ljava.lang.String;@19cc229b");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdGroupArrayResponse.class);

@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -31,7 +31,6 @@ import org.openapitools.client.model.Pin;
 import org.openapitools.client.model.PinAnalyticsMetricsResponse;
 import org.openapitools.client.model.PinCreate;
 import org.openapitools.client.model.PinUpdate;
-import org.openapitools.client.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.client.model.PinsList200Response;
 import org.openapitools.client.model.PinsSaveRequest;
 
@@ -76,7 +75,7 @@ public class PinsApi {
    * @param adAccountId Unique identifier of an ad account.
    * @return Map<String, Map>
   */
-  public Map<String, Map> multiPinsAnalytics (List<String> pinIds, Date startDate, Date endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Map<String, Map> multiPinsAnalytics (List<String> pinIds, Date startDate, Date endDate, List<String> metricTypes, String appTypes, String adAccountId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'pinIds' is set
     if (pinIds == null) {
@@ -158,7 +157,7 @@ public class PinsApi {
    * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get analytics for multiple pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
    * @param pinIds List of Pin IDs.   * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.   * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.   * @param metricTypes Pin metric types to get data for.   * @param appTypes Apps or devices to get data for, default is all.   * @param adAccountId Unique identifier of an ad account.
   */
-  public void multiPinsAnalytics (List<String> pinIds, Date startDate, Date endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId, final Response.Listener<Map<String, Map>> responseListener, final Response.ErrorListener errorListener) {
+  public void multiPinsAnalytics (List<String> pinIds, Date startDate, Date endDate, List<String> metricTypes, String appTypes, String adAccountId, final Response.Listener<Map<String, Map>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'pinIds' is set
@@ -251,7 +250,7 @@ public class PinsApi {
    * @param adAccountId Unique identifier of an ad account.
    * @return Map<String, PinAnalyticsMetricsResponse>
   */
-  public Map<String, PinAnalyticsMetricsResponse> pinsAnalytics (String pinId, Date startDate, Date endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Map<String, PinAnalyticsMetricsResponse> pinsAnalytics (String pinId, Date startDate, Date endDate, List<String> metricTypes, String appTypes, String splitField, String adAccountId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'pinId' is set
     if (pinId == null) {
@@ -333,7 +332,7 @@ public class PinsApi {
    * Get analytics for a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
    * @param pinId Unique identifier of a Pin.   * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.   * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.   * @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.   * @param appTypes Apps or devices to get data for, default is all.   * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split.   * @param adAccountId Unique identifier of an ad account.
   */
-  public void pinsAnalytics (String pinId, Date startDate, Date endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId, final Response.Listener<Map<String, PinAnalyticsMetricsResponse>> responseListener, final Response.ErrorListener errorListener) {
+  public void pinsAnalytics (String pinId, Date startDate, Date endDate, List<String> metricTypes, String appTypes, String splitField, String adAccountId, final Response.Listener<Map<String, PinAnalyticsMetricsResponse>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'pinId' is set

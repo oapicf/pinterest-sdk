@@ -121,8 +121,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "asset_group":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetGroup = new Option<AssetGroupBinding?>(JsonSerializer.Deserialize<AssetGroupBinding>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            assetGroup = new Option<AssetGroupBinding?>(JsonSerializer.Deserialize<AssetGroupBinding>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

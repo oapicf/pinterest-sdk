@@ -25,7 +25,7 @@ data class AppTypeMultipliers(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("APP_TYPE") val APP_TYPE: TargetingSpecAppType? = null
-    ) : kotlin.collections.HashMap<String, kotlin.Double>{
+) : kotlin.collections.HashMap<String, kotlin.Double>() {
 
 }
 

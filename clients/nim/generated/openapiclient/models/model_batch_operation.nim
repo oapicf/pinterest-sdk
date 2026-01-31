@@ -9,7 +9,48 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type BatchOperation* = object
-  ## The operation performed by the batch. The DELETE_DISCONTINUED operation only updates availablity to \"Out of Stock\".
+type BatchOperation* {.pure.} = enum
+  UPDATE
+  UPSERT
+  CREATE
+  DELETEDISCONTINUED
+  DELETE
+
+func `%`*(v: BatchOperation): JsonNode =
+  result = case v:
+    of BatchOperation.UPDATE: %"UPDATE"
+    of BatchOperation.UPSERT: %"UPSERT"
+    of BatchOperation.CREATE: %"CREATE"
+    of BatchOperation.DELETEDISCONTINUED: %"DELETE_DISCONTINUED"
+    of BatchOperation.DELETE: %"DELETE"
+
+func `$`*(v: BatchOperation): string =
+  result = case v:
+    of BatchOperation.UPDATE: $("UPDATE")
+    of BatchOperation.UPSERT: $("UPSERT")
+    of BatchOperation.CREATE: $("CREATE")
+    of BatchOperation.DELETEDISCONTINUED: $("DELETE_DISCONTINUED")
+    of BatchOperation.DELETE: $("DELETE")
+
+proc to*(node: JsonNode, T: typedesc[BatchOperation]): BatchOperation =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum BatchOperation, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("UPDATE"):
+    return BatchOperation.UPDATE
+  of $("UPSERT"):
+    return BatchOperation.UPSERT
+  of $("CREATE"):
+    return BatchOperation.CREATE
+  of $("DELETE_DISCONTINUED"):
+    return BatchOperation.DELETEDISCONTINUED
+  of $("DELETE"):
+    return BatchOperation.DELETE
+  else:
+    raise newException(ValueError, "Invalid enum value for BatchOperation: " & strVal)
+

@@ -21,11 +21,28 @@ pinterest_rest_api_items_batch_post_request_CATALOGTYPE_e items_batch_post_reque
     }
     return 0;
 }
+char* items_batch_post_request_language_ToString(pinterest_rest_api_items_batch_post_request_LANGUAGE_e language) {
+    char* languageArray[] =  { "NULL", "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" };
+    return languageArray[language];
+}
+
+pinterest_rest_api_items_batch_post_request_LANGUAGE_e items_batch_post_request_language_FromString(char* language){
+    int stringToReturn = 0;
+    char *languageArray[] =  { "NULL", "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" };
+    size_t sizeofArray = sizeof(languageArray) / sizeof(languageArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(language, languageArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
 
 static items_batch_post_request_t *items_batch_post_request_create_internal(
     pinterest_rest_api_items_batch_post_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
-    catalogs_items_request_language_t *language,
+    pinterest_rest_api_items_batch_post_request_LANGUAGE_e language,
     list_t *items,
     char *catalog_id,
     pinterest_rest_api_batch_operation__e operation
@@ -48,7 +65,7 @@ static items_batch_post_request_t *items_batch_post_request_create_internal(
 __attribute__((deprecated)) items_batch_post_request_t *items_batch_post_request_create(
     pinterest_rest_api_items_batch_post_request_CATALOGTYPE_e catalog_type,
     pinterest_rest_api_country__e country,
-    catalogs_items_request_language_t *language,
+    pinterest_rest_api_items_batch_post_request_LANGUAGE_e language,
     list_t *items,
     char *catalog_id,
     pinterest_rest_api_batch_operation__e operation
@@ -72,10 +89,6 @@ void items_batch_post_request_free(items_batch_post_request_t *items_batch_post_
         return ;
     }
     listEntry_t *listEntry;
-    if (items_batch_post_request->language) {
-        catalogs_items_request_language_free(items_batch_post_request->language);
-        items_batch_post_request->language = NULL;
-    }
     if (items_batch_post_request->items) {
         list_ForEach(listEntry, items_batch_post_request->items) {
             item_delete_batch_record_free(listEntry->data);
@@ -118,16 +131,12 @@ cJSON *items_batch_post_request_convertToJSON(items_batch_post_request_t *items_
 
 
     // items_batch_post_request->language
-    if (!items_batch_post_request->language) {
+    if (pinterest_rest_api_items_batch_post_request_LANGUAGE_NULL == items_batch_post_request->language) {
         goto fail;
     }
-    cJSON *language_local_JSON = catalogs_items_request_language_convertToJSON(items_batch_post_request->language);
-    if(language_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "language", language_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
+    if(cJSON_AddStringToObject(item, "language", items_batch_post_request_language_ToString(items_batch_post_request->language)) == NULL)
+    {
+    goto fail; //Enum
     }
 
 
@@ -188,9 +197,6 @@ items_batch_post_request_t *items_batch_post_request_parseFromJSON(cJSON *items_
     // define the local variable for items_batch_post_request->country
     pinterest_rest_api_country__e country_local_nonprim = 0;
 
-    // define the local variable for items_batch_post_request->language
-    catalogs_items_request_language_t *language_local_nonprim = NULL;
-
     // define the local list for items_batch_post_request->items
     list_t *itemsList = NULL;
 
@@ -235,8 +241,13 @@ items_batch_post_request_t *items_batch_post_request_parseFromJSON(cJSON *items_
         goto end;
     }
 
+    pinterest_rest_api_items_batch_post_request_LANGUAGE_e languageVariable;
     
-    language_local_nonprim = catalogs_items_request_language_parseFromJSON(language); //nonprimitive
+    if(!cJSON_IsString(language))
+    {
+    goto end; //Enum
+    }
+    languageVariable = items_batch_post_request_language_FromString(language->valuestring);
 
     // items_batch_post_request->items
     cJSON *items = cJSON_GetObjectItemCaseSensitive(items_batch_post_requestJSON, "items");
@@ -293,7 +304,7 @@ items_batch_post_request_t *items_batch_post_request_parseFromJSON(cJSON *items_
     items_batch_post_request_local_var = items_batch_post_request_create_internal (
         catalog_typeVariable,
         country_local_nonprim,
-        language_local_nonprim,
+        languageVariable,
         itemsList,
         catalog_id && !cJSON_IsNull(catalog_id) ? strdup(catalog_id->valuestring) : NULL,
         operation_local_nonprim
@@ -303,10 +314,6 @@ items_batch_post_request_t *items_batch_post_request_parseFromJSON(cJSON *items_
 end:
     if (country_local_nonprim) {
         country_local_nonprim = 0;
-    }
-    if (language_local_nonprim) {
-        catalogs_items_request_language_free(language_local_nonprim);
-        language_local_nonprim = NULL;
     }
     if (itemsList) {
         listEntry_t *listEntry = NULL;

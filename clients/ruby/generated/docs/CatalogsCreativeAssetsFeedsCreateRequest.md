@@ -14,7 +14,7 @@
 | **preferred_processing_schedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] |
 | **catalog_type** | [**CatalogsType**](CatalogsType.md) |  |  |
 | **catalog_id** | **String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. | [optional] |
-| **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] |
+| **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional][default to &#39;ACTIVE&#39;] |
 
 ## Example
 

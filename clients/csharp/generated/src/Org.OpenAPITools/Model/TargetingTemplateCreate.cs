@@ -199,12 +199,10 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "targeting_attributes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                targetingAttributes = new Option<TargetingSpec?>(JsonSerializer.Deserialize<TargetingSpec>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            targetingAttributes = new Option<TargetingSpec?>(JsonSerializer.Deserialize<TargetingSpec>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "auto_targeting_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                autoTargetingEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            autoTargetingEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "placement_group":
                             string? placementGroupRawValue = utf8JsonReader.GetString();
@@ -212,12 +210,10 @@ namespace Org.OpenAPITools.Model
                                 placementGroup = new Option<PlacementGroupType?>(PlacementGroupTypeValueConverter.FromStringOrDefault(placementGroupRawValue));
                             break;
                         case "keywords":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                keywords = new Option<List<TargetingTemplateKeyword>?>(JsonSerializer.Deserialize<List<TargetingTemplateKeyword>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            keywords = new Option<List<TargetingTemplateKeyword>?>(JsonSerializer.Deserialize<List<TargetingTemplateKeyword>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "tracking_urls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                trackingUrls = new Option<TrackingUrls?>(JsonSerializer.Deserialize<TrackingUrls>(ref utf8JsonReader, jsonSerializerOptions));
+                            trackingUrls = new Option<TrackingUrls?>(JsonSerializer.Deserialize<TrackingUrls>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

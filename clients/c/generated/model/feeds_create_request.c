@@ -243,11 +243,11 @@ cJSON *feeds_create_request_convertToJSON(feeds_create_request_t *feeds_create_r
     if(feeds_create_request->status) {
     cJSON *status_local_JSON = catalogs_status_convertToJSON(feeds_create_request->status);
     if(status_local_JSON == NULL) {
-    goto fail; //model
+        goto fail; // custom
     }
     cJSON_AddItemToObject(item, "status", status_local_JSON);
     if(item->child == NULL) {
-    goto fail;
+        goto fail;
     }
     }
 
@@ -418,7 +418,7 @@ feeds_create_request_t *feeds_create_request_parseFromJSON(cJSON *feeds_create_r
         status = NULL;
     }
     if (status) { 
-    status_local_nonprim = catalogs_status_parseFromJSON(status); //nonprimitive
+    status_local_nonprim = catalogs_status_parseFromJSON(status); //custom
     }
 
     // feeds_create_request->catalog_id

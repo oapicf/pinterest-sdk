@@ -64,12 +64,8 @@ class ResourcesController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        try {
-            $apiResult = $this->api->adAccountCountriesGet();
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adAccountCountriesGet();
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdAccountsCountryResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -110,12 +106,8 @@ class ResourcesController extends Controller
 
         $reportType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\DeliveryMetricsGetReportTypeParameter::class);
 
-        try {
-            $apiResult = $this->api->deliveryMetricsGet($reportType);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->deliveryMetricsGet($reportType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\DeliveryMetricsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -159,12 +151,8 @@ class ResourcesController extends Controller
         }
 
 
-        try {
-            $apiResult = $this->api->interestTargetingOptionsGet($interestId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->interestTargetingOptionsGet($interestId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SingleInterestTargetingOptionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -201,12 +189,8 @@ class ResourcesController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        try {
-            $apiResult = $this->api->leadFormQuestionsGet();
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->leadFormQuestionsGet();
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -250,12 +234,8 @@ class ResourcesController extends Controller
 
         $date = $request->string('date')->value();
 
-        try {
-            $apiResult = $this->api->metricsReadyStateGet($date);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->metricsReadyStateGet($date);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BookClosedResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -321,12 +301,8 @@ class ResourcesController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->targetingOptionsGet($targetingType, $clientId, $oauthSignature, $timestamp, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->targetingOptionsGet($targetingType, $clientId, $oauthSignature, $timestamp, $adAccountId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

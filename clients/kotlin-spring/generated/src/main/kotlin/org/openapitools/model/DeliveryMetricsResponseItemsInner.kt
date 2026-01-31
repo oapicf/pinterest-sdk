@@ -35,7 +35,7 @@ data class DeliveryMetricsResponseItemsInner(
 
     @Schema(example = "Ad group ID", description = "Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.")
     @get:JsonProperty("display_name") val displayName: kotlin.String? = null
-    ) {
+) {
 
     /**
     * Category name
@@ -50,7 +50,8 @@ data class DeliveryMetricsResponseItemsInner(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Category {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'DeliveryMetricsResponseItemsInner'")
             }
         }
     }

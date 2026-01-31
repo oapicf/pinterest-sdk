@@ -21,14 +21,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "KeywordMetrics", description = "Keyword metrics JSON")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class KeywordMetrics {
 
   private @Nullable BigDecimal avgCpcInMicroCurrency;
 
   private @Nullable String keywordQueryVolume;
 
-  public KeywordMetrics avgCpcInMicroCurrency(BigDecimal avgCpcInMicroCurrency) {
+  public KeywordMetrics avgCpcInMicroCurrency(@Nullable BigDecimal avgCpcInMicroCurrency) {
     this.avgCpcInMicroCurrency = avgCpcInMicroCurrency;
     return this;
   }
@@ -40,15 +40,15 @@ public class KeywordMetrics {
   @Valid 
   @Schema(name = "avg_cpc_in_micro_currency", example = "100000", description = "Average cost per click", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("avg_cpc_in_micro_currency")
-  public BigDecimal getAvgCpcInMicroCurrency() {
+  public @Nullable BigDecimal getAvgCpcInMicroCurrency() {
     return avgCpcInMicroCurrency;
   }
 
-  public void setAvgCpcInMicroCurrency(BigDecimal avgCpcInMicroCurrency) {
+  public void setAvgCpcInMicroCurrency(@Nullable BigDecimal avgCpcInMicroCurrency) {
     this.avgCpcInMicroCurrency = avgCpcInMicroCurrency;
   }
 
-  public KeywordMetrics keywordQueryVolume(String keywordQueryVolume) {
+  public KeywordMetrics keywordQueryVolume(@Nullable String keywordQueryVolume) {
     this.keywordQueryVolume = keywordQueryVolume;
     return this;
   }
@@ -60,11 +60,11 @@ public class KeywordMetrics {
   
   @Schema(name = "keyword_query_volume", example = "5M+", description = "Keyword's search frequency. This value is based on keyword frequency in pepsi client response", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keyword_query_volume")
-  public String getKeywordQueryVolume() {
+  public @Nullable String getKeywordQueryVolume() {
     return keywordQueryVolume;
   }
 
-  public void setKeywordQueryVolume(String keywordQueryVolume) {
+  public void setKeywordQueryVolume(@Nullable String keywordQueryVolume) {
     this.keywordQueryVolume = keywordQueryVolume;
   }
 

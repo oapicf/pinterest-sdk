@@ -23,8 +23,7 @@ const std::string AdvancedAuctionApi::base = "/v5";
 
 AdvancedAuctionApi::AdvancedAuctionApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
-{
-}
+{}
 
 void AdvancedAuctionApi::init() {
     setupRoutes();
@@ -40,14 +39,12 @@ void AdvancedAuctionApi::setupRoutes() {
     router->addCustomHandler(Routes::bind(&AdvancedAuctionApi::advanced_auction_api_default_handler, this));
 }
 
-void AdvancedAuctionApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void AdvancedAuctionApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleParsingException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> AdvancedAuctionApi::handleParsingException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> AdvancedAuctionApi::handleParsingException(const std::exception& ex) const noexcept {
     try {
         throw;
     } catch (nlohmann::detail::exception &e) {
@@ -59,99 +56,159 @@ std::pair<Pistache::Http::Code, std::string> AdvancedAuctionApi::handleParsingEx
     }
 }
 
-void AdvancedAuctionApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void AdvancedAuctionApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleOperationException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> AdvancedAuctionApi::handleOperationException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> AdvancedAuctionApi::handleOperationException(const std::exception& ex) const noexcept {
     return std::make_pair(Pistache::Http::Code::Internal_Server_Error, ex.what());
 }
 
-void AdvancedAuctionApi::advanced_auction_items_get_post_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+void AdvancedAuctionApi::advanced_auction_items_get_post_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the body param
-    
-    AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest;
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        // Getting the body param
+        
+        AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest;
+        
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        nlohmann::json::parse(request.body()).get_to(advancedAuctionItemsGetRequest);
-        advancedAuctionItemsGetRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->advanced_auction_items_get_post(advancedAuctionItemsGetRequest, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(advancedAuctionItemsGetRequest);
+            advancedAuctionItemsGetRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->advanced_auction_items_get_post(advancedAuctionItemsGetRequest, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/advanced_auction/items/get" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void AdvancedAuctionApi::advanced_auction_items_submit_post_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void AdvancedAuctionApi::advanced_auction_items_submit_post_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the body param
-    
-    AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest;
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        // Getting the body param
+        
+        AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest;
+        
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        nlohmann::json::parse(request.body()).get_to(advancedAuctionItemsSubmitRequest);
-        advancedAuctionItemsSubmitRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->advanced_auction_items_submit_post(advancedAuctionItemsSubmitRequest, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(advancedAuctionItemsSubmitRequest);
+            advancedAuctionItemsSubmitRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->advanced_auction_items_submit_post(advancedAuctionItemsSubmitRequest, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/advanced_auction/items/submit" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
+
 
 void AdvancedAuctionApi::advanced_auction_api_default_handler(const Pistache::Rest::Request &, Pistache::Http::ResponseWriter response) {
     response.send(Pistache::Http::Code::Not_Found, "The requested method does not exist");

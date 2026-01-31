@@ -128,6 +128,8 @@ pub enum AdGroupsTargetingAnalyticsSlashGetResponse {
 }
 
 
+
+
 /// AdGroups
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -137,6 +139,7 @@ pub trait AdGroups<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// AdGroupsBidFloorSlashGet - POST /v5/ad_accounts/{ad_account_id}/bid_floor
     async fn ad_groups_bid_floor_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -149,6 +152,7 @@ pub trait AdGroups<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// AdGroupsSlashAnalytics - GET /v5/ad_accounts/{ad_account_id}/ad_groups/analytics
     async fn ad_groups_slash_analytics(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -161,6 +165,7 @@ pub trait AdGroups<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// AdGroupsSlashAudienceSizing - POST /v5/ad_accounts/{ad_account_id}/ad_groups/audience_sizing
     async fn ad_groups_slash_audience_sizing(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -173,6 +178,7 @@ pub trait AdGroups<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// AdGroupsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/ad_groups
     async fn ad_groups_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -185,6 +191,7 @@ pub trait AdGroups<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// AdGroupsSlashGet - GET /v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}
     async fn ad_groups_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -196,6 +203,7 @@ pub trait AdGroups<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// AdGroupsSlashList - GET /v5/ad_accounts/{ad_account_id}/ad_groups
     async fn ad_groups_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -208,6 +216,7 @@ pub trait AdGroups<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// AdGroupsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/ad_groups
     async fn ad_groups_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -220,6 +229,7 @@ pub trait AdGroups<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// AdGroupsTargetingAnalyticsSlashGet - GET /v5/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics
     async fn ad_groups_targeting_analytics_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

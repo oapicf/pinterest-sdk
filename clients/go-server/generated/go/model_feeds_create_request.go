@@ -66,9 +66,6 @@ func AssertFeedsCreateRequestRequired(obj FeedsCreateRequest) error {
 			return err
 		}
 	}
-	if err := AssertCatalogsStatusRequired(obj.Status); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -87,8 +84,5 @@ func AssertFeedsCreateRequestConstraints(obj FeedsCreateRequest) error {
      		return err
      	}
     }
-	if err := AssertCatalogsStatusConstraints(obj.Status); err != nil {
-		return err
-	}
 	return nil
 }

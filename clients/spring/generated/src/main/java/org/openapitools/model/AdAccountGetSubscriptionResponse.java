@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * AdAccountGetSubscriptionResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountGetSubscriptionResponse {
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> leadFormId = JsonNullable.<String>undefined();
@@ -63,7 +63,7 @@ public class AdAccountGetSubscriptionResponse {
     this.leadFormId = leadFormId;
   }
 
-  public AdAccountGetSubscriptionResponse webhookUrl(String webhookUrl) {
+  public AdAccountGetSubscriptionResponse webhookUrl(@Nullable String webhookUrl) {
     this.webhookUrl = webhookUrl;
     return this;
   }
@@ -75,15 +75,15 @@ public class AdAccountGetSubscriptionResponse {
   
   @Schema(name = "webhook_url", example = "https://webhook.example.com/xyz", description = "Standard HTTPS webhook URL.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("webhook_url")
-  public String getWebhookUrl() {
+  public @Nullable String getWebhookUrl() {
     return webhookUrl;
   }
 
-  public void setWebhookUrl(String webhookUrl) {
+  public void setWebhookUrl(@Nullable String webhookUrl) {
     this.webhookUrl = webhookUrl;
   }
 
-  public AdAccountGetSubscriptionResponse id(String id) {
+  public AdAccountGetSubscriptionResponse id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -95,15 +95,15 @@ public class AdAccountGetSubscriptionResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "8078432025948590686", description = "Subscription ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public AdAccountGetSubscriptionResponse userAccountId(String userAccountId) {
+  public AdAccountGetSubscriptionResponse userAccountId(@Nullable String userAccountId) {
     this.userAccountId = userAccountId;
     return this;
   }
@@ -115,15 +115,15 @@ public class AdAccountGetSubscriptionResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "user_account_id", example = "549755885175", description = "User account used to subscribe lead data.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("user_account_id")
-  public String getUserAccountId() {
+  public @Nullable String getUserAccountId() {
     return userAccountId;
   }
 
-  public void setUserAccountId(String userAccountId) {
+  public void setUserAccountId(@Nullable String userAccountId) {
     this.userAccountId = userAccountId;
   }
 
-  public AdAccountGetSubscriptionResponse adAccountId(String adAccountId) {
+  public AdAccountGetSubscriptionResponse adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -135,15 +135,15 @@ public class AdAccountGetSubscriptionResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885176", description = "The Ad Account ID that this lead form belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
-  public AdAccountGetSubscriptionResponse apiVersion(String apiVersion) {
+  public AdAccountGetSubscriptionResponse apiVersion(@Nullable String apiVersion) {
     this.apiVersion = apiVersion;
     return this;
   }
@@ -155,11 +155,11 @@ public class AdAccountGetSubscriptionResponse {
   
   @Schema(name = "api_version", example = "v5", description = "API version.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("api_version")
-  public String getApiVersion() {
+  public @Nullable String getApiVersion() {
     return apiVersion;
   }
 
-  public void setApiVersion(String apiVersion) {
+  public void setApiVersion(@Nullable String apiVersion) {
     this.apiVersion = apiVersion;
   }
 
@@ -203,7 +203,7 @@ public class AdAccountGetSubscriptionResponse {
     this.cryptographicAlgorithm = cryptographicAlgorithm;
   }
 
-  public AdAccountGetSubscriptionResponse createdTime(Integer createdTime) {
+  public AdAccountGetSubscriptionResponse createdTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -215,11 +215,11 @@ public class AdAccountGetSubscriptionResponse {
   
   @Schema(name = "created_time", example = "1699209842000", description = "Lead form creation time. Unix timestamp in milliseconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
-  public Integer getCreatedTime() {
+  public @Nullable Integer getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 

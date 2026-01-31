@@ -100,7 +100,7 @@ private:
     /// <param name="accountType">Filter accounts by account type.</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void ad_accounts_audiences_shared_accounts_list(const std::string &adAccountId, const std::optional<std::string> &audienceId, const std::optional<org::openapitools::server::model::AudienceAccountType> &accountType, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_accounts_audiences_shared_accounts_list( const std::string &adAccountId, const std::optional<std::string> &audienceId, const std::optional<org::openapitools::server::model::AudienceAccountType> &accountType, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List accounts with access to an audience owned by a business
     /// </summary>
@@ -112,7 +112,7 @@ private:
     /// <param name="accountType">Filter accounts by account type.</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void business_account_audiences_shared_accounts_list(const std::string &businessId, const std::optional<std::string> &audienceId, const std::optional<org::openapitools::server::model::AudienceAccountType> &accountType, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void business_account_audiences_shared_accounts_list( const std::string &businessId, const std::optional<std::string> &audienceId, const std::optional<org::openapitools::server::model::AudienceAccountType> &accountType, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List received audiences for a business
     /// </summary>
@@ -123,7 +123,7 @@ private:
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="order">The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void shared_audiences_for_business_list(const std::string &businessId, const std::optional<std::string> &bookmark, const std::optional<std::string> &order, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void shared_audiences_for_business_list( const std::string &businessId, const std::optional<std::string> &bookmark, const std::optional<std::string> &order, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update audience sharing between ad accounts
     /// </summary>
@@ -132,7 +132,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="sharedAudience"></param>
-    virtual void update_ad_account_to_ad_account_shared_audience(const std::string &adAccountId, const org::openapitools::server::model::SharedAudience &sharedAudience, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_ad_account_to_ad_account_shared_audience( const std::string &adAccountId, const org::openapitools::server::model::SharedAudience &sharedAudience, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update audience sharing from an ad account to businesses
     /// </summary>
@@ -141,7 +141,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="businessSharedAudience"></param>
-    virtual void update_ad_account_to_business_shared_audience(const std::string &adAccountId, const org::openapitools::server::model::BusinessSharedAudience &businessSharedAudience, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_ad_account_to_business_shared_audience( const std::string &adAccountId, const org::openapitools::server::model::BusinessSharedAudience &businessSharedAudience, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update audience sharing from a business to ad accounts
     /// </summary>
@@ -150,7 +150,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Unique identifier of the requesting business.</param>
     /// <param name="sharedAudience"></param>
-    virtual void update_business_to_ad_account_shared_audience(const std::string &businessId, const org::openapitools::server::model::SharedAudience &sharedAudience, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_business_to_ad_account_shared_audience( const std::string &businessId, const org::openapitools::server::model::SharedAudience &sharedAudience, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update audience sharing between businesses
     /// </summary>
@@ -159,7 +159,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Unique identifier of the requesting business.</param>
     /// <param name="businessSharedAudience"></param>
-    virtual void update_business_to_business_shared_audience(const std::string &businessId, const org::openapitools::server::model::BusinessSharedAudience &businessSharedAudience, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_business_to_business_shared_audience( const std::string &businessId, const org::openapitools::server::model::BusinessSharedAudience &businessSharedAudience, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

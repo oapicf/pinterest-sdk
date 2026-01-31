@@ -11,17 +11,14 @@
  */
 
 
-/**
- * A successful OAuth access token response for the authorization code flow.
- */
 export interface OauthAccessTokenResponseCode { 
+    refresh_token: string;
+    refresh_token_expires_in: number;
     response_type?: OauthAccessTokenResponseCode.ResponseTypeEnum;
     access_token: string;
     token_type: string;
     expires_in: number;
     scope: string;
-    refresh_token: string;
-    refresh_token_expires_in: number;
 }
 export namespace OauthAccessTokenResponseCode {
     export type ResponseTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';

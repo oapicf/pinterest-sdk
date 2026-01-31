@@ -9,7 +9,328 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type Language* = object
-  ## Language code, which is among the offical ISO 639-1 language list.
+type Language* {.pure.} = enum
+  AM
+  AR
+  AZ
+  BG
+  BN
+  BS
+  CA
+  CS
+  DA
+  DV
+  DZ
+  DE
+  EL
+  EN
+  ES
+  ET
+  FA
+  FI
+  FR
+  HE
+  HI
+  HR
+  HU
+  HY
+  ID
+  IN
+  IS
+  IT
+  IW
+  JA
+  KA
+  KM
+  KO
+  LO
+  LT
+  LV
+  MK
+  MN
+  MS
+  MY
+  NB
+  NE
+  NL
+  NO
+  PL
+  PT
+  RO
+  RU
+  SK
+  SL
+  SQ
+  SR
+  SV
+  TL
+  UK
+  VI
+  TE
+  TH
+  TR
+  XX
+  ZH
+
+func `%`*(v: Language): JsonNode =
+  result = case v:
+    of Language.AM: %"AM"
+    of Language.AR: %"AR"
+    of Language.AZ: %"AZ"
+    of Language.BG: %"BG"
+    of Language.BN: %"BN"
+    of Language.BS: %"BS"
+    of Language.CA: %"CA"
+    of Language.CS: %"CS"
+    of Language.DA: %"DA"
+    of Language.DV: %"DV"
+    of Language.DZ: %"DZ"
+    of Language.DE: %"DE"
+    of Language.EL: %"EL"
+    of Language.EN: %"EN"
+    of Language.ES: %"ES"
+    of Language.ET: %"ET"
+    of Language.FA: %"FA"
+    of Language.FI: %"FI"
+    of Language.FR: %"FR"
+    of Language.HE: %"HE"
+    of Language.HI: %"HI"
+    of Language.HR: %"HR"
+    of Language.HU: %"HU"
+    of Language.HY: %"HY"
+    of Language.ID: %"ID"
+    of Language.IN: %"IN"
+    of Language.IS: %"IS"
+    of Language.IT: %"IT"
+    of Language.IW: %"IW"
+    of Language.JA: %"JA"
+    of Language.KA: %"KA"
+    of Language.KM: %"KM"
+    of Language.KO: %"KO"
+    of Language.LO: %"LO"
+    of Language.LT: %"LT"
+    of Language.LV: %"LV"
+    of Language.MK: %"MK"
+    of Language.MN: %"MN"
+    of Language.MS: %"MS"
+    of Language.MY: %"MY"
+    of Language.NB: %"NB"
+    of Language.NE: %"NE"
+    of Language.NL: %"NL"
+    of Language.NO: %"NO"
+    of Language.PL: %"PL"
+    of Language.PT: %"PT"
+    of Language.RO: %"RO"
+    of Language.RU: %"RU"
+    of Language.SK: %"SK"
+    of Language.SL: %"SL"
+    of Language.SQ: %"SQ"
+    of Language.SR: %"SR"
+    of Language.SV: %"SV"
+    of Language.TL: %"TL"
+    of Language.UK: %"UK"
+    of Language.VI: %"VI"
+    of Language.TE: %"TE"
+    of Language.TH: %"TH"
+    of Language.TR: %"TR"
+    of Language.XX: %"XX"
+    of Language.ZH: %"ZH"
+
+func `$`*(v: Language): string =
+  result = case v:
+    of Language.AM: $("AM")
+    of Language.AR: $("AR")
+    of Language.AZ: $("AZ")
+    of Language.BG: $("BG")
+    of Language.BN: $("BN")
+    of Language.BS: $("BS")
+    of Language.CA: $("CA")
+    of Language.CS: $("CS")
+    of Language.DA: $("DA")
+    of Language.DV: $("DV")
+    of Language.DZ: $("DZ")
+    of Language.DE: $("DE")
+    of Language.EL: $("EL")
+    of Language.EN: $("EN")
+    of Language.ES: $("ES")
+    of Language.ET: $("ET")
+    of Language.FA: $("FA")
+    of Language.FI: $("FI")
+    of Language.FR: $("FR")
+    of Language.HE: $("HE")
+    of Language.HI: $("HI")
+    of Language.HR: $("HR")
+    of Language.HU: $("HU")
+    of Language.HY: $("HY")
+    of Language.ID: $("ID")
+    of Language.IN: $("IN")
+    of Language.IS: $("IS")
+    of Language.IT: $("IT")
+    of Language.IW: $("IW")
+    of Language.JA: $("JA")
+    of Language.KA: $("KA")
+    of Language.KM: $("KM")
+    of Language.KO: $("KO")
+    of Language.LO: $("LO")
+    of Language.LT: $("LT")
+    of Language.LV: $("LV")
+    of Language.MK: $("MK")
+    of Language.MN: $("MN")
+    of Language.MS: $("MS")
+    of Language.MY: $("MY")
+    of Language.NB: $("NB")
+    of Language.NE: $("NE")
+    of Language.NL: $("NL")
+    of Language.NO: $("NO")
+    of Language.PL: $("PL")
+    of Language.PT: $("PT")
+    of Language.RO: $("RO")
+    of Language.RU: $("RU")
+    of Language.SK: $("SK")
+    of Language.SL: $("SL")
+    of Language.SQ: $("SQ")
+    of Language.SR: $("SR")
+    of Language.SV: $("SV")
+    of Language.TL: $("TL")
+    of Language.UK: $("UK")
+    of Language.VI: $("VI")
+    of Language.TE: $("TE")
+    of Language.TH: $("TH")
+    of Language.TR: $("TR")
+    of Language.XX: $("XX")
+    of Language.ZH: $("ZH")
+
+proc to*(node: JsonNode, T: typedesc[Language]): Language =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Language, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("AM"):
+    return Language.AM
+  of $("AR"):
+    return Language.AR
+  of $("AZ"):
+    return Language.AZ
+  of $("BG"):
+    return Language.BG
+  of $("BN"):
+    return Language.BN
+  of $("BS"):
+    return Language.BS
+  of $("CA"):
+    return Language.CA
+  of $("CS"):
+    return Language.CS
+  of $("DA"):
+    return Language.DA
+  of $("DV"):
+    return Language.DV
+  of $("DZ"):
+    return Language.DZ
+  of $("DE"):
+    return Language.DE
+  of $("EL"):
+    return Language.EL
+  of $("EN"):
+    return Language.EN
+  of $("ES"):
+    return Language.ES
+  of $("ET"):
+    return Language.ET
+  of $("FA"):
+    return Language.FA
+  of $("FI"):
+    return Language.FI
+  of $("FR"):
+    return Language.FR
+  of $("HE"):
+    return Language.HE
+  of $("HI"):
+    return Language.HI
+  of $("HR"):
+    return Language.HR
+  of $("HU"):
+    return Language.HU
+  of $("HY"):
+    return Language.HY
+  of $("ID"):
+    return Language.ID
+  of $("IN"):
+    return Language.IN
+  of $("IS"):
+    return Language.IS
+  of $("IT"):
+    return Language.IT
+  of $("IW"):
+    return Language.IW
+  of $("JA"):
+    return Language.JA
+  of $("KA"):
+    return Language.KA
+  of $("KM"):
+    return Language.KM
+  of $("KO"):
+    return Language.KO
+  of $("LO"):
+    return Language.LO
+  of $("LT"):
+    return Language.LT
+  of $("LV"):
+    return Language.LV
+  of $("MK"):
+    return Language.MK
+  of $("MN"):
+    return Language.MN
+  of $("MS"):
+    return Language.MS
+  of $("MY"):
+    return Language.MY
+  of $("NB"):
+    return Language.NB
+  of $("NE"):
+    return Language.NE
+  of $("NL"):
+    return Language.NL
+  of $("NO"):
+    return Language.NO
+  of $("PL"):
+    return Language.PL
+  of $("PT"):
+    return Language.PT
+  of $("RO"):
+    return Language.RO
+  of $("RU"):
+    return Language.RU
+  of $("SK"):
+    return Language.SK
+  of $("SL"):
+    return Language.SL
+  of $("SQ"):
+    return Language.SQ
+  of $("SR"):
+    return Language.SR
+  of $("SV"):
+    return Language.SV
+  of $("TL"):
+    return Language.TL
+  of $("UK"):
+    return Language.UK
+  of $("VI"):
+    return Language.VI
+  of $("TE"):
+    return Language.TE
+  of $("TH"):
+    return Language.TH
+  of $("TR"):
+    return Language.TR
+  of $("XX"):
+    return Language.XX
+  of $("ZH"):
+    return Language.ZH
+  else:
+    raise newException(ValueError, "Invalid enum value for Language: " & strVal)
+

@@ -12,6 +12,7 @@ import scala.collection.immutable.Seq
 
 /**
  * 
+ * @param countries A List of countries for filtering
  * @param reportUnderscorename Name of the Marketing Mix Modeling (MMM) report
  * @param startUnderscoredate Metric report start date (UTC). Format: YYYY-MM-DD
  * @param endUnderscoredate Metric report end date (UTC). Format: YYYY-MM-DD
@@ -19,16 +20,15 @@ import scala.collection.immutable.Seq
  * @param level Level of the report
  * @param targetingUnderscoretypes List of targeting types
  * @param columns Metric and entity columns
- * @param countries A List of countries for filtering
  */
-case class CreateMMMReportRequest(reportUnderscorename: String,
+case class CreateMMMReportRequest(countries: Option[Seq[TargetingAdvertiserCountry]],
+                reportUnderscorename: String,
                 startUnderscoredate: String,
                 endUnderscoredate: String,
                 granularity: String,
                 level: String,
                 targetingUnderscoretypes: Seq[MMMReportingTargetingType],
-                columns: Seq[MMMReportingColumn],
-                countries: Option[Seq[TargetingAdvertiserCountry]]
+                columns: Seq[MMMReportingColumn]
                 )
 
 object CreateMMMReportRequest {

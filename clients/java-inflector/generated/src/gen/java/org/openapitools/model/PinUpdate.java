@@ -18,7 +18,7 @@ import org.openapitools.model.PinUpdateCarouselSlotsInner;
  **/
 
 @ApiModel(description = "Pin fields for updates")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2025-05-10T05:38:59.250229241Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinUpdate   {
   @JsonProperty("alt_text")
   private String altText;

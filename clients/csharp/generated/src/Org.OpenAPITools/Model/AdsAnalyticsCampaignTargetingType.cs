@@ -301,7 +301,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AdsAnalyticsCampaignTargetingType adsAnalyticsCampaignTargetingType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(adsAnalyticsCampaignTargetingType.ToString());
+            writer.WriteStringValue(AdsAnalyticsCampaignTargetingTypeValueConverter.ToJsonValue(adsAnalyticsCampaignTargetingType).ToString());
         }
     }
 
@@ -332,14 +332,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the AdsAnalyticsCampaignTargetingType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="adsAnalyticsCampaignTargetingType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AdsAnalyticsCampaignTargetingType? adsAnalyticsCampaignTargetingType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(adsAnalyticsCampaignTargetingType?.ToString() ?? "null");
+            writer.WriteStringValue(adsAnalyticsCampaignTargetingType.HasValue ? AdsAnalyticsCampaignTargetingTypeValueConverter.ToJsonValue(adsAnalyticsCampaignTargetingType.Value).ToString() : "null");
         }
     }
 }

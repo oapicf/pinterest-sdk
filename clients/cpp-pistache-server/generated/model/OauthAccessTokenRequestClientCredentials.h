@@ -12,7 +12,7 @@
 /*
  * OauthAccessTokenRequestClientCredentials.h
  *
- * A request to receive a client token.
+ * 
  */
 
 #ifndef OauthAccessTokenRequestClientCredentials_H_
@@ -26,7 +26,7 @@ namespace org::openapitools::server::model
 {
 
 /// <summary>
-/// A request to receive a client token.
+/// 
 /// </summary>
 class  OauthAccessTokenRequestClientCredentials
 {
@@ -61,20 +61,20 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::string getGrantType() const;
-    void setGrantType(std::string const& value);
+    std::string getScope() const;
+    void setScope(std::string const& value);
     /// <summary>
     /// 
     /// </summary>
-    std::string getScope() const;
-    void setScope(std::string const& value);
+    std::string getGrantType() const;
+    void setGrantType(std::string const& value);
 
     friend  void to_json(nlohmann::json& j, const OauthAccessTokenRequestClientCredentials& o);
     friend  void from_json(const nlohmann::json& j, OauthAccessTokenRequestClientCredentials& o);
 protected:
-    std::string m_Grant_type;
-
     std::string m_Scope;
+
+    std::string m_Grant_type;
 
     
 };

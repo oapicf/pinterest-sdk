@@ -182,7 +182,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	leadFormCreateRequest := []openapiclient.LeadFormCreateRequest{*openapiclient.NewLeadFormCreateRequest("Lead Form 3/14/2023", "https://www.advertisername.com/privacy-policy", false, "Thank you for submitting. We will contact you soon.", []openapiclient.LeadFormQuestion{*openapiclient.NewLeadFormQuestion()})} // []LeadFormCreateRequest | List of lead forms to create, size limit [1, 30].
+	leadFormCreateRequest := []openapiclient.LeadFormCreateRequest{*openapiclient.NewLeadFormCreateRequest()} // []LeadFormCreateRequest | List of lead forms to create, size limit [1, 30].
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

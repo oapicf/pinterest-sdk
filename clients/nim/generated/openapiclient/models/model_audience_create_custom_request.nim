@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_audience_data_party
 import model_audience_rule
@@ -16,9 +18,40 @@ import model_audience_sharing_type
 
 type AudienceCreateCustomRequest* = object
   ## 
-  adAccountId*: string ## Ad account ID.
+  adAccountId*: Option[string] ## Ad account ID.
   name*: string ## Audience name.
   rule*: AudienceRule
   sharingType*: AudienceSharingType
   dataParty*: AudienceDataParty
-  category*: string
+  category*: Option[string]
+
+
+# Custom JSON deserialization for AudienceCreateCustomRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[AudienceCreateCustomRequest]): AudienceCreateCustomRequest =
+  result = AudienceCreateCustomRequest()
+  if node.kind == JObject:
+    if node.hasKey("ad_account_id") and node["ad_account_id"].kind != JNull:
+      result.adAccountId = some(to(node["ad_account_id"], typeof(result.adAccountId.get())))
+    if node.hasKey("name"):
+      result.name = to(node["name"], string)
+    if node.hasKey("rule"):
+      result.rule = to(node["rule"], AudienceRule)
+    if node.hasKey("sharing_type"):
+      result.sharingType = to(node["sharing_type"], AudienceSharingType)
+    if node.hasKey("data_party"):
+      result.dataParty = to(node["data_party"], AudienceDataParty)
+    if node.hasKey("category") and node["category"].kind != JNull:
+      result.category = some(to(node["category"], typeof(result.category.get())))
+
+# Custom JSON serialization for AudienceCreateCustomRequest with custom field names
+proc `%`*(obj: AudienceCreateCustomRequest): JsonNode =
+  result = newJObject()
+  if obj.adAccountId.isSome():
+    result["ad_account_id"] = %obj.adAccountId.get()
+  result["name"] = %obj.name
+  result["rule"] = %obj.rule
+  result["sharing_type"] = %obj.sharingType
+  result["data_party"] = %obj.dataParty
+  if obj.category.isSome():
+    result["category"] = %obj.category.get()
+

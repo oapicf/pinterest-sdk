@@ -70,6 +70,374 @@ inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPICata
 	return false;
 }
 
+inline FString ToString(const OpenAPICatalogsHotelBatchRequest::LanguageEnum& Value)
+{
+	switch (Value)
+	{
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::AfZA:
+		return TEXT("af-ZA");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::ArSA:
+		return TEXT("ar-SA");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::BgBG:
+		return TEXT("bg-BG");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::BnIN:
+		return TEXT("bn-IN");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::CsCZ:
+		return TEXT("cs-CZ");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::DaDK:
+		return TEXT("da-DK");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::De:
+		return TEXT("de");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::ElGR:
+		return TEXT("el-GR");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::EnAU:
+		return TEXT("en-AU");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::EnCA:
+		return TEXT("en-CA");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::EnGB:
+		return TEXT("en-GB");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::EnIN:
+		return TEXT("en-IN");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::EnUS:
+		return TEXT("en-US");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Es419:
+		return TEXT("es-419");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::EsAR:
+		return TEXT("es-AR");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::EsES:
+		return TEXT("es-ES");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::EsMX:
+		return TEXT("es-MX");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::FiFI:
+		return TEXT("fi-FI");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Fr:
+		return TEXT("fr");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::FrCA:
+		return TEXT("fr-CA");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::HeIL:
+		return TEXT("he-IL");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::HiIN:
+		return TEXT("hi-IN");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::HrHR:
+		return TEXT("hr-HR");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::HuHU:
+		return TEXT("hu-HU");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::IdID:
+		return TEXT("id-ID");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::It:
+		return TEXT("it");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ja:
+		return TEXT("ja");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::KoKR:
+		return TEXT("ko-KR");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::MsMY:
+		return TEXT("ms-MY");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::NbNO:
+		return TEXT("nb-NO");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Nl:
+		return TEXT("nl");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::PlPL:
+		return TEXT("pl-PL");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::PtBR:
+		return TEXT("pt-BR");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::PtPT:
+		return TEXT("pt-PT");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::RoRO:
+		return TEXT("ro-RO");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::RuRU:
+		return TEXT("ru-RU");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::SkSK:
+		return TEXT("sk-SK");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::SvSE:
+		return TEXT("sv-SE");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::TeIN:
+		return TEXT("te-IN");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::ThTH:
+		return TEXT("th-TH");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::TlPH:
+		return TEXT("tl-PH");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Tr:
+		return TEXT("tr");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::UkUA:
+		return TEXT("uk-UA");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::ViVN:
+		return TEXT("vi-VN");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::ZhCN:
+		return TEXT("zh-CN");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::ZhTW:
+		return TEXT("zh-TW");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Am:
+		return TEXT("AM");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ar:
+		return TEXT("AR");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Az:
+		return TEXT("AZ");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Bg:
+		return TEXT("BG");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Bn:
+		return TEXT("BN");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Bs:
+		return TEXT("BS");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ca:
+		return TEXT("CA");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Cs:
+		return TEXT("CS");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Da:
+		return TEXT("DA");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Dv:
+		return TEXT("DV");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Dz:
+		return TEXT("DZ");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::De2:
+		return TEXT("DE");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::El:
+		return TEXT("EL");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::En:
+		return TEXT("EN");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Es:
+		return TEXT("ES");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Et:
+		return TEXT("ET");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Fa:
+		return TEXT("FA");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Fi:
+		return TEXT("FI");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Fr2:
+		return TEXT("FR");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::He:
+		return TEXT("HE");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Hi:
+		return TEXT("HI");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Hr:
+		return TEXT("HR");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Hu:
+		return TEXT("HU");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Hy:
+		return TEXT("HY");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Id:
+		return TEXT("ID");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::In:
+		return TEXT("IN");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Is:
+		return TEXT("IS");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::It2:
+		return TEXT("IT");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Iw:
+		return TEXT("IW");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ja2:
+		return TEXT("JA");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ka:
+		return TEXT("KA");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Km:
+		return TEXT("KM");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ko:
+		return TEXT("KO");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Lo:
+		return TEXT("LO");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Lt:
+		return TEXT("LT");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Lv:
+		return TEXT("LV");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Mk:
+		return TEXT("MK");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Mn:
+		return TEXT("MN");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ms:
+		return TEXT("MS");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::My:
+		return TEXT("MY");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Nb:
+		return TEXT("NB");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ne:
+		return TEXT("NE");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Nl2:
+		return TEXT("NL");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::No:
+		return TEXT("NO");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Pl:
+		return TEXT("PL");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Pt:
+		return TEXT("PT");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ro:
+		return TEXT("RO");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ru:
+		return TEXT("RU");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Sk:
+		return TEXT("SK");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Sl:
+		return TEXT("SL");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Sq:
+		return TEXT("SQ");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Sr:
+		return TEXT("SR");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Sv:
+		return TEXT("SV");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Tl:
+		return TEXT("TL");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Uk:
+		return TEXT("UK");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Vi:
+		return TEXT("VI");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Te:
+		return TEXT("TE");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Th:
+		return TEXT("TH");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Tr2:
+		return TEXT("TR");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Xx:
+		return TEXT("XX");
+	case OpenAPICatalogsHotelBatchRequest::LanguageEnum::Zh:
+		return TEXT("ZH");
+	}
+
+	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPICatalogsHotelBatchRequest::LanguageEnum Value (%d)"), (int)Value);
+	return TEXT("");
+}
+
+FString OpenAPICatalogsHotelBatchRequest::EnumToString(const OpenAPICatalogsHotelBatchRequest::LanguageEnum& EnumValue)
+{
+	return ToString(EnumValue);
+}
+
+inline bool FromString(const FString& EnumAsString, OpenAPICatalogsHotelBatchRequest::LanguageEnum& Value)
+{
+	static TMap<FString, OpenAPICatalogsHotelBatchRequest::LanguageEnum> StringToEnum = { 
+		{ TEXT("af-ZA"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::AfZA },
+		{ TEXT("ar-SA"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::ArSA },
+		{ TEXT("bg-BG"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::BgBG },
+		{ TEXT("bn-IN"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::BnIN },
+		{ TEXT("cs-CZ"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::CsCZ },
+		{ TEXT("da-DK"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::DaDK },
+		{ TEXT("de"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::De },
+		{ TEXT("el-GR"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::ElGR },
+		{ TEXT("en-AU"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::EnAU },
+		{ TEXT("en-CA"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::EnCA },
+		{ TEXT("en-GB"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::EnGB },
+		{ TEXT("en-IN"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::EnIN },
+		{ TEXT("en-US"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::EnUS },
+		{ TEXT("es-419"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Es419 },
+		{ TEXT("es-AR"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::EsAR },
+		{ TEXT("es-ES"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::EsES },
+		{ TEXT("es-MX"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::EsMX },
+		{ TEXT("fi-FI"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::FiFI },
+		{ TEXT("fr"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Fr },
+		{ TEXT("fr-CA"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::FrCA },
+		{ TEXT("he-IL"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::HeIL },
+		{ TEXT("hi-IN"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::HiIN },
+		{ TEXT("hr-HR"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::HrHR },
+		{ TEXT("hu-HU"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::HuHU },
+		{ TEXT("id-ID"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::IdID },
+		{ TEXT("it"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::It },
+		{ TEXT("ja"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ja },
+		{ TEXT("ko-KR"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::KoKR },
+		{ TEXT("ms-MY"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::MsMY },
+		{ TEXT("nb-NO"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::NbNO },
+		{ TEXT("nl"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Nl },
+		{ TEXT("pl-PL"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::PlPL },
+		{ TEXT("pt-BR"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::PtBR },
+		{ TEXT("pt-PT"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::PtPT },
+		{ TEXT("ro-RO"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::RoRO },
+		{ TEXT("ru-RU"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::RuRU },
+		{ TEXT("sk-SK"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::SkSK },
+		{ TEXT("sv-SE"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::SvSE },
+		{ TEXT("te-IN"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::TeIN },
+		{ TEXT("th-TH"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::ThTH },
+		{ TEXT("tl-PH"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::TlPH },
+		{ TEXT("tr"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Tr },
+		{ TEXT("uk-UA"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::UkUA },
+		{ TEXT("vi-VN"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::ViVN },
+		{ TEXT("zh-CN"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::ZhCN },
+		{ TEXT("zh-TW"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::ZhTW },
+		{ TEXT("AM"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Am },
+		{ TEXT("AR"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ar },
+		{ TEXT("AZ"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Az },
+		{ TEXT("BG"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Bg },
+		{ TEXT("BN"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Bn },
+		{ TEXT("BS"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Bs },
+		{ TEXT("CA"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ca },
+		{ TEXT("CS"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Cs },
+		{ TEXT("DA"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Da },
+		{ TEXT("DV"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Dv },
+		{ TEXT("DZ"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Dz },
+		{ TEXT("DE"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::De2 },
+		{ TEXT("EL"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::El },
+		{ TEXT("EN"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::En },
+		{ TEXT("ES"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Es },
+		{ TEXT("ET"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Et },
+		{ TEXT("FA"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Fa },
+		{ TEXT("FI"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Fi },
+		{ TEXT("FR"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Fr2 },
+		{ TEXT("HE"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::He },
+		{ TEXT("HI"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Hi },
+		{ TEXT("HR"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Hr },
+		{ TEXT("HU"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Hu },
+		{ TEXT("HY"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Hy },
+		{ TEXT("ID"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Id },
+		{ TEXT("IN"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::In },
+		{ TEXT("IS"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Is },
+		{ TEXT("IT"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::It2 },
+		{ TEXT("IW"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Iw },
+		{ TEXT("JA"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ja2 },
+		{ TEXT("KA"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ka },
+		{ TEXT("KM"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Km },
+		{ TEXT("KO"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ko },
+		{ TEXT("LO"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Lo },
+		{ TEXT("LT"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Lt },
+		{ TEXT("LV"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Lv },
+		{ TEXT("MK"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Mk },
+		{ TEXT("MN"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Mn },
+		{ TEXT("MS"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ms },
+		{ TEXT("MY"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::My },
+		{ TEXT("NB"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Nb },
+		{ TEXT("NE"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ne },
+		{ TEXT("NL"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Nl2 },
+		{ TEXT("NO"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::No },
+		{ TEXT("PL"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Pl },
+		{ TEXT("PT"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Pt },
+		{ TEXT("RO"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ro },
+		{ TEXT("RU"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Ru },
+		{ TEXT("SK"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Sk },
+		{ TEXT("SL"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Sl },
+		{ TEXT("SQ"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Sq },
+		{ TEXT("SR"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Sr },
+		{ TEXT("SV"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Sv },
+		{ TEXT("TL"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Tl },
+		{ TEXT("UK"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Uk },
+		{ TEXT("VI"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Vi },
+		{ TEXT("TE"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Te },
+		{ TEXT("TH"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Th },
+		{ TEXT("TR"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Tr2 },
+		{ TEXT("XX"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Xx },
+		{ TEXT("ZH"), OpenAPICatalogsHotelBatchRequest::LanguageEnum::Zh }, };
+
+	const auto Found = StringToEnum.Find(EnumAsString);
+	if(Found)
+		Value = *Found;
+
+	return Found != nullptr;
+}
+
+bool OpenAPICatalogsHotelBatchRequest::EnumFromString(const FString& EnumAsString, OpenAPICatalogsHotelBatchRequest::LanguageEnum& EnumValue)
+{
+	return FromString(EnumAsString, EnumValue);
+}
+
+inline void WriteJsonValue(JsonWriter& Writer, const OpenAPICatalogsHotelBatchRequest::LanguageEnum& Value)
+{
+	WriteJsonValue(Writer, ToString(Value));
+}
+
+inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPICatalogsHotelBatchRequest::LanguageEnum& Value)
+{
+	FString TmpValue;
+	if (JsonValue->TryGetString(TmpValue))
+	{
+		if(FromString(TmpValue, Value))
+			return true;
+	}
+	return false;
+}
+
 void OpenAPICatalogsHotelBatchRequest::WriteJson(JsonWriter& Writer) const
 {
 	Writer->WriteObjectStart();

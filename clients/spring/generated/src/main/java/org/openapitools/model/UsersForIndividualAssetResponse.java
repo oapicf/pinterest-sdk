@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "UsersForIndividualAssetResponse", description = "An object containing the permissions a business member has on the asset.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UsersForIndividualAssetResponse {
 
   private @Nullable String assetId;
@@ -33,7 +33,7 @@ public class UsersForIndividualAssetResponse {
   @Valid
   private List<String> permissions = new ArrayList<>();
 
-  public UsersForIndividualAssetResponse assetId(String assetId) {
+  public UsersForIndividualAssetResponse assetId(@Nullable String assetId) {
     this.assetId = assetId;
     return this;
   }
@@ -45,15 +45,15 @@ public class UsersForIndividualAssetResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "asset_id", example = "549755885175", description = "Unique identifier of a business asset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_id")
-  public String getAssetId() {
+  public @Nullable String getAssetId() {
     return assetId;
   }
 
-  public void setAssetId(String assetId) {
+  public void setAssetId(@Nullable String assetId) {
     this.assetId = assetId;
   }
 
-  public UsersForIndividualAssetResponse memberId(String memberId) {
+  public UsersForIndividualAssetResponse memberId(@Nullable String memberId) {
     this.memberId = memberId;
     return this;
   }
@@ -65,11 +65,11 @@ public class UsersForIndividualAssetResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "member_id", example = "140943737684417", description = "Unique identifier of the business member with asset access.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("member_id")
-  public String getMemberId() {
+  public @Nullable String getMemberId() {
     return memberId;
   }
 
-  public void setMemberId(String memberId) {
+  public void setMemberId(@Nullable String memberId) {
     this.memberId = memberId;
   }
 

@@ -104,7 +104,7 @@ data class CatalogsCreativeAssetsProductGroupFilterKeys(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("MEDIA_TYPE", required = true) val MEDIA_TYPE: CatalogsProductGroupMultipleMediaTypesCriteria
-    ) {
+) {
 
 }
 

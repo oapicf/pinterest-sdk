@@ -20,16 +20,20 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * A request to receive a client token.
+ * 
  *
  * @param scope 
+ * @param grantType 
  */
 
 
 data class OauthAccessTokenRequestClientCredentials (
 
     @Json(name = "scope")
-    val scope: kotlin.String
+    val scope: kotlin.String,
+
+    @Json(name = "grant_type")
+    val grantType: OauthAccessTokenRequestClientCredentials.GrantType
 
 ) {
 

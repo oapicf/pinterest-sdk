@@ -142,6 +142,7 @@ class AdAccountsApiTest {
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
+        
         val response: ResponseEntity<List<AdAccountAnalyticsResponseInner>> = api.adAccountAnalytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
 
         // TODO: test validations
@@ -166,6 +167,7 @@ class AdAccountsApiTest {
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
         val attributionTypes: ConversionReportAttributionType? = TODO()
+        
         val response: ResponseEntity<MetricsResponse> = api.adAccountTargetingAnalyticsGet(adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
 
         // TODO: test validations
@@ -184,6 +186,7 @@ class AdAccountsApiTest {
         val accountType: AudienceAccountType = TODO()
         val pageSize: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<AdAccountsAudiencesSharedAccountsList200Response> = api.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark)
 
         // TODO: test validations
@@ -198,6 +201,7 @@ class AdAccountsApiTest {
     @Test
     fun adAccountsCreateTest() {
         val adAccountCreateRequest: AdAccountCreateRequest = TODO()
+        
         val response: ResponseEntity<AdAccount> = api.adAccountsCreate(adAccountCreateRequest)
 
         // TODO: test validations
@@ -212,6 +216,7 @@ class AdAccountsApiTest {
     @Test
     fun adAccountsGetTest() {
         val adAccountId: kotlin.String = TODO()
+        
         val response: ResponseEntity<AdAccount> = api.adAccountsGet(adAccountId)
 
         // TODO: test validations
@@ -228,6 +233,7 @@ class AdAccountsApiTest {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val includeSharedAccounts: kotlin.Boolean = TODO()
+        
         val response: ResponseEntity<AdAccountsList200Response> = api.adAccountsList(bookmark, pageSize, includeSharedAccounts)
 
         // TODO: test validations
@@ -243,6 +249,7 @@ class AdAccountsApiTest {
     fun adAccountsSubscriptionsDelByIdTest() {
         val adAccountId: kotlin.String = TODO()
         val subscriptionId: kotlin.String = TODO()
+        
         val response: ResponseEntity<Unit> = api.adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
 
         // TODO: test validations
@@ -258,6 +265,7 @@ class AdAccountsApiTest {
     fun adAccountsSubscriptionsGetByIdTest() {
         val adAccountId: kotlin.String = TODO()
         val subscriptionId: kotlin.String = TODO()
+        
         val response: ResponseEntity<AdAccountGetSubscriptionResponse> = api.adAccountsSubscriptionsGetById(adAccountId, subscriptionId)
 
         // TODO: test validations
@@ -274,6 +282,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val pageSize: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<AdAccountsSubscriptionsGetList200Response> = api.adAccountsSubscriptionsGetList(adAccountId, pageSize, bookmark)
 
         // TODO: test validations
@@ -289,6 +298,7 @@ class AdAccountsApiTest {
     fun adAccountsSubscriptionsPostTest() {
         val adAccountId: kotlin.String = TODO()
         val adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest = TODO()
+        
         val response: ResponseEntity<AdAccountCreateSubscriptionResponse> = api.adAccountsSubscriptionsPost(adAccountId, adAccountCreateSubscriptionRequest)
 
         // TODO: test validations
@@ -312,6 +322,7 @@ class AdAccountsApiTest {
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
+        
         val response: ResponseEntity<List<AdGroupsAnalyticsResponseInner>> = api.adGroupsAnalytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
 
         // TODO: test validations
@@ -327,6 +338,7 @@ class AdAccountsApiTest {
     fun adGroupsAudienceSizingTest() {
         val adAccountId: kotlin.String = TODO()
         val adGroupAudienceSizingRequest: AdGroupAudienceSizingRequest? = TODO()
+        
         val response: ResponseEntity<AdGroupAudienceSizingResponse> = api.adGroupsAudienceSizing(adAccountId, adGroupAudienceSizingRequest)
 
         // TODO: test validations
@@ -342,6 +354,7 @@ class AdAccountsApiTest {
     fun adGroupsBidFloorGetTest() {
         val adAccountId: kotlin.String = TODO()
         val bidFloorRequest: BidFloorRequest = TODO()
+        
         val response: ResponseEntity<BidFloor> = api.adGroupsBidFloorGet(adAccountId, bidFloorRequest)
 
         // TODO: test validations
@@ -357,6 +370,7 @@ class AdAccountsApiTest {
     fun adGroupsCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val adGroupCreateRequest: kotlin.collections.List<AdGroupCreateRequest> = TODO()
+        
         val response: ResponseEntity<AdGroupArrayResponse> = api.adGroupsCreate(adAccountId, adGroupCreateRequest)
 
         // TODO: test validations
@@ -372,6 +386,7 @@ class AdAccountsApiTest {
     fun adGroupsGetTest() {
         val adAccountId: kotlin.String = TODO()
         val adGroupId: kotlin.String = TODO()
+        
         val response: ResponseEntity<AdGroupResponse> = api.adGroupsGet(adAccountId, adGroupId)
 
         // TODO: test validations
@@ -393,6 +408,7 @@ class AdAccountsApiTest {
         val order: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
         val translateInterestsToNames: kotlin.Boolean = TODO()
+        
         val response: ResponseEntity<AdGroupsList200Response> = api.adGroupsList(adAccountId, campaignIds, adGroupIds, entityStatuses, pageSize, order, bookmark, translateInterestsToNames)
 
         // TODO: test validations
@@ -418,6 +434,7 @@ class AdAccountsApiTest {
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
         val attributionTypes: ConversionReportAttributionType? = TODO()
+        
         val response: ResponseEntity<MetricsResponse> = api.adGroupsTargetingAnalyticsGet(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
 
         // TODO: test validations
@@ -433,6 +450,7 @@ class AdAccountsApiTest {
     fun adGroupsUpdateTest() {
         val adAccountId: kotlin.String = TODO()
         val adGroupUpdateRequest: kotlin.collections.List<AdGroupUpdateRequest> = TODO()
+        
         val response: ResponseEntity<AdGroupArrayResponse> = api.adGroupsUpdate(adAccountId, adGroupUpdateRequest)
 
         // TODO: test validations
@@ -448,6 +466,7 @@ class AdAccountsApiTest {
     fun adPreviewsCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val adPreviewRequest: AdPreviewRequest = TODO()
+        
         val response: ResponseEntity<AdPreviewURLResponse> = api.adPreviewsCreate(adAccountId, adPreviewRequest)
 
         // TODO: test validations
@@ -473,6 +492,7 @@ class AdAccountsApiTest {
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
         val attributionTypes: ConversionReportAttributionType? = TODO()
+        
         val response: ResponseEntity<MetricsResponse> = api.adTargetingAnalyticsGet(adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
 
         // TODO: test validations
@@ -498,6 +518,7 @@ class AdAccountsApiTest {
         val conversionReportTime: kotlin.String = TODO()
         val pinIds: kotlin.collections.List<kotlin.String>? = TODO()
         val campaignIds: kotlin.collections.List<kotlin.String>? = TODO()
+        
         val response: ResponseEntity<List<AdsAnalyticsResponseInner>> = api.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds)
 
         // TODO: test validations
@@ -513,6 +534,7 @@ class AdAccountsApiTest {
     fun adsCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val adCreateRequest: kotlin.collections.List<AdCreateRequest> = TODO()
+        
         val response: ResponseEntity<AdArrayResponse> = api.adsCreate(adAccountId, adCreateRequest)
 
         // TODO: test validations
@@ -528,6 +550,7 @@ class AdAccountsApiTest {
     fun adsCreditRedeemTest() {
         val adAccountId: kotlin.String = TODO()
         val adsCreditRedeemRequest: AdsCreditRedeemRequest = TODO()
+        
         val response: ResponseEntity<AdsCreditRedeemResponse> = api.adsCreditRedeem(adAccountId, adsCreditRedeemRequest)
 
         // TODO: test validations
@@ -544,6 +567,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<AdsCreditsDiscountsGet200Response> = api.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize)
 
         // TODO: test validations
@@ -559,6 +583,7 @@ class AdAccountsApiTest {
     fun adsGetTest() {
         val adAccountId: kotlin.String = TODO()
         val adId: kotlin.String = TODO()
+        
         val response: ResponseEntity<AdResponse> = api.adsGet(adAccountId, adId)
 
         // TODO: test validations
@@ -580,6 +605,7 @@ class AdAccountsApiTest {
         val pageSize: kotlin.Int = TODO()
         val order: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<AdsList200Response> = api.adsList(adAccountId, campaignIds, adGroupIds, adIds, entityStatuses, pageSize, order, bookmark)
 
         // TODO: test validations
@@ -595,6 +621,7 @@ class AdAccountsApiTest {
     fun adsUpdateTest() {
         val adAccountId: kotlin.String = TODO()
         val adUpdateRequest: kotlin.collections.List<AdUpdateRequest> = TODO()
+        
         val response: ResponseEntity<AdArrayResponse> = api.adsUpdate(adAccountId, adUpdateRequest)
 
         // TODO: test validations
@@ -610,6 +637,7 @@ class AdAccountsApiTest {
     fun analyticsCreateMmmReportTest() {
         val adAccountId: kotlin.String = TODO()
         val createMMMReportRequest: CreateMMMReportRequest = TODO()
+        
         val response: ResponseEntity<CreateMMMReportResponse> = api.analyticsCreateMmmReport(adAccountId, createMMMReportRequest)
 
         // TODO: test validations
@@ -625,6 +653,7 @@ class AdAccountsApiTest {
     fun analyticsCreateReportTest() {
         val adAccountId: kotlin.String = TODO()
         val adsAnalyticsCreateAsyncRequest: AdsAnalyticsCreateAsyncRequest = TODO()
+        
         val response: ResponseEntity<AdsAnalyticsCreateAsyncResponse> = api.analyticsCreateReport(adAccountId, adsAnalyticsCreateAsyncRequest)
 
         // TODO: test validations
@@ -643,6 +672,7 @@ class AdAccountsApiTest {
         val startDate: java.time.LocalDate? = TODO()
         val endDate: java.time.LocalDate? = TODO()
         val granularity: Granularity? = TODO()
+        
         val response: ResponseEntity<AdsAnalyticsCreateAsyncResponse> = api.analyticsCreateTemplateReport(adAccountId, templateId, startDate, endDate, granularity)
 
         // TODO: test validations
@@ -658,6 +688,7 @@ class AdAccountsApiTest {
     fun analyticsGetMmmReportTest() {
         val adAccountId: kotlin.String = TODO()
         val token: kotlin.String = TODO()
+        
         val response: ResponseEntity<GetMMMReportResponse> = api.analyticsGetMmmReport(adAccountId, token)
 
         // TODO: test validations
@@ -673,6 +704,7 @@ class AdAccountsApiTest {
     fun analyticsGetReportTest() {
         val adAccountId: kotlin.String = TODO()
         val token: kotlin.String = TODO()
+        
         val response: ResponseEntity<AdsAnalyticsGetAsyncResponse> = api.analyticsGetReport(adAccountId, token)
 
         // TODO: test validations
@@ -688,6 +720,7 @@ class AdAccountsApiTest {
     fun audienceInsightsGetTest() {
         val adAccountId: kotlin.String = TODO()
         val audienceInsightType: AudienceInsightType = TODO()
+        
         val response: ResponseEntity<AudienceInsightsResponse> = api.audienceInsightsGet(adAccountId, audienceInsightType)
 
         // TODO: test validations
@@ -702,6 +735,7 @@ class AdAccountsApiTest {
     @Test
     fun audienceInsightsScopeAndTypeGetTest() {
         val adAccountId: kotlin.String = TODO()
+        
         val response: ResponseEntity<AudienceDefinitionResponse> = api.audienceInsightsScopeAndTypeGet(adAccountId)
 
         // TODO: test validations
@@ -717,6 +751,7 @@ class AdAccountsApiTest {
     fun audiencesCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val audienceCreateRequest: AudienceCreateRequest = TODO()
+        
         val response: ResponseEntity<Audience> = api.audiencesCreate(adAccountId, audienceCreateRequest)
 
         // TODO: test validations
@@ -732,6 +767,7 @@ class AdAccountsApiTest {
     fun audiencesCreateCustomTest() {
         val adAccountId: kotlin.String = TODO()
         val audienceCreateCustomRequest: AudienceCreateCustomRequest = TODO()
+        
         val response: ResponseEntity<Audience> = api.audiencesCreateCustom(adAccountId, audienceCreateCustomRequest)
 
         // TODO: test validations
@@ -747,6 +783,7 @@ class AdAccountsApiTest {
     fun audiencesGetTest() {
         val adAccountId: kotlin.String = TODO()
         val audienceId: kotlin.String = TODO()
+        
         val response: ResponseEntity<Audience> = api.audiencesGet(adAccountId, audienceId)
 
         // TODO: test validations
@@ -765,6 +802,7 @@ class AdAccountsApiTest {
         val order: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val ownershipType: kotlin.String = TODO()
+        
         val response: ResponseEntity<AudiencesList200Response> = api.audiencesList(adAccountId, bookmark, order, pageSize, ownershipType)
 
         // TODO: test validations
@@ -781,6 +819,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val audienceId: kotlin.String = TODO()
         val audienceUpdateRequest: AudienceUpdateRequest? = TODO()
+        
         val response: ResponseEntity<Audience> = api.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest)
 
         // TODO: test validations
@@ -798,6 +837,7 @@ class AdAccountsApiTest {
         val isActive: kotlin.Boolean = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<BillingProfilesGet200Response> = api.billingProfilesGet(adAccountId, isActive, bookmark, pageSize)
 
         // TODO: test validations
@@ -813,6 +853,7 @@ class AdAccountsApiTest {
     fun bulkDownloadCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val bulkDownloadRequest: BulkDownloadRequest = TODO()
+        
         val response: ResponseEntity<BulkDownloadResponse> = api.bulkDownloadCreate(adAccountId, bulkDownloadRequest)
 
         // TODO: test validations
@@ -829,6 +870,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val bulkRequestId: kotlin.String = TODO()
         val includeDetails: kotlin.Boolean = TODO()
+        
         val response: ResponseEntity<BulkUpsertStatusResponse> = api.bulkRequestGet(adAccountId, bulkRequestId, includeDetails)
 
         // TODO: test validations
@@ -844,6 +886,7 @@ class AdAccountsApiTest {
     fun bulkUpsertCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val bulkUpsertRequest: BulkUpsertRequest = TODO()
+        
         val response: ResponseEntity<BulkUpsertResponse> = api.bulkUpsertCreate(adAccountId, bulkUpsertRequest)
 
         // TODO: test validations
@@ -869,6 +912,7 @@ class AdAccountsApiTest {
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
         val attributionTypes: ConversionReportAttributionType? = TODO()
+        
         val response: ResponseEntity<MetricsResponse> = api.campaignTargetingAnalyticsGet(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes)
 
         // TODO: test validations
@@ -892,6 +936,7 @@ class AdAccountsApiTest {
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
+        
         val response: ResponseEntity<List<CampaignsAnalyticsResponseInner>> = api.campaignsAnalytics(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
 
         // TODO: test validations
@@ -907,6 +952,7 @@ class AdAccountsApiTest {
     fun campaignsCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val campaignCreateRequest: kotlin.collections.List<CampaignCreateRequest> = TODO()
+        
         val response: ResponseEntity<CampaignCreateResponse> = api.campaignsCreate(adAccountId, campaignCreateRequest)
 
         // TODO: test validations
@@ -922,6 +968,7 @@ class AdAccountsApiTest {
     fun campaignsGetTest() {
         val adAccountId: kotlin.String = TODO()
         val campaignId: kotlin.String = TODO()
+        
         val response: ResponseEntity<CampaignResponse> = api.campaignsGet(adAccountId, campaignId)
 
         // TODO: test validations
@@ -941,6 +988,7 @@ class AdAccountsApiTest {
         val pageSize: kotlin.Int = TODO()
         val order: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CampaignsList200Response> = api.campaignsList(adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark)
 
         // TODO: test validations
@@ -956,6 +1004,7 @@ class AdAccountsApiTest {
     fun campaignsUpdateTest() {
         val adAccountId: kotlin.String = TODO()
         val campaignUpdateRequest: kotlin.collections.List<CampaignUpdateRequest> = TODO()
+        
         val response: ResponseEntity<CampaignUpdateResponse> = api.campaignsUpdate(adAccountId, campaignUpdateRequest)
 
         // TODO: test validations
@@ -971,6 +1020,7 @@ class AdAccountsApiTest {
     fun conversionTagsCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val conversionTagCreate: ConversionTagCreate = TODO()
+        
         val response: ResponseEntity<ConversionTagResponse> = api.conversionTagsCreate(adAccountId, conversionTagCreate)
 
         // TODO: test validations
@@ -986,6 +1036,7 @@ class AdAccountsApiTest {
     fun conversionTagsGetTest() {
         val adAccountId: kotlin.String = TODO()
         val conversionTagId: kotlin.String = TODO()
+        
         val response: ResponseEntity<ConversionTagResponse> = api.conversionTagsGet(adAccountId, conversionTagId)
 
         // TODO: test validations
@@ -1001,6 +1052,7 @@ class AdAccountsApiTest {
     fun conversionTagsListTest() {
         val adAccountId: kotlin.String = TODO()
         val filterDeleted: kotlin.Boolean = TODO()
+        
         val response: ResponseEntity<ConversionTagListResponse> = api.conversionTagsList(adAccountId, filterDeleted)
 
         // TODO: test validations
@@ -1017,6 +1069,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val countryCode: kotlin.String = TODO()
         val keywords: kotlin.collections.List<kotlin.String> = TODO()
+        
         val response: ResponseEntity<KeywordsMetricsArrayResponse> = api.countryKeywordsMetricsGet(adAccountId, countryCode, keywords)
 
         // TODO: test validations
@@ -1032,6 +1085,7 @@ class AdAccountsApiTest {
     fun customerListsCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val customerListRequest: CustomerListRequest = TODO()
+        
         val response: ResponseEntity<CustomerList> = api.customerListsCreate(adAccountId, customerListRequest)
 
         // TODO: test validations
@@ -1047,6 +1101,7 @@ class AdAccountsApiTest {
     fun customerListsGetTest() {
         val adAccountId: kotlin.String = TODO()
         val customerListId: kotlin.String = TODO()
+        
         val response: ResponseEntity<CustomerList> = api.customerListsGet(adAccountId, customerListId)
 
         // TODO: test validations
@@ -1064,6 +1119,7 @@ class AdAccountsApiTest {
         val pageSize: kotlin.Int = TODO()
         val order: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CustomerListsList200Response> = api.customerListsList(adAccountId, pageSize, order, bookmark)
 
         // TODO: test validations
@@ -1080,6 +1136,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val customerListId: kotlin.String = TODO()
         val customerListUpdateRequest: CustomerListUpdateRequest = TODO()
+        
         val response: ResponseEntity<CustomerList> = api.customerListsUpdate(adAccountId, customerListId, customerListUpdateRequest)
 
         // TODO: test validations
@@ -1096,6 +1153,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val conversionEvents: ConversionEvents = TODO()
         val test: kotlin.Boolean? = TODO()
+        
         val response: ResponseEntity<ConversionApiResponse> = api.eventsCreate(adAccountId, conversionEvents, test)
 
         // TODO: test validations
@@ -1111,6 +1169,7 @@ class AdAccountsApiTest {
     fun keywordsCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val keywordsRequest: KeywordsRequest = TODO()
+        
         val response: ResponseEntity<KeywordsResponse> = api.keywordsCreate(adAccountId, keywordsRequest)
 
         // TODO: test validations
@@ -1130,6 +1189,7 @@ class AdAccountsApiTest {
         val matchTypes: kotlin.collections.List<MatchType>? = TODO()
         val pageSize: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<KeywordsGet200Response> = api.keywordsGet(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark)
 
         // TODO: test validations
@@ -1145,6 +1205,7 @@ class AdAccountsApiTest {
     fun keywordsUpdateTest() {
         val adAccountId: kotlin.String = TODO()
         val keywordUpdateBody: KeywordUpdateBody = TODO()
+        
         val response: ResponseEntity<KeywordsResponse> = api.keywordsUpdate(adAccountId, keywordUpdateBody)
 
         // TODO: test validations
@@ -1160,6 +1221,7 @@ class AdAccountsApiTest {
     fun leadFormGetTest() {
         val adAccountId: kotlin.String = TODO()
         val leadFormId: kotlin.String = TODO()
+        
         val response: ResponseEntity<LeadFormResponse> = api.leadFormGet(adAccountId, leadFormId)
 
         // TODO: test validations
@@ -1176,6 +1238,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val leadFormId: kotlin.String = TODO()
         val leadFormTestRequest: LeadFormTestRequest = TODO()
+        
         val response: ResponseEntity<LeadFormTestResponse> = api.leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest)
 
         // TODO: test validations
@@ -1191,6 +1254,7 @@ class AdAccountsApiTest {
     fun leadFormsCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val leadFormCreateRequest: kotlin.collections.List<LeadFormCreateRequest> = TODO()
+        
         val response: ResponseEntity<LeadFormArrayResponse> = api.leadFormsCreate(adAccountId, leadFormCreateRequest)
 
         // TODO: test validations
@@ -1208,6 +1272,7 @@ class AdAccountsApiTest {
         val pageSize: kotlin.Int = TODO()
         val order: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<LeadFormsList200Response> = api.leadFormsList(adAccountId, pageSize, order, bookmark)
 
         // TODO: test validations
@@ -1223,6 +1288,7 @@ class AdAccountsApiTest {
     fun leadFormsUpdateTest() {
         val adAccountId: kotlin.String = TODO()
         val leadFormUpdateRequest: kotlin.collections.List<LeadFormUpdateRequest> = TODO()
+        
         val response: ResponseEntity<LeadFormArrayResponse> = api.leadFormsUpdate(adAccountId, leadFormUpdateRequest)
 
         // TODO: test validations
@@ -1238,6 +1304,7 @@ class AdAccountsApiTest {
     fun leadsExportCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val leadsExportCreateRequest: LeadsExportCreateRequest = TODO()
+        
         val response: ResponseEntity<LeadsExportCreateResponse> = api.leadsExportCreate(adAccountId, leadsExportCreateRequest)
 
         // TODO: test validations
@@ -1253,6 +1320,7 @@ class AdAccountsApiTest {
     fun leadsExportGetTest() {
         val adAccountId: kotlin.String = TODO()
         val leadsExportId: kotlin.String = TODO()
+        
         val response: ResponseEntity<LeadsExportResponseData> = api.leadsExportGet(adAccountId, leadsExportId)
 
         // TODO: test validations
@@ -1267,6 +1335,7 @@ class AdAccountsApiTest {
     @Test
     fun ocpmEligibleConversionTagsGetTest() {
         val adAccountId: kotlin.String = TODO()
+        
         val response: ResponseEntity<Map<String, kotlin.collections.List<ConversionEventResponse>>> = api.ocpmEligibleConversionTagsGet(adAccountId)
 
         // TODO: test validations
@@ -1282,6 +1351,7 @@ class AdAccountsApiTest {
     fun orderLinesGetTest() {
         val adAccountId: kotlin.String = TODO()
         val orderLineId: kotlin.String = TODO()
+        
         val response: ResponseEntity<OrderLine> = api.orderLinesGet(adAccountId, orderLineId)
 
         // TODO: test validations
@@ -1299,6 +1369,7 @@ class AdAccountsApiTest {
         val pageSize: kotlin.Int = TODO()
         val order: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<OrderLinesList200Response> = api.orderLinesList(adAccountId, pageSize, order, bookmark)
 
         // TODO: test validations
@@ -1316,6 +1387,7 @@ class AdAccountsApiTest {
         val pageSize: kotlin.Int = TODO()
         val order: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<PageVisitConversionTagsGet200Response> = api.pageVisitConversionTagsGet(adAccountId, pageSize, order, bookmark)
 
         // TODO: test validations
@@ -1331,6 +1403,7 @@ class AdAccountsApiTest {
     fun productGroupPromotionsCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val productGroupPromotionCreateRequest: ProductGroupPromotionCreateRequest = TODO()
+        
         val response: ResponseEntity<ProductGroupPromotionResponse> = api.productGroupPromotionsCreate(adAccountId, productGroupPromotionCreateRequest)
 
         // TODO: test validations
@@ -1346,6 +1419,7 @@ class AdAccountsApiTest {
     fun productGroupPromotionsGetTest() {
         val adAccountId: kotlin.String = TODO()
         val productGroupPromotionId: kotlin.String = TODO()
+        
         val response: ResponseEntity<ProductGroupPromotionResponse> = api.productGroupPromotionsGet(adAccountId, productGroupPromotionId)
 
         // TODO: test validations
@@ -1366,6 +1440,7 @@ class AdAccountsApiTest {
         val pageSize: kotlin.Int = TODO()
         val order: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<ProductGroupPromotionsList200Response> = api.productGroupPromotionsList(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark)
 
         // TODO: test validations
@@ -1381,6 +1456,7 @@ class AdAccountsApiTest {
     fun productGroupPromotionsUpdateTest() {
         val adAccountId: kotlin.String = TODO()
         val productGroupPromotionUpdateRequest: ProductGroupPromotionUpdateRequest = TODO()
+        
         val response: ResponseEntity<ProductGroupPromotionResponse> = api.productGroupPromotionsUpdate(adAccountId, productGroupPromotionUpdateRequest)
 
         // TODO: test validations
@@ -1404,6 +1480,7 @@ class AdAccountsApiTest {
         val engagementWindowDays: kotlin.Int = TODO()
         val viewWindowDays: kotlin.Int = TODO()
         val conversionReportTime: kotlin.String = TODO()
+        
         val response: ResponseEntity<List<ProductGroupAnalyticsResponseInner>> = api.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime)
 
         // TODO: test validations
@@ -1418,6 +1495,7 @@ class AdAccountsApiTest {
     @Test
     fun sandboxDeleteTest() {
         val adAccountId: kotlin.String = TODO()
+        
         val response: ResponseEntity<kotlin.String> = api.sandboxDelete(adAccountId)
 
         // TODO: test validations
@@ -1432,6 +1510,7 @@ class AdAccountsApiTest {
     @Test
     fun ssioAccountsGetTest() {
         val adAccountId: kotlin.String = TODO()
+        
         val response: ResponseEntity<SSIOAccountResponse> = api.ssioAccountsGet(adAccountId)
 
         // TODO: test validations
@@ -1447,6 +1526,7 @@ class AdAccountsApiTest {
     fun ssioInsertionOrderCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val ssIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest = TODO()
+        
         val response: ResponseEntity<SSIOCreateInsertionOrderResponse> = api.ssioInsertionOrderCreate(adAccountId, ssIOCreateInsertionOrderRequest)
 
         // TODO: test validations
@@ -1462,6 +1542,7 @@ class AdAccountsApiTest {
     fun ssioInsertionOrderEditTest() {
         val adAccountId: kotlin.String = TODO()
         val ssIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest = TODO()
+        
         val response: ResponseEntity<SSIOEditInsertionOrderResponse> = api.ssioInsertionOrderEdit(adAccountId, ssIOEditInsertionOrderRequest)
 
         // TODO: test validations
@@ -1478,6 +1559,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<SsioInsertionOrdersStatusGetByAdAccount200Response> = api.ssioInsertionOrdersStatusGetByAdAccount(adAccountId, bookmark, pageSize)
 
         // TODO: test validations
@@ -1493,6 +1575,7 @@ class AdAccountsApiTest {
     fun ssioInsertionOrdersStatusGetByPinOrderIdTest() {
         val adAccountId: kotlin.String = TODO()
         val pinOrderId: kotlin.String = TODO()
+        
         val response: ResponseEntity<SSIOInsertionOrderStatusResponse> = api.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId)
 
         // TODO: test validations
@@ -1510,6 +1593,7 @@ class AdAccountsApiTest {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val pinOrderId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<SsioOrderLinesGetByAdAccount200Response> = api.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId)
 
         // TODO: test validations
@@ -1525,6 +1609,7 @@ class AdAccountsApiTest {
     fun targetingTemplateCreateTest() {
         val adAccountId: kotlin.String = TODO()
         val targetingTemplateCreate: TargetingTemplateCreate = TODO()
+        
         val response: ResponseEntity<TargetingTemplateGetResponseData> = api.targetingTemplateCreate(adAccountId, targetingTemplateCreate)
 
         // TODO: test validations
@@ -1544,6 +1629,7 @@ class AdAccountsApiTest {
         val searchQuery: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<TargetingTemplateList200Response> = api.targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark)
 
         // TODO: test validations
@@ -1559,6 +1645,7 @@ class AdAccountsApiTest {
     fun targetingTemplateUpdateTest() {
         val adAccountId: kotlin.String = TODO()
         val targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest = TODO()
+        
         val response: ResponseEntity<Unit> = api.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest)
 
         // TODO: test validations
@@ -1576,6 +1663,7 @@ class AdAccountsApiTest {
         val pageSize: kotlin.Int = TODO()
         val order: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<TemplatesList200Response> = api.templatesList(adAccountId, pageSize, order, bookmark)
 
         // TODO: test validations
@@ -1592,6 +1680,7 @@ class AdAccountsApiTest {
         val adAccountId: kotlin.String = TODO()
         val includeHtml: kotlin.Boolean = TODO()
         val tosType: kotlin.String? = TODO()
+        
         val response: ResponseEntity<TermsOfService> = api.termsOfServiceGet(adAccountId, includeHtml, tosType)
 
         // TODO: test validations
@@ -1607,6 +1696,7 @@ class AdAccountsApiTest {
     fun updateAdAccountToAdAccountSharedAudienceTest() {
         val adAccountId: kotlin.String = TODO()
         val sharedAudience: SharedAudience = TODO()
+        
         val response: ResponseEntity<SharedAudienceResponse> = api.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience)
 
         // TODO: test validations
@@ -1622,6 +1712,7 @@ class AdAccountsApiTest {
     fun updateAdAccountToBusinessSharedAudienceTest() {
         val adAccountId: kotlin.String = TODO()
         val businessSharedAudience: BusinessSharedAudience = TODO()
+        
         val response: ResponseEntity<BusinessSharedAudienceResponse> = api.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience)
 
         // TODO: test validations

@@ -1,5 +1,5 @@
 import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/http';
-import { Configuration, ConfigurationOptions, PromiseConfigurationOptions } from '../configuration'
+import { Configuration, PromiseConfigurationOptions, wrapOptions } from '../configuration'
 import { PromiseMiddleware, Middleware, PromiseMiddlewareWrapper } from '../middleware';
 
 import { Account } from '../models/Account';
@@ -82,7 +82,6 @@ import { AudienceCategory } from '../models/AudienceCategory';
 import { AudienceCommon } from '../models/AudienceCommon';
 import { AudienceCreateCustomRequest } from '../models/AudienceCreateCustomRequest';
 import { AudienceCreateRequest } from '../models/AudienceCreateRequest';
-import { AudienceCreateRequest1AudienceType } from '../models/AudienceCreateRequest1AudienceType';
 import { AudienceDataParty } from '../models/AudienceDataParty';
 import { AudienceDefinition } from '../models/AudienceDefinition';
 import { AudienceDefinitionResponse } from '../models/AudienceDefinitionResponse';
@@ -260,7 +259,6 @@ import { CatalogsItemsDeleteDiscontinuedBatchRequest } from '../models/CatalogsI
 import { CatalogsItemsFilters } from '../models/CatalogsItemsFilters';
 import { CatalogsItemsPostFilters } from '../models/CatalogsItemsPostFilters';
 import { CatalogsItemsRequest } from '../models/CatalogsItemsRequest';
-import { CatalogsItemsRequestLanguage } from '../models/CatalogsItemsRequestLanguage';
 import { CatalogsItemsUpdateBatchRequest } from '../models/CatalogsItemsUpdateBatchRequest';
 import { CatalogsItemsUpsertBatchRequest } from '../models/CatalogsItemsUpsertBatchRequest';
 import { CatalogsList200Response } from '../models/CatalogsList200Response';
@@ -594,7 +592,6 @@ import { PinMediaWithVideos } from '../models/PinMediaWithVideos';
 import { PinPromotionSummaryStatus } from '../models/PinPromotionSummaryStatus';
 import { PinUpdate } from '../models/PinUpdate';
 import { PinUpdateCarouselSlotsInner } from '../models/PinUpdateCarouselSlotsInner';
-import { PinsAnalyticsMetricTypesParameterInner } from '../models/PinsAnalyticsMetricTypesParameterInner';
 import { PinsList200Response } from '../models/PinsList200Response';
 import { PinsSaveRequest } from '../models/PinsSaveRequest';
 import { PinterestTagEventData } from '../models/PinterestTagEventData';
@@ -748,18 +745,7 @@ export class PromiseAdAccountsApi {
      * @param [conversionReportTime] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
      */
     public adAccountAnalyticsWithHttpInfo(adAccountId: string, startDate: string, endDate: string, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<AdAccountAnalyticsResponseInner>>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountAnalyticsWithHttpInfo(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, observableOptions);
         return result.toPromise();
     }
@@ -778,18 +764,7 @@ export class PromiseAdAccountsApi {
      * @param [conversionReportTime] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
      */
     public adAccountAnalytics(adAccountId: string, startDate: string, endDate: string, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', _options?: PromiseConfigurationOptions): Promise<Array<AdAccountAnalyticsResponseInner>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountAnalytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, observableOptions);
         return result.toPromise();
     }
@@ -810,18 +785,7 @@ export class PromiseAdAccountsApi {
      * @param [attributionTypes] List of types of attribution for the conversion report
      */
     public adAccountTargetingAnalyticsGetWithHttpInfo(adAccountId: string, startDate: string, endDate: string, targetingTypes: Array<AdsAnalyticsTargetingType>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', attributionTypes?: ConversionReportAttributionType, _options?: PromiseConfigurationOptions): Promise<HttpInfo<MetricsResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountTargetingAnalyticsGetWithHttpInfo(adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, observableOptions);
         return result.toPromise();
     }
@@ -842,18 +806,7 @@ export class PromiseAdAccountsApi {
      * @param [attributionTypes] List of types of attribution for the conversion report
      */
     public adAccountTargetingAnalyticsGet(adAccountId: string, startDate: string, endDate: string, targetingTypes: Array<AdsAnalyticsTargetingType>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', attributionTypes?: ConversionReportAttributionType, _options?: PromiseConfigurationOptions): Promise<MetricsResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountTargetingAnalyticsGet(adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, observableOptions);
         return result.toPromise();
     }
@@ -864,18 +817,7 @@ export class PromiseAdAccountsApi {
      * @param adAccountCreateRequest Ad account to create.
      */
     public adAccountsCreateWithHttpInfo(adAccountCreateRequest: AdAccountCreateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdAccount>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsCreateWithHttpInfo(adAccountCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -886,18 +828,7 @@ export class PromiseAdAccountsApi {
      * @param adAccountCreateRequest Ad account to create.
      */
     public adAccountsCreate(adAccountCreateRequest: AdAccountCreateRequest, _options?: PromiseConfigurationOptions): Promise<AdAccount> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsCreate(adAccountCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -908,18 +839,7 @@ export class PromiseAdAccountsApi {
      * @param adAccountId Unique identifier of an ad account.
      */
     public adAccountsGetWithHttpInfo(adAccountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdAccount>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsGetWithHttpInfo(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -930,18 +850,7 @@ export class PromiseAdAccountsApi {
      * @param adAccountId Unique identifier of an ad account.
      */
     public adAccountsGet(adAccountId: string, _options?: PromiseConfigurationOptions): Promise<AdAccount> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsGet(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -954,18 +863,7 @@ export class PromiseAdAccountsApi {
      * @param [includeSharedAccounts] Include shared ad accounts
      */
     public adAccountsListWithHttpInfo(bookmark?: string, pageSize?: number, includeSharedAccounts?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdAccountsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsListWithHttpInfo(bookmark, pageSize, includeSharedAccounts, observableOptions);
         return result.toPromise();
     }
@@ -978,18 +876,7 @@ export class PromiseAdAccountsApi {
      * @param [includeSharedAccounts] Include shared ad accounts
      */
     public adAccountsList(bookmark?: string, pageSize?: number, includeSharedAccounts?: boolean, _options?: PromiseConfigurationOptions): Promise<AdAccountsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsList(bookmark, pageSize, includeSharedAccounts, observableOptions);
         return result.toPromise();
     }
@@ -1001,18 +888,7 @@ export class PromiseAdAccountsApi {
      * @param createMMMReportRequest
      */
     public analyticsCreateMmmReportWithHttpInfo(adAccountId: string, createMMMReportRequest: CreateMMMReportRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateMMMReportResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.analyticsCreateMmmReportWithHttpInfo(adAccountId, createMMMReportRequest, observableOptions);
         return result.toPromise();
     }
@@ -1024,18 +900,7 @@ export class PromiseAdAccountsApi {
      * @param createMMMReportRequest
      */
     public analyticsCreateMmmReport(adAccountId: string, createMMMReportRequest: CreateMMMReportRequest, _options?: PromiseConfigurationOptions): Promise<CreateMMMReportResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.analyticsCreateMmmReport(adAccountId, createMMMReportRequest, observableOptions);
         return result.toPromise();
     }
@@ -1047,18 +912,7 @@ export class PromiseAdAccountsApi {
      * @param adsAnalyticsCreateAsyncRequest
      */
     public analyticsCreateReportWithHttpInfo(adAccountId: string, adsAnalyticsCreateAsyncRequest: AdsAnalyticsCreateAsyncRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdsAnalyticsCreateAsyncResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.analyticsCreateReportWithHttpInfo(adAccountId, adsAnalyticsCreateAsyncRequest, observableOptions);
         return result.toPromise();
     }
@@ -1070,18 +924,7 @@ export class PromiseAdAccountsApi {
      * @param adsAnalyticsCreateAsyncRequest
      */
     public analyticsCreateReport(adAccountId: string, adsAnalyticsCreateAsyncRequest: AdsAnalyticsCreateAsyncRequest, _options?: PromiseConfigurationOptions): Promise<AdsAnalyticsCreateAsyncResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.analyticsCreateReport(adAccountId, adsAnalyticsCreateAsyncRequest, observableOptions);
         return result.toPromise();
     }
@@ -1096,18 +939,7 @@ export class PromiseAdAccountsApi {
      * @param [granularity] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      */
     public analyticsCreateTemplateReportWithHttpInfo(adAccountId: string, templateId: string, startDate?: string, endDate?: string, granularity?: Granularity, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdsAnalyticsCreateAsyncResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.analyticsCreateTemplateReportWithHttpInfo(adAccountId, templateId, startDate, endDate, granularity, observableOptions);
         return result.toPromise();
     }
@@ -1122,18 +954,7 @@ export class PromiseAdAccountsApi {
      * @param [granularity] TOTAL - metrics are aggregated over the specified date range.&lt;br&gt; DAY - metrics are broken down daily.&lt;br&gt; HOUR - metrics are broken down hourly.&lt;br&gt;WEEKLY - metrics are broken down weekly.&lt;br&gt;MONTHLY - metrics are broken down monthly
      */
     public analyticsCreateTemplateReport(adAccountId: string, templateId: string, startDate?: string, endDate?: string, granularity?: Granularity, _options?: PromiseConfigurationOptions): Promise<AdsAnalyticsCreateAsyncResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.analyticsCreateTemplateReport(adAccountId, templateId, startDate, endDate, granularity, observableOptions);
         return result.toPromise();
     }
@@ -1145,18 +966,7 @@ export class PromiseAdAccountsApi {
      * @param token Token returned from the post request creation call
      */
     public analyticsGetMmmReportWithHttpInfo(adAccountId: string, token: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetMMMReportResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.analyticsGetMmmReportWithHttpInfo(adAccountId, token, observableOptions);
         return result.toPromise();
     }
@@ -1168,18 +978,7 @@ export class PromiseAdAccountsApi {
      * @param token Token returned from the post request creation call
      */
     public analyticsGetMmmReport(adAccountId: string, token: string, _options?: PromiseConfigurationOptions): Promise<GetMMMReportResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.analyticsGetMmmReport(adAccountId, token, observableOptions);
         return result.toPromise();
     }
@@ -1191,18 +990,7 @@ export class PromiseAdAccountsApi {
      * @param token Token returned from the post request creation call
      */
     public analyticsGetReportWithHttpInfo(adAccountId: string, token: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdsAnalyticsGetAsyncResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.analyticsGetReportWithHttpInfo(adAccountId, token, observableOptions);
         return result.toPromise();
     }
@@ -1214,18 +1002,7 @@ export class PromiseAdAccountsApi {
      * @param token Token returned from the post request creation call
      */
     public analyticsGetReport(adAccountId: string, token: string, _options?: PromiseConfigurationOptions): Promise<AdsAnalyticsGetAsyncResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.analyticsGetReport(adAccountId, token, observableOptions);
         return result.toPromise();
     }
@@ -1236,18 +1013,7 @@ export class PromiseAdAccountsApi {
      * @param adAccountId Unique identifier of an ad account.
      */
     public sandboxDeleteWithHttpInfo(adAccountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<string>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.sandboxDeleteWithHttpInfo(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -1258,18 +1024,7 @@ export class PromiseAdAccountsApi {
      * @param adAccountId Unique identifier of an ad account.
      */
     public sandboxDelete(adAccountId: string, _options?: PromiseConfigurationOptions): Promise<string> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.sandboxDelete(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -1283,18 +1038,7 @@ export class PromiseAdAccountsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public templatesListWithHttpInfo(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TemplatesList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.templatesListWithHttpInfo(adAccountId, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -1308,18 +1052,7 @@ export class PromiseAdAccountsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public templatesList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<TemplatesList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.templatesList(adAccountId, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -1358,18 +1091,7 @@ export class PromiseAdGroupsApi {
      * @param [conversionReportTime] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
      */
     public adGroupsAnalyticsWithHttpInfo(adAccountId: string, startDate: string, endDate: string, adGroupIds: Array<string>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<AdGroupsAnalyticsResponseInner>>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsAnalyticsWithHttpInfo(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, observableOptions);
         return result.toPromise();
     }
@@ -1389,18 +1111,7 @@ export class PromiseAdGroupsApi {
      * @param [conversionReportTime] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
      */
     public adGroupsAnalytics(adAccountId: string, startDate: string, endDate: string, adGroupIds: Array<string>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', _options?: PromiseConfigurationOptions): Promise<Array<AdGroupsAnalyticsResponseInner>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsAnalytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, observableOptions);
         return result.toPromise();
     }
@@ -1412,18 +1123,7 @@ export class PromiseAdGroupsApi {
      * @param [adGroupAudienceSizingRequest]
      */
     public adGroupsAudienceSizingWithHttpInfo(adAccountId: string, adGroupAudienceSizingRequest?: AdGroupAudienceSizingRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdGroupAudienceSizingResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsAudienceSizingWithHttpInfo(adAccountId, adGroupAudienceSizingRequest, observableOptions);
         return result.toPromise();
     }
@@ -1435,18 +1135,7 @@ export class PromiseAdGroupsApi {
      * @param [adGroupAudienceSizingRequest]
      */
     public adGroupsAudienceSizing(adAccountId: string, adGroupAudienceSizingRequest?: AdGroupAudienceSizingRequest, _options?: PromiseConfigurationOptions): Promise<AdGroupAudienceSizingResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsAudienceSizing(adAccountId, adGroupAudienceSizingRequest, observableOptions);
         return result.toPromise();
     }
@@ -1458,18 +1147,7 @@ export class PromiseAdGroupsApi {
      * @param bidFloorRequest Parameters to get bid_floor info
      */
     public adGroupsBidFloorGetWithHttpInfo(adAccountId: string, bidFloorRequest: BidFloorRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BidFloor>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsBidFloorGetWithHttpInfo(adAccountId, bidFloorRequest, observableOptions);
         return result.toPromise();
     }
@@ -1481,18 +1159,7 @@ export class PromiseAdGroupsApi {
      * @param bidFloorRequest Parameters to get bid_floor info
      */
     public adGroupsBidFloorGet(adAccountId: string, bidFloorRequest: BidFloorRequest, _options?: PromiseConfigurationOptions): Promise<BidFloor> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsBidFloorGet(adAccountId, bidFloorRequest, observableOptions);
         return result.toPromise();
     }
@@ -1504,18 +1171,7 @@ export class PromiseAdGroupsApi {
      * @param adGroupCreateRequest List of ad groups to create, size limit [1, 30].
      */
     public adGroupsCreateWithHttpInfo(adAccountId: string, adGroupCreateRequest: Array<AdGroupCreateRequest>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdGroupArrayResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsCreateWithHttpInfo(adAccountId, adGroupCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -1527,18 +1183,7 @@ export class PromiseAdGroupsApi {
      * @param adGroupCreateRequest List of ad groups to create, size limit [1, 30].
      */
     public adGroupsCreate(adAccountId: string, adGroupCreateRequest: Array<AdGroupCreateRequest>, _options?: PromiseConfigurationOptions): Promise<AdGroupArrayResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsCreate(adAccountId, adGroupCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -1550,18 +1195,7 @@ export class PromiseAdGroupsApi {
      * @param adGroupId Unique identifier of an ad group.
      */
     public adGroupsGetWithHttpInfo(adAccountId: string, adGroupId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdGroupResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsGetWithHttpInfo(adAccountId, adGroupId, observableOptions);
         return result.toPromise();
     }
@@ -1573,18 +1207,7 @@ export class PromiseAdGroupsApi {
      * @param adGroupId Unique identifier of an ad group.
      */
     public adGroupsGet(adAccountId: string, adGroupId: string, _options?: PromiseConfigurationOptions): Promise<AdGroupResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsGet(adAccountId, adGroupId, observableOptions);
         return result.toPromise();
     }
@@ -1602,18 +1225,7 @@ export class PromiseAdGroupsApi {
      * @param [translateInterestsToNames] Return interests as text names (if value is true) rather than topic IDs.
      */
     public adGroupsListWithHttpInfo(adAccountId: string, campaignIds?: Array<string>, adGroupIds?: Array<string>, entityStatuses?: Array<'ACTIVE' | 'PAUSED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT'>, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, translateInterestsToNames?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdGroupsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsListWithHttpInfo(adAccountId, campaignIds, adGroupIds, entityStatuses, pageSize, order, bookmark, translateInterestsToNames, observableOptions);
         return result.toPromise();
     }
@@ -1631,18 +1243,7 @@ export class PromiseAdGroupsApi {
      * @param [translateInterestsToNames] Return interests as text names (if value is true) rather than topic IDs.
      */
     public adGroupsList(adAccountId: string, campaignIds?: Array<string>, adGroupIds?: Array<string>, entityStatuses?: Array<'ACTIVE' | 'PAUSED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT'>, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, translateInterestsToNames?: boolean, _options?: PromiseConfigurationOptions): Promise<AdGroupsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsList(adAccountId, campaignIds, adGroupIds, entityStatuses, pageSize, order, bookmark, translateInterestsToNames, observableOptions);
         return result.toPromise();
     }
@@ -1664,18 +1265,7 @@ export class PromiseAdGroupsApi {
      * @param [attributionTypes] List of types of attribution for the conversion report
      */
     public adGroupsTargetingAnalyticsGetWithHttpInfo(adAccountId: string, adGroupIds: Array<string>, startDate: string, endDate: string, targetingTypes: Array<AdsAnalyticsTargetingType>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', attributionTypes?: ConversionReportAttributionType, _options?: PromiseConfigurationOptions): Promise<HttpInfo<MetricsResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsTargetingAnalyticsGetWithHttpInfo(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, observableOptions);
         return result.toPromise();
     }
@@ -1697,18 +1287,7 @@ export class PromiseAdGroupsApi {
      * @param [attributionTypes] List of types of attribution for the conversion report
      */
     public adGroupsTargetingAnalyticsGet(adAccountId: string, adGroupIds: Array<string>, startDate: string, endDate: string, targetingTypes: Array<AdsAnalyticsTargetingType>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', attributionTypes?: ConversionReportAttributionType, _options?: PromiseConfigurationOptions): Promise<MetricsResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsTargetingAnalyticsGet(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, observableOptions);
         return result.toPromise();
     }
@@ -1720,18 +1299,7 @@ export class PromiseAdGroupsApi {
      * @param adGroupUpdateRequest List of ad groups to update, size limit [1, 30].
      */
     public adGroupsUpdateWithHttpInfo(adAccountId: string, adGroupUpdateRequest: Array<AdGroupUpdateRequest>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdGroupArrayResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsUpdateWithHttpInfo(adAccountId, adGroupUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -1743,18 +1311,7 @@ export class PromiseAdGroupsApi {
      * @param adGroupUpdateRequest List of ad groups to update, size limit [1, 30].
      */
     public adGroupsUpdate(adAccountId: string, adGroupUpdateRequest: Array<AdGroupUpdateRequest>, _options?: PromiseConfigurationOptions): Promise<AdGroupArrayResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adGroupsUpdate(adAccountId, adGroupUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -1785,18 +1342,7 @@ export class PromiseAdsApi {
      * @param adPreviewRequest Create ad preview with pin or image.
      */
     public adPreviewsCreateWithHttpInfo(adAccountId: string, adPreviewRequest: AdPreviewRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdPreviewURLResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adPreviewsCreateWithHttpInfo(adAccountId, adPreviewRequest, observableOptions);
         return result.toPromise();
     }
@@ -1808,18 +1354,7 @@ export class PromiseAdsApi {
      * @param adPreviewRequest Create ad preview with pin or image.
      */
     public adPreviewsCreate(adAccountId: string, adPreviewRequest: AdPreviewRequest, _options?: PromiseConfigurationOptions): Promise<AdPreviewURLResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adPreviewsCreate(adAccountId, adPreviewRequest, observableOptions);
         return result.toPromise();
     }
@@ -1841,18 +1376,7 @@ export class PromiseAdsApi {
      * @param [attributionTypes] List of types of attribution for the conversion report
      */
     public adTargetingAnalyticsGetWithHttpInfo(adAccountId: string, adIds: Array<string>, startDate: string, endDate: string, targetingTypes: Array<AdsAnalyticsAdTargetingType>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', attributionTypes?: ConversionReportAttributionType, _options?: PromiseConfigurationOptions): Promise<HttpInfo<MetricsResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adTargetingAnalyticsGetWithHttpInfo(adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, observableOptions);
         return result.toPromise();
     }
@@ -1874,18 +1398,7 @@ export class PromiseAdsApi {
      * @param [attributionTypes] List of types of attribution for the conversion report
      */
     public adTargetingAnalyticsGet(adAccountId: string, adIds: Array<string>, startDate: string, endDate: string, targetingTypes: Array<AdsAnalyticsAdTargetingType>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', attributionTypes?: ConversionReportAttributionType, _options?: PromiseConfigurationOptions): Promise<MetricsResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adTargetingAnalyticsGet(adAccountId, adIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, observableOptions);
         return result.toPromise();
     }
@@ -1907,18 +1420,7 @@ export class PromiseAdsApi {
      * @param [campaignIds] List of Campaign Ids to use to filter the results.
      */
     public adsAnalyticsWithHttpInfo(adAccountId: string, startDate: string, endDate: string, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, adIds?: Array<string>, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', pinIds?: Array<string>, campaignIds?: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<AdsAnalyticsResponseInner>>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsAnalyticsWithHttpInfo(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, observableOptions);
         return result.toPromise();
     }
@@ -1940,18 +1442,7 @@ export class PromiseAdsApi {
      * @param [campaignIds] List of Campaign Ids to use to filter the results.
      */
     public adsAnalytics(adAccountId: string, startDate: string, endDate: string, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, adIds?: Array<string>, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', pinIds?: Array<string>, campaignIds?: Array<string>, _options?: PromiseConfigurationOptions): Promise<Array<AdsAnalyticsResponseInner>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsAnalytics(adAccountId, startDate, endDate, columns, granularity, adIds, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, pinIds, campaignIds, observableOptions);
         return result.toPromise();
     }
@@ -1963,18 +1454,7 @@ export class PromiseAdsApi {
      * @param adCreateRequest List of ads to create, size limit [1, 30].
      */
     public adsCreateWithHttpInfo(adAccountId: string, adCreateRequest: Array<AdCreateRequest>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdArrayResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsCreateWithHttpInfo(adAccountId, adCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -1986,18 +1466,7 @@ export class PromiseAdsApi {
      * @param adCreateRequest List of ads to create, size limit [1, 30].
      */
     public adsCreate(adAccountId: string, adCreateRequest: Array<AdCreateRequest>, _options?: PromiseConfigurationOptions): Promise<AdArrayResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsCreate(adAccountId, adCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -2009,18 +1478,7 @@ export class PromiseAdsApi {
      * @param adId Unique identifier of an ad.
      */
     public adsGetWithHttpInfo(adAccountId: string, adId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsGetWithHttpInfo(adAccountId, adId, observableOptions);
         return result.toPromise();
     }
@@ -2032,18 +1490,7 @@ export class PromiseAdsApi {
      * @param adId Unique identifier of an ad.
      */
     public adsGet(adAccountId: string, adId: string, _options?: PromiseConfigurationOptions): Promise<AdResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsGet(adAccountId, adId, observableOptions);
         return result.toPromise();
     }
@@ -2061,18 +1508,7 @@ export class PromiseAdsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public adsListWithHttpInfo(adAccountId: string, campaignIds?: Array<string>, adGroupIds?: Array<string>, adIds?: Array<string>, entityStatuses?: Array<'ACTIVE' | 'PAUSED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT'>, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsListWithHttpInfo(adAccountId, campaignIds, adGroupIds, adIds, entityStatuses, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -2090,18 +1526,7 @@ export class PromiseAdsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public adsList(adAccountId: string, campaignIds?: Array<string>, adGroupIds?: Array<string>, adIds?: Array<string>, entityStatuses?: Array<'ACTIVE' | 'PAUSED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT'>, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<AdsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsList(adAccountId, campaignIds, adGroupIds, adIds, entityStatuses, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -2113,18 +1538,7 @@ export class PromiseAdsApi {
      * @param adUpdateRequest List of ads to update, size limit [1, 30]
      */
     public adsUpdateWithHttpInfo(adAccountId: string, adUpdateRequest: Array<AdUpdateRequest>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdArrayResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsUpdateWithHttpInfo(adAccountId, adUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -2136,18 +1550,7 @@ export class PromiseAdsApi {
      * @param adUpdateRequest List of ads to update, size limit [1, 30]
      */
     public adsUpdate(adAccountId: string, adUpdateRequest: Array<AdUpdateRequest>, _options?: PromiseConfigurationOptions): Promise<AdArrayResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsUpdate(adAccountId, adUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -2178,18 +1581,7 @@ export class PromiseAdvancedAuctionApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public advancedAuctionItemsGetPostWithHttpInfo(advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdvancedAuctionItems>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.advancedAuctionItemsGetPostWithHttpInfo(advancedAuctionItemsGetRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -2201,18 +1593,7 @@ export class PromiseAdvancedAuctionApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<AdvancedAuctionItems> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -2224,18 +1605,7 @@ export class PromiseAdvancedAuctionApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public advancedAuctionItemsSubmitPostWithHttpInfo(advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdvancedAuctionProcessedItems>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.advancedAuctionItemsSubmitPostWithHttpInfo(advancedAuctionItemsSubmitRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -2247,18 +1617,7 @@ export class PromiseAdvancedAuctionApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<AdvancedAuctionProcessedItems> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -2289,18 +1648,7 @@ export class PromiseAudienceInsightsApi {
      * @param audienceInsightType Type of audience insights.
      */
     public audienceInsightsGetWithHttpInfo(adAccountId: string, audienceInsightType: AudienceInsightType, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AudienceInsightsResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audienceInsightsGetWithHttpInfo(adAccountId, audienceInsightType, observableOptions);
         return result.toPromise();
     }
@@ -2312,18 +1660,7 @@ export class PromiseAudienceInsightsApi {
      * @param audienceInsightType Type of audience insights.
      */
     public audienceInsightsGet(adAccountId: string, audienceInsightType: AudienceInsightType, _options?: PromiseConfigurationOptions): Promise<AudienceInsightsResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audienceInsightsGet(adAccountId, audienceInsightType, observableOptions);
         return result.toPromise();
     }
@@ -2334,18 +1671,7 @@ export class PromiseAudienceInsightsApi {
      * @param adAccountId Unique identifier of an ad account.
      */
     public audienceInsightsScopeAndTypeGetWithHttpInfo(adAccountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AudienceDefinitionResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audienceInsightsScopeAndTypeGetWithHttpInfo(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -2356,18 +1682,7 @@ export class PromiseAudienceInsightsApi {
      * @param adAccountId Unique identifier of an ad account.
      */
     public audienceInsightsScopeAndTypeGet(adAccountId: string, _options?: PromiseConfigurationOptions): Promise<AudienceDefinitionResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audienceInsightsScopeAndTypeGet(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -2401,18 +1716,7 @@ export class PromiseAudienceSharingApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public adAccountsAudiencesSharedAccountsListWithHttpInfo(adAccountId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdAccountsAudiencesSharedAccountsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsAudiencesSharedAccountsListWithHttpInfo(adAccountId, audienceId, accountType, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -2427,18 +1731,7 @@ export class PromiseAudienceSharingApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public adAccountsAudiencesSharedAccountsList(adAccountId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<AdAccountsAudiencesSharedAccountsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -2453,18 +1746,7 @@ export class PromiseAudienceSharingApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public businessAccountAudiencesSharedAccountsListWithHttpInfo(businessId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdAccountsAudiencesSharedAccountsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessAccountAudiencesSharedAccountsListWithHttpInfo(businessId, audienceId, accountType, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -2479,18 +1761,7 @@ export class PromiseAudienceSharingApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public businessAccountAudiencesSharedAccountsList(businessId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<AdAccountsAudiencesSharedAccountsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -2504,18 +1775,7 @@ export class PromiseAudienceSharingApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public sharedAudiencesForBusinessListWithHttpInfo(businessId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AudiencesList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.sharedAudiencesForBusinessListWithHttpInfo(businessId, bookmark, order, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -2529,18 +1789,7 @@ export class PromiseAudienceSharingApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public sharedAudiencesForBusinessList(businessId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, _options?: PromiseConfigurationOptions): Promise<AudiencesList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -2552,18 +1801,7 @@ export class PromiseAudienceSharingApi {
      * @param sharedAudience
      */
     public updateAdAccountToAdAccountSharedAudienceWithHttpInfo(adAccountId: string, sharedAudience: SharedAudience, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SharedAudienceResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.updateAdAccountToAdAccountSharedAudienceWithHttpInfo(adAccountId, sharedAudience, observableOptions);
         return result.toPromise();
     }
@@ -2575,18 +1813,7 @@ export class PromiseAudienceSharingApi {
      * @param sharedAudience
      */
     public updateAdAccountToAdAccountSharedAudience(adAccountId: string, sharedAudience: SharedAudience, _options?: PromiseConfigurationOptions): Promise<SharedAudienceResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience, observableOptions);
         return result.toPromise();
     }
@@ -2598,18 +1825,7 @@ export class PromiseAudienceSharingApi {
      * @param businessSharedAudience
      */
     public updateAdAccountToBusinessSharedAudienceWithHttpInfo(adAccountId: string, businessSharedAudience: BusinessSharedAudience, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BusinessSharedAudienceResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.updateAdAccountToBusinessSharedAudienceWithHttpInfo(adAccountId, businessSharedAudience, observableOptions);
         return result.toPromise();
     }
@@ -2621,18 +1837,7 @@ export class PromiseAudienceSharingApi {
      * @param businessSharedAudience
      */
     public updateAdAccountToBusinessSharedAudience(adAccountId: string, businessSharedAudience: BusinessSharedAudience, _options?: PromiseConfigurationOptions): Promise<BusinessSharedAudienceResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience, observableOptions);
         return result.toPromise();
     }
@@ -2644,18 +1849,7 @@ export class PromiseAudienceSharingApi {
      * @param sharedAudience
      */
     public updateBusinessToAdAccountSharedAudienceWithHttpInfo(businessId: string, sharedAudience: SharedAudience, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SharedAudienceResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.updateBusinessToAdAccountSharedAudienceWithHttpInfo(businessId, sharedAudience, observableOptions);
         return result.toPromise();
     }
@@ -2667,18 +1861,7 @@ export class PromiseAudienceSharingApi {
      * @param sharedAudience
      */
     public updateBusinessToAdAccountSharedAudience(businessId: string, sharedAudience: SharedAudience, _options?: PromiseConfigurationOptions): Promise<SharedAudienceResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.updateBusinessToAdAccountSharedAudience(businessId, sharedAudience, observableOptions);
         return result.toPromise();
     }
@@ -2690,18 +1873,7 @@ export class PromiseAudienceSharingApi {
      * @param businessSharedAudience
      */
     public updateBusinessToBusinessSharedAudienceWithHttpInfo(businessId: string, businessSharedAudience: BusinessSharedAudience, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BusinessSharedAudienceResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.updateBusinessToBusinessSharedAudienceWithHttpInfo(businessId, businessSharedAudience, observableOptions);
         return result.toPromise();
     }
@@ -2713,18 +1885,7 @@ export class PromiseAudienceSharingApi {
      * @param businessSharedAudience
      */
     public updateBusinessToBusinessSharedAudience(businessId: string, businessSharedAudience: BusinessSharedAudience, _options?: PromiseConfigurationOptions): Promise<BusinessSharedAudienceResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience, observableOptions);
         return result.toPromise();
     }
@@ -2755,18 +1916,7 @@ export class PromiseAudiencesApi {
      * @param audienceCreateRequest List of ads to create, size limit [1, 30]
      */
     public audiencesCreateWithHttpInfo(adAccountId: string, audienceCreateRequest: AudienceCreateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Audience>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audiencesCreateWithHttpInfo(adAccountId, audienceCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -2778,18 +1928,7 @@ export class PromiseAudiencesApi {
      * @param audienceCreateRequest List of ads to create, size limit [1, 30]
      */
     public audiencesCreate(adAccountId: string, audienceCreateRequest: AudienceCreateRequest, _options?: PromiseConfigurationOptions): Promise<Audience> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audiencesCreate(adAccountId, audienceCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -2801,18 +1940,7 @@ export class PromiseAudiencesApi {
      * @param audienceCreateCustomRequest Custom audience to create.
      */
     public audiencesCreateCustomWithHttpInfo(adAccountId: string, audienceCreateCustomRequest: AudienceCreateCustomRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Audience>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audiencesCreateCustomWithHttpInfo(adAccountId, audienceCreateCustomRequest, observableOptions);
         return result.toPromise();
     }
@@ -2824,18 +1952,7 @@ export class PromiseAudiencesApi {
      * @param audienceCreateCustomRequest Custom audience to create.
      */
     public audiencesCreateCustom(adAccountId: string, audienceCreateCustomRequest: AudienceCreateCustomRequest, _options?: PromiseConfigurationOptions): Promise<Audience> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audiencesCreateCustom(adAccountId, audienceCreateCustomRequest, observableOptions);
         return result.toPromise();
     }
@@ -2847,18 +1964,7 @@ export class PromiseAudiencesApi {
      * @param audienceId Unique identifier of an audience
      */
     public audiencesGetWithHttpInfo(adAccountId: string, audienceId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Audience>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audiencesGetWithHttpInfo(adAccountId, audienceId, observableOptions);
         return result.toPromise();
     }
@@ -2870,18 +1976,7 @@ export class PromiseAudiencesApi {
      * @param audienceId Unique identifier of an audience
      */
     public audiencesGet(adAccountId: string, audienceId: string, _options?: PromiseConfigurationOptions): Promise<Audience> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audiencesGet(adAccountId, audienceId, observableOptions);
         return result.toPromise();
     }
@@ -2896,18 +1991,7 @@ export class PromiseAudiencesApi {
      * @param [ownershipType] Filter audiences by ownership type.
      */
     public audiencesListWithHttpInfo(adAccountId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, ownershipType?: 'OWNED' | 'RECEIVED', _options?: PromiseConfigurationOptions): Promise<HttpInfo<AudiencesList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audiencesListWithHttpInfo(adAccountId, bookmark, order, pageSize, ownershipType, observableOptions);
         return result.toPromise();
     }
@@ -2922,18 +2006,7 @@ export class PromiseAudiencesApi {
      * @param [ownershipType] Filter audiences by ownership type.
      */
     public audiencesList(adAccountId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, ownershipType?: 'OWNED' | 'RECEIVED', _options?: PromiseConfigurationOptions): Promise<AudiencesList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audiencesList(adAccountId, bookmark, order, pageSize, ownershipType, observableOptions);
         return result.toPromise();
     }
@@ -2946,18 +2019,7 @@ export class PromiseAudiencesApi {
      * @param [audienceUpdateRequest] The audience to be updated.
      */
     public audiencesUpdateWithHttpInfo(adAccountId: string, audienceId: string, audienceUpdateRequest?: AudienceUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Audience>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audiencesUpdateWithHttpInfo(adAccountId, audienceId, audienceUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -2970,18 +2032,7 @@ export class PromiseAudiencesApi {
      * @param [audienceUpdateRequest] The audience to be updated.
      */
     public audiencesUpdate(adAccountId: string, audienceId: string, audienceUpdateRequest?: AudienceUpdateRequest, _options?: PromiseConfigurationOptions): Promise<Audience> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -3012,18 +2063,7 @@ export class PromiseBillingApi {
      * @param adsCreditRedeemRequest Redeem ad credits request.
      */
     public adsCreditRedeemWithHttpInfo(adAccountId: string, adsCreditRedeemRequest: AdsCreditRedeemRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdsCreditRedeemResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsCreditRedeemWithHttpInfo(adAccountId, adsCreditRedeemRequest, observableOptions);
         return result.toPromise();
     }
@@ -3035,18 +2075,7 @@ export class PromiseBillingApi {
      * @param adsCreditRedeemRequest Redeem ad credits request.
      */
     public adsCreditRedeem(adAccountId: string, adsCreditRedeemRequest: AdsCreditRedeemRequest, _options?: PromiseConfigurationOptions): Promise<AdsCreditRedeemResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsCreditRedeem(adAccountId, adsCreditRedeemRequest, observableOptions);
         return result.toPromise();
     }
@@ -3059,18 +2088,7 @@ export class PromiseBillingApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public adsCreditsDiscountsGetWithHttpInfo(adAccountId: string, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdsCreditsDiscountsGet200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsCreditsDiscountsGetWithHttpInfo(adAccountId, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -3083,18 +2101,7 @@ export class PromiseBillingApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public adsCreditsDiscountsGet(adAccountId: string, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<AdsCreditsDiscountsGet200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -3108,18 +2115,7 @@ export class PromiseBillingApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public billingProfilesGetWithHttpInfo(adAccountId: string, isActive: boolean, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BillingProfilesGet200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.billingProfilesGetWithHttpInfo(adAccountId, isActive, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -3133,18 +2129,7 @@ export class PromiseBillingApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public billingProfilesGet(adAccountId: string, isActive: boolean, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<BillingProfilesGet200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.billingProfilesGet(adAccountId, isActive, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -3155,18 +2140,7 @@ export class PromiseBillingApi {
      * @param adAccountId Unique identifier of an ad account.
      */
     public ssioAccountsGetWithHttpInfo(adAccountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SSIOAccountResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ssioAccountsGetWithHttpInfo(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3177,18 +2151,7 @@ export class PromiseBillingApi {
      * @param adAccountId Unique identifier of an ad account.
      */
     public ssioAccountsGet(adAccountId: string, _options?: PromiseConfigurationOptions): Promise<SSIOAccountResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ssioAccountsGet(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3200,18 +2163,7 @@ export class PromiseBillingApi {
      * @param sSIOCreateInsertionOrderRequest Order line to create.
      */
     public ssioInsertionOrderCreateWithHttpInfo(adAccountId: string, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SSIOCreateInsertionOrderResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ssioInsertionOrderCreateWithHttpInfo(adAccountId, sSIOCreateInsertionOrderRequest, observableOptions);
         return result.toPromise();
     }
@@ -3223,18 +2175,7 @@ export class PromiseBillingApi {
      * @param sSIOCreateInsertionOrderRequest Order line to create.
      */
     public ssioInsertionOrderCreate(adAccountId: string, sSIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest, _options?: PromiseConfigurationOptions): Promise<SSIOCreateInsertionOrderResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ssioInsertionOrderCreate(adAccountId, sSIOCreateInsertionOrderRequest, observableOptions);
         return result.toPromise();
     }
@@ -3246,18 +2187,7 @@ export class PromiseBillingApi {
      * @param sSIOEditInsertionOrderRequest Order line to create.
      */
     public ssioInsertionOrderEditWithHttpInfo(adAccountId: string, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SSIOEditInsertionOrderResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ssioInsertionOrderEditWithHttpInfo(adAccountId, sSIOEditInsertionOrderRequest, observableOptions);
         return result.toPromise();
     }
@@ -3269,18 +2199,7 @@ export class PromiseBillingApi {
      * @param sSIOEditInsertionOrderRequest Order line to create.
      */
     public ssioInsertionOrderEdit(adAccountId: string, sSIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest, _options?: PromiseConfigurationOptions): Promise<SSIOEditInsertionOrderResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ssioInsertionOrderEdit(adAccountId, sSIOEditInsertionOrderRequest, observableOptions);
         return result.toPromise();
     }
@@ -3293,18 +2212,7 @@ export class PromiseBillingApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public ssioInsertionOrdersStatusGetByAdAccountWithHttpInfo(adAccountId: string, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SsioInsertionOrdersStatusGetByAdAccount200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ssioInsertionOrdersStatusGetByAdAccountWithHttpInfo(adAccountId, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -3317,18 +2225,7 @@ export class PromiseBillingApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public ssioInsertionOrdersStatusGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<SsioInsertionOrdersStatusGetByAdAccount200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ssioInsertionOrdersStatusGetByAdAccount(adAccountId, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -3340,18 +2237,7 @@ export class PromiseBillingApi {
      * @param pinOrderId The pin order id associated with the ssio insertion order
      */
     public ssioInsertionOrdersStatusGetByPinOrderIdWithHttpInfo(adAccountId: string, pinOrderId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SSIOInsertionOrderStatusResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ssioInsertionOrdersStatusGetByPinOrderIdWithHttpInfo(adAccountId, pinOrderId, observableOptions);
         return result.toPromise();
     }
@@ -3363,18 +2249,7 @@ export class PromiseBillingApi {
      * @param pinOrderId The pin order id associated with the ssio insertion order
      */
     public ssioInsertionOrdersStatusGetByPinOrderId(adAccountId: string, pinOrderId: string, _options?: PromiseConfigurationOptions): Promise<SSIOInsertionOrderStatusResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId, observableOptions);
         return result.toPromise();
     }
@@ -3388,18 +2263,7 @@ export class PromiseBillingApi {
      * @param [pinOrderId] The pin order id associated with the ssio insertino order
      */
     public ssioOrderLinesGetByAdAccountWithHttpInfo(adAccountId: string, bookmark?: string, pageSize?: number, pinOrderId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SsioOrderLinesGetByAdAccount200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ssioOrderLinesGetByAdAccountWithHttpInfo(adAccountId, bookmark, pageSize, pinOrderId, observableOptions);
         return result.toPromise();
     }
@@ -3413,18 +2277,7 @@ export class PromiseBillingApi {
      * @param [pinOrderId] The pin order id associated with the ssio insertino order
      */
     public ssioOrderLinesGetByAdAccount(adAccountId: string, bookmark?: string, pageSize?: number, pinOrderId?: string, _options?: PromiseConfigurationOptions): Promise<SsioOrderLinesGetByAdAccount200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId, observableOptions);
         return result.toPromise();
     }
@@ -3456,18 +2309,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardSectionsCreateWithHttpInfo(boardId: string, boardSection: BoardSection, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BoardSection>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardSectionsCreateWithHttpInfo(boardId, boardSection, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3480,18 +2322,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardSectionsCreate(boardId: string, boardSection: BoardSection, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<BoardSection> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardSectionsCreate(boardId, boardSection, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3504,18 +2335,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardSectionsDeleteWithHttpInfo(boardId: string, sectionId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardSectionsDeleteWithHttpInfo(boardId, sectionId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3528,18 +2348,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardSectionsDelete(boardId: string, sectionId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<void> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardSectionsDelete(boardId, sectionId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3553,18 +2362,7 @@ export class PromiseBoardsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public boardSectionsListWithHttpInfo(boardId: string, adAccountId?: string, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BoardSectionsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardSectionsListWithHttpInfo(boardId, adAccountId, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -3578,18 +2376,7 @@ export class PromiseBoardsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public boardSectionsList(boardId: string, adAccountId?: string, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<BoardSectionsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardSectionsList(boardId, adAccountId, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -3604,18 +2391,7 @@ export class PromiseBoardsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public boardSectionsListPinsWithHttpInfo(boardId: string, sectionId: string, adAccountId?: string, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BoardsListPins200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardSectionsListPinsWithHttpInfo(boardId, sectionId, adAccountId, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -3630,18 +2406,7 @@ export class PromiseBoardsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public boardSectionsListPins(boardId: string, sectionId: string, adAccountId?: string, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<BoardsListPins200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardSectionsListPins(boardId, sectionId, adAccountId, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -3655,18 +2420,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardSectionsUpdateWithHttpInfo(boardId: string, sectionId: string, boardSection: BoardSection, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BoardSection>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardSectionsUpdateWithHttpInfo(boardId, sectionId, boardSection, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3680,18 +2434,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardSectionsUpdate(boardId: string, sectionId: string, boardSection: BoardSection, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<BoardSection> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3703,18 +2446,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardsCreateWithHttpInfo(board: Board, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Board>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsCreateWithHttpInfo(board, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3726,18 +2458,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardsCreate(board: Board, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<Board> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsCreate(board, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3749,18 +2470,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardsDeleteWithHttpInfo(boardId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsDeleteWithHttpInfo(boardId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3772,18 +2482,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardsDelete(boardId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<void> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsDelete(boardId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3795,18 +2494,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardsGetWithHttpInfo(boardId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Board>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsGetWithHttpInfo(boardId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3818,18 +2506,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardsGet(boardId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<Board> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsGet(boardId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3843,18 +2520,7 @@ export class PromiseBoardsApi {
      * @param [privacy] Privacy setting for a board.
      */
     public boardsListWithHttpInfo(adAccountId?: string, bookmark?: string, pageSize?: number, privacy?: 'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET', _options?: PromiseConfigurationOptions): Promise<HttpInfo<BoardsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsListWithHttpInfo(adAccountId, bookmark, pageSize, privacy, observableOptions);
         return result.toPromise();
     }
@@ -3868,18 +2534,7 @@ export class PromiseBoardsApi {
      * @param [privacy] Privacy setting for a board.
      */
     public boardsList(adAccountId?: string, bookmark?: string, pageSize?: number, privacy?: 'ALL' | 'PROTECTED' | 'PUBLIC' | 'SECRET' | 'PUBLIC_AND_SECRET', _options?: PromiseConfigurationOptions): Promise<BoardsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsList(adAccountId, bookmark, pageSize, privacy, observableOptions);
         return result.toPromise();
     }
@@ -3895,18 +2550,7 @@ export class PromiseBoardsApi {
      * @param [pinMetrics] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      */
     public boardsListPinsWithHttpInfo(boardId: string, bookmark?: string, pageSize?: number, creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BoardsListPins200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsListPinsWithHttpInfo(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics, observableOptions);
         return result.toPromise();
     }
@@ -3922,18 +2566,7 @@ export class PromiseBoardsApi {
      * @param [pinMetrics] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      */
     public boardsListPins(boardId: string, bookmark?: string, pageSize?: number, creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, _options?: PromiseConfigurationOptions): Promise<BoardsListPins200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics, observableOptions);
         return result.toPromise();
     }
@@ -3946,18 +2579,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardsUpdateWithHttpInfo(boardId: string, boardUpdate: BoardUpdate, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Board>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsUpdateWithHttpInfo(boardId, boardUpdate, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -3970,18 +2592,7 @@ export class PromiseBoardsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardsUpdate(boardId: string, boardUpdate: BoardUpdate, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<Board> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsUpdate(boardId, boardUpdate, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -4012,18 +2623,7 @@ export class PromiseBulkApi {
      * @param bulkDownloadRequest Parameters to get ad entities in bulk
      */
     public bulkDownloadCreateWithHttpInfo(adAccountId: string, bulkDownloadRequest: BulkDownloadRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BulkDownloadResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.bulkDownloadCreateWithHttpInfo(adAccountId, bulkDownloadRequest, observableOptions);
         return result.toPromise();
     }
@@ -4035,18 +2635,7 @@ export class PromiseBulkApi {
      * @param bulkDownloadRequest Parameters to get ad entities in bulk
      */
     public bulkDownloadCreate(adAccountId: string, bulkDownloadRequest: BulkDownloadRequest, _options?: PromiseConfigurationOptions): Promise<BulkDownloadResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.bulkDownloadCreate(adAccountId, bulkDownloadRequest, observableOptions);
         return result.toPromise();
     }
@@ -4059,18 +2648,7 @@ export class PromiseBulkApi {
      * @param [includeDetails] if set to True then attach the errors/details to all the requests
      */
     public bulkRequestGetWithHttpInfo(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BulkUpsertStatusResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.bulkRequestGetWithHttpInfo(adAccountId, bulkRequestId, includeDetails, observableOptions);
         return result.toPromise();
     }
@@ -4083,18 +2661,7 @@ export class PromiseBulkApi {
      * @param [includeDetails] if set to True then attach the errors/details to all the requests
      */
     public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, _options?: PromiseConfigurationOptions): Promise<BulkUpsertStatusResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.bulkRequestGet(adAccountId, bulkRequestId, includeDetails, observableOptions);
         return result.toPromise();
     }
@@ -4106,18 +2673,7 @@ export class PromiseBulkApi {
      * @param bulkUpsertRequest Parameters to get create/update ad entities in bulk
      */
     public bulkUpsertCreateWithHttpInfo(adAccountId: string, bulkUpsertRequest: BulkUpsertRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BulkUpsertResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.bulkUpsertCreateWithHttpInfo(adAccountId, bulkUpsertRequest, observableOptions);
         return result.toPromise();
     }
@@ -4129,18 +2685,7 @@ export class PromiseBulkApi {
      * @param bulkUpsertRequest Parameters to get create/update ad entities in bulk
      */
     public bulkUpsertCreate(adAccountId: string, bulkUpsertRequest: BulkUpsertRequest, _options?: PromiseConfigurationOptions): Promise<BulkUpsertResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.bulkUpsertCreate(adAccountId, bulkUpsertRequest, observableOptions);
         return result.toPromise();
     }
@@ -4171,18 +2716,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param createAssetGroupBody
      */
     public assetGroupCreateWithHttpInfo(businessId: string, createAssetGroupBody: CreateAssetGroupBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateAssetGroupResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.assetGroupCreateWithHttpInfo(businessId, createAssetGroupBody, observableOptions);
         return result.toPromise();
     }
@@ -4194,18 +2728,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param createAssetGroupBody
      */
     public assetGroupCreate(businessId: string, createAssetGroupBody: CreateAssetGroupBody, _options?: PromiseConfigurationOptions): Promise<CreateAssetGroupResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.assetGroupCreate(businessId, createAssetGroupBody, observableOptions);
         return result.toPromise();
     }
@@ -4217,18 +2740,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param deleteAssetGroupBody
      */
     public assetGroupDeleteWithHttpInfo(businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DeleteAssetGroupResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.assetGroupDeleteWithHttpInfo(businessId, deleteAssetGroupBody, observableOptions);
         return result.toPromise();
     }
@@ -4240,18 +2752,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param deleteAssetGroupBody
      */
     public assetGroupDelete(businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody, _options?: PromiseConfigurationOptions): Promise<DeleteAssetGroupResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.assetGroupDelete(businessId, deleteAssetGroupBody, observableOptions);
         return result.toPromise();
     }
@@ -4263,18 +2764,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param updateAssetGroupBody
      */
     public assetGroupUpdateWithHttpInfo(businessId: string, updateAssetGroupBody: UpdateAssetGroupBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateAssetGroupResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.assetGroupUpdateWithHttpInfo(businessId, updateAssetGroupBody, observableOptions);
         return result.toPromise();
     }
@@ -4286,18 +2776,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param updateAssetGroupBody
      */
     public assetGroupUpdate(businessId: string, updateAssetGroupBody: UpdateAssetGroupBody, _options?: PromiseConfigurationOptions): Promise<UpdateAssetGroupResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.assetGroupUpdate(businessId, updateAssetGroupBody, observableOptions);
         return result.toPromise();
     }
@@ -4312,18 +2791,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param [startIndex] An index to start fetching the results from. Only the results starting from this index will be returned.
      */
     public businessAssetMembersGetWithHttpInfo(businessId: string, assetId: string, bookmark?: string, pageSize?: number, startIndex?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BusinessAssetMembersGet200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessAssetMembersGetWithHttpInfo(businessId, assetId, bookmark, pageSize, startIndex, observableOptions);
         return result.toPromise();
     }
@@ -4338,18 +2806,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param [startIndex] An index to start fetching the results from. Only the results starting from this index will be returned.
      */
     public businessAssetMembersGet(businessId: string, assetId: string, bookmark?: string, pageSize?: number, startIndex?: number, _options?: PromiseConfigurationOptions): Promise<BusinessAssetMembersGet200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessAssetMembersGet(businessId, assetId, bookmark, pageSize, startIndex, observableOptions);
         return result.toPromise();
     }
@@ -4364,18 +2821,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public businessAssetPartnersGetWithHttpInfo(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BusinessAssetPartnersGet200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessAssetPartnersGetWithHttpInfo(businessId, assetId, startIndex, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -4390,18 +2836,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<BusinessAssetPartnersGet200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -4419,18 +2854,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public businessAssetsGetWithHttpInfo(businessId: string, permissions?: Array<PermissionsWithOwner>, childAssetId?: string, assetGroupId?: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BusinessAssetsGet200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessAssetsGetWithHttpInfo(businessId, permissions, childAssetId, assetGroupId, assetType, startIndex, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -4448,18 +2872,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public businessAssetsGet(businessId: string, permissions?: Array<PermissionsWithOwner>, childAssetId?: string, assetGroupId?: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<BusinessAssetsGet200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessAssetsGet(businessId, permissions, childAssetId, assetGroupId, assetType, startIndex, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -4475,18 +2888,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public businessMemberAssetsGetWithHttpInfo(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BusinessMemberAssetsGet200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessMemberAssetsGetWithHttpInfo(businessId, memberId, assetType, startIndex, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -4502,18 +2904,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<BusinessMemberAssetsGet200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -4525,18 +2916,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param businessMembersAssetAccessDeleteRequest List member assset permissions to delete.
      */
     public businessMembersAssetAccessDeleteWithHttpInfo(businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DeleteMemberAccessResultsResponseArray>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessMembersAssetAccessDeleteWithHttpInfo(businessId, businessMembersAssetAccessDeleteRequest, observableOptions);
         return result.toPromise();
     }
@@ -4548,18 +2928,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param businessMembersAssetAccessDeleteRequest List member assset permissions to delete.
      */
     public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest, _options?: PromiseConfigurationOptions): Promise<DeleteMemberAccessResultsResponseArray> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest, observableOptions);
         return result.toPromise();
     }
@@ -4571,18 +2940,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param updateMemberAssetAccessBody List of member asset permissions to create or update.
      */
     public businessMembersAssetAccessUpdateWithHttpInfo(businessId: string, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateMemberAssetsResultsResponseArray>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessMembersAssetAccessUpdateWithHttpInfo(businessId, updateMemberAssetAccessBody, observableOptions);
         return result.toPromise();
     }
@@ -4594,18 +2952,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param updateMemberAssetAccessBody List of member asset permissions to create or update.
      */
     public businessMembersAssetAccessUpdate(businessId: string, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody, _options?: PromiseConfigurationOptions): Promise<UpdateMemberAssetsResultsResponseArray> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessMembersAssetAccessUpdate(businessId, updateMemberAssetAccessBody, observableOptions);
         return result.toPromise();
     }
@@ -4622,18 +2969,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public businessPartnerAssetAccessGetWithHttpInfo(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BusinessPartnerAssetAccessGet200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessPartnerAssetAccessGetWithHttpInfo(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -4650,18 +2986,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<BusinessPartnerAssetAccessGet200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -4673,18 +2998,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param deletePartnerAssetAccessBody
      */
     public deletePartnerAssetAccessHandlerImplWithHttpInfo(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DeletePartnerAssetsResultsResponseArray>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.deletePartnerAssetAccessHandlerImplWithHttpInfo(businessId, deletePartnerAssetAccessBody, observableOptions);
         return result.toPromise();
     }
@@ -4696,18 +3010,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param deletePartnerAssetAccessBody
      */
     public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, _options?: PromiseConfigurationOptions): Promise<DeletePartnerAssetsResultsResponseArray> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody, observableOptions);
         return result.toPromise();
     }
@@ -4719,18 +3022,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param updatePartnerAssetAccessBody A list of assets and permissions to assign to your partners.
      */
     public updatePartnerAssetAccessHandlerImplWithHttpInfo(businessId: string, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdatePartnerAssetsResultsResponseArray>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.updatePartnerAssetAccessHandlerImplWithHttpInfo(businessId, updatePartnerAssetAccessBody, observableOptions);
         return result.toPromise();
     }
@@ -4742,18 +3034,7 @@ export class PromiseBusinessAccessAssetsApi {
      * @param updatePartnerAssetAccessBody A list of assets and permissions to assign to your partners.
      */
     public updatePartnerAssetAccessHandlerImpl(businessId: string, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody, _options?: PromiseConfigurationOptions): Promise<UpdatePartnerAssetsResultsResponseArray> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.updatePartnerAssetAccessHandlerImpl(businessId, updatePartnerAssetAccessBody, observableOptions);
         return result.toPromise();
     }
@@ -4784,18 +3065,7 @@ export class PromiseBusinessAccessInviteApi {
      * @param createAssetAccessRequestBody
      */
     public assetAccessRequestsCreateWithHttpInfo(businessId: string, createAssetAccessRequestBody: CreateAssetAccessRequestBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateAssetAccessRequestResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.assetAccessRequestsCreateWithHttpInfo(businessId, createAssetAccessRequestBody, observableOptions);
         return result.toPromise();
     }
@@ -4807,18 +3077,7 @@ export class PromiseBusinessAccessInviteApi {
      * @param createAssetAccessRequestBody
      */
     public assetAccessRequestsCreate(businessId: string, createAssetAccessRequestBody: CreateAssetAccessRequestBody, _options?: PromiseConfigurationOptions): Promise<CreateAssetAccessRequestResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.assetAccessRequestsCreate(businessId, createAssetAccessRequestBody, observableOptions);
         return result.toPromise();
     }
@@ -4830,18 +3089,7 @@ export class PromiseBusinessAccessInviteApi {
      * @param cancelInvitesBody A list with invite ids
      */
     public cancelInvitesOrRequestsWithHttpInfo(businessId: string, cancelInvitesBody: CancelInvitesBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DeleteInvitesResultsResponseArray>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.cancelInvitesOrRequestsWithHttpInfo(businessId, cancelInvitesBody, observableOptions);
         return result.toPromise();
     }
@@ -4853,18 +3101,7 @@ export class PromiseBusinessAccessInviteApi {
      * @param cancelInvitesBody A list with invite ids
      */
     public cancelInvitesOrRequests(businessId: string, cancelInvitesBody: CancelInvitesBody, _options?: PromiseConfigurationOptions): Promise<DeleteInvitesResultsResponseArray> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.cancelInvitesOrRequests(businessId, cancelInvitesBody, observableOptions);
         return result.toPromise();
     }
@@ -4876,18 +3113,7 @@ export class PromiseBusinessAccessInviteApi {
      * @param createAssetInvitesRequest A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
      */
     public createAssetInvitesWithHttpInfo(businessId: string, createAssetInvitesRequest: CreateAssetInvitesRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateInvitesResultsResponseArray>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.createAssetInvitesWithHttpInfo(businessId, createAssetInvitesRequest, observableOptions);
         return result.toPromise();
     }
@@ -4899,18 +3125,7 @@ export class PromiseBusinessAccessInviteApi {
      * @param createAssetInvitesRequest A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
      */
     public createAssetInvites(businessId: string, createAssetInvitesRequest: CreateAssetInvitesRequest, _options?: PromiseConfigurationOptions): Promise<UpdateInvitesResultsResponseArray> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.createAssetInvites(businessId, createAssetInvitesRequest, observableOptions);
         return result.toPromise();
     }
@@ -4922,18 +3137,7 @@ export class PromiseBusinessAccessInviteApi {
      * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
      */
     public createMembershipOrPartnershipInvitesWithHttpInfo(businessId: string, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateInvitesResultsResponseArray>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.createMembershipOrPartnershipInvitesWithHttpInfo(businessId, createMembershipOrPartnershipInvitesBody, observableOptions);
         return result.toPromise();
     }
@@ -4945,18 +3149,7 @@ export class PromiseBusinessAccessInviteApi {
      * @param createMembershipOrPartnershipInvitesBody An object with the properties: invite_type, partners, members, business_role
      */
     public createMembershipOrPartnershipInvites(businessId: string, createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody, _options?: PromiseConfigurationOptions): Promise<CreateInvitesResultsResponseArray> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody, observableOptions);
         return result.toPromise();
     }
@@ -4972,18 +3165,7 @@ export class PromiseBusinessAccessInviteApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public getInvitesWithHttpInfo(businessId: string, isMember?: boolean, inviteStatus?: Array<'PENDING' | 'EXPIRED'>, inviteType?: InviteType, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetInvites200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.getInvitesWithHttpInfo(businessId, isMember, inviteStatus, inviteType, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -4999,18 +3181,7 @@ export class PromiseBusinessAccessInviteApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public getInvites(businessId: string, isMember?: boolean, inviteStatus?: Array<'PENDING' | 'EXPIRED'>, inviteType?: InviteType, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<GetInvites200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.getInvites(businessId, isMember, inviteStatus, inviteType, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -5021,18 +3192,7 @@ export class PromiseBusinessAccessInviteApi {
      * @param authRespondInvitesBody
      */
     public respondBusinessAccessInvitesWithHttpInfo(authRespondInvitesBody: AuthRespondInvitesBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RespondToInvitesResponseArray>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.respondBusinessAccessInvitesWithHttpInfo(authRespondInvitesBody, observableOptions);
         return result.toPromise();
     }
@@ -5043,18 +3203,7 @@ export class PromiseBusinessAccessInviteApi {
      * @param authRespondInvitesBody
      */
     public respondBusinessAccessInvites(authRespondInvitesBody: AuthRespondInvitesBody, _options?: PromiseConfigurationOptions): Promise<RespondToInvitesResponseArray> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.respondBusinessAccessInvites(authRespondInvitesBody, observableOptions);
         return result.toPromise();
     }
@@ -5085,18 +3234,7 @@ export class PromiseBusinessAccessRelationshipsApi {
      * @param membersToDeleteBody List of members with role to delete.
      */
     public deleteBusinessMembershipWithHttpInfo(businessId: string, membersToDeleteBody: MembersToDeleteBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DeletedMembersResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.deleteBusinessMembershipWithHttpInfo(businessId, membersToDeleteBody, observableOptions);
         return result.toPromise();
     }
@@ -5108,18 +3246,7 @@ export class PromiseBusinessAccessRelationshipsApi {
      * @param membersToDeleteBody List of members with role to delete.
      */
     public deleteBusinessMembership(businessId: string, membersToDeleteBody: MembersToDeleteBody, _options?: PromiseConfigurationOptions): Promise<DeletedMembersResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.deleteBusinessMembership(businessId, membersToDeleteBody, observableOptions);
         return result.toPromise();
     }
@@ -5131,18 +3258,7 @@ export class PromiseBusinessAccessRelationshipsApi {
      * @param deletePartnersRequest An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete. 
      */
     public deleteBusinessPartnersWithHttpInfo(businessId: string, deletePartnersRequest: DeletePartnersRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DeletePartnersResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.deleteBusinessPartnersWithHttpInfo(businessId, deletePartnersRequest, observableOptions);
         return result.toPromise();
     }
@@ -5154,18 +3270,7 @@ export class PromiseBusinessAccessRelationshipsApi {
      * @param deletePartnersRequest An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete. 
      */
     public deleteBusinessPartners(businessId: string, deletePartnersRequest: DeletePartnersRequest, _options?: PromiseConfigurationOptions): Promise<DeletePartnersResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.deleteBusinessPartners(businessId, deletePartnersRequest, observableOptions);
         return result.toPromise();
     }
@@ -5177,18 +3282,7 @@ export class PromiseBusinessAccessRelationshipsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public getBusinessEmployersWithHttpInfo(pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetBusinessEmployers200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.getBusinessEmployersWithHttpInfo(pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -5200,18 +3294,7 @@ export class PromiseBusinessAccessRelationshipsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public getBusinessEmployers(pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<GetBusinessEmployers200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.getBusinessEmployers(pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -5228,18 +3311,7 @@ export class PromiseBusinessAccessRelationshipsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public getBusinessMembersWithHttpInfo(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetBusinessMembers200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.getBusinessMembersWithHttpInfo(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -5256,18 +3328,7 @@ export class PromiseBusinessAccessRelationshipsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public getBusinessMembers(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<GetBusinessMembers200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.getBusinessMembers(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -5284,18 +3345,7 @@ export class PromiseBusinessAccessRelationshipsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public getBusinessPartnersWithHttpInfo(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetBusinessPartners200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.getBusinessPartnersWithHttpInfo(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -5312,18 +3362,7 @@ export class PromiseBusinessAccessRelationshipsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<GetBusinessPartners200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -5335,18 +3374,7 @@ export class PromiseBusinessAccessRelationshipsApi {
      * @param updateMemberBusinessRoleBody List of objects with the member id and the business_role.
      */
     public updateBusinessMembershipsWithHttpInfo(businessId: string, updateMemberBusinessRoleBody: Array<UpdateMemberBusinessRoleBody>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateMemberResultsResponseArray>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.updateBusinessMembershipsWithHttpInfo(businessId, updateMemberBusinessRoleBody, observableOptions);
         return result.toPromise();
     }
@@ -5358,18 +3386,7 @@ export class PromiseBusinessAccessRelationshipsApi {
      * @param updateMemberBusinessRoleBody List of objects with the member id and the business_role.
      */
     public updateBusinessMemberships(businessId: string, updateMemberBusinessRoleBody: Array<UpdateMemberBusinessRoleBody>, _options?: PromiseConfigurationOptions): Promise<UpdateMemberResultsResponseArray> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.updateBusinessMemberships(businessId, updateMemberBusinessRoleBody, observableOptions);
         return result.toPromise();
     }
@@ -5410,18 +3427,7 @@ export class PromiseCampaignsApi {
      * @param [attributionTypes] List of types of attribution for the conversion report
      */
     public campaignTargetingAnalyticsGetWithHttpInfo(adAccountId: string, campaignIds: Array<string>, startDate: string, endDate: string, targetingTypes: Array<AdsAnalyticsCampaignTargetingType>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', attributionTypes?: ConversionReportAttributionType, _options?: PromiseConfigurationOptions): Promise<HttpInfo<MetricsResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.campaignTargetingAnalyticsGetWithHttpInfo(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, observableOptions);
         return result.toPromise();
     }
@@ -5443,18 +3449,7 @@ export class PromiseCampaignsApi {
      * @param [attributionTypes] List of types of attribution for the conversion report
      */
     public campaignTargetingAnalyticsGet(adAccountId: string, campaignIds: Array<string>, startDate: string, endDate: string, targetingTypes: Array<AdsAnalyticsCampaignTargetingType>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', attributionTypes?: ConversionReportAttributionType, _options?: PromiseConfigurationOptions): Promise<MetricsResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.campaignTargetingAnalyticsGet(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, observableOptions);
         return result.toPromise();
     }
@@ -5474,18 +3469,7 @@ export class PromiseCampaignsApi {
      * @param [conversionReportTime] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
      */
     public campaignsAnalyticsWithHttpInfo(adAccountId: string, startDate: string, endDate: string, campaignIds: Array<string>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<CampaignsAnalyticsResponseInner>>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.campaignsAnalyticsWithHttpInfo(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, observableOptions);
         return result.toPromise();
     }
@@ -5505,18 +3489,7 @@ export class PromiseCampaignsApi {
      * @param [conversionReportTime] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
      */
     public campaignsAnalytics(adAccountId: string, startDate: string, endDate: string, campaignIds: Array<string>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', _options?: PromiseConfigurationOptions): Promise<Array<CampaignsAnalyticsResponseInner>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.campaignsAnalytics(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, observableOptions);
         return result.toPromise();
     }
@@ -5528,18 +3501,7 @@ export class PromiseCampaignsApi {
      * @param campaignCreateRequest Array of campaigns.
      */
     public campaignsCreateWithHttpInfo(adAccountId: string, campaignCreateRequest: Array<CampaignCreateRequest>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CampaignCreateResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.campaignsCreateWithHttpInfo(adAccountId, campaignCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -5551,18 +3513,7 @@ export class PromiseCampaignsApi {
      * @param campaignCreateRequest Array of campaigns.
      */
     public campaignsCreate(adAccountId: string, campaignCreateRequest: Array<CampaignCreateRequest>, _options?: PromiseConfigurationOptions): Promise<CampaignCreateResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.campaignsCreate(adAccountId, campaignCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -5574,18 +3525,7 @@ export class PromiseCampaignsApi {
      * @param campaignId Campaign ID, must be associated with the ad account ID provided in the path.
      */
     public campaignsGetWithHttpInfo(adAccountId: string, campaignId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CampaignResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.campaignsGetWithHttpInfo(adAccountId, campaignId, observableOptions);
         return result.toPromise();
     }
@@ -5597,18 +3537,7 @@ export class PromiseCampaignsApi {
      * @param campaignId Campaign ID, must be associated with the ad account ID provided in the path.
      */
     public campaignsGet(adAccountId: string, campaignId: string, _options?: PromiseConfigurationOptions): Promise<CampaignResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.campaignsGet(adAccountId, campaignId, observableOptions);
         return result.toPromise();
     }
@@ -5624,18 +3553,7 @@ export class PromiseCampaignsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public campaignsListWithHttpInfo(adAccountId: string, campaignIds?: Array<string>, entityStatuses?: Array<'ACTIVE' | 'PAUSED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT'>, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CampaignsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.campaignsListWithHttpInfo(adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -5651,18 +3569,7 @@ export class PromiseCampaignsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public campaignsList(adAccountId: string, campaignIds?: Array<string>, entityStatuses?: Array<'ACTIVE' | 'PAUSED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT'>, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<CampaignsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.campaignsList(adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -5674,18 +3581,7 @@ export class PromiseCampaignsApi {
      * @param campaignUpdateRequest Array of campaigns.
      */
     public campaignsUpdateWithHttpInfo(adAccountId: string, campaignUpdateRequest: Array<CampaignUpdateRequest>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CampaignUpdateResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.campaignsUpdateWithHttpInfo(adAccountId, campaignUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -5697,18 +3593,7 @@ export class PromiseCampaignsApi {
      * @param campaignUpdateRequest Array of campaigns.
      */
     public campaignsUpdate(adAccountId: string, campaignUpdateRequest: Array<CampaignUpdateRequest>, _options?: PromiseConfigurationOptions): Promise<CampaignUpdateResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.campaignsUpdate(adAccountId, campaignUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -5739,18 +3624,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsCreateWithHttpInfo(catalogsCreateRequest: CatalogsCreateRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Catalog>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsCreateWithHttpInfo(catalogsCreateRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -5762,18 +3636,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsCreate(catalogsCreateRequest: CatalogsCreateRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<Catalog> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsCreate(catalogsCreateRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -5786,18 +3649,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsListWithHttpInfo(bookmark?: string, pageSize?: number, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsListWithHttpInfo(bookmark, pageSize, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -5810,18 +3662,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsList(bookmark?: string, pageSize?: number, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsList(bookmark, pageSize, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -5836,18 +3677,7 @@ export class PromiseCatalogsApi {
      * @param [pinMetrics] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      */
     public catalogsProductGroupPinsListWithHttpInfo(productGroupId: string, bookmark?: string, pageSize?: number, adAccountId?: string, pinMetrics?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupPinsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupPinsListWithHttpInfo(productGroupId, bookmark, pageSize, adAccountId, pinMetrics, observableOptions);
         return result.toPromise();
     }
@@ -5862,18 +3692,7 @@ export class PromiseCatalogsApi {
      * @param [pinMetrics] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      */
     public catalogsProductGroupPinsList(productGroupId: string, bookmark?: string, pageSize?: number, adAccountId?: string, pinMetrics?: boolean, _options?: PromiseConfigurationOptions): Promise<CatalogsProductGroupPinsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupPinsList(productGroupId, bookmark, pageSize, adAccountId, pinMetrics, observableOptions);
         return result.toPromise();
     }
@@ -5885,18 +3704,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsCreateWithHttpInfo(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsCreateWithHttpInfo(multipleProductGroupsInner, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -5908,18 +3716,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsCreate(multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsVerticalProductGroup> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsCreate(multipleProductGroupsInner, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -5931,18 +3728,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsCreateManyWithHttpInfo(multipleProductGroupsInner: Array<MultipleProductGroupsInner>, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<string>>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsCreateManyWithHttpInfo(multipleProductGroupsInner, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -5954,18 +3740,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsCreateMany(multipleProductGroupsInner: Array<MultipleProductGroupsInner>, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<Array<string>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsCreateMany(multipleProductGroupsInner, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -5977,18 +3752,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsDeleteWithHttpInfo(productGroupId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsDeleteWithHttpInfo(productGroupId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6000,18 +3764,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsDelete(productGroupId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<void> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsDelete(productGroupId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6023,18 +3776,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsDeleteManyWithHttpInfo(id: Array<number>, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsDeleteManyWithHttpInfo(id, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6046,18 +3788,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsDeleteMany(id: Array<number>, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<void> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsDeleteMany(id, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6069,18 +3800,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsGetWithHttpInfo(productGroupId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsGetWithHttpInfo(productGroupId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6092,18 +3812,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsGet(productGroupId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsVerticalProductGroup> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsGet(productGroupId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6119,18 +3828,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsListWithHttpInfo(id?: Array<number>, feedId?: string, catalogId?: string, bookmark?: string, pageSize?: number, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsListWithHttpInfo(id, feedId, catalogId, bookmark, pageSize, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6146,18 +3844,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsList(id?: Array<number>, feedId?: string, catalogId?: string, bookmark?: string, pageSize?: number, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsProductGroupsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsList(id, feedId, catalogId, bookmark, pageSize, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6169,18 +3856,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsProductCountsGetWithHttpInfo(productGroupId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupProductCountsVertical>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsProductCountsGetWithHttpInfo(productGroupId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6192,18 +3868,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsProductCountsGet(productGroupId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsProductGroupProductCountsVertical> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsProductCountsGet(productGroupId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6216,18 +3881,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsUpdateWithHttpInfo(productGroupId: string, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsVerticalProductGroup>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsUpdateWithHttpInfo(productGroupId, catalogsProductGroupsUpdateRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6240,18 +3894,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public catalogsProductGroupsUpdate(productGroupId: string, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsVerticalProductGroup> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.catalogsProductGroupsUpdate(productGroupId, catalogsProductGroupsUpdateRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6265,18 +3908,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedProcessingResultsListWithHttpInfo(feedId: string, bookmark?: string, pageSize?: number, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FeedProcessingResultsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedProcessingResultsListWithHttpInfo(feedId, bookmark, pageSize, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6290,18 +3922,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedProcessingResultsList(feedId: string, bookmark?: string, pageSize?: number, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<FeedProcessingResultsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedProcessingResultsList(feedId, bookmark, pageSize, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6313,18 +3934,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedsCreateWithHttpInfo(feedsCreateRequest: FeedsCreateRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsFeed>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedsCreateWithHttpInfo(feedsCreateRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6336,18 +3946,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedsCreate(feedsCreateRequest: FeedsCreateRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsFeed> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedsCreate(feedsCreateRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6359,18 +3958,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedsDeleteWithHttpInfo(feedId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedsDeleteWithHttpInfo(feedId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6382,18 +3970,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedsDelete(feedId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<void> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedsDelete(feedId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6405,18 +3982,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedsGetWithHttpInfo(feedId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsFeed>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedsGetWithHttpInfo(feedId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6428,18 +3994,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedsGet(feedId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsFeed> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedsGet(feedId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6451,18 +4006,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedsIngestWithHttpInfo(feedId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsFeedIngestion>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedsIngestWithHttpInfo(feedId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6474,18 +4018,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedsIngest(feedId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsFeedIngestion> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedsIngest(feedId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6499,18 +4032,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedsListWithHttpInfo(bookmark?: string, pageSize?: number, catalogId?: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FeedsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedsListWithHttpInfo(bookmark, pageSize, catalogId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6524,18 +4046,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedsList(bookmark?: string, pageSize?: number, catalogId?: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<FeedsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedsList(bookmark, pageSize, catalogId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6548,18 +4059,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedsUpdateWithHttpInfo(feedId: string, feedsUpdateRequest: FeedsUpdateRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsFeed>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedsUpdateWithHttpInfo(feedId, feedsUpdateRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6572,18 +4072,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public feedsUpdate(feedId: string, feedsUpdateRequest: FeedsUpdateRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsFeed> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.feedsUpdate(feedId, feedsUpdateRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6595,18 +4084,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public itemsBatchGetWithHttpInfo(batchId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsItemsBatch>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.itemsBatchGetWithHttpInfo(batchId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6618,18 +4096,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public itemsBatchGet(batchId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsItemsBatch> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.itemsBatchGet(batchId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6641,18 +4108,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public itemsBatchPostWithHttpInfo(itemsBatchPostRequest: ItemsBatchPostRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsItemsBatch>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.itemsBatchPostWithHttpInfo(itemsBatchPostRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6664,18 +4120,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public itemsBatchPost(itemsBatchPostRequest: ItemsBatchPostRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsItemsBatch> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.itemsBatchPost(itemsBatchPostRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6690,18 +4135,7 @@ export class PromiseCatalogsApi {
      * @param [filters] Identifies items to be retrieved. This is a required parameter.
      */
     public itemsGetWithHttpInfo(country: string, language: string, adAccountId?: string, itemIds?: Array<string>, filters?: CatalogsItemsFilters, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsItems>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.itemsGetWithHttpInfo(country, language, adAccountId, itemIds, filters, observableOptions);
         return result.toPromise();
     }
@@ -6716,18 +4150,7 @@ export class PromiseCatalogsApi {
      * @param [filters] Identifies items to be retrieved. This is a required parameter.
      */
     public itemsGet(country: string, language: string, adAccountId?: string, itemIds?: Array<string>, filters?: CatalogsItemsFilters, _options?: PromiseConfigurationOptions): Promise<CatalogsItems> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.itemsGet(country, language, adAccountId, itemIds, filters, observableOptions);
         return result.toPromise();
     }
@@ -6743,18 +4166,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public itemsIssuesListWithHttpInfo(processingResultId: string, bookmark?: string, pageSize?: number, itemNumbers?: Array<number>, itemValidationIssue?: CatalogsItemValidationIssue, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ItemsIssuesList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.itemsIssuesListWithHttpInfo(processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6770,18 +4182,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public itemsIssuesList(processingResultId: string, bookmark?: string, pageSize?: number, itemNumbers?: Array<number>, itemValidationIssue?: CatalogsItemValidationIssue, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<ItemsIssuesList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.itemsIssuesList(processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6793,18 +4194,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public itemsPostWithHttpInfo(catalogsItemsRequest: CatalogsItemsRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsItems>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.itemsPostWithHttpInfo(catalogsItemsRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6816,18 +4206,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public itemsPost(catalogsItemsRequest: CatalogsItemsRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsItems> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.itemsPost(catalogsItemsRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6842,18 +4221,7 @@ export class PromiseCatalogsApi {
      * @param [pinMetrics] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      */
     public productsByProductGroupFilterListWithHttpInfo(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark?: string, pageSize?: number, adAccountId?: string, pinMetrics?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsProductGroupPinsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.productsByProductGroupFilterListWithHttpInfo(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics, observableOptions);
         return result.toPromise();
     }
@@ -6868,18 +4236,7 @@ export class PromiseCatalogsApi {
      * @param [pinMetrics] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      */
     public productsByProductGroupFilterList(catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark?: string, pageSize?: number, adAccountId?: string, pinMetrics?: boolean, _options?: PromiseConfigurationOptions): Promise<CatalogsProductGroupPinsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.productsByProductGroupFilterList(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics, observableOptions);
         return result.toPromise();
     }
@@ -6891,18 +4248,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public reportsCreateWithHttpInfo(catalogsReportParameters: CatalogsReportParameters, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsCreateReportResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.reportsCreateWithHttpInfo(catalogsReportParameters, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6914,18 +4260,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public reportsCreate(catalogsReportParameters: CatalogsReportParameters, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsCreateReportResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.reportsCreate(catalogsReportParameters, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6937,18 +4272,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public reportsGetWithHttpInfo(token: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CatalogsReport>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.reportsGetWithHttpInfo(token, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6960,18 +4284,7 @@ export class PromiseCatalogsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public reportsGet(token: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<CatalogsReport> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.reportsGet(token, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -6985,18 +4298,7 @@ export class PromiseCatalogsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public reportsStatsWithHttpInfo(parameters: CatalogsReportParameters, adAccountId?: string, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ReportsStats200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.reportsStatsWithHttpInfo(parameters, adAccountId, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -7010,18 +4312,7 @@ export class PromiseCatalogsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public reportsStats(parameters: CatalogsReportParameters, adAccountId?: string, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<ReportsStats200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.reportsStats(parameters, adAccountId, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -7053,18 +4344,7 @@ export class PromiseConversionEventsApi {
      * @param [test] Include query param ?test&#x3D;true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.
      */
     public eventsCreateWithHttpInfo(adAccountId: string, conversionEvents: ConversionEvents, test?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ConversionApiResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.eventsCreateWithHttpInfo(adAccountId, conversionEvents, test, observableOptions);
         return result.toPromise();
     }
@@ -7077,18 +4357,7 @@ export class PromiseConversionEventsApi {
      * @param [test] Include query param ?test&#x3D;true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.
      */
     public eventsCreate(adAccountId: string, conversionEvents: ConversionEvents, test?: boolean, _options?: PromiseConfigurationOptions): Promise<ConversionApiResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.eventsCreate(adAccountId, conversionEvents, test, observableOptions);
         return result.toPromise();
     }
@@ -7119,18 +4388,7 @@ export class PromiseConversionTagsApi {
      * @param conversionTagCreate Conversion Tag to create
      */
     public conversionTagsCreateWithHttpInfo(adAccountId: string, conversionTagCreate: ConversionTagCreate, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ConversionTagResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.conversionTagsCreateWithHttpInfo(adAccountId, conversionTagCreate, observableOptions);
         return result.toPromise();
     }
@@ -7142,18 +4400,7 @@ export class PromiseConversionTagsApi {
      * @param conversionTagCreate Conversion Tag to create
      */
     public conversionTagsCreate(adAccountId: string, conversionTagCreate: ConversionTagCreate, _options?: PromiseConfigurationOptions): Promise<ConversionTagResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.conversionTagsCreate(adAccountId, conversionTagCreate, observableOptions);
         return result.toPromise();
     }
@@ -7165,18 +4412,7 @@ export class PromiseConversionTagsApi {
      * @param conversionTagId Id of the conversion tag.
      */
     public conversionTagsGetWithHttpInfo(adAccountId: string, conversionTagId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ConversionTagResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.conversionTagsGetWithHttpInfo(adAccountId, conversionTagId, observableOptions);
         return result.toPromise();
     }
@@ -7188,18 +4424,7 @@ export class PromiseConversionTagsApi {
      * @param conversionTagId Id of the conversion tag.
      */
     public conversionTagsGet(adAccountId: string, conversionTagId: string, _options?: PromiseConfigurationOptions): Promise<ConversionTagResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.conversionTagsGet(adAccountId, conversionTagId, observableOptions);
         return result.toPromise();
     }
@@ -7211,18 +4436,7 @@ export class PromiseConversionTagsApi {
      * @param [filterDeleted] Filter out deleted tags.
      */
     public conversionTagsListWithHttpInfo(adAccountId: string, filterDeleted?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ConversionTagListResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.conversionTagsListWithHttpInfo(adAccountId, filterDeleted, observableOptions);
         return result.toPromise();
     }
@@ -7234,18 +4448,7 @@ export class PromiseConversionTagsApi {
      * @param [filterDeleted] Filter out deleted tags.
      */
     public conversionTagsList(adAccountId: string, filterDeleted?: boolean, _options?: PromiseConfigurationOptions): Promise<ConversionTagListResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.conversionTagsList(adAccountId, filterDeleted, observableOptions);
         return result.toPromise();
     }
@@ -7256,18 +4459,7 @@ export class PromiseConversionTagsApi {
      * @param adAccountId Unique identifier of an ad account.
      */
     public ocpmEligibleConversionTagsGetWithHttpInfo(adAccountId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: Array<ConversionEventResponse>; }>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ocpmEligibleConversionTagsGetWithHttpInfo(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -7278,18 +4470,7 @@ export class PromiseConversionTagsApi {
      * @param adAccountId Unique identifier of an ad account.
      */
     public ocpmEligibleConversionTagsGet(adAccountId: string, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: Array<ConversionEventResponse>; }> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.ocpmEligibleConversionTagsGet(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -7303,18 +4484,7 @@ export class PromiseConversionTagsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public pageVisitConversionTagsGetWithHttpInfo(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PageVisitConversionTagsGet200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pageVisitConversionTagsGetWithHttpInfo(adAccountId, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -7328,18 +4498,7 @@ export class PromiseConversionTagsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public pageVisitConversionTagsGet(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<PageVisitConversionTagsGet200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pageVisitConversionTagsGet(adAccountId, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -7370,18 +4529,7 @@ export class PromiseCustomerListsApi {
      * @param customerListRequest Parameters to get Customer lists info
      */
     public customerListsCreateWithHttpInfo(adAccountId: string, customerListRequest: CustomerListRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomerList>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.customerListsCreateWithHttpInfo(adAccountId, customerListRequest, observableOptions);
         return result.toPromise();
     }
@@ -7393,18 +4541,7 @@ export class PromiseCustomerListsApi {
      * @param customerListRequest Parameters to get Customer lists info
      */
     public customerListsCreate(adAccountId: string, customerListRequest: CustomerListRequest, _options?: PromiseConfigurationOptions): Promise<CustomerList> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.customerListsCreate(adAccountId, customerListRequest, observableOptions);
         return result.toPromise();
     }
@@ -7416,18 +4553,7 @@ export class PromiseCustomerListsApi {
      * @param customerListId Unique identifier of a customer list
      */
     public customerListsGetWithHttpInfo(adAccountId: string, customerListId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomerList>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.customerListsGetWithHttpInfo(adAccountId, customerListId, observableOptions);
         return result.toPromise();
     }
@@ -7439,18 +4565,7 @@ export class PromiseCustomerListsApi {
      * @param customerListId Unique identifier of a customer list
      */
     public customerListsGet(adAccountId: string, customerListId: string, _options?: PromiseConfigurationOptions): Promise<CustomerList> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.customerListsGet(adAccountId, customerListId, observableOptions);
         return result.toPromise();
     }
@@ -7464,18 +4579,7 @@ export class PromiseCustomerListsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public customerListsListWithHttpInfo(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomerListsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.customerListsListWithHttpInfo(adAccountId, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -7489,18 +4593,7 @@ export class PromiseCustomerListsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public customerListsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<CustomerListsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.customerListsList(adAccountId, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -7513,18 +4606,7 @@ export class PromiseCustomerListsApi {
      * @param customerListUpdateRequest
      */
     public customerListsUpdateWithHttpInfo(adAccountId: string, customerListId: string, customerListUpdateRequest: CustomerListUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CustomerList>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.customerListsUpdateWithHttpInfo(adAccountId, customerListId, customerListUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -7537,18 +4619,7 @@ export class PromiseCustomerListsApi {
      * @param customerListUpdateRequest
      */
     public customerListsUpdate(adAccountId: string, customerListId: string, customerListUpdateRequest: CustomerListUpdateRequest, _options?: PromiseConfigurationOptions): Promise<CustomerList> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.customerListsUpdate(adAccountId, customerListId, customerListUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -7578,18 +4649,7 @@ export class PromiseIntegrationsApi {
      * @param externalBusinessId External business ID for the integration.
      */
     public integrationsCommerceDelWithHttpInfo(externalBusinessId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsCommerceDelWithHttpInfo(externalBusinessId, observableOptions);
         return result.toPromise();
     }
@@ -7600,18 +4660,7 @@ export class PromiseIntegrationsApi {
      * @param externalBusinessId External business ID for the integration.
      */
     public integrationsCommerceDel(externalBusinessId: string, _options?: PromiseConfigurationOptions): Promise<void> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsCommerceDel(externalBusinessId, observableOptions);
         return result.toPromise();
     }
@@ -7622,18 +4671,7 @@ export class PromiseIntegrationsApi {
      * @param externalBusinessId External business ID for the integration.
      */
     public integrationsCommerceGetWithHttpInfo(externalBusinessId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<IntegrationMetadata>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsCommerceGetWithHttpInfo(externalBusinessId, observableOptions);
         return result.toPromise();
     }
@@ -7644,18 +4682,7 @@ export class PromiseIntegrationsApi {
      * @param externalBusinessId External business ID for the integration.
      */
     public integrationsCommerceGet(externalBusinessId: string, _options?: PromiseConfigurationOptions): Promise<IntegrationMetadata> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsCommerceGet(externalBusinessId, observableOptions);
         return result.toPromise();
     }
@@ -7667,18 +4694,7 @@ export class PromiseIntegrationsApi {
      * @param [integrationRequestPatch] Parameters to get create/update the Integration Metadata
      */
     public integrationsCommercePatchWithHttpInfo(externalBusinessId: string, integrationRequestPatch?: IntegrationRequestPatch, _options?: PromiseConfigurationOptions): Promise<HttpInfo<IntegrationMetadata>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsCommercePatchWithHttpInfo(externalBusinessId, integrationRequestPatch, observableOptions);
         return result.toPromise();
     }
@@ -7690,18 +4706,7 @@ export class PromiseIntegrationsApi {
      * @param [integrationRequestPatch] Parameters to get create/update the Integration Metadata
      */
     public integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch?: IntegrationRequestPatch, _options?: PromiseConfigurationOptions): Promise<IntegrationMetadata> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsCommercePatch(externalBusinessId, integrationRequestPatch, observableOptions);
         return result.toPromise();
     }
@@ -7712,18 +4717,7 @@ export class PromiseIntegrationsApi {
      * @param [integrationRequest] Parameters to get create/update the Integration Metadata
      */
     public integrationsCommercePostWithHttpInfo(integrationRequest?: IntegrationRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<IntegrationMetadata>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsCommercePostWithHttpInfo(integrationRequest, observableOptions);
         return result.toPromise();
     }
@@ -7734,18 +4728,7 @@ export class PromiseIntegrationsApi {
      * @param [integrationRequest] Parameters to get create/update the Integration Metadata
      */
     public integrationsCommercePost(integrationRequest?: IntegrationRequest, _options?: PromiseConfigurationOptions): Promise<IntegrationMetadata> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsCommercePost(integrationRequest, observableOptions);
         return result.toPromise();
     }
@@ -7756,18 +4739,7 @@ export class PromiseIntegrationsApi {
      * @param id Integration ID.
      */
     public integrationsGetByIdWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<IntegrationRecord>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsGetByIdWithHttpInfo(id, observableOptions);
         return result.toPromise();
     }
@@ -7778,18 +4750,7 @@ export class PromiseIntegrationsApi {
      * @param id Integration ID.
      */
     public integrationsGetById(id: string, _options?: PromiseConfigurationOptions): Promise<IntegrationRecord> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsGetById(id, observableOptions);
         return result.toPromise();
     }
@@ -7801,18 +4762,7 @@ export class PromiseIntegrationsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public integrationsGetListWithHttpInfo(bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<IntegrationsGetList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsGetListWithHttpInfo(bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -7824,18 +4774,7 @@ export class PromiseIntegrationsApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public integrationsGetList(bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<IntegrationsGetList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsGetList(bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -7846,18 +4785,7 @@ export class PromiseIntegrationsApi {
      * @param integrationLogsRequest Ingest log information from external integration application.
      */
     public integrationsLogsPostWithHttpInfo(integrationLogsRequest: IntegrationLogsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<IntegrationLogsSuccessResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsLogsPostWithHttpInfo(integrationLogsRequest, observableOptions);
         return result.toPromise();
     }
@@ -7868,18 +4796,7 @@ export class PromiseIntegrationsApi {
      * @param integrationLogsRequest Ingest log information from external integration application.
      */
     public integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest, _options?: PromiseConfigurationOptions): Promise<IntegrationLogsSuccessResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.integrationsLogsPost(integrationLogsRequest, observableOptions);
         return result.toPromise();
     }
@@ -7911,18 +4828,7 @@ export class PromiseKeywordsApi {
      * @param keywords Comma-separated keywords
      */
     public countryKeywordsMetricsGetWithHttpInfo(adAccountId: string, countryCode: string, keywords: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<KeywordsMetricsArrayResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.countryKeywordsMetricsGetWithHttpInfo(adAccountId, countryCode, keywords, observableOptions);
         return result.toPromise();
     }
@@ -7935,18 +4841,7 @@ export class PromiseKeywordsApi {
      * @param keywords Comma-separated keywords
      */
     public countryKeywordsMetricsGet(adAccountId: string, countryCode: string, keywords: Array<string>, _options?: PromiseConfigurationOptions): Promise<KeywordsMetricsArrayResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.countryKeywordsMetricsGet(adAccountId, countryCode, keywords, observableOptions);
         return result.toPromise();
     }
@@ -7958,18 +4853,7 @@ export class PromiseKeywordsApi {
      * @param keywordsRequest
      */
     public keywordsCreateWithHttpInfo(adAccountId: string, keywordsRequest: KeywordsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<KeywordsResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.keywordsCreateWithHttpInfo(adAccountId, keywordsRequest, observableOptions);
         return result.toPromise();
     }
@@ -7981,18 +4865,7 @@ export class PromiseKeywordsApi {
      * @param keywordsRequest
      */
     public keywordsCreate(adAccountId: string, keywordsRequest: KeywordsRequest, _options?: PromiseConfigurationOptions): Promise<KeywordsResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.keywordsCreate(adAccountId, keywordsRequest, observableOptions);
         return result.toPromise();
     }
@@ -8008,18 +4881,7 @@ export class PromiseKeywordsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public keywordsGetWithHttpInfo(adAccountId: string, campaignId?: string, adGroupId?: string, matchTypes?: Array<MatchType>, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<KeywordsGet200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.keywordsGetWithHttpInfo(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -8035,18 +4897,7 @@ export class PromiseKeywordsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public keywordsGet(adAccountId: string, campaignId?: string, adGroupId?: string, matchTypes?: Array<MatchType>, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<KeywordsGet200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.keywordsGet(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -8058,18 +4909,7 @@ export class PromiseKeywordsApi {
      * @param keywordUpdateBody
      */
     public keywordsUpdateWithHttpInfo(adAccountId: string, keywordUpdateBody: KeywordUpdateBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<KeywordsResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.keywordsUpdateWithHttpInfo(adAccountId, keywordUpdateBody, observableOptions);
         return result.toPromise();
     }
@@ -8081,18 +4921,7 @@ export class PromiseKeywordsApi {
      * @param keywordUpdateBody
      */
     public keywordsUpdate(adAccountId: string, keywordUpdateBody: KeywordUpdateBody, _options?: PromiseConfigurationOptions): Promise<KeywordsResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.keywordsUpdate(adAccountId, keywordUpdateBody, observableOptions);
         return result.toPromise();
     }
@@ -8110,18 +4939,7 @@ export class PromiseKeywordsApi {
      * @param [limit] The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends.
      */
     public trendingKeywordsListWithHttpInfo(region: TrendsSupportedRegion, trendType: TrendType, interests?: Array<'animals' | 'architecture' | 'art' | 'beauty' | 'childrens_fashion' | 'design' | 'diy_and_crafts' | 'education' | 'electronics' | 'entertainment' | 'event_planning' | 'finance' | 'food_and_drinks' | 'gardening' | 'health' | 'home_decor' | 'mens_fashion' | 'parenting' | 'quotes' | 'sport' | 'travel' | 'vehicles' | 'wedding' | 'womens_fashion'>, genders?: Array<'female' | 'male' | 'unknown'>, ages?: Array<'18-24' | '25-34' | '35-44' | '45-49' | '50-54' | '55-64' | '65+'>, includeKeywords?: Array<string>, normalizeAgainstGroup?: boolean, limit?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TrendingKeywordsResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.trendingKeywordsListWithHttpInfo(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, observableOptions);
         return result.toPromise();
     }
@@ -8139,18 +4957,7 @@ export class PromiseKeywordsApi {
      * @param [limit] The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends.
      */
     public trendingKeywordsList(region: TrendsSupportedRegion, trendType: TrendType, interests?: Array<'animals' | 'architecture' | 'art' | 'beauty' | 'childrens_fashion' | 'design' | 'diy_and_crafts' | 'education' | 'electronics' | 'entertainment' | 'event_planning' | 'finance' | 'food_and_drinks' | 'gardening' | 'health' | 'home_decor' | 'mens_fashion' | 'parenting' | 'quotes' | 'sport' | 'travel' | 'vehicles' | 'wedding' | 'womens_fashion'>, genders?: Array<'female' | 'male' | 'unknown'>, ages?: Array<'18-24' | '25-34' | '35-44' | '45-49' | '50-54' | '55-64' | '65+'>, includeKeywords?: Array<string>, normalizeAgainstGroup?: boolean, limit?: number, _options?: PromiseConfigurationOptions): Promise<TrendingKeywordsResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, observableOptions);
         return result.toPromise();
     }
@@ -8181,18 +4988,7 @@ export class PromiseLeadAdsApi {
      * @param subscriptionId Unique identifier of a subscription.
      */
     public adAccountsSubscriptionsDelByIdWithHttpInfo(adAccountId: string, subscriptionId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsSubscriptionsDelByIdWithHttpInfo(adAccountId, subscriptionId, observableOptions);
         return result.toPromise();
     }
@@ -8204,18 +5000,7 @@ export class PromiseLeadAdsApi {
      * @param subscriptionId Unique identifier of a subscription.
      */
     public adAccountsSubscriptionsDelById(adAccountId: string, subscriptionId: string, _options?: PromiseConfigurationOptions): Promise<void> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsSubscriptionsDelById(adAccountId, subscriptionId, observableOptions);
         return result.toPromise();
     }
@@ -8227,18 +5012,7 @@ export class PromiseLeadAdsApi {
      * @param subscriptionId Unique identifier of a subscription.
      */
     public adAccountsSubscriptionsGetByIdWithHttpInfo(adAccountId: string, subscriptionId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdAccountGetSubscriptionResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsSubscriptionsGetByIdWithHttpInfo(adAccountId, subscriptionId, observableOptions);
         return result.toPromise();
     }
@@ -8250,18 +5024,7 @@ export class PromiseLeadAdsApi {
      * @param subscriptionId Unique identifier of a subscription.
      */
     public adAccountsSubscriptionsGetById(adAccountId: string, subscriptionId: string, _options?: PromiseConfigurationOptions): Promise<AdAccountGetSubscriptionResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsSubscriptionsGetById(adAccountId, subscriptionId, observableOptions);
         return result.toPromise();
     }
@@ -8274,18 +5037,7 @@ export class PromiseLeadAdsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public adAccountsSubscriptionsGetListWithHttpInfo(adAccountId: string, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdAccountsSubscriptionsGetList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsSubscriptionsGetListWithHttpInfo(adAccountId, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -8298,18 +5050,7 @@ export class PromiseLeadAdsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public adAccountsSubscriptionsGetList(adAccountId: string, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<AdAccountsSubscriptionsGetList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsSubscriptionsGetList(adAccountId, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -8321,18 +5062,7 @@ export class PromiseLeadAdsApi {
      * @param adAccountCreateSubscriptionRequest Subscription to create.
      */
     public adAccountsSubscriptionsPostWithHttpInfo(adAccountId: string, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AdAccountCreateSubscriptionResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsSubscriptionsPostWithHttpInfo(adAccountId, adAccountCreateSubscriptionRequest, observableOptions);
         return result.toPromise();
     }
@@ -8344,18 +5074,7 @@ export class PromiseLeadAdsApi {
      * @param adAccountCreateSubscriptionRequest Subscription to create.
      */
     public adAccountsSubscriptionsPost(adAccountId: string, adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest, _options?: PromiseConfigurationOptions): Promise<AdAccountCreateSubscriptionResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountsSubscriptionsPost(adAccountId, adAccountCreateSubscriptionRequest, observableOptions);
         return result.toPromise();
     }
@@ -8386,18 +5105,7 @@ export class PromiseLeadFormsApi {
      * @param leadFormId Unique identifier of a lead form.
      */
     public leadFormGetWithHttpInfo(adAccountId: string, leadFormId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadFormResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadFormGetWithHttpInfo(adAccountId, leadFormId, observableOptions);
         return result.toPromise();
     }
@@ -8409,18 +5117,7 @@ export class PromiseLeadFormsApi {
      * @param leadFormId Unique identifier of a lead form.
      */
     public leadFormGet(adAccountId: string, leadFormId: string, _options?: PromiseConfigurationOptions): Promise<LeadFormResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadFormGet(adAccountId, leadFormId, observableOptions);
         return result.toPromise();
     }
@@ -8433,18 +5130,7 @@ export class PromiseLeadFormsApi {
      * @param leadFormTestRequest Subscription to create.
      */
     public leadFormTestCreateWithHttpInfo(adAccountId: string, leadFormId: string, leadFormTestRequest: LeadFormTestRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadFormTestResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadFormTestCreateWithHttpInfo(adAccountId, leadFormId, leadFormTestRequest, observableOptions);
         return result.toPromise();
     }
@@ -8457,18 +5143,7 @@ export class PromiseLeadFormsApi {
      * @param leadFormTestRequest Subscription to create.
      */
     public leadFormTestCreate(adAccountId: string, leadFormId: string, leadFormTestRequest: LeadFormTestRequest, _options?: PromiseConfigurationOptions): Promise<LeadFormTestResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest, observableOptions);
         return result.toPromise();
     }
@@ -8480,18 +5155,7 @@ export class PromiseLeadFormsApi {
      * @param leadFormCreateRequest List of lead forms to create, size limit [1, 30].
      */
     public leadFormsCreateWithHttpInfo(adAccountId: string, leadFormCreateRequest: Array<LeadFormCreateRequest>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadFormArrayResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadFormsCreateWithHttpInfo(adAccountId, leadFormCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -8503,18 +5167,7 @@ export class PromiseLeadFormsApi {
      * @param leadFormCreateRequest List of lead forms to create, size limit [1, 30].
      */
     public leadFormsCreate(adAccountId: string, leadFormCreateRequest: Array<LeadFormCreateRequest>, _options?: PromiseConfigurationOptions): Promise<LeadFormArrayResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadFormsCreate(adAccountId, leadFormCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -8528,18 +5181,7 @@ export class PromiseLeadFormsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public leadFormsListWithHttpInfo(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadFormsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadFormsListWithHttpInfo(adAccountId, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -8553,18 +5195,7 @@ export class PromiseLeadFormsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public leadFormsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<LeadFormsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadFormsList(adAccountId, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -8576,18 +5207,7 @@ export class PromiseLeadFormsApi {
      * @param leadFormUpdateRequest List of lead forms to update, size limit [1, 30].
      */
     public leadFormsUpdateWithHttpInfo(adAccountId: string, leadFormUpdateRequest: Array<LeadFormUpdateRequest>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadFormArrayResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadFormsUpdateWithHttpInfo(adAccountId, leadFormUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -8599,18 +5219,7 @@ export class PromiseLeadFormsApi {
      * @param leadFormUpdateRequest List of lead forms to update, size limit [1, 30].
      */
     public leadFormsUpdate(adAccountId: string, leadFormUpdateRequest: Array<LeadFormUpdateRequest>, _options?: PromiseConfigurationOptions): Promise<LeadFormArrayResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadFormsUpdate(adAccountId, leadFormUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -8641,18 +5250,7 @@ export class PromiseLeadsExportApi {
      * @param leadsExportCreateRequest
      */
     public leadsExportCreateWithHttpInfo(adAccountId: string, leadsExportCreateRequest: LeadsExportCreateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadsExportCreateResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadsExportCreateWithHttpInfo(adAccountId, leadsExportCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -8664,18 +5262,7 @@ export class PromiseLeadsExportApi {
      * @param leadsExportCreateRequest
      */
     public leadsExportCreate(adAccountId: string, leadsExportCreateRequest: LeadsExportCreateRequest, _options?: PromiseConfigurationOptions): Promise<LeadsExportCreateResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadsExportCreate(adAccountId, leadsExportCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -8687,18 +5274,7 @@ export class PromiseLeadsExportApi {
      * @param leadsExportId lead_export_id token returned from the create a lead export endpoint
      */
     public leadsExportGetWithHttpInfo(adAccountId: string, leadsExportId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LeadsExportResponseData>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadsExportGetWithHttpInfo(adAccountId, leadsExportId, observableOptions);
         return result.toPromise();
     }
@@ -8710,18 +5286,7 @@ export class PromiseLeadsExportApi {
      * @param leadsExportId lead_export_id token returned from the create a lead export endpoint
      */
     public leadsExportGet(adAccountId: string, leadsExportId: string, _options?: PromiseConfigurationOptions): Promise<LeadsExportResponseData> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadsExportGet(adAccountId, leadsExportId, observableOptions);
         return result.toPromise();
     }
@@ -8751,18 +5316,7 @@ export class PromiseMediaApi {
      * @param mediaUploadRequest Create a media upload request
      */
     public mediaCreateWithHttpInfo(mediaUploadRequest: MediaUploadRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<MediaUpload>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.mediaCreateWithHttpInfo(mediaUploadRequest, observableOptions);
         return result.toPromise();
     }
@@ -8773,18 +5327,7 @@ export class PromiseMediaApi {
      * @param mediaUploadRequest Create a media upload request
      */
     public mediaCreate(mediaUploadRequest: MediaUploadRequest, _options?: PromiseConfigurationOptions): Promise<MediaUpload> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.mediaCreate(mediaUploadRequest, observableOptions);
         return result.toPromise();
     }
@@ -8795,18 +5338,7 @@ export class PromiseMediaApi {
      * @param mediaId Media identifier
      */
     public mediaGetWithHttpInfo(mediaId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<MediaUploadDetails>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.mediaGetWithHttpInfo(mediaId, observableOptions);
         return result.toPromise();
     }
@@ -8817,18 +5349,7 @@ export class PromiseMediaApi {
      * @param mediaId Media identifier
      */
     public mediaGet(mediaId: string, _options?: PromiseConfigurationOptions): Promise<MediaUploadDetails> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.mediaGet(mediaId, observableOptions);
         return result.toPromise();
     }
@@ -8840,18 +5361,7 @@ export class PromiseMediaApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public mediaListWithHttpInfo(bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<MediaList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.mediaListWithHttpInfo(bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -8863,18 +5373,7 @@ export class PromiseMediaApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public mediaList(bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<MediaList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.mediaList(bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -8904,18 +5403,7 @@ export class PromiseOauthApi {
      * @param grantType
      */
     public oauthTokenWithHttpInfo(grantType: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OauthAccessTokenResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.oauthTokenWithHttpInfo(grantType, observableOptions);
         return result.toPromise();
     }
@@ -8926,18 +5414,7 @@ export class PromiseOauthApi {
      * @param grantType
      */
     public oauthToken(grantType: string, _options?: PromiseConfigurationOptions): Promise<OauthAccessTokenResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.oauthToken(grantType, observableOptions);
         return result.toPromise();
     }
@@ -8968,18 +5445,7 @@ export class PromiseOrderLinesApi {
      * @param orderLineId Unique identifier of an order line.
      */
     public orderLinesGetWithHttpInfo(adAccountId: string, orderLineId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderLine>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.orderLinesGetWithHttpInfo(adAccountId, orderLineId, observableOptions);
         return result.toPromise();
     }
@@ -8991,18 +5457,7 @@ export class PromiseOrderLinesApi {
      * @param orderLineId Unique identifier of an order line.
      */
     public orderLinesGet(adAccountId: string, orderLineId: string, _options?: PromiseConfigurationOptions): Promise<OrderLine> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.orderLinesGet(adAccountId, orderLineId, observableOptions);
         return result.toPromise();
     }
@@ -9016,18 +5471,7 @@ export class PromiseOrderLinesApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public orderLinesListWithHttpInfo(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OrderLinesList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.orderLinesListWithHttpInfo(adAccountId, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -9041,18 +5485,7 @@ export class PromiseOrderLinesApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public orderLinesList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<OrderLinesList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.orderLinesList(adAccountId, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -9086,19 +5519,8 @@ export class PromisePinsApi {
      * @param [appTypes] Apps or devices to get data for, default is all.
      * @param [adAccountId] Unique identifier of an ad account.
      */
-    public multiPinsAnalyticsWithHttpInfo(pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+    public multiPinsAnalyticsWithHttpInfo(pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }>> {
+        const observableOptions = wrapOptions(_options);
         const result = this.api.multiPinsAnalyticsWithHttpInfo(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9113,19 +5535,8 @@ export class PromisePinsApi {
      * @param [appTypes] Apps or devices to get data for, default is all.
      * @param [adAccountId] Unique identifier of an ad account.
      */
-    public multiPinsAnalytics(pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+    public multiPinsAnalytics(pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }> {
+        const observableOptions = wrapOptions(_options);
         const result = this.api.multiPinsAnalytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9141,19 +5552,8 @@ export class PromisePinsApi {
      * @param [splitField] How to split the data into groups. Not including this param means data won\&#39;t be split.
      * @param [adAccountId] Unique identifier of an ad account.
      */
-    public pinsAnalyticsWithHttpInfo(pinId: string, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: PinAnalyticsMetricsResponse; }>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+    public pinsAnalyticsWithHttpInfo(pinId: string, startDate: string, endDate: string, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: PinAnalyticsMetricsResponse; }>> {
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsAnalyticsWithHttpInfo(pinId, startDate, endDate, metricTypes, appTypes, splitField, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9169,19 +5569,8 @@ export class PromisePinsApi {
      * @param [splitField] How to split the data into groups. Not including this param means data won\&#39;t be split.
      * @param [adAccountId] Unique identifier of an ad account.
      */
-    public pinsAnalytics(pinId: string, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: PinAnalyticsMetricsResponse; }> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+    public pinsAnalytics(pinId: string, startDate: string, endDate: string, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: PinAnalyticsMetricsResponse; }> {
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsAnalytics(pinId, startDate, endDate, metricTypes, appTypes, splitField, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9193,18 +5582,7 @@ export class PromisePinsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public pinsCreateWithHttpInfo(pinCreate: PinCreate, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Pin>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsCreateWithHttpInfo(pinCreate, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9216,18 +5594,7 @@ export class PromisePinsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public pinsCreate(pinCreate: PinCreate, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<Pin> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsCreate(pinCreate, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9239,18 +5606,7 @@ export class PromisePinsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public pinsDeleteWithHttpInfo(pinId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsDeleteWithHttpInfo(pinId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9262,18 +5618,7 @@ export class PromisePinsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public pinsDelete(pinId: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<void> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsDelete(pinId, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9286,18 +5631,7 @@ export class PromisePinsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public pinsGetWithHttpInfo(pinId: string, pinMetrics?: boolean, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Pin>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsGetWithHttpInfo(pinId, pinMetrics, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9310,18 +5644,7 @@ export class PromisePinsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public pinsGet(pinId: string, pinMetrics?: boolean, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<Pin> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsGet(pinId, pinMetrics, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9339,18 +5662,7 @@ export class PromisePinsApi {
      * @param [pinMetrics] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      */
     public pinsListWithHttpInfo(bookmark?: string, pageSize?: number, pinFilter?: 'exclude_native' | 'exclude_repins' | 'has_been_promoted', includeProtectedPins?: boolean, pinType?: 'PRIVATE', creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PinsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsListWithHttpInfo(bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics, observableOptions);
         return result.toPromise();
     }
@@ -9368,18 +5680,7 @@ export class PromisePinsApi {
      * @param [pinMetrics] Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      */
     public pinsList(bookmark?: string, pageSize?: number, pinFilter?: 'exclude_native' | 'exclude_repins' | 'has_been_promoted', includeProtectedPins?: boolean, pinType?: 'PRIVATE', creativeTypes?: Array<'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA'>, adAccountId?: string, pinMetrics?: boolean, _options?: PromiseConfigurationOptions): Promise<PinsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsList(bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics, observableOptions);
         return result.toPromise();
     }
@@ -9392,18 +5693,7 @@ export class PromisePinsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public pinsSaveWithHttpInfo(pinId: string, pinsSaveRequest: PinsSaveRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Pin>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsSaveWithHttpInfo(pinId, pinsSaveRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9416,18 +5706,7 @@ export class PromisePinsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public pinsSave(pinId: string, pinsSaveRequest: PinsSaveRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<Pin> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsSave(pinId, pinsSaveRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9440,18 +5719,7 @@ export class PromisePinsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public pinsUpdateWithHttpInfo(pinId: string, pinUpdate: PinUpdate, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Pin>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsUpdateWithHttpInfo(pinId, pinUpdate, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9464,18 +5732,7 @@ export class PromisePinsApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public pinsUpdate(pinId: string, pinUpdate: PinUpdate, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<Pin> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.pinsUpdate(pinId, pinUpdate, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -9506,18 +5763,7 @@ export class PromiseProductGroupPromotionsApi {
      * @param productGroupPromotionCreateRequest List of Product Group Promotions to create, size limit [1, 30].
      */
     public productGroupPromotionsCreateWithHttpInfo(adAccountId: string, productGroupPromotionCreateRequest: ProductGroupPromotionCreateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductGroupPromotionResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.productGroupPromotionsCreateWithHttpInfo(adAccountId, productGroupPromotionCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -9529,18 +5775,7 @@ export class PromiseProductGroupPromotionsApi {
      * @param productGroupPromotionCreateRequest List of Product Group Promotions to create, size limit [1, 30].
      */
     public productGroupPromotionsCreate(adAccountId: string, productGroupPromotionCreateRequest: ProductGroupPromotionCreateRequest, _options?: PromiseConfigurationOptions): Promise<ProductGroupPromotionResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.productGroupPromotionsCreate(adAccountId, productGroupPromotionCreateRequest, observableOptions);
         return result.toPromise();
     }
@@ -9552,18 +5787,7 @@ export class PromiseProductGroupPromotionsApi {
      * @param productGroupPromotionId Unique identifier of a product group promotion
      */
     public productGroupPromotionsGetWithHttpInfo(adAccountId: string, productGroupPromotionId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductGroupPromotionResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.productGroupPromotionsGetWithHttpInfo(adAccountId, productGroupPromotionId, observableOptions);
         return result.toPromise();
     }
@@ -9575,18 +5799,7 @@ export class PromiseProductGroupPromotionsApi {
      * @param productGroupPromotionId Unique identifier of a product group promotion
      */
     public productGroupPromotionsGet(adAccountId: string, productGroupPromotionId: string, _options?: PromiseConfigurationOptions): Promise<ProductGroupPromotionResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.productGroupPromotionsGet(adAccountId, productGroupPromotionId, observableOptions);
         return result.toPromise();
     }
@@ -9603,18 +5816,7 @@ export class PromiseProductGroupPromotionsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public productGroupPromotionsListWithHttpInfo(adAccountId: string, productGroupPromotionIds?: Array<string>, entityStatuses?: Array<'ACTIVE' | 'PAUSED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT'>, adGroupId?: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductGroupPromotionsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.productGroupPromotionsListWithHttpInfo(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -9631,18 +5833,7 @@ export class PromiseProductGroupPromotionsApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public productGroupPromotionsList(adAccountId: string, productGroupPromotionIds?: Array<string>, entityStatuses?: Array<'ACTIVE' | 'PAUSED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT'>, adGroupId?: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, _options?: PromiseConfigurationOptions): Promise<ProductGroupPromotionsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.productGroupPromotionsList(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -9654,18 +5845,7 @@ export class PromiseProductGroupPromotionsApi {
      * @param productGroupPromotionUpdateRequest Parameters to update Product group promotions
      */
     public productGroupPromotionsUpdateWithHttpInfo(adAccountId: string, productGroupPromotionUpdateRequest: ProductGroupPromotionUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ProductGroupPromotionResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.productGroupPromotionsUpdateWithHttpInfo(adAccountId, productGroupPromotionUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -9677,18 +5857,7 @@ export class PromiseProductGroupPromotionsApi {
      * @param productGroupPromotionUpdateRequest Parameters to update Product group promotions
      */
     public productGroupPromotionsUpdate(adAccountId: string, productGroupPromotionUpdateRequest: ProductGroupPromotionUpdateRequest, _options?: PromiseConfigurationOptions): Promise<ProductGroupPromotionResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.productGroupPromotionsUpdate(adAccountId, productGroupPromotionUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -9708,18 +5877,7 @@ export class PromiseProductGroupPromotionsApi {
      * @param [conversionReportTime] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
      */
     public productGroupsAnalyticsWithHttpInfo(adAccountId: string, startDate: string, endDate: string, productGroupIds: Array<string>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<ProductGroupAnalyticsResponseInner>>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.productGroupsAnalyticsWithHttpInfo(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, observableOptions);
         return result.toPromise();
     }
@@ -9739,18 +5897,7 @@ export class PromiseProductGroupPromotionsApi {
      * @param [conversionReportTime] The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
      */
     public productGroupsAnalytics(adAccountId: string, startDate: string, endDate: string, productGroupIds: Array<string>, columns: Array<'SPEND_IN_MICRO_DOLLAR' | 'PAID_IMPRESSION' | 'SPEND_IN_DOLLAR' | 'CPC_IN_MICRO_DOLLAR' | 'ECPC_IN_MICRO_DOLLAR' | 'ECPC_IN_DOLLAR' | 'CTR' | 'ECTR' | 'CAMPAIGN_NAME' | 'PIN_ID' | 'TOTAL_ENGAGEMENT' | 'ENGAGEMENT_1' | 'ENGAGEMENT_2' | 'ECPE_IN_DOLLAR' | 'ENGAGEMENT_RATE' | 'EENGAGEMENT_RATE' | 'ECPM_IN_MICRO_DOLLAR' | 'REPIN_RATE' | 'CTR_2' | 'CAMPAIGN_ID' | 'ADVERTISER_ID' | 'AD_ACCOUNT_ID' | 'PIN_PROMOTION_ID' | 'AD_ID' | 'AD_GROUP_ID' | 'CAMPAIGN_ENTITY_STATUS' | 'CAMPAIGN_OBJECTIVE_TYPE' | 'CPM_IN_MICRO_DOLLAR' | 'CPM_IN_DOLLAR' | 'AD_GROUP_ENTITY_STATUS' | 'ORDER_LINE_ID' | 'ORDER_LINE_NAME' | 'CLICKTHROUGH_1' | 'REPIN_1' | 'IMPRESSION_1' | 'IMPRESSION_1_GROSS' | 'CLICKTHROUGH_1_GROSS' | 'OUTBOUND_CLICK_1' | 'CLICKTHROUGH_2' | 'REPIN_2' | 'IMPRESSION_2' | 'OUTBOUND_CLICK_2' | 'TOTAL_CLICKTHROUGH' | 'TOTAL_IMPRESSION' | 'TOTAL_IMPRESSION_USER' | 'TOTAL_IMPRESSION_FREQUENCY' | 'COST_PER_OUTBOUND_CLICK_IN_DOLLAR' | 'TOTAL_ENGAGEMENT_SIGNUP' | 'TOTAL_ENGAGEMENT_CHECKOUT' | 'TOTAL_ENGAGEMENT_LEAD' | 'TOTAL_CLICK_SIGNUP' | 'TOTAL_CLICK_CHECKOUT' | 'TOTAL_CLICK_ADD_TO_CART' | 'TOTAL_CLICK_LEAD' | 'TOTAL_VIEW_SIGNUP' | 'TOTAL_VIEW_CHECKOUT' | 'TOTAL_VIEW_ADD_TO_CART' | 'TOTAL_VIEW_LEAD' | 'TOTAL_CONVERSIONS' | 'TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_SESSIONS' | 'WEB_SESSIONS_1' | 'WEB_SESSIONS_2' | 'CAMPAIGN_LIFETIME_SPEND_CAP' | 'CAMPAIGN_DAILY_SPEND_CAP' | 'TOTAL_PAGE_VISIT' | 'TOTAL_SIGNUP' | 'TOTAL_CHECKOUT' | 'TOTAL_CUSTOM' | 'TOTAL_LEAD' | 'TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR' | 'PAGE_VISIT_COST_PER_ACTION' | 'PAGE_VISIT_ROAS' | 'CHECKOUT_ROAS' | 'CUSTOM_ROAS' | 'VIDEO_MRC_VIEWS_1' | 'VIDEO_3SEC_VIEWS_2' | 'VIDEO_P100_COMPLETE_2' | 'VIDEO_P0_COMBINED_2' | 'VIDEO_P25_COMBINED_2' | 'VIDEO_P50_COMBINED_2' | 'VIDEO_P75_COMBINED_2' | 'VIDEO_P95_COMBINED_2' | 'VIDEO_MRC_VIEWS_2' | 'PAID_VIDEO_VIEWABLE_RATE' | 'VIDEO_LENGTH' | 'ECPV_IN_DOLLAR' | 'ECPCV_IN_DOLLAR' | 'ECPCV_P95_IN_DOLLAR' | 'TOTAL_VIDEO_3SEC_VIEWS' | 'TOTAL_VIDEO_P100_COMPLETE' | 'TOTAL_VIDEO_P0_COMBINED' | 'TOTAL_VIDEO_P25_COMBINED' | 'TOTAL_VIDEO_P50_COMBINED' | 'TOTAL_VIDEO_P75_COMBINED' | 'TOTAL_VIDEO_P95_COMBINED' | 'TOTAL_VIDEO_MRC_VIEWS' | 'TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND' | 'TOTAL_REPIN_RATE' | 'WEB_CHECKOUT_COST_PER_ACTION' | 'WEB_CHECKOUT_ROAS' | 'TOTAL_WEB_CHECKOUT' | 'TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_CLICK_CHECKOUT' | 'TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT' | 'TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'TOTAL_WEB_VIEW_CHECKOUT' | 'TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR' | 'INAPP_CHECKOUT_COST_PER_ACTION' | 'TOTAL_OFFLINE_CHECKOUT' | 'IDEA_PIN_PRODUCT_TAG_VISIT_1' | 'IDEA_PIN_PRODUCT_TAG_VISIT_2' | 'TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT' | 'LEADS' | 'COST_PER_LEAD' | 'QUIZ_COMPLETED' | 'QUIZ_PIN_RESULT_OPEN' | 'QUIZ_COMPLETION_RATE' | 'SHOWCASE_PIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_CLICKTHROUGH' | 'SHOWCASE_SUBPIN_CLICKTHROUGH' | 'SHOWCASE_SUBPAGE_IMPRESSION' | 'SHOWCASE_SUBPIN_IMPRESSION' | 'SHOWCASE_SUBPAGE_SWIPE_LEFT' | 'SHOWCASE_SUBPAGE_SWIPE_RIGHT' | 'SHOWCASE_SUBPIN_SWIPE_LEFT' | 'SHOWCASE_SUBPIN_SWIPE_RIGHT' | 'SHOWCASE_SUBPAGE_REPIN' | 'SHOWCASE_SUBPIN_REPIN' | 'SHOWCASE_SUBPAGE_CLOSEUP' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD' | 'SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD' | 'SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION' | 'TOTAL_CHECKOUT_CONVERSION_RATE' | 'TOTAL_VIEW_CATEGORY_CONVERSION_RATE' | 'TOTAL_ADD_TO_CART_CONVERSION_RATE' | 'TOTAL_SIGNUP_CONVERSION_RATE' | 'TOTAL_PAGE_VISIT_CONVERSION_RATE' | 'TOTAL_LEAD_CONVERSION_RATE' | 'TOTAL_SEARCH_CONVERSION_RATE' | 'TOTAL_WATCH_VIDEO_CONVERSION_RATE' | 'TOTAL_UNKNOWN_CONVERSION_RATE' | 'TOTAL_CUSTOM_CONVERSION_RATE'>, granularity: Granularity, clickWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, engagementWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, viewWindowDays?: 0 | 1 | 7 | 14 | 30 | 60, conversionReportTime?: 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION', _options?: PromiseConfigurationOptions): Promise<Array<ProductGroupAnalyticsResponseInner>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, observableOptions);
         return result.toPromise();
     }
@@ -9779,18 +5926,7 @@ export class PromiseResourcesApi {
      * Get ad accounts countries
      */
     public adAccountCountriesGetWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<AdAccountsCountryResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountCountriesGetWithHttpInfo(observableOptions);
         return result.toPromise();
     }
@@ -9800,18 +5936,7 @@ export class PromiseResourcesApi {
      * Get ad accounts countries
      */
     public adAccountCountriesGet(_options?: PromiseConfigurationOptions): Promise<AdAccountsCountryResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.adAccountCountriesGet(observableOptions);
         return result.toPromise();
     }
@@ -9822,18 +5947,7 @@ export class PromiseResourcesApi {
      * @param [reportType] Report type.
      */
     public deliveryMetricsGetWithHttpInfo(reportType?: 'SYNC' | 'ASYNC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<DeliveryMetricsResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.deliveryMetricsGetWithHttpInfo(reportType, observableOptions);
         return result.toPromise();
     }
@@ -9844,18 +5958,7 @@ export class PromiseResourcesApi {
      * @param [reportType] Report type.
      */
     public deliveryMetricsGet(reportType?: 'SYNC' | 'ASYNC', _options?: PromiseConfigurationOptions): Promise<DeliveryMetricsResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.deliveryMetricsGet(reportType, observableOptions);
         return result.toPromise();
     }
@@ -9866,18 +5969,7 @@ export class PromiseResourcesApi {
      * @param interestId Unique identifier of an interest.
      */
     public interestTargetingOptionsGetWithHttpInfo(interestId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SingleInterestTargetingOptionResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.interestTargetingOptionsGetWithHttpInfo(interestId, observableOptions);
         return result.toPromise();
     }
@@ -9888,18 +5980,7 @@ export class PromiseResourcesApi {
      * @param interestId Unique identifier of an interest.
      */
     public interestTargetingOptionsGet(interestId: string, _options?: PromiseConfigurationOptions): Promise<SingleInterestTargetingOptionResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.interestTargetingOptionsGet(interestId, observableOptions);
         return result.toPromise();
     }
@@ -9909,18 +5990,7 @@ export class PromiseResourcesApi {
      * Get lead form questions
      */
     public leadFormQuestionsGetWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadFormQuestionsGetWithHttpInfo(observableOptions);
         return result.toPromise();
     }
@@ -9930,18 +6000,7 @@ export class PromiseResourcesApi {
      * Get lead form questions
      */
     public leadFormQuestionsGet(_options?: PromiseConfigurationOptions): Promise<void> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.leadFormQuestionsGet(observableOptions);
         return result.toPromise();
     }
@@ -9952,18 +6011,7 @@ export class PromiseResourcesApi {
      * @param date Analytics reports request date (UTC). Format: YYYY-MM-DD
      */
     public metricsReadyStateGetWithHttpInfo(date: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BookClosedResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.metricsReadyStateGetWithHttpInfo(date, observableOptions);
         return result.toPromise();
     }
@@ -9974,18 +6022,7 @@ export class PromiseResourcesApi {
      * @param date Analytics reports request date (UTC). Format: YYYY-MM-DD
      */
     public metricsReadyStateGet(date: string, _options?: PromiseConfigurationOptions): Promise<BookClosedResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.metricsReadyStateGet(date, observableOptions);
         return result.toPromise();
     }
@@ -10000,18 +6037,7 @@ export class PromiseResourcesApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public targetingOptionsGetWithHttpInfo(targetingType: 'APPTYPE' | 'GENDER' | 'LOCALE' | 'AGE_BUCKET' | 'LOCATION' | 'GEO' | 'INTEREST' | 'KEYWORD' | 'AUDIENCE_INCLUDE' | 'AUDIENCE_EXCLUDE', clientId?: string, oauthSignature?: string, timestamp?: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<any>>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.targetingOptionsGetWithHttpInfo(targetingType, clientId, oauthSignature, timestamp, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -10026,18 +6052,7 @@ export class PromiseResourcesApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public targetingOptionsGet(targetingType: 'APPTYPE' | 'GENDER' | 'LOCALE' | 'AGE_BUCKET' | 'LOCATION' | 'GEO' | 'INTEREST' | 'KEYWORD' | 'AUDIENCE_INCLUDE' | 'AUDIENCE_EXCLUDE', clientId?: string, oauthSignature?: string, timestamp?: string, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<Array<any>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -10071,18 +6086,7 @@ export class PromiseSearchApi {
      * @param [limit] Max search result size
      */
     public searchPartnerPinsWithHttpInfo(term: string, countryCode: string, bookmark?: string, locale?: string, limit?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SearchPartnerPins200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.searchPartnerPinsWithHttpInfo(term, countryCode, bookmark, locale, limit, observableOptions);
         return result.toPromise();
     }
@@ -10097,18 +6101,7 @@ export class PromiseSearchApi {
      * @param [limit] Max search result size
      */
     public searchPartnerPins(term: string, countryCode: string, bookmark?: string, locale?: string, limit?: number, _options?: PromiseConfigurationOptions): Promise<SearchPartnerPins200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.searchPartnerPins(term, countryCode, bookmark, locale, limit, observableOptions);
         return result.toPromise();
     }
@@ -10122,18 +6115,7 @@ export class PromiseSearchApi {
      * @param [query] Search query. Can contain pin description keywords or comma-separated pin IDs.
      */
     public searchUserBoardsGetWithHttpInfo(adAccountId?: string, bookmark?: string, pageSize?: number, query?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SearchUserBoardsGet200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.searchUserBoardsGetWithHttpInfo(adAccountId, bookmark, pageSize, query, observableOptions);
         return result.toPromise();
     }
@@ -10147,18 +6129,7 @@ export class PromiseSearchApi {
      * @param [query] Search query. Can contain pin description keywords or comma-separated pin IDs.
      */
     public searchUserBoardsGet(adAccountId?: string, bookmark?: string, pageSize?: number, query?: string, _options?: PromiseConfigurationOptions): Promise<SearchUserBoardsGet200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.searchUserBoardsGet(adAccountId, bookmark, pageSize, query, observableOptions);
         return result.toPromise();
     }
@@ -10171,18 +6142,7 @@ export class PromiseSearchApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public searchUserPinsListWithHttpInfo(query: string, adAccountId?: string, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PinsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.searchUserPinsListWithHttpInfo(query, adAccountId, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -10195,18 +6155,7 @@ export class PromiseSearchApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public searchUserPinsList(query: string, adAccountId?: string, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<PinsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.searchUserPinsList(query, adAccountId, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -10237,18 +6186,7 @@ export class PromiseTargetingTemplateApi {
      * @param targetingTemplateCreate targeting template creation entity
      */
     public targetingTemplateCreateWithHttpInfo(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TargetingTemplateGetResponseData>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.targetingTemplateCreateWithHttpInfo(adAccountId, targetingTemplateCreate, observableOptions);
         return result.toPromise();
     }
@@ -10260,18 +6198,7 @@ export class PromiseTargetingTemplateApi {
      * @param targetingTemplateCreate targeting template creation entity
      */
     public targetingTemplateCreate(adAccountId: string, targetingTemplateCreate: TargetingTemplateCreate, _options?: PromiseConfigurationOptions): Promise<TargetingTemplateGetResponseData> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.targetingTemplateCreate(adAccountId, targetingTemplateCreate, observableOptions);
         return result.toPromise();
     }
@@ -10287,18 +6214,7 @@ export class PromiseTargetingTemplateApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public targetingTemplateListWithHttpInfo(adAccountId: string, order?: 'ASCENDING' | 'DESCENDING', includeSizing?: boolean, searchQuery?: string, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TargetingTemplateList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.targetingTemplateListWithHttpInfo(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -10314,18 +6230,7 @@ export class PromiseTargetingTemplateApi {
      * @param [bookmark] Cursor used to fetch the next page of items
      */
     public targetingTemplateList(adAccountId: string, order?: 'ASCENDING' | 'DESCENDING', includeSizing?: boolean, searchQuery?: string, pageSize?: number, bookmark?: string, _options?: PromiseConfigurationOptions): Promise<TargetingTemplateList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark, observableOptions);
         return result.toPromise();
     }
@@ -10337,18 +6242,7 @@ export class PromiseTargetingTemplateApi {
      * @param targetingTemplateUpdateRequest Operation type and targeting template ID
      */
     public targetingTemplateUpdateWithHttpInfo(adAccountId: string, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.targetingTemplateUpdateWithHttpInfo(adAccountId, targetingTemplateUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -10360,18 +6254,7 @@ export class PromiseTargetingTemplateApi {
      * @param targetingTemplateUpdateRequest Operation type and targeting template ID
      */
     public targetingTemplateUpdate(adAccountId: string, targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest, _options?: PromiseConfigurationOptions): Promise<void> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest, observableOptions);
         return result.toPromise();
     }
@@ -10401,18 +6284,7 @@ export class PromiseTermsApi {
      * @param terms List of input terms.
      */
     public termsRelatedListWithHttpInfo(terms: Array<string>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RelatedTerms>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.termsRelatedListWithHttpInfo(terms, observableOptions);
         return result.toPromise();
     }
@@ -10423,18 +6295,7 @@ export class PromiseTermsApi {
      * @param terms List of input terms.
      */
     public termsRelatedList(terms: Array<string>, _options?: PromiseConfigurationOptions): Promise<RelatedTerms> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.termsRelatedList(terms, observableOptions);
         return result.toPromise();
     }
@@ -10446,18 +6307,7 @@ export class PromiseTermsApi {
      * @param [limit] Max suggested terms to return.
      */
     public termsSuggestedListWithHttpInfo(term: string, limit?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<string>>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.termsSuggestedListWithHttpInfo(term, limit, observableOptions);
         return result.toPromise();
     }
@@ -10469,18 +6319,7 @@ export class PromiseTermsApi {
      * @param [limit] Max suggested terms to return.
      */
     public termsSuggestedList(term: string, limit?: number, _options?: PromiseConfigurationOptions): Promise<Array<string>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.termsSuggestedList(term, limit, observableOptions);
         return result.toPromise();
     }
@@ -10512,18 +6351,7 @@ export class PromiseTermsOfServiceApi {
      * @param [tosType] Request type.
      */
     public termsOfServiceGetWithHttpInfo(adAccountId: string, includeHtml?: boolean, tosType?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TermsOfService>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.termsOfServiceGetWithHttpInfo(adAccountId, includeHtml, tosType, observableOptions);
         return result.toPromise();
     }
@@ -10536,18 +6364,7 @@ export class PromiseTermsOfServiceApi {
      * @param [tosType] Request type.
      */
     public termsOfServiceGet(adAccountId: string, includeHtml?: boolean, tosType?: string, _options?: PromiseConfigurationOptions): Promise<TermsOfService> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.termsOfServiceGet(adAccountId, includeHtml, tosType, observableOptions);
         return result.toPromise();
     }
@@ -10580,18 +6397,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardsUserFollowsListWithHttpInfo(bookmark?: string, pageSize?: number, explicitFollowing?: boolean, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BoardsUserFollowsList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsUserFollowsListWithHttpInfo(bookmark, pageSize, explicitFollowing, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -10605,18 +6411,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public boardsUserFollowsList(bookmark?: string, pageSize?: number, explicitFollowing?: boolean, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<BoardsUserFollowsList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -10628,18 +6423,7 @@ export class PromiseUserAccountApi {
      * @param followUserRequest Follow a user.
      */
     public followUserUpdateWithHttpInfo(username: string, followUserRequest: FollowUserRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UserSummary>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.followUserUpdateWithHttpInfo(username, followUserRequest, observableOptions);
         return result.toPromise();
     }
@@ -10651,18 +6435,7 @@ export class PromiseUserAccountApi {
      * @param followUserRequest Follow a user.
      */
     public followUserUpdate(username: string, followUserRequest: FollowUserRequest, _options?: PromiseConfigurationOptions): Promise<UserSummary> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.followUserUpdate(username, followUserRequest, observableOptions);
         return result.toPromise();
     }
@@ -10674,18 +6447,7 @@ export class PromiseUserAccountApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public followersListWithHttpInfo(bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FollowersList200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.followersListWithHttpInfo(bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -10697,18 +6459,7 @@ export class PromiseUserAccountApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public followersList(bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<FollowersList200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.followersList(bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -10718,18 +6469,7 @@ export class PromiseUserAccountApi {
      * List linked businesses
      */
     public linkedBusinessAccountsGetWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<LinkedBusiness>>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.linkedBusinessAccountsGetWithHttpInfo(observableOptions);
         return result.toPromise();
     }
@@ -10739,18 +6479,7 @@ export class PromiseUserAccountApi {
      * List linked businesses
      */
     public linkedBusinessAccountsGet(_options?: PromiseConfigurationOptions): Promise<Array<LinkedBusiness>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.linkedBusinessAccountsGet(observableOptions);
         return result.toPromise();
     }
@@ -10761,18 +6490,7 @@ export class PromiseUserAccountApi {
      * @param website Website with path or domain only
      */
     public unverifyWebsiteDeleteWithHttpInfo(website: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.unverifyWebsiteDeleteWithHttpInfo(website, observableOptions);
         return result.toPromise();
     }
@@ -10783,18 +6501,7 @@ export class PromiseUserAccountApi {
      * @param website Website with path or domain only
      */
     public unverifyWebsiteDelete(website: string, _options?: PromiseConfigurationOptions): Promise<void> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.unverifyWebsiteDelete(website, observableOptions);
         return result.toPromise();
     }
@@ -10814,18 +6521,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public userAccountAnalyticsWithHttpInfo(startDate: string, endDate: string, fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, splitField?: 'NO_SPLIT' | 'APP_TYPE' | 'OWNED_CONTENT' | 'SOURCE' | 'PIN_FORMAT', adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: AnalyticsMetricsResponse; }>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userAccountAnalyticsWithHttpInfo(startDate, endDate, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, splitField, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -10845,18 +6541,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public userAccountAnalytics(startDate: string, endDate: string, fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, splitField?: 'NO_SPLIT' | 'APP_TYPE' | 'OWNED_CONTENT' | 'SOURCE' | 'PIN_FORMAT', adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: AnalyticsMetricsResponse; }> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userAccountAnalytics(startDate, endDate, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, splitField, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -10878,18 +6563,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public userAccountAnalyticsTopPinsWithHttpInfo(startDate: string, endDate: string, sortBy: 'ENGAGEMENT' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TopPinsAnalyticsResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userAccountAnalyticsTopPinsWithHttpInfo(startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -10911,18 +6585,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public userAccountAnalyticsTopPins(startDate: string, endDate: string, sortBy: 'ENGAGEMENT' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'ENGAGEMENT' | 'ENGAGEMENT_RATE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'OUTBOUND_CLICK_RATE' | 'PIN_CLICK' | 'PIN_CLICK_RATE' | 'SAVE' | 'SAVE_RATE'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<TopPinsAnalyticsResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userAccountAnalyticsTopPins(startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -10944,18 +6607,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public userAccountAnalyticsTopVideoPinsWithHttpInfo(startDate: string, endDate: string, sortBy: 'IMPRESSION' | 'SAVE' | 'OUTBOUND_CLICK' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'IMPRESSION' | 'SAVE' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START' | 'OUTBOUND_CLICK'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TopVideoPinsAnalyticsResponse>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userAccountAnalyticsTopVideoPinsWithHttpInfo(startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -10977,18 +6629,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public userAccountAnalyticsTopVideoPins(startDate: string, endDate: string, sortBy: 'IMPRESSION' | 'SAVE' | 'OUTBOUND_CLICK' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START', fromClaimedContent?: 'OTHER' | 'CLAIMED' | 'BOTH', pinFormat?: 'ALL' | 'ORGANIC_IMAGE' | 'ORGANIC_PRODUCT' | 'ORGANIC_VIDEO' | 'ADS_STANDARD' | 'ADS_PRODUCT' | 'ADS_VIDEO' | 'ADS_IDEA', appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', contentType?: 'ALL' | 'PAID' | 'ORGANIC', source?: 'ALL' | 'YOUR_PINS' | 'OTHER_PINS', metricTypes?: Array<'IMPRESSION' | 'SAVE' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START' | 'OUTBOUND_CLICK'>, numOfPins?: number, createdInLastNDays?: 30, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<TopVideoPinsAnalyticsResponse> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userAccountAnalyticsTopVideoPins(startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -11001,18 +6642,7 @@ export class PromiseUserAccountApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public userAccountFollowedInterestsWithHttpInfo(username: string, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UserAccountFollowedInterests200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userAccountFollowedInterestsWithHttpInfo(username, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -11025,18 +6655,7 @@ export class PromiseUserAccountApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public userAccountFollowedInterests(username: string, bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<UserAccountFollowedInterests200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userAccountFollowedInterests(username, bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -11047,18 +6666,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public userAccountGetWithHttpInfo(adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Account>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userAccountGetWithHttpInfo(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -11069,18 +6677,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public userAccountGet(adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<Account> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userAccountGet(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -11095,18 +6692,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public userFollowingGetWithHttpInfo(bookmark?: string, pageSize?: number, feedType?: UserFollowingFeedType, explicitFollowing?: boolean, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UserFollowingGet200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userFollowingGetWithHttpInfo(bookmark, pageSize, feedType, explicitFollowing, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -11121,18 +6707,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public userFollowingGet(bookmark?: string, pageSize?: number, feedType?: UserFollowingFeedType, explicitFollowing?: boolean, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<UserFollowingGet200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -11144,18 +6719,7 @@ export class PromiseUserAccountApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public userWebsitesGetWithHttpInfo(bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UserWebsitesGet200Response>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userWebsitesGetWithHttpInfo(bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -11167,18 +6731,7 @@ export class PromiseUserAccountApi {
      * @param [pageSize] Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      */
     public userWebsitesGet(bookmark?: string, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<UserWebsitesGet200Response> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.userWebsitesGet(bookmark, pageSize, observableOptions);
         return result.toPromise();
     }
@@ -11190,18 +6743,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public verifyWebsiteUpdateWithHttpInfo(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UserWebsiteSummary>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.verifyWebsiteUpdateWithHttpInfo(userWebsiteVerifyRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -11213,18 +6755,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public verifyWebsiteUpdate(userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<UserWebsiteSummary> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -11235,18 +6766,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public websiteVerificationGetWithHttpInfo(adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UserWebsiteVerificationCode>> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.websiteVerificationGetWithHttpInfo(adAccountId, observableOptions);
         return result.toPromise();
     }
@@ -11257,18 +6777,7 @@ export class PromiseUserAccountApi {
      * @param [adAccountId] Unique identifier of an ad account.
      */
     public websiteVerificationGet(adAccountId?: string, _options?: PromiseConfigurationOptions): Promise<UserWebsiteVerificationCode> {
-        let observableOptions: undefined | ConfigurationOptions
-        if (_options){
-	    observableOptions = {
-                baseServer: _options.baseServer,
-                httpApi: _options.httpApi,
-                middleware: _options.middleware?.map(
-                    m => new PromiseMiddlewareWrapper(m)
-		),
-		middlewareMergeStrategy: _options.middlewareMergeStrategy,
-                authMethods: _options.authMethods
-	    }
-	}
+        const observableOptions = wrapOptions(_options);
         const result = this.api.websiteVerificationGet(adAccountId, observableOptions);
         return result.toPromise();
     }

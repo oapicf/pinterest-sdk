@@ -95,7 +95,7 @@ public class AdvancedAuctionApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call advancedAuctionItemsGetPostCall(AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call advancedAuctionItemsGetPostCall(@javax.annotation.Nonnull AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -145,7 +145,7 @@ public class AdvancedAuctionApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call advancedAuctionItemsGetPostValidateBeforeCall(AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call advancedAuctionItemsGetPostValidateBeforeCall(@javax.annotation.Nonnull AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advancedAuctionItemsGetRequest' is set
         if (advancedAuctionItemsGetRequest == null) {
             throw new ApiException("Missing the required parameter 'advancedAuctionItemsGetRequest' when calling advancedAuctionItemsGetPost(Async)");
@@ -174,7 +174,7 @@ public class AdvancedAuctionApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public AdvancedAuctionItems advancedAuctionItemsGetPost(AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest, String adAccountId) throws ApiException {
+    public AdvancedAuctionItems advancedAuctionItemsGetPost(@javax.annotation.Nonnull AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<AdvancedAuctionItems> localVarResp = advancedAuctionItemsGetPostWithHttpInfo(advancedAuctionItemsGetRequest, adAccountId);
         return localVarResp.getData();
     }
@@ -198,7 +198,7 @@ public class AdvancedAuctionApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdvancedAuctionItems> advancedAuctionItemsGetPostWithHttpInfo(AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest, String adAccountId) throws ApiException {
+    public ApiResponse<AdvancedAuctionItems> advancedAuctionItemsGetPostWithHttpInfo(@javax.annotation.Nonnull AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = advancedAuctionItemsGetPostValidateBeforeCall(advancedAuctionItemsGetRequest, adAccountId, null);
         Type localVarReturnType = new TypeToken<AdvancedAuctionItems>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -224,7 +224,7 @@ public class AdvancedAuctionApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call advancedAuctionItemsGetPostAsync(AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest, String adAccountId, final ApiCallback<AdvancedAuctionItems> _callback) throws ApiException {
+    public okhttp3.Call advancedAuctionItemsGetPostAsync(@javax.annotation.Nonnull AdvancedAuctionItemsGetRequest advancedAuctionItemsGetRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback<AdvancedAuctionItems> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = advancedAuctionItemsGetPostValidateBeforeCall(advancedAuctionItemsGetRequest, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<AdvancedAuctionItems>(){}.getType();
@@ -250,7 +250,7 @@ public class AdvancedAuctionApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call advancedAuctionItemsSubmitPostCall(AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call advancedAuctionItemsSubmitPostCall(@javax.annotation.Nonnull AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -300,7 +300,7 @@ public class AdvancedAuctionApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call advancedAuctionItemsSubmitPostValidateBeforeCall(AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call advancedAuctionItemsSubmitPostValidateBeforeCall(@javax.annotation.Nonnull AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advancedAuctionItemsSubmitRequest' is set
         if (advancedAuctionItemsSubmitRequest == null) {
             throw new ApiException("Missing the required parameter 'advancedAuctionItemsSubmitRequest' when calling advancedAuctionItemsSubmitPost(Async)");
@@ -329,7 +329,7 @@ public class AdvancedAuctionApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public AdvancedAuctionProcessedItems advancedAuctionItemsSubmitPost(AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest, String adAccountId) throws ApiException {
+    public AdvancedAuctionProcessedItems advancedAuctionItemsSubmitPost(@javax.annotation.Nonnull AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<AdvancedAuctionProcessedItems> localVarResp = advancedAuctionItemsSubmitPostWithHttpInfo(advancedAuctionItemsSubmitRequest, adAccountId);
         return localVarResp.getData();
     }
@@ -353,7 +353,7 @@ public class AdvancedAuctionApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdvancedAuctionProcessedItems> advancedAuctionItemsSubmitPostWithHttpInfo(AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest, String adAccountId) throws ApiException {
+    public ApiResponse<AdvancedAuctionProcessedItems> advancedAuctionItemsSubmitPostWithHttpInfo(@javax.annotation.Nonnull AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = advancedAuctionItemsSubmitPostValidateBeforeCall(advancedAuctionItemsSubmitRequest, adAccountId, null);
         Type localVarReturnType = new TypeToken<AdvancedAuctionProcessedItems>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -379,7 +379,7 @@ public class AdvancedAuctionApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call advancedAuctionItemsSubmitPostAsync(AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest, String adAccountId, final ApiCallback<AdvancedAuctionProcessedItems> _callback) throws ApiException {
+    public okhttp3.Call advancedAuctionItemsSubmitPostAsync(@javax.annotation.Nonnull AdvancedAuctionItemsSubmitRequest advancedAuctionItemsSubmitRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback<AdvancedAuctionProcessedItems> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = advancedAuctionItemsSubmitPostValidateBeforeCall(advancedAuctionItemsSubmitRequest, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<AdvancedAuctionProcessedItems>(){}.getType();

@@ -88,7 +88,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="leadsExportCreateRequest"></param>
-    virtual void leads_export_create(const std::string &adAccountId, const org::openapitools::server::model::LeadsExportCreateRequest &leadsExportCreateRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void leads_export_create( const std::string &adAccountId, const org::openapitools::server::model::LeadsExportCreateRequest &leadsExportCreateRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get the lead export from the lead export create call
     /// </summary>
@@ -97,7 +97,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="leadsExportId">lead_export_id token returned from the create a lead export endpoint</param>
-    virtual void leads_export_get(const std::string &adAccountId, const std::string &leadsExportId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void leads_export_get( const std::string &adAccountId, const std::string &leadsExportId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

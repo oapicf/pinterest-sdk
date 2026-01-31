@@ -1,18 +1,18 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.PinMediaSourceImagesBase64ItemsInner;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Multiple Base64-encoded images media source
- **/
+ * Multiple Base64-encoded images media source
+ */
 @ApiModel(description="Multiple Base64-encoded images media source")
 
 public class PinMediaSourceImagesBase64  {
@@ -48,15 +48,18 @@ MULTIPLE_IMAGE_BASE64(String.valueOf("multiple_image_base64"));
 }
 
   @ApiModelProperty(value = "")
+
   private SourceTypeEnum sourceType;
 
-  @ApiModelProperty(required = true, value = "Array with image objects.")
  /**
-   * Array with image objects.
-  **/
+  * Array with image objects.
+  */
+  @ApiModelProperty(required = true, value = "Array with image objects.")
+
   private List<PinMediaSourceImagesBase64ItemsInner> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private Integer index;
  /**
    * Get sourceType

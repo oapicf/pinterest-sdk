@@ -37,14 +37,14 @@ pub enum TermsSuggestedSlashListError {
 /// Get a list of terms logically related to each input term. <p/> Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
 pub async fn terms_related_slash_list(configuration: &configuration::Configuration, terms: Vec<String>) -> Result<models::RelatedTerms, Error<TermsRelatedSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_terms = terms;
+    let p_query_terms = terms;
 
     let uri_str = format!("{}/terms/related", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     req_builder = match "multi" {
-        "multi" => req_builder.query(&p_terms.into_iter().map(|p| ("terms".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => req_builder.query(&[("terms", &p_terms.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        "multi" => req_builder.query(&p_query_terms.into_iter().map(|p| ("terms".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("terms", &p_query_terms.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -81,14 +81,14 @@ pub async fn terms_related_slash_list(configuration: &configuration::Configurati
 /// Get popular search terms that begin with your input term. <p/> Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
 pub async fn terms_suggested_slash_list(configuration: &configuration::Configuration, term: &str, limit: Option<i32>) -> Result<Vec<String>, Error<TermsSuggestedSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_term = term;
-    let p_limit = limit;
+    let p_query_term = term;
+    let p_query_limit = limit;
 
     let uri_str = format!("{}/terms/suggested", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("term", &p_term.to_string())]);
-    if let Some(ref param_value) = p_limit {
+    req_builder = req_builder.query(&[("term", &p_query_term.to_string())]);
+    if let Some(ref param_value) = p_query_limit {
         req_builder = req_builder.query(&[("limit", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

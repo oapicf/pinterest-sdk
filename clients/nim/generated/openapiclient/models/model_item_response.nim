@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_attributes
 import model_catalogs_type
@@ -17,12 +19,30 @@ import model_item_response_any_of1
 import model_item_validation_event
 import model_pin
 
+# AnyOf type
+type ItemResponseKind* {.pure.} = enum
+  ItemResponseAnyOfVariant
+  ItemResponseAnyOf1Variant
+
 type ItemResponse* = object
   ## Object describing an item record
-  catalogType*: CatalogsType
-  itemId*: string ## The catalog item id in the merchant namespace
-  pins*: seq[Pin] ## The pins mapped to the item
-  attributes*: CatalogsCreativeAssetsAttributes
-  hotelId*: string ## The catalog hotel id in the merchant namespace
-  creativeAssetsId*: string ## The catalog creative assets id in the merchant namespace
-  errors*: seq[ItemValidationEvent] ## Array with the errors for the item id requested
+  case kind*: ItemResponseKind
+  of ItemResponseKind.ItemResponseAnyOfVariant:
+    ItemResponse_anyOfValue*: ItemResponseAnyOf
+  of ItemResponseKind.ItemResponseAnyOf1Variant:
+    ItemResponse_anyOf_1Value*: ItemResponseAnyOf1
+
+proc to*(node: JsonNode, T: typedesc[ItemResponse]): ItemResponse =
+  ## Custom deserializer for anyOf type - tries each variant
+  try:
+    return ItemResponse(kind: ItemResponseKind.ItemResponseAnyOfVariant, ItemResponse_anyOfValue: to(node, ItemResponseAnyOf))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as ItemResponseAnyOf: ", e.msg
+  try:
+    return ItemResponse(kind: ItemResponseKind.ItemResponseAnyOf1Variant, ItemResponse_anyOf_1Value: to(node, ItemResponseAnyOf1))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as ItemResponseAnyOf1: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of ItemResponse. JSON: " & $node)
+

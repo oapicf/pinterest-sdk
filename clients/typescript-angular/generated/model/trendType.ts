@@ -9,16 +9,11 @@
  */
 
 
-export type TrendType = 'growing' | 'monthly' | 'yearly' | 'seasonal';
-
 export const TrendType = {
-
-    Growing: 'growing' as TrendType,
-
-    Monthly: 'monthly' as TrendType,
-
-    Yearly: 'yearly' as TrendType,
-
-    Seasonal: 'seasonal' as TrendType
-};
+    Growing: 'growing',
+    Monthly: 'monthly',
+    Yearly: 'yearly',
+    Seasonal: 'seasonal'
+} as const;
+export type TrendType = typeof TrendType[keyof typeof TrendType];
 

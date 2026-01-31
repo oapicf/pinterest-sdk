@@ -18,94 +18,111 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdResponse  {
   
-  @ApiModelProperty(example = "2680059592705", value = "ID of the ad group that contains the ad.")
  /**
-   * ID of the ad group that contains the ad.
-  **/
+  * ID of the ad group that contains the ad.
+  */
+  @ApiModelProperty(example = "2680059592705", value = "ID of the ad group that contains the ad.")
+
   private String adGroupId;
 
-  @ApiModelProperty(value = "Deep link URL for Android devices.")
  /**
-   * Deep link URL for Android devices.
-  **/
+  * Deep link URL for Android devices.
+  */
+  @ApiModelProperty(value = "Deep link URL for Android devices.")
+
   private String androidDeepLink;
 
-  @ApiModelProperty(value = "Comma-separated deep links for the carousel pin on Android.")
  /**
-   * Comma-separated deep links for the carousel pin on Android.
-  **/
+  * Comma-separated deep links for the carousel pin on Android.
+  */
+  @ApiModelProperty(value = "Comma-separated deep links for the carousel pin on Android.")
+
   private List<String> carouselAndroidDeepLinks;
 
-  @ApiModelProperty(value = "Comma-separated destination URLs for the carousel pin to promote.")
  /**
-   * Comma-separated destination URLs for the carousel pin to promote.
-  **/
+  * Comma-separated destination URLs for the carousel pin to promote.
+  */
+  @ApiModelProperty(value = "Comma-separated destination URLs for the carousel pin to promote.")
+
   private List<String> carouselDestinationUrls;
 
-  @ApiModelProperty(value = "Comma-separated deep links for the carousel pin on iOS.")
  /**
-   * Comma-separated deep links for the carousel pin on iOS.
-  **/
+  * Comma-separated deep links for the carousel pin on iOS.
+  */
+  @ApiModelProperty(value = "Comma-separated deep links for the carousel pin on iOS.")
+
   private List<String> carouselIosDeepLinks;
 
-  @ApiModelProperty(value = "Tracking url for the ad clicks.")
  /**
-   * Tracking url for the ad clicks.
-  **/
+  * Tracking url for the ad clicks.
+  */
+  @ApiModelProperty(value = "Tracking url for the ad clicks.")
+
   private String clickTrackingUrl;
 
   @ApiModelProperty(value = "")
+
   private CreativeType creativeType;
 
-  @ApiModelProperty(value = "Destination URL.")
  /**
-   * Destination URL.
-  **/
+  * Destination URL.
+  */
+  @ApiModelProperty(value = "Destination URL.")
+
   private String destinationUrl;
 
-  @ApiModelProperty(value = "Deep link URL for iOS devices.")
  /**
-   * Deep link URL for iOS devices.
-  **/
+  * Deep link URL for iOS devices.
+  */
+  @ApiModelProperty(value = "Deep link URL for iOS devices.")
+
   private String iosDeepLink;
 
-  @ApiModelProperty(example = "false", value = "Is original pin deleted?")
  /**
-   * Is original pin deleted?
-  **/
+  * Is original pin deleted?
+  */
+  @ApiModelProperty(example = "false", value = "Is original pin deleted?")
+
   private Boolean isPinDeleted;
 
-  @ApiModelProperty(example = "false", value = "Is pin repinnable?")
  /**
-   * Is pin repinnable?
-  **/
+  * Is pin repinnable?
+  */
+  @ApiModelProperty(example = "false", value = "Is pin repinnable?")
+
   private Boolean isRemovable;
 
-  @ApiModelProperty(value = "Name of the ad - 255 chars max.")
  /**
-   * Name of the ad - 255 chars max.
-  **/
+  * Name of the ad - 255 chars max.
+  */
+  @ApiModelProperty(value = "Name of the ad - 255 chars max.")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private EntityStatus status;
 
   @ApiModelProperty(value = "")
+
   private TrackingUrls trackingUrls;
 
-  @ApiModelProperty(value = "Tracking URL for ad impressions.")
  /**
-   * Tracking URL for ad impressions.
-  **/
+  * Tracking URL for ad impressions.
+  */
+  @ApiModelProperty(value = "Tracking URL for ad impressions.")
+
   private String viewTrackingUrl;
 
-  @ApiModelProperty(value = "Lead form ID for lead ad generation.")
  /**
-   * Lead form ID for lead ad generation.
-  **/
+  * Lead form ID for lead ad generation.
+  */
+  @ApiModelProperty(value = "Lead form ID for lead ad generation.")
+
   private String leadFormId;
 
   @ApiModelProperty(value = "")
+
   private GridClickType gridClickType;
 
 public enum CustomizableCtaTypeEnum {
@@ -138,52 +155,60 @@ GET_OFFER(String.valueOf("GET_OFFER")), LEARN_MORE(String.valueOf("LEARN_MORE"))
     }
 }
 
-  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
  /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-  **/
+  * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  */
+  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
+
   private CustomizableCtaTypeEnum customizableCtaType;
 
-  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
  /**
-   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-  **/
+  * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+  */
+  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
+
   private QuizPinData quizPinData;
 
-  @ApiModelProperty(example = "394205773611545468", value = "Pin ID.")
  /**
-   * Pin ID.
-  **/
+  * Pin ID.
+  */
+  @ApiModelProperty(example = "394205773611545468", value = "Pin ID.")
+
   private String pinId;
 
-  @ApiModelProperty(example = "549755885175", value = "The ID of the advertiser that this ad belongs to.")
  /**
-   * The ID of the advertiser that this ad belongs to.
-  **/
+  * The ID of the advertiser that this ad belongs to.
+  */
+  @ApiModelProperty(example = "549755885175", value = "The ID of the advertiser that this ad belongs to.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "626735565838", value = "ID of the ad campaign that contains this ad.")
  /**
-   * ID of the ad campaign that contains this ad.
-  **/
+  * ID of the ad campaign that contains this ad.
+  */
+  @ApiModelProperty(example = "626735565838", value = "ID of the ad campaign that contains this ad.")
+
   private String campaignId;
 
-  @ApiModelProperty(value = "Destination URL template for all items within a collections drawer.")
  /**
-   * Destination URL template for all items within a collections drawer.
-  **/
+  * Destination URL template for all items within a collections drawer.
+  */
+  @ApiModelProperty(value = "Destination URL template for all items within a collections drawer.")
+
   private String collectionItemsDestinationUrlTemplate;
 
-  @ApiModelProperty(example = "1451431341", value = "Pin creation time. Unix timestamp in seconds.")
  /**
-   * Pin creation time. Unix timestamp in seconds.
-  **/
+  * Pin creation time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1451431341", value = "Pin creation time. Unix timestamp in seconds.")
+
   private Integer createdTime;
 
-  @ApiModelProperty(example = "687195134316", value = "The ID of this ad.")
  /**
-   * The ID of this ad.
-  **/
+  * The ID of this ad.
+  */
+  @ApiModelProperty(example = "687195134316", value = "The ID of this ad.")
+
   private String id;
 
 public enum RejectedReasonsEnum {
@@ -216,16 +241,18 @@ HASHTAGS(String.valueOf("HASHTAGS")), PROMOTIONS_AND_PRICES(String.valueOf("PROM
     }
 }
 
-  @ApiModelProperty(value = "Enum reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".")
  /**
-   * Enum reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
-  **/
+  * Enum reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
+  */
+  @ApiModelProperty(value = "Enum reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".")
+
   private List<RejectedReasonsEnum> rejectedReasons = new ArrayList<>();
 
-  @ApiModelProperty(value = "Text reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".")
  /**
-   * Text reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
-  **/
+  * Text reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".
+  */
+  @ApiModelProperty(value = "Text reason why the pin was rejected. Returned if <code>review_status</code> is \"REJECTED\".")
+
   private List<String> rejectionLabels = new ArrayList<>();
 
 public enum ReviewStatusEnum {
@@ -258,28 +285,32 @@ OTHER(String.valueOf("OTHER")), PENDING(String.valueOf("PENDING")), REJECTED(Str
     }
 }
 
-  @ApiModelProperty(example = "PENDING", value = "Ad review status")
  /**
-   * Ad review status
-  **/
+  * Ad review status
+  */
+  @ApiModelProperty(example = "PENDING", value = "Ad review status")
+
   private ReviewStatusEnum reviewStatus;
 
-  @ApiModelProperty(example = "pinpromotion", value = "Always \"ad\".")
  /**
-   * Always \"ad\".
-  **/
+  * Always \"ad\".
+  */
+  @ApiModelProperty(example = "pinpromotion", value = "Always \"ad\".")
+
   private String type;
 
-  @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
  /**
-   * Last update time. Unix timestamp in seconds.
-  **/
+  * Last update time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
+
   private Integer updatedTime;
 
-  @ApiModelProperty(value = "Ad summary status")
  /**
-   * Ad summary status
-  **/
+  * Ad summary status
+  */
+  @ApiModelProperty(value = "Ad summary status")
+
   private PinPromotionSummaryStatus summaryStatus;
  /**
    * ID of the ad group that contains the ad.

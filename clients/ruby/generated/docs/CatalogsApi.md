@@ -1486,7 +1486,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CatalogsApi.new
-items_batch_post_request = PinterestSdkClient::CatalogsItemsCreateBatchRequest.new({country: PinterestSdkClient::Country::AD, language: PinterestSdkClient::CatalogsItemsRequestLanguage.new, operation: PinterestSdkClient::BatchOperation::UPDATE, items: [PinterestSdkClient::ItemCreateBatchRecord.new]}) # ItemsBatchPostRequest | Request object used to create catalogs items in a batch
+items_batch_post_request = PinterestSdkClient::CatalogsItemsCreateBatchRequest.new({country: PinterestSdkClient::Country::AD, language: 'af-ZA', operation: PinterestSdkClient::BatchOperation::UPDATE, items: [PinterestSdkClient::ItemCreateBatchRecord.new]}) # ItemsBatchPostRequest | Request object used to create catalogs items in a batch
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }
@@ -1719,7 +1719,7 @@ PinterestSdkClient.configure do |config|
 end
 
 api_instance = PinterestSdkClient::CatalogsApi.new
-catalogs_items_request = PinterestSdkClient::CatalogsItemsRequest.new({country: PinterestSdkClient::Country::AD, language: PinterestSdkClient::CatalogsItemsRequestLanguage.new, filters: PinterestSdkClient::CatalogsCreativeAssetsItemsPostFilter.new({catalog_type: 'CREATIVE_ASSETS', creative_assets_ids: ['creative_assets_ids_example']})}) # CatalogsItemsRequest | Request object used to get catalogs items
+catalogs_items_request = PinterestSdkClient::CatalogsItemsRequest.new({country: PinterestSdkClient::Country::AD, language: 'af-ZA', filters: PinterestSdkClient::CatalogsCreativeAssetsItemsPostFilter.new({catalog_type: 'CREATIVE_ASSETS', creative_assets_ids: ['creative_assets_ids_example']})}) # CatalogsItemsRequest | Request object used to get catalogs items
 opts = {
   ad_account_id: 'ad_account_id_example' # String | Unique identifier of an ad account.
 }

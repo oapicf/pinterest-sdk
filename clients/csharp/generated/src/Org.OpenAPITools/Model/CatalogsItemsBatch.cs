@@ -138,9 +138,6 @@ namespace Org.OpenAPITools.Model
             CatalogsCreativeAssetsItemsBatch? catalogsCreativeAssetsItemsBatch = null;
             CatalogsHotelItemsBatch? catalogsHotelItemsBatch = null;
             CatalogsRetailItemsBatch? catalogsRetailItemsBatch = null;
-            CatalogsCreativeAssetsItemsBatch? catalogsCreativeAssetsItemsBatch = null;
-            CatalogsHotelItemsBatch? catalogsHotelItemsBatch = null;
-            CatalogsRetailItemsBatch? catalogsRetailItemsBatch = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -169,21 +166,6 @@ namespace Org.OpenAPITools.Model
                             catalogsHotelItemsBatch = JsonSerializer.Deserialize<CatalogsHotelItemsBatch>(ref utf8JsonReaderCatalogsHotelItemsBatch, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("RETAIL") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsRetailItemsBatch = utf8JsonReader;
-                            catalogsRetailItemsBatch = JsonSerializer.Deserialize<CatalogsRetailItemsBatch>(ref utf8JsonReaderCatalogsRetailItemsBatch, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsCreativeAssetsItemsBatch") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsCreativeAssetsItemsBatch = utf8JsonReader;
-                            catalogsCreativeAssetsItemsBatch = JsonSerializer.Deserialize<CatalogsCreativeAssetsItemsBatch>(ref utf8JsonReaderCatalogsCreativeAssetsItemsBatch, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsHotelItemsBatch") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsHotelItemsBatch = utf8JsonReader;
-                            catalogsHotelItemsBatch = JsonSerializer.Deserialize<CatalogsHotelItemsBatch>(ref utf8JsonReaderCatalogsHotelItemsBatch, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsRetailItemsBatch") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsRetailItemsBatch = utf8JsonReader;
                             catalogsRetailItemsBatch = JsonSerializer.Deserialize<CatalogsRetailItemsBatch>(ref utf8JsonReaderCatalogsRetailItemsBatch, jsonSerializerOptions);
@@ -223,15 +205,6 @@ namespace Org.OpenAPITools.Model
 
             if (catalogType.IsSet && catalogType.Value == null)
                 throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsItemsBatch.");
-
-            if (catalogsCreativeAssetsItemsBatch != null)
-                return new CatalogsItemsBatch(catalogsCreativeAssetsItemsBatch);
-
-            if (catalogsHotelItemsBatch != null)
-                return new CatalogsItemsBatch(catalogsHotelItemsBatch);
-
-            if (catalogsRetailItemsBatch != null)
-                return new CatalogsItemsBatch(catalogsRetailItemsBatch);
 
             if (catalogsCreativeAssetsItemsBatch != null)
                 return new CatalogsItemsBatch(catalogsCreativeAssetsItemsBatch);

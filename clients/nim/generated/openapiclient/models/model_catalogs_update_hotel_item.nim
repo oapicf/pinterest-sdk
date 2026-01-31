@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_updatable_hotel_attributes
 
@@ -22,11 +24,38 @@ type CatalogsUpdateHotelItem* = object
   attributes*: CatalogsUpdatableHotelAttributes
 
 func `%`*(v: Operation): JsonNode =
-  let str = case v:
-    of Operation.UPDATE: "UPDATE"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Operation.UPDATE: %"UPDATE"
 func `$`*(v: Operation): string =
   result = case v:
-    of Operation.UPDATE: "UPDATE"
+    of Operation.UPDATE: $("UPDATE")
+
+proc to*(node: JsonNode, T: typedesc[Operation]): Operation =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Operation, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("UPDATE"):
+    return Operation.UPDATE
+  else:
+    raise newException(ValueError, "Invalid enum value for Operation: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsUpdateHotelItem with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsUpdateHotelItem]): CatalogsUpdateHotelItem =
+  result = CatalogsUpdateHotelItem()
+  if node.kind == JObject:
+    if node.hasKey("hotel_id"):
+      result.hotelId = to(node["hotel_id"], string)
+    if node.hasKey("operation"):
+      result.operation = to(node["operation"], Operation)
+    if node.hasKey("attributes"):
+      result.attributes = to(node["attributes"], CatalogsUpdatableHotelAttributes)
+
+# Custom JSON serialization for CatalogsUpdateHotelItem with custom field names
+proc `%`*(obj: CatalogsUpdateHotelItem): JsonNode =
+  result = newJObject()
+  result["hotel_id"] = %obj.hotelId
+  result["operation"] = %obj.operation
+  result["attributes"] = %obj.attributes
+

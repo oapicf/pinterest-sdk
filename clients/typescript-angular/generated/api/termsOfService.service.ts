@@ -11,10 +11,10 @@
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent, HttpParameterCodec, HttpContext 
+         HttpResponse, HttpEvent, HttpContext 
         }       from '@angular/common/http';
-import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
+import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
 import { TermsOfService } from '../model/termsOfService';
@@ -38,11 +38,13 @@ export class TermsOfServiceService extends BaseService {
     /**
      * Get terms of service
      * Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
+     * @endpoint get /ad_accounts/{ad_account_id}/terms_of_service
      * @param adAccountId Unique identifier of an ad account.
      * @param includeHtml Return HTML in TOS text.
      * @param tosType Request type.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public termsOfServiceGet(adAccountId: string, includeHtml?: boolean, tosType?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<TermsOfService>;
     public termsOfServiceGet(adAccountId: string, includeHtml?: boolean, tosType?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<TermsOfService>>;
@@ -52,11 +54,25 @@ export class TermsOfServiceService extends BaseService {
             throw new Error('Required parameter adAccountId was null or undefined when calling termsOfServiceGet.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>includeHtml, 'include_html');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>tosType, 'tos_type');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'include_html',
+            <any>includeHtml,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'tos_type',
+            <any>tosType,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -87,15 +103,16 @@ export class TermsOfServiceService extends BaseService {
         }
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/terms_of_service`;
-        return this.httpClient.request<TermsOfService>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<TermsOfService>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );

@@ -12,12 +12,9 @@
 
 import { HttpFile } from '../http/http';
 
-/**
-* A request to receive a client token.
-*/
 export class OauthAccessTokenRequestClientCredentials {
-    'grantType': OauthAccessTokenRequestClientCredentialsGrantTypeEnum;
     'scope': string;
+    'grantType': OauthAccessTokenRequestClientCredentialsGrantTypeEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -25,15 +22,15 @@ export class OauthAccessTokenRequestClientCredentials {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "grantType",
-            "baseName": "grant_type",
-            "type": "OauthAccessTokenRequestClientCredentialsGrantTypeEnum",
-            "format": ""
-        },
-        {
             "name": "scope",
             "baseName": "scope",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "grantType",
+            "baseName": "grant_type",
+            "type": "OauthAccessTokenRequestClientCredentialsGrantTypeEnum",
             "format": ""
         }    ];
 

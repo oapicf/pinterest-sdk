@@ -27,7 +27,7 @@ using Org.OpenAPITools.Client;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// A request to receive a client token.
+    /// OauthAccessTokenRequestClientCredentials
     /// </summary>
     public partial class OauthAccessTokenRequestClientCredentials : IValidatableObject
     {
@@ -146,8 +146,8 @@ namespace Org.OpenAPITools.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class OauthAccessTokenRequestClientCredentials {\n");
-            sb.Append("  GrantType: ").Append(GrantType).Append("\n");
             sb.Append("  Scope: ").Append(Scope).Append("\n");
+            sb.Append("  GrantType: ").Append(GrantType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -19,7 +19,7 @@ import java.util.List;
  */
 @ApiModel(description = "Schema describing the object in the response, which contains information about the events that were received and processed.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2025-05-10T05:39:31.012858315Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionApiResponse   {
   @JsonProperty("num_events_received")
   private Integer numEventsReceived;

@@ -11,13 +11,15 @@
 # Request object of catalogs items
 type CatalogsItemsRequest {
   country: Country
-  language: CatalogsItemsRequestLanguage
+  # We recommend using the CatalogsLocale values.
+  language: LanguageEnum
   filters: CatalogsItemsPostFilters
 }
 
 input CatalogsItemsRequestInput {
     country: Country
-    language: CatalogsItemsRequestLanguageInput
+    # We recommend using the CatalogsLocale values.
+    language: LanguageEnumInput
     filters: CatalogsItemsPostFiltersInput
 }
 

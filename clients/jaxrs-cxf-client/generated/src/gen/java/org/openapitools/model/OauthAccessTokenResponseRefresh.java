@@ -1,14 +1,14 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * A successful OAuth access token response for the refresh token flow.
- **/
+ * A successful OAuth access token response for the refresh token flow.
+ */
 @ApiModel(description="A successful OAuth access token response for the refresh token flow.")
 
 public class OauthAccessTokenResponseRefresh  {
@@ -44,18 +44,23 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
 }
 
   @ApiModelProperty(value = "")
+
   private ResponseTypeEnum responseType;
 
   @ApiModelProperty(required = true, value = "")
+
   private String accessToken;
 
   @ApiModelProperty(required = true, value = "")
+
   private String tokenType = "bearer";
 
   @ApiModelProperty(required = true, value = "")
+
   private Integer expiresIn;
 
   @ApiModelProperty(required = true, value = "")
+
   private String scope;
  /**
    * Get responseType

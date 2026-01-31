@@ -12,10 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TrendingKeywordsResponse  {
   
-  @ApiModelProperty(value = "The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.")
  /**
-   * The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
-  **/
+  * The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.
+  */
+  @ApiModelProperty(value = "The top trending keywords for the specified trend type in the requested region.<br /> Results are ordered, with the first element in the array representing the #1 top trend.")
+
   private List<TrendingKeywordsResponseTrendsInner> trends = new ArrayList<>();
  /**
    * The top trending keywords for the specified trend type in the requested region.&lt;br /&gt; Results are ordered, with the first element in the array representing the #1 top trend.

@@ -15,9 +15,9 @@
     },
     {
       "name": "type",
-      "type": ["null", "string"],
+      "type": ["string", "null"],
       "doc": "Always the string 'bidfloor'",
-      "default": null
+      "default": "bidfloor"
     }
   ]
 

@@ -9,12 +9,41 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_get_mmm_report_response_data
 
 type GetMMMReportResponse* = object
   ## 
-  code*: float
-  data*: GetMMMReportResponseData
-  message*: string
-  status*: string
+  code*: Option[float]
+  data*: Option[GetMMMReportResponseData]
+  message*: Option[string]
+  status*: Option[string]
+
+
+# Custom JSON deserialization for GetMMMReportResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[GetMMMReportResponse]): GetMMMReportResponse =
+  result = GetMMMReportResponse()
+  if node.kind == JObject:
+    if node.hasKey("code") and node["code"].kind != JNull:
+      result.code = some(to(node["code"], typeof(result.code.get())))
+    if node.hasKey("data") and node["data"].kind != JNull:
+      result.data = some(to(node["data"], typeof(result.data.get())))
+    if node.hasKey("message") and node["message"].kind != JNull:
+      result.message = some(to(node["message"], typeof(result.message.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+
+# Custom JSON serialization for GetMMMReportResponse with custom field names
+proc `%`*(obj: GetMMMReportResponse): JsonNode =
+  result = newJObject()
+  if obj.code.isSome():
+    result["code"] = %obj.code.get()
+  if obj.data.isSome():
+    result["data"] = %obj.data.get()
+  if obj.message.isSome():
+    result["message"] = %obj.message.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+

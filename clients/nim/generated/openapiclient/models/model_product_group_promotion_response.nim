@@ -9,9 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_product_group_promotion_response_item
 
 type ProductGroupPromotionResponse* = object
   ## 
-  items*: seq[ProductGroupPromotionResponseItem]
+  items*: Option[seq[ProductGroupPromotionResponseItem]]
+
+
+# Custom JSON deserialization for ProductGroupPromotionResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[ProductGroupPromotionResponse]): ProductGroupPromotionResponse =
+  result = ProductGroupPromotionResponse()
+  if node.kind == JObject:
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[ProductGroupPromotionResponseItem] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, ProductGroupPromotionResponseItem))
+        result.items = some(arr)
+
+# Custom JSON serialization for ProductGroupPromotionResponse with custom field names
+proc `%`*(obj: ProductGroupPromotionResponse): JsonNode =
+  result = newJObject()
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

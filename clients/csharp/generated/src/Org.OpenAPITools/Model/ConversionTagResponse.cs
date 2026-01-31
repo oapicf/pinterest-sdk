@@ -283,8 +283,7 @@ namespace Org.OpenAPITools.Model
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "last_fired_time_ms":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lastFiredTimeMs = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            lastFiredTimeMs = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "name":
                             name = new Option<string?>(utf8JsonReader.GetString()!);
@@ -298,8 +297,7 @@ namespace Org.OpenAPITools.Model
                             varVersion = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "configs":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                configs = new Option<ConversionTagConfigs?>(JsonSerializer.Deserialize<ConversionTagConfigs>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            configs = new Option<ConversionTagConfigs?>(JsonSerializer.Deserialize<ConversionTagConfigs>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

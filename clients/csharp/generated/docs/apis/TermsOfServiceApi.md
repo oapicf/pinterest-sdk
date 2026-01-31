@@ -14,66 +14,6 @@ Get terms of service
 
 Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class TermsOfServiceGetExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TermsOfServiceApi(config);
-            var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
-            var includeHtml = false;  // bool | Return HTML in TOS text. (optional)  (default to false)
-            var tosType = "tosType_example";  // string | Request type. (optional) 
-
-            try
-            {
-                // Get terms of service
-                TermsOfService result = apiInstance.TermsOfServiceGet(adAccountId, includeHtml, tosType);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TermsOfServiceApi.TermsOfServiceGet: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the TermsOfServiceGetWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get terms of service
-    ApiResponse<TermsOfService> response = apiInstance.TermsOfServiceGetWithHttpInfo(adAccountId, includeHtml, tosType);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TermsOfServiceApi.TermsOfServiceGetWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

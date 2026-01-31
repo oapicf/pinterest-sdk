@@ -47,16 +47,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(KeywordsMetricsArrayResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"data\" : [ {\n    \"metrics\" : {\n      \"avg_cpc_in_micro_currency\" : 100000,\n      \"keyword_query_volume\" : \"5M+\"\n    },\n    \"keyword\" : \"animals\"\n  }, {\n    \"metrics\" : {\n      \"avg_cpc_in_micro_currency\" : 100000,\n      \"keyword_query_volume\" : \"5M+\"\n    },\n    \"keyword\" : \"animals\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<KeywordsMetricsArrayResponse>(exampleJson)
-            : default(KeywordsMetricsArrayResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -80,16 +80,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(KeywordsResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"keywords\" : [ {\n    \"archived\" : false,\n    \"parent_id\" : \"383791336903426391\",\n    \"match_type\" : \"BROAD\",\n    \"id\" : \"383791336903426391\",\n    \"bid\" : 0,\n    \"parent_type\" : \"campaign\",\n    \"type\" : \"keyword\",\n    \"value\" : \"value\"\n  }, {\n    \"archived\" : false,\n    \"parent_id\" : \"383791336903426391\",\n    \"match_type\" : \"BROAD\",\n    \"id\" : \"383791336903426391\",\n    \"bid\" : 0,\n    \"parent_type\" : \"campaign\",\n    \"type\" : \"keyword\",\n    \"value\" : \"value\"\n  } ],\n  \"errors\" : [ {\n    \"data\" : {\n      \"archived\" : false,\n      \"parent_id\" : \"383791336903426391\",\n      \"match_type\" : \"BROAD\",\n      \"id\" : \"383791336903426391\",\n      \"bid\" : 0,\n      \"parent_type\" : \"campaign\",\n      \"type\" : \"keyword\",\n      \"value\" : \"value\"\n    },\n    \"error_messages\" : [ \"error_messages\", \"error_messages\" ]\n  }, {\n    \"data\" : {\n      \"archived\" : false,\n      \"parent_id\" : \"383791336903426391\",\n      \"match_type\" : \"BROAD\",\n      \"id\" : \"383791336903426391\",\n      \"bid\" : 0,\n      \"parent_type\" : \"campaign\",\n      \"type\" : \"keyword\",\n      \"value\" : \"value\"\n    },\n    \"error_messages\" : [ \"error_messages\", \"error_messages\" ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<KeywordsResponse>(exampleJson)
-            : default(KeywordsResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -116,16 +116,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(KeywordsGet200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"archived\" : false,\n    \"parent_id\" : \"383791336903426391\",\n    \"match_type\" : \"BROAD\",\n    \"id\" : \"383791336903426391\",\n    \"bid\" : 0,\n    \"parent_type\" : \"campaign\",\n    \"type\" : \"keyword\",\n    \"value\" : \"value\"\n  }, {\n    \"archived\" : false,\n    \"parent_id\" : \"383791336903426391\",\n    \"match_type\" : \"BROAD\",\n    \"id\" : \"383791336903426391\",\n    \"bid\" : 0,\n    \"parent_type\" : \"campaign\",\n    \"type\" : \"keyword\",\n    \"value\" : \"value\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<KeywordsGet200Response>(exampleJson)
-            : default(KeywordsGet200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -149,16 +149,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(KeywordsResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"keywords\" : [ {\n    \"archived\" : false,\n    \"parent_id\" : \"383791336903426391\",\n    \"match_type\" : \"BROAD\",\n    \"id\" : \"383791336903426391\",\n    \"bid\" : 0,\n    \"parent_type\" : \"campaign\",\n    \"type\" : \"keyword\",\n    \"value\" : \"value\"\n  }, {\n    \"archived\" : false,\n    \"parent_id\" : \"383791336903426391\",\n    \"match_type\" : \"BROAD\",\n    \"id\" : \"383791336903426391\",\n    \"bid\" : 0,\n    \"parent_type\" : \"campaign\",\n    \"type\" : \"keyword\",\n    \"value\" : \"value\"\n  } ],\n  \"errors\" : [ {\n    \"data\" : {\n      \"archived\" : false,\n      \"parent_id\" : \"383791336903426391\",\n      \"match_type\" : \"BROAD\",\n      \"id\" : \"383791336903426391\",\n      \"bid\" : 0,\n      \"parent_type\" : \"campaign\",\n      \"type\" : \"keyword\",\n      \"value\" : \"value\"\n    },\n    \"error_messages\" : [ \"error_messages\", \"error_messages\" ]\n  }, {\n    \"data\" : {\n      \"archived\" : false,\n      \"parent_id\" : \"383791336903426391\",\n      \"match_type\" : \"BROAD\",\n      \"id\" : \"383791336903426391\",\n      \"bid\" : 0,\n      \"parent_type\" : \"campaign\",\n      \"type\" : \"keyword\",\n      \"value\" : \"value\"\n    },\n    \"error_messages\" : [ \"error_messages\", \"error_messages\" ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<KeywordsResponse>(exampleJson)
-            : default(KeywordsResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -189,11 +189,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(TrendingKeywordsResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"trends\" : [ {\n    \"pct_growth_wow\" : 50,\n    \"time_series\" : {\n      \"2023-10-10\" : 31,\n      \"2023-10-17\" : 54,\n      \"2023-10-24\" : 77,\n      \"2023-10-31\" : 100\n    },\n    \"pct_growth_mom\" : 400,\n    \"keyword\" : \"couples halloween costumes\",\n    \"pct_growth_yoy\" : -5\n  }, {\n    \"pct_growth_wow\" : 50,\n    \"time_series\" : {\n      \"2023-10-10\" : 31,\n      \"2023-10-17\" : 54,\n      \"2023-10-24\" : 77,\n      \"2023-10-31\" : 100\n    },\n    \"pct_growth_mom\" : 400,\n    \"keyword\" : \"couples halloween costumes\",\n    \"pct_growth_yoy\" : -5\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -201,7 +201,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<TrendingKeywordsResponse>(exampleJson)
-            : default(TrendingKeywordsResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

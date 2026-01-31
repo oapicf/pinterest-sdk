@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * BillingProfilesResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BillingProfilesResponse {
 
   private @Nullable String id;
@@ -41,7 +41,7 @@ public class BillingProfilesResponse {
     
     ELO("ELO");
 
-    private String value;
+    private final String value;
 
     CardTypeEnum(String value) {
       this.value = value;
@@ -88,7 +88,7 @@ public class BillingProfilesResponse {
     
     PENDING_SECONDARY("PENDING_SECONDARY");
 
-    private String value;
+    private final String value;
 
     StatusEnum(String value) {
       this.value = value;
@@ -141,7 +141,7 @@ public class BillingProfilesResponse {
     
     CARTE_BANCAIRE("CARTE_BANCAIRE");
 
-    private String value;
+    private final String value;
 
     PaymentMethodBrandEnum(String value) {
       this.value = value;
@@ -170,7 +170,7 @@ public class BillingProfilesResponse {
 
   private @Nullable PaymentMethodBrandEnum paymentMethodBrand;
 
-  public BillingProfilesResponse id(String id) {
+  public BillingProfilesResponse id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -182,15 +182,15 @@ public class BillingProfilesResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "12312451231", description = "Billing ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public BillingProfilesResponse cardType(CardTypeEnum cardType) {
+  public BillingProfilesResponse cardType(@Nullable CardTypeEnum cardType) {
     this.cardType = cardType;
     return this;
   }
@@ -202,15 +202,15 @@ public class BillingProfilesResponse {
   
   @Schema(name = "card_type", example = "VISA", description = "Type of the card.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("card_type")
-  public CardTypeEnum getCardType() {
+  public @Nullable CardTypeEnum getCardType() {
     return cardType;
   }
 
-  public void setCardType(CardTypeEnum cardType) {
+  public void setCardType(@Nullable CardTypeEnum cardType) {
     this.cardType = cardType;
   }
 
-  public BillingProfilesResponse status(StatusEnum status) {
+  public BillingProfilesResponse status(@Nullable StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -222,15 +222,15 @@ public class BillingProfilesResponse {
   
   @Schema(name = "status", example = "INVALID", description = "Status of the billing.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public @Nullable StatusEnum getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(@Nullable StatusEnum status) {
     this.status = status;
   }
 
-  public BillingProfilesResponse advertiserId(String advertiserId) {
+  public BillingProfilesResponse advertiserId(@Nullable String advertiserId) {
     this.advertiserId = advertiserId;
     return this;
   }
@@ -242,15 +242,15 @@ public class BillingProfilesResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "advertiser_id", example = "12312451231", description = "Advertiser ID of the billing.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("advertiser_id")
-  public String getAdvertiserId() {
+  public @Nullable String getAdvertiserId() {
     return advertiserId;
   }
 
-  public void setAdvertiserId(String advertiserId) {
+  public void setAdvertiserId(@Nullable String advertiserId) {
     this.advertiserId = advertiserId;
   }
 
-  public BillingProfilesResponse paymentMethodBrand(PaymentMethodBrandEnum paymentMethodBrand) {
+  public BillingProfilesResponse paymentMethodBrand(@Nullable PaymentMethodBrandEnum paymentMethodBrand) {
     this.paymentMethodBrand = paymentMethodBrand;
     return this;
   }
@@ -262,11 +262,11 @@ public class BillingProfilesResponse {
   
   @Schema(name = "payment_method_brand", example = "VISA", description = "Brand of the payment method.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("payment_method_brand")
-  public PaymentMethodBrandEnum getPaymentMethodBrand() {
+  public @Nullable PaymentMethodBrandEnum getPaymentMethodBrand() {
     return paymentMethodBrand;
   }
 
-  public void setPaymentMethodBrand(PaymentMethodBrandEnum paymentMethodBrand) {
+  public void setPaymentMethodBrand(@Nullable PaymentMethodBrandEnum paymentMethodBrand) {
     this.paymentMethodBrand = paymentMethodBrand;
   }
 

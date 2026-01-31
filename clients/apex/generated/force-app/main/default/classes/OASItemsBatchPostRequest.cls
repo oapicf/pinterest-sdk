@@ -34,10 +34,123 @@ public class OASItemsBatchPostRequest implements OASCatalogsVerticalBatchRequest
     public OASCountry country { get; set; }
 
     /**
-     * Get language
+     * We recommend using the CatalogsLocale values.
+     */
+    public enum LanguageEnum {
+        AF_ZA,
+        AR_SA,
+        BG_BG,
+        BN_IN,
+        CS_CZ,
+        DA_DK,
+        DE,
+        EL_GR,
+        EN_AU,
+        EN_CA,
+        EN_GB,
+        EN_IN,
+        EN_US,
+        ES_419,
+        ES_AR,
+        ES_ES,
+        ES_MX,
+        FI_FI,
+        FR,
+        FR_CA,
+        HE_IL,
+        HI_IN,
+        HR_HR,
+        HU_HU,
+        ID_ID,
+        IT,
+        JA,
+        KO_KR,
+        MS_MY,
+        NB_NO,
+        NL,
+        PL_PL,
+        PT_BR,
+        PT_PT,
+        RO_RO,
+        RU_RU,
+        SK_SK,
+        SV_SE,
+        TE_IN,
+        TH_TH,
+        TL_PH,
+        TR,
+        UK_UA,
+        VI_VN,
+        ZH_CN,
+        ZH_TW,
+        AM,
+        AR,
+        AZ,
+        BG,
+        BN,
+        BS,
+        CA,
+        CS,
+        DA,
+        DV,
+        DZ,
+        DE2,
+        EL,
+        EN,
+        ES,
+        ET,
+        FA,
+        FI,
+        FR2,
+        HE,
+        HI,
+        HR,
+        HU,
+        HY,
+        ID,
+        IN,
+        IS,
+        IT2,
+        IW,
+        JA2,
+        KA,
+        KM,
+        KO,
+        LO,
+        LT,
+        LV,
+        MK,
+        MN,
+        MS,
+        MY,
+        NB,
+        NE,
+        NL2,
+        NO,
+        PL,
+        PT,
+        RO,
+        RU,
+        SK,
+        SL,
+        SQ,
+        SR,
+        SV,
+        TL,
+        UK,
+        VI,
+        TE,
+        TH,
+        TR2,
+        XX,
+        ZH
+    }
+
+    /**
+     * We recommend using the CatalogsLocale values.
      * @return language
      */
-    public OASCatalogsItemsRequestLanguage language { get; set; }
+    public LanguageEnum language { get; set; }
 
     /**
      * Array with catalogs items
@@ -83,7 +196,7 @@ public class OASItemsBatchPostRequest implements OASCatalogsVerticalBatchRequest
         OASItemsBatchPostRequest itemsBatchPostRequest = new OASItemsBatchPostRequest();
           itemsBatchPostRequest.catalogType = CatalogTypeEnum.CREATIVE_ASSETS;
           itemsBatchPostRequest.country = OASCountry.getExample();
-          itemsBatchPostRequest.language = OASCatalogsItemsRequestLanguage.getExample();
+          itemsBatchPostRequest.language = LanguageEnum.AF_ZA;
           itemsBatchPostRequest.items = new List<OASItemDeleteBatchRecord>{OASItemDeleteBatchRecord.getExample()};
           itemsBatchPostRequest.catalogId = '2680059592705';
           itemsBatchPostRequest.operation = OASBatchOperation.getExample();

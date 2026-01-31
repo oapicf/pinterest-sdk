@@ -13,34 +13,41 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class VideoMetadata  {
   
   @ApiModelProperty(value = "")
+
   private String itemType;
 
   @ApiModelProperty(value = "")
+
   private String coverImageUrl;
 
-  @ApiModelProperty(value = "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.")
  /**
-   * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-  **/
+  * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+  */
+  @ApiModelProperty(value = "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.")
+
   private String videoUrl;
 
-  @ApiModelProperty(value = "Duration (in milliseconds)")
-  @Valid
  /**
-   * Duration (in milliseconds)
-  **/
+  * Duration (in milliseconds)
+  */
+  @ApiModelProperty(value = "Duration (in milliseconds)")
+
+  @Valid
+
   private BigDecimal duration;
 
-  @ApiModelProperty(value = "Height (in pixels)")
  /**
-   * Height (in pixels)
-  **/
+  * Height (in pixels)
+  */
+  @ApiModelProperty(value = "Height (in pixels)")
+
   private Integer height;
 
-  @ApiModelProperty(value = "Width (in pixels)")
  /**
-   * Width (in pixels)
-  **/
+  * Width (in pixels)
+  */
+  @ApiModelProperty(value = "Width (in pixels)")
+
   private Integer width;
  /**
    * Get itemType

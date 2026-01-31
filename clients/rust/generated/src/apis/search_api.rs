@@ -45,24 +45,24 @@ pub enum SearchUserPinsSlashListError {
 /// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 pub async fn search_partner_pins(configuration: &configuration::Configuration, term: &str, country_code: &str, bookmark: Option<&str>, locale: Option<&str>, limit: Option<i32>) -> Result<models::SearchPartnerPins200Response, Error<SearchPartnerPinsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_term = term;
-    let p_country_code = country_code;
-    let p_bookmark = bookmark;
-    let p_locale = locale;
-    let p_limit = limit;
+    let p_query_term = term;
+    let p_query_country_code = country_code;
+    let p_query_bookmark = bookmark;
+    let p_query_locale = locale;
+    let p_query_limit = limit;
 
     let uri_str = format!("{}/search/partner/pins", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("term", &p_term.to_string())]);
-    req_builder = req_builder.query(&[("country_code", &p_country_code.to_string())]);
-    if let Some(ref param_value) = p_bookmark {
+    req_builder = req_builder.query(&[("term", &p_query_term.to_string())]);
+    req_builder = req_builder.query(&[("country_code", &p_query_country_code.to_string())]);
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_locale {
+    if let Some(ref param_value) = p_query_locale {
         req_builder = req_builder.query(&[("locale", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_limit {
+    if let Some(ref param_value) = p_query_limit {
         req_builder = req_builder.query(&[("limit", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -100,24 +100,24 @@ pub async fn search_partner_pins(configuration: &configuration::Configuration, t
 /// Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 pub async fn search_user_boards_slash_get(configuration: &configuration::Configuration, ad_account_id: Option<&str>, bookmark: Option<&str>, page_size: Option<i32>, query: Option<&str>) -> Result<models::SearchUserBoardsGet200Response, Error<SearchUserBoardsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_query = query;
+    let p_query_ad_account_id = ad_account_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_query = query;
 
     let uri_str = format!("{}/search/boards", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_query {
+    if let Some(ref param_value) = p_query_query {
         req_builder = req_builder.query(&[("query", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -158,18 +158,18 @@ pub async fn search_user_boards_slash_get(configuration: &configuration::Configu
 /// Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 pub async fn search_user_pins_slash_list(configuration: &configuration::Configuration, query: &str, ad_account_id: Option<&str>, bookmark: Option<&str>) -> Result<models::PinsList200Response, Error<SearchUserPinsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_query = query;
-    let p_ad_account_id = ad_account_id;
-    let p_bookmark = bookmark;
+    let p_query_query = query;
+    let p_query_ad_account_id = ad_account_id;
+    let p_query_bookmark = bookmark;
 
     let uri_str = format!("{}/search/pins", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    req_builder = req_builder.query(&[("query", &p_query.to_string())]);
-    if let Some(ref param_value) = p_bookmark {
+    req_builder = req_builder.query(&[("query", &p_query_query.to_string())]);
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

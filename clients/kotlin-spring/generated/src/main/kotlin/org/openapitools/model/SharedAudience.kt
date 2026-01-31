@@ -34,7 +34,7 @@ data class SharedAudience(
 
     @Schema(example = "null", required = true, description = "List of ad account IDs to share with or revoke from.")
     @get:JsonProperty("recipient_account_ids", required = true) val recipientAccountIds: kotlin.collections.List<kotlin.String>
-    ) {
+) {
 
 }
 

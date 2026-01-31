@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  * LeadFormResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadFormResponse {
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
@@ -97,7 +97,7 @@ public class LeadFormResponse {
     this.privacyPolicyLink = privacyPolicyLink;
   }
 
-  public LeadFormResponse hasAcceptedTerms(Boolean hasAcceptedTerms) {
+  public LeadFormResponse hasAcceptedTerms(@Nullable Boolean hasAcceptedTerms) {
     this.hasAcceptedTerms = hasAcceptedTerms;
     return this;
   }
@@ -109,11 +109,11 @@ public class LeadFormResponse {
   
   @Schema(name = "has_accepted_terms", example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("has_accepted_terms")
-  public Boolean getHasAcceptedTerms() {
+  public @Nullable Boolean getHasAcceptedTerms() {
     return hasAcceptedTerms;
   }
 
-  public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
+  public void setHasAcceptedTerms(@Nullable Boolean hasAcceptedTerms) {
     this.hasAcceptedTerms = hasAcceptedTerms;
   }
 
@@ -137,7 +137,7 @@ public class LeadFormResponse {
     this.completionMessage = completionMessage;
   }
 
-  public LeadFormResponse status(LeadFormStatus status) {
+  public LeadFormResponse status(@Nullable LeadFormStatus status) {
     this.status = status;
     return this;
   }
@@ -149,11 +149,11 @@ public class LeadFormResponse {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public LeadFormStatus getStatus() {
+  public @Nullable LeadFormStatus getStatus() {
     return status;
   }
 
-  public void setStatus(LeadFormStatus status) {
+  public void setStatus(@Nullable LeadFormStatus status) {
     this.status = status;
   }
 
@@ -233,7 +233,7 @@ public class LeadFormResponse {
     this.policyLinks = policyLinks;
   }
 
-  public LeadFormResponse id(String id) {
+  public LeadFormResponse id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -245,15 +245,15 @@ public class LeadFormResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "7765300871171", description = "The ID of this lead form", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public LeadFormResponse adAccountId(String adAccountId) {
+  public LeadFormResponse adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -265,15 +265,15 @@ public class LeadFormResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "The Ad Account ID that this lead form belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
-  public LeadFormResponse createdTime(Integer createdTime) {
+  public LeadFormResponse createdTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -285,15 +285,15 @@ public class LeadFormResponse {
   
   @Schema(name = "created_time", example = "1451431341", description = "Lead form creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
-  public Integer getCreatedTime() {
+  public @Nullable Integer getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
-  public LeadFormResponse updatedTime(Integer updatedTime) {
+  public LeadFormResponse updatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -305,11 +305,11 @@ public class LeadFormResponse {
   
   @Schema(name = "updated_time", example = "1451431341", description = "Last update time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")
-  public Integer getUpdatedTime() {
+  public @Nullable Integer getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 

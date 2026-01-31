@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("CreateAssetAccessRequestErrorMessage_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateAssetAccessRequestErrorMessageInner {
 
   private @Nullable Integer code;
@@ -32,7 +32,7 @@ public class CreateAssetAccessRequestErrorMessageInner {
   @Valid
   private List<String> messages = new ArrayList<>();
 
-  public CreateAssetAccessRequestErrorMessageInner code(Integer code) {
+  public CreateAssetAccessRequestErrorMessageInner code(@Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -44,11 +44,11 @@ public class CreateAssetAccessRequestErrorMessageInner {
   
   @Schema(name = "code", example = "2932", description = "Error code associated with the error in requesting asset access.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public Integer getCode() {
+  public @Nullable Integer getCode() {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@Nullable Integer code) {
     this.code = code;
   }
 

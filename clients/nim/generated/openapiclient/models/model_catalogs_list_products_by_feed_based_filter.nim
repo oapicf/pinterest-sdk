@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_filters
 
@@ -16,3 +18,20 @@ type CatalogsListProductsByFeedBasedFilter* = object
   ## Request object to list products for a given feed_id and product group filter.
   feedId*: string ## Catalog Feed id pertaining to the catalog product group filter.
   filters*: CatalogsProductGroupFilters
+
+
+# Custom JSON deserialization for CatalogsListProductsByFeedBasedFilter with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsListProductsByFeedBasedFilter]): CatalogsListProductsByFeedBasedFilter =
+  result = CatalogsListProductsByFeedBasedFilter()
+  if node.kind == JObject:
+    if node.hasKey("feed_id"):
+      result.feedId = to(node["feed_id"], string)
+    if node.hasKey("filters"):
+      result.filters = to(node["filters"], CatalogsProductGroupFilters)
+
+# Custom JSON serialization for CatalogsListProductsByFeedBasedFilter with custom field names
+proc `%`*(obj: CatalogsListProductsByFeedBasedFilter): JsonNode =
+  result = newJObject()
+  result["feed_id"] = %obj.feedId
+  result["filters"] = %obj.filters
+

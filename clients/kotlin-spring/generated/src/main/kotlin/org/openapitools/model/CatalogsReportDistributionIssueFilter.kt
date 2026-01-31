@@ -28,7 +28,7 @@ data class CatalogsReportDistributionIssueFilter(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", description = "Unique identifier of a catalog. If not given, oldest catalog will be used")
     @get:JsonProperty("catalog_id") val catalogId: kotlin.String? = null
-    ) {
+) {
 
     /**
     * 
@@ -42,7 +42,8 @@ data class CatalogsReportDistributionIssueFilter(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ReportType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsReportDistributionIssueFilter'")
             }
         }
     }

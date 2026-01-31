@@ -142,12 +142,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "audience_size_lower_bound":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                audienceSizeLowerBound = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            audienceSizeLowerBound = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "audience_size_upper_bound":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                audienceSizeUpperBound = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            audienceSizeUpperBound = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         default:
                             break;

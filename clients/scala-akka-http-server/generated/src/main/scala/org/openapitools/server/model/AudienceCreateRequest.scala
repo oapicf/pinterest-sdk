@@ -6,13 +6,13 @@ package org.openapitools.server.model
  * @param name Audience name. for example: ''string''
  * @param rule  for example: ''null''
  * @param description Audience description. for example: ''string''
- * @param audienceType  for example: ''null''
+ * @param audienceType <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. for example: ''null''
 */
 final case class AudienceCreateRequest (
   adAccountId: Option[String] = None,
   name: String,
   rule: AudienceRule,
   description: Option[String] = None,
-  audienceType: AudienceCreateRequest1AudienceType
+  audienceType: AudienceType
 )
 

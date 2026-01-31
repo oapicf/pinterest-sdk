@@ -53,7 +53,7 @@ data class CatalogsProductGroupsUpdateRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("locale") override val locale: CatalogsLocale? = null
-    ) {
+) {
 
 }
 

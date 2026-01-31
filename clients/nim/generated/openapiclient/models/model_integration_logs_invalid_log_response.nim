@@ -9,9 +9,26 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_integration_logs_invalid_log_response_rejected_logs_inner
 
 type IntegrationLogsInvalidLogResponse* = object
   ## Schema describing the response when a log has invalid fields.
-  rejectedLogs*: seq[IntegrationLogsInvalidLogResponse_rejected_logs_inner]
+  rejectedLogs*: Option[seq[IntegrationLogsInvalidLogResponse_rejected_logs_inner]]
+
+
+# Custom JSON deserialization for IntegrationLogsInvalidLogResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[IntegrationLogsInvalidLogResponse]): IntegrationLogsInvalidLogResponse =
+  result = IntegrationLogsInvalidLogResponse()
+  if node.kind == JObject:
+    if node.hasKey("rejected_logs") and node["rejected_logs"].kind != JNull:
+      result.rejectedLogs = some(to(node["rejected_logs"], typeof(result.rejectedLogs.get())))
+
+# Custom JSON serialization for IntegrationLogsInvalidLogResponse with custom field names
+proc `%`*(obj: IntegrationLogsInvalidLogResponse): JsonNode =
+  result = newJObject()
+  if obj.rejectedLogs.isSome():
+    result["rejected_logs"] = %obj.rejectedLogs.get()
+

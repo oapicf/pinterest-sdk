@@ -1,35 +1,38 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import org.openapitools.model.DataStatus;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Array with metrics, status, and pin id for the requested metric
- **/
+ * Array with metrics, status, and pin id for the requested metric
+ */
 @ApiModel(description="Array with metrics, status, and pin id for the requested metric")
 
 public class TopVideoPinsAnalyticsResponsePinsInner  {
   
-  @ApiModelProperty(example = "{\"IMPRESSION\":7,\"QUARTILE_95_PERCENT_VIEW\":2,\"SAVE\":1,\"VIDEO_10S_VIEW\":5,\"VIDEO_AVG_WATCH_TIME\":86989,\"VIDEO_MRC_VIEW\":2,\"VIDEO_START\":2,\"VIDEO_V50_WATCH_TIME\":173979,\"OUTBOUND_CLICK\":2}", value = "The metric name and daily value for each requested metric")
  /**
-   * The metric name and daily value for each requested metric
-  **/
+  * The metric name and daily value for each requested metric
+  */
+  @ApiModelProperty(example = "{\"IMPRESSION\":7,\"QUARTILE_95_PERCENT_VIEW\":2,\"SAVE\":1,\"VIDEO_10S_VIEW\":5,\"VIDEO_AVG_WATCH_TIME\":86989,\"VIDEO_MRC_VIEW\":2,\"VIDEO_START\":2,\"VIDEO_V50_WATCH_TIME\":173979,\"OUTBOUND_CLICK\":2}", value = "The metric name and daily value for each requested metric")
+
   private Map<String, BigDecimal> metrics = new HashMap<>();
 
   @ApiModelProperty(value = "")
+
   private Map<String, DataStatus> dataStatus = new HashMap<>();
 
-  @ApiModelProperty(example = "642396334344813594", value = "The pin id")
  /**
-   * The pin id
-  **/
+  * The pin id
+  */
+  @ApiModelProperty(example = "642396334344813594", value = "The pin id")
+
   private String pinId;
  /**
    * The metric name and daily value for each requested metric

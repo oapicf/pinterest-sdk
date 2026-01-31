@@ -9,8 +9,8 @@
 
 
 #include <string>
-#include "AudienceCreateRequest_1_audience_type.h"
 #include "AudienceRule.h"
+#include "AudienceType.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -75,20 +75,20 @@ public:
 	/*! \brief Set Audience description.
 	 */
 	void setDescription(std::string  description);
-	/*! \brief Get 
+	/*! \brief Get <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
 	 */
-	AudienceCreateRequest_1_audience_type getAudienceType();
+	AudienceType getAudienceType();
 
-	/*! \brief Set 
+	/*! \brief Set <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
 	 */
-	void setAudienceType(AudienceCreateRequest_1_audience_type  audience_type);
+	void setAudienceType(AudienceType  audience_type);
 
 private:
 	std::string ad_account_id;
 	std::string name;
 	AudienceRule rule;
 	std::string description;
-	AudienceCreateRequest_1_audience_type audience_type;
+	AudienceType audience_type;
 	void __init();
 	void __cleanup();
 

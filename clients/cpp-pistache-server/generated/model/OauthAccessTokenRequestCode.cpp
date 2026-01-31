@@ -21,9 +21,9 @@ namespace org::openapitools::server::model
 
 OauthAccessTokenRequestCode::OauthAccessTokenRequestCode()
 {
-    m_Grant_type = "";
     m_Code = "";
     m_Redirect_uri = "";
+    m_Grant_type = "";
     
 }
 
@@ -55,13 +55,13 @@ bool OauthAccessTokenRequestCode::operator==(const OauthAccessTokenRequestCode& 
     return
     
     
-    (getGrantType() == rhs.getGrantType())
-     &&
-    
     (getCode() == rhs.getCode())
      &&
     
     (getRedirectUri() == rhs.getRedirectUri())
+     &&
+    
+    (getGrantType() == rhs.getGrantType())
     
     
     ;
@@ -75,28 +75,20 @@ bool OauthAccessTokenRequestCode::operator!=(const OauthAccessTokenRequestCode& 
 void to_json(nlohmann::json& j, const OauthAccessTokenRequestCode& o)
 {
     j = nlohmann::json::object();
-    j["grant_type"] = o.m_Grant_type;
     j["code"] = o.m_Code;
     j["redirect_uri"] = o.m_Redirect_uri;
+    j["grant_type"] = o.m_Grant_type;
     
 }
 
 void from_json(const nlohmann::json& j, OauthAccessTokenRequestCode& o)
 {
-    j.at("grant_type").get_to(o.m_Grant_type);
     j.at("code").get_to(o.m_Code);
     j.at("redirect_uri").get_to(o.m_Redirect_uri);
+    j.at("grant_type").get_to(o.m_Grant_type);
     
 }
 
-std::string OauthAccessTokenRequestCode::getGrantType() const
-{
-    return m_Grant_type;
-}
-void OauthAccessTokenRequestCode::setGrantType(std::string const& value)
-{
-    m_Grant_type = value;
-}
 std::string OauthAccessTokenRequestCode::getCode() const
 {
     return m_Code;
@@ -112,6 +104,14 @@ std::string OauthAccessTokenRequestCode::getRedirectUri() const
 void OauthAccessTokenRequestCode::setRedirectUri(std::string const& value)
 {
     m_Redirect_uri = value;
+}
+std::string OauthAccessTokenRequestCode::getGrantType() const
+{
+    return m_Grant_type;
+}
+void OauthAccessTokenRequestCode::setGrantType(std::string const& value)
+{
+    m_Grant_type = value;
 }
 
 

@@ -19,44 +19,20 @@ class INVITE_BUSINESS_ROLE_BINDING
 
 feature --Access
 
-    created_by_business_id: detachable STRING_32
-      -- Unique identifier for the business that created the invite/request.
-    created_by_user_id: detachable STRING_32
-      -- Unique identifier for the user that created the invite/request.
-    user: detachable BUSINESS_ACCESS_USER_SUMMARY
-      -- Metadata for the user that updated the invite/request.
     id: detachable STRING_32
       -- Unique identifier of the invite/request.
     invite_data: detachable BASE_INVITE_DATA_RESPONSE_INVITE_DATA
       
     is_received_invite: BOOLEAN
       -- Indicates whether the invite/request was received.
+    user: detachable ANY
+      -- Metadata for the user that updated the invite/request.
+    created_by_business_id: detachable STRING_32
+      -- Unique identifier for the business that created the invite/request.
+    created_by_user_id: detachable STRING_32
+      -- Unique identifier for the user that created the invite/request.
 
 feature -- Change Element
-
-    set_created_by_business_id (a_name: like created_by_business_id)
-        -- Set 'created_by_business_id' with 'a_name'.
-      do
-        created_by_business_id := a_name
-      ensure
-        created_by_business_id_set: created_by_business_id = a_name
-      end
-
-    set_created_by_user_id (a_name: like created_by_user_id)
-        -- Set 'created_by_user_id' with 'a_name'.
-      do
-        created_by_user_id := a_name
-      ensure
-        created_by_user_id_set: created_by_user_id = a_name
-      end
-
-    set_user (a_name: like user)
-        -- Set 'user' with 'a_name'.
-      do
-        user := a_name
-      ensure
-        user_set: user = a_name
-      end
 
     set_id (a_name: like id)
         -- Set 'id' with 'a_name'.
@@ -82,6 +58,30 @@ feature -- Change Element
         is_received_invite_set: is_received_invite = a_name
       end
 
+    set_user (a_name: like user)
+        -- Set 'user' with 'a_name'.
+      do
+        user := a_name
+      ensure
+        user_set: user = a_name
+      end
+
+    set_created_by_business_id (a_name: like created_by_business_id)
+        -- Set 'created_by_business_id' with 'a_name'.
+      do
+        created_by_business_id := a_name
+      ensure
+        created_by_business_id_set: created_by_business_id = a_name
+      end
+
+    set_created_by_user_id (a_name: like created_by_user_id)
+        -- Set 'created_by_user_id' with 'a_name'.
+      do
+        created_by_user_id := a_name
+      ensure
+        created_by_user_id_set: created_by_user_id = a_name
+      end
+
 
  feature -- Status Report
 
@@ -90,21 +90,6 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass INVITE_BUSINESS_ROLE_BINDING%N")
-        if attached created_by_business_id as l_created_by_business_id then
-          Result.append ("%Ncreated_by_business_id:")
-          Result.append (l_created_by_business_id.out)
-          Result.append ("%N")
-        end
-        if attached created_by_user_id as l_created_by_user_id then
-          Result.append ("%Ncreated_by_user_id:")
-          Result.append (l_created_by_user_id.out)
-          Result.append ("%N")
-        end
-        if attached user as l_user then
-          Result.append ("%Nuser:")
-          Result.append (l_user.out)
-          Result.append ("%N")
-        end
         if attached id as l_id then
           Result.append ("%Nid:")
           Result.append (l_id.out)
@@ -118,6 +103,21 @@ feature -- Change Element
         if attached is_received_invite as l_is_received_invite then
           Result.append ("%Nis_received_invite:")
           Result.append (l_is_received_invite.out)
+          Result.append ("%N")
+        end
+        if attached user as l_user then
+          Result.append ("%Nuser:")
+          Result.append (l_user.out)
+          Result.append ("%N")
+        end
+        if attached created_by_business_id as l_created_by_business_id then
+          Result.append ("%Ncreated_by_business_id:")
+          Result.append (l_created_by_business_id.out)
+          Result.append ("%N")
+        end
+        if attached created_by_user_id as l_created_by_user_id then
+          Result.append ("%Ncreated_by_user_id:")
+          Result.append (l_created_by_user_id.out)
           Result.append ("%N")
         end
       end

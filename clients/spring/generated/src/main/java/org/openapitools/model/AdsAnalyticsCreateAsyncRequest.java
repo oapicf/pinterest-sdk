@@ -37,7 +37,7 @@ import javax.annotation.Generated;
  * AdsAnalyticsCreateAsyncRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsAnalyticsCreateAsyncRequest {
 
   private String startDate;
@@ -108,7 +108,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     
     BY_DATE("BY_DATE");
 
-    private String value;
+    private final String value;
 
     PrimarySortEnum(String value) {
       this.value = value;
@@ -728,7 +728,7 @@ public class AdsAnalyticsCreateAsyncRequest {
     this.reportFormat = reportFormat;
   }
 
-  public AdsAnalyticsCreateAsyncRequest primarySort(PrimarySortEnum primarySort) {
+  public AdsAnalyticsCreateAsyncRequest primarySort(@Nullable PrimarySortEnum primarySort) {
     this.primarySort = primarySort;
     return this;
   }
@@ -740,15 +740,15 @@ public class AdsAnalyticsCreateAsyncRequest {
   
   @Schema(name = "primary_sort", example = "BY_ID", description = "Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("primary_sort")
-  public PrimarySortEnum getPrimarySort() {
+  public @Nullable PrimarySortEnum getPrimarySort() {
     return primarySort;
   }
 
-  public void setPrimarySort(PrimarySortEnum primarySort) {
+  public void setPrimarySort(@Nullable PrimarySortEnum primarySort) {
     this.primarySort = primarySort;
   }
 
-  public AdsAnalyticsCreateAsyncRequest startHour(Integer startHour) {
+  public AdsAnalyticsCreateAsyncRequest startHour(@Nullable Integer startHour) {
     this.startHour = startHour;
     return this;
   }
@@ -759,18 +759,18 @@ public class AdsAnalyticsCreateAsyncRequest {
    * maximum: 23
    * @return startHour
    */
-  @Min(0) @Max(23) 
+  @Min(value = 0) @Max(value = 23) 
   @Schema(name = "start_hour", description = "Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_hour")
-  public Integer getStartHour() {
+  public @Nullable Integer getStartHour() {
     return startHour;
   }
 
-  public void setStartHour(Integer startHour) {
+  public void setStartHour(@Nullable Integer startHour) {
     this.startHour = startHour;
   }
 
-  public AdsAnalyticsCreateAsyncRequest endHour(Integer endHour) {
+  public AdsAnalyticsCreateAsyncRequest endHour(@Nullable Integer endHour) {
     this.endHour = endHour;
     return this;
   }
@@ -781,14 +781,14 @@ public class AdsAnalyticsCreateAsyncRequest {
    * maximum: 23
    * @return endHour
    */
-  @Min(0) @Max(23) 
+  @Min(value = 0) @Max(value = 23) 
   @Schema(name = "end_hour", description = "Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_hour")
-  public Integer getEndHour() {
+  public @Nullable Integer getEndHour() {
     return endHour;
   }
 
-  public void setEndHour(Integer endHour) {
+  public void setEndHour(@Nullable Integer endHour) {
     this.endHour = endHour;
   }
 

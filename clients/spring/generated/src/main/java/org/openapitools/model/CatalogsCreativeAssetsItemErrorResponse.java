@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsItemErrorResponse", description = "Object describing a creative assets item error")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseAnyOf1 {
 
   private CatalogsType catalogType;
@@ -71,7 +71,7 @@ public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseAnyO
     this.catalogType = catalogType;
   }
 
-  public CatalogsCreativeAssetsItemErrorResponse creativeAssetsId(String creativeAssetsId) {
+  public CatalogsCreativeAssetsItemErrorResponse creativeAssetsId(@Nullable String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
     return this;
   }
@@ -83,11 +83,11 @@ public class CatalogsCreativeAssetsItemErrorResponse implements ItemResponseAnyO
   
   @Schema(name = "creative_assets_id", example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_assets_id")
-  public String getCreativeAssetsId() {
+  public @Nullable String getCreativeAssetsId() {
     return creativeAssetsId;
   }
 
-  public void setCreativeAssetsId(String creativeAssetsId) {
+  public void setCreativeAssetsId(@Nullable String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
 

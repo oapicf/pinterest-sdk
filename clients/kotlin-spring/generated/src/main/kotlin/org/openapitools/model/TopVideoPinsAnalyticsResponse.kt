@@ -35,7 +35,7 @@ data class TopVideoPinsAnalyticsResponse(
 
     @Schema(example = "IMPRESSION", description = "")
     @get:JsonProperty("sort_by") val sortBy: TopVideoPinsAnalyticsResponse.SortBy? = null
-    ) {
+) {
 
     /**
     * 
@@ -57,7 +57,8 @@ data class TopVideoPinsAnalyticsResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): SortBy {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TopVideoPinsAnalyticsResponse'")
             }
         }
     }

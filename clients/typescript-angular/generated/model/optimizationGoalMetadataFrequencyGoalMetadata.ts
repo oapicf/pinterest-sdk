@@ -17,15 +17,15 @@ export interface OptimizationGoalMetadataFrequencyGoalMetadata {
     timerange?: OptimizationGoalMetadataFrequencyGoalMetadata.TimerangeEnum;
 }
 export namespace OptimizationGoalMetadataFrequencyGoalMetadata {
-    export type TimerangeEnum = 'THIRTY_DAY' | 'DAY' | 'SEVEN_DAY' | 'TWENTY_MINUTE' | 'TEN_MINUTE' | 'TWENTY_FOUR_HOUR';
     export const TimerangeEnum = {
-        ThirtyDay: 'THIRTY_DAY' as TimerangeEnum,
-        Day: 'DAY' as TimerangeEnum,
-        SevenDay: 'SEVEN_DAY' as TimerangeEnum,
-        TwentyMinute: 'TWENTY_MINUTE' as TimerangeEnum,
-        TenMinute: 'TEN_MINUTE' as TimerangeEnum,
-        TwentyFourHour: 'TWENTY_FOUR_HOUR' as TimerangeEnum
-    };
+        ThirtyDay: 'THIRTY_DAY',
+        Day: 'DAY',
+        SevenDay: 'SEVEN_DAY',
+        TwentyMinute: 'TWENTY_MINUTE',
+        TenMinute: 'TEN_MINUTE',
+        TwentyFourHour: 'TWENTY_FOUR_HOUR'
+    } as const;
+    export type TimerangeEnum = typeof TimerangeEnum[keyof typeof TimerangeEnum];
 }
 
 

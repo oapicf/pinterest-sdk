@@ -82,9 +82,9 @@ private class OASCreateMMMReportRequestTest {
     @isTest
     private static void defaultValuesPopulated() {
         OASCreateMMMReportRequest createMMMReportRequest = new OASCreateMMMReportRequest();
+        System.assertEquals(new List<OASTargetingAdvertiserCountry>(), createMMMReportRequest.countries);
         System.assertEquals(new List<OASMMMReportingTargetingType>(), createMMMReportRequest.targetingTypes);
         System.assertEquals(new List<OASMMMReportingColumn>(), createMMMReportRequest.columns);
-        System.assertEquals(new List<OASTargetingAdvertiserCountry>(), createMMMReportRequest.countries);
         System.assertEquals(null, createMMMReportRequest.reportName);
         System.assertEquals(null, createMMMReportRequest.startDate);
         System.assertEquals(null, createMMMReportRequest.endDate);

@@ -28,9 +28,9 @@ public struct CatalogsCreativeAssetsFeedsCreateRequest: Codable, JSONEncodable, 
     public var catalogType: CatalogsType
     /** Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
     public var catalogId: String?
-    public var status: CatalogsStatus?
+    public var status: CatalogsStatus? = "ACTIVE"
 
-    public init(defaultCurrency: NullableCurrency? = nil, name: String, format: CatalogsFormat, defaultLocale: CatalogsFeedsCreateRequestDefaultLocale, defaultCountry: Country, credentials: CatalogsFeedCredentials? = nil, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, catalogType: CatalogsType, catalogId: String? = nil, status: CatalogsStatus? = nil) {
+    public init(defaultCurrency: NullableCurrency? = nil, name: String, format: CatalogsFormat, defaultLocale: CatalogsFeedsCreateRequestDefaultLocale, defaultCountry: Country, credentials: CatalogsFeedCredentials? = nil, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, catalogType: CatalogsType, catalogId: String? = nil, status: CatalogsStatus? = "ACTIVE") {
         self.defaultCurrency = defaultCurrency
         self.name = name
         self.format = format

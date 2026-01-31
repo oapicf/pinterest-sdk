@@ -10,7 +10,7 @@ Describe -tag 'PSOpenAPITools' -name 'CreateMMMReportRequest' {
     Context 'CreateMMMReportRequest' {
         It 'Initialize-CreateMMMReportRequest' {
             # a simple test to create an object
-            #$NewObject = Initialize-CreateMMMReportRequest -ReportName "TEST_VALUE" -StartDate "TEST_VALUE" -EndDate "TEST_VALUE" -Granularity "TEST_VALUE" -Level "TEST_VALUE" -TargetingTypes "TEST_VALUE" -Columns "TEST_VALUE" -Countries "TEST_VALUE"
+            #$NewObject = Initialize-CreateMMMReportRequest -Countries "TEST_VALUE" -ReportName "TEST_VALUE" -StartDate "TEST_VALUE" -EndDate "TEST_VALUE" -Granularity "TEST_VALUE" -Level "TEST_VALUE" -TargetingTypes "TEST_VALUE" -Columns "TEST_VALUE"
             #$NewObject | Should -BeOfType CreateMMMReportRequest
             #$NewObject.property | Should -Be 0
         }

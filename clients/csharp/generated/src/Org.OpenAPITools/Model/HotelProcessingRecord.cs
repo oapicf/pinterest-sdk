@@ -179,12 +179,10 @@ namespace Org.OpenAPITools.Model
                             hotelId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "errors":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                errors = new Option<List<ItemValidationEvent>?>(JsonSerializer.Deserialize<List<ItemValidationEvent>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            errors = new Option<List<ItemValidationEvent>?>(JsonSerializer.Deserialize<List<ItemValidationEvent>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "warnings":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                warnings = new Option<List<ItemValidationEvent>?>(JsonSerializer.Deserialize<List<ItemValidationEvent>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            warnings = new Option<List<ItemValidationEvent>?>(JsonSerializer.Deserialize<List<ItemValidationEvent>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "status":
                             string? statusRawValue = utf8JsonReader.GetString();

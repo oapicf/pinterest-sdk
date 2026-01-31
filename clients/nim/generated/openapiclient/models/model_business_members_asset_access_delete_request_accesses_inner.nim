@@ -9,9 +9,28 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type BusinessMembersAssetAccessDeleteRequestAccessesInner* = object
   ## 
   assetId*: string ## Id of the asset on which to remove member permissions.
   memberId*: string ## Unique identifier of the member on which to perform the asset permission removal
+
+
+# Custom JSON deserialization for BusinessMembersAssetAccessDeleteRequestAccessesInner with custom field names
+proc to*(node: JsonNode, T: typedesc[BusinessMembersAssetAccessDeleteRequestAccessesInner]): BusinessMembersAssetAccessDeleteRequestAccessesInner =
+  result = BusinessMembersAssetAccessDeleteRequestAccessesInner()
+  if node.kind == JObject:
+    if node.hasKey("asset_id"):
+      result.assetId = to(node["asset_id"], string)
+    if node.hasKey("member_id"):
+      result.memberId = to(node["member_id"], string)
+
+# Custom JSON serialization for BusinessMembersAssetAccessDeleteRequestAccessesInner with custom field names
+proc `%`*(obj: BusinessMembersAssetAccessDeleteRequestAccessesInner): JsonNode =
+  result = newJObject()
+  result["asset_id"] = %obj.assetId
+  result["member_id"] = %obj.memberId
+

@@ -11,77 +11,90 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SSIOInsertionOrderCommon  {
   
-  @ApiModelProperty(example = "2020-12-20", value = "Starting date of time period. Format: YYYY-MM-DD")
  /**
-   * Starting date of time period. Format: YYYY-MM-DD
-  **/
+  * Starting date of time period. Format: YYYY-MM-DD
+  */
+  @ApiModelProperty(example = "2020-12-20", value = "Starting date of time period. Format: YYYY-MM-DD")
+
   private String startDate;
 
-  @ApiModelProperty(example = "2020-12-20", value = "End date of time period. Format: YYYY-MM-DD")
  /**
-   * End date of time period. Format: YYYY-MM-DD
-  **/
+  * End date of time period. Format: YYYY-MM-DD
+  */
+  @ApiModelProperty(example = "2020-12-20", value = "End date of time period. Format: YYYY-MM-DD")
+
   private String endDate;
 
-  @ApiModelProperty(value = "The po number")
  /**
-   * The po number
-  **/
+  * The po number
+  */
+  @ApiModelProperty(value = "The po number")
+
   private String poNumber;
 
-  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
-  @Valid
  /**
-   * If Budget order line, the budget amount.
-  **/
+  * If Budget order line, the budget amount.
+  */
+  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
+
+  @Valid
+
   private BigDecimal budgetAmount;
 
-  @ApiModelProperty(value = "The billing contact first name")
  /**
-   * The billing contact first name
-  **/
+  * The billing contact first name
+  */
+  @ApiModelProperty(value = "The billing contact first name")
+
   private String billingContactFirstname;
 
-  @ApiModelProperty(value = "The billing contact last name")
  /**
-   * The billing contact last name
-  **/
+  * The billing contact last name
+  */
+  @ApiModelProperty(value = "The billing contact last name")
+
   private String billingContactLastname;
 
-  @ApiModelProperty(example = "test@example", value = "The billing contact email")
  /**
-   * The billing contact email
-  **/
+  * The billing contact email
+  */
+  @ApiModelProperty(example = "test@example", value = "The billing contact email")
+
   private String billingContactEmail;
 
-  @ApiModelProperty(value = "The media contact first name")
  /**
-   * The media contact first name
-  **/
+  * The media contact first name
+  */
+  @ApiModelProperty(value = "The media contact first name")
+
   private String mediaContactFirstname;
 
-  @ApiModelProperty(value = "The media contact last name")
  /**
-   * The media contact last name
-  **/
+  * The media contact last name
+  */
+  @ApiModelProperty(value = "The media contact last name")
+
   private String mediaContactLastname;
 
-  @ApiModelProperty(example = "test@example", value = "The media contact email")
  /**
-   * The media contact email
-  **/
+  * The media contact email
+  */
+  @ApiModelProperty(example = "test@example", value = "The media contact email")
+
   private String mediaContactEmail;
 
-  @ApiModelProperty(value = "URL link for agency")
  /**
-   * URL link for agency
-  **/
+  * URL link for agency
+  */
+  @ApiModelProperty(value = "URL link for agency")
+
   private String agencyLink;
 
-  @ApiModelProperty(example = "test@example", value = "The email of user submitting the insertion order")
  /**
-   * The email of user submitting the insertion order
-  **/
+  * The email of user submitting the insertion order
+  */
+  @ApiModelProperty(example = "test@example", value = "The email of user submitting the insertion order")
+
   private String userEmail;
  /**
    * Starting date of time period. Format: YYYY-MM-DD

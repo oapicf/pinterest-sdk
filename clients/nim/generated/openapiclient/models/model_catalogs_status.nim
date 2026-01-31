@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type CatalogsStatus* = object
-  ## Status for catalogs entities. Present in catalogs_feed values. When a feed is deleted, the response will inform DELETED as status.
+type CatalogsStatus* {.pure.} = enum
+  ACTIVE
+  INACTIVE
+
+func `%`*(v: CatalogsStatus): JsonNode =
+  result = case v:
+    of CatalogsStatus.ACTIVE: %"ACTIVE"
+    of CatalogsStatus.INACTIVE: %"INACTIVE"
+
+func `$`*(v: CatalogsStatus): string =
+  result = case v:
+    of CatalogsStatus.ACTIVE: $("ACTIVE")
+    of CatalogsStatus.INACTIVE: $("INACTIVE")
+
+proc to*(node: JsonNode, T: typedesc[CatalogsStatus]): CatalogsStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogsStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ACTIVE"):
+    return CatalogsStatus.ACTIVE
+  of $("INACTIVE"):
+    return CatalogsStatus.INACTIVE
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogsStatus: " & strVal)
+

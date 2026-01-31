@@ -336,7 +336,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$CreateMMMReportRequest = Initialize-CreateMMMReportRequest -ReportName "MyReportName" -StartDate "2020-12-20" -EndDate "2020-12-20" -Granularity "DAY" -Level "CAMPAIGN_TARGETING" -TargetingTypes "APPTYPE" -Columns "SPEND_IN_DOLLAR" -Countries "US" # CreateMMMReportRequest | 
+$CreateMMMReportRequest = Initialize-CreateMMMReportRequest -Countries "US" -ReportName "MyReportName" -StartDate "2020-12-20" -EndDate "2020-12-20" -Granularity "DAY" -Level "CAMPAIGN_TARGETING" -TargetingTypes "APPTYPE" -Columns "SPEND_IN_DOLLAR" # CreateMMMReportRequest | 
 
 # Create a request for a Marketing Mix Modeling (MMM) report
 try {

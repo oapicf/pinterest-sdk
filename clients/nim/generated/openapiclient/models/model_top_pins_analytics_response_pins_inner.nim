@@ -9,11 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_data_status
 
 type TopPinsAnalyticsResponsePinsInner* = object
   ## Array with metrics, status, and pin id for the requested metric
-  metrics*: Table[string, float] ## The metric name and daily value for each requested metric
-  dataStatus*: Table[string, DataStatus]
-  pinId*: string ## The pin id
+  metrics*: Option[Table[string, float]] ## The metric name and daily value for each requested metric
+  dataStatus*: Option[Table[string, DataStatus]]
+  pinId*: Option[string] ## The pin id
+
+
+# Custom JSON deserialization for TopPinsAnalyticsResponsePinsInner with custom field names
+proc to*(node: JsonNode, T: typedesc[TopPinsAnalyticsResponsePinsInner]): TopPinsAnalyticsResponsePinsInner =
+  result = TopPinsAnalyticsResponsePinsInner()
+  if node.kind == JObject:
+    if node.hasKey("metrics") and node["metrics"].kind != JNull:
+      result.metrics = some(to(node["metrics"], typeof(result.metrics.get())))
+    if node.hasKey("data_status") and node["data_status"].kind != JNull:
+      result.dataStatus = some(to(node["data_status"], typeof(result.dataStatus.get())))
+    if node.hasKey("pin_id") and node["pin_id"].kind != JNull:
+      result.pinId = some(to(node["pin_id"], typeof(result.pinId.get())))
+
+# Custom JSON serialization for TopPinsAnalyticsResponsePinsInner with custom field names
+proc `%`*(obj: TopPinsAnalyticsResponsePinsInner): JsonNode =
+  result = newJObject()
+  if obj.metrics.isSome():
+    result["metrics"] = %obj.metrics.get()
+  if obj.dataStatus.isSome():
+    result["data_status"] = %obj.dataStatus.get()
+  if obj.pinId.isSome():
+    result["pin_id"] = %obj.pinId.get()
+

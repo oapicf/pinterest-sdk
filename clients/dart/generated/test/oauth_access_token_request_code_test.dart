@@ -16,11 +16,6 @@ void main() {
   // final instance = OauthAccessTokenRequestCode();
 
   group('test OauthAccessTokenRequestCode', () {
-    // String grantType
-    test('to test the property `grantType`', () async {
-      // TODO
-    });
-
     // String code
     test('to test the property `code`', () async {
       // TODO
@@ -28,6 +23,11 @@ void main() {
 
     // String redirectUri
     test('to test the property `redirectUri`', () async {
+      // TODO
+    });
+
+    // String grantType
+    test('to test the property `grantType`', () async {
       // TODO
     });
 

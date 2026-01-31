@@ -102,9 +102,9 @@ export function CatalogToJSONTyped(value?: Catalog | null, ignoreDiscriminator: 
 
     return {
         
-        'created_at': ((value['createdAt']).toISOString()),
+        'created_at': value['createdAt'].toISOString(),
         'id': value['id'],
-        'updated_at': ((value['updatedAt']).toISOString()),
+        'updated_at': value['updatedAt'].toISOString(),
         'name': value['name'],
         'catalog_type': CatalogsTypeToJSON(value['catalogType']),
     };

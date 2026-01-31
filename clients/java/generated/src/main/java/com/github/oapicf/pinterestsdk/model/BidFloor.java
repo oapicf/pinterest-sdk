@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BidFloor
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BidFloor {
   public static final String SERIALIZED_NAME_BID_FLOORS = "bid_floors";
   @SerializedName(SERIALIZED_NAME_BID_FLOORS)
@@ -157,12 +157,10 @@ public class BidFloor {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("bid_floors");
-    openapiFields.add("type");
+    openapiFields = new HashSet<String>(Arrays.asList("bid_floors", "type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -174,7 +172,7 @@ public class BidFloor {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!BidFloor.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in BidFloor is not found in the empty JSON string", BidFloor.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in BidFloor is not found in the empty JSON string", BidFloor.openapiRequiredFields.toString()));
         }
       }
 
@@ -182,16 +180,16 @@ public class BidFloor {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!BidFloor.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BidFloor` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `BidFloor` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the optional json data is an array if present
       if (jsonObj.get("bid_floors") != null && !jsonObj.get("bid_floors").isJsonNull() && !jsonObj.get("bid_floors").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `bid_floors` to be an array in the JSON string but got `%s`", jsonObj.get("bid_floors").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `bid_floors` to be an array in the JSON string but got `%s`", jsonObj.get("bid_floors").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
 

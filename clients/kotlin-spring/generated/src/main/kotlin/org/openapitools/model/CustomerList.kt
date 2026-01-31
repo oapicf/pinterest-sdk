@@ -64,7 +64,7 @@ data class CustomerList(
     @field:Valid
     @Schema(example = "null", description = "Customer list errors")
     @get:JsonProperty("exceptions") val exceptions: kotlin.Any? = null
-    ) {
+) {
 
     /**
     * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
@@ -81,7 +81,8 @@ data class CustomerList(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Status {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CustomerList'")
             }
         }
     }

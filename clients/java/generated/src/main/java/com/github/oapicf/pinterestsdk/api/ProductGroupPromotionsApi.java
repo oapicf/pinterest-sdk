@@ -94,7 +94,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call productGroupPromotionsCreateCall(String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call productGroupPromotionsCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -141,7 +141,7 @@ public class ProductGroupPromotionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call productGroupPromotionsCreateValidateBeforeCall(String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call productGroupPromotionsCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling productGroupPromotionsCreate(Async)");
@@ -171,7 +171,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ProductGroupPromotionResponse productGroupPromotionsCreate(String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest) throws ApiException {
+    public ProductGroupPromotionResponse productGroupPromotionsCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest) throws ApiException {
         ApiResponse<ProductGroupPromotionResponse> localVarResp = productGroupPromotionsCreateWithHttpInfo(adAccountId, productGroupPromotionCreateRequest);
         return localVarResp.getData();
     }
@@ -191,7 +191,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProductGroupPromotionResponse> productGroupPromotionsCreateWithHttpInfo(String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest) throws ApiException {
+    public ApiResponse<ProductGroupPromotionResponse> productGroupPromotionsCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest) throws ApiException {
         okhttp3.Call localVarCall = productGroupPromotionsCreateValidateBeforeCall(adAccountId, productGroupPromotionCreateRequest, null);
         Type localVarReturnType = new TypeToken<ProductGroupPromotionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -213,7 +213,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call productGroupPromotionsCreateAsync(String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest, final ApiCallback<ProductGroupPromotionResponse> _callback) throws ApiException {
+    public okhttp3.Call productGroupPromotionsCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest, final ApiCallback<ProductGroupPromotionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = productGroupPromotionsCreateValidateBeforeCall(adAccountId, productGroupPromotionCreateRequest, _callback);
         Type localVarReturnType = new TypeToken<ProductGroupPromotionResponse>(){}.getType();
@@ -235,7 +235,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call productGroupPromotionsGetCall(String adAccountId, String productGroupPromotionId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call productGroupPromotionsGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String productGroupPromotionId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -282,7 +282,7 @@ public class ProductGroupPromotionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call productGroupPromotionsGetValidateBeforeCall(String adAccountId, String productGroupPromotionId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call productGroupPromotionsGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String productGroupPromotionId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling productGroupPromotionsGet(Async)");
@@ -312,7 +312,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ProductGroupPromotionResponse productGroupPromotionsGet(String adAccountId, String productGroupPromotionId) throws ApiException {
+    public ProductGroupPromotionResponse productGroupPromotionsGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String productGroupPromotionId) throws ApiException {
         ApiResponse<ProductGroupPromotionResponse> localVarResp = productGroupPromotionsGetWithHttpInfo(adAccountId, productGroupPromotionId);
         return localVarResp.getData();
     }
@@ -332,7 +332,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProductGroupPromotionResponse> productGroupPromotionsGetWithHttpInfo(String adAccountId, String productGroupPromotionId) throws ApiException {
+    public ApiResponse<ProductGroupPromotionResponse> productGroupPromotionsGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String productGroupPromotionId) throws ApiException {
         okhttp3.Call localVarCall = productGroupPromotionsGetValidateBeforeCall(adAccountId, productGroupPromotionId, null);
         Type localVarReturnType = new TypeToken<ProductGroupPromotionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -354,7 +354,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call productGroupPromotionsGetAsync(String adAccountId, String productGroupPromotionId, final ApiCallback<ProductGroupPromotionResponse> _callback) throws ApiException {
+    public okhttp3.Call productGroupPromotionsGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String productGroupPromotionId, final ApiCallback<ProductGroupPromotionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = productGroupPromotionsGetValidateBeforeCall(adAccountId, productGroupPromotionId, _callback);
         Type localVarReturnType = new TypeToken<ProductGroupPromotionResponse>(){}.getType();
@@ -381,7 +381,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call productGroupPromotionsListCall(String adAccountId, List<String> productGroupPromotionIds, List<String> entityStatuses, String adGroupId, Integer pageSize, String order, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call productGroupPromotionsListCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable List<String> productGroupPromotionIds, @javax.annotation.Nullable List<String> entityStatuses, @javax.annotation.Nullable String adGroupId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -451,7 +451,7 @@ public class ProductGroupPromotionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call productGroupPromotionsListValidateBeforeCall(String adAccountId, List<String> productGroupPromotionIds, List<String> entityStatuses, String adGroupId, Integer pageSize, String order, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call productGroupPromotionsListValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable List<String> productGroupPromotionIds, @javax.annotation.Nullable List<String> entityStatuses, @javax.annotation.Nullable String adGroupId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling productGroupPromotionsList(Async)");
@@ -481,7 +481,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ProductGroupPromotionsList200Response productGroupPromotionsList(String adAccountId, List<String> productGroupPromotionIds, List<String> entityStatuses, String adGroupId, Integer pageSize, String order, String bookmark) throws ApiException {
+    public ProductGroupPromotionsList200Response productGroupPromotionsList(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable List<String> productGroupPromotionIds, @javax.annotation.Nullable List<String> entityStatuses, @javax.annotation.Nullable String adGroupId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<ProductGroupPromotionsList200Response> localVarResp = productGroupPromotionsListWithHttpInfo(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark);
         return localVarResp.getData();
     }
@@ -506,7 +506,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProductGroupPromotionsList200Response> productGroupPromotionsListWithHttpInfo(String adAccountId, List<String> productGroupPromotionIds, List<String> entityStatuses, String adGroupId, Integer pageSize, String order, String bookmark) throws ApiException {
+    public ApiResponse<ProductGroupPromotionsList200Response> productGroupPromotionsListWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable List<String> productGroupPromotionIds, @javax.annotation.Nullable List<String> entityStatuses, @javax.annotation.Nullable String adGroupId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = productGroupPromotionsListValidateBeforeCall(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark, null);
         Type localVarReturnType = new TypeToken<ProductGroupPromotionsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -533,7 +533,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call productGroupPromotionsListAsync(String adAccountId, List<String> productGroupPromotionIds, List<String> entityStatuses, String adGroupId, Integer pageSize, String order, String bookmark, final ApiCallback<ProductGroupPromotionsList200Response> _callback) throws ApiException {
+    public okhttp3.Call productGroupPromotionsListAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable List<String> productGroupPromotionIds, @javax.annotation.Nullable List<String> entityStatuses, @javax.annotation.Nullable String adGroupId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback<ProductGroupPromotionsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = productGroupPromotionsListValidateBeforeCall(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark, _callback);
         Type localVarReturnType = new TypeToken<ProductGroupPromotionsList200Response>(){}.getType();
@@ -555,7 +555,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call productGroupPromotionsUpdateCall(String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call productGroupPromotionsUpdateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -602,7 +602,7 @@ public class ProductGroupPromotionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call productGroupPromotionsUpdateValidateBeforeCall(String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call productGroupPromotionsUpdateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling productGroupPromotionsUpdate(Async)");
@@ -632,7 +632,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ProductGroupPromotionResponse productGroupPromotionsUpdate(String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest) throws ApiException {
+    public ProductGroupPromotionResponse productGroupPromotionsUpdate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest) throws ApiException {
         ApiResponse<ProductGroupPromotionResponse> localVarResp = productGroupPromotionsUpdateWithHttpInfo(adAccountId, productGroupPromotionUpdateRequest);
         return localVarResp.getData();
     }
@@ -652,7 +652,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProductGroupPromotionResponse> productGroupPromotionsUpdateWithHttpInfo(String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest) throws ApiException {
+    public ApiResponse<ProductGroupPromotionResponse> productGroupPromotionsUpdateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest) throws ApiException {
         okhttp3.Call localVarCall = productGroupPromotionsUpdateValidateBeforeCall(adAccountId, productGroupPromotionUpdateRequest, null);
         Type localVarReturnType = new TypeToken<ProductGroupPromotionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -674,7 +674,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call productGroupPromotionsUpdateAsync(String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest, final ApiCallback<ProductGroupPromotionResponse> _callback) throws ApiException {
+    public okhttp3.Call productGroupPromotionsUpdateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest, final ApiCallback<ProductGroupPromotionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = productGroupPromotionsUpdateValidateBeforeCall(adAccountId, productGroupPromotionUpdateRequest, _callback);
         Type localVarReturnType = new TypeToken<ProductGroupPromotionResponse>(){}.getType();
@@ -705,7 +705,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call productGroupsAnalyticsCall(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call productGroupsAnalyticsCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> productGroupIds, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -787,7 +787,7 @@ public class ProductGroupPromotionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call productGroupsAnalyticsValidateBeforeCall(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call productGroupsAnalyticsValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> productGroupIds, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling productGroupsAnalytics(Async)");
@@ -846,7 +846,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProductGroupAnalyticsResponseInner> productGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) throws ApiException {
+    public List<ProductGroupAnalyticsResponseInner> productGroupsAnalytics(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> productGroupIds, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime) throws ApiException {
         ApiResponse<List<ProductGroupAnalyticsResponseInner>> localVarResp = productGroupsAnalyticsWithHttpInfo(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime);
         return localVarResp.getData();
     }
@@ -875,7 +875,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProductGroupAnalyticsResponseInner>> productGroupsAnalyticsWithHttpInfo(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) throws ApiException {
+    public ApiResponse<List<ProductGroupAnalyticsResponseInner>> productGroupsAnalyticsWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> productGroupIds, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime) throws ApiException {
         okhttp3.Call localVarCall = productGroupsAnalyticsValidateBeforeCall(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, null);
         Type localVarReturnType = new TypeToken<List<ProductGroupAnalyticsResponseInner>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -906,7 +906,7 @@ public class ProductGroupPromotionsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call productGroupsAnalyticsAsync(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, final ApiCallback<List<ProductGroupAnalyticsResponseInner>> _callback) throws ApiException {
+    public okhttp3.Call productGroupsAnalyticsAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> productGroupIds, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime, final ApiCallback<List<ProductGroupAnalyticsResponseInner>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = productGroupsAnalyticsValidateBeforeCall(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, _callback);
         Type localVarReturnType = new TypeToken<List<ProductGroupAnalyticsResponseInner>>(){}.getType();

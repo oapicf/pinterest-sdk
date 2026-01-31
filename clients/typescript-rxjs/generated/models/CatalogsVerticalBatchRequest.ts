@@ -15,7 +15,6 @@ import type {
     CatalogsCreativeAssetsBatchItem,
     CatalogsCreativeAssetsBatchRequest,
     CatalogsHotelBatchRequest,
-    CatalogsItemsRequestLanguage,
     CatalogsRetailBatchRequest,
     Country,
 } from './';

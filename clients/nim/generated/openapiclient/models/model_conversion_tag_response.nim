@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_conversion_tag_configs
 import model_enhanced_match_status_type
@@ -16,12 +18,59 @@ import model_entity_status
 
 type ConversionTagResponse* = object
   ## 
-  adAccountId*: string ## Ad account ID.
-  codeSnippet*: string ## Tag code snippet.
-  enhancedMatchStatus*: EnhancedMatchStatusType
-  id*: string ## Tag ID.
-  lastFiredTimeMs*: float ## Time for the last event fired.
-  name*: string ## Conversion tag name.
-  status*: EntityStatus
-  version*: string ## Version number.
-  configs*: ConversionTagConfigs
+  adAccountId*: Option[string] ## Ad account ID.
+  codeSnippet*: Option[string] ## Tag code snippet.
+  enhancedMatchStatus*: Option[EnhancedMatchStatusType]
+  id*: Option[string] ## Tag ID.
+  lastFiredTimeMs*: Option[float] ## Time for the last event fired.
+  name*: Option[string] ## Conversion tag name.
+  status*: Option[EntityStatus]
+  version*: Option[string] ## Version number.
+  configs*: Option[ConversionTagConfigs]
+
+
+# Custom JSON deserialization for ConversionTagResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[ConversionTagResponse]): ConversionTagResponse =
+  result = ConversionTagResponse()
+  if node.kind == JObject:
+    if node.hasKey("ad_account_id") and node["ad_account_id"].kind != JNull:
+      result.adAccountId = some(to(node["ad_account_id"], typeof(result.adAccountId.get())))
+    if node.hasKey("code_snippet") and node["code_snippet"].kind != JNull:
+      result.codeSnippet = some(to(node["code_snippet"], typeof(result.codeSnippet.get())))
+    if node.hasKey("enhanced_match_status") and node["enhanced_match_status"].kind != JNull:
+      result.enhancedMatchStatus = some(to(node["enhanced_match_status"], typeof(result.enhancedMatchStatus.get())))
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("last_fired_time_ms") and node["last_fired_time_ms"].kind != JNull:
+      result.lastFiredTimeMs = some(to(node["last_fired_time_ms"], typeof(result.lastFiredTimeMs.get())))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+    if node.hasKey("version") and node["version"].kind != JNull:
+      result.version = some(to(node["version"], typeof(result.version.get())))
+    if node.hasKey("configs") and node["configs"].kind != JNull:
+      result.configs = some(to(node["configs"], typeof(result.configs.get())))
+
+# Custom JSON serialization for ConversionTagResponse with custom field names
+proc `%`*(obj: ConversionTagResponse): JsonNode =
+  result = newJObject()
+  if obj.adAccountId.isSome():
+    result["ad_account_id"] = %obj.adAccountId.get()
+  if obj.codeSnippet.isSome():
+    result["code_snippet"] = %obj.codeSnippet.get()
+  if obj.enhancedMatchStatus.isSome():
+    result["enhanced_match_status"] = %obj.enhancedMatchStatus.get()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.lastFiredTimeMs.isSome():
+    result["last_fired_time_ms"] = %obj.lastFiredTimeMs.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.version.isSome():
+    result["version"] = %obj.version.get()
+  if obj.configs.isSome():
+    result["configs"] = %obj.configs.get()
+

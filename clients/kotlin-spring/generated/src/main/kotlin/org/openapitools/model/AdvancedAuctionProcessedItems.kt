@@ -28,7 +28,7 @@ data class AdvancedAuctionProcessedItems(
     @field:Valid
     @Schema(example = "null", description = "Array of advanced auction processed items")
     @get:JsonProperty("items") val items: kotlin.collections.List<AdvancedAuctionProcessedItem>? = null
-    ) {
+) {
 
 }
 

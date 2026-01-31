@@ -53,7 +53,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
+open class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -608,13 +608,13 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Get analytics for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to BOTH)
-     * @param pinFormat Pin formats to get data for, default is all. (optional, default to ALL)
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
-     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ALL)
-     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to ALL)
+     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to FromClaimedContent.BOTH)
+     * @param pinFormat Pin formats to get data for, default is all. (optional, default to PinFormat.ALL)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
+     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
+     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
      * @param metricTypes Metric types to get data for, default is all.  (optional)
-     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to NO_SPLIT)
+     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to SplitField.NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return kotlin.collections.Map<kotlin.String, AnalyticsMetricsResponse>
      * @throws IllegalStateException If the request is not correctly configured
@@ -649,13 +649,13 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Get analytics for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to BOTH)
-     * @param pinFormat Pin formats to get data for, default is all. (optional, default to ALL)
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
-     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ALL)
-     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to ALL)
+     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to FromClaimedContent.BOTH)
+     * @param pinFormat Pin formats to get data for, default is all. (optional, default to PinFormat.ALL)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
+     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
+     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
      * @param metricTypes Metric types to get data for, default is all.  (optional)
-     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to NO_SPLIT)
+     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to SplitField.NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<kotlin.collections.Map<kotlin.String, AnalyticsMetricsResponse>?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -676,13 +676,13 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      *
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to BOTH)
-     * @param pinFormat Pin formats to get data for, default is all. (optional, default to ALL)
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
-     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ALL)
-     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to ALL)
+     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to FromClaimedContent.BOTH)
+     * @param pinFormat Pin formats to get data for, default is all. (optional, default to PinFormat.ALL)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
+     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
+     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
      * @param metricTypes Metric types to get data for, default is all.  (optional)
-     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to NO_SPLIT)
+     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to SplitField.NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
@@ -893,11 +893,11 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param sortBy Specify sorting order for metrics
-     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to BOTH)
-     * @param pinFormat Pin formats to get data for, default is all. (optional, default to ALL)
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
-     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ALL)
-     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to ALL)
+     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to FromClaimedContent.BOTH)
+     * @param pinFormat Pin formats to get data for, default is all. (optional, default to PinFormat.ALL)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
+     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
+     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
      * @param metricTypes Metric types to get data for, default is all.  (optional)
      * @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to 10)
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
@@ -936,11 +936,11 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param sortBy Specify sorting order for metrics
-     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to BOTH)
-     * @param pinFormat Pin formats to get data for, default is all. (optional, default to ALL)
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
-     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ALL)
-     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to ALL)
+     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to FromClaimedContent.BOTH)
+     * @param pinFormat Pin formats to get data for, default is all. (optional, default to PinFormat.ALL)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
+     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
+     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
      * @param metricTypes Metric types to get data for, default is all.  (optional)
      * @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to 10)
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
@@ -965,11 +965,11 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param sortBy Specify sorting order for metrics
-     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to BOTH)
-     * @param pinFormat Pin formats to get data for, default is all. (optional, default to ALL)
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
-     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ALL)
-     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to ALL)
+     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to FromClaimedContent.BOTH)
+     * @param pinFormat Pin formats to get data for, default is all. (optional, default to PinFormat.ALL)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
+     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
+     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
      * @param metricTypes Metric types to get data for, default is all.  (optional)
      * @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to 10)
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
@@ -1191,11 +1191,11 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param sortBy Specify sorting order for video metrics
-     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to BOTH)
-     * @param pinFormat Pin formats to get data for, default is all. (optional, default to ALL)
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
-     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ALL)
-     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to ALL)
+     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to FromClaimedContent.BOTH)
+     * @param pinFormat Pin formats to get data for, default is all. (optional, default to PinFormat.ALL)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
+     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
+     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
      * @param metricTypes Metric types to get video data for, default is all.  (optional)
      * @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to 10)
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
@@ -1234,11 +1234,11 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param sortBy Specify sorting order for video metrics
-     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to BOTH)
-     * @param pinFormat Pin formats to get data for, default is all. (optional, default to ALL)
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
-     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ALL)
-     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to ALL)
+     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to FromClaimedContent.BOTH)
+     * @param pinFormat Pin formats to get data for, default is all. (optional, default to PinFormat.ALL)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
+     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
+     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
      * @param metricTypes Metric types to get video data for, default is all.  (optional)
      * @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to 10)
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
@@ -1263,11 +1263,11 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param sortBy Specify sorting order for video metrics
-     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to BOTH)
-     * @param pinFormat Pin formats to get data for, default is all. (optional, default to ALL)
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
-     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ALL)
-     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to ALL)
+     * @param fromClaimedContent Filter on Pins that match your claimed domain. (optional, default to FromClaimedContent.BOTH)
+     * @param pinFormat Pin formats to get data for, default is all. (optional, default to PinFormat.ALL)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
+     * @param contentType Filter to paid or organic data. Default is all. (optional, default to ContentType.ALL)
+     * @param source Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional, default to Source.ALL)
      * @param metricTypes Metric types to get video data for, default is all.  (optional)
      * @param numOfPins Number of pins to include, default is 10. Max is 50. (optional, default to 10)
      * @param createdInLastNDays Get metrics for pins created in the last \&quot;n\&quot; days. (optional)
@@ -1493,7 +1493,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Get a list of who a certain user follows.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to ALL)
+     * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to UserFollowingFeedType.ALL)
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return UserFollowingGet200Response
@@ -1505,7 +1505,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun userFollowingGet(bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, feedType: UserFollowingFeedType? = ALL, explicitFollowing: kotlin.Boolean? = false, adAccountId: kotlin.String? = null) : UserFollowingGet200Response {
+    fun userFollowingGet(bookmark: kotlin.String? = null, pageSize: kotlin.Int? = 25, feedType: UserFollowingFeedType? = UserFollowingFeedType.ALL, explicitFollowing: kotlin.Boolean? = false, adAccountId: kotlin.String? = null) : UserFollowingGet200Response {
         val localVarResponse = userFollowingGetWithHttpInfo(bookmark = bookmark, pageSize = pageSize, feedType = feedType, explicitFollowing = explicitFollowing, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
@@ -1529,7 +1529,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Get a list of who a certain user follows.
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to ALL)
+     * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to UserFollowingFeedType.ALL)
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<UserFollowingGet200Response?>
@@ -1551,7 +1551,7 @@ class UserAccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      *
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to ALL)
+     * @param feedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional, default to UserFollowingFeedType.ALL)
      * @param explicitFollowing Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional, default to false)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig

@@ -33,7 +33,7 @@ data class CatalogsHotelItemsPostFilter(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", description = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
     @get:JsonProperty("catalog_id") val catalogId: kotlin.String? = null
-    ) {
+) {
 
     /**
     * 
@@ -47,7 +47,8 @@ data class CatalogsHotelItemsPostFilter(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsHotelItemsPostFilter'")
             }
         }
     }

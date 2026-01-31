@@ -14,17 +14,11 @@
 
 import { mapValues } from '../runtime';
 /**
- * A request to exchange an authorization code for an access token.
+ * 
  * @export
  * @interface OauthAccessTokenRequestCode
  */
 export interface OauthAccessTokenRequestCode {
-    /**
-     * 
-     * @type {string}
-     * @memberof OauthAccessTokenRequestCode
-     */
-    grantType: OauthAccessTokenRequestCodeGrantTypeEnum;
     /**
      * 
      * @type {string}
@@ -37,6 +31,12 @@ export interface OauthAccessTokenRequestCode {
      * @memberof OauthAccessTokenRequestCode
      */
     redirectUri: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenRequestCode
+     */
+    grantType: OauthAccessTokenRequestCodeGrantTypeEnum;
 }
 
 
@@ -55,9 +55,9 @@ export type OauthAccessTokenRequestCodeGrantTypeEnum = typeof OauthAccessTokenRe
  * Check if a given object implements the OauthAccessTokenRequestCode interface.
  */
 export function instanceOfOauthAccessTokenRequestCode(value: object): value is OauthAccessTokenRequestCode {
-    if (!('grantType' in value) || value['grantType'] === undefined) return false;
     if (!('code' in value) || value['code'] === undefined) return false;
     if (!('redirectUri' in value) || value['redirectUri'] === undefined) return false;
+    if (!('grantType' in value) || value['grantType'] === undefined) return false;
     return true;
 }
 
@@ -71,9 +71,9 @@ export function OauthAccessTokenRequestCodeFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'grantType': json['grant_type'],
         'code': json['code'],
         'redirectUri': json['redirect_uri'],
+        'grantType': json['grant_type'],
     };
 }
 
@@ -88,9 +88,9 @@ export function OauthAccessTokenRequestCodeToJSONTyped(value?: OauthAccessTokenR
 
     return {
         
-        'grant_type': value['grantType'],
         'code': value['code'],
         'redirect_uri': value['redirectUri'],
+        'grant_type': value['grantType'],
     };
 }
 

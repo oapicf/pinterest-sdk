@@ -27,8 +27,8 @@ feature --Access
       
     description: detachable STRING_32
       -- Audience description.
-    audience_type: detachable AUDIENCE_CREATE_REQUEST_1_AUDIENCE_TYPE
-      
+    audience_type: detachable AUDIENCE_TYPE
+      -- <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
 
 feature -- Change Element
 

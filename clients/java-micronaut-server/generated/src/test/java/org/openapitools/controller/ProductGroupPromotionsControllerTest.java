@@ -92,7 +92,7 @@ public class ProductGroupPromotionsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@1218679a");
+            .accept("[Ljava.lang.String;@4f2fcbe0");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotionResponse.class);
@@ -140,7 +140,7 @@ public class ProductGroupPromotionsControllerTest {
             put("product_group_promotion_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@47222fcd");
+            .accept("[Ljava.lang.String;@6d80b629");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotionResponse.class);
@@ -192,7 +192,7 @@ public class ProductGroupPromotionsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@119a7fd2");
+            .accept("[Ljava.lang.String;@6578cfe8");
         request.getParameters()
             .add("product_group_promotion_ids", Arrays.asList("example")) // The query format should be multi
             .add("entity_statuses", Arrays.asList("example")) // The query format should be multi
@@ -247,7 +247,7 @@ public class ProductGroupPromotionsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@3756acb1");
+            .accept("[Ljava.lang.String;@1f795106");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotionResponse.class);
@@ -302,7 +302,7 @@ public class ProductGroupPromotionsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@66233976");
+            .accept("[Ljava.lang.String;@2e38e9c2");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 

@@ -23,8 +23,7 @@ const std::string BillingApi::base = "/v5";
 
 BillingApi::BillingApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
-{
-}
+{}
 
 void BillingApi::init() {
     setupRoutes();
@@ -47,14 +46,12 @@ void BillingApi::setupRoutes() {
     router->addCustomHandler(Routes::bind(&BillingApi::billing_api_default_handler, this));
 }
 
-void BillingApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void BillingApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleParsingException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> BillingApi::handleParsingException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> BillingApi::handleParsingException(const std::exception& ex) const noexcept {
     try {
         throw;
     } catch (nlohmann::detail::exception &e) {
@@ -66,331 +63,613 @@ std::pair<Pistache::Http::Code, std::string> BillingApi::handleParsingException(
     }
 }
 
-void BillingApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void BillingApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleOperationException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> BillingApi::handleOperationException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> BillingApi::handleOperationException(const std::exception& ex) const noexcept {
     return std::make_pair(Pistache::Http::Code::Internal_Server_Error, ex.what());
 }
 
-void BillingApi::ads_credit_redeem_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+void BillingApi::ads_credit_redeem_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        // Getting the body param
+        
+        AdsCreditRedeemRequest adsCreditRedeemRequest;
+        
+        
+        
     
-    // Getting the body param
-    
-    AdsCreditRedeemRequest adsCreditRedeemRequest;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(adsCreditRedeemRequest);
-        adsCreditRedeemRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->ads_credit_redeem(adAccountId, adsCreditRedeemRequest, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(adsCreditRedeemRequest);
+            adsCreditRedeemRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ads_credit_redeem(adAccountId, adsCreditRedeemRequest, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/ads_credit/redeem" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void BillingApi::ads_credits_discounts_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void BillingApi::ads_credits_discounts_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
-    
-    // Getting the query params
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
         }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->ads_credits_discounts_get(adAccountId, bookmark, pageSize, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ads_credits_discounts_get(adAccountId, bookmark, pageSize, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/ads_credit/discounts" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void BillingApi::billing_profiles_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void BillingApi::billing_profiles_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto isActiveQuery = request.query().get("is_active");
+        std::optional<bool> isActive;
+        if (isActiveQuery.has_value()) {
+            bool valueQuery_instance;
+            if (fromStringValue(isActiveQuery.value(), valueQuery_instance)) {
+                isActive = valueQuery_instance;
+            }
+        }
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
+        }
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
+        }
     
-    // Getting the query params
-    auto isActiveQuery = request.query().get("is_active");
-    std::optional<bool> isActive;
-    if(isActiveQuery.has_value()){
-        bool valueQuery_instance;
-        if(fromStringValue(isActiveQuery.value(), valueQuery_instance)){
-            isActive = valueQuery_instance;
-        }
-    }
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
-        }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->billing_profiles_get(adAccountId, isActive, bookmark, pageSize, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->billing_profiles_get(adAccountId, isActive, bookmark, pageSize, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/billing_profiles" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void BillingApi::ssio_accounts_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void BillingApi::ssio_accounts_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
     
-    try {
-        this->ssio_accounts_get(adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ssio_accounts_get(adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
-}
-void BillingApi::ssio_insertion_order_create_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
-    try {
-
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
-    
-    // Getting the body param
-    
-    SSIOCreateInsertionOrderRequest sSIOCreateInsertionOrderRequest;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(sSIOCreateInsertionOrderRequest);
-        sSIOCreateInsertionOrderRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
-
-    try {
-        this->ssio_insertion_order_create(adAccountId, sSIOCreateInsertionOrderRequest, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
-
-    } catch (std::exception &e) {
-        response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
-    }
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/ssio/accounts" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
 
 }
-void BillingApi::ssio_insertion_order_edit_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void BillingApi::ssio_insertion_order_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        // Getting the body param
+        
+        SSIOCreateInsertionOrderRequest sSIOCreateInsertionOrderRequest;
+        
+        
+        
     
-    // Getting the body param
-    
-    SSIOEditInsertionOrderRequest sSIOEditInsertionOrderRequest;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(sSIOEditInsertionOrderRequest);
-        sSIOEditInsertionOrderRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->ssio_insertion_order_edit(adAccountId, sSIOEditInsertionOrderRequest, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
-
-    } catch (std::exception &e) {
-        response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
-    }
-
-}
-void BillingApi::ssio_insertion_orders_status_get_by_ad_account_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
-    try {
-
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
-    
-    // Getting the query params
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
+        try {
+            nlohmann::json::parse(request.body()).get_to(sSIOCreateInsertionOrderRequest);
+            sSIOCreateInsertionOrderRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
         }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->ssio_insertion_orders_status_get_by_ad_account(adAccountId, bookmark, pageSize, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ssio_insertion_order_create(adAccountId, sSIOCreateInsertionOrderRequest, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/ssio/insertion_orders" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void BillingApi::ssio_insertion_orders_status_get_by_pin_order_id_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void BillingApi::ssio_insertion_order_edit_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
-    auto pinOrderId = request.param(":pinOrderId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        // Getting the body param
+        
+        SSIOEditInsertionOrderRequest sSIOEditInsertionOrderRequest;
+        
+        
+        
     
-    try {
-        this->ssio_insertion_orders_status_get_by_pin_order_id(adAccountId, pinOrderId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+        try {
+            nlohmann::json::parse(request.body()).get_to(sSIOEditInsertionOrderRequest);
+            sSIOEditInsertionOrderRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ssio_insertion_order_edit(adAccountId, sSIOEditInsertionOrderRequest, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/ssio/insertion_orders" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void BillingApi::ssio_order_lines_get_by_ad_account_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void BillingApi::ssio_insertion_orders_status_get_by_ad_account_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
+        }
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
+        }
     
-    // Getting the query params
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
-        }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
-        }
-    }
-    auto pinOrderIdQuery = request.query().get("pin_order_id");
-    std::optional<std::string> pinOrderId;
-    if(pinOrderIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(pinOrderIdQuery.value(), valueQuery_instance)){
-            pinOrderId = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->ssio_order_lines_get_by_ad_account(adAccountId, bookmark, pageSize, pinOrderId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ssio_insertion_orders_status_get_by_ad_account(adAccountId, bookmark, pageSize, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/ssio/insertion_orders/status" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
+
+void BillingApi::ssio_insertion_orders_status_get_by_pin_order_id_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
+    try {
+
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        auto pinOrderId = request.param(":pinOrderId").as<std::string>();
+        
+        
+    
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ssio_insertion_orders_status_get_by_pin_order_id(adAccountId, pinOrderId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
+
+    } catch (std::exception &e) {
+        response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
+    }
+
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/ssio/insertion_orders/:pin_order_id/status" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
+}
+
+void BillingApi::ssio_order_lines_get_by_ad_account_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
+    try {
+
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
+        }
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
+        }
+        auto pinOrderIdQuery = request.query().get("pin_order_id");
+        std::optional<std::string> pinOrderId;
+        if (pinOrderIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(pinOrderIdQuery.value(), valueQuery_instance)) {
+                pinOrderId = valueQuery_instance;
+            }
+        }
+    
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ssio_order_lines_get_by_ad_account(adAccountId, bookmark, pageSize, pinOrderId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
+
+    } catch (std::exception &e) {
+        response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
+    }
+
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/ssio/order_lines" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
+}
+
 
 void BillingApi::billing_api_default_handler(const Pistache::Rest::Request &, Pistache::Http::ResponseWriter response) {
     response.send(Pistache::Http::Code::Not_Found, "The requested method does not exist");

@@ -139,8 +139,7 @@ namespace Org.OpenAPITools.Model
                             adGroupId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "product_group_promotion":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                productGroupPromotion = new Option<List<ProductGroupPromotionCreateRequestElement>?>(JsonSerializer.Deserialize<List<ProductGroupPromotionCreateRequestElement>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            productGroupPromotion = new Option<List<ProductGroupPromotionCreateRequestElement>?>(JsonSerializer.Deserialize<List<ProductGroupPromotionCreateRequestElement>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

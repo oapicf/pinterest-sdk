@@ -299,15 +299,13 @@ namespace Org.OpenAPITools.Model
                             cause = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "column_number":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                columnNumber = new Option<int?>(utf8JsonReader.GetInt32());
+                            columnNumber = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "file_name":
                             fileName = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "line_number":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lineNumber = new Option<int?>(utf8JsonReader.GetInt32());
+                            lineNumber = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "message":
                             message = new Option<string?>(utf8JsonReader.GetString()!);
@@ -319,8 +317,7 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "number":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                number = new Option<int?>(utf8JsonReader.GetInt32());
+                            number = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "stack_trace":
                             stackTrace = new Option<string?>(utf8JsonReader.GetString()!);

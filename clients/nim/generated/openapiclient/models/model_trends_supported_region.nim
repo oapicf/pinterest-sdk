@@ -9,7 +9,113 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type TrendsSupportedRegion* = object
-  ## 
+type TrendsSupportedRegion* {.pure.} = enum
+  US
+  CA
+  DE
+  FR
+  ES
+  IT
+  `DE+AT+CH`
+  `GB+IE`
+  `IT+ES+PT+GR+MT`
+  `PL+RO+HU+SK+CZ`
+  `SE+DK+FI+NO`
+  `NL+BE+LU`
+  AR
+  BR
+  CO
+  MX
+  `MX+AR+CO+CL`
+  `AU+NZ`
+
+func `%`*(v: TrendsSupportedRegion): JsonNode =
+  result = case v:
+    of TrendsSupportedRegion.US: %"US"
+    of TrendsSupportedRegion.CA: %"CA"
+    of TrendsSupportedRegion.DE: %"DE"
+    of TrendsSupportedRegion.FR: %"FR"
+    of TrendsSupportedRegion.ES: %"ES"
+    of TrendsSupportedRegion.IT: %"IT"
+    of TrendsSupportedRegion.`DE+AT+CH`: %"DE+AT+CH"
+    of TrendsSupportedRegion.`GB+IE`: %"GB+IE"
+    of TrendsSupportedRegion.`IT+ES+PT+GR+MT`: %"IT+ES+PT+GR+MT"
+    of TrendsSupportedRegion.`PL+RO+HU+SK+CZ`: %"PL+RO+HU+SK+CZ"
+    of TrendsSupportedRegion.`SE+DK+FI+NO`: %"SE+DK+FI+NO"
+    of TrendsSupportedRegion.`NL+BE+LU`: %"NL+BE+LU"
+    of TrendsSupportedRegion.AR: %"AR"
+    of TrendsSupportedRegion.BR: %"BR"
+    of TrendsSupportedRegion.CO: %"CO"
+    of TrendsSupportedRegion.MX: %"MX"
+    of TrendsSupportedRegion.`MX+AR+CO+CL`: %"MX+AR+CO+CL"
+    of TrendsSupportedRegion.`AU+NZ`: %"AU+NZ"
+
+func `$`*(v: TrendsSupportedRegion): string =
+  result = case v:
+    of TrendsSupportedRegion.US: $("US")
+    of TrendsSupportedRegion.CA: $("CA")
+    of TrendsSupportedRegion.DE: $("DE")
+    of TrendsSupportedRegion.FR: $("FR")
+    of TrendsSupportedRegion.ES: $("ES")
+    of TrendsSupportedRegion.IT: $("IT")
+    of TrendsSupportedRegion.`DE+AT+CH`: $("DE+AT+CH")
+    of TrendsSupportedRegion.`GB+IE`: $("GB+IE")
+    of TrendsSupportedRegion.`IT+ES+PT+GR+MT`: $("IT+ES+PT+GR+MT")
+    of TrendsSupportedRegion.`PL+RO+HU+SK+CZ`: $("PL+RO+HU+SK+CZ")
+    of TrendsSupportedRegion.`SE+DK+FI+NO`: $("SE+DK+FI+NO")
+    of TrendsSupportedRegion.`NL+BE+LU`: $("NL+BE+LU")
+    of TrendsSupportedRegion.AR: $("AR")
+    of TrendsSupportedRegion.BR: $("BR")
+    of TrendsSupportedRegion.CO: $("CO")
+    of TrendsSupportedRegion.MX: $("MX")
+    of TrendsSupportedRegion.`MX+AR+CO+CL`: $("MX+AR+CO+CL")
+    of TrendsSupportedRegion.`AU+NZ`: $("AU+NZ")
+
+proc to*(node: JsonNode, T: typedesc[TrendsSupportedRegion]): TrendsSupportedRegion =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum TrendsSupportedRegion, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("US"):
+    return TrendsSupportedRegion.US
+  of $("CA"):
+    return TrendsSupportedRegion.CA
+  of $("DE"):
+    return TrendsSupportedRegion.DE
+  of $("FR"):
+    return TrendsSupportedRegion.FR
+  of $("ES"):
+    return TrendsSupportedRegion.ES
+  of $("IT"):
+    return TrendsSupportedRegion.IT
+  of $("DE+AT+CH"):
+    return TrendsSupportedRegion.`DE+AT+CH`
+  of $("GB+IE"):
+    return TrendsSupportedRegion.`GB+IE`
+  of $("IT+ES+PT+GR+MT"):
+    return TrendsSupportedRegion.`IT+ES+PT+GR+MT`
+  of $("PL+RO+HU+SK+CZ"):
+    return TrendsSupportedRegion.`PL+RO+HU+SK+CZ`
+  of $("SE+DK+FI+NO"):
+    return TrendsSupportedRegion.`SE+DK+FI+NO`
+  of $("NL+BE+LU"):
+    return TrendsSupportedRegion.`NL+BE+LU`
+  of $("AR"):
+    return TrendsSupportedRegion.AR
+  of $("BR"):
+    return TrendsSupportedRegion.BR
+  of $("CO"):
+    return TrendsSupportedRegion.CO
+  of $("MX"):
+    return TrendsSupportedRegion.MX
+  of $("MX+AR+CO+CL"):
+    return TrendsSupportedRegion.`MX+AR+CO+CL`
+  of $("AU+NZ"):
+    return TrendsSupportedRegion.`AU+NZ`
+  else:
+    raise newException(ValueError, "Invalid enum value for TrendsSupportedRegion: " & strVal)
+

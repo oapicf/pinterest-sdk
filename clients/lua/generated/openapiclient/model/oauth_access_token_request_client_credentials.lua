@@ -19,10 +19,10 @@ local function cast_oauth_access_token_request_client_credentials(t)
 	return setmetatable(t, oauth_access_token_request_client_credentials_mt)
 end
 
-local function new_oauth_access_token_request_client_credentials(grant_type, scope)
+local function new_oauth_access_token_request_client_credentials(scope, grant_type)
 	return cast_oauth_access_token_request_client_credentials({
-		["grant_type"] = grant_type;
 		["scope"] = scope;
+		["grant_type"] = grant_type;
 	})
 end
 

@@ -45,64 +45,76 @@ PINNER(String.valueOf("PINNER")), BUSINESS(String.valueOf("BUSINESS"));
     }
 }
 
-  @ApiModelProperty(value = "Type of account")
  /**
-   * Type of account
-  **/
+  * Type of account
+  */
+  @ApiModelProperty(value = "Type of account")
+
   private AccountTypeEnum accountType;
 
-  @ApiModelProperty(example = "2783136121146311751", value = "User account ID.")
  /**
-   * User account ID.
-  **/
+  * User account ID.
+  */
+  @ApiModelProperty(example = "2783136121146311751", value = "User account ID.")
+
   private String id;
 
   @ApiModelProperty(value = "")
+
   private String profileImage;
 
   @ApiModelProperty(value = "")
+
   private String websiteUrl;
 
   @ApiModelProperty(value = "")
+
   private String username;
 
-  @ApiModelProperty(value = "Profile about description.")
  /**
-   * Profile about description.
-  **/
+  * Profile about description.
+  */
+  @ApiModelProperty(value = "Profile about description.")
+
   private String about;
 
   @ApiModelProperty(value = "")
+
   private String businessName;
 
-  @ApiModelProperty(example = "14", value = "User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.")
  /**
-   * User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
-  **/
+  * User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
+  */
+  @ApiModelProperty(example = "14", value = "User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.")
+
   private Integer boardCount;
 
-  @ApiModelProperty(example = "339", value = "User account pin count. This includes both created and saved pins.")
  /**
-   * User account pin count. This includes both created and saved pins.
-  **/
+  * User account pin count. This includes both created and saved pins.
+  */
+  @ApiModelProperty(example = "339", value = "User account pin count. This includes both created and saved pins.")
+
   private Integer pinCount;
 
-  @ApiModelProperty(example = "10", value = "User account follower count.")
  /**
-   * User account follower count.
-  **/
+  * User account follower count.
+  */
+  @ApiModelProperty(example = "10", value = "User account follower count.")
+
   private Integer followerCount;
 
-  @ApiModelProperty(example = "347", value = "User account following count.")
  /**
-   * User account following count.
-  **/
+  * User account following count.
+  */
+  @ApiModelProperty(example = "347", value = "User account following count.")
+
   private Integer followingCount;
 
-  @ApiModelProperty(example = "163", value = "User account monthly views.")
  /**
-   * User account monthly views.
-  **/
+  * User account monthly views.
+  */
+  @ApiModelProperty(example = "163", value = "User account monthly views.")
+
   private Integer monthlyViews;
  /**
    * Type of account

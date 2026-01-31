@@ -72,9 +72,6 @@ func AssertCatalogsCreativeAssetsFeedsCreateRequestRequired(obj CatalogsCreative
 			return err
 		}
 	}
-	if err := AssertCatalogsStatusRequired(obj.Status); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -93,8 +90,5 @@ func AssertCatalogsCreativeAssetsFeedsCreateRequestConstraints(obj CatalogsCreat
      		return err
      	}
     }
-	if err := AssertCatalogsStatusConstraints(obj.Status); err != nil {
-		return err
-	}
 	return nil
 }

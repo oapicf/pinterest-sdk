@@ -15,8 +15,8 @@
 
 
 module Api.Request.Pins exposing
-    ( multiPinsAnalytics, AppTypes(..), appTypesVariants
-    , pinsAnalytics, AppTypes(..), appTypesVariants, SplitField(..), splitFieldVariants
+    ( multiPinsAnalytics, MetricTypes(..), metricTypesVariants, AppTypes(..), appTypesVariants
+    , pinsAnalytics, MetricTypes(..), metricTypesVariants, AppTypes(..), appTypesVariants, SplitField(..), splitFieldVariants
     , pinsCreate
     , pinsDelete
     , pinsGet
@@ -32,6 +32,94 @@ import Dict
 import Http
 import Json.Decode
 import Json.Encode
+
+
+type MetricTypes
+    = MetricTypesIMPRESSION
+    | MetricTypesOUTBOUNDCLICK
+    | MetricTypesPINCLICK
+    | MetricTypesSAVE
+    | MetricTypesSAVERATE
+    | MetricTypesTOTALCOMMENTS
+    | MetricTypesTOTALREACTIONS
+    | MetricTypesUSERFOLLOW
+    | MetricTypesPROFILEVISIT
+    | MetricTypesVIDEOMRCVIEW
+    | MetricTypesVIDEO10SVIEW
+    | MetricTypesQUARTILE95PERCENTVIEW
+    | MetricTypesVIDEOV50WATCHTIME
+    | MetricTypesVIDEOSTART
+    | MetricTypesVIDEOAVGWATCHTIME
+
+
+metricTypesVariants : List MetricTypes
+metricTypesVariants =
+    [ MetricTypesIMPRESSION
+    , MetricTypesOUTBOUNDCLICK
+    , MetricTypesPINCLICK
+    , MetricTypesSAVE
+    , MetricTypesSAVERATE
+    , MetricTypesTOTALCOMMENTS
+    , MetricTypesTOTALREACTIONS
+    , MetricTypesUSERFOLLOW
+    , MetricTypesPROFILEVISIT
+    , MetricTypesVIDEOMRCVIEW
+    , MetricTypesVIDEO10SVIEW
+    , MetricTypesQUARTILE95PERCENTVIEW
+    , MetricTypesVIDEOV50WATCHTIME
+    , MetricTypesVIDEOSTART
+    , MetricTypesVIDEOAVGWATCHTIME
+    ]
+
+
+stringFromMetricTypes : MetricTypes -> String
+stringFromMetricTypes model =
+    case model of
+        MetricTypesIMPRESSION ->
+            "IMPRESSION"
+
+        MetricTypesOUTBOUNDCLICK ->
+            "OUTBOUND_CLICK"
+
+        MetricTypesPINCLICK ->
+            "PIN_CLICK"
+
+        MetricTypesSAVE ->
+            "SAVE"
+
+        MetricTypesSAVERATE ->
+            "SAVE_RATE"
+
+        MetricTypesTOTALCOMMENTS ->
+            "TOTAL_COMMENTS"
+
+        MetricTypesTOTALREACTIONS ->
+            "TOTAL_REACTIONS"
+
+        MetricTypesUSERFOLLOW ->
+            "USER_FOLLOW"
+
+        MetricTypesPROFILEVISIT ->
+            "PROFILE_VISIT"
+
+        MetricTypesVIDEOMRCVIEW ->
+            "VIDEO_MRC_VIEW"
+
+        MetricTypesVIDEO10SVIEW ->
+            "VIDEO_10S_VIEW"
+
+        MetricTypesQUARTILE95PERCENTVIEW ->
+            "QUARTILE_95_PERCENT_VIEW"
+
+        MetricTypesVIDEOV50WATCHTIME ->
+            "VIDEO_V50_WATCH_TIME"
+
+        MetricTypesVIDEOSTART ->
+            "VIDEO_START"
+
+        MetricTypesVIDEOAVGWATCHTIME ->
+            "VIDEO_AVG_WATCH_TIME"
+
 
 
 type AppTypes
@@ -64,6 +152,94 @@ stringFromAppTypes model =
 
         AppTypesWEB ->
             "WEB"
+
+
+
+type MetricTypes
+    = MetricTypesIMPRESSION
+    | MetricTypesOUTBOUNDCLICK
+    | MetricTypesPINCLICK
+    | MetricTypesSAVE
+    | MetricTypesSAVERATE
+    | MetricTypesTOTALCOMMENTS
+    | MetricTypesTOTALREACTIONS
+    | MetricTypesUSERFOLLOW
+    | MetricTypesPROFILEVISIT
+    | MetricTypesVIDEOMRCVIEW
+    | MetricTypesVIDEO10SVIEW
+    | MetricTypesQUARTILE95PERCENTVIEW
+    | MetricTypesVIDEOV50WATCHTIME
+    | MetricTypesVIDEOSTART
+    | MetricTypesVIDEOAVGWATCHTIME
+
+
+metricTypesVariants : List MetricTypes
+metricTypesVariants =
+    [ MetricTypesIMPRESSION
+    , MetricTypesOUTBOUNDCLICK
+    , MetricTypesPINCLICK
+    , MetricTypesSAVE
+    , MetricTypesSAVERATE
+    , MetricTypesTOTALCOMMENTS
+    , MetricTypesTOTALREACTIONS
+    , MetricTypesUSERFOLLOW
+    , MetricTypesPROFILEVISIT
+    , MetricTypesVIDEOMRCVIEW
+    , MetricTypesVIDEO10SVIEW
+    , MetricTypesQUARTILE95PERCENTVIEW
+    , MetricTypesVIDEOV50WATCHTIME
+    , MetricTypesVIDEOSTART
+    , MetricTypesVIDEOAVGWATCHTIME
+    ]
+
+
+stringFromMetricTypes : MetricTypes -> String
+stringFromMetricTypes model =
+    case model of
+        MetricTypesIMPRESSION ->
+            "IMPRESSION"
+
+        MetricTypesOUTBOUNDCLICK ->
+            "OUTBOUND_CLICK"
+
+        MetricTypesPINCLICK ->
+            "PIN_CLICK"
+
+        MetricTypesSAVE ->
+            "SAVE"
+
+        MetricTypesSAVERATE ->
+            "SAVE_RATE"
+
+        MetricTypesTOTALCOMMENTS ->
+            "TOTAL_COMMENTS"
+
+        MetricTypesTOTALREACTIONS ->
+            "TOTAL_REACTIONS"
+
+        MetricTypesUSERFOLLOW ->
+            "USER_FOLLOW"
+
+        MetricTypesPROFILEVISIT ->
+            "PROFILE_VISIT"
+
+        MetricTypesVIDEOMRCVIEW ->
+            "VIDEO_MRC_VIEW"
+
+        MetricTypesVIDEO10SVIEW ->
+            "VIDEO_10S_VIEW"
+
+        MetricTypesQUARTILE95PERCENTVIEW ->
+            "QUARTILE_95_PERCENT_VIEW"
+
+        MetricTypesVIDEOV50WATCHTIME ->
+            "VIDEO_V50_WATCH_TIME"
+
+        MetricTypesVIDEOSTART ->
+            "VIDEO_START"
+
+        MetricTypesVIDEOAVGWATCHTIME ->
+            "VIDEO_AVG_WATCH_TIME"
 
 
 
@@ -227,13 +403,13 @@ stringFromCreativeTypes model =
 <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 
 -}
-multiPinsAnalytics : List String -> Posix -> Posix -> List Api.Data.PinsAnalyticsMetricTypesParameterInner -> Maybe AppTypes -> Maybe String -> Api.Request (Dict.Dict String Dict)
+multiPinsAnalytics : List String -> Posix -> Posix -> List Api.Data.MetricTypes -> Maybe AppTypes -> Maybe String -> Api.Request (Dict.Dict String Dict)
 multiPinsAnalytics pinIds_query startDate_query endDate_query metricTypes_query appTypes_query adAccountId_query =
     Api.request
         "GET"
         "/pins/analytics"
         []
-        [ ( "pin_ids", Just <| (String.join "," << List.map identity) pinIds_query ), ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "app_types", Maybe.map stringFromAppTypes appTypes_query ), ( "metric_types", Just <| (String.join "," << List.map ) metricTypes_query ), ( "ad_account_id", Maybe.map identity adAccountId_query ) ]
+        [ ( "pin_ids", Just <| (String.join "," << List.map identity) pinIds_query ), ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "app_types", Maybe.map stringFromAppTypes appTypes_query ), ( "metric_types", Just <| (String.join "," << List.map stringFromMetricTypes) metricTypes_query ), ( "ad_account_id", Maybe.map identity adAccountId_query ) ]
         []
         Nothing
         (Json.Decode.dict (Json.Decode.dict Api.Data.pinAnalyticsMetricsResponseDecoder))
@@ -244,13 +420,13 @@ multiPinsAnalytics pinIds_query startDate_query endDate_query metricTypes_query 
 Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 
 -}
-pinsAnalytics : String -> Posix -> Posix -> List Api.Data.PinsAnalyticsMetricTypesParameterInner -> Maybe AppTypes -> Maybe SplitField -> Maybe String -> Api.Request (Dict.Dict String Api.Data.PinAnalyticsMetricsResponse)
+pinsAnalytics : String -> Posix -> Posix -> List Api.Data.MetricTypes -> Maybe AppTypes -> Maybe SplitField -> Maybe String -> Api.Request (Dict.Dict String Api.Data.PinAnalyticsMetricsResponse)
 pinsAnalytics pinId_path startDate_query endDate_query metricTypes_query appTypes_query splitField_query adAccountId_query =
     Api.request
         "GET"
         "/pins/{pin_id}/analytics"
         [ ( "pin_id", identity pinId_path ) ]
-        [ ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "app_types", Maybe.map stringFromAppTypes appTypes_query ), ( "metric_types", Just <| (String.join "," << List.map ) metricTypes_query ), ( "split_field", Maybe.map stringFromSplitField splitField_query ), ( "ad_account_id", Maybe.map identity adAccountId_query ) ]
+        [ ( "start_date", Just <| Api.Time.dateToString startDate_query ), ( "end_date", Just <| Api.Time.dateToString endDate_query ), ( "app_types", Maybe.map stringFromAppTypes appTypes_query ), ( "metric_types", Just <| (String.join "," << List.map stringFromMetricTypes) metricTypes_query ), ( "split_field", Maybe.map stringFromSplitField splitField_query ), ( "ad_account_id", Maybe.map identity adAccountId_query ) ]
         []
         Nothing
         (Json.Decode.dict Api.Data.pinAnalyticsMetricsResponseDecoder)

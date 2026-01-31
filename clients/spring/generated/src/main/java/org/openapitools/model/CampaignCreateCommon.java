@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  * CampaignCreateCommon
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CampaignCreateCommon {
 
   private @Nullable String adAccountId;
@@ -52,7 +52,7 @@ public class CampaignCreateCommon {
 
   private JsonNullable<Boolean> isAutomatedCampaign = JsonNullable.<Boolean>undefined();
 
-  public CampaignCreateCommon adAccountId(String adAccountId) {
+  public CampaignCreateCommon adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -64,15 +64,15 @@ public class CampaignCreateCommon {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
-  public CampaignCreateCommon name(String name) {
+  public CampaignCreateCommon name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -84,15 +84,15 @@ public class CampaignCreateCommon {
   
   @Schema(name = "name", example = "ACME Tools", description = "Campaign name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public CampaignCreateCommon status(EntityStatus status) {
+  public CampaignCreateCommon status(@Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -104,11 +104,11 @@ public class CampaignCreateCommon {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public EntityStatus getStatus() {
+  public @Nullable EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 

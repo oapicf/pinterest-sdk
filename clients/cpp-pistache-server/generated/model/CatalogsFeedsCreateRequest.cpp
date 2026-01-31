@@ -29,7 +29,6 @@ CatalogsFeedsCreateRequest::CatalogsFeedsCreateRequest()
     m_Preferred_processing_scheduleIsSet = false;
     m_Default_countryIsSet = false;
     m_Default_availabilityIsSet = false;
-    m_Status = "";
     m_StatusIsSet = false;
     
 }
@@ -301,11 +300,11 @@ void CatalogsFeedsCreateRequest::unsetDefault_availability()
 {
     m_Default_availabilityIsSet = false;
 }
-CatalogsStatus CatalogsFeedsCreateRequest::getStatus() const
+org::openapitools::server::model::CatalogsStatus CatalogsFeedsCreateRequest::getStatus() const
 {
     return m_Status;
 }
-void CatalogsFeedsCreateRequest::setStatus(CatalogsStatus const& value)
+void CatalogsFeedsCreateRequest::setStatus(org::openapitools::server::model::CatalogsStatus const& value)
 {
     m_Status = value;
     m_StatusIsSet = true;

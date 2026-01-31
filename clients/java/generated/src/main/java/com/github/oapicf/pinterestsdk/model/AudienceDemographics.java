@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Audience demographics
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceDemographics {
   public static final String SERIALIZED_NAME_AGES = "ages";
   @SerializedName(SERIALIZED_NAME_AGES)
@@ -268,15 +268,10 @@ public class AudienceDemographics {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ages");
-    openapiFields.add("genders");
-    openapiFields.add("devices");
-    openapiFields.add("metros");
-    openapiFields.add("countries");
+    openapiFields = new HashSet<String>(Arrays.asList("ages", "genders", "devices", "metros", "countries"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -288,7 +283,7 @@ public class AudienceDemographics {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AudienceDemographics.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceDemographics is not found in the empty JSON string", AudienceDemographics.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AudienceDemographics is not found in the empty JSON string", AudienceDemographics.openapiRequiredFields.toString()));
         }
       }
 
@@ -296,7 +291,7 @@ public class AudienceDemographics {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AudienceDemographics.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AudienceDemographics` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AudienceDemographics` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -305,7 +300,7 @@ public class AudienceDemographics {
         if (jsonArrayages != null) {
           // ensure the json data is an array
           if (!jsonObj.get("ages").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `ages` to be an array in the JSON string but got `%s`", jsonObj.get("ages").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ages` to be an array in the JSON string but got `%s`", jsonObj.get("ages").toString()));
           }
 
           // validate the optional field `ages` (array)
@@ -319,7 +314,7 @@ public class AudienceDemographics {
         if (jsonArraygenders != null) {
           // ensure the json data is an array
           if (!jsonObj.get("genders").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `genders` to be an array in the JSON string but got `%s`", jsonObj.get("genders").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `genders` to be an array in the JSON string but got `%s`", jsonObj.get("genders").toString()));
           }
 
           // validate the optional field `genders` (array)
@@ -333,7 +328,7 @@ public class AudienceDemographics {
         if (jsonArraydevices != null) {
           // ensure the json data is an array
           if (!jsonObj.get("devices").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `devices` to be an array in the JSON string but got `%s`", jsonObj.get("devices").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `devices` to be an array in the JSON string but got `%s`", jsonObj.get("devices").toString()));
           }
 
           // validate the optional field `devices` (array)
@@ -347,7 +342,7 @@ public class AudienceDemographics {
         if (jsonArraymetros != null) {
           // ensure the json data is an array
           if (!jsonObj.get("metros").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `metros` to be an array in the JSON string but got `%s`", jsonObj.get("metros").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `metros` to be an array in the JSON string but got `%s`", jsonObj.get("metros").toString()));
           }
 
           // validate the optional field `metros` (array)
@@ -361,7 +356,7 @@ public class AudienceDemographics {
         if (jsonArraycountries != null) {
           // ensure the json data is an array
           if (!jsonObj.get("countries").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `countries` to be an array in the JSON string but got `%s`", jsonObj.get("countries").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `countries` to be an array in the JSON string but got `%s`", jsonObj.get("countries").toString()));
           }
 
           // validate the optional field `countries` (array)

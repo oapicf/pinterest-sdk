@@ -51,7 +51,7 @@ data class TargetingTemplateCreate(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("tracking_urls") val trackingUrls: TrackingUrls? = null
-    ) {
+) {
 
 }
 

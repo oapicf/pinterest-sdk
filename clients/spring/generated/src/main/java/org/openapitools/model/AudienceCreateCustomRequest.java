@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * AudienceCreateCustomRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceCreateCustomRequest {
 
   private @Nullable String adAccountId;
@@ -52,7 +52,7 @@ public class AudienceCreateCustomRequest {
     this.dataParty = dataParty;
   }
 
-  public AudienceCreateCustomRequest adAccountId(String adAccountId) {
+  public AudienceCreateCustomRequest adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -64,11 +64,11 @@ public class AudienceCreateCustomRequest {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
@@ -152,7 +152,7 @@ public class AudienceCreateCustomRequest {
     this.dataParty = dataParty;
   }
 
-  public AudienceCreateCustomRequest category(String category) {
+  public AudienceCreateCustomRequest category(@Nullable String category) {
     this.category = category;
     return this;
   }
@@ -164,11 +164,11 @@ public class AudienceCreateCustomRequest {
   
   @Schema(name = "category", example = "DLX Demographics", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("category")
-  public String getCategory() {
+  public @Nullable String getCategory() {
     return category;
   }
 
-  public void setCategory(String category) {
+  public void setCategory(@Nullable String category) {
     this.category = category;
   }
 

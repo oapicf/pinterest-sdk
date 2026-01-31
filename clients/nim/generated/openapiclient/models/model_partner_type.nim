@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type PartnerType* = object
-  ## 
+type PartnerType* {.pure.} = enum
+  INTERNAL
+  EXTERNAL
+
+func `%`*(v: PartnerType): JsonNode =
+  result = case v:
+    of PartnerType.INTERNAL: %"INTERNAL"
+    of PartnerType.EXTERNAL: %"EXTERNAL"
+
+func `$`*(v: PartnerType): string =
+  result = case v:
+    of PartnerType.INTERNAL: $("INTERNAL")
+    of PartnerType.EXTERNAL: $("EXTERNAL")
+
+proc to*(node: JsonNode, T: typedesc[PartnerType]): PartnerType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum PartnerType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("INTERNAL"):
+    return PartnerType.INTERNAL
+  of $("EXTERNAL"):
+    return PartnerType.EXTERNAL
+  else:
+    raise newException(ValueError, "Invalid enum value for PartnerType: " & strVal)
+

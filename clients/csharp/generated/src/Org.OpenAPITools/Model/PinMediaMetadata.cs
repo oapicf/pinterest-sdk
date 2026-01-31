@@ -180,14 +180,14 @@ namespace Org.OpenAPITools.Model
 
             if (pinMediaMetadata.ImageMetadataOption.IsSet && pinMediaMetadata.ImageMetadataOption.Value != null)
             {
-                ImageMetadataJsonConverter ImageMetadataJsonConverter = (ImageMetadataJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(pinMediaMetadata.ImageMetadataOption.Value.GetType()));
-                ImageMetadataJsonConverter.WriteProperties(writer, pinMediaMetadata.ImageMetadataOption.Value, jsonSerializerOptions);
+                ImageMetadataJsonConverter imageMetadataJsonConverter = (ImageMetadataJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(pinMediaMetadata.ImageMetadataOption.Value.GetType()));
+                imageMetadataJsonConverter.WriteProperties(writer, pinMediaMetadata.ImageMetadataOption.Value, jsonSerializerOptions);
             }
 
             if (pinMediaMetadata.VideoMetadataOption.IsSet && pinMediaMetadata.VideoMetadataOption.Value != null)
             {
-                VideoMetadataJsonConverter VideoMetadataJsonConverter = (VideoMetadataJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(pinMediaMetadata.VideoMetadataOption.Value.GetType()));
-                VideoMetadataJsonConverter.WriteProperties(writer, pinMediaMetadata.VideoMetadataOption.Value, jsonSerializerOptions);
+                VideoMetadataJsonConverter videoMetadataJsonConverter = (VideoMetadataJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(pinMediaMetadata.VideoMetadataOption.Value.GetType()));
+                videoMetadataJsonConverter.WriteProperties(writer, pinMediaMetadata.VideoMetadataOption.Value, jsonSerializerOptions);
             }
 
             WriteProperties(writer, pinMediaMetadata, jsonSerializerOptions);

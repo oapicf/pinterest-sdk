@@ -9,13 +9,45 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ad_account_create_subscription_request_partner_metadata
 
 type AdAccountCreateSubscriptionRequest* = object
   ## 
   webhookUrl*: string ## Standard HTTPS webhook URL.
-  leadFormId*: string ## Lead form ID.
-  partnerAccessToken*: string ## Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
-  partnerRefreshToken*: string ## Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
-  partnerMetadata*: AdAccountCreateSubscriptionRequest_partner_metadata
+  leadFormId*: Option[string] ## Lead form ID.
+  partnerAccessToken*: Option[string] ## Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
+  partnerRefreshToken*: Option[string] ## Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
+  partnerMetadata*: Option[AdAccountCreateSubscriptionRequest_partner_metadata]
+
+
+# Custom JSON deserialization for AdAccountCreateSubscriptionRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[AdAccountCreateSubscriptionRequest]): AdAccountCreateSubscriptionRequest =
+  result = AdAccountCreateSubscriptionRequest()
+  if node.kind == JObject:
+    if node.hasKey("webhook_url"):
+      result.webhookUrl = to(node["webhook_url"], string)
+    if node.hasKey("lead_form_id") and node["lead_form_id"].kind != JNull:
+      result.leadFormId = some(to(node["lead_form_id"], typeof(result.leadFormId.get())))
+    if node.hasKey("partner_access_token") and node["partner_access_token"].kind != JNull:
+      result.partnerAccessToken = some(to(node["partner_access_token"], typeof(result.partnerAccessToken.get())))
+    if node.hasKey("partner_refresh_token") and node["partner_refresh_token"].kind != JNull:
+      result.partnerRefreshToken = some(to(node["partner_refresh_token"], typeof(result.partnerRefreshToken.get())))
+    if node.hasKey("partner_metadata") and node["partner_metadata"].kind != JNull:
+      result.partnerMetadata = some(to(node["partner_metadata"], typeof(result.partnerMetadata.get())))
+
+# Custom JSON serialization for AdAccountCreateSubscriptionRequest with custom field names
+proc `%`*(obj: AdAccountCreateSubscriptionRequest): JsonNode =
+  result = newJObject()
+  result["webhook_url"] = %obj.webhookUrl
+  if obj.leadFormId.isSome():
+    result["lead_form_id"] = %obj.leadFormId.get()
+  if obj.partnerAccessToken.isSome():
+    result["partner_access_token"] = %obj.partnerAccessToken.get()
+  if obj.partnerRefreshToken.isSome():
+    result["partner_refresh_token"] = %obj.partnerRefreshToken.get()
+  if obj.partnerMetadata.isSome():
+    result["partner_metadata"] = %obj.partnerMetadata.get()
+

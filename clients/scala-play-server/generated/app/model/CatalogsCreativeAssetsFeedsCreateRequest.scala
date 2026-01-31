@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param location The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
   * @param catalogId Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CatalogsCreativeAssetsFeedsCreateRequest(
   defaultCurrency: Option[NullableCurrency],
   name: String,

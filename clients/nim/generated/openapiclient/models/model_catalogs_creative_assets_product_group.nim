@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_product_group_filters
 
@@ -19,19 +21,65 @@ type CatalogsCreativeAssetsProductGroup* = object
   ## 
   catalogType*: CatalogType
   id*: string ## ID of the creative assets product group.
-  name*: string ## Name of creative assets product group
-  description*: string
+  name*: Option[string] ## Name of creative assets product group
+  description*: Option[string]
   filters*: CatalogsCreativeAssetsProductGroupFilters
-  createdAt*: int ## Unix timestamp in seconds of when catalog product group was created.
-  updatedAt*: int ## Unix timestamp in seconds of last time catalog product group was updated.
+  createdAt*: Option[int] ## Unix timestamp in seconds of when catalog product group was created.
+  updatedAt*: Option[int] ## Unix timestamp in seconds of last time catalog product group was updated.
   catalogId*: string ## Catalog id pertaining to the creative assets product group.
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.CREATIVEASSETS: %"CREATIVE_ASSETS"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
+    of CatalogType.CREATIVEASSETS: $("CREATIVE_ASSETS")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CREATIVE_ASSETS"):
+    return CatalogType.CREATIVEASSETS
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsProductGroup with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsProductGroup]): CatalogsCreativeAssetsProductGroup =
+  result = CatalogsCreativeAssetsProductGroup()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("id"):
+      result.id = to(node["id"], string)
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("filters"):
+      result.filters = to(node["filters"], CatalogsCreativeAssetsProductGroupFilters)
+    if node.hasKey("created_at") and node["created_at"].kind != JNull:
+      result.createdAt = some(to(node["created_at"], typeof(result.createdAt.get())))
+    if node.hasKey("updated_at") and node["updated_at"].kind != JNull:
+      result.updatedAt = some(to(node["updated_at"], typeof(result.updatedAt.get())))
+    if node.hasKey("catalog_id"):
+      result.catalogId = to(node["catalog_id"], string)
+
+# Custom JSON serialization for CatalogsCreativeAssetsProductGroup with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsProductGroup): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["id"] = %obj.id
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  result["filters"] = %obj.filters
+  if obj.createdAt.isSome():
+    result["created_at"] = %obj.createdAt.get()
+  if obj.updatedAt.isSome():
+    result["updated_at"] = %obj.updatedAt.get()
+  result["catalog_id"] = %obj.catalogId
+

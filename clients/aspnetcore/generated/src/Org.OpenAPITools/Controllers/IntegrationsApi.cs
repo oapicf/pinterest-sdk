@@ -46,7 +46,7 @@ namespace Org.OpenAPITools.Controllers
             //TODO: Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(204);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
 
             throw new NotImplementedException();
         }
@@ -72,13 +72,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(IntegrationMetadata));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"id\" : \"7329167449607351372\",\n  \"external_business_id\" : \"1238401984\",\n  \"connected_merchant_id\" : \"1445572885401\",\n  \"connected_user_id\" : \"871939315263957401\",\n  \"connected_advertiser_id\" : \"549764738871\",\n  \"connected_lba_id\" : \"871939315263957402\",\n  \"connected_tag_id\" : \"2412141155151\",\n  \"partner_access_token_expiry\" : 1621350033000,\n  \"partner_refresh_token_expiry\" : 1621350033000,\n  \"scopes\" : \"accounts:read\",\n  \"created_timestamp\" : 1621350033000,\n  \"updated_timestamp\" : 1621350033000,\n  \"additional_id_1\" : \"128464\",\n  \"partner_metadata\" : \"\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -87,7 +87,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<IntegrationMetadata>(exampleJson)
-            : default(IntegrationMetadata);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -115,13 +115,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(IntegrationMetadata));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"id\" : \"7329167449607351372\",\n  \"external_business_id\" : \"1238401984\",\n  \"connected_merchant_id\" : \"1445572885401\",\n  \"connected_user_id\" : \"871939315263957401\",\n  \"connected_advertiser_id\" : \"549764738871\",\n  \"connected_lba_id\" : \"871939315263957402\",\n  \"connected_tag_id\" : \"2412141155151\",\n  \"partner_access_token_expiry\" : 1621350033000,\n  \"partner_refresh_token_expiry\" : 1621350033000,\n  \"scopes\" : \"accounts:read\",\n  \"created_timestamp\" : 1621350033000,\n  \"updated_timestamp\" : 1621350033000,\n  \"additional_id_1\" : \"128464\",\n  \"partner_metadata\" : \"\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -130,7 +130,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<IntegrationMetadata>(exampleJson)
-            : default(IntegrationMetadata);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -157,13 +157,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(IntegrationMetadata));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"id\" : \"7329167449607351372\",\n  \"external_business_id\" : \"1238401984\",\n  \"connected_merchant_id\" : \"1445572885401\",\n  \"connected_user_id\" : \"871939315263957401\",\n  \"connected_advertiser_id\" : \"549764738871\",\n  \"connected_lba_id\" : \"871939315263957402\",\n  \"connected_tag_id\" : \"2412141155151\",\n  \"partner_access_token_expiry\" : 1621350033000,\n  \"partner_refresh_token_expiry\" : 1621350033000,\n  \"scopes\" : \"accounts:read\",\n  \"created_timestamp\" : 1621350033000,\n  \"updated_timestamp\" : 1621350033000,\n  \"additional_id_1\" : \"128464\",\n  \"partner_metadata\" : \"\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -172,7 +172,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<IntegrationMetadata>(exampleJson)
-            : default(IntegrationMetadata);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -196,11 +196,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(IntegrationRecord));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"id\" : \"7329123456789012345\",\n  \"external_business_id\" : \"1234567890\",\n  \"connected_merchant_id\" : \"1234567890123\",\n  \"connected_user_id\" : \"123456789012345678\",\n  \"connected_advertiser_id\" : \"123456789012\",\n  \"connected_lba_id\" : \"871234567890123456\",\n  \"connected_tag_id\" : \"2412345678901\",\n  \"partner_access_token\" : \"ABCLUOJS5XDMWDE\",\n  \"partner_refresh_token\" : \"ABCLUOJS5XDMWDE\",\n  \"partner_primary_email\" : \"partner@server.com\",\n  \"partner_access_token_expiry\" : 1621350033000,\n  \"partner_refresh_token_expiry\" : 1621350033000,\n  \"scopes\" : \"accounts:read\",\n  \"partner_metadata\" : \"\",\n  \"additional_id_1\" : \"123456\",\n  \"created_time\" : 1621350033000,\n  \"updated_time\" : 1621350033000\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -208,7 +208,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<IntegrationRecord>(exampleJson)
-            : default(IntegrationRecord);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -231,16 +231,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(IntegrationsGetList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"id\" : \"7329123456789012345\",\n    \"external_business_id\" : \"1234567890\",\n    \"connected_merchant_id\" : \"1234567890123\",\n    \"connected_user_id\" : \"123456789012345678\",\n    \"connected_advertiser_id\" : \"123456789012\",\n    \"connected_lba_id\" : \"871234567890123456\",\n    \"connected_tag_id\" : \"2412345678901\",\n    \"partner_access_token\" : \"ABCLUOJS5XDMWDE\",\n    \"partner_refresh_token\" : \"ABCLUOJS5XDMWDE\",\n    \"partner_primary_email\" : \"partner@server.com\",\n    \"partner_access_token_expiry\" : 1621350033000,\n    \"partner_refresh_token_expiry\" : 1621350033000,\n    \"scopes\" : \"accounts:read\",\n    \"partner_metadata\" : \"\",\n    \"additional_id_1\" : \"123456\",\n    \"created_time\" : 1621350033000,\n    \"updated_time\" : 1621350033000\n  }, {\n    \"id\" : \"7329123456789012345\",\n    \"external_business_id\" : \"1234567890\",\n    \"connected_merchant_id\" : \"1234567890123\",\n    \"connected_user_id\" : \"123456789012345678\",\n    \"connected_advertiser_id\" : \"123456789012\",\n    \"connected_lba_id\" : \"871234567890123456\",\n    \"connected_tag_id\" : \"2412345678901\",\n    \"partner_access_token\" : \"ABCLUOJS5XDMWDE\",\n    \"partner_refresh_token\" : \"ABCLUOJS5XDMWDE\",\n    \"partner_primary_email\" : \"partner@server.com\",\n    \"partner_access_token_expiry\" : 1621350033000,\n    \"partner_refresh_token_expiry\" : 1621350033000,\n    \"scopes\" : \"accounts:read\",\n    \"partner_metadata\" : \"\",\n    \"additional_id_1\" : \"123456\",\n    \"created_time\" : 1621350033000,\n    \"updated_time\" : 1621350033000\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<IntegrationsGetList200Response>(exampleJson)
-            : default(IntegrationsGetList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -265,11 +265,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(IntegrationLogsSuccessResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(DetailedError));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"message\" : \"message\"\n}";
             exampleJson = "{\n  \"code\" : 1,\n  \"details\" : \"{}\",\n  \"message\" : \"message\"\n}";
@@ -277,7 +277,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<IntegrationLogsSuccessResponse>(exampleJson)
-            : default(IntegrationLogsSuccessResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

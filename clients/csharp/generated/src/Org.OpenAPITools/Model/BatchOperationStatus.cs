@@ -147,7 +147,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BatchOperationStatus batchOperationStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(batchOperationStatus.ToString());
+            writer.WriteStringValue(BatchOperationStatusValueConverter.ToJsonValue(batchOperationStatus).ToString());
         }
     }
 
@@ -178,14 +178,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the BatchOperationStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="batchOperationStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BatchOperationStatus? batchOperationStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(batchOperationStatus?.ToString() ?? "null");
+            writer.WriteStringValue(batchOperationStatus.HasValue ? BatchOperationStatusValueConverter.ToJsonValue(batchOperationStatus.Value).ToString() : "null");
         }
     }
 }

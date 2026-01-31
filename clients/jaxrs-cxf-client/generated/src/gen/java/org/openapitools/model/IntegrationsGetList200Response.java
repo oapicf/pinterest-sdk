@@ -14,9 +14,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class IntegrationsGetList200Response  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<IntegrationRecord> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * Get items

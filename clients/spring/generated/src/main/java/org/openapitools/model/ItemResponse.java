@@ -19,6 +19,7 @@ import org.openapitools.model.ItemResponseAnyOf1;
 import org.openapitools.model.ItemValidationEvent;
 import org.openapitools.model.Pin;
 import org.springframework.lang.Nullable;
+import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -47,7 +48,7 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = ItemResponseAnyOf1.class, name = "ItemResponse_anyOf_1")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemResponse {
 
   private CatalogsType catalogType;
@@ -55,11 +56,16 @@ public class ItemResponse {
   private @Nullable String itemId;
 
   @Valid
-  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+  private JsonNullable<List<@Valid Pin>> pins = JsonNullable.<List<@Valid Pin>>undefined();
+
+  private @Nullable CatalogsCreativeAssetsAttributes attributes;
 
   private @Nullable String hotelId;
 
   private @Nullable String creativeAssetsId;
+
+  @Valid
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   public ItemResponse() {
     super();
@@ -92,7 +98,7 @@ public class ItemResponse {
     this.catalogType = catalogType;
   }
 
-  public ItemResponse itemId(String itemId) {
+  public ItemResponse itemId(@Nullable String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -104,12 +110,100 @@ public class ItemResponse {
   
   @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_id")
-  public String getItemId() {
+  public @Nullable String getItemId() {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@Nullable String itemId) {
     this.itemId = itemId;
+  }
+
+  public ItemResponse pins(List<@Valid Pin> pins) {
+    this.pins = JsonNullable.of(pins);
+    return this;
+  }
+
+  public ItemResponse addPinsItem(Pin pinsItem) {
+    if (this.pins == null || !this.pins.isPresent()) {
+      this.pins = JsonNullable.of(new ArrayList<>());
+    }
+    this.pins.get().add(pinsItem);
+    return this;
+  }
+
+  /**
+   * The pins mapped to the item
+   * @return pins
+   */
+  @Valid @Size(max = 11) 
+  @Schema(name = "pins", description = "The pins mapped to the item", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("pins")
+  public JsonNullable<List<@Valid Pin>> getPins() {
+    return pins;
+  }
+
+  public void setPins(JsonNullable<List<@Valid Pin>> pins) {
+    this.pins = pins;
+  }
+
+  public ItemResponse attributes(@Nullable CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+   */
+  @Valid 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("attributes")
+  public @Nullable CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(@Nullable CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
+
+  public ItemResponse hotelId(@Nullable String hotelId) {
+    this.hotelId = hotelId;
+    return this;
+  }
+
+  /**
+   * The catalog hotel id in the merchant namespace
+   * @return hotelId
+   */
+  
+  @Schema(name = "hotel_id", example = "DS0294-M", description = "The catalog hotel id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("hotel_id")
+  public @Nullable String getHotelId() {
+    return hotelId;
+  }
+
+  public void setHotelId(@Nullable String hotelId) {
+    this.hotelId = hotelId;
+  }
+
+  public ItemResponse creativeAssetsId(@Nullable String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
+    return this;
+  }
+
+  /**
+   * The catalog creative assets id in the merchant namespace
+   * @return creativeAssetsId
+   */
+  
+  @Schema(name = "creative_assets_id", example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("creative_assets_id")
+  public @Nullable String getCreativeAssetsId() {
+    return creativeAssetsId;
+  }
+
+  public void setCreativeAssetsId(@Nullable String creativeAssetsId) {
+    this.creativeAssetsId = creativeAssetsId;
   }
 
   public ItemResponse errors(List<@Valid ItemValidationEvent> errors) {
@@ -140,46 +234,6 @@ public class ItemResponse {
     this.errors = errors;
   }
 
-  public ItemResponse hotelId(String hotelId) {
-    this.hotelId = hotelId;
-    return this;
-  }
-
-  /**
-   * The catalog hotel id in the merchant namespace
-   * @return hotelId
-   */
-  
-  @Schema(name = "hotel_id", example = "DS0294-M", description = "The catalog hotel id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("hotel_id")
-  public String getHotelId() {
-    return hotelId;
-  }
-
-  public void setHotelId(String hotelId) {
-    this.hotelId = hotelId;
-  }
-
-  public ItemResponse creativeAssetsId(String creativeAssetsId) {
-    this.creativeAssetsId = creativeAssetsId;
-    return this;
-  }
-
-  /**
-   * The catalog creative assets id in the merchant namespace
-   * @return creativeAssetsId
-   */
-  
-  @Schema(name = "creative_assets_id", example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("creative_assets_id")
-  public String getCreativeAssetsId() {
-    return creativeAssetsId;
-  }
-
-  public void setCreativeAssetsId(String creativeAssetsId) {
-    this.creativeAssetsId = creativeAssetsId;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -191,9 +245,11 @@ public class ItemResponse {
     ItemResponse itemResponse = (ItemResponse) o;
     return Objects.equals(this.catalogType, itemResponse.catalogType) &&
         Objects.equals(this.itemId, itemResponse.itemId) &&
-        Objects.equals(this.errors, itemResponse.errors) &&
+        equalsNullable(this.pins, itemResponse.pins) &&
+        Objects.equals(this.attributes, itemResponse.attributes) &&
         Objects.equals(this.hotelId, itemResponse.hotelId) &&
-        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId);
+        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId) &&
+        Objects.equals(this.errors, itemResponse.errors);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -202,7 +258,7 @@ public class ItemResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
+    return Objects.hash(catalogType, itemId, hashCodeNullable(pins), attributes, hotelId, creativeAssetsId, errors);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -218,9 +274,11 @@ public class ItemResponse {
     sb.append("class ItemResponse {\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

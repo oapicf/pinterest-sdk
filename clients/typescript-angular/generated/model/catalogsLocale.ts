@@ -9,100 +9,53 @@
  */
 
 
-export type CatalogsLocale = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW';
-
 export const CatalogsLocale = {
-
-    AfZa: 'af-ZA' as CatalogsLocale,
-
-    ArSa: 'ar-SA' as CatalogsLocale,
-
-    BgBg: 'bg-BG' as CatalogsLocale,
-
-    BnIn: 'bn-IN' as CatalogsLocale,
-
-    CsCz: 'cs-CZ' as CatalogsLocale,
-
-    DaDk: 'da-DK' as CatalogsLocale,
-
-    De: 'de' as CatalogsLocale,
-
-    ElGr: 'el-GR' as CatalogsLocale,
-
-    EnAu: 'en-AU' as CatalogsLocale,
-
-    EnCa: 'en-CA' as CatalogsLocale,
-
-    EnGb: 'en-GB' as CatalogsLocale,
-
-    EnIn: 'en-IN' as CatalogsLocale,
-
-    EnUs: 'en-US' as CatalogsLocale,
-
-    Es419: 'es-419' as CatalogsLocale,
-
-    EsAr: 'es-AR' as CatalogsLocale,
-
-    EsEs: 'es-ES' as CatalogsLocale,
-
-    EsMx: 'es-MX' as CatalogsLocale,
-
-    FiFi: 'fi-FI' as CatalogsLocale,
-
-    Fr: 'fr' as CatalogsLocale,
-
-    FrCa: 'fr-CA' as CatalogsLocale,
-
-    HeIl: 'he-IL' as CatalogsLocale,
-
-    HiIn: 'hi-IN' as CatalogsLocale,
-
-    HrHr: 'hr-HR' as CatalogsLocale,
-
-    HuHu: 'hu-HU' as CatalogsLocale,
-
-    IdId: 'id-ID' as CatalogsLocale,
-
-    It: 'it' as CatalogsLocale,
-
-    Ja: 'ja' as CatalogsLocale,
-
-    KoKr: 'ko-KR' as CatalogsLocale,
-
-    MsMy: 'ms-MY' as CatalogsLocale,
-
-    NbNo: 'nb-NO' as CatalogsLocale,
-
-    Nl: 'nl' as CatalogsLocale,
-
-    PlPl: 'pl-PL' as CatalogsLocale,
-
-    PtBr: 'pt-BR' as CatalogsLocale,
-
-    PtPt: 'pt-PT' as CatalogsLocale,
-
-    RoRo: 'ro-RO' as CatalogsLocale,
-
-    RuRu: 'ru-RU' as CatalogsLocale,
-
-    SkSk: 'sk-SK' as CatalogsLocale,
-
-    SvSe: 'sv-SE' as CatalogsLocale,
-
-    TeIn: 'te-IN' as CatalogsLocale,
-
-    ThTh: 'th-TH' as CatalogsLocale,
-
-    TlPh: 'tl-PH' as CatalogsLocale,
-
-    Tr: 'tr' as CatalogsLocale,
-
-    UkUa: 'uk-UA' as CatalogsLocale,
-
-    ViVn: 'vi-VN' as CatalogsLocale,
-
-    ZhCn: 'zh-CN' as CatalogsLocale,
-
-    ZhTw: 'zh-TW' as CatalogsLocale
-};
+    AfZa: 'af-ZA',
+    ArSa: 'ar-SA',
+    BgBg: 'bg-BG',
+    BnIn: 'bn-IN',
+    CsCz: 'cs-CZ',
+    DaDk: 'da-DK',
+    De: 'de',
+    ElGr: 'el-GR',
+    EnAu: 'en-AU',
+    EnCa: 'en-CA',
+    EnGb: 'en-GB',
+    EnIn: 'en-IN',
+    EnUs: 'en-US',
+    Es419: 'es-419',
+    EsAr: 'es-AR',
+    EsEs: 'es-ES',
+    EsMx: 'es-MX',
+    FiFi: 'fi-FI',
+    Fr: 'fr',
+    FrCa: 'fr-CA',
+    HeIl: 'he-IL',
+    HiIn: 'hi-IN',
+    HrHr: 'hr-HR',
+    HuHu: 'hu-HU',
+    IdId: 'id-ID',
+    It: 'it',
+    Ja: 'ja',
+    KoKr: 'ko-KR',
+    MsMy: 'ms-MY',
+    NbNo: 'nb-NO',
+    Nl: 'nl',
+    PlPl: 'pl-PL',
+    PtBr: 'pt-BR',
+    PtPt: 'pt-PT',
+    RoRo: 'ro-RO',
+    RuRu: 'ru-RU',
+    SkSk: 'sk-SK',
+    SvSe: 'sv-SE',
+    TeIn: 'te-IN',
+    ThTh: 'th-TH',
+    TlPh: 'tl-PH',
+    Tr: 'tr',
+    UkUa: 'uk-UA',
+    ViVn: 'vi-VN',
+    ZhCn: 'zh-CN',
+    ZhTw: 'zh-TW'
+} as const;
+export type CatalogsLocale = typeof CatalogsLocale[keyof typeof CatalogsLocale];
 

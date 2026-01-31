@@ -260,8 +260,9 @@ func (a *CatalogsAPIService) CatalogsListExecute(r ApiCatalogsListRequest) (*Cat
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -438,8 +439,9 @@ func (a *CatalogsAPIService) CatalogsProductGroupPinsListExecute(r ApiCatalogsPr
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -447,8 +449,9 @@ func (a *CatalogsAPIService) CatalogsProductGroupPinsListExecute(r ApiCatalogsPr
 	if r.pinMetrics != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.pinMetrics = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
+        r.pinMetrics = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1537,8 +1540,9 @@ func (a *CatalogsAPIService) CatalogsProductGroupsListExecute(r ApiCatalogsProdu
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -2085,8 +2089,9 @@ func (a *CatalogsAPIService) FeedProcessingResultsListExecute(r ApiFeedProcessin
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -2955,8 +2960,9 @@ func (a *CatalogsAPIService) FeedsListExecute(r ApiFeedsListRequest) (*FeedsList
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.catalogId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "catalog_id", r.catalogId, "form", "")
@@ -3866,8 +3872,9 @@ func (a *CatalogsAPIService) ItemsIssuesListExecute(r ApiItemsIssuesListRequest)
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.itemNumbers != nil {
 		t := *r.itemNumbers
@@ -4246,8 +4253,9 @@ func (a *CatalogsAPIService) ProductsByProductGroupFilterListExecute(r ApiProduc
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -4255,8 +4263,9 @@ func (a *CatalogsAPIService) ProductsByProductGroupFilterListExecute(r ApiProduc
 	if r.pinMetrics != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.pinMetrics = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
+        r.pinMetrics = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4736,8 +4745,9 @@ func (a *CatalogsAPIService) ReportsStatsExecute(r ApiReportsStatsRequest) (*Rep
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")

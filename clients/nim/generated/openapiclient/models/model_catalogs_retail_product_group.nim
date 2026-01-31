@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_filters
 import model_catalogs_product_group_status
@@ -21,25 +23,95 @@ type CatalogsRetailProductGroup* = object
   ## 
   catalogType*: CatalogType
   id*: string ## ID of the catalog product group.
-  name*: string ## Name of catalog product group
-  description*: string
+  name*: Option[string] ## Name of catalog product group
+  description*: Option[string]
   filters*: CatalogsProductGroupFilters
-  isFeatured*: bool ## boolean indicator of whether the product group is being featured or not
-  `type`*: CatalogsProductGroupType
-  status*: CatalogsProductGroupStatus
-  createdAt*: int ## Unix timestamp in seconds of when catalog product group was created.
-  updatedAt*: int ## Unix timestamp in seconds of last time catalog product group was updated.
+  isFeatured*: Option[bool] ## boolean indicator of whether the product group is being featured or not
+  `type`*: Option[CatalogsProductGroupType]
+  status*: Option[CatalogsProductGroupStatus]
+  createdAt*: Option[int] ## Unix timestamp in seconds of when catalog product group was created.
+  updatedAt*: Option[int] ## Unix timestamp in seconds of last time catalog product group was updated.
   catalogId*: string ## Catalog id pertaining to the retail product group.
-  feedId*: string ## id of the catalogs feed belonging to this catalog product group
-  country*: string
-  locale*: string
+  feedId*: Option[string] ## id of the catalogs feed belonging to this catalog product group
+  country*: Option[string]
+  locale*: Option[string]
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.RETAIL: "RETAIL"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.RETAIL: %"RETAIL"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.RETAIL: "RETAIL"
+    of CatalogType.RETAIL: $("RETAIL")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RETAIL"):
+    return CatalogType.RETAIL
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsRetailProductGroup with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsRetailProductGroup]): CatalogsRetailProductGroup =
+  result = CatalogsRetailProductGroup()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("id"):
+      result.id = to(node["id"], string)
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("filters"):
+      result.filters = to(node["filters"], CatalogsProductGroupFilters)
+    if node.hasKey("is_featured") and node["is_featured"].kind != JNull:
+      result.isFeatured = some(to(node["is_featured"], typeof(result.isFeatured.get())))
+    if node.hasKey("type") and node["type"].kind != JNull:
+      result.`type` = some(to(node["type"], typeof(result.`type`.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+    if node.hasKey("created_at") and node["created_at"].kind != JNull:
+      result.createdAt = some(to(node["created_at"], typeof(result.createdAt.get())))
+    if node.hasKey("updated_at") and node["updated_at"].kind != JNull:
+      result.updatedAt = some(to(node["updated_at"], typeof(result.updatedAt.get())))
+    if node.hasKey("catalog_id"):
+      result.catalogId = to(node["catalog_id"], string)
+    if node.hasKey("feed_id") and node["feed_id"].kind != JNull:
+      result.feedId = some(to(node["feed_id"], typeof(result.feedId.get())))
+    if node.hasKey("country") and node["country"].kind != JNull:
+      result.country = some(to(node["country"], typeof(result.country.get())))
+    if node.hasKey("locale") and node["locale"].kind != JNull:
+      result.locale = some(to(node["locale"], typeof(result.locale.get())))
+
+# Custom JSON serialization for CatalogsRetailProductGroup with custom field names
+proc `%`*(obj: CatalogsRetailProductGroup): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["id"] = %obj.id
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  result["filters"] = %obj.filters
+  if obj.isFeatured.isSome():
+    result["is_featured"] = %obj.isFeatured.get()
+  if obj.`type`.isSome():
+    result["type"] = %obj.`type`.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.createdAt.isSome():
+    result["created_at"] = %obj.createdAt.get()
+  if obj.updatedAt.isSome():
+    result["updated_at"] = %obj.updatedAt.get()
+  result["catalog_id"] = %obj.catalogId
+  if obj.feedId.isSome():
+    result["feed_id"] = %obj.feedId.get()
+  if obj.country.isSome():
+    result["country"] = %obj.country.get()
+  if obj.locale.isSome():
+    result["locale"] = %obj.locale.get()
+

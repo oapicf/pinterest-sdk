@@ -9,8 +9,24 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CancelInvitesBody* = object
   ## Request body used to cancel invites
   inviteIds*: seq[string] ## List of invite/request ids to be cancelled
+
+
+# Custom JSON deserialization for CancelInvitesBody with custom field names
+proc to*(node: JsonNode, T: typedesc[CancelInvitesBody]): CancelInvitesBody =
+  result = CancelInvitesBody()
+  if node.kind == JObject:
+    if node.hasKey("invite_ids"):
+      result.inviteIds = to(node["invite_ids"], seq[string])
+
+# Custom JSON serialization for CancelInvitesBody with custom field names
+proc `%`*(obj: CancelInvitesBody): JsonNode =
+  result = newJObject()
+  result["invite_ids"] = %obj.inviteIds
+

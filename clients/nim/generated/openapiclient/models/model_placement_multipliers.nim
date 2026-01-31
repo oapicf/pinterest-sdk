@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type PLACEMENT* {.pure.} = enum
@@ -17,16 +19,26 @@ type PLACEMENT* {.pure.} = enum
 
 type PlacementMultipliers* = object
   ## This represents a mapping from placement to a bid price adjustment.  Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price (from $1 to $10 for example). A value of 0 will stop distribution for this item on the specified placement in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. All placement multipliers must be set at the same time. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
-  PLACEMENT*: PLACEMENT
+  PLACEMENT*: Option[PLACEMENT]
 
 func `%`*(v: PLACEMENT): JsonNode =
-  let str = case v:
-    of PLACEMENT.SEARCH: "SEARCH"
-    of PLACEMENT.BROWSE: "BROWSE"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of PLACEMENT.SEARCH: %"SEARCH"
+    of PLACEMENT.BROWSE: %"BROWSE"
 func `$`*(v: PLACEMENT): string =
   result = case v:
-    of PLACEMENT.SEARCH: "SEARCH"
-    of PLACEMENT.BROWSE: "BROWSE"
+    of PLACEMENT.SEARCH: $("SEARCH")
+    of PLACEMENT.BROWSE: $("BROWSE")
+
+proc to*(node: JsonNode, T: typedesc[PLACEMENT]): PLACEMENT =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum PLACEMENT, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("SEARCH"):
+    return PLACEMENT.SEARCH
+  of $("BROWSE"):
+    return PLACEMENT.BROWSE
+  else:
+    raise newException(ValueError, "Invalid enum value for PLACEMENT: " & strVal)
+

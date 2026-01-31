@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AudienceDefinition* = object
   ## Queryable audience representation.
-  date*: string ## Generation date
-  `type`*: string ## Generated audience type to request.
-  scope*: string ## Generated audience scope to request.
+  date*: Option[string] ## Generation date
+  `type`*: Option[string] ## Generated audience type to request.
+  scope*: Option[string] ## Generated audience scope to request.
+

@@ -12,18 +12,12 @@
 /**
  * The operation performed by the batch. The DELETE_DISCONTINUED operation only updates availablity to \"Out of Stock\".
  */
-export type BatchOperation = 'UPDATE' | 'UPSERT' | 'CREATE' | 'DELETE_DISCONTINUED' | 'DELETE';
-
 export const BatchOperation = {
-
-    Update: 'UPDATE' as BatchOperation,
-
-    Upsert: 'UPSERT' as BatchOperation,
-
-    Create: 'CREATE' as BatchOperation,
-
-    DeleteDiscontinued: 'DELETE_DISCONTINUED' as BatchOperation,
-
-    Delete: 'DELETE' as BatchOperation
-};
+    Update: 'UPDATE',
+    Upsert: 'UPSERT',
+    Create: 'CREATE',
+    DeleteDiscontinued: 'DELETE_DISCONTINUED',
+    Delete: 'DELETE'
+} as const;
+export type BatchOperation = typeof BatchOperation[keyof typeof BatchOperation];
 

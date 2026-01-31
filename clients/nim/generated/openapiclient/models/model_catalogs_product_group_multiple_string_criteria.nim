@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogsProductGroupMultipleStringCriteria* = object
   ## 
   values*: seq[string]
-  negated*: bool
+  negated*: Option[bool]
+

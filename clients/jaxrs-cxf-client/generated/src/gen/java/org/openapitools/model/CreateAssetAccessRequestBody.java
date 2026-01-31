@@ -1,23 +1,24 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.CreateAssetAccessRequestBodyAssetRequestsInner;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * An object containing a list of all the asset access requests
- **/
+ * An object containing a list of all the asset access requests
+ */
 @ApiModel(description="An object containing a list of all the asset access requests")
 
 public class CreateAssetAccessRequestBody  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<CreateAssetAccessRequestBodyAssetRequestsInner> assetRequests = new ArrayList<>();
  /**
    * Get assetRequests

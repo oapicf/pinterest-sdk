@@ -12,13 +12,13 @@ module OauthAccessTokenResponseEverlastingRefresh =
   //#endregion
 
   type OauthAccessTokenResponseEverlastingRefresh = {
+    RefreshToken : string;
+    RefreshTokenExpiresIn : int;
+    RefreshTokenExpiresAt : int;
     ResponseType : ResponseTypeEnum;
     AccessToken : string;
     TokenType : string;
     ExpiresIn : int;
     Scope : string;
-    RefreshToken : string;
-    RefreshTokenExpiresIn : int;
-    RefreshTokenExpiresAt : int;
   }
   //#endregion

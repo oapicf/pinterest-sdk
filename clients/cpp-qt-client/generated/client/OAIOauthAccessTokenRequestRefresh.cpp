@@ -34,9 +34,6 @@ OAIOauthAccessTokenRequestRefresh::~OAIOauthAccessTokenRequestRefresh() {}
 
 void OAIOauthAccessTokenRequestRefresh::initializeModel() {
 
-    m_grant_type_isSet = false;
-    m_grant_type_isValid = false;
-
     m_refresh_token_isSet = false;
     m_refresh_token_isValid = false;
 
@@ -45,6 +42,9 @@ void OAIOauthAccessTokenRequestRefresh::initializeModel() {
 
     m_refresh_on_isSet = false;
     m_refresh_on_isValid = false;
+
+    m_grant_type_isSet = false;
+    m_grant_type_isValid = false;
 }
 
 void OAIOauthAccessTokenRequestRefresh::fromJson(QString jsonString) {
@@ -56,9 +56,6 @@ void OAIOauthAccessTokenRequestRefresh::fromJson(QString jsonString) {
 
 void OAIOauthAccessTokenRequestRefresh::fromJsonObject(QJsonObject json) {
 
-    m_grant_type_isValid = ::OpenAPI::fromJsonValue(m_grant_type, json[QString("grant_type")]);
-    m_grant_type_isSet = !json[QString("grant_type")].isNull() && m_grant_type_isValid;
-
     m_refresh_token_isValid = ::OpenAPI::fromJsonValue(m_refresh_token, json[QString("refresh_token")]);
     m_refresh_token_isSet = !json[QString("refresh_token")].isNull() && m_refresh_token_isValid;
 
@@ -67,6 +64,9 @@ void OAIOauthAccessTokenRequestRefresh::fromJsonObject(QJsonObject json) {
 
     m_refresh_on_isValid = ::OpenAPI::fromJsonValue(m_refresh_on, json[QString("refresh_on")]);
     m_refresh_on_isSet = !json[QString("refresh_on")].isNull() && m_refresh_on_isValid;
+
+    m_grant_type_isValid = ::OpenAPI::fromJsonValue(m_grant_type, json[QString("grant_type")]);
+    m_grant_type_isSet = !json[QString("grant_type")].isNull() && m_grant_type_isValid;
 }
 
 QString OAIOauthAccessTokenRequestRefresh::asJson() const {
@@ -78,9 +78,6 @@ QString OAIOauthAccessTokenRequestRefresh::asJson() const {
 
 QJsonObject OAIOauthAccessTokenRequestRefresh::asJsonObject() const {
     QJsonObject obj;
-    if (m_grant_type_isSet) {
-        obj.insert(QString("grant_type"), ::OpenAPI::toJsonValue(m_grant_type));
-    }
     if (m_refresh_token_isSet) {
         obj.insert(QString("refresh_token"), ::OpenAPI::toJsonValue(m_refresh_token));
     }
@@ -90,23 +87,10 @@ QJsonObject OAIOauthAccessTokenRequestRefresh::asJsonObject() const {
     if (m_refresh_on_isSet) {
         obj.insert(QString("refresh_on"), ::OpenAPI::toJsonValue(m_refresh_on));
     }
+    if (m_grant_type_isSet) {
+        obj.insert(QString("grant_type"), ::OpenAPI::toJsonValue(m_grant_type));
+    }
     return obj;
-}
-
-QString OAIOauthAccessTokenRequestRefresh::getGrantType() const {
-    return m_grant_type;
-}
-void OAIOauthAccessTokenRequestRefresh::setGrantType(const QString &grant_type) {
-    m_grant_type = grant_type;
-    m_grant_type_isSet = true;
-}
-
-bool OAIOauthAccessTokenRequestRefresh::is_grant_type_Set() const{
-    return m_grant_type_isSet;
-}
-
-bool OAIOauthAccessTokenRequestRefresh::is_grant_type_Valid() const{
-    return m_grant_type_isValid;
 }
 
 QString OAIOauthAccessTokenRequestRefresh::getRefreshToken() const {
@@ -157,14 +141,25 @@ bool OAIOauthAccessTokenRequestRefresh::is_refresh_on_Valid() const{
     return m_refresh_on_isValid;
 }
 
+QString OAIOauthAccessTokenRequestRefresh::getGrantType() const {
+    return m_grant_type;
+}
+void OAIOauthAccessTokenRequestRefresh::setGrantType(const QString &grant_type) {
+    m_grant_type = grant_type;
+    m_grant_type_isSet = true;
+}
+
+bool OAIOauthAccessTokenRequestRefresh::is_grant_type_Set() const{
+    return m_grant_type_isSet;
+}
+
+bool OAIOauthAccessTokenRequestRefresh::is_grant_type_Valid() const{
+    return m_grant_type_isValid;
+}
+
 bool OAIOauthAccessTokenRequestRefresh::isSet() const {
     bool isObjectUpdated = false;
     do {
-        if (m_grant_type_isSet) {
-            isObjectUpdated = true;
-            break;
-        }
-
         if (m_refresh_token_isSet) {
             isObjectUpdated = true;
             break;
@@ -179,13 +174,18 @@ bool OAIOauthAccessTokenRequestRefresh::isSet() const {
             isObjectUpdated = true;
             break;
         }
+
+        if (m_grant_type_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
     } while (false);
     return isObjectUpdated;
 }
 
 bool OAIOauthAccessTokenRequestRefresh::isValid() const {
     // only required properties are required for the object to be considered valid
-    return m_grant_type_isValid && m_refresh_token_isValid && true;
+    return m_refresh_token_isValid && m_grant_type_isValid && true;
 }
 
 } // namespace OpenAPI

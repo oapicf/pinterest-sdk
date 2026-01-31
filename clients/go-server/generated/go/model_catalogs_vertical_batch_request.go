@@ -21,7 +21,8 @@ type CatalogsVerticalBatchRequest struct {
 
 	Country Country `json:"country"`
 
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 
 	// Array with creative assets item operations
 	Items []CatalogsCreativeAssetsBatchItem `json:"items"`
@@ -44,9 +45,6 @@ func AssertCatalogsVerticalBatchRequestRequired(obj CatalogsVerticalBatchRequest
 		}
 	}
 
-	if err := AssertCatalogsItemsRequestLanguageRequired(obj.Language); err != nil {
-		return err
-	}
 	for _, el := range obj.Items {
 		if err := AssertCatalogsCreativeAssetsBatchItemRequired(el); err != nil {
 			return err
@@ -57,9 +55,6 @@ func AssertCatalogsVerticalBatchRequestRequired(obj CatalogsVerticalBatchRequest
 
 // AssertCatalogsVerticalBatchRequestConstraints checks if the values respects the defined constraints
 func AssertCatalogsVerticalBatchRequestConstraints(obj CatalogsVerticalBatchRequest) error {
-	if err := AssertCatalogsItemsRequestLanguageConstraints(obj.Language); err != nil {
-		return err
-	}
 	for _, el := range obj.Items {
 		if err := AssertCatalogsCreativeAssetsBatchItemConstraints(el); err != nil {
 			return err

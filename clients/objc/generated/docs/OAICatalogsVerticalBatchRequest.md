@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | **NSString*** |  | 
 **country** | [**OAICountry***](OAICountry.md) |  | 
-**language** | [**OAICatalogsItemsRequestLanguage***](OAICatalogsItemsRequestLanguage.md) |  | 
+**language** | **NSString*** | We recommend using the CatalogsLocale values. | 
 **items** | [**NSArray&lt;OAICatalogsCreativeAssetsBatchItem&gt;***](OAICatalogsCreativeAssetsBatchItem.md) | Array with creative assets item operations | 
 **catalogId** | **NSString*** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
 

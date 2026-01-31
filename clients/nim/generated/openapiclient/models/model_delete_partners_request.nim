@@ -9,9 +9,29 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type DeletePartnersRequest* = object
   ## 
   partnerIds*: seq[string]
-  partnerType*: string
+  partnerType*: Option[string]
+
+
+# Custom JSON deserialization for DeletePartnersRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[DeletePartnersRequest]): DeletePartnersRequest =
+  result = DeletePartnersRequest()
+  if node.kind == JObject:
+    if node.hasKey("partner_ids"):
+      result.partnerIds = to(node["partner_ids"], seq[string])
+    if node.hasKey("partner_type") and node["partner_type"].kind != JNull:
+      result.partnerType = some(to(node["partner_type"], typeof(result.partnerType.get())))
+
+# Custom JSON serialization for DeletePartnersRequest with custom field names
+proc `%`*(obj: DeletePartnersRequest): JsonNode =
+  result = newJObject()
+  result["partner_ids"] = %obj.partnerIds
+  if obj.partnerType.isSome():
+    result["partner_type"] = %obj.partnerType.get()
+

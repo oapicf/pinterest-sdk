@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -65,6 +64,24 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'CreativeType'
+        /// </summary>
+        [Fact]
+        public void CreativeTypeTest()
+        {
+            // TODO unit test for the property 'CreativeType'
+        }
+
+        /// <summary>
+        /// Test the property 'PinId'
+        /// </summary>
+        [Fact]
+        public void PinIdTest()
+        {
+            // TODO unit test for the property 'PinId'
+        }
+
+        /// <summary>
         /// Test the property 'AndroidDeepLink'
         /// </summary>
         [Fact]
@@ -107,15 +124,6 @@ namespace Org.OpenAPITools.Test.Model
         public void ClickTrackingUrlTest()
         {
             // TODO unit test for the property 'ClickTrackingUrl'
-        }
-
-        /// <summary>
-        /// Test the property 'CreativeType'
-        /// </summary>
-        [Fact]
-        public void CreativeTypeTest()
-        {
-            // TODO unit test for the property 'CreativeType'
         }
 
         /// <summary>
@@ -224,15 +232,6 @@ namespace Org.OpenAPITools.Test.Model
         public void QuizPinDataTest()
         {
             // TODO unit test for the property 'QuizPinData'
-        }
-
-        /// <summary>
-        /// Test the property 'PinId'
-        /// </summary>
-        [Fact]
-        public void PinIdTest()
-        {
-            // TODO unit test for the property 'PinId'
         }
     }
 }

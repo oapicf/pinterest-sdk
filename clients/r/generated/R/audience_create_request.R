@@ -11,7 +11,7 @@
 #' @field name Audience name. character
 #' @field rule  \link{AudienceRule}
 #' @field description Audience description. character [optional]
-#' @field audience_type  \link{AudienceCreateRequest1AudienceType}
+#' @field audience_type <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. \link{AudienceType}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -29,7 +29,7 @@ AudienceCreateRequest <- R6::R6Class(
     #'
     #' @param name Audience name.
     #' @param rule rule
-    #' @param audience_type audience_type
+    #' @param audience_type <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
     #' @param ad_account_id Ad account ID.
     #' @param description Audience description.
     #' @param ... Other optional arguments.
@@ -45,6 +45,9 @@ AudienceCreateRequest <- R6::R6Class(
         self$`rule` <- `rule`
       }
       if (!missing(`audience_type`)) {
+        if (!(`audience_type` %in% c())) {
+          stop(paste("Error! \"", `audience_type`, "\" cannot be assigned to `audience_type`. Must be .", sep = ""))
+        }
         stopifnot(R6::is.R6(`audience_type`))
         self$`audience_type` <- `audience_type`
       }
@@ -138,7 +141,7 @@ AudienceCreateRequest <- R6::R6Class(
         self$`description` <- this_object$`description`
       }
       if (!is.null(this_object$`audience_type`)) {
-        `audience_type_object` <- AudienceCreateRequest1AudienceType$new()
+        `audience_type_object` <- AudienceType$new()
         `audience_type_object`$fromJSON(jsonlite::toJSON(this_object$`audience_type`, auto_unbox = TRUE, digits = NA))
         self$`audience_type` <- `audience_type_object`
       }
@@ -167,7 +170,7 @@ AudienceCreateRequest <- R6::R6Class(
       self$`name` <- this_object$`name`
       self$`rule` <- AudienceRule$new()$fromJSON(jsonlite::toJSON(this_object$`rule`, auto_unbox = TRUE, digits = NA))
       self$`description` <- this_object$`description`
-      self$`audience_type` <- AudienceCreateRequest1AudienceType$new()$fromJSON(jsonlite::toJSON(this_object$`audience_type`, auto_unbox = TRUE, digits = NA))
+      self$`audience_type` <- AudienceType$new()$fromJSON(jsonlite::toJSON(this_object$`audience_type`, auto_unbox = TRUE, digits = NA))
       self
     },
 

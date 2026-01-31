@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdAccountGetSubscriptionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountGetSubscriptionResponse {
   public static final String SERIALIZED_NAME_LEAD_FORM_ID = "lead_form_id";
   @SerializedName(SERIALIZED_NAME_LEAD_FORM_ID)
@@ -341,19 +341,10 @@ public class AdAccountGetSubscriptionResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("lead_form_id");
-    openapiFields.add("webhook_url");
-    openapiFields.add("id");
-    openapiFields.add("user_account_id");
-    openapiFields.add("ad_account_id");
-    openapiFields.add("api_version");
-    openapiFields.add("cryptographic_key");
-    openapiFields.add("cryptographic_algorithm");
-    openapiFields.add("created_time");
+    openapiFields = new HashSet<String>(Arrays.asList("lead_form_id", "webhook_url", "id", "user_account_id", "ad_account_id", "api_version", "cryptographic_key", "cryptographic_algorithm", "created_time"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -365,7 +356,7 @@ public class AdAccountGetSubscriptionResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AdAccountGetSubscriptionResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdAccountGetSubscriptionResponse is not found in the empty JSON string", AdAccountGetSubscriptionResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AdAccountGetSubscriptionResponse is not found in the empty JSON string", AdAccountGetSubscriptionResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -373,33 +364,33 @@ public class AdAccountGetSubscriptionResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AdAccountGetSubscriptionResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AdAccountGetSubscriptionResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AdAccountGetSubscriptionResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("lead_form_id") != null && !jsonObj.get("lead_form_id").isJsonNull()) && !jsonObj.get("lead_form_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lead_form_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lead_form_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `lead_form_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lead_form_id").toString()));
       }
       if ((jsonObj.get("webhook_url") != null && !jsonObj.get("webhook_url").isJsonNull()) && !jsonObj.get("webhook_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `webhook_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("webhook_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `webhook_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("webhook_url").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("user_account_id") != null && !jsonObj.get("user_account_id").isJsonNull()) && !jsonObj.get("user_account_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `user_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_account_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `user_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_account_id").toString()));
       }
       if ((jsonObj.get("ad_account_id") != null && !jsonObj.get("ad_account_id").isJsonNull()) && !jsonObj.get("ad_account_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
       }
       if ((jsonObj.get("api_version") != null && !jsonObj.get("api_version").isJsonNull()) && !jsonObj.get("api_version").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `api_version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("api_version").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `api_version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("api_version").toString()));
       }
       if ((jsonObj.get("cryptographic_key") != null && !jsonObj.get("cryptographic_key").isJsonNull()) && !jsonObj.get("cryptographic_key").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cryptographic_key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cryptographic_key").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `cryptographic_key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cryptographic_key").toString()));
       }
       if ((jsonObj.get("cryptographic_algorithm") != null && !jsonObj.get("cryptographic_algorithm").isJsonNull()) && !jsonObj.get("cryptographic_algorithm").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cryptographic_algorithm` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cryptographic_algorithm").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `cryptographic_algorithm` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cryptographic_algorithm").toString()));
       }
   }
 

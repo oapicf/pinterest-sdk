@@ -122,17 +122,23 @@ OrderLinesApi <- R6::R6Class(
         stop("Missing required parameter `order_line_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling OrderLinesApi$OrderLinesGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling OrderLinesApi$OrderLinesGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling OrderLinesApi$OrderLinesGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`order_line_id`) > 18) {
+      if (!missing(`order_line_id`) && is.null(`order_line_id`)) {
+        stop("Invalid value for `order_line_id` when calling OrderLinesApi$OrderLinesGet, `order_line_id` is not nullable")
+      }
+      if (!is.null(`order_line_id`) && nchar(`order_line_id`) > 18) {
         stop("Invalid length for `order_line_id` when calling OrderLinesApi$OrderLinesGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`order_line_id`, "^\\d+$")) {
+      if (!is.null(`order_line_id`) && !stringr::str_detect(`order_line_id`, "^\\d+$")) {
         stop("Invalid value for `order_line_id` when calling OrderLinesApi$OrderLinesGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -246,21 +252,33 @@ OrderLinesApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling OrderLinesApi$OrderLinesList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling OrderLinesApi$OrderLinesList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling OrderLinesApi$OrderLinesList, must conform to the pattern ^\\d+$.")
       }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling OrderLinesApi$OrderLinesList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling OrderLinesApi$OrderLinesList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling OrderLinesApi$OrderLinesList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`order`) && is.null(`order`)) {
+        stop("Invalid value for `order` when calling OrderLinesApi$OrderLinesList, `order` is not nullable")
+      }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling OrderLinesApi$OrderLinesList, `bookmark` is not nullable")
+      }
 
       query_params[["page_size"]] <- `page_size`
 

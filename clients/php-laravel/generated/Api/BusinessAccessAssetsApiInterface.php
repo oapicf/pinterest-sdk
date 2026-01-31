@@ -218,7 +218,7 @@ interface BusinessAccessAssetsApiInterface {
      * Get assets assigned to a partner or assets assigned by a partner
      * @param string $businessId
      * @param string $partnerId
-     * @param null | \OpenAPIServerModelPartnerTypeMixed $partnerType
+     * @param null | \OpenAPI\Server\Model\PartnerType $partnerType
      * @param null | \OpenAPI\Server\Model\BusinessAssetsGetAssetTypeParameter $assetType
      * @param null | int $startIndex
      * @param null | int $pageSize
@@ -228,7 +228,7 @@ interface BusinessAccessAssetsApiInterface {
     public function businessPartnerAssetAccessGet(
             string $businessId,
             string $partnerId,
-            ?\OpenAPIServerModelPartnerTypeMixed $partnerType,
+            ?\OpenAPI\Server\Model\PartnerType $partnerType,
             ?\OpenAPI\Server\Model\BusinessAssetsGetAssetTypeParameter $assetType,
             ?int $startIndex,
             ?int $pageSize,

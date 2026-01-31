@@ -70,7 +70,7 @@ data class CatalogsRetailFeedsUpdateRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("default_availability") val defaultAvailability: ProductAvailabilityType? = null
-    ) {
+) {
 
 }
 

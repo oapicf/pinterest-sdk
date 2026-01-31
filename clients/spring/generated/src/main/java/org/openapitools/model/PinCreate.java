@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinCreate", description = "Pin")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinCreate {
 
   private @Nullable String id;
@@ -60,7 +60,7 @@ public class PinCreate {
 
   private JsonNullable<String> note = JsonNullable.<String>undefined();
 
-  public PinCreate id(String id) {
+  public PinCreate id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -72,15 +72,15 @@ public class PinCreate {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", accessMode = Schema.AccessMode.READ_ONLY, example = "813744226420795884", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public PinCreate createdAt(OffsetDateTime createdAt) {
+  public PinCreate createdAt(@Nullable OffsetDateTime createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -92,11 +92,11 @@ public class PinCreate {
   @Valid 
   @Schema(name = "created_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2020-01-01T20:10:40Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_at")
-  public OffsetDateTime getCreatedAt() {
+  public @Nullable OffsetDateTime getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
+  public void setCreatedAt(@Nullable OffsetDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -200,7 +200,7 @@ public class PinCreate {
     this.altText = altText;
   }
 
-  public PinCreate boardId(String boardId) {
+  public PinCreate boardId(@Nullable String boardId) {
     this.boardId = boardId;
     return this;
   }
@@ -212,11 +212,11 @@ public class PinCreate {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "board_id", description = "The board to which this Pin belongs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_id")
-  public String getBoardId() {
+  public @Nullable String getBoardId() {
     return boardId;
   }
 
-  public void setBoardId(String boardId) {
+  public void setBoardId(@Nullable String boardId) {
     this.boardId = boardId;
   }
 
@@ -240,7 +240,7 @@ public class PinCreate {
     this.boardSectionId = boardSectionId;
   }
 
-  public PinCreate boardOwner(BoardOwner boardOwner) {
+  public PinCreate boardOwner(@Nullable BoardOwner boardOwner) {
     this.boardOwner = boardOwner;
     return this;
   }
@@ -252,15 +252,15 @@ public class PinCreate {
   @Valid 
   @Schema(name = "board_owner", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_owner")
-  public BoardOwner getBoardOwner() {
+  public @Nullable BoardOwner getBoardOwner() {
     return boardOwner;
   }
 
-  public void setBoardOwner(BoardOwner boardOwner) {
+  public void setBoardOwner(@Nullable BoardOwner boardOwner) {
     this.boardOwner = boardOwner;
   }
 
-  public PinCreate media(PinMedia media) {
+  public PinCreate media(@Nullable PinMedia media) {
     this.media = media;
     return this;
   }
@@ -272,15 +272,15 @@ public class PinCreate {
   @Valid 
   @Schema(name = "media", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media")
-  public PinMedia getMedia() {
+  public @Nullable PinMedia getMedia() {
     return media;
   }
 
-  public void setMedia(PinMedia media) {
+  public void setMedia(@Nullable PinMedia media) {
     this.media = media;
   }
 
-  public PinCreate mediaSource(PinMediaSource mediaSource) {
+  public PinCreate mediaSource(@Nullable PinMediaSource mediaSource) {
     this.mediaSource = mediaSource;
     return this;
   }
@@ -292,11 +292,11 @@ public class PinCreate {
   @Valid 
   @Schema(name = "media_source", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_source")
-  public PinMediaSource getMediaSource() {
+  public @Nullable PinMediaSource getMediaSource() {
     return mediaSource;
   }
 
-  public void setMediaSource(PinMediaSource mediaSource) {
+  public void setMediaSource(@Nullable PinMediaSource mediaSource) {
     this.mediaSource = mediaSource;
   }
 

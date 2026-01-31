@@ -175,7 +175,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, InviteStatus inviteStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(inviteStatus.ToString());
+            writer.WriteStringValue(InviteStatusValueConverter.ToJsonValue(inviteStatus).ToString());
         }
     }
 
@@ -206,14 +206,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the InviteStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="inviteStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, InviteStatus? inviteStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(inviteStatus?.ToString() ?? "null");
+            writer.WriteStringValue(inviteStatus.HasValue ? InviteStatusValueConverter.ToJsonValue(inviteStatus.Value).ToString() : "null");
         }
     }
 }

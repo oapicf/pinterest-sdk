@@ -21,14 +21,14 @@ import .*
  * Request object to update catalogs creative assets items
  * @param catalogType 
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param items Array with creative assets item operations
  * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
 object CatalogsCreativeAssetsBatchRequests : BaseTable<CatalogsCreativeAssetsBatchRequest>("CatalogsCreativeAssetsBatchRequest") {
     val catalogType = text("catalog_type").transform({ CatalogsCreativeAssetsBatchRequest.CatalogType.valueOf(it) }, { it.value })
     val country = long("country")
-    val language = long("language")
+    val language = text("language").transform({ CatalogsCreativeAssetsBatchRequest.Language.valueOf(it) }, { it.value }) /* We recommend using the CatalogsLocale values. */
     val catalogId = text("catalog_id") /* null */ /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
 
     /**
@@ -37,7 +37,7 @@ object CatalogsCreativeAssetsBatchRequests : BaseTable<CatalogsCreativeAssetsBat
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = CatalogsCreativeAssetsBatchRequest(
         catalogType = row[catalogType] ?: CatalogsCreativeAssetsBatchRequest.CatalogType.valueOf("") /* kotlin.String */,
         country = Countrys.createEntity(row, withReferences) /* Country */,
-        language = CatalogsItemsRequestLanguages.createEntity(row, withReferences) /* CatalogsItemsRequestLanguage */,
+        language = row[language] ?: CatalogsCreativeAssetsBatchRequest.Language.valueOf("") /* kotlin.String */ /* We recommend using the CatalogsLocale values. */,
         items = emptyList() /* kotlin.Array<CatalogsCreativeAssetsBatchItem> */ /* Array with creative assets item operations */,
         catalogId = row[catalogId]  /* kotlin.String? */ /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
     )

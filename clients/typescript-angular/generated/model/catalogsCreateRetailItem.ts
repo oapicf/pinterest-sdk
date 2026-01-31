@@ -22,10 +22,10 @@ export interface CatalogsCreateRetailItem {
     attributes: ItemAttributesRequest;
 }
 export namespace CatalogsCreateRetailItem {
-    export type OperationEnum = 'CREATE';
     export const OperationEnum = {
-        Create: 'CREATE' as OperationEnum
-    };
+        Create: 'CREATE'
+    } as const;
+    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }
 
 

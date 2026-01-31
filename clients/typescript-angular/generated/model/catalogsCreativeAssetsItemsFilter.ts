@@ -18,10 +18,10 @@ export interface CatalogsCreativeAssetsItemsFilter {
     catalog_id?: string;
 }
 export namespace CatalogsCreativeAssetsItemsFilter {
-    export type CatalogTypeEnum = 'CREATIVE_ASSETS';
     export const CatalogTypeEnum = {
-        CreativeAssets: 'CREATIVE_ASSETS' as CatalogTypeEnum
-    };
+        CreativeAssets: 'CREATIVE_ASSETS'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

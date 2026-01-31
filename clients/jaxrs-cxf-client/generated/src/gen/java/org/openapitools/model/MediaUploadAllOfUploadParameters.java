@@ -1,40 +1,48 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
- **/
+ * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
+ */
 @ApiModel(description="The list of parameter key/value pairs you will need to send with your POST request to upload your media file.")
 
 public class MediaUploadAllOfUploadParameters  {
   
   @ApiModelProperty(value = "")
+
   private String xAmzDate;
 
   @ApiModelProperty(value = "")
+
   private String xAmzSignature;
 
   @ApiModelProperty(value = "")
+
   private String xAmzSecurityToken;
 
   @ApiModelProperty(value = "")
+
   private String xAmzAlgorithm;
 
   @ApiModelProperty(value = "")
+
   private String key;
 
   @ApiModelProperty(value = "")
+
   private String policy;
 
   @ApiModelProperty(value = "")
+
   private String xAmzCredential;
 
   @ApiModelProperty(example = "multipart/form-data", value = "")
+
   private String contentType;
  /**
    * Get xAmzDate

@@ -231,8 +231,9 @@ func (a *TermsAPIService) TermsSuggestedListExecute(r ApiTermsSuggestedListReque
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 4
-		r.limit = &defaultValue
+        var defaultValue int32 = 4
+        parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
+        r.limit = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

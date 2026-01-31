@@ -9,9 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_create_asset_access_request_body_asset_requests_inner
 
 type CreateAssetAccessRequestBody* = object
   ## An object containing a list of all the asset access requests
   assetRequests*: seq[CreateAssetAccessRequestBody_asset_requests_inner]
+
+
+# Custom JSON deserialization for CreateAssetAccessRequestBody with custom field names
+proc to*(node: JsonNode, T: typedesc[CreateAssetAccessRequestBody]): CreateAssetAccessRequestBody =
+  result = CreateAssetAccessRequestBody()
+  if node.kind == JObject:
+    if node.hasKey("asset_requests"):
+      result.assetRequests = to(node["asset_requests"], seq[CreateAssetAccessRequestBody_asset_requests_inner])
+
+# Custom JSON serialization for CreateAssetAccessRequestBody with custom field names
+proc `%`*(obj: CreateAssetAccessRequestBody): JsonNode =
+  result = newJObject()
+  result["asset_requests"] = %obj.assetRequests
+

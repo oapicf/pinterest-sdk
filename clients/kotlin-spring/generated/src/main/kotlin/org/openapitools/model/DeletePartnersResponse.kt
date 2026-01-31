@@ -21,7 +21,7 @@ data class DeletePartnersResponse(
 
     @Schema(example = "[\"809944451643622187\",\"383791336903426391\"]", description = "List of partners whose business partnership have been terminated.")
     @get:JsonProperty("deleted_partners") val deletedPartners: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
 }
 

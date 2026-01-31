@@ -1,22 +1,23 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * The dynamic date range of the template
- **/
+ * The dynamic date range of the template
+ */
 @ApiModel(description="The dynamic date range of the template")
 
 public class TemplateResponseDateRangeDynamicDateRange  {
   
-  @ApiModelProperty(example = "dynamic", value = "The date range type")
  /**
-   * The date range type
-  **/
+  * The date range type
+  */
+  @ApiModelProperty(example = "dynamic", value = "The date range type")
+
   private String type;
 
 public enum RangeEnum {
@@ -49,10 +50,11 @@ YEAR_TO_DATE(String.valueOf("YEAR_TO_DATE")), QUARTER_TO_DATE(String.valueOf("QU
     }
 }
 
-  @ApiModelProperty(example = "YEAR_TO_DATE", value = "The dynamic range type")
  /**
-   * The dynamic range type
-  **/
+  * The dynamic range type
+  */
+  @ApiModelProperty(example = "YEAR_TO_DATE", value = "The dynamic range type")
+
   private RangeEnum range;
  /**
    * The date range type

@@ -46,10 +46,15 @@ import java.util.Set;
 import com.github.oapicf.pinterestsdk.JSON;
 
 /**
- * A request to receive a client token.
+ * OauthAccessTokenRequestClientCredentials
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenRequestClientCredentials {
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  @javax.annotation.Nonnull
+  private String scope;
+
   /**
    * Gets or Sets grantType
    */
@@ -109,32 +114,8 @@ public class OauthAccessTokenRequestClientCredentials {
   @javax.annotation.Nonnull
   private GrantTypeEnum grantType;
 
-  public static final String SERIALIZED_NAME_SCOPE = "scope";
-  @SerializedName(SERIALIZED_NAME_SCOPE)
-  @javax.annotation.Nonnull
-  private String scope;
-
   public OauthAccessTokenRequestClientCredentials() {
   }
-
-  public OauthAccessTokenRequestClientCredentials grantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
-    this.grantType = grantType;
-    return this;
-  }
-
-  /**
-   * Get grantType
-   * @return grantType
-   */
-  @javax.annotation.Nonnull
-  public GrantTypeEnum getGrantType() {
-    return grantType;
-  }
-
-  public void setGrantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
-    this.grantType = grantType;
-  }
-
 
   public OauthAccessTokenRequestClientCredentials scope(@javax.annotation.Nonnull String scope) {
     this.scope = scope;
@@ -155,6 +136,25 @@ public class OauthAccessTokenRequestClientCredentials {
   }
 
 
+  public OauthAccessTokenRequestClientCredentials grantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+  /**
+   * Get grantType
+   * @return grantType
+   */
+  @javax.annotation.Nonnull
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+
+  public void setGrantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -165,21 +165,21 @@ public class OauthAccessTokenRequestClientCredentials {
       return false;
     }
     OauthAccessTokenRequestClientCredentials oauthAccessTokenRequestClientCredentials = (OauthAccessTokenRequestClientCredentials) o;
-    return Objects.equals(this.grantType, oauthAccessTokenRequestClientCredentials.grantType) &&
-        Objects.equals(this.scope, oauthAccessTokenRequestClientCredentials.scope);
+    return Objects.equals(this.scope, oauthAccessTokenRequestClientCredentials.scope) &&
+        Objects.equals(this.grantType, oauthAccessTokenRequestClientCredentials.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, scope);
+    return Objects.hash(scope, grantType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestClientCredentials {\n");
-    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -201,13 +201,10 @@ public class OauthAccessTokenRequestClientCredentials {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("scope");
+    openapiFields = new HashSet<String>(Arrays.asList("scope", "grant_type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("grant_type");
-    openapiRequiredFields.add("scope");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("scope", "grant_type"));
   }
 
   /**
@@ -219,7 +216,7 @@ public class OauthAccessTokenRequestClientCredentials {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!OauthAccessTokenRequestClientCredentials.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OauthAccessTokenRequestClientCredentials is not found in the empty JSON string", OauthAccessTokenRequestClientCredentials.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in OauthAccessTokenRequestClientCredentials is not found in the empty JSON string", OauthAccessTokenRequestClientCredentials.openapiRequiredFields.toString()));
         }
       }
 
@@ -227,25 +224,25 @@ public class OauthAccessTokenRequestClientCredentials {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!OauthAccessTokenRequestClientCredentials.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OauthAccessTokenRequestClientCredentials` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `OauthAccessTokenRequestClientCredentials` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : OauthAccessTokenRequestClientCredentials.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("scope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+      }
       if (!jsonObj.get("grant_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `grant_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("grant_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `grant_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("grant_type").toString()));
       }
       // validate the required field `grant_type`
       GrantTypeEnum.validateJsonElement(jsonObj.get("grant_type"));
-      if (!jsonObj.get("scope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

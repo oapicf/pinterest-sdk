@@ -37,7 +37,8 @@ test_that("description", {
 })
 
 test_that("audience_type", {
-  # tests for the property `audience_type` (AudienceCreateRequest1AudienceType)
+  # tests for the property `audience_type` (AudienceType)
+  # &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`audience_type`, "EXPECTED_RESULT")

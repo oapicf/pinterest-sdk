@@ -46,12 +46,12 @@ export interface Board {
     privacy?: Board.PrivacyEnum;
 }
 export namespace Board {
-    export type PrivacyEnum = 'PUBLIC' | 'PROTECTED' | 'SECRET';
     export const PrivacyEnum = {
-        Public: 'PUBLIC' as PrivacyEnum,
-        Protected: 'PROTECTED' as PrivacyEnum,
-        Secret: 'SECRET' as PrivacyEnum
-    };
+        Public: 'PUBLIC',
+        Protected: 'PROTECTED',
+        Secret: 'SECRET'
+    } as const;
+    export type PrivacyEnum = typeof PrivacyEnum[keyof typeof PrivacyEnum];
 }
 
 

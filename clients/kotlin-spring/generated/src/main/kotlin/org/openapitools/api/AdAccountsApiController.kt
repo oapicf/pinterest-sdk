@@ -131,6 +131,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
+import org.openapitools.api.AdAccountsApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -147,7 +148,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${api.base-path:/v5}")
+@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
 class AdAccountsApiController() {
 
     @Operation(
@@ -165,10 +166,20 @@ class AdAccountsApiController() {
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/analytics"],
+        value = [PATH_AD_ACCOUNT_ANALYTICS /* "/ad_accounts/{ad_account_id}/analytics" */],
         produces = ["application/json"]
     )
-    fun adAccountAnalytics(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,@NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,@NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,@Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,@Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String): ResponseEntity<List<AdAccountAnalyticsResponseInner>> {
+    fun adAccountAnalytics(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,
+        @Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String
+    ): ResponseEntity<List<AdAccountAnalyticsResponseInner>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -190,10 +201,22 @@ of the necessary roles granted to them via
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/targeting_analytics"],
+        value = [PATH_AD_ACCOUNT_TARGETING_ANALYTICS_GET /* "/ad_accounts/{ad_account_id}/targeting_analytics" */],
         produces = ["application/json"]
     )
-    fun adAccountTargetingAnalyticsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,@NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,@NotNull @Size(min=1,max=15) @Parameter(description = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.", required = true) @Valid @RequestParam(value = "targeting_types", required = true) targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>,@NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,@Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,@Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String,@Parameter(description = "List of types of attribution for the conversion report", schema = Schema(allowableValues = ["INDIVIDUAL", "HOUSEHOLD"])) @Valid @RequestParam(value = "attribution_types", required = false) attributionTypes: ConversionReportAttributionType?): ResponseEntity<MetricsResponse> {
+    fun adAccountTargetingAnalyticsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,
+        @NotNull @Size(min=1,max=15) @Parameter(description = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.", required = true) @Valid @RequestParam(value = "targeting_types", required = true) targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>,
+        @NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,
+        @Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String,
+        @Parameter(description = "List of types of attribution for the conversion report", schema = Schema(allowableValues = ["INDIVIDUAL", "HOUSEHOLD"])) @Valid @RequestParam(value = "attribution_types", required = false) attributionTypes: ConversionReportAttributionType?
+    ): ResponseEntity<MetricsResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -210,10 +233,16 @@ of the necessary roles granted to them via
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/audiences/shared/accounts"],
+        value = [PATH_AD_ACCOUNTS_AUDIENCES_SHARED_ACCOUNTS_LIST /* "/ad_accounts/{ad_account_id}/audiences/shared/accounts" */],
         produces = ["application/json"]
     )
-    fun adAccountsAudiencesSharedAccountsList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of the audience to use to filter the results.", required = true) @Valid @RequestParam(value = "audience_id", required = true) audienceId: kotlin.String,@NotNull @Parameter(description = "Filter accounts by account type.", required = true, schema = Schema(allowableValues = ["AD_ACCOUNT", "BUSINESS_ACCOUNT"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "account_type", required = true, defaultValue = "AD_ACCOUNT") accountType: AudienceAccountType,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<AdAccountsAudiencesSharedAccountsList200Response> {
+    fun adAccountsAudiencesSharedAccountsList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of the audience to use to filter the results.", required = true) @Valid @RequestParam(value = "audience_id", required = true) audienceId: kotlin.String,
+        @NotNull @Parameter(description = "Filter accounts by account type.", required = true, schema = Schema(allowableValues = ["AD_ACCOUNT", "BUSINESS_ACCOUNT"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "account_type", required = true, defaultValue = "AD_ACCOUNT") accountType: AudienceAccountType,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<AdAccountsAudiencesSharedAccountsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -231,11 +260,13 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts"],
+        value = [PATH_AD_ACCOUNTS_CREATE /* "/ad_accounts" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun adAccountsCreate(@Parameter(description = "Ad account to create.", required = true) @Valid @RequestBody adAccountCreateRequest: AdAccountCreateRequest): ResponseEntity<AdAccount> {
+    fun adAccountsCreate(
+        @Parameter(description = "Ad account to create.", required = true) @Valid @RequestBody adAccountCreateRequest: AdAccountCreateRequest
+    ): ResponseEntity<AdAccount> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -250,10 +281,12 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}"],
+        value = [PATH_AD_ACCOUNTS_GET /* "/ad_accounts/{ad_account_id}" */],
         produces = ["application/json"]
     )
-    fun adAccountsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String): ResponseEntity<AdAccount> {
+    fun adAccountsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String
+    ): ResponseEntity<AdAccount> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -269,10 +302,14 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts"],
+        value = [PATH_AD_ACCOUNTS_LIST /* "/ad_accounts" */],
         produces = ["application/json"]
     )
-    fun adAccountsList(@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Include shared ad accounts", schema = Schema(defaultValue = "true")) @Valid @RequestParam(value = "include_shared_accounts", required = false, defaultValue = "true") includeSharedAccounts: kotlin.Boolean): ResponseEntity<AdAccountsList200Response> {
+    fun adAccountsList(
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Include shared ad accounts", schema = Schema(defaultValue = "true")) @Valid @RequestParam(value = "include_shared_accounts", required = false, defaultValue = "true") includeSharedAccounts: kotlin.Boolean
+    ): ResponseEntity<AdAccountsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -293,10 +330,13 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}"],
+        value = [PATH_AD_ACCOUNTS_SUBSCRIPTIONS_DEL_BY_ID /* "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}" */],
         produces = ["application/json"]
     )
-    fun adAccountsSubscriptionsDelById(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a subscription.", required = true) @PathVariable("subscription_id") subscriptionId: kotlin.String): ResponseEntity<Unit> {
+    fun adAccountsSubscriptionsDelById(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a subscription.", required = true) @PathVariable("subscription_id") subscriptionId: kotlin.String
+    ): ResponseEntity<Unit> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -317,10 +357,13 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}"],
+        value = [PATH_AD_ACCOUNTS_SUBSCRIPTIONS_GET_BY_ID /* "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}" */],
         produces = ["application/json"]
     )
-    fun adAccountsSubscriptionsGetById(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a subscription.", required = true) @PathVariable("subscription_id") subscriptionId: kotlin.String): ResponseEntity<AdAccountGetSubscriptionResponse> {
+    fun adAccountsSubscriptionsGetById(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a subscription.", required = true) @PathVariable("subscription_id") subscriptionId: kotlin.String
+    ): ResponseEntity<AdAccountGetSubscriptionResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -339,10 +382,14 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/leads/subscriptions"],
+        value = [PATH_AD_ACCOUNTS_SUBSCRIPTIONS_GET_LIST /* "/ad_accounts/{ad_account_id}/leads/subscriptions" */],
         produces = ["application/json"]
     )
-    fun adAccountsSubscriptionsGetList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<AdAccountsSubscriptionsGetList200Response> {
+    fun adAccountsSubscriptionsGetList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<AdAccountsSubscriptionsGetList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -365,11 +412,14 @@ Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to 
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/leads/subscriptions"],
+        value = [PATH_AD_ACCOUNTS_SUBSCRIPTIONS_POST /* "/ad_accounts/{ad_account_id}/leads/subscriptions" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun adAccountsSubscriptionsPost(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Subscription to create.", required = true) @Valid @RequestBody adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest): ResponseEntity<AdAccountCreateSubscriptionResponse> {
+    fun adAccountsSubscriptionsPost(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Subscription to create.", required = true) @Valid @RequestBody adAccountCreateSubscriptionRequest: AdAccountCreateSubscriptionRequest
+    ): ResponseEntity<AdAccountCreateSubscriptionResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -388,10 +438,21 @@ Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to 
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ad_groups/analytics"],
+        value = [PATH_AD_GROUPS_ANALYTICS /* "/ad_accounts/{ad_account_id}/ad_groups/analytics" */],
         produces = ["application/json"]
     )
-    fun adGroupsAnalytics(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,@NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,@NotNull @Size(min=1,max=100) @Parameter(description = "List of Ad group Ids to use to filter the results.", required = true) @Valid @RequestParam(value = "ad_group_ids", required = true) adGroupIds: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,@Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,@Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String): ResponseEntity<List<AdGroupsAnalyticsResponseInner>> {
+    fun adGroupsAnalytics(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,
+        @NotNull @Size(min=1,max=100) @Parameter(description = "List of Ad group Ids to use to filter the results.", required = true) @Valid @RequestParam(value = "ad_group_ids", required = true) adGroupIds: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,
+        @Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String
+    ): ResponseEntity<List<AdGroupsAnalyticsResponseInner>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -411,11 +472,14 @@ It does not guarantee results or take into account factors such as bid, budget, 
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/ad_groups/audience_sizing"],
+        value = [PATH_AD_GROUPS_AUDIENCE_SIZING /* "/ad_accounts/{ad_account_id}/ad_groups/audience_sizing" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun adGroupsAudienceSizing(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "") @Valid @RequestBody(required = false) adGroupAudienceSizingRequest: AdGroupAudienceSizingRequest?): ResponseEntity<AdGroupAudienceSizingResponse> {
+    fun adGroupsAudienceSizing(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "") @Valid @RequestBody(required = false) adGroupAudienceSizingRequest: AdGroupAudienceSizingRequest?
+    ): ResponseEntity<AdGroupAudienceSizingResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -443,11 +507,14 @@ For more on bid floors see <a class="reference external" href="https://help.pint
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/bid_floor"],
+        value = [PATH_AD_GROUPS_BID_FLOOR_GET /* "/ad_accounts/{ad_account_id}/bid_floor" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun adGroupsBidFloorGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Parameters to get bid_floor info", required = true) @Valid @RequestBody bidFloorRequest: BidFloorRequest): ResponseEntity<BidFloor> {
+    fun adGroupsBidFloorGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Parameters to get bid_floor info", required = true) @Valid @RequestBody bidFloorRequest: BidFloorRequest
+    ): ResponseEntity<BidFloor> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -478,11 +545,14 @@ For more on bid floors see <a class="reference external" href="https://help.pint
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/ad_groups"],
+        value = [PATH_AD_GROUPS_CREATE /* "/ad_accounts/{ad_account_id}/ad_groups" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun adGroupsCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "List of ad groups to create, size limit [1, 30].", required = true) @Valid@Size(min=1,max=30)  @RequestBody adGroupCreateRequest: kotlin.collections.List<AdGroupCreateRequest>): ResponseEntity<AdGroupArrayResponse> {
+    fun adGroupsCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "List of ad groups to create, size limit [1, 30].", required = true) @Valid@Size(min=1,max=30)  @RequestBody adGroupCreateRequest: kotlin.collections.List<AdGroupCreateRequest>
+    ): ResponseEntity<AdGroupArrayResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -499,10 +569,13 @@ For more information about our policies and rejection reasons see the <a href="h
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}"],
+        value = [PATH_AD_GROUPS_GET /* "/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}" */],
         produces = ["application/json"]
     )
-    fun adGroupsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad group.", required = true) @PathVariable("ad_group_id") adGroupId: kotlin.String): ResponseEntity<AdGroupResponse> {
+    fun adGroupsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad group.", required = true) @PathVariable("ad_group_id") adGroupId: kotlin.String
+    ): ResponseEntity<AdGroupResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -520,10 +593,19 @@ Provide only campaign_id or ad_group_id. Do not provide both.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ad_groups"],
+        value = [PATH_AD_GROUPS_LIST /* "/ad_accounts/{ad_account_id}/ad_groups" */],
         produces = ["application/json"]
     )
-    fun adGroupsList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Size(min=1,max=100) @Parameter(description = "List of Campaign Ids to use to filter the results.") @Valid @RequestParam(value = "campaign_ids", required = false) campaignIds: kotlin.collections.List<kotlin.String>?,@Size(min=1,max=100) @Parameter(description = "List of Ad group Ids to use to filter the results.") @Valid @RequestParam(value = "ad_group_ids", required = false) adGroupIds: kotlin.collections.List<kotlin.String>?,@Parameter(description = "Entity status", schema = Schema(allowableValues = ["ACTIVE", "PAUSED", "ARCHIVED", "DRAFT", "DELETED_DRAFT"])) @Valid @RequestParam(value = "entity_statuses", required = false) entityStatuses: kotlin.collections.List<kotlin.String>,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Parameter(description = "Return interests as text names (if value is true) rather than topic IDs.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "translate_interests_to_names", required = false, defaultValue = "false") translateInterestsToNames: kotlin.Boolean): ResponseEntity<AdGroupsList200Response> {
+    fun adGroupsList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Size(min=1,max=100) @Parameter(description = "List of Campaign Ids to use to filter the results.") @Valid @RequestParam(value = "campaign_ids", required = false) campaignIds: kotlin.collections.List<kotlin.String>?,
+        @Size(min=1,max=100) @Parameter(description = "List of Ad group Ids to use to filter the results.") @Valid @RequestParam(value = "ad_group_ids", required = false) adGroupIds: kotlin.collections.List<kotlin.String>?,
+        @Parameter(description = "Entity status", schema = Schema(allowableValues = ["ACTIVE", "PAUSED", "ARCHIVED", "DRAFT", "DELETED_DRAFT"])) @Valid @RequestParam(value = "entity_statuses", required = false) entityStatuses: kotlin.collections.List<kotlin.String>,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Parameter(description = "Return interests as text names (if value is true) rather than topic IDs.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "translate_interests_to_names", required = false, defaultValue = "false") translateInterestsToNames: kotlin.Boolean
+    ): ResponseEntity<AdGroupsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -545,10 +627,23 @@ of the necessary roles granted to them via
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics"],
+        value = [PATH_AD_GROUPS_TARGETING_ANALYTICS_GET /* "/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics" */],
         produces = ["application/json"]
     )
-    fun adGroupsTargetingAnalyticsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Size(min=1,max=100) @Parameter(description = "List of Ad group Ids to use to filter the results.", required = true) @Valid @RequestParam(value = "ad_group_ids", required = true) adGroupIds: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,@NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,@NotNull @Size(min=1,max=15) @Parameter(description = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.", required = true) @Valid @RequestParam(value = "targeting_types", required = true) targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>,@NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,@Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,@Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String,@Parameter(description = "List of types of attribution for the conversion report", schema = Schema(allowableValues = ["INDIVIDUAL", "HOUSEHOLD"])) @Valid @RequestParam(value = "attribution_types", required = false) attributionTypes: ConversionReportAttributionType?): ResponseEntity<MetricsResponse> {
+    fun adGroupsTargetingAnalyticsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Size(min=1,max=100) @Parameter(description = "List of Ad group Ids to use to filter the results.", required = true) @Valid @RequestParam(value = "ad_group_ids", required = true) adGroupIds: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,
+        @NotNull @Size(min=1,max=15) @Parameter(description = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.", required = true) @Valid @RequestParam(value = "targeting_types", required = true) targetingTypes: kotlin.collections.List<AdsAnalyticsTargetingType>,
+        @NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,
+        @Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String,
+        @Parameter(description = "List of types of attribution for the conversion report", schema = Schema(allowableValues = ["INDIVIDUAL", "HOUSEHOLD"])) @Valid @RequestParam(value = "attribution_types", required = false) attributionTypes: ConversionReportAttributionType?
+    ): ResponseEntity<MetricsResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -563,11 +658,14 @@ of the necessary roles granted to them via
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/ad_accounts/{ad_account_id}/ad_groups"],
+        value = [PATH_AD_GROUPS_UPDATE /* "/ad_accounts/{ad_account_id}/ad_groups" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun adGroupsUpdate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "List of ad groups to update, size limit [1, 30].", required = true) @Valid@Size(min=1,max=30)  @RequestBody adGroupUpdateRequest: kotlin.collections.List<AdGroupUpdateRequest>): ResponseEntity<AdGroupArrayResponse> {
+    fun adGroupsUpdate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "List of ad groups to update, size limit [1, 30].", required = true) @Valid@Size(min=1,max=30)  @RequestBody adGroupUpdateRequest: kotlin.collections.List<AdGroupUpdateRequest>
+    ): ResponseEntity<AdGroupArrayResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -585,11 +683,14 @@ You can view the returned preview URL on a webpage or iframe for 7 days, after w
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/ad_previews"],
+        value = [PATH_AD_PREVIEWS_CREATE /* "/ad_accounts/{ad_account_id}/ad_previews" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun adPreviewsCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Create ad preview with pin or image.", required = true) @Valid @RequestBody adPreviewRequest: AdPreviewRequest): ResponseEntity<AdPreviewURLResponse> {
+    fun adPreviewsCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Create ad preview with pin or image.", required = true) @Valid @RequestBody adPreviewRequest: AdPreviewRequest
+    ): ResponseEntity<AdPreviewURLResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -611,10 +712,23 @@ of the necessary roles granted to them via
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ads/targeting_analytics"],
+        value = [PATH_AD_TARGETING_ANALYTICS_GET /* "/ad_accounts/{ad_account_id}/ads/targeting_analytics" */],
         produces = ["application/json"]
     )
-    fun adTargetingAnalyticsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Size(min=1,max=100) @Parameter(description = "List of Ad Ids to use to filter the results.", required = true) @Valid @RequestParam(value = "ad_ids", required = true) adIds: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,@NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,@NotNull @Size(min=1,max=14) @Parameter(description = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.", required = true) @Valid @RequestParam(value = "targeting_types", required = true) targetingTypes: kotlin.collections.List<AdsAnalyticsAdTargetingType>,@NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,@Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,@Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String,@Parameter(description = "List of types of attribution for the conversion report", schema = Schema(allowableValues = ["INDIVIDUAL", "HOUSEHOLD"])) @Valid @RequestParam(value = "attribution_types", required = false) attributionTypes: ConversionReportAttributionType?): ResponseEntity<MetricsResponse> {
+    fun adTargetingAnalyticsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Size(min=1,max=100) @Parameter(description = "List of Ad Ids to use to filter the results.", required = true) @Valid @RequestParam(value = "ad_ids", required = true) adIds: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,
+        @NotNull @Size(min=1,max=14) @Parameter(description = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.", required = true) @Valid @RequestParam(value = "targeting_types", required = true) targetingTypes: kotlin.collections.List<AdsAnalyticsAdTargetingType>,
+        @NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,
+        @Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String,
+        @Parameter(description = "List of types of attribution for the conversion report", schema = Schema(allowableValues = ["INDIVIDUAL", "HOUSEHOLD"])) @Valid @RequestParam(value = "attribution_types", required = false) attributionTypes: ConversionReportAttributionType?
+    ): ResponseEntity<MetricsResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -634,10 +748,23 @@ of the necessary roles granted to them via
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ads/analytics"],
+        value = [PATH_ADS_ANALYTICS /* "/ad_accounts/{ad_account_id}/ads/analytics" */],
         produces = ["application/json"]
     )
-    fun adsAnalytics(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,@NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,@NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,@Size(min=1,max=100) @Parameter(description = "List of Ad Ids to use to filter the results.") @Valid @RequestParam(value = "ad_ids", required = false) adIds: kotlin.collections.List<kotlin.String>?,@Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,@Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String,@Size(min=1,max=100) @Parameter(description = "List of Pin IDs.") @Valid @RequestParam(value = "pin_ids", required = false) pinIds: kotlin.collections.List<kotlin.String>?,@Size(min=1,max=100) @Parameter(description = "List of Campaign Ids to use to filter the results.") @Valid @RequestParam(value = "campaign_ids", required = false) campaignIds: kotlin.collections.List<kotlin.String>?): ResponseEntity<List<AdsAnalyticsResponseInner>> {
+    fun adsAnalytics(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,
+        @Size(min=1,max=100) @Parameter(description = "List of Ad Ids to use to filter the results.") @Valid @RequestParam(value = "ad_ids", required = false) adIds: kotlin.collections.List<kotlin.String>?,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,
+        @Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String,
+        @Size(min=1,max=100) @Parameter(description = "List of Pin IDs.") @Valid @RequestParam(value = "pin_ids", required = false) pinIds: kotlin.collections.List<kotlin.String>?,
+        @Size(min=1,max=100) @Parameter(description = "List of Campaign Ids to use to filter the results.") @Valid @RequestParam(value = "campaign_ids", required = false) campaignIds: kotlin.collections.List<kotlin.String>?
+    ): ResponseEntity<List<AdsAnalyticsResponseInner>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -652,11 +779,14 @@ of the necessary roles granted to them via
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/ads"],
+        value = [PATH_ADS_CREATE /* "/ad_accounts/{ad_account_id}/ads" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun adsCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "List of ads to create, size limit [1, 30].", required = true) @Valid@Size(min=1,max=30)  @RequestBody adCreateRequest: kotlin.collections.List<AdCreateRequest>): ResponseEntity<AdArrayResponse> {
+    fun adsCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "List of ads to create, size limit [1, 30].", required = true) @Valid@Size(min=1,max=30)  @RequestBody adCreateRequest: kotlin.collections.List<AdCreateRequest>
+    ): ResponseEntity<AdArrayResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -674,11 +804,14 @@ of the necessary roles granted to them via
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/ads_credit/redeem"],
+        value = [PATH_ADS_CREDIT_REDEEM /* "/ad_accounts/{ad_account_id}/ads_credit/redeem" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun adsCreditRedeem(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Redeem ad credits request.", required = true) @Valid @RequestBody adsCreditRedeemRequest: AdsCreditRedeemRequest): ResponseEntity<AdsCreditRedeemResponse> {
+    fun adsCreditRedeem(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Redeem ad credits request.", required = true) @Valid @RequestBody adsCreditRedeemRequest: AdsCreditRedeemRequest
+    ): ResponseEntity<AdsCreditRedeemResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -695,10 +828,14 @@ of the necessary roles granted to them via
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ads_credit/discounts"],
+        value = [PATH_ADS_CREDITS_DISCOUNTS_GET /* "/ad_accounts/{ad_account_id}/ads_credit/discounts" */],
         produces = ["application/json"]
     )
-    fun adsCreditsDiscountsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<AdsCreditsDiscountsGet200Response> {
+    fun adsCreditsDiscountsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<AdsCreditsDiscountsGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -715,10 +852,13 @@ For more information about our policies and rejection reasons see the <a href="h
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ads/{ad_id}"],
+        value = [PATH_ADS_GET /* "/ad_accounts/{ad_account_id}/ads/{ad_id}" */],
         produces = ["application/json"]
     )
-    fun adsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad.", required = true) @PathVariable("ad_id") adId: kotlin.String): ResponseEntity<AdResponse> {
+    fun adsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad.", required = true) @PathVariable("ad_id") adId: kotlin.String
+    ): ResponseEntity<AdResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -741,10 +881,19 @@ For more, see <a href="https://policy.pinterest.com/en/advertising-guidelines">P
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ads"],
+        value = [PATH_ADS_LIST /* "/ad_accounts/{ad_account_id}/ads" */],
         produces = ["application/json"]
     )
-    fun adsList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Size(min=1,max=100) @Parameter(description = "List of Campaign Ids to use to filter the results.") @Valid @RequestParam(value = "campaign_ids", required = false) campaignIds: kotlin.collections.List<kotlin.String>?,@Size(min=1,max=100) @Parameter(description = "List of Ad group Ids to use to filter the results.") @Valid @RequestParam(value = "ad_group_ids", required = false) adGroupIds: kotlin.collections.List<kotlin.String>?,@Size(min=1,max=100) @Parameter(description = "List of Ad Ids to use to filter the results.") @Valid @RequestParam(value = "ad_ids", required = false) adIds: kotlin.collections.List<kotlin.String>?,@Parameter(description = "Entity status", schema = Schema(allowableValues = ["ACTIVE", "PAUSED", "ARCHIVED", "DRAFT", "DELETED_DRAFT"])) @Valid @RequestParam(value = "entity_statuses", required = false) entityStatuses: kotlin.collections.List<kotlin.String>,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<AdsList200Response> {
+    fun adsList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Size(min=1,max=100) @Parameter(description = "List of Campaign Ids to use to filter the results.") @Valid @RequestParam(value = "campaign_ids", required = false) campaignIds: kotlin.collections.List<kotlin.String>?,
+        @Size(min=1,max=100) @Parameter(description = "List of Ad group Ids to use to filter the results.") @Valid @RequestParam(value = "ad_group_ids", required = false) adGroupIds: kotlin.collections.List<kotlin.String>?,
+        @Size(min=1,max=100) @Parameter(description = "List of Ad Ids to use to filter the results.") @Valid @RequestParam(value = "ad_ids", required = false) adIds: kotlin.collections.List<kotlin.String>?,
+        @Parameter(description = "Entity status", schema = Schema(allowableValues = ["ACTIVE", "PAUSED", "ARCHIVED", "DRAFT", "DELETED_DRAFT"])) @Valid @RequestParam(value = "entity_statuses", required = false) entityStatuses: kotlin.collections.List<kotlin.String>,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<AdsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -759,11 +908,14 @@ For more, see <a href="https://policy.pinterest.com/en/advertising-guidelines">P
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/ad_accounts/{ad_account_id}/ads"],
+        value = [PATH_ADS_UPDATE /* "/ad_accounts/{ad_account_id}/ads" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun adsUpdate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "List of ads to update, size limit [1, 30]", required = true) @Valid@Size(min=1,max=30)  @RequestBody adUpdateRequest: kotlin.collections.List<AdUpdateRequest>): ResponseEntity<AdArrayResponse> {
+    fun adsUpdate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "List of ads to update, size limit [1, 30]", required = true) @Valid@Size(min=1,max=30)  @RequestBody adUpdateRequest: kotlin.collections.List<AdUpdateRequest>
+    ): ResponseEntity<AdArrayResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -780,11 +932,14 @@ the report when it is ready. NOTE: An additional limit of 5 queries per minute p
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/mmm_reports"],
+        value = [PATH_ANALYTICS_CREATE_MMM_REPORT /* "/ad_accounts/{ad_account_id}/mmm_reports" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun analyticsCreateMmmReport(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody createMMMReportRequest: CreateMMMReportRequest): ResponseEntity<CreateMMMReportResponse> {
+    fun analyticsCreateMmmReport(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody createMMMReportRequest: CreateMMMReportRequest
+    ): ResponseEntity<CreateMMMReportResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -805,11 +960,14 @@ the report when it is ready. NOTE: An additional limit of 5 queries per minute p
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/reports"],
+        value = [PATH_ANALYTICS_CREATE_REPORT /* "/ad_accounts/{ad_account_id}/reports" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun analyticsCreateReport(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody adsAnalyticsCreateAsyncRequest: AdsAnalyticsCreateAsyncRequest): ResponseEntity<AdsAnalyticsCreateAsyncResponse> {
+    fun analyticsCreateReport(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody adsAnalyticsCreateAsyncRequest: AdsAnalyticsCreateAsyncRequest
+    ): ResponseEntity<AdsAnalyticsCreateAsyncResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -826,10 +984,16 @@ template. It returns a token that you can use to download the report when it is 
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/templates/{template_id}/reports"],
+        value = [PATH_ANALYTICS_CREATE_TEMPLATE_REPORT /* "/ad_accounts/{ad_account_id}/templates/{template_id}/reports" */],
         produces = ["application/json"]
     )
-    fun analyticsCreateTemplateReport(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of a template.", required = true) @PathVariable("template_id") templateId: kotlin.String,@Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today.") @Valid @RequestParam(value = "start_date", required = false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate?,@Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date.") @Valid @RequestParam(value = "end_date", required = false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate?,@Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = false) granularity: Granularity?): ResponseEntity<AdsAnalyticsCreateAsyncResponse> {
+    fun analyticsCreateTemplateReport(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of a template.", required = true) @PathVariable("template_id") templateId: kotlin.String,
+        @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today.") @Valid @RequestParam(value = "start_date", required = false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate?,
+        @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date.") @Valid @RequestParam(value = "end_date", required = false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate?,
+        @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = false) granularity: Granularity?
+    ): ResponseEntity<AdsAnalyticsCreateAsyncResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -846,10 +1010,13 @@ create mmm report endpoint.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/mmm_reports"],
+        value = [PATH_ANALYTICS_GET_MMM_REPORT /* "/ad_accounts/{ad_account_id}/mmm_reports" */],
         produces = ["application/json"]
     )
-    fun analyticsGetMmmReport(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Parameter(description = "Token returned from the post request creation call", required = true) @Valid @RequestParam(value = "token", required = true) token: kotlin.String): ResponseEntity<GetMMMReportResponse> {
+    fun analyticsGetMmmReport(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Parameter(description = "Token returned from the post request creation call", required = true) @Valid @RequestParam(value = "token", required = true) token: kotlin.String
+    ): ResponseEntity<GetMMMReportResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -866,10 +1033,13 @@ create mmm report endpoint.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/reports"],
+        value = [PATH_ANALYTICS_GET_REPORT /* "/ad_accounts/{ad_account_id}/reports" */],
         produces = ["application/json"]
     )
-    fun analyticsGetReport(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Parameter(description = "Token returned from the post request creation call", required = true) @Valid @RequestParam(value = "token", required = true) token: kotlin.String): ResponseEntity<AdsAnalyticsGetAsyncResponse> {
+    fun analyticsGetReport(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Parameter(description = "Token returned from the post request creation call", required = true) @Valid @RequestParam(value = "token", required = true) token: kotlin.String
+    ): ResponseEntity<AdsAnalyticsGetAsyncResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -887,10 +1057,13 @@ total audience.<p/>
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/audience_insights"],
+        value = [PATH_AUDIENCE_INSIGHTS_GET /* "/ad_accounts/{ad_account_id}/audience_insights" */],
         produces = ["application/json"]
     )
-    fun audienceInsightsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Parameter(description = "Type of audience insights.", required = true, schema = Schema(allowableValues = ["YOUR_TOTAL_AUDIENCE", "YOUR_ENGAGED_AUDIENCE", "PINTEREST_TOTAL_AUDIENCE"], defaultValue = "YOUR_TOTAL_AUDIENCE")) @Valid @RequestParam(value = "audience_insight_type", required = true, defaultValue = "YOUR_TOTAL_AUDIENCE") audienceInsightType: AudienceInsightType): ResponseEntity<AudienceInsightsResponse> {
+    fun audienceInsightsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Parameter(description = "Type of audience insights.", required = true, schema = Schema(allowableValues = ["YOUR_TOTAL_AUDIENCE", "YOUR_ENGAGED_AUDIENCE", "PINTEREST_TOTAL_AUDIENCE"], defaultValue = "YOUR_TOTAL_AUDIENCE")) @Valid @RequestParam(value = "audience_insight_type", required = true, defaultValue = "YOUR_TOTAL_AUDIENCE") audienceInsightType: AudienceInsightType
+    ): ResponseEntity<AudienceInsightsResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -905,10 +1078,12 @@ total audience.<p/>
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/insights/audiences"],
+        value = [PATH_AUDIENCE_INSIGHTS_SCOPE_AND_TYPE_GET /* "/ad_accounts/{ad_account_id}/insights/audiences" */],
         produces = ["application/json"]
     )
-    fun audienceInsightsScopeAndTypeGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String): ResponseEntity<AudienceDefinitionResponse> {
+    fun audienceInsightsScopeAndTypeGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String
+    ): ResponseEntity<AudienceDefinitionResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -926,11 +1101,14 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/audiences"],
+        value = [PATH_AUDIENCES_CREATE /* "/ad_accounts/{ad_account_id}/audiences" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun audiencesCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "List of ads to create, size limit [1, 30]", required = true) @Valid @RequestBody audienceCreateRequest: AudienceCreateRequest): ResponseEntity<Audience> {
+    fun audiencesCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "List of ads to create, size limit [1, 30]", required = true) @Valid @RequestBody audienceCreateRequest: AudienceCreateRequest
+    ): ResponseEntity<Audience> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -945,11 +1123,14 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/audiences/custom"],
+        value = [PATH_AUDIENCES_CREATE_CUSTOM /* "/ad_accounts/{ad_account_id}/audiences/custom" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun audiencesCreateCustom(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Custom audience to create.", required = true) @Valid @RequestBody audienceCreateCustomRequest: AudienceCreateCustomRequest): ResponseEntity<Audience> {
+    fun audiencesCreateCustom(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Custom audience to create.", required = true) @Valid @RequestBody audienceCreateCustomRequest: AudienceCreateCustomRequest
+    ): ResponseEntity<Audience> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -965,10 +1146,13 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/audiences/{audience_id}"],
+        value = [PATH_AUDIENCES_GET /* "/ad_accounts/{ad_account_id}/audiences/{audience_id}" */],
         produces = ["application/json"]
     )
-    fun audiencesGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an audience", required = true) @PathVariable("audience_id") audienceId: kotlin.String): ResponseEntity<Audience> {
+    fun audiencesGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an audience", required = true) @PathVariable("audience_id") audienceId: kotlin.String
+    ): ResponseEntity<Audience> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -984,10 +1168,16 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/audiences"],
+        value = [PATH_AUDIENCES_LIST /* "/ad_accounts/{ad_account_id}/audiences" */],
         produces = ["application/json"]
     )
-    fun audiencesList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Filter audiences by ownership type.", schema = Schema(allowableValues = ["OWNED", "RECEIVED"], defaultValue = "OWNED")) @Valid @RequestParam(value = "ownership_type", required = false, defaultValue = "OWNED") ownershipType: kotlin.String): ResponseEntity<AudiencesList200Response> {
+    fun audiencesList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Filter audiences by ownership type.", schema = Schema(allowableValues = ["OWNED", "RECEIVED"], defaultValue = "OWNED")) @Valid @RequestParam(value = "ownership_type", required = false, defaultValue = "OWNED") ownershipType: kotlin.String
+    ): ResponseEntity<AudiencesList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1002,11 +1192,15 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/ad_accounts/{ad_account_id}/audiences/{audience_id}"],
+        value = [PATH_AUDIENCES_UPDATE /* "/ad_accounts/{ad_account_id}/audiences/{audience_id}" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun audiencesUpdate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an audience", required = true) @PathVariable("audience_id") audienceId: kotlin.String,@Parameter(description = "The audience to be updated.") @Valid @RequestBody(required = false) audienceUpdateRequest: AudienceUpdateRequest?): ResponseEntity<Audience> {
+    fun audiencesUpdate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an audience", required = true) @PathVariable("audience_id") audienceId: kotlin.String,
+        @Parameter(description = "The audience to be updated.") @Valid @RequestBody(required = false) audienceUpdateRequest: AudienceUpdateRequest?
+    ): ResponseEntity<Audience> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1023,10 +1217,15 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/billing_profiles"],
+        value = [PATH_BILLING_PROFILES_GET /* "/ad_accounts/{ad_account_id}/billing_profiles" */],
         produces = ["application/json"]
     )
-    fun billingProfilesGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Parameter(description = "Return active billing profiles, if false return all billing profiles.", required = true) @Valid @RequestParam(value = "is_active", required = true) isActive: kotlin.Boolean,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<BillingProfilesGet200Response> {
+    fun billingProfilesGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Parameter(description = "Return active billing profiles, if false return all billing profiles.", required = true) @Valid @RequestParam(value = "is_active", required = true) isActive: kotlin.Boolean,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<BillingProfilesGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1043,11 +1242,14 @@ only active entities will return data.""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/bulk/download"],
+        value = [PATH_BULK_DOWNLOAD_CREATE /* "/ad_accounts/{ad_account_id}/bulk/download" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun bulkDownloadCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Parameters to get ad entities in bulk", required = true) @Valid @RequestBody bulkDownloadRequest: BulkDownloadRequest): ResponseEntity<BulkDownloadResponse> {
+    fun bulkDownloadCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Parameters to get ad entities in bulk", required = true) @Valid @RequestBody bulkDownloadRequest: BulkDownloadRequest
+    ): ResponseEntity<BulkDownloadResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1063,10 +1265,14 @@ new or updated entity data (campaigns, ad groups, product groups, ads, or keywor
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}"],
+        value = [PATH_BULK_REQUEST_GET /* "/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}" */],
         produces = ["application/json"]
     )
-    fun bulkRequestGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Unique identifier of a bulk upsert request.", required = true) @PathVariable("bulk_request_id") bulkRequestId: kotlin.String,@Parameter(description = "if set to True then attach the errors/details to all the requests", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "include_details", required = false, defaultValue = "false") includeDetails: kotlin.Boolean): ResponseEntity<BulkUpsertStatusResponse> {
+    fun bulkRequestGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Unique identifier of a bulk upsert request.", required = true) @PathVariable("bulk_request_id") bulkRequestId: kotlin.String,
+        @Parameter(description = "if set to True then attach the errors/details to all the requests", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "include_details", required = false, defaultValue = "false") includeDetails: kotlin.Boolean
+    ): ResponseEntity<BulkUpsertStatusResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1083,11 +1289,14 @@ that can be used to obtain the status of the request.""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/bulk/upsert"],
+        value = [PATH_BULK_UPSERT_CREATE /* "/ad_accounts/{ad_account_id}/bulk/upsert" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun bulkUpsertCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Parameters to get create/update ad entities in bulk", required = true) @Valid @RequestBody bulkUpsertRequest: BulkUpsertRequest): ResponseEntity<BulkUpsertResponse> {
+    fun bulkUpsertCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Parameters to get create/update ad entities in bulk", required = true) @Valid @RequestBody bulkUpsertRequest: BulkUpsertRequest
+    ): ResponseEntity<BulkUpsertResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1109,10 +1318,23 @@ of the necessary roles granted to them via
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/campaigns/targeting_analytics"],
+        value = [PATH_CAMPAIGN_TARGETING_ANALYTICS_GET /* "/ad_accounts/{ad_account_id}/campaigns/targeting_analytics" */],
         produces = ["application/json"]
     )
-    fun campaignTargetingAnalyticsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Size(min=1,max=100) @Parameter(description = "List of Campaign Ids to use to filter the results.", required = true) @Valid @RequestParam(value = "campaign_ids", required = true) campaignIds: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,@NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,@NotNull @Size(min=1,max=14) @Parameter(description = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.", required = true) @Valid @RequestParam(value = "targeting_types", required = true) targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>,@NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,@Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,@Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String,@Parameter(description = "List of types of attribution for the conversion report", schema = Schema(allowableValues = ["INDIVIDUAL", "HOUSEHOLD"])) @Valid @RequestParam(value = "attribution_types", required = false) attributionTypes: ConversionReportAttributionType?): ResponseEntity<MetricsResponse> {
+    fun campaignTargetingAnalyticsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Size(min=1,max=100) @Parameter(description = "List of Campaign Ids to use to filter the results.", required = true) @Valid @RequestParam(value = "campaign_ids", required = true) campaignIds: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,
+        @NotNull @Size(min=1,max=14) @Parameter(description = "Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.", required = true) @Valid @RequestParam(value = "targeting_types", required = true) targetingTypes: kotlin.collections.List<AdsAnalyticsCampaignTargetingType>,
+        @NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,
+        @Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String,
+        @Parameter(description = "List of types of attribution for the conversion report", schema = Schema(allowableValues = ["INDIVIDUAL", "HOUSEHOLD"])) @Valid @RequestParam(value = "attribution_types", required = false) attributionTypes: ConversionReportAttributionType?
+    ): ResponseEntity<MetricsResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1131,10 +1353,21 @@ of the necessary roles granted to them via
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/campaigns/analytics"],
+        value = [PATH_CAMPAIGNS_ANALYTICS /* "/ad_accounts/{ad_account_id}/campaigns/analytics" */],
         produces = ["application/json"]
     )
-    fun campaignsAnalytics(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,@NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,@NotNull @Size(min=1,max=100) @Parameter(description = "List of Campaign Ids to use to filter the results.", required = true) @Valid @RequestParam(value = "campaign_ids", required = true) campaignIds: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,@Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,@Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String): ResponseEntity<List<CampaignsAnalyticsResponseInner>> {
+    fun campaignsAnalytics(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,
+        @NotNull @Size(min=1,max=100) @Parameter(description = "List of Campaign Ids to use to filter the results.", required = true) @Valid @RequestParam(value = "campaign_ids", required = true) campaignIds: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,
+        @Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String
+    ): ResponseEntity<List<CampaignsAnalyticsResponseInner>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1164,11 +1397,14 @@ For more, see <a href="https://help.pinterest.com/en/business/article/set-up-you
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/campaigns"],
+        value = [PATH_CAMPAIGNS_CREATE /* "/ad_accounts/{ad_account_id}/campaigns" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun campaignsCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Array of campaigns.", required = true) @Valid@Size(min=1,max=30)  @RequestBody campaignCreateRequest: kotlin.collections.List<CampaignCreateRequest>): ResponseEntity<CampaignCreateResponse> {
+    fun campaignsCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Array of campaigns.", required = true) @Valid@Size(min=1,max=30)  @RequestBody campaignCreateRequest: kotlin.collections.List<CampaignCreateRequest>
+    ): ResponseEntity<CampaignCreateResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1183,10 +1419,13 @@ For more, see <a href="https://help.pinterest.com/en/business/article/set-up-you
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/campaigns/{campaign_id}"],
+        value = [PATH_CAMPAIGNS_GET /* "/ad_accounts/{ad_account_id}/campaigns/{campaign_id}" */],
         produces = ["application/json"]
     )
-    fun campaignsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Campaign ID, must be associated with the ad account ID provided in the path.", required = true) @PathVariable("campaign_id") campaignId: kotlin.String): ResponseEntity<CampaignResponse> {
+    fun campaignsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Campaign ID, must be associated with the ad account ID provided in the path.", required = true) @PathVariable("campaign_id") campaignId: kotlin.String
+    ): ResponseEntity<CampaignResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1203,10 +1442,17 @@ For more, see <a href="https://help.pinterest.com/en/business/article/set-up-you
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/campaigns"],
+        value = [PATH_CAMPAIGNS_LIST /* "/ad_accounts/{ad_account_id}/campaigns" */],
         produces = ["application/json"]
     )
-    fun campaignsList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Size(min=1,max=100) @Parameter(description = "List of Campaign Ids to use to filter the results.") @Valid @RequestParam(value = "campaign_ids", required = false) campaignIds: kotlin.collections.List<kotlin.String>?,@Parameter(description = "Entity status", schema = Schema(allowableValues = ["ACTIVE", "PAUSED", "ARCHIVED", "DRAFT", "DELETED_DRAFT"])) @Valid @RequestParam(value = "entity_statuses", required = false) entityStatuses: kotlin.collections.List<kotlin.String>,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<CampaignsList200Response> {
+    fun campaignsList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Size(min=1,max=100) @Parameter(description = "List of Campaign Ids to use to filter the results.") @Valid @RequestParam(value = "campaign_ids", required = false) campaignIds: kotlin.collections.List<kotlin.String>?,
+        @Parameter(description = "Entity status", schema = Schema(allowableValues = ["ACTIVE", "PAUSED", "ARCHIVED", "DRAFT", "DELETED_DRAFT"])) @Valid @RequestParam(value = "entity_statuses", required = false) entityStatuses: kotlin.collections.List<kotlin.String>,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<CampaignsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1235,11 +1481,14 @@ For more, see <a href="https://help.pinterest.com/en/business/article/set-up-you
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/ad_accounts/{ad_account_id}/campaigns"],
+        value = [PATH_CAMPAIGNS_UPDATE /* "/ad_accounts/{ad_account_id}/campaigns" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun campaignsUpdate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Array of campaigns.", required = true) @Valid@Size(min=1,max=30)  @RequestBody campaignUpdateRequest: kotlin.collections.List<CampaignUpdateRequest>): ResponseEntity<CampaignUpdateResponse> {
+    fun campaignsUpdate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Array of campaigns.", required = true) @Valid@Size(min=1,max=30)  @RequestBody campaignUpdateRequest: kotlin.collections.List<CampaignUpdateRequest>
+    ): ResponseEntity<CampaignUpdateResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1259,11 +1508,14 @@ For more information, see:<p/>
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/conversion_tags"],
+        value = [PATH_CONVERSION_TAGS_CREATE /* "/ad_accounts/{ad_account_id}/conversion_tags" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun conversionTagsCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Conversion Tag to create", required = true) @Valid @RequestBody conversionTagCreate: ConversionTagCreate): ResponseEntity<ConversionTagResponse> {
+    fun conversionTagsCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Conversion Tag to create", required = true) @Valid @RequestBody conversionTagCreate: ConversionTagCreate
+    ): ResponseEntity<ConversionTagResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1278,10 +1530,13 @@ For more information, see:<p/>
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}"],
+        value = [PATH_CONVERSION_TAGS_GET /* "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}" */],
         produces = ["application/json"]
     )
-    fun conversionTagsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Id of the conversion tag.", required = true) @PathVariable("conversion_tag_id") conversionTagId: kotlin.String): ResponseEntity<ConversionTagResponse> {
+    fun conversionTagsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Id of the conversion tag.", required = true) @PathVariable("conversion_tag_id") conversionTagId: kotlin.String
+    ): ResponseEntity<ConversionTagResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1296,10 +1551,13 @@ For more information, see:<p/>
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/conversion_tags"],
+        value = [PATH_CONVERSION_TAGS_LIST /* "/ad_accounts/{ad_account_id}/conversion_tags" */],
         produces = ["application/json"]
     )
-    fun conversionTagsList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Filter out deleted tags.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "filter_deleted", required = false, defaultValue = "false") filterDeleted: kotlin.Boolean): ResponseEntity<ConversionTagListResponse> {
+    fun conversionTagsList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Filter out deleted tags.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "filter_deleted", required = false, defaultValue = "false") filterDeleted: kotlin.Boolean
+    ): ResponseEntity<ConversionTagListResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1316,10 +1574,14 @@ For more information, see:<p/>
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/keywords/metrics"],
+        value = [PATH_COUNTRY_KEYWORDS_METRICS_GET /* "/ad_accounts/{ad_account_id}/keywords/metrics" */],
         produces = ["application/json"]
     )
-    fun countryKeywordsMetricsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Parameter(description = "Two letter country code (ISO 3166-1 alpha-2)", required = true) @Valid @RequestParam(value = "country_code", required = true) countryCode: kotlin.String,@NotNull @Size(min=1,max=2000) @Parameter(description = "Comma-separated keywords", required = true) @Valid @RequestParam(value = "keywords", required = true) keywords: kotlin.collections.List<kotlin.String>): ResponseEntity<KeywordsMetricsArrayResponse> {
+    fun countryKeywordsMetricsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Parameter(description = "Two letter country code (ISO 3166-1 alpha-2)", required = true) @Valid @RequestParam(value = "country_code", required = true) countryCode: kotlin.String,
+        @NotNull @Size(min=1,max=2000) @Parameter(description = "Comma-separated keywords", required = true) @Valid @RequestParam(value = "keywords", required = true) keywords: kotlin.collections.List<kotlin.String>
+    ): ResponseEntity<KeywordsMetricsArrayResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1343,11 +1605,14 @@ using the <a href="#operation/create_audience_handler">create audience endpoint<
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/customer_lists"],
+        value = [PATH_CUSTOMER_LISTS_CREATE /* "/ad_accounts/{ad_account_id}/customer_lists" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun customerListsCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Parameters to get Customer lists info", required = true) @Valid @RequestBody customerListRequest: CustomerListRequest): ResponseEntity<CustomerList> {
+    fun customerListsCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Parameters to get Customer lists info", required = true) @Valid @RequestBody customerListRequest: CustomerListRequest
+    ): ResponseEntity<CustomerList> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1362,10 +1627,13 @@ using the <a href="#operation/create_audience_handler">create audience endpoint<
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}"],
+        value = [PATH_CUSTOMER_LISTS_GET /* "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}" */],
         produces = ["application/json"]
     )
-    fun customerListsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of a customer list", required = true) @PathVariable("customer_list_id") customerListId: kotlin.String): ResponseEntity<CustomerList> {
+    fun customerListsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of a customer list", required = true) @PathVariable("customer_list_id") customerListId: kotlin.String
+    ): ResponseEntity<CustomerList> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1384,10 +1652,15 @@ section of the ads management guide.</p>""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/customer_lists"],
+        value = [PATH_CUSTOMER_LISTS_LIST /* "/ad_accounts/{ad_account_id}/customer_lists" */],
         produces = ["application/json"]
     )
-    fun customerListsList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<CustomerListsList200Response> {
+    fun customerListsList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<CustomerListsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1408,11 +1681,15 @@ section of the ads management guide.</p>""",
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}"],
+        value = [PATH_CUSTOMER_LISTS_UPDATE /* "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun customerListsUpdate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of a customer list", required = true) @PathVariable("customer_list_id") customerListId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody customerListUpdateRequest: CustomerListUpdateRequest): ResponseEntity<CustomerList> {
+    fun customerListsUpdate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of a customer list", required = true) @PathVariable("customer_list_id") customerListId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody customerListUpdateRequest: CustomerListUpdateRequest
+    ): ResponseEntity<CustomerList> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1437,11 +1714,15 @@ section of the ads management guide.</p>""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/events"],
+        value = [PATH_EVENTS_CREATE /* "/ad_accounts/{ad_account_id}/events" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun eventsCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Conversion events.", required = true) @Valid @RequestBody conversionEvents: ConversionEvents,@Parameter(description = "Include query param ?test=true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.") @Valid @RequestParam(value = "test", required = false) test: kotlin.Boolean?): ResponseEntity<ConversionApiResponse> {
+    fun eventsCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Conversion events.", required = true) @Valid @RequestBody conversionEvents: ConversionEvents,
+        @Parameter(description = "Include query param ?test=true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.") @Valid @RequestParam(value = "test", required = false) test: kotlin.Boolean?
+    ): ResponseEntity<ConversionApiResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1459,11 +1740,14 @@ section of the ads management guide.</p>""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/keywords"],
+        value = [PATH_KEYWORDS_CREATE /* "/ad_accounts/{ad_account_id}/keywords" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun keywordsCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody keywordsRequest: KeywordsRequest): ResponseEntity<KeywordsResponse> {
+    fun keywordsCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody keywordsRequest: KeywordsRequest
+    ): ResponseEntity<KeywordsResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1481,10 +1765,17 @@ section of the ads management guide.</p>""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/keywords"],
+        value = [PATH_KEYWORDS_GET /* "/ad_accounts/{ad_account_id}/keywords" */],
         produces = ["application/json"]
     )
-    fun keywordsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Campaign Id to use to filter the results.") @Valid @RequestParam(value = "campaign_id", required = false) campaignId: kotlin.String?,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Ad group Id.") @Valid @RequestParam(value = "ad_group_id", required = false) adGroupId: kotlin.String?,@Size(min=1,max=5) @Parameter(description = "Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a>") @Valid @RequestParam(value = "match_types", required = false) matchTypes: kotlin.collections.List<MatchType>?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<KeywordsGet200Response> {
+    fun keywordsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Campaign Id to use to filter the results.") @Valid @RequestParam(value = "campaign_id", required = false) campaignId: kotlin.String?,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Ad group Id.") @Valid @RequestParam(value = "ad_group_id", required = false) adGroupId: kotlin.String?,
+        @Size(min=1,max=5) @Parameter(description = "Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a>") @Valid @RequestParam(value = "match_types", required = false) matchTypes: kotlin.collections.List<MatchType>?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<KeywordsGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1499,11 +1790,14 @@ section of the ads management guide.</p>""",
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/ad_accounts/{ad_account_id}/keywords"],
+        value = [PATH_KEYWORDS_UPDATE /* "/ad_accounts/{ad_account_id}/keywords" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun keywordsUpdate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody keywordUpdateBody: KeywordUpdateBody): ResponseEntity<KeywordsResponse> {
+    fun keywordsUpdate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody keywordUpdateBody: KeywordUpdateBody
+    ): ResponseEntity<KeywordsResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1524,10 +1818,13 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}"],
+        value = [PATH_LEAD_FORM_GET /* "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}" */],
         produces = ["application/json"]
     )
-    fun leadFormGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a lead form.", required = true) @PathVariable("lead_form_id") leadFormId: kotlin.String): ResponseEntity<LeadFormResponse> {
+    fun leadFormGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a lead form.", required = true) @PathVariable("lead_form_id") leadFormId: kotlin.String
+    ): ResponseEntity<LeadFormResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1547,11 +1844,15 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test"],
+        value = [PATH_LEAD_FORM_TEST_CREATE /* "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun leadFormTestCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a lead form.", required = true) @PathVariable("lead_form_id") leadFormId: kotlin.String,@Parameter(description = "Subscription to create.", required = true) @Valid @RequestBody leadFormTestRequest: LeadFormTestRequest): ResponseEntity<LeadFormTestResponse> {
+    fun leadFormTestCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a lead form.", required = true) @PathVariable("lead_form_id") leadFormId: kotlin.String,
+        @Parameter(description = "Subscription to create.", required = true) @Valid @RequestBody leadFormTestRequest: LeadFormTestRequest
+    ): ResponseEntity<LeadFormTestResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1571,11 +1872,14 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/lead_forms"],
+        value = [PATH_LEAD_FORMS_CREATE /* "/ad_accounts/{ad_account_id}/lead_forms" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun leadFormsCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "List of lead forms to create, size limit [1, 30].", required = true) @Valid@Size(min=1,max=30)  @RequestBody leadFormCreateRequest: kotlin.collections.List<LeadFormCreateRequest>): ResponseEntity<LeadFormArrayResponse> {
+    fun leadFormsCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "List of lead forms to create, size limit [1, 30].", required = true) @Valid@Size(min=1,max=30)  @RequestBody leadFormCreateRequest: kotlin.collections.List<LeadFormCreateRequest>
+    ): ResponseEntity<LeadFormArrayResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1595,10 +1899,15 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/lead_forms"],
+        value = [PATH_LEAD_FORMS_LIST /* "/ad_accounts/{ad_account_id}/lead_forms" */],
         produces = ["application/json"]
     )
-    fun leadFormsList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<LeadFormsList200Response> {
+    fun leadFormsList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<LeadFormsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1618,11 +1927,14 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/ad_accounts/{ad_account_id}/lead_forms"],
+        value = [PATH_LEAD_FORMS_UPDATE /* "/ad_accounts/{ad_account_id}/lead_forms" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun leadFormsUpdate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "List of lead forms to update, size limit [1, 30].", required = true) @Valid@Size(min=1,max=30)  @RequestBody leadFormUpdateRequest: kotlin.collections.List<LeadFormUpdateRequest>): ResponseEntity<LeadFormArrayResponse> {
+    fun leadFormsUpdate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "List of lead forms to update, size limit [1, 30].", required = true) @Valid@Size(min=1,max=30)  @RequestBody leadFormUpdateRequest: kotlin.collections.List<LeadFormUpdateRequest>
+    ): ResponseEntity<LeadFormArrayResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1644,11 +1956,14 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/leads_export"],
+        value = [PATH_LEADS_EXPORT_CREATE /* "/ad_accounts/{ad_account_id}/leads_export" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun leadsExportCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody leadsExportCreateRequest: LeadsExportCreateRequest): ResponseEntity<LeadsExportCreateResponse> {
+    fun leadsExportCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody leadsExportCreateRequest: LeadsExportCreateRequest
+    ): ResponseEntity<LeadsExportCreateResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1671,10 +1986,13 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}"],
+        value = [PATH_LEADS_EXPORT_GET /* "/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}" */],
         produces = ["application/json"]
     )
-    fun leadsExportGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Parameter(description = "lead_export_id token returned from the create a lead export endpoint", required = true) @PathVariable("leads_export_id") leadsExportId: kotlin.String): ResponseEntity<LeadsExportResponseData> {
+    fun leadsExportGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Parameter(description = "lead_export_id token returned from the create a lead export endpoint", required = true) @PathVariable("leads_export_id") leadsExportId: kotlin.String
+    ): ResponseEntity<LeadsExportResponseData> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1689,10 +2007,12 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible"],
+        value = [PATH_OCPM_ELIGIBLE_CONVERSION_TAGS_GET /* "/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible" */],
         produces = ["application/json"]
     )
-    fun ocpmEligibleConversionTagsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String): ResponseEntity<Map<String, kotlin.collections.List<ConversionEventResponse>>> {
+    fun ocpmEligibleConversionTagsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String
+    ): ResponseEntity<Map<String, kotlin.collections.List<ConversionEventResponse>>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1707,10 +2027,13 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/order_lines/{order_line_id}"],
+        value = [PATH_ORDER_LINES_GET /* "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}" */],
         produces = ["application/json"]
     )
-    fun orderLinesGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an order line.", required = true) @PathVariable("order_line_id") orderLineId: kotlin.String): ResponseEntity<OrderLine> {
+    fun orderLinesGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an order line.", required = true) @PathVariable("order_line_id") orderLineId: kotlin.String
+    ): ResponseEntity<OrderLine> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1725,10 +2048,15 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/order_lines"],
+        value = [PATH_ORDER_LINES_LIST /* "/ad_accounts/{ad_account_id}/order_lines" */],
         produces = ["application/json"]
     )
-    fun orderLinesList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<OrderLinesList200Response> {
+    fun orderLinesList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<OrderLinesList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1743,10 +2071,15 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/conversion_tags/page_visit"],
+        value = [PATH_PAGE_VISIT_CONVERSION_TAGS_GET /* "/ad_accounts/{ad_account_id}/conversion_tags/page_visit" */],
         produces = ["application/json"]
     )
-    fun pageVisitConversionTagsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<PageVisitConversionTagsGet200Response> {
+    fun pageVisitConversionTagsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<PageVisitConversionTagsGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1761,11 +2094,14 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/product_group_promotions"],
+        value = [PATH_PRODUCT_GROUP_PROMOTIONS_CREATE /* "/ad_accounts/{ad_account_id}/product_group_promotions" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun productGroupPromotionsCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "List of Product Group Promotions to create, size limit [1, 30].", required = true) @Valid @RequestBody productGroupPromotionCreateRequest: ProductGroupPromotionCreateRequest): ResponseEntity<ProductGroupPromotionResponse> {
+    fun productGroupPromotionsCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "List of Product Group Promotions to create, size limit [1, 30].", required = true) @Valid @RequestBody productGroupPromotionCreateRequest: ProductGroupPromotionCreateRequest
+    ): ResponseEntity<ProductGroupPromotionResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1780,10 +2116,13 @@ For more, see <a class="reference external" href="https://help.pinterest.com/en/
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}"],
+        value = [PATH_PRODUCT_GROUP_PROMOTIONS_GET /* "/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}" */],
         produces = ["application/json"]
     )
-    fun productGroupPromotionsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of a product group promotion", required = true) @PathVariable("product_group_promotion_id") productGroupPromotionId: kotlin.String): ResponseEntity<ProductGroupPromotionResponse> {
+    fun productGroupPromotionsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of a product group promotion", required = true) @PathVariable("product_group_promotion_id") productGroupPromotionId: kotlin.String
+    ): ResponseEntity<ProductGroupPromotionResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1803,10 +2142,18 @@ Only provide one. If multiple options are provided, product_group_promotion_ids 
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/product_group_promotions"],
+        value = [PATH_PRODUCT_GROUP_PROMOTIONS_LIST /* "/ad_accounts/{ad_account_id}/product_group_promotions" */],
         produces = ["application/json"]
     )
-    fun productGroupPromotionsList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Size(min=1,max=100) @Parameter(description = "List of Product group promotion Ids.") @Valid @RequestParam(value = "product_group_promotion_ids", required = false) productGroupPromotionIds: kotlin.collections.List<kotlin.String>?,@Parameter(description = "Entity status", schema = Schema(allowableValues = ["ACTIVE", "PAUSED", "ARCHIVED", "DRAFT", "DELETED_DRAFT"])) @Valid @RequestParam(value = "entity_statuses", required = false) entityStatuses: kotlin.collections.List<kotlin.String>,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Ad group Id.") @Valid @RequestParam(value = "ad_group_id", required = false) adGroupId: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<ProductGroupPromotionsList200Response> {
+    fun productGroupPromotionsList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Size(min=1,max=100) @Parameter(description = "List of Product group promotion Ids.") @Valid @RequestParam(value = "product_group_promotion_ids", required = false) productGroupPromotionIds: kotlin.collections.List<kotlin.String>?,
+        @Parameter(description = "Entity status", schema = Schema(allowableValues = ["ACTIVE", "PAUSED", "ARCHIVED", "DRAFT", "DELETED_DRAFT"])) @Valid @RequestParam(value = "entity_statuses", required = false) entityStatuses: kotlin.collections.List<kotlin.String>,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Ad group Id.") @Valid @RequestParam(value = "ad_group_id", required = false) adGroupId: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<ProductGroupPromotionsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1821,11 +2168,14 @@ Only provide one. If multiple options are provided, product_group_promotion_ids 
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/ad_accounts/{ad_account_id}/product_group_promotions"],
+        value = [PATH_PRODUCT_GROUP_PROMOTIONS_UPDATE /* "/ad_accounts/{ad_account_id}/product_group_promotions" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun productGroupPromotionsUpdate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Parameters to update Product group promotions", required = true) @Valid @RequestBody productGroupPromotionUpdateRequest: ProductGroupPromotionUpdateRequest): ResponseEntity<ProductGroupPromotionResponse> {
+    fun productGroupPromotionsUpdate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Parameters to update Product group promotions", required = true) @Valid @RequestBody productGroupPromotionUpdateRequest: ProductGroupPromotionUpdateRequest
+    ): ResponseEntity<ProductGroupPromotionResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1844,10 +2194,21 @@ Only provide one. If multiple options are provided, product_group_promotion_ids 
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/product_groups/analytics"],
+        value = [PATH_PRODUCT_GROUPS_ANALYTICS /* "/ad_accounts/{ad_account_id}/product_groups/analytics" */],
         produces = ["application/json"]
     )
-    fun productGroupsAnalytics(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,@NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,@NotNull @Size(min=1,max=100) @Parameter(description = "List of Product group Ids to use to filter the results.", required = true) @Valid @RequestParam(value = "product_group_ids", required = true) productGroupIds: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,@NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,@Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,@Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,@Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String): ResponseEntity<List<ProductGroupAnalyticsResponseInner>> {
+    fun productGroupsAnalytics(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,
+        @NotNull @Size(min=1,max=100) @Parameter(description = "List of Product group Ids to use to filter the results.", required = true) @Valid @RequestParam(value = "product_group_ids", required = true) productGroupIds: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned", required = true, schema = Schema(allowableValues = ["SPEND_IN_MICRO_DOLLAR", "PAID_IMPRESSION", "SPEND_IN_DOLLAR", "CPC_IN_MICRO_DOLLAR", "ECPC_IN_MICRO_DOLLAR", "ECPC_IN_DOLLAR", "CTR", "ECTR", "CAMPAIGN_NAME", "PIN_ID", "TOTAL_ENGAGEMENT", "ENGAGEMENT_1", "ENGAGEMENT_2", "ECPE_IN_DOLLAR", "ENGAGEMENT_RATE", "EENGAGEMENT_RATE", "ECPM_IN_MICRO_DOLLAR", "REPIN_RATE", "CTR_2", "CAMPAIGN_ID", "ADVERTISER_ID", "AD_ACCOUNT_ID", "PIN_PROMOTION_ID", "AD_ID", "AD_GROUP_ID", "CAMPAIGN_ENTITY_STATUS", "CAMPAIGN_OBJECTIVE_TYPE", "CPM_IN_MICRO_DOLLAR", "CPM_IN_DOLLAR", "AD_GROUP_ENTITY_STATUS", "ORDER_LINE_ID", "ORDER_LINE_NAME", "CLICKTHROUGH_1", "REPIN_1", "IMPRESSION_1", "IMPRESSION_1_GROSS", "CLICKTHROUGH_1_GROSS", "OUTBOUND_CLICK_1", "CLICKTHROUGH_2", "REPIN_2", "IMPRESSION_2", "OUTBOUND_CLICK_2", "TOTAL_CLICKTHROUGH", "TOTAL_IMPRESSION", "TOTAL_IMPRESSION_USER", "TOTAL_IMPRESSION_FREQUENCY", "COST_PER_OUTBOUND_CLICK_IN_DOLLAR", "TOTAL_ENGAGEMENT_SIGNUP", "TOTAL_ENGAGEMENT_CHECKOUT", "TOTAL_ENGAGEMENT_LEAD", "TOTAL_CLICK_SIGNUP", "TOTAL_CLICK_CHECKOUT", "TOTAL_CLICK_ADD_TO_CART", "TOTAL_CLICK_LEAD", "TOTAL_VIEW_SIGNUP", "TOTAL_VIEW_CHECKOUT", "TOTAL_VIEW_ADD_TO_CART", "TOTAL_VIEW_LEAD", "TOTAL_CONVERSIONS", "TOTAL_ENGAGEMENT_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_SESSIONS", "WEB_SESSIONS_1", "WEB_SESSIONS_2", "CAMPAIGN_LIFETIME_SPEND_CAP", "CAMPAIGN_DAILY_SPEND_CAP", "TOTAL_PAGE_VISIT", "TOTAL_SIGNUP", "TOTAL_CHECKOUT", "TOTAL_CUSTOM", "TOTAL_LEAD", "TOTAL_SIGNUP_VALUE_IN_MICRO_DOLLAR", "TOTAL_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_CUSTOM_VALUE_IN_MICRO_DOLLAR", "PAGE_VISIT_COST_PER_ACTION", "PAGE_VISIT_ROAS", "CHECKOUT_ROAS", "CUSTOM_ROAS", "VIDEO_MRC_VIEWS_1", "VIDEO_3SEC_VIEWS_2", "VIDEO_P100_COMPLETE_2", "VIDEO_P0_COMBINED_2", "VIDEO_P25_COMBINED_2", "VIDEO_P50_COMBINED_2", "VIDEO_P75_COMBINED_2", "VIDEO_P95_COMBINED_2", "VIDEO_MRC_VIEWS_2", "PAID_VIDEO_VIEWABLE_RATE", "VIDEO_LENGTH", "ECPV_IN_DOLLAR", "ECPCV_IN_DOLLAR", "ECPCV_P95_IN_DOLLAR", "TOTAL_VIDEO_3SEC_VIEWS", "TOTAL_VIDEO_P100_COMPLETE", "TOTAL_VIDEO_P0_COMBINED", "TOTAL_VIDEO_P25_COMBINED", "TOTAL_VIDEO_P50_COMBINED", "TOTAL_VIDEO_P75_COMBINED", "TOTAL_VIDEO_P95_COMBINED", "TOTAL_VIDEO_MRC_VIEWS", "TOTAL_VIDEO_AVG_WATCHTIME_IN_SECOND", "TOTAL_REPIN_RATE", "WEB_CHECKOUT_COST_PER_ACTION", "WEB_CHECKOUT_ROAS", "TOTAL_WEB_CHECKOUT", "TOTAL_WEB_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_CLICK_CHECKOUT", "TOTAL_WEB_CLICK_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_ENGAGEMENT_CHECKOUT", "TOTAL_WEB_ENGAGEMENT_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "TOTAL_WEB_VIEW_CHECKOUT", "TOTAL_WEB_VIEW_CHECKOUT_VALUE_IN_MICRO_DOLLAR", "INAPP_CHECKOUT_COST_PER_ACTION", "TOTAL_OFFLINE_CHECKOUT", "IDEA_PIN_PRODUCT_TAG_VISIT_1", "IDEA_PIN_PRODUCT_TAG_VISIT_2", "TOTAL_IDEA_PIN_PRODUCT_TAG_VISIT", "LEADS", "COST_PER_LEAD", "QUIZ_COMPLETED", "QUIZ_PIN_RESULT_OPEN", "QUIZ_COMPLETION_RATE", "SHOWCASE_PIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_CLICKTHROUGH", "SHOWCASE_SUBPIN_CLICKTHROUGH", "SHOWCASE_SUBPAGE_IMPRESSION", "SHOWCASE_SUBPIN_IMPRESSION", "SHOWCASE_SUBPAGE_SWIPE_LEFT", "SHOWCASE_SUBPAGE_SWIPE_RIGHT", "SHOWCASE_SUBPIN_SWIPE_LEFT", "SHOWCASE_SUBPIN_SWIPE_RIGHT", "SHOWCASE_SUBPAGE_REPIN", "SHOWCASE_SUBPIN_REPIN", "SHOWCASE_SUBPAGE_CLOSEUP", "SHOWCASE_CARD_THUMBNAIL_SWIPE_FORWARD", "SHOWCASE_CARD_THUMBNAIL_SWIPE_BACKWARD", "SHOWCASE_AVERAGE_SUBPAGE_CLOSEUP_PER_SESSION", "TOTAL_CHECKOUT_CONVERSION_RATE", "TOTAL_VIEW_CATEGORY_CONVERSION_RATE", "TOTAL_ADD_TO_CART_CONVERSION_RATE", "TOTAL_SIGNUP_CONVERSION_RATE", "TOTAL_PAGE_VISIT_CONVERSION_RATE", "TOTAL_LEAD_CONVERSION_RATE", "TOTAL_SEARCH_CONVERSION_RATE", "TOTAL_WATCH_VIDEO_CONVERSION_RATE", "TOTAL_UNKNOWN_CONVERSION_RATE", "TOTAL_CUSTOM_CONVERSION_RATE"])) @Valid @RequestParam(value = "columns", required = true) columns: kotlin.collections.List<kotlin.String>,
+        @NotNull @Parameter(description = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly", required = true, schema = Schema(allowableValues = ["TOTAL", "DAY", "HOUR", "WEEK", "MONTH"])) @Valid @RequestParam(value = "granularity", required = true) granularity: Granularity,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "click_window_days", required = false, defaultValue = "30") clickWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "30")) @Valid @RequestParam(value = "engagement_window_days", required = false, defaultValue = "30") engagementWindowDays: kotlin.Int,
+        @Parameter(description = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.", schema = Schema(allowableValues = ["0", "1", "7", "14", "30", "60"], defaultValue = "1")) @Valid @RequestParam(value = "view_window_days", required = false, defaultValue = "1") viewWindowDays: kotlin.Int,
+        @Parameter(description = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.", schema = Schema(allowableValues = ["TIME_OF_AD_ACTION", "TIME_OF_CONVERSION"], defaultValue = "TIME_OF_AD_ACTION")) @Valid @RequestParam(value = "conversion_report_time", required = false, defaultValue = "TIME_OF_AD_ACTION") conversionReportTime: kotlin.String
+    ): ResponseEntity<List<ProductGroupAnalyticsResponseInner>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1867,10 +2228,12 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/ad_accounts/{ad_account_id}/sandbox"],
+        value = [PATH_SANDBOX_DELETE /* "/ad_accounts/{ad_account_id}/sandbox" */],
         produces = ["application/json"]
     )
-    fun sandboxDelete(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String): ResponseEntity<kotlin.String> {
+    fun sandboxDelete(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String
+    ): ResponseEntity<kotlin.String> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1887,10 +2250,12 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ssio/accounts"],
+        value = [PATH_SSIO_ACCOUNTS_GET /* "/ad_accounts/{ad_account_id}/ssio/accounts" */],
         produces = ["application/json"]
     )
-    fun ssioAccountsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String): ResponseEntity<SSIOAccountResponse> {
+    fun ssioAccountsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String
+    ): ResponseEntity<SSIOAccountResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1907,11 +2272,14 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/ssio/insertion_orders"],
+        value = [PATH_SSIO_INSERTION_ORDER_CREATE /* "/ad_accounts/{ad_account_id}/ssio/insertion_orders" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun ssioInsertionOrderCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Order line to create.", required = true) @Valid @RequestBody ssIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest): ResponseEntity<SSIOCreateInsertionOrderResponse> {
+    fun ssioInsertionOrderCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Order line to create.", required = true) @Valid @RequestBody ssIOCreateInsertionOrderRequest: SSIOCreateInsertionOrderRequest
+    ): ResponseEntity<SSIOCreateInsertionOrderResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1928,11 +2296,14 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/ad_accounts/{ad_account_id}/ssio/insertion_orders"],
+        value = [PATH_SSIO_INSERTION_ORDER_EDIT /* "/ad_accounts/{ad_account_id}/ssio/insertion_orders" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun ssioInsertionOrderEdit(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Order line to create.", required = true) @Valid @RequestBody ssIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest): ResponseEntity<SSIOEditInsertionOrderResponse> {
+    fun ssioInsertionOrderEdit(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Order line to create.", required = true) @Valid @RequestBody ssIOEditInsertionOrderRequest: SSIOEditInsertionOrderRequest
+    ): ResponseEntity<SSIOEditInsertionOrderResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1949,10 +2320,14 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ssio/insertion_orders/status"],
+        value = [PATH_SSIO_INSERTION_ORDERS_STATUS_GET_BY_AD_ACCOUNT /* "/ad_accounts/{ad_account_id}/ssio/insertion_orders/status" */],
         produces = ["application/json"]
     )
-    fun ssioInsertionOrdersStatusGetByAdAccount(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<SsioInsertionOrdersStatusGetByAdAccount200Response> {
+    fun ssioInsertionOrdersStatusGetByAdAccount(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<SsioInsertionOrdersStatusGetByAdAccount200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1969,10 +2344,13 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status"],
+        value = [PATH_SSIO_INSERTION_ORDERS_STATUS_GET_BY_PIN_ORDER_ID /* "/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status" */],
         produces = ["application/json"]
     )
-    fun ssioInsertionOrdersStatusGetByPinOrderId(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "The pin order id associated with the ssio insertion order", required = true) @PathVariable("pin_order_id") pinOrderId: kotlin.String): ResponseEntity<SSIOInsertionOrderStatusResponse> {
+    fun ssioInsertionOrdersStatusGetByPinOrderId(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "The pin order id associated with the ssio insertion order", required = true) @PathVariable("pin_order_id") pinOrderId: kotlin.String
+    ): ResponseEntity<SSIOInsertionOrderStatusResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -1989,10 +2367,15 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/ssio/order_lines"],
+        value = [PATH_SSIO_ORDER_LINES_GET_BY_AD_ACCOUNT /* "/ad_accounts/{ad_account_id}/ssio/order_lines" */],
         produces = ["application/json"]
     )
-    fun ssioOrderLinesGetByAdAccount(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "The pin order id associated with the ssio insertino order") @Valid @RequestParam(value = "pin_order_id", required = false) pinOrderId: kotlin.String?): ResponseEntity<SsioOrderLinesGetByAdAccount200Response> {
+    fun ssioOrderLinesGetByAdAccount(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "The pin order id associated with the ssio insertino order") @Valid @RequestParam(value = "pin_order_id", required = false) pinOrderId: kotlin.String?
+    ): ResponseEntity<SsioOrderLinesGetByAdAccount200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -2011,11 +2394,14 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/ad_accounts/{ad_account_id}/targeting_templates"],
+        value = [PATH_TARGETING_TEMPLATE_CREATE /* "/ad_accounts/{ad_account_id}/targeting_templates" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun targetingTemplateCreate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "targeting template creation entity", required = true) @Valid @RequestBody targetingTemplateCreate: TargetingTemplateCreate): ResponseEntity<TargetingTemplateGetResponseData> {
+    fun targetingTemplateCreate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "targeting template creation entity", required = true) @Valid @RequestBody targetingTemplateCreate: TargetingTemplateCreate
+    ): ResponseEntity<TargetingTemplateGetResponseData> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -2031,10 +2417,17 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/targeting_templates"],
+        value = [PATH_TARGETING_TEMPLATE_LIST /* "/ad_accounts/{ad_account_id}/targeting_templates" */],
         produces = ["application/json"]
     )
-    fun targetingTemplateList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,@Parameter(description = "Include audience sizing in result or not", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "include_sizing", required = false, defaultValue = "false") includeSizing: kotlin.Boolean,@Parameter(description = "Search keyword for targeting templates") @Valid @RequestParam(value = "search_query", required = false) searchQuery: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<TargetingTemplateList200Response> {
+    fun targetingTemplateList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
+        @Parameter(description = "Include audience sizing in result or not", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "include_sizing", required = false, defaultValue = "false") includeSizing: kotlin.Boolean,
+        @Parameter(description = "Search keyword for targeting templates") @Valid @RequestParam(value = "search_query", required = false) searchQuery: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<TargetingTemplateList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -2050,11 +2443,14 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/ad_accounts/{ad_account_id}/targeting_templates"],
+        value = [PATH_TARGETING_TEMPLATE_UPDATE /* "/ad_accounts/{ad_account_id}/targeting_templates" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun targetingTemplateUpdate(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Operation type and targeting template ID", required = true) @Valid @RequestBody targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest): ResponseEntity<Unit> {
+    fun targetingTemplateUpdate(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Operation type and targeting template ID", required = true) @Valid @RequestBody targetingTemplateUpdateRequest: TargetingTemplateUpdateRequest
+    ): ResponseEntity<Unit> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -2070,10 +2466,15 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/templates"],
+        value = [PATH_TEMPLATES_LIST /* "/ad_accounts/{ad_account_id}/templates" */],
         produces = ["application/json"]
     )
-    fun templatesList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<TemplatesList200Response> {
+    fun templatesList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<TemplatesList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -2088,10 +2489,14 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/ad_accounts/{ad_account_id}/terms_of_service"],
+        value = [PATH_TERMS_OF_SERVICE_GET /* "/ad_accounts/{ad_account_id}/terms_of_service" */],
         produces = ["application/json"]
     )
-    fun termsOfServiceGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "Return HTML in TOS text.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "include_html", required = false, defaultValue = "false") includeHtml: kotlin.Boolean,@Parameter(description = "Request type.") @Valid @RequestParam(value = "tos_type", required = false) tosType: kotlin.String?): ResponseEntity<TermsOfService> {
+    fun termsOfServiceGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "Return HTML in TOS text.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "include_html", required = false, defaultValue = "false") includeHtml: kotlin.Boolean,
+        @Parameter(description = "Request type.") @Valid @RequestParam(value = "tos_type", required = false) tosType: kotlin.String?
+    ): ResponseEntity<TermsOfService> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -2107,11 +2512,14 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared"],
+        value = [PATH_UPDATE_AD_ACCOUNT_TO_AD_ACCOUNT_SHARED_AUDIENCE /* "/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun updateAdAccountToAdAccountSharedAudience(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody sharedAudience: SharedAudience): ResponseEntity<SharedAudienceResponse> {
+    fun updateAdAccountToAdAccountSharedAudience(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody sharedAudience: SharedAudience
+    ): ResponseEntity<SharedAudienceResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -2127,11 +2535,110 @@ Go to /docs/developer-tools/sandbox/ for more information.""",
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/ad_accounts/{ad_account_id}/audiences/businesses/shared"],
+        value = [PATH_UPDATE_AD_ACCOUNT_TO_BUSINESS_SHARED_AUDIENCE /* "/ad_accounts/{ad_account_id}/audiences/businesses/shared" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun updateAdAccountToBusinessSharedAudience(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody businessSharedAudience: BusinessSharedAudience): ResponseEntity<BusinessSharedAudienceResponse> {
+    fun updateAdAccountToBusinessSharedAudience(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.", required = true) @PathVariable("ad_account_id") adAccountId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody businessSharedAudience: BusinessSharedAudience
+    ): ResponseEntity<BusinessSharedAudienceResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    companion object {
+        //for your own safety never directly reuse these path definitions in tests
+        const val BASE_PATH: String = "/v5"
+        const val PATH_AD_ACCOUNT_ANALYTICS: String = "/ad_accounts/{ad_account_id}/analytics"
+        const val PATH_AD_ACCOUNT_TARGETING_ANALYTICS_GET: String = "/ad_accounts/{ad_account_id}/targeting_analytics"
+        const val PATH_AD_ACCOUNTS_AUDIENCES_SHARED_ACCOUNTS_LIST: String = "/ad_accounts/{ad_account_id}/audiences/shared/accounts"
+        const val PATH_AD_ACCOUNTS_CREATE: String = "/ad_accounts"
+        const val PATH_AD_ACCOUNTS_GET: String = "/ad_accounts/{ad_account_id}"
+        const val PATH_AD_ACCOUNTS_LIST: String = "/ad_accounts"
+        const val PATH_AD_ACCOUNTS_SUBSCRIPTIONS_DEL_BY_ID: String = "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}"
+        const val PATH_AD_ACCOUNTS_SUBSCRIPTIONS_GET_BY_ID: String = "/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}"
+        const val PATH_AD_ACCOUNTS_SUBSCRIPTIONS_GET_LIST: String = "/ad_accounts/{ad_account_id}/leads/subscriptions"
+        const val PATH_AD_ACCOUNTS_SUBSCRIPTIONS_POST: String = "/ad_accounts/{ad_account_id}/leads/subscriptions"
+        const val PATH_AD_GROUPS_ANALYTICS: String = "/ad_accounts/{ad_account_id}/ad_groups/analytics"
+        const val PATH_AD_GROUPS_AUDIENCE_SIZING: String = "/ad_accounts/{ad_account_id}/ad_groups/audience_sizing"
+        const val PATH_AD_GROUPS_BID_FLOOR_GET: String = "/ad_accounts/{ad_account_id}/bid_floor"
+        const val PATH_AD_GROUPS_CREATE: String = "/ad_accounts/{ad_account_id}/ad_groups"
+        const val PATH_AD_GROUPS_GET: String = "/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}"
+        const val PATH_AD_GROUPS_LIST: String = "/ad_accounts/{ad_account_id}/ad_groups"
+        const val PATH_AD_GROUPS_TARGETING_ANALYTICS_GET: String = "/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics"
+        const val PATH_AD_GROUPS_UPDATE: String = "/ad_accounts/{ad_account_id}/ad_groups"
+        const val PATH_AD_PREVIEWS_CREATE: String = "/ad_accounts/{ad_account_id}/ad_previews"
+        const val PATH_AD_TARGETING_ANALYTICS_GET: String = "/ad_accounts/{ad_account_id}/ads/targeting_analytics"
+        const val PATH_ADS_ANALYTICS: String = "/ad_accounts/{ad_account_id}/ads/analytics"
+        const val PATH_ADS_CREATE: String = "/ad_accounts/{ad_account_id}/ads"
+        const val PATH_ADS_CREDIT_REDEEM: String = "/ad_accounts/{ad_account_id}/ads_credit/redeem"
+        const val PATH_ADS_CREDITS_DISCOUNTS_GET: String = "/ad_accounts/{ad_account_id}/ads_credit/discounts"
+        const val PATH_ADS_GET: String = "/ad_accounts/{ad_account_id}/ads/{ad_id}"
+        const val PATH_ADS_LIST: String = "/ad_accounts/{ad_account_id}/ads"
+        const val PATH_ADS_UPDATE: String = "/ad_accounts/{ad_account_id}/ads"
+        const val PATH_ANALYTICS_CREATE_MMM_REPORT: String = "/ad_accounts/{ad_account_id}/mmm_reports"
+        const val PATH_ANALYTICS_CREATE_REPORT: String = "/ad_accounts/{ad_account_id}/reports"
+        const val PATH_ANALYTICS_CREATE_TEMPLATE_REPORT: String = "/ad_accounts/{ad_account_id}/templates/{template_id}/reports"
+        const val PATH_ANALYTICS_GET_MMM_REPORT: String = "/ad_accounts/{ad_account_id}/mmm_reports"
+        const val PATH_ANALYTICS_GET_REPORT: String = "/ad_accounts/{ad_account_id}/reports"
+        const val PATH_AUDIENCE_INSIGHTS_GET: String = "/ad_accounts/{ad_account_id}/audience_insights"
+        const val PATH_AUDIENCE_INSIGHTS_SCOPE_AND_TYPE_GET: String = "/ad_accounts/{ad_account_id}/insights/audiences"
+        const val PATH_AUDIENCES_CREATE: String = "/ad_accounts/{ad_account_id}/audiences"
+        const val PATH_AUDIENCES_CREATE_CUSTOM: String = "/ad_accounts/{ad_account_id}/audiences/custom"
+        const val PATH_AUDIENCES_GET: String = "/ad_accounts/{ad_account_id}/audiences/{audience_id}"
+        const val PATH_AUDIENCES_LIST: String = "/ad_accounts/{ad_account_id}/audiences"
+        const val PATH_AUDIENCES_UPDATE: String = "/ad_accounts/{ad_account_id}/audiences/{audience_id}"
+        const val PATH_BILLING_PROFILES_GET: String = "/ad_accounts/{ad_account_id}/billing_profiles"
+        const val PATH_BULK_DOWNLOAD_CREATE: String = "/ad_accounts/{ad_account_id}/bulk/download"
+        const val PATH_BULK_REQUEST_GET: String = "/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}"
+        const val PATH_BULK_UPSERT_CREATE: String = "/ad_accounts/{ad_account_id}/bulk/upsert"
+        const val PATH_CAMPAIGN_TARGETING_ANALYTICS_GET: String = "/ad_accounts/{ad_account_id}/campaigns/targeting_analytics"
+        const val PATH_CAMPAIGNS_ANALYTICS: String = "/ad_accounts/{ad_account_id}/campaigns/analytics"
+        const val PATH_CAMPAIGNS_CREATE: String = "/ad_accounts/{ad_account_id}/campaigns"
+        const val PATH_CAMPAIGNS_GET: String = "/ad_accounts/{ad_account_id}/campaigns/{campaign_id}"
+        const val PATH_CAMPAIGNS_LIST: String = "/ad_accounts/{ad_account_id}/campaigns"
+        const val PATH_CAMPAIGNS_UPDATE: String = "/ad_accounts/{ad_account_id}/campaigns"
+        const val PATH_CONVERSION_TAGS_CREATE: String = "/ad_accounts/{ad_account_id}/conversion_tags"
+        const val PATH_CONVERSION_TAGS_GET: String = "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}"
+        const val PATH_CONVERSION_TAGS_LIST: String = "/ad_accounts/{ad_account_id}/conversion_tags"
+        const val PATH_COUNTRY_KEYWORDS_METRICS_GET: String = "/ad_accounts/{ad_account_id}/keywords/metrics"
+        const val PATH_CUSTOMER_LISTS_CREATE: String = "/ad_accounts/{ad_account_id}/customer_lists"
+        const val PATH_CUSTOMER_LISTS_GET: String = "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}"
+        const val PATH_CUSTOMER_LISTS_LIST: String = "/ad_accounts/{ad_account_id}/customer_lists"
+        const val PATH_CUSTOMER_LISTS_UPDATE: String = "/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}"
+        const val PATH_EVENTS_CREATE: String = "/ad_accounts/{ad_account_id}/events"
+        const val PATH_KEYWORDS_CREATE: String = "/ad_accounts/{ad_account_id}/keywords"
+        const val PATH_KEYWORDS_GET: String = "/ad_accounts/{ad_account_id}/keywords"
+        const val PATH_KEYWORDS_UPDATE: String = "/ad_accounts/{ad_account_id}/keywords"
+        const val PATH_LEAD_FORM_GET: String = "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}"
+        const val PATH_LEAD_FORM_TEST_CREATE: String = "/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test"
+        const val PATH_LEAD_FORMS_CREATE: String = "/ad_accounts/{ad_account_id}/lead_forms"
+        const val PATH_LEAD_FORMS_LIST: String = "/ad_accounts/{ad_account_id}/lead_forms"
+        const val PATH_LEAD_FORMS_UPDATE: String = "/ad_accounts/{ad_account_id}/lead_forms"
+        const val PATH_LEADS_EXPORT_CREATE: String = "/ad_accounts/{ad_account_id}/leads_export"
+        const val PATH_LEADS_EXPORT_GET: String = "/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}"
+        const val PATH_OCPM_ELIGIBLE_CONVERSION_TAGS_GET: String = "/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible"
+        const val PATH_ORDER_LINES_GET: String = "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}"
+        const val PATH_ORDER_LINES_LIST: String = "/ad_accounts/{ad_account_id}/order_lines"
+        const val PATH_PAGE_VISIT_CONVERSION_TAGS_GET: String = "/ad_accounts/{ad_account_id}/conversion_tags/page_visit"
+        const val PATH_PRODUCT_GROUP_PROMOTIONS_CREATE: String = "/ad_accounts/{ad_account_id}/product_group_promotions"
+        const val PATH_PRODUCT_GROUP_PROMOTIONS_GET: String = "/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}"
+        const val PATH_PRODUCT_GROUP_PROMOTIONS_LIST: String = "/ad_accounts/{ad_account_id}/product_group_promotions"
+        const val PATH_PRODUCT_GROUP_PROMOTIONS_UPDATE: String = "/ad_accounts/{ad_account_id}/product_group_promotions"
+        const val PATH_PRODUCT_GROUPS_ANALYTICS: String = "/ad_accounts/{ad_account_id}/product_groups/analytics"
+        const val PATH_SANDBOX_DELETE: String = "/ad_accounts/{ad_account_id}/sandbox"
+        const val PATH_SSIO_ACCOUNTS_GET: String = "/ad_accounts/{ad_account_id}/ssio/accounts"
+        const val PATH_SSIO_INSERTION_ORDER_CREATE: String = "/ad_accounts/{ad_account_id}/ssio/insertion_orders"
+        const val PATH_SSIO_INSERTION_ORDER_EDIT: String = "/ad_accounts/{ad_account_id}/ssio/insertion_orders"
+        const val PATH_SSIO_INSERTION_ORDERS_STATUS_GET_BY_AD_ACCOUNT: String = "/ad_accounts/{ad_account_id}/ssio/insertion_orders/status"
+        const val PATH_SSIO_INSERTION_ORDERS_STATUS_GET_BY_PIN_ORDER_ID: String = "/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status"
+        const val PATH_SSIO_ORDER_LINES_GET_BY_AD_ACCOUNT: String = "/ad_accounts/{ad_account_id}/ssio/order_lines"
+        const val PATH_TARGETING_TEMPLATE_CREATE: String = "/ad_accounts/{ad_account_id}/targeting_templates"
+        const val PATH_TARGETING_TEMPLATE_LIST: String = "/ad_accounts/{ad_account_id}/targeting_templates"
+        const val PATH_TARGETING_TEMPLATE_UPDATE: String = "/ad_accounts/{ad_account_id}/targeting_templates"
+        const val PATH_TEMPLATES_LIST: String = "/ad_accounts/{ad_account_id}/templates"
+        const val PATH_TERMS_OF_SERVICE_GET: String = "/ad_accounts/{ad_account_id}/terms_of_service"
+        const val PATH_UPDATE_AD_ACCOUNT_TO_AD_ACCOUNT_SHARED_AUDIENCE: String = "/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared"
+        const val PATH_UPDATE_AD_ACCOUNT_TO_BUSINESS_SHARED_AUDIENCE: String = "/ad_accounts/{ad_account_id}/audiences/businesses/shared"
     }
 }

@@ -25,16 +25,16 @@ class OauthAccessTokenRequestClientCredentialsTest : ShouldSpec() {
         // uncomment below to create an instance of OauthAccessTokenRequestClientCredentials
         //val modelInstance = OauthAccessTokenRequestClientCredentials()
 
-        // to test the property `grantType`
-        should("test grantType") {
-            // uncomment below to test the property
-            //modelInstance.grantType shouldBe ("TODO")
-        }
-
         // to test the property `scope`
         should("test scope") {
             // uncomment below to test the property
             //modelInstance.scope shouldBe ("TODO")
+        }
+
+        // to test the property `grantType`
+        should("test grantType") {
+            // uncomment below to test the property
+            //modelInstance.grantType shouldBe ("TODO")
         }
 
     }

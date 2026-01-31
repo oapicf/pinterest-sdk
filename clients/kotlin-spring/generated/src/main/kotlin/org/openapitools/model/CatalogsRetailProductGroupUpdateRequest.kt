@@ -49,7 +49,7 @@ data class CatalogsRetailProductGroupUpdateRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("locale") val locale: CatalogsLocale? = null
-    ) {
+) {
 
     /**
     * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
@@ -63,7 +63,8 @@ data class CatalogsRetailProductGroupUpdateRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsRetailProductGroupUpdateRequest'")
             }
         }
     }

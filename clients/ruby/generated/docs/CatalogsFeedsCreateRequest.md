@@ -13,7 +13,7 @@
 | **preferred_processing_schedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] |
 | **default_country** | [**Country**](Country.md) |  | [optional] |
 | **default_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] |
-| **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] |
+| **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional][default to &#39;ACTIVE&#39;] |
 
 ## Example
 

@@ -22,7 +22,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "MediaUpload_allOf_upload_parameters", description = "The list of parameter key/value pairs you will need to send with your POST request to upload your media file.")
 @JsonTypeName("MediaUpload_allOf_upload_parameters")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MediaUploadAllOfUploadParameters {
 
   private @Nullable String xAmzDate;
@@ -41,7 +41,7 @@ public class MediaUploadAllOfUploadParameters {
 
   private @Nullable String contentType;
 
-  public MediaUploadAllOfUploadParameters xAmzDate(String xAmzDate) {
+  public MediaUploadAllOfUploadParameters xAmzDate(@Nullable String xAmzDate) {
     this.xAmzDate = xAmzDate;
     return this;
   }
@@ -53,15 +53,15 @@ public class MediaUploadAllOfUploadParameters {
   
   @Schema(name = "x-amz-date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("x-amz-date")
-  public String getxAmzDate() {
+  public @Nullable String getxAmzDate() {
     return xAmzDate;
   }
 
-  public void setxAmzDate(String xAmzDate) {
+  public void setxAmzDate(@Nullable String xAmzDate) {
     this.xAmzDate = xAmzDate;
   }
 
-  public MediaUploadAllOfUploadParameters xAmzSignature(String xAmzSignature) {
+  public MediaUploadAllOfUploadParameters xAmzSignature(@Nullable String xAmzSignature) {
     this.xAmzSignature = xAmzSignature;
     return this;
   }
@@ -73,15 +73,15 @@ public class MediaUploadAllOfUploadParameters {
   
   @Schema(name = "x-amz-signature", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("x-amz-signature")
-  public String getxAmzSignature() {
+  public @Nullable String getxAmzSignature() {
     return xAmzSignature;
   }
 
-  public void setxAmzSignature(String xAmzSignature) {
+  public void setxAmzSignature(@Nullable String xAmzSignature) {
     this.xAmzSignature = xAmzSignature;
   }
 
-  public MediaUploadAllOfUploadParameters xAmzSecurityToken(String xAmzSecurityToken) {
+  public MediaUploadAllOfUploadParameters xAmzSecurityToken(@Nullable String xAmzSecurityToken) {
     this.xAmzSecurityToken = xAmzSecurityToken;
     return this;
   }
@@ -93,15 +93,15 @@ public class MediaUploadAllOfUploadParameters {
   
   @Schema(name = "x-amz-security-token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("x-amz-security-token")
-  public String getxAmzSecurityToken() {
+  public @Nullable String getxAmzSecurityToken() {
     return xAmzSecurityToken;
   }
 
-  public void setxAmzSecurityToken(String xAmzSecurityToken) {
+  public void setxAmzSecurityToken(@Nullable String xAmzSecurityToken) {
     this.xAmzSecurityToken = xAmzSecurityToken;
   }
 
-  public MediaUploadAllOfUploadParameters xAmzAlgorithm(String xAmzAlgorithm) {
+  public MediaUploadAllOfUploadParameters xAmzAlgorithm(@Nullable String xAmzAlgorithm) {
     this.xAmzAlgorithm = xAmzAlgorithm;
     return this;
   }
@@ -113,15 +113,15 @@ public class MediaUploadAllOfUploadParameters {
   
   @Schema(name = "x-amz-algorithm", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("x-amz-algorithm")
-  public String getxAmzAlgorithm() {
+  public @Nullable String getxAmzAlgorithm() {
     return xAmzAlgorithm;
   }
 
-  public void setxAmzAlgorithm(String xAmzAlgorithm) {
+  public void setxAmzAlgorithm(@Nullable String xAmzAlgorithm) {
     this.xAmzAlgorithm = xAmzAlgorithm;
   }
 
-  public MediaUploadAllOfUploadParameters key(String key) {
+  public MediaUploadAllOfUploadParameters key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -133,15 +133,15 @@ public class MediaUploadAllOfUploadParameters {
   
   @Schema(name = "key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
-  public String getKey() {
+  public @Nullable String getKey() {
     return key;
   }
 
-  public void setKey(String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 
-  public MediaUploadAllOfUploadParameters policy(String policy) {
+  public MediaUploadAllOfUploadParameters policy(@Nullable String policy) {
     this.policy = policy;
     return this;
   }
@@ -153,15 +153,15 @@ public class MediaUploadAllOfUploadParameters {
   
   @Schema(name = "policy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("policy")
-  public String getPolicy() {
+  public @Nullable String getPolicy() {
     return policy;
   }
 
-  public void setPolicy(String policy) {
+  public void setPolicy(@Nullable String policy) {
     this.policy = policy;
   }
 
-  public MediaUploadAllOfUploadParameters xAmzCredential(String xAmzCredential) {
+  public MediaUploadAllOfUploadParameters xAmzCredential(@Nullable String xAmzCredential) {
     this.xAmzCredential = xAmzCredential;
     return this;
   }
@@ -173,15 +173,15 @@ public class MediaUploadAllOfUploadParameters {
   
   @Schema(name = "x-amz-credential", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("x-amz-credential")
-  public String getxAmzCredential() {
+  public @Nullable String getxAmzCredential() {
     return xAmzCredential;
   }
 
-  public void setxAmzCredential(String xAmzCredential) {
+  public void setxAmzCredential(@Nullable String xAmzCredential) {
     this.xAmzCredential = xAmzCredential;
   }
 
-  public MediaUploadAllOfUploadParameters contentType(String contentType) {
+  public MediaUploadAllOfUploadParameters contentType(@Nullable String contentType) {
     this.contentType = contentType;
     return this;
   }
@@ -193,11 +193,11 @@ public class MediaUploadAllOfUploadParameters {
   
   @Schema(name = "Content-Type", example = "multipart/form-data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("Content-Type")
-  public String getContentType() {
+  public @Nullable String getContentType() {
     return contentType;
   }
 
-  public void setContentType(String contentType) {
+  public void setContentType(@Nullable String contentType) {
     this.contentType = contentType;
   }
 

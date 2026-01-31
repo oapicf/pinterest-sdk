@@ -159,8 +159,6 @@
 
 #include "AudienceCreateRequestTest.cpp"
 
-#include "AudienceCreateRequest_1_audience_typeTest.cpp"
-
 #include "AudienceDataPartyTest.cpp"
 
 #include "AudienceDefinitionTest.cpp"
@@ -514,8 +512,6 @@
 #include "CatalogsItemsPostFiltersTest.cpp"
 
 #include "CatalogsItemsRequestTest.cpp"
-
-#include "CatalogsItemsRequest_languageTest.cpp"
 
 #include "CatalogsItemsUpdateBatchRequestTest.cpp"
 
@@ -1182,8 +1178,6 @@
 #include "PinUpdateTest.cpp"
 
 #include "PinUpdate_carousel_slots_innerTest.cpp"
-
-#include "Pins_analytics_metric_types_parameter_innerTest.cpp"
 
 #include "Pins_list_200_responseTest.cpp"
 
@@ -2391,7 +2385,6 @@ void runTests(){
     
     
     
-    
     RUN_TEST(test_AudienceDefinition_date_is_assigned_from_json);
     
     
@@ -3181,6 +3174,8 @@ void runTests(){
     
     
     
+    RUN_TEST(test_CatalogsCreativeAssetsBatchRequest_language_is_assigned_from_json);
+    
     
     
     RUN_TEST(test_CatalogsCreativeAssetsBatchRequest_catalog_id_is_assigned_from_json);
@@ -3916,6 +3911,8 @@ void runTests(){
     
     
     
+    RUN_TEST(test_CatalogsHotelBatchRequest_language_is_assigned_from_json);
+    
     
     
     RUN_TEST(test_CatalogsHotelBatchRequest_catalog_id_is_assigned_from_json);
@@ -4243,20 +4240,28 @@ void runTests(){
     
     
     
+    RUN_TEST(test_CatalogsItemsBatchRequest_language_is_assigned_from_json);
     
     
     
     
     
     
+    RUN_TEST(test_CatalogsItemsCreateBatchRequest_language_is_assigned_from_json);
     
     
     
     
     
     
+    RUN_TEST(test_CatalogsItemsDeleteBatchRequest_language_is_assigned_from_json);
     
     
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsItemsDeleteDiscontinuedBatchRequest_language_is_assigned_from_json);
     
     
     
@@ -4279,15 +4284,20 @@ void runTests(){
     
     
     
+    RUN_TEST(test_CatalogsItemsRequest_language_is_assigned_from_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsItemsUpdateBatchRequest_language_is_assigned_from_json);
     
     
     
     
     
     
-    
-    
-    
+    RUN_TEST(test_CatalogsItemsUpsertBatchRequest_language_is_assigned_from_json);
     
     
     
@@ -4551,6 +4561,8 @@ void runTests(){
     RUN_TEST(test_CatalogsRetailBatchRequest_catalog_type_is_assigned_from_json);
     
     
+    
+    RUN_TEST(test_CatalogsRetailBatchRequest_language_is_assigned_from_json);
     
     
     
@@ -4921,6 +4933,8 @@ void runTests(){
     RUN_TEST(test_CatalogsVerticalBatchRequest_catalog_type_is_assigned_from_json);
     
     
+    
+    RUN_TEST(test_CatalogsVerticalBatchRequest_language_is_assigned_from_json);
     
     
     
@@ -5317,9 +5331,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_ConversionTagCreate_name_is_assigned_from_json);
-    
-    
     RUN_TEST(test_ConversionTagCreate_aem_enabled_is_assigned_from_json);
     
     
@@ -5339,6 +5350,9 @@ void runTests(){
     
     
     RUN_TEST(test_ConversionTagCreate_aem_loc_enabled_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_name_is_assigned_from_json);
     
     
     
@@ -5415,6 +5429,7 @@ void runTests(){
     
     
     
+    
     RUN_TEST(test_CreateMMMReportRequest_report_name_is_assigned_from_json);
     
     
@@ -5428,7 +5443,6 @@ void runTests(){
     
     
     RUN_TEST(test_CreateMMMReportRequest_level_is_assigned_from_json);
-    
     
     
     
@@ -6123,18 +6137,18 @@ void runTests(){
     
     
     
-    RUN_TEST(test_InviteBusinessRoleBinding_created_by_business_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_InviteBusinessRoleBinding_created_by_user_id_is_assigned_from_json);
-    
-    
-    
     RUN_TEST(test_InviteBusinessRoleBinding_id_is_assigned_from_json);
     
     
     
     RUN_TEST(test_InviteBusinessRoleBinding_is_received_invite_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_InviteBusinessRoleBinding_created_by_business_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_InviteBusinessRoleBinding_created_by_user_id_is_assigned_from_json);
     
     
     
@@ -6149,19 +6163,19 @@ void runTests(){
     
     
     
-    
-    
-    
-    
-    RUN_TEST(test_InviteResponse_created_time_is_assigned_from_json);
-    
-    
     RUN_TEST(test_InviteResponse_id_is_assigned_from_json);
     
     
     
     RUN_TEST(test_InviteResponse_is_received_invite_is_assigned_from_json);
     
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_InviteResponse_created_time_is_assigned_from_json);
     
     
     
@@ -6537,6 +6551,8 @@ void runTests(){
     
     
     
+    RUN_TEST(test_Items_batch_post_request_language_is_assigned_from_json);
+    
     
     
     RUN_TEST(test_Items_batch_post_request_catalog_id_is_assigned_from_json);
@@ -6905,14 +6921,11 @@ void runTests(){
     
     
     
-    RUN_TEST(test_OauthAccessTokenRequestClientCredentials_grant_type_is_assigned_from_json);
-    
-    
     RUN_TEST(test_OauthAccessTokenRequestClientCredentials_scope_is_assigned_from_json);
     
     
+    RUN_TEST(test_OauthAccessTokenRequestClientCredentials_grant_type_is_assigned_from_json);
     
-    RUN_TEST(test_OauthAccessTokenRequestCode_grant_type_is_assigned_from_json);
     
     
     RUN_TEST(test_OauthAccessTokenRequestCode_code_is_assigned_from_json);
@@ -6921,8 +6934,8 @@ void runTests(){
     RUN_TEST(test_OauthAccessTokenRequestCode_redirect_uri_is_assigned_from_json);
     
     
+    RUN_TEST(test_OauthAccessTokenRequestCode_grant_type_is_assigned_from_json);
     
-    RUN_TEST(test_OauthAccessTokenRequestRefresh_grant_type_is_assigned_from_json);
     
     
     RUN_TEST(test_OauthAccessTokenRequestRefresh_refresh_token_is_assigned_from_json);
@@ -6932,6 +6945,9 @@ void runTests(){
     
     
     RUN_TEST(test_OauthAccessTokenRequestRefresh_refresh_on_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenRequestRefresh_grant_type_is_assigned_from_json);
     
     
     
@@ -6967,6 +6983,12 @@ void runTests(){
     
     
     
+    RUN_TEST(test_OauthAccessTokenResponseCode_refresh_token_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseCode_refresh_token_expires_in_is_assigned_from_json);
+    
+    
     RUN_TEST(test_OauthAccessTokenResponseCode_response_type_is_assigned_from_json);
     
     
@@ -6982,11 +7004,14 @@ void runTests(){
     RUN_TEST(test_OauthAccessTokenResponseCode_scope_is_assigned_from_json);
     
     
-    RUN_TEST(test_OauthAccessTokenResponseCode_refresh_token_is_assigned_from_json);
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_is_assigned_from_json);
     
     
-    RUN_TEST(test_OauthAccessTokenResponseCode_refresh_token_expires_in_is_assigned_from_json);
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_expires_in_is_assigned_from_json);
     
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_expires_at_is_assigned_from_json);
     
     
     RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_response_type_is_assigned_from_json);
@@ -7004,14 +7029,11 @@ void runTests(){
     RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_scope_is_assigned_from_json);
     
     
-    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_is_assigned_from_json);
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_refresh_token_is_assigned_from_json);
     
     
-    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_expires_in_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_expires_at_is_assigned_from_json);
-    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_refresh_token_expires_in_is_assigned_from_json);
     
     
     RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_response_type_is_assigned_from_json);
@@ -7027,12 +7049,6 @@ void runTests(){
     
     
     RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_scope_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_refresh_token_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_refresh_token_expires_in_is_assigned_from_json);
     
     
     
@@ -7527,7 +7543,6 @@ void runTests(){
     
     
     RUN_TEST(test_PinUpdate_carousel_slots_inner_link_is_assigned_from_json);
-    
     
     
     
@@ -9788,7 +9803,6 @@ void runTests(){
     
     
     
-    
     RUN_TEST(test_AudienceDefinition_date_is_converted_to_json);
     
     
@@ -10578,6 +10592,8 @@ void runTests(){
     
     
     
+    RUN_TEST(test_CatalogsCreativeAssetsBatchRequest_language_is_converted_to_json);
+    
     
     
     RUN_TEST(test_CatalogsCreativeAssetsBatchRequest_catalog_id_is_converted_to_json);
@@ -11313,6 +11329,8 @@ void runTests(){
     
     
     
+    RUN_TEST(test_CatalogsHotelBatchRequest_language_is_converted_to_json);
+    
     
     
     RUN_TEST(test_CatalogsHotelBatchRequest_catalog_id_is_converted_to_json);
@@ -11640,20 +11658,28 @@ void runTests(){
     
     
     
+    RUN_TEST(test_CatalogsItemsBatchRequest_language_is_converted_to_json);
     
     
     
     
     
     
+    RUN_TEST(test_CatalogsItemsCreateBatchRequest_language_is_converted_to_json);
     
     
     
     
     
     
+    RUN_TEST(test_CatalogsItemsDeleteBatchRequest_language_is_converted_to_json);
     
     
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsItemsDeleteDiscontinuedBatchRequest_language_is_converted_to_json);
     
     
     
@@ -11676,15 +11702,20 @@ void runTests(){
     
     
     
+    RUN_TEST(test_CatalogsItemsRequest_language_is_converted_to_json);
+    
+    
+    
+    
+    
+    RUN_TEST(test_CatalogsItemsUpdateBatchRequest_language_is_converted_to_json);
     
     
     
     
     
     
-    
-    
-    
+    RUN_TEST(test_CatalogsItemsUpsertBatchRequest_language_is_converted_to_json);
     
     
     
@@ -11948,6 +11979,8 @@ void runTests(){
     RUN_TEST(test_CatalogsRetailBatchRequest_catalog_type_is_converted_to_json);
     
     
+    
+    RUN_TEST(test_CatalogsRetailBatchRequest_language_is_converted_to_json);
     
     
     
@@ -12318,6 +12351,8 @@ void runTests(){
     RUN_TEST(test_CatalogsVerticalBatchRequest_catalog_type_is_converted_to_json);
     
     
+    
+    RUN_TEST(test_CatalogsVerticalBatchRequest_language_is_converted_to_json);
     
     
     
@@ -12714,9 +12749,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_ConversionTagCreate_name_is_converted_to_json);
-    
-    
     RUN_TEST(test_ConversionTagCreate_aem_enabled_is_converted_to_json);
     
     
@@ -12736,6 +12768,9 @@ void runTests(){
     
     
     RUN_TEST(test_ConversionTagCreate_aem_loc_enabled_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ConversionTagCreate_name_is_converted_to_json);
     
     
     
@@ -12812,6 +12847,7 @@ void runTests(){
     
     
     
+    
     RUN_TEST(test_CreateMMMReportRequest_report_name_is_converted_to_json);
     
     
@@ -12825,7 +12861,6 @@ void runTests(){
     
     
     RUN_TEST(test_CreateMMMReportRequest_level_is_converted_to_json);
-    
     
     
     
@@ -13520,18 +13555,18 @@ void runTests(){
     
     
     
-    RUN_TEST(test_InviteBusinessRoleBinding_created_by_business_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_InviteBusinessRoleBinding_created_by_user_id_is_converted_to_json);
-    
-    
-    
     RUN_TEST(test_InviteBusinessRoleBinding_id_is_converted_to_json);
     
     
     
     RUN_TEST(test_InviteBusinessRoleBinding_is_received_invite_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_InviteBusinessRoleBinding_created_by_business_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_InviteBusinessRoleBinding_created_by_user_id_is_converted_to_json);
     
     
     
@@ -13546,19 +13581,19 @@ void runTests(){
     
     
     
-    
-    
-    
-    
-    RUN_TEST(test_InviteResponse_created_time_is_converted_to_json);
-    
-    
     RUN_TEST(test_InviteResponse_id_is_converted_to_json);
     
     
     
     RUN_TEST(test_InviteResponse_is_received_invite_is_converted_to_json);
     
+    
+    
+    
+    
+    
+    
+    RUN_TEST(test_InviteResponse_created_time_is_converted_to_json);
     
     
     
@@ -13934,6 +13969,8 @@ void runTests(){
     
     
     
+    RUN_TEST(test_Items_batch_post_request_language_is_converted_to_json);
+    
     
     
     RUN_TEST(test_Items_batch_post_request_catalog_id_is_converted_to_json);
@@ -14302,14 +14339,11 @@ void runTests(){
     
     
     
-    RUN_TEST(test_OauthAccessTokenRequestClientCredentials_grant_type_is_converted_to_json);
-    
-    
     RUN_TEST(test_OauthAccessTokenRequestClientCredentials_scope_is_converted_to_json);
     
     
+    RUN_TEST(test_OauthAccessTokenRequestClientCredentials_grant_type_is_converted_to_json);
     
-    RUN_TEST(test_OauthAccessTokenRequestCode_grant_type_is_converted_to_json);
     
     
     RUN_TEST(test_OauthAccessTokenRequestCode_code_is_converted_to_json);
@@ -14318,8 +14352,8 @@ void runTests(){
     RUN_TEST(test_OauthAccessTokenRequestCode_redirect_uri_is_converted_to_json);
     
     
+    RUN_TEST(test_OauthAccessTokenRequestCode_grant_type_is_converted_to_json);
     
-    RUN_TEST(test_OauthAccessTokenRequestRefresh_grant_type_is_converted_to_json);
     
     
     RUN_TEST(test_OauthAccessTokenRequestRefresh_refresh_token_is_converted_to_json);
@@ -14329,6 +14363,9 @@ void runTests(){
     
     
     RUN_TEST(test_OauthAccessTokenRequestRefresh_refresh_on_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenRequestRefresh_grant_type_is_converted_to_json);
     
     
     
@@ -14364,6 +14401,12 @@ void runTests(){
     
     
     
+    RUN_TEST(test_OauthAccessTokenResponseCode_refresh_token_is_converted_to_json);
+    
+    
+    RUN_TEST(test_OauthAccessTokenResponseCode_refresh_token_expires_in_is_converted_to_json);
+    
+    
     RUN_TEST(test_OauthAccessTokenResponseCode_response_type_is_converted_to_json);
     
     
@@ -14379,11 +14422,14 @@ void runTests(){
     RUN_TEST(test_OauthAccessTokenResponseCode_scope_is_converted_to_json);
     
     
-    RUN_TEST(test_OauthAccessTokenResponseCode_refresh_token_is_converted_to_json);
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_is_converted_to_json);
     
     
-    RUN_TEST(test_OauthAccessTokenResponseCode_refresh_token_expires_in_is_converted_to_json);
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_expires_in_is_converted_to_json);
     
+    
+    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_expires_at_is_converted_to_json);
     
     
     RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_response_type_is_converted_to_json);
@@ -14401,14 +14447,11 @@ void runTests(){
     RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_scope_is_converted_to_json);
     
     
-    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_is_converted_to_json);
+    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_refresh_token_is_converted_to_json);
     
     
-    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_expires_in_is_converted_to_json);
-    
-    
-    RUN_TEST(test_OauthAccessTokenResponseEverlastingRefresh_refresh_token_expires_at_is_converted_to_json);
-    
+    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_refresh_token_expires_in_is_converted_to_json);
     
     
     RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_response_type_is_converted_to_json);
@@ -14424,12 +14467,6 @@ void runTests(){
     
     
     RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_scope_is_converted_to_json);
-    
-    
-    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_refresh_token_is_converted_to_json);
-    
-    
-    RUN_TEST(test_OauthAccessTokenResponseIntegrationRefresh_refresh_token_expires_in_is_converted_to_json);
     
     
     
@@ -14924,7 +14961,6 @@ void runTests(){
     
     
     RUN_TEST(test_PinUpdate_carousel_slots_inner_link_is_converted_to_json);
-    
     
     
     

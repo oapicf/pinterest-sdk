@@ -22,17 +22,14 @@ import ../models/model_customer_list
 import ../models/model_customer_list_request
 import ../models/model_customer_list_update_request
 import ../models/model_error
-import ../models/model_customer_lists_list_200_response
+import ../models/model_customer_lists_list200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -59,13 +56,16 @@ proc customerListsGet*(httpClient: HttpClient, adAccountId: string, customerList
 
 proc customerListsList*(httpClient: HttpClient, adAccountId: string, pageSize: int, order: string, bookmark: string): (Option[customer_lists_list_200_response], Response) =
   ## Get customer lists
-  let query_for_api_call = encodeQuery([
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("order", $order), # The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $order != "":
+    query_params_list.add(("order", $order))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/customer_lists" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/customer_lists" & "?" & url_encoded_query_params)
   constructResult[customer_lists_list_200_response](response)
 
 

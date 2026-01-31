@@ -3060,18 +3060,11 @@ export type AudienceCreateRequest = {
      */
     description?: string;
     /**
-     * 
-     * @type {AudienceCreateRequest1AudienceType}
+     * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+     * @type {AudienceType}
      * @memberof AudienceCreateRequest
      */
-    audience_type: AudienceCreateRequest1AudienceType;
-}
-
-/**
- * 
- * @export
- */
-export type AudienceCreateRequest1AudienceType = {
+    audience_type: AudienceType;
 }
 
 /**
@@ -5580,6 +5573,8 @@ export type CatalogsCreativeAssetsBatchItem = {
 
 
             export type CatalogsCreativeAssetsBatchRequestCatalogTypeEnum = 'CREATIVE_ASSETS';
+
+            export type CatalogsCreativeAssetsBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 /**
  * Request object to update catalogs creative assets items
  * @export
@@ -5598,11 +5593,11 @@ export type CatalogsCreativeAssetsBatchRequest = {
      */
     country: Country;
     /**
-     * 
-     * @type {CatalogsItemsRequestLanguage}
+     * We recommend using the CatalogsLocale values.
+     * @type {string}
      * @memberof CatalogsCreativeAssetsBatchRequest
      */
-    language: CatalogsItemsRequestLanguage;
+    language: CatalogsCreativeAssetsBatchRequestLanguageEnum;
     /**
      * Array with creative assets item operations
      * @type {Array<CatalogsCreativeAssetsBatchItem>}
@@ -7704,6 +7699,8 @@ export type CatalogsHotelBatchItem = {
 
 
             export type CatalogsHotelBatchRequestCatalogTypeEnum = 'HOTEL';
+
+            export type CatalogsHotelBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 /**
  * Request object to update catalogs hotel items
  * @export
@@ -7722,11 +7719,11 @@ export type CatalogsHotelBatchRequest = {
      */
     country: Country;
     /**
-     * 
-     * @type {CatalogsItemsRequestLanguage}
+     * We recommend using the CatalogsLocale values.
+     * @type {string}
      * @memberof CatalogsHotelBatchRequest
      */
-    language: CatalogsItemsRequestLanguage;
+    language: CatalogsHotelBatchRequestLanguageEnum;
     /**
      * Array with catalogs item operations
      * @type {Array<CatalogsHotelBatchItem>}
@@ -9038,6 +9035,8 @@ export type CatalogsItemsBatch = {
     items?: Array<CreativeAssetsProcessingRecord>;
 }
 
+
+            export type CatalogsItemsBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 /**
  * Request object of catalogs items batch
  * @export
@@ -9050,11 +9049,11 @@ export type CatalogsItemsBatchRequest = {
      */
     country: Country;
     /**
-     * 
-     * @type {CatalogsItemsRequestLanguage}
+     * We recommend using the CatalogsLocale values.
+     * @type {string}
      * @memberof CatalogsItemsBatchRequest
      */
-    language: CatalogsItemsRequestLanguage;
+    language: CatalogsItemsBatchRequestLanguageEnum;
     /**
      * 
      * @type {BatchOperation}
@@ -9069,6 +9068,8 @@ export type CatalogsItemsBatchRequest = {
     items: Array<ItemDeleteBatchRecord>;
 }
 
+
+            export type CatalogsItemsCreateBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 /**
  * Request object to create catalogs items
  * @export
@@ -9081,11 +9082,11 @@ export type CatalogsItemsCreateBatchRequest = {
      */
     country: Country;
     /**
-     * 
-     * @type {CatalogsItemsRequestLanguage}
+     * We recommend using the CatalogsLocale values.
+     * @type {string}
      * @memberof CatalogsItemsCreateBatchRequest
      */
-    language: CatalogsItemsRequestLanguage;
+    language: CatalogsItemsCreateBatchRequestLanguageEnum;
     /**
      * 
      * @type {BatchOperation}
@@ -9100,6 +9101,8 @@ export type CatalogsItemsCreateBatchRequest = {
     items: Array<ItemCreateBatchRecord>;
 }
 
+
+            export type CatalogsItemsDeleteBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 /**
  * Request object to delete catalogs items
  * @export
@@ -9112,11 +9115,11 @@ export type CatalogsItemsDeleteBatchRequest = {
      */
     country: Country;
     /**
-     * 
-     * @type {CatalogsItemsRequestLanguage}
+     * We recommend using the CatalogsLocale values.
+     * @type {string}
      * @memberof CatalogsItemsDeleteBatchRequest
      */
-    language: CatalogsItemsRequestLanguage;
+    language: CatalogsItemsDeleteBatchRequestLanguageEnum;
     /**
      * 
      * @type {BatchOperation}
@@ -9131,6 +9134,8 @@ export type CatalogsItemsDeleteBatchRequest = {
     items: Array<ItemDeleteBatchRecord>;
 }
 
+
+            export type CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 /**
  * Request object to discontinue catalogs items
  * @export
@@ -9143,11 +9148,11 @@ export type CatalogsItemsDeleteDiscontinuedBatchRequest = {
      */
     country: Country;
     /**
-     * 
-     * @type {CatalogsItemsRequestLanguage}
+     * We recommend using the CatalogsLocale values.
+     * @type {string}
      * @memberof CatalogsItemsDeleteDiscontinuedBatchRequest
      */
-    language: CatalogsItemsRequestLanguage;
+    language: CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum;
     /**
      * 
      * @type {BatchOperation}
@@ -9236,6 +9241,8 @@ export type CatalogsItemsPostFilters = {
     creative_assets_ids: Array<string>;
 }
 
+
+            export type CatalogsItemsRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 /**
  * Request object of catalogs items
  * @export
@@ -9248,11 +9255,11 @@ export type CatalogsItemsRequest = {
      */
     country: Country;
     /**
-     * 
-     * @type {CatalogsItemsRequestLanguage}
+     * We recommend using the CatalogsLocale values.
+     * @type {string}
      * @memberof CatalogsItemsRequest
      */
-    language: CatalogsItemsRequestLanguage;
+    language: CatalogsItemsRequestLanguageEnum;
     /**
      * 
      * @type {CatalogsItemsPostFilters}
@@ -9261,13 +9268,8 @@ export type CatalogsItemsRequest = {
     filters: CatalogsItemsPostFilters;
 }
 
-/**
- * We recommend using the CatalogsLocale values.
- * @export
- */
-export type CatalogsItemsRequestLanguage = {
-}
 
+            export type CatalogsItemsUpdateBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 /**
  * Request object to update catalogs items
  * @export
@@ -9280,11 +9282,11 @@ export type CatalogsItemsUpdateBatchRequest = {
      */
     country: Country;
     /**
-     * 
-     * @type {CatalogsItemsRequestLanguage}
+     * We recommend using the CatalogsLocale values.
+     * @type {string}
      * @memberof CatalogsItemsUpdateBatchRequest
      */
-    language: CatalogsItemsRequestLanguage;
+    language: CatalogsItemsUpdateBatchRequestLanguageEnum;
     /**
      * 
      * @type {BatchOperation}
@@ -9299,6 +9301,8 @@ export type CatalogsItemsUpdateBatchRequest = {
     items: Array<ItemUpdateBatchRecord>;
 }
 
+
+            export type CatalogsItemsUpsertBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 /**
  * Request object to upsert catalogs items
  * @export
@@ -9311,11 +9315,11 @@ export type CatalogsItemsUpsertBatchRequest = {
      */
     country: Country;
     /**
-     * 
-     * @type {CatalogsItemsRequestLanguage}
+     * We recommend using the CatalogsLocale values.
+     * @type {string}
      * @memberof CatalogsItemsUpsertBatchRequest
      */
-    language: CatalogsItemsRequestLanguage;
+    language: CatalogsItemsUpsertBatchRequestLanguageEnum;
     /**
      * 
      * @type {BatchOperation}
@@ -10321,6 +10325,8 @@ export type CatalogsReportStats = {
 
 
             export type CatalogsRetailBatchRequestCatalogTypeEnum = 'RETAIL';
+
+            export type CatalogsRetailBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 /**
  * A request object that can have multiple operations on a single retail batch
  * @export
@@ -10339,11 +10345,11 @@ export type CatalogsRetailBatchRequest = {
      */
     country: Country;
     /**
-     * 
-     * @type {CatalogsItemsRequestLanguage}
+     * We recommend using the CatalogsLocale values.
+     * @type {string}
      * @memberof CatalogsRetailBatchRequest
      */
-    language: CatalogsItemsRequestLanguage;
+    language: CatalogsRetailBatchRequestLanguageEnum;
     /**
      * Array with catalogs item operations
      * @type {Array<CatalogsRetailBatchRequestItemsInner>}
@@ -11499,6 +11505,8 @@ export type CatalogsUpsertRetailItem = {
 
 
             export type CatalogsVerticalBatchRequestCatalogTypeEnum = 'CREATIVE_ASSETS';
+
+            export type CatalogsVerticalBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 /**
  * A request object that can have multiple operations on a single batch
  * @export
@@ -11517,11 +11525,11 @@ export type CatalogsVerticalBatchRequest = {
      */
     country: Country;
     /**
-     * 
-     * @type {CatalogsItemsRequestLanguage}
+     * We recommend using the CatalogsLocale values.
+     * @type {string}
      * @memberof CatalogsVerticalBatchRequest
      */
-    language: CatalogsItemsRequestLanguage;
+    language: CatalogsVerticalBatchRequestLanguageEnum;
     /**
      * Array with creative assets item operations
      * @type {Array<CatalogsCreativeAssetsBatchItem>}
@@ -11603,10 +11611,10 @@ export type CatalogsVerticalFeedsCreateRequest = {
     default_availability?: ProductAvailabilityType;
     /**
      * 
-     * @type {CatalogsStatus & Object}
+     * @type {CatalogsStatus}
      * @memberof CatalogsVerticalFeedsCreateRequest
      */
-    status?: CatalogsStatus & Object;
+    status?: CatalogsStatus;
     /**
      * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
      * @type {string}
@@ -12589,12 +12597,6 @@ export type ConversionTagConfigs = {
  */
 export type ConversionTagCreate = {
     /**
-     * Conversion tag name.
-     * @type {string}
-     * @memberof ConversionTagCreate
-     */
-    name: string;
-    /**
      * Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
      * @type {boolean}
      * @memberof ConversionTagCreate
@@ -12636,6 +12638,12 @@ export type ConversionTagCreate = {
      * @memberof ConversionTagCreate
      */
     aem_loc_enabled?: boolean;
+    /**
+     * Conversion tag name.
+     * @type {string}
+     * @memberof ConversionTagCreate
+     */
+    name: string;
 }
 
 /**
@@ -12946,6 +12954,12 @@ export type CreateInvitesResultsResponseArrayItemsInnerInvite = {
  */
 export type CreateMMMReportRequest = {
     /**
+     * A List of countries for filtering
+     * @type {Array<TargetingAdvertiserCountry>}
+     * @memberof CreateMMMReportRequest
+     */
+    countries?: Array<TargetingAdvertiserCountry>;
+    /**
      * Name of the Marketing Mix Modeling (MMM) report
      * @type {string}
      * @memberof CreateMMMReportRequest
@@ -12987,12 +13001,6 @@ export type CreateMMMReportRequest = {
      * @memberof CreateMMMReportRequest
      */
     columns: Array<MMMReportingColumn>;
-    /**
-     * A List of countries for filtering
-     * @type {Array<TargetingAdvertiserCountry>}
-     * @memberof CreateMMMReportRequest
-     */
-    countries?: Array<TargetingAdvertiserCountry>;
 }
 
 /**
@@ -13863,10 +13871,10 @@ export type FeedsCreateRequest = {
     default_availability?: ProductAvailabilityType;
     /**
      * 
-     * @type {CatalogsStatus & Object}
+     * @type {CatalogsStatus}
      * @memberof FeedsCreateRequest
      */
-    status?: CatalogsStatus & Object;
+    status?: CatalogsStatus;
 }
 
 /**
@@ -15178,28 +15186,10 @@ export type InviteAssetsSummaryProfilesInner = {
 }
 
 /**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+ * 
  * @export
  */
 export type InviteBusinessRoleBinding = {
-    /**
-     * Unique identifier for the business that created the invite/request.
-     * @type {string}
-     * @memberof InviteBusinessRoleBinding
-     */
-    created_by_business_id?: string;
-    /**
-     * Unique identifier for the user that created the invite/request.
-     * @type {string}
-     * @memberof InviteBusinessRoleBinding
-     */
-    created_by_user_id?: string;
-    /**
-     * Metadata for the user that updated the invite/request.
-     * @type {BusinessAccessUserSummary}
-     * @memberof InviteBusinessRoleBinding
-     */
-    user?: BusinessAccessUserSummary;
     /**
      * Unique identifier of the invite/request.
      * @type {string}
@@ -15218,6 +15208,24 @@ export type InviteBusinessRoleBinding = {
      * @memberof InviteBusinessRoleBinding
      */
     is_received_invite?: boolean;
+    /**
+     * Metadata for the user that updated the invite/request.
+     * @type {Object}
+     * @memberof InviteBusinessRoleBinding
+     */
+    user?: Object;
+    /**
+     * Unique identifier for the business that created the invite/request.
+     * @type {string}
+     * @memberof InviteBusinessRoleBinding
+     */
+    created_by_business_id?: string;
+    /**
+     * Unique identifier for the user that created the invite/request.
+     * @type {string}
+     * @memberof InviteBusinessRoleBinding
+     */
+    created_by_user_id?: string;
 }
 
 /**
@@ -15257,36 +15265,6 @@ export type InviteExceptionResponse = {
  */
 export type InviteResponse = {
     /**
-     * 
-     * @type {InviteAssetsSummary}
-     * @memberof InviteResponse
-     */
-    assets_summary?: InviteAssetsSummary;
-    /**
-     * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-     * @type {Array<string>}
-     * @memberof InviteResponse
-     */
-    business_roles?: Array<string>;
-    /**
-     * Metadata for the business that created the invite/request.
-     * @type {BusinessAccessUserSummary}
-     * @memberof InviteResponse
-     */
-    created_by_business?: BusinessAccessUserSummary;
-    /**
-     * Metadata for the user that created the invite/request.
-     * @type {BusinessAccessUserSummary}
-     * @memberof InviteResponse
-     */
-    created_by_user?: BusinessAccessUserSummary;
-    /**
-     * The time the invite/request was created. Returned in milliseconds.
-     * @type {number}
-     * @memberof InviteResponse
-     */
-    created_time?: number;
-    /**
      * Unique identifier of the invite/request.
      * @type {string}
      * @memberof InviteResponse
@@ -15310,6 +15288,36 @@ export type InviteResponse = {
      * @memberof InviteResponse
      */
     user?: BusinessAccessUserSummary;
+    /**
+     * 
+     * @type {InviteAssetsSummary}
+     * @memberof InviteResponse
+     */
+    assets_summary?: InviteAssetsSummary;
+    /**
+     * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+     * @type {Array<string>}
+     * @memberof InviteResponse
+     */
+    business_roles?: Array<string>;
+    /**
+     * Metadata for the business that created the invite/request.
+     * @type {Object}
+     * @memberof InviteResponse
+     */
+    created_by_business?: Object;
+    /**
+     * Metadata for the user that created the invite/request.
+     * @type {Object}
+     * @memberof InviteResponse
+     */
+    created_by_user?: Object;
+    /**
+     * The time the invite/request was created. Returned in milliseconds.
+     * @type {number}
+     * @memberof InviteResponse
+     */
+    created_time?: number;
 }
 
 /**
@@ -16075,11 +16083,17 @@ export type ItemResponse = {
      */
     item_id?: string;
     /**
-     * Array with the errors for the item id requested
-     * @type {Array<ItemValidationEvent>}
+     * The pins mapped to the item
+     * @type {Array<Pin>}
      * @memberof ItemResponse
      */
-    errors?: Array<ItemValidationEvent>;
+    pins?: Array<Pin>;
+    /**
+     * 
+     * @type {CatalogsCreativeAssetsAttributes}
+     * @memberof ItemResponse
+     */
+    attributes?: CatalogsCreativeAssetsAttributes;
     /**
      * The catalog hotel id in the merchant namespace
      * @type {string}
@@ -16092,6 +16106,12 @@ export type ItemResponse = {
      * @memberof ItemResponse
      */
     creative_assets_id?: string;
+    /**
+     * Array with the errors for the item id requested
+     * @type {Array<ItemValidationEvent>}
+     * @memberof ItemResponse
+     */
+    errors?: Array<ItemValidationEvent>;
 }
 
 /**
@@ -16243,6 +16263,10 @@ export type ItemValidationEvent = {
     message?: string;
 }
 
+
+            export type ItemsBatchPostRequestCatalogTypeEnum = 'CREATIVE_ASSETS';
+
+            export type ItemsBatchPostRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 /**
  * 
  * @export
@@ -16250,28 +16274,40 @@ export type ItemValidationEvent = {
 export type ItemsBatchPostRequest = {
     /**
      * 
+     * @type {string}
+     * @memberof ItemsBatchPostRequest
+     */
+    catalog_type: ItemsBatchPostRequestCatalogTypeEnum;
+    /**
+     * 
      * @type {Country}
      * @memberof ItemsBatchPostRequest
      */
     country: Country;
     /**
-     * 
-     * @type {CatalogsItemsRequestLanguage}
+     * We recommend using the CatalogsLocale values.
+     * @type {string}
      * @memberof ItemsBatchPostRequest
      */
-    language: CatalogsItemsRequestLanguage;
-    /**
-     * 
-     * @type {BatchOperation}
-     * @memberof ItemsBatchPostRequest
-     */
-    operation: BatchOperation;
+    language: ItemsBatchPostRequestLanguageEnum;
     /**
      * Array with catalogs items
      * @type {Array<ItemDeleteBatchRecord>}
      * @memberof ItemsBatchPostRequest
      */
     items: Array<ItemDeleteBatchRecord>;
+    /**
+     * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+     * @type {string}
+     * @memberof ItemsBatchPostRequest
+     */
+    catalog_id?: string;
+    /**
+     * 
+     * @type {BatchOperation}
+     * @memberof ItemsBatchPostRequest
+     */
+    operation: BatchOperation;
 }
 
 /**
@@ -16661,25 +16697,25 @@ export type LeadFormCreateRequest = {
      * @type {string}
      * @memberof LeadFormCreateRequest
      */
-    name: string;
+    name?: string;
     /**
      * A link to the advertiser\'s privacy policy. This will be included in the lead form\'s disclosure language.
      * @type {string}
      * @memberof LeadFormCreateRequest
      */
-    privacy_policy_link: string;
+    privacy_policy_link?: string;
     /**
      * Whether the advertiser has accepted Pinterest\'s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest\'s <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
      * @type {boolean}
      * @memberof LeadFormCreateRequest
      */
-    has_accepted_terms: boolean;
+    has_accepted_terms?: boolean;
     /**
      * A message for people who complete the form to let them know what happens next.
      * @type {string}
      * @memberof LeadFormCreateRequest
      */
-    completion_message: string;
+    completion_message?: string;
     /**
      * 
      * @type {LeadFormStatus}
@@ -16697,7 +16733,7 @@ export type LeadFormCreateRequest = {
      * @type {Array<LeadFormQuestion>}
      * @memberof LeadFormCreateRequest
      */
-    questions: Array<LeadFormQuestion>;
+    questions?: Array<LeadFormQuestion>;
     /**
      * List of additional policy links to be displayed on the lead form.
      * @type {Array<LeadFormCommonPolicyLinksInner>}
@@ -17457,7 +17493,7 @@ export type NullableCurrency = 'AED' | 'AFN' | 'ALL' | 'AMD' | 'ANG' | 'AOA' | '
 
             export type OauthAccessTokenRequestClientCredentialsGrantTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
 /**
- * A request to receive a client token.
+ * 
  * @export
  */
 export type OauthAccessTokenRequestClientCredentials = {
@@ -17466,28 +17502,22 @@ export type OauthAccessTokenRequestClientCredentials = {
      * @type {string}
      * @memberof OauthAccessTokenRequestClientCredentials
      */
-    grant_type: OauthAccessTokenRequestClientCredentialsGrantTypeEnum;
+    scope: string;
     /**
      * 
      * @type {string}
      * @memberof OauthAccessTokenRequestClientCredentials
      */
-    scope: string;
+    grant_type: OauthAccessTokenRequestClientCredentialsGrantTypeEnum;
 }
 
 
             export type OauthAccessTokenRequestCodeGrantTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
 /**
- * A request to exchange an authorization code for an access token.
+ * 
  * @export
  */
 export type OauthAccessTokenRequestCode = {
-    /**
-     * 
-     * @type {string}
-     * @memberof OauthAccessTokenRequestCode
-     */
-    grant_type: OauthAccessTokenRequestCodeGrantTypeEnum;
     /**
      * 
      * @type {string}
@@ -17500,21 +17530,21 @@ export type OauthAccessTokenRequestCode = {
      * @memberof OauthAccessTokenRequestCode
      */
     redirect_uri: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenRequestCode
+     */
+    grant_type: OauthAccessTokenRequestCodeGrantTypeEnum;
 }
 
 
             export type OauthAccessTokenRequestRefreshGrantTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
 /**
- * A request to exchange a refresh token for a new access token.
+ * 
  * @export
  */
 export type OauthAccessTokenRequestRefresh = {
-    /**
-     * 
-     * @type {string}
-     * @memberof OauthAccessTokenRequestRefresh
-     */
-    grant_type: OauthAccessTokenRequestRefreshGrantTypeEnum;
     /**
      * 
      * @type {string}
@@ -17533,6 +17563,12 @@ export type OauthAccessTokenRequestRefresh = {
      * @memberof OauthAccessTokenRequestRefresh
      */
     refresh_on?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenRequestRefresh
+     */
+    grant_type: OauthAccessTokenRequestRefreshGrantTypeEnum;
 }
 
 
@@ -17616,10 +17652,22 @@ export type OauthAccessTokenResponseClientCredentials = {
 
             export type OauthAccessTokenResponseCodeResponseTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
 /**
- * A successful OAuth access token response for the authorization code flow.
+ * 
  * @export
  */
 export type OauthAccessTokenResponseCode = {
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenResponseCode
+     */
+    refresh_token: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof OauthAccessTokenResponseCode
+     */
+    refresh_token_expires_in: number;
     /**
      * 
      * @type {string}
@@ -17650,27 +17698,33 @@ export type OauthAccessTokenResponseCode = {
      * @memberof OauthAccessTokenResponseCode
      */
     scope: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof OauthAccessTokenResponseCode
-     */
-    refresh_token: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof OauthAccessTokenResponseCode
-     */
-    refresh_token_expires_in: number;
 }
 
 
             export type OauthAccessTokenResponseEverlastingRefreshResponseTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
 /**
- * A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
+ * 
  * @export
  */
 export type OauthAccessTokenResponseEverlastingRefresh = {
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenResponseEverlastingRefresh
+     */
+    refresh_token: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof OauthAccessTokenResponseEverlastingRefresh
+     */
+    refresh_token_expires_in: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof OauthAccessTokenResponseEverlastingRefresh
+     */
+    refresh_token_expires_at: number;
     /**
      * 
      * @type {string}
@@ -17701,33 +17755,27 @@ export type OauthAccessTokenResponseEverlastingRefresh = {
      * @memberof OauthAccessTokenResponseEverlastingRefresh
      */
     scope: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof OauthAccessTokenResponseEverlastingRefresh
-     */
-    refresh_token: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof OauthAccessTokenResponseEverlastingRefresh
-     */
-    refresh_token_expires_in: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof OauthAccessTokenResponseEverlastingRefresh
-     */
-    refresh_token_expires_at: number;
 }
 
 
             export type OauthAccessTokenResponseIntegrationRefreshResponseTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
 /**
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
+ * 
  * @export
  */
 export type OauthAccessTokenResponseIntegrationRefresh = {
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenResponseIntegrationRefresh
+     */
+    refresh_token: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof OauthAccessTokenResponseIntegrationRefresh
+     */
+    refresh_token_expires_in: number;
     /**
      * 
      * @type {string}
@@ -17758,18 +17806,6 @@ export type OauthAccessTokenResponseIntegrationRefresh = {
      * @memberof OauthAccessTokenResponseIntegrationRefresh
      */
     scope: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof OauthAccessTokenResponseIntegrationRefresh
-     */
-    refresh_token: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof OauthAccessTokenResponseIntegrationRefresh
-     */
-    refresh_token_expires_in: number;
 }
 
 
@@ -19163,13 +19199,6 @@ export type PinUpdateCarouselSlotsInner = {
      * @memberof PinUpdateCarouselSlotsInner
      */
     link?: string;
-}
-
-/**
- * 
- * @export
- */
-export type PinsAnalyticsMetricTypesParameterInner = {
 }
 
 /**
@@ -34259,7 +34288,7 @@ export const PinsApiFetchParamCreator = function (configuration?: Configuration)
          * @summary Get multiple Pin analytics
          * @throws {RequiredError}
          */
-        multiPinsAnalytics(pinIds: Array<string>, startDate: Date, endDate: Date, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, options: RequestOptions): FetchArgs {
+        multiPinsAnalytics(pinIds: Array<string>, startDate: Date, endDate: Date, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, options: RequestOptions): FetchArgs {
             // verify required parameter 'pinIds' is not null or undefined
             if (pinIds === null || pinIds === undefined) {
                 throw new RequiredError('pinIds','Required parameter pinIds was null or undefined when calling multiPinsAnalytics.');
@@ -34339,7 +34368,7 @@ export const PinsApiFetchParamCreator = function (configuration?: Configuration)
          * @summary Get Pin analytics
          * @throws {RequiredError}
          */
-        pinsAnalytics(pinId: string, startDate: Date, endDate: Date, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, options: RequestOptions): FetchArgs {
+        pinsAnalytics(pinId: string, startDate: Date, endDate: Date, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, options: RequestOptions): FetchArgs {
             // verify required parameter 'pinId' is not null or undefined
             if (pinId === null || pinId === undefined) {
                 throw new RequiredError('pinId','Required parameter pinId was null or undefined when calling pinsAnalytics.');
@@ -34723,9 +34752,9 @@ export const PinsApiFetchParamCreator = function (configuration?: Configuration)
 };
 
 export type PinsApiType = { 
-    multiPinsAnalytics(pinIds: Array<string>, startDate: Date, endDate: Date, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, options?: RequestOptions): Promise<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }>,
+    multiPinsAnalytics(pinIds: Array<string>, startDate: Date, endDate: Date, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, options?: RequestOptions): Promise<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }>,
 
-    pinsAnalytics(pinId: string, startDate: Date, endDate: Date, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, options?: RequestOptions): Promise<{ [key: string]: PinAnalyticsMetricsResponse; }>,
+    pinsAnalytics(pinId: string, startDate: Date, endDate: Date, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, options?: RequestOptions): Promise<{ [key: string]: PinAnalyticsMetricsResponse; }>,
 
     pinsCreate(pinCreate: PinCreate, adAccountId?: string, options?: RequestOptions): Promise<Pin>,
 
@@ -34752,7 +34781,7 @@ export const PinsApi = function(configuration?: Configuration, fetch: FetchAPI =
          * @summary Get multiple Pin analytics
          * @throws {RequiredError}
          */
-        multiPinsAnalytics(pinIds: Array<string>, startDate: Date, endDate: Date, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, options?: RequestOptions = {}): Promise<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }> {
+        multiPinsAnalytics(pinIds: Array<string>, startDate: Date, endDate: Date, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, options?: RequestOptions = {}): Promise<{ [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; }> {
             const localVarFetchArgs = PinsApiFetchParamCreator(configuration).multiPinsAnalytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
@@ -34767,7 +34796,7 @@ export const PinsApi = function(configuration?: Configuration, fetch: FetchAPI =
          * @summary Get Pin analytics
          * @throws {RequiredError}
          */
-        pinsAnalytics(pinId: string, startDate: Date, endDate: Date, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, options?: RequestOptions = {}): Promise<{ [key: string]: PinAnalyticsMetricsResponse; }> {
+        pinsAnalytics(pinId: string, startDate: Date, endDate: Date, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, options?: RequestOptions = {}): Promise<{ [key: string]: PinAnalyticsMetricsResponse; }> {
             const localVarFetchArgs = PinsApiFetchParamCreator(configuration).pinsAnalytics(pinId, startDate, endDate, metricTypes, appTypes, splitField, adAccountId, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {

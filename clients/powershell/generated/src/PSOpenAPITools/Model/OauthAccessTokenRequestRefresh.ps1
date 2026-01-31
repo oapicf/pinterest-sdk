@@ -13,16 +13,16 @@ No summary available.
 
 .DESCRIPTION
 
-A request to exchange a refresh token for a new access token.
-
-.PARAMETER GrantType
 No description available.
+
 .PARAMETER RefreshToken
 No description available.
 .PARAMETER Scope
 No description available.
 .PARAMETER RefreshOn
 Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to ""everlasting_refresh"".
+.PARAMETER GrantType
+No description available.
 .OUTPUTS
 
 OauthAccessTokenRequestRefresh<PSCustomObject>
@@ -32,38 +32,38 @@ function Initialize-OauthAccessTokenRequestRefresh {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("authorization_code", "refresh_token", "client_credentials")]
-        [String]
-        ${GrantType},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${RefreshToken},
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Scope},
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
-        ${RefreshOn}
+        ${RefreshOn},
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("authorization_code", "refresh_token", "client_credentials")]
+        [String]
+        ${GrantType}
     )
 
     Process {
         'Creating PSCustomObject: PSOpenAPITools => OauthAccessTokenRequestRefresh' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if ($null -eq $GrantType) {
-            throw "invalid value for 'GrantType', 'GrantType' cannot be null."
-        }
-
         if ($null -eq $RefreshToken) {
             throw "invalid value for 'RefreshToken', 'RefreshToken' cannot be null."
         }
 
+        if ($null -eq $GrantType) {
+            throw "invalid value for 'GrantType', 'GrantType' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
-            "grant_type" = ${GrantType}
             "refresh_token" = ${RefreshToken}
             "scope" = ${Scope}
             "refresh_on" = ${RefreshOn}
+            "grant_type" = ${GrantType}
         }
 
 
@@ -101,7 +101,7 @@ function ConvertFrom-JsonToOauthAccessTokenRequestRefresh {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in OauthAccessTokenRequestRefresh
-        $AllProperties = ("grant_type", "refresh_token", "scope", "refresh_on")
+        $AllProperties = ("refresh_token", "scope", "refresh_on", "grant_type")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -109,19 +109,19 @@ function ConvertFrom-JsonToOauthAccessTokenRequestRefresh {
         }
 
         If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property 'grant_type' missing."
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "grant_type"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'grant_type' missing."
-        } else {
-            $GrantType = $JsonParameters.PSobject.Properties["grant_type"].value
+            throw "Error! Empty JSON cannot be serialized due to the required property 'refresh_token' missing."
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "refresh_token"))) {
             throw "Error! JSON cannot be serialized due to the required property 'refresh_token' missing."
         } else {
             $RefreshToken = $JsonParameters.PSobject.Properties["refresh_token"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "grant_type"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'grant_type' missing."
+        } else {
+            $GrantType = $JsonParameters.PSobject.Properties["grant_type"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "scope"))) { #optional property not found
@@ -137,10 +137,10 @@ function ConvertFrom-JsonToOauthAccessTokenRequestRefresh {
         }
 
         $PSO = [PSCustomObject]@{
-            "grant_type" = ${GrantType}
             "refresh_token" = ${RefreshToken}
             "scope" = ${Scope}
             "refresh_on" = ${RefreshOn}
+            "grant_type" = ${GrantType}
         }
 
         return $PSO

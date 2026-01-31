@@ -94,7 +94,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchPartnerPinsCall(String term, String countryCode, String bookmark, String locale, Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchPartnerPinsCall(@javax.annotation.Nonnull String term, @javax.annotation.Nonnull String countryCode, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String locale, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -159,7 +159,7 @@ public class SearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchPartnerPinsValidateBeforeCall(String term, String countryCode, String bookmark, String locale, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchPartnerPinsValidateBeforeCall(@javax.annotation.Nonnull String term, @javax.annotation.Nonnull String countryCode, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String locale, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'term' is set
         if (term == null) {
             throw new ApiException("Missing the required parameter 'term' when calling searchPartnerPins(Async)");
@@ -193,7 +193,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public SearchPartnerPins200Response searchPartnerPins(String term, String countryCode, String bookmark, String locale, Integer limit) throws ApiException {
+    public SearchPartnerPins200Response searchPartnerPins(@javax.annotation.Nonnull String term, @javax.annotation.Nonnull String countryCode, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String locale, @javax.annotation.Nullable Integer limit) throws ApiException {
         ApiResponse<SearchPartnerPins200Response> localVarResp = searchPartnerPinsWithHttpInfo(term, countryCode, bookmark, locale, limit);
         return localVarResp.getData();
     }
@@ -217,7 +217,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SearchPartnerPins200Response> searchPartnerPinsWithHttpInfo(String term, String countryCode, String bookmark, String locale, Integer limit) throws ApiException {
+    public ApiResponse<SearchPartnerPins200Response> searchPartnerPinsWithHttpInfo(@javax.annotation.Nonnull String term, @javax.annotation.Nonnull String countryCode, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String locale, @javax.annotation.Nullable Integer limit) throws ApiException {
         okhttp3.Call localVarCall = searchPartnerPinsValidateBeforeCall(term, countryCode, bookmark, locale, limit, null);
         Type localVarReturnType = new TypeToken<SearchPartnerPins200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -243,7 +243,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchPartnerPinsAsync(String term, String countryCode, String bookmark, String locale, Integer limit, final ApiCallback<SearchPartnerPins200Response> _callback) throws ApiException {
+    public okhttp3.Call searchPartnerPinsAsync(@javax.annotation.Nonnull String term, @javax.annotation.Nonnull String countryCode, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String locale, @javax.annotation.Nullable Integer limit, final ApiCallback<SearchPartnerPins200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchPartnerPinsValidateBeforeCall(term, countryCode, bookmark, locale, limit, _callback);
         Type localVarReturnType = new TypeToken<SearchPartnerPins200Response>(){}.getType();
@@ -267,7 +267,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchUserBoardsGetCall(String adAccountId, String bookmark, Integer pageSize, String query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchUserBoardsGetCall(@javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -328,7 +328,7 @@ public class SearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchUserBoardsGetValidateBeforeCall(String adAccountId, String bookmark, Integer pageSize, String query, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchUserBoardsGetValidateBeforeCall(@javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String query, final ApiCallback _callback) throws ApiException {
         return searchUserBoardsGetCall(adAccountId, bookmark, pageSize, query, _callback);
 
     }
@@ -350,7 +350,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public SearchUserBoardsGet200Response searchUserBoardsGet(String adAccountId, String bookmark, Integer pageSize, String query) throws ApiException {
+    public SearchUserBoardsGet200Response searchUserBoardsGet(@javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String query) throws ApiException {
         ApiResponse<SearchUserBoardsGet200Response> localVarResp = searchUserBoardsGetWithHttpInfo(adAccountId, bookmark, pageSize, query);
         return localVarResp.getData();
     }
@@ -372,7 +372,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SearchUserBoardsGet200Response> searchUserBoardsGetWithHttpInfo(String adAccountId, String bookmark, Integer pageSize, String query) throws ApiException {
+    public ApiResponse<SearchUserBoardsGet200Response> searchUserBoardsGetWithHttpInfo(@javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String query) throws ApiException {
         okhttp3.Call localVarCall = searchUserBoardsGetValidateBeforeCall(adAccountId, bookmark, pageSize, query, null);
         Type localVarReturnType = new TypeToken<SearchUserBoardsGet200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -396,7 +396,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchUserBoardsGetAsync(String adAccountId, String bookmark, Integer pageSize, String query, final ApiCallback<SearchUserBoardsGet200Response> _callback) throws ApiException {
+    public okhttp3.Call searchUserBoardsGetAsync(@javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String query, final ApiCallback<SearchUserBoardsGet200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchUserBoardsGetValidateBeforeCall(adAccountId, bookmark, pageSize, query, _callback);
         Type localVarReturnType = new TypeToken<SearchUserBoardsGet200Response>(){}.getType();
@@ -420,7 +420,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchUserPinsListCall(String query, String adAccountId, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchUserPinsListCall(@javax.annotation.Nonnull String query, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -477,7 +477,7 @@ public class SearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchUserPinsListValidateBeforeCall(String query, String adAccountId, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchUserPinsListValidateBeforeCall(@javax.annotation.Nonnull String query, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'query' is set
         if (query == null) {
             throw new ApiException("Missing the required parameter 'query' when calling searchUserPinsList(Async)");
@@ -504,7 +504,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public PinsList200Response searchUserPinsList(String query, String adAccountId, String bookmark) throws ApiException {
+    public PinsList200Response searchUserPinsList(@javax.annotation.Nonnull String query, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<PinsList200Response> localVarResp = searchUserPinsListWithHttpInfo(query, adAccountId, bookmark);
         return localVarResp.getData();
     }
@@ -526,7 +526,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PinsList200Response> searchUserPinsListWithHttpInfo(String query, String adAccountId, String bookmark) throws ApiException {
+    public ApiResponse<PinsList200Response> searchUserPinsListWithHttpInfo(@javax.annotation.Nonnull String query, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = searchUserPinsListValidateBeforeCall(query, adAccountId, bookmark, null);
         Type localVarReturnType = new TypeToken<PinsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -550,7 +550,7 @@ public class SearchApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchUserPinsListAsync(String query, String adAccountId, String bookmark, final ApiCallback<PinsList200Response> _callback) throws ApiException {
+    public okhttp3.Call searchUserPinsListAsync(@javax.annotation.Nonnull String query, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, final ApiCallback<PinsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchUserPinsListValidateBeforeCall(query, adAccountId, bookmark, _callback);
         Type localVarReturnType = new TypeToken<PinsList200Response>(){}.getType();

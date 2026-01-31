@@ -57,7 +57,7 @@ export function ItemResponseAnyOf1FromJSONTyped(json: any, ignoreDiscriminator: 
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailItemErrorResponseFromJSONTyped(json, true), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of ItemResponseAnyOf1 exists with 'catalogType=${json['catalogType']}'`);
+            return json;
     }
 }
 
@@ -77,8 +77,7 @@ export function ItemResponseAnyOf1ToJSONTyped(value?: ItemResponseAnyOf1 | null,
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailItemErrorResponseToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of ItemResponseAnyOf1 exists with 'catalogType=${value['catalogType']}'`);
+            return value;
     }
-
 }
 

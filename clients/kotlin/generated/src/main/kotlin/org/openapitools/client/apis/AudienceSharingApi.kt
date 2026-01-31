@@ -44,7 +44,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
+open class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -58,7 +58,7 @@ class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client: Call
      * List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceId Unique identifier of the audience to use to filter the results.
-     * @param accountType Filter accounts by account type. (default to AD_ACCOUNT)
+     * @param accountType Filter accounts by account type. (default to AudienceAccountType.AD_ACCOUNT)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return AdAccountsAudiencesSharedAccountsList200Response
@@ -70,7 +70,7 @@ class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client: Call
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun adAccountsAudiencesSharedAccountsList(adAccountId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType = AD_ACCOUNT, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : AdAccountsAudiencesSharedAccountsList200Response {
+    fun adAccountsAudiencesSharedAccountsList(adAccountId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType = AudienceAccountType.AD_ACCOUNT, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : AdAccountsAudiencesSharedAccountsList200Response {
         val localVarResponse = adAccountsAudiencesSharedAccountsListWithHttpInfo(adAccountId = adAccountId, audienceId = audienceId, accountType = accountType, pageSize = pageSize, bookmark = bookmark)
 
         return when (localVarResponse.responseType) {
@@ -94,7 +94,7 @@ class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client: Call
      * List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceId Unique identifier of the audience to use to filter the results.
-     * @param accountType Filter accounts by account type. (default to AD_ACCOUNT)
+     * @param accountType Filter accounts by account type. (default to AudienceAccountType.AD_ACCOUNT)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return ApiResponse<AdAccountsAudiencesSharedAccountsList200Response?>
@@ -116,7 +116,7 @@ class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client: Call
      *
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceId Unique identifier of the audience to use to filter the results.
-     * @param accountType Filter accounts by account type. (default to AD_ACCOUNT)
+     * @param accountType Filter accounts by account type. (default to AudienceAccountType.AD_ACCOUNT)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return RequestConfig
@@ -153,7 +153,7 @@ class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client: Call
      * List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
      * @param businessId Unique identifier of the requesting business.
      * @param audienceId Unique identifier of the audience to use to filter the results.
-     * @param accountType Filter accounts by account type. (default to AD_ACCOUNT)
+     * @param accountType Filter accounts by account type. (default to AudienceAccountType.AD_ACCOUNT)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return AdAccountsAudiencesSharedAccountsList200Response
@@ -165,7 +165,7 @@ class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client: Call
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun businessAccountAudiencesSharedAccountsList(businessId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType = AD_ACCOUNT, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : AdAccountsAudiencesSharedAccountsList200Response {
+    fun businessAccountAudiencesSharedAccountsList(businessId: kotlin.String, audienceId: kotlin.String, accountType: AudienceAccountType = AudienceAccountType.AD_ACCOUNT, pageSize: kotlin.Int? = 25, bookmark: kotlin.String? = null) : AdAccountsAudiencesSharedAccountsList200Response {
         val localVarResponse = businessAccountAudiencesSharedAccountsListWithHttpInfo(businessId = businessId, audienceId = audienceId, accountType = accountType, pageSize = pageSize, bookmark = bookmark)
 
         return when (localVarResponse.responseType) {
@@ -189,7 +189,7 @@ class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client: Call
      * List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
      * @param businessId Unique identifier of the requesting business.
      * @param audienceId Unique identifier of the audience to use to filter the results.
-     * @param accountType Filter accounts by account type. (default to AD_ACCOUNT)
+     * @param accountType Filter accounts by account type. (default to AudienceAccountType.AD_ACCOUNT)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return ApiResponse<AdAccountsAudiencesSharedAccountsList200Response?>
@@ -211,7 +211,7 @@ class AudienceSharingApi(basePath: kotlin.String = defaultBasePath, client: Call
      *
      * @param businessId Unique identifier of the requesting business.
      * @param audienceId Unique identifier of the audience to use to filter the results.
-     * @param accountType Filter accounts by account type. (default to AD_ACCOUNT)
+     * @param accountType Filter accounts by account type. (default to AudienceAccountType.AD_ACCOUNT)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @return RequestConfig

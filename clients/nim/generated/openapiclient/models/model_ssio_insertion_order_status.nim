@@ -9,10 +9,35 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type SSIOInsertionOrderStatus* = object
   ## 
-  pinOrderId*: string ## Salesforce order id
-  status*: string ## Salesforce insertion order status
-  creationTime*: string ## Salesforce insertion order creation time
+  pinOrderId*: Option[string] ## Salesforce order id
+  status*: Option[string] ## Salesforce insertion order status
+  creationTime*: Option[string] ## Salesforce insertion order creation time
+
+
+# Custom JSON deserialization for SSIOInsertionOrderStatus with custom field names
+proc to*(node: JsonNode, T: typedesc[SSIOInsertionOrderStatus]): SSIOInsertionOrderStatus =
+  result = SSIOInsertionOrderStatus()
+  if node.kind == JObject:
+    if node.hasKey("pin_order_id") and node["pin_order_id"].kind != JNull:
+      result.pinOrderId = some(to(node["pin_order_id"], typeof(result.pinOrderId.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+    if node.hasKey("creation_time") and node["creation_time"].kind != JNull:
+      result.creationTime = some(to(node["creation_time"], typeof(result.creationTime.get())))
+
+# Custom JSON serialization for SSIOInsertionOrderStatus with custom field names
+proc `%`*(obj: SSIOInsertionOrderStatus): JsonNode =
+  result = newJObject()
+  if obj.pinOrderId.isSome():
+    result["pin_order_id"] = %obj.pinOrderId.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.creationTime.isSome():
+    result["creation_time"] = %obj.creationTime.get()
+

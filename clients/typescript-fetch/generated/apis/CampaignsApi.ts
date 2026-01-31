@@ -216,8 +216,12 @@ export class CampaignsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/campaigns/targeting_analytics`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/campaigns/targeting_analytics`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -327,8 +331,12 @@ export class CampaignsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/campaigns/analytics`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/campaigns/analytics`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -376,8 +384,12 @@ export class CampaignsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/campaigns`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/campaigns`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -424,8 +436,13 @@ export class CampaignsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/campaigns/{campaign_id}`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+        urlPath = urlPath.replace(`{${"campaign_id"}}`, encodeURIComponent(String(requestParameters['campaignId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/campaigns/{campaign_id}`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))).replace(`{${"campaign_id"}}`, encodeURIComponent(String(requestParameters['campaignId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -484,8 +501,12 @@ export class CampaignsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/campaigns`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/campaigns`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -533,8 +554,12 @@ export class CampaignsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/campaigns`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/campaigns`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,

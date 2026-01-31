@@ -12,9 +12,9 @@
     },
     {
       "name": "auto_targeting_enabled",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.",
-      "default": null
+      "default": true
     },
     {
       "name": "targeting_attributes",

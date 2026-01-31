@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "GOOGLE_PRODUCT_CATEGORY_2":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                gOOGLEPRODUCTCATEGORY2 = new Option<CatalogsProductGroupMultipleStringListCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleStringListCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            gOOGLEPRODUCTCATEGORY2 = new Option<CatalogsProductGroupMultipleStringListCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleStringListCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -62,51 +61,6 @@ namespace Org.OpenAPITools.Test.Model
         public void CatalogTypeTest()
         {
             // TODO unit test for the property 'CatalogType'
-        }
-
-        /// <summary>
-        /// Test the property 'BatchId'
-        /// </summary>
-        [Fact]
-        public void BatchIdTest()
-        {
-            // TODO unit test for the property 'BatchId'
-        }
-
-        /// <summary>
-        /// Test the property 'CreatedTime'
-        /// </summary>
-        [Fact]
-        public void CreatedTimeTest()
-        {
-            // TODO unit test for the property 'CreatedTime'
-        }
-
-        /// <summary>
-        /// Test the property 'CompletedTime'
-        /// </summary>
-        [Fact]
-        public void CompletedTimeTest()
-        {
-            // TODO unit test for the property 'CompletedTime'
-        }
-
-        /// <summary>
-        /// Test the property 'Status'
-        /// </summary>
-        [Fact]
-        public void StatusTest()
-        {
-            // TODO unit test for the property 'Status'
-        }
-
-        /// <summary>
-        /// Test the property 'Items'
-        /// </summary>
-        [Fact]
-        public void ItemsTest()
-        {
-            // TODO unit test for the property 'Items'
         }
     }
 }

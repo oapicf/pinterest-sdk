@@ -54,47 +54,111 @@ func NewPinsAPIController(s PinsAPIServicer, opts ...PinsAPIOption) *PinsAPICont
 func (c *PinsAPIController) Routes() Routes {
 	return Routes{
 		"PinsList": Route{
+			"PinsList",
 			strings.ToUpper("Get"),
 			"/v5/pins",
 			c.PinsList,
 		},
 		"PinsCreate": Route{
+			"PinsCreate",
 			strings.ToUpper("Post"),
 			"/v5/pins",
 			c.PinsCreate,
 		},
 		"PinsGet": Route{
+			"PinsGet",
 			strings.ToUpper("Get"),
 			"/v5/pins/{pin_id}",
 			c.PinsGet,
 		},
 		"PinsDelete": Route{
+			"PinsDelete",
 			strings.ToUpper("Delete"),
 			"/v5/pins/{pin_id}",
 			c.PinsDelete,
 		},
 		"PinsUpdate": Route{
+			"PinsUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/pins/{pin_id}",
 			c.PinsUpdate,
 		},
 		"PinsAnalytics": Route{
+			"PinsAnalytics",
 			strings.ToUpper("Get"),
 			"/v5/pins/{pin_id}/analytics",
 			c.PinsAnalytics,
 		},
 		"MultiPinsAnalytics": Route{
+			"MultiPinsAnalytics",
 			strings.ToUpper("Get"),
 			"/v5/pins/analytics",
 			c.MultiPinsAnalytics,
 		},
 		"PinsSave": Route{
+			"PinsSave",
 			strings.ToUpper("Post"),
 			"/v5/pins/{pin_id}/save",
 			c.PinsSave,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the PinsAPIController
+func (c *PinsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"PinsList",
+			strings.ToUpper("Get"),
+			"/v5/pins",
+			c.PinsList,
+		},
+		Route{
+			"PinsCreate",
+			strings.ToUpper("Post"),
+			"/v5/pins",
+			c.PinsCreate,
+		},
+		Route{
+			"PinsGet",
+			strings.ToUpper("Get"),
+			"/v5/pins/{pin_id}",
+			c.PinsGet,
+		},
+		Route{
+			"PinsDelete",
+			strings.ToUpper("Delete"),
+			"/v5/pins/{pin_id}",
+			c.PinsDelete,
+		},
+		Route{
+			"PinsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/pins/{pin_id}",
+			c.PinsUpdate,
+		},
+		Route{
+			"PinsAnalytics",
+			strings.ToUpper("Get"),
+			"/v5/pins/{pin_id}/analytics",
+			c.PinsAnalytics,
+		},
+		Route{
+			"MultiPinsAnalytics",
+			strings.ToUpper("Get"),
+			"/v5/pins/analytics",
+			c.MultiPinsAnalytics,
+		},
+		Route{
+			"PinsSave",
+			strings.ToUpper("Post"),
+			"/v5/pins/{pin_id}/save",
+			c.PinsSave,
+		},
+	}
+}
+
+
 
 // PinsList - List Pins
 func (c *PinsAPIController) PinsList(w http.ResponseWriter, r *http.Request) {

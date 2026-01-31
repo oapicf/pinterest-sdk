@@ -27,7 +27,7 @@ data class UserSingleAssetBinding(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("user") val user: BusinessAccessUserSummary? = null
-    ) {
+) {
 
 }
 

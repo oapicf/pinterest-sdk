@@ -417,7 +417,7 @@ func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
 	campaignIds := []string{"Inner_example"} // []string | List of Campaign Ids to use to filter the results. (optional)
 	adGroupIds := []string{"Inner_example"} // []string | List of Ad group Ids to use to filter the results. (optional)
-	entityStatuses := []string{"ACTIVE"} // []string | Entity status (optional) (default to ["ACTIVE","PAUSED"])
+	entityStatuses := []string{"ACTIVE"} // []string | Entity status (optional) (default to {"ACTIVE", "PAUSED"})
 	pageSize := int32(56) // int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
 	order := "ASCENDING" // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
 	bookmark := "bookmark_example" // string | Cursor used to fetch the next page of items (optional)
@@ -453,7 +453,7 @@ Name | Type | Description  | Notes
 
  **campaignIds** | **[]string** | List of Campaign Ids to use to filter the results. | 
  **adGroupIds** | **[]string** | List of Ad group Ids to use to filter the results. | 
- **entityStatuses** | **[]string** | Entity status | [default to [&quot;ACTIVE&quot;,&quot;PAUSED&quot;]]
+ **entityStatuses** | **[]string** | Entity status | [default to {&quot;ACTIVE&quot;, &quot;PAUSED&quot;}]
  **pageSize** | **int32** | Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [default to 25]
  **order** | **string** | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. | 
  **bookmark** | **string** | Cursor used to fetch the next page of items | 

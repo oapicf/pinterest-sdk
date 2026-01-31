@@ -25,24 +25,24 @@ export interface OptimizationGoalMetadataConversionTagV3GoalMetadata {
     learning_mode_type?: OptimizationGoalMetadataConversionTagV3GoalMetadata.LearningModeTypeEnum | null;
 }
 export namespace OptimizationGoalMetadataConversionTagV3GoalMetadata {
-    export type ConversionEventEnum = 'PAGE_VISIT' | 'SIGNUP' | 'CHECKOUT' | 'CUSTOM' | 'VIEW_CATEGORY' | 'SEARCH' | 'ADD_TO_CART' | 'WATCH_VIDEO' | 'LEAD' | 'APP_INSTALL';
     export const ConversionEventEnum = {
-        PageVisit: 'PAGE_VISIT' as ConversionEventEnum,
-        Signup: 'SIGNUP' as ConversionEventEnum,
-        Checkout: 'CHECKOUT' as ConversionEventEnum,
-        Custom: 'CUSTOM' as ConversionEventEnum,
-        ViewCategory: 'VIEW_CATEGORY' as ConversionEventEnum,
-        Search: 'SEARCH' as ConversionEventEnum,
-        AddToCart: 'ADD_TO_CART' as ConversionEventEnum,
-        WatchVideo: 'WATCH_VIDEO' as ConversionEventEnum,
-        Lead: 'LEAD' as ConversionEventEnum,
-        AppInstall: 'APP_INSTALL' as ConversionEventEnum
-    };
-    export type LearningModeTypeEnum = 'NOT_ACTIVE' | 'ACTIVE';
+        PageVisit: 'PAGE_VISIT',
+        Signup: 'SIGNUP',
+        Checkout: 'CHECKOUT',
+        Custom: 'CUSTOM',
+        ViewCategory: 'VIEW_CATEGORY',
+        Search: 'SEARCH',
+        AddToCart: 'ADD_TO_CART',
+        WatchVideo: 'WATCH_VIDEO',
+        Lead: 'LEAD',
+        AppInstall: 'APP_INSTALL'
+    } as const;
+    export type ConversionEventEnum = typeof ConversionEventEnum[keyof typeof ConversionEventEnum];
     export const LearningModeTypeEnum = {
-        NotActive: 'NOT_ACTIVE' as LearningModeTypeEnum,
-        Active: 'ACTIVE' as LearningModeTypeEnum
-    };
+        NotActive: 'NOT_ACTIVE',
+        Active: 'ACTIVE'
+    } as const;
+    export type LearningModeTypeEnum = typeof LearningModeTypeEnum[keyof typeof LearningModeTypeEnum];
 }
 
 

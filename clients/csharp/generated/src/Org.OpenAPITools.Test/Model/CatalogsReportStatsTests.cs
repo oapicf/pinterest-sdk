@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -62,78 +61,6 @@ namespace Org.OpenAPITools.Test.Model
         public void ReportTypeTest()
         {
             // TODO unit test for the property 'ReportType'
-        }
-
-        /// <summary>
-        /// Test the property 'CatalogId'
-        /// </summary>
-        [Fact]
-        public void CatalogIdTest()
-        {
-            // TODO unit test for the property 'CatalogId'
-        }
-
-        /// <summary>
-        /// Test the property 'Code'
-        /// </summary>
-        [Fact]
-        public void CodeTest()
-        {
-            // TODO unit test for the property 'Code'
-        }
-
-        /// <summary>
-        /// Test the property 'CodeLabel'
-        /// </summary>
-        [Fact]
-        public void CodeLabelTest()
-        {
-            // TODO unit test for the property 'CodeLabel'
-        }
-
-        /// <summary>
-        /// Test the property 'Message'
-        /// </summary>
-        [Fact]
-        public void MessageTest()
-        {
-            // TODO unit test for the property 'Message'
-        }
-
-        /// <summary>
-        /// Test the property 'Occurrences'
-        /// </summary>
-        [Fact]
-        public void OccurrencesTest()
-        {
-            // TODO unit test for the property 'Occurrences'
-        }
-
-        /// <summary>
-        /// Test the property 'Severity'
-        /// </summary>
-        [Fact]
-        public void SeverityTest()
-        {
-            // TODO unit test for the property 'Severity'
-        }
-
-        /// <summary>
-        /// Test the property 'IneligibleForAds'
-        /// </summary>
-        [Fact]
-        public void IneligibleForAdsTest()
-        {
-            // TODO unit test for the property 'IneligibleForAds'
-        }
-
-        /// <summary>
-        /// Test the property 'IneligibleForOrganic'
-        /// </summary>
-        [Fact]
-        public void IneligibleForOrganicTest()
-        {
-            // TODO unit test for the property 'IneligibleForOrganic'
         }
     }
 }

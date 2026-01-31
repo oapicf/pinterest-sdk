@@ -68,7 +68,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsVerticalFeedsUpdateRequest extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsVerticalFeedsUpdateRequest.class.getName());
 
@@ -131,7 +131,7 @@ public class CatalogsVerticalFeedsUpdateRequest extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsRetailFeedsUpdateRequest'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsRetailFeedsUpdateRequest failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsRetailFeedsUpdateRequest failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsRetailFeedsUpdateRequest'", e);
                     }
                     // deserialize CatalogsHotelFeedsUpdateRequest
@@ -143,7 +143,7 @@ public class CatalogsVerticalFeedsUpdateRequest extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsHotelFeedsUpdateRequest'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsHotelFeedsUpdateRequest failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsHotelFeedsUpdateRequest failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsHotelFeedsUpdateRequest'", e);
                     }
                     // deserialize CatalogsCreativeAssetsFeedsUpdateRequest
@@ -155,7 +155,7 @@ public class CatalogsVerticalFeedsUpdateRequest extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsCreativeAssetsFeedsUpdateRequest'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsCreativeAssetsFeedsUpdateRequest failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreativeAssetsFeedsUpdateRequest failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsCreativeAssetsFeedsUpdateRequest'", e);
                     }
 
@@ -165,7 +165,7 @@ public class CatalogsVerticalFeedsUpdateRequest extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CatalogsVerticalFeedsUpdateRequest: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CatalogsVerticalFeedsUpdateRequest: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -281,7 +281,7 @@ public class CatalogsVerticalFeedsUpdateRequest extends AbstractOpenApiSchema {
             CatalogsRetailFeedsUpdateRequest.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsRetailFeedsUpdateRequest failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsRetailFeedsUpdateRequest failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsHotelFeedsUpdateRequest
@@ -289,7 +289,7 @@ public class CatalogsVerticalFeedsUpdateRequest extends AbstractOpenApiSchema {
             CatalogsHotelFeedsUpdateRequest.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsHotelFeedsUpdateRequest failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsHotelFeedsUpdateRequest failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsCreativeAssetsFeedsUpdateRequest
@@ -297,11 +297,11 @@ public class CatalogsVerticalFeedsUpdateRequest extends AbstractOpenApiSchema {
             CatalogsCreativeAssetsFeedsUpdateRequest.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsCreativeAssetsFeedsUpdateRequest failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreativeAssetsFeedsUpdateRequest failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CatalogsVerticalFeedsUpdateRequest with oneOf schemas: CatalogsCreativeAssetsFeedsUpdateRequest, CatalogsHotelFeedsUpdateRequest, CatalogsRetailFeedsUpdateRequest. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CatalogsVerticalFeedsUpdateRequest with oneOf schemas: CatalogsCreativeAssetsFeedsUpdateRequest, CatalogsHotelFeedsUpdateRequest, CatalogsRetailFeedsUpdateRequest. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

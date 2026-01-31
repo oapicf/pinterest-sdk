@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * CustomerListRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CustomerListRequest {
 
   private String name;
@@ -104,7 +104,7 @@ public class CustomerListRequest {
     this.listType = listType;
   }
 
-  public CustomerListRequest exceptions(Object exceptions) {
+  public CustomerListRequest exceptions(@Nullable Object exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -116,11 +116,11 @@ public class CustomerListRequest {
   
   @Schema(name = "exceptions", description = "Customer list errors.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exceptions")
-  public Object getExceptions() {
+  public @Nullable Object getExceptions() {
     return exceptions;
   }
 
-  public void setExceptions(Object exceptions) {
+  public void setExceptions(@Nullable Object exceptions) {
     this.exceptions = exceptions;
   }
 

@@ -18,15 +18,26 @@ import .*
 
 
 /**
- * A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
+ * 
  * @param refreshToken 
  * @param refreshTokenExpiresIn 
  * @param refreshTokenExpiresAt 
+ * @param accessToken 
+ * @param tokenType 
+ * @param expiresIn 
+ * @param scope 
+ * @param responseType 
  */
 object OauthAccessTokenResponseEverlastingRefreshs : BaseTable<OauthAccessTokenResponseEverlastingRefresh>("OauthAccessTokenResponseEverlastingRefresh") {
     val refreshToken = text("refresh_token")
     val refreshTokenExpiresIn = int("refresh_token_expires_in")
     val refreshTokenExpiresAt = int("refresh_token_expires_at")
+    val accessToken = text("access_token")
+    val tokenType = text("token_type")
+    val expiresIn = int("expires_in")
+    val scope = text("scope")
+    val responseType = text("response_type").transform({ OauthAccessTokenResponseEverlastingRefresh.ResponseType.valueOf(it ?: "authorization_code") }, { it.value }) /* null */
+
 
     /**
      * Create an entity of type OauthAccessTokenResponseEverlastingRefresh from the model
@@ -34,7 +45,12 @@ object OauthAccessTokenResponseEverlastingRefreshs : BaseTable<OauthAccessTokenR
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = OauthAccessTokenResponseEverlastingRefresh(
         refreshToken = row[refreshToken] ?: "" /* kotlin.String */,
         refreshTokenExpiresIn = row[refreshTokenExpiresIn] ?: 0 /* kotlin.Int */,
-        refreshTokenExpiresAt = row[refreshTokenExpiresAt] ?: 0 /* kotlin.Int */
+        refreshTokenExpiresAt = row[refreshTokenExpiresAt] ?: 0 /* kotlin.Int */,
+        accessToken = row[accessToken] ?: "" /* kotlin.String */,
+        tokenType = row[tokenType] ?: "" /* kotlin.String */,
+        expiresIn = row[expiresIn] ?: 0 /* kotlin.Int */,
+        scope = row[scope] ?: "" /* kotlin.String */,
+        responseType = row[responseType]  /* kotlin.String? */
     )
 
     /**
@@ -55,6 +71,11 @@ object OauthAccessTokenResponseEverlastingRefreshs : BaseTable<OauthAccessTokenR
             set(OauthAccessTokenResponseEverlastingRefreshs.refreshToken, entity.refreshToken)
             set(OauthAccessTokenResponseEverlastingRefreshs.refreshTokenExpiresIn, entity.refreshTokenExpiresIn)
             set(OauthAccessTokenResponseEverlastingRefreshs.refreshTokenExpiresAt, entity.refreshTokenExpiresAt)
+            set(OauthAccessTokenResponseEverlastingRefreshs.accessToken, entity.accessToken)
+            set(OauthAccessTokenResponseEverlastingRefreshs.tokenType, entity.tokenType)
+            set(OauthAccessTokenResponseEverlastingRefreshs.expiresIn, entity.expiresIn)
+            set(OauthAccessTokenResponseEverlastingRefreshs.scope, entity.scope)
+            set(OauthAccessTokenResponseEverlastingRefreshs.responseType, entity.responseType)
         }
     }
 

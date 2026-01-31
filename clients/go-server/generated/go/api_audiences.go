@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
+	"io"
 	"net/http"
 	"strings"
 
@@ -53,32 +55,75 @@ func NewAudiencesAPIController(s AudiencesAPIServicer, opts ...AudiencesAPIOptio
 func (c *AudiencesAPIController) Routes() Routes {
 	return Routes{
 		"AudiencesList": Route{
+			"AudiencesList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/audiences",
 			c.AudiencesList,
 		},
 		"AudiencesCreate": Route{
+			"AudiencesCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/audiences",
 			c.AudiencesCreate,
 		},
 		"AudiencesGet": Route{
+			"AudiencesGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/audiences/{audience_id}",
 			c.AudiencesGet,
 		},
 		"AudiencesUpdate": Route{
+			"AudiencesUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/audiences/{audience_id}",
 			c.AudiencesUpdate,
 		},
 		"AudiencesCreateCustom": Route{
+			"AudiencesCreateCustom",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/audiences/custom",
 			c.AudiencesCreateCustom,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the AudiencesAPIController
+func (c *AudiencesAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"AudiencesList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/audiences",
+			c.AudiencesList,
+		},
+		Route{
+			"AudiencesCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/audiences",
+			c.AudiencesCreate,
+		},
+		Route{
+			"AudiencesGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/audiences/{audience_id}",
+			c.AudiencesGet,
+		},
+		Route{
+			"AudiencesUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/audiences/{audience_id}",
+			c.AudiencesUpdate,
+		},
+		Route{
+			"AudiencesCreateCustom",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/audiences/custom",
+			c.AudiencesCreateCustom,
+		},
+	}
+}
+
+
 
 // AudiencesList - List audiences
 func (c *AudiencesAPIController) AudiencesList(w http.ResponseWriter, r *http.Request) {

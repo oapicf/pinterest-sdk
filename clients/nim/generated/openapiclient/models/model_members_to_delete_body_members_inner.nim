@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_business_role_for_members
 
@@ -16,3 +18,20 @@ type MembersToDeleteBodyMembersInner* = object
   ## 
   memberId*: string ## Unique identifier of the member
   businessRole*: BusinessRoleForMembers
+
+
+# Custom JSON deserialization for MembersToDeleteBodyMembersInner with custom field names
+proc to*(node: JsonNode, T: typedesc[MembersToDeleteBodyMembersInner]): MembersToDeleteBodyMembersInner =
+  result = MembersToDeleteBodyMembersInner()
+  if node.kind == JObject:
+    if node.hasKey("member_id"):
+      result.memberId = to(node["member_id"], string)
+    if node.hasKey("business_role"):
+      result.businessRole = to(node["business_role"], BusinessRoleForMembers)
+
+# Custom JSON serialization for MembersToDeleteBodyMembersInner with custom field names
+proc `%`*(obj: MembersToDeleteBodyMembersInner): JsonNode =
+  result = newJObject()
+  result["member_id"] = %obj.memberId
+  result["business_role"] = %obj.businessRole
+

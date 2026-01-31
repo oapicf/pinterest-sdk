@@ -109,7 +109,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call assetGroupCreateCall(String businessId, CreateAssetGroupBody createAssetGroupBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call assetGroupCreateCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull CreateAssetGroupBody createAssetGroupBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -156,7 +156,7 @@ public class BusinessAccessAssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call assetGroupCreateValidateBeforeCall(String businessId, CreateAssetGroupBody createAssetGroupBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call assetGroupCreateValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull CreateAssetGroupBody createAssetGroupBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling assetGroupCreate(Async)");
@@ -187,7 +187,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CreateAssetGroupResponse assetGroupCreate(String businessId, CreateAssetGroupBody createAssetGroupBody) throws ApiException {
+    public CreateAssetGroupResponse assetGroupCreate(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull CreateAssetGroupBody createAssetGroupBody) throws ApiException {
         ApiResponse<CreateAssetGroupResponse> localVarResp = assetGroupCreateWithHttpInfo(businessId, createAssetGroupBody);
         return localVarResp.getData();
     }
@@ -208,7 +208,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreateAssetGroupResponse> assetGroupCreateWithHttpInfo(String businessId, CreateAssetGroupBody createAssetGroupBody) throws ApiException {
+    public ApiResponse<CreateAssetGroupResponse> assetGroupCreateWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull CreateAssetGroupBody createAssetGroupBody) throws ApiException {
         okhttp3.Call localVarCall = assetGroupCreateValidateBeforeCall(businessId, createAssetGroupBody, null);
         Type localVarReturnType = new TypeToken<CreateAssetGroupResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -231,7 +231,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call assetGroupCreateAsync(String businessId, CreateAssetGroupBody createAssetGroupBody, final ApiCallback<CreateAssetGroupResponse> _callback) throws ApiException {
+    public okhttp3.Call assetGroupCreateAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull CreateAssetGroupBody createAssetGroupBody, final ApiCallback<CreateAssetGroupResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = assetGroupCreateValidateBeforeCall(businessId, createAssetGroupBody, _callback);
         Type localVarReturnType = new TypeToken<CreateAssetGroupResponse>(){}.getType();
@@ -254,7 +254,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call assetGroupDeleteCall(String businessId, DeleteAssetGroupBody deleteAssetGroupBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call assetGroupDeleteCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeleteAssetGroupBody deleteAssetGroupBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -301,7 +301,7 @@ public class BusinessAccessAssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call assetGroupDeleteValidateBeforeCall(String businessId, DeleteAssetGroupBody deleteAssetGroupBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call assetGroupDeleteValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeleteAssetGroupBody deleteAssetGroupBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling assetGroupDelete(Async)");
@@ -332,7 +332,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public DeleteAssetGroupResponse assetGroupDelete(String businessId, DeleteAssetGroupBody deleteAssetGroupBody) throws ApiException {
+    public DeleteAssetGroupResponse assetGroupDelete(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeleteAssetGroupBody deleteAssetGroupBody) throws ApiException {
         ApiResponse<DeleteAssetGroupResponse> localVarResp = assetGroupDeleteWithHttpInfo(businessId, deleteAssetGroupBody);
         return localVarResp.getData();
     }
@@ -353,7 +353,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeleteAssetGroupResponse> assetGroupDeleteWithHttpInfo(String businessId, DeleteAssetGroupBody deleteAssetGroupBody) throws ApiException {
+    public ApiResponse<DeleteAssetGroupResponse> assetGroupDeleteWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeleteAssetGroupBody deleteAssetGroupBody) throws ApiException {
         okhttp3.Call localVarCall = assetGroupDeleteValidateBeforeCall(businessId, deleteAssetGroupBody, null);
         Type localVarReturnType = new TypeToken<DeleteAssetGroupResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -376,7 +376,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call assetGroupDeleteAsync(String businessId, DeleteAssetGroupBody deleteAssetGroupBody, final ApiCallback<DeleteAssetGroupResponse> _callback) throws ApiException {
+    public okhttp3.Call assetGroupDeleteAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeleteAssetGroupBody deleteAssetGroupBody, final ApiCallback<DeleteAssetGroupResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = assetGroupDeleteValidateBeforeCall(businessId, deleteAssetGroupBody, _callback);
         Type localVarReturnType = new TypeToken<DeleteAssetGroupResponse>(){}.getType();
@@ -399,7 +399,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call assetGroupUpdateCall(String businessId, UpdateAssetGroupBody updateAssetGroupBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call assetGroupUpdateCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdateAssetGroupBody updateAssetGroupBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -446,7 +446,7 @@ public class BusinessAccessAssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call assetGroupUpdateValidateBeforeCall(String businessId, UpdateAssetGroupBody updateAssetGroupBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call assetGroupUpdateValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdateAssetGroupBody updateAssetGroupBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling assetGroupUpdate(Async)");
@@ -477,7 +477,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public UpdateAssetGroupResponse assetGroupUpdate(String businessId, UpdateAssetGroupBody updateAssetGroupBody) throws ApiException {
+    public UpdateAssetGroupResponse assetGroupUpdate(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdateAssetGroupBody updateAssetGroupBody) throws ApiException {
         ApiResponse<UpdateAssetGroupResponse> localVarResp = assetGroupUpdateWithHttpInfo(businessId, updateAssetGroupBody);
         return localVarResp.getData();
     }
@@ -498,7 +498,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UpdateAssetGroupResponse> assetGroupUpdateWithHttpInfo(String businessId, UpdateAssetGroupBody updateAssetGroupBody) throws ApiException {
+    public ApiResponse<UpdateAssetGroupResponse> assetGroupUpdateWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdateAssetGroupBody updateAssetGroupBody) throws ApiException {
         okhttp3.Call localVarCall = assetGroupUpdateValidateBeforeCall(businessId, updateAssetGroupBody, null);
         Type localVarReturnType = new TypeToken<UpdateAssetGroupResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -521,7 +521,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call assetGroupUpdateAsync(String businessId, UpdateAssetGroupBody updateAssetGroupBody, final ApiCallback<UpdateAssetGroupResponse> _callback) throws ApiException {
+    public okhttp3.Call assetGroupUpdateAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdateAssetGroupBody updateAssetGroupBody, final ApiCallback<UpdateAssetGroupResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = assetGroupUpdateValidateBeforeCall(businessId, updateAssetGroupBody, _callback);
         Type localVarReturnType = new TypeToken<UpdateAssetGroupResponse>(){}.getType();
@@ -546,7 +546,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessAssetMembersGetCall(String businessId, String assetId, String bookmark, Integer pageSize, Integer startIndex, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call businessAssetMembersGetCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String assetId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer startIndex, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -605,7 +605,7 @@ public class BusinessAccessAssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call businessAssetMembersGetValidateBeforeCall(String businessId, String assetId, String bookmark, Integer pageSize, Integer startIndex, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call businessAssetMembersGetValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String assetId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer startIndex, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling businessAssetMembersGet(Async)");
@@ -638,7 +638,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BusinessAssetMembersGet200Response businessAssetMembersGet(String businessId, String assetId, String bookmark, Integer pageSize, Integer startIndex) throws ApiException {
+    public BusinessAssetMembersGet200Response businessAssetMembersGet(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String assetId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer startIndex) throws ApiException {
         ApiResponse<BusinessAssetMembersGet200Response> localVarResp = businessAssetMembersGetWithHttpInfo(businessId, assetId, bookmark, pageSize, startIndex);
         return localVarResp.getData();
     }
@@ -661,7 +661,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BusinessAssetMembersGet200Response> businessAssetMembersGetWithHttpInfo(String businessId, String assetId, String bookmark, Integer pageSize, Integer startIndex) throws ApiException {
+    public ApiResponse<BusinessAssetMembersGet200Response> businessAssetMembersGetWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String assetId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer startIndex) throws ApiException {
         okhttp3.Call localVarCall = businessAssetMembersGetValidateBeforeCall(businessId, assetId, bookmark, pageSize, startIndex, null);
         Type localVarReturnType = new TypeToken<BusinessAssetMembersGet200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -686,7 +686,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessAssetMembersGetAsync(String businessId, String assetId, String bookmark, Integer pageSize, Integer startIndex, final ApiCallback<BusinessAssetMembersGet200Response> _callback) throws ApiException {
+    public okhttp3.Call businessAssetMembersGetAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String assetId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable Integer startIndex, final ApiCallback<BusinessAssetMembersGet200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = businessAssetMembersGetValidateBeforeCall(businessId, assetId, bookmark, pageSize, startIndex, _callback);
         Type localVarReturnType = new TypeToken<BusinessAssetMembersGet200Response>(){}.getType();
@@ -711,7 +711,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessAssetPartnersGetCall(String businessId, String assetId, Integer startIndex, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call businessAssetPartnersGetCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String assetId, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -770,7 +770,7 @@ public class BusinessAccessAssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call businessAssetPartnersGetValidateBeforeCall(String businessId, String assetId, Integer startIndex, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call businessAssetPartnersGetValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String assetId, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling businessAssetPartnersGet(Async)");
@@ -803,7 +803,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BusinessAssetPartnersGet200Response businessAssetPartnersGet(String businessId, String assetId, Integer startIndex, String bookmark, Integer pageSize) throws ApiException {
+    public BusinessAssetPartnersGet200Response businessAssetPartnersGet(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String assetId, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<BusinessAssetPartnersGet200Response> localVarResp = businessAssetPartnersGetWithHttpInfo(businessId, assetId, startIndex, bookmark, pageSize);
         return localVarResp.getData();
     }
@@ -826,7 +826,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BusinessAssetPartnersGet200Response> businessAssetPartnersGetWithHttpInfo(String businessId, String assetId, Integer startIndex, String bookmark, Integer pageSize) throws ApiException {
+    public ApiResponse<BusinessAssetPartnersGet200Response> businessAssetPartnersGetWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String assetId, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = businessAssetPartnersGetValidateBeforeCall(businessId, assetId, startIndex, bookmark, pageSize, null);
         Type localVarReturnType = new TypeToken<BusinessAssetPartnersGet200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -851,7 +851,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessAssetPartnersGetAsync(String businessId, String assetId, Integer startIndex, String bookmark, Integer pageSize, final ApiCallback<BusinessAssetPartnersGet200Response> _callback) throws ApiException {
+    public okhttp3.Call businessAssetPartnersGetAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String assetId, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback<BusinessAssetPartnersGet200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = businessAssetPartnersGetValidateBeforeCall(businessId, assetId, startIndex, bookmark, pageSize, _callback);
         Type localVarReturnType = new TypeToken<BusinessAssetPartnersGet200Response>(){}.getType();
@@ -879,7 +879,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessAssetsGetCall(String businessId, List<PermissionsWithOwner> permissions, String childAssetId, String assetGroupId, String assetType, Integer startIndex, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call businessAssetsGetCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable List<PermissionsWithOwner> permissions, @javax.annotation.Nullable String childAssetId, @javax.annotation.Nullable String assetGroupId, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -953,7 +953,7 @@ public class BusinessAccessAssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call businessAssetsGetValidateBeforeCall(String businessId, List<PermissionsWithOwner> permissions, String childAssetId, String assetGroupId, String assetType, Integer startIndex, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call businessAssetsGetValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable List<PermissionsWithOwner> permissions, @javax.annotation.Nullable String childAssetId, @javax.annotation.Nullable String assetGroupId, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling businessAssetsGet(Async)");
@@ -984,7 +984,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BusinessAssetsGet200Response businessAssetsGet(String businessId, List<PermissionsWithOwner> permissions, String childAssetId, String assetGroupId, String assetType, Integer startIndex, String bookmark, Integer pageSize) throws ApiException {
+    public BusinessAssetsGet200Response businessAssetsGet(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable List<PermissionsWithOwner> permissions, @javax.annotation.Nullable String childAssetId, @javax.annotation.Nullable String assetGroupId, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<BusinessAssetsGet200Response> localVarResp = businessAssetsGetWithHttpInfo(businessId, permissions, childAssetId, assetGroupId, assetType, startIndex, bookmark, pageSize);
         return localVarResp.getData();
     }
@@ -1010,7 +1010,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BusinessAssetsGet200Response> businessAssetsGetWithHttpInfo(String businessId, List<PermissionsWithOwner> permissions, String childAssetId, String assetGroupId, String assetType, Integer startIndex, String bookmark, Integer pageSize) throws ApiException {
+    public ApiResponse<BusinessAssetsGet200Response> businessAssetsGetWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable List<PermissionsWithOwner> permissions, @javax.annotation.Nullable String childAssetId, @javax.annotation.Nullable String assetGroupId, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = businessAssetsGetValidateBeforeCall(businessId, permissions, childAssetId, assetGroupId, assetType, startIndex, bookmark, pageSize, null);
         Type localVarReturnType = new TypeToken<BusinessAssetsGet200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1038,7 +1038,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessAssetsGetAsync(String businessId, List<PermissionsWithOwner> permissions, String childAssetId, String assetGroupId, String assetType, Integer startIndex, String bookmark, Integer pageSize, final ApiCallback<BusinessAssetsGet200Response> _callback) throws ApiException {
+    public okhttp3.Call businessAssetsGetAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable List<PermissionsWithOwner> permissions, @javax.annotation.Nullable String childAssetId, @javax.annotation.Nullable String assetGroupId, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback<BusinessAssetsGet200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = businessAssetsGetValidateBeforeCall(businessId, permissions, childAssetId, assetGroupId, assetType, startIndex, bookmark, pageSize, _callback);
         Type localVarReturnType = new TypeToken<BusinessAssetsGet200Response>(){}.getType();
@@ -1064,7 +1064,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessMemberAssetsGetCall(String businessId, String memberId, String assetType, Integer startIndex, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call businessMemberAssetsGetCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String memberId, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1127,7 +1127,7 @@ public class BusinessAccessAssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call businessMemberAssetsGetValidateBeforeCall(String businessId, String memberId, String assetType, Integer startIndex, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call businessMemberAssetsGetValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String memberId, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling businessMemberAssetsGet(Async)");
@@ -1161,7 +1161,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BusinessMemberAssetsGet200Response businessMemberAssetsGet(String businessId, String memberId, String assetType, Integer startIndex, String bookmark, Integer pageSize) throws ApiException {
+    public BusinessMemberAssetsGet200Response businessMemberAssetsGet(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String memberId, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<BusinessMemberAssetsGet200Response> localVarResp = businessMemberAssetsGetWithHttpInfo(businessId, memberId, assetType, startIndex, bookmark, pageSize);
         return localVarResp.getData();
     }
@@ -1185,7 +1185,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BusinessMemberAssetsGet200Response> businessMemberAssetsGetWithHttpInfo(String businessId, String memberId, String assetType, Integer startIndex, String bookmark, Integer pageSize) throws ApiException {
+    public ApiResponse<BusinessMemberAssetsGet200Response> businessMemberAssetsGetWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String memberId, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = businessMemberAssetsGetValidateBeforeCall(businessId, memberId, assetType, startIndex, bookmark, pageSize, null);
         Type localVarReturnType = new TypeToken<BusinessMemberAssetsGet200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1211,7 +1211,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessMemberAssetsGetAsync(String businessId, String memberId, String assetType, Integer startIndex, String bookmark, Integer pageSize, final ApiCallback<BusinessMemberAssetsGet200Response> _callback) throws ApiException {
+    public okhttp3.Call businessMemberAssetsGetAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String memberId, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback<BusinessMemberAssetsGet200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = businessMemberAssetsGetValidateBeforeCall(businessId, memberId, assetType, startIndex, bookmark, pageSize, _callback);
         Type localVarReturnType = new TypeToken<BusinessMemberAssetsGet200Response>(){}.getType();
@@ -1233,7 +1233,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessMembersAssetAccessDeleteCall(String businessId, BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call businessMembersAssetAccessDeleteCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1280,7 +1280,7 @@ public class BusinessAccessAssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call businessMembersAssetAccessDeleteValidateBeforeCall(String businessId, BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call businessMembersAssetAccessDeleteValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling businessMembersAssetAccessDelete(Async)");
@@ -1310,7 +1310,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete(String businessId, BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest) throws ApiException {
+    public DeleteMemberAccessResultsResponseArray businessMembersAssetAccessDelete(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest) throws ApiException {
         ApiResponse<DeleteMemberAccessResultsResponseArray> localVarResp = businessMembersAssetAccessDeleteWithHttpInfo(businessId, businessMembersAssetAccessDeleteRequest);
         return localVarResp.getData();
     }
@@ -1330,7 +1330,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeleteMemberAccessResultsResponseArray> businessMembersAssetAccessDeleteWithHttpInfo(String businessId, BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest) throws ApiException {
+    public ApiResponse<DeleteMemberAccessResultsResponseArray> businessMembersAssetAccessDeleteWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest) throws ApiException {
         okhttp3.Call localVarCall = businessMembersAssetAccessDeleteValidateBeforeCall(businessId, businessMembersAssetAccessDeleteRequest, null);
         Type localVarReturnType = new TypeToken<DeleteMemberAccessResultsResponseArray>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1352,7 +1352,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessMembersAssetAccessDeleteAsync(String businessId, BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest, final ApiCallback<DeleteMemberAccessResultsResponseArray> _callback) throws ApiException {
+    public okhttp3.Call businessMembersAssetAccessDeleteAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest, final ApiCallback<DeleteMemberAccessResultsResponseArray> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = businessMembersAssetAccessDeleteValidateBeforeCall(businessId, businessMembersAssetAccessDeleteRequest, _callback);
         Type localVarReturnType = new TypeToken<DeleteMemberAccessResultsResponseArray>(){}.getType();
@@ -1374,7 +1374,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessMembersAssetAccessUpdateCall(String businessId, UpdateMemberAssetAccessBody updateMemberAssetAccessBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call businessMembersAssetAccessUpdateCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdateMemberAssetAccessBody updateMemberAssetAccessBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1421,7 +1421,7 @@ public class BusinessAccessAssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call businessMembersAssetAccessUpdateValidateBeforeCall(String businessId, UpdateMemberAssetAccessBody updateMemberAssetAccessBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call businessMembersAssetAccessUpdateValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdateMemberAssetAccessBody updateMemberAssetAccessBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling businessMembersAssetAccessUpdate(Async)");
@@ -1451,7 +1451,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public UpdateMemberAssetsResultsResponseArray businessMembersAssetAccessUpdate(String businessId, UpdateMemberAssetAccessBody updateMemberAssetAccessBody) throws ApiException {
+    public UpdateMemberAssetsResultsResponseArray businessMembersAssetAccessUpdate(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdateMemberAssetAccessBody updateMemberAssetAccessBody) throws ApiException {
         ApiResponse<UpdateMemberAssetsResultsResponseArray> localVarResp = businessMembersAssetAccessUpdateWithHttpInfo(businessId, updateMemberAssetAccessBody);
         return localVarResp.getData();
     }
@@ -1471,7 +1471,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UpdateMemberAssetsResultsResponseArray> businessMembersAssetAccessUpdateWithHttpInfo(String businessId, UpdateMemberAssetAccessBody updateMemberAssetAccessBody) throws ApiException {
+    public ApiResponse<UpdateMemberAssetsResultsResponseArray> businessMembersAssetAccessUpdateWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdateMemberAssetAccessBody updateMemberAssetAccessBody) throws ApiException {
         okhttp3.Call localVarCall = businessMembersAssetAccessUpdateValidateBeforeCall(businessId, updateMemberAssetAccessBody, null);
         Type localVarReturnType = new TypeToken<UpdateMemberAssetsResultsResponseArray>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1493,7 +1493,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessMembersAssetAccessUpdateAsync(String businessId, UpdateMemberAssetAccessBody updateMemberAssetAccessBody, final ApiCallback<UpdateMemberAssetsResultsResponseArray> _callback) throws ApiException {
+    public okhttp3.Call businessMembersAssetAccessUpdateAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdateMemberAssetAccessBody updateMemberAssetAccessBody, final ApiCallback<UpdateMemberAssetsResultsResponseArray> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = businessMembersAssetAccessUpdateValidateBeforeCall(businessId, updateMemberAssetAccessBody, _callback);
         Type localVarReturnType = new TypeToken<UpdateMemberAssetsResultsResponseArray>(){}.getType();
@@ -1504,7 +1504,7 @@ public class BusinessAccessAssetsApi {
      * Build call for businessPartnerAssetAccessGet
      * @param businessId Unique identifier of the requesting business. (required)
      * @param partnerId The partner id to be bound to the Business (required)
-     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
+     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to INTERNAL)
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -1520,7 +1520,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessPartnerAssetAccessGetCall(String businessId, String partnerId, PartnerType partnerType, String assetType, Integer startIndex, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call businessPartnerAssetAccessGetCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String partnerId, @javax.annotation.Nullable PartnerType partnerType, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1587,7 +1587,7 @@ public class BusinessAccessAssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call businessPartnerAssetAccessGetValidateBeforeCall(String businessId, String partnerId, PartnerType partnerType, String assetType, Integer startIndex, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call businessPartnerAssetAccessGetValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String partnerId, @javax.annotation.Nullable PartnerType partnerType, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling businessPartnerAssetAccessGet(Async)");
@@ -1607,7 +1607,7 @@ public class BusinessAccessAssetsApi {
      * Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type&#x3D;INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type&#x3D;EXTERNAL, you will retrieve the partner&#39;s business assets that the partner has granted you access to.
      * @param businessId Unique identifier of the requesting business. (required)
      * @param partnerId The partner id to be bound to the Business (required)
-     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
+     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to INTERNAL)
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -1622,7 +1622,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(String businessId, String partnerId, PartnerType partnerType, String assetType, Integer startIndex, Integer pageSize, String bookmark) throws ApiException {
+    public BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String partnerId, @javax.annotation.Nullable PartnerType partnerType, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<BusinessPartnerAssetAccessGet200Response> localVarResp = businessPartnerAssetAccessGetWithHttpInfo(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark);
         return localVarResp.getData();
     }
@@ -1632,7 +1632,7 @@ public class BusinessAccessAssetsApi {
      * Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type&#x3D;INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type&#x3D;EXTERNAL, you will retrieve the partner&#39;s business assets that the partner has granted you access to.
      * @param businessId Unique identifier of the requesting business. (required)
      * @param partnerId The partner id to be bound to the Business (required)
-     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
+     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to INTERNAL)
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -1647,7 +1647,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BusinessPartnerAssetAccessGet200Response> businessPartnerAssetAccessGetWithHttpInfo(String businessId, String partnerId, PartnerType partnerType, String assetType, Integer startIndex, Integer pageSize, String bookmark) throws ApiException {
+    public ApiResponse<BusinessPartnerAssetAccessGet200Response> businessPartnerAssetAccessGetWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String partnerId, @javax.annotation.Nullable PartnerType partnerType, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = businessPartnerAssetAccessGetValidateBeforeCall(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark, null);
         Type localVarReturnType = new TypeToken<BusinessPartnerAssetAccessGet200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1658,7 +1658,7 @@ public class BusinessAccessAssetsApi {
      * Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type&#x3D;INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type&#x3D;EXTERNAL, you will retrieve the partner&#39;s business assets that the partner has granted you access to.
      * @param businessId Unique identifier of the requesting business. (required)
      * @param partnerId The partner id to be bound to the Business (required)
-     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
+     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to INTERNAL)
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -1674,7 +1674,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessPartnerAssetAccessGetAsync(String businessId, String partnerId, PartnerType partnerType, String assetType, Integer startIndex, Integer pageSize, String bookmark, final ApiCallback<BusinessPartnerAssetAccessGet200Response> _callback) throws ApiException {
+    public okhttp3.Call businessPartnerAssetAccessGetAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String partnerId, @javax.annotation.Nullable PartnerType partnerType, @javax.annotation.Nullable String assetType, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback<BusinessPartnerAssetAccessGet200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = businessPartnerAssetAccessGetValidateBeforeCall(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark, _callback);
         Type localVarReturnType = new TypeToken<BusinessPartnerAssetAccessGet200Response>(){}.getType();
@@ -1696,7 +1696,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePartnerAssetAccessHandlerImplCall(String businessId, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deletePartnerAssetAccessHandlerImplCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeletePartnerAssetAccessBody deletePartnerAssetAccessBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1743,7 +1743,7 @@ public class BusinessAccessAssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePartnerAssetAccessHandlerImplValidateBeforeCall(String businessId, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePartnerAssetAccessHandlerImplValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeletePartnerAssetAccessBody deletePartnerAssetAccessBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling deletePartnerAssetAccessHandlerImpl(Async)");
@@ -1773,7 +1773,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public DeletePartnerAssetsResultsResponseArray deletePartnerAssetAccessHandlerImpl(String businessId, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody) throws ApiException {
+    public DeletePartnerAssetsResultsResponseArray deletePartnerAssetAccessHandlerImpl(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeletePartnerAssetAccessBody deletePartnerAssetAccessBody) throws ApiException {
         ApiResponse<DeletePartnerAssetsResultsResponseArray> localVarResp = deletePartnerAssetAccessHandlerImplWithHttpInfo(businessId, deletePartnerAssetAccessBody);
         return localVarResp.getData();
     }
@@ -1793,7 +1793,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeletePartnerAssetsResultsResponseArray> deletePartnerAssetAccessHandlerImplWithHttpInfo(String businessId, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody) throws ApiException {
+    public ApiResponse<DeletePartnerAssetsResultsResponseArray> deletePartnerAssetAccessHandlerImplWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeletePartnerAssetAccessBody deletePartnerAssetAccessBody) throws ApiException {
         okhttp3.Call localVarCall = deletePartnerAssetAccessHandlerImplValidateBeforeCall(businessId, deletePartnerAssetAccessBody, null);
         Type localVarReturnType = new TypeToken<DeletePartnerAssetsResultsResponseArray>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1815,7 +1815,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deletePartnerAssetAccessHandlerImplAsync(String businessId, DeletePartnerAssetAccessBody deletePartnerAssetAccessBody, final ApiCallback<DeletePartnerAssetsResultsResponseArray> _callback) throws ApiException {
+    public okhttp3.Call deletePartnerAssetAccessHandlerImplAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeletePartnerAssetAccessBody deletePartnerAssetAccessBody, final ApiCallback<DeletePartnerAssetsResultsResponseArray> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePartnerAssetAccessHandlerImplValidateBeforeCall(businessId, deletePartnerAssetAccessBody, _callback);
         Type localVarReturnType = new TypeToken<DeletePartnerAssetsResultsResponseArray>(){}.getType();
@@ -1837,7 +1837,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updatePartnerAssetAccessHandlerImplCall(String businessId, UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updatePartnerAssetAccessHandlerImplCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1884,7 +1884,7 @@ public class BusinessAccessAssetsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updatePartnerAssetAccessHandlerImplValidateBeforeCall(String businessId, UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updatePartnerAssetAccessHandlerImplValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling updatePartnerAssetAccessHandlerImpl(Async)");
@@ -1914,7 +1914,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public UpdatePartnerAssetsResultsResponseArray updatePartnerAssetAccessHandlerImpl(String businessId, UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody) throws ApiException {
+    public UpdatePartnerAssetsResultsResponseArray updatePartnerAssetAccessHandlerImpl(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody) throws ApiException {
         ApiResponse<UpdatePartnerAssetsResultsResponseArray> localVarResp = updatePartnerAssetAccessHandlerImplWithHttpInfo(businessId, updatePartnerAssetAccessBody);
         return localVarResp.getData();
     }
@@ -1934,7 +1934,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UpdatePartnerAssetsResultsResponseArray> updatePartnerAssetAccessHandlerImplWithHttpInfo(String businessId, UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody) throws ApiException {
+    public ApiResponse<UpdatePartnerAssetsResultsResponseArray> updatePartnerAssetAccessHandlerImplWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody) throws ApiException {
         okhttp3.Call localVarCall = updatePartnerAssetAccessHandlerImplValidateBeforeCall(businessId, updatePartnerAssetAccessBody, null);
         Type localVarReturnType = new TypeToken<UpdatePartnerAssetsResultsResponseArray>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1956,7 +1956,7 @@ public class BusinessAccessAssetsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updatePartnerAssetAccessHandlerImplAsync(String businessId, UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody, final ApiCallback<UpdatePartnerAssetsResultsResponseArray> _callback) throws ApiException {
+    public okhttp3.Call updatePartnerAssetAccessHandlerImplAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody, final ApiCallback<UpdatePartnerAssetsResultsResponseArray> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updatePartnerAssetAccessHandlerImplValidateBeforeCall(businessId, updatePartnerAssetAccessBody, _callback);
         Type localVarReturnType = new TypeToken<UpdatePartnerAssetsResultsResponseArray>(){}.getType();

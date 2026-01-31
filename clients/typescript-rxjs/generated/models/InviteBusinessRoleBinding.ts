@@ -14,12 +14,10 @@
 import type {
     BaseInviteDataResponse,
     BaseInviteDataResponseInviteData,
-    BusinessAccessUserSummary,
 } from './';
 
 /**
  * @type InviteBusinessRoleBinding
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
  * @export
  */
 export type InviteBusinessRoleBinding = BaseInviteDataResponse;

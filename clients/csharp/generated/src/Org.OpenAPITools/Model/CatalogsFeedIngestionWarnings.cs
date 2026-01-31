@@ -212,28 +212,22 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aDDITIONALIMAGELEVELINTERNALERROR = new Option<int?>(utf8JsonReader.GetInt32());
+                            aDDITIONALIMAGELEVELINTERNALERROR = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aDDITIONALIMAGEFILENOTACCESSIBLE = new Option<int?>(utf8JsonReader.GetInt32());
+                            aDDITIONALIMAGEFILENOTACCESSIBLE = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ADDITIONAL_IMAGE_MALFORMED_URL":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aDDITIONALIMAGEMALFORMEDURL = new Option<int?>(utf8JsonReader.GetInt32());
+                            aDDITIONALIMAGEMALFORMEDURL = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ADDITIONAL_IMAGE_FILE_NOT_FOUND":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aDDITIONALIMAGEFILENOTFOUND = new Option<int?>(utf8JsonReader.GetInt32());
+                            aDDITIONALIMAGEFILENOTFOUND = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ADDITIONAL_IMAGE_INVALID_FILE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aDDITIONALIMAGEINVALIDFILE = new Option<int?>(utf8JsonReader.GetInt32());
+                            aDDITIONALIMAGEINVALIDFILE = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "HOTEL_PRICE_HEADER_IS_PRESENT":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hOTELPRICEHEADERISPRESENT = new Option<int?>(utf8JsonReader.GetInt32());
+                            hOTELPRICEHEADERISPRESENT = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

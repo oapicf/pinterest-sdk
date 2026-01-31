@@ -29,10 +29,7 @@ const basepath = "https://api.pinterest.com/v5"
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -45,21 +42,23 @@ template constructResult[T](response: Response): untyped =
 proc advancedAuctionItemsGetPost*(httpClient: HttpClient, advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest, adAccountId: string): (Option[AdvancedAuctionItems], Response) =
   ## Get item bid options (POST)
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/advanced_auction/items/get" & "?" & query_for_api_call, $(%advancedAuctionItemsGetRequest))
+  let response = httpClient.post(basepath & "/advanced_auction/items/get" & "?" & url_encoded_query_params, $(%advancedAuctionItemsGetRequest))
   constructResult[AdvancedAuctionItems](response)
 
 
 proc advancedAuctionItemsSubmitPost*(httpClient: HttpClient, advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest, adAccountId: string): (Option[AdvancedAuctionProcessedItems], Response) =
   ## Operate on item level bid options
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/advanced_auction/items/submit" & "?" & query_for_api_call, $(%advancedAuctionItemsSubmitRequest))
+  let response = httpClient.post(basepath & "/advanced_auction/items/submit" & "?" & url_encoded_query_params, $(%advancedAuctionItemsSubmitRequest))
   constructResult[AdvancedAuctionProcessedItems](response)
 

@@ -16,26 +16,26 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * A request to exchange a refresh token for a new access token.
- * @param grantType 
+ * 
  * @param refreshToken 
+ * @param grantType 
  * @param scope 
  * @param refreshOn Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
  */
 data class OauthAccessTokenRequestRefresh(
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("grant_type", required = true) val grantType: OauthAccessTokenRequestRefresh.GrantType,
+    @get:JsonProperty("refresh_token", required = true) val refreshToken: kotlin.String,
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("refresh_token", required = true) val refreshToken: kotlin.String,
+    @get:JsonProperty("grant_type", required = true) val grantType: OauthAccessTokenRequestRefresh.GrantType,
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("scope") val scope: kotlin.String? = null,
 
     @Schema(example = "null", description = "Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".")
     @get:JsonProperty("refresh_on") val refreshOn: kotlin.Boolean? = null
-    ) {
+) {
 
     /**
     * 
@@ -51,7 +51,8 @@ data class OauthAccessTokenRequestRefresh(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): GrantType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OauthAccessTokenRequestRefresh'")
             }
         }
     }

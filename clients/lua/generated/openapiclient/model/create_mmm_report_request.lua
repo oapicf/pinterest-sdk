@@ -19,8 +19,9 @@ local function cast_create_mmm_report_request(t)
 	return setmetatable(t, create_mmm_report_request_mt)
 end
 
-local function new_create_mmm_report_request(report_name, start_date, end_date, granularity, level, targeting_types, columns, countries)
+local function new_create_mmm_report_request(countries, report_name, start_date, end_date, granularity, level, targeting_types, columns)
 	return cast_create_mmm_report_request({
+		["countries"] = countries;
 		["report_name"] = report_name;
 		["start_date"] = start_date;
 		["end_date"] = end_date;
@@ -28,7 +29,6 @@ local function new_create_mmm_report_request(report_name, start_date, end_date, 
 		["level"] = level;
 		["targeting_types"] = targeting_types;
 		["columns"] = columns;
-		["countries"] = countries;
 	})
 end
 

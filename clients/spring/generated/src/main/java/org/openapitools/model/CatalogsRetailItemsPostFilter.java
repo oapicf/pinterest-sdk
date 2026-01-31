@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  * CatalogsRetailItemsPostFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemsPostFilter implements CatalogsItemsPostFilters {
 
   /**
@@ -35,7 +35,7 @@ public class CatalogsRetailItemsPostFilter implements CatalogsItemsPostFilters {
   public enum CatalogTypeEnum {
     RETAIL("RETAIL");
 
-    private String value;
+    private final String value;
 
     CatalogTypeEnum(String value) {
       this.value = value;
@@ -129,7 +129,7 @@ public class CatalogsRetailItemsPostFilter implements CatalogsItemsPostFilters {
     this.itemIds = itemIds;
   }
 
-  public CatalogsRetailItemsPostFilter catalogId(String catalogId) {
+  public CatalogsRetailItemsPostFilter catalogId(@Nullable String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -141,11 +141,11 @@ public class CatalogsRetailItemsPostFilter implements CatalogsItemsPostFilters {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "catalog_id", description = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_id")
-  public String getCatalogId() {
+  public @Nullable String getCatalogId() {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@Nullable String catalogId) {
     this.catalogId = catalogId;
   }
 

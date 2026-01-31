@@ -30,7 +30,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   GoogleProductCategory5Filter.JSON_PROPERTY_G_O_O_G_L_E_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y5
 })
 @JsonTypeName("GoogleProductCategory5Filter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-01-26T05:36:06.173633742Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class GoogleProductCategory5Filter {
     public static final String JSON_PROPERTY_G_O_O_G_L_E_P_R_O_D_U_C_T_C_A_T_E_G_O_R_Y5 = "GOOGLE_PRODUCT_CATEGORY_5";

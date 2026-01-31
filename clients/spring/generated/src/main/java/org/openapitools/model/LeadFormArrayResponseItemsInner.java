@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("LeadFormArrayResponse_items_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadFormArrayResponseItemsInner {
 
   private @Nullable LeadFormResponse data;
@@ -34,7 +34,7 @@ public class LeadFormArrayResponseItemsInner {
   @Valid
   private List<@Valid Exception> exceptions = new ArrayList<>();
 
-  public LeadFormArrayResponseItemsInner data(LeadFormResponse data) {
+  public LeadFormArrayResponseItemsInner data(@Nullable LeadFormResponse data) {
     this.data = data;
     return this;
   }
@@ -46,11 +46,11 @@ public class LeadFormArrayResponseItemsInner {
   @Valid 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")
-  public LeadFormResponse getData() {
+  public @Nullable LeadFormResponse getData() {
     return data;
   }
 
-  public void setData(LeadFormResponse data) {
+  public void setData(@Nullable LeadFormResponse data) {
     this.data = data;
   }
 

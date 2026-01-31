@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("OptimizationGoalMetadata_conversion_tag_v3_goal_metadata")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
 
   private @Nullable OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows;
@@ -55,7 +55,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     
     APP_INSTALL("APP_INSTALL");
 
-    private String value;
+    private final String value;
 
     ConversionEventEnum(String value) {
       this.value = value;
@@ -98,7 +98,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     
     ACTIVE("ACTIVE");
 
-    private String value;
+    private final String value;
 
     LearningModeTypeEnum(String value) {
       this.value = value;
@@ -127,7 +127,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
 
   private JsonNullable<LearningModeTypeEnum> learningModeType = JsonNullable.<LearningModeTypeEnum>undefined();
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata attributionWindows(OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata attributionWindows(@Nullable OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows) {
     this.attributionWindows = attributionWindows;
     return this;
   }
@@ -139,15 +139,15 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   @Valid 
   @Schema(name = "attribution_windows", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attribution_windows")
-  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows getAttributionWindows() {
+  public @Nullable OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows getAttributionWindows() {
     return attributionWindows;
   }
 
-  public void setAttributionWindows(OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows) {
+  public void setAttributionWindows(@Nullable OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows) {
     this.attributionWindows = attributionWindows;
   }
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata conversionEvent(ConversionEventEnum conversionEvent) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata conversionEvent(@Nullable ConversionEventEnum conversionEvent) {
     this.conversionEvent = conversionEvent;
     return this;
   }
@@ -159,15 +159,15 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   
   @Schema(name = "conversion_event", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_event")
-  public ConversionEventEnum getConversionEvent() {
+  public @Nullable ConversionEventEnum getConversionEvent() {
     return conversionEvent;
   }
 
-  public void setConversionEvent(ConversionEventEnum conversionEvent) {
+  public void setConversionEvent(@Nullable ConversionEventEnum conversionEvent) {
     this.conversionEvent = conversionEvent;
   }
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagId(String conversionTagId) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagId(@Nullable String conversionTagId) {
     this.conversionTagId = conversionTagId;
     return this;
   }
@@ -179,15 +179,15 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   @Pattern(regexp = "^[0-9]+$") 
   @Schema(name = "conversion_tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_tag_id")
-  public String getConversionTagId() {
+  public @Nullable String getConversionTagId() {
     return conversionTagId;
   }
 
-  public void setConversionTagId(String conversionTagId) {
+  public void setConversionTagId(@Nullable String conversionTagId) {
     this.conversionTagId = conversionTagId;
   }
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata cpaGoalValueInMicroCurrency(String cpaGoalValueInMicroCurrency) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadata cpaGoalValueInMicroCurrency(@Nullable String cpaGoalValueInMicroCurrency) {
     this.cpaGoalValueInMicroCurrency = cpaGoalValueInMicroCurrency;
     return this;
   }
@@ -199,11 +199,11 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   @Pattern(regexp = "^[0-9]+$") 
   @Schema(name = "cpa_goal_value_in_micro_currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cpa_goal_value_in_micro_currency")
-  public String getCpaGoalValueInMicroCurrency() {
+  public @Nullable String getCpaGoalValueInMicroCurrency() {
     return cpaGoalValueInMicroCurrency;
   }
 
-  public void setCpaGoalValueInMicroCurrency(String cpaGoalValueInMicroCurrency) {
+  public void setCpaGoalValueInMicroCurrency(@Nullable String cpaGoalValueInMicroCurrency) {
     this.cpaGoalValueInMicroCurrency = cpaGoalValueInMicroCurrency;
   }
 

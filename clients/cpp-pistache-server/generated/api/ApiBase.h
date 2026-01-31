@@ -24,14 +24,46 @@
 namespace org::openapitools::server::api
 {
 
+
+    
+
+    typedef struct
+    {
+        std::string token;
+        std::unique_ptr<void, std::function<void(void*)>> userdata;
+    } HttpBearerToken;
+
+    typedef std::function<bool(HttpBearerToken &)> BearerTokenAuthenticator;
+
+    typedef struct
+    {
+        std::string user;
+        std::string password;
+        std::unique_ptr<void, std::function<void(void*)>> userdata;
+    } HttpBasicCredentials;
+
+    typedef std::function<bool(HttpBasicCredentials &)> BasicCredentialsAuthenticator;
+
+
+
+
+
 class ApiBase {
 public:
-    explicit ApiBase(const std::shared_ptr<Pistache::Rest::Router>& rtr) : router(rtr) {};
+    explicit ApiBase(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     virtual ~ApiBase() = default;
     virtual void init() = 0;
 
+    void setBasicCredentialsAuthenticator( const BasicCredentialsAuthenticator &newBasicCredentialsAuthenticator);
+    void setBearerTokenAuthenticator( const BearerTokenAuthenticator &newbearerTokenAuthenticator);
+
+
 protected:
     const std::shared_ptr<Pistache::Rest::Router> router;
+    std::optional<BasicCredentialsAuthenticator> basicCredentialsAuthenticator;
+    std::optional<BearerTokenAuthenticator> bearerTokenAuthenticator;
+
+
 };
 
 } // namespace org::openapitools::server::api

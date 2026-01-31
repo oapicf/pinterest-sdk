@@ -27,4 +27,12 @@ public class OauthAccessTokenRequestClientCredentialsTest {
         // TODO: test scope
     }
 
+    /**
+     * Test the property 'grantType'
+     */
+    @Test
+    public void grantTypeTest() {
+        // TODO: test grantType
+    }
+
 }

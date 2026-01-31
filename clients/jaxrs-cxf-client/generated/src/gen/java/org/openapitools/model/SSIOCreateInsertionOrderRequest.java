@@ -10,94 +10,109 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SSIOCreateInsertionOrderRequest  {
   
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Starting date of time period. Format: YYYY-MM-DD")
  /**
-   * Starting date of time period. Format: YYYY-MM-DD
-  **/
+  * Starting date of time period. Format: YYYY-MM-DD
+  */
+  @ApiModelProperty(example = "2020-12-20", required = true, value = "Starting date of time period. Format: YYYY-MM-DD")
+
   private String startDate;
 
-  @ApiModelProperty(example = "2020-12-20", value = "End date of time period. Format: YYYY-MM-DD")
  /**
-   * End date of time period. Format: YYYY-MM-DD
-  **/
+  * End date of time period. Format: YYYY-MM-DD
+  */
+  @ApiModelProperty(example = "2020-12-20", value = "End date of time period. Format: YYYY-MM-DD")
+
   private String endDate;
 
-  @ApiModelProperty(required = true, value = "The po number")
  /**
-   * The po number
-  **/
+  * The po number
+  */
+  @ApiModelProperty(required = true, value = "The po number")
+
   private String poNumber;
 
-  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
  /**
-   * If Budget order line, the budget amount.
-  **/
+  * If Budget order line, the budget amount.
+  */
+  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
+
   private BigDecimal budgetAmount;
 
-  @ApiModelProperty(required = true, value = "The billing contact first name")
  /**
-   * The billing contact first name
-  **/
+  * The billing contact first name
+  */
+  @ApiModelProperty(required = true, value = "The billing contact first name")
+
   private String billingContactFirstname;
 
-  @ApiModelProperty(required = true, value = "The billing contact last name")
  /**
-   * The billing contact last name
-  **/
+  * The billing contact last name
+  */
+  @ApiModelProperty(required = true, value = "The billing contact last name")
+
   private String billingContactLastname;
 
-  @ApiModelProperty(example = "test@example", required = true, value = "The billing contact email")
  /**
-   * The billing contact email
-  **/
+  * The billing contact email
+  */
+  @ApiModelProperty(example = "test@example", required = true, value = "The billing contact email")
+
   private String billingContactEmail;
 
-  @ApiModelProperty(required = true, value = "The media contact first name")
  /**
-   * The media contact first name
-  **/
+  * The media contact first name
+  */
+  @ApiModelProperty(required = true, value = "The media contact first name")
+
   private String mediaContactFirstname;
 
-  @ApiModelProperty(required = true, value = "The media contact last name")
  /**
-   * The media contact last name
-  **/
+  * The media contact last name
+  */
+  @ApiModelProperty(required = true, value = "The media contact last name")
+
   private String mediaContactLastname;
 
-  @ApiModelProperty(example = "test@example", required = true, value = "The media contact email")
  /**
-   * The media contact email
-  **/
+  * The media contact email
+  */
+  @ApiModelProperty(example = "test@example", required = true, value = "The media contact email")
+
   private String mediaContactEmail;
 
-  @ApiModelProperty(value = "URL link for agency")
  /**
-   * URL link for agency
-  **/
+  * URL link for agency
+  */
+  @ApiModelProperty(value = "URL link for agency")
+
   private String agencyLink;
 
-  @ApiModelProperty(example = "test@example", value = "The email of user submitting the insertion order")
  /**
-   * The email of user submitting the insertion order
-  **/
+  * The email of user submitting the insertion order
+  */
+  @ApiModelProperty(example = "test@example", value = "The email of user submitting the insertion order")
+
   private String userEmail;
 
-  @ApiModelProperty(value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
  /**
-   * The UTC timestamp (to the nearest sec) of when terms were accepted
-  **/
+  * The UTC timestamp (to the nearest sec) of when terms were accepted
+  */
+  @ApiModelProperty(value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
+
   private Integer acceptedTermsTime;
 
-  @ApiModelProperty(required = true, value = "The pmp id")
  /**
-   * The pmp id
-  **/
+  * The pmp id
+  */
+  @ApiModelProperty(required = true, value = "The pmp id")
+
   private String pmpId;
 
-  @ApiModelProperty(required = true, value = "The order name")
  /**
-   * The order name
-  **/
+  * The order name
+  */
+  @ApiModelProperty(required = true, value = "The order name")
+
   private String orderName;
 
 public enum OrderLineTypeEnum {
@@ -130,43 +145,50 @@ BUDGET(String.valueOf("BUDGET")), PERPETUALS(String.valueOf("PERPETUALS"));
     }
 }
 
-  @ApiModelProperty(required = true, value = "Type can be Budget or Perpetual")
  /**
-   * Type can be Budget or Perpetual
-  **/
+  * Type can be Budget or Perpetual
+  */
+  @ApiModelProperty(required = true, value = "Type can be Budget or Perpetual")
+
   private OrderLineTypeEnum orderLineType;
 
-  @ApiModelProperty(required = true, value = "The SFDC id for the terms")
  /**
-   * The SFDC id for the terms
-  **/
+  * The SFDC id for the terms
+  */
+  @ApiModelProperty(required = true, value = "The SFDC id for the terms")
+
   private String acceptedTermsId;
 
-  @ApiModelProperty(required = true, value = "The bill-to company id")
  /**
-   * The bill-to company id
-  **/
+  * The bill-to company id
+  */
+  @ApiModelProperty(required = true, value = "The bill-to company id")
+
   private String billtoCompanyId;
 
-  @ApiModelProperty(required = true, value = "The bill-to business address id")
  /**
-   * The bill-to business address id
-  **/
+  * The bill-to business address id
+  */
+  @ApiModelProperty(required = true, value = "The bill-to business address id")
+
   private String billtoBusinessAddressId;
 
-  @ApiModelProperty(required = true, value = "The bill-to billing address id")
  /**
-   * The bill-to billing address id
-  **/
+  * The bill-to billing address id
+  */
+  @ApiModelProperty(required = true, value = "The bill-to billing address id")
+
   private String billtoBillingAddressId;
 
-  @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
  /**
-   * If Ongoing (perpetual) order line, the estimated monthly spend
-  **/
+  * If Ongoing (perpetual) order line, the estimated monthly spend
+  */
+  @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
+
   private BigDecimal estimatedMonthlySpend;
 
   @ApiModelProperty(required = true, value = "")
+
   private Currency currencyInfo;
  /**
    * Starting date of time period. Format: YYYY-MM-DD

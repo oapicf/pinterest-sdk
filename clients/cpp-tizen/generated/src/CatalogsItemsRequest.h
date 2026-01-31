@@ -10,7 +10,6 @@
 
 #include <string>
 #include "CatalogsItemsPostFilters.h"
-#include "CatalogsItemsRequest_language.h"
 #include "Country.h"
 #include "Object.h"
 
@@ -55,13 +54,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCountry(Country  country);
-	/*! \brief Get 
+	/*! \brief Get We recommend using the CatalogsLocale values.
 	 */
-	CatalogsItemsRequest_language getLanguage();
+	std::string getLanguage();
 
-	/*! \brief Set 
+	/*! \brief Set We recommend using the CatalogsLocale values.
 	 */
-	void setLanguage(CatalogsItemsRequest_language  language);
+	void setLanguage(std::string  language);
 	/*! \brief Get 
 	 */
 	CatalogsItemsPostFilters getFilters();
@@ -72,7 +71,7 @@ public:
 
 private:
 	Country country;
-	CatalogsItemsRequest_language language;
+	std::string language;
 	CatalogsItemsPostFilters filters;
 	void __init();
 	void __cleanup();

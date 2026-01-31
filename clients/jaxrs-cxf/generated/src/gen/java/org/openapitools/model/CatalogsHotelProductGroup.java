@@ -47,43 +47,52 @@ HOTEL(String.valueOf("HOTEL"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
-  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the hotel product group.")
  /**
-   * ID of the hotel product group.
-  **/
+  * ID of the hotel product group.
+  */
+  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the hotel product group.")
+
   private String id;
 
-  @ApiModelProperty(example = "Most Popular", value = "Name of hotel product group")
  /**
-   * Name of hotel product group
-  **/
+  * Name of hotel product group
+  */
+  @ApiModelProperty(example = "Most Popular", value = "Name of hotel product group")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsHotelProductGroupFilters filters;
 
-  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
  /**
-   * Unix timestamp in seconds of when catalog product group was created.
-  **/
+  * Unix timestamp in seconds of when catalog product group was created.
+  */
+  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
+
   private Integer createdAt;
 
-  @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
  /**
-   * Unix timestamp in seconds of last time catalog product group was updated.
-  **/
+  * Unix timestamp in seconds of last time catalog product group was updated.
+  */
+  @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
+
   private Integer updatedAt;
 
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
  /**
-   * Catalog id pertaining to the hotel product group.
-  **/
+  * Catalog id pertaining to the hotel product group.
+  */
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the hotel product group.")
+
   private String catalogId;
  /**
    * Get catalogType

@@ -131,12 +131,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "values":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                values = new Option<List<Gender>?>(JsonSerializer.Deserialize<List<Gender>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            values = new Option<List<Gender>?>(JsonSerializer.Deserialize<List<Gender>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "negated":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                negated = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            negated = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

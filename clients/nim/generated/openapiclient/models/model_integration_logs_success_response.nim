@@ -9,8 +9,11 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type IntegrationLogsSuccessResponse* = object
   ## Response when logs are successfully processed.
-  message*: string
+  message*: Option[string]
+

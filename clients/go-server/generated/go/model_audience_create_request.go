@@ -27,7 +27,8 @@ type AudienceCreateRequest struct {
 	// Audience description.
 	Description string `json:"description,omitempty"`
 
-	AudienceType AudienceCreateRequest1AudienceType `json:"audience_type"`
+	// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+	AudienceType AudienceType `json:"audience_type"`
 }
 
 // AssertAudienceCreateRequestRequired checks if the required fields are not zero-ed
@@ -46,18 +47,12 @@ func AssertAudienceCreateRequestRequired(obj AudienceCreateRequest) error {
 	if err := AssertAudienceRuleRequired(obj.Rule); err != nil {
 		return err
 	}
-	if err := AssertAudienceCreateRequest1AudienceTypeRequired(obj.AudienceType); err != nil {
-		return err
-	}
 	return nil
 }
 
 // AssertAudienceCreateRequestConstraints checks if the values respects the defined constraints
 func AssertAudienceCreateRequestConstraints(obj AudienceCreateRequest) error {
 	if err := AssertAudienceRuleConstraints(obj.Rule); err != nil {
-		return err
-	}
-	if err := AssertAudienceCreateRequest1AudienceTypeConstraints(obj.AudienceType); err != nil {
 		return err
 	}
 	return nil

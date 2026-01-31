@@ -124,7 +124,6 @@ src/Org.OpenAPITools/Models/AudienceCategory.cs
 src/Org.OpenAPITools/Models/AudienceCommon.cs
 src/Org.OpenAPITools/Models/AudienceCreateCustomRequest.cs
 src/Org.OpenAPITools/Models/AudienceCreateRequest.cs
-src/Org.OpenAPITools/Models/AudienceCreateRequest1AudienceType.cs
 src/Org.OpenAPITools/Models/AudienceDataParty.cs
 src/Org.OpenAPITools/Models/AudienceDefinition.cs
 src/Org.OpenAPITools/Models/AudienceDefinitionResponse.cs
@@ -302,7 +301,6 @@ src/Org.OpenAPITools/Models/CatalogsItemsDeleteDiscontinuedBatchRequest.cs
 src/Org.OpenAPITools/Models/CatalogsItemsFilters.cs
 src/Org.OpenAPITools/Models/CatalogsItemsPostFilters.cs
 src/Org.OpenAPITools/Models/CatalogsItemsRequest.cs
-src/Org.OpenAPITools/Models/CatalogsItemsRequestLanguage.cs
 src/Org.OpenAPITools/Models/CatalogsItemsUpdateBatchRequest.cs
 src/Org.OpenAPITools/Models/CatalogsItemsUpsertBatchRequest.cs
 src/Org.OpenAPITools/Models/CatalogsList200Response.cs
@@ -636,7 +634,6 @@ src/Org.OpenAPITools/Models/PinMediaWithVideos.cs
 src/Org.OpenAPITools/Models/PinPromotionSummaryStatus.cs
 src/Org.OpenAPITools/Models/PinUpdate.cs
 src/Org.OpenAPITools/Models/PinUpdateCarouselSlotsInner.cs
-src/Org.OpenAPITools/Models/PinsAnalyticsMetricTypesParameterInner.cs
 src/Org.OpenAPITools/Models/PinsList200Response.cs
 src/Org.OpenAPITools/Models/PinsSaveRequest.cs
 src/Org.OpenAPITools/Models/PinterestTagEventData.cs

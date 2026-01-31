@@ -1,7 +1,7 @@
 /*
  * oauth_access_token_response_integration_refresh.h
  *
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
+ * 
  */
 
 #ifndef _oauth_access_token_response_integration_refresh_H_
@@ -27,25 +27,25 @@ pinterest_rest_api_oauth_access_token_response_integration_refresh_RESPONSETYPE_
 
 
 typedef struct oauth_access_token_response_integration_refresh_t {
+    char *refresh_token; // string
+    int refresh_token_expires_in; //numeric
     pinterest_rest_api_oauth_access_token_response_integration_refresh_RESPONSETYPE_e response_type; //enum
     char *access_token; // string
     char *token_type; // string
     int expires_in; //numeric
     char *scope; // string
-    char *refresh_token; // string
-    int refresh_token_expires_in; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } oauth_access_token_response_integration_refresh_t;
 
 __attribute__((deprecated)) oauth_access_token_response_integration_refresh_t *oauth_access_token_response_integration_refresh_create(
+    char *refresh_token,
+    int refresh_token_expires_in,
     pinterest_rest_api_oauth_access_token_response_integration_refresh_RESPONSETYPE_e response_type,
     char *access_token,
     char *token_type,
     int expires_in,
-    char *scope,
-    char *refresh_token,
-    int refresh_token_expires_in
+    char *scope
 );
 
 void oauth_access_token_response_integration_refresh_free(oauth_access_token_response_integration_refresh_t *oauth_access_token_response_integration_refresh);

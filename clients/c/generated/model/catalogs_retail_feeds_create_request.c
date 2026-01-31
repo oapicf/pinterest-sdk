@@ -235,11 +235,11 @@ cJSON *catalogs_retail_feeds_create_request_convertToJSON(catalogs_retail_feeds_
     if(catalogs_retail_feeds_create_request->status) {
     cJSON *status_local_JSON = catalogs_status_convertToJSON(catalogs_retail_feeds_create_request->status);
     if(status_local_JSON == NULL) {
-    goto fail; //model
+        goto fail; // custom
     }
     cJSON_AddItemToObject(item, "status", status_local_JSON);
     if(item->child == NULL) {
-    goto fail;
+        goto fail;
     }
     }
 
@@ -402,7 +402,7 @@ catalogs_retail_feeds_create_request_t *catalogs_retail_feeds_create_request_par
         status = NULL;
     }
     if (status) { 
-    status_local_nonprim = catalogs_status_parseFromJSON(status); //nonprimitive
+    status_local_nonprim = catalogs_status_parseFromJSON(status); //custom
     }
 
 

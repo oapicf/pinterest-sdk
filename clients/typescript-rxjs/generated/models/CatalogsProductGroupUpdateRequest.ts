@@ -33,6 +33,7 @@ export interface CatalogsProductGroupUpdateRequest {
     description?: string | null;
     /**
      * boolean indicator of whether the product group is being featured or not
+     * @deprecated
      * @type {boolean}
      * @memberof CatalogsProductGroupUpdateRequest
      */

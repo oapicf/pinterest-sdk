@@ -12,7 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class MaxPriceFilter  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupPricingCriteria MAX_PRICE;
  /**
    * Get MAX_PRICE

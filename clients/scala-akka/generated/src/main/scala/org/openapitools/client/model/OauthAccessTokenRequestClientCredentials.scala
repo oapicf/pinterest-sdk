@@ -14,8 +14,8 @@ package org.openapitools.client.model
 import org.openapitools.client.core.ApiModel
 
 case class OauthAccessTokenRequestClientCredentials (
-  grantType: OauthAccessTokenRequestClientCredentialsEnums.GrantType,
-  scope: String
+  scope: String,
+  grantType: OauthAccessTokenRequestClientCredentialsEnums.GrantType
 ) extends ApiModel
 
 object OauthAccessTokenRequestClientCredentialsEnums {

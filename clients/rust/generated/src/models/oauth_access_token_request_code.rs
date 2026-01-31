@@ -11,24 +11,22 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// OauthAccessTokenRequestCode : A request to exchange an authorization code for an access token.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct OauthAccessTokenRequestCode {
-    #[serde(rename = "grant_type")]
-    pub grant_type: GrantType,
     #[serde(rename = "code")]
     pub code: String,
     #[serde(rename = "redirect_uri")]
     pub redirect_uri: String,
+    #[serde(rename = "grant_type")]
+    pub grant_type: GrantType,
 }
 
 impl OauthAccessTokenRequestCode {
-    /// A request to exchange an authorization code for an access token.
-    pub fn new(grant_type: GrantType, code: String, redirect_uri: String) -> OauthAccessTokenRequestCode {
+    pub fn new(code: String, redirect_uri: String, grant_type: GrantType) -> OauthAccessTokenRequestCode {
         OauthAccessTokenRequestCode {
-            grant_type,
             code,
             redirect_uri,
+            grant_type,
         }
     }
 }

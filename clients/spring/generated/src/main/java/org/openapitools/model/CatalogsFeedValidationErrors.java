@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * CatalogsFeedValidationErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedValidationErrors {
 
   private @Nullable Integer FETCH_ERROR;
@@ -88,7 +88,7 @@ public class CatalogsFeedValidationErrors {
 
   private @Nullable Integer PRICE_CANNOT_BE_DETERMINED;
 
-  public CatalogsFeedValidationErrors FETCH_ERROR(Integer FETCH_ERROR) {
+  public CatalogsFeedValidationErrors FETCH_ERROR(@Nullable Integer FETCH_ERROR) {
     this.FETCH_ERROR = FETCH_ERROR;
     return this;
   }
@@ -100,15 +100,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "FETCH_ERROR", description = "Pinterest couldn't download your feed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FETCH_ERROR")
-  public Integer getFETCHERROR() {
+  public @Nullable Integer getFETCHERROR() {
     return FETCH_ERROR;
   }
 
-  public void setFETCHERROR(Integer FETCH_ERROR) {
+  public void setFETCHERROR(@Nullable Integer FETCH_ERROR) {
     this.FETCH_ERROR = FETCH_ERROR;
   }
 
-  public CatalogsFeedValidationErrors FETCH_INACTIVE_FEED_ERROR(Integer FETCH_INACTIVE_FEED_ERROR) {
+  public CatalogsFeedValidationErrors FETCH_INACTIVE_FEED_ERROR(@Nullable Integer FETCH_INACTIVE_FEED_ERROR) {
     this.FETCH_INACTIVE_FEED_ERROR = FETCH_INACTIVE_FEED_ERROR;
     return this;
   }
@@ -120,15 +120,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "FETCH_INACTIVE_FEED_ERROR", description = "Your feed wasn't ingested because it hasn’t changed in the previous 90 days.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FETCH_INACTIVE_FEED_ERROR")
-  public Integer getFETCHINACTIVEFEEDERROR() {
+  public @Nullable Integer getFETCHINACTIVEFEEDERROR() {
     return FETCH_INACTIVE_FEED_ERROR;
   }
 
-  public void setFETCHINACTIVEFEEDERROR(Integer FETCH_INACTIVE_FEED_ERROR) {
+  public void setFETCHINACTIVEFEEDERROR(@Nullable Integer FETCH_INACTIVE_FEED_ERROR) {
     this.FETCH_INACTIVE_FEED_ERROR = FETCH_INACTIVE_FEED_ERROR;
   }
 
-  public CatalogsFeedValidationErrors ENCODING_ERROR(Integer ENCODING_ERROR) {
+  public CatalogsFeedValidationErrors ENCODING_ERROR(@Nullable Integer ENCODING_ERROR) {
     this.ENCODING_ERROR = ENCODING_ERROR;
     return this;
   }
@@ -140,15 +140,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "ENCODING_ERROR", description = "Your feed includes data with an unsupported encoding format.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ENCODING_ERROR")
-  public Integer getENCODINGERROR() {
+  public @Nullable Integer getENCODINGERROR() {
     return ENCODING_ERROR;
   }
 
-  public void setENCODINGERROR(Integer ENCODING_ERROR) {
+  public void setENCODINGERROR(@Nullable Integer ENCODING_ERROR) {
     this.ENCODING_ERROR = ENCODING_ERROR;
   }
 
-  public CatalogsFeedValidationErrors DELIMITER_ERROR(Integer DELIMITER_ERROR) {
+  public CatalogsFeedValidationErrors DELIMITER_ERROR(@Nullable Integer DELIMITER_ERROR) {
     this.DELIMITER_ERROR = DELIMITER_ERROR;
     return this;
   }
@@ -160,15 +160,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "DELIMITER_ERROR", description = "Your feed includes data with formatting errors.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DELIMITER_ERROR")
-  public Integer getDELIMITERERROR() {
+  public @Nullable Integer getDELIMITERERROR() {
     return DELIMITER_ERROR;
   }
 
-  public void setDELIMITERERROR(Integer DELIMITER_ERROR) {
+  public void setDELIMITERERROR(@Nullable Integer DELIMITER_ERROR) {
     this.DELIMITER_ERROR = DELIMITER_ERROR;
   }
 
-  public CatalogsFeedValidationErrors REQUIRED_COLUMNS_MISSING(Integer REQUIRED_COLUMNS_MISSING) {
+  public CatalogsFeedValidationErrors REQUIRED_COLUMNS_MISSING(@Nullable Integer REQUIRED_COLUMNS_MISSING) {
     this.REQUIRED_COLUMNS_MISSING = REQUIRED_COLUMNS_MISSING;
     return this;
   }
@@ -180,15 +180,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "REQUIRED_COLUMNS_MISSING", description = "Your feed is missing some required column headers.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("REQUIRED_COLUMNS_MISSING")
-  public Integer getREQUIREDCOLUMNSMISSING() {
+  public @Nullable Integer getREQUIREDCOLUMNSMISSING() {
     return REQUIRED_COLUMNS_MISSING;
   }
 
-  public void setREQUIREDCOLUMNSMISSING(Integer REQUIRED_COLUMNS_MISSING) {
+  public void setREQUIREDCOLUMNSMISSING(@Nullable Integer REQUIRED_COLUMNS_MISSING) {
     this.REQUIRED_COLUMNS_MISSING = REQUIRED_COLUMNS_MISSING;
   }
 
-  public CatalogsFeedValidationErrors DUPLICATE_PRODUCTS(Integer DUPLICATE_PRODUCTS) {
+  public CatalogsFeedValidationErrors DUPLICATE_PRODUCTS(@Nullable Integer DUPLICATE_PRODUCTS) {
     this.DUPLICATE_PRODUCTS = DUPLICATE_PRODUCTS;
     return this;
   }
@@ -200,15 +200,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "DUPLICATE_PRODUCTS", description = "Some products are duplicated.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DUPLICATE_PRODUCTS")
-  public Integer getDUPLICATEPRODUCTS() {
+  public @Nullable Integer getDUPLICATEPRODUCTS() {
     return DUPLICATE_PRODUCTS;
   }
 
-  public void setDUPLICATEPRODUCTS(Integer DUPLICATE_PRODUCTS) {
+  public void setDUPLICATEPRODUCTS(@Nullable Integer DUPLICATE_PRODUCTS) {
     this.DUPLICATE_PRODUCTS = DUPLICATE_PRODUCTS;
   }
 
-  public CatalogsFeedValidationErrors IMAGE_LINK_INVALID(Integer IMAGE_LINK_INVALID) {
+  public CatalogsFeedValidationErrors IMAGE_LINK_INVALID(@Nullable Integer IMAGE_LINK_INVALID) {
     this.IMAGE_LINK_INVALID = IMAGE_LINK_INVALID;
     return this;
   }
@@ -220,15 +220,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "IMAGE_LINK_INVALID", description = "Some image links are formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_INVALID")
-  public Integer getIMAGELINKINVALID() {
+  public @Nullable Integer getIMAGELINKINVALID() {
     return IMAGE_LINK_INVALID;
   }
 
-  public void setIMAGELINKINVALID(Integer IMAGE_LINK_INVALID) {
+  public void setIMAGELINKINVALID(@Nullable Integer IMAGE_LINK_INVALID) {
     this.IMAGE_LINK_INVALID = IMAGE_LINK_INVALID;
   }
 
-  public CatalogsFeedValidationErrors ITEMID_MISSING(Integer ITEMID_MISSING) {
+  public CatalogsFeedValidationErrors ITEMID_MISSING(@Nullable Integer ITEMID_MISSING) {
     this.ITEMID_MISSING = ITEMID_MISSING;
     return this;
   }
@@ -240,15 +240,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "ITEMID_MISSING", description = "Some items are missing an item id in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEMID_MISSING")
-  public Integer getITEMIDMISSING() {
+  public @Nullable Integer getITEMIDMISSING() {
     return ITEMID_MISSING;
   }
 
-  public void setITEMIDMISSING(Integer ITEMID_MISSING) {
+  public void setITEMIDMISSING(@Nullable Integer ITEMID_MISSING) {
     this.ITEMID_MISSING = ITEMID_MISSING;
   }
 
-  public CatalogsFeedValidationErrors TITLE_MISSING(Integer TITLE_MISSING) {
+  public CatalogsFeedValidationErrors TITLE_MISSING(@Nullable Integer TITLE_MISSING) {
     this.TITLE_MISSING = TITLE_MISSING;
     return this;
   }
@@ -260,15 +260,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "TITLE_MISSING", description = "Some items are missing a title in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TITLE_MISSING")
-  public Integer getTITLEMISSING() {
+  public @Nullable Integer getTITLEMISSING() {
     return TITLE_MISSING;
   }
 
-  public void setTITLEMISSING(Integer TITLE_MISSING) {
+  public void setTITLEMISSING(@Nullable Integer TITLE_MISSING) {
     this.TITLE_MISSING = TITLE_MISSING;
   }
 
-  public CatalogsFeedValidationErrors DESCRIPTION_MISSING(Integer DESCRIPTION_MISSING) {
+  public CatalogsFeedValidationErrors DESCRIPTION_MISSING(@Nullable Integer DESCRIPTION_MISSING) {
     this.DESCRIPTION_MISSING = DESCRIPTION_MISSING;
     return this;
   }
@@ -280,15 +280,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "DESCRIPTION_MISSING", description = "Some items are missing a description in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DESCRIPTION_MISSING")
-  public Integer getDESCRIPTIONMISSING() {
+  public @Nullable Integer getDESCRIPTIONMISSING() {
     return DESCRIPTION_MISSING;
   }
 
-  public void setDESCRIPTIONMISSING(Integer DESCRIPTION_MISSING) {
+  public void setDESCRIPTIONMISSING(@Nullable Integer DESCRIPTION_MISSING) {
     this.DESCRIPTION_MISSING = DESCRIPTION_MISSING;
   }
 
-  public CatalogsFeedValidationErrors PRODUCT_LINK_MISSING(Integer PRODUCT_LINK_MISSING) {
+  public CatalogsFeedValidationErrors PRODUCT_LINK_MISSING(@Nullable Integer PRODUCT_LINK_MISSING) {
     this.PRODUCT_LINK_MISSING = PRODUCT_LINK_MISSING;
     return this;
   }
@@ -300,15 +300,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "PRODUCT_LINK_MISSING", description = "Some items are missing a link URL in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_LINK_MISSING")
-  public Integer getPRODUCTLINKMISSING() {
+  public @Nullable Integer getPRODUCTLINKMISSING() {
     return PRODUCT_LINK_MISSING;
   }
 
-  public void setPRODUCTLINKMISSING(Integer PRODUCT_LINK_MISSING) {
+  public void setPRODUCTLINKMISSING(@Nullable Integer PRODUCT_LINK_MISSING) {
     this.PRODUCT_LINK_MISSING = PRODUCT_LINK_MISSING;
   }
 
-  public CatalogsFeedValidationErrors IMAGE_LINK_MISSING(Integer IMAGE_LINK_MISSING) {
+  public CatalogsFeedValidationErrors IMAGE_LINK_MISSING(@Nullable Integer IMAGE_LINK_MISSING) {
     this.IMAGE_LINK_MISSING = IMAGE_LINK_MISSING;
     return this;
   }
@@ -320,15 +320,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "IMAGE_LINK_MISSING", description = "Some items are missing an image link URL in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_MISSING")
-  public Integer getIMAGELINKMISSING() {
+  public @Nullable Integer getIMAGELINKMISSING() {
     return IMAGE_LINK_MISSING;
   }
 
-  public void setIMAGELINKMISSING(Integer IMAGE_LINK_MISSING) {
+  public void setIMAGELINKMISSING(@Nullable Integer IMAGE_LINK_MISSING) {
     this.IMAGE_LINK_MISSING = IMAGE_LINK_MISSING;
   }
 
-  public CatalogsFeedValidationErrors AVAILABILITY_INVALID(Integer AVAILABILITY_INVALID) {
+  public CatalogsFeedValidationErrors AVAILABILITY_INVALID(@Nullable Integer AVAILABILITY_INVALID) {
     this.AVAILABILITY_INVALID = AVAILABILITY_INVALID;
     return this;
   }
@@ -340,15 +340,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "AVAILABILITY_INVALID", description = "Some items are missing an availability value in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AVAILABILITY_INVALID")
-  public Integer getAVAILABILITYINVALID() {
+  public @Nullable Integer getAVAILABILITYINVALID() {
     return AVAILABILITY_INVALID;
   }
 
-  public void setAVAILABILITYINVALID(Integer AVAILABILITY_INVALID) {
+  public void setAVAILABILITYINVALID(@Nullable Integer AVAILABILITY_INVALID) {
     this.AVAILABILITY_INVALID = AVAILABILITY_INVALID;
   }
 
-  public CatalogsFeedValidationErrors PRODUCT_PRICE_INVALID(Integer PRODUCT_PRICE_INVALID) {
+  public CatalogsFeedValidationErrors PRODUCT_PRICE_INVALID(@Nullable Integer PRODUCT_PRICE_INVALID) {
     this.PRODUCT_PRICE_INVALID = PRODUCT_PRICE_INVALID;
     return this;
   }
@@ -360,15 +360,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "PRODUCT_PRICE_INVALID", description = "Some items have price formatting errors in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_PRICE_INVALID")
-  public Integer getPRODUCTPRICEINVALID() {
+  public @Nullable Integer getPRODUCTPRICEINVALID() {
     return PRODUCT_PRICE_INVALID;
   }
 
-  public void setPRODUCTPRICEINVALID(Integer PRODUCT_PRICE_INVALID) {
+  public void setPRODUCTPRICEINVALID(@Nullable Integer PRODUCT_PRICE_INVALID) {
     this.PRODUCT_PRICE_INVALID = PRODUCT_PRICE_INVALID;
   }
 
-  public CatalogsFeedValidationErrors LINK_FORMAT_INVALID(Integer LINK_FORMAT_INVALID) {
+  public CatalogsFeedValidationErrors LINK_FORMAT_INVALID(@Nullable Integer LINK_FORMAT_INVALID) {
     this.LINK_FORMAT_INVALID = LINK_FORMAT_INVALID;
     return this;
   }
@@ -380,15 +380,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "LINK_FORMAT_INVALID", description = "Some link values are formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_FORMAT_INVALID")
-  public Integer getLINKFORMATINVALID() {
+  public @Nullable Integer getLINKFORMATINVALID() {
     return LINK_FORMAT_INVALID;
   }
 
-  public void setLINKFORMATINVALID(Integer LINK_FORMAT_INVALID) {
+  public void setLINKFORMATINVALID(@Nullable Integer LINK_FORMAT_INVALID) {
     this.LINK_FORMAT_INVALID = LINK_FORMAT_INVALID;
   }
 
-  public CatalogsFeedValidationErrors PARSE_LINE_ERROR(Integer PARSE_LINE_ERROR) {
+  public CatalogsFeedValidationErrors PARSE_LINE_ERROR(@Nullable Integer PARSE_LINE_ERROR) {
     this.PARSE_LINE_ERROR = PARSE_LINE_ERROR;
     return this;
   }
@@ -400,15 +400,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "PARSE_LINE_ERROR", description = "Your feed contains formatting errors for some items.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PARSE_LINE_ERROR")
-  public Integer getPARSELINEERROR() {
+  public @Nullable Integer getPARSELINEERROR() {
     return PARSE_LINE_ERROR;
   }
 
-  public void setPARSELINEERROR(Integer PARSE_LINE_ERROR) {
+  public void setPARSELINEERROR(@Nullable Integer PARSE_LINE_ERROR) {
     this.PARSE_LINE_ERROR = PARSE_LINE_ERROR;
   }
 
-  public CatalogsFeedValidationErrors ADWORDS_FORMAT_INVALID(Integer ADWORDS_FORMAT_INVALID) {
+  public CatalogsFeedValidationErrors ADWORDS_FORMAT_INVALID(@Nullable Integer ADWORDS_FORMAT_INVALID) {
     this.ADWORDS_FORMAT_INVALID = ADWORDS_FORMAT_INVALID;
     return this;
   }
@@ -420,15 +420,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "ADWORDS_FORMAT_INVALID", description = "Some adwords links contain too many characters.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_FORMAT_INVALID")
-  public Integer getADWORDSFORMATINVALID() {
+  public @Nullable Integer getADWORDSFORMATINVALID() {
     return ADWORDS_FORMAT_INVALID;
   }
 
-  public void setADWORDSFORMATINVALID(Integer ADWORDS_FORMAT_INVALID) {
+  public void setADWORDSFORMATINVALID(@Nullable Integer ADWORDS_FORMAT_INVALID) {
     this.ADWORDS_FORMAT_INVALID = ADWORDS_FORMAT_INVALID;
   }
 
-  public CatalogsFeedValidationErrors INTERNAL_SERVICE_ERROR(Integer INTERNAL_SERVICE_ERROR) {
+  public CatalogsFeedValidationErrors INTERNAL_SERVICE_ERROR(@Nullable Integer INTERNAL_SERVICE_ERROR) {
     this.INTERNAL_SERVICE_ERROR = INTERNAL_SERVICE_ERROR;
     return this;
   }
@@ -440,15 +440,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "INTERNAL_SERVICE_ERROR", description = "We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("INTERNAL_SERVICE_ERROR")
-  public Integer getINTERNALSERVICEERROR() {
+  public @Nullable Integer getINTERNALSERVICEERROR() {
     return INTERNAL_SERVICE_ERROR;
   }
 
-  public void setINTERNALSERVICEERROR(Integer INTERNAL_SERVICE_ERROR) {
+  public void setINTERNALSERVICEERROR(@Nullable Integer INTERNAL_SERVICE_ERROR) {
     this.INTERNAL_SERVICE_ERROR = INTERNAL_SERVICE_ERROR;
   }
 
-  public CatalogsFeedValidationErrors NO_VERIFIED_DOMAIN(Integer NO_VERIFIED_DOMAIN) {
+  public CatalogsFeedValidationErrors NO_VERIFIED_DOMAIN(@Nullable Integer NO_VERIFIED_DOMAIN) {
     this.NO_VERIFIED_DOMAIN = NO_VERIFIED_DOMAIN;
     return this;
   }
@@ -460,15 +460,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "NO_VERIFIED_DOMAIN", description = "Your merchant domain needs to be claimed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("NO_VERIFIED_DOMAIN")
-  public Integer getNOVERIFIEDDOMAIN() {
+  public @Nullable Integer getNOVERIFIEDDOMAIN() {
     return NO_VERIFIED_DOMAIN;
   }
 
-  public void setNOVERIFIEDDOMAIN(Integer NO_VERIFIED_DOMAIN) {
+  public void setNOVERIFIEDDOMAIN(@Nullable Integer NO_VERIFIED_DOMAIN) {
     this.NO_VERIFIED_DOMAIN = NO_VERIFIED_DOMAIN;
   }
 
-  public CatalogsFeedValidationErrors ADULT_INVALID(Integer ADULT_INVALID) {
+  public CatalogsFeedValidationErrors ADULT_INVALID(@Nullable Integer ADULT_INVALID) {
     this.ADULT_INVALID = ADULT_INVALID;
     return this;
   }
@@ -480,15 +480,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "ADULT_INVALID", description = "Some items have invalid adult values.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADULT_INVALID")
-  public Integer getADULTINVALID() {
+  public @Nullable Integer getADULTINVALID() {
     return ADULT_INVALID;
   }
 
-  public void setADULTINVALID(Integer ADULT_INVALID) {
+  public void setADULTINVALID(@Nullable Integer ADULT_INVALID) {
     this.ADULT_INVALID = ADULT_INVALID;
   }
 
-  public CatalogsFeedValidationErrors IMAGE_LINK_LENGTH_TOO_LONG(Integer IMAGE_LINK_LENGTH_TOO_LONG) {
+  public CatalogsFeedValidationErrors IMAGE_LINK_LENGTH_TOO_LONG(@Nullable Integer IMAGE_LINK_LENGTH_TOO_LONG) {
     this.IMAGE_LINK_LENGTH_TOO_LONG = IMAGE_LINK_LENGTH_TOO_LONG;
     return this;
   }
@@ -500,15 +500,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "IMAGE_LINK_LENGTH_TOO_LONG", description = "Some items have image_link URLs that contain too many characters, so those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_LENGTH_TOO_LONG")
-  public Integer getIMAGELINKLENGTHTOOLONG() {
+  public @Nullable Integer getIMAGELINKLENGTHTOOLONG() {
     return IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
-  public void setIMAGELINKLENGTHTOOLONG(Integer IMAGE_LINK_LENGTH_TOO_LONG) {
+  public void setIMAGELINKLENGTHTOOLONG(@Nullable Integer IMAGE_LINK_LENGTH_TOO_LONG) {
     this.IMAGE_LINK_LENGTH_TOO_LONG = IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
-  public CatalogsFeedValidationErrors INVALID_DOMAIN(Integer INVALID_DOMAIN) {
+  public CatalogsFeedValidationErrors INVALID_DOMAIN(@Nullable Integer INVALID_DOMAIN) {
     this.INVALID_DOMAIN = INVALID_DOMAIN;
     return this;
   }
@@ -520,15 +520,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "INVALID_DOMAIN", description = "Some of your product link values don't match the verified domain associated with this account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("INVALID_DOMAIN")
-  public Integer getINVALIDDOMAIN() {
+  public @Nullable Integer getINVALIDDOMAIN() {
     return INVALID_DOMAIN;
   }
 
-  public void setINVALIDDOMAIN(Integer INVALID_DOMAIN) {
+  public void setINVALIDDOMAIN(@Nullable Integer INVALID_DOMAIN) {
     this.INVALID_DOMAIN = INVALID_DOMAIN;
   }
 
-  public CatalogsFeedValidationErrors FEED_LENGTH_TOO_LONG(Integer FEED_LENGTH_TOO_LONG) {
+  public CatalogsFeedValidationErrors FEED_LENGTH_TOO_LONG(@Nullable Integer FEED_LENGTH_TOO_LONG) {
     this.FEED_LENGTH_TOO_LONG = FEED_LENGTH_TOO_LONG;
     return this;
   }
@@ -540,15 +540,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "FEED_LENGTH_TOO_LONG", description = "Your feed contains too many items, some items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FEED_LENGTH_TOO_LONG")
-  public Integer getFEEDLENGTHTOOLONG() {
+  public @Nullable Integer getFEEDLENGTHTOOLONG() {
     return FEED_LENGTH_TOO_LONG;
   }
 
-  public void setFEEDLENGTHTOOLONG(Integer FEED_LENGTH_TOO_LONG) {
+  public void setFEEDLENGTHTOOLONG(@Nullable Integer FEED_LENGTH_TOO_LONG) {
     this.FEED_LENGTH_TOO_LONG = FEED_LENGTH_TOO_LONG;
   }
 
-  public CatalogsFeedValidationErrors LINK_LENGTH_TOO_LONG(Integer LINK_LENGTH_TOO_LONG) {
+  public CatalogsFeedValidationErrors LINK_LENGTH_TOO_LONG(@Nullable Integer LINK_LENGTH_TOO_LONG) {
     this.LINK_LENGTH_TOO_LONG = LINK_LENGTH_TOO_LONG;
     return this;
   }
@@ -560,15 +560,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "LINK_LENGTH_TOO_LONG", description = "Some product links contain too many characters, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_LENGTH_TOO_LONG")
-  public Integer getLINKLENGTHTOOLONG() {
+  public @Nullable Integer getLINKLENGTHTOOLONG() {
     return LINK_LENGTH_TOO_LONG;
   }
 
-  public void setLINKLENGTHTOOLONG(Integer LINK_LENGTH_TOO_LONG) {
+  public void setLINKLENGTHTOOLONG(@Nullable Integer LINK_LENGTH_TOO_LONG) {
     this.LINK_LENGTH_TOO_LONG = LINK_LENGTH_TOO_LONG;
   }
 
-  public CatalogsFeedValidationErrors MALFORMED_XML(Integer MALFORMED_XML) {
+  public CatalogsFeedValidationErrors MALFORMED_XML(@Nullable Integer MALFORMED_XML) {
     this.MALFORMED_XML = MALFORMED_XML;
     return this;
   }
@@ -580,15 +580,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "MALFORMED_XML", description = "Your feed couldn't be validated because the xml file is formatted incorrectly.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MALFORMED_XML")
-  public Integer getMALFORMEDXML() {
+  public @Nullable Integer getMALFORMEDXML() {
     return MALFORMED_XML;
   }
 
-  public void setMALFORMEDXML(Integer MALFORMED_XML) {
+  public void setMALFORMEDXML(@Nullable Integer MALFORMED_XML) {
     this.MALFORMED_XML = MALFORMED_XML;
   }
 
-  public CatalogsFeedValidationErrors PRICE_MISSING(Integer PRICE_MISSING) {
+  public CatalogsFeedValidationErrors PRICE_MISSING(@Nullable Integer PRICE_MISSING) {
     this.PRICE_MISSING = PRICE_MISSING;
     return this;
   }
@@ -600,15 +600,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "PRICE_MISSING", description = "Some products are missing a price, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRICE_MISSING")
-  public Integer getPRICEMISSING() {
+  public @Nullable Integer getPRICEMISSING() {
     return PRICE_MISSING;
   }
 
-  public void setPRICEMISSING(Integer PRICE_MISSING) {
+  public void setPRICEMISSING(@Nullable Integer PRICE_MISSING) {
     this.PRICE_MISSING = PRICE_MISSING;
   }
 
-  public CatalogsFeedValidationErrors FEED_TOO_SMALL(Integer FEED_TOO_SMALL) {
+  public CatalogsFeedValidationErrors FEED_TOO_SMALL(@Nullable Integer FEED_TOO_SMALL) {
     this.FEED_TOO_SMALL = FEED_TOO_SMALL;
     return this;
   }
@@ -620,15 +620,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "FEED_TOO_SMALL", description = "Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("FEED_TOO_SMALL")
-  public Integer getFEEDTOOSMALL() {
+  public @Nullable Integer getFEEDTOOSMALL() {
     return FEED_TOO_SMALL;
   }
 
-  public void setFEEDTOOSMALL(Integer FEED_TOO_SMALL) {
+  public void setFEEDTOOSMALL(@Nullable Integer FEED_TOO_SMALL) {
     this.FEED_TOO_SMALL = FEED_TOO_SMALL;
   }
 
-  public CatalogsFeedValidationErrors MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED(Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
+  public CatalogsFeedValidationErrors MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED(@Nullable Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
     this.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
     return this;
   }
@@ -640,15 +640,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED", description = "Some items exceed the maximum number of items per item group, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED")
-  public Integer getMAXITEMSPERITEMGROUPEXCEEDED() {
+  public @Nullable Integer getMAXITEMSPERITEMGROUPEXCEEDED() {
     return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
   }
 
-  public void setMAXITEMSPERITEMGROUPEXCEEDED(Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
+  public void setMAXITEMSPERITEMGROUPEXCEEDED(@Nullable Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
     this.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
   }
 
-  public CatalogsFeedValidationErrors ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE(Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
+  public CatalogsFeedValidationErrors ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE(@Nullable Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
     return this;
   }
@@ -660,15 +660,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE", description = "Some items' main images can't be found.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE")
-  public Integer getITEMMAINIMAGEDOWNLOADFAILURE() {
+  public @Nullable Integer getITEMMAINIMAGEDOWNLOADFAILURE() {
     return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
   }
 
-  public void setITEMMAINIMAGEDOWNLOADFAILURE(Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
+  public void setITEMMAINIMAGEDOWNLOADFAILURE(@Nullable Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
   }
 
-  public CatalogsFeedValidationErrors PINJOIN_CONTENT_UNSAFE(Integer PINJOIN_CONTENT_UNSAFE) {
+  public CatalogsFeedValidationErrors PINJOIN_CONTENT_UNSAFE(@Nullable Integer PINJOIN_CONTENT_UNSAFE) {
     this.PINJOIN_CONTENT_UNSAFE = PINJOIN_CONTENT_UNSAFE;
     return this;
   }
@@ -680,15 +680,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "PINJOIN_CONTENT_UNSAFE", description = "Some items were not published because they don't meet Pinterest's Merchant Guidelines.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PINJOIN_CONTENT_UNSAFE")
-  public Integer getPINJOINCONTENTUNSAFE() {
+  public @Nullable Integer getPINJOINCONTENTUNSAFE() {
     return PINJOIN_CONTENT_UNSAFE;
   }
 
-  public void setPINJOINCONTENTUNSAFE(Integer PINJOIN_CONTENT_UNSAFE) {
+  public void setPINJOINCONTENTUNSAFE(@Nullable Integer PINJOIN_CONTENT_UNSAFE) {
     this.PINJOIN_CONTENT_UNSAFE = PINJOIN_CONTENT_UNSAFE;
   }
 
-  public CatalogsFeedValidationErrors BLOCKLISTED_IMAGE_SIGNATURE(Integer BLOCKLISTED_IMAGE_SIGNATURE) {
+  public CatalogsFeedValidationErrors BLOCKLISTED_IMAGE_SIGNATURE(@Nullable Integer BLOCKLISTED_IMAGE_SIGNATURE) {
     this.BLOCKLISTED_IMAGE_SIGNATURE = BLOCKLISTED_IMAGE_SIGNATURE;
     return this;
   }
@@ -700,15 +700,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "BLOCKLISTED_IMAGE_SIGNATURE", description = "Some items were not published because they don't meet Pinterest's Merchant Guidelines.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("BLOCKLISTED_IMAGE_SIGNATURE")
-  public Integer getBLOCKLISTEDIMAGESIGNATURE() {
+  public @Nullable Integer getBLOCKLISTEDIMAGESIGNATURE() {
     return BLOCKLISTED_IMAGE_SIGNATURE;
   }
 
-  public void setBLOCKLISTEDIMAGESIGNATURE(Integer BLOCKLISTED_IMAGE_SIGNATURE) {
+  public void setBLOCKLISTEDIMAGESIGNATURE(@Nullable Integer BLOCKLISTED_IMAGE_SIGNATURE) {
     this.BLOCKLISTED_IMAGE_SIGNATURE = BLOCKLISTED_IMAGE_SIGNATURE;
   }
 
-  public CatalogsFeedValidationErrors LIST_PRICE_INVALID(Integer LIST_PRICE_INVALID) {
+  public CatalogsFeedValidationErrors LIST_PRICE_INVALID(@Nullable Integer LIST_PRICE_INVALID) {
     this.LIST_PRICE_INVALID = LIST_PRICE_INVALID;
     return this;
   }
@@ -720,15 +720,15 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "LIST_PRICE_INVALID", description = "Some items have list price formatting errors in their product metadata, those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LIST_PRICE_INVALID")
-  public Integer getLISTPRICEINVALID() {
+  public @Nullable Integer getLISTPRICEINVALID() {
     return LIST_PRICE_INVALID;
   }
 
-  public void setLISTPRICEINVALID(Integer LIST_PRICE_INVALID) {
+  public void setLISTPRICEINVALID(@Nullable Integer LIST_PRICE_INVALID) {
     this.LIST_PRICE_INVALID = LIST_PRICE_INVALID;
   }
 
-  public CatalogsFeedValidationErrors PRICE_CANNOT_BE_DETERMINED(Integer PRICE_CANNOT_BE_DETERMINED) {
+  public CatalogsFeedValidationErrors PRICE_CANNOT_BE_DETERMINED(@Nullable Integer PRICE_CANNOT_BE_DETERMINED) {
     this.PRICE_CANNOT_BE_DETERMINED = PRICE_CANNOT_BE_DETERMINED;
     return this;
   }
@@ -740,11 +740,11 @@ public class CatalogsFeedValidationErrors {
   
   @Schema(name = "PRICE_CANNOT_BE_DETERMINED", description = "Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRICE_CANNOT_BE_DETERMINED")
-  public Integer getPRICECANNOTBEDETERMINED() {
+  public @Nullable Integer getPRICECANNOTBEDETERMINED() {
     return PRICE_CANNOT_BE_DETERMINED;
   }
 
-  public void setPRICECANNOTBEDETERMINED(Integer PRICE_CANNOT_BE_DETERMINED) {
+  public void setPRICECANNOTBEDETERMINED(@Nullable Integer PRICE_CANNOT_BE_DETERMINED) {
     this.PRICE_CANNOT_BE_DETERMINED = PRICE_CANNOT_BE_DETERMINED;
   }
 

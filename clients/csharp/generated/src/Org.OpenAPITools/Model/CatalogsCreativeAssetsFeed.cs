@@ -271,15 +271,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "created_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
+                            createdAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "updated_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
+                            updatedAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "format":
                             string? formatRawValue = utf8JsonReader.GetString();
@@ -311,12 +309,10 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "credentials":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                credentials = new Option<CatalogsFeedCredentials?>(JsonSerializer.Deserialize<CatalogsFeedCredentials>(ref utf8JsonReader, jsonSerializerOptions));
+                            credentials = new Option<CatalogsFeedCredentials?>(JsonSerializer.Deserialize<CatalogsFeedCredentials>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "preferred_processing_schedule":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                preferredProcessingSchedule = new Option<CatalogsFeedProcessingSchedule?>(JsonSerializer.Deserialize<CatalogsFeedProcessingSchedule>(ref utf8JsonReader, jsonSerializerOptions));
+                            preferredProcessingSchedule = new Option<CatalogsFeedProcessingSchedule?>(JsonSerializer.Deserialize<CatalogsFeedProcessingSchedule>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "default_currency":
                             string? defaultCurrencyRawValue = utf8JsonReader.GetString();

@@ -52,12 +52,6 @@ class LeadFormCreateRequestTest : ShouldSpec() {
             //modelInstance.completionMessage shouldBe ("TODO")
         }
 
-        // to test the property `questions` - List of questions to be displayed on the lead form.
-        should("test questions") {
-            // uncomment below to test the property
-            //modelInstance.questions shouldBe ("TODO")
-        }
-
         // to test the property `status`
         should("test status") {
             // uncomment below to test the property
@@ -68,6 +62,12 @@ class LeadFormCreateRequestTest : ShouldSpec() {
         should("test disclosureLanguage") {
             // uncomment below to test the property
             //modelInstance.disclosureLanguage shouldBe ("TODO")
+        }
+
+        // to test the property `questions` - List of questions to be displayed on the lead form.
+        should("test questions") {
+            // uncomment below to test the property
+            //modelInstance.questions shouldBe ("TODO")
         }
 
         // to test the property `policyLinks` - List of additional policy links to be displayed on the lead form.

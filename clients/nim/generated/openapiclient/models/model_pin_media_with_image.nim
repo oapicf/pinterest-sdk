@@ -9,11 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_pin_media
 import model_pin_media_with_image_all_of_images
 
 type PinMediaWithImage* = object
   ## Pin with image.
-  mediaType*: string
-  images*: PinMediaWithImage_allOf_images
+  mediaType*: Option[string]
+  images*: Option[PinMediaWithImage_allOf_images]
+
+
+# Custom JSON deserialization for PinMediaWithImage with custom field names
+proc to*(node: JsonNode, T: typedesc[PinMediaWithImage]): PinMediaWithImage =
+  result = PinMediaWithImage()
+  if node.kind == JObject:
+    if node.hasKey("media_type") and node["media_type"].kind != JNull:
+      result.mediaType = some(to(node["media_type"], typeof(result.mediaType.get())))
+    if node.hasKey("images") and node["images"].kind != JNull:
+      result.images = some(to(node["images"], typeof(result.images.get())))
+
+# Custom JSON serialization for PinMediaWithImage with custom field names
+proc `%`*(obj: PinMediaWithImage): JsonNode =
+  result = newJObject()
+  if obj.mediaType.isSome():
+    result["media_type"] = %obj.mediaType.get()
+  if obj.images.isSome():
+    result["images"] = %obj.images.get()
+

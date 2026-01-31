@@ -520,7 +520,7 @@ public class CatalogsApiTest {
     @Disabled("Not Implemented")
     public void itemsPostTest() {
         // given
-        CatalogsItemsRequest catalogsItemsRequest = new CatalogsItemsRequest(org.openapitools.model.Country.fromValue("AD"), null, null);
+        CatalogsItemsRequest catalogsItemsRequest = new CatalogsItemsRequest(org.openapitools.model.Country.fromValue("AD"), "example", null);
         String adAccountId = "example";
 
         // when

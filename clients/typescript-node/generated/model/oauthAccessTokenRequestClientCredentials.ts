@@ -12,25 +12,22 @@
 
 import { RequestFile } from './models';
 
-/**
-* A request to receive a client token.
-*/
 export class OauthAccessTokenRequestClientCredentials {
-    'grantType': OauthAccessTokenRequestClientCredentials.GrantTypeEnum;
     'scope': string;
+    'grantType': OauthAccessTokenRequestClientCredentials.GrantTypeEnum;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "grantType",
-            "baseName": "grant_type",
-            "type": "OauthAccessTokenRequestClientCredentials.GrantTypeEnum"
-        },
-        {
             "name": "scope",
             "baseName": "scope",
             "type": "string"
+        },
+        {
+            "name": "grantType",
+            "baseName": "grant_type",
+            "type": "OauthAccessTokenRequestClientCredentials.GrantTypeEnum"
         }    ];
 
     static getAttributeTypeMap() {

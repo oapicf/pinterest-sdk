@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_operation_type
 
 type SharedAudienceCommon* = object
   ## 
-  audienceId*: string ## Unique identifier of an audience
-  operationType*: OperationType
+  audienceId*: Option[string] ## Unique identifier of an audience
+  operationType*: Option[OperationType]
+
+
+# Custom JSON deserialization for SharedAudienceCommon with custom field names
+proc to*(node: JsonNode, T: typedesc[SharedAudienceCommon]): SharedAudienceCommon =
+  result = SharedAudienceCommon()
+  if node.kind == JObject:
+    if node.hasKey("audience_id") and node["audience_id"].kind != JNull:
+      result.audienceId = some(to(node["audience_id"], typeof(result.audienceId.get())))
+    if node.hasKey("operation_type") and node["operation_type"].kind != JNull:
+      result.operationType = some(to(node["operation_type"], typeof(result.operationType.get())))
+
+# Custom JSON serialization for SharedAudienceCommon with custom field names
+proc `%`*(obj: SharedAudienceCommon): JsonNode =
+  result = newJObject()
+  if obj.audienceId.isSome():
+    result["audience_id"] = %obj.audienceId.get()
+  if obj.operationType.isSome():
+    result["operation_type"] = %obj.operationType.get()
+

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ad_group_audience_sizing_request_keywords_inner
 import model_placement_group_type
@@ -26,33 +28,89 @@ type CreativeTypes* {.pure.} = enum
 
 type AdGroupAudienceSizingRequest* = object
   ## 
-  autoTargetingEnabled*: bool ## Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  placementGroup*: PlacementGroupType ## <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
-  creativeTypes*: CreativeTypes ## Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
-  targetingSpec*: TargetingSpec
-  productGroupIds*: seq[string] ## Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
-  keywords*: seq[AdGroupAudienceSizingRequest_keywords_inner] ## Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
+  autoTargetingEnabled*: Option[bool] ## Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  placementGroup*: Option[PlacementGroupType] ## <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+  creativeTypes*: Option[CreativeTypes] ## Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+  targetingSpec*: Option[TargetingSpec]
+  productGroupIds*: Option[seq[string]] ## Targeted product group IDs. </p><strong>Note:</strong> This can only be combined with shopping/catalog sales campaigns. For more information, <a href=\"https://help.pinterest.com/en/business/article/shopping-ads#section-14571\" target=\"_blank\">click here</a>. SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
+  keywords*: Option[seq[AdGroupAudienceSizingRequest_keywords_inner]] ## Array of keyword objects. If the keywords field is missing, all keywords will be targeted.
 
 func `%`*(v: CreativeTypes): JsonNode =
-  let str = case v:
-    of CreativeTypes.REGULAR: "REGULAR"
-    of CreativeTypes.VIDEO: "VIDEO"
-    of CreativeTypes.SHOPPING: "SHOPPING"
-    of CreativeTypes.CAROUSEL: "CAROUSEL"
-    of CreativeTypes.MAXVIDEO: "MAX_VIDEO"
-    of CreativeTypes.SHOPTHEPIN: "SHOP_THE_PIN"
-    of CreativeTypes.COLLECTION: "COLLECTION"
-    of CreativeTypes.IDEA: "IDEA"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CreativeTypes.REGULAR: %"REGULAR"
+    of CreativeTypes.VIDEO: %"VIDEO"
+    of CreativeTypes.SHOPPING: %"SHOPPING"
+    of CreativeTypes.CAROUSEL: %"CAROUSEL"
+    of CreativeTypes.MAXVIDEO: %"MAX_VIDEO"
+    of CreativeTypes.SHOPTHEPIN: %"SHOP_THE_PIN"
+    of CreativeTypes.COLLECTION: %"COLLECTION"
+    of CreativeTypes.IDEA: %"IDEA"
 func `$`*(v: CreativeTypes): string =
   result = case v:
-    of CreativeTypes.REGULAR: "REGULAR"
-    of CreativeTypes.VIDEO: "VIDEO"
-    of CreativeTypes.SHOPPING: "SHOPPING"
-    of CreativeTypes.CAROUSEL: "CAROUSEL"
-    of CreativeTypes.MAXVIDEO: "MAX_VIDEO"
-    of CreativeTypes.SHOPTHEPIN: "SHOP_THE_PIN"
-    of CreativeTypes.COLLECTION: "COLLECTION"
-    of CreativeTypes.IDEA: "IDEA"
+    of CreativeTypes.REGULAR: $("REGULAR")
+    of CreativeTypes.VIDEO: $("VIDEO")
+    of CreativeTypes.SHOPPING: $("SHOPPING")
+    of CreativeTypes.CAROUSEL: $("CAROUSEL")
+    of CreativeTypes.MAXVIDEO: $("MAX_VIDEO")
+    of CreativeTypes.SHOPTHEPIN: $("SHOP_THE_PIN")
+    of CreativeTypes.COLLECTION: $("COLLECTION")
+    of CreativeTypes.IDEA: $("IDEA")
+
+proc to*(node: JsonNode, T: typedesc[CreativeTypes]): CreativeTypes =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CreativeTypes, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("REGULAR"):
+    return CreativeTypes.REGULAR
+  of $("VIDEO"):
+    return CreativeTypes.VIDEO
+  of $("SHOPPING"):
+    return CreativeTypes.SHOPPING
+  of $("CAROUSEL"):
+    return CreativeTypes.CAROUSEL
+  of $("MAX_VIDEO"):
+    return CreativeTypes.MAXVIDEO
+  of $("SHOP_THE_PIN"):
+    return CreativeTypes.SHOPTHEPIN
+  of $("COLLECTION"):
+    return CreativeTypes.COLLECTION
+  of $("IDEA"):
+    return CreativeTypes.IDEA
+  else:
+    raise newException(ValueError, "Invalid enum value for CreativeTypes: " & strVal)
+
+
+# Custom JSON deserialization for AdGroupAudienceSizingRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[AdGroupAudienceSizingRequest]): AdGroupAudienceSizingRequest =
+  result = AdGroupAudienceSizingRequest()
+  if node.kind == JObject:
+    if node.hasKey("auto_targeting_enabled") and node["auto_targeting_enabled"].kind != JNull:
+      result.autoTargetingEnabled = some(to(node["auto_targeting_enabled"], typeof(result.autoTargetingEnabled.get())))
+    if node.hasKey("placement_group") and node["placement_group"].kind != JNull:
+      result.placementGroup = some(to(node["placement_group"], typeof(result.placementGroup.get())))
+    if node.hasKey("creative_types") and node["creative_types"].kind != JNull:
+      result.creativeTypes = some(to(node["creative_types"], CreativeTypes))
+    if node.hasKey("targeting_spec") and node["targeting_spec"].kind != JNull:
+      result.targetingSpec = some(to(node["targeting_spec"], typeof(result.targetingSpec.get())))
+    if node.hasKey("product_group_ids") and node["product_group_ids"].kind != JNull:
+      result.productGroupIds = some(to(node["product_group_ids"], typeof(result.productGroupIds.get())))
+    if node.hasKey("keywords") and node["keywords"].kind != JNull:
+      result.keywords = some(to(node["keywords"], typeof(result.keywords.get())))
+
+# Custom JSON serialization for AdGroupAudienceSizingRequest with custom field names
+proc `%`*(obj: AdGroupAudienceSizingRequest): JsonNode =
+  result = newJObject()
+  if obj.autoTargetingEnabled.isSome():
+    result["auto_targeting_enabled"] = %obj.autoTargetingEnabled.get()
+  if obj.placementGroup.isSome():
+    result["placement_group"] = %obj.placementGroup.get()
+  if obj.creativeTypes.isSome():
+    result["creative_types"] = %obj.creativeTypes.get()
+  if obj.targetingSpec.isSome():
+    result["targeting_spec"] = %obj.targetingSpec.get()
+  if obj.productGroupIds.isSome():
+    result["product_group_ids"] = %obj.productGroupIds.get()
+  if obj.keywords.isSome():
+    result["keywords"] = %obj.keywords.get()
+

@@ -16,6 +16,12 @@ void main() {
   // final instance = CreateMMMReportRequest();
 
   group('test CreateMMMReportRequest', () {
+    // A List of countries for filtering
+    // List<TargetingAdvertiserCountry> countries (default value: const [])
+    test('to test the property `countries`', () async {
+      // TODO
+    });
+
     // Name of the Marketing Mix Modeling (MMM) report
     // String reportName
     test('to test the property `reportName`', () async {
@@ -55,12 +61,6 @@ void main() {
     // Metric and entity columns
     // List<MMMReportingColumn> columns (default value: const [])
     test('to test the property `columns`', () async {
-      // TODO
-    });
-
-    // A List of countries for filtering
-    // List<TargetingAdvertiserCountry> countries (default value: const [])
-    test('to test the property `countries`', () async {
       // TODO
     });
 

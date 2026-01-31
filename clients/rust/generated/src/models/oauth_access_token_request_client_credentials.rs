@@ -11,21 +11,19 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// OauthAccessTokenRequestClientCredentials : A request to receive a client token.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct OauthAccessTokenRequestClientCredentials {
-    #[serde(rename = "grant_type")]
-    pub grant_type: GrantType,
     #[serde(rename = "scope")]
     pub scope: String,
+    #[serde(rename = "grant_type")]
+    pub grant_type: GrantType,
 }
 
 impl OauthAccessTokenRequestClientCredentials {
-    /// A request to receive a client token.
-    pub fn new(grant_type: GrantType, scope: String) -> OauthAccessTokenRequestClientCredentials {
+    pub fn new(scope: String, grant_type: GrantType) -> OauthAccessTokenRequestClientCredentials {
         OauthAccessTokenRequestClientCredentials {
-            grant_type,
             scope,
+            grant_type,
         }
     }
 }

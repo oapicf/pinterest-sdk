@@ -261,35 +261,28 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "assets_summary":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetsSummary = new Option<BusinessMemberAssetsSummary?>(JsonSerializer.Deserialize<BusinessMemberAssetsSummary>(ref utf8JsonReader, jsonSerializerOptions));
+                            assetsSummary = new Option<BusinessMemberAssetsSummary?>(JsonSerializer.Deserialize<BusinessMemberAssetsSummary>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "business_roles":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                businessRoles = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            businessRoles = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "created_by_business":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdByBusiness = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions));
+                            createdByBusiness = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "created_by_user":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdByUser = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions));
+                            createdByUser = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "created_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "is_shared_partner":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isSharedPartner = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isSharedPartner = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "user":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                user = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions));
+                            user = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

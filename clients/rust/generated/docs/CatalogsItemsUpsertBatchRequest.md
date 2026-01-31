@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**models::Country**](Country.md) |  | 
-**language** | [**models::CatalogsItemsRequestLanguage**](CatalogsItemsRequest_language.md) |  | 
+**language** | **String** | We recommend using the CatalogsLocale values. | 
 **operation** | [**models::BatchOperation**](BatchOperation.md) |  | 
 **items** | [**Vec<models::ItemUpsertBatchRecord>**](ItemUpsertBatchRecord.md) | Array with catalogs items | 
 

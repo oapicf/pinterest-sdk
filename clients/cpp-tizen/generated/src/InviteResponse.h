@@ -49,41 +49,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get 
-	 */
-	InviteAssetsSummary getAssetsSummary();
-
-	/*! \brief Set 
-	 */
-	void setAssetsSummary(InviteAssetsSummary  assets_summary);
-	/*! \brief Get The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-	 */
-	std::list<std::string> getBusinessRoles();
-
-	/*! \brief Set The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-	 */
-	void setBusinessRoles(std::list <std::string> business_roles);
-	/*! \brief Get Metadata for the business that created the invite/request.
-	 */
-	BusinessAccessUserSummary getCreatedByBusiness();
-
-	/*! \brief Set Metadata for the business that created the invite/request.
-	 */
-	void setCreatedByBusiness(BusinessAccessUserSummary  created_by_business);
-	/*! \brief Get Metadata for the user that created the invite/request.
-	 */
-	BusinessAccessUserSummary getCreatedByUser();
-
-	/*! \brief Set Metadata for the user that created the invite/request.
-	 */
-	void setCreatedByUser(BusinessAccessUserSummary  created_by_user);
-	/*! \brief Get The time the invite/request was created. Returned in milliseconds.
-	 */
-	int getCreatedTime();
-
-	/*! \brief Set The time the invite/request was created. Returned in milliseconds.
-	 */
-	void setCreatedTime(int  created_time);
 	/*! \brief Get Unique identifier of the invite/request.
 	 */
 	std::string getId();
@@ -112,17 +77,52 @@ public:
 	/*! \brief Set Metadata for the member/partner that was sent the invite/request.
 	 */
 	void setUser(BusinessAccessUserSummary  user);
+	/*! \brief Get 
+	 */
+	InviteAssetsSummary getAssetsSummary();
+
+	/*! \brief Set 
+	 */
+	void setAssetsSummary(InviteAssetsSummary  assets_summary);
+	/*! \brief Get The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+	 */
+	std::list<std::string> getBusinessRoles();
+
+	/*! \brief Set The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+	 */
+	void setBusinessRoles(std::list <std::string> business_roles);
+	/*! \brief Get Metadata for the business that created the invite/request.
+	 */
+	std::string getCreatedByBusiness();
+
+	/*! \brief Set Metadata for the business that created the invite/request.
+	 */
+	void setCreatedByBusiness(std::string  created_by_business);
+	/*! \brief Get Metadata for the user that created the invite/request.
+	 */
+	std::string getCreatedByUser();
+
+	/*! \brief Set Metadata for the user that created the invite/request.
+	 */
+	void setCreatedByUser(std::string  created_by_user);
+	/*! \brief Get The time the invite/request was created. Returned in milliseconds.
+	 */
+	int getCreatedTime();
+
+	/*! \brief Set The time the invite/request was created. Returned in milliseconds.
+	 */
+	void setCreatedTime(int  created_time);
 
 private:
-	InviteAssetsSummary assets_summary;
-	std::list <std::string>business_roles;
-	BusinessAccessUserSummary created_by_business;
-	BusinessAccessUserSummary created_by_user;
-	int created_time;
 	std::string id;
 	BaseInviteDataResponse_invite_data invite_data;
 	bool is_received_invite;
 	BusinessAccessUserSummary user;
+	InviteAssetsSummary assets_summary;
+	std::list <std::string>business_roles;
+	std::string created_by_business;
+	std::string created_by_user;
+	int created_time;
 	void __init();
 	void __cleanup();
 

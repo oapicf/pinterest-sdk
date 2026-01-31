@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,19 +7,22 @@ import org.openapitools.model.UpdateMemberAssetAccessBodyAccessesInner;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * An object with a list of all the new accesses.
- **/
+ * An object with a list of all the new accesses.
+ */
 @ApiModel(description="An object with a list of all the new accesses.")
 
 public class UpdateMemberAssetAccessBody  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private List<@Valid UpdateMemberAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
  /**
    * Get accesses

@@ -12,8 +12,6 @@ import AnyCodable
 
 public struct ConversionTagCreate: Codable, JSONEncodable, Hashable {
 
-    /** Conversion tag name. */
-    public var name: String
     /** Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
     public var aemEnabled: Bool? = false
     /** Metadata ingestion frequency. */
@@ -28,9 +26,10 @@ public struct ConversionTagCreate: Codable, JSONEncodable, Hashable {
     public var aemDbEnabled: Bool? = false
     /** Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
     public var aemLocEnabled: Bool? = false
+    /** Conversion tag name. */
+    public var name: String
 
-    public init(name: String, aemEnabled: Bool? = false, mdFrequency: Double? = 1, aemFnlnEnabled: Bool? = false, aemPhEnabled: Bool? = false, aemGeEnabled: Bool? = false, aemDbEnabled: Bool? = false, aemLocEnabled: Bool? = false) {
-        self.name = name
+    public init(aemEnabled: Bool? = false, mdFrequency: Double? = 1, aemFnlnEnabled: Bool? = false, aemPhEnabled: Bool? = false, aemGeEnabled: Bool? = false, aemDbEnabled: Bool? = false, aemLocEnabled: Bool? = false, name: String) {
         self.aemEnabled = aemEnabled
         self.mdFrequency = mdFrequency
         self.aemFnlnEnabled = aemFnlnEnabled
@@ -38,10 +37,10 @@ public struct ConversionTagCreate: Codable, JSONEncodable, Hashable {
         self.aemGeEnabled = aemGeEnabled
         self.aemDbEnabled = aemDbEnabled
         self.aemLocEnabled = aemLocEnabled
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case name
         case aemEnabled = "aem_enabled"
         case mdFrequency = "md_frequency"
         case aemFnlnEnabled = "aem_fnln_enabled"
@@ -49,13 +48,13 @@ public struct ConversionTagCreate: Codable, JSONEncodable, Hashable {
         case aemGeEnabled = "aem_ge_enabled"
         case aemDbEnabled = "aem_db_enabled"
         case aemLocEnabled = "aem_loc_enabled"
+        case name
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
         try container.encodeIfPresent(aemEnabled, forKey: .aemEnabled)
         try container.encodeIfPresent(mdFrequency, forKey: .mdFrequency)
         try container.encodeIfPresent(aemFnlnEnabled, forKey: .aemFnlnEnabled)
@@ -63,6 +62,7 @@ public struct ConversionTagCreate: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(aemGeEnabled, forKey: .aemGeEnabled)
         try container.encodeIfPresent(aemDbEnabled, forKey: .aemDbEnabled)
         try container.encodeIfPresent(aemLocEnabled, forKey: .aemLocEnabled)
+        try container.encode(name, forKey: .name)
     }
 }
 

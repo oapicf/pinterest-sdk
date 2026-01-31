@@ -8,16 +8,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdsCreditRedeemRequest  {
   
-  @ApiModelProperty(example = "138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", required = true, value = "Takes in a SHA256 hash of the offerCode.")
  /**
-   * Takes in a SHA256 hash of the offerCode.
-  **/
+  * Takes in a SHA256 hash of the offerCode.
+  */
+  @ApiModelProperty(example = "138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", required = true, value = "Takes in a SHA256 hash of the offerCode.")
+
   private String offerCodeHash;
 
-  @ApiModelProperty(example = "true", required = true, value = "If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account")
  /**
-   * If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account
-  **/
+  * If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account
+  */
+  @ApiModelProperty(example = "true", required = true, value = "If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account")
+
   private Boolean validateOnly;
  /**
    * Takes in a SHA256 hash of the offerCode.

@@ -393,8 +393,9 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsListExecute(r A
 			parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", t, "form", "multi")
 		}
 	} else {
-		var defaultValue []string = ["ACTIVE","PAUSED"]
-		r.entityStatuses = &defaultValue
+        var defaultValue []string = []string{"ACTIVE", "PAUSED"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "entity_statuses", defaultValue, "form", "multi")
+        r.entityStatuses = &defaultValue
 	}
 	if r.adGroupId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_group_id", r.adGroupId, "form", "")
@@ -402,8 +403,9 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupPromotionsListExecute(r A
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.order != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")
@@ -756,26 +758,30 @@ func (a *ProductGroupPromotionsAPIService) ProductGroupsAnalyticsExecute(r ApiPr
 	if r.clickWindowDays != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", r.clickWindowDays, "form", "")
 	} else {
-		var defaultValue int32 = 30
-		r.clickWindowDays = &defaultValue
+        var defaultValue int32 = 30
+        parameterAddToHeaderOrQuery(localVarQueryParams, "click_window_days", defaultValue, "form", "")
+        r.clickWindowDays = &defaultValue
 	}
 	if r.engagementWindowDays != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", r.engagementWindowDays, "form", "")
 	} else {
-		var defaultValue int32 = 30
-		r.engagementWindowDays = &defaultValue
+        var defaultValue int32 = 30
+        parameterAddToHeaderOrQuery(localVarQueryParams, "engagement_window_days", defaultValue, "form", "")
+        r.engagementWindowDays = &defaultValue
 	}
 	if r.viewWindowDays != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", r.viewWindowDays, "form", "")
 	} else {
-		var defaultValue int32 = 1
-		r.viewWindowDays = &defaultValue
+        var defaultValue int32 = 1
+        parameterAddToHeaderOrQuery(localVarQueryParams, "view_window_days", defaultValue, "form", "")
+        r.viewWindowDays = &defaultValue
 	}
 	if r.conversionReportTime != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", r.conversionReportTime, "form", "")
 	} else {
-		var defaultValue string = "TIME_OF_AD_ACTION"
-		r.conversionReportTime = &defaultValue
+        var defaultValue string = "TIME_OF_AD_ACTION"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "conversion_report_time", defaultValue, "form", "")
+        r.conversionReportTime = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

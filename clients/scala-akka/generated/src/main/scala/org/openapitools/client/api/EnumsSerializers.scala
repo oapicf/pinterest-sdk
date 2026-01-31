@@ -44,6 +44,7 @@ object EnumsSerializers {
     new EnumNameSerializer(CatalogsCreateRetailItemEnums.Operation) :+
     new EnumNameSerializer(CatalogsCreativeAssetsBatchItemEnums.Operation) :+
     new EnumNameSerializer(CatalogsCreativeAssetsBatchRequestEnums.CatalogType) :+
+    new EnumNameSerializer(CatalogsCreativeAssetsBatchRequestEnums.Language) :+
     new EnumNameSerializer(CatalogsCreativeAssetsItemsFilterEnums.CatalogType) :+
     new EnumNameSerializer(CatalogsCreativeAssetsItemsPostFilterEnums.CatalogType) :+
     new EnumNameSerializer(CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestEnums.CatalogType) :+
@@ -60,6 +61,7 @@ object EnumsSerializers {
     new EnumNameSerializer(CatalogsFeedValidationWarningsEnums.FETCHSAMESIGNATURE) :+
     new EnumNameSerializer(CatalogsHotelBatchItemEnums.Operation) :+
     new EnumNameSerializer(CatalogsHotelBatchRequestEnums.CatalogType) :+
+    new EnumNameSerializer(CatalogsHotelBatchRequestEnums.Language) :+
     new EnumNameSerializer(CatalogsHotelItemsFilterEnums.CatalogType) :+
     new EnumNameSerializer(CatalogsHotelItemsPostFilterEnums.CatalogType) :+
     new EnumNameSerializer(CatalogsHotelListProductsByCatalogBasedFilterRequestEnums.CatalogType) :+
@@ -70,6 +72,13 @@ object EnumsSerializers {
     new EnumNameSerializer(CatalogsHotelProductGroupUpdateRequestEnums.CatalogType) :+
     new EnumNameSerializer(CatalogsHotelReportParametersEnums.CatalogType) :+
     new EnumNameSerializer(CatalogsHotelReportParametersReportEnums.ReportType) :+
+    new EnumNameSerializer(CatalogsItemsBatchRequestEnums.Language) :+
+    new EnumNameSerializer(CatalogsItemsCreateBatchRequestEnums.Language) :+
+    new EnumNameSerializer(CatalogsItemsDeleteBatchRequestEnums.Language) :+
+    new EnumNameSerializer(CatalogsItemsDeleteDiscontinuedBatchRequestEnums.Language) :+
+    new EnumNameSerializer(CatalogsItemsRequestEnums.Language) :+
+    new EnumNameSerializer(CatalogsItemsUpdateBatchRequestEnums.Language) :+
+    new EnumNameSerializer(CatalogsItemsUpsertBatchRequestEnums.Language) :+
     new EnumNameSerializer(CatalogsListProductsByFilterRequestEnums.CatalogType) :+
     new EnumNameSerializer(CatalogsProductGroupPricingCurrencyCriteriaEnums.Operator) :+
     new EnumNameSerializer(CatalogsProductGroupsUpdateRequestEnums.CatalogType) :+
@@ -82,6 +91,7 @@ object EnumsSerializers {
     new EnumNameSerializer(CatalogsReportStatsEnums.ReportType) :+
     new EnumNameSerializer(CatalogsReportStatsEnums.Severity) :+
     new EnumNameSerializer(CatalogsRetailBatchRequestEnums.CatalogType) :+
+    new EnumNameSerializer(CatalogsRetailBatchRequestEnums.Language) :+
     new EnumNameSerializer(CatalogsRetailBatchRequestItemsInnerEnums.Operation) :+
     new EnumNameSerializer(CatalogsRetailItemsFilterEnums.CatalogType) :+
     new EnumNameSerializer(CatalogsRetailItemsPostFilterEnums.CatalogType) :+
@@ -99,6 +109,7 @@ object EnumsSerializers {
     new EnumNameSerializer(CatalogsUpsertHotelItemEnums.Operation) :+
     new EnumNameSerializer(CatalogsUpsertRetailItemEnums.Operation) :+
     new EnumNameSerializer(CatalogsVerticalBatchRequestEnums.CatalogType) :+
+    new EnumNameSerializer(CatalogsVerticalBatchRequestEnums.Language) :+
     new EnumNameSerializer(CatalogsVerticalProductGroupEnums.CatalogType) :+
     new EnumNameSerializer(CatalogsVerticalProductGroupCreateRequestEnums.CatalogType) :+
     new EnumNameSerializer(CatalogsVerticalProductGroupUpdateRequestEnums.CatalogType) :+
@@ -115,6 +126,7 @@ object EnumsSerializers {
     new EnumNameSerializer(IntegrationLogEnums.LogLevel) :+
     new EnumNameSerializer(IntegrationLogClientRequestEnums.Method) :+
     new EnumNameSerializer(ItemsBatchPostRequestEnums.CatalogType) :+
+    new EnumNameSerializer(ItemsBatchPostRequestEnums.Language) :+
     new EnumNameSerializer(MultipleProductGroupsInnerEnums.CatalogType) :+
     new EnumNameSerializer(OauthAccessTokenRequestClientCredentialsEnums.GrantType) :+
     new EnumNameSerializer(OauthAccessTokenRequestCodeEnums.GrantType) :+

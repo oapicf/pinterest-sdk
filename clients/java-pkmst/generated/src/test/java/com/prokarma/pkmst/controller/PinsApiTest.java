@@ -22,7 +22,6 @@ import com.prokarma.pkmst.model.Pin;
 import com.prokarma.pkmst.model.PinAnalyticsMetricsResponse;
 import com.prokarma.pkmst.model.PinCreate;
 import com.prokarma.pkmst.model.PinUpdate;
-import com.prokarma.pkmst.model.PinsAnalyticsMetricTypesParameterInner;
 import com.prokarma.pkmst.model.PinsList200Response;
 import com.prokarma.pkmst.model.PinsSaveRequest;
 import org.junit.Test;
@@ -62,7 +61,7 @@ public class PinsApiTest {
         List<String> pinIds = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = null;
+        List<String> metricTypes = null;
         String appTypes = null;
         String adAccountId = null;
     ResponseEntity<Map<String, Map<String>> response = api.multiPinsAnalytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId , accept);
@@ -83,7 +82,7 @@ public class PinsApiTest {
         String pinId = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = null;
+        List<String> metricTypes = null;
         String appTypes = null;
         String splitField = null;
         String adAccountId = null;

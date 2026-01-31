@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Schema for log sent from an integration application.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2025-05-10T05:40:48.086340579Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@ApiModel(description="Schema for log sent from an integration application.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLog   {
   
   private Integer clientTimestamp;

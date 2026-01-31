@@ -109,7 +109,6 @@ models/AudienceCategory.js
 models/AudienceCommon.js
 models/AudienceCreateCustomRequest.js
 models/AudienceCreateRequest.js
-models/AudienceCreateRequest_1_audience_type.js
 models/AudienceDataParty.js
 models/AudienceDefinition.js
 models/AudienceDefinitionResponse.js
@@ -273,7 +272,6 @@ models/CatalogsItemsDeleteDiscontinuedBatchRequest.js
 models/CatalogsItemsFilters.js
 models/CatalogsItemsPostFilters.js
 models/CatalogsItemsRequest.js
-models/CatalogsItemsRequest_language.js
 models/CatalogsItemsUpdateBatchRequest.js
 models/CatalogsItemsUpsertBatchRequest.js
 models/CatalogsListProductsByFeedBasedFilter.js
@@ -739,7 +737,6 @@ models/media_list_200_response.js
 models/multiple_product_groups_inner.js
 models/order_lines_list_200_response.js
 models/page_visit_conversion_tags_get_200_response.js
-models/pins_analytics_metric_types_parameter_inner.js
 models/pins_list_200_response.js
 models/pins_save_request.js
 models/product_group_promotions_list_200_response.js

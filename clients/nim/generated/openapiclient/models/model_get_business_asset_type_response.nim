@@ -9,7 +9,43 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type GetBusinessAssetTypeResponse* = object
-  ## Type of asset.
+type GetBusinessAssetTypeResponse* {.pure.} = enum
+  ADACCOUNT
+  PROFILE
+  ASSETGROUP
+  CONVERSIONTAG
+
+func `%`*(v: GetBusinessAssetTypeResponse): JsonNode =
+  result = case v:
+    of GetBusinessAssetTypeResponse.ADACCOUNT: %"AD_ACCOUNT"
+    of GetBusinessAssetTypeResponse.PROFILE: %"PROFILE"
+    of GetBusinessAssetTypeResponse.ASSETGROUP: %"ASSET_GROUP"
+    of GetBusinessAssetTypeResponse.CONVERSIONTAG: %"CONVERSION_TAG"
+
+func `$`*(v: GetBusinessAssetTypeResponse): string =
+  result = case v:
+    of GetBusinessAssetTypeResponse.ADACCOUNT: $("AD_ACCOUNT")
+    of GetBusinessAssetTypeResponse.PROFILE: $("PROFILE")
+    of GetBusinessAssetTypeResponse.ASSETGROUP: $("ASSET_GROUP")
+    of GetBusinessAssetTypeResponse.CONVERSIONTAG: $("CONVERSION_TAG")
+
+proc to*(node: JsonNode, T: typedesc[GetBusinessAssetTypeResponse]): GetBusinessAssetTypeResponse =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum GetBusinessAssetTypeResponse, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("AD_ACCOUNT"):
+    return GetBusinessAssetTypeResponse.ADACCOUNT
+  of $("PROFILE"):
+    return GetBusinessAssetTypeResponse.PROFILE
+  of $("ASSET_GROUP"):
+    return GetBusinessAssetTypeResponse.ASSETGROUP
+  of $("CONVERSION_TAG"):
+    return GetBusinessAssetTypeResponse.CONVERSIONTAG
+  else:
+    raise newException(ValueError, "Invalid enum value for GetBusinessAssetTypeResponse: " & strVal)
+

@@ -49,11 +49,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdPreviewURLResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"url\" : \"https://ads.pinterest.com/ad-preview/58f1a0e9ab0bd0f99462a0e4c5dd7e8297888c8a36331e88f757abe8f0295d31/\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -61,7 +61,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdPreviewURLResponse>(exampleJson)
-            : default(AdPreviewURLResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -94,16 +94,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(MetricsResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"data\" : [ {\n    \"targeting_type\" : \"KEYWORD\",\n    \"targeting_value\" : \"christmas decor ideas\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"iphone\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"ipad\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"web\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"web_mobile\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"android_mobile\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"android_tablet\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"GENDER\",\n    \"targeting_value\" : \"female\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"LOCATION\",\n    \"targeting_value\" : 500,\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"PLACEMENT\",\n    \"targeting_value\" : \"SEARCH\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"COUNTRY\",\n    \"targeting_value\" : \"US\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"TARGETED_INTEREST\",\n    \"targeting_value\" : \"Food and Drinks\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"PINNER_INTEREST\",\n    \"targeting_value\" : \"Chocolate Cookies\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"AUDIENCE_INCLUDE\",\n    \"targeting_value\" : 254261234567,\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"GEO\",\n    \"targeting_value\" : \"US:94102\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"AGE_BUCKET\",\n    \"targeting_value\" : \"45-49\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"REGION\",\n    \"targeting_value\" : \"US-CA\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<MetricsResponse>(exampleJson)
-            : default(MetricsResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -138,11 +138,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<AdsAnalyticsResponseInner>));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "[ {\n  \"DATE\" : \"2021-04-01\",\n  \"AD_ID\" : \"547602124502\",\n  \"SPEND_IN_DOLLAR\" : 30,\n  \"TOTAL_CLICKTHROUGH\" : 216\n}, {\n  \"DATE\" : \"2021-04-01\",\n  \"AD_ID\" : \"547602124502\",\n  \"SPEND_IN_DOLLAR\" : 30,\n  \"TOTAL_CLICKTHROUGH\" : 216\n} ]";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -150,7 +150,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<AdsAnalyticsResponseInner>>(exampleJson)
-            : default(List<AdsAnalyticsResponseInner>);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -174,16 +174,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdArrayResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"data\" : {\n      \"is_removable\" : false,\n      \"updated_time\" : 1451431341,\n      \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\",\n      \"destination_url\" : \"destination_url\",\n      \"type\" : \"pinpromotion\",\n      \"tracking_urls\" : \"{}\",\n      \"ios_deep_link\" : \"ios_deep_link\",\n      \"ad_account_id\" : \"549755885175\",\n      \"is_pin_deleted\" : false,\n      \"creative_type\" : \"REGULAR\",\n      \"grid_click_type\" : \"CLOSEUP\",\n      \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ],\n      \"id\" : \"687195134316\",\n      \"review_status\" : \"PENDING\",\n      \"ad_group_id\" : \"2680059592705\",\n      \"pin_id\" : \"394205773611545468\",\n      \"campaign_id\" : \"626735565838\",\n      \"created_time\" : 1451431341,\n      \"view_tracking_url\" : \"view_tracking_url\",\n      \"android_deep_link\" : \"android_deep_link\",\n      \"summary_status\" : \"summary_status\",\n      \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ],\n      \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ],\n      \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ],\n      \"click_tracking_url\" : \"click_tracking_url\",\n      \"quiz_pin_data\" : \"{}\",\n      \"name\" : \"name\",\n      \"lead_form_id\" : \"lead_form_id\",\n      \"customizable_cta_type\" : \"LEARN_MORE\",\n      \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ],\n      \"status\" : \"ACTIVE\"\n    },\n    \"exceptions\" : {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }\n  }, {\n    \"data\" : {\n      \"is_removable\" : false,\n      \"updated_time\" : 1451431341,\n      \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\",\n      \"destination_url\" : \"destination_url\",\n      \"type\" : \"pinpromotion\",\n      \"tracking_urls\" : \"{}\",\n      \"ios_deep_link\" : \"ios_deep_link\",\n      \"ad_account_id\" : \"549755885175\",\n      \"is_pin_deleted\" : false,\n      \"creative_type\" : \"REGULAR\",\n      \"grid_click_type\" : \"CLOSEUP\",\n      \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ],\n      \"id\" : \"687195134316\",\n      \"review_status\" : \"PENDING\",\n      \"ad_group_id\" : \"2680059592705\",\n      \"pin_id\" : \"394205773611545468\",\n      \"campaign_id\" : \"626735565838\",\n      \"created_time\" : 1451431341,\n      \"view_tracking_url\" : \"view_tracking_url\",\n      \"android_deep_link\" : \"android_deep_link\",\n      \"summary_status\" : \"summary_status\",\n      \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ],\n      \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ],\n      \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ],\n      \"click_tracking_url\" : \"click_tracking_url\",\n      \"quiz_pin_data\" : \"{}\",\n      \"name\" : \"name\",\n      \"lead_form_id\" : \"lead_form_id\",\n      \"customizable_cta_type\" : \"LEARN_MORE\",\n      \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ],\n      \"status\" : \"ACTIVE\"\n    },\n    \"exceptions\" : {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdArrayResponse>(exampleJson)
-            : default(AdArrayResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -206,16 +206,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"is_removable\" : false,\n  \"updated_time\" : 1451431341,\n  \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\",\n  \"destination_url\" : \"destination_url\",\n  \"type\" : \"pinpromotion\",\n  \"tracking_urls\" : \"{}\",\n  \"ios_deep_link\" : \"ios_deep_link\",\n  \"ad_account_id\" : \"549755885175\",\n  \"is_pin_deleted\" : false,\n  \"creative_type\" : \"REGULAR\",\n  \"grid_click_type\" : \"CLOSEUP\",\n  \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ],\n  \"id\" : \"687195134316\",\n  \"review_status\" : \"PENDING\",\n  \"ad_group_id\" : \"2680059592705\",\n  \"pin_id\" : \"394205773611545468\",\n  \"campaign_id\" : \"626735565838\",\n  \"created_time\" : 1451431341,\n  \"view_tracking_url\" : \"view_tracking_url\",\n  \"android_deep_link\" : \"android_deep_link\",\n  \"summary_status\" : \"summary_status\",\n  \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ],\n  \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ],\n  \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ],\n  \"click_tracking_url\" : \"click_tracking_url\",\n  \"quiz_pin_data\" : \"{}\",\n  \"name\" : \"name\",\n  \"lead_form_id\" : \"lead_form_id\",\n  \"customizable_cta_type\" : \"LEARN_MORE\",\n  \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ],\n  \"status\" : \"ACTIVE\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdResponse>(exampleJson)
-            : default(AdResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -246,11 +246,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"is_removable\" : false,\n    \"updated_time\" : 1451431341,\n    \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\",\n    \"destination_url\" : \"destination_url\",\n    \"type\" : \"pinpromotion\",\n    \"tracking_urls\" : \"{}\",\n    \"ios_deep_link\" : \"ios_deep_link\",\n    \"ad_account_id\" : \"549755885175\",\n    \"is_pin_deleted\" : false,\n    \"creative_type\" : \"REGULAR\",\n    \"grid_click_type\" : \"CLOSEUP\",\n    \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ],\n    \"id\" : \"687195134316\",\n    \"review_status\" : \"PENDING\",\n    \"ad_group_id\" : \"2680059592705\",\n    \"pin_id\" : \"394205773611545468\",\n    \"campaign_id\" : \"626735565838\",\n    \"created_time\" : 1451431341,\n    \"view_tracking_url\" : \"view_tracking_url\",\n    \"android_deep_link\" : \"android_deep_link\",\n    \"summary_status\" : \"summary_status\",\n    \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ],\n    \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ],\n    \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ],\n    \"click_tracking_url\" : \"click_tracking_url\",\n    \"quiz_pin_data\" : \"{}\",\n    \"name\" : \"name\",\n    \"lead_form_id\" : \"lead_form_id\",\n    \"customizable_cta_type\" : \"LEARN_MORE\",\n    \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ],\n    \"status\" : \"ACTIVE\"\n  }, {\n    \"is_removable\" : false,\n    \"updated_time\" : 1451431341,\n    \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\",\n    \"destination_url\" : \"destination_url\",\n    \"type\" : \"pinpromotion\",\n    \"tracking_urls\" : \"{}\",\n    \"ios_deep_link\" : \"ios_deep_link\",\n    \"ad_account_id\" : \"549755885175\",\n    \"is_pin_deleted\" : false,\n    \"creative_type\" : \"REGULAR\",\n    \"grid_click_type\" : \"CLOSEUP\",\n    \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ],\n    \"id\" : \"687195134316\",\n    \"review_status\" : \"PENDING\",\n    \"ad_group_id\" : \"2680059592705\",\n    \"pin_id\" : \"394205773611545468\",\n    \"campaign_id\" : \"626735565838\",\n    \"created_time\" : 1451431341,\n    \"view_tracking_url\" : \"view_tracking_url\",\n    \"android_deep_link\" : \"android_deep_link\",\n    \"summary_status\" : \"summary_status\",\n    \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ],\n    \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ],\n    \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ],\n    \"click_tracking_url\" : \"click_tracking_url\",\n    \"quiz_pin_data\" : \"{}\",\n    \"name\" : \"name\",\n    \"lead_form_id\" : \"lead_form_id\",\n    \"customizable_cta_type\" : \"LEARN_MORE\",\n    \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ],\n    \"status\" : \"ACTIVE\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -258,7 +258,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdsList200Response>(exampleJson)
-            : default(AdsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -282,16 +282,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdArrayResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"data\" : {\n      \"is_removable\" : false,\n      \"updated_time\" : 1451431341,\n      \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\",\n      \"destination_url\" : \"destination_url\",\n      \"type\" : \"pinpromotion\",\n      \"tracking_urls\" : \"{}\",\n      \"ios_deep_link\" : \"ios_deep_link\",\n      \"ad_account_id\" : \"549755885175\",\n      \"is_pin_deleted\" : false,\n      \"creative_type\" : \"REGULAR\",\n      \"grid_click_type\" : \"CLOSEUP\",\n      \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ],\n      \"id\" : \"687195134316\",\n      \"review_status\" : \"PENDING\",\n      \"ad_group_id\" : \"2680059592705\",\n      \"pin_id\" : \"394205773611545468\",\n      \"campaign_id\" : \"626735565838\",\n      \"created_time\" : 1451431341,\n      \"view_tracking_url\" : \"view_tracking_url\",\n      \"android_deep_link\" : \"android_deep_link\",\n      \"summary_status\" : \"summary_status\",\n      \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ],\n      \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ],\n      \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ],\n      \"click_tracking_url\" : \"click_tracking_url\",\n      \"quiz_pin_data\" : \"{}\",\n      \"name\" : \"name\",\n      \"lead_form_id\" : \"lead_form_id\",\n      \"customizable_cta_type\" : \"LEARN_MORE\",\n      \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ],\n      \"status\" : \"ACTIVE\"\n    },\n    \"exceptions\" : {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }\n  }, {\n    \"data\" : {\n      \"is_removable\" : false,\n      \"updated_time\" : 1451431341,\n      \"collection_items_destination_url_template\" : \"collection_items_destination_url_template\",\n      \"destination_url\" : \"destination_url\",\n      \"type\" : \"pinpromotion\",\n      \"tracking_urls\" : \"{}\",\n      \"ios_deep_link\" : \"ios_deep_link\",\n      \"ad_account_id\" : \"549755885175\",\n      \"is_pin_deleted\" : false,\n      \"creative_type\" : \"REGULAR\",\n      \"grid_click_type\" : \"CLOSEUP\",\n      \"rejection_labels\" : [ \"rejection_labels\", \"rejection_labels\" ],\n      \"id\" : \"687195134316\",\n      \"review_status\" : \"PENDING\",\n      \"ad_group_id\" : \"2680059592705\",\n      \"pin_id\" : \"394205773611545468\",\n      \"campaign_id\" : \"626735565838\",\n      \"created_time\" : 1451431341,\n      \"view_tracking_url\" : \"view_tracking_url\",\n      \"android_deep_link\" : \"android_deep_link\",\n      \"summary_status\" : \"summary_status\",\n      \"carousel_android_deep_links\" : [ \"carousel_android_deep_links\", \"carousel_android_deep_links\" ],\n      \"carousel_destination_urls\" : [ \"carousel_destination_urls\", \"carousel_destination_urls\" ],\n      \"carousel_ios_deep_links\" : [ \"carousel_ios_deep_links\", \"carousel_ios_deep_links\" ],\n      \"click_tracking_url\" : \"click_tracking_url\",\n      \"quiz_pin_data\" : \"{}\",\n      \"name\" : \"name\",\n      \"lead_form_id\" : \"lead_form_id\",\n      \"customizable_cta_type\" : \"LEARN_MORE\",\n      \"rejected_reasons\" : [ \"HASHTAGS\", \"HASHTAGS\" ],\n      \"status\" : \"ACTIVE\"\n    },\n    \"exceptions\" : {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdArrayResponse>(exampleJson)
-            : default(AdArrayResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

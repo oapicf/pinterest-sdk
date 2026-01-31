@@ -20,7 +20,6 @@
 #include "OpenAPIPinAnalyticsMetricsResponse.h"
 #include "OpenAPIPinCreate.h"
 #include "OpenAPIPinUpdate.h"
-#include "OpenAPIPinsAnalyticsMetricTypesParameterInner.h"
 #include "OpenAPIPinsList200Response.h"
 #include "OpenAPIPinsSaveRequest.h"
 
@@ -44,8 +43,29 @@ public:
 	FDateTime StartDate;
 	/* Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. */
 	FDateTime EndDate;
+	enum class MetricTypesEnum
+	{
+		Impression,
+		OutboundClick,
+		PinClick,
+		Save,
+		SaveRate,
+		TotalComments,
+		TotalReactions,
+		UserFollow,
+		ProfileVisit,
+		VideoMrcView,
+		VIDEO10SVIEW,
+		QUARTILE95PERCENTVIEW,
+		VIDEOV50WATCHTIME,
+		VideoStart,
+		VideoAvgWatchTime,
+  	};
+
+	static FString EnumToString(const MetricTypesEnum& EnumValue);
+	static bool EnumFromString(const FString& EnumAsString, MetricTypesEnum& EnumValue);
 	/* Pin metric types to get data for. */
-	TArray<OpenAPIPinsAnalyticsMetricTypesParameterInner> MetricTypes;
+	TArray<MetricTypesEnum> MetricTypes;
 	enum class AppTypesEnum
 	{
 		All,
@@ -89,8 +109,29 @@ public:
 	FDateTime StartDate;
 	/* Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. */
 	FDateTime EndDate;
+	enum class MetricTypesEnum
+	{
+		Impression,
+		OutboundClick,
+		PinClick,
+		Save,
+		SaveRate,
+		TotalComments,
+		TotalReactions,
+		UserFollow,
+		ProfileVisit,
+		VideoMrcView,
+		VIDEO10SVIEW,
+		QUARTILE95PERCENTVIEW,
+		VIDEOV50WATCHTIME,
+		VideoStart,
+		VideoAvgWatchTime,
+  	};
+
+	static FString EnumToString(const MetricTypesEnum& EnumValue);
+	static bool EnumFromString(const FString& EnumAsString, MetricTypesEnum& EnumValue);
 	/* Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>. */
-	TArray<OpenAPIPinsAnalyticsMetricTypesParameterInner> MetricTypes;
+	TArray<MetricTypesEnum> MetricTypes;
 	enum class AppTypesEnum
 	{
 		All,

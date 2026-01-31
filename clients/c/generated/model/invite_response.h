@@ -18,33 +18,34 @@ typedef struct invite_response_t invite_response_t;
 #include "base_invite_data_response_invite_data.h"
 #include "business_access_user_summary.h"
 #include "invite_assets_summary.h"
+#include "object.h"
 
 
 
 typedef struct invite_response_t {
-    struct invite_assets_summary_t *assets_summary; //model
-    list_t *business_roles; //primitive container
-    struct business_access_user_summary_t *created_by_business; //model
-    struct business_access_user_summary_t *created_by_user; //model
-    int created_time; //numeric
     char *id; // string
     struct base_invite_data_response_invite_data_t *invite_data; //model
     int is_received_invite; //boolean
     struct business_access_user_summary_t *user; //model
+    struct invite_assets_summary_t *assets_summary; //model
+    list_t *business_roles; //primitive container
+    object_t *created_by_business; //object
+    object_t *created_by_user; //object
+    int created_time; //numeric
 
     int _library_owned; // Is the library responsible for freeing this object?
 } invite_response_t;
 
 __attribute__((deprecated)) invite_response_t *invite_response_create(
-    invite_assets_summary_t *assets_summary,
-    list_t *business_roles,
-    business_access_user_summary_t *created_by_business,
-    business_access_user_summary_t *created_by_user,
-    int created_time,
     char *id,
     base_invite_data_response_invite_data_t *invite_data,
     int is_received_invite,
-    business_access_user_summary_t *user
+    business_access_user_summary_t *user,
+    invite_assets_summary_t *assets_summary,
+    list_t *business_roles,
+    object_t *created_by_business,
+    object_t *created_by_user,
+    int created_time
 );
 
 void invite_response_free(invite_response_t *invite_response);

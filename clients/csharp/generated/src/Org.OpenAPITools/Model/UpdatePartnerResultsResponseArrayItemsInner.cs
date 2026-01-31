@@ -155,8 +155,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "exception":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exception = new Option<BusinessAccessError?>(JsonSerializer.Deserialize<BusinessAccessError>(ref utf8JsonReader, jsonSerializerOptions));
+                            exception = new Option<BusinessAccessError?>(JsonSerializer.Deserialize<BusinessAccessError>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "member_or_partner_id":
                             memberOrPartnerId = new Option<string?>(utf8JsonReader.GetString());

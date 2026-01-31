@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_conversion_events_data_inner
 
 type ConversionEvents* = object
   ## A list of events (one or more) encapsulated by a data object.
   data*: seq[ConversionEvents_data_inner]
+

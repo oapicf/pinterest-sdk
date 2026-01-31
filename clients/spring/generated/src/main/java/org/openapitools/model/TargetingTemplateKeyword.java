@@ -21,14 +21,14 @@ import javax.annotation.Generated;
  * TargetingTemplateKeyword
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateKeyword {
 
   private @Nullable MatchType matchType;
 
   private @Nullable String value;
 
-  public TargetingTemplateKeyword matchType(MatchType matchType) {
+  public TargetingTemplateKeyword matchType(@Nullable MatchType matchType) {
     this.matchType = matchType;
     return this;
   }
@@ -40,15 +40,15 @@ public class TargetingTemplateKeyword {
   @Valid 
   @Schema(name = "match_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("match_type")
-  public MatchType getMatchType() {
+  public @Nullable MatchType getMatchType() {
     return matchType;
   }
 
-  public void setMatchType(MatchType matchType) {
+  public void setMatchType(@Nullable MatchType matchType) {
     this.matchType = matchType;
   }
 
-  public TargetingTemplateKeyword value(String value) {
+  public TargetingTemplateKeyword value(@Nullable String value) {
     this.value = value;
     return this;
   }
@@ -60,11 +60,11 @@ public class TargetingTemplateKeyword {
   
   @Schema(name = "value", example = "couples halloween costumes", description = "The keyword targeting (120 chars max).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("value")
-  public String getValue() {
+  public @Nullable String getValue() {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@Nullable String value) {
     this.value = value;
   }
 

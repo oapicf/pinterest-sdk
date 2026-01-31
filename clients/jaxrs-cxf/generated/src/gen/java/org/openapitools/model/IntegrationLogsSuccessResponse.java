@@ -1,21 +1,22 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Response when logs are successfully processed.
- **/
+ * Response when logs are successfully processed.
+ */
 @ApiModel(description="Response when logs are successfully processed.")
 
 public class IntegrationLogsSuccessResponse  {
   
   @ApiModelProperty(value = "")
+
   private String message;
  /**
    * Get message

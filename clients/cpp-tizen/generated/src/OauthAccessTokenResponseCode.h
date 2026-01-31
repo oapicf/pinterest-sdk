@@ -1,7 +1,7 @@
 /*
  * OauthAccessTokenResponseCode.h
  *
- * A successful OAuth access token response for the authorization code flow.
+ * 
  */
 
 #ifndef _OauthAccessTokenResponseCode_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief A successful OAuth access token response for the authorization code flow.
+/*! \brief 
  *
  *  \ingroup Models
  *
@@ -45,6 +45,20 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get 
+	 */
+	std::string getRefreshToken();
+
+	/*! \brief Set 
+	 */
+	void setRefreshToken(std::string  refresh_token);
+	/*! \brief Get 
+	 */
+	int getRefreshTokenExpiresIn();
+
+	/*! \brief Set 
+	 */
+	void setRefreshTokenExpiresIn(int  refresh_token_expires_in);
 	/*! \brief Get 
 	 */
 	std::string getResponseType();
@@ -80,29 +94,15 @@ public:
 	/*! \brief Set 
 	 */
 	void setScope(std::string  scope);
-	/*! \brief Get 
-	 */
-	std::string getRefreshToken();
-
-	/*! \brief Set 
-	 */
-	void setRefreshToken(std::string  refresh_token);
-	/*! \brief Get 
-	 */
-	int getRefreshTokenExpiresIn();
-
-	/*! \brief Set 
-	 */
-	void setRefreshTokenExpiresIn(int  refresh_token_expires_in);
 
 private:
+	std::string refresh_token;
+	int refresh_token_expires_in;
 	std::string response_type;
 	std::string access_token;
 	std::string token_type;
 	int expires_in;
 	std::string scope;
-	std::string refresh_token;
-	int refresh_token_expires_in;
 	void __init();
 	void __cleanup();
 

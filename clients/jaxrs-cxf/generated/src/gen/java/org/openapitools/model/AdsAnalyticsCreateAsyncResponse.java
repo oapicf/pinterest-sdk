@@ -15,13 +15,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdsAnalyticsCreateAsyncResponse  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BulkReportingJobStatus reportStatus;
 
   @ApiModelProperty(value = "")
+
   private String token;
 
   @ApiModelProperty(value = "")
+
   private String message;
  /**
    * Get reportStatus

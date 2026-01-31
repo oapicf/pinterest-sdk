@@ -19,33 +19,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ItemResponseAnyOf  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsType catalogType;
 
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog retail item id in the merchant namespace")
  /**
-   * The catalog retail item id in the merchant namespace
-  **/
+  * The catalog retail item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog retail item id in the merchant namespace")
+
   private String itemId;
 
-  @ApiModelProperty(value = "The pins mapped to the item")
  /**
-   * The pins mapped to the item
-  **/
+  * The pins mapped to the item
+  */
+  @ApiModelProperty(value = "The pins mapped to the item")
+
   private List<Pin> pins;
 
   @ApiModelProperty(value = "")
+
   private CatalogsCreativeAssetsAttributes attributes;
 
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
  /**
-   * The catalog hotel id in the merchant namespace
-  **/
+  * The catalog hotel id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
+
   private String hotelId;
 
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
  /**
-   * The catalog creative assets id in the merchant namespace
-  **/
+  * The catalog creative assets id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
+
   private String creativeAssetsId;
  /**
    * Get catalogType

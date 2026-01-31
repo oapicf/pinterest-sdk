@@ -53,7 +53,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing an item batch record to update items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemUpdateBatchRecord {
   public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
@@ -197,13 +197,10 @@ public class ItemUpdateBatchRecord {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("item_id");
-    openapiFields.add("attributes");
-    openapiFields.add("update_mask");
+    openapiFields = new HashSet<String>(Arrays.asList("item_id", "attributes", "update_mask"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -215,7 +212,7 @@ public class ItemUpdateBatchRecord {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ItemUpdateBatchRecord.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ItemUpdateBatchRecord is not found in the empty JSON string", ItemUpdateBatchRecord.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ItemUpdateBatchRecord is not found in the empty JSON string", ItemUpdateBatchRecord.openapiRequiredFields.toString()));
         }
       }
 
@@ -223,12 +220,12 @@ public class ItemUpdateBatchRecord {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ItemUpdateBatchRecord.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ItemUpdateBatchRecord` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ItemUpdateBatchRecord` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("item_id") != null && !jsonObj.get("item_id").isJsonNull()) && !jsonObj.get("item_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `item_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("item_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `item_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("item_id").toString()));
       }
       // validate the optional field `attributes`
       if (jsonObj.get("attributes") != null && !jsonObj.get("attributes").isJsonNull()) {
@@ -236,7 +233,7 @@ public class ItemUpdateBatchRecord {
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("update_mask") != null && !jsonObj.get("update_mask").isJsonNull() && !jsonObj.get("update_mask").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `update_mask` to be an array in the JSON string but got `%s`", jsonObj.get("update_mask").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `update_mask` to be an array in the JSON string but got `%s`", jsonObj.get("update_mask").toString()));
       }
   }
 

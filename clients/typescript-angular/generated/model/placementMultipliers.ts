@@ -19,11 +19,11 @@ export interface PlacementMultipliers {
     PLACEMENT?: PlacementMultipliers.PLACEMENTEnum;
 }
 export namespace PlacementMultipliers {
-    export type PLACEMENTEnum = 'SEARCH' | 'BROWSE';
     export const PLACEMENTEnum = {
-        Search: 'SEARCH' as PLACEMENTEnum,
-        Browse: 'BROWSE' as PLACEMENTEnum
-    };
+        Search: 'SEARCH',
+        Browse: 'BROWSE'
+    } as const;
+    export type PLACEMENTEnum = typeof PLACEMENTEnum[keyof typeof PLACEMENTEnum];
 }
 
 

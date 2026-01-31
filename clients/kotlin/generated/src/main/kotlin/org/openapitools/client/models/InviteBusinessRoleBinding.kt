@@ -16,18 +16,19 @@
 package org.openapitools.client.models
 
 import org.openapitools.client.models.BaseInviteDataResponseInviteData
-import org.openapitools.client.models.BusinessAccessUserSummary
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+ * 
  *
  * @param id Unique identifier of the invite/request.
  * @param inviteData 
  * @param isReceivedInvite Indicates whether the invite/request was received.
- * @param user Metadata for the member/partner that was sent the invite/request.
+ * @param user Metadata for the user that updated the invite/request.
+ * @param createdByBusinessId Unique identifier for the business that created the invite/request.
+ * @param createdByUserId Unique identifier for the user that created the invite/request.
  */
 
 
@@ -44,9 +45,17 @@ data class InviteBusinessRoleBinding (
     @Json(name = "is_received_invite")
     val isReceivedInvite: kotlin.Boolean? = null,
 
-    /* Metadata for the member/partner that was sent the invite/request. */
+    /* Metadata for the user that updated the invite/request. */
     @Json(name = "user")
-    val user: BusinessAccessUserSummary? = null
+    val user: kotlin.Any? = null,
+
+    /* Unique identifier for the business that created the invite/request. */
+    @Json(name = "created_by_business_id")
+    val createdByBusinessId: kotlin.String? = null,
+
+    /* Unique identifier for the user that created the invite/request. */
+    @Json(name = "created_by_user_id")
+    val createdByUserId: kotlin.String? = null
 
 ) {
 

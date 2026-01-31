@@ -23,8 +23,7 @@ const std::string BulkApi::base = "/v5";
 
 BulkApi::BulkApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
-{
-}
+{}
 
 void BulkApi::init() {
     setupRoutes();
@@ -41,14 +40,12 @@ void BulkApi::setupRoutes() {
     router->addCustomHandler(Routes::bind(&BulkApi::bulk_api_default_handler, this));
 }
 
-void BulkApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void BulkApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleParsingException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> BulkApi::handleParsingException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> BulkApi::handleParsingException(const std::exception& ex) const noexcept {
     try {
         throw;
     } catch (nlohmann::detail::exception &e) {
@@ -60,115 +57,208 @@ std::pair<Pistache::Http::Code, std::string> BulkApi::handleParsingException(con
     }
 }
 
-void BulkApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void BulkApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleOperationException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> BulkApi::handleOperationException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> BulkApi::handleOperationException(const std::exception& ex) const noexcept {
     return std::make_pair(Pistache::Http::Code::Internal_Server_Error, ex.what());
 }
 
-void BulkApi::bulk_download_create_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+void BulkApi::bulk_download_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        // Getting the body param
+        
+        BulkDownloadRequest bulkDownloadRequest;
+        
+        
+        
     
-    // Getting the body param
-    
-    BulkDownloadRequest bulkDownloadRequest;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(bulkDownloadRequest);
-        bulkDownloadRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->bulk_download_create(adAccountId, bulkDownloadRequest, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
-
-    } catch (std::exception &e) {
-        response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
-    }
-
-}
-void BulkApi::bulk_request_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
-    try {
-
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
-    auto bulkRequestId = request.param(":bulkRequestId").as<std::string>();
-    
-    // Getting the query params
-    auto includeDetailsQuery = request.query().get("include_details");
-    std::optional<bool> includeDetails;
-    if(includeDetailsQuery.has_value()){
-        bool valueQuery_instance;
-        if(fromStringValue(includeDetailsQuery.value(), valueQuery_instance)){
-            includeDetails = valueQuery_instance;
+        try {
+            nlohmann::json::parse(request.body()).get_to(bulkDownloadRequest);
+            bulkDownloadRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
         }
-    }
-    
-    try {
-        this->bulk_request_get(adAccountId, bulkRequestId, includeDetails, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->bulk_download_create(adAccountId, bulkDownloadRequest, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/bulk/download" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void BulkApi::bulk_upsert_create_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void BulkApi::bulk_request_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        auto bulkRequestId = request.param(":bulkRequestId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto includeDetailsQuery = request.query().get("include_details");
+        std::optional<bool> includeDetails;
+        if (includeDetailsQuery.has_value()) {
+            bool valueQuery_instance;
+            if (fromStringValue(includeDetailsQuery.value(), valueQuery_instance)) {
+                includeDetails = valueQuery_instance;
+            }
+        }
     
-    // Getting the body param
-    
-    BulkUpsertRequest bulkUpsertRequest;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(bulkUpsertRequest);
-        bulkUpsertRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->bulk_upsert_create(adAccountId, bulkUpsertRequest, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->bulk_request_get(adAccountId, bulkRequestId, includeDetails, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/bulk/:bulk_request_id" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
+
+void BulkApi::bulk_upsert_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
+    try {
+
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        // Getting the body param
+        
+        BulkUpsertRequest bulkUpsertRequest;
+        
+        
+        
+    
+
+        try {
+            nlohmann::json::parse(request.body()).get_to(bulkUpsertRequest);
+            bulkUpsertRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->bulk_upsert_create(adAccountId, bulkUpsertRequest, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
+
+    } catch (std::exception &e) {
+        response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
+    }
+
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/bulk/upsert" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
+}
+
 
 void BulkApi::bulk_api_default_handler(const Pistache::Rest::Request &, Pistache::Http::ResponseWriter response) {
     response.send(Pistache::Http::Code::Not_Found, "The requested method does not exist");

@@ -84,7 +84,6 @@ src/main/scala/org/openapitools/client/api/AudienceCategory.scala
 src/main/scala/org/openapitools/client/api/AudienceCommon.scala
 src/main/scala/org/openapitools/client/api/AudienceCreateCustomRequest.scala
 src/main/scala/org/openapitools/client/api/AudienceCreateRequest.scala
-src/main/scala/org/openapitools/client/api/AudienceCreateRequest1AudienceType.scala
 src/main/scala/org/openapitools/client/api/AudienceDataParty.scala
 src/main/scala/org/openapitools/client/api/AudienceDefinition.scala
 src/main/scala/org/openapitools/client/api/AudienceDefinitionResponse.scala
@@ -273,7 +272,6 @@ src/main/scala/org/openapitools/client/api/CatalogsItemsDeleteDiscontinuedBatchR
 src/main/scala/org/openapitools/client/api/CatalogsItemsFilters.scala
 src/main/scala/org/openapitools/client/api/CatalogsItemsPostFilters.scala
 src/main/scala/org/openapitools/client/api/CatalogsItemsRequest.scala
-src/main/scala/org/openapitools/client/api/CatalogsItemsRequestLanguage.scala
 src/main/scala/org/openapitools/client/api/CatalogsItemsUpdateBatchRequest.scala
 src/main/scala/org/openapitools/client/api/CatalogsItemsUpsertBatchRequest.scala
 src/main/scala/org/openapitools/client/api/CatalogsList200Response.scala
@@ -620,7 +618,6 @@ src/main/scala/org/openapitools/client/api/PinMediaWithVideos.scala
 src/main/scala/org/openapitools/client/api/PinPromotionSummaryStatus.scala
 src/main/scala/org/openapitools/client/api/PinUpdate.scala
 src/main/scala/org/openapitools/client/api/PinUpdateCarouselSlotsInner.scala
-src/main/scala/org/openapitools/client/api/PinsAnalyticsMetricTypesParameterInner.scala
 src/main/scala/org/openapitools/client/api/PinsApi.scala
 src/main/scala/org/openapitools/client/api/PinsList200Response.scala
 src/main/scala/org/openapitools/client/api/PinsSaveRequest.scala

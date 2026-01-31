@@ -34,7 +34,7 @@ data class CatalogsHotelListProductsByCatalogBasedFilterRequest(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("filters", required = true) val filters: CatalogsHotelProductGroupFilters
-    ) {
+) {
 
     /**
     * 
@@ -48,7 +48,8 @@ data class CatalogsHotelListProductsByCatalogBasedFilterRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsHotelListProductsByCatalogBasedFilterRequest'")
             }
         }
     }

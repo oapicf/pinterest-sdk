@@ -38,7 +38,6 @@ Get multiple Pin analytics
 import 
 import 
 import 
-import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
 import org.openapitools.client.core.ApiKeyLocations._
@@ -60,7 +59,7 @@ object Example extends App {
 
     val endDate: LocalDate = 2013-10-20 // LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 
-    val metricTypes: Seq[PinsAnalyticsMetricTypesParameterInner] =  // Seq[PinsAnalyticsMetricTypesParameterInner] | Pin metric types to get data for.
+    val metricTypes: Seq[String] =  // Seq[String] | Pin metric types to get data for.
 
     val appTypes: String = appTypes_example // String | Apps or devices to get data for, default is all.
 
@@ -97,7 +96,7 @@ Name | Type | Description  | Notes
  **pinIds** | [**Seq[String]**](String.md)| List of Pin IDs. |
  **startDate** | **LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
  **endDate** | **LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **metricTypes** | [**Seq[PinsAnalyticsMetricTypesParameterInner]**](PinsAnalyticsMetricTypesParameterInner.md)| Pin metric types to get data for. |
+ **metricTypes** | [**Seq[String]**](String.md)| Pin metric types to get data for. | [enum: IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE, SAVE_RATE, TOTAL_COMMENTS, TOTAL_REACTIONS, USER_FOLLOW, PROFILE_VISIT, VIDEO_MRC_VIEW, VIDEO_10S_VIEW, QUARTILE_95_PERCENT_VIEW, VIDEO_V50_WATCH_TIME, VIDEO_START, VIDEO_AVG_WATCH_TIME]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [enum: ALL, MOBILE, TABLET, WEB]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]
 
@@ -141,7 +140,6 @@ Get analytics for a Pin owned by the \&quot;operation user_account\&quot; - or o
 import 
 import 
 import 
-import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
 import org.openapitools.client.core.ApiKeyLocations._
@@ -163,7 +161,7 @@ object Example extends App {
 
     val endDate: LocalDate = 2013-10-20 // LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
 
-    val metricTypes: Seq[PinsAnalyticsMetricTypesParameterInner] =  // Seq[PinsAnalyticsMetricTypesParameterInner] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+    val metricTypes: Seq[String] =  // Seq[String] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 
     val appTypes: String = appTypes_example // String | Apps or devices to get data for, default is all.
 
@@ -202,7 +200,7 @@ Name | Type | Description  | Notes
  **pinId** | **String**| Unique identifier of a Pin. |
  **startDate** | **LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. |
  **endDate** | **LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. |
- **metricTypes** | [**Seq[PinsAnalyticsMetricTypesParameterInner]**](PinsAnalyticsMetricTypesParameterInner.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. |
+ **metricTypes** | [**Seq[String]**](String.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | [enum: IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE, SAVE_RATE, TOTAL_COMMENTS, TOTAL_REACTIONS, USER_FOLLOW, PROFILE_VISIT, VIDEO_MRC_VIEW, VIDEO_10S_VIEW, QUARTILE_95_PERCENT_VIEW, VIDEO_V50_WATCH_TIME, VIDEO_START, VIDEO_AVG_WATCH_TIME]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [enum: ALL, MOBILE, TABLET, WEB]
  **splitField** | **String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [enum: NO_SPLIT, APP_TYPE]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional]

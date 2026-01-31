@@ -49,7 +49,7 @@ data class AdGroupAudienceSizingRequest(
     @field:Valid
     @Schema(example = "null", description = "Array of keyword objects. If the keywords field is missing, all keywords will be targeted.")
     @get:JsonProperty("keywords") val keywords: kotlin.collections.List<AdGroupAudienceSizingRequestKeywordsInner>? = null
-    ) {
+) {
 
     /**
     * Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
@@ -70,7 +70,8 @@ data class AdGroupAudienceSizingRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CreativeTypes {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdGroupAudienceSizingRequest'")
             }
         }
     }

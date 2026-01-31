@@ -53,4 +53,12 @@ public class OauthAccessTokenRequestCodeTest {
         // TODO: test redirectUri
     }
 
+    /**
+     * Test the property 'grantType'
+     */
+    @Test
+    public void grantTypeTest() {
+        // TODO: test grantType
+    }
+
 }

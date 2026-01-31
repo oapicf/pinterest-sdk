@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * SSIOCreateInsertionOrderRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOCreateInsertionOrderRequest {
 
   private String startDate;
@@ -63,7 +63,7 @@ public class SSIOCreateInsertionOrderRequest {
     
     PERPETUALS("PERPETUALS");
 
-    private String value;
+    private final String value;
 
     OrderLineTypeEnum(String value) {
       this.value = value;
@@ -150,7 +150,7 @@ public class SSIOCreateInsertionOrderRequest {
     this.startDate = startDate;
   }
 
-  public SSIOCreateInsertionOrderRequest endDate(String endDate) {
+  public SSIOCreateInsertionOrderRequest endDate(@Nullable String endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -162,11 +162,11 @@ public class SSIOCreateInsertionOrderRequest {
   @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
   @Schema(name = "end_date", example = "2020-12-20", description = "End date of time period. Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_date")
-  public String getEndDate() {
+  public @Nullable String getEndDate() {
     return endDate;
   }
 
-  public void setEndDate(String endDate) {
+  public void setEndDate(@Nullable String endDate) {
     this.endDate = endDate;
   }
 
@@ -190,7 +190,7 @@ public class SSIOCreateInsertionOrderRequest {
     this.poNumber = poNumber;
   }
 
-  public SSIOCreateInsertionOrderRequest budgetAmount(BigDecimal budgetAmount) {
+  public SSIOCreateInsertionOrderRequest budgetAmount(@Nullable BigDecimal budgetAmount) {
     this.budgetAmount = budgetAmount;
     return this;
   }
@@ -202,11 +202,11 @@ public class SSIOCreateInsertionOrderRequest {
   @Valid 
   @Schema(name = "budget_amount", example = "5000000", description = "If Budget order line, the budget amount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget_amount")
-  public BigDecimal getBudgetAmount() {
+  public @Nullable BigDecimal getBudgetAmount() {
     return budgetAmount;
   }
 
-  public void setBudgetAmount(BigDecimal budgetAmount) {
+  public void setBudgetAmount(@Nullable BigDecimal budgetAmount) {
     this.budgetAmount = budgetAmount;
   }
 
@@ -330,7 +330,7 @@ public class SSIOCreateInsertionOrderRequest {
     this.mediaContactEmail = mediaContactEmail;
   }
 
-  public SSIOCreateInsertionOrderRequest agencyLink(String agencyLink) {
+  public SSIOCreateInsertionOrderRequest agencyLink(@Nullable String agencyLink) {
     this.agencyLink = agencyLink;
     return this;
   }
@@ -342,15 +342,15 @@ public class SSIOCreateInsertionOrderRequest {
   
   @Schema(name = "agency_link", description = "URL link for agency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("agency_link")
-  public String getAgencyLink() {
+  public @Nullable String getAgencyLink() {
     return agencyLink;
   }
 
-  public void setAgencyLink(String agencyLink) {
+  public void setAgencyLink(@Nullable String agencyLink) {
     this.agencyLink = agencyLink;
   }
 
-  public SSIOCreateInsertionOrderRequest userEmail(String userEmail) {
+  public SSIOCreateInsertionOrderRequest userEmail(@Nullable String userEmail) {
     this.userEmail = userEmail;
     return this;
   }
@@ -362,15 +362,15 @@ public class SSIOCreateInsertionOrderRequest {
   
   @Schema(name = "user_email", example = "test@example", description = "The email of user submitting the insertion order", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("user_email")
-  public String getUserEmail() {
+  public @Nullable String getUserEmail() {
     return userEmail;
   }
 
-  public void setUserEmail(String userEmail) {
+  public void setUserEmail(@Nullable String userEmail) {
     this.userEmail = userEmail;
   }
 
-  public SSIOCreateInsertionOrderRequest acceptedTermsTime(Integer acceptedTermsTime) {
+  public SSIOCreateInsertionOrderRequest acceptedTermsTime(@Nullable Integer acceptedTermsTime) {
     this.acceptedTermsTime = acceptedTermsTime;
     return this;
   }
@@ -382,11 +382,11 @@ public class SSIOCreateInsertionOrderRequest {
   
   @Schema(name = "accepted_terms_time", description = "The UTC timestamp (to the nearest sec) of when terms were accepted", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("accepted_terms_time")
-  public Integer getAcceptedTermsTime() {
+  public @Nullable Integer getAcceptedTermsTime() {
     return acceptedTermsTime;
   }
 
-  public void setAcceptedTermsTime(Integer acceptedTermsTime) {
+  public void setAcceptedTermsTime(@Nullable Integer acceptedTermsTime) {
     this.acceptedTermsTime = acceptedTermsTime;
   }
 
@@ -530,7 +530,7 @@ public class SSIOCreateInsertionOrderRequest {
     this.billtoBillingAddressId = billtoBillingAddressId;
   }
 
-  public SSIOCreateInsertionOrderRequest estimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
+  public SSIOCreateInsertionOrderRequest estimatedMonthlySpend(@Nullable BigDecimal estimatedMonthlySpend) {
     this.estimatedMonthlySpend = estimatedMonthlySpend;
     return this;
   }
@@ -542,11 +542,11 @@ public class SSIOCreateInsertionOrderRequest {
   @Valid 
   @Schema(name = "estimated_monthly_spend", description = "If Ongoing (perpetual) order line, the estimated monthly spend", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("estimated_monthly_spend")
-  public BigDecimal getEstimatedMonthlySpend() {
+  public @Nullable BigDecimal getEstimatedMonthlySpend() {
     return estimatedMonthlySpend;
   }
 
-  public void setEstimatedMonthlySpend(BigDecimal estimatedMonthlySpend) {
+  public void setEstimatedMonthlySpend(@Nullable BigDecimal estimatedMonthlySpend) {
     this.estimatedMonthlySpend = estimatedMonthlySpend;
   }
 

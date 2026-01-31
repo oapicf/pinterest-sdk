@@ -16,11 +16,8 @@ import org.openapitools.jackson.nullable.JsonNullable;
  * ConversionTagCreate
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2025-05-10T05:39:31.012858315Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagCreate   {
-  @JsonProperty("name")
-  private String name;
-
   @JsonProperty("aem_enabled")
   private Boolean aemEnabled = false;
 
@@ -42,23 +39,8 @@ public class ConversionTagCreate   {
   @JsonProperty("aem_loc_enabled")
   private Boolean aemLocEnabled = false;
 
-  public ConversionTagCreate name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Conversion tag name.
-   * @return name
-   */
-  @ApiModelProperty(example = "ACME Tools Tag", required = true, value = "Conversion tag name.")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
+  @JsonProperty("name")
+  private String name;
 
   public ConversionTagCreate aemEnabled(Boolean aemEnabled) {
     this.aemEnabled = aemEnabled;
@@ -186,6 +168,24 @@ public class ConversionTagCreate   {
     this.aemLocEnabled = aemLocEnabled;
   }
 
+  public ConversionTagCreate name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Conversion tag name.
+   * @return name
+   */
+  @ApiModelProperty(example = "ACME Tools Tag", required = true, value = "Conversion tag name.")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -196,19 +196,19 @@ public class ConversionTagCreate   {
       return false;
     }
     ConversionTagCreate conversionTagCreate = (ConversionTagCreate) o;
-    return Objects.equals(this.name, conversionTagCreate.name) &&
-        Objects.equals(this.aemEnabled, conversionTagCreate.aemEnabled) &&
+    return Objects.equals(this.aemEnabled, conversionTagCreate.aemEnabled) &&
         Objects.equals(this.mdFrequency, conversionTagCreate.mdFrequency) &&
         Objects.equals(this.aemFnlnEnabled, conversionTagCreate.aemFnlnEnabled) &&
         Objects.equals(this.aemPhEnabled, conversionTagCreate.aemPhEnabled) &&
         Objects.equals(this.aemGeEnabled, conversionTagCreate.aemGeEnabled) &&
         Objects.equals(this.aemDbEnabled, conversionTagCreate.aemDbEnabled) &&
-        Objects.equals(this.aemLocEnabled, conversionTagCreate.aemLocEnabled);
+        Objects.equals(this.aemLocEnabled, conversionTagCreate.aemLocEnabled) &&
+        Objects.equals(this.name, conversionTagCreate.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, aemEnabled, mdFrequency, aemFnlnEnabled, aemPhEnabled, aemGeEnabled, aemDbEnabled, aemLocEnabled);
+    return Objects.hash(aemEnabled, mdFrequency, aemFnlnEnabled, aemPhEnabled, aemGeEnabled, aemDbEnabled, aemLocEnabled, name);
   }
 
   @Override
@@ -216,7 +216,6 @@ public class ConversionTagCreate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagCreate {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    aemEnabled: ").append(toIndentedString(aemEnabled)).append("\n");
     sb.append("    mdFrequency: ").append(toIndentedString(mdFrequency)).append("\n");
     sb.append("    aemFnlnEnabled: ").append(toIndentedString(aemFnlnEnabled)).append("\n");
@@ -224,6 +223,7 @@ public class ConversionTagCreate   {
     sb.append("    aemGeEnabled: ").append(toIndentedString(aemGeEnabled)).append("\n");
     sb.append("    aemDbEnabled: ").append(toIndentedString(aemDbEnabled)).append("\n");
     sb.append("    aemLocEnabled: ").append(toIndentedString(aemLocEnabled)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -18,21 +18,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BidFloorSpec  {
   
   @ApiModelProperty(value = "")
+
   private List<Country> countries = new ArrayList<>();
 
   @ApiModelProperty(required = true, value = "")
+
   private Currency currency;
 
   @ApiModelProperty(value = "")
+
   private ObjectiveType objectiveType;
 
   @ApiModelProperty(required = true, value = "")
+
   private ActionType billableEvent;
 
   @ApiModelProperty(value = "")
+
   private OptimizationGoalMetadata optimizationGoalMetadata;
 
   @ApiModelProperty(value = "")
+
   private CreativeType creativeType;
  /**
    * Get countries

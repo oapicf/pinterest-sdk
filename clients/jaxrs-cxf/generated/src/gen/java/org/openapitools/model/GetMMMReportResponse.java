@@ -13,17 +13,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GetMMMReportResponse  {
   
   @ApiModelProperty(example = "0", value = "")
+
   @Valid
+
   private BigDecimal code;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private GetMMMReportResponseData data;
 
   @ApiModelProperty(example = "ok", value = "")
+
   private String message;
 
   @ApiModelProperty(example = "success", value = "")
+
   private String status;
  /**
    * Get code

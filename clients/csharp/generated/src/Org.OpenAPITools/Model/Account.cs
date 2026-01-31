@@ -422,24 +422,19 @@ namespace Org.OpenAPITools.Model
                             businessName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "board_count":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                boardCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            boardCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "pin_count":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pinCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            pinCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "follower_count":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                followerCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            followerCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "following_count":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                followingCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            followingCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "monthly_views":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                monthlyViews = new Option<int?>(utf8JsonReader.GetInt32());
+                            monthlyViews = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

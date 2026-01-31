@@ -5,30 +5,6 @@ context("Test InviteBusinessRoleBinding")
 
 model_instance <- InviteBusinessRoleBinding$new()
 
-test_that("created_by_business_id", {
-  # tests for the property `created_by_business_id` (character)
-  # Unique identifier for the business that created the invite/request.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`created_by_business_id`, "EXPECTED_RESULT")
-})
-
-test_that("created_by_user_id", {
-  # tests for the property `created_by_user_id` (character)
-  # Unique identifier for the user that created the invite/request.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`created_by_user_id`, "EXPECTED_RESULT")
-})
-
-test_that("user", {
-  # tests for the property `user` (BusinessAccessUserSummary)
-  # Metadata for the user that updated the invite/request.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`user`, "EXPECTED_RESULT")
-})
-
 test_that("id", {
   # tests for the property `id` (character)
   # Unique identifier of the invite/request.
@@ -50,4 +26,28 @@ test_that("is_received_invite", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_received_invite`, "EXPECTED_RESULT")
+})
+
+test_that("user", {
+  # tests for the property `user` (object)
+  # Metadata for the user that updated the invite/request.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`user`, "EXPECTED_RESULT")
+})
+
+test_that("created_by_business_id", {
+  # tests for the property `created_by_business_id` (character)
+  # Unique identifier for the business that created the invite/request.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`created_by_business_id`, "EXPECTED_RESULT")
+})
+
+test_that("created_by_user_id", {
+  # tests for the property `created_by_user_id` (character)
+  # Unique identifier for the user that created the invite/request.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`created_by_user_id`, "EXPECTED_RESULT")
 })

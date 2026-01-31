@@ -27,42 +27,6 @@ namespace Org.OpenAPITools.Models
     public partial class InviteResponse : IEquatable<InviteResponse>
     {
         /// <summary>
-        /// Gets or Sets AssetsSummary
-        /// </summary>
-        [DataMember(Name="assets_summary", EmitDefaultValue=true)]
-        public InviteAssetsSummary AssetsSummary { get; set; }
-
-        /// <summary>
-        /// The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-        /// </summary>
-        /// <value>The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.</value>
-        /* <example>[&quot;BIZ_ADMIN&quot;]</example> */
-        [DataMember(Name="business_roles", EmitDefaultValue=false)]
-        public List<string> BusinessRoles { get; set; }
-
-        /// <summary>
-        /// Metadata for the business that created the invite/request.
-        /// </summary>
-        /// <value>Metadata for the business that created the invite/request.</value>
-        [DataMember(Name="created_by_business", EmitDefaultValue=true)]
-        public BusinessAccessUserSummary CreatedByBusiness { get; set; }
-
-        /// <summary>
-        /// Metadata for the user that created the invite/request.
-        /// </summary>
-        /// <value>Metadata for the user that created the invite/request.</value>
-        [DataMember(Name="created_by_user", EmitDefaultValue=true)]
-        public BusinessAccessUserSummary CreatedByUser { get; set; }
-
-        /// <summary>
-        /// The time the invite/request was created. Returned in milliseconds.
-        /// </summary>
-        /// <value>The time the invite/request was created. Returned in milliseconds.</value>
-        /* <example>1646767577816</example> */
-        [DataMember(Name="created_time", EmitDefaultValue=true)]
-        public int CreatedTime { get; set; }
-
-        /// <summary>
         /// Unique identifier of the invite/request.
         /// </summary>
         /// <value>Unique identifier of the invite/request.</value>
@@ -92,6 +56,42 @@ namespace Org.OpenAPITools.Models
         public BusinessAccessUserSummary User { get; set; }
 
         /// <summary>
+        /// Gets or Sets AssetsSummary
+        /// </summary>
+        [DataMember(Name="assets_summary", EmitDefaultValue=true)]
+        public InviteAssetsSummary AssetsSummary { get; set; }
+
+        /// <summary>
+        /// The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+        /// </summary>
+        /// <value>The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.</value>
+        /* <example>[&quot;BIZ_ADMIN&quot;]</example> */
+        [DataMember(Name="business_roles", EmitDefaultValue=false)]
+        public List<string> BusinessRoles { get; set; }
+
+        /// <summary>
+        /// Metadata for the business that created the invite/request.
+        /// </summary>
+        /// <value>Metadata for the business that created the invite/request.</value>
+        [DataMember(Name="created_by_business", EmitDefaultValue=true)]
+        public Object CreatedByBusiness { get; set; }
+
+        /// <summary>
+        /// Metadata for the user that created the invite/request.
+        /// </summary>
+        /// <value>Metadata for the user that created the invite/request.</value>
+        [DataMember(Name="created_by_user", EmitDefaultValue=true)]
+        public Object CreatedByUser { get; set; }
+
+        /// <summary>
+        /// The time the invite/request was created. Returned in milliseconds.
+        /// </summary>
+        /// <value>The time the invite/request was created. Returned in milliseconds.</value>
+        /* <example>1646767577816</example> */
+        [DataMember(Name="created_time", EmitDefaultValue=true)]
+        public int CreatedTime { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -99,15 +99,15 @@ namespace Org.OpenAPITools.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InviteResponse {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  InviteData: ").Append(InviteData).Append("\n");
+            sb.Append("  IsReceivedInvite: ").Append(IsReceivedInvite).Append("\n");
+            sb.Append("  User: ").Append(User).Append("\n");
             sb.Append("  AssetsSummary: ").Append(AssetsSummary).Append("\n");
             sb.Append("  BusinessRoles: ").Append(BusinessRoles).Append("\n");
             sb.Append("  CreatedByBusiness: ").Append(CreatedByBusiness).Append("\n");
             sb.Append("  CreatedByUser: ").Append(CreatedByUser).Append("\n");
             sb.Append("  CreatedTime: ").Append(CreatedTime).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  InviteData: ").Append(InviteData).Append("\n");
-            sb.Append("  IsReceivedInvite: ").Append(IsReceivedInvite).Append("\n");
-            sb.Append("  User: ").Append(User).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -145,6 +145,26 @@ namespace Org.OpenAPITools.Models
 
             return 
                 (
+                    Id == other.Id ||
+                    Id != null &&
+                    Id.Equals(other.Id)
+                ) && 
+                (
+                    InviteData == other.InviteData ||
+                    InviteData != null &&
+                    InviteData.Equals(other.InviteData)
+                ) && 
+                (
+                    IsReceivedInvite == other.IsReceivedInvite ||
+                    
+                    IsReceivedInvite.Equals(other.IsReceivedInvite)
+                ) && 
+                (
+                    User == other.User ||
+                    User != null &&
+                    User.Equals(other.User)
+                ) && 
+                (
                     AssetsSummary == other.AssetsSummary ||
                     AssetsSummary != null &&
                     AssetsSummary.Equals(other.AssetsSummary)
@@ -169,26 +189,6 @@ namespace Org.OpenAPITools.Models
                     CreatedTime == other.CreatedTime ||
                     
                     CreatedTime.Equals(other.CreatedTime)
-                ) && 
-                (
-                    Id == other.Id ||
-                    Id != null &&
-                    Id.Equals(other.Id)
-                ) && 
-                (
-                    InviteData == other.InviteData ||
-                    InviteData != null &&
-                    InviteData.Equals(other.InviteData)
-                ) && 
-                (
-                    IsReceivedInvite == other.IsReceivedInvite ||
-                    
-                    IsReceivedInvite.Equals(other.IsReceivedInvite)
-                ) && 
-                (
-                    User == other.User ||
-                    User != null &&
-                    User.Equals(other.User)
                 );
         }
 
@@ -202,6 +202,14 @@ namespace Org.OpenAPITools.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
+                    if (Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                    if (InviteData != null)
+                    hashCode = hashCode * 59 + InviteData.GetHashCode();
+                    
+                    hashCode = hashCode * 59 + IsReceivedInvite.GetHashCode();
+                    if (User != null)
+                    hashCode = hashCode * 59 + User.GetHashCode();
                     if (AssetsSummary != null)
                     hashCode = hashCode * 59 + AssetsSummary.GetHashCode();
                     if (BusinessRoles != null)
@@ -212,14 +220,6 @@ namespace Org.OpenAPITools.Models
                     hashCode = hashCode * 59 + CreatedByUser.GetHashCode();
                     
                     hashCode = hashCode * 59 + CreatedTime.GetHashCode();
-                    if (Id != null)
-                    hashCode = hashCode * 59 + Id.GetHashCode();
-                    if (InviteData != null)
-                    hashCode = hashCode * 59 + InviteData.GetHashCode();
-                    
-                    hashCode = hashCode * 59 + IsReceivedInvite.GetHashCode();
-                    if (User != null)
-                    hashCode = hashCode * 59 + User.GetHashCode();
                 return hashCode;
             }
         }

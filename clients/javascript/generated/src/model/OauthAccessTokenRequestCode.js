@@ -21,14 +21,14 @@ import ApiClient from '../ApiClient';
 class OauthAccessTokenRequestCode {
     /**
      * Constructs a new <code>OauthAccessTokenRequestCode</code>.
-     * A request to exchange an authorization code for an access token.
      * @alias module:model/OauthAccessTokenRequestCode
      * @param code {String} 
      * @param redirectUri {String} 
+     * @param grantType {module:model/OauthAccessTokenRequestCode.GrantTypeEnum} 
      */
-    constructor(code, redirectUri) { 
+    constructor(code, redirectUri, grantType) { 
         
-        OauthAccessTokenRequestCode.initialize(this, code, redirectUri);
+        OauthAccessTokenRequestCode.initialize(this, code, redirectUri, grantType);
     }
 
     /**
@@ -36,10 +36,10 @@ class OauthAccessTokenRequestCode {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, code, redirectUri) { 
-        obj['grant_type'] = grantType;
+    static initialize(obj, code, redirectUri, grantType) { 
         obj['code'] = code;
         obj['redirect_uri'] = redirectUri;
+        obj['grant_type'] = grantType;
     }
 
     /**
@@ -53,14 +53,14 @@ class OauthAccessTokenRequestCode {
         if (data) {
             obj = obj || new OauthAccessTokenRequestCode();
 
-            if (data.hasOwnProperty('grant_type')) {
-                obj['grant_type'] = ApiClient.convertToType(data['grant_type'], 'String');
-            }
             if (data.hasOwnProperty('code')) {
                 obj['code'] = ApiClient.convertToType(data['code'], 'String');
             }
             if (data.hasOwnProperty('redirect_uri')) {
                 obj['redirect_uri'] = ApiClient.convertToType(data['redirect_uri'], 'String');
+            }
+            if (data.hasOwnProperty('grant_type')) {
+                obj['grant_type'] = ApiClient.convertToType(data['grant_type'], 'String');
             }
         }
         return obj;
@@ -79,16 +79,16 @@ class OauthAccessTokenRequestCode {
             }
         }
         // ensure the json data is a string
-        if (data['grant_type'] && !(typeof data['grant_type'] === 'string' || data['grant_type'] instanceof String)) {
-            throw new Error("Expected the field `grant_type` to be a primitive type in the JSON string but got " + data['grant_type']);
-        }
-        // ensure the json data is a string
         if (data['code'] && !(typeof data['code'] === 'string' || data['code'] instanceof String)) {
             throw new Error("Expected the field `code` to be a primitive type in the JSON string but got " + data['code']);
         }
         // ensure the json data is a string
         if (data['redirect_uri'] && !(typeof data['redirect_uri'] === 'string' || data['redirect_uri'] instanceof String)) {
             throw new Error("Expected the field `redirect_uri` to be a primitive type in the JSON string but got " + data['redirect_uri']);
+        }
+        // ensure the json data is a string
+        if (data['grant_type'] && !(typeof data['grant_type'] === 'string' || data['grant_type'] instanceof String)) {
+            throw new Error("Expected the field `grant_type` to be a primitive type in the JSON string but got " + data['grant_type']);
         }
 
         return true;
@@ -97,12 +97,7 @@ class OauthAccessTokenRequestCode {
 
 }
 
-OauthAccessTokenRequestCode.RequiredProperties = ["grant_type", "code", "redirect_uri"];
-
-/**
- * @member {module:model/OauthAccessTokenRequestCode.GrantTypeEnum} grant_type
- */
-OauthAccessTokenRequestCode.prototype['grant_type'] = undefined;
+OauthAccessTokenRequestCode.RequiredProperties = ["code", "redirect_uri", "grant_type"];
 
 /**
  * @member {String} code
@@ -113,6 +108,11 @@ OauthAccessTokenRequestCode.prototype['code'] = undefined;
  * @member {String} redirect_uri
  */
 OauthAccessTokenRequestCode.prototype['redirect_uri'] = undefined;
+
+/**
+ * @member {module:model/OauthAccessTokenRequestCode.GrantTypeEnum} grant_type
+ */
+OauthAccessTokenRequestCode.prototype['grant_type'] = undefined;
 
 
 

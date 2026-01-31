@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.OrderLinePaidType;
@@ -10,87 +9,105 @@ import org.openapitools.model.OrderLineStatus;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Order Line
- **/
+ * Order Line
+ */
 @ApiModel(description="Order Line")
 
 public class OrderLines  {
   
-  @ApiModelProperty(example = "2680059592705", value = "Order line ID.")
  /**
-   * Order line ID.
-  **/
+  * Order line ID.
+  */
+  @ApiModelProperty(example = "2680059592705", value = "Order line ID.")
+
   private String id;
 
-  @ApiModelProperty(example = "orderline", value = "Always \"orderline\".")
  /**
-   * Always \"orderline\".
-  **/
+  * Always \"orderline\".
+  */
+  @ApiModelProperty(example = "orderline", value = "Always \"orderline\".")
+
   private String type;
 
-  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
  /**
-   * Ad account ID.
-  **/
+  * Ad account ID.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "PO12345", value = "Purchase order ID.")
  /**
-   * Purchase order ID.
-  **/
+  * Purchase order ID.
+  */
+  @ApiModelProperty(example = "PO12345", value = "Purchase order ID.")
+
   private String purchaseOrderId;
 
-  @ApiModelProperty(example = "1452208622", value = "Start time. Unix timestamp.")
-  @Valid
  /**
-   * Start time. Unix timestamp.
-  **/
+  * Start time. Unix timestamp.
+  */
+  @ApiModelProperty(example = "1452208622", value = "Start time. Unix timestamp.")
+
+  @Valid
+
   private BigDecimal startTime;
 
-  @ApiModelProperty(example = "1461269616", value = "End time. Unix timestamp.")
-  @Valid
  /**
-   * End time. Unix timestamp.
-  **/
+  * End time. Unix timestamp.
+  */
+  @ApiModelProperty(example = "1461269616", value = "End time. Unix timestamp.")
+
+  @Valid
+
   private BigDecimal endTime;
 
-  @ApiModelProperty(example = "5000000", value = "Order line budget in micro currency.")
-  @Valid
  /**
-   * Order line budget in micro currency.
-  **/
+  * Order line budget in micro currency.
+  */
+  @ApiModelProperty(example = "5000000", value = "Order line budget in micro currency.")
+
+  @Valid
+
   private BigDecimal budget;
 
-  @ApiModelProperty(example = "5000000", value = "Order line paid budget in micro currency.")
-  @Valid
  /**
-   * Order line paid budget in micro currency.
-  **/
+  * Order line paid budget in micro currency.
+  */
+  @ApiModelProperty(example = "5000000", value = "Order line paid budget in micro currency.")
+
+  @Valid
+
   private BigDecimal paidBudget;
 
-  @ApiModelProperty(value = "Order line status.")
-  @Valid
  /**
-   * Order line status.
-  **/
+  * Order line status.
+  */
+  @ApiModelProperty(value = "Order line status.")
+
+  @Valid
+
   private OrderLineStatus status;
 
-  @ApiModelProperty(example = "Order Line Name 1", value = "Order line name.")
  /**
-   * Order line name.
-  **/
+  * Order line name.
+  */
+  @ApiModelProperty(example = "Order Line Name 1", value = "Order line name.")
+
   private String name;
 
-  @ApiModelProperty(value = "Order line paid type.")
-  @Valid
  /**
-   * Order line paid type.
-  **/
+  * Order line paid type.
+  */
+  @ApiModelProperty(value = "Order line paid type.")
+
+  @Valid
+
   private OrderLinePaidType paidType;
  /**
    * Order line ID.

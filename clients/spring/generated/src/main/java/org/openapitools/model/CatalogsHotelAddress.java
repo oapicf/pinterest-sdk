@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * CatalogsHotelAddress
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelAddress {
 
   private @Nullable String addr1;
@@ -32,7 +32,7 @@ public class CatalogsHotelAddress {
 
   private @Nullable String postalCode;
 
-  public CatalogsHotelAddress addr1(String addr1) {
+  public CatalogsHotelAddress addr1(@Nullable String addr1) {
     this.addr1 = addr1;
     return this;
   }
@@ -44,15 +44,15 @@ public class CatalogsHotelAddress {
   
   @Schema(name = "addr1", description = "Primary street address of hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("addr1")
-  public String getAddr1() {
+  public @Nullable String getAddr1() {
     return addr1;
   }
 
-  public void setAddr1(String addr1) {
+  public void setAddr1(@Nullable String addr1) {
     this.addr1 = addr1;
   }
 
-  public CatalogsHotelAddress city(String city) {
+  public CatalogsHotelAddress city(@Nullable String city) {
     this.city = city;
     return this;
   }
@@ -64,15 +64,15 @@ public class CatalogsHotelAddress {
   
   @Schema(name = "city", description = "City where the hotel is located.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("city")
-  public String getCity() {
+  public @Nullable String getCity() {
     return city;
   }
 
-  public void setCity(String city) {
+  public void setCity(@Nullable String city) {
     this.city = city;
   }
 
-  public CatalogsHotelAddress region(String region) {
+  public CatalogsHotelAddress region(@Nullable String region) {
     this.region = region;
     return this;
   }
@@ -84,15 +84,15 @@ public class CatalogsHotelAddress {
   
   @Schema(name = "region", description = "State, county, province, where the hotel is located.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("region")
-  public String getRegion() {
+  public @Nullable String getRegion() {
     return region;
   }
 
-  public void setRegion(String region) {
+  public void setRegion(@Nullable String region) {
     this.region = region;
   }
 
-  public CatalogsHotelAddress country(String country) {
+  public CatalogsHotelAddress country(@Nullable String country) {
     this.country = country;
     return this;
   }
@@ -104,15 +104,15 @@ public class CatalogsHotelAddress {
   
   @Schema(name = "country", description = "Country where the hotel is located.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("country")
-  public String getCountry() {
+  public @Nullable String getCountry() {
     return country;
   }
 
-  public void setCountry(String country) {
+  public void setCountry(@Nullable String country) {
     this.country = country;
   }
 
-  public CatalogsHotelAddress postalCode(String postalCode) {
+  public CatalogsHotelAddress postalCode(@Nullable String postalCode) {
     this.postalCode = postalCode;
     return this;
   }
@@ -124,11 +124,11 @@ public class CatalogsHotelAddress {
   
   @Schema(name = "postal_code", description = "Required for countries with a postal code system. Postal or zip code of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("postal_code")
-  public String getPostalCode() {
+  public @Nullable String getPostalCode() {
     return postalCode;
   }
 
-  public void setPostalCode(String postalCode) {
+  public void setPostalCode(@Nullable String postalCode) {
     this.postalCode = postalCode;
   }
 

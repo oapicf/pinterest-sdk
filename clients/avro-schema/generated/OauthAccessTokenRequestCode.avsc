@@ -1,9 +1,19 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "A request to exchange an authorization code for an access token.",
+  "doc": "",
   "name": "OauthAccessTokenRequestCode",
   "fields": [
+    {
+      "name": "code",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "redirect_uri",
+      "type": "string",
+      "doc": ""
+    },
     {
       "name": "grant_type",
       "type": {
@@ -15,16 +25,6 @@
           "client_credentials"
         ]
       },
-      "doc": ""
-    },
-    {
-      "name": "code",
-      "type": "string",
-      "doc": ""
-    },
-    {
-      "name": "redirect_uri",
-      "type": "string",
       "doc": ""
     }
   ]

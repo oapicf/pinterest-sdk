@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An exception object if there is an error performing the action. Will only be provided if there is an error.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class InviteExceptionResponse {
   public static final String SERIALIZED_NAME_INVITE_OR_REQUEST_ID = "invite_or_request_id";
   @SerializedName(SERIALIZED_NAME_INVITE_OR_REQUEST_ID)
@@ -221,14 +221,10 @@ public class InviteExceptionResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("invite_or_request_id");
-    openapiFields.add("code");
-    openapiFields.add("message");
-    openapiFields.add("users_or_partner_ids");
+    openapiFields = new HashSet<String>(Arrays.asList("invite_or_request_id", "code", "message", "users_or_partner_ids"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -240,7 +236,7 @@ public class InviteExceptionResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!InviteExceptionResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in InviteExceptionResponse is not found in the empty JSON string", InviteExceptionResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in InviteExceptionResponse is not found in the empty JSON string", InviteExceptionResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -248,19 +244,19 @@ public class InviteExceptionResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!InviteExceptionResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `InviteExceptionResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `InviteExceptionResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("invite_or_request_id") != null && !jsonObj.get("invite_or_request_id").isJsonNull()) && !jsonObj.get("invite_or_request_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `invite_or_request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("invite_or_request_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `invite_or_request_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("invite_or_request_id").toString()));
       }
       if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("users_or_partner_ids") != null && !jsonObj.get("users_or_partner_ids").isJsonNull() && !jsonObj.get("users_or_partner_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `users_or_partner_ids` to be an array in the JSON string but got `%s`", jsonObj.get("users_or_partner_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `users_or_partner_ids` to be an array in the JSON string but got `%s`", jsonObj.get("users_or_partner_ids").toString()));
       }
   }
 

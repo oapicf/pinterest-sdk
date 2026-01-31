@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  * TargetingTemplateResponseData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateResponseData {
 
   private @Nullable String name;
@@ -62,7 +62,7 @@ public class TargetingTemplateResponseData {
     
     DELETED("DELETED");
 
-    private String value;
+    private final String value;
 
     StatusEnum(String value) {
       this.value = value;
@@ -93,7 +93,7 @@ public class TargetingTemplateResponseData {
 
   private JsonNullable<TargetingTemplateAudienceSizing> sizing = JsonNullable.<TargetingTemplateAudienceSizing>undefined();
 
-  public TargetingTemplateResponseData name(String name) {
+  public TargetingTemplateResponseData name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -105,11 +105,11 @@ public class TargetingTemplateResponseData {
   
   @Schema(name = "name", example = "Gaming", description = "targeting template name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
@@ -133,7 +133,7 @@ public class TargetingTemplateResponseData {
     this.autoTargetingEnabled = autoTargetingEnabled;
   }
 
-  public TargetingTemplateResponseData targetingAttributes(TargetingSpec targetingAttributes) {
+  public TargetingTemplateResponseData targetingAttributes(@Nullable TargetingSpec targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
     return this;
   }
@@ -145,11 +145,11 @@ public class TargetingTemplateResponseData {
   @Valid 
   @Schema(name = "targeting_attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("targeting_attributes")
-  public TargetingSpec getTargetingAttributes() {
+  public @Nullable TargetingSpec getTargetingAttributes() {
     return targetingAttributes;
   }
 
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+  public void setTargetingAttributes(@Nullable TargetingSpec targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
   }
 
@@ -221,7 +221,7 @@ public class TargetingTemplateResponseData {
     this.trackingUrls = trackingUrls;
   }
 
-  public TargetingTemplateResponseData id(String id) {
+  public TargetingTemplateResponseData id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -233,15 +233,15 @@ public class TargetingTemplateResponseData {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "643", description = "Targeting template ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public TargetingTemplateResponseData createdTime(Integer createdTime) {
+  public TargetingTemplateResponseData createdTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -253,15 +253,15 @@ public class TargetingTemplateResponseData {
   
   @Schema(name = "created_time", example = "1432744744", description = "Targeting template created time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
-  public Integer getCreatedTime() {
+  public @Nullable Integer getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
-  public TargetingTemplateResponseData updatedTime(Integer updatedTime) {
+  public TargetingTemplateResponseData updatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -273,15 +273,15 @@ public class TargetingTemplateResponseData {
   
   @Schema(name = "updated_time", example = "1432744744", description = "Targeting template updated time.Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")
-  public Integer getUpdatedTime() {
+  public @Nullable Integer getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 
-  public TargetingTemplateResponseData adAccountId(String adAccountId) {
+  public TargetingTemplateResponseData adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -293,11 +293,11 @@ public class TargetingTemplateResponseData {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "The ID of the advertiser that this targeting template belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 

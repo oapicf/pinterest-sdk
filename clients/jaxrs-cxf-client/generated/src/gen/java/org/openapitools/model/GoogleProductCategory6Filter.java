@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GoogleProductCategory6Filter  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6;
  /**
    * Get GOOGLE_PRODUCT_CATEGORY_6

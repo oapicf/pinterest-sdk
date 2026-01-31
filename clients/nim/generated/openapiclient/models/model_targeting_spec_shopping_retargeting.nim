@@ -9,10 +9,35 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type TargetingSpecSHOPPINGRETARGETING* = object
   ## 
-  lookbackWindow*: int ## Number of days ago to start lookback timeframe for dynamic retargeting
-  tagTypes*: seq[int] ## Event types to target for dynamic retargeting
-  exclusionWindow*: int ## Number of days ago to stop lookback timeframe for dynamic retargeting
+  lookbackWindow*: Option[int] ## Number of days ago to start lookback timeframe for dynamic retargeting
+  tagTypes*: Option[seq[int]] ## Event types to target for dynamic retargeting
+  exclusionWindow*: Option[int] ## Number of days ago to stop lookback timeframe for dynamic retargeting
+
+
+# Custom JSON deserialization for TargetingSpecSHOPPINGRETARGETING with custom field names
+proc to*(node: JsonNode, T: typedesc[TargetingSpecSHOPPINGRETARGETING]): TargetingSpecSHOPPINGRETARGETING =
+  result = TargetingSpecSHOPPINGRETARGETING()
+  if node.kind == JObject:
+    if node.hasKey("lookback_window") and node["lookback_window"].kind != JNull:
+      result.lookbackWindow = some(to(node["lookback_window"], typeof(result.lookbackWindow.get())))
+    if node.hasKey("tag_types") and node["tag_types"].kind != JNull:
+      result.tagTypes = some(to(node["tag_types"], typeof(result.tagTypes.get())))
+    if node.hasKey("exclusion_window") and node["exclusion_window"].kind != JNull:
+      result.exclusionWindow = some(to(node["exclusion_window"], typeof(result.exclusionWindow.get())))
+
+# Custom JSON serialization for TargetingSpecSHOPPINGRETARGETING with custom field names
+proc `%`*(obj: TargetingSpecSHOPPINGRETARGETING): JsonNode =
+  result = newJObject()
+  if obj.lookbackWindow.isSome():
+    result["lookback_window"] = %obj.lookbackWindow.get()
+  if obj.tagTypes.isSome():
+    result["tag_types"] = %obj.tagTypes.get()
+  if obj.exclusionWindow.isSome():
+    result["exclusion_window"] = %obj.exclusionWindow.get()
+

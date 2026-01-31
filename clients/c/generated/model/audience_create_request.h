@@ -15,8 +15,8 @@
 
 typedef struct audience_create_request_t audience_create_request_t;
 
-#include "audience_create_request_1_audience_type.h"
 #include "audience_rule.h"
+#include "audience_type.h"
 
 
 
@@ -25,7 +25,7 @@ typedef struct audience_create_request_t {
     char *name; // string
     struct audience_rule_t *rule; //model
     char *description; // string
-    struct audience_create_request_1_audience_type_t *audience_type; //model
+    audience_type_t *audience_type; // custom
 
     int _library_owned; // Is the library responsible for freeing this object?
 } audience_create_request_t;
@@ -35,7 +35,7 @@ __attribute__((deprecated)) audience_create_request_t *audience_create_request_c
     char *name,
     audience_rule_t *rule,
     char *description,
-    audience_create_request_1_audience_type_t *audience_type
+    audience_type_t *audience_type
 );
 
 void audience_create_request_free(audience_create_request_t *audience_create_request);

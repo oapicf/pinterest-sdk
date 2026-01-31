@@ -15,9 +15,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DeletePartnersRequest  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<@Pattern(regexp = "^\\d+$")@Size(max = 22)String> partnerIds = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String partnerType;
  /**
    * Get partnerIds

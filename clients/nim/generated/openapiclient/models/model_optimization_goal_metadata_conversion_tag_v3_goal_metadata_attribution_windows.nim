@@ -9,10 +9,35 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows* = object
   ## 
-  clickWindowDays*: int
-  engagementWindowDays*: int
-  viewWindowDays*: int
+  clickWindowDays*: Option[int]
+  engagementWindowDays*: Option[int]
+  viewWindowDays*: Option[int]
+
+
+# Custom JSON deserialization for OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows with custom field names
+proc to*(node: JsonNode, T: typedesc[OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows]): OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows =
+  result = OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows()
+  if node.kind == JObject:
+    if node.hasKey("click_window_days") and node["click_window_days"].kind != JNull:
+      result.clickWindowDays = some(to(node["click_window_days"], typeof(result.clickWindowDays.get())))
+    if node.hasKey("engagement_window_days") and node["engagement_window_days"].kind != JNull:
+      result.engagementWindowDays = some(to(node["engagement_window_days"], typeof(result.engagementWindowDays.get())))
+    if node.hasKey("view_window_days") and node["view_window_days"].kind != JNull:
+      result.viewWindowDays = some(to(node["view_window_days"], typeof(result.viewWindowDays.get())))
+
+# Custom JSON serialization for OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows with custom field names
+proc `%`*(obj: OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows): JsonNode =
+  result = newJObject()
+  if obj.clickWindowDays.isSome():
+    result["click_window_days"] = %obj.clickWindowDays.get()
+  if obj.engagementWindowDays.isSome():
+    result["engagement_window_days"] = %obj.engagementWindowDays.get()
+  if obj.viewWindowDays.isSome():
+    result["view_window_days"] = %obj.viewWindowDays.get()
+

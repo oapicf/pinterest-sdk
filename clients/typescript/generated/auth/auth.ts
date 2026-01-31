@@ -106,7 +106,6 @@ export class ClientCredentialsAuthentication implements SecurityAuthentication {
     }
 }
 
-
 export type AuthMethods = {
     "default"?: SecurityAuthentication,
     "pinterest_oauth2"?: SecurityAuthentication,

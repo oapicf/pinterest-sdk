@@ -8113,7 +8113,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ReportingColumnAsync reportingColumnAsync, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(reportingColumnAsync.ToString());
+            writer.WriteStringValue(ReportingColumnAsyncValueConverter.ToJsonValue(reportingColumnAsync).ToString());
         }
     }
 
@@ -8144,14 +8144,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the ReportingColumnAsync to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="reportingColumnAsync"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ReportingColumnAsync? reportingColumnAsync, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(reportingColumnAsync?.ToString() ?? "null");
+            writer.WriteStringValue(reportingColumnAsync.HasValue ? ReportingColumnAsyncValueConverter.ToJsonValue(reportingColumnAsync.Value).ToString() : "null");
         }
     }
 }

@@ -57,7 +57,7 @@ export function CatalogsItemsBatchFromJSONTyped(json: any, ignoreDiscriminator: 
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailItemsBatchFromJSONTyped(json, true), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsItemsBatch exists with 'catalogType=${json['catalogType']}'`);
+            return json;
     }
 }
 
@@ -77,8 +77,7 @@ export function CatalogsItemsBatchToJSONTyped(value?: CatalogsItemsBatch | null,
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailItemsBatchToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsItemsBatch exists with 'catalogType=${value['catalogType']}'`);
+            return value;
     }
-
 }
 

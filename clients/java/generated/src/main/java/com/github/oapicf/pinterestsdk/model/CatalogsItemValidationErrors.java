@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsItemValidationErrors
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemValidationErrors {
   public static final String SERIALIZED_NAME_A_D_U_L_T_I_N_V_A_L_I_D = "ADULT_INVALID";
   @SerializedName(SERIALIZED_NAME_A_D_U_L_T_I_N_V_A_L_I_D)
@@ -694,33 +694,10 @@ public class CatalogsItemValidationErrors {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ADULT_INVALID");
-    openapiFields.add("ADWORDS_FORMAT_INVALID");
-    openapiFields.add("AVAILABILITY_INVALID");
-    openapiFields.add("BLOCKLISTED_IMAGE_SIGNATURE");
-    openapiFields.add("DESCRIPTION_MISSING");
-    openapiFields.add("DUPLICATE_PRODUCTS");
-    openapiFields.add("IMAGE_LINK_INVALID");
-    openapiFields.add("IMAGE_LINK_LENGTH_TOO_LONG");
-    openapiFields.add("IMAGE_LINK_MISSING");
-    openapiFields.add("INVALID_DOMAIN");
-    openapiFields.add("ITEMID_MISSING");
-    openapiFields.add("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE");
-    openapiFields.add("LINK_FORMAT_INVALID");
-    openapiFields.add("LINK_LENGTH_TOO_LONG");
-    openapiFields.add("LIST_PRICE_INVALID");
-    openapiFields.add("MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED");
-    openapiFields.add("PARSE_LINE_ERROR");
-    openapiFields.add("PINJOIN_CONTENT_UNSAFE");
-    openapiFields.add("PRICE_CANNOT_BE_DETERMINED");
-    openapiFields.add("PRICE_MISSING");
-    openapiFields.add("PRODUCT_LINK_MISSING");
-    openapiFields.add("PRODUCT_PRICE_INVALID");
-    openapiFields.add("TITLE_MISSING");
+    openapiFields = new HashSet<String>(Arrays.asList("ADULT_INVALID", "ADWORDS_FORMAT_INVALID", "AVAILABILITY_INVALID", "BLOCKLISTED_IMAGE_SIGNATURE", "DESCRIPTION_MISSING", "DUPLICATE_PRODUCTS", "IMAGE_LINK_INVALID", "IMAGE_LINK_LENGTH_TOO_LONG", "IMAGE_LINK_MISSING", "INVALID_DOMAIN", "ITEMID_MISSING", "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE", "LINK_FORMAT_INVALID", "LINK_LENGTH_TOO_LONG", "LIST_PRICE_INVALID", "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED", "PARSE_LINE_ERROR", "PINJOIN_CONTENT_UNSAFE", "PRICE_CANNOT_BE_DETERMINED", "PRICE_MISSING", "PRODUCT_LINK_MISSING", "PRODUCT_PRICE_INVALID", "TITLE_MISSING"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -732,7 +709,7 @@ public class CatalogsItemValidationErrors {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsItemValidationErrors.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsItemValidationErrors is not found in the empty JSON string", CatalogsItemValidationErrors.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsItemValidationErrors is not found in the empty JSON string", CatalogsItemValidationErrors.openapiRequiredFields.toString()));
         }
       }
 
@@ -740,7 +717,7 @@ public class CatalogsItemValidationErrors {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsItemValidationErrors.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsItemValidationErrors` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsItemValidationErrors` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

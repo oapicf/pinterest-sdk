@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_retail_product_metadata
 import model_pin
@@ -20,14 +22,42 @@ type CatalogsRetailProduct* = object
   ## 
   catalogType*: CatalogType
   metadata*: CatalogsRetailProductMetadata
-  pin*: Pin
+  pin*: Option[Pin]
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.RETAIL: "RETAIL"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.RETAIL: %"RETAIL"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.RETAIL: "RETAIL"
+    of CatalogType.RETAIL: $("RETAIL")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RETAIL"):
+    return CatalogType.RETAIL
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsRetailProduct with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsRetailProduct]): CatalogsRetailProduct =
+  result = CatalogsRetailProduct()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("metadata"):
+      result.metadata = to(node["metadata"], CatalogsRetailProductMetadata)
+    if node.hasKey("pin") and node["pin"].kind != JNull:
+      result.pin = some(to(node["pin"], typeof(result.pin.get())))
+
+# Custom JSON serialization for CatalogsRetailProduct with custom field names
+proc `%`*(obj: CatalogsRetailProduct): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["metadata"] = %obj.metadata
+  if obj.pin.isSome():
+    result["pin"] = %obj.pin.get()
+

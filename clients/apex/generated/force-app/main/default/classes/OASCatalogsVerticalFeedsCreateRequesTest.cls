@@ -81,4 +81,21 @@ private class OASCatalogsVerticalFeedsCreateRequesTest {
         System.assertEquals('defaultAvailability', x-property-mappings.get('default_availability'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
     }
+
+    @isTest
+    private static void defaultValuesPopulated() {
+        OASCatalogsVerticalFeedsCreateReques catalogsVerticalFeedsCreateRequest = new OASCatalogsVerticalFeedsCreateReques();
+        System.assertEquals('ACTIVE', catalogsVerticalFeedsCreateRequest.status);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.defaultCurrency);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.name);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.format);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.defaultLocale);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.credentials);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.location);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.preferredProcessingSchedule);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.catalogType);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.defaultCountry);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.defaultAvailability);
+        System.assertEquals(null, catalogsVerticalFeedsCreateRequest.catalogId);
+    }
 }

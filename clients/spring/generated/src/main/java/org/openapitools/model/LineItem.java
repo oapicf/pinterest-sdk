@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * LineItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LineItem {
 
   private @Nullable String productBrand;
@@ -38,7 +38,7 @@ public class LineItem {
 
   private @Nullable String productVariantId;
 
-  public LineItem productBrand(String productBrand) {
+  public LineItem productBrand(@Nullable String productBrand) {
     this.productBrand = productBrand;
     return this;
   }
@@ -50,15 +50,15 @@ public class LineItem {
   
   @Schema(name = "product_brand", example = "Parker", description = "Product brand. For example, \"Parker\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_brand")
-  public String getProductBrand() {
+  public @Nullable String getProductBrand() {
     return productBrand;
   }
 
-  public void setProductBrand(String productBrand) {
+  public void setProductBrand(@Nullable String productBrand) {
     this.productBrand = productBrand;
   }
 
-  public LineItem productCategory(String productCategory) {
+  public LineItem productCategory(@Nullable String productCategory) {
     this.productCategory = productCategory;
     return this;
   }
@@ -70,15 +70,15 @@ public class LineItem {
   
   @Schema(name = "product_category", example = "Shoes", description = "Product category. For example, \"Shoes\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_category")
-  public String getProductCategory() {
+  public @Nullable String getProductCategory() {
     return productCategory;
   }
 
-  public void setProductCategory(String productCategory) {
+  public void setProductCategory(@Nullable String productCategory) {
     this.productCategory = productCategory;
   }
 
-  public LineItem productId(Integer productId) {
+  public LineItem productId(@Nullable Integer productId) {
     this.productId = productId;
     return this;
   }
@@ -90,15 +90,15 @@ public class LineItem {
   
   @Schema(name = "product_id", example = "1414", description = "Product ID. For example, 1414.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_id")
-  public Integer getProductId() {
+  public @Nullable Integer getProductId() {
     return productId;
   }
 
-  public void setProductId(Integer productId) {
+  public void setProductId(@Nullable Integer productId) {
     this.productId = productId;
   }
 
-  public LineItem productName(String productName) {
+  public LineItem productName(@Nullable String productName) {
     this.productName = productName;
     return this;
   }
@@ -110,15 +110,15 @@ public class LineItem {
   
   @Schema(name = "product_name", example = "Parker Boots", description = "Product name. For example, \"Parker Boots\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_name")
-  public String getProductName() {
+  public @Nullable String getProductName() {
     return productName;
   }
 
-  public void setProductName(String productName) {
+  public void setProductName(@Nullable String productName) {
     this.productName = productName;
   }
 
-  public LineItem productPrice(String productPrice) {
+  public LineItem productPrice(@Nullable String productPrice) {
     this.productPrice = productPrice;
     return this;
   }
@@ -130,15 +130,15 @@ public class LineItem {
   
   @Schema(name = "product_price", example = "99.99", description = "Product price. For example, \"99.99\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_price")
-  public String getProductPrice() {
+  public @Nullable String getProductPrice() {
     return productPrice;
   }
 
-  public void setProductPrice(String productPrice) {
+  public void setProductPrice(@Nullable String productPrice) {
     this.productPrice = productPrice;
   }
 
-  public LineItem productQuantity(Integer productQuantity) {
+  public LineItem productQuantity(@Nullable Integer productQuantity) {
     this.productQuantity = productQuantity;
     return this;
   }
@@ -150,15 +150,15 @@ public class LineItem {
   
   @Schema(name = "product_quantity", example = "2", description = "Product quantity. For example, 2.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_quantity")
-  public Integer getProductQuantity() {
+  public @Nullable Integer getProductQuantity() {
     return productQuantity;
   }
 
-  public void setProductQuantity(Integer productQuantity) {
+  public void setProductQuantity(@Nullable Integer productQuantity) {
     this.productQuantity = productQuantity;
   }
 
-  public LineItem productVariant(String productVariant) {
+  public LineItem productVariant(@Nullable String productVariant) {
     this.productVariant = productVariant;
     return this;
   }
@@ -170,15 +170,15 @@ public class LineItem {
   
   @Schema(name = "product_variant", example = "Red", description = "Product variant. For example, \"Red\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_variant")
-  public String getProductVariant() {
+  public @Nullable String getProductVariant() {
     return productVariant;
   }
 
-  public void setProductVariant(String productVariant) {
+  public void setProductVariant(@Nullable String productVariant) {
     this.productVariant = productVariant;
   }
 
-  public LineItem productVariantId(String productVariantId) {
+  public LineItem productVariantId(@Nullable String productVariantId) {
     this.productVariantId = productVariantId;
     return this;
   }
@@ -190,11 +190,11 @@ public class LineItem {
   
   @Schema(name = "product_variant_id", example = "1414-34832", description = "Product variant ID. For example, \"1414-34832\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("product_variant_id")
-  public String getProductVariantId() {
+  public @Nullable String getProductVariantId() {
     return productVariantId;
   }
 
-  public void setProductVariantId(String productVariantId) {
+  public void setProductVariantId(@Nullable String productVariantId) {
     this.productVariantId = productVariantId;
   }
 

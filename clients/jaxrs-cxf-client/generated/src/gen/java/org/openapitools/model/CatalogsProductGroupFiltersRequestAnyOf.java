@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsProductGroupFiltersRequestAnyOf  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();
  /**
    * Get anyOf

@@ -96,7 +96,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadFormGetCall(String adAccountId, String leadFormId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call leadFormGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadFormId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -143,7 +143,7 @@ public class LeadFormsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call leadFormGetValidateBeforeCall(String adAccountId, String leadFormId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call leadFormGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadFormId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling leadFormGet(Async)");
@@ -175,7 +175,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public LeadFormResponse leadFormGet(String adAccountId, String leadFormId) throws ApiException {
+    public LeadFormResponse leadFormGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadFormId) throws ApiException {
         ApiResponse<LeadFormResponse> localVarResp = leadFormGetWithHttpInfo(adAccountId, leadFormId);
         return localVarResp.getData();
     }
@@ -197,7 +197,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LeadFormResponse> leadFormGetWithHttpInfo(String adAccountId, String leadFormId) throws ApiException {
+    public ApiResponse<LeadFormResponse> leadFormGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadFormId) throws ApiException {
         okhttp3.Call localVarCall = leadFormGetValidateBeforeCall(adAccountId, leadFormId, null);
         Type localVarReturnType = new TypeToken<LeadFormResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -221,7 +221,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadFormGetAsync(String adAccountId, String leadFormId, final ApiCallback<LeadFormResponse> _callback) throws ApiException {
+    public okhttp3.Call leadFormGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadFormId, final ApiCallback<LeadFormResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = leadFormGetValidateBeforeCall(adAccountId, leadFormId, _callback);
         Type localVarReturnType = new TypeToken<LeadFormResponse>(){}.getType();
@@ -246,7 +246,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadFormTestCreateCall(String adAccountId, String leadFormId, LeadFormTestRequest leadFormTestRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call leadFormTestCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadFormId, @javax.annotation.Nonnull LeadFormTestRequest leadFormTestRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -294,7 +294,7 @@ public class LeadFormsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call leadFormTestCreateValidateBeforeCall(String adAccountId, String leadFormId, LeadFormTestRequest leadFormTestRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call leadFormTestCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadFormId, @javax.annotation.Nonnull LeadFormTestRequest leadFormTestRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling leadFormTestCreate(Async)");
@@ -332,7 +332,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public LeadFormTestResponse leadFormTestCreate(String adAccountId, String leadFormId, LeadFormTestRequest leadFormTestRequest) throws ApiException {
+    public LeadFormTestResponse leadFormTestCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadFormId, @javax.annotation.Nonnull LeadFormTestRequest leadFormTestRequest) throws ApiException {
         ApiResponse<LeadFormTestResponse> localVarResp = leadFormTestCreateWithHttpInfo(adAccountId, leadFormId, leadFormTestRequest);
         return localVarResp.getData();
     }
@@ -355,7 +355,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LeadFormTestResponse> leadFormTestCreateWithHttpInfo(String adAccountId, String leadFormId, LeadFormTestRequest leadFormTestRequest) throws ApiException {
+    public ApiResponse<LeadFormTestResponse> leadFormTestCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadFormId, @javax.annotation.Nonnull LeadFormTestRequest leadFormTestRequest) throws ApiException {
         okhttp3.Call localVarCall = leadFormTestCreateValidateBeforeCall(adAccountId, leadFormId, leadFormTestRequest, null);
         Type localVarReturnType = new TypeToken<LeadFormTestResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -380,7 +380,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadFormTestCreateAsync(String adAccountId, String leadFormId, LeadFormTestRequest leadFormTestRequest, final ApiCallback<LeadFormTestResponse> _callback) throws ApiException {
+    public okhttp3.Call leadFormTestCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadFormId, @javax.annotation.Nonnull LeadFormTestRequest leadFormTestRequest, final ApiCallback<LeadFormTestResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = leadFormTestCreateValidateBeforeCall(adAccountId, leadFormId, leadFormTestRequest, _callback);
         Type localVarReturnType = new TypeToken<LeadFormTestResponse>(){}.getType();
@@ -403,7 +403,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadFormsCreateCall(String adAccountId, List<LeadFormCreateRequest> leadFormCreateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call leadFormsCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<LeadFormCreateRequest> leadFormCreateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -450,7 +450,7 @@ public class LeadFormsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call leadFormsCreateValidateBeforeCall(String adAccountId, List<LeadFormCreateRequest> leadFormCreateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call leadFormsCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<LeadFormCreateRequest> leadFormCreateRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling leadFormsCreate(Async)");
@@ -481,7 +481,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public LeadFormArrayResponse leadFormsCreate(String adAccountId, List<LeadFormCreateRequest> leadFormCreateRequest) throws ApiException {
+    public LeadFormArrayResponse leadFormsCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<LeadFormCreateRequest> leadFormCreateRequest) throws ApiException {
         ApiResponse<LeadFormArrayResponse> localVarResp = leadFormsCreateWithHttpInfo(adAccountId, leadFormCreateRequest);
         return localVarResp.getData();
     }
@@ -502,7 +502,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LeadFormArrayResponse> leadFormsCreateWithHttpInfo(String adAccountId, List<LeadFormCreateRequest> leadFormCreateRequest) throws ApiException {
+    public ApiResponse<LeadFormArrayResponse> leadFormsCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<LeadFormCreateRequest> leadFormCreateRequest) throws ApiException {
         okhttp3.Call localVarCall = leadFormsCreateValidateBeforeCall(adAccountId, leadFormCreateRequest, null);
         Type localVarReturnType = new TypeToken<LeadFormArrayResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -525,7 +525,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadFormsCreateAsync(String adAccountId, List<LeadFormCreateRequest> leadFormCreateRequest, final ApiCallback<LeadFormArrayResponse> _callback) throws ApiException {
+    public okhttp3.Call leadFormsCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<LeadFormCreateRequest> leadFormCreateRequest, final ApiCallback<LeadFormArrayResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = leadFormsCreateValidateBeforeCall(adAccountId, leadFormCreateRequest, _callback);
         Type localVarReturnType = new TypeToken<LeadFormArrayResponse>(){}.getType();
@@ -550,7 +550,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadFormsListCall(String adAccountId, Integer pageSize, String order, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call leadFormsListCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -608,7 +608,7 @@ public class LeadFormsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call leadFormsListValidateBeforeCall(String adAccountId, Integer pageSize, String order, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call leadFormsListValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling leadFormsList(Async)");
@@ -636,7 +636,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public LeadFormsList200Response leadFormsList(String adAccountId, Integer pageSize, String order, String bookmark) throws ApiException {
+    public LeadFormsList200Response leadFormsList(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<LeadFormsList200Response> localVarResp = leadFormsListWithHttpInfo(adAccountId, pageSize, order, bookmark);
         return localVarResp.getData();
     }
@@ -659,7 +659,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LeadFormsList200Response> leadFormsListWithHttpInfo(String adAccountId, Integer pageSize, String order, String bookmark) throws ApiException {
+    public ApiResponse<LeadFormsList200Response> leadFormsListWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = leadFormsListValidateBeforeCall(adAccountId, pageSize, order, bookmark, null);
         Type localVarReturnType = new TypeToken<LeadFormsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -684,7 +684,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadFormsListAsync(String adAccountId, Integer pageSize, String order, String bookmark, final ApiCallback<LeadFormsList200Response> _callback) throws ApiException {
+    public okhttp3.Call leadFormsListAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback<LeadFormsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = leadFormsListValidateBeforeCall(adAccountId, pageSize, order, bookmark, _callback);
         Type localVarReturnType = new TypeToken<LeadFormsList200Response>(){}.getType();
@@ -707,7 +707,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadFormsUpdateCall(String adAccountId, List<LeadFormUpdateRequest> leadFormUpdateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call leadFormsUpdateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<LeadFormUpdateRequest> leadFormUpdateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -754,7 +754,7 @@ public class LeadFormsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call leadFormsUpdateValidateBeforeCall(String adAccountId, List<LeadFormUpdateRequest> leadFormUpdateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call leadFormsUpdateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<LeadFormUpdateRequest> leadFormUpdateRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling leadFormsUpdate(Async)");
@@ -785,7 +785,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public LeadFormArrayResponse leadFormsUpdate(String adAccountId, List<LeadFormUpdateRequest> leadFormUpdateRequest) throws ApiException {
+    public LeadFormArrayResponse leadFormsUpdate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<LeadFormUpdateRequest> leadFormUpdateRequest) throws ApiException {
         ApiResponse<LeadFormArrayResponse> localVarResp = leadFormsUpdateWithHttpInfo(adAccountId, leadFormUpdateRequest);
         return localVarResp.getData();
     }
@@ -806,7 +806,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LeadFormArrayResponse> leadFormsUpdateWithHttpInfo(String adAccountId, List<LeadFormUpdateRequest> leadFormUpdateRequest) throws ApiException {
+    public ApiResponse<LeadFormArrayResponse> leadFormsUpdateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<LeadFormUpdateRequest> leadFormUpdateRequest) throws ApiException {
         okhttp3.Call localVarCall = leadFormsUpdateValidateBeforeCall(adAccountId, leadFormUpdateRequest, null);
         Type localVarReturnType = new TypeToken<LeadFormArrayResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -829,7 +829,7 @@ public class LeadFormsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadFormsUpdateAsync(String adAccountId, List<LeadFormUpdateRequest> leadFormUpdateRequest, final ApiCallback<LeadFormArrayResponse> _callback) throws ApiException {
+    public okhttp3.Call leadFormsUpdateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<LeadFormUpdateRequest> leadFormUpdateRequest, final ApiCallback<LeadFormArrayResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = leadFormsUpdateValidateBeforeCall(adAccountId, leadFormUpdateRequest, _callback);
         Type localVarReturnType = new TypeToken<LeadFormArrayResponse>(){}.getType();

@@ -3,30 +3,6 @@ Protected Class InviteBusinessRoleBinding
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Unique identifier for the business that created the invite/request.
-		#tag EndNote
-		created_by_business_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Unique identifier for the user that created the invite/request.
-		#tag EndNote
-		created_by_user_id As Xoson.O.OptionalString
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Metadata for the user that updated the invite/request.
-		#tag EndNote
-		user As OpenAPIClient.Models.BusinessAccessUserSummary
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Unique identifier of the invite/request.
 		#tag EndNote
 		id As Xoson.O.OptionalString
@@ -43,6 +19,30 @@ Protected Class InviteBusinessRoleBinding
 			Indicates whether the invite/request was received.
 		#tag EndNote
 		is_received_invite As Xoson.O.OptionalBoolean
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Metadata for the user that updated the invite/request.
+		#tag EndNote
+		user As Object
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Unique identifier for the business that created the invite/request.
+		#tag EndNote
+		created_by_business_id As Xoson.O.OptionalString
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Unique identifier for the user that created the invite/request.
+		#tag EndNote
+		created_by_user_id As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -83,30 +83,6 @@ Protected Class InviteBusinessRoleBinding
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="created_by_business_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="created_by_user_id"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="user"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="BusinessAccessUserSummary"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="id"
 			Visible=false
 			Group="Behavior"
@@ -128,6 +104,30 @@ Protected Class InviteBusinessRoleBinding
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="user"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Object"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="created_by_business_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="created_by_user_id"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

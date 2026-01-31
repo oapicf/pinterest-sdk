@@ -11,9 +11,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreateMMMReportResponse  {
   
   @ApiModelProperty(example = "0", value = "")
+
   private BigDecimal code;
 
   @ApiModelProperty(value = "")
+
   private CreateMMMReportResponseData data;
  /**
    * Get code

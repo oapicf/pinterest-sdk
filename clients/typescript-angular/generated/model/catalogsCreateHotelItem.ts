@@ -22,10 +22,10 @@ export interface CatalogsCreateHotelItem {
     attributes: CatalogsHotelAttributes;
 }
 export namespace CatalogsCreateHotelItem {
-    export type OperationEnum = 'CREATE';
     export const OperationEnum = {
-        Create: 'CREATE' as OperationEnum
-    };
+        Create: 'CREATE'
+    } as const;
+    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }
 
 

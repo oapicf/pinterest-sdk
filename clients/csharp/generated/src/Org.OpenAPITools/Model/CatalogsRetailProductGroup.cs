@@ -410,8 +410,7 @@ namespace Org.OpenAPITools.Model
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "filters":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                filters = new Option<CatalogsProductGroupFilters?>(JsonSerializer.Deserialize<CatalogsProductGroupFilters>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            filters = new Option<CatalogsProductGroupFilters?>(JsonSerializer.Deserialize<CatalogsProductGroupFilters>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "catalog_id":
                             catalogId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -423,8 +422,7 @@ namespace Org.OpenAPITools.Model
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "is_featured":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isFeatured = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isFeatured = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "type":
                             string? typeRawValue = utf8JsonReader.GetString();
@@ -437,12 +435,10 @@ namespace Org.OpenAPITools.Model
                                 status = new Option<CatalogsProductGroupStatus?>(CatalogsProductGroupStatusValueConverter.FromStringOrDefault(statusRawValue));
                             break;
                         case "created_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdAt = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdAt = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "updated_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedAt = new Option<int?>(utf8JsonReader.GetInt32());
+                            updatedAt = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "feed_id":
                             feedId = new Option<string?>(utf8JsonReader.GetString());

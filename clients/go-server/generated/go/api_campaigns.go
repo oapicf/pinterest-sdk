@@ -54,37 +54,87 @@ func NewCampaignsAPIController(s CampaignsAPIServicer, opts ...CampaignsAPIOptio
 func (c *CampaignsAPIController) Routes() Routes {
 	return Routes{
 		"CampaignsList": Route{
+			"CampaignsList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/campaigns",
 			c.CampaignsList,
 		},
 		"CampaignsCreate": Route{
+			"CampaignsCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/campaigns",
 			c.CampaignsCreate,
 		},
 		"CampaignsUpdate": Route{
+			"CampaignsUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/campaigns",
 			c.CampaignsUpdate,
 		},
 		"CampaignsAnalytics": Route{
+			"CampaignsAnalytics",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/campaigns/analytics",
 			c.CampaignsAnalytics,
 		},
 		"CampaignTargetingAnalyticsGet": Route{
+			"CampaignTargetingAnalyticsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/campaigns/targeting_analytics",
 			c.CampaignTargetingAnalyticsGet,
 		},
 		"CampaignsGet": Route{
+			"CampaignsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/campaigns/{campaign_id}",
 			c.CampaignsGet,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the CampaignsAPIController
+func (c *CampaignsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"CampaignsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/campaigns",
+			c.CampaignsList,
+		},
+		Route{
+			"CampaignsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/campaigns",
+			c.CampaignsCreate,
+		},
+		Route{
+			"CampaignsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/campaigns",
+			c.CampaignsUpdate,
+		},
+		Route{
+			"CampaignsAnalytics",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/campaigns/analytics",
+			c.CampaignsAnalytics,
+		},
+		Route{
+			"CampaignTargetingAnalyticsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/campaigns/targeting_analytics",
+			c.CampaignTargetingAnalyticsGet,
+		},
+		Route{
+			"CampaignsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/campaigns/{campaign_id}",
+			c.CampaignsGet,
+		},
+	}
+}
+
+
 
 // CampaignsList - List campaigns
 func (c *CampaignsAPIController) CampaignsList(w http.ResponseWriter, r *http.Request) {

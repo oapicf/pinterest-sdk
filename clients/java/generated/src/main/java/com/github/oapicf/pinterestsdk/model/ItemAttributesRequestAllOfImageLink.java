@@ -51,7 +51,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemAttributesRequestAllOfImageLink extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(ItemAttributesRequestAllOfImageLink.class.getName());
 
@@ -104,14 +104,14 @@ public class ItemAttributesRequestAllOfImageLink extends AbstractOpenApiSchema {
                     try {
                         // validate the JSON object to see if any exception is thrown
                         if (!jsonElement.isJsonArray()) {
-                            throw new IllegalArgumentException(String.format("Expected json element to be a array type in the JSON string but got `%s`", jsonElement.toString()));
+                            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected json element to be a array type in the JSON string but got `%s`", jsonElement.toString()));
                         }
 
                         JsonArray array = jsonElement.getAsJsonArray();
                         // validate array items
                         for(JsonElement element : array) {
                             if (!element.getAsJsonPrimitive().isString()) {
-                                throw new IllegalArgumentException(String.format("Expected array items to be of type String in the JSON string but got `%s`", jsonElement.toString()));
+                                throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected array items to be of type String in the JSON string but got `%s`", jsonElement.toString()));
                             }
                         }
                         actualAdapter = adapterListString;
@@ -119,21 +119,21 @@ public class ItemAttributesRequestAllOfImageLink extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'List<String>'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for List<String> failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for List<String> failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'List<String>'", e);
                     }
                     // deserialize String
                     try {
                         // validate the JSON object to see if any exception is thrown
                         if (!jsonElement.getAsJsonPrimitive().isString()) {
-                            throw new IllegalArgumentException(String.format("Expected json element to be of type String in the JSON string but got `%s`", jsonElement.toString()));
+                            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected json element to be of type String in the JSON string but got `%s`", jsonElement.toString()));
                         }
                         actualAdapter = adapterString;
                         match++;
                         log.log(Level.FINER, "Input data matches schema 'String'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for String failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for String failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'String'", e);
                     }
 
@@ -143,7 +143,7 @@ public class ItemAttributesRequestAllOfImageLink extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for ItemAttributesRequestAllOfImageLink: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for ItemAttributesRequestAllOfImageLink: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -182,7 +182,7 @@ public class ItemAttributesRequestAllOfImageLink extends AbstractOpenApiSchema {
     public void setActualInstance(Object instance) {
         if (instance instanceof List<?>) {
             List<?> list = (List<?>) instance;
-            if (list.get(0) instanceof String) {
+            if (!list.isEmpty() && list.get(0) instanceof String) {
                 super.setActualInstance(instance);
                 return;
             }
@@ -243,32 +243,32 @@ public class ItemAttributesRequestAllOfImageLink extends AbstractOpenApiSchema {
         // validate the json string with List<String>
         try {
             if (!jsonElement.isJsonArray()) {
-                throw new IllegalArgumentException(String.format("Expected json element to be a array type in the JSON string but got `%s`", jsonElement.toString()));
+                throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected json element to be a array type in the JSON string but got `%s`", jsonElement.toString()));
             }
             JsonArray array = jsonElement.getAsJsonArray();
             // validate array items
             for(JsonElement element : array) {
                 if (!element.getAsJsonPrimitive().isString()) {
-                    throw new IllegalArgumentException(String.format("Expected array items to be of type String in the JSON string but got `%s`", jsonElement.toString()));
+                    throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected array items to be of type String in the JSON string but got `%s`", jsonElement.toString()));
                 }
             }
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for List<String> failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for List<String> failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with String
         try {
             if (!jsonElement.getAsJsonPrimitive().isString()) {
-                throw new IllegalArgumentException(String.format("Expected json element to be of type String in the JSON string but got `%s`", jsonElement.toString()));
+                throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected json element to be of type String in the JSON string but got `%s`", jsonElement.toString()));
             }
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for String failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for String failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for ItemAttributesRequestAllOfImageLink with oneOf schemas: List<String>, String. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for ItemAttributesRequestAllOfImageLink with oneOf schemas: List<String>, String. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

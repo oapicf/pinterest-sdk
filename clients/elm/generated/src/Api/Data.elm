@@ -96,7 +96,6 @@ module Api.Data exposing
     , AudienceCommon
     , AudienceCreateCustomRequest
     , AudienceCreateRequest
-    , AudienceCreateRequest1AudienceType
     , AudienceDataParty(..), audienceDataPartyVariants
     , AudienceDefinition
     , AudienceDefinitionResponse
@@ -199,7 +198,7 @@ module Api.Data exposing
     , CatalogsCreateRetailItem, CatalogsCreateRetailItemOperation(..), catalogsCreateRetailItemOperationVariants
     , CatalogsCreativeAssetsAttributes
     , CatalogsCreativeAssetsBatchItem(..), CatalogsCreativeAssetsBatchItemOperation(..), catalogsCreativeAssetsBatchItemOperationVariants
-    , CatalogsCreativeAssetsBatchRequest, CatalogsCreativeAssetsBatchRequestCatalogType(..), catalogsCreativeAssetsBatchRequestCatalogTypeVariants
+    , CatalogsCreativeAssetsBatchRequest, CatalogsCreativeAssetsBatchRequestCatalogType(..), catalogsCreativeAssetsBatchRequestCatalogTypeVariants, CatalogsCreativeAssetsBatchRequestLanguage(..), catalogsCreativeAssetsBatchRequestLanguageVariants
     , CatalogsCreativeAssetsFeed
     , CatalogsCreativeAssetsFeedsCreateRequest
     , CatalogsCreativeAssetsFeedsUpdateRequest
@@ -244,7 +243,7 @@ module Api.Data exposing
     , CatalogsHotelAttributes
     , CatalogsHotelAttributesAllOfMainImage
     , CatalogsHotelBatchItem(..), CatalogsHotelBatchItemOperation(..), catalogsHotelBatchItemOperationVariants
-    , CatalogsHotelBatchRequest, CatalogsHotelBatchRequestCatalogType(..), catalogsHotelBatchRequestCatalogTypeVariants
+    , CatalogsHotelBatchRequest, CatalogsHotelBatchRequestCatalogType(..), catalogsHotelBatchRequestCatalogTypeVariants, CatalogsHotelBatchRequestLanguage(..), catalogsHotelBatchRequestLanguageVariants
     , CatalogsHotelFeed
     , CatalogsHotelFeedsCreateRequest
     , CatalogsHotelFeedsUpdateRequest
@@ -273,16 +272,15 @@ module Api.Data exposing
     , CatalogsItemValidationWarnings
     , CatalogsItems
     , CatalogsItemsBatch(..)
-    , CatalogsItemsBatchRequest(..)
-    , CatalogsItemsCreateBatchRequest
-    , CatalogsItemsDeleteBatchRequest
-    , CatalogsItemsDeleteDiscontinuedBatchRequest
+    , CatalogsItemsBatchRequest(..), CatalogsItemsBatchRequestLanguage(..), catalogsItemsBatchRequestLanguageVariants
+    , CatalogsItemsCreateBatchRequest, CatalogsItemsCreateBatchRequestLanguage(..), catalogsItemsCreateBatchRequestLanguageVariants
+    , CatalogsItemsDeleteBatchRequest, CatalogsItemsDeleteBatchRequestLanguage(..), catalogsItemsDeleteBatchRequestLanguageVariants
+    , CatalogsItemsDeleteDiscontinuedBatchRequest, CatalogsItemsDeleteDiscontinuedBatchRequestLanguage(..), catalogsItemsDeleteDiscontinuedBatchRequestLanguageVariants
     , CatalogsItemsFilters(..)
     , CatalogsItemsPostFilters(..)
-    , CatalogsItemsRequest
-    , CatalogsItemsRequestLanguage
-    , CatalogsItemsUpdateBatchRequest
-    , CatalogsItemsUpsertBatchRequest
+    , CatalogsItemsRequest, CatalogsItemsRequestLanguage(..), catalogsItemsRequestLanguageVariants
+    , CatalogsItemsUpdateBatchRequest, CatalogsItemsUpdateBatchRequestLanguage(..), catalogsItemsUpdateBatchRequestLanguageVariants
+    , CatalogsItemsUpsertBatchRequest, CatalogsItemsUpsertBatchRequestLanguage(..), catalogsItemsUpsertBatchRequestLanguageVariants
     , CatalogsList200Response
     , CatalogsListProductsByFeedBasedFilter
     , CatalogsListProductsByFilterRequest(..)
@@ -317,7 +315,7 @@ module Api.Data exposing
     , CatalogsReportFeedIngestionStats, CatalogsReportFeedIngestionStatsReportType(..), catalogsReportFeedIngestionStatsReportTypeVariants, CatalogsReportFeedIngestionStatsSeverity(..), catalogsReportFeedIngestionStatsSeverityVariants
     , CatalogsReportParameters(..)
     , CatalogsReportStats(..), CatalogsReportStatsReportType(..), catalogsReportStatsReportTypeVariants, CatalogsReportStatsSeverity(..), catalogsReportStatsSeverityVariants
-    , CatalogsRetailBatchRequest, CatalogsRetailBatchRequestCatalogType(..), catalogsRetailBatchRequestCatalogTypeVariants
+    , CatalogsRetailBatchRequest, CatalogsRetailBatchRequestCatalogType(..), catalogsRetailBatchRequestCatalogTypeVariants, CatalogsRetailBatchRequestLanguage(..), catalogsRetailBatchRequestLanguageVariants
     , CatalogsRetailBatchRequestItemsInner(..), CatalogsRetailBatchRequestItemsInnerOperation(..), catalogsRetailBatchRequestItemsInnerOperationVariants
     , CatalogsRetailFeed
     , CatalogsRetailFeedsCreateRequest
@@ -345,7 +343,7 @@ module Api.Data exposing
     , CatalogsUpsertCreativeAssetsItem, CatalogsUpsertCreativeAssetsItemOperation(..), catalogsUpsertCreativeAssetsItemOperationVariants
     , CatalogsUpsertHotelItem, CatalogsUpsertHotelItemOperation(..), catalogsUpsertHotelItemOperationVariants
     , CatalogsUpsertRetailItem, CatalogsUpsertRetailItemOperation(..), catalogsUpsertRetailItemOperationVariants
-    , CatalogsVerticalBatchRequest(..), CatalogsVerticalBatchRequestCatalogType(..), catalogsVerticalBatchRequestCatalogTypeVariants
+    , CatalogsVerticalBatchRequest(..), CatalogsVerticalBatchRequestCatalogType(..), catalogsVerticalBatchRequestCatalogTypeVariants, CatalogsVerticalBatchRequestLanguage(..), catalogsVerticalBatchRequestLanguageVariants
     , CatalogsVerticalFeedsCreateRequest(..)
     , CatalogsVerticalFeedsUpdateRequest(..)
     , CatalogsVerticalProductGroup(..), CatalogsVerticalProductGroupCatalogType(..), catalogsVerticalProductGroupCatalogTypeVariants
@@ -500,7 +498,7 @@ module Api.Data exposing
     , ItemUpdateBatchRecord
     , ItemUpsertBatchRecord
     , ItemValidationEvent
-    , ItemsBatchPostRequest(..)
+    , ItemsBatchPostRequest(..), ItemsBatchPostRequestCatalogType(..), itemsBatchPostRequestCatalogTypeVariants, ItemsBatchPostRequestLanguage(..), itemsBatchPostRequestLanguageVariants
     , ItemsIssuesList200Response
     , Keyword
     , KeywordError
@@ -614,7 +612,6 @@ module Api.Data exposing
     , PinPromotionSummaryStatus(..), pinPromotionSummaryStatusVariants
     , PinUpdate
     , PinUpdateCarouselSlotsInner
-    , PinsAnalyticsMetricTypesParameterInner(..)
     , PinsList200Response
     , PinsSaveRequest
     , PinterestTagEventData
@@ -822,7 +819,6 @@ module Api.Data exposing
     , encodeAudienceCommon
     , encodeAudienceCreateCustomRequest
     , encodeAudienceCreateRequest
-    , encodeAudienceCreateRequest1AudienceType
     , encodeAudienceDataParty
     , encodeAudienceDefinition
     , encodeAudienceDefinitionResponse
@@ -1006,7 +1002,6 @@ module Api.Data exposing
     , encodeCatalogsItemsFilters
     , encodeCatalogsItemsPostFilters
     , encodeCatalogsItemsRequest
-    , encodeCatalogsItemsRequestLanguage
     , encodeCatalogsItemsUpdateBatchRequest
     , encodeCatalogsItemsUpsertBatchRequest
     , encodeCatalogsList200Response
@@ -1340,7 +1335,6 @@ module Api.Data exposing
     , encodePinPromotionSummaryStatus
     , encodePinUpdate
     , encodePinUpdateCarouselSlotsInner
-    , encodePinsAnalyticsMetricTypesParameterInner
     , encodePinsList200Response
     , encodePinsSaveRequest
     , encodePinterestTagEventData
@@ -1646,7 +1640,6 @@ module Api.Data exposing
     , audienceCommonDecoder
     , audienceCreateCustomRequestDecoder
     , audienceCreateRequestDecoder
-    , audienceCreateRequest1AudienceTypeDecoder
     , audienceDataPartyDecoder
     , audienceDefinitionDecoder
     , audienceDefinitionResponseDecoder
@@ -1830,7 +1823,6 @@ module Api.Data exposing
     , catalogsItemsFiltersDecoder
     , catalogsItemsPostFiltersDecoder
     , catalogsItemsRequestDecoder
-    , catalogsItemsRequestLanguageDecoder
     , catalogsItemsUpdateBatchRequestDecoder
     , catalogsItemsUpsertBatchRequestDecoder
     , catalogsList200ResponseDecoder
@@ -2164,7 +2156,6 @@ module Api.Data exposing
     , pinPromotionSummaryStatusDecoder
     , pinUpdateDecoder
     , pinUpdateCarouselSlotsInnerDecoder
-    , pinsAnalyticsMetricTypesParameterInnerDecoder
     , pinsList200ResponseDecoder
     , pinsSaveRequestDecoder
     , pinterestTagEventDataDecoder
@@ -4199,12 +4190,8 @@ type alias AudienceCreateRequest =
     , name : String
     , rule : AudienceRule
     , description : Maybe String
-    , audienceType : AudienceCreateRequest1AudienceType
+    , audienceType : AudienceType
     }
-
-
-type alias AudienceCreateRequest1AudienceType =
-    { }
 
 
 {-| Whether the data is owned by the partner (1p) or by the data provider (3p)
@@ -5396,7 +5383,7 @@ catalogsCreativeAssetsBatchItemOperationVariants =
 type alias CatalogsCreativeAssetsBatchRequest =
     { catalogType : CatalogsCreativeAssetsBatchRequestCatalogType
     , country : Country
-    , language : CatalogsItemsRequestLanguage
+    , language : CatalogsCreativeAssetsBatchRequestLanguage
     , items : List CatalogsCreativeAssetsBatchItem
     , catalogId : Maybe String
     }
@@ -5409,6 +5396,228 @@ type CatalogsCreativeAssetsBatchRequestCatalogType
 catalogsCreativeAssetsBatchRequestCatalogTypeVariants : List CatalogsCreativeAssetsBatchRequestCatalogType
 catalogsCreativeAssetsBatchRequestCatalogTypeVariants =
     [ CatalogsCreativeAssetsBatchRequestCatalogTypeCREATIVEASSETS
+    ]
+
+
+type CatalogsCreativeAssetsBatchRequestLanguage
+    = CatalogsCreativeAssetsBatchRequestLanguageAfZA
+    | CatalogsCreativeAssetsBatchRequestLanguageArSA
+    | CatalogsCreativeAssetsBatchRequestLanguageBgBG
+    | CatalogsCreativeAssetsBatchRequestLanguageBnIN
+    | CatalogsCreativeAssetsBatchRequestLanguageCsCZ
+    | CatalogsCreativeAssetsBatchRequestLanguageDaDK
+    | CatalogsCreativeAssetsBatchRequestLanguageDe
+    | CatalogsCreativeAssetsBatchRequestLanguageElGR
+    | CatalogsCreativeAssetsBatchRequestLanguageEnAU
+    | CatalogsCreativeAssetsBatchRequestLanguageEnCA
+    | CatalogsCreativeAssetsBatchRequestLanguageEnGB
+    | CatalogsCreativeAssetsBatchRequestLanguageEnIN
+    | CatalogsCreativeAssetsBatchRequestLanguageEnUS
+    | CatalogsCreativeAssetsBatchRequestLanguageEs419
+    | CatalogsCreativeAssetsBatchRequestLanguageEsAR
+    | CatalogsCreativeAssetsBatchRequestLanguageEsES
+    | CatalogsCreativeAssetsBatchRequestLanguageEsMX
+    | CatalogsCreativeAssetsBatchRequestLanguageFiFI
+    | CatalogsCreativeAssetsBatchRequestLanguageFr
+    | CatalogsCreativeAssetsBatchRequestLanguageFrCA
+    | CatalogsCreativeAssetsBatchRequestLanguageHeIL
+    | CatalogsCreativeAssetsBatchRequestLanguageHiIN
+    | CatalogsCreativeAssetsBatchRequestLanguageHrHR
+    | CatalogsCreativeAssetsBatchRequestLanguageHuHU
+    | CatalogsCreativeAssetsBatchRequestLanguageIdID
+    | CatalogsCreativeAssetsBatchRequestLanguageIt
+    | CatalogsCreativeAssetsBatchRequestLanguageJa
+    | CatalogsCreativeAssetsBatchRequestLanguageKoKR
+    | CatalogsCreativeAssetsBatchRequestLanguageMsMY
+    | CatalogsCreativeAssetsBatchRequestLanguageNbNO
+    | CatalogsCreativeAssetsBatchRequestLanguageNl
+    | CatalogsCreativeAssetsBatchRequestLanguagePlPL
+    | CatalogsCreativeAssetsBatchRequestLanguagePtBR
+    | CatalogsCreativeAssetsBatchRequestLanguagePtPT
+    | CatalogsCreativeAssetsBatchRequestLanguageRoRO
+    | CatalogsCreativeAssetsBatchRequestLanguageRuRU
+    | CatalogsCreativeAssetsBatchRequestLanguageSkSK
+    | CatalogsCreativeAssetsBatchRequestLanguageSvSE
+    | CatalogsCreativeAssetsBatchRequestLanguageTeIN
+    | CatalogsCreativeAssetsBatchRequestLanguageThTH
+    | CatalogsCreativeAssetsBatchRequestLanguageTlPH
+    | CatalogsCreativeAssetsBatchRequestLanguageTr
+    | CatalogsCreativeAssetsBatchRequestLanguageUkUA
+    | CatalogsCreativeAssetsBatchRequestLanguageViVN
+    | CatalogsCreativeAssetsBatchRequestLanguageZhCN
+    | CatalogsCreativeAssetsBatchRequestLanguageZhTW
+    | CatalogsCreativeAssetsBatchRequestLanguageAM
+    | CatalogsCreativeAssetsBatchRequestLanguageAR
+    | CatalogsCreativeAssetsBatchRequestLanguageAZ
+    | CatalogsCreativeAssetsBatchRequestLanguageBG
+    | CatalogsCreativeAssetsBatchRequestLanguageBN
+    | CatalogsCreativeAssetsBatchRequestLanguageBS
+    | CatalogsCreativeAssetsBatchRequestLanguageCA
+    | CatalogsCreativeAssetsBatchRequestLanguageCS
+    | CatalogsCreativeAssetsBatchRequestLanguageDA
+    | CatalogsCreativeAssetsBatchRequestLanguageDV
+    | CatalogsCreativeAssetsBatchRequestLanguageDZ
+    | CatalogsCreativeAssetsBatchRequestLanguageDE
+    | CatalogsCreativeAssetsBatchRequestLanguageEL
+    | CatalogsCreativeAssetsBatchRequestLanguageEN
+    | CatalogsCreativeAssetsBatchRequestLanguageES
+    | CatalogsCreativeAssetsBatchRequestLanguageET
+    | CatalogsCreativeAssetsBatchRequestLanguageFA
+    | CatalogsCreativeAssetsBatchRequestLanguageFI
+    | CatalogsCreativeAssetsBatchRequestLanguageFR
+    | CatalogsCreativeAssetsBatchRequestLanguageHE
+    | CatalogsCreativeAssetsBatchRequestLanguageHI
+    | CatalogsCreativeAssetsBatchRequestLanguageHR
+    | CatalogsCreativeAssetsBatchRequestLanguageHU
+    | CatalogsCreativeAssetsBatchRequestLanguageHY
+    | CatalogsCreativeAssetsBatchRequestLanguageID
+    | CatalogsCreativeAssetsBatchRequestLanguageIN
+    | CatalogsCreativeAssetsBatchRequestLanguageIS
+    | CatalogsCreativeAssetsBatchRequestLanguageIT
+    | CatalogsCreativeAssetsBatchRequestLanguageIW
+    | CatalogsCreativeAssetsBatchRequestLanguageJA
+    | CatalogsCreativeAssetsBatchRequestLanguageKA
+    | CatalogsCreativeAssetsBatchRequestLanguageKM
+    | CatalogsCreativeAssetsBatchRequestLanguageKO
+    | CatalogsCreativeAssetsBatchRequestLanguageLO
+    | CatalogsCreativeAssetsBatchRequestLanguageLT
+    | CatalogsCreativeAssetsBatchRequestLanguageLV
+    | CatalogsCreativeAssetsBatchRequestLanguageMK
+    | CatalogsCreativeAssetsBatchRequestLanguageMN
+    | CatalogsCreativeAssetsBatchRequestLanguageMS
+    | CatalogsCreativeAssetsBatchRequestLanguageMY
+    | CatalogsCreativeAssetsBatchRequestLanguageNB
+    | CatalogsCreativeAssetsBatchRequestLanguageNE
+    | CatalogsCreativeAssetsBatchRequestLanguageNL
+    | CatalogsCreativeAssetsBatchRequestLanguageNO
+    | CatalogsCreativeAssetsBatchRequestLanguagePL
+    | CatalogsCreativeAssetsBatchRequestLanguagePT
+    | CatalogsCreativeAssetsBatchRequestLanguageRO
+    | CatalogsCreativeAssetsBatchRequestLanguageRU
+    | CatalogsCreativeAssetsBatchRequestLanguageSK
+    | CatalogsCreativeAssetsBatchRequestLanguageSL
+    | CatalogsCreativeAssetsBatchRequestLanguageSQ
+    | CatalogsCreativeAssetsBatchRequestLanguageSR
+    | CatalogsCreativeAssetsBatchRequestLanguageSV
+    | CatalogsCreativeAssetsBatchRequestLanguageTL
+    | CatalogsCreativeAssetsBatchRequestLanguageUK
+    | CatalogsCreativeAssetsBatchRequestLanguageVI
+    | CatalogsCreativeAssetsBatchRequestLanguageTE
+    | CatalogsCreativeAssetsBatchRequestLanguageTH
+    | CatalogsCreativeAssetsBatchRequestLanguageTR
+    | CatalogsCreativeAssetsBatchRequestLanguageXX
+    | CatalogsCreativeAssetsBatchRequestLanguageZH
+
+
+catalogsCreativeAssetsBatchRequestLanguageVariants : List CatalogsCreativeAssetsBatchRequestLanguage
+catalogsCreativeAssetsBatchRequestLanguageVariants =
+    [ CatalogsCreativeAssetsBatchRequestLanguageAfZA
+    , CatalogsCreativeAssetsBatchRequestLanguageArSA
+    , CatalogsCreativeAssetsBatchRequestLanguageBgBG
+    , CatalogsCreativeAssetsBatchRequestLanguageBnIN
+    , CatalogsCreativeAssetsBatchRequestLanguageCsCZ
+    , CatalogsCreativeAssetsBatchRequestLanguageDaDK
+    , CatalogsCreativeAssetsBatchRequestLanguageDe
+    , CatalogsCreativeAssetsBatchRequestLanguageElGR
+    , CatalogsCreativeAssetsBatchRequestLanguageEnAU
+    , CatalogsCreativeAssetsBatchRequestLanguageEnCA
+    , CatalogsCreativeAssetsBatchRequestLanguageEnGB
+    , CatalogsCreativeAssetsBatchRequestLanguageEnIN
+    , CatalogsCreativeAssetsBatchRequestLanguageEnUS
+    , CatalogsCreativeAssetsBatchRequestLanguageEs419
+    , CatalogsCreativeAssetsBatchRequestLanguageEsAR
+    , CatalogsCreativeAssetsBatchRequestLanguageEsES
+    , CatalogsCreativeAssetsBatchRequestLanguageEsMX
+    , CatalogsCreativeAssetsBatchRequestLanguageFiFI
+    , CatalogsCreativeAssetsBatchRequestLanguageFr
+    , CatalogsCreativeAssetsBatchRequestLanguageFrCA
+    , CatalogsCreativeAssetsBatchRequestLanguageHeIL
+    , CatalogsCreativeAssetsBatchRequestLanguageHiIN
+    , CatalogsCreativeAssetsBatchRequestLanguageHrHR
+    , CatalogsCreativeAssetsBatchRequestLanguageHuHU
+    , CatalogsCreativeAssetsBatchRequestLanguageIdID
+    , CatalogsCreativeAssetsBatchRequestLanguageIt
+    , CatalogsCreativeAssetsBatchRequestLanguageJa
+    , CatalogsCreativeAssetsBatchRequestLanguageKoKR
+    , CatalogsCreativeAssetsBatchRequestLanguageMsMY
+    , CatalogsCreativeAssetsBatchRequestLanguageNbNO
+    , CatalogsCreativeAssetsBatchRequestLanguageNl
+    , CatalogsCreativeAssetsBatchRequestLanguagePlPL
+    , CatalogsCreativeAssetsBatchRequestLanguagePtBR
+    , CatalogsCreativeAssetsBatchRequestLanguagePtPT
+    , CatalogsCreativeAssetsBatchRequestLanguageRoRO
+    , CatalogsCreativeAssetsBatchRequestLanguageRuRU
+    , CatalogsCreativeAssetsBatchRequestLanguageSkSK
+    , CatalogsCreativeAssetsBatchRequestLanguageSvSE
+    , CatalogsCreativeAssetsBatchRequestLanguageTeIN
+    , CatalogsCreativeAssetsBatchRequestLanguageThTH
+    , CatalogsCreativeAssetsBatchRequestLanguageTlPH
+    , CatalogsCreativeAssetsBatchRequestLanguageTr
+    , CatalogsCreativeAssetsBatchRequestLanguageUkUA
+    , CatalogsCreativeAssetsBatchRequestLanguageViVN
+    , CatalogsCreativeAssetsBatchRequestLanguageZhCN
+    , CatalogsCreativeAssetsBatchRequestLanguageZhTW
+    , CatalogsCreativeAssetsBatchRequestLanguageAM
+    , CatalogsCreativeAssetsBatchRequestLanguageAR
+    , CatalogsCreativeAssetsBatchRequestLanguageAZ
+    , CatalogsCreativeAssetsBatchRequestLanguageBG
+    , CatalogsCreativeAssetsBatchRequestLanguageBN
+    , CatalogsCreativeAssetsBatchRequestLanguageBS
+    , CatalogsCreativeAssetsBatchRequestLanguageCA
+    , CatalogsCreativeAssetsBatchRequestLanguageCS
+    , CatalogsCreativeAssetsBatchRequestLanguageDA
+    , CatalogsCreativeAssetsBatchRequestLanguageDV
+    , CatalogsCreativeAssetsBatchRequestLanguageDZ
+    , CatalogsCreativeAssetsBatchRequestLanguageDE
+    , CatalogsCreativeAssetsBatchRequestLanguageEL
+    , CatalogsCreativeAssetsBatchRequestLanguageEN
+    , CatalogsCreativeAssetsBatchRequestLanguageES
+    , CatalogsCreativeAssetsBatchRequestLanguageET
+    , CatalogsCreativeAssetsBatchRequestLanguageFA
+    , CatalogsCreativeAssetsBatchRequestLanguageFI
+    , CatalogsCreativeAssetsBatchRequestLanguageFR
+    , CatalogsCreativeAssetsBatchRequestLanguageHE
+    , CatalogsCreativeAssetsBatchRequestLanguageHI
+    , CatalogsCreativeAssetsBatchRequestLanguageHR
+    , CatalogsCreativeAssetsBatchRequestLanguageHU
+    , CatalogsCreativeAssetsBatchRequestLanguageHY
+    , CatalogsCreativeAssetsBatchRequestLanguageID
+    , CatalogsCreativeAssetsBatchRequestLanguageIN
+    , CatalogsCreativeAssetsBatchRequestLanguageIS
+    , CatalogsCreativeAssetsBatchRequestLanguageIT
+    , CatalogsCreativeAssetsBatchRequestLanguageIW
+    , CatalogsCreativeAssetsBatchRequestLanguageJA
+    , CatalogsCreativeAssetsBatchRequestLanguageKA
+    , CatalogsCreativeAssetsBatchRequestLanguageKM
+    , CatalogsCreativeAssetsBatchRequestLanguageKO
+    , CatalogsCreativeAssetsBatchRequestLanguageLO
+    , CatalogsCreativeAssetsBatchRequestLanguageLT
+    , CatalogsCreativeAssetsBatchRequestLanguageLV
+    , CatalogsCreativeAssetsBatchRequestLanguageMK
+    , CatalogsCreativeAssetsBatchRequestLanguageMN
+    , CatalogsCreativeAssetsBatchRequestLanguageMS
+    , CatalogsCreativeAssetsBatchRequestLanguageMY
+    , CatalogsCreativeAssetsBatchRequestLanguageNB
+    , CatalogsCreativeAssetsBatchRequestLanguageNE
+    , CatalogsCreativeAssetsBatchRequestLanguageNL
+    , CatalogsCreativeAssetsBatchRequestLanguageNO
+    , CatalogsCreativeAssetsBatchRequestLanguagePL
+    , CatalogsCreativeAssetsBatchRequestLanguagePT
+    , CatalogsCreativeAssetsBatchRequestLanguageRO
+    , CatalogsCreativeAssetsBatchRequestLanguageRU
+    , CatalogsCreativeAssetsBatchRequestLanguageSK
+    , CatalogsCreativeAssetsBatchRequestLanguageSL
+    , CatalogsCreativeAssetsBatchRequestLanguageSQ
+    , CatalogsCreativeAssetsBatchRequestLanguageSR
+    , CatalogsCreativeAssetsBatchRequestLanguageSV
+    , CatalogsCreativeAssetsBatchRequestLanguageTL
+    , CatalogsCreativeAssetsBatchRequestLanguageUK
+    , CatalogsCreativeAssetsBatchRequestLanguageVI
+    , CatalogsCreativeAssetsBatchRequestLanguageTE
+    , CatalogsCreativeAssetsBatchRequestLanguageTH
+    , CatalogsCreativeAssetsBatchRequestLanguageTR
+    , CatalogsCreativeAssetsBatchRequestLanguageXX
+    , CatalogsCreativeAssetsBatchRequestLanguageZH
     ]
 
 
@@ -6870,7 +7079,7 @@ catalogsHotelBatchItemOperationVariants =
 type alias CatalogsHotelBatchRequest =
     { catalogType : CatalogsHotelBatchRequestCatalogType
     , country : Country
-    , language : CatalogsItemsRequestLanguage
+    , language : CatalogsHotelBatchRequestLanguage
     , items : List CatalogsHotelBatchItem
     , catalogId : Maybe String
     }
@@ -6883,6 +7092,228 @@ type CatalogsHotelBatchRequestCatalogType
 catalogsHotelBatchRequestCatalogTypeVariants : List CatalogsHotelBatchRequestCatalogType
 catalogsHotelBatchRequestCatalogTypeVariants =
     [ CatalogsHotelBatchRequestCatalogTypeHOTEL
+    ]
+
+
+type CatalogsHotelBatchRequestLanguage
+    = CatalogsHotelBatchRequestLanguageAfZA
+    | CatalogsHotelBatchRequestLanguageArSA
+    | CatalogsHotelBatchRequestLanguageBgBG
+    | CatalogsHotelBatchRequestLanguageBnIN
+    | CatalogsHotelBatchRequestLanguageCsCZ
+    | CatalogsHotelBatchRequestLanguageDaDK
+    | CatalogsHotelBatchRequestLanguageDe
+    | CatalogsHotelBatchRequestLanguageElGR
+    | CatalogsHotelBatchRequestLanguageEnAU
+    | CatalogsHotelBatchRequestLanguageEnCA
+    | CatalogsHotelBatchRequestLanguageEnGB
+    | CatalogsHotelBatchRequestLanguageEnIN
+    | CatalogsHotelBatchRequestLanguageEnUS
+    | CatalogsHotelBatchRequestLanguageEs419
+    | CatalogsHotelBatchRequestLanguageEsAR
+    | CatalogsHotelBatchRequestLanguageEsES
+    | CatalogsHotelBatchRequestLanguageEsMX
+    | CatalogsHotelBatchRequestLanguageFiFI
+    | CatalogsHotelBatchRequestLanguageFr
+    | CatalogsHotelBatchRequestLanguageFrCA
+    | CatalogsHotelBatchRequestLanguageHeIL
+    | CatalogsHotelBatchRequestLanguageHiIN
+    | CatalogsHotelBatchRequestLanguageHrHR
+    | CatalogsHotelBatchRequestLanguageHuHU
+    | CatalogsHotelBatchRequestLanguageIdID
+    | CatalogsHotelBatchRequestLanguageIt
+    | CatalogsHotelBatchRequestLanguageJa
+    | CatalogsHotelBatchRequestLanguageKoKR
+    | CatalogsHotelBatchRequestLanguageMsMY
+    | CatalogsHotelBatchRequestLanguageNbNO
+    | CatalogsHotelBatchRequestLanguageNl
+    | CatalogsHotelBatchRequestLanguagePlPL
+    | CatalogsHotelBatchRequestLanguagePtBR
+    | CatalogsHotelBatchRequestLanguagePtPT
+    | CatalogsHotelBatchRequestLanguageRoRO
+    | CatalogsHotelBatchRequestLanguageRuRU
+    | CatalogsHotelBatchRequestLanguageSkSK
+    | CatalogsHotelBatchRequestLanguageSvSE
+    | CatalogsHotelBatchRequestLanguageTeIN
+    | CatalogsHotelBatchRequestLanguageThTH
+    | CatalogsHotelBatchRequestLanguageTlPH
+    | CatalogsHotelBatchRequestLanguageTr
+    | CatalogsHotelBatchRequestLanguageUkUA
+    | CatalogsHotelBatchRequestLanguageViVN
+    | CatalogsHotelBatchRequestLanguageZhCN
+    | CatalogsHotelBatchRequestLanguageZhTW
+    | CatalogsHotelBatchRequestLanguageAM
+    | CatalogsHotelBatchRequestLanguageAR
+    | CatalogsHotelBatchRequestLanguageAZ
+    | CatalogsHotelBatchRequestLanguageBG
+    | CatalogsHotelBatchRequestLanguageBN
+    | CatalogsHotelBatchRequestLanguageBS
+    | CatalogsHotelBatchRequestLanguageCA
+    | CatalogsHotelBatchRequestLanguageCS
+    | CatalogsHotelBatchRequestLanguageDA
+    | CatalogsHotelBatchRequestLanguageDV
+    | CatalogsHotelBatchRequestLanguageDZ
+    | CatalogsHotelBatchRequestLanguageDE
+    | CatalogsHotelBatchRequestLanguageEL
+    | CatalogsHotelBatchRequestLanguageEN
+    | CatalogsHotelBatchRequestLanguageES
+    | CatalogsHotelBatchRequestLanguageET
+    | CatalogsHotelBatchRequestLanguageFA
+    | CatalogsHotelBatchRequestLanguageFI
+    | CatalogsHotelBatchRequestLanguageFR
+    | CatalogsHotelBatchRequestLanguageHE
+    | CatalogsHotelBatchRequestLanguageHI
+    | CatalogsHotelBatchRequestLanguageHR
+    | CatalogsHotelBatchRequestLanguageHU
+    | CatalogsHotelBatchRequestLanguageHY
+    | CatalogsHotelBatchRequestLanguageID
+    | CatalogsHotelBatchRequestLanguageIN
+    | CatalogsHotelBatchRequestLanguageIS
+    | CatalogsHotelBatchRequestLanguageIT
+    | CatalogsHotelBatchRequestLanguageIW
+    | CatalogsHotelBatchRequestLanguageJA
+    | CatalogsHotelBatchRequestLanguageKA
+    | CatalogsHotelBatchRequestLanguageKM
+    | CatalogsHotelBatchRequestLanguageKO
+    | CatalogsHotelBatchRequestLanguageLO
+    | CatalogsHotelBatchRequestLanguageLT
+    | CatalogsHotelBatchRequestLanguageLV
+    | CatalogsHotelBatchRequestLanguageMK
+    | CatalogsHotelBatchRequestLanguageMN
+    | CatalogsHotelBatchRequestLanguageMS
+    | CatalogsHotelBatchRequestLanguageMY
+    | CatalogsHotelBatchRequestLanguageNB
+    | CatalogsHotelBatchRequestLanguageNE
+    | CatalogsHotelBatchRequestLanguageNL
+    | CatalogsHotelBatchRequestLanguageNO
+    | CatalogsHotelBatchRequestLanguagePL
+    | CatalogsHotelBatchRequestLanguagePT
+    | CatalogsHotelBatchRequestLanguageRO
+    | CatalogsHotelBatchRequestLanguageRU
+    | CatalogsHotelBatchRequestLanguageSK
+    | CatalogsHotelBatchRequestLanguageSL
+    | CatalogsHotelBatchRequestLanguageSQ
+    | CatalogsHotelBatchRequestLanguageSR
+    | CatalogsHotelBatchRequestLanguageSV
+    | CatalogsHotelBatchRequestLanguageTL
+    | CatalogsHotelBatchRequestLanguageUK
+    | CatalogsHotelBatchRequestLanguageVI
+    | CatalogsHotelBatchRequestLanguageTE
+    | CatalogsHotelBatchRequestLanguageTH
+    | CatalogsHotelBatchRequestLanguageTR
+    | CatalogsHotelBatchRequestLanguageXX
+    | CatalogsHotelBatchRequestLanguageZH
+
+
+catalogsHotelBatchRequestLanguageVariants : List CatalogsHotelBatchRequestLanguage
+catalogsHotelBatchRequestLanguageVariants =
+    [ CatalogsHotelBatchRequestLanguageAfZA
+    , CatalogsHotelBatchRequestLanguageArSA
+    , CatalogsHotelBatchRequestLanguageBgBG
+    , CatalogsHotelBatchRequestLanguageBnIN
+    , CatalogsHotelBatchRequestLanguageCsCZ
+    , CatalogsHotelBatchRequestLanguageDaDK
+    , CatalogsHotelBatchRequestLanguageDe
+    , CatalogsHotelBatchRequestLanguageElGR
+    , CatalogsHotelBatchRequestLanguageEnAU
+    , CatalogsHotelBatchRequestLanguageEnCA
+    , CatalogsHotelBatchRequestLanguageEnGB
+    , CatalogsHotelBatchRequestLanguageEnIN
+    , CatalogsHotelBatchRequestLanguageEnUS
+    , CatalogsHotelBatchRequestLanguageEs419
+    , CatalogsHotelBatchRequestLanguageEsAR
+    , CatalogsHotelBatchRequestLanguageEsES
+    , CatalogsHotelBatchRequestLanguageEsMX
+    , CatalogsHotelBatchRequestLanguageFiFI
+    , CatalogsHotelBatchRequestLanguageFr
+    , CatalogsHotelBatchRequestLanguageFrCA
+    , CatalogsHotelBatchRequestLanguageHeIL
+    , CatalogsHotelBatchRequestLanguageHiIN
+    , CatalogsHotelBatchRequestLanguageHrHR
+    , CatalogsHotelBatchRequestLanguageHuHU
+    , CatalogsHotelBatchRequestLanguageIdID
+    , CatalogsHotelBatchRequestLanguageIt
+    , CatalogsHotelBatchRequestLanguageJa
+    , CatalogsHotelBatchRequestLanguageKoKR
+    , CatalogsHotelBatchRequestLanguageMsMY
+    , CatalogsHotelBatchRequestLanguageNbNO
+    , CatalogsHotelBatchRequestLanguageNl
+    , CatalogsHotelBatchRequestLanguagePlPL
+    , CatalogsHotelBatchRequestLanguagePtBR
+    , CatalogsHotelBatchRequestLanguagePtPT
+    , CatalogsHotelBatchRequestLanguageRoRO
+    , CatalogsHotelBatchRequestLanguageRuRU
+    , CatalogsHotelBatchRequestLanguageSkSK
+    , CatalogsHotelBatchRequestLanguageSvSE
+    , CatalogsHotelBatchRequestLanguageTeIN
+    , CatalogsHotelBatchRequestLanguageThTH
+    , CatalogsHotelBatchRequestLanguageTlPH
+    , CatalogsHotelBatchRequestLanguageTr
+    , CatalogsHotelBatchRequestLanguageUkUA
+    , CatalogsHotelBatchRequestLanguageViVN
+    , CatalogsHotelBatchRequestLanguageZhCN
+    , CatalogsHotelBatchRequestLanguageZhTW
+    , CatalogsHotelBatchRequestLanguageAM
+    , CatalogsHotelBatchRequestLanguageAR
+    , CatalogsHotelBatchRequestLanguageAZ
+    , CatalogsHotelBatchRequestLanguageBG
+    , CatalogsHotelBatchRequestLanguageBN
+    , CatalogsHotelBatchRequestLanguageBS
+    , CatalogsHotelBatchRequestLanguageCA
+    , CatalogsHotelBatchRequestLanguageCS
+    , CatalogsHotelBatchRequestLanguageDA
+    , CatalogsHotelBatchRequestLanguageDV
+    , CatalogsHotelBatchRequestLanguageDZ
+    , CatalogsHotelBatchRequestLanguageDE
+    , CatalogsHotelBatchRequestLanguageEL
+    , CatalogsHotelBatchRequestLanguageEN
+    , CatalogsHotelBatchRequestLanguageES
+    , CatalogsHotelBatchRequestLanguageET
+    , CatalogsHotelBatchRequestLanguageFA
+    , CatalogsHotelBatchRequestLanguageFI
+    , CatalogsHotelBatchRequestLanguageFR
+    , CatalogsHotelBatchRequestLanguageHE
+    , CatalogsHotelBatchRequestLanguageHI
+    , CatalogsHotelBatchRequestLanguageHR
+    , CatalogsHotelBatchRequestLanguageHU
+    , CatalogsHotelBatchRequestLanguageHY
+    , CatalogsHotelBatchRequestLanguageID
+    , CatalogsHotelBatchRequestLanguageIN
+    , CatalogsHotelBatchRequestLanguageIS
+    , CatalogsHotelBatchRequestLanguageIT
+    , CatalogsHotelBatchRequestLanguageIW
+    , CatalogsHotelBatchRequestLanguageJA
+    , CatalogsHotelBatchRequestLanguageKA
+    , CatalogsHotelBatchRequestLanguageKM
+    , CatalogsHotelBatchRequestLanguageKO
+    , CatalogsHotelBatchRequestLanguageLO
+    , CatalogsHotelBatchRequestLanguageLT
+    , CatalogsHotelBatchRequestLanguageLV
+    , CatalogsHotelBatchRequestLanguageMK
+    , CatalogsHotelBatchRequestLanguageMN
+    , CatalogsHotelBatchRequestLanguageMS
+    , CatalogsHotelBatchRequestLanguageMY
+    , CatalogsHotelBatchRequestLanguageNB
+    , CatalogsHotelBatchRequestLanguageNE
+    , CatalogsHotelBatchRequestLanguageNL
+    , CatalogsHotelBatchRequestLanguageNO
+    , CatalogsHotelBatchRequestLanguagePL
+    , CatalogsHotelBatchRequestLanguagePT
+    , CatalogsHotelBatchRequestLanguageRO
+    , CatalogsHotelBatchRequestLanguageRU
+    , CatalogsHotelBatchRequestLanguageSK
+    , CatalogsHotelBatchRequestLanguageSL
+    , CatalogsHotelBatchRequestLanguageSQ
+    , CatalogsHotelBatchRequestLanguageSR
+    , CatalogsHotelBatchRequestLanguageSV
+    , CatalogsHotelBatchRequestLanguageTL
+    , CatalogsHotelBatchRequestLanguageUK
+    , CatalogsHotelBatchRequestLanguageVI
+    , CatalogsHotelBatchRequestLanguageTE
+    , CatalogsHotelBatchRequestLanguageTH
+    , CatalogsHotelBatchRequestLanguageTR
+    , CatalogsHotelBatchRequestLanguageXX
+    , CatalogsHotelBatchRequestLanguageZH
     ]
 
 
@@ -7446,30 +7877,696 @@ type CatalogsItemsBatchRequest
 -}
 type alias CatalogsItemsCreateBatchRequest =
     { country : Country
-    , language : CatalogsItemsRequestLanguage
+    , language : CatalogsItemsCreateBatchRequestLanguage
     , operation : BatchOperation
     , items : List ItemCreateBatchRecord
     }
+
+
+type CatalogsItemsCreateBatchRequestLanguage
+    = CatalogsItemsCreateBatchRequestLanguageAfZA
+    | CatalogsItemsCreateBatchRequestLanguageArSA
+    | CatalogsItemsCreateBatchRequestLanguageBgBG
+    | CatalogsItemsCreateBatchRequestLanguageBnIN
+    | CatalogsItemsCreateBatchRequestLanguageCsCZ
+    | CatalogsItemsCreateBatchRequestLanguageDaDK
+    | CatalogsItemsCreateBatchRequestLanguageDe
+    | CatalogsItemsCreateBatchRequestLanguageElGR
+    | CatalogsItemsCreateBatchRequestLanguageEnAU
+    | CatalogsItemsCreateBatchRequestLanguageEnCA
+    | CatalogsItemsCreateBatchRequestLanguageEnGB
+    | CatalogsItemsCreateBatchRequestLanguageEnIN
+    | CatalogsItemsCreateBatchRequestLanguageEnUS
+    | CatalogsItemsCreateBatchRequestLanguageEs419
+    | CatalogsItemsCreateBatchRequestLanguageEsAR
+    | CatalogsItemsCreateBatchRequestLanguageEsES
+    | CatalogsItemsCreateBatchRequestLanguageEsMX
+    | CatalogsItemsCreateBatchRequestLanguageFiFI
+    | CatalogsItemsCreateBatchRequestLanguageFr
+    | CatalogsItemsCreateBatchRequestLanguageFrCA
+    | CatalogsItemsCreateBatchRequestLanguageHeIL
+    | CatalogsItemsCreateBatchRequestLanguageHiIN
+    | CatalogsItemsCreateBatchRequestLanguageHrHR
+    | CatalogsItemsCreateBatchRequestLanguageHuHU
+    | CatalogsItemsCreateBatchRequestLanguageIdID
+    | CatalogsItemsCreateBatchRequestLanguageIt
+    | CatalogsItemsCreateBatchRequestLanguageJa
+    | CatalogsItemsCreateBatchRequestLanguageKoKR
+    | CatalogsItemsCreateBatchRequestLanguageMsMY
+    | CatalogsItemsCreateBatchRequestLanguageNbNO
+    | CatalogsItemsCreateBatchRequestLanguageNl
+    | CatalogsItemsCreateBatchRequestLanguagePlPL
+    | CatalogsItemsCreateBatchRequestLanguagePtBR
+    | CatalogsItemsCreateBatchRequestLanguagePtPT
+    | CatalogsItemsCreateBatchRequestLanguageRoRO
+    | CatalogsItemsCreateBatchRequestLanguageRuRU
+    | CatalogsItemsCreateBatchRequestLanguageSkSK
+    | CatalogsItemsCreateBatchRequestLanguageSvSE
+    | CatalogsItemsCreateBatchRequestLanguageTeIN
+    | CatalogsItemsCreateBatchRequestLanguageThTH
+    | CatalogsItemsCreateBatchRequestLanguageTlPH
+    | CatalogsItemsCreateBatchRequestLanguageTr
+    | CatalogsItemsCreateBatchRequestLanguageUkUA
+    | CatalogsItemsCreateBatchRequestLanguageViVN
+    | CatalogsItemsCreateBatchRequestLanguageZhCN
+    | CatalogsItemsCreateBatchRequestLanguageZhTW
+    | CatalogsItemsCreateBatchRequestLanguageAM
+    | CatalogsItemsCreateBatchRequestLanguageAR
+    | CatalogsItemsCreateBatchRequestLanguageAZ
+    | CatalogsItemsCreateBatchRequestLanguageBG
+    | CatalogsItemsCreateBatchRequestLanguageBN
+    | CatalogsItemsCreateBatchRequestLanguageBS
+    | CatalogsItemsCreateBatchRequestLanguageCA
+    | CatalogsItemsCreateBatchRequestLanguageCS
+    | CatalogsItemsCreateBatchRequestLanguageDA
+    | CatalogsItemsCreateBatchRequestLanguageDV
+    | CatalogsItemsCreateBatchRequestLanguageDZ
+    | CatalogsItemsCreateBatchRequestLanguageDE
+    | CatalogsItemsCreateBatchRequestLanguageEL
+    | CatalogsItemsCreateBatchRequestLanguageEN
+    | CatalogsItemsCreateBatchRequestLanguageES
+    | CatalogsItemsCreateBatchRequestLanguageET
+    | CatalogsItemsCreateBatchRequestLanguageFA
+    | CatalogsItemsCreateBatchRequestLanguageFI
+    | CatalogsItemsCreateBatchRequestLanguageFR
+    | CatalogsItemsCreateBatchRequestLanguageHE
+    | CatalogsItemsCreateBatchRequestLanguageHI
+    | CatalogsItemsCreateBatchRequestLanguageHR
+    | CatalogsItemsCreateBatchRequestLanguageHU
+    | CatalogsItemsCreateBatchRequestLanguageHY
+    | CatalogsItemsCreateBatchRequestLanguageID
+    | CatalogsItemsCreateBatchRequestLanguageIN
+    | CatalogsItemsCreateBatchRequestLanguageIS
+    | CatalogsItemsCreateBatchRequestLanguageIT
+    | CatalogsItemsCreateBatchRequestLanguageIW
+    | CatalogsItemsCreateBatchRequestLanguageJA
+    | CatalogsItemsCreateBatchRequestLanguageKA
+    | CatalogsItemsCreateBatchRequestLanguageKM
+    | CatalogsItemsCreateBatchRequestLanguageKO
+    | CatalogsItemsCreateBatchRequestLanguageLO
+    | CatalogsItemsCreateBatchRequestLanguageLT
+    | CatalogsItemsCreateBatchRequestLanguageLV
+    | CatalogsItemsCreateBatchRequestLanguageMK
+    | CatalogsItemsCreateBatchRequestLanguageMN
+    | CatalogsItemsCreateBatchRequestLanguageMS
+    | CatalogsItemsCreateBatchRequestLanguageMY
+    | CatalogsItemsCreateBatchRequestLanguageNB
+    | CatalogsItemsCreateBatchRequestLanguageNE
+    | CatalogsItemsCreateBatchRequestLanguageNL
+    | CatalogsItemsCreateBatchRequestLanguageNO
+    | CatalogsItemsCreateBatchRequestLanguagePL
+    | CatalogsItemsCreateBatchRequestLanguagePT
+    | CatalogsItemsCreateBatchRequestLanguageRO
+    | CatalogsItemsCreateBatchRequestLanguageRU
+    | CatalogsItemsCreateBatchRequestLanguageSK
+    | CatalogsItemsCreateBatchRequestLanguageSL
+    | CatalogsItemsCreateBatchRequestLanguageSQ
+    | CatalogsItemsCreateBatchRequestLanguageSR
+    | CatalogsItemsCreateBatchRequestLanguageSV
+    | CatalogsItemsCreateBatchRequestLanguageTL
+    | CatalogsItemsCreateBatchRequestLanguageUK
+    | CatalogsItemsCreateBatchRequestLanguageVI
+    | CatalogsItemsCreateBatchRequestLanguageTE
+    | CatalogsItemsCreateBatchRequestLanguageTH
+    | CatalogsItemsCreateBatchRequestLanguageTR
+    | CatalogsItemsCreateBatchRequestLanguageXX
+    | CatalogsItemsCreateBatchRequestLanguageZH
+
+
+catalogsItemsCreateBatchRequestLanguageVariants : List CatalogsItemsCreateBatchRequestLanguage
+catalogsItemsCreateBatchRequestLanguageVariants =
+    [ CatalogsItemsCreateBatchRequestLanguageAfZA
+    , CatalogsItemsCreateBatchRequestLanguageArSA
+    , CatalogsItemsCreateBatchRequestLanguageBgBG
+    , CatalogsItemsCreateBatchRequestLanguageBnIN
+    , CatalogsItemsCreateBatchRequestLanguageCsCZ
+    , CatalogsItemsCreateBatchRequestLanguageDaDK
+    , CatalogsItemsCreateBatchRequestLanguageDe
+    , CatalogsItemsCreateBatchRequestLanguageElGR
+    , CatalogsItemsCreateBatchRequestLanguageEnAU
+    , CatalogsItemsCreateBatchRequestLanguageEnCA
+    , CatalogsItemsCreateBatchRequestLanguageEnGB
+    , CatalogsItemsCreateBatchRequestLanguageEnIN
+    , CatalogsItemsCreateBatchRequestLanguageEnUS
+    , CatalogsItemsCreateBatchRequestLanguageEs419
+    , CatalogsItemsCreateBatchRequestLanguageEsAR
+    , CatalogsItemsCreateBatchRequestLanguageEsES
+    , CatalogsItemsCreateBatchRequestLanguageEsMX
+    , CatalogsItemsCreateBatchRequestLanguageFiFI
+    , CatalogsItemsCreateBatchRequestLanguageFr
+    , CatalogsItemsCreateBatchRequestLanguageFrCA
+    , CatalogsItemsCreateBatchRequestLanguageHeIL
+    , CatalogsItemsCreateBatchRequestLanguageHiIN
+    , CatalogsItemsCreateBatchRequestLanguageHrHR
+    , CatalogsItemsCreateBatchRequestLanguageHuHU
+    , CatalogsItemsCreateBatchRequestLanguageIdID
+    , CatalogsItemsCreateBatchRequestLanguageIt
+    , CatalogsItemsCreateBatchRequestLanguageJa
+    , CatalogsItemsCreateBatchRequestLanguageKoKR
+    , CatalogsItemsCreateBatchRequestLanguageMsMY
+    , CatalogsItemsCreateBatchRequestLanguageNbNO
+    , CatalogsItemsCreateBatchRequestLanguageNl
+    , CatalogsItemsCreateBatchRequestLanguagePlPL
+    , CatalogsItemsCreateBatchRequestLanguagePtBR
+    , CatalogsItemsCreateBatchRequestLanguagePtPT
+    , CatalogsItemsCreateBatchRequestLanguageRoRO
+    , CatalogsItemsCreateBatchRequestLanguageRuRU
+    , CatalogsItemsCreateBatchRequestLanguageSkSK
+    , CatalogsItemsCreateBatchRequestLanguageSvSE
+    , CatalogsItemsCreateBatchRequestLanguageTeIN
+    , CatalogsItemsCreateBatchRequestLanguageThTH
+    , CatalogsItemsCreateBatchRequestLanguageTlPH
+    , CatalogsItemsCreateBatchRequestLanguageTr
+    , CatalogsItemsCreateBatchRequestLanguageUkUA
+    , CatalogsItemsCreateBatchRequestLanguageViVN
+    , CatalogsItemsCreateBatchRequestLanguageZhCN
+    , CatalogsItemsCreateBatchRequestLanguageZhTW
+    , CatalogsItemsCreateBatchRequestLanguageAM
+    , CatalogsItemsCreateBatchRequestLanguageAR
+    , CatalogsItemsCreateBatchRequestLanguageAZ
+    , CatalogsItemsCreateBatchRequestLanguageBG
+    , CatalogsItemsCreateBatchRequestLanguageBN
+    , CatalogsItemsCreateBatchRequestLanguageBS
+    , CatalogsItemsCreateBatchRequestLanguageCA
+    , CatalogsItemsCreateBatchRequestLanguageCS
+    , CatalogsItemsCreateBatchRequestLanguageDA
+    , CatalogsItemsCreateBatchRequestLanguageDV
+    , CatalogsItemsCreateBatchRequestLanguageDZ
+    , CatalogsItemsCreateBatchRequestLanguageDE
+    , CatalogsItemsCreateBatchRequestLanguageEL
+    , CatalogsItemsCreateBatchRequestLanguageEN
+    , CatalogsItemsCreateBatchRequestLanguageES
+    , CatalogsItemsCreateBatchRequestLanguageET
+    , CatalogsItemsCreateBatchRequestLanguageFA
+    , CatalogsItemsCreateBatchRequestLanguageFI
+    , CatalogsItemsCreateBatchRequestLanguageFR
+    , CatalogsItemsCreateBatchRequestLanguageHE
+    , CatalogsItemsCreateBatchRequestLanguageHI
+    , CatalogsItemsCreateBatchRequestLanguageHR
+    , CatalogsItemsCreateBatchRequestLanguageHU
+    , CatalogsItemsCreateBatchRequestLanguageHY
+    , CatalogsItemsCreateBatchRequestLanguageID
+    , CatalogsItemsCreateBatchRequestLanguageIN
+    , CatalogsItemsCreateBatchRequestLanguageIS
+    , CatalogsItemsCreateBatchRequestLanguageIT
+    , CatalogsItemsCreateBatchRequestLanguageIW
+    , CatalogsItemsCreateBatchRequestLanguageJA
+    , CatalogsItemsCreateBatchRequestLanguageKA
+    , CatalogsItemsCreateBatchRequestLanguageKM
+    , CatalogsItemsCreateBatchRequestLanguageKO
+    , CatalogsItemsCreateBatchRequestLanguageLO
+    , CatalogsItemsCreateBatchRequestLanguageLT
+    , CatalogsItemsCreateBatchRequestLanguageLV
+    , CatalogsItemsCreateBatchRequestLanguageMK
+    , CatalogsItemsCreateBatchRequestLanguageMN
+    , CatalogsItemsCreateBatchRequestLanguageMS
+    , CatalogsItemsCreateBatchRequestLanguageMY
+    , CatalogsItemsCreateBatchRequestLanguageNB
+    , CatalogsItemsCreateBatchRequestLanguageNE
+    , CatalogsItemsCreateBatchRequestLanguageNL
+    , CatalogsItemsCreateBatchRequestLanguageNO
+    , CatalogsItemsCreateBatchRequestLanguagePL
+    , CatalogsItemsCreateBatchRequestLanguagePT
+    , CatalogsItemsCreateBatchRequestLanguageRO
+    , CatalogsItemsCreateBatchRequestLanguageRU
+    , CatalogsItemsCreateBatchRequestLanguageSK
+    , CatalogsItemsCreateBatchRequestLanguageSL
+    , CatalogsItemsCreateBatchRequestLanguageSQ
+    , CatalogsItemsCreateBatchRequestLanguageSR
+    , CatalogsItemsCreateBatchRequestLanguageSV
+    , CatalogsItemsCreateBatchRequestLanguageTL
+    , CatalogsItemsCreateBatchRequestLanguageUK
+    , CatalogsItemsCreateBatchRequestLanguageVI
+    , CatalogsItemsCreateBatchRequestLanguageTE
+    , CatalogsItemsCreateBatchRequestLanguageTH
+    , CatalogsItemsCreateBatchRequestLanguageTR
+    , CatalogsItemsCreateBatchRequestLanguageXX
+    , CatalogsItemsCreateBatchRequestLanguageZH
+    ]
 
 
 {-| Request object to delete catalogs items
 -}
 type alias CatalogsItemsDeleteBatchRequest =
     { country : Country
-    , language : CatalogsItemsRequestLanguage
+    , language : CatalogsItemsDeleteBatchRequestLanguage
     , operation : BatchOperation
     , items : List ItemDeleteBatchRecord
     }
+
+
+type CatalogsItemsDeleteBatchRequestLanguage
+    = CatalogsItemsDeleteBatchRequestLanguageAfZA
+    | CatalogsItemsDeleteBatchRequestLanguageArSA
+    | CatalogsItemsDeleteBatchRequestLanguageBgBG
+    | CatalogsItemsDeleteBatchRequestLanguageBnIN
+    | CatalogsItemsDeleteBatchRequestLanguageCsCZ
+    | CatalogsItemsDeleteBatchRequestLanguageDaDK
+    | CatalogsItemsDeleteBatchRequestLanguageDe
+    | CatalogsItemsDeleteBatchRequestLanguageElGR
+    | CatalogsItemsDeleteBatchRequestLanguageEnAU
+    | CatalogsItemsDeleteBatchRequestLanguageEnCA
+    | CatalogsItemsDeleteBatchRequestLanguageEnGB
+    | CatalogsItemsDeleteBatchRequestLanguageEnIN
+    | CatalogsItemsDeleteBatchRequestLanguageEnUS
+    | CatalogsItemsDeleteBatchRequestLanguageEs419
+    | CatalogsItemsDeleteBatchRequestLanguageEsAR
+    | CatalogsItemsDeleteBatchRequestLanguageEsES
+    | CatalogsItemsDeleteBatchRequestLanguageEsMX
+    | CatalogsItemsDeleteBatchRequestLanguageFiFI
+    | CatalogsItemsDeleteBatchRequestLanguageFr
+    | CatalogsItemsDeleteBatchRequestLanguageFrCA
+    | CatalogsItemsDeleteBatchRequestLanguageHeIL
+    | CatalogsItemsDeleteBatchRequestLanguageHiIN
+    | CatalogsItemsDeleteBatchRequestLanguageHrHR
+    | CatalogsItemsDeleteBatchRequestLanguageHuHU
+    | CatalogsItemsDeleteBatchRequestLanguageIdID
+    | CatalogsItemsDeleteBatchRequestLanguageIt
+    | CatalogsItemsDeleteBatchRequestLanguageJa
+    | CatalogsItemsDeleteBatchRequestLanguageKoKR
+    | CatalogsItemsDeleteBatchRequestLanguageMsMY
+    | CatalogsItemsDeleteBatchRequestLanguageNbNO
+    | CatalogsItemsDeleteBatchRequestLanguageNl
+    | CatalogsItemsDeleteBatchRequestLanguagePlPL
+    | CatalogsItemsDeleteBatchRequestLanguagePtBR
+    | CatalogsItemsDeleteBatchRequestLanguagePtPT
+    | CatalogsItemsDeleteBatchRequestLanguageRoRO
+    | CatalogsItemsDeleteBatchRequestLanguageRuRU
+    | CatalogsItemsDeleteBatchRequestLanguageSkSK
+    | CatalogsItemsDeleteBatchRequestLanguageSvSE
+    | CatalogsItemsDeleteBatchRequestLanguageTeIN
+    | CatalogsItemsDeleteBatchRequestLanguageThTH
+    | CatalogsItemsDeleteBatchRequestLanguageTlPH
+    | CatalogsItemsDeleteBatchRequestLanguageTr
+    | CatalogsItemsDeleteBatchRequestLanguageUkUA
+    | CatalogsItemsDeleteBatchRequestLanguageViVN
+    | CatalogsItemsDeleteBatchRequestLanguageZhCN
+    | CatalogsItemsDeleteBatchRequestLanguageZhTW
+    | CatalogsItemsDeleteBatchRequestLanguageAM
+    | CatalogsItemsDeleteBatchRequestLanguageAR
+    | CatalogsItemsDeleteBatchRequestLanguageAZ
+    | CatalogsItemsDeleteBatchRequestLanguageBG
+    | CatalogsItemsDeleteBatchRequestLanguageBN
+    | CatalogsItemsDeleteBatchRequestLanguageBS
+    | CatalogsItemsDeleteBatchRequestLanguageCA
+    | CatalogsItemsDeleteBatchRequestLanguageCS
+    | CatalogsItemsDeleteBatchRequestLanguageDA
+    | CatalogsItemsDeleteBatchRequestLanguageDV
+    | CatalogsItemsDeleteBatchRequestLanguageDZ
+    | CatalogsItemsDeleteBatchRequestLanguageDE
+    | CatalogsItemsDeleteBatchRequestLanguageEL
+    | CatalogsItemsDeleteBatchRequestLanguageEN
+    | CatalogsItemsDeleteBatchRequestLanguageES
+    | CatalogsItemsDeleteBatchRequestLanguageET
+    | CatalogsItemsDeleteBatchRequestLanguageFA
+    | CatalogsItemsDeleteBatchRequestLanguageFI
+    | CatalogsItemsDeleteBatchRequestLanguageFR
+    | CatalogsItemsDeleteBatchRequestLanguageHE
+    | CatalogsItemsDeleteBatchRequestLanguageHI
+    | CatalogsItemsDeleteBatchRequestLanguageHR
+    | CatalogsItemsDeleteBatchRequestLanguageHU
+    | CatalogsItemsDeleteBatchRequestLanguageHY
+    | CatalogsItemsDeleteBatchRequestLanguageID
+    | CatalogsItemsDeleteBatchRequestLanguageIN
+    | CatalogsItemsDeleteBatchRequestLanguageIS
+    | CatalogsItemsDeleteBatchRequestLanguageIT
+    | CatalogsItemsDeleteBatchRequestLanguageIW
+    | CatalogsItemsDeleteBatchRequestLanguageJA
+    | CatalogsItemsDeleteBatchRequestLanguageKA
+    | CatalogsItemsDeleteBatchRequestLanguageKM
+    | CatalogsItemsDeleteBatchRequestLanguageKO
+    | CatalogsItemsDeleteBatchRequestLanguageLO
+    | CatalogsItemsDeleteBatchRequestLanguageLT
+    | CatalogsItemsDeleteBatchRequestLanguageLV
+    | CatalogsItemsDeleteBatchRequestLanguageMK
+    | CatalogsItemsDeleteBatchRequestLanguageMN
+    | CatalogsItemsDeleteBatchRequestLanguageMS
+    | CatalogsItemsDeleteBatchRequestLanguageMY
+    | CatalogsItemsDeleteBatchRequestLanguageNB
+    | CatalogsItemsDeleteBatchRequestLanguageNE
+    | CatalogsItemsDeleteBatchRequestLanguageNL
+    | CatalogsItemsDeleteBatchRequestLanguageNO
+    | CatalogsItemsDeleteBatchRequestLanguagePL
+    | CatalogsItemsDeleteBatchRequestLanguagePT
+    | CatalogsItemsDeleteBatchRequestLanguageRO
+    | CatalogsItemsDeleteBatchRequestLanguageRU
+    | CatalogsItemsDeleteBatchRequestLanguageSK
+    | CatalogsItemsDeleteBatchRequestLanguageSL
+    | CatalogsItemsDeleteBatchRequestLanguageSQ
+    | CatalogsItemsDeleteBatchRequestLanguageSR
+    | CatalogsItemsDeleteBatchRequestLanguageSV
+    | CatalogsItemsDeleteBatchRequestLanguageTL
+    | CatalogsItemsDeleteBatchRequestLanguageUK
+    | CatalogsItemsDeleteBatchRequestLanguageVI
+    | CatalogsItemsDeleteBatchRequestLanguageTE
+    | CatalogsItemsDeleteBatchRequestLanguageTH
+    | CatalogsItemsDeleteBatchRequestLanguageTR
+    | CatalogsItemsDeleteBatchRequestLanguageXX
+    | CatalogsItemsDeleteBatchRequestLanguageZH
+
+
+catalogsItemsDeleteBatchRequestLanguageVariants : List CatalogsItemsDeleteBatchRequestLanguage
+catalogsItemsDeleteBatchRequestLanguageVariants =
+    [ CatalogsItemsDeleteBatchRequestLanguageAfZA
+    , CatalogsItemsDeleteBatchRequestLanguageArSA
+    , CatalogsItemsDeleteBatchRequestLanguageBgBG
+    , CatalogsItemsDeleteBatchRequestLanguageBnIN
+    , CatalogsItemsDeleteBatchRequestLanguageCsCZ
+    , CatalogsItemsDeleteBatchRequestLanguageDaDK
+    , CatalogsItemsDeleteBatchRequestLanguageDe
+    , CatalogsItemsDeleteBatchRequestLanguageElGR
+    , CatalogsItemsDeleteBatchRequestLanguageEnAU
+    , CatalogsItemsDeleteBatchRequestLanguageEnCA
+    , CatalogsItemsDeleteBatchRequestLanguageEnGB
+    , CatalogsItemsDeleteBatchRequestLanguageEnIN
+    , CatalogsItemsDeleteBatchRequestLanguageEnUS
+    , CatalogsItemsDeleteBatchRequestLanguageEs419
+    , CatalogsItemsDeleteBatchRequestLanguageEsAR
+    , CatalogsItemsDeleteBatchRequestLanguageEsES
+    , CatalogsItemsDeleteBatchRequestLanguageEsMX
+    , CatalogsItemsDeleteBatchRequestLanguageFiFI
+    , CatalogsItemsDeleteBatchRequestLanguageFr
+    , CatalogsItemsDeleteBatchRequestLanguageFrCA
+    , CatalogsItemsDeleteBatchRequestLanguageHeIL
+    , CatalogsItemsDeleteBatchRequestLanguageHiIN
+    , CatalogsItemsDeleteBatchRequestLanguageHrHR
+    , CatalogsItemsDeleteBatchRequestLanguageHuHU
+    , CatalogsItemsDeleteBatchRequestLanguageIdID
+    , CatalogsItemsDeleteBatchRequestLanguageIt
+    , CatalogsItemsDeleteBatchRequestLanguageJa
+    , CatalogsItemsDeleteBatchRequestLanguageKoKR
+    , CatalogsItemsDeleteBatchRequestLanguageMsMY
+    , CatalogsItemsDeleteBatchRequestLanguageNbNO
+    , CatalogsItemsDeleteBatchRequestLanguageNl
+    , CatalogsItemsDeleteBatchRequestLanguagePlPL
+    , CatalogsItemsDeleteBatchRequestLanguagePtBR
+    , CatalogsItemsDeleteBatchRequestLanguagePtPT
+    , CatalogsItemsDeleteBatchRequestLanguageRoRO
+    , CatalogsItemsDeleteBatchRequestLanguageRuRU
+    , CatalogsItemsDeleteBatchRequestLanguageSkSK
+    , CatalogsItemsDeleteBatchRequestLanguageSvSE
+    , CatalogsItemsDeleteBatchRequestLanguageTeIN
+    , CatalogsItemsDeleteBatchRequestLanguageThTH
+    , CatalogsItemsDeleteBatchRequestLanguageTlPH
+    , CatalogsItemsDeleteBatchRequestLanguageTr
+    , CatalogsItemsDeleteBatchRequestLanguageUkUA
+    , CatalogsItemsDeleteBatchRequestLanguageViVN
+    , CatalogsItemsDeleteBatchRequestLanguageZhCN
+    , CatalogsItemsDeleteBatchRequestLanguageZhTW
+    , CatalogsItemsDeleteBatchRequestLanguageAM
+    , CatalogsItemsDeleteBatchRequestLanguageAR
+    , CatalogsItemsDeleteBatchRequestLanguageAZ
+    , CatalogsItemsDeleteBatchRequestLanguageBG
+    , CatalogsItemsDeleteBatchRequestLanguageBN
+    , CatalogsItemsDeleteBatchRequestLanguageBS
+    , CatalogsItemsDeleteBatchRequestLanguageCA
+    , CatalogsItemsDeleteBatchRequestLanguageCS
+    , CatalogsItemsDeleteBatchRequestLanguageDA
+    , CatalogsItemsDeleteBatchRequestLanguageDV
+    , CatalogsItemsDeleteBatchRequestLanguageDZ
+    , CatalogsItemsDeleteBatchRequestLanguageDE
+    , CatalogsItemsDeleteBatchRequestLanguageEL
+    , CatalogsItemsDeleteBatchRequestLanguageEN
+    , CatalogsItemsDeleteBatchRequestLanguageES
+    , CatalogsItemsDeleteBatchRequestLanguageET
+    , CatalogsItemsDeleteBatchRequestLanguageFA
+    , CatalogsItemsDeleteBatchRequestLanguageFI
+    , CatalogsItemsDeleteBatchRequestLanguageFR
+    , CatalogsItemsDeleteBatchRequestLanguageHE
+    , CatalogsItemsDeleteBatchRequestLanguageHI
+    , CatalogsItemsDeleteBatchRequestLanguageHR
+    , CatalogsItemsDeleteBatchRequestLanguageHU
+    , CatalogsItemsDeleteBatchRequestLanguageHY
+    , CatalogsItemsDeleteBatchRequestLanguageID
+    , CatalogsItemsDeleteBatchRequestLanguageIN
+    , CatalogsItemsDeleteBatchRequestLanguageIS
+    , CatalogsItemsDeleteBatchRequestLanguageIT
+    , CatalogsItemsDeleteBatchRequestLanguageIW
+    , CatalogsItemsDeleteBatchRequestLanguageJA
+    , CatalogsItemsDeleteBatchRequestLanguageKA
+    , CatalogsItemsDeleteBatchRequestLanguageKM
+    , CatalogsItemsDeleteBatchRequestLanguageKO
+    , CatalogsItemsDeleteBatchRequestLanguageLO
+    , CatalogsItemsDeleteBatchRequestLanguageLT
+    , CatalogsItemsDeleteBatchRequestLanguageLV
+    , CatalogsItemsDeleteBatchRequestLanguageMK
+    , CatalogsItemsDeleteBatchRequestLanguageMN
+    , CatalogsItemsDeleteBatchRequestLanguageMS
+    , CatalogsItemsDeleteBatchRequestLanguageMY
+    , CatalogsItemsDeleteBatchRequestLanguageNB
+    , CatalogsItemsDeleteBatchRequestLanguageNE
+    , CatalogsItemsDeleteBatchRequestLanguageNL
+    , CatalogsItemsDeleteBatchRequestLanguageNO
+    , CatalogsItemsDeleteBatchRequestLanguagePL
+    , CatalogsItemsDeleteBatchRequestLanguagePT
+    , CatalogsItemsDeleteBatchRequestLanguageRO
+    , CatalogsItemsDeleteBatchRequestLanguageRU
+    , CatalogsItemsDeleteBatchRequestLanguageSK
+    , CatalogsItemsDeleteBatchRequestLanguageSL
+    , CatalogsItemsDeleteBatchRequestLanguageSQ
+    , CatalogsItemsDeleteBatchRequestLanguageSR
+    , CatalogsItemsDeleteBatchRequestLanguageSV
+    , CatalogsItemsDeleteBatchRequestLanguageTL
+    , CatalogsItemsDeleteBatchRequestLanguageUK
+    , CatalogsItemsDeleteBatchRequestLanguageVI
+    , CatalogsItemsDeleteBatchRequestLanguageTE
+    , CatalogsItemsDeleteBatchRequestLanguageTH
+    , CatalogsItemsDeleteBatchRequestLanguageTR
+    , CatalogsItemsDeleteBatchRequestLanguageXX
+    , CatalogsItemsDeleteBatchRequestLanguageZH
+    ]
 
 
 {-| Request object to discontinue catalogs items
 -}
 type alias CatalogsItemsDeleteDiscontinuedBatchRequest =
     { country : Country
-    , language : CatalogsItemsRequestLanguage
+    , language : CatalogsItemsDeleteDiscontinuedBatchRequestLanguage
     , operation : BatchOperation
     , items : List ItemDeleteDiscontinuedBatchRecord
     }
+
+
+type CatalogsItemsDeleteDiscontinuedBatchRequestLanguage
+    = CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAfZA
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageArSA
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBgBG
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBnIN
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageCsCZ
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDaDK
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDe
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageElGR
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnAU
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnCA
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnGB
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnIN
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnUS
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEs419
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEsAR
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEsES
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEsMX
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFiFI
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFr
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFrCA
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHeIL
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHiIN
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHrHR
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHuHU
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIdID
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIt
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageJa
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKoKR
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMsMY
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNbNO
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNl
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePlPL
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePtBR
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePtPT
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRoRO
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRuRU
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSkSK
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSvSE
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTeIN
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageThTH
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTlPH
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTr
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageUkUA
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageViVN
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageZhCN
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageZhTW
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAM
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAR
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAZ
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBG
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBN
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBS
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageCA
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageCS
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDA
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDV
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDZ
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDE
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEL
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEN
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageES
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageET
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFA
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFI
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFR
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHE
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHI
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHR
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHU
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHY
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageID
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIN
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIS
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIT
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIW
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageJA
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKA
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKM
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKO
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageLO
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageLT
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageLV
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMK
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMN
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMS
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMY
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNB
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNE
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNL
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNO
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePL
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePT
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRO
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRU
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSK
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSL
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSQ
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSR
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSV
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTL
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageUK
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageVI
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTE
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTH
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTR
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageXX
+    | CatalogsItemsDeleteDiscontinuedBatchRequestLanguageZH
+
+
+catalogsItemsDeleteDiscontinuedBatchRequestLanguageVariants : List CatalogsItemsDeleteDiscontinuedBatchRequestLanguage
+catalogsItemsDeleteDiscontinuedBatchRequestLanguageVariants =
+    [ CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAfZA
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageArSA
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBgBG
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBnIN
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageCsCZ
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDaDK
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDe
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageElGR
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnAU
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnCA
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnGB
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnIN
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnUS
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEs419
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEsAR
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEsES
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEsMX
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFiFI
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFr
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFrCA
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHeIL
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHiIN
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHrHR
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHuHU
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIdID
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIt
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageJa
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKoKR
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMsMY
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNbNO
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNl
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePlPL
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePtBR
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePtPT
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRoRO
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRuRU
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSkSK
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSvSE
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTeIN
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageThTH
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTlPH
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTr
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageUkUA
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageViVN
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageZhCN
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageZhTW
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAM
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAR
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAZ
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBG
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBN
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBS
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageCA
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageCS
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDA
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDV
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDZ
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDE
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEL
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEN
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageES
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageET
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFA
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFI
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFR
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHE
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHI
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHR
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHU
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHY
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageID
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIN
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIS
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIT
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIW
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageJA
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKA
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKM
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKO
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageLO
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageLT
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageLV
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMK
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMN
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMS
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMY
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNB
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNE
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNL
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNO
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePL
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePT
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRO
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRU
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSK
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSL
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSQ
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSR
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSV
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTL
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageUK
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageVI
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTE
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTH
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTR
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageXX
+    , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageZH
+    ]
 
 
 type CatalogsItemsFilters
@@ -7495,30 +8592,690 @@ type alias CatalogsItemsRequest =
     }
 
 
-{-| We recommend using the CatalogsLocale values.
--}
-type alias CatalogsItemsRequestLanguage =
-    { }
+type CatalogsItemsRequestLanguage
+    = CatalogsItemsRequestLanguageAfZA
+    | CatalogsItemsRequestLanguageArSA
+    | CatalogsItemsRequestLanguageBgBG
+    | CatalogsItemsRequestLanguageBnIN
+    | CatalogsItemsRequestLanguageCsCZ
+    | CatalogsItemsRequestLanguageDaDK
+    | CatalogsItemsRequestLanguageDe
+    | CatalogsItemsRequestLanguageElGR
+    | CatalogsItemsRequestLanguageEnAU
+    | CatalogsItemsRequestLanguageEnCA
+    | CatalogsItemsRequestLanguageEnGB
+    | CatalogsItemsRequestLanguageEnIN
+    | CatalogsItemsRequestLanguageEnUS
+    | CatalogsItemsRequestLanguageEs419
+    | CatalogsItemsRequestLanguageEsAR
+    | CatalogsItemsRequestLanguageEsES
+    | CatalogsItemsRequestLanguageEsMX
+    | CatalogsItemsRequestLanguageFiFI
+    | CatalogsItemsRequestLanguageFr
+    | CatalogsItemsRequestLanguageFrCA
+    | CatalogsItemsRequestLanguageHeIL
+    | CatalogsItemsRequestLanguageHiIN
+    | CatalogsItemsRequestLanguageHrHR
+    | CatalogsItemsRequestLanguageHuHU
+    | CatalogsItemsRequestLanguageIdID
+    | CatalogsItemsRequestLanguageIt
+    | CatalogsItemsRequestLanguageJa
+    | CatalogsItemsRequestLanguageKoKR
+    | CatalogsItemsRequestLanguageMsMY
+    | CatalogsItemsRequestLanguageNbNO
+    | CatalogsItemsRequestLanguageNl
+    | CatalogsItemsRequestLanguagePlPL
+    | CatalogsItemsRequestLanguagePtBR
+    | CatalogsItemsRequestLanguagePtPT
+    | CatalogsItemsRequestLanguageRoRO
+    | CatalogsItemsRequestLanguageRuRU
+    | CatalogsItemsRequestLanguageSkSK
+    | CatalogsItemsRequestLanguageSvSE
+    | CatalogsItemsRequestLanguageTeIN
+    | CatalogsItemsRequestLanguageThTH
+    | CatalogsItemsRequestLanguageTlPH
+    | CatalogsItemsRequestLanguageTr
+    | CatalogsItemsRequestLanguageUkUA
+    | CatalogsItemsRequestLanguageViVN
+    | CatalogsItemsRequestLanguageZhCN
+    | CatalogsItemsRequestLanguageZhTW
+    | CatalogsItemsRequestLanguageAM
+    | CatalogsItemsRequestLanguageAR
+    | CatalogsItemsRequestLanguageAZ
+    | CatalogsItemsRequestLanguageBG
+    | CatalogsItemsRequestLanguageBN
+    | CatalogsItemsRequestLanguageBS
+    | CatalogsItemsRequestLanguageCA
+    | CatalogsItemsRequestLanguageCS
+    | CatalogsItemsRequestLanguageDA
+    | CatalogsItemsRequestLanguageDV
+    | CatalogsItemsRequestLanguageDZ
+    | CatalogsItemsRequestLanguageDE
+    | CatalogsItemsRequestLanguageEL
+    | CatalogsItemsRequestLanguageEN
+    | CatalogsItemsRequestLanguageES
+    | CatalogsItemsRequestLanguageET
+    | CatalogsItemsRequestLanguageFA
+    | CatalogsItemsRequestLanguageFI
+    | CatalogsItemsRequestLanguageFR
+    | CatalogsItemsRequestLanguageHE
+    | CatalogsItemsRequestLanguageHI
+    | CatalogsItemsRequestLanguageHR
+    | CatalogsItemsRequestLanguageHU
+    | CatalogsItemsRequestLanguageHY
+    | CatalogsItemsRequestLanguageID
+    | CatalogsItemsRequestLanguageIN
+    | CatalogsItemsRequestLanguageIS
+    | CatalogsItemsRequestLanguageIT
+    | CatalogsItemsRequestLanguageIW
+    | CatalogsItemsRequestLanguageJA
+    | CatalogsItemsRequestLanguageKA
+    | CatalogsItemsRequestLanguageKM
+    | CatalogsItemsRequestLanguageKO
+    | CatalogsItemsRequestLanguageLO
+    | CatalogsItemsRequestLanguageLT
+    | CatalogsItemsRequestLanguageLV
+    | CatalogsItemsRequestLanguageMK
+    | CatalogsItemsRequestLanguageMN
+    | CatalogsItemsRequestLanguageMS
+    | CatalogsItemsRequestLanguageMY
+    | CatalogsItemsRequestLanguageNB
+    | CatalogsItemsRequestLanguageNE
+    | CatalogsItemsRequestLanguageNL
+    | CatalogsItemsRequestLanguageNO
+    | CatalogsItemsRequestLanguagePL
+    | CatalogsItemsRequestLanguagePT
+    | CatalogsItemsRequestLanguageRO
+    | CatalogsItemsRequestLanguageRU
+    | CatalogsItemsRequestLanguageSK
+    | CatalogsItemsRequestLanguageSL
+    | CatalogsItemsRequestLanguageSQ
+    | CatalogsItemsRequestLanguageSR
+    | CatalogsItemsRequestLanguageSV
+    | CatalogsItemsRequestLanguageTL
+    | CatalogsItemsRequestLanguageUK
+    | CatalogsItemsRequestLanguageVI
+    | CatalogsItemsRequestLanguageTE
+    | CatalogsItemsRequestLanguageTH
+    | CatalogsItemsRequestLanguageTR
+    | CatalogsItemsRequestLanguageXX
+    | CatalogsItemsRequestLanguageZH
+
+
+catalogsItemsRequestLanguageVariants : List CatalogsItemsRequestLanguage
+catalogsItemsRequestLanguageVariants =
+    [ CatalogsItemsRequestLanguageAfZA
+    , CatalogsItemsRequestLanguageArSA
+    , CatalogsItemsRequestLanguageBgBG
+    , CatalogsItemsRequestLanguageBnIN
+    , CatalogsItemsRequestLanguageCsCZ
+    , CatalogsItemsRequestLanguageDaDK
+    , CatalogsItemsRequestLanguageDe
+    , CatalogsItemsRequestLanguageElGR
+    , CatalogsItemsRequestLanguageEnAU
+    , CatalogsItemsRequestLanguageEnCA
+    , CatalogsItemsRequestLanguageEnGB
+    , CatalogsItemsRequestLanguageEnIN
+    , CatalogsItemsRequestLanguageEnUS
+    , CatalogsItemsRequestLanguageEs419
+    , CatalogsItemsRequestLanguageEsAR
+    , CatalogsItemsRequestLanguageEsES
+    , CatalogsItemsRequestLanguageEsMX
+    , CatalogsItemsRequestLanguageFiFI
+    , CatalogsItemsRequestLanguageFr
+    , CatalogsItemsRequestLanguageFrCA
+    , CatalogsItemsRequestLanguageHeIL
+    , CatalogsItemsRequestLanguageHiIN
+    , CatalogsItemsRequestLanguageHrHR
+    , CatalogsItemsRequestLanguageHuHU
+    , CatalogsItemsRequestLanguageIdID
+    , CatalogsItemsRequestLanguageIt
+    , CatalogsItemsRequestLanguageJa
+    , CatalogsItemsRequestLanguageKoKR
+    , CatalogsItemsRequestLanguageMsMY
+    , CatalogsItemsRequestLanguageNbNO
+    , CatalogsItemsRequestLanguageNl
+    , CatalogsItemsRequestLanguagePlPL
+    , CatalogsItemsRequestLanguagePtBR
+    , CatalogsItemsRequestLanguagePtPT
+    , CatalogsItemsRequestLanguageRoRO
+    , CatalogsItemsRequestLanguageRuRU
+    , CatalogsItemsRequestLanguageSkSK
+    , CatalogsItemsRequestLanguageSvSE
+    , CatalogsItemsRequestLanguageTeIN
+    , CatalogsItemsRequestLanguageThTH
+    , CatalogsItemsRequestLanguageTlPH
+    , CatalogsItemsRequestLanguageTr
+    , CatalogsItemsRequestLanguageUkUA
+    , CatalogsItemsRequestLanguageViVN
+    , CatalogsItemsRequestLanguageZhCN
+    , CatalogsItemsRequestLanguageZhTW
+    , CatalogsItemsRequestLanguageAM
+    , CatalogsItemsRequestLanguageAR
+    , CatalogsItemsRequestLanguageAZ
+    , CatalogsItemsRequestLanguageBG
+    , CatalogsItemsRequestLanguageBN
+    , CatalogsItemsRequestLanguageBS
+    , CatalogsItemsRequestLanguageCA
+    , CatalogsItemsRequestLanguageCS
+    , CatalogsItemsRequestLanguageDA
+    , CatalogsItemsRequestLanguageDV
+    , CatalogsItemsRequestLanguageDZ
+    , CatalogsItemsRequestLanguageDE
+    , CatalogsItemsRequestLanguageEL
+    , CatalogsItemsRequestLanguageEN
+    , CatalogsItemsRequestLanguageES
+    , CatalogsItemsRequestLanguageET
+    , CatalogsItemsRequestLanguageFA
+    , CatalogsItemsRequestLanguageFI
+    , CatalogsItemsRequestLanguageFR
+    , CatalogsItemsRequestLanguageHE
+    , CatalogsItemsRequestLanguageHI
+    , CatalogsItemsRequestLanguageHR
+    , CatalogsItemsRequestLanguageHU
+    , CatalogsItemsRequestLanguageHY
+    , CatalogsItemsRequestLanguageID
+    , CatalogsItemsRequestLanguageIN
+    , CatalogsItemsRequestLanguageIS
+    , CatalogsItemsRequestLanguageIT
+    , CatalogsItemsRequestLanguageIW
+    , CatalogsItemsRequestLanguageJA
+    , CatalogsItemsRequestLanguageKA
+    , CatalogsItemsRequestLanguageKM
+    , CatalogsItemsRequestLanguageKO
+    , CatalogsItemsRequestLanguageLO
+    , CatalogsItemsRequestLanguageLT
+    , CatalogsItemsRequestLanguageLV
+    , CatalogsItemsRequestLanguageMK
+    , CatalogsItemsRequestLanguageMN
+    , CatalogsItemsRequestLanguageMS
+    , CatalogsItemsRequestLanguageMY
+    , CatalogsItemsRequestLanguageNB
+    , CatalogsItemsRequestLanguageNE
+    , CatalogsItemsRequestLanguageNL
+    , CatalogsItemsRequestLanguageNO
+    , CatalogsItemsRequestLanguagePL
+    , CatalogsItemsRequestLanguagePT
+    , CatalogsItemsRequestLanguageRO
+    , CatalogsItemsRequestLanguageRU
+    , CatalogsItemsRequestLanguageSK
+    , CatalogsItemsRequestLanguageSL
+    , CatalogsItemsRequestLanguageSQ
+    , CatalogsItemsRequestLanguageSR
+    , CatalogsItemsRequestLanguageSV
+    , CatalogsItemsRequestLanguageTL
+    , CatalogsItemsRequestLanguageUK
+    , CatalogsItemsRequestLanguageVI
+    , CatalogsItemsRequestLanguageTE
+    , CatalogsItemsRequestLanguageTH
+    , CatalogsItemsRequestLanguageTR
+    , CatalogsItemsRequestLanguageXX
+    , CatalogsItemsRequestLanguageZH
+    ]
 
 
 {-| Request object to update catalogs items
 -}
 type alias CatalogsItemsUpdateBatchRequest =
     { country : Country
-    , language : CatalogsItemsRequestLanguage
+    , language : CatalogsItemsUpdateBatchRequestLanguage
     , operation : BatchOperation
     , items : List ItemUpdateBatchRecord
     }
+
+
+type CatalogsItemsUpdateBatchRequestLanguage
+    = CatalogsItemsUpdateBatchRequestLanguageAfZA
+    | CatalogsItemsUpdateBatchRequestLanguageArSA
+    | CatalogsItemsUpdateBatchRequestLanguageBgBG
+    | CatalogsItemsUpdateBatchRequestLanguageBnIN
+    | CatalogsItemsUpdateBatchRequestLanguageCsCZ
+    | CatalogsItemsUpdateBatchRequestLanguageDaDK
+    | CatalogsItemsUpdateBatchRequestLanguageDe
+    | CatalogsItemsUpdateBatchRequestLanguageElGR
+    | CatalogsItemsUpdateBatchRequestLanguageEnAU
+    | CatalogsItemsUpdateBatchRequestLanguageEnCA
+    | CatalogsItemsUpdateBatchRequestLanguageEnGB
+    | CatalogsItemsUpdateBatchRequestLanguageEnIN
+    | CatalogsItemsUpdateBatchRequestLanguageEnUS
+    | CatalogsItemsUpdateBatchRequestLanguageEs419
+    | CatalogsItemsUpdateBatchRequestLanguageEsAR
+    | CatalogsItemsUpdateBatchRequestLanguageEsES
+    | CatalogsItemsUpdateBatchRequestLanguageEsMX
+    | CatalogsItemsUpdateBatchRequestLanguageFiFI
+    | CatalogsItemsUpdateBatchRequestLanguageFr
+    | CatalogsItemsUpdateBatchRequestLanguageFrCA
+    | CatalogsItemsUpdateBatchRequestLanguageHeIL
+    | CatalogsItemsUpdateBatchRequestLanguageHiIN
+    | CatalogsItemsUpdateBatchRequestLanguageHrHR
+    | CatalogsItemsUpdateBatchRequestLanguageHuHU
+    | CatalogsItemsUpdateBatchRequestLanguageIdID
+    | CatalogsItemsUpdateBatchRequestLanguageIt
+    | CatalogsItemsUpdateBatchRequestLanguageJa
+    | CatalogsItemsUpdateBatchRequestLanguageKoKR
+    | CatalogsItemsUpdateBatchRequestLanguageMsMY
+    | CatalogsItemsUpdateBatchRequestLanguageNbNO
+    | CatalogsItemsUpdateBatchRequestLanguageNl
+    | CatalogsItemsUpdateBatchRequestLanguagePlPL
+    | CatalogsItemsUpdateBatchRequestLanguagePtBR
+    | CatalogsItemsUpdateBatchRequestLanguagePtPT
+    | CatalogsItemsUpdateBatchRequestLanguageRoRO
+    | CatalogsItemsUpdateBatchRequestLanguageRuRU
+    | CatalogsItemsUpdateBatchRequestLanguageSkSK
+    | CatalogsItemsUpdateBatchRequestLanguageSvSE
+    | CatalogsItemsUpdateBatchRequestLanguageTeIN
+    | CatalogsItemsUpdateBatchRequestLanguageThTH
+    | CatalogsItemsUpdateBatchRequestLanguageTlPH
+    | CatalogsItemsUpdateBatchRequestLanguageTr
+    | CatalogsItemsUpdateBatchRequestLanguageUkUA
+    | CatalogsItemsUpdateBatchRequestLanguageViVN
+    | CatalogsItemsUpdateBatchRequestLanguageZhCN
+    | CatalogsItemsUpdateBatchRequestLanguageZhTW
+    | CatalogsItemsUpdateBatchRequestLanguageAM
+    | CatalogsItemsUpdateBatchRequestLanguageAR
+    | CatalogsItemsUpdateBatchRequestLanguageAZ
+    | CatalogsItemsUpdateBatchRequestLanguageBG
+    | CatalogsItemsUpdateBatchRequestLanguageBN
+    | CatalogsItemsUpdateBatchRequestLanguageBS
+    | CatalogsItemsUpdateBatchRequestLanguageCA
+    | CatalogsItemsUpdateBatchRequestLanguageCS
+    | CatalogsItemsUpdateBatchRequestLanguageDA
+    | CatalogsItemsUpdateBatchRequestLanguageDV
+    | CatalogsItemsUpdateBatchRequestLanguageDZ
+    | CatalogsItemsUpdateBatchRequestLanguageDE
+    | CatalogsItemsUpdateBatchRequestLanguageEL
+    | CatalogsItemsUpdateBatchRequestLanguageEN
+    | CatalogsItemsUpdateBatchRequestLanguageES
+    | CatalogsItemsUpdateBatchRequestLanguageET
+    | CatalogsItemsUpdateBatchRequestLanguageFA
+    | CatalogsItemsUpdateBatchRequestLanguageFI
+    | CatalogsItemsUpdateBatchRequestLanguageFR
+    | CatalogsItemsUpdateBatchRequestLanguageHE
+    | CatalogsItemsUpdateBatchRequestLanguageHI
+    | CatalogsItemsUpdateBatchRequestLanguageHR
+    | CatalogsItemsUpdateBatchRequestLanguageHU
+    | CatalogsItemsUpdateBatchRequestLanguageHY
+    | CatalogsItemsUpdateBatchRequestLanguageID
+    | CatalogsItemsUpdateBatchRequestLanguageIN
+    | CatalogsItemsUpdateBatchRequestLanguageIS
+    | CatalogsItemsUpdateBatchRequestLanguageIT
+    | CatalogsItemsUpdateBatchRequestLanguageIW
+    | CatalogsItemsUpdateBatchRequestLanguageJA
+    | CatalogsItemsUpdateBatchRequestLanguageKA
+    | CatalogsItemsUpdateBatchRequestLanguageKM
+    | CatalogsItemsUpdateBatchRequestLanguageKO
+    | CatalogsItemsUpdateBatchRequestLanguageLO
+    | CatalogsItemsUpdateBatchRequestLanguageLT
+    | CatalogsItemsUpdateBatchRequestLanguageLV
+    | CatalogsItemsUpdateBatchRequestLanguageMK
+    | CatalogsItemsUpdateBatchRequestLanguageMN
+    | CatalogsItemsUpdateBatchRequestLanguageMS
+    | CatalogsItemsUpdateBatchRequestLanguageMY
+    | CatalogsItemsUpdateBatchRequestLanguageNB
+    | CatalogsItemsUpdateBatchRequestLanguageNE
+    | CatalogsItemsUpdateBatchRequestLanguageNL
+    | CatalogsItemsUpdateBatchRequestLanguageNO
+    | CatalogsItemsUpdateBatchRequestLanguagePL
+    | CatalogsItemsUpdateBatchRequestLanguagePT
+    | CatalogsItemsUpdateBatchRequestLanguageRO
+    | CatalogsItemsUpdateBatchRequestLanguageRU
+    | CatalogsItemsUpdateBatchRequestLanguageSK
+    | CatalogsItemsUpdateBatchRequestLanguageSL
+    | CatalogsItemsUpdateBatchRequestLanguageSQ
+    | CatalogsItemsUpdateBatchRequestLanguageSR
+    | CatalogsItemsUpdateBatchRequestLanguageSV
+    | CatalogsItemsUpdateBatchRequestLanguageTL
+    | CatalogsItemsUpdateBatchRequestLanguageUK
+    | CatalogsItemsUpdateBatchRequestLanguageVI
+    | CatalogsItemsUpdateBatchRequestLanguageTE
+    | CatalogsItemsUpdateBatchRequestLanguageTH
+    | CatalogsItemsUpdateBatchRequestLanguageTR
+    | CatalogsItemsUpdateBatchRequestLanguageXX
+    | CatalogsItemsUpdateBatchRequestLanguageZH
+
+
+catalogsItemsUpdateBatchRequestLanguageVariants : List CatalogsItemsUpdateBatchRequestLanguage
+catalogsItemsUpdateBatchRequestLanguageVariants =
+    [ CatalogsItemsUpdateBatchRequestLanguageAfZA
+    , CatalogsItemsUpdateBatchRequestLanguageArSA
+    , CatalogsItemsUpdateBatchRequestLanguageBgBG
+    , CatalogsItemsUpdateBatchRequestLanguageBnIN
+    , CatalogsItemsUpdateBatchRequestLanguageCsCZ
+    , CatalogsItemsUpdateBatchRequestLanguageDaDK
+    , CatalogsItemsUpdateBatchRequestLanguageDe
+    , CatalogsItemsUpdateBatchRequestLanguageElGR
+    , CatalogsItemsUpdateBatchRequestLanguageEnAU
+    , CatalogsItemsUpdateBatchRequestLanguageEnCA
+    , CatalogsItemsUpdateBatchRequestLanguageEnGB
+    , CatalogsItemsUpdateBatchRequestLanguageEnIN
+    , CatalogsItemsUpdateBatchRequestLanguageEnUS
+    , CatalogsItemsUpdateBatchRequestLanguageEs419
+    , CatalogsItemsUpdateBatchRequestLanguageEsAR
+    , CatalogsItemsUpdateBatchRequestLanguageEsES
+    , CatalogsItemsUpdateBatchRequestLanguageEsMX
+    , CatalogsItemsUpdateBatchRequestLanguageFiFI
+    , CatalogsItemsUpdateBatchRequestLanguageFr
+    , CatalogsItemsUpdateBatchRequestLanguageFrCA
+    , CatalogsItemsUpdateBatchRequestLanguageHeIL
+    , CatalogsItemsUpdateBatchRequestLanguageHiIN
+    , CatalogsItemsUpdateBatchRequestLanguageHrHR
+    , CatalogsItemsUpdateBatchRequestLanguageHuHU
+    , CatalogsItemsUpdateBatchRequestLanguageIdID
+    , CatalogsItemsUpdateBatchRequestLanguageIt
+    , CatalogsItemsUpdateBatchRequestLanguageJa
+    , CatalogsItemsUpdateBatchRequestLanguageKoKR
+    , CatalogsItemsUpdateBatchRequestLanguageMsMY
+    , CatalogsItemsUpdateBatchRequestLanguageNbNO
+    , CatalogsItemsUpdateBatchRequestLanguageNl
+    , CatalogsItemsUpdateBatchRequestLanguagePlPL
+    , CatalogsItemsUpdateBatchRequestLanguagePtBR
+    , CatalogsItemsUpdateBatchRequestLanguagePtPT
+    , CatalogsItemsUpdateBatchRequestLanguageRoRO
+    , CatalogsItemsUpdateBatchRequestLanguageRuRU
+    , CatalogsItemsUpdateBatchRequestLanguageSkSK
+    , CatalogsItemsUpdateBatchRequestLanguageSvSE
+    , CatalogsItemsUpdateBatchRequestLanguageTeIN
+    , CatalogsItemsUpdateBatchRequestLanguageThTH
+    , CatalogsItemsUpdateBatchRequestLanguageTlPH
+    , CatalogsItemsUpdateBatchRequestLanguageTr
+    , CatalogsItemsUpdateBatchRequestLanguageUkUA
+    , CatalogsItemsUpdateBatchRequestLanguageViVN
+    , CatalogsItemsUpdateBatchRequestLanguageZhCN
+    , CatalogsItemsUpdateBatchRequestLanguageZhTW
+    , CatalogsItemsUpdateBatchRequestLanguageAM
+    , CatalogsItemsUpdateBatchRequestLanguageAR
+    , CatalogsItemsUpdateBatchRequestLanguageAZ
+    , CatalogsItemsUpdateBatchRequestLanguageBG
+    , CatalogsItemsUpdateBatchRequestLanguageBN
+    , CatalogsItemsUpdateBatchRequestLanguageBS
+    , CatalogsItemsUpdateBatchRequestLanguageCA
+    , CatalogsItemsUpdateBatchRequestLanguageCS
+    , CatalogsItemsUpdateBatchRequestLanguageDA
+    , CatalogsItemsUpdateBatchRequestLanguageDV
+    , CatalogsItemsUpdateBatchRequestLanguageDZ
+    , CatalogsItemsUpdateBatchRequestLanguageDE
+    , CatalogsItemsUpdateBatchRequestLanguageEL
+    , CatalogsItemsUpdateBatchRequestLanguageEN
+    , CatalogsItemsUpdateBatchRequestLanguageES
+    , CatalogsItemsUpdateBatchRequestLanguageET
+    , CatalogsItemsUpdateBatchRequestLanguageFA
+    , CatalogsItemsUpdateBatchRequestLanguageFI
+    , CatalogsItemsUpdateBatchRequestLanguageFR
+    , CatalogsItemsUpdateBatchRequestLanguageHE
+    , CatalogsItemsUpdateBatchRequestLanguageHI
+    , CatalogsItemsUpdateBatchRequestLanguageHR
+    , CatalogsItemsUpdateBatchRequestLanguageHU
+    , CatalogsItemsUpdateBatchRequestLanguageHY
+    , CatalogsItemsUpdateBatchRequestLanguageID
+    , CatalogsItemsUpdateBatchRequestLanguageIN
+    , CatalogsItemsUpdateBatchRequestLanguageIS
+    , CatalogsItemsUpdateBatchRequestLanguageIT
+    , CatalogsItemsUpdateBatchRequestLanguageIW
+    , CatalogsItemsUpdateBatchRequestLanguageJA
+    , CatalogsItemsUpdateBatchRequestLanguageKA
+    , CatalogsItemsUpdateBatchRequestLanguageKM
+    , CatalogsItemsUpdateBatchRequestLanguageKO
+    , CatalogsItemsUpdateBatchRequestLanguageLO
+    , CatalogsItemsUpdateBatchRequestLanguageLT
+    , CatalogsItemsUpdateBatchRequestLanguageLV
+    , CatalogsItemsUpdateBatchRequestLanguageMK
+    , CatalogsItemsUpdateBatchRequestLanguageMN
+    , CatalogsItemsUpdateBatchRequestLanguageMS
+    , CatalogsItemsUpdateBatchRequestLanguageMY
+    , CatalogsItemsUpdateBatchRequestLanguageNB
+    , CatalogsItemsUpdateBatchRequestLanguageNE
+    , CatalogsItemsUpdateBatchRequestLanguageNL
+    , CatalogsItemsUpdateBatchRequestLanguageNO
+    , CatalogsItemsUpdateBatchRequestLanguagePL
+    , CatalogsItemsUpdateBatchRequestLanguagePT
+    , CatalogsItemsUpdateBatchRequestLanguageRO
+    , CatalogsItemsUpdateBatchRequestLanguageRU
+    , CatalogsItemsUpdateBatchRequestLanguageSK
+    , CatalogsItemsUpdateBatchRequestLanguageSL
+    , CatalogsItemsUpdateBatchRequestLanguageSQ
+    , CatalogsItemsUpdateBatchRequestLanguageSR
+    , CatalogsItemsUpdateBatchRequestLanguageSV
+    , CatalogsItemsUpdateBatchRequestLanguageTL
+    , CatalogsItemsUpdateBatchRequestLanguageUK
+    , CatalogsItemsUpdateBatchRequestLanguageVI
+    , CatalogsItemsUpdateBatchRequestLanguageTE
+    , CatalogsItemsUpdateBatchRequestLanguageTH
+    , CatalogsItemsUpdateBatchRequestLanguageTR
+    , CatalogsItemsUpdateBatchRequestLanguageXX
+    , CatalogsItemsUpdateBatchRequestLanguageZH
+    ]
 
 
 {-| Request object to upsert catalogs items
 -}
 type alias CatalogsItemsUpsertBatchRequest =
     { country : Country
-    , language : CatalogsItemsRequestLanguage
+    , language : CatalogsItemsUpsertBatchRequestLanguage
     , operation : BatchOperation
     , items : List ItemUpsertBatchRecord
     }
+
+
+type CatalogsItemsUpsertBatchRequestLanguage
+    = CatalogsItemsUpsertBatchRequestLanguageAfZA
+    | CatalogsItemsUpsertBatchRequestLanguageArSA
+    | CatalogsItemsUpsertBatchRequestLanguageBgBG
+    | CatalogsItemsUpsertBatchRequestLanguageBnIN
+    | CatalogsItemsUpsertBatchRequestLanguageCsCZ
+    | CatalogsItemsUpsertBatchRequestLanguageDaDK
+    | CatalogsItemsUpsertBatchRequestLanguageDe
+    | CatalogsItemsUpsertBatchRequestLanguageElGR
+    | CatalogsItemsUpsertBatchRequestLanguageEnAU
+    | CatalogsItemsUpsertBatchRequestLanguageEnCA
+    | CatalogsItemsUpsertBatchRequestLanguageEnGB
+    | CatalogsItemsUpsertBatchRequestLanguageEnIN
+    | CatalogsItemsUpsertBatchRequestLanguageEnUS
+    | CatalogsItemsUpsertBatchRequestLanguageEs419
+    | CatalogsItemsUpsertBatchRequestLanguageEsAR
+    | CatalogsItemsUpsertBatchRequestLanguageEsES
+    | CatalogsItemsUpsertBatchRequestLanguageEsMX
+    | CatalogsItemsUpsertBatchRequestLanguageFiFI
+    | CatalogsItemsUpsertBatchRequestLanguageFr
+    | CatalogsItemsUpsertBatchRequestLanguageFrCA
+    | CatalogsItemsUpsertBatchRequestLanguageHeIL
+    | CatalogsItemsUpsertBatchRequestLanguageHiIN
+    | CatalogsItemsUpsertBatchRequestLanguageHrHR
+    | CatalogsItemsUpsertBatchRequestLanguageHuHU
+    | CatalogsItemsUpsertBatchRequestLanguageIdID
+    | CatalogsItemsUpsertBatchRequestLanguageIt
+    | CatalogsItemsUpsertBatchRequestLanguageJa
+    | CatalogsItemsUpsertBatchRequestLanguageKoKR
+    | CatalogsItemsUpsertBatchRequestLanguageMsMY
+    | CatalogsItemsUpsertBatchRequestLanguageNbNO
+    | CatalogsItemsUpsertBatchRequestLanguageNl
+    | CatalogsItemsUpsertBatchRequestLanguagePlPL
+    | CatalogsItemsUpsertBatchRequestLanguagePtBR
+    | CatalogsItemsUpsertBatchRequestLanguagePtPT
+    | CatalogsItemsUpsertBatchRequestLanguageRoRO
+    | CatalogsItemsUpsertBatchRequestLanguageRuRU
+    | CatalogsItemsUpsertBatchRequestLanguageSkSK
+    | CatalogsItemsUpsertBatchRequestLanguageSvSE
+    | CatalogsItemsUpsertBatchRequestLanguageTeIN
+    | CatalogsItemsUpsertBatchRequestLanguageThTH
+    | CatalogsItemsUpsertBatchRequestLanguageTlPH
+    | CatalogsItemsUpsertBatchRequestLanguageTr
+    | CatalogsItemsUpsertBatchRequestLanguageUkUA
+    | CatalogsItemsUpsertBatchRequestLanguageViVN
+    | CatalogsItemsUpsertBatchRequestLanguageZhCN
+    | CatalogsItemsUpsertBatchRequestLanguageZhTW
+    | CatalogsItemsUpsertBatchRequestLanguageAM
+    | CatalogsItemsUpsertBatchRequestLanguageAR
+    | CatalogsItemsUpsertBatchRequestLanguageAZ
+    | CatalogsItemsUpsertBatchRequestLanguageBG
+    | CatalogsItemsUpsertBatchRequestLanguageBN
+    | CatalogsItemsUpsertBatchRequestLanguageBS
+    | CatalogsItemsUpsertBatchRequestLanguageCA
+    | CatalogsItemsUpsertBatchRequestLanguageCS
+    | CatalogsItemsUpsertBatchRequestLanguageDA
+    | CatalogsItemsUpsertBatchRequestLanguageDV
+    | CatalogsItemsUpsertBatchRequestLanguageDZ
+    | CatalogsItemsUpsertBatchRequestLanguageDE
+    | CatalogsItemsUpsertBatchRequestLanguageEL
+    | CatalogsItemsUpsertBatchRequestLanguageEN
+    | CatalogsItemsUpsertBatchRequestLanguageES
+    | CatalogsItemsUpsertBatchRequestLanguageET
+    | CatalogsItemsUpsertBatchRequestLanguageFA
+    | CatalogsItemsUpsertBatchRequestLanguageFI
+    | CatalogsItemsUpsertBatchRequestLanguageFR
+    | CatalogsItemsUpsertBatchRequestLanguageHE
+    | CatalogsItemsUpsertBatchRequestLanguageHI
+    | CatalogsItemsUpsertBatchRequestLanguageHR
+    | CatalogsItemsUpsertBatchRequestLanguageHU
+    | CatalogsItemsUpsertBatchRequestLanguageHY
+    | CatalogsItemsUpsertBatchRequestLanguageID
+    | CatalogsItemsUpsertBatchRequestLanguageIN
+    | CatalogsItemsUpsertBatchRequestLanguageIS
+    | CatalogsItemsUpsertBatchRequestLanguageIT
+    | CatalogsItemsUpsertBatchRequestLanguageIW
+    | CatalogsItemsUpsertBatchRequestLanguageJA
+    | CatalogsItemsUpsertBatchRequestLanguageKA
+    | CatalogsItemsUpsertBatchRequestLanguageKM
+    | CatalogsItemsUpsertBatchRequestLanguageKO
+    | CatalogsItemsUpsertBatchRequestLanguageLO
+    | CatalogsItemsUpsertBatchRequestLanguageLT
+    | CatalogsItemsUpsertBatchRequestLanguageLV
+    | CatalogsItemsUpsertBatchRequestLanguageMK
+    | CatalogsItemsUpsertBatchRequestLanguageMN
+    | CatalogsItemsUpsertBatchRequestLanguageMS
+    | CatalogsItemsUpsertBatchRequestLanguageMY
+    | CatalogsItemsUpsertBatchRequestLanguageNB
+    | CatalogsItemsUpsertBatchRequestLanguageNE
+    | CatalogsItemsUpsertBatchRequestLanguageNL
+    | CatalogsItemsUpsertBatchRequestLanguageNO
+    | CatalogsItemsUpsertBatchRequestLanguagePL
+    | CatalogsItemsUpsertBatchRequestLanguagePT
+    | CatalogsItemsUpsertBatchRequestLanguageRO
+    | CatalogsItemsUpsertBatchRequestLanguageRU
+    | CatalogsItemsUpsertBatchRequestLanguageSK
+    | CatalogsItemsUpsertBatchRequestLanguageSL
+    | CatalogsItemsUpsertBatchRequestLanguageSQ
+    | CatalogsItemsUpsertBatchRequestLanguageSR
+    | CatalogsItemsUpsertBatchRequestLanguageSV
+    | CatalogsItemsUpsertBatchRequestLanguageTL
+    | CatalogsItemsUpsertBatchRequestLanguageUK
+    | CatalogsItemsUpsertBatchRequestLanguageVI
+    | CatalogsItemsUpsertBatchRequestLanguageTE
+    | CatalogsItemsUpsertBatchRequestLanguageTH
+    | CatalogsItemsUpsertBatchRequestLanguageTR
+    | CatalogsItemsUpsertBatchRequestLanguageXX
+    | CatalogsItemsUpsertBatchRequestLanguageZH
+
+
+catalogsItemsUpsertBatchRequestLanguageVariants : List CatalogsItemsUpsertBatchRequestLanguage
+catalogsItemsUpsertBatchRequestLanguageVariants =
+    [ CatalogsItemsUpsertBatchRequestLanguageAfZA
+    , CatalogsItemsUpsertBatchRequestLanguageArSA
+    , CatalogsItemsUpsertBatchRequestLanguageBgBG
+    , CatalogsItemsUpsertBatchRequestLanguageBnIN
+    , CatalogsItemsUpsertBatchRequestLanguageCsCZ
+    , CatalogsItemsUpsertBatchRequestLanguageDaDK
+    , CatalogsItemsUpsertBatchRequestLanguageDe
+    , CatalogsItemsUpsertBatchRequestLanguageElGR
+    , CatalogsItemsUpsertBatchRequestLanguageEnAU
+    , CatalogsItemsUpsertBatchRequestLanguageEnCA
+    , CatalogsItemsUpsertBatchRequestLanguageEnGB
+    , CatalogsItemsUpsertBatchRequestLanguageEnIN
+    , CatalogsItemsUpsertBatchRequestLanguageEnUS
+    , CatalogsItemsUpsertBatchRequestLanguageEs419
+    , CatalogsItemsUpsertBatchRequestLanguageEsAR
+    , CatalogsItemsUpsertBatchRequestLanguageEsES
+    , CatalogsItemsUpsertBatchRequestLanguageEsMX
+    , CatalogsItemsUpsertBatchRequestLanguageFiFI
+    , CatalogsItemsUpsertBatchRequestLanguageFr
+    , CatalogsItemsUpsertBatchRequestLanguageFrCA
+    , CatalogsItemsUpsertBatchRequestLanguageHeIL
+    , CatalogsItemsUpsertBatchRequestLanguageHiIN
+    , CatalogsItemsUpsertBatchRequestLanguageHrHR
+    , CatalogsItemsUpsertBatchRequestLanguageHuHU
+    , CatalogsItemsUpsertBatchRequestLanguageIdID
+    , CatalogsItemsUpsertBatchRequestLanguageIt
+    , CatalogsItemsUpsertBatchRequestLanguageJa
+    , CatalogsItemsUpsertBatchRequestLanguageKoKR
+    , CatalogsItemsUpsertBatchRequestLanguageMsMY
+    , CatalogsItemsUpsertBatchRequestLanguageNbNO
+    , CatalogsItemsUpsertBatchRequestLanguageNl
+    , CatalogsItemsUpsertBatchRequestLanguagePlPL
+    , CatalogsItemsUpsertBatchRequestLanguagePtBR
+    , CatalogsItemsUpsertBatchRequestLanguagePtPT
+    , CatalogsItemsUpsertBatchRequestLanguageRoRO
+    , CatalogsItemsUpsertBatchRequestLanguageRuRU
+    , CatalogsItemsUpsertBatchRequestLanguageSkSK
+    , CatalogsItemsUpsertBatchRequestLanguageSvSE
+    , CatalogsItemsUpsertBatchRequestLanguageTeIN
+    , CatalogsItemsUpsertBatchRequestLanguageThTH
+    , CatalogsItemsUpsertBatchRequestLanguageTlPH
+    , CatalogsItemsUpsertBatchRequestLanguageTr
+    , CatalogsItemsUpsertBatchRequestLanguageUkUA
+    , CatalogsItemsUpsertBatchRequestLanguageViVN
+    , CatalogsItemsUpsertBatchRequestLanguageZhCN
+    , CatalogsItemsUpsertBatchRequestLanguageZhTW
+    , CatalogsItemsUpsertBatchRequestLanguageAM
+    , CatalogsItemsUpsertBatchRequestLanguageAR
+    , CatalogsItemsUpsertBatchRequestLanguageAZ
+    , CatalogsItemsUpsertBatchRequestLanguageBG
+    , CatalogsItemsUpsertBatchRequestLanguageBN
+    , CatalogsItemsUpsertBatchRequestLanguageBS
+    , CatalogsItemsUpsertBatchRequestLanguageCA
+    , CatalogsItemsUpsertBatchRequestLanguageCS
+    , CatalogsItemsUpsertBatchRequestLanguageDA
+    , CatalogsItemsUpsertBatchRequestLanguageDV
+    , CatalogsItemsUpsertBatchRequestLanguageDZ
+    , CatalogsItemsUpsertBatchRequestLanguageDE
+    , CatalogsItemsUpsertBatchRequestLanguageEL
+    , CatalogsItemsUpsertBatchRequestLanguageEN
+    , CatalogsItemsUpsertBatchRequestLanguageES
+    , CatalogsItemsUpsertBatchRequestLanguageET
+    , CatalogsItemsUpsertBatchRequestLanguageFA
+    , CatalogsItemsUpsertBatchRequestLanguageFI
+    , CatalogsItemsUpsertBatchRequestLanguageFR
+    , CatalogsItemsUpsertBatchRequestLanguageHE
+    , CatalogsItemsUpsertBatchRequestLanguageHI
+    , CatalogsItemsUpsertBatchRequestLanguageHR
+    , CatalogsItemsUpsertBatchRequestLanguageHU
+    , CatalogsItemsUpsertBatchRequestLanguageHY
+    , CatalogsItemsUpsertBatchRequestLanguageID
+    , CatalogsItemsUpsertBatchRequestLanguageIN
+    , CatalogsItemsUpsertBatchRequestLanguageIS
+    , CatalogsItemsUpsertBatchRequestLanguageIT
+    , CatalogsItemsUpsertBatchRequestLanguageIW
+    , CatalogsItemsUpsertBatchRequestLanguageJA
+    , CatalogsItemsUpsertBatchRequestLanguageKA
+    , CatalogsItemsUpsertBatchRequestLanguageKM
+    , CatalogsItemsUpsertBatchRequestLanguageKO
+    , CatalogsItemsUpsertBatchRequestLanguageLO
+    , CatalogsItemsUpsertBatchRequestLanguageLT
+    , CatalogsItemsUpsertBatchRequestLanguageLV
+    , CatalogsItemsUpsertBatchRequestLanguageMK
+    , CatalogsItemsUpsertBatchRequestLanguageMN
+    , CatalogsItemsUpsertBatchRequestLanguageMS
+    , CatalogsItemsUpsertBatchRequestLanguageMY
+    , CatalogsItemsUpsertBatchRequestLanguageNB
+    , CatalogsItemsUpsertBatchRequestLanguageNE
+    , CatalogsItemsUpsertBatchRequestLanguageNL
+    , CatalogsItemsUpsertBatchRequestLanguageNO
+    , CatalogsItemsUpsertBatchRequestLanguagePL
+    , CatalogsItemsUpsertBatchRequestLanguagePT
+    , CatalogsItemsUpsertBatchRequestLanguageRO
+    , CatalogsItemsUpsertBatchRequestLanguageRU
+    , CatalogsItemsUpsertBatchRequestLanguageSK
+    , CatalogsItemsUpsertBatchRequestLanguageSL
+    , CatalogsItemsUpsertBatchRequestLanguageSQ
+    , CatalogsItemsUpsertBatchRequestLanguageSR
+    , CatalogsItemsUpsertBatchRequestLanguageSV
+    , CatalogsItemsUpsertBatchRequestLanguageTL
+    , CatalogsItemsUpsertBatchRequestLanguageUK
+    , CatalogsItemsUpsertBatchRequestLanguageVI
+    , CatalogsItemsUpsertBatchRequestLanguageTE
+    , CatalogsItemsUpsertBatchRequestLanguageTH
+    , CatalogsItemsUpsertBatchRequestLanguageTR
+    , CatalogsItemsUpsertBatchRequestLanguageXX
+    , CatalogsItemsUpsertBatchRequestLanguageZH
+    ]
 
 
 type alias CatalogsList200Response =
@@ -8000,7 +9757,7 @@ type CatalogsReportStats
 type alias CatalogsRetailBatchRequest =
     { catalogType : CatalogsRetailBatchRequestCatalogType
     , country : Country
-    , language : CatalogsItemsRequestLanguage
+    , language : CatalogsRetailBatchRequestLanguage
     , items : List CatalogsRetailBatchRequestItemsInner
     }
 
@@ -8012,6 +9769,228 @@ type CatalogsRetailBatchRequestCatalogType
 catalogsRetailBatchRequestCatalogTypeVariants : List CatalogsRetailBatchRequestCatalogType
 catalogsRetailBatchRequestCatalogTypeVariants =
     [ CatalogsRetailBatchRequestCatalogTypeRETAIL
+    ]
+
+
+type CatalogsRetailBatchRequestLanguage
+    = CatalogsRetailBatchRequestLanguageAfZA
+    | CatalogsRetailBatchRequestLanguageArSA
+    | CatalogsRetailBatchRequestLanguageBgBG
+    | CatalogsRetailBatchRequestLanguageBnIN
+    | CatalogsRetailBatchRequestLanguageCsCZ
+    | CatalogsRetailBatchRequestLanguageDaDK
+    | CatalogsRetailBatchRequestLanguageDe
+    | CatalogsRetailBatchRequestLanguageElGR
+    | CatalogsRetailBatchRequestLanguageEnAU
+    | CatalogsRetailBatchRequestLanguageEnCA
+    | CatalogsRetailBatchRequestLanguageEnGB
+    | CatalogsRetailBatchRequestLanguageEnIN
+    | CatalogsRetailBatchRequestLanguageEnUS
+    | CatalogsRetailBatchRequestLanguageEs419
+    | CatalogsRetailBatchRequestLanguageEsAR
+    | CatalogsRetailBatchRequestLanguageEsES
+    | CatalogsRetailBatchRequestLanguageEsMX
+    | CatalogsRetailBatchRequestLanguageFiFI
+    | CatalogsRetailBatchRequestLanguageFr
+    | CatalogsRetailBatchRequestLanguageFrCA
+    | CatalogsRetailBatchRequestLanguageHeIL
+    | CatalogsRetailBatchRequestLanguageHiIN
+    | CatalogsRetailBatchRequestLanguageHrHR
+    | CatalogsRetailBatchRequestLanguageHuHU
+    | CatalogsRetailBatchRequestLanguageIdID
+    | CatalogsRetailBatchRequestLanguageIt
+    | CatalogsRetailBatchRequestLanguageJa
+    | CatalogsRetailBatchRequestLanguageKoKR
+    | CatalogsRetailBatchRequestLanguageMsMY
+    | CatalogsRetailBatchRequestLanguageNbNO
+    | CatalogsRetailBatchRequestLanguageNl
+    | CatalogsRetailBatchRequestLanguagePlPL
+    | CatalogsRetailBatchRequestLanguagePtBR
+    | CatalogsRetailBatchRequestLanguagePtPT
+    | CatalogsRetailBatchRequestLanguageRoRO
+    | CatalogsRetailBatchRequestLanguageRuRU
+    | CatalogsRetailBatchRequestLanguageSkSK
+    | CatalogsRetailBatchRequestLanguageSvSE
+    | CatalogsRetailBatchRequestLanguageTeIN
+    | CatalogsRetailBatchRequestLanguageThTH
+    | CatalogsRetailBatchRequestLanguageTlPH
+    | CatalogsRetailBatchRequestLanguageTr
+    | CatalogsRetailBatchRequestLanguageUkUA
+    | CatalogsRetailBatchRequestLanguageViVN
+    | CatalogsRetailBatchRequestLanguageZhCN
+    | CatalogsRetailBatchRequestLanguageZhTW
+    | CatalogsRetailBatchRequestLanguageAM
+    | CatalogsRetailBatchRequestLanguageAR
+    | CatalogsRetailBatchRequestLanguageAZ
+    | CatalogsRetailBatchRequestLanguageBG
+    | CatalogsRetailBatchRequestLanguageBN
+    | CatalogsRetailBatchRequestLanguageBS
+    | CatalogsRetailBatchRequestLanguageCA
+    | CatalogsRetailBatchRequestLanguageCS
+    | CatalogsRetailBatchRequestLanguageDA
+    | CatalogsRetailBatchRequestLanguageDV
+    | CatalogsRetailBatchRequestLanguageDZ
+    | CatalogsRetailBatchRequestLanguageDE
+    | CatalogsRetailBatchRequestLanguageEL
+    | CatalogsRetailBatchRequestLanguageEN
+    | CatalogsRetailBatchRequestLanguageES
+    | CatalogsRetailBatchRequestLanguageET
+    | CatalogsRetailBatchRequestLanguageFA
+    | CatalogsRetailBatchRequestLanguageFI
+    | CatalogsRetailBatchRequestLanguageFR
+    | CatalogsRetailBatchRequestLanguageHE
+    | CatalogsRetailBatchRequestLanguageHI
+    | CatalogsRetailBatchRequestLanguageHR
+    | CatalogsRetailBatchRequestLanguageHU
+    | CatalogsRetailBatchRequestLanguageHY
+    | CatalogsRetailBatchRequestLanguageID
+    | CatalogsRetailBatchRequestLanguageIN
+    | CatalogsRetailBatchRequestLanguageIS
+    | CatalogsRetailBatchRequestLanguageIT
+    | CatalogsRetailBatchRequestLanguageIW
+    | CatalogsRetailBatchRequestLanguageJA
+    | CatalogsRetailBatchRequestLanguageKA
+    | CatalogsRetailBatchRequestLanguageKM
+    | CatalogsRetailBatchRequestLanguageKO
+    | CatalogsRetailBatchRequestLanguageLO
+    | CatalogsRetailBatchRequestLanguageLT
+    | CatalogsRetailBatchRequestLanguageLV
+    | CatalogsRetailBatchRequestLanguageMK
+    | CatalogsRetailBatchRequestLanguageMN
+    | CatalogsRetailBatchRequestLanguageMS
+    | CatalogsRetailBatchRequestLanguageMY
+    | CatalogsRetailBatchRequestLanguageNB
+    | CatalogsRetailBatchRequestLanguageNE
+    | CatalogsRetailBatchRequestLanguageNL
+    | CatalogsRetailBatchRequestLanguageNO
+    | CatalogsRetailBatchRequestLanguagePL
+    | CatalogsRetailBatchRequestLanguagePT
+    | CatalogsRetailBatchRequestLanguageRO
+    | CatalogsRetailBatchRequestLanguageRU
+    | CatalogsRetailBatchRequestLanguageSK
+    | CatalogsRetailBatchRequestLanguageSL
+    | CatalogsRetailBatchRequestLanguageSQ
+    | CatalogsRetailBatchRequestLanguageSR
+    | CatalogsRetailBatchRequestLanguageSV
+    | CatalogsRetailBatchRequestLanguageTL
+    | CatalogsRetailBatchRequestLanguageUK
+    | CatalogsRetailBatchRequestLanguageVI
+    | CatalogsRetailBatchRequestLanguageTE
+    | CatalogsRetailBatchRequestLanguageTH
+    | CatalogsRetailBatchRequestLanguageTR
+    | CatalogsRetailBatchRequestLanguageXX
+    | CatalogsRetailBatchRequestLanguageZH
+
+
+catalogsRetailBatchRequestLanguageVariants : List CatalogsRetailBatchRequestLanguage
+catalogsRetailBatchRequestLanguageVariants =
+    [ CatalogsRetailBatchRequestLanguageAfZA
+    , CatalogsRetailBatchRequestLanguageArSA
+    , CatalogsRetailBatchRequestLanguageBgBG
+    , CatalogsRetailBatchRequestLanguageBnIN
+    , CatalogsRetailBatchRequestLanguageCsCZ
+    , CatalogsRetailBatchRequestLanguageDaDK
+    , CatalogsRetailBatchRequestLanguageDe
+    , CatalogsRetailBatchRequestLanguageElGR
+    , CatalogsRetailBatchRequestLanguageEnAU
+    , CatalogsRetailBatchRequestLanguageEnCA
+    , CatalogsRetailBatchRequestLanguageEnGB
+    , CatalogsRetailBatchRequestLanguageEnIN
+    , CatalogsRetailBatchRequestLanguageEnUS
+    , CatalogsRetailBatchRequestLanguageEs419
+    , CatalogsRetailBatchRequestLanguageEsAR
+    , CatalogsRetailBatchRequestLanguageEsES
+    , CatalogsRetailBatchRequestLanguageEsMX
+    , CatalogsRetailBatchRequestLanguageFiFI
+    , CatalogsRetailBatchRequestLanguageFr
+    , CatalogsRetailBatchRequestLanguageFrCA
+    , CatalogsRetailBatchRequestLanguageHeIL
+    , CatalogsRetailBatchRequestLanguageHiIN
+    , CatalogsRetailBatchRequestLanguageHrHR
+    , CatalogsRetailBatchRequestLanguageHuHU
+    , CatalogsRetailBatchRequestLanguageIdID
+    , CatalogsRetailBatchRequestLanguageIt
+    , CatalogsRetailBatchRequestLanguageJa
+    , CatalogsRetailBatchRequestLanguageKoKR
+    , CatalogsRetailBatchRequestLanguageMsMY
+    , CatalogsRetailBatchRequestLanguageNbNO
+    , CatalogsRetailBatchRequestLanguageNl
+    , CatalogsRetailBatchRequestLanguagePlPL
+    , CatalogsRetailBatchRequestLanguagePtBR
+    , CatalogsRetailBatchRequestLanguagePtPT
+    , CatalogsRetailBatchRequestLanguageRoRO
+    , CatalogsRetailBatchRequestLanguageRuRU
+    , CatalogsRetailBatchRequestLanguageSkSK
+    , CatalogsRetailBatchRequestLanguageSvSE
+    , CatalogsRetailBatchRequestLanguageTeIN
+    , CatalogsRetailBatchRequestLanguageThTH
+    , CatalogsRetailBatchRequestLanguageTlPH
+    , CatalogsRetailBatchRequestLanguageTr
+    , CatalogsRetailBatchRequestLanguageUkUA
+    , CatalogsRetailBatchRequestLanguageViVN
+    , CatalogsRetailBatchRequestLanguageZhCN
+    , CatalogsRetailBatchRequestLanguageZhTW
+    , CatalogsRetailBatchRequestLanguageAM
+    , CatalogsRetailBatchRequestLanguageAR
+    , CatalogsRetailBatchRequestLanguageAZ
+    , CatalogsRetailBatchRequestLanguageBG
+    , CatalogsRetailBatchRequestLanguageBN
+    , CatalogsRetailBatchRequestLanguageBS
+    , CatalogsRetailBatchRequestLanguageCA
+    , CatalogsRetailBatchRequestLanguageCS
+    , CatalogsRetailBatchRequestLanguageDA
+    , CatalogsRetailBatchRequestLanguageDV
+    , CatalogsRetailBatchRequestLanguageDZ
+    , CatalogsRetailBatchRequestLanguageDE
+    , CatalogsRetailBatchRequestLanguageEL
+    , CatalogsRetailBatchRequestLanguageEN
+    , CatalogsRetailBatchRequestLanguageES
+    , CatalogsRetailBatchRequestLanguageET
+    , CatalogsRetailBatchRequestLanguageFA
+    , CatalogsRetailBatchRequestLanguageFI
+    , CatalogsRetailBatchRequestLanguageFR
+    , CatalogsRetailBatchRequestLanguageHE
+    , CatalogsRetailBatchRequestLanguageHI
+    , CatalogsRetailBatchRequestLanguageHR
+    , CatalogsRetailBatchRequestLanguageHU
+    , CatalogsRetailBatchRequestLanguageHY
+    , CatalogsRetailBatchRequestLanguageID
+    , CatalogsRetailBatchRequestLanguageIN
+    , CatalogsRetailBatchRequestLanguageIS
+    , CatalogsRetailBatchRequestLanguageIT
+    , CatalogsRetailBatchRequestLanguageIW
+    , CatalogsRetailBatchRequestLanguageJA
+    , CatalogsRetailBatchRequestLanguageKA
+    , CatalogsRetailBatchRequestLanguageKM
+    , CatalogsRetailBatchRequestLanguageKO
+    , CatalogsRetailBatchRequestLanguageLO
+    , CatalogsRetailBatchRequestLanguageLT
+    , CatalogsRetailBatchRequestLanguageLV
+    , CatalogsRetailBatchRequestLanguageMK
+    , CatalogsRetailBatchRequestLanguageMN
+    , CatalogsRetailBatchRequestLanguageMS
+    , CatalogsRetailBatchRequestLanguageMY
+    , CatalogsRetailBatchRequestLanguageNB
+    , CatalogsRetailBatchRequestLanguageNE
+    , CatalogsRetailBatchRequestLanguageNL
+    , CatalogsRetailBatchRequestLanguageNO
+    , CatalogsRetailBatchRequestLanguagePL
+    , CatalogsRetailBatchRequestLanguagePT
+    , CatalogsRetailBatchRequestLanguageRO
+    , CatalogsRetailBatchRequestLanguageRU
+    , CatalogsRetailBatchRequestLanguageSK
+    , CatalogsRetailBatchRequestLanguageSL
+    , CatalogsRetailBatchRequestLanguageSQ
+    , CatalogsRetailBatchRequestLanguageSR
+    , CatalogsRetailBatchRequestLanguageSV
+    , CatalogsRetailBatchRequestLanguageTL
+    , CatalogsRetailBatchRequestLanguageUK
+    , CatalogsRetailBatchRequestLanguageVI
+    , CatalogsRetailBatchRequestLanguageTE
+    , CatalogsRetailBatchRequestLanguageTH
+    , CatalogsRetailBatchRequestLanguageTR
+    , CatalogsRetailBatchRequestLanguageXX
+    , CatalogsRetailBatchRequestLanguageZH
     ]
 
 
@@ -8782,14 +10761,14 @@ type alias ConversionTagConfigs =
 
 
 type alias ConversionTagCreate =
-    { name : String
-    , aemEnabled : Maybe Bool
+    { aemEnabled : Maybe Bool
     , mdFrequency : Maybe Float
     , aemFnlnEnabled : Maybe Bool
     , aemPhEnabled : Maybe Bool
     , aemGeEnabled : Maybe Bool
     , aemDbEnabled : Maybe Bool
     , aemLocEnabled : Maybe Bool
+    , name : String
     }
 
 
@@ -9435,14 +11414,14 @@ type alias CreateInvitesResultsResponseArrayItemsInnerInvite =
 
 
 type alias CreateMMMReportRequest =
-    { reportName : String
+    { countries : Maybe ( List Maybe TargetingAdvertiserCountry )
+    , reportName : String
     , startDate : String
     , endDate : String
     , granularity : CreateMMMReportRequestGranularity
     , level : CreateMMMReportRequestLevel
     , targetingTypes : List MMMReportingTargetingType
     , columns : List MMMReportingColumn
-    , countries : Maybe ( List Maybe TargetingAdvertiserCountry )
     }
 
 
@@ -10510,15 +12489,13 @@ type alias InviteAssetsSummaryProfilesInner =
     }
 
 
-{-| An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
--}
 type alias InviteBusinessRoleBinding =
-    { createdByBusinessId : Maybe String
-    , createdByUserId : Maybe String
-    , user : Maybe BusinessAccessUserSummary
-    , id : Maybe String
+    { id : Maybe String
     , inviteData : Maybe BaseInviteDataResponseInviteData
     , isReceivedInvite : Maybe Bool
+    , user : Maybe Object
+    , createdByBusinessId : Maybe String
+    , createdByUserId : Maybe String
     }
 
 
@@ -10533,15 +12510,15 @@ type alias InviteExceptionResponse =
 
 
 type alias InviteResponse =
-    { assetsSummary : Maybe InviteAssetsSummary
-    , businessRoles : Maybe ( List String )
-    , createdByBusiness : Maybe BusinessAccessUserSummary
-    , createdByUser : Maybe BusinessAccessUserSummary
-    , createdTime : Maybe Int
-    , id : Maybe String
+    { id : Maybe String
     , inviteData : Maybe BaseInviteDataResponseInviteData
     , isReceivedInvite : Maybe Bool
     , user : Maybe BusinessAccessUserSummary
+    , assetsSummary : Maybe InviteAssetsSummary
+    , businessRoles : Maybe ( List String )
+    , createdByBusiness : Maybe Object
+    , createdByUser : Maybe Object
+    , createdTime : Maybe Int
     }
 
 
@@ -10766,9 +12743,11 @@ itemProcessingStatusVariants =
 type alias ItemResponse =
     { catalogType : CatalogsType
     , itemId : Maybe String
-    , errors : Maybe ( List ItemValidationEvent )
+    , pins : Maybe ( List Maybe Pin )
+    , attributes : Maybe CatalogsCreativeAssetsAttributes
     , hotelId : Maybe String
     , creativeAssetsId : Maybe String
+    , errors : Maybe ( List ItemValidationEvent )
     }
 
 
@@ -11064,11 +13043,11 @@ type alias LeadFormCommonPolicyLinksInner =
 type alias LeadFormCreateRequest =
     { name : Maybe String
     , privacyPolicyLink : Maybe String
-    , hasAcceptedTerms : Bool
+    , hasAcceptedTerms : Maybe Bool
     , completionMessage : Maybe String
     , status : Maybe LeadFormStatus
     , disclosureLanguage : Maybe String
-    , questions : List LeadFormQuestion
+    , questions : Maybe ( List LeadFormQuestion )
     , policyLinks : Maybe ( List LeadFormCommonPolicyLinksInner )
     }
 
@@ -12348,11 +14327,9 @@ nullableCurrencyVariants =
     ]
 
 
-{-| A request to receive a client token.
--}
 type alias OauthAccessTokenRequestClientCredentials =
-    { grantType : OauthAccessTokenRequestClientCredentialsGrantType
-    , scope : String
+    { scope : String
+    , grantType : OauthAccessTokenRequestClientCredentialsGrantType
     }
 
 
@@ -12370,12 +14347,10 @@ oauthAccessTokenRequestClientCredentialsGrantTypeVariants =
     ]
 
 
-{-| A request to exchange an authorization code for an access token.
--}
 type alias OauthAccessTokenRequestCode =
-    { grantType : OauthAccessTokenRequestCodeGrantType
-    , code : String
+    { code : String
     , redirectUri : String
+    , grantType : OauthAccessTokenRequestCodeGrantType
     }
 
 
@@ -12393,13 +14368,11 @@ oauthAccessTokenRequestCodeGrantTypeVariants =
     ]
 
 
-{-| A request to exchange a refresh token for a new access token.
--}
 type alias OauthAccessTokenRequestRefresh =
-    { grantType : OauthAccessTokenRequestRefreshGrantType
-    , refreshToken : String
+    { refreshToken : String
     , scope : Maybe String
     , refreshOn : Maybe Bool
+    , grantType : OauthAccessTokenRequestRefreshGrantType
     }
 
 
@@ -12476,16 +14449,14 @@ oauthAccessTokenResponseClientCredentialsResponseTypeVariants =
     ]
 
 
-{-| A successful OAuth access token response for the authorization code flow.
--}
 type alias OauthAccessTokenResponseCode =
-    { responseType : Maybe OauthAccessTokenResponseCodeResponseType
+    { refreshToken : String
+    , refreshTokenExpiresIn : Int
+    , responseType : Maybe OauthAccessTokenResponseCodeResponseType
     , accessToken : String
     , tokenType : String
     , expiresIn : Int
     , scope : String
-    , refreshToken : String
-    , refreshTokenExpiresIn : Int
     }
 
 
@@ -12503,17 +14474,15 @@ oauthAccessTokenResponseCodeResponseTypeVariants =
     ]
 
 
-{-| A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
--}
 type alias OauthAccessTokenResponseEverlastingRefresh =
-    { responseType : Maybe OauthAccessTokenResponseEverlastingRefreshResponseType
+    { refreshToken : String
+    , refreshTokenExpiresIn : Int
+    , refreshTokenExpiresAt : Int
+    , responseType : Maybe OauthAccessTokenResponseEverlastingRefreshResponseType
     , accessToken : String
     , tokenType : String
     , expiresIn : Int
     , scope : String
-    , refreshToken : String
-    , refreshTokenExpiresIn : Int
-    , refreshTokenExpiresAt : Int
     }
 
 
@@ -12531,16 +14500,14 @@ oauthAccessTokenResponseEverlastingRefreshResponseTypeVariants =
     ]
 
 
-{-| A successful OAuth access token response for the refresh token flow, with an added refresh token.
--}
 type alias OauthAccessTokenResponseIntegrationRefresh =
-    { responseType : Maybe OauthAccessTokenResponseIntegrationRefreshResponseType
+    { refreshToken : String
+    , refreshTokenExpiresIn : Int
+    , responseType : Maybe OauthAccessTokenResponseIntegrationRefreshResponseType
     , accessToken : String
     , tokenType : String
     , expiresIn : Int
     , scope : String
-    , refreshToken : String
-    , refreshTokenExpiresIn : Int
     }
 
 
@@ -13266,11 +15233,6 @@ type alias PinUpdateCarouselSlotsInner =
     , description : Maybe String
     , link : Maybe String
     }
-
-
-type PinsAnalyticsMetricTypesParameterInner
-    = PinsAnalyticsMetricTypesParameterInnerString String
-
 
 
 type alias PinsList200Response =
@@ -22695,26 +24657,7 @@ encodeAudienceCreateRequestPairs model =
             , encode "name" Json.Encode.string model.name
             , encode "rule" encodeAudienceRule model.rule
             , maybeEncode "description" Json.Encode.string model.description
-            , encode "audience_type" encodeAudienceCreateRequest1AudienceType model.audienceType
-            ]
-    in
-    pairs
-
-
-encodeAudienceCreateRequest1AudienceType : AudienceCreateRequest1AudienceType -> Json.Encode.Value
-encodeAudienceCreateRequest1AudienceType =
-    encodeObject << encodeAudienceCreateRequest1AudienceTypePairs
-
-
-encodeAudienceCreateRequest1AudienceTypeWithTag : ( String, String ) -> AudienceCreateRequest1AudienceType -> Json.Encode.Value
-encodeAudienceCreateRequest1AudienceTypeWithTag (tagField, tag) model =
-    encodeObject (encodeAudienceCreateRequest1AudienceTypePairs model ++ [ encode tagField Json.Encode.string tag ])
-
-
-encodeAudienceCreateRequest1AudienceTypePairs : AudienceCreateRequest1AudienceType -> List EncodedField
-encodeAudienceCreateRequest1AudienceTypePairs model =
-    let
-        pairs =
+            , encode "audience_type" encodeAudienceType model.audienceType
             ]
     in
     pairs
@@ -25225,7 +27168,7 @@ encodeCatalogsCreativeAssetsBatchRequestPairs model =
         pairs =
             [ encode "catalog_type" encodeCatalogsCreativeAssetsBatchRequestCatalogType model.catalogType
             , encode "country" encodeCountry model.country
-            , encode "language" encodeCatalogsItemsRequestLanguage model.language
+            , encode "language" encodeCatalogsCreativeAssetsBatchRequestLanguage model.language
             , encode "items" (Json.Encode.list encodeCatalogsCreativeAssetsBatchItem) model.items
             , maybeEncode "catalog_id" Json.Encode.string model.catalogId
             ]
@@ -25242,6 +27185,336 @@ stringFromCatalogsCreativeAssetsBatchRequestCatalogType model =
 encodeCatalogsCreativeAssetsBatchRequestCatalogType : CatalogsCreativeAssetsBatchRequestCatalogType -> Json.Encode.Value
 encodeCatalogsCreativeAssetsBatchRequestCatalogType =
     Json.Encode.string << stringFromCatalogsCreativeAssetsBatchRequestCatalogType
+
+
+stringFromCatalogsCreativeAssetsBatchRequestLanguage : CatalogsCreativeAssetsBatchRequestLanguage -> String
+stringFromCatalogsCreativeAssetsBatchRequestLanguage model =
+    case model of
+        CatalogsCreativeAssetsBatchRequestLanguageAfZA ->
+            "af-ZA"
+
+        CatalogsCreativeAssetsBatchRequestLanguageArSA ->
+            "ar-SA"
+
+        CatalogsCreativeAssetsBatchRequestLanguageBgBG ->
+            "bg-BG"
+
+        CatalogsCreativeAssetsBatchRequestLanguageBnIN ->
+            "bn-IN"
+
+        CatalogsCreativeAssetsBatchRequestLanguageCsCZ ->
+            "cs-CZ"
+
+        CatalogsCreativeAssetsBatchRequestLanguageDaDK ->
+            "da-DK"
+
+        CatalogsCreativeAssetsBatchRequestLanguageDe ->
+            "de"
+
+        CatalogsCreativeAssetsBatchRequestLanguageElGR ->
+            "el-GR"
+
+        CatalogsCreativeAssetsBatchRequestLanguageEnAU ->
+            "en-AU"
+
+        CatalogsCreativeAssetsBatchRequestLanguageEnCA ->
+            "en-CA"
+
+        CatalogsCreativeAssetsBatchRequestLanguageEnGB ->
+            "en-GB"
+
+        CatalogsCreativeAssetsBatchRequestLanguageEnIN ->
+            "en-IN"
+
+        CatalogsCreativeAssetsBatchRequestLanguageEnUS ->
+            "en-US"
+
+        CatalogsCreativeAssetsBatchRequestLanguageEs419 ->
+            "es-419"
+
+        CatalogsCreativeAssetsBatchRequestLanguageEsAR ->
+            "es-AR"
+
+        CatalogsCreativeAssetsBatchRequestLanguageEsES ->
+            "es-ES"
+
+        CatalogsCreativeAssetsBatchRequestLanguageEsMX ->
+            "es-MX"
+
+        CatalogsCreativeAssetsBatchRequestLanguageFiFI ->
+            "fi-FI"
+
+        CatalogsCreativeAssetsBatchRequestLanguageFr ->
+            "fr"
+
+        CatalogsCreativeAssetsBatchRequestLanguageFrCA ->
+            "fr-CA"
+
+        CatalogsCreativeAssetsBatchRequestLanguageHeIL ->
+            "he-IL"
+
+        CatalogsCreativeAssetsBatchRequestLanguageHiIN ->
+            "hi-IN"
+
+        CatalogsCreativeAssetsBatchRequestLanguageHrHR ->
+            "hr-HR"
+
+        CatalogsCreativeAssetsBatchRequestLanguageHuHU ->
+            "hu-HU"
+
+        CatalogsCreativeAssetsBatchRequestLanguageIdID ->
+            "id-ID"
+
+        CatalogsCreativeAssetsBatchRequestLanguageIt ->
+            "it"
+
+        CatalogsCreativeAssetsBatchRequestLanguageJa ->
+            "ja"
+
+        CatalogsCreativeAssetsBatchRequestLanguageKoKR ->
+            "ko-KR"
+
+        CatalogsCreativeAssetsBatchRequestLanguageMsMY ->
+            "ms-MY"
+
+        CatalogsCreativeAssetsBatchRequestLanguageNbNO ->
+            "nb-NO"
+
+        CatalogsCreativeAssetsBatchRequestLanguageNl ->
+            "nl"
+
+        CatalogsCreativeAssetsBatchRequestLanguagePlPL ->
+            "pl-PL"
+
+        CatalogsCreativeAssetsBatchRequestLanguagePtBR ->
+            "pt-BR"
+
+        CatalogsCreativeAssetsBatchRequestLanguagePtPT ->
+            "pt-PT"
+
+        CatalogsCreativeAssetsBatchRequestLanguageRoRO ->
+            "ro-RO"
+
+        CatalogsCreativeAssetsBatchRequestLanguageRuRU ->
+            "ru-RU"
+
+        CatalogsCreativeAssetsBatchRequestLanguageSkSK ->
+            "sk-SK"
+
+        CatalogsCreativeAssetsBatchRequestLanguageSvSE ->
+            "sv-SE"
+
+        CatalogsCreativeAssetsBatchRequestLanguageTeIN ->
+            "te-IN"
+
+        CatalogsCreativeAssetsBatchRequestLanguageThTH ->
+            "th-TH"
+
+        CatalogsCreativeAssetsBatchRequestLanguageTlPH ->
+            "tl-PH"
+
+        CatalogsCreativeAssetsBatchRequestLanguageTr ->
+            "tr"
+
+        CatalogsCreativeAssetsBatchRequestLanguageUkUA ->
+            "uk-UA"
+
+        CatalogsCreativeAssetsBatchRequestLanguageViVN ->
+            "vi-VN"
+
+        CatalogsCreativeAssetsBatchRequestLanguageZhCN ->
+            "zh-CN"
+
+        CatalogsCreativeAssetsBatchRequestLanguageZhTW ->
+            "zh-TW"
+
+        CatalogsCreativeAssetsBatchRequestLanguageAM ->
+            "AM"
+
+        CatalogsCreativeAssetsBatchRequestLanguageAR ->
+            "AR"
+
+        CatalogsCreativeAssetsBatchRequestLanguageAZ ->
+            "AZ"
+
+        CatalogsCreativeAssetsBatchRequestLanguageBG ->
+            "BG"
+
+        CatalogsCreativeAssetsBatchRequestLanguageBN ->
+            "BN"
+
+        CatalogsCreativeAssetsBatchRequestLanguageBS ->
+            "BS"
+
+        CatalogsCreativeAssetsBatchRequestLanguageCA ->
+            "CA"
+
+        CatalogsCreativeAssetsBatchRequestLanguageCS ->
+            "CS"
+
+        CatalogsCreativeAssetsBatchRequestLanguageDA ->
+            "DA"
+
+        CatalogsCreativeAssetsBatchRequestLanguageDV ->
+            "DV"
+
+        CatalogsCreativeAssetsBatchRequestLanguageDZ ->
+            "DZ"
+
+        CatalogsCreativeAssetsBatchRequestLanguageDE ->
+            "DE"
+
+        CatalogsCreativeAssetsBatchRequestLanguageEL ->
+            "EL"
+
+        CatalogsCreativeAssetsBatchRequestLanguageEN ->
+            "EN"
+
+        CatalogsCreativeAssetsBatchRequestLanguageES ->
+            "ES"
+
+        CatalogsCreativeAssetsBatchRequestLanguageET ->
+            "ET"
+
+        CatalogsCreativeAssetsBatchRequestLanguageFA ->
+            "FA"
+
+        CatalogsCreativeAssetsBatchRequestLanguageFI ->
+            "FI"
+
+        CatalogsCreativeAssetsBatchRequestLanguageFR ->
+            "FR"
+
+        CatalogsCreativeAssetsBatchRequestLanguageHE ->
+            "HE"
+
+        CatalogsCreativeAssetsBatchRequestLanguageHI ->
+            "HI"
+
+        CatalogsCreativeAssetsBatchRequestLanguageHR ->
+            "HR"
+
+        CatalogsCreativeAssetsBatchRequestLanguageHU ->
+            "HU"
+
+        CatalogsCreativeAssetsBatchRequestLanguageHY ->
+            "HY"
+
+        CatalogsCreativeAssetsBatchRequestLanguageID ->
+            "ID"
+
+        CatalogsCreativeAssetsBatchRequestLanguageIN ->
+            "IN"
+
+        CatalogsCreativeAssetsBatchRequestLanguageIS ->
+            "IS"
+
+        CatalogsCreativeAssetsBatchRequestLanguageIT ->
+            "IT"
+
+        CatalogsCreativeAssetsBatchRequestLanguageIW ->
+            "IW"
+
+        CatalogsCreativeAssetsBatchRequestLanguageJA ->
+            "JA"
+
+        CatalogsCreativeAssetsBatchRequestLanguageKA ->
+            "KA"
+
+        CatalogsCreativeAssetsBatchRequestLanguageKM ->
+            "KM"
+
+        CatalogsCreativeAssetsBatchRequestLanguageKO ->
+            "KO"
+
+        CatalogsCreativeAssetsBatchRequestLanguageLO ->
+            "LO"
+
+        CatalogsCreativeAssetsBatchRequestLanguageLT ->
+            "LT"
+
+        CatalogsCreativeAssetsBatchRequestLanguageLV ->
+            "LV"
+
+        CatalogsCreativeAssetsBatchRequestLanguageMK ->
+            "MK"
+
+        CatalogsCreativeAssetsBatchRequestLanguageMN ->
+            "MN"
+
+        CatalogsCreativeAssetsBatchRequestLanguageMS ->
+            "MS"
+
+        CatalogsCreativeAssetsBatchRequestLanguageMY ->
+            "MY"
+
+        CatalogsCreativeAssetsBatchRequestLanguageNB ->
+            "NB"
+
+        CatalogsCreativeAssetsBatchRequestLanguageNE ->
+            "NE"
+
+        CatalogsCreativeAssetsBatchRequestLanguageNL ->
+            "NL"
+
+        CatalogsCreativeAssetsBatchRequestLanguageNO ->
+            "NO"
+
+        CatalogsCreativeAssetsBatchRequestLanguagePL ->
+            "PL"
+
+        CatalogsCreativeAssetsBatchRequestLanguagePT ->
+            "PT"
+
+        CatalogsCreativeAssetsBatchRequestLanguageRO ->
+            "RO"
+
+        CatalogsCreativeAssetsBatchRequestLanguageRU ->
+            "RU"
+
+        CatalogsCreativeAssetsBatchRequestLanguageSK ->
+            "SK"
+
+        CatalogsCreativeAssetsBatchRequestLanguageSL ->
+            "SL"
+
+        CatalogsCreativeAssetsBatchRequestLanguageSQ ->
+            "SQ"
+
+        CatalogsCreativeAssetsBatchRequestLanguageSR ->
+            "SR"
+
+        CatalogsCreativeAssetsBatchRequestLanguageSV ->
+            "SV"
+
+        CatalogsCreativeAssetsBatchRequestLanguageTL ->
+            "TL"
+
+        CatalogsCreativeAssetsBatchRequestLanguageUK ->
+            "UK"
+
+        CatalogsCreativeAssetsBatchRequestLanguageVI ->
+            "VI"
+
+        CatalogsCreativeAssetsBatchRequestLanguageTE ->
+            "TE"
+
+        CatalogsCreativeAssetsBatchRequestLanguageTH ->
+            "TH"
+
+        CatalogsCreativeAssetsBatchRequestLanguageTR ->
+            "TR"
+
+        CatalogsCreativeAssetsBatchRequestLanguageXX ->
+            "XX"
+
+        CatalogsCreativeAssetsBatchRequestLanguageZH ->
+            "ZH"
+
+
+encodeCatalogsCreativeAssetsBatchRequestLanguage : CatalogsCreativeAssetsBatchRequestLanguage -> Json.Encode.Value
+encodeCatalogsCreativeAssetsBatchRequestLanguage =
+    Json.Encode.string << stringFromCatalogsCreativeAssetsBatchRequestLanguage
 
 
 
@@ -25302,7 +27575,7 @@ encodeCatalogsCreativeAssetsFeedsCreateRequestPairs model =
             , maybeEncodeNullable "preferred_processing_schedule" encodeCatalogsFeedProcessingSchedule model.preferredProcessingSchedule
             , encode "catalog_type" encodeCatalogsType model.catalogType
             , maybeEncodeNullable "catalog_id" Json.Encode.string model.catalogId
-            , maybeEncode "status" Json.Encode.string model.status
+            , maybeEncode "status" encodeCatalogsStatus model.status
             ]
     in
     pairs
@@ -27510,7 +29783,7 @@ encodeCatalogsFeedsCreateRequestPairs model =
             , maybeEncodeNullable "preferred_processing_schedule" encodeCatalogsFeedProcessingSchedule model.preferredProcessingSchedule
             , maybeEncode "default_country" encodeCountry model.defaultCountry
             , maybeEncodeNullable "default_availability" encodeProductAvailabilityType model.defaultAvailability
-            , maybeEncode "status" Json.Encode.string model.status
+            , maybeEncode "status" encodeCatalogsStatus model.status
             ]
     in
     pairs
@@ -27735,7 +30008,7 @@ encodeCatalogsHotelBatchRequestPairs model =
         pairs =
             [ encode "catalog_type" encodeCatalogsHotelBatchRequestCatalogType model.catalogType
             , encode "country" encodeCountry model.country
-            , encode "language" encodeCatalogsItemsRequestLanguage model.language
+            , encode "language" encodeCatalogsHotelBatchRequestLanguage model.language
             , encode "items" (Json.Encode.list encodeCatalogsHotelBatchItem) model.items
             , maybeEncode "catalog_id" Json.Encode.string model.catalogId
             ]
@@ -27752,6 +30025,336 @@ stringFromCatalogsHotelBatchRequestCatalogType model =
 encodeCatalogsHotelBatchRequestCatalogType : CatalogsHotelBatchRequestCatalogType -> Json.Encode.Value
 encodeCatalogsHotelBatchRequestCatalogType =
     Json.Encode.string << stringFromCatalogsHotelBatchRequestCatalogType
+
+
+stringFromCatalogsHotelBatchRequestLanguage : CatalogsHotelBatchRequestLanguage -> String
+stringFromCatalogsHotelBatchRequestLanguage model =
+    case model of
+        CatalogsHotelBatchRequestLanguageAfZA ->
+            "af-ZA"
+
+        CatalogsHotelBatchRequestLanguageArSA ->
+            "ar-SA"
+
+        CatalogsHotelBatchRequestLanguageBgBG ->
+            "bg-BG"
+
+        CatalogsHotelBatchRequestLanguageBnIN ->
+            "bn-IN"
+
+        CatalogsHotelBatchRequestLanguageCsCZ ->
+            "cs-CZ"
+
+        CatalogsHotelBatchRequestLanguageDaDK ->
+            "da-DK"
+
+        CatalogsHotelBatchRequestLanguageDe ->
+            "de"
+
+        CatalogsHotelBatchRequestLanguageElGR ->
+            "el-GR"
+
+        CatalogsHotelBatchRequestLanguageEnAU ->
+            "en-AU"
+
+        CatalogsHotelBatchRequestLanguageEnCA ->
+            "en-CA"
+
+        CatalogsHotelBatchRequestLanguageEnGB ->
+            "en-GB"
+
+        CatalogsHotelBatchRequestLanguageEnIN ->
+            "en-IN"
+
+        CatalogsHotelBatchRequestLanguageEnUS ->
+            "en-US"
+
+        CatalogsHotelBatchRequestLanguageEs419 ->
+            "es-419"
+
+        CatalogsHotelBatchRequestLanguageEsAR ->
+            "es-AR"
+
+        CatalogsHotelBatchRequestLanguageEsES ->
+            "es-ES"
+
+        CatalogsHotelBatchRequestLanguageEsMX ->
+            "es-MX"
+
+        CatalogsHotelBatchRequestLanguageFiFI ->
+            "fi-FI"
+
+        CatalogsHotelBatchRequestLanguageFr ->
+            "fr"
+
+        CatalogsHotelBatchRequestLanguageFrCA ->
+            "fr-CA"
+
+        CatalogsHotelBatchRequestLanguageHeIL ->
+            "he-IL"
+
+        CatalogsHotelBatchRequestLanguageHiIN ->
+            "hi-IN"
+
+        CatalogsHotelBatchRequestLanguageHrHR ->
+            "hr-HR"
+
+        CatalogsHotelBatchRequestLanguageHuHU ->
+            "hu-HU"
+
+        CatalogsHotelBatchRequestLanguageIdID ->
+            "id-ID"
+
+        CatalogsHotelBatchRequestLanguageIt ->
+            "it"
+
+        CatalogsHotelBatchRequestLanguageJa ->
+            "ja"
+
+        CatalogsHotelBatchRequestLanguageKoKR ->
+            "ko-KR"
+
+        CatalogsHotelBatchRequestLanguageMsMY ->
+            "ms-MY"
+
+        CatalogsHotelBatchRequestLanguageNbNO ->
+            "nb-NO"
+
+        CatalogsHotelBatchRequestLanguageNl ->
+            "nl"
+
+        CatalogsHotelBatchRequestLanguagePlPL ->
+            "pl-PL"
+
+        CatalogsHotelBatchRequestLanguagePtBR ->
+            "pt-BR"
+
+        CatalogsHotelBatchRequestLanguagePtPT ->
+            "pt-PT"
+
+        CatalogsHotelBatchRequestLanguageRoRO ->
+            "ro-RO"
+
+        CatalogsHotelBatchRequestLanguageRuRU ->
+            "ru-RU"
+
+        CatalogsHotelBatchRequestLanguageSkSK ->
+            "sk-SK"
+
+        CatalogsHotelBatchRequestLanguageSvSE ->
+            "sv-SE"
+
+        CatalogsHotelBatchRequestLanguageTeIN ->
+            "te-IN"
+
+        CatalogsHotelBatchRequestLanguageThTH ->
+            "th-TH"
+
+        CatalogsHotelBatchRequestLanguageTlPH ->
+            "tl-PH"
+
+        CatalogsHotelBatchRequestLanguageTr ->
+            "tr"
+
+        CatalogsHotelBatchRequestLanguageUkUA ->
+            "uk-UA"
+
+        CatalogsHotelBatchRequestLanguageViVN ->
+            "vi-VN"
+
+        CatalogsHotelBatchRequestLanguageZhCN ->
+            "zh-CN"
+
+        CatalogsHotelBatchRequestLanguageZhTW ->
+            "zh-TW"
+
+        CatalogsHotelBatchRequestLanguageAM ->
+            "AM"
+
+        CatalogsHotelBatchRequestLanguageAR ->
+            "AR"
+
+        CatalogsHotelBatchRequestLanguageAZ ->
+            "AZ"
+
+        CatalogsHotelBatchRequestLanguageBG ->
+            "BG"
+
+        CatalogsHotelBatchRequestLanguageBN ->
+            "BN"
+
+        CatalogsHotelBatchRequestLanguageBS ->
+            "BS"
+
+        CatalogsHotelBatchRequestLanguageCA ->
+            "CA"
+
+        CatalogsHotelBatchRequestLanguageCS ->
+            "CS"
+
+        CatalogsHotelBatchRequestLanguageDA ->
+            "DA"
+
+        CatalogsHotelBatchRequestLanguageDV ->
+            "DV"
+
+        CatalogsHotelBatchRequestLanguageDZ ->
+            "DZ"
+
+        CatalogsHotelBatchRequestLanguageDE ->
+            "DE"
+
+        CatalogsHotelBatchRequestLanguageEL ->
+            "EL"
+
+        CatalogsHotelBatchRequestLanguageEN ->
+            "EN"
+
+        CatalogsHotelBatchRequestLanguageES ->
+            "ES"
+
+        CatalogsHotelBatchRequestLanguageET ->
+            "ET"
+
+        CatalogsHotelBatchRequestLanguageFA ->
+            "FA"
+
+        CatalogsHotelBatchRequestLanguageFI ->
+            "FI"
+
+        CatalogsHotelBatchRequestLanguageFR ->
+            "FR"
+
+        CatalogsHotelBatchRequestLanguageHE ->
+            "HE"
+
+        CatalogsHotelBatchRequestLanguageHI ->
+            "HI"
+
+        CatalogsHotelBatchRequestLanguageHR ->
+            "HR"
+
+        CatalogsHotelBatchRequestLanguageHU ->
+            "HU"
+
+        CatalogsHotelBatchRequestLanguageHY ->
+            "HY"
+
+        CatalogsHotelBatchRequestLanguageID ->
+            "ID"
+
+        CatalogsHotelBatchRequestLanguageIN ->
+            "IN"
+
+        CatalogsHotelBatchRequestLanguageIS ->
+            "IS"
+
+        CatalogsHotelBatchRequestLanguageIT ->
+            "IT"
+
+        CatalogsHotelBatchRequestLanguageIW ->
+            "IW"
+
+        CatalogsHotelBatchRequestLanguageJA ->
+            "JA"
+
+        CatalogsHotelBatchRequestLanguageKA ->
+            "KA"
+
+        CatalogsHotelBatchRequestLanguageKM ->
+            "KM"
+
+        CatalogsHotelBatchRequestLanguageKO ->
+            "KO"
+
+        CatalogsHotelBatchRequestLanguageLO ->
+            "LO"
+
+        CatalogsHotelBatchRequestLanguageLT ->
+            "LT"
+
+        CatalogsHotelBatchRequestLanguageLV ->
+            "LV"
+
+        CatalogsHotelBatchRequestLanguageMK ->
+            "MK"
+
+        CatalogsHotelBatchRequestLanguageMN ->
+            "MN"
+
+        CatalogsHotelBatchRequestLanguageMS ->
+            "MS"
+
+        CatalogsHotelBatchRequestLanguageMY ->
+            "MY"
+
+        CatalogsHotelBatchRequestLanguageNB ->
+            "NB"
+
+        CatalogsHotelBatchRequestLanguageNE ->
+            "NE"
+
+        CatalogsHotelBatchRequestLanguageNL ->
+            "NL"
+
+        CatalogsHotelBatchRequestLanguageNO ->
+            "NO"
+
+        CatalogsHotelBatchRequestLanguagePL ->
+            "PL"
+
+        CatalogsHotelBatchRequestLanguagePT ->
+            "PT"
+
+        CatalogsHotelBatchRequestLanguageRO ->
+            "RO"
+
+        CatalogsHotelBatchRequestLanguageRU ->
+            "RU"
+
+        CatalogsHotelBatchRequestLanguageSK ->
+            "SK"
+
+        CatalogsHotelBatchRequestLanguageSL ->
+            "SL"
+
+        CatalogsHotelBatchRequestLanguageSQ ->
+            "SQ"
+
+        CatalogsHotelBatchRequestLanguageSR ->
+            "SR"
+
+        CatalogsHotelBatchRequestLanguageSV ->
+            "SV"
+
+        CatalogsHotelBatchRequestLanguageTL ->
+            "TL"
+
+        CatalogsHotelBatchRequestLanguageUK ->
+            "UK"
+
+        CatalogsHotelBatchRequestLanguageVI ->
+            "VI"
+
+        CatalogsHotelBatchRequestLanguageTE ->
+            "TE"
+
+        CatalogsHotelBatchRequestLanguageTH ->
+            "TH"
+
+        CatalogsHotelBatchRequestLanguageTR ->
+            "TR"
+
+        CatalogsHotelBatchRequestLanguageXX ->
+            "XX"
+
+        CatalogsHotelBatchRequestLanguageZH ->
+            "ZH"
+
+
+encodeCatalogsHotelBatchRequestLanguage : CatalogsHotelBatchRequestLanguage -> Json.Encode.Value
+encodeCatalogsHotelBatchRequestLanguage =
+    Json.Encode.string << stringFromCatalogsHotelBatchRequestLanguage
 
 
 
@@ -27810,7 +30413,7 @@ encodeCatalogsHotelFeedsCreateRequestPairs model =
             , maybeEncodeNullable "preferred_processing_schedule" encodeCatalogsFeedProcessingSchedule model.preferredProcessingSchedule
             , encode "catalog_type" encodeCatalogsType model.catalogType
             , maybeEncodeNullable "catalog_id" Json.Encode.string model.catalogId
-            , maybeEncode "status" Json.Encode.string model.status
+            , maybeEncode "status" encodeCatalogsStatus model.status
             ]
     in
     pairs
@@ -28779,12 +31382,342 @@ encodeCatalogsItemsCreateBatchRequestPairs model =
     let
         pairs =
             [ encode "country" encodeCountry model.country
-            , encode "language" encodeCatalogsItemsRequestLanguage model.language
+            , encode "language" encodeCatalogsItemsCreateBatchRequestLanguage model.language
             , encode "operation" encodeBatchOperation model.operation
             , encode "items" (Json.Encode.list encodeItemCreateBatchRecord) model.items
             ]
     in
     pairs
+
+stringFromCatalogsItemsCreateBatchRequestLanguage : CatalogsItemsCreateBatchRequestLanguage -> String
+stringFromCatalogsItemsCreateBatchRequestLanguage model =
+    case model of
+        CatalogsItemsCreateBatchRequestLanguageAfZA ->
+            "af-ZA"
+
+        CatalogsItemsCreateBatchRequestLanguageArSA ->
+            "ar-SA"
+
+        CatalogsItemsCreateBatchRequestLanguageBgBG ->
+            "bg-BG"
+
+        CatalogsItemsCreateBatchRequestLanguageBnIN ->
+            "bn-IN"
+
+        CatalogsItemsCreateBatchRequestLanguageCsCZ ->
+            "cs-CZ"
+
+        CatalogsItemsCreateBatchRequestLanguageDaDK ->
+            "da-DK"
+
+        CatalogsItemsCreateBatchRequestLanguageDe ->
+            "de"
+
+        CatalogsItemsCreateBatchRequestLanguageElGR ->
+            "el-GR"
+
+        CatalogsItemsCreateBatchRequestLanguageEnAU ->
+            "en-AU"
+
+        CatalogsItemsCreateBatchRequestLanguageEnCA ->
+            "en-CA"
+
+        CatalogsItemsCreateBatchRequestLanguageEnGB ->
+            "en-GB"
+
+        CatalogsItemsCreateBatchRequestLanguageEnIN ->
+            "en-IN"
+
+        CatalogsItemsCreateBatchRequestLanguageEnUS ->
+            "en-US"
+
+        CatalogsItemsCreateBatchRequestLanguageEs419 ->
+            "es-419"
+
+        CatalogsItemsCreateBatchRequestLanguageEsAR ->
+            "es-AR"
+
+        CatalogsItemsCreateBatchRequestLanguageEsES ->
+            "es-ES"
+
+        CatalogsItemsCreateBatchRequestLanguageEsMX ->
+            "es-MX"
+
+        CatalogsItemsCreateBatchRequestLanguageFiFI ->
+            "fi-FI"
+
+        CatalogsItemsCreateBatchRequestLanguageFr ->
+            "fr"
+
+        CatalogsItemsCreateBatchRequestLanguageFrCA ->
+            "fr-CA"
+
+        CatalogsItemsCreateBatchRequestLanguageHeIL ->
+            "he-IL"
+
+        CatalogsItemsCreateBatchRequestLanguageHiIN ->
+            "hi-IN"
+
+        CatalogsItemsCreateBatchRequestLanguageHrHR ->
+            "hr-HR"
+
+        CatalogsItemsCreateBatchRequestLanguageHuHU ->
+            "hu-HU"
+
+        CatalogsItemsCreateBatchRequestLanguageIdID ->
+            "id-ID"
+
+        CatalogsItemsCreateBatchRequestLanguageIt ->
+            "it"
+
+        CatalogsItemsCreateBatchRequestLanguageJa ->
+            "ja"
+
+        CatalogsItemsCreateBatchRequestLanguageKoKR ->
+            "ko-KR"
+
+        CatalogsItemsCreateBatchRequestLanguageMsMY ->
+            "ms-MY"
+
+        CatalogsItemsCreateBatchRequestLanguageNbNO ->
+            "nb-NO"
+
+        CatalogsItemsCreateBatchRequestLanguageNl ->
+            "nl"
+
+        CatalogsItemsCreateBatchRequestLanguagePlPL ->
+            "pl-PL"
+
+        CatalogsItemsCreateBatchRequestLanguagePtBR ->
+            "pt-BR"
+
+        CatalogsItemsCreateBatchRequestLanguagePtPT ->
+            "pt-PT"
+
+        CatalogsItemsCreateBatchRequestLanguageRoRO ->
+            "ro-RO"
+
+        CatalogsItemsCreateBatchRequestLanguageRuRU ->
+            "ru-RU"
+
+        CatalogsItemsCreateBatchRequestLanguageSkSK ->
+            "sk-SK"
+
+        CatalogsItemsCreateBatchRequestLanguageSvSE ->
+            "sv-SE"
+
+        CatalogsItemsCreateBatchRequestLanguageTeIN ->
+            "te-IN"
+
+        CatalogsItemsCreateBatchRequestLanguageThTH ->
+            "th-TH"
+
+        CatalogsItemsCreateBatchRequestLanguageTlPH ->
+            "tl-PH"
+
+        CatalogsItemsCreateBatchRequestLanguageTr ->
+            "tr"
+
+        CatalogsItemsCreateBatchRequestLanguageUkUA ->
+            "uk-UA"
+
+        CatalogsItemsCreateBatchRequestLanguageViVN ->
+            "vi-VN"
+
+        CatalogsItemsCreateBatchRequestLanguageZhCN ->
+            "zh-CN"
+
+        CatalogsItemsCreateBatchRequestLanguageZhTW ->
+            "zh-TW"
+
+        CatalogsItemsCreateBatchRequestLanguageAM ->
+            "AM"
+
+        CatalogsItemsCreateBatchRequestLanguageAR ->
+            "AR"
+
+        CatalogsItemsCreateBatchRequestLanguageAZ ->
+            "AZ"
+
+        CatalogsItemsCreateBatchRequestLanguageBG ->
+            "BG"
+
+        CatalogsItemsCreateBatchRequestLanguageBN ->
+            "BN"
+
+        CatalogsItemsCreateBatchRequestLanguageBS ->
+            "BS"
+
+        CatalogsItemsCreateBatchRequestLanguageCA ->
+            "CA"
+
+        CatalogsItemsCreateBatchRequestLanguageCS ->
+            "CS"
+
+        CatalogsItemsCreateBatchRequestLanguageDA ->
+            "DA"
+
+        CatalogsItemsCreateBatchRequestLanguageDV ->
+            "DV"
+
+        CatalogsItemsCreateBatchRequestLanguageDZ ->
+            "DZ"
+
+        CatalogsItemsCreateBatchRequestLanguageDE ->
+            "DE"
+
+        CatalogsItemsCreateBatchRequestLanguageEL ->
+            "EL"
+
+        CatalogsItemsCreateBatchRequestLanguageEN ->
+            "EN"
+
+        CatalogsItemsCreateBatchRequestLanguageES ->
+            "ES"
+
+        CatalogsItemsCreateBatchRequestLanguageET ->
+            "ET"
+
+        CatalogsItemsCreateBatchRequestLanguageFA ->
+            "FA"
+
+        CatalogsItemsCreateBatchRequestLanguageFI ->
+            "FI"
+
+        CatalogsItemsCreateBatchRequestLanguageFR ->
+            "FR"
+
+        CatalogsItemsCreateBatchRequestLanguageHE ->
+            "HE"
+
+        CatalogsItemsCreateBatchRequestLanguageHI ->
+            "HI"
+
+        CatalogsItemsCreateBatchRequestLanguageHR ->
+            "HR"
+
+        CatalogsItemsCreateBatchRequestLanguageHU ->
+            "HU"
+
+        CatalogsItemsCreateBatchRequestLanguageHY ->
+            "HY"
+
+        CatalogsItemsCreateBatchRequestLanguageID ->
+            "ID"
+
+        CatalogsItemsCreateBatchRequestLanguageIN ->
+            "IN"
+
+        CatalogsItemsCreateBatchRequestLanguageIS ->
+            "IS"
+
+        CatalogsItemsCreateBatchRequestLanguageIT ->
+            "IT"
+
+        CatalogsItemsCreateBatchRequestLanguageIW ->
+            "IW"
+
+        CatalogsItemsCreateBatchRequestLanguageJA ->
+            "JA"
+
+        CatalogsItemsCreateBatchRequestLanguageKA ->
+            "KA"
+
+        CatalogsItemsCreateBatchRequestLanguageKM ->
+            "KM"
+
+        CatalogsItemsCreateBatchRequestLanguageKO ->
+            "KO"
+
+        CatalogsItemsCreateBatchRequestLanguageLO ->
+            "LO"
+
+        CatalogsItemsCreateBatchRequestLanguageLT ->
+            "LT"
+
+        CatalogsItemsCreateBatchRequestLanguageLV ->
+            "LV"
+
+        CatalogsItemsCreateBatchRequestLanguageMK ->
+            "MK"
+
+        CatalogsItemsCreateBatchRequestLanguageMN ->
+            "MN"
+
+        CatalogsItemsCreateBatchRequestLanguageMS ->
+            "MS"
+
+        CatalogsItemsCreateBatchRequestLanguageMY ->
+            "MY"
+
+        CatalogsItemsCreateBatchRequestLanguageNB ->
+            "NB"
+
+        CatalogsItemsCreateBatchRequestLanguageNE ->
+            "NE"
+
+        CatalogsItemsCreateBatchRequestLanguageNL ->
+            "NL"
+
+        CatalogsItemsCreateBatchRequestLanguageNO ->
+            "NO"
+
+        CatalogsItemsCreateBatchRequestLanguagePL ->
+            "PL"
+
+        CatalogsItemsCreateBatchRequestLanguagePT ->
+            "PT"
+
+        CatalogsItemsCreateBatchRequestLanguageRO ->
+            "RO"
+
+        CatalogsItemsCreateBatchRequestLanguageRU ->
+            "RU"
+
+        CatalogsItemsCreateBatchRequestLanguageSK ->
+            "SK"
+
+        CatalogsItemsCreateBatchRequestLanguageSL ->
+            "SL"
+
+        CatalogsItemsCreateBatchRequestLanguageSQ ->
+            "SQ"
+
+        CatalogsItemsCreateBatchRequestLanguageSR ->
+            "SR"
+
+        CatalogsItemsCreateBatchRequestLanguageSV ->
+            "SV"
+
+        CatalogsItemsCreateBatchRequestLanguageTL ->
+            "TL"
+
+        CatalogsItemsCreateBatchRequestLanguageUK ->
+            "UK"
+
+        CatalogsItemsCreateBatchRequestLanguageVI ->
+            "VI"
+
+        CatalogsItemsCreateBatchRequestLanguageTE ->
+            "TE"
+
+        CatalogsItemsCreateBatchRequestLanguageTH ->
+            "TH"
+
+        CatalogsItemsCreateBatchRequestLanguageTR ->
+            "TR"
+
+        CatalogsItemsCreateBatchRequestLanguageXX ->
+            "XX"
+
+        CatalogsItemsCreateBatchRequestLanguageZH ->
+            "ZH"
+
+
+encodeCatalogsItemsCreateBatchRequestLanguage : CatalogsItemsCreateBatchRequestLanguage -> Json.Encode.Value
+encodeCatalogsItemsCreateBatchRequestLanguage =
+    Json.Encode.string << stringFromCatalogsItemsCreateBatchRequestLanguage
+
 
 
 encodeCatalogsItemsDeleteBatchRequest : CatalogsItemsDeleteBatchRequest -> Json.Encode.Value
@@ -28802,12 +31735,342 @@ encodeCatalogsItemsDeleteBatchRequestPairs model =
     let
         pairs =
             [ encode "country" encodeCountry model.country
-            , encode "language" encodeCatalogsItemsRequestLanguage model.language
+            , encode "language" encodeCatalogsItemsDeleteBatchRequestLanguage model.language
             , encode "operation" encodeBatchOperation model.operation
             , encode "items" (Json.Encode.list encodeItemDeleteBatchRecord) model.items
             ]
     in
     pairs
+
+stringFromCatalogsItemsDeleteBatchRequestLanguage : CatalogsItemsDeleteBatchRequestLanguage -> String
+stringFromCatalogsItemsDeleteBatchRequestLanguage model =
+    case model of
+        CatalogsItemsDeleteBatchRequestLanguageAfZA ->
+            "af-ZA"
+
+        CatalogsItemsDeleteBatchRequestLanguageArSA ->
+            "ar-SA"
+
+        CatalogsItemsDeleteBatchRequestLanguageBgBG ->
+            "bg-BG"
+
+        CatalogsItemsDeleteBatchRequestLanguageBnIN ->
+            "bn-IN"
+
+        CatalogsItemsDeleteBatchRequestLanguageCsCZ ->
+            "cs-CZ"
+
+        CatalogsItemsDeleteBatchRequestLanguageDaDK ->
+            "da-DK"
+
+        CatalogsItemsDeleteBatchRequestLanguageDe ->
+            "de"
+
+        CatalogsItemsDeleteBatchRequestLanguageElGR ->
+            "el-GR"
+
+        CatalogsItemsDeleteBatchRequestLanguageEnAU ->
+            "en-AU"
+
+        CatalogsItemsDeleteBatchRequestLanguageEnCA ->
+            "en-CA"
+
+        CatalogsItemsDeleteBatchRequestLanguageEnGB ->
+            "en-GB"
+
+        CatalogsItemsDeleteBatchRequestLanguageEnIN ->
+            "en-IN"
+
+        CatalogsItemsDeleteBatchRequestLanguageEnUS ->
+            "en-US"
+
+        CatalogsItemsDeleteBatchRequestLanguageEs419 ->
+            "es-419"
+
+        CatalogsItemsDeleteBatchRequestLanguageEsAR ->
+            "es-AR"
+
+        CatalogsItemsDeleteBatchRequestLanguageEsES ->
+            "es-ES"
+
+        CatalogsItemsDeleteBatchRequestLanguageEsMX ->
+            "es-MX"
+
+        CatalogsItemsDeleteBatchRequestLanguageFiFI ->
+            "fi-FI"
+
+        CatalogsItemsDeleteBatchRequestLanguageFr ->
+            "fr"
+
+        CatalogsItemsDeleteBatchRequestLanguageFrCA ->
+            "fr-CA"
+
+        CatalogsItemsDeleteBatchRequestLanguageHeIL ->
+            "he-IL"
+
+        CatalogsItemsDeleteBatchRequestLanguageHiIN ->
+            "hi-IN"
+
+        CatalogsItemsDeleteBatchRequestLanguageHrHR ->
+            "hr-HR"
+
+        CatalogsItemsDeleteBatchRequestLanguageHuHU ->
+            "hu-HU"
+
+        CatalogsItemsDeleteBatchRequestLanguageIdID ->
+            "id-ID"
+
+        CatalogsItemsDeleteBatchRequestLanguageIt ->
+            "it"
+
+        CatalogsItemsDeleteBatchRequestLanguageJa ->
+            "ja"
+
+        CatalogsItemsDeleteBatchRequestLanguageKoKR ->
+            "ko-KR"
+
+        CatalogsItemsDeleteBatchRequestLanguageMsMY ->
+            "ms-MY"
+
+        CatalogsItemsDeleteBatchRequestLanguageNbNO ->
+            "nb-NO"
+
+        CatalogsItemsDeleteBatchRequestLanguageNl ->
+            "nl"
+
+        CatalogsItemsDeleteBatchRequestLanguagePlPL ->
+            "pl-PL"
+
+        CatalogsItemsDeleteBatchRequestLanguagePtBR ->
+            "pt-BR"
+
+        CatalogsItemsDeleteBatchRequestLanguagePtPT ->
+            "pt-PT"
+
+        CatalogsItemsDeleteBatchRequestLanguageRoRO ->
+            "ro-RO"
+
+        CatalogsItemsDeleteBatchRequestLanguageRuRU ->
+            "ru-RU"
+
+        CatalogsItemsDeleteBatchRequestLanguageSkSK ->
+            "sk-SK"
+
+        CatalogsItemsDeleteBatchRequestLanguageSvSE ->
+            "sv-SE"
+
+        CatalogsItemsDeleteBatchRequestLanguageTeIN ->
+            "te-IN"
+
+        CatalogsItemsDeleteBatchRequestLanguageThTH ->
+            "th-TH"
+
+        CatalogsItemsDeleteBatchRequestLanguageTlPH ->
+            "tl-PH"
+
+        CatalogsItemsDeleteBatchRequestLanguageTr ->
+            "tr"
+
+        CatalogsItemsDeleteBatchRequestLanguageUkUA ->
+            "uk-UA"
+
+        CatalogsItemsDeleteBatchRequestLanguageViVN ->
+            "vi-VN"
+
+        CatalogsItemsDeleteBatchRequestLanguageZhCN ->
+            "zh-CN"
+
+        CatalogsItemsDeleteBatchRequestLanguageZhTW ->
+            "zh-TW"
+
+        CatalogsItemsDeleteBatchRequestLanguageAM ->
+            "AM"
+
+        CatalogsItemsDeleteBatchRequestLanguageAR ->
+            "AR"
+
+        CatalogsItemsDeleteBatchRequestLanguageAZ ->
+            "AZ"
+
+        CatalogsItemsDeleteBatchRequestLanguageBG ->
+            "BG"
+
+        CatalogsItemsDeleteBatchRequestLanguageBN ->
+            "BN"
+
+        CatalogsItemsDeleteBatchRequestLanguageBS ->
+            "BS"
+
+        CatalogsItemsDeleteBatchRequestLanguageCA ->
+            "CA"
+
+        CatalogsItemsDeleteBatchRequestLanguageCS ->
+            "CS"
+
+        CatalogsItemsDeleteBatchRequestLanguageDA ->
+            "DA"
+
+        CatalogsItemsDeleteBatchRequestLanguageDV ->
+            "DV"
+
+        CatalogsItemsDeleteBatchRequestLanguageDZ ->
+            "DZ"
+
+        CatalogsItemsDeleteBatchRequestLanguageDE ->
+            "DE"
+
+        CatalogsItemsDeleteBatchRequestLanguageEL ->
+            "EL"
+
+        CatalogsItemsDeleteBatchRequestLanguageEN ->
+            "EN"
+
+        CatalogsItemsDeleteBatchRequestLanguageES ->
+            "ES"
+
+        CatalogsItemsDeleteBatchRequestLanguageET ->
+            "ET"
+
+        CatalogsItemsDeleteBatchRequestLanguageFA ->
+            "FA"
+
+        CatalogsItemsDeleteBatchRequestLanguageFI ->
+            "FI"
+
+        CatalogsItemsDeleteBatchRequestLanguageFR ->
+            "FR"
+
+        CatalogsItemsDeleteBatchRequestLanguageHE ->
+            "HE"
+
+        CatalogsItemsDeleteBatchRequestLanguageHI ->
+            "HI"
+
+        CatalogsItemsDeleteBatchRequestLanguageHR ->
+            "HR"
+
+        CatalogsItemsDeleteBatchRequestLanguageHU ->
+            "HU"
+
+        CatalogsItemsDeleteBatchRequestLanguageHY ->
+            "HY"
+
+        CatalogsItemsDeleteBatchRequestLanguageID ->
+            "ID"
+
+        CatalogsItemsDeleteBatchRequestLanguageIN ->
+            "IN"
+
+        CatalogsItemsDeleteBatchRequestLanguageIS ->
+            "IS"
+
+        CatalogsItemsDeleteBatchRequestLanguageIT ->
+            "IT"
+
+        CatalogsItemsDeleteBatchRequestLanguageIW ->
+            "IW"
+
+        CatalogsItemsDeleteBatchRequestLanguageJA ->
+            "JA"
+
+        CatalogsItemsDeleteBatchRequestLanguageKA ->
+            "KA"
+
+        CatalogsItemsDeleteBatchRequestLanguageKM ->
+            "KM"
+
+        CatalogsItemsDeleteBatchRequestLanguageKO ->
+            "KO"
+
+        CatalogsItemsDeleteBatchRequestLanguageLO ->
+            "LO"
+
+        CatalogsItemsDeleteBatchRequestLanguageLT ->
+            "LT"
+
+        CatalogsItemsDeleteBatchRequestLanguageLV ->
+            "LV"
+
+        CatalogsItemsDeleteBatchRequestLanguageMK ->
+            "MK"
+
+        CatalogsItemsDeleteBatchRequestLanguageMN ->
+            "MN"
+
+        CatalogsItemsDeleteBatchRequestLanguageMS ->
+            "MS"
+
+        CatalogsItemsDeleteBatchRequestLanguageMY ->
+            "MY"
+
+        CatalogsItemsDeleteBatchRequestLanguageNB ->
+            "NB"
+
+        CatalogsItemsDeleteBatchRequestLanguageNE ->
+            "NE"
+
+        CatalogsItemsDeleteBatchRequestLanguageNL ->
+            "NL"
+
+        CatalogsItemsDeleteBatchRequestLanguageNO ->
+            "NO"
+
+        CatalogsItemsDeleteBatchRequestLanguagePL ->
+            "PL"
+
+        CatalogsItemsDeleteBatchRequestLanguagePT ->
+            "PT"
+
+        CatalogsItemsDeleteBatchRequestLanguageRO ->
+            "RO"
+
+        CatalogsItemsDeleteBatchRequestLanguageRU ->
+            "RU"
+
+        CatalogsItemsDeleteBatchRequestLanguageSK ->
+            "SK"
+
+        CatalogsItemsDeleteBatchRequestLanguageSL ->
+            "SL"
+
+        CatalogsItemsDeleteBatchRequestLanguageSQ ->
+            "SQ"
+
+        CatalogsItemsDeleteBatchRequestLanguageSR ->
+            "SR"
+
+        CatalogsItemsDeleteBatchRequestLanguageSV ->
+            "SV"
+
+        CatalogsItemsDeleteBatchRequestLanguageTL ->
+            "TL"
+
+        CatalogsItemsDeleteBatchRequestLanguageUK ->
+            "UK"
+
+        CatalogsItemsDeleteBatchRequestLanguageVI ->
+            "VI"
+
+        CatalogsItemsDeleteBatchRequestLanguageTE ->
+            "TE"
+
+        CatalogsItemsDeleteBatchRequestLanguageTH ->
+            "TH"
+
+        CatalogsItemsDeleteBatchRequestLanguageTR ->
+            "TR"
+
+        CatalogsItemsDeleteBatchRequestLanguageXX ->
+            "XX"
+
+        CatalogsItemsDeleteBatchRequestLanguageZH ->
+            "ZH"
+
+
+encodeCatalogsItemsDeleteBatchRequestLanguage : CatalogsItemsDeleteBatchRequestLanguage -> Json.Encode.Value
+encodeCatalogsItemsDeleteBatchRequestLanguage =
+    Json.Encode.string << stringFromCatalogsItemsDeleteBatchRequestLanguage
+
 
 
 encodeCatalogsItemsDeleteDiscontinuedBatchRequest : CatalogsItemsDeleteDiscontinuedBatchRequest -> Json.Encode.Value
@@ -28825,12 +32088,342 @@ encodeCatalogsItemsDeleteDiscontinuedBatchRequestPairs model =
     let
         pairs =
             [ encode "country" encodeCountry model.country
-            , encode "language" encodeCatalogsItemsRequestLanguage model.language
+            , encode "language" encodeCatalogsItemsDeleteDiscontinuedBatchRequestLanguage model.language
             , encode "operation" encodeBatchOperation model.operation
             , encode "items" (Json.Encode.list encodeItemDeleteDiscontinuedBatchRecord) model.items
             ]
     in
     pairs
+
+stringFromCatalogsItemsDeleteDiscontinuedBatchRequestLanguage : CatalogsItemsDeleteDiscontinuedBatchRequestLanguage -> String
+stringFromCatalogsItemsDeleteDiscontinuedBatchRequestLanguage model =
+    case model of
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAfZA ->
+            "af-ZA"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageArSA ->
+            "ar-SA"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBgBG ->
+            "bg-BG"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBnIN ->
+            "bn-IN"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageCsCZ ->
+            "cs-CZ"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDaDK ->
+            "da-DK"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDe ->
+            "de"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageElGR ->
+            "el-GR"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnAU ->
+            "en-AU"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnCA ->
+            "en-CA"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnGB ->
+            "en-GB"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnIN ->
+            "en-IN"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnUS ->
+            "en-US"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEs419 ->
+            "es-419"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEsAR ->
+            "es-AR"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEsES ->
+            "es-ES"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEsMX ->
+            "es-MX"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFiFI ->
+            "fi-FI"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFr ->
+            "fr"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFrCA ->
+            "fr-CA"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHeIL ->
+            "he-IL"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHiIN ->
+            "hi-IN"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHrHR ->
+            "hr-HR"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHuHU ->
+            "hu-HU"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIdID ->
+            "id-ID"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIt ->
+            "it"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageJa ->
+            "ja"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKoKR ->
+            "ko-KR"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMsMY ->
+            "ms-MY"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNbNO ->
+            "nb-NO"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNl ->
+            "nl"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePlPL ->
+            "pl-PL"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePtBR ->
+            "pt-BR"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePtPT ->
+            "pt-PT"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRoRO ->
+            "ro-RO"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRuRU ->
+            "ru-RU"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSkSK ->
+            "sk-SK"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSvSE ->
+            "sv-SE"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTeIN ->
+            "te-IN"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageThTH ->
+            "th-TH"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTlPH ->
+            "tl-PH"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTr ->
+            "tr"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageUkUA ->
+            "uk-UA"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageViVN ->
+            "vi-VN"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageZhCN ->
+            "zh-CN"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageZhTW ->
+            "zh-TW"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAM ->
+            "AM"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAR ->
+            "AR"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAZ ->
+            "AZ"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBG ->
+            "BG"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBN ->
+            "BN"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBS ->
+            "BS"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageCA ->
+            "CA"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageCS ->
+            "CS"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDA ->
+            "DA"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDV ->
+            "DV"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDZ ->
+            "DZ"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDE ->
+            "DE"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEL ->
+            "EL"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEN ->
+            "EN"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageES ->
+            "ES"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageET ->
+            "ET"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFA ->
+            "FA"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFI ->
+            "FI"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFR ->
+            "FR"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHE ->
+            "HE"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHI ->
+            "HI"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHR ->
+            "HR"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHU ->
+            "HU"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHY ->
+            "HY"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageID ->
+            "ID"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIN ->
+            "IN"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIS ->
+            "IS"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIT ->
+            "IT"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIW ->
+            "IW"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageJA ->
+            "JA"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKA ->
+            "KA"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKM ->
+            "KM"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKO ->
+            "KO"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageLO ->
+            "LO"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageLT ->
+            "LT"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageLV ->
+            "LV"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMK ->
+            "MK"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMN ->
+            "MN"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMS ->
+            "MS"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMY ->
+            "MY"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNB ->
+            "NB"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNE ->
+            "NE"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNL ->
+            "NL"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNO ->
+            "NO"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePL ->
+            "PL"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePT ->
+            "PT"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRO ->
+            "RO"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRU ->
+            "RU"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSK ->
+            "SK"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSL ->
+            "SL"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSQ ->
+            "SQ"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSR ->
+            "SR"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSV ->
+            "SV"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTL ->
+            "TL"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageUK ->
+            "UK"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageVI ->
+            "VI"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTE ->
+            "TE"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTH ->
+            "TH"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTR ->
+            "TR"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageXX ->
+            "XX"
+
+        CatalogsItemsDeleteDiscontinuedBatchRequestLanguageZH ->
+            "ZH"
+
+
+encodeCatalogsItemsDeleteDiscontinuedBatchRequestLanguage : CatalogsItemsDeleteDiscontinuedBatchRequestLanguage -> Json.Encode.Value
+encodeCatalogsItemsDeleteDiscontinuedBatchRequestLanguage =
+    Json.Encode.string << stringFromCatalogsItemsDeleteDiscontinuedBatchRequestLanguage
+
 
 
 encodeCatalogsItemsFilters : CatalogsItemsFilters -> Json.Encode.Value
@@ -28884,24 +32477,335 @@ encodeCatalogsItemsRequestPairs model =
     in
     pairs
 
+stringFromCatalogsItemsRequestLanguage : CatalogsItemsRequestLanguage -> String
+stringFromCatalogsItemsRequestLanguage model =
+    case model of
+        CatalogsItemsRequestLanguageAfZA ->
+            "af-ZA"
+
+        CatalogsItemsRequestLanguageArSA ->
+            "ar-SA"
+
+        CatalogsItemsRequestLanguageBgBG ->
+            "bg-BG"
+
+        CatalogsItemsRequestLanguageBnIN ->
+            "bn-IN"
+
+        CatalogsItemsRequestLanguageCsCZ ->
+            "cs-CZ"
+
+        CatalogsItemsRequestLanguageDaDK ->
+            "da-DK"
+
+        CatalogsItemsRequestLanguageDe ->
+            "de"
+
+        CatalogsItemsRequestLanguageElGR ->
+            "el-GR"
+
+        CatalogsItemsRequestLanguageEnAU ->
+            "en-AU"
+
+        CatalogsItemsRequestLanguageEnCA ->
+            "en-CA"
+
+        CatalogsItemsRequestLanguageEnGB ->
+            "en-GB"
+
+        CatalogsItemsRequestLanguageEnIN ->
+            "en-IN"
+
+        CatalogsItemsRequestLanguageEnUS ->
+            "en-US"
+
+        CatalogsItemsRequestLanguageEs419 ->
+            "es-419"
+
+        CatalogsItemsRequestLanguageEsAR ->
+            "es-AR"
+
+        CatalogsItemsRequestLanguageEsES ->
+            "es-ES"
+
+        CatalogsItemsRequestLanguageEsMX ->
+            "es-MX"
+
+        CatalogsItemsRequestLanguageFiFI ->
+            "fi-FI"
+
+        CatalogsItemsRequestLanguageFr ->
+            "fr"
+
+        CatalogsItemsRequestLanguageFrCA ->
+            "fr-CA"
+
+        CatalogsItemsRequestLanguageHeIL ->
+            "he-IL"
+
+        CatalogsItemsRequestLanguageHiIN ->
+            "hi-IN"
+
+        CatalogsItemsRequestLanguageHrHR ->
+            "hr-HR"
+
+        CatalogsItemsRequestLanguageHuHU ->
+            "hu-HU"
+
+        CatalogsItemsRequestLanguageIdID ->
+            "id-ID"
+
+        CatalogsItemsRequestLanguageIt ->
+            "it"
+
+        CatalogsItemsRequestLanguageJa ->
+            "ja"
+
+        CatalogsItemsRequestLanguageKoKR ->
+            "ko-KR"
+
+        CatalogsItemsRequestLanguageMsMY ->
+            "ms-MY"
+
+        CatalogsItemsRequestLanguageNbNO ->
+            "nb-NO"
+
+        CatalogsItemsRequestLanguageNl ->
+            "nl"
+
+        CatalogsItemsRequestLanguagePlPL ->
+            "pl-PL"
+
+        CatalogsItemsRequestLanguagePtBR ->
+            "pt-BR"
+
+        CatalogsItemsRequestLanguagePtPT ->
+            "pt-PT"
+
+        CatalogsItemsRequestLanguageRoRO ->
+            "ro-RO"
+
+        CatalogsItemsRequestLanguageRuRU ->
+            "ru-RU"
+
+        CatalogsItemsRequestLanguageSkSK ->
+            "sk-SK"
+
+        CatalogsItemsRequestLanguageSvSE ->
+            "sv-SE"
+
+        CatalogsItemsRequestLanguageTeIN ->
+            "te-IN"
+
+        CatalogsItemsRequestLanguageThTH ->
+            "th-TH"
+
+        CatalogsItemsRequestLanguageTlPH ->
+            "tl-PH"
+
+        CatalogsItemsRequestLanguageTr ->
+            "tr"
+
+        CatalogsItemsRequestLanguageUkUA ->
+            "uk-UA"
+
+        CatalogsItemsRequestLanguageViVN ->
+            "vi-VN"
+
+        CatalogsItemsRequestLanguageZhCN ->
+            "zh-CN"
+
+        CatalogsItemsRequestLanguageZhTW ->
+            "zh-TW"
+
+        CatalogsItemsRequestLanguageAM ->
+            "AM"
+
+        CatalogsItemsRequestLanguageAR ->
+            "AR"
+
+        CatalogsItemsRequestLanguageAZ ->
+            "AZ"
+
+        CatalogsItemsRequestLanguageBG ->
+            "BG"
+
+        CatalogsItemsRequestLanguageBN ->
+            "BN"
+
+        CatalogsItemsRequestLanguageBS ->
+            "BS"
+
+        CatalogsItemsRequestLanguageCA ->
+            "CA"
+
+        CatalogsItemsRequestLanguageCS ->
+            "CS"
+
+        CatalogsItemsRequestLanguageDA ->
+            "DA"
+
+        CatalogsItemsRequestLanguageDV ->
+            "DV"
+
+        CatalogsItemsRequestLanguageDZ ->
+            "DZ"
+
+        CatalogsItemsRequestLanguageDE ->
+            "DE"
+
+        CatalogsItemsRequestLanguageEL ->
+            "EL"
+
+        CatalogsItemsRequestLanguageEN ->
+            "EN"
+
+        CatalogsItemsRequestLanguageES ->
+            "ES"
+
+        CatalogsItemsRequestLanguageET ->
+            "ET"
+
+        CatalogsItemsRequestLanguageFA ->
+            "FA"
+
+        CatalogsItemsRequestLanguageFI ->
+            "FI"
+
+        CatalogsItemsRequestLanguageFR ->
+            "FR"
+
+        CatalogsItemsRequestLanguageHE ->
+            "HE"
+
+        CatalogsItemsRequestLanguageHI ->
+            "HI"
+
+        CatalogsItemsRequestLanguageHR ->
+            "HR"
+
+        CatalogsItemsRequestLanguageHU ->
+            "HU"
+
+        CatalogsItemsRequestLanguageHY ->
+            "HY"
+
+        CatalogsItemsRequestLanguageID ->
+            "ID"
+
+        CatalogsItemsRequestLanguageIN ->
+            "IN"
+
+        CatalogsItemsRequestLanguageIS ->
+            "IS"
+
+        CatalogsItemsRequestLanguageIT ->
+            "IT"
+
+        CatalogsItemsRequestLanguageIW ->
+            "IW"
+
+        CatalogsItemsRequestLanguageJA ->
+            "JA"
+
+        CatalogsItemsRequestLanguageKA ->
+            "KA"
+
+        CatalogsItemsRequestLanguageKM ->
+            "KM"
+
+        CatalogsItemsRequestLanguageKO ->
+            "KO"
+
+        CatalogsItemsRequestLanguageLO ->
+            "LO"
+
+        CatalogsItemsRequestLanguageLT ->
+            "LT"
+
+        CatalogsItemsRequestLanguageLV ->
+            "LV"
+
+        CatalogsItemsRequestLanguageMK ->
+            "MK"
+
+        CatalogsItemsRequestLanguageMN ->
+            "MN"
+
+        CatalogsItemsRequestLanguageMS ->
+            "MS"
+
+        CatalogsItemsRequestLanguageMY ->
+            "MY"
+
+        CatalogsItemsRequestLanguageNB ->
+            "NB"
+
+        CatalogsItemsRequestLanguageNE ->
+            "NE"
+
+        CatalogsItemsRequestLanguageNL ->
+            "NL"
+
+        CatalogsItemsRequestLanguageNO ->
+            "NO"
+
+        CatalogsItemsRequestLanguagePL ->
+            "PL"
+
+        CatalogsItemsRequestLanguagePT ->
+            "PT"
+
+        CatalogsItemsRequestLanguageRO ->
+            "RO"
+
+        CatalogsItemsRequestLanguageRU ->
+            "RU"
+
+        CatalogsItemsRequestLanguageSK ->
+            "SK"
+
+        CatalogsItemsRequestLanguageSL ->
+            "SL"
+
+        CatalogsItemsRequestLanguageSQ ->
+            "SQ"
+
+        CatalogsItemsRequestLanguageSR ->
+            "SR"
+
+        CatalogsItemsRequestLanguageSV ->
+            "SV"
+
+        CatalogsItemsRequestLanguageTL ->
+            "TL"
+
+        CatalogsItemsRequestLanguageUK ->
+            "UK"
+
+        CatalogsItemsRequestLanguageVI ->
+            "VI"
+
+        CatalogsItemsRequestLanguageTE ->
+            "TE"
+
+        CatalogsItemsRequestLanguageTH ->
+            "TH"
+
+        CatalogsItemsRequestLanguageTR ->
+            "TR"
+
+        CatalogsItemsRequestLanguageXX ->
+            "XX"
+
+        CatalogsItemsRequestLanguageZH ->
+            "ZH"
+
 
 encodeCatalogsItemsRequestLanguage : CatalogsItemsRequestLanguage -> Json.Encode.Value
 encodeCatalogsItemsRequestLanguage =
-    encodeObject << encodeCatalogsItemsRequestLanguagePairs
+    Json.Encode.string << stringFromCatalogsItemsRequestLanguage
 
-
-encodeCatalogsItemsRequestLanguageWithTag : ( String, String ) -> CatalogsItemsRequestLanguage -> Json.Encode.Value
-encodeCatalogsItemsRequestLanguageWithTag (tagField, tag) model =
-    encodeObject (encodeCatalogsItemsRequestLanguagePairs model ++ [ encode tagField Json.Encode.string tag ])
-
-
-encodeCatalogsItemsRequestLanguagePairs : CatalogsItemsRequestLanguage -> List EncodedField
-encodeCatalogsItemsRequestLanguagePairs model =
-    let
-        pairs =
-            ]
-    in
-    pairs
 
 
 encodeCatalogsItemsUpdateBatchRequest : CatalogsItemsUpdateBatchRequest -> Json.Encode.Value
@@ -28919,12 +32823,342 @@ encodeCatalogsItemsUpdateBatchRequestPairs model =
     let
         pairs =
             [ encode "country" encodeCountry model.country
-            , encode "language" encodeCatalogsItemsRequestLanguage model.language
+            , encode "language" encodeCatalogsItemsUpdateBatchRequestLanguage model.language
             , encode "operation" encodeBatchOperation model.operation
             , encode "items" (Json.Encode.list encodeItemUpdateBatchRecord) model.items
             ]
     in
     pairs
+
+stringFromCatalogsItemsUpdateBatchRequestLanguage : CatalogsItemsUpdateBatchRequestLanguage -> String
+stringFromCatalogsItemsUpdateBatchRequestLanguage model =
+    case model of
+        CatalogsItemsUpdateBatchRequestLanguageAfZA ->
+            "af-ZA"
+
+        CatalogsItemsUpdateBatchRequestLanguageArSA ->
+            "ar-SA"
+
+        CatalogsItemsUpdateBatchRequestLanguageBgBG ->
+            "bg-BG"
+
+        CatalogsItemsUpdateBatchRequestLanguageBnIN ->
+            "bn-IN"
+
+        CatalogsItemsUpdateBatchRequestLanguageCsCZ ->
+            "cs-CZ"
+
+        CatalogsItemsUpdateBatchRequestLanguageDaDK ->
+            "da-DK"
+
+        CatalogsItemsUpdateBatchRequestLanguageDe ->
+            "de"
+
+        CatalogsItemsUpdateBatchRequestLanguageElGR ->
+            "el-GR"
+
+        CatalogsItemsUpdateBatchRequestLanguageEnAU ->
+            "en-AU"
+
+        CatalogsItemsUpdateBatchRequestLanguageEnCA ->
+            "en-CA"
+
+        CatalogsItemsUpdateBatchRequestLanguageEnGB ->
+            "en-GB"
+
+        CatalogsItemsUpdateBatchRequestLanguageEnIN ->
+            "en-IN"
+
+        CatalogsItemsUpdateBatchRequestLanguageEnUS ->
+            "en-US"
+
+        CatalogsItemsUpdateBatchRequestLanguageEs419 ->
+            "es-419"
+
+        CatalogsItemsUpdateBatchRequestLanguageEsAR ->
+            "es-AR"
+
+        CatalogsItemsUpdateBatchRequestLanguageEsES ->
+            "es-ES"
+
+        CatalogsItemsUpdateBatchRequestLanguageEsMX ->
+            "es-MX"
+
+        CatalogsItemsUpdateBatchRequestLanguageFiFI ->
+            "fi-FI"
+
+        CatalogsItemsUpdateBatchRequestLanguageFr ->
+            "fr"
+
+        CatalogsItemsUpdateBatchRequestLanguageFrCA ->
+            "fr-CA"
+
+        CatalogsItemsUpdateBatchRequestLanguageHeIL ->
+            "he-IL"
+
+        CatalogsItemsUpdateBatchRequestLanguageHiIN ->
+            "hi-IN"
+
+        CatalogsItemsUpdateBatchRequestLanguageHrHR ->
+            "hr-HR"
+
+        CatalogsItemsUpdateBatchRequestLanguageHuHU ->
+            "hu-HU"
+
+        CatalogsItemsUpdateBatchRequestLanguageIdID ->
+            "id-ID"
+
+        CatalogsItemsUpdateBatchRequestLanguageIt ->
+            "it"
+
+        CatalogsItemsUpdateBatchRequestLanguageJa ->
+            "ja"
+
+        CatalogsItemsUpdateBatchRequestLanguageKoKR ->
+            "ko-KR"
+
+        CatalogsItemsUpdateBatchRequestLanguageMsMY ->
+            "ms-MY"
+
+        CatalogsItemsUpdateBatchRequestLanguageNbNO ->
+            "nb-NO"
+
+        CatalogsItemsUpdateBatchRequestLanguageNl ->
+            "nl"
+
+        CatalogsItemsUpdateBatchRequestLanguagePlPL ->
+            "pl-PL"
+
+        CatalogsItemsUpdateBatchRequestLanguagePtBR ->
+            "pt-BR"
+
+        CatalogsItemsUpdateBatchRequestLanguagePtPT ->
+            "pt-PT"
+
+        CatalogsItemsUpdateBatchRequestLanguageRoRO ->
+            "ro-RO"
+
+        CatalogsItemsUpdateBatchRequestLanguageRuRU ->
+            "ru-RU"
+
+        CatalogsItemsUpdateBatchRequestLanguageSkSK ->
+            "sk-SK"
+
+        CatalogsItemsUpdateBatchRequestLanguageSvSE ->
+            "sv-SE"
+
+        CatalogsItemsUpdateBatchRequestLanguageTeIN ->
+            "te-IN"
+
+        CatalogsItemsUpdateBatchRequestLanguageThTH ->
+            "th-TH"
+
+        CatalogsItemsUpdateBatchRequestLanguageTlPH ->
+            "tl-PH"
+
+        CatalogsItemsUpdateBatchRequestLanguageTr ->
+            "tr"
+
+        CatalogsItemsUpdateBatchRequestLanguageUkUA ->
+            "uk-UA"
+
+        CatalogsItemsUpdateBatchRequestLanguageViVN ->
+            "vi-VN"
+
+        CatalogsItemsUpdateBatchRequestLanguageZhCN ->
+            "zh-CN"
+
+        CatalogsItemsUpdateBatchRequestLanguageZhTW ->
+            "zh-TW"
+
+        CatalogsItemsUpdateBatchRequestLanguageAM ->
+            "AM"
+
+        CatalogsItemsUpdateBatchRequestLanguageAR ->
+            "AR"
+
+        CatalogsItemsUpdateBatchRequestLanguageAZ ->
+            "AZ"
+
+        CatalogsItemsUpdateBatchRequestLanguageBG ->
+            "BG"
+
+        CatalogsItemsUpdateBatchRequestLanguageBN ->
+            "BN"
+
+        CatalogsItemsUpdateBatchRequestLanguageBS ->
+            "BS"
+
+        CatalogsItemsUpdateBatchRequestLanguageCA ->
+            "CA"
+
+        CatalogsItemsUpdateBatchRequestLanguageCS ->
+            "CS"
+
+        CatalogsItemsUpdateBatchRequestLanguageDA ->
+            "DA"
+
+        CatalogsItemsUpdateBatchRequestLanguageDV ->
+            "DV"
+
+        CatalogsItemsUpdateBatchRequestLanguageDZ ->
+            "DZ"
+
+        CatalogsItemsUpdateBatchRequestLanguageDE ->
+            "DE"
+
+        CatalogsItemsUpdateBatchRequestLanguageEL ->
+            "EL"
+
+        CatalogsItemsUpdateBatchRequestLanguageEN ->
+            "EN"
+
+        CatalogsItemsUpdateBatchRequestLanguageES ->
+            "ES"
+
+        CatalogsItemsUpdateBatchRequestLanguageET ->
+            "ET"
+
+        CatalogsItemsUpdateBatchRequestLanguageFA ->
+            "FA"
+
+        CatalogsItemsUpdateBatchRequestLanguageFI ->
+            "FI"
+
+        CatalogsItemsUpdateBatchRequestLanguageFR ->
+            "FR"
+
+        CatalogsItemsUpdateBatchRequestLanguageHE ->
+            "HE"
+
+        CatalogsItemsUpdateBatchRequestLanguageHI ->
+            "HI"
+
+        CatalogsItemsUpdateBatchRequestLanguageHR ->
+            "HR"
+
+        CatalogsItemsUpdateBatchRequestLanguageHU ->
+            "HU"
+
+        CatalogsItemsUpdateBatchRequestLanguageHY ->
+            "HY"
+
+        CatalogsItemsUpdateBatchRequestLanguageID ->
+            "ID"
+
+        CatalogsItemsUpdateBatchRequestLanguageIN ->
+            "IN"
+
+        CatalogsItemsUpdateBatchRequestLanguageIS ->
+            "IS"
+
+        CatalogsItemsUpdateBatchRequestLanguageIT ->
+            "IT"
+
+        CatalogsItemsUpdateBatchRequestLanguageIW ->
+            "IW"
+
+        CatalogsItemsUpdateBatchRequestLanguageJA ->
+            "JA"
+
+        CatalogsItemsUpdateBatchRequestLanguageKA ->
+            "KA"
+
+        CatalogsItemsUpdateBatchRequestLanguageKM ->
+            "KM"
+
+        CatalogsItemsUpdateBatchRequestLanguageKO ->
+            "KO"
+
+        CatalogsItemsUpdateBatchRequestLanguageLO ->
+            "LO"
+
+        CatalogsItemsUpdateBatchRequestLanguageLT ->
+            "LT"
+
+        CatalogsItemsUpdateBatchRequestLanguageLV ->
+            "LV"
+
+        CatalogsItemsUpdateBatchRequestLanguageMK ->
+            "MK"
+
+        CatalogsItemsUpdateBatchRequestLanguageMN ->
+            "MN"
+
+        CatalogsItemsUpdateBatchRequestLanguageMS ->
+            "MS"
+
+        CatalogsItemsUpdateBatchRequestLanguageMY ->
+            "MY"
+
+        CatalogsItemsUpdateBatchRequestLanguageNB ->
+            "NB"
+
+        CatalogsItemsUpdateBatchRequestLanguageNE ->
+            "NE"
+
+        CatalogsItemsUpdateBatchRequestLanguageNL ->
+            "NL"
+
+        CatalogsItemsUpdateBatchRequestLanguageNO ->
+            "NO"
+
+        CatalogsItemsUpdateBatchRequestLanguagePL ->
+            "PL"
+
+        CatalogsItemsUpdateBatchRequestLanguagePT ->
+            "PT"
+
+        CatalogsItemsUpdateBatchRequestLanguageRO ->
+            "RO"
+
+        CatalogsItemsUpdateBatchRequestLanguageRU ->
+            "RU"
+
+        CatalogsItemsUpdateBatchRequestLanguageSK ->
+            "SK"
+
+        CatalogsItemsUpdateBatchRequestLanguageSL ->
+            "SL"
+
+        CatalogsItemsUpdateBatchRequestLanguageSQ ->
+            "SQ"
+
+        CatalogsItemsUpdateBatchRequestLanguageSR ->
+            "SR"
+
+        CatalogsItemsUpdateBatchRequestLanguageSV ->
+            "SV"
+
+        CatalogsItemsUpdateBatchRequestLanguageTL ->
+            "TL"
+
+        CatalogsItemsUpdateBatchRequestLanguageUK ->
+            "UK"
+
+        CatalogsItemsUpdateBatchRequestLanguageVI ->
+            "VI"
+
+        CatalogsItemsUpdateBatchRequestLanguageTE ->
+            "TE"
+
+        CatalogsItemsUpdateBatchRequestLanguageTH ->
+            "TH"
+
+        CatalogsItemsUpdateBatchRequestLanguageTR ->
+            "TR"
+
+        CatalogsItemsUpdateBatchRequestLanguageXX ->
+            "XX"
+
+        CatalogsItemsUpdateBatchRequestLanguageZH ->
+            "ZH"
+
+
+encodeCatalogsItemsUpdateBatchRequestLanguage : CatalogsItemsUpdateBatchRequestLanguage -> Json.Encode.Value
+encodeCatalogsItemsUpdateBatchRequestLanguage =
+    Json.Encode.string << stringFromCatalogsItemsUpdateBatchRequestLanguage
+
 
 
 encodeCatalogsItemsUpsertBatchRequest : CatalogsItemsUpsertBatchRequest -> Json.Encode.Value
@@ -28942,12 +33176,342 @@ encodeCatalogsItemsUpsertBatchRequestPairs model =
     let
         pairs =
             [ encode "country" encodeCountry model.country
-            , encode "language" encodeCatalogsItemsRequestLanguage model.language
+            , encode "language" encodeCatalogsItemsUpsertBatchRequestLanguage model.language
             , encode "operation" encodeBatchOperation model.operation
             , encode "items" (Json.Encode.list encodeItemUpsertBatchRecord) model.items
             ]
     in
     pairs
+
+stringFromCatalogsItemsUpsertBatchRequestLanguage : CatalogsItemsUpsertBatchRequestLanguage -> String
+stringFromCatalogsItemsUpsertBatchRequestLanguage model =
+    case model of
+        CatalogsItemsUpsertBatchRequestLanguageAfZA ->
+            "af-ZA"
+
+        CatalogsItemsUpsertBatchRequestLanguageArSA ->
+            "ar-SA"
+
+        CatalogsItemsUpsertBatchRequestLanguageBgBG ->
+            "bg-BG"
+
+        CatalogsItemsUpsertBatchRequestLanguageBnIN ->
+            "bn-IN"
+
+        CatalogsItemsUpsertBatchRequestLanguageCsCZ ->
+            "cs-CZ"
+
+        CatalogsItemsUpsertBatchRequestLanguageDaDK ->
+            "da-DK"
+
+        CatalogsItemsUpsertBatchRequestLanguageDe ->
+            "de"
+
+        CatalogsItemsUpsertBatchRequestLanguageElGR ->
+            "el-GR"
+
+        CatalogsItemsUpsertBatchRequestLanguageEnAU ->
+            "en-AU"
+
+        CatalogsItemsUpsertBatchRequestLanguageEnCA ->
+            "en-CA"
+
+        CatalogsItemsUpsertBatchRequestLanguageEnGB ->
+            "en-GB"
+
+        CatalogsItemsUpsertBatchRequestLanguageEnIN ->
+            "en-IN"
+
+        CatalogsItemsUpsertBatchRequestLanguageEnUS ->
+            "en-US"
+
+        CatalogsItemsUpsertBatchRequestLanguageEs419 ->
+            "es-419"
+
+        CatalogsItemsUpsertBatchRequestLanguageEsAR ->
+            "es-AR"
+
+        CatalogsItemsUpsertBatchRequestLanguageEsES ->
+            "es-ES"
+
+        CatalogsItemsUpsertBatchRequestLanguageEsMX ->
+            "es-MX"
+
+        CatalogsItemsUpsertBatchRequestLanguageFiFI ->
+            "fi-FI"
+
+        CatalogsItemsUpsertBatchRequestLanguageFr ->
+            "fr"
+
+        CatalogsItemsUpsertBatchRequestLanguageFrCA ->
+            "fr-CA"
+
+        CatalogsItemsUpsertBatchRequestLanguageHeIL ->
+            "he-IL"
+
+        CatalogsItemsUpsertBatchRequestLanguageHiIN ->
+            "hi-IN"
+
+        CatalogsItemsUpsertBatchRequestLanguageHrHR ->
+            "hr-HR"
+
+        CatalogsItemsUpsertBatchRequestLanguageHuHU ->
+            "hu-HU"
+
+        CatalogsItemsUpsertBatchRequestLanguageIdID ->
+            "id-ID"
+
+        CatalogsItemsUpsertBatchRequestLanguageIt ->
+            "it"
+
+        CatalogsItemsUpsertBatchRequestLanguageJa ->
+            "ja"
+
+        CatalogsItemsUpsertBatchRequestLanguageKoKR ->
+            "ko-KR"
+
+        CatalogsItemsUpsertBatchRequestLanguageMsMY ->
+            "ms-MY"
+
+        CatalogsItemsUpsertBatchRequestLanguageNbNO ->
+            "nb-NO"
+
+        CatalogsItemsUpsertBatchRequestLanguageNl ->
+            "nl"
+
+        CatalogsItemsUpsertBatchRequestLanguagePlPL ->
+            "pl-PL"
+
+        CatalogsItemsUpsertBatchRequestLanguagePtBR ->
+            "pt-BR"
+
+        CatalogsItemsUpsertBatchRequestLanguagePtPT ->
+            "pt-PT"
+
+        CatalogsItemsUpsertBatchRequestLanguageRoRO ->
+            "ro-RO"
+
+        CatalogsItemsUpsertBatchRequestLanguageRuRU ->
+            "ru-RU"
+
+        CatalogsItemsUpsertBatchRequestLanguageSkSK ->
+            "sk-SK"
+
+        CatalogsItemsUpsertBatchRequestLanguageSvSE ->
+            "sv-SE"
+
+        CatalogsItemsUpsertBatchRequestLanguageTeIN ->
+            "te-IN"
+
+        CatalogsItemsUpsertBatchRequestLanguageThTH ->
+            "th-TH"
+
+        CatalogsItemsUpsertBatchRequestLanguageTlPH ->
+            "tl-PH"
+
+        CatalogsItemsUpsertBatchRequestLanguageTr ->
+            "tr"
+
+        CatalogsItemsUpsertBatchRequestLanguageUkUA ->
+            "uk-UA"
+
+        CatalogsItemsUpsertBatchRequestLanguageViVN ->
+            "vi-VN"
+
+        CatalogsItemsUpsertBatchRequestLanguageZhCN ->
+            "zh-CN"
+
+        CatalogsItemsUpsertBatchRequestLanguageZhTW ->
+            "zh-TW"
+
+        CatalogsItemsUpsertBatchRequestLanguageAM ->
+            "AM"
+
+        CatalogsItemsUpsertBatchRequestLanguageAR ->
+            "AR"
+
+        CatalogsItemsUpsertBatchRequestLanguageAZ ->
+            "AZ"
+
+        CatalogsItemsUpsertBatchRequestLanguageBG ->
+            "BG"
+
+        CatalogsItemsUpsertBatchRequestLanguageBN ->
+            "BN"
+
+        CatalogsItemsUpsertBatchRequestLanguageBS ->
+            "BS"
+
+        CatalogsItemsUpsertBatchRequestLanguageCA ->
+            "CA"
+
+        CatalogsItemsUpsertBatchRequestLanguageCS ->
+            "CS"
+
+        CatalogsItemsUpsertBatchRequestLanguageDA ->
+            "DA"
+
+        CatalogsItemsUpsertBatchRequestLanguageDV ->
+            "DV"
+
+        CatalogsItemsUpsertBatchRequestLanguageDZ ->
+            "DZ"
+
+        CatalogsItemsUpsertBatchRequestLanguageDE ->
+            "DE"
+
+        CatalogsItemsUpsertBatchRequestLanguageEL ->
+            "EL"
+
+        CatalogsItemsUpsertBatchRequestLanguageEN ->
+            "EN"
+
+        CatalogsItemsUpsertBatchRequestLanguageES ->
+            "ES"
+
+        CatalogsItemsUpsertBatchRequestLanguageET ->
+            "ET"
+
+        CatalogsItemsUpsertBatchRequestLanguageFA ->
+            "FA"
+
+        CatalogsItemsUpsertBatchRequestLanguageFI ->
+            "FI"
+
+        CatalogsItemsUpsertBatchRequestLanguageFR ->
+            "FR"
+
+        CatalogsItemsUpsertBatchRequestLanguageHE ->
+            "HE"
+
+        CatalogsItemsUpsertBatchRequestLanguageHI ->
+            "HI"
+
+        CatalogsItemsUpsertBatchRequestLanguageHR ->
+            "HR"
+
+        CatalogsItemsUpsertBatchRequestLanguageHU ->
+            "HU"
+
+        CatalogsItemsUpsertBatchRequestLanguageHY ->
+            "HY"
+
+        CatalogsItemsUpsertBatchRequestLanguageID ->
+            "ID"
+
+        CatalogsItemsUpsertBatchRequestLanguageIN ->
+            "IN"
+
+        CatalogsItemsUpsertBatchRequestLanguageIS ->
+            "IS"
+
+        CatalogsItemsUpsertBatchRequestLanguageIT ->
+            "IT"
+
+        CatalogsItemsUpsertBatchRequestLanguageIW ->
+            "IW"
+
+        CatalogsItemsUpsertBatchRequestLanguageJA ->
+            "JA"
+
+        CatalogsItemsUpsertBatchRequestLanguageKA ->
+            "KA"
+
+        CatalogsItemsUpsertBatchRequestLanguageKM ->
+            "KM"
+
+        CatalogsItemsUpsertBatchRequestLanguageKO ->
+            "KO"
+
+        CatalogsItemsUpsertBatchRequestLanguageLO ->
+            "LO"
+
+        CatalogsItemsUpsertBatchRequestLanguageLT ->
+            "LT"
+
+        CatalogsItemsUpsertBatchRequestLanguageLV ->
+            "LV"
+
+        CatalogsItemsUpsertBatchRequestLanguageMK ->
+            "MK"
+
+        CatalogsItemsUpsertBatchRequestLanguageMN ->
+            "MN"
+
+        CatalogsItemsUpsertBatchRequestLanguageMS ->
+            "MS"
+
+        CatalogsItemsUpsertBatchRequestLanguageMY ->
+            "MY"
+
+        CatalogsItemsUpsertBatchRequestLanguageNB ->
+            "NB"
+
+        CatalogsItemsUpsertBatchRequestLanguageNE ->
+            "NE"
+
+        CatalogsItemsUpsertBatchRequestLanguageNL ->
+            "NL"
+
+        CatalogsItemsUpsertBatchRequestLanguageNO ->
+            "NO"
+
+        CatalogsItemsUpsertBatchRequestLanguagePL ->
+            "PL"
+
+        CatalogsItemsUpsertBatchRequestLanguagePT ->
+            "PT"
+
+        CatalogsItemsUpsertBatchRequestLanguageRO ->
+            "RO"
+
+        CatalogsItemsUpsertBatchRequestLanguageRU ->
+            "RU"
+
+        CatalogsItemsUpsertBatchRequestLanguageSK ->
+            "SK"
+
+        CatalogsItemsUpsertBatchRequestLanguageSL ->
+            "SL"
+
+        CatalogsItemsUpsertBatchRequestLanguageSQ ->
+            "SQ"
+
+        CatalogsItemsUpsertBatchRequestLanguageSR ->
+            "SR"
+
+        CatalogsItemsUpsertBatchRequestLanguageSV ->
+            "SV"
+
+        CatalogsItemsUpsertBatchRequestLanguageTL ->
+            "TL"
+
+        CatalogsItemsUpsertBatchRequestLanguageUK ->
+            "UK"
+
+        CatalogsItemsUpsertBatchRequestLanguageVI ->
+            "VI"
+
+        CatalogsItemsUpsertBatchRequestLanguageTE ->
+            "TE"
+
+        CatalogsItemsUpsertBatchRequestLanguageTH ->
+            "TH"
+
+        CatalogsItemsUpsertBatchRequestLanguageTR ->
+            "TR"
+
+        CatalogsItemsUpsertBatchRequestLanguageXX ->
+            "XX"
+
+        CatalogsItemsUpsertBatchRequestLanguageZH ->
+            "ZH"
+
+
+encodeCatalogsItemsUpsertBatchRequestLanguage : CatalogsItemsUpsertBatchRequestLanguage -> Json.Encode.Value
+encodeCatalogsItemsUpsertBatchRequestLanguage =
+    Json.Encode.string << stringFromCatalogsItemsUpsertBatchRequestLanguage
+
 
 
 encodeCatalogsList200Response : CatalogsList200Response -> Json.Encode.Value
@@ -29912,7 +34476,7 @@ encodeCatalogsRetailBatchRequestPairs model =
         pairs =
             [ encode "catalog_type" encodeCatalogsRetailBatchRequestCatalogType model.catalogType
             , encode "country" encodeCountry model.country
-            , encode "language" encodeCatalogsItemsRequestLanguage model.language
+            , encode "language" encodeCatalogsRetailBatchRequestLanguage model.language
             , encode "items" (Json.Encode.list encodeCatalogsRetailBatchRequestItemsInner) model.items
             ]
     in
@@ -29928,6 +34492,336 @@ stringFromCatalogsRetailBatchRequestCatalogType model =
 encodeCatalogsRetailBatchRequestCatalogType : CatalogsRetailBatchRequestCatalogType -> Json.Encode.Value
 encodeCatalogsRetailBatchRequestCatalogType =
     Json.Encode.string << stringFromCatalogsRetailBatchRequestCatalogType
+
+
+stringFromCatalogsRetailBatchRequestLanguage : CatalogsRetailBatchRequestLanguage -> String
+stringFromCatalogsRetailBatchRequestLanguage model =
+    case model of
+        CatalogsRetailBatchRequestLanguageAfZA ->
+            "af-ZA"
+
+        CatalogsRetailBatchRequestLanguageArSA ->
+            "ar-SA"
+
+        CatalogsRetailBatchRequestLanguageBgBG ->
+            "bg-BG"
+
+        CatalogsRetailBatchRequestLanguageBnIN ->
+            "bn-IN"
+
+        CatalogsRetailBatchRequestLanguageCsCZ ->
+            "cs-CZ"
+
+        CatalogsRetailBatchRequestLanguageDaDK ->
+            "da-DK"
+
+        CatalogsRetailBatchRequestLanguageDe ->
+            "de"
+
+        CatalogsRetailBatchRequestLanguageElGR ->
+            "el-GR"
+
+        CatalogsRetailBatchRequestLanguageEnAU ->
+            "en-AU"
+
+        CatalogsRetailBatchRequestLanguageEnCA ->
+            "en-CA"
+
+        CatalogsRetailBatchRequestLanguageEnGB ->
+            "en-GB"
+
+        CatalogsRetailBatchRequestLanguageEnIN ->
+            "en-IN"
+
+        CatalogsRetailBatchRequestLanguageEnUS ->
+            "en-US"
+
+        CatalogsRetailBatchRequestLanguageEs419 ->
+            "es-419"
+
+        CatalogsRetailBatchRequestLanguageEsAR ->
+            "es-AR"
+
+        CatalogsRetailBatchRequestLanguageEsES ->
+            "es-ES"
+
+        CatalogsRetailBatchRequestLanguageEsMX ->
+            "es-MX"
+
+        CatalogsRetailBatchRequestLanguageFiFI ->
+            "fi-FI"
+
+        CatalogsRetailBatchRequestLanguageFr ->
+            "fr"
+
+        CatalogsRetailBatchRequestLanguageFrCA ->
+            "fr-CA"
+
+        CatalogsRetailBatchRequestLanguageHeIL ->
+            "he-IL"
+
+        CatalogsRetailBatchRequestLanguageHiIN ->
+            "hi-IN"
+
+        CatalogsRetailBatchRequestLanguageHrHR ->
+            "hr-HR"
+
+        CatalogsRetailBatchRequestLanguageHuHU ->
+            "hu-HU"
+
+        CatalogsRetailBatchRequestLanguageIdID ->
+            "id-ID"
+
+        CatalogsRetailBatchRequestLanguageIt ->
+            "it"
+
+        CatalogsRetailBatchRequestLanguageJa ->
+            "ja"
+
+        CatalogsRetailBatchRequestLanguageKoKR ->
+            "ko-KR"
+
+        CatalogsRetailBatchRequestLanguageMsMY ->
+            "ms-MY"
+
+        CatalogsRetailBatchRequestLanguageNbNO ->
+            "nb-NO"
+
+        CatalogsRetailBatchRequestLanguageNl ->
+            "nl"
+
+        CatalogsRetailBatchRequestLanguagePlPL ->
+            "pl-PL"
+
+        CatalogsRetailBatchRequestLanguagePtBR ->
+            "pt-BR"
+
+        CatalogsRetailBatchRequestLanguagePtPT ->
+            "pt-PT"
+
+        CatalogsRetailBatchRequestLanguageRoRO ->
+            "ro-RO"
+
+        CatalogsRetailBatchRequestLanguageRuRU ->
+            "ru-RU"
+
+        CatalogsRetailBatchRequestLanguageSkSK ->
+            "sk-SK"
+
+        CatalogsRetailBatchRequestLanguageSvSE ->
+            "sv-SE"
+
+        CatalogsRetailBatchRequestLanguageTeIN ->
+            "te-IN"
+
+        CatalogsRetailBatchRequestLanguageThTH ->
+            "th-TH"
+
+        CatalogsRetailBatchRequestLanguageTlPH ->
+            "tl-PH"
+
+        CatalogsRetailBatchRequestLanguageTr ->
+            "tr"
+
+        CatalogsRetailBatchRequestLanguageUkUA ->
+            "uk-UA"
+
+        CatalogsRetailBatchRequestLanguageViVN ->
+            "vi-VN"
+
+        CatalogsRetailBatchRequestLanguageZhCN ->
+            "zh-CN"
+
+        CatalogsRetailBatchRequestLanguageZhTW ->
+            "zh-TW"
+
+        CatalogsRetailBatchRequestLanguageAM ->
+            "AM"
+
+        CatalogsRetailBatchRequestLanguageAR ->
+            "AR"
+
+        CatalogsRetailBatchRequestLanguageAZ ->
+            "AZ"
+
+        CatalogsRetailBatchRequestLanguageBG ->
+            "BG"
+
+        CatalogsRetailBatchRequestLanguageBN ->
+            "BN"
+
+        CatalogsRetailBatchRequestLanguageBS ->
+            "BS"
+
+        CatalogsRetailBatchRequestLanguageCA ->
+            "CA"
+
+        CatalogsRetailBatchRequestLanguageCS ->
+            "CS"
+
+        CatalogsRetailBatchRequestLanguageDA ->
+            "DA"
+
+        CatalogsRetailBatchRequestLanguageDV ->
+            "DV"
+
+        CatalogsRetailBatchRequestLanguageDZ ->
+            "DZ"
+
+        CatalogsRetailBatchRequestLanguageDE ->
+            "DE"
+
+        CatalogsRetailBatchRequestLanguageEL ->
+            "EL"
+
+        CatalogsRetailBatchRequestLanguageEN ->
+            "EN"
+
+        CatalogsRetailBatchRequestLanguageES ->
+            "ES"
+
+        CatalogsRetailBatchRequestLanguageET ->
+            "ET"
+
+        CatalogsRetailBatchRequestLanguageFA ->
+            "FA"
+
+        CatalogsRetailBatchRequestLanguageFI ->
+            "FI"
+
+        CatalogsRetailBatchRequestLanguageFR ->
+            "FR"
+
+        CatalogsRetailBatchRequestLanguageHE ->
+            "HE"
+
+        CatalogsRetailBatchRequestLanguageHI ->
+            "HI"
+
+        CatalogsRetailBatchRequestLanguageHR ->
+            "HR"
+
+        CatalogsRetailBatchRequestLanguageHU ->
+            "HU"
+
+        CatalogsRetailBatchRequestLanguageHY ->
+            "HY"
+
+        CatalogsRetailBatchRequestLanguageID ->
+            "ID"
+
+        CatalogsRetailBatchRequestLanguageIN ->
+            "IN"
+
+        CatalogsRetailBatchRequestLanguageIS ->
+            "IS"
+
+        CatalogsRetailBatchRequestLanguageIT ->
+            "IT"
+
+        CatalogsRetailBatchRequestLanguageIW ->
+            "IW"
+
+        CatalogsRetailBatchRequestLanguageJA ->
+            "JA"
+
+        CatalogsRetailBatchRequestLanguageKA ->
+            "KA"
+
+        CatalogsRetailBatchRequestLanguageKM ->
+            "KM"
+
+        CatalogsRetailBatchRequestLanguageKO ->
+            "KO"
+
+        CatalogsRetailBatchRequestLanguageLO ->
+            "LO"
+
+        CatalogsRetailBatchRequestLanguageLT ->
+            "LT"
+
+        CatalogsRetailBatchRequestLanguageLV ->
+            "LV"
+
+        CatalogsRetailBatchRequestLanguageMK ->
+            "MK"
+
+        CatalogsRetailBatchRequestLanguageMN ->
+            "MN"
+
+        CatalogsRetailBatchRequestLanguageMS ->
+            "MS"
+
+        CatalogsRetailBatchRequestLanguageMY ->
+            "MY"
+
+        CatalogsRetailBatchRequestLanguageNB ->
+            "NB"
+
+        CatalogsRetailBatchRequestLanguageNE ->
+            "NE"
+
+        CatalogsRetailBatchRequestLanguageNL ->
+            "NL"
+
+        CatalogsRetailBatchRequestLanguageNO ->
+            "NO"
+
+        CatalogsRetailBatchRequestLanguagePL ->
+            "PL"
+
+        CatalogsRetailBatchRequestLanguagePT ->
+            "PT"
+
+        CatalogsRetailBatchRequestLanguageRO ->
+            "RO"
+
+        CatalogsRetailBatchRequestLanguageRU ->
+            "RU"
+
+        CatalogsRetailBatchRequestLanguageSK ->
+            "SK"
+
+        CatalogsRetailBatchRequestLanguageSL ->
+            "SL"
+
+        CatalogsRetailBatchRequestLanguageSQ ->
+            "SQ"
+
+        CatalogsRetailBatchRequestLanguageSR ->
+            "SR"
+
+        CatalogsRetailBatchRequestLanguageSV ->
+            "SV"
+
+        CatalogsRetailBatchRequestLanguageTL ->
+            "TL"
+
+        CatalogsRetailBatchRequestLanguageUK ->
+            "UK"
+
+        CatalogsRetailBatchRequestLanguageVI ->
+            "VI"
+
+        CatalogsRetailBatchRequestLanguageTE ->
+            "TE"
+
+        CatalogsRetailBatchRequestLanguageTH ->
+            "TH"
+
+        CatalogsRetailBatchRequestLanguageTR ->
+            "TR"
+
+        CatalogsRetailBatchRequestLanguageXX ->
+            "XX"
+
+        CatalogsRetailBatchRequestLanguageZH ->
+            "ZH"
+
+
+encodeCatalogsRetailBatchRequestLanguage : CatalogsRetailBatchRequestLanguage -> Json.Encode.Value
+encodeCatalogsRetailBatchRequestLanguage =
+    Json.Encode.string << stringFromCatalogsRetailBatchRequestLanguage
 
 
 
@@ -30045,7 +34939,7 @@ encodeCatalogsRetailFeedsCreateRequestPairs model =
             , encode "catalog_type" encodeCatalogsType model.catalogType
             , encode "default_country" encodeCountry model.defaultCountry
             , maybeEncodeNullable "default_availability" encodeProductAvailabilityType model.defaultAvailability
-            , maybeEncode "status" Json.Encode.string model.status
+            , maybeEncode "status" encodeCatalogsStatus model.status
             ]
     in
     pairs
@@ -31362,14 +36256,14 @@ encodeConversionTagCreatePairs : ConversionTagCreate -> List EncodedField
 encodeConversionTagCreatePairs model =
     let
         pairs =
-            [ encode "name" Json.Encode.string model.name
-            , maybeEncodeNullable "aem_enabled" Json.Encode.bool model.aemEnabled
+            [ maybeEncodeNullable "aem_enabled" Json.Encode.bool model.aemEnabled
             , maybeEncodeNullable "md_frequency" Json.Encode.float model.mdFrequency
             , maybeEncodeNullable "aem_fnln_enabled" Json.Encode.bool model.aemFnlnEnabled
             , maybeEncodeNullable "aem_ph_enabled" Json.Encode.bool model.aemPhEnabled
             , maybeEncodeNullable "aem_ge_enabled" Json.Encode.bool model.aemGeEnabled
             , maybeEncodeNullable "aem_db_enabled" Json.Encode.bool model.aemDbEnabled
             , maybeEncodeNullable "aem_loc_enabled" Json.Encode.bool model.aemLocEnabled
+            , encode "name" Json.Encode.string model.name
             ]
     in
     pairs
@@ -32493,14 +37387,14 @@ encodeCreateMMMReportRequestPairs : CreateMMMReportRequest -> List EncodedField
 encodeCreateMMMReportRequestPairs model =
     let
         pairs =
-            [ encode "report_name" Json.Encode.string model.reportName
+            [ maybeEncode "countries" (Json.Encode.list encodeTargetingAdvertiserCountry) model.countries
+            , encode "report_name" Json.Encode.string model.reportName
             , encode "start_date" Json.Encode.string model.startDate
             , encode "end_date" Json.Encode.string model.endDate
             , encode "granularity" encodeCreateMMMReportRequestGranularity model.granularity
             , encode "level" encodeCreateMMMReportRequestLevel model.level
             , encode "targeting_types" (Json.Encode.list encodeMMMReportingTargetingType) model.targetingTypes
             , encode "columns" (Json.Encode.list encodeMMMReportingColumn) model.columns
-            , maybeEncode "countries" (Json.Encode.list encodeTargetingAdvertiserCountry) model.countries
             ]
     in
     pairs
@@ -34835,12 +39729,12 @@ encodeInviteBusinessRoleBindingPairs : InviteBusinessRoleBinding -> List Encoded
 encodeInviteBusinessRoleBindingPairs model =
     let
         pairs =
-            [ maybeEncode "created_by_business_id" Json.Encode.string model.createdByBusinessId
-            , maybeEncode "created_by_user_id" Json.Encode.string model.createdByUserId
-            , maybeEncode "user" encodeBusinessAccessUserSummary model.user
-            , maybeEncode "id" Json.Encode.string model.id
+            [ maybeEncode "id" Json.Encode.string model.id
             , maybeEncode "invite_data" encodeBaseInviteDataResponseInviteData model.inviteData
             , maybeEncode "is_received_invite" Json.Encode.bool model.isReceivedInvite
+            , maybeEncode "user" encodeObject model.user
+            , maybeEncode "created_by_business_id" Json.Encode.string model.createdByBusinessId
+            , maybeEncode "created_by_user_id" Json.Encode.string model.createdByUserId
             ]
     in
     pairs
@@ -34883,15 +39777,15 @@ encodeInviteResponsePairs : InviteResponse -> List EncodedField
 encodeInviteResponsePairs model =
     let
         pairs =
-            [ maybeEncodeNullable "assets_summary" encodeInviteAssetsSummary model.assetsSummary
-            , maybeEncode "business_roles" (Json.Encode.list Json.Encode.string) model.businessRoles
-            , maybeEncodeNullable "created_by_business" encodeBusinessAccessUserSummary model.createdByBusiness
-            , maybeEncodeNullable "created_by_user" encodeBusinessAccessUserSummary model.createdByUser
-            , maybeEncode "created_time" Json.Encode.int model.createdTime
-            , maybeEncode "id" Json.Encode.string model.id
+            [ maybeEncode "id" Json.Encode.string model.id
             , maybeEncode "invite_data" encodeBaseInviteDataResponseInviteData model.inviteData
             , maybeEncode "is_received_invite" Json.Encode.bool model.isReceivedInvite
             , maybeEncode "user" encodeBusinessAccessUserSummary model.user
+            , maybeEncodeNullable "assets_summary" encodeInviteAssetsSummary model.assetsSummary
+            , maybeEncode "business_roles" (Json.Encode.list Json.Encode.string) model.businessRoles
+            , maybeEncodeNullable "created_by_business" encodeObject model.createdByBusiness
+            , maybeEncodeNullable "created_by_user" encodeObject model.createdByUser
+            , maybeEncode "created_time" Json.Encode.int model.createdTime
             ]
     in
     pairs
@@ -35265,9 +40159,11 @@ encodeItemResponsePairs model =
         pairs =
             [ encode "catalog_type" encodeCatalogsType model.catalogType
             , maybeEncode "item_id" Json.Encode.string model.itemId
-            , maybeEncode "errors" (Json.Encode.list encodeItemValidationEvent) model.errors
+            , maybeEncodeNullable "pins" (Json.Encode.list encodePin) model.pins
+            , maybeEncode "attributes" encodeCatalogsCreativeAssetsAttributes model.attributes
             , maybeEncode "hotel_id" Json.Encode.string model.hotelId
             , maybeEncode "creative_assets_id" Json.Encode.string model.creativeAssetsId
+            , maybeEncode "errors" (Json.Encode.list encodeItemValidationEvent) model.errors
             ]
     in
     pairs
@@ -35934,13 +40830,13 @@ encodeLeadFormCreateRequestPairs : LeadFormCreateRequest -> List EncodedField
 encodeLeadFormCreateRequestPairs model =
     let
         pairs =
-            [ encodeNullable "name" Json.Encode.string model.name
-            , encodeNullable "privacy_policy_link" Json.Encode.string model.privacyPolicyLink
-            , encode "has_accepted_terms" Json.Encode.bool model.hasAcceptedTerms
-            , encodeNullable "completion_message" Json.Encode.string model.completionMessage
+            [ maybeEncodeNullable "name" Json.Encode.string model.name
+            , maybeEncodeNullable "privacy_policy_link" Json.Encode.string model.privacyPolicyLink
+            , maybeEncode "has_accepted_terms" Json.Encode.bool model.hasAcceptedTerms
+            , maybeEncodeNullable "completion_message" Json.Encode.string model.completionMessage
             , maybeEncode "status" encodeLeadFormStatus model.status
             , maybeEncodeNullable "disclosure_language" Json.Encode.string model.disclosureLanguage
-            , encode "questions" (Json.Encode.list encodeLeadFormQuestion) model.questions
+            , maybeEncode "questions" (Json.Encode.list encodeLeadFormQuestion) model.questions
             , maybeEncode "policy_links" (Json.Encode.list encodeLeadFormCommonPolicyLinksInner) model.policyLinks
             ]
     in
@@ -38013,8 +42909,8 @@ encodeOauthAccessTokenRequestClientCredentialsPairs : OauthAccessTokenRequestCli
 encodeOauthAccessTokenRequestClientCredentialsPairs model =
     let
         pairs =
-            [ encode "grant_type" encodeOauthAccessTokenRequestClientCredentialsGrantType model.grantType
-            , encode "scope" Json.Encode.string model.scope
+            [ encode "scope" Json.Encode.string model.scope
+            , encode "grant_type" encodeOauthAccessTokenRequestClientCredentialsGrantType model.grantType
             ]
     in
     pairs
@@ -38052,9 +42948,9 @@ encodeOauthAccessTokenRequestCodePairs : OauthAccessTokenRequestCode -> List Enc
 encodeOauthAccessTokenRequestCodePairs model =
     let
         pairs =
-            [ encode "grant_type" encodeOauthAccessTokenRequestCodeGrantType model.grantType
-            , encode "code" Json.Encode.string model.code
+            [ encode "code" Json.Encode.string model.code
             , encode "redirect_uri" Json.Encode.string model.redirectUri
+            , encode "grant_type" encodeOauthAccessTokenRequestCodeGrantType model.grantType
             ]
     in
     pairs
@@ -38092,10 +42988,10 @@ encodeOauthAccessTokenRequestRefreshPairs : OauthAccessTokenRequestRefresh -> Li
 encodeOauthAccessTokenRequestRefreshPairs model =
     let
         pairs =
-            [ encode "grant_type" encodeOauthAccessTokenRequestRefreshGrantType model.grantType
-            , encode "refresh_token" Json.Encode.string model.refreshToken
+            [ encode "refresh_token" Json.Encode.string model.refreshToken
             , maybeEncode "scope" Json.Encode.string model.scope
             , maybeEncode "refresh_on" Json.Encode.bool model.refreshOn
+            , encode "grant_type" encodeOauthAccessTokenRequestRefreshGrantType model.grantType
             ]
     in
     pairs
@@ -38243,13 +43139,13 @@ encodeOauthAccessTokenResponseCodePairs : OauthAccessTokenResponseCode -> List E
 encodeOauthAccessTokenResponseCodePairs model =
     let
         pairs =
-            [ maybeEncode "response_type" encodeOauthAccessTokenResponseCodeResponseType model.responseType
+            [ encode "refresh_token" Json.Encode.string model.refreshToken
+            , encode "refresh_token_expires_in" Json.Encode.int model.refreshTokenExpiresIn
+            , maybeEncode "response_type" encodeOauthAccessTokenResponseCodeResponseType model.responseType
             , encode "access_token" Json.Encode.string model.accessToken
             , encode "token_type" Json.Encode.string model.tokenType
             , encode "expires_in" Json.Encode.int model.expiresIn
             , encode "scope" Json.Encode.string model.scope
-            , encode "refresh_token" Json.Encode.string model.refreshToken
-            , encode "refresh_token_expires_in" Json.Encode.int model.refreshTokenExpiresIn
             ]
     in
     pairs
@@ -38287,14 +43183,14 @@ encodeOauthAccessTokenResponseEverlastingRefreshPairs : OauthAccessTokenResponse
 encodeOauthAccessTokenResponseEverlastingRefreshPairs model =
     let
         pairs =
-            [ maybeEncode "response_type" encodeOauthAccessTokenResponseEverlastingRefreshResponseType model.responseType
+            [ encode "refresh_token" Json.Encode.string model.refreshToken
+            , encode "refresh_token_expires_in" Json.Encode.int model.refreshTokenExpiresIn
+            , encode "refresh_token_expires_at" Json.Encode.int model.refreshTokenExpiresAt
+            , maybeEncode "response_type" encodeOauthAccessTokenResponseEverlastingRefreshResponseType model.responseType
             , encode "access_token" Json.Encode.string model.accessToken
             , encode "token_type" Json.Encode.string model.tokenType
             , encode "expires_in" Json.Encode.int model.expiresIn
             , encode "scope" Json.Encode.string model.scope
-            , encode "refresh_token" Json.Encode.string model.refreshToken
-            , encode "refresh_token_expires_in" Json.Encode.int model.refreshTokenExpiresIn
-            , encode "refresh_token_expires_at" Json.Encode.int model.refreshTokenExpiresAt
             ]
     in
     pairs
@@ -38332,13 +43228,13 @@ encodeOauthAccessTokenResponseIntegrationRefreshPairs : OauthAccessTokenResponse
 encodeOauthAccessTokenResponseIntegrationRefreshPairs model =
     let
         pairs =
-            [ maybeEncode "response_type" encodeOauthAccessTokenResponseIntegrationRefreshResponseType model.responseType
+            [ encode "refresh_token" Json.Encode.string model.refreshToken
+            , encode "refresh_token_expires_in" Json.Encode.int model.refreshTokenExpiresIn
+            , maybeEncode "response_type" encodeOauthAccessTokenResponseIntegrationRefreshResponseType model.responseType
             , encode "access_token" Json.Encode.string model.accessToken
             , encode "token_type" Json.Encode.string model.tokenType
             , encode "expires_in" Json.Encode.int model.expiresIn
             , encode "scope" Json.Encode.string model.scope
-            , encode "refresh_token" Json.Encode.string model.refreshToken
-            , encode "refresh_token_expires_in" Json.Encode.int model.refreshTokenExpiresIn
             ]
     in
     pairs
@@ -39702,15 +44598,6 @@ encodePinUpdateCarouselSlotsInnerPairs model =
             ]
     in
     pairs
-
-
-encodePinsAnalyticsMetricTypesParameterInner : PinsAnalyticsMetricTypesParameterInner -> Json.Encode.Value
-encodePinsAnalyticsMetricTypesParameterInner model =
-    case model of
-        PinsAnalyticsMetricTypesParameterInnerString subModel ->
-            encodeString subModel
-
-
 
 
 encodePinsList200Response : PinsList200Response -> Json.Encode.Value
@@ -49012,7 +53899,7 @@ encodeUpdateInvitesResultsResponseArrayItemsInnerPairs model =
     let
         pairs =
             [ maybeEncodeNullable "exception" encodeInviteExceptionResponse model.exception
-            , maybeEncodeNullable "invite" encodeInviteBusinessRoleBinding model.invite
+            , maybeEncode "invite" encodeInviteBusinessRoleBinding model.invite
             ]
     in
     pairs
@@ -52279,12 +57166,7 @@ audienceCreateRequestDecoder =
         |> decode "name" Json.Decode.string 
         |> decode "rule" audienceRuleDecoder 
         |> maybeDecode "description" Json.Decode.string Nothing
-        |> decode "audience_type" audienceCreateRequest1AudienceTypeDecoder 
-
-
-audienceCreateRequest1AudienceTypeDecoder : Json.Decode.Decoder AudienceCreateRequest1AudienceType
-audienceCreateRequest1AudienceTypeDecoder =
-    Json.Decode.succeed AudienceCreateRequest1AudienceType
+        |> decode "audience_type" audienceTypeDecoder 
 
 
 audienceDataPartyDecoder : Json.Decode.Decoder AudienceDataParty
@@ -53674,7 +58556,7 @@ catalogsCreativeAssetsBatchRequestDecoder =
     Json.Decode.succeed CatalogsCreativeAssetsBatchRequest
         |> decode "catalog_type" catalogsCreativeAssetsBatchRequestCatalogTypeDecoder 
         |> decode "country" countryDecoder 
-        |> decode "language" catalogsItemsRequestLanguageDecoder 
+        |> decode "language" catalogsCreativeAssetsBatchRequestLanguageDecoder 
         |> decode "items" (Json.Decode.list catalogsCreativeAssetsBatchItemDecoder) 
         |> maybeDecode "catalog_id" Json.Decode.string Nothing
 
@@ -53687,6 +58569,339 @@ catalogsCreativeAssetsBatchRequestCatalogTypeDecoder =
                 case value of
                     "CREATIVE_ASSETS" ->
                         Json.Decode.succeed CatalogsCreativeAssetsBatchRequestCatalogTypeCREATIVEASSETS
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
+
+
+catalogsCreativeAssetsBatchRequestLanguageDecoder : Json.Decode.Decoder CatalogsCreativeAssetsBatchRequestLanguage
+catalogsCreativeAssetsBatchRequestLanguageDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "af-ZA" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageAfZA
+
+                    "ar-SA" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageArSA
+
+                    "bg-BG" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageBgBG
+
+                    "bn-IN" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageBnIN
+
+                    "cs-CZ" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageCsCZ
+
+                    "da-DK" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageDaDK
+
+                    "de" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageDe
+
+                    "el-GR" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageElGR
+
+                    "en-AU" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageEnAU
+
+                    "en-CA" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageEnCA
+
+                    "en-GB" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageEnGB
+
+                    "en-IN" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageEnIN
+
+                    "en-US" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageEnUS
+
+                    "es-419" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageEs419
+
+                    "es-AR" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageEsAR
+
+                    "es-ES" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageEsES
+
+                    "es-MX" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageEsMX
+
+                    "fi-FI" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageFiFI
+
+                    "fr" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageFr
+
+                    "fr-CA" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageFrCA
+
+                    "he-IL" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageHeIL
+
+                    "hi-IN" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageHiIN
+
+                    "hr-HR" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageHrHR
+
+                    "hu-HU" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageHuHU
+
+                    "id-ID" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageIdID
+
+                    "it" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageIt
+
+                    "ja" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageJa
+
+                    "ko-KR" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageKoKR
+
+                    "ms-MY" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageMsMY
+
+                    "nb-NO" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageNbNO
+
+                    "nl" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageNl
+
+                    "pl-PL" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguagePlPL
+
+                    "pt-BR" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguagePtBR
+
+                    "pt-PT" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguagePtPT
+
+                    "ro-RO" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageRoRO
+
+                    "ru-RU" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageRuRU
+
+                    "sk-SK" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageSkSK
+
+                    "sv-SE" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageSvSE
+
+                    "te-IN" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageTeIN
+
+                    "th-TH" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageThTH
+
+                    "tl-PH" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageTlPH
+
+                    "tr" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageTr
+
+                    "uk-UA" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageUkUA
+
+                    "vi-VN" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageViVN
+
+                    "zh-CN" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageZhCN
+
+                    "zh-TW" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageZhTW
+
+                    "AM" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageAM
+
+                    "AR" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageAR
+
+                    "AZ" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageAZ
+
+                    "BG" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageBG
+
+                    "BN" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageBN
+
+                    "BS" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageBS
+
+                    "CA" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageCA
+
+                    "CS" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageCS
+
+                    "DA" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageDA
+
+                    "DV" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageDV
+
+                    "DZ" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageDZ
+
+                    "DE" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageDE
+
+                    "EL" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageEL
+
+                    "EN" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageEN
+
+                    "ES" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageES
+
+                    "ET" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageET
+
+                    "FA" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageFA
+
+                    "FI" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageFI
+
+                    "FR" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageFR
+
+                    "HE" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageHE
+
+                    "HI" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageHI
+
+                    "HR" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageHR
+
+                    "HU" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageHU
+
+                    "HY" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageHY
+
+                    "ID" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageID
+
+                    "IN" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageIN
+
+                    "IS" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageIS
+
+                    "IT" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageIT
+
+                    "IW" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageIW
+
+                    "JA" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageJA
+
+                    "KA" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageKA
+
+                    "KM" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageKM
+
+                    "KO" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageKO
+
+                    "LO" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageLO
+
+                    "LT" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageLT
+
+                    "LV" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageLV
+
+                    "MK" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageMK
+
+                    "MN" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageMN
+
+                    "MS" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageMS
+
+                    "MY" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageMY
+
+                    "NB" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageNB
+
+                    "NE" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageNE
+
+                    "NL" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageNL
+
+                    "NO" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageNO
+
+                    "PL" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguagePL
+
+                    "PT" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguagePT
+
+                    "RO" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageRO
+
+                    "RU" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageRU
+
+                    "SK" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageSK
+
+                    "SL" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageSL
+
+                    "SQ" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageSQ
+
+                    "SR" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageSR
+
+                    "SV" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageSV
+
+                    "TL" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageTL
+
+                    "UK" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageUK
+
+                    "VI" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageVI
+
+                    "TE" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageTE
+
+                    "TH" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageTH
+
+                    "TR" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageTR
+
+                    "XX" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageXX
+
+                    "ZH" ->
+                        Json.Decode.succeed CatalogsCreativeAssetsBatchRequestLanguageZH
 
                     other ->
                         Json.Decode.fail <| "Unknown type: " ++ other
@@ -53726,7 +58941,7 @@ catalogsCreativeAssetsFeedsCreateRequestDecoder =
         |> maybeDecodeNullable "preferred_processing_schedule" catalogsFeedProcessingScheduleDecoder Nothing
         |> decode "catalog_type" catalogsTypeDecoder 
         |> maybeDecodeNullable "catalog_id" Json.Decode.string Nothing
-        |> maybeDecode "status" Json.Decode.string Nothing
+        |> maybeDecode "status" catalogsStatusDecoder (Just "ACTIVE")
 
 
 catalogsCreativeAssetsFeedsUpdateRequestDecoder : Json.Decode.Decoder CatalogsCreativeAssetsFeedsUpdateRequest
@@ -55514,7 +60729,7 @@ catalogsFeedsCreateRequestDecoder =
         |> maybeDecodeNullable "preferred_processing_schedule" catalogsFeedProcessingScheduleDecoder Nothing
         |> maybeDecode "default_country" countryDecoder Nothing
         |> maybeDecodeNullable "default_availability" productAvailabilityTypeDecoder Nothing
-        |> maybeDecode "status" Json.Decode.string Nothing
+        |> maybeDecode "status" catalogsStatusDecoder (Just "ACTIVE")
 
 
 catalogsFeedsCreateRequestDefaultLocaleDecoder : Json.Decode.Decoder CatalogsFeedsCreateRequestDefaultLocale
@@ -55649,7 +60864,7 @@ catalogsHotelBatchRequestDecoder =
     Json.Decode.succeed CatalogsHotelBatchRequest
         |> decode "catalog_type" catalogsHotelBatchRequestCatalogTypeDecoder 
         |> decode "country" countryDecoder 
-        |> decode "language" catalogsItemsRequestLanguageDecoder 
+        |> decode "language" catalogsHotelBatchRequestLanguageDecoder 
         |> decode "items" (Json.Decode.list catalogsHotelBatchItemDecoder) 
         |> maybeDecode "catalog_id" Json.Decode.string Nothing
 
@@ -55662,6 +60877,339 @@ catalogsHotelBatchRequestCatalogTypeDecoder =
                 case value of
                     "HOTEL" ->
                         Json.Decode.succeed CatalogsHotelBatchRequestCatalogTypeHOTEL
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
+
+
+catalogsHotelBatchRequestLanguageDecoder : Json.Decode.Decoder CatalogsHotelBatchRequestLanguage
+catalogsHotelBatchRequestLanguageDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "af-ZA" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageAfZA
+
+                    "ar-SA" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageArSA
+
+                    "bg-BG" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageBgBG
+
+                    "bn-IN" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageBnIN
+
+                    "cs-CZ" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageCsCZ
+
+                    "da-DK" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageDaDK
+
+                    "de" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageDe
+
+                    "el-GR" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageElGR
+
+                    "en-AU" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageEnAU
+
+                    "en-CA" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageEnCA
+
+                    "en-GB" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageEnGB
+
+                    "en-IN" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageEnIN
+
+                    "en-US" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageEnUS
+
+                    "es-419" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageEs419
+
+                    "es-AR" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageEsAR
+
+                    "es-ES" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageEsES
+
+                    "es-MX" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageEsMX
+
+                    "fi-FI" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageFiFI
+
+                    "fr" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageFr
+
+                    "fr-CA" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageFrCA
+
+                    "he-IL" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageHeIL
+
+                    "hi-IN" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageHiIN
+
+                    "hr-HR" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageHrHR
+
+                    "hu-HU" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageHuHU
+
+                    "id-ID" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageIdID
+
+                    "it" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageIt
+
+                    "ja" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageJa
+
+                    "ko-KR" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageKoKR
+
+                    "ms-MY" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageMsMY
+
+                    "nb-NO" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageNbNO
+
+                    "nl" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageNl
+
+                    "pl-PL" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguagePlPL
+
+                    "pt-BR" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguagePtBR
+
+                    "pt-PT" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguagePtPT
+
+                    "ro-RO" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageRoRO
+
+                    "ru-RU" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageRuRU
+
+                    "sk-SK" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageSkSK
+
+                    "sv-SE" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageSvSE
+
+                    "te-IN" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageTeIN
+
+                    "th-TH" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageThTH
+
+                    "tl-PH" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageTlPH
+
+                    "tr" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageTr
+
+                    "uk-UA" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageUkUA
+
+                    "vi-VN" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageViVN
+
+                    "zh-CN" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageZhCN
+
+                    "zh-TW" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageZhTW
+
+                    "AM" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageAM
+
+                    "AR" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageAR
+
+                    "AZ" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageAZ
+
+                    "BG" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageBG
+
+                    "BN" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageBN
+
+                    "BS" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageBS
+
+                    "CA" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageCA
+
+                    "CS" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageCS
+
+                    "DA" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageDA
+
+                    "DV" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageDV
+
+                    "DZ" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageDZ
+
+                    "DE" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageDE
+
+                    "EL" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageEL
+
+                    "EN" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageEN
+
+                    "ES" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageES
+
+                    "ET" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageET
+
+                    "FA" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageFA
+
+                    "FI" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageFI
+
+                    "FR" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageFR
+
+                    "HE" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageHE
+
+                    "HI" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageHI
+
+                    "HR" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageHR
+
+                    "HU" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageHU
+
+                    "HY" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageHY
+
+                    "ID" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageID
+
+                    "IN" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageIN
+
+                    "IS" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageIS
+
+                    "IT" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageIT
+
+                    "IW" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageIW
+
+                    "JA" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageJA
+
+                    "KA" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageKA
+
+                    "KM" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageKM
+
+                    "KO" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageKO
+
+                    "LO" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageLO
+
+                    "LT" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageLT
+
+                    "LV" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageLV
+
+                    "MK" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageMK
+
+                    "MN" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageMN
+
+                    "MS" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageMS
+
+                    "MY" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageMY
+
+                    "NB" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageNB
+
+                    "NE" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageNE
+
+                    "NL" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageNL
+
+                    "NO" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageNO
+
+                    "PL" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguagePL
+
+                    "PT" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguagePT
+
+                    "RO" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageRO
+
+                    "RU" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageRU
+
+                    "SK" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageSK
+
+                    "SL" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageSL
+
+                    "SQ" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageSQ
+
+                    "SR" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageSR
+
+                    "SV" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageSV
+
+                    "TL" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageTL
+
+                    "UK" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageUK
+
+                    "VI" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageVI
+
+                    "TE" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageTE
+
+                    "TH" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageTH
+
+                    "TR" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageTR
+
+                    "XX" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageXX
+
+                    "ZH" ->
+                        Json.Decode.succeed CatalogsHotelBatchRequestLanguageZH
 
                     other ->
                         Json.Decode.fail <| "Unknown type: " ++ other
@@ -55699,7 +61247,7 @@ catalogsHotelFeedsCreateRequestDecoder =
         |> maybeDecodeNullable "preferred_processing_schedule" catalogsFeedProcessingScheduleDecoder Nothing
         |> decode "catalog_type" catalogsTypeDecoder 
         |> maybeDecodeNullable "catalog_id" Json.Decode.string Nothing
-        |> maybeDecode "status" Json.Decode.string Nothing
+        |> maybeDecode "status" catalogsStatusDecoder (Just "ACTIVE")
 
 
 catalogsHotelFeedsUpdateRequestDecoder : Json.Decode.Decoder CatalogsHotelFeedsUpdateRequest
@@ -56385,27 +61933,1026 @@ catalogsItemsCreateBatchRequestDecoder : Json.Decode.Decoder CatalogsItemsCreate
 catalogsItemsCreateBatchRequestDecoder =
     Json.Decode.succeed CatalogsItemsCreateBatchRequest
         |> decode "country" countryDecoder 
-        |> decode "language" catalogsItemsRequestLanguageDecoder 
+        |> decode "language" catalogsItemsCreateBatchRequestLanguageDecoder 
         |> decode "operation" batchOperationDecoder 
         |> decode "items" (Json.Decode.list itemCreateBatchRecordDecoder) 
+
+
+catalogsItemsCreateBatchRequestLanguageDecoder : Json.Decode.Decoder CatalogsItemsCreateBatchRequestLanguage
+catalogsItemsCreateBatchRequestLanguageDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "af-ZA" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageAfZA
+
+                    "ar-SA" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageArSA
+
+                    "bg-BG" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageBgBG
+
+                    "bn-IN" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageBnIN
+
+                    "cs-CZ" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageCsCZ
+
+                    "da-DK" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageDaDK
+
+                    "de" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageDe
+
+                    "el-GR" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageElGR
+
+                    "en-AU" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageEnAU
+
+                    "en-CA" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageEnCA
+
+                    "en-GB" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageEnGB
+
+                    "en-IN" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageEnIN
+
+                    "en-US" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageEnUS
+
+                    "es-419" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageEs419
+
+                    "es-AR" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageEsAR
+
+                    "es-ES" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageEsES
+
+                    "es-MX" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageEsMX
+
+                    "fi-FI" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageFiFI
+
+                    "fr" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageFr
+
+                    "fr-CA" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageFrCA
+
+                    "he-IL" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageHeIL
+
+                    "hi-IN" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageHiIN
+
+                    "hr-HR" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageHrHR
+
+                    "hu-HU" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageHuHU
+
+                    "id-ID" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageIdID
+
+                    "it" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageIt
+
+                    "ja" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageJa
+
+                    "ko-KR" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageKoKR
+
+                    "ms-MY" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageMsMY
+
+                    "nb-NO" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageNbNO
+
+                    "nl" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageNl
+
+                    "pl-PL" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguagePlPL
+
+                    "pt-BR" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguagePtBR
+
+                    "pt-PT" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguagePtPT
+
+                    "ro-RO" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageRoRO
+
+                    "ru-RU" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageRuRU
+
+                    "sk-SK" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageSkSK
+
+                    "sv-SE" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageSvSE
+
+                    "te-IN" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageTeIN
+
+                    "th-TH" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageThTH
+
+                    "tl-PH" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageTlPH
+
+                    "tr" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageTr
+
+                    "uk-UA" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageUkUA
+
+                    "vi-VN" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageViVN
+
+                    "zh-CN" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageZhCN
+
+                    "zh-TW" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageZhTW
+
+                    "AM" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageAM
+
+                    "AR" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageAR
+
+                    "AZ" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageAZ
+
+                    "BG" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageBG
+
+                    "BN" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageBN
+
+                    "BS" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageBS
+
+                    "CA" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageCA
+
+                    "CS" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageCS
+
+                    "DA" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageDA
+
+                    "DV" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageDV
+
+                    "DZ" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageDZ
+
+                    "DE" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageDE
+
+                    "EL" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageEL
+
+                    "EN" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageEN
+
+                    "ES" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageES
+
+                    "ET" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageET
+
+                    "FA" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageFA
+
+                    "FI" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageFI
+
+                    "FR" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageFR
+
+                    "HE" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageHE
+
+                    "HI" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageHI
+
+                    "HR" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageHR
+
+                    "HU" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageHU
+
+                    "HY" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageHY
+
+                    "ID" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageID
+
+                    "IN" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageIN
+
+                    "IS" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageIS
+
+                    "IT" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageIT
+
+                    "IW" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageIW
+
+                    "JA" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageJA
+
+                    "KA" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageKA
+
+                    "KM" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageKM
+
+                    "KO" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageKO
+
+                    "LO" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageLO
+
+                    "LT" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageLT
+
+                    "LV" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageLV
+
+                    "MK" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageMK
+
+                    "MN" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageMN
+
+                    "MS" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageMS
+
+                    "MY" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageMY
+
+                    "NB" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageNB
+
+                    "NE" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageNE
+
+                    "NL" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageNL
+
+                    "NO" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageNO
+
+                    "PL" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguagePL
+
+                    "PT" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguagePT
+
+                    "RO" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageRO
+
+                    "RU" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageRU
+
+                    "SK" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageSK
+
+                    "SL" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageSL
+
+                    "SQ" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageSQ
+
+                    "SR" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageSR
+
+                    "SV" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageSV
+
+                    "TL" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageTL
+
+                    "UK" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageUK
+
+                    "VI" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageVI
+
+                    "TE" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageTE
+
+                    "TH" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageTH
+
+                    "TR" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageTR
+
+                    "XX" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageXX
+
+                    "ZH" ->
+                        Json.Decode.succeed CatalogsItemsCreateBatchRequestLanguageZH
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
 
 
 catalogsItemsDeleteBatchRequestDecoder : Json.Decode.Decoder CatalogsItemsDeleteBatchRequest
 catalogsItemsDeleteBatchRequestDecoder =
     Json.Decode.succeed CatalogsItemsDeleteBatchRequest
         |> decode "country" countryDecoder 
-        |> decode "language" catalogsItemsRequestLanguageDecoder 
+        |> decode "language" catalogsItemsDeleteBatchRequestLanguageDecoder 
         |> decode "operation" batchOperationDecoder 
         |> decode "items" (Json.Decode.list itemDeleteBatchRecordDecoder) 
+
+
+catalogsItemsDeleteBatchRequestLanguageDecoder : Json.Decode.Decoder CatalogsItemsDeleteBatchRequestLanguage
+catalogsItemsDeleteBatchRequestLanguageDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "af-ZA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageAfZA
+
+                    "ar-SA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageArSA
+
+                    "bg-BG" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageBgBG
+
+                    "bn-IN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageBnIN
+
+                    "cs-CZ" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageCsCZ
+
+                    "da-DK" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageDaDK
+
+                    "de" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageDe
+
+                    "el-GR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageElGR
+
+                    "en-AU" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageEnAU
+
+                    "en-CA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageEnCA
+
+                    "en-GB" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageEnGB
+
+                    "en-IN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageEnIN
+
+                    "en-US" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageEnUS
+
+                    "es-419" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageEs419
+
+                    "es-AR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageEsAR
+
+                    "es-ES" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageEsES
+
+                    "es-MX" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageEsMX
+
+                    "fi-FI" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageFiFI
+
+                    "fr" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageFr
+
+                    "fr-CA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageFrCA
+
+                    "he-IL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageHeIL
+
+                    "hi-IN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageHiIN
+
+                    "hr-HR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageHrHR
+
+                    "hu-HU" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageHuHU
+
+                    "id-ID" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageIdID
+
+                    "it" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageIt
+
+                    "ja" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageJa
+
+                    "ko-KR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageKoKR
+
+                    "ms-MY" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageMsMY
+
+                    "nb-NO" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageNbNO
+
+                    "nl" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageNl
+
+                    "pl-PL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguagePlPL
+
+                    "pt-BR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguagePtBR
+
+                    "pt-PT" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguagePtPT
+
+                    "ro-RO" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageRoRO
+
+                    "ru-RU" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageRuRU
+
+                    "sk-SK" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageSkSK
+
+                    "sv-SE" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageSvSE
+
+                    "te-IN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageTeIN
+
+                    "th-TH" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageThTH
+
+                    "tl-PH" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageTlPH
+
+                    "tr" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageTr
+
+                    "uk-UA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageUkUA
+
+                    "vi-VN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageViVN
+
+                    "zh-CN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageZhCN
+
+                    "zh-TW" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageZhTW
+
+                    "AM" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageAM
+
+                    "AR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageAR
+
+                    "AZ" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageAZ
+
+                    "BG" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageBG
+
+                    "BN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageBN
+
+                    "BS" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageBS
+
+                    "CA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageCA
+
+                    "CS" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageCS
+
+                    "DA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageDA
+
+                    "DV" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageDV
+
+                    "DZ" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageDZ
+
+                    "DE" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageDE
+
+                    "EL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageEL
+
+                    "EN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageEN
+
+                    "ES" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageES
+
+                    "ET" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageET
+
+                    "FA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageFA
+
+                    "FI" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageFI
+
+                    "FR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageFR
+
+                    "HE" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageHE
+
+                    "HI" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageHI
+
+                    "HR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageHR
+
+                    "HU" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageHU
+
+                    "HY" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageHY
+
+                    "ID" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageID
+
+                    "IN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageIN
+
+                    "IS" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageIS
+
+                    "IT" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageIT
+
+                    "IW" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageIW
+
+                    "JA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageJA
+
+                    "KA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageKA
+
+                    "KM" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageKM
+
+                    "KO" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageKO
+
+                    "LO" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageLO
+
+                    "LT" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageLT
+
+                    "LV" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageLV
+
+                    "MK" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageMK
+
+                    "MN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageMN
+
+                    "MS" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageMS
+
+                    "MY" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageMY
+
+                    "NB" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageNB
+
+                    "NE" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageNE
+
+                    "NL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageNL
+
+                    "NO" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageNO
+
+                    "PL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguagePL
+
+                    "PT" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguagePT
+
+                    "RO" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageRO
+
+                    "RU" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageRU
+
+                    "SK" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageSK
+
+                    "SL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageSL
+
+                    "SQ" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageSQ
+
+                    "SR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageSR
+
+                    "SV" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageSV
+
+                    "TL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageTL
+
+                    "UK" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageUK
+
+                    "VI" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageVI
+
+                    "TE" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageTE
+
+                    "TH" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageTH
+
+                    "TR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageTR
+
+                    "XX" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageXX
+
+                    "ZH" ->
+                        Json.Decode.succeed CatalogsItemsDeleteBatchRequestLanguageZH
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
 
 
 catalogsItemsDeleteDiscontinuedBatchRequestDecoder : Json.Decode.Decoder CatalogsItemsDeleteDiscontinuedBatchRequest
 catalogsItemsDeleteDiscontinuedBatchRequestDecoder =
     Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequest
         |> decode "country" countryDecoder 
-        |> decode "language" catalogsItemsRequestLanguageDecoder 
+        |> decode "language" catalogsItemsDeleteDiscontinuedBatchRequestLanguageDecoder 
         |> decode "operation" batchOperationDecoder 
         |> decode "items" (Json.Decode.list itemDeleteDiscontinuedBatchRecordDecoder) 
+
+
+catalogsItemsDeleteDiscontinuedBatchRequestLanguageDecoder : Json.Decode.Decoder CatalogsItemsDeleteDiscontinuedBatchRequestLanguage
+catalogsItemsDeleteDiscontinuedBatchRequestLanguageDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "af-ZA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAfZA
+
+                    "ar-SA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageArSA
+
+                    "bg-BG" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBgBG
+
+                    "bn-IN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBnIN
+
+                    "cs-CZ" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageCsCZ
+
+                    "da-DK" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDaDK
+
+                    "de" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDe
+
+                    "el-GR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageElGR
+
+                    "en-AU" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnAU
+
+                    "en-CA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnCA
+
+                    "en-GB" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnGB
+
+                    "en-IN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnIN
+
+                    "en-US" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnUS
+
+                    "es-419" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEs419
+
+                    "es-AR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEsAR
+
+                    "es-ES" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEsES
+
+                    "es-MX" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEsMX
+
+                    "fi-FI" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFiFI
+
+                    "fr" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFr
+
+                    "fr-CA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFrCA
+
+                    "he-IL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHeIL
+
+                    "hi-IN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHiIN
+
+                    "hr-HR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHrHR
+
+                    "hu-HU" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHuHU
+
+                    "id-ID" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIdID
+
+                    "it" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIt
+
+                    "ja" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageJa
+
+                    "ko-KR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKoKR
+
+                    "ms-MY" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMsMY
+
+                    "nb-NO" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNbNO
+
+                    "nl" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNl
+
+                    "pl-PL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePlPL
+
+                    "pt-BR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePtBR
+
+                    "pt-PT" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePtPT
+
+                    "ro-RO" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRoRO
+
+                    "ru-RU" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRuRU
+
+                    "sk-SK" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSkSK
+
+                    "sv-SE" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSvSE
+
+                    "te-IN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTeIN
+
+                    "th-TH" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageThTH
+
+                    "tl-PH" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTlPH
+
+                    "tr" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTr
+
+                    "uk-UA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageUkUA
+
+                    "vi-VN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageViVN
+
+                    "zh-CN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageZhCN
+
+                    "zh-TW" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageZhTW
+
+                    "AM" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAM
+
+                    "AR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAR
+
+                    "AZ" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageAZ
+
+                    "BG" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBG
+
+                    "BN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBN
+
+                    "BS" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageBS
+
+                    "CA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageCA
+
+                    "CS" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageCS
+
+                    "DA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDA
+
+                    "DV" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDV
+
+                    "DZ" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDZ
+
+                    "DE" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageDE
+
+                    "EL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEL
+
+                    "EN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEN
+
+                    "ES" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageES
+
+                    "ET" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageET
+
+                    "FA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFA
+
+                    "FI" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFI
+
+                    "FR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageFR
+
+                    "HE" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHE
+
+                    "HI" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHI
+
+                    "HR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHR
+
+                    "HU" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHU
+
+                    "HY" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageHY
+
+                    "ID" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageID
+
+                    "IN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIN
+
+                    "IS" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIS
+
+                    "IT" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIT
+
+                    "IW" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageIW
+
+                    "JA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageJA
+
+                    "KA" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKA
+
+                    "KM" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKM
+
+                    "KO" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageKO
+
+                    "LO" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageLO
+
+                    "LT" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageLT
+
+                    "LV" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageLV
+
+                    "MK" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMK
+
+                    "MN" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMN
+
+                    "MS" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMS
+
+                    "MY" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageMY
+
+                    "NB" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNB
+
+                    "NE" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNE
+
+                    "NL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNL
+
+                    "NO" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageNO
+
+                    "PL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePL
+
+                    "PT" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguagePT
+
+                    "RO" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRO
+
+                    "RU" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageRU
+
+                    "SK" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSK
+
+                    "SL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSL
+
+                    "SQ" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSQ
+
+                    "SR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSR
+
+                    "SV" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageSV
+
+                    "TL" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTL
+
+                    "UK" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageUK
+
+                    "VI" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageVI
+
+                    "TE" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTE
+
+                    "TH" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTH
+
+                    "TR" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageTR
+
+                    "XX" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageXX
+
+                    "ZH" ->
+                        Json.Decode.succeed CatalogsItemsDeleteDiscontinuedBatchRequestLanguageZH
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
 
 
 catalogsItemsFiltersDecoder : Json.Decode.Decoder CatalogsItemsFilters
@@ -56464,25 +63011,1019 @@ catalogsItemsRequestDecoder =
 
 catalogsItemsRequestLanguageDecoder : Json.Decode.Decoder CatalogsItemsRequestLanguage
 catalogsItemsRequestLanguageDecoder =
-    Json.Decode.succeed CatalogsItemsRequestLanguage
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "af-ZA" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageAfZA
+
+                    "ar-SA" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageArSA
+
+                    "bg-BG" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageBgBG
+
+                    "bn-IN" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageBnIN
+
+                    "cs-CZ" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageCsCZ
+
+                    "da-DK" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageDaDK
+
+                    "de" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageDe
+
+                    "el-GR" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageElGR
+
+                    "en-AU" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageEnAU
+
+                    "en-CA" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageEnCA
+
+                    "en-GB" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageEnGB
+
+                    "en-IN" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageEnIN
+
+                    "en-US" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageEnUS
+
+                    "es-419" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageEs419
+
+                    "es-AR" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageEsAR
+
+                    "es-ES" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageEsES
+
+                    "es-MX" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageEsMX
+
+                    "fi-FI" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageFiFI
+
+                    "fr" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageFr
+
+                    "fr-CA" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageFrCA
+
+                    "he-IL" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageHeIL
+
+                    "hi-IN" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageHiIN
+
+                    "hr-HR" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageHrHR
+
+                    "hu-HU" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageHuHU
+
+                    "id-ID" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageIdID
+
+                    "it" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageIt
+
+                    "ja" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageJa
+
+                    "ko-KR" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageKoKR
+
+                    "ms-MY" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageMsMY
+
+                    "nb-NO" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageNbNO
+
+                    "nl" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageNl
+
+                    "pl-PL" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguagePlPL
+
+                    "pt-BR" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguagePtBR
+
+                    "pt-PT" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguagePtPT
+
+                    "ro-RO" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageRoRO
+
+                    "ru-RU" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageRuRU
+
+                    "sk-SK" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageSkSK
+
+                    "sv-SE" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageSvSE
+
+                    "te-IN" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageTeIN
+
+                    "th-TH" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageThTH
+
+                    "tl-PH" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageTlPH
+
+                    "tr" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageTr
+
+                    "uk-UA" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageUkUA
+
+                    "vi-VN" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageViVN
+
+                    "zh-CN" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageZhCN
+
+                    "zh-TW" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageZhTW
+
+                    "AM" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageAM
+
+                    "AR" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageAR
+
+                    "AZ" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageAZ
+
+                    "BG" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageBG
+
+                    "BN" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageBN
+
+                    "BS" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageBS
+
+                    "CA" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageCA
+
+                    "CS" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageCS
+
+                    "DA" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageDA
+
+                    "DV" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageDV
+
+                    "DZ" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageDZ
+
+                    "DE" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageDE
+
+                    "EL" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageEL
+
+                    "EN" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageEN
+
+                    "ES" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageES
+
+                    "ET" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageET
+
+                    "FA" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageFA
+
+                    "FI" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageFI
+
+                    "FR" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageFR
+
+                    "HE" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageHE
+
+                    "HI" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageHI
+
+                    "HR" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageHR
+
+                    "HU" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageHU
+
+                    "HY" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageHY
+
+                    "ID" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageID
+
+                    "IN" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageIN
+
+                    "IS" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageIS
+
+                    "IT" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageIT
+
+                    "IW" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageIW
+
+                    "JA" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageJA
+
+                    "KA" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageKA
+
+                    "KM" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageKM
+
+                    "KO" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageKO
+
+                    "LO" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageLO
+
+                    "LT" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageLT
+
+                    "LV" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageLV
+
+                    "MK" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageMK
+
+                    "MN" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageMN
+
+                    "MS" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageMS
+
+                    "MY" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageMY
+
+                    "NB" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageNB
+
+                    "NE" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageNE
+
+                    "NL" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageNL
+
+                    "NO" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageNO
+
+                    "PL" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguagePL
+
+                    "PT" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguagePT
+
+                    "RO" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageRO
+
+                    "RU" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageRU
+
+                    "SK" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageSK
+
+                    "SL" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageSL
+
+                    "SQ" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageSQ
+
+                    "SR" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageSR
+
+                    "SV" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageSV
+
+                    "TL" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageTL
+
+                    "UK" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageUK
+
+                    "VI" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageVI
+
+                    "TE" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageTE
+
+                    "TH" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageTH
+
+                    "TR" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageTR
+
+                    "XX" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageXX
+
+                    "ZH" ->
+                        Json.Decode.succeed CatalogsItemsRequestLanguageZH
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
 
 
 catalogsItemsUpdateBatchRequestDecoder : Json.Decode.Decoder CatalogsItemsUpdateBatchRequest
 catalogsItemsUpdateBatchRequestDecoder =
     Json.Decode.succeed CatalogsItemsUpdateBatchRequest
         |> decode "country" countryDecoder 
-        |> decode "language" catalogsItemsRequestLanguageDecoder 
+        |> decode "language" catalogsItemsUpdateBatchRequestLanguageDecoder 
         |> decode "operation" batchOperationDecoder 
         |> decode "items" (Json.Decode.list itemUpdateBatchRecordDecoder) 
+
+
+catalogsItemsUpdateBatchRequestLanguageDecoder : Json.Decode.Decoder CatalogsItemsUpdateBatchRequestLanguage
+catalogsItemsUpdateBatchRequestLanguageDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "af-ZA" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageAfZA
+
+                    "ar-SA" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageArSA
+
+                    "bg-BG" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageBgBG
+
+                    "bn-IN" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageBnIN
+
+                    "cs-CZ" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageCsCZ
+
+                    "da-DK" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageDaDK
+
+                    "de" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageDe
+
+                    "el-GR" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageElGR
+
+                    "en-AU" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageEnAU
+
+                    "en-CA" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageEnCA
+
+                    "en-GB" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageEnGB
+
+                    "en-IN" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageEnIN
+
+                    "en-US" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageEnUS
+
+                    "es-419" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageEs419
+
+                    "es-AR" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageEsAR
+
+                    "es-ES" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageEsES
+
+                    "es-MX" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageEsMX
+
+                    "fi-FI" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageFiFI
+
+                    "fr" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageFr
+
+                    "fr-CA" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageFrCA
+
+                    "he-IL" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageHeIL
+
+                    "hi-IN" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageHiIN
+
+                    "hr-HR" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageHrHR
+
+                    "hu-HU" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageHuHU
+
+                    "id-ID" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageIdID
+
+                    "it" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageIt
+
+                    "ja" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageJa
+
+                    "ko-KR" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageKoKR
+
+                    "ms-MY" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageMsMY
+
+                    "nb-NO" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageNbNO
+
+                    "nl" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageNl
+
+                    "pl-PL" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguagePlPL
+
+                    "pt-BR" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguagePtBR
+
+                    "pt-PT" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguagePtPT
+
+                    "ro-RO" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageRoRO
+
+                    "ru-RU" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageRuRU
+
+                    "sk-SK" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageSkSK
+
+                    "sv-SE" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageSvSE
+
+                    "te-IN" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageTeIN
+
+                    "th-TH" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageThTH
+
+                    "tl-PH" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageTlPH
+
+                    "tr" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageTr
+
+                    "uk-UA" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageUkUA
+
+                    "vi-VN" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageViVN
+
+                    "zh-CN" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageZhCN
+
+                    "zh-TW" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageZhTW
+
+                    "AM" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageAM
+
+                    "AR" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageAR
+
+                    "AZ" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageAZ
+
+                    "BG" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageBG
+
+                    "BN" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageBN
+
+                    "BS" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageBS
+
+                    "CA" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageCA
+
+                    "CS" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageCS
+
+                    "DA" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageDA
+
+                    "DV" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageDV
+
+                    "DZ" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageDZ
+
+                    "DE" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageDE
+
+                    "EL" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageEL
+
+                    "EN" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageEN
+
+                    "ES" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageES
+
+                    "ET" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageET
+
+                    "FA" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageFA
+
+                    "FI" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageFI
+
+                    "FR" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageFR
+
+                    "HE" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageHE
+
+                    "HI" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageHI
+
+                    "HR" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageHR
+
+                    "HU" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageHU
+
+                    "HY" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageHY
+
+                    "ID" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageID
+
+                    "IN" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageIN
+
+                    "IS" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageIS
+
+                    "IT" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageIT
+
+                    "IW" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageIW
+
+                    "JA" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageJA
+
+                    "KA" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageKA
+
+                    "KM" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageKM
+
+                    "KO" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageKO
+
+                    "LO" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageLO
+
+                    "LT" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageLT
+
+                    "LV" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageLV
+
+                    "MK" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageMK
+
+                    "MN" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageMN
+
+                    "MS" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageMS
+
+                    "MY" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageMY
+
+                    "NB" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageNB
+
+                    "NE" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageNE
+
+                    "NL" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageNL
+
+                    "NO" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageNO
+
+                    "PL" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguagePL
+
+                    "PT" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguagePT
+
+                    "RO" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageRO
+
+                    "RU" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageRU
+
+                    "SK" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageSK
+
+                    "SL" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageSL
+
+                    "SQ" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageSQ
+
+                    "SR" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageSR
+
+                    "SV" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageSV
+
+                    "TL" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageTL
+
+                    "UK" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageUK
+
+                    "VI" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageVI
+
+                    "TE" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageTE
+
+                    "TH" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageTH
+
+                    "TR" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageTR
+
+                    "XX" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageXX
+
+                    "ZH" ->
+                        Json.Decode.succeed CatalogsItemsUpdateBatchRequestLanguageZH
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
 
 
 catalogsItemsUpsertBatchRequestDecoder : Json.Decode.Decoder CatalogsItemsUpsertBatchRequest
 catalogsItemsUpsertBatchRequestDecoder =
     Json.Decode.succeed CatalogsItemsUpsertBatchRequest
         |> decode "country" countryDecoder 
-        |> decode "language" catalogsItemsRequestLanguageDecoder 
+        |> decode "language" catalogsItemsUpsertBatchRequestLanguageDecoder 
         |> decode "operation" batchOperationDecoder 
         |> decode "items" (Json.Decode.list itemUpsertBatchRecordDecoder) 
+
+
+catalogsItemsUpsertBatchRequestLanguageDecoder : Json.Decode.Decoder CatalogsItemsUpsertBatchRequestLanguage
+catalogsItemsUpsertBatchRequestLanguageDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "af-ZA" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageAfZA
+
+                    "ar-SA" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageArSA
+
+                    "bg-BG" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageBgBG
+
+                    "bn-IN" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageBnIN
+
+                    "cs-CZ" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageCsCZ
+
+                    "da-DK" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageDaDK
+
+                    "de" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageDe
+
+                    "el-GR" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageElGR
+
+                    "en-AU" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageEnAU
+
+                    "en-CA" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageEnCA
+
+                    "en-GB" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageEnGB
+
+                    "en-IN" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageEnIN
+
+                    "en-US" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageEnUS
+
+                    "es-419" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageEs419
+
+                    "es-AR" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageEsAR
+
+                    "es-ES" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageEsES
+
+                    "es-MX" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageEsMX
+
+                    "fi-FI" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageFiFI
+
+                    "fr" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageFr
+
+                    "fr-CA" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageFrCA
+
+                    "he-IL" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageHeIL
+
+                    "hi-IN" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageHiIN
+
+                    "hr-HR" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageHrHR
+
+                    "hu-HU" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageHuHU
+
+                    "id-ID" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageIdID
+
+                    "it" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageIt
+
+                    "ja" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageJa
+
+                    "ko-KR" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageKoKR
+
+                    "ms-MY" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageMsMY
+
+                    "nb-NO" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageNbNO
+
+                    "nl" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageNl
+
+                    "pl-PL" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguagePlPL
+
+                    "pt-BR" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguagePtBR
+
+                    "pt-PT" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguagePtPT
+
+                    "ro-RO" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageRoRO
+
+                    "ru-RU" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageRuRU
+
+                    "sk-SK" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageSkSK
+
+                    "sv-SE" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageSvSE
+
+                    "te-IN" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageTeIN
+
+                    "th-TH" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageThTH
+
+                    "tl-PH" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageTlPH
+
+                    "tr" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageTr
+
+                    "uk-UA" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageUkUA
+
+                    "vi-VN" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageViVN
+
+                    "zh-CN" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageZhCN
+
+                    "zh-TW" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageZhTW
+
+                    "AM" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageAM
+
+                    "AR" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageAR
+
+                    "AZ" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageAZ
+
+                    "BG" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageBG
+
+                    "BN" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageBN
+
+                    "BS" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageBS
+
+                    "CA" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageCA
+
+                    "CS" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageCS
+
+                    "DA" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageDA
+
+                    "DV" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageDV
+
+                    "DZ" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageDZ
+
+                    "DE" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageDE
+
+                    "EL" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageEL
+
+                    "EN" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageEN
+
+                    "ES" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageES
+
+                    "ET" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageET
+
+                    "FA" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageFA
+
+                    "FI" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageFI
+
+                    "FR" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageFR
+
+                    "HE" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageHE
+
+                    "HI" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageHI
+
+                    "HR" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageHR
+
+                    "HU" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageHU
+
+                    "HY" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageHY
+
+                    "ID" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageID
+
+                    "IN" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageIN
+
+                    "IS" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageIS
+
+                    "IT" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageIT
+
+                    "IW" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageIW
+
+                    "JA" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageJA
+
+                    "KA" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageKA
+
+                    "KM" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageKM
+
+                    "KO" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageKO
+
+                    "LO" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageLO
+
+                    "LT" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageLT
+
+                    "LV" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageLV
+
+                    "MK" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageMK
+
+                    "MN" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageMN
+
+                    "MS" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageMS
+
+                    "MY" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageMY
+
+                    "NB" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageNB
+
+                    "NE" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageNE
+
+                    "NL" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageNL
+
+                    "NO" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageNO
+
+                    "PL" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguagePL
+
+                    "PT" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguagePT
+
+                    "RO" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageRO
+
+                    "RU" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageRU
+
+                    "SK" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageSK
+
+                    "SL" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageSL
+
+                    "SQ" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageSQ
+
+                    "SR" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageSR
+
+                    "SV" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageSV
+
+                    "TL" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageTL
+
+                    "UK" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageUK
+
+                    "VI" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageVI
+
+                    "TE" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageTE
+
+                    "TH" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageTH
+
+                    "TR" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageTR
+
+                    "XX" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageXX
+
+                    "ZH" ->
+                        Json.Decode.succeed CatalogsItemsUpsertBatchRequestLanguageZH
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
 
 
 catalogsList200ResponseDecoder : Json.Decode.Decoder CatalogsList200Response
@@ -57137,7 +64678,7 @@ catalogsRetailBatchRequestDecoder =
     Json.Decode.succeed CatalogsRetailBatchRequest
         |> decode "catalog_type" catalogsRetailBatchRequestCatalogTypeDecoder 
         |> decode "country" countryDecoder 
-        |> decode "language" catalogsItemsRequestLanguageDecoder 
+        |> decode "language" catalogsRetailBatchRequestLanguageDecoder 
         |> decode "items" (Json.Decode.list catalogsRetailBatchRequestItemsInnerDecoder) 
 
 
@@ -57149,6 +64690,339 @@ catalogsRetailBatchRequestCatalogTypeDecoder =
                 case value of
                     "RETAIL" ->
                         Json.Decode.succeed CatalogsRetailBatchRequestCatalogTypeRETAIL
+
+                    other ->
+                        Json.Decode.fail <| "Unknown type: " ++ other
+            )
+
+
+
+catalogsRetailBatchRequestLanguageDecoder : Json.Decode.Decoder CatalogsRetailBatchRequestLanguage
+catalogsRetailBatchRequestLanguageDecoder =
+    Json.Decode.string
+        |> Json.Decode.andThen
+            (\value ->
+                case value of
+                    "af-ZA" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageAfZA
+
+                    "ar-SA" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageArSA
+
+                    "bg-BG" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageBgBG
+
+                    "bn-IN" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageBnIN
+
+                    "cs-CZ" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageCsCZ
+
+                    "da-DK" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageDaDK
+
+                    "de" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageDe
+
+                    "el-GR" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageElGR
+
+                    "en-AU" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageEnAU
+
+                    "en-CA" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageEnCA
+
+                    "en-GB" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageEnGB
+
+                    "en-IN" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageEnIN
+
+                    "en-US" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageEnUS
+
+                    "es-419" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageEs419
+
+                    "es-AR" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageEsAR
+
+                    "es-ES" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageEsES
+
+                    "es-MX" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageEsMX
+
+                    "fi-FI" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageFiFI
+
+                    "fr" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageFr
+
+                    "fr-CA" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageFrCA
+
+                    "he-IL" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageHeIL
+
+                    "hi-IN" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageHiIN
+
+                    "hr-HR" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageHrHR
+
+                    "hu-HU" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageHuHU
+
+                    "id-ID" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageIdID
+
+                    "it" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageIt
+
+                    "ja" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageJa
+
+                    "ko-KR" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageKoKR
+
+                    "ms-MY" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageMsMY
+
+                    "nb-NO" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageNbNO
+
+                    "nl" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageNl
+
+                    "pl-PL" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguagePlPL
+
+                    "pt-BR" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguagePtBR
+
+                    "pt-PT" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguagePtPT
+
+                    "ro-RO" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageRoRO
+
+                    "ru-RU" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageRuRU
+
+                    "sk-SK" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageSkSK
+
+                    "sv-SE" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageSvSE
+
+                    "te-IN" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageTeIN
+
+                    "th-TH" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageThTH
+
+                    "tl-PH" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageTlPH
+
+                    "tr" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageTr
+
+                    "uk-UA" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageUkUA
+
+                    "vi-VN" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageViVN
+
+                    "zh-CN" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageZhCN
+
+                    "zh-TW" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageZhTW
+
+                    "AM" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageAM
+
+                    "AR" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageAR
+
+                    "AZ" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageAZ
+
+                    "BG" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageBG
+
+                    "BN" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageBN
+
+                    "BS" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageBS
+
+                    "CA" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageCA
+
+                    "CS" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageCS
+
+                    "DA" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageDA
+
+                    "DV" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageDV
+
+                    "DZ" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageDZ
+
+                    "DE" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageDE
+
+                    "EL" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageEL
+
+                    "EN" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageEN
+
+                    "ES" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageES
+
+                    "ET" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageET
+
+                    "FA" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageFA
+
+                    "FI" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageFI
+
+                    "FR" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageFR
+
+                    "HE" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageHE
+
+                    "HI" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageHI
+
+                    "HR" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageHR
+
+                    "HU" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageHU
+
+                    "HY" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageHY
+
+                    "ID" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageID
+
+                    "IN" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageIN
+
+                    "IS" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageIS
+
+                    "IT" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageIT
+
+                    "IW" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageIW
+
+                    "JA" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageJA
+
+                    "KA" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageKA
+
+                    "KM" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageKM
+
+                    "KO" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageKO
+
+                    "LO" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageLO
+
+                    "LT" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageLT
+
+                    "LV" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageLV
+
+                    "MK" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageMK
+
+                    "MN" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageMN
+
+                    "MS" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageMS
+
+                    "MY" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageMY
+
+                    "NB" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageNB
+
+                    "NE" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageNE
+
+                    "NL" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageNL
+
+                    "NO" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageNO
+
+                    "PL" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguagePL
+
+                    "PT" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguagePT
+
+                    "RO" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageRO
+
+                    "RU" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageRU
+
+                    "SK" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageSK
+
+                    "SL" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageSL
+
+                    "SQ" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageSQ
+
+                    "SR" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageSR
+
+                    "SV" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageSV
+
+                    "TL" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageTL
+
+                    "UK" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageUK
+
+                    "VI" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageVI
+
+                    "TE" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageTE
+
+                    "TH" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageTH
+
+                    "TR" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageTR
+
+                    "XX" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageXX
+
+                    "ZH" ->
+                        Json.Decode.succeed CatalogsRetailBatchRequestLanguageZH
 
                     other ->
                         Json.Decode.fail <| "Unknown type: " ++ other
@@ -57237,7 +65111,7 @@ catalogsRetailFeedsCreateRequestDecoder =
         |> decode "catalog_type" catalogsTypeDecoder 
         |> decode "default_country" countryDecoder 
         |> maybeDecodeNullable "default_availability" productAvailabilityTypeDecoder Nothing
-        |> maybeDecode "status" Json.Decode.string Nothing
+        |> maybeDecode "status" catalogsStatusDecoder (Just "ACTIVE")
 
 
 catalogsRetailFeedsUpdateRequestDecoder : Json.Decode.Decoder CatalogsRetailFeedsUpdateRequest
@@ -58145,7 +66019,6 @@ conversionTagConfigsDecoder =
 conversionTagCreateDecoder : Json.Decode.Decoder ConversionTagCreate
 conversionTagCreateDecoder =
     Json.Decode.succeed ConversionTagCreate
-        |> decode "name" Json.Decode.string 
         |> maybeDecodeNullable "aem_enabled" Json.Decode.bool (Just False)
         |> maybeDecodeNullable "md_frequency" Json.Decode.float (Just 1)
         |> maybeDecodeNullable "aem_fnln_enabled" Json.Decode.bool (Just False)
@@ -58153,6 +66026,7 @@ conversionTagCreateDecoder =
         |> maybeDecodeNullable "aem_ge_enabled" Json.Decode.bool (Just False)
         |> maybeDecodeNullable "aem_db_enabled" Json.Decode.bool (Just False)
         |> maybeDecodeNullable "aem_loc_enabled" Json.Decode.bool (Just False)
+        |> decode "name" Json.Decode.string 
 
 
 conversionTagListResponseDecoder : Json.Decode.Decoder ConversionTagListResponse
@@ -59070,6 +66944,7 @@ createInvitesResultsResponseArrayItemsInnerInviteDecoder =
 createMMMReportRequestDecoder : Json.Decode.Decoder CreateMMMReportRequest
 createMMMReportRequestDecoder =
     Json.Decode.succeed CreateMMMReportRequest
+        |> maybeDecode "countries" (Json.Decode.list targetingAdvertiserCountryDecoder) Nothing
         |> decode "report_name" Json.Decode.string 
         |> decode "start_date" Json.Decode.string 
         |> decode "end_date" Json.Decode.string 
@@ -59077,7 +66952,6 @@ createMMMReportRequestDecoder =
         |> decode "level" createMMMReportRequestLevelDecoder 
         |> decode "targeting_types" (Json.Decode.list mMMReportingTargetingTypeDecoder) 
         |> decode "columns" (Json.Decode.list mMMReportingColumnDecoder) 
-        |> maybeDecode "countries" (Json.Decode.list targetingAdvertiserCountryDecoder) Nothing
 
 
 createMMMReportRequestGranularityDecoder : Json.Decode.Decoder CreateMMMReportRequestGranularity
@@ -60366,12 +68240,12 @@ inviteAssetsSummaryProfilesInnerDecoder =
 inviteBusinessRoleBindingDecoder : Json.Decode.Decoder InviteBusinessRoleBinding
 inviteBusinessRoleBindingDecoder =
     Json.Decode.succeed InviteBusinessRoleBinding
-        |> maybeDecode "created_by_business_id" Json.Decode.string Nothing
-        |> maybeDecode "created_by_user_id" Json.Decode.string Nothing
-        |> maybeDecode "user" businessAccessUserSummaryDecoder Nothing
         |> maybeDecode "id" Json.Decode.string Nothing
         |> maybeDecode "invite_data" baseInviteDataResponseInviteDataDecoder Nothing
         |> maybeDecode "is_received_invite" Json.Decode.bool Nothing
+        |> maybeDecode "user" objectDecoder Nothing
+        |> maybeDecode "created_by_business_id" Json.Decode.string Nothing
+        |> maybeDecode "created_by_user_id" Json.Decode.string Nothing
 
 
 inviteExceptionResponseDecoder : Json.Decode.Decoder InviteExceptionResponse
@@ -60386,15 +68260,15 @@ inviteExceptionResponseDecoder =
 inviteResponseDecoder : Json.Decode.Decoder InviteResponse
 inviteResponseDecoder =
     Json.Decode.succeed InviteResponse
-        |> maybeDecodeNullable "assets_summary" inviteAssetsSummaryDecoder Nothing
-        |> maybeDecode "business_roles" (Json.Decode.list Json.Decode.string) Nothing
-        |> maybeDecodeNullable "created_by_business" businessAccessUserSummaryDecoder Nothing
-        |> maybeDecodeNullable "created_by_user" businessAccessUserSummaryDecoder Nothing
-        |> maybeDecode "created_time" Json.Decode.int Nothing
         |> maybeDecode "id" Json.Decode.string Nothing
         |> maybeDecode "invite_data" baseInviteDataResponseInviteDataDecoder Nothing
         |> maybeDecode "is_received_invite" Json.Decode.bool Nothing
         |> maybeDecode "user" businessAccessUserSummaryDecoder Nothing
+        |> maybeDecodeNullable "assets_summary" inviteAssetsSummaryDecoder Nothing
+        |> maybeDecode "business_roles" (Json.Decode.list Json.Decode.string) Nothing
+        |> maybeDecodeNullable "created_by_business" objectDecoder Nothing
+        |> maybeDecodeNullable "created_by_user" objectDecoder Nothing
+        |> maybeDecode "created_time" Json.Decode.int Nothing
 
 
 inviteStatusDecoder : Json.Decode.Decoder InviteStatus
@@ -60634,9 +68508,11 @@ itemResponseDecoder =
     Json.Decode.succeed ItemResponse
         |> decode "catalog_type" catalogsTypeDecoder 
         |> maybeDecode "item_id" Json.Decode.string Nothing
-        |> maybeDecode "errors" (Json.Decode.list itemValidationEventDecoder) Nothing
+        |> maybeDecodeNullable "pins" (Json.Decode.list pinDecoder) Nothing
+        |> maybeDecode "attributes" catalogsCreativeAssetsAttributesDecoder Nothing
         |> maybeDecode "hotel_id" Json.Decode.string Nothing
         |> maybeDecode "creative_assets_id" Json.Decode.string Nothing
+        |> maybeDecode "errors" (Json.Decode.list itemValidationEventDecoder) Nothing
 
 
 itemResponseAnyOfDecoder : Json.Decode.Decoder ItemResponseAnyOf
@@ -61037,13 +68913,13 @@ leadFormCommonPolicyLinksInnerDecoder =
 leadFormCreateRequestDecoder : Json.Decode.Decoder LeadFormCreateRequest
 leadFormCreateRequestDecoder =
     Json.Decode.succeed LeadFormCreateRequest
-        |> decodeNullable "name" Json.Decode.string 
-        |> decodeNullable "privacy_policy_link" Json.Decode.string 
-        |> decode "has_accepted_terms" Json.Decode.bool 
-        |> decodeNullable "completion_message" Json.Decode.string 
+        |> maybeDecodeNullable "name" Json.Decode.string Nothing
+        |> maybeDecodeNullable "privacy_policy_link" Json.Decode.string Nothing
+        |> maybeDecode "has_accepted_terms" Json.Decode.bool Nothing
+        |> maybeDecodeNullable "completion_message" Json.Decode.string Nothing
         |> maybeDecode "status" leadFormStatusDecoder Nothing
         |> maybeDecodeNullable "disclosure_language" Json.Decode.string Nothing
-        |> decode "questions" (Json.Decode.list leadFormQuestionDecoder) 
+        |> maybeDecode "questions" (Json.Decode.list leadFormQuestionDecoder) Nothing
         |> maybeDecode "policy_links" (Json.Decode.list leadFormCommonPolicyLinksInnerDecoder) Nothing
 
 
@@ -62824,8 +70700,8 @@ nullableCurrencyDecoder =
 oauthAccessTokenRequestClientCredentialsDecoder : Json.Decode.Decoder OauthAccessTokenRequestClientCredentials
 oauthAccessTokenRequestClientCredentialsDecoder =
     Json.Decode.succeed OauthAccessTokenRequestClientCredentials
-        |> decode "grant_type" oauthAccessTokenRequestClientCredentialsGrantTypeDecoder 
         |> decode "scope" Json.Decode.string 
+        |> decode "grant_type" oauthAccessTokenRequestClientCredentialsGrantTypeDecoder 
 
 
 oauthAccessTokenRequestClientCredentialsGrantTypeDecoder : Json.Decode.Decoder OauthAccessTokenRequestClientCredentialsGrantType
@@ -62852,9 +70728,9 @@ oauthAccessTokenRequestClientCredentialsGrantTypeDecoder =
 oauthAccessTokenRequestCodeDecoder : Json.Decode.Decoder OauthAccessTokenRequestCode
 oauthAccessTokenRequestCodeDecoder =
     Json.Decode.succeed OauthAccessTokenRequestCode
-        |> decode "grant_type" oauthAccessTokenRequestCodeGrantTypeDecoder 
         |> decode "code" Json.Decode.string 
         |> decode "redirect_uri" Json.Decode.string 
+        |> decode "grant_type" oauthAccessTokenRequestCodeGrantTypeDecoder 
 
 
 oauthAccessTokenRequestCodeGrantTypeDecoder : Json.Decode.Decoder OauthAccessTokenRequestCodeGrantType
@@ -62881,10 +70757,10 @@ oauthAccessTokenRequestCodeGrantTypeDecoder =
 oauthAccessTokenRequestRefreshDecoder : Json.Decode.Decoder OauthAccessTokenRequestRefresh
 oauthAccessTokenRequestRefreshDecoder =
     Json.Decode.succeed OauthAccessTokenRequestRefresh
-        |> decode "grant_type" oauthAccessTokenRequestRefreshGrantTypeDecoder 
         |> decode "refresh_token" Json.Decode.string 
         |> maybeDecode "scope" Json.Decode.string Nothing
         |> maybeDecode "refresh_on" Json.Decode.bool Nothing
+        |> decode "grant_type" oauthAccessTokenRequestRefreshGrantTypeDecoder 
 
 
 oauthAccessTokenRequestRefreshGrantTypeDecoder : Json.Decode.Decoder OauthAccessTokenRequestRefreshGrantType
@@ -63001,13 +70877,13 @@ oauthAccessTokenResponseClientCredentialsResponseTypeDecoder =
 oauthAccessTokenResponseCodeDecoder : Json.Decode.Decoder OauthAccessTokenResponseCode
 oauthAccessTokenResponseCodeDecoder =
     Json.Decode.succeed OauthAccessTokenResponseCode
+        |> decode "refresh_token" Json.Decode.string 
+        |> decode "refresh_token_expires_in" Json.Decode.int 
         |> maybeDecode "response_type" oauthAccessTokenResponseCodeResponseTypeDecoder Nothing
         |> decode "access_token" Json.Decode.string 
         |> decode "token_type" Json.Decode.string 
         |> decode "expires_in" Json.Decode.int 
         |> decode "scope" Json.Decode.string 
-        |> decode "refresh_token" Json.Decode.string 
-        |> decode "refresh_token_expires_in" Json.Decode.int 
 
 
 oauthAccessTokenResponseCodeResponseTypeDecoder : Json.Decode.Decoder OauthAccessTokenResponseCodeResponseType
@@ -63034,14 +70910,14 @@ oauthAccessTokenResponseCodeResponseTypeDecoder =
 oauthAccessTokenResponseEverlastingRefreshDecoder : Json.Decode.Decoder OauthAccessTokenResponseEverlastingRefresh
 oauthAccessTokenResponseEverlastingRefreshDecoder =
     Json.Decode.succeed OauthAccessTokenResponseEverlastingRefresh
+        |> decode "refresh_token" Json.Decode.string 
+        |> decode "refresh_token_expires_in" Json.Decode.int 
+        |> decode "refresh_token_expires_at" Json.Decode.int 
         |> maybeDecode "response_type" oauthAccessTokenResponseEverlastingRefreshResponseTypeDecoder Nothing
         |> decode "access_token" Json.Decode.string 
         |> decode "token_type" Json.Decode.string 
         |> decode "expires_in" Json.Decode.int 
         |> decode "scope" Json.Decode.string 
-        |> decode "refresh_token" Json.Decode.string 
-        |> decode "refresh_token_expires_in" Json.Decode.int 
-        |> decode "refresh_token_expires_at" Json.Decode.int 
 
 
 oauthAccessTokenResponseEverlastingRefreshResponseTypeDecoder : Json.Decode.Decoder OauthAccessTokenResponseEverlastingRefreshResponseType
@@ -63068,13 +70944,13 @@ oauthAccessTokenResponseEverlastingRefreshResponseTypeDecoder =
 oauthAccessTokenResponseIntegrationRefreshDecoder : Json.Decode.Decoder OauthAccessTokenResponseIntegrationRefresh
 oauthAccessTokenResponseIntegrationRefreshDecoder =
     Json.Decode.succeed OauthAccessTokenResponseIntegrationRefresh
+        |> decode "refresh_token" Json.Decode.string 
+        |> decode "refresh_token_expires_in" Json.Decode.int 
         |> maybeDecode "response_type" oauthAccessTokenResponseIntegrationRefreshResponseTypeDecoder Nothing
         |> decode "access_token" Json.Decode.string 
         |> decode "token_type" Json.Decode.string 
         |> decode "expires_in" Json.Decode.int 
         |> decode "scope" Json.Decode.string 
-        |> decode "refresh_token" Json.Decode.string 
-        |> decode "refresh_token_expires_in" Json.Decode.int 
 
 
 oauthAccessTokenResponseIntegrationRefreshResponseTypeDecoder : Json.Decode.Decoder OauthAccessTokenResponseIntegrationRefreshResponseType
@@ -63992,14 +71868,6 @@ pinUpdateCarouselSlotsInnerDecoder =
         |> maybeDecode "title" Json.Decode.string Nothing
         |> maybeDecode "description" Json.Decode.string Nothing
         |> maybeDecode "link" Json.Decode.string Nothing
-
-
-pinsAnalyticsMetricTypesParameterInnerDecoder : Json.Decode.Decoder PinsAnalyticsMetricTypesParameterInner
-pinsAnalyticsMetricTypesParameterInnerDecoder =
-    Json.Decode.oneOf
-        [ Json.Decode.map PinsAnalyticsMetricTypesParameterInnerString stringDecoder
-        ]
-
 
 
 pinsList200ResponseDecoder : Json.Decode.Decoder PinsList200Response
@@ -72147,7 +80015,7 @@ updateInvitesResultsResponseArrayItemsInnerDecoder : Json.Decode.Decoder UpdateI
 updateInvitesResultsResponseArrayItemsInnerDecoder =
     Json.Decode.succeed UpdateInvitesResultsResponseArrayItemsInner
         |> maybeDecodeNullable "exception" inviteExceptionResponseDecoder Nothing
-        |> maybeDecodeNullable "invite" inviteBusinessRoleBindingDecoder Nothing
+        |> maybeDecode "invite" inviteBusinessRoleBindingDecoder Nothing
 
 
 updateMaskBidOptionFieldDecoder : Json.Decode.Decoder UpdateMaskBidOptionField

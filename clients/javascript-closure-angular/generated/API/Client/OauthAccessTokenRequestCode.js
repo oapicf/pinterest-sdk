@@ -1,16 +1,9 @@
 goog.provide('API.Client.OauthAccessTokenRequestCode');
 
 /**
- * A request to exchange an authorization code for an access token.
  * @record
  */
 API.Client.OauthAccessTokenRequestCode = function() {}
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.OauthAccessTokenRequestCode.prototype.grantType;
 
 /**
  * @type {!string}
@@ -23,6 +16,12 @@ API.Client.OauthAccessTokenRequestCode.prototype.code;
  * @export
  */
 API.Client.OauthAccessTokenRequestCode.prototype.redirectUri;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.OauthAccessTokenRequestCode.prototype.grantType;
 
 /** @enum {string} */
 API.Client.OauthAccessTokenRequestCode.GrantTypeEnum = { 

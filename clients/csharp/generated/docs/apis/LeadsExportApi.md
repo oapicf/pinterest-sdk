@@ -15,65 +15,6 @@ Create a request to export leads collected from a lead ad
 
 <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class LeadsExportCreateExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new LeadsExportApi(config);
-            var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
-            var leadsExportCreateRequest = new LeadsExportCreateRequest(); // LeadsExportCreateRequest | 
-
-            try
-            {
-                // Create a request to export leads collected from a lead ad
-                LeadsExportCreateResponse result = apiInstance.LeadsExportCreate(adAccountId, leadsExportCreateRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling LeadsExportApi.LeadsExportCreate: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the LeadsExportCreateWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Create a request to export leads collected from a lead ad
-    ApiResponse<LeadsExportCreateResponse> response = apiInstance.LeadsExportCreateWithHttpInfo(adAccountId, leadsExportCreateRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling LeadsExportApi.LeadsExportCreateWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -113,65 +54,6 @@ Get the lead export from the lead export create call
 
 <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class LeadsExportGetExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new LeadsExportApi(config);
-            var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
-            var leadsExportId = 123755885175;  // string | lead_export_id token returned from the create a lead export endpoint
-
-            try
-            {
-                // Get the lead export from the lead export create call
-                LeadsExportResponseData result = apiInstance.LeadsExportGet(adAccountId, leadsExportId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling LeadsExportApi.LeadsExportGet: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the LeadsExportGetWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get the lead export from the lead export create call
-    ApiResponse<LeadsExportResponseData> response = apiInstance.LeadsExportGetWithHttpInfo(adAccountId, leadsExportId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling LeadsExportApi.LeadsExportGetWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

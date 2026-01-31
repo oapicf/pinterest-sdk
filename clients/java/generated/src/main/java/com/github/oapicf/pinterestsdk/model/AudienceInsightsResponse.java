@@ -54,7 +54,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Audience interests and demographics.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceInsightsResponse {
   public static final String SERIALIZED_NAME_CATEGORIES = "categories";
   @SerializedName(SERIALIZED_NAME_CATEGORIES)
@@ -276,16 +276,10 @@ public class AudienceInsightsResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("categories");
-    openapiFields.add("demographics");
-    openapiFields.add("type");
-    openapiFields.add("date");
-    openapiFields.add("size");
-    openapiFields.add("size_is_upper_bound");
+    openapiFields = new HashSet<String>(Arrays.asList("categories", "demographics", "type", "date", "size", "size_is_upper_bound"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -297,7 +291,7 @@ public class AudienceInsightsResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AudienceInsightsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceInsightsResponse is not found in the empty JSON string", AudienceInsightsResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AudienceInsightsResponse is not found in the empty JSON string", AudienceInsightsResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -305,7 +299,7 @@ public class AudienceInsightsResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AudienceInsightsResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AudienceInsightsResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AudienceInsightsResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -314,7 +308,7 @@ public class AudienceInsightsResponse {
         if (jsonArraycategories != null) {
           // ensure the json data is an array
           if (!jsonObj.get("categories").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `categories` to be an array in the JSON string but got `%s`", jsonObj.get("categories").toString()));
           }
 
           // validate the optional field `categories` (array)
@@ -332,7 +326,7 @@ public class AudienceInsightsResponse {
         AudienceInsightType.validateJsonElement(jsonObj.get("type"));
       }
       if ((jsonObj.get("date") != null && !jsonObj.get("date").isJsonNull()) && !jsonObj.get("date").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("date").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("date").toString()));
       }
   }
 

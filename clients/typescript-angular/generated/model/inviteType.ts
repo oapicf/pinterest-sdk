@@ -12,14 +12,10 @@
 /**
  * The type of invite. <br>\'MEMBER_INVITE\' is to invite a member to access your business assets. <br>\'PARTNER INVITE\' is to invite a partner to access your business assets. <br>\'PARTNER_REQUEST\' is to request access a partner\'s business assets.
  */
-export type InviteType = 'MEMBER_INVITE' | 'PARTNER_INVITE' | 'PARTNER_REQUEST';
-
 export const InviteType = {
-
-    MemberInvite: 'MEMBER_INVITE' as InviteType,
-
-    PartnerInvite: 'PARTNER_INVITE' as InviteType,
-
-    PartnerRequest: 'PARTNER_REQUEST' as InviteType
-};
+    MemberInvite: 'MEMBER_INVITE',
+    PartnerInvite: 'PARTNER_INVITE',
+    PartnerRequest: 'PARTNER_REQUEST'
+} as const;
+export type InviteType = typeof InviteType[keyof typeof InviteType];
 

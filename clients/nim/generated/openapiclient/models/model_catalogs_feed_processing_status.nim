@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type CatalogsFeedProcessingStatus* = object
-  ## 
+type CatalogsFeedProcessingStatus* {.pure.} = enum
+  COMPLETED
+  FAILED
+  PROCESSING
+
+func `%`*(v: CatalogsFeedProcessingStatus): JsonNode =
+  result = case v:
+    of CatalogsFeedProcessingStatus.COMPLETED: %"COMPLETED"
+    of CatalogsFeedProcessingStatus.FAILED: %"FAILED"
+    of CatalogsFeedProcessingStatus.PROCESSING: %"PROCESSING"
+
+func `$`*(v: CatalogsFeedProcessingStatus): string =
+  result = case v:
+    of CatalogsFeedProcessingStatus.COMPLETED: $("COMPLETED")
+    of CatalogsFeedProcessingStatus.FAILED: $("FAILED")
+    of CatalogsFeedProcessingStatus.PROCESSING: $("PROCESSING")
+
+proc to*(node: JsonNode, T: typedesc[CatalogsFeedProcessingStatus]): CatalogsFeedProcessingStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogsFeedProcessingStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("COMPLETED"):
+    return CatalogsFeedProcessingStatus.COMPLETED
+  of $("FAILED"):
+    return CatalogsFeedProcessingStatus.FAILED
+  of $("PROCESSING"):
+    return CatalogsFeedProcessingStatus.PROCESSING
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogsFeedProcessingStatus: " & strVal)
+

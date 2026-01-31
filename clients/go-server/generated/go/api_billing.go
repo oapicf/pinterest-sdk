@@ -53,52 +53,123 @@ func NewBillingAPIController(s BillingAPIServicer, opts ...BillingAPIOption) *Bi
 func (c *BillingAPIController) Routes() Routes {
 	return Routes{
 		"AdsCreditsDiscountsGet": Route{
+			"AdsCreditsDiscountsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ads_credit/discounts",
 			c.AdsCreditsDiscountsGet,
 		},
 		"AdsCreditRedeem": Route{
+			"AdsCreditRedeem",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/ads_credit/redeem",
 			c.AdsCreditRedeem,
 		},
 		"BillingProfilesGet": Route{
+			"BillingProfilesGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/billing_profiles",
 			c.BillingProfilesGet,
 		},
 		"SsioAccountsGet": Route{
+			"SsioAccountsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ssio/accounts",
 			c.SsioAccountsGet,
 		},
 		"SsioInsertionOrderCreate": Route{
+			"SsioInsertionOrderCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders",
 			c.SsioInsertionOrderCreate,
 		},
 		"SsioInsertionOrderEdit": Route{
+			"SsioInsertionOrderEdit",
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders",
 			c.SsioInsertionOrderEdit,
 		},
 		"SsioInsertionOrdersStatusGetByAdAccount": Route{
+			"SsioInsertionOrdersStatusGetByAdAccount",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders/status",
 			c.SsioInsertionOrdersStatusGetByAdAccount,
 		},
 		"SsioInsertionOrdersStatusGetByPinOrderId": Route{
+			"SsioInsertionOrdersStatusGetByPinOrderId",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status",
 			c.SsioInsertionOrdersStatusGetByPinOrderId,
 		},
 		"SsioOrderLinesGetByAdAccount": Route{
+			"SsioOrderLinesGetByAdAccount",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ssio/order_lines",
 			c.SsioOrderLinesGetByAdAccount,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the BillingAPIController
+func (c *BillingAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"AdsCreditsDiscountsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ads_credit/discounts",
+			c.AdsCreditsDiscountsGet,
+		},
+		Route{
+			"AdsCreditRedeem",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/ads_credit/redeem",
+			c.AdsCreditRedeem,
+		},
+		Route{
+			"BillingProfilesGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/billing_profiles",
+			c.BillingProfilesGet,
+		},
+		Route{
+			"SsioAccountsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ssio/accounts",
+			c.SsioAccountsGet,
+		},
+		Route{
+			"SsioInsertionOrderCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders",
+			c.SsioInsertionOrderCreate,
+		},
+		Route{
+			"SsioInsertionOrderEdit",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders",
+			c.SsioInsertionOrderEdit,
+		},
+		Route{
+			"SsioInsertionOrdersStatusGetByAdAccount",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders/status",
+			c.SsioInsertionOrdersStatusGetByAdAccount,
+		},
+		Route{
+			"SsioInsertionOrdersStatusGetByPinOrderId",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status",
+			c.SsioInsertionOrdersStatusGetByPinOrderId,
+		},
+		Route{
+			"SsioOrderLinesGetByAdAccount",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ssio/order_lines",
+			c.SsioOrderLinesGetByAdAccount,
+		},
+	}
+}
+
+
 
 // AdsCreditsDiscountsGet - Get ads credit discounts
 func (c *BillingAPIController) AdsCreditsDiscountsGet(w http.ResponseWriter, r *http.Request) {

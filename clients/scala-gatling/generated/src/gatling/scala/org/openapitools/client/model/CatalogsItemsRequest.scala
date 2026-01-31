@@ -4,7 +4,8 @@ package org.openapitools.client.model
 
 case class CatalogsItemsRequest (
     _country: Country,
-    _language: CatalogsItemsRequestLanguage,
+    /* We recommend using the CatalogsLocale values. */
+    _language: String,
     _filters: CatalogsItemsPostFilters
 )
 object CatalogsItemsRequest {

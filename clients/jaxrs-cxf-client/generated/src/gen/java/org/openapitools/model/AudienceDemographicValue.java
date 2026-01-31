@@ -1,35 +1,38 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Demographic detail for a single audience demographic
- **/
+ * Demographic detail for a single audience demographic
+ */
 @ApiModel(description="Demographic detail for a single audience demographic")
 
 public class AudienceDemographicValue  {
   
-  @ApiModelProperty(example = "us", value = "Unique key for demographic item")
  /**
-   * Unique key for demographic item
-  **/
+  * Unique key for demographic item
+  */
+  @ApiModelProperty(example = "us", value = "Unique key for demographic item")
+
   private String key;
 
-  @ApiModelProperty(example = "United States", value = "Display name for demographic")
  /**
-   * Display name for demographic
-  **/
+  * Display name for demographic
+  */
+  @ApiModelProperty(example = "United States", value = "Display name for demographic")
+
   private String name;
 
-  @ApiModelProperty(example = "0.551", value = "Value of demographic item as a percent of total audience")
  /**
-   * Value of demographic item as a percent of total audience
-  **/
+  * Value of demographic item as a percent of total audience
+  */
+  @ApiModelProperty(example = "0.551", value = "Value of demographic item as a percent of total audience")
+
   private BigDecimal ratio;
  /**
    * Unique key for demographic item

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AccountType* {.pure.} = enum
@@ -17,13 +19,13 @@ type AccountType* {.pure.} = enum
 
 type Account* = object
   ## 
-  accountType*: AccountType ## Type of account
-  id*: string ## User account ID.
-  profileImage*: string
-  websiteUrl*: string
-  username*: string
-  about*: string ## Profile about description.
-  businessName*: string
+  accountType*: Option[AccountType] ## Type of account
+  id*: Option[string] ## User account ID.
+  profileImage*: Option[string]
+  websiteUrl*: Option[string]
+  username*: Option[string]
+  about*: Option[string] ## Profile about description.
+  businessName*: Option[string]
   boardCount*: int ## User account board count.<br/>**Note**: Board count on user account level may differ from counts found elsewhere due to attribution of collaborative Boards.
   pinCount*: int ## User account pin count. This includes both created and saved pins.
   followerCount*: int ## User account follower count.
@@ -31,13 +33,76 @@ type Account* = object
   monthlyViews*: int ## User account monthly views.
 
 func `%`*(v: AccountType): JsonNode =
-  let str = case v:
-    of AccountType.PINNER: "PINNER"
-    of AccountType.BUSINESS: "BUSINESS"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of AccountType.PINNER: %"PINNER"
+    of AccountType.BUSINESS: %"BUSINESS"
 func `$`*(v: AccountType): string =
   result = case v:
-    of AccountType.PINNER: "PINNER"
-    of AccountType.BUSINESS: "BUSINESS"
+    of AccountType.PINNER: $("PINNER")
+    of AccountType.BUSINESS: $("BUSINESS")
+
+proc to*(node: JsonNode, T: typedesc[AccountType]): AccountType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AccountType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("PINNER"):
+    return AccountType.PINNER
+  of $("BUSINESS"):
+    return AccountType.BUSINESS
+  else:
+    raise newException(ValueError, "Invalid enum value for AccountType: " & strVal)
+
+
+# Custom JSON deserialization for Account with custom field names
+proc to*(node: JsonNode, T: typedesc[Account]): Account =
+  result = Account()
+  if node.kind == JObject:
+    if node.hasKey("account_type") and node["account_type"].kind != JNull:
+      result.accountType = some(to(node["account_type"], AccountType))
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("profile_image") and node["profile_image"].kind != JNull:
+      result.profileImage = some(to(node["profile_image"], typeof(result.profileImage.get())))
+    if node.hasKey("website_url") and node["website_url"].kind != JNull:
+      result.websiteUrl = some(to(node["website_url"], typeof(result.websiteUrl.get())))
+    if node.hasKey("username") and node["username"].kind != JNull:
+      result.username = some(to(node["username"], typeof(result.username.get())))
+    if node.hasKey("about") and node["about"].kind != JNull:
+      result.about = some(to(node["about"], typeof(result.about.get())))
+    if node.hasKey("business_name") and node["business_name"].kind != JNull:
+      result.businessName = some(to(node["business_name"], typeof(result.businessName.get())))
+    if node.hasKey("board_count"):
+      result.boardCount = to(node["board_count"], int)
+    if node.hasKey("pin_count"):
+      result.pinCount = to(node["pin_count"], int)
+    if node.hasKey("follower_count"):
+      result.followerCount = to(node["follower_count"], int)
+    if node.hasKey("following_count"):
+      result.followingCount = to(node["following_count"], int)
+    if node.hasKey("monthly_views"):
+      result.monthlyViews = to(node["monthly_views"], int)
+
+# Custom JSON serialization for Account with custom field names
+proc `%`*(obj: Account): JsonNode =
+  result = newJObject()
+  if obj.accountType.isSome():
+    result["account_type"] = %obj.accountType.get()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.profileImage.isSome():
+    result["profile_image"] = %obj.profileImage.get()
+  if obj.websiteUrl.isSome():
+    result["website_url"] = %obj.websiteUrl.get()
+  if obj.username.isSome():
+    result["username"] = %obj.username.get()
+  if obj.about.isSome():
+    result["about"] = %obj.about.get()
+  if obj.businessName.isSome():
+    result["business_name"] = %obj.businessName.get()
+  result["board_count"] = %obj.boardCount
+  result["pin_count"] = %obj.pinCount
+  result["follower_count"] = %obj.followerCount
+  result["following_count"] = %obj.followingCount
+  result["monthly_views"] = %obj.monthlyViews
+

@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `OauthAccessTokenRequestRefresh`
 --
-SELECT `grant_type`, `refresh_token`, `scope`, `refresh_on` FROM `OauthAccessTokenRequestRefresh` WHERE 1;
+SELECT `refresh_token`, `scope`, `refresh_on`, `grant_type` FROM `OauthAccessTokenRequestRefresh` WHERE 1;
 
 --
 -- INSERT template for table `OauthAccessTokenRequestRefresh`
 --
-INSERT INTO `OauthAccessTokenRequestRefresh`(`grant_type`, `refresh_token`, `scope`, `refresh_on`) VALUES (?, ?, ?, ?);
+INSERT INTO `OauthAccessTokenRequestRefresh`(`refresh_token`, `scope`, `refresh_on`, `grant_type`) VALUES (?, ?, ?, ?);
 
 --
 -- UPDATE template for table `OauthAccessTokenRequestRefresh`
 --
-UPDATE `OauthAccessTokenRequestRefresh` SET `grant_type` = ?, `refresh_token` = ?, `scope` = ?, `refresh_on` = ? WHERE 1;
+UPDATE `OauthAccessTokenRequestRefresh` SET `refresh_token` = ?, `scope` = ?, `refresh_on` = ?, `grant_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `OauthAccessTokenRequestRefresh`

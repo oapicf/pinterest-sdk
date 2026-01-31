@@ -33,18 +33,18 @@ export interface IntegrationLogClientRequest {
     response_status_code?: number;
 }
 export namespace IntegrationLogClientRequest {
-    export type MethodEnum = 'GET' | 'HEAD' | 'POST' | 'PUT' | 'DELETE' | 'CONNECT' | 'OPTIONS' | 'TRACE' | 'PATCH';
     export const MethodEnum = {
-        Get: 'GET' as MethodEnum,
-        Head: 'HEAD' as MethodEnum,
-        Post: 'POST' as MethodEnum,
-        Put: 'PUT' as MethodEnum,
-        Delete: 'DELETE' as MethodEnum,
-        Connect: 'CONNECT' as MethodEnum,
-        Options: 'OPTIONS' as MethodEnum,
-        Trace: 'TRACE' as MethodEnum,
-        Patch: 'PATCH' as MethodEnum
-    };
+        Get: 'GET',
+        Head: 'HEAD',
+        Post: 'POST',
+        Put: 'PUT',
+        Delete: 'DELETE',
+        Connect: 'CONNECT',
+        Options: 'OPTIONS',
+        Trace: 'TRACE',
+        Patch: 'PATCH'
+    } as const;
+    export type MethodEnum = typeof MethodEnum[keyof typeof MethodEnum];
 }
 
 

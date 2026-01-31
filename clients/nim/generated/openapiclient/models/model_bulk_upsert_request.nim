@@ -9,11 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_bulk_upsert_request_create
 import model_bulk_upsert_request_update
 
 type BulkUpsertRequest* = object
   ## Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.
-  create*: BulkUpsertRequestCreate
-  update*: BulkUpsertRequestUpdate
+  create*: Option[BulkUpsertRequestCreate]
+  update*: Option[BulkUpsertRequestUpdate]
+
+
+# Custom JSON deserialization for BulkUpsertRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[BulkUpsertRequest]): BulkUpsertRequest =
+  result = BulkUpsertRequest()
+  if node.kind == JObject:
+    if node.hasKey("create") and node["create"].kind != JNull:
+      result.create = some(to(node["create"], typeof(result.create.get())))
+    if node.hasKey("update") and node["update"].kind != JNull:
+      result.update = some(to(node["update"], typeof(result.update.get())))
+
+# Custom JSON serialization for BulkUpsertRequest with custom field names
+proc `%`*(obj: BulkUpsertRequest): JsonNode =
+  result = newJObject()
+  if obj.create.isSome():
+    result["create"] = %obj.create.get()
+  if obj.update.isSome():
+    result["update"] = %obj.update.get()
+

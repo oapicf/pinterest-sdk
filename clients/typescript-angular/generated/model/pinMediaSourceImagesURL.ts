@@ -22,10 +22,10 @@ export interface PinMediaSourceImagesURL {
     index?: number;
 }
 export namespace PinMediaSourceImagesURL {
-    export type SourceTypeEnum = 'multiple_image_urls';
     export const SourceTypeEnum = {
-        MultipleImageUrls: 'multiple_image_urls' as SourceTypeEnum
-    };
+        MultipleImageUrls: 'multiple_image_urls'
+    } as const;
+    export type SourceTypeEnum = typeof SourceTypeEnum[keyof typeof SourceTypeEnum];
 }
 
 

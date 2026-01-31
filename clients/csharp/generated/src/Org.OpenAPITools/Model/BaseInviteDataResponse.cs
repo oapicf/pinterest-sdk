@@ -189,16 +189,13 @@ namespace Org.OpenAPITools.Model
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "invite_data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                inviteData = new Option<BaseInviteDataResponseInviteData?>(JsonSerializer.Deserialize<BaseInviteDataResponseInviteData>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            inviteData = new Option<BaseInviteDataResponseInviteData?>(JsonSerializer.Deserialize<BaseInviteDataResponseInviteData>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "is_received_invite":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isReceivedInvite = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isReceivedInvite = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "user":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                user = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            user = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

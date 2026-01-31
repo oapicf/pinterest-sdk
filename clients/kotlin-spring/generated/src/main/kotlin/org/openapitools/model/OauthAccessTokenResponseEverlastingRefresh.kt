@@ -16,17 +16,26 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
+ * 
+ * @param refreshToken 
+ * @param refreshTokenExpiresIn 
+ * @param refreshTokenExpiresAt 
  * @param accessToken 
  * @param tokenType 
  * @param expiresIn 
  * @param scope 
- * @param refreshToken 
- * @param refreshTokenExpiresIn 
- * @param refreshTokenExpiresAt 
  * @param responseType 
  */
 data class OauthAccessTokenResponseEverlastingRefresh(
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("refresh_token", required = true) val refreshToken: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("refresh_token_expires_in", required = true) val refreshTokenExpiresIn: kotlin.Int,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("refresh_token_expires_at", required = true) val refreshTokenExpiresAt: kotlin.Int,
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("access_token", required = true) val accessToken: kotlin.String,
@@ -40,18 +49,9 @@ data class OauthAccessTokenResponseEverlastingRefresh(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("scope", required = true) val scope: kotlin.String,
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("refresh_token", required = true) val refreshToken: kotlin.String,
-
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("refresh_token_expires_in", required = true) val refreshTokenExpiresIn: kotlin.Int,
-
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("refresh_token_expires_at", required = true) val refreshTokenExpiresAt: kotlin.Int,
-
     @Schema(example = "null", description = "")
     @get:JsonProperty("response_type") val responseType: OauthAccessTokenResponseEverlastingRefresh.ResponseType? = null
-    ) {
+) {
 
     /**
     * 
@@ -67,7 +67,8 @@ data class OauthAccessTokenResponseEverlastingRefresh(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ResponseType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OauthAccessTokenResponseEverlastingRefresh'")
             }
         }
     }

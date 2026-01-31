@@ -97,7 +97,7 @@ public class ConversionEventsApi {
         <tr><td> 0 </td><td> Unexpected errors </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call eventsCreateCall(String adAccountId, ConversionEvents conversionEvents, Boolean test, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call eventsCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ConversionEvents conversionEvents, @javax.annotation.Nullable Boolean test, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -148,7 +148,7 @@ public class ConversionEventsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call eventsCreateValidateBeforeCall(String adAccountId, ConversionEvents conversionEvents, Boolean test, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call eventsCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ConversionEvents conversionEvents, @javax.annotation.Nullable Boolean test, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling eventsCreate(Async)");
@@ -185,7 +185,7 @@ public class ConversionEventsApi {
         <tr><td> 0 </td><td> Unexpected errors </td><td>  -  </td></tr>
      </table>
      */
-    public ConversionApiResponse eventsCreate(String adAccountId, ConversionEvents conversionEvents, Boolean test) throws ApiException {
+    public ConversionApiResponse eventsCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ConversionEvents conversionEvents, @javax.annotation.Nullable Boolean test) throws ApiException {
         ApiResponse<ConversionApiResponse> localVarResp = eventsCreateWithHttpInfo(adAccountId, conversionEvents, test);
         return localVarResp.getData();
     }
@@ -212,7 +212,7 @@ public class ConversionEventsApi {
         <tr><td> 0 </td><td> Unexpected errors </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConversionApiResponse> eventsCreateWithHttpInfo(String adAccountId, ConversionEvents conversionEvents, Boolean test) throws ApiException {
+    public ApiResponse<ConversionApiResponse> eventsCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ConversionEvents conversionEvents, @javax.annotation.Nullable Boolean test) throws ApiException {
         okhttp3.Call localVarCall = eventsCreateValidateBeforeCall(adAccountId, conversionEvents, test, null);
         Type localVarReturnType = new TypeToken<ConversionApiResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -241,7 +241,7 @@ public class ConversionEventsApi {
         <tr><td> 0 </td><td> Unexpected errors </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call eventsCreateAsync(String adAccountId, ConversionEvents conversionEvents, Boolean test, final ApiCallback<ConversionApiResponse> _callback) throws ApiException {
+    public okhttp3.Call eventsCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ConversionEvents conversionEvents, @javax.annotation.Nullable Boolean test, final ApiCallback<ConversionApiResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = eventsCreateValidateBeforeCall(adAccountId, conversionEvents, test, _callback);
         Type localVarReturnType = new TypeToken<ConversionApiResponse>(){}.getType();

@@ -16,68 +16,6 @@ Search pins by a given search term
 
 <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get the top 10 Pins by a given search term.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class SearchPartnerPinsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SearchApi(config);
-            var term = "term_example";  // string | Search term to look up pins.
-            var countryCode = US;  // string | Two letter country code (ISO 3166-1 alpha-2)
-            var bookmark = "bookmark_example";  // string | Cursor used to fetch the next page of items (optional) 
-            var locale = "locale_example";  // string | Search locale. (optional) 
-            var limit = 4;  // int | Max search result size (optional)  (default to 10)
-
-            try
-            {
-                // Search pins by a given search term
-                SearchPartnerPins200Response result = apiInstance.SearchPartnerPins(term, countryCode, bookmark, locale, limit);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SearchApi.SearchPartnerPins: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchPartnerPinsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Search pins by a given search term
-    ApiResponse<SearchPartnerPins200Response> response = apiInstance.SearchPartnerPinsWithHttpInfo(term, countryCode, bookmark, locale, limit);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SearchApi.SearchPartnerPinsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -120,69 +58,6 @@ Search user's boards
 
 Search for boards for the \"operation user_account\". This includes boards of all board types. - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class SearchUserBoardsGetExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-            // Configure OAuth2 access token for authorization: client_credentials
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SearchApi(config);
-            var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account. (optional) 
-            var bookmark = "bookmark_example";  // string | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
-            var query = "query_example";  // string | Search query. Can contain pin description keywords or comma-separated pin IDs. (optional) 
-
-            try
-            {
-                // Search user's boards
-                SearchUserBoardsGet200Response result = apiInstance.SearchUserBoardsGet(adAccountId, bookmark, pageSize, query);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SearchApi.SearchUserBoardsGet: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchUserBoardsGetWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Search user's boards
-    ApiResponse<SearchUserBoardsGet200Response> response = apiInstance.SearchUserBoardsGetWithHttpInfo(adAccountId, bookmark, pageSize, query);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SearchApi.SearchUserBoardsGetWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -223,66 +98,6 @@ Search user's Pins
 
 Search for pins for the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". See <a href='/docs/getting-started/using-business-access/'>Understanding Business Access</a> for more information.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class SearchUserPinsListExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SearchApi(config);
-            var query = Plants;  // string | Search query. Can contain pin description keywords or comma-separated pin IDs.
-            var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account. (optional) 
-            var bookmark = "bookmark_example";  // string | Cursor used to fetch the next page of items (optional) 
-
-            try
-            {
-                // Search user's Pins
-                PinsList200Response result = apiInstance.SearchUserPinsList(query, adAccountId, bookmark);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SearchApi.SearchUserPinsList: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchUserPinsListWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Search user's Pins
-    ApiResponse<PinsList200Response> response = apiInstance.SearchUserPinsListWithHttpInfo(query, adAccountId, bookmark);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SearchApi.SearchUserPinsListWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

@@ -9,10 +9,8 @@
  */
 
 
-export type MediaUploadType = 'video';
-
 export const MediaUploadType = {
-
-    Video: 'video' as MediaUploadType
-};
+    Video: 'video'
+} as const;
+export type MediaUploadType = typeof MediaUploadType[keyof typeof MediaUploadType];
 

@@ -99,8 +99,12 @@ export class IntegrationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/integrations/commerce/{external_business_id}`;
+        urlPath = urlPath.replace(`{${"external_business_id"}}`, encodeURIComponent(String(requestParameters['externalBusinessId'])));
+
         const response = await this.request({
-            path: `/integrations/commerce/{external_business_id}`.replace(`{${"external_business_id"}}`, encodeURIComponent(String(requestParameters['externalBusinessId']))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -138,8 +142,12 @@ export class IntegrationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/integrations/commerce/{external_business_id}`;
+        urlPath = urlPath.replace(`{${"external_business_id"}}`, encodeURIComponent(String(requestParameters['externalBusinessId'])));
+
         const response = await this.request({
-            path: `/integrations/commerce/{external_business_id}`.replace(`{${"external_business_id"}}`, encodeURIComponent(String(requestParameters['externalBusinessId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -180,8 +188,12 @@ export class IntegrationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/integrations/commerce/{external_business_id}`;
+        urlPath = urlPath.replace(`{${"external_business_id"}}`, encodeURIComponent(String(requestParameters['externalBusinessId'])));
+
         const response = await this.request({
-            path: `/integrations/commerce/{external_business_id}`.replace(`{${"external_business_id"}}`, encodeURIComponent(String(requestParameters['externalBusinessId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -216,8 +228,11 @@ export class IntegrationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/integrations/commerce`;
+
         const response = await this.request({
-            path: `/integrations/commerce`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -257,8 +272,12 @@ export class IntegrationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/integrations/{id}`;
+        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+
         const response = await this.request({
-            path: `/integrations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -298,8 +317,11 @@ export class IntegrationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/integrations`;
+
         const response = await this.request({
-            path: `/integrations`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -340,8 +362,11 @@ export class IntegrationsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/integrations/logs`;
+
         const response = await this.request({
-            path: `/integrations/logs`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,

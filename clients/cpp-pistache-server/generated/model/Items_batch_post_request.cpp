@@ -22,6 +22,7 @@ namespace org::openapitools::server::model
 Items_batch_post_request::Items_batch_post_request()
 {
     m_Catalog_type = "";
+    m_Language = "";
     m_Catalog_id = "";
     m_Catalog_idIsSet = false;
     
@@ -46,11 +47,7 @@ bool Items_batch_post_request::validate(std::stringstream& msg, const std::strin
     bool success = true;
     const std::string _pathPrefix = pathPrefix.empty() ? "Items_batch_post_request" : pathPrefix;
 
-                
-    if (!m_Language.validate(msg, _pathPrefix + ".language")) {
-        msg << _pathPrefix << ": Language is invalid;";
-        success = false;
-    }     
+                     
     
     /* Items */ {
         const std::vector<org::openapitools::server::model::ItemDeleteBatchRecord>& value = m_Items;
@@ -159,11 +156,11 @@ void Items_batch_post_request::setCountry(org::openapitools::server::model::Coun
 {
     m_Country = value;
 }
-org::openapitools::server::model::CatalogsItemsRequest_language Items_batch_post_request::getLanguage() const
+std::string Items_batch_post_request::getLanguage() const
 {
     return m_Language;
 }
-void Items_batch_post_request::setLanguage(org::openapitools::server::model::CatalogsItemsRequest_language const& value)
+void Items_batch_post_request::setLanguage(std::string const& value)
 {
     m_Language = value;
 }

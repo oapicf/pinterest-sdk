@@ -9,17 +9,72 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ssio_account_address
 
 type SSIOAccountItem* = object
   ## 
-  id*: string ## Salesforce id for billto_info
-  ioTermsId*: string ## Salesforce id for IO Terms and Conditions
-  ioTerms*: string ## Salesforce text for IO Terms and Conditions
-  usTermsId*: string ## Salesforce id for US Terms and Conditions
-  usTerms*: string ## Salesforce text for US Terms and Conditions
-  rowTermsId*: string ## Salesforce id for Rest of the World Terms and Conditions
-  rowTerms*: string ## Salesforce text for Rest of the World Terms and Conditions
-  ioType*: string ## Insertion Order Type - Pinterest Paper or Agency Paper
-  addresses*: seq[SSIOAccountAddress] ## Address information that is associated with this account.
+  id*: Option[string] ## Salesforce id for billto_info
+  ioTermsId*: Option[string] ## Salesforce id for IO Terms and Conditions
+  ioTerms*: Option[string] ## Salesforce text for IO Terms and Conditions
+  usTermsId*: Option[string] ## Salesforce id for US Terms and Conditions
+  usTerms*: Option[string] ## Salesforce text for US Terms and Conditions
+  rowTermsId*: Option[string] ## Salesforce id for Rest of the World Terms and Conditions
+  rowTerms*: Option[string] ## Salesforce text for Rest of the World Terms and Conditions
+  ioType*: Option[string] ## Insertion Order Type - Pinterest Paper or Agency Paper
+  addresses*: Option[seq[SSIOAccountAddress]] ## Address information that is associated with this account.
+
+
+# Custom JSON deserialization for SSIOAccountItem with custom field names
+proc to*(node: JsonNode, T: typedesc[SSIOAccountItem]): SSIOAccountItem =
+  result = SSIOAccountItem()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("io_terms_id") and node["io_terms_id"].kind != JNull:
+      result.ioTermsId = some(to(node["io_terms_id"], typeof(result.ioTermsId.get())))
+    if node.hasKey("io_terms") and node["io_terms"].kind != JNull:
+      result.ioTerms = some(to(node["io_terms"], typeof(result.ioTerms.get())))
+    if node.hasKey("us_terms_id") and node["us_terms_id"].kind != JNull:
+      result.usTermsId = some(to(node["us_terms_id"], typeof(result.usTermsId.get())))
+    if node.hasKey("us_terms") and node["us_terms"].kind != JNull:
+      result.usTerms = some(to(node["us_terms"], typeof(result.usTerms.get())))
+    if node.hasKey("row_terms_id") and node["row_terms_id"].kind != JNull:
+      result.rowTermsId = some(to(node["row_terms_id"], typeof(result.rowTermsId.get())))
+    if node.hasKey("row_terms") and node["row_terms"].kind != JNull:
+      result.rowTerms = some(to(node["row_terms"], typeof(result.rowTerms.get())))
+    if node.hasKey("io_type") and node["io_type"].kind != JNull:
+      result.ioType = some(to(node["io_type"], typeof(result.ioType.get())))
+    if node.hasKey("addresses") and node["addresses"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["addresses"]
+      if arrayNode.kind == JArray:
+        var arr: seq[SSIOAccountAddress] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, SSIOAccountAddress))
+        result.addresses = some(arr)
+
+# Custom JSON serialization for SSIOAccountItem with custom field names
+proc `%`*(obj: SSIOAccountItem): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.ioTermsId.isSome():
+    result["io_terms_id"] = %obj.ioTermsId.get()
+  if obj.ioTerms.isSome():
+    result["io_terms"] = %obj.ioTerms.get()
+  if obj.usTermsId.isSome():
+    result["us_terms_id"] = %obj.usTermsId.get()
+  if obj.usTerms.isSome():
+    result["us_terms"] = %obj.usTerms.get()
+  if obj.rowTermsId.isSome():
+    result["row_terms_id"] = %obj.rowTermsId.get()
+  if obj.rowTerms.isSome():
+    result["row_terms"] = %obj.rowTerms.get()
+  if obj.ioType.isSome():
+    result["io_type"] = %obj.ioType.get()
+  if obj.addresses.isSome():
+    result["addresses"] = %obj.addresses.get()
+

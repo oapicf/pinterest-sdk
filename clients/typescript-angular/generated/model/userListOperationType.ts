@@ -12,12 +12,9 @@
 /**
  * User list operation type (add or remove)
  */
-export type UserListOperationType = 'ADD' | 'REMOVE';
-
 export const UserListOperationType = {
-
-    Add: 'ADD' as UserListOperationType,
-
-    Remove: 'REMOVE' as UserListOperationType
-};
+    Add: 'ADD',
+    Remove: 'REMOVE'
+} as const;
+export type UserListOperationType = typeof UserListOperationType[keyof typeof UserListOperationType];
 

@@ -158,16 +158,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "IN_STOCK":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iNSTOCK = new Option<int?>(utf8JsonReader.GetInt32());
+                            iNSTOCK = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "OUT_OF_STOCK":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                oUTOFSTOCK = new Option<int?>(utf8JsonReader.GetInt32());
+                            oUTOFSTOCK = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "PREORDER":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pREORDER = new Option<int?>(utf8JsonReader.GetInt32());
+                            pREORDER = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

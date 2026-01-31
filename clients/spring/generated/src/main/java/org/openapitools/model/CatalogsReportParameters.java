@@ -31,12 +31,10 @@ import javax.annotation.Generated;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsHotelReportParameters.class, name = "HOTEL"),
-  @JsonSubTypes.Type(value = CatalogsRetailReportParameters.class, name = "RETAIL"),
-  @JsonSubTypes.Type(value = CatalogsHotelReportParameters.class, name = "CatalogsHotelReportParameters"),
-  @JsonSubTypes.Type(value = CatalogsRetailReportParameters.class, name = "CatalogsRetailReportParameters")
+  @JsonSubTypes.Type(value = CatalogsRetailReportParameters.class, name = "RETAIL")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface CatalogsReportParameters {
     public CatalogsType getCatalogType();
 }

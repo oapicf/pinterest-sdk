@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,23 +9,28 @@ import org.openapitools.model.CatalogsHotelProductGroupFiltersAnyOf;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object holding a group of filters for a hotel product group
- **/
+ * Object holding a group of filters for a hotel product group
+ */
 @ApiModel(description="Object holding a group of filters for a hotel product group")
 
 public class CatalogsHotelProductGroupFilters  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private List<CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private List<CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();
  /**
    * Get anyOf

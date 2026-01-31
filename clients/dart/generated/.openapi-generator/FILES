@@ -86,7 +86,6 @@ doc/AudienceCategory.md
 doc/AudienceCommon.md
 doc/AudienceCreateCustomRequest.md
 doc/AudienceCreateRequest.md
-doc/AudienceCreateRequest1AudienceType.md
 doc/AudienceDataParty.md
 doc/AudienceDefinition.md
 doc/AudienceDefinitionResponse.md
@@ -275,7 +274,6 @@ doc/CatalogsItemsDeleteDiscontinuedBatchRequest.md
 doc/CatalogsItemsFilters.md
 doc/CatalogsItemsPostFilters.md
 doc/CatalogsItemsRequest.md
-doc/CatalogsItemsRequestLanguage.md
 doc/CatalogsItemsUpdateBatchRequest.md
 doc/CatalogsItemsUpsertBatchRequest.md
 doc/CatalogsList200Response.md
@@ -620,7 +618,6 @@ doc/PinMediaWithVideos.md
 doc/PinPromotionSummaryStatus.md
 doc/PinUpdate.md
 doc/PinUpdateCarouselSlotsInner.md
-doc/PinsAnalyticsMetricTypesParameterInner.md
 doc/PinsApi.md
 doc/PinsList200Response.md
 doc/PinsSaveRequest.md
@@ -878,7 +875,6 @@ lib/model/audience_category.dart
 lib/model/audience_common.dart
 lib/model/audience_create_custom_request.dart
 lib/model/audience_create_request.dart
-lib/model/audience_create_request1_audience_type.dart
 lib/model/audience_data_party.dart
 lib/model/audience_definition.dart
 lib/model/audience_definition_response.dart
@@ -1056,7 +1052,6 @@ lib/model/catalogs_items_delete_discontinued_batch_request.dart
 lib/model/catalogs_items_filters.dart
 lib/model/catalogs_items_post_filters.dart
 lib/model/catalogs_items_request.dart
-lib/model/catalogs_items_request_language.dart
 lib/model/catalogs_items_update_batch_request.dart
 lib/model/catalogs_items_upsert_batch_request.dart
 lib/model/catalogs_list200_response.dart
@@ -1390,7 +1385,6 @@ lib/model/pin_media_with_videos.dart
 lib/model/pin_promotion_summary_status.dart
 lib/model/pin_update.dart
 lib/model/pin_update_carousel_slots_inner.dart
-lib/model/pins_analytics_metric_types_parameter_inner.dart
 lib/model/pins_list200_response.dart
 lib/model/pins_save_request.dart
 lib/model/pinterest_tag_event_data.dart

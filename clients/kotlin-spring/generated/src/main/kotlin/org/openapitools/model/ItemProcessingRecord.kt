@@ -40,7 +40,7 @@ data class ItemProcessingRecord(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("status") val status: ItemProcessingStatus? = null
-    ) {
+) {
 
 }
 

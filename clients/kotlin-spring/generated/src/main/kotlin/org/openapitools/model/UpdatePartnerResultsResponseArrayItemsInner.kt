@@ -29,7 +29,7 @@ data class UpdatePartnerResultsResponseArrayItemsInner(
     @get:Size(max=18)
     @Schema(example = "1234567890123", description = "")
     @get:JsonProperty("member_or_partner_id") val memberOrPartnerId: kotlin.String? = null
-    ) {
+) {
 
 }
 

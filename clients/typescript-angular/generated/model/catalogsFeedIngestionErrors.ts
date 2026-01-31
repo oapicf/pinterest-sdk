@@ -44,10 +44,10 @@ export interface CatalogsFeedIngestionErrors {
     IMAGE_INVALID_FILE?: number;
 }
 export namespace CatalogsFeedIngestionErrors {
-    export type LARGEPRODUCTCOUNTDECREASEEnum = 1;
     export const LARGEPRODUCTCOUNTDECREASEEnum = {
-        NUMBER_1: 1 as LARGEPRODUCTCOUNTDECREASEEnum
-    };
+        NUMBER_1: 1
+    } as const;
+    export type LARGEPRODUCTCOUNTDECREASEEnum = typeof LARGEPRODUCTCOUNTDECREASEEnum[keyof typeof LARGEPRODUCTCOUNTDECREASEEnum];
 }
 
 

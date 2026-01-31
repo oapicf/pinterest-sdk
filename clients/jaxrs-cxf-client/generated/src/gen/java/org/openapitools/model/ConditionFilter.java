@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ConditionFilter  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsProductGroupMultipleStringCriteria CONDITION;
  /**
    * Get CONDITION

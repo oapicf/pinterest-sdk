@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_optimization_goal_metadata_conversion_tag_v3_goal_metadata
 import model_optimization_goal_metadata_frequency_goal_metadata
@@ -16,6 +18,29 @@ import model_optimization_goal_metadata_scrollup_goal_metadata
 
 type OptimizationGoalMetadata* = object
   ## 
-  conversionTagV3GoalMetadata*: OptimizationGoalMetadata_conversion_tag_v3_goal_metadata
-  frequencyGoalMetadata*: OptimizationGoalMetadata_frequency_goal_metadata
-  scrollupGoalMetadata*: OptimizationGoalMetadata_scrollup_goal_metadata
+  conversionTagV3GoalMetadata*: Option[OptimizationGoalMetadata_conversion_tag_v3_goal_metadata]
+  frequencyGoalMetadata*: Option[OptimizationGoalMetadata_frequency_goal_metadata]
+  scrollupGoalMetadata*: Option[OptimizationGoalMetadata_scrollup_goal_metadata]
+
+
+# Custom JSON deserialization for OptimizationGoalMetadata with custom field names
+proc to*(node: JsonNode, T: typedesc[OptimizationGoalMetadata]): OptimizationGoalMetadata =
+  result = OptimizationGoalMetadata()
+  if node.kind == JObject:
+    if node.hasKey("conversion_tag_v3_goal_metadata") and node["conversion_tag_v3_goal_metadata"].kind != JNull:
+      result.conversionTagV3GoalMetadata = some(to(node["conversion_tag_v3_goal_metadata"], typeof(result.conversionTagV3GoalMetadata.get())))
+    if node.hasKey("frequency_goal_metadata") and node["frequency_goal_metadata"].kind != JNull:
+      result.frequencyGoalMetadata = some(to(node["frequency_goal_metadata"], typeof(result.frequencyGoalMetadata.get())))
+    if node.hasKey("scrollup_goal_metadata") and node["scrollup_goal_metadata"].kind != JNull:
+      result.scrollupGoalMetadata = some(to(node["scrollup_goal_metadata"], typeof(result.scrollupGoalMetadata.get())))
+
+# Custom JSON serialization for OptimizationGoalMetadata with custom field names
+proc `%`*(obj: OptimizationGoalMetadata): JsonNode =
+  result = newJObject()
+  if obj.conversionTagV3GoalMetadata.isSome():
+    result["conversion_tag_v3_goal_metadata"] = %obj.conversionTagV3GoalMetadata.get()
+  if obj.frequencyGoalMetadata.isSome():
+    result["frequency_goal_metadata"] = %obj.frequencyGoalMetadata.get()
+  if obj.scrollupGoalMetadata.isSome():
+    result["scrollup_goal_metadata"] = %obj.scrollupGoalMetadata.get()
+

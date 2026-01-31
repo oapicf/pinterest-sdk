@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_product_group_create_request
 import model_catalogs_creative_assets_product_group_filters
@@ -17,25 +19,38 @@ import model_catalogs_locale
 import model_catalogs_retail_product_group_create_request
 import model_country
 
-type CatalogType* {.pure.} = enum
-  CREATIVEASSETS
+# OneOf type
+type CatalogsVerticalProductGroupCreateRequestKind* {.pure.} = enum
+  CatalogsRetailProductGroupCreateRequestVariant
+  CatalogsHotelProductGroupCreateRequestVariant
+  CatalogsCreativeAssetsProductGroupCreateRequestVariant
 
 type CatalogsVerticalProductGroupCreateRequest* = object
   ## Request object for creating a catalog based product group.
-  catalogType*: CatalogType
-  name*: string
-  description*: string
-  filters*: CatalogsCreativeAssetsProductGroupFilters
-  catalogId*: string ## Catalog id pertaining to the creative assets product group.
-  country*: Country
-  locale*: CatalogsLocale
+  case kind*: CatalogsVerticalProductGroupCreateRequestKind
+  of CatalogsVerticalProductGroupCreateRequestKind.CatalogsRetailProductGroupCreateRequestVariant:
+    CatalogsRetailProductGroupCreateRequestValue*: CatalogsRetailProductGroupCreateRequest
+  of CatalogsVerticalProductGroupCreateRequestKind.CatalogsHotelProductGroupCreateRequestVariant:
+    CatalogsHotelProductGroupCreateRequestValue*: CatalogsHotelProductGroupCreateRequest
+  of CatalogsVerticalProductGroupCreateRequestKind.CatalogsCreativeAssetsProductGroupCreateRequestVariant:
+    CatalogsCreativeAssetsProductGroupCreateRequestValue*: CatalogsCreativeAssetsProductGroupCreateRequest
 
-func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
+proc to*(node: JsonNode, T: typedesc[CatalogsVerticalProductGroupCreateRequest]): CatalogsVerticalProductGroupCreateRequest =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsVerticalProductGroupCreateRequest(kind: CatalogsVerticalProductGroupCreateRequestKind.CatalogsRetailProductGroupCreateRequestVariant, CatalogsRetailProductGroupCreateRequestValue: to(node, CatalogsRetailProductGroupCreateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailProductGroupCreateRequest: ", e.msg
+  try:
+    return CatalogsVerticalProductGroupCreateRequest(kind: CatalogsVerticalProductGroupCreateRequestKind.CatalogsHotelProductGroupCreateRequestVariant, CatalogsHotelProductGroupCreateRequestValue: to(node, CatalogsHotelProductGroupCreateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelProductGroupCreateRequest: ", e.msg
+  try:
+    return CatalogsVerticalProductGroupCreateRequest(kind: CatalogsVerticalProductGroupCreateRequestKind.CatalogsCreativeAssetsProductGroupCreateRequestVariant, CatalogsCreativeAssetsProductGroupCreateRequestValue: to(node, CatalogsCreativeAssetsProductGroupCreateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsProductGroupCreateRequest: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsVerticalProductGroupCreateRequest. JSON: " & $node)
 
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: CatalogType): string =
-  result = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"

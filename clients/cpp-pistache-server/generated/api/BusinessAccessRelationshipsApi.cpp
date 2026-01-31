@@ -23,8 +23,7 @@ const std::string BusinessAccessRelationshipsApi::base = "/v5";
 
 BusinessAccessRelationshipsApi::BusinessAccessRelationshipsApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
-{
-}
+{}
 
 void BusinessAccessRelationshipsApi::init() {
     setupRoutes();
@@ -44,14 +43,12 @@ void BusinessAccessRelationshipsApi::setupRoutes() {
     router->addCustomHandler(Routes::bind(&BusinessAccessRelationshipsApi::business_access_relationships_api_default_handler, this));
 }
 
-void BusinessAccessRelationshipsApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void BusinessAccessRelationshipsApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleParsingException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> BusinessAccessRelationshipsApi::handleParsingException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> BusinessAccessRelationshipsApi::handleParsingException(const std::exception& ex) const noexcept {
     try {
         throw;
     } catch (nlohmann::detail::exception &e) {
@@ -63,295 +60,481 @@ std::pair<Pistache::Http::Code, std::string> BusinessAccessRelationshipsApi::han
     }
 }
 
-void BusinessAccessRelationshipsApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void BusinessAccessRelationshipsApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleOperationException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> BusinessAccessRelationshipsApi::handleOperationException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> BusinessAccessRelationshipsApi::handleOperationException(const std::exception& ex) const noexcept {
     return std::make_pair(Pistache::Http::Code::Internal_Server_Error, ex.what());
 }
 
-void BusinessAccessRelationshipsApi::delete_business_membership_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+void BusinessAccessRelationshipsApi::delete_business_membership_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto businessId = request.param(":businessId").as<std::string>();
+        // Getting the path params
+        auto businessId = request.param(":businessId").as<std::string>();
+        
+        // Getting the body param
+        
+        MembersToDeleteBody membersToDeleteBody;
+        
+        
+        
     
-    // Getting the body param
-    
-    MembersToDeleteBody membersToDeleteBody;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(membersToDeleteBody);
-        membersToDeleteBody.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->delete_business_membership(businessId, membersToDeleteBody, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(membersToDeleteBody);
+            membersToDeleteBody.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->delete_business_membership(businessId, membersToDeleteBody, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/businesses/:business_id/members" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void BusinessAccessRelationshipsApi::delete_business_partners_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void BusinessAccessRelationshipsApi::delete_business_partners_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto businessId = request.param(":businessId").as<std::string>();
+        // Getting the path params
+        auto businessId = request.param(":businessId").as<std::string>();
+        
+        // Getting the body param
+        
+        DeletePartnersRequest deletePartnersRequest;
+        
+        
+        
     
-    // Getting the body param
-    
-    DeletePartnersRequest deletePartnersRequest;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(deletePartnersRequest);
-        deletePartnersRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->delete_business_partners(businessId, deletePartnersRequest, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(deletePartnersRequest);
+            deletePartnersRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->delete_business_partners(businessId, deletePartnersRequest, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/businesses/:business_id/partners" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void BusinessAccessRelationshipsApi::get_business_employers_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void BusinessAccessRelationshipsApi::get_business_employers_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
         }
-    }
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->get_business_employers(pageSize, bookmark, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->get_business_employers(pageSize, bookmark, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/businesses/employers" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void BusinessAccessRelationshipsApi::get_business_members_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void BusinessAccessRelationshipsApi::get_business_members_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto businessId = request.param(":businessId").as<std::string>();
+        // Getting the path params
+        auto businessId = request.param(":businessId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto assetsSummaryQuery = request.query().get("assets_summary");
+        std::optional<bool> assetsSummary;
+        if (assetsSummaryQuery.has_value()) {
+            bool valueQuery_instance;
+            if (fromStringValue(assetsSummaryQuery.value(), valueQuery_instance)) {
+                assetsSummary = valueQuery_instance;
+            }
+        }
+        auto businessRolesQuery = request.query().get("business_roles");
+        std::optional<std::vector<MemberBusinessRole>> businessRoles;
+        if (businessRolesQuery.has_value()) {
+            std::vector<MemberBusinessRole> valueQuery_instance;
+            if (fromStringValue(businessRolesQuery.value(), valueQuery_instance)) {
+                businessRoles = valueQuery_instance;
+            }
+        }
+        auto memberIdsQuery = request.query().get("member_ids");
+        std::optional<std::string> memberIds;
+        if (memberIdsQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(memberIdsQuery.value(), valueQuery_instance)) {
+                memberIds = valueQuery_instance;
+            }
+        }
+        auto startIndexQuery = request.query().get("start_index");
+        std::optional<int32_t> startIndex;
+        if (startIndexQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(startIndexQuery.value(), valueQuery_instance)) {
+                startIndex = valueQuery_instance;
+            }
+        }
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
+        }
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
+        }
     
-    // Getting the query params
-    auto assetsSummaryQuery = request.query().get("assets_summary");
-    std::optional<bool> assetsSummary;
-    if(assetsSummaryQuery.has_value()){
-        bool valueQuery_instance;
-        if(fromStringValue(assetsSummaryQuery.value(), valueQuery_instance)){
-            assetsSummary = valueQuery_instance;
-        }
-    }
-    auto businessRolesQuery = request.query().get("business_roles");
-    std::optional<std::vector<MemberBusinessRole>> businessRoles;
-    if(businessRolesQuery.has_value()){
-        std::vector<MemberBusinessRole> valueQuery_instance;
-        if(fromStringValue(businessRolesQuery.value(), valueQuery_instance)){
-            businessRoles = valueQuery_instance;
-        }
-    }
-    auto memberIdsQuery = request.query().get("member_ids");
-    std::optional<std::string> memberIds;
-    if(memberIdsQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(memberIdsQuery.value(), valueQuery_instance)){
-            memberIds = valueQuery_instance;
-        }
-    }
-    auto startIndexQuery = request.query().get("start_index");
-    std::optional<int32_t> startIndex;
-    if(startIndexQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(startIndexQuery.value(), valueQuery_instance)){
-            startIndex = valueQuery_instance;
-        }
-    }
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
-        }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->get_business_members(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->get_business_members(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/businesses/:business_id/members" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void BusinessAccessRelationshipsApi::get_business_partners_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void BusinessAccessRelationshipsApi::get_business_partners_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto businessId = request.param(":businessId").as<std::string>();
+        // Getting the path params
+        auto businessId = request.param(":businessId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto assetsSummaryQuery = request.query().get("assets_summary");
+        std::optional<bool> assetsSummary;
+        if (assetsSummaryQuery.has_value()) {
+            bool valueQuery_instance;
+            if (fromStringValue(assetsSummaryQuery.value(), valueQuery_instance)) {
+                assetsSummary = valueQuery_instance;
+            }
+        }
+        auto partnerTypeQuery = request.query().get("partner_type");
+        std::optional<PartnerType> partnerType;
+        if (partnerTypeQuery.has_value()) {
+            PartnerType valueQuery_instance;
+            if (fromStringValue(partnerTypeQuery.value(), valueQuery_instance)) {
+                partnerType = valueQuery_instance;
+            }
+        }
+        auto partnerIdsQuery = request.query().get("partner_ids");
+        std::optional<std::string> partnerIds;
+        if (partnerIdsQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(partnerIdsQuery.value(), valueQuery_instance)) {
+                partnerIds = valueQuery_instance;
+            }
+        }
+        auto startIndexQuery = request.query().get("start_index");
+        std::optional<int32_t> startIndex;
+        if (startIndexQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(startIndexQuery.value(), valueQuery_instance)) {
+                startIndex = valueQuery_instance;
+            }
+        }
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
+        }
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
+        }
     
-    // Getting the query params
-    auto assetsSummaryQuery = request.query().get("assets_summary");
-    std::optional<bool> assetsSummary;
-    if(assetsSummaryQuery.has_value()){
-        bool valueQuery_instance;
-        if(fromStringValue(assetsSummaryQuery.value(), valueQuery_instance)){
-            assetsSummary = valueQuery_instance;
-        }
-    }
-    auto partnerTypeQuery = request.query().get("partner_type");
-    std::optional<PartnerType> partnerType;
-    if(partnerTypeQuery.has_value()){
-        PartnerType valueQuery_instance;
-        if(fromStringValue(partnerTypeQuery.value(), valueQuery_instance)){
-            partnerType = valueQuery_instance;
-        }
-    }
-    auto partnerIdsQuery = request.query().get("partner_ids");
-    std::optional<std::string> partnerIds;
-    if(partnerIdsQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(partnerIdsQuery.value(), valueQuery_instance)){
-            partnerIds = valueQuery_instance;
-        }
-    }
-    auto startIndexQuery = request.query().get("start_index");
-    std::optional<int32_t> startIndex;
-    if(startIndexQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(startIndexQuery.value(), valueQuery_instance)){
-            startIndex = valueQuery_instance;
-        }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
-        }
-    }
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->get_business_partners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->get_business_partners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/businesses/:business_id/partners" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void BusinessAccessRelationshipsApi::update_business_memberships_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void BusinessAccessRelationshipsApi::update_business_memberships_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto businessId = request.param(":businessId").as<std::string>();
+        // Getting the path params
+        auto businessId = request.param(":businessId").as<std::string>();
+        
+        // Getting the body param
+                std::vector<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody;
+        
+        
     
-    // Getting the body param
-    std::vector<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(updateMemberBusinessRoleBody);
-        for (const auto& validationParam : updateMemberBusinessRoleBody)
-             validationParam.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->update_business_memberships(businessId, updateMemberBusinessRoleBody, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(updateMemberBusinessRoleBody);
+            for (const auto& validationParam : updateMemberBusinessRoleBody) 
+                validationParam.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->update_business_memberships(businessId, updateMemberBusinessRoleBody, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/businesses/:business_id/members" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
+
 
 void BusinessAccessRelationshipsApi::business_access_relationships_api_default_handler(const Pistache::Rest::Request &, Pistache::Http::ResponseWriter response) {
     response.send(Pistache::Http::Code::Not_Found, "The requested method does not exist");

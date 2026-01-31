@@ -54,21 +54,21 @@ namespace Org.OpenAPITools.Controllers
         [SwaggerResponse(statusCode: 404, type: typeof(Error), description: "Pin not found.")]
         [SwaggerResponse(statusCode: 429, type: typeof(Error), description: "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.")]
         [SwaggerResponse(statusCode: 0, type: typeof(Error), description: "Unexpected error")]
-        public virtual IActionResult MultiPinsAnalytics([FromQuery (Name = "pin_ids")][Required()]List<string> pinIds, [FromQuery (Name = "start_date")][Required()]DateOnly startDate, [FromQuery (Name = "end_date")][Required()]DateOnly endDate, [FromQuery (Name = "metric_types")][Required()]List<PinsAnalyticsMetricTypesParameterInner> metricTypes, [FromQuery (Name = "app_types")]string appTypes, [FromQuery (Name = "ad_account_id")][RegularExpression("^\\d+$")] [MaxLength(18)]string adAccountId)
+        public virtual IActionResult MultiPinsAnalytics([FromQuery (Name = "pin_ids")][Required()]List<string> pinIds, [FromQuery (Name = "start_date")][Required()]DateOnly startDate, [FromQuery (Name = "end_date")][Required()]DateOnly endDate, [FromQuery (Name = "metric_types")][Required()]List<string> metricTypes, [FromQuery (Name = "app_types")]string appTypes, [FromQuery (Name = "ad_account_id")][RegularExpression("^\\d+$")] [MaxLength(18)]string adAccountId)
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(Dictionary<string, Dictionary>));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 429 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(429, default(Error));
+            // return StatusCode(429, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -108,19 +108,19 @@ namespace Org.OpenAPITools.Controllers
         [SwaggerResponse(statusCode: 403, type: typeof(Error), description: "Not authorized to access board or Pin.")]
         [SwaggerResponse(statusCode: 404, type: typeof(Error), description: "Pin not found.")]
         [SwaggerResponse(statusCode: 0, type: typeof(Error), description: "Unexpected error")]
-        public virtual IActionResult PinsAnalytics([FromRoute (Name = "pin_id")][Required]string pinId, [FromQuery (Name = "start_date")][Required()]DateOnly startDate, [FromQuery (Name = "end_date")][Required()]DateOnly endDate, [FromQuery (Name = "metric_types")][Required()]List<PinsAnalyticsMetricTypesParameterInner> metricTypes, [FromQuery (Name = "app_types")]string appTypes, [FromQuery (Name = "split_field")]string splitField, [FromQuery (Name = "ad_account_id")][RegularExpression("^\\d+$")] [MaxLength(18)]string adAccountId)
+        public virtual IActionResult PinsAnalytics([FromRoute (Name = "pin_id")][Required]string pinId, [FromQuery (Name = "start_date")][Required()]DateOnly startDate, [FromQuery (Name = "end_date")][Required()]DateOnly endDate, [FromQuery (Name = "metric_types")][Required()]List<string> metricTypes, [FromQuery (Name = "app_types")]string appTypes, [FromQuery (Name = "split_field")]string splitField, [FromQuery (Name = "ad_account_id")][RegularExpression("^\\d+$")] [MaxLength(18)]string adAccountId)
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(Dictionary<string, PinAnalyticsMetricsResponse>));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -161,17 +161,17 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(201, default(Pin));
+            // return StatusCode(201, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 429 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(429, default(Error));
+            // return StatusCode(429, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"note\" : \"note\",\n  \"board_owner\" : \"{}\",\n  \"media_source\" : \"{}\",\n  \"pin_metrics\" : {\n    \"90d\" : {\n      \"pin_click\" : 7,\n      \"impression\" : 2,\n      \"clickthrough\" : 3\n    },\n    \"lifetime_metrics\" : {\n      \"pin_click\" : 7,\n      \"impression\" : 2,\n      \"clickthrough\" : 3,\n      \"reaction\" : 10,\n      \"comment\" : 2\n    }\n  },\n  \"is_owner\" : true,\n  \"link\" : \"https://www.pinterest.com/\",\n  \"created_at\" : \"2020-01-01T20:10:40Z\",\n  \"description\" : \"description\",\n  \"has_been_promoted\" : true,\n  \"media\" : \"{}\",\n  \"title\" : \"title\",\n  \"board_section_id\" : \"board_section_id\",\n  \"dominant_color\" : \"#6E7874\",\n  \"alt_text\" : \"alt_text\",\n  \"board_id\" : \"board_id\",\n  \"creative_type\" : \"creative_type\",\n  \"parent_pin_id\" : \"parent_pin_id\",\n  \"id\" : \"813744226420795884\",\n  \"is_standard\" : true\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -182,7 +182,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<Pin>(exampleJson)
-            : default(Pin);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -210,11 +210,11 @@ namespace Org.OpenAPITools.Controllers
             //TODO: Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(204);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
 
             throw new NotImplementedException();
         }
@@ -242,13 +242,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(Pin));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"note\" : \"note\",\n  \"board_owner\" : \"{}\",\n  \"media_source\" : \"{}\",\n  \"pin_metrics\" : {\n    \"90d\" : {\n      \"pin_click\" : 7,\n      \"impression\" : 2,\n      \"clickthrough\" : 3\n    },\n    \"lifetime_metrics\" : {\n      \"pin_click\" : 7,\n      \"impression\" : 2,\n      \"clickthrough\" : 3,\n      \"reaction\" : 10,\n      \"comment\" : 2\n    }\n  },\n  \"is_owner\" : true,\n  \"link\" : \"https://www.pinterest.com/\",\n  \"created_at\" : \"2020-01-01T20:10:40Z\",\n  \"description\" : \"description\",\n  \"has_been_promoted\" : true,\n  \"media\" : \"{}\",\n  \"title\" : \"title\",\n  \"board_section_id\" : \"board_section_id\",\n  \"dominant_color\" : \"#6E7874\",\n  \"alt_text\" : \"alt_text\",\n  \"board_id\" : \"board_id\",\n  \"creative_type\" : \"creative_type\",\n  \"parent_pin_id\" : \"parent_pin_id\",\n  \"id\" : \"813744226420795884\",\n  \"is_standard\" : true\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -257,7 +257,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<Pin>(exampleJson)
-            : default(Pin);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -288,11 +288,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(PinsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"note\" : \"note\",\n    \"board_owner\" : \"{}\",\n    \"media_source\" : \"{}\",\n    \"pin_metrics\" : {\n      \"90d\" : {\n        \"pin_click\" : 7,\n        \"impression\" : 2,\n        \"clickthrough\" : 3\n      },\n      \"lifetime_metrics\" : {\n        \"pin_click\" : 7,\n        \"impression\" : 2,\n        \"clickthrough\" : 3,\n        \"reaction\" : 10,\n        \"comment\" : 2\n      }\n    },\n    \"is_owner\" : true,\n    \"link\" : \"https://www.pinterest.com/\",\n    \"created_at\" : \"2020-01-01T20:10:40Z\",\n    \"description\" : \"description\",\n    \"has_been_promoted\" : true,\n    \"media\" : \"{}\",\n    \"title\" : \"title\",\n    \"board_section_id\" : \"board_section_id\",\n    \"dominant_color\" : \"#6E7874\",\n    \"alt_text\" : \"alt_text\",\n    \"board_id\" : \"board_id\",\n    \"creative_type\" : \"creative_type\",\n    \"parent_pin_id\" : \"parent_pin_id\",\n    \"id\" : \"813744226420795884\",\n    \"is_standard\" : true\n  }, {\n    \"note\" : \"note\",\n    \"board_owner\" : \"{}\",\n    \"media_source\" : \"{}\",\n    \"pin_metrics\" : {\n      \"90d\" : {\n        \"pin_click\" : 7,\n        \"impression\" : 2,\n        \"clickthrough\" : 3\n      },\n      \"lifetime_metrics\" : {\n        \"pin_click\" : 7,\n        \"impression\" : 2,\n        \"clickthrough\" : 3,\n        \"reaction\" : 10,\n        \"comment\" : 2\n      }\n    },\n    \"is_owner\" : true,\n    \"link\" : \"https://www.pinterest.com/\",\n    \"created_at\" : \"2020-01-01T20:10:40Z\",\n    \"description\" : \"description\",\n    \"has_been_promoted\" : true,\n    \"media\" : \"{}\",\n    \"title\" : \"title\",\n    \"board_section_id\" : \"board_section_id\",\n    \"dominant_color\" : \"#6E7874\",\n    \"alt_text\" : \"alt_text\",\n    \"board_id\" : \"board_id\",\n    \"creative_type\" : \"creative_type\",\n    \"parent_pin_id\" : \"parent_pin_id\",\n    \"id\" : \"813744226420795884\",\n    \"is_standard\" : true\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -300,7 +300,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<PinsList200Response>(exampleJson)
-            : default(PinsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -329,13 +329,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(201, default(Pin));
+            // return StatusCode(201, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"note\" : \"note\",\n  \"board_owner\" : \"{}\",\n  \"media_source\" : \"{}\",\n  \"pin_metrics\" : {\n    \"90d\" : {\n      \"pin_click\" : 7,\n      \"impression\" : 2,\n      \"clickthrough\" : 3\n    },\n    \"lifetime_metrics\" : {\n      \"pin_click\" : 7,\n      \"impression\" : 2,\n      \"clickthrough\" : 3,\n      \"reaction\" : 10,\n      \"comment\" : 2\n    }\n  },\n  \"is_owner\" : true,\n  \"link\" : \"https://www.pinterest.com/\",\n  \"created_at\" : \"2020-01-01T20:10:40Z\",\n  \"description\" : \"description\",\n  \"has_been_promoted\" : true,\n  \"media\" : \"{}\",\n  \"title\" : \"title\",\n  \"board_section_id\" : \"board_section_id\",\n  \"dominant_color\" : \"#6E7874\",\n  \"alt_text\" : \"alt_text\",\n  \"board_id\" : \"board_id\",\n  \"creative_type\" : \"creative_type\",\n  \"parent_pin_id\" : \"parent_pin_id\",\n  \"id\" : \"813744226420795884\",\n  \"is_standard\" : true\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -344,7 +344,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<Pin>(exampleJson)
-            : default(Pin);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -375,15 +375,15 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(Pin));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 429 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(429, default(Error));
+            // return StatusCode(429, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"note\" : \"note\",\n  \"board_owner\" : \"{}\",\n  \"media_source\" : \"{}\",\n  \"pin_metrics\" : {\n    \"90d\" : {\n      \"pin_click\" : 7,\n      \"impression\" : 2,\n      \"clickthrough\" : 3\n    },\n    \"lifetime_metrics\" : {\n      \"pin_click\" : 7,\n      \"impression\" : 2,\n      \"clickthrough\" : 3,\n      \"reaction\" : 10,\n      \"comment\" : 2\n    }\n  },\n  \"is_owner\" : true,\n  \"link\" : \"https://www.pinterest.com/\",\n  \"created_at\" : \"2020-01-01T20:10:40Z\",\n  \"description\" : \"description\",\n  \"has_been_promoted\" : true,\n  \"media\" : \"{}\",\n  \"title\" : \"title\",\n  \"board_section_id\" : \"board_section_id\",\n  \"dominant_color\" : \"#6E7874\",\n  \"alt_text\" : \"alt_text\",\n  \"board_id\" : \"board_id\",\n  \"creative_type\" : \"creative_type\",\n  \"parent_pin_id\" : \"parent_pin_id\",\n  \"id\" : \"813744226420795884\",\n  \"is_standard\" : true\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -393,7 +393,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<Pin>(exampleJson)
-            : default(Pin);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

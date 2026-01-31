@@ -45,7 +45,7 @@ export interface CatalogsCreativeAssetsFeedsCreateRequest {
      */
     catalog_id?: string;
 
-    status?: models.models.CatalogsStatus;
+    status?: models.CatalogsStatus;
 
 }
 export namespace CatalogsCreativeAssetsFeedsCreateRequest {

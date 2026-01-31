@@ -23,7 +23,6 @@ import org.openapitools.model.Pin;
 import org.openapitools.model.PinAnalyticsMetricsResponse;
 import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
-import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
 import javax.annotation.Generated;
@@ -34,7 +33,7 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-01-26T05:35:55.554977681Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface PinsApi {
     /**
@@ -55,7 +54,7 @@ public interface PinsApi {
         @QueryValue(value="pin_ids") @NotNull @Size(min=1, max=100) List<@Pattern(regexp = "^\\d+$")String> pinIds, 
         @QueryValue(value="start_date") @NotNull @Format("yyyy-MM-dd") LocalDate startDate, 
         @QueryValue(value="end_date") @NotNull @Format("yyyy-MM-dd") LocalDate endDate, 
-        @QueryValue(value="metric_types") @NotNull List<PinsAnalyticsMetricTypesParameterInner> metricTypes, 
+        @QueryValue(value="metric_types") @NotNull List<String> metricTypes, 
         @QueryValue(value="app_types", defaultValue="ALL") @Nullable String appTypes, 
         @QueryValue(value="ad_account_id") @Nullable @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId
     );
@@ -79,7 +78,7 @@ public interface PinsApi {
         @PathVariable(name="pin_id") @NotNull String pinId, 
         @QueryValue(value="start_date") @NotNull @Format("yyyy-MM-dd") LocalDate startDate, 
         @QueryValue(value="end_date") @NotNull @Format("yyyy-MM-dd") LocalDate endDate, 
-        @QueryValue(value="metric_types") @NotNull List<PinsAnalyticsMetricTypesParameterInner> metricTypes, 
+        @QueryValue(value="metric_types") @NotNull List<String> metricTypes, 
         @QueryValue(value="app_types", defaultValue="ALL") @Nullable String appTypes, 
         @QueryValue(value="split_field", defaultValue="NO_SPLIT") @Nullable String splitField, 
         @QueryValue(value="ad_account_id") @Nullable @Pattern(regexp="^\\d+$") @Size(max=18) String adAccountId

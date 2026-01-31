@@ -47,16 +47,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CreateAssetAccessRequestResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"invites\" : {\n    \"766456567741825556\" : \"5349280584552211583\",\n    \"733242520489967216\" : \"5349280584552211845\"\n  },\n  \"exceptions\" : [ {\n    \"code\" : 2932,\n    \"messages\" : [ \"Invalid asset id: 549760723247\", \"Invalid asset id: 546760723248\" ]\n  }, {\n    \"code\" : 2932,\n    \"messages\" : [ \"Invalid asset id: 549760723247\", \"Invalid asset id: 546760723248\" ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CreateAssetAccessRequestResponse>(exampleJson)
-            : default(CreateAssetAccessRequestResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -80,16 +80,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(DeleteInvitesResultsResponseArray));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"exception\" : {\n      \"invite_id\" : \"invite_id\",\n      \"message\" : \"Business Invite request cannot be performed on current invitation status.\"\n    },\n    \"invite\" : {\n      \"invite_data\" : {\n        \"invite_type\" : \"MEMBER_INVITE\",\n        \"sent_at\" : 1646767577816,\n        \"last_updated_time\" : 1646767577816,\n        \"invite_expiration\" : 1709748104775,\n        \"invite_status\" : \"PENDING\"\n      },\n      \"id\" : \"383791336903426391\",\n      \"user\" : \"{}\",\n      \"is_received_invite\" : true\n    }\n  }, {\n    \"exception\" : {\n      \"invite_id\" : \"invite_id\",\n      \"message\" : \"Business Invite request cannot be performed on current invitation status.\"\n    },\n    \"invite\" : {\n      \"invite_data\" : {\n        \"invite_type\" : \"MEMBER_INVITE\",\n        \"sent_at\" : 1646767577816,\n        \"last_updated_time\" : 1646767577816,\n        \"invite_expiration\" : 1709748104775,\n        \"invite_status\" : \"PENDING\"\n      },\n      \"id\" : \"383791336903426391\",\n      \"user\" : \"{}\",\n      \"is_received_invite\" : true\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<DeleteInvitesResultsResponseArray>(exampleJson)
-            : default(DeleteInvitesResultsResponseArray);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -113,16 +113,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(UpdateInvitesResultsResponseArray));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
-            exampleJson = "{\n  \"items\" : [ {\n    \"exception\" : {\n      \"code\" : 403,\n      \"users_or_partner_ids\" : [ \"businessMember0101\", \"business+member@business.com\" ],\n      \"invite_or_request_id\" : \"383791336903426391\",\n      \"message\" : \"You hit the maximum number of pending invites allowed.\"\n    },\n    \"invite\" : {\n      \"created_by_business_id\" : \"1234567890123\",\n      \"created_by_user_id\" : \"1234567890123\",\n      \"user\" : \"{}\"\n    }\n  }, {\n    \"exception\" : {\n      \"code\" : 403,\n      \"users_or_partner_ids\" : [ \"businessMember0101\", \"business+member@business.com\" ],\n      \"invite_or_request_id\" : \"383791336903426391\",\n      \"message\" : \"You hit the maximum number of pending invites allowed.\"\n    },\n    \"invite\" : {\n      \"created_by_business_id\" : \"1234567890123\",\n      \"created_by_user_id\" : \"1234567890123\",\n      \"user\" : \"{}\"\n    }\n  } ]\n}";
+            exampleJson = "{\n  \"items\" : [ {\n    \"exception\" : {\n      \"code\" : 403,\n      \"users_or_partner_ids\" : [ \"businessMember0101\", \"business+member@business.com\" ],\n      \"invite_or_request_id\" : \"383791336903426391\",\n      \"message\" : \"You hit the maximum number of pending invites allowed.\"\n    },\n    \"invite\" : {\n      \"created_by_business_id\" : \"1234567890123\",\n      \"invite_data\" : {\n        \"invite_type\" : \"MEMBER_INVITE\",\n        \"sent_at\" : 1646767577816,\n        \"last_updated_time\" : 1646767577816,\n        \"invite_expiration\" : 1709748104775,\n        \"invite_status\" : \"PENDING\"\n      },\n      \"id\" : \"383791336903426391\",\n      \"created_by_user_id\" : \"1234567890123\",\n      \"is_received_invite\" : true\n    }\n  }, {\n    \"exception\" : {\n      \"code\" : 403,\n      \"users_or_partner_ids\" : [ \"businessMember0101\", \"business+member@business.com\" ],\n      \"invite_or_request_id\" : \"383791336903426391\",\n      \"message\" : \"You hit the maximum number of pending invites allowed.\"\n    },\n    \"invite\" : {\n      \"created_by_business_id\" : \"1234567890123\",\n      \"invite_data\" : {\n        \"invite_type\" : \"MEMBER_INVITE\",\n        \"sent_at\" : 1646767577816,\n        \"last_updated_time\" : 1646767577816,\n        \"invite_expiration\" : 1709748104775,\n        \"invite_status\" : \"PENDING\"\n      },\n      \"id\" : \"383791336903426391\",\n      \"created_by_user_id\" : \"1234567890123\",\n      \"is_received_invite\" : true\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<UpdateInvitesResultsResponseArray>(exampleJson)
-            : default(UpdateInvitesResultsResponseArray);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -146,16 +146,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CreateInvitesResultsResponseArray));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"exception\" : {\n      \"code\" : 403,\n      \"users_or_partner_ids\" : [ \"businessMember0101\", \"business+member@business.com\" ],\n      \"invite_or_request_id\" : \"383791336903426391\",\n      \"message\" : \"You hit the maximum number of pending invites allowed.\"\n    },\n    \"invite\" : {\n      \"id\" : \"383791336903426391\",\n      \"user\" : \"{}\"\n    }\n  }, {\n    \"exception\" : {\n      \"code\" : 403,\n      \"users_or_partner_ids\" : [ \"businessMember0101\", \"business+member@business.com\" ],\n      \"invite_or_request_id\" : \"383791336903426391\",\n      \"message\" : \"You hit the maximum number of pending invites allowed.\"\n    },\n    \"invite\" : {\n      \"id\" : \"383791336903426391\",\n      \"user\" : \"{}\"\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CreateInvitesResultsResponseArray>(exampleJson)
-            : default(CreateInvitesResultsResponseArray);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -182,16 +182,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(GetInvites200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
-            exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"created_time\" : 1646767577816,\n    \"assets_summary\" : {\n      \"ad_accounts\" : [ {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"549755885175\"\n      }, {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"549755885175\"\n      } ],\n      \"profiles\" : [ {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"383791336903426391\"\n      }, {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"383791336903426391\"\n      } ]\n    },\n    \"business_roles\" : [ \"BIZ_ADMIN\" ],\n    \"created_by_business\" : \"{}\",\n    \"created_by_user\" : \"{}\"\n  }, {\n    \"created_time\" : 1646767577816,\n    \"assets_summary\" : {\n      \"ad_accounts\" : [ {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"549755885175\"\n      }, {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"549755885175\"\n      } ],\n      \"profiles\" : [ {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"383791336903426391\"\n      }, {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"383791336903426391\"\n      } ]\n    },\n    \"business_roles\" : [ \"BIZ_ADMIN\" ],\n    \"created_by_business\" : \"{}\",\n    \"created_by_user\" : \"{}\"\n  } ]\n}";
+            exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"created_time\" : 1646767577816,\n    \"assets_summary\" : {\n      \"ad_accounts\" : [ {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"549755885175\"\n      }, {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"549755885175\"\n      } ],\n      \"profiles\" : [ {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"383791336903426391\"\n      }, {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"383791336903426391\"\n      } ]\n    },\n    \"business_roles\" : [ \"BIZ_ADMIN\" ],\n    \"invite_data\" : {\n      \"invite_type\" : \"MEMBER_INVITE\",\n      \"sent_at\" : 1646767577816,\n      \"last_updated_time\" : 1646767577816,\n      \"invite_expiration\" : 1709748104775,\n      \"invite_status\" : \"PENDING\"\n    },\n    \"id\" : \"383791336903426391\",\n    \"user\" : \"{}\",\n    \"is_received_invite\" : true\n  }, {\n    \"created_time\" : 1646767577816,\n    \"assets_summary\" : {\n      \"ad_accounts\" : [ {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"549755885175\"\n      }, {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"549755885175\"\n      } ],\n      \"profiles\" : [ {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"383791336903426391\"\n      }, {\n        \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n        \"id\" : \"383791336903426391\"\n      } ]\n    },\n    \"business_roles\" : [ \"BIZ_ADMIN\" ],\n    \"invite_data\" : {\n      \"invite_type\" : \"MEMBER_INVITE\",\n      \"sent_at\" : 1646767577816,\n      \"last_updated_time\" : 1646767577816,\n      \"invite_expiration\" : 1709748104775,\n      \"invite_status\" : \"PENDING\"\n    },\n    \"id\" : \"383791336903426391\",\n    \"user\" : \"{}\",\n    \"is_received_invite\" : true\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<GetInvites200Response>(exampleJson)
-            : default(GetInvites200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -214,16 +214,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(RespondToInvitesResponseArray));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"exception\" : {\n      \"code\" : 403,\n      \"users_or_partner_ids\" : [ \"businessMember0101\", \"business+member@business.com\" ],\n      \"invite_or_request_id\" : \"383791336903426391\",\n      \"message\" : \"You hit the maximum number of pending invites allowed.\"\n    },\n    \"invite\" : {\n      \"invite_data\" : {\n        \"invite_type\" : \"MEMBER_INVITE\",\n        \"sent_at\" : 1646767577816,\n        \"last_updated_time\" : 1646767577816,\n        \"invite_expiration\" : 1709748104775,\n        \"invite_status\" : \"PENDING\"\n      },\n      \"id\" : \"383791336903426391\",\n      \"user\" : \"{}\",\n      \"is_received_invite\" : true\n    }\n  }, {\n    \"exception\" : {\n      \"code\" : 403,\n      \"users_or_partner_ids\" : [ \"businessMember0101\", \"business+member@business.com\" ],\n      \"invite_or_request_id\" : \"383791336903426391\",\n      \"message\" : \"You hit the maximum number of pending invites allowed.\"\n    },\n    \"invite\" : {\n      \"invite_data\" : {\n        \"invite_type\" : \"MEMBER_INVITE\",\n        \"sent_at\" : 1646767577816,\n        \"last_updated_time\" : 1646767577816,\n        \"invite_expiration\" : 1709748104775,\n        \"invite_status\" : \"PENDING\"\n      },\n      \"id\" : \"383791336903426391\",\n      \"user\" : \"{}\",\n      \"is_received_invite\" : true\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<RespondToInvitesResponseArray>(exampleJson)
-            : default(RespondToInvitesResponseArray);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

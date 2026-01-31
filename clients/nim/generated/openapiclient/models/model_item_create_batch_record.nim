@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_item_attributes_request
 
 type ItemCreateBatchRecord* = object
   ## Object describing an item batch record to create items
-  itemId*: string ## The catalog item id in the merchant namespace
-  attributes*: ItemAttributesRequest
+  itemId*: Option[string] ## The catalog item id in the merchant namespace
+  attributes*: Option[ItemAttributesRequest]
+
+
+# Custom JSON deserialization for ItemCreateBatchRecord with custom field names
+proc to*(node: JsonNode, T: typedesc[ItemCreateBatchRecord]): ItemCreateBatchRecord =
+  result = ItemCreateBatchRecord()
+  if node.kind == JObject:
+    if node.hasKey("item_id") and node["item_id"].kind != JNull:
+      result.itemId = some(to(node["item_id"], typeof(result.itemId.get())))
+    if node.hasKey("attributes") and node["attributes"].kind != JNull:
+      result.attributes = some(to(node["attributes"], typeof(result.attributes.get())))
+
+# Custom JSON serialization for ItemCreateBatchRecord with custom field names
+proc `%`*(obj: ItemCreateBatchRecord): JsonNode =
+  result = newJObject()
+  if obj.itemId.isSome():
+    result["item_id"] = %obj.itemId.get()
+  if obj.attributes.isSome():
+    result["attributes"] = %obj.attributes.get()
+

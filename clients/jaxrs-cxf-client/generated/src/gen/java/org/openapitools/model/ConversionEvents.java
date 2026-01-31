@@ -1,23 +1,24 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ConversionEventsDataInner;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * A list of events (one or more) encapsulated by a data object.
- **/
+ * A list of events (one or more) encapsulated by a data object.
+ */
 @ApiModel(description="A list of events (one or more) encapsulated by a data object.")
 
 public class ConversionEvents  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<ConversionEventsDataInner> data = new ArrayList<>();
  /**
    * Get data

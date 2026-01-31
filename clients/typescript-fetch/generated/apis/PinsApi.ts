@@ -19,7 +19,6 @@ import type {
   PinAnalyticsMetricsResponse,
   PinCreate,
   PinUpdate,
-  PinsAnalyticsMetricTypesParameterInner,
   PinsList200Response,
   PinsSaveRequest,
 } from '../models/index';
@@ -32,8 +31,6 @@ import {
     PinCreateToJSON,
     PinUpdateFromJSON,
     PinUpdateToJSON,
-    PinsAnalyticsMetricTypesParameterInnerFromJSON,
-    PinsAnalyticsMetricTypesParameterInnerToJSON,
     PinsList200ResponseFromJSON,
     PinsList200ResponseToJSON,
     PinsSaveRequestFromJSON,
@@ -44,7 +41,7 @@ export interface MultiPinsAnalyticsRequest {
     pinIds: Array<string>;
     startDate: Date;
     endDate: Date;
-    metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>;
+    metricTypes: Array<MultiPinsAnalyticsMetricTypesEnum>;
     appTypes?: MultiPinsAnalyticsAppTypesEnum;
     adAccountId?: string;
 }
@@ -53,7 +50,7 @@ export interface PinsAnalyticsRequest {
     pinId: string;
     startDate: Date;
     endDate: Date;
-    metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>;
+    metricTypes: Array<PinsAnalyticsMetricTypesEnum>;
     appTypes?: PinsAnalyticsAppTypesEnum;
     splitField?: PinsAnalyticsSplitFieldEnum;
     adAccountId?: string;
@@ -174,8 +171,11 @@ export class PinsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["boards:read", "pins:read"]);
         }
 
+
+        let urlPath = `/pins/analytics`;
+
         const response = await this.request({
-            path: `/pins/analytics`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -264,8 +264,12 @@ export class PinsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["boards:read", "pins:read"]);
         }
 
+
+        let urlPath = `/pins/{pin_id}/analytics`;
+        urlPath = urlPath.replace(`{${"pin_id"}}`, encodeURIComponent(String(requestParameters['pinId'])));
+
         const response = await this.request({
-            path: `/pins/{pin_id}/analytics`.replace(`{${"pin_id"}}`, encodeURIComponent(String(requestParameters['pinId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -310,8 +314,11 @@ export class PinsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "boards:write", "pins:read", "pins:write"]);
         }
 
+
+        let urlPath = `/pins`;
+
         const response = await this.request({
-            path: `/pins`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -355,8 +362,12 @@ export class PinsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "boards:write", "pins:read", "pins:write"]);
         }
 
+
+        let urlPath = `/pins/{pin_id}`;
+        urlPath = urlPath.replace(`{${"pin_id"}}`, encodeURIComponent(String(requestParameters['pinId'])));
+
         const response = await this.request({
-            path: `/pins/{pin_id}`.replace(`{${"pin_id"}}`, encodeURIComponent(String(requestParameters['pinId']))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -407,8 +418,12 @@ export class PinsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["boards:read", "pins:read"]);
         }
 
+
+        let urlPath = `/pins/{pin_id}`;
+        urlPath = urlPath.replace(`{${"pin_id"}}`, encodeURIComponent(String(requestParameters['pinId'])));
+
         const response = await this.request({
-            path: `/pins/{pin_id}`.replace(`{${"pin_id"}}`, encodeURIComponent(String(requestParameters['pinId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -477,8 +492,11 @@ export class PinsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["boards:read", "pins:read"]);
         }
 
+
+        let urlPath = `/pins`;
+
         const response = await this.request({
-            path: `/pins`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -530,8 +548,12 @@ export class PinsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "boards:write", "pins:read", "pins:write"]);
         }
 
+
+        let urlPath = `/pins/{pin_id}/save`;
+        urlPath = urlPath.replace(`{${"pin_id"}}`, encodeURIComponent(String(requestParameters['pinId'])));
+
         const response = await this.request({
-            path: `/pins/{pin_id}/save`.replace(`{${"pin_id"}}`, encodeURIComponent(String(requestParameters['pinId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -584,8 +606,12 @@ export class PinsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "boards:write", "pins:read", "pins:write"]);
         }
 
+
+        let urlPath = `/pins/{pin_id}`;
+        urlPath = urlPath.replace(`{${"pin_id"}}`, encodeURIComponent(String(requestParameters['pinId'])));
+
         const response = await this.request({
-            path: `/pins/{pin_id}`.replace(`{${"pin_id"}}`, encodeURIComponent(String(requestParameters['pinId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -609,6 +635,27 @@ export class PinsApi extends runtime.BaseAPI {
 /**
  * @export
  */
+export const MultiPinsAnalyticsMetricTypesEnum = {
+    Impression: 'IMPRESSION',
+    OutboundClick: 'OUTBOUND_CLICK',
+    PinClick: 'PIN_CLICK',
+    Save: 'SAVE',
+    SaveRate: 'SAVE_RATE',
+    TotalComments: 'TOTAL_COMMENTS',
+    TotalReactions: 'TOTAL_REACTIONS',
+    UserFollow: 'USER_FOLLOW',
+    ProfileVisit: 'PROFILE_VISIT',
+    VideoMrcView: 'VIDEO_MRC_VIEW',
+    Video10SView: 'VIDEO_10S_VIEW',
+    Quartile95PercentView: 'QUARTILE_95_PERCENT_VIEW',
+    VideoV50WatchTime: 'VIDEO_V50_WATCH_TIME',
+    VideoStart: 'VIDEO_START',
+    VideoAvgWatchTime: 'VIDEO_AVG_WATCH_TIME'
+} as const;
+export type MultiPinsAnalyticsMetricTypesEnum = typeof MultiPinsAnalyticsMetricTypesEnum[keyof typeof MultiPinsAnalyticsMetricTypesEnum];
+/**
+ * @export
+ */
 export const MultiPinsAnalyticsAppTypesEnum = {
     All: 'ALL',
     Mobile: 'MOBILE',
@@ -616,6 +663,27 @@ export const MultiPinsAnalyticsAppTypesEnum = {
     Web: 'WEB'
 } as const;
 export type MultiPinsAnalyticsAppTypesEnum = typeof MultiPinsAnalyticsAppTypesEnum[keyof typeof MultiPinsAnalyticsAppTypesEnum];
+/**
+ * @export
+ */
+export const PinsAnalyticsMetricTypesEnum = {
+    Impression: 'IMPRESSION',
+    OutboundClick: 'OUTBOUND_CLICK',
+    PinClick: 'PIN_CLICK',
+    Save: 'SAVE',
+    SaveRate: 'SAVE_RATE',
+    TotalComments: 'TOTAL_COMMENTS',
+    TotalReactions: 'TOTAL_REACTIONS',
+    UserFollow: 'USER_FOLLOW',
+    ProfileVisit: 'PROFILE_VISIT',
+    VideoMrcView: 'VIDEO_MRC_VIEW',
+    Video10SView: 'VIDEO_10S_VIEW',
+    Quartile95PercentView: 'QUARTILE_95_PERCENT_VIEW',
+    VideoV50WatchTime: 'VIDEO_V50_WATCH_TIME',
+    VideoStart: 'VIDEO_START',
+    VideoAvgWatchTime: 'VIDEO_AVG_WATCH_TIME'
+} as const;
+export type PinsAnalyticsMetricTypesEnum = typeof PinsAnalyticsMetricTypesEnum[keyof typeof PinsAnalyticsMetricTypesEnum];
 /**
  * @export
  */

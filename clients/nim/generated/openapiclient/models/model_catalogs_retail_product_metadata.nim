@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_non_nullable_catalogs_currency
 import model_non_nullable_product_availability_type
@@ -16,8 +18,39 @@ import model_non_nullable_product_availability_type
 type CatalogsRetailProductMetadata* = object
   ## Retail product metadata entity
   itemId*: string ## The user-created unique ID that represents the product.
-  itemGroupId*: string ## The parent ID of the product.
+  itemGroupId*: Option[string] ## The parent ID of the product.
   availability*: NonNullableProductAvailabilityType
   price*: float ## The price of the product.
-  salePrice*: float ## The discounted price of the product.
+  salePrice*: Option[float] ## The discounted price of the product.
   currency*: NonNullableCatalogsCurrency
+
+
+# Custom JSON deserialization for CatalogsRetailProductMetadata with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsRetailProductMetadata]): CatalogsRetailProductMetadata =
+  result = CatalogsRetailProductMetadata()
+  if node.kind == JObject:
+    if node.hasKey("item_id"):
+      result.itemId = to(node["item_id"], string)
+    if node.hasKey("item_group_id") and node["item_group_id"].kind != JNull:
+      result.itemGroupId = some(to(node["item_group_id"], typeof(result.itemGroupId.get())))
+    if node.hasKey("availability"):
+      result.availability = to(node["availability"], NonNullableProductAvailabilityType)
+    if node.hasKey("price"):
+      result.price = to(node["price"], float)
+    if node.hasKey("sale_price") and node["sale_price"].kind != JNull:
+      result.salePrice = some(to(node["sale_price"], typeof(result.salePrice.get())))
+    if node.hasKey("currency"):
+      result.currency = to(node["currency"], NonNullableCatalogsCurrency)
+
+# Custom JSON serialization for CatalogsRetailProductMetadata with custom field names
+proc `%`*(obj: CatalogsRetailProductMetadata): JsonNode =
+  result = newJObject()
+  result["item_id"] = %obj.itemId
+  if obj.itemGroupId.isSome():
+    result["item_group_id"] = %obj.itemGroupId.get()
+  result["availability"] = %obj.availability
+  result["price"] = %obj.price
+  if obj.salePrice.isSome():
+    result["sale_price"] = %obj.salePrice.get()
+  result["currency"] = %obj.currency
+

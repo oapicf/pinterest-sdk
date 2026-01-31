@@ -20,6 +20,7 @@ class UsersApiTest {
         val username: kotlin.String = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<UserAccountFollowedInterests200Response> = api.userAccountFollowedInterests(username, bookmark, pageSize)
 
         // TODO: test validations

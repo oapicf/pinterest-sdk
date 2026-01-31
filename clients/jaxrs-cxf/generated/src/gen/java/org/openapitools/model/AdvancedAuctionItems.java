@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,28 +7,32 @@ import org.openapitools.model.AdvancedAuctionItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Response object containing item bid options
- **/
+ * Response object containing item bid options
+ */
 @ApiModel(description="Response object containing item bid options")
 
 public class AdvancedAuctionItems  {
   
-  @ApiModelProperty(example = "2680059592705", value = "Response object of item bid options")
  /**
-   * Response object of item bid options
-  **/
+  * Response object of item bid options
+  */
+  @ApiModelProperty(example = "2680059592705", value = "Response object of item bid options")
+
   private String catalogId;
 
-  @ApiModelProperty(value = "Array with item bid options")
-  @Valid
  /**
-   * Array with item bid options
-  **/
+  * Array with item bid options
+  */
+  @ApiModelProperty(value = "Array with item bid options")
+
+  @Valid
+
   private List<AdvancedAuctionItem> items = new ArrayList<>();
  /**
    * Response object of item bid options

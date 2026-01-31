@@ -1,15 +1,15 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsLocale;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * The locale used within a feed for product descriptions.
- **/
+ * The locale used within a feed for product descriptions.
+ */
 @ApiModel(description="The locale used within a feed for product descriptions.")
 
 public class CatalogsFeedsCreateRequestDefaultLocale  {

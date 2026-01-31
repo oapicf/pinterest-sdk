@@ -1,33 +1,37 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for updating a product group.
- **/
+ * Request object for updating a product group.
+ */
 @ApiModel(description="Request object for updating a product group.")
 
 public class CatalogsProductGroupUpdateRequest  {
   
   @ApiModelProperty(value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
-  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
  /**
-   * boolean indicator of whether the product group is being featured or not
-  **/
+  * boolean indicator of whether the product group is being featured or not
+  */
+  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
+
   private Boolean isFeatured;
 
   @ApiModelProperty(value = "")
+
   private CatalogsProductGroupFiltersRequest filters;
  /**
    * Get name

@@ -53,7 +53,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Pin
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinCreate {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -456,24 +456,10 @@ public class PinCreate {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("created_at");
-    openapiFields.add("link");
-    openapiFields.add("title");
-    openapiFields.add("description");
-    openapiFields.add("dominant_color");
-    openapiFields.add("alt_text");
-    openapiFields.add("board_id");
-    openapiFields.add("board_section_id");
-    openapiFields.add("board_owner");
-    openapiFields.add("media");
-    openapiFields.add("media_source");
-    openapiFields.add("parent_pin_id");
-    openapiFields.add("note");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "created_at", "link", "title", "description", "dominant_color", "alt_text", "board_id", "board_section_id", "board_owner", "media", "media_source", "parent_pin_id", "note"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -485,7 +471,7 @@ public class PinCreate {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PinCreate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PinCreate is not found in the empty JSON string", PinCreate.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in PinCreate is not found in the empty JSON string", PinCreate.openapiRequiredFields.toString()));
         }
       }
 
@@ -493,33 +479,33 @@ public class PinCreate {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!PinCreate.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PinCreate` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PinCreate` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("link") != null && !jsonObj.get("link").isJsonNull()) && !jsonObj.get("link").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("link").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("link").toString()));
       }
       if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       if ((jsonObj.get("dominant_color") != null && !jsonObj.get("dominant_color").isJsonNull()) && !jsonObj.get("dominant_color").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `dominant_color` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dominant_color").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `dominant_color` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dominant_color").toString()));
       }
       if ((jsonObj.get("alt_text") != null && !jsonObj.get("alt_text").isJsonNull()) && !jsonObj.get("alt_text").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `alt_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("alt_text").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `alt_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("alt_text").toString()));
       }
       if ((jsonObj.get("board_id") != null && !jsonObj.get("board_id").isJsonNull()) && !jsonObj.get("board_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `board_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("board_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `board_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("board_id").toString()));
       }
       if ((jsonObj.get("board_section_id") != null && !jsonObj.get("board_section_id").isJsonNull()) && !jsonObj.get("board_section_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `board_section_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("board_section_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `board_section_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("board_section_id").toString()));
       }
       // validate the optional field `board_owner`
       if (jsonObj.get("board_owner") != null && !jsonObj.get("board_owner").isJsonNull()) {
@@ -534,10 +520,10 @@ public class PinCreate {
         PinMediaSource.validateJsonElement(jsonObj.get("media_source"));
       }
       if ((jsonObj.get("parent_pin_id") != null && !jsonObj.get("parent_pin_id").isJsonNull()) && !jsonObj.get("parent_pin_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `parent_pin_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parent_pin_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `parent_pin_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parent_pin_id").toString()));
       }
       if ((jsonObj.get("note") != null && !jsonObj.get("note").isJsonNull()) && !jsonObj.get("note").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `note` to be a primitive type in the JSON string but got `%s`", jsonObj.get("note").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `note` to be a primitive type in the JSON string but got `%s`", jsonObj.get("note").toString()));
       }
   }
 

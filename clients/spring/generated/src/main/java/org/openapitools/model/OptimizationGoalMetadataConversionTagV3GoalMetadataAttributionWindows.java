@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_attribution_windows")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows {
 
   private @Nullable Integer clickWindowDays;
@@ -30,7 +30,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindo
 
   private @Nullable Integer viewWindowDays;
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows clickWindowDays(Integer clickWindowDays) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows clickWindowDays(@Nullable Integer clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
     return this;
   }
@@ -42,15 +42,15 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindo
   
   @Schema(name = "click_window_days", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("click_window_days")
-  public Integer getClickWindowDays() {
+  public @Nullable Integer getClickWindowDays() {
     return clickWindowDays;
   }
 
-  public void setClickWindowDays(Integer clickWindowDays) {
+  public void setClickWindowDays(@Nullable Integer clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
   }
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows engagementWindowDays(Integer engagementWindowDays) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows engagementWindowDays(@Nullable Integer engagementWindowDays) {
     this.engagementWindowDays = engagementWindowDays;
     return this;
   }
@@ -62,15 +62,15 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindo
   
   @Schema(name = "engagement_window_days", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("engagement_window_days")
-  public Integer getEngagementWindowDays() {
+  public @Nullable Integer getEngagementWindowDays() {
     return engagementWindowDays;
   }
 
-  public void setEngagementWindowDays(Integer engagementWindowDays) {
+  public void setEngagementWindowDays(@Nullable Integer engagementWindowDays) {
     this.engagementWindowDays = engagementWindowDays;
   }
 
-  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows viewWindowDays(Integer viewWindowDays) {
+  public OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows viewWindowDays(@Nullable Integer viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
     return this;
   }
@@ -82,11 +82,11 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindo
   
   @Schema(name = "view_window_days", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("view_window_days")
-  public Integer getViewWindowDays() {
+  public @Nullable Integer getViewWindowDays() {
     return viewWindowDays;
   }
 
-  public void setViewWindowDays(Integer viewWindowDays) {
+  public void setViewWindowDays(@Nullable Integer viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
   }
 

@@ -19,8 +19,8 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.AudienceCreateRequest
-import org.openapitools.client.models.AudienceCreateRequest1AudienceType
 import org.openapitools.client.models.AudienceRule
+import org.openapitools.client.models.AudienceType
 
 class AudienceCreateRequestTest : ShouldSpec() {
     init {
@@ -39,7 +39,7 @@ class AudienceCreateRequestTest : ShouldSpec() {
             //modelInstance.rule shouldBe ("TODO")
         }
 
-        // to test the property `audienceType`
+        // to test the property `audienceType` - <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
         should("test audienceType") {
             // uncomment below to test the property
             //modelInstance.audienceType shouldBe ("TODO")

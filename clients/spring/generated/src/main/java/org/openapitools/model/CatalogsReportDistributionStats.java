@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * CatalogsReportDistributionStats
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportDistributionStats implements CatalogsReportStats {
 
   /**
@@ -32,7 +32,7 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
   public enum ReportTypeEnum {
     DISTRIBUTION_ISSUES("DISTRIBUTION_ISSUES");
 
-    private String value;
+    private final String value;
 
     ReportTypeEnum(String value) {
       this.value = value;
@@ -75,7 +75,7 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
 
   private @Nullable Boolean ineligibleForOrganic;
 
-  public CatalogsReportDistributionStats reportType(ReportTypeEnum reportType) {
+  public CatalogsReportDistributionStats reportType(@Nullable ReportTypeEnum reportType) {
     this.reportType = reportType;
     return this;
   }
@@ -87,15 +87,15 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
   
   @Schema(name = "report_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
+  public @Nullable ReportTypeEnum getReportType() {
     return reportType;
   }
 
-  public void setReportType(ReportTypeEnum reportType) {
+  public void setReportType(@Nullable ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
 
-  public CatalogsReportDistributionStats catalogId(String catalogId) {
+  public CatalogsReportDistributionStats catalogId(@Nullable String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -107,15 +107,15 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "catalog_id", description = "ID of the catalog entity.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_id")
-  public String getCatalogId() {
+  public @Nullable String getCatalogId() {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@Nullable String catalogId) {
     this.catalogId = catalogId;
   }
 
-  public CatalogsReportDistributionStats code(Integer code) {
+  public CatalogsReportDistributionStats code(@Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -127,15 +127,15 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
   
   @Schema(name = "code", description = "The event code that a diagnostics aggregated number references", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public Integer getCode() {
+  public @Nullable Integer getCode() {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@Nullable Integer code) {
     this.code = code;
   }
 
-  public CatalogsReportDistributionStats codeLabel(String codeLabel) {
+  public CatalogsReportDistributionStats codeLabel(@Nullable String codeLabel) {
     this.codeLabel = codeLabel;
     return this;
   }
@@ -147,15 +147,15 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
   
   @Schema(name = "code_label", example = "SPAM", description = "A human-friendly label for the event code (e.g, 'SPAM')", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code_label")
-  public String getCodeLabel() {
+  public @Nullable String getCodeLabel() {
     return codeLabel;
   }
 
-  public void setCodeLabel(String codeLabel) {
+  public void setCodeLabel(@Nullable String codeLabel) {
     this.codeLabel = codeLabel;
   }
 
-  public CatalogsReportDistributionStats message(String message) {
+  public CatalogsReportDistributionStats message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -167,15 +167,15 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
   
   @Schema(name = "message", description = "Title message describing the diagnostic issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
-  public String getMessage() {
+  public @Nullable String getMessage() {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 
-  public CatalogsReportDistributionStats occurrences(Integer occurrences) {
+  public CatalogsReportDistributionStats occurrences(@Nullable Integer occurrences) {
     this.occurrences = occurrences;
     return this;
   }
@@ -187,15 +187,15 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
   
   @Schema(name = "occurrences", example = "10", description = "Number of occurrences of the issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("occurrences")
-  public Integer getOccurrences() {
+  public @Nullable Integer getOccurrences() {
     return occurrences;
   }
 
-  public void setOccurrences(Integer occurrences) {
+  public void setOccurrences(@Nullable Integer occurrences) {
     this.occurrences = occurrences;
   }
 
-  public CatalogsReportDistributionStats ineligibleForAds(Boolean ineligibleForAds) {
+  public CatalogsReportDistributionStats ineligibleForAds(@Nullable Boolean ineligibleForAds) {
     this.ineligibleForAds = ineligibleForAds;
     return this;
   }
@@ -207,15 +207,15 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
   
   @Schema(name = "ineligible_for_ads", example = "true", description = "Indicates if issue makes items ineligible for ads distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ineligible_for_ads")
-  public Boolean getIneligibleForAds() {
+  public @Nullable Boolean getIneligibleForAds() {
     return ineligibleForAds;
   }
 
-  public void setIneligibleForAds(Boolean ineligibleForAds) {
+  public void setIneligibleForAds(@Nullable Boolean ineligibleForAds) {
     this.ineligibleForAds = ineligibleForAds;
   }
 
-  public CatalogsReportDistributionStats ineligibleForOrganic(Boolean ineligibleForOrganic) {
+  public CatalogsReportDistributionStats ineligibleForOrganic(@Nullable Boolean ineligibleForOrganic) {
     this.ineligibleForOrganic = ineligibleForOrganic;
     return this;
   }
@@ -227,11 +227,11 @@ public class CatalogsReportDistributionStats implements CatalogsReportStats {
   
   @Schema(name = "ineligible_for_organic", example = "true", description = "Indicates if issue makes items ineligible for organic distribution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ineligible_for_organic")
-  public Boolean getIneligibleForOrganic() {
+  public @Nullable Boolean getIneligibleForOrganic() {
     return ineligibleForOrganic;
   }
 
-  public void setIneligibleForOrganic(Boolean ineligibleForOrganic) {
+  public void setIneligibleForOrganic(@Nullable Boolean ineligibleForOrganic) {
     this.ineligibleForOrganic = ineligibleForOrganic;
   }
 

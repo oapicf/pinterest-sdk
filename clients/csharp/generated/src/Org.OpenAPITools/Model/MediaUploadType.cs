@@ -118,7 +118,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, MediaUploadType mediaUploadType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(mediaUploadType.ToString());
+            writer.WriteStringValue(MediaUploadTypeValueConverter.ToJsonValue(mediaUploadType).ToString());
         }
     }
 
@@ -149,14 +149,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the MediaUploadType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="mediaUploadType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, MediaUploadType? mediaUploadType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(mediaUploadType?.ToString() ?? "null");
+            writer.WriteStringValue(mediaUploadType.HasValue ? MediaUploadTypeValueConverter.ToJsonValue(mediaUploadType.Value).ToString() : "null");
         }
     }
 }

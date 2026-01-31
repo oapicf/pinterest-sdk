@@ -77,7 +77,7 @@ data class LeadFormResponse(
 
     @Schema(example = "1451431341", description = "Last update time. Unix timestamp in seconds.")
     @get:JsonProperty("updated_time") val updatedTime: kotlin.Int? = null
-    ) {
+) {
 
 }
 

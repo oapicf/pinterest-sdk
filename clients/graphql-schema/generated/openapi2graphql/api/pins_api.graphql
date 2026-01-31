@@ -48,23 +48,23 @@ type query {
   # @param [String!] pinIds List of Pin IDs.
   # @param String! startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   # @param String! endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-  # @param [PinsAnalyticsMetricTypesParameterInner] metricTypes Pin metric types to get data for.
+  # @param [String!] metricTypes Pin metric types to get data for.
   # @param String! appTypes Apps or devices to get data for, default is all.
   # @param String! adAccountId Unique identifier of an ad account.
   # @return [Map]
-  MultiPinsAnalytics(pinIds: [String!], startDate: String!, endDate: String!, metricTypes: [PinsAnalyticsMetricTypesParameterInner], appTypes: String!, adAccountId: String!): Map
+  MultiPinsAnalytics(pinIds: [String!], startDate: String!, endDate: String!, metricTypes: [String!], appTypes: String!, adAccountId: String!): Map
 
   # Get Pin analytics
   # Get analytics for a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
   # @param String! pinId Unique identifier of a Pin.
   # @param String! startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   # @param String! endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-  # @param [PinsAnalyticsMetricTypesParameterInner] metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
+  # @param [String!] metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
   # @param String! appTypes Apps or devices to get data for, default is all.
   # @param String! splitField How to split the data into groups. Not including this param means data won&#39;t be split.
   # @param String! adAccountId Unique identifier of an ad account.
   # @return [PinAnalyticsMetricsResponse]
-  PinsAnalytics(pinId: String!, startDate: String!, endDate: String!, metricTypes: [PinsAnalyticsMetricTypesParameterInner], appTypes: String!, splitField: String!, adAccountId: String!): PinAnalyticsMetricsResponse
+  PinsAnalytics(pinId: String!, startDate: String!, endDate: String!, metricTypes: [String!], appTypes: String!, splitField: String!, adAccountId: String!): PinAnalyticsMetricsResponse
 
   # Get Pin
   # Get a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.

@@ -45,14 +45,19 @@
 /* The catalog item id in the merchant namespace [optional]
  */
 @property(nonatomic) NSString* itemId;
-/* Array with the errors for the item id requested [optional]
+/* The pins mapped to the item [optional]
  */
-@property(nonatomic) NSArray<OAIItemValidationEvent>* errors;
+@property(nonatomic) NSArray<OAIPin>* pins;
+
+@property(nonatomic) OAICatalogsCreativeAssetsAttributes* attributes;
 /* The catalog hotel id in the merchant namespace [optional]
  */
 @property(nonatomic) NSString* hotelId;
 /* The catalog creative assets id in the merchant namespace [optional]
  */
 @property(nonatomic) NSString* creativeAssetsId;
+/* Array with the errors for the item id requested [optional]
+ */
+@property(nonatomic) NSArray<OAIItemValidationEvent>* errors;
 
 @end

@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "members":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                members = new Option<List<MembersToDeleteBodyMembersInner>?>(JsonSerializer.Deserialize<List<MembersToDeleteBodyMembersInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            members = new Option<List<MembersToDeleteBodyMembersInner>?>(JsonSerializer.Deserialize<List<MembersToDeleteBodyMembersInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

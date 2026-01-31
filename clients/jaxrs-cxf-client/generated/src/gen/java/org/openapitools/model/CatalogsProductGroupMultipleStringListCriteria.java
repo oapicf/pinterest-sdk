@@ -12,9 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsProductGroupMultipleStringListCriteria  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<List<String>> values = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private Boolean negated = false;
  /**
    * Get values

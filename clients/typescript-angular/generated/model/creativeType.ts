@@ -12,28 +12,17 @@
 /**
  * Ad creative type enum. For update, only draft ads may update creative type. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
  */
-export type CreativeType = 'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA' | 'SHOWCASE' | 'QUIZ';
-
 export const CreativeType = {
-
-    Regular: 'REGULAR' as CreativeType,
-
-    Video: 'VIDEO' as CreativeType,
-
-    Shopping: 'SHOPPING' as CreativeType,
-
-    Carousel: 'CAROUSEL' as CreativeType,
-
-    MaxVideo: 'MAX_VIDEO' as CreativeType,
-
-    ShopThePin: 'SHOP_THE_PIN' as CreativeType,
-
-    Collection: 'COLLECTION' as CreativeType,
-
-    Idea: 'IDEA' as CreativeType,
-
-    Showcase: 'SHOWCASE' as CreativeType,
-
-    Quiz: 'QUIZ' as CreativeType
-};
+    Regular: 'REGULAR',
+    Video: 'VIDEO',
+    Shopping: 'SHOPPING',
+    Carousel: 'CAROUSEL',
+    MaxVideo: 'MAX_VIDEO',
+    ShopThePin: 'SHOP_THE_PIN',
+    Collection: 'COLLECTION',
+    Idea: 'IDEA',
+    Showcase: 'SHOWCASE',
+    Quiz: 'QUIZ'
+} as const;
+export type CreativeType = typeof CreativeType[keyof typeof CreativeType];
 

@@ -483,7 +483,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Currency currency, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(currency.ToString());
+            writer.WriteStringValue(CurrencyValueConverter.ToJsonValue(currency).ToString());
         }
     }
 
@@ -514,14 +514,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the Currency to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="currency"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Currency? currency, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(currency?.ToString() ?? "null");
+            writer.WriteStringValue(currency.HasValue ? CurrencyValueConverter.ToJsonValue(currency.Value).ToString() : "null");
         }
     }
 }

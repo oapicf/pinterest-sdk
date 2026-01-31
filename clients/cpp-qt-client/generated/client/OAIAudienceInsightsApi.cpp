@@ -364,52 +364,12 @@ void OAIAudienceInsightsApi::audienceInsights_get(const QString &ad_account_id, 
             fullPath.append(queryPrefix);
         else
             fullPath.append("?");
-        QString paramString = (queryStyle == "form" && false) ? "" : (queryStyle == "form" && !(false)) ? "audience_insight_type"+querySuffix : "";
-        QJsonObject parameter = audience_insight_type.asJsonObject();
-        qint32 count = 0;
-        for(const QString& key : parameter.keys()) {
-            if (count > 0) {
-                queryDelimiter =  ((queryStyle == "form" || queryStyle == "deepObject") && false) ? "&" : getParamStyleDelimiter(queryStyle, key, false);
-                paramString.append(queryDelimiter);
-            }
-            QString assignOperator;
-            if (queryStyle == "form")
-                assignOperator = (false) ? "=" : ",";
-            else if (queryStyle == "deepObject")
-                assignOperator = (false) ? "=" : "none";
-            switch(parameter.value(key).type()) {
-                case QJsonValue::String:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("audience_insight_type").append("[").append(key).append("]"))+assignOperator+parameter.value(key).toString());
-                    break;
-                }
-                case QJsonValue::Double:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("audience_insight_type").append("[").append(key).append("]"))+assignOperator+QString::number(parameter.value(key).toDouble()));
-                    break;
-                }
-                case QJsonValue::Bool:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("audience_insight_type").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toBool()).toString());
-                    break;
-                }
-                case QJsonValue::Array:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("audience_insight_type").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toArray()).toString());
-                    break;
-                }
-                case QJsonValue::Object:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("audience_insight_type").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toObject()).toString());
-                    break;
-                }
-                case QJsonValue::Null:
-                case QJsonValue::Undefined:
-                    break;
-            }
-            count++;
+        // For enum reference parameters, use direct string serialization instead of object iteration
+        QString enumValue = audience_insight_type.asJson();
+        if (!enumValue.isEmpty()) {
+            fullPath.append(QUrl::toPercentEncoding("audience_insight_type")).append("=").append(QUrl::toPercentEncoding(enumValue));
         }
-        fullPath.append(paramString);
+        
             }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);

@@ -9,21 +9,90 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogsCreativeAssetsAttributes* = object
   ## 
-  title*: string ## The name of the creative assets.
-  description*: string ## Brief description of the creative assets.
-  link*: string ## Link to the creative assets page.
-  iosDeepLink*: string ## IOS deep link to the creative assets page.
-  androidDeepLink*: string ## Link to the creative assets page.
-  googleProductCategory*: string ## The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-  customLabel0*: string ## Custom grouping of creative assets.
-  customLabel1*: string ## Custom grouping of creative assets.
-  customLabel2*: string ## Custom grouping of creative assets.
-  customLabel3*: string ## Custom grouping of creative assets.
-  customLabel4*: string ## Custom grouping of creative assets.
-  visibility*: string ## Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
-  imageLink*: string ## The creative assets image.
-  videoLink*: string ## The creative assets video.
+  title*: Option[string] ## The name of the creative assets.
+  description*: Option[string] ## Brief description of the creative assets.
+  link*: Option[string] ## Link to the creative assets page.
+  iosDeepLink*: Option[string] ## IOS deep link to the creative assets page.
+  androidDeepLink*: Option[string] ## Link to the creative assets page.
+  googleProductCategory*: Option[string] ## The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+  customLabel0*: Option[string] ## Custom grouping of creative assets.
+  customLabel1*: Option[string] ## Custom grouping of creative assets.
+  customLabel2*: Option[string] ## Custom grouping of creative assets.
+  customLabel3*: Option[string] ## Custom grouping of creative assets.
+  customLabel4*: Option[string] ## Custom grouping of creative assets.
+  visibility*: Option[string] ## Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+  imageLink*: Option[string] ## The creative assets image.
+  videoLink*: Option[string] ## The creative assets video.
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsAttributes with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsAttributes]): CatalogsCreativeAssetsAttributes =
+  result = CatalogsCreativeAssetsAttributes()
+  if node.kind == JObject:
+    if node.hasKey("title") and node["title"].kind != JNull:
+      result.title = some(to(node["title"], typeof(result.title.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("link") and node["link"].kind != JNull:
+      result.link = some(to(node["link"], typeof(result.link.get())))
+    if node.hasKey("ios_deep_link") and node["ios_deep_link"].kind != JNull:
+      result.iosDeepLink = some(to(node["ios_deep_link"], typeof(result.iosDeepLink.get())))
+    if node.hasKey("android_deep_link") and node["android_deep_link"].kind != JNull:
+      result.androidDeepLink = some(to(node["android_deep_link"], typeof(result.androidDeepLink.get())))
+    if node.hasKey("google_product_category") and node["google_product_category"].kind != JNull:
+      result.googleProductCategory = some(to(node["google_product_category"], typeof(result.googleProductCategory.get())))
+    if node.hasKey("custom_label_0") and node["custom_label_0"].kind != JNull:
+      result.customLabel0 = some(to(node["custom_label_0"], typeof(result.customLabel0.get())))
+    if node.hasKey("custom_label_1") and node["custom_label_1"].kind != JNull:
+      result.customLabel1 = some(to(node["custom_label_1"], typeof(result.customLabel1.get())))
+    if node.hasKey("custom_label_2") and node["custom_label_2"].kind != JNull:
+      result.customLabel2 = some(to(node["custom_label_2"], typeof(result.customLabel2.get())))
+    if node.hasKey("custom_label_3") and node["custom_label_3"].kind != JNull:
+      result.customLabel3 = some(to(node["custom_label_3"], typeof(result.customLabel3.get())))
+    if node.hasKey("custom_label_4") and node["custom_label_4"].kind != JNull:
+      result.customLabel4 = some(to(node["custom_label_4"], typeof(result.customLabel4.get())))
+    if node.hasKey("visibility") and node["visibility"].kind != JNull:
+      result.visibility = some(to(node["visibility"], typeof(result.visibility.get())))
+    if node.hasKey("image_link") and node["image_link"].kind != JNull:
+      result.imageLink = some(to(node["image_link"], typeof(result.imageLink.get())))
+    if node.hasKey("video_link") and node["video_link"].kind != JNull:
+      result.videoLink = some(to(node["video_link"], typeof(result.videoLink.get())))
+
+# Custom JSON serialization for CatalogsCreativeAssetsAttributes with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsAttributes): JsonNode =
+  result = newJObject()
+  if obj.title.isSome():
+    result["title"] = %obj.title.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  if obj.link.isSome():
+    result["link"] = %obj.link.get()
+  if obj.iosDeepLink.isSome():
+    result["ios_deep_link"] = %obj.iosDeepLink.get()
+  if obj.androidDeepLink.isSome():
+    result["android_deep_link"] = %obj.androidDeepLink.get()
+  if obj.googleProductCategory.isSome():
+    result["google_product_category"] = %obj.googleProductCategory.get()
+  if obj.customLabel0.isSome():
+    result["custom_label_0"] = %obj.customLabel0.get()
+  if obj.customLabel1.isSome():
+    result["custom_label_1"] = %obj.customLabel1.get()
+  if obj.customLabel2.isSome():
+    result["custom_label_2"] = %obj.customLabel2.get()
+  if obj.customLabel3.isSome():
+    result["custom_label_3"] = %obj.customLabel3.get()
+  if obj.customLabel4.isSome():
+    result["custom_label_4"] = %obj.customLabel4.get()
+  if obj.visibility.isSome():
+    result["visibility"] = %obj.visibility.get()
+  if obj.imageLink.isSome():
+    result["image_link"] = %obj.imageLink.get()
+  if obj.videoLink.isSome():
+    result["video_link"] = %obj.videoLink.get()
+

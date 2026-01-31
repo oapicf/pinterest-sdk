@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *

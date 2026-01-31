@@ -44,7 +44,7 @@ use OpenAPI\Server\Model\DeleteMemberAccessResultsResponseArray;
 use OpenAPI\Server\Model\DeletePartnerAssetAccessBody;
 use OpenAPI\Server\Model\DeletePartnerAssetsResultsResponseArray;
 use OpenAPI\Server\Model\Error;
-use OpenAPI\Server\Model\OpenAPIServerModelPartnerTypeAnyType;
+use OpenAPI\Server\Model\OpenAPIServerModelPartnerType;
 use OpenAPI\Server\Model\PermissionsWithOwner;
 use OpenAPI\Server\Model\UpdateAssetGroupBody;
 use OpenAPI\Server\Model\UpdateAssetGroupResponse;
@@ -283,7 +283,7 @@ interface BusinessAccessAssetsApiInterface
      *
      * @param  string $businessId  Unique identifier of the requesting business. (required)
      * @param  string $partnerId  The partner id to be bound to the Business (required)
-     * @param  |null $partnerType  Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
+     * @param  \OpenAPI\Server\Model\OpenAPIServerModelPartnerType|null $partnerType  Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
      * @param  string $assetType  A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to 'AD_ACCOUNT')
      * @param  int $startIndex  An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param  int $pageSize  Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -296,7 +296,7 @@ interface BusinessAccessAssetsApiInterface
     public function businessPartnerAssetAccessGet(
         string $businessId,
         string $partnerId,
-        ?$partnerType,
+        ?\OpenAPI\Server\Model\OpenAPIServerModelPartnerType $partnerType,
         string $assetType,
         int $startIndex,
         int $pageSize,

@@ -18,17 +18,21 @@ import .*
 
 
 /**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+ * 
  * @param id Unique identifier of the invite/request.
  * @param inviteData 
  * @param isReceivedInvite Indicates whether the invite/request was received.
- * @param user Metadata for the member/partner that was sent the invite/request.
+ * @param user Metadata for the user that updated the invite/request.
+ * @param createdByBusinessId Unique identifier for the business that created the invite/request.
+ * @param createdByUserId Unique identifier for the user that created the invite/request.
  */
 object InviteBusinessRoleBindings : BaseTable<InviteBusinessRoleBinding>("InviteBusinessRoleBinding") {
     val id = text("id") /* null */ /* Unique identifier of the invite/request. */
     val inviteData = long("invite_data") /* null */
     val isReceivedInvite = boolean("is_received_invite") /* null */ /* Indicates whether the invite/request was received. */
-    val user = long("user") /* null */ /* Metadata for the member/partner that was sent the invite/request. */
+    val user = blob("user") /* null */ /* Metadata for the user that updated the invite/request. */
+    val createdByBusinessId = text("created_by_business_id") /* null */ /* Unique identifier for the business that created the invite/request. */
+    val createdByUserId = text("created_by_user_id") /* null */ /* Unique identifier for the user that created the invite/request. */
 
     /**
      * Create an entity of type InviteBusinessRoleBinding from the model
@@ -37,7 +41,9 @@ object InviteBusinessRoleBindings : BaseTable<InviteBusinessRoleBinding>("Invite
         id = row[id]  /* kotlin.String? */ /* Unique identifier of the invite/request. */,
         inviteData = BaseInviteDataResponseInviteDatas.createEntity(row, withReferences) /* BaseInviteDataResponseInviteData? */,
         isReceivedInvite = row[isReceivedInvite]  /* kotlin.Boolean? */ /* Indicates whether the invite/request was received. */,
-        user = BusinessAccessUserSummarys.createEntity(row, withReferences) /* BusinessAccessUserSummary? */ /* Metadata for the member/partner that was sent the invite/request. */
+        user = row[user]  /* kotlin.Any? */ /* Metadata for the user that updated the invite/request. */,
+        createdByBusinessId = row[createdByBusinessId]  /* kotlin.String? */ /* Unique identifier for the business that created the invite/request. */,
+        createdByUserId = row[createdByUserId]  /* kotlin.String? */ /* Unique identifier for the user that created the invite/request. */
     )
 
     /**
@@ -59,6 +65,8 @@ object InviteBusinessRoleBindings : BaseTable<InviteBusinessRoleBinding>("Invite
             set(InviteBusinessRoleBindings.inviteData, entity.inviteData)
             set(InviteBusinessRoleBindings.isReceivedInvite, entity.isReceivedInvite)
             set(InviteBusinessRoleBindings.user, entity.user)
+            set(InviteBusinessRoleBindings.createdByBusinessId, entity.createdByBusinessId)
+            set(InviteBusinessRoleBindings.createdByUserId, entity.createdByUserId)
         }
     }
 

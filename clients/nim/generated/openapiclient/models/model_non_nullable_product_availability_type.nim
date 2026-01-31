@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type NonNullableProductAvailabilityType* = object
-  ## Product availability.
+type NonNullableProductAvailabilityType* {.pure.} = enum
+  INSTOCK
+  OUTOFSTOCK
+  PREORDER
+
+func `%`*(v: NonNullableProductAvailabilityType): JsonNode =
+  result = case v:
+    of NonNullableProductAvailabilityType.INSTOCK: %"IN_STOCK"
+    of NonNullableProductAvailabilityType.OUTOFSTOCK: %"OUT_OF_STOCK"
+    of NonNullableProductAvailabilityType.PREORDER: %"PREORDER"
+
+func `$`*(v: NonNullableProductAvailabilityType): string =
+  result = case v:
+    of NonNullableProductAvailabilityType.INSTOCK: $("IN_STOCK")
+    of NonNullableProductAvailabilityType.OUTOFSTOCK: $("OUT_OF_STOCK")
+    of NonNullableProductAvailabilityType.PREORDER: $("PREORDER")
+
+proc to*(node: JsonNode, T: typedesc[NonNullableProductAvailabilityType]): NonNullableProductAvailabilityType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum NonNullableProductAvailabilityType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("IN_STOCK"):
+    return NonNullableProductAvailabilityType.INSTOCK
+  of $("OUT_OF_STOCK"):
+    return NonNullableProductAvailabilityType.OUTOFSTOCK
+  of $("PREORDER"):
+    return NonNullableProductAvailabilityType.PREORDER
+  else:
+    raise newException(ValueError, "Invalid enum value for NonNullableProductAvailabilityType: " & strVal)
+

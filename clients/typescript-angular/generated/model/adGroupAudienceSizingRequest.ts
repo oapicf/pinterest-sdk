@@ -36,17 +36,17 @@ export interface AdGroupAudienceSizingRequest {
     keywords?: Array<AdGroupAudienceSizingRequestKeywordsInner> | null;
 }
 export namespace AdGroupAudienceSizingRequest {
-    export type CreativeTypesEnum = 'REGULAR' | 'VIDEO' | 'SHOPPING' | 'CAROUSEL' | 'MAX_VIDEO' | 'SHOP_THE_PIN' | 'COLLECTION' | 'IDEA';
     export const CreativeTypesEnum = {
-        Regular: 'REGULAR' as CreativeTypesEnum,
-        Video: 'VIDEO' as CreativeTypesEnum,
-        Shopping: 'SHOPPING' as CreativeTypesEnum,
-        Carousel: 'CAROUSEL' as CreativeTypesEnum,
-        MaxVideo: 'MAX_VIDEO' as CreativeTypesEnum,
-        ShopThePin: 'SHOP_THE_PIN' as CreativeTypesEnum,
-        Collection: 'COLLECTION' as CreativeTypesEnum,
-        Idea: 'IDEA' as CreativeTypesEnum
-    };
+        Regular: 'REGULAR',
+        Video: 'VIDEO',
+        Shopping: 'SHOPPING',
+        Carousel: 'CAROUSEL',
+        MaxVideo: 'MAX_VIDEO',
+        ShopThePin: 'SHOP_THE_PIN',
+        Collection: 'COLLECTION',
+        Idea: 'IDEA'
+    } as const;
+    export type CreativeTypesEnum = typeof CreativeTypesEnum[keyof typeof CreativeTypesEnum];
 }
 
 

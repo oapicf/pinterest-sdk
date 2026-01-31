@@ -12,22 +12,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CreateAssetGroupBody  {
   
-  @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
  /**
-   * Asset Group name
-  **/
+  * Asset Group name
+  */
+  @ApiModelProperty(example = "Canada Ad Accounts", required = true, value = "Asset Group name")
+
   private String assetGroupName;
 
-  @ApiModelProperty(example = "Asset groups that has ad accounts shared in Canada", required = true, value = "Asset group description")
  /**
-   * Asset group description
-  **/
+  * Asset group description
+  */
+  @ApiModelProperty(example = "Asset groups that has ad accounts shared in Canada", required = true, value = "Asset group description")
+
   private String assetGroupDescription;
 
-  @ApiModelProperty(example = "[\"BRAND\",\"LOCATION_OR_LANGUAGE\",\"PRODUCT_LINE\",\"OTHER\"]", required = true, value = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.")
  /**
-   * Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
-  **/
+  * Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
+  */
+  @ApiModelProperty(example = "[\"BRAND\",\"LOCATION_OR_LANGUAGE\",\"PRODUCT_LINE\",\"OTHER\"]", required = true, value = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.")
+
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
  /**
    * Asset Group name

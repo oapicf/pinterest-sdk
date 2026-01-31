@@ -133,7 +133,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, LeadFormStatus leadFormStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(leadFormStatus.ToString());
+            writer.WriteStringValue(LeadFormStatusValueConverter.ToJsonValue(leadFormStatus).ToString());
         }
     }
 
@@ -164,14 +164,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the LeadFormStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="leadFormStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, LeadFormStatus? leadFormStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(leadFormStatus?.ToString() ?? "null");
+            writer.WriteStringValue(leadFormStatus.HasValue ? LeadFormStatusValueConverter.ToJsonValue(leadFormStatus.Value).ToString() : "null");
         }
     }
 }

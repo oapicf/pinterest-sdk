@@ -67,12 +67,8 @@ class TargetingTemplateController extends Controller
 
         $targetingTemplateCreate = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\TargetingTemplateCreate::class);
 
-        try {
-            $apiResult = $this->api->targetingTemplateCreate($adAccountId, $targetingTemplateCreate);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->targetingTemplateCreate($adAccountId, $targetingTemplateCreate);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TargetingTemplateGetResponseData) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -138,7 +134,7 @@ class TargetingTemplateController extends Controller
 
         $order = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdGroupsListOrderParameter::class);
 
-        $includeSizing = $request->bool('includeSizing');
+        $includeSizing = $request->boolean('includeSizing');
 
         $searchQuery = $request->string('searchQuery')->value();
 
@@ -146,12 +142,8 @@ class TargetingTemplateController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->targetingTemplateList($adAccountId, $order, $includeSizing, $searchQuery, $pageSize, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->targetingTemplateList($adAccountId, $order, $includeSizing, $searchQuery, $pageSize, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TargetingTemplateList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -195,12 +187,8 @@ class TargetingTemplateController extends Controller
 
         $targetingTemplateUpdateRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\TargetingTemplateUpdateRequest::class);
 
-        try {
-            $apiResult = $this->api->targetingTemplateUpdate($adAccountId, $targetingTemplateUpdateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->targetingTemplateUpdate($adAccountId, $targetingTemplateUpdateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent200) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

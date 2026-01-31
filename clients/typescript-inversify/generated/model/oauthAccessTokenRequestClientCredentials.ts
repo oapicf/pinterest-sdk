@@ -11,12 +11,9 @@
  */
 
 
-/**
- * A request to receive a client token.
- */
 export interface OauthAccessTokenRequestClientCredentials { 
-    grant_type: OauthAccessTokenRequestClientCredentials.GrantTypeEnum;
     scope: string;
+    grant_type: OauthAccessTokenRequestClientCredentials.GrantTypeEnum;
 }
 export namespace OauthAccessTokenRequestClientCredentials {
     export type GrantTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';

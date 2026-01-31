@@ -52,12 +52,27 @@ func NewTermsOfServiceAPIController(s TermsOfServiceAPIServicer, opts ...TermsOf
 func (c *TermsOfServiceAPIController) Routes() Routes {
 	return Routes{
 		"TermsOfServiceGet": Route{
+			"TermsOfServiceGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/terms_of_service",
 			c.TermsOfServiceGet,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the TermsOfServiceAPIController
+func (c *TermsOfServiceAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"TermsOfServiceGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/terms_of_service",
+			c.TermsOfServiceGet,
+		},
+	}
+}
+
+
 
 // TermsOfServiceGet - Get terms of service
 func (c *TermsOfServiceAPIController) TermsOfServiceGet(w http.ResponseWriter, r *http.Request) {

@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object to list products for a given feed_id and product group filter.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsListProductsByFeedBasedFilter {
   public static final String SERIALIZED_NAME_FEED_ID = "feed_id";
   @SerializedName(SERIALIZED_NAME_FEED_ID)
@@ -148,14 +148,10 @@ public class CatalogsListProductsByFeedBasedFilter {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("feed_id");
-    openapiFields.add("filters");
+    openapiFields = new HashSet<String>(Arrays.asList("feed_id", "filters"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("feed_id");
-    openapiRequiredFields.add("filters");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("feed_id", "filters"));
   }
 
   /**
@@ -167,7 +163,7 @@ public class CatalogsListProductsByFeedBasedFilter {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsListProductsByFeedBasedFilter.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsListProductsByFeedBasedFilter is not found in the empty JSON string", CatalogsListProductsByFeedBasedFilter.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsListProductsByFeedBasedFilter is not found in the empty JSON string", CatalogsListProductsByFeedBasedFilter.openapiRequiredFields.toString()));
         }
       }
 
@@ -175,19 +171,19 @@ public class CatalogsListProductsByFeedBasedFilter {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsListProductsByFeedBasedFilter.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsListProductsByFeedBasedFilter` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsListProductsByFeedBasedFilter` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CatalogsListProductsByFeedBasedFilter.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("feed_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `feed_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("feed_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `feed_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("feed_id").toString()));
       }
       // validate the required field `filters`
       CatalogsProductGroupFilters.validateJsonElement(jsonObj.get("filters"));

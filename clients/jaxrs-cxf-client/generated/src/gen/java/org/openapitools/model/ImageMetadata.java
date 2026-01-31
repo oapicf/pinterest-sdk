@@ -11,18 +11,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ImageMetadata  {
   
   @ApiModelProperty(value = "")
+
   private String itemType;
 
   @ApiModelProperty(value = "")
+
   private String title;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
   @ApiModelProperty(value = "")
+
   private String link;
 
   @ApiModelProperty(value = "")
+
   private ImageMetadataImages images;
  /**
    * Get itemType

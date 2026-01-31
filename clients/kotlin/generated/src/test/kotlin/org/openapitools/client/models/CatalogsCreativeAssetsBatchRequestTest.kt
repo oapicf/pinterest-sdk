@@ -20,7 +20,6 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsCreativeAssetsBatchRequest
 import org.openapitools.client.models.CatalogsCreativeAssetsBatchItem
-import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.Country
 
 class CatalogsCreativeAssetsBatchRequestTest : ShouldSpec() {
@@ -40,7 +39,7 @@ class CatalogsCreativeAssetsBatchRequestTest : ShouldSpec() {
             //modelInstance.country shouldBe ("TODO")
         }
 
-        // to test the property `language`
+        // to test the property `language` - We recommend using the CatalogsLocale values.
         should("test language") {
             // uncomment below to test the property
             //modelInstance.language shouldBe ("TODO")

@@ -1307,13 +1307,13 @@ Protected Class BusinessAccessAssetsApi
 
 
 	#tag Method, Flags = &h0
-		Sub BusinessPartnerAssetAccessGet(, businessId As String, partnerId As String, Optional partnerType As OpenAPIClient.Models.PartnerType, assetType As Asset_typeEnum_BusinessPartnerAssetAccessGet, Optional startIndex As Xoson.O.OptionalInteger, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
+		Sub BusinessPartnerAssetAccessGet(, businessId As String, partnerId As String, partnerType As OpenAPIClient.Models.PartnerTypeOptional, assetType As Asset_typeEnum_BusinessPartnerAssetAccessGet, Optional startIndex As Xoson.O.OptionalInteger, Optional pageSize As Xoson.O.OptionalInteger, Optional bookmark As Xoson.O.OptionalString)
 		  // Operation business_partner_asset_access/get
 		  // Get assets assigned to a partner or assets assigned by a partner
 		  // - 
 		  // - parameter businessId: (path) Unique identifier of the requesting business. 
 		  // - parameter partnerId: (path) The partner id to be bound to the Business 
-		  // - parameter partnerType: (query) Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to Nil)
+		  // - parameter partnerType: (query) Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to INTERNAL)
 		  // - parameter assetType: (query) A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
 		  // - parameter startIndex: (query) An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
 		  // - parameter pageSize: (query) Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)

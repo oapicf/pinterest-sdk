@@ -67,12 +67,8 @@ class BusinessAccessInviteController extends Controller
 
         $createAssetAccessRequestBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CreateAssetAccessRequestBody::class);
 
-        try {
-            $apiResult = $this->api->assetAccessRequestsCreate($businessId, $createAssetAccessRequestBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->assetAccessRequestsCreate($businessId, $createAssetAccessRequestBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CreateAssetAccessRequestResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -112,12 +108,8 @@ class BusinessAccessInviteController extends Controller
 
         $cancelInvitesBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CancelInvitesBody::class);
 
-        try {
-            $apiResult = $this->api->cancelInvitesOrRequests($businessId, $cancelInvitesBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->cancelInvitesOrRequests($businessId, $cancelInvitesBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\DeleteInvitesResultsResponseArray) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -157,12 +149,8 @@ class BusinessAccessInviteController extends Controller
 
         $createAssetInvitesRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CreateAssetInvitesRequest::class);
 
-        try {
-            $apiResult = $this->api->createAssetInvites($businessId, $createAssetInvitesRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->createAssetInvites($businessId, $createAssetInvitesRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UpdateInvitesResultsResponseArray) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -202,12 +190,8 @@ class BusinessAccessInviteController extends Controller
 
         $createMembershipOrPartnershipInvitesBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CreateMembershipOrPartnershipInvitesBody::class);
 
-        try {
-            $apiResult = $this->api->createMembershipOrPartnershipInvites($businessId, $createMembershipOrPartnershipInvitesBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->createMembershipOrPartnershipInvites($businessId, $createMembershipOrPartnershipInvitesBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CreateInvitesResultsResponseArray) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -269,7 +253,7 @@ class BusinessAccessInviteController extends Controller
         }
 
 
-        $isMember = $request->bool('isMember');
+        $isMember = $request->boolean('isMember');
 
         $inviteStatus = $request->get('inviteStatus');
 
@@ -279,12 +263,8 @@ class BusinessAccessInviteController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->getInvites($businessId, $isMember, $inviteStatus, $inviteType, $bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->getInvites($businessId, $isMember, $inviteStatus, $inviteType, $bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GetInvites200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -323,12 +303,8 @@ class BusinessAccessInviteController extends Controller
 
         $authRespondInvitesBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AuthRespondInvitesBody::class);
 
-        try {
-            $apiResult = $this->api->respondBusinessAccessInvites($authRespondInvitesBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->respondBusinessAccessInvites($authRespondInvitesBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RespondToInvitesResponseArray) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

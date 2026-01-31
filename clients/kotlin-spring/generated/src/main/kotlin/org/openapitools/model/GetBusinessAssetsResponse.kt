@@ -33,7 +33,7 @@ data class GetBusinessAssetsResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("asset_group_info") val assetGroupInfo: AssetGroupBinding? = null
-    ) {
+) {
 
 }
 

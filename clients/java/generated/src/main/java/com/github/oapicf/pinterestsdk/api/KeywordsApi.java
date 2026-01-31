@@ -97,7 +97,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call countryKeywordsMetricsGetCall(String adAccountId, String countryCode, List<String> keywords, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call countryKeywordsMetricsGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String countryCode, @javax.annotation.Nonnull List<String> keywords, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -151,7 +151,7 @@ public class KeywordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call countryKeywordsMetricsGetValidateBeforeCall(String adAccountId, String countryCode, List<String> keywords, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call countryKeywordsMetricsGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String countryCode, @javax.annotation.Nonnull List<String> keywords, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling countryKeywordsMetricsGet(Async)");
@@ -187,7 +187,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public KeywordsMetricsArrayResponse countryKeywordsMetricsGet(String adAccountId, String countryCode, List<String> keywords) throws ApiException {
+    public KeywordsMetricsArrayResponse countryKeywordsMetricsGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String countryCode, @javax.annotation.Nonnull List<String> keywords) throws ApiException {
         ApiResponse<KeywordsMetricsArrayResponse> localVarResp = countryKeywordsMetricsGetWithHttpInfo(adAccountId, countryCode, keywords);
         return localVarResp.getData();
     }
@@ -208,7 +208,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KeywordsMetricsArrayResponse> countryKeywordsMetricsGetWithHttpInfo(String adAccountId, String countryCode, List<String> keywords) throws ApiException {
+    public ApiResponse<KeywordsMetricsArrayResponse> countryKeywordsMetricsGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String countryCode, @javax.annotation.Nonnull List<String> keywords) throws ApiException {
         okhttp3.Call localVarCall = countryKeywordsMetricsGetValidateBeforeCall(adAccountId, countryCode, keywords, null);
         Type localVarReturnType = new TypeToken<KeywordsMetricsArrayResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -231,7 +231,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call countryKeywordsMetricsGetAsync(String adAccountId, String countryCode, List<String> keywords, final ApiCallback<KeywordsMetricsArrayResponse> _callback) throws ApiException {
+    public okhttp3.Call countryKeywordsMetricsGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String countryCode, @javax.annotation.Nonnull List<String> keywords, final ApiCallback<KeywordsMetricsArrayResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = countryKeywordsMetricsGetValidateBeforeCall(adAccountId, countryCode, keywords, _callback);
         Type localVarReturnType = new TypeToken<KeywordsMetricsArrayResponse>(){}.getType();
@@ -253,7 +253,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call keywordsCreateCall(String adAccountId, KeywordsRequest keywordsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call keywordsCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull KeywordsRequest keywordsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -300,7 +300,7 @@ public class KeywordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call keywordsCreateValidateBeforeCall(String adAccountId, KeywordsRequest keywordsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call keywordsCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull KeywordsRequest keywordsRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling keywordsCreate(Async)");
@@ -330,7 +330,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public KeywordsResponse keywordsCreate(String adAccountId, KeywordsRequest keywordsRequest) throws ApiException {
+    public KeywordsResponse keywordsCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull KeywordsRequest keywordsRequest) throws ApiException {
         ApiResponse<KeywordsResponse> localVarResp = keywordsCreateWithHttpInfo(adAccountId, keywordsRequest);
         return localVarResp.getData();
     }
@@ -350,7 +350,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KeywordsResponse> keywordsCreateWithHttpInfo(String adAccountId, KeywordsRequest keywordsRequest) throws ApiException {
+    public ApiResponse<KeywordsResponse> keywordsCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull KeywordsRequest keywordsRequest) throws ApiException {
         okhttp3.Call localVarCall = keywordsCreateValidateBeforeCall(adAccountId, keywordsRequest, null);
         Type localVarReturnType = new TypeToken<KeywordsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -372,7 +372,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call keywordsCreateAsync(String adAccountId, KeywordsRequest keywordsRequest, final ApiCallback<KeywordsResponse> _callback) throws ApiException {
+    public okhttp3.Call keywordsCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull KeywordsRequest keywordsRequest, final ApiCallback<KeywordsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = keywordsCreateValidateBeforeCall(adAccountId, keywordsRequest, _callback);
         Type localVarReturnType = new TypeToken<KeywordsResponse>(){}.getType();
@@ -398,7 +398,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call keywordsGetCall(String adAccountId, String campaignId, String adGroupId, List<MatchType> matchTypes, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call keywordsGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String campaignId, @javax.annotation.Nullable String adGroupId, @javax.annotation.Nullable List<MatchType> matchTypes, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -464,7 +464,7 @@ public class KeywordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call keywordsGetValidateBeforeCall(String adAccountId, String campaignId, String adGroupId, List<MatchType> matchTypes, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call keywordsGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String campaignId, @javax.annotation.Nullable String adGroupId, @javax.annotation.Nullable List<MatchType> matchTypes, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling keywordsGet(Async)");
@@ -493,7 +493,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public KeywordsGet200Response keywordsGet(String adAccountId, String campaignId, String adGroupId, List<MatchType> matchTypes, Integer pageSize, String bookmark) throws ApiException {
+    public KeywordsGet200Response keywordsGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String campaignId, @javax.annotation.Nullable String adGroupId, @javax.annotation.Nullable List<MatchType> matchTypes, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<KeywordsGet200Response> localVarResp = keywordsGetWithHttpInfo(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark);
         return localVarResp.getData();
     }
@@ -517,7 +517,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KeywordsGet200Response> keywordsGetWithHttpInfo(String adAccountId, String campaignId, String adGroupId, List<MatchType> matchTypes, Integer pageSize, String bookmark) throws ApiException {
+    public ApiResponse<KeywordsGet200Response> keywordsGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String campaignId, @javax.annotation.Nullable String adGroupId, @javax.annotation.Nullable List<MatchType> matchTypes, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = keywordsGetValidateBeforeCall(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark, null);
         Type localVarReturnType = new TypeToken<KeywordsGet200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -543,7 +543,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call keywordsGetAsync(String adAccountId, String campaignId, String adGroupId, List<MatchType> matchTypes, Integer pageSize, String bookmark, final ApiCallback<KeywordsGet200Response> _callback) throws ApiException {
+    public okhttp3.Call keywordsGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String campaignId, @javax.annotation.Nullable String adGroupId, @javax.annotation.Nullable List<MatchType> matchTypes, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback<KeywordsGet200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = keywordsGetValidateBeforeCall(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark, _callback);
         Type localVarReturnType = new TypeToken<KeywordsGet200Response>(){}.getType();
@@ -565,7 +565,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call keywordsUpdateCall(String adAccountId, KeywordUpdateBody keywordUpdateBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call keywordsUpdateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull KeywordUpdateBody keywordUpdateBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -612,7 +612,7 @@ public class KeywordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call keywordsUpdateValidateBeforeCall(String adAccountId, KeywordUpdateBody keywordUpdateBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call keywordsUpdateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull KeywordUpdateBody keywordUpdateBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling keywordsUpdate(Async)");
@@ -642,7 +642,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public KeywordsResponse keywordsUpdate(String adAccountId, KeywordUpdateBody keywordUpdateBody) throws ApiException {
+    public KeywordsResponse keywordsUpdate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull KeywordUpdateBody keywordUpdateBody) throws ApiException {
         ApiResponse<KeywordsResponse> localVarResp = keywordsUpdateWithHttpInfo(adAccountId, keywordUpdateBody);
         return localVarResp.getData();
     }
@@ -662,7 +662,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KeywordsResponse> keywordsUpdateWithHttpInfo(String adAccountId, KeywordUpdateBody keywordUpdateBody) throws ApiException {
+    public ApiResponse<KeywordsResponse> keywordsUpdateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull KeywordUpdateBody keywordUpdateBody) throws ApiException {
         okhttp3.Call localVarCall = keywordsUpdateValidateBeforeCall(adAccountId, keywordUpdateBody, null);
         Type localVarReturnType = new TypeToken<KeywordsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -684,7 +684,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call keywordsUpdateAsync(String adAccountId, KeywordUpdateBody keywordUpdateBody, final ApiCallback<KeywordsResponse> _callback) throws ApiException {
+    public okhttp3.Call keywordsUpdateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull KeywordUpdateBody keywordUpdateBody, final ApiCallback<KeywordsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = keywordsUpdateValidateBeforeCall(adAccountId, keywordUpdateBody, _callback);
         Type localVarReturnType = new TypeToken<KeywordsResponse>(){}.getType();
@@ -713,7 +713,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call trendingKeywordsListCall(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call trendingKeywordsListCall(@javax.annotation.Nonnull TrendsSupportedRegion region, @javax.annotation.Nonnull TrendType trendType, @javax.annotation.Nullable List<String> interests, @javax.annotation.Nullable List<String> genders, @javax.annotation.Nullable List<String> ages, @javax.annotation.Nullable List<String> includeKeywords, @javax.annotation.Nullable Boolean normalizeAgainstGroup, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -784,7 +784,7 @@ public class KeywordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call trendingKeywordsListValidateBeforeCall(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call trendingKeywordsListValidateBeforeCall(@javax.annotation.Nonnull TrendsSupportedRegion region, @javax.annotation.Nonnull TrendType trendType, @javax.annotation.Nullable List<String> interests, @javax.annotation.Nullable List<String> genders, @javax.annotation.Nullable List<String> ages, @javax.annotation.Nullable List<String> includeKeywords, @javax.annotation.Nullable Boolean normalizeAgainstGroup, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'region' is set
         if (region == null) {
             throw new ApiException("Missing the required parameter 'region' when calling trendingKeywordsList(Async)");
@@ -821,7 +821,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public TrendingKeywordsResponse trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit) throws ApiException {
+    public TrendingKeywordsResponse trendingKeywordsList(@javax.annotation.Nonnull TrendsSupportedRegion region, @javax.annotation.Nonnull TrendType trendType, @javax.annotation.Nullable List<String> interests, @javax.annotation.Nullable List<String> genders, @javax.annotation.Nullable List<String> ages, @javax.annotation.Nullable List<String> includeKeywords, @javax.annotation.Nullable Boolean normalizeAgainstGroup, @javax.annotation.Nullable Integer limit) throws ApiException {
         ApiResponse<TrendingKeywordsResponse> localVarResp = trendingKeywordsListWithHttpInfo(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit);
         return localVarResp.getData();
     }
@@ -848,7 +848,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrendingKeywordsResponse> trendingKeywordsListWithHttpInfo(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit) throws ApiException {
+    public ApiResponse<TrendingKeywordsResponse> trendingKeywordsListWithHttpInfo(@javax.annotation.Nonnull TrendsSupportedRegion region, @javax.annotation.Nonnull TrendType trendType, @javax.annotation.Nullable List<String> interests, @javax.annotation.Nullable List<String> genders, @javax.annotation.Nullable List<String> ages, @javax.annotation.Nullable List<String> includeKeywords, @javax.annotation.Nullable Boolean normalizeAgainstGroup, @javax.annotation.Nullable Integer limit) throws ApiException {
         okhttp3.Call localVarCall = trendingKeywordsListValidateBeforeCall(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, null);
         Type localVarReturnType = new TypeToken<TrendingKeywordsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -877,7 +877,7 @@ public class KeywordsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call trendingKeywordsListAsync(TrendsSupportedRegion region, TrendType trendType, List<String> interests, List<String> genders, List<String> ages, List<String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, final ApiCallback<TrendingKeywordsResponse> _callback) throws ApiException {
+    public okhttp3.Call trendingKeywordsListAsync(@javax.annotation.Nonnull TrendsSupportedRegion region, @javax.annotation.Nonnull TrendType trendType, @javax.annotation.Nullable List<String> interests, @javax.annotation.Nullable List<String> genders, @javax.annotation.Nullable List<String> ages, @javax.annotation.Nullable List<String> includeKeywords, @javax.annotation.Nullable Boolean normalizeAgainstGroup, @javax.annotation.Nullable Integer limit, final ApiCallback<TrendingKeywordsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = trendingKeywordsListValidateBeforeCall(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, _callback);
         Type localVarReturnType = new TypeToken<TrendingKeywordsResponse>(){}.getType();

@@ -18,28 +18,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsFeedProcessingResult  {
   
   @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
+
   private Date createdAt;
 
   @ApiModelProperty(required = true, value = "")
+
   private String id;
 
   @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+
   private Date updatedAt;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedIngestionDetails ingestionDetails;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedProcessingStatus status;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedProductCounts productCounts;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedValidationDetails validationDetails;
  /**
    * Get createdAt

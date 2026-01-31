@@ -495,96 +495,73 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "ADULT_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aDULTINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            aDULTINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ADWORDS_FORMAT_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aDWORDSFORMATINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            aDWORDSFORMATINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "AVAILABILITY_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aVAILABILITYINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            aVAILABILITYINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "BLOCKLISTED_IMAGE_SIGNATURE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                bLOCKLISTEDIMAGESIGNATURE = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            bLOCKLISTEDIMAGESIGNATURE = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "DESCRIPTION_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dESCRIPTIONMISSING = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            dESCRIPTIONMISSING = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "DUPLICATE_PRODUCTS":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dUPLICATEPRODUCTS = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            dUPLICATEPRODUCTS = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "IMAGE_LINK_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iMAGELINKINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            iMAGELINKINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "IMAGE_LINK_LENGTH_TOO_LONG":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iMAGELINKLENGTHTOOLONG = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            iMAGELINKLENGTHTOOLONG = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "IMAGE_LINK_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iMAGELINKMISSING = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            iMAGELINKMISSING = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "INVALID_DOMAIN":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iNVALIDDOMAIN = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            iNVALIDDOMAIN = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ITEMID_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iTEMIDMISSING = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            iTEMIDMISSING = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iTEMMAINIMAGEDOWNLOADFAILURE = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            iTEMMAINIMAGEDOWNLOADFAILURE = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "LINK_FORMAT_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lINKFORMATINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            lINKFORMATINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "LINK_LENGTH_TOO_LONG":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lINKLENGTHTOOLONG = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            lINKLENGTHTOOLONG = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "LIST_PRICE_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lISTPRICEINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            lISTPRICEINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                mAXITEMSPERITEMGROUPEXCEEDED = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            mAXITEMSPERITEMGROUPEXCEEDED = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "PARSE_LINE_ERROR":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pARSELINEERROR = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            pARSELINEERROR = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "PINJOIN_CONTENT_UNSAFE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pINJOINCONTENTUNSAFE = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            pINJOINCONTENTUNSAFE = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "PRICE_CANNOT_BE_DETERMINED":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pRICECANNOTBEDETERMINED = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            pRICECANNOTBEDETERMINED = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "PRICE_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pRICEMISSING = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            pRICEMISSING = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "PRODUCT_LINK_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pRODUCTLINKMISSING = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            pRODUCTLINKMISSING = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "PRODUCT_PRICE_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pRODUCTPRICEINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            pRODUCTPRICEINVALID = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "TITLE_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tITLEMISSING = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            tITLEMISSING = new Option<CatalogsItemValidationDetails?>(JsonSerializer.Deserialize<CatalogsItemValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

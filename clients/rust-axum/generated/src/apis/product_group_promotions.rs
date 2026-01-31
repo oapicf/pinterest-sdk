@@ -77,6 +77,8 @@ pub enum ProductGroupsSlashAnalyticsResponse {
 }
 
 
+
+
 /// ProductGroupPromotions
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -86,6 +88,7 @@ pub trait ProductGroupPromotions<E: std::fmt::Debug + Send + Sync + 'static = ()
     /// ProductGroupPromotionsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/product_group_promotions
     async fn product_group_promotions_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -98,6 +101,7 @@ pub trait ProductGroupPromotions<E: std::fmt::Debug + Send + Sync + 'static = ()
     /// ProductGroupPromotionsSlashGet - GET /v5/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}
     async fn product_group_promotions_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -109,6 +113,7 @@ pub trait ProductGroupPromotions<E: std::fmt::Debug + Send + Sync + 'static = ()
     /// ProductGroupPromotionsSlashList - GET /v5/ad_accounts/{ad_account_id}/product_group_promotions
     async fn product_group_promotions_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -121,6 +126,7 @@ pub trait ProductGroupPromotions<E: std::fmt::Debug + Send + Sync + 'static = ()
     /// ProductGroupPromotionsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/product_group_promotions
     async fn product_group_promotions_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -133,6 +139,7 @@ pub trait ProductGroupPromotions<E: std::fmt::Debug + Send + Sync + 'static = ()
     /// ProductGroupsSlashAnalytics - GET /v5/ad_accounts/{ad_account_id}/product_groups/analytics
     async fn product_groups_slash_analytics(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

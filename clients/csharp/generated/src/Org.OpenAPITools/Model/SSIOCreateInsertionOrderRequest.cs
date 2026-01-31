@@ -535,8 +535,7 @@ namespace Org.OpenAPITools.Model
                             endDate = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "budget_amount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                budgetAmount = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            budgetAmount = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "agency_link":
                             agencyLink = new Option<string?>(utf8JsonReader.GetString()!);
@@ -545,12 +544,10 @@ namespace Org.OpenAPITools.Model
                             userEmail = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "accepted_terms_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                acceptedTermsTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            acceptedTermsTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "estimated_monthly_spend":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                estimatedMonthlySpend = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            estimatedMonthlySpend = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         default:
                             break;

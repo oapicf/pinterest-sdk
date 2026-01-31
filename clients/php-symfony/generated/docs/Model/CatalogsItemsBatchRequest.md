@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**OpenAPI\Server\Model\Country**](Country.md) |  | 
-**language** | [**OpenAPI\Server\Model\CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
+**language** | **string** | We recommend using the CatalogsLocale values. | 
 **operation** | [**OpenAPI\Server\Model\BatchOperation**](BatchOperation.md) |  | 
 **items** | [**OpenAPI\Server\Model\ItemDeleteBatchRecord**](ItemDeleteBatchRecord.md) | Array with catalogs items | 
 

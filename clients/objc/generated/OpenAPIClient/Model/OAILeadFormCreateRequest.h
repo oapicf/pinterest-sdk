@@ -31,16 +31,16 @@
 
 @interface OAILeadFormCreateRequest : OAIObject
 
-/* Internal name of the lead form. 
+/* Internal name of the lead form. [optional]
  */
 @property(nonatomic) NSString* name;
-/* A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. 
+/* A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. [optional]
  */
 @property(nonatomic) NSString* privacyPolicyLink;
-/* Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO 
+/* Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO [optional]
  */
 @property(nonatomic) NSNumber* hasAcceptedTerms;
-/* A message for people who complete the form to let them know what happens next. 
+/* A message for people who complete the form to let them know what happens next. [optional]
  */
 @property(nonatomic) NSString* completionMessage;
 
@@ -48,7 +48,7 @@
 /* Additional disclosure language to be included in the lead form. [optional]
  */
 @property(nonatomic) NSString* disclosureLanguage;
-/* List of questions to be displayed on the lead form. 
+/* List of questions to be displayed on the lead form. [optional]
  */
 @property(nonatomic) NSArray<OAILeadFormQuestion>* questions;
 /* List of additional policy links to be displayed on the lead form. [optional]

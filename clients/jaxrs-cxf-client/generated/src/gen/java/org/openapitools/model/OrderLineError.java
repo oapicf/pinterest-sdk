@@ -13,9 +13,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OrderLineError  {
   
   @ApiModelProperty(value = "")
+
   private OrderLine data;
 
   @ApiModelProperty(value = "")
+
   private List<String> errorMessages = new ArrayList<>();
  /**
    * Get data

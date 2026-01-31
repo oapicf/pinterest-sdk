@@ -11,10 +11,10 @@
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent, HttpParameterCodec, HttpContext 
+         HttpResponse, HttpEvent, HttpContext 
         }       from '@angular/common/http';
-import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
+import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
 import { LeadFormArrayResponse } from '../model/leadFormArrayResponse';
@@ -50,10 +50,12 @@ export class LeadFormsService extends BaseService {
     /**
      * Get lead form by id
      * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it\&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * @endpoint get /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}
      * @param adAccountId Unique identifier of an ad account.
      * @param leadFormId Unique identifier of a lead form.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public leadFormGet(adAccountId: string, leadFormId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LeadFormResponse>;
     public leadFormGet(adAccountId: string, leadFormId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LeadFormResponse>>;
@@ -95,14 +97,15 @@ export class LeadFormsService extends BaseService {
         }
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/lead_forms/${this.configuration.encodeParam({name: "leadFormId", value: leadFormId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<LeadFormResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<LeadFormResponse>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -111,11 +114,13 @@ export class LeadFormsService extends BaseService {
     /**
      * Create lead form test data
      * Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * @endpoint post /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test
      * @param adAccountId Unique identifier of an ad account.
      * @param leadFormId Unique identifier of a lead form.
      * @param leadFormTestRequest Subscription to create.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public leadFormTestCreate(adAccountId: string, leadFormId: string, leadFormTestRequest: LeadFormTestRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LeadFormTestResponse>;
     public leadFormTestCreate(adAccountId: string, leadFormId: string, leadFormTestRequest: LeadFormTestRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LeadFormTestResponse>>;
@@ -169,15 +174,16 @@ export class LeadFormsService extends BaseService {
         }
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/lead_forms/${this.configuration.encodeParam({name: "leadFormId", value: leadFormId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/test`;
-        return this.httpClient.request<LeadFormTestResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<LeadFormTestResponse>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: leadFormTestRequest,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -186,10 +192,12 @@ export class LeadFormsService extends BaseService {
     /**
      * Create lead forms
      * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * @endpoint post /ad_accounts/{ad_account_id}/lead_forms
      * @param adAccountId Unique identifier of an ad account.
      * @param leadFormCreateRequest List of lead forms to create, size limit [1, 30].
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public leadFormsCreate(adAccountId: string, leadFormCreateRequest: Array<LeadFormCreateRequest>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LeadFormArrayResponse>;
     public leadFormsCreate(adAccountId: string, leadFormCreateRequest: Array<LeadFormCreateRequest>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LeadFormArrayResponse>>;
@@ -240,15 +248,16 @@ export class LeadFormsService extends BaseService {
         }
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/lead_forms`;
-        return this.httpClient.request<LeadFormArrayResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<LeadFormArrayResponse>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: leadFormCreateRequest,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -257,12 +266,14 @@ export class LeadFormsService extends BaseService {
     /**
      * List lead forms
      * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * @endpoint get /ad_accounts/{ad_account_id}/lead_forms
      * @param adAccountId Unique identifier of an ad account.
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public leadFormsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LeadFormsList200Response>;
     public leadFormsList(adAccountId: string, pageSize?: number, order?: 'ASCENDING' | 'DESCENDING', bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LeadFormsList200Response>>;
@@ -272,13 +283,34 @@ export class LeadFormsService extends BaseService {
             throw new Error('Required parameter adAccountId was null or undefined when calling leadFormsList.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>order, 'order');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'order',
+            <any>order,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -309,15 +341,16 @@ export class LeadFormsService extends BaseService {
         }
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/lead_forms`;
-        return this.httpClient.request<LeadFormsList200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<LeadFormsList200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -326,10 +359,12 @@ export class LeadFormsService extends BaseService {
     /**
      * Update lead forms
      * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * @endpoint patch /ad_accounts/{ad_account_id}/lead_forms
      * @param adAccountId Unique identifier of an ad account.
      * @param leadFormUpdateRequest List of lead forms to update, size limit [1, 30].
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public leadFormsUpdate(adAccountId: string, leadFormUpdateRequest: Array<LeadFormUpdateRequest>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<LeadFormArrayResponse>;
     public leadFormsUpdate(adAccountId: string, leadFormUpdateRequest: Array<LeadFormUpdateRequest>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<LeadFormArrayResponse>>;
@@ -380,15 +415,16 @@ export class LeadFormsService extends BaseService {
         }
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/lead_forms`;
-        return this.httpClient.request<LeadFormArrayResponse>('patch', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<LeadFormArrayResponse>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: leadFormUpdateRequest,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );

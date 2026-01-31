@@ -9,7 +9,63 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type CampaignSummaryStatus* = object
-  ## Summary status for campaign
+type CampaignSummaryStatus* {.pure.} = enum
+  RUNNING
+  PAUSED
+  NOTSTARTED
+  COMPLETED
+  ADVERTISERDISABLED
+  ARCHIVED
+  DRAFT
+  DELETEDDRAFT
+
+func `%`*(v: CampaignSummaryStatus): JsonNode =
+  result = case v:
+    of CampaignSummaryStatus.RUNNING: %"RUNNING"
+    of CampaignSummaryStatus.PAUSED: %"PAUSED"
+    of CampaignSummaryStatus.NOTSTARTED: %"NOT_STARTED"
+    of CampaignSummaryStatus.COMPLETED: %"COMPLETED"
+    of CampaignSummaryStatus.ADVERTISERDISABLED: %"ADVERTISER_DISABLED"
+    of CampaignSummaryStatus.ARCHIVED: %"ARCHIVED"
+    of CampaignSummaryStatus.DRAFT: %"DRAFT"
+    of CampaignSummaryStatus.DELETEDDRAFT: %"DELETED_DRAFT"
+
+func `$`*(v: CampaignSummaryStatus): string =
+  result = case v:
+    of CampaignSummaryStatus.RUNNING: $("RUNNING")
+    of CampaignSummaryStatus.PAUSED: $("PAUSED")
+    of CampaignSummaryStatus.NOTSTARTED: $("NOT_STARTED")
+    of CampaignSummaryStatus.COMPLETED: $("COMPLETED")
+    of CampaignSummaryStatus.ADVERTISERDISABLED: $("ADVERTISER_DISABLED")
+    of CampaignSummaryStatus.ARCHIVED: $("ARCHIVED")
+    of CampaignSummaryStatus.DRAFT: $("DRAFT")
+    of CampaignSummaryStatus.DELETEDDRAFT: $("DELETED_DRAFT")
+
+proc to*(node: JsonNode, T: typedesc[CampaignSummaryStatus]): CampaignSummaryStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CampaignSummaryStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RUNNING"):
+    return CampaignSummaryStatus.RUNNING
+  of $("PAUSED"):
+    return CampaignSummaryStatus.PAUSED
+  of $("NOT_STARTED"):
+    return CampaignSummaryStatus.NOTSTARTED
+  of $("COMPLETED"):
+    return CampaignSummaryStatus.COMPLETED
+  of $("ADVERTISER_DISABLED"):
+    return CampaignSummaryStatus.ADVERTISERDISABLED
+  of $("ARCHIVED"):
+    return CampaignSummaryStatus.ARCHIVED
+  of $("DRAFT"):
+    return CampaignSummaryStatus.DRAFT
+  of $("DELETED_DRAFT"):
+    return CampaignSummaryStatus.DELETEDDRAFT
+  else:
+    raise newException(ValueError, "Invalid enum value for CampaignSummaryStatus: " & strVal)
+

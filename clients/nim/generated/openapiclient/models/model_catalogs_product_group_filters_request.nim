@@ -9,12 +9,37 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_filter_keys
 import model_catalogs_product_group_filters_request_any_of
 import model_catalogs_product_group_filters_request_any_of1
 
+# AnyOf type
+type CatalogsProductGroupFiltersRequestKind* {.pure.} = enum
+  CatalogsProductGroupFiltersRequestAnyOfVariant
+  CatalogsProductGroupFiltersRequestAnyOf1Variant
+
 type CatalogsProductGroupFiltersRequest* = object
   ## Object holding a group of filters for request on catalog product group. This is a distinct schema It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.
-  anyOf*: seq[CatalogsProductGroupFilterKeys]
-  allOf*: seq[CatalogsProductGroupFilterKeys]
+  case kind*: CatalogsProductGroupFiltersRequestKind
+  of CatalogsProductGroupFiltersRequestKind.CatalogsProductGroupFiltersRequestAnyOfVariant:
+    CatalogsProductGroupFiltersRequest_anyOfValue*: CatalogsProductGroupFiltersRequestAnyOf
+  of CatalogsProductGroupFiltersRequestKind.CatalogsProductGroupFiltersRequestAnyOf1Variant:
+    CatalogsProductGroupFiltersRequest_anyOf_1Value*: CatalogsProductGroupFiltersRequestAnyOf1
+
+proc to*(node: JsonNode, T: typedesc[CatalogsProductGroupFiltersRequest]): CatalogsProductGroupFiltersRequest =
+  ## Custom deserializer for anyOf type - tries each variant
+  try:
+    return CatalogsProductGroupFiltersRequest(kind: CatalogsProductGroupFiltersRequestKind.CatalogsProductGroupFiltersRequestAnyOfVariant, CatalogsProductGroupFiltersRequest_anyOfValue: to(node, CatalogsProductGroupFiltersRequestAnyOf))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsProductGroupFiltersRequestAnyOf: ", e.msg
+  try:
+    return CatalogsProductGroupFiltersRequest(kind: CatalogsProductGroupFiltersRequestKind.CatalogsProductGroupFiltersRequestAnyOf1Variant, CatalogsProductGroupFiltersRequest_anyOf_1Value: to(node, CatalogsProductGroupFiltersRequestAnyOf1))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsProductGroupFiltersRequestAnyOf1: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsProductGroupFiltersRequest. JSON: " & $node)
+

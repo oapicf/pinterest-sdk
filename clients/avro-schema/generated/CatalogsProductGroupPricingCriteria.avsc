@@ -6,9 +6,9 @@
   "fields": [
     {
       "name": "inclusion",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "",
-      "default": null
+      "default": true
     },
     {
       "name": "values",
@@ -17,9 +17,9 @@
     },
     {
       "name": "negated",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "",
-      "default": null
+      "default": false
     }
   ]
 

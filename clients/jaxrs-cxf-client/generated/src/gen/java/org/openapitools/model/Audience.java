@@ -10,67 +10,78 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Audience  {
   
-  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
  /**
-   * Ad account ID.
-  **/
+  * Ad account ID.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "1234", value = "Audience ID.")
  /**
-   * Audience ID.
-  **/
+  * Audience ID.
+  */
+  @ApiModelProperty(example = "1234", value = "Audience ID.")
+
   private String id;
 
-  @ApiModelProperty(example = "ACME Tools", value = "Audience name.")
  /**
-   * Audience name.
-  **/
+  * Audience name.
+  */
+  @ApiModelProperty(example = "ACME Tools", value = "Audience name.")
+
   private String name;
 
-  @ApiModelProperty(value = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR")
  /**
-   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-  **/
+  * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+  */
+  @ApiModelProperty(value = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR")
+
   private String audienceType;
 
-  @ApiModelProperty(example = "People who love making quilts.", value = "Audience description.")
  /**
-   * Audience description.
-  **/
+  * Audience description.
+  */
+  @ApiModelProperty(example = "People who love making quilts.", value = "Audience description.")
+
   private String description;
 
   @ApiModelProperty(value = "")
+
   private AudienceRule rule;
 
-  @ApiModelProperty(example = "1000", value = "Audience size.")
  /**
-   * Audience size.
-  **/
+  * Audience size.
+  */
+  @ApiModelProperty(example = "1000", value = "Audience size.")
+
   private Integer size;
 
-  @ApiModelProperty(value = "Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.")
  /**
-   * Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
-  **/
+  * Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
+  */
+  @ApiModelProperty(value = "Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.")
+
   private String status;
 
-  @ApiModelProperty(example = "audience", value = "Always \"audience\".")
  /**
-   * Always \"audience\".
-  **/
+  * Always \"audience\".
+  */
+  @ApiModelProperty(example = "audience", value = "Always \"audience\".")
+
   private String type;
 
-  @ApiModelProperty(example = "1451431341", value = "Creation time. Unix timestamp in seconds.")
  /**
-   * Creation time. Unix timestamp in seconds.
-  **/
+  * Creation time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1451431341", value = "Creation time. Unix timestamp in seconds.")
+
   private Integer createdTimestamp;
 
-  @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
  /**
-   * Last update time. Unix timestamp in seconds.
-  **/
+  * Last update time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
+
   private Integer updatedTimestamp;
  /**
    * Ad account ID.

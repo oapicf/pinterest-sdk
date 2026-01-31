@@ -1,28 +1,30 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * This field is **OPTIONAL**. Use this if your feed file requires username and password.
- **/
+ * This field is **OPTIONAL**. Use this if your feed file requires username and password.
+ */
 @ApiModel(description="This field is **OPTIONAL**. Use this if your feed file requires username and password.")
 
 public class CatalogsFeedCredentials  {
   
-  @ApiModelProperty(required = true, value = "The required password for downloading a feed.")
  /**
-   * The required password for downloading a feed.
-  **/
+  * The required password for downloading a feed.
+  */
+  @ApiModelProperty(required = true, value = "The required password for downloading a feed.")
+
   private String password;
 
-  @ApiModelProperty(required = true, value = "The required username for downloading a feed.")
  /**
-   * The required username for downloading a feed.
-  **/
+  * The required username for downloading a feed.
+  */
+  @ApiModelProperty(required = true, value = "The required username for downloading a feed.")
+
   private String username;
  /**
    * The required password for downloading a feed.

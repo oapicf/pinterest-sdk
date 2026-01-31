@@ -2,7 +2,7 @@
 
 Pinterest REST API
 - API version: 5.14.0
-  - Generator version: 7.12.0
+  - Generator version: 7.18.0
 
 Pinterest's REST API
 
@@ -418,7 +418,6 @@ Class | Method | HTTP request | Description
  - [AudienceCommon](docs/AudienceCommon.md)
  - [AudienceCreateCustomRequest](docs/AudienceCreateCustomRequest.md)
  - [AudienceCreateRequest](docs/AudienceCreateRequest.md)
- - [AudienceCreateRequest1AudienceType](docs/AudienceCreateRequest1AudienceType.md)
  - [AudienceDataParty](docs/AudienceDataParty.md)
  - [AudienceDefinition](docs/AudienceDefinition.md)
  - [AudienceDefinitionResponse](docs/AudienceDefinitionResponse.md)
@@ -596,7 +595,6 @@ Class | Method | HTTP request | Description
  - [CatalogsItemsFilters](docs/CatalogsItemsFilters.md)
  - [CatalogsItemsPostFilters](docs/CatalogsItemsPostFilters.md)
  - [CatalogsItemsRequest](docs/CatalogsItemsRequest.md)
- - [CatalogsItemsRequestLanguage](docs/CatalogsItemsRequestLanguage.md)
  - [CatalogsItemsUpdateBatchRequest](docs/CatalogsItemsUpdateBatchRequest.md)
  - [CatalogsItemsUpsertBatchRequest](docs/CatalogsItemsUpsertBatchRequest.md)
  - [CatalogsList200Response](docs/CatalogsList200Response.md)
@@ -930,7 +928,6 @@ Class | Method | HTTP request | Description
  - [PinPromotionSummaryStatus](docs/PinPromotionSummaryStatus.md)
  - [PinUpdate](docs/PinUpdate.md)
  - [PinUpdateCarouselSlotsInner](docs/PinUpdateCarouselSlotsInner.md)
- - [PinsAnalyticsMetricTypesParameterInner](docs/PinsAnalyticsMetricTypesParameterInner.md)
  - [PinsList200Response](docs/PinsList200Response.md)
  - [PinsSaveRequest](docs/PinsSaveRequest.md)
  - [PinterestTagEventData](docs/PinterestTagEventData.md)

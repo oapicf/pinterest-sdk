@@ -44,56 +44,6 @@ use JMS\Serializer\Annotation\SerializedName;
 class InviteResponse 
 {
         /**
-     * @var InviteAssetsSummary|null
-     * @SerializedName("assets_summary")
-     * @Type("OpenAPI\Server\Model\InviteAssetsSummary")
-    */
-    #[Assert\Type("OpenAPI\Server\Model\InviteAssetsSummary")]
-    protected ?InviteAssetsSummary $assetsSummary = null;
-
-    /**
-     * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-     *
-     * @var string[]|null
-     * @SerializedName("business_roles")
-     * @Type("array<string>")
-    */
-    #[Assert\All([
-        new Assert\Type("string"),
-    ])]
-    protected ?array $businessRoles = null;
-
-    /**
-     * Metadata for the business that created the invite/request.
-     *
-     * @var BusinessAccessUserSummary|null
-     * @SerializedName("created_by_business")
-     * @Type("OpenAPI\Server\Model\BusinessAccessUserSummary")
-    */
-    #[Assert\Type("OpenAPI\Server\Model\BusinessAccessUserSummary")]
-    protected ?BusinessAccessUserSummary $createdByBusiness = null;
-
-    /**
-     * Metadata for the user that created the invite/request.
-     *
-     * @var BusinessAccessUserSummary|null
-     * @SerializedName("created_by_user")
-     * @Type("OpenAPI\Server\Model\BusinessAccessUserSummary")
-    */
-    #[Assert\Type("OpenAPI\Server\Model\BusinessAccessUserSummary")]
-    protected ?BusinessAccessUserSummary $createdByUser = null;
-
-    /**
-     * The time the invite/request was created. Returned in milliseconds.
-     *
-     * @var int|null
-     * @SerializedName("created_time")
-     * @Type("int")
-    */
-    #[Assert\Type("int")]
-    protected ?int $createdTime = null;
-
-    /**
      * Unique identifier of the invite/request.
      *
      * @var string|null
@@ -133,158 +83,73 @@ class InviteResponse
     protected ?BusinessAccessUserSummary $user = null;
 
     /**
+     * @var InviteAssetsSummary|null
+     * @SerializedName("assets_summary")
+     * @Type("OpenAPI\Server\Model\InviteAssetsSummary")
+    */
+    #[Assert\Type("OpenAPI\Server\Model\InviteAssetsSummary")]
+    protected ?InviteAssetsSummary $assetsSummary = null;
+
+    /**
+     * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+     *
+     * @var string[]|null
+     * @SerializedName("business_roles")
+     * @Type("array<string>")
+    */
+    #[Assert\All([
+        new Assert\Type("string"),
+    ])]
+    protected ?array $businessRoles = null;
+
+    /**
+     * Metadata for the business that created the invite/request.
+     *
+     * @var array|null
+     * @SerializedName("created_by_business")
+     * @Type("array")
+    */
+    #[Assert\Type("array")]
+    protected ?array $createdByBusiness = null;
+
+    /**
+     * Metadata for the user that created the invite/request.
+     *
+     * @var array|null
+     * @SerializedName("created_by_user")
+     * @Type("array")
+    */
+    #[Assert\Type("array")]
+    protected ?array $createdByUser = null;
+
+    /**
+     * The time the invite/request was created. Returned in milliseconds.
+     *
+     * @var int|null
+     * @SerializedName("created_time")
+     * @Type("int")
+    */
+    #[Assert\Type("int")]
+    protected ?int $createdTime = null;
+
+    /**
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(?array $data = null)
     {
         if (is_array($data)) {
+            $this->id = array_key_exists('id', $data) ? $data['id'] : $this->id;
+            $this->inviteData = array_key_exists('inviteData', $data) ? $data['inviteData'] : $this->inviteData;
+            $this->isReceivedInvite = array_key_exists('isReceivedInvite', $data) ? $data['isReceivedInvite'] : $this->isReceivedInvite;
+            $this->user = array_key_exists('user', $data) ? $data['user'] : $this->user;
             $this->assetsSummary = array_key_exists('assetsSummary', $data) ? $data['assetsSummary'] : $this->assetsSummary;
             $this->businessRoles = array_key_exists('businessRoles', $data) ? $data['businessRoles'] : $this->businessRoles;
             $this->createdByBusiness = array_key_exists('createdByBusiness', $data) ? $data['createdByBusiness'] : $this->createdByBusiness;
             $this->createdByUser = array_key_exists('createdByUser', $data) ? $data['createdByUser'] : $this->createdByUser;
             $this->createdTime = array_key_exists('createdTime', $data) ? $data['createdTime'] : $this->createdTime;
-            $this->id = array_key_exists('id', $data) ? $data['id'] : $this->id;
-            $this->inviteData = array_key_exists('inviteData', $data) ? $data['inviteData'] : $this->inviteData;
-            $this->isReceivedInvite = array_key_exists('isReceivedInvite', $data) ? $data['isReceivedInvite'] : $this->isReceivedInvite;
-            $this->user = array_key_exists('user', $data) ? $data['user'] : $this->user;
         }
     }
-
-    /**
-     * Gets assetsSummary.
-     *
-     * @return InviteAssetsSummary|null
-     */
-    public function getAssetsSummary(): ?InviteAssetsSummary
-    {
-        return $this->assetsSummary;
-    }
-
-    /**
-    * Sets assetsSummary.
-    *
-    * @param InviteAssetsSummary|null $assetsSummary
-    *
-    * @return $this
-    */
-    public function setAssetsSummary(?InviteAssetsSummary $assetsSummary = null): self
-    {
-        $this->assetsSummary = $assetsSummary;
-
-        return $this;
-    }
-
-
-
-
-    /**
-     * Gets businessRoles.
-     *
-     * @return string[]|null
-     */
-    public function getBusinessRoles(): ?array
-    {
-        return $this->businessRoles;
-    }
-
-    /**
-    * Sets businessRoles.
-    *
-    * @param string[]|null $businessRoles  The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-    *
-    * @return $this
-    */
-    public function setBusinessRoles(?array $businessRoles = null): self
-    {
-        $this->businessRoles = $businessRoles;
-
-        return $this;
-    }
-
-
-
-
-    /**
-     * Gets createdByBusiness.
-     *
-     * @return BusinessAccessUserSummary|null
-     */
-    public function getCreatedByBusiness(): ?BusinessAccessUserSummary
-    {
-        return $this->createdByBusiness;
-    }
-
-    /**
-    * Sets createdByBusiness.
-    *
-    * @param BusinessAccessUserSummary|null $createdByBusiness  Metadata for the business that created the invite/request.
-    *
-    * @return $this
-    */
-    public function setCreatedByBusiness(?BusinessAccessUserSummary $createdByBusiness = null): self
-    {
-        $this->createdByBusiness = $createdByBusiness;
-
-        return $this;
-    }
-
-
-
-
-    /**
-     * Gets createdByUser.
-     *
-     * @return BusinessAccessUserSummary|null
-     */
-    public function getCreatedByUser(): ?BusinessAccessUserSummary
-    {
-        return $this->createdByUser;
-    }
-
-    /**
-    * Sets createdByUser.
-    *
-    * @param BusinessAccessUserSummary|null $createdByUser  Metadata for the user that created the invite/request.
-    *
-    * @return $this
-    */
-    public function setCreatedByUser(?BusinessAccessUserSummary $createdByUser = null): self
-    {
-        $this->createdByUser = $createdByUser;
-
-        return $this;
-    }
-
-
-
-
-    /**
-     * Gets createdTime.
-     *
-     * @return int|null
-     */
-    public function getCreatedTime(): ?int
-    {
-        return $this->createdTime;
-    }
-
-    /**
-    * Sets createdTime.
-    *
-    * @param int|null $createdTime  The time the invite/request was created. Returned in milliseconds.
-    *
-    * @return $this
-    */
-    public function setCreatedTime(?int $createdTime = null): self
-    {
-        $this->createdTime = $createdTime;
-
-        return $this;
-    }
-
-
-
 
     /**
      * Gets id.
@@ -387,6 +252,141 @@ class InviteResponse
     public function setUser(?BusinessAccessUserSummary $user = null): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets assetsSummary.
+     *
+     * @return InviteAssetsSummary|null
+     */
+    public function getAssetsSummary(): ?InviteAssetsSummary
+    {
+        return $this->assetsSummary;
+    }
+
+    /**
+    * Sets assetsSummary.
+    *
+    * @param InviteAssetsSummary|null $assetsSummary
+    *
+    * @return $this
+    */
+    public function setAssetsSummary(?InviteAssetsSummary $assetsSummary = null): self
+    {
+        $this->assetsSummary = $assetsSummary;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets businessRoles.
+     *
+     * @return string[]|null
+     */
+    public function getBusinessRoles(): ?array
+    {
+        return $this->businessRoles;
+    }
+
+    /**
+    * Sets businessRoles.
+    *
+    * @param string[]|null $businessRoles  The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+    *
+    * @return $this
+    */
+    public function setBusinessRoles(?array $businessRoles = null): self
+    {
+        $this->businessRoles = $businessRoles;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets createdByBusiness.
+     *
+     * @return array|null
+     */
+    public function getCreatedByBusiness(): ?array
+    {
+        return $this->createdByBusiness;
+    }
+
+    /**
+    * Sets createdByBusiness.
+    *
+    * @param array|null $createdByBusiness  Metadata for the business that created the invite/request.
+    *
+    * @return $this
+    */
+    public function setCreatedByBusiness(?array $createdByBusiness = null): self
+    {
+        $this->createdByBusiness = $createdByBusiness;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets createdByUser.
+     *
+     * @return array|null
+     */
+    public function getCreatedByUser(): ?array
+    {
+        return $this->createdByUser;
+    }
+
+    /**
+    * Sets createdByUser.
+    *
+    * @param array|null $createdByUser  Metadata for the user that created the invite/request.
+    *
+    * @return $this
+    */
+    public function setCreatedByUser(?array $createdByUser = null): self
+    {
+        $this->createdByUser = $createdByUser;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets createdTime.
+     *
+     * @return int|null
+     */
+    public function getCreatedTime(): ?int
+    {
+        return $this->createdTime;
+    }
+
+    /**
+    * Sets createdTime.
+    *
+    * @param int|null $createdTime  The time the invite/request was created. Returned in milliseconds.
+    *
+    * @return $this
+    */
+    public function setCreatedTime(?int $createdTime = null): self
+    {
+        $this->createdTime = $createdTime;
 
         return $this;
     }

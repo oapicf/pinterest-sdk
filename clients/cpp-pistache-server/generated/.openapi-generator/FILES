@@ -8,6 +8,7 @@ api/AdsApi.cpp
 api/AdsApi.h
 api/AdvancedAuctionApi.cpp
 api/AdvancedAuctionApi.h
+api/ApiBase.cpp
 api/ApiBase.h
 api/AudienceInsightsApi.cpp
 api/AudienceInsightsApi.h
@@ -298,8 +299,6 @@ model/AudienceCreateCustomRequest.cpp
 model/AudienceCreateCustomRequest.h
 model/AudienceCreateRequest.cpp
 model/AudienceCreateRequest.h
-model/AudienceCreateRequest_1_audience_type.cpp
-model/AudienceCreateRequest_1_audience_type.h
 model/AudienceDataParty.cpp
 model/AudienceDataParty.h
 model/AudienceDefinition.cpp
@@ -654,8 +653,6 @@ model/CatalogsItemsPostFilters.cpp
 model/CatalogsItemsPostFilters.h
 model/CatalogsItemsRequest.cpp
 model/CatalogsItemsRequest.h
-model/CatalogsItemsRequest_language.cpp
-model/CatalogsItemsRequest_language.h
 model/CatalogsItemsUpdateBatchRequest.cpp
 model/CatalogsItemsUpdateBatchRequest.h
 model/CatalogsItemsUpsertBatchRequest.cpp
@@ -1324,8 +1321,6 @@ model/PinUpdate.cpp
 model/PinUpdate.h
 model/PinUpdate_carousel_slots_inner.cpp
 model/PinUpdate_carousel_slots_inner.h
-model/Pins_analytics_metric_types_parameter_inner.cpp
-model/Pins_analytics_metric_types_parameter_inner.h
 model/Pins_list_200_response.cpp
 model/Pins_list_200_response.h
 model/Pins_save_request.cpp

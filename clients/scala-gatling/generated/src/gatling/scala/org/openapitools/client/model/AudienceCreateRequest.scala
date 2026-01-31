@@ -10,7 +10,8 @@ case class AudienceCreateRequest (
     _rule: AudienceRule,
     /* Audience description. */
     _description: Option[String],
-    _audienceType: AudienceCreateRequest1AudienceType
+    /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
+    _audienceType: AudienceType
 )
 object AudienceCreateRequest {
     def toStringBody(var_adAccountId: Object, var_name: Object, var_rule: Object, var_description: Object, var_audienceType: Object) =

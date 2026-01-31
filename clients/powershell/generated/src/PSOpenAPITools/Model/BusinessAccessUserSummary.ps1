@@ -49,7 +49,7 @@ function Initialize-BusinessAccessUserSummary {
         }
 
         if (!$Id -and $Id.length -lt 1) {
-            throw "invalid value for 'Id', the character length must be great than or equal to 1."
+            throw "invalid value for 'Id', the character length must be greater than or equal to 1."
         }
 
 

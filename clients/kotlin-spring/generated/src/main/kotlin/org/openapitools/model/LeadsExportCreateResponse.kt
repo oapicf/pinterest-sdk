@@ -22,7 +22,7 @@ data class LeadsExportCreateResponse(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "123456789012", description = "ID for the leads export job")
     @get:JsonProperty("leads_export_id") val leadsExportId: kotlin.String? = null
-    ) {
+) {
 
 }
 

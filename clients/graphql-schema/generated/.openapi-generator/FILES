@@ -112,7 +112,6 @@ openapi2graphql/model/audience_category.graphql
 openapi2graphql/model/audience_common.graphql
 openapi2graphql/model/audience_create_custom_request.graphql
 openapi2graphql/model/audience_create_request.graphql
-openapi2graphql/model/audience_create_request_1_audience_type.graphql
 openapi2graphql/model/audience_data_party.graphql
 openapi2graphql/model/audience_definition.graphql
 openapi2graphql/model/audience_definition_response.graphql
@@ -290,7 +289,6 @@ openapi2graphql/model/catalogs_items_delete_discontinued_batch_request.graphql
 openapi2graphql/model/catalogs_items_filters.graphql
 openapi2graphql/model/catalogs_items_post_filters.graphql
 openapi2graphql/model/catalogs_items_request.graphql
-openapi2graphql/model/catalogs_items_request_language.graphql
 openapi2graphql/model/catalogs_items_update_batch_request.graphql
 openapi2graphql/model/catalogs_items_upsert_batch_request.graphql
 openapi2graphql/model/catalogs_list_200_response.graphql
@@ -624,7 +622,6 @@ openapi2graphql/model/pin_media_with_videos.graphql
 openapi2graphql/model/pin_promotion_summary_status.graphql
 openapi2graphql/model/pin_update.graphql
 openapi2graphql/model/pin_update_carousel_slots_inner.graphql
-openapi2graphql/model/pins_analytics_metric_types_parameter_inner.graphql
 openapi2graphql/model/pins_list_200_response.graphql
 openapi2graphql/model/pins_save_request.graphql
 openapi2graphql/model/pinterest_tag_event_data.graphql

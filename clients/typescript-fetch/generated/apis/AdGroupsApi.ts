@@ -222,8 +222,12 @@ export class AdGroupsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/ad_groups/analytics`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/ad_groups/analytics`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -264,8 +268,12 @@ export class AdGroupsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/ad_groups/audience_sizing`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/ad_groups/audience_sizing`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -314,8 +322,12 @@ export class AdGroupsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/bid_floor`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/bid_floor`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -364,8 +376,12 @@ export class AdGroupsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/ad_groups`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/ad_groups`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -412,8 +428,13 @@ export class AdGroupsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+        urlPath = urlPath.replace(`{${"ad_group_id"}}`, encodeURIComponent(String(requestParameters['adGroupId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))).replace(`{${"ad_group_id"}}`, encodeURIComponent(String(requestParameters['adGroupId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -480,8 +501,12 @@ export class AdGroupsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/ad_groups`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/ad_groups`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -606,8 +631,12 @@ export class AdGroupsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -655,8 +684,12 @@ export class AdGroupsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/ad_groups`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/ad_groups`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,

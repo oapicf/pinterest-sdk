@@ -12,7 +12,7 @@
 /*
  * OauthAccessTokenRequestCode.h
  *
- * A request to exchange an authorization code for an access token.
+ * 
  */
 
 #ifndef OauthAccessTokenRequestCode_H_
@@ -26,7 +26,7 @@ namespace org::openapitools::server::model
 {
 
 /// <summary>
-/// A request to exchange an authorization code for an access token.
+/// 
 /// </summary>
 class  OauthAccessTokenRequestCode
 {
@@ -61,11 +61,6 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::string getGrantType() const;
-    void setGrantType(std::string const& value);
-    /// <summary>
-    /// 
-    /// </summary>
     std::string getCode() const;
     void setCode(std::string const& value);
     /// <summary>
@@ -73,15 +68,20 @@ public:
     /// </summary>
     std::string getRedirectUri() const;
     void setRedirectUri(std::string const& value);
+    /// <summary>
+    /// 
+    /// </summary>
+    std::string getGrantType() const;
+    void setGrantType(std::string const& value);
 
     friend  void to_json(nlohmann::json& j, const OauthAccessTokenRequestCode& o);
     friend  void from_json(const nlohmann::json& j, OauthAccessTokenRequestCode& o);
 protected:
-    std::string m_Grant_type;
-
     std::string m_Code;
 
     std::string m_Redirect_uri;
+
+    std::string m_Grant_type;
 
     
 };

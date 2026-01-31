@@ -9,7 +9,98 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type ConversionTagType* = object
-  ## conversion tag type
+type ConversionTagType* {.pure.} = enum
+  PAGELOAD
+  UNKNOWN
+  INITIALIZED
+  PAGEVISIT
+  SIGNUP
+  CHECKOUT
+  CUSTOM
+  VIEWCATEGORY
+  SEARCH
+  ADDTOCART
+  WATCHVIDEO
+  LEAD
+  APPINSTALL
+  WEBSESSION
+  EXTERNALMEASUREMENT
+
+func `%`*(v: ConversionTagType): JsonNode =
+  result = case v:
+    of ConversionTagType.PAGELOAD: %"PAGE_LOAD"
+    of ConversionTagType.UNKNOWN: %"UNKNOWN"
+    of ConversionTagType.INITIALIZED: %"INITIALIZED"
+    of ConversionTagType.PAGEVISIT: %"PAGE_VISIT"
+    of ConversionTagType.SIGNUP: %"SIGNUP"
+    of ConversionTagType.CHECKOUT: %"CHECKOUT"
+    of ConversionTagType.CUSTOM: %"CUSTOM"
+    of ConversionTagType.VIEWCATEGORY: %"VIEW_CATEGORY"
+    of ConversionTagType.SEARCH: %"SEARCH"
+    of ConversionTagType.ADDTOCART: %"ADD_TO_CART"
+    of ConversionTagType.WATCHVIDEO: %"WATCH_VIDEO"
+    of ConversionTagType.LEAD: %"LEAD"
+    of ConversionTagType.APPINSTALL: %"APP_INSTALL"
+    of ConversionTagType.WEBSESSION: %"WEB_SESSION"
+    of ConversionTagType.EXTERNALMEASUREMENT: %"EXTERNAL_MEASUREMENT"
+
+func `$`*(v: ConversionTagType): string =
+  result = case v:
+    of ConversionTagType.PAGELOAD: $("PAGE_LOAD")
+    of ConversionTagType.UNKNOWN: $("UNKNOWN")
+    of ConversionTagType.INITIALIZED: $("INITIALIZED")
+    of ConversionTagType.PAGEVISIT: $("PAGE_VISIT")
+    of ConversionTagType.SIGNUP: $("SIGNUP")
+    of ConversionTagType.CHECKOUT: $("CHECKOUT")
+    of ConversionTagType.CUSTOM: $("CUSTOM")
+    of ConversionTagType.VIEWCATEGORY: $("VIEW_CATEGORY")
+    of ConversionTagType.SEARCH: $("SEARCH")
+    of ConversionTagType.ADDTOCART: $("ADD_TO_CART")
+    of ConversionTagType.WATCHVIDEO: $("WATCH_VIDEO")
+    of ConversionTagType.LEAD: $("LEAD")
+    of ConversionTagType.APPINSTALL: $("APP_INSTALL")
+    of ConversionTagType.WEBSESSION: $("WEB_SESSION")
+    of ConversionTagType.EXTERNALMEASUREMENT: $("EXTERNAL_MEASUREMENT")
+
+proc to*(node: JsonNode, T: typedesc[ConversionTagType]): ConversionTagType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ConversionTagType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("PAGE_LOAD"):
+    return ConversionTagType.PAGELOAD
+  of $("UNKNOWN"):
+    return ConversionTagType.UNKNOWN
+  of $("INITIALIZED"):
+    return ConversionTagType.INITIALIZED
+  of $("PAGE_VISIT"):
+    return ConversionTagType.PAGEVISIT
+  of $("SIGNUP"):
+    return ConversionTagType.SIGNUP
+  of $("CHECKOUT"):
+    return ConversionTagType.CHECKOUT
+  of $("CUSTOM"):
+    return ConversionTagType.CUSTOM
+  of $("VIEW_CATEGORY"):
+    return ConversionTagType.VIEWCATEGORY
+  of $("SEARCH"):
+    return ConversionTagType.SEARCH
+  of $("ADD_TO_CART"):
+    return ConversionTagType.ADDTOCART
+  of $("WATCH_VIDEO"):
+    return ConversionTagType.WATCHVIDEO
+  of $("LEAD"):
+    return ConversionTagType.LEAD
+  of $("APP_INSTALL"):
+    return ConversionTagType.APPINSTALL
+  of $("WEB_SESSION"):
+    return ConversionTagType.WEBSESSION
+  of $("EXTERNAL_MEASUREMENT"):
+    return ConversionTagType.EXTERNALMEASUREMENT
+  else:
+    raise newException(ValueError, "Invalid enum value for ConversionTagType: " & strVal)
+

@@ -9,7 +9,43 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type EnhancedMatchStatusType* = object
-  ## The enhanced match status of the tag
+type EnhancedMatchStatusType* {.pure.} = enum
+  UNKNOWN
+  NOTVALIDATED
+  VALIDATINGINPROGRESS
+  VALIDATIONCOMPLETE
+
+func `%`*(v: EnhancedMatchStatusType): JsonNode =
+  result = case v:
+    of EnhancedMatchStatusType.UNKNOWN: %"UNKNOWN"
+    of EnhancedMatchStatusType.NOTVALIDATED: %"NOT_VALIDATED"
+    of EnhancedMatchStatusType.VALIDATINGINPROGRESS: %"VALIDATING_IN_PROGRESS"
+    of EnhancedMatchStatusType.VALIDATIONCOMPLETE: %"VALIDATION_COMPLETE"
+
+func `$`*(v: EnhancedMatchStatusType): string =
+  result = case v:
+    of EnhancedMatchStatusType.UNKNOWN: $("UNKNOWN")
+    of EnhancedMatchStatusType.NOTVALIDATED: $("NOT_VALIDATED")
+    of EnhancedMatchStatusType.VALIDATINGINPROGRESS: $("VALIDATING_IN_PROGRESS")
+    of EnhancedMatchStatusType.VALIDATIONCOMPLETE: $("VALIDATION_COMPLETE")
+
+proc to*(node: JsonNode, T: typedesc[EnhancedMatchStatusType]): EnhancedMatchStatusType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum EnhancedMatchStatusType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("UNKNOWN"):
+    return EnhancedMatchStatusType.UNKNOWN
+  of $("NOT_VALIDATED"):
+    return EnhancedMatchStatusType.NOTVALIDATED
+  of $("VALIDATING_IN_PROGRESS"):
+    return EnhancedMatchStatusType.VALIDATINGINPROGRESS
+  of $("VALIDATION_COMPLETE"):
+    return EnhancedMatchStatusType.VALIDATIONCOMPLETE
+  else:
+    raise newException(ValueError, "Invalid enum value for EnhancedMatchStatusType: " & strVal)
+

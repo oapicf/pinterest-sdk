@@ -42,7 +42,7 @@ export interface CatalogsRetailFeedsCreateRequest {
 
     default_availability?: models.ProductAvailabilityType;
 
-    status?: models.models.CatalogsStatus;
+    status?: models.CatalogsStatus;
 
 }
 export namespace CatalogsRetailFeedsCreateRequest {

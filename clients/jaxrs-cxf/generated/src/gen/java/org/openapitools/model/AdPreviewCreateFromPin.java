@@ -10,10 +10,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdPreviewCreateFromPin  {
   
-  @ApiModelProperty(example = "7389479023", required = true, value = "Pin ID.")
  /**
-   * Pin ID.
-  **/
+  * Pin ID.
+  */
+  @ApiModelProperty(example = "7389479023", required = true, value = "Pin ID.")
+
   private String pinId;
  /**
    * Pin ID.

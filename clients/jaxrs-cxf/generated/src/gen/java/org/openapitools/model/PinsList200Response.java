@@ -17,10 +17,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PinsList200Response  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private List<@Valid Pin> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * Get items

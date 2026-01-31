@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_targeting_spec_shopping_retargeting
 
@@ -42,86 +44,147 @@ type TARGETINGSTRATEGY* {.pure.} = enum
 
 type TargetingSpec* = object
   ## Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`
-  AGE_BUCKET*: AGEBUCKET ## Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
-  APPTYPE*: APPTYPE ## Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
-  AUDIENCE_EXCLUDE*: seq[string] ## Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
-  AUDIENCE_INCLUDE*: seq[string] ## Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.
-  GENDER*: GENDER ## Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
-  GEO*: seq[string] ## Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
-  INTEREST*: seq[string] ## Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
-  LOCALE*: seq[string] ## 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
-  LOCATION*: seq[string] ## 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
-  SHOPPING_RETARGETING*: seq[TargetingSpec_SHOPPING_RETARGETING] ## Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
-  TARGETING_STRATEGY*: TARGETINGSTRATEGY ## 
+  AGE_BUCKET*: Option[AGEBUCKET] ## Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
+  APPTYPE*: Option[APPTYPE] ## Allowed devices. If the APPTYPE field is missing, the default behavior in terms of ad delivery is that **All devices/apptypes** will be targeted.
+  AUDIENCE_EXCLUDE*: Option[seq[string]] ## Excluded customer list IDs. Used to drive new customer acquisition goals. For example: [\"2542620905475\"]. Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_EXCLUDE field is missing, the default behavior in terms of ad delivery is that **No users will be excluded**.
+  AUDIENCE_INCLUDE*: Option[seq[string]] ## Targeted customer list IDs. For example: [\"2542620905473\"]. Audience lists need to have at least 100 people with Pinterest accounts in them Audience lists need to have at least 100 people with Pinterest accounts in them. If the AUDIENCE_INCLUDE field is missing, the default behavior in terms of ad delivery is that **All users will be included**.
+  GENDER*: Option[GENDER] ## Targeted genders. Values: [\"unknown\",\"male\",\"female\"]. If the GENDER field is missing, the default behavior in terms of ad delivery is that **All genders will be targeted**.
+  GEO*: Option[seq[string]] ## Location region codes, e.g., \"BE-VOV\" (East Flanders, Belgium) For complete list, <a href=\"https://help.pinterest.com/sub/helpcenter/partner/pinterest_location_targeting_codes.xlsx\" target=\"_blank\">click here</a> or postal codes, e.g., \"US-94107\". Use either region codes or postal codes but not both. At least one of LOCATION or GEO must be specified. If the GEO field is missing, then only LOCATION values will be targeted (see LOCATION field below).
+  INTEREST*: Option[seq[string]] ## Array of interest object IDs. If the INTEREST field is missing, the default behavior in terms of ad delivery is that **All interests will be targeted**.
+  LOCALE*: Option[seq[string]] ## 24 ISO 639-1 two letter language codes. If the LOCALE field is missing, the default behavior in terms of ad delivery is that **All languages will be targeted, only english non-sublanguage will be targeted**.
+  LOCATION*: Option[seq[string]] ## 22 ISO Alpha 2 two letter country codes or US Nielsen DMA (Designated Market Area) codes (location region codes) (e.g., [\"US\", \"807\"]). For complete list, click here. Location-Country and Location-Metro codes apply. At least one of LOCATION or GEO must be specified. If the LOCATION field is missing, then only GEO values will be targeted (see GEO field above).
+  SHOPPING_RETARGETING*: Option[seq[TargetingSpec_SHOPPING_RETARGETING]] ## Array of object: lookback_window [Integer]: Number of days ago to start lookback timeframe for dynamic retargeting tag_types [Array of integer]: Event types to target for dynamic retargeting exclusion_window [Integer]: Number of days ago to stop lookback timeframe for dynamic retargeting
+  TARGETING_STRATEGY*: Option[TARGETINGSTRATEGY] ## 
 
 func `%`*(v: AGEBUCKET): JsonNode =
-  let str = case v:
-    of AGEBUCKET.`1824`: "18-24"
-    of AGEBUCKET.`21+`: "21+"
-    of AGEBUCKET.`2534`: "25-34"
-    of AGEBUCKET.`3544`: "35-44"
-    of AGEBUCKET.`4549`: "45-49"
-    of AGEBUCKET.`5054`: "50-54"
-    of AGEBUCKET.`5564`: "55-64"
-    of AGEBUCKET.`65+`: "65+"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of AGEBUCKET.`1824`: %"18-24"
+    of AGEBUCKET.`21+`: %"21+"
+    of AGEBUCKET.`2534`: %"25-34"
+    of AGEBUCKET.`3544`: %"35-44"
+    of AGEBUCKET.`4549`: %"45-49"
+    of AGEBUCKET.`5054`: %"50-54"
+    of AGEBUCKET.`5564`: %"55-64"
+    of AGEBUCKET.`65+`: %"65+"
 func `$`*(v: AGEBUCKET): string =
   result = case v:
-    of AGEBUCKET.`1824`: "18-24"
-    of AGEBUCKET.`21+`: "21+"
-    of AGEBUCKET.`2534`: "25-34"
-    of AGEBUCKET.`3544`: "35-44"
-    of AGEBUCKET.`4549`: "45-49"
-    of AGEBUCKET.`5054`: "50-54"
-    of AGEBUCKET.`5564`: "55-64"
-    of AGEBUCKET.`65+`: "65+"
+    of AGEBUCKET.`1824`: $("18-24")
+    of AGEBUCKET.`21+`: $("21+")
+    of AGEBUCKET.`2534`: $("25-34")
+    of AGEBUCKET.`3544`: $("35-44")
+    of AGEBUCKET.`4549`: $("45-49")
+    of AGEBUCKET.`5054`: $("50-54")
+    of AGEBUCKET.`5564`: $("55-64")
+    of AGEBUCKET.`65+`: $("65+")
+
+proc to*(node: JsonNode, T: typedesc[AGEBUCKET]): AGEBUCKET =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AGEBUCKET, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("18-24"):
+    return AGEBUCKET.`1824`
+  of $("21+"):
+    return AGEBUCKET.`21+`
+  of $("25-34"):
+    return AGEBUCKET.`2534`
+  of $("35-44"):
+    return AGEBUCKET.`3544`
+  of $("45-49"):
+    return AGEBUCKET.`4549`
+  of $("50-54"):
+    return AGEBUCKET.`5054`
+  of $("55-64"):
+    return AGEBUCKET.`5564`
+  of $("65+"):
+    return AGEBUCKET.`65+`
+  else:
+    raise newException(ValueError, "Invalid enum value for AGEBUCKET: " & strVal)
 
 func `%`*(v: APPTYPE): JsonNode =
-  let str = case v:
-    of APPTYPE.AndroidMobile: "android_mobile"
-    of APPTYPE.AndroidTablet: "android_tablet"
-    of APPTYPE.Ipad: "ipad"
-    of APPTYPE.Iphone: "iphone"
-    of APPTYPE.Web: "web"
-    of APPTYPE.WebMobile: "web_mobile"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of APPTYPE.AndroidMobile: %"android_mobile"
+    of APPTYPE.AndroidTablet: %"android_tablet"
+    of APPTYPE.Ipad: %"ipad"
+    of APPTYPE.Iphone: %"iphone"
+    of APPTYPE.Web: %"web"
+    of APPTYPE.WebMobile: %"web_mobile"
 func `$`*(v: APPTYPE): string =
   result = case v:
-    of APPTYPE.AndroidMobile: "android_mobile"
-    of APPTYPE.AndroidTablet: "android_tablet"
-    of APPTYPE.Ipad: "ipad"
-    of APPTYPE.Iphone: "iphone"
-    of APPTYPE.Web: "web"
-    of APPTYPE.WebMobile: "web_mobile"
+    of APPTYPE.AndroidMobile: $("android_mobile")
+    of APPTYPE.AndroidTablet: $("android_tablet")
+    of APPTYPE.Ipad: $("ipad")
+    of APPTYPE.Iphone: $("iphone")
+    of APPTYPE.Web: $("web")
+    of APPTYPE.WebMobile: $("web_mobile")
+
+proc to*(node: JsonNode, T: typedesc[APPTYPE]): APPTYPE =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum APPTYPE, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("android_mobile"):
+    return APPTYPE.AndroidMobile
+  of $("android_tablet"):
+    return APPTYPE.AndroidTablet
+  of $("ipad"):
+    return APPTYPE.Ipad
+  of $("iphone"):
+    return APPTYPE.Iphone
+  of $("web"):
+    return APPTYPE.Web
+  of $("web_mobile"):
+    return APPTYPE.WebMobile
+  else:
+    raise newException(ValueError, "Invalid enum value for APPTYPE: " & strVal)
 
 func `%`*(v: GENDER): JsonNode =
-  let str = case v:
-    of GENDER.Unknown: "unknown"
-    of GENDER.Male: "male"
-    of GENDER.Female: "female"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of GENDER.Unknown: %"unknown"
+    of GENDER.Male: %"male"
+    of GENDER.Female: %"female"
 func `$`*(v: GENDER): string =
   result = case v:
-    of GENDER.Unknown: "unknown"
-    of GENDER.Male: "male"
-    of GENDER.Female: "female"
+    of GENDER.Unknown: $("unknown")
+    of GENDER.Male: $("male")
+    of GENDER.Female: $("female")
+
+proc to*(node: JsonNode, T: typedesc[GENDER]): GENDER =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum GENDER, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("unknown"):
+    return GENDER.Unknown
+  of $("male"):
+    return GENDER.Male
+  of $("female"):
+    return GENDER.Female
+  else:
+    raise newException(ValueError, "Invalid enum value for GENDER: " & strVal)
 
 func `%`*(v: TARGETINGSTRATEGY): JsonNode =
-  let str = case v:
-    of TARGETINGSTRATEGY.CHOOSEYOUROWN: "CHOOSE_YOUR_OWN"
-    of TARGETINGSTRATEGY.FINDNEWCUSTOMERS: "FIND_NEW_CUSTOMERS"
-    of TARGETINGSTRATEGY.RECONNECTWITHUSERS: "RECONNECT_WITH_USERS"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of TARGETINGSTRATEGY.CHOOSEYOUROWN: %"CHOOSE_YOUR_OWN"
+    of TARGETINGSTRATEGY.FINDNEWCUSTOMERS: %"FIND_NEW_CUSTOMERS"
+    of TARGETINGSTRATEGY.RECONNECTWITHUSERS: %"RECONNECT_WITH_USERS"
 func `$`*(v: TARGETINGSTRATEGY): string =
   result = case v:
-    of TARGETINGSTRATEGY.CHOOSEYOUROWN: "CHOOSE_YOUR_OWN"
-    of TARGETINGSTRATEGY.FINDNEWCUSTOMERS: "FIND_NEW_CUSTOMERS"
-    of TARGETINGSTRATEGY.RECONNECTWITHUSERS: "RECONNECT_WITH_USERS"
+    of TARGETINGSTRATEGY.CHOOSEYOUROWN: $("CHOOSE_YOUR_OWN")
+    of TARGETINGSTRATEGY.FINDNEWCUSTOMERS: $("FIND_NEW_CUSTOMERS")
+    of TARGETINGSTRATEGY.RECONNECTWITHUSERS: $("RECONNECT_WITH_USERS")
+
+proc to*(node: JsonNode, T: typedesc[TARGETINGSTRATEGY]): TARGETINGSTRATEGY =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum TARGETINGSTRATEGY, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CHOOSE_YOUR_OWN"):
+    return TARGETINGSTRATEGY.CHOOSEYOUROWN
+  of $("FIND_NEW_CUSTOMERS"):
+    return TARGETINGSTRATEGY.FINDNEWCUSTOMERS
+  of $("RECONNECT_WITH_USERS"):
+    return TARGETINGSTRATEGY.RECONNECTWITHUSERS
+  else:
+    raise newException(ValueError, "Invalid enum value for TARGETINGSTRATEGY: " & strVal)
+

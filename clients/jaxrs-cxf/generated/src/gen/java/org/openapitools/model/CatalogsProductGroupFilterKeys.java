@@ -45,115 +45,171 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsProductGroupFilterKeys  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupPricingCriteria MIN_PRICE;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupPricingCriteria MAX_PRICE;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupCurrencyCriteria CURRENCY;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria ITEM_ID;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria AVAILABILITY;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria BRAND;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CONDITION;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria ITEM_GROUP_ID;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleGenderCriteria GENDER;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_4;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_3;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_2;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_1;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_0;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_5;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_4;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_3;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_2;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_1;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_0;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria PRODUCT_GROUP;
  /**
    * Get MIN_PRICE

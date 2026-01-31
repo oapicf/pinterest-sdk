@@ -3,17 +3,17 @@ package org.openapitools.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Pin media objects.
- **/
+ * Pin media objects.
+ */
 @ApiModel(description="Pin media objects.")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "media_type", visible = true)
 @JsonSubTypes({
@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PinMedia  {
   
   @ApiModelProperty(value = "")
+
   private String mediaType;
  /**
    * Get mediaType

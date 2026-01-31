@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type ReportType* {.pure.} = enum
@@ -20,32 +22,87 @@ type Severity* {.pure.} = enum
 
 type CatalogsReportFeedIngestionStats* = object
   ## 
-  reportType*: ReportType
-  catalogId*: string ## ID of the catalog entity.
-  code*: int ## The event code that a diagnostics aggregated number references
-  codeLabel*: string ## A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')
-  message*: string ## Title message describing the diagnostic issue
-  occurrences*: int ## Number of occurrences of the issue
-  severity*: Severity ## An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
+  reportType*: Option[ReportType]
+  catalogId*: Option[string] ## ID of the catalog entity.
+  code*: Option[int] ## The event code that a diagnostics aggregated number references
+  codeLabel*: Option[string] ## A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')
+  message*: Option[string] ## Title message describing the diagnostic issue
+  occurrences*: Option[int] ## Number of occurrences of the issue
+  severity*: Option[Severity] ## An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
 
 func `%`*(v: ReportType): JsonNode =
-  let str = case v:
-    of ReportType.FEEDINGESTIONISSUES: "FEED_INGESTION_ISSUES"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of ReportType.FEEDINGESTIONISSUES: %"FEED_INGESTION_ISSUES"
 func `$`*(v: ReportType): string =
   result = case v:
-    of ReportType.FEEDINGESTIONISSUES: "FEED_INGESTION_ISSUES"
+    of ReportType.FEEDINGESTIONISSUES: $("FEED_INGESTION_ISSUES")
+
+proc to*(node: JsonNode, T: typedesc[ReportType]): ReportType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ReportType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("FEED_INGESTION_ISSUES"):
+    return ReportType.FEEDINGESTIONISSUES
+  else:
+    raise newException(ValueError, "Invalid enum value for ReportType: " & strVal)
 
 func `%`*(v: Severity): JsonNode =
-  let str = case v:
-    of Severity.WARN: "WARN"
-    of Severity.ERROR: "ERROR"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Severity.WARN: %"WARN"
+    of Severity.ERROR: %"ERROR"
 func `$`*(v: Severity): string =
   result = case v:
-    of Severity.WARN: "WARN"
-    of Severity.ERROR: "ERROR"
+    of Severity.WARN: $("WARN")
+    of Severity.ERROR: $("ERROR")
+
+proc to*(node: JsonNode, T: typedesc[Severity]): Severity =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Severity, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("WARN"):
+    return Severity.WARN
+  of $("ERROR"):
+    return Severity.ERROR
+  else:
+    raise newException(ValueError, "Invalid enum value for Severity: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsReportFeedIngestionStats with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsReportFeedIngestionStats]): CatalogsReportFeedIngestionStats =
+  result = CatalogsReportFeedIngestionStats()
+  if node.kind == JObject:
+    if node.hasKey("report_type") and node["report_type"].kind != JNull:
+      result.reportType = some(to(node["report_type"], ReportType))
+    if node.hasKey("catalog_id") and node["catalog_id"].kind != JNull:
+      result.catalogId = some(to(node["catalog_id"], typeof(result.catalogId.get())))
+    if node.hasKey("code") and node["code"].kind != JNull:
+      result.code = some(to(node["code"], typeof(result.code.get())))
+    if node.hasKey("code_label") and node["code_label"].kind != JNull:
+      result.codeLabel = some(to(node["code_label"], typeof(result.codeLabel.get())))
+    if node.hasKey("message") and node["message"].kind != JNull:
+      result.message = some(to(node["message"], typeof(result.message.get())))
+    if node.hasKey("occurrences") and node["occurrences"].kind != JNull:
+      result.occurrences = some(to(node["occurrences"], typeof(result.occurrences.get())))
+    if node.hasKey("severity") and node["severity"].kind != JNull:
+      result.severity = some(to(node["severity"], Severity))
+
+# Custom JSON serialization for CatalogsReportFeedIngestionStats with custom field names
+proc `%`*(obj: CatalogsReportFeedIngestionStats): JsonNode =
+  result = newJObject()
+  if obj.reportType.isSome():
+    result["report_type"] = %obj.reportType.get()
+  if obj.catalogId.isSome():
+    result["catalog_id"] = %obj.catalogId.get()
+  if obj.code.isSome():
+    result["code"] = %obj.code.get()
+  if obj.codeLabel.isSome():
+    result["code_label"] = %obj.codeLabel.get()
+  if obj.message.isSome():
+    result["message"] = %obj.message.get()
+  if obj.occurrences.isSome():
+    result["occurrences"] = %obj.occurrences.get()
+  if obj.severity.isSome():
+    result["severity"] = %obj.severity.get()
+

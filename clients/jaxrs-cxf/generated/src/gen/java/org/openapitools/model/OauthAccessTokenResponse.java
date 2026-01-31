@@ -5,17 +5,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * A successful OAuth access token response.
- **/
+ * A successful OAuth access token response.
+ */
 @ApiModel(description="A successful OAuth access token response.")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "response_type", visible = true)
 @JsonSubTypes({
@@ -61,18 +61,23 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
 }
 
   @ApiModelProperty(value = "")
+
   private ResponseTypeEnum responseType;
 
   @ApiModelProperty(required = true, value = "")
+
   private String accessToken;
 
   @ApiModelProperty(required = true, value = "")
+
   private String tokenType = "bearer";
 
   @ApiModelProperty(required = true, value = "")
+
   private Integer expiresIn;
 
   @ApiModelProperty(required = true, value = "")
+
   private String scope;
  /**
    * Get responseType

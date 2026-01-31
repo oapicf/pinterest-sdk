@@ -337,8 +337,7 @@ namespace Org.OpenAPITools.Model
                             value = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "content_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                contentIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            contentIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "content_name":
                             contentName = new Option<string?>(utf8JsonReader.GetString());
@@ -350,12 +349,10 @@ namespace Org.OpenAPITools.Model
                             contentBrand = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "contents":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                contents = new Option<List<ConversionEventsDataInnerCustomDataContentsInner>?>(JsonSerializer.Deserialize<List<ConversionEventsDataInnerCustomDataContentsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            contents = new Option<List<ConversionEventsDataInnerCustomDataContentsInner>?>(JsonSerializer.Deserialize<List<ConversionEventsDataInnerCustomDataContentsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "num_items":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numItems = new Option<long?>(utf8JsonReader.GetInt64());
+                            numItems = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "order_id":
                             orderId = new Option<string?>(utf8JsonReader.GetString());

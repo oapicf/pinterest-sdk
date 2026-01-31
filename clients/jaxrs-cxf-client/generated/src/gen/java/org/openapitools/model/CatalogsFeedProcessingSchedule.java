@@ -1,22 +1,23 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).
- **/
+ * Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).
+ */
 @ApiModel(description="Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).")
 
 public class CatalogsFeedProcessingSchedule  {
   
-  @ApiModelProperty(example = "02:59", required = true, value = "A time in format HH:MM with leading 0 (zero)")
  /**
-   * A time in format HH:MM with leading 0 (zero)
-  **/
+  * A time in format HH:MM with leading 0 (zero)
+  */
+  @ApiModelProperty(example = "02:59", required = true, value = "A time in format HH:MM with leading 0 (zero)")
+
   private String time;
 
 public enum TimezoneEnum {
@@ -49,10 +50,11 @@ AFRICA_ABIDJAN(String.valueOf("Africa/Abidjan")), AFRICA_ACCRA(String.valueOf("A
     }
 }
 
-  @ApiModelProperty(required = true, value = "The timezone considered for the processing schedule time.")
  /**
-   * The timezone considered for the processing schedule time.
-  **/
+  * The timezone considered for the processing schedule time.
+  */
+  @ApiModelProperty(required = true, value = "The timezone considered for the processing schedule time.")
+
   private TimezoneEnum timezone;
  /**
    * A time in format HH:MM with leading 0 (zero)

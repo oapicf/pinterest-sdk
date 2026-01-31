@@ -193,15 +193,13 @@ namespace Org.OpenAPITools.Model
                             inviteOrRequestId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "code":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                code = new Option<int?>(utf8JsonReader.GetInt32());
+                            code = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "message":
                             message = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "users_or_partner_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                usersOrPartnerIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            usersOrPartnerIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

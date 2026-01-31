@@ -97,7 +97,7 @@ public class BusinessAccessInviteControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@68cbf488");
+            .accept("[Ljava.lang.String;@24b44bb8");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CreateAssetAccessRequestResponse.class);
@@ -145,7 +145,7 @@ public class BusinessAccessInviteControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@32906bb");
+            .accept("[Ljava.lang.String;@7cc41dd9");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, DeleteInvitesResultsResponseArray.class);
@@ -193,7 +193,7 @@ public class BusinessAccessInviteControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@43bd267a");
+            .accept("[Ljava.lang.String;@1d1062b9");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, UpdateInvitesResultsResponseArray.class);
@@ -241,7 +241,7 @@ public class BusinessAccessInviteControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@4339a2cf");
+            .accept("[Ljava.lang.String;@1cfc76f3");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CreateInvitesResultsResponseArray.class);
@@ -292,7 +292,7 @@ public class BusinessAccessInviteControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@74e17194");
+            .accept("[Ljava.lang.String;@1a93175f");
         request.getParameters()
             .add("is_member", String.valueOf(true)) // The query parameter format should be 
             .add("invite_status", Arrays.asList("example")) // The query format should be multi
@@ -342,7 +342,7 @@ public class BusinessAccessInviteControllerTest {
         AuthRespondInvitesBody body = new AuthRespondInvitesBody(Arrays.asList());
         String uri = UriTemplate.of("/businesses/invites").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@3fb6ad6d");
+            .accept("[Ljava.lang.String;@46e5fb01");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, RespondToInvitesResponseArray.class);

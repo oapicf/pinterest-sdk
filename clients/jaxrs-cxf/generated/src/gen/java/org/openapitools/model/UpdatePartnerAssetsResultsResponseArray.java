@@ -14,11 +14,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UpdatePartnerAssetsResultsResponseArray  {
   
-  @ApiModelProperty(value = "List of assigned/updated partner asset access.")
-  @Valid
  /**
-   * List of assigned/updated partner asset access.
-  **/
+  * List of assigned/updated partner asset access.
+  */
+  @ApiModelProperty(value = "List of assigned/updated partner asset access.")
+
+  @Valid
+
   private List<UpdatePartnerAssetsResult> items = new ArrayList<>();
  /**
    * List of assigned/updated partner asset access.

@@ -21,11 +21,11 @@ export interface CatalogsReport {
     size?: number | null;
 }
 export namespace CatalogsReport {
-    export type ReportStatusEnum = 'FINISHED' | 'IN_PROGRESS';
     export const ReportStatusEnum = {
-        Finished: 'FINISHED' as ReportStatusEnum,
-        InProgress: 'IN_PROGRESS' as ReportStatusEnum
-    };
+        Finished: 'FINISHED',
+        InProgress: 'IN_PROGRESS'
+    } as const;
+    export type ReportStatusEnum = typeof ReportStatusEnum[keyof typeof ReportStatusEnum];
 }
 
 

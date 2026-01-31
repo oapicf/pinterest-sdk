@@ -251,6 +251,9 @@ Feeds_create_request::fromJson(char* jsonStr)
 			jsonToValue(&status, node, "CatalogsStatus", "CatalogsStatus");
 		} else {
 			
+			CatalogsStatus* obj = static_cast<CatalogsStatus*> (&status);
+			obj->fromJson(json_to_string(node, false));
+			
 		}
 	}
 	const gchar *catalog_idKey = "catalog_id";
@@ -411,6 +414,11 @@ Feeds_create_request::toJson()
 		node = converttoJson(&obj, "CatalogsStatus", "");
 	}
 	else {
+		
+		CatalogsStatus obj = static_cast<CatalogsStatus> (getStatus());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *statusKey = "status";

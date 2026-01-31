@@ -9,12 +9,9 @@
  */
 
 
-export type AudienceShareType = 'SHARED' | 'RECEIVED';
-
 export const AudienceShareType = {
-
-    Shared: 'SHARED' as AudienceShareType,
-
-    Received: 'RECEIVED' as AudienceShareType
-};
+    Shared: 'SHARED',
+    Received: 'RECEIVED'
+} as const;
+export type AudienceShareType = typeof AudienceShareType[keyof typeof AudienceShareType];
 

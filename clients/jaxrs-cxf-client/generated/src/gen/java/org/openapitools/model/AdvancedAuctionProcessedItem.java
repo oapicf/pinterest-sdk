@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,21 +11,23 @@ import org.openapitools.model.Country;
 import org.openapitools.model.Language;
 import org.openapitools.model.UpdateMaskBidOptionField;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object describing the result of an operation on an item bid option
- **/
+ * Object describing the result of an operation on an item bid option
+ */
 @ApiModel(description="Object describing the result of an operation on an item bid option")
 
 public class AdvancedAuctionProcessedItem extends AdvancedAuctionItemsSubmitRecord {
   
-  @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
  /**
-   * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
-  **/
+  * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+  */
+  @ApiModelProperty(value = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
+
   private List<AdvancedAuctionOperationError> errors = new ArrayList<>();
  /**
    * Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.

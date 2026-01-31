@@ -362,8 +362,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "auto_targeting_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                autoTargetingEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            autoTargetingEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "placement_group":
                             string? placementGroupRawValue = utf8JsonReader.GetString();
@@ -371,20 +370,16 @@ namespace Org.OpenAPITools.Model
                                 placementGroup = new Option<PlacementGroupType?>(PlacementGroupTypeValueConverter.FromStringOrDefault(placementGroupRawValue));
                             break;
                         case "creative_types":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                creativeTypes = new Option<List<AdGroupAudienceSizingRequest.CreativeTypesEnum>?>(JsonSerializer.Deserialize<List<AdGroupAudienceSizingRequest.CreativeTypesEnum>>(ref utf8JsonReader, jsonSerializerOptions));
+                            creativeTypes = new Option<List<AdGroupAudienceSizingRequest.CreativeTypesEnum>?>(JsonSerializer.Deserialize<List<AdGroupAudienceSizingRequest.CreativeTypesEnum>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "targeting_spec":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                targetingSpec = new Option<TargetingSpec?>(JsonSerializer.Deserialize<TargetingSpec>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            targetingSpec = new Option<TargetingSpec?>(JsonSerializer.Deserialize<TargetingSpec>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "product_group_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                productGroupIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            productGroupIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "keywords":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                keywords = new Option<List<AdGroupAudienceSizingRequestKeywordsInner>?>(JsonSerializer.Deserialize<List<AdGroupAudienceSizingRequestKeywordsInner>>(ref utf8JsonReader, jsonSerializerOptions));
+                            keywords = new Option<List<AdGroupAudienceSizingRequestKeywordsInner>?>(JsonSerializer.Deserialize<List<AdGroupAudienceSizingRequestKeywordsInner>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

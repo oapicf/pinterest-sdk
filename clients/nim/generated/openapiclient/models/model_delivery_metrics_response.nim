@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_delivery_metrics_response_items_inner
 
 type DeliveryMetricsResponse* = object
   ## 
-  items*: seq[DeliveryMetricsResponse_items_inner]
+  items*: Option[seq[DeliveryMetricsResponse_items_inner]]
+

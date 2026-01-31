@@ -9,7 +9,253 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type CatalogsLocale* = object
-  ## 
+type CatalogsLocale* {.pure.} = enum
+  AfZA
+  ArSA
+  BgBG
+  BnIN
+  CsCZ
+  DaDK
+  De
+  ElGR
+  EnAU
+  EnCA
+  EnGB
+  EnIN
+  EnUS
+  Es419
+  EsAR
+  EsES
+  EsMX
+  FiFI
+  Fr
+  FrCA
+  HeIL
+  HiIN
+  HrHR
+  HuHU
+  IdID
+  It
+  Ja
+  KoKR
+  MsMY
+  NbNO
+  Nl
+  PlPL
+  PtBR
+  PtPT
+  RoRO
+  RuRU
+  SkSK
+  SvSE
+  TeIN
+  ThTH
+  TlPH
+  Tr
+  UkUA
+  ViVN
+  ZhCN
+  ZhTW
+
+func `%`*(v: CatalogsLocale): JsonNode =
+  result = case v:
+    of CatalogsLocale.AfZA: %"af-ZA"
+    of CatalogsLocale.ArSA: %"ar-SA"
+    of CatalogsLocale.BgBG: %"bg-BG"
+    of CatalogsLocale.BnIN: %"bn-IN"
+    of CatalogsLocale.CsCZ: %"cs-CZ"
+    of CatalogsLocale.DaDK: %"da-DK"
+    of CatalogsLocale.De: %"de"
+    of CatalogsLocale.ElGR: %"el-GR"
+    of CatalogsLocale.EnAU: %"en-AU"
+    of CatalogsLocale.EnCA: %"en-CA"
+    of CatalogsLocale.EnGB: %"en-GB"
+    of CatalogsLocale.EnIN: %"en-IN"
+    of CatalogsLocale.EnUS: %"en-US"
+    of CatalogsLocale.Es419: %"es-419"
+    of CatalogsLocale.EsAR: %"es-AR"
+    of CatalogsLocale.EsES: %"es-ES"
+    of CatalogsLocale.EsMX: %"es-MX"
+    of CatalogsLocale.FiFI: %"fi-FI"
+    of CatalogsLocale.Fr: %"fr"
+    of CatalogsLocale.FrCA: %"fr-CA"
+    of CatalogsLocale.HeIL: %"he-IL"
+    of CatalogsLocale.HiIN: %"hi-IN"
+    of CatalogsLocale.HrHR: %"hr-HR"
+    of CatalogsLocale.HuHU: %"hu-HU"
+    of CatalogsLocale.IdID: %"id-ID"
+    of CatalogsLocale.It: %"it"
+    of CatalogsLocale.Ja: %"ja"
+    of CatalogsLocale.KoKR: %"ko-KR"
+    of CatalogsLocale.MsMY: %"ms-MY"
+    of CatalogsLocale.NbNO: %"nb-NO"
+    of CatalogsLocale.Nl: %"nl"
+    of CatalogsLocale.PlPL: %"pl-PL"
+    of CatalogsLocale.PtBR: %"pt-BR"
+    of CatalogsLocale.PtPT: %"pt-PT"
+    of CatalogsLocale.RoRO: %"ro-RO"
+    of CatalogsLocale.RuRU: %"ru-RU"
+    of CatalogsLocale.SkSK: %"sk-SK"
+    of CatalogsLocale.SvSE: %"sv-SE"
+    of CatalogsLocale.TeIN: %"te-IN"
+    of CatalogsLocale.ThTH: %"th-TH"
+    of CatalogsLocale.TlPH: %"tl-PH"
+    of CatalogsLocale.Tr: %"tr"
+    of CatalogsLocale.UkUA: %"uk-UA"
+    of CatalogsLocale.ViVN: %"vi-VN"
+    of CatalogsLocale.ZhCN: %"zh-CN"
+    of CatalogsLocale.ZhTW: %"zh-TW"
+
+func `$`*(v: CatalogsLocale): string =
+  result = case v:
+    of CatalogsLocale.AfZA: $("af-ZA")
+    of CatalogsLocale.ArSA: $("ar-SA")
+    of CatalogsLocale.BgBG: $("bg-BG")
+    of CatalogsLocale.BnIN: $("bn-IN")
+    of CatalogsLocale.CsCZ: $("cs-CZ")
+    of CatalogsLocale.DaDK: $("da-DK")
+    of CatalogsLocale.De: $("de")
+    of CatalogsLocale.ElGR: $("el-GR")
+    of CatalogsLocale.EnAU: $("en-AU")
+    of CatalogsLocale.EnCA: $("en-CA")
+    of CatalogsLocale.EnGB: $("en-GB")
+    of CatalogsLocale.EnIN: $("en-IN")
+    of CatalogsLocale.EnUS: $("en-US")
+    of CatalogsLocale.Es419: $("es-419")
+    of CatalogsLocale.EsAR: $("es-AR")
+    of CatalogsLocale.EsES: $("es-ES")
+    of CatalogsLocale.EsMX: $("es-MX")
+    of CatalogsLocale.FiFI: $("fi-FI")
+    of CatalogsLocale.Fr: $("fr")
+    of CatalogsLocale.FrCA: $("fr-CA")
+    of CatalogsLocale.HeIL: $("he-IL")
+    of CatalogsLocale.HiIN: $("hi-IN")
+    of CatalogsLocale.HrHR: $("hr-HR")
+    of CatalogsLocale.HuHU: $("hu-HU")
+    of CatalogsLocale.IdID: $("id-ID")
+    of CatalogsLocale.It: $("it")
+    of CatalogsLocale.Ja: $("ja")
+    of CatalogsLocale.KoKR: $("ko-KR")
+    of CatalogsLocale.MsMY: $("ms-MY")
+    of CatalogsLocale.NbNO: $("nb-NO")
+    of CatalogsLocale.Nl: $("nl")
+    of CatalogsLocale.PlPL: $("pl-PL")
+    of CatalogsLocale.PtBR: $("pt-BR")
+    of CatalogsLocale.PtPT: $("pt-PT")
+    of CatalogsLocale.RoRO: $("ro-RO")
+    of CatalogsLocale.RuRU: $("ru-RU")
+    of CatalogsLocale.SkSK: $("sk-SK")
+    of CatalogsLocale.SvSE: $("sv-SE")
+    of CatalogsLocale.TeIN: $("te-IN")
+    of CatalogsLocale.ThTH: $("th-TH")
+    of CatalogsLocale.TlPH: $("tl-PH")
+    of CatalogsLocale.Tr: $("tr")
+    of CatalogsLocale.UkUA: $("uk-UA")
+    of CatalogsLocale.ViVN: $("vi-VN")
+    of CatalogsLocale.ZhCN: $("zh-CN")
+    of CatalogsLocale.ZhTW: $("zh-TW")
+
+proc to*(node: JsonNode, T: typedesc[CatalogsLocale]): CatalogsLocale =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogsLocale, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("af-ZA"):
+    return CatalogsLocale.AfZA
+  of $("ar-SA"):
+    return CatalogsLocale.ArSA
+  of $("bg-BG"):
+    return CatalogsLocale.BgBG
+  of $("bn-IN"):
+    return CatalogsLocale.BnIN
+  of $("cs-CZ"):
+    return CatalogsLocale.CsCZ
+  of $("da-DK"):
+    return CatalogsLocale.DaDK
+  of $("de"):
+    return CatalogsLocale.De
+  of $("el-GR"):
+    return CatalogsLocale.ElGR
+  of $("en-AU"):
+    return CatalogsLocale.EnAU
+  of $("en-CA"):
+    return CatalogsLocale.EnCA
+  of $("en-GB"):
+    return CatalogsLocale.EnGB
+  of $("en-IN"):
+    return CatalogsLocale.EnIN
+  of $("en-US"):
+    return CatalogsLocale.EnUS
+  of $("es-419"):
+    return CatalogsLocale.Es419
+  of $("es-AR"):
+    return CatalogsLocale.EsAR
+  of $("es-ES"):
+    return CatalogsLocale.EsES
+  of $("es-MX"):
+    return CatalogsLocale.EsMX
+  of $("fi-FI"):
+    return CatalogsLocale.FiFI
+  of $("fr"):
+    return CatalogsLocale.Fr
+  of $("fr-CA"):
+    return CatalogsLocale.FrCA
+  of $("he-IL"):
+    return CatalogsLocale.HeIL
+  of $("hi-IN"):
+    return CatalogsLocale.HiIN
+  of $("hr-HR"):
+    return CatalogsLocale.HrHR
+  of $("hu-HU"):
+    return CatalogsLocale.HuHU
+  of $("id-ID"):
+    return CatalogsLocale.IdID
+  of $("it"):
+    return CatalogsLocale.It
+  of $("ja"):
+    return CatalogsLocale.Ja
+  of $("ko-KR"):
+    return CatalogsLocale.KoKR
+  of $("ms-MY"):
+    return CatalogsLocale.MsMY
+  of $("nb-NO"):
+    return CatalogsLocale.NbNO
+  of $("nl"):
+    return CatalogsLocale.Nl
+  of $("pl-PL"):
+    return CatalogsLocale.PlPL
+  of $("pt-BR"):
+    return CatalogsLocale.PtBR
+  of $("pt-PT"):
+    return CatalogsLocale.PtPT
+  of $("ro-RO"):
+    return CatalogsLocale.RoRO
+  of $("ru-RU"):
+    return CatalogsLocale.RuRU
+  of $("sk-SK"):
+    return CatalogsLocale.SkSK
+  of $("sv-SE"):
+    return CatalogsLocale.SvSE
+  of $("te-IN"):
+    return CatalogsLocale.TeIN
+  of $("th-TH"):
+    return CatalogsLocale.ThTH
+  of $("tl-PH"):
+    return CatalogsLocale.TlPH
+  of $("tr"):
+    return CatalogsLocale.Tr
+  of $("uk-UA"):
+    return CatalogsLocale.UkUA
+  of $("vi-VN"):
+    return CatalogsLocale.ViVN
+  of $("zh-CN"):
+    return CatalogsLocale.ZhCN
+  of $("zh-TW"):
+    return CatalogsLocale.ZhTW
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogsLocale: " & strVal)
+

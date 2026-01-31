@@ -82,7 +82,6 @@ API/Client/AudienceCategory.js
 API/Client/AudienceCommon.js
 API/Client/AudienceCreateCustomRequest.js
 API/Client/AudienceCreateRequest.js
-API/Client/AudienceCreateRequest1AudienceType.js
 API/Client/AudienceDataParty.js
 API/Client/AudienceDefinition.js
 API/Client/AudienceDefinitionResponse.js
@@ -271,7 +270,6 @@ API/Client/CatalogsItemsDeleteDiscontinuedBatchRequest.js
 API/Client/CatalogsItemsFilters.js
 API/Client/CatalogsItemsPostFilters.js
 API/Client/CatalogsItemsRequest.js
-API/Client/CatalogsItemsRequestLanguage.js
 API/Client/CatalogsItemsUpdateBatchRequest.js
 API/Client/CatalogsItemsUpsertBatchRequest.js
 API/Client/CatalogsList200Response.js
@@ -616,7 +614,6 @@ API/Client/PinMediaWithVideos.js
 API/Client/PinPromotionSummaryStatus.js
 API/Client/PinUpdate.js
 API/Client/PinUpdateCarouselSlotsInner.js
-API/Client/PinsAnalyticsMetricTypesParameterInner.js
 API/Client/PinsApi.js
 API/Client/PinsList200Response.js
 API/Client/PinsSaveRequest.js

@@ -67,21 +67,29 @@ public:
     /// </summary>
     std::string getName() const;
     void setName(std::string const& value);
+    bool nameIsSet() const;
+    void unsetName();
     /// <summary>
     /// A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.
     /// </summary>
     std::string getPrivacyPolicyLink() const;
     void setPrivacyPolicyLink(std::string const& value);
+    bool privacyPolicyLinkIsSet() const;
+    void unsetPrivacy_policy_link();
     /// <summary>
     /// Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO
     /// </summary>
     bool isHasAcceptedTerms() const;
     void setHasAcceptedTerms(bool const value);
+    bool hasAcceptedTermsIsSet() const;
+    void unsetHas_accepted_terms();
     /// <summary>
     /// A message for people who complete the form to let them know what happens next.
     /// </summary>
     std::string getCompletionMessage() const;
     void setCompletionMessage(std::string const& value);
+    bool completionMessageIsSet() const;
+    void unsetCompletion_message();
     /// <summary>
     /// 
     /// </summary>
@@ -101,6 +109,8 @@ public:
     /// </summary>
     std::vector<org::openapitools::server::model::LeadFormQuestion> getQuestions() const;
     void setQuestions(std::vector<org::openapitools::server::model::LeadFormQuestion> const& value);
+    bool questionsIsSet() const;
+    void unsetQuestions();
     /// <summary>
     /// List of additional policy links to be displayed on the lead form.
     /// </summary>
@@ -113,19 +123,19 @@ public:
     friend  void from_json(const nlohmann::json& j, LeadFormCreateRequest& o);
 protected:
     std::string m_Name;
-
+    bool m_NameIsSet;
     std::string m_Privacy_policy_link;
-
+    bool m_Privacy_policy_linkIsSet;
     bool m_Has_accepted_terms;
-
+    bool m_Has_accepted_termsIsSet;
     std::string m_Completion_message;
-
+    bool m_Completion_messageIsSet;
     org::openapitools::server::model::LeadFormStatus m_Status;
     bool m_StatusIsSet;
     std::string m_Disclosure_language;
     bool m_Disclosure_languageIsSet;
     std::vector<org::openapitools::server::model::LeadFormQuestion> m_Questions;
-
+    bool m_QuestionsIsSet;
     std::vector<org::openapitools::server::model::LeadFormCommon_policy_links_inner> m_Policy_links;
     bool m_Policy_linksIsSet;
     

@@ -55,7 +55,7 @@ data class CatalogsHotelProductGroup(
 
     @Schema(example = "1622742155000", description = "Unix timestamp in seconds of last time catalog product group was updated.")
     @get:JsonProperty("updated_at") val updatedAt: kotlin.Int? = null
-    ) {
+) {
 
     /**
     * 
@@ -69,7 +69,8 @@ data class CatalogsHotelProductGroup(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsHotelProductGroup'")
             }
         }
     }

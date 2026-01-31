@@ -9,22 +9,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SSIOInsertionOrderStatus  {
   
-  @ApiModelProperty(example = "0Q01N0000015hekSAB", value = "Salesforce order id")
  /**
-   * Salesforce order id
-  **/
+  * Salesforce order id
+  */
+  @ApiModelProperty(example = "0Q01N0000015hekSAB", value = "Salesforce order id")
+
   private String pinOrderId;
 
-  @ApiModelProperty(example = "Approved", value = "Salesforce insertion order status")
  /**
-   * Salesforce insertion order status
-  **/
+  * Salesforce insertion order status
+  */
+  @ApiModelProperty(example = "Approved", value = "Salesforce insertion order status")
+
   private String status;
 
-  @ApiModelProperty(example = "2017-06-21T23:11:11.000Z", value = "Salesforce insertion order creation time")
  /**
-   * Salesforce insertion order creation time
-  **/
+  * Salesforce insertion order creation time
+  */
+  @ApiModelProperty(example = "2017-06-21T23:11:11.000Z", value = "Salesforce insertion order creation time")
+
   private String creationTime;
  /**
    * Salesforce order id

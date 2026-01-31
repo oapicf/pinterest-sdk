@@ -1,23 +1,24 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.IntegrationLogsInvalidLogResponseRejectedLogsInner;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Schema describing the response when a log has invalid fields.
- **/
+ * Schema describing the response when a log has invalid fields.
+ */
 @ApiModel(description="Schema describing the response when a log has invalid fields.")
 
 public class IntegrationLogsInvalidLogResponse  {
   
   @ApiModelProperty(value = "")
+
   private List<IntegrationLogsInvalidLogResponseRejectedLogsInner> rejectedLogs = new ArrayList<>();
  /**
    * Get rejectedLogs

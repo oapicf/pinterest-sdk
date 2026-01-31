@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type OperationType* = object
-  ## Operation type to share a specific audience or revoke access to a previously shared audience
+type OperationType* {.pure.} = enum
+  SHARE
+  REVOKE
+
+func `%`*(v: OperationType): JsonNode =
+  result = case v:
+    of OperationType.SHARE: %"SHARE"
+    of OperationType.REVOKE: %"REVOKE"
+
+func `$`*(v: OperationType): string =
+  result = case v:
+    of OperationType.SHARE: $("SHARE")
+    of OperationType.REVOKE: $("REVOKE")
+
+proc to*(node: JsonNode, T: typedesc[OperationType]): OperationType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum OperationType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("SHARE"):
+    return OperationType.SHARE
+  of $("REVOKE"):
+    return OperationType.REVOKE
+  else:
+    raise newException(ValueError, "Invalid enum value for OperationType: " & strVal)
+

@@ -19,12 +19,12 @@ local function cast_oauth_access_token_request_refresh(t)
 	return setmetatable(t, oauth_access_token_request_refresh_mt)
 end
 
-local function new_oauth_access_token_request_refresh(grant_type, refresh_token, scope, refresh_on)
+local function new_oauth_access_token_request_refresh(refresh_token, scope, refresh_on, grant_type)
 	return cast_oauth_access_token_request_refresh({
-		["grant_type"] = grant_type;
 		["refresh_token"] = refresh_token;
 		["scope"] = scope;
 		["refresh_on"] = refresh_on;
+		["grant_type"] = grant_type;
 	})
 end
 

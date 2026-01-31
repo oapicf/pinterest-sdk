@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A specific quiz inquiry.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinQuestion {
   public static final String SERIALIZED_NAME_QUESTION_ID = "question_id";
   @SerializedName(SERIALIZED_NAME_QUESTION_ID)
@@ -185,13 +185,10 @@ public class QuizPinQuestion {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("question_id");
-    openapiFields.add("question_text");
-    openapiFields.add("options");
+    openapiFields = new HashSet<String>(Arrays.asList("question_id", "question_text", "options"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -203,7 +200,7 @@ public class QuizPinQuestion {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!QuizPinQuestion.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in QuizPinQuestion is not found in the empty JSON string", QuizPinQuestion.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in QuizPinQuestion is not found in the empty JSON string", QuizPinQuestion.openapiRequiredFields.toString()));
         }
       }
 
@@ -211,19 +208,19 @@ public class QuizPinQuestion {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!QuizPinQuestion.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `QuizPinQuestion` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `QuizPinQuestion` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("question_text") != null && !jsonObj.get("question_text").isJsonNull()) && !jsonObj.get("question_text").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `question_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("question_text").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `question_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("question_text").toString()));
       }
       if (jsonObj.get("options") != null && !jsonObj.get("options").isJsonNull()) {
         JsonArray jsonArrayoptions = jsonObj.getAsJsonArray("options");
         if (jsonArrayoptions != null) {
           // ensure the json data is an array
           if (!jsonObj.get("options").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `options` to be an array in the JSON string but got `%s`", jsonObj.get("options").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `options` to be an array in the JSON string but got `%s`", jsonObj.get("options").toString()));
           }
 
           // validate the optional field `options` (array)

@@ -4115,6 +4115,7 @@ public interface PathHandlerInterface {
      * <p>
      * - Parameter type: <b>{@link PartnerType}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
+     * - Default value: <b>INTERNAL</b><br/>
      * - Required: <b>false</b>
      * </p>
      * </li>
@@ -8353,7 +8354,7 @@ public interface PathHandlerInterface {
      * <p>"<b>metric_types</b>"
      * <p>Pin metric types to get data for.</p>
      * <p>
-     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;PinsAnalyticsMetricTypesParameterInner&gt;}</b><br/>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;String&gt;}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
      * - Required: <b>true</b>
      * </p>
@@ -8435,7 +8436,7 @@ public interface PathHandlerInterface {
      * <p>"<b>metric_types</b>"
      * <p>Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.</p>
      * <p>
-     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;PinsAnalyticsMetricTypesParameterInner&gt;}</b><br/>
+     * - Parameter type: <b>{@link java.util.List List} of {@link List&lt;String&gt;}</b><br/>
      * - Appears in: <b>{@link HttpServerExchange#getQueryParameters Query}</b><br/>
      * - Required: <b>true</b>
      * </p>

@@ -225,12 +225,10 @@ namespace Org.OpenAPITools.Model
                             assetType = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "permissions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                permissions = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            permissions = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "is_shared_partner":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isSharedPartner = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isSharedPartner = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "partner_id":
                             partnerId = new Option<string?>(utf8JsonReader.GetString()!);

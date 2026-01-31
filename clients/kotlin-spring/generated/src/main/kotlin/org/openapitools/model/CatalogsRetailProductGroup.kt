@@ -85,7 +85,7 @@ data class CatalogsRetailProductGroup(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("locale") val locale: kotlin.String? = null
-    ) {
+) {
 
     /**
     * 
@@ -99,7 +99,8 @@ data class CatalogsRetailProductGroup(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsRetailProductGroup'")
             }
         }
     }

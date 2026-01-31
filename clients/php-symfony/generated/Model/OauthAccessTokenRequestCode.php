@@ -37,8 +37,6 @@ use JMS\Serializer\Annotation\SerializedName;
 /**
  * Class representing the OauthAccessTokenRequestCode model.
  *
- * A request to exchange an authorization code for an access token.
- *
  * @package OpenAPI\Server\Model
  * @author  OpenAPI Generator team
  */
@@ -46,16 +44,6 @@ use JMS\Serializer\Annotation\SerializedName;
 class OauthAccessTokenRequestCode 
 {
         /**
-     * @var string|null
-     * @SerializedName("grant_type")
-     * @Type("string")
-    */
-    #[Assert\NotNull]
-    #[Assert\Choice(['authorization_code', 'refresh_token', 'client_credentials'])]
-    #[Assert\Type("string")]
-    protected ?string $grantType = null;
-
-    /**
      * @var string|null
      * @SerializedName("code")
      * @Type("string")
@@ -74,44 +62,27 @@ class OauthAccessTokenRequestCode
     protected ?string $redirectUri = null;
 
     /**
+     * @var string|null
+     * @SerializedName("grant_type")
+     * @Type("string")
+    */
+    #[Assert\NotNull]
+    #[Assert\Choice(['authorization_code', 'refresh_token', 'client_credentials'])]
+    #[Assert\Type("string")]
+    protected ?string $grantType = null;
+
+    /**
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(?array $data = null)
     {
         if (is_array($data)) {
-            $this->grantType = array_key_exists('grantType', $data) ? $data['grantType'] : $this->grantType;
             $this->code = array_key_exists('code', $data) ? $data['code'] : $this->code;
             $this->redirectUri = array_key_exists('redirectUri', $data) ? $data['redirectUri'] : $this->redirectUri;
+            $this->grantType = array_key_exists('grantType', $data) ? $data['grantType'] : $this->grantType;
         }
     }
-
-    /**
-     * Gets grantType.
-     *
-     * @return string|null
-     */
-    public function getGrantType(): ?string
-    {
-        return $this->grantType;
-    }
-
-    /**
-    * Sets grantType.
-    *
-    * @param string|null $grantType
-    *
-    * @return $this
-    */
-    public function setGrantType(?string $grantType): self
-    {
-        $this->grantType = $grantType;
-
-        return $this;
-    }
-
-
-
 
     /**
      * Gets code.
@@ -160,6 +131,33 @@ class OauthAccessTokenRequestCode
     public function setRedirectUri(?string $redirectUri): self
     {
         $this->redirectUri = $redirectUri;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets grantType.
+     *
+     * @return string|null
+     */
+    public function getGrantType(): ?string
+    {
+        return $this->grantType;
+    }
+
+    /**
+    * Sets grantType.
+    *
+    * @param string|null $grantType
+    *
+    * @return $this
+    */
+    public function setGrantType(?string $grantType): self
+    {
+        $this->grantType = $grantType;
 
         return $this;
     }

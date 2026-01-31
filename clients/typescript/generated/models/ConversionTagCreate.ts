@@ -14,10 +14,6 @@ import { HttpFile } from '../http/http';
 
 export class ConversionTagCreate {
     /**
-    * Conversion tag name.
-    */
-    'name': string;
-    /**
     * Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
     */
     'aemEnabled'?: boolean | null;
@@ -45,18 +41,16 @@ export class ConversionTagCreate {
     * Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
     */
     'aemLocEnabled'?: boolean | null;
+    /**
+    * Conversion tag name.
+    */
+    'name': string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "name",
-            "baseName": "name",
-            "type": "string",
-            "format": ""
-        },
         {
             "name": "aemEnabled",
             "baseName": "aem_enabled",
@@ -97,6 +91,12 @@ export class ConversionTagCreate {
             "name": "aemLocEnabled",
             "baseName": "aem_loc_enabled",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "name",
+            "baseName": "name",
+            "type": "string",
             "format": ""
         }    ];
 

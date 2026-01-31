@@ -1,36 +1,39 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.ItemValidationEvent;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object describing a retail item error
- **/
+ * Object describing a retail item error
+ */
 @ApiModel(description="Object describing a retail item error")
 
 public class CatalogsRetailItemErrorResponse  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsType catalogType;
 
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
  /**
-   * The catalog item id in the merchant namespace
-  **/
+  * The catalog item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
+
   private String itemId;
 
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
  /**
-   * Array with the errors for the item id requested
-  **/
+  * Array with the errors for the item id requested
+  */
+  @ApiModelProperty(value = "Array with the errors for the item id requested")
+
   private List<ItemValidationEvent> errors = new ArrayList<>();
  /**
    * Get catalogType

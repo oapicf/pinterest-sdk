@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A successful OAuth access token response.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenResponse {
   /**
    * Gets or Sets responseType
@@ -280,19 +280,10 @@ public class OauthAccessTokenResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("response_type");
-    openapiFields.add("access_token");
-    openapiFields.add("token_type");
-    openapiFields.add("expires_in");
-    openapiFields.add("scope");
+    openapiFields = new HashSet<String>(Arrays.asList("response_type", "access_token", "token_type", "expires_in", "scope"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("access_token");
-    openapiRequiredFields.add("token_type");
-    openapiRequiredFields.add("expires_in");
-    openapiRequiredFields.add("scope");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("access_token", "token_type", "expires_in", "scope"));
   }
 
   /**
@@ -304,7 +295,7 @@ public class OauthAccessTokenResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!OauthAccessTokenResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OauthAccessTokenResponse is not found in the empty JSON string", OauthAccessTokenResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in OauthAccessTokenResponse is not found in the empty JSON string", OauthAccessTokenResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -312,14 +303,14 @@ public class OauthAccessTokenResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!OauthAccessTokenResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OauthAccessTokenResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `OauthAccessTokenResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : OauthAccessTokenResponse.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
   }

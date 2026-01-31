@@ -34,24 +34,24 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LeadFormCreateRequest" /> class.
         /// </summary>
-        /// <param name="hasAcceptedTerms">Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO</param>
-        /// <param name="questions">List of questions to be displayed on the lead form.</param>
         /// <param name="name">Internal name of the lead form.</param>
         /// <param name="privacyPolicyLink">A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.</param>
+        /// <param name="hasAcceptedTerms">Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO</param>
         /// <param name="completionMessage">A message for people who complete the form to let them know what happens next.</param>
         /// <param name="status">status</param>
         /// <param name="disclosureLanguage">Additional disclosure language to be included in the lead form.</param>
+        /// <param name="questions">List of questions to be displayed on the lead form.</param>
         /// <param name="policyLinks">List of additional policy links to be displayed on the lead form.</param>
         [JsonConstructor]
-        public LeadFormCreateRequest(bool hasAcceptedTerms, List<LeadFormQuestion> questions, string? name = default, string? privacyPolicyLink = default, string? completionMessage = default, Option<LeadFormStatus?> status = default, Option<string?> disclosureLanguage = default, Option<List<LeadFormCommonPolicyLinksInner>?> policyLinks = default)
+        public LeadFormCreateRequest(Option<string?> name = default, Option<string?> privacyPolicyLink = default, Option<bool?> hasAcceptedTerms = default, Option<string?> completionMessage = default, Option<LeadFormStatus?> status = default, Option<string?> disclosureLanguage = default, Option<List<LeadFormQuestion>?> questions = default, Option<List<LeadFormCommonPolicyLinksInner>?> policyLinks = default)
         {
-            HasAcceptedTerms = hasAcceptedTerms;
-            Questions = questions;
-            Name = name;
-            PrivacyPolicyLink = privacyPolicyLink;
-            CompletionMessage = completionMessage;
+            NameOption = name;
+            PrivacyPolicyLinkOption = privacyPolicyLink;
+            HasAcceptedTermsOption = hasAcceptedTerms;
+            CompletionMessageOption = completionMessage;
             StatusOption = status;
             DisclosureLanguageOption = disclosureLanguage;
+            QuestionsOption = questions;
             PolicyLinksOption = policyLinks;
             OnCreated();
         }
@@ -72,20 +72,11 @@ namespace Org.OpenAPITools.Model
         public LeadFormStatus? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
 
         /// <summary>
-        /// Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO
+        /// Used to track the state of Name
         /// </summary>
-        /// <value>Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO</value>
-        /* <example>false</example> */
-        [JsonPropertyName("has_accepted_terms")]
-        public bool HasAcceptedTerms { get; set; }
-
-        /// <summary>
-        /// List of questions to be displayed on the lead form.
-        /// </summary>
-        /// <value>List of questions to be displayed on the lead form.</value>
-        /* <example>[{question_type&#x3D;CUSTOM, custom_question_field_type&#x3D;CHECKBOX, custom_question_label&#x3D;What is your favorite animal?, custom_question_options&#x3D;[Dog, Cat, Bird, Turtle]}]</example> */
-        [JsonPropertyName("questions")]
-        public List<LeadFormQuestion> Questions { get; set; }
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> NameOption { get; private set; }
 
         /// <summary>
         /// Internal name of the lead form.
@@ -93,7 +84,14 @@ namespace Org.OpenAPITools.Model
         /// <value>Internal name of the lead form.</value>
         /* <example>Lead Form 3/14/2023</example> */
         [JsonPropertyName("name")]
-        public string? Name { get; set; }
+        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of PrivacyPolicyLink
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> PrivacyPolicyLinkOption { get; private set; }
 
         /// <summary>
         /// A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.
@@ -101,7 +99,29 @@ namespace Org.OpenAPITools.Model
         /// <value>A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.</value>
         /* <example>https://www.advertisername.com/privacy-policy</example> */
         [JsonPropertyName("privacy_policy_link")]
-        public string? PrivacyPolicyLink { get; set; }
+        public string? PrivacyPolicyLink { get { return this.PrivacyPolicyLinkOption; } set { this.PrivacyPolicyLinkOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of HasAcceptedTerms
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> HasAcceptedTermsOption { get; private set; }
+
+        /// <summary>
+        /// Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO
+        /// </summary>
+        /// <value>Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO</value>
+        /* <example>false</example> */
+        [JsonPropertyName("has_accepted_terms")]
+        public bool? HasAcceptedTerms { get { return this.HasAcceptedTermsOption; } set { this.HasAcceptedTermsOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of CompletionMessage
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CompletionMessageOption { get; private set; }
 
         /// <summary>
         /// A message for people who complete the form to let them know what happens next.
@@ -109,7 +129,7 @@ namespace Org.OpenAPITools.Model
         /// <value>A message for people who complete the form to let them know what happens next.</value>
         /* <example>Thank you for submitting. We will contact you soon.</example> */
         [JsonPropertyName("completion_message")]
-        public string? CompletionMessage { get; set; }
+        public string? CompletionMessage { get { return this.CompletionMessageOption; } set { this.CompletionMessageOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DisclosureLanguage
@@ -125,6 +145,21 @@ namespace Org.OpenAPITools.Model
         /* <example>By entering your personal information, you agree that your data will be collected and used.</example> */
         [JsonPropertyName("disclosure_language")]
         public string? DisclosureLanguage { get { return this.DisclosureLanguageOption; } set { this.DisclosureLanguageOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Questions
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<LeadFormQuestion>?> QuestionsOption { get; private set; }
+
+        /// <summary>
+        /// List of questions to be displayed on the lead form.
+        /// </summary>
+        /// <value>List of questions to be displayed on the lead form.</value>
+        /* <example>[{question_type&#x3D;CUSTOM, custom_question_field_type&#x3D;CHECKBOX, custom_question_label&#x3D;What is your favorite animal?, custom_question_options&#x3D;[Dog, Cat, Bird, Turtle]}]</example> */
+        [JsonPropertyName("questions")]
+        public List<LeadFormQuestion>? Questions { get { return this.QuestionsOption; } set { this.QuestionsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of PolicyLinks
@@ -149,13 +184,13 @@ namespace Org.OpenAPITools.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class LeadFormCreateRequest {\n");
-            sb.Append("  HasAcceptedTerms: ").Append(HasAcceptedTerms).Append("\n");
-            sb.Append("  Questions: ").Append(Questions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PrivacyPolicyLink: ").Append(PrivacyPolicyLink).Append("\n");
+            sb.Append("  HasAcceptedTerms: ").Append(HasAcceptedTerms).Append("\n");
             sb.Append("  CompletionMessage: ").Append(CompletionMessage).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  DisclosureLanguage: ").Append(DisclosureLanguage).Append("\n");
+            sb.Append("  Questions: ").Append(Questions).Append("\n");
             sb.Append("  PolicyLinks: ").Append(PolicyLinks).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -194,13 +229,13 @@ namespace Org.OpenAPITools.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
-            Option<bool?> hasAcceptedTerms = default;
-            Option<List<LeadFormQuestion>?> questions = default;
             Option<string?> name = default;
             Option<string?> privacyPolicyLink = default;
+            Option<bool?> hasAcceptedTerms = default;
             Option<string?> completionMessage = default;
             Option<LeadFormStatus?> status = default;
             Option<string?> disclosureLanguage = default;
+            Option<List<LeadFormQuestion>?> questions = default;
             Option<List<LeadFormCommonPolicyLinksInner>?> policyLinks = default;
 
             while (utf8JsonReader.Read())
@@ -218,19 +253,14 @@ namespace Org.OpenAPITools.Model
 
                     switch (localVarJsonPropertyName)
                     {
-                        case "has_accepted_terms":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hasAcceptedTerms = new Option<bool?>(utf8JsonReader.GetBoolean());
-                            break;
-                        case "questions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                questions = new Option<List<LeadFormQuestion>?>(JsonSerializer.Deserialize<List<LeadFormQuestion>>(ref utf8JsonReader, jsonSerializerOptions)!);
-                            break;
                         case "name":
                             name = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "privacy_policy_link":
                             privacyPolicyLink = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "has_accepted_terms":
+                            hasAcceptedTerms = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "completion_message":
                             completionMessage = new Option<string?>(utf8JsonReader.GetString());
@@ -243,9 +273,11 @@ namespace Org.OpenAPITools.Model
                         case "disclosure_language":
                             disclosureLanguage = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "questions":
+                            questions = new Option<List<LeadFormQuestion>?>(JsonSerializer.Deserialize<List<LeadFormQuestion>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
                         case "policy_links":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                policyLinks = new Option<List<LeadFormCommonPolicyLinksInner>?>(JsonSerializer.Deserialize<List<LeadFormCommonPolicyLinksInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            policyLinks = new Option<List<LeadFormCommonPolicyLinksInner>?>(JsonSerializer.Deserialize<List<LeadFormCommonPolicyLinksInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;
@@ -253,34 +285,19 @@ namespace Org.OpenAPITools.Model
                 }
             }
 
-            if (!hasAcceptedTerms.IsSet)
-                throw new ArgumentException("Property is required for class LeadFormCreateRequest.", nameof(hasAcceptedTerms));
-
-            if (!questions.IsSet)
-                throw new ArgumentException("Property is required for class LeadFormCreateRequest.", nameof(questions));
-
-            if (!name.IsSet)
-                throw new ArgumentException("Property is required for class LeadFormCreateRequest.", nameof(name));
-
-            if (!privacyPolicyLink.IsSet)
-                throw new ArgumentException("Property is required for class LeadFormCreateRequest.", nameof(privacyPolicyLink));
-
-            if (!completionMessage.IsSet)
-                throw new ArgumentException("Property is required for class LeadFormCreateRequest.", nameof(completionMessage));
-
             if (hasAcceptedTerms.IsSet && hasAcceptedTerms.Value == null)
                 throw new ArgumentNullException(nameof(hasAcceptedTerms), "Property is not nullable for class LeadFormCreateRequest.");
-
-            if (questions.IsSet && questions.Value == null)
-                throw new ArgumentNullException(nameof(questions), "Property is not nullable for class LeadFormCreateRequest.");
 
             if (status.IsSet && status.Value == null)
                 throw new ArgumentNullException(nameof(status), "Property is not nullable for class LeadFormCreateRequest.");
 
+            if (questions.IsSet && questions.Value == null)
+                throw new ArgumentNullException(nameof(questions), "Property is not nullable for class LeadFormCreateRequest.");
+
             if (policyLinks.IsSet && policyLinks.Value == null)
                 throw new ArgumentNullException(nameof(policyLinks), "Property is not nullable for class LeadFormCreateRequest.");
 
-            return new LeadFormCreateRequest(hasAcceptedTerms.Value!.Value!, questions.Value!, name.Value!, privacyPolicyLink.Value!, completionMessage.Value!, status, disclosureLanguage, policyLinks);
+            return new LeadFormCreateRequest(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, disclosureLanguage, questions, policyLinks);
         }
 
         /// <summary>
@@ -307,30 +324,32 @@ namespace Org.OpenAPITools.Model
         /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, LeadFormCreateRequest leadFormCreateRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (leadFormCreateRequest.Questions == null)
+            if (leadFormCreateRequest.QuestionsOption.IsSet && leadFormCreateRequest.Questions == null)
                 throw new ArgumentNullException(nameof(leadFormCreateRequest.Questions), "Property is required for class LeadFormCreateRequest.");
 
             if (leadFormCreateRequest.PolicyLinksOption.IsSet && leadFormCreateRequest.PolicyLinks == null)
                 throw new ArgumentNullException(nameof(leadFormCreateRequest.PolicyLinks), "Property is required for class LeadFormCreateRequest.");
 
-            writer.WriteBoolean("has_accepted_terms", leadFormCreateRequest.HasAcceptedTerms);
+            if (leadFormCreateRequest.NameOption.IsSet)
+                if (leadFormCreateRequest.NameOption.Value != null)
+                    writer.WriteString("name", leadFormCreateRequest.Name);
+                else
+                    writer.WriteNull("name");
 
-            writer.WritePropertyName("questions");
-            JsonSerializer.Serialize(writer, leadFormCreateRequest.Questions, jsonSerializerOptions);
-            if (leadFormCreateRequest.Name != null)
-                writer.WriteString("name", leadFormCreateRequest.Name);
-            else
-                writer.WriteNull("name");
+            if (leadFormCreateRequest.PrivacyPolicyLinkOption.IsSet)
+                if (leadFormCreateRequest.PrivacyPolicyLinkOption.Value != null)
+                    writer.WriteString("privacy_policy_link", leadFormCreateRequest.PrivacyPolicyLink);
+                else
+                    writer.WriteNull("privacy_policy_link");
 
-            if (leadFormCreateRequest.PrivacyPolicyLink != null)
-                writer.WriteString("privacy_policy_link", leadFormCreateRequest.PrivacyPolicyLink);
-            else
-                writer.WriteNull("privacy_policy_link");
+            if (leadFormCreateRequest.HasAcceptedTermsOption.IsSet)
+                writer.WriteBoolean("has_accepted_terms", leadFormCreateRequest.HasAcceptedTermsOption.Value!.Value);
 
-            if (leadFormCreateRequest.CompletionMessage != null)
-                writer.WriteString("completion_message", leadFormCreateRequest.CompletionMessage);
-            else
-                writer.WriteNull("completion_message");
+            if (leadFormCreateRequest.CompletionMessageOption.IsSet)
+                if (leadFormCreateRequest.CompletionMessageOption.Value != null)
+                    writer.WriteString("completion_message", leadFormCreateRequest.CompletionMessage);
+                else
+                    writer.WriteNull("completion_message");
 
             if (leadFormCreateRequest.StatusOption.IsSet)
             {
@@ -343,6 +362,11 @@ namespace Org.OpenAPITools.Model
                 else
                     writer.WriteNull("disclosure_language");
 
+            if (leadFormCreateRequest.QuestionsOption.IsSet)
+            {
+                writer.WritePropertyName("questions");
+                JsonSerializer.Serialize(writer, leadFormCreateRequest.Questions, jsonSerializerOptions);
+            }
             if (leadFormCreateRequest.PolicyLinksOption.IsSet)
             {
                 writer.WritePropertyName("policy_links");

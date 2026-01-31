@@ -49,7 +49,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CatalogsCreativeAssetsFeedsCreateRequest.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("CatalogsCreativeAssetsFeedsCreateRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-01-26T05:36:06.173633742Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class CatalogsCreativeAssetsFeedsCreateRequest {
     public static final String JSON_PROPERTY_DEFAULT_CURRENCY = "default_currency";
@@ -83,7 +83,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
     private String catalogId;
 
     public static final String JSON_PROPERTY_STATUS = "status";
-    private CatalogsStatus status;
+    private CatalogsStatus status = "ACTIVE";
 
     public CatalogsCreativeAssetsFeedsCreateRequest(String name, CatalogsFormat _format, CatalogsFeedsCreateRequestDefaultLocale defaultLocale, Country defaultCountry, String location, CatalogsType catalogType) {
         this.name = name;
@@ -338,7 +338,6 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
      * Get status
      * @return status
      */
-    @Valid
     @Nullable
     @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty(JSON_PROPERTY_STATUS)

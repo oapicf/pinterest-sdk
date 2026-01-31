@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_non_nullable_catalogs_currency
 
@@ -23,20 +25,34 @@ type CatalogsProductGroupPricingCurrencyCriteria* = object
   operator*: Operator
   value*: float
   currency*: NonNullableCatalogsCurrency
-  negated*: bool
+  negated*: Option[bool]
 
 func `%`*(v: Operator): JsonNode =
-  let str = case v:
-    of Operator.GREATERTHAN: "GREATER_THAN"
-    of Operator.GREATERTHANOREQUALS: "GREATER_THAN_OR_EQUALS"
-    of Operator.LESSTHAN: "LESS_THAN"
-    of Operator.LESSTHANOREQUALS: "LESS_THAN_OR_EQUALS"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Operator.GREATERTHAN: %"GREATER_THAN"
+    of Operator.GREATERTHANOREQUALS: %"GREATER_THAN_OR_EQUALS"
+    of Operator.LESSTHAN: %"LESS_THAN"
+    of Operator.LESSTHANOREQUALS: %"LESS_THAN_OR_EQUALS"
 func `$`*(v: Operator): string =
   result = case v:
-    of Operator.GREATERTHAN: "GREATER_THAN"
-    of Operator.GREATERTHANOREQUALS: "GREATER_THAN_OR_EQUALS"
-    of Operator.LESSTHAN: "LESS_THAN"
-    of Operator.LESSTHANOREQUALS: "LESS_THAN_OR_EQUALS"
+    of Operator.GREATERTHAN: $("GREATER_THAN")
+    of Operator.GREATERTHANOREQUALS: $("GREATER_THAN_OR_EQUALS")
+    of Operator.LESSTHAN: $("LESS_THAN")
+    of Operator.LESSTHANOREQUALS: $("LESS_THAN_OR_EQUALS")
+
+proc to*(node: JsonNode, T: typedesc[Operator]): Operator =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Operator, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("GREATER_THAN"):
+    return Operator.GREATERTHAN
+  of $("GREATER_THAN_OR_EQUALS"):
+    return Operator.GREATERTHANOREQUALS
+  of $("LESS_THAN"):
+    return Operator.LESSTHAN
+  of $("LESS_THAN_OR_EQUALS"):
+    return Operator.LESSTHANOREQUALS
+  else:
+    raise newException(ValueError, "Invalid enum value for Operator: " & strVal)
+

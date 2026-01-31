@@ -20,19 +20,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsProductGroupsUpdateRequest  {
   
   @ApiModelProperty(value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
-  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
  /**
-   * boolean indicator of whether the product group is being featured or not
-  **/
+  * boolean indicator of whether the product group is being featured or not
+  */
+  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
+
   private Boolean isFeatured;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsProductGroupFiltersRequest filters;
  /**
    * Get name

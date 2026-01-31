@@ -6,7 +6,6 @@ import org.openapitools.vertxweb.server.model.Pin;
 import org.openapitools.vertxweb.server.model.PinAnalyticsMetricsResponse;
 import org.openapitools.vertxweb.server.model.PinCreate;
 import org.openapitools.vertxweb.server.model.PinUpdate;
-import org.openapitools.vertxweb.server.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.vertxweb.server.model.PinsList200Response;
 import org.openapitools.vertxweb.server.model.PinsSaveRequest;
 
@@ -22,11 +21,11 @@ import java.util.Map;
 // Implement this class
 
 public class PinsApiImpl implements PinsApi {
-    public Future<ApiResponse<Map<String, Map<String, PinAnalyticsMetricsResponse>>>> multiPinsAnalytics(List<String> pinIds, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId) {
+    public Future<ApiResponse<Map<String, Map<String, PinAnalyticsMetricsResponse>>>> multiPinsAnalytics(List<String> pinIds, LocalDate startDate, LocalDate endDate, List<String> metricTypes, String appTypes, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 
-    public Future<ApiResponse<Map<String, PinAnalyticsMetricsResponse>>> pinsAnalytics(String pinId, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId) {
+    public Future<ApiResponse<Map<String, PinAnalyticsMetricsResponse>>> pinsAnalytics(String pinId, LocalDate startDate, LocalDate endDate, List<String> metricTypes, String appTypes, String splitField, String adAccountId) {
         return Future.failedFuture(new HttpException(501));
     }
 

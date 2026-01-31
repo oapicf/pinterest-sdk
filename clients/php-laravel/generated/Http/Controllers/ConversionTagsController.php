@@ -67,12 +67,8 @@ class ConversionTagsController extends Controller
 
         $conversionTagCreate = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ConversionTagCreate::class);
 
-        try {
-            $apiResult = $this->api->conversionTagsCreate($adAccountId, $conversionTagCreate);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->conversionTagsCreate($adAccountId, $conversionTagCreate);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ConversionTagResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -123,12 +119,8 @@ class ConversionTagsController extends Controller
 
 
 
-        try {
-            $apiResult = $this->api->conversionTagsGet($adAccountId, $conversionTagId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->conversionTagsGet($adAccountId, $conversionTagId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ConversionTagResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -175,14 +167,10 @@ class ConversionTagsController extends Controller
         }
 
 
-        $filterDeleted = $request->bool('filterDeleted');
+        $filterDeleted = $request->boolean('filterDeleted');
 
-        try {
-            $apiResult = $this->api->conversionTagsList($adAccountId, $filterDeleted);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->conversionTagsList($adAccountId, $filterDeleted);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ConversionTagListResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -226,12 +214,8 @@ class ConversionTagsController extends Controller
         }
 
 
-        try {
-            $apiResult = $this->api->ocpmEligibleConversionTagsGet($adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->ocpmEligibleConversionTagsGet($adAccountId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -292,12 +276,8 @@ class ConversionTagsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->pageVisitConversionTagsGet($adAccountId, $pageSize, $order, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->pageVisitConversionTagsGet($adAccountId, $pageSize, $order, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PageVisitConversionTagsGet200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

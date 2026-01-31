@@ -34,22 +34,19 @@ import ../models/model_update_member_asset_access_body
 import ../models/model_update_member_assets_results_response_array
 import ../models/model_update_partner_asset_access_body
 import ../models/model_update_partner_assets_results_response_array
-import ../models/model_business_asset_members_get_200_response
-import ../models/model_business_asset_partners_get_200_response
-import ../models/model_business_assets_get_200_response
-import ../models/model_business_member_assets_get_200_response
+import ../models/model_business_asset_members_get200response
+import ../models/model_business_asset_partners_get200response
+import ../models/model_business_assets_get200response
+import ../models/model_business_member_assets_get200response
 import ../models/model_business_members_asset_access_delete_request
-import ../models/model_business_partner_asset_access_get_200_response
+import ../models/model_business_partner_asset_access_get200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -70,8 +67,7 @@ proc assetGroupCreate*(httpClient: HttpClient, businessId: string, createAssetGr
 proc assetGroupDelete*(httpClient: HttpClient, businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody): (Option[DeleteAssetGroupResponse], Response) =
   ## Delete asset groups.
   httpClient.headers["Content-Type"] = "application/json"
-
-  let response = httpClient.delete(basepath & fmt"/businesses/{business_id}/asset_groups", $(%deleteAssetGroupBody))
+  let response = httpClient.request(basepath & fmt"/businesses/{business_id}/asset_groups", httpMethod = HttpDelete, body = $(%deleteAssetGroupBody))
   constructResult[DeleteAssetGroupResponse](response)
 
 
@@ -85,62 +81,78 @@ proc assetGroupUpdate*(httpClient: HttpClient, businessId: string, updateAssetGr
 
 proc businessAssetMembersGet*(httpClient: HttpClient, businessId: string, assetId: string, bookmark: string, pageSize: int, startIndex: int): (Option[business_asset_members_get_200_response], Response) =
   ## Get members with access to asset
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("start_index", $startIndex), # An index to start fetching the results from. Only the results starting from this index will be returned.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $startIndex != "":
+    query_params_list.add(("start_index", $startIndex))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/assets/{asset_id}/members" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/assets/{asset_id}/members" & "?" & url_encoded_query_params)
   constructResult[business_asset_members_get_200_response](response)
 
 
 proc businessAssetPartnersGet*(httpClient: HttpClient, businessId: string, assetId: string, startIndex: int, bookmark: string, pageSize: int): (Option[business_asset_partners_get_200_response], Response) =
   ## Get partners with access to asset
-  let query_for_api_call = encodeQuery([
-    ("start_index", $startIndex), # An index to start fetching the results from. Only the results starting from this index will be returned.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $startIndex != "":
+    query_params_list.add(("start_index", $startIndex))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/assets/{asset_id}/partners" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/assets/{asset_id}/partners" & "?" & url_encoded_query_params)
   constructResult[business_asset_partners_get_200_response](response)
 
 
 proc businessAssetsGet*(httpClient: HttpClient, businessId: string, permissions: seq[PermissionsWithOwner], childAssetId: string, assetGroupId: string, assetType: string, startIndex: int, bookmark: string, pageSize: int): (Option[business_assets_get_200_response], Response) =
   ## List business assets
-  let query_for_api_call = encodeQuery([
-    ("permissions", $permissions.join(",")), # A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.
-    ("child_asset_id", $childAssetId), # A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
-    ("asset_group_id", $assetGroupId), # An asset group unique identifier. Used to fetch assets contained within the specified asset group.
-    ("asset_type", $assetType), # A resource type to filter the assets by. Only assets of the specified type will be returned.
-    ("start_index", $startIndex), # An index to start fetching the results from. Only the results starting from this index will be returned.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if permissions.len > 0:
+    query_params_list.add(("permissions", $permissions.join(",")))
+  if $childAssetId != "":
+    query_params_list.add(("child_asset_id", $childAssetId))
+  if $assetGroupId != "":
+    query_params_list.add(("asset_group_id", $assetGroupId))
+  if $assetType != "":
+    query_params_list.add(("asset_type", $assetType))
+  if $startIndex != "":
+    query_params_list.add(("start_index", $startIndex))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/assets" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/assets" & "?" & url_encoded_query_params)
   constructResult[business_assets_get_200_response](response)
 
 
 proc businessMemberAssetsGet*(httpClient: HttpClient, businessId: string, memberId: string, assetType: string, startIndex: int, bookmark: string, pageSize: int): (Option[business_member_assets_get_200_response], Response) =
   ## Get assets assigned to a member
-  let query_for_api_call = encodeQuery([
-    ("asset_type", $assetType), # A resource type to filter the assets by. Only assets of the specified type will be returned.
-    ("start_index", $startIndex), # An index to start fetching the results from. Only the results starting from this index will be returned.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $assetType != "":
+    query_params_list.add(("asset_type", $assetType))
+  if $startIndex != "":
+    query_params_list.add(("start_index", $startIndex))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/members/{member_id}/assets" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/members/{member_id}/assets" & "?" & url_encoded_query_params)
   constructResult[business_member_assets_get_200_response](response)
 
 
 proc businessMembersAssetAccessDelete*(httpClient: HttpClient, businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest): (Option[DeleteMemberAccessResultsResponseArray], Response) =
   ## Delete member access to asset
   httpClient.headers["Content-Type"] = "application/json"
-
-  let response = httpClient.delete(basepath & fmt"/businesses/{business_id}/members/assets/access", $(%businessMembersAssetAccessDeleteRequest))
+  let response = httpClient.request(basepath & fmt"/businesses/{business_id}/members/assets/access", httpMethod = HttpDelete, body = $(%businessMembersAssetAccessDeleteRequest))
   constructResult[DeleteMemberAccessResultsResponseArray](response)
 
 
@@ -154,23 +166,27 @@ proc businessMembersAssetAccessUpdate*(httpClient: HttpClient, businessId: strin
 
 proc businessPartnerAssetAccessGet*(httpClient: HttpClient, businessId: string, partnerId: string, partnerType: PartnerType, assetType: string, startIndex: int, pageSize: int, bookmark: string): (Option[business_partner_asset_access_get_200_response], Response) =
   ## Get assets assigned to a partner or assets assigned by a partner
-  let query_for_api_call = encodeQuery([
-    ("partner_type", $partnerType), # Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
-    ("asset_type", $assetType), # A resource type to filter the assets by. Only assets of the specified type will be returned.
-    ("start_index", $startIndex), # An index to start fetching the results from. Only the results starting from this index will be returned.
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $partnerType != "":
+    query_params_list.add(("partner_type", $partnerType))
+  if $assetType != "":
+    query_params_list.add(("asset_type", $assetType))
+  if $startIndex != "":
+    query_params_list.add(("start_index", $startIndex))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/partners/{partner_id}/assets" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/partners/{partner_id}/assets" & "?" & url_encoded_query_params)
   constructResult[business_partner_asset_access_get_200_response](response)
 
 
 proc deletePartnerAssetAccessHandlerImpl*(httpClient: HttpClient, businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody): (Option[DeletePartnerAssetsResultsResponseArray], Response) =
   ## Delete partner access to asset
   httpClient.headers["Content-Type"] = "application/json"
-
-  let response = httpClient.delete(basepath & fmt"/businesses/{business_id}/partners/assets", $(%deletePartnerAssetAccessBody))
+  let response = httpClient.request(basepath & fmt"/businesses/{business_id}/partners/assets", httpMethod = HttpDelete, body = $(%deletePartnerAssetAccessBody))
   constructResult[DeletePartnerAssetsResultsResponseArray](response)
 
 

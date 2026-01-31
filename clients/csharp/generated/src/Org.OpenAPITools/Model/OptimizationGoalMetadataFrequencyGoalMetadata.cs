@@ -263,8 +263,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "frequency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                frequency = new Option<int?>(utf8JsonReader.GetInt32());
+                            frequency = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "timerange":
                             string? timerangeRawValue = utf8JsonReader.GetString();

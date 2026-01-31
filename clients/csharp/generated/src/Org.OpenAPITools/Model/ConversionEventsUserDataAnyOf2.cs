@@ -172,12 +172,10 @@ namespace Org.OpenAPITools.Model
                             clientUserAgent = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "em":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                em = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            em = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "hashed_maids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hashedMaids = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            hashedMaids = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -27,19 +27,16 @@ import ../models/model_members_to_delete_body
 import ../models/model_partner_type
 import ../models/model_update_member_business_role_body
 import ../models/model_update_member_results_response_array
-import ../models/model_get_business_employers_200_response
-import ../models/model_get_business_members_200_response
-import ../models/model_get_business_partners_200_response
+import ../models/model_get_business_employers200response
+import ../models/model_get_business_members200response
+import ../models/model_get_business_partners200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -52,57 +49,69 @@ template constructResult[T](response: Response): untyped =
 proc deleteBusinessMembership*(httpClient: HttpClient, businessId: string, membersToDeleteBody: MembersToDeleteBody): (Option[DeletedMembersResponse], Response) =
   ## Terminate business memberships
   httpClient.headers["Content-Type"] = "application/json"
-
-  let response = httpClient.delete(basepath & fmt"/businesses/{business_id}/members", $(%membersToDeleteBody))
+  let response = httpClient.request(basepath & fmt"/businesses/{business_id}/members", httpMethod = HttpDelete, body = $(%membersToDeleteBody))
   constructResult[DeletedMembersResponse](response)
 
 
 proc deleteBusinessPartners*(httpClient: HttpClient, businessId: string, deletePartnersRequest: DeletePartnersRequest): (Option[DeletePartnersResponse], Response) =
   ## Terminate business partnerships
   httpClient.headers["Content-Type"] = "application/json"
-
-  let response = httpClient.delete(basepath & fmt"/businesses/{business_id}/partners", $(%deletePartnersRequest))
+  let response = httpClient.request(basepath & fmt"/businesses/{business_id}/partners", httpMethod = HttpDelete, body = $(%deletePartnersRequest))
   constructResult[DeletePartnersResponse](response)
 
 
 proc getBusinessEmployers*(httpClient: HttpClient, pageSize: int, bookmark: string): (Option[get_business_employers_200_response], Response) =
   ## List business employers for user
-  let query_for_api_call = encodeQuery([
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/businesses/employers" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/businesses/employers" & "?" & url_encoded_query_params)
   constructResult[get_business_employers_200_response](response)
 
 
 proc getBusinessMembers*(httpClient: HttpClient, businessId: string, assetsSummary: bool, businessRoles: seq[MemberBusinessRole], memberIds: string, startIndex: int, bookmark: string, pageSize: int): (Option[get_business_members_200_response], Response) =
   ## Get business members
-  let query_for_api_call = encodeQuery([
-    ("assets_summary", $assetsSummary), # Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
-    ("business_roles", $businessRoles.join(",")), # A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
-    ("member_ids", $memberIds), # A list of business members ids separated by comma.
-    ("start_index", $startIndex), # An index to start fetching the results from. Only the results starting from this index will be returned.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $assetsSummary != "":
+    query_params_list.add(("assets_summary", $assetsSummary))
+  if businessRoles.len > 0:
+    query_params_list.add(("business_roles", $businessRoles.join(",")))
+  if $memberIds != "":
+    query_params_list.add(("member_ids", $memberIds))
+  if $startIndex != "":
+    query_params_list.add(("start_index", $startIndex))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/members" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/members" & "?" & url_encoded_query_params)
   constructResult[get_business_members_200_response](response)
 
 
 proc getBusinessPartners*(httpClient: HttpClient, businessId: string, assetsSummary: bool, partnerType: PartnerType, partnerIds: string, startIndex: int, pageSize: int, bookmark: string): (Option[get_business_partners_200_response], Response) =
   ## Get business partners
-  let query_for_api_call = encodeQuery([
-    ("assets_summary", $assetsSummary), # Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
-    ("partner_type", $partnerType), # Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
-    ("partner_ids", $partnerIds), # A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
-    ("start_index", $startIndex), # An index to start fetching the results from. Only the results starting from this index will be returned.
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $assetsSummary != "":
+    query_params_list.add(("assets_summary", $assetsSummary))
+  if $partnerType != "":
+    query_params_list.add(("partner_type", $partnerType))
+  if $partnerIds != "":
+    query_params_list.add(("partner_ids", $partnerIds))
+  if $startIndex != "":
+    query_params_list.add(("start_index", $startIndex))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/partners" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/partners" & "?" & url_encoded_query_params)
   constructResult[get_business_partners_200_response](response)
 
 

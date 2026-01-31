@@ -33,35 +33,20 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * InviteResponse
  */
 @JsonPropertyOrder({
+  InviteResponse.JSON_PROPERTY_ID,
+  InviteResponse.JSON_PROPERTY_INVITE_DATA,
+  InviteResponse.JSON_PROPERTY_IS_RECEIVED_INVITE,
+  InviteResponse.JSON_PROPERTY_USER,
   InviteResponse.JSON_PROPERTY_ASSETS_SUMMARY,
   InviteResponse.JSON_PROPERTY_BUSINESS_ROLES,
   InviteResponse.JSON_PROPERTY_CREATED_BY_BUSINESS,
   InviteResponse.JSON_PROPERTY_CREATED_BY_USER,
-  InviteResponse.JSON_PROPERTY_CREATED_TIME,
-  InviteResponse.JSON_PROPERTY_ID,
-  InviteResponse.JSON_PROPERTY_INVITE_DATA,
-  InviteResponse.JSON_PROPERTY_IS_RECEIVED_INVITE,
-  InviteResponse.JSON_PROPERTY_USER
+  InviteResponse.JSON_PROPERTY_CREATED_TIME
 })
 @JsonTypeName("InviteResponse")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-01-26T05:36:06.173633742Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class InviteResponse {
-    public static final String JSON_PROPERTY_ASSETS_SUMMARY = "assets_summary";
-    private InviteAssetsSummary assetsSummary;
-
-    public static final String JSON_PROPERTY_BUSINESS_ROLES = "business_roles";
-    private List<String> businessRoles = null;
-
-    public static final String JSON_PROPERTY_CREATED_BY_BUSINESS = "created_by_business";
-    private BusinessAccessUserSummary createdByBusiness;
-
-    public static final String JSON_PROPERTY_CREATED_BY_USER = "created_by_user";
-    private BusinessAccessUserSummary createdByUser;
-
-    public static final String JSON_PROPERTY_CREATED_TIME = "created_time";
-    private Integer createdTime;
-
     public static final String JSON_PROPERTY_ID = "id";
     private String id;
 
@@ -74,133 +59,22 @@ public class InviteResponse {
     public static final String JSON_PROPERTY_USER = "user";
     private BusinessAccessUserSummary user;
 
+    public static final String JSON_PROPERTY_ASSETS_SUMMARY = "assets_summary";
+    private InviteAssetsSummary assetsSummary;
+
+    public static final String JSON_PROPERTY_BUSINESS_ROLES = "business_roles";
+    private List<String> businessRoles = null;
+
+    public static final String JSON_PROPERTY_CREATED_BY_BUSINESS = "created_by_business";
+    private Object createdByBusiness;
+
+    public static final String JSON_PROPERTY_CREATED_BY_USER = "created_by_user";
+    private Object createdByUser;
+
+    public static final String JSON_PROPERTY_CREATED_TIME = "created_time";
+    private Integer createdTime;
+
     public InviteResponse() {
-    }
-
-    public InviteResponse assetsSummary(InviteAssetsSummary assetsSummary) {
-        this.assetsSummary = assetsSummary;
-        return this;
-    }
-
-    /**
-     * Get assetsSummary
-     * @return assetsSummary
-     */
-    @Valid
-    @Nullable
-    @Schema(name = "assets_summary", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty(JSON_PROPERTY_ASSETS_SUMMARY)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public InviteAssetsSummary getAssetsSummary() {
-        return assetsSummary;
-    }
-
-    @JsonProperty(JSON_PROPERTY_ASSETS_SUMMARY)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setAssetsSummary(InviteAssetsSummary assetsSummary) {
-        this.assetsSummary = assetsSummary;
-    }
-
-    public InviteResponse businessRoles(List<String> businessRoles) {
-        this.businessRoles = businessRoles;
-        return this;
-    }
-
-    public InviteResponse addBusinessRolesItem(String businessRolesItem) {
-        if (this.businessRoles == null) {
-            this.businessRoles = new ArrayList<>();
-        }
-        this.businessRoles.add(businessRolesItem);
-        return this;
-    }
-
-    /**
-     * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-     * @return businessRoles
-     */
-    @Nullable
-    @Schema(name = "business_roles", example = "[\"BIZ_ADMIN\"]", description = "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty(JSON_PROPERTY_BUSINESS_ROLES)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public List<String> getBusinessRoles() {
-        return businessRoles;
-    }
-
-    @JsonProperty(JSON_PROPERTY_BUSINESS_ROLES)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setBusinessRoles(List<String> businessRoles) {
-        this.businessRoles = businessRoles;
-    }
-
-    public InviteResponse createdByBusiness(BusinessAccessUserSummary createdByBusiness) {
-        this.createdByBusiness = createdByBusiness;
-        return this;
-    }
-
-    /**
-     * Metadata for the business that created the invite/request.
-     * @return createdByBusiness
-     */
-    @Valid
-    @Nullable
-    @Schema(name = "created_by_business", description = "Metadata for the business that created the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty(JSON_PROPERTY_CREATED_BY_BUSINESS)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public BusinessAccessUserSummary getCreatedByBusiness() {
-        return createdByBusiness;
-    }
-
-    @JsonProperty(JSON_PROPERTY_CREATED_BY_BUSINESS)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreatedByBusiness(BusinessAccessUserSummary createdByBusiness) {
-        this.createdByBusiness = createdByBusiness;
-    }
-
-    public InviteResponse createdByUser(BusinessAccessUserSummary createdByUser) {
-        this.createdByUser = createdByUser;
-        return this;
-    }
-
-    /**
-     * Metadata for the user that created the invite/request.
-     * @return createdByUser
-     */
-    @Valid
-    @Nullable
-    @Schema(name = "created_by_user", description = "Metadata for the user that created the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty(JSON_PROPERTY_CREATED_BY_USER)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public BusinessAccessUserSummary getCreatedByUser() {
-        return createdByUser;
-    }
-
-    @JsonProperty(JSON_PROPERTY_CREATED_BY_USER)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreatedByUser(BusinessAccessUserSummary createdByUser) {
-        this.createdByUser = createdByUser;
-    }
-
-    public InviteResponse createdTime(Integer createdTime) {
-        this.createdTime = createdTime;
-        return this;
-    }
-
-    /**
-     * The time the invite/request was created. Returned in milliseconds.
-     * @return createdTime
-     */
-    @Nullable
-    @Schema(name = "created_time", example = "1646767577816", description = "The time the invite/request was created. Returned in milliseconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Integer getCreatedTime() {
-        return createdTime;
-    }
-
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreatedTime(Integer createdTime) {
-        this.createdTime = createdTime;
     }
 
     public InviteResponse id(String id) {
@@ -298,6 +172,130 @@ public class InviteResponse {
         this.user = user;
     }
 
+    public InviteResponse assetsSummary(InviteAssetsSummary assetsSummary) {
+        this.assetsSummary = assetsSummary;
+        return this;
+    }
+
+    /**
+     * Get assetsSummary
+     * @return assetsSummary
+     */
+    @Valid
+    @Nullable
+    @Schema(name = "assets_summary", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty(JSON_PROPERTY_ASSETS_SUMMARY)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public InviteAssetsSummary getAssetsSummary() {
+        return assetsSummary;
+    }
+
+    @JsonProperty(JSON_PROPERTY_ASSETS_SUMMARY)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setAssetsSummary(InviteAssetsSummary assetsSummary) {
+        this.assetsSummary = assetsSummary;
+    }
+
+    public InviteResponse businessRoles(List<String> businessRoles) {
+        this.businessRoles = businessRoles;
+        return this;
+    }
+
+    public InviteResponse addBusinessRolesItem(String businessRolesItem) {
+        if (this.businessRoles == null) {
+            this.businessRoles = new ArrayList<>();
+        }
+        this.businessRoles.add(businessRolesItem);
+        return this;
+    }
+
+    /**
+     * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+     * @return businessRoles
+     */
+    @Nullable
+    @Schema(name = "business_roles", example = "[\"BIZ_ADMIN\"]", description = "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty(JSON_PROPERTY_BUSINESS_ROLES)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public List<String> getBusinessRoles() {
+        return businessRoles;
+    }
+
+    @JsonProperty(JSON_PROPERTY_BUSINESS_ROLES)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setBusinessRoles(List<String> businessRoles) {
+        this.businessRoles = businessRoles;
+    }
+
+    public InviteResponse createdByBusiness(Object createdByBusiness) {
+        this.createdByBusiness = createdByBusiness;
+        return this;
+    }
+
+    /**
+     * Metadata for the business that created the invite/request.
+     * @return createdByBusiness
+     */
+    @Nullable
+    @Schema(name = "created_by_business", description = "Metadata for the business that created the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty(JSON_PROPERTY_CREATED_BY_BUSINESS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public Object getCreatedByBusiness() {
+        return createdByBusiness;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREATED_BY_BUSINESS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCreatedByBusiness(Object createdByBusiness) {
+        this.createdByBusiness = createdByBusiness;
+    }
+
+    public InviteResponse createdByUser(Object createdByUser) {
+        this.createdByUser = createdByUser;
+        return this;
+    }
+
+    /**
+     * Metadata for the user that created the invite/request.
+     * @return createdByUser
+     */
+    @Nullable
+    @Schema(name = "created_by_user", description = "Metadata for the user that created the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty(JSON_PROPERTY_CREATED_BY_USER)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public Object getCreatedByUser() {
+        return createdByUser;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREATED_BY_USER)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCreatedByUser(Object createdByUser) {
+        this.createdByUser = createdByUser;
+    }
+
+    public InviteResponse createdTime(Integer createdTime) {
+        this.createdTime = createdTime;
+        return this;
+    }
+
+    /**
+     * The time the invite/request was created. Returned in milliseconds.
+     * @return createdTime
+     */
+    @Nullable
+    @Schema(name = "created_time", example = "1646767577816", description = "The time the invite/request was created. Returned in milliseconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public Integer getCreatedTime() {
+        return createdTime;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCreatedTime(Integer createdTime) {
+        this.createdTime = createdTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -307,35 +305,35 @@ public class InviteResponse {
             return false;
         }
         InviteResponse inviteResponse = (InviteResponse) o;
-        return Objects.equals(this.assetsSummary, inviteResponse.assetsSummary) &&
+        return Objects.equals(this.id, inviteResponse.id) &&
+            Objects.equals(this.inviteData, inviteResponse.inviteData) &&
+            Objects.equals(this.isReceivedInvite, inviteResponse.isReceivedInvite) &&
+            Objects.equals(this.user, inviteResponse.user) &&
+            Objects.equals(this.assetsSummary, inviteResponse.assetsSummary) &&
             Objects.equals(this.businessRoles, inviteResponse.businessRoles) &&
             Objects.equals(this.createdByBusiness, inviteResponse.createdByBusiness) &&
             Objects.equals(this.createdByUser, inviteResponse.createdByUser) &&
-            Objects.equals(this.createdTime, inviteResponse.createdTime) &&
-            Objects.equals(this.id, inviteResponse.id) &&
-            Objects.equals(this.inviteData, inviteResponse.inviteData) &&
-            Objects.equals(this.isReceivedInvite, inviteResponse.isReceivedInvite) &&
-            Objects.equals(this.user, inviteResponse.user);
+            Objects.equals(this.createdTime, inviteResponse.createdTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(assetsSummary, businessRoles, createdByBusiness, createdByUser, createdTime, id, inviteData, isReceivedInvite, user);
+        return Objects.hash(id, inviteData, isReceivedInvite, user, assetsSummary, businessRoles, createdByBusiness, createdByUser, createdTime);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class InviteResponse {\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
+        sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
+        sb.append("    user: ").append(toIndentedString(user)).append("\n");
         sb.append("    assetsSummary: ").append(toIndentedString(assetsSummary)).append("\n");
         sb.append("    businessRoles: ").append(toIndentedString(businessRoles)).append("\n");
         sb.append("    createdByBusiness: ").append(toIndentedString(createdByBusiness)).append("\n");
         sb.append("    createdByUser: ").append(toIndentedString(createdByUser)).append("\n");
         sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-        sb.append("    id: ").append(toIndentedString(id)).append("\n");
-        sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
-        sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
-        sb.append("    user: ").append(toIndentedString(user)).append("\n");
         sb.append("}");
         return sb.toString();
     }

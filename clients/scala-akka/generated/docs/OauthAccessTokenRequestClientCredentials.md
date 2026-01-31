@@ -2,14 +2,13 @@
 
 # OauthAccessTokenRequestClientCredentials
 
-A request to receive a client token.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**grantType** | [**GrantType**](#GrantType) |  | 
 **scope** | **String** |  | 
+**grantType** | [**GrantType**](#GrantType) |  | 
 
 
 ## Enum: GrantType

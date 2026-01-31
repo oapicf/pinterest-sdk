@@ -20,7 +20,7 @@ namespace OpenAPI
 /*
  * OpenAPIOauthAccessTokenRequestRefresh
  *
- * A request to exchange a refresh token for a new access token.
+ * 
  */
 class OPENAPI_API OpenAPIOauthAccessTokenRequestRefresh : public Model
 {
@@ -29,6 +29,10 @@ public:
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 	void WriteJson(JsonWriter& Writer) const final;
 
+	FString RefreshToken;
+	TOptional<FString> Scope;
+	/* Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\". */
+	TOptional<bool> RefreshOn;
 	enum class GrantTypeEnum
 	{
 		AuthorizationCode,
@@ -39,10 +43,6 @@ public:
 	static FString EnumToString(const GrantTypeEnum& EnumValue);
 	static bool EnumFromString(const FString& EnumAsString, GrantTypeEnum& EnumValue);
 	GrantTypeEnum GrantType;
-	FString RefreshToken;
-	TOptional<FString> Scope;
-	/* Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\". */
-	TOptional<bool> RefreshOn;
 };
 
 }

@@ -20,7 +20,6 @@ import com.github.oapicf.pinterestsdk.model.Pin;
 import com.github.oapicf.pinterestsdk.model.PinAnalyticsMetricsResponse;
 import com.github.oapicf.pinterestsdk.model.PinCreate;
 import com.github.oapicf.pinterestsdk.model.PinUpdate;
-import com.github.oapicf.pinterestsdk.model.PinsAnalyticsMetricTypesParameterInner;
 import com.github.oapicf.pinterestsdk.model.PinsList200Response;
 import com.github.oapicf.pinterestsdk.model.PinsSaveRequest;
 import org.junit.jupiter.api.Disabled;
@@ -51,7 +50,7 @@ public class PinsApiTest {
         List<String> pinIds = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = null;
+        List<String> metricTypes = null;
         String appTypes = null;
         String adAccountId = null;
         Map<String, Map<String, PinAnalyticsMetricsResponse>> response = api.multiPinsAnalytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId);
@@ -70,7 +69,7 @@ public class PinsApiTest {
         String pinId = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = null;
+        List<String> metricTypes = null;
         String appTypes = null;
         String splitField = null;
         String adAccountId = null;

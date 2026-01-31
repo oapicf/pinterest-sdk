@@ -89,7 +89,7 @@ private:
     /// Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using &lt;tt&gt;curl&lt;/tt&gt;, for example) to &lt;tt&gt;upload_url&lt;/tt&gt; using the &lt;tt&gt;Content-Type&lt;/tt&gt; header value. Send the media file&#39;s contents as the request&#39;s &lt;tt&gt;file&lt;/tt&gt; parameter and also include all of the parameters from &lt;tt&gt;upload_parameters&lt;/tt&gt;.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
     /// </remarks>
     /// <param name="mediaUploadRequest">Create a media upload request</param>
-    virtual void media_create(const org::openapitools::server::model::MediaUploadRequest &mediaUploadRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void media_create( const org::openapitools::server::model::MediaUploadRequest &mediaUploadRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get media upload details
     /// </summary>
@@ -97,7 +97,7 @@ private:
     /// Get details for a registered media upload, including its current status.  &lt;strong&gt;&lt;a href&#x3D;&#39;/docs/api-features/creating-boards-and-pins/#creating-video-pins&#39;&gt;Learn more&lt;/a&gt;&lt;/strong&gt; about video Pin creation.
     /// </remarks>
     /// <param name="mediaId">Media identifier</param>
-    virtual void media_get(const std::string &mediaId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void media_get( const std::string &mediaId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List media uploads
     /// </summary>
@@ -106,7 +106,7 @@ private:
     /// </remarks>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void media_list(const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void media_list( const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

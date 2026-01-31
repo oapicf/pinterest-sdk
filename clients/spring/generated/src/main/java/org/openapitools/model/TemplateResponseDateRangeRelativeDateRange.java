@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "TemplateResponse_date_range_relative_date_range", description = "The relative date range of the template")
 @JsonTypeName("TemplateResponse_date_range_relative_date_range")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRangeRelativeDateRange {
 
   private @Nullable String type;
@@ -32,7 +32,7 @@ public class TemplateResponseDateRangeRelativeDateRange {
 
   private @Nullable BigDecimal endDaysInPast;
 
-  public TemplateResponseDateRangeRelativeDateRange type(String type) {
+  public TemplateResponseDateRangeRelativeDateRange type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -44,15 +44,15 @@ public class TemplateResponseDateRangeRelativeDateRange {
   
   @Schema(name = "type", example = "relative", description = "The date range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public String getType() {
+  public @Nullable String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
-  public TemplateResponseDateRangeRelativeDateRange startDaysInPast(BigDecimal startDaysInPast) {
+  public TemplateResponseDateRangeRelativeDateRange startDaysInPast(@Nullable BigDecimal startDaysInPast) {
     this.startDaysInPast = startDaysInPast;
     return this;
   }
@@ -64,15 +64,15 @@ public class TemplateResponseDateRangeRelativeDateRange {
   @Valid 
   @Schema(name = "start_days_in_past", example = "14", description = "The start date of the date range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_days_in_past")
-  public BigDecimal getStartDaysInPast() {
+  public @Nullable BigDecimal getStartDaysInPast() {
     return startDaysInPast;
   }
 
-  public void setStartDaysInPast(BigDecimal startDaysInPast) {
+  public void setStartDaysInPast(@Nullable BigDecimal startDaysInPast) {
     this.startDaysInPast = startDaysInPast;
   }
 
-  public TemplateResponseDateRangeRelativeDateRange endDaysInPast(BigDecimal endDaysInPast) {
+  public TemplateResponseDateRangeRelativeDateRange endDaysInPast(@Nullable BigDecimal endDaysInPast) {
     this.endDaysInPast = endDaysInPast;
     return this;
   }
@@ -84,11 +84,11 @@ public class TemplateResponseDateRangeRelativeDateRange {
   @Valid 
   @Schema(name = "end_days_in_past", example = "7", description = "The end date of the date range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_days_in_past")
-  public BigDecimal getEndDaysInPast() {
+  public @Nullable BigDecimal getEndDaysInPast() {
     return endDaysInPast;
   }
 
-  public void setEndDaysInPast(BigDecimal endDaysInPast) {
+  public void setEndDaysInPast(@Nullable BigDecimal endDaysInPast) {
     this.endDaysInPast = endDaysInPast;
   }
 

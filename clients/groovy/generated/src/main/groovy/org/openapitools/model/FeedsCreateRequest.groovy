@@ -37,5 +37,5 @@ class FeedsCreateRequest {
     
     ProductAvailabilityType defaultAvailability
     
-    CatalogsStatus status
+    CatalogsStatus status = "ACTIVE"
 }

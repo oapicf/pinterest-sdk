@@ -34,7 +34,8 @@ enum class AdGroupSummaryStatus(@get:JsonValue val value: kotlin.String) {
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdGroupSummaryStatus {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdGroupSummaryStatus'")
         }
     }
 }

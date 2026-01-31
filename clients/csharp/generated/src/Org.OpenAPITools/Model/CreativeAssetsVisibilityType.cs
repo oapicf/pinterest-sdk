@@ -133,7 +133,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CreativeAssetsVisibilityType creativeAssetsVisibilityType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(creativeAssetsVisibilityType.ToString());
+            writer.WriteStringValue(CreativeAssetsVisibilityTypeValueConverter.ToJsonValue(creativeAssetsVisibilityType).ToString());
         }
     }
 
@@ -164,14 +164,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the CreativeAssetsVisibilityType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="creativeAssetsVisibilityType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CreativeAssetsVisibilityType? creativeAssetsVisibilityType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(creativeAssetsVisibilityType?.ToString() ?? "null");
+            writer.WriteStringValue(creativeAssetsVisibilityType.HasValue ? CreativeAssetsVisibilityTypeValueConverter.ToJsonValue(creativeAssetsVisibilityType.Value).ToString() : "null");
         }
     }
 }

@@ -29,8 +29,6 @@ public:
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 	void WriteJson(JsonWriter& Writer) const final;
 
-	/* Conversion tag name. */
-	FString Name;
 	/* Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
 	TOptional<bool> AemEnabled;
 	/* Metadata ingestion frequency. */
@@ -45,6 +43,8 @@ public:
 	TOptional<bool> AemDbEnabled;
 	/* Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
 	TOptional<bool> AemLocEnabled;
+	/* Conversion tag name. */
+	FString Name;
 };
 
 }

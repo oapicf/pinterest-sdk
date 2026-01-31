@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "HotelProcessingRecord", description = "Object describing an item processing record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class HotelProcessingRecord {
 
   private @Nullable String hotelId;
@@ -39,7 +39,7 @@ public class HotelProcessingRecord {
 
   private @Nullable ItemProcessingStatus status;
 
-  public HotelProcessingRecord hotelId(String hotelId) {
+  public HotelProcessingRecord hotelId(@Nullable String hotelId) {
     this.hotelId = hotelId;
     return this;
   }
@@ -51,11 +51,11 @@ public class HotelProcessingRecord {
   
   @Schema(name = "hotel_id", example = "DS0294-M", description = "The catalog hotel id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("hotel_id")
-  public String getHotelId() {
+  public @Nullable String getHotelId() {
     return hotelId;
   }
 
-  public void setHotelId(String hotelId) {
+  public void setHotelId(@Nullable String hotelId) {
     this.hotelId = hotelId;
   }
 
@@ -115,7 +115,7 @@ public class HotelProcessingRecord {
     this.warnings = warnings;
   }
 
-  public HotelProcessingRecord status(ItemProcessingStatus status) {
+  public HotelProcessingRecord status(@Nullable ItemProcessingStatus status) {
     this.status = status;
     return this;
   }
@@ -127,11 +127,11 @@ public class HotelProcessingRecord {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public ItemProcessingStatus getStatus() {
+  public @Nullable ItemProcessingStatus getStatus() {
     return status;
   }
 
-  public void setStatus(ItemProcessingStatus status) {
+  public void setStatus(@Nullable ItemProcessingStatus status) {
     this.status = status;
   }
 

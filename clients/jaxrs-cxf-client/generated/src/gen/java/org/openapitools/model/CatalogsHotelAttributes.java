@@ -16,109 +16,128 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelAttributes  {
   
-  @ApiModelProperty(value = "The hotel's name.")
  /**
-   * The hotel's name.
-  **/
+  * The hotel's name.
+  */
+  @ApiModelProperty(value = "The hotel's name.")
+
   private String name;
 
-  @ApiModelProperty(value = "Link to the product page")
  /**
-   * Link to the product page
-  **/
+  * Link to the product page
+  */
+  @ApiModelProperty(value = "Link to the product page")
+
   private String link;
 
-  @ApiModelProperty(value = "Brief description of the hotel.")
  /**
-   * Brief description of the hotel.
-  **/
+  * Brief description of the hotel.
+  */
+  @ApiModelProperty(value = "Brief description of the hotel.")
+
   private String description;
 
-  @ApiModelProperty(value = "The brand to which this hotel belongs to.")
  /**
-   * The brand to which this hotel belongs to.
-  **/
+  * The brand to which this hotel belongs to.
+  */
+  @ApiModelProperty(value = "The brand to which this hotel belongs to.")
+
   private String brand;
 
-  @ApiModelProperty(value = "Latitude of the hotel.")
  /**
-   * Latitude of the hotel.
-  **/
+  * Latitude of the hotel.
+  */
+  @ApiModelProperty(value = "Latitude of the hotel.")
+
   private BigDecimal latitude;
 
-  @ApiModelProperty(value = "Longitude of the hotel.")
  /**
-   * Longitude of the hotel.
-  **/
+  * Longitude of the hotel.
+  */
+  @ApiModelProperty(value = "Longitude of the hotel.")
+
   private BigDecimal longitude;
 
-  @ApiModelProperty(value = "A list of neighborhoods where the hotel is located")
  /**
-   * A list of neighborhoods where the hotel is located
-  **/
+  * A list of neighborhoods where the hotel is located
+  */
+  @ApiModelProperty(value = "A list of neighborhoods where the hotel is located")
+
   private List<String> neighborhood;
 
   @ApiModelProperty(value = "")
+
   private CatalogsHotelAddress address;
 
-  @ApiModelProperty(value = "Custom grouping of hotels")
  /**
-   * Custom grouping of hotels
-  **/
+  * Custom grouping of hotels
+  */
+  @ApiModelProperty(value = "Custom grouping of hotels")
+
   private String customLabel0;
 
-  @ApiModelProperty(value = "Custom grouping of hotels")
  /**
-   * Custom grouping of hotels
-  **/
+  * Custom grouping of hotels
+  */
+  @ApiModelProperty(value = "Custom grouping of hotels")
+
   private String customLabel1;
 
-  @ApiModelProperty(value = "Custom grouping of hotels")
  /**
-   * Custom grouping of hotels
-  **/
+  * Custom grouping of hotels
+  */
+  @ApiModelProperty(value = "Custom grouping of hotels")
+
   private String customLabel2;
 
-  @ApiModelProperty(value = "Custom grouping of hotels")
  /**
-   * Custom grouping of hotels
-  **/
+  * Custom grouping of hotels
+  */
+  @ApiModelProperty(value = "Custom grouping of hotels")
+
   private String customLabel3;
 
-  @ApiModelProperty(value = "Custom grouping of hotels")
  /**
-   * Custom grouping of hotels
-  **/
+  * Custom grouping of hotels
+  */
+  @ApiModelProperty(value = "Custom grouping of hotels")
+
   private String customLabel4;
 
-  @ApiModelProperty(value = "The type of property. The category can be any type of internal description desired.")
  /**
-   * The type of property. The category can be any type of internal description desired.
-  **/
+  * The type of property. The category can be any type of internal description desired.
+  */
+  @ApiModelProperty(value = "The type of property. The category can be any type of internal description desired.")
+
   private String category;
 
-  @ApiModelProperty(example = "100 USD", value = "Base price of the hotel room per night followed by the ISO currency code")
  /**
-   * Base price of the hotel room per night followed by the ISO currency code
-  **/
+  * Base price of the hotel room per night followed by the ISO currency code
+  */
+  @ApiModelProperty(example = "100 USD", value = "Base price of the hotel room per night followed by the ISO currency code")
+
   private String basePrice;
 
-  @ApiModelProperty(example = "90 USD", value = "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.")
  /**
-   * Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
-  **/
+  * Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
+  */
+  @ApiModelProperty(example = "90 USD", value = "Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.")
+
   private String salePrice;
 
   @ApiModelProperty(value = "")
+
   private CatalogsHotelGuestRatings guestRatings;
 
   @ApiModelProperty(value = "")
+
   private CatalogsHotelAttributesAllOfMainImage mainImage;
 
-  @ApiModelProperty(example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", value = "<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>")
  /**
-   * <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
-  **/
+  * <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+  */
+  @ApiModelProperty(example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", value = "<p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>")
+
   private List<String> additionalImageLink;
  /**
    * The hotel&#39;s name.

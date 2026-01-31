@@ -399,44 +399,34 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "ph":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ph = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            ph = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ge":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ge = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            ge = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "db":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                db = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            db = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ln":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ln = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            ln = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "fn":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                fn = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            fn = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ct":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ct = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            ct = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "st":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                st = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            st = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "zp":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                zp = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            zp = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "country":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                country = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            country = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "external_id":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                externalId = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            externalId = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "click_id":
                             clickId = new Option<string?>(utf8JsonReader.GetString());
@@ -506,20 +496,20 @@ namespace Org.OpenAPITools.Model
 
             if (conversionEventsUserData.ConversionEventsUserDataAnyOfOption.IsSet && conversionEventsUserData.ConversionEventsUserDataAnyOfOption.Value != null)
             {
-                ConversionEventsUserDataAnyOfJsonConverter ConversionEventsUserDataAnyOfJsonConverter = (ConversionEventsUserDataAnyOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(conversionEventsUserData.ConversionEventsUserDataAnyOfOption.Value.GetType()));
-                ConversionEventsUserDataAnyOfJsonConverter.WriteProperties(writer, conversionEventsUserData.ConversionEventsUserDataAnyOfOption.Value, jsonSerializerOptions);
+                ConversionEventsUserDataAnyOfJsonConverter conversionEventsUserDataAnyOfJsonConverter = (ConversionEventsUserDataAnyOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(conversionEventsUserData.ConversionEventsUserDataAnyOfOption.Value.GetType()));
+                conversionEventsUserDataAnyOfJsonConverter.WriteProperties(writer, conversionEventsUserData.ConversionEventsUserDataAnyOfOption.Value, jsonSerializerOptions);
             }
 
             if (conversionEventsUserData.ConversionEventsUserDataAnyOf1Option.IsSet && conversionEventsUserData.ConversionEventsUserDataAnyOf1Option.Value != null)
             {
-                ConversionEventsUserDataAnyOf1JsonConverter ConversionEventsUserDataAnyOf1JsonConverter = (ConversionEventsUserDataAnyOf1JsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(conversionEventsUserData.ConversionEventsUserDataAnyOf1Option.Value.GetType()));
-                ConversionEventsUserDataAnyOf1JsonConverter.WriteProperties(writer, conversionEventsUserData.ConversionEventsUserDataAnyOf1Option.Value, jsonSerializerOptions);
+                ConversionEventsUserDataAnyOf1JsonConverter conversionEventsUserDataAnyOf1JsonConverter = (ConversionEventsUserDataAnyOf1JsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(conversionEventsUserData.ConversionEventsUserDataAnyOf1Option.Value.GetType()));
+                conversionEventsUserDataAnyOf1JsonConverter.WriteProperties(writer, conversionEventsUserData.ConversionEventsUserDataAnyOf1Option.Value, jsonSerializerOptions);
             }
 
             if (conversionEventsUserData.ConversionEventsUserDataAnyOf2Option.IsSet && conversionEventsUserData.ConversionEventsUserDataAnyOf2Option.Value != null)
             {
-                ConversionEventsUserDataAnyOf2JsonConverter ConversionEventsUserDataAnyOf2JsonConverter = (ConversionEventsUserDataAnyOf2JsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(conversionEventsUserData.ConversionEventsUserDataAnyOf2Option.Value.GetType()));
-                ConversionEventsUserDataAnyOf2JsonConverter.WriteProperties(writer, conversionEventsUserData.ConversionEventsUserDataAnyOf2Option.Value, jsonSerializerOptions);
+                ConversionEventsUserDataAnyOf2JsonConverter conversionEventsUserDataAnyOf2JsonConverter = (ConversionEventsUserDataAnyOf2JsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(conversionEventsUserData.ConversionEventsUserDataAnyOf2Option.Value.GetType()));
+                conversionEventsUserDataAnyOf2JsonConverter.WriteProperties(writer, conversionEventsUserData.ConversionEventsUserDataAnyOf2Option.Value, jsonSerializerOptions);
             }
 
             WriteProperties(writer, conversionEventsUserData, jsonSerializerOptions);

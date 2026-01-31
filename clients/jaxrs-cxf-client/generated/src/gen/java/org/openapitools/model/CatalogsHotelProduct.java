@@ -41,12 +41,15 @@ HOTEL(String.valueOf("HOTEL"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsHotelProductMetadata metadata;
 
   @ApiModelProperty(required = true, value = "")
+
   private Pin pin;
  /**
    * Get catalogType

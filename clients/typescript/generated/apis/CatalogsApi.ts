@@ -1148,12 +1148,14 @@ export class CatalogsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\'/docs/api/v5/#operation/ad_accounts/list\'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: this endpoint is deprecated and will be deleted soon. Please use <a href=\'/docs/api/v5/#operation/items/post\'>Get catalogs items (POST)</a> instead.
      * Get catalogs items
      * @param country Country for the Catalogs Items
      * @param language Language for the Catalogs Items
      * @param adAccountId Unique identifier of an ad account.
-     * @param itemIds This parameter is deprecated. Use filters instead.
+     * @param itemIds This parameter is deprecated. Use filters instead. (@deprecated)
      * @param filters Identifies items to be retrieved. This is a required parameter.
      */
     public async itemsGet(country: string, language: string, adAccountId?: string, itemIds?: Array<string>, filters?: CatalogsItemsFilters, _options?: Configuration): Promise<RequestContext> {
@@ -1277,10 +1279,7 @@ export class CatalogsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (itemValidationIssue !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(itemValidationIssue, "CatalogsItemValidationIssue", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
-            }
+            requestContext.setQueryParam("item_validation_issue", ObjectSerializer.serialize(itemValidationIssue, "CatalogsItemValidationIssue", ""));
         }
 
         // Query Params

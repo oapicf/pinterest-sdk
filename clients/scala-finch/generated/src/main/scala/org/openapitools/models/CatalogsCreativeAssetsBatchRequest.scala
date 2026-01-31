@@ -6,7 +6,6 @@ import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
 import org.openapitools.models.CatalogsCreativeAssetsBatchItem
-import org.openapitools.models.CatalogsItemsRequestLanguage
 import org.openapitools.models.Country
 import scala.collection.immutable.Seq
 
@@ -14,13 +13,13 @@ import scala.collection.immutable.Seq
  * Request object to update catalogs creative assets items
  * @param catalogUnderscoretype 
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param items Array with creative assets item operations
  * @param catalogUnderscoreid Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
  */
 case class CatalogsCreativeAssetsBatchRequest(catalogUnderscoretype: String,
                 country: Country,
-                language: CatalogsItemsRequestLanguage,
+                language: String,
                 items: Seq[CatalogsCreativeAssetsBatchItem],
                 catalogUnderscoreid: Option[String]
                 )

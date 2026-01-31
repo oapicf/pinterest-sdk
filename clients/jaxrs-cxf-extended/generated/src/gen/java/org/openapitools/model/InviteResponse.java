@@ -17,36 +17,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class InviteResponse  {
   
-  @ApiModelProperty(value = "")
-  @Valid
-  private InviteAssetsSummary assetsSummary;
-
- /**
-  * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-  */
-  @ApiModelProperty(example = "[\"BIZ_ADMIN\"]", value = "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.")
-  private List<String> businessRoles = new ArrayList<>();
-
- /**
-  * Metadata for the business that created the invite/request.
-  */
-  @ApiModelProperty(value = "Metadata for the business that created the invite/request.")
-  @Valid
-  private BusinessAccessUserSummary createdByBusiness;
-
- /**
-  * Metadata for the user that created the invite/request.
-  */
-  @ApiModelProperty(value = "Metadata for the user that created the invite/request.")
-  @Valid
-  private BusinessAccessUserSummary createdByUser;
-
- /**
-  * The time the invite/request was created. Returned in milliseconds.
-  */
-  @ApiModelProperty(example = "1646767577816", value = "The time the invite/request was created. Returned in milliseconds.")
-  private Integer createdTime;
-
  /**
   * Unique identifier of the invite/request.
   */
@@ -69,134 +39,34 @@ public class InviteResponse  {
   @ApiModelProperty(value = "Metadata for the member/partner that was sent the invite/request.")
   @Valid
   private BusinessAccessUserSummary user;
- /**
-  * Get assetsSummary
-  * @return assetsSummary
-  */
-  @JsonProperty("assets_summary")
-  public InviteAssetsSummary getAssetsSummary() {
-    return assetsSummary;
-  }
 
-  /**
-   * Sets the <code>assetsSummary</code> property.
-   */
- public void setAssetsSummary(InviteAssetsSummary assetsSummary) {
-    this.assetsSummary = assetsSummary;
-  }
-
-  /**
-   * Sets the <code>assetsSummary</code> property.
-   */
-  public InviteResponse assetsSummary(InviteAssetsSummary assetsSummary) {
-    this.assetsSummary = assetsSummary;
-    return this;
-  }
+  @ApiModelProperty(value = "")
+  @Valid
+  private InviteAssetsSummary assetsSummary;
 
  /**
   * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-  * @return businessRoles
   */
-  @JsonProperty("business_roles")
-  public List<String> getBusinessRoles() {
-    return businessRoles;
-  }
-
-  /**
-   * Sets the <code>businessRoles</code> property.
-   */
- public void setBusinessRoles(List<String> businessRoles) {
-    this.businessRoles = businessRoles;
-  }
-
-  /**
-   * Sets the <code>businessRoles</code> property.
-   */
-  public InviteResponse businessRoles(List<String> businessRoles) {
-    this.businessRoles = businessRoles;
-    return this;
-  }
-
-  /**
-   * Adds a new item to the <code>businessRoles</code> list.
-   */
-  public InviteResponse addBusinessRolesItem(String businessRolesItem) {
-    this.businessRoles.add(businessRolesItem);
-    return this;
-  }
+  @ApiModelProperty(example = "[\"BIZ_ADMIN\"]", value = "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.")
+  private List<String> businessRoles = new ArrayList<>();
 
  /**
   * Metadata for the business that created the invite/request.
-  * @return createdByBusiness
   */
-  @JsonProperty("created_by_business")
-  public BusinessAccessUserSummary getCreatedByBusiness() {
-    return createdByBusiness;
-  }
-
-  /**
-   * Sets the <code>createdByBusiness</code> property.
-   */
- public void setCreatedByBusiness(BusinessAccessUserSummary createdByBusiness) {
-    this.createdByBusiness = createdByBusiness;
-  }
-
-  /**
-   * Sets the <code>createdByBusiness</code> property.
-   */
-  public InviteResponse createdByBusiness(BusinessAccessUserSummary createdByBusiness) {
-    this.createdByBusiness = createdByBusiness;
-    return this;
-  }
+  @ApiModelProperty(value = "Metadata for the business that created the invite/request.")
+  private Object createdByBusiness;
 
  /**
   * Metadata for the user that created the invite/request.
-  * @return createdByUser
   */
-  @JsonProperty("created_by_user")
-  public BusinessAccessUserSummary getCreatedByUser() {
-    return createdByUser;
-  }
-
-  /**
-   * Sets the <code>createdByUser</code> property.
-   */
- public void setCreatedByUser(BusinessAccessUserSummary createdByUser) {
-    this.createdByUser = createdByUser;
-  }
-
-  /**
-   * Sets the <code>createdByUser</code> property.
-   */
-  public InviteResponse createdByUser(BusinessAccessUserSummary createdByUser) {
-    this.createdByUser = createdByUser;
-    return this;
-  }
+  @ApiModelProperty(value = "Metadata for the user that created the invite/request.")
+  private Object createdByUser;
 
  /**
   * The time the invite/request was created. Returned in milliseconds.
-  * @return createdTime
   */
-  @JsonProperty("created_time")
-  public Integer getCreatedTime() {
-    return createdTime;
-  }
-
-  /**
-   * Sets the <code>createdTime</code> property.
-   */
- public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  /**
-   * Sets the <code>createdTime</code> property.
-   */
-  public InviteResponse createdTime(Integer createdTime) {
-    this.createdTime = createdTime;
-    return this;
-  }
-
+  @ApiModelProperty(example = "1646767577816", value = "The time the invite/request was created. Returned in milliseconds.")
+  private Integer createdTime;
  /**
   * Unique identifier of the invite/request.
   * @return id
@@ -293,6 +163,134 @@ public class InviteResponse  {
     return this;
   }
 
+ /**
+  * Get assetsSummary
+  * @return assetsSummary
+  */
+  @JsonProperty("assets_summary")
+  public InviteAssetsSummary getAssetsSummary() {
+    return assetsSummary;
+  }
+
+  /**
+   * Sets the <code>assetsSummary</code> property.
+   */
+ public void setAssetsSummary(InviteAssetsSummary assetsSummary) {
+    this.assetsSummary = assetsSummary;
+  }
+
+  /**
+   * Sets the <code>assetsSummary</code> property.
+   */
+  public InviteResponse assetsSummary(InviteAssetsSummary assetsSummary) {
+    this.assetsSummary = assetsSummary;
+    return this;
+  }
+
+ /**
+  * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+  * @return businessRoles
+  */
+  @JsonProperty("business_roles")
+  public List<String> getBusinessRoles() {
+    return businessRoles;
+  }
+
+  /**
+   * Sets the <code>businessRoles</code> property.
+   */
+ public void setBusinessRoles(List<String> businessRoles) {
+    this.businessRoles = businessRoles;
+  }
+
+  /**
+   * Sets the <code>businessRoles</code> property.
+   */
+  public InviteResponse businessRoles(List<String> businessRoles) {
+    this.businessRoles = businessRoles;
+    return this;
+  }
+
+  /**
+   * Adds a new item to the <code>businessRoles</code> list.
+   */
+  public InviteResponse addBusinessRolesItem(String businessRolesItem) {
+    this.businessRoles.add(businessRolesItem);
+    return this;
+  }
+
+ /**
+  * Metadata for the business that created the invite/request.
+  * @return createdByBusiness
+  */
+  @JsonProperty("created_by_business")
+  public Object getCreatedByBusiness() {
+    return createdByBusiness;
+  }
+
+  /**
+   * Sets the <code>createdByBusiness</code> property.
+   */
+ public void setCreatedByBusiness(Object createdByBusiness) {
+    this.createdByBusiness = createdByBusiness;
+  }
+
+  /**
+   * Sets the <code>createdByBusiness</code> property.
+   */
+  public InviteResponse createdByBusiness(Object createdByBusiness) {
+    this.createdByBusiness = createdByBusiness;
+    return this;
+  }
+
+ /**
+  * Metadata for the user that created the invite/request.
+  * @return createdByUser
+  */
+  @JsonProperty("created_by_user")
+  public Object getCreatedByUser() {
+    return createdByUser;
+  }
+
+  /**
+   * Sets the <code>createdByUser</code> property.
+   */
+ public void setCreatedByUser(Object createdByUser) {
+    this.createdByUser = createdByUser;
+  }
+
+  /**
+   * Sets the <code>createdByUser</code> property.
+   */
+  public InviteResponse createdByUser(Object createdByUser) {
+    this.createdByUser = createdByUser;
+    return this;
+  }
+
+ /**
+  * The time the invite/request was created. Returned in milliseconds.
+  * @return createdTime
+  */
+  @JsonProperty("created_time")
+  public Integer getCreatedTime() {
+    return createdTime;
+  }
+
+  /**
+   * Sets the <code>createdTime</code> property.
+   */
+ public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
+  }
+
+  /**
+   * Sets the <code>createdTime</code> property.
+   */
+  public InviteResponse createdTime(Integer createdTime) {
+    this.createdTime = createdTime;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -303,20 +301,20 @@ public class InviteResponse  {
       return false;
     }
     InviteResponse inviteResponse = (InviteResponse) o;
-    return Objects.equals(this.assetsSummary, inviteResponse.assetsSummary) &&
+    return Objects.equals(this.id, inviteResponse.id) &&
+        Objects.equals(this.inviteData, inviteResponse.inviteData) &&
+        Objects.equals(this.isReceivedInvite, inviteResponse.isReceivedInvite) &&
+        Objects.equals(this.user, inviteResponse.user) &&
+        Objects.equals(this.assetsSummary, inviteResponse.assetsSummary) &&
         Objects.equals(this.businessRoles, inviteResponse.businessRoles) &&
         Objects.equals(this.createdByBusiness, inviteResponse.createdByBusiness) &&
         Objects.equals(this.createdByUser, inviteResponse.createdByUser) &&
-        Objects.equals(this.createdTime, inviteResponse.createdTime) &&
-        Objects.equals(this.id, inviteResponse.id) &&
-        Objects.equals(this.inviteData, inviteResponse.inviteData) &&
-        Objects.equals(this.isReceivedInvite, inviteResponse.isReceivedInvite) &&
-        Objects.equals(this.user, inviteResponse.user);
+        Objects.equals(this.createdTime, inviteResponse.createdTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetsSummary, businessRoles, createdByBusiness, createdByUser, createdTime, id, inviteData, isReceivedInvite, user);
+    return Objects.hash(id, inviteData, isReceivedInvite, user, assetsSummary, businessRoles, createdByBusiness, createdByUser, createdTime);
   }
 
   @Override
@@ -324,15 +322,15 @@ public class InviteResponse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteResponse {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
+    sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
+    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    assetsSummary: ").append(toIndentedString(assetsSummary)).append("\n");
     sb.append("    businessRoles: ").append(toIndentedString(businessRoles)).append("\n");
     sb.append("    createdByBusiness: ").append(toIndentedString(createdByBusiness)).append("\n");
     sb.append("    createdByUser: ").append(toIndentedString(createdByUser)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
-    sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("}");
     return sb.toString();
   }

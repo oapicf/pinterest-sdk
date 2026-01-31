@@ -47,14 +47,19 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsCreativeAssetsProductMetadata metadata;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private Pin pin;
  /**
    * Get catalogType

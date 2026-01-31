@@ -9,16 +9,46 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_items_post_filter
 import model_catalogs_hotel_items_post_filter
 import model_catalogs_retail_items_post_filter
 import model_catalogs_type
 
+# OneOf type
+type CatalogsItemsPostFiltersKind* {.pure.} = enum
+  CatalogsRetailItemsPostFilterVariant
+  CatalogsHotelItemsPostFilterVariant
+  CatalogsCreativeAssetsItemsPostFilterVariant
+
 type CatalogsItemsPostFilters* = object
   ## 
-  catalogType*: CatalogsType
-  itemIds*: seq[string]
-  catalogId*: string ## Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-  hotelIds*: seq[string]
-  creativeAssetsIds*: seq[string]
+  case kind*: CatalogsItemsPostFiltersKind
+  of CatalogsItemsPostFiltersKind.CatalogsRetailItemsPostFilterVariant:
+    CatalogsRetailItemsPostFilterValue*: CatalogsRetailItemsPostFilter
+  of CatalogsItemsPostFiltersKind.CatalogsHotelItemsPostFilterVariant:
+    CatalogsHotelItemsPostFilterValue*: CatalogsHotelItemsPostFilter
+  of CatalogsItemsPostFiltersKind.CatalogsCreativeAssetsItemsPostFilterVariant:
+    CatalogsCreativeAssetsItemsPostFilterValue*: CatalogsCreativeAssetsItemsPostFilter
+
+proc to*(node: JsonNode, T: typedesc[CatalogsItemsPostFilters]): CatalogsItemsPostFilters =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsItemsPostFilters(kind: CatalogsItemsPostFiltersKind.CatalogsRetailItemsPostFilterVariant, CatalogsRetailItemsPostFilterValue: to(node, CatalogsRetailItemsPostFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailItemsPostFilter: ", e.msg
+  try:
+    return CatalogsItemsPostFilters(kind: CatalogsItemsPostFiltersKind.CatalogsHotelItemsPostFilterVariant, CatalogsHotelItemsPostFilterValue: to(node, CatalogsHotelItemsPostFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelItemsPostFilter: ", e.msg
+  try:
+    return CatalogsItemsPostFilters(kind: CatalogsItemsPostFiltersKind.CatalogsCreativeAssetsItemsPostFilterVariant, CatalogsCreativeAssetsItemsPostFilterValue: to(node, CatalogsCreativeAssetsItemsPostFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsItemsPostFilter: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsItemsPostFilters. JSON: " & $node)
+

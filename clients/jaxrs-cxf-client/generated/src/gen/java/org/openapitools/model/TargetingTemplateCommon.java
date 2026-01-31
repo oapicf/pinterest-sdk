@@ -16,28 +16,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TargetingTemplateCommon  {
   
-  @ApiModelProperty(example = "Gaming", value = "targeting template name")
  /**
-   * targeting template name
-  **/
+  * targeting template name
+  */
+  @ApiModelProperty(example = "Gaming", value = "targeting template name")
+
   private String name;
 
-  @ApiModelProperty(value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
  /**
-   * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  **/
+  * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  */
+  @ApiModelProperty(value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
+
   private Boolean autoTargetingEnabled = true;
 
   @ApiModelProperty(value = "")
+
   private TargetingSpec targetingAttributes;
 
   @ApiModelProperty(value = "")
+
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
   @ApiModelProperty(example = "[{\"value\":\"cats\",\"match_type\":\"EXACT_NEGATIVE\"}]", value = "")
+
   private List<TargetingTemplateKeyword> keywords = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private TrackingUrls trackingUrls;
  /**
    * targeting template name

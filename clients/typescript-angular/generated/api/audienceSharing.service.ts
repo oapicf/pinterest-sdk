@@ -11,10 +11,10 @@
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent, HttpParameterCodec, HttpContext 
+         HttpResponse, HttpEvent, HttpContext 
         }       from '@angular/common/http';
-import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
+import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
 import { AdAccountsAudiencesSharedAccountsList200Response } from '../model/adAccountsAudiencesSharedAccountsList200Response';
@@ -50,6 +50,7 @@ export class AudienceSharingService extends BaseService {
     /**
      * List accounts with access to an audience owned by an ad account
      * List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
+     * @endpoint get /ad_accounts/{ad_account_id}/audiences/shared/accounts
      * @param adAccountId Unique identifier of an ad account.
      * @param audienceId Unique identifier of the audience to use to filter the results.
      * @param accountType Filter accounts by account type.
@@ -57,6 +58,7 @@ export class AudienceSharingService extends BaseService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public adAccountsAudiencesSharedAccountsList(adAccountId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdAccountsAudiencesSharedAccountsList200Response>;
     public adAccountsAudiencesSharedAccountsList(adAccountId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdAccountsAudiencesSharedAccountsList200Response>>;
@@ -72,15 +74,43 @@ export class AudienceSharingService extends BaseService {
             throw new Error('Required parameter accountType was null or undefined when calling adAccountsAudiencesSharedAccountsList.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>audienceId, 'audience_id');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>accountType, 'account_type');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'audience_id',
+            <any>audienceId,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'account_type',
+            <any>accountType,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -111,15 +141,16 @@ export class AudienceSharingService extends BaseService {
         }
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/audiences/shared/accounts`;
-        return this.httpClient.request<AdAccountsAudiencesSharedAccountsList200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<AdAccountsAudiencesSharedAccountsList200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -128,6 +159,7 @@ export class AudienceSharingService extends BaseService {
     /**
      * List accounts with access to an audience owned by a business
      * List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
+     * @endpoint get /businesses/{business_id}/audiences/shared/accounts
      * @param businessId Unique identifier of the requesting business.
      * @param audienceId Unique identifier of the audience to use to filter the results.
      * @param accountType Filter accounts by account type.
@@ -135,6 +167,7 @@ export class AudienceSharingService extends BaseService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public businessAccountAudiencesSharedAccountsList(businessId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AdAccountsAudiencesSharedAccountsList200Response>;
     public businessAccountAudiencesSharedAccountsList(businessId: string, audienceId: string, accountType: AudienceAccountType, pageSize?: number, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AdAccountsAudiencesSharedAccountsList200Response>>;
@@ -150,15 +183,43 @@ export class AudienceSharingService extends BaseService {
             throw new Error('Required parameter accountType was null or undefined when calling businessAccountAudiencesSharedAccountsList.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>audienceId, 'audience_id');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>accountType, 'account_type');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'audience_id',
+            <any>audienceId,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'account_type',
+            <any>accountType,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -189,15 +250,16 @@ export class AudienceSharingService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/audiences/shared/accounts`;
-        return this.httpClient.request<AdAccountsAudiencesSharedAccountsList200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<AdAccountsAudiencesSharedAccountsList200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -206,12 +268,14 @@ export class AudienceSharingService extends BaseService {
     /**
      * List received audiences for a business
      * Get a list of received audiences for the given business.
+     * @endpoint get /businesses/{business_id}/audiences
      * @param businessId Unique identifier of the requesting business.
      * @param bookmark Cursor used to fetch the next page of items
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public sharedAudiencesForBusinessList(businessId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<AudiencesList200Response>;
     public sharedAudiencesForBusinessList(businessId: string, bookmark?: string, order?: 'ASCENDING' | 'DESCENDING', pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AudiencesList200Response>>;
@@ -221,13 +285,34 @@ export class AudienceSharingService extends BaseService {
             throw new Error('Required parameter businessId was null or undefined when calling sharedAudiencesForBusinessList.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>order, 'order');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'order',
+            <any>order,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -258,15 +343,16 @@ export class AudienceSharingService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/audiences`;
-        return this.httpClient.request<AudiencesList200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<AudiencesList200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -275,10 +361,12 @@ export class AudienceSharingService extends BaseService {
     /**
      * Update audience sharing between ad accounts
      * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;\&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts\&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.
+     * @endpoint patch /ad_accounts/{ad_account_id}/audiences/ad_accounts/shared
      * @param adAccountId Unique identifier of an ad account.
      * @param sharedAudience 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public updateAdAccountToAdAccountSharedAudience(adAccountId: string, sharedAudience: SharedAudience, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<SharedAudienceResponse>;
     public updateAdAccountToAdAccountSharedAudience(adAccountId: string, sharedAudience: SharedAudience, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<SharedAudienceResponse>>;
@@ -329,15 +417,16 @@ export class AudienceSharingService extends BaseService {
         }
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/audiences/ad_accounts/shared`;
-        return this.httpClient.request<SharedAudienceResponse>('patch', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<SharedAudienceResponse>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: sharedAudience,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -346,10 +435,12 @@ export class AudienceSharingService extends BaseService {
     /**
      * Update audience sharing from an ad account to businesses
      * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.
+     * @endpoint patch /ad_accounts/{ad_account_id}/audiences/businesses/shared
      * @param adAccountId Unique identifier of an ad account.
      * @param businessSharedAudience 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public updateAdAccountToBusinessSharedAudience(adAccountId: string, businessSharedAudience: BusinessSharedAudience, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessSharedAudienceResponse>;
     public updateAdAccountToBusinessSharedAudience(adAccountId: string, businessSharedAudience: BusinessSharedAudience, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessSharedAudienceResponse>>;
@@ -400,15 +491,16 @@ export class AudienceSharingService extends BaseService {
         }
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/audiences/businesses/shared`;
-        return this.httpClient.request<BusinessSharedAudienceResponse>('patch', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BusinessSharedAudienceResponse>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: businessSharedAudience,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -417,10 +509,12 @@ export class AudienceSharingService extends BaseService {
     /**
      * Update audience sharing from a business to ad accounts
      * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.
+     * @endpoint patch /businesses/{business_id}/audiences/ad_accounts/shared
      * @param businessId Unique identifier of the requesting business.
      * @param sharedAudience 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public updateBusinessToAdAccountSharedAudience(businessId: string, sharedAudience: SharedAudience, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<SharedAudienceResponse>;
     public updateBusinessToAdAccountSharedAudience(businessId: string, sharedAudience: SharedAudience, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<SharedAudienceResponse>>;
@@ -471,15 +565,16 @@ export class AudienceSharingService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/audiences/ad_accounts/shared`;
-        return this.httpClient.request<SharedAudienceResponse>('patch', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<SharedAudienceResponse>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: sharedAudience,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -488,10 +583,12 @@ export class AudienceSharingService extends BaseService {
     /**
      * Update audience sharing between businesses
      * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;\&#39;/docs/getting-started/beta-and-advanced-access/\&#39;&gt;Learn more&lt;/a&gt;.
+     * @endpoint patch /businesses/{business_id}/audiences/businesses/shared
      * @param businessId Unique identifier of the requesting business.
      * @param businessSharedAudience 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public updateBusinessToBusinessSharedAudience(businessId: string, businessSharedAudience: BusinessSharedAudience, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessSharedAudienceResponse>;
     public updateBusinessToBusinessSharedAudience(businessId: string, businessSharedAudience: BusinessSharedAudience, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessSharedAudienceResponse>>;
@@ -542,15 +639,16 @@ export class AudienceSharingService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/audiences/businesses/shared`;
-        return this.httpClient.request<BusinessSharedAudienceResponse>('patch', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BusinessSharedAudienceResponse>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: businessSharedAudience,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );

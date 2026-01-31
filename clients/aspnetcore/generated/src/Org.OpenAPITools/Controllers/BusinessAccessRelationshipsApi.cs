@@ -47,16 +47,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(DeletedMembersResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"deleted_members\" : [ \"809944451643622187\", \"383791336903426391\" ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<DeletedMembersResponse>(exampleJson)
-            : default(DeletedMembersResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -82,11 +82,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(DeletePartnersResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"deleted_partners\" : [ \"809944451643622187\", \"383791336903426391\" ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -94,7 +94,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<DeletePartnersResponse>(exampleJson)
-            : default(DeletePartnersResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -117,16 +117,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(GetBusinessEmployers200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"created_time\" : 1646767577816,\n    \"assets_summary\" : \"{}\",\n    \"business_roles\" : [ \"BIZ_ADMIN\" ],\n    \"is_shared_partner\" : false,\n    \"created_by_business\" : \"{}\",\n    \"id\" : \"383791336903426391\",\n    \"user\" : \"{}\",\n    \"created_by_user\" : \"{}\"\n  }, {\n    \"created_time\" : 1646767577816,\n    \"assets_summary\" : \"{}\",\n    \"business_roles\" : [ \"BIZ_ADMIN\" ],\n    \"is_shared_partner\" : false,\n    \"created_by_business\" : \"{}\",\n    \"id\" : \"383791336903426391\",\n    \"user\" : \"{}\",\n    \"created_by_user\" : \"{}\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<GetBusinessEmployers200Response>(exampleJson)
-            : default(GetBusinessEmployers200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -154,16 +154,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(GetBusinessMembers200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"created_time\" : 1646767577816,\n    \"assets_summary\" : \"{}\",\n    \"business_roles\" : [ \"BIZ_ADMIN\" ],\n    \"is_shared_partner\" : false,\n    \"created_by_business\" : \"{}\",\n    \"id\" : \"383791336903426391\",\n    \"user\" : \"{}\",\n    \"created_by_user\" : \"{}\"\n  }, {\n    \"created_time\" : 1646767577816,\n    \"assets_summary\" : \"{}\",\n    \"business_roles\" : [ \"BIZ_ADMIN\" ],\n    \"is_shared_partner\" : false,\n    \"created_by_business\" : \"{}\",\n    \"id\" : \"383791336903426391\",\n    \"user\" : \"{}\",\n    \"created_by_user\" : \"{}\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<GetBusinessMembers200Response>(exampleJson)
-            : default(GetBusinessMembers200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -191,16 +191,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(GetBusinessPartners200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"created_time\" : 1646767577816,\n    \"assets_summary\" : \"{}\",\n    \"business_roles\" : [ \"BIZ_ADMIN\" ],\n    \"is_shared_partner\" : false,\n    \"created_by_business\" : \"{}\",\n    \"id\" : \"383791336903426391\",\n    \"user\" : \"{}\",\n    \"created_by_user\" : \"{}\"\n  }, {\n    \"created_time\" : 1646767577816,\n    \"assets_summary\" : \"{}\",\n    \"business_roles\" : [ \"BIZ_ADMIN\" ],\n    \"is_shared_partner\" : false,\n    \"created_by_business\" : \"{}\",\n    \"id\" : \"383791336903426391\",\n    \"user\" : \"{}\",\n    \"created_by_user\" : \"{}\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<GetBusinessPartners200Response>(exampleJson)
-            : default(GetBusinessPartners200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -224,16 +224,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(UpdateMemberResultsResponseArray));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"member_id\" : \"140943737684417\",\n    \"business_role\" : \"EMPLOYEE\"\n  }, {\n    \"member_id\" : \"140943737684417\",\n    \"business_role\" : \"EMPLOYEE\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<UpdateMemberResultsResponseArray>(exampleJson)
-            : default(UpdateMemberResultsResponseArray);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

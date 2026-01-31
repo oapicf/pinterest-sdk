@@ -16,23 +16,6 @@ import { BusinessAccessUserSummary } from './businessAccessUserSummary';
 import { InviteAssetsSummary } from './inviteAssetsSummary';
 
 export class InviteResponse {
-    'assetsSummary'?: InviteAssetsSummary | null;
-    /**
-    * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-    */
-    'businessRoles'?: Array<string>;
-    /**
-    * Metadata for the business that created the invite/request.
-    */
-    'createdByBusiness'?: BusinessAccessUserSummary | null;
-    /**
-    * Metadata for the user that created the invite/request.
-    */
-    'createdByUser'?: BusinessAccessUserSummary | null;
-    /**
-    * The time the invite/request was created. Returned in milliseconds.
-    */
-    'createdTime'?: number;
     /**
     * Unique identifier of the invite/request.
     */
@@ -46,35 +29,27 @@ export class InviteResponse {
     * Metadata for the member/partner that was sent the invite/request.
     */
     'user'?: BusinessAccessUserSummary;
+    'assetsSummary'?: InviteAssetsSummary | null;
+    /**
+    * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+    */
+    'businessRoles'?: Array<string>;
+    /**
+    * Metadata for the business that created the invite/request.
+    */
+    'createdByBusiness'?: object | null;
+    /**
+    * Metadata for the user that created the invite/request.
+    */
+    'createdByUser'?: object | null;
+    /**
+    * The time the invite/request was created. Returned in milliseconds.
+    */
+    'createdTime'?: number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            "name": "assetsSummary",
-            "baseName": "assets_summary",
-            "type": "InviteAssetsSummary"
-        },
-        {
-            "name": "businessRoles",
-            "baseName": "business_roles",
-            "type": "Array<string>"
-        },
-        {
-            "name": "createdByBusiness",
-            "baseName": "created_by_business",
-            "type": "BusinessAccessUserSummary"
-        },
-        {
-            "name": "createdByUser",
-            "baseName": "created_by_user",
-            "type": "BusinessAccessUserSummary"
-        },
-        {
-            "name": "createdTime",
-            "baseName": "created_time",
-            "type": "number"
-        },
         {
             "name": "id",
             "baseName": "id",
@@ -94,6 +69,31 @@ export class InviteResponse {
             "name": "user",
             "baseName": "user",
             "type": "BusinessAccessUserSummary"
+        },
+        {
+            "name": "assetsSummary",
+            "baseName": "assets_summary",
+            "type": "InviteAssetsSummary"
+        },
+        {
+            "name": "businessRoles",
+            "baseName": "business_roles",
+            "type": "Array<string>"
+        },
+        {
+            "name": "createdByBusiness",
+            "baseName": "created_by_business",
+            "type": "object"
+        },
+        {
+            "name": "createdByUser",
+            "baseName": "created_by_user",
+            "type": "object"
+        },
+        {
+            "name": "createdTime",
+            "baseName": "created_time",
+            "type": "number"
         }    ];
 
     static getAttributeTypeMap() {

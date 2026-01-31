@@ -196,6 +196,8 @@ pub enum TemplatesSlashListResponse {
 }
 
 
+
+
 /// AdAccounts
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -205,6 +207,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// AdAccountSlashAnalytics - GET /v5/ad_accounts/{ad_account_id}/analytics
     async fn ad_account_slash_analytics(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -217,6 +220,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// AdAccountTargetingAnalyticsSlashGet - GET /v5/ad_accounts/{ad_account_id}/targeting_analytics
     async fn ad_account_targeting_analytics_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -229,6 +233,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// AdAccountsSlashCreate - POST /v5/ad_accounts
     async fn ad_accounts_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -240,6 +245,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// AdAccountsSlashGet - GET /v5/ad_accounts/{ad_account_id}
     async fn ad_accounts_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -251,6 +257,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// AdAccountsSlashList - GET /v5/ad_accounts
     async fn ad_accounts_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -262,6 +269,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// AnalyticsSlashCreateMmmReport - POST /v5/ad_accounts/{ad_account_id}/mmm_reports
     async fn analytics_slash_create_mmm_report(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -274,6 +282,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// AnalyticsSlashCreateReport - POST /v5/ad_accounts/{ad_account_id}/reports
     async fn analytics_slash_create_report(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -286,6 +295,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// AnalyticsSlashCreateTemplateReport - POST /v5/ad_accounts/{ad_account_id}/templates/{template_id}/reports
     async fn analytics_slash_create_template_report(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -298,6 +308,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// AnalyticsSlashGetMmmReport - GET /v5/ad_accounts/{ad_account_id}/mmm_reports
     async fn analytics_slash_get_mmm_report(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -310,6 +321,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// AnalyticsSlashGetReport - GET /v5/ad_accounts/{ad_account_id}/reports
     async fn analytics_slash_get_report(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -322,6 +334,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// SandboxSlashDelete - DELETE /v5/ad_accounts/{ad_account_id}/sandbox
     async fn sandbox_slash_delete(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -333,6 +346,7 @@ pub trait AdAccounts<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// TemplatesSlashList - GET /v5/ad_accounts/{ad_account_id}/templates
     async fn templates_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

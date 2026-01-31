@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AssetGroupBinding
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AssetGroupBinding {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -394,20 +394,10 @@ public class AssetGroupBinding {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("asset_group_name");
-    openapiFields.add("asset_group_description");
-    openapiFields.add("asset_group_types");
-    openapiFields.add("ad_accounts_ids");
-    openapiFields.add("profiles_ids");
-    openapiFields.add("created_time");
-    openapiFields.add("updated_time");
-    openapiFields.add("owner");
-    openapiFields.add("created_by");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "asset_group_name", "asset_group_description", "asset_group_types", "ad_accounts_ids", "profiles_ids", "created_time", "updated_time", "owner", "created_by"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -419,7 +409,7 @@ public class AssetGroupBinding {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AssetGroupBinding.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AssetGroupBinding is not found in the empty JSON string", AssetGroupBinding.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AssetGroupBinding is not found in the empty JSON string", AssetGroupBinding.openapiRequiredFields.toString()));
         }
       }
 
@@ -427,30 +417,30 @@ public class AssetGroupBinding {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AssetGroupBinding.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AssetGroupBinding` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AssetGroupBinding` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("asset_group_name") != null && !jsonObj.get("asset_group_name").isJsonNull()) && !jsonObj.get("asset_group_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `asset_group_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("asset_group_name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `asset_group_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("asset_group_name").toString()));
       }
       if ((jsonObj.get("asset_group_description") != null && !jsonObj.get("asset_group_description").isJsonNull()) && !jsonObj.get("asset_group_description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `asset_group_description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("asset_group_description").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `asset_group_description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("asset_group_description").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("asset_group_types") != null && !jsonObj.get("asset_group_types").isJsonNull() && !jsonObj.get("asset_group_types").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `asset_group_types` to be an array in the JSON string but got `%s`", jsonObj.get("asset_group_types").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `asset_group_types` to be an array in the JSON string but got `%s`", jsonObj.get("asset_group_types").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("ad_accounts_ids") != null && !jsonObj.get("ad_accounts_ids").isJsonNull() && !jsonObj.get("ad_accounts_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_accounts_ids` to be an array in the JSON string but got `%s`", jsonObj.get("ad_accounts_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_accounts_ids` to be an array in the JSON string but got `%s`", jsonObj.get("ad_accounts_ids").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("profiles_ids") != null && !jsonObj.get("profiles_ids").isJsonNull() && !jsonObj.get("profiles_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `profiles_ids` to be an array in the JSON string but got `%s`", jsonObj.get("profiles_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `profiles_ids` to be an array in the JSON string but got `%s`", jsonObj.get("profiles_ids").toString()));
       }
       // validate the optional field `owner`
       if (jsonObj.get("owner") != null && !jsonObj.get("owner").isJsonNull()) {

@@ -102,8 +102,11 @@ export class SearchApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "pins:read"]);
         }
 
+
+        let urlPath = `/search/partner/pins`;
+
         const response = await this.request({
-            path: `/search/partner/pins`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -156,8 +159,11 @@ export class SearchApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["boards:read", "boards:read_secret"]);
         }
 
+
+        let urlPath = `/search/boards`;
+
         const response = await this.request({
-            path: `/search/boards`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -208,8 +214,11 @@ export class SearchApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "boards:read_secret", "pins:read", "pins:read_secret"]);
         }
 
+
+        let urlPath = `/search/pins`;
+
         const response = await this.request({
-            path: `/search/pins`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

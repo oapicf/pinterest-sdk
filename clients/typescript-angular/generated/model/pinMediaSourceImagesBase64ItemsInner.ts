@@ -23,11 +23,11 @@ export interface PinMediaSourceImagesBase64ItemsInner {
     data: string;
 }
 export namespace PinMediaSourceImagesBase64ItemsInner {
-    export type ContentTypeEnum = 'image/jpeg' | 'image/png';
     export const ContentTypeEnum = {
-        ImageJpeg: 'image/jpeg' as ContentTypeEnum,
-        ImagePng: 'image/png' as ContentTypeEnum
-    };
+        ImageJpeg: 'image/jpeg',
+        ImagePng: 'image/png'
+    } as const;
+    export type ContentTypeEnum = typeof ContentTypeEnum[keyof typeof ContentTypeEnum];
 }
 
 

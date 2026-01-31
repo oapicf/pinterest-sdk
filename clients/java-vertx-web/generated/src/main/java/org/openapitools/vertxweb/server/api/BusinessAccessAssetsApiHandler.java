@@ -328,7 +328,7 @@ public class BusinessAccessAssetsApiHandler {
 
         String businessId = requestParameters.pathParameter("business_id") != null ? requestParameters.pathParameter("business_id").getString() : null;
         String partnerId = requestParameters.pathParameter("partner_id") != null ? requestParameters.pathParameter("partner_id").getString() : null;
-        PartnerType partnerType = requestParameters.queryParameter("partner_type") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("partner_type").get(), new TypeReference<PartnerType>(){}) : null;
+        PartnerType partnerType = requestParameters.queryParameter("partner_type") != null ? requestParameters.queryParameter("partner_type").getPartnerType() : ;
         String assetType = requestParameters.queryParameter("asset_type") != null ? requestParameters.queryParameter("asset_type").getString() : "AD_ACCOUNT";
         Integer startIndex = requestParameters.queryParameter("start_index") != null ? requestParameters.queryParameter("start_index").getInteger() : 0;
         Integer pageSize = requestParameters.queryParameter("page_size") != null ? requestParameters.queryParameter("page_size").getInteger() : 25;

@@ -90,7 +90,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="targetingTemplateCreate">targeting template creation entity</param>
-    virtual void targeting_template_create(const std::string &adAccountId, const org::openapitools::server::model::TargetingTemplateCreate &targetingTemplateCreate, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void targeting_template_create( const std::string &adAccountId, const org::openapitools::server::model::TargetingTemplateCreate &targetingTemplateCreate, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List targeting templates
     /// </summary>
@@ -103,7 +103,7 @@ private:
     /// <param name="searchQuery">Search keyword for targeting templates (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void targeting_template_list(const std::string &adAccountId, const std::optional<std::string> &order, const std::optional<bool> &includeSizing, const std::optional<std::string> &searchQuery, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void targeting_template_list( const std::string &adAccountId, const std::optional<std::string> &order, const std::optional<bool> &includeSizing, const std::optional<std::string> &searchQuery, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update targeting templates
     /// </summary>
@@ -112,7 +112,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="targetingTemplateUpdateRequest">Operation type and targeting template ID</param>
-    virtual void targeting_template_update(const std::string &adAccountId, const org::openapitools::server::model::TargetingTemplateUpdateRequest &targetingTemplateUpdateRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void targeting_template_update( const std::string &adAccountId, const org::openapitools::server::model::TargetingTemplateUpdateRequest &targetingTemplateUpdateRequest, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

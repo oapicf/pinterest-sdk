@@ -36,7 +36,7 @@ data class SharedAudienceAccount(
 
     @Schema(example = "1677003860", required = true, description = "Epoch timestamp in seconds for the shared audience event")
     @get:JsonProperty("shared_on_timestamp", required = true) val sharedOnTimestamp: kotlin.Int
-    ) {
+) {
 
     /**
     * account type
@@ -51,7 +51,8 @@ data class SharedAudienceAccount(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): AccountType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'SharedAudienceAccount'")
             }
         }
     }

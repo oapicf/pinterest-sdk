@@ -433,12 +433,10 @@ namespace Org.OpenAPITools.Model
                             partnerPrimaryEmail = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "partner_access_token_expiry":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                partnerAccessTokenExpiry = new Option<int?>(utf8JsonReader.GetInt32());
+                            partnerAccessTokenExpiry = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "partner_refresh_token_expiry":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                partnerRefreshTokenExpiry = new Option<int?>(utf8JsonReader.GetInt32());
+                            partnerRefreshTokenExpiry = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "scopes":
                             scopes = new Option<string?>(utf8JsonReader.GetString());
@@ -450,12 +448,10 @@ namespace Org.OpenAPITools.Model
                             additionalId1 = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "created_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "updated_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            updatedTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

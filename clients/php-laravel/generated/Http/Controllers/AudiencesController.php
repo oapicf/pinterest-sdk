@@ -67,12 +67,8 @@ class AudiencesController extends Controller
 
         $audienceCreateRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AudienceCreateRequest::class);
 
-        try {
-            $apiResult = $this->api->audiencesCreate($adAccountId, $audienceCreateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->audiencesCreate($adAccountId, $audienceCreateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Audience) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -112,12 +108,8 @@ class AudiencesController extends Controller
 
         $audienceCreateCustomRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AudienceCreateCustomRequest::class);
 
-        try {
-            $apiResult = $this->api->audiencesCreateCustom($adAccountId, $audienceCreateCustomRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->audiencesCreateCustom($adAccountId, $audienceCreateCustomRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Audience) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -168,12 +160,8 @@ class AudiencesController extends Controller
 
 
 
-        try {
-            $apiResult = $this->api->audiencesGet($adAccountId, $audienceId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->audiencesGet($adAccountId, $audienceId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Audience) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -241,12 +229,8 @@ class AudiencesController extends Controller
 
         $ownershipType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AudiencesListOwnershipTypeParameter::class);
 
-        try {
-            $apiResult = $this->api->audiencesList($adAccountId, $bookmark, $order, $pageSize, $ownershipType);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->audiencesList($adAccountId, $bookmark, $order, $pageSize, $ownershipType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AudiencesList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -291,12 +275,8 @@ class AudiencesController extends Controller
 
         $audienceUpdateRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AudienceUpdateRequest::class);
 
-        try {
-            $apiResult = $this->api->audiencesUpdate($adAccountId, $audienceId, $audienceUpdateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->audiencesUpdate($adAccountId, $audienceId, $audienceUpdateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Audience) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

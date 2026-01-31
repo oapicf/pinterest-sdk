@@ -2,56 +2,66 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import org.openapitools.model.NonNullableCatalogsCurrency;
 import org.openapitools.model.NonNullableProductAvailabilityType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Retail product metadata entity
- **/
+ * Retail product metadata entity
+ */
 @ApiModel(description="Retail product metadata entity")
 
 public class CatalogsRetailProductMetadata  {
   
-  @ApiModelProperty(example = "DS0294-L", required = true, value = "The user-created unique ID that represents the product.")
  /**
-   * The user-created unique ID that represents the product.
-  **/
+  * The user-created unique ID that represents the product.
+  */
+  @ApiModelProperty(example = "DS0294-L", required = true, value = "The user-created unique ID that represents the product.")
+
   private String itemId;
 
-  @ApiModelProperty(example = "DS0294", required = true, value = "The parent ID of the product.")
  /**
-   * The parent ID of the product.
-  **/
+  * The parent ID of the product.
+  */
+  @ApiModelProperty(example = "DS0294", required = true, value = "The parent ID of the product.")
+
   private String itemGroupId;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private NonNullableProductAvailabilityType availability;
 
-  @ApiModelProperty(example = "24.99", required = true, value = "The price of the product.")
-  @Valid
  /**
-   * The price of the product.
-  **/
+  * The price of the product.
+  */
+  @ApiModelProperty(example = "24.99", required = true, value = "The price of the product.")
+
+  @Valid
+
   private BigDecimal price;
 
-  @ApiModelProperty(example = "14.99", required = true, value = "The discounted price of the product.")
-  @Valid
  /**
-   * The discounted price of the product.
-  **/
+  * The discounted price of the product.
+  */
+  @ApiModelProperty(example = "14.99", required = true, value = "The discounted price of the product.")
+
+  @Valid
+
   private BigDecimal salePrice;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private NonNullableCatalogsCurrency currency;
  /**
    * The user-created unique ID that represents the product.

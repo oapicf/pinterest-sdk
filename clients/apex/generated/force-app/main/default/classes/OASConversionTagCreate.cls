@@ -15,12 +15,6 @@
  */
 public class OASConversionTagCreate implements OASConversionTagConfigs, OAS.MappedProperties {
     /**
-     * Conversion tag name.
-     * @return name
-     */
-    public String name { get; set; }
-
-    /**
      * Whether Automatic Enhanced Match email is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information.
      * @return aemEnabled
      */
@@ -61,6 +55,12 @@ public class OASConversionTagCreate implements OASConversionTagConfigs, OAS.Mapp
      * @return aemLocEnabled
      */
     public Boolean aemLocEnabled { get; set; }
+
+    /**
+     * Conversion tag name.
+     * @return name
+     */
+    public String name { get; set; }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
         'aem_enabled' => 'aemEnabled',
@@ -172,7 +172,6 @@ public class OASConversionTagCreate implements OASConversionTagConfigs, OAS.Mapp
 
     public static OASConversionTagCreate getExample() {
         OASConversionTagCreate conversionTagCreate = new OASConversionTagCreate();
-          conversionTagCreate.name = 'ACME Tools Tag';
           conversionTagCreate.aemEnabled = true;
           conversionTagCreate.mdFrequency = 0.6;
           conversionTagCreate.aemFnlnEnabled = true;
@@ -180,27 +179,27 @@ public class OASConversionTagCreate implements OASConversionTagConfigs, OAS.Mapp
           conversionTagCreate.aemGeEnabled = true;
           conversionTagCreate.aemDbEnabled = true;
           conversionTagCreate.aemLocEnabled = true;
+          conversionTagCreate.name = 'ACME Tools Tag';
         return conversionTagCreate;
     }
 
     public Boolean equals(Object obj) {
         if (obj instanceof OASConversionTagCreate) {           
             OASConversionTagCreate conversionTagCreate = (OASConversionTagCreate) obj;
-            return this.name == conversionTagCreate.name
-                && this.aemEnabled == conversionTagCreate.aemEnabled
+            return this.aemEnabled == conversionTagCreate.aemEnabled
                 && this.mdFrequency == conversionTagCreate.mdFrequency
                 && this.aemFnlnEnabled == conversionTagCreate.aemFnlnEnabled
                 && this.aemPhEnabled == conversionTagCreate.aemPhEnabled
                 && this.aemGeEnabled == conversionTagCreate.aemGeEnabled
                 && this.aemDbEnabled == conversionTagCreate.aemDbEnabled
-                && this.aemLocEnabled == conversionTagCreate.aemLocEnabled;
+                && this.aemLocEnabled == conversionTagCreate.aemLocEnabled
+                && this.name == conversionTagCreate.name;
         }
         return false;
     }
 
     public Integer hashCode() {
         Integer hashCode = 43;
-        hashCode = (17 * hashCode) + (name == null ? 0 : System.hashCode(name));
         hashCode = (17 * hashCode) + (aemEnabled == null ? 0 : System.hashCode(aemEnabled));
         hashCode = (17 * hashCode) + (mdFrequency == null ? 0 : System.hashCode(mdFrequency));
         hashCode = (17 * hashCode) + (aemFnlnEnabled == null ? 0 : System.hashCode(aemFnlnEnabled));
@@ -208,6 +207,7 @@ public class OASConversionTagCreate implements OASConversionTagConfigs, OAS.Mapp
         hashCode = (17 * hashCode) + (aemGeEnabled == null ? 0 : System.hashCode(aemGeEnabled));
         hashCode = (17 * hashCode) + (aemDbEnabled == null ? 0 : System.hashCode(aemDbEnabled));
         hashCode = (17 * hashCode) + (aemLocEnabled == null ? 0 : System.hashCode(aemLocEnabled));
+        hashCode = (17 * hashCode) + (name == null ? 0 : System.hashCode(name));
         return hashCode;
     }
 }

@@ -1,9 +1,19 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "A successful OAuth access token response for the authorization code flow.",
+  "doc": "",
   "name": "OauthAccessTokenResponseCode",
   "fields": [
+    {
+      "name": "refresh_token",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "refresh_token_expires_in",
+      "type": "int",
+      "doc": ""
+    },
     {
       "name": "response_type",
       "type": ["null", {
@@ -26,7 +36,8 @@
     {
       "name": "token_type",
       "type": "string",
-      "doc": ""
+      "doc": "",
+      "default": "bearer"
     },
     {
       "name": "expires_in",
@@ -36,16 +47,6 @@
     {
       "name": "scope",
       "type": "string",
-      "doc": ""
-    },
-    {
-      "name": "refresh_token",
-      "type": "string",
-      "doc": ""
-    },
-    {
-      "name": "refresh_token_expires_in",
-      "type": "int",
       "doc": ""
     }
   ]

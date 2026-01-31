@@ -871,52 +871,12 @@ void OAIBusinessAccessInviteApi::get_invites(const QString &business_id, const :
             fullPath.append(queryPrefix);
         else
             fullPath.append("?");
-        QString paramString = (queryStyle == "form" && true) ? "" : (queryStyle == "form" && !(true)) ? "invite_type"+querySuffix : "";
-        QJsonObject parameter = invite_type.value().asJsonObject();
-        qint32 count = 0;
-        for(const QString& key : parameter.keys()) {
-            if (count > 0) {
-                queryDelimiter =  ((queryStyle == "form" || queryStyle == "deepObject") && true) ? "&" : getParamStyleDelimiter(queryStyle, key, true);
-                paramString.append(queryDelimiter);
-            }
-            QString assignOperator;
-            if (queryStyle == "form")
-                assignOperator = (true) ? "=" : ",";
-            else if (queryStyle == "deepObject")
-                assignOperator = (true) ? "=" : "none";
-            switch(parameter.value(key).type()) {
-                case QJsonValue::String:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("invite_type").append("[").append(key).append("]"))+assignOperator+parameter.value(key).toString());
-                    break;
-                }
-                case QJsonValue::Double:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("invite_type").append("[").append(key).append("]"))+assignOperator+QString::number(parameter.value(key).toDouble()));
-                    break;
-                }
-                case QJsonValue::Bool:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("invite_type").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toBool()).toString());
-                    break;
-                }
-                case QJsonValue::Array:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("invite_type").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toArray()).toString());
-                    break;
-                }
-                case QJsonValue::Object:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("invite_type").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toObject()).toString());
-                    break;
-                }
-                case QJsonValue::Null:
-                case QJsonValue::Undefined:
-                    break;
-            }
-            count++;
+        // For enum reference parameters, use direct string serialization instead of object iteration
+        QString enumValue = invite_type.value().asJson();
+        if (!enumValue.isEmpty()) {
+            fullPath.append(QUrl::toPercentEncoding("invite_type")).append("=").append(QUrl::toPercentEncoding(enumValue));
         }
-        fullPath.append(paramString);
+        
             }
     if (bookmark.hasValue())
     {

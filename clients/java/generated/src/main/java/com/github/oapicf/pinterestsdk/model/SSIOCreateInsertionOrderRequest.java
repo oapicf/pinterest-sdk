@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SSIOCreateInsertionOrderRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOCreateInsertionOrderRequest {
   public static final String SERIALIZED_NAME_START_DATE = "start_date";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -721,48 +721,10 @@ public class SSIOCreateInsertionOrderRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("start_date");
-    openapiFields.add("end_date");
-    openapiFields.add("po_number");
-    openapiFields.add("budget_amount");
-    openapiFields.add("billing_contact_firstname");
-    openapiFields.add("billing_contact_lastname");
-    openapiFields.add("billing_contact_email");
-    openapiFields.add("media_contact_firstname");
-    openapiFields.add("media_contact_lastname");
-    openapiFields.add("media_contact_email");
-    openapiFields.add("agency_link");
-    openapiFields.add("user_email");
-    openapiFields.add("accepted_terms_time");
-    openapiFields.add("pmp_id");
-    openapiFields.add("order_name");
-    openapiFields.add("order_line_type");
-    openapiFields.add("accepted_terms_id");
-    openapiFields.add("billto_company_id");
-    openapiFields.add("billto_business_address_id");
-    openapiFields.add("billto_billing_address_id");
-    openapiFields.add("estimated_monthly_spend");
-    openapiFields.add("currency_info");
+    openapiFields = new HashSet<String>(Arrays.asList("start_date", "end_date", "po_number", "budget_amount", "billing_contact_firstname", "billing_contact_lastname", "billing_contact_email", "media_contact_firstname", "media_contact_lastname", "media_contact_email", "agency_link", "user_email", "accepted_terms_time", "pmp_id", "order_name", "order_line_type", "accepted_terms_id", "billto_company_id", "billto_business_address_id", "billto_billing_address_id", "estimated_monthly_spend", "currency_info"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("start_date");
-    openapiRequiredFields.add("po_number");
-    openapiRequiredFields.add("billing_contact_firstname");
-    openapiRequiredFields.add("billing_contact_lastname");
-    openapiRequiredFields.add("billing_contact_email");
-    openapiRequiredFields.add("media_contact_firstname");
-    openapiRequiredFields.add("media_contact_lastname");
-    openapiRequiredFields.add("media_contact_email");
-    openapiRequiredFields.add("pmp_id");
-    openapiRequiredFields.add("order_name");
-    openapiRequiredFields.add("order_line_type");
-    openapiRequiredFields.add("accepted_terms_id");
-    openapiRequiredFields.add("billto_company_id");
-    openapiRequiredFields.add("billto_business_address_id");
-    openapiRequiredFields.add("billto_billing_address_id");
-    openapiRequiredFields.add("currency_info");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("start_date", "po_number", "billing_contact_firstname", "billing_contact_lastname", "billing_contact_email", "media_contact_firstname", "media_contact_lastname", "media_contact_email", "pmp_id", "order_name", "order_line_type", "accepted_terms_id", "billto_company_id", "billto_business_address_id", "billto_billing_address_id", "currency_info"));
   }
 
   /**
@@ -774,7 +736,7 @@ public class SSIOCreateInsertionOrderRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SSIOCreateInsertionOrderRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SSIOCreateInsertionOrderRequest is not found in the empty JSON string", SSIOCreateInsertionOrderRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in SSIOCreateInsertionOrderRequest is not found in the empty JSON string", SSIOCreateInsertionOrderRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -782,72 +744,72 @@ public class SSIOCreateInsertionOrderRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!SSIOCreateInsertionOrderRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SSIOCreateInsertionOrderRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `SSIOCreateInsertionOrderRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : SSIOCreateInsertionOrderRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("start_date").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `start_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("start_date").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `start_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("start_date").toString()));
       }
       if ((jsonObj.get("end_date") != null && !jsonObj.get("end_date").isJsonNull()) && !jsonObj.get("end_date").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `end_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("end_date").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `end_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("end_date").toString()));
       }
       if (!jsonObj.get("po_number").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `po_number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("po_number").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `po_number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("po_number").toString()));
       }
       if (!jsonObj.get("billing_contact_firstname").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `billing_contact_firstname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billing_contact_firstname").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `billing_contact_firstname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billing_contact_firstname").toString()));
       }
       if (!jsonObj.get("billing_contact_lastname").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `billing_contact_lastname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billing_contact_lastname").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `billing_contact_lastname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billing_contact_lastname").toString()));
       }
       if (!jsonObj.get("billing_contact_email").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `billing_contact_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billing_contact_email").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `billing_contact_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billing_contact_email").toString()));
       }
       if (!jsonObj.get("media_contact_firstname").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `media_contact_firstname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("media_contact_firstname").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `media_contact_firstname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("media_contact_firstname").toString()));
       }
       if (!jsonObj.get("media_contact_lastname").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `media_contact_lastname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("media_contact_lastname").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `media_contact_lastname` to be a primitive type in the JSON string but got `%s`", jsonObj.get("media_contact_lastname").toString()));
       }
       if (!jsonObj.get("media_contact_email").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `media_contact_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("media_contact_email").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `media_contact_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("media_contact_email").toString()));
       }
       if ((jsonObj.get("agency_link") != null && !jsonObj.get("agency_link").isJsonNull()) && !jsonObj.get("agency_link").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `agency_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("agency_link").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `agency_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("agency_link").toString()));
       }
       if ((jsonObj.get("user_email") != null && !jsonObj.get("user_email").isJsonNull()) && !jsonObj.get("user_email").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `user_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_email").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `user_email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_email").toString()));
       }
       if (!jsonObj.get("pmp_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pmp_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pmp_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `pmp_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pmp_id").toString()));
       }
       if (!jsonObj.get("order_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `order_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("order_name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `order_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("order_name").toString()));
       }
       if (!jsonObj.get("order_line_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `order_line_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("order_line_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `order_line_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("order_line_type").toString()));
       }
       // validate the required field `order_line_type`
       OrderLineTypeEnum.validateJsonElement(jsonObj.get("order_line_type"));
       if (!jsonObj.get("accepted_terms_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accepted_terms_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accepted_terms_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `accepted_terms_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accepted_terms_id").toString()));
       }
       if (!jsonObj.get("billto_company_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `billto_company_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billto_company_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `billto_company_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billto_company_id").toString()));
       }
       if (!jsonObj.get("billto_business_address_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `billto_business_address_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billto_business_address_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `billto_business_address_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billto_business_address_id").toString()));
       }
       if (!jsonObj.get("billto_billing_address_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `billto_billing_address_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billto_billing_address_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `billto_billing_address_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("billto_billing_address_id").toString()));
       }
       // validate the required field `currency_info`
       Currency.validateJsonElement(jsonObj.get("currency_info"));

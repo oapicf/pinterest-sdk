@@ -138,18 +138,19 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "exception":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exception = new Option<InviteExceptionResponse?>(JsonSerializer.Deserialize<InviteExceptionResponse>(ref utf8JsonReader, jsonSerializerOptions));
+                            exception = new Option<InviteExceptionResponse?>(JsonSerializer.Deserialize<InviteExceptionResponse>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "invite":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                invite = new Option<InviteBusinessRoleBinding?>(JsonSerializer.Deserialize<InviteBusinessRoleBinding>(ref utf8JsonReader, jsonSerializerOptions));
+                            invite = new Option<InviteBusinessRoleBinding?>(JsonSerializer.Deserialize<InviteBusinessRoleBinding>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;
                     }
                 }
             }
+
+            if (invite.IsSet && invite.Value == null)
+                throw new ArgumentNullException(nameof(invite), "Property is not nullable for class UpdateInvitesResultsResponseArrayItemsInner.");
 
             return new UpdateInvitesResultsResponseArrayItemsInner(exception, invite);
         }
@@ -178,6 +179,9 @@ namespace Org.OpenAPITools.Model
         /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, UpdateInvitesResultsResponseArrayItemsInner updateInvitesResultsResponseArrayItemsInner, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (updateInvitesResultsResponseArrayItemsInner.InviteOption.IsSet && updateInvitesResultsResponseArrayItemsInner.Invite == null)
+                throw new ArgumentNullException(nameof(updateInvitesResultsResponseArrayItemsInner.Invite), "Property is required for class UpdateInvitesResultsResponseArrayItemsInner.");
+
             if (updateInvitesResultsResponseArrayItemsInner.ExceptionOption.IsSet)
                 if (updateInvitesResultsResponseArrayItemsInner.ExceptionOption.Value != null)
                 {
@@ -187,13 +191,10 @@ namespace Org.OpenAPITools.Model
                 else
                     writer.WriteNull("exception");
             if (updateInvitesResultsResponseArrayItemsInner.InviteOption.IsSet)
-                if (updateInvitesResultsResponseArrayItemsInner.InviteOption.Value != null)
-                {
-                    writer.WritePropertyName("invite");
-                    JsonSerializer.Serialize(writer, updateInvitesResultsResponseArrayItemsInner.Invite, jsonSerializerOptions);
-                }
-                else
-                    writer.WriteNull("invite");
+            {
+                writer.WritePropertyName("invite");
+                JsonSerializer.Serialize(writer, updateInvitesResultsResponseArrayItemsInner.Invite, jsonSerializerOptions);
+            }
         }
     }
 }

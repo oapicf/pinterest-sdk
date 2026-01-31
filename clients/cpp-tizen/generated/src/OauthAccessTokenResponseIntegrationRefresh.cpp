@@ -23,18 +23,28 @@ OauthAccessTokenResponseIntegrationRefresh::~OauthAccessTokenResponseIntegration
 void
 OauthAccessTokenResponseIntegrationRefresh::__init()
 {
+	//refresh_token = std::string();
+	//refresh_token_expires_in = int(0);
 	//response_type = std::string();
 	//access_token = std::string();
 	//token_type = std::string();
 	//expires_in = int(0);
 	//scope = std::string();
-	//refresh_token = std::string();
-	//refresh_token_expires_in = int(0);
 }
 
 void
 OauthAccessTokenResponseIntegrationRefresh::__cleanup()
 {
+	//if(refresh_token != NULL) {
+	//
+	//delete refresh_token;
+	//refresh_token = NULL;
+	//}
+	//if(refresh_token_expires_in != NULL) {
+	//
+	//delete refresh_token_expires_in;
+	//refresh_token_expires_in = NULL;
+	//}
 	//if(response_type != NULL) {
 	//
 	//delete response_type;
@@ -60,16 +70,6 @@ OauthAccessTokenResponseIntegrationRefresh::__cleanup()
 	//delete scope;
 	//scope = NULL;
 	//}
-	//if(refresh_token != NULL) {
-	//
-	//delete refresh_token;
-	//refresh_token = NULL;
-	//}
-	//if(refresh_token_expires_in != NULL) {
-	//
-	//delete refresh_token_expires_in;
-	//refresh_token_expires_in = NULL;
-	//}
 	//
 }
 
@@ -78,6 +78,28 @@ OauthAccessTokenResponseIntegrationRefresh::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
+	const gchar *refresh_tokenKey = "refresh_token";
+	node = json_object_get_member(pJsonObject, refresh_tokenKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&refresh_token, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *refresh_token_expires_inKey = "refresh_token_expires_in";
+	node = json_object_get_member(pJsonObject, refresh_token_expires_inKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&refresh_token_expires_in, node, "int", "");
+		} else {
+			
+		}
+	}
 	const gchar *response_typeKey = "response_type";
 	node = json_object_get_member(pJsonObject, response_typeKey);
 	if (node !=NULL) {
@@ -133,28 +155,6 @@ OauthAccessTokenResponseIntegrationRefresh::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *refresh_tokenKey = "refresh_token";
-	node = json_object_get_member(pJsonObject, refresh_tokenKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&refresh_token, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *refresh_token_expires_inKey = "refresh_token_expires_in";
-	node = json_object_get_member(pJsonObject, refresh_token_expires_inKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("int")) {
-			jsonToValue(&refresh_token_expires_in, node, "int", "");
-		} else {
-			
-		}
-	}
 }
 
 OauthAccessTokenResponseIntegrationRefresh::OauthAccessTokenResponseIntegrationRefresh(char* json)
@@ -167,6 +167,24 @@ OauthAccessTokenResponseIntegrationRefresh::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
+	if (isprimitive("std::string")) {
+		std::string obj = getRefreshToken();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *refresh_tokenKey = "refresh_token";
+	json_object_set_member(pJsonObject, refresh_tokenKey, node);
+	if (isprimitive("int")) {
+		int obj = getRefreshTokenExpiresIn();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *refresh_token_expires_inKey = "refresh_token_expires_in";
+	json_object_set_member(pJsonObject, refresh_token_expires_inKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getResponseType();
 		node = converttoJson(&obj, "std::string", "");
@@ -212,30 +230,36 @@ OauthAccessTokenResponseIntegrationRefresh::toJson()
 	}
 	const gchar *scopeKey = "scope";
 	json_object_set_member(pJsonObject, scopeKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getRefreshToken();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *refresh_tokenKey = "refresh_token";
-	json_object_set_member(pJsonObject, refresh_tokenKey, node);
-	if (isprimitive("int")) {
-		int obj = getRefreshTokenExpiresIn();
-		node = converttoJson(&obj, "int", "");
-	}
-	else {
-		
-	}
-	const gchar *refresh_token_expires_inKey = "refresh_token_expires_in";
-	json_object_set_member(pJsonObject, refresh_token_expires_inKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
+}
+
+std::string
+OauthAccessTokenResponseIntegrationRefresh::getRefreshToken()
+{
+	return refresh_token;
+}
+
+void
+OauthAccessTokenResponseIntegrationRefresh::setRefreshToken(std::string  refresh_token)
+{
+	this->refresh_token = refresh_token;
+}
+
+int
+OauthAccessTokenResponseIntegrationRefresh::getRefreshTokenExpiresIn()
+{
+	return refresh_token_expires_in;
+}
+
+void
+OauthAccessTokenResponseIntegrationRefresh::setRefreshTokenExpiresIn(int  refresh_token_expires_in)
+{
+	this->refresh_token_expires_in = refresh_token_expires_in;
 }
 
 std::string
@@ -296,30 +320,6 @@ void
 OauthAccessTokenResponseIntegrationRefresh::setScope(std::string  scope)
 {
 	this->scope = scope;
-}
-
-std::string
-OauthAccessTokenResponseIntegrationRefresh::getRefreshToken()
-{
-	return refresh_token;
-}
-
-void
-OauthAccessTokenResponseIntegrationRefresh::setRefreshToken(std::string  refresh_token)
-{
-	this->refresh_token = refresh_token;
-}
-
-int
-OauthAccessTokenResponseIntegrationRefresh::getRefreshTokenExpiresIn()
-{
-	return refresh_token_expires_in;
-}
-
-void
-OauthAccessTokenResponseIntegrationRefresh::setRefreshTokenExpiresIn(int  refresh_token_expires_in)
-{
-	this->refresh_token_expires_in = refresh_token_expires_in;
 }
 
 

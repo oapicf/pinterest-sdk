@@ -63,7 +63,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupsUpdateRequest extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsProductGroupsUpdateRequest.class.getName());
 
@@ -119,7 +119,7 @@ public class CatalogsProductGroupsUpdateRequest extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsProductGroupUpdateRequest'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsProductGroupUpdateRequest failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsProductGroupUpdateRequest failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsProductGroupUpdateRequest'", e);
                     }
                     // deserialize CatalogsVerticalProductGroupUpdateRequest
@@ -131,7 +131,7 @@ public class CatalogsProductGroupsUpdateRequest extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsVerticalProductGroupUpdateRequest'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsVerticalProductGroupUpdateRequest failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsVerticalProductGroupUpdateRequest failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsVerticalProductGroupUpdateRequest'", e);
                     }
 
@@ -141,7 +141,7 @@ public class CatalogsProductGroupsUpdateRequest extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CatalogsProductGroupsUpdateRequest: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CatalogsProductGroupsUpdateRequest: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -240,7 +240,7 @@ public class CatalogsProductGroupsUpdateRequest extends AbstractOpenApiSchema {
             CatalogsProductGroupUpdateRequest.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsProductGroupUpdateRequest failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsProductGroupUpdateRequest failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsVerticalProductGroupUpdateRequest
@@ -248,11 +248,11 @@ public class CatalogsProductGroupsUpdateRequest extends AbstractOpenApiSchema {
             CatalogsVerticalProductGroupUpdateRequest.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsVerticalProductGroupUpdateRequest failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsVerticalProductGroupUpdateRequest failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CatalogsProductGroupsUpdateRequest with oneOf schemas: CatalogsProductGroupUpdateRequest, CatalogsVerticalProductGroupUpdateRequest. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CatalogsProductGroupsUpdateRequest with oneOf schemas: CatalogsProductGroupUpdateRequest, CatalogsVerticalProductGroupUpdateRequest. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_keywords_common
 
@@ -16,3 +18,25 @@ type KeywordsRequest* = object
   ## 
   keywords*: seq[KeywordsCommon] ## Keyword JSON array. Each array element has 3 fields
   parentId*: string ## Keyword parent entity ID (advertiser, campaign, ad group).
+
+
+# Custom JSON deserialization for KeywordsRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[KeywordsRequest]): KeywordsRequest =
+  result = KeywordsRequest()
+  if node.kind == JObject:
+    if node.hasKey("keywords"):
+      # Array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["keywords"]
+      if arrayNode.kind == JArray:
+        result.keywords = @[]
+        for item in arrayNode.items:
+          result.keywords.add(to(item, KeywordsCommon))
+    if node.hasKey("parent_id"):
+      result.parentId = to(node["parent_id"], string)
+
+# Custom JSON serialization for KeywordsRequest with custom field names
+proc `%`*(obj: KeywordsRequest): JsonNode =
+  result = newJObject()
+  result["keywords"] = %obj.keywords
+  result["parent_id"] = %obj.parentId
+

@@ -98,7 +98,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteBusinessMembershipCall(String businessId, MembersToDeleteBody membersToDeleteBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteBusinessMembershipCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull MembersToDeleteBody membersToDeleteBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -145,7 +145,7 @@ public class BusinessAccessRelationshipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteBusinessMembershipValidateBeforeCall(String businessId, MembersToDeleteBody membersToDeleteBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteBusinessMembershipValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull MembersToDeleteBody membersToDeleteBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling deleteBusinessMembership(Async)");
@@ -175,7 +175,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public DeletedMembersResponse deleteBusinessMembership(String businessId, MembersToDeleteBody membersToDeleteBody) throws ApiException {
+    public DeletedMembersResponse deleteBusinessMembership(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull MembersToDeleteBody membersToDeleteBody) throws ApiException {
         ApiResponse<DeletedMembersResponse> localVarResp = deleteBusinessMembershipWithHttpInfo(businessId, membersToDeleteBody);
         return localVarResp.getData();
     }
@@ -195,7 +195,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeletedMembersResponse> deleteBusinessMembershipWithHttpInfo(String businessId, MembersToDeleteBody membersToDeleteBody) throws ApiException {
+    public ApiResponse<DeletedMembersResponse> deleteBusinessMembershipWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull MembersToDeleteBody membersToDeleteBody) throws ApiException {
         okhttp3.Call localVarCall = deleteBusinessMembershipValidateBeforeCall(businessId, membersToDeleteBody, null);
         Type localVarReturnType = new TypeToken<DeletedMembersResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -217,7 +217,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteBusinessMembershipAsync(String businessId, MembersToDeleteBody membersToDeleteBody, final ApiCallback<DeletedMembersResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteBusinessMembershipAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull MembersToDeleteBody membersToDeleteBody, final ApiCallback<DeletedMembersResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteBusinessMembershipValidateBeforeCall(businessId, membersToDeleteBody, _callback);
         Type localVarReturnType = new TypeToken<DeletedMembersResponse>(){}.getType();
@@ -240,7 +240,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteBusinessPartnersCall(String businessId, DeletePartnersRequest deletePartnersRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteBusinessPartnersCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeletePartnersRequest deletePartnersRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -287,7 +287,7 @@ public class BusinessAccessRelationshipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteBusinessPartnersValidateBeforeCall(String businessId, DeletePartnersRequest deletePartnersRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteBusinessPartnersValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeletePartnersRequest deletePartnersRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling deleteBusinessPartners(Async)");
@@ -318,7 +318,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public DeletePartnersResponse deleteBusinessPartners(String businessId, DeletePartnersRequest deletePartnersRequest) throws ApiException {
+    public DeletePartnersResponse deleteBusinessPartners(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeletePartnersRequest deletePartnersRequest) throws ApiException {
         ApiResponse<DeletePartnersResponse> localVarResp = deleteBusinessPartnersWithHttpInfo(businessId, deletePartnersRequest);
         return localVarResp.getData();
     }
@@ -339,7 +339,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeletePartnersResponse> deleteBusinessPartnersWithHttpInfo(String businessId, DeletePartnersRequest deletePartnersRequest) throws ApiException {
+    public ApiResponse<DeletePartnersResponse> deleteBusinessPartnersWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeletePartnersRequest deletePartnersRequest) throws ApiException {
         okhttp3.Call localVarCall = deleteBusinessPartnersValidateBeforeCall(businessId, deletePartnersRequest, null);
         Type localVarReturnType = new TypeToken<DeletePartnersResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -362,7 +362,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteBusinessPartnersAsync(String businessId, DeletePartnersRequest deletePartnersRequest, final ApiCallback<DeletePartnersResponse> _callback) throws ApiException {
+    public okhttp3.Call deleteBusinessPartnersAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull DeletePartnersRequest deletePartnersRequest, final ApiCallback<DeletePartnersResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteBusinessPartnersValidateBeforeCall(businessId, deletePartnersRequest, _callback);
         Type localVarReturnType = new TypeToken<DeletePartnersResponse>(){}.getType();
@@ -384,7 +384,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBusinessEmployersCall(Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBusinessEmployersCall(@javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -437,7 +437,7 @@ public class BusinessAccessRelationshipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBusinessEmployersValidateBeforeCall(Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBusinessEmployersValidateBeforeCall(@javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         return getBusinessEmployersCall(pageSize, bookmark, _callback);
 
     }
@@ -457,7 +457,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public GetBusinessEmployers200Response getBusinessEmployers(Integer pageSize, String bookmark) throws ApiException {
+    public GetBusinessEmployers200Response getBusinessEmployers(@javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<GetBusinessEmployers200Response> localVarResp = getBusinessEmployersWithHttpInfo(pageSize, bookmark);
         return localVarResp.getData();
     }
@@ -477,7 +477,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetBusinessEmployers200Response> getBusinessEmployersWithHttpInfo(Integer pageSize, String bookmark) throws ApiException {
+    public ApiResponse<GetBusinessEmployers200Response> getBusinessEmployersWithHttpInfo(@javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = getBusinessEmployersValidateBeforeCall(pageSize, bookmark, null);
         Type localVarReturnType = new TypeToken<GetBusinessEmployers200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -499,7 +499,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBusinessEmployersAsync(Integer pageSize, String bookmark, final ApiCallback<GetBusinessEmployers200Response> _callback) throws ApiException {
+    public okhttp3.Call getBusinessEmployersAsync(@javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback<GetBusinessEmployers200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBusinessEmployersValidateBeforeCall(pageSize, bookmark, _callback);
         Type localVarReturnType = new TypeToken<GetBusinessEmployers200Response>(){}.getType();
@@ -526,7 +526,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBusinessMembersCall(String businessId, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBusinessMembersCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable Boolean assetsSummary, @javax.annotation.Nullable List<MemberBusinessRole> businessRoles, @javax.annotation.Nullable String memberIds, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -596,7 +596,7 @@ public class BusinessAccessRelationshipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBusinessMembersValidateBeforeCall(String businessId, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBusinessMembersValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable Boolean assetsSummary, @javax.annotation.Nullable List<MemberBusinessRole> businessRoles, @javax.annotation.Nullable String memberIds, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling getBusinessMembers(Async)");
@@ -626,7 +626,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public GetBusinessMembers200Response getBusinessMembers(String businessId, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize) throws ApiException {
+    public GetBusinessMembers200Response getBusinessMembers(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable Boolean assetsSummary, @javax.annotation.Nullable List<MemberBusinessRole> businessRoles, @javax.annotation.Nullable String memberIds, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<GetBusinessMembers200Response> localVarResp = getBusinessMembersWithHttpInfo(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize);
         return localVarResp.getData();
     }
@@ -651,7 +651,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetBusinessMembers200Response> getBusinessMembersWithHttpInfo(String businessId, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize) throws ApiException {
+    public ApiResponse<GetBusinessMembers200Response> getBusinessMembersWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable Boolean assetsSummary, @javax.annotation.Nullable List<MemberBusinessRole> businessRoles, @javax.annotation.Nullable String memberIds, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = getBusinessMembersValidateBeforeCall(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize, null);
         Type localVarReturnType = new TypeToken<GetBusinessMembers200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -678,7 +678,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBusinessMembersAsync(String businessId, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize, final ApiCallback<GetBusinessMembers200Response> _callback) throws ApiException {
+    public okhttp3.Call getBusinessMembersAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable Boolean assetsSummary, @javax.annotation.Nullable List<MemberBusinessRole> businessRoles, @javax.annotation.Nullable String memberIds, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback<GetBusinessMembers200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBusinessMembersValidateBeforeCall(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize, _callback);
         Type localVarReturnType = new TypeToken<GetBusinessMembers200Response>(){}.getType();
@@ -705,7 +705,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBusinessPartnersCall(String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBusinessPartnersCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable Boolean assetsSummary, @javax.annotation.Nullable PartnerType partnerType, @javax.annotation.Nullable String partnerIds, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -775,7 +775,7 @@ public class BusinessAccessRelationshipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBusinessPartnersValidateBeforeCall(String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBusinessPartnersValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable Boolean assetsSummary, @javax.annotation.Nullable PartnerType partnerType, @javax.annotation.Nullable String partnerIds, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling getBusinessPartners(Async)");
@@ -805,7 +805,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public GetBusinessPartners200Response getBusinessPartners(String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Integer pageSize, String bookmark) throws ApiException {
+    public GetBusinessPartners200Response getBusinessPartners(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable Boolean assetsSummary, @javax.annotation.Nullable PartnerType partnerType, @javax.annotation.Nullable String partnerIds, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<GetBusinessPartners200Response> localVarResp = getBusinessPartnersWithHttpInfo(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark);
         return localVarResp.getData();
     }
@@ -830,7 +830,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetBusinessPartners200Response> getBusinessPartnersWithHttpInfo(String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Integer pageSize, String bookmark) throws ApiException {
+    public ApiResponse<GetBusinessPartners200Response> getBusinessPartnersWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable Boolean assetsSummary, @javax.annotation.Nullable PartnerType partnerType, @javax.annotation.Nullable String partnerIds, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = getBusinessPartnersValidateBeforeCall(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark, null);
         Type localVarReturnType = new TypeToken<GetBusinessPartners200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -857,7 +857,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBusinessPartnersAsync(String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Integer pageSize, String bookmark, final ApiCallback<GetBusinessPartners200Response> _callback) throws ApiException {
+    public okhttp3.Call getBusinessPartnersAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable Boolean assetsSummary, @javax.annotation.Nullable PartnerType partnerType, @javax.annotation.Nullable String partnerIds, @javax.annotation.Nullable Integer startIndex, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback<GetBusinessPartners200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBusinessPartnersValidateBeforeCall(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark, _callback);
         Type localVarReturnType = new TypeToken<GetBusinessPartners200Response>(){}.getType();
@@ -879,7 +879,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateBusinessMembershipsCall(String businessId, List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateBusinessMembershipsCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -926,7 +926,7 @@ public class BusinessAccessRelationshipsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateBusinessMembershipsValidateBeforeCall(String businessId, List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateBusinessMembershipsValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling updateBusinessMemberships(Async)");
@@ -956,7 +956,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public UpdateMemberResultsResponseArray updateBusinessMemberships(String businessId, List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody) throws ApiException {
+    public UpdateMemberResultsResponseArray updateBusinessMemberships(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody) throws ApiException {
         ApiResponse<UpdateMemberResultsResponseArray> localVarResp = updateBusinessMembershipsWithHttpInfo(businessId, updateMemberBusinessRoleBody);
         return localVarResp.getData();
     }
@@ -976,7 +976,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UpdateMemberResultsResponseArray> updateBusinessMembershipsWithHttpInfo(String businessId, List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody) throws ApiException {
+    public ApiResponse<UpdateMemberResultsResponseArray> updateBusinessMembershipsWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody) throws ApiException {
         okhttp3.Call localVarCall = updateBusinessMembershipsValidateBeforeCall(businessId, updateMemberBusinessRoleBody, null);
         Type localVarReturnType = new TypeToken<UpdateMemberResultsResponseArray>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -998,7 +998,7 @@ public class BusinessAccessRelationshipsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateBusinessMembershipsAsync(String businessId, List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, final ApiCallback<UpdateMemberResultsResponseArray> _callback) throws ApiException {
+    public okhttp3.Call updateBusinessMembershipsAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull List<UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody, final ApiCallback<UpdateMemberResultsResponseArray> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateBusinessMembershipsValidateBeforeCall(businessId, updateMemberBusinessRoleBody, _callback);
         Type localVarReturnType = new TypeToken<UpdateMemberResultsResponseArray>(){}.getType();

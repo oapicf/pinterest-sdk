@@ -34,7 +34,7 @@ import javax.annotation.Generated;
  * AdGroupResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupResponse {
 
   private @Nullable String name;
@@ -79,7 +79,7 @@ public class AdGroupResponse {
     
     TARGET_AVG("TARGET_AVG");
 
-    private String value;
+    private final String value;
 
     BidStrategyTypeEnum(String value) {
       this.value = value;
@@ -129,7 +129,7 @@ public class AdGroupResponse {
     
     ACTIVE("ACTIVE");
 
-    private String value;
+    private final String value;
 
     ConversionLearningModeTypeEnum(String value) {
       this.value = value;
@@ -164,7 +164,7 @@ public class AdGroupResponse {
 
   private JsonNullable<Object> dcaAssets = JsonNullable.<Object>undefined();
 
-  public AdGroupResponse name(String name) {
+  public AdGroupResponse name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -176,15 +176,15 @@ public class AdGroupResponse {
   
   @Schema(name = "name", example = "Ad Group For Pin: 687195905986", description = "Ad group name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public AdGroupResponse status(EntityStatus status) {
+  public AdGroupResponse status(@Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -196,11 +196,11 @@ public class AdGroupResponse {
   @Valid 
   @Schema(name = "status", description = "Ad group/entity status.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public EntityStatus getStatus() {
+  public @Nullable EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 
@@ -264,7 +264,7 @@ public class AdGroupResponse {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
-  public AdGroupResponse budgetType(BudgetType budgetType) {
+  public AdGroupResponse budgetType(@Nullable BudgetType budgetType) {
     this.budgetType = budgetType;
     return this;
   }
@@ -276,11 +276,11 @@ public class AdGroupResponse {
   @Valid 
   @Schema(name = "budget_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget_type")
-  public BudgetType getBudgetType() {
+  public @Nullable BudgetType getBudgetType() {
     return budgetType;
   }
 
-  public void setBudgetType(BudgetType budgetType) {
+  public void setBudgetType(@Nullable BudgetType budgetType) {
     this.budgetType = budgetType;
   }
 
@@ -324,7 +324,7 @@ public class AdGroupResponse {
     this.endTime = endTime;
   }
 
-  public AdGroupResponse targetingSpec(TargetingSpec targetingSpec) {
+  public AdGroupResponse targetingSpec(@Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
     return this;
   }
@@ -336,15 +336,15 @@ public class AdGroupResponse {
   @Valid 
   @Schema(name = "targeting_spec", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
+  public @Nullable TargetingSpec getTargetingSpec() {
     return targetingSpec;
   }
 
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
+  public void setTargetingSpec(@Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
   }
 
-  public AdGroupResponse lifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
+  public AdGroupResponse lifetimeFrequencyCap(@Nullable Integer lifetimeFrequencyCap) {
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
     return this;
   }
@@ -356,11 +356,11 @@ public class AdGroupResponse {
   
   @Schema(name = "lifetime_frequency_cap", example = "100", description = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lifetime_frequency_cap")
-  public Integer getLifetimeFrequencyCap() {
+  public @Nullable Integer getLifetimeFrequencyCap() {
     return lifetimeFrequencyCap;
   }
 
-  public void setLifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
+  public void setLifetimeFrequencyCap(@Nullable Integer lifetimeFrequencyCap) {
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
   }
 
@@ -404,7 +404,7 @@ public class AdGroupResponse {
     this.autoTargetingEnabled = autoTargetingEnabled;
   }
 
-  public AdGroupResponse placementGroup(PlacementGroupType placementGroup) {
+  public AdGroupResponse placementGroup(@Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
     return this;
   }
@@ -416,15 +416,15 @@ public class AdGroupResponse {
   @Valid 
   @Schema(name = "placement_group", description = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("placement_group")
-  public PlacementGroupType getPlacementGroup() {
+  public @Nullable PlacementGroupType getPlacementGroup() {
     return placementGroup;
   }
 
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
+  public void setPlacementGroup(@Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
   }
 
-  public AdGroupResponse pacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
+  public AdGroupResponse pacingDeliveryType(@Nullable PacingDeliveryType pacingDeliveryType) {
     this.pacingDeliveryType = pacingDeliveryType;
     return this;
   }
@@ -436,15 +436,15 @@ public class AdGroupResponse {
   @Valid 
   @Schema(name = "pacing_delivery_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pacing_delivery_type")
-  public PacingDeliveryType getPacingDeliveryType() {
+  public @Nullable PacingDeliveryType getPacingDeliveryType() {
     return pacingDeliveryType;
   }
 
-  public void setPacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
+  public void setPacingDeliveryType(@Nullable PacingDeliveryType pacingDeliveryType) {
     this.pacingDeliveryType = pacingDeliveryType;
   }
 
-  public AdGroupResponse campaignId(String campaignId) {
+  public AdGroupResponse campaignId(@Nullable String campaignId) {
     this.campaignId = campaignId;
     return this;
   }
@@ -456,15 +456,15 @@ public class AdGroupResponse {
   @Pattern(regexp = "^[C]?\\d+$") 
   @Schema(name = "campaign_id", example = "626736533506", description = "Campaign ID of the ad group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_id")
-  public String getCampaignId() {
+  public @Nullable String getCampaignId() {
     return campaignId;
   }
 
-  public void setCampaignId(String campaignId) {
+  public void setCampaignId(@Nullable String campaignId) {
     this.campaignId = campaignId;
   }
 
-  public AdGroupResponse billableEvent(ActionType billableEvent) {
+  public AdGroupResponse billableEvent(@Nullable ActionType billableEvent) {
     this.billableEvent = billableEvent;
     return this;
   }
@@ -476,11 +476,11 @@ public class AdGroupResponse {
   @Valid 
   @Schema(name = "billable_event", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billable_event")
-  public ActionType getBillableEvent() {
+  public @Nullable ActionType getBillableEvent() {
     return billableEvent;
   }
 
-  public void setBillableEvent(ActionType billableEvent) {
+  public void setBillableEvent(@Nullable ActionType billableEvent) {
     this.billableEvent = billableEvent;
   }
 
@@ -532,7 +532,7 @@ public class AdGroupResponse {
     this.targetingTemplateIds = targetingTemplateIds;
   }
 
-  public AdGroupResponse id(String id) {
+  public AdGroupResponse id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -544,15 +544,15 @@ public class AdGroupResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "2680060704746", description = "Ad group ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public AdGroupResponse adAccountId(String adAccountId) {
+  public AdGroupResponse adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -564,15 +564,15 @@ public class AdGroupResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Advertiser ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
-  public AdGroupResponse createdTime(Integer createdTime) {
+  public AdGroupResponse createdTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -584,15 +584,15 @@ public class AdGroupResponse {
   
   @Schema(name = "created_time", example = "1476477189", description = "Ad group creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
-  public Integer getCreatedTime() {
+  public @Nullable Integer getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
-  public AdGroupResponse updatedTime(Integer updatedTime) {
+  public AdGroupResponse updatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -604,11 +604,11 @@ public class AdGroupResponse {
   
   @Schema(name = "updated_time", example = "1476477189", description = "Ad group last update time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")
-  public Integer getUpdatedTime() {
+  public @Nullable Integer getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 
@@ -652,7 +652,7 @@ public class AdGroupResponse {
     this.conversionLearningModeType = conversionLearningModeType;
   }
 
-  public AdGroupResponse summaryStatus(AdGroupSummaryStatus summaryStatus) {
+  public AdGroupResponse summaryStatus(@Nullable AdGroupSummaryStatus summaryStatus) {
     this.summaryStatus = summaryStatus;
     return this;
   }
@@ -664,15 +664,15 @@ public class AdGroupResponse {
   @Valid 
   @Schema(name = "summary_status", description = "Ad group summary status.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("summary_status")
-  public AdGroupSummaryStatus getSummaryStatus() {
+  public @Nullable AdGroupSummaryStatus getSummaryStatus() {
     return summaryStatus;
   }
 
-  public void setSummaryStatus(AdGroupSummaryStatus summaryStatus) {
+  public void setSummaryStatus(@Nullable AdGroupSummaryStatus summaryStatus) {
     this.summaryStatus = summaryStatus;
   }
 
-  public AdGroupResponse feedProfileId(String feedProfileId) {
+  public AdGroupResponse feedProfileId(@Nullable String feedProfileId) {
     this.feedProfileId = feedProfileId;
     return this;
   }
@@ -684,11 +684,11 @@ public class AdGroupResponse {
   
   @Schema(name = "feed_profile_id", example = "626736533506", description = "Feed Profile ID associated to the adgroup.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("feed_profile_id")
-  public String getFeedProfileId() {
+  public @Nullable String getFeedProfileId() {
     return feedProfileId;
   }
 
-  public void setFeedProfileId(String feedProfileId) {
+  public void setFeedProfileId(@Nullable String feedProfileId) {
     this.feedProfileId = feedProfileId;
   }
 

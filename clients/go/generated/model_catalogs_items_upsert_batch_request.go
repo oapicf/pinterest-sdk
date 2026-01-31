@@ -23,7 +23,8 @@ var _ MappedNullable = &CatalogsItemsUpsertBatchRequest{}
 // CatalogsItemsUpsertBatchRequest Request object to upsert catalogs items
 type CatalogsItemsUpsertBatchRequest struct {
 	Country Country `json:"country"`
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 	Operation BatchOperation `json:"operation"`
 	// Array with catalogs items
 	Items []ItemUpsertBatchRecord `json:"items"`
@@ -35,7 +36,7 @@ type _CatalogsItemsUpsertBatchRequest CatalogsItemsUpsertBatchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsItemsUpsertBatchRequest(country Country, language CatalogsItemsRequestLanguage, operation BatchOperation, items []ItemUpsertBatchRecord) *CatalogsItemsUpsertBatchRequest {
+func NewCatalogsItemsUpsertBatchRequest(country Country, language string, operation BatchOperation, items []ItemUpsertBatchRecord) *CatalogsItemsUpsertBatchRequest {
 	this := CatalogsItemsUpsertBatchRequest{}
 	this.Country = country
 	this.Language = language
@@ -77,9 +78,9 @@ func (o *CatalogsItemsUpsertBatchRequest) SetCountry(v Country) {
 }
 
 // GetLanguage returns the Language field value
-func (o *CatalogsItemsUpsertBatchRequest) GetLanguage() CatalogsItemsRequestLanguage {
+func (o *CatalogsItemsUpsertBatchRequest) GetLanguage() string {
 	if o == nil {
-		var ret CatalogsItemsRequestLanguage
+		var ret string
 		return ret
 	}
 
@@ -88,7 +89,7 @@ func (o *CatalogsItemsUpsertBatchRequest) GetLanguage() CatalogsItemsRequestLang
 
 // GetLanguageOk returns a tuple with the Language field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsItemsUpsertBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool) {
+func (o *CatalogsItemsUpsertBatchRequest) GetLanguageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -96,7 +97,7 @@ func (o *CatalogsItemsUpsertBatchRequest) GetLanguageOk() (*CatalogsItemsRequest
 }
 
 // SetLanguage sets field value
-func (o *CatalogsItemsUpsertBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage) {
+func (o *CatalogsItemsUpsertBatchRequest) SetLanguage(v string) {
 	o.Language = v
 }
 

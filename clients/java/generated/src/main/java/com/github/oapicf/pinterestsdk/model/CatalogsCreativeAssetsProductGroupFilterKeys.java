@@ -74,7 +74,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsCreativeAssetsProductGroupFilterKeys.class.getName());
 
@@ -214,7 +214,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CreativeAssetsIdFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CreativeAssetsIdFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CreativeAssetsIdFilter'", e);
                     }
                     // deserialize CustomLabel0Filter
@@ -227,7 +227,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CustomLabel0Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel0Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CustomLabel0Filter'", e);
                     }
                     // deserialize CustomLabel1Filter
@@ -240,7 +240,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CustomLabel1Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel1Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CustomLabel1Filter'", e);
                     }
                     // deserialize CustomLabel2Filter
@@ -253,7 +253,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CustomLabel2Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel2Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CustomLabel2Filter'", e);
                     }
                     // deserialize CustomLabel3Filter
@@ -266,7 +266,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CustomLabel3Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel3Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CustomLabel3Filter'", e);
                     }
                     // deserialize CustomLabel4Filter
@@ -279,7 +279,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CustomLabel4Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel4Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CustomLabel4Filter'", e);
                     }
                     // deserialize GoogleProductCategory6Filter
@@ -292,7 +292,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory6Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory6Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory6Filter'", e);
                     }
                     // deserialize GoogleProductCategory5Filter
@@ -305,7 +305,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory5Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory5Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory5Filter'", e);
                     }
                     // deserialize GoogleProductCategory4Filter
@@ -318,7 +318,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory4Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory4Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory4Filter'", e);
                     }
                     // deserialize GoogleProductCategory3Filter
@@ -331,7 +331,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory3Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory3Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory3Filter'", e);
                     }
                     // deserialize GoogleProductCategory2Filter
@@ -344,7 +344,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory2Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory2Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory2Filter'", e);
                     }
                     // deserialize GoogleProductCategory1Filter
@@ -357,7 +357,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory1Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory1Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory1Filter'", e);
                     }
                     // deserialize GoogleProductCategory0Filter
@@ -370,7 +370,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory0Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory0Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory0Filter'", e);
                     }
                     // deserialize MediaTypeFilter
@@ -383,11 +383,11 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MediaTypeFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MediaTypeFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MediaTypeFilter'", e);
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CatalogsCreativeAssetsProductGroupFilterKeys: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CatalogsCreativeAssetsProductGroupFilterKeys: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -689,7 +689,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             CreativeAssetsIdFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CreativeAssetsIdFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CreativeAssetsIdFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CustomLabel0Filter
@@ -697,7 +697,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             CustomLabel0Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CustomLabel0Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel0Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CustomLabel1Filter
@@ -705,7 +705,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             CustomLabel1Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CustomLabel1Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel1Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CustomLabel2Filter
@@ -713,7 +713,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             CustomLabel2Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CustomLabel2Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel2Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CustomLabel3Filter
@@ -721,7 +721,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             CustomLabel3Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CustomLabel3Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel3Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CustomLabel4Filter
@@ -729,7 +729,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             CustomLabel4Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CustomLabel4Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel4Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory6Filter
@@ -737,7 +737,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             GoogleProductCategory6Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory6Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory6Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory5Filter
@@ -745,7 +745,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             GoogleProductCategory5Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory5Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory5Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory4Filter
@@ -753,7 +753,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             GoogleProductCategory4Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory4Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory4Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory3Filter
@@ -761,7 +761,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             GoogleProductCategory3Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory3Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory3Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory2Filter
@@ -769,7 +769,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             GoogleProductCategory2Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory2Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory2Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory1Filter
@@ -777,7 +777,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             GoogleProductCategory1Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory1Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory1Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory0Filter
@@ -785,7 +785,7 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             GoogleProductCategory0Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory0Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory0Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with MediaTypeFilter
@@ -793,10 +793,10 @@ public class CatalogsCreativeAssetsProductGroupFilterKeys extends AbstractOpenAp
             MediaTypeFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for MediaTypeFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MediaTypeFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        throw new IOException(String.format("The JSON string is invalid for CatalogsCreativeAssetsProductGroupFilterKeys with anyOf schemas: CreativeAssetsIdFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, MediaTypeFilter. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+        throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CatalogsCreativeAssetsProductGroupFilterKeys with anyOf schemas: CreativeAssetsIdFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, MediaTypeFilter. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
     }
 
     /**

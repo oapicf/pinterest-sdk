@@ -131,12 +131,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "bid_floor_specs":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                bidFloorSpecs = new Option<List<BidFloorSpec>?>(JsonSerializer.Deserialize<List<BidFloorSpec>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            bidFloorSpecs = new Option<List<BidFloorSpec>?>(JsonSerializer.Deserialize<List<BidFloorSpec>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "targeting_spec":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                targetingSpec = new Option<TargetingSpec?>(JsonSerializer.Deserialize<TargetingSpec>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            targetingSpec = new Option<TargetingSpec?>(JsonSerializer.Deserialize<TargetingSpec>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

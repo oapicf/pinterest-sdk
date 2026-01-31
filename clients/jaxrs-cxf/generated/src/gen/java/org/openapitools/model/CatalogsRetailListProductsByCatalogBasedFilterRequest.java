@@ -2,20 +2,20 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFilters;
 import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object to list products for a given retail catalog_id and product group filter.
- **/
+ * Request object to list products for a given retail catalog_id and product group filter.
+ */
 @ApiModel(description="Request object to list products for a given retail catalog_id and product group filter.")
 
 public class CatalogsRetailListProductsByCatalogBasedFilterRequest  {
@@ -52,28 +52,36 @@ RETAIL(String.valueOf("RETAIL"));
     }
 }
 
-  @ApiModelProperty(required = true, value = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
  /**
-   * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-  **/
+  * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+  */
+  @ApiModelProperty(required = true, value = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
+
   private CatalogTypeEnum catalogType;
 
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
  /**
-   * Catalog id pertaining to the retail product group.
-  **/
+  * Catalog id pertaining to the retail product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail product group.")
+
   private String catalogId;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupFilters filters;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private Country country;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsLocale locale;
  /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.

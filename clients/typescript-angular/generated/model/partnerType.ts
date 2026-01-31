@@ -9,12 +9,9 @@
  */
 
 
-export type PartnerType = 'INTERNAL' | 'EXTERNAL';
-
 export const PartnerType = {
-
-    Internal: 'INTERNAL' as PartnerType,
-
-    External: 'EXTERNAL' as PartnerType
-};
+    Internal: 'INTERNAL',
+    External: 'EXTERNAL'
+} as const;
+export type PartnerType = typeof PartnerType[keyof typeof PartnerType];
 

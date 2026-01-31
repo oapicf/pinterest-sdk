@@ -8625,7 +8625,7 @@ Can be used to get the business assets your partner has granted you access to or
 | partner_type
 | Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. 
 | -
-| null
+| INTERNAL
 | 
 
 | asset_type
@@ -18334,7 +18334,7 @@ Get multiple Pin analytics
 | 
 
 | metric_types
-| Pin metric types to get data for. <<pins_analytics_metric_types_parameter_inner>>
+| Pin metric types to get data for. <<String>>
 | X
 | null
 | 
@@ -18479,7 +18479,7 @@ Get analytics for a Pin owned by the \"operation user_account\" - or on a group 
 | 
 
 | metric_types
-| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. <<pins_analytics_metric_types_parameter_inner>>
+| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. <<String>>
 | X
 | null
 | 
@@ -27326,24 +27326,9 @@ An object containing the permissions a business member has on the asset.
 | audience_type
 | X
 | 
-| <<AudienceCreateRequest_1_audience_type>>    
-| 
-|     
-
-|===
-
-
-
-[#AudienceCreateRequest1AudienceType]
-=== _AudienceCreateRequest1AudienceType_ 
-
-
-
-
-[.fields-AudienceCreateRequest1AudienceType]
-[cols="2,1,1,2,4,1"]
-|===
-| Field Name| Required| Nullable | Type| Description | Format
+|  <<AudienceType>>  
+| &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+|    CUSTOMER_LIST, VISITOR, ENGAGEMENT, ACTALIKE, PERSONA,  
 
 |===
 
@@ -31031,9 +31016,9 @@ Request object to update catalogs creative assets items
 | language
 | X
 | 
-| <<CatalogsItemsRequest_language>>    
-| 
-|     
+| <<String>> <<String>>  
+| We recommend using the CatalogsLocale values.
+|  _Enum:_ af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH,  
 
 | items
 | X
@@ -31250,9 +31235,9 @@ Request object for creating a feed.
 | status
 | 
 | 
-| <<CatalogsStatus>>    
+|  <<CatalogsStatus>>  
 | 
-|     
+|    ACTIVE, INACTIVE,  
 
 |===
 
@@ -33391,9 +33376,9 @@ Request object for creating a feed. Please, be aware that &quot;default_country&
 | status
 | 
 | 
-| <<CatalogsStatus>>    
+|  <<CatalogsStatus>>  
 | 
-|     
+|    ACTIVE, INACTIVE,  
 
 |===
 
@@ -33796,9 +33781,9 @@ Request object to update catalogs hotel items
 | language
 | X
 | 
-| <<CatalogsItemsRequest_language>>    
-| 
-|     
+| <<String>> <<String>>  
+| We recommend using the CatalogsLocale values.
+|  _Enum:_ af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH,  
 
 | items
 | X
@@ -34001,9 +33986,9 @@ Request object for creating a feed. Please, be aware that &quot;default_country&
 | status
 | 
 | 
-| <<CatalogsStatus>>    
+|  <<CatalogsStatus>>  
 | 
-|     
+|    ACTIVE, INACTIVE,  
 
 |===
 
@@ -35596,9 +35581,9 @@ Request object of catalogs items batch
 | language
 | X
 | 
-| <<CatalogsItemsRequest_language>>    
-| 
-|     
+|  <<String>>  
+| We recommend using the CatalogsLocale values.
+|  _Enum:_ af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH,  
 
 | operation
 | X
@@ -35639,9 +35624,9 @@ Request object to create catalogs items
 | language
 | X
 | 
-| <<CatalogsItemsRequest_language>>    
-| 
-|     
+| <<String>> <<String>>  
+| We recommend using the CatalogsLocale values.
+|  _Enum:_ af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH,  
 
 | operation
 | X
@@ -35682,9 +35667,9 @@ Request object to delete catalogs items
 | language
 | X
 | 
-| <<CatalogsItemsRequest_language>>    
-| 
-|     
+| <<String>> <<String>>  
+| We recommend using the CatalogsLocale values.
+|  _Enum:_ af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH,  
 
 | operation
 | X
@@ -35725,9 +35710,9 @@ Request object to discontinue catalogs items
 | language
 | X
 | 
-| <<CatalogsItemsRequest_language>>    
-| 
-|     
+| <<String>> <<String>>  
+| We recommend using the CatalogsLocale values.
+|  _Enum:_ af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH,  
 
 | operation
 | X
@@ -35868,9 +35853,9 @@ Request object of catalogs items
 | language
 | X
 | 
-| <<CatalogsItemsRequest_language>>    
-| 
-|     
+| <<String>> <<String>>  
+| We recommend using the CatalogsLocale values.
+|  _Enum:_ af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH,  
 
 | filters
 | X
@@ -35878,21 +35863,6 @@ Request object of catalogs items
 | <<CatalogsItemsPostFilters>>    
 | 
 |     
-
-|===
-
-
-
-[#CatalogsItemsRequestLanguage]
-=== _CatalogsItemsRequestLanguage_ 
-
-We recommend using the CatalogsLocale values.
-
-
-[.fields-CatalogsItemsRequestLanguage]
-[cols="2,1,1,2,4,1"]
-|===
-| Field Name| Required| Nullable | Type| Description | Format
 
 |===
 
@@ -35919,9 +35889,9 @@ Request object to update catalogs items
 | language
 | X
 | 
-| <<CatalogsItemsRequest_language>>    
-| 
-|     
+| <<String>> <<String>>  
+| We recommend using the CatalogsLocale values.
+|  _Enum:_ af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH,  
 
 | operation
 | X
@@ -35962,9 +35932,9 @@ Request object to upsert catalogs items
 | language
 | X
 | 
-| <<CatalogsItemsRequest_language>>    
-| 
-|     
+| <<String>> <<String>>  
+| We recommend using the CatalogsLocale values.
+|  _Enum:_ af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH,  
 
 | operation
 | X
@@ -37505,9 +37475,9 @@ A request object that can have multiple operations on a single retail batch
 | language
 | X
 | 
-| <<CatalogsItemsRequest_language>>    
-| 
-|     
+| <<String>> <<String>>  
+| We recommend using the CatalogsLocale values.
+|  _Enum:_ af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH,  
 
 | items
 | X
@@ -37760,9 +37730,9 @@ Request object for creating a retail feed.
 | status
 | 
 | 
-| <<CatalogsStatus>>    
+|  <<CatalogsStatus>>  
 | 
-|     
+|    ACTIVE, INACTIVE,  
 
 |===
 
@@ -39040,9 +39010,9 @@ A request object that can have multiple operations on a single batch
 | language
 | X
 | 
-| <<CatalogsItemsRequest_language>>    
-| 
-|     
+|  <<String>>  
+| We recommend using the CatalogsLocale values.
+|  _Enum:_ af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH,  
 
 | items
 | X
@@ -39146,9 +39116,9 @@ Request object for creating a feed.
 | status
 | 
 | 
-| <<CatalogsStatus>>    
+|  <<CatalogsStatus>>  
 | 
-|     
+|    ACTIVE, INACTIVE,  
 
 | catalog_id
 | 
@@ -40446,7 +40416,7 @@ Conversion report time type
 
 
 [#ConversionTagCreate]
-=== _ConversionTagCreate_ ConversionTagCreate
+=== _ConversionTagCreate_ 
 
 
 
@@ -40455,13 +40425,6 @@ Conversion report time type
 [cols="2,1,1,2,4,1"]
 |===
 | Field Name| Required| Nullable | Type| Description | Format
-
-| name
-| X
-| 
-|   String  
-| Conversion tag name.
-|     
 
 | aem_enabled
 | 
@@ -40510,6 +40473,13 @@ Conversion report time type
 | X
 |   Boolean  
 | Whether Automatic Enhanced Match location is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.
+|     
+
+| name
+| X
+| 
+|   String  
+| Conversion tag name.
 |     
 
 |===
@@ -41251,6 +41221,13 @@ An invite object if the invite/request was successfully created. Will only be pr
 |===
 | Field Name| Required| Nullable | Type| Description | Format
 
+| countries
+| 
+| 
+|   List   of <<TargetingAdvertiserCountry>>
+| A List of countries for filtering
+|     
+
 | report_name
 | X
 | 
@@ -41298,13 +41275,6 @@ An invite object if the invite/request was successfully created. Will only be pr
 | 
 |   List   of <<MMMReportingColumn>>
 | Metric and entity columns
-|     
-
-| countries
-| 
-| 
-|   List   of <<TargetingAdvertiserCountry>>
-| A List of countries for filtering
 |     
 
 |===
@@ -42709,9 +42679,9 @@ Entity status
 | status
 | 
 | 
-| <<CatalogsStatus>>    
+|  <<CatalogsStatus>>  
 | 
-|     
+|    ACTIVE, INACTIVE,  
 
 | catalog_id
 | 
@@ -44597,34 +44567,13 @@ Ad accounts and profiles the member/partner will be granted access to with this 
 [#InviteBusinessRoleBinding]
 === _InviteBusinessRoleBinding_ 
 
-An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+
 
 
 [.fields-InviteBusinessRoleBinding]
 [cols="2,1,1,2,4,1"]
 |===
 | Field Name| Required| Nullable | Type| Description | Format
-
-| created_by_business_id
-| 
-| 
-|   String  
-| Unique identifier for the business that created the invite/request.
-|     
-
-| created_by_user_id
-| 
-| 
-|   String  
-| Unique identifier for the user that created the invite/request.
-|     
-
-| user
-| 
-| 
-| <<BusinessAccessUserSummary>>    
-| Metadata for the user that updated the invite/request.
-|     
 
 | id
 | 
@@ -44645,6 +44594,27 @@ An invite object if the invite/request was successfully updated. Will only be pr
 | 
 |   Boolean  
 | Indicates whether the invite/request was received.
+|     
+
+| user
+| 
+| 
+|   Object  
+| Metadata for the user that updated the invite/request.
+|     
+
+| created_by_business_id
+| 
+| 
+|   String  
+| Unique identifier for the business that created the invite/request.
+|     
+
+| created_by_user_id
+| 
+| 
+|   String  
+| Unique identifier for the user that created the invite/request.
 |     
 
 |===
@@ -44705,41 +44675,6 @@ An exception object if there is an error performing the action. Will only be pro
 |===
 | Field Name| Required| Nullable | Type| Description | Format
 
-| assets_summary
-| 
-| X
-| <<InviteAssetsSummary>>    
-| 
-|     
-
-| business_roles
-| 
-| 
-|   List   of <<string>>
-| The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-|     
-
-| created_by_business
-| 
-| X
-| <<BusinessAccessUserSummary>>    
-| Metadata for the business that created the invite/request.
-|     
-
-| created_by_user
-| 
-| X
-| <<BusinessAccessUserSummary>>    
-| Metadata for the user that created the invite/request.
-|     
-
-| created_time
-| 
-| 
-|   Integer  
-| The time the invite/request was created. Returned in milliseconds.
-|     
-
 | id
 | 
 | 
@@ -44766,6 +44701,41 @@ An exception object if there is an error performing the action. Will only be pro
 | 
 | <<BusinessAccessUserSummary>>    
 | Metadata for the member/partner that was sent the invite/request.
+|     
+
+| assets_summary
+| 
+| X
+| <<InviteAssetsSummary>>    
+| 
+|     
+
+| business_roles
+| 
+| 
+|   List   of <<string>>
+| The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+|     
+
+| created_by_business
+| 
+| X
+|   Object  
+| Metadata for the business that created the invite/request.
+|     
+
+| created_by_user
+| 
+| X
+|   Object  
+| Metadata for the user that created the invite/request.
+|     
+
+| created_time
+| 
+| 
+|   Integer  
+| The time the invite/request was created. Returned in milliseconds.
 |     
 
 |===
@@ -46053,9 +46023,9 @@ Object describing an item validation event
 | language
 | X
 | 
-| <<CatalogsItemsRequest_language>>    
-| 
-|     
+|  <<String>>  
+| We recommend using the CatalogsLocale values.
+|  _Enum:_ af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH,  
 
 | items
 | X
@@ -46713,28 +46683,28 @@ Creation fields
 | Field Name| Required| Nullable | Type| Description | Format
 
 | name
-| X
+| 
 | X
 |   String  
 | Internal name of the lead form.
 |     
 
 | privacy_policy_link
-| X
+| 
 | X
 |   String  
 | A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.
 |     
 
 | has_accepted_terms
-| X
+| 
 | 
 |   Boolean  
 | Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO
 |     
 
 | completion_message
-| X
+| 
 | X
 |   String  
 | A message for people who complete the form to let them know what happens next.
@@ -46755,7 +46725,7 @@ Creation fields
 |     
 
 | questions
-| X
+| 
 | 
 |   List   of <<LeadFormQuestion>>
 | List of questions to be displayed on the lead form.
@@ -48453,22 +48423,15 @@ Currency Codes from ISO 4217.
 
 
 [#OauthAccessTokenRequestClientCredentials]
-=== _OauthAccessTokenRequestClientCredentials_ client_credentials
+=== _OauthAccessTokenRequestClientCredentials_ 
 
-A request to receive a client token.
+
 
 
 [.fields-OauthAccessTokenRequestClientCredentials]
 [cols="2,1,1,2,4,1"]
 |===
 | Field Name| Required| Nullable | Type| Description | Format
-
-| grant_type
-| X
-| 
-|  <<String>>  
-| 
-|  _Enum:_ authorization_code, refresh_token, client_credentials,  
 
 | scope
 | X
@@ -48477,27 +48440,27 @@ A request to receive a client token.
 | 
 |     
 
-|===
-
-
-
-[#OauthAccessTokenRequestCode]
-=== _OauthAccessTokenRequestCode_ authorization_code
-
-A request to exchange an authorization code for an access token.
-
-
-[.fields-OauthAccessTokenRequestCode]
-[cols="2,1,1,2,4,1"]
-|===
-| Field Name| Required| Nullable | Type| Description | Format
-
 | grant_type
 | X
 | 
 |  <<String>>  
 | 
 |  _Enum:_ authorization_code, refresh_token, client_credentials,  
+
+|===
+
+
+
+[#OauthAccessTokenRequestCode]
+=== _OauthAccessTokenRequestCode_ 
+
+
+
+
+[.fields-OauthAccessTokenRequestCode]
+[cols="2,1,1,2,4,1"]
+|===
+| Field Name| Required| Nullable | Type| Description | Format
 
 | code
 | X
@@ -48513,27 +48476,27 @@ A request to exchange an authorization code for an access token.
 | 
 |     
 
-|===
-
-
-
-[#OauthAccessTokenRequestRefresh]
-=== _OauthAccessTokenRequestRefresh_ refresh_token
-
-A request to exchange a refresh token for a new access token.
-
-
-[.fields-OauthAccessTokenRequestRefresh]
-[cols="2,1,1,2,4,1"]
-|===
-| Field Name| Required| Nullable | Type| Description | Format
-
 | grant_type
 | X
 | 
 |  <<String>>  
 | 
 |  _Enum:_ authorization_code, refresh_token, client_credentials,  
+
+|===
+
+
+
+[#OauthAccessTokenRequestRefresh]
+=== _OauthAccessTokenRequestRefresh_ 
+
+
+
+
+[.fields-OauthAccessTokenRequestRefresh]
+[cols="2,1,1,2,4,1"]
+|===
+| Field Name| Required| Nullable | Type| Description | Format
 
 | refresh_token
 | X
@@ -48555,6 +48518,13 @@ A request to exchange a refresh token for a new access token.
 |   Boolean  
 | Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.
 |     
+
+| grant_type
+| X
+| 
+|  <<String>>  
+| 
+|  _Enum:_ authorization_code, refresh_token, client_credentials,  
 
 |===
 
@@ -48661,50 +48631,15 @@ A successful OAuth client token response for the client token flow.
 
 
 [#OauthAccessTokenResponseCode]
-=== _OauthAccessTokenResponseCode_ OAuth access token response
+=== _OauthAccessTokenResponseCode_ 
 
-A successful OAuth access token response for the authorization code flow.
+
 
 
 [.fields-OauthAccessTokenResponseCode]
 [cols="2,1,1,2,4,1"]
 |===
 | Field Name| Required| Nullable | Type| Description | Format
-
-| response_type
-| 
-| 
-|  <<String>>  
-| 
-|  _Enum:_ authorization_code, refresh_token, client_credentials,  
-
-| access_token
-| X
-| 
-|   String  
-| 
-|     
-
-| token_type
-| X
-| 
-|   String  
-| 
-|     
-
-| expires_in
-| X
-| 
-|   Integer  
-| 
-|     
-
-| scope
-| X
-| 
-|   String  
-| 
-|     
 
 | refresh_token
 | X
@@ -48720,21 +48655,6 @@ A successful OAuth access token response for the authorization code flow.
 | 
 |     
 
-|===
-
-
-
-[#OauthAccessTokenResponseEverlastingRefresh]
-=== _OauthAccessTokenResponseEverlastingRefresh_ OAuth access token response
-
-A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
-
-
-[.fields-OauthAccessTokenResponseEverlastingRefresh]
-[cols="2,1,1,2,4,1"]
-|===
-| Field Name| Required| Nullable | Type| Description | Format
-
 | response_type
 | 
 | 
@@ -48769,6 +48689,21 @@ A successful OAuth access token response for the refresh token flow, with an add
 |   String  
 | 
 |     
+
+|===
+
+
+
+[#OauthAccessTokenResponseEverlastingRefresh]
+=== _OauthAccessTokenResponseEverlastingRefresh_ 
+
+
+
+
+[.fields-OauthAccessTokenResponseEverlastingRefresh]
+[cols="2,1,1,2,4,1"]
+|===
+| Field Name| Required| Nullable | Type| Description | Format
 
 | refresh_token
 | X
@@ -48791,21 +48726,6 @@ A successful OAuth access token response for the refresh token flow, with an add
 | 
 |     
 
-|===
-
-
-
-[#OauthAccessTokenResponseIntegrationRefresh]
-=== _OauthAccessTokenResponseIntegrationRefresh_ OAuth access token response
-
-A successful OAuth access token response for the refresh token flow, with an added refresh token.
-
-
-[.fields-OauthAccessTokenResponseIntegrationRefresh]
-[cols="2,1,1,2,4,1"]
-|===
-| Field Name| Required| Nullable | Type| Description | Format
-
 | response_type
 | 
 | 
@@ -48841,6 +48761,21 @@ A successful OAuth access token response for the refresh token flow, with an add
 | 
 |     
 
+|===
+
+
+
+[#OauthAccessTokenResponseIntegrationRefresh]
+=== _OauthAccessTokenResponseIntegrationRefresh_ 
+
+
+
+
+[.fields-OauthAccessTokenResponseIntegrationRefresh]
+[cols="2,1,1,2,4,1"]
+|===
+| Field Name| Required| Nullable | Type| Description | Format
+
 | refresh_token
 | X
 | 
@@ -48852,6 +48787,41 @@ A successful OAuth access token response for the refresh token flow, with an add
 | X
 | 
 |   Integer  
+| 
+|     
+
+| response_type
+| 
+| 
+|  <<String>>  
+| 
+|  _Enum:_ authorization_code, refresh_token, client_credentials,  
+
+| access_token
+| X
+| 
+|   String  
+| 
+|     
+
+| token_type
+| X
+| 
+|   String  
+| 
+|     
+
+| expires_in
+| X
+| 
+|   Integer  
+| 
+|     
+
+| scope
+| X
+| 
+|   String  
 | 
 |     
 
@@ -50861,21 +50831,6 @@ Pin fields for updates
 |   String  
 | Carousel Pin slot link.
 |     
-
-|===
-
-
-
-[#PinsAnalyticsMetricTypesParameterInner]
-=== _PinsAnalyticsMetricTypesParameterInner_ 
-
-
-
-
-[.fields-PinsAnalyticsMetricTypesParameterInner]
-[cols="2,1,1,2,4,1"]
-|===
-| Field Name| Required| Nullable | Type| Description | Format
 
 |===
 
@@ -56032,7 +55987,7 @@ By default, normalization is applied independently to the time series of each ke
 
 | invite
 | 
-| X
+| 
 | <<InviteBusinessRoleBinding>>    
 | 
 |     

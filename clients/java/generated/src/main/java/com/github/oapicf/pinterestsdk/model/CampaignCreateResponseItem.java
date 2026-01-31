@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CampaignCreateResponseItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CampaignCreateResponseItem {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -159,12 +159,10 @@ public class CampaignCreateResponseItem {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("data");
-    openapiFields.add("exceptions");
+    openapiFields = new HashSet<String>(Arrays.asList("data", "exceptions"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -176,7 +174,7 @@ public class CampaignCreateResponseItem {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CampaignCreateResponseItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignCreateResponseItem is not found in the empty JSON string", CampaignCreateResponseItem.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CampaignCreateResponseItem is not found in the empty JSON string", CampaignCreateResponseItem.openapiRequiredFields.toString()));
         }
       }
 
@@ -184,7 +182,7 @@ public class CampaignCreateResponseItem {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CampaignCreateResponseItem.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CampaignCreateResponseItem` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CampaignCreateResponseItem` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -197,7 +195,7 @@ public class CampaignCreateResponseItem {
         if (jsonArrayexceptions != null) {
           // ensure the json data is an array
           if (!jsonObj.get("exceptions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `exceptions` to be an array in the JSON string but got `%s`", jsonObj.get("exceptions").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `exceptions` to be an array in the JSON string but got `%s`", jsonObj.get("exceptions").toString()));
           }
 
           // validate the optional field `exceptions` (array)

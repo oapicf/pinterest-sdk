@@ -2,19 +2,19 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.util.HashMap;
 import java.util.Map;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * HTTP request details included in the log sent by the client.
- **/
+ * HTTP request details included in the log sent by the client.
+ */
 @ApiModel(description="HTTP request details included in the log sent by the client.")
 
 public class IntegrationLogClientRequest  {
@@ -52,33 +52,39 @@ GET(String.valueOf("GET")), HEAD(String.valueOf("HEAD")), POST(String.valueOf("P
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private MethodEnum method;
 
-  @ApiModelProperty(required = true, value = "HTTP request host from host header.")
  /**
-   * HTTP request host from host header.
-  **/
+  * HTTP request host from host header.
+  */
+  @ApiModelProperty(required = true, value = "HTTP request host from host header.")
+
   private String host;
 
-  @ApiModelProperty(required = true, value = "HTTP request path.")
  /**
-   * HTTP request path.
-  **/
+  * HTTP request path.
+  */
+  @ApiModelProperty(required = true, value = "HTTP request path.")
+
   private String path;
 
-  @ApiModelProperty(value = "HTTP request headers as key-value pairs.")
  /**
-   * HTTP request headers as key-value pairs.
-  **/
+  * HTTP request headers as key-value pairs.
+  */
+  @ApiModelProperty(value = "HTTP request headers as key-value pairs.")
+
   private Map<String, String> requestHeaders = new HashMap<>();
 
-  @ApiModelProperty(value = "HTTP response headers as key-value pairs.")
  /**
-   * HTTP response headers as key-value pairs.
-  **/
+  * HTTP response headers as key-value pairs.
+  */
+  @ApiModelProperty(value = "HTTP response headers as key-value pairs.")
+
   private Map<String, String> responseHeaders = new HashMap<>();
 
   @ApiModelProperty(value = "")
+
   private Integer responseStatusCode;
  /**
    * Get method

@@ -70,6 +70,374 @@ inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPICata
 	return false;
 }
 
+inline FString ToString(const OpenAPICatalogsRetailBatchRequest::LanguageEnum& Value)
+{
+	switch (Value)
+	{
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::AfZA:
+		return TEXT("af-ZA");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::ArSA:
+		return TEXT("ar-SA");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::BgBG:
+		return TEXT("bg-BG");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::BnIN:
+		return TEXT("bn-IN");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::CsCZ:
+		return TEXT("cs-CZ");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::DaDK:
+		return TEXT("da-DK");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::De:
+		return TEXT("de");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::ElGR:
+		return TEXT("el-GR");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::EnAU:
+		return TEXT("en-AU");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::EnCA:
+		return TEXT("en-CA");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::EnGB:
+		return TEXT("en-GB");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::EnIN:
+		return TEXT("en-IN");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::EnUS:
+		return TEXT("en-US");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Es419:
+		return TEXT("es-419");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::EsAR:
+		return TEXT("es-AR");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::EsES:
+		return TEXT("es-ES");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::EsMX:
+		return TEXT("es-MX");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::FiFI:
+		return TEXT("fi-FI");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Fr:
+		return TEXT("fr");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::FrCA:
+		return TEXT("fr-CA");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::HeIL:
+		return TEXT("he-IL");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::HiIN:
+		return TEXT("hi-IN");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::HrHR:
+		return TEXT("hr-HR");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::HuHU:
+		return TEXT("hu-HU");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::IdID:
+		return TEXT("id-ID");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::It:
+		return TEXT("it");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ja:
+		return TEXT("ja");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::KoKR:
+		return TEXT("ko-KR");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::MsMY:
+		return TEXT("ms-MY");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::NbNO:
+		return TEXT("nb-NO");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Nl:
+		return TEXT("nl");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::PlPL:
+		return TEXT("pl-PL");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::PtBR:
+		return TEXT("pt-BR");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::PtPT:
+		return TEXT("pt-PT");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::RoRO:
+		return TEXT("ro-RO");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::RuRU:
+		return TEXT("ru-RU");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::SkSK:
+		return TEXT("sk-SK");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::SvSE:
+		return TEXT("sv-SE");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::TeIN:
+		return TEXT("te-IN");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::ThTH:
+		return TEXT("th-TH");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::TlPH:
+		return TEXT("tl-PH");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Tr:
+		return TEXT("tr");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::UkUA:
+		return TEXT("uk-UA");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::ViVN:
+		return TEXT("vi-VN");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::ZhCN:
+		return TEXT("zh-CN");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::ZhTW:
+		return TEXT("zh-TW");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Am:
+		return TEXT("AM");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ar:
+		return TEXT("AR");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Az:
+		return TEXT("AZ");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Bg:
+		return TEXT("BG");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Bn:
+		return TEXT("BN");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Bs:
+		return TEXT("BS");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ca:
+		return TEXT("CA");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Cs:
+		return TEXT("CS");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Da:
+		return TEXT("DA");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Dv:
+		return TEXT("DV");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Dz:
+		return TEXT("DZ");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::De2:
+		return TEXT("DE");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::El:
+		return TEXT("EL");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::En:
+		return TEXT("EN");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Es:
+		return TEXT("ES");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Et:
+		return TEXT("ET");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Fa:
+		return TEXT("FA");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Fi:
+		return TEXT("FI");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Fr2:
+		return TEXT("FR");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::He:
+		return TEXT("HE");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Hi:
+		return TEXT("HI");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Hr:
+		return TEXT("HR");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Hu:
+		return TEXT("HU");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Hy:
+		return TEXT("HY");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Id:
+		return TEXT("ID");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::In:
+		return TEXT("IN");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Is:
+		return TEXT("IS");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::It2:
+		return TEXT("IT");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Iw:
+		return TEXT("IW");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ja2:
+		return TEXT("JA");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ka:
+		return TEXT("KA");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Km:
+		return TEXT("KM");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ko:
+		return TEXT("KO");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Lo:
+		return TEXT("LO");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Lt:
+		return TEXT("LT");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Lv:
+		return TEXT("LV");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Mk:
+		return TEXT("MK");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Mn:
+		return TEXT("MN");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ms:
+		return TEXT("MS");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::My:
+		return TEXT("MY");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Nb:
+		return TEXT("NB");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ne:
+		return TEXT("NE");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Nl2:
+		return TEXT("NL");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::No:
+		return TEXT("NO");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Pl:
+		return TEXT("PL");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Pt:
+		return TEXT("PT");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ro:
+		return TEXT("RO");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ru:
+		return TEXT("RU");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Sk:
+		return TEXT("SK");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Sl:
+		return TEXT("SL");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Sq:
+		return TEXT("SQ");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Sr:
+		return TEXT("SR");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Sv:
+		return TEXT("SV");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Tl:
+		return TEXT("TL");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Uk:
+		return TEXT("UK");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Vi:
+		return TEXT("VI");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Te:
+		return TEXT("TE");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Th:
+		return TEXT("TH");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Tr2:
+		return TEXT("TR");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Xx:
+		return TEXT("XX");
+	case OpenAPICatalogsRetailBatchRequest::LanguageEnum::Zh:
+		return TEXT("ZH");
+	}
+
+	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPICatalogsRetailBatchRequest::LanguageEnum Value (%d)"), (int)Value);
+	return TEXT("");
+}
+
+FString OpenAPICatalogsRetailBatchRequest::EnumToString(const OpenAPICatalogsRetailBatchRequest::LanguageEnum& EnumValue)
+{
+	return ToString(EnumValue);
+}
+
+inline bool FromString(const FString& EnumAsString, OpenAPICatalogsRetailBatchRequest::LanguageEnum& Value)
+{
+	static TMap<FString, OpenAPICatalogsRetailBatchRequest::LanguageEnum> StringToEnum = { 
+		{ TEXT("af-ZA"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::AfZA },
+		{ TEXT("ar-SA"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::ArSA },
+		{ TEXT("bg-BG"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::BgBG },
+		{ TEXT("bn-IN"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::BnIN },
+		{ TEXT("cs-CZ"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::CsCZ },
+		{ TEXT("da-DK"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::DaDK },
+		{ TEXT("de"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::De },
+		{ TEXT("el-GR"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::ElGR },
+		{ TEXT("en-AU"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::EnAU },
+		{ TEXT("en-CA"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::EnCA },
+		{ TEXT("en-GB"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::EnGB },
+		{ TEXT("en-IN"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::EnIN },
+		{ TEXT("en-US"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::EnUS },
+		{ TEXT("es-419"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Es419 },
+		{ TEXT("es-AR"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::EsAR },
+		{ TEXT("es-ES"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::EsES },
+		{ TEXT("es-MX"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::EsMX },
+		{ TEXT("fi-FI"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::FiFI },
+		{ TEXT("fr"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Fr },
+		{ TEXT("fr-CA"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::FrCA },
+		{ TEXT("he-IL"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::HeIL },
+		{ TEXT("hi-IN"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::HiIN },
+		{ TEXT("hr-HR"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::HrHR },
+		{ TEXT("hu-HU"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::HuHU },
+		{ TEXT("id-ID"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::IdID },
+		{ TEXT("it"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::It },
+		{ TEXT("ja"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ja },
+		{ TEXT("ko-KR"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::KoKR },
+		{ TEXT("ms-MY"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::MsMY },
+		{ TEXT("nb-NO"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::NbNO },
+		{ TEXT("nl"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Nl },
+		{ TEXT("pl-PL"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::PlPL },
+		{ TEXT("pt-BR"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::PtBR },
+		{ TEXT("pt-PT"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::PtPT },
+		{ TEXT("ro-RO"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::RoRO },
+		{ TEXT("ru-RU"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::RuRU },
+		{ TEXT("sk-SK"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::SkSK },
+		{ TEXT("sv-SE"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::SvSE },
+		{ TEXT("te-IN"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::TeIN },
+		{ TEXT("th-TH"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::ThTH },
+		{ TEXT("tl-PH"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::TlPH },
+		{ TEXT("tr"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Tr },
+		{ TEXT("uk-UA"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::UkUA },
+		{ TEXT("vi-VN"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::ViVN },
+		{ TEXT("zh-CN"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::ZhCN },
+		{ TEXT("zh-TW"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::ZhTW },
+		{ TEXT("AM"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Am },
+		{ TEXT("AR"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ar },
+		{ TEXT("AZ"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Az },
+		{ TEXT("BG"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Bg },
+		{ TEXT("BN"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Bn },
+		{ TEXT("BS"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Bs },
+		{ TEXT("CA"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ca },
+		{ TEXT("CS"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Cs },
+		{ TEXT("DA"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Da },
+		{ TEXT("DV"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Dv },
+		{ TEXT("DZ"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Dz },
+		{ TEXT("DE"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::De2 },
+		{ TEXT("EL"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::El },
+		{ TEXT("EN"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::En },
+		{ TEXT("ES"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Es },
+		{ TEXT("ET"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Et },
+		{ TEXT("FA"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Fa },
+		{ TEXT("FI"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Fi },
+		{ TEXT("FR"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Fr2 },
+		{ TEXT("HE"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::He },
+		{ TEXT("HI"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Hi },
+		{ TEXT("HR"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Hr },
+		{ TEXT("HU"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Hu },
+		{ TEXT("HY"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Hy },
+		{ TEXT("ID"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Id },
+		{ TEXT("IN"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::In },
+		{ TEXT("IS"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Is },
+		{ TEXT("IT"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::It2 },
+		{ TEXT("IW"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Iw },
+		{ TEXT("JA"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ja2 },
+		{ TEXT("KA"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ka },
+		{ TEXT("KM"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Km },
+		{ TEXT("KO"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ko },
+		{ TEXT("LO"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Lo },
+		{ TEXT("LT"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Lt },
+		{ TEXT("LV"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Lv },
+		{ TEXT("MK"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Mk },
+		{ TEXT("MN"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Mn },
+		{ TEXT("MS"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ms },
+		{ TEXT("MY"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::My },
+		{ TEXT("NB"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Nb },
+		{ TEXT("NE"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ne },
+		{ TEXT("NL"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Nl2 },
+		{ TEXT("NO"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::No },
+		{ TEXT("PL"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Pl },
+		{ TEXT("PT"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Pt },
+		{ TEXT("RO"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ro },
+		{ TEXT("RU"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Ru },
+		{ TEXT("SK"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Sk },
+		{ TEXT("SL"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Sl },
+		{ TEXT("SQ"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Sq },
+		{ TEXT("SR"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Sr },
+		{ TEXT("SV"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Sv },
+		{ TEXT("TL"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Tl },
+		{ TEXT("UK"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Uk },
+		{ TEXT("VI"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Vi },
+		{ TEXT("TE"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Te },
+		{ TEXT("TH"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Th },
+		{ TEXT("TR"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Tr2 },
+		{ TEXT("XX"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Xx },
+		{ TEXT("ZH"), OpenAPICatalogsRetailBatchRequest::LanguageEnum::Zh }, };
+
+	const auto Found = StringToEnum.Find(EnumAsString);
+	if(Found)
+		Value = *Found;
+
+	return Found != nullptr;
+}
+
+bool OpenAPICatalogsRetailBatchRequest::EnumFromString(const FString& EnumAsString, OpenAPICatalogsRetailBatchRequest::LanguageEnum& EnumValue)
+{
+	return FromString(EnumAsString, EnumValue);
+}
+
+inline void WriteJsonValue(JsonWriter& Writer, const OpenAPICatalogsRetailBatchRequest::LanguageEnum& Value)
+{
+	WriteJsonValue(Writer, ToString(Value));
+}
+
+inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPICatalogsRetailBatchRequest::LanguageEnum& Value)
+{
+	FString TmpValue;
+	if (JsonValue->TryGetString(TmpValue))
+	{
+		if(FromString(TmpValue, Value))
+			return true;
+	}
+	return false;
+}
+
 void OpenAPICatalogsRetailBatchRequest::WriteJson(JsonWriter& Writer) const
 {
 	Writer->WriteObjectStart();

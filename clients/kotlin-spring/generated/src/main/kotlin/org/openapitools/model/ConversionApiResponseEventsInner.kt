@@ -31,7 +31,7 @@ data class ConversionApiResponseEventsInner(
 
     @Schema(example = "null", description = "Warning messages about any fields in the event which are not standard. These are not critical to event processing.")
     @get:JsonProperty("warning_message") val warningMessage: kotlin.String? = null
-    ) {
+) {
 
     /**
     * Whether the event was processed successfully.
@@ -46,7 +46,8 @@ data class ConversionApiResponseEventsInner(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Status {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'ConversionApiResponseEventsInner'")
             }
         }
     }

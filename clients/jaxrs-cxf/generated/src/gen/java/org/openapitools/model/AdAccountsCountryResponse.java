@@ -15,7 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdAccountsCountryResponse  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid AdAccountsCountryResponseData> items = new ArrayList<>();
  /**
    * Get items

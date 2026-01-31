@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "TargetingSpec", description = "Ad group targeting specification defining the ad group target audience. For example, `{\"APPTYPE\":[\"iphone\"], \"GENDER\":[\"male\"], \"LOCALE\":[\"en-US\"], \"LOCATION\":[\"501\"], \"AGE_BUCKET\":[\"25-34\"]}`")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingSpec {
 
   /**
@@ -50,7 +50,7 @@ public class TargetingSpec {
     
     _65_("65+");
 
-    private String value;
+    private final String value;
 
     AGEBUCKETEnum(String value) {
       this.value = value;
@@ -96,7 +96,7 @@ public class TargetingSpec {
     
     WEB_MOBILE("web_mobile");
 
-    private String value;
+    private final String value;
 
     APPTYPEEnum(String value) {
       this.value = value;
@@ -142,7 +142,7 @@ public class TargetingSpec {
     
     FEMALE("female");
 
-    private String value;
+    private final String value;
 
     GENDEREnum(String value) {
       this.value = value;
@@ -197,7 +197,7 @@ public class TargetingSpec {
     
     RECONNECT_WITH_USERS("RECONNECT_WITH_USERS");
 
-    private String value;
+    private final String value;
 
     TARGETINGSTRATEGYEnum(String value) {
       this.value = value;

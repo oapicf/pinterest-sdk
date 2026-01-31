@@ -129,6 +129,10 @@ inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPICrea
 void OpenAPICreateMMMReportRequest::WriteJson(JsonWriter& Writer) const
 {
 	Writer->WriteObjectStart();
+	if (Countries.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("countries")); WriteJsonValue(Writer, Countries.GetValue());
+	}
 	Writer->WriteIdentifierPrefix(TEXT("report_name")); WriteJsonValue(Writer, ReportName);
 	Writer->WriteIdentifierPrefix(TEXT("start_date")); WriteJsonValue(Writer, StartDate);
 	Writer->WriteIdentifierPrefix(TEXT("end_date")); WriteJsonValue(Writer, EndDate);
@@ -136,10 +140,6 @@ void OpenAPICreateMMMReportRequest::WriteJson(JsonWriter& Writer) const
 	Writer->WriteIdentifierPrefix(TEXT("level")); WriteJsonValue(Writer, Level);
 	Writer->WriteIdentifierPrefix(TEXT("targeting_types")); WriteJsonValue(Writer, TargetingTypes);
 	Writer->WriteIdentifierPrefix(TEXT("columns")); WriteJsonValue(Writer, Columns);
-	if (Countries.IsSet())
-	{
-		Writer->WriteIdentifierPrefix(TEXT("countries")); WriteJsonValue(Writer, Countries.GetValue());
-	}
 	Writer->WriteObjectEnd();
 }
 
@@ -151,6 +151,7 @@ bool OpenAPICreateMMMReportRequest::FromJson(const TSharedPtr<FJsonValue>& JsonV
 
 	bool ParseSuccess = true;
 
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("countries"), Countries);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("report_name"), ReportName);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("start_date"), StartDate);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("end_date"), EndDate);
@@ -158,7 +159,6 @@ bool OpenAPICreateMMMReportRequest::FromJson(const TSharedPtr<FJsonValue>& JsonV
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("level"), Level);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("targeting_types"), TargetingTypes);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("columns"), Columns);
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("countries"), Countries);
 
 	return ParseSuccess;
 }

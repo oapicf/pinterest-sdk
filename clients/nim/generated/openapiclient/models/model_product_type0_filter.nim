@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_multiple_string_list_criteria
 
 type ProductType0Filter* = object
   ## 
   PRODUCT_TYPE_0*: CatalogsProductGroupMultipleStringListCriteria
+

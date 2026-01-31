@@ -84,7 +84,6 @@ module PinterestRESTAPI.Types (
   AudienceCommon (..),
   AudienceCreateCustomRequest (..),
   AudienceCreateRequest (..),
-  AudienceCreateRequest1AudienceType (..),
   AudienceDataParty (..),
   AudienceDefinition (..),
   AudienceDefinitionResponse (..),
@@ -262,7 +261,6 @@ module PinterestRESTAPI.Types (
   CatalogsItemsFilters (..),
   CatalogsItemsPostFilters (..),
   CatalogsItemsRequest (..),
-  CatalogsItemsRequestLanguage (..),
   CatalogsItemsUpdateBatchRequest (..),
   CatalogsItemsUpsertBatchRequest (..),
   CatalogsList200Response (..),
@@ -596,7 +594,6 @@ module PinterestRESTAPI.Types (
   PinPromotionSummaryStatus (..),
   PinUpdate (..),
   PinUpdateCarouselSlotsInner (..),
-  PinsAnalyticsMetricTypesParameterInner (..),
   PinsList200Response (..),
   PinsSaveRequest (..),
   PinterestTagEventData (..),
@@ -3038,7 +3035,7 @@ data AudienceCreateRequest = AudienceCreateRequest
   , audienceCreateRequestName :: Text -- ^ Audience name.
   , audienceCreateRequestRule :: AudienceRule -- ^ 
   , audienceCreateRequestDescription :: Maybe Text -- ^ Audience description.
-  , audienceCreateRequestAudienceUnderscoretype :: AudienceCreateRequest1AudienceType -- ^ 
+  , audienceCreateRequestAudienceUnderscoretype :: AudienceType -- ^ <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON AudienceCreateRequest where
@@ -3059,28 +3056,6 @@ optionsAudienceCreateRequest =
       , ("audienceCreateRequestRule", "rule")
       , ("audienceCreateRequestDescription", "description")
       , ("audienceCreateRequestAudienceUnderscoretype", "audience_type")
-      ]
-
-
--- | 
-data AudienceCreateRequest1AudienceType = AudienceCreateRequest1AudienceType
-  { 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON AudienceCreateRequest1AudienceType where
-  parseJSON = genericParseJSON optionsAudienceCreateRequest1AudienceType
-instance ToJSON AudienceCreateRequest1AudienceType where
-  toJSON = genericToJSON optionsAudienceCreateRequest1AudienceType
-
-optionsAudienceCreateRequest1AudienceType :: Options
-optionsAudienceCreateRequest1AudienceType =
-  defaultOptions
-    { omitNothingFields  = True
-    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
-    }
-  where
-    table =
-      [ 
       ]
 
 
@@ -5592,7 +5567,7 @@ optionsCatalogsCreativeAssetsBatchItem =
 data CatalogsCreativeAssetsBatchRequest = CatalogsCreativeAssetsBatchRequest
   { catalogsCreativeAssetsBatchRequestCatalogUnderscoretype :: Text -- ^ 
   , catalogsCreativeAssetsBatchRequestCountry :: Country -- ^ 
-  , catalogsCreativeAssetsBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsCreativeAssetsBatchRequestLanguage :: Text -- ^ We recommend using the CatalogsLocale values.
   , catalogsCreativeAssetsBatchRequestItems :: [CatalogsCreativeAssetsBatchItem] -- ^ Array with creative assets item operations
   , catalogsCreativeAssetsBatchRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   } deriving (Show, Eq, Generic)
@@ -7108,7 +7083,7 @@ optionsCatalogsHotelBatchItem =
 data CatalogsHotelBatchRequest = CatalogsHotelBatchRequest
   { catalogsHotelBatchRequestCatalogUnderscoretype :: Text -- ^ 
   , catalogsHotelBatchRequestCountry :: Country -- ^ 
-  , catalogsHotelBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsHotelBatchRequestLanguage :: Text -- ^ We recommend using the CatalogsLocale values.
   , catalogsHotelBatchRequestItems :: [CatalogsHotelBatchItem] -- ^ Array with catalogs item operations
   , catalogsHotelBatchRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
   } deriving (Show, Eq, Generic)
@@ -8077,7 +8052,7 @@ optionsCatalogsItemsBatch =
 -- | Request object of catalogs items batch
 data CatalogsItemsBatchRequest = CatalogsItemsBatchRequest
   { catalogsItemsBatchRequestCountry :: Country -- ^ 
-  , catalogsItemsBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsItemsBatchRequestLanguage :: Text -- ^ We recommend using the CatalogsLocale values.
   , catalogsItemsBatchRequestOperation :: BatchOperation -- ^ 
   , catalogsItemsBatchRequestItems :: [ItemDeleteBatchRecord] -- ^ Array with catalogs items
   } deriving (Show, Eq, Generic)
@@ -8105,7 +8080,7 @@ optionsCatalogsItemsBatchRequest =
 -- | Request object to create catalogs items
 data CatalogsItemsCreateBatchRequest = CatalogsItemsCreateBatchRequest
   { catalogsItemsCreateBatchRequestCountry :: Country -- ^ 
-  , catalogsItemsCreateBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsItemsCreateBatchRequestLanguage :: Text -- ^ We recommend using the CatalogsLocale values.
   , catalogsItemsCreateBatchRequestOperation :: BatchOperation -- ^ 
   , catalogsItemsCreateBatchRequestItems :: [ItemCreateBatchRecord] -- ^ Array with catalogs items
   } deriving (Show, Eq, Generic)
@@ -8133,7 +8108,7 @@ optionsCatalogsItemsCreateBatchRequest =
 -- | Request object to delete catalogs items
 data CatalogsItemsDeleteBatchRequest = CatalogsItemsDeleteBatchRequest
   { catalogsItemsDeleteBatchRequestCountry :: Country -- ^ 
-  , catalogsItemsDeleteBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsItemsDeleteBatchRequestLanguage :: Text -- ^ We recommend using the CatalogsLocale values.
   , catalogsItemsDeleteBatchRequestOperation :: BatchOperation -- ^ 
   , catalogsItemsDeleteBatchRequestItems :: [ItemDeleteBatchRecord] -- ^ Array with catalogs items
   } deriving (Show, Eq, Generic)
@@ -8161,7 +8136,7 @@ optionsCatalogsItemsDeleteBatchRequest =
 -- | Request object to discontinue catalogs items
 data CatalogsItemsDeleteDiscontinuedBatchRequest = CatalogsItemsDeleteDiscontinuedBatchRequest
   { catalogsItemsDeleteDiscontinuedBatchRequestCountry :: Country -- ^ 
-  , catalogsItemsDeleteDiscontinuedBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsItemsDeleteDiscontinuedBatchRequestLanguage :: Text -- ^ We recommend using the CatalogsLocale values.
   , catalogsItemsDeleteDiscontinuedBatchRequestOperation :: BatchOperation -- ^ 
   , catalogsItemsDeleteDiscontinuedBatchRequestItems :: [ItemDeleteDiscontinuedBatchRecord] -- ^ Array with catalogs items
   } deriving (Show, Eq, Generic)
@@ -8249,7 +8224,7 @@ optionsCatalogsItemsPostFilters =
 -- | Request object of catalogs items
 data CatalogsItemsRequest = CatalogsItemsRequest
   { catalogsItemsRequestCountry :: Country -- ^ 
-  , catalogsItemsRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsItemsRequestLanguage :: Text -- ^ We recommend using the CatalogsLocale values.
   , catalogsItemsRequestFilters :: CatalogsItemsPostFilters -- ^ 
   } deriving (Show, Eq, Generic)
 
@@ -8272,32 +8247,10 @@ optionsCatalogsItemsRequest =
       ]
 
 
--- | We recommend using the CatalogsLocale values.
-data CatalogsItemsRequestLanguage = CatalogsItemsRequestLanguage
-  { 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON CatalogsItemsRequestLanguage where
-  parseJSON = genericParseJSON optionsCatalogsItemsRequestLanguage
-instance ToJSON CatalogsItemsRequestLanguage where
-  toJSON = genericToJSON optionsCatalogsItemsRequestLanguage
-
-optionsCatalogsItemsRequestLanguage :: Options
-optionsCatalogsItemsRequestLanguage =
-  defaultOptions
-    { omitNothingFields  = True
-    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
-    }
-  where
-    table =
-      [ 
-      ]
-
-
 -- | Request object to update catalogs items
 data CatalogsItemsUpdateBatchRequest = CatalogsItemsUpdateBatchRequest
   { catalogsItemsUpdateBatchRequestCountry :: Country -- ^ 
-  , catalogsItemsUpdateBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsItemsUpdateBatchRequestLanguage :: Text -- ^ We recommend using the CatalogsLocale values.
   , catalogsItemsUpdateBatchRequestOperation :: BatchOperation -- ^ 
   , catalogsItemsUpdateBatchRequestItems :: [ItemUpdateBatchRecord] -- ^ Array with catalogs items
   } deriving (Show, Eq, Generic)
@@ -8325,7 +8278,7 @@ optionsCatalogsItemsUpdateBatchRequest =
 -- | Request object to upsert catalogs items
 data CatalogsItemsUpsertBatchRequest = CatalogsItemsUpsertBatchRequest
   { catalogsItemsUpsertBatchRequestCountry :: Country -- ^ 
-  , catalogsItemsUpsertBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsItemsUpsertBatchRequestLanguage :: Text -- ^ We recommend using the CatalogsLocale values.
   , catalogsItemsUpsertBatchRequestOperation :: BatchOperation -- ^ 
   , catalogsItemsUpsertBatchRequestItems :: [ItemUpsertBatchRecord] -- ^ Array with catalogs items
   } deriving (Show, Eq, Generic)
@@ -9316,7 +9269,7 @@ optionsCatalogsReportStats =
 data CatalogsRetailBatchRequest = CatalogsRetailBatchRequest
   { catalogsRetailBatchRequestCatalogUnderscoretype :: Text -- ^ 
   , catalogsRetailBatchRequestCountry :: Country -- ^ 
-  , catalogsRetailBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsRetailBatchRequestLanguage :: Text -- ^ We recommend using the CatalogsLocale values.
   , catalogsRetailBatchRequestItems :: [CatalogsRetailBatchRequestItemsInner] -- ^ Array with catalogs item operations
   } deriving (Show, Eq, Generic)
 
@@ -10196,7 +10149,7 @@ optionsCatalogsUpsertRetailItem =
 data CatalogsVerticalBatchRequest = CatalogsVerticalBatchRequest
   { catalogsVerticalBatchRequestCatalogUnderscoretype :: Text -- ^ 
   , catalogsVerticalBatchRequestCountry :: Country -- ^ 
-  , catalogsVerticalBatchRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , catalogsVerticalBatchRequestLanguage :: Text -- ^ We recommend using the CatalogsLocale values.
   , catalogsVerticalBatchRequestItems :: [CatalogsCreativeAssetsBatchItem] -- ^ Array with creative assets item operations
   , catalogsVerticalBatchRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   } deriving (Show, Eq, Generic)
@@ -10982,14 +10935,14 @@ optionsConversionTagConfigs =
 
 -- | 
 data ConversionTagCreate = ConversionTagCreate
-  { conversionTagCreateName :: Text -- ^ Conversion tag name.
-  , conversionTagCreateAemUnderscoreenabled :: Maybe Bool -- ^ Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+  { conversionTagCreateAemUnderscoreenabled :: Maybe Bool -- ^ Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
   , conversionTagCreateMdUnderscorefrequency :: Maybe Double -- ^ Metadata ingestion frequency.
   , conversionTagCreateAemUnderscorefnlnUnderscoreenabled :: Maybe Bool -- ^ Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
   , conversionTagCreateAemUnderscorephUnderscoreenabled :: Maybe Bool -- ^ Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
   , conversionTagCreateAemUnderscoregeUnderscoreenabled :: Maybe Bool -- ^ Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
   , conversionTagCreateAemUnderscoredbUnderscoreenabled :: Maybe Bool -- ^ Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
   , conversionTagCreateAemUnderscorelocUnderscoreenabled :: Maybe Bool -- ^ Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+  , conversionTagCreateName :: Text -- ^ Conversion tag name.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON ConversionTagCreate where
@@ -11005,14 +10958,14 @@ optionsConversionTagCreate =
     }
   where
     table =
-      [ ("conversionTagCreateName", "name")
-      , ("conversionTagCreateAemUnderscoreenabled", "aem_enabled")
+      [ ("conversionTagCreateAemUnderscoreenabled", "aem_enabled")
       , ("conversionTagCreateMdUnderscorefrequency", "md_frequency")
       , ("conversionTagCreateAemUnderscorefnlnUnderscoreenabled", "aem_fnln_enabled")
       , ("conversionTagCreateAemUnderscorephUnderscoreenabled", "aem_ph_enabled")
       , ("conversionTagCreateAemUnderscoregeUnderscoreenabled", "aem_ge_enabled")
       , ("conversionTagCreateAemUnderscoredbUnderscoreenabled", "aem_db_enabled")
       , ("conversionTagCreateAemUnderscorelocUnderscoreenabled", "aem_loc_enabled")
+      , ("conversionTagCreateName", "name")
       ]
 
 
@@ -11404,14 +11357,14 @@ optionsCreateInvitesResultsResponseArrayItemsInnerInvite =
 
 -- | 
 data CreateMMMReportRequest = CreateMMMReportRequest
-  { createMMMReportRequestReportUnderscorename :: Text -- ^ Name of the Marketing Mix Modeling (MMM) report
+  { createMMMReportRequestCountries :: Maybe [TargetingAdvertiserCountry] -- ^ A List of countries for filtering
+  , createMMMReportRequestReportUnderscorename :: Text -- ^ Name of the Marketing Mix Modeling (MMM) report
   , createMMMReportRequestStartUnderscoredate :: Text -- ^ Metric report start date (UTC). Format: YYYY-MM-DD
   , createMMMReportRequestEndUnderscoredate :: Text -- ^ Metric report end date (UTC). Format: YYYY-MM-DD
   , createMMMReportRequestGranularity :: Text -- ^ DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
   , createMMMReportRequestLevel :: Text -- ^ Level of the report
   , createMMMReportRequestTargetingUnderscoretypes :: [MMMReportingTargetingType] -- ^ List of targeting types
   , createMMMReportRequestColumns :: [MMMReportingColumn] -- ^ Metric and entity columns
-  , createMMMReportRequestCountries :: Maybe [TargetingAdvertiserCountry] -- ^ A List of countries for filtering
   } deriving (Show, Eq, Generic)
 
 instance FromJSON CreateMMMReportRequest where
@@ -11427,14 +11380,14 @@ optionsCreateMMMReportRequest =
     }
   where
     table =
-      [ ("createMMMReportRequestReportUnderscorename", "report_name")
+      [ ("createMMMReportRequestCountries", "countries")
+      , ("createMMMReportRequestReportUnderscorename", "report_name")
       , ("createMMMReportRequestStartUnderscoredate", "start_date")
       , ("createMMMReportRequestEndUnderscoredate", "end_date")
       , ("createMMMReportRequestGranularity", "granularity")
       , ("createMMMReportRequestLevel", "level")
       , ("createMMMReportRequestTargetingUnderscoretypes", "targeting_types")
       , ("createMMMReportRequestColumns", "columns")
-      , ("createMMMReportRequestCountries", "countries")
       ]
 
 
@@ -13780,14 +13733,14 @@ optionsInviteAssetsSummaryProfilesInner =
       ]
 
 
--- | An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+-- | 
 data InviteBusinessRoleBinding = InviteBusinessRoleBinding
-  { inviteBusinessRoleBindingCreatedUnderscorebyUnderscorebusinessUnderscoreid :: Maybe Text -- ^ Unique identifier for the business that created the invite/request.
-  , inviteBusinessRoleBindingCreatedUnderscorebyUnderscoreuserUnderscoreid :: Maybe Text -- ^ Unique identifier for the user that created the invite/request.
-  , inviteBusinessRoleBindingUser :: Maybe BusinessAccessUserSummary -- ^ Metadata for the user that updated the invite/request.
-  , inviteBusinessRoleBindingId :: Maybe Text -- ^ Unique identifier of the invite/request.
+  { inviteBusinessRoleBindingId :: Maybe Text -- ^ Unique identifier of the invite/request.
   , inviteBusinessRoleBindingInviteUnderscoredata :: Maybe BaseInviteDataResponseInviteData -- ^ 
   , inviteBusinessRoleBindingIsUnderscorereceivedUnderscoreinvite :: Maybe Bool -- ^ Indicates whether the invite/request was received.
+  , inviteBusinessRoleBindingUser :: Maybe Object -- ^ Metadata for the user that updated the invite/request.
+  , inviteBusinessRoleBindingCreatedUnderscorebyUnderscorebusinessUnderscoreid :: Maybe Text -- ^ Unique identifier for the business that created the invite/request.
+  , inviteBusinessRoleBindingCreatedUnderscorebyUnderscoreuserUnderscoreid :: Maybe Text -- ^ Unique identifier for the user that created the invite/request.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON InviteBusinessRoleBinding where
@@ -13803,12 +13756,12 @@ optionsInviteBusinessRoleBinding =
     }
   where
     table =
-      [ ("inviteBusinessRoleBindingCreatedUnderscorebyUnderscorebusinessUnderscoreid", "created_by_business_id")
-      , ("inviteBusinessRoleBindingCreatedUnderscorebyUnderscoreuserUnderscoreid", "created_by_user_id")
-      , ("inviteBusinessRoleBindingUser", "user")
-      , ("inviteBusinessRoleBindingId", "id")
+      [ ("inviteBusinessRoleBindingId", "id")
       , ("inviteBusinessRoleBindingInviteUnderscoredata", "invite_data")
       , ("inviteBusinessRoleBindingIsUnderscorereceivedUnderscoreinvite", "is_received_invite")
+      , ("inviteBusinessRoleBindingUser", "user")
+      , ("inviteBusinessRoleBindingCreatedUnderscorebyUnderscorebusinessUnderscoreid", "created_by_business_id")
+      , ("inviteBusinessRoleBindingCreatedUnderscorebyUnderscoreuserUnderscoreid", "created_by_user_id")
       ]
 
 
@@ -13842,15 +13795,15 @@ optionsInviteExceptionResponse =
 
 -- | 
 data InviteResponse = InviteResponse
-  { inviteResponseAssetsUnderscoresummary :: Maybe InviteAssetsSummary -- ^ 
-  , inviteResponseBusinessUnderscoreroles :: Maybe [Text] -- ^ The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-  , inviteResponseCreatedUnderscorebyUnderscorebusiness :: Maybe BusinessAccessUserSummary -- ^ Metadata for the business that created the invite/request.
-  , inviteResponseCreatedUnderscorebyUnderscoreuser :: Maybe BusinessAccessUserSummary -- ^ Metadata for the user that created the invite/request.
-  , inviteResponseCreatedUnderscoretime :: Maybe Int -- ^ The time the invite/request was created. Returned in milliseconds.
-  , inviteResponseId :: Maybe Text -- ^ Unique identifier of the invite/request.
+  { inviteResponseId :: Maybe Text -- ^ Unique identifier of the invite/request.
   , inviteResponseInviteUnderscoredata :: Maybe BaseInviteDataResponseInviteData -- ^ 
   , inviteResponseIsUnderscorereceivedUnderscoreinvite :: Maybe Bool -- ^ Indicates whether the invite/request was received.
   , inviteResponseUser :: Maybe BusinessAccessUserSummary -- ^ Metadata for the member/partner that was sent the invite/request.
+  , inviteResponseAssetsUnderscoresummary :: Maybe InviteAssetsSummary -- ^ 
+  , inviteResponseBusinessUnderscoreroles :: Maybe [Text] -- ^ The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+  , inviteResponseCreatedUnderscorebyUnderscorebusiness :: Maybe Object -- ^ Metadata for the business that created the invite/request.
+  , inviteResponseCreatedUnderscorebyUnderscoreuser :: Maybe Object -- ^ Metadata for the user that created the invite/request.
+  , inviteResponseCreatedUnderscoretime :: Maybe Int -- ^ The time the invite/request was created. Returned in milliseconds.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON InviteResponse where
@@ -13866,15 +13819,15 @@ optionsInviteResponse =
     }
   where
     table =
-      [ ("inviteResponseAssetsUnderscoresummary", "assets_summary")
+      [ ("inviteResponseId", "id")
+      , ("inviteResponseInviteUnderscoredata", "invite_data")
+      , ("inviteResponseIsUnderscorereceivedUnderscoreinvite", "is_received_invite")
+      , ("inviteResponseUser", "user")
+      , ("inviteResponseAssetsUnderscoresummary", "assets_summary")
       , ("inviteResponseBusinessUnderscoreroles", "business_roles")
       , ("inviteResponseCreatedUnderscorebyUnderscorebusiness", "created_by_business")
       , ("inviteResponseCreatedUnderscorebyUnderscoreuser", "created_by_user")
       , ("inviteResponseCreatedUnderscoretime", "created_time")
-      , ("inviteResponseId", "id")
-      , ("inviteResponseInviteUnderscoredata", "invite_data")
-      , ("inviteResponseIsUnderscorereceivedUnderscoreinvite", "is_received_invite")
-      , ("inviteResponseUser", "user")
       ]
 
 
@@ -14540,7 +14493,7 @@ optionsItemValidationEvent =
 data ItemsBatchPostRequest = ItemsBatchPostRequest
   { itemsBatchPostRequestCatalogUnderscoretype :: Text -- ^ 
   , itemsBatchPostRequestCountry :: Country -- ^ 
-  , itemsBatchPostRequestLanguage :: CatalogsItemsRequestLanguage -- ^ 
+  , itemsBatchPostRequestLanguage :: Text -- ^ We recommend using the CatalogsLocale values.
   , itemsBatchPostRequestItems :: [ItemDeleteBatchRecord] -- ^ Array with catalogs items
   , itemsBatchPostRequestCatalogUnderscoreid :: Maybe Text -- ^ Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
   , itemsBatchPostRequestOperation :: BatchOperation -- ^ 
@@ -14998,13 +14951,13 @@ optionsLeadFormCommonPolicyLinksInner =
 
 -- | 
 data LeadFormCreateRequest = LeadFormCreateRequest
-  { leadFormCreateRequestName :: Text -- ^ Internal name of the lead form.
-  , leadFormCreateRequestPrivacyUnderscorepolicyUnderscorelink :: Text -- ^ A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-  , leadFormCreateRequestHasUnderscoreacceptedUnderscoreterms :: Bool -- ^ Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
-  , leadFormCreateRequestCompletionUnderscoremessage :: Text -- ^ A message for people who complete the form to let them know what happens next.
+  { leadFormCreateRequestName :: Maybe Text -- ^ Internal name of the lead form.
+  , leadFormCreateRequestPrivacyUnderscorepolicyUnderscorelink :: Maybe Text -- ^ A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
+  , leadFormCreateRequestHasUnderscoreacceptedUnderscoreterms :: Maybe Bool -- ^ Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
+  , leadFormCreateRequestCompletionUnderscoremessage :: Maybe Text -- ^ A message for people who complete the form to let them know what happens next.
   , leadFormCreateRequestStatus :: Maybe LeadFormStatus -- ^ 
   , leadFormCreateRequestDisclosureUnderscorelanguage :: Maybe Text -- ^ Additional disclosure language to be included in the lead form.
-  , leadFormCreateRequestQuestions :: [LeadFormQuestion] -- ^ List of questions to be displayed on the lead form.
+  , leadFormCreateRequestQuestions :: Maybe [LeadFormQuestion] -- ^ List of questions to be displayed on the lead form.
   , leadFormCreateRequestPolicyUnderscorelinks :: Maybe [LeadFormCommonPolicyLinksInner] -- ^ List of additional policy links to be displayed on the lead form.
   } deriving (Show, Eq, Generic)
 
@@ -16030,10 +15983,10 @@ optionsNullableCurrency =
       ]
 
 
--- | A request to receive a client token.
+-- | 
 data OauthAccessTokenRequestClientCredentials = OauthAccessTokenRequestClientCredentials
-  { oauthAccessTokenRequestClientCredentialsGrantUnderscoretype :: Text -- ^ 
-  , oauthAccessTokenRequestClientCredentialsScope :: Text -- ^ 
+  { oauthAccessTokenRequestClientCredentialsScope :: Text -- ^ 
+  , oauthAccessTokenRequestClientCredentialsGrantUnderscoretype :: Text -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON OauthAccessTokenRequestClientCredentials where
@@ -16049,16 +16002,16 @@ optionsOauthAccessTokenRequestClientCredentials =
     }
   where
     table =
-      [ ("oauthAccessTokenRequestClientCredentialsGrantUnderscoretype", "grant_type")
-      , ("oauthAccessTokenRequestClientCredentialsScope", "scope")
+      [ ("oauthAccessTokenRequestClientCredentialsScope", "scope")
+      , ("oauthAccessTokenRequestClientCredentialsGrantUnderscoretype", "grant_type")
       ]
 
 
--- | A request to exchange an authorization code for an access token.
+-- | 
 data OauthAccessTokenRequestCode = OauthAccessTokenRequestCode
-  { oauthAccessTokenRequestCodeGrantUnderscoretype :: Text -- ^ 
-  , oauthAccessTokenRequestCodeCode :: Text -- ^ 
+  { oauthAccessTokenRequestCodeCode :: Text -- ^ 
   , oauthAccessTokenRequestCodeRedirectUnderscoreuri :: Text -- ^ 
+  , oauthAccessTokenRequestCodeGrantUnderscoretype :: Text -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON OauthAccessTokenRequestCode where
@@ -16074,18 +16027,18 @@ optionsOauthAccessTokenRequestCode =
     }
   where
     table =
-      [ ("oauthAccessTokenRequestCodeGrantUnderscoretype", "grant_type")
-      , ("oauthAccessTokenRequestCodeCode", "code")
+      [ ("oauthAccessTokenRequestCodeCode", "code")
       , ("oauthAccessTokenRequestCodeRedirectUnderscoreuri", "redirect_uri")
+      , ("oauthAccessTokenRequestCodeGrantUnderscoretype", "grant_type")
       ]
 
 
--- | A request to exchange a refresh token for a new access token.
+-- | 
 data OauthAccessTokenRequestRefresh = OauthAccessTokenRequestRefresh
-  { oauthAccessTokenRequestRefreshGrantUnderscoretype :: Text -- ^ 
-  , oauthAccessTokenRequestRefreshRefreshUnderscoretoken :: Text -- ^ 
+  { oauthAccessTokenRequestRefreshRefreshUnderscoretoken :: Text -- ^ 
   , oauthAccessTokenRequestRefreshScope :: Maybe Text -- ^ 
   , oauthAccessTokenRequestRefreshRefreshUnderscoreon :: Maybe Bool -- ^ Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
+  , oauthAccessTokenRequestRefreshGrantUnderscoretype :: Text -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON OauthAccessTokenRequestRefresh where
@@ -16101,10 +16054,10 @@ optionsOauthAccessTokenRequestRefresh =
     }
   where
     table =
-      [ ("oauthAccessTokenRequestRefreshGrantUnderscoretype", "grant_type")
-      , ("oauthAccessTokenRequestRefreshRefreshUnderscoretoken", "refresh_token")
+      [ ("oauthAccessTokenRequestRefreshRefreshUnderscoretoken", "refresh_token")
       , ("oauthAccessTokenRequestRefreshScope", "scope")
       , ("oauthAccessTokenRequestRefreshRefreshUnderscoreon", "refresh_on")
+      , ("oauthAccessTokenRequestRefreshGrantUnderscoretype", "grant_type")
       ]
 
 
@@ -16168,15 +16121,15 @@ optionsOauthAccessTokenResponseClientCredentials =
       ]
 
 
--- | A successful OAuth access token response for the authorization code flow.
+-- | 
 data OauthAccessTokenResponseCode = OauthAccessTokenResponseCode
-  { oauthAccessTokenResponseCodeResponseUnderscoretype :: Maybe Text -- ^ 
+  { oauthAccessTokenResponseCodeRefreshUnderscoretoken :: Text -- ^ 
+  , oauthAccessTokenResponseCodeRefreshUnderscoretokenUnderscoreexpiresUnderscorein :: Int -- ^ 
+  , oauthAccessTokenResponseCodeResponseUnderscoretype :: Maybe Text -- ^ 
   , oauthAccessTokenResponseCodeAccessUnderscoretoken :: Text -- ^ 
   , oauthAccessTokenResponseCodeTokenUnderscoretype :: Text -- ^ 
   , oauthAccessTokenResponseCodeExpiresUnderscorein :: Int -- ^ 
   , oauthAccessTokenResponseCodeScope :: Text -- ^ 
-  , oauthAccessTokenResponseCodeRefreshUnderscoretoken :: Text -- ^ 
-  , oauthAccessTokenResponseCodeRefreshUnderscoretokenUnderscoreexpiresUnderscorein :: Int -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON OauthAccessTokenResponseCode where
@@ -16192,26 +16145,26 @@ optionsOauthAccessTokenResponseCode =
     }
   where
     table =
-      [ ("oauthAccessTokenResponseCodeResponseUnderscoretype", "response_type")
+      [ ("oauthAccessTokenResponseCodeRefreshUnderscoretoken", "refresh_token")
+      , ("oauthAccessTokenResponseCodeRefreshUnderscoretokenUnderscoreexpiresUnderscorein", "refresh_token_expires_in")
+      , ("oauthAccessTokenResponseCodeResponseUnderscoretype", "response_type")
       , ("oauthAccessTokenResponseCodeAccessUnderscoretoken", "access_token")
       , ("oauthAccessTokenResponseCodeTokenUnderscoretype", "token_type")
       , ("oauthAccessTokenResponseCodeExpiresUnderscorein", "expires_in")
       , ("oauthAccessTokenResponseCodeScope", "scope")
-      , ("oauthAccessTokenResponseCodeRefreshUnderscoretoken", "refresh_token")
-      , ("oauthAccessTokenResponseCodeRefreshUnderscoretokenUnderscoreexpiresUnderscorein", "refresh_token_expires_in")
       ]
 
 
--- | A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
+-- | 
 data OauthAccessTokenResponseEverlastingRefresh = OauthAccessTokenResponseEverlastingRefresh
-  { oauthAccessTokenResponseEverlastingRefreshResponseUnderscoretype :: Maybe Text -- ^ 
+  { oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretoken :: Text -- ^ 
+  , oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscorein :: Int -- ^ 
+  , oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscoreat :: Int -- ^ 
+  , oauthAccessTokenResponseEverlastingRefreshResponseUnderscoretype :: Maybe Text -- ^ 
   , oauthAccessTokenResponseEverlastingRefreshAccessUnderscoretoken :: Text -- ^ 
   , oauthAccessTokenResponseEverlastingRefreshTokenUnderscoretype :: Text -- ^ 
   , oauthAccessTokenResponseEverlastingRefreshExpiresUnderscorein :: Int -- ^ 
   , oauthAccessTokenResponseEverlastingRefreshScope :: Text -- ^ 
-  , oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretoken :: Text -- ^ 
-  , oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscorein :: Int -- ^ 
-  , oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscoreat :: Int -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON OauthAccessTokenResponseEverlastingRefresh where
@@ -16227,26 +16180,26 @@ optionsOauthAccessTokenResponseEverlastingRefresh =
     }
   where
     table =
-      [ ("oauthAccessTokenResponseEverlastingRefreshResponseUnderscoretype", "response_type")
+      [ ("oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretoken", "refresh_token")
+      , ("oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscorein", "refresh_token_expires_in")
+      , ("oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscoreat", "refresh_token_expires_at")
+      , ("oauthAccessTokenResponseEverlastingRefreshResponseUnderscoretype", "response_type")
       , ("oauthAccessTokenResponseEverlastingRefreshAccessUnderscoretoken", "access_token")
       , ("oauthAccessTokenResponseEverlastingRefreshTokenUnderscoretype", "token_type")
       , ("oauthAccessTokenResponseEverlastingRefreshExpiresUnderscorein", "expires_in")
       , ("oauthAccessTokenResponseEverlastingRefreshScope", "scope")
-      , ("oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretoken", "refresh_token")
-      , ("oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscorein", "refresh_token_expires_in")
-      , ("oauthAccessTokenResponseEverlastingRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscoreat", "refresh_token_expires_at")
       ]
 
 
--- | A successful OAuth access token response for the refresh token flow, with an added refresh token.
+-- | 
 data OauthAccessTokenResponseIntegrationRefresh = OauthAccessTokenResponseIntegrationRefresh
-  { oauthAccessTokenResponseIntegrationRefreshResponseUnderscoretype :: Maybe Text -- ^ 
+  { oauthAccessTokenResponseIntegrationRefreshRefreshUnderscoretoken :: Text -- ^ 
+  , oauthAccessTokenResponseIntegrationRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscorein :: Int -- ^ 
+  , oauthAccessTokenResponseIntegrationRefreshResponseUnderscoretype :: Maybe Text -- ^ 
   , oauthAccessTokenResponseIntegrationRefreshAccessUnderscoretoken :: Text -- ^ 
   , oauthAccessTokenResponseIntegrationRefreshTokenUnderscoretype :: Text -- ^ 
   , oauthAccessTokenResponseIntegrationRefreshExpiresUnderscorein :: Int -- ^ 
   , oauthAccessTokenResponseIntegrationRefreshScope :: Text -- ^ 
-  , oauthAccessTokenResponseIntegrationRefreshRefreshUnderscoretoken :: Text -- ^ 
-  , oauthAccessTokenResponseIntegrationRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscorein :: Int -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON OauthAccessTokenResponseIntegrationRefresh where
@@ -16262,13 +16215,13 @@ optionsOauthAccessTokenResponseIntegrationRefresh =
     }
   where
     table =
-      [ ("oauthAccessTokenResponseIntegrationRefreshResponseUnderscoretype", "response_type")
+      [ ("oauthAccessTokenResponseIntegrationRefreshRefreshUnderscoretoken", "refresh_token")
+      , ("oauthAccessTokenResponseIntegrationRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscorein", "refresh_token_expires_in")
+      , ("oauthAccessTokenResponseIntegrationRefreshResponseUnderscoretype", "response_type")
       , ("oauthAccessTokenResponseIntegrationRefreshAccessUnderscoretoken", "access_token")
       , ("oauthAccessTokenResponseIntegrationRefreshTokenUnderscoretype", "token_type")
       , ("oauthAccessTokenResponseIntegrationRefreshExpiresUnderscorein", "expires_in")
       , ("oauthAccessTokenResponseIntegrationRefreshScope", "scope")
-      , ("oauthAccessTokenResponseIntegrationRefreshRefreshUnderscoretoken", "refresh_token")
-      , ("oauthAccessTokenResponseIntegrationRefreshRefreshUnderscoretokenUnderscoreexpiresUnderscorein", "refresh_token_expires_in")
       ]
 
 
@@ -17471,28 +17424,6 @@ optionsPinUpdateCarouselSlotsInner =
       [ ("pinUpdateCarouselSlotsInnerTitle", "title")
       , ("pinUpdateCarouselSlotsInnerDescription", "description")
       , ("pinUpdateCarouselSlotsInnerLink", "link")
-      ]
-
-
--- | 
-data PinsAnalyticsMetricTypesParameterInner = PinsAnalyticsMetricTypesParameterInner
-  { 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON PinsAnalyticsMetricTypesParameterInner where
-  parseJSON = genericParseJSON optionsPinsAnalyticsMetricTypesParameterInner
-instance ToJSON PinsAnalyticsMetricTypesParameterInner where
-  toJSON = genericToJSON optionsPinsAnalyticsMetricTypesParameterInner
-
-optionsPinsAnalyticsMetricTypesParameterInner :: Options
-optionsPinsAnalyticsMetricTypesParameterInner =
-  defaultOptions
-    { omitNothingFields  = True
-    , fieldLabelModifier = \s -> fromMaybe ("did not find JSON field name for " ++ show s) $ List.lookup s table
-    }
-  where
-    table =
-      [ 
       ]
 
 

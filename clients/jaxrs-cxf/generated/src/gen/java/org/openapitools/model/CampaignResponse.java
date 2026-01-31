@@ -17,98 +17,119 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CampaignResponse  {
   
-  @ApiModelProperty(example = "549755885175", value = "Campaign ID.")
  /**
-   * Campaign ID.
-  **/
+  * Campaign ID.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Campaign ID.")
+
   private String id;
 
-  @ApiModelProperty(example = "549755885175", value = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.")
  /**
-   * Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
-  **/
+  * Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "ACME Tools", value = "Campaign name.")
  /**
-   * Campaign name.
-  **/
+  * Campaign name.
+  */
+  @ApiModelProperty(example = "ACME Tools", value = "Campaign name.")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private EntityStatus status;
 
-  @ApiModelProperty(example = "1432744744", value = "Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.")
  /**
-   * Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
-  **/
+  * Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
+  */
+  @ApiModelProperty(example = "1432744744", value = "Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.")
+
   private Integer lifetimeSpendCap;
 
-  @ApiModelProperty(example = "1432744744", value = "Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.")
  /**
-   * Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
-  **/
+  * Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
+  */
+  @ApiModelProperty(example = "1432744744", value = "Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.")
+
   private Integer dailySpendCap;
 
-  @ApiModelProperty(example = "549755885175", value = "Order line ID that appears on the invoice.")
  /**
-   * Order line ID that appears on the invoice.
-  **/
+  * Order line ID that appears on the invoice.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Order line ID that appears on the invoice.")
+
   private String orderLineId;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private TrackingUrls trackingUrls;
 
-  @ApiModelProperty(example = "1580865126", value = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
  /**
-   * Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  **/
+  * Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+  */
+  @ApiModelProperty(example = "1580865126", value = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
+
   private Integer startTime;
 
-  @ApiModelProperty(example = "1644023526", value = "Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
  /**
-   * Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  **/
+  * Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+  */
+  @ApiModelProperty(example = "1644023526", value = "Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
+
   private Integer endTime;
 
-  @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
  /**
-   * Determine if a campaign has flexible daily budgets setup.
-  **/
+  * Determine if a campaign has flexible daily budgets setup.
+  */
+  @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
+
   private Boolean isFlexibleDailyBudgets;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private ObjectiveType objectiveType;
 
-  @ApiModelProperty(example = "1432744744", value = "Campaign creation time. Unix timestamp in seconds.")
  /**
-   * Campaign creation time. Unix timestamp in seconds.
-  **/
+  * Campaign creation time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1432744744", value = "Campaign creation time. Unix timestamp in seconds.")
+
   private Integer createdTime;
 
-  @ApiModelProperty(example = "1432744744", value = "UTC timestamp. Last update time.")
  /**
-   * UTC timestamp. Last update time.
-  **/
+  * UTC timestamp. Last update time.
+  */
+  @ApiModelProperty(example = "1432744744", value = "UTC timestamp. Last update time.")
+
   private Integer updatedTime;
 
-  @ApiModelProperty(example = "campaign", value = "Always \"campaign\".")
  /**
-   * Always \"campaign\".
-  **/
+  * Always \"campaign\".
+  */
+  @ApiModelProperty(example = "campaign", value = "Always \"campaign\".")
+
   private String type;
 
-  @ApiModelProperty(example = "true", value = "Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.")
  /**
-   * Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
-  **/
+  * Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.
+  */
+  @ApiModelProperty(example = "true", value = "Determines if a campaign automatically generate ad-group level budgets given a campaign budget to maximize campaign outcome. When transitioning from non-cbo to cbo, all previous child ad group budget will be cleared.")
+
   private Boolean isCampaignBudgetOptimization;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CampaignSummaryStatus summaryStatus;
  /**
    * Campaign ID.

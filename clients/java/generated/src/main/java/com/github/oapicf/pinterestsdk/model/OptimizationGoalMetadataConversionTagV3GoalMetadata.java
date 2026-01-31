@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * OptimizationGoalMetadataConversionTagV3GoalMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   public static final String SERIALIZED_NAME_ATTRIBUTION_WINDOWS = "attribution_windows";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTION_WINDOWS)
@@ -384,16 +384,10 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("attribution_windows");
-    openapiFields.add("conversion_event");
-    openapiFields.add("conversion_tag_id");
-    openapiFields.add("cpa_goal_value_in_micro_currency");
-    openapiFields.add("is_roas_optimized");
-    openapiFields.add("learning_mode_type");
+    openapiFields = new HashSet<String>(Arrays.asList("attribution_windows", "conversion_event", "conversion_tag_id", "cpa_goal_value_in_micro_currency", "is_roas_optimized", "learning_mode_type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -405,7 +399,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!OptimizationGoalMetadataConversionTagV3GoalMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OptimizationGoalMetadataConversionTagV3GoalMetadata is not found in the empty JSON string", OptimizationGoalMetadataConversionTagV3GoalMetadata.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in OptimizationGoalMetadataConversionTagV3GoalMetadata is not found in the empty JSON string", OptimizationGoalMetadataConversionTagV3GoalMetadata.openapiRequiredFields.toString()));
         }
       }
 
@@ -413,7 +407,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!OptimizationGoalMetadataConversionTagV3GoalMetadata.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OptimizationGoalMetadataConversionTagV3GoalMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `OptimizationGoalMetadataConversionTagV3GoalMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -422,20 +416,20 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
         OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows.validateJsonElement(jsonObj.get("attribution_windows"));
       }
       if ((jsonObj.get("conversion_event") != null && !jsonObj.get("conversion_event").isJsonNull()) && !jsonObj.get("conversion_event").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `conversion_event` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_event").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `conversion_event` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_event").toString()));
       }
       // validate the optional field `conversion_event`
       if (jsonObj.get("conversion_event") != null && !jsonObj.get("conversion_event").isJsonNull()) {
         ConversionEventEnum.validateJsonElement(jsonObj.get("conversion_event"));
       }
       if ((jsonObj.get("conversion_tag_id") != null && !jsonObj.get("conversion_tag_id").isJsonNull()) && !jsonObj.get("conversion_tag_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `conversion_tag_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_tag_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `conversion_tag_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_tag_id").toString()));
       }
       if ((jsonObj.get("cpa_goal_value_in_micro_currency") != null && !jsonObj.get("cpa_goal_value_in_micro_currency").isJsonNull()) && !jsonObj.get("cpa_goal_value_in_micro_currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cpa_goal_value_in_micro_currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cpa_goal_value_in_micro_currency").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `cpa_goal_value_in_micro_currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cpa_goal_value_in_micro_currency").toString()));
       }
       if ((jsonObj.get("learning_mode_type") != null && !jsonObj.get("learning_mode_type").isJsonNull()) && !jsonObj.get("learning_mode_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `learning_mode_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("learning_mode_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `learning_mode_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("learning_mode_type").toString()));
       }
       // validate the optional field `learning_mode_type`
       if (jsonObj.get("learning_mode_type") != null && !jsonObj.get("learning_mode_type").isJsonNull()) {

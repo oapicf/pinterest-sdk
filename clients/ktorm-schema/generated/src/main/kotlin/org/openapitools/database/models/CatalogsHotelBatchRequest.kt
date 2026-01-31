@@ -21,14 +21,14 @@ import .*
  * Request object to update catalogs hotel items
  * @param catalogType 
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param items Array with catalogs item operations
  * @param catalogId Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
  */
 object CatalogsHotelBatchRequests : BaseTable<CatalogsHotelBatchRequest>("CatalogsHotelBatchRequest") {
     val catalogType = text("catalog_type").transform({ CatalogsHotelBatchRequest.CatalogType.valueOf(it) }, { it.value })
     val country = long("country")
-    val language = long("language")
+    val language = text("language").transform({ CatalogsHotelBatchRequest.Language.valueOf(it) }, { it.value }) /* We recommend using the CatalogsLocale values. */
     val catalogId = text("catalog_id") /* null */ /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
 
     /**
@@ -37,7 +37,7 @@ object CatalogsHotelBatchRequests : BaseTable<CatalogsHotelBatchRequest>("Catalo
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = CatalogsHotelBatchRequest(
         catalogType = row[catalogType] ?: CatalogsHotelBatchRequest.CatalogType.valueOf("") /* kotlin.String */,
         country = Countrys.createEntity(row, withReferences) /* Country */,
-        language = CatalogsItemsRequestLanguages.createEntity(row, withReferences) /* CatalogsItemsRequestLanguage */,
+        language = row[language] ?: CatalogsHotelBatchRequest.Language.valueOf("") /* kotlin.String */ /* We recommend using the CatalogsLocale values. */,
         items = emptyList() /* kotlin.Array<CatalogsHotelBatchItem> */ /* Array with catalogs item operations */,
         catalogId = row[catalogId]  /* kotlin.String? */ /* Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog */
     )

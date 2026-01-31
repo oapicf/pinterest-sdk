@@ -44,7 +44,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="createdByUser">Metadata for the user that created the invite/request.</param>
         /// <param name="createdTime">The time the invite/request was created. Returned in milliseconds.</param>
         [JsonConstructor]
-        public InviteResponse(Option<string?> id = default, Option<BaseInviteDataResponseInviteData?> inviteData = default, Option<bool?> isReceivedInvite = default, Option<BusinessAccessUserSummary?> user = default, Option<InviteAssetsSummary?> assetsSummary = default, Option<List<string>?> businessRoles = default, Option<BusinessAccessUserSummary?> createdByBusiness = default, Option<BusinessAccessUserSummary?> createdByUser = default, Option<int?> createdTime = default)
+        public InviteResponse(Option<string?> id = default, Option<BaseInviteDataResponseInviteData?> inviteData = default, Option<bool?> isReceivedInvite = default, Option<BusinessAccessUserSummary?> user = default, Option<InviteAssetsSummary?> assetsSummary = default, Option<List<string>?> businessRoles = default, Option<Object?> createdByBusiness = default, Option<Object?> createdByUser = default, Option<int?> createdTime = default)
         {
             IdOption = id;
             InviteDataOption = inviteData;
@@ -149,28 +149,28 @@ namespace Org.OpenAPITools.Model
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<BusinessAccessUserSummary?> CreatedByBusinessOption { get; private set; }
+        public Option<Object?> CreatedByBusinessOption { get; private set; }
 
         /// <summary>
         /// Metadata for the business that created the invite/request.
         /// </summary>
         /// <value>Metadata for the business that created the invite/request.</value>
         [JsonPropertyName("created_by_business")]
-        public BusinessAccessUserSummary? CreatedByBusiness { get { return this.CreatedByBusinessOption; } set { this.CreatedByBusinessOption = new(value); } }
+        public Object? CreatedByBusiness { get { return this.CreatedByBusinessOption; } set { this.CreatedByBusinessOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedByUser
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<BusinessAccessUserSummary?> CreatedByUserOption { get; private set; }
+        public Option<Object?> CreatedByUserOption { get; private set; }
 
         /// <summary>
         /// Metadata for the user that created the invite/request.
         /// </summary>
         /// <value>Metadata for the user that created the invite/request.</value>
         [JsonPropertyName("created_by_user")]
-        public BusinessAccessUserSummary? CreatedByUser { get { return this.CreatedByUserOption; } set { this.CreatedByUserOption = new(value); } }
+        public Object? CreatedByUser { get { return this.CreatedByUserOption; } set { this.CreatedByUserOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedTime
@@ -195,15 +195,15 @@ namespace Org.OpenAPITools.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class InviteResponse {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  InviteData: ").Append(InviteData).Append("\n");
+            sb.Append("  IsReceivedInvite: ").Append(IsReceivedInvite).Append("\n");
+            sb.Append("  User: ").Append(User).Append("\n");
             sb.Append("  AssetsSummary: ").Append(AssetsSummary).Append("\n");
             sb.Append("  BusinessRoles: ").Append(BusinessRoles).Append("\n");
             sb.Append("  CreatedByBusiness: ").Append(CreatedByBusiness).Append("\n");
             sb.Append("  CreatedByUser: ").Append(CreatedByUser).Append("\n");
             sb.Append("  CreatedTime: ").Append(CreatedTime).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  InviteData: ").Append(InviteData).Append("\n");
-            sb.Append("  IsReceivedInvite: ").Append(IsReceivedInvite).Append("\n");
-            sb.Append("  User: ").Append(User).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -257,8 +257,8 @@ namespace Org.OpenAPITools.Model
             Option<BusinessAccessUserSummary?> user = default;
             Option<InviteAssetsSummary?> assetsSummary = default;
             Option<List<string>?> businessRoles = default;
-            Option<BusinessAccessUserSummary?> createdByBusiness = default;
-            Option<BusinessAccessUserSummary?> createdByUser = default;
+            Option<Object?> createdByBusiness = default;
+            Option<Object?> createdByUser = default;
             Option<int?> createdTime = default;
 
             while (utf8JsonReader.Read())
@@ -280,36 +280,28 @@ namespace Org.OpenAPITools.Model
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "invite_data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                inviteData = new Option<BaseInviteDataResponseInviteData?>(JsonSerializer.Deserialize<BaseInviteDataResponseInviteData>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            inviteData = new Option<BaseInviteDataResponseInviteData?>(JsonSerializer.Deserialize<BaseInviteDataResponseInviteData>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "is_received_invite":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isReceivedInvite = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isReceivedInvite = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "user":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                user = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            user = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "assets_summary":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetsSummary = new Option<InviteAssetsSummary?>(JsonSerializer.Deserialize<InviteAssetsSummary>(ref utf8JsonReader, jsonSerializerOptions));
+                            assetsSummary = new Option<InviteAssetsSummary?>(JsonSerializer.Deserialize<InviteAssetsSummary>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "business_roles":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                businessRoles = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            businessRoles = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "created_by_business":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdByBusiness = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions));
+                            createdByBusiness = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "created_by_user":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdByUser = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions));
+                            createdByUser = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "created_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

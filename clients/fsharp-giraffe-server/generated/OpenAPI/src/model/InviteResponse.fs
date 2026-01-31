@@ -12,14 +12,14 @@ module InviteResponse =
 
 
   type InviteResponse = {
-    AssetsSummary : InviteAssetsSummary;
-    BusinessRoles : string[];
-    CreatedByBusiness : BusinessAccessUserSummary;
-    CreatedByUser : BusinessAccessUserSummary;
-    CreatedTime : int;
     Id : string;
     InviteData : BaseInviteDataResponseInviteData;
     IsReceivedInvite : bool;
     User : BusinessAccessUserSummary;
+    AssetsSummary : InviteAssetsSummary;
+    BusinessRoles : string[];
+    CreatedByBusiness : obj;
+    CreatedByUser : obj;
+    CreatedTime : int;
   }
   //#endregion

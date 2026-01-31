@@ -161,7 +161,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ProductGroupSummaryStatus productGroupSummaryStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(productGroupSummaryStatus.ToString());
+            writer.WriteStringValue(ProductGroupSummaryStatusValueConverter.ToJsonValue(productGroupSummaryStatus).ToString());
         }
     }
 
@@ -192,14 +192,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the ProductGroupSummaryStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="productGroupSummaryStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ProductGroupSummaryStatus? productGroupSummaryStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(productGroupSummaryStatus?.ToString() ?? "null");
+            writer.WriteStringValue(productGroupSummaryStatus.HasValue ? ProductGroupSummaryStatusValueConverter.ToJsonValue(productGroupSummaryStatus.Value).ToString() : "null");
         }
     }
 }

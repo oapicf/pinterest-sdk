@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ConversionEventsUserData_anyOf_1")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventsUserDataAnyOf1 {
 
   @Valid
@@ -104,7 +104,7 @@ public class ConversionEventsUserDataAnyOf1 {
     this.hashedMaids = hashedMaids;
   }
 
-  public ConversionEventsUserDataAnyOf1 clientIpAddress(String clientIpAddress) {
+  public ConversionEventsUserDataAnyOf1 clientIpAddress(@Nullable String clientIpAddress) {
     this.clientIpAddress = clientIpAddress;
     return this;
   }
@@ -116,15 +116,15 @@ public class ConversionEventsUserDataAnyOf1 {
   
   @Schema(name = "client_ip_address", example = "216.3.128.12", description = "The user's IP address, which can be either in IPv4 or IPv6 format. Used for matching. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("client_ip_address")
-  public String getClientIpAddress() {
+  public @Nullable String getClientIpAddress() {
     return clientIpAddress;
   }
 
-  public void setClientIpAddress(String clientIpAddress) {
+  public void setClientIpAddress(@Nullable String clientIpAddress) {
     this.clientIpAddress = clientIpAddress;
   }
 
-  public ConversionEventsUserDataAnyOf1 clientUserAgent(String clientUserAgent) {
+  public ConversionEventsUserDataAnyOf1 clientUserAgent(@Nullable String clientUserAgent) {
     this.clientUserAgent = clientUserAgent;
     return this;
   }
@@ -136,11 +136,11 @@ public class ConversionEventsUserDataAnyOf1 {
   
   @Schema(name = "client_user_agent", example = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36", description = "The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("client_user_agent")
-  public String getClientUserAgent() {
+  public @Nullable String getClientUserAgent() {
     return clientUserAgent;
   }
 
-  public void setClientUserAgent(String clientUserAgent) {
+  public void setClientUserAgent(@Nullable String clientUserAgent) {
     this.clientUserAgent = clientUserAgent;
   }
 

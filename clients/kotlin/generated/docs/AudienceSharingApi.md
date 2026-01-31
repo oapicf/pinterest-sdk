@@ -48,7 +48,7 @@ try {
 ### Parameters
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | **audienceId** | **kotlin.String**| Unique identifier of the audience to use to filter the results. | |
-| **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [default to AD_ACCOUNT] [enum: AD_ACCOUNT, BUSINESS_ACCOUNT] |
+| **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [default to AudienceAccountType.AD_ACCOUNT] [enum: AD_ACCOUNT, BUSINESS_ACCOUNT] |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
@@ -104,7 +104,7 @@ try {
 ### Parameters
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **audienceId** | **kotlin.String**| Unique identifier of the audience to use to filter the results. | |
-| **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [default to AD_ACCOUNT] [enum: AD_ACCOUNT, BUSINESS_ACCOUNT] |
+| **accountType** | [**AudienceAccountType**](.md)| Filter accounts by account type. | [default to AudienceAccountType.AD_ACCOUNT] [enum: AD_ACCOUNT, BUSINESS_ACCOUNT] |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |

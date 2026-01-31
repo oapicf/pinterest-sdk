@@ -16,7 +16,8 @@
 #include "../model/catalogs_retail_batch_request.h"
 catalogs_retail_batch_request_t* instantiate_catalogs_retail_batch_request(int include_optional);
 
-#include "test_catalogs_items_request_language.c"
+
+// it is enum. Work in Progress
 
 
 catalogs_retail_batch_request_t* instantiate_catalogs_retail_batch_request(int include_optional) {
@@ -25,14 +26,14 @@ catalogs_retail_batch_request_t* instantiate_catalogs_retail_batch_request(int i
     catalogs_retail_batch_request = catalogs_retail_batch_request_create(
       pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_RETAIL,
       pinterest_rest_api_catalogs_retail_batch_request__"US",
-      null,
+      pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_af-ZA,
       list_createList()
     );
   } else {
     catalogs_retail_batch_request = catalogs_retail_batch_request_create(
       pinterest_rest_api_catalogs_retail_batch_request_CATALOGTYPE_RETAIL,
       pinterest_rest_api_catalogs_retail_batch_request__"US",
-      null,
+      pinterest_rest_api_catalogs_retail_batch_request_LANGUAGE_af-ZA,
       list_createList()
     );
   }

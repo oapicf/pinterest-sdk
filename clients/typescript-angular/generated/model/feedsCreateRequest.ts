@@ -9,13 +9,13 @@
  */
 import { CatalogsFeedProcessingSchedule } from './catalogsFeedProcessingSchedule';
 import { ProductAvailabilityType } from './productAvailabilityType';
+import { CatalogsStatus } from './catalogsStatus';
 import { CatalogsFeedsCreateRequestDefaultLocale } from './catalogsFeedsCreateRequestDefaultLocale';
 import { CatalogsFeedCredentials } from './catalogsFeedCredentials';
 import { CatalogsType } from './catalogsType';
 import { Country } from './country';
 import { CatalogsFeedsCreateRequest } from './catalogsFeedsCreateRequest';
 import { CatalogsFormat } from './catalogsFormat';
-import { CatalogsStatus &amp; object } from './catalogsStatus  object';
 import { NullableCurrency } from './nullableCurrency';
 import { CatalogsVerticalFeedsCreateRequest } from './catalogsVerticalFeedsCreateRequest';
 

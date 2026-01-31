@@ -9,11 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_create_invites_results_response_array_items_inner_invite
 import model_invite_exception_response
 
 type CreateInvitesResultsResponseArrayItemsInner* = object
   ## 
-  exception*: InviteExceptionResponse
-  invite*: CreateInvitesResultsResponseArray_items_inner_invite
+  exception*: Option[InviteExceptionResponse]
+  invite*: Option[CreateInvitesResultsResponseArray_items_inner_invite]
+
+
+# Custom JSON deserialization for CreateInvitesResultsResponseArrayItemsInner with custom field names
+proc to*(node: JsonNode, T: typedesc[CreateInvitesResultsResponseArrayItemsInner]): CreateInvitesResultsResponseArrayItemsInner =
+  result = CreateInvitesResultsResponseArrayItemsInner()
+  if node.kind == JObject:
+    if node.hasKey("exception") and node["exception"].kind != JNull:
+      result.exception = some(to(node["exception"], typeof(result.exception.get())))
+    if node.hasKey("invite") and node["invite"].kind != JNull:
+      result.invite = some(to(node["invite"], typeof(result.invite.get())))
+
+# Custom JSON serialization for CreateInvitesResultsResponseArrayItemsInner with custom field names
+proc `%`*(obj: CreateInvitesResultsResponseArrayItemsInner): JsonNode =
+  result = newJObject()
+  if obj.exception.isSome():
+    result["exception"] = %obj.exception.get()
+  if obj.invite.isSome():
+    result["invite"] = %obj.invite.get()
+

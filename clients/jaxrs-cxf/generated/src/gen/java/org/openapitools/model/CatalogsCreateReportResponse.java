@@ -10,10 +10,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreateReportResponse  {
   
-  @ApiModelProperty(value = "Token to be used to get the report")
  /**
-   * Token to be used to get the report
-  **/
+  * Token to be used to get the report
+  */
+  @ApiModelProperty(value = "Token to be used to get the report")
+
   private String token;
  /**
    * Token to be used to get the report

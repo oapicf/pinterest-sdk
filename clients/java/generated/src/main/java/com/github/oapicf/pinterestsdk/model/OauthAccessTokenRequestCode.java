@@ -46,10 +46,20 @@ import java.util.Set;
 import com.github.oapicf.pinterestsdk.JSON;
 
 /**
- * A request to exchange an authorization code for an access token.
+ * OauthAccessTokenRequestCode
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenRequestCode {
+  public static final String SERIALIZED_NAME_CODE = "code";
+  @SerializedName(SERIALIZED_NAME_CODE)
+  @javax.annotation.Nonnull
+  private String code;
+
+  public static final String SERIALIZED_NAME_REDIRECT_URI = "redirect_uri";
+  @SerializedName(SERIALIZED_NAME_REDIRECT_URI)
+  @javax.annotation.Nonnull
+  private String redirectUri;
+
   /**
    * Gets or Sets grantType
    */
@@ -109,37 +119,8 @@ public class OauthAccessTokenRequestCode {
   @javax.annotation.Nonnull
   private GrantTypeEnum grantType;
 
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nonnull
-  private String code;
-
-  public static final String SERIALIZED_NAME_REDIRECT_URI = "redirect_uri";
-  @SerializedName(SERIALIZED_NAME_REDIRECT_URI)
-  @javax.annotation.Nonnull
-  private String redirectUri;
-
   public OauthAccessTokenRequestCode() {
   }
-
-  public OauthAccessTokenRequestCode grantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
-    this.grantType = grantType;
-    return this;
-  }
-
-  /**
-   * Get grantType
-   * @return grantType
-   */
-  @javax.annotation.Nonnull
-  public GrantTypeEnum getGrantType() {
-    return grantType;
-  }
-
-  public void setGrantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
-    this.grantType = grantType;
-  }
-
 
   public OauthAccessTokenRequestCode code(@javax.annotation.Nonnull String code) {
     this.code = code;
@@ -179,6 +160,25 @@ public class OauthAccessTokenRequestCode {
   }
 
 
+  public OauthAccessTokenRequestCode grantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+  /**
+   * Get grantType
+   * @return grantType
+   */
+  @javax.annotation.Nonnull
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+
+  public void setGrantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -189,23 +189,23 @@ public class OauthAccessTokenRequestCode {
       return false;
     }
     OauthAccessTokenRequestCode oauthAccessTokenRequestCode = (OauthAccessTokenRequestCode) o;
-    return Objects.equals(this.grantType, oauthAccessTokenRequestCode.grantType) &&
-        Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
-        Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri);
+    return Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
+        Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri) &&
+        Objects.equals(this.grantType, oauthAccessTokenRequestCode.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, code, redirectUri);
+    return Objects.hash(code, redirectUri, grantType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestCode {\n");
-    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -227,15 +227,10 @@ public class OauthAccessTokenRequestCode {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("code");
-    openapiFields.add("redirect_uri");
+    openapiFields = new HashSet<String>(Arrays.asList("code", "redirect_uri", "grant_type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("grant_type");
-    openapiRequiredFields.add("code");
-    openapiRequiredFields.add("redirect_uri");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("code", "redirect_uri", "grant_type"));
   }
 
   /**
@@ -247,7 +242,7 @@ public class OauthAccessTokenRequestCode {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!OauthAccessTokenRequestCode.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OauthAccessTokenRequestCode is not found in the empty JSON string", OauthAccessTokenRequestCode.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in OauthAccessTokenRequestCode is not found in the empty JSON string", OauthAccessTokenRequestCode.openapiRequiredFields.toString()));
         }
       }
 
@@ -255,28 +250,28 @@ public class OauthAccessTokenRequestCode {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!OauthAccessTokenRequestCode.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OauthAccessTokenRequestCode` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `OauthAccessTokenRequestCode` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : OauthAccessTokenRequestCode.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if (!jsonObj.get("redirect_uri").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `redirect_uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirect_uri").toString()));
+      }
       if (!jsonObj.get("grant_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `grant_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("grant_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `grant_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("grant_type").toString()));
       }
       // validate the required field `grant_type`
       GrantTypeEnum.validateJsonElement(jsonObj.get("grant_type"));
-      if (!jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
-      }
-      if (!jsonObj.get("redirect_uri").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `redirect_uri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("redirect_uri").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -34,7 +34,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelItemsBatch", description = "Object describing the catalogs hotel items batch")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
 
   private @Nullable String batchId;
@@ -63,7 +63,7 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
     this.catalogType = catalogType;
   }
 
-  public CatalogsHotelItemsBatch batchId(String batchId) {
+  public CatalogsHotelItemsBatch batchId(@Nullable String batchId) {
     this.batchId = batchId;
     return this;
   }
@@ -75,15 +75,15 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
   
   @Schema(name = "batch_id", example = "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e", description = "Id of the catalogs items batch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("batch_id")
-  public String getBatchId() {
+  public @Nullable String getBatchId() {
     return batchId;
   }
 
-  public void setBatchId(String batchId) {
+  public void setBatchId(@Nullable String batchId) {
     this.batchId = batchId;
   }
 
-  public CatalogsHotelItemsBatch createdTime(OffsetDateTime createdTime) {
+  public CatalogsHotelItemsBatch createdTime(@Nullable OffsetDateTime createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -95,11 +95,11 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
   @Valid 
   @Schema(name = "created_time", accessMode = Schema.AccessMode.READ_ONLY, description = "Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
-  public OffsetDateTime getCreatedTime() {
+  public @Nullable OffsetDateTime getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(OffsetDateTime createdTime) {
+  public void setCreatedTime(@Nullable OffsetDateTime createdTime) {
     this.createdTime = createdTime;
   }
 
@@ -123,7 +123,7 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
     this.completedTime = completedTime;
   }
 
-  public CatalogsHotelItemsBatch status(BatchOperationStatus status) {
+  public CatalogsHotelItemsBatch status(@Nullable BatchOperationStatus status) {
     this.status = status;
     return this;
   }
@@ -135,11 +135,11 @@ public class CatalogsHotelItemsBatch implements CatalogsItemsBatch {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public BatchOperationStatus getStatus() {
+  public @Nullable BatchOperationStatus getStatus() {
     return status;
   }
 
-  public void setStatus(BatchOperationStatus status) {
+  public void setStatus(@Nullable BatchOperationStatus status) {
     this.status = status;
   }
 

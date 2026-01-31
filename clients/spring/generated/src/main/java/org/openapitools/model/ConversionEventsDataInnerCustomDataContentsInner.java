@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ConversionEvents_data_inner_custom_data_contents_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventsDataInnerCustomDataContentsInner {
 
   private @Nullable String id;
@@ -36,7 +36,7 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
 
   private @Nullable String itemBrand;
 
-  public ConversionEventsDataInnerCustomDataContentsInner id(String id) {
+  public ConversionEventsDataInnerCustomDataContentsInner id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -48,15 +48,15 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
   
   @Schema(name = "id", example = "red-pinterest-shirt-logo-1", description = "The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public ConversionEventsDataInnerCustomDataContentsInner itemPrice(String itemPrice) {
+  public ConversionEventsDataInnerCustomDataContentsInner itemPrice(@Nullable String itemPrice) {
     this.itemPrice = itemPrice;
     return this;
   }
@@ -68,15 +68,15 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
   
   @Schema(name = "item_price", example = "1325.12", description = "The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_price")
-  public String getItemPrice() {
+  public @Nullable String getItemPrice() {
     return itemPrice;
   }
 
-  public void setItemPrice(String itemPrice) {
+  public void setItemPrice(@Nullable String itemPrice) {
     this.itemPrice = itemPrice;
   }
 
-  public ConversionEventsDataInnerCustomDataContentsInner quantity(Long quantity) {
+  public ConversionEventsDataInnerCustomDataContentsInner quantity(@Nullable Long quantity) {
     this.quantity = quantity;
     return this;
   }
@@ -88,15 +88,15 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
   
   @Schema(name = "quantity", example = "5", description = "The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("quantity")
-  public Long getQuantity() {
+  public @Nullable Long getQuantity() {
     return quantity;
   }
 
-  public void setQuantity(Long quantity) {
+  public void setQuantity(@Nullable Long quantity) {
     this.quantity = quantity;
   }
 
-  public ConversionEventsDataInnerCustomDataContentsInner itemName(String itemName) {
+  public ConversionEventsDataInnerCustomDataContentsInner itemName(@Nullable String itemName) {
     this.itemName = itemName;
     return this;
   }
@@ -108,15 +108,15 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
   
   @Schema(name = "item_name", example = "pinterest-clothing-shirt", description = "The name of a product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_name")
-  public String getItemName() {
+  public @Nullable String getItemName() {
     return itemName;
   }
 
-  public void setItemName(String itemName) {
+  public void setItemName(@Nullable String itemName) {
     this.itemName = itemName;
   }
 
-  public ConversionEventsDataInnerCustomDataContentsInner itemCategory(String itemCategory) {
+  public ConversionEventsDataInnerCustomDataContentsInner itemCategory(@Nullable String itemCategory) {
     this.itemCategory = itemCategory;
     return this;
   }
@@ -128,15 +128,15 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
   
   @Schema(name = "item_category", example = "pinterest-entertainment", description = "The category of a product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_category")
-  public String getItemCategory() {
+  public @Nullable String getItemCategory() {
     return itemCategory;
   }
 
-  public void setItemCategory(String itemCategory) {
+  public void setItemCategory(@Nullable String itemCategory) {
     this.itemCategory = itemCategory;
   }
 
-  public ConversionEventsDataInnerCustomDataContentsInner itemBrand(String itemBrand) {
+  public ConversionEventsDataInnerCustomDataContentsInner itemBrand(@Nullable String itemBrand) {
     this.itemBrand = itemBrand;
     return this;
   }
@@ -148,11 +148,11 @@ public class ConversionEventsDataInnerCustomDataContentsInner {
   
   @Schema(name = "item_brand", example = "pinterest", description = "The brand of a product.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_brand")
-  public String getItemBrand() {
+  public @Nullable String getItemBrand() {
     return itemBrand;
   }
 
-  public void setItemBrand(String itemBrand) {
+  public void setItemBrand(@Nullable String itemBrand) {
     this.itemBrand = itemBrand;
   }
 

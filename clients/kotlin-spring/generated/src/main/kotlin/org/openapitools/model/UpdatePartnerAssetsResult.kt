@@ -35,7 +35,7 @@ data class UpdatePartnerAssetsResult(
 
     @Schema(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", description = "Permission levels member or partner has on an asset.")
     @get:JsonProperty("permissions") val permissions: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
 }
 

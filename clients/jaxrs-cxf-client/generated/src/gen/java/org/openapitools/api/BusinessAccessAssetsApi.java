@@ -23,13 +23,9 @@ import org.openapitools.model.UpdateMemberAssetsResultsResponseArray;
 import org.openapitools.model.UpdatePartnerAssetAccessBody;
 import org.openapitools.model.UpdatePartnerAssetsResultsResponseArray;
 
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.MediaType;
 import org.apache.cxf.jaxrs.ext.multipart.*;
 
 import io.swagger.annotations.Api;
@@ -204,7 +200,7 @@ public interface BusinessAccessAssetsApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = BusinessPartnerAssetAccessGet200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(@PathParam("business_id") String businessId, @PathParam("partner_id") String partnerId, @QueryParam("partner_type") PartnerType partnerType, @QueryParam("asset_type") @DefaultValue("AD_ACCOUNT")String assetType, @QueryParam("start_index") @DefaultValue("0")Integer startIndex, @QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("bookmark") String bookmark);
+    public BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(@PathParam("business_id") String businessId, @PathParam("partner_id") String partnerId, @QueryParam("partner_type") @DefaultValue("INTERNAL")PartnerType partnerType, @QueryParam("asset_type") @DefaultValue("AD_ACCOUNT")String assetType, @QueryParam("start_index") @DefaultValue("0")Integer startIndex, @QueryParam("page_size") @DefaultValue("25")Integer pageSize, @QueryParam("bookmark") String bookmark);
 
     /**
      * Delete partner access to asset

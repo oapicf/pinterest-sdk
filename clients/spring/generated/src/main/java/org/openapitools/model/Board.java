@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Board", description = "Board")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Board {
 
   private @Nullable String id;
@@ -63,7 +63,7 @@ public class Board {
     
     SECRET("SECRET");
 
-    private String value;
+    private final String value;
 
     PrivacyEnum(String value) {
       this.value = value;
@@ -103,7 +103,7 @@ public class Board {
     this.name = name;
   }
 
-  public Board id(String id) {
+  public Board id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -115,15 +115,15 @@ public class Board {
   
   @Schema(name = "id", accessMode = Schema.AccessMode.READ_ONLY, example = "549755885175", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public Board createdAt(OffsetDateTime createdAt) {
+  public Board createdAt(@Nullable OffsetDateTime createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -135,15 +135,15 @@ public class Board {
   @Valid 
   @Schema(name = "created_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2020-01-01T20:10:40Z", description = "Date and time of board creation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_at")
-  public OffsetDateTime getCreatedAt() {
+  public @Nullable OffsetDateTime getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
+  public void setCreatedAt(@Nullable OffsetDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
-  public Board boardPinsModifiedAt(OffsetDateTime boardPinsModifiedAt) {
+  public Board boardPinsModifiedAt(@Nullable OffsetDateTime boardPinsModifiedAt) {
     this.boardPinsModifiedAt = boardPinsModifiedAt;
     return this;
   }
@@ -155,11 +155,11 @@ public class Board {
   @Valid 
   @Schema(name = "board_pins_modified_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2020-01-01T20:10:40Z", description = "Date and time of last board pins modified.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_pins_modified_at")
-  public OffsetDateTime getBoardPinsModifiedAt() {
+  public @Nullable OffsetDateTime getBoardPinsModifiedAt() {
     return boardPinsModifiedAt;
   }
 
-  public void setBoardPinsModifiedAt(OffsetDateTime boardPinsModifiedAt) {
+  public void setBoardPinsModifiedAt(@Nullable OffsetDateTime boardPinsModifiedAt) {
     this.boardPinsModifiedAt = boardPinsModifiedAt;
   }
 
@@ -203,7 +203,7 @@ public class Board {
     this.description = description;
   }
 
-  public Board collaboratorCount(Integer collaboratorCount) {
+  public Board collaboratorCount(@Nullable Integer collaboratorCount) {
     this.collaboratorCount = collaboratorCount;
     return this;
   }
@@ -213,18 +213,18 @@ public class Board {
    * minimum: 0
    * @return collaboratorCount
    */
-  @Min(0) 
+  @Min(value = 0) 
   @Schema(name = "collaborator_count", accessMode = Schema.AccessMode.READ_ONLY, example = "17", description = "Count of collaborators on the board.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("collaborator_count")
-  public Integer getCollaboratorCount() {
+  public @Nullable Integer getCollaboratorCount() {
     return collaboratorCount;
   }
 
-  public void setCollaboratorCount(Integer collaboratorCount) {
+  public void setCollaboratorCount(@Nullable Integer collaboratorCount) {
     this.collaboratorCount = collaboratorCount;
   }
 
-  public Board pinCount(Integer pinCount) {
+  public Board pinCount(@Nullable Integer pinCount) {
     this.pinCount = pinCount;
     return this;
   }
@@ -234,18 +234,18 @@ public class Board {
    * minimum: 0
    * @return pinCount
    */
-  @Min(0) 
+  @Min(value = 0) 
   @Schema(name = "pin_count", accessMode = Schema.AccessMode.READ_ONLY, example = "5", description = "Count of pins on the board.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_count")
-  public Integer getPinCount() {
+  public @Nullable Integer getPinCount() {
     return pinCount;
   }
 
-  public void setPinCount(Integer pinCount) {
+  public void setPinCount(@Nullable Integer pinCount) {
     this.pinCount = pinCount;
   }
 
-  public Board followerCount(Integer followerCount) {
+  public Board followerCount(@Nullable Integer followerCount) {
     this.followerCount = followerCount;
     return this;
   }
@@ -255,18 +255,18 @@ public class Board {
    * minimum: 0
    * @return followerCount
    */
-  @Min(0) 
+  @Min(value = 0) 
   @Schema(name = "follower_count", accessMode = Schema.AccessMode.READ_ONLY, example = "13", description = "Board follower count.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("follower_count")
-  public Integer getFollowerCount() {
+  public @Nullable Integer getFollowerCount() {
     return followerCount;
   }
 
-  public void setFollowerCount(Integer followerCount) {
+  public void setFollowerCount(@Nullable Integer followerCount) {
     this.followerCount = followerCount;
   }
 
-  public Board media(BoardMedia media) {
+  public Board media(@Nullable BoardMedia media) {
     this.media = media;
     return this;
   }
@@ -278,15 +278,15 @@ public class Board {
   @Valid 
   @Schema(name = "media", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media")
-  public BoardMedia getMedia() {
+  public @Nullable BoardMedia getMedia() {
     return media;
   }
 
-  public void setMedia(BoardMedia media) {
+  public void setMedia(@Nullable BoardMedia media) {
     this.media = media;
   }
 
-  public Board owner(BoardOwner owner) {
+  public Board owner(@Nullable BoardOwner owner) {
     this.owner = owner;
     return this;
   }
@@ -298,11 +298,11 @@ public class Board {
   @Valid 
   @Schema(name = "owner", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("owner")
-  public BoardOwner getOwner() {
+  public @Nullable BoardOwner getOwner() {
     return owner;
   }
 
-  public void setOwner(BoardOwner owner) {
+  public void setOwner(@Nullable BoardOwner owner) {
     this.owner = owner;
   }
 

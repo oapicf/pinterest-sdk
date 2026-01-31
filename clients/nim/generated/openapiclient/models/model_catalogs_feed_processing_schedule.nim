@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type Timezone* {.pure.} = enum
@@ -276,18 +278,18 @@ type Timezone* {.pure.} = enum
   EST
   EST5EDT
   EtcGMT
-  EtcGMT+1
-  EtcGMT+10
-  EtcGMT+11
-  EtcGMT+12
-  EtcGMT+2
-  EtcGMT+3
-  EtcGMT+4
-  EtcGMT+5
-  EtcGMT+6
-  EtcGMT+7
-  EtcGMT+8
-  EtcGMT+9
+  `EtcGMT+1`
+  `EtcGMT+10`
+  `EtcGMT+11`
+  `EtcGMT+12`
+  `EtcGMT+2`
+  `EtcGMT+3`
+  `EtcGMT+4`
+  `EtcGMT+5`
+  `EtcGMT+6`
+  `EtcGMT+7`
+  `EtcGMT+8`
+  `EtcGMT+9`
   EtcGMT1
   EtcGMT10
   EtcGMT11
@@ -403,786 +405,1566 @@ type Timezone* {.pure.} = enum
 type CatalogsFeedProcessingSchedule* = object
   ## Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).
   time*: string ## A time in format HH:MM with leading 0 (zero)
-  timezone*: Timezone ## The timezone considered for the processing schedule time.
+  timezone*: Option[Timezone] ## The timezone considered for the processing schedule time.
 
 func `%`*(v: Timezone): JsonNode =
-  let str = case v:
-    of Timezone.AfricaAbidjan: "Africa/Abidjan"
-    of Timezone.AfricaAccra: "Africa/Accra"
-    of Timezone.AfricaAlgiers: "Africa/Algiers"
-    of Timezone.AfricaBissau: "Africa/Bissau"
-    of Timezone.AfricaCairo: "Africa/Cairo"
-    of Timezone.AfricaCasablanca: "Africa/Casablanca"
-    of Timezone.AfricaCeuta: "Africa/Ceuta"
-    of Timezone.AfricaElAaiun: "Africa/El_Aaiun"
-    of Timezone.AfricaJohannesburg: "Africa/Johannesburg"
-    of Timezone.AfricaJuba: "Africa/Juba"
-    of Timezone.AfricaKhartoum: "Africa/Khartoum"
-    of Timezone.AfricaLagos: "Africa/Lagos"
-    of Timezone.AfricaMaputo: "Africa/Maputo"
-    of Timezone.AfricaMonrovia: "Africa/Monrovia"
-    of Timezone.AfricaNairobi: "Africa/Nairobi"
-    of Timezone.AfricaNdjamena: "Africa/Ndjamena"
-    of Timezone.AfricaSaoTome: "Africa/Sao_Tome"
-    of Timezone.AfricaTripoli: "Africa/Tripoli"
-    of Timezone.AfricaTunis: "Africa/Tunis"
-    of Timezone.AfricaWindhoek: "Africa/Windhoek"
-    of Timezone.AmericaAdak: "America/Adak"
-    of Timezone.AmericaAnchorage: "America/Anchorage"
-    of Timezone.AmericaAraguaina: "America/Araguaina"
-    of Timezone.AmericaArgentinaBuenosAires: "America/Argentina/Buenos_Aires"
-    of Timezone.AmericaArgentinaCatamarca: "America/Argentina/Catamarca"
-    of Timezone.AmericaArgentinaCordoba: "America/Argentina/Cordoba"
-    of Timezone.AmericaArgentinaJujuy: "America/Argentina/Jujuy"
-    of Timezone.AmericaArgentinaLaRioja: "America/Argentina/La_Rioja"
-    of Timezone.AmericaArgentinaMendoza: "America/Argentina/Mendoza"
-    of Timezone.AmericaArgentinaRioGallegos: "America/Argentina/Rio_Gallegos"
-    of Timezone.AmericaArgentinaSalta: "America/Argentina/Salta"
-    of Timezone.AmericaArgentinaSanJuan: "America/Argentina/San_Juan"
-    of Timezone.AmericaArgentinaSanLuis: "America/Argentina/San_Luis"
-    of Timezone.AmericaArgentinaTucuman: "America/Argentina/Tucuman"
-    of Timezone.AmericaArgentinaUshuaia: "America/Argentina/Ushuaia"
-    of Timezone.AmericaAsuncion: "America/Asuncion"
-    of Timezone.AmericaAtikokan: "America/Atikokan"
-    of Timezone.AmericaBahia: "America/Bahia"
-    of Timezone.AmericaBahiaBanderas: "America/Bahia_Banderas"
-    of Timezone.AmericaBarbados: "America/Barbados"
-    of Timezone.AmericaBelem: "America/Belem"
-    of Timezone.AmericaBelize: "America/Belize"
-    of Timezone.AmericaBlancSablon: "America/Blanc-Sablon"
-    of Timezone.AmericaBoaVista: "America/Boa_Vista"
-    of Timezone.AmericaBogota: "America/Bogota"
-    of Timezone.AmericaBoise: "America/Boise"
-    of Timezone.AmericaCambridgeBay: "America/Cambridge_Bay"
-    of Timezone.AmericaCampoGrande: "America/Campo_Grande"
-    of Timezone.AmericaCancun: "America/Cancun"
-    of Timezone.AmericaCaracas: "America/Caracas"
-    of Timezone.AmericaCayenne: "America/Cayenne"
-    of Timezone.AmericaChicago: "America/Chicago"
-    of Timezone.AmericaChihuahua: "America/Chihuahua"
-    of Timezone.AmericaCostaRica: "America/Costa_Rica"
-    of Timezone.AmericaCreston: "America/Creston"
-    of Timezone.AmericaCuiaba: "America/Cuiaba"
-    of Timezone.AmericaCuracao: "America/Curacao"
-    of Timezone.AmericaDanmarkshavn: "America/Danmarkshavn"
-    of Timezone.AmericaDawson: "America/Dawson"
-    of Timezone.AmericaDawsonCreek: "America/Dawson_Creek"
-    of Timezone.AmericaDenver: "America/Denver"
-    of Timezone.AmericaDetroit: "America/Detroit"
-    of Timezone.AmericaEdmonton: "America/Edmonton"
-    of Timezone.AmericaEirunepe: "America/Eirunepe"
-    of Timezone.AmericaElSalvador: "America/El_Salvador"
-    of Timezone.AmericaFortNelson: "America/Fort_Nelson"
-    of Timezone.AmericaFortaleza: "America/Fortaleza"
-    of Timezone.AmericaGlaceBay: "America/Glace_Bay"
-    of Timezone.AmericaGooseBay: "America/Goose_Bay"
-    of Timezone.AmericaGrandTurk: "America/Grand_Turk"
-    of Timezone.AmericaGuatemala: "America/Guatemala"
-    of Timezone.AmericaGuayaquil: "America/Guayaquil"
-    of Timezone.AmericaGuyana: "America/Guyana"
-    of Timezone.AmericaHalifax: "America/Halifax"
-    of Timezone.AmericaHavana: "America/Havana"
-    of Timezone.AmericaHermosillo: "America/Hermosillo"
-    of Timezone.AmericaIndianaIndianapolis: "America/Indiana/Indianapolis"
-    of Timezone.AmericaIndianaKnox: "America/Indiana/Knox"
-    of Timezone.AmericaIndianaMarengo: "America/Indiana/Marengo"
-    of Timezone.AmericaIndianaPetersburg: "America/Indiana/Petersburg"
-    of Timezone.AmericaIndianaTellCity: "America/Indiana/Tell_City"
-    of Timezone.AmericaIndianaVevay: "America/Indiana/Vevay"
-    of Timezone.AmericaIndianaVincennes: "America/Indiana/Vincennes"
-    of Timezone.AmericaIndianaWinamac: "America/Indiana/Winamac"
-    of Timezone.AmericaInuvik: "America/Inuvik"
-    of Timezone.AmericaIqaluit: "America/Iqaluit"
-    of Timezone.AmericaJamaica: "America/Jamaica"
-    of Timezone.AmericaJuneau: "America/Juneau"
-    of Timezone.AmericaKentuckyLouisville: "America/Kentucky/Louisville"
-    of Timezone.AmericaKentuckyMonticello: "America/Kentucky/Monticello"
-    of Timezone.AmericaLaPaz: "America/La_Paz"
-    of Timezone.AmericaLima: "America/Lima"
-    of Timezone.AmericaLosAngeles: "America/Los_Angeles"
-    of Timezone.AmericaMaceio: "America/Maceio"
-    of Timezone.AmericaManagua: "America/Managua"
-    of Timezone.AmericaManaus: "America/Manaus"
-    of Timezone.AmericaMartinique: "America/Martinique"
-    of Timezone.AmericaMatamoros: "America/Matamoros"
-    of Timezone.AmericaMazatlan: "America/Mazatlan"
-    of Timezone.AmericaMenominee: "America/Menominee"
-    of Timezone.AmericaMerida: "America/Merida"
-    of Timezone.AmericaMetlakatla: "America/Metlakatla"
-    of Timezone.AmericaMexicoCity: "America/Mexico_City"
-    of Timezone.AmericaMiquelon: "America/Miquelon"
-    of Timezone.AmericaMoncton: "America/Moncton"
-    of Timezone.AmericaMonterrey: "America/Monterrey"
-    of Timezone.AmericaMontevideo: "America/Montevideo"
-    of Timezone.AmericaNassau: "America/Nassau"
-    of Timezone.AmericaNewYork: "America/New_York"
-    of Timezone.AmericaNipigon: "America/Nipigon"
-    of Timezone.AmericaNome: "America/Nome"
-    of Timezone.AmericaNoronha: "America/Noronha"
-    of Timezone.AmericaNorthDakotaBeulah: "America/North_Dakota/Beulah"
-    of Timezone.AmericaNorthDakotaCenter: "America/North_Dakota/Center"
-    of Timezone.AmericaNorthDakotaNewSalem: "America/North_Dakota/New_Salem"
-    of Timezone.AmericaNuuk: "America/Nuuk"
-    of Timezone.AmericaOjinaga: "America/Ojinaga"
-    of Timezone.AmericaPanama: "America/Panama"
-    of Timezone.AmericaPangnirtung: "America/Pangnirtung"
-    of Timezone.AmericaParamaribo: "America/Paramaribo"
-    of Timezone.AmericaPhoenix: "America/Phoenix"
-    of Timezone.AmericaPortAuPrince: "America/Port-au-Prince"
-    of Timezone.AmericaPortOfSpain: "America/Port_of_Spain"
-    of Timezone.AmericaPortoVelho: "America/Porto_Velho"
-    of Timezone.AmericaPuertoRico: "America/Puerto_Rico"
-    of Timezone.AmericaPuntaArenas: "America/Punta_Arenas"
-    of Timezone.AmericaRainyRiver: "America/Rainy_River"
-    of Timezone.AmericaRankinInlet: "America/Rankin_Inlet"
-    of Timezone.AmericaRecife: "America/Recife"
-    of Timezone.AmericaRegina: "America/Regina"
-    of Timezone.AmericaResolute: "America/Resolute"
-    of Timezone.AmericaRioBranco: "America/Rio_Branco"
-    of Timezone.AmericaSantarem: "America/Santarem"
-    of Timezone.AmericaSantiago: "America/Santiago"
-    of Timezone.AmericaSantoDomingo: "America/Santo_Domingo"
-    of Timezone.AmericaSaoPaulo: "America/Sao_Paulo"
-    of Timezone.AmericaScoresbysund: "America/Scoresbysund"
-    of Timezone.AmericaSitka: "America/Sitka"
-    of Timezone.AmericaStJohns: "America/St_Johns"
-    of Timezone.AmericaSwiftCurrent: "America/Swift_Current"
-    of Timezone.AmericaTegucigalpa: "America/Tegucigalpa"
-    of Timezone.AmericaThule: "America/Thule"
-    of Timezone.AmericaThunderBay: "America/Thunder_Bay"
-    of Timezone.AmericaTijuana: "America/Tijuana"
-    of Timezone.AmericaToronto: "America/Toronto"
-    of Timezone.AmericaVancouver: "America/Vancouver"
-    of Timezone.AmericaWhitehorse: "America/Whitehorse"
-    of Timezone.AmericaWinnipeg: "America/Winnipeg"
-    of Timezone.AmericaYakutat: "America/Yakutat"
-    of Timezone.AmericaYellowknife: "America/Yellowknife"
-    of Timezone.AntarcticaCasey: "Antarctica/Casey"
-    of Timezone.AntarcticaDavis: "Antarctica/Davis"
-    of Timezone.AntarcticaDumontDUrville: "Antarctica/DumontDUrville"
-    of Timezone.AntarcticaMacquarie: "Antarctica/Macquarie"
-    of Timezone.AntarcticaMawson: "Antarctica/Mawson"
-    of Timezone.AntarcticaPalmer: "Antarctica/Palmer"
-    of Timezone.AntarcticaRothera: "Antarctica/Rothera"
-    of Timezone.AntarcticaSyowa: "Antarctica/Syowa"
-    of Timezone.AntarcticaTroll: "Antarctica/Troll"
-    of Timezone.AntarcticaVostok: "Antarctica/Vostok"
-    of Timezone.AsiaAlmaty: "Asia/Almaty"
-    of Timezone.AsiaAmman: "Asia/Amman"
-    of Timezone.AsiaAnadyr: "Asia/Anadyr"
-    of Timezone.AsiaAqtau: "Asia/Aqtau"
-    of Timezone.AsiaAqtobe: "Asia/Aqtobe"
-    of Timezone.AsiaAshgabat: "Asia/Ashgabat"
-    of Timezone.AsiaAtyrau: "Asia/Atyrau"
-    of Timezone.AsiaBaghdad: "Asia/Baghdad"
-    of Timezone.AsiaBaku: "Asia/Baku"
-    of Timezone.AsiaBangkok: "Asia/Bangkok"
-    of Timezone.AsiaBarnaul: "Asia/Barnaul"
-    of Timezone.AsiaBeirut: "Asia/Beirut"
-    of Timezone.AsiaBishkek: "Asia/Bishkek"
-    of Timezone.AsiaBrunei: "Asia/Brunei"
-    of Timezone.AsiaChita: "Asia/Chita"
-    of Timezone.AsiaChoibalsan: "Asia/Choibalsan"
-    of Timezone.AsiaColombo: "Asia/Colombo"
-    of Timezone.AsiaDamascus: "Asia/Damascus"
-    of Timezone.AsiaDhaka: "Asia/Dhaka"
-    of Timezone.AsiaDili: "Asia/Dili"
-    of Timezone.AsiaDubai: "Asia/Dubai"
-    of Timezone.AsiaDushanbe: "Asia/Dushanbe"
-    of Timezone.AsiaFamagusta: "Asia/Famagusta"
-    of Timezone.AsiaGaza: "Asia/Gaza"
-    of Timezone.AsiaHebron: "Asia/Hebron"
-    of Timezone.AsiaHoChiMinh: "Asia/Ho_Chi_Minh"
-    of Timezone.AsiaHongKong: "Asia/Hong_Kong"
-    of Timezone.AsiaHovd: "Asia/Hovd"
-    of Timezone.AsiaIrkutsk: "Asia/Irkutsk"
-    of Timezone.AsiaJakarta: "Asia/Jakarta"
-    of Timezone.AsiaJayapura: "Asia/Jayapura"
-    of Timezone.AsiaJerusalem: "Asia/Jerusalem"
-    of Timezone.AsiaKabul: "Asia/Kabul"
-    of Timezone.AsiaKamchatka: "Asia/Kamchatka"
-    of Timezone.AsiaKarachi: "Asia/Karachi"
-    of Timezone.AsiaKathmandu: "Asia/Kathmandu"
-    of Timezone.AsiaKhandyga: "Asia/Khandyga"
-    of Timezone.AsiaKolkata: "Asia/Kolkata"
-    of Timezone.AsiaKrasnoyarsk: "Asia/Krasnoyarsk"
-    of Timezone.AsiaKualaLumpur: "Asia/Kuala_Lumpur"
-    of Timezone.AsiaKuching: "Asia/Kuching"
-    of Timezone.AsiaMacau: "Asia/Macau"
-    of Timezone.AsiaMagadan: "Asia/Magadan"
-    of Timezone.AsiaMakassar: "Asia/Makassar"
-    of Timezone.AsiaManila: "Asia/Manila"
-    of Timezone.AsiaNicosia: "Asia/Nicosia"
-    of Timezone.AsiaNovokuznetsk: "Asia/Novokuznetsk"
-    of Timezone.AsiaNovosibirsk: "Asia/Novosibirsk"
-    of Timezone.AsiaOmsk: "Asia/Omsk"
-    of Timezone.AsiaOral: "Asia/Oral"
-    of Timezone.AsiaPontianak: "Asia/Pontianak"
-    of Timezone.AsiaPyongyang: "Asia/Pyongyang"
-    of Timezone.AsiaQatar: "Asia/Qatar"
-    of Timezone.AsiaQostanay: "Asia/Qostanay"
-    of Timezone.AsiaQyzylorda: "Asia/Qyzylorda"
-    of Timezone.AsiaRiyadh: "Asia/Riyadh"
-    of Timezone.AsiaSakhalin: "Asia/Sakhalin"
-    of Timezone.AsiaSamarkand: "Asia/Samarkand"
-    of Timezone.AsiaSeoul: "Asia/Seoul"
-    of Timezone.AsiaShanghai: "Asia/Shanghai"
-    of Timezone.AsiaSingapore: "Asia/Singapore"
-    of Timezone.AsiaSrednekolymsk: "Asia/Srednekolymsk"
-    of Timezone.AsiaTaipei: "Asia/Taipei"
-    of Timezone.AsiaTashkent: "Asia/Tashkent"
-    of Timezone.AsiaTbilisi: "Asia/Tbilisi"
-    of Timezone.AsiaTehran: "Asia/Tehran"
-    of Timezone.AsiaThimphu: "Asia/Thimphu"
-    of Timezone.AsiaTokyo: "Asia/Tokyo"
-    of Timezone.AsiaTomsk: "Asia/Tomsk"
-    of Timezone.AsiaUlaanbaatar: "Asia/Ulaanbaatar"
-    of Timezone.AsiaUrumqi: "Asia/Urumqi"
-    of Timezone.AsiaUstNera: "Asia/Ust-Nera"
-    of Timezone.AsiaVladivostok: "Asia/Vladivostok"
-    of Timezone.AsiaYakutsk: "Asia/Yakutsk"
-    of Timezone.AsiaYangon: "Asia/Yangon"
-    of Timezone.AsiaYekaterinburg: "Asia/Yekaterinburg"
-    of Timezone.AsiaYerevan: "Asia/Yerevan"
-    of Timezone.AtlanticAzores: "Atlantic/Azores"
-    of Timezone.AtlanticBermuda: "Atlantic/Bermuda"
-    of Timezone.AtlanticCanary: "Atlantic/Canary"
-    of Timezone.AtlanticCapeVerde: "Atlantic/Cape_Verde"
-    of Timezone.AtlanticFaroe: "Atlantic/Faroe"
-    of Timezone.AtlanticMadeira: "Atlantic/Madeira"
-    of Timezone.AtlanticReykjavik: "Atlantic/Reykjavik"
-    of Timezone.AtlanticSouthGeorgia: "Atlantic/South_Georgia"
-    of Timezone.AtlanticStanley: "Atlantic/Stanley"
-    of Timezone.AustraliaAdelaide: "Australia/Adelaide"
-    of Timezone.AustraliaBrisbane: "Australia/Brisbane"
-    of Timezone.AustraliaBrokenHill: "Australia/Broken_Hill"
-    of Timezone.AustraliaCurrie: "Australia/Currie"
-    of Timezone.AustraliaDarwin: "Australia/Darwin"
-    of Timezone.AustraliaEucla: "Australia/Eucla"
-    of Timezone.AustraliaHobart: "Australia/Hobart"
-    of Timezone.AustraliaLindeman: "Australia/Lindeman"
-    of Timezone.AustraliaLordHowe: "Australia/Lord_Howe"
-    of Timezone.AustraliaMelbourne: "Australia/Melbourne"
-    of Timezone.AustraliaPerth: "Australia/Perth"
-    of Timezone.AustraliaSydney: "Australia/Sydney"
-    of Timezone.CET: "CET"
-    of Timezone.CST6CDT: "CST6CDT"
-    of Timezone.EET: "EET"
-    of Timezone.EST: "EST"
-    of Timezone.EST5EDT: "EST5EDT"
-    of Timezone.EtcGMT: "Etc/GMT"
-    of Timezone.EtcGMT+1: "Etc/GMT+1"
-    of Timezone.EtcGMT+10: "Etc/GMT+10"
-    of Timezone.EtcGMT+11: "Etc/GMT+11"
-    of Timezone.EtcGMT+12: "Etc/GMT+12"
-    of Timezone.EtcGMT+2: "Etc/GMT+2"
-    of Timezone.EtcGMT+3: "Etc/GMT+3"
-    of Timezone.EtcGMT+4: "Etc/GMT+4"
-    of Timezone.EtcGMT+5: "Etc/GMT+5"
-    of Timezone.EtcGMT+6: "Etc/GMT+6"
-    of Timezone.EtcGMT+7: "Etc/GMT+7"
-    of Timezone.EtcGMT+8: "Etc/GMT+8"
-    of Timezone.EtcGMT+9: "Etc/GMT+9"
-    of Timezone.EtcGMT1: "Etc/GMT-1"
-    of Timezone.EtcGMT10: "Etc/GMT-10"
-    of Timezone.EtcGMT11: "Etc/GMT-11"
-    of Timezone.EtcGMT12: "Etc/GMT-12"
-    of Timezone.EtcGMT13: "Etc/GMT-13"
-    of Timezone.EtcGMT14: "Etc/GMT-14"
-    of Timezone.EtcGMT2: "Etc/GMT-2"
-    of Timezone.EtcGMT3: "Etc/GMT-3"
-    of Timezone.EtcGMT4: "Etc/GMT-4"
-    of Timezone.EtcGMT5: "Etc/GMT-5"
-    of Timezone.EtcGMT6: "Etc/GMT-6"
-    of Timezone.EtcGMT7: "Etc/GMT-7"
-    of Timezone.EtcGMT8: "Etc/GMT-8"
-    of Timezone.EtcGMT9: "Etc/GMT-9"
-    of Timezone.EtcUTC: "Etc/UTC"
-    of Timezone.EuropeAmsterdam: "Europe/Amsterdam"
-    of Timezone.EuropeAndorra: "Europe/Andorra"
-    of Timezone.EuropeAstrakhan: "Europe/Astrakhan"
-    of Timezone.EuropeAthens: "Europe/Athens"
-    of Timezone.EuropeBelgrade: "Europe/Belgrade"
-    of Timezone.EuropeBerlin: "Europe/Berlin"
-    of Timezone.EuropeBrussels: "Europe/Brussels"
-    of Timezone.EuropeBucharest: "Europe/Bucharest"
-    of Timezone.EuropeBudapest: "Europe/Budapest"
-    of Timezone.EuropeChisinau: "Europe/Chisinau"
-    of Timezone.EuropeCopenhagen: "Europe/Copenhagen"
-    of Timezone.EuropeDublin: "Europe/Dublin"
-    of Timezone.EuropeGibraltar: "Europe/Gibraltar"
-    of Timezone.EuropeHelsinki: "Europe/Helsinki"
-    of Timezone.EuropeIstanbul: "Europe/Istanbul"
-    of Timezone.EuropeKaliningrad: "Europe/Kaliningrad"
-    of Timezone.EuropeKiev: "Europe/Kiev"
-    of Timezone.EuropeKirov: "Europe/Kirov"
-    of Timezone.EuropeLisbon: "Europe/Lisbon"
-    of Timezone.EuropeLondon: "Europe/London"
-    of Timezone.EuropeLuxembourg: "Europe/Luxembourg"
-    of Timezone.EuropeMadrid: "Europe/Madrid"
-    of Timezone.EuropeMalta: "Europe/Malta"
-    of Timezone.EuropeMinsk: "Europe/Minsk"
-    of Timezone.EuropeMonaco: "Europe/Monaco"
-    of Timezone.EuropeMoscow: "Europe/Moscow"
-    of Timezone.EuropeOslo: "Europe/Oslo"
-    of Timezone.EuropeParis: "Europe/Paris"
-    of Timezone.EuropePrague: "Europe/Prague"
-    of Timezone.EuropeRiga: "Europe/Riga"
-    of Timezone.EuropeRome: "Europe/Rome"
-    of Timezone.EuropeSamara: "Europe/Samara"
-    of Timezone.EuropeSaratov: "Europe/Saratov"
-    of Timezone.EuropeSimferopol: "Europe/Simferopol"
-    of Timezone.EuropeSofia: "Europe/Sofia"
-    of Timezone.EuropeStockholm: "Europe/Stockholm"
-    of Timezone.EuropeTallinn: "Europe/Tallinn"
-    of Timezone.EuropeTirane: "Europe/Tirane"
-    of Timezone.EuropeUlyanovsk: "Europe/Ulyanovsk"
-    of Timezone.EuropeUzhgorod: "Europe/Uzhgorod"
-    of Timezone.EuropeVienna: "Europe/Vienna"
-    of Timezone.EuropeVilnius: "Europe/Vilnius"
-    of Timezone.EuropeVolgograd: "Europe/Volgograd"
-    of Timezone.EuropeWarsaw: "Europe/Warsaw"
-    of Timezone.EuropeZaporozhye: "Europe/Zaporozhye"
-    of Timezone.EuropeZurich: "Europe/Zurich"
-    of Timezone.HST: "HST"
-    of Timezone.IndianChagos: "Indian/Chagos"
-    of Timezone.IndianChristmas: "Indian/Christmas"
-    of Timezone.IndianCocos: "Indian/Cocos"
-    of Timezone.IndianKerguelen: "Indian/Kerguelen"
-    of Timezone.IndianMahe: "Indian/Mahe"
-    of Timezone.IndianMaldives: "Indian/Maldives"
-    of Timezone.IndianMauritius: "Indian/Mauritius"
-    of Timezone.IndianReunion: "Indian/Reunion"
-    of Timezone.MET: "MET"
-    of Timezone.MST: "MST"
-    of Timezone.MST7MDT: "MST7MDT"
-    of Timezone.PST8PDT: "PST8PDT"
-    of Timezone.PacificApia: "Pacific/Apia"
-    of Timezone.PacificAuckland: "Pacific/Auckland"
-    of Timezone.PacificBougainville: "Pacific/Bougainville"
-    of Timezone.PacificChatham: "Pacific/Chatham"
-    of Timezone.PacificChuuk: "Pacific/Chuuk"
-    of Timezone.PacificEaster: "Pacific/Easter"
-    of Timezone.PacificEfate: "Pacific/Efate"
-    of Timezone.PacificEnderbury: "Pacific/Enderbury"
-    of Timezone.PacificFakaofo: "Pacific/Fakaofo"
-    of Timezone.PacificFiji: "Pacific/Fiji"
-    of Timezone.PacificFunafuti: "Pacific/Funafuti"
-    of Timezone.PacificGalapagos: "Pacific/Galapagos"
-    of Timezone.PacificGambier: "Pacific/Gambier"
-    of Timezone.PacificGuadalcanal: "Pacific/Guadalcanal"
-    of Timezone.PacificGuam: "Pacific/Guam"
-    of Timezone.PacificHonolulu: "Pacific/Honolulu"
-    of Timezone.PacificKiritimati: "Pacific/Kiritimati"
-    of Timezone.PacificKosrae: "Pacific/Kosrae"
-    of Timezone.PacificKwajalein: "Pacific/Kwajalein"
-    of Timezone.PacificMajuro: "Pacific/Majuro"
-    of Timezone.PacificMarquesas: "Pacific/Marquesas"
-    of Timezone.PacificNauru: "Pacific/Nauru"
-    of Timezone.PacificNiue: "Pacific/Niue"
-    of Timezone.PacificNorfolk: "Pacific/Norfolk"
-    of Timezone.PacificNoumea: "Pacific/Noumea"
-    of Timezone.PacificPagoPago: "Pacific/Pago_Pago"
-    of Timezone.PacificPalau: "Pacific/Palau"
-    of Timezone.PacificPitcairn: "Pacific/Pitcairn"
-    of Timezone.PacificPohnpei: "Pacific/Pohnpei"
-    of Timezone.PacificPortMoresby: "Pacific/Port_Moresby"
-    of Timezone.PacificRarotonga: "Pacific/Rarotonga"
-    of Timezone.PacificTahiti: "Pacific/Tahiti"
-    of Timezone.PacificTarawa: "Pacific/Tarawa"
-    of Timezone.PacificTongatapu: "Pacific/Tongatapu"
-    of Timezone.PacificWake: "Pacific/Wake"
-    of Timezone.PacificWallis: "Pacific/Wallis"
-    of Timezone.WET: "WET"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Timezone.AfricaAbidjan: %"Africa/Abidjan"
+    of Timezone.AfricaAccra: %"Africa/Accra"
+    of Timezone.AfricaAlgiers: %"Africa/Algiers"
+    of Timezone.AfricaBissau: %"Africa/Bissau"
+    of Timezone.AfricaCairo: %"Africa/Cairo"
+    of Timezone.AfricaCasablanca: %"Africa/Casablanca"
+    of Timezone.AfricaCeuta: %"Africa/Ceuta"
+    of Timezone.AfricaElAaiun: %"Africa/El_Aaiun"
+    of Timezone.AfricaJohannesburg: %"Africa/Johannesburg"
+    of Timezone.AfricaJuba: %"Africa/Juba"
+    of Timezone.AfricaKhartoum: %"Africa/Khartoum"
+    of Timezone.AfricaLagos: %"Africa/Lagos"
+    of Timezone.AfricaMaputo: %"Africa/Maputo"
+    of Timezone.AfricaMonrovia: %"Africa/Monrovia"
+    of Timezone.AfricaNairobi: %"Africa/Nairobi"
+    of Timezone.AfricaNdjamena: %"Africa/Ndjamena"
+    of Timezone.AfricaSaoTome: %"Africa/Sao_Tome"
+    of Timezone.AfricaTripoli: %"Africa/Tripoli"
+    of Timezone.AfricaTunis: %"Africa/Tunis"
+    of Timezone.AfricaWindhoek: %"Africa/Windhoek"
+    of Timezone.AmericaAdak: %"America/Adak"
+    of Timezone.AmericaAnchorage: %"America/Anchorage"
+    of Timezone.AmericaAraguaina: %"America/Araguaina"
+    of Timezone.AmericaArgentinaBuenosAires: %"America/Argentina/Buenos_Aires"
+    of Timezone.AmericaArgentinaCatamarca: %"America/Argentina/Catamarca"
+    of Timezone.AmericaArgentinaCordoba: %"America/Argentina/Cordoba"
+    of Timezone.AmericaArgentinaJujuy: %"America/Argentina/Jujuy"
+    of Timezone.AmericaArgentinaLaRioja: %"America/Argentina/La_Rioja"
+    of Timezone.AmericaArgentinaMendoza: %"America/Argentina/Mendoza"
+    of Timezone.AmericaArgentinaRioGallegos: %"America/Argentina/Rio_Gallegos"
+    of Timezone.AmericaArgentinaSalta: %"America/Argentina/Salta"
+    of Timezone.AmericaArgentinaSanJuan: %"America/Argentina/San_Juan"
+    of Timezone.AmericaArgentinaSanLuis: %"America/Argentina/San_Luis"
+    of Timezone.AmericaArgentinaTucuman: %"America/Argentina/Tucuman"
+    of Timezone.AmericaArgentinaUshuaia: %"America/Argentina/Ushuaia"
+    of Timezone.AmericaAsuncion: %"America/Asuncion"
+    of Timezone.AmericaAtikokan: %"America/Atikokan"
+    of Timezone.AmericaBahia: %"America/Bahia"
+    of Timezone.AmericaBahiaBanderas: %"America/Bahia_Banderas"
+    of Timezone.AmericaBarbados: %"America/Barbados"
+    of Timezone.AmericaBelem: %"America/Belem"
+    of Timezone.AmericaBelize: %"America/Belize"
+    of Timezone.AmericaBlancSablon: %"America/Blanc-Sablon"
+    of Timezone.AmericaBoaVista: %"America/Boa_Vista"
+    of Timezone.AmericaBogota: %"America/Bogota"
+    of Timezone.AmericaBoise: %"America/Boise"
+    of Timezone.AmericaCambridgeBay: %"America/Cambridge_Bay"
+    of Timezone.AmericaCampoGrande: %"America/Campo_Grande"
+    of Timezone.AmericaCancun: %"America/Cancun"
+    of Timezone.AmericaCaracas: %"America/Caracas"
+    of Timezone.AmericaCayenne: %"America/Cayenne"
+    of Timezone.AmericaChicago: %"America/Chicago"
+    of Timezone.AmericaChihuahua: %"America/Chihuahua"
+    of Timezone.AmericaCostaRica: %"America/Costa_Rica"
+    of Timezone.AmericaCreston: %"America/Creston"
+    of Timezone.AmericaCuiaba: %"America/Cuiaba"
+    of Timezone.AmericaCuracao: %"America/Curacao"
+    of Timezone.AmericaDanmarkshavn: %"America/Danmarkshavn"
+    of Timezone.AmericaDawson: %"America/Dawson"
+    of Timezone.AmericaDawsonCreek: %"America/Dawson_Creek"
+    of Timezone.AmericaDenver: %"America/Denver"
+    of Timezone.AmericaDetroit: %"America/Detroit"
+    of Timezone.AmericaEdmonton: %"America/Edmonton"
+    of Timezone.AmericaEirunepe: %"America/Eirunepe"
+    of Timezone.AmericaElSalvador: %"America/El_Salvador"
+    of Timezone.AmericaFortNelson: %"America/Fort_Nelson"
+    of Timezone.AmericaFortaleza: %"America/Fortaleza"
+    of Timezone.AmericaGlaceBay: %"America/Glace_Bay"
+    of Timezone.AmericaGooseBay: %"America/Goose_Bay"
+    of Timezone.AmericaGrandTurk: %"America/Grand_Turk"
+    of Timezone.AmericaGuatemala: %"America/Guatemala"
+    of Timezone.AmericaGuayaquil: %"America/Guayaquil"
+    of Timezone.AmericaGuyana: %"America/Guyana"
+    of Timezone.AmericaHalifax: %"America/Halifax"
+    of Timezone.AmericaHavana: %"America/Havana"
+    of Timezone.AmericaHermosillo: %"America/Hermosillo"
+    of Timezone.AmericaIndianaIndianapolis: %"America/Indiana/Indianapolis"
+    of Timezone.AmericaIndianaKnox: %"America/Indiana/Knox"
+    of Timezone.AmericaIndianaMarengo: %"America/Indiana/Marengo"
+    of Timezone.AmericaIndianaPetersburg: %"America/Indiana/Petersburg"
+    of Timezone.AmericaIndianaTellCity: %"America/Indiana/Tell_City"
+    of Timezone.AmericaIndianaVevay: %"America/Indiana/Vevay"
+    of Timezone.AmericaIndianaVincennes: %"America/Indiana/Vincennes"
+    of Timezone.AmericaIndianaWinamac: %"America/Indiana/Winamac"
+    of Timezone.AmericaInuvik: %"America/Inuvik"
+    of Timezone.AmericaIqaluit: %"America/Iqaluit"
+    of Timezone.AmericaJamaica: %"America/Jamaica"
+    of Timezone.AmericaJuneau: %"America/Juneau"
+    of Timezone.AmericaKentuckyLouisville: %"America/Kentucky/Louisville"
+    of Timezone.AmericaKentuckyMonticello: %"America/Kentucky/Monticello"
+    of Timezone.AmericaLaPaz: %"America/La_Paz"
+    of Timezone.AmericaLima: %"America/Lima"
+    of Timezone.AmericaLosAngeles: %"America/Los_Angeles"
+    of Timezone.AmericaMaceio: %"America/Maceio"
+    of Timezone.AmericaManagua: %"America/Managua"
+    of Timezone.AmericaManaus: %"America/Manaus"
+    of Timezone.AmericaMartinique: %"America/Martinique"
+    of Timezone.AmericaMatamoros: %"America/Matamoros"
+    of Timezone.AmericaMazatlan: %"America/Mazatlan"
+    of Timezone.AmericaMenominee: %"America/Menominee"
+    of Timezone.AmericaMerida: %"America/Merida"
+    of Timezone.AmericaMetlakatla: %"America/Metlakatla"
+    of Timezone.AmericaMexicoCity: %"America/Mexico_City"
+    of Timezone.AmericaMiquelon: %"America/Miquelon"
+    of Timezone.AmericaMoncton: %"America/Moncton"
+    of Timezone.AmericaMonterrey: %"America/Monterrey"
+    of Timezone.AmericaMontevideo: %"America/Montevideo"
+    of Timezone.AmericaNassau: %"America/Nassau"
+    of Timezone.AmericaNewYork: %"America/New_York"
+    of Timezone.AmericaNipigon: %"America/Nipigon"
+    of Timezone.AmericaNome: %"America/Nome"
+    of Timezone.AmericaNoronha: %"America/Noronha"
+    of Timezone.AmericaNorthDakotaBeulah: %"America/North_Dakota/Beulah"
+    of Timezone.AmericaNorthDakotaCenter: %"America/North_Dakota/Center"
+    of Timezone.AmericaNorthDakotaNewSalem: %"America/North_Dakota/New_Salem"
+    of Timezone.AmericaNuuk: %"America/Nuuk"
+    of Timezone.AmericaOjinaga: %"America/Ojinaga"
+    of Timezone.AmericaPanama: %"America/Panama"
+    of Timezone.AmericaPangnirtung: %"America/Pangnirtung"
+    of Timezone.AmericaParamaribo: %"America/Paramaribo"
+    of Timezone.AmericaPhoenix: %"America/Phoenix"
+    of Timezone.AmericaPortAuPrince: %"America/Port-au-Prince"
+    of Timezone.AmericaPortOfSpain: %"America/Port_of_Spain"
+    of Timezone.AmericaPortoVelho: %"America/Porto_Velho"
+    of Timezone.AmericaPuertoRico: %"America/Puerto_Rico"
+    of Timezone.AmericaPuntaArenas: %"America/Punta_Arenas"
+    of Timezone.AmericaRainyRiver: %"America/Rainy_River"
+    of Timezone.AmericaRankinInlet: %"America/Rankin_Inlet"
+    of Timezone.AmericaRecife: %"America/Recife"
+    of Timezone.AmericaRegina: %"America/Regina"
+    of Timezone.AmericaResolute: %"America/Resolute"
+    of Timezone.AmericaRioBranco: %"America/Rio_Branco"
+    of Timezone.AmericaSantarem: %"America/Santarem"
+    of Timezone.AmericaSantiago: %"America/Santiago"
+    of Timezone.AmericaSantoDomingo: %"America/Santo_Domingo"
+    of Timezone.AmericaSaoPaulo: %"America/Sao_Paulo"
+    of Timezone.AmericaScoresbysund: %"America/Scoresbysund"
+    of Timezone.AmericaSitka: %"America/Sitka"
+    of Timezone.AmericaStJohns: %"America/St_Johns"
+    of Timezone.AmericaSwiftCurrent: %"America/Swift_Current"
+    of Timezone.AmericaTegucigalpa: %"America/Tegucigalpa"
+    of Timezone.AmericaThule: %"America/Thule"
+    of Timezone.AmericaThunderBay: %"America/Thunder_Bay"
+    of Timezone.AmericaTijuana: %"America/Tijuana"
+    of Timezone.AmericaToronto: %"America/Toronto"
+    of Timezone.AmericaVancouver: %"America/Vancouver"
+    of Timezone.AmericaWhitehorse: %"America/Whitehorse"
+    of Timezone.AmericaWinnipeg: %"America/Winnipeg"
+    of Timezone.AmericaYakutat: %"America/Yakutat"
+    of Timezone.AmericaYellowknife: %"America/Yellowknife"
+    of Timezone.AntarcticaCasey: %"Antarctica/Casey"
+    of Timezone.AntarcticaDavis: %"Antarctica/Davis"
+    of Timezone.AntarcticaDumontDUrville: %"Antarctica/DumontDUrville"
+    of Timezone.AntarcticaMacquarie: %"Antarctica/Macquarie"
+    of Timezone.AntarcticaMawson: %"Antarctica/Mawson"
+    of Timezone.AntarcticaPalmer: %"Antarctica/Palmer"
+    of Timezone.AntarcticaRothera: %"Antarctica/Rothera"
+    of Timezone.AntarcticaSyowa: %"Antarctica/Syowa"
+    of Timezone.AntarcticaTroll: %"Antarctica/Troll"
+    of Timezone.AntarcticaVostok: %"Antarctica/Vostok"
+    of Timezone.AsiaAlmaty: %"Asia/Almaty"
+    of Timezone.AsiaAmman: %"Asia/Amman"
+    of Timezone.AsiaAnadyr: %"Asia/Anadyr"
+    of Timezone.AsiaAqtau: %"Asia/Aqtau"
+    of Timezone.AsiaAqtobe: %"Asia/Aqtobe"
+    of Timezone.AsiaAshgabat: %"Asia/Ashgabat"
+    of Timezone.AsiaAtyrau: %"Asia/Atyrau"
+    of Timezone.AsiaBaghdad: %"Asia/Baghdad"
+    of Timezone.AsiaBaku: %"Asia/Baku"
+    of Timezone.AsiaBangkok: %"Asia/Bangkok"
+    of Timezone.AsiaBarnaul: %"Asia/Barnaul"
+    of Timezone.AsiaBeirut: %"Asia/Beirut"
+    of Timezone.AsiaBishkek: %"Asia/Bishkek"
+    of Timezone.AsiaBrunei: %"Asia/Brunei"
+    of Timezone.AsiaChita: %"Asia/Chita"
+    of Timezone.AsiaChoibalsan: %"Asia/Choibalsan"
+    of Timezone.AsiaColombo: %"Asia/Colombo"
+    of Timezone.AsiaDamascus: %"Asia/Damascus"
+    of Timezone.AsiaDhaka: %"Asia/Dhaka"
+    of Timezone.AsiaDili: %"Asia/Dili"
+    of Timezone.AsiaDubai: %"Asia/Dubai"
+    of Timezone.AsiaDushanbe: %"Asia/Dushanbe"
+    of Timezone.AsiaFamagusta: %"Asia/Famagusta"
+    of Timezone.AsiaGaza: %"Asia/Gaza"
+    of Timezone.AsiaHebron: %"Asia/Hebron"
+    of Timezone.AsiaHoChiMinh: %"Asia/Ho_Chi_Minh"
+    of Timezone.AsiaHongKong: %"Asia/Hong_Kong"
+    of Timezone.AsiaHovd: %"Asia/Hovd"
+    of Timezone.AsiaIrkutsk: %"Asia/Irkutsk"
+    of Timezone.AsiaJakarta: %"Asia/Jakarta"
+    of Timezone.AsiaJayapura: %"Asia/Jayapura"
+    of Timezone.AsiaJerusalem: %"Asia/Jerusalem"
+    of Timezone.AsiaKabul: %"Asia/Kabul"
+    of Timezone.AsiaKamchatka: %"Asia/Kamchatka"
+    of Timezone.AsiaKarachi: %"Asia/Karachi"
+    of Timezone.AsiaKathmandu: %"Asia/Kathmandu"
+    of Timezone.AsiaKhandyga: %"Asia/Khandyga"
+    of Timezone.AsiaKolkata: %"Asia/Kolkata"
+    of Timezone.AsiaKrasnoyarsk: %"Asia/Krasnoyarsk"
+    of Timezone.AsiaKualaLumpur: %"Asia/Kuala_Lumpur"
+    of Timezone.AsiaKuching: %"Asia/Kuching"
+    of Timezone.AsiaMacau: %"Asia/Macau"
+    of Timezone.AsiaMagadan: %"Asia/Magadan"
+    of Timezone.AsiaMakassar: %"Asia/Makassar"
+    of Timezone.AsiaManila: %"Asia/Manila"
+    of Timezone.AsiaNicosia: %"Asia/Nicosia"
+    of Timezone.AsiaNovokuznetsk: %"Asia/Novokuznetsk"
+    of Timezone.AsiaNovosibirsk: %"Asia/Novosibirsk"
+    of Timezone.AsiaOmsk: %"Asia/Omsk"
+    of Timezone.AsiaOral: %"Asia/Oral"
+    of Timezone.AsiaPontianak: %"Asia/Pontianak"
+    of Timezone.AsiaPyongyang: %"Asia/Pyongyang"
+    of Timezone.AsiaQatar: %"Asia/Qatar"
+    of Timezone.AsiaQostanay: %"Asia/Qostanay"
+    of Timezone.AsiaQyzylorda: %"Asia/Qyzylorda"
+    of Timezone.AsiaRiyadh: %"Asia/Riyadh"
+    of Timezone.AsiaSakhalin: %"Asia/Sakhalin"
+    of Timezone.AsiaSamarkand: %"Asia/Samarkand"
+    of Timezone.AsiaSeoul: %"Asia/Seoul"
+    of Timezone.AsiaShanghai: %"Asia/Shanghai"
+    of Timezone.AsiaSingapore: %"Asia/Singapore"
+    of Timezone.AsiaSrednekolymsk: %"Asia/Srednekolymsk"
+    of Timezone.AsiaTaipei: %"Asia/Taipei"
+    of Timezone.AsiaTashkent: %"Asia/Tashkent"
+    of Timezone.AsiaTbilisi: %"Asia/Tbilisi"
+    of Timezone.AsiaTehran: %"Asia/Tehran"
+    of Timezone.AsiaThimphu: %"Asia/Thimphu"
+    of Timezone.AsiaTokyo: %"Asia/Tokyo"
+    of Timezone.AsiaTomsk: %"Asia/Tomsk"
+    of Timezone.AsiaUlaanbaatar: %"Asia/Ulaanbaatar"
+    of Timezone.AsiaUrumqi: %"Asia/Urumqi"
+    of Timezone.AsiaUstNera: %"Asia/Ust-Nera"
+    of Timezone.AsiaVladivostok: %"Asia/Vladivostok"
+    of Timezone.AsiaYakutsk: %"Asia/Yakutsk"
+    of Timezone.AsiaYangon: %"Asia/Yangon"
+    of Timezone.AsiaYekaterinburg: %"Asia/Yekaterinburg"
+    of Timezone.AsiaYerevan: %"Asia/Yerevan"
+    of Timezone.AtlanticAzores: %"Atlantic/Azores"
+    of Timezone.AtlanticBermuda: %"Atlantic/Bermuda"
+    of Timezone.AtlanticCanary: %"Atlantic/Canary"
+    of Timezone.AtlanticCapeVerde: %"Atlantic/Cape_Verde"
+    of Timezone.AtlanticFaroe: %"Atlantic/Faroe"
+    of Timezone.AtlanticMadeira: %"Atlantic/Madeira"
+    of Timezone.AtlanticReykjavik: %"Atlantic/Reykjavik"
+    of Timezone.AtlanticSouthGeorgia: %"Atlantic/South_Georgia"
+    of Timezone.AtlanticStanley: %"Atlantic/Stanley"
+    of Timezone.AustraliaAdelaide: %"Australia/Adelaide"
+    of Timezone.AustraliaBrisbane: %"Australia/Brisbane"
+    of Timezone.AustraliaBrokenHill: %"Australia/Broken_Hill"
+    of Timezone.AustraliaCurrie: %"Australia/Currie"
+    of Timezone.AustraliaDarwin: %"Australia/Darwin"
+    of Timezone.AustraliaEucla: %"Australia/Eucla"
+    of Timezone.AustraliaHobart: %"Australia/Hobart"
+    of Timezone.AustraliaLindeman: %"Australia/Lindeman"
+    of Timezone.AustraliaLordHowe: %"Australia/Lord_Howe"
+    of Timezone.AustraliaMelbourne: %"Australia/Melbourne"
+    of Timezone.AustraliaPerth: %"Australia/Perth"
+    of Timezone.AustraliaSydney: %"Australia/Sydney"
+    of Timezone.CET: %"CET"
+    of Timezone.CST6CDT: %"CST6CDT"
+    of Timezone.EET: %"EET"
+    of Timezone.EST: %"EST"
+    of Timezone.EST5EDT: %"EST5EDT"
+    of Timezone.EtcGMT: %"Etc/GMT"
+    of Timezone.`EtcGMT+1`: %"Etc/GMT+1"
+    of Timezone.`EtcGMT+10`: %"Etc/GMT+10"
+    of Timezone.`EtcGMT+11`: %"Etc/GMT+11"
+    of Timezone.`EtcGMT+12`: %"Etc/GMT+12"
+    of Timezone.`EtcGMT+2`: %"Etc/GMT+2"
+    of Timezone.`EtcGMT+3`: %"Etc/GMT+3"
+    of Timezone.`EtcGMT+4`: %"Etc/GMT+4"
+    of Timezone.`EtcGMT+5`: %"Etc/GMT+5"
+    of Timezone.`EtcGMT+6`: %"Etc/GMT+6"
+    of Timezone.`EtcGMT+7`: %"Etc/GMT+7"
+    of Timezone.`EtcGMT+8`: %"Etc/GMT+8"
+    of Timezone.`EtcGMT+9`: %"Etc/GMT+9"
+    of Timezone.EtcGMT1: %"Etc/GMT-1"
+    of Timezone.EtcGMT10: %"Etc/GMT-10"
+    of Timezone.EtcGMT11: %"Etc/GMT-11"
+    of Timezone.EtcGMT12: %"Etc/GMT-12"
+    of Timezone.EtcGMT13: %"Etc/GMT-13"
+    of Timezone.EtcGMT14: %"Etc/GMT-14"
+    of Timezone.EtcGMT2: %"Etc/GMT-2"
+    of Timezone.EtcGMT3: %"Etc/GMT-3"
+    of Timezone.EtcGMT4: %"Etc/GMT-4"
+    of Timezone.EtcGMT5: %"Etc/GMT-5"
+    of Timezone.EtcGMT6: %"Etc/GMT-6"
+    of Timezone.EtcGMT7: %"Etc/GMT-7"
+    of Timezone.EtcGMT8: %"Etc/GMT-8"
+    of Timezone.EtcGMT9: %"Etc/GMT-9"
+    of Timezone.EtcUTC: %"Etc/UTC"
+    of Timezone.EuropeAmsterdam: %"Europe/Amsterdam"
+    of Timezone.EuropeAndorra: %"Europe/Andorra"
+    of Timezone.EuropeAstrakhan: %"Europe/Astrakhan"
+    of Timezone.EuropeAthens: %"Europe/Athens"
+    of Timezone.EuropeBelgrade: %"Europe/Belgrade"
+    of Timezone.EuropeBerlin: %"Europe/Berlin"
+    of Timezone.EuropeBrussels: %"Europe/Brussels"
+    of Timezone.EuropeBucharest: %"Europe/Bucharest"
+    of Timezone.EuropeBudapest: %"Europe/Budapest"
+    of Timezone.EuropeChisinau: %"Europe/Chisinau"
+    of Timezone.EuropeCopenhagen: %"Europe/Copenhagen"
+    of Timezone.EuropeDublin: %"Europe/Dublin"
+    of Timezone.EuropeGibraltar: %"Europe/Gibraltar"
+    of Timezone.EuropeHelsinki: %"Europe/Helsinki"
+    of Timezone.EuropeIstanbul: %"Europe/Istanbul"
+    of Timezone.EuropeKaliningrad: %"Europe/Kaliningrad"
+    of Timezone.EuropeKiev: %"Europe/Kiev"
+    of Timezone.EuropeKirov: %"Europe/Kirov"
+    of Timezone.EuropeLisbon: %"Europe/Lisbon"
+    of Timezone.EuropeLondon: %"Europe/London"
+    of Timezone.EuropeLuxembourg: %"Europe/Luxembourg"
+    of Timezone.EuropeMadrid: %"Europe/Madrid"
+    of Timezone.EuropeMalta: %"Europe/Malta"
+    of Timezone.EuropeMinsk: %"Europe/Minsk"
+    of Timezone.EuropeMonaco: %"Europe/Monaco"
+    of Timezone.EuropeMoscow: %"Europe/Moscow"
+    of Timezone.EuropeOslo: %"Europe/Oslo"
+    of Timezone.EuropeParis: %"Europe/Paris"
+    of Timezone.EuropePrague: %"Europe/Prague"
+    of Timezone.EuropeRiga: %"Europe/Riga"
+    of Timezone.EuropeRome: %"Europe/Rome"
+    of Timezone.EuropeSamara: %"Europe/Samara"
+    of Timezone.EuropeSaratov: %"Europe/Saratov"
+    of Timezone.EuropeSimferopol: %"Europe/Simferopol"
+    of Timezone.EuropeSofia: %"Europe/Sofia"
+    of Timezone.EuropeStockholm: %"Europe/Stockholm"
+    of Timezone.EuropeTallinn: %"Europe/Tallinn"
+    of Timezone.EuropeTirane: %"Europe/Tirane"
+    of Timezone.EuropeUlyanovsk: %"Europe/Ulyanovsk"
+    of Timezone.EuropeUzhgorod: %"Europe/Uzhgorod"
+    of Timezone.EuropeVienna: %"Europe/Vienna"
+    of Timezone.EuropeVilnius: %"Europe/Vilnius"
+    of Timezone.EuropeVolgograd: %"Europe/Volgograd"
+    of Timezone.EuropeWarsaw: %"Europe/Warsaw"
+    of Timezone.EuropeZaporozhye: %"Europe/Zaporozhye"
+    of Timezone.EuropeZurich: %"Europe/Zurich"
+    of Timezone.HST: %"HST"
+    of Timezone.IndianChagos: %"Indian/Chagos"
+    of Timezone.IndianChristmas: %"Indian/Christmas"
+    of Timezone.IndianCocos: %"Indian/Cocos"
+    of Timezone.IndianKerguelen: %"Indian/Kerguelen"
+    of Timezone.IndianMahe: %"Indian/Mahe"
+    of Timezone.IndianMaldives: %"Indian/Maldives"
+    of Timezone.IndianMauritius: %"Indian/Mauritius"
+    of Timezone.IndianReunion: %"Indian/Reunion"
+    of Timezone.MET: %"MET"
+    of Timezone.MST: %"MST"
+    of Timezone.MST7MDT: %"MST7MDT"
+    of Timezone.PST8PDT: %"PST8PDT"
+    of Timezone.PacificApia: %"Pacific/Apia"
+    of Timezone.PacificAuckland: %"Pacific/Auckland"
+    of Timezone.PacificBougainville: %"Pacific/Bougainville"
+    of Timezone.PacificChatham: %"Pacific/Chatham"
+    of Timezone.PacificChuuk: %"Pacific/Chuuk"
+    of Timezone.PacificEaster: %"Pacific/Easter"
+    of Timezone.PacificEfate: %"Pacific/Efate"
+    of Timezone.PacificEnderbury: %"Pacific/Enderbury"
+    of Timezone.PacificFakaofo: %"Pacific/Fakaofo"
+    of Timezone.PacificFiji: %"Pacific/Fiji"
+    of Timezone.PacificFunafuti: %"Pacific/Funafuti"
+    of Timezone.PacificGalapagos: %"Pacific/Galapagos"
+    of Timezone.PacificGambier: %"Pacific/Gambier"
+    of Timezone.PacificGuadalcanal: %"Pacific/Guadalcanal"
+    of Timezone.PacificGuam: %"Pacific/Guam"
+    of Timezone.PacificHonolulu: %"Pacific/Honolulu"
+    of Timezone.PacificKiritimati: %"Pacific/Kiritimati"
+    of Timezone.PacificKosrae: %"Pacific/Kosrae"
+    of Timezone.PacificKwajalein: %"Pacific/Kwajalein"
+    of Timezone.PacificMajuro: %"Pacific/Majuro"
+    of Timezone.PacificMarquesas: %"Pacific/Marquesas"
+    of Timezone.PacificNauru: %"Pacific/Nauru"
+    of Timezone.PacificNiue: %"Pacific/Niue"
+    of Timezone.PacificNorfolk: %"Pacific/Norfolk"
+    of Timezone.PacificNoumea: %"Pacific/Noumea"
+    of Timezone.PacificPagoPago: %"Pacific/Pago_Pago"
+    of Timezone.PacificPalau: %"Pacific/Palau"
+    of Timezone.PacificPitcairn: %"Pacific/Pitcairn"
+    of Timezone.PacificPohnpei: %"Pacific/Pohnpei"
+    of Timezone.PacificPortMoresby: %"Pacific/Port_Moresby"
+    of Timezone.PacificRarotonga: %"Pacific/Rarotonga"
+    of Timezone.PacificTahiti: %"Pacific/Tahiti"
+    of Timezone.PacificTarawa: %"Pacific/Tarawa"
+    of Timezone.PacificTongatapu: %"Pacific/Tongatapu"
+    of Timezone.PacificWake: %"Pacific/Wake"
+    of Timezone.PacificWallis: %"Pacific/Wallis"
+    of Timezone.WET: %"WET"
 func `$`*(v: Timezone): string =
   result = case v:
-    of Timezone.AfricaAbidjan: "Africa/Abidjan"
-    of Timezone.AfricaAccra: "Africa/Accra"
-    of Timezone.AfricaAlgiers: "Africa/Algiers"
-    of Timezone.AfricaBissau: "Africa/Bissau"
-    of Timezone.AfricaCairo: "Africa/Cairo"
-    of Timezone.AfricaCasablanca: "Africa/Casablanca"
-    of Timezone.AfricaCeuta: "Africa/Ceuta"
-    of Timezone.AfricaElAaiun: "Africa/El_Aaiun"
-    of Timezone.AfricaJohannesburg: "Africa/Johannesburg"
-    of Timezone.AfricaJuba: "Africa/Juba"
-    of Timezone.AfricaKhartoum: "Africa/Khartoum"
-    of Timezone.AfricaLagos: "Africa/Lagos"
-    of Timezone.AfricaMaputo: "Africa/Maputo"
-    of Timezone.AfricaMonrovia: "Africa/Monrovia"
-    of Timezone.AfricaNairobi: "Africa/Nairobi"
-    of Timezone.AfricaNdjamena: "Africa/Ndjamena"
-    of Timezone.AfricaSaoTome: "Africa/Sao_Tome"
-    of Timezone.AfricaTripoli: "Africa/Tripoli"
-    of Timezone.AfricaTunis: "Africa/Tunis"
-    of Timezone.AfricaWindhoek: "Africa/Windhoek"
-    of Timezone.AmericaAdak: "America/Adak"
-    of Timezone.AmericaAnchorage: "America/Anchorage"
-    of Timezone.AmericaAraguaina: "America/Araguaina"
-    of Timezone.AmericaArgentinaBuenosAires: "America/Argentina/Buenos_Aires"
-    of Timezone.AmericaArgentinaCatamarca: "America/Argentina/Catamarca"
-    of Timezone.AmericaArgentinaCordoba: "America/Argentina/Cordoba"
-    of Timezone.AmericaArgentinaJujuy: "America/Argentina/Jujuy"
-    of Timezone.AmericaArgentinaLaRioja: "America/Argentina/La_Rioja"
-    of Timezone.AmericaArgentinaMendoza: "America/Argentina/Mendoza"
-    of Timezone.AmericaArgentinaRioGallegos: "America/Argentina/Rio_Gallegos"
-    of Timezone.AmericaArgentinaSalta: "America/Argentina/Salta"
-    of Timezone.AmericaArgentinaSanJuan: "America/Argentina/San_Juan"
-    of Timezone.AmericaArgentinaSanLuis: "America/Argentina/San_Luis"
-    of Timezone.AmericaArgentinaTucuman: "America/Argentina/Tucuman"
-    of Timezone.AmericaArgentinaUshuaia: "America/Argentina/Ushuaia"
-    of Timezone.AmericaAsuncion: "America/Asuncion"
-    of Timezone.AmericaAtikokan: "America/Atikokan"
-    of Timezone.AmericaBahia: "America/Bahia"
-    of Timezone.AmericaBahiaBanderas: "America/Bahia_Banderas"
-    of Timezone.AmericaBarbados: "America/Barbados"
-    of Timezone.AmericaBelem: "America/Belem"
-    of Timezone.AmericaBelize: "America/Belize"
-    of Timezone.AmericaBlancSablon: "America/Blanc-Sablon"
-    of Timezone.AmericaBoaVista: "America/Boa_Vista"
-    of Timezone.AmericaBogota: "America/Bogota"
-    of Timezone.AmericaBoise: "America/Boise"
-    of Timezone.AmericaCambridgeBay: "America/Cambridge_Bay"
-    of Timezone.AmericaCampoGrande: "America/Campo_Grande"
-    of Timezone.AmericaCancun: "America/Cancun"
-    of Timezone.AmericaCaracas: "America/Caracas"
-    of Timezone.AmericaCayenne: "America/Cayenne"
-    of Timezone.AmericaChicago: "America/Chicago"
-    of Timezone.AmericaChihuahua: "America/Chihuahua"
-    of Timezone.AmericaCostaRica: "America/Costa_Rica"
-    of Timezone.AmericaCreston: "America/Creston"
-    of Timezone.AmericaCuiaba: "America/Cuiaba"
-    of Timezone.AmericaCuracao: "America/Curacao"
-    of Timezone.AmericaDanmarkshavn: "America/Danmarkshavn"
-    of Timezone.AmericaDawson: "America/Dawson"
-    of Timezone.AmericaDawsonCreek: "America/Dawson_Creek"
-    of Timezone.AmericaDenver: "America/Denver"
-    of Timezone.AmericaDetroit: "America/Detroit"
-    of Timezone.AmericaEdmonton: "America/Edmonton"
-    of Timezone.AmericaEirunepe: "America/Eirunepe"
-    of Timezone.AmericaElSalvador: "America/El_Salvador"
-    of Timezone.AmericaFortNelson: "America/Fort_Nelson"
-    of Timezone.AmericaFortaleza: "America/Fortaleza"
-    of Timezone.AmericaGlaceBay: "America/Glace_Bay"
-    of Timezone.AmericaGooseBay: "America/Goose_Bay"
-    of Timezone.AmericaGrandTurk: "America/Grand_Turk"
-    of Timezone.AmericaGuatemala: "America/Guatemala"
-    of Timezone.AmericaGuayaquil: "America/Guayaquil"
-    of Timezone.AmericaGuyana: "America/Guyana"
-    of Timezone.AmericaHalifax: "America/Halifax"
-    of Timezone.AmericaHavana: "America/Havana"
-    of Timezone.AmericaHermosillo: "America/Hermosillo"
-    of Timezone.AmericaIndianaIndianapolis: "America/Indiana/Indianapolis"
-    of Timezone.AmericaIndianaKnox: "America/Indiana/Knox"
-    of Timezone.AmericaIndianaMarengo: "America/Indiana/Marengo"
-    of Timezone.AmericaIndianaPetersburg: "America/Indiana/Petersburg"
-    of Timezone.AmericaIndianaTellCity: "America/Indiana/Tell_City"
-    of Timezone.AmericaIndianaVevay: "America/Indiana/Vevay"
-    of Timezone.AmericaIndianaVincennes: "America/Indiana/Vincennes"
-    of Timezone.AmericaIndianaWinamac: "America/Indiana/Winamac"
-    of Timezone.AmericaInuvik: "America/Inuvik"
-    of Timezone.AmericaIqaluit: "America/Iqaluit"
-    of Timezone.AmericaJamaica: "America/Jamaica"
-    of Timezone.AmericaJuneau: "America/Juneau"
-    of Timezone.AmericaKentuckyLouisville: "America/Kentucky/Louisville"
-    of Timezone.AmericaKentuckyMonticello: "America/Kentucky/Monticello"
-    of Timezone.AmericaLaPaz: "America/La_Paz"
-    of Timezone.AmericaLima: "America/Lima"
-    of Timezone.AmericaLosAngeles: "America/Los_Angeles"
-    of Timezone.AmericaMaceio: "America/Maceio"
-    of Timezone.AmericaManagua: "America/Managua"
-    of Timezone.AmericaManaus: "America/Manaus"
-    of Timezone.AmericaMartinique: "America/Martinique"
-    of Timezone.AmericaMatamoros: "America/Matamoros"
-    of Timezone.AmericaMazatlan: "America/Mazatlan"
-    of Timezone.AmericaMenominee: "America/Menominee"
-    of Timezone.AmericaMerida: "America/Merida"
-    of Timezone.AmericaMetlakatla: "America/Metlakatla"
-    of Timezone.AmericaMexicoCity: "America/Mexico_City"
-    of Timezone.AmericaMiquelon: "America/Miquelon"
-    of Timezone.AmericaMoncton: "America/Moncton"
-    of Timezone.AmericaMonterrey: "America/Monterrey"
-    of Timezone.AmericaMontevideo: "America/Montevideo"
-    of Timezone.AmericaNassau: "America/Nassau"
-    of Timezone.AmericaNewYork: "America/New_York"
-    of Timezone.AmericaNipigon: "America/Nipigon"
-    of Timezone.AmericaNome: "America/Nome"
-    of Timezone.AmericaNoronha: "America/Noronha"
-    of Timezone.AmericaNorthDakotaBeulah: "America/North_Dakota/Beulah"
-    of Timezone.AmericaNorthDakotaCenter: "America/North_Dakota/Center"
-    of Timezone.AmericaNorthDakotaNewSalem: "America/North_Dakota/New_Salem"
-    of Timezone.AmericaNuuk: "America/Nuuk"
-    of Timezone.AmericaOjinaga: "America/Ojinaga"
-    of Timezone.AmericaPanama: "America/Panama"
-    of Timezone.AmericaPangnirtung: "America/Pangnirtung"
-    of Timezone.AmericaParamaribo: "America/Paramaribo"
-    of Timezone.AmericaPhoenix: "America/Phoenix"
-    of Timezone.AmericaPortAuPrince: "America/Port-au-Prince"
-    of Timezone.AmericaPortOfSpain: "America/Port_of_Spain"
-    of Timezone.AmericaPortoVelho: "America/Porto_Velho"
-    of Timezone.AmericaPuertoRico: "America/Puerto_Rico"
-    of Timezone.AmericaPuntaArenas: "America/Punta_Arenas"
-    of Timezone.AmericaRainyRiver: "America/Rainy_River"
-    of Timezone.AmericaRankinInlet: "America/Rankin_Inlet"
-    of Timezone.AmericaRecife: "America/Recife"
-    of Timezone.AmericaRegina: "America/Regina"
-    of Timezone.AmericaResolute: "America/Resolute"
-    of Timezone.AmericaRioBranco: "America/Rio_Branco"
-    of Timezone.AmericaSantarem: "America/Santarem"
-    of Timezone.AmericaSantiago: "America/Santiago"
-    of Timezone.AmericaSantoDomingo: "America/Santo_Domingo"
-    of Timezone.AmericaSaoPaulo: "America/Sao_Paulo"
-    of Timezone.AmericaScoresbysund: "America/Scoresbysund"
-    of Timezone.AmericaSitka: "America/Sitka"
-    of Timezone.AmericaStJohns: "America/St_Johns"
-    of Timezone.AmericaSwiftCurrent: "America/Swift_Current"
-    of Timezone.AmericaTegucigalpa: "America/Tegucigalpa"
-    of Timezone.AmericaThule: "America/Thule"
-    of Timezone.AmericaThunderBay: "America/Thunder_Bay"
-    of Timezone.AmericaTijuana: "America/Tijuana"
-    of Timezone.AmericaToronto: "America/Toronto"
-    of Timezone.AmericaVancouver: "America/Vancouver"
-    of Timezone.AmericaWhitehorse: "America/Whitehorse"
-    of Timezone.AmericaWinnipeg: "America/Winnipeg"
-    of Timezone.AmericaYakutat: "America/Yakutat"
-    of Timezone.AmericaYellowknife: "America/Yellowknife"
-    of Timezone.AntarcticaCasey: "Antarctica/Casey"
-    of Timezone.AntarcticaDavis: "Antarctica/Davis"
-    of Timezone.AntarcticaDumontDUrville: "Antarctica/DumontDUrville"
-    of Timezone.AntarcticaMacquarie: "Antarctica/Macquarie"
-    of Timezone.AntarcticaMawson: "Antarctica/Mawson"
-    of Timezone.AntarcticaPalmer: "Antarctica/Palmer"
-    of Timezone.AntarcticaRothera: "Antarctica/Rothera"
-    of Timezone.AntarcticaSyowa: "Antarctica/Syowa"
-    of Timezone.AntarcticaTroll: "Antarctica/Troll"
-    of Timezone.AntarcticaVostok: "Antarctica/Vostok"
-    of Timezone.AsiaAlmaty: "Asia/Almaty"
-    of Timezone.AsiaAmman: "Asia/Amman"
-    of Timezone.AsiaAnadyr: "Asia/Anadyr"
-    of Timezone.AsiaAqtau: "Asia/Aqtau"
-    of Timezone.AsiaAqtobe: "Asia/Aqtobe"
-    of Timezone.AsiaAshgabat: "Asia/Ashgabat"
-    of Timezone.AsiaAtyrau: "Asia/Atyrau"
-    of Timezone.AsiaBaghdad: "Asia/Baghdad"
-    of Timezone.AsiaBaku: "Asia/Baku"
-    of Timezone.AsiaBangkok: "Asia/Bangkok"
-    of Timezone.AsiaBarnaul: "Asia/Barnaul"
-    of Timezone.AsiaBeirut: "Asia/Beirut"
-    of Timezone.AsiaBishkek: "Asia/Bishkek"
-    of Timezone.AsiaBrunei: "Asia/Brunei"
-    of Timezone.AsiaChita: "Asia/Chita"
-    of Timezone.AsiaChoibalsan: "Asia/Choibalsan"
-    of Timezone.AsiaColombo: "Asia/Colombo"
-    of Timezone.AsiaDamascus: "Asia/Damascus"
-    of Timezone.AsiaDhaka: "Asia/Dhaka"
-    of Timezone.AsiaDili: "Asia/Dili"
-    of Timezone.AsiaDubai: "Asia/Dubai"
-    of Timezone.AsiaDushanbe: "Asia/Dushanbe"
-    of Timezone.AsiaFamagusta: "Asia/Famagusta"
-    of Timezone.AsiaGaza: "Asia/Gaza"
-    of Timezone.AsiaHebron: "Asia/Hebron"
-    of Timezone.AsiaHoChiMinh: "Asia/Ho_Chi_Minh"
-    of Timezone.AsiaHongKong: "Asia/Hong_Kong"
-    of Timezone.AsiaHovd: "Asia/Hovd"
-    of Timezone.AsiaIrkutsk: "Asia/Irkutsk"
-    of Timezone.AsiaJakarta: "Asia/Jakarta"
-    of Timezone.AsiaJayapura: "Asia/Jayapura"
-    of Timezone.AsiaJerusalem: "Asia/Jerusalem"
-    of Timezone.AsiaKabul: "Asia/Kabul"
-    of Timezone.AsiaKamchatka: "Asia/Kamchatka"
-    of Timezone.AsiaKarachi: "Asia/Karachi"
-    of Timezone.AsiaKathmandu: "Asia/Kathmandu"
-    of Timezone.AsiaKhandyga: "Asia/Khandyga"
-    of Timezone.AsiaKolkata: "Asia/Kolkata"
-    of Timezone.AsiaKrasnoyarsk: "Asia/Krasnoyarsk"
-    of Timezone.AsiaKualaLumpur: "Asia/Kuala_Lumpur"
-    of Timezone.AsiaKuching: "Asia/Kuching"
-    of Timezone.AsiaMacau: "Asia/Macau"
-    of Timezone.AsiaMagadan: "Asia/Magadan"
-    of Timezone.AsiaMakassar: "Asia/Makassar"
-    of Timezone.AsiaManila: "Asia/Manila"
-    of Timezone.AsiaNicosia: "Asia/Nicosia"
-    of Timezone.AsiaNovokuznetsk: "Asia/Novokuznetsk"
-    of Timezone.AsiaNovosibirsk: "Asia/Novosibirsk"
-    of Timezone.AsiaOmsk: "Asia/Omsk"
-    of Timezone.AsiaOral: "Asia/Oral"
-    of Timezone.AsiaPontianak: "Asia/Pontianak"
-    of Timezone.AsiaPyongyang: "Asia/Pyongyang"
-    of Timezone.AsiaQatar: "Asia/Qatar"
-    of Timezone.AsiaQostanay: "Asia/Qostanay"
-    of Timezone.AsiaQyzylorda: "Asia/Qyzylorda"
-    of Timezone.AsiaRiyadh: "Asia/Riyadh"
-    of Timezone.AsiaSakhalin: "Asia/Sakhalin"
-    of Timezone.AsiaSamarkand: "Asia/Samarkand"
-    of Timezone.AsiaSeoul: "Asia/Seoul"
-    of Timezone.AsiaShanghai: "Asia/Shanghai"
-    of Timezone.AsiaSingapore: "Asia/Singapore"
-    of Timezone.AsiaSrednekolymsk: "Asia/Srednekolymsk"
-    of Timezone.AsiaTaipei: "Asia/Taipei"
-    of Timezone.AsiaTashkent: "Asia/Tashkent"
-    of Timezone.AsiaTbilisi: "Asia/Tbilisi"
-    of Timezone.AsiaTehran: "Asia/Tehran"
-    of Timezone.AsiaThimphu: "Asia/Thimphu"
-    of Timezone.AsiaTokyo: "Asia/Tokyo"
-    of Timezone.AsiaTomsk: "Asia/Tomsk"
-    of Timezone.AsiaUlaanbaatar: "Asia/Ulaanbaatar"
-    of Timezone.AsiaUrumqi: "Asia/Urumqi"
-    of Timezone.AsiaUstNera: "Asia/Ust-Nera"
-    of Timezone.AsiaVladivostok: "Asia/Vladivostok"
-    of Timezone.AsiaYakutsk: "Asia/Yakutsk"
-    of Timezone.AsiaYangon: "Asia/Yangon"
-    of Timezone.AsiaYekaterinburg: "Asia/Yekaterinburg"
-    of Timezone.AsiaYerevan: "Asia/Yerevan"
-    of Timezone.AtlanticAzores: "Atlantic/Azores"
-    of Timezone.AtlanticBermuda: "Atlantic/Bermuda"
-    of Timezone.AtlanticCanary: "Atlantic/Canary"
-    of Timezone.AtlanticCapeVerde: "Atlantic/Cape_Verde"
-    of Timezone.AtlanticFaroe: "Atlantic/Faroe"
-    of Timezone.AtlanticMadeira: "Atlantic/Madeira"
-    of Timezone.AtlanticReykjavik: "Atlantic/Reykjavik"
-    of Timezone.AtlanticSouthGeorgia: "Atlantic/South_Georgia"
-    of Timezone.AtlanticStanley: "Atlantic/Stanley"
-    of Timezone.AustraliaAdelaide: "Australia/Adelaide"
-    of Timezone.AustraliaBrisbane: "Australia/Brisbane"
-    of Timezone.AustraliaBrokenHill: "Australia/Broken_Hill"
-    of Timezone.AustraliaCurrie: "Australia/Currie"
-    of Timezone.AustraliaDarwin: "Australia/Darwin"
-    of Timezone.AustraliaEucla: "Australia/Eucla"
-    of Timezone.AustraliaHobart: "Australia/Hobart"
-    of Timezone.AustraliaLindeman: "Australia/Lindeman"
-    of Timezone.AustraliaLordHowe: "Australia/Lord_Howe"
-    of Timezone.AustraliaMelbourne: "Australia/Melbourne"
-    of Timezone.AustraliaPerth: "Australia/Perth"
-    of Timezone.AustraliaSydney: "Australia/Sydney"
-    of Timezone.CET: "CET"
-    of Timezone.CST6CDT: "CST6CDT"
-    of Timezone.EET: "EET"
-    of Timezone.EST: "EST"
-    of Timezone.EST5EDT: "EST5EDT"
-    of Timezone.EtcGMT: "Etc/GMT"
-    of Timezone.EtcGMT+1: "Etc/GMT+1"
-    of Timezone.EtcGMT+10: "Etc/GMT+10"
-    of Timezone.EtcGMT+11: "Etc/GMT+11"
-    of Timezone.EtcGMT+12: "Etc/GMT+12"
-    of Timezone.EtcGMT+2: "Etc/GMT+2"
-    of Timezone.EtcGMT+3: "Etc/GMT+3"
-    of Timezone.EtcGMT+4: "Etc/GMT+4"
-    of Timezone.EtcGMT+5: "Etc/GMT+5"
-    of Timezone.EtcGMT+6: "Etc/GMT+6"
-    of Timezone.EtcGMT+7: "Etc/GMT+7"
-    of Timezone.EtcGMT+8: "Etc/GMT+8"
-    of Timezone.EtcGMT+9: "Etc/GMT+9"
-    of Timezone.EtcGMT1: "Etc/GMT-1"
-    of Timezone.EtcGMT10: "Etc/GMT-10"
-    of Timezone.EtcGMT11: "Etc/GMT-11"
-    of Timezone.EtcGMT12: "Etc/GMT-12"
-    of Timezone.EtcGMT13: "Etc/GMT-13"
-    of Timezone.EtcGMT14: "Etc/GMT-14"
-    of Timezone.EtcGMT2: "Etc/GMT-2"
-    of Timezone.EtcGMT3: "Etc/GMT-3"
-    of Timezone.EtcGMT4: "Etc/GMT-4"
-    of Timezone.EtcGMT5: "Etc/GMT-5"
-    of Timezone.EtcGMT6: "Etc/GMT-6"
-    of Timezone.EtcGMT7: "Etc/GMT-7"
-    of Timezone.EtcGMT8: "Etc/GMT-8"
-    of Timezone.EtcGMT9: "Etc/GMT-9"
-    of Timezone.EtcUTC: "Etc/UTC"
-    of Timezone.EuropeAmsterdam: "Europe/Amsterdam"
-    of Timezone.EuropeAndorra: "Europe/Andorra"
-    of Timezone.EuropeAstrakhan: "Europe/Astrakhan"
-    of Timezone.EuropeAthens: "Europe/Athens"
-    of Timezone.EuropeBelgrade: "Europe/Belgrade"
-    of Timezone.EuropeBerlin: "Europe/Berlin"
-    of Timezone.EuropeBrussels: "Europe/Brussels"
-    of Timezone.EuropeBucharest: "Europe/Bucharest"
-    of Timezone.EuropeBudapest: "Europe/Budapest"
-    of Timezone.EuropeChisinau: "Europe/Chisinau"
-    of Timezone.EuropeCopenhagen: "Europe/Copenhagen"
-    of Timezone.EuropeDublin: "Europe/Dublin"
-    of Timezone.EuropeGibraltar: "Europe/Gibraltar"
-    of Timezone.EuropeHelsinki: "Europe/Helsinki"
-    of Timezone.EuropeIstanbul: "Europe/Istanbul"
-    of Timezone.EuropeKaliningrad: "Europe/Kaliningrad"
-    of Timezone.EuropeKiev: "Europe/Kiev"
-    of Timezone.EuropeKirov: "Europe/Kirov"
-    of Timezone.EuropeLisbon: "Europe/Lisbon"
-    of Timezone.EuropeLondon: "Europe/London"
-    of Timezone.EuropeLuxembourg: "Europe/Luxembourg"
-    of Timezone.EuropeMadrid: "Europe/Madrid"
-    of Timezone.EuropeMalta: "Europe/Malta"
-    of Timezone.EuropeMinsk: "Europe/Minsk"
-    of Timezone.EuropeMonaco: "Europe/Monaco"
-    of Timezone.EuropeMoscow: "Europe/Moscow"
-    of Timezone.EuropeOslo: "Europe/Oslo"
-    of Timezone.EuropeParis: "Europe/Paris"
-    of Timezone.EuropePrague: "Europe/Prague"
-    of Timezone.EuropeRiga: "Europe/Riga"
-    of Timezone.EuropeRome: "Europe/Rome"
-    of Timezone.EuropeSamara: "Europe/Samara"
-    of Timezone.EuropeSaratov: "Europe/Saratov"
-    of Timezone.EuropeSimferopol: "Europe/Simferopol"
-    of Timezone.EuropeSofia: "Europe/Sofia"
-    of Timezone.EuropeStockholm: "Europe/Stockholm"
-    of Timezone.EuropeTallinn: "Europe/Tallinn"
-    of Timezone.EuropeTirane: "Europe/Tirane"
-    of Timezone.EuropeUlyanovsk: "Europe/Ulyanovsk"
-    of Timezone.EuropeUzhgorod: "Europe/Uzhgorod"
-    of Timezone.EuropeVienna: "Europe/Vienna"
-    of Timezone.EuropeVilnius: "Europe/Vilnius"
-    of Timezone.EuropeVolgograd: "Europe/Volgograd"
-    of Timezone.EuropeWarsaw: "Europe/Warsaw"
-    of Timezone.EuropeZaporozhye: "Europe/Zaporozhye"
-    of Timezone.EuropeZurich: "Europe/Zurich"
-    of Timezone.HST: "HST"
-    of Timezone.IndianChagos: "Indian/Chagos"
-    of Timezone.IndianChristmas: "Indian/Christmas"
-    of Timezone.IndianCocos: "Indian/Cocos"
-    of Timezone.IndianKerguelen: "Indian/Kerguelen"
-    of Timezone.IndianMahe: "Indian/Mahe"
-    of Timezone.IndianMaldives: "Indian/Maldives"
-    of Timezone.IndianMauritius: "Indian/Mauritius"
-    of Timezone.IndianReunion: "Indian/Reunion"
-    of Timezone.MET: "MET"
-    of Timezone.MST: "MST"
-    of Timezone.MST7MDT: "MST7MDT"
-    of Timezone.PST8PDT: "PST8PDT"
-    of Timezone.PacificApia: "Pacific/Apia"
-    of Timezone.PacificAuckland: "Pacific/Auckland"
-    of Timezone.PacificBougainville: "Pacific/Bougainville"
-    of Timezone.PacificChatham: "Pacific/Chatham"
-    of Timezone.PacificChuuk: "Pacific/Chuuk"
-    of Timezone.PacificEaster: "Pacific/Easter"
-    of Timezone.PacificEfate: "Pacific/Efate"
-    of Timezone.PacificEnderbury: "Pacific/Enderbury"
-    of Timezone.PacificFakaofo: "Pacific/Fakaofo"
-    of Timezone.PacificFiji: "Pacific/Fiji"
-    of Timezone.PacificFunafuti: "Pacific/Funafuti"
-    of Timezone.PacificGalapagos: "Pacific/Galapagos"
-    of Timezone.PacificGambier: "Pacific/Gambier"
-    of Timezone.PacificGuadalcanal: "Pacific/Guadalcanal"
-    of Timezone.PacificGuam: "Pacific/Guam"
-    of Timezone.PacificHonolulu: "Pacific/Honolulu"
-    of Timezone.PacificKiritimati: "Pacific/Kiritimati"
-    of Timezone.PacificKosrae: "Pacific/Kosrae"
-    of Timezone.PacificKwajalein: "Pacific/Kwajalein"
-    of Timezone.PacificMajuro: "Pacific/Majuro"
-    of Timezone.PacificMarquesas: "Pacific/Marquesas"
-    of Timezone.PacificNauru: "Pacific/Nauru"
-    of Timezone.PacificNiue: "Pacific/Niue"
-    of Timezone.PacificNorfolk: "Pacific/Norfolk"
-    of Timezone.PacificNoumea: "Pacific/Noumea"
-    of Timezone.PacificPagoPago: "Pacific/Pago_Pago"
-    of Timezone.PacificPalau: "Pacific/Palau"
-    of Timezone.PacificPitcairn: "Pacific/Pitcairn"
-    of Timezone.PacificPohnpei: "Pacific/Pohnpei"
-    of Timezone.PacificPortMoresby: "Pacific/Port_Moresby"
-    of Timezone.PacificRarotonga: "Pacific/Rarotonga"
-    of Timezone.PacificTahiti: "Pacific/Tahiti"
-    of Timezone.PacificTarawa: "Pacific/Tarawa"
-    of Timezone.PacificTongatapu: "Pacific/Tongatapu"
-    of Timezone.PacificWake: "Pacific/Wake"
-    of Timezone.PacificWallis: "Pacific/Wallis"
-    of Timezone.WET: "WET"
+    of Timezone.AfricaAbidjan: $("Africa/Abidjan")
+    of Timezone.AfricaAccra: $("Africa/Accra")
+    of Timezone.AfricaAlgiers: $("Africa/Algiers")
+    of Timezone.AfricaBissau: $("Africa/Bissau")
+    of Timezone.AfricaCairo: $("Africa/Cairo")
+    of Timezone.AfricaCasablanca: $("Africa/Casablanca")
+    of Timezone.AfricaCeuta: $("Africa/Ceuta")
+    of Timezone.AfricaElAaiun: $("Africa/El_Aaiun")
+    of Timezone.AfricaJohannesburg: $("Africa/Johannesburg")
+    of Timezone.AfricaJuba: $("Africa/Juba")
+    of Timezone.AfricaKhartoum: $("Africa/Khartoum")
+    of Timezone.AfricaLagos: $("Africa/Lagos")
+    of Timezone.AfricaMaputo: $("Africa/Maputo")
+    of Timezone.AfricaMonrovia: $("Africa/Monrovia")
+    of Timezone.AfricaNairobi: $("Africa/Nairobi")
+    of Timezone.AfricaNdjamena: $("Africa/Ndjamena")
+    of Timezone.AfricaSaoTome: $("Africa/Sao_Tome")
+    of Timezone.AfricaTripoli: $("Africa/Tripoli")
+    of Timezone.AfricaTunis: $("Africa/Tunis")
+    of Timezone.AfricaWindhoek: $("Africa/Windhoek")
+    of Timezone.AmericaAdak: $("America/Adak")
+    of Timezone.AmericaAnchorage: $("America/Anchorage")
+    of Timezone.AmericaAraguaina: $("America/Araguaina")
+    of Timezone.AmericaArgentinaBuenosAires: $("America/Argentina/Buenos_Aires")
+    of Timezone.AmericaArgentinaCatamarca: $("America/Argentina/Catamarca")
+    of Timezone.AmericaArgentinaCordoba: $("America/Argentina/Cordoba")
+    of Timezone.AmericaArgentinaJujuy: $("America/Argentina/Jujuy")
+    of Timezone.AmericaArgentinaLaRioja: $("America/Argentina/La_Rioja")
+    of Timezone.AmericaArgentinaMendoza: $("America/Argentina/Mendoza")
+    of Timezone.AmericaArgentinaRioGallegos: $("America/Argentina/Rio_Gallegos")
+    of Timezone.AmericaArgentinaSalta: $("America/Argentina/Salta")
+    of Timezone.AmericaArgentinaSanJuan: $("America/Argentina/San_Juan")
+    of Timezone.AmericaArgentinaSanLuis: $("America/Argentina/San_Luis")
+    of Timezone.AmericaArgentinaTucuman: $("America/Argentina/Tucuman")
+    of Timezone.AmericaArgentinaUshuaia: $("America/Argentina/Ushuaia")
+    of Timezone.AmericaAsuncion: $("America/Asuncion")
+    of Timezone.AmericaAtikokan: $("America/Atikokan")
+    of Timezone.AmericaBahia: $("America/Bahia")
+    of Timezone.AmericaBahiaBanderas: $("America/Bahia_Banderas")
+    of Timezone.AmericaBarbados: $("America/Barbados")
+    of Timezone.AmericaBelem: $("America/Belem")
+    of Timezone.AmericaBelize: $("America/Belize")
+    of Timezone.AmericaBlancSablon: $("America/Blanc-Sablon")
+    of Timezone.AmericaBoaVista: $("America/Boa_Vista")
+    of Timezone.AmericaBogota: $("America/Bogota")
+    of Timezone.AmericaBoise: $("America/Boise")
+    of Timezone.AmericaCambridgeBay: $("America/Cambridge_Bay")
+    of Timezone.AmericaCampoGrande: $("America/Campo_Grande")
+    of Timezone.AmericaCancun: $("America/Cancun")
+    of Timezone.AmericaCaracas: $("America/Caracas")
+    of Timezone.AmericaCayenne: $("America/Cayenne")
+    of Timezone.AmericaChicago: $("America/Chicago")
+    of Timezone.AmericaChihuahua: $("America/Chihuahua")
+    of Timezone.AmericaCostaRica: $("America/Costa_Rica")
+    of Timezone.AmericaCreston: $("America/Creston")
+    of Timezone.AmericaCuiaba: $("America/Cuiaba")
+    of Timezone.AmericaCuracao: $("America/Curacao")
+    of Timezone.AmericaDanmarkshavn: $("America/Danmarkshavn")
+    of Timezone.AmericaDawson: $("America/Dawson")
+    of Timezone.AmericaDawsonCreek: $("America/Dawson_Creek")
+    of Timezone.AmericaDenver: $("America/Denver")
+    of Timezone.AmericaDetroit: $("America/Detroit")
+    of Timezone.AmericaEdmonton: $("America/Edmonton")
+    of Timezone.AmericaEirunepe: $("America/Eirunepe")
+    of Timezone.AmericaElSalvador: $("America/El_Salvador")
+    of Timezone.AmericaFortNelson: $("America/Fort_Nelson")
+    of Timezone.AmericaFortaleza: $("America/Fortaleza")
+    of Timezone.AmericaGlaceBay: $("America/Glace_Bay")
+    of Timezone.AmericaGooseBay: $("America/Goose_Bay")
+    of Timezone.AmericaGrandTurk: $("America/Grand_Turk")
+    of Timezone.AmericaGuatemala: $("America/Guatemala")
+    of Timezone.AmericaGuayaquil: $("America/Guayaquil")
+    of Timezone.AmericaGuyana: $("America/Guyana")
+    of Timezone.AmericaHalifax: $("America/Halifax")
+    of Timezone.AmericaHavana: $("America/Havana")
+    of Timezone.AmericaHermosillo: $("America/Hermosillo")
+    of Timezone.AmericaIndianaIndianapolis: $("America/Indiana/Indianapolis")
+    of Timezone.AmericaIndianaKnox: $("America/Indiana/Knox")
+    of Timezone.AmericaIndianaMarengo: $("America/Indiana/Marengo")
+    of Timezone.AmericaIndianaPetersburg: $("America/Indiana/Petersburg")
+    of Timezone.AmericaIndianaTellCity: $("America/Indiana/Tell_City")
+    of Timezone.AmericaIndianaVevay: $("America/Indiana/Vevay")
+    of Timezone.AmericaIndianaVincennes: $("America/Indiana/Vincennes")
+    of Timezone.AmericaIndianaWinamac: $("America/Indiana/Winamac")
+    of Timezone.AmericaInuvik: $("America/Inuvik")
+    of Timezone.AmericaIqaluit: $("America/Iqaluit")
+    of Timezone.AmericaJamaica: $("America/Jamaica")
+    of Timezone.AmericaJuneau: $("America/Juneau")
+    of Timezone.AmericaKentuckyLouisville: $("America/Kentucky/Louisville")
+    of Timezone.AmericaKentuckyMonticello: $("America/Kentucky/Monticello")
+    of Timezone.AmericaLaPaz: $("America/La_Paz")
+    of Timezone.AmericaLima: $("America/Lima")
+    of Timezone.AmericaLosAngeles: $("America/Los_Angeles")
+    of Timezone.AmericaMaceio: $("America/Maceio")
+    of Timezone.AmericaManagua: $("America/Managua")
+    of Timezone.AmericaManaus: $("America/Manaus")
+    of Timezone.AmericaMartinique: $("America/Martinique")
+    of Timezone.AmericaMatamoros: $("America/Matamoros")
+    of Timezone.AmericaMazatlan: $("America/Mazatlan")
+    of Timezone.AmericaMenominee: $("America/Menominee")
+    of Timezone.AmericaMerida: $("America/Merida")
+    of Timezone.AmericaMetlakatla: $("America/Metlakatla")
+    of Timezone.AmericaMexicoCity: $("America/Mexico_City")
+    of Timezone.AmericaMiquelon: $("America/Miquelon")
+    of Timezone.AmericaMoncton: $("America/Moncton")
+    of Timezone.AmericaMonterrey: $("America/Monterrey")
+    of Timezone.AmericaMontevideo: $("America/Montevideo")
+    of Timezone.AmericaNassau: $("America/Nassau")
+    of Timezone.AmericaNewYork: $("America/New_York")
+    of Timezone.AmericaNipigon: $("America/Nipigon")
+    of Timezone.AmericaNome: $("America/Nome")
+    of Timezone.AmericaNoronha: $("America/Noronha")
+    of Timezone.AmericaNorthDakotaBeulah: $("America/North_Dakota/Beulah")
+    of Timezone.AmericaNorthDakotaCenter: $("America/North_Dakota/Center")
+    of Timezone.AmericaNorthDakotaNewSalem: $("America/North_Dakota/New_Salem")
+    of Timezone.AmericaNuuk: $("America/Nuuk")
+    of Timezone.AmericaOjinaga: $("America/Ojinaga")
+    of Timezone.AmericaPanama: $("America/Panama")
+    of Timezone.AmericaPangnirtung: $("America/Pangnirtung")
+    of Timezone.AmericaParamaribo: $("America/Paramaribo")
+    of Timezone.AmericaPhoenix: $("America/Phoenix")
+    of Timezone.AmericaPortAuPrince: $("America/Port-au-Prince")
+    of Timezone.AmericaPortOfSpain: $("America/Port_of_Spain")
+    of Timezone.AmericaPortoVelho: $("America/Porto_Velho")
+    of Timezone.AmericaPuertoRico: $("America/Puerto_Rico")
+    of Timezone.AmericaPuntaArenas: $("America/Punta_Arenas")
+    of Timezone.AmericaRainyRiver: $("America/Rainy_River")
+    of Timezone.AmericaRankinInlet: $("America/Rankin_Inlet")
+    of Timezone.AmericaRecife: $("America/Recife")
+    of Timezone.AmericaRegina: $("America/Regina")
+    of Timezone.AmericaResolute: $("America/Resolute")
+    of Timezone.AmericaRioBranco: $("America/Rio_Branco")
+    of Timezone.AmericaSantarem: $("America/Santarem")
+    of Timezone.AmericaSantiago: $("America/Santiago")
+    of Timezone.AmericaSantoDomingo: $("America/Santo_Domingo")
+    of Timezone.AmericaSaoPaulo: $("America/Sao_Paulo")
+    of Timezone.AmericaScoresbysund: $("America/Scoresbysund")
+    of Timezone.AmericaSitka: $("America/Sitka")
+    of Timezone.AmericaStJohns: $("America/St_Johns")
+    of Timezone.AmericaSwiftCurrent: $("America/Swift_Current")
+    of Timezone.AmericaTegucigalpa: $("America/Tegucigalpa")
+    of Timezone.AmericaThule: $("America/Thule")
+    of Timezone.AmericaThunderBay: $("America/Thunder_Bay")
+    of Timezone.AmericaTijuana: $("America/Tijuana")
+    of Timezone.AmericaToronto: $("America/Toronto")
+    of Timezone.AmericaVancouver: $("America/Vancouver")
+    of Timezone.AmericaWhitehorse: $("America/Whitehorse")
+    of Timezone.AmericaWinnipeg: $("America/Winnipeg")
+    of Timezone.AmericaYakutat: $("America/Yakutat")
+    of Timezone.AmericaYellowknife: $("America/Yellowknife")
+    of Timezone.AntarcticaCasey: $("Antarctica/Casey")
+    of Timezone.AntarcticaDavis: $("Antarctica/Davis")
+    of Timezone.AntarcticaDumontDUrville: $("Antarctica/DumontDUrville")
+    of Timezone.AntarcticaMacquarie: $("Antarctica/Macquarie")
+    of Timezone.AntarcticaMawson: $("Antarctica/Mawson")
+    of Timezone.AntarcticaPalmer: $("Antarctica/Palmer")
+    of Timezone.AntarcticaRothera: $("Antarctica/Rothera")
+    of Timezone.AntarcticaSyowa: $("Antarctica/Syowa")
+    of Timezone.AntarcticaTroll: $("Antarctica/Troll")
+    of Timezone.AntarcticaVostok: $("Antarctica/Vostok")
+    of Timezone.AsiaAlmaty: $("Asia/Almaty")
+    of Timezone.AsiaAmman: $("Asia/Amman")
+    of Timezone.AsiaAnadyr: $("Asia/Anadyr")
+    of Timezone.AsiaAqtau: $("Asia/Aqtau")
+    of Timezone.AsiaAqtobe: $("Asia/Aqtobe")
+    of Timezone.AsiaAshgabat: $("Asia/Ashgabat")
+    of Timezone.AsiaAtyrau: $("Asia/Atyrau")
+    of Timezone.AsiaBaghdad: $("Asia/Baghdad")
+    of Timezone.AsiaBaku: $("Asia/Baku")
+    of Timezone.AsiaBangkok: $("Asia/Bangkok")
+    of Timezone.AsiaBarnaul: $("Asia/Barnaul")
+    of Timezone.AsiaBeirut: $("Asia/Beirut")
+    of Timezone.AsiaBishkek: $("Asia/Bishkek")
+    of Timezone.AsiaBrunei: $("Asia/Brunei")
+    of Timezone.AsiaChita: $("Asia/Chita")
+    of Timezone.AsiaChoibalsan: $("Asia/Choibalsan")
+    of Timezone.AsiaColombo: $("Asia/Colombo")
+    of Timezone.AsiaDamascus: $("Asia/Damascus")
+    of Timezone.AsiaDhaka: $("Asia/Dhaka")
+    of Timezone.AsiaDili: $("Asia/Dili")
+    of Timezone.AsiaDubai: $("Asia/Dubai")
+    of Timezone.AsiaDushanbe: $("Asia/Dushanbe")
+    of Timezone.AsiaFamagusta: $("Asia/Famagusta")
+    of Timezone.AsiaGaza: $("Asia/Gaza")
+    of Timezone.AsiaHebron: $("Asia/Hebron")
+    of Timezone.AsiaHoChiMinh: $("Asia/Ho_Chi_Minh")
+    of Timezone.AsiaHongKong: $("Asia/Hong_Kong")
+    of Timezone.AsiaHovd: $("Asia/Hovd")
+    of Timezone.AsiaIrkutsk: $("Asia/Irkutsk")
+    of Timezone.AsiaJakarta: $("Asia/Jakarta")
+    of Timezone.AsiaJayapura: $("Asia/Jayapura")
+    of Timezone.AsiaJerusalem: $("Asia/Jerusalem")
+    of Timezone.AsiaKabul: $("Asia/Kabul")
+    of Timezone.AsiaKamchatka: $("Asia/Kamchatka")
+    of Timezone.AsiaKarachi: $("Asia/Karachi")
+    of Timezone.AsiaKathmandu: $("Asia/Kathmandu")
+    of Timezone.AsiaKhandyga: $("Asia/Khandyga")
+    of Timezone.AsiaKolkata: $("Asia/Kolkata")
+    of Timezone.AsiaKrasnoyarsk: $("Asia/Krasnoyarsk")
+    of Timezone.AsiaKualaLumpur: $("Asia/Kuala_Lumpur")
+    of Timezone.AsiaKuching: $("Asia/Kuching")
+    of Timezone.AsiaMacau: $("Asia/Macau")
+    of Timezone.AsiaMagadan: $("Asia/Magadan")
+    of Timezone.AsiaMakassar: $("Asia/Makassar")
+    of Timezone.AsiaManila: $("Asia/Manila")
+    of Timezone.AsiaNicosia: $("Asia/Nicosia")
+    of Timezone.AsiaNovokuznetsk: $("Asia/Novokuznetsk")
+    of Timezone.AsiaNovosibirsk: $("Asia/Novosibirsk")
+    of Timezone.AsiaOmsk: $("Asia/Omsk")
+    of Timezone.AsiaOral: $("Asia/Oral")
+    of Timezone.AsiaPontianak: $("Asia/Pontianak")
+    of Timezone.AsiaPyongyang: $("Asia/Pyongyang")
+    of Timezone.AsiaQatar: $("Asia/Qatar")
+    of Timezone.AsiaQostanay: $("Asia/Qostanay")
+    of Timezone.AsiaQyzylorda: $("Asia/Qyzylorda")
+    of Timezone.AsiaRiyadh: $("Asia/Riyadh")
+    of Timezone.AsiaSakhalin: $("Asia/Sakhalin")
+    of Timezone.AsiaSamarkand: $("Asia/Samarkand")
+    of Timezone.AsiaSeoul: $("Asia/Seoul")
+    of Timezone.AsiaShanghai: $("Asia/Shanghai")
+    of Timezone.AsiaSingapore: $("Asia/Singapore")
+    of Timezone.AsiaSrednekolymsk: $("Asia/Srednekolymsk")
+    of Timezone.AsiaTaipei: $("Asia/Taipei")
+    of Timezone.AsiaTashkent: $("Asia/Tashkent")
+    of Timezone.AsiaTbilisi: $("Asia/Tbilisi")
+    of Timezone.AsiaTehran: $("Asia/Tehran")
+    of Timezone.AsiaThimphu: $("Asia/Thimphu")
+    of Timezone.AsiaTokyo: $("Asia/Tokyo")
+    of Timezone.AsiaTomsk: $("Asia/Tomsk")
+    of Timezone.AsiaUlaanbaatar: $("Asia/Ulaanbaatar")
+    of Timezone.AsiaUrumqi: $("Asia/Urumqi")
+    of Timezone.AsiaUstNera: $("Asia/Ust-Nera")
+    of Timezone.AsiaVladivostok: $("Asia/Vladivostok")
+    of Timezone.AsiaYakutsk: $("Asia/Yakutsk")
+    of Timezone.AsiaYangon: $("Asia/Yangon")
+    of Timezone.AsiaYekaterinburg: $("Asia/Yekaterinburg")
+    of Timezone.AsiaYerevan: $("Asia/Yerevan")
+    of Timezone.AtlanticAzores: $("Atlantic/Azores")
+    of Timezone.AtlanticBermuda: $("Atlantic/Bermuda")
+    of Timezone.AtlanticCanary: $("Atlantic/Canary")
+    of Timezone.AtlanticCapeVerde: $("Atlantic/Cape_Verde")
+    of Timezone.AtlanticFaroe: $("Atlantic/Faroe")
+    of Timezone.AtlanticMadeira: $("Atlantic/Madeira")
+    of Timezone.AtlanticReykjavik: $("Atlantic/Reykjavik")
+    of Timezone.AtlanticSouthGeorgia: $("Atlantic/South_Georgia")
+    of Timezone.AtlanticStanley: $("Atlantic/Stanley")
+    of Timezone.AustraliaAdelaide: $("Australia/Adelaide")
+    of Timezone.AustraliaBrisbane: $("Australia/Brisbane")
+    of Timezone.AustraliaBrokenHill: $("Australia/Broken_Hill")
+    of Timezone.AustraliaCurrie: $("Australia/Currie")
+    of Timezone.AustraliaDarwin: $("Australia/Darwin")
+    of Timezone.AustraliaEucla: $("Australia/Eucla")
+    of Timezone.AustraliaHobart: $("Australia/Hobart")
+    of Timezone.AustraliaLindeman: $("Australia/Lindeman")
+    of Timezone.AustraliaLordHowe: $("Australia/Lord_Howe")
+    of Timezone.AustraliaMelbourne: $("Australia/Melbourne")
+    of Timezone.AustraliaPerth: $("Australia/Perth")
+    of Timezone.AustraliaSydney: $("Australia/Sydney")
+    of Timezone.CET: $("CET")
+    of Timezone.CST6CDT: $("CST6CDT")
+    of Timezone.EET: $("EET")
+    of Timezone.EST: $("EST")
+    of Timezone.EST5EDT: $("EST5EDT")
+    of Timezone.EtcGMT: $("Etc/GMT")
+    of Timezone.`EtcGMT+1`: $("Etc/GMT+1")
+    of Timezone.`EtcGMT+10`: $("Etc/GMT+10")
+    of Timezone.`EtcGMT+11`: $("Etc/GMT+11")
+    of Timezone.`EtcGMT+12`: $("Etc/GMT+12")
+    of Timezone.`EtcGMT+2`: $("Etc/GMT+2")
+    of Timezone.`EtcGMT+3`: $("Etc/GMT+3")
+    of Timezone.`EtcGMT+4`: $("Etc/GMT+4")
+    of Timezone.`EtcGMT+5`: $("Etc/GMT+5")
+    of Timezone.`EtcGMT+6`: $("Etc/GMT+6")
+    of Timezone.`EtcGMT+7`: $("Etc/GMT+7")
+    of Timezone.`EtcGMT+8`: $("Etc/GMT+8")
+    of Timezone.`EtcGMT+9`: $("Etc/GMT+9")
+    of Timezone.EtcGMT1: $("Etc/GMT-1")
+    of Timezone.EtcGMT10: $("Etc/GMT-10")
+    of Timezone.EtcGMT11: $("Etc/GMT-11")
+    of Timezone.EtcGMT12: $("Etc/GMT-12")
+    of Timezone.EtcGMT13: $("Etc/GMT-13")
+    of Timezone.EtcGMT14: $("Etc/GMT-14")
+    of Timezone.EtcGMT2: $("Etc/GMT-2")
+    of Timezone.EtcGMT3: $("Etc/GMT-3")
+    of Timezone.EtcGMT4: $("Etc/GMT-4")
+    of Timezone.EtcGMT5: $("Etc/GMT-5")
+    of Timezone.EtcGMT6: $("Etc/GMT-6")
+    of Timezone.EtcGMT7: $("Etc/GMT-7")
+    of Timezone.EtcGMT8: $("Etc/GMT-8")
+    of Timezone.EtcGMT9: $("Etc/GMT-9")
+    of Timezone.EtcUTC: $("Etc/UTC")
+    of Timezone.EuropeAmsterdam: $("Europe/Amsterdam")
+    of Timezone.EuropeAndorra: $("Europe/Andorra")
+    of Timezone.EuropeAstrakhan: $("Europe/Astrakhan")
+    of Timezone.EuropeAthens: $("Europe/Athens")
+    of Timezone.EuropeBelgrade: $("Europe/Belgrade")
+    of Timezone.EuropeBerlin: $("Europe/Berlin")
+    of Timezone.EuropeBrussels: $("Europe/Brussels")
+    of Timezone.EuropeBucharest: $("Europe/Bucharest")
+    of Timezone.EuropeBudapest: $("Europe/Budapest")
+    of Timezone.EuropeChisinau: $("Europe/Chisinau")
+    of Timezone.EuropeCopenhagen: $("Europe/Copenhagen")
+    of Timezone.EuropeDublin: $("Europe/Dublin")
+    of Timezone.EuropeGibraltar: $("Europe/Gibraltar")
+    of Timezone.EuropeHelsinki: $("Europe/Helsinki")
+    of Timezone.EuropeIstanbul: $("Europe/Istanbul")
+    of Timezone.EuropeKaliningrad: $("Europe/Kaliningrad")
+    of Timezone.EuropeKiev: $("Europe/Kiev")
+    of Timezone.EuropeKirov: $("Europe/Kirov")
+    of Timezone.EuropeLisbon: $("Europe/Lisbon")
+    of Timezone.EuropeLondon: $("Europe/London")
+    of Timezone.EuropeLuxembourg: $("Europe/Luxembourg")
+    of Timezone.EuropeMadrid: $("Europe/Madrid")
+    of Timezone.EuropeMalta: $("Europe/Malta")
+    of Timezone.EuropeMinsk: $("Europe/Minsk")
+    of Timezone.EuropeMonaco: $("Europe/Monaco")
+    of Timezone.EuropeMoscow: $("Europe/Moscow")
+    of Timezone.EuropeOslo: $("Europe/Oslo")
+    of Timezone.EuropeParis: $("Europe/Paris")
+    of Timezone.EuropePrague: $("Europe/Prague")
+    of Timezone.EuropeRiga: $("Europe/Riga")
+    of Timezone.EuropeRome: $("Europe/Rome")
+    of Timezone.EuropeSamara: $("Europe/Samara")
+    of Timezone.EuropeSaratov: $("Europe/Saratov")
+    of Timezone.EuropeSimferopol: $("Europe/Simferopol")
+    of Timezone.EuropeSofia: $("Europe/Sofia")
+    of Timezone.EuropeStockholm: $("Europe/Stockholm")
+    of Timezone.EuropeTallinn: $("Europe/Tallinn")
+    of Timezone.EuropeTirane: $("Europe/Tirane")
+    of Timezone.EuropeUlyanovsk: $("Europe/Ulyanovsk")
+    of Timezone.EuropeUzhgorod: $("Europe/Uzhgorod")
+    of Timezone.EuropeVienna: $("Europe/Vienna")
+    of Timezone.EuropeVilnius: $("Europe/Vilnius")
+    of Timezone.EuropeVolgograd: $("Europe/Volgograd")
+    of Timezone.EuropeWarsaw: $("Europe/Warsaw")
+    of Timezone.EuropeZaporozhye: $("Europe/Zaporozhye")
+    of Timezone.EuropeZurich: $("Europe/Zurich")
+    of Timezone.HST: $("HST")
+    of Timezone.IndianChagos: $("Indian/Chagos")
+    of Timezone.IndianChristmas: $("Indian/Christmas")
+    of Timezone.IndianCocos: $("Indian/Cocos")
+    of Timezone.IndianKerguelen: $("Indian/Kerguelen")
+    of Timezone.IndianMahe: $("Indian/Mahe")
+    of Timezone.IndianMaldives: $("Indian/Maldives")
+    of Timezone.IndianMauritius: $("Indian/Mauritius")
+    of Timezone.IndianReunion: $("Indian/Reunion")
+    of Timezone.MET: $("MET")
+    of Timezone.MST: $("MST")
+    of Timezone.MST7MDT: $("MST7MDT")
+    of Timezone.PST8PDT: $("PST8PDT")
+    of Timezone.PacificApia: $("Pacific/Apia")
+    of Timezone.PacificAuckland: $("Pacific/Auckland")
+    of Timezone.PacificBougainville: $("Pacific/Bougainville")
+    of Timezone.PacificChatham: $("Pacific/Chatham")
+    of Timezone.PacificChuuk: $("Pacific/Chuuk")
+    of Timezone.PacificEaster: $("Pacific/Easter")
+    of Timezone.PacificEfate: $("Pacific/Efate")
+    of Timezone.PacificEnderbury: $("Pacific/Enderbury")
+    of Timezone.PacificFakaofo: $("Pacific/Fakaofo")
+    of Timezone.PacificFiji: $("Pacific/Fiji")
+    of Timezone.PacificFunafuti: $("Pacific/Funafuti")
+    of Timezone.PacificGalapagos: $("Pacific/Galapagos")
+    of Timezone.PacificGambier: $("Pacific/Gambier")
+    of Timezone.PacificGuadalcanal: $("Pacific/Guadalcanal")
+    of Timezone.PacificGuam: $("Pacific/Guam")
+    of Timezone.PacificHonolulu: $("Pacific/Honolulu")
+    of Timezone.PacificKiritimati: $("Pacific/Kiritimati")
+    of Timezone.PacificKosrae: $("Pacific/Kosrae")
+    of Timezone.PacificKwajalein: $("Pacific/Kwajalein")
+    of Timezone.PacificMajuro: $("Pacific/Majuro")
+    of Timezone.PacificMarquesas: $("Pacific/Marquesas")
+    of Timezone.PacificNauru: $("Pacific/Nauru")
+    of Timezone.PacificNiue: $("Pacific/Niue")
+    of Timezone.PacificNorfolk: $("Pacific/Norfolk")
+    of Timezone.PacificNoumea: $("Pacific/Noumea")
+    of Timezone.PacificPagoPago: $("Pacific/Pago_Pago")
+    of Timezone.PacificPalau: $("Pacific/Palau")
+    of Timezone.PacificPitcairn: $("Pacific/Pitcairn")
+    of Timezone.PacificPohnpei: $("Pacific/Pohnpei")
+    of Timezone.PacificPortMoresby: $("Pacific/Port_Moresby")
+    of Timezone.PacificRarotonga: $("Pacific/Rarotonga")
+    of Timezone.PacificTahiti: $("Pacific/Tahiti")
+    of Timezone.PacificTarawa: $("Pacific/Tarawa")
+    of Timezone.PacificTongatapu: $("Pacific/Tongatapu")
+    of Timezone.PacificWake: $("Pacific/Wake")
+    of Timezone.PacificWallis: $("Pacific/Wallis")
+    of Timezone.WET: $("WET")
+
+proc to*(node: JsonNode, T: typedesc[Timezone]): Timezone =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Timezone, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("Africa/Abidjan"):
+    return Timezone.AfricaAbidjan
+  of $("Africa/Accra"):
+    return Timezone.AfricaAccra
+  of $("Africa/Algiers"):
+    return Timezone.AfricaAlgiers
+  of $("Africa/Bissau"):
+    return Timezone.AfricaBissau
+  of $("Africa/Cairo"):
+    return Timezone.AfricaCairo
+  of $("Africa/Casablanca"):
+    return Timezone.AfricaCasablanca
+  of $("Africa/Ceuta"):
+    return Timezone.AfricaCeuta
+  of $("Africa/El_Aaiun"):
+    return Timezone.AfricaElAaiun
+  of $("Africa/Johannesburg"):
+    return Timezone.AfricaJohannesburg
+  of $("Africa/Juba"):
+    return Timezone.AfricaJuba
+  of $("Africa/Khartoum"):
+    return Timezone.AfricaKhartoum
+  of $("Africa/Lagos"):
+    return Timezone.AfricaLagos
+  of $("Africa/Maputo"):
+    return Timezone.AfricaMaputo
+  of $("Africa/Monrovia"):
+    return Timezone.AfricaMonrovia
+  of $("Africa/Nairobi"):
+    return Timezone.AfricaNairobi
+  of $("Africa/Ndjamena"):
+    return Timezone.AfricaNdjamena
+  of $("Africa/Sao_Tome"):
+    return Timezone.AfricaSaoTome
+  of $("Africa/Tripoli"):
+    return Timezone.AfricaTripoli
+  of $("Africa/Tunis"):
+    return Timezone.AfricaTunis
+  of $("Africa/Windhoek"):
+    return Timezone.AfricaWindhoek
+  of $("America/Adak"):
+    return Timezone.AmericaAdak
+  of $("America/Anchorage"):
+    return Timezone.AmericaAnchorage
+  of $("America/Araguaina"):
+    return Timezone.AmericaAraguaina
+  of $("America/Argentina/Buenos_Aires"):
+    return Timezone.AmericaArgentinaBuenosAires
+  of $("America/Argentina/Catamarca"):
+    return Timezone.AmericaArgentinaCatamarca
+  of $("America/Argentina/Cordoba"):
+    return Timezone.AmericaArgentinaCordoba
+  of $("America/Argentina/Jujuy"):
+    return Timezone.AmericaArgentinaJujuy
+  of $("America/Argentina/La_Rioja"):
+    return Timezone.AmericaArgentinaLaRioja
+  of $("America/Argentina/Mendoza"):
+    return Timezone.AmericaArgentinaMendoza
+  of $("America/Argentina/Rio_Gallegos"):
+    return Timezone.AmericaArgentinaRioGallegos
+  of $("America/Argentina/Salta"):
+    return Timezone.AmericaArgentinaSalta
+  of $("America/Argentina/San_Juan"):
+    return Timezone.AmericaArgentinaSanJuan
+  of $("America/Argentina/San_Luis"):
+    return Timezone.AmericaArgentinaSanLuis
+  of $("America/Argentina/Tucuman"):
+    return Timezone.AmericaArgentinaTucuman
+  of $("America/Argentina/Ushuaia"):
+    return Timezone.AmericaArgentinaUshuaia
+  of $("America/Asuncion"):
+    return Timezone.AmericaAsuncion
+  of $("America/Atikokan"):
+    return Timezone.AmericaAtikokan
+  of $("America/Bahia"):
+    return Timezone.AmericaBahia
+  of $("America/Bahia_Banderas"):
+    return Timezone.AmericaBahiaBanderas
+  of $("America/Barbados"):
+    return Timezone.AmericaBarbados
+  of $("America/Belem"):
+    return Timezone.AmericaBelem
+  of $("America/Belize"):
+    return Timezone.AmericaBelize
+  of $("America/Blanc-Sablon"):
+    return Timezone.AmericaBlancSablon
+  of $("America/Boa_Vista"):
+    return Timezone.AmericaBoaVista
+  of $("America/Bogota"):
+    return Timezone.AmericaBogota
+  of $("America/Boise"):
+    return Timezone.AmericaBoise
+  of $("America/Cambridge_Bay"):
+    return Timezone.AmericaCambridgeBay
+  of $("America/Campo_Grande"):
+    return Timezone.AmericaCampoGrande
+  of $("America/Cancun"):
+    return Timezone.AmericaCancun
+  of $("America/Caracas"):
+    return Timezone.AmericaCaracas
+  of $("America/Cayenne"):
+    return Timezone.AmericaCayenne
+  of $("America/Chicago"):
+    return Timezone.AmericaChicago
+  of $("America/Chihuahua"):
+    return Timezone.AmericaChihuahua
+  of $("America/Costa_Rica"):
+    return Timezone.AmericaCostaRica
+  of $("America/Creston"):
+    return Timezone.AmericaCreston
+  of $("America/Cuiaba"):
+    return Timezone.AmericaCuiaba
+  of $("America/Curacao"):
+    return Timezone.AmericaCuracao
+  of $("America/Danmarkshavn"):
+    return Timezone.AmericaDanmarkshavn
+  of $("America/Dawson"):
+    return Timezone.AmericaDawson
+  of $("America/Dawson_Creek"):
+    return Timezone.AmericaDawsonCreek
+  of $("America/Denver"):
+    return Timezone.AmericaDenver
+  of $("America/Detroit"):
+    return Timezone.AmericaDetroit
+  of $("America/Edmonton"):
+    return Timezone.AmericaEdmonton
+  of $("America/Eirunepe"):
+    return Timezone.AmericaEirunepe
+  of $("America/El_Salvador"):
+    return Timezone.AmericaElSalvador
+  of $("America/Fort_Nelson"):
+    return Timezone.AmericaFortNelson
+  of $("America/Fortaleza"):
+    return Timezone.AmericaFortaleza
+  of $("America/Glace_Bay"):
+    return Timezone.AmericaGlaceBay
+  of $("America/Goose_Bay"):
+    return Timezone.AmericaGooseBay
+  of $("America/Grand_Turk"):
+    return Timezone.AmericaGrandTurk
+  of $("America/Guatemala"):
+    return Timezone.AmericaGuatemala
+  of $("America/Guayaquil"):
+    return Timezone.AmericaGuayaquil
+  of $("America/Guyana"):
+    return Timezone.AmericaGuyana
+  of $("America/Halifax"):
+    return Timezone.AmericaHalifax
+  of $("America/Havana"):
+    return Timezone.AmericaHavana
+  of $("America/Hermosillo"):
+    return Timezone.AmericaHermosillo
+  of $("America/Indiana/Indianapolis"):
+    return Timezone.AmericaIndianaIndianapolis
+  of $("America/Indiana/Knox"):
+    return Timezone.AmericaIndianaKnox
+  of $("America/Indiana/Marengo"):
+    return Timezone.AmericaIndianaMarengo
+  of $("America/Indiana/Petersburg"):
+    return Timezone.AmericaIndianaPetersburg
+  of $("America/Indiana/Tell_City"):
+    return Timezone.AmericaIndianaTellCity
+  of $("America/Indiana/Vevay"):
+    return Timezone.AmericaIndianaVevay
+  of $("America/Indiana/Vincennes"):
+    return Timezone.AmericaIndianaVincennes
+  of $("America/Indiana/Winamac"):
+    return Timezone.AmericaIndianaWinamac
+  of $("America/Inuvik"):
+    return Timezone.AmericaInuvik
+  of $("America/Iqaluit"):
+    return Timezone.AmericaIqaluit
+  of $("America/Jamaica"):
+    return Timezone.AmericaJamaica
+  of $("America/Juneau"):
+    return Timezone.AmericaJuneau
+  of $("America/Kentucky/Louisville"):
+    return Timezone.AmericaKentuckyLouisville
+  of $("America/Kentucky/Monticello"):
+    return Timezone.AmericaKentuckyMonticello
+  of $("America/La_Paz"):
+    return Timezone.AmericaLaPaz
+  of $("America/Lima"):
+    return Timezone.AmericaLima
+  of $("America/Los_Angeles"):
+    return Timezone.AmericaLosAngeles
+  of $("America/Maceio"):
+    return Timezone.AmericaMaceio
+  of $("America/Managua"):
+    return Timezone.AmericaManagua
+  of $("America/Manaus"):
+    return Timezone.AmericaManaus
+  of $("America/Martinique"):
+    return Timezone.AmericaMartinique
+  of $("America/Matamoros"):
+    return Timezone.AmericaMatamoros
+  of $("America/Mazatlan"):
+    return Timezone.AmericaMazatlan
+  of $("America/Menominee"):
+    return Timezone.AmericaMenominee
+  of $("America/Merida"):
+    return Timezone.AmericaMerida
+  of $("America/Metlakatla"):
+    return Timezone.AmericaMetlakatla
+  of $("America/Mexico_City"):
+    return Timezone.AmericaMexicoCity
+  of $("America/Miquelon"):
+    return Timezone.AmericaMiquelon
+  of $("America/Moncton"):
+    return Timezone.AmericaMoncton
+  of $("America/Monterrey"):
+    return Timezone.AmericaMonterrey
+  of $("America/Montevideo"):
+    return Timezone.AmericaMontevideo
+  of $("America/Nassau"):
+    return Timezone.AmericaNassau
+  of $("America/New_York"):
+    return Timezone.AmericaNewYork
+  of $("America/Nipigon"):
+    return Timezone.AmericaNipigon
+  of $("America/Nome"):
+    return Timezone.AmericaNome
+  of $("America/Noronha"):
+    return Timezone.AmericaNoronha
+  of $("America/North_Dakota/Beulah"):
+    return Timezone.AmericaNorthDakotaBeulah
+  of $("America/North_Dakota/Center"):
+    return Timezone.AmericaNorthDakotaCenter
+  of $("America/North_Dakota/New_Salem"):
+    return Timezone.AmericaNorthDakotaNewSalem
+  of $("America/Nuuk"):
+    return Timezone.AmericaNuuk
+  of $("America/Ojinaga"):
+    return Timezone.AmericaOjinaga
+  of $("America/Panama"):
+    return Timezone.AmericaPanama
+  of $("America/Pangnirtung"):
+    return Timezone.AmericaPangnirtung
+  of $("America/Paramaribo"):
+    return Timezone.AmericaParamaribo
+  of $("America/Phoenix"):
+    return Timezone.AmericaPhoenix
+  of $("America/Port-au-Prince"):
+    return Timezone.AmericaPortAuPrince
+  of $("America/Port_of_Spain"):
+    return Timezone.AmericaPortOfSpain
+  of $("America/Porto_Velho"):
+    return Timezone.AmericaPortoVelho
+  of $("America/Puerto_Rico"):
+    return Timezone.AmericaPuertoRico
+  of $("America/Punta_Arenas"):
+    return Timezone.AmericaPuntaArenas
+  of $("America/Rainy_River"):
+    return Timezone.AmericaRainyRiver
+  of $("America/Rankin_Inlet"):
+    return Timezone.AmericaRankinInlet
+  of $("America/Recife"):
+    return Timezone.AmericaRecife
+  of $("America/Regina"):
+    return Timezone.AmericaRegina
+  of $("America/Resolute"):
+    return Timezone.AmericaResolute
+  of $("America/Rio_Branco"):
+    return Timezone.AmericaRioBranco
+  of $("America/Santarem"):
+    return Timezone.AmericaSantarem
+  of $("America/Santiago"):
+    return Timezone.AmericaSantiago
+  of $("America/Santo_Domingo"):
+    return Timezone.AmericaSantoDomingo
+  of $("America/Sao_Paulo"):
+    return Timezone.AmericaSaoPaulo
+  of $("America/Scoresbysund"):
+    return Timezone.AmericaScoresbysund
+  of $("America/Sitka"):
+    return Timezone.AmericaSitka
+  of $("America/St_Johns"):
+    return Timezone.AmericaStJohns
+  of $("America/Swift_Current"):
+    return Timezone.AmericaSwiftCurrent
+  of $("America/Tegucigalpa"):
+    return Timezone.AmericaTegucigalpa
+  of $("America/Thule"):
+    return Timezone.AmericaThule
+  of $("America/Thunder_Bay"):
+    return Timezone.AmericaThunderBay
+  of $("America/Tijuana"):
+    return Timezone.AmericaTijuana
+  of $("America/Toronto"):
+    return Timezone.AmericaToronto
+  of $("America/Vancouver"):
+    return Timezone.AmericaVancouver
+  of $("America/Whitehorse"):
+    return Timezone.AmericaWhitehorse
+  of $("America/Winnipeg"):
+    return Timezone.AmericaWinnipeg
+  of $("America/Yakutat"):
+    return Timezone.AmericaYakutat
+  of $("America/Yellowknife"):
+    return Timezone.AmericaYellowknife
+  of $("Antarctica/Casey"):
+    return Timezone.AntarcticaCasey
+  of $("Antarctica/Davis"):
+    return Timezone.AntarcticaDavis
+  of $("Antarctica/DumontDUrville"):
+    return Timezone.AntarcticaDumontDUrville
+  of $("Antarctica/Macquarie"):
+    return Timezone.AntarcticaMacquarie
+  of $("Antarctica/Mawson"):
+    return Timezone.AntarcticaMawson
+  of $("Antarctica/Palmer"):
+    return Timezone.AntarcticaPalmer
+  of $("Antarctica/Rothera"):
+    return Timezone.AntarcticaRothera
+  of $("Antarctica/Syowa"):
+    return Timezone.AntarcticaSyowa
+  of $("Antarctica/Troll"):
+    return Timezone.AntarcticaTroll
+  of $("Antarctica/Vostok"):
+    return Timezone.AntarcticaVostok
+  of $("Asia/Almaty"):
+    return Timezone.AsiaAlmaty
+  of $("Asia/Amman"):
+    return Timezone.AsiaAmman
+  of $("Asia/Anadyr"):
+    return Timezone.AsiaAnadyr
+  of $("Asia/Aqtau"):
+    return Timezone.AsiaAqtau
+  of $("Asia/Aqtobe"):
+    return Timezone.AsiaAqtobe
+  of $("Asia/Ashgabat"):
+    return Timezone.AsiaAshgabat
+  of $("Asia/Atyrau"):
+    return Timezone.AsiaAtyrau
+  of $("Asia/Baghdad"):
+    return Timezone.AsiaBaghdad
+  of $("Asia/Baku"):
+    return Timezone.AsiaBaku
+  of $("Asia/Bangkok"):
+    return Timezone.AsiaBangkok
+  of $("Asia/Barnaul"):
+    return Timezone.AsiaBarnaul
+  of $("Asia/Beirut"):
+    return Timezone.AsiaBeirut
+  of $("Asia/Bishkek"):
+    return Timezone.AsiaBishkek
+  of $("Asia/Brunei"):
+    return Timezone.AsiaBrunei
+  of $("Asia/Chita"):
+    return Timezone.AsiaChita
+  of $("Asia/Choibalsan"):
+    return Timezone.AsiaChoibalsan
+  of $("Asia/Colombo"):
+    return Timezone.AsiaColombo
+  of $("Asia/Damascus"):
+    return Timezone.AsiaDamascus
+  of $("Asia/Dhaka"):
+    return Timezone.AsiaDhaka
+  of $("Asia/Dili"):
+    return Timezone.AsiaDili
+  of $("Asia/Dubai"):
+    return Timezone.AsiaDubai
+  of $("Asia/Dushanbe"):
+    return Timezone.AsiaDushanbe
+  of $("Asia/Famagusta"):
+    return Timezone.AsiaFamagusta
+  of $("Asia/Gaza"):
+    return Timezone.AsiaGaza
+  of $("Asia/Hebron"):
+    return Timezone.AsiaHebron
+  of $("Asia/Ho_Chi_Minh"):
+    return Timezone.AsiaHoChiMinh
+  of $("Asia/Hong_Kong"):
+    return Timezone.AsiaHongKong
+  of $("Asia/Hovd"):
+    return Timezone.AsiaHovd
+  of $("Asia/Irkutsk"):
+    return Timezone.AsiaIrkutsk
+  of $("Asia/Jakarta"):
+    return Timezone.AsiaJakarta
+  of $("Asia/Jayapura"):
+    return Timezone.AsiaJayapura
+  of $("Asia/Jerusalem"):
+    return Timezone.AsiaJerusalem
+  of $("Asia/Kabul"):
+    return Timezone.AsiaKabul
+  of $("Asia/Kamchatka"):
+    return Timezone.AsiaKamchatka
+  of $("Asia/Karachi"):
+    return Timezone.AsiaKarachi
+  of $("Asia/Kathmandu"):
+    return Timezone.AsiaKathmandu
+  of $("Asia/Khandyga"):
+    return Timezone.AsiaKhandyga
+  of $("Asia/Kolkata"):
+    return Timezone.AsiaKolkata
+  of $("Asia/Krasnoyarsk"):
+    return Timezone.AsiaKrasnoyarsk
+  of $("Asia/Kuala_Lumpur"):
+    return Timezone.AsiaKualaLumpur
+  of $("Asia/Kuching"):
+    return Timezone.AsiaKuching
+  of $("Asia/Macau"):
+    return Timezone.AsiaMacau
+  of $("Asia/Magadan"):
+    return Timezone.AsiaMagadan
+  of $("Asia/Makassar"):
+    return Timezone.AsiaMakassar
+  of $("Asia/Manila"):
+    return Timezone.AsiaManila
+  of $("Asia/Nicosia"):
+    return Timezone.AsiaNicosia
+  of $("Asia/Novokuznetsk"):
+    return Timezone.AsiaNovokuznetsk
+  of $("Asia/Novosibirsk"):
+    return Timezone.AsiaNovosibirsk
+  of $("Asia/Omsk"):
+    return Timezone.AsiaOmsk
+  of $("Asia/Oral"):
+    return Timezone.AsiaOral
+  of $("Asia/Pontianak"):
+    return Timezone.AsiaPontianak
+  of $("Asia/Pyongyang"):
+    return Timezone.AsiaPyongyang
+  of $("Asia/Qatar"):
+    return Timezone.AsiaQatar
+  of $("Asia/Qostanay"):
+    return Timezone.AsiaQostanay
+  of $("Asia/Qyzylorda"):
+    return Timezone.AsiaQyzylorda
+  of $("Asia/Riyadh"):
+    return Timezone.AsiaRiyadh
+  of $("Asia/Sakhalin"):
+    return Timezone.AsiaSakhalin
+  of $("Asia/Samarkand"):
+    return Timezone.AsiaSamarkand
+  of $("Asia/Seoul"):
+    return Timezone.AsiaSeoul
+  of $("Asia/Shanghai"):
+    return Timezone.AsiaShanghai
+  of $("Asia/Singapore"):
+    return Timezone.AsiaSingapore
+  of $("Asia/Srednekolymsk"):
+    return Timezone.AsiaSrednekolymsk
+  of $("Asia/Taipei"):
+    return Timezone.AsiaTaipei
+  of $("Asia/Tashkent"):
+    return Timezone.AsiaTashkent
+  of $("Asia/Tbilisi"):
+    return Timezone.AsiaTbilisi
+  of $("Asia/Tehran"):
+    return Timezone.AsiaTehran
+  of $("Asia/Thimphu"):
+    return Timezone.AsiaThimphu
+  of $("Asia/Tokyo"):
+    return Timezone.AsiaTokyo
+  of $("Asia/Tomsk"):
+    return Timezone.AsiaTomsk
+  of $("Asia/Ulaanbaatar"):
+    return Timezone.AsiaUlaanbaatar
+  of $("Asia/Urumqi"):
+    return Timezone.AsiaUrumqi
+  of $("Asia/Ust-Nera"):
+    return Timezone.AsiaUstNera
+  of $("Asia/Vladivostok"):
+    return Timezone.AsiaVladivostok
+  of $("Asia/Yakutsk"):
+    return Timezone.AsiaYakutsk
+  of $("Asia/Yangon"):
+    return Timezone.AsiaYangon
+  of $("Asia/Yekaterinburg"):
+    return Timezone.AsiaYekaterinburg
+  of $("Asia/Yerevan"):
+    return Timezone.AsiaYerevan
+  of $("Atlantic/Azores"):
+    return Timezone.AtlanticAzores
+  of $("Atlantic/Bermuda"):
+    return Timezone.AtlanticBermuda
+  of $("Atlantic/Canary"):
+    return Timezone.AtlanticCanary
+  of $("Atlantic/Cape_Verde"):
+    return Timezone.AtlanticCapeVerde
+  of $("Atlantic/Faroe"):
+    return Timezone.AtlanticFaroe
+  of $("Atlantic/Madeira"):
+    return Timezone.AtlanticMadeira
+  of $("Atlantic/Reykjavik"):
+    return Timezone.AtlanticReykjavik
+  of $("Atlantic/South_Georgia"):
+    return Timezone.AtlanticSouthGeorgia
+  of $("Atlantic/Stanley"):
+    return Timezone.AtlanticStanley
+  of $("Australia/Adelaide"):
+    return Timezone.AustraliaAdelaide
+  of $("Australia/Brisbane"):
+    return Timezone.AustraliaBrisbane
+  of $("Australia/Broken_Hill"):
+    return Timezone.AustraliaBrokenHill
+  of $("Australia/Currie"):
+    return Timezone.AustraliaCurrie
+  of $("Australia/Darwin"):
+    return Timezone.AustraliaDarwin
+  of $("Australia/Eucla"):
+    return Timezone.AustraliaEucla
+  of $("Australia/Hobart"):
+    return Timezone.AustraliaHobart
+  of $("Australia/Lindeman"):
+    return Timezone.AustraliaLindeman
+  of $("Australia/Lord_Howe"):
+    return Timezone.AustraliaLordHowe
+  of $("Australia/Melbourne"):
+    return Timezone.AustraliaMelbourne
+  of $("Australia/Perth"):
+    return Timezone.AustraliaPerth
+  of $("Australia/Sydney"):
+    return Timezone.AustraliaSydney
+  of $("CET"):
+    return Timezone.CET
+  of $("CST6CDT"):
+    return Timezone.CST6CDT
+  of $("EET"):
+    return Timezone.EET
+  of $("EST"):
+    return Timezone.EST
+  of $("EST5EDT"):
+    return Timezone.EST5EDT
+  of $("Etc/GMT"):
+    return Timezone.EtcGMT
+  of $("Etc/GMT+1"):
+    return Timezone.`EtcGMT+1`
+  of $("Etc/GMT+10"):
+    return Timezone.`EtcGMT+10`
+  of $("Etc/GMT+11"):
+    return Timezone.`EtcGMT+11`
+  of $("Etc/GMT+12"):
+    return Timezone.`EtcGMT+12`
+  of $("Etc/GMT+2"):
+    return Timezone.`EtcGMT+2`
+  of $("Etc/GMT+3"):
+    return Timezone.`EtcGMT+3`
+  of $("Etc/GMT+4"):
+    return Timezone.`EtcGMT+4`
+  of $("Etc/GMT+5"):
+    return Timezone.`EtcGMT+5`
+  of $("Etc/GMT+6"):
+    return Timezone.`EtcGMT+6`
+  of $("Etc/GMT+7"):
+    return Timezone.`EtcGMT+7`
+  of $("Etc/GMT+8"):
+    return Timezone.`EtcGMT+8`
+  of $("Etc/GMT+9"):
+    return Timezone.`EtcGMT+9`
+  of $("Etc/GMT-1"):
+    return Timezone.EtcGMT1
+  of $("Etc/GMT-10"):
+    return Timezone.EtcGMT10
+  of $("Etc/GMT-11"):
+    return Timezone.EtcGMT11
+  of $("Etc/GMT-12"):
+    return Timezone.EtcGMT12
+  of $("Etc/GMT-13"):
+    return Timezone.EtcGMT13
+  of $("Etc/GMT-14"):
+    return Timezone.EtcGMT14
+  of $("Etc/GMT-2"):
+    return Timezone.EtcGMT2
+  of $("Etc/GMT-3"):
+    return Timezone.EtcGMT3
+  of $("Etc/GMT-4"):
+    return Timezone.EtcGMT4
+  of $("Etc/GMT-5"):
+    return Timezone.EtcGMT5
+  of $("Etc/GMT-6"):
+    return Timezone.EtcGMT6
+  of $("Etc/GMT-7"):
+    return Timezone.EtcGMT7
+  of $("Etc/GMT-8"):
+    return Timezone.EtcGMT8
+  of $("Etc/GMT-9"):
+    return Timezone.EtcGMT9
+  of $("Etc/UTC"):
+    return Timezone.EtcUTC
+  of $("Europe/Amsterdam"):
+    return Timezone.EuropeAmsterdam
+  of $("Europe/Andorra"):
+    return Timezone.EuropeAndorra
+  of $("Europe/Astrakhan"):
+    return Timezone.EuropeAstrakhan
+  of $("Europe/Athens"):
+    return Timezone.EuropeAthens
+  of $("Europe/Belgrade"):
+    return Timezone.EuropeBelgrade
+  of $("Europe/Berlin"):
+    return Timezone.EuropeBerlin
+  of $("Europe/Brussels"):
+    return Timezone.EuropeBrussels
+  of $("Europe/Bucharest"):
+    return Timezone.EuropeBucharest
+  of $("Europe/Budapest"):
+    return Timezone.EuropeBudapest
+  of $("Europe/Chisinau"):
+    return Timezone.EuropeChisinau
+  of $("Europe/Copenhagen"):
+    return Timezone.EuropeCopenhagen
+  of $("Europe/Dublin"):
+    return Timezone.EuropeDublin
+  of $("Europe/Gibraltar"):
+    return Timezone.EuropeGibraltar
+  of $("Europe/Helsinki"):
+    return Timezone.EuropeHelsinki
+  of $("Europe/Istanbul"):
+    return Timezone.EuropeIstanbul
+  of $("Europe/Kaliningrad"):
+    return Timezone.EuropeKaliningrad
+  of $("Europe/Kiev"):
+    return Timezone.EuropeKiev
+  of $("Europe/Kirov"):
+    return Timezone.EuropeKirov
+  of $("Europe/Lisbon"):
+    return Timezone.EuropeLisbon
+  of $("Europe/London"):
+    return Timezone.EuropeLondon
+  of $("Europe/Luxembourg"):
+    return Timezone.EuropeLuxembourg
+  of $("Europe/Madrid"):
+    return Timezone.EuropeMadrid
+  of $("Europe/Malta"):
+    return Timezone.EuropeMalta
+  of $("Europe/Minsk"):
+    return Timezone.EuropeMinsk
+  of $("Europe/Monaco"):
+    return Timezone.EuropeMonaco
+  of $("Europe/Moscow"):
+    return Timezone.EuropeMoscow
+  of $("Europe/Oslo"):
+    return Timezone.EuropeOslo
+  of $("Europe/Paris"):
+    return Timezone.EuropeParis
+  of $("Europe/Prague"):
+    return Timezone.EuropePrague
+  of $("Europe/Riga"):
+    return Timezone.EuropeRiga
+  of $("Europe/Rome"):
+    return Timezone.EuropeRome
+  of $("Europe/Samara"):
+    return Timezone.EuropeSamara
+  of $("Europe/Saratov"):
+    return Timezone.EuropeSaratov
+  of $("Europe/Simferopol"):
+    return Timezone.EuropeSimferopol
+  of $("Europe/Sofia"):
+    return Timezone.EuropeSofia
+  of $("Europe/Stockholm"):
+    return Timezone.EuropeStockholm
+  of $("Europe/Tallinn"):
+    return Timezone.EuropeTallinn
+  of $("Europe/Tirane"):
+    return Timezone.EuropeTirane
+  of $("Europe/Ulyanovsk"):
+    return Timezone.EuropeUlyanovsk
+  of $("Europe/Uzhgorod"):
+    return Timezone.EuropeUzhgorod
+  of $("Europe/Vienna"):
+    return Timezone.EuropeVienna
+  of $("Europe/Vilnius"):
+    return Timezone.EuropeVilnius
+  of $("Europe/Volgograd"):
+    return Timezone.EuropeVolgograd
+  of $("Europe/Warsaw"):
+    return Timezone.EuropeWarsaw
+  of $("Europe/Zaporozhye"):
+    return Timezone.EuropeZaporozhye
+  of $("Europe/Zurich"):
+    return Timezone.EuropeZurich
+  of $("HST"):
+    return Timezone.HST
+  of $("Indian/Chagos"):
+    return Timezone.IndianChagos
+  of $("Indian/Christmas"):
+    return Timezone.IndianChristmas
+  of $("Indian/Cocos"):
+    return Timezone.IndianCocos
+  of $("Indian/Kerguelen"):
+    return Timezone.IndianKerguelen
+  of $("Indian/Mahe"):
+    return Timezone.IndianMahe
+  of $("Indian/Maldives"):
+    return Timezone.IndianMaldives
+  of $("Indian/Mauritius"):
+    return Timezone.IndianMauritius
+  of $("Indian/Reunion"):
+    return Timezone.IndianReunion
+  of $("MET"):
+    return Timezone.MET
+  of $("MST"):
+    return Timezone.MST
+  of $("MST7MDT"):
+    return Timezone.MST7MDT
+  of $("PST8PDT"):
+    return Timezone.PST8PDT
+  of $("Pacific/Apia"):
+    return Timezone.PacificApia
+  of $("Pacific/Auckland"):
+    return Timezone.PacificAuckland
+  of $("Pacific/Bougainville"):
+    return Timezone.PacificBougainville
+  of $("Pacific/Chatham"):
+    return Timezone.PacificChatham
+  of $("Pacific/Chuuk"):
+    return Timezone.PacificChuuk
+  of $("Pacific/Easter"):
+    return Timezone.PacificEaster
+  of $("Pacific/Efate"):
+    return Timezone.PacificEfate
+  of $("Pacific/Enderbury"):
+    return Timezone.PacificEnderbury
+  of $("Pacific/Fakaofo"):
+    return Timezone.PacificFakaofo
+  of $("Pacific/Fiji"):
+    return Timezone.PacificFiji
+  of $("Pacific/Funafuti"):
+    return Timezone.PacificFunafuti
+  of $("Pacific/Galapagos"):
+    return Timezone.PacificGalapagos
+  of $("Pacific/Gambier"):
+    return Timezone.PacificGambier
+  of $("Pacific/Guadalcanal"):
+    return Timezone.PacificGuadalcanal
+  of $("Pacific/Guam"):
+    return Timezone.PacificGuam
+  of $("Pacific/Honolulu"):
+    return Timezone.PacificHonolulu
+  of $("Pacific/Kiritimati"):
+    return Timezone.PacificKiritimati
+  of $("Pacific/Kosrae"):
+    return Timezone.PacificKosrae
+  of $("Pacific/Kwajalein"):
+    return Timezone.PacificKwajalein
+  of $("Pacific/Majuro"):
+    return Timezone.PacificMajuro
+  of $("Pacific/Marquesas"):
+    return Timezone.PacificMarquesas
+  of $("Pacific/Nauru"):
+    return Timezone.PacificNauru
+  of $("Pacific/Niue"):
+    return Timezone.PacificNiue
+  of $("Pacific/Norfolk"):
+    return Timezone.PacificNorfolk
+  of $("Pacific/Noumea"):
+    return Timezone.PacificNoumea
+  of $("Pacific/Pago_Pago"):
+    return Timezone.PacificPagoPago
+  of $("Pacific/Palau"):
+    return Timezone.PacificPalau
+  of $("Pacific/Pitcairn"):
+    return Timezone.PacificPitcairn
+  of $("Pacific/Pohnpei"):
+    return Timezone.PacificPohnpei
+  of $("Pacific/Port_Moresby"):
+    return Timezone.PacificPortMoresby
+  of $("Pacific/Rarotonga"):
+    return Timezone.PacificRarotonga
+  of $("Pacific/Tahiti"):
+    return Timezone.PacificTahiti
+  of $("Pacific/Tarawa"):
+    return Timezone.PacificTarawa
+  of $("Pacific/Tongatapu"):
+    return Timezone.PacificTongatapu
+  of $("Pacific/Wake"):
+    return Timezone.PacificWake
+  of $("Pacific/Wallis"):
+    return Timezone.PacificWallis
+  of $("WET"):
+    return Timezone.WET
+  else:
+    raise newException(ValueError, "Invalid enum value for Timezone: " & strVal)
+

@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type UserSummary* = object
   ## 
-  username*: string ## Username
-  `type`*: string ## Always \"user\"
+  username*: Option[string] ## Username
+  `type`*: Option[string] ## Always \"user\"
+

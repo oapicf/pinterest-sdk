@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_business_members_asset_access_delete_request_accesses_inner
 
 type BusinessMembersAssetAccessDeleteRequest* = object
   ## 
   accesses*: seq[business_members_asset_access_delete_request_accesses_inner] ## List of members asset access to be deleted
+

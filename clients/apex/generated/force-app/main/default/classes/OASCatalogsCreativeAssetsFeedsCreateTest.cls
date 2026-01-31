@@ -80,4 +80,20 @@ private class OASCatalogsCreativeAssetsFeedsCreateTest {
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
     }
+
+    @isTest
+    private static void defaultValuesPopulated() {
+        OASCatalogsCreativeAssetsFeedsCreate catalogsCreativeAssetsFeedsCreateRequest = new OASCatalogsCreativeAssetsFeedsCreate();
+        System.assertEquals('ACTIVE', catalogsCreativeAssetsFeedsCreateRequest.status);
+        System.assertEquals(null, catalogsCreativeAssetsFeedsCreateRequest.defaultCurrency);
+        System.assertEquals(null, catalogsCreativeAssetsFeedsCreateRequest.name);
+        System.assertEquals(null, catalogsCreativeAssetsFeedsCreateRequest.format);
+        System.assertEquals(null, catalogsCreativeAssetsFeedsCreateRequest.defaultLocale);
+        System.assertEquals(null, catalogsCreativeAssetsFeedsCreateRequest.defaultCountry);
+        System.assertEquals(null, catalogsCreativeAssetsFeedsCreateRequest.credentials);
+        System.assertEquals(null, catalogsCreativeAssetsFeedsCreateRequest.location);
+        System.assertEquals(null, catalogsCreativeAssetsFeedsCreateRequest.preferredProcessingSchedule);
+        System.assertEquals(null, catalogsCreativeAssetsFeedsCreateRequest.catalogType);
+        System.assertEquals(null, catalogsCreativeAssetsFeedsCreateRequest.catalogId);
+    }
 }

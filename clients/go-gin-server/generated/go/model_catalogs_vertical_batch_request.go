@@ -17,7 +17,8 @@ type CatalogsVerticalBatchRequest struct {
 
 	Country Country `json:"country"`
 
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 
 	// Array with creative assets item operations
 	Items []CatalogsCreativeAssetsBatchItem `json:"items"`

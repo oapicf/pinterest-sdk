@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AudienceCreateCustomRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceCreateCustomRequest {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
@@ -254,20 +254,10 @@ public class AudienceCreateCustomRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ad_account_id");
-    openapiFields.add("name");
-    openapiFields.add("rule");
-    openapiFields.add("sharing_type");
-    openapiFields.add("data_party");
-    openapiFields.add("category");
+    openapiFields = new HashSet<String>(Arrays.asList("ad_account_id", "name", "rule", "sharing_type", "data_party", "category"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("rule");
-    openapiRequiredFields.add("sharing_type");
-    openapiRequiredFields.add("data_party");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("name", "rule", "sharing_type", "data_party"));
   }
 
   /**
@@ -279,7 +269,7 @@ public class AudienceCreateCustomRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AudienceCreateCustomRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceCreateCustomRequest is not found in the empty JSON string", AudienceCreateCustomRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AudienceCreateCustomRequest is not found in the empty JSON string", AudienceCreateCustomRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -287,22 +277,22 @@ public class AudienceCreateCustomRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AudienceCreateCustomRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AudienceCreateCustomRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AudienceCreateCustomRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AudienceCreateCustomRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("ad_account_id") != null && !jsonObj.get("ad_account_id").isJsonNull()) && !jsonObj.get("ad_account_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the required field `rule`
       AudienceRule.validateJsonElement(jsonObj.get("rule"));
@@ -311,7 +301,7 @@ public class AudienceCreateCustomRequest {
       // validate the required field `data_party`
       AudienceDataParty.validateJsonElement(jsonObj.get("data_party"));
       if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
       }
   }
 

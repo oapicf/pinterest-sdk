@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -53,33 +52,6 @@ namespace Org.OpenAPITools.Test.Model
         {
             // TODO uncomment below to test "IsType" ItemBatchRecord
             //Assert.IsType<ItemBatchRecord>(instance);
-        }
-
-        /// <summary>
-        /// Test the property 'ItemId'
-        /// </summary>
-        [Fact]
-        public void ItemIdTest()
-        {
-            // TODO unit test for the property 'ItemId'
-        }
-
-        /// <summary>
-        /// Test the property 'Attributes'
-        /// </summary>
-        [Fact]
-        public void AttributesTest()
-        {
-            // TODO unit test for the property 'Attributes'
-        }
-
-        /// <summary>
-        /// Test the property 'UpdateMask'
-        /// </summary>
-        [Fact]
-        public void UpdateMaskTest()
-        {
-            // TODO unit test for the property 'UpdateMask'
         }
     }
 }

@@ -60,6 +60,8 @@ pub enum CustomerListsSlashUpdateResponse {
 }
 
 
+
+
 /// CustomerLists
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -69,6 +71,7 @@ pub trait CustomerLists<E: std::fmt::Debug + Send + Sync + 'static = ()>: super:
     /// CustomerListsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/customer_lists
     async fn customer_lists_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -81,6 +84,7 @@ pub trait CustomerLists<E: std::fmt::Debug + Send + Sync + 'static = ()>: super:
     /// CustomerListsSlashGet - GET /v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}
     async fn customer_lists_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -92,6 +96,7 @@ pub trait CustomerLists<E: std::fmt::Debug + Send + Sync + 'static = ()>: super:
     /// CustomerListsSlashList - GET /v5/ad_accounts/{ad_account_id}/customer_lists
     async fn customer_lists_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -104,6 +109,7 @@ pub trait CustomerLists<E: std::fmt::Debug + Send + Sync + 'static = ()>: super:
     /// CustomerListsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}
     async fn customer_lists_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

@@ -422,20 +422,16 @@ namespace Org.OpenAPITools.Model
                             brand = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "latitude":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                latitude = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            latitude = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "longitude":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                longitude = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            longitude = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "neighborhood":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                neighborhood = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            neighborhood = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "address":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                address = new Option<CatalogsHotelAddress?>(JsonSerializer.Deserialize<CatalogsHotelAddress>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            address = new Option<CatalogsHotelAddress?>(JsonSerializer.Deserialize<CatalogsHotelAddress>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "custom_label_0":
                             customLabel0 = new Option<string?>(utf8JsonReader.GetString());
@@ -462,8 +458,7 @@ namespace Org.OpenAPITools.Model
                             salePrice = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "guest_ratings":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                guestRatings = new Option<CatalogsHotelGuestRatings?>(JsonSerializer.Deserialize<CatalogsHotelGuestRatings>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            guestRatings = new Option<CatalogsHotelGuestRatings?>(JsonSerializer.Deserialize<CatalogsHotelGuestRatings>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

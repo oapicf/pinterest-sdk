@@ -2,83 +2,96 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.Currency;
 import org.openapitools.model.LineItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Optional for VISITOR `audience_type`. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s `rule`; however, you **must** specify an `event` for the `event_data` fields to be evaluated. Besides what’s listed, you can also create your own set of `event_data` fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields' data.<br>Examples per `event` type:<br>`pagevisit`<br>\"event_data\": { \"page_name\": \"My online store 123 | view items | shoe\" }<br>`signup`<br>\"event_data\": { \"lead_type\": \"New release promotion\" }<br>`checkout`<br>\"event_data\": { \"value\": 116, \"order_quantity\": 2, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Pillows (Set of 2)\", \"product_id\": \"11\", \"product_price\": 48, \"product_quantity\": 1 }, { \"product_name\": \"Pillows, Large (Set of 2)\", \"product_id\": \"15\", \"product_price\": 68, \"product_quantity\": 1 } ] }<br>`addtocart`<br>\"event_data\": { \"value\": 499, \"order_quantity\": 1, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Red leather boots\", \"product_id\": \"3486\", \"product_category\": \"shoe\", \"product_variant_id\": \"JB11103000\", \"product_price\": 499, \"product_quantity\": \"1\" , \"product_brand\": \"My brand\" }]}<br>`watchvideo`<br>\"event_data\": { \"video_title\": \"My Product Video 01\" }<br>`lead`<br>\"event_data\": { \"lead_type\": \"Newsletter\" }
- **/
+ * Optional for VISITOR `audience_type`. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s `rule`; however, you **must** specify an `event` for the `event_data` fields to be evaluated. Besides what’s listed, you can also create your own set of `event_data` fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields' data.<br>Examples per `event` type:<br>`pagevisit`<br>\"event_data\": { \"page_name\": \"My online store 123 | view items | shoe\" }<br>`signup`<br>\"event_data\": { \"lead_type\": \"New release promotion\" }<br>`checkout`<br>\"event_data\": { \"value\": 116, \"order_quantity\": 2, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Pillows (Set of 2)\", \"product_id\": \"11\", \"product_price\": 48, \"product_quantity\": 1 }, { \"product_name\": \"Pillows, Large (Set of 2)\", \"product_id\": \"15\", \"product_price\": 68, \"product_quantity\": 1 } ] }<br>`addtocart`<br>\"event_data\": { \"value\": 499, \"order_quantity\": 1, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Red leather boots\", \"product_id\": \"3486\", \"product_category\": \"shoe\", \"product_variant_id\": \"JB11103000\", \"product_price\": 499, \"product_quantity\": \"1\" , \"product_brand\": \"My brand\" }]}<br>`watchvideo`<br>\"event_data\": { \"video_title\": \"My Product Video 01\" }<br>`lead`<br>\"event_data\": { \"lead_type\": \"Newsletter\" }
+ */
 @ApiModel(description="Optional for VISITOR `audience_type`. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s `rule`; however, you **must** specify an `event` for the `event_data` fields to be evaluated. Besides what’s listed, you can also create your own set of `event_data` fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields' data.<br>Examples per `event` type:<br>`pagevisit`<br>\"event_data\": { \"page_name\": \"My online store 123 | view items | shoe\" }<br>`signup`<br>\"event_data\": { \"lead_type\": \"New release promotion\" }<br>`checkout`<br>\"event_data\": { \"value\": 116, \"order_quantity\": 2, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Pillows (Set of 2)\", \"product_id\": \"11\", \"product_price\": 48, \"product_quantity\": 1 }, { \"product_name\": \"Pillows, Large (Set of 2)\", \"product_id\": \"15\", \"product_price\": 68, \"product_quantity\": 1 } ] }<br>`addtocart`<br>\"event_data\": { \"value\": 499, \"order_quantity\": 1, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Red leather boots\", \"product_id\": \"3486\", \"product_category\": \"shoe\", \"product_variant_id\": \"JB11103000\", \"product_price\": 499, \"product_quantity\": \"1\" , \"product_brand\": \"My brand\" }]}<br>`watchvideo`<br>\"event_data\": { \"video_title\": \"My Product Video 01\" }<br>`lead`<br>\"event_data\": { \"lead_type\": \"Newsletter\" }")
 
 public class PinterestTagEventData  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private Currency currency;
 
-  @ApiModelProperty(example = "Newsletter", value = "Promotion code. For example, \"Newsletter\".")
  /**
-   * Promotion code. For example, \"Newsletter\".
-  **/
+  * Promotion code. For example, \"Newsletter\".
+  */
+  @ApiModelProperty(example = "Newsletter", value = "Promotion code. For example, \"Newsletter\".")
+
   private String leadType;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private LineItem lineItems;
 
-  @ApiModelProperty(example = "X-151481", value = "Order ID. For example, \"X-151481\".")
  /**
-   * Order ID. For example, \"X-151481\".
-  **/
+  * Order ID. For example, \"X-151481\".
+  */
+  @ApiModelProperty(example = "X-151481", value = "Order ID. For example, \"X-151481\".")
+
   private String orderId;
 
-  @ApiModelProperty(example = "1", value = "Order quantity. For example, 1.")
  /**
-   * Order quantity. For example, 1.
-  **/
+  * Order quantity. For example, 1.
+  */
+  @ApiModelProperty(example = "1", value = "Order quantity. For example, 1.")
+
   private Integer orderQuantity;
 
-  @ApiModelProperty(example = "Our Favorite Pins on Pinterest.", value = "Page name. For example, \"Our Favorite Pins on Pinterest\".")
  /**
-   * Page name. For example, \"Our Favorite Pins on Pinterest\".
-  **/
+  * Page name. For example, \"Our Favorite Pins on Pinterest\".
+  */
+  @ApiModelProperty(example = "Our Favorite Pins on Pinterest.", value = "Page name. For example, \"Our Favorite Pins on Pinterest\".")
+
   private String pageName;
 
-  @ApiModelProperty(example = "WINTER10", value = "Promotion code. For example, \"WINTER10\".")
  /**
-   * Promotion code. For example, \"WINTER10\".
-  **/
+  * Promotion code. For example, \"WINTER10\".
+  */
+  @ApiModelProperty(example = "WINTER10", value = "Promotion code. For example, \"WINTER10\".")
+
   private String promoCode;
 
-  @ApiModelProperty(example = "Athleta", value = "Property. For example, \"Athleta\".")
  /**
-   * Property. For example, \"Athleta\".
-  **/
+  * Property. For example, \"Athleta\".
+  */
+  @ApiModelProperty(example = "Athleta", value = "Property. For example, \"Athleta\".")
+
   private String property;
 
-  @ApiModelProperty(example = "boots", value = "Search query string. For example, \"boots\".")
  /**
-   * Search query string. For example, \"boots\".
-  **/
+  * Search query string. For example, \"boots\".
+  */
+  @ApiModelProperty(example = "boots", value = "Search query string. For example, \"boots\".")
+
   private String searchQuery;
 
-  @ApiModelProperty(example = "199.98", value = "Product value. For example, \"199.98\"")
  /**
-   * Product value. For example, \"199.98\"
-  **/
+  * Product value. For example, \"199.98\"
+  */
+  @ApiModelProperty(example = "199.98", value = "Product value. For example, \"199.98\"")
+
   private String value;
 
-  @ApiModelProperty(example = "How to style your Parker Boots", value = "Video title. For example, \"How to style your Parker Boots\".")
  /**
-   * Video title. For example, \"How to style your Parker Boots\".
-  **/
+  * Video title. For example, \"How to style your Parker Boots\".
+  */
+  @ApiModelProperty(example = "How to style your Parker Boots", value = "Video title. For example, \"How to style your Parker Boots\".")
+
   private String videoTitle;
  /**
    * Get currency

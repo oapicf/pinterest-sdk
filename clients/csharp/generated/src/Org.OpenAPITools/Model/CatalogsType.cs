@@ -147,7 +147,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CatalogsType catalogsType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(catalogsType.ToString());
+            writer.WriteStringValue(CatalogsTypeValueConverter.ToJsonValue(catalogsType).ToString());
         }
     }
 
@@ -178,14 +178,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the CatalogsType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="catalogsType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CatalogsType? catalogsType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(catalogsType?.ToString() ?? "null");
+            writer.WriteStringValue(catalogsType.HasValue ? CatalogsTypeValueConverter.ToJsonValue(catalogsType.Value).ToString() : "null");
         }
     }
 }

@@ -16,7 +16,7 @@ import { InviteExceptionResponse } from './inviteExceptionResponse';
 
 export class UpdateInvitesResultsResponseArrayItemsInner {
     'exception'?: InviteExceptionResponse | null;
-    'invite'?: InviteBusinessRoleBinding | null;
+    'invite'?: InviteBusinessRoleBinding;
 
     static discriminator: string | undefined = undefined;
 

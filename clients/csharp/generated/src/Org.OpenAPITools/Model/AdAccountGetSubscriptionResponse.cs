@@ -339,8 +339,7 @@ namespace Org.OpenAPITools.Model
                             cryptographicAlgorithm = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "created_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

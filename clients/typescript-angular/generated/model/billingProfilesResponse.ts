@@ -32,37 +32,37 @@ export interface BillingProfilesResponse {
     payment_method_brand?: BillingProfilesResponse.PaymentMethodBrandEnum;
 }
 export namespace BillingProfilesResponse {
-    export type CardTypeEnum = 'UNKNOWN' | 'VISA' | 'MASTERCARD' | 'AMERICAN_EXPRESS' | 'DISCOVER' | 'ELO';
     export const CardTypeEnum = {
-        Unknown: 'UNKNOWN' as CardTypeEnum,
-        Visa: 'VISA' as CardTypeEnum,
-        Mastercard: 'MASTERCARD' as CardTypeEnum,
-        AmericanExpress: 'AMERICAN_EXPRESS' as CardTypeEnum,
-        Discover: 'DISCOVER' as CardTypeEnum,
-        Elo: 'ELO' as CardTypeEnum
-    };
-    export type StatusEnum = 'UNSPECIFIED' | 'VALID' | 'INVALID' | 'PENDING' | 'DELETED' | 'SECONDARY' | 'PENDING_SECONDARY';
+        Unknown: 'UNKNOWN',
+        Visa: 'VISA',
+        Mastercard: 'MASTERCARD',
+        AmericanExpress: 'AMERICAN_EXPRESS',
+        Discover: 'DISCOVER',
+        Elo: 'ELO'
+    } as const;
+    export type CardTypeEnum = typeof CardTypeEnum[keyof typeof CardTypeEnum];
     export const StatusEnum = {
-        Unspecified: 'UNSPECIFIED' as StatusEnum,
-        Valid: 'VALID' as StatusEnum,
-        Invalid: 'INVALID' as StatusEnum,
-        Pending: 'PENDING' as StatusEnum,
-        Deleted: 'DELETED' as StatusEnum,
-        Secondary: 'SECONDARY' as StatusEnum,
-        PendingSecondary: 'PENDING_SECONDARY' as StatusEnum
-    };
-    export type PaymentMethodBrandEnum = 'UNKNOWN' | 'VISA' | 'MASTERCARD' | 'AMERICAN_EXPRESS' | 'DISCOVER' | 'SOFORT' | 'DINERS_CLUB' | 'ELO' | 'CARTE_BANCAIRE';
+        Unspecified: 'UNSPECIFIED',
+        Valid: 'VALID',
+        Invalid: 'INVALID',
+        Pending: 'PENDING',
+        Deleted: 'DELETED',
+        Secondary: 'SECONDARY',
+        PendingSecondary: 'PENDING_SECONDARY'
+    } as const;
+    export type StatusEnum = typeof StatusEnum[keyof typeof StatusEnum];
     export const PaymentMethodBrandEnum = {
-        Unknown: 'UNKNOWN' as PaymentMethodBrandEnum,
-        Visa: 'VISA' as PaymentMethodBrandEnum,
-        Mastercard: 'MASTERCARD' as PaymentMethodBrandEnum,
-        AmericanExpress: 'AMERICAN_EXPRESS' as PaymentMethodBrandEnum,
-        Discover: 'DISCOVER' as PaymentMethodBrandEnum,
-        Sofort: 'SOFORT' as PaymentMethodBrandEnum,
-        DinersClub: 'DINERS_CLUB' as PaymentMethodBrandEnum,
-        Elo: 'ELO' as PaymentMethodBrandEnum,
-        CarteBancaire: 'CARTE_BANCAIRE' as PaymentMethodBrandEnum
-    };
+        Unknown: 'UNKNOWN',
+        Visa: 'VISA',
+        Mastercard: 'MASTERCARD',
+        AmericanExpress: 'AMERICAN_EXPRESS',
+        Discover: 'DISCOVER',
+        Sofort: 'SOFORT',
+        DinersClub: 'DINERS_CLUB',
+        Elo: 'ELO',
+        CarteBancaire: 'CARTE_BANCAIRE'
+    } as const;
+    export type PaymentMethodBrandEnum = typeof PaymentMethodBrandEnum[keyof typeof PaymentMethodBrandEnum];
 }
 
 

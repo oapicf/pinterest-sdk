@@ -6,7 +6,6 @@ import org.openapitools.model.Pin
 import org.openapitools.model.PinAnalyticsMetricsResponse
 import org.openapitools.model.PinCreate
 import org.openapitools.model.PinUpdate
-import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner
 import org.openapitools.model.PinsList200Response
 import org.openapitools.model.PinsSaveRequest
 
@@ -15,7 +14,7 @@ class PinsApi {
     String versionPath = ""
     ApiUtils apiUtils = new ApiUtils();
 
-    def multiPinsAnalytics ( List<String> pinIds, Date startDate, Date endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def multiPinsAnalytics ( List<String> pinIds, Date startDate, Date endDate, List<String> metricTypes, String appTypes, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/pins/analytics"
 
         // params
@@ -69,7 +68,7 @@ class PinsApi {
 
     }
 
-    def pinsAnalytics ( String pinId, Date startDate, Date endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId, Closure onSuccess, Closure onFailure)  {
+    def pinsAnalytics ( String pinId, Date startDate, Date endDate, List<String> metricTypes, String appTypes, String splitField, String adAccountId, Closure onSuccess, Closure onFailure)  {
         String resourcePath = "/pins/${pin_id}/analytics"
 
         // params

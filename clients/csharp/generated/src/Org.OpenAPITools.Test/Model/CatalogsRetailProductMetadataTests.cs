@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -65,15 +64,6 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'ItemGroupId'
-        /// </summary>
-        [Fact]
-        public void ItemGroupIdTest()
-        {
-            // TODO unit test for the property 'ItemGroupId'
-        }
-
-        /// <summary>
         /// Test the property 'Availability'
         /// </summary>
         [Fact]
@@ -92,21 +82,30 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'SalePrice'
-        /// </summary>
-        [Fact]
-        public void SalePriceTest()
-        {
-            // TODO unit test for the property 'SalePrice'
-        }
-
-        /// <summary>
         /// Test the property 'Currency'
         /// </summary>
         [Fact]
         public void CurrencyTest()
         {
             // TODO unit test for the property 'Currency'
+        }
+
+        /// <summary>
+        /// Test the property 'ItemGroupId'
+        /// </summary>
+        [Fact]
+        public void ItemGroupIdTest()
+        {
+            // TODO unit test for the property 'ItemGroupId'
+        }
+
+        /// <summary>
+        /// Test the property 'SalePrice'
+        /// </summary>
+        [Fact]
+        public void SalePriceTest()
+        {
+            // TODO unit test for the property 'SalePrice'
         }
     }
 }

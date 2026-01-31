@@ -43,13 +43,13 @@ pub enum AdvancedAuctionItemsSubmitSlashPostError {
 /// Get the bid options for a batch of retail catalog items.  The catalog must be owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: `Owner`, `Admin`.  This endpoint is not available to all users.
 pub async fn advanced_auction_items_get_slash_post(configuration: &configuration::Configuration, advanced_auction_items_get_request: models::AdvancedAuctionItemsGetRequest, ad_account_id: Option<&str>) -> Result<models::AdvancedAuctionItems, Error<AdvancedAuctionItemsGetSlashPostError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_advanced_auction_items_get_request = advanced_auction_items_get_request;
-    let p_ad_account_id = ad_account_id;
+    let p_body_advanced_auction_items_get_request = advanced_auction_items_get_request;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/advanced_auction/items/get", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -58,7 +58,7 @@ pub async fn advanced_auction_items_get_slash_post(configuration: &configuration
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_advanced_auction_items_get_request);
+    req_builder = req_builder.json(&p_body_advanced_auction_items_get_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -88,13 +88,13 @@ pub async fn advanced_auction_items_get_slash_post(configuration: &configuration
 /// This endpoint supports multiple operations on a set of one or more bid options (bid price and bid adjustments for targeting categories) for retail catalog items. These advanced auction settings are applied in campaigns using objective_type `CATALOG_SALES` and ad groups using bid_strategy_type `MAX_BID`.  The catalog must be owned by the \"operation user_account\". <a href=\"/docs/api-features/modify-items-in-batch/\" target=\"_blank\">See detailed documentation here.</a> By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: `Owner`, `Admin`.  This endpoint is not available to all users.
 pub async fn advanced_auction_items_submit_slash_post(configuration: &configuration::Configuration, advanced_auction_items_submit_request: models::AdvancedAuctionItemsSubmitRequest, ad_account_id: Option<&str>) -> Result<models::AdvancedAuctionProcessedItems, Error<AdvancedAuctionItemsSubmitSlashPostError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_advanced_auction_items_submit_request = advanced_auction_items_submit_request;
-    let p_ad_account_id = ad_account_id;
+    let p_body_advanced_auction_items_submit_request = advanced_auction_items_submit_request;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/advanced_auction/items/submit", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -103,7 +103,7 @@ pub async fn advanced_auction_items_submit_slash_post(configuration: &configurat
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_advanced_auction_items_submit_request);
+    req_builder = req_builder.json(&p_body_advanced_auction_items_submit_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

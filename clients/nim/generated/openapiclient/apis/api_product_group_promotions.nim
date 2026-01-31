@@ -24,17 +24,14 @@ import ../models/model_product_group_analytics_response_inner
 import ../models/model_product_group_promotion_create_request
 import ../models/model_product_group_promotion_response
 import ../models/model_product_group_promotion_update_request
-import ../models/model_product_group_promotions_list_200_response
+import ../models/model_product_group_promotions_list200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -61,16 +58,22 @@ proc productGroupPromotionsGet*(httpClient: HttpClient, adAccountId: string, pro
 
 proc productGroupPromotionsList*(httpClient: HttpClient, adAccountId: string, productGroupPromotionIds: seq[string], entityStatuses: seq[EntityStatuses], adGroupId: string, pageSize: int, order: string, bookmark: string): (Option[product_group_promotions_list_200_response], Response) =
   ## Get product group promotions
-  let query_for_api_call = encodeQuery([
-    ("product_group_promotion_ids", $productGroupPromotionIds.join(",")), # List of Product group promotion Ids.
-    ("entity_statuses", $entityStatuses.join(",")), # Entity status
-    ("ad_group_id", $adGroupId), # Ad group Id.
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("order", $order), # The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if productGroupPromotionIds.len > 0:
+    query_params_list.add(("product_group_promotion_ids", $productGroupPromotionIds.join(",")))
+  if entityStatuses.len > 0:
+    query_params_list.add(("entity_statuses", $entityStatuses.join(",")))
+  if $adGroupId != "":
+    query_params_list.add(("ad_group_id", $adGroupId))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $order != "":
+    query_params_list.add(("order", $order))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/product_group_promotions" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/product_group_promotions" & "?" & url_encoded_query_params)
   constructResult[product_group_promotions_list_200_response](response)
 
 
@@ -84,18 +87,22 @@ proc productGroupPromotionsUpdate*(httpClient: HttpClient, adAccountId: string, 
 
 proc productGroupsAnalytics*(httpClient: HttpClient, adAccountId: string, startDate: string, endDate: string, productGroupIds: seq[string], columns: seq[Columns], granularity: Granularity, clickWindowDays: ClickWindowDays, engagementWindowDays: EngagementWindowDays, viewWindowDays: ViewWindowDays, conversionReportTime: string): (Option[seq[ProductGroupAnalyticsResponse_inner]], Response) =
   ## Get product group analytics
-  let query_for_api_call = encodeQuery([
-    ("start_date", $startDate), # Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-    ("end_date", $endDate), # Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    ("product_group_ids", $productGroupIds.join(",")), # List of Product group Ids to use to filter the results.
-    ("columns", $columns.join(",")), # Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-    ("granularity", $granularity), # TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-    ("click_window_days", $clickWindowDays), # Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-    ("engagement_window_days", $engagementWindowDays), # Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-    ("view_window_days", $viewWindowDays), # Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-    ("conversion_report_time", $conversionReportTime), # The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("start_date", $startDate))
+  query_params_list.add(("end_date", $endDate))
+  query_params_list.add(("product_group_ids", $productGroupIds.join(",")))
+  query_params_list.add(("columns", $columns.join(",")))
+  query_params_list.add(("granularity", $granularity))
+  if $clickWindowDays != "":
+    query_params_list.add(("click_window_days", $clickWindowDays))
+  if $engagementWindowDays != "":
+    query_params_list.add(("engagement_window_days", $engagementWindowDays))
+  if $viewWindowDays != "":
+    query_params_list.add(("view_window_days", $viewWindowDays))
+  if $conversionReportTime != "":
+    query_params_list.add(("conversion_report_time", $conversionReportTime))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/product_groups/analytics" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/product_groups/analytics" & "?" & url_encoded_query_params)
   constructResult[seq[ProductGroupAnalyticsResponse_inner]](response)
 

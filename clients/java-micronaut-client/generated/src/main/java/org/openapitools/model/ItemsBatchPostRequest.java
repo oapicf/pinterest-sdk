@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsBatchRequest;
-import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsVerticalBatchRequest;
 import org.openapitools.model.Country;
 import org.openapitools.model.ItemDeleteBatchRecord;
@@ -35,32 +34,233 @@ import javax.annotation.Generated;
  * ItemsBatchPostRequest
  */
 @JsonPropertyOrder({
+  ItemsBatchPostRequest.JSON_PROPERTY_CATALOG_TYPE,
   ItemsBatchPostRequest.JSON_PROPERTY_COUNTRY,
   ItemsBatchPostRequest.JSON_PROPERTY_LANGUAGE,
-  ItemsBatchPostRequest.JSON_PROPERTY_OPERATION,
-  ItemsBatchPostRequest.JSON_PROPERTY_ITEMS
+  ItemsBatchPostRequest.JSON_PROPERTY_ITEMS,
+  ItemsBatchPostRequest.JSON_PROPERTY_CATALOG_ID,
+  ItemsBatchPostRequest.JSON_PROPERTY_OPERATION
 })
 @JsonTypeName("items_batch_post_request")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-01-26T05:35:55.554977681Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class ItemsBatchPostRequest {
+    /**
+     * Gets or Sets catalogType
+     */
+    public enum CatalogTypeEnum {
+        CREATIVE_ASSETS("CREATIVE_ASSETS");
+
+        private String value;
+
+        CatalogTypeEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static CatalogTypeEnum fromValue(String value) {
+            for (CatalogTypeEnum b : CatalogTypeEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+    }
+    public static final String JSON_PROPERTY_CATALOG_TYPE = "catalog_type";
+    private CatalogTypeEnum catalogType;
+
     public static final String JSON_PROPERTY_COUNTRY = "country";
     private Country country;
 
-    public static final String JSON_PROPERTY_LANGUAGE = "language";
-    private CatalogsItemsRequestLanguage language;
+    /**
+     * We recommend using the CatalogsLocale values.
+     */
+    public enum LanguageEnum {
+        AF_ZA("af-ZA"),
+        AR_SA("ar-SA"),
+        BG_BG("bg-BG"),
+        BN_IN("bn-IN"),
+        CS_CZ("cs-CZ"),
+        DA_DK("da-DK"),
+        DE("de"),
+        EL_GR("el-GR"),
+        EN_AU("en-AU"),
+        EN_CA("en-CA"),
+        EN_GB("en-GB"),
+        EN_IN("en-IN"),
+        EN_US("en-US"),
+        ES_419("es-419"),
+        ES_AR("es-AR"),
+        ES_ES("es-ES"),
+        ES_MX("es-MX"),
+        FI_FI("fi-FI"),
+        FR("fr"),
+        FR_CA("fr-CA"),
+        HE_IL("he-IL"),
+        HI_IN("hi-IN"),
+        HR_HR("hr-HR"),
+        HU_HU("hu-HU"),
+        ID_ID("id-ID"),
+        IT("it"),
+        JA("ja"),
+        KO_KR("ko-KR"),
+        MS_MY("ms-MY"),
+        NB_NO("nb-NO"),
+        NL("nl"),
+        PL_PL("pl-PL"),
+        PT_BR("pt-BR"),
+        PT_PT("pt-PT"),
+        RO_RO("ro-RO"),
+        RU_RU("ru-RU"),
+        SK_SK("sk-SK"),
+        SV_SE("sv-SE"),
+        TE_IN("te-IN"),
+        TH_TH("th-TH"),
+        TL_PH("tl-PH"),
+        TR("tr"),
+        UK_UA("uk-UA"),
+        VI_VN("vi-VN"),
+        ZH_CN("zh-CN"),
+        ZH_TW("zh-TW"),
+        AM("AM"),
+        AR("AR"),
+        AZ("AZ"),
+        BG("BG"),
+        BN("BN"),
+        BS("BS"),
+        CA("CA"),
+        CS("CS"),
+        DA("DA"),
+        DV("DV"),
+        DZ("DZ"),
+        DE2("DE"),
+        EL("EL"),
+        EN("EN"),
+        ES("ES"),
+        ET("ET"),
+        FA("FA"),
+        FI("FI"),
+        FR2("FR"),
+        HE("HE"),
+        HI("HI"),
+        HR("HR"),
+        HU("HU"),
+        HY("HY"),
+        ID("ID"),
+        IN("IN"),
+        IS("IS"),
+        IT2("IT"),
+        IW("IW"),
+        JA2("JA"),
+        KA("KA"),
+        KM("KM"),
+        KO("KO"),
+        LO("LO"),
+        LT("LT"),
+        LV("LV"),
+        MK("MK"),
+        MN("MN"),
+        MS("MS"),
+        MY("MY"),
+        NB("NB"),
+        NE("NE"),
+        NL2("NL"),
+        NO("NO"),
+        PL("PL"),
+        PT("PT"),
+        RO("RO"),
+        RU("RU"),
+        SK("SK"),
+        SL("SL"),
+        SQ("SQ"),
+        SR("SR"),
+        SV("SV"),
+        TL("TL"),
+        UK("UK"),
+        VI("VI"),
+        TE("TE"),
+        TH("TH"),
+        TR2("TR"),
+        XX("XX"),
+        ZH("ZH");
 
-    public static final String JSON_PROPERTY_OPERATION = "operation";
-    private BatchOperation operation;
+        private String value;
+
+        LanguageEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static LanguageEnum fromValue(String value) {
+            for (LanguageEnum b : LanguageEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+    }
+    public static final String JSON_PROPERTY_LANGUAGE = "language";
+    private LanguageEnum language;
 
     public static final String JSON_PROPERTY_ITEMS = "items";
     private List<@Valid ItemDeleteBatchRecord> items = new ArrayList<>();
 
-    public ItemsBatchPostRequest(Country country, CatalogsItemsRequestLanguage language, BatchOperation operation, List<@Valid ItemDeleteBatchRecord> items, CatalogTypeEnum catalogType) {
+    public static final String JSON_PROPERTY_CATALOG_ID = "catalog_id";
+    private String catalogId;
+
+    public static final String JSON_PROPERTY_OPERATION = "operation";
+    private BatchOperation operation;
+
+    public ItemsBatchPostRequest(CatalogTypeEnum catalogType, Country country, LanguageEnum language, List<@Valid ItemDeleteBatchRecord> items, BatchOperation operation) {
+        this.catalogType = catalogType;
         this.country = country;
         this.language = language;
-        this.operation = operation;
         this.items = items;
+        this.operation = operation;
+    }
+
+    public ItemsBatchPostRequest catalogType(CatalogTypeEnum catalogType) {
+        this.catalogType = catalogType;
+        return this;
+    }
+
+    /**
+     * Get catalogType
+     * @return catalogType
+     */
+    @NotNull
+    @JsonProperty(JSON_PROPERTY_CATALOG_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public CatalogTypeEnum getCatalogType() {
+        return catalogType;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CATALOG_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setCatalogType(CatalogTypeEnum catalogType) {
+        this.catalogType = catalogType;
     }
 
     public ItemsBatchPostRequest country(Country country) {
@@ -85,49 +285,26 @@ public class ItemsBatchPostRequest {
         this.country = country;
     }
 
-    public ItemsBatchPostRequest language(CatalogsItemsRequestLanguage language) {
+    public ItemsBatchPostRequest language(LanguageEnum language) {
         this.language = language;
         return this;
     }
 
     /**
-     * Get language
+     * We recommend using the CatalogsLocale values.
      * @return language
      */
-    @Valid
     @NotNull
     @JsonProperty(JSON_PROPERTY_LANGUAGE)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public CatalogsItemsRequestLanguage getLanguage() {
+    public LanguageEnum getLanguage() {
         return language;
     }
 
     @JsonProperty(JSON_PROPERTY_LANGUAGE)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setLanguage(CatalogsItemsRequestLanguage language) {
+    public void setLanguage(LanguageEnum language) {
         this.language = language;
-    }
-
-    public ItemsBatchPostRequest operation(BatchOperation operation) {
-        this.operation = operation;
-        return this;
-    }
-
-    /**
-     * Get operation
-     * @return operation
-     */
-    @NotNull
-    @JsonProperty(JSON_PROPERTY_OPERATION)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public BatchOperation getOperation() {
-        return operation;
-    }
-
-    @JsonProperty(JSON_PROPERTY_OPERATION)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setOperation(BatchOperation operation) {
-        this.operation = operation;
     }
 
     public ItemsBatchPostRequest items(List<@Valid ItemDeleteBatchRecord> items) {
@@ -157,6 +334,51 @@ public class ItemsBatchPostRequest {
         this.items = items;
     }
 
+    public ItemsBatchPostRequest catalogId(String catalogId) {
+        this.catalogId = catalogId;
+        return this;
+    }
+
+    /**
+     * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+     * @return catalogId
+     */
+    @Nullable
+    @Pattern(regexp="^\\d+$")
+    @JsonProperty(JSON_PROPERTY_CATALOG_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public String getCatalogId() {
+        return catalogId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CATALOG_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCatalogId(String catalogId) {
+        this.catalogId = catalogId;
+    }
+
+    public ItemsBatchPostRequest operation(BatchOperation operation) {
+        this.operation = operation;
+        return this;
+    }
+
+    /**
+     * Get operation
+     * @return operation
+     */
+    @NotNull
+    @JsonProperty(JSON_PROPERTY_OPERATION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public BatchOperation getOperation() {
+        return operation;
+    }
+
+    @JsonProperty(JSON_PROPERTY_OPERATION)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setOperation(BatchOperation operation) {
+        this.operation = operation;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -166,25 +388,29 @@ public class ItemsBatchPostRequest {
             return false;
         }
         ItemsBatchPostRequest itemsBatchPostRequest = (ItemsBatchPostRequest) o;
-        return Objects.equals(this.country, itemsBatchPostRequest.country) &&
+        return Objects.equals(this.catalogType, itemsBatchPostRequest.catalogType) &&
+            Objects.equals(this.country, itemsBatchPostRequest.country) &&
             Objects.equals(this.language, itemsBatchPostRequest.language) &&
-            Objects.equals(this.operation, itemsBatchPostRequest.operation) &&
-            Objects.equals(this.items, itemsBatchPostRequest.items);
+            Objects.equals(this.items, itemsBatchPostRequest.items) &&
+            Objects.equals(this.catalogId, itemsBatchPostRequest.catalogId) &&
+            Objects.equals(this.operation, itemsBatchPostRequest.operation);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(country, language, operation, items);
+        return Objects.hash(catalogType, country, language, items, catalogId, operation);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class ItemsBatchPostRequest {\n");
+        sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
         sb.append("    country: ").append(toIndentedString(country)).append("\n");
         sb.append("    language: ").append(toIndentedString(language)).append("\n");
-        sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
         sb.append("    items: ").append(toIndentedString(items)).append("\n");
+        sb.append("    catalogId: ").append(toIndentedString(catalogId)).append("\n");
+        sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
         sb.append("}");
         return sb.toString();
     }

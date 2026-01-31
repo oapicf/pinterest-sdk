@@ -42,13 +42,15 @@ export function MultipleProductGroupsInnerFromJSONTyped(json: any, ignoreDiscrim
     if (json == null) {
         return json;
     }
+    if (typeof json !== 'object') {
+        return json;
+    }
     if (instanceOfCatalogsProductGroupCreateRequest(json)) {
         return CatalogsProductGroupCreateRequestFromJSONTyped(json, true);
     }
     if (instanceOfCatalogsVerticalProductGroupCreateRequest(json)) {
         return CatalogsVerticalProductGroupCreateRequestFromJSONTyped(json, true);
     }
-
     return {} as any;
 }
 
@@ -60,14 +62,15 @@ export function MultipleProductGroupsInnerToJSONTyped(value?: MultipleProductGro
     if (value == null) {
         return value;
     }
-
+    if (typeof value !== 'object') {
+        return value;
+    }
     if (instanceOfCatalogsProductGroupCreateRequest(value)) {
         return CatalogsProductGroupCreateRequestToJSON(value as CatalogsProductGroupCreateRequest);
     }
     if (instanceOfCatalogsVerticalProductGroupCreateRequest(value)) {
         return CatalogsVerticalProductGroupCreateRequestToJSON(value as CatalogsVerticalProductGroupCreateRequest);
     }
-
     return {};
 }
 

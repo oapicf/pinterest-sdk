@@ -46,10 +46,20 @@ import java.util.Set;
 import com.github.oapicf.pinterestsdk.JSON;
 
 /**
- * A successful OAuth access token response for the authorization code flow.
+ * OauthAccessTokenResponseCode
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenResponseCode {
+  public static final String SERIALIZED_NAME_REFRESH_TOKEN = "refresh_token";
+  @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN)
+  @javax.annotation.Nonnull
+  private String refreshToken;
+
+  public static final String SERIALIZED_NAME_REFRESH_TOKEN_EXPIRES_IN = "refresh_token_expires_in";
+  @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN_EXPIRES_IN)
+  @javax.annotation.Nonnull
+  private Integer refreshTokenExpiresIn;
+
   /**
    * Gets or Sets responseType
    */
@@ -129,18 +139,46 @@ public class OauthAccessTokenResponseCode {
   @javax.annotation.Nonnull
   private String scope;
 
-  public static final String SERIALIZED_NAME_REFRESH_TOKEN = "refresh_token";
-  @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN)
-  @javax.annotation.Nonnull
-  private String refreshToken;
-
-  public static final String SERIALIZED_NAME_REFRESH_TOKEN_EXPIRES_IN = "refresh_token_expires_in";
-  @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN_EXPIRES_IN)
-  @javax.annotation.Nonnull
-  private Integer refreshTokenExpiresIn;
-
   public OauthAccessTokenResponseCode() {
   }
+
+  public OauthAccessTokenResponseCode refreshToken(@javax.annotation.Nonnull String refreshToken) {
+    this.refreshToken = refreshToken;
+    return this;
+  }
+
+  /**
+   * Get refreshToken
+   * @return refreshToken
+   */
+  @javax.annotation.Nonnull
+  public String getRefreshToken() {
+    return refreshToken;
+  }
+
+  public void setRefreshToken(@javax.annotation.Nonnull String refreshToken) {
+    this.refreshToken = refreshToken;
+  }
+
+
+  public OauthAccessTokenResponseCode refreshTokenExpiresIn(@javax.annotation.Nonnull Integer refreshTokenExpiresIn) {
+    this.refreshTokenExpiresIn = refreshTokenExpiresIn;
+    return this;
+  }
+
+  /**
+   * Get refreshTokenExpiresIn
+   * @return refreshTokenExpiresIn
+   */
+  @javax.annotation.Nonnull
+  public Integer getRefreshTokenExpiresIn() {
+    return refreshTokenExpiresIn;
+  }
+
+  public void setRefreshTokenExpiresIn(@javax.annotation.Nonnull Integer refreshTokenExpiresIn) {
+    this.refreshTokenExpiresIn = refreshTokenExpiresIn;
+  }
+
 
   public OauthAccessTokenResponseCode responseType(@javax.annotation.Nullable ResponseTypeEnum responseType) {
     this.responseType = responseType;
@@ -237,44 +275,6 @@ public class OauthAccessTokenResponseCode {
   }
 
 
-  public OauthAccessTokenResponseCode refreshToken(@javax.annotation.Nonnull String refreshToken) {
-    this.refreshToken = refreshToken;
-    return this;
-  }
-
-  /**
-   * Get refreshToken
-   * @return refreshToken
-   */
-  @javax.annotation.Nonnull
-  public String getRefreshToken() {
-    return refreshToken;
-  }
-
-  public void setRefreshToken(@javax.annotation.Nonnull String refreshToken) {
-    this.refreshToken = refreshToken;
-  }
-
-
-  public OauthAccessTokenResponseCode refreshTokenExpiresIn(@javax.annotation.Nonnull Integer refreshTokenExpiresIn) {
-    this.refreshTokenExpiresIn = refreshTokenExpiresIn;
-    return this;
-  }
-
-  /**
-   * Get refreshTokenExpiresIn
-   * @return refreshTokenExpiresIn
-   */
-  @javax.annotation.Nonnull
-  public Integer getRefreshTokenExpiresIn() {
-    return refreshTokenExpiresIn;
-  }
-
-  public void setRefreshTokenExpiresIn(@javax.annotation.Nonnull Integer refreshTokenExpiresIn) {
-    this.refreshTokenExpiresIn = refreshTokenExpiresIn;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -285,31 +285,31 @@ public class OauthAccessTokenResponseCode {
       return false;
     }
     OauthAccessTokenResponseCode oauthAccessTokenResponseCode = (OauthAccessTokenResponseCode) o;
-    return Objects.equals(this.responseType, oauthAccessTokenResponseCode.responseType) &&
+    return Objects.equals(this.refreshToken, oauthAccessTokenResponseCode.refreshToken) &&
+        Objects.equals(this.refreshTokenExpiresIn, oauthAccessTokenResponseCode.refreshTokenExpiresIn) &&
+        Objects.equals(this.responseType, oauthAccessTokenResponseCode.responseType) &&
         Objects.equals(this.accessToken, oauthAccessTokenResponseCode.accessToken) &&
         Objects.equals(this.tokenType, oauthAccessTokenResponseCode.tokenType) &&
         Objects.equals(this.expiresIn, oauthAccessTokenResponseCode.expiresIn) &&
-        Objects.equals(this.scope, oauthAccessTokenResponseCode.scope) &&
-        Objects.equals(this.refreshToken, oauthAccessTokenResponseCode.refreshToken) &&
-        Objects.equals(this.refreshTokenExpiresIn, oauthAccessTokenResponseCode.refreshTokenExpiresIn);
+        Objects.equals(this.scope, oauthAccessTokenResponseCode.scope);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(responseType, accessToken, tokenType, expiresIn, scope, refreshToken, refreshTokenExpiresIn);
+    return Objects.hash(refreshToken, refreshTokenExpiresIn, responseType, accessToken, tokenType, expiresIn, scope);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenResponseCode {\n");
+    sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
+    sb.append("    refreshTokenExpiresIn: ").append(toIndentedString(refreshTokenExpiresIn)).append("\n");
     sb.append("    responseType: ").append(toIndentedString(responseType)).append("\n");
     sb.append("    accessToken: ").append(toIndentedString(accessToken)).append("\n");
     sb.append("    tokenType: ").append(toIndentedString(tokenType)).append("\n");
     sb.append("    expiresIn: ").append(toIndentedString(expiresIn)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
-    sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
-    sb.append("    refreshTokenExpiresIn: ").append(toIndentedString(refreshTokenExpiresIn)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -331,18 +331,10 @@ public class OauthAccessTokenResponseCode {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("refresh_token");
-    openapiFields.add("refresh_token_expires_in");
+    openapiFields = new HashSet<String>(Arrays.asList("refresh_token", "refresh_token_expires_in", "response_type", "access_token", "token_type", "expires_in", "scope"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("access_token");
-    openapiRequiredFields.add("token_type");
-    openapiRequiredFields.add("expires_in");
-    openapiRequiredFields.add("scope");
-    openapiRequiredFields.add("refresh_token");
-    openapiRequiredFields.add("refresh_token_expires_in");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("refresh_token", "refresh_token_expires_in", "access_token", "token_type", "expires_in", "scope"));
   }
 
   /**
@@ -354,7 +346,7 @@ public class OauthAccessTokenResponseCode {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!OauthAccessTokenResponseCode.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OauthAccessTokenResponseCode is not found in the empty JSON string", OauthAccessTokenResponseCode.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in OauthAccessTokenResponseCode is not found in the empty JSON string", OauthAccessTokenResponseCode.openapiRequiredFields.toString()));
         }
       }
 
@@ -362,35 +354,35 @@ public class OauthAccessTokenResponseCode {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!OauthAccessTokenResponseCode.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OauthAccessTokenResponseCode` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `OauthAccessTokenResponseCode` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : OauthAccessTokenResponseCode.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("refresh_token").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `refresh_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("refresh_token").toString()));
+      }
       if ((jsonObj.get("response_type") != null && !jsonObj.get("response_type").isJsonNull()) && !jsonObj.get("response_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `response_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_type").toString()));
       }
       // validate the optional field `response_type`
       if (jsonObj.get("response_type") != null && !jsonObj.get("response_type").isJsonNull()) {
         ResponseTypeEnum.validateJsonElement(jsonObj.get("response_type"));
       }
       if (!jsonObj.get("access_token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `access_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_token").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `access_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_token").toString()));
       }
       if (!jsonObj.get("token_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `token_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `token_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_type").toString()));
       }
       if (!jsonObj.get("scope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
-      }
-      if (!jsonObj.get("refresh_token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `refresh_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("refresh_token").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
   }
 

@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * CreateMMMReportResponseData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateMMMReportResponseData {
 
   private @Nullable BulkReportingJobStatus reportStatus;
@@ -35,7 +35,7 @@ public class CreateMMMReportResponseData {
 
   private @Nullable String status;
 
-  public CreateMMMReportResponseData reportStatus(BulkReportingJobStatus reportStatus) {
+  public CreateMMMReportResponseData reportStatus(@Nullable BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
     return this;
   }
@@ -47,15 +47,15 @@ public class CreateMMMReportResponseData {
   @Valid 
   @Schema(name = "report_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("report_status")
-  public BulkReportingJobStatus getReportStatus() {
+  public @Nullable BulkReportingJobStatus getReportStatus() {
     return reportStatus;
   }
 
-  public void setReportStatus(BulkReportingJobStatus reportStatus) {
+  public void setReportStatus(@Nullable BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
   }
 
-  public CreateMMMReportResponseData token(String token) {
+  public CreateMMMReportResponseData token(@Nullable String token) {
     this.token = token;
     return this;
   }
@@ -67,11 +67,11 @@ public class CreateMMMReportResponseData {
   
   @Schema(name = "token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("token")
-  public String getToken() {
+  public @Nullable String getToken() {
     return token;
   }
 
-  public void setToken(String token) {
+  public void setToken(@Nullable String token) {
     this.token = token;
   }
 
@@ -95,7 +95,7 @@ public class CreateMMMReportResponseData {
     this.message = message;
   }
 
-  public CreateMMMReportResponseData status(String status) {
+  public CreateMMMReportResponseData status(@Nullable String status) {
     this.status = status;
     return this;
   }
@@ -107,11 +107,11 @@ public class CreateMMMReportResponseData {
   
   @Schema(name = "status", example = "success", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public String getStatus() {
+  public @Nullable String getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@Nullable String status) {
     this.status = status;
   }
 

@@ -40,16 +40,10 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = PinMediaSourceImagesBase64.class, name = "multiple_image_base64"),
   @JsonSubTypes.Type(value = PinMediaSourceImagesURL.class, name = "multiple_image_urls"),
   @JsonSubTypes.Type(value = PinMediaSourcePinURL.class, name = "pin_url"),
-  @JsonSubTypes.Type(value = PinMediaSourceVideoID.class, name = "video_id"),
-  @JsonSubTypes.Type(value = PinMediaSourceImageBase64.class, name = "PinMediaSourceImageBase64"),
-  @JsonSubTypes.Type(value = PinMediaSourceImageURL.class, name = "PinMediaSourceImageURL"),
-  @JsonSubTypes.Type(value = PinMediaSourceImagesBase64.class, name = "PinMediaSourceImagesBase64"),
-  @JsonSubTypes.Type(value = PinMediaSourceImagesURL.class, name = "PinMediaSourceImagesURL"),
-  @JsonSubTypes.Type(value = PinMediaSourcePinURL.class, name = "PinMediaSourcePinURL"),
-  @JsonSubTypes.Type(value = PinMediaSourceVideoID.class, name = "PinMediaSourceVideoID")
+  @JsonSubTypes.Type(value = PinMediaSourceVideoID.class, name = "video_id")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface PinMediaSource {
     public String getSourceType();
 }

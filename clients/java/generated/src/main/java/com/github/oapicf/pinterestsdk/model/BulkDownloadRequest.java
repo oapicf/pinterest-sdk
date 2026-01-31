@@ -53,7 +53,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Ad entities to get in bulk request.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkDownloadRequest {
   public static final String SERIALIZED_NAME_ENTITY_TYPES = "entity_types";
   @SerializedName(SERIALIZED_NAME_ENTITY_TYPES)
@@ -246,15 +246,10 @@ public class BulkDownloadRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("entity_types");
-    openapiFields.add("entity_ids");
-    openapiFields.add("updated_since");
-    openapiFields.add("campaign_filter");
-    openapiFields.add("output_format");
+    openapiFields = new HashSet<String>(Arrays.asList("entity_types", "entity_ids", "updated_since", "campaign_filter", "output_format"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -266,7 +261,7 @@ public class BulkDownloadRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!BulkDownloadRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in BulkDownloadRequest is not found in the empty JSON string", BulkDownloadRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in BulkDownloadRequest is not found in the empty JSON string", BulkDownloadRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -274,20 +269,20 @@ public class BulkDownloadRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!BulkDownloadRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BulkDownloadRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `BulkDownloadRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the optional json data is an array if present
       if (jsonObj.get("entity_types") != null && !jsonObj.get("entity_types").isJsonNull() && !jsonObj.get("entity_types").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `entity_types` to be an array in the JSON string but got `%s`", jsonObj.get("entity_types").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `entity_types` to be an array in the JSON string but got `%s`", jsonObj.get("entity_types").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("entity_ids") != null && !jsonObj.get("entity_ids").isJsonNull() && !jsonObj.get("entity_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `entity_ids` to be an array in the JSON string but got `%s`", jsonObj.get("entity_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `entity_ids` to be an array in the JSON string but got `%s`", jsonObj.get("entity_ids").toString()));
       }
       if ((jsonObj.get("updated_since") != null && !jsonObj.get("updated_since").isJsonNull()) && !jsonObj.get("updated_since").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `updated_since` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated_since").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `updated_since` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated_since").toString()));
       }
       // validate the optional field `campaign_filter`
       if (jsonObj.get("campaign_filter") != null && !jsonObj.get("campaign_filter").isJsonNull()) {

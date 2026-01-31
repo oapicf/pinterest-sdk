@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type ItemProcessingStatus* = object
-  ## The status of the item processing record
+type ItemProcessingStatus* {.pure.} = enum
+  SUCCESS
+  FAILURE
+  PROCESSING
+
+func `%`*(v: ItemProcessingStatus): JsonNode =
+  result = case v:
+    of ItemProcessingStatus.SUCCESS: %"SUCCESS"
+    of ItemProcessingStatus.FAILURE: %"FAILURE"
+    of ItemProcessingStatus.PROCESSING: %"PROCESSING"
+
+func `$`*(v: ItemProcessingStatus): string =
+  result = case v:
+    of ItemProcessingStatus.SUCCESS: $("SUCCESS")
+    of ItemProcessingStatus.FAILURE: $("FAILURE")
+    of ItemProcessingStatus.PROCESSING: $("PROCESSING")
+
+proc to*(node: JsonNode, T: typedesc[ItemProcessingStatus]): ItemProcessingStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ItemProcessingStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("SUCCESS"):
+    return ItemProcessingStatus.SUCCESS
+  of $("FAILURE"):
+    return ItemProcessingStatus.FAILURE
+  of $("PROCESSING"):
+    return ItemProcessingStatus.PROCESSING
+  else:
+    raise newException(ValueError, "Invalid enum value for ItemProcessingStatus: " & strVal)
+

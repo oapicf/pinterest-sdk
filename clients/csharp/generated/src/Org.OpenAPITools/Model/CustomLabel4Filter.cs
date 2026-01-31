@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "CUSTOM_LABEL_4":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                cUSTOMLABEL4 = new Option<CatalogsProductGroupMultipleStringCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleStringCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            cUSTOMLABEL4 = new Option<CatalogsProductGroupMultipleStringCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleStringCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

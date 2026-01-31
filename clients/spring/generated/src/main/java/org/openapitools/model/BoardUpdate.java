@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BoardUpdate", description = "Board fields for updates")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BoardUpdate {
 
   private @Nullable String name;
@@ -39,7 +39,7 @@ public class BoardUpdate {
     
     SECRET("SECRET");
 
-    private String value;
+    private final String value;
 
     PrivacyEnum(String value) {
       this.value = value;
@@ -68,7 +68,7 @@ public class BoardUpdate {
 
   private @Nullable PrivacyEnum privacy;
 
-  public BoardUpdate name(String name) {
+  public BoardUpdate name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -80,11 +80,11 @@ public class BoardUpdate {
   
   @Schema(name = "name", example = "Summer Recipes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
@@ -108,7 +108,7 @@ public class BoardUpdate {
     this.description = description;
   }
 
-  public BoardUpdate privacy(PrivacyEnum privacy) {
+  public BoardUpdate privacy(@Nullable PrivacyEnum privacy) {
     this.privacy = privacy;
     return this;
   }
@@ -120,11 +120,11 @@ public class BoardUpdate {
   
   @Schema(name = "privacy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("privacy")
-  public PrivacyEnum getPrivacy() {
+  public @Nullable PrivacyEnum getPrivacy() {
     return privacy;
   }
 
-  public void setPrivacy(PrivacyEnum privacy) {
+  public void setPrivacy(@Nullable PrivacyEnum privacy) {
     this.privacy = privacy;
   }
 

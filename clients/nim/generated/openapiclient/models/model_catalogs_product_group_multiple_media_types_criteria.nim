@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_media_type
 
 type CatalogsProductGroupMultipleMediaTypesCriteria* = object
   ## 
   values*: seq[MediaType]
-  negated*: bool
+  negated*: Option[bool]
+

@@ -109,7 +109,7 @@ namespace Org.OpenAPITools.Models
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name="status", EmitDefaultValue=true)]
-        public CatalogsStatus Status { get; set; }
+        public CatalogsStatus Status { get; set; } = "ACTIVE";
 
         /// <summary>
         /// Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.

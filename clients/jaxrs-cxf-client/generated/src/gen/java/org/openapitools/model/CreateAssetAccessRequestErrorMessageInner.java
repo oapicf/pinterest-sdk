@@ -11,13 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CreateAssetAccessRequestErrorMessageInner  {
   
-  @ApiModelProperty(example = "2932", value = "Error code associated with the error in requesting asset access.")
  /**
-   * Error code associated with the error in requesting asset access.
-  **/
+  * Error code associated with the error in requesting asset access.
+  */
+  @ApiModelProperty(example = "2932", value = "Error code associated with the error in requesting asset access.")
+
   private Integer code;
 
   @ApiModelProperty(example = "[\"Invalid asset id: 549760723247\",\"Invalid asset id: 546760723248\"]", value = "")
+
   private List<String> messages = new ArrayList<>();
  /**
    * Error code associated with the error in requesting asset access.

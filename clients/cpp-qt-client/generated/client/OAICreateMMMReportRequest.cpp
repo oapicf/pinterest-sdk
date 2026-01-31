@@ -34,6 +34,9 @@ OAICreateMMMReportRequest::~OAICreateMMMReportRequest() {}
 
 void OAICreateMMMReportRequest::initializeModel() {
 
+    m_countries_isSet = false;
+    m_countries_isValid = false;
+
     m_report_name_isSet = false;
     m_report_name_isValid = false;
 
@@ -54,9 +57,6 @@ void OAICreateMMMReportRequest::initializeModel() {
 
     m_columns_isSet = false;
     m_columns_isValid = false;
-
-    m_countries_isSet = false;
-    m_countries_isValid = false;
 }
 
 void OAICreateMMMReportRequest::fromJson(QString jsonString) {
@@ -67,6 +67,9 @@ void OAICreateMMMReportRequest::fromJson(QString jsonString) {
 }
 
 void OAICreateMMMReportRequest::fromJsonObject(QJsonObject json) {
+
+    m_countries_isValid = ::OpenAPI::fromJsonValue(m_countries, json[QString("countries")]);
+    m_countries_isSet = !json[QString("countries")].isNull() && m_countries_isValid;
 
     m_report_name_isValid = ::OpenAPI::fromJsonValue(m_report_name, json[QString("report_name")]);
     m_report_name_isSet = !json[QString("report_name")].isNull() && m_report_name_isValid;
@@ -88,9 +91,6 @@ void OAICreateMMMReportRequest::fromJsonObject(QJsonObject json) {
 
     m_columns_isValid = ::OpenAPI::fromJsonValue(m_columns, json[QString("columns")]);
     m_columns_isSet = !json[QString("columns")].isNull() && m_columns_isValid;
-
-    m_countries_isValid = ::OpenAPI::fromJsonValue(m_countries, json[QString("countries")]);
-    m_countries_isSet = !json[QString("countries")].isNull() && m_countries_isValid;
 }
 
 QString OAICreateMMMReportRequest::asJson() const {
@@ -102,6 +102,9 @@ QString OAICreateMMMReportRequest::asJson() const {
 
 QJsonObject OAICreateMMMReportRequest::asJsonObject() const {
     QJsonObject obj;
+    if (m_countries.size() > 0) {
+        obj.insert(QString("countries"), ::OpenAPI::toJsonValue(m_countries));
+    }
     if (m_report_name_isSet) {
         obj.insert(QString("report_name"), ::OpenAPI::toJsonValue(m_report_name));
     }
@@ -123,10 +126,23 @@ QJsonObject OAICreateMMMReportRequest::asJsonObject() const {
     if (m_columns.size() > 0) {
         obj.insert(QString("columns"), ::OpenAPI::toJsonValue(m_columns));
     }
-    if (m_countries.size() > 0) {
-        obj.insert(QString("countries"), ::OpenAPI::toJsonValue(m_countries));
-    }
     return obj;
+}
+
+QList<OAITargetingAdvertiserCountry> OAICreateMMMReportRequest::getCountries() const {
+    return m_countries;
+}
+void OAICreateMMMReportRequest::setCountries(const QList<OAITargetingAdvertiserCountry> &countries) {
+    m_countries = countries;
+    m_countries_isSet = true;
+}
+
+bool OAICreateMMMReportRequest::is_countries_Set() const{
+    return m_countries_isSet;
+}
+
+bool OAICreateMMMReportRequest::is_countries_Valid() const{
+    return m_countries_isValid;
 }
 
 QString OAICreateMMMReportRequest::getReportName() const {
@@ -241,25 +257,14 @@ bool OAICreateMMMReportRequest::is_columns_Valid() const{
     return m_columns_isValid;
 }
 
-QList<OAITargetingAdvertiserCountry> OAICreateMMMReportRequest::getCountries() const {
-    return m_countries;
-}
-void OAICreateMMMReportRequest::setCountries(const QList<OAITargetingAdvertiserCountry> &countries) {
-    m_countries = countries;
-    m_countries_isSet = true;
-}
-
-bool OAICreateMMMReportRequest::is_countries_Set() const{
-    return m_countries_isSet;
-}
-
-bool OAICreateMMMReportRequest::is_countries_Valid() const{
-    return m_countries_isValid;
-}
-
 bool OAICreateMMMReportRequest::isSet() const {
     bool isObjectUpdated = false;
     do {
+        if (m_countries.size() > 0) {
+            isObjectUpdated = true;
+            break;
+        }
+
         if (m_report_name_isSet) {
             isObjectUpdated = true;
             break;
@@ -291,11 +296,6 @@ bool OAICreateMMMReportRequest::isSet() const {
         }
 
         if (m_columns.size() > 0) {
-            isObjectUpdated = true;
-            break;
-        }
-
-        if (m_countries.size() > 0) {
             isObjectUpdated = true;
             break;
         }

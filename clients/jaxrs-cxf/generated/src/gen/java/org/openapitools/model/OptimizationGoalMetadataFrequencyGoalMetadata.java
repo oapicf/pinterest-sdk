@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OptimizationGoalMetadataFrequencyGoalMetadata  {
   
   @ApiModelProperty(value = "")
+
   private Integer frequency;
 
 public enum TimerangeEnum {
@@ -48,10 +49,11 @@ THIRTY_DAY(String.valueOf("THIRTY_DAY")), DAY(String.valueOf("DAY")), SEVEN_DAY(
     }
 }
 
-  @ApiModelProperty(example = "DAY", value = "User entity counts time range")
  /**
-   * User entity counts time range
-  **/
+  * User entity counts time range
+  */
+  @ApiModelProperty(example = "DAY", value = "User entity counts time range")
+
   private TimerangeEnum timerange;
  /**
    * Get frequency

@@ -21,11 +21,18 @@ using Org.OpenAPITools.Converters;
 namespace Org.OpenAPITools.Models
 { 
     /// <summary>
-    /// A request to receive a client token.
+    /// 
     /// </summary>
     [DataContract]
     public partial class OauthAccessTokenRequestClientCredentials : IEquatable<OauthAccessTokenRequestClientCredentials>
     {
+        /// <summary>
+        /// Gets or Sets Scope
+        /// </summary>
+        [Required]
+        [DataMember(Name="scope", EmitDefaultValue=false)]
+        public string Scope { get; set; }
+
 
         /// <summary>
         /// Gets or Sets GrantType
@@ -62,13 +69,6 @@ namespace Org.OpenAPITools.Models
         public GrantTypeEnum GrantType { get; set; }
 
         /// <summary>
-        /// Gets or Sets Scope
-        /// </summary>
-        [Required]
-        [DataMember(Name="scope", EmitDefaultValue=false)]
-        public string Scope { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -76,8 +76,8 @@ namespace Org.OpenAPITools.Models
         {
             var sb = new StringBuilder();
             sb.Append("class OauthAccessTokenRequestClientCredentials {\n");
-            sb.Append("  GrantType: ").Append(GrantType).Append("\n");
             sb.Append("  Scope: ").Append(Scope).Append("\n");
+            sb.Append("  GrantType: ").Append(GrantType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -115,14 +115,14 @@ namespace Org.OpenAPITools.Models
 
             return 
                 (
-                    GrantType == other.GrantType ||
-                    
-                    GrantType.Equals(other.GrantType)
-                ) && 
-                (
                     Scope == other.Scope ||
                     Scope != null &&
                     Scope.Equals(other.Scope)
+                ) && 
+                (
+                    GrantType == other.GrantType ||
+                    
+                    GrantType.Equals(other.GrantType)
                 );
         }
 
@@ -136,10 +136,10 @@ namespace Org.OpenAPITools.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    
-                    hashCode = hashCode * 59 + GrantType.GetHashCode();
                     if (Scope != null)
                     hashCode = hashCode * 59 + Scope.GetHashCode();
+                    
+                    hashCode = hashCode * 59 + GrantType.GetHashCode();
                 return hashCode;
             }
         }

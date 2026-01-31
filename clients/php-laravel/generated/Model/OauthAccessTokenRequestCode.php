@@ -25,7 +25,6 @@ namespace OpenAPI\Server\Model;
 
 /**
  * OauthAccessTokenRequestCode
- * @description A request to exchange an authorization code for an access token.
  */
 use Crell\Serde\Renaming\Cases;
 use Crell\Serde\Attributes as Serde;
@@ -36,19 +35,19 @@ class OauthAccessTokenRequestCode
     /**
     *
     * 
-    * @param string $grantType
-    *
-    * 
     * @param string $code
     *
     * 
     * @param string $redirectUri
+    *
+    * 
+    * @param \OpenAPI\Server\Model\OauthAccessTokenRequestGrantType $grantType
     */
 
     public function __construct(
-        public string $grantType,
         public string $code,
         public string $redirectUri,
+        public \OpenAPI\Server\Model\OauthAccessTokenRequestGrantType $grantType,
     ) {}
 }
 

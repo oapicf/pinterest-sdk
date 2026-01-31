@@ -27,21 +27,17 @@ import javax.validation.Valid;
  * ConversionTagCreate
  */
 @JsonPropertyOrder({
-  ConversionTagCreate.JSON_PROPERTY_NAME,
   ConversionTagCreate.JSON_PROPERTY_AEM_ENABLED,
   ConversionTagCreate.JSON_PROPERTY_MD_FREQUENCY,
   ConversionTagCreate.JSON_PROPERTY_AEM_FNLN_ENABLED,
   ConversionTagCreate.JSON_PROPERTY_AEM_PH_ENABLED,
   ConversionTagCreate.JSON_PROPERTY_AEM_GE_ENABLED,
   ConversionTagCreate.JSON_PROPERTY_AEM_DB_ENABLED,
-  ConversionTagCreate.JSON_PROPERTY_AEM_LOC_ENABLED
+  ConversionTagCreate.JSON_PROPERTY_AEM_LOC_ENABLED,
+  ConversionTagCreate.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagCreate   {
-  public static final String JSON_PROPERTY_NAME = "name";
-  @JsonProperty(JSON_PROPERTY_NAME)
-  private String name;
-
   public static final String JSON_PROPERTY_AEM_ENABLED = "aem_enabled";
   @JsonProperty(JSON_PROPERTY_AEM_ENABLED)
   private Boolean aemEnabled = false;
@@ -70,25 +66,9 @@ public class ConversionTagCreate   {
   @JsonProperty(JSON_PROPERTY_AEM_LOC_ENABLED)
   private Boolean aemLocEnabled = false;
 
-  public ConversionTagCreate name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Conversion tag name.
-   * @return name
-   **/
-  @JsonProperty(value = "name")
-  @ApiModelProperty(example = "ACME Tools Tag", required = true, value = "Conversion tag name.")
-  @NotNull 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
+  public static final String JSON_PROPERTY_NAME = "name";
+  @JsonProperty(JSON_PROPERTY_NAME)
+  private String name;
 
   public ConversionTagCreate aemEnabled(Boolean aemEnabled) {
     this.aemEnabled = aemEnabled;
@@ -230,6 +210,26 @@ public class ConversionTagCreate   {
     this.aemLocEnabled = aemLocEnabled;
   }
 
+  public ConversionTagCreate name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Conversion tag name.
+   * @return name
+   **/
+  @JsonProperty(value = "name")
+  @ApiModelProperty(example = "ACME Tools Tag", required = true, value = "Conversion tag name.")
+  @NotNull 
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -240,19 +240,19 @@ public class ConversionTagCreate   {
       return false;
     }
     ConversionTagCreate conversionTagCreate = (ConversionTagCreate) o;
-    return Objects.equals(this.name, conversionTagCreate.name) &&
-        Objects.equals(this.aemEnabled, conversionTagCreate.aemEnabled) &&
+    return Objects.equals(this.aemEnabled, conversionTagCreate.aemEnabled) &&
         Objects.equals(this.mdFrequency, conversionTagCreate.mdFrequency) &&
         Objects.equals(this.aemFnlnEnabled, conversionTagCreate.aemFnlnEnabled) &&
         Objects.equals(this.aemPhEnabled, conversionTagCreate.aemPhEnabled) &&
         Objects.equals(this.aemGeEnabled, conversionTagCreate.aemGeEnabled) &&
         Objects.equals(this.aemDbEnabled, conversionTagCreate.aemDbEnabled) &&
-        Objects.equals(this.aemLocEnabled, conversionTagCreate.aemLocEnabled);
+        Objects.equals(this.aemLocEnabled, conversionTagCreate.aemLocEnabled) &&
+        Objects.equals(this.name, conversionTagCreate.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, aemEnabled, mdFrequency, aemFnlnEnabled, aemPhEnabled, aemGeEnabled, aemDbEnabled, aemLocEnabled);
+    return Objects.hash(aemEnabled, mdFrequency, aemFnlnEnabled, aemPhEnabled, aemGeEnabled, aemDbEnabled, aemLocEnabled, name);
   }
 
   @Override
@@ -260,7 +260,6 @@ public class ConversionTagCreate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagCreate {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    aemEnabled: ").append(toIndentedString(aemEnabled)).append("\n");
     sb.append("    mdFrequency: ").append(toIndentedString(mdFrequency)).append("\n");
     sb.append("    aemFnlnEnabled: ").append(toIndentedString(aemFnlnEnabled)).append("\n");
@@ -268,6 +267,7 @@ public class ConversionTagCreate   {
     sb.append("    aemGeEnabled: ").append(toIndentedString(aemGeEnabled)).append("\n");
     sb.append("    aemDbEnabled: ").append(toIndentedString(aemDbEnabled)).append("\n");
     sb.append("    aemLocEnabled: ").append(toIndentedString(aemLocEnabled)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

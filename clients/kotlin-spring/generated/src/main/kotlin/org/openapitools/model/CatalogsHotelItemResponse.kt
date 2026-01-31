@@ -42,7 +42,7 @@ data class CatalogsHotelItemResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("attributes") val attributes: CatalogsHotelAttributes? = null
-    ) {
+) {
 
 }
 

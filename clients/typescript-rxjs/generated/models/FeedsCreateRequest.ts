@@ -17,7 +17,7 @@ import type {
     CatalogsFeedsCreateRequest,
     CatalogsFeedsCreateRequestDefaultLocale,
     CatalogsFormat,
-    CatalogsStatus & object,
+    CatalogsStatus,
     CatalogsType,
     CatalogsVerticalFeedsCreateRequest,
     Country,

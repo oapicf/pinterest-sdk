@@ -59,7 +59,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelReportParametersReport extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsHotelReportParametersReport.class.getName());
 
@@ -115,7 +115,7 @@ public class CatalogsHotelReportParametersReport extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsReportFeedIngestionFilter'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsReportFeedIngestionFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsReportFeedIngestionFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsReportFeedIngestionFilter'", e);
                     }
                     // deserialize CatalogsReportDistributionIssueFilter
@@ -127,7 +127,7 @@ public class CatalogsHotelReportParametersReport extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsReportDistributionIssueFilter'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsReportDistributionIssueFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsReportDistributionIssueFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsReportDistributionIssueFilter'", e);
                     }
 
@@ -137,7 +137,7 @@ public class CatalogsHotelReportParametersReport extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CatalogsHotelReportParametersReport: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CatalogsHotelReportParametersReport: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -236,7 +236,7 @@ public class CatalogsHotelReportParametersReport extends AbstractOpenApiSchema {
             CatalogsReportFeedIngestionFilter.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsReportFeedIngestionFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsReportFeedIngestionFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsReportDistributionIssueFilter
@@ -244,11 +244,11 @@ public class CatalogsHotelReportParametersReport extends AbstractOpenApiSchema {
             CatalogsReportDistributionIssueFilter.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsReportDistributionIssueFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsReportDistributionIssueFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CatalogsHotelReportParametersReport with oneOf schemas: CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CatalogsHotelReportParametersReport with oneOf schemas: CatalogsReportDistributionIssueFilter, CatalogsReportFeedIngestionFilter. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

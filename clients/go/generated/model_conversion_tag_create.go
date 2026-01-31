@@ -22,8 +22,6 @@ var _ MappedNullable = &ConversionTagCreate{}
 
 // ConversionTagCreate struct for ConversionTagCreate
 type ConversionTagCreate struct {
-	// Conversion tag name.
-	Name string `json:"name"`
 	// Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
 	AemEnabled NullableBool `json:"aem_enabled,omitempty"`
 	// Metadata ingestion frequency.
@@ -38,6 +36,8 @@ type ConversionTagCreate struct {
 	AemDbEnabled NullableBool `json:"aem_db_enabled,omitempty"`
 	// Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
 	AemLocEnabled NullableBool `json:"aem_loc_enabled,omitempty"`
+	// Conversion tag name.
+	Name string `json:"name"`
 }
 
 type _ConversionTagCreate ConversionTagCreate
@@ -62,6 +62,7 @@ func NewConversionTagCreate(name string) *ConversionTagCreate {
 	this.AemDbEnabled = *NewNullableBool(&aemDbEnabled)
 	var aemLocEnabled bool = false
 	this.AemLocEnabled = *NewNullableBool(&aemLocEnabled)
+	this.Name = name
 	return &this
 }
 
@@ -85,30 +86,6 @@ func NewConversionTagCreateWithDefaults() *ConversionTagCreate {
 	var aemLocEnabled bool = false
 	this.AemLocEnabled = *NewNullableBool(&aemLocEnabled)
 	return &this
-}
-
-// GetName returns the Name field value
-func (o *ConversionTagCreate) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *ConversionTagCreate) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *ConversionTagCreate) SetName(v string) {
-	o.Name = v
 }
 
 // GetAemEnabled returns the AemEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -405,6 +382,30 @@ func (o *ConversionTagCreate) UnsetAemLocEnabled() {
 	o.AemLocEnabled.Unset()
 }
 
+// GetName returns the Name field value
+func (o *ConversionTagCreate) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *ConversionTagCreate) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *ConversionTagCreate) SetName(v string) {
+	o.Name = v
+}
+
 func (o ConversionTagCreate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -415,7 +416,6 @@ func (o ConversionTagCreate) MarshalJSON() ([]byte, error) {
 
 func (o ConversionTagCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
 	if o.AemEnabled.IsSet() {
 		toSerialize["aem_enabled"] = o.AemEnabled.Get()
 	}
@@ -437,6 +437,7 @@ func (o ConversionTagCreate) ToMap() (map[string]interface{}, error) {
 	if o.AemLocEnabled.IsSet() {
 		toSerialize["aem_loc_enabled"] = o.AemLocEnabled.Get()
 	}
+	toSerialize["name"] = o.Name
 	return toSerialize, nil
 }
 

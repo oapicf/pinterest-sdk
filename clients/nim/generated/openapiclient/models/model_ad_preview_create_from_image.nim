@@ -9,9 +9,28 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AdPreviewCreateFromImage* = object
   ## 
   imageUrl*: string ## Image URL.
   title*: string ## Title displayed below ad.
+
+
+# Custom JSON deserialization for AdPreviewCreateFromImage with custom field names
+proc to*(node: JsonNode, T: typedesc[AdPreviewCreateFromImage]): AdPreviewCreateFromImage =
+  result = AdPreviewCreateFromImage()
+  if node.kind == JObject:
+    if node.hasKey("image_url"):
+      result.imageUrl = to(node["image_url"], string)
+    if node.hasKey("title"):
+      result.title = to(node["title"], string)
+
+# Custom JSON serialization for AdPreviewCreateFromImage with custom field names
+proc `%`*(obj: AdPreviewCreateFromImage): JsonNode =
+  result = newJObject()
+  result["image_url"] = %obj.imageUrl
+  result["title"] = %obj.title
+

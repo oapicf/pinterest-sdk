@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "AVAILABILITY":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aVAILABILITY = new Option<CatalogsProductGroupMultipleStringCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleStringCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            aVAILABILITY = new Option<CatalogsProductGroupMultipleStringCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleStringCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

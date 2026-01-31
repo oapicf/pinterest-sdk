@@ -9,14 +9,47 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_campaign_summary_status
 import model_objective_type
 
 type BulkDownloadRequestCampaignFilter* = object
   ## 
-  startTime*: string ## Unix UTC timestamp.
-  endTime*: string ## Unix UTC timestamp.
-  name*: string ## Campaign name
-  campaignStatus*: seq[CampaignSummaryStatus]
-  objectiveType*: seq[ObjectiveType]
+  startTime*: Option[string] ## Unix UTC timestamp.
+  endTime*: Option[string] ## Unix UTC timestamp.
+  name*: Option[string] ## Campaign name
+  campaignStatus*: Option[seq[CampaignSummaryStatus]]
+  objectiveType*: Option[seq[ObjectiveType]]
+
+
+# Custom JSON deserialization for BulkDownloadRequestCampaignFilter with custom field names
+proc to*(node: JsonNode, T: typedesc[BulkDownloadRequestCampaignFilter]): BulkDownloadRequestCampaignFilter =
+  result = BulkDownloadRequestCampaignFilter()
+  if node.kind == JObject:
+    if node.hasKey("start_time") and node["start_time"].kind != JNull:
+      result.startTime = some(to(node["start_time"], typeof(result.startTime.get())))
+    if node.hasKey("end_time") and node["end_time"].kind != JNull:
+      result.endTime = some(to(node["end_time"], typeof(result.endTime.get())))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("campaign_status") and node["campaign_status"].kind != JNull:
+      result.campaignStatus = some(to(node["campaign_status"], typeof(result.campaignStatus.get())))
+    if node.hasKey("objective_type") and node["objective_type"].kind != JNull:
+      result.objectiveType = some(to(node["objective_type"], typeof(result.objectiveType.get())))
+
+# Custom JSON serialization for BulkDownloadRequestCampaignFilter with custom field names
+proc `%`*(obj: BulkDownloadRequestCampaignFilter): JsonNode =
+  result = newJObject()
+  if obj.startTime.isSome():
+    result["start_time"] = %obj.startTime.get()
+  if obj.endTime.isSome():
+    result["end_time"] = %obj.endTime.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.campaignStatus.isSome():
+    result["campaign_status"] = %obj.campaignStatus.get()
+  if obj.objectiveType.isSome():
+    result["objective_type"] = %obj.objectiveType.get()
+

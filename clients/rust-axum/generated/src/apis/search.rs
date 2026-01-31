@@ -55,6 +55,8 @@ pub enum SearchUserPinsSlashListResponse {
 }
 
 
+
+
 /// Search
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -64,6 +66,7 @@ pub trait Search<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// SearchPartnerPins - GET /v5/search/partner/pins
     async fn search_partner_pins(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -75,6 +78,7 @@ pub trait Search<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// SearchUserBoardsSlashGet - GET /v5/search/boards
     async fn search_user_boards_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -86,6 +90,7 @@ pub trait Search<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorH
     /// SearchUserPinsSlashList - GET /v5/search/pins
     async fn search_user_pins_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

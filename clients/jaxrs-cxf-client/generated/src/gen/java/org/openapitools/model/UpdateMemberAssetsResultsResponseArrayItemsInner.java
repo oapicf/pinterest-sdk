@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UpdateMemberAssetsResultsResponseArrayItemsInner  {
   
   @ApiModelProperty(value = "")
+
   private UsersForIndividualAssetResponse response;
  /**
    * Get response

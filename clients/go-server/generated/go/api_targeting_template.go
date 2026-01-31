@@ -53,22 +53,51 @@ func NewTargetingTemplateAPIController(s TargetingTemplateAPIServicer, opts ...T
 func (c *TargetingTemplateAPIController) Routes() Routes {
 	return Routes{
 		"TargetingTemplateList": Route{
+			"TargetingTemplateList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/targeting_templates",
 			c.TargetingTemplateList,
 		},
 		"TargetingTemplateCreate": Route{
+			"TargetingTemplateCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/targeting_templates",
 			c.TargetingTemplateCreate,
 		},
 		"TargetingTemplateUpdate": Route{
+			"TargetingTemplateUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/targeting_templates",
 			c.TargetingTemplateUpdate,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the TargetingTemplateAPIController
+func (c *TargetingTemplateAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"TargetingTemplateList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/targeting_templates",
+			c.TargetingTemplateList,
+		},
+		Route{
+			"TargetingTemplateCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/targeting_templates",
+			c.TargetingTemplateCreate,
+		},
+		Route{
+			"TargetingTemplateUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/targeting_templates",
+			c.TargetingTemplateUpdate,
+		},
+	}
+}
+
+
 
 // TargetingTemplateList - List targeting templates
 func (c *TargetingTemplateAPIController) TargetingTemplateList(w http.ResponseWriter, r *http.Request) {

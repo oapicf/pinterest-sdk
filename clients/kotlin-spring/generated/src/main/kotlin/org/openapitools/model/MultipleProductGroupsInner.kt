@@ -62,7 +62,7 @@ data class MultipleProductGroupsInner(
     @Schema(example = "null", description = "boolean indicator of whether the product group is being featured or not")
     @Deprecated(message = "")
     @get:JsonProperty("is_featured") val isFeatured: kotlin.Boolean? = false
-    ) {
+) {
 
 }
 

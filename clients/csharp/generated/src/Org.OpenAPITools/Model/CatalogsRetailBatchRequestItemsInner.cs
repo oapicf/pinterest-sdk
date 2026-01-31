@@ -210,10 +210,6 @@ namespace Org.OpenAPITools.Model
             CatalogsDeleteRetailItem? catalogsDeleteRetailItem = null;
             CatalogsUpdateRetailItem? catalogsUpdateRetailItem = null;
             CatalogsUpsertRetailItem? catalogsUpsertRetailItem = null;
-            CatalogsCreateRetailItem? catalogsCreateRetailItem = null;
-            CatalogsDeleteRetailItem? catalogsDeleteRetailItem = null;
-            CatalogsUpdateRetailItem? catalogsUpdateRetailItem = null;
-            CatalogsUpsertRetailItem? catalogsUpsertRetailItem = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -247,26 +243,6 @@ namespace Org.OpenAPITools.Model
                             catalogsUpdateRetailItem = JsonSerializer.Deserialize<CatalogsUpdateRetailItem>(ref utf8JsonReaderCatalogsUpdateRetailItem, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("UPSERT") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsUpsertRetailItem = utf8JsonReader;
-                            catalogsUpsertRetailItem = JsonSerializer.Deserialize<CatalogsUpsertRetailItem>(ref utf8JsonReaderCatalogsUpsertRetailItem, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsCreateRetailItem") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsCreateRetailItem = utf8JsonReader;
-                            catalogsCreateRetailItem = JsonSerializer.Deserialize<CatalogsCreateRetailItem>(ref utf8JsonReaderCatalogsCreateRetailItem, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsDeleteRetailItem") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsDeleteRetailItem = utf8JsonReader;
-                            catalogsDeleteRetailItem = JsonSerializer.Deserialize<CatalogsDeleteRetailItem>(ref utf8JsonReaderCatalogsDeleteRetailItem, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsUpdateRetailItem") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsUpdateRetailItem = utf8JsonReader;
-                            catalogsUpdateRetailItem = JsonSerializer.Deserialize<CatalogsUpdateRetailItem>(ref utf8JsonReaderCatalogsUpdateRetailItem, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsUpsertRetailItem") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsUpsertRetailItem = utf8JsonReader;
                             catalogsUpsertRetailItem = JsonSerializer.Deserialize<CatalogsUpsertRetailItem>(ref utf8JsonReaderCatalogsUpsertRetailItem, jsonSerializerOptions);
@@ -307,31 +283,6 @@ namespace Org.OpenAPITools.Model
             if (operation.IsSet && operation.Value == null)
                 throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsRetailBatchRequestItemsInner.");
 
-            if (catalogsCreateRetailItem != null)
-                return new CatalogsRetailBatchRequestItemsInner(catalogsCreateRetailItem);
-
-            if (catalogsDeleteRetailItem != null)
-                return new CatalogsRetailBatchRequestItemsInner(catalogsDeleteRetailItem);
-
-            if (catalogsUpdateRetailItem != null)
-                return new CatalogsRetailBatchRequestItemsInner(catalogsUpdateRetailItem);
-
-            if (catalogsUpsertRetailItem != null)
-                return new CatalogsRetailBatchRequestItemsInner(catalogsUpsertRetailItem);
-
-            if (catalogsCreateRetailItem != null)
-                return new CatalogsRetailBatchRequestItemsInner(catalogsCreateRetailItem);
-
-            if (catalogsDeleteRetailItem != null)
-                return new CatalogsRetailBatchRequestItemsInner(catalogsDeleteRetailItem);
-
-            if (catalogsUpdateRetailItem != null)
-                return new CatalogsRetailBatchRequestItemsInner(catalogsUpdateRetailItem);
-
-            if (catalogsUpsertRetailItem != null)
-                return new CatalogsRetailBatchRequestItemsInner(catalogsUpsertRetailItem);
-
-            throw new JsonException();
             Option<CatalogsCreateRetailItem?> catalogsCreateRetailItemParsedValue = catalogsCreateRetailItem == null
                 ? default
                 : new Option<CatalogsCreateRetailItem?>(catalogsCreateRetailItem);

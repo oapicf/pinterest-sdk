@@ -54,32 +54,75 @@ func NewProductGroupPromotionsAPIController(s ProductGroupPromotionsAPIServicer,
 func (c *ProductGroupPromotionsAPIController) Routes() Routes {
 	return Routes{
 		"ProductGroupPromotionsList": Route{
+			"ProductGroupPromotionsList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/product_group_promotions",
 			c.ProductGroupPromotionsList,
 		},
 		"ProductGroupPromotionsCreate": Route{
+			"ProductGroupPromotionsCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/product_group_promotions",
 			c.ProductGroupPromotionsCreate,
 		},
 		"ProductGroupPromotionsUpdate": Route{
+			"ProductGroupPromotionsUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/product_group_promotions",
 			c.ProductGroupPromotionsUpdate,
 		},
 		"ProductGroupPromotionsGet": Route{
+			"ProductGroupPromotionsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}",
 			c.ProductGroupPromotionsGet,
 		},
 		"ProductGroupsAnalytics": Route{
+			"ProductGroupsAnalytics",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/product_groups/analytics",
 			c.ProductGroupsAnalytics,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the ProductGroupPromotionsAPIController
+func (c *ProductGroupPromotionsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"ProductGroupPromotionsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/product_group_promotions",
+			c.ProductGroupPromotionsList,
+		},
+		Route{
+			"ProductGroupPromotionsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/product_group_promotions",
+			c.ProductGroupPromotionsCreate,
+		},
+		Route{
+			"ProductGroupPromotionsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/product_group_promotions",
+			c.ProductGroupPromotionsUpdate,
+		},
+		Route{
+			"ProductGroupPromotionsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id}",
+			c.ProductGroupPromotionsGet,
+		},
+		Route{
+			"ProductGroupsAnalytics",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/product_groups/analytics",
+			c.ProductGroupsAnalytics,
+		},
+	}
+}
+
+
 
 // ProductGroupPromotionsList - Get product group promotions
 func (c *ProductGroupPromotionsAPIController) ProductGroupPromotionsList(w http.ResponseWriter, r *http.Request) {

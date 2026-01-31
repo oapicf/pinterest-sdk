@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -50,7 +50,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest {
   @SerializedName("catalog_id")
   private String catalogId = null;
   @SerializedName("status")
-  private CatalogsStatus status = null;
+  private CatalogsStatus status = ACTIVE;
 
   /**
    **/

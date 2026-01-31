@@ -207,8 +207,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "items":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                items = new Option<List<PinMediaSourceImagesBase64ItemsInner>?>(JsonSerializer.Deserialize<List<PinMediaSourceImagesBase64ItemsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            items = new Option<List<PinMediaSourceImagesBase64ItemsInner>?>(JsonSerializer.Deserialize<List<PinMediaSourceImagesBase64ItemsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "source_type":
                             string? sourceTypeRawValue = utf8JsonReader.GetString();
@@ -216,8 +215,7 @@ namespace Org.OpenAPITools.Model
                                 sourceType = new Option<PinMediaSourceImagesBase64.SourceTypeEnum?>(PinMediaSourceImagesBase64.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue));
                             break;
                         case "index":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                index = new Option<int?>(utf8JsonReader.GetInt32());
+                            index = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

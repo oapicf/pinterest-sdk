@@ -15,8 +15,8 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.AudienceCreateRequest1AudienceType
 import org.openapitools.client.models.AudienceRule
+import org.openapitools.client.models.AudienceType
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -26,7 +26,7 @@ import com.squareup.moshi.JsonClass
  *
  * @param name Audience name.
  * @param rule 
- * @param audienceType 
+ * @param audienceType <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
  * @param adAccountId Ad account ID.
  * @param description Audience description.
  */
@@ -41,8 +41,9 @@ data class AudienceCreateRequest (
     @Json(name = "rule")
     val rule: AudienceRule,
 
+    /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
     @Json(name = "audience_type")
-    val audienceType: AudienceCreateRequest1AudienceType,
+    val audienceType: AudienceType,
 
     /* Ad account ID. */
     @Json(name = "ad_account_id")

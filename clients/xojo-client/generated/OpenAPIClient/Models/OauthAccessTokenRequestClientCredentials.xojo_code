@@ -2,12 +2,12 @@
 Protected Class OauthAccessTokenRequestClientCredentials
 
 	#tag Property, Flags = &h0
-		grant_type As String
+		scope As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
-		scope As String
+		grant_type As String
 	#tag EndProperty
 
 

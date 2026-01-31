@@ -9,12 +9,37 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_hotel_product_group_filter_keys
 import model_catalogs_hotel_product_group_filters_all_of
 import model_catalogs_hotel_product_group_filters_any_of
 
+# AnyOf type
+type CatalogsHotelProductGroupFiltersKind* {.pure.} = enum
+  CatalogsHotelProductGroupFiltersAnyOfVariant
+  CatalogsHotelProductGroupFiltersAllOfVariant
+
 type CatalogsHotelProductGroupFilters* = object
   ## Object holding a group of filters for a hotel product group
-  anyOf*: seq[CatalogsHotelProductGroupFilterKeys]
-  allOf*: seq[CatalogsHotelProductGroupFilterKeys]
+  case kind*: CatalogsHotelProductGroupFiltersKind
+  of CatalogsHotelProductGroupFiltersKind.CatalogsHotelProductGroupFiltersAnyOfVariant:
+    CatalogsHotelProductGroupFiltersAnyOfValue*: CatalogsHotelProductGroupFiltersAnyOf
+  of CatalogsHotelProductGroupFiltersKind.CatalogsHotelProductGroupFiltersAllOfVariant:
+    CatalogsHotelProductGroupFiltersAllOfValue*: CatalogsHotelProductGroupFiltersAllOf
+
+proc to*(node: JsonNode, T: typedesc[CatalogsHotelProductGroupFilters]): CatalogsHotelProductGroupFilters =
+  ## Custom deserializer for anyOf type - tries each variant
+  try:
+    return CatalogsHotelProductGroupFilters(kind: CatalogsHotelProductGroupFiltersKind.CatalogsHotelProductGroupFiltersAnyOfVariant, CatalogsHotelProductGroupFiltersAnyOfValue: to(node, CatalogsHotelProductGroupFiltersAnyOf))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelProductGroupFiltersAnyOf: ", e.msg
+  try:
+    return CatalogsHotelProductGroupFilters(kind: CatalogsHotelProductGroupFiltersKind.CatalogsHotelProductGroupFiltersAllOfVariant, CatalogsHotelProductGroupFiltersAllOfValue: to(node, CatalogsHotelProductGroupFiltersAllOf))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelProductGroupFiltersAllOf: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsHotelProductGroupFilters. JSON: " & $node)
+

@@ -12,7 +12,8 @@
 type CatalogsCreativeAssetsBatchRequest {
   catalog_type: CatalogTypeEnum
   country: Country
-  language: CatalogsItemsRequestLanguage
+  # We recommend using the CatalogsLocale values.
+  language: LanguageEnum
   # Array with creative assets item operations
   items: [CatalogsCreativeAssetsBatchItem!]
   # Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
@@ -22,7 +23,8 @@ type CatalogsCreativeAssetsBatchRequest {
 input CatalogsCreativeAssetsBatchRequestInput {
     catalog_type: CatalogTypeEnum
     country: Country
-    language: CatalogsItemsRequestLanguageInput
+    # We recommend using the CatalogsLocale values.
+    language: LanguageEnumInput
     # Array with creative assets item operations
     items: [CatalogsCreativeAssetsBatchItemInput]
     # Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog

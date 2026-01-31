@@ -1,30 +1,32 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Creation fields
- **/
+ * Creation fields
+ */
 @ApiModel(description="Creation fields")
 
 public class BookClosedResponse  {
   
-  @ApiModelProperty(example = "false", value = "Are conversion metrics ready?")
  /**
-   * Are conversion metrics ready?
-  **/
+  * Are conversion metrics ready?
+  */
+  @ApiModelProperty(example = "false", value = "Are conversion metrics ready?")
+
   private Boolean conversionMetricsReady;
 
-  @ApiModelProperty(example = "false", value = "Are non-conversion metrics ready?")
  /**
-   * Are non-conversion metrics ready?
-  **/
+  * Are non-conversion metrics ready?
+  */
+  @ApiModelProperty(example = "false", value = "Are non-conversion metrics ready?")
+
   private Boolean nonConversionMetricsReady;
  /**
    * Are conversion metrics ready?

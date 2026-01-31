@@ -1,42 +1,48 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for creating a product group.
- **/
+ * Request object for creating a product group.
+ */
 @ApiModel(description="Request object for creating a product group.")
 
 public class CatalogsProductGroupCreateRequest  {
   
   @ApiModelProperty(required = true, value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
-  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
  /**
-   * boolean indicator of whether the product group is being featured or not
-  **/
+  * boolean indicator of whether the product group is being featured or not
+  */
+  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
+
   private Boolean isFeatured = false;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupFiltersRequest filters;
 
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
  /**
-   * Catalog Feed id pertaining to the catalog product group.
-  **/
+  * Catalog Feed id pertaining to the catalog product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
+
   private String feedId;
  /**
    * Get name

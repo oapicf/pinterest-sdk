@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Ad group targeting specification defining the ad group target audience. For example, &#x60;{\&quot;APPTYPE\&quot;:[\&quot;iphone\&quot;], \&quot;GENDER\&quot;:[\&quot;male\&quot;], \&quot;LOCALE\&quot;:[\&quot;en-US\&quot;], \&quot;LOCATION\&quot;:[\&quot;501\&quot;], \&quot;AGE_BUCKET\&quot;:[\&quot;25-34\&quot;]}&#x60;
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingSpec {
   /**
    * Gets or Sets AGE_BUCKET
@@ -716,21 +716,10 @@ public class TargetingSpec {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("AGE_BUCKET");
-    openapiFields.add("APPTYPE");
-    openapiFields.add("AUDIENCE_EXCLUDE");
-    openapiFields.add("AUDIENCE_INCLUDE");
-    openapiFields.add("GENDER");
-    openapiFields.add("GEO");
-    openapiFields.add("INTEREST");
-    openapiFields.add("LOCALE");
-    openapiFields.add("LOCATION");
-    openapiFields.add("SHOPPING_RETARGETING");
-    openapiFields.add("TARGETING_STRATEGY");
+    openapiFields = new HashSet<String>(Arrays.asList("AGE_BUCKET", "APPTYPE", "AUDIENCE_EXCLUDE", "AUDIENCE_INCLUDE", "GENDER", "GEO", "INTEREST", "LOCALE", "LOCATION", "SHOPPING_RETARGETING", "TARGETING_STRATEGY"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -742,7 +731,7 @@ public class TargetingSpec {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!TargetingSpec.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in TargetingSpec is not found in the empty JSON string", TargetingSpec.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in TargetingSpec is not found in the empty JSON string", TargetingSpec.openapiRequiredFields.toString()));
         }
       }
 
@@ -750,52 +739,52 @@ public class TargetingSpec {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!TargetingSpec.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TargetingSpec` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `TargetingSpec` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the optional json data is an array if present
       if (jsonObj.get("AGE_BUCKET") != null && !jsonObj.get("AGE_BUCKET").isJsonNull() && !jsonObj.get("AGE_BUCKET").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `AGE_BUCKET` to be an array in the JSON string but got `%s`", jsonObj.get("AGE_BUCKET").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `AGE_BUCKET` to be an array in the JSON string but got `%s`", jsonObj.get("AGE_BUCKET").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("APPTYPE") != null && !jsonObj.get("APPTYPE").isJsonNull() && !jsonObj.get("APPTYPE").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `APPTYPE` to be an array in the JSON string but got `%s`", jsonObj.get("APPTYPE").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `APPTYPE` to be an array in the JSON string but got `%s`", jsonObj.get("APPTYPE").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("AUDIENCE_EXCLUDE") != null && !jsonObj.get("AUDIENCE_EXCLUDE").isJsonNull() && !jsonObj.get("AUDIENCE_EXCLUDE").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `AUDIENCE_EXCLUDE` to be an array in the JSON string but got `%s`", jsonObj.get("AUDIENCE_EXCLUDE").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `AUDIENCE_EXCLUDE` to be an array in the JSON string but got `%s`", jsonObj.get("AUDIENCE_EXCLUDE").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("AUDIENCE_INCLUDE") != null && !jsonObj.get("AUDIENCE_INCLUDE").isJsonNull() && !jsonObj.get("AUDIENCE_INCLUDE").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `AUDIENCE_INCLUDE` to be an array in the JSON string but got `%s`", jsonObj.get("AUDIENCE_INCLUDE").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `AUDIENCE_INCLUDE` to be an array in the JSON string but got `%s`", jsonObj.get("AUDIENCE_INCLUDE").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("GENDER") != null && !jsonObj.get("GENDER").isJsonNull() && !jsonObj.get("GENDER").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `GENDER` to be an array in the JSON string but got `%s`", jsonObj.get("GENDER").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `GENDER` to be an array in the JSON string but got `%s`", jsonObj.get("GENDER").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("GEO") != null && !jsonObj.get("GEO").isJsonNull() && !jsonObj.get("GEO").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `GEO` to be an array in the JSON string but got `%s`", jsonObj.get("GEO").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `GEO` to be an array in the JSON string but got `%s`", jsonObj.get("GEO").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("INTEREST") != null && !jsonObj.get("INTEREST").isJsonNull() && !jsonObj.get("INTEREST").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `INTEREST` to be an array in the JSON string but got `%s`", jsonObj.get("INTEREST").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `INTEREST` to be an array in the JSON string but got `%s`", jsonObj.get("INTEREST").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("LOCALE") != null && !jsonObj.get("LOCALE").isJsonNull() && !jsonObj.get("LOCALE").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `LOCALE` to be an array in the JSON string but got `%s`", jsonObj.get("LOCALE").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `LOCALE` to be an array in the JSON string but got `%s`", jsonObj.get("LOCALE").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("LOCATION") != null && !jsonObj.get("LOCATION").isJsonNull() && !jsonObj.get("LOCATION").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `LOCATION` to be an array in the JSON string but got `%s`", jsonObj.get("LOCATION").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `LOCATION` to be an array in the JSON string but got `%s`", jsonObj.get("LOCATION").toString()));
       }
       if (jsonObj.get("SHOPPING_RETARGETING") != null && !jsonObj.get("SHOPPING_RETARGETING").isJsonNull()) {
         JsonArray jsonArraySHOPPING_RETARGETING = jsonObj.getAsJsonArray("SHOPPING_RETARGETING");
         if (jsonArraySHOPPING_RETARGETING != null) {
           // ensure the json data is an array
           if (!jsonObj.get("SHOPPING_RETARGETING").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `SHOPPING_RETARGETING` to be an array in the JSON string but got `%s`", jsonObj.get("SHOPPING_RETARGETING").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `SHOPPING_RETARGETING` to be an array in the JSON string but got `%s`", jsonObj.get("SHOPPING_RETARGETING").toString()));
           }
 
           // validate the optional field `SHOPPING_RETARGETING` (array)
@@ -806,7 +795,7 @@ public class TargetingSpec {
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("TARGETING_STRATEGY") != null && !jsonObj.get("TARGETING_STRATEGY").isJsonNull() && !jsonObj.get("TARGETING_STRATEGY").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `TARGETING_STRATEGY` to be an array in the JSON string but got `%s`", jsonObj.get("TARGETING_STRATEGY").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `TARGETING_STRATEGY` to be an array in the JSON string but got `%s`", jsonObj.get("TARGETING_STRATEGY").toString()));
       }
   }
 

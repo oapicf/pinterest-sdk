@@ -8,22 +8,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeleteAssetGroupResponseExceptionsInner  {
   
-  @ApiModelProperty(example = "29", value = "Error code associated with the error deleting asset group.")
  /**
-   * Error code associated with the error deleting asset group.
-  **/
+  * Error code associated with the error deleting asset group.
+  */
+  @ApiModelProperty(example = "29", value = "Error code associated with the error deleting asset group.")
+
   private Integer code;
 
-  @ApiModelProperty(example = "You are not permitted to access that resource.", value = "Error message associated with the error deleting asset group.")
  /**
-   * Error message associated with the error deleting asset group.
-  **/
+  * Error message associated with the error deleting asset group.
+  */
+  @ApiModelProperty(example = "You are not permitted to access that resource.", value = "Error message associated with the error deleting asset group.")
+
   private String message;
 
-  @ApiModelProperty(example = "666791336903426391", value = "Asset group id of the exception.")
  /**
-   * Asset group id of the exception.
-  **/
+  * Asset group id of the exception.
+  */
+  @ApiModelProperty(example = "666791336903426391", value = "Asset group id of the exception.")
+
   private String assetGroupId;
  /**
    * Error code associated with the error deleting asset group.

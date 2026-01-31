@@ -14,7 +14,6 @@
 import ApiClient from '../ApiClient';
 import BatchOperation from './BatchOperation';
 import CatalogsItemsBatchRequest from './CatalogsItemsBatchRequest';
-import CatalogsItemsRequestLanguage from './CatalogsItemsRequestLanguage';
 import CatalogsVerticalBatchRequest from './CatalogsVerticalBatchRequest';
 import Country from './Country';
 import ItemDeleteBatchRecord from './ItemDeleteBatchRecord';
@@ -126,25 +125,37 @@ class ItemsBatchPostRequest {
 }
 
 /**
+ * @member {module:model/ItemsBatchPostRequest.CatalogTypeEnum} catalog_type
+ */
+ItemsBatchPostRequest.prototype['catalog_type'] = undefined;
+
+/**
  * @member {module:model/Country} country
  */
 ItemsBatchPostRequest.prototype['country'] = undefined;
 
 /**
- * @member {module:model/CatalogsItemsRequestLanguage} language
+ * We recommend using the CatalogsLocale values.
+ * @member {module:model/ItemsBatchPostRequest.LanguageEnum} language
  */
 ItemsBatchPostRequest.prototype['language'] = undefined;
-
-/**
- * @member {module:model/BatchOperation} operation
- */
-ItemsBatchPostRequest.prototype['operation'] = undefined;
 
 /**
  * Array with catalogs items
  * @member {Array.<module:model/ItemDeleteBatchRecord>} items
  */
 ItemsBatchPostRequest.prototype['items'] = undefined;
+
+/**
+ * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+ * @member {String} catalog_id
+ */
+ItemsBatchPostRequest.prototype['catalog_id'] = undefined;
+
+/**
+ * @member {module:model/BatchOperation} operation
+ */
+ItemsBatchPostRequest.prototype['operation'] = undefined;
 
 
 ItemsBatchPostRequest.OneOf = ["CatalogsItemsBatchRequest", "CatalogsVerticalBatchRequest"];

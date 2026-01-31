@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("DeleteAssetGroupResponse_exceptions_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeleteAssetGroupResponseExceptionsInner {
 
   private @Nullable Integer code;
@@ -30,7 +30,7 @@ public class DeleteAssetGroupResponseExceptionsInner {
 
   private @Nullable String assetGroupId;
 
-  public DeleteAssetGroupResponseExceptionsInner code(Integer code) {
+  public DeleteAssetGroupResponseExceptionsInner code(@Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -42,15 +42,15 @@ public class DeleteAssetGroupResponseExceptionsInner {
   
   @Schema(name = "code", example = "29", description = "Error code associated with the error deleting asset group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public Integer getCode() {
+  public @Nullable Integer getCode() {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@Nullable Integer code) {
     this.code = code;
   }
 
-  public DeleteAssetGroupResponseExceptionsInner message(String message) {
+  public DeleteAssetGroupResponseExceptionsInner message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -62,15 +62,15 @@ public class DeleteAssetGroupResponseExceptionsInner {
   
   @Schema(name = "message", example = "You are not permitted to access that resource.", description = "Error message associated with the error deleting asset group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
-  public String getMessage() {
+  public @Nullable String getMessage() {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 
-  public DeleteAssetGroupResponseExceptionsInner assetGroupId(String assetGroupId) {
+  public DeleteAssetGroupResponseExceptionsInner assetGroupId(@Nullable String assetGroupId) {
     this.assetGroupId = assetGroupId;
     return this;
   }
@@ -82,11 +82,11 @@ public class DeleteAssetGroupResponseExceptionsInner {
   
   @Schema(name = "asset_group_id", example = "666791336903426391", description = "Asset group id of the exception.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_group_id")
-  public String getAssetGroupId() {
+  public @Nullable String getAssetGroupId() {
     return assetGroupId;
   }
 
-  public void setAssetGroupId(String assetGroupId) {
+  public void setAssetGroupId(@Nullable String assetGroupId) {
     this.assetGroupId = assetGroupId;
   }
 

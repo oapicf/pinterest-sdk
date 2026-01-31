@@ -22,10 +22,10 @@ export interface CatalogsHotelListProductsByCatalogBasedFilterRequest {
     filters: CatalogsHotelProductGroupFilters;
 }
 export namespace CatalogsHotelListProductsByCatalogBasedFilterRequest {
-    export type CatalogTypeEnum = 'HOTEL';
     export const CatalogTypeEnum = {
-        Hotel: 'HOTEL' as CatalogTypeEnum
-    };
+        Hotel: 'HOTEL'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

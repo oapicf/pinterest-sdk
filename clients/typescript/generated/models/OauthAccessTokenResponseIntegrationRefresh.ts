@@ -12,23 +12,32 @@
 
 import { HttpFile } from '../http/http';
 
-/**
-* A successful OAuth access token response for the refresh token flow, with an added refresh token.
-*/
 export class OauthAccessTokenResponseIntegrationRefresh {
+    'refreshToken': string;
+    'refreshTokenExpiresIn': number;
     'responseType'?: OauthAccessTokenResponseIntegrationRefreshResponseTypeEnum;
     'accessToken': string;
     'tokenType': string;
     'expiresIn': number;
     'scope': string;
-    'refreshToken': string;
-    'refreshTokenExpiresIn': number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "refreshToken",
+            "baseName": "refresh_token",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "refreshTokenExpiresIn",
+            "baseName": "refresh_token_expires_in",
+            "type": "number",
+            "format": ""
+        },
         {
             "name": "responseType",
             "baseName": "response_type",
@@ -57,18 +66,6 @@ export class OauthAccessTokenResponseIntegrationRefresh {
             "name": "scope",
             "baseName": "scope",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "refreshToken",
-            "baseName": "refresh_token",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "refreshTokenExpiresIn",
-            "baseName": "refresh_token_expires_in",
-            "type": "number",
             "format": ""
         }    ];
 

@@ -20,13 +20,9 @@ import org.openapitools.model.UserWebsiteVerificationCode;
 import org.openapitools.model.UserWebsiteVerifyRequest;
 import org.openapitools.model.UserWebsitesGet200Response;
 
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.MediaType;
 import org.apache.cxf.jaxrs.ext.multipart.*;
 
 import io.swagger.annotations.Api;

@@ -36,7 +36,7 @@ data class MediaUploadDetails(
     @field:Valid
     @Schema(example = "null", readOnly = true, description = "")
     @get:JsonProperty("status") val status: MediaUploadStatus? = null
-    ) {
+) {
 
 }
 

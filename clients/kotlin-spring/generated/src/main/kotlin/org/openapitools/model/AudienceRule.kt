@@ -106,7 +106,7 @@ data class AudienceRule(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "549755885175", description = "Ad account ID.")
     @get:JsonProperty("ad_account_id") val adAccountId: kotlin.String? = null
-    ) {
+) {
 
 }
 

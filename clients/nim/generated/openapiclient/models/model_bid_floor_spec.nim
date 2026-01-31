@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_action_type
 import model_country
@@ -19,9 +21,42 @@ import model_optimization_goal_metadata
 
 type BidFloorSpec* = object
   ## 
-  countries*: seq[Country]
+  countries*: Option[seq[Country]]
   currency*: Currency
-  objectiveType*: ObjectiveType
+  objectiveType*: Option[ObjectiveType]
   billableEvent*: ActionType
-  optimizationGoalMetadata*: OptimizationGoalMetadata
-  creativeType*: CreativeType
+  optimizationGoalMetadata*: Option[OptimizationGoalMetadata]
+  creativeType*: Option[CreativeType]
+
+
+# Custom JSON deserialization for BidFloorSpec with custom field names
+proc to*(node: JsonNode, T: typedesc[BidFloorSpec]): BidFloorSpec =
+  result = BidFloorSpec()
+  if node.kind == JObject:
+    if node.hasKey("countries") and node["countries"].kind != JNull:
+      result.countries = some(to(node["countries"], typeof(result.countries.get())))
+    if node.hasKey("currency"):
+      result.currency = to(node["currency"], Currency)
+    if node.hasKey("objective_type") and node["objective_type"].kind != JNull:
+      result.objectiveType = some(to(node["objective_type"], typeof(result.objectiveType.get())))
+    if node.hasKey("billable_event"):
+      result.billableEvent = to(node["billable_event"], ActionType)
+    if node.hasKey("optimization_goal_metadata") and node["optimization_goal_metadata"].kind != JNull:
+      result.optimizationGoalMetadata = some(to(node["optimization_goal_metadata"], typeof(result.optimizationGoalMetadata.get())))
+    if node.hasKey("creative_type") and node["creative_type"].kind != JNull:
+      result.creativeType = some(to(node["creative_type"], typeof(result.creativeType.get())))
+
+# Custom JSON serialization for BidFloorSpec with custom field names
+proc `%`*(obj: BidFloorSpec): JsonNode =
+  result = newJObject()
+  if obj.countries.isSome():
+    result["countries"] = %obj.countries.get()
+  result["currency"] = %obj.currency
+  if obj.objectiveType.isSome():
+    result["objective_type"] = %obj.objectiveType.get()
+  result["billable_event"] = %obj.billableEvent
+  if obj.optimizationGoalMetadata.isSome():
+    result["optimization_goal_metadata"] = %obj.optimizationGoalMetadata.get()
+  if obj.creativeType.isSome():
+    result["creative_type"] = %obj.creativeType.get()
+

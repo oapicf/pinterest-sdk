@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_currency_criteria
 
 type CurrencyFilter* = object
   ## 
   CURRENCY*: CatalogsProductGroupCurrencyCriteria
+

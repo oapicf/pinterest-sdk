@@ -12,7 +12,7 @@
 
 import { RequestFile } from './models';
 
-export class AdGroupsAnalyticsResponseInner extends any {
+export class AdGroupsAnalyticsResponseInner {
     /**
     * The ID of the ad group that this metrics belongs to.
     */
@@ -37,7 +37,7 @@ export class AdGroupsAnalyticsResponseInner extends any {
         }    ];
 
     static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(AdGroupsAnalyticsResponseInner.attributeTypeMap);
+        return AdGroupsAnalyticsResponseInner.attributeTypeMap;
     }
 }
 

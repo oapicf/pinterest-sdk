@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,48 +12,58 @@ import org.openapitools.model.AudienceInsightType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Audience interests and demographics.
- **/
+ * Audience interests and demographics.
+ */
 @ApiModel(description="Audience interests and demographics.")
 
 public class AudienceInsightsResponse  {
   
-  @ApiModelProperty(value = "Category interest distribution")
-  @Valid
  /**
-   * Category interest distribution
-  **/
+  * Category interest distribution
+  */
+  @ApiModelProperty(value = "Category interest distribution")
+
+  @Valid
+
   private List<@Valid AudienceCategory> categories = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private AudienceDemographics demographics;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
 
-  @ApiModelProperty(example = "2022-10-09", value = "Generation date")
  /**
-   * Generation date
-  **/
+  * Generation date
+  */
+  @ApiModelProperty(example = "2022-10-09", value = "Generation date")
+
   private String date;
 
-  @ApiModelProperty(example = "10000", value = "Population count.")
  /**
-   * Population count.
-  **/
+  * Population count.
+  */
+  @ApiModelProperty(example = "10000", value = "Population count.")
+
   private Integer size;
 
-  @ApiModelProperty(example = "true", value = "Indicates whether the audience size has been rounded up to the next highest upper boundary.")
  /**
-   * Indicates whether the audience size has been rounded up to the next highest upper boundary.
-  **/
+  * Indicates whether the audience size has been rounded up to the next highest upper boundary.
+  */
+  @ApiModelProperty(example = "true", value = "Indicates whether the audience size has been rounded up to the next highest upper boundary.")
+
   private Boolean sizeIsUpperBound;
  /**
    * Category interest distribution

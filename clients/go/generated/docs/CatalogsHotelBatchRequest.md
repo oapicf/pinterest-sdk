@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | **string** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
+**Language** | **string** | We recommend using the CatalogsLocale values. | 
 **Items** | [**[]CatalogsHotelBatchItem**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
 **CatalogId** | Pointer to **string** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsHotelBatchRequest
 
-`func NewCatalogsHotelBatchRequest(catalogType string, country Country, language CatalogsItemsRequestLanguage, items []CatalogsHotelBatchItem, ) *CatalogsHotelBatchRequest`
+`func NewCatalogsHotelBatchRequest(catalogType string, country Country, language string, items []CatalogsHotelBatchItem, ) *CatalogsHotelBatchRequest`
 
 NewCatalogsHotelBatchRequest instantiates a new CatalogsHotelBatchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -71,20 +71,20 @@ SetCountry sets Country field to given value.
 
 ### GetLanguage
 
-`func (o *CatalogsHotelBatchRequest) GetLanguage() CatalogsItemsRequestLanguage`
+`func (o *CatalogsHotelBatchRequest) GetLanguage() string`
 
 GetLanguage returns the Language field if non-nil, zero value otherwise.
 
 ### GetLanguageOk
 
-`func (o *CatalogsHotelBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool)`
+`func (o *CatalogsHotelBatchRequest) GetLanguageOk() (*string, bool)`
 
 GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLanguage
 
-`func (o *CatalogsHotelBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage)`
+`func (o *CatalogsHotelBatchRequest) SetLanguage(v string)`
 
 SetLanguage sets Language field to given value.
 

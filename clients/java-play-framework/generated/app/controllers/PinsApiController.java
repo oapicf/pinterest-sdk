@@ -7,7 +7,6 @@ import apimodels.Pin;
 import apimodels.PinAnalyticsMetricsResponse;
 import apimodels.PinCreate;
 import apimodels.PinUpdate;
-import apimodels.PinsAnalyticsMetricTypesParameterInner;
 import apimodels.PinsList200Response;
 import apimodels.PinsSaveRequest;
 
@@ -33,7 +32,7 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2025-05-10T05:39:37.342741110Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinsApiController extends Controller {
     private final PinsApiControllerImpInterface imp;
     private final ObjectMapper mapper;
@@ -86,7 +85,7 @@ public class PinsApiController extends Controller {
             throw new IllegalArgumentException("'metric_types' parameter is required");
         }
         List<String> metricTypesList = OpenAPIUtils.parametersToList("csv", metricTypesArray);
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = new ArrayList<>();
+        List<String> metricTypes = new ArrayList<>();
         for (String curParam : metricTypesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation
@@ -131,7 +130,7 @@ public class PinsApiController extends Controller {
             throw new IllegalArgumentException("'metric_types' parameter is required");
         }
         List<String> metricTypesList = OpenAPIUtils.parametersToList("csv", metricTypesArray);
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = new ArrayList<>();
+        List<String> metricTypes = new ArrayList<>();
         for (String curParam : metricTypesList) {
             if (!curParam.isEmpty()) {
                 //noinspection UseBulkOperation

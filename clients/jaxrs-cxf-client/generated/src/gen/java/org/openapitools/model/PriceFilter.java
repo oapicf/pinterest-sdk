@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PriceFilter  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsProductGroupPricingCurrencyCriteria PRICE;
  /**
    * Get PRICE

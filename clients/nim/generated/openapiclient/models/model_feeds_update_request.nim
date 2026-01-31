@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_feed_credentials
 import model_catalogs_feed_processing_schedule
@@ -20,14 +22,30 @@ import model_catalogs_vertical_feeds_update_request
 import model_nullable_currency
 import model_product_availability_type
 
+# OneOf type
+type FeedsUpdateRequestKind* {.pure.} = enum
+  CatalogsVerticalFeedsUpdateRequestVariant
+  CatalogsFeedsUpdateRequestVariant
+
 type FeedsUpdateRequest* = object
   ## 
-  defaultCurrency*: NullableCurrency
-  name*: string ## A human-friendly name associated to a given feed.
-  format*: CatalogsFormat
-  credentials*: CatalogsFeedCredentials
-  location*: string ## The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  preferredProcessingSchedule*: CatalogsFeedProcessingSchedule
-  status*: CatalogsStatus
-  catalogType*: CatalogsType
-  defaultAvailability*: ProductAvailabilityType
+  case kind*: FeedsUpdateRequestKind
+  of FeedsUpdateRequestKind.CatalogsVerticalFeedsUpdateRequestVariant:
+    CatalogsVerticalFeedsUpdateRequestValue*: CatalogsVerticalFeedsUpdateRequest
+  of FeedsUpdateRequestKind.CatalogsFeedsUpdateRequestVariant:
+    CatalogsFeedsUpdateRequestValue*: CatalogsFeedsUpdateRequest
+
+proc to*(node: JsonNode, T: typedesc[FeedsUpdateRequest]): FeedsUpdateRequest =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return FeedsUpdateRequest(kind: FeedsUpdateRequestKind.CatalogsVerticalFeedsUpdateRequestVariant, CatalogsVerticalFeedsUpdateRequestValue: to(node, CatalogsVerticalFeedsUpdateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsVerticalFeedsUpdateRequest: ", e.msg
+  try:
+    return FeedsUpdateRequest(kind: FeedsUpdateRequestKind.CatalogsFeedsUpdateRequestVariant, CatalogsFeedsUpdateRequestValue: to(node, CatalogsFeedsUpdateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsFeedsUpdateRequest: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of FeedsUpdateRequest. JSON: " & $node)
+

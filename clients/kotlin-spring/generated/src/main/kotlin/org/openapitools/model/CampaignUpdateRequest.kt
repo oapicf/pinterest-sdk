@@ -88,7 +88,7 @@ data class CampaignUpdateRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("objective_type") val objectiveType: ObjectiveType? = null
-    ) {
+) {
 
 }
 

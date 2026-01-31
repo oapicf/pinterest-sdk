@@ -11,10 +11,10 @@
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent, HttpParameterCodec, HttpContext 
+         HttpResponse, HttpEvent, HttpContext 
         }       from '@angular/common/http';
-import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
+import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
 import { DetailedError } from '../model/detailedError';
@@ -52,9 +52,11 @@ export class IntegrationsService extends BaseService {
     /**
      * Delete commerce integration
      * Delete commerce integration metadata for the given external business ID. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
+     * @endpoint delete /integrations/commerce/{external_business_id}
      * @param externalBusinessId External business ID for the integration.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public integrationsCommerceDel(externalBusinessId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any>;
     public integrationsCommerceDel(externalBusinessId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
@@ -93,14 +95,15 @@ export class IntegrationsService extends BaseService {
         }
 
         let localVarPath = `/integrations/commerce/${this.configuration.encodeParam({name: "externalBusinessId", value: externalBusinessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<any>('delete', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<any>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -109,9 +112,11 @@ export class IntegrationsService extends BaseService {
     /**
      * Get commerce integration
      * Get commerce integration metadata associated with the given external business ID. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
+     * @endpoint get /integrations/commerce/{external_business_id}
      * @param externalBusinessId External business ID for the integration.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public integrationsCommerceGet(externalBusinessId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationMetadata>;
     public integrationsCommerceGet(externalBusinessId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationMetadata>>;
@@ -150,14 +155,15 @@ export class IntegrationsService extends BaseService {
         }
 
         let localVarPath = `/integrations/commerce/${this.configuration.encodeParam({name: "externalBusinessId", value: externalBusinessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<IntegrationMetadata>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<IntegrationMetadata>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -166,10 +172,12 @@ export class IntegrationsService extends BaseService {
     /**
      * Update commerce integration
      * Update commerce integration metadata for the given external business ID. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
+     * @endpoint patch /integrations/commerce/{external_business_id}
      * @param externalBusinessId External business ID for the integration.
      * @param integrationRequestPatch Parameters to get create/update the Integration Metadata
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch?: IntegrationRequestPatch, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationMetadata>;
     public integrationsCommercePatch(externalBusinessId: string, integrationRequestPatch?: IntegrationRequestPatch, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationMetadata>>;
@@ -217,15 +225,16 @@ export class IntegrationsService extends BaseService {
         }
 
         let localVarPath = `/integrations/commerce/${this.configuration.encodeParam({name: "externalBusinessId", value: externalBusinessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<IntegrationMetadata>('patch', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<IntegrationMetadata>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: integrationRequestPatch,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -234,9 +243,11 @@ export class IntegrationsService extends BaseService {
     /**
      * Create commerce integration
      * Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
+     * @endpoint post /integrations/commerce
      * @param integrationRequest Parameters to get create/update the Integration Metadata
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public integrationsCommercePost(integrationRequest?: IntegrationRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationMetadata>;
     public integrationsCommercePost(integrationRequest?: IntegrationRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationMetadata>>;
@@ -281,15 +292,16 @@ export class IntegrationsService extends BaseService {
         }
 
         let localVarPath = `/integrations/commerce`;
-        return this.httpClient.request<IntegrationMetadata>('post', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<IntegrationMetadata>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: integrationRequest,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -298,9 +310,11 @@ export class IntegrationsService extends BaseService {
     /**
      * Get integration metadata
      * Get integration metadata by ID. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
+     * @endpoint get /integrations/{id}
      * @param id Integration ID.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public integrationsGetById(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationRecord>;
     public integrationsGetById(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationRecord>>;
@@ -339,14 +353,15 @@ export class IntegrationsService extends BaseService {
         }
 
         let localVarPath = `/integrations/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<IntegrationRecord>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<IntegrationRecord>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -355,21 +370,37 @@ export class IntegrationsService extends BaseService {
     /**
      * Get integration metadata list
      * Get integration metadata list. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
+     * @endpoint get /integrations
      * @param bookmark Cursor used to fetch the next page of items
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public integrationsGetList(bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationsGetList200Response>;
     public integrationsGetList(bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationsGetList200Response>>;
     public integrationsGetList(bookmark?: string, pageSize?: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<IntegrationsGetList200Response>>;
     public integrationsGetList(bookmark?: string, pageSize?: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -400,15 +431,16 @@ export class IntegrationsService extends BaseService {
         }
 
         let localVarPath = `/integrations`;
-        return this.httpClient.request<IntegrationsGetList200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<IntegrationsGetList200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -417,9 +449,11 @@ export class IntegrationsService extends BaseService {
     /**
      * Receives batched logs from integration applications.
      * This endpoint receives batched logs from integration applications on partner platforms. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
+     * @endpoint post /integrations/logs
      * @param integrationLogsRequest Ingest log information from external integration application.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<IntegrationLogsSuccessResponse>;
     public integrationsLogsPost(integrationLogsRequest: IntegrationLogsRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<IntegrationLogsSuccessResponse>>;
@@ -467,15 +501,16 @@ export class IntegrationsService extends BaseService {
         }
 
         let localVarPath = `/integrations/logs`;
-        return this.httpClient.request<IntegrationLogsSuccessResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<IntegrationLogsSuccessResponse>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: integrationLogsRequest,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );

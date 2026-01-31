@@ -129,10 +129,7 @@ export class CampaignsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (granularity !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(granularity, "Granularity", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
-            }
+            requestContext.setQueryParam("granularity", ObjectSerializer.serialize(granularity, "Granularity", ""));
         }
 
         // Query Params
@@ -266,10 +263,7 @@ export class CampaignsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (granularity !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(granularity, "Granularity", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
-            }
+            requestContext.setQueryParam("granularity", ObjectSerializer.serialize(granularity, "Granularity", ""));
         }
 
         // Query Params

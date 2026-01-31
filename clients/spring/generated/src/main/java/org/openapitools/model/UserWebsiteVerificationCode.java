@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * UserWebsiteVerificationCode
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserWebsiteVerificationCode {
 
   private @Nullable String verificationCode;
@@ -32,7 +32,7 @@ public class UserWebsiteVerificationCode {
 
   private @Nullable String fileContent;
 
-  public UserWebsiteVerificationCode verificationCode(String verificationCode) {
+  public UserWebsiteVerificationCode verificationCode(@Nullable String verificationCode) {
     this.verificationCode = verificationCode;
     return this;
   }
@@ -44,15 +44,15 @@ public class UserWebsiteVerificationCode {
   
   @Schema(name = "verification_code", example = "e1edcc1a43976c646367e9c6c9a9b7b6", description = "Code to check against the user claiming the website", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("verification_code")
-  public String getVerificationCode() {
+  public @Nullable String getVerificationCode() {
     return verificationCode;
   }
 
-  public void setVerificationCode(String verificationCode) {
+  public void setVerificationCode(@Nullable String verificationCode) {
     this.verificationCode = verificationCode;
   }
 
-  public UserWebsiteVerificationCode dnsTxtRecord(String dnsTxtRecord) {
+  public UserWebsiteVerificationCode dnsTxtRecord(@Nullable String dnsTxtRecord) {
     this.dnsTxtRecord = dnsTxtRecord;
     return this;
   }
@@ -64,15 +64,15 @@ public class UserWebsiteVerificationCode {
   
   @Schema(name = "dns_txt_record", example = "pinterest-site-verification=e1edcc1a43976c646367e9c6c9a9b7b6", description = "DNS TXT record to check against for the website to be claimed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("dns_txt_record")
-  public String getDnsTxtRecord() {
+  public @Nullable String getDnsTxtRecord() {
     return dnsTxtRecord;
   }
 
-  public void setDnsTxtRecord(String dnsTxtRecord) {
+  public void setDnsTxtRecord(@Nullable String dnsTxtRecord) {
     this.dnsTxtRecord = dnsTxtRecord;
   }
 
-  public UserWebsiteVerificationCode metatag(String metatag) {
+  public UserWebsiteVerificationCode metatag(@Nullable String metatag) {
     this.metatag = metatag;
     return this;
   }
@@ -84,15 +84,15 @@ public class UserWebsiteVerificationCode {
   
   @Schema(name = "metatag", example = "<meta name=\"p:domain_verify\" content=\"e1edcc1a43976c646367e9c6c9a9b7b6\"/>", description = "Metatag the verification process searchs for the website to be claimed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("metatag")
-  public String getMetatag() {
+  public @Nullable String getMetatag() {
     return metatag;
   }
 
-  public void setMetatag(String metatag) {
+  public void setMetatag(@Nullable String metatag) {
     this.metatag = metatag;
   }
 
-  public UserWebsiteVerificationCode filename(String filename) {
+  public UserWebsiteVerificationCode filename(@Nullable String filename) {
     this.filename = filename;
     return this;
   }
@@ -104,15 +104,15 @@ public class UserWebsiteVerificationCode {
   
   @Schema(name = "filename", example = "pinterest-e1edc.html", description = "File expected to find on the website being claimed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("filename")
-  public String getFilename() {
+  public @Nullable String getFilename() {
     return filename;
   }
 
-  public void setFilename(String filename) {
+  public void setFilename(@Nullable String filename) {
     this.filename = filename;
   }
 
-  public UserWebsiteVerificationCode fileContent(String fileContent) {
+  public UserWebsiteVerificationCode fileContent(@Nullable String fileContent) {
     this.fileContent = fileContent;
     return this;
   }
@@ -124,11 +124,11 @@ public class UserWebsiteVerificationCode {
   
   @Schema(name = "file_content", description = "A full html file to upload to the website in order for it to be claimed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("file_content")
-  public String getFileContent() {
+  public @Nullable String getFileContent() {
     return fileContent;
   }
 
-  public void setFileContent(String fileContent) {
+  public void setFileContent(@Nullable String fileContent) {
     this.fileContent = fileContent;
   }
 

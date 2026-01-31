@@ -251,13 +251,19 @@ BillingApi <- R6::R6Class(
         stop("Missing required parameter `ads_credit_redeem_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BillingApi$AdsCreditRedeem, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BillingApi$AdsCreditRedeem, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BillingApi$AdsCreditRedeem, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`ads_credit_redeem_request`) && is.null(`ads_credit_redeem_request`)) {
+        stop("Invalid value for `ads_credit_redeem_request` when calling BillingApi$AdsCreditRedeem, `ads_credit_redeem_request` is not nullable")
+      }
 
       if (!is.null(`ads_credit_redeem_request`)) {
         local_var_body <- `ads_credit_redeem_request`$toJSONString()
@@ -369,18 +375,27 @@ BillingApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BillingApi$AdsCreditsDiscountsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BillingApi$AdsCreditsDiscountsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BillingApi$AdsCreditsDiscountsGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BillingApi$AdsCreditsDiscountsGet, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BillingApi$AdsCreditsDiscountsGet, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BillingApi$AdsCreditsDiscountsGet, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BillingApi$AdsCreditsDiscountsGet, must be bigger than or equal to 1.")
       }
 
@@ -498,19 +513,31 @@ BillingApi <- R6::R6Class(
         stop("Missing required parameter `is_active`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BillingApi$BillingProfilesGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BillingApi$BillingProfilesGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BillingApi$BillingProfilesGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`is_active`) && is.null(`is_active`)) {
+        stop("Invalid value for `is_active` when calling BillingApi$BillingProfilesGet, `is_active` is not nullable")
+      }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BillingApi$BillingProfilesGet, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BillingApi$BillingProfilesGet, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BillingApi$BillingProfilesGet, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BillingApi$BillingProfilesGet, must be bigger than or equal to 1.")
       }
 
@@ -620,10 +647,13 @@ BillingApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BillingApi$SsioAccountsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BillingApi$SsioAccountsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BillingApi$SsioAccountsGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -733,13 +763,19 @@ BillingApi <- R6::R6Class(
         stop("Missing required parameter `ssio_create_insertion_order_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BillingApi$SsioInsertionOrderCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BillingApi$SsioInsertionOrderCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BillingApi$SsioInsertionOrderCreate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`ssio_create_insertion_order_request`) && is.null(`ssio_create_insertion_order_request`)) {
+        stop("Invalid value for `ssio_create_insertion_order_request` when calling BillingApi$SsioInsertionOrderCreate, `ssio_create_insertion_order_request` is not nullable")
+      }
 
       if (!is.null(`ssio_create_insertion_order_request`)) {
         local_var_body <- `ssio_create_insertion_order_request`$toJSONString()
@@ -853,13 +889,19 @@ BillingApi <- R6::R6Class(
         stop("Missing required parameter `ssio_edit_insertion_order_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BillingApi$SsioInsertionOrderEdit, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BillingApi$SsioInsertionOrderEdit, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BillingApi$SsioInsertionOrderEdit, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`ssio_edit_insertion_order_request`) && is.null(`ssio_edit_insertion_order_request`)) {
+        stop("Invalid value for `ssio_edit_insertion_order_request` when calling BillingApi$SsioInsertionOrderEdit, `ssio_edit_insertion_order_request` is not nullable")
+      }
 
       if (!is.null(`ssio_edit_insertion_order_request`)) {
         local_var_body <- `ssio_edit_insertion_order_request`$toJSONString()
@@ -971,18 +1013,27 @@ BillingApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BillingApi$SsioInsertionOrdersStatusGetByAdAccount, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BillingApi$SsioInsertionOrdersStatusGetByAdAccount, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BillingApi$SsioInsertionOrdersStatusGetByAdAccount, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BillingApi$SsioInsertionOrdersStatusGetByAdAccount, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BillingApi$SsioInsertionOrdersStatusGetByAdAccount, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BillingApi$SsioInsertionOrdersStatusGetByAdAccount, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BillingApi$SsioInsertionOrdersStatusGetByAdAccount, must be bigger than or equal to 1.")
       }
 
@@ -1096,13 +1147,19 @@ BillingApi <- R6::R6Class(
         stop("Missing required parameter `pin_order_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BillingApi$SsioInsertionOrdersStatusGetByPinOrderId, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BillingApi$SsioInsertionOrdersStatusGetByPinOrderId, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BillingApi$SsioInsertionOrdersStatusGetByPinOrderId, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`pin_order_id`) && is.null(`pin_order_id`)) {
+        stop("Invalid value for `pin_order_id` when calling BillingApi$SsioInsertionOrdersStatusGetByPinOrderId, `pin_order_id` is not nullable")
+      }
 
       local_var_url_path <- "/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status"
       if (!missing(`ad_account_id`)) {
@@ -1214,21 +1271,33 @@ BillingApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BillingApi$SsioOrderLinesGetByAdAccount, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BillingApi$SsioOrderLinesGetByAdAccount, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BillingApi$SsioOrderLinesGetByAdAccount, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BillingApi$SsioOrderLinesGetByAdAccount, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BillingApi$SsioOrderLinesGetByAdAccount, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BillingApi$SsioOrderLinesGetByAdAccount, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BillingApi$SsioOrderLinesGetByAdAccount, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`pin_order_id`) && is.null(`pin_order_id`)) {
+        stop("Invalid value for `pin_order_id` when calling BillingApi$SsioOrderLinesGetByAdAccount, `pin_order_id` is not nullable")
+      }
 
       query_params[["bookmark"]] <- `bookmark`
 

@@ -6,7 +6,6 @@ import org.openapitools.model.Pin;
 import org.openapitools.model.PinAnalyticsMetricsResponse;
 import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
-import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -70,7 +69,7 @@ public class PinsControllerTest {
         List<@Pattern(regexp = "^\\d+$")String> pinIds = Arrays.asList("example");
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = Arrays.asList();
+        List<String> metricTypes = Arrays.asList("example");
         String appTypes = "ALL";
         String adAccountId = "example";
 
@@ -93,13 +92,13 @@ public class PinsControllerTest {
         // given
         String uri = UriTemplate.of("/pins/analytics").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3f272139");
+            .accept("[Ljava.lang.String;@15587fd6");
         request.getParameters()
             .add("pin_ids", Arrays.asList("example")) // The query format should be multi
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("app_types", "ALL") // The query parameter format should be 
-            .add("metric_types", String.valueOf(Arrays.asList())) // The query parameter format should be csv
+            .add("metric_types", String.valueOf(Arrays.asList("example"))) // The query parameter format should be csv
             .add("ad_account_id", "example"); // The query parameter format should be 
 
         // when
@@ -125,7 +124,7 @@ public class PinsControllerTest {
         String pinId = "example";
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = Arrays.asList();
+        List<String> metricTypes = Arrays.asList("example");
         String appTypes = "ALL";
         String splitField = "NO_SPLIT";
         String adAccountId = "example";
@@ -152,12 +151,12 @@ public class PinsControllerTest {
             put("pin_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@720090ad");
+            .accept("[Ljava.lang.String;@86173a0");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("app_types", "ALL") // The query parameter format should be 
-            .add("metric_types", String.valueOf(Arrays.asList())) // The query parameter format should be csv
+            .add("metric_types", String.valueOf(Arrays.asList("example"))) // The query parameter format should be csv
             .add("split_field", "NO_SPLIT") // The query parameter format should be 
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -204,7 +203,7 @@ public class PinsControllerTest {
         PinCreate body = new PinCreate();
         String uri = UriTemplate.of("/pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@702ce4b0");
+            .accept("[Ljava.lang.String;@17057bb2");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -253,7 +252,7 @@ public class PinsControllerTest {
             put("pin_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@72d44701");
+            .accept("[Ljava.lang.String;@28e12c6");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -303,7 +302,7 @@ public class PinsControllerTest {
             put("pin_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@747c9e8b");
+            .accept("[Ljava.lang.String;@54fe7b8e");
         request.getParameters()
             .add("pin_metrics", String.valueOf(false)) // The query parameter format should be 
             .add("ad_account_id", "example"); // The query parameter format should be 
@@ -356,7 +355,7 @@ public class PinsControllerTest {
         // given
         String uri = UriTemplate.of("/pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@28fed51");
+            .accept("[Ljava.lang.String;@5781eec2");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -414,7 +413,7 @@ public class PinsControllerTest {
             put("pin_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@151180d4");
+            .accept("[Ljava.lang.String;@6be5d76b");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -465,7 +464,7 @@ public class PinsControllerTest {
             put("pin_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@45ad3138");
+            .accept("[Ljava.lang.String;@198ff0f3");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 

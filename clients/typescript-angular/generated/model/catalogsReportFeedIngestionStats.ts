@@ -37,15 +37,15 @@ export interface CatalogsReportFeedIngestionStats {
     severity?: CatalogsReportFeedIngestionStats.SeverityEnum;
 }
 export namespace CatalogsReportFeedIngestionStats {
-    export type ReportTypeEnum = 'FEED_INGESTION_ISSUES';
     export const ReportTypeEnum = {
-        FeedIngestionIssues: 'FEED_INGESTION_ISSUES' as ReportTypeEnum
-    };
-    export type SeverityEnum = 'WARN' | 'ERROR';
+        FeedIngestionIssues: 'FEED_INGESTION_ISSUES'
+    } as const;
+    export type ReportTypeEnum = typeof ReportTypeEnum[keyof typeof ReportTypeEnum];
     export const SeverityEnum = {
-        Warn: 'WARN' as SeverityEnum,
-        Error: 'ERROR' as SeverityEnum
-    };
+        Warn: 'WARN',
+        Error: 'ERROR'
+    } as const;
+    export type SeverityEnum = typeof SeverityEnum[keyof typeof SeverityEnum];
 }
 
 

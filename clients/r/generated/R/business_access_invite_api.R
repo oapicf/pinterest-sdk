@@ -195,16 +195,22 @@ BusinessAccessInviteApi <- R6::R6Class(
         stop("Missing required parameter `create_asset_access_request_body`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessInviteApi$AssetAccessRequestsCreate, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessInviteApi$AssetAccessRequestsCreate, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessInviteApi$AssetAccessRequestsCreate, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessInviteApi$AssetAccessRequestsCreate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`create_asset_access_request_body`) && is.null(`create_asset_access_request_body`)) {
+        stop("Invalid value for `create_asset_access_request_body` when calling BusinessAccessInviteApi$AssetAccessRequestsCreate, `create_asset_access_request_body` is not nullable")
+      }
 
       if (!is.null(`create_asset_access_request_body`)) {
         local_var_body <- `create_asset_access_request_body`$toJSONString()
@@ -318,16 +324,22 @@ BusinessAccessInviteApi <- R6::R6Class(
         stop("Missing required parameter `cancel_invites_body`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessInviteApi$CancelInvitesOrRequests, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessInviteApi$CancelInvitesOrRequests, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessInviteApi$CancelInvitesOrRequests, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessInviteApi$CancelInvitesOrRequests, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`cancel_invites_body`) && is.null(`cancel_invites_body`)) {
+        stop("Invalid value for `cancel_invites_body` when calling BusinessAccessInviteApi$CancelInvitesOrRequests, `cancel_invites_body` is not nullable")
+      }
 
       if (!is.null(`cancel_invites_body`)) {
         local_var_body <- `cancel_invites_body`$toJSONString()
@@ -441,16 +453,22 @@ BusinessAccessInviteApi <- R6::R6Class(
         stop("Missing required parameter `create_asset_invites_request`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessInviteApi$CreateAssetInvites, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessInviteApi$CreateAssetInvites, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessInviteApi$CreateAssetInvites, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessInviteApi$CreateAssetInvites, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`create_asset_invites_request`) && is.null(`create_asset_invites_request`)) {
+        stop("Invalid value for `create_asset_invites_request` when calling BusinessAccessInviteApi$CreateAssetInvites, `create_asset_invites_request` is not nullable")
+      }
 
       if (!is.null(`create_asset_invites_request`)) {
         local_var_body <- `create_asset_invites_request`$toJSONString()
@@ -564,16 +582,22 @@ BusinessAccessInviteApi <- R6::R6Class(
         stop("Missing required parameter `create_membership_or_partnership_invites_body`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessInviteApi$CreateMembershipOrPartnershipInvites, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessInviteApi$CreateMembershipOrPartnershipInvites, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessInviteApi$CreateMembershipOrPartnershipInvites, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessInviteApi$CreateMembershipOrPartnershipInvites, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`create_membership_or_partnership_invites_body`) && is.null(`create_membership_or_partnership_invites_body`)) {
+        stop("Invalid value for `create_membership_or_partnership_invites_body` when calling BusinessAccessInviteApi$CreateMembershipOrPartnershipInvites, `create_membership_or_partnership_invites_body` is not nullable")
+      }
 
       if (!is.null(`create_membership_or_partnership_invites_body`)) {
         local_var_body <- `create_membership_or_partnership_invites_body`$toJSONString()
@@ -691,27 +715,45 @@ BusinessAccessInviteApi <- R6::R6Class(
         stop("Missing required parameter `business_id`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessInviteApi$GetInvites, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessInviteApi$GetInvites, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessInviteApi$GetInvites, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessInviteApi$GetInvites, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`is_member`) && is.null(`is_member`)) {
+        stop("Invalid value for `is_member` when calling BusinessAccessInviteApi$GetInvites, `is_member` is not nullable")
+      }
 
-      if (length(`invite_status`) < 1) {
+      if (!missing(`invite_status`) && is.null(`invite_status`)) {
+        stop("Invalid value for `invite_status` when calling BusinessAccessInviteApi$GetInvites, `invite_status` is not nullable")
+      }
+      if (!is.null(`invite_status`) && length(`invite_status`) < 1) {
         stop("Invalid length for `invite_status` when calling BusinessAccessInviteApi$GetInvites, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`invite_type`) && is.null(`invite_type`)) {
+        stop("Invalid value for `invite_type` when calling BusinessAccessInviteApi$GetInvites, `invite_type` is not nullable")
+      }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BusinessAccessInviteApi$GetInvites, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BusinessAccessInviteApi$GetInvites, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BusinessAccessInviteApi$GetInvites, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BusinessAccessInviteApi$GetInvites, must be bigger than or equal to 1.")
       }
 
@@ -832,6 +874,9 @@ BusinessAccessInviteApi <- R6::R6Class(
         stop("Missing required parameter `auth_respond_invites_body`.")
       }
 
+      if (!missing(`auth_respond_invites_body`) && is.null(`auth_respond_invites_body`)) {
+        stop("Invalid value for `auth_respond_invites_body` when calling BusinessAccessInviteApi$RespondBusinessAccessInvites, `auth_respond_invites_body` is not nullable")
+      }
 
       if (!is.null(`auth_respond_invites_body`)) {
         local_var_body <- `auth_respond_invites_body`$toJSONString()

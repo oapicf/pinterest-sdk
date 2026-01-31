@@ -147,7 +147,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ActionType actionType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(actionType.ToString());
+            writer.WriteStringValue(ActionTypeValueConverter.ToJsonValue(actionType).ToString());
         }
     }
 
@@ -178,14 +178,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the ActionType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="actionType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ActionType? actionType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(actionType?.ToString() ?? "null");
+            writer.WriteStringValue(actionType.HasValue ? ActionTypeValueConverter.ToJsonValue(actionType.Value).ToString() : "null");
         }
     }
 }

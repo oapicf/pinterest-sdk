@@ -49,6 +49,13 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
+	/*! \brief Get A List of countries for filtering
+	 */
+	std::list<TargetingAdvertiserCountry> getCountries();
+
+	/*! \brief Set A List of countries for filtering
+	 */
+	void setCountries(std::list <TargetingAdvertiserCountry> countries);
 	/*! \brief Get Name of the Marketing Mix Modeling (MMM) report
 	 */
 	std::string getReportName();
@@ -98,15 +105,9 @@ public:
 	/*! \brief Set Metric and entity columns
 	 */
 	void setColumns(std::list <MMMReportingColumn> columns);
-	/*! \brief Get A List of countries for filtering
-	 */
-	std::list<TargetingAdvertiserCountry> getCountries();
-
-	/*! \brief Set A List of countries for filtering
-	 */
-	void setCountries(std::list <TargetingAdvertiserCountry> countries);
 
 private:
+	std::list <TargetingAdvertiserCountry>countries;
 	std::string report_name;
 	std::string start_date;
 	std::string end_date;
@@ -114,7 +115,6 @@ private:
 	std::string level;
 	std::list <MMMReportingTargetingType>targeting_types;
 	std::list <MMMReportingColumn>columns;
-	std::list <TargetingAdvertiserCountry>countries;
 	void __init();
 	void __cleanup();
 

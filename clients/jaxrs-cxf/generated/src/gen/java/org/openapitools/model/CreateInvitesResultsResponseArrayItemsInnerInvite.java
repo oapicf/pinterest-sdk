@@ -1,33 +1,36 @@
 package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.BusinessAccessUserSummary;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.
- **/
+ * An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.
+ */
 @ApiModel(description="An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.")
 
 public class CreateInvitesResultsResponseArrayItemsInnerInvite  {
   
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
  /**
-   * Unique identifier of the invite/request.
-  **/
+  * Unique identifier of the invite/request.
+  */
+  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
+
   private String id;
 
-  @ApiModelProperty(value = "Metadata for the member/partner that was sent the invite/request.")
-  @Valid
  /**
-   * Metadata for the member/partner that was sent the invite/request.
-  **/
+  * Metadata for the member/partner that was sent the invite/request.
+  */
+  @ApiModelProperty(value = "Metadata for the member/partner that was sent the invite/request.")
+
+  @Valid
+
   private BusinessAccessUserSummary user;
  /**
    * Unique identifier of the invite/request.

@@ -12,18 +12,12 @@
 /**
  * Ad targeting types for MMM report
  */
-export type MMMReportingTargetingType = 'APPTYPE' | 'COUNTRY' | 'CREATIVE_TYPE' | 'GENDER' | 'LOCATION';
-
 export const MMMReportingTargetingType = {
-
-    Apptype: 'APPTYPE' as MMMReportingTargetingType,
-
-    Country: 'COUNTRY' as MMMReportingTargetingType,
-
-    CreativeType: 'CREATIVE_TYPE' as MMMReportingTargetingType,
-
-    Gender: 'GENDER' as MMMReportingTargetingType,
-
-    Location: 'LOCATION' as MMMReportingTargetingType
-};
+    Apptype: 'APPTYPE',
+    Country: 'COUNTRY',
+    CreativeType: 'CREATIVE_TYPE',
+    Gender: 'GENDER',
+    Location: 'LOCATION'
+} as const;
+export type MMMReportingTargetingType = typeof MMMReportingTargetingType[keyof typeof MMMReportingTargetingType];
 

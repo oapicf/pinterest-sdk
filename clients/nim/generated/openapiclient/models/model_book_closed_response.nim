@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type BookClosedResponse* = object
   ## Creation fields
-  conversionMetricsReady*: bool ## Are conversion metrics ready?
-  nonConversionMetricsReady*: bool ## Are non-conversion metrics ready?
+  conversionMetricsReady*: Option[bool] ## Are conversion metrics ready?
+  nonConversionMetricsReady*: Option[bool] ## Are non-conversion metrics ready?
+
+
+# Custom JSON deserialization for BookClosedResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[BookClosedResponse]): BookClosedResponse =
+  result = BookClosedResponse()
+  if node.kind == JObject:
+    if node.hasKey("conversion_metrics_ready") and node["conversion_metrics_ready"].kind != JNull:
+      result.conversionMetricsReady = some(to(node["conversion_metrics_ready"], typeof(result.conversionMetricsReady.get())))
+    if node.hasKey("non_conversion_metrics_ready") and node["non_conversion_metrics_ready"].kind != JNull:
+      result.nonConversionMetricsReady = some(to(node["non_conversion_metrics_ready"], typeof(result.nonConversionMetricsReady.get())))
+
+# Custom JSON serialization for BookClosedResponse with custom field names
+proc `%`*(obj: BookClosedResponse): JsonNode =
+  result = newJObject()
+  if obj.conversionMetricsReady.isSome():
+    result["conversion_metrics_ready"] = %obj.conversionMetricsReady.get()
+  if obj.nonConversionMetricsReady.isSome():
+    result["non_conversion_metrics_ready"] = %obj.nonConversionMetricsReady.get()
+

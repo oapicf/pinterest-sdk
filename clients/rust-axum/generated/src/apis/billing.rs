@@ -153,6 +153,8 @@ pub enum SsioOrderLinesSlashGetByAdAccountResponse {
 }
 
 
+
+
 /// Billing
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -162,6 +164,7 @@ pub trait Billing<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// AdsCreditSlashRedeem - POST /v5/ad_accounts/{ad_account_id}/ads_credit/redeem
     async fn ads_credit_slash_redeem(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -174,6 +177,7 @@ pub trait Billing<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// AdsCreditsDiscountsSlashGet - GET /v5/ad_accounts/{ad_account_id}/ads_credit/discounts
     async fn ads_credits_discounts_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -186,6 +190,7 @@ pub trait Billing<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// BillingProfilesSlashGet - GET /v5/ad_accounts/{ad_account_id}/billing_profiles
     async fn billing_profiles_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -198,6 +203,7 @@ pub trait Billing<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// SsioAccountsSlashGet - GET /v5/ad_accounts/{ad_account_id}/ssio/accounts
     async fn ssio_accounts_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -209,6 +215,7 @@ pub trait Billing<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// SsioInsertionOrderSlashCreate - POST /v5/ad_accounts/{ad_account_id}/ssio/insertion_orders
     async fn ssio_insertion_order_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -221,6 +228,7 @@ pub trait Billing<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// SsioInsertionOrderSlashEdit - PATCH /v5/ad_accounts/{ad_account_id}/ssio/insertion_orders
     async fn ssio_insertion_order_slash_edit(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -233,6 +241,7 @@ pub trait Billing<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// SsioInsertionOrdersStatusSlashGetByAdAccount - GET /v5/ad_accounts/{ad_account_id}/ssio/insertion_orders/status
     async fn ssio_insertion_orders_status_slash_get_by_ad_account(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -245,6 +254,7 @@ pub trait Billing<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// SsioInsertionOrdersStatusSlashGetByPinOrderId - GET /v5/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status
     async fn ssio_insertion_orders_status_slash_get_by_pin_order_id(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -256,6 +266,7 @@ pub trait Billing<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// SsioOrderLinesSlashGetByAdAccount - GET /v5/ad_accounts/{ad_account_id}/ssio/order_lines
     async fn ssio_order_lines_slash_get_by_ad_account(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

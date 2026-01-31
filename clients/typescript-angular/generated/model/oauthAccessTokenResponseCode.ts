@@ -9,25 +9,22 @@
  */
 
 
-/**
- * A successful OAuth access token response for the authorization code flow.
- */
 export interface OauthAccessTokenResponseCode { 
+    refresh_token: string;
+    refresh_token_expires_in: number;
     response_type?: OauthAccessTokenResponseCode.ResponseTypeEnum;
     access_token: string;
     token_type: string;
     expires_in: number;
     scope: string;
-    refresh_token: string;
-    refresh_token_expires_in: number;
 }
 export namespace OauthAccessTokenResponseCode {
-    export type ResponseTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
     export const ResponseTypeEnum = {
-        AuthorizationCode: 'authorization_code' as ResponseTypeEnum,
-        RefreshToken: 'refresh_token' as ResponseTypeEnum,
-        ClientCredentials: 'client_credentials' as ResponseTypeEnum
-    };
+        AuthorizationCode: 'authorization_code',
+        RefreshToken: 'refresh_token',
+        ClientCredentials: 'client_credentials'
+    } as const;
+    export type ResponseTypeEnum = typeof ResponseTypeEnum[keyof typeof ResponseTypeEnum];
 }
 
 

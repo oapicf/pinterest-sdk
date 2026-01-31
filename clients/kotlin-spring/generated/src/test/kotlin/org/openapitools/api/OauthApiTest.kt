@@ -18,6 +18,7 @@ class OauthApiTest {
     @Test
     fun oauthTokenTest() {
         val grantType: kotlin.String = TODO()
+        
         val response: ResponseEntity<OauthAccessTokenResponse> = api.oauthToken(grantType)
 
         // TODO: test validations

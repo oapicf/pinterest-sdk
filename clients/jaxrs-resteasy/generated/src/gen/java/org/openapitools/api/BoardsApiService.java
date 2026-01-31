@@ -4,6 +4,7 @@ import org.openapitools.api.*;
 import org.openapitools.model.*;
 
 
+
 import org.openapitools.model.Board;
 import org.openapitools.model.BoardSection;
 import org.openapitools.model.BoardSectionsList200Response;
@@ -22,7 +23,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2025-05-10T05:40:40.818990358Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface BoardsApiService {
       Response boardSectionsCreate(String boardId,BoardSection boardSection,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
@@ -46,4 +47,6 @@ public interface BoardsApiService {
       throws NotFoundException;
       Response boardsUpdate(String boardId,BoardUpdate boardUpdate,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
+
+
 }

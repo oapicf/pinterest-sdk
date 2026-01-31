@@ -161,7 +161,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, PlacementGroupType placementGroupType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(placementGroupType.ToString());
+            writer.WriteStringValue(PlacementGroupTypeValueConverter.ToJsonValue(placementGroupType).ToString());
         }
     }
 
@@ -192,14 +192,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the PlacementGroupType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="placementGroupType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, PlacementGroupType? placementGroupType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(placementGroupType?.ToString() ?? "null");
+            writer.WriteStringValue(placementGroupType.HasValue ? PlacementGroupTypeValueConverter.ToJsonValue(placementGroupType.Value).ToString() : "null");
         }
     }
 }

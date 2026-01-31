@@ -66,6 +66,8 @@ pub enum AdvancedAuctionItemsSubmitSlashPostResponse {
 }
 
 
+
+
 /// AdvancedAuction
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -75,6 +77,7 @@ pub trait AdvancedAuction<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     /// AdvancedAuctionItemsGetSlashPost - POST /v5/advanced_auction/items/get
     async fn advanced_auction_items_get_slash_post(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -87,6 +90,7 @@ pub trait AdvancedAuction<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     /// AdvancedAuctionItemsSubmitSlashPost - POST /v5/advanced_auction/items/submit
     async fn advanced_auction_items_submit_slash_post(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

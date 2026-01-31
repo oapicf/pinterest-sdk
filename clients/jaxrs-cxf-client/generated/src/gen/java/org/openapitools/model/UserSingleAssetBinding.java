@@ -1,29 +1,31 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.BusinessAccessUserSummary;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * An object containing the permissions a business member/partner has on the asset.
- **/
+ * An object containing the permissions a business member/partner has on the asset.
+ */
 @ApiModel(description="An object containing the permissions a business member/partner has on the asset.")
 
 public class UserSingleAssetBinding  {
   
-  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
  /**
-   * Permission levels member or partner has on an asset.
-  **/
+  * Permission levels member or partner has on an asset.
+  */
+  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
+
   private List<String> permissions = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private BusinessAccessUserSummary user;
  /**
    * Permission levels member or partner has on an asset.

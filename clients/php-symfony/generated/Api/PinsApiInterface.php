@@ -36,7 +36,6 @@ use OpenAPI\Server\Model\Pin;
 use OpenAPI\Server\Model\PinAnalyticsMetricsResponse;
 use OpenAPI\Server\Model\PinCreate;
 use OpenAPI\Server\Model\PinUpdate;
-use OpenAPI\Server\Model\PinsAnalyticsMetricTypesParameterInner;
 use OpenAPI\Server\Model\PinsList200Response;
 use OpenAPI\Server\Model\PinsSaveRequest;
 

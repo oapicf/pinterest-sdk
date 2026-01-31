@@ -146,7 +146,6 @@
     <Compile Include="src/model/SSIOCreateInsertionOrderRequest.fs" />
     <Compile Include="src/model/PinsSaveRequest.fs" />
     <Compile Include="src/model/ProductGroupPromotionCreateRequestElement.fs" />
-    <Compile Include="src/model/PinsAnalyticsMetricTypesParameterInner.fs" />
     <Compile Include="src/model/PinUpdateCarouselSlotsInner.fs" />
     <Compile Include="src/model/PinUpdate.fs" />
     <Compile Include="src/model/PinPromotionSummaryStatus.fs" />
@@ -478,7 +477,6 @@
     <Compile Include="src/model/CatalogsRetailProductGroup.fs" />
     <Compile Include="src/model/CatalogsRetailListProductsByCatalogBasedFilterRequest.fs" />
     <Compile Include="src/model/Catalog.fs" />
-    <Compile Include="src/model/CatalogsItemsRequestLanguage.fs" />
     <Compile Include="src/model/CatalogsItemsCreateBatchRequest.fs" />
     <Compile Include="src/model/CatalogsItemsUpsertBatchRequest.fs" />
     <Compile Include="src/model/CatalogsHotelItemsPostFilter.fs" />
@@ -658,7 +656,6 @@
     <Compile Include="src/model/AudienceDefinition.fs" />
     <Compile Include="src/model/AudienceDefinitionResponse.fs" />
     <Compile Include="src/model/AudienceDataParty.fs" />
-    <Compile Include="src/model/AudienceCreateRequest1AudienceType.fs" />
     <Compile Include="src/model/AudienceCreateRequest.fs" />
     <Compile Include="src/model/AudienceCreateCustomRequest.fs" />
     <Compile Include="src/model/AudienceCommon.fs" />

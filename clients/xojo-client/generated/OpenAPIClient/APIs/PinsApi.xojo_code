@@ -1,7 +1,7 @@
 #tag Class
 Protected Class PinsApi
 	#tag Method, Flags = &h0
-		Sub MultiPinsAnalytics(, pinIds() As String, startDate As Date, endDate As Date, metricTypes() As OpenAPIClient.Models.PinsAnalyticsMetricTypesParameterInner, appTypes As App_typesEnum_MultiPinsAnalytics, Optional adAccountId As Xoson.O.OptionalString)
+		Sub MultiPinsAnalytics(, pinIds() As String, startDate As Date, endDate As Date, metricTypes() As OpenAPIClient.Models.Metric_typesEnum_MultiPinsAnalytics, appTypes As App_typesEnum_MultiPinsAnalytics, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation multi_pins/analytics
 		  // Get multiple Pin analytics
 		  // - 
@@ -56,23 +56,23 @@ Protected Class PinsApi
 		  
 		  
 		  Dim localVarQueryStringsmetricTypes() As String
-		  For Each localVarItemmetricTypes As PinsAnalyticsMetricTypesParameterInner in metricTypes
-		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemmetricTypes))
+		  For Each localVarItemmetricTypes As Metric_typesEnum_MultiPinsAnalytics in metricTypes
+		    Dim encodedParameter As String = EncodeURLComponent(Metric_typesEnum_MultiPinsAnalyticsToString(localVarItemmetricTypes))
 		    localVarQueryStringsmetricTypes.Append(encodedParameter)
 		  Next
 		  
 		  Dim localVarQueryStringmetricTypes As String
 		  Select Case "form"
 		    Case "form"
-			  localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, ",")
+			  localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, ",")
 		    Case "spaceDelimited"
-		      localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, " ")
+		      localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, " ")
 		    Case "pipeDelimited"
-		      localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, "|")
+		      localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, "|")
 		    Case "deepObject"
 		      Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
 		  End Select
-		  If localVarQueryStringsmetricTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("inner") + "=" + EncodeURLComponent(localVarQueryStringmetricTypes)
+		  If localVarQueryStringsmetricTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("metric_types") + "=" + EncodeURLComponent(localVarQueryStringmetricTypes)
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
 		  
 
@@ -184,6 +184,45 @@ Protected Class PinsApi
 
 
 	#tag Method, Flags = &h21
+		Private Function Metric_typesEnum_MultiPinsAnalyticsToString(value As Metric_typesEnum_MultiPinsAnalytics) As String
+		  Select Case value
+		    
+		    Case Metric_typesEnum_MultiPinsAnalytics.Impression
+		      Return "IMPRESSION"
+		    Case Metric_typesEnum_MultiPinsAnalytics.OutboundClick
+		      Return "OUTBOUND_CLICK"
+		    Case Metric_typesEnum_MultiPinsAnalytics.PinClick
+		      Return "PIN_CLICK"
+		    Case Metric_typesEnum_MultiPinsAnalytics.Save
+		      Return "SAVE"
+		    Case Metric_typesEnum_MultiPinsAnalytics.SaveRate
+		      Return "SAVE_RATE"
+		    Case Metric_typesEnum_MultiPinsAnalytics.TotalComments
+		      Return "TOTAL_COMMENTS"
+		    Case Metric_typesEnum_MultiPinsAnalytics.TotalReactions
+		      Return "TOTAL_REACTIONS"
+		    Case Metric_typesEnum_MultiPinsAnalytics.UserFollow
+		      Return "USER_FOLLOW"
+		    Case Metric_typesEnum_MultiPinsAnalytics.ProfileVisit
+		      Return "PROFILE_VISIT"
+		    Case Metric_typesEnum_MultiPinsAnalytics.VideoMrcView
+		      Return "VIDEO_MRC_VIEW"
+		    Case Metric_typesEnum_MultiPinsAnalytics.Video10sView
+		      Return "VIDEO_10S_VIEW"
+		    Case Metric_typesEnum_MultiPinsAnalytics.Quartile95PercentView
+		      Return "QUARTILE_95_PERCENT_VIEW"
+		    Case Metric_typesEnum_MultiPinsAnalytics.VideoV50WatchTime
+		      Return "VIDEO_V50_WATCH_TIME"
+		    Case Metric_typesEnum_MultiPinsAnalytics.VideoStart
+		      Return "VIDEO_START"
+		    Case Metric_typesEnum_MultiPinsAnalytics.VideoAvgWatchTime
+		      Return "VIDEO_AVG_WATCH_TIME"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
+	#tag Method, Flags = &h21
 		Private Function App_typesEnum_MultiPinsAnalyticsToString(value As App_typesEnum_MultiPinsAnalytics) As String
 		  Select Case value
 		    
@@ -202,7 +241,7 @@ Protected Class PinsApi
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub PinsAnalytics(, pinId As String, startDate As Date, endDate As Date, metricTypes() As OpenAPIClient.Models.PinsAnalyticsMetricTypesParameterInner, appTypes As App_typesEnum_PinsAnalytics, splitField As Split_fieldEnum_PinsAnalytics, Optional adAccountId As Xoson.O.OptionalString)
+		Sub PinsAnalytics(, pinId As String, startDate As Date, endDate As Date, metricTypes() As OpenAPIClient.Models.Metric_typesEnum_PinsAnalytics, appTypes As App_typesEnum_PinsAnalytics, splitField As Split_fieldEnum_PinsAnalytics, Optional adAccountId As Xoson.O.OptionalString)
 		  // Operation pins/analytics
 		  // Get Pin analytics
 		  // - 
@@ -240,23 +279,23 @@ Protected Class PinsApi
 		  
 		  
 		  Dim localVarQueryStringsmetricTypes() As String
-		  For Each localVarItemmetricTypes As PinsAnalyticsMetricTypesParameterInner in metricTypes
-		    Dim encodedParameter As String = EncodeURLComponent(Xoson.toJSON(localVarItemmetricTypes))
+		  For Each localVarItemmetricTypes As Metric_typesEnum_PinsAnalytics in metricTypes
+		    Dim encodedParameter As String = EncodeURLComponent(Metric_typesEnum_PinsAnalyticsToString(localVarItemmetricTypes))
 		    localVarQueryStringsmetricTypes.Append(encodedParameter)
 		  Next
 		  
 		  Dim localVarQueryStringmetricTypes As String
 		  Select Case "form"
 		    Case "form"
-			  localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, ",")
+			  localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, ",")
 		    Case "spaceDelimited"
-		      localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, " ")
+		      localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, " ")
 		    Case "pipeDelimited"
-		      localVarQueryStringmetricTypes = "inner=" + Join(localVarQueryStringsmetricTypes, "|")
+		      localVarQueryStringmetricTypes = "metric_types=" + Join(localVarQueryStringsmetricTypes, "|")
 		    Case "deepObject"
 		      Raise New OpenAPIClient.OpenAPIClientException(kErrorUnsupportedFeature, "deepObject query parameters are not supported")
 		  End Select
-		  If localVarQueryStringsmetricTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("inner") + "=" + EncodeURLComponent(localVarQueryStringmetricTypes)
+		  If localVarQueryStringsmetricTypes.Ubound() > -1 Then localVarQueryParams = localVarQueryParams + "&"  + EncodeURLComponent("metric_types") + "=" + EncodeURLComponent(localVarQueryStringmetricTypes)
 		  localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("split_field") + "=" + EncodeURLComponent(Split_fieldEnum_PinsAnalyticsToString(splitField))
 		  
 		  If adAccountId <> nil Then localVarQueryParams = localVarQueryParams + "&" + EncodeURLComponent("ad_account_id") + "=" + EncodeURLComponent(adAccountId)
@@ -372,6 +411,45 @@ Protected Class PinsApi
 
 
 
+	#tag Method, Flags = &h21
+		Private Function Metric_typesEnum_PinsAnalyticsToString(value As Metric_typesEnum_PinsAnalytics) As String
+		  Select Case value
+		    
+		    Case Metric_typesEnum_PinsAnalytics.Impression
+		      Return "IMPRESSION"
+		    Case Metric_typesEnum_PinsAnalytics.OutboundClick
+		      Return "OUTBOUND_CLICK"
+		    Case Metric_typesEnum_PinsAnalytics.PinClick
+		      Return "PIN_CLICK"
+		    Case Metric_typesEnum_PinsAnalytics.Save
+		      Return "SAVE"
+		    Case Metric_typesEnum_PinsAnalytics.SaveRate
+		      Return "SAVE_RATE"
+		    Case Metric_typesEnum_PinsAnalytics.TotalComments
+		      Return "TOTAL_COMMENTS"
+		    Case Metric_typesEnum_PinsAnalytics.TotalReactions
+		      Return "TOTAL_REACTIONS"
+		    Case Metric_typesEnum_PinsAnalytics.UserFollow
+		      Return "USER_FOLLOW"
+		    Case Metric_typesEnum_PinsAnalytics.ProfileVisit
+		      Return "PROFILE_VISIT"
+		    Case Metric_typesEnum_PinsAnalytics.VideoMrcView
+		      Return "VIDEO_MRC_VIEW"
+		    Case Metric_typesEnum_PinsAnalytics.Video10sView
+		      Return "VIDEO_10S_VIEW"
+		    Case Metric_typesEnum_PinsAnalytics.Quartile95PercentView
+		      Return "QUARTILE_95_PERCENT_VIEW"
+		    Case Metric_typesEnum_PinsAnalytics.VideoV50WatchTime
+		      Return "VIDEO_V50_WATCH_TIME"
+		    Case Metric_typesEnum_PinsAnalytics.VideoStart
+		      Return "VIDEO_START"
+		    Case Metric_typesEnum_PinsAnalytics.VideoAvgWatchTime
+		      Return "VIDEO_AVG_WATCH_TIME"
+		    
+		  End Select
+		  Return ""
+		End Function
+	#tag EndMethod
 	#tag Method, Flags = &h21
 		Private Function App_typesEnum_PinsAnalyticsToString(value As App_typesEnum_PinsAnalytics) As String
 		  Select Case value
@@ -1329,12 +1407,52 @@ Protected Class PinsApi
 		UseHTTPS As Boolean = true
 	#tag EndProperty
 
+	#tag Enum, Name = Metric_typesEnum_MultiPinsAnalytics, Type = Integer, Flags = &h0
+		
+        Impression
+        OutboundClick
+        PinClick
+        Save
+        SaveRate
+        TotalComments
+        TotalReactions
+        UserFollow
+        ProfileVisit
+        VideoMrcView
+        Video10sView
+        Quartile95PercentView
+        VideoV50WatchTime
+        VideoStart
+        VideoAvgWatchTime
+		
+	#tag EndEnum
+
 	#tag Enum, Name = App_typesEnum_MultiPinsAnalytics, Type = Integer, Flags = &h0
 		
         All
         Mobile
         Tablet
         Web
+		
+	#tag EndEnum
+
+	#tag Enum, Name = Metric_typesEnum_PinsAnalytics, Type = Integer, Flags = &h0
+		
+        Impression
+        OutboundClick
+        PinClick
+        Save
+        SaveRate
+        TotalComments
+        TotalReactions
+        UserFollow
+        ProfileVisit
+        VideoMrcView
+        Video10sView
+        Quartile95PercentView
+        VideoV50WatchTime
+        VideoStart
+        VideoAvgWatchTime
 		
 	#tag EndEnum
 

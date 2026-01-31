@@ -1,19 +1,20 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Pin media objects.
- **/
+ * Pin media objects.
+ */
 @ApiModel(description="Pin media objects.")
 
 public class PinMedia  {
   
   @ApiModelProperty(value = "")
+
   private String mediaType;
  /**
    * Get mediaType

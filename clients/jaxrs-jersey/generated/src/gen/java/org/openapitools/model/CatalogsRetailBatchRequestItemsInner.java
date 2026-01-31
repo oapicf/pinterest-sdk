@@ -45,7 +45,7 @@ import javax.validation.Valid;
   CatalogsRetailBatchRequestItemsInner.JSON_PROPERTY_ATTRIBUTES,
   CatalogsRetailBatchRequestItemsInner.JSON_PROPERTY_UPDATE_MASK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreateRetailItem.class, name = "CREATE"),
   @JsonSubTypes.Type(value = CatalogsDeleteRetailItem.class, name = "DELETE"),
@@ -70,8 +70,12 @@ public class CatalogsRetailBatchRequestItemsInner   {
       this.value = value;
     }
 
-    @Override
     @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
     public String toString() {
       return String.valueOf(value);
     }

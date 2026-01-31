@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type Privacy* {.pure.} = enum
@@ -17,18 +19,28 @@ type Privacy* {.pure.} = enum
 
 type BoardUpdate* = object
   ## Board fields for updates
-  name*: string
-  description*: string
-  privacy*: Privacy
+  name*: Option[string]
+  description*: Option[string]
+  privacy*: Option[Privacy]
 
 func `%`*(v: Privacy): JsonNode =
-  let str = case v:
-    of Privacy.PUBLIC: "PUBLIC"
-    of Privacy.SECRET: "SECRET"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Privacy.PUBLIC: %"PUBLIC"
+    of Privacy.SECRET: %"SECRET"
 func `$`*(v: Privacy): string =
   result = case v:
-    of Privacy.PUBLIC: "PUBLIC"
-    of Privacy.SECRET: "SECRET"
+    of Privacy.PUBLIC: $("PUBLIC")
+    of Privacy.SECRET: $("SECRET")
+
+proc to*(node: JsonNode, T: typedesc[Privacy]): Privacy =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Privacy, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("PUBLIC"):
+    return Privacy.PUBLIC
+  of $("SECRET"):
+    return Privacy.SECRET
+  else:
+    raise newException(ValueError, "Invalid enum value for Privacy: " & strVal)
+

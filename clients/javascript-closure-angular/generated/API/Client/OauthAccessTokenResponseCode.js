@@ -1,10 +1,21 @@
 goog.provide('API.Client.OauthAccessTokenResponseCode');
 
 /**
- * A successful OAuth access token response for the authorization code flow.
  * @record
  */
 API.Client.OauthAccessTokenResponseCode = function() {}
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.OauthAccessTokenResponseCode.prototype.refreshToken;
+
+/**
+ * @type {!number}
+ * @export
+ */
+API.Client.OauthAccessTokenResponseCode.prototype.refreshTokenExpiresIn;
 
 /**
  * @type {!string}
@@ -35,18 +46,6 @@ API.Client.OauthAccessTokenResponseCode.prototype.expiresIn;
  * @export
  */
 API.Client.OauthAccessTokenResponseCode.prototype.scope;
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.OauthAccessTokenResponseCode.prototype.refreshToken;
-
-/**
- * @type {!number}
- * @export
- */
-API.Client.OauthAccessTokenResponseCode.prototype.refreshTokenExpiresIn;
 
 /** @enum {string} */
 API.Client.OauthAccessTokenResponseCode.ResponseTypeEnum = { 

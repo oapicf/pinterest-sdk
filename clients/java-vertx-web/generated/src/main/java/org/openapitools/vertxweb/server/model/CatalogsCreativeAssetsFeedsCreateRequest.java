@@ -30,7 +30,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private CatalogsType catalogType;
   private String catalogId;
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   public CatalogsCreativeAssetsFeedsCreateRequest () {
 

@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -56,12 +55,21 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'ResponseType'
+        /// Test the property 'RefreshToken'
         /// </summary>
         [Fact]
-        public void ResponseTypeTest()
+        public void RefreshTokenTest()
         {
-            // TODO unit test for the property 'ResponseType'
+            // TODO unit test for the property 'RefreshToken'
+        }
+
+        /// <summary>
+        /// Test the property 'RefreshTokenExpiresIn'
+        /// </summary>
+        [Fact]
+        public void RefreshTokenExpiresInTest()
+        {
+            // TODO unit test for the property 'RefreshTokenExpiresIn'
         }
 
         /// <summary>
@@ -71,15 +79,6 @@ namespace Org.OpenAPITools.Test.Model
         public void AccessTokenTest()
         {
             // TODO unit test for the property 'AccessToken'
-        }
-
-        /// <summary>
-        /// Test the property 'TokenType'
-        /// </summary>
-        [Fact]
-        public void TokenTypeTest()
-        {
-            // TODO unit test for the property 'TokenType'
         }
 
         /// <summary>
@@ -101,21 +100,21 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'RefreshToken'
+        /// Test the property 'ResponseType'
         /// </summary>
         [Fact]
-        public void RefreshTokenTest()
+        public void ResponseTypeTest()
         {
-            // TODO unit test for the property 'RefreshToken'
+            // TODO unit test for the property 'ResponseType'
         }
 
         /// <summary>
-        /// Test the property 'RefreshTokenExpiresIn'
+        /// Test the property 'TokenType'
         /// </summary>
         [Fact]
-        public void RefreshTokenExpiresInTest()
+        public void TokenTypeTest()
         {
-            // TODO unit test for the property 'RefreshTokenExpiresIn'
+            // TODO unit test for the property 'TokenType'
         }
     }
 }

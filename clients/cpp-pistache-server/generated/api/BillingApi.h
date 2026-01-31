@@ -104,7 +104,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="adsCreditRedeemRequest">Redeem ad credits request.</param>
-    virtual void ads_credit_redeem(const std::string &adAccountId, const org::openapitools::server::model::AdsCreditRedeemRequest &adsCreditRedeemRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ads_credit_redeem( const std::string &adAccountId, const org::openapitools::server::model::AdsCreditRedeemRequest &adsCreditRedeemRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get ads credit discounts
     /// </summary>
@@ -114,7 +114,7 @@ private:
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void ads_credits_discounts_get(const std::string &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ads_credits_discounts_get( const std::string &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get billing profiles
     /// </summary>
@@ -125,7 +125,7 @@ private:
     /// <param name="isActive">Return active billing profiles, if false return all billing profiles.</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void billing_profiles_get(const std::string &adAccountId, const std::optional<bool> &isActive, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void billing_profiles_get( const std::string &adAccountId, const std::optional<bool> &isActive, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Salesforce account details including bill-to information.
     /// </summary>
@@ -133,7 +133,7 @@ private:
     /// Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
-    virtual void ssio_accounts_get(const std::string &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ssio_accounts_get( const std::string &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create insertion order through SSIO.
     /// </summary>
@@ -142,7 +142,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="sSIOCreateInsertionOrderRequest">Order line to create.</param>
-    virtual void ssio_insertion_order_create(const std::string &adAccountId, const org::openapitools::server::model::SSIOCreateInsertionOrderRequest &sSIOCreateInsertionOrderRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ssio_insertion_order_create( const std::string &adAccountId, const org::openapitools::server::model::SSIOCreateInsertionOrderRequest &sSIOCreateInsertionOrderRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Edit insertion order through SSIO.
     /// </summary>
@@ -151,7 +151,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="sSIOEditInsertionOrderRequest">Order line to create.</param>
-    virtual void ssio_insertion_order_edit(const std::string &adAccountId, const org::openapitools::server::model::SSIOEditInsertionOrderRequest &sSIOEditInsertionOrderRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ssio_insertion_order_edit( const std::string &adAccountId, const org::openapitools::server::model::SSIOEditInsertionOrderRequest &sSIOEditInsertionOrderRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get insertion order status by ad account id.
     /// </summary>
@@ -161,7 +161,7 @@ private:
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void ssio_insertion_orders_status_get_by_ad_account(const std::string &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ssio_insertion_orders_status_get_by_ad_account( const std::string &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get insertion order status by pin order id.
     /// </summary>
@@ -170,7 +170,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="pinOrderId">The pin order id associated with the ssio insertion order</param>
-    virtual void ssio_insertion_orders_status_get_by_pin_order_id(const std::string &adAccountId, const std::string &pinOrderId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ssio_insertion_orders_status_get_by_pin_order_id( const std::string &adAccountId, const std::string &pinOrderId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Salesforce order lines by ad account id.
     /// </summary>
@@ -181,7 +181,7 @@ private:
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="pinOrderId">The pin order id associated with the ssio insertino order (optional, default to &quot;&quot;)</param>
-    virtual void ssio_order_lines_get_by_ad_account(const std::string &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &pinOrderId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ssio_order_lines_get_by_ad_account( const std::string &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &pinOrderId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

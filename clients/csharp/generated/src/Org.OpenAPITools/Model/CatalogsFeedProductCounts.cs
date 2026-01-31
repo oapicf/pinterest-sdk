@@ -140,12 +140,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "original":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                original = new Option<int?>(utf8JsonReader.GetInt32());
+                            original = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ingested":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ingested = new Option<int?>(utf8JsonReader.GetInt32());
+                            ingested = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

@@ -42,7 +42,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
+open class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -322,7 +322,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param ownershipType Filter audiences by ownership type. (optional, default to OWNED)
+     * @param ownershipType Filter audiences by ownership type. (optional, default to OwnershipType.OWNED)
      * @return AudiencesList200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -358,7 +358,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param ownershipType Filter audiences by ownership type. (optional, default to OWNED)
+     * @param ownershipType Filter audiences by ownership type. (optional, default to OwnershipType.OWNED)
      * @return ApiResponse<AudiencesList200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -380,7 +380,7 @@ class AudiencesApi(basePath: kotlin.String = defaultBasePath, client: Call.Facto
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param order The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
-     * @param ownershipType Filter audiences by ownership type. (optional, default to OWNED)
+     * @param ownershipType Filter audiences by ownership type. (optional, default to OwnershipType.OWNED)
      * @return RequestConfig
      */
     fun audiencesListRequestConfig(adAccountId: kotlin.String, bookmark: kotlin.String?, order: OrderAudiencesList?, pageSize: kotlin.Int?, ownershipType: OwnershipTypeAudiencesList?) : RequestConfig<Unit> {

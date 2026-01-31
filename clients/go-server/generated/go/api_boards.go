@@ -54,62 +54,147 @@ func NewBoardsAPIController(s BoardsAPIServicer, opts ...BoardsAPIOption) *Board
 func (c *BoardsAPIController) Routes() Routes {
 	return Routes{
 		"BoardsList": Route{
+			"BoardsList",
 			strings.ToUpper("Get"),
 			"/v5/boards",
 			c.BoardsList,
 		},
 		"BoardsCreate": Route{
+			"BoardsCreate",
 			strings.ToUpper("Post"),
 			"/v5/boards",
 			c.BoardsCreate,
 		},
 		"BoardsGet": Route{
+			"BoardsGet",
 			strings.ToUpper("Get"),
 			"/v5/boards/{board_id}",
 			c.BoardsGet,
 		},
 		"BoardsDelete": Route{
+			"BoardsDelete",
 			strings.ToUpper("Delete"),
 			"/v5/boards/{board_id}",
 			c.BoardsDelete,
 		},
 		"BoardsUpdate": Route{
+			"BoardsUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/boards/{board_id}",
 			c.BoardsUpdate,
 		},
 		"BoardsListPins": Route{
+			"BoardsListPins",
 			strings.ToUpper("Get"),
 			"/v5/boards/{board_id}/pins",
 			c.BoardsListPins,
 		},
 		"BoardSectionsList": Route{
+			"BoardSectionsList",
 			strings.ToUpper("Get"),
 			"/v5/boards/{board_id}/sections",
 			c.BoardSectionsList,
 		},
 		"BoardSectionsCreate": Route{
+			"BoardSectionsCreate",
 			strings.ToUpper("Post"),
 			"/v5/boards/{board_id}/sections",
 			c.BoardSectionsCreate,
 		},
 		"BoardSectionsDelete": Route{
+			"BoardSectionsDelete",
 			strings.ToUpper("Delete"),
 			"/v5/boards/{board_id}/sections/{section_id}",
 			c.BoardSectionsDelete,
 		},
 		"BoardSectionsUpdate": Route{
+			"BoardSectionsUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/boards/{board_id}/sections/{section_id}",
 			c.BoardSectionsUpdate,
 		},
 		"BoardSectionsListPins": Route{
+			"BoardSectionsListPins",
 			strings.ToUpper("Get"),
 			"/v5/boards/{board_id}/sections/{section_id}/pins",
 			c.BoardSectionsListPins,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the BoardsAPIController
+func (c *BoardsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"BoardsList",
+			strings.ToUpper("Get"),
+			"/v5/boards",
+			c.BoardsList,
+		},
+		Route{
+			"BoardsCreate",
+			strings.ToUpper("Post"),
+			"/v5/boards",
+			c.BoardsCreate,
+		},
+		Route{
+			"BoardsGet",
+			strings.ToUpper("Get"),
+			"/v5/boards/{board_id}",
+			c.BoardsGet,
+		},
+		Route{
+			"BoardsDelete",
+			strings.ToUpper("Delete"),
+			"/v5/boards/{board_id}",
+			c.BoardsDelete,
+		},
+		Route{
+			"BoardsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/boards/{board_id}",
+			c.BoardsUpdate,
+		},
+		Route{
+			"BoardsListPins",
+			strings.ToUpper("Get"),
+			"/v5/boards/{board_id}/pins",
+			c.BoardsListPins,
+		},
+		Route{
+			"BoardSectionsList",
+			strings.ToUpper("Get"),
+			"/v5/boards/{board_id}/sections",
+			c.BoardSectionsList,
+		},
+		Route{
+			"BoardSectionsCreate",
+			strings.ToUpper("Post"),
+			"/v5/boards/{board_id}/sections",
+			c.BoardSectionsCreate,
+		},
+		Route{
+			"BoardSectionsDelete",
+			strings.ToUpper("Delete"),
+			"/v5/boards/{board_id}/sections/{section_id}",
+			c.BoardSectionsDelete,
+		},
+		Route{
+			"BoardSectionsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/boards/{board_id}/sections/{section_id}",
+			c.BoardSectionsUpdate,
+		},
+		Route{
+			"BoardSectionsListPins",
+			strings.ToUpper("Get"),
+			"/v5/boards/{board_id}/sections/{section_id}/pins",
+			c.BoardSectionsListPins,
+		},
+	}
+}
+
+
 
 // BoardsList - List boards
 func (c *BoardsAPIController) BoardsList(w http.ResponseWriter, r *http.Request) {

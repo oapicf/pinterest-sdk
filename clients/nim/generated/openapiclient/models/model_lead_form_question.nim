@@ -9,13 +9,42 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_lead_form_question_field_type
 import model_lead_form_question_type
 
 type LeadFormQuestion* = object
   ## 
-  questionType*: LeadFormQuestionType
-  customQuestionFieldType*: LeadFormQuestionFieldType
-  customQuestionLabel*: string ## Question label for a custom question.
-  customQuestionOptions*: seq[string] ## Question options for a custom question.
+  questionType*: Option[LeadFormQuestionType]
+  customQuestionFieldType*: Option[LeadFormQuestionFieldType]
+  customQuestionLabel*: Option[string] ## Question label for a custom question.
+  customQuestionOptions*: Option[seq[string]] ## Question options for a custom question.
+
+
+# Custom JSON deserialization for LeadFormQuestion with custom field names
+proc to*(node: JsonNode, T: typedesc[LeadFormQuestion]): LeadFormQuestion =
+  result = LeadFormQuestion()
+  if node.kind == JObject:
+    if node.hasKey("question_type") and node["question_type"].kind != JNull:
+      result.questionType = some(to(node["question_type"], typeof(result.questionType.get())))
+    if node.hasKey("custom_question_field_type") and node["custom_question_field_type"].kind != JNull:
+      result.customQuestionFieldType = some(to(node["custom_question_field_type"], typeof(result.customQuestionFieldType.get())))
+    if node.hasKey("custom_question_label") and node["custom_question_label"].kind != JNull:
+      result.customQuestionLabel = some(to(node["custom_question_label"], typeof(result.customQuestionLabel.get())))
+    if node.hasKey("custom_question_options") and node["custom_question_options"].kind != JNull:
+      result.customQuestionOptions = some(to(node["custom_question_options"], typeof(result.customQuestionOptions.get())))
+
+# Custom JSON serialization for LeadFormQuestion with custom field names
+proc `%`*(obj: LeadFormQuestion): JsonNode =
+  result = newJObject()
+  if obj.questionType.isSome():
+    result["question_type"] = %obj.questionType.get()
+  if obj.customQuestionFieldType.isSome():
+    result["custom_question_field_type"] = %obj.customQuestionFieldType.get()
+  if obj.customQuestionLabel.isSome():
+    result["custom_question_label"] = %obj.customQuestionLabel.get()
+  if obj.customQuestionOptions.isSome():
+    result["custom_question_options"] = %obj.customQuestionOptions.get()
+

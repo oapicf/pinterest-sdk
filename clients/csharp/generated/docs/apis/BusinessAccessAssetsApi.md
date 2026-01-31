@@ -25,65 +25,6 @@ Create a new asset group.
 
 Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class AssetGroupCreateExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new BusinessAccessAssetsApi(config);
-            var businessId = 729090764583391194;  // string | Unique identifier of the requesting business.
-            var createAssetGroupBody = new CreateAssetGroupBody(); // CreateAssetGroupBody | 
-
-            try
-            {
-                // Create a new asset group.
-                CreateAssetGroupResponse result = apiInstance.AssetGroupCreate(businessId, createAssetGroupBody);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BusinessAccessAssetsApi.AssetGroupCreate: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AssetGroupCreateWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Create a new asset group.
-    ApiResponse<CreateAssetGroupResponse> response = apiInstance.AssetGroupCreateWithHttpInfo(businessId, createAssetGroupBody);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BusinessAccessAssetsApi.AssetGroupCreateWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -123,65 +64,6 @@ Delete asset groups.
 
 Delete a batch of asset groups.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class AssetGroupDeleteExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new BusinessAccessAssetsApi(config);
-            var businessId = 729090764583391194;  // string | Unique identifier of the requesting business.
-            var deleteAssetGroupBody = new DeleteAssetGroupBody(); // DeleteAssetGroupBody | 
-
-            try
-            {
-                // Delete asset groups.
-                DeleteAssetGroupResponse result = apiInstance.AssetGroupDelete(businessId, deleteAssetGroupBody);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BusinessAccessAssetsApi.AssetGroupDelete: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AssetGroupDeleteWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Delete asset groups.
-    ApiResponse<DeleteAssetGroupResponse> response = apiInstance.AssetGroupDeleteWithHttpInfo(businessId, deleteAssetGroupBody);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BusinessAccessAssetsApi.AssetGroupDeleteWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -221,65 +103,6 @@ Update asset groups.
 
 Update a batch of asset groups with the specified parameters.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class AssetGroupUpdateExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new BusinessAccessAssetsApi(config);
-            var businessId = 729090764583391194;  // string | Unique identifier of the requesting business.
-            var updateAssetGroupBody = new UpdateAssetGroupBody(); // UpdateAssetGroupBody | 
-
-            try
-            {
-                // Update asset groups.
-                UpdateAssetGroupResponse result = apiInstance.AssetGroupUpdate(businessId, updateAssetGroupBody);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BusinessAccessAssetsApi.AssetGroupUpdate: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AssetGroupUpdateWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Update asset groups.
-    ApiResponse<UpdateAssetGroupResponse> response = apiInstance.AssetGroupUpdateWithHttpInfo(businessId, updateAssetGroupBody);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BusinessAccessAssetsApi.AssetGroupUpdateWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -319,68 +142,6 @@ Get members with access to asset
 
 Get all the members the requesting business has granted access to on the given asset.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class BusinessAssetMembersGetExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new BusinessAccessAssetsApi(config);
-            var businessId = 729090764583391194;  // string | Unique identifier of the requesting business.
-            var assetId = 729090764583391194;  // string | Unique identifier of a business asset.
-            var bookmark = "bookmark_example";  // string | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
-            var startIndex = 0;  // int | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)  (default to 0)
-
-            try
-            {
-                // Get members with access to asset
-                BusinessAssetMembersGet200Response result = apiInstance.BusinessAssetMembersGet(businessId, assetId, bookmark, pageSize, startIndex);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessAssetMembersGet: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the BusinessAssetMembersGetWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get members with access to asset
-    ApiResponse<BusinessAssetMembersGet200Response> response = apiInstance.BusinessAssetMembersGetWithHttpInfo(businessId, assetId, bookmark, pageSize, startIndex);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessAssetMembersGetWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -422,68 +183,6 @@ Get partners with access to asset
 
 Get all the partners the requesting business has granted access to on the given asset. Note: If the asset has been shared with you, an empty array will be returned. This is because an asset shared with you cannot be shared with a different partner.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class BusinessAssetPartnersGetExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new BusinessAccessAssetsApi(config);
-            var businessId = 729090764583391194;  // string | Unique identifier of the requesting business.
-            var assetId = 729090764583391194;  // string | Unique identifier of a business asset.
-            var startIndex = 0;  // int | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)  (default to 0)
-            var bookmark = "bookmark_example";  // string | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
-
-            try
-            {
-                // Get partners with access to asset
-                BusinessAssetPartnersGet200Response result = apiInstance.BusinessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessAssetPartnersGet: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the BusinessAssetPartnersGetWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get partners with access to asset
-    ApiResponse<BusinessAssetPartnersGet200Response> response = apiInstance.BusinessAssetPartnersGetWithHttpInfo(businessId, assetId, startIndex, bookmark, pageSize);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessAssetPartnersGetWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -525,71 +224,6 @@ List business assets
 
 Get all the assets the requesting business has access to. This includes assets the business owns and assets the business has access to through partnerships.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class BusinessAssetsGetExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new BusinessAccessAssetsApi(config);
-            var businessId = 729090764583391194;  // string | Unique identifier of the requesting business.
-            var permissions = new List<PermissionsWithOwner>(); // List<PermissionsWithOwner> | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. (optional) 
-            var childAssetId = 549764894835;  // string | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional) 
-            var assetGroupId = 7078106104032;  // string | An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional) 
-            var assetType = AD_ACCOUNT;  // string | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)  (default to AD_ACCOUNT)
-            var startIndex = 0;  // int | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)  (default to 0)
-            var bookmark = "bookmark_example";  // string | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
-
-            try
-            {
-                // List business assets
-                BusinessAssetsGet200Response result = apiInstance.BusinessAssetsGet(businessId, permissions, childAssetId, assetGroupId, assetType, startIndex, bookmark, pageSize);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessAssetsGet: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the BusinessAssetsGetWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // List business assets
-    ApiResponse<BusinessAssetsGet200Response> response = apiInstance.BusinessAssetsGetWithHttpInfo(businessId, permissions, childAssetId, assetGroupId, assetType, startIndex, bookmark, pageSize);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessAssetsGetWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -634,69 +268,6 @@ Get assets assigned to a member
 
 Get assets on which you assigned asset permissions to the given member. Can be used to: - get all assets, regardless of asset type or - get assets of one asset type by using the asset_type query. The return response will include the permissions the member has to that asset and the asset type.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class BusinessMemberAssetsGetExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new BusinessAccessAssetsApi(config);
-            var businessId = 729090764583391194;  // string | Unique identifier of the requesting business.
-            var memberId = 729090764583391194;  // string | The member id to fetch assets for.
-            var assetType = AD_ACCOUNT;  // string | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)  (default to AD_ACCOUNT)
-            var startIndex = 0;  // int | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)  (default to 0)
-            var bookmark = "bookmark_example";  // string | Cursor used to fetch the next page of items (optional) 
-            var pageSize = 25;  // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
-
-            try
-            {
-                // Get assets assigned to a member
-                BusinessMemberAssetsGet200Response result = apiInstance.BusinessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessMemberAssetsGet: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the BusinessMemberAssetsGetWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get assets assigned to a member
-    ApiResponse<BusinessMemberAssetsGet200Response> response = apiInstance.BusinessMemberAssetsGetWithHttpInfo(businessId, memberId, assetType, startIndex, bookmark, pageSize);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessMemberAssetsGetWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -739,65 +310,6 @@ Delete member access to asset
 
 Terminate multiple members' access to an asset.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class BusinessMembersAssetAccessDeleteExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new BusinessAccessAssetsApi(config);
-            var businessId = 729090764583391194;  // string | Unique identifier of the requesting business.
-            var businessMembersAssetAccessDeleteRequest = new BusinessMembersAssetAccessDeleteRequest(); // BusinessMembersAssetAccessDeleteRequest | List member assset permissions to delete.
-
-            try
-            {
-                // Delete member access to asset
-                DeleteMemberAccessResultsResponseArray result = apiInstance.BusinessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessMembersAssetAccessDelete: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the BusinessMembersAssetAccessDeleteWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Delete member access to asset
-    ApiResponse<DeleteMemberAccessResultsResponseArray> response = apiInstance.BusinessMembersAssetAccessDeleteWithHttpInfo(businessId, businessMembersAssetAccessDeleteRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessMembersAssetAccessDeleteWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -836,65 +348,6 @@ Assign/Update member asset permissions
 
 Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class BusinessMembersAssetAccessUpdateExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new BusinessAccessAssetsApi(config);
-            var businessId = 729090764583391194;  // string | Unique identifier of the requesting business.
-            var updateMemberAssetAccessBody = new UpdateMemberAssetAccessBody(); // UpdateMemberAssetAccessBody | List of member asset permissions to create or update.
-
-            try
-            {
-                // Assign/Update member asset permissions
-                UpdateMemberAssetsResultsResponseArray result = apiInstance.BusinessMembersAssetAccessUpdate(businessId, updateMemberAssetAccessBody);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessMembersAssetAccessUpdate: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the BusinessMembersAssetAccessUpdateWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Assign/Update member asset permissions
-    ApiResponse<UpdateMemberAssetsResultsResponseArray> response = apiInstance.BusinessMembersAssetAccessUpdateWithHttpInfo(businessId, updateMemberAssetAccessBody);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessMembersAssetAccessUpdateWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -933,70 +386,6 @@ Get assets assigned to a partner or assets assigned by a partner
 
 Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type=INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type=EXTERNAL, you will retrieve the partner's business assets that the partner has granted you access to.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class BusinessPartnerAssetAccessGetExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new BusinessAccessAssetsApi(config);
-            var businessId = 729090764583391194;  // string | Unique identifier of the requesting business.
-            var partnerId = 729090764583391194;  // string | The partner id to be bound to the Business
-            var partnerType = INTERNAL;  // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional) 
-            var assetType = AD_ACCOUNT;  // string | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)  (default to AD_ACCOUNT)
-            var startIndex = 0;  // int | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)  (default to 0)
-            var pageSize = 25;  // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
-            var bookmark = "bookmark_example";  // string | Cursor used to fetch the next page of items (optional) 
-
-            try
-            {
-                // Get assets assigned to a partner or assets assigned by a partner
-                BusinessPartnerAssetAccessGet200Response result = apiInstance.BusinessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessPartnerAssetAccessGet: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the BusinessPartnerAssetAccessGetWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get assets assigned to a partner or assets assigned by a partner
-    ApiResponse<BusinessPartnerAssetAccessGet200Response> response = apiInstance.BusinessPartnerAssetAccessGetWithHttpInfo(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BusinessAccessAssetsApi.BusinessPartnerAssetAccessGetWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1040,65 +429,6 @@ Delete partner access to asset
 
 Terminate multiple partners' access to an asset. If - partner_type=INTERNAL: You will terminate a partner's asset access to your business assets. - partner_type=EXTERNAL: You will terminate your own access to your partner's business assets.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class DeletePartnerAssetAccessHandlerImplExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new BusinessAccessAssetsApi(config);
-            var businessId = 729090764583391194;  // string | Unique identifier of the requesting business.
-            var deletePartnerAssetAccessBody = new DeletePartnerAssetAccessBody(); // DeletePartnerAssetAccessBody | 
-
-            try
-            {
-                // Delete partner access to asset
-                DeletePartnerAssetsResultsResponseArray result = apiInstance.DeletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BusinessAccessAssetsApi.DeletePartnerAssetAccessHandlerImpl: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeletePartnerAssetAccessHandlerImplWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Delete partner access to asset
-    ApiResponse<DeletePartnerAssetsResultsResponseArray> response = apiInstance.DeletePartnerAssetAccessHandlerImplWithHttpInfo(businessId, deletePartnerAssetAccessBody);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BusinessAccessAssetsApi.DeletePartnerAssetAccessHandlerImplWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1137,65 +467,6 @@ Assign/Update partner asset permissions
 
 Grant multiple partners access to assets and/or update multiple partner's exisiting permissions to an asset. If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them. To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class UpdatePartnerAssetAccessHandlerImplExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new BusinessAccessAssetsApi(config);
-            var businessId = 729090764583391194;  // string | Unique identifier of the requesting business.
-            var updatePartnerAssetAccessBody = new UpdatePartnerAssetAccessBody(); // UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
-
-            try
-            {
-                // Assign/Update partner asset permissions
-                UpdatePartnerAssetsResultsResponseArray result = apiInstance.UpdatePartnerAssetAccessHandlerImpl(businessId, updatePartnerAssetAccessBody);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling BusinessAccessAssetsApi.UpdatePartnerAssetAccessHandlerImpl: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdatePartnerAssetAccessHandlerImplWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Assign/Update partner asset permissions
-    ApiResponse<UpdatePartnerAssetsResultsResponseArray> response = apiInstance.UpdatePartnerAssetAccessHandlerImplWithHttpInfo(businessId, updatePartnerAssetAccessBody);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BusinessAccessAssetsApi.UpdatePartnerAssetAccessHandlerImplWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

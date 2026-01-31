@@ -12,7 +12,9 @@ import org.joda.time.DateTime
 import CreateMMMReportRequest._
 
 case class CreateMMMReportRequest (
-  /* Name of the Marketing Mix Modeling (MMM) report */
+  /* A List of countries for filtering */
+  countries: Option[List[TargetingAdvertiserCountry]],
+/* Name of the Marketing Mix Modeling (MMM) report */
   reportName: String,
 /* Metric report start date (UTC). Format: YYYY-MM-DD */
   startDate: String,
@@ -25,9 +27,7 @@ case class CreateMMMReportRequest (
 /* List of targeting types */
   targetingTypes: List[MMMReportingTargetingType],
 /* Metric and entity columns */
-  columns: List[MMMReportingColumn],
-/* A List of countries for filtering */
-  countries: Option[List[TargetingAdvertiserCountry]])
+  columns: List[MMMReportingColumn])
 
 object CreateMMMReportRequest {
   import DateTimeCodecs._

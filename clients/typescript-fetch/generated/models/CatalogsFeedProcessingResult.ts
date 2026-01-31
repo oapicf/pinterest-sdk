@@ -139,9 +139,9 @@ export function CatalogsFeedProcessingResultToJSONTyped(value?: CatalogsFeedProc
 
     return {
         
-        'created_at': ((value['createdAt']).toISOString()),
+        'created_at': value['createdAt'].toISOString(),
         'id': value['id'],
-        'updated_at': ((value['updatedAt']).toISOString()),
+        'updated_at': value['updatedAt'].toISOString(),
         'ingestion_details': CatalogsFeedIngestionDetailsToJSON(value['ingestionDetails']),
         'status': CatalogsFeedProcessingStatusToJSON(value['status']),
         'product_counts': CatalogsFeedProductCountsToJSON(value['productCounts']),

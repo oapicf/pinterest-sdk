@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.util.Date;
 import org.openapitools.model.CatalogsCreativeAssetsFeed;
 import org.openapitools.model.CatalogsFeedCredentials;
@@ -21,13 +20,14 @@ import org.openapitools.model.ProductAvailabilityType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Catalogs Feed object
- **/
+ * Catalogs Feed object
+ */
 @ApiModel(description="Catalogs Feed object")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
@@ -39,68 +39,91 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsFeed  {
   
   @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
+
   private Date createdAt;
 
   @ApiModelProperty(required = true, value = "")
+
   private String id;
 
   @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+
   private Date updatedAt;
 
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
  /**
-   * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-  **/
+  * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+  */
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
+
   private String name;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFormat format;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsType catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedCredentials credentials;
 
-  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
  /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  **/
+  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  */
+  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+
   private String location;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsStatus status;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private NullableCurrency defaultCurrency;
 
-  @ApiModelProperty(example = "en-US", required = true, value = "The locale used within a feed for product descriptions.")
  /**
-   * The locale used within a feed for product descriptions.
-  **/
+  * The locale used within a feed for product descriptions.
+  */
+  @ApiModelProperty(example = "en-US", required = true, value = "The locale used within a feed for product descriptions.")
+
   private String defaultLocale;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private Country defaultCountry;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private ProductAvailabilityType defaultAvailability;
 
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
  /**
-   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
-  **/
+  * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+  */
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
+
   private String catalogId;
  /**
    * Get createdAt

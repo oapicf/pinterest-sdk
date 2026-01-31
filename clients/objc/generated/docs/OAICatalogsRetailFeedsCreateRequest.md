@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **catalogType** | [**OAICatalogsType***](OAICatalogsType.md) |  | 
 **defaultCountry** | [**OAICountry***](OAICountry.md) |  | 
 **defaultAvailability** | [**OAIProductAvailabilityType***](OAIProductAvailabilityType.md) |  | [optional] 
-**status** | [**OAICatalogsStatus***](OAICatalogsStatus.md) |  | [optional] 
+**status** | [**OAICatalogsStatus***](OAICatalogsStatus.md) |  | [optional] [default to @"ACTIVE"]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

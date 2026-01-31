@@ -12,95 +12,141 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsItemValidationErrors  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails ADULT_INVALID;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails ADWORDS_FORMAT_INVALID;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails AVAILABILITY_INVALID;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails BLOCKLISTED_IMAGE_SIGNATURE;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails DESCRIPTION_MISSING;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails DUPLICATE_PRODUCTS;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails IMAGE_LINK_INVALID;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails IMAGE_LINK_LENGTH_TOO_LONG;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails IMAGE_LINK_MISSING;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails INVALID_DOMAIN;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails ITEMID_MISSING;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails LINK_FORMAT_INVALID;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails LINK_LENGTH_TOO_LONG;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails LIST_PRICE_INVALID;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails PARSE_LINE_ERROR;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails PINJOIN_CONTENT_UNSAFE;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails PRICE_CANNOT_BE_DETERMINED;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails PRICE_MISSING;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails PRODUCT_LINK_MISSING;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails PRODUCT_PRICE_INVALID;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsItemValidationDetails TITLE_MISSING;
  /**
    * Get ADULT_INVALID

@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedIngestionErrors
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedIngestionErrors {
   public static final String SERIALIZED_NAME_L_I_N_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R = "LINE_LEVEL_INTERNAL_ERROR";
   @SerializedName(SERIALIZED_NAME_L_I_N_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R)
@@ -353,18 +353,10 @@ public class CatalogsFeedIngestionErrors {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("LINE_LEVEL_INTERNAL_ERROR");
-    openapiFields.add("LARGE_PRODUCT_COUNT_DECREASE");
-    openapiFields.add("ACCOUNT_FLAGGED");
-    openapiFields.add("IMAGE_LEVEL_INTERNAL_ERROR");
-    openapiFields.add("IMAGE_FILE_NOT_ACCESSIBLE");
-    openapiFields.add("IMAGE_MALFORMED_URL");
-    openapiFields.add("IMAGE_FILE_NOT_FOUND");
-    openapiFields.add("IMAGE_INVALID_FILE");
+    openapiFields = new HashSet<String>(Arrays.asList("LINE_LEVEL_INTERNAL_ERROR", "LARGE_PRODUCT_COUNT_DECREASE", "ACCOUNT_FLAGGED", "IMAGE_LEVEL_INTERNAL_ERROR", "IMAGE_FILE_NOT_ACCESSIBLE", "IMAGE_MALFORMED_URL", "IMAGE_FILE_NOT_FOUND", "IMAGE_INVALID_FILE"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -376,7 +368,7 @@ public class CatalogsFeedIngestionErrors {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsFeedIngestionErrors.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsFeedIngestionErrors is not found in the empty JSON string", CatalogsFeedIngestionErrors.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsFeedIngestionErrors is not found in the empty JSON string", CatalogsFeedIngestionErrors.openapiRequiredFields.toString()));
         }
       }
 
@@ -384,7 +376,7 @@ public class CatalogsFeedIngestionErrors {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsFeedIngestionErrors.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsFeedIngestionErrors` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsFeedIngestionErrors` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

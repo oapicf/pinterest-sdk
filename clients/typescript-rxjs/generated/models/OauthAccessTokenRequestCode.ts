@@ -12,16 +12,10 @@
  */
 
 /**
- * A request to exchange an authorization code for an access token.
  * @export
  * @interface OauthAccessTokenRequestCode
  */
 export interface OauthAccessTokenRequestCode {
-    /**
-     * @type {string}
-     * @memberof OauthAccessTokenRequestCode
-     */
-    grant_type: OauthAccessTokenRequestCodeGrantTypeEnum;
     /**
      * @type {string}
      * @memberof OauthAccessTokenRequestCode
@@ -32,6 +26,11 @@ export interface OauthAccessTokenRequestCode {
      * @memberof OauthAccessTokenRequestCode
      */
     redirect_uri: string;
+    /**
+     * @type {string}
+     * @memberof OauthAccessTokenRequestCode
+     */
+    grant_type: OauthAccessTokenRequestCodeGrantTypeEnum;
 }
 
 /**

@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AdsCreditRedeemResponse* = object
   ## 
-  success*: bool ## Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-  errorCode*: int ## Error code type if error occurs
-  errorMessage*: string ## Reason for failure
+  success*: Option[bool] ## Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
+  errorCode*: Option[int] ## Error code type if error occurs
+  errorMessage*: Option[string] ## Reason for failure
+

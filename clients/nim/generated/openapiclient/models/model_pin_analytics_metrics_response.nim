@@ -9,11 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_pin_analytics_metrics_response_daily_metrics_inner
 
 type PinAnalyticsMetricsResponse* = object
   ## 
-  lifetimeMetrics*: Table[string, int] ## The lifetime metric name and value.
-  dailyMetrics*: seq[PinAnalyticsMetricsResponse_daily_metrics_inner] ## Array with the requested daily metric records
-  summaryMetrics*: Table[string, float] ## The metric name and value over the requested period for each requested metric
+  lifetimeMetrics*: Option[Table[string, int]] ## The lifetime metric name and value.
+  dailyMetrics*: Option[seq[PinAnalyticsMetricsResponse_daily_metrics_inner]] ## Array with the requested daily metric records
+  summaryMetrics*: Option[Table[string, float]] ## The metric name and value over the requested period for each requested metric
+
+
+# Custom JSON deserialization for PinAnalyticsMetricsResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[PinAnalyticsMetricsResponse]): PinAnalyticsMetricsResponse =
+  result = PinAnalyticsMetricsResponse()
+  if node.kind == JObject:
+    if node.hasKey("lifetime_metrics") and node["lifetime_metrics"].kind != JNull:
+      result.lifetimeMetrics = some(to(node["lifetime_metrics"], typeof(result.lifetimeMetrics.get())))
+    if node.hasKey("daily_metrics") and node["daily_metrics"].kind != JNull:
+      result.dailyMetrics = some(to(node["daily_metrics"], typeof(result.dailyMetrics.get())))
+    if node.hasKey("summary_metrics") and node["summary_metrics"].kind != JNull:
+      result.summaryMetrics = some(to(node["summary_metrics"], typeof(result.summaryMetrics.get())))
+
+# Custom JSON serialization for PinAnalyticsMetricsResponse with custom field names
+proc `%`*(obj: PinAnalyticsMetricsResponse): JsonNode =
+  result = newJObject()
+  if obj.lifetimeMetrics.isSome():
+    result["lifetime_metrics"] = %obj.lifetimeMetrics.get()
+  if obj.dailyMetrics.isSome():
+    result["daily_metrics"] = %obj.dailyMetrics.get()
+  if obj.summaryMetrics.isSome():
+    result["summary_metrics"] = %obj.summaryMetrics.get()
+

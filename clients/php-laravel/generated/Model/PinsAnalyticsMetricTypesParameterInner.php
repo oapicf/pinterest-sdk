@@ -26,16 +26,21 @@ namespace OpenAPI\Server\Model;
 /**
  * PinsAnalyticsMetricTypesParameterInner
  */
-use Crell\Serde\Renaming\Cases;
-use Crell\Serde\Attributes as Serde;
-
-#[Serde\ClassSettings(renameWith: Cases::snake_case)]
-class PinsAnalyticsMetricTypesParameterInner
+enum PinsAnalyticsMetricTypesParameterInner: string
 {
-    /**
-    */
-
-    public function __construct(
-    ) {}
+        case IMPRESSION = 'IMPRESSION';
+        case OUTBOUND_CLICK = 'OUTBOUND_CLICK';
+        case PIN_CLICK = 'PIN_CLICK';
+        case SAVE = 'SAVE';
+        case SAVE_RATE = 'SAVE_RATE';
+        case TOTAL_COMMENTS = 'TOTAL_COMMENTS';
+        case TOTAL_REACTIONS = 'TOTAL_REACTIONS';
+        case USER_FOLLOW = 'USER_FOLLOW';
+        case PROFILE_VISIT = 'PROFILE_VISIT';
+        case VIDEO_MRC_VIEW = 'VIDEO_MRC_VIEW';
+        case VIDEO_10_S_VIEW = 'VIDEO_10S_VIEW';
+        case QUARTILE_95_PERCENT_VIEW = 'QUARTILE_95_PERCENT_VIEW';
+        case VIDEO_V50_WATCH_TIME = 'VIDEO_V50_WATCH_TIME';
+        case VIDEO_START = 'VIDEO_START';
+        case VIDEO_AVG_WATCH_TIME = 'VIDEO_AVG_WATCH_TIME';
 }
-

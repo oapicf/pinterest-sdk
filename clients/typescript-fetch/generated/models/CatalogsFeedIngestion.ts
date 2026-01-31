@@ -96,7 +96,7 @@ export function CatalogsFeedIngestionToJSONTyped(value?: CatalogsFeedIngestion |
         
         'id': value['id'],
         'feed_id': value['feedId'],
-        'created_at': ((value['createdAt']).toISOString()),
+        'created_at': value['createdAt'].toISOString(),
         'status': CatalogsFeedProcessingStatusToJSON(value['status']),
     };
 }

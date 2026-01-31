@@ -12,40 +12,23 @@
 /**
  * An internal role type used on business access, EMPLOYEE, ADMIN.
  */
-export type Role = 'UNKNOWN' | 'OWNER' | 'ADMIN' | 'ANALYST' | 'SOS_READER' | 'FINANCE_MANAGER' | 'AUDIENCE_MANAGER' | 'CAMPAIGN_MANAGER' | 'CATALOGS_MANAGER' | 'RESTRICTED_OWNER' | 'PROFILE_MANAGER' | 'PROFILE_PUBLISHER' | 'RESOURCE_PINNER_LIST_OWNER' | 'RESOURCE_PINNER_LIST_READER' | 'BIZ_PINNER_LIST_SHARER' | 'RESOURCE_CONVERSION_TAGS_READER';
-
 export const Role = {
-
-    Unknown: 'UNKNOWN' as Role,
-
-    Owner: 'OWNER' as Role,
-
-    Admin: 'ADMIN' as Role,
-
-    Analyst: 'ANALYST' as Role,
-
-    SosReader: 'SOS_READER' as Role,
-
-    FinanceManager: 'FINANCE_MANAGER' as Role,
-
-    AudienceManager: 'AUDIENCE_MANAGER' as Role,
-
-    CampaignManager: 'CAMPAIGN_MANAGER' as Role,
-
-    CatalogsManager: 'CATALOGS_MANAGER' as Role,
-
-    RestrictedOwner: 'RESTRICTED_OWNER' as Role,
-
-    ProfileManager: 'PROFILE_MANAGER' as Role,
-
-    ProfilePublisher: 'PROFILE_PUBLISHER' as Role,
-
-    ResourcePinnerListOwner: 'RESOURCE_PINNER_LIST_OWNER' as Role,
-
-    ResourcePinnerListReader: 'RESOURCE_PINNER_LIST_READER' as Role,
-
-    BizPinnerListSharer: 'BIZ_PINNER_LIST_SHARER' as Role,
-
-    ResourceConversionTagsReader: 'RESOURCE_CONVERSION_TAGS_READER' as Role
-};
+    Unknown: 'UNKNOWN',
+    Owner: 'OWNER',
+    Admin: 'ADMIN',
+    Analyst: 'ANALYST',
+    SosReader: 'SOS_READER',
+    FinanceManager: 'FINANCE_MANAGER',
+    AudienceManager: 'AUDIENCE_MANAGER',
+    CampaignManager: 'CAMPAIGN_MANAGER',
+    CatalogsManager: 'CATALOGS_MANAGER',
+    RestrictedOwner: 'RESTRICTED_OWNER',
+    ProfileManager: 'PROFILE_MANAGER',
+    ProfilePublisher: 'PROFILE_PUBLISHER',
+    ResourcePinnerListOwner: 'RESOURCE_PINNER_LIST_OWNER',
+    ResourcePinnerListReader: 'RESOURCE_PINNER_LIST_READER',
+    BizPinnerListSharer: 'BIZ_PINNER_LIST_SHARER',
+    ResourceConversionTagsReader: 'RESOURCE_CONVERSION_TAGS_READER'
+} as const;
+export type Role = typeof Role[keyof typeof Role];
 

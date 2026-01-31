@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Third-party and dynamic tracking&lt;/a&gt;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TrackingUrls {
   public static final String SERIALIZED_NAME_IMPRESSION = "impression";
   @SerializedName(SERIALIZED_NAME_IMPRESSION)
@@ -267,15 +267,10 @@ public class TrackingUrls {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("impression");
-    openapiFields.add("click");
-    openapiFields.add("engagement");
-    openapiFields.add("buyable_button");
-    openapiFields.add("audience_verification");
+    openapiFields = new HashSet<String>(Arrays.asList("impression", "click", "engagement", "buyable_button", "audience_verification"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -287,7 +282,7 @@ public class TrackingUrls {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!TrackingUrls.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in TrackingUrls is not found in the empty JSON string", TrackingUrls.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in TrackingUrls is not found in the empty JSON string", TrackingUrls.openapiRequiredFields.toString()));
         }
       }
 
@@ -295,29 +290,29 @@ public class TrackingUrls {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!TrackingUrls.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TrackingUrls` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `TrackingUrls` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the optional json data is an array if present
       if (jsonObj.get("impression") != null && !jsonObj.get("impression").isJsonNull() && !jsonObj.get("impression").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `impression` to be an array in the JSON string but got `%s`", jsonObj.get("impression").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `impression` to be an array in the JSON string but got `%s`", jsonObj.get("impression").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("click") != null && !jsonObj.get("click").isJsonNull() && !jsonObj.get("click").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `click` to be an array in the JSON string but got `%s`", jsonObj.get("click").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `click` to be an array in the JSON string but got `%s`", jsonObj.get("click").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("engagement") != null && !jsonObj.get("engagement").isJsonNull() && !jsonObj.get("engagement").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `engagement` to be an array in the JSON string but got `%s`", jsonObj.get("engagement").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `engagement` to be an array in the JSON string but got `%s`", jsonObj.get("engagement").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("buyable_button") != null && !jsonObj.get("buyable_button").isJsonNull() && !jsonObj.get("buyable_button").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `buyable_button` to be an array in the JSON string but got `%s`", jsonObj.get("buyable_button").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `buyable_button` to be an array in the JSON string but got `%s`", jsonObj.get("buyable_button").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("audience_verification") != null && !jsonObj.get("audience_verification").isJsonNull() && !jsonObj.get("audience_verification").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `audience_verification` to be an array in the JSON string but got `%s`", jsonObj.get("audience_verification").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `audience_verification` to be an array in the JSON string but got `%s`", jsonObj.get("audience_verification").toString()));
       }
   }
 

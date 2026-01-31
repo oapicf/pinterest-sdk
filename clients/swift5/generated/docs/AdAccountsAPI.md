@@ -323,7 +323,7 @@ This creates an asynchronous mmm report based on the given request. It returns a
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let createMMMReportRequest = CreateMMMReportRequest(reportName: "reportName_example", startDate: "startDate_example", endDate: "endDate_example", granularity: "granularity_example", level: "level_example", targetingTypes: [MMMReportingTargetingType()], columns: [MMMReportingColumn()], countries: [TargetingAdvertiserCountry()]) // CreateMMMReportRequest | 
+let createMMMReportRequest = CreateMMMReportRequest(countries: [TargetingAdvertiserCountry()], reportName: "reportName_example", startDate: "startDate_example", endDate: "endDate_example", granularity: "granularity_example", level: "level_example", targetingTypes: [MMMReportingTargetingType()], columns: [MMMReportingColumn()]) // CreateMMMReportRequest | 
 
 // Create a request for a Marketing Mix Modeling (MMM) report
 AdAccountsAPI.analyticsCreateMmmReport(adAccountId: adAccountId, createMMMReportRequest: createMMMReportRequest) { (response, error) in

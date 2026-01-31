@@ -287,7 +287,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, MetricsReportingLevel metricsReportingLevel, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(metricsReportingLevel.ToString());
+            writer.WriteStringValue(MetricsReportingLevelValueConverter.ToJsonValue(metricsReportingLevel).ToString());
         }
     }
 
@@ -318,14 +318,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the MetricsReportingLevel to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="metricsReportingLevel"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, MetricsReportingLevel? metricsReportingLevel, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(metricsReportingLevel?.ToString() ?? "null");
+            writer.WriteStringValue(metricsReportingLevel.HasValue ? MetricsReportingLevelValueConverter.ToJsonValue(metricsReportingLevel.Value).ToString() : "null");
         }
     }
 }

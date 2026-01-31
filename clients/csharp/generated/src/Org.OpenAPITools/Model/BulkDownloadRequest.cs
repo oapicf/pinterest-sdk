@@ -204,19 +204,16 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "entity_types":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                entityTypes = new Option<List<BulkEntityType>?>(JsonSerializer.Deserialize<List<BulkEntityType>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            entityTypes = new Option<List<BulkEntityType>?>(JsonSerializer.Deserialize<List<BulkEntityType>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "entity_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                entityIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            entityIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "updated_since":
                             updatedSince = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "campaign_filter":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                campaignFilter = new Option<BulkDownloadRequestCampaignFilter?>(JsonSerializer.Deserialize<BulkDownloadRequestCampaignFilter>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            campaignFilter = new Option<BulkDownloadRequestCampaignFilter?>(JsonSerializer.Deserialize<BulkDownloadRequestCampaignFilter>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "output_format":
                             string? outputFormatRawValue = utf8JsonReader.GetString();

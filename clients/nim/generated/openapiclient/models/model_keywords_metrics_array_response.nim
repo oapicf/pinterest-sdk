@@ -9,9 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_keyword_metrics_response
 
 type KeywordsMetricsArrayResponse* = object
   ## 
-  data*: seq[KeywordMetricsResponse]
+  data*: Option[seq[KeywordMetricsResponse]]
+
+
+# Custom JSON deserialization for KeywordsMetricsArrayResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[KeywordsMetricsArrayResponse]): KeywordsMetricsArrayResponse =
+  result = KeywordsMetricsArrayResponse()
+  if node.kind == JObject:
+    if node.hasKey("data") and node["data"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["data"]
+      if arrayNode.kind == JArray:
+        var arr: seq[KeywordMetricsResponse] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, KeywordMetricsResponse))
+        result.data = some(arr)
+
+# Custom JSON serialization for KeywordsMetricsArrayResponse with custom field names
+proc `%`*(obj: KeywordsMetricsArrayResponse): JsonNode =
+  result = newJObject()
+  if obj.data.isSome():
+    result["data"] = %obj.data.get()
+

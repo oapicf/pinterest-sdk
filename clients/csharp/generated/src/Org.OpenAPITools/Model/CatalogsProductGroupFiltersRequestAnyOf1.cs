@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "all_of":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                allOf = new Option<List<CatalogsProductGroupFilterKeys>?>(JsonSerializer.Deserialize<List<CatalogsProductGroupFilterKeys>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            allOf = new Option<List<CatalogsProductGroupFilterKeys>?>(JsonSerializer.Deserialize<List<CatalogsProductGroupFilterKeys>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

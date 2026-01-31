@@ -67,7 +67,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsBatch extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsItemsBatch.class.getName());
 
@@ -130,7 +130,7 @@ public class CatalogsItemsBatch extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsRetailItemsBatch'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsRetailItemsBatch failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsRetailItemsBatch failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsRetailItemsBatch'", e);
                     }
                     // deserialize CatalogsHotelItemsBatch
@@ -142,7 +142,7 @@ public class CatalogsItemsBatch extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsHotelItemsBatch'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsHotelItemsBatch failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsHotelItemsBatch failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsHotelItemsBatch'", e);
                     }
                     // deserialize CatalogsCreativeAssetsItemsBatch
@@ -154,7 +154,7 @@ public class CatalogsItemsBatch extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsCreativeAssetsItemsBatch'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsCreativeAssetsItemsBatch failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreativeAssetsItemsBatch failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsCreativeAssetsItemsBatch'", e);
                     }
 
@@ -164,7 +164,7 @@ public class CatalogsItemsBatch extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CatalogsItemsBatch: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CatalogsItemsBatch: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -280,7 +280,7 @@ public class CatalogsItemsBatch extends AbstractOpenApiSchema {
             CatalogsRetailItemsBatch.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsRetailItemsBatch failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsRetailItemsBatch failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsHotelItemsBatch
@@ -288,7 +288,7 @@ public class CatalogsItemsBatch extends AbstractOpenApiSchema {
             CatalogsHotelItemsBatch.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsHotelItemsBatch failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsHotelItemsBatch failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsCreativeAssetsItemsBatch
@@ -296,11 +296,11 @@ public class CatalogsItemsBatch extends AbstractOpenApiSchema {
             CatalogsCreativeAssetsItemsBatch.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsCreativeAssetsItemsBatch failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreativeAssetsItemsBatch failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CatalogsItemsBatch with oneOf schemas: CatalogsCreativeAssetsItemsBatch, CatalogsHotelItemsBatch, CatalogsRetailItemsBatch. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CatalogsItemsBatch with oneOf schemas: CatalogsCreativeAssetsItemsBatch, CatalogsHotelItemsBatch, CatalogsRetailItemsBatch. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

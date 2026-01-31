@@ -345,20 +345,47 @@ AdAccountsApi <- R6::R6Class(
         stop("Missing required parameter `granularity`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AdAccountAnalytics, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdAccountsApi$AdAccountAnalytics, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AdAccountAnalytics, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling AdAccountsApi$AdAccountAnalytics, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling AdAccountsApi$AdAccountAnalytics, `end_date` is not nullable")
+      }
 
+      if (!missing(`columns`) && is.null(`columns`)) {
+        stop("Invalid value for `columns` when calling AdAccountsApi$AdAccountAnalytics, `columns` is not nullable")
+      }
 
+      if (!missing(`granularity`) && is.null(`granularity`)) {
+        stop("Invalid value for `granularity` when calling AdAccountsApi$AdAccountAnalytics, `granularity` is not nullable")
+      }
 
+      if (!missing(`click_window_days`) && is.null(`click_window_days`)) {
+        stop("Invalid value for `click_window_days` when calling AdAccountsApi$AdAccountAnalytics, `click_window_days` is not nullable")
+      }
 
+      if (!missing(`engagement_window_days`) && is.null(`engagement_window_days`)) {
+        stop("Invalid value for `engagement_window_days` when calling AdAccountsApi$AdAccountAnalytics, `engagement_window_days` is not nullable")
+      }
 
+      if (!missing(`view_window_days`) && is.null(`view_window_days`)) {
+        stop("Invalid value for `view_window_days` when calling AdAccountsApi$AdAccountAnalytics, `view_window_days` is not nullable")
+      }
 
+      if (!missing(`conversion_report_time`) && is.null(`conversion_report_time`)) {
+        stop("Invalid value for `conversion_report_time` when calling AdAccountsApi$AdAccountAnalytics, `conversion_report_time` is not nullable")
+      }
 
       query_params[["start_date"]] <- `start_date`
 
@@ -535,28 +562,61 @@ AdAccountsApi <- R6::R6Class(
         stop("Missing required parameter `granularity`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, `end_date` is not nullable")
+      }
 
-      if (length(`targeting_types`) > 15) {
+      if (!missing(`targeting_types`) && is.null(`targeting_types`)) {
+        stop("Invalid value for `targeting_types` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, `targeting_types` is not nullable")
+      }
+      if (!is.null(`targeting_types`) && length(`targeting_types`) > 15) {
         stop("Invalid length for `targeting_types` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, number of items must be less than or equal to 15.")
       }
-      if (length(`targeting_types`) < 1) {
+      if (!is.null(`targeting_types`) && length(`targeting_types`) < 1) {
         stop("Invalid length for `targeting_types` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`columns`) && is.null(`columns`)) {
+        stop("Invalid value for `columns` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, `columns` is not nullable")
+      }
 
+      if (!missing(`granularity`) && is.null(`granularity`)) {
+        stop("Invalid value for `granularity` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, `granularity` is not nullable")
+      }
 
+      if (!missing(`click_window_days`) && is.null(`click_window_days`)) {
+        stop("Invalid value for `click_window_days` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, `click_window_days` is not nullable")
+      }
 
+      if (!missing(`engagement_window_days`) && is.null(`engagement_window_days`)) {
+        stop("Invalid value for `engagement_window_days` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, `engagement_window_days` is not nullable")
+      }
 
+      if (!missing(`view_window_days`) && is.null(`view_window_days`)) {
+        stop("Invalid value for `view_window_days` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, `view_window_days` is not nullable")
+      }
 
+      if (!missing(`conversion_report_time`) && is.null(`conversion_report_time`)) {
+        stop("Invalid value for `conversion_report_time` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, `conversion_report_time` is not nullable")
+      }
 
+      if (!missing(`attribution_types`) && is.null(`attribution_types`)) {
+        stop("Invalid value for `attribution_types` when calling AdAccountsApi$AdAccountTargetingAnalyticsGet, `attribution_types` is not nullable")
+      }
 
       query_params[["start_date"]] <- `start_date`
 
@@ -698,6 +758,9 @@ AdAccountsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_create_request`.")
       }
 
+      if (!missing(`ad_account_create_request`) && is.null(`ad_account_create_request`)) {
+        stop("Invalid value for `ad_account_create_request` when calling AdAccountsApi$AdAccountsCreate, `ad_account_create_request` is not nullable")
+      }
 
       if (!is.null(`ad_account_create_request`)) {
         local_var_body <- `ad_account_create_request`$toJSONString()
@@ -801,10 +864,13 @@ AdAccountsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AdAccountsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdAccountsApi$AdAccountsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AdAccountsGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -908,14 +974,23 @@ AdAccountsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling AdAccountsApi$AdAccountsList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling AdAccountsApi$AdAccountsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling AdAccountsApi$AdAccountsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling AdAccountsApi$AdAccountsList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`include_shared_accounts`) && is.null(`include_shared_accounts`)) {
+        stop("Invalid value for `include_shared_accounts` when calling AdAccountsApi$AdAccountsList, `include_shared_accounts` is not nullable")
+      }
 
       query_params[["bookmark"]] <- `bookmark`
 
@@ -1025,13 +1100,19 @@ AdAccountsApi <- R6::R6Class(
         stop("Missing required parameter `create_mmm_report_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AnalyticsCreateMmmReport, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdAccountsApi$AnalyticsCreateMmmReport, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AnalyticsCreateMmmReport, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`create_mmm_report_request`) && is.null(`create_mmm_report_request`)) {
+        stop("Invalid value for `create_mmm_report_request` when calling AdAccountsApi$AnalyticsCreateMmmReport, `create_mmm_report_request` is not nullable")
+      }
 
       if (!is.null(`create_mmm_report_request`)) {
         local_var_body <- `create_mmm_report_request`$toJSONString()
@@ -1145,13 +1226,19 @@ AdAccountsApi <- R6::R6Class(
         stop("Missing required parameter `ads_analytics_create_async_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AnalyticsCreateReport, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdAccountsApi$AnalyticsCreateReport, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AnalyticsCreateReport, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`ads_analytics_create_async_request`) && is.null(`ads_analytics_create_async_request`)) {
+        stop("Invalid value for `ads_analytics_create_async_request` when calling AdAccountsApi$AnalyticsCreateReport, `ads_analytics_create_async_request` is not nullable")
+      }
 
       if (!is.null(`ads_analytics_create_async_request`)) {
         local_var_body <- `ads_analytics_create_async_request`$toJSONString()
@@ -1271,22 +1358,37 @@ AdAccountsApi <- R6::R6Class(
         stop("Missing required parameter `template_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AnalyticsCreateTemplateReport, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdAccountsApi$AnalyticsCreateTemplateReport, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AnalyticsCreateTemplateReport, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`template_id`) > 18) {
+      if (!missing(`template_id`) && is.null(`template_id`)) {
+        stop("Invalid value for `template_id` when calling AdAccountsApi$AnalyticsCreateTemplateReport, `template_id` is not nullable")
+      }
+      if (!is.null(`template_id`) && nchar(`template_id`) > 18) {
         stop("Invalid length for `template_id` when calling AdAccountsApi$AnalyticsCreateTemplateReport, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`template_id`, "^\\d+$")) {
+      if (!is.null(`template_id`) && !stringr::str_detect(`template_id`, "^\\d+$")) {
         stop("Invalid value for `template_id` when calling AdAccountsApi$AnalyticsCreateTemplateReport, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling AdAccountsApi$AnalyticsCreateTemplateReport, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling AdAccountsApi$AnalyticsCreateTemplateReport, `end_date` is not nullable")
+      }
 
+      if (!missing(`granularity`) && is.null(`granularity`)) {
+        stop("Invalid value for `granularity` when calling AdAccountsApi$AnalyticsCreateTemplateReport, `granularity` is not nullable")
+      }
 
       query_params[["start_date"]] <- `start_date`
 
@@ -1404,13 +1506,19 @@ AdAccountsApi <- R6::R6Class(
         stop("Missing required parameter `token`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AnalyticsGetMmmReport, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdAccountsApi$AnalyticsGetMmmReport, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AnalyticsGetMmmReport, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`token`) && is.null(`token`)) {
+        stop("Invalid value for `token` when calling AdAccountsApi$AnalyticsGetMmmReport, `token` is not nullable")
+      }
 
       query_params[["token"]] <- `token`
 
@@ -1520,13 +1628,19 @@ AdAccountsApi <- R6::R6Class(
         stop("Missing required parameter `token`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AnalyticsGetReport, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdAccountsApi$AnalyticsGetReport, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdAccountsApi$AnalyticsGetReport, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`token`) && is.null(`token`)) {
+        stop("Invalid value for `token` when calling AdAccountsApi$AnalyticsGetReport, `token` is not nullable")
+      }
 
       query_params[["token"]] <- `token`
 
@@ -1630,10 +1744,13 @@ AdAccountsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdAccountsApi$SandboxDelete, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdAccountsApi$SandboxDelete, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdAccountsApi$SandboxDelete, must conform to the pattern ^\\d+$.")
       }
 
@@ -1743,21 +1860,33 @@ AdAccountsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdAccountsApi$TemplatesList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdAccountsApi$TemplatesList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdAccountsApi$TemplatesList, must conform to the pattern ^\\d+$.")
       }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling AdAccountsApi$TemplatesList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling AdAccountsApi$TemplatesList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling AdAccountsApi$TemplatesList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`order`) && is.null(`order`)) {
+        stop("Invalid value for `order` when calling AdAccountsApi$TemplatesList, `order` is not nullable")
+      }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling AdAccountsApi$TemplatesList, `bookmark` is not nullable")
+      }
 
       query_params[["page_size"]] <- `page_size`
 

@@ -31,7 +31,7 @@ data class SharedAudienceResponse(
 
     @Schema(example = "[\"549755885175\"]", description = "Account IDs that received the audience")
     @get:JsonProperty("recipient_account_ids") val recipientAccountIds: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
 }
 

@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * CatalogsFeedValidationWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedValidationWarnings {
 
   private Integer AD_LINK_FORMAT_WARNING;
@@ -56,7 +56,7 @@ public class CatalogsFeedValidationWarnings {
   public enum FETCHSAMESIGNATUREEnum {
     NUMBER_1(1);
 
-    private Integer value;
+    private final Integer value;
 
     FETCHSAMESIGNATUREEnum(Integer value) {
       this.value = value;

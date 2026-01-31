@@ -41,15 +41,19 @@ GREATER_THAN(String.valueOf("GREATER_THAN")), GREATER_THAN_OR_EQUALS(String.valu
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private OperatorEnum operator;
 
   @ApiModelProperty(required = true, value = "")
+
   private BigDecimal value;
 
   @ApiModelProperty(required = true, value = "")
+
   private NonNullableCatalogsCurrency currency;
 
   @ApiModelProperty(value = "")
+
   private Boolean negated = false;
  /**
    * Get operator

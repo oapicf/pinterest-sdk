@@ -3,8 +3,6 @@ package org.openapitools.client.model
 
 
 case class ConversionTagCreate (
-    /* Conversion tag name. */
-    _name: String,
     /* Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
     _aemEnabled: Option[Boolean],
     /* Metadata ingestion frequency. */
@@ -18,13 +16,15 @@ case class ConversionTagCreate (
     /* Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
     _aemDbEnabled: Option[Boolean],
     /* Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
-    _aemLocEnabled: Option[Boolean]
+    _aemLocEnabled: Option[Boolean],
+    /* Conversion tag name. */
+    _name: String
 )
 object ConversionTagCreate {
-    def toStringBody(var_name: Object, var_aemEnabled: Object, var_mdFrequency: Object, var_aemFnlnEnabled: Object, var_aemPhEnabled: Object, var_aemGeEnabled: Object, var_aemDbEnabled: Object, var_aemLocEnabled: Object) =
+    def toStringBody(var_aemEnabled: Object, var_mdFrequency: Object, var_aemFnlnEnabled: Object, var_aemPhEnabled: Object, var_aemGeEnabled: Object, var_aemDbEnabled: Object, var_aemLocEnabled: Object, var_name: Object) =
         s"""
         | {
-        | "name":$var_name,"aemEnabled":$var_aemEnabled,"mdFrequency":$var_mdFrequency,"aemFnlnEnabled":$var_aemFnlnEnabled,"aemPhEnabled":$var_aemPhEnabled,"aemGeEnabled":$var_aemGeEnabled,"aemDbEnabled":$var_aemDbEnabled,"aemLocEnabled":$var_aemLocEnabled
+        | "aemEnabled":$var_aemEnabled,"mdFrequency":$var_mdFrequency,"aemFnlnEnabled":$var_aemFnlnEnabled,"aemPhEnabled":$var_aemPhEnabled,"aemGeEnabled":$var_aemGeEnabled,"aemDbEnabled":$var_aemDbEnabled,"aemLocEnabled":$var_aemLocEnabled,"name":$var_name
         | }
         """.stripMargin
 }

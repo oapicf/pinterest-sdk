@@ -17,10 +17,10 @@ export interface TargetingTemplateUpdateRequest {
     id: string;
 }
 export namespace TargetingTemplateUpdateRequest {
-    export type OperationTypeEnum = 'REMOVE';
     export const OperationTypeEnum = {
-        Remove: 'REMOVE' as OperationTypeEnum
-    };
+        Remove: 'REMOVE'
+    } as const;
+    export type OperationTypeEnum = typeof OperationTypeEnum[keyof typeof OperationTypeEnum];
 }
 
 

@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_create_asset_access_request_error_message_inner
 
 type CreateAssetAccessRequestResponse* = object
   ## 
-  exceptions*: seq[CreateAssetAccessRequestErrorMessage_inner] ## A list of errors associated with the asset access requests. Will be returned if there is an error.
-  invites*: Table[string, string]
+  exceptions*: Option[seq[CreateAssetAccessRequestErrorMessage_inner]] ## A list of errors associated with the asset access requests. Will be returned if there is an error.
+  invites*: Option[Table[string, string]]
+

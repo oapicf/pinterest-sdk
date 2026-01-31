@@ -6,19 +6,18 @@ import model.Pin
 import model.PinAnalyticsMetricsResponse
 import model.PinCreate
 import model.PinUpdate
-import model.PinsAnalyticsMetricTypesParameterInner
 import model.PinsList200Response
 import model.PinsSaveRequest
 
 /**
   * Provides a default implementation for [[PinsApi]].
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 class PinsApiImpl extends PinsApi {
   /**
     * @inheritdoc
     */
-  override def multiPinsAnalytics(pinIds: List[String], startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String], adAccountId: Option[String]): Map[String, Map[String, PinAnalyticsMetricsResponse]] = {
+  override def multiPinsAnalytics(pinIds: List[String], startDate: LocalDate, endDate: LocalDate, metricTypes: List[String], appTypes: Option[String], adAccountId: Option[String]): Map[String, Map[String, PinAnalyticsMetricsResponse]] = {
     // TODO: Implement better logic
 
     Map.empty[String, Map]
@@ -27,7 +26,7 @@ class PinsApiImpl extends PinsApi {
   /**
     * @inheritdoc
     */
-  override def pinsAnalytics(pinId: String, startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String], splitField: Option[String], adAccountId: Option[String]): Map[String, PinAnalyticsMetricsResponse] = {
+  override def pinsAnalytics(pinId: String, startDate: LocalDate, endDate: LocalDate, metricTypes: List[String], appTypes: Option[String], splitField: Option[String], adAccountId: Option[String]): Map[String, PinAnalyticsMetricsResponse] = {
     // TODO: Implement better logic
 
     Map.empty[String, PinAnalyticsMetricsResponse]

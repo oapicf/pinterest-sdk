@@ -18,17 +18,20 @@ import .*
 
 
 /**
- * A request to receive a client token.
+ * 
  * @param scope 
+ * @param grantType 
  */
 object OauthAccessTokenRequestClientCredentialss : BaseTable<OauthAccessTokenRequestClientCredentials>("OauthAccessTokenRequestClientCredentials") {
     val scope = text("scope")
+    val grantType = text("grant_type").transform({ OauthAccessTokenRequestClientCredentials.GrantType.valueOf(it) }, { it.value })
 
     /**
      * Create an entity of type OauthAccessTokenRequestClientCredentials from the model
      */
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = OauthAccessTokenRequestClientCredentials(
-        scope = row[scope] ?: "" /* kotlin.String */
+        scope = row[scope] ?: "" /* kotlin.String */,
+        grantType = row[grantType] ?: OauthAccessTokenRequestClientCredentials.GrantType.valueOf("") /* kotlin.String */
     )
 
     /**
@@ -47,6 +50,7 @@ object OauthAccessTokenRequestClientCredentialss : BaseTable<OauthAccessTokenReq
     fun AssignmentsBuilder.assignFrom(entity: OauthAccessTokenRequestClientCredentials) {
         this.apply {
             set(OauthAccessTokenRequestClientCredentialss.scope, entity.scope)
+            set(OauthAccessTokenRequestClientCredentialss.grantType, entity.grantType)
         }
     }
 

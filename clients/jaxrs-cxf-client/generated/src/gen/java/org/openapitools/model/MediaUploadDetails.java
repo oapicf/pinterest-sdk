@@ -1,27 +1,30 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.MediaUploadStatus;
 import org.openapitools.model.MediaUploadType;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Media upload details
- **/
+ * Media upload details
+ */
 @ApiModel(description="Media upload details")
 
 public class MediaUploadDetails  {
   
   @ApiModelProperty(value = "")
+
   private String mediaId;
 
   @ApiModelProperty(value = "")
+
   private MediaUploadType mediaType;
 
   @ApiModelProperty(value = "")
+
   private MediaUploadStatus status;
  /**
    * Get mediaId

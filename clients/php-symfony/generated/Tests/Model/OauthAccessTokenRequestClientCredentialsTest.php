@@ -37,7 +37,7 @@ use PHPUnit\Framework\TestCase;
  * OauthAccessTokenRequestClientCredentialsTest Class Doc Comment
  *
  * @category    Class
- * @description A request to receive a client token.
+ * @description OauthAccessTokenRequestClientCredentials
  * @package     OpenAPI\Server\Tests\Model
  * @author      openapi-generator contributors
  * @link        https://github.com/openapitools/openapi-generator
@@ -87,17 +87,6 @@ class OauthAccessTokenRequestClientCredentialsTest extends TestCase
     }
 
     /**
-     * Test attribute "grantType"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyGrantType(): void
-    {
-        $this->markTestSkipped('Test for property grantType not implemented');
-    }
-
-    /**
      * Test attribute "scope"
      *
      * @group unit
@@ -106,5 +95,16 @@ class OauthAccessTokenRequestClientCredentialsTest extends TestCase
     public function testPropertyScope(): void
     {
         $this->markTestSkipped('Test for property scope not implemented');
+    }
+
+    /**
+     * Test attribute "grantType"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyGrantType(): void
+    {
+        $this->markTestSkipped('Test for property grantType not implemented');
     }
 }

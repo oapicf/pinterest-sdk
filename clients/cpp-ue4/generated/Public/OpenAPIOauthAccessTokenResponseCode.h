@@ -20,7 +20,7 @@ namespace OpenAPI
 /*
  * OpenAPIOauthAccessTokenResponseCode
  *
- * A successful OAuth access token response for the authorization code flow.
+ * 
  */
 class OPENAPI_API OpenAPIOauthAccessTokenResponseCode : public Model
 {
@@ -29,6 +29,8 @@ public:
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 	void WriteJson(JsonWriter& Writer) const final;
 
+	FString RefreshToken;
+	int32 RefreshTokenExpiresIn = 0;
 	enum class ResponseTypeEnum
 	{
 		AuthorizationCode,
@@ -43,8 +45,6 @@ public:
 	FString TokenType = TEXT("bearer");
 	int32 ExpiresIn = 0;
 	FString Scope;
-	FString RefreshToken;
-	int32 RefreshTokenExpiresIn = 0;
 };
 
 }

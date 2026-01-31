@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -53,87 +52,6 @@ namespace Org.OpenAPITools.Test.Model
         {
             // TODO uncomment below to test "IsType" CatalogsHotelProductGroupFilterKeys
             //Assert.IsType<CatalogsHotelProductGroupFilterKeys>(instance);
-        }
-
-        /// <summary>
-        /// Test the property 'PRICE'
-        /// </summary>
-        [Fact]
-        public void PRICETest()
-        {
-            // TODO unit test for the property 'PRICE'
-        }
-
-        /// <summary>
-        /// Test the property 'HOTEL_ID'
-        /// </summary>
-        [Fact]
-        public void HOTEL_IDTest()
-        {
-            // TODO unit test for the property 'HOTEL_ID'
-        }
-
-        /// <summary>
-        /// Test the property 'BRAND'
-        /// </summary>
-        [Fact]
-        public void BRANDTest()
-        {
-            // TODO unit test for the property 'BRAND'
-        }
-
-        /// <summary>
-        /// Test the property 'CUSTOMLABEL0'
-        /// </summary>
-        [Fact]
-        public void CUSTOMLABEL0Test()
-        {
-            // TODO unit test for the property 'CUSTOMLABEL0'
-        }
-
-        /// <summary>
-        /// Test the property 'CUSTOMLABEL1'
-        /// </summary>
-        [Fact]
-        public void CUSTOMLABEL1Test()
-        {
-            // TODO unit test for the property 'CUSTOMLABEL1'
-        }
-
-        /// <summary>
-        /// Test the property 'CUSTOMLABEL2'
-        /// </summary>
-        [Fact]
-        public void CUSTOMLABEL2Test()
-        {
-            // TODO unit test for the property 'CUSTOMLABEL2'
-        }
-
-        /// <summary>
-        /// Test the property 'CUSTOMLABEL3'
-        /// </summary>
-        [Fact]
-        public void CUSTOMLABEL3Test()
-        {
-            // TODO unit test for the property 'CUSTOMLABEL3'
-        }
-
-        /// <summary>
-        /// Test the property 'CUSTOMLABEL4'
-        /// </summary>
-        [Fact]
-        public void CUSTOMLABEL4Test()
-        {
-            // TODO unit test for the property 'CUSTOMLABEL4'
-        }
-
-        /// <summary>
-        /// Test the property 'COUNTRY'
-        /// </summary>
-        [Fact]
-        public void COUNTRYTest()
-        {
-            // TODO unit test for the property 'COUNTRY'
         }
     }
 }

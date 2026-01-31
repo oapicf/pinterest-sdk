@@ -66,7 +66,8 @@ public class FeedsCreateRequest  {
   private ProductAvailabilityType defaultAvailability;
 
   @ApiModelProperty(value = "")
-  private CatalogsStatus status;
+  @Valid
+  private CatalogsStatus status = "ACTIVE";
  /**
   * Get defaultCurrency
   * @return defaultCurrency

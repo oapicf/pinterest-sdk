@@ -17,7 +17,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="This field includes all quiz data including questions, options, and results.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2025-05-10T05:40:40.818990358Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@ApiModel(description="This field includes all quiz data including questions, options, and results.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinData   {
   
   private List<@Valid QuizPinQuestion> questions = new ArrayList<>();

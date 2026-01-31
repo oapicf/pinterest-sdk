@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
  **partnerId** | **string** | The partner id to be bound to the Business | [default to null]
  **partnerType** | [**PartnerType**](.md) | Specifies whether to fetch internal or external (shared) partners.
 If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br>
-If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. | [optional] [default to null]
+If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. | [optional] [default to INTERNAL]
  **assetType** | **string** | A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT]
  **startIndex** | **integer** | An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **pageSize** | **integer** | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. | [optional] [default to 25]

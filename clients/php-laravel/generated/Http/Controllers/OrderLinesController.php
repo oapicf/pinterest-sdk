@@ -78,12 +78,8 @@ class OrderLinesController extends Controller
 
 
 
-        try {
-            $apiResult = $this->api->orderLinesGet($adAccountId, $orderLineId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->orderLinesGet($adAccountId, $orderLineId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrderLine) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -143,12 +139,8 @@ class OrderLinesController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->orderLinesList($adAccountId, $pageSize, $order, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->orderLinesList($adAccountId, $pageSize, $order, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OrderLinesList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

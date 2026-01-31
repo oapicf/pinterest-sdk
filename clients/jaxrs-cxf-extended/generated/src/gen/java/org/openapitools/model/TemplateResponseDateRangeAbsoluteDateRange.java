@@ -1,7 +1,6 @@
 package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import javax.validation.constraints.*;
 import javax.validation.Valid;

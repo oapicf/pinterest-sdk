@@ -12,16 +12,11 @@
 /**
  * Order Line Paid Type
  */
-export type OrderLinePaidType = 'PAID' | 'BONUS' | 'MAKE_GOOD' | 'TEST';
-
 export const OrderLinePaidType = {
-
-    Paid: 'PAID' as OrderLinePaidType,
-
-    Bonus: 'BONUS' as OrderLinePaidType,
-
-    MakeGood: 'MAKE_GOOD' as OrderLinePaidType,
-
-    Test: 'TEST' as OrderLinePaidType
-};
+    Paid: 'PAID',
+    Bonus: 'BONUS',
+    MakeGood: 'MAKE_GOOD',
+    Test: 'TEST'
+} as const;
+export type OrderLinePaidType = typeof OrderLinePaidType[keyof typeof OrderLinePaidType];
 

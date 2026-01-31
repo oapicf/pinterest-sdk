@@ -21,6 +21,8 @@ import java.util.Objects;
 
 public class CreateMMMReportRequest   {
   
+  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
+
   private String reportName;
 
   private String startDate;
@@ -97,7 +99,32 @@ public enum LevelEnum {
 
   private List<MMMReportingColumn> columns = new ArrayList<>();
 
-  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
+  /**
+   * A List of countries for filtering
+   **/
+  public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "A List of countries for filtering")
+  @JsonProperty("countries")
+  public List<TargetingAdvertiserCountry> getCountries() {
+    return countries;
+  }
+  public void setCountries(List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
+  }
+
+  public CreateMMMReportRequest addCountriesItem(TargetingAdvertiserCountry countriesItem) {
+    if (this.countries == null) {
+      this.countries = new ArrayList<>();
+    }
+    this.countries.add(countriesItem);
+    return this;
+  }
+
 
   /**
    * Name of the Marketing Mix Modeling (MMM) report
@@ -255,33 +282,6 @@ public enum LevelEnum {
   }
 
 
-  /**
-   * A List of countries for filtering
-   **/
-  public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "A List of countries for filtering")
-  @JsonProperty("countries")
-  public List<TargetingAdvertiserCountry> getCountries() {
-    return countries;
-  }
-  public void setCountries(List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-  }
-
-  public CreateMMMReportRequest addCountriesItem(TargetingAdvertiserCountry countriesItem) {
-    if (this.countries == null) {
-      this.countries = new ArrayList<>();
-    }
-    this.countries.add(countriesItem);
-    return this;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -292,19 +292,19 @@ public enum LevelEnum {
       return false;
     }
     CreateMMMReportRequest createMMMReportRequest = (CreateMMMReportRequest) o;
-    return Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
+    return Objects.equals(this.countries, createMMMReportRequest.countries) &&
+        Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
         Objects.equals(this.startDate, createMMMReportRequest.startDate) &&
         Objects.equals(this.endDate, createMMMReportRequest.endDate) &&
         Objects.equals(this.granularity, createMMMReportRequest.granularity) &&
         Objects.equals(this.level, createMMMReportRequest.level) &&
         Objects.equals(this.targetingTypes, createMMMReportRequest.targetingTypes) &&
-        Objects.equals(this.columns, createMMMReportRequest.columns) &&
-        Objects.equals(this.countries, createMMMReportRequest.countries);
+        Objects.equals(this.columns, createMMMReportRequest.columns);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportName, startDate, endDate, granularity, level, targetingTypes, columns, countries);
+    return Objects.hash(countries, reportName, startDate, endDate, granularity, level, targetingTypes, columns);
   }
 
   @Override
@@ -312,6 +312,7 @@ public enum LevelEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateMMMReportRequest {\n");
     
+    sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
@@ -319,7 +320,6 @@ public enum LevelEnum {
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    targetingTypes: ").append(toIndentedString(targetingTypes)).append("\n");
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
-    sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("}");
     return sb.toString();
   }

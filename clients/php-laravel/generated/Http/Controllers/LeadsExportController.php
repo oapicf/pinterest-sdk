@@ -67,12 +67,8 @@ class LeadsExportController extends Controller
 
         $leadsExportCreateRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\LeadsExportCreateRequest::class);
 
-        try {
-            $apiResult = $this->api->leadsExportCreate($adAccountId, $leadsExportCreateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->leadsExportCreate($adAccountId, $leadsExportCreateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LeadsExportCreateResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -126,12 +122,8 @@ class LeadsExportController extends Controller
 
 
 
-        try {
-            $apiResult = $this->api->leadsExportGet($adAccountId, $leadsExportId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->leadsExportGet($adAccountId, $leadsExportId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LeadsExportResponseData) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

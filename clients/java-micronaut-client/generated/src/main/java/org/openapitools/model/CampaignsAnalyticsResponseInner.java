@@ -33,7 +33,7 @@ import javax.annotation.Generated;
   CampaignsAnalyticsResponseInner.JSON_PROPERTY_D_A_T_E
 })
 @JsonTypeName("CampaignsAnalyticsResponse_inner")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-01-26T05:35:55.554977681Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class CampaignsAnalyticsResponseInner extends HashMap<String, Object> {
     public static final String JSON_PROPERTY_C_A_M_P_A_I_G_N_I_D = "CAMPAIGN_ID";

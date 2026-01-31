@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsProductGroupFiltersRequest;
@@ -10,13 +9,14 @@ import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for updating a retail product group.
- **/
+ * Request object for updating a retail product group.
+ */
 @ApiModel(description="Request object for updating a retail product group.")
 
 public class CatalogsRetailProductGroupUpdateRequest  {
@@ -53,28 +53,37 @@ RETAIL(String.valueOf("RETAIL"));
     }
 }
 
-  @ApiModelProperty(value = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
  /**
-   * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-  **/
+  * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+  */
+  @ApiModelProperty(value = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsProductGroupFiltersRequest filters;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private Country country;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsLocale locale;
  /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.

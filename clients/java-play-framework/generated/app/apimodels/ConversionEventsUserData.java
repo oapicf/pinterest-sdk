@@ -16,7 +16,7 @@ import javax.validation.Valid;
 /**
  * Object containing customer information data. Note, It is required at least one of 1) em, 2) hashed_maids or 3) pair client_ip_address + client_user_agent.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2025-05-10T05:39:37.342741110Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class ConversionEventsUserData   {
   @JsonProperty("ph")

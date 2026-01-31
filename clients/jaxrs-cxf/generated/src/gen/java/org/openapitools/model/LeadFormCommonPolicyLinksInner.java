@@ -11,16 +11,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LeadFormCommonPolicyLinksInner  {
   
-  @ApiModelProperty(value = "Policy label for an additional policy link.")
  /**
-   * Policy label for an additional policy link.
-  **/
+  * Policy label for an additional policy link.
+  */
+  @ApiModelProperty(value = "Policy label for an additional policy link.")
+
   private String label;
 
-  @ApiModelProperty(value = "Policy link for an additional policy link.")
  /**
-   * Policy link for an additional policy link.
-  **/
+  * Policy link for an additional policy link.
+  */
+  @ApiModelProperty(value = "Policy link for an additional policy link.")
+
   private String link;
  /**
    * Policy label for an additional policy link.

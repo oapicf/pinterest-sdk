@@ -356,8 +356,7 @@ namespace Org.OpenAPITools.Model
                             privacyPolicyLink = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "has_accepted_terms":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hasAcceptedTerms = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            hasAcceptedTerms = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "completion_message":
                             completionMessage = new Option<string?>(utf8JsonReader.GetString());
@@ -371,12 +370,10 @@ namespace Org.OpenAPITools.Model
                             disclosureLanguage = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "questions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                questions = new Option<List<LeadFormQuestion>?>(JsonSerializer.Deserialize<List<LeadFormQuestion>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            questions = new Option<List<LeadFormQuestion>?>(JsonSerializer.Deserialize<List<LeadFormQuestion>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "policy_links":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                policyLinks = new Option<List<LeadFormCommonPolicyLinksInner>?>(JsonSerializer.Deserialize<List<LeadFormCommonPolicyLinksInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            policyLinks = new Option<List<LeadFormCommonPolicyLinksInner>?>(JsonSerializer.Deserialize<List<LeadFormCommonPolicyLinksInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString()!);
@@ -385,12 +382,10 @@ namespace Org.OpenAPITools.Model
                             adAccountId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "created_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "updated_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            updatedTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

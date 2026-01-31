@@ -9,9 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_item_response
 
 type CatalogsItems* = object
   ## Response object of catalogs items
-  items*: seq[ItemResponse] ## Array with catalogs items
+  items*: Option[seq[ItemResponse]] ## Array with catalogs items
+
+
+# Custom JSON deserialization for CatalogsItems with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsItems]): CatalogsItems =
+  result = CatalogsItems()
+  if node.kind == JObject:
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[ItemResponse] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, ItemResponse))
+        result.items = some(arr)
+
+# Custom JSON serialization for CatalogsItems with custom field names
+proc `%`*(obj: CatalogsItems): JsonNode =
+  result = newJObject()
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

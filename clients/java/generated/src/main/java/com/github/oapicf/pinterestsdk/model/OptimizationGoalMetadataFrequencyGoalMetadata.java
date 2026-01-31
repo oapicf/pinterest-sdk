@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * OptimizationGoalMetadataFrequencyGoalMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadataFrequencyGoalMetadata {
   public static final String SERIALIZED_NAME_FREQUENCY = "frequency";
   @SerializedName(SERIALIZED_NAME_FREQUENCY)
@@ -207,12 +207,10 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("frequency");
-    openapiFields.add("timerange");
+    openapiFields = new HashSet<String>(Arrays.asList("frequency", "timerange"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -224,7 +222,7 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!OptimizationGoalMetadataFrequencyGoalMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OptimizationGoalMetadataFrequencyGoalMetadata is not found in the empty JSON string", OptimizationGoalMetadataFrequencyGoalMetadata.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in OptimizationGoalMetadataFrequencyGoalMetadata is not found in the empty JSON string", OptimizationGoalMetadataFrequencyGoalMetadata.openapiRequiredFields.toString()));
         }
       }
 
@@ -232,12 +230,12 @@ public class OptimizationGoalMetadataFrequencyGoalMetadata {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!OptimizationGoalMetadataFrequencyGoalMetadata.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OptimizationGoalMetadataFrequencyGoalMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `OptimizationGoalMetadataFrequencyGoalMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("timerange") != null && !jsonObj.get("timerange").isJsonNull()) && !jsonObj.get("timerange").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `timerange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timerange").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `timerange` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timerange").toString()));
       }
       // validate the optional field `timerange`
       if (jsonObj.get("timerange") != null && !jsonObj.get("timerange").isJsonNull()) {

@@ -1000,16 +1000,8 @@ genAudienceCreateRequest n =
     <*> arbitrary -- audienceCreateRequestName :: Text
     <*> arbitraryReduced n -- audienceCreateRequestRule :: AudienceRule
     <*> arbitraryReducedMaybe n -- audienceCreateRequestDescription :: Maybe Text
-    <*> arbitraryReduced n -- audienceCreateRequestAudienceType :: AudienceCreateRequest1AudienceType
+    <*> arbitraryReduced n -- audienceCreateRequestAudienceType :: AudienceType
   
-instance Arbitrary AudienceCreateRequest1AudienceType where
-  arbitrary = sized genAudienceCreateRequest1AudienceType
-
-genAudienceCreateRequest1AudienceType :: Int -> Gen AudienceCreateRequest1AudienceType
-genAudienceCreateRequest1AudienceType n =
-  
-  pure AudienceCreateRequest1AudienceType
-   
 instance Arbitrary AudienceDefinition where
   arbitrary = sized genAudienceDefinition
 
@@ -1854,7 +1846,7 @@ genCatalogsCreativeAssetsBatchRequest n =
   CatalogsCreativeAssetsBatchRequest
     <$> arbitrary -- catalogsCreativeAssetsBatchRequestCatalogType :: E'CatalogType3
     <*> arbitraryReduced n -- catalogsCreativeAssetsBatchRequestCountry :: Country
-    <*> arbitraryReduced n -- catalogsCreativeAssetsBatchRequestLanguage :: CatalogsItemsRequestLanguage
+    <*> arbitrary -- catalogsCreativeAssetsBatchRequestLanguage :: E'Language
     <*> arbitraryReduced n -- catalogsCreativeAssetsBatchRequestItems :: [CatalogsCreativeAssetsBatchItem]
     <*> arbitraryReducedMaybe n -- catalogsCreativeAssetsBatchRequestCatalogId :: Maybe Text
   
@@ -2458,7 +2450,7 @@ genCatalogsHotelBatchRequest n =
   CatalogsHotelBatchRequest
     <$> arbitrary -- catalogsHotelBatchRequestCatalogType :: E'CatalogType
     <*> arbitraryReduced n -- catalogsHotelBatchRequestCountry :: Country
-    <*> arbitraryReduced n -- catalogsHotelBatchRequestLanguage :: CatalogsItemsRequestLanguage
+    <*> arbitrary -- catalogsHotelBatchRequestLanguage :: E'Language
     <*> arbitraryReduced n -- catalogsHotelBatchRequestItems :: [CatalogsHotelBatchItem]
     <*> arbitraryReducedMaybe n -- catalogsHotelBatchRequestCatalogId :: Maybe Text
   
@@ -2844,7 +2836,7 @@ genCatalogsItemsBatchRequest :: Int -> Gen CatalogsItemsBatchRequest
 genCatalogsItemsBatchRequest n =
   CatalogsItemsBatchRequest
     <$> arbitraryReduced n -- catalogsItemsBatchRequestCountry :: Country
-    <*> arbitraryReduced n -- catalogsItemsBatchRequestLanguage :: CatalogsItemsRequestLanguage
+    <*> arbitrary -- catalogsItemsBatchRequestLanguage :: E'Language
     <*> arbitraryReduced n -- catalogsItemsBatchRequestOperation :: BatchOperation
     <*> arbitraryReduced n -- catalogsItemsBatchRequestItems :: [ItemDeleteBatchRecord]
   
@@ -2855,7 +2847,7 @@ genCatalogsItemsCreateBatchRequest :: Int -> Gen CatalogsItemsCreateBatchRequest
 genCatalogsItemsCreateBatchRequest n =
   CatalogsItemsCreateBatchRequest
     <$> arbitraryReduced n -- catalogsItemsCreateBatchRequestCountry :: Country
-    <*> arbitraryReduced n -- catalogsItemsCreateBatchRequestLanguage :: CatalogsItemsRequestLanguage
+    <*> arbitrary -- catalogsItemsCreateBatchRequestLanguage :: E'Language
     <*> arbitraryReduced n -- catalogsItemsCreateBatchRequestOperation :: BatchOperation
     <*> arbitraryReduced n -- catalogsItemsCreateBatchRequestItems :: [ItemCreateBatchRecord]
   
@@ -2866,7 +2858,7 @@ genCatalogsItemsDeleteBatchRequest :: Int -> Gen CatalogsItemsDeleteBatchRequest
 genCatalogsItemsDeleteBatchRequest n =
   CatalogsItemsDeleteBatchRequest
     <$> arbitraryReduced n -- catalogsItemsDeleteBatchRequestCountry :: Country
-    <*> arbitraryReduced n -- catalogsItemsDeleteBatchRequestLanguage :: CatalogsItemsRequestLanguage
+    <*> arbitrary -- catalogsItemsDeleteBatchRequestLanguage :: E'Language
     <*> arbitraryReduced n -- catalogsItemsDeleteBatchRequestOperation :: BatchOperation
     <*> arbitraryReduced n -- catalogsItemsDeleteBatchRequestItems :: [ItemDeleteBatchRecord]
   
@@ -2877,7 +2869,7 @@ genCatalogsItemsDeleteDiscontinuedBatchRequest :: Int -> Gen CatalogsItemsDelete
 genCatalogsItemsDeleteDiscontinuedBatchRequest n =
   CatalogsItemsDeleteDiscontinuedBatchRequest
     <$> arbitraryReduced n -- catalogsItemsDeleteDiscontinuedBatchRequestCountry :: Country
-    <*> arbitraryReduced n -- catalogsItemsDeleteDiscontinuedBatchRequestLanguage :: CatalogsItemsRequestLanguage
+    <*> arbitrary -- catalogsItemsDeleteDiscontinuedBatchRequestLanguage :: E'Language
     <*> arbitraryReduced n -- catalogsItemsDeleteDiscontinuedBatchRequestOperation :: BatchOperation
     <*> arbitraryReduced n -- catalogsItemsDeleteDiscontinuedBatchRequestItems :: [ItemDeleteDiscontinuedBatchRecord]
   
@@ -2912,17 +2904,9 @@ genCatalogsItemsRequest :: Int -> Gen CatalogsItemsRequest
 genCatalogsItemsRequest n =
   CatalogsItemsRequest
     <$> arbitraryReduced n -- catalogsItemsRequestCountry :: Country
-    <*> arbitraryReduced n -- catalogsItemsRequestLanguage :: CatalogsItemsRequestLanguage
+    <*> arbitrary -- catalogsItemsRequestLanguage :: E'Language
     <*> arbitraryReduced n -- catalogsItemsRequestFilters :: CatalogsItemsPostFilters
   
-instance Arbitrary CatalogsItemsRequestLanguage where
-  arbitrary = sized genCatalogsItemsRequestLanguage
-
-genCatalogsItemsRequestLanguage :: Int -> Gen CatalogsItemsRequestLanguage
-genCatalogsItemsRequestLanguage n =
-  
-  pure CatalogsItemsRequestLanguage
-   
 instance Arbitrary CatalogsItemsUpdateBatchRequest where
   arbitrary = sized genCatalogsItemsUpdateBatchRequest
 
@@ -2930,7 +2914,7 @@ genCatalogsItemsUpdateBatchRequest :: Int -> Gen CatalogsItemsUpdateBatchRequest
 genCatalogsItemsUpdateBatchRequest n =
   CatalogsItemsUpdateBatchRequest
     <$> arbitraryReduced n -- catalogsItemsUpdateBatchRequestCountry :: Country
-    <*> arbitraryReduced n -- catalogsItemsUpdateBatchRequestLanguage :: CatalogsItemsRequestLanguage
+    <*> arbitrary -- catalogsItemsUpdateBatchRequestLanguage :: E'Language
     <*> arbitraryReduced n -- catalogsItemsUpdateBatchRequestOperation :: BatchOperation
     <*> arbitraryReduced n -- catalogsItemsUpdateBatchRequestItems :: [ItemUpdateBatchRecord]
   
@@ -2941,7 +2925,7 @@ genCatalogsItemsUpsertBatchRequest :: Int -> Gen CatalogsItemsUpsertBatchRequest
 genCatalogsItemsUpsertBatchRequest n =
   CatalogsItemsUpsertBatchRequest
     <$> arbitraryReduced n -- catalogsItemsUpsertBatchRequestCountry :: Country
-    <*> arbitraryReduced n -- catalogsItemsUpsertBatchRequestLanguage :: CatalogsItemsRequestLanguage
+    <*> arbitrary -- catalogsItemsUpsertBatchRequestLanguage :: E'Language
     <*> arbitraryReduced n -- catalogsItemsUpsertBatchRequestOperation :: BatchOperation
     <*> arbitraryReduced n -- catalogsItemsUpsertBatchRequestItems :: [ItemUpsertBatchRecord]
   
@@ -3305,7 +3289,7 @@ genCatalogsRetailBatchRequest n =
   CatalogsRetailBatchRequest
     <$> arbitrary -- catalogsRetailBatchRequestCatalogType :: E'CatalogType2
     <*> arbitraryReduced n -- catalogsRetailBatchRequestCountry :: Country
-    <*> arbitraryReduced n -- catalogsRetailBatchRequestLanguage :: CatalogsItemsRequestLanguage
+    <*> arbitrary -- catalogsRetailBatchRequestLanguage :: E'Language
     <*> arbitraryReduced n -- catalogsRetailBatchRequestItems :: [CatalogsRetailBatchRequestItemsInner]
   
 instance Arbitrary CatalogsRetailBatchRequestItemsInner where
@@ -3645,7 +3629,7 @@ genCatalogsVerticalBatchRequest n =
   CatalogsVerticalBatchRequest
     <$> arbitrary -- catalogsVerticalBatchRequestCatalogType :: E'CatalogType3
     <*> arbitraryReduced n -- catalogsVerticalBatchRequestCountry :: Country
-    <*> arbitraryReduced n -- catalogsVerticalBatchRequestLanguage :: CatalogsItemsRequestLanguage
+    <*> arbitrary -- catalogsVerticalBatchRequestLanguage :: E'Language
     <*> arbitraryReduced n -- catalogsVerticalBatchRequestItems :: [CatalogsCreativeAssetsBatchItem]
     <*> arbitraryReducedMaybe n -- catalogsVerticalBatchRequestCatalogId :: Maybe Text
   
@@ -3941,14 +3925,14 @@ instance Arbitrary ConversionTagCreate where
 genConversionTagCreate :: Int -> Gen ConversionTagCreate
 genConversionTagCreate n =
   ConversionTagCreate
-    <$> arbitrary -- conversionTagCreateName :: Text
-    <*> arbitraryReducedMaybe n -- conversionTagCreateAemEnabled :: Maybe Bool
+    <$> arbitraryReducedMaybe n -- conversionTagCreateAemEnabled :: Maybe Bool
     <*> arbitraryReducedMaybe n -- conversionTagCreateMdFrequency :: Maybe Double
     <*> arbitraryReducedMaybe n -- conversionTagCreateAemFnlnEnabled :: Maybe Bool
     <*> arbitraryReducedMaybe n -- conversionTagCreateAemPhEnabled :: Maybe Bool
     <*> arbitraryReducedMaybe n -- conversionTagCreateAemGeEnabled :: Maybe Bool
     <*> arbitraryReducedMaybe n -- conversionTagCreateAemDbEnabled :: Maybe Bool
     <*> arbitraryReducedMaybe n -- conversionTagCreateAemLocEnabled :: Maybe Bool
+    <*> arbitrary -- conversionTagCreateName :: Text
   
 instance Arbitrary ConversionTagListResponse where
   arbitrary = sized genConversionTagListResponse
@@ -4085,14 +4069,14 @@ instance Arbitrary CreateMMMReportRequest where
 genCreateMMMReportRequest :: Int -> Gen CreateMMMReportRequest
 genCreateMMMReportRequest n =
   CreateMMMReportRequest
-    <$> arbitrary -- createMMMReportRequestReportName :: Text
+    <$> arbitraryReducedMaybe n -- createMMMReportRequestCountries :: Maybe [TargetingAdvertiserCountry]
+    <*> arbitrary -- createMMMReportRequestReportName :: Text
     <*> arbitrary -- createMMMReportRequestStartDate :: Text
     <*> arbitrary -- createMMMReportRequestEndDate :: Text
     <*> arbitrary -- createMMMReportRequestGranularity :: E'Granularity
     <*> arbitrary -- createMMMReportRequestLevel :: E'Level
     <*> arbitraryReduced n -- createMMMReportRequestTargetingTypes :: [MMMReportingTargetingType]
     <*> arbitraryReduced n -- createMMMReportRequestColumns :: [MMMReportingColumn]
-    <*> arbitraryReducedMaybe n -- createMMMReportRequestCountries :: Maybe [TargetingAdvertiserCountry]
   
 instance Arbitrary CreateMMMReportResponse where
   arbitrary = sized genCreateMMMReportResponse
@@ -4905,12 +4889,12 @@ instance Arbitrary InviteBusinessRoleBinding where
 genInviteBusinessRoleBinding :: Int -> Gen InviteBusinessRoleBinding
 genInviteBusinessRoleBinding n =
   InviteBusinessRoleBinding
-    <$> arbitraryReducedMaybe n -- inviteBusinessRoleBindingCreatedByBusinessId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingCreatedByUserId :: Maybe Text
-    <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingUser :: Maybe BusinessAccessUserSummary
-    <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingId :: Maybe Text
+    <$> arbitraryReducedMaybe n -- inviteBusinessRoleBindingId :: Maybe Text
     <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingInviteData :: Maybe BaseInviteDataResponseInviteData
     <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingIsReceivedInvite :: Maybe Bool
+    <*> arbitraryReducedMaybeValue n -- inviteBusinessRoleBindingUser :: Maybe A.Value
+    <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingCreatedByBusinessId :: Maybe Text
+    <*> arbitraryReducedMaybe n -- inviteBusinessRoleBindingCreatedByUserId :: Maybe Text
   
 instance Arbitrary InviteExceptionResponse where
   arbitrary = sized genInviteExceptionResponse
@@ -4929,15 +4913,15 @@ instance Arbitrary InviteResponse where
 genInviteResponse :: Int -> Gen InviteResponse
 genInviteResponse n =
   InviteResponse
-    <$> arbitraryReducedMaybe n -- inviteResponseAssetsSummary :: Maybe InviteAssetsSummary
-    <*> arbitraryReducedMaybe n -- inviteResponseBusinessRoles :: Maybe [Text]
-    <*> arbitraryReducedMaybe n -- inviteResponseCreatedByBusiness :: Maybe BusinessAccessUserSummary
-    <*> arbitraryReducedMaybe n -- inviteResponseCreatedByUser :: Maybe BusinessAccessUserSummary
-    <*> arbitraryReducedMaybe n -- inviteResponseCreatedTime :: Maybe Int
-    <*> arbitraryReducedMaybe n -- inviteResponseId :: Maybe Text
+    <$> arbitraryReducedMaybe n -- inviteResponseId :: Maybe Text
     <*> arbitraryReducedMaybe n -- inviteResponseInviteData :: Maybe BaseInviteDataResponseInviteData
     <*> arbitraryReducedMaybe n -- inviteResponseIsReceivedInvite :: Maybe Bool
     <*> arbitraryReducedMaybe n -- inviteResponseUser :: Maybe BusinessAccessUserSummary
+    <*> arbitraryReducedMaybe n -- inviteResponseAssetsSummary :: Maybe InviteAssetsSummary
+    <*> arbitraryReducedMaybe n -- inviteResponseBusinessRoles :: Maybe [Text]
+    <*> arbitraryReducedMaybeValue n -- inviteResponseCreatedByBusiness :: Maybe A.Value
+    <*> arbitraryReducedMaybeValue n -- inviteResponseCreatedByUser :: Maybe A.Value
+    <*> arbitraryReducedMaybe n -- inviteResponseCreatedTime :: Maybe Int
   
 instance Arbitrary ItemAttributes where
   arbitrary = sized genItemAttributes
@@ -5195,7 +5179,7 @@ genItemsBatchPostRequest n =
   ItemsBatchPostRequest
     <$> arbitrary -- itemsBatchPostRequestCatalogType :: E'CatalogType3
     <*> arbitraryReduced n -- itemsBatchPostRequestCountry :: Country
-    <*> arbitraryReduced n -- itemsBatchPostRequestLanguage :: CatalogsItemsRequestLanguage
+    <*> arbitrary -- itemsBatchPostRequestLanguage :: E'Language
     <*> arbitraryReduced n -- itemsBatchPostRequestItems :: [ItemDeleteBatchRecord]
     <*> arbitraryReducedMaybe n -- itemsBatchPostRequestCatalogId :: Maybe Text
     <*> arbitraryReduced n -- itemsBatchPostRequestOperation :: BatchOperation
@@ -5361,13 +5345,13 @@ instance Arbitrary LeadFormCreateRequest where
 genLeadFormCreateRequest :: Int -> Gen LeadFormCreateRequest
 genLeadFormCreateRequest n =
   LeadFormCreateRequest
-    <$> arbitrary -- leadFormCreateRequestName :: Text
-    <*> arbitrary -- leadFormCreateRequestPrivacyPolicyLink :: Text
-    <*> arbitrary -- leadFormCreateRequestHasAcceptedTerms :: Bool
-    <*> arbitrary -- leadFormCreateRequestCompletionMessage :: Text
+    <$> arbitraryReducedMaybe n -- leadFormCreateRequestName :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadFormCreateRequestPrivacyPolicyLink :: Maybe Text
+    <*> arbitraryReducedMaybe n -- leadFormCreateRequestHasAcceptedTerms :: Maybe Bool
+    <*> arbitraryReducedMaybe n -- leadFormCreateRequestCompletionMessage :: Maybe Text
     <*> arbitraryReducedMaybe n -- leadFormCreateRequestStatus :: Maybe LeadFormStatus
     <*> arbitraryReducedMaybe n -- leadFormCreateRequestDisclosureLanguage :: Maybe Text
-    <*> arbitraryReduced n -- leadFormCreateRequestQuestions :: [LeadFormQuestion]
+    <*> arbitraryReducedMaybe n -- leadFormCreateRequestQuestions :: Maybe [LeadFormQuestion]
     <*> arbitraryReducedMaybe n -- leadFormCreateRequestPolicyLinks :: Maybe [LeadFormCommonPolicyLinksInner]
   
 instance Arbitrary LeadFormQuestion where
@@ -5619,8 +5603,8 @@ instance Arbitrary OauthAccessTokenRequestClientCredentials where
 genOauthAccessTokenRequestClientCredentials :: Int -> Gen OauthAccessTokenRequestClientCredentials
 genOauthAccessTokenRequestClientCredentials n =
   OauthAccessTokenRequestClientCredentials
-    <$> arbitrary -- oauthAccessTokenRequestClientCredentialsGrantType :: E'GrantType
-    <*> arbitrary -- oauthAccessTokenRequestClientCredentialsScope :: Text
+    <$> arbitrary -- oauthAccessTokenRequestClientCredentialsScope :: Text
+    <*> arbitrary -- oauthAccessTokenRequestClientCredentialsGrantType :: E'GrantType
   
 instance Arbitrary OauthAccessTokenRequestCode where
   arbitrary = sized genOauthAccessTokenRequestCode
@@ -5628,9 +5612,9 @@ instance Arbitrary OauthAccessTokenRequestCode where
 genOauthAccessTokenRequestCode :: Int -> Gen OauthAccessTokenRequestCode
 genOauthAccessTokenRequestCode n =
   OauthAccessTokenRequestCode
-    <$> arbitrary -- oauthAccessTokenRequestCodeGrantType :: E'GrantType
-    <*> arbitrary -- oauthAccessTokenRequestCodeCode :: Text
+    <$> arbitrary -- oauthAccessTokenRequestCodeCode :: Text
     <*> arbitrary -- oauthAccessTokenRequestCodeRedirectUri :: Text
+    <*> arbitrary -- oauthAccessTokenRequestCodeGrantType :: E'GrantType
   
 instance Arbitrary OauthAccessTokenRequestRefresh where
   arbitrary = sized genOauthAccessTokenRequestRefresh
@@ -5638,10 +5622,10 @@ instance Arbitrary OauthAccessTokenRequestRefresh where
 genOauthAccessTokenRequestRefresh :: Int -> Gen OauthAccessTokenRequestRefresh
 genOauthAccessTokenRequestRefresh n =
   OauthAccessTokenRequestRefresh
-    <$> arbitrary -- oauthAccessTokenRequestRefreshGrantType :: E'GrantType
-    <*> arbitrary -- oauthAccessTokenRequestRefreshRefreshToken :: Text
+    <$> arbitrary -- oauthAccessTokenRequestRefreshRefreshToken :: Text
     <*> arbitraryReducedMaybe n -- oauthAccessTokenRequestRefreshScope :: Maybe Text
     <*> arbitraryReducedMaybe n -- oauthAccessTokenRequestRefreshRefreshOn :: Maybe Bool
+    <*> arbitrary -- oauthAccessTokenRequestRefreshGrantType :: E'GrantType
   
 instance Arbitrary OauthAccessTokenResponse where
   arbitrary = sized genOauthAccessTokenResponse
@@ -5673,13 +5657,13 @@ instance Arbitrary OauthAccessTokenResponseCode where
 genOauthAccessTokenResponseCode :: Int -> Gen OauthAccessTokenResponseCode
 genOauthAccessTokenResponseCode n =
   OauthAccessTokenResponseCode
-    <$> arbitraryReducedMaybe n -- oauthAccessTokenResponseCodeResponseType :: Maybe E'GrantType
+    <$> arbitrary -- oauthAccessTokenResponseCodeRefreshToken :: Text
+    <*> arbitrary -- oauthAccessTokenResponseCodeRefreshTokenExpiresIn :: Int
+    <*> arbitraryReducedMaybe n -- oauthAccessTokenResponseCodeResponseType :: Maybe E'GrantType
     <*> arbitrary -- oauthAccessTokenResponseCodeAccessToken :: Text
     <*> arbitrary -- oauthAccessTokenResponseCodeTokenType :: Text
     <*> arbitrary -- oauthAccessTokenResponseCodeExpiresIn :: Int
     <*> arbitrary -- oauthAccessTokenResponseCodeScope :: Text
-    <*> arbitrary -- oauthAccessTokenResponseCodeRefreshToken :: Text
-    <*> arbitrary -- oauthAccessTokenResponseCodeRefreshTokenExpiresIn :: Int
   
 instance Arbitrary OauthAccessTokenResponseEverlastingRefresh where
   arbitrary = sized genOauthAccessTokenResponseEverlastingRefresh
@@ -5687,14 +5671,14 @@ instance Arbitrary OauthAccessTokenResponseEverlastingRefresh where
 genOauthAccessTokenResponseEverlastingRefresh :: Int -> Gen OauthAccessTokenResponseEverlastingRefresh
 genOauthAccessTokenResponseEverlastingRefresh n =
   OauthAccessTokenResponseEverlastingRefresh
-    <$> arbitraryReducedMaybe n -- oauthAccessTokenResponseEverlastingRefreshResponseType :: Maybe E'GrantType
+    <$> arbitrary -- oauthAccessTokenResponseEverlastingRefreshRefreshToken :: Text
+    <*> arbitrary -- oauthAccessTokenResponseEverlastingRefreshRefreshTokenExpiresIn :: Int
+    <*> arbitrary -- oauthAccessTokenResponseEverlastingRefreshRefreshTokenExpiresAt :: Int
+    <*> arbitraryReducedMaybe n -- oauthAccessTokenResponseEverlastingRefreshResponseType :: Maybe E'GrantType
     <*> arbitrary -- oauthAccessTokenResponseEverlastingRefreshAccessToken :: Text
     <*> arbitrary -- oauthAccessTokenResponseEverlastingRefreshTokenType :: Text
     <*> arbitrary -- oauthAccessTokenResponseEverlastingRefreshExpiresIn :: Int
     <*> arbitrary -- oauthAccessTokenResponseEverlastingRefreshScope :: Text
-    <*> arbitrary -- oauthAccessTokenResponseEverlastingRefreshRefreshToken :: Text
-    <*> arbitrary -- oauthAccessTokenResponseEverlastingRefreshRefreshTokenExpiresIn :: Int
-    <*> arbitrary -- oauthAccessTokenResponseEverlastingRefreshRefreshTokenExpiresAt :: Int
   
 instance Arbitrary OauthAccessTokenResponseIntegrationRefresh where
   arbitrary = sized genOauthAccessTokenResponseIntegrationRefresh
@@ -5702,13 +5686,13 @@ instance Arbitrary OauthAccessTokenResponseIntegrationRefresh where
 genOauthAccessTokenResponseIntegrationRefresh :: Int -> Gen OauthAccessTokenResponseIntegrationRefresh
 genOauthAccessTokenResponseIntegrationRefresh n =
   OauthAccessTokenResponseIntegrationRefresh
-    <$> arbitraryReducedMaybe n -- oauthAccessTokenResponseIntegrationRefreshResponseType :: Maybe E'GrantType
+    <$> arbitrary -- oauthAccessTokenResponseIntegrationRefreshRefreshToken :: Text
+    <*> arbitrary -- oauthAccessTokenResponseIntegrationRefreshRefreshTokenExpiresIn :: Int
+    <*> arbitraryReducedMaybe n -- oauthAccessTokenResponseIntegrationRefreshResponseType :: Maybe E'GrantType
     <*> arbitrary -- oauthAccessTokenResponseIntegrationRefreshAccessToken :: Text
     <*> arbitrary -- oauthAccessTokenResponseIntegrationRefreshTokenType :: Text
     <*> arbitrary -- oauthAccessTokenResponseIntegrationRefreshExpiresIn :: Int
     <*> arbitrary -- oauthAccessTokenResponseIntegrationRefreshScope :: Text
-    <*> arbitrary -- oauthAccessTokenResponseIntegrationRefreshRefreshToken :: Text
-    <*> arbitrary -- oauthAccessTokenResponseIntegrationRefreshRefreshTokenExpiresIn :: Int
   
 instance Arbitrary OauthAccessTokenResponseRefresh where
   arbitrary = sized genOauthAccessTokenResponseRefresh
@@ -6153,14 +6137,6 @@ genPinUpdateCarouselSlotsInner n =
     <*> arbitraryReducedMaybe n -- pinUpdateCarouselSlotsInnerDescription :: Maybe Text
     <*> arbitraryReducedMaybe n -- pinUpdateCarouselSlotsInnerLink :: Maybe Text
   
-instance Arbitrary PinsAnalyticsMetricTypesParameterInner where
-  arbitrary = sized genPinsAnalyticsMetricTypesParameterInner
-
-genPinsAnalyticsMetricTypesParameterInner :: Int -> Gen PinsAnalyticsMetricTypesParameterInner
-genPinsAnalyticsMetricTypesParameterInner n =
-  
-  pure PinsAnalyticsMetricTypesParameterInner
-   
 instance Arbitrary PinsList200Response where
   arbitrary = sized genPinsList200Response
 
@@ -7686,6 +7662,9 @@ instance Arbitrary E'Interests where
 instance Arbitrary E'InviteStatus where
   arbitrary = arbitraryBoundedEnum
 
+instance Arbitrary E'Language where
+  arbitrary = arbitraryBoundedEnum
+
 instance Arbitrary E'LargeProductCountDecrease where
   arbitrary = arbitraryBoundedEnum
 
@@ -7704,10 +7683,7 @@ instance Arbitrary E'MetricTypes where
 instance Arbitrary E'MetricTypes2 where
   arbitrary = arbitraryBoundedEnum
 
-instance Arbitrary E'OneOf0 where
-  arbitrary = arbitraryBoundedEnum
-
-instance Arbitrary E'OneOf1 where
+instance Arbitrary E'MetricTypes3 where
   arbitrary = arbitraryBoundedEnum
 
 instance Arbitrary E'Operation where

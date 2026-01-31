@@ -6,13 +6,6 @@ goog.provide('API.Client.ConversionTagCreate');
 API.Client.ConversionTagCreate = function() {}
 
 /**
- * Conversion tag name.
- * @type {!string}
- * @export
- */
-API.Client.ConversionTagCreate.prototype.name;
-
-/**
  * Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
  * @type {!boolean}
  * @export
@@ -60,4 +53,11 @@ API.Client.ConversionTagCreate.prototype.aemDbEnabled;
  * @export
  */
 API.Client.ConversionTagCreate.prototype.aemLocEnabled;
+
+/**
+ * Conversion tag name.
+ * @type {!string}
+ * @export
+ */
+API.Client.ConversionTagCreate.prototype.name;
 

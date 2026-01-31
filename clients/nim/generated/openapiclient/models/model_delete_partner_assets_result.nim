@@ -9,12 +9,45 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type DeletePartnerAssetsResult* = object
   ## The terminated asset access.
-  assetId*: string ## Unique identifier of a business asset.
-  assetType*: string ## Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
-  permissions*: seq[string] ## Permission levels member or partner has on an asset.
-  isSharedPartner*: bool ## If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset.
-  partnerId*: string ## Unique identifier of a business partner.
+  assetId*: Option[string] ## Unique identifier of a business asset.
+  assetType*: Option[string] ## Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  permissions*: Option[seq[string]] ## Permission levels member or partner has on an asset.
+  isSharedPartner*: Option[bool] ## If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset.
+  partnerId*: Option[string] ## Unique identifier of a business partner.
+
+
+# Custom JSON deserialization for DeletePartnerAssetsResult with custom field names
+proc to*(node: JsonNode, T: typedesc[DeletePartnerAssetsResult]): DeletePartnerAssetsResult =
+  result = DeletePartnerAssetsResult()
+  if node.kind == JObject:
+    if node.hasKey("asset_id") and node["asset_id"].kind != JNull:
+      result.assetId = some(to(node["asset_id"], typeof(result.assetId.get())))
+    if node.hasKey("asset_type") and node["asset_type"].kind != JNull:
+      result.assetType = some(to(node["asset_type"], typeof(result.assetType.get())))
+    if node.hasKey("permissions") and node["permissions"].kind != JNull:
+      result.permissions = some(to(node["permissions"], typeof(result.permissions.get())))
+    if node.hasKey("is_shared_partner") and node["is_shared_partner"].kind != JNull:
+      result.isSharedPartner = some(to(node["is_shared_partner"], typeof(result.isSharedPartner.get())))
+    if node.hasKey("partner_id") and node["partner_id"].kind != JNull:
+      result.partnerId = some(to(node["partner_id"], typeof(result.partnerId.get())))
+
+# Custom JSON serialization for DeletePartnerAssetsResult with custom field names
+proc `%`*(obj: DeletePartnerAssetsResult): JsonNode =
+  result = newJObject()
+  if obj.assetId.isSome():
+    result["asset_id"] = %obj.assetId.get()
+  if obj.assetType.isSome():
+    result["asset_type"] = %obj.assetType.get()
+  if obj.permissions.isSome():
+    result["permissions"] = %obj.permissions.get()
+  if obj.isSharedPartner.isSome():
+    result["is_shared_partner"] = %obj.isSharedPartner.get()
+  if obj.partnerId.isSome():
+    result["partner_id"] = %obj.partnerId.get()
+

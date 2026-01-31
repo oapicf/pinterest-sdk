@@ -21,13 +21,13 @@ import ApiClient from '../ApiClient';
 class OauthAccessTokenRequestClientCredentials {
     /**
      * Constructs a new <code>OauthAccessTokenRequestClientCredentials</code>.
-     * A request to receive a client token.
      * @alias module:model/OauthAccessTokenRequestClientCredentials
      * @param scope {String} 
+     * @param grantType {module:model/OauthAccessTokenRequestClientCredentials.GrantTypeEnum} 
      */
-    constructor(scope) { 
+    constructor(scope, grantType) { 
         
-        OauthAccessTokenRequestClientCredentials.initialize(this, scope);
+        OauthAccessTokenRequestClientCredentials.initialize(this, scope, grantType);
     }
 
     /**
@@ -35,9 +35,9 @@ class OauthAccessTokenRequestClientCredentials {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, scope) { 
-        obj['grant_type'] = grantType;
+    static initialize(obj, scope, grantType) { 
         obj['scope'] = scope;
+        obj['grant_type'] = grantType;
     }
 
     /**
@@ -51,11 +51,11 @@ class OauthAccessTokenRequestClientCredentials {
         if (data) {
             obj = obj || new OauthAccessTokenRequestClientCredentials();
 
-            if (data.hasOwnProperty('grant_type')) {
-                obj['grant_type'] = ApiClient.convertToType(data['grant_type'], 'String');
-            }
             if (data.hasOwnProperty('scope')) {
                 obj['scope'] = ApiClient.convertToType(data['scope'], 'String');
+            }
+            if (data.hasOwnProperty('grant_type')) {
+                obj['grant_type'] = ApiClient.convertToType(data['grant_type'], 'String');
             }
         }
         return obj;
@@ -74,12 +74,12 @@ class OauthAccessTokenRequestClientCredentials {
             }
         }
         // ensure the json data is a string
-        if (data['grant_type'] && !(typeof data['grant_type'] === 'string' || data['grant_type'] instanceof String)) {
-            throw new Error("Expected the field `grant_type` to be a primitive type in the JSON string but got " + data['grant_type']);
-        }
-        // ensure the json data is a string
         if (data['scope'] && !(typeof data['scope'] === 'string' || data['scope'] instanceof String)) {
             throw new Error("Expected the field `scope` to be a primitive type in the JSON string but got " + data['scope']);
+        }
+        // ensure the json data is a string
+        if (data['grant_type'] && !(typeof data['grant_type'] === 'string' || data['grant_type'] instanceof String)) {
+            throw new Error("Expected the field `grant_type` to be a primitive type in the JSON string but got " + data['grant_type']);
         }
 
         return true;
@@ -88,17 +88,17 @@ class OauthAccessTokenRequestClientCredentials {
 
 }
 
-OauthAccessTokenRequestClientCredentials.RequiredProperties = ["grant_type", "scope"];
-
-/**
- * @member {module:model/OauthAccessTokenRequestClientCredentials.GrantTypeEnum} grant_type
- */
-OauthAccessTokenRequestClientCredentials.prototype['grant_type'] = undefined;
+OauthAccessTokenRequestClientCredentials.RequiredProperties = ["scope", "grant_type"];
 
 /**
  * @member {String} scope
  */
 OauthAccessTokenRequestClientCredentials.prototype['scope'] = undefined;
+
+/**
+ * @member {module:model/OauthAccessTokenRequestClientCredentials.GrantTypeEnum} grant_type
+ */
+OauthAccessTokenRequestClientCredentials.prototype['grant_type'] = undefined;
 
 
 

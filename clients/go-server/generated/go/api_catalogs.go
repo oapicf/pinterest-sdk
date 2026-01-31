@@ -54,142 +54,339 @@ func NewCatalogsAPIController(s CatalogsAPIServicer, opts ...CatalogsAPIOption) 
 func (c *CatalogsAPIController) Routes() Routes {
 	return Routes{
 		"CatalogsList": Route{
+			"CatalogsList",
 			strings.ToUpper("Get"),
 			"/v5/catalogs",
 			c.CatalogsList,
 		},
 		"CatalogsCreate": Route{
+			"CatalogsCreate",
 			strings.ToUpper("Post"),
 			"/v5/catalogs",
 			c.CatalogsCreate,
 		},
 		"FeedsList": Route{
+			"FeedsList",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/feeds",
 			c.FeedsList,
 		},
 		"FeedsCreate": Route{
+			"FeedsCreate",
 			strings.ToUpper("Post"),
 			"/v5/catalogs/feeds",
 			c.FeedsCreate,
 		},
 		"FeedsGet": Route{
+			"FeedsGet",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/feeds/{feed_id}",
 			c.FeedsGet,
 		},
 		"FeedsDelete": Route{
+			"FeedsDelete",
 			strings.ToUpper("Delete"),
 			"/v5/catalogs/feeds/{feed_id}",
 			c.FeedsDelete,
 		},
 		"FeedsUpdate": Route{
+			"FeedsUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/catalogs/feeds/{feed_id}",
 			c.FeedsUpdate,
 		},
 		"FeedsIngest": Route{
+			"FeedsIngest",
 			strings.ToUpper("Post"),
 			"/v5/catalogs/feeds/{feed_id}/ingest",
 			c.FeedsIngest,
 		},
 		"FeedProcessingResultsList": Route{
+			"FeedProcessingResultsList",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/feeds/{feed_id}/processing_results",
 			c.FeedProcessingResultsList,
 		},
 		"ItemsIssuesList": Route{
+			"ItemsIssuesList",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/processing_results/{processing_result_id}/item_issues",
 			c.ItemsIssuesList,
 		},
 		"ItemsGet": Route{
+			"ItemsGet",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/items",
 			c.ItemsGet,
 		},
 		"ItemsPost": Route{
+			"ItemsPost",
 			strings.ToUpper("Post"),
 			"/v5/catalogs/items",
 			c.ItemsPost,
 		},
 		"ItemsBatchPost": Route{
+			"ItemsBatchPost",
 			strings.ToUpper("Post"),
 			"/v5/catalogs/items/batch",
 			c.ItemsBatchPost,
 		},
 		"ItemsBatchGet": Route{
+			"ItemsBatchGet",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/items/batch/{batch_id}",
 			c.ItemsBatchGet,
 		},
 		"CatalogsProductGroupsCreateMany": Route{
+			"CatalogsProductGroupsCreateMany",
 			strings.ToUpper("Post"),
 			"/v5/catalogs/product_groups/multiple",
 			c.CatalogsProductGroupsCreateMany,
 		},
 		"CatalogsProductGroupsDeleteMany": Route{
+			"CatalogsProductGroupsDeleteMany",
 			strings.ToUpper("Delete"),
 			"/v5/catalogs/product_groups/multiple",
 			c.CatalogsProductGroupsDeleteMany,
 		},
 		"CatalogsProductGroupsList": Route{
+			"CatalogsProductGroupsList",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/product_groups",
 			c.CatalogsProductGroupsList,
 		},
 		"CatalogsProductGroupsCreate": Route{
+			"CatalogsProductGroupsCreate",
 			strings.ToUpper("Post"),
 			"/v5/catalogs/product_groups",
 			c.CatalogsProductGroupsCreate,
 		},
 		"CatalogsProductGroupsGet": Route{
+			"CatalogsProductGroupsGet",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/product_groups/{product_group_id}",
 			c.CatalogsProductGroupsGet,
 		},
 		"CatalogsProductGroupsDelete": Route{
+			"CatalogsProductGroupsDelete",
 			strings.ToUpper("Delete"),
 			"/v5/catalogs/product_groups/{product_group_id}",
 			c.CatalogsProductGroupsDelete,
 		},
 		"CatalogsProductGroupsUpdate": Route{
+			"CatalogsProductGroupsUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/catalogs/product_groups/{product_group_id}",
 			c.CatalogsProductGroupsUpdate,
 		},
 		"CatalogsProductGroupsProductCountsGet": Route{
+			"CatalogsProductGroupsProductCountsGet",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/product_groups/{product_group_id}/product_counts",
 			c.CatalogsProductGroupsProductCountsGet,
 		},
 		"CatalogsProductGroupPinsList": Route{
+			"CatalogsProductGroupPinsList",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/product_groups/{product_group_id}/products",
 			c.CatalogsProductGroupPinsList,
 		},
 		"ProductsByProductGroupFilterList": Route{
+			"ProductsByProductGroupFilterList",
 			strings.ToUpper("Post"),
 			"/v5/catalogs/products/get_by_product_group_filters",
 			c.ProductsByProductGroupFilterList,
 		},
 		"ReportsGet": Route{
+			"ReportsGet",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/reports",
 			c.ReportsGet,
 		},
 		"ReportsCreate": Route{
+			"ReportsCreate",
 			strings.ToUpper("Post"),
 			"/v5/catalogs/reports",
 			c.ReportsCreate,
 		},
 		"ReportsStats": Route{
+			"ReportsStats",
 			strings.ToUpper("Get"),
 			"/v5/catalogs/reports/stats",
 			c.ReportsStats,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the CatalogsAPIController
+func (c *CatalogsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"CatalogsList",
+			strings.ToUpper("Get"),
+			"/v5/catalogs",
+			c.CatalogsList,
+		},
+		Route{
+			"CatalogsCreate",
+			strings.ToUpper("Post"),
+			"/v5/catalogs",
+			c.CatalogsCreate,
+		},
+		Route{
+			"FeedsList",
+			strings.ToUpper("Get"),
+			"/v5/catalogs/feeds",
+			c.FeedsList,
+		},
+		Route{
+			"FeedsCreate",
+			strings.ToUpper("Post"),
+			"/v5/catalogs/feeds",
+			c.FeedsCreate,
+		},
+		Route{
+			"FeedsGet",
+			strings.ToUpper("Get"),
+			"/v5/catalogs/feeds/{feed_id}",
+			c.FeedsGet,
+		},
+		Route{
+			"FeedsDelete",
+			strings.ToUpper("Delete"),
+			"/v5/catalogs/feeds/{feed_id}",
+			c.FeedsDelete,
+		},
+		Route{
+			"FeedsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/catalogs/feeds/{feed_id}",
+			c.FeedsUpdate,
+		},
+		Route{
+			"FeedsIngest",
+			strings.ToUpper("Post"),
+			"/v5/catalogs/feeds/{feed_id}/ingest",
+			c.FeedsIngest,
+		},
+		Route{
+			"FeedProcessingResultsList",
+			strings.ToUpper("Get"),
+			"/v5/catalogs/feeds/{feed_id}/processing_results",
+			c.FeedProcessingResultsList,
+		},
+		Route{
+			"ItemsIssuesList",
+			strings.ToUpper("Get"),
+			"/v5/catalogs/processing_results/{processing_result_id}/item_issues",
+			c.ItemsIssuesList,
+		},
+		Route{
+			"ItemsGet",
+			strings.ToUpper("Get"),
+			"/v5/catalogs/items",
+			c.ItemsGet,
+		},
+		Route{
+			"ItemsPost",
+			strings.ToUpper("Post"),
+			"/v5/catalogs/items",
+			c.ItemsPost,
+		},
+		Route{
+			"ItemsBatchPost",
+			strings.ToUpper("Post"),
+			"/v5/catalogs/items/batch",
+			c.ItemsBatchPost,
+		},
+		Route{
+			"ItemsBatchGet",
+			strings.ToUpper("Get"),
+			"/v5/catalogs/items/batch/{batch_id}",
+			c.ItemsBatchGet,
+		},
+		Route{
+			"CatalogsProductGroupsCreateMany",
+			strings.ToUpper("Post"),
+			"/v5/catalogs/product_groups/multiple",
+			c.CatalogsProductGroupsCreateMany,
+		},
+		Route{
+			"CatalogsProductGroupsDeleteMany",
+			strings.ToUpper("Delete"),
+			"/v5/catalogs/product_groups/multiple",
+			c.CatalogsProductGroupsDeleteMany,
+		},
+		Route{
+			"CatalogsProductGroupsList",
+			strings.ToUpper("Get"),
+			"/v5/catalogs/product_groups",
+			c.CatalogsProductGroupsList,
+		},
+		Route{
+			"CatalogsProductGroupsCreate",
+			strings.ToUpper("Post"),
+			"/v5/catalogs/product_groups",
+			c.CatalogsProductGroupsCreate,
+		},
+		Route{
+			"CatalogsProductGroupsGet",
+			strings.ToUpper("Get"),
+			"/v5/catalogs/product_groups/{product_group_id}",
+			c.CatalogsProductGroupsGet,
+		},
+		Route{
+			"CatalogsProductGroupsDelete",
+			strings.ToUpper("Delete"),
+			"/v5/catalogs/product_groups/{product_group_id}",
+			c.CatalogsProductGroupsDelete,
+		},
+		Route{
+			"CatalogsProductGroupsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/catalogs/product_groups/{product_group_id}",
+			c.CatalogsProductGroupsUpdate,
+		},
+		Route{
+			"CatalogsProductGroupsProductCountsGet",
+			strings.ToUpper("Get"),
+			"/v5/catalogs/product_groups/{product_group_id}/product_counts",
+			c.CatalogsProductGroupsProductCountsGet,
+		},
+		Route{
+			"CatalogsProductGroupPinsList",
+			strings.ToUpper("Get"),
+			"/v5/catalogs/product_groups/{product_group_id}/products",
+			c.CatalogsProductGroupPinsList,
+		},
+		Route{
+			"ProductsByProductGroupFilterList",
+			strings.ToUpper("Post"),
+			"/v5/catalogs/products/get_by_product_group_filters",
+			c.ProductsByProductGroupFilterList,
+		},
+		Route{
+			"ReportsGet",
+			strings.ToUpper("Get"),
+			"/v5/catalogs/reports",
+			c.ReportsGet,
+		},
+		Route{
+			"ReportsCreate",
+			strings.ToUpper("Post"),
+			"/v5/catalogs/reports",
+			c.ReportsCreate,
+		},
+		Route{
+			"ReportsStats",
+			strings.ToUpper("Get"),
+			"/v5/catalogs/reports/stats",
+			c.ReportsStats,
+		},
+	}
+}
+
+
 
 // CatalogsList - List catalogs
 func (c *CatalogsAPIController) CatalogsList(w http.ResponseWriter, r *http.Request) {

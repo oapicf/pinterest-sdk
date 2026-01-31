@@ -116,8 +116,7 @@ namespace Org.OpenAPITools.Model
                             mediaType = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "images":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                images = new Option<PinMediaWithImageAllOfImages?>(JsonSerializer.Deserialize<PinMediaWithImageAllOfImages>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            images = new Option<PinMediaWithImageAllOfImages?>(JsonSerializer.Deserialize<PinMediaWithImageAllOfImages>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

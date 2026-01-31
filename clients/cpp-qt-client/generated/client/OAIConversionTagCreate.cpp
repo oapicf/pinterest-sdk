@@ -34,9 +34,6 @@ OAIConversionTagCreate::~OAIConversionTagCreate() {}
 
 void OAIConversionTagCreate::initializeModel() {
 
-    m_name_isSet = false;
-    m_name_isValid = false;
-
     m_aem_enabled_isSet = false;
     m_aem_enabled_isValid = false;
 
@@ -57,6 +54,9 @@ void OAIConversionTagCreate::initializeModel() {
 
     m_aem_loc_enabled_isSet = false;
     m_aem_loc_enabled_isValid = false;
+
+    m_name_isSet = false;
+    m_name_isValid = false;
 }
 
 void OAIConversionTagCreate::fromJson(QString jsonString) {
@@ -67,9 +67,6 @@ void OAIConversionTagCreate::fromJson(QString jsonString) {
 }
 
 void OAIConversionTagCreate::fromJsonObject(QJsonObject json) {
-
-    m_name_isValid = ::OpenAPI::fromJsonValue(m_name, json[QString("name")]);
-    m_name_isSet = !json[QString("name")].isNull() && m_name_isValid;
 
     m_aem_enabled_isValid = ::OpenAPI::fromJsonValue(m_aem_enabled, json[QString("aem_enabled")]);
     m_aem_enabled_isSet = !json[QString("aem_enabled")].isNull() && m_aem_enabled_isValid;
@@ -91,6 +88,9 @@ void OAIConversionTagCreate::fromJsonObject(QJsonObject json) {
 
     m_aem_loc_enabled_isValid = ::OpenAPI::fromJsonValue(m_aem_loc_enabled, json[QString("aem_loc_enabled")]);
     m_aem_loc_enabled_isSet = !json[QString("aem_loc_enabled")].isNull() && m_aem_loc_enabled_isValid;
+
+    m_name_isValid = ::OpenAPI::fromJsonValue(m_name, json[QString("name")]);
+    m_name_isSet = !json[QString("name")].isNull() && m_name_isValid;
 }
 
 QString OAIConversionTagCreate::asJson() const {
@@ -102,9 +102,6 @@ QString OAIConversionTagCreate::asJson() const {
 
 QJsonObject OAIConversionTagCreate::asJsonObject() const {
     QJsonObject obj;
-    if (m_name_isSet) {
-        obj.insert(QString("name"), ::OpenAPI::toJsonValue(m_name));
-    }
     if (m_aem_enabled_isSet) {
         obj.insert(QString("aem_enabled"), ::OpenAPI::toJsonValue(m_aem_enabled));
     }
@@ -126,23 +123,10 @@ QJsonObject OAIConversionTagCreate::asJsonObject() const {
     if (m_aem_loc_enabled_isSet) {
         obj.insert(QString("aem_loc_enabled"), ::OpenAPI::toJsonValue(m_aem_loc_enabled));
     }
+    if (m_name_isSet) {
+        obj.insert(QString("name"), ::OpenAPI::toJsonValue(m_name));
+    }
     return obj;
-}
-
-QString OAIConversionTagCreate::getName() const {
-    return m_name;
-}
-void OAIConversionTagCreate::setName(const QString &name) {
-    m_name = name;
-    m_name_isSet = true;
-}
-
-bool OAIConversionTagCreate::is_name_Set() const{
-    return m_name_isSet;
-}
-
-bool OAIConversionTagCreate::is_name_Valid() const{
-    return m_name_isValid;
 }
 
 bool OAIConversionTagCreate::isAemEnabled() const {
@@ -257,14 +241,25 @@ bool OAIConversionTagCreate::is_aem_loc_enabled_Valid() const{
     return m_aem_loc_enabled_isValid;
 }
 
+QString OAIConversionTagCreate::getName() const {
+    return m_name;
+}
+void OAIConversionTagCreate::setName(const QString &name) {
+    m_name = name;
+    m_name_isSet = true;
+}
+
+bool OAIConversionTagCreate::is_name_Set() const{
+    return m_name_isSet;
+}
+
+bool OAIConversionTagCreate::is_name_Valid() const{
+    return m_name_isValid;
+}
+
 bool OAIConversionTagCreate::isSet() const {
     bool isObjectUpdated = false;
     do {
-        if (m_name_isSet) {
-            isObjectUpdated = true;
-            break;
-        }
-
         if (m_aem_enabled_isSet) {
             isObjectUpdated = true;
             break;
@@ -296,6 +291,11 @@ bool OAIConversionTagCreate::isSet() const {
         }
 
         if (m_aem_loc_enabled_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_name_isSet) {
             isObjectUpdated = true;
             break;
         }

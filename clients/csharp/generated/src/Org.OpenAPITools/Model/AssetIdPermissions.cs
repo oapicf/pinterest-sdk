@@ -206,12 +206,10 @@ namespace Org.OpenAPITools.Model
                             assetType = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "permissions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                permissions = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            permissions = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "asset_group_info":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetGroupInfo = new Option<AssetGroupBinding?>(JsonSerializer.Deserialize<AssetGroupBinding>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            assetGroupInfo = new Option<AssetGroupBinding?>(JsonSerializer.Deserialize<AssetGroupBinding>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -3,25 +3,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**RefreshToken** | **String** |  | 
+**RefreshTokenExpiresIn** | **Int32** |  | 
 **ResponseType** | **String** |  | [optional] 
 **AccessToken** | **String** |  | 
 **TokenType** | **String** |  | [default to "bearer"]
 **ExpiresIn** | **Int32** |  | 
 **Scope** | **String** |  | 
-**RefreshToken** | **String** |  | 
-**RefreshTokenExpiresIn** | **Int32** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$OauthAccessTokenResponseCode = Initialize-PSOpenAPIToolsOauthAccessTokenResponseCode  -ResponseType null `
+$OauthAccessTokenResponseCode = Initialize-PSOpenAPIToolsOauthAccessTokenResponseCode  -RefreshToken null `
+ -RefreshTokenExpiresIn null `
+ -ResponseType null `
  -AccessToken null `
  -TokenType null `
  -ExpiresIn null `
- -Scope null `
- -RefreshToken null `
- -RefreshTokenExpiresIn null
+ -Scope null
 ```
 
 - Convert the resource to JSON

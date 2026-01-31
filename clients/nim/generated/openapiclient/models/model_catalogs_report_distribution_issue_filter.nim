@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type ReportType* {.pure.} = enum
@@ -17,14 +19,39 @@ type ReportType* {.pure.} = enum
 type CatalogsReportDistributionIssueFilter* = object
   ## 
   reportType*: ReportType
-  catalogId*: string ## Unique identifier of a catalog. If not given, oldest catalog will be used
+  catalogId*: Option[string] ## Unique identifier of a catalog. If not given, oldest catalog will be used
 
 func `%`*(v: ReportType): JsonNode =
-  let str = case v:
-    of ReportType.DISTRIBUTIONISSUES: "DISTRIBUTION_ISSUES"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of ReportType.DISTRIBUTIONISSUES: %"DISTRIBUTION_ISSUES"
 func `$`*(v: ReportType): string =
   result = case v:
-    of ReportType.DISTRIBUTIONISSUES: "DISTRIBUTION_ISSUES"
+    of ReportType.DISTRIBUTIONISSUES: $("DISTRIBUTION_ISSUES")
+
+proc to*(node: JsonNode, T: typedesc[ReportType]): ReportType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ReportType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("DISTRIBUTION_ISSUES"):
+    return ReportType.DISTRIBUTIONISSUES
+  else:
+    raise newException(ValueError, "Invalid enum value for ReportType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsReportDistributionIssueFilter with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsReportDistributionIssueFilter]): CatalogsReportDistributionIssueFilter =
+  result = CatalogsReportDistributionIssueFilter()
+  if node.kind == JObject:
+    if node.hasKey("report_type"):
+      result.reportType = to(node["report_type"], ReportType)
+    if node.hasKey("catalog_id") and node["catalog_id"].kind != JNull:
+      result.catalogId = some(to(node["catalog_id"], typeof(result.catalogId.get())))
+
+# Custom JSON serialization for CatalogsReportDistributionIssueFilter with custom field names
+proc `%`*(obj: CatalogsReportDistributionIssueFilter): JsonNode =
+  result = newJObject()
+  result["report_type"] = %obj.reportType
+  if obj.catalogId.isSome():
+    result["catalog_id"] = %obj.catalogId.get()
+

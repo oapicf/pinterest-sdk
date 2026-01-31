@@ -135,6 +135,8 @@ pub enum UpdateBusinessToBusinessSharedAudienceResponse {
 }
 
 
+
+
 /// AudienceSharing
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -144,6 +146,7 @@ pub trait AudienceSharing<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     /// AdAccountsAudiencesSharedAccountsSlashList - GET /v5/ad_accounts/{ad_account_id}/audiences/shared/accounts
     async fn ad_accounts_audiences_shared_accounts_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -156,6 +159,7 @@ pub trait AudienceSharing<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     /// BusinessAccountAudiencesSharedAccountsSlashList - GET /v5/businesses/{business_id}/audiences/shared/accounts
     async fn business_account_audiences_shared_accounts_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -168,6 +172,7 @@ pub trait AudienceSharing<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     /// SharedAudiencesForBusinessSlashList - GET /v5/businesses/{business_id}/audiences
     async fn shared_audiences_for_business_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -180,6 +185,7 @@ pub trait AudienceSharing<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     /// UpdateAdAccountToAdAccountSharedAudience - PATCH /v5/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared
     async fn update_ad_account_to_ad_account_shared_audience(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -192,6 +198,7 @@ pub trait AudienceSharing<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     /// UpdateAdAccountToBusinessSharedAudience - PATCH /v5/ad_accounts/{ad_account_id}/audiences/businesses/shared
     async fn update_ad_account_to_business_shared_audience(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -204,6 +211,7 @@ pub trait AudienceSharing<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     /// UpdateBusinessToAdAccountSharedAudience - PATCH /v5/businesses/{business_id}/audiences/ad_accounts/shared
     async fn update_business_to_ad_account_shared_audience(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -216,6 +224,7 @@ pub trait AudienceSharing<E: std::fmt::Debug + Send + Sync + 'static = ()>: supe
     /// UpdateBusinessToBusinessSharedAudience - PATCH /v5/businesses/{business_id}/audiences/businesses/shared
     async fn update_business_to_business_shared_audience(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

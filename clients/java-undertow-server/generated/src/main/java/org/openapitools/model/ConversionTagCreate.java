@@ -22,10 +22,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2025-05-10T05:39:45.096615976Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagCreate   {
   
-  private String name;
   private Boolean aemEnabled = false;
   private BigDecimal mdFrequency = new BigDecimal("1");
   private Boolean aemFnlnEnabled = false;
@@ -33,24 +32,7 @@ public class ConversionTagCreate   {
   private Boolean aemGeEnabled = false;
   private Boolean aemDbEnabled = false;
   private Boolean aemLocEnabled = false;
-
-  /**
-   * Conversion tag name.
-   */
-  public ConversionTagCreate name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "ACME Tools Tag", required = true, value = "Conversion tag name.")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
+  private String name;
 
   /**
    * Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
@@ -178,6 +160,24 @@ public class ConversionTagCreate   {
     this.aemLocEnabled = aemLocEnabled;
   }
 
+  /**
+   * Conversion tag name.
+   */
+  public ConversionTagCreate name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "ACME Tools Tag", required = true, value = "Conversion tag name.")
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -188,19 +188,19 @@ public class ConversionTagCreate   {
       return false;
     }
     ConversionTagCreate conversionTagCreate = (ConversionTagCreate) o;
-    return Objects.equals(name, conversionTagCreate.name) &&
-        Objects.equals(aemEnabled, conversionTagCreate.aemEnabled) &&
+    return Objects.equals(aemEnabled, conversionTagCreate.aemEnabled) &&
         Objects.equals(mdFrequency, conversionTagCreate.mdFrequency) &&
         Objects.equals(aemFnlnEnabled, conversionTagCreate.aemFnlnEnabled) &&
         Objects.equals(aemPhEnabled, conversionTagCreate.aemPhEnabled) &&
         Objects.equals(aemGeEnabled, conversionTagCreate.aemGeEnabled) &&
         Objects.equals(aemDbEnabled, conversionTagCreate.aemDbEnabled) &&
-        Objects.equals(aemLocEnabled, conversionTagCreate.aemLocEnabled);
+        Objects.equals(aemLocEnabled, conversionTagCreate.aemLocEnabled) &&
+        Objects.equals(name, conversionTagCreate.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, aemEnabled, mdFrequency, aemFnlnEnabled, aemPhEnabled, aemGeEnabled, aemDbEnabled, aemLocEnabled);
+    return Objects.hash(aemEnabled, mdFrequency, aemFnlnEnabled, aemPhEnabled, aemGeEnabled, aemDbEnabled, aemLocEnabled, name);
   }
 
   @Override
@@ -208,7 +208,6 @@ public class ConversionTagCreate   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagCreate {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    aemEnabled: ").append(toIndentedString(aemEnabled)).append("\n");
     sb.append("    mdFrequency: ").append(toIndentedString(mdFrequency)).append("\n");
     sb.append("    aemFnlnEnabled: ").append(toIndentedString(aemFnlnEnabled)).append("\n");
@@ -216,6 +215,7 @@ public class ConversionTagCreate   {
     sb.append("    aemGeEnabled: ").append(toIndentedString(aemGeEnabled)).append("\n");
     sb.append("    aemDbEnabled: ").append(toIndentedString(aemDbEnabled)).append("\n");
     sb.append("    aemLocEnabled: ").append(toIndentedString(aemLocEnabled)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

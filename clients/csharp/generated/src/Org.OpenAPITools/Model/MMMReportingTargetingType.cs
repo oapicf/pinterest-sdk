@@ -175,7 +175,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, MMMReportingTargetingType mMMReportingTargetingType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(mMMReportingTargetingType.ToString());
+            writer.WriteStringValue(MMMReportingTargetingTypeValueConverter.ToJsonValue(mMMReportingTargetingType).ToString());
         }
     }
 
@@ -206,14 +206,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the MMMReportingTargetingType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="mMMReportingTargetingType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, MMMReportingTargetingType? mMMReportingTargetingType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(mMMReportingTargetingType?.ToString() ?? "null");
+            writer.WriteStringValue(mMMReportingTargetingType.HasValue ? MMMReportingTargetingTypeValueConverter.ToJsonValue(mMMReportingTargetingType.Value).ToString() : "null");
         }
     }
 }

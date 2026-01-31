@@ -21,7 +21,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  */
 data class CatalogsProductGroupPricingCriteria(
 
-    @get:DecimalMin("0")
+    @get:DecimalMin(value="0")
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("values", required = true) val propertyValues: java.math.BigDecimal,
 
@@ -30,7 +30,7 @@ data class CatalogsProductGroupPricingCriteria(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("negated") val negated: kotlin.Boolean? = false
-    ) {
+) {
 
 }
 

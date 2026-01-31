@@ -79,7 +79,7 @@ data class TargetingTemplateResponseData(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("sizing") val sizing: TargetingTemplateAudienceSizing? = null
-    ) {
+) {
 
     /**
     * Indicate targeting template is active or Deleted
@@ -94,7 +94,8 @@ data class TargetingTemplateResponseData(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Status {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingTemplateResponseData'")
             }
         }
     }

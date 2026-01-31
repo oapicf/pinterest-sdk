@@ -29,7 +29,7 @@ data class DeleteAssetGroupResponseExceptionsInner(
 
     @Schema(example = "666791336903426391", description = "Asset group id of the exception.")
     @get:JsonProperty("asset_group_id") val assetGroupId: kotlin.String? = null
-    ) {
+) {
 
 }
 

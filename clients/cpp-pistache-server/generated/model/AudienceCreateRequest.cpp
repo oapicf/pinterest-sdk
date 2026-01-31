@@ -62,10 +62,6 @@ bool AudienceCreateRequest::validate(std::stringstream& msg, const std::string& 
         msg << _pathPrefix << ": Rule is invalid;";
         success = false;
     }        
-    if (!m_Audience_type.validate(msg, _pathPrefix + ".audienceType")) {
-        msg << _pathPrefix << ": Audience_type is invalid;";
-        success = false;
-    }
     return success;
 }
 
@@ -178,11 +174,11 @@ void AudienceCreateRequest::unsetDescription()
 {
     m_DescriptionIsSet = false;
 }
-org::openapitools::server::model::AudienceCreateRequest_1_audience_type AudienceCreateRequest::getAudienceType() const
+org::openapitools::server::model::AudienceType AudienceCreateRequest::getAudienceType() const
 {
     return m_Audience_type;
 }
-void AudienceCreateRequest::setAudienceType(org::openapitools::server::model::AudienceCreateRequest_1_audience_type const& value)
+void AudienceCreateRequest::setAudienceType(org::openapitools::server::model::AudienceType const& value)
 {
     m_Audience_type = value;
 }

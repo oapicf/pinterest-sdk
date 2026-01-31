@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type GrantType* {.pure.} = enum
@@ -17,21 +19,52 @@ type GrantType* {.pure.} = enum
   ClientCredentials
 
 type OauthAccessTokenRequestCode* = object
-  ## A request to exchange an authorization code for an access token.
-  grantType*: GrantType
+  ## 
   code*: string
   redirectUri*: string
+  grantType*: GrantType
 
 func `%`*(v: GrantType): JsonNode =
-  let str = case v:
-    of GrantType.AuthorizationCode: "authorization_code"
-    of GrantType.RefreshToken: "refresh_token"
-    of GrantType.ClientCredentials: "client_credentials"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of GrantType.AuthorizationCode: %"authorization_code"
+    of GrantType.RefreshToken: %"refresh_token"
+    of GrantType.ClientCredentials: %"client_credentials"
 func `$`*(v: GrantType): string =
   result = case v:
-    of GrantType.AuthorizationCode: "authorization_code"
-    of GrantType.RefreshToken: "refresh_token"
-    of GrantType.ClientCredentials: "client_credentials"
+    of GrantType.AuthorizationCode: $("authorization_code")
+    of GrantType.RefreshToken: $("refresh_token")
+    of GrantType.ClientCredentials: $("client_credentials")
+
+proc to*(node: JsonNode, T: typedesc[GrantType]): GrantType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum GrantType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("authorization_code"):
+    return GrantType.AuthorizationCode
+  of $("refresh_token"):
+    return GrantType.RefreshToken
+  of $("client_credentials"):
+    return GrantType.ClientCredentials
+  else:
+    raise newException(ValueError, "Invalid enum value for GrantType: " & strVal)
+
+
+# Custom JSON deserialization for OauthAccessTokenRequestCode with custom field names
+proc to*(node: JsonNode, T: typedesc[OauthAccessTokenRequestCode]): OauthAccessTokenRequestCode =
+  result = OauthAccessTokenRequestCode()
+  if node.kind == JObject:
+    if node.hasKey("code"):
+      result.code = to(node["code"], string)
+    if node.hasKey("redirect_uri"):
+      result.redirectUri = to(node["redirect_uri"], string)
+    if node.hasKey("grant_type"):
+      result.grantType = to(node["grant_type"], GrantType)
+
+# Custom JSON serialization for OauthAccessTokenRequestCode with custom field names
+proc `%`*(obj: OauthAccessTokenRequestCode): JsonNode =
+  result = newJObject()
+  result["code"] = %obj.code
+  result["redirect_uri"] = %obj.redirectUri
+  result["grant_type"] = %obj.grantType
+

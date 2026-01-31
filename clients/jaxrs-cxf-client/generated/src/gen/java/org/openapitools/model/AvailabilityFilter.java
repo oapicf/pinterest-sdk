@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AvailabilityFilter  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsProductGroupMultipleStringCriteria AVAILABILITY;
  /**
    * Get AVAILABILITY

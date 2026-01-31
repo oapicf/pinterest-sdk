@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type ReportType* {.pure.} = enum
@@ -18,14 +20,42 @@ type CatalogsReportFeedIngestionFilter* = object
   ## 
   reportType*: ReportType
   feedId*: string ## ID of the feed entity.
-  processingResultId*: string ## Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
+  processingResultId*: Option[string] ## Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
 
 func `%`*(v: ReportType): JsonNode =
-  let str = case v:
-    of ReportType.FEEDINGESTIONISSUES: "FEED_INGESTION_ISSUES"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of ReportType.FEEDINGESTIONISSUES: %"FEED_INGESTION_ISSUES"
 func `$`*(v: ReportType): string =
   result = case v:
-    of ReportType.FEEDINGESTIONISSUES: "FEED_INGESTION_ISSUES"
+    of ReportType.FEEDINGESTIONISSUES: $("FEED_INGESTION_ISSUES")
+
+proc to*(node: JsonNode, T: typedesc[ReportType]): ReportType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ReportType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("FEED_INGESTION_ISSUES"):
+    return ReportType.FEEDINGESTIONISSUES
+  else:
+    raise newException(ValueError, "Invalid enum value for ReportType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsReportFeedIngestionFilter with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsReportFeedIngestionFilter]): CatalogsReportFeedIngestionFilter =
+  result = CatalogsReportFeedIngestionFilter()
+  if node.kind == JObject:
+    if node.hasKey("report_type"):
+      result.reportType = to(node["report_type"], ReportType)
+    if node.hasKey("feed_id"):
+      result.feedId = to(node["feed_id"], string)
+    if node.hasKey("processing_result_id") and node["processing_result_id"].kind != JNull:
+      result.processingResultId = some(to(node["processing_result_id"], typeof(result.processingResultId.get())))
+
+# Custom JSON serialization for CatalogsReportFeedIngestionFilter with custom field names
+proc `%`*(obj: CatalogsReportFeedIngestionFilter): JsonNode =
+  result = newJObject()
+  result["report_type"] = %obj.reportType
+  result["feed_id"] = %obj.feedId
+  if obj.processingResultId.isSome():
+    result["processing_result_id"] = %obj.processingResultId.get()
+

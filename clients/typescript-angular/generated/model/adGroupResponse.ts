@@ -117,17 +117,17 @@ export interface AdGroupResponse {
     dca_assets?: any | null;
 }
 export namespace AdGroupResponse {
-    export type BidStrategyTypeEnum = 'AUTOMATIC_BID' | 'MAX_BID' | 'TARGET_AVG';
     export const BidStrategyTypeEnum = {
-        AutomaticBid: 'AUTOMATIC_BID' as BidStrategyTypeEnum,
-        MaxBid: 'MAX_BID' as BidStrategyTypeEnum,
-        TargetAvg: 'TARGET_AVG' as BidStrategyTypeEnum
-    };
-    export type ConversionLearningModeTypeEnum = 'NOT_ACTIVE' | 'ACTIVE';
+        AutomaticBid: 'AUTOMATIC_BID',
+        MaxBid: 'MAX_BID',
+        TargetAvg: 'TARGET_AVG'
+    } as const;
+    export type BidStrategyTypeEnum = typeof BidStrategyTypeEnum[keyof typeof BidStrategyTypeEnum];
     export const ConversionLearningModeTypeEnum = {
-        NotActive: 'NOT_ACTIVE' as ConversionLearningModeTypeEnum,
-        Active: 'ACTIVE' as ConversionLearningModeTypeEnum
-    };
+        NotActive: 'NOT_ACTIVE',
+        Active: 'ACTIVE'
+    } as const;
+    export type ConversionLearningModeTypeEnum = typeof ConversionLearningModeTypeEnum[keyof typeof ConversionLearningModeTypeEnum];
 }
 
 

@@ -26,7 +26,7 @@ data class DeletePartnersRequest(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("partner_type") val partnerType: kotlin.String? = null
-    ) {
+) {
 
 }
 

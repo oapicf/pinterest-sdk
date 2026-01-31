@@ -51,13 +51,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(Catalog));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"updated_at\" : \"2022-03-14T15:16:34Z\",\n  \"catalog_type\" : \"RETAIL\",\n  \"name\" : \"name\",\n  \"created_at\" : \"2022-03-14T15:15:22Z\",\n  \"id\" : \"864344156814050986\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -66,7 +66,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<Catalog>(exampleJson)
-            : default(Catalog);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -94,13 +94,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"updated_at\" : \"2022-03-14T15:16:34Z\",\n    \"catalog_type\" : \"RETAIL\",\n    \"name\" : \"name\",\n    \"created_at\" : \"2022-03-14T15:15:22Z\",\n    \"id\" : \"864344156814050986\"\n  }, {\n    \"updated_at\" : \"2022-03-14T15:16:34Z\",\n    \"catalog_type\" : \"RETAIL\",\n    \"name\" : \"name\",\n    \"created_at\" : \"2022-03-14T15:15:22Z\",\n    \"id\" : \"864344156814050986\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -109,7 +109,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsList200Response>(exampleJson)
-            : default(CatalogsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -141,15 +141,15 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsProductGroupPinsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"catalog_type\" : \"RETAIL\"\n  }, {\n    \"catalog_type\" : \"RETAIL\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -159,7 +159,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsProductGroupPinsList200Response>(exampleJson)
-            : default(CatalogsProductGroupPinsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -191,17 +191,17 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(201, default(CatalogsVerticalProductGroup));
+            // return StatusCode(201, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"country\" : \"country\",\n  \"description\" : \"description\",\n  \"created_at\" : 1621350033000,\n  \"filters\" : {\n    \"any_of\" : [ {\n      \"MIN_PRICE\" : {\n        \"inclusion\" : true,\n        \"negated\" : false,\n        \"values\" : 0.08008281904610115\n      }\n    }, {\n      \"MIN_PRICE\" : {\n        \"inclusion\" : true,\n        \"negated\" : false,\n        \"values\" : 0.08008281904610115\n      }\n    } ]\n  },\n  \"type\" : \"TOP_SELLERS\",\n  \"locale\" : \"locale\",\n  \"feed_id\" : \"2680059592705\",\n  \"catalog_id\" : \"catalog_id\",\n  \"updated_at\" : 1622742155000,\n  \"catalog_type\" : \"RETAIL\",\n  \"name\" : \"Most Popular\",\n  \"id\" : \"443727193917\",\n  \"is_featured\" : true,\n  \"status\" : \"ACTIVE\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -212,7 +212,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsVerticalProductGroup>(exampleJson)
-            : default(CatalogsVerticalProductGroup);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -244,17 +244,17 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(201, default(List<string>));
+            // return StatusCode(201, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "[ \"443727193917\", \"443727193917\" ]";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -265,7 +265,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<string>>(exampleJson)
-            : default(List<string>);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -299,17 +299,17 @@ namespace Org.OpenAPITools.Controllers
             //TODO: Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(204);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
 
             throw new NotImplementedException();
         }
@@ -341,15 +341,15 @@ namespace Org.OpenAPITools.Controllers
             //TODO: Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(204);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
 
             throw new NotImplementedException();
         }
@@ -382,19 +382,19 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsVerticalProductGroup));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"country\" : \"country\",\n  \"description\" : \"description\",\n  \"created_at\" : 1621350033000,\n  \"filters\" : {\n    \"any_of\" : [ {\n      \"MIN_PRICE\" : {\n        \"inclusion\" : true,\n        \"negated\" : false,\n        \"values\" : 0.08008281904610115\n      }\n    }, {\n      \"MIN_PRICE\" : {\n        \"inclusion\" : true,\n        \"negated\" : false,\n        \"values\" : 0.08008281904610115\n      }\n    } ]\n  },\n  \"type\" : \"TOP_SELLERS\",\n  \"locale\" : \"locale\",\n  \"feed_id\" : \"2680059592705\",\n  \"catalog_id\" : \"catalog_id\",\n  \"updated_at\" : 1622742155000,\n  \"catalog_type\" : \"RETAIL\",\n  \"name\" : \"Most Popular\",\n  \"id\" : \"443727193917\",\n  \"is_featured\" : true,\n  \"status\" : \"ACTIVE\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -406,7 +406,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsVerticalProductGroup>(exampleJson)
-            : default(CatalogsVerticalProductGroup);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -443,19 +443,19 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsProductGroupsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"country\" : \"country\",\n    \"description\" : \"description\",\n    \"created_at\" : 1621350033000,\n    \"filters\" : {\n      \"any_of\" : [ {\n        \"MIN_PRICE\" : {\n          \"inclusion\" : true,\n          \"negated\" : false,\n          \"values\" : 0.08008281904610115\n        }\n      }, {\n        \"MIN_PRICE\" : {\n          \"inclusion\" : true,\n          \"negated\" : false,\n          \"values\" : 0.08008281904610115\n        }\n      } ]\n    },\n    \"type\" : \"TOP_SELLERS\",\n    \"locale\" : \"locale\",\n    \"feed_id\" : \"2680059592705\",\n    \"catalog_id\" : \"catalog_id\",\n    \"updated_at\" : 1622742155000,\n    \"catalog_type\" : \"RETAIL\",\n    \"name\" : \"Most Popular\",\n    \"id\" : \"443727193917\",\n    \"is_featured\" : true,\n    \"status\" : \"ACTIVE\"\n  }, {\n    \"country\" : \"country\",\n    \"description\" : \"description\",\n    \"created_at\" : 1621350033000,\n    \"filters\" : {\n      \"any_of\" : [ {\n        \"MIN_PRICE\" : {\n          \"inclusion\" : true,\n          \"negated\" : false,\n          \"values\" : 0.08008281904610115\n        }\n      }, {\n        \"MIN_PRICE\" : {\n          \"inclusion\" : true,\n          \"negated\" : false,\n          \"values\" : 0.08008281904610115\n        }\n      } ]\n    },\n    \"type\" : \"TOP_SELLERS\",\n    \"locale\" : \"locale\",\n    \"feed_id\" : \"2680059592705\",\n    \"catalog_id\" : \"catalog_id\",\n    \"updated_at\" : 1622742155000,\n    \"catalog_type\" : \"RETAIL\",\n    \"name\" : \"Most Popular\",\n    \"id\" : \"443727193917\",\n    \"is_featured\" : true,\n    \"status\" : \"ACTIVE\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -467,7 +467,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsProductGroupsList200Response>(exampleJson)
-            : default(CatalogsProductGroupsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -494,13 +494,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsProductGroupProductCountsVertical));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"catalog_type\" : \"RETAIL\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -509,7 +509,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsProductGroupProductCountsVertical>(exampleJson)
-            : default(CatalogsProductGroupProductCountsVertical);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -544,19 +544,19 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsVerticalProductGroup));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"country\" : \"country\",\n  \"description\" : \"description\",\n  \"created_at\" : 1621350033000,\n  \"filters\" : {\n    \"any_of\" : [ {\n      \"MIN_PRICE\" : {\n        \"inclusion\" : true,\n        \"negated\" : false,\n        \"values\" : 0.08008281904610115\n      }\n    }, {\n      \"MIN_PRICE\" : {\n        \"inclusion\" : true,\n        \"negated\" : false,\n        \"values\" : 0.08008281904610115\n      }\n    } ]\n  },\n  \"type\" : \"TOP_SELLERS\",\n  \"locale\" : \"locale\",\n  \"feed_id\" : \"2680059592705\",\n  \"catalog_id\" : \"catalog_id\",\n  \"updated_at\" : 1622742155000,\n  \"catalog_type\" : \"RETAIL\",\n  \"name\" : \"Most Popular\",\n  \"id\" : \"443727193917\",\n  \"is_featured\" : true,\n  \"status\" : \"ACTIVE\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -568,7 +568,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsVerticalProductGroup>(exampleJson)
-            : default(CatalogsVerticalProductGroup);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -599,15 +599,15 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(FeedProcessingResultsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"updated_at\" : \"2022-03-14T15:16:34Z\",\n    \"product_counts\" : {\n      \"ingested\" : 4,\n      \"original\" : 1\n    },\n    \"ingestion_details\" : {\n      \"warnings\" : {\n        \"ADDITIONAL_IMAGE_FILE_NOT_FOUND\" : 1,\n        \"HOTEL_PRICE_HEADER_IS_PRESENT\" : 7,\n        \"ADDITIONAL_IMAGE_INVALID_FILE\" : 6,\n        \"ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR\" : 7,\n        \"ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE\" : 1,\n        \"ADDITIONAL_IMAGE_MALFORMED_URL\" : 1\n      },\n      \"errors\" : {\n        \"LINE_LEVEL_INTERNAL_ERROR\" : 0,\n        \"ACCOUNT_FLAGGED\" : 1,\n        \"IMAGE_MALFORMED_URL\" : 2,\n        \"IMAGE_LEVEL_INTERNAL_ERROR\" : 5,\n        \"IMAGE_FILE_NOT_FOUND\" : 7,\n        \"IMAGE_FILE_NOT_ACCESSIBLE\" : 5,\n        \"IMAGE_INVALID_FILE\" : 9,\n        \"LARGE_PRODUCT_COUNT_DECREASE\" : 6\n      },\n      \"info\" : {\n        \"PREORDER\" : 4,\n        \"OUT_OF_STOCK\" : 2,\n        \"IN_STOCK\" : 3\n      }\n    },\n    \"created_at\" : \"2022-03-14T15:15:22Z\",\n    \"id\" : \"id\",\n    \"validation_details\" : {\n      \"warnings\" : {\n        \"AD_LINK_FORMAT_WARNING\" : 4,\n        \"UTM_SOURCE_AUTO_CORRECTED\" : 2,\n        \"ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG\" : 0,\n        \"IMAGE_LINK_WARNING\" : 1,\n        \"INCONSISTENT_CURRENCY_VALUES\" : 0,\n        \"UPDATED_TIME_INVALID\" : 8,\n        \"OPTIONAL_PRODUCT_CATEGORY_MISSING\" : 3,\n        \"MULTIPACK_INVALID\" : 8,\n        \"ANDROID_DEEP_LINK_INVALID\" : 3,\n        \"DESCRIPTION_LENGTH_TOO_LONG\" : 7,\n        \"SHIPPING_HEIGHT_INVALID\" : 4,\n        \"TITLE_LENGTH_TOO_LONG\" : 4,\n        \"SALE_DATE_INVALID\" : 1,\n        \"DUPLICATE_HEADERS\" : 4,\n        \"SALES_PRICE_TOO_LOW\" : 0,\n        \"SHIPPING_WEIGHT_INVALID\" : 4,\n        \"GTIN_INVALID\" : 4,\n        \"PRODUCT_TYPE_LENGTH_TOO_LONG\" : 5,\n        \"COUNTRY_DOES_NOT_MAP_TO_CURRENCY\" : 3,\n        \"SIZE_SYSTEM_INVALID\" : 0,\n        \"SHIPPING_INVALID\" : 8,\n        \"CUSTOM_LABEL_LENGTH_TOO_LONG\" : 0,\n        \"INDEXED_PRODUCT_COUNT_LARGE_DELTA\" : 7,\n        \"SHIPPING_WIDTH_INVALID\" : 7,\n        \"ADWORDS_FORMAT_WARNING\" : 6,\n        \"AD_LINK_SAME_AS_LINK\" : 1,\n        \"OPTIONAL_CONDITION_INVALID\" : 7,\n        \"LINK_FORMAT_WARNING\" : 7,\n        \"SIZE_TYPE_INVALID\" : 9,\n        \"TAX_INVALID\" : 6,\n        \"SALES_PRICE_TOO_HIGH\" : 2,\n        \"EXPIRATION_DATE_INVALID\" : 8,\n        \"GENDER_INVALID\" : 9,\n        \"FETCH_SAME_SIGNATURE\" : 3,\n        \"IOS_DEEP_LINK_INVALID\" : 0,\n        \"ADDITIONAL_IMAGE_LINK_WARNING\" : 2,\n        \"OPTIONAL_CONDITION_MISSING\" : 5,\n        \"MIN_AD_PRICE_INVALID\" : 8,\n        \"AGE_GROUP_INVALID\" : 0,\n        \"TOO_MANY_ADDITIONAL_IMAGE_LINKS\" : 5,\n        \"MPN_INVALID\" : 9,\n        \"AVAILABILITY_DATE_INVALID\" : 9,\n        \"IS_BUNDLE_INVALID\" : 9,\n        \"ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE\" : 3,\n        \"SALES_PRICE_INVALID\" : 5,\n        \"PRODUCT_CATEGORY_DEPTH_WARNING\" : 4,\n        \"WEIGHT_UNIT_INVALID\" : 3,\n        \"OPTIONAL_PRODUCT_CATEGORY_INVALID\" : 9,\n        \"ADWORDS_SAME_AS_LINK\" : 8\n      },\n      \"errors\" : {\n        \"ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE\" : 5,\n        \"FETCH_ERROR\" : 5,\n        \"DESCRIPTION_MISSING\" : 1,\n        \"PINJOIN_CONTENT_UNSAFE\" : 3,\n        \"PARSE_LINE_ERROR\" : 3,\n        \"NO_VERIFIED_DOMAIN\" : 0,\n        \"LINK_LENGTH_TOO_LONG\" : 8,\n        \"REQUIRED_COLUMNS_MISSING\" : 8,\n        \"AVAILABILITY_INVALID\" : 6,\n        \"ITEMID_MISSING\" : 3,\n        \"LINK_FORMAT_INVALID\" : 6,\n        \"DELIMITER_ERROR\" : 6,\n        \"FEED_TOO_SMALL\" : 3,\n        \"LIST_PRICE_INVALID\" : 0,\n        \"IMAGE_LINK_INVALID\" : 6,\n        \"MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED\" : 7,\n        \"IMAGE_LINK_LENGTH_TOO_LONG\" : 6,\n        \"ADULT_INVALID\" : 7,\n        \"PRICE_MISSING\" : 3,\n        \"DUPLICATE_PRODUCTS\" : 9,\n        \"INTERNAL_SERVICE_ERROR\" : 7,\n        \"PRODUCT_PRICE_INVALID\" : 5,\n        \"ADWORDS_FORMAT_INVALID\" : 3,\n        \"INVALID_DOMAIN\" : 0,\n        \"BLOCKLISTED_IMAGE_SIGNATURE\" : 4,\n        \"FEED_LENGTH_TOO_LONG\" : 4,\n        \"ENCODING_ERROR\" : 9,\n        \"IMAGE_LINK_MISSING\" : 6,\n        \"PRODUCT_LINK_MISSING\" : 2,\n        \"TITLE_MISSING\" : 6,\n        \"MALFORMED_XML\" : 7,\n        \"FETCH_INACTIVE_FEED_ERROR\" : 9,\n        \"PRICE_CANNOT_BE_DETERMINED\" : 6\n      }\n    },\n    \"status\" : \"COMPLETED\"\n  }, {\n    \"updated_at\" : \"2022-03-14T15:16:34Z\",\n    \"product_counts\" : {\n      \"ingested\" : 4,\n      \"original\" : 1\n    },\n    \"ingestion_details\" : {\n      \"warnings\" : {\n        \"ADDITIONAL_IMAGE_FILE_NOT_FOUND\" : 1,\n        \"HOTEL_PRICE_HEADER_IS_PRESENT\" : 7,\n        \"ADDITIONAL_IMAGE_INVALID_FILE\" : 6,\n        \"ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR\" : 7,\n        \"ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE\" : 1,\n        \"ADDITIONAL_IMAGE_MALFORMED_URL\" : 1\n      },\n      \"errors\" : {\n        \"LINE_LEVEL_INTERNAL_ERROR\" : 0,\n        \"ACCOUNT_FLAGGED\" : 1,\n        \"IMAGE_MALFORMED_URL\" : 2,\n        \"IMAGE_LEVEL_INTERNAL_ERROR\" : 5,\n        \"IMAGE_FILE_NOT_FOUND\" : 7,\n        \"IMAGE_FILE_NOT_ACCESSIBLE\" : 5,\n        \"IMAGE_INVALID_FILE\" : 9,\n        \"LARGE_PRODUCT_COUNT_DECREASE\" : 6\n      },\n      \"info\" : {\n        \"PREORDER\" : 4,\n        \"OUT_OF_STOCK\" : 2,\n        \"IN_STOCK\" : 3\n      }\n    },\n    \"created_at\" : \"2022-03-14T15:15:22Z\",\n    \"id\" : \"id\",\n    \"validation_details\" : {\n      \"warnings\" : {\n        \"AD_LINK_FORMAT_WARNING\" : 4,\n        \"UTM_SOURCE_AUTO_CORRECTED\" : 2,\n        \"ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG\" : 0,\n        \"IMAGE_LINK_WARNING\" : 1,\n        \"INCONSISTENT_CURRENCY_VALUES\" : 0,\n        \"UPDATED_TIME_INVALID\" : 8,\n        \"OPTIONAL_PRODUCT_CATEGORY_MISSING\" : 3,\n        \"MULTIPACK_INVALID\" : 8,\n        \"ANDROID_DEEP_LINK_INVALID\" : 3,\n        \"DESCRIPTION_LENGTH_TOO_LONG\" : 7,\n        \"SHIPPING_HEIGHT_INVALID\" : 4,\n        \"TITLE_LENGTH_TOO_LONG\" : 4,\n        \"SALE_DATE_INVALID\" : 1,\n        \"DUPLICATE_HEADERS\" : 4,\n        \"SALES_PRICE_TOO_LOW\" : 0,\n        \"SHIPPING_WEIGHT_INVALID\" : 4,\n        \"GTIN_INVALID\" : 4,\n        \"PRODUCT_TYPE_LENGTH_TOO_LONG\" : 5,\n        \"COUNTRY_DOES_NOT_MAP_TO_CURRENCY\" : 3,\n        \"SIZE_SYSTEM_INVALID\" : 0,\n        \"SHIPPING_INVALID\" : 8,\n        \"CUSTOM_LABEL_LENGTH_TOO_LONG\" : 0,\n        \"INDEXED_PRODUCT_COUNT_LARGE_DELTA\" : 7,\n        \"SHIPPING_WIDTH_INVALID\" : 7,\n        \"ADWORDS_FORMAT_WARNING\" : 6,\n        \"AD_LINK_SAME_AS_LINK\" : 1,\n        \"OPTIONAL_CONDITION_INVALID\" : 7,\n        \"LINK_FORMAT_WARNING\" : 7,\n        \"SIZE_TYPE_INVALID\" : 9,\n        \"TAX_INVALID\" : 6,\n        \"SALES_PRICE_TOO_HIGH\" : 2,\n        \"EXPIRATION_DATE_INVALID\" : 8,\n        \"GENDER_INVALID\" : 9,\n        \"FETCH_SAME_SIGNATURE\" : 3,\n        \"IOS_DEEP_LINK_INVALID\" : 0,\n        \"ADDITIONAL_IMAGE_LINK_WARNING\" : 2,\n        \"OPTIONAL_CONDITION_MISSING\" : 5,\n        \"MIN_AD_PRICE_INVALID\" : 8,\n        \"AGE_GROUP_INVALID\" : 0,\n        \"TOO_MANY_ADDITIONAL_IMAGE_LINKS\" : 5,\n        \"MPN_INVALID\" : 9,\n        \"AVAILABILITY_DATE_INVALID\" : 9,\n        \"IS_BUNDLE_INVALID\" : 9,\n        \"ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE\" : 3,\n        \"SALES_PRICE_INVALID\" : 5,\n        \"PRODUCT_CATEGORY_DEPTH_WARNING\" : 4,\n        \"WEIGHT_UNIT_INVALID\" : 3,\n        \"OPTIONAL_PRODUCT_CATEGORY_INVALID\" : 9,\n        \"ADWORDS_SAME_AS_LINK\" : 8\n      },\n      \"errors\" : {\n        \"ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE\" : 5,\n        \"FETCH_ERROR\" : 5,\n        \"DESCRIPTION_MISSING\" : 1,\n        \"PINJOIN_CONTENT_UNSAFE\" : 3,\n        \"PARSE_LINE_ERROR\" : 3,\n        \"NO_VERIFIED_DOMAIN\" : 0,\n        \"LINK_LENGTH_TOO_LONG\" : 8,\n        \"REQUIRED_COLUMNS_MISSING\" : 8,\n        \"AVAILABILITY_INVALID\" : 6,\n        \"ITEMID_MISSING\" : 3,\n        \"LINK_FORMAT_INVALID\" : 6,\n        \"DELIMITER_ERROR\" : 6,\n        \"FEED_TOO_SMALL\" : 3,\n        \"LIST_PRICE_INVALID\" : 0,\n        \"IMAGE_LINK_INVALID\" : 6,\n        \"MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED\" : 7,\n        \"IMAGE_LINK_LENGTH_TOO_LONG\" : 6,\n        \"ADULT_INVALID\" : 7,\n        \"PRICE_MISSING\" : 3,\n        \"DUPLICATE_PRODUCTS\" : 9,\n        \"INTERNAL_SERVICE_ERROR\" : 7,\n        \"PRODUCT_PRICE_INVALID\" : 5,\n        \"ADWORDS_FORMAT_INVALID\" : 3,\n        \"INVALID_DOMAIN\" : 0,\n        \"BLOCKLISTED_IMAGE_SIGNATURE\" : 4,\n        \"FEED_LENGTH_TOO_LONG\" : 4,\n        \"ENCODING_ERROR\" : 9,\n        \"IMAGE_LINK_MISSING\" : 6,\n        \"PRODUCT_LINK_MISSING\" : 2,\n        \"TITLE_MISSING\" : 6,\n        \"MALFORMED_XML\" : 7,\n        \"FETCH_INACTIVE_FEED_ERROR\" : 9,\n        \"PRICE_CANNOT_BE_DETERMINED\" : 6\n      }\n    },\n    \"status\" : \"COMPLETED\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -617,7 +617,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<FeedProcessingResultsList200Response>(exampleJson)
-            : default(FeedProcessingResultsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -653,21 +653,21 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(201, default(CatalogsFeed));
+            // return StatusCode(201, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 422 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(422, default(Error));
+            // return StatusCode(422, default);
             //TODO: Uncomment the next line to return response 501 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(501, default(Error));
+            // return StatusCode(501, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"credentials\" : {\n    \"password\" : \"password\",\n    \"username\" : \"username\"\n  },\n  \"format\" : \"TSV\",\n  \"created_at\" : \"2022-03-14T15:15:22Z\",\n  \"default_availability\" : \"IN_STOCK\",\n  \"updated_at\" : \"2022-03-14T15:16:34Z\",\n  \"catalog_type\" : \"RETAIL\",\n  \"name\" : \"name\",\n  \"preferred_processing_schedule\" : {\n    \"timezone\" : \"Africa/Abidjan\",\n    \"time\" : \"02:59\"\n  },\n  \"default_locale\" : \"en-US\",\n  \"location\" : \"location\",\n  \"id\" : \"id\",\n  \"default_currency\" : \"USD\",\n  \"default_country\" : \"US\",\n  \"status\" : \"ACTIVE\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -680,7 +680,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsFeed>(exampleJson)
-            : default(CatalogsFeed);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -712,15 +712,15 @@ namespace Org.OpenAPITools.Controllers
             //TODO: Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(204);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
 
             throw new NotImplementedException();
         }
@@ -749,15 +749,15 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsFeed));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"credentials\" : {\n    \"password\" : \"password\",\n    \"username\" : \"username\"\n  },\n  \"format\" : \"TSV\",\n  \"created_at\" : \"2022-03-14T15:15:22Z\",\n  \"default_availability\" : \"IN_STOCK\",\n  \"updated_at\" : \"2022-03-14T15:16:34Z\",\n  \"catalog_type\" : \"RETAIL\",\n  \"name\" : \"name\",\n  \"preferred_processing_schedule\" : {\n    \"timezone\" : \"Africa/Abidjan\",\n    \"time\" : \"02:59\"\n  },\n  \"default_locale\" : \"en-US\",\n  \"location\" : \"location\",\n  \"id\" : \"id\",\n  \"default_currency\" : \"USD\",\n  \"default_country\" : \"US\",\n  \"status\" : \"ACTIVE\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -767,7 +767,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsFeed>(exampleJson)
-            : default(CatalogsFeed);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -796,15 +796,15 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsFeedIngestion));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"created_at\" : \"2022-03-14T15:16:34Z\",\n  \"id\" : \"01234\",\n  \"feed_id\" : \"56789\",\n  \"status\" : \"COMPLETED\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -814,7 +814,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsFeedIngestion>(exampleJson)
-            : default(CatalogsFeedIngestion);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -843,13 +843,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(FeedsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"credentials\" : {\n      \"password\" : \"password\",\n      \"username\" : \"username\"\n    },\n    \"format\" : \"TSV\",\n    \"created_at\" : \"2022-03-14T15:15:22Z\",\n    \"default_availability\" : \"IN_STOCK\",\n    \"updated_at\" : \"2022-03-14T15:16:34Z\",\n    \"catalog_type\" : \"RETAIL\",\n    \"name\" : \"name\",\n    \"preferred_processing_schedule\" : {\n      \"timezone\" : \"Africa/Abidjan\",\n      \"time\" : \"02:59\"\n    },\n    \"default_locale\" : \"en-US\",\n    \"location\" : \"location\",\n    \"id\" : \"id\",\n    \"default_currency\" : \"USD\",\n    \"default_country\" : \"US\",\n    \"status\" : \"ACTIVE\"\n  }, {\n    \"credentials\" : {\n      \"password\" : \"password\",\n      \"username\" : \"username\"\n    },\n    \"format\" : \"TSV\",\n    \"created_at\" : \"2022-03-14T15:15:22Z\",\n    \"default_availability\" : \"IN_STOCK\",\n    \"updated_at\" : \"2022-03-14T15:16:34Z\",\n    \"catalog_type\" : \"RETAIL\",\n    \"name\" : \"name\",\n    \"preferred_processing_schedule\" : {\n      \"timezone\" : \"Africa/Abidjan\",\n      \"time\" : \"02:59\"\n    },\n    \"default_locale\" : \"en-US\",\n    \"location\" : \"location\",\n    \"id\" : \"id\",\n    \"default_currency\" : \"USD\",\n    \"default_country\" : \"US\",\n    \"status\" : \"ACTIVE\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -858,7 +858,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<FeedsList200Response>(exampleJson)
-            : default(FeedsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -889,15 +889,15 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsFeed));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"credentials\" : {\n    \"password\" : \"password\",\n    \"username\" : \"username\"\n  },\n  \"format\" : \"TSV\",\n  \"created_at\" : \"2022-03-14T15:15:22Z\",\n  \"default_availability\" : \"IN_STOCK\",\n  \"updated_at\" : \"2022-03-14T15:16:34Z\",\n  \"catalog_type\" : \"RETAIL\",\n  \"name\" : \"name\",\n  \"preferred_processing_schedule\" : {\n    \"timezone\" : \"Africa/Abidjan\",\n    \"time\" : \"02:59\"\n  },\n  \"default_locale\" : \"en-US\",\n  \"location\" : \"location\",\n  \"id\" : \"id\",\n  \"default_currency\" : \"USD\",\n  \"default_country\" : \"US\",\n  \"status\" : \"ACTIVE\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -907,7 +907,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsFeed>(exampleJson)
-            : default(CatalogsFeed);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -938,17 +938,17 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsItemsBatch));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 405 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(405, default(Error));
+            // return StatusCode(405, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"catalog_type\" : \"RETAIL\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -959,7 +959,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsItemsBatch>(exampleJson)
-            : default(CatalogsItemsBatch);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -989,15 +989,15 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsItemsBatch));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"catalog_type\" : \"RETAIL\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -1007,7 +1007,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsItemsBatch>(exampleJson)
-            : default(CatalogsItemsBatch);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -1040,15 +1040,15 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsItems));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"catalog_type\" : \"RETAIL\"\n  }, {\n    \"catalog_type\" : \"RETAIL\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -1058,7 +1058,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsItems>(exampleJson)
-            : default(CatalogsItems);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -1091,15 +1091,15 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ItemsIssuesList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 501 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(501, default(Error));
+            // return StatusCode(501, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"item_id\" : \"DS0294-L\",\n    \"warnings\" : {\n      \"AD_LINK_FORMAT_WARNING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"LINK_FORMAT_WARNING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"UTM_SOURCE_AUTO_CORRECTED\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SIZE_TYPE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"TAX_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"IMAGE_LINK_WARNING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SALES_PRICE_TOO_HIGH\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"EXPIRATION_DATE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"GENDER_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"IOS_DEEP_LINK_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ADDITIONAL_IMAGE_LINK_WARNING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"OPTIONAL_CONDITION_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"OPTIONAL_PRODUCT_CATEGORY_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"MIN_AD_PRICE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"MULTIPACK_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ANDROID_DEEP_LINK_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"DESCRIPTION_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SHIPPING_HEIGHT_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"TITLE_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"AGE_GROUP_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SALE_DATE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"TOO_MANY_ADDITIONAL_IMAGE_LINKS\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"MPN_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SALES_PRICE_TOO_LOW\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"AVAILABILITY_DATE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SHIPPING_WEIGHT_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"IS_BUNDLE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"GTIN_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PRODUCT_TYPE_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"COUNTRY_DOES_NOT_MAP_TO_CURRENCY\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SALES_PRICE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SIZE_SYSTEM_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"CUSTOM_LABEL_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PRODUCT_CATEGORY_DEPTH_WARNING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SHIPPING_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SHIPPING_WIDTH_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ADWORDS_FORMAT_WARNING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"OPTIONAL_PRODUCT_CATEGORY_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"WEIGHT_UNIT_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"AD_LINK_SAME_AS_LINK\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"OPTIONAL_CONDITION_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ADWORDS_SAME_AS_LINK\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      }\n    },\n    \"item_number\" : 0,\n    \"errors\" : {\n      \"IMAGE_LINK_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ADULT_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PRICE_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"DESCRIPTION_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"DUPLICATE_PRODUCTS\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PINJOIN_CONTENT_UNSAFE\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ADWORDS_FORMAT_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PRODUCT_PRICE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"BLOCKLISTED_IMAGE_SIGNATURE\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"INVALID_DOMAIN\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"LINK_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PARSE_LINE_ERROR\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"AVAILABILITY_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"IMAGE_LINK_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PRODUCT_LINK_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ITEMID_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"TITLE_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"LINK_FORMAT_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"LIST_PRICE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"IMAGE_LINK_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PRICE_CANNOT_BE_DETERMINED\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      }\n    }\n  }, {\n    \"item_id\" : \"DS0294-L\",\n    \"warnings\" : {\n      \"AD_LINK_FORMAT_WARNING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"LINK_FORMAT_WARNING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"UTM_SOURCE_AUTO_CORRECTED\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SIZE_TYPE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"TAX_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"IMAGE_LINK_WARNING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SALES_PRICE_TOO_HIGH\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"EXPIRATION_DATE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"GENDER_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"IOS_DEEP_LINK_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ADDITIONAL_IMAGE_LINK_WARNING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"OPTIONAL_CONDITION_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"OPTIONAL_PRODUCT_CATEGORY_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"MIN_AD_PRICE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"MULTIPACK_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ANDROID_DEEP_LINK_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"DESCRIPTION_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SHIPPING_HEIGHT_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"TITLE_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"AGE_GROUP_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SALE_DATE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"TOO_MANY_ADDITIONAL_IMAGE_LINKS\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"MPN_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SALES_PRICE_TOO_LOW\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"AVAILABILITY_DATE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SHIPPING_WEIGHT_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"IS_BUNDLE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"GTIN_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PRODUCT_TYPE_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"COUNTRY_DOES_NOT_MAP_TO_CURRENCY\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SALES_PRICE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SIZE_SYSTEM_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"CUSTOM_LABEL_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PRODUCT_CATEGORY_DEPTH_WARNING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SHIPPING_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"SHIPPING_WIDTH_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ADWORDS_FORMAT_WARNING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"OPTIONAL_PRODUCT_CATEGORY_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"WEIGHT_UNIT_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"AD_LINK_SAME_AS_LINK\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"OPTIONAL_CONDITION_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ADWORDS_SAME_AS_LINK\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      }\n    },\n    \"item_number\" : 0,\n    \"errors\" : {\n      \"IMAGE_LINK_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ADULT_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PRICE_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"DESCRIPTION_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"DUPLICATE_PRODUCTS\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PINJOIN_CONTENT_UNSAFE\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ADWORDS_FORMAT_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PRODUCT_PRICE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"BLOCKLISTED_IMAGE_SIGNATURE\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"INVALID_DOMAIN\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"LINK_LENGTH_TOO_LONG\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PARSE_LINE_ERROR\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"AVAILABILITY_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"IMAGE_LINK_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PRODUCT_LINK_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"ITEMID_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"TITLE_MISSING\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"LINK_FORMAT_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"LIST_PRICE_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"IMAGE_LINK_INVALID\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"PRICE_CANNOT_BE_DETERMINED\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      },\n      \"MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED\" : {\n        \"attribute_name\" : \"TITLE\",\n        \"provided_value\" : \"provided_value\"\n      }\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -1109,7 +1109,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ItemsIssuesList200Response>(exampleJson)
-            : default(ItemsIssuesList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -1139,15 +1139,15 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsItems));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"catalog_type\" : \"RETAIL\"\n  }, {\n    \"catalog_type\" : \"RETAIL\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -1157,7 +1157,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsItems>(exampleJson)
-            : default(CatalogsItems);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -1188,13 +1188,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsProductGroupPinsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"catalog_type\" : \"RETAIL\"\n  }, {\n    \"catalog_type\" : \"RETAIL\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -1203,7 +1203,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsProductGroupPinsList200Response>(exampleJson)
-            : default(CatalogsProductGroupPinsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -1231,13 +1231,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsCreateReportResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"token\" : \"token\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -1246,7 +1246,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsCreateReportResponse>(exampleJson)
-            : default(CatalogsCreateReportResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -1273,13 +1273,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CatalogsReport));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409, default(Error));
+            // return StatusCode(409, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"size\" : 0.8008281904610115,\n  \"report_status\" : \"FINISHED\",\n  \"url\" : \"url\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -1288,7 +1288,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CatalogsReport>(exampleJson)
-            : default(CatalogsReport);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -1315,11 +1315,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ReportsStats200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"report_type\" : \"FEED_INGESTION_ISSUES\"\n  }, {\n    \"report_type\" : \"FEED_INGESTION_ISSUES\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -1327,7 +1327,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ReportsStats200Response>(exampleJson)
-            : default(ReportsStats200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

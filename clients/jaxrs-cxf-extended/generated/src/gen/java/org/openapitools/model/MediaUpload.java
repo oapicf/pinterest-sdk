@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.MediaUploadAllOfUploadParameters;
 import org.openapitools.model.MediaUploadType;
 import javax.validation.constraints.*;

@@ -373,23 +373,19 @@ namespace Org.OpenAPITools.Model
                             connectedTagId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "partner_access_token_expiry":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                partnerAccessTokenExpiry = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            partnerAccessTokenExpiry = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "partner_refresh_token_expiry":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                partnerRefreshTokenExpiry = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            partnerRefreshTokenExpiry = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "scopes":
                             scopes = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "created_timestamp":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdTimestamp = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            createdTimestamp = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "updated_timestamp":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedTimestamp = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            updatedTimestamp = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "additional_id_1":
                             additionalId1 = new Option<string?>(utf8JsonReader.GetString()!);

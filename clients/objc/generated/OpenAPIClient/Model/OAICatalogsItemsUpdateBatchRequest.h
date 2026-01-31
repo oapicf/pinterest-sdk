@@ -15,13 +15,10 @@
 
 
 #import "OAIBatchOperation.h"
-#import "OAICatalogsItemsRequestLanguage.h"
 #import "OAICountry.h"
 #import "OAIItemUpdateBatchRecord.h"
 @protocol OAIBatchOperation;
 @class OAIBatchOperation;
-@protocol OAICatalogsItemsRequestLanguage;
-@class OAICatalogsItemsRequestLanguage;
 @protocol OAICountry;
 @class OAICountry;
 @protocol OAIItemUpdateBatchRecord;
@@ -36,8 +33,9 @@
 
 
 @property(nonatomic) OAICountry* country;
-
-@property(nonatomic) OAICatalogsItemsRequestLanguage* language;
+/* We recommend using the CatalogsLocale values. 
+ */
+@property(nonatomic) NSString* language;
 
 @property(nonatomic) OAIBatchOperation* operation;
 /* Array with catalogs items 

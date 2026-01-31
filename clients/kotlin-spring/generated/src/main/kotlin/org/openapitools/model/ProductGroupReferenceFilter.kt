@@ -23,7 +23,7 @@ data class ProductGroupReferenceFilter(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("PRODUCT_GROUP", required = true) val PRODUCT_GROUP: CatalogsProductGroupMultipleStringCriteria
-    ) {
+) {
 
 }
 

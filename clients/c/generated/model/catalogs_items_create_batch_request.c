@@ -7,7 +7,7 @@
 
 static catalogs_items_create_batch_request_t *catalogs_items_create_batch_request_create_internal(
     pinterest_rest_api_country__e country,
-    catalogs_items_request_language_t *language,
+    pinterest_rest_api_catalogs_items_create_batch_request_LANGUAGE_e language,
     pinterest_rest_api_batch_operation__e operation,
     list_t *items
     ) {
@@ -26,7 +26,7 @@ static catalogs_items_create_batch_request_t *catalogs_items_create_batch_reques
 
 __attribute__((deprecated)) catalogs_items_create_batch_request_t *catalogs_items_create_batch_request_create(
     pinterest_rest_api_country__e country,
-    catalogs_items_request_language_t *language,
+    pinterest_rest_api_catalogs_items_create_batch_request_LANGUAGE_e language,
     pinterest_rest_api_batch_operation__e operation,
     list_t *items
     ) {
@@ -47,10 +47,6 @@ void catalogs_items_create_batch_request_free(catalogs_items_create_batch_reques
         return ;
     }
     listEntry_t *listEntry;
-    if (catalogs_items_create_batch_request->language) {
-        catalogs_items_request_language_free(catalogs_items_create_batch_request->language);
-        catalogs_items_create_batch_request->language = NULL;
-    }
     if (catalogs_items_create_batch_request->items) {
         list_ForEach(listEntry, catalogs_items_create_batch_request->items) {
             item_create_batch_record_free(listEntry->data);
@@ -79,16 +75,12 @@ cJSON *catalogs_items_create_batch_request_convertToJSON(catalogs_items_create_b
 
 
     // catalogs_items_create_batch_request->language
-    if (!catalogs_items_create_batch_request->language) {
+    if (pinterest_rest_api_catalogs_items_create_batch_request_LANGUAGE_NULL == catalogs_items_create_batch_request->language) {
         goto fail;
     }
-    cJSON *language_local_JSON = catalogs_items_request_language_convertToJSON(catalogs_items_create_batch_request->language);
-    if(language_local_JSON == NULL) {
-    goto fail; //model
-    }
-    cJSON_AddItemToObject(item, "language", language_local_JSON);
-    if(item->child == NULL) {
-    goto fail;
+    if(cJSON_AddStringToObject(item, "language", catalogs_items_create_batch_request_language_ToString(catalogs_items_create_batch_request->language)) == NULL)
+    {
+    goto fail; //Enum
     }
 
 
@@ -141,9 +133,6 @@ catalogs_items_create_batch_request_t *catalogs_items_create_batch_request_parse
     // define the local variable for catalogs_items_create_batch_request->country
     pinterest_rest_api_country__e country_local_nonprim = 0;
 
-    // define the local variable for catalogs_items_create_batch_request->language
-    catalogs_items_request_language_t *language_local_nonprim = NULL;
-
     // define the local variable for catalogs_items_create_batch_request->operation
     pinterest_rest_api_batch_operation__e operation_local_nonprim = 0;
 
@@ -171,8 +160,13 @@ catalogs_items_create_batch_request_t *catalogs_items_create_batch_request_parse
         goto end;
     }
 
+    pinterest_rest_api_catalogs_items_create_batch_request_LANGUAGE_e languageVariable;
     
-    language_local_nonprim = catalogs_items_request_language_parseFromJSON(language); //nonprimitive
+    if(!cJSON_IsString(language))
+    {
+    goto end; //Enum
+    }
+    languageVariable = catalogs_items_create_batch_request_language_FromString(language->valuestring);
 
     // catalogs_items_create_batch_request->operation
     cJSON *operation = cJSON_GetObjectItemCaseSensitive(catalogs_items_create_batch_requestJSON, "operation");
@@ -216,7 +210,7 @@ catalogs_items_create_batch_request_t *catalogs_items_create_batch_request_parse
 
     catalogs_items_create_batch_request_local_var = catalogs_items_create_batch_request_create_internal (
         country_local_nonprim,
-        language_local_nonprim,
+        languageVariable,
         operation_local_nonprim,
         itemsList
         );
@@ -225,10 +219,6 @@ catalogs_items_create_batch_request_t *catalogs_items_create_batch_request_parse
 end:
     if (country_local_nonprim) {
         country_local_nonprim = 0;
-    }
-    if (language_local_nonprim) {
-        catalogs_items_request_language_free(language_local_nonprim);
-        language_local_nonprim = NULL;
     }
     if (operation_local_nonprim) {
         operation_local_nonprim = 0;

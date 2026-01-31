@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * AdAccountCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountCreateRequest {
 
   private @Nullable Country country;
@@ -30,7 +30,7 @@ public class AdAccountCreateRequest {
 
   private @Nullable String ownerUserId;
 
-  public AdAccountCreateRequest country(Country country) {
+  public AdAccountCreateRequest country(@Nullable Country country) {
     this.country = country;
     return this;
   }
@@ -42,15 +42,15 @@ public class AdAccountCreateRequest {
   @Valid 
   @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("country")
-  public Country getCountry() {
+  public @Nullable Country getCountry() {
     return country;
   }
 
-  public void setCountry(Country country) {
+  public void setCountry(@Nullable Country country) {
     this.country = country;
   }
 
-  public AdAccountCreateRequest name(String name) {
+  public AdAccountCreateRequest name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -62,15 +62,15 @@ public class AdAccountCreateRequest {
   @Size(max = 256) 
   @Schema(name = "name", example = "ACME Tools", description = "Ad Account name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public AdAccountCreateRequest ownerUserId(String ownerUserId) {
+  public AdAccountCreateRequest ownerUserId(@Nullable String ownerUserId) {
     this.ownerUserId = ownerUserId;
     return this;
   }
@@ -82,11 +82,11 @@ public class AdAccountCreateRequest {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "owner_user_id", example = "383791336903426391", description = "Advertiser's owning user ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("owner_user_id")
-  public String getOwnerUserId() {
+  public @Nullable String getOwnerUserId() {
     return ownerUserId;
   }
 
-  public void setOwnerUserId(String ownerUserId) {
+  public void setOwnerUserId(@Nullable String ownerUserId) {
     this.ownerUserId = ownerUserId;
   }
 

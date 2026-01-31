@@ -200,7 +200,7 @@ try {
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ownershipType** | **kotlin.String**| Filter audiences by ownership type. | [optional] [default to OWNED] [enum: OWNED, RECEIVED] |
+| **ownershipType** | **kotlin.String**| Filter audiences by ownership type. | [optional] [default to OwnershipType.OWNED] [enum: OWNED, RECEIVED] |
 
 ### Return type
 

@@ -698,136 +698,103 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "FETCH_ERROR":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                fETCHERROR = new Option<int?>(utf8JsonReader.GetInt32());
+                            fETCHERROR = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "FETCH_INACTIVE_FEED_ERROR":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                fETCHINACTIVEFEEDERROR = new Option<int?>(utf8JsonReader.GetInt32());
+                            fETCHINACTIVEFEEDERROR = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ENCODING_ERROR":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                eNCODINGERROR = new Option<int?>(utf8JsonReader.GetInt32());
+                            eNCODINGERROR = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "DELIMITER_ERROR":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dELIMITERERROR = new Option<int?>(utf8JsonReader.GetInt32());
+                            dELIMITERERROR = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "REQUIRED_COLUMNS_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                rEQUIREDCOLUMNSMISSING = new Option<int?>(utf8JsonReader.GetInt32());
+                            rEQUIREDCOLUMNSMISSING = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "DUPLICATE_PRODUCTS":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dUPLICATEPRODUCTS = new Option<int?>(utf8JsonReader.GetInt32());
+                            dUPLICATEPRODUCTS = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "IMAGE_LINK_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iMAGELINKINVALID = new Option<int?>(utf8JsonReader.GetInt32());
+                            iMAGELINKINVALID = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ITEMID_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iTEMIDMISSING = new Option<int?>(utf8JsonReader.GetInt32());
+                            iTEMIDMISSING = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "TITLE_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tITLEMISSING = new Option<int?>(utf8JsonReader.GetInt32());
+                            tITLEMISSING = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "DESCRIPTION_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dESCRIPTIONMISSING = new Option<int?>(utf8JsonReader.GetInt32());
+                            dESCRIPTIONMISSING = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "PRODUCT_LINK_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pRODUCTLINKMISSING = new Option<int?>(utf8JsonReader.GetInt32());
+                            pRODUCTLINKMISSING = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "IMAGE_LINK_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iMAGELINKMISSING = new Option<int?>(utf8JsonReader.GetInt32());
+                            iMAGELINKMISSING = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "AVAILABILITY_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aVAILABILITYINVALID = new Option<int?>(utf8JsonReader.GetInt32());
+                            aVAILABILITYINVALID = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "PRODUCT_PRICE_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pRODUCTPRICEINVALID = new Option<int?>(utf8JsonReader.GetInt32());
+                            pRODUCTPRICEINVALID = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "LINK_FORMAT_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lINKFORMATINVALID = new Option<int?>(utf8JsonReader.GetInt32());
+                            lINKFORMATINVALID = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "PARSE_LINE_ERROR":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pARSELINEERROR = new Option<int?>(utf8JsonReader.GetInt32());
+                            pARSELINEERROR = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ADWORDS_FORMAT_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aDWORDSFORMATINVALID = new Option<int?>(utf8JsonReader.GetInt32());
+                            aDWORDSFORMATINVALID = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "INTERNAL_SERVICE_ERROR":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iNTERNALSERVICEERROR = new Option<int?>(utf8JsonReader.GetInt32());
+                            iNTERNALSERVICEERROR = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "NO_VERIFIED_DOMAIN":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                nOVERIFIEDDOMAIN = new Option<int?>(utf8JsonReader.GetInt32());
+                            nOVERIFIEDDOMAIN = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ADULT_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aDULTINVALID = new Option<int?>(utf8JsonReader.GetInt32());
+                            aDULTINVALID = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "IMAGE_LINK_LENGTH_TOO_LONG":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iMAGELINKLENGTHTOOLONG = new Option<int?>(utf8JsonReader.GetInt32());
+                            iMAGELINKLENGTHTOOLONG = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "INVALID_DOMAIN":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iNVALIDDOMAIN = new Option<int?>(utf8JsonReader.GetInt32());
+                            iNVALIDDOMAIN = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "FEED_LENGTH_TOO_LONG":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                fEEDLENGTHTOOLONG = new Option<int?>(utf8JsonReader.GetInt32());
+                            fEEDLENGTHTOOLONG = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "LINK_LENGTH_TOO_LONG":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lINKLENGTHTOOLONG = new Option<int?>(utf8JsonReader.GetInt32());
+                            lINKLENGTHTOOLONG = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "MALFORMED_XML":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                mALFORMEDXML = new Option<int?>(utf8JsonReader.GetInt32());
+                            mALFORMEDXML = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "PRICE_MISSING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pRICEMISSING = new Option<int?>(utf8JsonReader.GetInt32());
+                            pRICEMISSING = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "FEED_TOO_SMALL":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                fEEDTOOSMALL = new Option<int?>(utf8JsonReader.GetInt32());
+                            fEEDTOOSMALL = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                mAXITEMSPERITEMGROUPEXCEEDED = new Option<int?>(utf8JsonReader.GetInt32());
+                            mAXITEMSPERITEMGROUPEXCEEDED = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iTEMMAINIMAGEDOWNLOADFAILURE = new Option<int?>(utf8JsonReader.GetInt32());
+                            iTEMMAINIMAGEDOWNLOADFAILURE = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "PINJOIN_CONTENT_UNSAFE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pINJOINCONTENTUNSAFE = new Option<int?>(utf8JsonReader.GetInt32());
+                            pINJOINCONTENTUNSAFE = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "BLOCKLISTED_IMAGE_SIGNATURE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                bLOCKLISTEDIMAGESIGNATURE = new Option<int?>(utf8JsonReader.GetInt32());
+                            bLOCKLISTEDIMAGESIGNATURE = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "LIST_PRICE_INVALID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lISTPRICEINVALID = new Option<int?>(utf8JsonReader.GetInt32());
+                            lISTPRICEINVALID = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "PRICE_CANNOT_BE_DETERMINED":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pRICECANNOTBEDETERMINED = new Option<int?>(utf8JsonReader.GetInt32());
+                            pRICECANNOTBEDETERMINED = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

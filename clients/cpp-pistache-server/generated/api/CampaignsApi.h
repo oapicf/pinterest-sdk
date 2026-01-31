@@ -111,7 +111,7 @@ private:
     /// <param name="viewWindowDays">Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)</param>
     /// <param name="conversionReportTime">The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to &quot;TIME_OF_AD_ACTION&quot;)</param>
     /// <param name="attributionTypes">List of types of attribution for the conversion report (optional, default to std::make_shared&lt;ConversionReportAttributionType&gt;())</param>
-    virtual void campaign_targeting_analytics_get(const std::string &adAccountId, const std::optional<std::vector<std::string>> &campaignIds, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<org::openapitools::server::model::AdsAnalyticsCampaignTargetingType>> &targetingTypes, const std::optional<std::vector<std::string>> &columns, const std::optional<org::openapitools::server::model::Granularity> &granularity, const std::optional<int32_t> &clickWindowDays, const std::optional<int32_t> &engagementWindowDays, const std::optional<int32_t> &viewWindowDays, const std::optional<std::string> &conversionReportTime, const std::optional<org::openapitools::server::model::ConversionReportAttributionType> &attributionTypes, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void campaign_targeting_analytics_get( const std::string &adAccountId, const std::optional<std::vector<std::string>> &campaignIds, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<org::openapitools::server::model::AdsAnalyticsCampaignTargetingType>> &targetingTypes, const std::optional<std::vector<std::string>> &columns, const std::optional<org::openapitools::server::model::Granularity> &granularity, const std::optional<int32_t> &clickWindowDays, const std::optional<int32_t> &engagementWindowDays, const std::optional<int32_t> &viewWindowDays, const std::optional<std::string> &conversionReportTime, const std::optional<org::openapitools::server::model::ConversionReportAttributionType> &attributionTypes, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get campaign analytics
     /// </summary>
@@ -128,7 +128,7 @@ private:
     /// <param name="engagementWindowDays">Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)</param>
     /// <param name="viewWindowDays">Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)</param>
     /// <param name="conversionReportTime">The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to &quot;TIME_OF_AD_ACTION&quot;)</param>
-    virtual void campaigns_analytics(const std::string &adAccountId, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<std::string>> &campaignIds, const std::optional<std::vector<std::string>> &columns, const std::optional<org::openapitools::server::model::Granularity> &granularity, const std::optional<int32_t> &clickWindowDays, const std::optional<int32_t> &engagementWindowDays, const std::optional<int32_t> &viewWindowDays, const std::optional<std::string> &conversionReportTime, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void campaigns_analytics( const std::string &adAccountId, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<std::string>> &campaignIds, const std::optional<std::vector<std::string>> &columns, const std::optional<org::openapitools::server::model::Granularity> &granularity, const std::optional<int32_t> &clickWindowDays, const std::optional<int32_t> &engagementWindowDays, const std::optional<int32_t> &viewWindowDays, const std::optional<std::string> &conversionReportTime, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create campaigns
     /// </summary>
@@ -137,7 +137,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="campaignCreateRequest">Array of campaigns.</param>
-    virtual void campaigns_create(const std::string &adAccountId, const std::vector<org::openapitools::server::model::CampaignCreateRequest> &campaignCreateRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void campaigns_create( const std::string &adAccountId, const std::vector<org::openapitools::server::model::CampaignCreateRequest> &campaignCreateRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get campaign
     /// </summary>
@@ -146,7 +146,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="campaignId">Campaign ID, must be associated with the ad account ID provided in the path.</param>
-    virtual void campaigns_get(const std::string &adAccountId, const std::string &campaignId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void campaigns_get( const std::string &adAccountId, const std::string &campaignId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List campaigns
     /// </summary>
@@ -159,7 +159,7 @@ private:
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="order">The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to &quot;&quot;)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void campaigns_list(const std::string &adAccountId, const std::optional<std::vector<std::string>> &campaignIds, const std::optional<std::vector<std::string>> &entityStatuses, const std::optional<int32_t> &pageSize, const std::optional<std::string> &order, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void campaigns_list( const std::string &adAccountId, const std::optional<std::vector<std::string>> &campaignIds, const std::optional<std::vector<std::string>> &entityStatuses, const std::optional<int32_t> &pageSize, const std::optional<std::string> &order, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update campaigns
     /// </summary>
@@ -168,7 +168,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="campaignUpdateRequest">Array of campaigns.</param>
-    virtual void campaigns_update(const std::string &adAccountId, const std::vector<org::openapitools::server::model::CampaignUpdateRequest> &campaignUpdateRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void campaigns_update( const std::string &adAccountId, const std::vector<org::openapitools::server::model::CampaignUpdateRequest> &campaignUpdateRequest, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

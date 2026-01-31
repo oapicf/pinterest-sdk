@@ -37,7 +37,7 @@ import javax.validation.Valid;
   IntegrationLogClientRequest.JSON_PROPERTY_RESPONSE_HEADERS,
   IntegrationLogClientRequest.JSON_PROPERTY_RESPONSE_STATUS_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogClientRequest   {
   /**
    * Gets or Sets method
@@ -67,8 +67,12 @@ public class IntegrationLogClientRequest   {
       this.value = value;
     }
 
-    @Override
     @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
     public String toString() {
       return String.valueOf(value);
     }

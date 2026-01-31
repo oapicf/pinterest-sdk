@@ -54,7 +54,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdGroupAudienceSizingRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupAudienceSizingRequest {
   public static final String SERIALIZED_NAME_AUTO_TARGETING_ENABLED = "auto_targeting_enabled";
   @SerializedName(SERIALIZED_NAME_AUTO_TARGETING_ENABLED)
@@ -356,16 +356,10 @@ public class AdGroupAudienceSizingRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("auto_targeting_enabled");
-    openapiFields.add("placement_group");
-    openapiFields.add("creative_types");
-    openapiFields.add("targeting_spec");
-    openapiFields.add("product_group_ids");
-    openapiFields.add("keywords");
+    openapiFields = new HashSet<String>(Arrays.asList("auto_targeting_enabled", "placement_group", "creative_types", "targeting_spec", "product_group_ids", "keywords"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -377,7 +371,7 @@ public class AdGroupAudienceSizingRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AdGroupAudienceSizingRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdGroupAudienceSizingRequest is not found in the empty JSON string", AdGroupAudienceSizingRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AdGroupAudienceSizingRequest is not found in the empty JSON string", AdGroupAudienceSizingRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -385,7 +379,7 @@ public class AdGroupAudienceSizingRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AdGroupAudienceSizingRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AdGroupAudienceSizingRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AdGroupAudienceSizingRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -395,7 +389,7 @@ public class AdGroupAudienceSizingRequest {
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("creative_types") != null && !jsonObj.get("creative_types").isJsonNull() && !jsonObj.get("creative_types").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `creative_types` to be an array in the JSON string but got `%s`", jsonObj.get("creative_types").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `creative_types` to be an array in the JSON string but got `%s`", jsonObj.get("creative_types").toString()));
       }
       // validate the optional field `targeting_spec`
       if (jsonObj.get("targeting_spec") != null && !jsonObj.get("targeting_spec").isJsonNull()) {
@@ -403,14 +397,14 @@ public class AdGroupAudienceSizingRequest {
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("product_group_ids") != null && !jsonObj.get("product_group_ids").isJsonNull() && !jsonObj.get("product_group_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `product_group_ids` to be an array in the JSON string but got `%s`", jsonObj.get("product_group_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `product_group_ids` to be an array in the JSON string but got `%s`", jsonObj.get("product_group_ids").toString()));
       }
       if (jsonObj.get("keywords") != null && !jsonObj.get("keywords").isJsonNull()) {
         JsonArray jsonArraykeywords = jsonObj.getAsJsonArray("keywords");
         if (jsonArraykeywords != null) {
           // ensure the json data is an array
           if (!jsonObj.get("keywords").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `keywords` to be an array in the JSON string but got `%s`", jsonObj.get("keywords").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `keywords` to be an array in the JSON string but got `%s`", jsonObj.get("keywords").toString()));
           }
 
           // validate the optional field `keywords` (array)

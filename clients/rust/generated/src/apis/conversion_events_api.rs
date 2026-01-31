@@ -33,14 +33,14 @@ pub enum EventsSlashCreateError {
 /// The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their <code>ad_account_id</code>. The request body should be a JSON object. - This endpoint requires an <code>access_token</code> be generated through Ads Manager. Review the <a href=\"/docs/api-features/conversion-overview/\">Conversions Guide</a> for more details. (Note that the authorization header required is <code>Authorization: Bearer &lt;access_token&gt;</code>). - The token's <code>user_account</code> must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)
 pub async fn events_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, conversion_events: models::ConversionEvents, test: Option<bool>) -> Result<models::ConversionApiResponse, Error<EventsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_conversion_events = conversion_events;
-    let p_test = test;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_conversion_events = conversion_events;
+    let p_query_test = test;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/events", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/events", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_test {
+    if let Some(ref param_value) = p_query_test {
         req_builder = req_builder.query(&[("test", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -52,7 +52,7 @@ pub async fn events_slash_create(configuration: &configuration::Configuration, a
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_conversion_events);
+    req_builder = req_builder.json(&p_body_conversion_events);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

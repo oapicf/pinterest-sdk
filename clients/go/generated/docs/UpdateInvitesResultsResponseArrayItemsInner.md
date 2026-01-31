@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Exception** | Pointer to [**NullableInviteExceptionResponse**](InviteExceptionResponse.md) |  | [optional] 
-**Invite** | Pointer to [**NullableInviteBusinessRoleBinding**](InviteBusinessRoleBinding.md) |  | [optional] 
+**Invite** | Pointer to [**InviteBusinessRoleBinding**](InviteBusinessRoleBinding.md) |  | [optional] 
 
 ## Methods
 
@@ -86,16 +86,6 @@ SetInvite sets Invite field to given value.
 
 HasInvite returns a boolean if a field has been set.
 
-### SetInviteNil
-
-`func (o *UpdateInvitesResultsResponseArrayItemsInner) SetInviteNil(b bool)`
-
- SetInviteNil sets the value for Invite to be an explicit nil
-
-### UnsetInvite
-`func (o *UpdateInvitesResultsResponseArrayItemsInner) UnsetInvite()`
-
-UnsetInvite ensures that no value is present for Invite, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

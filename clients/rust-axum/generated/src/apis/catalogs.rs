@@ -708,6 +708,8 @@ pub enum ReportsSlashStatsResponse {
 }
 
 
+
+
 /// Catalogs
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -717,6 +719,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// CatalogsProductGroupPinsSlashList - GET /v5/catalogs/product_groups/{product_group_id}/products
     async fn catalogs_product_group_pins_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -729,6 +732,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// CatalogsProductGroupsSlashCreate - POST /v5/catalogs/product_groups
     async fn catalogs_product_groups_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -741,6 +745,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// CatalogsProductGroupsSlashCreateMany - POST /v5/catalogs/product_groups/multiple
     async fn catalogs_product_groups_slash_create_many(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -753,6 +758,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// CatalogsProductGroupsSlashDelete - DELETE /v5/catalogs/product_groups/{product_group_id}
     async fn catalogs_product_groups_slash_delete(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -765,6 +771,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// CatalogsProductGroupsSlashDeleteMany - DELETE /v5/catalogs/product_groups/multiple
     async fn catalogs_product_groups_slash_delete_many(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -776,6 +783,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// CatalogsProductGroupsSlashGet - GET /v5/catalogs/product_groups/{product_group_id}
     async fn catalogs_product_groups_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -788,6 +796,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// CatalogsProductGroupsSlashList - GET /v5/catalogs/product_groups
     async fn catalogs_product_groups_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -799,6 +808,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// CatalogsProductGroupsSlashProductCountsGet - GET /v5/catalogs/product_groups/{product_group_id}/product_counts
     async fn catalogs_product_groups_slash_product_counts_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -811,6 +821,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// CatalogsProductGroupsSlashUpdate - PATCH /v5/catalogs/product_groups/{product_group_id}
     async fn catalogs_product_groups_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -824,6 +835,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// CatalogsSlashCreate - POST /v5/catalogs
     async fn catalogs_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -836,6 +848,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// CatalogsSlashList - GET /v5/catalogs
     async fn catalogs_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -847,6 +860,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// FeedProcessingResultsSlashList - GET /v5/catalogs/feeds/{feed_id}/processing_results
     async fn feed_processing_results_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -859,6 +873,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// FeedsSlashCreate - POST /v5/catalogs/feeds
     async fn feeds_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -871,6 +886,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// FeedsSlashDelete - DELETE /v5/catalogs/feeds/{feed_id}
     async fn feeds_slash_delete(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -883,6 +899,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// FeedsSlashGet - GET /v5/catalogs/feeds/{feed_id}
     async fn feeds_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -895,6 +912,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// FeedsSlashIngest - POST /v5/catalogs/feeds/{feed_id}/ingest
     async fn feeds_slash_ingest(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -907,6 +925,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// FeedsSlashList - GET /v5/catalogs/feeds
     async fn feeds_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -918,6 +937,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// FeedsSlashUpdate - PATCH /v5/catalogs/feeds/{feed_id}
     async fn feeds_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -931,6 +951,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// ItemsBatchSlashGet - GET /v5/catalogs/items/batch/{batch_id}
     async fn items_batch_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -943,6 +964,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// ItemsBatchSlashPost - POST /v5/catalogs/items/batch
     async fn items_batch_slash_post(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -955,6 +977,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// ItemsIssuesSlashList - GET /v5/catalogs/processing_results/{processing_result_id}/item_issues
     async fn items_issues_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -967,6 +990,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// ItemsSlashGet - GET /v5/catalogs/items
     async fn items_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -978,6 +1002,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// ItemsSlashPost - POST /v5/catalogs/items
     async fn items_slash_post(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -990,6 +1015,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// ProductsByProductGroupFilterSlashList - POST /v5/catalogs/products/get_by_product_group_filters
     async fn products_by_product_group_filter_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -1002,6 +1028,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// ReportsSlashCreate - POST /v5/catalogs/reports
     async fn reports_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -1014,6 +1041,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// ReportsSlashGet - GET /v5/catalogs/reports
     async fn reports_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -1025,6 +1053,7 @@ pub trait Catalogs<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// ReportsSlashStats - GET /v5/catalogs/reports/stats
     async fn reports_slash_stats(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

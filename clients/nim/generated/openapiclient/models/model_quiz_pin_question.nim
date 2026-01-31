@@ -9,11 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_quiz_pin_option
 
 type QuizPinQuestion* = object
   ## A specific quiz inquiry.
-  questionId*: float
-  questionText*: string
-  options*: seq[QuizPinOption]
+  questionId*: Option[float]
+  questionText*: Option[string]
+  options*: Option[seq[QuizPinOption]]
+
+
+# Custom JSON deserialization for QuizPinQuestion with custom field names
+proc to*(node: JsonNode, T: typedesc[QuizPinQuestion]): QuizPinQuestion =
+  result = QuizPinQuestion()
+  if node.kind == JObject:
+    if node.hasKey("question_id") and node["question_id"].kind != JNull:
+      result.questionId = some(to(node["question_id"], typeof(result.questionId.get())))
+    if node.hasKey("question_text") and node["question_text"].kind != JNull:
+      result.questionText = some(to(node["question_text"], typeof(result.questionText.get())))
+    if node.hasKey("options") and node["options"].kind != JNull:
+      result.options = some(to(node["options"], typeof(result.options.get())))
+
+# Custom JSON serialization for QuizPinQuestion with custom field names
+proc `%`*(obj: QuizPinQuestion): JsonNode =
+  result = newJObject()
+  if obj.questionId.isSome():
+    result["question_id"] = %obj.questionId.get()
+  if obj.questionText.isSome():
+    result["question_text"] = %obj.questionText.get()
+  if obj.options.isSome():
+    result["options"] = %obj.options.get()
+

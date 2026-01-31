@@ -9,9 +9,26 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_users_for_individual_asset_response
 
 type UpdateMemberAssetsResultsResponseArrayItemsInner* = object
   ## 
-  response*: UsersForIndividualAssetResponse
+  response*: Option[UsersForIndividualAssetResponse]
+
+
+# Custom JSON deserialization for UpdateMemberAssetsResultsResponseArrayItemsInner with custom field names
+proc to*(node: JsonNode, T: typedesc[UpdateMemberAssetsResultsResponseArrayItemsInner]): UpdateMemberAssetsResultsResponseArrayItemsInner =
+  result = UpdateMemberAssetsResultsResponseArrayItemsInner()
+  if node.kind == JObject:
+    if node.hasKey("response") and node["response"].kind != JNull:
+      result.response = some(to(node["response"], typeof(result.response.get())))
+
+# Custom JSON serialization for UpdateMemberAssetsResultsResponseArrayItemsInner with custom field names
+proc `%`*(obj: UpdateMemberAssetsResultsResponseArrayItemsInner): JsonNode =
+  result = newJObject()
+  if obj.response.isSome():
+    result["response"] = %obj.response.get()
+

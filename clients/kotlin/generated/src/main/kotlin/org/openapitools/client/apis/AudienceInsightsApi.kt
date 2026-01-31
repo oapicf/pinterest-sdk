@@ -40,7 +40,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
+open class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -53,7 +53,7 @@ class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * Get audience insights
      * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceInsightType Type of audience insights. (default to YOUR_TOTAL_AUDIENCE)
+     * @param audienceInsightType Type of audience insights. (default to AudienceInsightType.YOUR_TOTAL_AUDIENCE)
      * @return AudienceInsightsResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -63,7 +63,7 @@ class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun audienceInsightsGet(adAccountId: kotlin.String, audienceInsightType: AudienceInsightType = YOUR_TOTAL_AUDIENCE) : AudienceInsightsResponse {
+    fun audienceInsightsGet(adAccountId: kotlin.String, audienceInsightType: AudienceInsightType = AudienceInsightType.YOUR_TOTAL_AUDIENCE) : AudienceInsightsResponse {
         val localVarResponse = audienceInsightsGetWithHttpInfo(adAccountId = adAccountId, audienceInsightType = audienceInsightType)
 
         return when (localVarResponse.responseType) {
@@ -86,7 +86,7 @@ class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * Get audience insights
      * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceInsightType Type of audience insights. (default to YOUR_TOTAL_AUDIENCE)
+     * @param audienceInsightType Type of audience insights. (default to AudienceInsightType.YOUR_TOTAL_AUDIENCE)
      * @return ApiResponse<AudienceInsightsResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -105,7 +105,7 @@ class AudienceInsightsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * To obtain the request config of the operation audienceInsightsGet
      *
      * @param adAccountId Unique identifier of an ad account.
-     * @param audienceInsightType Type of audience insights. (default to YOUR_TOTAL_AUDIENCE)
+     * @param audienceInsightType Type of audience insights. (default to AudienceInsightType.YOUR_TOTAL_AUDIENCE)
      * @return RequestConfig
      */
     fun audienceInsightsGetRequestConfig(adAccountId: kotlin.String, audienceInsightType: AudienceInsightType) : RequestConfig<Unit> {

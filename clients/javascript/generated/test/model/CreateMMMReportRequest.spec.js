@@ -54,6 +54,12 @@
       //expect(instance).to.be.a(PinterestSdk.CreateMMMReportRequest);
     });
 
+    it('should have the property countries (base name: "countries")', function() {
+      // uncomment below and update the code to test the property countries
+      //var instance = new PinterestSdk.CreateMMMReportRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property reportName (base name: "report_name")', function() {
       // uncomment below and update the code to test the property reportName
       //var instance = new PinterestSdk.CreateMMMReportRequest();
@@ -92,12 +98,6 @@
 
     it('should have the property columns (base name: "columns")', function() {
       // uncomment below and update the code to test the property columns
-      //var instance = new PinterestSdk.CreateMMMReportRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property countries (base name: "countries")', function() {
-      // uncomment below and update the code to test the property countries
       //var instance = new PinterestSdk.CreateMMMReportRequest();
       //expect(instance).to.be();
     });

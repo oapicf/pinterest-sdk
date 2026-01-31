@@ -12,22 +12,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdPreviewRequest  {
   
-  @ApiModelProperty(example = "https://somewebsite.com/someimage.jpg", required = true, value = "Image URL.")
  /**
-   * Image URL.
-  **/
+  * Image URL.
+  */
+  @ApiModelProperty(example = "https://somewebsite.com/someimage.jpg", required = true, value = "Image URL.")
+
   private String imageUrl;
 
-  @ApiModelProperty(example = "My Preview Image", required = true, value = "Title displayed below ad.")
  /**
-   * Title displayed below ad.
-  **/
+  * Title displayed below ad.
+  */
+  @ApiModelProperty(example = "My Preview Image", required = true, value = "Title displayed below ad.")
+
   private String title;
 
-  @ApiModelProperty(example = "7389479023", required = true, value = "Pin ID.")
  /**
-   * Pin ID.
-  **/
+  * Pin ID.
+  */
+  @ApiModelProperty(example = "7389479023", required = true, value = "Pin ID.")
+
   private String pinId;
  /**
    * Image URL.

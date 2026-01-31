@@ -9,11 +9,40 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type TermsOfService* = object
   ## 
-  id*: string ## The ID of the terms of service
-  html*: string ## The terms of service content
-  hasAccepted*: bool ## Whether the ad account has accepted terms of service.
-  adAccountId*: string ## The ID of the ad account.
+  id*: Option[string] ## The ID of the terms of service
+  html*: Option[string] ## The terms of service content
+  hasAccepted*: Option[bool] ## Whether the ad account has accepted terms of service.
+  adAccountId*: Option[string] ## The ID of the ad account.
+
+
+# Custom JSON deserialization for TermsOfService with custom field names
+proc to*(node: JsonNode, T: typedesc[TermsOfService]): TermsOfService =
+  result = TermsOfService()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("html") and node["html"].kind != JNull:
+      result.html = some(to(node["html"], typeof(result.html.get())))
+    if node.hasKey("has_accepted") and node["has_accepted"].kind != JNull:
+      result.hasAccepted = some(to(node["has_accepted"], typeof(result.hasAccepted.get())))
+    if node.hasKey("ad_account_id") and node["ad_account_id"].kind != JNull:
+      result.adAccountId = some(to(node["ad_account_id"], typeof(result.adAccountId.get())))
+
+# Custom JSON serialization for TermsOfService with custom field names
+proc `%`*(obj: TermsOfService): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.html.isSome():
+    result["html"] = %obj.html.get()
+  if obj.hasAccepted.isSome():
+    result["has_accepted"] = %obj.hasAccepted.get()
+  if obj.adAccountId.isSome():
+    result["ad_account_id"] = %obj.adAccountId.get()
+

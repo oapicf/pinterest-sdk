@@ -22,7 +22,7 @@ import javax.validation.Valid;
 /**
  * FeedsCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2025-05-10T05:39:37.342741110Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class FeedsCreateRequest   {
   @JsonProperty("default_currency")
@@ -75,7 +75,7 @@ public class FeedsCreateRequest   {
   @JsonProperty("status")
   @Valid
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   public FeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;

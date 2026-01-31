@@ -51,6 +51,8 @@ pub enum MediaSlashListResponse {
 }
 
 
+
+
 /// Media
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -60,6 +62,7 @@ pub trait Media<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHa
     /// MediaSlashCreate - POST /v5/media
     async fn media_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -71,6 +74,7 @@ pub trait Media<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHa
     /// MediaSlashGet - GET /v5/media/{media_id}
     async fn media_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -82,6 +86,7 @@ pub trait Media<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHa
     /// MediaSlashList - GET /v5/media
     async fn media_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

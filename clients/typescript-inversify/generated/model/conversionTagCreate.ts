@@ -13,10 +13,6 @@
 
 export interface ConversionTagCreate { 
     /**
-     * Conversion tag name.
-     */
-    name: string;
-    /**
      * Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
      */
     aem_enabled?: boolean | null;
@@ -44,4 +40,8 @@ export interface ConversionTagCreate {
      * Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
      */
     aem_loc_enabled?: boolean | null;
+    /**
+     * Conversion tag name.
+     */
+    name: string;
 }

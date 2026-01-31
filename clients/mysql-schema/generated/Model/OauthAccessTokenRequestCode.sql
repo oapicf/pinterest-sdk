@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `OauthAccessTokenRequestCode`
 --
-SELECT `grant_type`, `code`, `redirect_uri` FROM `OauthAccessTokenRequestCode` WHERE 1;
+SELECT `code`, `redirect_uri`, `grant_type` FROM `OauthAccessTokenRequestCode` WHERE 1;
 
 --
 -- INSERT template for table `OauthAccessTokenRequestCode`
 --
-INSERT INTO `OauthAccessTokenRequestCode`(`grant_type`, `code`, `redirect_uri`) VALUES (?, ?, ?);
+INSERT INTO `OauthAccessTokenRequestCode`(`code`, `redirect_uri`, `grant_type`) VALUES (?, ?, ?);
 
 --
 -- UPDATE template for table `OauthAccessTokenRequestCode`
 --
-UPDATE `OauthAccessTokenRequestCode` SET `grant_type` = ?, `code` = ?, `redirect_uri` = ? WHERE 1;
+UPDATE `OauthAccessTokenRequestCode` SET `code` = ?, `redirect_uri` = ?, `grant_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `OauthAccessTokenRequestCode`

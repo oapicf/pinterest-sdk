@@ -54,6 +54,7 @@ export interface UpdatableItemAttributes {
     brand?: string | null;
     /**
      * This attribute is not supported anymore.
+     * @deprecated
      * @type {boolean}
      * @memberof UpdatableItemAttributes
      */
@@ -138,6 +139,7 @@ export interface UpdatableItemAttributes {
     gtin?: number | null;
     /**
      * <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
+     * @deprecated
      * @type {string}
      * @memberof UpdatableItemAttributes
      */

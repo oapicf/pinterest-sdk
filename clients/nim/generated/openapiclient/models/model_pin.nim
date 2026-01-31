@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_board_owner
 import model_creative_type
@@ -20,20 +22,100 @@ type Pin* = object
   ## Pin
   id*: string
   createdAt*: string
-  link*: string
-  title*: string
-  description*: string
-  dominantColor*: string ## Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
-  altText*: string
+  link*: Option[string]
+  title*: Option[string]
+  description*: Option[string]
+  dominantColor*: Option[string] ## Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
+  altText*: Option[string]
   creativeType*: CreativeType
-  boardId*: string ## The board to which this Pin belongs.
-  boardSectionId*: string ## The board section to which this Pin belongs.
+  boardId*: Option[string] ## The board to which this Pin belongs.
+  boardSectionId*: Option[string] ## The board section to which this Pin belongs.
   boardOwner*: BoardOwner
   isOwner*: bool ## Whether the \"operation user_account\" is the Pin owner.
   media*: PinMedia
-  mediaSource*: PinMediaSource
-  parentPinId*: string ## The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
-  isStandard*: bool ## Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
+  mediaSource*: Option[PinMediaSource]
+  parentPinId*: Option[string] ## The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
+  isStandard*: Option[bool] ## Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.
   hasBeenPromoted*: bool ## Whether the Pin has been promoted or not.
-  note*: string ## Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
-  pinMetrics*: object ## Pin metrics with associated time intervals if any.
+  note*: Option[string] ## Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+  pinMetrics*: Option[JsonNode] ## Pin metrics with associated time intervals if any.
+
+
+# Custom JSON deserialization for Pin with custom field names
+proc to*(node: JsonNode, T: typedesc[Pin]): Pin =
+  result = Pin()
+  if node.kind == JObject:
+    if node.hasKey("id"):
+      result.id = to(node["id"], string)
+    if node.hasKey("created_at"):
+      result.createdAt = to(node["created_at"], string)
+    if node.hasKey("link") and node["link"].kind != JNull:
+      result.link = some(to(node["link"], typeof(result.link.get())))
+    if node.hasKey("title") and node["title"].kind != JNull:
+      result.title = some(to(node["title"], typeof(result.title.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("dominant_color") and node["dominant_color"].kind != JNull:
+      result.dominantColor = some(to(node["dominant_color"], typeof(result.dominantColor.get())))
+    if node.hasKey("alt_text") and node["alt_text"].kind != JNull:
+      result.altText = some(to(node["alt_text"], typeof(result.altText.get())))
+    if node.hasKey("creative_type"):
+      result.creativeType = to(node["creative_type"], CreativeType)
+    if node.hasKey("board_id") and node["board_id"].kind != JNull:
+      result.boardId = some(to(node["board_id"], typeof(result.boardId.get())))
+    if node.hasKey("board_section_id") and node["board_section_id"].kind != JNull:
+      result.boardSectionId = some(to(node["board_section_id"], typeof(result.boardSectionId.get())))
+    if node.hasKey("board_owner"):
+      result.boardOwner = to(node["board_owner"], BoardOwner)
+    if node.hasKey("is_owner"):
+      result.isOwner = to(node["is_owner"], bool)
+    if node.hasKey("media"):
+      result.media = to(node["media"], PinMedia)
+    if node.hasKey("media_source") and node["media_source"].kind != JNull:
+      result.mediaSource = some(to(node["media_source"], typeof(result.mediaSource.get())))
+    if node.hasKey("parent_pin_id") and node["parent_pin_id"].kind != JNull:
+      result.parentPinId = some(to(node["parent_pin_id"], typeof(result.parentPinId.get())))
+    if node.hasKey("is_standard") and node["is_standard"].kind != JNull:
+      result.isStandard = some(to(node["is_standard"], typeof(result.isStandard.get())))
+    if node.hasKey("has_been_promoted"):
+      result.hasBeenPromoted = to(node["has_been_promoted"], bool)
+    if node.hasKey("note") and node["note"].kind != JNull:
+      result.note = some(to(node["note"], typeof(result.note.get())))
+    if node.hasKey("pin_metrics") and node["pin_metrics"].kind != JNull:
+      result.pinMetrics = some(to(node["pin_metrics"], typeof(result.pinMetrics.get())))
+
+# Custom JSON serialization for Pin with custom field names
+proc `%`*(obj: Pin): JsonNode =
+  result = newJObject()
+  result["id"] = %obj.id
+  result["created_at"] = %obj.createdAt
+  if obj.link.isSome():
+    result["link"] = %obj.link.get()
+  if obj.title.isSome():
+    result["title"] = %obj.title.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  if obj.dominantColor.isSome():
+    result["dominant_color"] = %obj.dominantColor.get()
+  if obj.altText.isSome():
+    result["alt_text"] = %obj.altText.get()
+  result["creative_type"] = %obj.creativeType
+  if obj.boardId.isSome():
+    result["board_id"] = %obj.boardId.get()
+  if obj.boardSectionId.isSome():
+    result["board_section_id"] = %obj.boardSectionId.get()
+  result["board_owner"] = %obj.boardOwner
+  result["is_owner"] = %obj.isOwner
+  result["media"] = %obj.media
+  if obj.mediaSource.isSome():
+    result["media_source"] = %obj.mediaSource.get()
+  if obj.parentPinId.isSome():
+    result["parent_pin_id"] = %obj.parentPinId.get()
+  if obj.isStandard.isSome():
+    result["is_standard"] = %obj.isStandard.get()
+  result["has_been_promoted"] = %obj.hasBeenPromoted
+  if obj.note.isSome():
+    result["note"] = %obj.note.get()
+  if obj.pinMetrics.isSome():
+    result["pin_metrics"] = %obj.pinMetrics.get()
+

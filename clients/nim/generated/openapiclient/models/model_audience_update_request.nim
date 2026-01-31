@@ -9,14 +9,47 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_audience_rule
 import model_audience_update_operation_type
 
 type AudienceUpdateRequest* = object
   ## 
-  adAccountId*: string ## Ad account ID.
-  name*: string ## Audience name.
-  rule*: AudienceRule
-  description*: string ## Audience description.
-  operationType*: AudienceUpdateOperationType
+  adAccountId*: Option[string] ## Ad account ID.
+  name*: Option[string] ## Audience name.
+  rule*: Option[AudienceRule]
+  description*: Option[string] ## Audience description.
+  operationType*: Option[AudienceUpdateOperationType]
+
+
+# Custom JSON deserialization for AudienceUpdateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[AudienceUpdateRequest]): AudienceUpdateRequest =
+  result = AudienceUpdateRequest()
+  if node.kind == JObject:
+    if node.hasKey("ad_account_id") and node["ad_account_id"].kind != JNull:
+      result.adAccountId = some(to(node["ad_account_id"], typeof(result.adAccountId.get())))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("rule") and node["rule"].kind != JNull:
+      result.rule = some(to(node["rule"], typeof(result.rule.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("operation_type") and node["operation_type"].kind != JNull:
+      result.operationType = some(to(node["operation_type"], typeof(result.operationType.get())))
+
+# Custom JSON serialization for AudienceUpdateRequest with custom field names
+proc `%`*(obj: AudienceUpdateRequest): JsonNode =
+  result = newJObject()
+  if obj.adAccountId.isSome():
+    result["ad_account_id"] = %obj.adAccountId.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.rule.isSome():
+    result["rule"] = %obj.rule.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  if obj.operationType.isSome():
+    result["operation_type"] = %obj.operationType.get()
+

@@ -1,41 +1,45 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * If specified, you must provide all properties
- **/
+ * If specified, you must provide all properties
+ */
 @ApiModel(description="If specified, you must provide all properties")
 
 public class CatalogsHotelGuestRatings  {
   
-  @ApiModelProperty(value = "Your hotel's rating.")
  /**
-   * Your hotel's rating.
-  **/
+  * Your hotel's rating.
+  */
+  @ApiModelProperty(value = "Your hotel's rating.")
+
   private BigDecimal score;
 
-  @ApiModelProperty(value = "Total number of people who have rated this hotel.")
  /**
-   * Total number of people who have rated this hotel.
-  **/
+  * Total number of people who have rated this hotel.
+  */
+  @ApiModelProperty(value = "Total number of people who have rated this hotel.")
+
   private Integer numberOfReviewers;
 
-  @ApiModelProperty(value = "Max value for the hotel rating score.")
  /**
-   * Max value for the hotel rating score.
-  **/
+  * Max value for the hotel rating score.
+  */
+  @ApiModelProperty(value = "Max value for the hotel rating score.")
+
   private BigDecimal maxScore;
 
-  @ApiModelProperty(value = "System you use for guest reviews.")
  /**
-   * System you use for guest reviews.
-  **/
+  * System you use for guest reviews.
+  */
+  @ApiModelProperty(value = "System you use for guest reviews.")
+
   private String ratingSystem;
  /**
    * Your hotel&#39;s rating.

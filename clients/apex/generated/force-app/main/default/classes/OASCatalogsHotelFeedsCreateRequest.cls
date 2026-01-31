@@ -134,6 +134,10 @@ public class OASCatalogsHotelFeedsCreateRequest implements OAS.MappedProperties 
         return propertyMappings;
     }
 
+    public OASCatalogsHotelFeedsCreateRequest() {
+        status = 'ACTIVE';
+    }
+
     public static OASCatalogsHotelFeedsCreateRequest getExample() {
         OASCatalogsHotelFeedsCreateRequest catalogsHotelFeedsCreateRequest = new OASCatalogsHotelFeedsCreateRequest();
           catalogsHotelFeedsCreateRequest.defaultCurrency = OASNullableCurrency.getExample();
@@ -145,7 +149,7 @@ public class OASCatalogsHotelFeedsCreateRequest implements OAS.MappedProperties 
           catalogsHotelFeedsCreateRequest.preferredProcessingSchedule = OASCatalogsFeedProcessingSchedule.getExample();
           catalogsHotelFeedsCreateRequest.catalogType = OASCatalogsType.getExample();
           catalogsHotelFeedsCreateRequest.catalogId = '';
-          catalogsHotelFeedsCreateRequest.status = '';
+          catalogsHotelFeedsCreateRequest.status = OASCatalogsStatus.getExample();
         return catalogsHotelFeedsCreateRequest;
     }
 

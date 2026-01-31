@@ -76,9 +76,9 @@ export function CatalogsDbItemToJSONTyped(value?: CatalogsDbItem | null, ignoreD
 
     return {
         
-        'created_at': ((value['createdAt']).toISOString()),
+        'created_at': value['createdAt'].toISOString(),
         'id': value['id'],
-        'updated_at': ((value['updatedAt']).toISOString()),
+        'updated_at': value['updatedAt'].toISOString(),
     };
 }
 

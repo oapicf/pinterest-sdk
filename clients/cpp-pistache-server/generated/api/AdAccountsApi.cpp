@@ -23,8 +23,7 @@ const std::string AdAccountsApi::base = "/v5";
 
 AdAccountsApi::AdAccountsApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
-{
-}
+{}
 
 void AdAccountsApi::init() {
     setupRoutes();
@@ -50,14 +49,12 @@ void AdAccountsApi::setupRoutes() {
     router->addCustomHandler(Routes::bind(&AdAccountsApi::ad_accounts_api_default_handler, this));
 }
 
-void AdAccountsApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void AdAccountsApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleParsingException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> AdAccountsApi::handleParsingException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> AdAccountsApi::handleParsingException(const std::exception& ex) const noexcept {
     try {
         throw;
     } catch (nlohmann::detail::exception &e) {
@@ -69,548 +66,923 @@ std::pair<Pistache::Http::Code, std::string> AdAccountsApi::handleParsingExcepti
     }
 }
 
-void AdAccountsApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void AdAccountsApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleOperationException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> AdAccountsApi::handleOperationException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> AdAccountsApi::handleOperationException(const std::exception& ex) const noexcept {
     return std::make_pair(Pistache::Http::Code::Internal_Server_Error, ex.what());
 }
 
-void AdAccountsApi::ad_account_targeting_analytics_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+void AdAccountsApi::ad_account_targeting_analytics_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto startDateQuery = request.query().get("start_date");
+        std::optional<std::string> startDate;
+        if (startDateQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(startDateQuery.value(), valueQuery_instance)) {
+                startDate = valueQuery_instance;
+            }
+        }
+        auto endDateQuery = request.query().get("end_date");
+        std::optional<std::string> endDate;
+        if (endDateQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(endDateQuery.value(), valueQuery_instance)) {
+                endDate = valueQuery_instance;
+            }
+        }
+        auto targetingTypesQuery = request.query().get("targeting_types");
+        std::optional<std::vector<AdsAnalyticsTargetingType>> targetingTypes;
+        if (targetingTypesQuery.has_value()) {
+            std::vector<AdsAnalyticsTargetingType> valueQuery_instance;
+            if (fromStringValue(targetingTypesQuery.value(), valueQuery_instance)) {
+                targetingTypes = valueQuery_instance;
+            }
+        }
+        auto columnsQuery = request.query().get("columns");
+        std::optional<std::vector<std::string>> columns;
+        if (columnsQuery.has_value()) {
+            std::vector<std::string> valueQuery_instance;
+            if (fromStringValue(columnsQuery.value(), valueQuery_instance)) {
+                columns = valueQuery_instance;
+            }
+        }
+        auto granularityQuery = request.query().get("granularity");
+        std::optional<Granularity> granularity;
+        if (granularityQuery.has_value()) {
+            Granularity valueQuery_instance;
+            if (fromStringValue(granularityQuery.value(), valueQuery_instance)) {
+                granularity = valueQuery_instance;
+            }
+        }
+        auto clickWindowDaysQuery = request.query().get("click_window_days");
+        std::optional<int32_t> clickWindowDays;
+        if (clickWindowDaysQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(clickWindowDaysQuery.value(), valueQuery_instance)) {
+                clickWindowDays = valueQuery_instance;
+            }
+        }
+        auto engagementWindowDaysQuery = request.query().get("engagement_window_days");
+        std::optional<int32_t> engagementWindowDays;
+        if (engagementWindowDaysQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(engagementWindowDaysQuery.value(), valueQuery_instance)) {
+                engagementWindowDays = valueQuery_instance;
+            }
+        }
+        auto viewWindowDaysQuery = request.query().get("view_window_days");
+        std::optional<int32_t> viewWindowDays;
+        if (viewWindowDaysQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(viewWindowDaysQuery.value(), valueQuery_instance)) {
+                viewWindowDays = valueQuery_instance;
+            }
+        }
+        auto conversionReportTimeQuery = request.query().get("conversion_report_time");
+        std::optional<std::string> conversionReportTime;
+        if (conversionReportTimeQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(conversionReportTimeQuery.value(), valueQuery_instance)) {
+                conversionReportTime = valueQuery_instance;
+            }
+        }
+        auto attributionTypesQuery = request.query().get("attribution_types");
+        std::optional<ConversionReportAttributionType> attributionTypes;
+        if (attributionTypesQuery.has_value()) {
+            ConversionReportAttributionType valueQuery_instance;
+            if (fromStringValue(attributionTypesQuery.value(), valueQuery_instance)) {
+                attributionTypes = valueQuery_instance;
+            }
+        }
     
-    // Getting the query params
-    auto startDateQuery = request.query().get("start_date");
-    std::optional<std::string> startDate;
-    if(startDateQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(startDateQuery.value(), valueQuery_instance)){
-            startDate = valueQuery_instance;
-        }
-    }
-    auto endDateQuery = request.query().get("end_date");
-    std::optional<std::string> endDate;
-    if(endDateQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(endDateQuery.value(), valueQuery_instance)){
-            endDate = valueQuery_instance;
-        }
-    }
-    auto targetingTypesQuery = request.query().get("targeting_types");
-    std::optional<std::vector<AdsAnalyticsTargetingType>> targetingTypes;
-    if(targetingTypesQuery.has_value()){
-        std::vector<AdsAnalyticsTargetingType> valueQuery_instance;
-        if(fromStringValue(targetingTypesQuery.value(), valueQuery_instance)){
-            targetingTypes = valueQuery_instance;
-        }
-    }
-    auto columnsQuery = request.query().get("columns");
-    std::optional<std::vector<std::string>> columns;
-    if(columnsQuery.has_value()){
-        std::vector<std::string> valueQuery_instance;
-        if(fromStringValue(columnsQuery.value(), valueQuery_instance)){
-            columns = valueQuery_instance;
-        }
-    }
-    auto granularityQuery = request.query().get("granularity");
-    std::optional<Granularity> granularity;
-    if(granularityQuery.has_value()){
-        Granularity valueQuery_instance;
-        if(fromStringValue(granularityQuery.value(), valueQuery_instance)){
-            granularity = valueQuery_instance;
-        }
-    }
-    auto clickWindowDaysQuery = request.query().get("click_window_days");
-    std::optional<int32_t> clickWindowDays;
-    if(clickWindowDaysQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(clickWindowDaysQuery.value(), valueQuery_instance)){
-            clickWindowDays = valueQuery_instance;
-        }
-    }
-    auto engagementWindowDaysQuery = request.query().get("engagement_window_days");
-    std::optional<int32_t> engagementWindowDays;
-    if(engagementWindowDaysQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(engagementWindowDaysQuery.value(), valueQuery_instance)){
-            engagementWindowDays = valueQuery_instance;
-        }
-    }
-    auto viewWindowDaysQuery = request.query().get("view_window_days");
-    std::optional<int32_t> viewWindowDays;
-    if(viewWindowDaysQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(viewWindowDaysQuery.value(), valueQuery_instance)){
-            viewWindowDays = valueQuery_instance;
-        }
-    }
-    auto conversionReportTimeQuery = request.query().get("conversion_report_time");
-    std::optional<std::string> conversionReportTime;
-    if(conversionReportTimeQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(conversionReportTimeQuery.value(), valueQuery_instance)){
-            conversionReportTime = valueQuery_instance;
-        }
-    }
-    auto attributionTypesQuery = request.query().get("attribution_types");
-    std::optional<ConversionReportAttributionType> attributionTypes;
-    if(attributionTypesQuery.has_value()){
-        ConversionReportAttributionType valueQuery_instance;
-        if(fromStringValue(attributionTypesQuery.value(), valueQuery_instance)){
-            attributionTypes = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->ad_account_targeting_analytics_get(adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ad_account_targeting_analytics_get(adAccountId, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/targeting_analytics" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void AdAccountsApi::ad_account_analytics_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void AdAccountsApi::ad_account_analytics_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto startDateQuery = request.query().get("start_date");
+        std::optional<std::string> startDate;
+        if (startDateQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(startDateQuery.value(), valueQuery_instance)) {
+                startDate = valueQuery_instance;
+            }
+        }
+        auto endDateQuery = request.query().get("end_date");
+        std::optional<std::string> endDate;
+        if (endDateQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(endDateQuery.value(), valueQuery_instance)) {
+                endDate = valueQuery_instance;
+            }
+        }
+        auto columnsQuery = request.query().get("columns");
+        std::optional<std::vector<std::string>> columns;
+        if (columnsQuery.has_value()) {
+            std::vector<std::string> valueQuery_instance;
+            if (fromStringValue(columnsQuery.value(), valueQuery_instance)) {
+                columns = valueQuery_instance;
+            }
+        }
+        auto granularityQuery = request.query().get("granularity");
+        std::optional<Granularity> granularity;
+        if (granularityQuery.has_value()) {
+            Granularity valueQuery_instance;
+            if (fromStringValue(granularityQuery.value(), valueQuery_instance)) {
+                granularity = valueQuery_instance;
+            }
+        }
+        auto clickWindowDaysQuery = request.query().get("click_window_days");
+        std::optional<int32_t> clickWindowDays;
+        if (clickWindowDaysQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(clickWindowDaysQuery.value(), valueQuery_instance)) {
+                clickWindowDays = valueQuery_instance;
+            }
+        }
+        auto engagementWindowDaysQuery = request.query().get("engagement_window_days");
+        std::optional<int32_t> engagementWindowDays;
+        if (engagementWindowDaysQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(engagementWindowDaysQuery.value(), valueQuery_instance)) {
+                engagementWindowDays = valueQuery_instance;
+            }
+        }
+        auto viewWindowDaysQuery = request.query().get("view_window_days");
+        std::optional<int32_t> viewWindowDays;
+        if (viewWindowDaysQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(viewWindowDaysQuery.value(), valueQuery_instance)) {
+                viewWindowDays = valueQuery_instance;
+            }
+        }
+        auto conversionReportTimeQuery = request.query().get("conversion_report_time");
+        std::optional<std::string> conversionReportTime;
+        if (conversionReportTimeQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(conversionReportTimeQuery.value(), valueQuery_instance)) {
+                conversionReportTime = valueQuery_instance;
+            }
+        }
     
-    // Getting the query params
-    auto startDateQuery = request.query().get("start_date");
-    std::optional<std::string> startDate;
-    if(startDateQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(startDateQuery.value(), valueQuery_instance)){
-            startDate = valueQuery_instance;
-        }
-    }
-    auto endDateQuery = request.query().get("end_date");
-    std::optional<std::string> endDate;
-    if(endDateQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(endDateQuery.value(), valueQuery_instance)){
-            endDate = valueQuery_instance;
-        }
-    }
-    auto columnsQuery = request.query().get("columns");
-    std::optional<std::vector<std::string>> columns;
-    if(columnsQuery.has_value()){
-        std::vector<std::string> valueQuery_instance;
-        if(fromStringValue(columnsQuery.value(), valueQuery_instance)){
-            columns = valueQuery_instance;
-        }
-    }
-    auto granularityQuery = request.query().get("granularity");
-    std::optional<Granularity> granularity;
-    if(granularityQuery.has_value()){
-        Granularity valueQuery_instance;
-        if(fromStringValue(granularityQuery.value(), valueQuery_instance)){
-            granularity = valueQuery_instance;
-        }
-    }
-    auto clickWindowDaysQuery = request.query().get("click_window_days");
-    std::optional<int32_t> clickWindowDays;
-    if(clickWindowDaysQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(clickWindowDaysQuery.value(), valueQuery_instance)){
-            clickWindowDays = valueQuery_instance;
-        }
-    }
-    auto engagementWindowDaysQuery = request.query().get("engagement_window_days");
-    std::optional<int32_t> engagementWindowDays;
-    if(engagementWindowDaysQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(engagementWindowDaysQuery.value(), valueQuery_instance)){
-            engagementWindowDays = valueQuery_instance;
-        }
-    }
-    auto viewWindowDaysQuery = request.query().get("view_window_days");
-    std::optional<int32_t> viewWindowDays;
-    if(viewWindowDaysQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(viewWindowDaysQuery.value(), valueQuery_instance)){
-            viewWindowDays = valueQuery_instance;
-        }
-    }
-    auto conversionReportTimeQuery = request.query().get("conversion_report_time");
-    std::optional<std::string> conversionReportTime;
-    if(conversionReportTimeQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(conversionReportTimeQuery.value(), valueQuery_instance)){
-            conversionReportTime = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->ad_account_analytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ad_account_analytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/analytics" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void AdAccountsApi::ad_accounts_create_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void AdAccountsApi::ad_accounts_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the body param
+        
+        // Getting the body param
+        
+        AdAccountCreateRequest adAccountCreateRequest;
+        
+        
+        
     
-    AdAccountCreateRequest adAccountCreateRequest;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(adAccountCreateRequest);
-        adAccountCreateRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->ad_accounts_create(adAccountCreateRequest, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(adAccountCreateRequest);
+            adAccountCreateRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ad_accounts_create(adAccountCreateRequest, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void AdAccountsApi::ad_accounts_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void AdAccountsApi::ad_accounts_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
     
-    try {
-        this->ad_accounts_get(adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ad_accounts_get(adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void AdAccountsApi::ad_accounts_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void AdAccountsApi::ad_accounts_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
         }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
         }
-    }
-    auto includeSharedAccountsQuery = request.query().get("include_shared_accounts");
-    std::optional<bool> includeSharedAccounts;
-    if(includeSharedAccountsQuery.has_value()){
-        bool valueQuery_instance;
-        if(fromStringValue(includeSharedAccountsQuery.value(), valueQuery_instance)){
-            includeSharedAccounts = valueQuery_instance;
+        auto includeSharedAccountsQuery = request.query().get("include_shared_accounts");
+        std::optional<bool> includeSharedAccounts;
+        if (includeSharedAccountsQuery.has_value()) {
+            bool valueQuery_instance;
+            if (fromStringValue(includeSharedAccountsQuery.value(), valueQuery_instance)) {
+                includeSharedAccounts = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->ad_accounts_list(bookmark, pageSize, includeSharedAccounts, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->ad_accounts_list(bookmark, pageSize, includeSharedAccounts, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void AdAccountsApi::analytics_create_mmm_report_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void AdAccountsApi::analytics_create_mmm_report_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        // Getting the body param
+        
+        CreateMMMReportRequest createMMMReportRequest;
+        
+        
+        
     
-    // Getting the body param
-    
-    CreateMMMReportRequest createMMMReportRequest;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(createMMMReportRequest);
-        createMMMReportRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->analytics_create_mmm_report(adAccountId, createMMMReportRequest, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(createMMMReportRequest);
+            createMMMReportRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->analytics_create_mmm_report(adAccountId, createMMMReportRequest, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/mmm_reports" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void AdAccountsApi::analytics_create_report_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void AdAccountsApi::analytics_create_report_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        // Getting the body param
+        
+        AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest;
+        
+        
+        
     
-    // Getting the body param
-    
-    AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(adsAnalyticsCreateAsyncRequest);
-        adsAnalyticsCreateAsyncRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->analytics_create_report(adAccountId, adsAnalyticsCreateAsyncRequest, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(adsAnalyticsCreateAsyncRequest);
+            adsAnalyticsCreateAsyncRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->analytics_create_report(adAccountId, adsAnalyticsCreateAsyncRequest, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/reports" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void AdAccountsApi::analytics_create_template_report_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void AdAccountsApi::analytics_create_template_report_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
-    auto templateId = request.param(":templateId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        auto templateId = request.param(":templateId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto startDateQuery = request.query().get("start_date");
+        std::optional<std::string> startDate;
+        if (startDateQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(startDateQuery.value(), valueQuery_instance)) {
+                startDate = valueQuery_instance;
+            }
+        }
+        auto endDateQuery = request.query().get("end_date");
+        std::optional<std::string> endDate;
+        if (endDateQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(endDateQuery.value(), valueQuery_instance)) {
+                endDate = valueQuery_instance;
+            }
+        }
+        auto granularityQuery = request.query().get("granularity");
+        std::optional<Granularity> granularity;
+        if (granularityQuery.has_value()) {
+            Granularity valueQuery_instance;
+            if (fromStringValue(granularityQuery.value(), valueQuery_instance)) {
+                granularity = valueQuery_instance;
+            }
+        }
     
-    // Getting the query params
-    auto startDateQuery = request.query().get("start_date");
-    std::optional<std::string> startDate;
-    if(startDateQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(startDateQuery.value(), valueQuery_instance)){
-            startDate = valueQuery_instance;
-        }
-    }
-    auto endDateQuery = request.query().get("end_date");
-    std::optional<std::string> endDate;
-    if(endDateQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(endDateQuery.value(), valueQuery_instance)){
-            endDate = valueQuery_instance;
-        }
-    }
-    auto granularityQuery = request.query().get("granularity");
-    std::optional<Granularity> granularity;
-    if(granularityQuery.has_value()){
-        Granularity valueQuery_instance;
-        if(fromStringValue(granularityQuery.value(), valueQuery_instance)){
-            granularity = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->analytics_create_template_report(adAccountId, templateId, startDate, endDate, granularity, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->analytics_create_template_report(adAccountId, templateId, startDate, endDate, granularity, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/templates/:template_id/reports" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void AdAccountsApi::analytics_get_mmm_report_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void AdAccountsApi::analytics_get_mmm_report_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
-    
-    // Getting the query params
-    auto tokenQuery = request.query().get("token");
-    std::optional<std::string> token;
-    if(tokenQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(tokenQuery.value(), valueQuery_instance)){
-            token = valueQuery_instance;
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto tokenQuery = request.query().get("token");
+        std::optional<std::string> token;
+        if (tokenQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(tokenQuery.value(), valueQuery_instance)) {
+                token = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->analytics_get_mmm_report(adAccountId, token, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->analytics_get_mmm_report(adAccountId, token, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/mmm_reports" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void AdAccountsApi::analytics_get_report_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void AdAccountsApi::analytics_get_report_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
-    
-    // Getting the query params
-    auto tokenQuery = request.query().get("token");
-    std::optional<std::string> token;
-    if(tokenQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(tokenQuery.value(), valueQuery_instance)){
-            token = valueQuery_instance;
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto tokenQuery = request.query().get("token");
+        std::optional<std::string> token;
+        if (tokenQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(tokenQuery.value(), valueQuery_instance)) {
+                token = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->analytics_get_report(adAccountId, token, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->analytics_get_report(adAccountId, token, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/reports" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void AdAccountsApi::sandbox_delete_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void AdAccountsApi::sandbox_delete_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
     
-    try {
-        this->sandbox_delete(adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->sandbox_delete(adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/sandbox" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void AdAccountsApi::templates_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void AdAccountsApi::templates_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
+        }
+        auto orderQuery = request.query().get("order");
+        std::optional<std::string> order;
+        if (orderQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(orderQuery.value(), valueQuery_instance)) {
+                order = valueQuery_instance;
+            }
+        }
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
+        }
     
-    // Getting the query params
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
-        }
-    }
-    auto orderQuery = request.query().get("order");
-    std::optional<std::string> order;
-    if(orderQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(orderQuery.value(), valueQuery_instance)){
-            order = valueQuery_instance;
-        }
-    }
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->templates_list(adAccountId, pageSize, order, bookmark, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->templates_list(adAccountId, pageSize, order, bookmark, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/templates" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
+
 
 void AdAccountsApi::ad_accounts_api_default_handler(const Pistache::Rest::Request &, Pistache::Http::ResponseWriter response) {
     response.send(Pistache::Http::Code::Not_Found, "The requested method does not exist");

@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CountryFilter  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsProductGroupMultipleCountriesCriteria COUNTRY;
  /**
    * Get COUNTRY

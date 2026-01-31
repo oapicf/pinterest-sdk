@@ -122,8 +122,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "asset_groups_to_update":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetGroupsToUpdate = new Option<List<UpdateAssetGroupBodyAssetGroupsToUpdateInner>?>(JsonSerializer.Deserialize<List<UpdateAssetGroupBodyAssetGroupsToUpdateInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            assetGroupsToUpdate = new Option<List<UpdateAssetGroupBodyAssetGroupsToUpdateInner>?>(JsonSerializer.Deserialize<List<UpdateAssetGroupBodyAssetGroupsToUpdateInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -13,6 +13,9 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateMmmReportRequest {
+    /// A List of countries for filtering
+    #[serde(rename = "countries", skip_serializing_if = "Option::is_none")]
+    pub countries: Option<Vec<models::TargetingAdvertiserCountry>>,
     /// Name of the Marketing Mix Modeling (MMM) report
     #[serde(rename = "report_name")]
     pub report_name: String,
@@ -34,14 +37,12 @@ pub struct CreateMmmReportRequest {
     /// Metric and entity columns
     #[serde(rename = "columns")]
     pub columns: Vec<models::MmmReportingColumn>,
-    /// A List of countries for filtering
-    #[serde(rename = "countries", skip_serializing_if = "Option::is_none")]
-    pub countries: Option<Vec<models::TargetingAdvertiserCountry>>,
 }
 
 impl CreateMmmReportRequest {
     pub fn new(report_name: String, start_date: String, end_date: String, granularity: Granularity, level: Level, targeting_types: Vec<models::MmmReportingTargetingType>, columns: Vec<models::MmmReportingColumn>) -> CreateMmmReportRequest {
         CreateMmmReportRequest {
+            countries: None,
             report_name,
             start_date,
             end_date,
@@ -49,7 +50,6 @@ impl CreateMmmReportRequest {
             level,
             targeting_types,
             columns,
-            countries: None,
         }
     }
 }

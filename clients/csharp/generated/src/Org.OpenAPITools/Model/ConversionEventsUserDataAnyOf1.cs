@@ -173,12 +173,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "hashed_maids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hashedMaids = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            hashedMaids = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "em":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                em = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            em = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "client_ip_address":
                             clientIpAddress = new Option<string?>(utf8JsonReader.GetString()!);

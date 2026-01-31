@@ -12,12 +12,9 @@
 /**
  * Ad group pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day. When using CBO, only the STANDARD pacing delivery type is allowed.
  */
-export type PacingDeliveryType = 'STANDARD' | 'ACCELERATED';
-
 export const PacingDeliveryType = {
-
-    Standard: 'STANDARD' as PacingDeliveryType,
-
-    Accelerated: 'ACCELERATED' as PacingDeliveryType
-};
+    Standard: 'STANDARD',
+    Accelerated: 'ACCELERATED'
+} as const;
+export type PacingDeliveryType = typeof PacingDeliveryType[keyof typeof PacingDeliveryType];
 

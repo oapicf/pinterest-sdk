@@ -39,7 +39,7 @@ data class ConversionEventResponse(
 
     @Schema(example = "1564768710", description = "Creation date in epoch format.")
     @get:JsonProperty("created_time") val createdTime: kotlin.Int? = null
-    ) {
+) {
 
 }
 

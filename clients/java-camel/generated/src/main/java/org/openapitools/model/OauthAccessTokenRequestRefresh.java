@@ -16,12 +16,17 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * A request to exchange a refresh token for a new access token.
+ * OauthAccessTokenRequestRefresh
  */
 
-@Schema(name = "OauthAccessTokenRequestRefresh", description = "A request to exchange a refresh token for a new access token.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenRequestRefresh {
+
+  private String refreshToken;
+
+  private String scope;
+
+  private Boolean refreshOn;
 
   /**
    * Gets or Sets grantType
@@ -33,7 +38,7 @@ public class OauthAccessTokenRequestRefresh {
     
     CLIENT_CREDENTIALS("client_credentials");
 
-    private String value;
+    private final String value;
 
     GrantTypeEnum(String value) {
       this.value = value;
@@ -62,12 +67,6 @@ public class OauthAccessTokenRequestRefresh {
 
   private GrantTypeEnum grantType;
 
-  private String refreshToken;
-
-  private String scope;
-
-  private Boolean refreshOn;
-
   public OauthAccessTokenRequestRefresh() {
     super();
   }
@@ -75,28 +74,8 @@ public class OauthAccessTokenRequestRefresh {
   /**
    * Constructor with only required parameters
    */
-  public OauthAccessTokenRequestRefresh(GrantTypeEnum grantType, String refreshToken) {
-    this.grantType = grantType;
+  public OauthAccessTokenRequestRefresh(String refreshToken, GrantTypeEnum grantType) {
     this.refreshToken = refreshToken;
-  }
-
-  public OauthAccessTokenRequestRefresh grantType(GrantTypeEnum grantType) {
-    this.grantType = grantType;
-    return this;
-  }
-
-  /**
-   * Get grantType
-   * @return grantType
-   */
-  @NotNull 
-  @Schema(name = "grant_type", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("grant_type")
-  public GrantTypeEnum getGrantType() {
-    return grantType;
-  }
-
-  public void setGrantType(GrantTypeEnum grantType) {
     this.grantType = grantType;
   }
 
@@ -160,6 +139,26 @@ public class OauthAccessTokenRequestRefresh {
     this.refreshOn = refreshOn;
   }
 
+  public OauthAccessTokenRequestRefresh grantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+  /**
+   * Get grantType
+   * @return grantType
+   */
+  @NotNull 
+  @Schema(name = "grant_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("grant_type")
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -169,25 +168,25 @@ public class OauthAccessTokenRequestRefresh {
       return false;
     }
     OauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = (OauthAccessTokenRequestRefresh) o;
-    return Objects.equals(this.grantType, oauthAccessTokenRequestRefresh.grantType) &&
-        Objects.equals(this.refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
+    return Objects.equals(this.refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
         Objects.equals(this.scope, oauthAccessTokenRequestRefresh.scope) &&
-        Objects.equals(this.refreshOn, oauthAccessTokenRequestRefresh.refreshOn);
+        Objects.equals(this.refreshOn, oauthAccessTokenRequestRefresh.refreshOn) &&
+        Objects.equals(this.grantType, oauthAccessTokenRequestRefresh.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, refreshToken, scope, refreshOn);
+    return Objects.hash(refreshToken, scope, refreshOn, grantType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestRefresh {\n");
-    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    refreshOn: ").append(toIndentedString(refreshOn)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

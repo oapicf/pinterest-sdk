@@ -13,13 +13,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserFollowingGet200Response  {
   
-  @ApiModelProperty(required = true, value = "Users")
  /**
-   * Users
-  **/
+  * Users
+  */
+  @ApiModelProperty(required = true, value = "Users")
+
   private List<UserSummary> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * Users

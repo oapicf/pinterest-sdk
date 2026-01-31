@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * KeywordError
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class KeywordError {
 
   private @Nullable Keyword data;
@@ -31,7 +31,7 @@ public class KeywordError {
   @Valid
   private List<String> errorMessages = new ArrayList<>();
 
-  public KeywordError data(Keyword data) {
+  public KeywordError data(@Nullable Keyword data) {
     this.data = data;
     return this;
   }
@@ -43,11 +43,11 @@ public class KeywordError {
   @Valid 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")
-  public Keyword getData() {
+  public @Nullable Keyword getData() {
     return data;
   }
 
-  public void setData(Keyword data) {
+  public void setData(@Nullable Keyword data) {
     this.data = data;
   }
 

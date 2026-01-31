@@ -23,18 +23,23 @@ import javax.annotation.Generated;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
- * A request to exchange an authorization code for an access token.
+ * OauthAccessTokenRequestCode
  */
-@Schema(name = "OauthAccessTokenRequestCode", description = "A request to exchange an authorization code for an access token.")
 @JsonPropertyOrder({
-  OauthAccessTokenRequestCode.JSON_PROPERTY_GRANT_TYPE,
   OauthAccessTokenRequestCode.JSON_PROPERTY_CODE,
-  OauthAccessTokenRequestCode.JSON_PROPERTY_REDIRECT_URI
+  OauthAccessTokenRequestCode.JSON_PROPERTY_REDIRECT_URI,
+  OauthAccessTokenRequestCode.JSON_PROPERTY_GRANT_TYPE
 })
 @JsonTypeName("OauthAccessTokenRequestCode")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-01-26T05:36:06.173633742Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class OauthAccessTokenRequestCode {
+    public static final String JSON_PROPERTY_CODE = "code";
+    private String code;
+
+    public static final String JSON_PROPERTY_REDIRECT_URI = "redirect_uri";
+    private String redirectUri;
+
     /**
      * Gets or Sets grantType
      */
@@ -72,38 +77,9 @@ public class OauthAccessTokenRequestCode {
     public static final String JSON_PROPERTY_GRANT_TYPE = "grant_type";
     private GrantTypeEnum grantType;
 
-    public static final String JSON_PROPERTY_CODE = "code";
-    private String code;
-
-    public static final String JSON_PROPERTY_REDIRECT_URI = "redirect_uri";
-    private String redirectUri;
-
-    public OauthAccessTokenRequestCode(GrantTypeEnum grantType, String code, String redirectUri) {
-        this.grantType = grantType;
+    public OauthAccessTokenRequestCode(String code, String redirectUri, GrantTypeEnum grantType) {
         this.code = code;
         this.redirectUri = redirectUri;
-    }
-
-    public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
-        this.grantType = grantType;
-        return this;
-    }
-
-    /**
-     * Get grantType
-     * @return grantType
-     */
-    @NotNull
-    @Schema(name = "grant_type", requiredMode = Schema.RequiredMode.REQUIRED)
-    @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public GrantTypeEnum getGrantType() {
-        return grantType;
-    }
-
-    @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setGrantType(GrantTypeEnum grantType) {
         this.grantType = grantType;
     }
 
@@ -153,6 +129,29 @@ public class OauthAccessTokenRequestCode {
         this.redirectUri = redirectUri;
     }
 
+    public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
+        this.grantType = grantType;
+        return this;
+    }
+
+    /**
+     * Get grantType
+     * @return grantType
+     */
+    @NotNull
+    @Schema(name = "grant_type", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public GrantTypeEnum getGrantType() {
+        return grantType;
+    }
+
+    @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setGrantType(GrantTypeEnum grantType) {
+        this.grantType = grantType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -162,23 +161,23 @@ public class OauthAccessTokenRequestCode {
             return false;
         }
         OauthAccessTokenRequestCode oauthAccessTokenRequestCode = (OauthAccessTokenRequestCode) o;
-        return Objects.equals(this.grantType, oauthAccessTokenRequestCode.grantType) &&
-            Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
-            Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri);
+        return Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
+            Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri) &&
+            Objects.equals(this.grantType, oauthAccessTokenRequestCode.grantType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(grantType, code, redirectUri);
+        return Objects.hash(code, redirectUri, grantType);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class OauthAccessTokenRequestCode {\n");
-        sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
         sb.append("    code: ").append(toIndentedString(code)).append("\n");
         sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
+        sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
         sb.append("}");
         return sb.toString();
     }

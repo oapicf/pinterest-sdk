@@ -12,20 +12,6 @@ package openapi
 
 type InviteResponse struct {
 
-	AssetsSummary *InviteAssetsSummary `json:"assets_summary,omitempty"`
-
-	// The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-	BusinessRoles []string `json:"business_roles,omitempty"`
-
-	// Metadata for the business that created the invite/request.
-	CreatedByBusiness *BusinessAccessUserSummary `json:"created_by_business,omitempty"`
-
-	// Metadata for the user that created the invite/request.
-	CreatedByUser *BusinessAccessUserSummary `json:"created_by_user,omitempty"`
-
-	// The time the invite/request was created. Returned in milliseconds.
-	CreatedTime int32 `json:"created_time,omitempty"`
-
 	// Unique identifier of the invite/request.
 	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
 
@@ -36,4 +22,18 @@ type InviteResponse struct {
 
 	// Metadata for the member/partner that was sent the invite/request.
 	User BusinessAccessUserSummary `json:"user,omitempty"`
+
+	AssetsSummary *InviteAssetsSummary `json:"assets_summary,omitempty"`
+
+	// The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+	BusinessRoles []string `json:"business_roles,omitempty"`
+
+	// Metadata for the business that created the invite/request.
+	CreatedByBusiness *map[string]interface{} `json:"created_by_business,omitempty"`
+
+	// Metadata for the user that created the invite/request.
+	CreatedByUser *map[string]interface{} `json:"created_by_user,omitempty"`
+
+	// The time the invite/request was created. Returned in milliseconds.
+	CreatedTime int32 `json:"created_time,omitempty"`
 }

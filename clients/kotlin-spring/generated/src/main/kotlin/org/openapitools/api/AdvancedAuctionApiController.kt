@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
+import org.openapitools.api.AdvancedAuctionApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -34,7 +35,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${api.base-path:/v5}")
+@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
 class AdvancedAuctionApiController() {
 
     @Operation(
@@ -58,11 +59,14 @@ This endpoint is not available to all users.""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/advanced_auction/items/get"],
+        value = [PATH_ADVANCED_AUCTION_ITEMS_GET_POST /* "/advanced_auction/items/get" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun advancedAuctionItemsGetPost(@Parameter(description = "Request object used to get bid options values for a batch of retail catalog items", required = true) @Valid @RequestBody advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<AdvancedAuctionItems> {
+    fun advancedAuctionItemsGetPost(
+        @Parameter(description = "Request object used to get bid options values for a batch of retail catalog items", required = true) @Valid @RequestBody advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<AdvancedAuctionItems> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -87,11 +91,21 @@ This endpoint is not available to all users.""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/advanced_auction/items/submit"],
+        value = [PATH_ADVANCED_AUCTION_ITEMS_SUBMIT_POST /* "/advanced_auction/items/submit" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun advancedAuctionItemsSubmitPost(@Parameter(description = "Request object used to upsert or delete bid options for a batch of retail catalog items", required = true) @Valid @RequestBody advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<AdvancedAuctionProcessedItems> {
+    fun advancedAuctionItemsSubmitPost(
+        @Parameter(description = "Request object used to upsert or delete bid options for a batch of retail catalog items", required = true) @Valid @RequestBody advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<AdvancedAuctionProcessedItems> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    companion object {
+        //for your own safety never directly reuse these path definitions in tests
+        const val BASE_PATH: String = "/v5"
+        const val PATH_ADVANCED_AUCTION_ITEMS_GET_POST: String = "/advanced_auction/items/get"
+        const val PATH_ADVANCED_AUCTION_ITEMS_SUBMIT_POST: String = "/advanced_auction/items/submit"
     }
 }

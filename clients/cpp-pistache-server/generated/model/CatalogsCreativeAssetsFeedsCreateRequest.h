@@ -127,8 +127,8 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    CatalogsStatus getStatus() const;
-    void setStatus(CatalogsStatus const& value);
+    org::openapitools::server::model::CatalogsStatus getStatus() const;
+    void setStatus(org::openapitools::server::model::CatalogsStatus const& value);
     bool statusIsSet() const;
     void unsetStatus();
 
@@ -155,7 +155,7 @@ protected:
 
     std::string m_Catalog_id;
     bool m_Catalog_idIsSet;
-    CatalogsStatus m_Status;
+    org::openapitools::server::model::CatalogsStatus m_Status;
     bool m_StatusIsSet;
     
 };

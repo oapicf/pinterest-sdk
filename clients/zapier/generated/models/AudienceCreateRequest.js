@@ -1,6 +1,6 @@
 const utils = require('../utils/utils');
-const AudienceCreateRequest_1_audience_type = require('../models/AudienceCreateRequest_1_audience_type');
 const AudienceRule = require('../models/AudienceRule');
+const AudienceType = require('../models/AudienceType');
 
 module.exports = {
     fields: (prefix = '', isInput = true, isArrayChild = false) => {
@@ -23,7 +23,10 @@ module.exports = {
                 label: `Audience description. - [${labelPrefix}description]`,
                 type: 'string',
             },
-            ...AudienceCreateRequest_1_audience_type.fields(`${keyPrefix}audience_type`, isInput),
+            {
+                key: `${keyPrefix}audience_type`,
+                ...AudienceType.fields(`${keyPrefix}audience_type`, isInput),
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -33,7 +36,7 @@ module.exports = {
             'name': bundle.inputData?.[`${keyPrefix}name`],
             'rule': utils.removeIfEmpty(AudienceRule.mapping(bundle, `${keyPrefix}rule`)),
             'description': bundle.inputData?.[`${keyPrefix}description`],
-            'audience_type': utils.removeIfEmpty(AudienceCreateRequest_1_audience_type.mapping(bundle, `${keyPrefix}audience_type`)),
+            'audience_type': bundle.inputData?.[`${keyPrefix}audience_type`],
         }
     },
 }

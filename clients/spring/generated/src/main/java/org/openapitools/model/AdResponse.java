@@ -31,7 +31,7 @@ import javax.annotation.Generated;
  * AdResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdResponse {
 
   private @Nullable String adGroupId;
@@ -111,7 +111,7 @@ public class AdResponse {
     
     READ_MORE("READ_MORE");
 
-    private String value;
+    private final String value;
 
     CustomizableCtaTypeEnum(String value) {
       this.value = value;
@@ -254,7 +254,7 @@ public class AdResponse {
     
     INCONSISTENT_LANG_FR("INCONSISTENT_LANG_FR");
 
-    private String value;
+    private final String value;
 
     RejectedReasonsEnum(String value) {
       this.value = value;
@@ -299,7 +299,7 @@ public class AdResponse {
     
     APPROVED("APPROVED");
 
-    private String value;
+    private final String value;
 
     ReviewStatusEnum(String value) {
       this.value = value;
@@ -334,7 +334,7 @@ public class AdResponse {
 
   private @Nullable PinPromotionSummaryStatus summaryStatus;
 
-  public AdResponse adGroupId(String adGroupId) {
+  public AdResponse adGroupId(@Nullable String adGroupId) {
     this.adGroupId = adGroupId;
     return this;
   }
@@ -346,11 +346,11 @@ public class AdResponse {
   @Pattern(regexp = "^(AG)?\\d+$") 
   @Schema(name = "ad_group_id", example = "2680059592705", description = "ID of the ad group that contains the ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_group_id")
-  public String getAdGroupId() {
+  public @Nullable String getAdGroupId() {
     return adGroupId;
   }
 
-  public void setAdGroupId(String adGroupId) {
+  public void setAdGroupId(@Nullable String adGroupId) {
     this.adGroupId = adGroupId;
   }
 
@@ -478,7 +478,7 @@ public class AdResponse {
     this.clickTrackingUrl = clickTrackingUrl;
   }
 
-  public AdResponse creativeType(CreativeType creativeType) {
+  public AdResponse creativeType(@Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
     return this;
   }
@@ -490,11 +490,11 @@ public class AdResponse {
   @Valid 
   @Schema(name = "creative_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_type")
-  public CreativeType getCreativeType() {
+  public @Nullable CreativeType getCreativeType() {
     return creativeType;
   }
 
-  public void setCreativeType(CreativeType creativeType) {
+  public void setCreativeType(@Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
   }
 
@@ -538,7 +538,7 @@ public class AdResponse {
     this.iosDeepLink = iosDeepLink;
   }
 
-  public AdResponse isPinDeleted(Boolean isPinDeleted) {
+  public AdResponse isPinDeleted(@Nullable Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
     return this;
   }
@@ -550,15 +550,15 @@ public class AdResponse {
   
   @Schema(name = "is_pin_deleted", example = "false", description = "Is original pin deleted?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_pin_deleted")
-  public Boolean getIsPinDeleted() {
+  public @Nullable Boolean getIsPinDeleted() {
     return isPinDeleted;
   }
 
-  public void setIsPinDeleted(Boolean isPinDeleted) {
+  public void setIsPinDeleted(@Nullable Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
   }
 
-  public AdResponse isRemovable(Boolean isRemovable) {
+  public AdResponse isRemovable(@Nullable Boolean isRemovable) {
     this.isRemovable = isRemovable;
     return this;
   }
@@ -570,11 +570,11 @@ public class AdResponse {
   
   @Schema(name = "is_removable", example = "false", description = "Is pin repinnable?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_removable")
-  public Boolean getIsRemovable() {
+  public @Nullable Boolean getIsRemovable() {
     return isRemovable;
   }
 
-  public void setIsRemovable(Boolean isRemovable) {
+  public void setIsRemovable(@Nullable Boolean isRemovable) {
     this.isRemovable = isRemovable;
   }
 
@@ -598,7 +598,7 @@ public class AdResponse {
     this.name = name;
   }
 
-  public AdResponse status(EntityStatus status) {
+  public AdResponse status(@Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -610,11 +610,11 @@ public class AdResponse {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public EntityStatus getStatus() {
+  public @Nullable EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 
@@ -738,7 +738,7 @@ public class AdResponse {
     this.quizPinData = quizPinData;
   }
 
-  public AdResponse pinId(String pinId) {
+  public AdResponse pinId(@Nullable String pinId) {
     this.pinId = pinId;
     return this;
   }
@@ -750,15 +750,15 @@ public class AdResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "pin_id", example = "394205773611545468", description = "Pin ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_id")
-  public String getPinId() {
+  public @Nullable String getPinId() {
     return pinId;
   }
 
-  public void setPinId(String pinId) {
+  public void setPinId(@Nullable String pinId) {
     this.pinId = pinId;
   }
 
-  public AdResponse adAccountId(String adAccountId) {
+  public AdResponse adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -770,15 +770,15 @@ public class AdResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "The ID of the advertiser that this ad belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
-  public AdResponse campaignId(String campaignId) {
+  public AdResponse campaignId(@Nullable String campaignId) {
     this.campaignId = campaignId;
     return this;
   }
@@ -790,11 +790,11 @@ public class AdResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "campaign_id", example = "626735565838", description = "ID of the ad campaign that contains this ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_id")
-  public String getCampaignId() {
+  public @Nullable String getCampaignId() {
     return campaignId;
   }
 
-  public void setCampaignId(String campaignId) {
+  public void setCampaignId(@Nullable String campaignId) {
     this.campaignId = campaignId;
   }
 
@@ -818,7 +818,7 @@ public class AdResponse {
     this.collectionItemsDestinationUrlTemplate = collectionItemsDestinationUrlTemplate;
   }
 
-  public AdResponse createdTime(Integer createdTime) {
+  public AdResponse createdTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -830,15 +830,15 @@ public class AdResponse {
   
   @Schema(name = "created_time", example = "1451431341", description = "Pin creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
-  public Integer getCreatedTime() {
+  public @Nullable Integer getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
-  public AdResponse id(String id) {
+  public AdResponse id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -850,11 +850,11 @@ public class AdResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "687195134316", description = "The ID of this ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
@@ -914,7 +914,7 @@ public class AdResponse {
     this.rejectionLabels = rejectionLabels;
   }
 
-  public AdResponse reviewStatus(ReviewStatusEnum reviewStatus) {
+  public AdResponse reviewStatus(@Nullable ReviewStatusEnum reviewStatus) {
     this.reviewStatus = reviewStatus;
     return this;
   }
@@ -926,15 +926,15 @@ public class AdResponse {
   
   @Schema(name = "review_status", example = "PENDING", description = "Ad review status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("review_status")
-  public ReviewStatusEnum getReviewStatus() {
+  public @Nullable ReviewStatusEnum getReviewStatus() {
     return reviewStatus;
   }
 
-  public void setReviewStatus(ReviewStatusEnum reviewStatus) {
+  public void setReviewStatus(@Nullable ReviewStatusEnum reviewStatus) {
     this.reviewStatus = reviewStatus;
   }
 
-  public AdResponse type(String type) {
+  public AdResponse type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -946,15 +946,15 @@ public class AdResponse {
   
   @Schema(name = "type", example = "pinpromotion", description = "Always \"ad\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public String getType() {
+  public @Nullable String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
-  public AdResponse updatedTime(Integer updatedTime) {
+  public AdResponse updatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -966,15 +966,15 @@ public class AdResponse {
   
   @Schema(name = "updated_time", example = "1451431341", description = "Last update time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")
-  public Integer getUpdatedTime() {
+  public @Nullable Integer getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 
-  public AdResponse summaryStatus(PinPromotionSummaryStatus summaryStatus) {
+  public AdResponse summaryStatus(@Nullable PinPromotionSummaryStatus summaryStatus) {
     this.summaryStatus = summaryStatus;
     return this;
   }
@@ -986,11 +986,11 @@ public class AdResponse {
   @Valid 
   @Schema(name = "summary_status", description = "Ad summary status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("summary_status")
-  public PinPromotionSummaryStatus getSummaryStatus() {
+  public @Nullable PinPromotionSummaryStatus getSummaryStatus() {
     return summaryStatus;
   }
 
-  public void setSummaryStatus(PinPromotionSummaryStatus summaryStatus) {
+  public void setSummaryStatus(@Nullable PinPromotionSummaryStatus summaryStatus) {
     this.summaryStatus = summaryStatus;
   }
 

@@ -20,13 +20,13 @@ import .*
 /**
  * Request object to update catalogs items
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param operation 
  * @param items Array with catalogs items
  */
 object CatalogsItemsUpdateBatchRequests : BaseTable<CatalogsItemsUpdateBatchRequest>("CatalogsItemsUpdateBatchRequest") {
     val country = long("country")
-    val language = long("language")
+    val language = text("language").transform({ CatalogsItemsUpdateBatchRequest.Language.valueOf(it) }, { it.value }) /* We recommend using the CatalogsLocale values. */
     val operation = long("operation")
 
     /**
@@ -34,7 +34,7 @@ object CatalogsItemsUpdateBatchRequests : BaseTable<CatalogsItemsUpdateBatchRequ
      */
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = CatalogsItemsUpdateBatchRequest(
         country = Countrys.createEntity(row, withReferences) /* Country */,
-        language = CatalogsItemsRequestLanguages.createEntity(row, withReferences) /* CatalogsItemsRequestLanguage */,
+        language = row[language] ?: CatalogsItemsUpdateBatchRequest.Language.valueOf("") /* kotlin.String */ /* We recommend using the CatalogsLocale values. */,
         operation = BatchOperations.createEntity(row, withReferences) /* BatchOperation */,
         items = emptyList() /* kotlin.Array<ItemUpdateBatchRecord> */ /* Array with catalogs items */
     )

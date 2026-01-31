@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * SSIOAccountResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountResponse {
 
   private @Nullable Boolean eligible;
@@ -41,7 +41,7 @@ public class SSIOAccountResponse {
 
   private @Nullable String error;
 
-  public SSIOAccountResponse eligible(Boolean eligible) {
+  public SSIOAccountResponse eligible(@Nullable Boolean eligible) {
     this.eligible = eligible;
     return this;
   }
@@ -53,15 +53,15 @@ public class SSIOAccountResponse {
   
   @Schema(name = "eligible", example = "true", description = "Advertiser eligible to create order lines", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("eligible")
-  public Boolean getEligible() {
+  public @Nullable Boolean getEligible() {
     return eligible;
   }
 
-  public void setEligible(Boolean eligible) {
+  public void setEligible(@Nullable Boolean eligible) {
     this.eligible = eligible;
   }
 
-  public SSIOAccountResponse canEdit(Boolean canEdit) {
+  public SSIOAccountResponse canEdit(@Nullable Boolean canEdit) {
     this.canEdit = canEdit;
     return this;
   }
@@ -73,11 +73,11 @@ public class SSIOAccountResponse {
   
   @Schema(name = "can_edit", example = "true", description = "Advertiser eligible to update order lines", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("can_edit")
-  public Boolean getCanEdit() {
+  public @Nullable Boolean getCanEdit() {
     return canEdit;
   }
 
-  public void setCanEdit(Boolean canEdit) {
+  public void setCanEdit(@Nullable Boolean canEdit) {
     this.canEdit = canEdit;
   }
 
@@ -109,7 +109,7 @@ public class SSIOAccountResponse {
     this.billtoInfos = billtoInfos;
   }
 
-  public SSIOAccountResponse currency(String currency) {
+  public SSIOAccountResponse currency(@Nullable String currency) {
     this.currency = currency;
     return this;
   }
@@ -121,11 +121,11 @@ public class SSIOAccountResponse {
   
   @Schema(name = "currency", example = "USD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("currency")
-  public String getCurrency() {
+  public @Nullable String getCurrency() {
     return currency;
   }
 
-  public void setCurrency(String currency) {
+  public void setCurrency(@Nullable String currency) {
     this.currency = currency;
   }
 
@@ -157,7 +157,7 @@ public class SSIOAccountResponse {
     this.pmpNames = pmpNames;
   }
 
-  public SSIOAccountResponse error(String error) {
+  public SSIOAccountResponse error(@Nullable String error) {
     this.error = error;
     return this;
   }
@@ -169,11 +169,11 @@ public class SSIOAccountResponse {
   
   @Schema(name = "error", example = "No Error", description = "Error indicator from Salesforce which could be \"No Error\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("error")
-  public String getError() {
+  public @Nullable String getError() {
     return error;
   }
 
-  public void setError(String error) {
+  public void setError(@Nullable String error) {
     this.error = error;
   }
 

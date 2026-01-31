@@ -1,9 +1,24 @@
 {
   "namespace": "model",
   "type": "record",
-  "doc": "A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.",
+  "doc": "",
   "name": "OauthAccessTokenResponseEverlastingRefresh",
   "fields": [
+    {
+      "name": "refresh_token",
+      "type": "string",
+      "doc": ""
+    },
+    {
+      "name": "refresh_token_expires_in",
+      "type": "int",
+      "doc": ""
+    },
+    {
+      "name": "refresh_token_expires_at",
+      "type": "int",
+      "doc": ""
+    },
     {
       "name": "response_type",
       "type": ["null", {
@@ -26,7 +41,8 @@
     {
       "name": "token_type",
       "type": "string",
-      "doc": ""
+      "doc": "",
+      "default": "bearer"
     },
     {
       "name": "expires_in",
@@ -36,21 +52,6 @@
     {
       "name": "scope",
       "type": "string",
-      "doc": ""
-    },
-    {
-      "name": "refresh_token",
-      "type": "string",
-      "doc": ""
-    },
-    {
-      "name": "refresh_token_expires_in",
-      "type": "int",
-      "doc": ""
-    },
-    {
-      "name": "refresh_token_expires_at",
-      "type": "int",
       "doc": ""
     }
   ]

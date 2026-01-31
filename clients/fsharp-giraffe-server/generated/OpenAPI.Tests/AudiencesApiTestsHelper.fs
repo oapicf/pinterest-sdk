@@ -22,7 +22,7 @@ module AudiencesApiHandlerTestsHelper =
   let mutable AudiencesCreateBody = ""
 
   AudiencesCreateBody <- WebUtility.HtmlDecode "{
-  &quot;audience_type&quot; : { },
+  &quot;audience_type&quot; : &quot;audience_type&quot;,
   &quot;name&quot; : &quot;string&quot;,
   &quot;rule&quot; : {
     &quot;country&quot; : &quot;US&quot;,

@@ -1,7 +1,7 @@
 package apimodels;
 
-import apimodels.AudienceCreateRequest1AudienceType;
 import apimodels.AudienceRule;
+import apimodels.AudienceType;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -11,7 +11,7 @@ import javax.validation.Valid;
 /**
  * AudienceCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2025-05-10T05:39:37.342741110Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class AudienceCreateRequest   {
   @JsonProperty("ad_account_id")
@@ -38,7 +38,7 @@ public class AudienceCreateRequest   {
   @NotNull
 @Valid
 
-  private AudienceCreateRequest1AudienceType audienceType;
+  private AudienceType audienceType;
 
   public AudienceCreateRequest adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
@@ -108,20 +108,20 @@ public class AudienceCreateRequest   {
     this.description = description;
   }
 
-  public AudienceCreateRequest audienceType(AudienceCreateRequest1AudienceType audienceType) {
+  public AudienceCreateRequest audienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
     return this;
   }
 
    /**
-   * Get audienceType
+   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
    * @return audienceType
   **/
-  public AudienceCreateRequest1AudienceType getAudienceType() {
+  public AudienceType getAudienceType() {
     return audienceType;
   }
 
-  public void setAudienceType(AudienceCreateRequest1AudienceType audienceType) {
+  public void setAudienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
   }
 

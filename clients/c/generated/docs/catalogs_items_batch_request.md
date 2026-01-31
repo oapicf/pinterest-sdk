@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | **country_t \*** |  | 
-**language** | [**catalogs_items_request_language_t**](catalogs_items_request_language.md) \* |  | 
+**language** | **pinterest_rest_api_catalogs_items_batch_request_LANGUAGE_e** | We recommend using the CatalogsLocale values. | 
 **operation** | **batch_operation_t \*** |  | 
 **items** | [**list_t**](item_delete_batch_record.md) \* | Array with catalogs items | 
 

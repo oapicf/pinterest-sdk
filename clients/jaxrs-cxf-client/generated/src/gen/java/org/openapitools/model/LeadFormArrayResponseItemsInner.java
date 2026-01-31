@@ -14,9 +14,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class LeadFormArrayResponseItemsInner  {
   
   @ApiModelProperty(value = "")
+
   private LeadFormResponse data;
 
   @ApiModelProperty(value = "")
+
   private List<Exception> exceptions = new ArrayList<>();
  /**
    * Get data

@@ -11,7 +11,8 @@
 # Request object to delete catalogs items
 type CatalogsItemsDeleteBatchRequest {
   country: Country
-  language: CatalogsItemsRequestLanguage
+  # We recommend using the CatalogsLocale values.
+  language: LanguageEnum
   operation: BatchOperation
   # Array with catalogs items
   items: [ItemDeleteBatchRecord!]
@@ -19,7 +20,8 @@ type CatalogsItemsDeleteBatchRequest {
 
 input CatalogsItemsDeleteBatchRequestInput {
     country: Country
-    language: CatalogsItemsRequestLanguageInput
+    # We recommend using the CatalogsLocale values.
+    language: LanguageEnumInput
     operation: BatchOperation
     # Array with catalogs items
     items: [ItemDeleteBatchRecordInput]

@@ -189,8 +189,7 @@ namespace Org.OpenAPITools.Model
                                 sourceType = new Option<PinMediaSourcePinURL.SourceTypeEnum?>(PinMediaSourcePinURL.SourceTypeEnumFromStringOrDefault(sourceTypeRawValue));
                             break;
                         case "is_affiliate_link":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isAffiliateLink = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isAffiliateLink = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

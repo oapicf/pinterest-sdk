@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type GridClickType* = object
-  ## Where a user is taken after clicking on an ad in grid. </p><strong>Note:</strong>  This parameter is read-only and is set to DIRECT_TO_DESTINATION by default for direct links supported ads.  grid_click_type values provided will be ignored.
+type GridClickType* {.pure.} = enum
+  CLOSEUP
+  DIRECTTODESTINATION
+
+func `%`*(v: GridClickType): JsonNode =
+  result = case v:
+    of GridClickType.CLOSEUP: %"CLOSEUP"
+    of GridClickType.DIRECTTODESTINATION: %"DIRECT_TO_DESTINATION"
+
+func `$`*(v: GridClickType): string =
+  result = case v:
+    of GridClickType.CLOSEUP: $("CLOSEUP")
+    of GridClickType.DIRECTTODESTINATION: $("DIRECT_TO_DESTINATION")
+
+proc to*(node: JsonNode, T: typedesc[GridClickType]): GridClickType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum GridClickType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CLOSEUP"):
+    return GridClickType.CLOSEUP
+  of $("DIRECT_TO_DESTINATION"):
+    return GridClickType.DIRECTTODESTINATION
+  else:
+    raise newException(ValueError, "Invalid enum value for GridClickType: " & strVal)
+

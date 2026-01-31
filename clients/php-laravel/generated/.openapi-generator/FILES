@@ -161,7 +161,6 @@ Model/AudienceCategory.php
 Model/AudienceCommon.php
 Model/AudienceCreateCustomRequest.php
 Model/AudienceCreateRequest.php
-Model/AudienceCreateRequest1AudienceType.php
 Model/AudienceDataParty.php
 Model/AudienceDefinition.php
 Model/AudienceDefinitionResponse.php
@@ -239,7 +238,6 @@ Model/BusinessMemberAssetsSummaryProfilesInner.php
 Model/BusinessMembersAssetAccessDeleteRequest.php
 Model/BusinessMembersAssetAccessDeleteRequestAccessesInner.php
 Model/BusinessPartnerAssetAccessGet200Response.php
-Model/BusinessPartnerAssetAccessGetPartnerTypeParameter.php
 Model/BusinessRole.php
 Model/BusinessRoleCheckMode.php
 Model/BusinessRoleForMembers.php
@@ -314,7 +312,6 @@ Model/CatalogsFeedValidationWarnings.php
 Model/CatalogsFeedValidationWarningsFETCHSAMESIGNATURE.php
 Model/CatalogsFeedsCreateRequest.php
 Model/CatalogsFeedsCreateRequestDefaultLocale.php
-Model/CatalogsFeedsCreateRequestStatus.php
 Model/CatalogsFeedsUpdateRequest.php
 Model/CatalogsFormat.php
 Model/CatalogsHotelAddress.php
@@ -479,6 +476,8 @@ Model/CreateInvitesResultsResponseArray.php
 Model/CreateInvitesResultsResponseArrayItemsInner.php
 Model/CreateInvitesResultsResponseArrayItemsInnerInvite.php
 Model/CreateMMMReportRequest.php
+Model/CreateMMMReportRequestAllOfGranularity.php
+Model/CreateMMMReportRequestAllOfLevel.php
 Model/CreateMMMReportResponse.php
 Model/CreateMMMReportResponseData.php
 Model/CreateMembershipOrPartnershipInvitesBody.php
@@ -732,8 +731,6 @@ Model/PinUpdate.php
 Model/PinUpdateCarouselSlotsInner.php
 Model/PinsAnalyticsAppTypesParameter.php
 Model/PinsAnalyticsMetricTypesParameterInner.php
-Model/PinsAnalyticsMetricTypesParameterInnerOneOf.php
-Model/PinsAnalyticsMetricTypesParameterInnerOneOf1.php
 Model/PinsAnalyticsSplitFieldParameter.php
 Model/PinsList200Response.php
 Model/PinsListPinFilterParameter.php

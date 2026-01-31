@@ -1,32 +1,35 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Keyword metrics JSON
- **/
+ * Keyword metrics JSON
+ */
 @ApiModel(description="Keyword metrics JSON")
 
 public class KeywordMetrics  {
   
-  @ApiModelProperty(example = "100000", value = "Average cost per click")
-  @Valid
  /**
-   * Average cost per click
-  **/
+  * Average cost per click
+  */
+  @ApiModelProperty(example = "100000", value = "Average cost per click")
+
+  @Valid
+
   private BigDecimal avgCpcInMicroCurrency;
 
-  @ApiModelProperty(example = "5M+", value = "Keyword's search frequency. This value is based on keyword frequency in pepsi client response")
  /**
-   * Keyword's search frequency. This value is based on keyword frequency in pepsi client response
-  **/
+  * Keyword's search frequency. This value is based on keyword frequency in pepsi client response
+  */
+  @ApiModelProperty(example = "5M+", value = "Keyword's search frequency. This value is based on keyword frequency in pepsi client response")
+
   private String keywordQueryVolume;
  /**
    * Average cost per click

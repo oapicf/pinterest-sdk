@@ -21,7 +21,7 @@ var _ MappedNullable = &UpdateInvitesResultsResponseArrayItemsInner{}
 // UpdateInvitesResultsResponseArrayItemsInner struct for UpdateInvitesResultsResponseArrayItemsInner
 type UpdateInvitesResultsResponseArrayItemsInner struct {
 	Exception NullableInviteExceptionResponse `json:"exception,omitempty"`
-	Invite NullableInviteBusinessRoleBinding `json:"invite,omitempty"`
+	Invite *InviteBusinessRoleBinding `json:"invite,omitempty"`
 }
 
 // NewUpdateInvitesResultsResponseArrayItemsInner instantiates a new UpdateInvitesResultsResponseArrayItemsInner object
@@ -83,46 +83,36 @@ func (o *UpdateInvitesResultsResponseArrayItemsInner) UnsetException() {
 	o.Exception.Unset()
 }
 
-// GetInvite returns the Invite field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInvite returns the Invite field value if set, zero value otherwise.
 func (o *UpdateInvitesResultsResponseArrayItemsInner) GetInvite() InviteBusinessRoleBinding {
-	if o == nil || IsNil(o.Invite.Get()) {
+	if o == nil || IsNil(o.Invite) {
 		var ret InviteBusinessRoleBinding
 		return ret
 	}
-	return *o.Invite.Get()
+	return *o.Invite
 }
 
 // GetInviteOk returns a tuple with the Invite field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateInvitesResultsResponseArrayItemsInner) GetInviteOk() (*InviteBusinessRoleBinding, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Invite) {
 		return nil, false
 	}
-	return o.Invite.Get(), o.Invite.IsSet()
+	return o.Invite, true
 }
 
 // HasInvite returns a boolean if a field has been set.
 func (o *UpdateInvitesResultsResponseArrayItemsInner) HasInvite() bool {
-	if o != nil && o.Invite.IsSet() {
+	if o != nil && !IsNil(o.Invite) {
 		return true
 	}
 
 	return false
 }
 
-// SetInvite gets a reference to the given NullableInviteBusinessRoleBinding and assigns it to the Invite field.
+// SetInvite gets a reference to the given InviteBusinessRoleBinding and assigns it to the Invite field.
 func (o *UpdateInvitesResultsResponseArrayItemsInner) SetInvite(v InviteBusinessRoleBinding) {
-	o.Invite.Set(&v)
-}
-// SetInviteNil sets the value for Invite to be an explicit nil
-func (o *UpdateInvitesResultsResponseArrayItemsInner) SetInviteNil() {
-	o.Invite.Set(nil)
-}
-
-// UnsetInvite ensures that no value is present for Invite, not even an explicit nil
-func (o *UpdateInvitesResultsResponseArrayItemsInner) UnsetInvite() {
-	o.Invite.Unset()
+	o.Invite = &v
 }
 
 func (o UpdateInvitesResultsResponseArrayItemsInner) MarshalJSON() ([]byte, error) {
@@ -138,8 +128,8 @@ func (o UpdateInvitesResultsResponseArrayItemsInner) ToMap() (map[string]interfa
 	if o.Exception.IsSet() {
 		toSerialize["exception"] = o.Exception.Get()
 	}
-	if o.Invite.IsSet() {
-		toSerialize["invite"] = o.Invite.Get()
+	if !IsNil(o.Invite) {
+		toSerialize["invite"] = o.Invite
 	}
 	return toSerialize, nil
 }

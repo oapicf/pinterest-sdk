@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsProductGroupUpdateRequest", description = "Request object for updating a product group.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsUpdateRequest {
 
   private @Nullable String name;
@@ -38,7 +38,7 @@ public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsU
 
   private @Nullable CatalogsProductGroupFiltersRequest filters;
 
-  public CatalogsProductGroupUpdateRequest name(String name) {
+  public CatalogsProductGroupUpdateRequest name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -50,11 +50,11 @@ public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsU
   
   @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
@@ -78,7 +78,7 @@ public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsU
     this.description = description;
   }
 
-  public CatalogsProductGroupUpdateRequest isFeatured(Boolean isFeatured) {
+  public CatalogsProductGroupUpdateRequest isFeatured(@Nullable Boolean isFeatured) {
     this.isFeatured = isFeatured;
     return this;
   }
@@ -92,7 +92,7 @@ public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsU
   @Schema(name = "is_featured", description = "boolean indicator of whether the product group is being featured or not", deprecated = true, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_featured")
   @Deprecated
-  public Boolean getIsFeatured() {
+  public @Nullable Boolean getIsFeatured() {
     return isFeatured;
   }
 
@@ -100,11 +100,11 @@ public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsU
    * @deprecated
    */
   @Deprecated
-  public void setIsFeatured(Boolean isFeatured) {
+  public void setIsFeatured(@Nullable Boolean isFeatured) {
     this.isFeatured = isFeatured;
   }
 
-  public CatalogsProductGroupUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
+  public CatalogsProductGroupUpdateRequest filters(@Nullable CatalogsProductGroupFiltersRequest filters) {
     this.filters = filters;
     return this;
   }
@@ -116,11 +116,11 @@ public class CatalogsProductGroupUpdateRequest implements CatalogsProductGroupsU
   @Valid 
   @Schema(name = "filters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("filters")
-  public CatalogsProductGroupFiltersRequest getFilters() {
+  public @Nullable CatalogsProductGroupFiltersRequest getFilters() {
     return filters;
   }
 
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+  public void setFilters(@Nullable CatalogsProductGroupFiltersRequest filters) {
     this.filters = filters;
   }
 

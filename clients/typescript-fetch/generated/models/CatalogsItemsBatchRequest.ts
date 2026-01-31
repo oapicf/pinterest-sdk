@@ -75,7 +75,7 @@ export function CatalogsItemsBatchRequestFromJSONTyped(json: any, ignoreDiscrimi
         case 'UPSERT':
             return Object.assign({}, CatalogsItemsUpsertBatchRequestFromJSONTyped(json, true), { operation: 'UPSERT' } as const);
         default:
-            throw new Error(`No variant of CatalogsItemsBatchRequest exists with 'operation=${json['operation']}'`);
+            return json;
     }
 }
 
@@ -99,8 +99,7 @@ export function CatalogsItemsBatchRequestToJSONTyped(value?: CatalogsItemsBatchR
         case 'UPSERT':
             return Object.assign({}, CatalogsItemsUpsertBatchRequestToJSON(value), { operation: 'UPSERT' } as const);
         default:
-            throw new Error(`No variant of CatalogsItemsBatchRequest exists with 'operation=${value['operation']}'`);
+            return value;
     }
-
 }
 

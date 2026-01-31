@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogsProductGroupPricingCriteria* = object
   ## 
-  inclusion*: bool
+  inclusion*: Option[bool]
   values*: float
-  negated*: bool
+  negated*: Option[bool]
+

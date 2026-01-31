@@ -264,12 +264,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "date_availability":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dateAvailability = new Option<TopPinsAnalyticsResponseDateAvailability?>(JsonSerializer.Deserialize<TopPinsAnalyticsResponseDateAvailability>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            dateAvailability = new Option<TopPinsAnalyticsResponseDateAvailability?>(JsonSerializer.Deserialize<TopPinsAnalyticsResponseDateAvailability>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "pins":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pins = new Option<List<TopPinsAnalyticsResponsePinsInner>?>(JsonSerializer.Deserialize<List<TopPinsAnalyticsResponsePinsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            pins = new Option<List<TopPinsAnalyticsResponsePinsInner>?>(JsonSerializer.Deserialize<List<TopPinsAnalyticsResponsePinsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "sort_by":
                             string? sortByRawValue = utf8JsonReader.GetString();

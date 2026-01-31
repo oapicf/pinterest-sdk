@@ -13,64 +13,74 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AssetGroupBinding  {
   
-  @ApiModelProperty(example = "666791336903426391", value = "Asset Group ID.")
  /**
-   * Asset Group ID.
-  **/
+  * Asset Group ID.
+  */
+  @ApiModelProperty(example = "666791336903426391", value = "Asset Group ID.")
+
   private String id;
 
-  @ApiModelProperty(example = "Canada Ad Accounts", value = "Asset Group name")
  /**
-   * Asset Group name
-  **/
+  * Asset Group name
+  */
+  @ApiModelProperty(example = "Canada Ad Accounts", value = "Asset Group name")
+
   private String assetGroupName;
 
-  @ApiModelProperty(example = "Asset group that has ad accounts used in Canada", value = "Asset group description")
  /**
-   * Asset group description
-  **/
+  * Asset group description
+  */
+  @ApiModelProperty(example = "Asset group that has ad accounts used in Canada", value = "Asset group description")
+
   private String assetGroupDescription;
 
-  @ApiModelProperty(example = "[\"LOCATION_OR_LANGUAGE\"]", value = "Asset group types")
  /**
-   * Asset group types
-  **/
+  * Asset group types
+  */
+  @ApiModelProperty(example = "[\"LOCATION_OR_LANGUAGE\"]", value = "Asset group types")
+
   private List<String> assetGroupTypes = new ArrayList<>();
 
-  @ApiModelProperty(example = "[\"549755885175\"]", value = "A list of ad account IDs under the asset group")
  /**
-   * A list of ad account IDs under the asset group
-  **/
+  * A list of ad account IDs under the asset group
+  */
+  @ApiModelProperty(example = "[\"549755885175\"]", value = "A list of ad account IDs under the asset group")
+
   private List<String> adAccountsIds;
 
-  @ApiModelProperty(example = "[\"630433785246278264\"]", value = "A list of profile IDs under asset group")
  /**
-   * A list of profile IDs under asset group
-  **/
+  * A list of profile IDs under asset group
+  */
+  @ApiModelProperty(example = "[\"630433785246278264\"]", value = "A list of profile IDs under asset group")
+
   private List<String> profilesIds;
 
-  @ApiModelProperty(example = "1646767577816", value = "The creation time of the asset group")
  /**
-   * The creation time of the asset group
-  **/
+  * The creation time of the asset group
+  */
+  @ApiModelProperty(example = "1646767577816", value = "The creation time of the asset group")
+
   private Integer createdTime;
 
-  @ApiModelProperty(example = "1646767577816", value = "The last update time of the asset group")
  /**
-   * The last update time of the asset group
-  **/
+  * The last update time of the asset group
+  */
+  @ApiModelProperty(example = "1646767577816", value = "The last update time of the asset group")
+
   private Integer updatedTime;
 
-  @ApiModelProperty(value = "The data of the business that owns the asset group.")
  /**
-   * The data of the business that owns the asset group.
-  **/
+  * The data of the business that owns the asset group.
+  */
+  @ApiModelProperty(value = "The data of the business that owns the asset group.")
+
   private BusinessAccessUserSummary owner;
 
-  @ApiModelProperty(value = "The data of the user that created the asset group.")
  /**
-   * The data of the user that created the asset group.
-  **/
+  * The data of the user that created the asset group.
+  */
+  @ApiModelProperty(value = "The data of the user that created the asset group.")
+
   private BusinessAccessUserSummary createdBy;
  /**
    * Asset Group ID.

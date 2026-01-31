@@ -12,9 +12,7 @@ import org.joda.time.DateTime
 import ConversionTagCreate._
 
 case class ConversionTagCreate (
-  /* Conversion tag name. */
-  name: String,
-/* Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
+  /* Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
   aemEnabled: Option[Boolean],
 /* Metadata ingestion frequency. */
   mdFrequency: Option[BigDecimal],
@@ -27,7 +25,9 @@ case class ConversionTagCreate (
 /* Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
   aemDbEnabled: Option[Boolean],
 /* Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
-  aemLocEnabled: Option[Boolean])
+  aemLocEnabled: Option[Boolean],
+/* Conversion tag name. */
+  name: String)
 
 object ConversionTagCreate {
   import DateTimeCodecs._

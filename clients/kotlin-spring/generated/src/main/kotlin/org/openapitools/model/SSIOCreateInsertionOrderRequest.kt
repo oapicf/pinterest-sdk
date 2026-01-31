@@ -111,7 +111,7 @@ data class SSIOCreateInsertionOrderRequest(
 
     @Schema(example = "null", description = "If Ongoing (perpetual) order line, the estimated monthly spend")
     @get:JsonProperty("estimated_monthly_spend") val estimatedMonthlySpend: java.math.BigDecimal? = null
-    ) {
+) {
 
     /**
     * Type can be Budget or Perpetual
@@ -126,7 +126,8 @@ data class SSIOCreateInsertionOrderRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): OrderLineType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'SSIOCreateInsertionOrderRequest'")
             }
         }
     }

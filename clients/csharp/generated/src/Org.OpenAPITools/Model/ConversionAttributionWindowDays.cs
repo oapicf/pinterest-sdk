@@ -170,7 +170,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ConversionAttributionWindowDays conversionAttributionWindowDays, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(conversionAttributionWindowDays.ToString());
+            writer.WriteStringValue(ConversionAttributionWindowDaysValueConverter.ToJsonValue(conversionAttributionWindowDays).ToString());
         }
     }
 
@@ -201,14 +201,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the ConversionAttributionWindowDays to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="conversionAttributionWindowDays"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ConversionAttributionWindowDays? conversionAttributionWindowDays, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(conversionAttributionWindowDays?.ToString() ?? "null");
+            writer.WriteStringValue(conversionAttributionWindowDays.HasValue ? ConversionAttributionWindowDaysValueConverter.ToJsonValue(conversionAttributionWindowDays.Value).ToString() : "null");
         }
     }
 }

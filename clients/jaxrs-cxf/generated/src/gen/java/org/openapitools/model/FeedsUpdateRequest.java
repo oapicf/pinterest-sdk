@@ -24,39 +24,53 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class FeedsUpdateRequest  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private ProductAvailabilityType defaultAvailability;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private NullableCurrency defaultCurrency;
 
-  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
  /**
-   * A human-friendly name associated to a given feed.
-  **/
+  * A human-friendly name associated to a given feed.
+  */
+  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsFormat format;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsFeedCredentials credentials;
 
-  @ApiModelProperty(value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
  /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  **/
+  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  */
+  @ApiModelProperty(value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+
   private String location;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsStatus status;
  /**
    * Get defaultAvailability

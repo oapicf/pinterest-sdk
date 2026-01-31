@@ -21,14 +21,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "QuizPinOption", description = " This field contains multiple options to a quiz question.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinOption {
 
   private @Nullable BigDecimal id;
 
   private @Nullable String text;
 
-  public QuizPinOption id(BigDecimal id) {
+  public QuizPinOption id(@Nullable BigDecimal id) {
     this.id = id;
     return this;
   }
@@ -40,15 +40,15 @@ public class QuizPinOption {
   @Valid 
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public BigDecimal getId() {
+  public @Nullable BigDecimal getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(@Nullable BigDecimal id) {
     this.id = id;
   }
 
-  public QuizPinOption text(String text) {
+  public QuizPinOption text(@Nullable String text) {
     this.text = text;
     return this;
   }
@@ -60,11 +60,11 @@ public class QuizPinOption {
   
   @Schema(name = "text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("text")
-  public String getText() {
+  public @Nullable String getText() {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@Nullable String text) {
     this.text = text;
   }
 

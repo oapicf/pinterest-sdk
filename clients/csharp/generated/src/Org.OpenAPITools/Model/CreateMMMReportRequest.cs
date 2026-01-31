@@ -34,7 +34,6 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateMMMReportRequest" /> class.
         /// </summary>
-        /// <param name="countries">A List of countries for filtering</param>
         /// <param name="reportName">Name of the Marketing Mix Modeling (MMM) report</param>
         /// <param name="startDate">Metric report start date (UTC). Format: YYYY-MM-DD</param>
         /// <param name="endDate">Metric report end date (UTC). Format: YYYY-MM-DD</param>
@@ -42,10 +41,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="level">Level of the report</param>
         /// <param name="targetingTypes">List of targeting types</param>
         /// <param name="columns">Metric and entity columns</param>
+        /// <param name="countries">A List of countries for filtering</param>
         [JsonConstructor]
-        public CreateMMMReportRequest(Option<List<TargetingAdvertiserCountry>?> countries = default, string reportName, string startDate, string endDate, GranularityEnum granularity, LevelEnum level, List<MMMReportingTargetingType> targetingTypes, List<MMMReportingColumn> columns)
+        public CreateMMMReportRequest(string reportName, string startDate, string endDate, GranularityEnum granularity, LevelEnum level, List<MMMReportingTargetingType> targetingTypes, List<MMMReportingColumn> columns, Option<List<TargetingAdvertiserCountry>?> countries = default)
         {
-            CountriesOption = countries;
             ReportName = reportName;
             StartDate = startDate;
             EndDate = endDate;
@@ -53,6 +52,7 @@ namespace Org.OpenAPITools.Model
             Level = level;
             TargetingTypes = targetingTypes;
             Columns = columns;
+            CountriesOption = countries;
             OnCreated();
         }
 
@@ -207,20 +207,6 @@ namespace Org.OpenAPITools.Model
         public LevelEnum Level { get; set; }
 
         /// <summary>
-        /// Used to track the state of Countries
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<TargetingAdvertiserCountry>?> CountriesOption { get; private set; }
-
-        /// <summary>
-        /// A List of countries for filtering
-        /// </summary>
-        /// <value>A List of countries for filtering</value>
-        [JsonPropertyName("countries")]
-        public List<TargetingAdvertiserCountry>? Countries { get { return this.CountriesOption; } set { this.CountriesOption = new(value); } }
-
-        /// <summary>
         /// Name of the Marketing Mix Modeling (MMM) report
         /// </summary>
         /// <value>Name of the Marketing Mix Modeling (MMM) report</value>
@@ -257,6 +243,20 @@ namespace Org.OpenAPITools.Model
         /// <value>Metric and entity columns</value>
         [JsonPropertyName("columns")]
         public List<MMMReportingColumn> Columns { get; set; }
+
+        /// <summary>
+        /// Used to track the state of Countries
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<TargetingAdvertiserCountry>?> CountriesOption { get; private set; }
+
+        /// <summary>
+        /// A List of countries for filtering
+        /// </summary>
+        /// <value>A List of countries for filtering</value>
+        [JsonPropertyName("countries")]
+        public List<TargetingAdvertiserCountry>? Countries { get { return this.CountriesOption; } set { this.CountriesOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -331,7 +331,6 @@ namespace Org.OpenAPITools.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
-            Option<List<TargetingAdvertiserCountry>?> countries = default;
             Option<string?> reportName = default;
             Option<string?> startDate = default;
             Option<string?> endDate = default;
@@ -339,6 +338,7 @@ namespace Org.OpenAPITools.Model
             Option<CreateMMMReportRequest.LevelEnum?> level = default;
             Option<List<MMMReportingTargetingType>?> targetingTypes = default;
             Option<List<MMMReportingColumn>?> columns = default;
+            Option<List<TargetingAdvertiserCountry>?> countries = default;
 
             while (utf8JsonReader.Read())
             {
@@ -355,10 +355,6 @@ namespace Org.OpenAPITools.Model
 
                     switch (localVarJsonPropertyName)
                     {
-                        case "countries":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                countries = new Option<List<TargetingAdvertiserCountry>?>(JsonSerializer.Deserialize<List<TargetingAdvertiserCountry>>(ref utf8JsonReader, jsonSerializerOptions)!);
-                            break;
                         case "report_name":
                             reportName = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
@@ -379,12 +375,13 @@ namespace Org.OpenAPITools.Model
                                 level = new Option<CreateMMMReportRequest.LevelEnum?>(CreateMMMReportRequest.LevelEnumFromStringOrDefault(levelRawValue));
                             break;
                         case "targeting_types":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                targetingTypes = new Option<List<MMMReportingTargetingType>?>(JsonSerializer.Deserialize<List<MMMReportingTargetingType>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            targetingTypes = new Option<List<MMMReportingTargetingType>?>(JsonSerializer.Deserialize<List<MMMReportingTargetingType>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "columns":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                columns = new Option<List<MMMReportingColumn>?>(JsonSerializer.Deserialize<List<MMMReportingColumn>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            columns = new Option<List<MMMReportingColumn>?>(JsonSerializer.Deserialize<List<MMMReportingColumn>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
+                        case "countries":
+                            countries = new Option<List<TargetingAdvertiserCountry>?>(JsonSerializer.Deserialize<List<TargetingAdvertiserCountry>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;
@@ -413,9 +410,6 @@ namespace Org.OpenAPITools.Model
             if (!columns.IsSet)
                 throw new ArgumentException("Property is required for class CreateMMMReportRequest.", nameof(columns));
 
-            if (countries.IsSet && countries.Value == null)
-                throw new ArgumentNullException(nameof(countries), "Property is not nullable for class CreateMMMReportRequest.");
-
             if (reportName.IsSet && reportName.Value == null)
                 throw new ArgumentNullException(nameof(reportName), "Property is not nullable for class CreateMMMReportRequest.");
 
@@ -437,7 +431,10 @@ namespace Org.OpenAPITools.Model
             if (columns.IsSet && columns.Value == null)
                 throw new ArgumentNullException(nameof(columns), "Property is not nullable for class CreateMMMReportRequest.");
 
-            return new CreateMMMReportRequest(countries, reportName.Value!, startDate.Value!, endDate.Value!, granularity.Value!.Value!, level.Value!.Value!, targetingTypes.Value!, columns.Value!);
+            if (countries.IsSet && countries.Value == null)
+                throw new ArgumentNullException(nameof(countries), "Property is not nullable for class CreateMMMReportRequest.");
+
+            return new CreateMMMReportRequest(reportName.Value!, startDate.Value!, endDate.Value!, granularity.Value!.Value!, level.Value!.Value!, targetingTypes.Value!, columns.Value!, countries);
         }
 
         /// <summary>
@@ -464,9 +461,6 @@ namespace Org.OpenAPITools.Model
         /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CreateMMMReportRequest createMMMReportRequest, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (createMMMReportRequest.CountriesOption.IsSet && createMMMReportRequest.Countries == null)
-                throw new ArgumentNullException(nameof(createMMMReportRequest.Countries), "Property is required for class CreateMMMReportRequest.");
-
             if (createMMMReportRequest.ReportName == null)
                 throw new ArgumentNullException(nameof(createMMMReportRequest.ReportName), "Property is required for class CreateMMMReportRequest.");
 
@@ -482,11 +476,9 @@ namespace Org.OpenAPITools.Model
             if (createMMMReportRequest.Columns == null)
                 throw new ArgumentNullException(nameof(createMMMReportRequest.Columns), "Property is required for class CreateMMMReportRequest.");
 
-            if (createMMMReportRequest.CountriesOption.IsSet)
-            {
-                writer.WritePropertyName("countries");
-                JsonSerializer.Serialize(writer, createMMMReportRequest.Countries, jsonSerializerOptions);
-            }
+            if (createMMMReportRequest.CountriesOption.IsSet && createMMMReportRequest.Countries == null)
+                throw new ArgumentNullException(nameof(createMMMReportRequest.Countries), "Property is required for class CreateMMMReportRequest.");
+
             writer.WriteString("report_name", createMMMReportRequest.ReportName);
 
             writer.WriteString("start_date", createMMMReportRequest.StartDate);
@@ -501,6 +493,11 @@ namespace Org.OpenAPITools.Model
             JsonSerializer.Serialize(writer, createMMMReportRequest.TargetingTypes, jsonSerializerOptions);
             writer.WritePropertyName("columns");
             JsonSerializer.Serialize(writer, createMMMReportRequest.Columns, jsonSerializerOptions);
+            if (createMMMReportRequest.CountriesOption.IsSet)
+            {
+                writer.WritePropertyName("countries");
+                JsonSerializer.Serialize(writer, createMMMReportRequest.Countries, jsonSerializerOptions);
+            }
         }
     }
 }

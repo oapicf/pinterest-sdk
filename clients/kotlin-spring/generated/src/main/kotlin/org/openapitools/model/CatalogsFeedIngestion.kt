@@ -37,7 +37,7 @@ data class CatalogsFeedIngestion(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("status", required = true) val status: CatalogsFeedProcessingStatus
-    ) {
+) {
 
 }
 

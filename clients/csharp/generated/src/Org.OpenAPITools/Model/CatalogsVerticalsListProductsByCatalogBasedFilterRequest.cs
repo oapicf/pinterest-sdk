@@ -190,9 +190,6 @@ namespace Org.OpenAPITools.Model
             CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest? catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = null;
             CatalogsHotelListProductsByCatalogBasedFilterRequest? catalogsHotelListProductsByCatalogBasedFilterRequest = null;
             CatalogsRetailListProductsByCatalogBasedFilterRequest? catalogsRetailListProductsByCatalogBasedFilterRequest = null;
-            CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest? catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = null;
-            CatalogsHotelListProductsByCatalogBasedFilterRequest? catalogsHotelListProductsByCatalogBasedFilterRequest = null;
-            CatalogsRetailListProductsByCatalogBasedFilterRequest? catalogsRetailListProductsByCatalogBasedFilterRequest = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -221,21 +218,6 @@ namespace Org.OpenAPITools.Model
                             catalogsHotelListProductsByCatalogBasedFilterRequest = JsonSerializer.Deserialize<CatalogsHotelListProductsByCatalogBasedFilterRequest>(ref utf8JsonReaderCatalogsHotelListProductsByCatalogBasedFilterRequest, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("RETAIL") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsRetailListProductsByCatalogBasedFilterRequest = utf8JsonReader;
-                            catalogsRetailListProductsByCatalogBasedFilterRequest = JsonSerializer.Deserialize<CatalogsRetailListProductsByCatalogBasedFilterRequest>(ref utf8JsonReaderCatalogsRetailListProductsByCatalogBasedFilterRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = utf8JsonReader;
-                            catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest = JsonSerializer.Deserialize<CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest>(ref utf8JsonReaderCatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsHotelListProductsByCatalogBasedFilterRequest") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsHotelListProductsByCatalogBasedFilterRequest = utf8JsonReader;
-                            catalogsHotelListProductsByCatalogBasedFilterRequest = JsonSerializer.Deserialize<CatalogsHotelListProductsByCatalogBasedFilterRequest>(ref utf8JsonReaderCatalogsHotelListProductsByCatalogBasedFilterRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsRetailListProductsByCatalogBasedFilterRequest") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsRetailListProductsByCatalogBasedFilterRequest = utf8JsonReader;
                             catalogsRetailListProductsByCatalogBasedFilterRequest = JsonSerializer.Deserialize<CatalogsRetailListProductsByCatalogBasedFilterRequest>(ref utf8JsonReaderCatalogsRetailListProductsByCatalogBasedFilterRequest, jsonSerializerOptions);
@@ -275,15 +257,6 @@ namespace Org.OpenAPITools.Model
 
             if (catalogType.IsSet && catalogType.Value == null)
                 throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsVerticalsListProductsByCatalogBasedFilterRequest.");
-
-            if (catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest != null)
-                return new CatalogsVerticalsListProductsByCatalogBasedFilterRequest(catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest);
-
-            if (catalogsHotelListProductsByCatalogBasedFilterRequest != null)
-                return new CatalogsVerticalsListProductsByCatalogBasedFilterRequest(catalogsHotelListProductsByCatalogBasedFilterRequest);
-
-            if (catalogsRetailListProductsByCatalogBasedFilterRequest != null)
-                return new CatalogsVerticalsListProductsByCatalogBasedFilterRequest(catalogsRetailListProductsByCatalogBasedFilterRequest);
 
             if (catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest != null)
                 return new CatalogsVerticalsListProductsByCatalogBasedFilterRequest(catalogsCreativeAssetsListProductsByCatalogBasedFilterRequest);

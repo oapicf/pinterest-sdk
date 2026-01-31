@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AdvancedAuctionOperationError", description = "Error which occurred when applying a bid options operation to a specific item.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionOperationError {
 
   private Integer code;

@@ -191,18 +191,27 @@ KeywordsApi <- R6::R6Class(
         stop("Missing required parameter `keywords`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling KeywordsApi$CountryKeywordsMetricsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling KeywordsApi$CountryKeywordsMetricsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling KeywordsApi$CountryKeywordsMetricsGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`country_code`) && is.null(`country_code`)) {
+        stop("Invalid value for `country_code` when calling KeywordsApi$CountryKeywordsMetricsGet, `country_code` is not nullable")
+      }
 
-      if (length(`keywords`) > 2000) {
+      if (!missing(`keywords`) && is.null(`keywords`)) {
+        stop("Invalid value for `keywords` when calling KeywordsApi$CountryKeywordsMetricsGet, `keywords` is not nullable")
+      }
+      if (!is.null(`keywords`) && length(`keywords`) > 2000) {
         stop("Invalid length for `keywords` when calling KeywordsApi$CountryKeywordsMetricsGet, number of items must be less than or equal to 2000.")
       }
-      if (length(`keywords`) < 1) {
+      if (!is.null(`keywords`) && length(`keywords`) < 1) {
         stop("Invalid length for `keywords` when calling KeywordsApi$CountryKeywordsMetricsGet, number of items must be greater than or equal to 1.")
       }
 
@@ -317,13 +326,19 @@ KeywordsApi <- R6::R6Class(
         stop("Missing required parameter `keywords_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling KeywordsApi$KeywordsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling KeywordsApi$KeywordsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling KeywordsApi$KeywordsCreate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`keywords_request`) && is.null(`keywords_request`)) {
+        stop("Invalid value for `keywords_request` when calling KeywordsApi$KeywordsCreate, `keywords_request` is not nullable")
+      }
 
       if (!is.null(`keywords_request`)) {
         local_var_body <- `keywords_request`$toJSONString()
@@ -441,41 +456,59 @@ KeywordsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling KeywordsApi$KeywordsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling KeywordsApi$KeywordsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling KeywordsApi$KeywordsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`campaign_id`) > 18) {
+      if (!missing(`campaign_id`) && is.null(`campaign_id`)) {
+        stop("Invalid value for `campaign_id` when calling KeywordsApi$KeywordsGet, `campaign_id` is not nullable")
+      }
+      if (!is.null(`campaign_id`) && nchar(`campaign_id`) > 18) {
         stop("Invalid length for `campaign_id` when calling KeywordsApi$KeywordsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`campaign_id`, "^\\d+$")) {
+      if (!is.null(`campaign_id`) && !stringr::str_detect(`campaign_id`, "^\\d+$")) {
         stop("Invalid value for `campaign_id` when calling KeywordsApi$KeywordsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_group_id`) > 18) {
+      if (!missing(`ad_group_id`) && is.null(`ad_group_id`)) {
+        stop("Invalid value for `ad_group_id` when calling KeywordsApi$KeywordsGet, `ad_group_id` is not nullable")
+      }
+      if (!is.null(`ad_group_id`) && nchar(`ad_group_id`) > 18) {
         stop("Invalid length for `ad_group_id` when calling KeywordsApi$KeywordsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_group_id`, "^\\d+$")) {
+      if (!is.null(`ad_group_id`) && !stringr::str_detect(`ad_group_id`, "^\\d+$")) {
         stop("Invalid value for `ad_group_id` when calling KeywordsApi$KeywordsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`match_types`) > 5) {
+      if (!missing(`match_types`) && is.null(`match_types`)) {
+        stop("Invalid value for `match_types` when calling KeywordsApi$KeywordsGet, `match_types` is not nullable")
+      }
+      if (!is.null(`match_types`) && length(`match_types`) > 5) {
         stop("Invalid length for `match_types` when calling KeywordsApi$KeywordsGet, number of items must be less than or equal to 5.")
       }
-      if (length(`match_types`) < 1) {
+      if (!is.null(`match_types`) && length(`match_types`) < 1) {
         stop("Invalid length for `match_types` when calling KeywordsApi$KeywordsGet, number of items must be greater than or equal to 1.")
       }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling KeywordsApi$KeywordsGet, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling KeywordsApi$KeywordsGet, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling KeywordsApi$KeywordsGet, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling KeywordsApi$KeywordsGet, `bookmark` is not nullable")
+      }
 
       query_params[["campaign_id"]] <- `campaign_id`
 
@@ -596,13 +629,19 @@ KeywordsApi <- R6::R6Class(
         stop("Missing required parameter `keyword_update_body`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling KeywordsApi$KeywordsUpdate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling KeywordsApi$KeywordsUpdate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling KeywordsApi$KeywordsUpdate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`keyword_update_body`) && is.null(`keyword_update_body`)) {
+        stop("Invalid value for `keyword_update_body` when calling KeywordsApi$KeywordsUpdate, `keyword_update_body` is not nullable")
+      }
 
       if (!is.null(`keyword_update_body`)) {
         local_var_body <- `keyword_update_body`$toJSONString()
@@ -728,23 +767,47 @@ KeywordsApi <- R6::R6Class(
         stop("Missing required parameter `trend_type`.")
       }
 
+      if (!missing(`region`) && is.null(`region`)) {
+        stop("Invalid value for `region` when calling KeywordsApi$TrendingKeywordsList, `region` is not nullable")
+      }
 
+      if (!missing(`trend_type`) && is.null(`trend_type`)) {
+        stop("Invalid value for `trend_type` when calling KeywordsApi$TrendingKeywordsList, `trend_type` is not nullable")
+      }
 
+      if (!missing(`interests`) && is.null(`interests`)) {
+        stop("Invalid value for `interests` when calling KeywordsApi$TrendingKeywordsList, `interests` is not nullable")
+      }
 
+      if (!missing(`genders`) && is.null(`genders`)) {
+        stop("Invalid value for `genders` when calling KeywordsApi$TrendingKeywordsList, `genders` is not nullable")
+      }
 
+      if (!missing(`ages`) && is.null(`ages`)) {
+        stop("Invalid value for `ages` when calling KeywordsApi$TrendingKeywordsList, `ages` is not nullable")
+      }
 
-      if (length(`include_keywords`) > 50) {
+      if (!missing(`include_keywords`) && is.null(`include_keywords`)) {
+        stop("Invalid value for `include_keywords` when calling KeywordsApi$TrendingKeywordsList, `include_keywords` is not nullable")
+      }
+      if (!is.null(`include_keywords`) && length(`include_keywords`) > 50) {
         stop("Invalid length for `include_keywords` when calling KeywordsApi$TrendingKeywordsList, number of items must be less than or equal to 50.")
       }
-      if (length(`include_keywords`) < 1) {
+      if (!is.null(`include_keywords`) && length(`include_keywords`) < 1) {
         stop("Invalid length for `include_keywords` when calling KeywordsApi$TrendingKeywordsList, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`normalize_against_group`) && is.null(`normalize_against_group`)) {
+        stop("Invalid value for `normalize_against_group` when calling KeywordsApi$TrendingKeywordsList, `normalize_against_group` is not nullable")
+      }
 
-      if (`limit` > 50) {
+      if (!missing(`limit`) && is.null(`limit`)) {
+        stop("Invalid value for `limit` when calling KeywordsApi$TrendingKeywordsList, `limit` is not nullable")
+      }
+      if (!is.null(`limit`) && `limit` >  50) {
         stop("Invalid value for `limit` when calling KeywordsApi$TrendingKeywordsList, must be smaller than or equal to 50.")
       }
-      if (`limit` < 1) {
+      if (!is.null(`limit`) && `limit` <  1) {
         stop("Invalid value for `limit` when calling KeywordsApi$TrendingKeywordsList, must be bigger than or equal to 1.")
       }
 

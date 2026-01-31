@@ -1,29 +1,32 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.ItemAttributesRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object describing an item batch record to upsert items
- **/
+ * Object describing an item batch record to upsert items
+ */
 @ApiModel(description="Object describing an item batch record to upsert items")
 
 public class ItemUpsertBatchRecord  {
   
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
  /**
-   * The catalog item id in the merchant namespace
-  **/
+  * The catalog item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
+
   private String itemId;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private ItemAttributesRequest attributes;
  /**
    * The catalog item id in the merchant namespace

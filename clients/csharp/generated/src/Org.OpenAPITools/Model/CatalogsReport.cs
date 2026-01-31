@@ -231,8 +231,7 @@ namespace Org.OpenAPITools.Model
                             url = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "size":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                size = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            size = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         default:
                             break;

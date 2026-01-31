@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ImageMetadata_images")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ImageMetadataImages {
 
   private @Nullable ImageDetails _150x150;
@@ -33,7 +33,7 @@ public class ImageMetadataImages {
 
   private @Nullable ImageDetails _1200x;
 
-  public ImageMetadataImages _150x150(ImageDetails _150x150) {
+  public ImageMetadataImages _150x150(@Nullable ImageDetails _150x150) {
     this._150x150 = _150x150;
     return this;
   }
@@ -45,15 +45,15 @@ public class ImageMetadataImages {
   @Valid 
   @Schema(name = "150x150", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("150x150")
-  public ImageDetails get150x150() {
+  public @Nullable ImageDetails get150x150() {
     return _150x150;
   }
 
-  public void set150x150(ImageDetails _150x150) {
+  public void set150x150(@Nullable ImageDetails _150x150) {
     this._150x150 = _150x150;
   }
 
-  public ImageMetadataImages _400x300(ImageDetails _400x300) {
+  public ImageMetadataImages _400x300(@Nullable ImageDetails _400x300) {
     this._400x300 = _400x300;
     return this;
   }
@@ -65,15 +65,15 @@ public class ImageMetadataImages {
   @Valid 
   @Schema(name = "400x300", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("400x300")
-  public ImageDetails get400x300() {
+  public @Nullable ImageDetails get400x300() {
     return _400x300;
   }
 
-  public void set400x300(ImageDetails _400x300) {
+  public void set400x300(@Nullable ImageDetails _400x300) {
     this._400x300 = _400x300;
   }
 
-  public ImageMetadataImages _600x(ImageDetails _600x) {
+  public ImageMetadataImages _600x(@Nullable ImageDetails _600x) {
     this._600x = _600x;
     return this;
   }
@@ -85,15 +85,15 @@ public class ImageMetadataImages {
   @Valid 
   @Schema(name = "600x", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("600x")
-  public ImageDetails get600x() {
+  public @Nullable ImageDetails get600x() {
     return _600x;
   }
 
-  public void set600x(ImageDetails _600x) {
+  public void set600x(@Nullable ImageDetails _600x) {
     this._600x = _600x;
   }
 
-  public ImageMetadataImages _1200x(ImageDetails _1200x) {
+  public ImageMetadataImages _1200x(@Nullable ImageDetails _1200x) {
     this._1200x = _1200x;
     return this;
   }
@@ -105,11 +105,11 @@ public class ImageMetadataImages {
   @Valid 
   @Schema(name = "1200x", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("1200x")
-  public ImageDetails get1200x() {
+  public @Nullable ImageDetails get1200x() {
     return _1200x;
   }
 
-  public void set1200x(ImageDetails _1200x) {
+  public void set1200x(@Nullable ImageDetails _1200x) {
     this._1200x = _1200x;
   }
 

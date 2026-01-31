@@ -9,56 +9,261 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_item_attributes_request_all_of_image_link
 
 type ItemAttributesRequest* = object
   ## 
-  adLink*: string ## Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
-  adult*: bool ## Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
-  ageGroup*: string ## The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
-  availability*: string ## The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
-  averageReviewRating*: float ## Average reviews for the item. Can be a number from 1-5.
-  brand*: string ## The brand of the product.
-  checkoutEnabled*: bool ## This attribute is not supported anymore.
-  color*: string ## The primary color of the product.
-  condition*: string ## The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.
-  customLabel0*: string ## <p><= 1000 characters</p> <p>Custom grouping of products.</p>
-  customLabel1*: string ## <p><= 1000 characters</p> <p>Custom grouping of products.</p>
-  customLabel2*: string ## <p><= 1000 characters</p> <p>Custom grouping of products.</p>
-  customLabel3*: string ## <p><= 1000 characters</p> <p>Custom grouping of products.</p>
-  customLabel4*: string ## <p><= 1000 characters</p> <p>Custom grouping of products.</p>
-  description*: string ## <p><= 10000 characters</p> <p>The description of the product.</p>
-  freeShippingLabel*: bool ## The item is free to ship.
-  freeShippingLimit*: string ## The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
-  gender*: string ## The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
-  googleProductCategory*: string ## The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-  gtin*: int ## The unique universal product identifier.
-  id*: string ## <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
-  itemGroupId*: string ## <p><= 127 characters</p> <p>The parent ID of the product.</p>
-  lastUpdatedTime*: int64 ## The millisecond timestamp when the item was lastly modified by the merchant.
-  link*: string ## <p><= 511 characters</p> <p>The landing page for the product.</p>
-  material*: string ## The material used to make the product.
-  minAdPrice*: string ## The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
-  mobileLink*: string ## The mobile-optimized version of your landing page. Must begin with http:// or https://.
-  mpn*: string ## Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.
-  numberOfRatings*: int ## The number of ratings for the item.
-  numberOfReviews*: int ## The number of reviews available for the item.
-  pattern*: string ## The description of the pattern used for the product.
-  price*: string ## The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
-  productType*: string ## <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>
-  salePrice*: string ## The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
-  shipping*: string ## Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.
-  shippingHeight*: string ## The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
-  shippingWeight*: string ## The weight of the product. Ensure there is a space between the numeric string and the metric.
-  shippingWidth*: string ## The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
-  size*: string ## The size of the product.
-  sizeSystem*: string ## Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
-  sizeType*: string ## Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
-  tax*: string ## Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
-  title*: string ## <p><= 500 characters</p> <p>The name of the product.</p>
-  variantNames*: seq[string] ## Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
-  variantValues*: seq[string] ## Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
-  additionalImageLink*: seq[string] ## <p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p>
-  imageLink*: ItemAttributesRequest_allOf_image_link
-  videoLink*: string ## <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
+  adLink*: Option[string] ## Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
+  adult*: Option[bool] ## Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
+  ageGroup*: Option[string] ## The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+  availability*: Option[string] ## The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
+  averageReviewRating*: Option[float] ## Average reviews for the item. Can be a number from 1-5.
+  brand*: Option[string] ## The brand of the product.
+  checkoutEnabled*: Option[bool] ## This attribute is not supported anymore.
+  color*: Option[string] ## The primary color of the product.
+  condition*: Option[string] ## The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.
+  customLabel0*: Option[string] ## <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  customLabel1*: Option[string] ## <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  customLabel2*: Option[string] ## <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  customLabel3*: Option[string] ## <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  customLabel4*: Option[string] ## <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  description*: Option[string] ## <p><= 10000 characters</p> <p>The description of the product.</p>
+  freeShippingLabel*: Option[bool] ## The item is free to ship.
+  freeShippingLimit*: Option[string] ## The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
+  gender*: Option[string] ## The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
+  googleProductCategory*: Option[string] ## The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+  gtin*: Option[int] ## The unique universal product identifier.
+  id*: Option[string] ## <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
+  itemGroupId*: Option[string] ## <p><= 127 characters</p> <p>The parent ID of the product.</p>
+  lastUpdatedTime*: Option[int64] ## The millisecond timestamp when the item was lastly modified by the merchant.
+  link*: Option[string] ## <p><= 511 characters</p> <p>The landing page for the product.</p>
+  material*: Option[string] ## The material used to make the product.
+  minAdPrice*: Option[string] ## The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
+  mobileLink*: Option[string] ## The mobile-optimized version of your landing page. Must begin with http:// or https://.
+  mpn*: Option[string] ## Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.
+  numberOfRatings*: Option[int] ## The number of ratings for the item.
+  numberOfReviews*: Option[int] ## The number of reviews available for the item.
+  pattern*: Option[string] ## The description of the pattern used for the product.
+  price*: Option[string] ## The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
+  productType*: Option[string] ## <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>
+  salePrice*: Option[string] ## The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
+  shipping*: Option[string] ## Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.
+  shippingHeight*: Option[string] ## The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
+  shippingWeight*: Option[string] ## The weight of the product. Ensure there is a space between the numeric string and the metric.
+  shippingWidth*: Option[string] ## The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
+  size*: Option[string] ## The size of the product.
+  sizeSystem*: Option[string] ## Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+  sizeType*: Option[string] ## Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
+  tax*: Option[string] ## Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
+  title*: Option[string] ## <p><= 500 characters</p> <p>The name of the product.</p>
+  variantNames*: Option[seq[string]] ## Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
+  variantValues*: Option[seq[string]] ## Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
+  additionalImageLink*: Option[seq[string]] ## <p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p>
+  imageLink*: Option[ItemAttributesRequest_allOf_image_link]
+  videoLink*: Option[string] ## <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
+
+
+# Custom JSON deserialization for ItemAttributesRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[ItemAttributesRequest]): ItemAttributesRequest =
+  result = ItemAttributesRequest()
+  if node.kind == JObject:
+    if node.hasKey("ad_link") and node["ad_link"].kind != JNull:
+      result.adLink = some(to(node["ad_link"], typeof(result.adLink.get())))
+    if node.hasKey("adult") and node["adult"].kind != JNull:
+      result.adult = some(to(node["adult"], typeof(result.adult.get())))
+    if node.hasKey("age_group") and node["age_group"].kind != JNull:
+      result.ageGroup = some(to(node["age_group"], typeof(result.ageGroup.get())))
+    if node.hasKey("availability") and node["availability"].kind != JNull:
+      result.availability = some(to(node["availability"], typeof(result.availability.get())))
+    if node.hasKey("average_review_rating") and node["average_review_rating"].kind != JNull:
+      result.averageReviewRating = some(to(node["average_review_rating"], typeof(result.averageReviewRating.get())))
+    if node.hasKey("brand") and node["brand"].kind != JNull:
+      result.brand = some(to(node["brand"], typeof(result.brand.get())))
+    if node.hasKey("checkout_enabled") and node["checkout_enabled"].kind != JNull:
+      result.checkoutEnabled = some(to(node["checkout_enabled"], typeof(result.checkoutEnabled.get())))
+    if node.hasKey("color") and node["color"].kind != JNull:
+      result.color = some(to(node["color"], typeof(result.color.get())))
+    if node.hasKey("condition") and node["condition"].kind != JNull:
+      result.condition = some(to(node["condition"], typeof(result.condition.get())))
+    if node.hasKey("custom_label_0") and node["custom_label_0"].kind != JNull:
+      result.customLabel0 = some(to(node["custom_label_0"], typeof(result.customLabel0.get())))
+    if node.hasKey("custom_label_1") and node["custom_label_1"].kind != JNull:
+      result.customLabel1 = some(to(node["custom_label_1"], typeof(result.customLabel1.get())))
+    if node.hasKey("custom_label_2") and node["custom_label_2"].kind != JNull:
+      result.customLabel2 = some(to(node["custom_label_2"], typeof(result.customLabel2.get())))
+    if node.hasKey("custom_label_3") and node["custom_label_3"].kind != JNull:
+      result.customLabel3 = some(to(node["custom_label_3"], typeof(result.customLabel3.get())))
+    if node.hasKey("custom_label_4") and node["custom_label_4"].kind != JNull:
+      result.customLabel4 = some(to(node["custom_label_4"], typeof(result.customLabel4.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("free_shipping_label") and node["free_shipping_label"].kind != JNull:
+      result.freeShippingLabel = some(to(node["free_shipping_label"], typeof(result.freeShippingLabel.get())))
+    if node.hasKey("free_shipping_limit") and node["free_shipping_limit"].kind != JNull:
+      result.freeShippingLimit = some(to(node["free_shipping_limit"], typeof(result.freeShippingLimit.get())))
+    if node.hasKey("gender") and node["gender"].kind != JNull:
+      result.gender = some(to(node["gender"], typeof(result.gender.get())))
+    if node.hasKey("google_product_category") and node["google_product_category"].kind != JNull:
+      result.googleProductCategory = some(to(node["google_product_category"], typeof(result.googleProductCategory.get())))
+    if node.hasKey("gtin") and node["gtin"].kind != JNull:
+      result.gtin = some(to(node["gtin"], typeof(result.gtin.get())))
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("item_group_id") and node["item_group_id"].kind != JNull:
+      result.itemGroupId = some(to(node["item_group_id"], typeof(result.itemGroupId.get())))
+    if node.hasKey("last_updated_time") and node["last_updated_time"].kind != JNull:
+      result.lastUpdatedTime = some(to(node["last_updated_time"], typeof(result.lastUpdatedTime.get())))
+    if node.hasKey("link") and node["link"].kind != JNull:
+      result.link = some(to(node["link"], typeof(result.link.get())))
+    if node.hasKey("material") and node["material"].kind != JNull:
+      result.material = some(to(node["material"], typeof(result.material.get())))
+    if node.hasKey("min_ad_price") and node["min_ad_price"].kind != JNull:
+      result.minAdPrice = some(to(node["min_ad_price"], typeof(result.minAdPrice.get())))
+    if node.hasKey("mobile_link") and node["mobile_link"].kind != JNull:
+      result.mobileLink = some(to(node["mobile_link"], typeof(result.mobileLink.get())))
+    if node.hasKey("mpn") and node["mpn"].kind != JNull:
+      result.mpn = some(to(node["mpn"], typeof(result.mpn.get())))
+    if node.hasKey("number_of_ratings") and node["number_of_ratings"].kind != JNull:
+      result.numberOfRatings = some(to(node["number_of_ratings"], typeof(result.numberOfRatings.get())))
+    if node.hasKey("number_of_reviews") and node["number_of_reviews"].kind != JNull:
+      result.numberOfReviews = some(to(node["number_of_reviews"], typeof(result.numberOfReviews.get())))
+    if node.hasKey("pattern") and node["pattern"].kind != JNull:
+      result.pattern = some(to(node["pattern"], typeof(result.pattern.get())))
+    if node.hasKey("price") and node["price"].kind != JNull:
+      result.price = some(to(node["price"], typeof(result.price.get())))
+    if node.hasKey("product_type") and node["product_type"].kind != JNull:
+      result.productType = some(to(node["product_type"], typeof(result.productType.get())))
+    if node.hasKey("sale_price") and node["sale_price"].kind != JNull:
+      result.salePrice = some(to(node["sale_price"], typeof(result.salePrice.get())))
+    if node.hasKey("shipping") and node["shipping"].kind != JNull:
+      result.shipping = some(to(node["shipping"], typeof(result.shipping.get())))
+    if node.hasKey("shipping_height") and node["shipping_height"].kind != JNull:
+      result.shippingHeight = some(to(node["shipping_height"], typeof(result.shippingHeight.get())))
+    if node.hasKey("shipping_weight") and node["shipping_weight"].kind != JNull:
+      result.shippingWeight = some(to(node["shipping_weight"], typeof(result.shippingWeight.get())))
+    if node.hasKey("shipping_width") and node["shipping_width"].kind != JNull:
+      result.shippingWidth = some(to(node["shipping_width"], typeof(result.shippingWidth.get())))
+    if node.hasKey("size") and node["size"].kind != JNull:
+      result.size = some(to(node["size"], typeof(result.size.get())))
+    if node.hasKey("size_system") and node["size_system"].kind != JNull:
+      result.sizeSystem = some(to(node["size_system"], typeof(result.sizeSystem.get())))
+    if node.hasKey("size_type") and node["size_type"].kind != JNull:
+      result.sizeType = some(to(node["size_type"], typeof(result.sizeType.get())))
+    if node.hasKey("tax") and node["tax"].kind != JNull:
+      result.tax = some(to(node["tax"], typeof(result.tax.get())))
+    if node.hasKey("title") and node["title"].kind != JNull:
+      result.title = some(to(node["title"], typeof(result.title.get())))
+    if node.hasKey("variant_names") and node["variant_names"].kind != JNull:
+      result.variantNames = some(to(node["variant_names"], typeof(result.variantNames.get())))
+    if node.hasKey("variant_values") and node["variant_values"].kind != JNull:
+      result.variantValues = some(to(node["variant_values"], typeof(result.variantValues.get())))
+    if node.hasKey("additional_image_link") and node["additional_image_link"].kind != JNull:
+      result.additionalImageLink = some(to(node["additional_image_link"], typeof(result.additionalImageLink.get())))
+    if node.hasKey("image_link") and node["image_link"].kind != JNull:
+      result.imageLink = some(to(node["image_link"], typeof(result.imageLink.get())))
+    if node.hasKey("video_link") and node["video_link"].kind != JNull:
+      result.videoLink = some(to(node["video_link"], typeof(result.videoLink.get())))
+
+# Custom JSON serialization for ItemAttributesRequest with custom field names
+proc `%`*(obj: ItemAttributesRequest): JsonNode =
+  result = newJObject()
+  if obj.adLink.isSome():
+    result["ad_link"] = %obj.adLink.get()
+  if obj.adult.isSome():
+    result["adult"] = %obj.adult.get()
+  if obj.ageGroup.isSome():
+    result["age_group"] = %obj.ageGroup.get()
+  if obj.availability.isSome():
+    result["availability"] = %obj.availability.get()
+  if obj.averageReviewRating.isSome():
+    result["average_review_rating"] = %obj.averageReviewRating.get()
+  if obj.brand.isSome():
+    result["brand"] = %obj.brand.get()
+  if obj.checkoutEnabled.isSome():
+    result["checkout_enabled"] = %obj.checkoutEnabled.get()
+  if obj.color.isSome():
+    result["color"] = %obj.color.get()
+  if obj.condition.isSome():
+    result["condition"] = %obj.condition.get()
+  if obj.customLabel0.isSome():
+    result["custom_label_0"] = %obj.customLabel0.get()
+  if obj.customLabel1.isSome():
+    result["custom_label_1"] = %obj.customLabel1.get()
+  if obj.customLabel2.isSome():
+    result["custom_label_2"] = %obj.customLabel2.get()
+  if obj.customLabel3.isSome():
+    result["custom_label_3"] = %obj.customLabel3.get()
+  if obj.customLabel4.isSome():
+    result["custom_label_4"] = %obj.customLabel4.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  if obj.freeShippingLabel.isSome():
+    result["free_shipping_label"] = %obj.freeShippingLabel.get()
+  if obj.freeShippingLimit.isSome():
+    result["free_shipping_limit"] = %obj.freeShippingLimit.get()
+  if obj.gender.isSome():
+    result["gender"] = %obj.gender.get()
+  if obj.googleProductCategory.isSome():
+    result["google_product_category"] = %obj.googleProductCategory.get()
+  if obj.gtin.isSome():
+    result["gtin"] = %obj.gtin.get()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.itemGroupId.isSome():
+    result["item_group_id"] = %obj.itemGroupId.get()
+  if obj.lastUpdatedTime.isSome():
+    result["last_updated_time"] = %obj.lastUpdatedTime.get()
+  if obj.link.isSome():
+    result["link"] = %obj.link.get()
+  if obj.material.isSome():
+    result["material"] = %obj.material.get()
+  if obj.minAdPrice.isSome():
+    result["min_ad_price"] = %obj.minAdPrice.get()
+  if obj.mobileLink.isSome():
+    result["mobile_link"] = %obj.mobileLink.get()
+  if obj.mpn.isSome():
+    result["mpn"] = %obj.mpn.get()
+  if obj.numberOfRatings.isSome():
+    result["number_of_ratings"] = %obj.numberOfRatings.get()
+  if obj.numberOfReviews.isSome():
+    result["number_of_reviews"] = %obj.numberOfReviews.get()
+  if obj.pattern.isSome():
+    result["pattern"] = %obj.pattern.get()
+  if obj.price.isSome():
+    result["price"] = %obj.price.get()
+  if obj.productType.isSome():
+    result["product_type"] = %obj.productType.get()
+  if obj.salePrice.isSome():
+    result["sale_price"] = %obj.salePrice.get()
+  if obj.shipping.isSome():
+    result["shipping"] = %obj.shipping.get()
+  if obj.shippingHeight.isSome():
+    result["shipping_height"] = %obj.shippingHeight.get()
+  if obj.shippingWeight.isSome():
+    result["shipping_weight"] = %obj.shippingWeight.get()
+  if obj.shippingWidth.isSome():
+    result["shipping_width"] = %obj.shippingWidth.get()
+  if obj.size.isSome():
+    result["size"] = %obj.size.get()
+  if obj.sizeSystem.isSome():
+    result["size_system"] = %obj.sizeSystem.get()
+  if obj.sizeType.isSome():
+    result["size_type"] = %obj.sizeType.get()
+  if obj.tax.isSome():
+    result["tax"] = %obj.tax.get()
+  if obj.title.isSome():
+    result["title"] = %obj.title.get()
+  if obj.variantNames.isSome():
+    result["variant_names"] = %obj.variantNames.get()
+  if obj.variantValues.isSome():
+    result["variant_values"] = %obj.variantValues.get()
+  if obj.additionalImageLink.isSome():
+    result["additional_image_link"] = %obj.additionalImageLink.get()
+  if obj.imageLink.isSome():
+    result["image_link"] = %obj.imageLink.get()
+  if obj.videoLink.isSome():
+    result["video_link"] = %obj.videoLink.get()
+

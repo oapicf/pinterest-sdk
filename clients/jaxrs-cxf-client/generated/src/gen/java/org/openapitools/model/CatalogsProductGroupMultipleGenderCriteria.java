@@ -13,9 +13,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsProductGroupMultipleGenderCriteria  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<Gender> values = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private Boolean negated = false;
  /**
    * Get values

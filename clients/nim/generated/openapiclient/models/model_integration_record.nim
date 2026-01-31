@@ -9,24 +9,103 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type IntegrationRecord* = object
   ## Integration record
-  id*: string
-  externalBusinessId*: string
-  connectedMerchantId*: string
+  id*: Option[string]
+  externalBusinessId*: Option[string]
+  connectedMerchantId*: Option[string]
   connectedUserId*: string
   connectedAdvertiserId*: string
-  connectedLbaId*: string
-  connectedTagId*: string
-  partnerAccessToken*: string
-  partnerRefreshToken*: string
-  partnerPrimaryEmail*: string
-  partnerAccessTokenExpiry*: int
-  partnerRefreshTokenExpiry*: int
-  scopes*: string
-  partnerMetadata*: string
-  additionalId1*: string
-  createdTime*: int
-  updatedTime*: int
+  connectedLbaId*: Option[string]
+  connectedTagId*: Option[string]
+  partnerAccessToken*: Option[string]
+  partnerRefreshToken*: Option[string]
+  partnerPrimaryEmail*: Option[string]
+  partnerAccessTokenExpiry*: Option[int]
+  partnerRefreshTokenExpiry*: Option[int]
+  scopes*: Option[string]
+  partnerMetadata*: Option[string]
+  additionalId1*: Option[string]
+  createdTime*: Option[int]
+  updatedTime*: Option[int]
+
+
+# Custom JSON deserialization for IntegrationRecord with custom field names
+proc to*(node: JsonNode, T: typedesc[IntegrationRecord]): IntegrationRecord =
+  result = IntegrationRecord()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("external_business_id") and node["external_business_id"].kind != JNull:
+      result.externalBusinessId = some(to(node["external_business_id"], typeof(result.externalBusinessId.get())))
+    if node.hasKey("connected_merchant_id") and node["connected_merchant_id"].kind != JNull:
+      result.connectedMerchantId = some(to(node["connected_merchant_id"], typeof(result.connectedMerchantId.get())))
+    if node.hasKey("connected_user_id"):
+      result.connectedUserId = to(node["connected_user_id"], string)
+    if node.hasKey("connected_advertiser_id"):
+      result.connectedAdvertiserId = to(node["connected_advertiser_id"], string)
+    if node.hasKey("connected_lba_id") and node["connected_lba_id"].kind != JNull:
+      result.connectedLbaId = some(to(node["connected_lba_id"], typeof(result.connectedLbaId.get())))
+    if node.hasKey("connected_tag_id") and node["connected_tag_id"].kind != JNull:
+      result.connectedTagId = some(to(node["connected_tag_id"], typeof(result.connectedTagId.get())))
+    if node.hasKey("partner_access_token") and node["partner_access_token"].kind != JNull:
+      result.partnerAccessToken = some(to(node["partner_access_token"], typeof(result.partnerAccessToken.get())))
+    if node.hasKey("partner_refresh_token") and node["partner_refresh_token"].kind != JNull:
+      result.partnerRefreshToken = some(to(node["partner_refresh_token"], typeof(result.partnerRefreshToken.get())))
+    if node.hasKey("partner_primary_email") and node["partner_primary_email"].kind != JNull:
+      result.partnerPrimaryEmail = some(to(node["partner_primary_email"], typeof(result.partnerPrimaryEmail.get())))
+    if node.hasKey("partner_access_token_expiry") and node["partner_access_token_expiry"].kind != JNull:
+      result.partnerAccessTokenExpiry = some(to(node["partner_access_token_expiry"], typeof(result.partnerAccessTokenExpiry.get())))
+    if node.hasKey("partner_refresh_token_expiry") and node["partner_refresh_token_expiry"].kind != JNull:
+      result.partnerRefreshTokenExpiry = some(to(node["partner_refresh_token_expiry"], typeof(result.partnerRefreshTokenExpiry.get())))
+    if node.hasKey("scopes") and node["scopes"].kind != JNull:
+      result.scopes = some(to(node["scopes"], typeof(result.scopes.get())))
+    if node.hasKey("partner_metadata") and node["partner_metadata"].kind != JNull:
+      result.partnerMetadata = some(to(node["partner_metadata"], typeof(result.partnerMetadata.get())))
+    if node.hasKey("additional_id_1") and node["additional_id_1"].kind != JNull:
+      result.additionalId1 = some(to(node["additional_id_1"], typeof(result.additionalId1.get())))
+    if node.hasKey("created_time") and node["created_time"].kind != JNull:
+      result.createdTime = some(to(node["created_time"], typeof(result.createdTime.get())))
+    if node.hasKey("updated_time") and node["updated_time"].kind != JNull:
+      result.updatedTime = some(to(node["updated_time"], typeof(result.updatedTime.get())))
+
+# Custom JSON serialization for IntegrationRecord with custom field names
+proc `%`*(obj: IntegrationRecord): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.externalBusinessId.isSome():
+    result["external_business_id"] = %obj.externalBusinessId.get()
+  if obj.connectedMerchantId.isSome():
+    result["connected_merchant_id"] = %obj.connectedMerchantId.get()
+  result["connected_user_id"] = %obj.connectedUserId
+  result["connected_advertiser_id"] = %obj.connectedAdvertiserId
+  if obj.connectedLbaId.isSome():
+    result["connected_lba_id"] = %obj.connectedLbaId.get()
+  if obj.connectedTagId.isSome():
+    result["connected_tag_id"] = %obj.connectedTagId.get()
+  if obj.partnerAccessToken.isSome():
+    result["partner_access_token"] = %obj.partnerAccessToken.get()
+  if obj.partnerRefreshToken.isSome():
+    result["partner_refresh_token"] = %obj.partnerRefreshToken.get()
+  if obj.partnerPrimaryEmail.isSome():
+    result["partner_primary_email"] = %obj.partnerPrimaryEmail.get()
+  if obj.partnerAccessTokenExpiry.isSome():
+    result["partner_access_token_expiry"] = %obj.partnerAccessTokenExpiry.get()
+  if obj.partnerRefreshTokenExpiry.isSome():
+    result["partner_refresh_token_expiry"] = %obj.partnerRefreshTokenExpiry.get()
+  if obj.scopes.isSome():
+    result["scopes"] = %obj.scopes.get()
+  if obj.partnerMetadata.isSome():
+    result["partner_metadata"] = %obj.partnerMetadata.get()
+  if obj.additionalId1.isSome():
+    result["additional_id_1"] = %obj.additionalId1.get()
+  if obj.createdTime.isSome():
+    result["created_time"] = %obj.createdTime.get()
+  if obj.updatedTime.isSome():
+    result["updated_time"] = %obj.updatedTime.get()
+

@@ -5,7 +5,8 @@ type CatalogsItemsDeleteDiscontinuedBatchRequest struct {
 
 	Country Country `json:"country"`
 
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 
 	Operation BatchOperation `json:"operation"`
 

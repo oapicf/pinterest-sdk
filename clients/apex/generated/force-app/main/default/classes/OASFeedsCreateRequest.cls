@@ -184,6 +184,10 @@ public class OASFeedsCreateRequest implements OASCatalogsVerticalFeedsCreateRequ
         return propertyMappings;
     }
 
+    public OASFeedsCreateRequest() {
+        status = 'ACTIVE';
+    }
+
     public static OASFeedsCreateRequest getExample() {
         OASFeedsCreateRequest feedsCreateRequest = new OASFeedsCreateRequest();
           feedsCreateRequest.defaultCurrency = OASNullableCurrency.getExample();
@@ -196,7 +200,7 @@ public class OASFeedsCreateRequest implements OASCatalogsVerticalFeedsCreateRequ
           feedsCreateRequest.catalogType = OASCatalogsType.getExample();
           feedsCreateRequest.defaultCountry = OASCountry.getExample();
           feedsCreateRequest.defaultAvailability = OASProductAvailabilityType.getExample();
-          feedsCreateRequest.status = '';
+          feedsCreateRequest.status = OASCatalogsStatus.getExample();
           feedsCreateRequest.catalogId = '';
         return feedsCreateRequest;
     }

@@ -12,24 +12,15 @@
 /**
  * Summary status for campaign
  */
-export type CampaignSummaryStatus = 'RUNNING' | 'PAUSED' | 'NOT_STARTED' | 'COMPLETED' | 'ADVERTISER_DISABLED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT';
-
 export const CampaignSummaryStatus = {
-
-    Running: 'RUNNING' as CampaignSummaryStatus,
-
-    Paused: 'PAUSED' as CampaignSummaryStatus,
-
-    NotStarted: 'NOT_STARTED' as CampaignSummaryStatus,
-
-    Completed: 'COMPLETED' as CampaignSummaryStatus,
-
-    AdvertiserDisabled: 'ADVERTISER_DISABLED' as CampaignSummaryStatus,
-
-    Archived: 'ARCHIVED' as CampaignSummaryStatus,
-
-    Draft: 'DRAFT' as CampaignSummaryStatus,
-
-    DeletedDraft: 'DELETED_DRAFT' as CampaignSummaryStatus
-};
+    Running: 'RUNNING',
+    Paused: 'PAUSED',
+    NotStarted: 'NOT_STARTED',
+    Completed: 'COMPLETED',
+    AdvertiserDisabled: 'ADVERTISER_DISABLED',
+    Archived: 'ARCHIVED',
+    Draft: 'DRAFT',
+    DeletedDraft: 'DELETED_DRAFT'
+} as const;
+export type CampaignSummaryStatus = typeof CampaignSummaryStatus[keyof typeof CampaignSummaryStatus];
 

@@ -32,7 +32,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   KeywordMetrics.JSON_PROPERTY_KEYWORD_QUERY_VOLUME
 })
 @JsonTypeName("KeywordMetrics")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-01-26T05:36:06.173633742Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class KeywordMetrics {
     public static final String JSON_PROPERTY_AVG_CPC_IN_MICRO_CURRENCY = "avg_cpc_in_micro_currency";

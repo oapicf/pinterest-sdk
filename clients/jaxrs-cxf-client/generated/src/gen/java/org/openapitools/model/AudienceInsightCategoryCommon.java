@@ -10,18 +10,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AudienceInsightCategoryCommon  {
   
   @ApiModelProperty(example = "549755885175", value = "")
+
   private String key;
 
   @ApiModelProperty(example = "travel", value = "")
+
   private String name;
 
   @ApiModelProperty(example = "0.551", value = "")
+
   private BigDecimal ratio;
 
   @ApiModelProperty(example = "1.2", value = "")
+
   private BigDecimal index;
 
   @ApiModelProperty(example = "549755885175", value = "")
+
   private String id;
  /**
    * Get key

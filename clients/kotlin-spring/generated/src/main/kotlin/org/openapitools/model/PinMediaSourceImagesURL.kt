@@ -32,10 +32,10 @@ data class PinMediaSourceImagesURL(
     @Schema(example = "null", description = "")
     @get:JsonProperty("source_type") val sourceType: PinMediaSourceImagesURL.SourceType? = null,
 
-    @get:Min(0)
+    @get:Min(value=0)
     @Schema(example = "null", description = "")
     @get:JsonProperty("index") val index: kotlin.Int? = null
-    ) {
+) {
 
     /**
     * 
@@ -49,7 +49,8 @@ data class PinMediaSourceImagesURL(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): SourceType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSourceImagesURL'")
             }
         }
     }

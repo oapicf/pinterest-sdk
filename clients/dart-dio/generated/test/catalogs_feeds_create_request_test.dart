@@ -54,7 +54,7 @@ void main() {
       // TODO
     });
 
-    // CatalogsStatus status
+    // CatalogsStatus status (default value: 'ACTIVE')
     test('to test the property `status`', () async {
       // TODO
     });

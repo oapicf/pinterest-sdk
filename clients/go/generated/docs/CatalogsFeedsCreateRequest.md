@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **PreferredProcessingSchedule** | Pointer to [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **DefaultCountry** | Pointer to [**Country**](Country.md) |  | [optional] 
 **DefaultAvailability** | Pointer to [**NullableProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
-**Status** | Pointer to [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
+**Status** | Pointer to [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to ACTIVE]
 
 ## Methods
 

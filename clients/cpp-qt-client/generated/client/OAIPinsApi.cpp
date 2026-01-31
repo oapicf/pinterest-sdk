@@ -221,7 +221,7 @@ QString OAIPinsApi::getParamStyleDelimiter(const QString &style, const QString &
     }
 }
 
-void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate &start_date, const QDate &end_date, const QList<OAIPins_analytics_metric_types_parameter_inner> &metric_types, const ::OpenAPI::OptionalParam<QString> &app_types, const ::OpenAPI::OptionalParam<QString> &ad_account_id) {
+void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate &start_date, const QDate &end_date, const QList<QString> &metric_types, const ::OpenAPI::OptionalParam<QString> &app_types, const ::OpenAPI::OptionalParam<QString> &ad_account_id) {
     QString fullPath = QString(_serverConfigs["multiPins_analytics"][_serverIndices.value("multiPins_analytics")].URL()+"/pins/analytics");
     
     QString queryPrefix, querySuffix, queryDelimiter, queryStyle;
@@ -365,7 +365,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
         queryDelimiter = getParamStyleDelimiter(queryStyle, "metric_types", false);
         if (metric_types.size() > 0) {
             if (QString("csv").indexOf("multi") == 0) {
-                for (OAIPins_analytics_metric_types_parameter_inner t : metric_types) {
+                for (QString t : metric_types) {
                     if (fullPath.indexOf("?") > 0)
                         fullPath.append(queryPrefix);
                     else
@@ -378,7 +378,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
                 else
                     fullPath.append("?").append(queryPrefix).append("metric_types").append(querySuffix);
                 qint32 count = 0;
-                for (OAIPins_analytics_metric_types_parameter_inner t : metric_types) {
+                for (QString t : metric_types) {
                     if (count > 0) {
                         fullPath.append((false)? queryDelimiter : QUrl::toPercentEncoding(queryDelimiter));
                     }
@@ -391,7 +391,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
                 else
                     fullPath.append("?").append(queryPrefix).append("metric_types").append(querySuffix);
                 qint32 count = 0;
-                for (OAIPins_analytics_metric_types_parameter_inner t : metric_types) {
+                for (QString t : metric_types) {
                     if (count > 0) {
                         fullPath.append("\t");
                     }
@@ -404,7 +404,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
                 else
                     fullPath.append("?").append(queryPrefix).append("metric_types").append(querySuffix);
                 qint32 count = 0;
-                for (OAIPins_analytics_metric_types_parameter_inner t : metric_types) {
+                for (QString t : metric_types) {
                     if (count > 0) {
                         fullPath.append(queryDelimiter);
                     }
@@ -417,7 +417,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
                 else
                     fullPath.append("?").append(queryPrefix).append("metric_types").append(querySuffix);
                 qint32 count = 0;
-                for (OAIPins_analytics_metric_types_parameter_inner t : metric_types) {
+                for (QString t : metric_types) {
                     if (count > 0) {
                         fullPath.append(queryDelimiter);
                     }
@@ -430,7 +430,7 @@ void OAIPinsApi::multiPins_analytics(const QList<QString> &pin_ids, const QDate 
                 else
                     fullPath.append("?").append(queryPrefix).append("metric_types").append(querySuffix);
                 qint32 count = 0;
-                for (OAIPins_analytics_metric_types_parameter_inner t : metric_types) {
+                for (QString t : metric_types) {
                     if (count > 0) {
                         fullPath.append(queryDelimiter);
                     }
@@ -614,7 +614,7 @@ void OAIPinsApi::multiPins_analyticsCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, const QDate &end_date, const QList<OAIPins_analytics_metric_types_parameter_inner> &metric_types, const ::OpenAPI::OptionalParam<QString> &app_types, const ::OpenAPI::OptionalParam<QString> &split_field, const ::OpenAPI::OptionalParam<QString> &ad_account_id) {
+void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, const QDate &end_date, const QList<QString> &metric_types, const ::OpenAPI::OptionalParam<QString> &app_types, const ::OpenAPI::OptionalParam<QString> &split_field, const ::OpenAPI::OptionalParam<QString> &ad_account_id) {
     QString fullPath = QString(_serverConfigs["pins_analytics"][_serverIndices.value("pins_analytics")].URL()+"/pins/{pin_id}/analytics");
     
     
@@ -687,7 +687,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
         queryDelimiter = getParamStyleDelimiter(queryStyle, "metric_types", false);
         if (metric_types.size() > 0) {
             if (QString("csv").indexOf("multi") == 0) {
-                for (OAIPins_analytics_metric_types_parameter_inner t : metric_types) {
+                for (QString t : metric_types) {
                     if (fullPath.indexOf("?") > 0)
                         fullPath.append(queryPrefix);
                     else
@@ -700,7 +700,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
                 else
                     fullPath.append("?").append(queryPrefix).append("metric_types").append(querySuffix);
                 qint32 count = 0;
-                for (OAIPins_analytics_metric_types_parameter_inner t : metric_types) {
+                for (QString t : metric_types) {
                     if (count > 0) {
                         fullPath.append((false)? queryDelimiter : QUrl::toPercentEncoding(queryDelimiter));
                     }
@@ -713,7 +713,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
                 else
                     fullPath.append("?").append(queryPrefix).append("metric_types").append(querySuffix);
                 qint32 count = 0;
-                for (OAIPins_analytics_metric_types_parameter_inner t : metric_types) {
+                for (QString t : metric_types) {
                     if (count > 0) {
                         fullPath.append("\t");
                     }
@@ -726,7 +726,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
                 else
                     fullPath.append("?").append(queryPrefix).append("metric_types").append(querySuffix);
                 qint32 count = 0;
-                for (OAIPins_analytics_metric_types_parameter_inner t : metric_types) {
+                for (QString t : metric_types) {
                     if (count > 0) {
                         fullPath.append(queryDelimiter);
                     }
@@ -739,7 +739,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
                 else
                     fullPath.append("?").append(queryPrefix).append("metric_types").append(querySuffix);
                 qint32 count = 0;
-                for (OAIPins_analytics_metric_types_parameter_inner t : metric_types) {
+                for (QString t : metric_types) {
                     if (count > 0) {
                         fullPath.append(queryDelimiter);
                     }
@@ -752,7 +752,7 @@ void OAIPinsApi::pins_analytics(const QString &pin_id, const QDate &start_date, 
                 else
                     fullPath.append("?").append(queryPrefix).append("metric_types").append(querySuffix);
                 qint32 count = 0;
-                for (OAIPins_analytics_metric_types_parameter_inner t : metric_types) {
+                for (QString t : metric_types) {
                     if (count > 0) {
                         fullPath.append(queryDelimiter);
                     }

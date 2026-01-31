@@ -67,12 +67,8 @@ class ProductGroupPromotionsController extends Controller
 
         $productGroupPromotionCreateRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ProductGroupPromotionCreateRequest::class);
 
-        try {
-            $apiResult = $this->api->productGroupPromotionsCreate($adAccountId, $productGroupPromotionCreateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->productGroupPromotionsCreate($adAccountId, $productGroupPromotionCreateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProductGroupPromotionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -123,12 +119,8 @@ class ProductGroupPromotionsController extends Controller
 
 
 
-        try {
-            $apiResult = $this->api->productGroupPromotionsGet($adAccountId, $productGroupPromotionId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->productGroupPromotionsGet($adAccountId, $productGroupPromotionId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProductGroupPromotionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -207,12 +199,8 @@ class ProductGroupPromotionsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->productGroupPromotionsList($adAccountId, $productGroupPromotionIds, $entityStatuses, $adGroupId, $pageSize, $order, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->productGroupPromotionsList($adAccountId, $productGroupPromotionIds, $entityStatuses, $adGroupId, $pageSize, $order, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProductGroupPromotionsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -252,12 +240,8 @@ class ProductGroupPromotionsController extends Controller
 
         $productGroupPromotionUpdateRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ProductGroupPromotionUpdateRequest::class);
 
-        try {
-            $apiResult = $this->api->productGroupPromotionsUpdate($adAccountId, $productGroupPromotionUpdateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->productGroupPromotionsUpdate($adAccountId, $productGroupPromotionUpdateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ProductGroupPromotionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -346,12 +330,8 @@ class ProductGroupPromotionsController extends Controller
 
         $conversionReportTime = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdGroupsAnalyticsConversionReportTimeParameter::class);
 
-        try {
-            $apiResult = $this->api->productGroupsAnalytics($adAccountId, $startDate, $endDate, $productGroupIds, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->productGroupsAnalytics($adAccountId, $startDate, $endDate, $productGroupIds, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

@@ -106,7 +106,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="bidFloorRequest">Parameters to get bid_floor info</param>
-    virtual void ad_groups_bid_floor_get(const std::string &adAccountId, const org::openapitools::server::model::BidFloorRequest &bidFloorRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_groups_bid_floor_get( const std::string &adAccountId, const org::openapitools::server::model::BidFloorRequest &bidFloorRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get targeting analytics for ad groups
     /// </summary>
@@ -125,7 +125,7 @@ private:
     /// <param name="viewWindowDays">Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)</param>
     /// <param name="conversionReportTime">The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to &quot;TIME_OF_AD_ACTION&quot;)</param>
     /// <param name="attributionTypes">List of types of attribution for the conversion report (optional, default to std::make_shared&lt;ConversionReportAttributionType&gt;())</param>
-    virtual void ad_groups_targeting_analytics_get(const std::string &adAccountId, const std::optional<std::vector<std::string>> &adGroupIds, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<org::openapitools::server::model::AdsAnalyticsTargetingType>> &targetingTypes, const std::optional<std::vector<std::string>> &columns, const std::optional<org::openapitools::server::model::Granularity> &granularity, const std::optional<int32_t> &clickWindowDays, const std::optional<int32_t> &engagementWindowDays, const std::optional<int32_t> &viewWindowDays, const std::optional<std::string> &conversionReportTime, const std::optional<org::openapitools::server::model::ConversionReportAttributionType> &attributionTypes, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_groups_targeting_analytics_get( const std::string &adAccountId, const std::optional<std::vector<std::string>> &adGroupIds, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<org::openapitools::server::model::AdsAnalyticsTargetingType>> &targetingTypes, const std::optional<std::vector<std::string>> &columns, const std::optional<org::openapitools::server::model::Granularity> &granularity, const std::optional<int32_t> &clickWindowDays, const std::optional<int32_t> &engagementWindowDays, const std::optional<int32_t> &viewWindowDays, const std::optional<std::string> &conversionReportTime, const std::optional<org::openapitools::server::model::ConversionReportAttributionType> &attributionTypes, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get ad group analytics
     /// </summary>
@@ -142,7 +142,7 @@ private:
     /// <param name="engagementWindowDays">Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;30&#x60; days. (optional, default to 30)</param>
     /// <param name="viewWindowDays">Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to &#x60;1&#x60; day. (optional, default to 1)</param>
     /// <param name="conversionReportTime">The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional, default to &quot;TIME_OF_AD_ACTION&quot;)</param>
-    virtual void ad_groups_analytics(const std::string &adAccountId, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<std::string>> &adGroupIds, const std::optional<std::vector<std::string>> &columns, const std::optional<org::openapitools::server::model::Granularity> &granularity, const std::optional<int32_t> &clickWindowDays, const std::optional<int32_t> &engagementWindowDays, const std::optional<int32_t> &viewWindowDays, const std::optional<std::string> &conversionReportTime, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_groups_analytics( const std::string &adAccountId, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<std::string>> &adGroupIds, const std::optional<std::vector<std::string>> &columns, const std::optional<org::openapitools::server::model::Granularity> &granularity, const std::optional<int32_t> &clickWindowDays, const std::optional<int32_t> &engagementWindowDays, const std::optional<int32_t> &viewWindowDays, const std::optional<std::string> &conversionReportTime, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get audience sizing
     /// </summary>
@@ -151,7 +151,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="adGroupAudienceSizingRequest"> (optional)</param>
-    virtual void ad_groups_audience_sizing(const std::string &adAccountId, const org::openapitools::server::model::AdGroupAudienceSizingRequest &adGroupAudienceSizingRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_groups_audience_sizing( const std::string &adAccountId, const org::openapitools::server::model::AdGroupAudienceSizingRequest &adGroupAudienceSizingRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create ad groups
     /// </summary>
@@ -160,7 +160,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="adGroupCreateRequest">List of ad groups to create, size limit [1, 30].</param>
-    virtual void ad_groups_create(const std::string &adAccountId, const std::vector<org::openapitools::server::model::AdGroupCreateRequest> &adGroupCreateRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_groups_create( const std::string &adAccountId, const std::vector<org::openapitools::server::model::AdGroupCreateRequest> &adGroupCreateRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get ad group
     /// </summary>
@@ -169,7 +169,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="adGroupId">Unique identifier of an ad group.</param>
-    virtual void ad_groups_get(const std::string &adAccountId, const std::string &adGroupId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_groups_get( const std::string &adAccountId, const std::string &adGroupId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List ad groups
     /// </summary>
@@ -184,7 +184,7 @@ private:
     /// <param name="order">The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to &quot;&quot;)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="translateInterestsToNames">Return interests as text names (if value is true) rather than topic IDs. (optional, default to false)</param>
-    virtual void ad_groups_list(const std::string &adAccountId, const std::optional<std::vector<std::string>> &campaignIds, const std::optional<std::vector<std::string>> &adGroupIds, const std::optional<std::vector<std::string>> &entityStatuses, const std::optional<int32_t> &pageSize, const std::optional<std::string> &order, const std::optional<std::string> &bookmark, const std::optional<bool> &translateInterestsToNames, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_groups_list( const std::string &adAccountId, const std::optional<std::vector<std::string>> &campaignIds, const std::optional<std::vector<std::string>> &adGroupIds, const std::optional<std::vector<std::string>> &entityStatuses, const std::optional<int32_t> &pageSize, const std::optional<std::string> &order, const std::optional<std::string> &bookmark, const std::optional<bool> &translateInterestsToNames, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update ad groups
     /// </summary>
@@ -193,7 +193,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="adGroupUpdateRequest">List of ad groups to update, size limit [1, 30].</param>
-    virtual void ad_groups_update(const std::string &adAccountId, const std::vector<org::openapitools::server::model::AdGroupUpdateRequest> &adGroupUpdateRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_groups_update( const std::string &adAccountId, const std::vector<org::openapitools::server::model::AdGroupUpdateRequest> &adGroupUpdateRequest, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
+import org.openapitools.api.ResourcesApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -34,7 +35,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${api.base-path:/v5}")
+@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
 class ResourcesApiController() {
 
     @Operation(
@@ -48,7 +49,7 @@ class ResourcesApiController() {
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/resources/ad_account_countries"],
+        value = [PATH_AD_ACCOUNT_COUNTRIES_GET /* "/resources/ad_account_countries" */],
         produces = ["application/json"]
     )
     fun adAccountCountriesGet(): ResponseEntity<AdAccountsCountryResponse> {
@@ -68,10 +69,12 @@ See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/resources/delivery_metrics"],
+        value = [PATH_DELIVERY_METRICS_GET /* "/resources/delivery_metrics" */],
         produces = ["application/json"]
     )
-    fun deliveryMetricsGet(@Parameter(description = "Report type.", schema = Schema(allowableValues = ["SYNC", "ASYNC"])) @Valid @RequestParam(value = "report_type", required = false) reportType: kotlin.String?): ResponseEntity<DeliveryMetricsResponse> {
+    fun deliveryMetricsGet(
+        @Parameter(description = "Report type.", schema = Schema(allowableValues = ["SYNC", "ASYNC"])) @Valid @RequestParam(value = "report_type", required = false) reportType: kotlin.String?
+    ): ResponseEntity<DeliveryMetricsResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -86,10 +89,12 @@ See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/resources/targeting/interests/{interest_id}"],
+        value = [PATH_INTEREST_TARGETING_OPTIONS_GET /* "/resources/targeting/interests/{interest_id}" */],
         produces = ["application/json"]
     )
-    fun interestTargetingOptionsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an interest.", required = true) @PathVariable("interest_id") interestId: kotlin.String): ResponseEntity<SingleInterestTargetingOptionResponse> {
+    fun interestTargetingOptionsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an interest.", required = true) @PathVariable("interest_id") interestId: kotlin.String
+    ): ResponseEntity<SingleInterestTargetingOptionResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -106,7 +111,7 @@ See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/resources/lead_form_questions"],
+        value = [PATH_LEAD_FORM_QUESTIONS_GET /* "/resources/lead_form_questions" */],
         produces = ["application/json"]
     )
     fun leadFormQuestionsGet(): ResponseEntity<Unit> {
@@ -124,10 +129,12 @@ See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/resources/metrics_ready_state"],
+        value = [PATH_METRICS_READY_STATE_GET /* "/resources/metrics_ready_state" */],
         produces = ["application/json"]
     )
-    fun metricsReadyStateGet(@NotNull @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$") @Parameter(description = "Analytics reports request date (UTC). Format: YYYY-MM-DD", required = true) @Valid @RequestParam(value = "date", required = true) date: kotlin.String): ResponseEntity<BookClosedResponse> {
+    fun metricsReadyStateGet(
+        @NotNull @Pattern(regexp="^(\\d{4})-(\\d{2})-(\\d{2})$") @Parameter(description = "Analytics reports request date (UTC). Format: YYYY-MM-DD", required = true) @Valid @RequestParam(value = "date", required = true) date: kotlin.String
+    ): ResponseEntity<BookClosedResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -143,10 +150,27 @@ See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/resources/targeting/{targeting_type}"],
+        value = [PATH_TARGETING_OPTIONS_GET /* "/resources/targeting/{targeting_type}" */],
         produces = ["application/json"]
     )
-    fun targetingOptionsGet(@Parameter(description = "Public targeting type.", required = true, schema = Schema(allowableValues = ["\"APPTYPE\"", "\"GENDER\"", "\"LOCALE\"", "\"AGE_BUCKET\"", "\"LOCATION\"", "\"GEO\"", "\"INTEREST\"", "\"KEYWORD\"", "\"AUDIENCE_INCLUDE\"", "\"AUDIENCE_EXCLUDE\""])) @PathVariable("targeting_type") targetingType: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Client ID.") @Valid @RequestParam(value = "client_id", required = false) clientId: kotlin.String?,@Parameter(description = "Oauth signature") @Valid @RequestParam(value = "oauth_signature", required = false) oauthSignature: kotlin.String?,@Pattern(regexp="\\d+") @Parameter(description = "Timestamp") @Valid @RequestParam(value = "timestamp", required = false) timestamp: kotlin.String?,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<List<kotlin.Any>> {
+    fun targetingOptionsGet(
+        @Parameter(description = "Public targeting type.", required = true, schema = Schema(allowableValues = ["APPTYPE", "GENDER", "LOCALE", "AGE_BUCKET", "LOCATION", "GEO", "INTEREST", "KEYWORD", "AUDIENCE_INCLUDE", "AUDIENCE_EXCLUDE"])) @PathVariable("targeting_type") targetingType: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Client ID.") @Valid @RequestParam(value = "client_id", required = false) clientId: kotlin.String?,
+        @Parameter(description = "Oauth signature") @Valid @RequestParam(value = "oauth_signature", required = false) oauthSignature: kotlin.String?,
+        @Pattern(regexp="\\d+") @Parameter(description = "Timestamp") @Valid @RequestParam(value = "timestamp", required = false) timestamp: kotlin.String?,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<List<kotlin.Any>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    companion object {
+        //for your own safety never directly reuse these path definitions in tests
+        const val BASE_PATH: String = "/v5"
+        const val PATH_AD_ACCOUNT_COUNTRIES_GET: String = "/resources/ad_account_countries"
+        const val PATH_DELIVERY_METRICS_GET: String = "/resources/delivery_metrics"
+        const val PATH_INTEREST_TARGETING_OPTIONS_GET: String = "/resources/targeting/interests/{interest_id}"
+        const val PATH_LEAD_FORM_QUESTIONS_GET: String = "/resources/lead_form_questions"
+        const val PATH_METRICS_READY_STATE_GET: String = "/resources/metrics_ready_state"
+        const val PATH_TARGETING_OPTIONS_GET: String = "/resources/targeting/{targeting_type}"
     }
 }

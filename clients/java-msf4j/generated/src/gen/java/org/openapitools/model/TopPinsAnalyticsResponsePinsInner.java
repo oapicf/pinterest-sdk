@@ -15,7 +15,7 @@ import org.openapitools.model.DataStatus;
  * Array with metrics, status, and pin id for the requested metric
  */
 @ApiModel(description = "Array with metrics, status, and pin id for the requested metric")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TopPinsAnalyticsResponsePinsInner   {
   @JsonProperty("metrics")
   private Map<String, BigDecimal> metrics = null;

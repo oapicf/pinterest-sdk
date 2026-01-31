@@ -37,7 +37,7 @@ data class AdAccountsCountryResponseData(
 
     @Schema(example = "United States of America", description = "Country name")
     @get:JsonProperty("name") val name: kotlin.String? = null
-    ) {
+) {
 
 }
 

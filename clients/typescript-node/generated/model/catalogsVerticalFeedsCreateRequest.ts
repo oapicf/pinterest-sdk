@@ -18,7 +18,7 @@ import { CatalogsFeedsCreateRequestDefaultLocale } from './catalogsFeedsCreateRe
 import { CatalogsFormat } from './catalogsFormat';
 import { CatalogsHotelFeedsCreateRequest } from './catalogsHotelFeedsCreateRequest';
 import { CatalogsRetailFeedsCreateRequest } from './catalogsRetailFeedsCreateRequest';
-import { CatalogsStatus &amp; object } from './catalogsStatus  object';
+import { CatalogsStatus } from './catalogsStatus';
 import { CatalogsType } from './catalogsType';
 import { Country } from './country';
 import { NullableCurrency } from './nullableCurrency';
@@ -44,7 +44,7 @@ export class CatalogsVerticalFeedsCreateRequest {
     'catalogType': CatalogsType;
     'defaultCountry': Country;
     'defaultAvailability'?: ProductAvailabilityType | null;
-    'status'?: CatalogsStatus & object;
+    'status'?: CatalogsStatus = CatalogsStatus.Active;
     /**
     * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
     */
@@ -106,7 +106,7 @@ export class CatalogsVerticalFeedsCreateRequest {
         {
             "name": "status",
             "baseName": "status",
-            "type": "CatalogsStatus & object"
+            "type": "CatalogsStatus"
         },
         {
             "name": "catalogId",

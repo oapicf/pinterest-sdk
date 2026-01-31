@@ -18,10 +18,10 @@ export interface CatalogsRetailItemsPostFilter {
     catalog_id?: string;
 }
 export namespace CatalogsRetailItemsPostFilter {
-    export type CatalogTypeEnum = 'RETAIL';
     export const CatalogTypeEnum = {
-        Retail: 'RETAIL' as CatalogTypeEnum
-    };
+        Retail: 'RETAIL'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

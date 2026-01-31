@@ -53,8 +53,13 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CreateMMMReportRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateMMMReportRequest {
+  public static final String SERIALIZED_NAME_COUNTRIES = "countries";
+  @SerializedName(SERIALIZED_NAME_COUNTRIES)
+  @javax.annotation.Nullable
+  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_REPORT_NAME = "report_name";
   @SerializedName(SERIALIZED_NAME_REPORT_NAME)
   @javax.annotation.Nonnull
@@ -194,13 +199,35 @@ public class CreateMMMReportRequest {
   @javax.annotation.Nonnull
   private List<MMMReportingColumn> columns = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_COUNTRIES = "countries";
-  @SerializedName(SERIALIZED_NAME_COUNTRIES)
-  @javax.annotation.Nullable
-  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
-
   public CreateMMMReportRequest() {
   }
+
+  public CreateMMMReportRequest countries(@javax.annotation.Nullable List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
+    return this;
+  }
+
+  public CreateMMMReportRequest addCountriesItem(TargetingAdvertiserCountry countriesItem) {
+    if (this.countries == null) {
+      this.countries = new ArrayList<>();
+    }
+    this.countries.add(countriesItem);
+    return this;
+  }
+
+  /**
+   * A List of countries for filtering
+   * @return countries
+   */
+  @javax.annotation.Nullable
+  public List<TargetingAdvertiserCountry> getCountries() {
+    return countries;
+  }
+
+  public void setCountries(@javax.annotation.Nullable List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
+  }
+
 
   public CreateMMMReportRequest reportName(@javax.annotation.Nonnull String reportName) {
     this.reportName = reportName;
@@ -351,33 +378,6 @@ public class CreateMMMReportRequest {
   }
 
 
-  public CreateMMMReportRequest countries(@javax.annotation.Nullable List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-    return this;
-  }
-
-  public CreateMMMReportRequest addCountriesItem(TargetingAdvertiserCountry countriesItem) {
-    if (this.countries == null) {
-      this.countries = new ArrayList<>();
-    }
-    this.countries.add(countriesItem);
-    return this;
-  }
-
-  /**
-   * A List of countries for filtering
-   * @return countries
-   */
-  @javax.annotation.Nullable
-  public List<TargetingAdvertiserCountry> getCountries() {
-    return countries;
-  }
-
-  public void setCountries(@javax.annotation.Nullable List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -388,25 +388,26 @@ public class CreateMMMReportRequest {
       return false;
     }
     CreateMMMReportRequest createMMMReportRequest = (CreateMMMReportRequest) o;
-    return Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
+    return Objects.equals(this.countries, createMMMReportRequest.countries) &&
+        Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
         Objects.equals(this.startDate, createMMMReportRequest.startDate) &&
         Objects.equals(this.endDate, createMMMReportRequest.endDate) &&
         Objects.equals(this.granularity, createMMMReportRequest.granularity) &&
         Objects.equals(this.level, createMMMReportRequest.level) &&
         Objects.equals(this.targetingTypes, createMMMReportRequest.targetingTypes) &&
-        Objects.equals(this.columns, createMMMReportRequest.columns) &&
-        Objects.equals(this.countries, createMMMReportRequest.countries);
+        Objects.equals(this.columns, createMMMReportRequest.columns);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportName, startDate, endDate, granularity, level, targetingTypes, columns, countries);
+    return Objects.hash(countries, reportName, startDate, endDate, granularity, level, targetingTypes, columns);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateMMMReportRequest {\n");
+    sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
@@ -414,7 +415,6 @@ public class CreateMMMReportRequest {
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    targetingTypes: ").append(toIndentedString(targetingTypes)).append("\n");
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
-    sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -436,18 +436,10 @@ public class CreateMMMReportRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("countries");
+    openapiFields = new HashSet<String>(Arrays.asList("countries", "report_name", "start_date", "end_date", "granularity", "level", "targeting_types", "columns"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("report_name");
-    openapiRequiredFields.add("start_date");
-    openapiRequiredFields.add("end_date");
-    openapiRequiredFields.add("granularity");
-    openapiRequiredFields.add("level");
-    openapiRequiredFields.add("targeting_types");
-    openapiRequiredFields.add("columns");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("report_name", "start_date", "end_date", "granularity", "level", "targeting_types", "columns"));
   }
 
   /**
@@ -459,7 +451,7 @@ public class CreateMMMReportRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CreateMMMReportRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateMMMReportRequest is not found in the empty JSON string", CreateMMMReportRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CreateMMMReportRequest is not found in the empty JSON string", CreateMMMReportRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -467,33 +459,37 @@ public class CreateMMMReportRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CreateMMMReportRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateMMMReportRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CreateMMMReportRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CreateMMMReportRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("countries") != null && !jsonObj.get("countries").isJsonNull() && !jsonObj.get("countries").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `countries` to be an array in the JSON string but got `%s`", jsonObj.get("countries").toString()));
+      }
       if (!jsonObj.get("report_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `report_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("report_name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `report_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("report_name").toString()));
       }
       if (!jsonObj.get("start_date").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `start_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("start_date").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `start_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("start_date").toString()));
       }
       if (!jsonObj.get("end_date").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `end_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("end_date").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `end_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("end_date").toString()));
       }
       if (!jsonObj.get("granularity").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `granularity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("granularity").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `granularity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("granularity").toString()));
       }
       // validate the required field `granularity`
       GranularityEnum.validateJsonElement(jsonObj.get("granularity"));
       if (!jsonObj.get("level").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `level` to be a primitive type in the JSON string but got `%s`", jsonObj.get("level").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `level` to be a primitive type in the JSON string but got `%s`", jsonObj.get("level").toString()));
       }
       // validate the required field `level`
       LevelEnum.validateJsonElement(jsonObj.get("level"));
@@ -501,17 +497,13 @@ public class CreateMMMReportRequest {
       if (jsonObj.get("targeting_types") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("targeting_types").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `targeting_types` to be an array in the JSON string but got `%s`", jsonObj.get("targeting_types").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `targeting_types` to be an array in the JSON string but got `%s`", jsonObj.get("targeting_types").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("columns") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("columns").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `columns` to be an array in the JSON string but got `%s`", jsonObj.get("columns").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("countries") != null && !jsonObj.get("countries").isJsonNull() && !jsonObj.get("countries").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `countries` to be an array in the JSON string but got `%s`", jsonObj.get("countries").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `columns` to be an array in the JSON string but got `%s`", jsonObj.get("columns").toString()));
       }
   }
 

@@ -23,6 +23,12 @@ import type {
  */
 export interface CreateMMMReportRequest {
     /**
+     * A List of countries for filtering
+     * @type {Array<TargetingAdvertiserCountry>}
+     * @memberof CreateMMMReportRequest
+     */
+    countries?: Array<TargetingAdvertiserCountry>;
+    /**
      * Name of the Marketing Mix Modeling (MMM) report
      * @type {string}
      * @memberof CreateMMMReportRequest
@@ -64,12 +70,6 @@ export interface CreateMMMReportRequest {
      * @memberof CreateMMMReportRequest
      */
     columns: Array<MMMReportingColumn>;
-    /**
-     * A List of countries for filtering
-     * @type {Array<TargetingAdvertiserCountry>}
-     * @memberof CreateMMMReportRequest
-     */
-    countries?: Array<TargetingAdvertiserCountry>;
 }
 
 /**

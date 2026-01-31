@@ -47,7 +47,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
 
   private String catalogId;
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   /**
    **/

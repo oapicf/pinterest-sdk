@@ -55,7 +55,7 @@ data class Keyword(
 
     @Schema(example = "keyword", description = "Always keyword")
     @get:JsonProperty("type") val type: kotlin.String? = null
-    ) {
+) {
 
 }
 

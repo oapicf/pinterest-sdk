@@ -3,8 +3,8 @@ namespace OpenAPI.Model
 open System
 open System.Collections.Generic
 open Newtonsoft.Json
-open OpenAPI.Model.AudienceCreateRequest1AudienceType
 open OpenAPI.Model.AudienceRule
+open OpenAPI.Model.AudienceType
 
 module AudienceCreateRequest =
 
@@ -21,7 +21,7 @@ module AudienceCreateRequest =
     [<JsonProperty(PropertyName = "description")>]
     Description : string;
     [<JsonProperty(PropertyName = "audience_type")>]
-    AudienceType : AudienceCreateRequest1AudienceType;
+    AudienceType : AudienceType;
   }
 
   //#endregion

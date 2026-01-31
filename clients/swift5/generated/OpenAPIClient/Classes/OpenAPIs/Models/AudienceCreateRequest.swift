@@ -20,9 +20,10 @@ public struct AudienceCreateRequest: Codable, JSONEncodable, Hashable {
     public var rule: AudienceRule
     /** Audience description. */
     public var description: String?
-    public var audienceType: AudienceCreateRequest1AudienceType
+    /** <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
+    public var audienceType: AudienceType
 
-    public init(adAccountId: String? = nil, name: String, rule: AudienceRule, description: String? = nil, audienceType: AudienceCreateRequest1AudienceType) {
+    public init(adAccountId: String? = nil, name: String, rule: AudienceRule, description: String? = nil, audienceType: AudienceType) {
         self.adAccountId = adAccountId
         self.name = name
         self.rule = rule

@@ -4,8 +4,8 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **grantType** | [**inline**](#GrantType) |  |  |
 | **scope** | **kotlin.String** |  |  |
+| **grantType** | [**inline**](#GrantType) |  |  |
 
 
 <a id="GrantType"></a>

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **DefaultCountry** | [**Country**](Country.md) |  | 
 **DefaultAvailability** | Pointer to [**NullableProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
-**Status** | Pointer to [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
+**Status** | Pointer to [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to ACTIVE]
 
 ## Methods
 

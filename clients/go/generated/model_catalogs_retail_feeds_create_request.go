@@ -51,6 +51,8 @@ func NewCatalogsRetailFeedsCreateRequest(name string, format CatalogsFormat, def
 	this.Location = location
 	this.CatalogType = catalogType
 	this.DefaultCountry = defaultCountry
+	var status CatalogsStatus = ACTIVE
+	this.Status = &status
 	return &this
 }
 
@@ -59,6 +61,8 @@ func NewCatalogsRetailFeedsCreateRequest(name string, format CatalogsFormat, def
 // but it doesn't guarantee that properties required by API are set
 func NewCatalogsRetailFeedsCreateRequestWithDefaults() *CatalogsRetailFeedsCreateRequest {
 	this := CatalogsRetailFeedsCreateRequest{}
+	var status CatalogsStatus = ACTIVE
+	this.Status = &status
 	return &this
 }
 

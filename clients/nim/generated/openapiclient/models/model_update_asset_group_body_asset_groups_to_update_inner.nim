@@ -9,14 +9,50 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_asset_group_type
 
 type UpdateAssetGroupBodyAssetGroupsToUpdateInner* = object
   ## 
   assetGroupId*: string ## Unique identifier of the asset group to update.
-  name*: string ## Asset Group name
-  description*: string ## Asset group description
-  assetGroupTypes*: seq[AssetGroupType] ## Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
-  assetsToAdd*: seq[string] ## A list of asset ids to add to the asset group.
-  assetsToRemove*: seq[string] ## A list of asset ids to remove from the asset group.
+  name*: Option[string] ## Asset Group name
+  description*: Option[string] ## Asset group description
+  assetGroupTypes*: Option[seq[AssetGroupType]] ## Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
+  assetsToAdd*: Option[seq[string]] ## A list of asset ids to add to the asset group.
+  assetsToRemove*: Option[seq[string]] ## A list of asset ids to remove from the asset group.
+
+
+# Custom JSON deserialization for UpdateAssetGroupBodyAssetGroupsToUpdateInner with custom field names
+proc to*(node: JsonNode, T: typedesc[UpdateAssetGroupBodyAssetGroupsToUpdateInner]): UpdateAssetGroupBodyAssetGroupsToUpdateInner =
+  result = UpdateAssetGroupBodyAssetGroupsToUpdateInner()
+  if node.kind == JObject:
+    if node.hasKey("asset_group_id"):
+      result.assetGroupId = to(node["asset_group_id"], string)
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("asset_group_types") and node["asset_group_types"].kind != JNull:
+      result.assetGroupTypes = some(to(node["asset_group_types"], typeof(result.assetGroupTypes.get())))
+    if node.hasKey("assets_to_add") and node["assets_to_add"].kind != JNull:
+      result.assetsToAdd = some(to(node["assets_to_add"], typeof(result.assetsToAdd.get())))
+    if node.hasKey("assets_to_remove") and node["assets_to_remove"].kind != JNull:
+      result.assetsToRemove = some(to(node["assets_to_remove"], typeof(result.assetsToRemove.get())))
+
+# Custom JSON serialization for UpdateAssetGroupBodyAssetGroupsToUpdateInner with custom field names
+proc `%`*(obj: UpdateAssetGroupBodyAssetGroupsToUpdateInner): JsonNode =
+  result = newJObject()
+  result["asset_group_id"] = %obj.assetGroupId
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  if obj.assetGroupTypes.isSome():
+    result["asset_group_types"] = %obj.assetGroupTypes.get()
+  if obj.assetsToAdd.isSome():
+    result["assets_to_add"] = %obj.assetsToAdd.get()
+  if obj.assetsToRemove.isSome():
+    result["assets_to_remove"] = %obj.assetsToRemove.get()
+

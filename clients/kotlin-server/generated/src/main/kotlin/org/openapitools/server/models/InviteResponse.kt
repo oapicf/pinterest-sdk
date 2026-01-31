@@ -18,33 +18,33 @@ import org.openapitools.server.models.InviteAssetsSummary
 import kotlinx.serialization.Serializable
 /**
  * 
+ * @param id Unique identifier of the invite/request.
+ * @param inviteData 
+ * @param isReceivedInvite Indicates whether the invite/request was received.
+ * @param user Metadata for the member/partner that was sent the invite/request.
  * @param assetsSummary 
  * @param businessRoles The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
  * @param createdByBusiness Metadata for the business that created the invite/request.
  * @param createdByUser Metadata for the user that created the invite/request.
  * @param createdTime The time the invite/request was created. Returned in milliseconds.
- * @param id Unique identifier of the invite/request.
- * @param inviteData 
- * @param isReceivedInvite Indicates whether the invite/request was received.
- * @param user Metadata for the member/partner that was sent the invite/request.
  */
 @Serializable
 data class InviteResponse(
-    val assetsSummary: InviteAssetsSummary? = null,
-    /* The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
-    val businessRoles: kotlin.collections.List<kotlin.String>? = null,
-    /* Metadata for the business that created the invite/request. */
-    val createdByBusiness: BusinessAccessUserSummary? = null,
-    /* Metadata for the user that created the invite/request. */
-    val createdByUser: BusinessAccessUserSummary? = null,
-    /* The time the invite/request was created. Returned in milliseconds. */
-    val createdTime: kotlin.Int? = null,
     /* Unique identifier of the invite/request. */
     val id: kotlin.String? = null,
     val inviteData: BaseInviteDataResponseInviteData? = null,
     /* Indicates whether the invite/request was received. */
     val isReceivedInvite: kotlin.Boolean? = null,
     /* Metadata for the member/partner that was sent the invite/request. */
-    val user: BusinessAccessUserSummary? = null
+    val user: BusinessAccessUserSummary? = null,
+    val assetsSummary: InviteAssetsSummary? = null,
+    /* The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
+    val businessRoles: kotlin.collections.List<kotlin.String>? = null,
+    /* Metadata for the business that created the invite/request. */
+    val createdByBusiness: kotlin.Any? = null,
+    /* Metadata for the user that created the invite/request. */
+    val createdByUser: kotlin.Any? = null,
+    /* The time the invite/request was created. Returned in milliseconds. */
+    val createdTime: kotlin.Int? = null
 )
 

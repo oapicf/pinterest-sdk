@@ -12,24 +12,15 @@
 /**
  * Summary status for pin promotions
  */
-export type PinPromotionSummaryStatus = 'APPROVED' | 'PAUSED' | 'PENDING' | 'REJECTED' | 'ADVERTISER_DISABLED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT';
-
 export const PinPromotionSummaryStatus = {
-
-    Approved: 'APPROVED' as PinPromotionSummaryStatus,
-
-    Paused: 'PAUSED' as PinPromotionSummaryStatus,
-
-    Pending: 'PENDING' as PinPromotionSummaryStatus,
-
-    Rejected: 'REJECTED' as PinPromotionSummaryStatus,
-
-    AdvertiserDisabled: 'ADVERTISER_DISABLED' as PinPromotionSummaryStatus,
-
-    Archived: 'ARCHIVED' as PinPromotionSummaryStatus,
-
-    Draft: 'DRAFT' as PinPromotionSummaryStatus,
-
-    DeletedDraft: 'DELETED_DRAFT' as PinPromotionSummaryStatus
-};
+    Approved: 'APPROVED',
+    Paused: 'PAUSED',
+    Pending: 'PENDING',
+    Rejected: 'REJECTED',
+    AdvertiserDisabled: 'ADVERTISER_DISABLED',
+    Archived: 'ARCHIVED',
+    Draft: 'DRAFT',
+    DeletedDraft: 'DELETED_DRAFT'
+} as const;
+export type PinPromotionSummaryStatus = typeof PinPromotionSummaryStatus[keyof typeof PinPromotionSummaryStatus];
 

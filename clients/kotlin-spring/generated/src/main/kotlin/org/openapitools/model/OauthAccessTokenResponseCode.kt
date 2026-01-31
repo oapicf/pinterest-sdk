@@ -16,16 +16,22 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * A successful OAuth access token response for the authorization code flow.
+ * 
+ * @param refreshToken 
+ * @param refreshTokenExpiresIn 
  * @param accessToken 
  * @param tokenType 
  * @param expiresIn 
  * @param scope 
- * @param refreshToken 
- * @param refreshTokenExpiresIn 
  * @param responseType 
  */
 data class OauthAccessTokenResponseCode(
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("refresh_token", required = true) val refreshToken: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("refresh_token_expires_in", required = true) val refreshTokenExpiresIn: kotlin.Int,
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("access_token", required = true) val accessToken: kotlin.String,
@@ -39,15 +45,9 @@ data class OauthAccessTokenResponseCode(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("scope", required = true) val scope: kotlin.String,
 
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("refresh_token", required = true) val refreshToken: kotlin.String,
-
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("refresh_token_expires_in", required = true) val refreshTokenExpiresIn: kotlin.Int,
-
     @Schema(example = "null", description = "")
     @get:JsonProperty("response_type") val responseType: OauthAccessTokenResponseCode.ResponseType? = null
-    ) {
+) {
 
     /**
     * 
@@ -63,7 +63,8 @@ data class OauthAccessTokenResponseCode(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ResponseType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OauthAccessTokenResponseCode'")
             }
         }
     }

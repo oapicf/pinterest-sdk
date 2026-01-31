@@ -84,16 +84,12 @@ class UserAccountController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        $explicitFollowing = $request->bool('explicitFollowing');
+        $explicitFollowing = $request->boolean('explicitFollowing');
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->boardsUserFollowsList($bookmark, $pageSize, $explicitFollowing, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->boardsUserFollowsList($bookmark, $pageSize, $explicitFollowing, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BoardsUserFollowsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -137,12 +133,8 @@ class UserAccountController extends Controller
 
         $followUserRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\FollowUserRequest::class);
 
-        try {
-            $apiResult = $this->api->followUserUpdate($username, $followUserRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->followUserUpdate($username, $followUserRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UserSummary) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -195,12 +187,8 @@ class UserAccountController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->followersList($bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->followersList($bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\FollowersList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -241,12 +229,8 @@ class UserAccountController extends Controller
             return response()->json(['error' => 'Invalid input'], 400);
         }
 
-        try {
-            $apiResult = $this->api->linkedBusinessAccountsGet();
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->linkedBusinessAccountsGet();
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -290,12 +274,8 @@ class UserAccountController extends Controller
 
         $website = $request->string('website')->value();
 
-        try {
-            $apiResult = $this->api->unverifyWebsiteDelete($website);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->unverifyWebsiteDelete($website);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent204) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 204);
@@ -382,12 +362,8 @@ class UserAccountController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->userAccountAnalytics($startDate, $endDate, $fromClaimedContent, $pinFormat, $appTypes, $contentType, $source, $metricTypes, $splitField, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->userAccountAnalytics($startDate, $endDate, $fromClaimedContent, $pinFormat, $appTypes, $contentType, $source, $metricTypes, $splitField, $adAccountId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -491,12 +467,8 @@ class UserAccountController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->userAccountAnalyticsTopPins($startDate, $endDate, $sortBy, $fromClaimedContent, $pinFormat, $appTypes, $contentType, $source, $metricTypes, $numOfPins, $createdInLastNDays, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->userAccountAnalyticsTopPins($startDate, $endDate, $sortBy, $fromClaimedContent, $pinFormat, $appTypes, $contentType, $source, $metricTypes, $numOfPins, $createdInLastNDays, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TopPinsAnalyticsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -595,12 +567,8 @@ class UserAccountController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->userAccountAnalyticsTopVideoPins($startDate, $endDate, $sortBy, $fromClaimedContent, $pinFormat, $appTypes, $contentType, $source, $metricTypes, $numOfPins, $createdInLastNDays, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->userAccountAnalyticsTopVideoPins($startDate, $endDate, $sortBy, $fromClaimedContent, $pinFormat, $appTypes, $contentType, $source, $metricTypes, $numOfPins, $createdInLastNDays, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TopVideoPinsAnalyticsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -659,12 +627,8 @@ class UserAccountController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->userAccountFollowedInterests($username, $bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->userAccountFollowedInterests($username, $bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UserAccountFollowedInterests200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -720,12 +684,8 @@ class UserAccountController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->userAccountGet($adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->userAccountGet($adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Account) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -791,16 +751,12 @@ class UserAccountController extends Controller
 
         $feedType = $request->string('feedType')->value();
 
-        $explicitFollowing = $request->bool('explicitFollowing');
+        $explicitFollowing = $request->boolean('explicitFollowing');
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->userFollowingGet($bookmark, $pageSize, $feedType, $explicitFollowing, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->userFollowingGet($bookmark, $pageSize, $feedType, $explicitFollowing, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UserFollowingGet200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -849,12 +805,8 @@ class UserAccountController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->userWebsitesGet($bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->userWebsitesGet($bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UserWebsitesGet200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -899,12 +851,8 @@ class UserAccountController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->verifyWebsiteUpdate($userWebsiteVerifyRequest, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->verifyWebsiteUpdate($userWebsiteVerifyRequest, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UserWebsiteSummary) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -948,12 +896,8 @@ class UserAccountController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->websiteVerificationGet($adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->websiteVerificationGet($adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UserWebsiteVerificationCode) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

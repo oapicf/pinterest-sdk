@@ -44,6 +44,19 @@ use JMS\Serializer\Annotation\SerializedName;
 class CreateMMMReportRequest 
 {
         /**
+     * A List of countries for filtering
+     *
+     * @var TargetingAdvertiserCountry[]|null
+     * @SerializedName("countries")
+     * @Accessor(getter="getSerializedCountries", setter="setDeserializedCountries")
+     * @Type("array<string>")
+    */
+    #[Assert\All([
+        new Assert\Type("OpenAPI\Server\Model\TargetingAdvertiserCountry"),
+    ])]
+    protected ?array $countries = null;
+
+    /**
      * Name of the Marketing Mix Modeling (MMM) report
      *
      * @var string|null
@@ -135,25 +148,13 @@ class CreateMMMReportRequest
     protected ?array $columns = null;
 
     /**
-     * A List of countries for filtering
-     *
-     * @var TargetingAdvertiserCountry[]|null
-     * @SerializedName("countries")
-     * @Accessor(getter="getSerializedCountries", setter="setDeserializedCountries")
-     * @Type("array<string>")
-    */
-    #[Assert\All([
-        new Assert\Type("OpenAPI\Server\Model\TargetingAdvertiserCountry"),
-    ])]
-    protected ?array $countries = null;
-
-    /**
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(?array $data = null)
     {
         if (is_array($data)) {
+            $this->countries = array_key_exists('countries', $data) ? $data['countries'] : $this->countries;
             $this->reportName = array_key_exists('reportName', $data) ? $data['reportName'] : $this->reportName;
             $this->startDate = array_key_exists('startDate', $data) ? $data['startDate'] : $this->startDate;
             $this->endDate = array_key_exists('endDate', $data) ? $data['endDate'] : $this->endDate;
@@ -161,9 +162,70 @@ class CreateMMMReportRequest
             $this->level = array_key_exists('level', $data) ? $data['level'] : $this->level;
             $this->targetingTypes = array_key_exists('targetingTypes', $data) ? $data['targetingTypes'] : $this->targetingTypes;
             $this->columns = array_key_exists('columns', $data) ? $data['columns'] : $this->columns;
-            $this->countries = array_key_exists('countries', $data) ? $data['countries'] : $this->countries;
         }
     }
+
+    /**
+     * Gets countries.
+     *
+     * @return TargetingAdvertiserCountry[]|null
+     */
+    public function getCountries(): ?array
+    {
+        return $this->countries;
+    }
+
+    /**
+    * Sets countries.
+    *
+    * @param TargetingAdvertiserCountry[]|null $countries  A List of countries for filtering
+    *
+    * @return $this
+    */
+    public function setCountries(?array $countries = null): self
+    {
+        $this->countries = $countries;
+
+        return $this;
+    }
+
+
+    /**
+    * Gets countries for serialization.
+    *
+    * @return array
+    */
+    public function getSerializedCountries(): array
+    {
+        return array_map(
+            static fn ($value) => $value?->value ? (string) $value->value : null,
+            $this->countries ?? []
+        );
+    }
+
+    /**
+    * Sets countries.
+    *
+    * @param ?array $countries
+    *
+    * @return $this
+    */
+    public function setDeserializedCountries(?array $countries = []): self
+    {
+        $this->countries = array_map(
+            static function ($value) {
+                if (is_string($value)) {
+                    $value = TargetingAdvertiserCountry::tryFrom($value);
+                }
+
+                return $value;
+            },
+            $countries ?? []
+        );
+
+        return $this;
+    }
+
 
     /**
      * Gets reportName.
@@ -418,68 +480,6 @@ class CreateMMMReportRequest
                 return $value;
             },
             $columns ?? []
-        );
-
-        return $this;
-    }
-
-
-    /**
-     * Gets countries.
-     *
-     * @return TargetingAdvertiserCountry[]|null
-     */
-    public function getCountries(): ?array
-    {
-        return $this->countries;
-    }
-
-    /**
-    * Sets countries.
-    *
-    * @param TargetingAdvertiserCountry[]|null $countries  A List of countries for filtering
-    *
-    * @return $this
-    */
-    public function setCountries(?array $countries = null): self
-    {
-        $this->countries = $countries;
-
-        return $this;
-    }
-
-
-    /**
-    * Gets countries for serialization.
-    *
-    * @return array
-    */
-    public function getSerializedCountries(): array
-    {
-        return array_map(
-            static fn ($value) => $value?->value ? (string) $value->value : null,
-            $this->countries ?? []
-        );
-    }
-
-    /**
-    * Sets countries.
-    *
-    * @param ?array $countries
-    *
-    * @return $this
-    */
-    public function setDeserializedCountries(?array $countries = []): self
-    {
-        $this->countries = array_map(
-            static function ($value) {
-                if (is_string($value)) {
-                    $value = TargetingAdvertiserCountry::tryFrom($value);
-                }
-
-                return $value;
-            },
-            $countries ?? []
         );
 
         return $this;

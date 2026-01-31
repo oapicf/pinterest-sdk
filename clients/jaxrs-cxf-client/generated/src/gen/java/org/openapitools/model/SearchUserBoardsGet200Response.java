@@ -13,13 +13,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SearchUserBoardsGet200Response  {
   
-  @ApiModelProperty(required = true, value = "items")
  /**
-   * items
-  **/
+  * items
+  */
+  @ApiModelProperty(required = true, value = "items")
+
   private List<Board> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * items

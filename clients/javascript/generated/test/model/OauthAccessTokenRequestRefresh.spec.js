@@ -54,12 +54,6 @@
       //expect(instance).to.be.a(PinterestSdk.OauthAccessTokenRequestRefresh);
     });
 
-    it('should have the property grantType (base name: "grant_type")', function() {
-      // uncomment below and update the code to test the property grantType
-      //var instance = new PinterestSdk.OauthAccessTokenRequestRefresh();
-      //expect(instance).to.be();
-    });
-
     it('should have the property refreshToken (base name: "refresh_token")', function() {
       // uncomment below and update the code to test the property refreshToken
       //var instance = new PinterestSdk.OauthAccessTokenRequestRefresh();
@@ -74,6 +68,12 @@
 
     it('should have the property refreshOn (base name: "refresh_on")', function() {
       // uncomment below and update the code to test the property refreshOn
+      //var instance = new PinterestSdk.OauthAccessTokenRequestRefresh();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property grantType (base name: "grant_type")', function() {
+      // uncomment below and update the code to test the property grantType
       //var instance = new PinterestSdk.OauthAccessTokenRequestRefresh();
       //expect(instance).to.be();
     });

@@ -64,7 +64,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsVerticalProductGroupCreateRequest extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsVerticalProductGroupCreateRequest.class.getName());
 
@@ -127,7 +127,7 @@ public class CatalogsVerticalProductGroupCreateRequest extends AbstractOpenApiSc
                         log.log(Level.FINER, "Input data matches schema 'CatalogsRetailProductGroupCreateRequest'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsRetailProductGroupCreateRequest failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsRetailProductGroupCreateRequest failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsRetailProductGroupCreateRequest'", e);
                     }
                     // deserialize CatalogsHotelProductGroupCreateRequest
@@ -139,7 +139,7 @@ public class CatalogsVerticalProductGroupCreateRequest extends AbstractOpenApiSc
                         log.log(Level.FINER, "Input data matches schema 'CatalogsHotelProductGroupCreateRequest'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsHotelProductGroupCreateRequest failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsHotelProductGroupCreateRequest failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsHotelProductGroupCreateRequest'", e);
                     }
                     // deserialize CatalogsCreativeAssetsProductGroupCreateRequest
@@ -151,7 +151,7 @@ public class CatalogsVerticalProductGroupCreateRequest extends AbstractOpenApiSc
                         log.log(Level.FINER, "Input data matches schema 'CatalogsCreativeAssetsProductGroupCreateRequest'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsCreativeAssetsProductGroupCreateRequest failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreativeAssetsProductGroupCreateRequest failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsCreativeAssetsProductGroupCreateRequest'", e);
                     }
 
@@ -161,7 +161,7 @@ public class CatalogsVerticalProductGroupCreateRequest extends AbstractOpenApiSc
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CatalogsVerticalProductGroupCreateRequest: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CatalogsVerticalProductGroupCreateRequest: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -277,7 +277,7 @@ public class CatalogsVerticalProductGroupCreateRequest extends AbstractOpenApiSc
             CatalogsRetailProductGroupCreateRequest.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsRetailProductGroupCreateRequest failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsRetailProductGroupCreateRequest failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsHotelProductGroupCreateRequest
@@ -285,7 +285,7 @@ public class CatalogsVerticalProductGroupCreateRequest extends AbstractOpenApiSc
             CatalogsHotelProductGroupCreateRequest.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsHotelProductGroupCreateRequest failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsHotelProductGroupCreateRequest failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsCreativeAssetsProductGroupCreateRequest
@@ -293,11 +293,11 @@ public class CatalogsVerticalProductGroupCreateRequest extends AbstractOpenApiSc
             CatalogsCreativeAssetsProductGroupCreateRequest.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsCreativeAssetsProductGroupCreateRequest failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreativeAssetsProductGroupCreateRequest failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CatalogsVerticalProductGroupCreateRequest with oneOf schemas: CatalogsCreativeAssetsProductGroupCreateRequest, CatalogsHotelProductGroupCreateRequest, CatalogsRetailProductGroupCreateRequest. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CatalogsVerticalProductGroupCreateRequest with oneOf schemas: CatalogsCreativeAssetsProductGroupCreateRequest, CatalogsHotelProductGroupCreateRequest, CatalogsRetailProductGroupCreateRequest. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

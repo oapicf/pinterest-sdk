@@ -67,14 +67,10 @@ class ConversionEventsController extends Controller
 
         $conversionEvents = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ConversionEvents::class);
 
-        $test = $request->bool('test');
+        $test = $request->boolean('test');
 
-        try {
-            $apiResult = $this->api->eventsCreate($adAccountId, $conversionEvents, $test);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->eventsCreate($adAccountId, $conversionEvents, $test);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ConversionApiResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

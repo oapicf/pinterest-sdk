@@ -24,14 +24,14 @@ import javax.annotation.Generated;
  * LeadsExportResponseData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadsExportResponseData {
 
   private @Nullable LeadsExportStatus exportStatus;
 
   private JsonNullable<String> downloadUrl = JsonNullable.<String>undefined();
 
-  public LeadsExportResponseData exportStatus(LeadsExportStatus exportStatus) {
+  public LeadsExportResponseData exportStatus(@Nullable LeadsExportStatus exportStatus) {
     this.exportStatus = exportStatus;
     return this;
   }
@@ -43,11 +43,11 @@ public class LeadsExportResponseData {
   @Valid 
   @Schema(name = "export_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("export_status")
-  public LeadsExportStatus getExportStatus() {
+  public @Nullable LeadsExportStatus getExportStatus() {
     return exportStatus;
   }
 
-  public void setExportStatus(LeadsExportStatus exportStatus) {
+  public void setExportStatus(@Nullable LeadsExportStatus exportStatus) {
     this.exportStatus = exportStatus;
   }
 

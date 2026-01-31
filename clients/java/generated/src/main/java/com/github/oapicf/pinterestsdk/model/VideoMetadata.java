@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * VideoMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class VideoMetadata {
   public static final String SERIALIZED_NAME_ITEM_TYPE = "item_type";
   @SerializedName(SERIALIZED_NAME_ITEM_TYPE)
@@ -264,16 +264,10 @@ public class VideoMetadata {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("item_type");
-    openapiFields.add("cover_image_url");
-    openapiFields.add("video_url");
-    openapiFields.add("duration");
-    openapiFields.add("height");
-    openapiFields.add("width");
+    openapiFields = new HashSet<String>(Arrays.asList("item_type", "cover_image_url", "video_url", "duration", "height", "width"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -285,7 +279,7 @@ public class VideoMetadata {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!VideoMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in VideoMetadata is not found in the empty JSON string", VideoMetadata.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in VideoMetadata is not found in the empty JSON string", VideoMetadata.openapiRequiredFields.toString()));
         }
       }
 
@@ -293,18 +287,18 @@ public class VideoMetadata {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!VideoMetadata.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `VideoMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `VideoMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("item_type") != null && !jsonObj.get("item_type").isJsonNull()) && !jsonObj.get("item_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `item_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("item_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `item_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("item_type").toString()));
       }
       if ((jsonObj.get("cover_image_url") != null && !jsonObj.get("cover_image_url").isJsonNull()) && !jsonObj.get("cover_image_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cover_image_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cover_image_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `cover_image_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cover_image_url").toString()));
       }
       if ((jsonObj.get("video_url") != null && !jsonObj.get("video_url").isJsonNull()) && !jsonObj.get("video_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `video_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("video_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `video_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("video_url").toString()));
       }
   }
 

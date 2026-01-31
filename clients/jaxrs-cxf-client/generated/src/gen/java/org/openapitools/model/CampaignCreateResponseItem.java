@@ -14,9 +14,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CampaignCreateResponseItem  {
   
   @ApiModelProperty(value = "")
+
   private CampaignCreateResponseData data;
 
   @ApiModelProperty(value = "")
+
   private List<Exception> exceptions = new ArrayList<>();
  /**
    * Get data

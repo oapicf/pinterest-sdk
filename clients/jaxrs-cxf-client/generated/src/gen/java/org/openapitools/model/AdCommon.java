@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,105 +10,123 @@ import org.openapitools.model.GridClickType;
 import org.openapitools.model.QuizPinData;
 import org.openapitools.model.TrackingUrls;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Creation fields
- **/
+ * Creation fields
+ */
 @ApiModel(description="Creation fields")
 
 public class AdCommon  {
   
-  @ApiModelProperty(example = "2680059592705", value = "ID of the ad group that contains the ad.")
  /**
-   * ID of the ad group that contains the ad.
-  **/
+  * ID of the ad group that contains the ad.
+  */
+  @ApiModelProperty(example = "2680059592705", value = "ID of the ad group that contains the ad.")
+
   private String adGroupId;
 
-  @ApiModelProperty(value = "Deep link URL for Android devices.")
  /**
-   * Deep link URL for Android devices.
-  **/
+  * Deep link URL for Android devices.
+  */
+  @ApiModelProperty(value = "Deep link URL for Android devices.")
+
   private String androidDeepLink;
 
-  @ApiModelProperty(value = "Comma-separated deep links for the carousel pin on Android.")
  /**
-   * Comma-separated deep links for the carousel pin on Android.
-  **/
+  * Comma-separated deep links for the carousel pin on Android.
+  */
+  @ApiModelProperty(value = "Comma-separated deep links for the carousel pin on Android.")
+
   private List<String> carouselAndroidDeepLinks;
 
-  @ApiModelProperty(value = "Comma-separated destination URLs for the carousel pin to promote.")
  /**
-   * Comma-separated destination URLs for the carousel pin to promote.
-  **/
+  * Comma-separated destination URLs for the carousel pin to promote.
+  */
+  @ApiModelProperty(value = "Comma-separated destination URLs for the carousel pin to promote.")
+
   private List<String> carouselDestinationUrls;
 
-  @ApiModelProperty(value = "Comma-separated deep links for the carousel pin on iOS.")
  /**
-   * Comma-separated deep links for the carousel pin on iOS.
-  **/
+  * Comma-separated deep links for the carousel pin on iOS.
+  */
+  @ApiModelProperty(value = "Comma-separated deep links for the carousel pin on iOS.")
+
   private List<String> carouselIosDeepLinks;
 
-  @ApiModelProperty(value = "Tracking url for the ad clicks.")
  /**
-   * Tracking url for the ad clicks.
-  **/
+  * Tracking url for the ad clicks.
+  */
+  @ApiModelProperty(value = "Tracking url for the ad clicks.")
+
   private String clickTrackingUrl;
 
   @ApiModelProperty(value = "")
+
   private CreativeType creativeType;
 
-  @ApiModelProperty(value = "Destination URL.")
  /**
-   * Destination URL.
-  **/
+  * Destination URL.
+  */
+  @ApiModelProperty(value = "Destination URL.")
+
   private String destinationUrl;
 
-  @ApiModelProperty(value = "Deep link URL for iOS devices.")
  /**
-   * Deep link URL for iOS devices.
-  **/
+  * Deep link URL for iOS devices.
+  */
+  @ApiModelProperty(value = "Deep link URL for iOS devices.")
+
   private String iosDeepLink;
 
-  @ApiModelProperty(example = "false", value = "Is original pin deleted?")
  /**
-   * Is original pin deleted?
-  **/
+  * Is original pin deleted?
+  */
+  @ApiModelProperty(example = "false", value = "Is original pin deleted?")
+
   private Boolean isPinDeleted;
 
-  @ApiModelProperty(example = "false", value = "Is pin repinnable?")
  /**
-   * Is pin repinnable?
-  **/
+  * Is pin repinnable?
+  */
+  @ApiModelProperty(example = "false", value = "Is pin repinnable?")
+
   private Boolean isRemovable;
 
-  @ApiModelProperty(value = "Name of the ad - 255 chars max.")
  /**
-   * Name of the ad - 255 chars max.
-  **/
+  * Name of the ad - 255 chars max.
+  */
+  @ApiModelProperty(value = "Name of the ad - 255 chars max.")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private EntityStatus status;
 
   @ApiModelProperty(value = "")
+
   private TrackingUrls trackingUrls;
 
-  @ApiModelProperty(value = "Tracking URL for ad impressions.")
  /**
-   * Tracking URL for ad impressions.
-  **/
+  * Tracking URL for ad impressions.
+  */
+  @ApiModelProperty(value = "Tracking URL for ad impressions.")
+
   private String viewTrackingUrl;
 
-  @ApiModelProperty(value = "Lead form ID for lead ad generation.")
  /**
-   * Lead form ID for lead ad generation.
-  **/
+  * Lead form ID for lead ad generation.
+  */
+  @ApiModelProperty(value = "Lead form ID for lead ad generation.")
+
   private String leadFormId;
 
   @ApiModelProperty(value = "")
+
   private GridClickType gridClickType;
 
 public enum CustomizableCtaTypeEnum {
@@ -142,16 +159,18 @@ GET_OFFER(String.valueOf("GET_OFFER")), LEARN_MORE(String.valueOf("LEARN_MORE"))
     }
 }
 
-  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
  /**
-   * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-  **/
+  * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  */
+  @ApiModelProperty(example = "LEARN_MORE", value = "Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)")
+
   private CustomizableCtaTypeEnum customizableCtaType;
 
-  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
  /**
-   * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
-  **/
+  * Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+  */
+  @ApiModelProperty(value = "Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.")
+
   private QuizPinData quizPinData;
  /**
    * ID of the ad group that contains the ad.

@@ -14,7 +14,7 @@
 | **catalog_type** | [**CatalogsType**](CatalogsType.md) |  |  |
 | **default_country** | [**Country**](Country.md) |  |  |
 | **default_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] |
-| **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] |
+| **status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional][default to &#39;ACTIVE&#39;] |
 
 ## Example
 

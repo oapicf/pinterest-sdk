@@ -12,9 +12,6 @@ package openapi
 
 type ConversionTagCreate struct {
 
-	// Conversion tag name.
-	Name string `json:"name"`
-
 	// Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
 	AemEnabled *bool `json:"aem_enabled,omitempty"`
 
@@ -35,4 +32,7 @@ type ConversionTagCreate struct {
 
 	// Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
 	AemLocEnabled *bool `json:"aem_loc_enabled,omitempty"`
+
+	// Conversion tag name.
+	Name string `json:"name"`
 }

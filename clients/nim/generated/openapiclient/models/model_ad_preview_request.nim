@@ -9,12 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ad_preview_create_from_image
 import model_ad_preview_create_from_pin
 
+# OneOf type
+type AdPreviewRequestKind* {.pure.} = enum
+  AdPreviewCreateFromImageVariant
+  AdPreviewCreateFromPinVariant
+
 type AdPreviewRequest* = object
   ## 
-  imageUrl*: string ## Image URL.
-  title*: string ## Title displayed below ad.
-  pinId*: string ## Pin ID.
+  case kind*: AdPreviewRequestKind
+  of AdPreviewRequestKind.AdPreviewCreateFromImageVariant:
+    AdPreviewCreateFromImageValue*: AdPreviewCreateFromImage
+  of AdPreviewRequestKind.AdPreviewCreateFromPinVariant:
+    AdPreviewCreateFromPinValue*: AdPreviewCreateFromPin
+
+proc to*(node: JsonNode, T: typedesc[AdPreviewRequest]): AdPreviewRequest =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return AdPreviewRequest(kind: AdPreviewRequestKind.AdPreviewCreateFromImageVariant, AdPreviewCreateFromImageValue: to(node, AdPreviewCreateFromImage))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as AdPreviewCreateFromImage: ", e.msg
+  try:
+    return AdPreviewRequest(kind: AdPreviewRequestKind.AdPreviewCreateFromPinVariant, AdPreviewCreateFromPinValue: to(node, AdPreviewCreateFromPin))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as AdPreviewCreateFromPin: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of AdPreviewRequest. JSON: " & $node)
+

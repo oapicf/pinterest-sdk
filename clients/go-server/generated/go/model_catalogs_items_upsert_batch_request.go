@@ -19,7 +19,8 @@ type CatalogsItemsUpsertBatchRequest struct {
 
 	Country Country `json:"country"`
 
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 
 	Operation BatchOperation `json:"operation"`
 
@@ -41,7 +42,7 @@ func AssertCatalogsItemsUpsertBatchRequestRequired(obj CatalogsItemsUpsertBatchR
 		}
 	}
 
-	if err := AssertCatalogsItemsRequestLanguageRequired(obj.Language); err != nil {
+	if err := AssertstringRequired(obj.Language); err != nil {
 		return err
 	}
 	for _, el := range obj.Items {
@@ -54,7 +55,7 @@ func AssertCatalogsItemsUpsertBatchRequestRequired(obj CatalogsItemsUpsertBatchR
 
 // AssertCatalogsItemsUpsertBatchRequestConstraints checks if the values respects the defined constraints
 func AssertCatalogsItemsUpsertBatchRequestConstraints(obj CatalogsItemsUpsertBatchRequest) error {
-	if err := AssertCatalogsItemsRequestLanguageConstraints(obj.Language); err != nil {
+	if err := AssertstringConstraints(obj.Language); err != nil {
 		return err
 	}
 	for _, el := range obj.Items {

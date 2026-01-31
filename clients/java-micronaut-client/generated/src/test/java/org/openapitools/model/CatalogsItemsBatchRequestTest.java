@@ -10,7 +10,6 @@ import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsCreateBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteDiscontinuedBatchRequest;
-import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsItemsUpdateBatchRequest;
 import org.openapitools.model.CatalogsItemsUpsertBatchRequest;
 import org.openapitools.model.Country;

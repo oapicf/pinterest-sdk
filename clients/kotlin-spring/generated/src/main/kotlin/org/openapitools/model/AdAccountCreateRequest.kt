@@ -35,7 +35,7 @@ data class AdAccountCreateRequest(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "383791336903426391", description = "Advertiser's owning user ID.")
     @get:JsonProperty("owner_user_id") val ownerUserId: kotlin.String? = null
-    ) {
+) {
 
 }
 

@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,64 +8,74 @@ import org.openapitools.model.PinUpdateCarouselSlotsInner;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Pin fields for updates
- **/
+ * Pin fields for updates
+ */
 @ApiModel(description="Pin fields for updates")
 
 public class PinUpdate  {
   
-  @ApiModelProperty(value = "Pin's alternative text.")
  /**
-   * Pin's alternative text.
-  **/
+  * Pin's alternative text.
+  */
+  @ApiModelProperty(value = "Pin's alternative text.")
+
   private String altText;
 
-  @ApiModelProperty(value = "The id of the board to move the Pin onto.")
  /**
-   * The id of the board to move the Pin onto.
-  **/
+  * The id of the board to move the Pin onto.
+  */
+  @ApiModelProperty(value = "The id of the board to move the Pin onto.")
+
   private String boardId;
 
-  @ApiModelProperty(value = "<a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.")
  /**
-   * <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
-  **/
+  * <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
+  */
+  @ApiModelProperty(value = "<a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.")
+
   private String boardSectionId;
 
-  @ApiModelProperty(value = "Pin description - 800 characters maximum.")
  /**
-   * Pin description - 800 characters maximum.
-  **/
+  * Pin description - 800 characters maximum.
+  */
+  @ApiModelProperty(value = "Pin description - 800 characters maximum.")
+
   private String description;
 
-  @ApiModelProperty(example = "https://www.pinterest.com/", value = "URL viewer is taken to when they click pin.")
  /**
-   * URL viewer is taken to when they click pin.
-  **/
+  * URL viewer is taken to when they click pin.
+  */
+  @ApiModelProperty(example = "https://www.pinterest.com/", value = "URL viewer is taken to when they click pin.")
+
   private String link;
 
-  @ApiModelProperty(value = "The native pin title that creators explicitly prefer to display.")
  /**
-   * The native pin title that creators explicitly prefer to display.
-  **/
+  * The native pin title that creators explicitly prefer to display.
+  */
+  @ApiModelProperty(value = "The native pin title that creators explicitly prefer to display.")
+
   private String title;
 
-  @ApiModelProperty(value = "Carousel Pin slots data.")
-  @Valid
  /**
-   * Carousel Pin slots data.
-  **/
+  * Carousel Pin slots data.
+  */
+  @ApiModelProperty(value = "Carousel Pin slots data.")
+
+  @Valid
+
   private List<@Valid PinUpdateCarouselSlotsInner> carouselSlots = new ArrayList<>();
 
-  @ApiModelProperty(value = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.")
  /**
-   * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
-  **/
+  * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+  */
+  @ApiModelProperty(value = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.")
+
   private String note;
  /**
    * Pin&#39;s alternative text.

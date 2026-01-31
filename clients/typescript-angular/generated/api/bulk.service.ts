@@ -11,10 +11,10 @@
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent, HttpParameterCodec, HttpContext 
+         HttpResponse, HttpEvent, HttpContext 
         }       from '@angular/common/http';
-import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
+import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
 import { BulkDownloadRequest } from '../model/bulkDownloadRequest';
@@ -46,10 +46,12 @@ export class BulkService extends BaseService {
     /**
      * Get advertiser entities in bulk
      * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+     * @endpoint post /ad_accounts/{ad_account_id}/bulk/download
      * @param adAccountId Unique identifier of an ad account.
      * @param bulkDownloadRequest Parameters to get ad entities in bulk
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public bulkDownloadCreate(adAccountId: string, bulkDownloadRequest: BulkDownloadRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BulkDownloadResponse>;
     public bulkDownloadCreate(adAccountId: string, bulkDownloadRequest: BulkDownloadRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BulkDownloadResponse>>;
@@ -100,15 +102,16 @@ export class BulkService extends BaseService {
         }
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/bulk/download`;
-        return this.httpClient.request<BulkDownloadResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BulkDownloadResponse>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: bulkDownloadRequest,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -117,11 +120,13 @@ export class BulkService extends BaseService {
     /**
      * Download advertiser entities in bulk
      * Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+     * @endpoint get /ad_accounts/{ad_account_id}/bulk/{bulk_request_id}
      * @param adAccountId Unique identifier of an ad account.
      * @param bulkRequestId Unique identifier of a bulk upsert request.
      * @param includeDetails if set to True then attach the errors/details to all the requests
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BulkUpsertStatusResponse>;
     public bulkRequestGet(adAccountId: string, bulkRequestId: string, includeDetails?: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BulkUpsertStatusResponse>>;
@@ -134,9 +139,16 @@ export class BulkService extends BaseService {
             throw new Error('Required parameter bulkRequestId was null or undefined when calling bulkRequestGet.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>includeDetails, 'include_details');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'include_details',
+            <any>includeDetails,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -167,15 +179,16 @@ export class BulkService extends BaseService {
         }
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/bulk/${this.configuration.encodeParam({name: "bulkRequestId", value: bulkRequestId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<BulkUpsertStatusResponse>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BulkUpsertStatusResponse>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -184,10 +197,12 @@ export class BulkService extends BaseService {
     /**
      * Create/update ad entities in bulk
      * Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+     * @endpoint post /ad_accounts/{ad_account_id}/bulk/upsert
      * @param adAccountId Unique identifier of an ad account.
      * @param bulkUpsertRequest Parameters to get create/update ad entities in bulk
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public bulkUpsertCreate(adAccountId: string, bulkUpsertRequest: BulkUpsertRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BulkUpsertResponse>;
     public bulkUpsertCreate(adAccountId: string, bulkUpsertRequest: BulkUpsertRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BulkUpsertResponse>>;
@@ -238,15 +253,16 @@ export class BulkService extends BaseService {
         }
 
         let localVarPath = `/ad_accounts/${this.configuration.encodeParam({name: "adAccountId", value: adAccountId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/bulk/upsert`;
-        return this.httpClient.request<BulkUpsertResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BulkUpsertResponse>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: bulkUpsertRequest,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );

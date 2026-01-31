@@ -9,7 +9,63 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type GetAudiencesOrderBy* = object
-  ## 
+type GetAudiencesOrderBy* {.pure.} = enum
+  NONE
+  ID
+  SIZE
+  CREATIONDATE
+  UPDATEDTIME
+  NAME
+  STATUS
+  TYPE
+
+func `%`*(v: GetAudiencesOrderBy): JsonNode =
+  result = case v:
+    of GetAudiencesOrderBy.NONE: %"NONE"
+    of GetAudiencesOrderBy.ID: %"ID"
+    of GetAudiencesOrderBy.SIZE: %"SIZE"
+    of GetAudiencesOrderBy.CREATIONDATE: %"CREATION_DATE"
+    of GetAudiencesOrderBy.UPDATEDTIME: %"UPDATED_TIME"
+    of GetAudiencesOrderBy.NAME: %"NAME"
+    of GetAudiencesOrderBy.STATUS: %"STATUS"
+    of GetAudiencesOrderBy.TYPE: %"TYPE"
+
+func `$`*(v: GetAudiencesOrderBy): string =
+  result = case v:
+    of GetAudiencesOrderBy.NONE: $("NONE")
+    of GetAudiencesOrderBy.ID: $("ID")
+    of GetAudiencesOrderBy.SIZE: $("SIZE")
+    of GetAudiencesOrderBy.CREATIONDATE: $("CREATION_DATE")
+    of GetAudiencesOrderBy.UPDATEDTIME: $("UPDATED_TIME")
+    of GetAudiencesOrderBy.NAME: $("NAME")
+    of GetAudiencesOrderBy.STATUS: $("STATUS")
+    of GetAudiencesOrderBy.TYPE: $("TYPE")
+
+proc to*(node: JsonNode, T: typedesc[GetAudiencesOrderBy]): GetAudiencesOrderBy =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum GetAudiencesOrderBy, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("NONE"):
+    return GetAudiencesOrderBy.NONE
+  of $("ID"):
+    return GetAudiencesOrderBy.ID
+  of $("SIZE"):
+    return GetAudiencesOrderBy.SIZE
+  of $("CREATION_DATE"):
+    return GetAudiencesOrderBy.CREATIONDATE
+  of $("UPDATED_TIME"):
+    return GetAudiencesOrderBy.UPDATEDTIME
+  of $("NAME"):
+    return GetAudiencesOrderBy.NAME
+  of $("STATUS"):
+    return GetAudiencesOrderBy.STATUS
+  of $("TYPE"):
+    return GetAudiencesOrderBy.TYPE
+  else:
+    raise newException(ValueError, "Invalid enum value for GetAudiencesOrderBy: " & strVal)
+

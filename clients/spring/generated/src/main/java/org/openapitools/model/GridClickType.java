@@ -20,14 +20,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Where a user is taken after clicking on an ad in grid. </p><strong>Note:</strong>  This parameter is read-only and is set to DIRECT_TO_DESTINATION by default for direct links supported ads.  grid_click_type values provided will be ignored.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum GridClickType {
   
   CLOSEUP("CLOSEUP"),
   
   DIRECT_TO_DESTINATION("DIRECT_TO_DESTINATION");
 
-  private String value;
+  private final String value;
 
   GridClickType(String value) {
     this.value = value;

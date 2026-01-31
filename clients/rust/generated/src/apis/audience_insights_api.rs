@@ -35,9 +35,9 @@ pub enum AudienceInsightsSlashGetError {
 /// Get the scope and type of available audiences, which along with a date, is an audience that has recently had an interaction (referred to here as a type) on pins. Interacted pins can belong to at least the most common **partner** or **Pinterest** scopes. This means that user interactions made on advertiser or partner pins will have the **partner** scope. You can also have user interactions performed in general on Pinterest with the **Pinterest** scope. In that case, you can then use the returned type and scope values together on requests to other endpoints to retrieve insight metrics for a desired audience.
 pub async fn audience_insights_scope_and_type_slash_get(configuration: &configuration::Configuration, ad_account_id: &str) -> Result<models::AudienceDefinitionResponse, Error<AudienceInsightsScopeAndTypeSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
+    let p_path_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/insights/audiences", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/insights/audiences", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -75,13 +75,13 @@ pub async fn audience_insights_scope_and_type_slash_get(configuration: &configur
 /// Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account's engaged audience on Pinterest, the ad account's total audience on Pinterest and Pinterest's total audience.<p/> <a href=\"https://help.pinterest.com/en/business/article/audience-insights\" target=\"_blank\">Learn more about Audience Insights</a>.
 pub async fn audience_insights_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, audience_insight_type: models::AudienceInsightType) -> Result<models::AudienceInsightsResponse, Error<AudienceInsightsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_audience_insight_type = audience_insight_type;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_audience_insight_type = audience_insight_type;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audience_insights", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audience_insights", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("audience_insight_type", &p_audience_insight_type.to_string())]);
+    req_builder = req_builder.query(&[("audience_insight_type", &p_query_audience_insight_type.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

@@ -65,7 +65,7 @@ export function TrendingKeywordsResponseTrendsInnerTimeSeriesToJSONTyped(value?:
     return {
         
             ...value,
-        'date': value['date'] == null ? undefined : ((value['date']).toISOString().substring(0,10)),
+        'date': value['date'] == null ? value['date'] : value['date'].toISOString().substring(0,10),
     };
 }
 

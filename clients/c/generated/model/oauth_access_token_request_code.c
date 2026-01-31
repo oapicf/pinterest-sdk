@@ -23,31 +23,31 @@ pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e oauth_access_toke
 }
 
 static oauth_access_token_request_code_t *oauth_access_token_request_code_create_internal(
-    pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_type,
     char *code,
-    char *redirect_uri
+    char *redirect_uri,
+    pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_type
     ) {
     oauth_access_token_request_code_t *oauth_access_token_request_code_local_var = malloc(sizeof(oauth_access_token_request_code_t));
     if (!oauth_access_token_request_code_local_var) {
         return NULL;
     }
-    oauth_access_token_request_code_local_var->grant_type = grant_type;
     oauth_access_token_request_code_local_var->code = code;
     oauth_access_token_request_code_local_var->redirect_uri = redirect_uri;
+    oauth_access_token_request_code_local_var->grant_type = grant_type;
 
     oauth_access_token_request_code_local_var->_library_owned = 1;
     return oauth_access_token_request_code_local_var;
 }
 
 __attribute__((deprecated)) oauth_access_token_request_code_t *oauth_access_token_request_code_create(
-    pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_type,
     char *code,
-    char *redirect_uri
+    char *redirect_uri,
+    pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_type
     ) {
     return oauth_access_token_request_code_create_internal (
-        grant_type,
         code,
-        redirect_uri
+        redirect_uri,
+        grant_type
         );
 }
 
@@ -74,16 +74,6 @@ void oauth_access_token_request_code_free(oauth_access_token_request_code_t *oau
 cJSON *oauth_access_token_request_code_convertToJSON(oauth_access_token_request_code_t *oauth_access_token_request_code) {
     cJSON *item = cJSON_CreateObject();
 
-    // oauth_access_token_request_code->grant_type
-    if (pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_NULL == oauth_access_token_request_code->grant_type) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "grant_type", oauth_access_token_request_code_grant_type_ToString(oauth_access_token_request_code->grant_type)) == NULL)
-    {
-    goto fail; //Enum
-    }
-
-
     // oauth_access_token_request_code->code
     if (!oauth_access_token_request_code->code) {
         goto fail;
@@ -101,6 +91,16 @@ cJSON *oauth_access_token_request_code_convertToJSON(oauth_access_token_request_
     goto fail; //String
     }
 
+
+    // oauth_access_token_request_code->grant_type
+    if (pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_NULL == oauth_access_token_request_code->grant_type) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "grant_type", oauth_access_token_request_code_grant_type_ToString(oauth_access_token_request_code->grant_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+
     return item;
 fail:
     if (item) {
@@ -112,23 +112,6 @@ fail:
 oauth_access_token_request_code_t *oauth_access_token_request_code_parseFromJSON(cJSON *oauth_access_token_request_codeJSON){
 
     oauth_access_token_request_code_t *oauth_access_token_request_code_local_var = NULL;
-
-    // oauth_access_token_request_code->grant_type
-    cJSON *grant_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_codeJSON, "grant_type");
-    if (cJSON_IsNull(grant_type)) {
-        grant_type = NULL;
-    }
-    if (!grant_type) {
-        goto end;
-    }
-
-    pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_typeVariable;
-    
-    if(!cJSON_IsString(grant_type))
-    {
-    goto end; //Enum
-    }
-    grant_typeVariable = oauth_access_token_request_code_grant_type_FromString(grant_type->valuestring);
 
     // oauth_access_token_request_code->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_codeJSON, "code");
@@ -160,11 +143,28 @@ oauth_access_token_request_code_t *oauth_access_token_request_code_parseFromJSON
     goto end; //String
     }
 
+    // oauth_access_token_request_code->grant_type
+    cJSON *grant_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_codeJSON, "grant_type");
+    if (cJSON_IsNull(grant_type)) {
+        grant_type = NULL;
+    }
+    if (!grant_type) {
+        goto end;
+    }
+
+    pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_typeVariable;
+    
+    if(!cJSON_IsString(grant_type))
+    {
+    goto end; //Enum
+    }
+    grant_typeVariable = oauth_access_token_request_code_grant_type_FromString(grant_type->valuestring);
+
 
     oauth_access_token_request_code_local_var = oauth_access_token_request_code_create_internal (
-        grant_typeVariable,
         strdup(code->valuestring),
-        strdup(redirect_uri->valuestring)
+        strdup(redirect_uri->valuestring),
+        grant_typeVariable
         );
 
     return oauth_access_token_request_code_local_var;

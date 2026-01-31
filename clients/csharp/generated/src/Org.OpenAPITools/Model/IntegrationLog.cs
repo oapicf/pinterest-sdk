@@ -506,8 +506,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "client_timestamp":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                clientTimestamp = new Option<int?>(utf8JsonReader.GetInt32());
+                            clientTimestamp = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "event_type":
                             string? eventTypeRawValue = utf8JsonReader.GetString();
@@ -544,12 +543,10 @@ namespace Org.OpenAPITools.Model
                             platformVersionNumber = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "error":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                error = new Option<IntegrationLogClientError?>(JsonSerializer.Deserialize<IntegrationLogClientError>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            error = new Option<IntegrationLogClientError?>(JsonSerializer.Deserialize<IntegrationLogClientError>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "request":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                request = new Option<IntegrationLogClientRequest?>(JsonSerializer.Deserialize<IntegrationLogClientRequest>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            request = new Option<IntegrationLogClientRequest?>(JsonSerializer.Deserialize<IntegrationLogClientRequest>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

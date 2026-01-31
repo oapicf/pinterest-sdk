@@ -427,7 +427,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, DataStatus dataStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(dataStatus.ToString());
+            writer.WriteStringValue(DataStatusValueConverter.ToJsonValue(dataStatus).ToString());
         }
     }
 
@@ -458,14 +458,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the DataStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="dataStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, DataStatus? dataStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(dataStatus?.ToString() ?? "null");
+            writer.WriteStringValue(dataStatus.HasValue ? DataStatusValueConverter.ToJsonValue(dataStatus.Value).ToString() : "null");
         }
     }
 }

@@ -9,9 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_campaign_create_response_item
 
 type CampaignUpdateResponse* = object
   ## 
-  items*: seq[CampaignCreateResponseItem]
+  items*: Option[seq[CampaignCreateResponseItem]]
+
+
+# Custom JSON deserialization for CampaignUpdateResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[CampaignUpdateResponse]): CampaignUpdateResponse =
+  result = CampaignUpdateResponse()
+  if node.kind == JObject:
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[CampaignCreateResponseItem] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, CampaignCreateResponseItem))
+        result.items = some(arr)
+
+# Custom JSON serialization for CampaignUpdateResponse with custom field names
+proc `%`*(obj: CampaignUpdateResponse): JsonNode =
+  result = newJObject()
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

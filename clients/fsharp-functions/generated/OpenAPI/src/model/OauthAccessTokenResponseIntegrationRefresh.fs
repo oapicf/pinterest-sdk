@@ -10,6 +10,10 @@ module OauthAccessTokenResponseIntegrationRefresh =
 
   [<CLIMutable>]
   type OauthAccessTokenResponseIntegrationRefresh = {
+    [<JsonProperty(PropertyName = "refresh_token")>]
+    RefreshToken : string;
+    [<JsonProperty(PropertyName = "refresh_token_expires_in")>]
+    RefreshTokenExpiresIn : int;
     [<JsonProperty(PropertyName = "response_type")>]
     ResponseType : string;
     [<JsonProperty(PropertyName = "access_token")>]
@@ -20,10 +24,6 @@ module OauthAccessTokenResponseIntegrationRefresh =
     ExpiresIn : int;
     [<JsonProperty(PropertyName = "scope")>]
     Scope : string;
-    [<JsonProperty(PropertyName = "refresh_token")>]
-    RefreshToken : string;
-    [<JsonProperty(PropertyName = "refresh_token_expires_in")>]
-    RefreshTokenExpiresIn : int;
   }
 
   //#endregion

@@ -22,13 +22,13 @@ oauth_access_token_request_client_credentials_t* instantiate_oauth_access_token_
   oauth_access_token_request_client_credentials_t* oauth_access_token_request_client_credentials = NULL;
   if (include_optional) {
     oauth_access_token_request_client_credentials = oauth_access_token_request_client_credentials_create(
-      pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_authorization_code,
-      "0"
+      "0",
+      pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_authorization_code
     );
   } else {
     oauth_access_token_request_client_credentials = oauth_access_token_request_client_credentials_create(
-      pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_authorization_code,
-      "0"
+      "0",
+      pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_authorization_code
     );
   }
 

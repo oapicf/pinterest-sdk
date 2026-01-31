@@ -29,6 +29,11 @@ import com.squareup.moshi.JsonClass
  * @param inviteData 
  * @param isReceivedInvite Indicates whether the invite/request was received.
  * @param user Metadata for the member/partner that was sent the invite/request.
+ * @param assetsSummary 
+ * @param businessRoles The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+ * @param createdByBusiness Metadata for the business that created the invite/request.
+ * @param createdByUser Metadata for the user that created the invite/request.
+ * @param createdTime The time the invite/request was created. Returned in milliseconds.
  */
 
 
@@ -47,7 +52,26 @@ data class InviteResponse (
 
     /* Metadata for the member/partner that was sent the invite/request. */
     @Json(name = "user")
-    val user: BusinessAccessUserSummary? = null
+    val user: BusinessAccessUserSummary? = null,
+
+    @Json(name = "assets_summary")
+    val assetsSummary: InviteAssetsSummary? = null,
+
+    /* The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
+    @Json(name = "business_roles")
+    val businessRoles: kotlin.collections.List<kotlin.String>? = null,
+
+    /* Metadata for the business that created the invite/request. */
+    @Json(name = "created_by_business")
+    val createdByBusiness: kotlin.Any? = null,
+
+    /* Metadata for the user that created the invite/request. */
+    @Json(name = "created_by_user")
+    val createdByUser: kotlin.Any? = null,
+
+    /* The time the invite/request was created. Returned in milliseconds. */
+    @Json(name = "created_time")
+    val createdTime: kotlin.Int? = null
 
 ) {
 

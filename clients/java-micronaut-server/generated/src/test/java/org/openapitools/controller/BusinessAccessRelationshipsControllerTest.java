@@ -96,7 +96,7 @@ public class BusinessAccessRelationshipsControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@731cfe2d");
+            .accept("[Ljava.lang.String;@27d45d8");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, DeletedMembersResponse.class);
@@ -144,7 +144,7 @@ public class BusinessAccessRelationshipsControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@5a311acd");
+            .accept("[Ljava.lang.String;@3c746295");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, DeletePartnersResponse.class);
@@ -188,7 +188,7 @@ public class BusinessAccessRelationshipsControllerTest {
         // given
         String uri = UriTemplate.of("/businesses/employers").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@58886ff9");
+            .accept("[Ljava.lang.String;@5ee54d21");
         request.getParameters()
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("bookmark", "example"); // The query parameter format should be 
@@ -243,7 +243,7 @@ public class BusinessAccessRelationshipsControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7611dd8b");
+            .accept("[Ljava.lang.String;@47bd0384");
         request.getParameters()
             .add("assets_summary", String.valueOf(false)) // The query parameter format should be 
             .add("business_roles", Arrays.asList()) // The query format should be multi
@@ -302,7 +302,7 @@ public class BusinessAccessRelationshipsControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@62e8a8f2");
+            .accept("[Ljava.lang.String;@2f86dd2e");
         request.getParameters()
             .add("assets_summary", String.valueOf(false)) // The query parameter format should be 
             .add("partner_type", String.valueOf(PartnerType.fromValue("INTERNAL"))) // The query parameter format should be 
@@ -357,7 +357,7 @@ public class BusinessAccessRelationshipsControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@305d3110");
+            .accept("[Ljava.lang.String;@30f97281");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, UpdateMemberResultsResponseArray.class);

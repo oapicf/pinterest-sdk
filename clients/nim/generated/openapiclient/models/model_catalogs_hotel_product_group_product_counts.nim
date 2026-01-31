@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogType* {.pure.} = enum
@@ -20,11 +22,35 @@ type CatalogsHotelProductGroupProductCounts* = object
   total*: float
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.HOTEL: "HOTEL"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.HOTEL: %"HOTEL"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.HOTEL: "HOTEL"
+    of CatalogType.HOTEL: $("HOTEL")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("HOTEL"):
+    return CatalogType.HOTEL
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsHotelProductGroupProductCounts with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsHotelProductGroupProductCounts]): CatalogsHotelProductGroupProductCounts =
+  result = CatalogsHotelProductGroupProductCounts()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("total"):
+      result.total = to(node["total"], float)
+
+# Custom JSON serialization for CatalogsHotelProductGroupProductCounts with custom field names
+proc `%`*(obj: CatalogsHotelProductGroupProductCounts): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["total"] = %obj.total
+

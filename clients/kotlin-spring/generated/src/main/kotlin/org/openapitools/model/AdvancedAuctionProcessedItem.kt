@@ -54,7 +54,7 @@ data class AdvancedAuctionProcessedItem(
     @field:Valid
     @Schema(example = "null", description = "Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.")
     @get:JsonProperty("errors") val errors: kotlin.collections.List<AdvancedAuctionOperationError>? = null
-    ) : AdvancedAuctionItemsSubmitRecord{
+) : AdvancedAuctionItemsSubmitRecord {
 
 }
 

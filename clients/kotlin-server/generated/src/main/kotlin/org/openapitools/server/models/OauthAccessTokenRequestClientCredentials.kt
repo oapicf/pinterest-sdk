@@ -14,14 +14,14 @@ package org.openapitools.server.models
 
 import kotlinx.serialization.Serializable
 /**
- * A request to receive a client token.
- * @param grantType 
+ * 
  * @param scope 
+ * @param grantType 
  */
 @Serializable
 data class OauthAccessTokenRequestClientCredentials(
-    val grantType: OauthAccessTokenRequestClientCredentials.GrantType,
-    val scope: kotlin.String
+    val scope: kotlin.String,
+    val grantType: OauthAccessTokenRequestClientCredentials.GrantType
 )
 {
     /**

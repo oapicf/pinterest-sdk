@@ -90,7 +90,7 @@ public class MediaApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call mediaCreateCall(MediaUploadRequest mediaUploadRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call mediaCreateCall(@javax.annotation.Nonnull MediaUploadRequest mediaUploadRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -136,7 +136,7 @@ public class MediaApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call mediaCreateValidateBeforeCall(MediaUploadRequest mediaUploadRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call mediaCreateValidateBeforeCall(@javax.annotation.Nonnull MediaUploadRequest mediaUploadRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'mediaUploadRequest' is set
         if (mediaUploadRequest == null) {
             throw new ApiException("Missing the required parameter 'mediaUploadRequest' when calling mediaCreate(Async)");
@@ -160,7 +160,7 @@ public class MediaApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public MediaUpload mediaCreate(MediaUploadRequest mediaUploadRequest) throws ApiException {
+    public MediaUpload mediaCreate(@javax.annotation.Nonnull MediaUploadRequest mediaUploadRequest) throws ApiException {
         ApiResponse<MediaUpload> localVarResp = mediaCreateWithHttpInfo(mediaUploadRequest);
         return localVarResp.getData();
     }
@@ -179,7 +179,7 @@ public class MediaApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MediaUpload> mediaCreateWithHttpInfo(MediaUploadRequest mediaUploadRequest) throws ApiException {
+    public ApiResponse<MediaUpload> mediaCreateWithHttpInfo(@javax.annotation.Nonnull MediaUploadRequest mediaUploadRequest) throws ApiException {
         okhttp3.Call localVarCall = mediaCreateValidateBeforeCall(mediaUploadRequest, null);
         Type localVarReturnType = new TypeToken<MediaUpload>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -200,7 +200,7 @@ public class MediaApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call mediaCreateAsync(MediaUploadRequest mediaUploadRequest, final ApiCallback<MediaUpload> _callback) throws ApiException {
+    public okhttp3.Call mediaCreateAsync(@javax.annotation.Nonnull MediaUploadRequest mediaUploadRequest, final ApiCallback<MediaUpload> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = mediaCreateValidateBeforeCall(mediaUploadRequest, _callback);
         Type localVarReturnType = new TypeToken<MediaUpload>(){}.getType();
@@ -222,7 +222,7 @@ public class MediaApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call mediaGetCall(String mediaId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call mediaGetCall(@javax.annotation.Nonnull String mediaId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -268,7 +268,7 @@ public class MediaApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call mediaGetValidateBeforeCall(String mediaId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call mediaGetValidateBeforeCall(@javax.annotation.Nonnull String mediaId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'mediaId' is set
         if (mediaId == null) {
             throw new ApiException("Missing the required parameter 'mediaId' when calling mediaGet(Async)");
@@ -293,7 +293,7 @@ public class MediaApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public MediaUploadDetails mediaGet(String mediaId) throws ApiException {
+    public MediaUploadDetails mediaGet(@javax.annotation.Nonnull String mediaId) throws ApiException {
         ApiResponse<MediaUploadDetails> localVarResp = mediaGetWithHttpInfo(mediaId);
         return localVarResp.getData();
     }
@@ -313,7 +313,7 @@ public class MediaApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MediaUploadDetails> mediaGetWithHttpInfo(String mediaId) throws ApiException {
+    public ApiResponse<MediaUploadDetails> mediaGetWithHttpInfo(@javax.annotation.Nonnull String mediaId) throws ApiException {
         okhttp3.Call localVarCall = mediaGetValidateBeforeCall(mediaId, null);
         Type localVarReturnType = new TypeToken<MediaUploadDetails>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -335,7 +335,7 @@ public class MediaApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call mediaGetAsync(String mediaId, final ApiCallback<MediaUploadDetails> _callback) throws ApiException {
+    public okhttp3.Call mediaGetAsync(@javax.annotation.Nonnull String mediaId, final ApiCallback<MediaUploadDetails> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = mediaGetValidateBeforeCall(mediaId, _callback);
         Type localVarReturnType = new TypeToken<MediaUploadDetails>(){}.getType();
@@ -357,7 +357,7 @@ public class MediaApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call mediaListCall(String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call mediaListCall(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -410,7 +410,7 @@ public class MediaApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call mediaListValidateBeforeCall(String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call mediaListValidateBeforeCall(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         return mediaListCall(bookmark, pageSize, _callback);
 
     }
@@ -430,7 +430,7 @@ public class MediaApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public MediaList200Response mediaList(String bookmark, Integer pageSize) throws ApiException {
+    public MediaList200Response mediaList(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<MediaList200Response> localVarResp = mediaListWithHttpInfo(bookmark, pageSize);
         return localVarResp.getData();
     }
@@ -450,7 +450,7 @@ public class MediaApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MediaList200Response> mediaListWithHttpInfo(String bookmark, Integer pageSize) throws ApiException {
+    public ApiResponse<MediaList200Response> mediaListWithHttpInfo(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = mediaListValidateBeforeCall(bookmark, pageSize, null);
         Type localVarReturnType = new TypeToken<MediaList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -472,7 +472,7 @@ public class MediaApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call mediaListAsync(String bookmark, Integer pageSize, final ApiCallback<MediaList200Response> _callback) throws ApiException {
+    public okhttp3.Call mediaListAsync(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback<MediaList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = mediaListValidateBeforeCall(bookmark, pageSize, _callback);
         Type localVarReturnType = new TypeToken<MediaList200Response>(){}.getType();

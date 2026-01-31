@@ -7,7 +7,7 @@ import play.api.libs.json._
   * @param deletedAssetGroups A list of ids of successfully deleted asset groups.
   * @param exceptions A list of errors associated with the asset groups. Will be returned if there is an error.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class DeleteAssetGroupResponse(
   deletedAssetGroups: Option[List[String]],
   exceptions: Option[List[DeleteAssetGroupResponseExceptionsInner]]

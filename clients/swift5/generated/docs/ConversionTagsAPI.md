@@ -26,7 +26,7 @@ Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/b
 import OpenAPIClient
 
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account.
-let conversionTagCreate = ConversionTagCreate(name: "name_example", aemEnabled: true, mdFrequency: 123, aemFnlnEnabled: true, aemPhEnabled: true, aemGeEnabled: true, aemDbEnabled: true, aemLocEnabled: true) // ConversionTagCreate | Conversion Tag to create
+let conversionTagCreate = ConversionTagCreate(aemEnabled: true, mdFrequency: 123, aemFnlnEnabled: true, aemPhEnabled: true, aemGeEnabled: true, aemDbEnabled: true, aemLocEnabled: true, name: "name_example") // ConversionTagCreate | Conversion Tag to create
 
 // Create conversion tag
 ConversionTagsAPI.conversionTagsCreate(adAccountId: adAccountId, conversionTagCreate: conversionTagCreate) { (response, error) in

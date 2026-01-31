@@ -1,25 +1,28 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Used for including extra details to a base error
- **/
+ * Used for including extra details to a base error
+ */
 @ApiModel(description="Used for including extra details to a base error")
 
 public class DetailedError  {
   
   @ApiModelProperty(required = true, value = "")
+
   private Integer code;
 
   @ApiModelProperty(required = true, value = "")
+
   private String message;
 
   @ApiModelProperty(required = true, value = "")
+
   private Object details;
  /**
    * Get code

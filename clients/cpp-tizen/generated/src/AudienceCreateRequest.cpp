@@ -27,7 +27,7 @@ AudienceCreateRequest::__init()
 	//name = std::string();
 	//rule = new AudienceRule();
 	//description = std::string();
-	//audience_type = new AudienceCreateRequest_1_audience_type();
+	//audience_type = std::string();
 }
 
 void
@@ -118,11 +118,11 @@ AudienceCreateRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("AudienceCreateRequest_1_audience_type")) {
-			jsonToValue(&audience_type, node, "AudienceCreateRequest_1_audience_type", "AudienceCreateRequest_1_audience_type");
+		if (isprimitive("AudienceType")) {
+			jsonToValue(&audience_type, node, "AudienceType", "AudienceType");
 		} else {
 			
-			AudienceCreateRequest_1_audience_type* obj = static_cast<AudienceCreateRequest_1_audience_type*> (&audience_type);
+			AudienceType* obj = static_cast<AudienceType*> (&audience_type);
 			obj->fromJson(json_to_string(node, false));
 			
 		}
@@ -180,13 +180,13 @@ AudienceCreateRequest::toJson()
 	}
 	const gchar *descriptionKey = "description";
 	json_object_set_member(pJsonObject, descriptionKey, node);
-	if (isprimitive("AudienceCreateRequest_1_audience_type")) {
-		AudienceCreateRequest_1_audience_type obj = getAudienceType();
-		node = converttoJson(&obj, "AudienceCreateRequest_1_audience_type", "");
+	if (isprimitive("AudienceType")) {
+		AudienceType obj = getAudienceType();
+		node = converttoJson(&obj, "AudienceType", "");
 	}
 	else {
 		
-		AudienceCreateRequest_1_audience_type obj = static_cast<AudienceCreateRequest_1_audience_type> (getAudienceType());
+		AudienceType obj = static_cast<AudienceType> (getAudienceType());
 		GError *mygerror;
 		mygerror = NULL;
 		node = json_from_string(obj.toJson(), &mygerror);
@@ -250,14 +250,14 @@ AudienceCreateRequest::setDescription(std::string  description)
 	this->description = description;
 }
 
-AudienceCreateRequest_1_audience_type
+AudienceType
 AudienceCreateRequest::getAudienceType()
 {
 	return audience_type;
 }
 
 void
-AudienceCreateRequest::setAudienceType(AudienceCreateRequest_1_audience_type  audience_type)
+AudienceCreateRequest::setAudienceType(AudienceType  audience_type)
 {
 	this->audience_type = audience_type;
 }

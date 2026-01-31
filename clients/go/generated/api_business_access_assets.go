@@ -535,14 +535,16 @@ func (a *BusinessAccessAssetsAPIService) BusinessAssetMembersGetExecute(r ApiBus
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.startIndex != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", r.startIndex, "form", "")
 	} else {
-		var defaultValue int32 = 0
-		r.startIndex = &defaultValue
+        var defaultValue int32 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", defaultValue, "form", "")
+        r.startIndex = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -697,8 +699,9 @@ func (a *BusinessAccessAssetsAPIService) BusinessAssetPartnersGetExecute(r ApiBu
 	if r.startIndex != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", r.startIndex, "form", "")
 	} else {
-		var defaultValue int32 = 0
-		r.startIndex = &defaultValue
+        var defaultValue int32 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", defaultValue, "form", "")
+        r.startIndex = &defaultValue
 	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
@@ -706,8 +709,9 @@ func (a *BusinessAccessAssetsAPIService) BusinessAssetPartnersGetExecute(r ApiBu
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -895,14 +899,16 @@ func (a *BusinessAccessAssetsAPIService) BusinessAssetsGetExecute(r ApiBusinessA
 	if r.assetType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "asset_type", r.assetType, "form", "")
 	} else {
-		var defaultValue string = "AD_ACCOUNT"
-		r.assetType = &defaultValue
+        var defaultValue string = "AD_ACCOUNT"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "asset_type", defaultValue, "form", "")
+        r.assetType = &defaultValue
 	}
 	if r.startIndex != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", r.startIndex, "form", "")
 	} else {
-		var defaultValue int32 = 0
-		r.startIndex = &defaultValue
+        var defaultValue int32 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", defaultValue, "form", "")
+        r.startIndex = &defaultValue
 	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
@@ -910,8 +916,9 @@ func (a *BusinessAccessAssetsAPIService) BusinessAssetsGetExecute(r ApiBusinessA
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1074,14 +1081,16 @@ func (a *BusinessAccessAssetsAPIService) BusinessMemberAssetsGetExecute(r ApiBus
 	if r.assetType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "asset_type", r.assetType, "form", "")
 	} else {
-		var defaultValue string = "AD_ACCOUNT"
-		r.assetType = &defaultValue
+        var defaultValue string = "AD_ACCOUNT"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "asset_type", defaultValue, "form", "")
+        r.assetType = &defaultValue
 	}
 	if r.startIndex != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", r.startIndex, "form", "")
 	} else {
-		var defaultValue int32 = 0
-		r.startIndex = &defaultValue
+        var defaultValue int32 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", defaultValue, "form", "")
+        r.startIndex = &defaultValue
 	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
@@ -1089,8 +1098,9 @@ func (a *BusinessAccessAssetsAPIService) BusinessMemberAssetsGetExecute(r ApiBus
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1519,24 +1529,31 @@ func (a *BusinessAccessAssetsAPIService) BusinessPartnerAssetAccessGetExecute(r 
 
 	if r.partnerType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "partner_type", r.partnerType, "form", "")
+	} else {
+        var defaultValue PartnerType = "INTERNAL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "partner_type", defaultValue, "form", "")
+        r.partnerType = &defaultValue
 	}
 	if r.assetType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "asset_type", r.assetType, "form", "")
 	} else {
-		var defaultValue string = "AD_ACCOUNT"
-		r.assetType = &defaultValue
+        var defaultValue string = "AD_ACCOUNT"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "asset_type", defaultValue, "form", "")
+        r.assetType = &defaultValue
 	}
 	if r.startIndex != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", r.startIndex, "form", "")
 	} else {
-		var defaultValue int32 = 0
-		r.startIndex = &defaultValue
+        var defaultValue int32 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "start_index", defaultValue, "form", "")
+        r.startIndex = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")

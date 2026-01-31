@@ -238,12 +238,6 @@ namespace Org.OpenAPITools.Model
             PinMediaSourceImagesURL? pinMediaSourceImagesURL = null;
             PinMediaSourcePinURL? pinMediaSourcePinURL = null;
             PinMediaSourceVideoID? pinMediaSourceVideoID = null;
-            PinMediaSourceImageBase64? pinMediaSourceImageBase64 = null;
-            PinMediaSourceImageURL? pinMediaSourceImageURL = null;
-            PinMediaSourceImagesBase64? pinMediaSourceImagesBase64 = null;
-            PinMediaSourceImagesURL? pinMediaSourceImagesURL = null;
-            PinMediaSourcePinURL? pinMediaSourcePinURL = null;
-            PinMediaSourceVideoID? pinMediaSourceVideoID = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -291,36 +285,6 @@ namespace Org.OpenAPITools.Model
                             Utf8JsonReader utf8JsonReaderPinMediaSourceVideoID = utf8JsonReader;
                             pinMediaSourceVideoID = JsonSerializer.Deserialize<PinMediaSourceVideoID>(ref utf8JsonReaderPinMediaSourceVideoID, jsonSerializerOptions);
                         }
-                        if (discriminator?.Equals("PinMediaSourceImageBase64") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderPinMediaSourceImageBase64 = utf8JsonReader;
-                            pinMediaSourceImageBase64 = JsonSerializer.Deserialize<PinMediaSourceImageBase64>(ref utf8JsonReaderPinMediaSourceImageBase64, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("PinMediaSourceImageURL") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderPinMediaSourceImageURL = utf8JsonReader;
-                            pinMediaSourceImageURL = JsonSerializer.Deserialize<PinMediaSourceImageURL>(ref utf8JsonReaderPinMediaSourceImageURL, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("PinMediaSourceImagesBase64") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderPinMediaSourceImagesBase64 = utf8JsonReader;
-                            pinMediaSourceImagesBase64 = JsonSerializer.Deserialize<PinMediaSourceImagesBase64>(ref utf8JsonReaderPinMediaSourceImagesBase64, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("PinMediaSourceImagesURL") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderPinMediaSourceImagesURL = utf8JsonReader;
-                            pinMediaSourceImagesURL = JsonSerializer.Deserialize<PinMediaSourceImagesURL>(ref utf8JsonReaderPinMediaSourceImagesURL, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("PinMediaSourcePinURL") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderPinMediaSourcePinURL = utf8JsonReader;
-                            pinMediaSourcePinURL = JsonSerializer.Deserialize<PinMediaSourcePinURL>(ref utf8JsonReaderPinMediaSourcePinURL, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("PinMediaSourceVideoID") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderPinMediaSourceVideoID = utf8JsonReader;
-                            pinMediaSourceVideoID = JsonSerializer.Deserialize<PinMediaSourceVideoID>(ref utf8JsonReaderPinMediaSourceVideoID, jsonSerializerOptions);
-                        }
                     }
                 }
             }
@@ -356,24 +320,6 @@ namespace Org.OpenAPITools.Model
 
             if (sourceType.IsSet && sourceType.Value == null)
                 throw new ArgumentNullException(nameof(sourceType), "Property is not nullable for class PinMediaSource.");
-
-            if (pinMediaSourceImageBase64 != null)
-                return new PinMediaSource(pinMediaSourceImageBase64);
-
-            if (pinMediaSourceImageURL != null)
-                return new PinMediaSource(pinMediaSourceImageURL);
-
-            if (pinMediaSourceImagesBase64 != null)
-                return new PinMediaSource(pinMediaSourceImagesBase64);
-
-            if (pinMediaSourceImagesURL != null)
-                return new PinMediaSource(pinMediaSourceImagesURL);
-
-            if (pinMediaSourcePinURL != null)
-                return new PinMediaSource(pinMediaSourcePinURL);
-
-            if (pinMediaSourceVideoID != null)
-                return new PinMediaSource(pinMediaSourceVideoID);
 
             if (pinMediaSourceImageBase64 != null)
                 return new PinMediaSource(pinMediaSourceImageBase64);

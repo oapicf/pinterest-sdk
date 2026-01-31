@@ -11,14 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class KeywordMetricsResponse  {
   
-  @ApiModelProperty(example = "animals", value = "Keyword name, e.g., \"keyword\":\"fashion outfits\"")
  /**
-   * Keyword name, e.g., \"keyword\":\"fashion outfits\"
-  **/
+  * Keyword name, e.g., \"keyword\":\"fashion outfits\"
+  */
+  @ApiModelProperty(example = "animals", value = "Keyword name, e.g., \"keyword\":\"fashion outfits\"")
+
   private String keyword;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private KeywordMetrics metrics;
  /**
    * Keyword name, e.g., \&quot;keyword\&quot;:\&quot;fashion outfits\&quot;

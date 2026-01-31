@@ -29,7 +29,7 @@ data class AdvancedAuctionItemsGetRequest(
     @get:Size(min=1,max=10000) 
     @Schema(example = "null", required = true, description = "A list of retail catalog items to fetch bid options for")
     @get:JsonProperty("items", required = true) val items: kotlin.collections.List<AdvancedAuctionItemsGetRecord>
-    ) {
+) {
 
 }
 

@@ -9,7 +9,1263 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AdCountry* = object
-  ## Country ID from ISO 3166-1 alpha-2.
+type AdCountry* {.pure.} = enum
+  AD
+  AE
+  AF
+  AG
+  AI
+  AL
+  AM
+  AO
+  AQ
+  AR
+  AS
+  AT
+  AU
+  AW
+  AX
+  AZ
+  BA
+  BB
+  BD
+  BE
+  BF
+  BG
+  BH
+  BI
+  BJ
+  BL
+  BM
+  BN
+  BO
+  BQ
+  BR
+  BS
+  BT
+  BV
+  BW
+  BY
+  BZ
+  CA
+  CC
+  CD
+  CF
+  CG
+  CH
+  CI
+  CK
+  CL
+  CM
+  CN
+  CO
+  CR
+  CU
+  CV
+  CW
+  CX
+  CY
+  CZ
+  DE
+  DJ
+  DK
+  DM
+  DO
+  DZ
+  EC
+  EE
+  EG
+  EH
+  ER
+  ES
+  ET
+  FI
+  FJ
+  FK
+  FM
+  FO
+  FR
+  GA
+  GB
+  GD
+  GE
+  GF
+  GG
+  GH
+  GI
+  GL
+  GM
+  GN
+  GP
+  GQ
+  GR
+  GS
+  GT
+  GU
+  GW
+  GY
+  HK
+  HM
+  HN
+  HR
+  HT
+  HU
+  ID
+  IE
+  IL
+  IM
+  IN
+  IO
+  IQ
+  IR
+  IS
+  IT
+  JE
+  JM
+  JO
+  JP
+  KE
+  KG
+  KH
+  KI
+  KM
+  KN
+  KR
+  KW
+  KY
+  KZ
+  LA
+  LB
+  LC
+  LI
+  LK
+  LR
+  LS
+  LT
+  LU
+  LV
+  LY
+  MA
+  MC
+  MD
+  ME
+  MF
+  MG
+  MH
+  MK
+  ML
+  MM
+  MN
+  MO
+  MP
+  MQ
+  MR
+  MS
+  MT
+  MU
+  MV
+  MW
+  MX
+  MY
+  MZ
+  NA
+  NC
+  NE
+  NF
+  NG
+  NI
+  NL
+  NO
+  NP
+  NR
+  NU
+  NZ
+  OM
+  PA
+  PE
+  PF
+  PG
+  PH
+  PK
+  PL
+  PM
+  PN
+  PR
+  PS
+  PT
+  PW
+  PY
+  QA
+  RE
+  RO
+  RS
+  RU
+  RW
+  SA
+  SB
+  SC
+  SD
+  SE
+  SG
+  SH
+  SI
+  SJ
+  SK
+  SL
+  SM
+  SN
+  SO
+  SR
+  SS
+  ST
+  SV
+  SX
+  SY
+  SZ
+  TC
+  TD
+  TF
+  TG
+  TH
+  TJ
+  TK
+  TL
+  TM
+  TN
+  TO
+  TR
+  TT
+  TV
+  TW
+  TZ
+  UA
+  UG
+  UM
+  US
+  UY
+  UZ
+  VA
+  VC
+  VE
+  VG
+  VI
+  VN
+  VU
+  WF
+  WS
+  YE
+  YT
+  ZA
+  ZM
+  ZW
+
+func `%`*(v: AdCountry): JsonNode =
+  result = case v:
+    of AdCountry.AD: %"AD"
+    of AdCountry.AE: %"AE"
+    of AdCountry.AF: %"AF"
+    of AdCountry.AG: %"AG"
+    of AdCountry.AI: %"AI"
+    of AdCountry.AL: %"AL"
+    of AdCountry.AM: %"AM"
+    of AdCountry.AO: %"AO"
+    of AdCountry.AQ: %"AQ"
+    of AdCountry.AR: %"AR"
+    of AdCountry.AS: %"AS"
+    of AdCountry.AT: %"AT"
+    of AdCountry.AU: %"AU"
+    of AdCountry.AW: %"AW"
+    of AdCountry.AX: %"AX"
+    of AdCountry.AZ: %"AZ"
+    of AdCountry.BA: %"BA"
+    of AdCountry.BB: %"BB"
+    of AdCountry.BD: %"BD"
+    of AdCountry.BE: %"BE"
+    of AdCountry.BF: %"BF"
+    of AdCountry.BG: %"BG"
+    of AdCountry.BH: %"BH"
+    of AdCountry.BI: %"BI"
+    of AdCountry.BJ: %"BJ"
+    of AdCountry.BL: %"BL"
+    of AdCountry.BM: %"BM"
+    of AdCountry.BN: %"BN"
+    of AdCountry.BO: %"BO"
+    of AdCountry.BQ: %"BQ"
+    of AdCountry.BR: %"BR"
+    of AdCountry.BS: %"BS"
+    of AdCountry.BT: %"BT"
+    of AdCountry.BV: %"BV"
+    of AdCountry.BW: %"BW"
+    of AdCountry.BY: %"BY"
+    of AdCountry.BZ: %"BZ"
+    of AdCountry.CA: %"CA"
+    of AdCountry.CC: %"CC"
+    of AdCountry.CD: %"CD"
+    of AdCountry.CF: %"CF"
+    of AdCountry.CG: %"CG"
+    of AdCountry.CH: %"CH"
+    of AdCountry.CI: %"CI"
+    of AdCountry.CK: %"CK"
+    of AdCountry.CL: %"CL"
+    of AdCountry.CM: %"CM"
+    of AdCountry.CN: %"CN"
+    of AdCountry.CO: %"CO"
+    of AdCountry.CR: %"CR"
+    of AdCountry.CU: %"CU"
+    of AdCountry.CV: %"CV"
+    of AdCountry.CW: %"CW"
+    of AdCountry.CX: %"CX"
+    of AdCountry.CY: %"CY"
+    of AdCountry.CZ: %"CZ"
+    of AdCountry.DE: %"DE"
+    of AdCountry.DJ: %"DJ"
+    of AdCountry.DK: %"DK"
+    of AdCountry.DM: %"DM"
+    of AdCountry.DO: %"DO"
+    of AdCountry.DZ: %"DZ"
+    of AdCountry.EC: %"EC"
+    of AdCountry.EE: %"EE"
+    of AdCountry.EG: %"EG"
+    of AdCountry.EH: %"EH"
+    of AdCountry.ER: %"ER"
+    of AdCountry.ES: %"ES"
+    of AdCountry.ET: %"ET"
+    of AdCountry.FI: %"FI"
+    of AdCountry.FJ: %"FJ"
+    of AdCountry.FK: %"FK"
+    of AdCountry.FM: %"FM"
+    of AdCountry.FO: %"FO"
+    of AdCountry.FR: %"FR"
+    of AdCountry.GA: %"GA"
+    of AdCountry.GB: %"GB"
+    of AdCountry.GD: %"GD"
+    of AdCountry.GE: %"GE"
+    of AdCountry.GF: %"GF"
+    of AdCountry.GG: %"GG"
+    of AdCountry.GH: %"GH"
+    of AdCountry.GI: %"GI"
+    of AdCountry.GL: %"GL"
+    of AdCountry.GM: %"GM"
+    of AdCountry.GN: %"GN"
+    of AdCountry.GP: %"GP"
+    of AdCountry.GQ: %"GQ"
+    of AdCountry.GR: %"GR"
+    of AdCountry.GS: %"GS"
+    of AdCountry.GT: %"GT"
+    of AdCountry.GU: %"GU"
+    of AdCountry.GW: %"GW"
+    of AdCountry.GY: %"GY"
+    of AdCountry.HK: %"HK"
+    of AdCountry.HM: %"HM"
+    of AdCountry.HN: %"HN"
+    of AdCountry.HR: %"HR"
+    of AdCountry.HT: %"HT"
+    of AdCountry.HU: %"HU"
+    of AdCountry.ID: %"ID"
+    of AdCountry.IE: %"IE"
+    of AdCountry.IL: %"IL"
+    of AdCountry.IM: %"IM"
+    of AdCountry.IN: %"IN"
+    of AdCountry.IO: %"IO"
+    of AdCountry.IQ: %"IQ"
+    of AdCountry.IR: %"IR"
+    of AdCountry.IS: %"IS"
+    of AdCountry.IT: %"IT"
+    of AdCountry.JE: %"JE"
+    of AdCountry.JM: %"JM"
+    of AdCountry.JO: %"JO"
+    of AdCountry.JP: %"JP"
+    of AdCountry.KE: %"KE"
+    of AdCountry.KG: %"KG"
+    of AdCountry.KH: %"KH"
+    of AdCountry.KI: %"KI"
+    of AdCountry.KM: %"KM"
+    of AdCountry.KN: %"KN"
+    of AdCountry.KR: %"KR"
+    of AdCountry.KW: %"KW"
+    of AdCountry.KY: %"KY"
+    of AdCountry.KZ: %"KZ"
+    of AdCountry.LA: %"LA"
+    of AdCountry.LB: %"LB"
+    of AdCountry.LC: %"LC"
+    of AdCountry.LI: %"LI"
+    of AdCountry.LK: %"LK"
+    of AdCountry.LR: %"LR"
+    of AdCountry.LS: %"LS"
+    of AdCountry.LT: %"LT"
+    of AdCountry.LU: %"LU"
+    of AdCountry.LV: %"LV"
+    of AdCountry.LY: %"LY"
+    of AdCountry.MA: %"MA"
+    of AdCountry.MC: %"MC"
+    of AdCountry.MD: %"MD"
+    of AdCountry.ME: %"ME"
+    of AdCountry.MF: %"MF"
+    of AdCountry.MG: %"MG"
+    of AdCountry.MH: %"MH"
+    of AdCountry.MK: %"MK"
+    of AdCountry.ML: %"ML"
+    of AdCountry.MM: %"MM"
+    of AdCountry.MN: %"MN"
+    of AdCountry.MO: %"MO"
+    of AdCountry.MP: %"MP"
+    of AdCountry.MQ: %"MQ"
+    of AdCountry.MR: %"MR"
+    of AdCountry.MS: %"MS"
+    of AdCountry.MT: %"MT"
+    of AdCountry.MU: %"MU"
+    of AdCountry.MV: %"MV"
+    of AdCountry.MW: %"MW"
+    of AdCountry.MX: %"MX"
+    of AdCountry.MY: %"MY"
+    of AdCountry.MZ: %"MZ"
+    of AdCountry.NA: %"NA"
+    of AdCountry.NC: %"NC"
+    of AdCountry.NE: %"NE"
+    of AdCountry.NF: %"NF"
+    of AdCountry.NG: %"NG"
+    of AdCountry.NI: %"NI"
+    of AdCountry.NL: %"NL"
+    of AdCountry.NO: %"NO"
+    of AdCountry.NP: %"NP"
+    of AdCountry.NR: %"NR"
+    of AdCountry.NU: %"NU"
+    of AdCountry.NZ: %"NZ"
+    of AdCountry.OM: %"OM"
+    of AdCountry.PA: %"PA"
+    of AdCountry.PE: %"PE"
+    of AdCountry.PF: %"PF"
+    of AdCountry.PG: %"PG"
+    of AdCountry.PH: %"PH"
+    of AdCountry.PK: %"PK"
+    of AdCountry.PL: %"PL"
+    of AdCountry.PM: %"PM"
+    of AdCountry.PN: %"PN"
+    of AdCountry.PR: %"PR"
+    of AdCountry.PS: %"PS"
+    of AdCountry.PT: %"PT"
+    of AdCountry.PW: %"PW"
+    of AdCountry.PY: %"PY"
+    of AdCountry.QA: %"QA"
+    of AdCountry.RE: %"RE"
+    of AdCountry.RO: %"RO"
+    of AdCountry.RS: %"RS"
+    of AdCountry.RU: %"RU"
+    of AdCountry.RW: %"RW"
+    of AdCountry.SA: %"SA"
+    of AdCountry.SB: %"SB"
+    of AdCountry.SC: %"SC"
+    of AdCountry.SD: %"SD"
+    of AdCountry.SE: %"SE"
+    of AdCountry.SG: %"SG"
+    of AdCountry.SH: %"SH"
+    of AdCountry.SI: %"SI"
+    of AdCountry.SJ: %"SJ"
+    of AdCountry.SK: %"SK"
+    of AdCountry.SL: %"SL"
+    of AdCountry.SM: %"SM"
+    of AdCountry.SN: %"SN"
+    of AdCountry.SO: %"SO"
+    of AdCountry.SR: %"SR"
+    of AdCountry.SS: %"SS"
+    of AdCountry.ST: %"ST"
+    of AdCountry.SV: %"SV"
+    of AdCountry.SX: %"SX"
+    of AdCountry.SY: %"SY"
+    of AdCountry.SZ: %"SZ"
+    of AdCountry.TC: %"TC"
+    of AdCountry.TD: %"TD"
+    of AdCountry.TF: %"TF"
+    of AdCountry.TG: %"TG"
+    of AdCountry.TH: %"TH"
+    of AdCountry.TJ: %"TJ"
+    of AdCountry.TK: %"TK"
+    of AdCountry.TL: %"TL"
+    of AdCountry.TM: %"TM"
+    of AdCountry.TN: %"TN"
+    of AdCountry.TO: %"TO"
+    of AdCountry.TR: %"TR"
+    of AdCountry.TT: %"TT"
+    of AdCountry.TV: %"TV"
+    of AdCountry.TW: %"TW"
+    of AdCountry.TZ: %"TZ"
+    of AdCountry.UA: %"UA"
+    of AdCountry.UG: %"UG"
+    of AdCountry.UM: %"UM"
+    of AdCountry.US: %"US"
+    of AdCountry.UY: %"UY"
+    of AdCountry.UZ: %"UZ"
+    of AdCountry.VA: %"VA"
+    of AdCountry.VC: %"VC"
+    of AdCountry.VE: %"VE"
+    of AdCountry.VG: %"VG"
+    of AdCountry.VI: %"VI"
+    of AdCountry.VN: %"VN"
+    of AdCountry.VU: %"VU"
+    of AdCountry.WF: %"WF"
+    of AdCountry.WS: %"WS"
+    of AdCountry.YE: %"YE"
+    of AdCountry.YT: %"YT"
+    of AdCountry.ZA: %"ZA"
+    of AdCountry.ZM: %"ZM"
+    of AdCountry.ZW: %"ZW"
+
+func `$`*(v: AdCountry): string =
+  result = case v:
+    of AdCountry.AD: $("AD")
+    of AdCountry.AE: $("AE")
+    of AdCountry.AF: $("AF")
+    of AdCountry.AG: $("AG")
+    of AdCountry.AI: $("AI")
+    of AdCountry.AL: $("AL")
+    of AdCountry.AM: $("AM")
+    of AdCountry.AO: $("AO")
+    of AdCountry.AQ: $("AQ")
+    of AdCountry.AR: $("AR")
+    of AdCountry.AS: $("AS")
+    of AdCountry.AT: $("AT")
+    of AdCountry.AU: $("AU")
+    of AdCountry.AW: $("AW")
+    of AdCountry.AX: $("AX")
+    of AdCountry.AZ: $("AZ")
+    of AdCountry.BA: $("BA")
+    of AdCountry.BB: $("BB")
+    of AdCountry.BD: $("BD")
+    of AdCountry.BE: $("BE")
+    of AdCountry.BF: $("BF")
+    of AdCountry.BG: $("BG")
+    of AdCountry.BH: $("BH")
+    of AdCountry.BI: $("BI")
+    of AdCountry.BJ: $("BJ")
+    of AdCountry.BL: $("BL")
+    of AdCountry.BM: $("BM")
+    of AdCountry.BN: $("BN")
+    of AdCountry.BO: $("BO")
+    of AdCountry.BQ: $("BQ")
+    of AdCountry.BR: $("BR")
+    of AdCountry.BS: $("BS")
+    of AdCountry.BT: $("BT")
+    of AdCountry.BV: $("BV")
+    of AdCountry.BW: $("BW")
+    of AdCountry.BY: $("BY")
+    of AdCountry.BZ: $("BZ")
+    of AdCountry.CA: $("CA")
+    of AdCountry.CC: $("CC")
+    of AdCountry.CD: $("CD")
+    of AdCountry.CF: $("CF")
+    of AdCountry.CG: $("CG")
+    of AdCountry.CH: $("CH")
+    of AdCountry.CI: $("CI")
+    of AdCountry.CK: $("CK")
+    of AdCountry.CL: $("CL")
+    of AdCountry.CM: $("CM")
+    of AdCountry.CN: $("CN")
+    of AdCountry.CO: $("CO")
+    of AdCountry.CR: $("CR")
+    of AdCountry.CU: $("CU")
+    of AdCountry.CV: $("CV")
+    of AdCountry.CW: $("CW")
+    of AdCountry.CX: $("CX")
+    of AdCountry.CY: $("CY")
+    of AdCountry.CZ: $("CZ")
+    of AdCountry.DE: $("DE")
+    of AdCountry.DJ: $("DJ")
+    of AdCountry.DK: $("DK")
+    of AdCountry.DM: $("DM")
+    of AdCountry.DO: $("DO")
+    of AdCountry.DZ: $("DZ")
+    of AdCountry.EC: $("EC")
+    of AdCountry.EE: $("EE")
+    of AdCountry.EG: $("EG")
+    of AdCountry.EH: $("EH")
+    of AdCountry.ER: $("ER")
+    of AdCountry.ES: $("ES")
+    of AdCountry.ET: $("ET")
+    of AdCountry.FI: $("FI")
+    of AdCountry.FJ: $("FJ")
+    of AdCountry.FK: $("FK")
+    of AdCountry.FM: $("FM")
+    of AdCountry.FO: $("FO")
+    of AdCountry.FR: $("FR")
+    of AdCountry.GA: $("GA")
+    of AdCountry.GB: $("GB")
+    of AdCountry.GD: $("GD")
+    of AdCountry.GE: $("GE")
+    of AdCountry.GF: $("GF")
+    of AdCountry.GG: $("GG")
+    of AdCountry.GH: $("GH")
+    of AdCountry.GI: $("GI")
+    of AdCountry.GL: $("GL")
+    of AdCountry.GM: $("GM")
+    of AdCountry.GN: $("GN")
+    of AdCountry.GP: $("GP")
+    of AdCountry.GQ: $("GQ")
+    of AdCountry.GR: $("GR")
+    of AdCountry.GS: $("GS")
+    of AdCountry.GT: $("GT")
+    of AdCountry.GU: $("GU")
+    of AdCountry.GW: $("GW")
+    of AdCountry.GY: $("GY")
+    of AdCountry.HK: $("HK")
+    of AdCountry.HM: $("HM")
+    of AdCountry.HN: $("HN")
+    of AdCountry.HR: $("HR")
+    of AdCountry.HT: $("HT")
+    of AdCountry.HU: $("HU")
+    of AdCountry.ID: $("ID")
+    of AdCountry.IE: $("IE")
+    of AdCountry.IL: $("IL")
+    of AdCountry.IM: $("IM")
+    of AdCountry.IN: $("IN")
+    of AdCountry.IO: $("IO")
+    of AdCountry.IQ: $("IQ")
+    of AdCountry.IR: $("IR")
+    of AdCountry.IS: $("IS")
+    of AdCountry.IT: $("IT")
+    of AdCountry.JE: $("JE")
+    of AdCountry.JM: $("JM")
+    of AdCountry.JO: $("JO")
+    of AdCountry.JP: $("JP")
+    of AdCountry.KE: $("KE")
+    of AdCountry.KG: $("KG")
+    of AdCountry.KH: $("KH")
+    of AdCountry.KI: $("KI")
+    of AdCountry.KM: $("KM")
+    of AdCountry.KN: $("KN")
+    of AdCountry.KR: $("KR")
+    of AdCountry.KW: $("KW")
+    of AdCountry.KY: $("KY")
+    of AdCountry.KZ: $("KZ")
+    of AdCountry.LA: $("LA")
+    of AdCountry.LB: $("LB")
+    of AdCountry.LC: $("LC")
+    of AdCountry.LI: $("LI")
+    of AdCountry.LK: $("LK")
+    of AdCountry.LR: $("LR")
+    of AdCountry.LS: $("LS")
+    of AdCountry.LT: $("LT")
+    of AdCountry.LU: $("LU")
+    of AdCountry.LV: $("LV")
+    of AdCountry.LY: $("LY")
+    of AdCountry.MA: $("MA")
+    of AdCountry.MC: $("MC")
+    of AdCountry.MD: $("MD")
+    of AdCountry.ME: $("ME")
+    of AdCountry.MF: $("MF")
+    of AdCountry.MG: $("MG")
+    of AdCountry.MH: $("MH")
+    of AdCountry.MK: $("MK")
+    of AdCountry.ML: $("ML")
+    of AdCountry.MM: $("MM")
+    of AdCountry.MN: $("MN")
+    of AdCountry.MO: $("MO")
+    of AdCountry.MP: $("MP")
+    of AdCountry.MQ: $("MQ")
+    of AdCountry.MR: $("MR")
+    of AdCountry.MS: $("MS")
+    of AdCountry.MT: $("MT")
+    of AdCountry.MU: $("MU")
+    of AdCountry.MV: $("MV")
+    of AdCountry.MW: $("MW")
+    of AdCountry.MX: $("MX")
+    of AdCountry.MY: $("MY")
+    of AdCountry.MZ: $("MZ")
+    of AdCountry.NA: $("NA")
+    of AdCountry.NC: $("NC")
+    of AdCountry.NE: $("NE")
+    of AdCountry.NF: $("NF")
+    of AdCountry.NG: $("NG")
+    of AdCountry.NI: $("NI")
+    of AdCountry.NL: $("NL")
+    of AdCountry.NO: $("NO")
+    of AdCountry.NP: $("NP")
+    of AdCountry.NR: $("NR")
+    of AdCountry.NU: $("NU")
+    of AdCountry.NZ: $("NZ")
+    of AdCountry.OM: $("OM")
+    of AdCountry.PA: $("PA")
+    of AdCountry.PE: $("PE")
+    of AdCountry.PF: $("PF")
+    of AdCountry.PG: $("PG")
+    of AdCountry.PH: $("PH")
+    of AdCountry.PK: $("PK")
+    of AdCountry.PL: $("PL")
+    of AdCountry.PM: $("PM")
+    of AdCountry.PN: $("PN")
+    of AdCountry.PR: $("PR")
+    of AdCountry.PS: $("PS")
+    of AdCountry.PT: $("PT")
+    of AdCountry.PW: $("PW")
+    of AdCountry.PY: $("PY")
+    of AdCountry.QA: $("QA")
+    of AdCountry.RE: $("RE")
+    of AdCountry.RO: $("RO")
+    of AdCountry.RS: $("RS")
+    of AdCountry.RU: $("RU")
+    of AdCountry.RW: $("RW")
+    of AdCountry.SA: $("SA")
+    of AdCountry.SB: $("SB")
+    of AdCountry.SC: $("SC")
+    of AdCountry.SD: $("SD")
+    of AdCountry.SE: $("SE")
+    of AdCountry.SG: $("SG")
+    of AdCountry.SH: $("SH")
+    of AdCountry.SI: $("SI")
+    of AdCountry.SJ: $("SJ")
+    of AdCountry.SK: $("SK")
+    of AdCountry.SL: $("SL")
+    of AdCountry.SM: $("SM")
+    of AdCountry.SN: $("SN")
+    of AdCountry.SO: $("SO")
+    of AdCountry.SR: $("SR")
+    of AdCountry.SS: $("SS")
+    of AdCountry.ST: $("ST")
+    of AdCountry.SV: $("SV")
+    of AdCountry.SX: $("SX")
+    of AdCountry.SY: $("SY")
+    of AdCountry.SZ: $("SZ")
+    of AdCountry.TC: $("TC")
+    of AdCountry.TD: $("TD")
+    of AdCountry.TF: $("TF")
+    of AdCountry.TG: $("TG")
+    of AdCountry.TH: $("TH")
+    of AdCountry.TJ: $("TJ")
+    of AdCountry.TK: $("TK")
+    of AdCountry.TL: $("TL")
+    of AdCountry.TM: $("TM")
+    of AdCountry.TN: $("TN")
+    of AdCountry.TO: $("TO")
+    of AdCountry.TR: $("TR")
+    of AdCountry.TT: $("TT")
+    of AdCountry.TV: $("TV")
+    of AdCountry.TW: $("TW")
+    of AdCountry.TZ: $("TZ")
+    of AdCountry.UA: $("UA")
+    of AdCountry.UG: $("UG")
+    of AdCountry.UM: $("UM")
+    of AdCountry.US: $("US")
+    of AdCountry.UY: $("UY")
+    of AdCountry.UZ: $("UZ")
+    of AdCountry.VA: $("VA")
+    of AdCountry.VC: $("VC")
+    of AdCountry.VE: $("VE")
+    of AdCountry.VG: $("VG")
+    of AdCountry.VI: $("VI")
+    of AdCountry.VN: $("VN")
+    of AdCountry.VU: $("VU")
+    of AdCountry.WF: $("WF")
+    of AdCountry.WS: $("WS")
+    of AdCountry.YE: $("YE")
+    of AdCountry.YT: $("YT")
+    of AdCountry.ZA: $("ZA")
+    of AdCountry.ZM: $("ZM")
+    of AdCountry.ZW: $("ZW")
+
+proc to*(node: JsonNode, T: typedesc[AdCountry]): AdCountry =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AdCountry, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("AD"):
+    return AdCountry.AD
+  of $("AE"):
+    return AdCountry.AE
+  of $("AF"):
+    return AdCountry.AF
+  of $("AG"):
+    return AdCountry.AG
+  of $("AI"):
+    return AdCountry.AI
+  of $("AL"):
+    return AdCountry.AL
+  of $("AM"):
+    return AdCountry.AM
+  of $("AO"):
+    return AdCountry.AO
+  of $("AQ"):
+    return AdCountry.AQ
+  of $("AR"):
+    return AdCountry.AR
+  of $("AS"):
+    return AdCountry.AS
+  of $("AT"):
+    return AdCountry.AT
+  of $("AU"):
+    return AdCountry.AU
+  of $("AW"):
+    return AdCountry.AW
+  of $("AX"):
+    return AdCountry.AX
+  of $("AZ"):
+    return AdCountry.AZ
+  of $("BA"):
+    return AdCountry.BA
+  of $("BB"):
+    return AdCountry.BB
+  of $("BD"):
+    return AdCountry.BD
+  of $("BE"):
+    return AdCountry.BE
+  of $("BF"):
+    return AdCountry.BF
+  of $("BG"):
+    return AdCountry.BG
+  of $("BH"):
+    return AdCountry.BH
+  of $("BI"):
+    return AdCountry.BI
+  of $("BJ"):
+    return AdCountry.BJ
+  of $("BL"):
+    return AdCountry.BL
+  of $("BM"):
+    return AdCountry.BM
+  of $("BN"):
+    return AdCountry.BN
+  of $("BO"):
+    return AdCountry.BO
+  of $("BQ"):
+    return AdCountry.BQ
+  of $("BR"):
+    return AdCountry.BR
+  of $("BS"):
+    return AdCountry.BS
+  of $("BT"):
+    return AdCountry.BT
+  of $("BV"):
+    return AdCountry.BV
+  of $("BW"):
+    return AdCountry.BW
+  of $("BY"):
+    return AdCountry.BY
+  of $("BZ"):
+    return AdCountry.BZ
+  of $("CA"):
+    return AdCountry.CA
+  of $("CC"):
+    return AdCountry.CC
+  of $("CD"):
+    return AdCountry.CD
+  of $("CF"):
+    return AdCountry.CF
+  of $("CG"):
+    return AdCountry.CG
+  of $("CH"):
+    return AdCountry.CH
+  of $("CI"):
+    return AdCountry.CI
+  of $("CK"):
+    return AdCountry.CK
+  of $("CL"):
+    return AdCountry.CL
+  of $("CM"):
+    return AdCountry.CM
+  of $("CN"):
+    return AdCountry.CN
+  of $("CO"):
+    return AdCountry.CO
+  of $("CR"):
+    return AdCountry.CR
+  of $("CU"):
+    return AdCountry.CU
+  of $("CV"):
+    return AdCountry.CV
+  of $("CW"):
+    return AdCountry.CW
+  of $("CX"):
+    return AdCountry.CX
+  of $("CY"):
+    return AdCountry.CY
+  of $("CZ"):
+    return AdCountry.CZ
+  of $("DE"):
+    return AdCountry.DE
+  of $("DJ"):
+    return AdCountry.DJ
+  of $("DK"):
+    return AdCountry.DK
+  of $("DM"):
+    return AdCountry.DM
+  of $("DO"):
+    return AdCountry.DO
+  of $("DZ"):
+    return AdCountry.DZ
+  of $("EC"):
+    return AdCountry.EC
+  of $("EE"):
+    return AdCountry.EE
+  of $("EG"):
+    return AdCountry.EG
+  of $("EH"):
+    return AdCountry.EH
+  of $("ER"):
+    return AdCountry.ER
+  of $("ES"):
+    return AdCountry.ES
+  of $("ET"):
+    return AdCountry.ET
+  of $("FI"):
+    return AdCountry.FI
+  of $("FJ"):
+    return AdCountry.FJ
+  of $("FK"):
+    return AdCountry.FK
+  of $("FM"):
+    return AdCountry.FM
+  of $("FO"):
+    return AdCountry.FO
+  of $("FR"):
+    return AdCountry.FR
+  of $("GA"):
+    return AdCountry.GA
+  of $("GB"):
+    return AdCountry.GB
+  of $("GD"):
+    return AdCountry.GD
+  of $("GE"):
+    return AdCountry.GE
+  of $("GF"):
+    return AdCountry.GF
+  of $("GG"):
+    return AdCountry.GG
+  of $("GH"):
+    return AdCountry.GH
+  of $("GI"):
+    return AdCountry.GI
+  of $("GL"):
+    return AdCountry.GL
+  of $("GM"):
+    return AdCountry.GM
+  of $("GN"):
+    return AdCountry.GN
+  of $("GP"):
+    return AdCountry.GP
+  of $("GQ"):
+    return AdCountry.GQ
+  of $("GR"):
+    return AdCountry.GR
+  of $("GS"):
+    return AdCountry.GS
+  of $("GT"):
+    return AdCountry.GT
+  of $("GU"):
+    return AdCountry.GU
+  of $("GW"):
+    return AdCountry.GW
+  of $("GY"):
+    return AdCountry.GY
+  of $("HK"):
+    return AdCountry.HK
+  of $("HM"):
+    return AdCountry.HM
+  of $("HN"):
+    return AdCountry.HN
+  of $("HR"):
+    return AdCountry.HR
+  of $("HT"):
+    return AdCountry.HT
+  of $("HU"):
+    return AdCountry.HU
+  of $("ID"):
+    return AdCountry.ID
+  of $("IE"):
+    return AdCountry.IE
+  of $("IL"):
+    return AdCountry.IL
+  of $("IM"):
+    return AdCountry.IM
+  of $("IN"):
+    return AdCountry.IN
+  of $("IO"):
+    return AdCountry.IO
+  of $("IQ"):
+    return AdCountry.IQ
+  of $("IR"):
+    return AdCountry.IR
+  of $("IS"):
+    return AdCountry.IS
+  of $("IT"):
+    return AdCountry.IT
+  of $("JE"):
+    return AdCountry.JE
+  of $("JM"):
+    return AdCountry.JM
+  of $("JO"):
+    return AdCountry.JO
+  of $("JP"):
+    return AdCountry.JP
+  of $("KE"):
+    return AdCountry.KE
+  of $("KG"):
+    return AdCountry.KG
+  of $("KH"):
+    return AdCountry.KH
+  of $("KI"):
+    return AdCountry.KI
+  of $("KM"):
+    return AdCountry.KM
+  of $("KN"):
+    return AdCountry.KN
+  of $("KR"):
+    return AdCountry.KR
+  of $("KW"):
+    return AdCountry.KW
+  of $("KY"):
+    return AdCountry.KY
+  of $("KZ"):
+    return AdCountry.KZ
+  of $("LA"):
+    return AdCountry.LA
+  of $("LB"):
+    return AdCountry.LB
+  of $("LC"):
+    return AdCountry.LC
+  of $("LI"):
+    return AdCountry.LI
+  of $("LK"):
+    return AdCountry.LK
+  of $("LR"):
+    return AdCountry.LR
+  of $("LS"):
+    return AdCountry.LS
+  of $("LT"):
+    return AdCountry.LT
+  of $("LU"):
+    return AdCountry.LU
+  of $("LV"):
+    return AdCountry.LV
+  of $("LY"):
+    return AdCountry.LY
+  of $("MA"):
+    return AdCountry.MA
+  of $("MC"):
+    return AdCountry.MC
+  of $("MD"):
+    return AdCountry.MD
+  of $("ME"):
+    return AdCountry.ME
+  of $("MF"):
+    return AdCountry.MF
+  of $("MG"):
+    return AdCountry.MG
+  of $("MH"):
+    return AdCountry.MH
+  of $("MK"):
+    return AdCountry.MK
+  of $("ML"):
+    return AdCountry.ML
+  of $("MM"):
+    return AdCountry.MM
+  of $("MN"):
+    return AdCountry.MN
+  of $("MO"):
+    return AdCountry.MO
+  of $("MP"):
+    return AdCountry.MP
+  of $("MQ"):
+    return AdCountry.MQ
+  of $("MR"):
+    return AdCountry.MR
+  of $("MS"):
+    return AdCountry.MS
+  of $("MT"):
+    return AdCountry.MT
+  of $("MU"):
+    return AdCountry.MU
+  of $("MV"):
+    return AdCountry.MV
+  of $("MW"):
+    return AdCountry.MW
+  of $("MX"):
+    return AdCountry.MX
+  of $("MY"):
+    return AdCountry.MY
+  of $("MZ"):
+    return AdCountry.MZ
+  of $("NA"):
+    return AdCountry.NA
+  of $("NC"):
+    return AdCountry.NC
+  of $("NE"):
+    return AdCountry.NE
+  of $("NF"):
+    return AdCountry.NF
+  of $("NG"):
+    return AdCountry.NG
+  of $("NI"):
+    return AdCountry.NI
+  of $("NL"):
+    return AdCountry.NL
+  of $("NO"):
+    return AdCountry.NO
+  of $("NP"):
+    return AdCountry.NP
+  of $("NR"):
+    return AdCountry.NR
+  of $("NU"):
+    return AdCountry.NU
+  of $("NZ"):
+    return AdCountry.NZ
+  of $("OM"):
+    return AdCountry.OM
+  of $("PA"):
+    return AdCountry.PA
+  of $("PE"):
+    return AdCountry.PE
+  of $("PF"):
+    return AdCountry.PF
+  of $("PG"):
+    return AdCountry.PG
+  of $("PH"):
+    return AdCountry.PH
+  of $("PK"):
+    return AdCountry.PK
+  of $("PL"):
+    return AdCountry.PL
+  of $("PM"):
+    return AdCountry.PM
+  of $("PN"):
+    return AdCountry.PN
+  of $("PR"):
+    return AdCountry.PR
+  of $("PS"):
+    return AdCountry.PS
+  of $("PT"):
+    return AdCountry.PT
+  of $("PW"):
+    return AdCountry.PW
+  of $("PY"):
+    return AdCountry.PY
+  of $("QA"):
+    return AdCountry.QA
+  of $("RE"):
+    return AdCountry.RE
+  of $("RO"):
+    return AdCountry.RO
+  of $("RS"):
+    return AdCountry.RS
+  of $("RU"):
+    return AdCountry.RU
+  of $("RW"):
+    return AdCountry.RW
+  of $("SA"):
+    return AdCountry.SA
+  of $("SB"):
+    return AdCountry.SB
+  of $("SC"):
+    return AdCountry.SC
+  of $("SD"):
+    return AdCountry.SD
+  of $("SE"):
+    return AdCountry.SE
+  of $("SG"):
+    return AdCountry.SG
+  of $("SH"):
+    return AdCountry.SH
+  of $("SI"):
+    return AdCountry.SI
+  of $("SJ"):
+    return AdCountry.SJ
+  of $("SK"):
+    return AdCountry.SK
+  of $("SL"):
+    return AdCountry.SL
+  of $("SM"):
+    return AdCountry.SM
+  of $("SN"):
+    return AdCountry.SN
+  of $("SO"):
+    return AdCountry.SO
+  of $("SR"):
+    return AdCountry.SR
+  of $("SS"):
+    return AdCountry.SS
+  of $("ST"):
+    return AdCountry.ST
+  of $("SV"):
+    return AdCountry.SV
+  of $("SX"):
+    return AdCountry.SX
+  of $("SY"):
+    return AdCountry.SY
+  of $("SZ"):
+    return AdCountry.SZ
+  of $("TC"):
+    return AdCountry.TC
+  of $("TD"):
+    return AdCountry.TD
+  of $("TF"):
+    return AdCountry.TF
+  of $("TG"):
+    return AdCountry.TG
+  of $("TH"):
+    return AdCountry.TH
+  of $("TJ"):
+    return AdCountry.TJ
+  of $("TK"):
+    return AdCountry.TK
+  of $("TL"):
+    return AdCountry.TL
+  of $("TM"):
+    return AdCountry.TM
+  of $("TN"):
+    return AdCountry.TN
+  of $("TO"):
+    return AdCountry.TO
+  of $("TR"):
+    return AdCountry.TR
+  of $("TT"):
+    return AdCountry.TT
+  of $("TV"):
+    return AdCountry.TV
+  of $("TW"):
+    return AdCountry.TW
+  of $("TZ"):
+    return AdCountry.TZ
+  of $("UA"):
+    return AdCountry.UA
+  of $("UG"):
+    return AdCountry.UG
+  of $("UM"):
+    return AdCountry.UM
+  of $("US"):
+    return AdCountry.US
+  of $("UY"):
+    return AdCountry.UY
+  of $("UZ"):
+    return AdCountry.UZ
+  of $("VA"):
+    return AdCountry.VA
+  of $("VC"):
+    return AdCountry.VC
+  of $("VE"):
+    return AdCountry.VE
+  of $("VG"):
+    return AdCountry.VG
+  of $("VI"):
+    return AdCountry.VI
+  of $("VN"):
+    return AdCountry.VN
+  of $("VU"):
+    return AdCountry.VU
+  of $("WF"):
+    return AdCountry.WF
+  of $("WS"):
+    return AdCountry.WS
+  of $("YE"):
+    return AdCountry.YE
+  of $("YT"):
+    return AdCountry.YT
+  of $("ZA"):
+    return AdCountry.ZA
+  of $("ZM"):
+    return AdCountry.ZM
+  of $("ZW"):
+    return AdCountry.ZW
+  else:
+    raise newException(ValueError, "Invalid enum value for AdCountry: " & strVal)
+

@@ -44,6 +44,16 @@ use JMS\Serializer\Annotation\SerializedName;
 class ItemsBatchPostRequest 
 {
         /**
+     * @var string|null
+     * @SerializedName("catalog_type")
+     * @Type("string")
+    */
+    #[Assert\NotNull]
+    #[Assert\Choice(['CREATIVE_ASSETS'])]
+    #[Assert\Type("string")]
+    protected ?string $catalogType = null;
+
+    /**
      * @var Country|null
      * @SerializedName("country")
     * @Accessor(getter="getSerializedCountry", setter="setDeserializedCountry")
@@ -54,24 +64,16 @@ class ItemsBatchPostRequest
     protected ?Country $country = null;
 
     /**
-     * @var CatalogsItemsRequestLanguage|null
+     * We recommend using the CatalogsLocale values.
+     *
+     * @var string|null
      * @SerializedName("language")
-     * @Type("OpenAPI\Server\Model\CatalogsItemsRequestLanguage")
+     * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Valid]
-    #[Assert\Type("OpenAPI\Server\Model\CatalogsItemsRequestLanguage")]
-    protected ?CatalogsItemsRequestLanguage $language = null;
-
-    /**
-     * @var BatchOperation|null
-     * @SerializedName("operation")
-    * @Accessor(getter="getSerializedOperation", setter="setDeserializedOperation")
-    * @Type("string")
-    */
-    #[Assert\NotNull]
-    #[Assert\Valid]
-    protected ?BatchOperation $operation = null;
+    #[Assert\Choice(['af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH'])]
+    #[Assert\Type("string")]
+    protected ?string $language = null;
 
     /**
      * Array with catalogs items
@@ -88,18 +90,68 @@ class ItemsBatchPostRequest
     protected ?array $items = null;
 
     /**
+     * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+     *
+     * @var string|null
+     * @SerializedName("catalog_id")
+     * @Type("string")
+    */
+    #[Assert\Type("string")]
+    #[Assert\Regex("/^\\d+$/")]
+    protected ?string $catalogId = null;
+
+    /**
+     * @var BatchOperation|null
+     * @SerializedName("operation")
+    * @Accessor(getter="getSerializedOperation", setter="setDeserializedOperation")
+    * @Type("string")
+    */
+    #[Assert\NotNull]
+    #[Assert\Valid]
+    protected ?BatchOperation $operation = null;
+
+    /**
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(?array $data = null)
     {
         if (is_array($data)) {
+            $this->catalogType = array_key_exists('catalogType', $data) ? $data['catalogType'] : $this->catalogType;
             $this->country = array_key_exists('country', $data) ? $data['country'] : $this->country;
             $this->language = array_key_exists('language', $data) ? $data['language'] : $this->language;
-            $this->operation = array_key_exists('operation', $data) ? $data['operation'] : $this->operation;
             $this->items = array_key_exists('items', $data) ? $data['items'] : $this->items;
+            $this->catalogId = array_key_exists('catalogId', $data) ? $data['catalogId'] : $this->catalogId;
+            $this->operation = array_key_exists('operation', $data) ? $data['operation'] : $this->operation;
         }
     }
+
+    /**
+     * Gets catalogType.
+     *
+     * @return string|null
+     */
+    public function getCatalogType(): ?string
+    {
+        return $this->catalogType;
+    }
+
+    /**
+    * Sets catalogType.
+    *
+    * @param string|null $catalogType
+    *
+    * @return $this
+    */
+    public function setCatalogType(?string $catalogType): self
+    {
+        $this->catalogType = $catalogType;
+
+        return $this;
+    }
+
+
+
 
     /**
      * Gets country.
@@ -158,9 +210,9 @@ class ItemsBatchPostRequest
     /**
      * Gets language.
      *
-     * @return CatalogsItemsRequestLanguage|null
+     * @return string|null
      */
-    public function getLanguage(): ?CatalogsItemsRequestLanguage
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
@@ -168,13 +220,67 @@ class ItemsBatchPostRequest
     /**
     * Sets language.
     *
-    * @param CatalogsItemsRequestLanguage|null $language
+    * @param string|null $language  We recommend using the CatalogsLocale values.
     *
     * @return $this
     */
-    public function setLanguage(?CatalogsItemsRequestLanguage $language): self
+    public function setLanguage(?string $language): self
     {
         $this->language = $language;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets items.
+     *
+     * @return ItemDeleteBatchRecord[]|null
+     */
+    public function getItems(): ?array
+    {
+        return $this->items;
+    }
+
+    /**
+    * Sets items.
+    *
+    * @param ItemDeleteBatchRecord[]|null $items  Array with catalogs items
+    *
+    * @return $this
+    */
+    public function setItems(?array $items): self
+    {
+        $this->items = $items;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets catalogId.
+     *
+     * @return string|null
+     */
+    public function getCatalogId(): ?string
+    {
+        return $this->catalogId;
+    }
+
+    /**
+    * Sets catalogId.
+    *
+    * @param string|null $catalogId  Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+    *
+    * @return $this
+    */
+    public function setCatalogId(?string $catalogId = null): self
+    {
+        $this->catalogId = $catalogId;
 
         return $this;
     }
@@ -233,33 +339,6 @@ class ItemsBatchPostRequest
 
         return $this;
     }
-
-
-
-    /**
-     * Gets items.
-     *
-     * @return ItemDeleteBatchRecord[]|null
-     */
-    public function getItems(): ?array
-    {
-        return $this->items;
-    }
-
-    /**
-    * Sets items.
-    *
-    * @param ItemDeleteBatchRecord[]|null $items  Array with catalogs items
-    *
-    * @return $this
-    */
-    public function setItems(?array $items): self
-    {
-        $this->items = $items;
-
-        return $this;
-    }
-
 
 
 }

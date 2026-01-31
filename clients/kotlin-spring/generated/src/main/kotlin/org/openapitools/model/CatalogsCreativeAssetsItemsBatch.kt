@@ -49,7 +49,7 @@ data class CatalogsCreativeAssetsItemsBatch(
     @field:Valid
     @Schema(example = "null", description = "Array with the catalogs items processing records part of the catalogs items batch")
     @get:JsonProperty("items") val items: kotlin.collections.List<CreativeAssetsProcessingRecord>? = null
-    ) {
+) {
 
 }
 

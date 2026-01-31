@@ -14,7 +14,6 @@
 package com.github.oapicf.pinterestsdk.model;
 
 import com.github.oapicf.pinterestsdk.model.BaseInviteDataResponseInviteData;
-import com.github.oapicf.pinterestsdk.model.BusinessAccessUserSummary;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -69,6 +68,22 @@ public class InviteBusinessRoleBindingTest {
     @Test
     public void userTest() {
         // TODO: test user
+    }
+
+    /**
+     * Test the property 'createdByBusinessId'
+     */
+    @Test
+    public void createdByBusinessIdTest() {
+        // TODO: test createdByBusinessId
+    }
+
+    /**
+     * Test the property 'createdByUserId'
+     */
+    @Test
+    public void createdByUserIdTest() {
+        // TODO: test createdByUserId
     }
 
 }

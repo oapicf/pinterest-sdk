@@ -33,7 +33,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedsCreateRequest", description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
 
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
@@ -54,7 +54,7 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
 
   private JsonNullable<ProductAvailabilityType> defaultAvailability = JsonNullable.<ProductAvailabilityType>undefined();
 
-  private @Nullable CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   public CatalogsFeedsCreateRequest() {
     super();
@@ -129,7 +129,7 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
     this.format = format;
   }
 
-  public CatalogsFeedsCreateRequest defaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public CatalogsFeedsCreateRequest defaultLocale(@Nullable CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
     return this;
   }
@@ -141,11 +141,11 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
   @Valid 
   @Schema(name = "default_locale", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("default_locale")
-  public CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
+  public @Nullable CatalogsFeedsCreateRequestDefaultLocale getDefaultLocale() {
     return defaultLocale;
   }
 
-  public void setDefaultLocale(CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
+  public void setDefaultLocale(@Nullable CatalogsFeedsCreateRequestDefaultLocale defaultLocale) {
     this.defaultLocale = defaultLocale;
   }
 
@@ -209,7 +209,7 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
     this.preferredProcessingSchedule = preferredProcessingSchedule;
   }
 
-  public CatalogsFeedsCreateRequest defaultCountry(Country defaultCountry) {
+  public CatalogsFeedsCreateRequest defaultCountry(@Nullable Country defaultCountry) {
     this.defaultCountry = defaultCountry;
     return this;
   }
@@ -221,11 +221,11 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
   @Valid 
   @Schema(name = "default_country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("default_country")
-  public Country getDefaultCountry() {
+  public @Nullable Country getDefaultCountry() {
     return defaultCountry;
   }
 
-  public void setDefaultCountry(Country defaultCountry) {
+  public void setDefaultCountry(@Nullable Country defaultCountry) {
     this.defaultCountry = defaultCountry;
   }
 

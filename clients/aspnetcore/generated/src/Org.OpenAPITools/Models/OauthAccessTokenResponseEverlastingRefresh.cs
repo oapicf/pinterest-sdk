@@ -21,11 +21,32 @@ using Org.OpenAPITools.Converters;
 namespace Org.OpenAPITools.Models
 { 
     /// <summary>
-    /// A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
+    /// 
     /// </summary>
     [DataContract]
     public partial class OauthAccessTokenResponseEverlastingRefresh : IEquatable<OauthAccessTokenResponseEverlastingRefresh>
     {
+        /// <summary>
+        /// Gets or Sets RefreshToken
+        /// </summary>
+        [Required]
+        [DataMember(Name="refresh_token", EmitDefaultValue=false)]
+        public string RefreshToken { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RefreshTokenExpiresIn
+        /// </summary>
+        [Required]
+        [DataMember(Name="refresh_token_expires_in", EmitDefaultValue=true)]
+        public int RefreshTokenExpiresIn { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RefreshTokenExpiresAt
+        /// </summary>
+        [Required]
+        [DataMember(Name="refresh_token_expires_at", EmitDefaultValue=true)]
+        public int RefreshTokenExpiresAt { get; set; }
+
 
         /// <summary>
         /// Gets or Sets ResponseType
@@ -89,27 +110,6 @@ namespace Org.OpenAPITools.Models
         public string Scope { get; set; }
 
         /// <summary>
-        /// Gets or Sets RefreshToken
-        /// </summary>
-        [Required]
-        [DataMember(Name="refresh_token", EmitDefaultValue=false)]
-        public string RefreshToken { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RefreshTokenExpiresIn
-        /// </summary>
-        [Required]
-        [DataMember(Name="refresh_token_expires_in", EmitDefaultValue=true)]
-        public int RefreshTokenExpiresIn { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RefreshTokenExpiresAt
-        /// </summary>
-        [Required]
-        [DataMember(Name="refresh_token_expires_at", EmitDefaultValue=true)]
-        public int RefreshTokenExpiresAt { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -117,14 +117,14 @@ namespace Org.OpenAPITools.Models
         {
             var sb = new StringBuilder();
             sb.Append("class OauthAccessTokenResponseEverlastingRefresh {\n");
+            sb.Append("  RefreshToken: ").Append(RefreshToken).Append("\n");
+            sb.Append("  RefreshTokenExpiresIn: ").Append(RefreshTokenExpiresIn).Append("\n");
+            sb.Append("  RefreshTokenExpiresAt: ").Append(RefreshTokenExpiresAt).Append("\n");
             sb.Append("  ResponseType: ").Append(ResponseType).Append("\n");
             sb.Append("  AccessToken: ").Append(AccessToken).Append("\n");
             sb.Append("  TokenType: ").Append(TokenType).Append("\n");
             sb.Append("  ExpiresIn: ").Append(ExpiresIn).Append("\n");
             sb.Append("  Scope: ").Append(Scope).Append("\n");
-            sb.Append("  RefreshToken: ").Append(RefreshToken).Append("\n");
-            sb.Append("  RefreshTokenExpiresIn: ").Append(RefreshTokenExpiresIn).Append("\n");
-            sb.Append("  RefreshTokenExpiresAt: ").Append(RefreshTokenExpiresAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -162,6 +162,21 @@ namespace Org.OpenAPITools.Models
 
             return 
                 (
+                    RefreshToken == other.RefreshToken ||
+                    RefreshToken != null &&
+                    RefreshToken.Equals(other.RefreshToken)
+                ) && 
+                (
+                    RefreshTokenExpiresIn == other.RefreshTokenExpiresIn ||
+                    
+                    RefreshTokenExpiresIn.Equals(other.RefreshTokenExpiresIn)
+                ) && 
+                (
+                    RefreshTokenExpiresAt == other.RefreshTokenExpiresAt ||
+                    
+                    RefreshTokenExpiresAt.Equals(other.RefreshTokenExpiresAt)
+                ) && 
+                (
                     ResponseType == other.ResponseType ||
                     
                     ResponseType.Equals(other.ResponseType)
@@ -185,21 +200,6 @@ namespace Org.OpenAPITools.Models
                     Scope == other.Scope ||
                     Scope != null &&
                     Scope.Equals(other.Scope)
-                ) && 
-                (
-                    RefreshToken == other.RefreshToken ||
-                    RefreshToken != null &&
-                    RefreshToken.Equals(other.RefreshToken)
-                ) && 
-                (
-                    RefreshTokenExpiresIn == other.RefreshTokenExpiresIn ||
-                    
-                    RefreshTokenExpiresIn.Equals(other.RefreshTokenExpiresIn)
-                ) && 
-                (
-                    RefreshTokenExpiresAt == other.RefreshTokenExpiresAt ||
-                    
-                    RefreshTokenExpiresAt.Equals(other.RefreshTokenExpiresAt)
                 );
         }
 
@@ -213,6 +213,12 @@ namespace Org.OpenAPITools.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
+                    if (RefreshToken != null)
+                    hashCode = hashCode * 59 + RefreshToken.GetHashCode();
+                    
+                    hashCode = hashCode * 59 + RefreshTokenExpiresIn.GetHashCode();
+                    
+                    hashCode = hashCode * 59 + RefreshTokenExpiresAt.GetHashCode();
                     
                     hashCode = hashCode * 59 + ResponseType.GetHashCode();
                     if (AccessToken != null)
@@ -223,12 +229,6 @@ namespace Org.OpenAPITools.Models
                     hashCode = hashCode * 59 + ExpiresIn.GetHashCode();
                     if (Scope != null)
                     hashCode = hashCode * 59 + Scope.GetHashCode();
-                    if (RefreshToken != null)
-                    hashCode = hashCode * 59 + RefreshToken.GetHashCode();
-                    
-                    hashCode = hashCode * 59 + RefreshTokenExpiresIn.GetHashCode();
-                    
-                    hashCode = hashCode * 59 + RefreshTokenExpiresAt.GetHashCode();
                 return hashCode;
             }
         }

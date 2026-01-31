@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("DeliveryMetricsResponse_items_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeliveryMetricsResponseItemsInner {
 
   private @Nullable String name;
@@ -35,7 +35,7 @@ public class DeliveryMetricsResponseItemsInner {
     
     ORGANIC("ORGANIC");
 
-    private String value;
+    private final String value;
 
     CategoryEnum(String value) {
       this.value = value;
@@ -68,7 +68,7 @@ public class DeliveryMetricsResponseItemsInner {
 
   private @Nullable String displayName;
 
-  public DeliveryMetricsResponseItemsInner name(String name) {
+  public DeliveryMetricsResponseItemsInner name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -80,15 +80,15 @@ public class DeliveryMetricsResponseItemsInner {
   
   @Schema(name = "name", example = "AD_GROUP_ID", description = "Metric's name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public DeliveryMetricsResponseItemsInner category(CategoryEnum category) {
+  public DeliveryMetricsResponseItemsInner category(@Nullable CategoryEnum category) {
     this.category = category;
     return this;
   }
@@ -100,15 +100,15 @@ public class DeliveryMetricsResponseItemsInner {
   
   @Schema(name = "category", example = "ADS", description = "Category name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("category")
-  public CategoryEnum getCategory() {
+  public @Nullable CategoryEnum getCategory() {
     return category;
   }
 
-  public void setCategory(CategoryEnum category) {
+  public void setCategory(@Nullable CategoryEnum category) {
     this.category = category;
   }
 
-  public DeliveryMetricsResponseItemsInner definition(String definition) {
+  public DeliveryMetricsResponseItemsInner definition(@Nullable String definition) {
     this.definition = definition;
     return this;
   }
@@ -120,15 +120,15 @@ public class DeliveryMetricsResponseItemsInner {
   
   @Schema(name = "definition", example = "Unique ID for your ad group", description = "How the metric is defined.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("definition")
-  public String getDefinition() {
+  public @Nullable String getDefinition() {
     return definition;
   }
 
-  public void setDefinition(String definition) {
+  public void setDefinition(@Nullable String definition) {
     this.definition = definition;
   }
 
-  public DeliveryMetricsResponseItemsInner displayName(String displayName) {
+  public DeliveryMetricsResponseItemsInner displayName(@Nullable String displayName) {
     this.displayName = displayName;
     return this;
   }
@@ -140,11 +140,11 @@ public class DeliveryMetricsResponseItemsInner {
   
   @Schema(name = "display_name", example = "Ad group ID", description = "Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("display_name")
-  public String getDisplayName() {
+  public @Nullable String getDisplayName() {
     return displayName;
   }
 
-  public void setDisplayName(String displayName) {
+  public void setDisplayName(@Nullable String displayName) {
     this.displayName = displayName;
   }
 

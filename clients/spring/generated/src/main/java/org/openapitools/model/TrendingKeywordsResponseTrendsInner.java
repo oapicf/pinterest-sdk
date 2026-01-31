@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("TrendingKeywordsResponse_trends_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TrendingKeywordsResponseTrendsInner {
 
   private @Nullable String keyword;
@@ -35,7 +35,7 @@ public class TrendingKeywordsResponseTrendsInner {
 
   private @Nullable TrendingKeywordsResponseTrendsInnerTimeSeries timeSeries;
 
-  public TrendingKeywordsResponseTrendsInner keyword(String keyword) {
+  public TrendingKeywordsResponseTrendsInner keyword(@Nullable String keyword) {
     this.keyword = keyword;
     return this;
   }
@@ -47,15 +47,15 @@ public class TrendingKeywordsResponseTrendsInner {
   @Size(min = 1) 
   @Schema(name = "keyword", example = "couples halloween costumes", description = "The keyword that is trending.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keyword")
-  public String getKeyword() {
+  public @Nullable String getKeyword() {
     return keyword;
   }
 
-  public void setKeyword(String keyword) {
+  public void setKeyword(@Nullable String keyword) {
     this.keyword = keyword;
   }
 
-  public TrendingKeywordsResponseTrendsInner pctGrowthWow(Integer pctGrowthWow) {
+  public TrendingKeywordsResponseTrendsInner pctGrowthWow(@Nullable Integer pctGrowthWow) {
     this.pctGrowthWow = pctGrowthWow;
     return this;
   }
@@ -67,15 +67,15 @@ public class TrendingKeywordsResponseTrendsInner {
   
   @Schema(name = "pct_growth_wow", example = "50", description = "The week-over-week percent change in search volume for this keyword.<br /> For example, a value of \"50\" would represent a 50% increase in searches in the last seven days compared to the week prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% week-over-week growth.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pct_growth_wow")
-  public Integer getPctGrowthWow() {
+  public @Nullable Integer getPctGrowthWow() {
     return pctGrowthWow;
   }
 
-  public void setPctGrowthWow(Integer pctGrowthWow) {
+  public void setPctGrowthWow(@Nullable Integer pctGrowthWow) {
     this.pctGrowthWow = pctGrowthWow;
   }
 
-  public TrendingKeywordsResponseTrendsInner pctGrowthMom(Integer pctGrowthMom) {
+  public TrendingKeywordsResponseTrendsInner pctGrowthMom(@Nullable Integer pctGrowthMom) {
     this.pctGrowthMom = pctGrowthMom;
     return this;
   }
@@ -87,15 +87,15 @@ public class TrendingKeywordsResponseTrendsInner {
   
   @Schema(name = "pct_growth_mom", example = "400", description = "The month-over-month percent change in search volume for this keyword.<br /> For example, a value of \"400\" would represent a 400% increase in searches in the last 30 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% month-over-month growth.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pct_growth_mom")
-  public Integer getPctGrowthMom() {
+  public @Nullable Integer getPctGrowthMom() {
     return pctGrowthMom;
   }
 
-  public void setPctGrowthMom(Integer pctGrowthMom) {
+  public void setPctGrowthMom(@Nullable Integer pctGrowthMom) {
     this.pctGrowthMom = pctGrowthMom;
   }
 
-  public TrendingKeywordsResponseTrendsInner pctGrowthYoy(Integer pctGrowthYoy) {
+  public TrendingKeywordsResponseTrendsInner pctGrowthYoy(@Nullable Integer pctGrowthYoy) {
     this.pctGrowthYoy = pctGrowthYoy;
     return this;
   }
@@ -107,15 +107,15 @@ public class TrendingKeywordsResponseTrendsInner {
   
   @Schema(name = "pct_growth_yoy", example = "-5", description = "The year-over-year percent change in search volume for this keyword.<br /> For example, a value of \"-5\" would represent a 5% decrease in searches in the last 365 days compared to the month prior.<br /> **Note**: growth rates are rounded, with a maximum of +/- 10000% change.  A value of 10001 indicates that this keyword experienced > 10000% year-over-year growth.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pct_growth_yoy")
-  public Integer getPctGrowthYoy() {
+  public @Nullable Integer getPctGrowthYoy() {
     return pctGrowthYoy;
   }
 
-  public void setPctGrowthYoy(Integer pctGrowthYoy) {
+  public void setPctGrowthYoy(@Nullable Integer pctGrowthYoy) {
     this.pctGrowthYoy = pctGrowthYoy;
   }
 
-  public TrendingKeywordsResponseTrendsInner timeSeries(TrendingKeywordsResponseTrendsInnerTimeSeries timeSeries) {
+  public TrendingKeywordsResponseTrendsInner timeSeries(@Nullable TrendingKeywordsResponseTrendsInnerTimeSeries timeSeries) {
     this.timeSeries = timeSeries;
     return this;
   }
@@ -127,11 +127,11 @@ public class TrendingKeywordsResponseTrendsInner {
   @Valid 
   @Schema(name = "time_series", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("time_series")
-  public TrendingKeywordsResponseTrendsInnerTimeSeries getTimeSeries() {
+  public @Nullable TrendingKeywordsResponseTrendsInnerTimeSeries getTimeSeries() {
     return timeSeries;
   }
 
-  public void setTimeSeries(TrendingKeywordsResponseTrendsInnerTimeSeries timeSeries) {
+  public void setTimeSeries(@Nullable TrendingKeywordsResponseTrendsInnerTimeSeries timeSeries) {
     this.timeSeries = timeSeries;
   }
 

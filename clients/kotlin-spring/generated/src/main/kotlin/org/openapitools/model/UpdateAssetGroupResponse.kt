@@ -29,7 +29,7 @@ data class UpdateAssetGroupResponse(
     @field:Valid
     @Schema(example = "null", description = "A list of errors associated with the asset groups. Will be returned if there is an error.")
     @get:JsonProperty("exceptions") val exceptions: kotlin.collections.List<UpdateAssetGroupResponseExceptionsInner>? = null
-    ) {
+) {
 
 }
 

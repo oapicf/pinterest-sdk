@@ -16,7 +16,8 @@
 #include "../model/catalogs_items_request.h"
 catalogs_items_request_t* instantiate_catalogs_items_request(int include_optional);
 
-#include "test_catalogs_items_request_language.c"
+
+// it is enum. Work in Progress
 #include "test_catalogs_items_post_filters.c"
 
 
@@ -25,14 +26,14 @@ catalogs_items_request_t* instantiate_catalogs_items_request(int include_optiona
   if (include_optional) {
     catalogs_items_request = catalogs_items_request_create(
       pinterest_rest_api_catalogs_items_request__"US",
-      null,
+      pinterest_rest_api_catalogs_items_request_LANGUAGE_af-ZA,
        // false, not to have infinite recursion
       instantiate_catalogs_items_post_filters(0)
     );
   } else {
     catalogs_items_request = catalogs_items_request_create(
       pinterest_rest_api_catalogs_items_request__"US",
-      null,
+      pinterest_rest_api_catalogs_items_request_LANGUAGE_af-ZA,
       NULL
     );
   }

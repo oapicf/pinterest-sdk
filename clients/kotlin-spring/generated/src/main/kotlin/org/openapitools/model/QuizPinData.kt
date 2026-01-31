@@ -40,7 +40,7 @@ data class QuizPinData(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("tie_breaker_custom_result") val tieBreakerCustomResult: QuizPinResult? = null
-    ) {
+) {
 
     /**
     * Quiz ad tie breaker type, default is RANDOM
@@ -55,7 +55,8 @@ data class QuizPinData(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): TieBreakerType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'QuizPinData'")
             }
         }
     }

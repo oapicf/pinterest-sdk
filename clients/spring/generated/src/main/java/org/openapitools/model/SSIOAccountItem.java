@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * SSIOAccountItem
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountItem {
 
   private @Nullable String id;
@@ -45,7 +45,7 @@ public class SSIOAccountItem {
   @Valid
   private List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
 
-  public SSIOAccountItem id(String id) {
+  public SSIOAccountItem id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -57,15 +57,15 @@ public class SSIOAccountItem {
   
   @Schema(name = "id", example = "0011N00001LW8kAQAT", description = "Salesforce id for billto_info", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public SSIOAccountItem ioTermsId(String ioTermsId) {
+  public SSIOAccountItem ioTermsId(@Nullable String ioTermsId) {
     this.ioTermsId = ioTermsId;
     return this;
   }
@@ -77,15 +77,15 @@ public class SSIOAccountItem {
   
   @Schema(name = "io_terms_id", example = "a2S1N000000bKHgUAM", description = "Salesforce id for IO Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("io_terms_id")
-  public String getIoTermsId() {
+  public @Nullable String getIoTermsId() {
     return ioTermsId;
   }
 
-  public void setIoTermsId(String ioTermsId) {
+  public void setIoTermsId(@Nullable String ioTermsId) {
     this.ioTermsId = ioTermsId;
   }
 
-  public SSIOAccountItem ioTerms(String ioTerms) {
+  public SSIOAccountItem ioTerms(@Nullable String ioTerms) {
     this.ioTerms = ioTerms;
     return this;
   }
@@ -97,15 +97,15 @@ public class SSIOAccountItem {
   
   @Schema(name = "io_terms", example = "The IO is governed by the terms available at https://business.pinterest.com/en/pinterest-advertising-services-agreement/. If a budget is listed on this IO, the parties agree that Advertiser (or if applicable, its Agency) may apply any of the budget to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees. The terms of the Agreement supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.", description = "Salesforce text for IO Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("io_terms")
-  public String getIoTerms() {
+  public @Nullable String getIoTerms() {
     return ioTerms;
   }
 
-  public void setIoTerms(String ioTerms) {
+  public void setIoTerms(@Nullable String ioTerms) {
     this.ioTerms = ioTerms;
   }
 
-  public SSIOAccountItem usTermsId(String usTermsId) {
+  public SSIOAccountItem usTermsId(@Nullable String usTermsId) {
     this.usTermsId = usTermsId;
     return this;
   }
@@ -117,15 +117,15 @@ public class SSIOAccountItem {
   
   @Schema(name = "us_terms_id", example = "a2S1N000000bKIOUA2", description = "Salesforce id for US Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("us_terms_id")
-  public String getUsTermsId() {
+  public @Nullable String getUsTermsId() {
     return usTermsId;
   }
 
-  public void setUsTermsId(String usTermsId) {
+  public void setUsTermsId(@Nullable String usTermsId) {
     this.usTermsId = usTermsId;
   }
 
-  public SSIOAccountItem usTerms(String usTerms) {
+  public SSIOAccountItem usTerms(@Nullable String usTerms) {
     this.usTerms = usTerms;
     return this;
   }
@@ -137,15 +137,15 @@ public class SSIOAccountItem {
   
   @Schema(name = "us_terms", example = "This Insertion Order (\"IO\") is subject to the Pinterest Addendum To IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0), as executed by Pinterest, Inc. and GroupM Worldwide LLC on May 7, 2014 and Amendment No. 1 to Pinterest Addendum to IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0) as executed by Pinterest, Inc. and GroupM Worldwide LLC on August 20, 2015. The parties agree that Agency may apply any of the budget listed on this IO to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees.The terms of the Addendum supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.", description = "Salesforce text for US Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("us_terms")
-  public String getUsTerms() {
+  public @Nullable String getUsTerms() {
     return usTerms;
   }
 
-  public void setUsTerms(String usTerms) {
+  public void setUsTerms(@Nullable String usTerms) {
     this.usTerms = usTerms;
   }
 
-  public SSIOAccountItem rowTermsId(String rowTermsId) {
+  public SSIOAccountItem rowTermsId(@Nullable String rowTermsId) {
     this.rowTermsId = rowTermsId;
     return this;
   }
@@ -157,15 +157,15 @@ public class SSIOAccountItem {
   
   @Schema(name = "row_terms_id", example = "a2S1N000000bKHhUAM", description = "Salesforce id for Rest of the World Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("row_terms_id")
-  public String getRowTermsId() {
+  public @Nullable String getRowTermsId() {
     return rowTermsId;
   }
 
-  public void setRowTermsId(String rowTermsId) {
+  public void setRowTermsId(@Nullable String rowTermsId) {
     this.rowTermsId = rowTermsId;
   }
 
-  public SSIOAccountItem rowTerms(String rowTerms) {
+  public SSIOAccountItem rowTerms(@Nullable String rowTerms) {
     this.rowTerms = rowTerms;
     return this;
   }
@@ -177,15 +177,15 @@ public class SSIOAccountItem {
   
   @Schema(name = "row_terms", example = "The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", description = "Salesforce text for Rest of the World Terms and Conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("row_terms")
-  public String getRowTerms() {
+  public @Nullable String getRowTerms() {
     return rowTerms;
   }
 
-  public void setRowTerms(String rowTerms) {
+  public void setRowTerms(@Nullable String rowTerms) {
     this.rowTerms = rowTerms;
   }
 
-  public SSIOAccountItem ioType(String ioType) {
+  public SSIOAccountItem ioType(@Nullable String ioType) {
     this.ioType = ioType;
     return this;
   }
@@ -197,11 +197,11 @@ public class SSIOAccountItem {
   
   @Schema(name = "io_type", example = "Pinterest Paper", description = "Insertion Order Type - Pinterest Paper or Agency Paper", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("io_type")
-  public String getIoType() {
+  public @Nullable String getIoType() {
     return ioType;
   }
 
-  public void setIoType(String ioType) {
+  public void setIoType(@Nullable String ioType) {
     this.ioType = ioType;
   }
 

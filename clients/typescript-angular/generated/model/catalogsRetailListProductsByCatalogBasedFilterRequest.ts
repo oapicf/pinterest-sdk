@@ -29,10 +29,10 @@ export interface CatalogsRetailListProductsByCatalogBasedFilterRequest {
     locale: CatalogsLocale;
 }
 export namespace CatalogsRetailListProductsByCatalogBasedFilterRequest {
-    export type CatalogTypeEnum = 'RETAIL';
     export const CatalogTypeEnum = {
-        Retail: 'RETAIL' as CatalogTypeEnum
-    };
+        Retail: 'RETAIL'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

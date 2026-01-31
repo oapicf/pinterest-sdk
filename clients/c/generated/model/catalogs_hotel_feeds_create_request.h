@@ -35,7 +35,7 @@ typedef struct catalogs_hotel_feeds_create_request_t {
     struct catalogs_feed_processing_schedule_t *preferred_processing_schedule; //model
     pinterest_rest_api_catalogs_type__e catalog_type; //referenced enum
     char *catalog_id; // string
-    struct catalogs_status_t *status; //model
+    catalogs_status_t *status; // custom
 
     int _library_owned; // Is the library responsible for freeing this object?
 } catalogs_hotel_feeds_create_request_t;

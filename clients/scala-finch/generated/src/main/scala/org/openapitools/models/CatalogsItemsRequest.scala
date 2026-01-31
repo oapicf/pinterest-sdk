@@ -6,17 +6,16 @@ import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
 import org.openapitools.models.CatalogsItemsPostFilters
-import org.openapitools.models.CatalogsItemsRequestLanguage
 import org.openapitools.models.Country
 
 /**
  * Request object of catalogs items
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param filters 
  */
 case class CatalogsItemsRequest(country: Country,
-                language: CatalogsItemsRequestLanguage,
+                language: String,
                 filters: CatalogsItemsPostFilters
                 )
 

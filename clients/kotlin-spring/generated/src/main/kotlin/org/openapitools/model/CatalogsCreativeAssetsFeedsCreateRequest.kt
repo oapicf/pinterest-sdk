@@ -80,8 +80,8 @@ data class CatalogsCreativeAssetsFeedsCreateRequest(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("status") val status: CatalogsStatus? = null
-    ) {
+    @get:JsonProperty("status") val status: CatalogsStatus? = "ACTIVE"
+) {
 
 }
 

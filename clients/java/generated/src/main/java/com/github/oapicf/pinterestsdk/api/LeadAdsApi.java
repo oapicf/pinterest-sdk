@@ -94,7 +94,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adAccountsSubscriptionsDelByIdCall(String adAccountId, String subscriptionId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call adAccountsSubscriptionsDelByIdCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String subscriptionId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -141,7 +141,7 @@ public class LeadAdsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call adAccountsSubscriptionsDelByIdValidateBeforeCall(String adAccountId, String subscriptionId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call adAccountsSubscriptionsDelByIdValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String subscriptionId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling adAccountsSubscriptionsDelById(Async)");
@@ -173,7 +173,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public void adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId) throws ApiException {
+    public void adAccountsSubscriptionsDelById(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String subscriptionId) throws ApiException {
         adAccountsSubscriptionsDelByIdWithHttpInfo(adAccountId, subscriptionId);
     }
 
@@ -195,7 +195,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> adAccountsSubscriptionsDelByIdWithHttpInfo(String adAccountId, String subscriptionId) throws ApiException {
+    public ApiResponse<Void> adAccountsSubscriptionsDelByIdWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String subscriptionId) throws ApiException {
         okhttp3.Call localVarCall = adAccountsSubscriptionsDelByIdValidateBeforeCall(adAccountId, subscriptionId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -219,7 +219,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adAccountsSubscriptionsDelByIdAsync(String adAccountId, String subscriptionId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call adAccountsSubscriptionsDelByIdAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String subscriptionId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = adAccountsSubscriptionsDelByIdValidateBeforeCall(adAccountId, subscriptionId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -243,7 +243,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adAccountsSubscriptionsGetByIdCall(String adAccountId, String subscriptionId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call adAccountsSubscriptionsGetByIdCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String subscriptionId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -290,7 +290,7 @@ public class LeadAdsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call adAccountsSubscriptionsGetByIdValidateBeforeCall(String adAccountId, String subscriptionId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call adAccountsSubscriptionsGetByIdValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String subscriptionId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling adAccountsSubscriptionsGetById(Async)");
@@ -323,7 +323,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public AdAccountGetSubscriptionResponse adAccountsSubscriptionsGetById(String adAccountId, String subscriptionId) throws ApiException {
+    public AdAccountGetSubscriptionResponse adAccountsSubscriptionsGetById(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String subscriptionId) throws ApiException {
         ApiResponse<AdAccountGetSubscriptionResponse> localVarResp = adAccountsSubscriptionsGetByIdWithHttpInfo(adAccountId, subscriptionId);
         return localVarResp.getData();
     }
@@ -346,7 +346,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdAccountGetSubscriptionResponse> adAccountsSubscriptionsGetByIdWithHttpInfo(String adAccountId, String subscriptionId) throws ApiException {
+    public ApiResponse<AdAccountGetSubscriptionResponse> adAccountsSubscriptionsGetByIdWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String subscriptionId) throws ApiException {
         okhttp3.Call localVarCall = adAccountsSubscriptionsGetByIdValidateBeforeCall(adAccountId, subscriptionId, null);
         Type localVarReturnType = new TypeToken<AdAccountGetSubscriptionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -371,7 +371,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adAccountsSubscriptionsGetByIdAsync(String adAccountId, String subscriptionId, final ApiCallback<AdAccountGetSubscriptionResponse> _callback) throws ApiException {
+    public okhttp3.Call adAccountsSubscriptionsGetByIdAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String subscriptionId, final ApiCallback<AdAccountGetSubscriptionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = adAccountsSubscriptionsGetByIdValidateBeforeCall(adAccountId, subscriptionId, _callback);
         Type localVarReturnType = new TypeToken<AdAccountGetSubscriptionResponse>(){}.getType();
@@ -395,7 +395,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adAccountsSubscriptionsGetListCall(String adAccountId, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call adAccountsSubscriptionsGetListCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -449,7 +449,7 @@ public class LeadAdsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call adAccountsSubscriptionsGetListValidateBeforeCall(String adAccountId, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call adAccountsSubscriptionsGetListValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling adAccountsSubscriptionsGetList(Async)");
@@ -476,7 +476,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public AdAccountsSubscriptionsGetList200Response adAccountsSubscriptionsGetList(String adAccountId, Integer pageSize, String bookmark) throws ApiException {
+    public AdAccountsSubscriptionsGetList200Response adAccountsSubscriptionsGetList(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<AdAccountsSubscriptionsGetList200Response> localVarResp = adAccountsSubscriptionsGetListWithHttpInfo(adAccountId, pageSize, bookmark);
         return localVarResp.getData();
     }
@@ -498,7 +498,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdAccountsSubscriptionsGetList200Response> adAccountsSubscriptionsGetListWithHttpInfo(String adAccountId, Integer pageSize, String bookmark) throws ApiException {
+    public ApiResponse<AdAccountsSubscriptionsGetList200Response> adAccountsSubscriptionsGetListWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = adAccountsSubscriptionsGetListValidateBeforeCall(adAccountId, pageSize, bookmark, null);
         Type localVarReturnType = new TypeToken<AdAccountsSubscriptionsGetList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -522,7 +522,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adAccountsSubscriptionsGetListAsync(String adAccountId, Integer pageSize, String bookmark, final ApiCallback<AdAccountsSubscriptionsGetList200Response> _callback) throws ApiException {
+    public okhttp3.Call adAccountsSubscriptionsGetListAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback<AdAccountsSubscriptionsGetList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = adAccountsSubscriptionsGetListValidateBeforeCall(adAccountId, pageSize, bookmark, _callback);
         Type localVarReturnType = new TypeToken<AdAccountsSubscriptionsGetList200Response>(){}.getType();
@@ -546,7 +546,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adAccountsSubscriptionsPostCall(String adAccountId, AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call adAccountsSubscriptionsPostCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -593,7 +593,7 @@ public class LeadAdsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call adAccountsSubscriptionsPostValidateBeforeCall(String adAccountId, AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call adAccountsSubscriptionsPostValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling adAccountsSubscriptionsPost(Async)");
@@ -625,7 +625,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public AdAccountCreateSubscriptionResponse adAccountsSubscriptionsPost(String adAccountId, AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest) throws ApiException {
+    public AdAccountCreateSubscriptionResponse adAccountsSubscriptionsPost(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest) throws ApiException {
         ApiResponse<AdAccountCreateSubscriptionResponse> localVarResp = adAccountsSubscriptionsPostWithHttpInfo(adAccountId, adAccountCreateSubscriptionRequest);
         return localVarResp.getData();
     }
@@ -647,7 +647,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdAccountCreateSubscriptionResponse> adAccountsSubscriptionsPostWithHttpInfo(String adAccountId, AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest) throws ApiException {
+    public ApiResponse<AdAccountCreateSubscriptionResponse> adAccountsSubscriptionsPostWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest) throws ApiException {
         okhttp3.Call localVarCall = adAccountsSubscriptionsPostValidateBeforeCall(adAccountId, adAccountCreateSubscriptionRequest, null);
         Type localVarReturnType = new TypeToken<AdAccountCreateSubscriptionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -671,7 +671,7 @@ public class LeadAdsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adAccountsSubscriptionsPostAsync(String adAccountId, AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest, final ApiCallback<AdAccountCreateSubscriptionResponse> _callback) throws ApiException {
+    public okhttp3.Call adAccountsSubscriptionsPostAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AdAccountCreateSubscriptionRequest adAccountCreateSubscriptionRequest, final ApiCallback<AdAccountCreateSubscriptionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = adAccountsSubscriptionsPostValidateBeforeCall(adAccountId, adAccountCreateSubscriptionRequest, _callback);
         Type localVarReturnType = new TypeToken<AdAccountCreateSubscriptionResponse>(){}.getType();

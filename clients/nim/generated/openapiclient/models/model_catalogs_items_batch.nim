@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_batch_operation_status
 import model_catalogs_creative_assets_items_batch
@@ -17,11 +19,38 @@ import model_catalogs_retail_items_batch
 import model_catalogs_type
 import model_creative_assets_processing_record
 
+# OneOf type
+type CatalogsItemsBatchKind* {.pure.} = enum
+  CatalogsRetailItemsBatchVariant
+  CatalogsHotelItemsBatchVariant
+  CatalogsCreativeAssetsItemsBatchVariant
+
 type CatalogsItemsBatch* = object
   ## Object describing the catalogs items batch
-  catalogType*: CatalogsType
-  batchId*: string ## Id of the catalogs items batch
-  createdTime*: string ## Date and time (UTC) of the batch creation: YYYY-MM-DD'T'hh:mm:ss
-  completedTime*: string ## Date and time (UTC) of the batch completion: YYYY-MM-DD'T'hh:mm:ss
-  status*: BatchOperationStatus
-  items*: seq[CreativeAssetsProcessingRecord] ## Array with the catalogs items processing records part of the catalogs items batch
+  case kind*: CatalogsItemsBatchKind
+  of CatalogsItemsBatchKind.CatalogsRetailItemsBatchVariant:
+    CatalogsRetailItemsBatchValue*: CatalogsRetailItemsBatch
+  of CatalogsItemsBatchKind.CatalogsHotelItemsBatchVariant:
+    CatalogsHotelItemsBatchValue*: CatalogsHotelItemsBatch
+  of CatalogsItemsBatchKind.CatalogsCreativeAssetsItemsBatchVariant:
+    CatalogsCreativeAssetsItemsBatchValue*: CatalogsCreativeAssetsItemsBatch
+
+proc to*(node: JsonNode, T: typedesc[CatalogsItemsBatch]): CatalogsItemsBatch =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsItemsBatch(kind: CatalogsItemsBatchKind.CatalogsRetailItemsBatchVariant, CatalogsRetailItemsBatchValue: to(node, CatalogsRetailItemsBatch))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailItemsBatch: ", e.msg
+  try:
+    return CatalogsItemsBatch(kind: CatalogsItemsBatchKind.CatalogsHotelItemsBatchVariant, CatalogsHotelItemsBatchValue: to(node, CatalogsHotelItemsBatch))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelItemsBatch: ", e.msg
+  try:
+    return CatalogsItemsBatch(kind: CatalogsItemsBatchKind.CatalogsCreativeAssetsItemsBatchVariant, CatalogsCreativeAssetsItemsBatchValue: to(node, CatalogsCreativeAssetsItemsBatch))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsItemsBatch: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsItemsBatch. JSON: " & $node)
+

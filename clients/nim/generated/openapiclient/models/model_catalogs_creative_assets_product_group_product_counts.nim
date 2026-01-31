@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogType* {.pure.} = enum
@@ -21,11 +23,38 @@ type CatalogsCreativeAssetsProductGroupProductCounts* = object
   videos*: float
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.CREATIVEASSETS: %"CREATIVE_ASSETS"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
+    of CatalogType.CREATIVEASSETS: $("CREATIVE_ASSETS")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CREATIVE_ASSETS"):
+    return CatalogType.CREATIVEASSETS
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsProductGroupProductCounts with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsProductGroupProductCounts]): CatalogsCreativeAssetsProductGroupProductCounts =
+  result = CatalogsCreativeAssetsProductGroupProductCounts()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("total"):
+      result.total = to(node["total"], float)
+    if node.hasKey("videos"):
+      result.videos = to(node["videos"], float)
+
+# Custom JSON serialization for CatalogsCreativeAssetsProductGroupProductCounts with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsProductGroupProductCounts): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["total"] = %obj.total
+  result["videos"] = %obj.videos
+

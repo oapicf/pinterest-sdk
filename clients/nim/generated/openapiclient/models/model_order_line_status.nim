@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type OrderLineStatus* = object
-  ## Order Line Status
+type OrderLineStatus* {.pure.} = enum
+  ACTIVE
+  PAUSED
+  DELETED
+
+func `%`*(v: OrderLineStatus): JsonNode =
+  result = case v:
+    of OrderLineStatus.ACTIVE: %"ACTIVE"
+    of OrderLineStatus.PAUSED: %"PAUSED"
+    of OrderLineStatus.DELETED: %"DELETED"
+
+func `$`*(v: OrderLineStatus): string =
+  result = case v:
+    of OrderLineStatus.ACTIVE: $("ACTIVE")
+    of OrderLineStatus.PAUSED: $("PAUSED")
+    of OrderLineStatus.DELETED: $("DELETED")
+
+proc to*(node: JsonNode, T: typedesc[OrderLineStatus]): OrderLineStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum OrderLineStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ACTIVE"):
+    return OrderLineStatus.ACTIVE
+  of $("PAUSED"):
+    return OrderLineStatus.PAUSED
+  of $("DELETED"):
+    return OrderLineStatus.DELETED
+  else:
+    raise newException(ValueError, "Invalid enum value for OrderLineStatus: " & strVal)
+

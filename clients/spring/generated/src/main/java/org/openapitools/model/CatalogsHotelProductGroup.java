@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  * CatalogsHotelProductGroup
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
 
   /**
@@ -36,7 +36,7 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   public enum CatalogTypeEnum {
     HOTEL("HOTEL");
 
-    private String value;
+    private final String value;
 
     CatalogTypeEnum(String value) {
       this.value = value;
@@ -133,7 +133,7 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
     this.id = id;
   }
 
-  public CatalogsHotelProductGroup name(String name) {
+  public CatalogsHotelProductGroup name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -145,11 +145,11 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   
   @Schema(name = "name", example = "Most Popular", description = "Name of hotel product group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
@@ -193,7 +193,7 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
     this.filters = filters;
   }
 
-  public CatalogsHotelProductGroup createdAt(Integer createdAt) {
+  public CatalogsHotelProductGroup createdAt(@Nullable Integer createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -205,15 +205,15 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   
   @Schema(name = "created_at", example = "1621350033000", description = "Unix timestamp in seconds of when catalog product group was created.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_at")
-  public Integer getCreatedAt() {
+  public @Nullable Integer getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(Integer createdAt) {
+  public void setCreatedAt(@Nullable Integer createdAt) {
     this.createdAt = createdAt;
   }
 
-  public CatalogsHotelProductGroup updatedAt(Integer updatedAt) {
+  public CatalogsHotelProductGroup updatedAt(@Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -225,11 +225,11 @@ public class CatalogsHotelProductGroup implements CatalogsVerticalProductGroup {
   
   @Schema(name = "updated_at", example = "1622742155000", description = "Unix timestamp in seconds of last time catalog product group was updated.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_at")
-  public Integer getUpdatedAt() {
+  public @Nullable Integer getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(Integer updatedAt) {
+  public void setUpdatedAt(@Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
   }
 

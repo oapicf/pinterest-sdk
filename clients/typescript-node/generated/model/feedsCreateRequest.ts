@@ -16,7 +16,7 @@ import { CatalogsFeedProcessingSchedule } from './catalogsFeedProcessingSchedule
 import { CatalogsFeedsCreateRequest } from './catalogsFeedsCreateRequest';
 import { CatalogsFeedsCreateRequestDefaultLocale } from './catalogsFeedsCreateRequestDefaultLocale';
 import { CatalogsFormat } from './catalogsFormat';
-import { CatalogsStatus &amp; object } from './catalogsStatus  object';
+import { CatalogsStatus } from './catalogsStatus';
 import { CatalogsType } from './catalogsType';
 import { CatalogsVerticalFeedsCreateRequest } from './catalogsVerticalFeedsCreateRequest';
 import { Country } from './country';
@@ -39,7 +39,7 @@ export class FeedsCreateRequest {
     'preferredProcessingSchedule'?: CatalogsFeedProcessingSchedule | null;
     'defaultCountry'?: Country;
     'defaultAvailability'?: ProductAvailabilityType | null;
-    'status'?: CatalogsStatus & object;
+    'status'?: CatalogsStatus = CatalogsStatus.Active;
 
     static discriminator: string | undefined = undefined;
 
@@ -92,7 +92,7 @@ export class FeedsCreateRequest {
         {
             "name": "status",
             "baseName": "status",
-            "type": "CatalogsStatus & object"
+            "type": "CatalogsStatus"
         }    ];
 
     static getAttributeTypeMap() {

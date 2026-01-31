@@ -2,27 +2,30 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.BulkUpsertStatus;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * ID of the bulk request.
- **/
+ * ID of the bulk request.
+ */
 @ApiModel(description="ID of the bulk request.")
 
 public class BulkUpsertStatusResponse  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BulkUpsertStatus status;
 
   @ApiModelProperty(example = "https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)", value = "")
+
   private String resultUrl;
  /**
    * Get status

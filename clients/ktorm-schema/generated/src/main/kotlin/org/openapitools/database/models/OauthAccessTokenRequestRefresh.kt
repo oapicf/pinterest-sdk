@@ -18,13 +18,15 @@ import .*
 
 
 /**
- * A request to exchange a refresh token for a new access token.
+ * 
  * @param refreshToken 
+ * @param grantType 
  * @param scope 
  * @param refreshOn Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
  */
 object OauthAccessTokenRequestRefreshs : BaseTable<OauthAccessTokenRequestRefresh>("OauthAccessTokenRequestRefresh") {
     val refreshToken = text("refresh_token")
+    val grantType = text("grant_type").transform({ OauthAccessTokenRequestRefresh.GrantType.valueOf(it) }, { it.value })
     val scope = text("scope") /* null */
     val refreshOn = boolean("refresh_on") /* null */ /* Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\". */
 
@@ -33,6 +35,7 @@ object OauthAccessTokenRequestRefreshs : BaseTable<OauthAccessTokenRequestRefres
      */
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = OauthAccessTokenRequestRefresh(
         refreshToken = row[refreshToken] ?: "" /* kotlin.String */,
+        grantType = row[grantType] ?: OauthAccessTokenRequestRefresh.GrantType.valueOf("") /* kotlin.String */,
         scope = row[scope]  /* kotlin.String? */,
         refreshOn = row[refreshOn]  /* kotlin.Boolean? */ /* Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\". */
     )
@@ -53,6 +56,7 @@ object OauthAccessTokenRequestRefreshs : BaseTable<OauthAccessTokenRequestRefres
     fun AssignmentsBuilder.assignFrom(entity: OauthAccessTokenRequestRefresh) {
         this.apply {
             set(OauthAccessTokenRequestRefreshs.refreshToken, entity.refreshToken)
+            set(OauthAccessTokenRequestRefreshs.grantType, entity.grantType)
             set(OauthAccessTokenRequestRefreshs.scope, entity.scope)
             set(OauthAccessTokenRequestRefreshs.refreshOn, entity.refreshOn)
         }

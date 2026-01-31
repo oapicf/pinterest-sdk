@@ -14,14 +14,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SharedAudienceResponseCommon  {
   
-  @ApiModelProperty(example = "2542621871096", value = "Audience ID that was shared")
  /**
-   * Audience ID that was shared
-  **/
+  * Audience ID that was shared
+  */
+  @ApiModelProperty(example = "2542621871096", value = "Audience ID that was shared")
+
   private String audienceId;
 
   @ApiModelProperty(example = "[\"RESOURCE_PINNER_LIST_READER\",\"RESOURCE_PINNER_LIST_OWNER\"]", value = "")
+
   @Valid
+
   private List<Role> permissions = new ArrayList<>();
  /**
    * Audience ID that was shared

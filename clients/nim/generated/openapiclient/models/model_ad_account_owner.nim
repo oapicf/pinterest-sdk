@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AdAccountOwner* = object
   ## 
-  username*: string ## Public username for the user account
-  id*: string ## The owning account's user ID.
+  username*: Option[string] ## Public username for the user account
+  id*: Option[string] ## The owning account's user ID.
+

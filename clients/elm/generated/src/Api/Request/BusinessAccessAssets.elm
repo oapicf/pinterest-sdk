@@ -279,13 +279,13 @@ businessMembersAssetAccessUpdate businessId_path updateMemberAssetAccessBody_bod
 Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type=INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type=EXTERNAL, you will retrieve the partner's business assets that the partner has granted you access to.
 
 -}
-businessPartnerAssetAccessGet : String -> String -> Maybe Api.Data.Api.Data.PartnerType -> Maybe AssetType -> Maybe Int -> Maybe Int -> Maybe String -> Api.Request Api.Data.BusinessPartnerAssetAccessGet200Response
+businessPartnerAssetAccessGet : String -> String -> Maybe Api.Data.PartnerType -> Maybe AssetType -> Maybe Int -> Maybe Int -> Maybe String -> Api.Request Api.Data.BusinessPartnerAssetAccessGet200Response
 businessPartnerAssetAccessGet businessId_path partnerId_path partnerType_query assetType_query startIndex_query pageSize_query bookmark_query =
     Api.request
         "GET"
         "/businesses/{business_id}/partners/{partner_id}/assets"
         [ ( "business_id", identity businessId_path ), ( "partner_id", identity partnerId_path ) ]
-        [ ( "partner_type", Maybe.map  partnerType_query ), ( "asset_type", Maybe.map stringFromAssetType assetType_query ), ( "start_index", Maybe.map String.fromInt startIndex_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "bookmark", Maybe.map identity bookmark_query ) ]
+        [ ( "partner_type", Maybe.map Api.Data.stringFromPartnerType partnerType_query ), ( "asset_type", Maybe.map stringFromAssetType assetType_query ), ( "start_index", Maybe.map String.fromInt startIndex_query ), ( "page_size", Maybe.map String.fromInt pageSize_query ), ( "bookmark", Maybe.map identity bookmark_query ) ]
         []
         Nothing
         Api.Data.businessPartnerAssetAccessGet200ResponseDecoder

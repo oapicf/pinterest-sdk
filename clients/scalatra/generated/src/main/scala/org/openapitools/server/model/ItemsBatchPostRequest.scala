@@ -16,7 +16,8 @@ case class ItemsBatchPostRequest(
 
   country: Country,
 
-  language: CatalogsItemsRequestLanguage,
+  /* We recommend using the CatalogsLocale values. */
+  language: String,
 
   /* Array with catalogs items */
   items: List[ItemDeleteBatchRecord],

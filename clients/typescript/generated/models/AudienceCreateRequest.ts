@@ -10,8 +10,8 @@
  * Do not edit the class manually.
  */
 
-import { AudienceCreateRequest1AudienceType } from '../models/AudienceCreateRequest1AudienceType';
 import { AudienceRule } from '../models/AudienceRule';
+import { AudienceType } from '../models/AudienceType';
 import { HttpFile } from '../http/http';
 
 export class AudienceCreateRequest {
@@ -28,7 +28,10 @@ export class AudienceCreateRequest {
     * Audience description.
     */
     'description'?: string;
-    'audienceType': AudienceCreateRequest1AudienceType;
+    /**
+    * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+    */
+    'audienceType': AudienceType;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -62,7 +65,7 @@ export class AudienceCreateRequest {
         {
             "name": "audienceType",
             "baseName": "audience_type",
-            "type": "AudienceCreateRequest1AudienceType",
+            "type": "AudienceType",
             "format": ""
         }    ];
 
@@ -73,3 +76,5 @@ export class AudienceCreateRequest {
     public constructor() {
     }
 }
+
+

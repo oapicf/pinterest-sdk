@@ -427,8 +427,7 @@ namespace Org.OpenAPITools.Model
                             poNumber = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "budget_amount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                budgetAmount = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            budgetAmount = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "billing_contact_firstname":
                             billingContactFirstname = new Option<string?>(utf8JsonReader.GetString()!);

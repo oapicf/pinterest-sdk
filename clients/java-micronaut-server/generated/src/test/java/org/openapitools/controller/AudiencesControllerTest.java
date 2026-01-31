@@ -90,7 +90,7 @@ public class AudiencesControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@5dde9c5d");
+            .accept("[Ljava.lang.String;@116278cd");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Audience.class);
@@ -138,7 +138,7 @@ public class AudiencesControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@3361b54c");
+            .accept("[Ljava.lang.String;@4d582a6c");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Audience.class);
@@ -186,7 +186,7 @@ public class AudiencesControllerTest {
             put("audience_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@426de59f");
+            .accept("[Ljava.lang.String;@bd69b3c");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Audience.class);
@@ -236,7 +236,7 @@ public class AudiencesControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@61aa5dbf");
+            .accept("[Ljava.lang.String;@178659ef");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("order", "ASCENDING") // The query parameter format should be 
@@ -291,7 +291,7 @@ public class AudiencesControllerTest {
             put("audience_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@483f19a3");
+            .accept("[Ljava.lang.String;@1520efc2");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Audience.class);

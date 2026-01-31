@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("UpdateAssetGroupBody_asset_groups_to_update_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdateAssetGroupBodyAssetGroupsToUpdateInner {
 
   private String assetGroupId;
@@ -74,7 +74,7 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner {
     this.assetGroupId = assetGroupId;
   }
 
-  public UpdateAssetGroupBodyAssetGroupsToUpdateInner name(String name) {
+  public UpdateAssetGroupBodyAssetGroupsToUpdateInner name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -86,15 +86,15 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner {
   
   @Schema(name = "name", example = "Canada Ad Accounts", description = "Asset Group name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public UpdateAssetGroupBodyAssetGroupsToUpdateInner description(String description) {
+  public UpdateAssetGroupBodyAssetGroupsToUpdateInner description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -106,11 +106,11 @@ public class UpdateAssetGroupBodyAssetGroupsToUpdateInner {
   
   @Schema(name = "description", example = "Asset groups that has ad accounts shared in Canada", description = "Asset group description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
-  public String getDescription() {
+  public @Nullable String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 

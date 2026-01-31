@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type Exception* = object
   ## 
-  code*: int ## Exception error code.
-  message*: string ## Exception message.
+  code*: Option[int] ## Exception error code.
+  message*: Option[string] ## Exception message.
+

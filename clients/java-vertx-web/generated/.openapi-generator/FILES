@@ -184,7 +184,6 @@ src/main/java/org/openapitools/vertxweb/server/model/AudienceCategory.java
 src/main/java/org/openapitools/vertxweb/server/model/AudienceCommon.java
 src/main/java/org/openapitools/vertxweb/server/model/AudienceCreateCustomRequest.java
 src/main/java/org/openapitools/vertxweb/server/model/AudienceCreateRequest.java
-src/main/java/org/openapitools/vertxweb/server/model/AudienceCreateRequest1AudienceType.java
 src/main/java/org/openapitools/vertxweb/server/model/AudienceDataParty.java
 src/main/java/org/openapitools/vertxweb/server/model/AudienceDefinition.java
 src/main/java/org/openapitools/vertxweb/server/model/AudienceDefinitionResponse.java
@@ -362,7 +361,6 @@ src/main/java/org/openapitools/vertxweb/server/model/CatalogsItemsDeleteDisconti
 src/main/java/org/openapitools/vertxweb/server/model/CatalogsItemsFilters.java
 src/main/java/org/openapitools/vertxweb/server/model/CatalogsItemsPostFilters.java
 src/main/java/org/openapitools/vertxweb/server/model/CatalogsItemsRequest.java
-src/main/java/org/openapitools/vertxweb/server/model/CatalogsItemsRequestLanguage.java
 src/main/java/org/openapitools/vertxweb/server/model/CatalogsItemsUpdateBatchRequest.java
 src/main/java/org/openapitools/vertxweb/server/model/CatalogsItemsUpsertBatchRequest.java
 src/main/java/org/openapitools/vertxweb/server/model/CatalogsList200Response.java
@@ -696,7 +694,6 @@ src/main/java/org/openapitools/vertxweb/server/model/PinMediaWithVideos.java
 src/main/java/org/openapitools/vertxweb/server/model/PinPromotionSummaryStatus.java
 src/main/java/org/openapitools/vertxweb/server/model/PinUpdate.java
 src/main/java/org/openapitools/vertxweb/server/model/PinUpdateCarouselSlotsInner.java
-src/main/java/org/openapitools/vertxweb/server/model/PinsAnalyticsMetricTypesParameterInner.java
 src/main/java/org/openapitools/vertxweb/server/model/PinsList200Response.java
 src/main/java/org/openapitools/vertxweb/server/model/PinsSaveRequest.java
 src/main/java/org/openapitools/vertxweb/server/model/PinterestTagEventData.java

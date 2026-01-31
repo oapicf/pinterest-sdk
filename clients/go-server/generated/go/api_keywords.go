@@ -54,32 +54,75 @@ func NewKeywordsAPIController(s KeywordsAPIServicer, opts ...KeywordsAPIOption) 
 func (c *KeywordsAPIController) Routes() Routes {
 	return Routes{
 		"KeywordsGet": Route{
+			"KeywordsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/keywords",
 			c.KeywordsGet,
 		},
 		"KeywordsCreate": Route{
+			"KeywordsCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/keywords",
 			c.KeywordsCreate,
 		},
 		"KeywordsUpdate": Route{
+			"KeywordsUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/keywords",
 			c.KeywordsUpdate,
 		},
 		"CountryKeywordsMetricsGet": Route{
+			"CountryKeywordsMetricsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/keywords/metrics",
 			c.CountryKeywordsMetricsGet,
 		},
 		"TrendingKeywordsList": Route{
+			"TrendingKeywordsList",
 			strings.ToUpper("Get"),
 			"/v5/trends/keywords/{region}/top/{trend_type}",
 			c.TrendingKeywordsList,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the KeywordsAPIController
+func (c *KeywordsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"KeywordsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/keywords",
+			c.KeywordsGet,
+		},
+		Route{
+			"KeywordsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/keywords",
+			c.KeywordsCreate,
+		},
+		Route{
+			"KeywordsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/keywords",
+			c.KeywordsUpdate,
+		},
+		Route{
+			"CountryKeywordsMetricsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/keywords/metrics",
+			c.CountryKeywordsMetricsGet,
+		},
+		Route{
+			"TrendingKeywordsList",
+			strings.ToUpper("Get"),
+			"/v5/trends/keywords/{region}/top/{trend_type}",
+			c.TrendingKeywordsList,
+		},
+	}
+}
+
+
 
 // KeywordsGet - Get keywords
 func (c *KeywordsAPIController) KeywordsGet(w http.ResponseWriter, r *http.Request) {

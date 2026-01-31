@@ -21,11 +21,25 @@ using Org.OpenAPITools.Converters;
 namespace Org.OpenAPITools.Models
 { 
     /// <summary>
-    /// A request to exchange an authorization code for an access token.
+    /// 
     /// </summary>
     [DataContract]
     public partial class OauthAccessTokenRequestCode : IEquatable<OauthAccessTokenRequestCode>
     {
+        /// <summary>
+        /// Gets or Sets Code
+        /// </summary>
+        [Required]
+        [DataMember(Name="code", EmitDefaultValue=false)]
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RedirectUri
+        /// </summary>
+        [Required]
+        [DataMember(Name="redirect_uri", EmitDefaultValue=false)]
+        public string RedirectUri { get; set; }
+
 
         /// <summary>
         /// Gets or Sets GrantType
@@ -62,20 +76,6 @@ namespace Org.OpenAPITools.Models
         public GrantTypeEnum GrantType { get; set; }
 
         /// <summary>
-        /// Gets or Sets Code
-        /// </summary>
-        [Required]
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public string Code { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RedirectUri
-        /// </summary>
-        [Required]
-        [DataMember(Name="redirect_uri", EmitDefaultValue=false)]
-        public string RedirectUri { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -83,9 +83,9 @@ namespace Org.OpenAPITools.Models
         {
             var sb = new StringBuilder();
             sb.Append("class OauthAccessTokenRequestCode {\n");
-            sb.Append("  GrantType: ").Append(GrantType).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  RedirectUri: ").Append(RedirectUri).Append("\n");
+            sb.Append("  GrantType: ").Append(GrantType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -123,11 +123,6 @@ namespace Org.OpenAPITools.Models
 
             return 
                 (
-                    GrantType == other.GrantType ||
-                    
-                    GrantType.Equals(other.GrantType)
-                ) && 
-                (
                     Code == other.Code ||
                     Code != null &&
                     Code.Equals(other.Code)
@@ -136,6 +131,11 @@ namespace Org.OpenAPITools.Models
                     RedirectUri == other.RedirectUri ||
                     RedirectUri != null &&
                     RedirectUri.Equals(other.RedirectUri)
+                ) && 
+                (
+                    GrantType == other.GrantType ||
+                    
+                    GrantType.Equals(other.GrantType)
                 );
         }
 
@@ -149,12 +149,12 @@ namespace Org.OpenAPITools.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    
-                    hashCode = hashCode * 59 + GrantType.GetHashCode();
                     if (Code != null)
                     hashCode = hashCode * 59 + Code.GetHashCode();
                     if (RedirectUri != null)
                     hashCode = hashCode * 59 + RedirectUri.GetHashCode();
+                    
+                    hashCode = hashCode * 59 + GrantType.GetHashCode();
                 return hashCode;
             }
         }

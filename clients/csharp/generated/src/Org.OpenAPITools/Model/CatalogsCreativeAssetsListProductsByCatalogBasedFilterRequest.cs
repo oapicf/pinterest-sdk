@@ -206,8 +206,7 @@ namespace Org.OpenAPITools.Model
                             catalogId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "filters":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                filters = new Option<CatalogsCreativeAssetsProductGroupFilters?>(JsonSerializer.Deserialize<CatalogsCreativeAssetsProductGroupFilters>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            filters = new Option<CatalogsCreativeAssetsProductGroupFilters?>(JsonSerializer.Deserialize<CatalogsCreativeAssetsProductGroupFilters>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

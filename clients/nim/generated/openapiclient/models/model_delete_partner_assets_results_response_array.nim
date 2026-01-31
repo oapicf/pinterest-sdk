@@ -9,9 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_delete_partner_assets_result
 
 type DeletePartnerAssetsResultsResponseArray* = object
   ## 
-  items*: seq[DeletePartnerAssetsResult] ## List of terminated asset access.
+  items*: Option[seq[DeletePartnerAssetsResult]] ## List of terminated asset access.
+
+
+# Custom JSON deserialization for DeletePartnerAssetsResultsResponseArray with custom field names
+proc to*(node: JsonNode, T: typedesc[DeletePartnerAssetsResultsResponseArray]): DeletePartnerAssetsResultsResponseArray =
+  result = DeletePartnerAssetsResultsResponseArray()
+  if node.kind == JObject:
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[DeletePartnerAssetsResult] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, DeletePartnerAssetsResult))
+        result.items = some(arr)
+
+# Custom JSON serialization for DeletePartnerAssetsResultsResponseArray with custom field names
+proc `%`*(obj: DeletePartnerAssetsResultsResponseArray): JsonNode =
+  result = newJObject()
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

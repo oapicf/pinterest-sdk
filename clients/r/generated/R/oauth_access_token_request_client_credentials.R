@@ -1,30 +1,36 @@
 #' Create a new OauthAccessTokenRequestClientCredentials
 #'
 #' @description
-#' A request to receive a client token.
+#' OauthAccessTokenRequestClientCredentials Class
 #'
 #' @docType class
 #' @title OauthAccessTokenRequestClientCredentials
 #' @description OauthAccessTokenRequestClientCredentials Class
 #' @format An \code{R6Class} generator object
-#' @field grant_type  character
 #' @field scope  character
+#' @field grant_type  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 OauthAccessTokenRequestClientCredentials <- R6::R6Class(
   "OauthAccessTokenRequestClientCredentials",
   public = list(
-    `grant_type` = NULL,
     `scope` = NULL,
+    `grant_type` = NULL,
 
     #' @description
     #' Initialize a new OauthAccessTokenRequestClientCredentials class.
     #'
-    #' @param grant_type grant_type
     #' @param scope scope
+    #' @param grant_type grant_type
     #' @param ... Other optional arguments.
-    initialize = function(`grant_type`, `scope`, ...) {
+    initialize = function(`scope`, `grant_type`, ...) {
+      if (!missing(`scope`)) {
+        if (!(is.character(`scope`) && length(`scope`) == 1)) {
+          stop(paste("Error! Invalid data for `scope`. Must be a string:", `scope`))
+        }
+        self$`scope` <- `scope`
+      }
       if (!missing(`grant_type`)) {
         if (!(`grant_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
           stop(paste("Error! \"", `grant_type`, "\" cannot be assigned to `grant_type`. Must be \"authorization_code\", \"refresh_token\", \"client_credentials\".", sep = ""))
@@ -33,12 +39,6 @@ OauthAccessTokenRequestClientCredentials <- R6::R6Class(
           stop(paste("Error! Invalid data for `grant_type`. Must be a string:", `grant_type`))
         }
         self$`grant_type` <- `grant_type`
-      }
-      if (!missing(`scope`)) {
-        if (!(is.character(`scope`) && length(`scope`) == 1)) {
-          stop(paste("Error! Invalid data for `scope`. Must be a string:", `scope`))
-        }
-        self$`scope` <- `scope`
       }
     },
 
@@ -73,13 +73,13 @@ OauthAccessTokenRequestClientCredentials <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       OauthAccessTokenRequestClientCredentialsObject <- list()
-      if (!is.null(self$`grant_type`)) {
-        OauthAccessTokenRequestClientCredentialsObject[["grant_type"]] <-
-          self$`grant_type`
-      }
       if (!is.null(self$`scope`)) {
         OauthAccessTokenRequestClientCredentialsObject[["scope"]] <-
           self$`scope`
+      }
+      if (!is.null(self$`grant_type`)) {
+        OauthAccessTokenRequestClientCredentialsObject[["grant_type"]] <-
+          self$`grant_type`
       }
       return(OauthAccessTokenRequestClientCredentialsObject)
     },
@@ -91,14 +91,14 @@ OauthAccessTokenRequestClientCredentials <- R6::R6Class(
     #' @return the instance of OauthAccessTokenRequestClientCredentials
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`scope`)) {
+        self$`scope` <- this_object$`scope`
+      }
       if (!is.null(this_object$`grant_type`)) {
         if (!is.null(this_object$`grant_type`) && !(this_object$`grant_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
           stop(paste("Error! \"", this_object$`grant_type`, "\" cannot be assigned to `grant_type`. Must be \"authorization_code\", \"refresh_token\", \"client_credentials\".", sep = ""))
         }
         self$`grant_type` <- this_object$`grant_type`
-      }
-      if (!is.null(this_object$`scope`)) {
-        self$`scope` <- this_object$`scope`
       }
       self
     },
@@ -121,11 +121,11 @@ OauthAccessTokenRequestClientCredentials <- R6::R6Class(
     #' @return the instance of OauthAccessTokenRequestClientCredentials
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`scope` <- this_object$`scope`
       if (!is.null(this_object$`grant_type`) && !(this_object$`grant_type` %in% c("authorization_code", "refresh_token", "client_credentials"))) {
         stop(paste("Error! \"", this_object$`grant_type`, "\" cannot be assigned to `grant_type`. Must be \"authorization_code\", \"refresh_token\", \"client_credentials\".", sep = ""))
       }
       self$`grant_type` <- this_object$`grant_type`
-      self$`scope` <- this_object$`scope`
       self
     },
 
@@ -135,14 +135,6 @@ OauthAccessTokenRequestClientCredentials <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `grant_type`
-      if (!is.null(input_json$`grant_type`)) {
-        if (!(is.character(input_json$`grant_type`) && length(input_json$`grant_type`) == 1)) {
-          stop(paste("Error! Invalid data for `grant_type`. Must be a string:", input_json$`grant_type`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for OauthAccessTokenRequestClientCredentials: the required field `grant_type` is missing."))
-      }
       # check the required field `scope`
       if (!is.null(input_json$`scope`)) {
         if (!(is.character(input_json$`scope`) && length(input_json$`scope`) == 1)) {
@@ -150,6 +142,14 @@ OauthAccessTokenRequestClientCredentials <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for OauthAccessTokenRequestClientCredentials: the required field `scope` is missing."))
+      }
+      # check the required field `grant_type`
+      if (!is.null(input_json$`grant_type`)) {
+        if (!(is.character(input_json$`grant_type`) && length(input_json$`grant_type`) == 1)) {
+          stop(paste("Error! Invalid data for `grant_type`. Must be a string:", input_json$`grant_type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for OauthAccessTokenRequestClientCredentials: the required field `grant_type` is missing."))
       }
     },
 
@@ -166,13 +166,13 @@ OauthAccessTokenRequestClientCredentials <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `grant_type` is null
-      if (is.null(self$`grant_type`)) {
+      # check if the required `scope` is null
+      if (is.null(self$`scope`)) {
         return(FALSE)
       }
 
-      # check if the required `scope` is null
-      if (is.null(self$`scope`)) {
+      # check if the required `grant_type` is null
+      if (is.null(self$`grant_type`)) {
         return(FALSE)
       }
 
@@ -185,14 +185,14 @@ OauthAccessTokenRequestClientCredentials <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `grant_type` is null
-      if (is.null(self$`grant_type`)) {
-        invalid_fields["grant_type"] <- "Non-nullable required field `grant_type` cannot be null."
-      }
-
       # check if the required `scope` is null
       if (is.null(self$`scope`)) {
         invalid_fields["scope"] <- "Non-nullable required field `scope` cannot be null."
+      }
+
+      # check if the required `grant_type` is null
+      if (is.null(self$`grant_type`)) {
+        invalid_fields["grant_type"] <- "Non-nullable required field `grant_type` cannot be null."
       }
 
       invalid_fields

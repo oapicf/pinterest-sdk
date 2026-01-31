@@ -17,6 +17,10 @@ import { TargetingAdvertiserCountry } from './targetingAdvertiserCountry';
 
 export class CreateMMMReportRequest {
     /**
+    * A List of countries for filtering
+    */
+    'countries'?: Array<TargetingAdvertiserCountry>;
+    /**
     * Name of the Marketing Mix Modeling (MMM) report
     */
     'reportName': string;
@@ -44,14 +48,15 @@ export class CreateMMMReportRequest {
     * Metric and entity columns
     */
     'columns': Array<MMMReportingColumn>;
-    /**
-    * A List of countries for filtering
-    */
-    'countries'?: Array<TargetingAdvertiserCountry>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            "name": "countries",
+            "baseName": "countries",
+            "type": "Array<TargetingAdvertiserCountry>"
+        },
         {
             "name": "reportName",
             "baseName": "report_name",
@@ -86,11 +91,6 @@ export class CreateMMMReportRequest {
             "name": "columns",
             "baseName": "columns",
             "type": "Array<MMMReportingColumn>"
-        },
-        {
-            "name": "countries",
-            "baseName": "countries",
-            "type": "Array<TargetingAdvertiserCountry>"
         }    ];
 
     static getAttributeTypeMap() {

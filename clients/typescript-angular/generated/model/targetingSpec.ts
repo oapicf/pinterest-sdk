@@ -60,38 +60,38 @@ export interface TargetingSpec {
     TARGETING_STRATEGY?: Array<TargetingSpec.TARGETINGSTRATEGYEnum> | null;
 }
 export namespace TargetingSpec {
-    export type AGEBUCKETEnum = '18-24' | '21+' | '25-34' | '35-44' | '45-49' | '50-54' | '55-64' | '65+';
     export const AGEBUCKETEnum = {
-        _1824: '18-24' as AGEBUCKETEnum,
-        _21: '21+' as AGEBUCKETEnum,
-        _2534: '25-34' as AGEBUCKETEnum,
-        _3544: '35-44' as AGEBUCKETEnum,
-        _4549: '45-49' as AGEBUCKETEnum,
-        _5054: '50-54' as AGEBUCKETEnum,
-        _5564: '55-64' as AGEBUCKETEnum,
-        _65: '65+' as AGEBUCKETEnum
-    };
-    export type APPTYPEEnum = 'android_mobile' | 'android_tablet' | 'ipad' | 'iphone' | 'web' | 'web_mobile';
+        _1824: '18-24',
+        _21: '21+',
+        _2534: '25-34',
+        _3544: '35-44',
+        _4549: '45-49',
+        _5054: '50-54',
+        _5564: '55-64',
+        _65: '65+'
+    } as const;
+    export type AGEBUCKETEnum = typeof AGEBUCKETEnum[keyof typeof AGEBUCKETEnum];
     export const APPTYPEEnum = {
-        AndroidMobile: 'android_mobile' as APPTYPEEnum,
-        AndroidTablet: 'android_tablet' as APPTYPEEnum,
-        Ipad: 'ipad' as APPTYPEEnum,
-        Iphone: 'iphone' as APPTYPEEnum,
-        Web: 'web' as APPTYPEEnum,
-        WebMobile: 'web_mobile' as APPTYPEEnum
-    };
-    export type GENDEREnum = 'unknown' | 'male' | 'female';
+        AndroidMobile: 'android_mobile',
+        AndroidTablet: 'android_tablet',
+        Ipad: 'ipad',
+        Iphone: 'iphone',
+        Web: 'web',
+        WebMobile: 'web_mobile'
+    } as const;
+    export type APPTYPEEnum = typeof APPTYPEEnum[keyof typeof APPTYPEEnum];
     export const GENDEREnum = {
-        Unknown: 'unknown' as GENDEREnum,
-        Male: 'male' as GENDEREnum,
-        Female: 'female' as GENDEREnum
-    };
-    export type TARGETINGSTRATEGYEnum = 'CHOOSE_YOUR_OWN' | 'FIND_NEW_CUSTOMERS' | 'RECONNECT_WITH_USERS';
+        Unknown: 'unknown',
+        Male: 'male',
+        Female: 'female'
+    } as const;
+    export type GENDEREnum = typeof GENDEREnum[keyof typeof GENDEREnum];
     export const TARGETINGSTRATEGYEnum = {
-        ChooseYourOwn: 'CHOOSE_YOUR_OWN' as TARGETINGSTRATEGYEnum,
-        FindNewCustomers: 'FIND_NEW_CUSTOMERS' as TARGETINGSTRATEGYEnum,
-        ReconnectWithUsers: 'RECONNECT_WITH_USERS' as TARGETINGSTRATEGYEnum
-    };
+        ChooseYourOwn: 'CHOOSE_YOUR_OWN',
+        FindNewCustomers: 'FIND_NEW_CUSTOMERS',
+        ReconnectWithUsers: 'RECONNECT_WITH_USERS'
+    } as const;
+    export type TARGETINGSTRATEGYEnum = typeof TARGETINGSTRATEGYEnum[keyof typeof TARGETINGSTRATEGYEnum];
 }
 
 

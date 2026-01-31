@@ -23,7 +23,7 @@ data class UpdateMemberResultsResponseArray(
     @field:Valid
     @Schema(example = "null", description = "List of members with updated business access role.")
     @get:JsonProperty("items") val items: kotlin.collections.List<UpdateMemberResult>? = null
-    ) {
+) {
 
 }
 

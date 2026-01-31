@@ -92,7 +92,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audiencesCreateCall(String adAccountId, AudienceCreateRequest audienceCreateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call audiencesCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceCreateRequest audienceCreateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -139,7 +139,7 @@ public class AudiencesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call audiencesCreateValidateBeforeCall(String adAccountId, AudienceCreateRequest audienceCreateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call audiencesCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceCreateRequest audienceCreateRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling audiencesCreate(Async)");
@@ -169,7 +169,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public Audience audiencesCreate(String adAccountId, AudienceCreateRequest audienceCreateRequest) throws ApiException {
+    public Audience audiencesCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceCreateRequest audienceCreateRequest) throws ApiException {
         ApiResponse<Audience> localVarResp = audiencesCreateWithHttpInfo(adAccountId, audienceCreateRequest);
         return localVarResp.getData();
     }
@@ -189,7 +189,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Audience> audiencesCreateWithHttpInfo(String adAccountId, AudienceCreateRequest audienceCreateRequest) throws ApiException {
+    public ApiResponse<Audience> audiencesCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceCreateRequest audienceCreateRequest) throws ApiException {
         okhttp3.Call localVarCall = audiencesCreateValidateBeforeCall(adAccountId, audienceCreateRequest, null);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -211,7 +211,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audiencesCreateAsync(String adAccountId, AudienceCreateRequest audienceCreateRequest, final ApiCallback<Audience> _callback) throws ApiException {
+    public okhttp3.Call audiencesCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceCreateRequest audienceCreateRequest, final ApiCallback<Audience> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = audiencesCreateValidateBeforeCall(adAccountId, audienceCreateRequest, _callback);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
@@ -233,7 +233,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audiencesCreateCustomCall(String adAccountId, AudienceCreateCustomRequest audienceCreateCustomRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call audiencesCreateCustomCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceCreateCustomRequest audienceCreateCustomRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -280,7 +280,7 @@ public class AudiencesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call audiencesCreateCustomValidateBeforeCall(String adAccountId, AudienceCreateCustomRequest audienceCreateCustomRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call audiencesCreateCustomValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceCreateCustomRequest audienceCreateCustomRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling audiencesCreateCustom(Async)");
@@ -310,7 +310,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public Audience audiencesCreateCustom(String adAccountId, AudienceCreateCustomRequest audienceCreateCustomRequest) throws ApiException {
+    public Audience audiencesCreateCustom(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceCreateCustomRequest audienceCreateCustomRequest) throws ApiException {
         ApiResponse<Audience> localVarResp = audiencesCreateCustomWithHttpInfo(adAccountId, audienceCreateCustomRequest);
         return localVarResp.getData();
     }
@@ -330,7 +330,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Audience> audiencesCreateCustomWithHttpInfo(String adAccountId, AudienceCreateCustomRequest audienceCreateCustomRequest) throws ApiException {
+    public ApiResponse<Audience> audiencesCreateCustomWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceCreateCustomRequest audienceCreateCustomRequest) throws ApiException {
         okhttp3.Call localVarCall = audiencesCreateCustomValidateBeforeCall(adAccountId, audienceCreateCustomRequest, null);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -352,7 +352,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audiencesCreateCustomAsync(String adAccountId, AudienceCreateCustomRequest audienceCreateCustomRequest, final ApiCallback<Audience> _callback) throws ApiException {
+    public okhttp3.Call audiencesCreateCustomAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceCreateCustomRequest audienceCreateCustomRequest, final ApiCallback<Audience> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = audiencesCreateCustomValidateBeforeCall(adAccountId, audienceCreateCustomRequest, _callback);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
@@ -375,7 +375,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audiencesGetCall(String adAccountId, String audienceId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call audiencesGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -422,7 +422,7 @@ public class AudiencesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call audiencesGetValidateBeforeCall(String adAccountId, String audienceId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call audiencesGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling audiencesGet(Async)");
@@ -453,7 +453,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public Audience audiencesGet(String adAccountId, String audienceId) throws ApiException {
+    public Audience audiencesGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId) throws ApiException {
         ApiResponse<Audience> localVarResp = audiencesGetWithHttpInfo(adAccountId, audienceId);
         return localVarResp.getData();
     }
@@ -474,7 +474,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Audience> audiencesGetWithHttpInfo(String adAccountId, String audienceId) throws ApiException {
+    public ApiResponse<Audience> audiencesGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId) throws ApiException {
         okhttp3.Call localVarCall = audiencesGetValidateBeforeCall(adAccountId, audienceId, null);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -497,7 +497,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audiencesGetAsync(String adAccountId, String audienceId, final ApiCallback<Audience> _callback) throws ApiException {
+    public okhttp3.Call audiencesGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, final ApiCallback<Audience> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = audiencesGetValidateBeforeCall(adAccountId, audienceId, _callback);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
@@ -523,7 +523,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audiencesListCall(String adAccountId, String bookmark, String order, Integer pageSize, String ownershipType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call audiencesListCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String ownershipType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -585,7 +585,7 @@ public class AudiencesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call audiencesListValidateBeforeCall(String adAccountId, String bookmark, String order, Integer pageSize, String ownershipType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call audiencesListValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String ownershipType, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling audiencesList(Async)");
@@ -614,7 +614,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public AudiencesList200Response audiencesList(String adAccountId, String bookmark, String order, Integer pageSize, String ownershipType) throws ApiException {
+    public AudiencesList200Response audiencesList(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String ownershipType) throws ApiException {
         ApiResponse<AudiencesList200Response> localVarResp = audiencesListWithHttpInfo(adAccountId, bookmark, order, pageSize, ownershipType);
         return localVarResp.getData();
     }
@@ -638,7 +638,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AudiencesList200Response> audiencesListWithHttpInfo(String adAccountId, String bookmark, String order, Integer pageSize, String ownershipType) throws ApiException {
+    public ApiResponse<AudiencesList200Response> audiencesListWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String ownershipType) throws ApiException {
         okhttp3.Call localVarCall = audiencesListValidateBeforeCall(adAccountId, bookmark, order, pageSize, ownershipType, null);
         Type localVarReturnType = new TypeToken<AudiencesList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -664,7 +664,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audiencesListAsync(String adAccountId, String bookmark, String order, Integer pageSize, String ownershipType, final ApiCallback<AudiencesList200Response> _callback) throws ApiException {
+    public okhttp3.Call audiencesListAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String ownershipType, final ApiCallback<AudiencesList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = audiencesListValidateBeforeCall(adAccountId, bookmark, order, pageSize, ownershipType, _callback);
         Type localVarReturnType = new TypeToken<AudiencesList200Response>(){}.getType();
@@ -687,7 +687,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audiencesUpdateCall(String adAccountId, String audienceId, AudienceUpdateRequest audienceUpdateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call audiencesUpdateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nullable AudienceUpdateRequest audienceUpdateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -735,7 +735,7 @@ public class AudiencesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call audiencesUpdateValidateBeforeCall(String adAccountId, String audienceId, AudienceUpdateRequest audienceUpdateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call audiencesUpdateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nullable AudienceUpdateRequest audienceUpdateRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling audiencesUpdate(Async)");
@@ -766,7 +766,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public Audience audiencesUpdate(String adAccountId, String audienceId, AudienceUpdateRequest audienceUpdateRequest) throws ApiException {
+    public Audience audiencesUpdate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nullable AudienceUpdateRequest audienceUpdateRequest) throws ApiException {
         ApiResponse<Audience> localVarResp = audiencesUpdateWithHttpInfo(adAccountId, audienceId, audienceUpdateRequest);
         return localVarResp.getData();
     }
@@ -787,7 +787,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Audience> audiencesUpdateWithHttpInfo(String adAccountId, String audienceId, AudienceUpdateRequest audienceUpdateRequest) throws ApiException {
+    public ApiResponse<Audience> audiencesUpdateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nullable AudienceUpdateRequest audienceUpdateRequest) throws ApiException {
         okhttp3.Call localVarCall = audiencesUpdateValidateBeforeCall(adAccountId, audienceId, audienceUpdateRequest, null);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -810,7 +810,7 @@ public class AudiencesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audiencesUpdateAsync(String adAccountId, String audienceId, AudienceUpdateRequest audienceUpdateRequest, final ApiCallback<Audience> _callback) throws ApiException {
+    public okhttp3.Call audiencesUpdateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nullable AudienceUpdateRequest audienceUpdateRequest, final ApiCallback<Audience> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = audiencesUpdateValidateBeforeCall(adAccountId, audienceId, audienceUpdateRequest, _callback);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();

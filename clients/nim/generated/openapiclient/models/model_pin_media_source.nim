@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_pin_media_source_image_base64
 import model_pin_media_source_image_url
@@ -18,62 +20,62 @@ import model_pin_media_source_images_url_items_inner
 import model_pin_media_source_pin_url
 import model_pin_media_source_video_id
 
-type SourceType* {.pure.} = enum
-  PinUrl
-
-type ContentType* {.pure.} = enum
-  ImageJpeg
-  ImagePng
-
-type CoverImageContentType* {.pure.} = enum
-  ImageJpeg
-  ImagePng
+# OneOf type
+type PinMediaSourceKind* {.pure.} = enum
+  PinMediaSourceImageBase64Variant
+  PinMediaSourceImageURLVariant
+  PinMediaSourceVideoIDVariant
+  PinMediaSourceImagesBase64Variant
+  PinMediaSourceImagesURLVariant
+  PinMediaSourcePinURLVariant
 
 type PinMediaSource* = object
   ## Pin media source.
-  sourceType*: SourceType
-  contentType*: ContentType
-  data*: string
-  isStandard*: bool ## Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-  url*: string
-  coverImageUrl*: string ## Cover image url.
-  coverImageContentType*: CoverImageContentType ## Content type for cover image Base64.
-  coverImageData*: string ## Cover image Base64.
-  mediaId*: string
-  items*: seq[PinMediaSourceImagesURL_items_inner] ## Array with image objects.
-  index*: int
-  isAffiliateLink*: bool ## This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
+  case kind*: PinMediaSourceKind
+  of PinMediaSourceKind.PinMediaSourceImageBase64Variant:
+    PinMediaSourceImageBase64Value*: PinMediaSourceImageBase64
+  of PinMediaSourceKind.PinMediaSourceImageURLVariant:
+    PinMediaSourceImageURLValue*: PinMediaSourceImageURL
+  of PinMediaSourceKind.PinMediaSourceVideoIDVariant:
+    PinMediaSourceVideoIDValue*: PinMediaSourceVideoID
+  of PinMediaSourceKind.PinMediaSourceImagesBase64Variant:
+    PinMediaSourceImagesBase64Value*: PinMediaSourceImagesBase64
+  of PinMediaSourceKind.PinMediaSourceImagesURLVariant:
+    PinMediaSourceImagesURLValue*: PinMediaSourceImagesURL
+  of PinMediaSourceKind.PinMediaSourcePinURLVariant:
+    PinMediaSourcePinURLValue*: PinMediaSourcePinURL
 
-func `%`*(v: SourceType): JsonNode =
-  let str = case v:
-    of SourceType.PinUrl: "pin_url"
+proc to*(node: JsonNode, T: typedesc[PinMediaSource]): PinMediaSource =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return PinMediaSource(kind: PinMediaSourceKind.PinMediaSourceImageBase64Variant, PinMediaSourceImageBase64Value: to(node, PinMediaSourceImageBase64))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as PinMediaSourceImageBase64: ", e.msg
+  try:
+    return PinMediaSource(kind: PinMediaSourceKind.PinMediaSourceImageURLVariant, PinMediaSourceImageURLValue: to(node, PinMediaSourceImageURL))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as PinMediaSourceImageURL: ", e.msg
+  try:
+    return PinMediaSource(kind: PinMediaSourceKind.PinMediaSourceVideoIDVariant, PinMediaSourceVideoIDValue: to(node, PinMediaSourceVideoID))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as PinMediaSourceVideoID: ", e.msg
+  try:
+    return PinMediaSource(kind: PinMediaSourceKind.PinMediaSourceImagesBase64Variant, PinMediaSourceImagesBase64Value: to(node, PinMediaSourceImagesBase64))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as PinMediaSourceImagesBase64: ", e.msg
+  try:
+    return PinMediaSource(kind: PinMediaSourceKind.PinMediaSourceImagesURLVariant, PinMediaSourceImagesURLValue: to(node, PinMediaSourceImagesURL))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as PinMediaSourceImagesURL: ", e.msg
+  try:
+    return PinMediaSource(kind: PinMediaSourceKind.PinMediaSourcePinURLVariant, PinMediaSourcePinURLValue: to(node, PinMediaSourcePinURL))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as PinMediaSourcePinURL: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of PinMediaSource. JSON: " & $node)
 
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: SourceType): string =
-  result = case v:
-    of SourceType.PinUrl: "pin_url"
-
-func `%`*(v: ContentType): JsonNode =
-  let str = case v:
-    of ContentType.ImageJpeg: "image/jpeg"
-    of ContentType.ImagePng: "image/png"
-
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: ContentType): string =
-  result = case v:
-    of ContentType.ImageJpeg: "image/jpeg"
-    of ContentType.ImagePng: "image/png"
-
-func `%`*(v: CoverImageContentType): JsonNode =
-  let str = case v:
-    of CoverImageContentType.ImageJpeg: "image/jpeg"
-    of CoverImageContentType.ImagePng: "image/png"
-
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: CoverImageContentType): string =
-  result = case v:
-    of CoverImageContentType.ImageJpeg: "image/jpeg"
-    of CoverImageContentType.ImagePng: "image/png"

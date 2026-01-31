@@ -9,7 +9,43 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type ProductGroupSummaryStatus* = object
-  ## Summary status for product group
+type ProductGroupSummaryStatus* {.pure.} = enum
+  RUNNING
+  PAUSED
+  EXCLUDED
+  ARCHIVED
+
+func `%`*(v: ProductGroupSummaryStatus): JsonNode =
+  result = case v:
+    of ProductGroupSummaryStatus.RUNNING: %"RUNNING"
+    of ProductGroupSummaryStatus.PAUSED: %"PAUSED"
+    of ProductGroupSummaryStatus.EXCLUDED: %"EXCLUDED"
+    of ProductGroupSummaryStatus.ARCHIVED: %"ARCHIVED"
+
+func `$`*(v: ProductGroupSummaryStatus): string =
+  result = case v:
+    of ProductGroupSummaryStatus.RUNNING: $("RUNNING")
+    of ProductGroupSummaryStatus.PAUSED: $("PAUSED")
+    of ProductGroupSummaryStatus.EXCLUDED: $("EXCLUDED")
+    of ProductGroupSummaryStatus.ARCHIVED: $("ARCHIVED")
+
+proc to*(node: JsonNode, T: typedesc[ProductGroupSummaryStatus]): ProductGroupSummaryStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ProductGroupSummaryStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RUNNING"):
+    return ProductGroupSummaryStatus.RUNNING
+  of $("PAUSED"):
+    return ProductGroupSummaryStatus.PAUSED
+  of $("EXCLUDED"):
+    return ProductGroupSummaryStatus.EXCLUDED
+  of $("ARCHIVED"):
+    return ProductGroupSummaryStatus.ARCHIVED
+  else:
+    raise newException(ValueError, "Invalid enum value for ProductGroupSummaryStatus: " & strVal)
+

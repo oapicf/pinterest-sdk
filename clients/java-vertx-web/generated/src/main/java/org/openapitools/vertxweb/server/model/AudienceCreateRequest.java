@@ -3,8 +3,9 @@ package org.openapitools.vertxweb.server.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.openapitools.vertxweb.server.model.AudienceCreateRequest1AudienceType;
+import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.vertxweb.server.model.AudienceRule;
+import org.openapitools.vertxweb.server.model.AudienceType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AudienceCreateRequest   {
@@ -13,13 +14,13 @@ public class AudienceCreateRequest   {
   private String name;
   private AudienceRule rule;
   private String description;
-  private AudienceCreateRequest1AudienceType audienceType;
+  private AudienceType audienceType;
 
   public AudienceCreateRequest () {
 
   }
 
-  public AudienceCreateRequest (String adAccountId, String name, AudienceRule rule, String description, AudienceCreateRequest1AudienceType audienceType) {
+  public AudienceCreateRequest (String adAccountId, String name, AudienceRule rule, String description, AudienceType audienceType) {
     this.adAccountId = adAccountId;
     this.name = name;
     this.rule = rule;
@@ -65,10 +66,10 @@ public class AudienceCreateRequest   {
 
     
   @JsonProperty("audience_type")
-  public AudienceCreateRequest1AudienceType getAudienceType() {
+  public AudienceType getAudienceType() {
     return audienceType;
   }
-  public void setAudienceType(AudienceCreateRequest1AudienceType audienceType) {
+  public void setAudienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
   }
 

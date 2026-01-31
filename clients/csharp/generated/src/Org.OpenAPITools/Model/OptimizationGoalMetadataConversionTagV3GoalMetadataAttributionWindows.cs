@@ -155,16 +155,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "click_window_days":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                clickWindowDays = new Option<int?>(utf8JsonReader.GetInt32());
+                            clickWindowDays = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "engagement_window_days":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                engagementWindowDays = new Option<int?>(utf8JsonReader.GetInt32());
+                            engagementWindowDays = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "view_window_days":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                viewWindowDays = new Option<int?>(utf8JsonReader.GetInt32());
+                            viewWindowDays = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

@@ -1,7 +1,7 @@
 /*
  * oauth_access_token_request_refresh.h
  *
- * A request to exchange a refresh token for a new access token.
+ * 
  */
 
 #ifndef _oauth_access_token_request_refresh_H_
@@ -27,19 +27,19 @@ pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e oauth_access_t
 
 
 typedef struct oauth_access_token_request_refresh_t {
-    pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_type; //enum
     char *refresh_token; // string
     char *scope; // string
     int refresh_on; //boolean
+    pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } oauth_access_token_request_refresh_t;
 
 __attribute__((deprecated)) oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_create(
-    pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_type,
     char *refresh_token,
     char *scope,
-    int refresh_on
+    int refresh_on,
+    pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_type
 );
 
 void oauth_access_token_request_refresh_free(oauth_access_token_request_refresh_t *oauth_access_token_request_refresh);

@@ -203,8 +203,11 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["user_accounts:read"]);
         }
 
+
+        let urlPath = `/user_account/following/boards`;
+
         const response = await this.request({
-            path: `/user_account/following/boards`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -252,8 +255,12 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["user_accounts:write"]);
         }
 
+
+        let urlPath = `/user_account/following/{username}`;
+        urlPath = urlPath.replace(`{${"username"}}`, encodeURIComponent(String(requestParameters['username'])));
+
         const response = await this.request({
-            path: `/user_account/following/{username}`.replace(`{${"username"}}`, encodeURIComponent(String(requestParameters['username']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -299,8 +306,11 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["user_accounts:read"]);
         }
 
+
+        let urlPath = `/user_account/followers`;
+
         const response = await this.request({
-            path: `/user_account/followers`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -337,8 +347,11 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["user_accounts:read"]);
         }
 
+
+        let urlPath = `/user_account/businesses`;
+
         const response = await this.request({
-            path: `/user_account/businesses`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -381,8 +394,11 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["user_accounts:write"]);
         }
 
+
+        let urlPath = `/user_account/websites`;
+
         const response = await this.request({
-            path: `/user_account/websites`,
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -467,8 +483,11 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["user_accounts:read"]);
         }
 
+
+        let urlPath = `/user_account/analytics`;
+
         const response = await this.request({
-            path: `/user_account/analytics`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -574,8 +593,11 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["pins:read", "user_accounts:read"]);
         }
 
+
+        let urlPath = `/user_account/analytics/top_pins`;
+
         const response = await this.request({
-            path: `/user_account/analytics/top_pins`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -681,8 +703,11 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["pins:read", "user_accounts:read"]);
         }
 
+
+        let urlPath = `/user_account/analytics/top_video_pins`;
+
         const response = await this.request({
-            path: `/user_account/analytics/top_video_pins`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -734,8 +759,12 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["user_accounts:read"]);
         }
 
+
+        let urlPath = `/users/{username}/interests/follow`;
+        urlPath = urlPath.replace(`{${"username"}}`, encodeURIComponent(String(requestParameters['username'])));
+
         const response = await this.request({
-            path: `/users/{username}/interests/follow`.replace(`{${"username"}}`, encodeURIComponent(String(requestParameters['username']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -776,8 +805,11 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["user_accounts:read"]);
         }
 
+
+        let urlPath = `/user_account`;
+
         const response = await this.request({
-            path: `/user_account`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -834,8 +866,11 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["user_accounts:read"]);
         }
 
+
+        let urlPath = `/user_account/following`;
+
         const response = await this.request({
-            path: `/user_account/following`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -875,8 +910,11 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["user_accounts:read"]);
         }
 
+
+        let urlPath = `/user_account/websites`;
+
         const response = await this.request({
-            path: `/user_account/websites`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -921,8 +959,11 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["user_accounts:write"]);
         }
 
+
+        let urlPath = `/user_account/websites`;
+
         const response = await this.request({
-            path: `/user_account/websites`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -964,8 +1005,11 @@ export class UserAccountApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["user_accounts:read"]);
         }
 
+
+        let urlPath = `/user_account/websites/verification`;
+
         const response = await this.request({
-            path: `/user_account/websites/verification`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

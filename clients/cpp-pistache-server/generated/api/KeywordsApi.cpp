@@ -23,8 +23,7 @@ const std::string KeywordsApi::base = "/v5";
 
 KeywordsApi::KeywordsApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
-{
-}
+{}
 
 void KeywordsApi::init() {
     setupRoutes();
@@ -43,14 +42,12 @@ void KeywordsApi::setupRoutes() {
     router->addCustomHandler(Routes::bind(&KeywordsApi::keywords_api_default_handler, this));
 }
 
-void KeywordsApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void KeywordsApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleParsingException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> KeywordsApi::handleParsingException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> KeywordsApi::handleParsingException(const std::exception& ex) const noexcept {
     try {
         throw;
     } catch (nlohmann::detail::exception &e) {
@@ -62,257 +59,412 @@ std::pair<Pistache::Http::Code, std::string> KeywordsApi::handleParsingException
     }
 }
 
-void KeywordsApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void KeywordsApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleOperationException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> KeywordsApi::handleOperationException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> KeywordsApi::handleOperationException(const std::exception& ex) const noexcept {
     return std::make_pair(Pistache::Http::Code::Internal_Server_Error, ex.what());
 }
 
-void KeywordsApi::country_keywords_metrics_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+void KeywordsApi::country_keywords_metrics_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
-    
-    // Getting the query params
-    auto countryCodeQuery = request.query().get("country_code");
-    std::optional<std::string> countryCode;
-    if(countryCodeQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(countryCodeQuery.value(), valueQuery_instance)){
-            countryCode = valueQuery_instance;
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto countryCodeQuery = request.query().get("country_code");
+        std::optional<std::string> countryCode;
+        if (countryCodeQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(countryCodeQuery.value(), valueQuery_instance)) {
+                countryCode = valueQuery_instance;
+            }
         }
-    }
-    auto keywordsQuery = request.query().get("keywords");
-    std::optional<std::vector<std::string>> keywords;
-    if(keywordsQuery.has_value()){
-        std::vector<std::string> valueQuery_instance;
-        if(fromStringValue(keywordsQuery.value(), valueQuery_instance)){
-            keywords = valueQuery_instance;
+        auto keywordsQuery = request.query().get("keywords");
+        std::optional<std::vector<std::string>> keywords;
+        if (keywordsQuery.has_value()) {
+            std::vector<std::string> valueQuery_instance;
+            if (fromStringValue(keywordsQuery.value(), valueQuery_instance)) {
+                keywords = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->country_keywords_metrics_get(adAccountId, countryCode, keywords, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
 
-    } catch (std::exception &e) {
-        response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
-    }
 
-}
-void KeywordsApi::keywords_create_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
-    try {
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
-    
-    // Getting the body param
-    
-    KeywordsRequest keywordsRequest;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(keywordsRequest);
-        keywordsRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->keywords_create(adAccountId, keywordsRequest, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+
+            this->country_keywords_metrics_get(adAccountId, countryCode, keywords, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/keywords/metrics" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void KeywordsApi::keywords_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void KeywordsApi::keywords_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        // Getting the body param
+        
+        KeywordsRequest keywordsRequest;
+        
+        
+        
     
-    // Getting the query params
-    auto campaignIdQuery = request.query().get("campaign_id");
-    std::optional<std::string> campaignId;
-    if(campaignIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(campaignIdQuery.value(), valueQuery_instance)){
-            campaignId = valueQuery_instance;
+
+        try {
+            nlohmann::json::parse(request.body()).get_to(keywordsRequest);
+            keywordsRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
         }
-    }
-    auto adGroupIdQuery = request.query().get("ad_group_id");
-    std::optional<std::string> adGroupId;
-    if(adGroupIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adGroupIdQuery.value(), valueQuery_instance)){
-            adGroupId = valueQuery_instance;
-        }
-    }
-    auto matchTypesQuery = request.query().get("match_types");
-    std::optional<std::vector<MatchType>> matchTypes;
-    if(matchTypesQuery.has_value()){
-        std::vector<MatchType> valueQuery_instance;
-        if(fromStringValue(matchTypesQuery.value(), valueQuery_instance)){
-            matchTypes = valueQuery_instance;
-        }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
-        }
-    }
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->keywords_get(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->keywords_create(adAccountId, keywordsRequest, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/keywords" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void KeywordsApi::keywords_update_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void KeywordsApi::keywords_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto adAccountId = request.param(":adAccountId").as<std::string>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto campaignIdQuery = request.query().get("campaign_id");
+        std::optional<std::string> campaignId;
+        if (campaignIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(campaignIdQuery.value(), valueQuery_instance)) {
+                campaignId = valueQuery_instance;
+            }
+        }
+        auto adGroupIdQuery = request.query().get("ad_group_id");
+        std::optional<std::string> adGroupId;
+        if (adGroupIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adGroupIdQuery.value(), valueQuery_instance)) {
+                adGroupId = valueQuery_instance;
+            }
+        }
+        auto matchTypesQuery = request.query().get("match_types");
+        std::optional<std::vector<MatchType>> matchTypes;
+        if (matchTypesQuery.has_value()) {
+            std::vector<MatchType> valueQuery_instance;
+            if (fromStringValue(matchTypesQuery.value(), valueQuery_instance)) {
+                matchTypes = valueQuery_instance;
+            }
+        }
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
+        }
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
+        }
     
-    // Getting the body param
-    
-    KeywordUpdateBody keywordUpdateBody;
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(keywordUpdateBody);
-        keywordUpdateBody.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->keywords_update(adAccountId, keywordUpdateBody, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->keywords_get(adAccountId, campaignId, adGroupId, matchTypes, pageSize, bookmark, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/keywords" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void KeywordsApi::trending_keywords_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void KeywordsApi::keywords_update_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto region = request.param(":region").as<TrendsSupportedRegion>();
-    auto trendType = request.param(":trendType").as<TrendType>();
+        // Getting the path params
+        auto adAccountId = request.param(":adAccountId").as<std::string>();
+        
+        // Getting the body param
+        
+        KeywordUpdateBody keywordUpdateBody;
+        
+        
+        
     
-    // Getting the query params
-    auto interestsQuery = request.query().get("interests");
-    std::optional<std::vector<std::string>> interests;
-    if(interestsQuery.has_value()){
-        std::vector<std::string> valueQuery_instance;
-        if(fromStringValue(interestsQuery.value(), valueQuery_instance)){
-            interests = valueQuery_instance;
+
+        try {
+            nlohmann::json::parse(request.body()).get_to(keywordUpdateBody);
+            keywordUpdateBody.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
         }
-    }
-    auto gendersQuery = request.query().get("genders");
-    std::optional<std::vector<std::string>> genders;
-    if(gendersQuery.has_value()){
-        std::vector<std::string> valueQuery_instance;
-        if(fromStringValue(gendersQuery.value(), valueQuery_instance)){
-            genders = valueQuery_instance;
-        }
-    }
-    auto agesQuery = request.query().get("ages");
-    std::optional<std::vector<std::string>> ages;
-    if(agesQuery.has_value()){
-        std::vector<std::string> valueQuery_instance;
-        if(fromStringValue(agesQuery.value(), valueQuery_instance)){
-            ages = valueQuery_instance;
-        }
-    }
-    auto includeKeywordsQuery = request.query().get("include_keywords");
-    std::optional<std::vector<std::string>> includeKeywords;
-    if(includeKeywordsQuery.has_value()){
-        std::vector<std::string> valueQuery_instance;
-        if(fromStringValue(includeKeywordsQuery.value(), valueQuery_instance)){
-            includeKeywords = valueQuery_instance;
-        }
-    }
-    auto normalizeAgainstGroupQuery = request.query().get("normalize_against_group");
-    std::optional<bool> normalizeAgainstGroup;
-    if(normalizeAgainstGroupQuery.has_value()){
-        bool valueQuery_instance;
-        if(fromStringValue(normalizeAgainstGroupQuery.value(), valueQuery_instance)){
-            normalizeAgainstGroup = valueQuery_instance;
-        }
-    }
-    auto limitQuery = request.query().get("limit");
-    std::optional<int32_t> limit;
-    if(limitQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(limitQuery.value(), valueQuery_instance)){
-            limit = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->trending_keywords_list(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->keywords_update(adAccountId, keywordUpdateBody, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/ad_accounts/:ad_account_id/keywords" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
+
+void KeywordsApi::trending_keywords_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
+    try {
+
+        // Getting the path params
+        auto region = request.param(":region").as<TrendsSupportedRegion>();
+        auto trendType = request.param(":trendType").as<TrendType>();
+        
+        
+        // Getting the query params
+        auto interestsQuery = request.query().get("interests");
+        std::optional<std::vector<std::string>> interests;
+        if (interestsQuery.has_value()) {
+            std::vector<std::string> valueQuery_instance;
+            if (fromStringValue(interestsQuery.value(), valueQuery_instance)) {
+                interests = valueQuery_instance;
+            }
+        }
+        auto gendersQuery = request.query().get("genders");
+        std::optional<std::vector<std::string>> genders;
+        if (gendersQuery.has_value()) {
+            std::vector<std::string> valueQuery_instance;
+            if (fromStringValue(gendersQuery.value(), valueQuery_instance)) {
+                genders = valueQuery_instance;
+            }
+        }
+        auto agesQuery = request.query().get("ages");
+        std::optional<std::vector<std::string>> ages;
+        if (agesQuery.has_value()) {
+            std::vector<std::string> valueQuery_instance;
+            if (fromStringValue(agesQuery.value(), valueQuery_instance)) {
+                ages = valueQuery_instance;
+            }
+        }
+        auto includeKeywordsQuery = request.query().get("include_keywords");
+        std::optional<std::vector<std::string>> includeKeywords;
+        if (includeKeywordsQuery.has_value()) {
+            std::vector<std::string> valueQuery_instance;
+            if (fromStringValue(includeKeywordsQuery.value(), valueQuery_instance)) {
+                includeKeywords = valueQuery_instance;
+            }
+        }
+        auto normalizeAgainstGroupQuery = request.query().get("normalize_against_group");
+        std::optional<bool> normalizeAgainstGroup;
+        if (normalizeAgainstGroupQuery.has_value()) {
+            bool valueQuery_instance;
+            if (fromStringValue(normalizeAgainstGroupQuery.value(), valueQuery_instance)) {
+                normalizeAgainstGroup = valueQuery_instance;
+            }
+        }
+        auto limitQuery = request.query().get("limit");
+        std::optional<int32_t> limit;
+        if (limitQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(limitQuery.value(), valueQuery_instance)) {
+                limit = valueQuery_instance;
+            }
+        }
+    
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->trending_keywords_list(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
+
+    } catch (std::exception &e) {
+        response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
+    }
+
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/trends/keywords/:region/top/:trend_type" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
+}
+
 
 void KeywordsApi::keywords_api_default_handler(const Pistache::Rest::Request &, Pistache::Http::ResponseWriter response) {
     response.send(Pistache::Http::Code::Not_Found, "The requested method does not exist");

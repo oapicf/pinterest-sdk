@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type VerificationMethod* {.pure.} = enum
@@ -18,19 +20,49 @@ type VerificationMethod* {.pure.} = enum
 
 type UserWebsiteVerifyRequest* = object
   ## User website verification request
-  website*: string
-  verificationMethod*: VerificationMethod
+  website*: Option[string]
+  verificationMethod*: Option[VerificationMethod]
 
 func `%`*(v: VerificationMethod): JsonNode =
-  let str = case v:
-    of VerificationMethod.FILENAME: "FILENAME"
-    of VerificationMethod.METATAG: "METATAG"
-    of VerificationMethod.DNSTXT: "DNSTXT"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of VerificationMethod.FILENAME: %"FILENAME"
+    of VerificationMethod.METATAG: %"METATAG"
+    of VerificationMethod.DNSTXT: %"DNSTXT"
 func `$`*(v: VerificationMethod): string =
   result = case v:
-    of VerificationMethod.FILENAME: "FILENAME"
-    of VerificationMethod.METATAG: "METATAG"
-    of VerificationMethod.DNSTXT: "DNSTXT"
+    of VerificationMethod.FILENAME: $("FILENAME")
+    of VerificationMethod.METATAG: $("METATAG")
+    of VerificationMethod.DNSTXT: $("DNSTXT")
+
+proc to*(node: JsonNode, T: typedesc[VerificationMethod]): VerificationMethod =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum VerificationMethod, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("FILENAME"):
+    return VerificationMethod.FILENAME
+  of $("METATAG"):
+    return VerificationMethod.METATAG
+  of $("DNSTXT"):
+    return VerificationMethod.DNSTXT
+  else:
+    raise newException(ValueError, "Invalid enum value for VerificationMethod: " & strVal)
+
+
+# Custom JSON deserialization for UserWebsiteVerifyRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[UserWebsiteVerifyRequest]): UserWebsiteVerifyRequest =
+  result = UserWebsiteVerifyRequest()
+  if node.kind == JObject:
+    if node.hasKey("website") and node["website"].kind != JNull:
+      result.website = some(to(node["website"], typeof(result.website.get())))
+    if node.hasKey("verification_method") and node["verification_method"].kind != JNull:
+      result.verificationMethod = some(to(node["verification_method"], VerificationMethod))
+
+# Custom JSON serialization for UserWebsiteVerifyRequest with custom field names
+proc `%`*(obj: UserWebsiteVerifyRequest): JsonNode =
+  result = newJObject()
+  if obj.website.isSome():
+    result["website"] = %obj.website.get()
+  if obj.verificationMethod.isSome():
+    result["verification_method"] = %obj.verificationMethod.get()
+

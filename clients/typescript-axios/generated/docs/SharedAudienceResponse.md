@@ -1,0 +1,24 @@
+# SharedAudienceResponse
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**audience_id** | **string** | Audience ID that was shared | [optional] [default to undefined]
+**permissions** | [**Array&lt;Role&gt;**](Role.md) |  | [optional] [default to undefined]
+**recipient_account_ids** | **Array&lt;string&gt;** | Account IDs that received the audience | [optional] [default to undefined]
+
+## Example
+
+```typescript
+import { SharedAudienceResponse } from './api';
+
+const instance: SharedAudienceResponse = {
+    audience_id,
+    permissions,
+    recipient_account_ids,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  * OrderLine
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OrderLine {
 
   private @Nullable String id;
@@ -67,7 +67,7 @@ public class OrderLine {
     this.campaignIds = campaignIds;
   }
 
-  public OrderLine id(String id) {
+  public OrderLine id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -79,15 +79,15 @@ public class OrderLine {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "2680059592705", description = "Order line ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public OrderLine type(String type) {
+  public OrderLine type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -99,15 +99,15 @@ public class OrderLine {
   
   @Schema(name = "type", example = "orderline", description = "Always \"orderline\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public String getType() {
+  public @Nullable String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
-  public OrderLine adAccountId(String adAccountId) {
+  public OrderLine adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -119,11 +119,11 @@ public class OrderLine {
   
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
@@ -147,7 +147,7 @@ public class OrderLine {
     this.purchaseOrderId = purchaseOrderId;
   }
 
-  public OrderLine startTime(BigDecimal startTime) {
+  public OrderLine startTime(@Nullable BigDecimal startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -159,11 +159,11 @@ public class OrderLine {
   @Valid 
   @Schema(name = "start_time", example = "1452208622", description = "Start time. Unix timestamp.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_time")
-  public BigDecimal getStartTime() {
+  public @Nullable BigDecimal getStartTime() {
     return startTime;
   }
 
-  public void setStartTime(BigDecimal startTime) {
+  public void setStartTime(@Nullable BigDecimal startTime) {
     this.startTime = startTime;
   }
 
@@ -227,7 +227,7 @@ public class OrderLine {
     this.paidBudget = paidBudget;
   }
 
-  public OrderLine status(OrderLineStatus status) {
+  public OrderLine status(@Nullable OrderLineStatus status) {
     this.status = status;
     return this;
   }
@@ -239,11 +239,11 @@ public class OrderLine {
   @Valid 
   @Schema(name = "status", description = "Order line status.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public OrderLineStatus getStatus() {
+  public @Nullable OrderLineStatus getStatus() {
     return status;
   }
 
-  public void setStatus(OrderLineStatus status) {
+  public void setStatus(@Nullable OrderLineStatus status) {
     this.status = status;
   }
 

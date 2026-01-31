@@ -73,7 +73,7 @@ data class CampaignCreateCommon(
 
     @Schema(example = "true", description = "Specifies whether the campaign was created in the automated campaign flow")
     @get:JsonProperty("is_automated_campaign") val isAutomatedCampaign: kotlin.Boolean? = null
-    ) {
+) {
 
 }
 

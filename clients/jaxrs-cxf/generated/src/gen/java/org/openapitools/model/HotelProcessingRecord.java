@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,39 +10,47 @@ import org.openapitools.model.ItemValidationEvent;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object describing an item processing record
- **/
+ * Object describing an item processing record
+ */
 @ApiModel(description="Object describing an item processing record")
 
 public class HotelProcessingRecord  {
   
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
  /**
-   * The catalog hotel id in the merchant namespace
-  **/
+  * The catalog hotel id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
+
   private String hotelId;
 
-  @ApiModelProperty(value = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
-  @Valid
  /**
-   * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
-  **/
+  * Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
+  */
+  @ApiModelProperty(value = "Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.")
+
+  @Valid
+
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
-  @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
-  @Valid
  /**
-   * Array with the validation warnings for the item processing record
-  **/
+  * Array with the validation warnings for the item processing record
+  */
+  @ApiModelProperty(value = "Array with the validation warnings for the item processing record")
+
+  @Valid
+
   private List<@Valid ItemValidationEvent> warnings = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private ItemProcessingStatus status;
  /**
    * The catalog hotel id in the merchant namespace

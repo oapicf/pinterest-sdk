@@ -12,14 +12,10 @@
 /**
  * bid option field to apply operation updates to
  */
-export type UpdateMaskBidOptionField = 'BID' | 'APP_TYPE_BID_MULTIPLIER_SET' | 'PLACEMENT_BID_MULTIPLIER_SET';
-
 export const UpdateMaskBidOptionField = {
-
-    Bid: 'BID' as UpdateMaskBidOptionField,
-
-    AppTypeBidMultiplierSet: 'APP_TYPE_BID_MULTIPLIER_SET' as UpdateMaskBidOptionField,
-
-    PlacementBidMultiplierSet: 'PLACEMENT_BID_MULTIPLIER_SET' as UpdateMaskBidOptionField
-};
+    Bid: 'BID',
+    AppTypeBidMultiplierSet: 'APP_TYPE_BID_MULTIPLIER_SET',
+    PlacementBidMultiplierSet: 'PLACEMENT_BID_MULTIPLIER_SET'
+} as const;
+export type UpdateMaskBidOptionField = typeof UpdateMaskBidOptionField[keyof typeof UpdateMaskBidOptionField];
 

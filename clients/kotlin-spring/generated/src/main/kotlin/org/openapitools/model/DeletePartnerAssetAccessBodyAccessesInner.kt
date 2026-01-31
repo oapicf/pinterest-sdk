@@ -35,7 +35,7 @@ data class DeletePartnerAssetAccessBodyAccessesInner(
 
     @Schema(example = "INTERNAL", description = "If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.")
     @get:JsonProperty("partner_type") val partnerType: DeletePartnerAssetAccessBodyAccessesInner.PartnerType? = PartnerType.INTERNAL
-    ) {
+) {
 
     /**
     * If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
@@ -50,7 +50,8 @@ data class DeletePartnerAssetAccessBodyAccessesInner(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): PartnerType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'DeletePartnerAssetAccessBodyAccessesInner'")
             }
         }
     }

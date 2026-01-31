@@ -9,10 +9,37 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_advanced_auction_item
 
 type AdvancedAuctionItems* = object
   ## Response object containing item bid options
-  catalogId*: string ## Response object of item bid options
-  items*: seq[AdvancedAuctionItem] ## Array with item bid options
+  catalogId*: Option[string] ## Response object of item bid options
+  items*: Option[seq[AdvancedAuctionItem]] ## Array with item bid options
+
+
+# Custom JSON deserialization for AdvancedAuctionItems with custom field names
+proc to*(node: JsonNode, T: typedesc[AdvancedAuctionItems]): AdvancedAuctionItems =
+  result = AdvancedAuctionItems()
+  if node.kind == JObject:
+    if node.hasKey("catalog_id") and node["catalog_id"].kind != JNull:
+      result.catalogId = some(to(node["catalog_id"], typeof(result.catalogId.get())))
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[AdvancedAuctionItem] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, AdvancedAuctionItem))
+        result.items = some(arr)
+
+# Custom JSON serialization for AdvancedAuctionItems with custom field names
+proc `%`*(obj: AdvancedAuctionItems): JsonNode =
+  result = newJObject()
+  if obj.catalogId.isSome():
+    result["catalog_id"] = %obj.catalogId.get()
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

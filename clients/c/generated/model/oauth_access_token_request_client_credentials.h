@@ -1,7 +1,7 @@
 /*
  * oauth_access_token_request_client_credentials.h
  *
- * A request to receive a client token.
+ * 
  */
 
 #ifndef _oauth_access_token_request_client_credentials_H_
@@ -27,15 +27,15 @@ pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_e oau
 
 
 typedef struct oauth_access_token_request_client_credentials_t {
-    pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_e grant_type; //enum
     char *scope; // string
+    pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_e grant_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } oauth_access_token_request_client_credentials_t;
 
 __attribute__((deprecated)) oauth_access_token_request_client_credentials_t *oauth_access_token_request_client_credentials_create(
-    pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_e grant_type,
-    char *scope
+    char *scope,
+    pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_e grant_type
 );
 
 void oauth_access_token_request_client_credentials_free(oauth_access_token_request_client_credentials_t *oauth_access_token_request_client_credentials);

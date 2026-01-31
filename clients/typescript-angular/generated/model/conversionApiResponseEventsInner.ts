@@ -24,11 +24,11 @@ export interface ConversionApiResponseEventsInner {
     warning_message?: string | null;
 }
 export namespace ConversionApiResponseEventsInner {
-    export type StatusEnum = 'failed' | 'processed';
     export const StatusEnum = {
-        Failed: 'failed' as StatusEnum,
-        Processed: 'processed' as StatusEnum
-    };
+        Failed: 'failed',
+        Processed: 'processed'
+    } as const;
+    export type StatusEnum = typeof StatusEnum[keyof typeof StatusEnum];
 }
 
 

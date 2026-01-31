@@ -39,7 +39,7 @@ data class CreateMembershipOrPartnershipInvitesBody(
     @get:Size(min=1,max=50) 
     @Schema(example = "[\"809944451643622187\",\"766456567741825556\"]", description = "A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST")
     @get:JsonProperty("partners") val partners: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
     /**
     * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
@@ -55,7 +55,8 @@ data class CreateMembershipOrPartnershipInvitesBody(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): BusinessRole {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CreateMembershipOrPartnershipInvitesBody'")
             }
         }
     }

@@ -143,8 +143,7 @@ namespace Org.OpenAPITools.Model
                             term = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "related_terms":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                relatedTerms = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            relatedTerms = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

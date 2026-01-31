@@ -130,6 +130,9 @@ MediaApi <- R6::R6Class(
         stop("Missing required parameter `media_upload_request`.")
       }
 
+      if (!missing(`media_upload_request`) && is.null(`media_upload_request`)) {
+        stop("Invalid value for `media_upload_request` when calling MediaApi$MediaCreate, `media_upload_request` is not nullable")
+      }
 
       if (!is.null(`media_upload_request`)) {
         local_var_body <- `media_upload_request`$toJSONString()
@@ -233,7 +236,10 @@ MediaApi <- R6::R6Class(
         stop("Missing required parameter `media_id`.")
       }
 
-      if (!str_detect(`media_id`, "^\\d+$")) {
+      if (!missing(`media_id`) && is.null(`media_id`)) {
+        stop("Invalid value for `media_id` when calling MediaApi$MediaGet, `media_id` is not nullable")
+      }
+      if (!is.null(`media_id`) && !stringr::str_detect(`media_id`, "^\\d+$")) {
         stop("Invalid value for `media_id` when calling MediaApi$MediaGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -335,11 +341,17 @@ MediaApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling MediaApi$MediaList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling MediaApi$MediaList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling MediaApi$MediaList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling MediaApi$MediaList, must be bigger than or equal to 1.")
       }
 

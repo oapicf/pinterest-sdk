@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * Account
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Account {
 
   /**
@@ -34,7 +34,7 @@ public class Account {
     
     BUSINESS("BUSINESS");
 
-    private String value;
+    private final String value;
 
     AccountTypeEnum(String value) {
       this.value = value;
@@ -85,7 +85,7 @@ public class Account {
 
   private JsonNullable<Integer> monthlyViews = JsonNullable.<Integer>undefined();
 
-  public Account accountType(AccountTypeEnum accountType) {
+  public Account accountType(@Nullable AccountTypeEnum accountType) {
     this.accountType = accountType;
     return this;
   }
@@ -97,15 +97,15 @@ public class Account {
   
   @Schema(name = "account_type", description = "Type of account", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("account_type")
-  public AccountTypeEnum getAccountType() {
+  public @Nullable AccountTypeEnum getAccountType() {
     return accountType;
   }
 
-  public void setAccountType(AccountTypeEnum accountType) {
+  public void setAccountType(@Nullable AccountTypeEnum accountType) {
     this.accountType = accountType;
   }
 
-  public Account id(String id) {
+  public Account id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -117,15 +117,15 @@ public class Account {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "2783136121146311751", description = "User account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public Account profileImage(String profileImage) {
+  public Account profileImage(@Nullable String profileImage) {
     this.profileImage = profileImage;
     return this;
   }
@@ -137,15 +137,15 @@ public class Account {
   
   @Schema(name = "profile_image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("profile_image")
-  public String getProfileImage() {
+  public @Nullable String getProfileImage() {
     return profileImage;
   }
 
-  public void setProfileImage(String profileImage) {
+  public void setProfileImage(@Nullable String profileImage) {
     this.profileImage = profileImage;
   }
 
-  public Account websiteUrl(String websiteUrl) {
+  public Account websiteUrl(@Nullable String websiteUrl) {
     this.websiteUrl = websiteUrl;
     return this;
   }
@@ -157,15 +157,15 @@ public class Account {
   
   @Schema(name = "website_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("website_url")
-  public String getWebsiteUrl() {
+  public @Nullable String getWebsiteUrl() {
     return websiteUrl;
   }
 
-  public void setWebsiteUrl(String websiteUrl) {
+  public void setWebsiteUrl(@Nullable String websiteUrl) {
     this.websiteUrl = websiteUrl;
   }
 
-  public Account username(String username) {
+  public Account username(@Nullable String username) {
     this.username = username;
     return this;
   }
@@ -177,15 +177,15 @@ public class Account {
   
   @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("username")
-  public String getUsername() {
+  public @Nullable String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@Nullable String username) {
     this.username = username;
   }
 
-  public Account about(String about) {
+  public Account about(@Nullable String about) {
     this.about = about;
     return this;
   }
@@ -197,11 +197,11 @@ public class Account {
   
   @Schema(name = "about", description = "Profile about description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("about")
-  public String getAbout() {
+  public @Nullable String getAbout() {
     return about;
   }
 
-  public void setAbout(String about) {
+  public void setAbout(@Nullable String about) {
     this.about = about;
   }
 

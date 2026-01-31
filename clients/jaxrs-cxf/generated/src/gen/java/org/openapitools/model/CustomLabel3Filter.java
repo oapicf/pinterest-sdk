@@ -12,7 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CustomLabel3Filter  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3;
  /**
    * Get CUSTOM_LABEL_3

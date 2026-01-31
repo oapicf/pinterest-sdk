@@ -1,25 +1,26 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request body used to cancel invites
- **/
+ * Request body used to cancel invites
+ */
 @ApiModel(description="Request body used to cancel invites")
 
 public class CancelInvitesBody  {
   
-  @ApiModelProperty(example = "[\"1234567890123456789\",\"1122334455667788991\"]", required = true, value = "List of invite/request ids to be cancelled")
  /**
-   * List of invite/request ids to be cancelled
-  **/
+  * List of invite/request ids to be cancelled
+  */
+  @ApiModelProperty(example = "[\"1234567890123456789\",\"1122334455667788991\"]", required = true, value = "List of invite/request ids to be cancelled")
+
   private List<String> inviteIds = new ArrayList<>();
  /**
    * List of invite/request ids to be cancelled

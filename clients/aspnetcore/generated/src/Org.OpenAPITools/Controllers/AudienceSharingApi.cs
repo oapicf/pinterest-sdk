@@ -53,13 +53,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdAccountsAudiencesSharedAccountsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"account_type\" : \"AD_ACCOUNT\",\n    \"account_id\" : \"549755885175\",\n    \"account_name\" : \"Home Depot USA\",\n    \"shared_on_timestamp\" : 1677003860\n  }, {\n    \"account_type\" : \"AD_ACCOUNT\",\n    \"account_id\" : \"549755885175\",\n    \"account_name\" : \"Home Depot USA\",\n    \"shared_on_timestamp\" : 1677003860\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -68,7 +68,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdAccountsAudiencesSharedAccountsList200Response>(exampleJson)
-            : default(AdAccountsAudiencesSharedAccountsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -98,13 +98,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdAccountsAudiencesSharedAccountsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"account_type\" : \"AD_ACCOUNT\",\n    \"account_id\" : \"549755885175\",\n    \"account_name\" : \"Home Depot USA\",\n    \"shared_on_timestamp\" : 1677003860\n  }, {\n    \"account_type\" : \"AD_ACCOUNT\",\n    \"account_id\" : \"549755885175\",\n    \"account_name\" : \"Home Depot USA\",\n    \"shared_on_timestamp\" : 1677003860\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -113,7 +113,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdAccountsAudiencesSharedAccountsList200Response>(exampleJson)
-            : default(AdAccountsAudiencesSharedAccountsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -140,11 +140,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AudiencesList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"size\" : 1000,\n    \"audience_type\" : \"audience_type\",\n    \"updated_timestamp\" : 1451431341,\n    \"name\" : \"ACME Tools\",\n    \"description\" : \"People who love making quilts.\",\n    \"rule\" : {\n      \"country\" : \"US\",\n      \"visitor_source_id\" : \"549755885175\",\n      \"prefill\" : true,\n      \"customer_list_id\" : \"5497558859876\",\n      \"event_source\" : {\n        \"=\" : [ \"web\", \"mobile\" ]\n      },\n      \"objective_type\" : [ \"AWARENESS\" ],\n      \"event_data\" : {\n        \"video_title\" : \"How to style your Parker Boots\",\n        \"page_name\" : \"Our Favorite Pins on Pinterest.\",\n        \"order_quantity\" : 1,\n        \"property\" : \"Athleta\",\n        \"currency\" : \"USD\",\n        \"lead_type\" : \"Newsletter\",\n        \"promo_code\" : \"WINTER10\",\n        \"line_items\" : {\n          \"product_id\" : 1414,\n          \"product_variant\" : \"Red\",\n          \"product_brand\" : \"Parker\",\n          \"product_price\" : \"99.99\",\n          \"product_variant_id\" : \"1414-34832\",\n          \"product_name\" : \"Parker Boots\",\n          \"product_category\" : \"Shoes\",\n          \"product_quantity\" : 2\n        },\n        \"search_query\" : \"boots\",\n        \"order_id\" : \"X-151481\",\n        \"value\" : \"199.98\"\n      },\n      \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ],\n      \"url\" : [ \"url\", \"url\" ],\n      \"ad_account_id\" : \"549755885175\",\n      \"ingestion_source\" : {\n        \"=\" : [ \"tag\" ]\n      },\n      \"ad_id\" : [ \"687201361754\" ],\n      \"retention_days\" : 30,\n      \"engager_type\" : 1,\n      \"engagement_type\" : \"click\",\n      \"percentage\" : 3,\n      \"engagement_domain\" : [ \"www.somedomain.com\" ],\n      \"event\" : \"checkout\",\n      \"pin_id\" : [ \"34567\" ],\n      \"campaign_id\" : [ \"626744528398\" ]\n    },\n    \"created_timestamp\" : 1451431341,\n    \"id\" : \"1234\",\n    \"type\" : \"audience\",\n    \"ad_account_id\" : \"549755885175\",\n    \"status\" : \"status\"\n  }, {\n    \"size\" : 1000,\n    \"audience_type\" : \"audience_type\",\n    \"updated_timestamp\" : 1451431341,\n    \"name\" : \"ACME Tools\",\n    \"description\" : \"People who love making quilts.\",\n    \"rule\" : {\n      \"country\" : \"US\",\n      \"visitor_source_id\" : \"549755885175\",\n      \"prefill\" : true,\n      \"customer_list_id\" : \"5497558859876\",\n      \"event_source\" : {\n        \"=\" : [ \"web\", \"mobile\" ]\n      },\n      \"objective_type\" : [ \"AWARENESS\" ],\n      \"event_data\" : {\n        \"video_title\" : \"How to style your Parker Boots\",\n        \"page_name\" : \"Our Favorite Pins on Pinterest.\",\n        \"order_quantity\" : 1,\n        \"property\" : \"Athleta\",\n        \"currency\" : \"USD\",\n        \"lead_type\" : \"Newsletter\",\n        \"promo_code\" : \"WINTER10\",\n        \"line_items\" : {\n          \"product_id\" : 1414,\n          \"product_variant\" : \"Red\",\n          \"product_brand\" : \"Parker\",\n          \"product_price\" : \"99.99\",\n          \"product_variant_id\" : \"1414-34832\",\n          \"product_name\" : \"Parker Boots\",\n          \"product_category\" : \"Shoes\",\n          \"product_quantity\" : 2\n        },\n        \"search_query\" : \"boots\",\n        \"order_id\" : \"X-151481\",\n        \"value\" : \"199.98\"\n      },\n      \"seed_id\" : [ \"2542620639259\", \"2542620639261\" ],\n      \"url\" : [ \"url\", \"url\" ],\n      \"ad_account_id\" : \"549755885175\",\n      \"ingestion_source\" : {\n        \"=\" : [ \"tag\" ]\n      },\n      \"ad_id\" : [ \"687201361754\" ],\n      \"retention_days\" : 30,\n      \"engager_type\" : 1,\n      \"engagement_type\" : \"click\",\n      \"percentage\" : 3,\n      \"engagement_domain\" : [ \"www.somedomain.com\" ],\n      \"event\" : \"checkout\",\n      \"pin_id\" : [ \"34567\" ],\n      \"campaign_id\" : [ \"626744528398\" ]\n    },\n    \"created_timestamp\" : 1451431341,\n    \"id\" : \"1234\",\n    \"type\" : \"audience\",\n    \"ad_account_id\" : \"549755885175\",\n    \"status\" : \"status\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -152,7 +152,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AudiencesList200Response>(exampleJson)
-            : default(AudiencesList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -178,11 +178,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(SharedAudienceResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"recipient_account_ids\" : [ \"549755885175\" ],\n  \"permissions\" : [ \"RESOURCE_PINNER_LIST_READER\", \"RESOURCE_PINNER_LIST_OWNER\" ],\n  \"audience_id\" : \"2542621871096\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -190,7 +190,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SharedAudienceResponse>(exampleJson)
-            : default(SharedAudienceResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -216,11 +216,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(BusinessSharedAudienceResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"recipient_business_ids\" : [ \"549755885175\" ],\n  \"permissions\" : [ \"RESOURCE_PINNER_LIST_READER\", \"RESOURCE_PINNER_LIST_OWNER\" ],\n  \"audience_id\" : \"2542621871096\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -228,7 +228,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<BusinessSharedAudienceResponse>(exampleJson)
-            : default(BusinessSharedAudienceResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -254,11 +254,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(SharedAudienceResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"recipient_account_ids\" : [ \"549755885175\" ],\n  \"permissions\" : [ \"RESOURCE_PINNER_LIST_READER\", \"RESOURCE_PINNER_LIST_OWNER\" ],\n  \"audience_id\" : \"2542621871096\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -266,7 +266,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SharedAudienceResponse>(exampleJson)
-            : default(SharedAudienceResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -292,11 +292,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(BusinessSharedAudienceResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"recipient_business_ids\" : [ \"549755885175\" ],\n  \"permissions\" : [ \"RESOURCE_PINNER_LIST_READER\", \"RESOURCE_PINNER_LIST_OWNER\" ],\n  \"audience_id\" : \"2542621871096\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -304,7 +304,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<BusinessSharedAudienceResponse>(exampleJson)
-            : default(BusinessSharedAudienceResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

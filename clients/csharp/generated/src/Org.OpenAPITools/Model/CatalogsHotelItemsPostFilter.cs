@@ -209,8 +209,7 @@ namespace Org.OpenAPITools.Model
                                 catalogType = new Option<CatalogsHotelItemsPostFilter.CatalogTypeEnum?>(CatalogsHotelItemsPostFilter.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
                             break;
                         case "hotel_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hotelIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            hotelIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "catalog_id":
                             catalogId = new Option<string?>(utf8JsonReader.GetString()!);

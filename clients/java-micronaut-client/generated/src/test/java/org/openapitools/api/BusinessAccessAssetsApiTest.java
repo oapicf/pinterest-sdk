@@ -251,7 +251,7 @@ public class BusinessAccessAssetsApiTest {
         // given
         String businessId = "729090764583391194";
         String partnerId = "729090764583391194";
-        PartnerType partnerType = new PartnerType();
+        PartnerType partnerType = PartnerType.fromValue("INTERNAL");
         String assetType = "AD_ACCOUNT";
         Integer startIndex = 0;
         Integer pageSize = 25;

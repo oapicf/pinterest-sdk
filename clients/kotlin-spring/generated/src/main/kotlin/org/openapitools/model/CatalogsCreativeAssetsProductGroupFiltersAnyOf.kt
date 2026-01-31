@@ -23,7 +23,7 @@ data class CatalogsCreativeAssetsProductGroupFiltersAnyOf(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("any_of", required = true) val anyOf: kotlin.collections.List<CatalogsCreativeAssetsProductGroupFilterKeys>
-    ) {
+) {
 
 }
 

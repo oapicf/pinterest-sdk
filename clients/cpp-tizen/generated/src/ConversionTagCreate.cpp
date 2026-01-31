@@ -23,7 +23,6 @@ ConversionTagCreate::~ConversionTagCreate()
 void
 ConversionTagCreate::__init()
 {
-	//name = std::string();
 	//aem_enabled = bool(false);
 	//md_frequency = double(0);
 	//aem_fnln_enabled = bool(false);
@@ -31,16 +30,12 @@ ConversionTagCreate::__init()
 	//aem_ge_enabled = bool(false);
 	//aem_db_enabled = bool(false);
 	//aem_loc_enabled = bool(false);
+	//name = std::string();
 }
 
 void
 ConversionTagCreate::__cleanup()
 {
-	//if(name != NULL) {
-	//
-	//delete name;
-	//name = NULL;
-	//}
 	//if(aem_enabled != NULL) {
 	//
 	//delete aem_enabled;
@@ -76,6 +71,11 @@ ConversionTagCreate::__cleanup()
 	//delete aem_loc_enabled;
 	//aem_loc_enabled = NULL;
 	//}
+	//if(name != NULL) {
+	//
+	//delete name;
+	//name = NULL;
+	//}
 	//
 }
 
@@ -84,17 +84,6 @@ ConversionTagCreate::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *nameKey = "name";
-	node = json_object_get_member(pJsonObject, nameKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&name, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *aem_enabledKey = "aem_enabled";
 	node = json_object_get_member(pJsonObject, aem_enabledKey);
 	if (node !=NULL) {
@@ -175,6 +164,17 @@ ConversionTagCreate::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *nameKey = "name";
+	node = json_object_get_member(pJsonObject, nameKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&name, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 ConversionTagCreate::ConversionTagCreate(char* json)
@@ -187,15 +187,6 @@ ConversionTagCreate::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getName();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *nameKey = "name";
-	json_object_set_member(pJsonObject, nameKey, node);
 	if (isprimitive("bool")) {
 		bool obj = getAemEnabled();
 		node = converttoJson(&obj, "bool", "");
@@ -264,24 +255,21 @@ ConversionTagCreate::toJson()
 	}
 	const gchar *aem_loc_enabledKey = "aem_loc_enabled";
 	json_object_set_member(pJsonObject, aem_loc_enabledKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getName();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *nameKey = "name";
+	json_object_set_member(pJsonObject, nameKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-ConversionTagCreate::getName()
-{
-	return name;
-}
-
-void
-ConversionTagCreate::setName(std::string  name)
-{
-	this->name = name;
 }
 
 bool
@@ -366,6 +354,18 @@ void
 ConversionTagCreate::setAemLocEnabled(bool  aem_loc_enabled)
 {
 	this->aem_loc_enabled = aem_loc_enabled;
+}
+
+std::string
+ConversionTagCreate::getName()
+{
+	return name;
+}
+
+void
+ConversionTagCreate::setName(std::string  name)
+{
+	this->name = name;
 }
 
 

@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  * CampaignUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CampaignUpdateRequest {
 
   private String id;
@@ -111,7 +111,7 @@ public class CampaignUpdateRequest {
     this.adAccountId = adAccountId;
   }
 
-  public CampaignUpdateRequest name(String name) {
+  public CampaignUpdateRequest name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -123,15 +123,15 @@ public class CampaignUpdateRequest {
   
   @Schema(name = "name", example = "ACME Tools", description = "Campaign name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public CampaignUpdateRequest status(EntityStatus status) {
+  public CampaignUpdateRequest status(@Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -143,11 +143,11 @@ public class CampaignUpdateRequest {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public EntityStatus getStatus() {
+  public @Nullable EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 

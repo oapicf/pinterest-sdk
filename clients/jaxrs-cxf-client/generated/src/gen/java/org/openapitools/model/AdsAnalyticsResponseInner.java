@@ -11,16 +11,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdsAnalyticsResponseInner extends HashMap<String, Object> {
   
-  @ApiModelProperty(required = true, value = "The ID of the ad that this metrics belongs to.")
  /**
-   * The ID of the ad that this metrics belongs to.
-  **/
+  * The ID of the ad that this metrics belongs to.
+  */
+  @ApiModelProperty(required = true, value = "The ID of the ad that this metrics belongs to.")
+
   private String AD_ID;
 
-  @ApiModelProperty(value = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)")
  /**
-   * Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
-  **/
+  * Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
+  */
+  @ApiModelProperty(value = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)")
+
   private LocalDate DATE;
  /**
    * The ID of the ad that this metrics belongs to.

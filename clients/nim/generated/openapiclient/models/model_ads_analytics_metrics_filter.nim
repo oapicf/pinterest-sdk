@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ads_analytics_filter_column
 import model_ads_analytics_filter_operator
@@ -18,3 +20,4 @@ type AdsAnalyticsMetricsFilter* = object
   field*: AdsAnalyticsFilterColumn
   operator*: AdsAnalyticsFilterOperator
   values*: seq[float] ## List of values for filtering
+

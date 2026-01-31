@@ -103,14 +103,16 @@ func (a *UserAccountAPIService) BoardsUserFollowsListExecute(r ApiBoardsUserFoll
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.explicitFollowing != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", r.explicitFollowing, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.explicitFollowing = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", defaultValue, "form", "")
+        r.explicitFollowing = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -389,8 +391,9 @@ func (a *UserAccountAPIService) FollowersListExecute(r ApiFollowersListRequest) 
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -819,32 +822,37 @@ func (a *UserAccountAPIService) UserAccountAnalyticsExecute(r ApiUserAccountAnal
 	if r.fromClaimedContent != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", r.fromClaimedContent, "form", "")
 	} else {
-		var defaultValue string = "BOTH"
-		r.fromClaimedContent = &defaultValue
+        var defaultValue string = "BOTH"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", defaultValue, "form", "")
+        r.fromClaimedContent = &defaultValue
 	}
 	if r.pinFormat != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", r.pinFormat, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.pinFormat = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", defaultValue, "form", "")
+        r.pinFormat = &defaultValue
 	}
 	if r.appTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.appTypes = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
+        r.appTypes = &defaultValue
 	}
 	if r.contentType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", r.contentType, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.contentType = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", defaultValue, "form", "")
+        r.contentType = &defaultValue
 	}
 	if r.source != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.source = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "source", defaultValue, "form", "")
+        r.source = &defaultValue
 	}
 	if r.metricTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
@@ -852,8 +860,9 @@ func (a *UserAccountAPIService) UserAccountAnalyticsExecute(r ApiUserAccountAnal
 	if r.splitField != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", r.splitField, "form", "")
 	} else {
-		var defaultValue string = "NO_SPLIT"
-		r.splitField = &defaultValue
+        var defaultValue string = "NO_SPLIT"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", defaultValue, "form", "")
+        r.splitField = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -1089,32 +1098,37 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopPinsExecute(r ApiUserAcco
 	if r.fromClaimedContent != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", r.fromClaimedContent, "form", "")
 	} else {
-		var defaultValue string = "BOTH"
-		r.fromClaimedContent = &defaultValue
+        var defaultValue string = "BOTH"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", defaultValue, "form", "")
+        r.fromClaimedContent = &defaultValue
 	}
 	if r.pinFormat != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", r.pinFormat, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.pinFormat = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", defaultValue, "form", "")
+        r.pinFormat = &defaultValue
 	}
 	if r.appTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.appTypes = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
+        r.appTypes = &defaultValue
 	}
 	if r.contentType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", r.contentType, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.contentType = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", defaultValue, "form", "")
+        r.contentType = &defaultValue
 	}
 	if r.source != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.source = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "source", defaultValue, "form", "")
+        r.source = &defaultValue
 	}
 	if r.metricTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
@@ -1122,8 +1136,9 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopPinsExecute(r ApiUserAcco
 	if r.numOfPins != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", r.numOfPins, "form", "")
 	} else {
-		var defaultValue int32 = 10
-		r.numOfPins = &defaultValue
+        var defaultValue int32 = 10
+        parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", defaultValue, "form", "")
+        r.numOfPins = &defaultValue
 	}
 	if r.createdInLastNDays != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_in_last_n_days", r.createdInLastNDays, "form", "")
@@ -1351,32 +1366,37 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopVideoPinsExecute(r ApiUse
 	if r.fromClaimedContent != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", r.fromClaimedContent, "form", "")
 	} else {
-		var defaultValue string = "BOTH"
-		r.fromClaimedContent = &defaultValue
+        var defaultValue string = "BOTH"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "from_claimed_content", defaultValue, "form", "")
+        r.fromClaimedContent = &defaultValue
 	}
 	if r.pinFormat != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", r.pinFormat, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.pinFormat = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_format", defaultValue, "form", "")
+        r.pinFormat = &defaultValue
 	}
 	if r.appTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.appTypes = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
+        r.appTypes = &defaultValue
 	}
 	if r.contentType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", r.contentType, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.contentType = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "content_type", defaultValue, "form", "")
+        r.contentType = &defaultValue
 	}
 	if r.source != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "source", r.source, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.source = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "source", defaultValue, "form", "")
+        r.source = &defaultValue
 	}
 	if r.metricTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
@@ -1384,8 +1404,9 @@ func (a *UserAccountAPIService) UserAccountAnalyticsTopVideoPinsExecute(r ApiUse
 	if r.numOfPins != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", r.numOfPins, "form", "")
 	} else {
-		var defaultValue int32 = 10
-		r.numOfPins = &defaultValue
+        var defaultValue int32 = 10
+        parameterAddToHeaderOrQuery(localVarQueryParams, "num_of_pins", defaultValue, "form", "")
+        r.numOfPins = &defaultValue
 	}
 	if r.createdInLastNDays != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_in_last_n_days", r.createdInLastNDays, "form", "")
@@ -1535,8 +1556,9 @@ func (a *UserAccountAPIService) UserAccountFollowedInterestsExecute(r ApiUserAcc
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1850,20 +1872,23 @@ func (a *UserAccountAPIService) UserFollowingGetExecute(r ApiUserFollowingGetReq
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.feedType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "feed_type", r.feedType, "form", "")
 	} else {
-		var defaultValue UserFollowingFeedType = "ALL"
-		r.feedType = &defaultValue
+        var defaultValue UserFollowingFeedType = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "feed_type", defaultValue, "form", "")
+        r.feedType = &defaultValue
 	}
 	if r.explicitFollowing != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", r.explicitFollowing, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.explicitFollowing = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "explicit_following", defaultValue, "form", "")
+        r.explicitFollowing = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -1995,8 +2020,9 @@ func (a *UserAccountAPIService) UserWebsitesGetExecute(r ApiUserWebsitesGetReque
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

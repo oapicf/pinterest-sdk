@@ -1,22 +1,23 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * A hotel item to be deleted
- **/
+ * A hotel item to be deleted
+ */
 @ApiModel(description="A hotel item to be deleted")
 
 public class CatalogsDeleteHotelItem  {
   
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog hotel id in the merchant namespace")
  /**
-   * The catalog hotel id in the merchant namespace
-  **/
+  * The catalog hotel id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog hotel id in the merchant namespace")
+
   private String hotelId;
 
 public enum OperationEnum {
@@ -50,6 +51,7 @@ DELETE(String.valueOf("DELETE"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private OperationEnum operation;
  /**
    * The catalog hotel id in the merchant namespace

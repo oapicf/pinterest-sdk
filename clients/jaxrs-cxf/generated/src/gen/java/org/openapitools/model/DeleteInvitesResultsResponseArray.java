@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,22 +7,25 @@ import org.openapitools.model.DeleteInvitesResultsResponseArrayItemsInner;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id
- **/
+ * Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id
+ */
 @ApiModel(description="Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id")
 
 public class DeleteInvitesResultsResponseArray  {
   
-  @ApiModelProperty(value = "List of invite/Request deletion status. If there is an error, an exception object will be returned. If the invite/request was successfully cancelled, an invite object will be returned for the invite that was cancelled.")
-  @Valid
  /**
-   * List of invite/Request deletion status. If there is an error, an exception object will be returned. If the invite/request was successfully cancelled, an invite object will be returned for the invite that was cancelled.
-  **/
+  * List of invite/Request deletion status. If there is an error, an exception object will be returned. If the invite/request was successfully cancelled, an invite object will be returned for the invite that was cancelled.
+  */
+  @ApiModelProperty(value = "List of invite/Request deletion status. If there is an error, an exception object will be returned. If the invite/request was successfully cancelled, an invite object will be returned for the invite that was cancelled.")
+
+  @Valid
+
   private List<@Valid DeleteInvitesResultsResponseArrayItemsInner> items = new ArrayList<>();
  /**
    * List of invite/Request deletion status. If there is an error, an exception object will be returned. If the invite/request was successfully cancelled, an invite object will be returned for the invite that was cancelled.

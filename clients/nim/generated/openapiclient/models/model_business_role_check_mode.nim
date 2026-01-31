@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type BusinessRoleCheckMode* = object
-  ## Specifies if the partner is internal or external.
+type BusinessRoleCheckMode* {.pure.} = enum
+  INTERNAL
+  EXTERNAL
+
+func `%`*(v: BusinessRoleCheckMode): JsonNode =
+  result = case v:
+    of BusinessRoleCheckMode.INTERNAL: %"INTERNAL"
+    of BusinessRoleCheckMode.EXTERNAL: %"EXTERNAL"
+
+func `$`*(v: BusinessRoleCheckMode): string =
+  result = case v:
+    of BusinessRoleCheckMode.INTERNAL: $("INTERNAL")
+    of BusinessRoleCheckMode.EXTERNAL: $("EXTERNAL")
+
+proc to*(node: JsonNode, T: typedesc[BusinessRoleCheckMode]): BusinessRoleCheckMode =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum BusinessRoleCheckMode, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("INTERNAL"):
+    return BusinessRoleCheckMode.INTERNAL
+  of $("EXTERNAL"):
+    return BusinessRoleCheckMode.EXTERNAL
+  else:
+    raise newException(ValueError, "Invalid enum value for BusinessRoleCheckMode: " & strVal)
+

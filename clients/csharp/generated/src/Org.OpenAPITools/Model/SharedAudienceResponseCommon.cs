@@ -144,8 +144,7 @@ namespace Org.OpenAPITools.Model
                             audienceId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "permissions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                permissions = new Option<List<Role>?>(JsonSerializer.Deserialize<List<Role>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            permissions = new Option<List<Role>?>(JsonSerializer.Deserialize<List<Role>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

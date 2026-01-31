@@ -434,8 +434,9 @@ func (a *BoardsAPIService) BoardSectionsListExecute(r ApiBoardSectionsListReques
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -584,8 +585,9 @@ func (a *BoardsAPIService) BoardSectionsListPinsExecute(r ApiBoardSectionsListPi
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1371,8 +1373,9 @@ func (a *BoardsAPIService) BoardsListExecute(r ApiBoardsListRequest) (*BoardsLis
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.privacy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "privacy", r.privacy, "form", "")
@@ -1531,8 +1534,9 @@ func (a *BoardsAPIService) BoardsListPinsExecute(r ApiBoardsListPinsRequest) (*B
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.creativeTypes != nil {
 		t := *r.creativeTypes
@@ -1551,8 +1555,9 @@ func (a *BoardsAPIService) BoardsListPinsExecute(r ApiBoardsListPinsRequest) (*B
 	if r.pinMetrics != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.pinMetrics = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
+        r.pinMetrics = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

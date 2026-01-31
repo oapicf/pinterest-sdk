@@ -211,7 +211,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deliveryMetricsGetCall(String reportType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deliveryMetricsGetCall(@javax.annotation.Nullable String reportType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -260,7 +260,7 @@ public class ResourcesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deliveryMetricsGetValidateBeforeCall(String reportType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deliveryMetricsGetValidateBeforeCall(@javax.annotation.Nullable String reportType, final ApiCallback _callback) throws ApiException {
         return deliveryMetricsGetCall(reportType, _callback);
 
     }
@@ -279,7 +279,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public DeliveryMetricsResponse deliveryMetricsGet(String reportType) throws ApiException {
+    public DeliveryMetricsResponse deliveryMetricsGet(@javax.annotation.Nullable String reportType) throws ApiException {
         ApiResponse<DeliveryMetricsResponse> localVarResp = deliveryMetricsGetWithHttpInfo(reportType);
         return localVarResp.getData();
     }
@@ -298,7 +298,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeliveryMetricsResponse> deliveryMetricsGetWithHttpInfo(String reportType) throws ApiException {
+    public ApiResponse<DeliveryMetricsResponse> deliveryMetricsGetWithHttpInfo(@javax.annotation.Nullable String reportType) throws ApiException {
         okhttp3.Call localVarCall = deliveryMetricsGetValidateBeforeCall(reportType, null);
         Type localVarReturnType = new TypeToken<DeliveryMetricsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -319,7 +319,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deliveryMetricsGetAsync(String reportType, final ApiCallback<DeliveryMetricsResponse> _callback) throws ApiException {
+    public okhttp3.Call deliveryMetricsGetAsync(@javax.annotation.Nullable String reportType, final ApiCallback<DeliveryMetricsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deliveryMetricsGetValidateBeforeCall(reportType, _callback);
         Type localVarReturnType = new TypeToken<DeliveryMetricsResponse>(){}.getType();
@@ -340,7 +340,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call interestTargetingOptionsGetCall(String interestId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call interestTargetingOptionsGetCall(@javax.annotation.Nonnull String interestId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -386,7 +386,7 @@ public class ResourcesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call interestTargetingOptionsGetValidateBeforeCall(String interestId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call interestTargetingOptionsGetValidateBeforeCall(@javax.annotation.Nonnull String interestId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'interestId' is set
         if (interestId == null) {
             throw new ApiException("Missing the required parameter 'interestId' when calling interestTargetingOptionsGet(Async)");
@@ -410,7 +410,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public SingleInterestTargetingOptionResponse interestTargetingOptionsGet(String interestId) throws ApiException {
+    public SingleInterestTargetingOptionResponse interestTargetingOptionsGet(@javax.annotation.Nonnull String interestId) throws ApiException {
         ApiResponse<SingleInterestTargetingOptionResponse> localVarResp = interestTargetingOptionsGetWithHttpInfo(interestId);
         return localVarResp.getData();
     }
@@ -429,7 +429,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SingleInterestTargetingOptionResponse> interestTargetingOptionsGetWithHttpInfo(String interestId) throws ApiException {
+    public ApiResponse<SingleInterestTargetingOptionResponse> interestTargetingOptionsGetWithHttpInfo(@javax.annotation.Nonnull String interestId) throws ApiException {
         okhttp3.Call localVarCall = interestTargetingOptionsGetValidateBeforeCall(interestId, null);
         Type localVarReturnType = new TypeToken<SingleInterestTargetingOptionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -450,7 +450,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call interestTargetingOptionsGetAsync(String interestId, final ApiCallback<SingleInterestTargetingOptionResponse> _callback) throws ApiException {
+    public okhttp3.Call interestTargetingOptionsGetAsync(@javax.annotation.Nonnull String interestId, final ApiCallback<SingleInterestTargetingOptionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = interestTargetingOptionsGetValidateBeforeCall(interestId, _callback);
         Type localVarReturnType = new TypeToken<SingleInterestTargetingOptionResponse>(){}.getType();
@@ -588,7 +588,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call metricsReadyStateGetCall(String date, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call metricsReadyStateGetCall(@javax.annotation.Nonnull String date, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -637,7 +637,7 @@ public class ResourcesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call metricsReadyStateGetValidateBeforeCall(String date, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call metricsReadyStateGetValidateBeforeCall(@javax.annotation.Nonnull String date, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'date' is set
         if (date == null) {
             throw new ApiException("Missing the required parameter 'date' when calling metricsReadyStateGet(Async)");
@@ -661,7 +661,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BookClosedResponse metricsReadyStateGet(String date) throws ApiException {
+    public BookClosedResponse metricsReadyStateGet(@javax.annotation.Nonnull String date) throws ApiException {
         ApiResponse<BookClosedResponse> localVarResp = metricsReadyStateGetWithHttpInfo(date);
         return localVarResp.getData();
     }
@@ -680,7 +680,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BookClosedResponse> metricsReadyStateGetWithHttpInfo(String date) throws ApiException {
+    public ApiResponse<BookClosedResponse> metricsReadyStateGetWithHttpInfo(@javax.annotation.Nonnull String date) throws ApiException {
         okhttp3.Call localVarCall = metricsReadyStateGetValidateBeforeCall(date, null);
         Type localVarReturnType = new TypeToken<BookClosedResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -701,7 +701,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call metricsReadyStateGetAsync(String date, final ApiCallback<BookClosedResponse> _callback) throws ApiException {
+    public okhttp3.Call metricsReadyStateGetAsync(@javax.annotation.Nonnull String date, final ApiCallback<BookClosedResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = metricsReadyStateGetValidateBeforeCall(date, _callback);
         Type localVarReturnType = new TypeToken<BookClosedResponse>(){}.getType();
@@ -726,7 +726,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call targetingOptionsGetCall(String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call targetingOptionsGetCall(@javax.annotation.Nonnull String targetingType, @javax.annotation.Nullable String clientId, @javax.annotation.Nullable String oauthSignature, @javax.annotation.Nullable String timestamp, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -788,7 +788,7 @@ public class ResourcesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call targetingOptionsGetValidateBeforeCall(String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call targetingOptionsGetValidateBeforeCall(@javax.annotation.Nonnull String targetingType, @javax.annotation.Nullable String clientId, @javax.annotation.Nullable String oauthSignature, @javax.annotation.Nullable String timestamp, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'targetingType' is set
         if (targetingType == null) {
             throw new ApiException("Missing the required parameter 'targetingType' when calling targetingOptionsGet(Async)");
@@ -816,7 +816,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public List<Object> targetingOptionsGet(String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId) throws ApiException {
+    public List<Object> targetingOptionsGet(@javax.annotation.Nonnull String targetingType, @javax.annotation.Nullable String clientId, @javax.annotation.Nullable String oauthSignature, @javax.annotation.Nullable String timestamp, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<List<Object>> localVarResp = targetingOptionsGetWithHttpInfo(targetingType, clientId, oauthSignature, timestamp, adAccountId);
         return localVarResp.getData();
     }
@@ -839,7 +839,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Object>> targetingOptionsGetWithHttpInfo(String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId) throws ApiException {
+    public ApiResponse<List<Object>> targetingOptionsGetWithHttpInfo(@javax.annotation.Nonnull String targetingType, @javax.annotation.Nullable String clientId, @javax.annotation.Nullable String oauthSignature, @javax.annotation.Nullable String timestamp, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = targetingOptionsGetValidateBeforeCall(targetingType, clientId, oauthSignature, timestamp, adAccountId, null);
         Type localVarReturnType = new TypeToken<List<Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -864,7 +864,7 @@ public class ResourcesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call targetingOptionsGetAsync(String targetingType, String clientId, String oauthSignature, String timestamp, String adAccountId, final ApiCallback<List<Object>> _callback) throws ApiException {
+    public okhttp3.Call targetingOptionsGetAsync(@javax.annotation.Nonnull String targetingType, @javax.annotation.Nullable String clientId, @javax.annotation.Nullable String oauthSignature, @javax.annotation.Nullable String timestamp, @javax.annotation.Nullable String adAccountId, final ApiCallback<List<Object>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = targetingOptionsGetValidateBeforeCall(targetingType, clientId, oauthSignature, timestamp, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<List<Object>>(){}.getType();

@@ -364,16 +364,13 @@ namespace Org.OpenAPITools.Model
                             path = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "request_headers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                requestHeaders = new Option<Dictionary<string, string>?>(JsonSerializer.Deserialize<Dictionary<string, string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            requestHeaders = new Option<Dictionary<string, string>?>(JsonSerializer.Deserialize<Dictionary<string, string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "response_headers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                responseHeaders = new Option<Dictionary<string, string>?>(JsonSerializer.Deserialize<Dictionary<string, string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            responseHeaders = new Option<Dictionary<string, string>?>(JsonSerializer.Deserialize<Dictionary<string, string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "response_status_code":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                responseStatusCode = new Option<int?>(utf8JsonReader.GetInt32());
+                            responseStatusCode = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

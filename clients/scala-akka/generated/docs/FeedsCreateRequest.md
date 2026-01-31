@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **catalogType** | **CatalogsType** |  | 
 **defaultCountry** | **Country** |  | 
 **defaultAvailability** | **ProductAvailabilityType** |  |  [optional]
-**status** | [**CatalogsStatus**](CatalogsStatus.md) |  |  [optional]
+**status** | **CatalogsStatus** |  |  [optional]
 **catalogId** | **String** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. |  [optional]
 
 

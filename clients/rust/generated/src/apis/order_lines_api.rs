@@ -35,10 +35,10 @@ pub enum OrderLinesSlashListError {
 /// Get a specific existing order line associated with an ad account.
 pub async fn order_lines_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, order_line_id: &str) -> Result<models::OrderLine, Error<OrderLinesSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_order_line_id = order_line_id;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_order_line_id = order_line_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/order_lines/{order_line_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), order_line_id=crate::apis::urlencode(p_order_line_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/order_lines/{order_line_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), order_line_id=crate::apis::urlencode(p_path_order_line_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -76,21 +76,21 @@ pub async fn order_lines_slash_get(configuration: &configuration::Configuration,
 /// List existing order lines associated with an ad account.
 pub async fn order_lines_slash_list(configuration: &configuration::Configuration, ad_account_id: &str, page_size: Option<i32>, order: Option<&str>, bookmark: Option<&str>) -> Result<models::OrderLinesList200Response, Error<OrderLinesSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_page_size = page_size;
-    let p_order = order;
-    let p_bookmark = bookmark;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_page_size = page_size;
+    let p_query_order = order;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/order_lines", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/order_lines", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
-        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_order {
+        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

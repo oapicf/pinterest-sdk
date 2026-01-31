@@ -19,15 +19,15 @@ local function cast_oauth_access_token_response_code(t)
 	return setmetatable(t, oauth_access_token_response_code_mt)
 end
 
-local function new_oauth_access_token_response_code(response_type, access_token, token_type, expires_in, scope, refresh_token, refresh_token_expires_in)
+local function new_oauth_access_token_response_code(refresh_token, refresh_token_expires_in, response_type, access_token, token_type, expires_in, scope)
 	return cast_oauth_access_token_response_code({
+		["refresh_token"] = refresh_token;
+		["refresh_token_expires_in"] = refresh_token_expires_in;
 		["response_type"] = response_type;
 		["access_token"] = access_token;
 		["token_type"] = token_type;
 		["expires_in"] = expires_in;
 		["scope"] = scope;
-		["refresh_token"] = refresh_token;
-		["refresh_token_expires_in"] = refresh_token_expires_in;
 	})
 end
 

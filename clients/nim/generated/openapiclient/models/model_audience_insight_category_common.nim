@@ -9,12 +9,15 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AudienceInsightCategoryCommon* = object
   ## 
-  key*: string
-  name*: string
-  ratio*: float
-  index*: float
-  id*: string
+  key*: Option[string]
+  name*: Option[string]
+  ratio*: Option[float]
+  index*: Option[float]
+  id*: Option[string]
+

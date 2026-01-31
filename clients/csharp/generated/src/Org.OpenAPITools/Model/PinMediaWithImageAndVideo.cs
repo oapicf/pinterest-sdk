@@ -116,8 +116,7 @@ namespace Org.OpenAPITools.Model
                             mediaType = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "items":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                items = new Option<List<PinMediaMetadata>?>(JsonSerializer.Deserialize<List<PinMediaMetadata>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            items = new Option<List<PinMediaMetadata>?>(JsonSerializer.Deserialize<List<PinMediaMetadata>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

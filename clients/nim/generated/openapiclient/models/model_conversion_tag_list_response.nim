@@ -9,9 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_conversion_tag_response
 
 type ConversionTagListResponse* = object
   ## 
-  items*: seq[ConversionTagResponse]
+  items*: Option[seq[ConversionTagResponse]]
+
+
+# Custom JSON deserialization for ConversionTagListResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[ConversionTagListResponse]): ConversionTagListResponse =
+  result = ConversionTagListResponse()
+  if node.kind == JObject:
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[ConversionTagResponse] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, ConversionTagResponse))
+        result.items = some(arr)
+
+# Custom JSON serialization for ConversionTagListResponse with custom field names
+proc `%`*(obj: ConversionTagListResponse): JsonNode =
+  result = newJObject()
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

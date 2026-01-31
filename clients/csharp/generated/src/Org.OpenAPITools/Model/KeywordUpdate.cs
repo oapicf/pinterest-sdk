@@ -166,12 +166,10 @@ namespace Org.OpenAPITools.Model
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "archived":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                archived = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            archived = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "bid":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                bid = new Option<int?>(utf8JsonReader.GetInt32());
+                            bid = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

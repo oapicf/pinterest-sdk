@@ -9,8 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type OptimizationGoalMetadataScrollupGoalMetadata* = object
   ## 
-  scrollupGoalValueInMicroCurrency*: string
+  scrollupGoalValueInMicroCurrency*: Option[string]
+
+
+# Custom JSON deserialization for OptimizationGoalMetadataScrollupGoalMetadata with custom field names
+proc to*(node: JsonNode, T: typedesc[OptimizationGoalMetadataScrollupGoalMetadata]): OptimizationGoalMetadataScrollupGoalMetadata =
+  result = OptimizationGoalMetadataScrollupGoalMetadata()
+  if node.kind == JObject:
+    if node.hasKey("scrollup_goal_value_in_micro_currency") and node["scrollup_goal_value_in_micro_currency"].kind != JNull:
+      result.scrollupGoalValueInMicroCurrency = some(to(node["scrollup_goal_value_in_micro_currency"], typeof(result.scrollupGoalValueInMicroCurrency.get())))
+
+# Custom JSON serialization for OptimizationGoalMetadataScrollupGoalMetadata with custom field names
+proc `%`*(obj: OptimizationGoalMetadataScrollupGoalMetadata): JsonNode =
+  result = newJObject()
+  if obj.scrollupGoalValueInMicroCurrency.isSome():
+    result["scrollup_goal_value_in_micro_currency"] = %obj.scrollupGoalValueInMicroCurrency.get()
+

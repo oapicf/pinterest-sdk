@@ -73,9 +73,9 @@ private class OASInviteBusinessRoleBindingTest {
     private static void maintainRenamedProperties() {
         OASInviteBusinessRoleBinding inviteBusinessRoleBinding = new OASInviteBusinessRoleBinding();
         Map<String, String> x-property-mappings = inviteBusinessRoleBinding.getx-property-mappings();
-        System.assertEquals('createdByBusinessId', x-property-mappings.get('created_by_business_id'));
-        System.assertEquals('createdByUserId', x-property-mappings.get('created_by_user_id'));
         System.assertEquals('inviteData', x-property-mappings.get('invite_data'));
         System.assertEquals('isReceivedInvite', x-property-mappings.get('is_received_invite'));
+        System.assertEquals('createdByBusinessId', x-property-mappings.get('created_by_business_id'));
+        System.assertEquals('createdByUserId', x-property-mappings.get('created_by_user_id'));
     }
 }

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_feed
 import model_catalogs_feed_credentials
@@ -22,20 +24,38 @@ import model_country
 import model_nullable_currency
 import model_product_availability_type
 
+# OneOf type
+type CatalogsFeedKind* {.pure.} = enum
+  CatalogsRetailFeedVariant
+  CatalogsHotelFeedVariant
+  CatalogsCreativeAssetsFeedVariant
+
 type CatalogsFeed* = object
   ## Catalogs Feed object
-  createdAt*: string
-  id*: string
-  updatedAt*: string
-  name*: string ## A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-  format*: CatalogsFormat
-  catalogType*: CatalogsType
-  credentials*: CatalogsFeedCredentials
-  location*: string ## The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  preferredProcessingSchedule*: CatalogsFeedProcessingSchedule
-  status*: CatalogsStatus
-  defaultCurrency*: NullableCurrency
-  defaultLocale*: string ## The locale used within a feed for product descriptions.
-  defaultCountry*: Country
-  defaultAvailability*: ProductAvailabilityType
-  catalogId*: string ## Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+  case kind*: CatalogsFeedKind
+  of CatalogsFeedKind.CatalogsRetailFeedVariant:
+    CatalogsRetailFeedValue*: CatalogsRetailFeed
+  of CatalogsFeedKind.CatalogsHotelFeedVariant:
+    CatalogsHotelFeedValue*: CatalogsHotelFeed
+  of CatalogsFeedKind.CatalogsCreativeAssetsFeedVariant:
+    CatalogsCreativeAssetsFeedValue*: CatalogsCreativeAssetsFeed
+
+proc to*(node: JsonNode, T: typedesc[CatalogsFeed]): CatalogsFeed =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsFeed(kind: CatalogsFeedKind.CatalogsRetailFeedVariant, CatalogsRetailFeedValue: to(node, CatalogsRetailFeed))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailFeed: ", e.msg
+  try:
+    return CatalogsFeed(kind: CatalogsFeedKind.CatalogsHotelFeedVariant, CatalogsHotelFeedValue: to(node, CatalogsHotelFeed))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelFeed: ", e.msg
+  try:
+    return CatalogsFeed(kind: CatalogsFeedKind.CatalogsCreativeAssetsFeedVariant, CatalogsCreativeAssetsFeedValue: to(node, CatalogsCreativeAssetsFeed))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsFeed: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsFeed. JSON: " & $node)
+

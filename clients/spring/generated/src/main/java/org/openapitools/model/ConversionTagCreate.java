@@ -23,10 +23,8 @@ import javax.annotation.Generated;
  * ConversionTagCreate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagCreate {
-
-  private String name;
 
   private JsonNullable<Boolean> aemEnabled = JsonNullable.<Boolean>undefined();
 
@@ -42,6 +40,8 @@ public class ConversionTagCreate {
 
   private JsonNullable<Boolean> aemLocEnabled = JsonNullable.<Boolean>undefined();
 
+  private String name;
+
   public ConversionTagCreate() {
     super();
   }
@@ -50,26 +50,6 @@ public class ConversionTagCreate {
    * Constructor with only required parameters
    */
   public ConversionTagCreate(String name) {
-    this.name = name;
-  }
-
-  public ConversionTagCreate name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Conversion tag name.
-   * @return name
-   */
-  @NotNull 
-  @Schema(name = "name", example = "ACME Tools Tag", description = "Conversion tag name.", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
     this.name = name;
   }
 
@@ -213,6 +193,26 @@ public class ConversionTagCreate {
     this.aemLocEnabled = aemLocEnabled;
   }
 
+  public ConversionTagCreate name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Conversion tag name.
+   * @return name
+   */
+  @NotNull 
+  @Schema(name = "name", example = "ACME Tools Tag", description = "Conversion tag name.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -222,14 +222,14 @@ public class ConversionTagCreate {
       return false;
     }
     ConversionTagCreate conversionTagCreate = (ConversionTagCreate) o;
-    return Objects.equals(this.name, conversionTagCreate.name) &&
-        equalsNullable(this.aemEnabled, conversionTagCreate.aemEnabled) &&
+    return equalsNullable(this.aemEnabled, conversionTagCreate.aemEnabled) &&
         equalsNullable(this.mdFrequency, conversionTagCreate.mdFrequency) &&
         equalsNullable(this.aemFnlnEnabled, conversionTagCreate.aemFnlnEnabled) &&
         equalsNullable(this.aemPhEnabled, conversionTagCreate.aemPhEnabled) &&
         equalsNullable(this.aemGeEnabled, conversionTagCreate.aemGeEnabled) &&
         equalsNullable(this.aemDbEnabled, conversionTagCreate.aemDbEnabled) &&
-        equalsNullable(this.aemLocEnabled, conversionTagCreate.aemLocEnabled);
+        equalsNullable(this.aemLocEnabled, conversionTagCreate.aemLocEnabled) &&
+        Objects.equals(this.name, conversionTagCreate.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -238,7 +238,7 @@ public class ConversionTagCreate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, hashCodeNullable(aemEnabled), hashCodeNullable(mdFrequency), hashCodeNullable(aemFnlnEnabled), hashCodeNullable(aemPhEnabled), hashCodeNullable(aemGeEnabled), hashCodeNullable(aemDbEnabled), hashCodeNullable(aemLocEnabled));
+    return Objects.hash(hashCodeNullable(aemEnabled), hashCodeNullable(mdFrequency), hashCodeNullable(aemFnlnEnabled), hashCodeNullable(aemPhEnabled), hashCodeNullable(aemGeEnabled), hashCodeNullable(aemDbEnabled), hashCodeNullable(aemLocEnabled), name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -252,7 +252,6 @@ public class ConversionTagCreate {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagCreate {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    aemEnabled: ").append(toIndentedString(aemEnabled)).append("\n");
     sb.append("    mdFrequency: ").append(toIndentedString(mdFrequency)).append("\n");
     sb.append("    aemFnlnEnabled: ").append(toIndentedString(aemFnlnEnabled)).append("\n");
@@ -260,6 +259,7 @@ public class ConversionTagCreate {
     sb.append("    aemGeEnabled: ").append(toIndentedString(aemGeEnabled)).append("\n");
     sb.append("    aemDbEnabled: ").append(toIndentedString(aemDbEnabled)).append("\n");
     sb.append("    aemLocEnabled: ").append(toIndentedString(aemLocEnabled)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

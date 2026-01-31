@@ -9,11 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_asset_group_binding
 import model_update_asset_group_response_exceptions_inner
 
 type UpdateAssetGroupResponse* = object
   ## 
-  updatedAssetGroups*: seq[AssetGroupBinding] ## A list of successfully edited asset groups.
-  exceptions*: seq[UpdateAssetGroupResponse_exceptions_inner] ## A list of errors associated with the asset groups. Will be returned if there is an error.
+  updatedAssetGroups*: Option[seq[AssetGroupBinding]] ## A list of successfully edited asset groups.
+  exceptions*: Option[seq[UpdateAssetGroupResponse_exceptions_inner]] ## A list of errors associated with the asset groups. Will be returned if there is an error.
+
+
+# Custom JSON deserialization for UpdateAssetGroupResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[UpdateAssetGroupResponse]): UpdateAssetGroupResponse =
+  result = UpdateAssetGroupResponse()
+  if node.kind == JObject:
+    if node.hasKey("updated_asset_groups") and node["updated_asset_groups"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["updated_asset_groups"]
+      if arrayNode.kind == JArray:
+        var arr: seq[AssetGroupBinding] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, AssetGroupBinding))
+        result.updatedAssetGroups = some(arr)
+    if node.hasKey("exceptions") and node["exceptions"].kind != JNull:
+      result.exceptions = some(to(node["exceptions"], typeof(result.exceptions.get())))
+
+# Custom JSON serialization for UpdateAssetGroupResponse with custom field names
+proc `%`*(obj: UpdateAssetGroupResponse): JsonNode =
+  result = newJObject()
+  if obj.updatedAssetGroups.isSome():
+    result["updated_asset_groups"] = %obj.updatedAssetGroups.get()
+  if obj.exceptions.isSome():
+    result["exceptions"] = %obj.exceptions.get()
+

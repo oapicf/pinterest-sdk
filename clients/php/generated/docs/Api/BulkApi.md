@@ -1,5 +1,7 @@
 # OpenAPI\Client\BulkApi
 
+Create, update, or download ads-related entities in bulk.
+
 All URIs are relative to https://api.pinterest.com/v5, except if the operation defines another base path.
 
 | Method | HTTP request | Description |

@@ -26,12 +26,12 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("UpdateInvitesResultsResponseArray_items_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdateInvitesResultsResponseArrayItemsInner {
 
   private JsonNullable<InviteExceptionResponse> exception = JsonNullable.<InviteExceptionResponse>undefined();
 
-  private JsonNullable<InviteBusinessRoleBinding> invite = JsonNullable.<InviteBusinessRoleBinding>undefined();
+  private @Nullable InviteBusinessRoleBinding invite;
 
   public UpdateInvitesResultsResponseArrayItemsInner exception(InviteExceptionResponse exception) {
     this.exception = JsonNullable.of(exception);
@@ -53,8 +53,8 @@ public class UpdateInvitesResultsResponseArrayItemsInner {
     this.exception = exception;
   }
 
-  public UpdateInvitesResultsResponseArrayItemsInner invite(InviteBusinessRoleBinding invite) {
-    this.invite = JsonNullable.of(invite);
+  public UpdateInvitesResultsResponseArrayItemsInner invite(@Nullable InviteBusinessRoleBinding invite) {
+    this.invite = invite;
     return this;
   }
 
@@ -65,11 +65,11 @@ public class UpdateInvitesResultsResponseArrayItemsInner {
   @Valid 
   @Schema(name = "invite", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("invite")
-  public JsonNullable<InviteBusinessRoleBinding> getInvite() {
+  public @Nullable InviteBusinessRoleBinding getInvite() {
     return invite;
   }
 
-  public void setInvite(JsonNullable<InviteBusinessRoleBinding> invite) {
+  public void setInvite(@Nullable InviteBusinessRoleBinding invite) {
     this.invite = invite;
   }
 
@@ -83,7 +83,7 @@ public class UpdateInvitesResultsResponseArrayItemsInner {
     }
     UpdateInvitesResultsResponseArrayItemsInner updateInvitesResultsResponseArrayItemsInner = (UpdateInvitesResultsResponseArrayItemsInner) o;
     return equalsNullable(this.exception, updateInvitesResultsResponseArrayItemsInner.exception) &&
-        equalsNullable(this.invite, updateInvitesResultsResponseArrayItemsInner.invite);
+        Objects.equals(this.invite, updateInvitesResultsResponseArrayItemsInner.invite);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -92,7 +92,7 @@ public class UpdateInvitesResultsResponseArrayItemsInner {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(exception), hashCodeNullable(invite));
+    return Objects.hash(hashCodeNullable(exception), invite);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {

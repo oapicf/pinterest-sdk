@@ -153,14 +153,29 @@ SearchApi <- R6::R6Class(
         stop("Missing required parameter `country_code`.")
       }
 
+      if (!missing(`term`) && is.null(`term`)) {
+        stop("Invalid value for `term` when calling SearchApi$SearchPartnerPins, `term` is not nullable")
+      }
 
+      if (!missing(`country_code`) && is.null(`country_code`)) {
+        stop("Invalid value for `country_code` when calling SearchApi$SearchPartnerPins, `country_code` is not nullable")
+      }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling SearchApi$SearchPartnerPins, `bookmark` is not nullable")
+      }
 
+      if (!missing(`locale`) && is.null(`locale`)) {
+        stop("Invalid value for `locale` when calling SearchApi$SearchPartnerPins, `locale` is not nullable")
+      }
 
-      if (`limit` > 50) {
+      if (!missing(`limit`) && is.null(`limit`)) {
+        stop("Invalid value for `limit` when calling SearchApi$SearchPartnerPins, `limit` is not nullable")
+      }
+      if (!is.null(`limit`) && `limit` >  50) {
         stop("Invalid value for `limit` when calling SearchApi$SearchPartnerPins, must be smaller than or equal to 50.")
       }
-      if (`limit` < 1) {
+      if (!is.null(`limit`) && `limit` <  1) {
         stop("Invalid value for `limit` when calling SearchApi$SearchPartnerPins, must be bigger than or equal to 1.")
       }
 
@@ -272,21 +287,33 @@ SearchApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling SearchApi$SearchUserBoardsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling SearchApi$SearchUserBoardsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling SearchApi$SearchUserBoardsGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling SearchApi$SearchUserBoardsGet, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling SearchApi$SearchUserBoardsGet, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling SearchApi$SearchUserBoardsGet, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling SearchApi$SearchUserBoardsGet, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`query`) && is.null(`query`)) {
+        stop("Invalid value for `query` when calling SearchApi$SearchUserBoardsGet, `query` is not nullable")
+      }
 
       query_params[["ad_account_id"]] <- `ad_account_id`
 
@@ -399,14 +426,23 @@ SearchApi <- R6::R6Class(
         stop("Missing required parameter `query`.")
       }
 
+      if (!missing(`query`) && is.null(`query`)) {
+        stop("Invalid value for `query` when calling SearchApi$SearchUserPinsList, `query` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling SearchApi$SearchUserPinsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling SearchApi$SearchUserPinsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling SearchApi$SearchUserPinsList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling SearchApi$SearchUserPinsList, `bookmark` is not nullable")
+      }
 
       query_params[["ad_account_id"]] <- `ad_account_id`
 

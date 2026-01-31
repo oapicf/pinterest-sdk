@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogsFeedProductCounts* = object
   ## The counts can be null early in the process.
-  original*: int ## The number of products in the feed file.
-  ingested*: int ## The number of products successfully ingested from the feed file.
+  original*: Option[int] ## The number of products in the feed file.
+  ingested*: Option[int] ## The number of products successfully ingested from the feed file.
+

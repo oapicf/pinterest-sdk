@@ -188,8 +188,6 @@ namespace Org.OpenAPITools.Model
 
             CatalogsReportDistributionStats? catalogsReportDistributionStats = null;
             CatalogsReportFeedIngestionStats? catalogsReportFeedIngestionStats = null;
-            CatalogsReportDistributionStats? catalogsReportDistributionStats = null;
-            CatalogsReportFeedIngestionStats? catalogsReportFeedIngestionStats = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -213,16 +211,6 @@ namespace Org.OpenAPITools.Model
                             catalogsReportDistributionStats = JsonSerializer.Deserialize<CatalogsReportDistributionStats>(ref utf8JsonReaderCatalogsReportDistributionStats, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("FEED_INGESTION_ISSUES") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsReportFeedIngestionStats = utf8JsonReader;
-                            catalogsReportFeedIngestionStats = JsonSerializer.Deserialize<CatalogsReportFeedIngestionStats>(ref utf8JsonReaderCatalogsReportFeedIngestionStats, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsReportDistributionStats") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsReportDistributionStats = utf8JsonReader;
-                            catalogsReportDistributionStats = JsonSerializer.Deserialize<CatalogsReportDistributionStats>(ref utf8JsonReaderCatalogsReportDistributionStats, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsReportFeedIngestionStats") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsReportFeedIngestionStats = utf8JsonReader;
                             catalogsReportFeedIngestionStats = JsonSerializer.Deserialize<CatalogsReportFeedIngestionStats>(ref utf8JsonReaderCatalogsReportFeedIngestionStats, jsonSerializerOptions);
@@ -262,12 +250,6 @@ namespace Org.OpenAPITools.Model
 
             if (reportType.IsSet && reportType.Value == null)
                 throw new ArgumentNullException(nameof(reportType), "Property is not nullable for class CatalogsReportStats.");
-
-            if (catalogsReportDistributionStats != null)
-                return new CatalogsReportStats(catalogsReportDistributionStats);
-
-            if (catalogsReportFeedIngestionStats != null)
-                return new CatalogsReportStats(catalogsReportFeedIngestionStats);
 
             if (catalogsReportDistributionStats != null)
                 return new CatalogsReportStats(catalogsReportDistributionStats);

@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SSIOInsertionOrderStatus
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOInsertionOrderStatus {
   public static final String SERIALIZED_NAME_PIN_ORDER_ID = "pin_order_id";
   @SerializedName(SERIALIZED_NAME_PIN_ORDER_ID)
@@ -185,13 +185,10 @@ public class SSIOInsertionOrderStatus {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("pin_order_id");
-    openapiFields.add("status");
-    openapiFields.add("creation_time");
+    openapiFields = new HashSet<String>(Arrays.asList("pin_order_id", "status", "creation_time"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -203,7 +200,7 @@ public class SSIOInsertionOrderStatus {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SSIOInsertionOrderStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SSIOInsertionOrderStatus is not found in the empty JSON string", SSIOInsertionOrderStatus.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in SSIOInsertionOrderStatus is not found in the empty JSON string", SSIOInsertionOrderStatus.openapiRequiredFields.toString()));
         }
       }
 
@@ -211,18 +208,18 @@ public class SSIOInsertionOrderStatus {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!SSIOInsertionOrderStatus.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SSIOInsertionOrderStatus` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `SSIOInsertionOrderStatus` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("pin_order_id") != null && !jsonObj.get("pin_order_id").isJsonNull()) && !jsonObj.get("pin_order_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pin_order_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pin_order_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `pin_order_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pin_order_id").toString()));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       if ((jsonObj.get("creation_time") != null && !jsonObj.get("creation_time").isJsonNull()) && !jsonObj.get("creation_time").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `creation_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creation_time").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `creation_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creation_time").toString()));
       }
   }
 

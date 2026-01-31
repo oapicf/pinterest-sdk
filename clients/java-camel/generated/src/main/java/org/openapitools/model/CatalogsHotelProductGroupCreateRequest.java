@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelProductGroupCreateRequest", description = "Request object for creating a hotel product group.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalProductGroupCreateRequest {
 
   /**
@@ -36,7 +36,7 @@ public class CatalogsHotelProductGroupCreateRequest implements CatalogsVerticalP
   public enum CatalogTypeEnum {
     HOTEL("HOTEL");
 
-    private String value;
+    private final String value;
 
     CatalogTypeEnum(String value) {
       this.value = value;

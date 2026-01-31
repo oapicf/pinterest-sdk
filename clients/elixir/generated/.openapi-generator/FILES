@@ -119,7 +119,6 @@ lib/pinterest_restapi/model/audience_category.ex
 lib/pinterest_restapi/model/audience_common.ex
 lib/pinterest_restapi/model/audience_create_custom_request.ex
 lib/pinterest_restapi/model/audience_create_request.ex
-lib/pinterest_restapi/model/audience_create_request_1_audience_type.ex
 lib/pinterest_restapi/model/audience_data_party.ex
 lib/pinterest_restapi/model/audience_definition.ex
 lib/pinterest_restapi/model/audience_definition_response.ex
@@ -297,7 +296,6 @@ lib/pinterest_restapi/model/catalogs_items_delete_discontinued_batch_request.ex
 lib/pinterest_restapi/model/catalogs_items_filters.ex
 lib/pinterest_restapi/model/catalogs_items_post_filters.ex
 lib/pinterest_restapi/model/catalogs_items_request.ex
-lib/pinterest_restapi/model/catalogs_items_request_language.ex
 lib/pinterest_restapi/model/catalogs_items_update_batch_request.ex
 lib/pinterest_restapi/model/catalogs_items_upsert_batch_request.ex
 lib/pinterest_restapi/model/catalogs_list_200_response.ex
@@ -631,7 +629,6 @@ lib/pinterest_restapi/model/pin_media_with_videos.ex
 lib/pinterest_restapi/model/pin_promotion_summary_status.ex
 lib/pinterest_restapi/model/pin_update.ex
 lib/pinterest_restapi/model/pin_update_carousel_slots_inner.ex
-lib/pinterest_restapi/model/pins_analytics_metric_types_parameter_inner.ex
 lib/pinterest_restapi/model/pins_list_200_response.ex
 lib/pinterest_restapi/model/pins_save_request.ex
 lib/pinterest_restapi/model/pinterest_tag_event_data.ex

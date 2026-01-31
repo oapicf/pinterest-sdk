@@ -24,7 +24,7 @@ data class CreateAssetAccessRequestBody(
     @get:Size(min=1,max=100) 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("asset_requests", required = true) val assetRequests: kotlin.collections.List<CreateAssetAccessRequestBodyAssetRequestsInner>
-    ) {
+) {
 
 }
 

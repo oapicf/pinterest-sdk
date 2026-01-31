@@ -14,24 +14,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ConversionEventResponse  {
   
   @ApiModelProperty(value = "")
+
   private ConversionTagType conversionEvent;
 
-  @ApiModelProperty(example = "2614324385652", value = "Id of the tag.")
  /**
-   * Id of the tag.
-  **/
+  * Id of the tag.
+  */
+  @ApiModelProperty(example = "2614324385652", value = "Id of the tag.")
+
   private String conversionTagId;
 
-  @ApiModelProperty(example = "549757463328", value = "Id of the ad account.")
  /**
-   * Id of the ad account.
-  **/
+  * Id of the ad account.
+  */
+  @ApiModelProperty(example = "549757463328", value = "Id of the ad account.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "1564768710", value = "Creation date in epoch format.")
  /**
-   * Creation date in epoch format.
-  **/
+  * Creation date in epoch format.
+  */
+  @ApiModelProperty(example = "1564768710", value = "Creation date in epoch format.")
+
   private Integer createdTime;
  /**
    * Get conversionEvent

@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * AdAccountCreateSubscriptionRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountCreateSubscriptionRequest {
 
   private String webhookUrl;
@@ -64,7 +64,7 @@ public class AdAccountCreateSubscriptionRequest {
     this.webhookUrl = webhookUrl;
   }
 
-  public AdAccountCreateSubscriptionRequest leadFormId(String leadFormId) {
+  public AdAccountCreateSubscriptionRequest leadFormId(@Nullable String leadFormId) {
     this.leadFormId = leadFormId;
     return this;
   }
@@ -76,15 +76,15 @@ public class AdAccountCreateSubscriptionRequest {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "lead_form_id", example = "383791336903426390", description = "Lead form ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lead_form_id")
-  public String getLeadFormId() {
+  public @Nullable String getLeadFormId() {
     return leadFormId;
   }
 
-  public void setLeadFormId(String leadFormId) {
+  public void setLeadFormId(@Nullable String leadFormId) {
     this.leadFormId = leadFormId;
   }
 
-  public AdAccountCreateSubscriptionRequest partnerAccessToken(String partnerAccessToken) {
+  public AdAccountCreateSubscriptionRequest partnerAccessToken(@Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
     return this;
   }
@@ -96,15 +96,15 @@ public class AdAccountCreateSubscriptionRequest {
   
   @Schema(name = "partner_access_token", description = "Partner access token. Only for clients that requires authentication. We recommend to avoid this param.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_access_token")
-  public String getPartnerAccessToken() {
+  public @Nullable String getPartnerAccessToken() {
     return partnerAccessToken;
   }
 
-  public void setPartnerAccessToken(String partnerAccessToken) {
+  public void setPartnerAccessToken(@Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
   }
 
-  public AdAccountCreateSubscriptionRequest partnerRefreshToken(String partnerRefreshToken) {
+  public AdAccountCreateSubscriptionRequest partnerRefreshToken(@Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
     return this;
   }
@@ -116,15 +116,15 @@ public class AdAccountCreateSubscriptionRequest {
   
   @Schema(name = "partner_refresh_token", description = "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_refresh_token")
-  public String getPartnerRefreshToken() {
+  public @Nullable String getPartnerRefreshToken() {
     return partnerRefreshToken;
   }
 
-  public void setPartnerRefreshToken(String partnerRefreshToken) {
+  public void setPartnerRefreshToken(@Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
   }
 
-  public AdAccountCreateSubscriptionRequest partnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
+  public AdAccountCreateSubscriptionRequest partnerMetadata(@Nullable AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
@@ -136,11 +136,11 @@ public class AdAccountCreateSubscriptionRequest {
   @Valid 
   @Schema(name = "partner_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_metadata")
-  public AdAccountCreateSubscriptionRequestPartnerMetadata getPartnerMetadata() {
+  public @Nullable AdAccountCreateSubscriptionRequestPartnerMetadata getPartnerMetadata() {
     return partnerMetadata;
   }
 
-  public void setPartnerMetadata(AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
+  public void setPartnerMetadata(@Nullable AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 

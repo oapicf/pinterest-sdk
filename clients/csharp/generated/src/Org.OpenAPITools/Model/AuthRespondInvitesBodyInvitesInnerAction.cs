@@ -134,12 +134,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "accept_invite":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                acceptInvite = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            acceptInvite = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "asset_id_to_permissions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetIdToPermissions = new Option<Dictionary<string, List<Permissions>>?>(JsonSerializer.Deserialize<Dictionary<string, List<Permissions>>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            assetIdToPermissions = new Option<Dictionary<string, List<Permissions>>?>(JsonSerializer.Deserialize<Dictionary<string, List<Permissions>>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

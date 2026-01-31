@@ -92,7 +92,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call conversionTagsCreateCall(String adAccountId, ConversionTagCreate conversionTagCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call conversionTagsCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ConversionTagCreate conversionTagCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -139,7 +139,7 @@ public class ConversionTagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call conversionTagsCreateValidateBeforeCall(String adAccountId, ConversionTagCreate conversionTagCreate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call conversionTagsCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ConversionTagCreate conversionTagCreate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling conversionTagsCreate(Async)");
@@ -169,7 +169,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ConversionTagResponse conversionTagsCreate(String adAccountId, ConversionTagCreate conversionTagCreate) throws ApiException {
+    public ConversionTagResponse conversionTagsCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ConversionTagCreate conversionTagCreate) throws ApiException {
         ApiResponse<ConversionTagResponse> localVarResp = conversionTagsCreateWithHttpInfo(adAccountId, conversionTagCreate);
         return localVarResp.getData();
     }
@@ -189,7 +189,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConversionTagResponse> conversionTagsCreateWithHttpInfo(String adAccountId, ConversionTagCreate conversionTagCreate) throws ApiException {
+    public ApiResponse<ConversionTagResponse> conversionTagsCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ConversionTagCreate conversionTagCreate) throws ApiException {
         okhttp3.Call localVarCall = conversionTagsCreateValidateBeforeCall(adAccountId, conversionTagCreate, null);
         Type localVarReturnType = new TypeToken<ConversionTagResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -211,7 +211,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call conversionTagsCreateAsync(String adAccountId, ConversionTagCreate conversionTagCreate, final ApiCallback<ConversionTagResponse> _callback) throws ApiException {
+    public okhttp3.Call conversionTagsCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull ConversionTagCreate conversionTagCreate, final ApiCallback<ConversionTagResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = conversionTagsCreateValidateBeforeCall(adAccountId, conversionTagCreate, _callback);
         Type localVarReturnType = new TypeToken<ConversionTagResponse>(){}.getType();
@@ -233,7 +233,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call conversionTagsGetCall(String adAccountId, String conversionTagId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call conversionTagsGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String conversionTagId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -280,7 +280,7 @@ public class ConversionTagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call conversionTagsGetValidateBeforeCall(String adAccountId, String conversionTagId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call conversionTagsGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String conversionTagId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling conversionTagsGet(Async)");
@@ -310,7 +310,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ConversionTagResponse conversionTagsGet(String adAccountId, String conversionTagId) throws ApiException {
+    public ConversionTagResponse conversionTagsGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String conversionTagId) throws ApiException {
         ApiResponse<ConversionTagResponse> localVarResp = conversionTagsGetWithHttpInfo(adAccountId, conversionTagId);
         return localVarResp.getData();
     }
@@ -330,7 +330,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConversionTagResponse> conversionTagsGetWithHttpInfo(String adAccountId, String conversionTagId) throws ApiException {
+    public ApiResponse<ConversionTagResponse> conversionTagsGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String conversionTagId) throws ApiException {
         okhttp3.Call localVarCall = conversionTagsGetValidateBeforeCall(adAccountId, conversionTagId, null);
         Type localVarReturnType = new TypeToken<ConversionTagResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -352,7 +352,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call conversionTagsGetAsync(String adAccountId, String conversionTagId, final ApiCallback<ConversionTagResponse> _callback) throws ApiException {
+    public okhttp3.Call conversionTagsGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String conversionTagId, final ApiCallback<ConversionTagResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = conversionTagsGetValidateBeforeCall(adAccountId, conversionTagId, _callback);
         Type localVarReturnType = new TypeToken<ConversionTagResponse>(){}.getType();
@@ -374,7 +374,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call conversionTagsListCall(String adAccountId, Boolean filterDeleted, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call conversionTagsListCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Boolean filterDeleted, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -424,7 +424,7 @@ public class ConversionTagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call conversionTagsListValidateBeforeCall(String adAccountId, Boolean filterDeleted, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call conversionTagsListValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Boolean filterDeleted, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling conversionTagsList(Async)");
@@ -449,7 +449,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ConversionTagListResponse conversionTagsList(String adAccountId, Boolean filterDeleted) throws ApiException {
+    public ConversionTagListResponse conversionTagsList(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Boolean filterDeleted) throws ApiException {
         ApiResponse<ConversionTagListResponse> localVarResp = conversionTagsListWithHttpInfo(adAccountId, filterDeleted);
         return localVarResp.getData();
     }
@@ -469,7 +469,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConversionTagListResponse> conversionTagsListWithHttpInfo(String adAccountId, Boolean filterDeleted) throws ApiException {
+    public ApiResponse<ConversionTagListResponse> conversionTagsListWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Boolean filterDeleted) throws ApiException {
         okhttp3.Call localVarCall = conversionTagsListValidateBeforeCall(adAccountId, filterDeleted, null);
         Type localVarReturnType = new TypeToken<ConversionTagListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -491,7 +491,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call conversionTagsListAsync(String adAccountId, Boolean filterDeleted, final ApiCallback<ConversionTagListResponse> _callback) throws ApiException {
+    public okhttp3.Call conversionTagsListAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Boolean filterDeleted, final ApiCallback<ConversionTagListResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = conversionTagsListValidateBeforeCall(adAccountId, filterDeleted, _callback);
         Type localVarReturnType = new TypeToken<ConversionTagListResponse>(){}.getType();
@@ -512,7 +512,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected errors </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ocpmEligibleConversionTagsGetCall(String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call ocpmEligibleConversionTagsGetCall(@javax.annotation.Nonnull String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -558,7 +558,7 @@ public class ConversionTagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ocpmEligibleConversionTagsGetValidateBeforeCall(String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call ocpmEligibleConversionTagsGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling ocpmEligibleConversionTagsGet(Async)");
@@ -582,7 +582,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected errors </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, List<ConversionEventResponse>> ocpmEligibleConversionTagsGet(String adAccountId) throws ApiException {
+    public Map<String, List<ConversionEventResponse>> ocpmEligibleConversionTagsGet(@javax.annotation.Nonnull String adAccountId) throws ApiException {
         ApiResponse<Map<String, List<ConversionEventResponse>>> localVarResp = ocpmEligibleConversionTagsGetWithHttpInfo(adAccountId);
         return localVarResp.getData();
     }
@@ -601,7 +601,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected errors </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, List<ConversionEventResponse>>> ocpmEligibleConversionTagsGetWithHttpInfo(String adAccountId) throws ApiException {
+    public ApiResponse<Map<String, List<ConversionEventResponse>>> ocpmEligibleConversionTagsGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = ocpmEligibleConversionTagsGetValidateBeforeCall(adAccountId, null);
         Type localVarReturnType = new TypeToken<Map<String, List<ConversionEventResponse>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -622,7 +622,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected errors </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ocpmEligibleConversionTagsGetAsync(String adAccountId, final ApiCallback<Map<String, List<ConversionEventResponse>>> _callback) throws ApiException {
+    public okhttp3.Call ocpmEligibleConversionTagsGetAsync(@javax.annotation.Nonnull String adAccountId, final ApiCallback<Map<String, List<ConversionEventResponse>>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = ocpmEligibleConversionTagsGetValidateBeforeCall(adAccountId, _callback);
         Type localVarReturnType = new TypeToken<Map<String, List<ConversionEventResponse>>>(){}.getType();
@@ -646,7 +646,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pageVisitConversionTagsGetCall(String adAccountId, Integer pageSize, String order, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call pageVisitConversionTagsGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -704,7 +704,7 @@ public class ConversionTagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call pageVisitConversionTagsGetValidateBeforeCall(String adAccountId, Integer pageSize, String order, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call pageVisitConversionTagsGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling pageVisitConversionTagsGet(Async)");
@@ -731,7 +731,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(String adAccountId, Integer pageSize, String order, String bookmark) throws ApiException {
+    public PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<PageVisitConversionTagsGet200Response> localVarResp = pageVisitConversionTagsGetWithHttpInfo(adAccountId, pageSize, order, bookmark);
         return localVarResp.getData();
     }
@@ -753,7 +753,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PageVisitConversionTagsGet200Response> pageVisitConversionTagsGetWithHttpInfo(String adAccountId, Integer pageSize, String order, String bookmark) throws ApiException {
+    public ApiResponse<PageVisitConversionTagsGet200Response> pageVisitConversionTagsGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = pageVisitConversionTagsGetValidateBeforeCall(adAccountId, pageSize, order, bookmark, null);
         Type localVarReturnType = new TypeToken<PageVisitConversionTagsGet200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -777,7 +777,7 @@ public class ConversionTagsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pageVisitConversionTagsGetAsync(String adAccountId, Integer pageSize, String order, String bookmark, final ApiCallback<PageVisitConversionTagsGet200Response> _callback) throws ApiException {
+    public okhttp3.Call pageVisitConversionTagsGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback<PageVisitConversionTagsGet200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = pageVisitConversionTagsGetValidateBeforeCall(adAccountId, pageSize, order, bookmark, _callback);
         Type localVarReturnType = new TypeToken<PageVisitConversionTagsGet200Response>(){}.getType();

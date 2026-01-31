@@ -15,12 +15,9 @@
 
 
 #import "OAICatalogsItemsPostFilters.h"
-#import "OAICatalogsItemsRequestLanguage.h"
 #import "OAICountry.h"
 @protocol OAICatalogsItemsPostFilters;
 @class OAICatalogsItemsPostFilters;
-@protocol OAICatalogsItemsRequestLanguage;
-@class OAICatalogsItemsRequestLanguage;
 @protocol OAICountry;
 @class OAICountry;
 
@@ -33,8 +30,9 @@
 
 
 @property(nonatomic) OAICountry* country;
-
-@property(nonatomic) OAICatalogsItemsRequestLanguage* language;
+/* We recommend using the CatalogsLocale values. 
+ */
+@property(nonatomic) NSString* language;
 
 @property(nonatomic) OAICatalogsItemsPostFilters* filters;
 

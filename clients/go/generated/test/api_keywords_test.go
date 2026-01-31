@@ -82,8 +82,8 @@ func Test_openapi_KeywordsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var region TrendsSupportedRegion
-		var trendType TrendType
+		var region openapiclient.TrendsSupportedRegion
+		var trendType openapiclient.TrendType
 
 		resp, httpRes, err := apiClient.KeywordsAPI.TrendingKeywordsList(context.Background(), region, trendType).Execute()
 

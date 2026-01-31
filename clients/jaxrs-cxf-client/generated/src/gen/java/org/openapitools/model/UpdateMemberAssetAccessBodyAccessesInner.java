@@ -12,22 +12,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UpdateMemberAssetAccessBodyAccessesInner  {
   
-  @ApiModelProperty(example = "549755885175", required = true, value = "Id of the asset to update.")
  /**
-   * Id of the asset to update.
-  **/
+  * Id of the asset to update.
+  */
+  @ApiModelProperty(example = "549755885175", required = true, value = "Id of the asset to update.")
+
   private String assetId;
 
-  @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member on which to perform the update")
  /**
-   * Unique identifier of the member on which to perform the update
-  **/
+  * Unique identifier of the member on which to perform the update
+  */
+  @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member on which to perform the update")
+
   private String memberId;
 
-  @ApiModelProperty(example = "[\"ANALYST\",\"ADMIN\"]", required = true, value = "A non-empty array of permissions to assign to the member.")
  /**
-   * A non-empty array of permissions to assign to the member.
-  **/
+  * A non-empty array of permissions to assign to the member.
+  */
+  @ApiModelProperty(example = "[\"ANALYST\",\"ADMIN\"]", required = true, value = "A non-empty array of permissions to assign to the member.")
+
   private List<Permissions> permissions = new ArrayList<>();
  /**
    * Id of the asset to update.

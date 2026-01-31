@@ -44,16 +44,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdAccountsCountryResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"code\" : \"code\",\n    \"name\" : \"United States of America\",\n    \"index\" : 1,\n    \"currency\" : \"Dollars\"\n  }, {\n    \"code\" : \"code\",\n    \"name\" : \"United States of America\",\n    \"index\" : 1,\n    \"currency\" : \"Dollars\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdAccountsCountryResponse>(exampleJson)
-            : default(AdAccountsCountryResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -75,16 +75,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(DeliveryMetricsResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"name\" : \"AD_GROUP_ID\",\n    \"definition\" : \"Unique ID for your ad group\",\n    \"category\" : \"ADS\",\n    \"display_name\" : \"Ad group ID\"\n  }, {\n    \"name\" : \"AD_GROUP_ID\",\n    \"definition\" : \"Unique ID for your ad group\",\n    \"category\" : \"ADS\",\n    \"display_name\" : \"Ad group ID\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<DeliveryMetricsResponse>(exampleJson)
-            : default(DeliveryMetricsResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -106,16 +106,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(SingleInterestTargetingOptionResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"level\" : 2,\n  \"name\" : \"Dress\",\n  \"child_interests\" : [ \"child_interests\", \"child_interests\" ],\n  \"id\" : \"945391946569\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<SingleInterestTargetingOptionResponse>(exampleJson)
-            : default(SingleInterestTargetingOptionResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -137,7 +137,7 @@ namespace Org.OpenAPITools.Controllers
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
 
             throw new NotImplementedException();
         }
@@ -159,16 +159,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(BookClosedResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"conversion_metrics_ready\" : false,\n  \"non_conversion_metrics_ready\" : false\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<BookClosedResponse>(exampleJson)
-            : default(BookClosedResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -194,16 +194,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<Object>));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "[ {\n  \"36313\" : \"Australia: Moreton Bay - North\",\n  \"124735\" : \"Canada: North Battleford\"\n}, {\n  \"36313\" : \"Australia: Moreton Bay - North\",\n  \"124735\" : \"Canada: North Battleford\"\n} ]";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<Object>>(exampleJson)
-            : default(List<Object>);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

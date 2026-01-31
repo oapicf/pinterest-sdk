@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_feed_ingestion_details
 import model_catalogs_feed_processing_status
@@ -22,5 +24,38 @@ type CatalogsFeedProcessingResult* = object
   updatedAt*: string
   ingestionDetails*: CatalogsFeedIngestionDetails
   status*: CatalogsFeedProcessingStatus
-  productCounts*: CatalogsFeedProductCounts
+  productCounts*: Option[CatalogsFeedProductCounts]
   validationDetails*: CatalogsFeedValidationDetails
+
+
+# Custom JSON deserialization for CatalogsFeedProcessingResult with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsFeedProcessingResult]): CatalogsFeedProcessingResult =
+  result = CatalogsFeedProcessingResult()
+  if node.kind == JObject:
+    if node.hasKey("created_at"):
+      result.createdAt = to(node["created_at"], string)
+    if node.hasKey("id"):
+      result.id = to(node["id"], string)
+    if node.hasKey("updated_at"):
+      result.updatedAt = to(node["updated_at"], string)
+    if node.hasKey("ingestion_details"):
+      result.ingestionDetails = to(node["ingestion_details"], CatalogsFeedIngestionDetails)
+    if node.hasKey("status"):
+      result.status = to(node["status"], CatalogsFeedProcessingStatus)
+    if node.hasKey("product_counts") and node["product_counts"].kind != JNull:
+      result.productCounts = some(to(node["product_counts"], typeof(result.productCounts.get())))
+    if node.hasKey("validation_details"):
+      result.validationDetails = to(node["validation_details"], CatalogsFeedValidationDetails)
+
+# Custom JSON serialization for CatalogsFeedProcessingResult with custom field names
+proc `%`*(obj: CatalogsFeedProcessingResult): JsonNode =
+  result = newJObject()
+  result["created_at"] = %obj.createdAt
+  result["id"] = %obj.id
+  result["updated_at"] = %obj.updatedAt
+  result["ingestion_details"] = %obj.ingestionDetails
+  result["status"] = %obj.status
+  if obj.productCounts.isSome():
+    result["product_counts"] = %obj.productCounts.get()
+  result["validation_details"] = %obj.validationDetails
+

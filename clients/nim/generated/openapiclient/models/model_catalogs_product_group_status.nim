@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type CatalogsProductGroupStatus* = object
-  ## 
+type CatalogsProductGroupStatus* {.pure.} = enum
+  ACTIVE
+  INACTIVE
+
+func `%`*(v: CatalogsProductGroupStatus): JsonNode =
+  result = case v:
+    of CatalogsProductGroupStatus.ACTIVE: %"ACTIVE"
+    of CatalogsProductGroupStatus.INACTIVE: %"INACTIVE"
+
+func `$`*(v: CatalogsProductGroupStatus): string =
+  result = case v:
+    of CatalogsProductGroupStatus.ACTIVE: $("ACTIVE")
+    of CatalogsProductGroupStatus.INACTIVE: $("INACTIVE")
+
+proc to*(node: JsonNode, T: typedesc[CatalogsProductGroupStatus]): CatalogsProductGroupStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogsProductGroupStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ACTIVE"):
+    return CatalogsProductGroupStatus.ACTIVE
+  of $("INACTIVE"):
+    return CatalogsProductGroupStatus.INACTIVE
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogsProductGroupStatus: " & strVal)
+

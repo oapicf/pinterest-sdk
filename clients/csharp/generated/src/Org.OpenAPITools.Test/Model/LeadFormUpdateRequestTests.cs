@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -53,6 +52,15 @@ namespace Org.OpenAPITools.Test.Model
         {
             // TODO uncomment below to test "IsType" LeadFormUpdateRequest
             //Assert.IsType<LeadFormUpdateRequest>(instance);
+        }
+
+        /// <summary>
+        /// Test the property 'Id'
+        /// </summary>
+        [Fact]
+        public void IdTest()
+        {
+            // TODO unit test for the property 'Id'
         }
 
         /// <summary>
@@ -125,15 +133,6 @@ namespace Org.OpenAPITools.Test.Model
         public void PolicyLinksTest()
         {
             // TODO unit test for the property 'PolicyLinks'
-        }
-
-        /// <summary>
-        /// Test the property 'Id'
-        /// </summary>
-        [Fact]
-        public void IdTest()
-        {
-            // TODO unit test for the property 'Id'
         }
     }
 }

@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  * AdCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdCreateRequest {
 
   private String adGroupId;
@@ -110,7 +110,7 @@ public class AdCreateRequest {
     
     READ_MORE("READ_MORE");
 
-    private String value;
+    private final String value;
 
     CustomizableCtaTypeEnum(String value) {
       this.value = value;
@@ -360,7 +360,7 @@ public class AdCreateRequest {
     this.iosDeepLink = iosDeepLink;
   }
 
-  public AdCreateRequest isPinDeleted(Boolean isPinDeleted) {
+  public AdCreateRequest isPinDeleted(@Nullable Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
     return this;
   }
@@ -372,15 +372,15 @@ public class AdCreateRequest {
   
   @Schema(name = "is_pin_deleted", example = "false", description = "Is original pin deleted?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_pin_deleted")
-  public Boolean getIsPinDeleted() {
+  public @Nullable Boolean getIsPinDeleted() {
     return isPinDeleted;
   }
 
-  public void setIsPinDeleted(Boolean isPinDeleted) {
+  public void setIsPinDeleted(@Nullable Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
   }
 
-  public AdCreateRequest isRemovable(Boolean isRemovable) {
+  public AdCreateRequest isRemovable(@Nullable Boolean isRemovable) {
     this.isRemovable = isRemovable;
     return this;
   }
@@ -392,11 +392,11 @@ public class AdCreateRequest {
   
   @Schema(name = "is_removable", example = "false", description = "Is pin repinnable?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_removable")
-  public Boolean getIsRemovable() {
+  public @Nullable Boolean getIsRemovable() {
     return isRemovable;
   }
 
-  public void setIsRemovable(Boolean isRemovable) {
+  public void setIsRemovable(@Nullable Boolean isRemovable) {
     this.isRemovable = isRemovable;
   }
 
@@ -420,7 +420,7 @@ public class AdCreateRequest {
     this.name = name;
   }
 
-  public AdCreateRequest status(EntityStatus status) {
+  public AdCreateRequest status(@Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -432,11 +432,11 @@ public class AdCreateRequest {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public EntityStatus getStatus() {
+  public @Nullable EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_placement_group_type
 import model_targeting_spec
@@ -22,27 +24,101 @@ type Status* {.pure.} = enum
 
 type TargetingTemplateResponseData* = object
   ## 
-  name*: string ## targeting template name
-  autoTargetingEnabled*: bool ## Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  targetingAttributes*: TargetingSpec
-  placementGroup*: PlacementGroupType
-  keywords*: seq[TargetingTemplateKeyword]
-  trackingUrls*: TrackingUrls
-  id*: string ## Targeting template ID.
-  createdTime*: int ## Targeting template created time. Unix timestamp in seconds.
-  updatedTime*: int ## Targeting template updated time.Unix timestamp in seconds.
-  adAccountId*: string ## The ID of the advertiser that this targeting template belongs to.
-  status*: Status ## Indicate targeting template is active or Deleted
-  sizing*: TargetingTemplateAudienceSizing
+  name*: Option[string] ## targeting template name
+  autoTargetingEnabled*: Option[bool] ## Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  targetingAttributes*: Option[TargetingSpec]
+  placementGroup*: Option[PlacementGroupType]
+  keywords*: Option[seq[TargetingTemplateKeyword]]
+  trackingUrls*: Option[TrackingUrls]
+  id*: Option[string] ## Targeting template ID.
+  createdTime*: Option[int] ## Targeting template created time. Unix timestamp in seconds.
+  updatedTime*: Option[int] ## Targeting template updated time.Unix timestamp in seconds.
+  adAccountId*: Option[string] ## The ID of the advertiser that this targeting template belongs to.
+  status*: Option[Status] ## Indicate targeting template is active or Deleted
+  sizing*: Option[TargetingTemplateAudienceSizing]
 
 func `%`*(v: Status): JsonNode =
-  let str = case v:
-    of Status.ACTIVE: "ACTIVE"
-    of Status.DELETED: "DELETED"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Status.ACTIVE: %"ACTIVE"
+    of Status.DELETED: %"DELETED"
 func `$`*(v: Status): string =
   result = case v:
-    of Status.ACTIVE: "ACTIVE"
-    of Status.DELETED: "DELETED"
+    of Status.ACTIVE: $("ACTIVE")
+    of Status.DELETED: $("DELETED")
+
+proc to*(node: JsonNode, T: typedesc[Status]): Status =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Status, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ACTIVE"):
+    return Status.ACTIVE
+  of $("DELETED"):
+    return Status.DELETED
+  else:
+    raise newException(ValueError, "Invalid enum value for Status: " & strVal)
+
+
+# Custom JSON deserialization for TargetingTemplateResponseData with custom field names
+proc to*(node: JsonNode, T: typedesc[TargetingTemplateResponseData]): TargetingTemplateResponseData =
+  result = TargetingTemplateResponseData()
+  if node.kind == JObject:
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("auto_targeting_enabled") and node["auto_targeting_enabled"].kind != JNull:
+      result.autoTargetingEnabled = some(to(node["auto_targeting_enabled"], typeof(result.autoTargetingEnabled.get())))
+    if node.hasKey("targeting_attributes") and node["targeting_attributes"].kind != JNull:
+      result.targetingAttributes = some(to(node["targeting_attributes"], typeof(result.targetingAttributes.get())))
+    if node.hasKey("placement_group") and node["placement_group"].kind != JNull:
+      result.placementGroup = some(to(node["placement_group"], typeof(result.placementGroup.get())))
+    if node.hasKey("keywords") and node["keywords"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["keywords"]
+      if arrayNode.kind == JArray:
+        var arr: seq[TargetingTemplateKeyword] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, TargetingTemplateKeyword))
+        result.keywords = some(arr)
+    if node.hasKey("tracking_urls") and node["tracking_urls"].kind != JNull:
+      result.trackingUrls = some(to(node["tracking_urls"], typeof(result.trackingUrls.get())))
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("created_time") and node["created_time"].kind != JNull:
+      result.createdTime = some(to(node["created_time"], typeof(result.createdTime.get())))
+    if node.hasKey("updated_time") and node["updated_time"].kind != JNull:
+      result.updatedTime = some(to(node["updated_time"], typeof(result.updatedTime.get())))
+    if node.hasKey("ad_account_id") and node["ad_account_id"].kind != JNull:
+      result.adAccountId = some(to(node["ad_account_id"], typeof(result.adAccountId.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], Status))
+    if node.hasKey("sizing") and node["sizing"].kind != JNull:
+      result.sizing = some(to(node["sizing"], typeof(result.sizing.get())))
+
+# Custom JSON serialization for TargetingTemplateResponseData with custom field names
+proc `%`*(obj: TargetingTemplateResponseData): JsonNode =
+  result = newJObject()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.autoTargetingEnabled.isSome():
+    result["auto_targeting_enabled"] = %obj.autoTargetingEnabled.get()
+  if obj.targetingAttributes.isSome():
+    result["targeting_attributes"] = %obj.targetingAttributes.get()
+  if obj.placementGroup.isSome():
+    result["placement_group"] = %obj.placementGroup.get()
+  if obj.keywords.isSome():
+    result["keywords"] = %obj.keywords.get()
+  if obj.trackingUrls.isSome():
+    result["tracking_urls"] = %obj.trackingUrls.get()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.createdTime.isSome():
+    result["created_time"] = %obj.createdTime.get()
+  if obj.updatedTime.isSome():
+    result["updated_time"] = %obj.updatedTime.get()
+  if obj.adAccountId.isSome():
+    result["ad_account_id"] = %obj.adAccountId.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.sizing.isSome():
+    result["sizing"] = %obj.sizing.get()
+

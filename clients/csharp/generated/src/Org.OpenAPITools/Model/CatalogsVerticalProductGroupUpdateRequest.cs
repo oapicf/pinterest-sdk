@@ -190,9 +190,6 @@ namespace Org.OpenAPITools.Model
             CatalogsCreativeAssetsProductGroupUpdateRequest? catalogsCreativeAssetsProductGroupUpdateRequest = null;
             CatalogsHotelProductGroupUpdateRequest? catalogsHotelProductGroupUpdateRequest = null;
             CatalogsRetailProductGroupUpdateRequest? catalogsRetailProductGroupUpdateRequest = null;
-            CatalogsCreativeAssetsProductGroupUpdateRequest? catalogsCreativeAssetsProductGroupUpdateRequest = null;
-            CatalogsHotelProductGroupUpdateRequest? catalogsHotelProductGroupUpdateRequest = null;
-            CatalogsRetailProductGroupUpdateRequest? catalogsRetailProductGroupUpdateRequest = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -221,21 +218,6 @@ namespace Org.OpenAPITools.Model
                             catalogsHotelProductGroupUpdateRequest = JsonSerializer.Deserialize<CatalogsHotelProductGroupUpdateRequest>(ref utf8JsonReaderCatalogsHotelProductGroupUpdateRequest, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("RETAIL") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsRetailProductGroupUpdateRequest = utf8JsonReader;
-                            catalogsRetailProductGroupUpdateRequest = JsonSerializer.Deserialize<CatalogsRetailProductGroupUpdateRequest>(ref utf8JsonReaderCatalogsRetailProductGroupUpdateRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsCreativeAssetsProductGroupUpdateRequest") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsCreativeAssetsProductGroupUpdateRequest = utf8JsonReader;
-                            catalogsCreativeAssetsProductGroupUpdateRequest = JsonSerializer.Deserialize<CatalogsCreativeAssetsProductGroupUpdateRequest>(ref utf8JsonReaderCatalogsCreativeAssetsProductGroupUpdateRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsHotelProductGroupUpdateRequest") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsHotelProductGroupUpdateRequest = utf8JsonReader;
-                            catalogsHotelProductGroupUpdateRequest = JsonSerializer.Deserialize<CatalogsHotelProductGroupUpdateRequest>(ref utf8JsonReaderCatalogsHotelProductGroupUpdateRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsRetailProductGroupUpdateRequest") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsRetailProductGroupUpdateRequest = utf8JsonReader;
                             catalogsRetailProductGroupUpdateRequest = JsonSerializer.Deserialize<CatalogsRetailProductGroupUpdateRequest>(ref utf8JsonReaderCatalogsRetailProductGroupUpdateRequest, jsonSerializerOptions);
@@ -272,15 +254,6 @@ namespace Org.OpenAPITools.Model
 
             if (catalogType.IsSet && catalogType.Value == null)
                 throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsVerticalProductGroupUpdateRequest.");
-
-            if (catalogsCreativeAssetsProductGroupUpdateRequest != null)
-                return new CatalogsVerticalProductGroupUpdateRequest(catalogsCreativeAssetsProductGroupUpdateRequest);
-
-            if (catalogsHotelProductGroupUpdateRequest != null)
-                return new CatalogsVerticalProductGroupUpdateRequest(catalogsHotelProductGroupUpdateRequest);
-
-            if (catalogsRetailProductGroupUpdateRequest != null)
-                return new CatalogsVerticalProductGroupUpdateRequest(catalogsRetailProductGroupUpdateRequest);
 
             if (catalogsCreativeAssetsProductGroupUpdateRequest != null)
                 return new CatalogsVerticalProductGroupUpdateRequest(catalogsCreativeAssetsProductGroupUpdateRequest);

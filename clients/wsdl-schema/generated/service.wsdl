@@ -3540,11 +3540,11 @@
               <xs:documentation>Audience description.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" name="audience_type" type="schemas:AudienceCreateRequest_1_audience_type" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="AudienceCreateRequest1AudienceType">
-        <xs:sequence>
+          <xs:element minOccurs="1" name="audience_type" type="schemas:AudienceType">
+            <xs:annotation>
+              <xs:documentation>&lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="AudienceDefinition">
@@ -5086,7 +5086,11 @@
         <xs:sequence>
           <xs:element minOccurs="1" name="catalog_type" type="schemas:CatalogUnderscoretype" />
           <xs:element minOccurs="1" name="country" type="schemas:Country" />
-          <xs:element minOccurs="1" name="language" type="schemas:CatalogsItemsRequest_language" />
+          <xs:element minOccurs="1" name="language" type="schemas:string">
+            <xs:annotation>
+              <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" maxOccurs="1000" name="items" type="schemas:CatalogsCreativeAssetsBatchItem">
             <xs:annotation>
               <xs:documentation>Array with creative assets item operations</xs:documentation>
@@ -5163,7 +5167,7 @@
               <xs:documentation>Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" name="status" type="schemas:CatalogsStatus" />
+          <xs:element minOccurs="0" default="CatalogsStatus.ACTIVE" name="status" type="schemas:CatalogsStatus" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="CatalogsCreativeAssetsFeedsUpdateRequest">
@@ -6133,7 +6137,7 @@
           <xs:element minOccurs="0" name="preferred_processing_schedule" type="schemas:CatalogsFeedProcessingSchedule" />
           <xs:element minOccurs="0" name="default_country" type="schemas:Country" />
           <xs:element minOccurs="0" name="default_availability" type="schemas:ProductAvailabilityType" />
-          <xs:element minOccurs="0" name="status" type="schemas:CatalogsStatus" />
+          <xs:element minOccurs="0" default="CatalogsStatus.ACTIVE" name="status" type="schemas:CatalogsStatus" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="CatalogsFeedsCreateRequestDefaultLocale">
@@ -6320,7 +6324,11 @@
         <xs:sequence>
           <xs:element minOccurs="1" name="catalog_type" type="schemas:CatalogUnderscoretype" />
           <xs:element minOccurs="1" name="country" type="schemas:Country" />
-          <xs:element minOccurs="1" name="language" type="schemas:CatalogsItemsRequest_language" />
+          <xs:element minOccurs="1" name="language" type="schemas:string">
+            <xs:annotation>
+              <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" maxOccurs="1000" name="items" type="schemas:CatalogsHotelBatchItem">
             <xs:annotation>
               <xs:documentation>Array with catalogs item operations</xs:documentation>
@@ -6395,7 +6403,7 @@
               <xs:documentation>Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="0" name="status" type="schemas:CatalogsStatus" />
+          <xs:element minOccurs="0" default="CatalogsStatus.ACTIVE" name="status" type="schemas:CatalogsStatus" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="CatalogsHotelFeedsUpdateRequest">
@@ -6852,7 +6860,11 @@
         </xs:annotation>
         <xs:sequence>
           <xs:element minOccurs="1" name="country" type="schemas:Country" />
-          <xs:element minOccurs="1" name="language" type="schemas:CatalogsItemsRequest_language" />
+          <xs:element minOccurs="1" name="language" type="schemas:Language">
+            <xs:annotation>
+              <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" name="operation" type="schemas:BatchOperation" />
           <xs:element minOccurs="1" maxOccurs="unbounded" name="items" type="schemas:ItemDeleteBatchRecord">
             <xs:annotation>
@@ -6867,7 +6879,11 @@
         </xs:annotation>
         <xs:sequence>
           <xs:element minOccurs="1" name="country" type="schemas:Country" />
-          <xs:element minOccurs="1" name="language" type="schemas:CatalogsItemsRequest_language" />
+          <xs:element minOccurs="1" name="language" type="schemas:string">
+            <xs:annotation>
+              <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" name="operation" type="schemas:BatchOperation" />
           <xs:element minOccurs="1" maxOccurs="1000" name="items" type="schemas:ItemCreateBatchRecord">
             <xs:annotation>
@@ -6882,7 +6898,11 @@
         </xs:annotation>
         <xs:sequence>
           <xs:element minOccurs="1" name="country" type="schemas:Country" />
-          <xs:element minOccurs="1" name="language" type="schemas:CatalogsItemsRequest_language" />
+          <xs:element minOccurs="1" name="language" type="schemas:string">
+            <xs:annotation>
+              <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" name="operation" type="schemas:BatchOperation" />
           <xs:element minOccurs="1" maxOccurs="unbounded" name="items" type="schemas:ItemDeleteBatchRecord">
             <xs:annotation>
@@ -6897,7 +6917,11 @@
         </xs:annotation>
         <xs:sequence>
           <xs:element minOccurs="1" name="country" type="schemas:Country" />
-          <xs:element minOccurs="1" name="language" type="schemas:CatalogsItemsRequest_language" />
+          <xs:element minOccurs="1" name="language" type="schemas:string">
+            <xs:annotation>
+              <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" name="operation" type="schemas:BatchOperation" />
           <xs:element minOccurs="1" maxOccurs="unbounded" name="items" type="schemas:ItemDeleteDiscontinuedBatchRecord">
             <xs:annotation>
@@ -6938,15 +6962,12 @@
         </xs:annotation>
         <xs:sequence>
           <xs:element minOccurs="1" name="country" type="schemas:Country" />
-          <xs:element minOccurs="1" name="language" type="schemas:CatalogsItemsRequest_language" />
+          <xs:element minOccurs="1" name="language" type="schemas:string">
+            <xs:annotation>
+              <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" name="filters" type="schemas:CatalogsItemsPostFilters" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="CatalogsItemsRequestLanguage">
-        <xs:annotation>
-          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
-        </xs:annotation>
-        <xs:sequence>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="CatalogsItemsUpdateBatchRequest">
@@ -6955,7 +6976,11 @@
         </xs:annotation>
         <xs:sequence>
           <xs:element minOccurs="1" name="country" type="schemas:Country" />
-          <xs:element minOccurs="1" name="language" type="schemas:CatalogsItemsRequest_language" />
+          <xs:element minOccurs="1" name="language" type="schemas:string">
+            <xs:annotation>
+              <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" name="operation" type="schemas:BatchOperation" />
           <xs:element minOccurs="1" maxOccurs="1000" name="items" type="schemas:ItemUpdateBatchRecord">
             <xs:annotation>
@@ -6970,7 +6995,11 @@
         </xs:annotation>
         <xs:sequence>
           <xs:element minOccurs="1" name="country" type="schemas:Country" />
-          <xs:element minOccurs="1" name="language" type="schemas:CatalogsItemsRequest_language" />
+          <xs:element minOccurs="1" name="language" type="schemas:string">
+            <xs:annotation>
+              <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" name="operation" type="schemas:BatchOperation" />
           <xs:element minOccurs="1" maxOccurs="1000" name="items" type="schemas:ItemUpsertBatchRecord">
             <xs:annotation>
@@ -7453,7 +7482,11 @@
         <xs:sequence>
           <xs:element minOccurs="1" name="catalog_type" type="schemas:CatalogUnderscoretype" />
           <xs:element minOccurs="1" name="country" type="schemas:Country" />
-          <xs:element minOccurs="1" name="language" type="schemas:CatalogsItemsRequest_language" />
+          <xs:element minOccurs="1" name="language" type="schemas:string">
+            <xs:annotation>
+              <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" maxOccurs="1000" name="items" type="schemas:CatalogsRetailBatchRequest_items_inner">
             <xs:annotation>
               <xs:documentation>Array with catalogs item operations</xs:documentation>
@@ -7533,7 +7566,7 @@
           <xs:element minOccurs="1" name="catalog_type" type="schemas:CatalogsType" />
           <xs:element minOccurs="1" name="default_country" type="schemas:Country" />
           <xs:element minOccurs="0" name="default_availability" type="schemas:ProductAvailabilityType" />
-          <xs:element minOccurs="0" name="status" type="schemas:CatalogsStatus" />
+          <xs:element minOccurs="0" default="CatalogsStatus.ACTIVE" name="status" type="schemas:CatalogsStatus" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="CatalogsRetailFeedsUpdateRequest">
@@ -8082,7 +8115,11 @@
         <xs:sequence>
           <xs:element minOccurs="1" name="catalog_type" type="schemas:CatalogUnderscoretype" />
           <xs:element minOccurs="1" name="country" type="schemas:Country" />
-          <xs:element minOccurs="1" name="language" type="schemas:CatalogsItemsRequest_language" />
+          <xs:element minOccurs="1" name="language" type="schemas:Language">
+            <xs:annotation>
+              <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" maxOccurs="1000" name="items" type="schemas:CatalogsCreativeAssetsBatchItem">
             <xs:annotation>
               <xs:documentation>Array with creative assets item operations</xs:documentation>
@@ -8118,7 +8155,7 @@
           <xs:element minOccurs="1" name="catalog_type" type="schemas:CatalogsType" />
           <xs:element minOccurs="1" name="default_country" type="schemas:Country" />
           <xs:element minOccurs="0" name="default_availability" type="schemas:ProductAvailabilityType" />
-          <xs:element minOccurs="0" name="status" type="schemas:CatalogsStatus" />
+          <xs:element minOccurs="0" default="CatalogsStatus.ACTIVE" name="status" type="schemas:CatalogsStatus" />
           <xs:element minOccurs="0" name="catalog_id" type="xs:string">
             <xs:annotation>
               <xs:documentation>Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.</xs:documentation>
@@ -8746,11 +8783,6 @@
       </xs:complexType>
       <xs:complexType name="ConversionTagCreate">
         <xs:sequence>
-          <xs:element minOccurs="1" name="name" type="xs:string">
-            <xs:annotation>
-              <xs:documentation>Conversion tag name.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
           <xs:element minOccurs="0" default="false" name="aem_enabled" type="xs:boolean">
             <xs:annotation>
               <xs:documentation>Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.</xs:documentation>
@@ -8784,6 +8816,11 @@
           <xs:element minOccurs="0" default="false" name="aem_loc_enabled" type="xs:boolean">
             <xs:annotation>
               <xs:documentation>Whether Automatic Enhanced Match location is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="name" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Conversion tag name.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -8961,6 +8998,11 @@
       </xs:complexType>
       <xs:complexType name="CreateMMMReportRequest">
         <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="countries" type="schemas:TargetingAdvertiserCountry">
+            <xs:annotation>
+              <xs:documentation>A List of countries for filtering</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" name="report_name" type="xs:string">
             <xs:annotation>
               <xs:documentation>Name of the Marketing Mix Modeling (MMM) report</xs:documentation>
@@ -8994,11 +9036,6 @@
           <xs:element minOccurs="1" maxOccurs="unbounded" name="columns" type="schemas:MMMReportingColumn">
             <xs:annotation>
               <xs:documentation>Metric and entity columns</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="countries" type="schemas:TargetingAdvertiserCountry">
-            <xs:annotation>
-              <xs:documentation>A List of countries for filtering</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -9490,7 +9527,7 @@
           <xs:element minOccurs="1" name="catalog_type" type="schemas:CatalogsType" />
           <xs:element minOccurs="1" name="default_country" type="schemas:Country" />
           <xs:element minOccurs="0" name="default_availability" type="schemas:ProductAvailabilityType" />
-          <xs:element minOccurs="0" name="status" type="schemas:CatalogsStatus" />
+          <xs:element minOccurs="0" default="CatalogsStatus.ACTIVE" name="status" type="schemas:CatalogsStatus" />
           <xs:element minOccurs="0" name="catalog_id" type="xs:string">
             <xs:annotation>
               <xs:documentation>Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.</xs:documentation>
@@ -10143,25 +10180,7 @@
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="InviteBusinessRoleBinding">
-        <xs:annotation>
-          <xs:documentation>An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.</xs:documentation>
-        </xs:annotation>
         <xs:sequence>
-          <xs:element minOccurs="0" name="created_by_business_id" type="xs:string">
-            <xs:annotation>
-              <xs:documentation>Unique identifier for the business that created the invite/request.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="created_by_user_id" type="xs:string">
-            <xs:annotation>
-              <xs:documentation>Unique identifier for the user that created the invite/request.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="user" type="schemas:BusinessAccessUserSummary">
-            <xs:annotation>
-              <xs:documentation>Metadata for the user that updated the invite/request.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
           <xs:element minOccurs="0" name="id" type="xs:string">
             <xs:annotation>
               <xs:documentation>Unique identifier of the invite/request.</xs:documentation>
@@ -10171,6 +10190,21 @@
           <xs:element minOccurs="0" name="is_received_invite" type="xs:boolean">
             <xs:annotation>
               <xs:documentation>Indicates whether the invite/request was received.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="user" type="xs:anyType">
+            <xs:annotation>
+              <xs:documentation>Metadata for the user that updated the invite/request.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="created_by_business_id" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Unique identifier for the business that created the invite/request.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="created_by_user_id" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Unique identifier for the user that created the invite/request.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -10204,27 +10238,6 @@
       </xs:complexType>
       <xs:complexType name="InviteResponse">
         <xs:sequence>
-          <xs:element minOccurs="0" name="assets_summary" type="schemas:InviteAssetsSummary" />
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="business_roles" type="xs:string">
-            <xs:annotation>
-              <xs:documentation>The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="created_by_business" type="schemas:BusinessAccessUserSummary">
-            <xs:annotation>
-              <xs:documentation>Metadata for the business that created the invite/request.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="created_by_user" type="schemas:BusinessAccessUserSummary">
-            <xs:annotation>
-              <xs:documentation>Metadata for the user that created the invite/request.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="created_time" type="xs:integer">
-            <xs:annotation>
-              <xs:documentation>The time the invite/request was created. Returned in milliseconds.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
           <xs:element minOccurs="0" name="id" type="xs:string">
             <xs:annotation>
               <xs:documentation>Unique identifier of the invite/request.</xs:documentation>
@@ -10239,6 +10252,27 @@
           <xs:element minOccurs="0" name="user" type="schemas:BusinessAccessUserSummary">
             <xs:annotation>
               <xs:documentation>Metadata for the member/partner that was sent the invite/request.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="assets_summary" type="schemas:InviteAssetsSummary" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="business_roles" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="created_by_business" type="xs:anyType">
+            <xs:annotation>
+              <xs:documentation>Metadata for the business that created the invite/request.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="created_by_user" type="xs:anyType">
+            <xs:annotation>
+              <xs:documentation>Metadata for the user that created the invite/request.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="created_time" type="xs:integer">
+            <xs:annotation>
+              <xs:documentation>The time the invite/request was created. Returned in milliseconds.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -10964,7 +10998,11 @@
         <xs:sequence>
           <xs:element minOccurs="1" name="catalog_type" type="schemas:CatalogUnderscoretype" />
           <xs:element minOccurs="1" name="country" type="schemas:Country" />
-          <xs:element minOccurs="1" name="language" type="schemas:CatalogsItemsRequest_language" />
+          <xs:element minOccurs="1" name="language" type="schemas:Language">
+            <xs:annotation>
+              <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element minOccurs="1" maxOccurs="unbounded" name="items" type="schemas:ItemDeleteBatchRecord">
             <xs:annotation>
               <xs:documentation>Array with catalogs items</xs:documentation>
@@ -11197,22 +11235,22 @@
       </xs:complexType>
       <xs:complexType name="LeadFormCreateRequest">
         <xs:sequence>
-          <xs:element minOccurs="1" name="name" type="xs:string">
+          <xs:element minOccurs="0" name="name" type="xs:string">
             <xs:annotation>
               <xs:documentation>Internal name of the lead form.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" name="privacy_policy_link" type="xs:string">
+          <xs:element minOccurs="0" name="privacy_policy_link" type="xs:string">
             <xs:annotation>
               <xs:documentation>A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" name="has_accepted_terms" type="xs:boolean">
+          <xs:element minOccurs="0" name="has_accepted_terms" type="xs:boolean">
             <xs:annotation>
               <xs:documentation>Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" name="completion_message" type="xs:string">
+          <xs:element minOccurs="0" name="completion_message" type="xs:string">
             <xs:annotation>
               <xs:documentation>A message for people who complete the form to let them know what happens next.</xs:documentation>
             </xs:annotation>
@@ -11621,30 +11659,20 @@
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="OauthAccessTokenRequestClientCredentials">
-        <xs:annotation>
-          <xs:documentation>A request to receive a client token.</xs:documentation>
-        </xs:annotation>
         <xs:sequence>
-          <xs:element minOccurs="1" name="grant_type" type="schemas:GrantUnderscoretype" />
           <xs:element minOccurs="1" name="scope" type="xs:string" />
+          <xs:element minOccurs="1" name="grant_type" type="schemas:GrantUnderscoretype" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="OauthAccessTokenRequestCode">
-        <xs:annotation>
-          <xs:documentation>A request to exchange an authorization code for an access token.</xs:documentation>
-        </xs:annotation>
         <xs:sequence>
-          <xs:element minOccurs="1" name="grant_type" type="schemas:GrantUnderscoretype" />
           <xs:element minOccurs="1" name="code" type="xs:string" />
           <xs:element minOccurs="1" name="redirect_uri" type="xs:string" />
+          <xs:element minOccurs="1" name="grant_type" type="schemas:GrantUnderscoretype" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="OauthAccessTokenRequestRefresh">
-        <xs:annotation>
-          <xs:documentation>A request to exchange a refresh token for a new access token.</xs:documentation>
-        </xs:annotation>
         <xs:sequence>
-          <xs:element minOccurs="1" name="grant_type" type="schemas:GrantUnderscoretype" />
           <xs:element minOccurs="1" name="refresh_token" type="xs:string" />
           <xs:element minOccurs="0" name="scope" type="xs:string" />
           <xs:element minOccurs="0" name="refresh_on" type="xs:boolean">
@@ -11652,6 +11680,7 @@
               <xs:documentation>Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.</xs:documentation>
             </xs:annotation>
           </xs:element>
+          <xs:element minOccurs="1" name="grant_type" type="schemas:GrantUnderscoretype" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="OauthAccessTokenResponse">
@@ -11679,46 +11708,37 @@
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="OauthAccessTokenResponseCode">
-        <xs:annotation>
-          <xs:documentation>A successful OAuth access token response for the authorization code flow.</xs:documentation>
-        </xs:annotation>
         <xs:sequence>
+          <xs:element minOccurs="1" name="refresh_token" type="xs:string" />
+          <xs:element minOccurs="1" name="refresh_token_expires_in" type="xs:integer" />
           <xs:element minOccurs="0" name="response_type" type="schemas:ResponseUnderscoretype" />
           <xs:element minOccurs="1" name="access_token" type="xs:string" />
           <xs:element minOccurs="1" default="bearer" name="token_type" type="xs:string" />
           <xs:element minOccurs="1" name="expires_in" type="xs:integer" />
           <xs:element minOccurs="1" name="scope" type="xs:string" />
-          <xs:element minOccurs="1" name="refresh_token" type="xs:string" />
-          <xs:element minOccurs="1" name="refresh_token_expires_in" type="xs:integer" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="OauthAccessTokenResponseEverlastingRefresh">
-        <xs:annotation>
-          <xs:documentation>A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.</xs:documentation>
-        </xs:annotation>
         <xs:sequence>
-          <xs:element minOccurs="0" name="response_type" type="schemas:ResponseUnderscoretype" />
-          <xs:element minOccurs="1" name="access_token" type="xs:string" />
-          <xs:element minOccurs="1" default="bearer" name="token_type" type="xs:string" />
-          <xs:element minOccurs="1" name="expires_in" type="xs:integer" />
-          <xs:element minOccurs="1" name="scope" type="xs:string" />
           <xs:element minOccurs="1" name="refresh_token" type="xs:string" />
           <xs:element minOccurs="1" name="refresh_token_expires_in" type="xs:integer" />
           <xs:element minOccurs="1" name="refresh_token_expires_at" type="xs:integer" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="OauthAccessTokenResponseIntegrationRefresh">
-        <xs:annotation>
-          <xs:documentation>A successful OAuth access token response for the refresh token flow, with an added refresh token.</xs:documentation>
-        </xs:annotation>
-        <xs:sequence>
           <xs:element minOccurs="0" name="response_type" type="schemas:ResponseUnderscoretype" />
           <xs:element minOccurs="1" name="access_token" type="xs:string" />
           <xs:element minOccurs="1" default="bearer" name="token_type" type="xs:string" />
           <xs:element minOccurs="1" name="expires_in" type="xs:integer" />
           <xs:element minOccurs="1" name="scope" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OauthAccessTokenResponseIntegrationRefresh">
+        <xs:sequence>
           <xs:element minOccurs="1" name="refresh_token" type="xs:string" />
           <xs:element minOccurs="1" name="refresh_token_expires_in" type="xs:integer" />
+          <xs:element minOccurs="0" name="response_type" type="schemas:ResponseUnderscoretype" />
+          <xs:element minOccurs="1" name="access_token" type="xs:string" />
+          <xs:element minOccurs="1" default="bearer" name="token_type" type="xs:string" />
+          <xs:element minOccurs="1" name="expires_in" type="xs:integer" />
+          <xs:element minOccurs="1" name="scope" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="OauthAccessTokenResponseRefresh">
@@ -12516,10 +12536,6 @@
               <xs:documentation>Carousel Pin slot link.</xs:documentation>
             </xs:annotation>
           </xs:element>
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="PinsAnalyticsMetricTypesParameterInner">
-        <xs:sequence>
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="PinsList200Response">
@@ -15175,6 +15191,120 @@
           <xs:enumeration value="CREATIVE_ASSETS" />
         </xs:restriction>
       </xs:simpleType>
+      <xs:simpleType name="Language">
+        <xs:annotation>
+          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="af-ZA" />
+          <xs:enumeration value="ar-SA" />
+          <xs:enumeration value="bg-BG" />
+          <xs:enumeration value="bn-IN" />
+          <xs:enumeration value="cs-CZ" />
+          <xs:enumeration value="da-DK" />
+          <xs:enumeration value="de" />
+          <xs:enumeration value="el-GR" />
+          <xs:enumeration value="en-AU" />
+          <xs:enumeration value="en-CA" />
+          <xs:enumeration value="en-GB" />
+          <xs:enumeration value="en-IN" />
+          <xs:enumeration value="en-US" />
+          <xs:enumeration value="es-419" />
+          <xs:enumeration value="es-AR" />
+          <xs:enumeration value="es-ES" />
+          <xs:enumeration value="es-MX" />
+          <xs:enumeration value="fi-FI" />
+          <xs:enumeration value="fr" />
+          <xs:enumeration value="fr-CA" />
+          <xs:enumeration value="he-IL" />
+          <xs:enumeration value="hi-IN" />
+          <xs:enumeration value="hr-HR" />
+          <xs:enumeration value="hu-HU" />
+          <xs:enumeration value="id-ID" />
+          <xs:enumeration value="it" />
+          <xs:enumeration value="ja" />
+          <xs:enumeration value="ko-KR" />
+          <xs:enumeration value="ms-MY" />
+          <xs:enumeration value="nb-NO" />
+          <xs:enumeration value="nl" />
+          <xs:enumeration value="pl-PL" />
+          <xs:enumeration value="pt-BR" />
+          <xs:enumeration value="pt-PT" />
+          <xs:enumeration value="ro-RO" />
+          <xs:enumeration value="ru-RU" />
+          <xs:enumeration value="sk-SK" />
+          <xs:enumeration value="sv-SE" />
+          <xs:enumeration value="te-IN" />
+          <xs:enumeration value="th-TH" />
+          <xs:enumeration value="tl-PH" />
+          <xs:enumeration value="tr" />
+          <xs:enumeration value="uk-UA" />
+          <xs:enumeration value="vi-VN" />
+          <xs:enumeration value="zh-CN" />
+          <xs:enumeration value="zh-TW" />
+          <xs:enumeration value="AM" />
+          <xs:enumeration value="AR" />
+          <xs:enumeration value="AZ" />
+          <xs:enumeration value="BG" />
+          <xs:enumeration value="BN" />
+          <xs:enumeration value="BS" />
+          <xs:enumeration value="CA" />
+          <xs:enumeration value="CS" />
+          <xs:enumeration value="DA" />
+          <xs:enumeration value="DV" />
+          <xs:enumeration value="DZ" />
+          <xs:enumeration value="DE" />
+          <xs:enumeration value="EL" />
+          <xs:enumeration value="EN" />
+          <xs:enumeration value="ES" />
+          <xs:enumeration value="ET" />
+          <xs:enumeration value="FA" />
+          <xs:enumeration value="FI" />
+          <xs:enumeration value="FR" />
+          <xs:enumeration value="HE" />
+          <xs:enumeration value="HI" />
+          <xs:enumeration value="HR" />
+          <xs:enumeration value="HU" />
+          <xs:enumeration value="HY" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="IN" />
+          <xs:enumeration value="IS" />
+          <xs:enumeration value="IT" />
+          <xs:enumeration value="IW" />
+          <xs:enumeration value="JA" />
+          <xs:enumeration value="KA" />
+          <xs:enumeration value="KM" />
+          <xs:enumeration value="KO" />
+          <xs:enumeration value="LO" />
+          <xs:enumeration value="LT" />
+          <xs:enumeration value="LV" />
+          <xs:enumeration value="MK" />
+          <xs:enumeration value="MN" />
+          <xs:enumeration value="MS" />
+          <xs:enumeration value="MY" />
+          <xs:enumeration value="NB" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NL" />
+          <xs:enumeration value="NO" />
+          <xs:enumeration value="PL" />
+          <xs:enumeration value="PT" />
+          <xs:enumeration value="RO" />
+          <xs:enumeration value="RU" />
+          <xs:enumeration value="SK" />
+          <xs:enumeration value="SL" />
+          <xs:enumeration value="SQ" />
+          <xs:enumeration value="SR" />
+          <xs:enumeration value="SV" />
+          <xs:enumeration value="TL" />
+          <xs:enumeration value="UK" />
+          <xs:enumeration value="VI" />
+          <xs:enumeration value="TE" />
+          <xs:enumeration value="TH" />
+          <xs:enumeration value="TR" />
+          <xs:enumeration value="XX" />
+          <xs:enumeration value="ZH" />
+        </xs:restriction>
+      </xs:simpleType>
       <xs:simpleType name="CatalogUnderscoretype">
         <xs:restriction base="xs:string">
           <xs:enumeration value="CREATIVE_ASSETS" />
@@ -15650,6 +15780,120 @@
           <xs:enumeration value="HOTEL" />
         </xs:restriction>
       </xs:simpleType>
+      <xs:simpleType name="Language">
+        <xs:annotation>
+          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="af-ZA" />
+          <xs:enumeration value="ar-SA" />
+          <xs:enumeration value="bg-BG" />
+          <xs:enumeration value="bn-IN" />
+          <xs:enumeration value="cs-CZ" />
+          <xs:enumeration value="da-DK" />
+          <xs:enumeration value="de" />
+          <xs:enumeration value="el-GR" />
+          <xs:enumeration value="en-AU" />
+          <xs:enumeration value="en-CA" />
+          <xs:enumeration value="en-GB" />
+          <xs:enumeration value="en-IN" />
+          <xs:enumeration value="en-US" />
+          <xs:enumeration value="es-419" />
+          <xs:enumeration value="es-AR" />
+          <xs:enumeration value="es-ES" />
+          <xs:enumeration value="es-MX" />
+          <xs:enumeration value="fi-FI" />
+          <xs:enumeration value="fr" />
+          <xs:enumeration value="fr-CA" />
+          <xs:enumeration value="he-IL" />
+          <xs:enumeration value="hi-IN" />
+          <xs:enumeration value="hr-HR" />
+          <xs:enumeration value="hu-HU" />
+          <xs:enumeration value="id-ID" />
+          <xs:enumeration value="it" />
+          <xs:enumeration value="ja" />
+          <xs:enumeration value="ko-KR" />
+          <xs:enumeration value="ms-MY" />
+          <xs:enumeration value="nb-NO" />
+          <xs:enumeration value="nl" />
+          <xs:enumeration value="pl-PL" />
+          <xs:enumeration value="pt-BR" />
+          <xs:enumeration value="pt-PT" />
+          <xs:enumeration value="ro-RO" />
+          <xs:enumeration value="ru-RU" />
+          <xs:enumeration value="sk-SK" />
+          <xs:enumeration value="sv-SE" />
+          <xs:enumeration value="te-IN" />
+          <xs:enumeration value="th-TH" />
+          <xs:enumeration value="tl-PH" />
+          <xs:enumeration value="tr" />
+          <xs:enumeration value="uk-UA" />
+          <xs:enumeration value="vi-VN" />
+          <xs:enumeration value="zh-CN" />
+          <xs:enumeration value="zh-TW" />
+          <xs:enumeration value="AM" />
+          <xs:enumeration value="AR" />
+          <xs:enumeration value="AZ" />
+          <xs:enumeration value="BG" />
+          <xs:enumeration value="BN" />
+          <xs:enumeration value="BS" />
+          <xs:enumeration value="CA" />
+          <xs:enumeration value="CS" />
+          <xs:enumeration value="DA" />
+          <xs:enumeration value="DV" />
+          <xs:enumeration value="DZ" />
+          <xs:enumeration value="DE" />
+          <xs:enumeration value="EL" />
+          <xs:enumeration value="EN" />
+          <xs:enumeration value="ES" />
+          <xs:enumeration value="ET" />
+          <xs:enumeration value="FA" />
+          <xs:enumeration value="FI" />
+          <xs:enumeration value="FR" />
+          <xs:enumeration value="HE" />
+          <xs:enumeration value="HI" />
+          <xs:enumeration value="HR" />
+          <xs:enumeration value="HU" />
+          <xs:enumeration value="HY" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="IN" />
+          <xs:enumeration value="IS" />
+          <xs:enumeration value="IT" />
+          <xs:enumeration value="IW" />
+          <xs:enumeration value="JA" />
+          <xs:enumeration value="KA" />
+          <xs:enumeration value="KM" />
+          <xs:enumeration value="KO" />
+          <xs:enumeration value="LO" />
+          <xs:enumeration value="LT" />
+          <xs:enumeration value="LV" />
+          <xs:enumeration value="MK" />
+          <xs:enumeration value="MN" />
+          <xs:enumeration value="MS" />
+          <xs:enumeration value="MY" />
+          <xs:enumeration value="NB" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NL" />
+          <xs:enumeration value="NO" />
+          <xs:enumeration value="PL" />
+          <xs:enumeration value="PT" />
+          <xs:enumeration value="RO" />
+          <xs:enumeration value="RU" />
+          <xs:enumeration value="SK" />
+          <xs:enumeration value="SL" />
+          <xs:enumeration value="SQ" />
+          <xs:enumeration value="SR" />
+          <xs:enumeration value="SV" />
+          <xs:enumeration value="TL" />
+          <xs:enumeration value="UK" />
+          <xs:enumeration value="VI" />
+          <xs:enumeration value="TE" />
+          <xs:enumeration value="TH" />
+          <xs:enumeration value="TR" />
+          <xs:enumeration value="XX" />
+          <xs:enumeration value="ZH" />
+        </xs:restriction>
+      </xs:simpleType>
       <xs:simpleType name="CatalogUnderscoretype">
         <xs:restriction base="xs:string">
           <xs:enumeration value="HOTEL" />
@@ -15699,6 +15943,804 @@
         <xs:restriction base="xs:string">
           <xs:enumeration value="FEED_INGESTION_ISSUES" />
           <xs:enumeration value="DISTRIBUTION_ISSUES" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Language">
+        <xs:annotation>
+          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="af-ZA" />
+          <xs:enumeration value="ar-SA" />
+          <xs:enumeration value="bg-BG" />
+          <xs:enumeration value="bn-IN" />
+          <xs:enumeration value="cs-CZ" />
+          <xs:enumeration value="da-DK" />
+          <xs:enumeration value="de" />
+          <xs:enumeration value="el-GR" />
+          <xs:enumeration value="en-AU" />
+          <xs:enumeration value="en-CA" />
+          <xs:enumeration value="en-GB" />
+          <xs:enumeration value="en-IN" />
+          <xs:enumeration value="en-US" />
+          <xs:enumeration value="es-419" />
+          <xs:enumeration value="es-AR" />
+          <xs:enumeration value="es-ES" />
+          <xs:enumeration value="es-MX" />
+          <xs:enumeration value="fi-FI" />
+          <xs:enumeration value="fr" />
+          <xs:enumeration value="fr-CA" />
+          <xs:enumeration value="he-IL" />
+          <xs:enumeration value="hi-IN" />
+          <xs:enumeration value="hr-HR" />
+          <xs:enumeration value="hu-HU" />
+          <xs:enumeration value="id-ID" />
+          <xs:enumeration value="it" />
+          <xs:enumeration value="ja" />
+          <xs:enumeration value="ko-KR" />
+          <xs:enumeration value="ms-MY" />
+          <xs:enumeration value="nb-NO" />
+          <xs:enumeration value="nl" />
+          <xs:enumeration value="pl-PL" />
+          <xs:enumeration value="pt-BR" />
+          <xs:enumeration value="pt-PT" />
+          <xs:enumeration value="ro-RO" />
+          <xs:enumeration value="ru-RU" />
+          <xs:enumeration value="sk-SK" />
+          <xs:enumeration value="sv-SE" />
+          <xs:enumeration value="te-IN" />
+          <xs:enumeration value="th-TH" />
+          <xs:enumeration value="tl-PH" />
+          <xs:enumeration value="tr" />
+          <xs:enumeration value="uk-UA" />
+          <xs:enumeration value="vi-VN" />
+          <xs:enumeration value="zh-CN" />
+          <xs:enumeration value="zh-TW" />
+          <xs:enumeration value="AM" />
+          <xs:enumeration value="AR" />
+          <xs:enumeration value="AZ" />
+          <xs:enumeration value="BG" />
+          <xs:enumeration value="BN" />
+          <xs:enumeration value="BS" />
+          <xs:enumeration value="CA" />
+          <xs:enumeration value="CS" />
+          <xs:enumeration value="DA" />
+          <xs:enumeration value="DV" />
+          <xs:enumeration value="DZ" />
+          <xs:enumeration value="DE" />
+          <xs:enumeration value="EL" />
+          <xs:enumeration value="EN" />
+          <xs:enumeration value="ES" />
+          <xs:enumeration value="ET" />
+          <xs:enumeration value="FA" />
+          <xs:enumeration value="FI" />
+          <xs:enumeration value="FR" />
+          <xs:enumeration value="HE" />
+          <xs:enumeration value="HI" />
+          <xs:enumeration value="HR" />
+          <xs:enumeration value="HU" />
+          <xs:enumeration value="HY" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="IN" />
+          <xs:enumeration value="IS" />
+          <xs:enumeration value="IT" />
+          <xs:enumeration value="IW" />
+          <xs:enumeration value="JA" />
+          <xs:enumeration value="KA" />
+          <xs:enumeration value="KM" />
+          <xs:enumeration value="KO" />
+          <xs:enumeration value="LO" />
+          <xs:enumeration value="LT" />
+          <xs:enumeration value="LV" />
+          <xs:enumeration value="MK" />
+          <xs:enumeration value="MN" />
+          <xs:enumeration value="MS" />
+          <xs:enumeration value="MY" />
+          <xs:enumeration value="NB" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NL" />
+          <xs:enumeration value="NO" />
+          <xs:enumeration value="PL" />
+          <xs:enumeration value="PT" />
+          <xs:enumeration value="RO" />
+          <xs:enumeration value="RU" />
+          <xs:enumeration value="SK" />
+          <xs:enumeration value="SL" />
+          <xs:enumeration value="SQ" />
+          <xs:enumeration value="SR" />
+          <xs:enumeration value="SV" />
+          <xs:enumeration value="TL" />
+          <xs:enumeration value="UK" />
+          <xs:enumeration value="VI" />
+          <xs:enumeration value="TE" />
+          <xs:enumeration value="TH" />
+          <xs:enumeration value="TR" />
+          <xs:enumeration value="XX" />
+          <xs:enumeration value="ZH" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Language">
+        <xs:annotation>
+          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="af-ZA" />
+          <xs:enumeration value="ar-SA" />
+          <xs:enumeration value="bg-BG" />
+          <xs:enumeration value="bn-IN" />
+          <xs:enumeration value="cs-CZ" />
+          <xs:enumeration value="da-DK" />
+          <xs:enumeration value="de" />
+          <xs:enumeration value="el-GR" />
+          <xs:enumeration value="en-AU" />
+          <xs:enumeration value="en-CA" />
+          <xs:enumeration value="en-GB" />
+          <xs:enumeration value="en-IN" />
+          <xs:enumeration value="en-US" />
+          <xs:enumeration value="es-419" />
+          <xs:enumeration value="es-AR" />
+          <xs:enumeration value="es-ES" />
+          <xs:enumeration value="es-MX" />
+          <xs:enumeration value="fi-FI" />
+          <xs:enumeration value="fr" />
+          <xs:enumeration value="fr-CA" />
+          <xs:enumeration value="he-IL" />
+          <xs:enumeration value="hi-IN" />
+          <xs:enumeration value="hr-HR" />
+          <xs:enumeration value="hu-HU" />
+          <xs:enumeration value="id-ID" />
+          <xs:enumeration value="it" />
+          <xs:enumeration value="ja" />
+          <xs:enumeration value="ko-KR" />
+          <xs:enumeration value="ms-MY" />
+          <xs:enumeration value="nb-NO" />
+          <xs:enumeration value="nl" />
+          <xs:enumeration value="pl-PL" />
+          <xs:enumeration value="pt-BR" />
+          <xs:enumeration value="pt-PT" />
+          <xs:enumeration value="ro-RO" />
+          <xs:enumeration value="ru-RU" />
+          <xs:enumeration value="sk-SK" />
+          <xs:enumeration value="sv-SE" />
+          <xs:enumeration value="te-IN" />
+          <xs:enumeration value="th-TH" />
+          <xs:enumeration value="tl-PH" />
+          <xs:enumeration value="tr" />
+          <xs:enumeration value="uk-UA" />
+          <xs:enumeration value="vi-VN" />
+          <xs:enumeration value="zh-CN" />
+          <xs:enumeration value="zh-TW" />
+          <xs:enumeration value="AM" />
+          <xs:enumeration value="AR" />
+          <xs:enumeration value="AZ" />
+          <xs:enumeration value="BG" />
+          <xs:enumeration value="BN" />
+          <xs:enumeration value="BS" />
+          <xs:enumeration value="CA" />
+          <xs:enumeration value="CS" />
+          <xs:enumeration value="DA" />
+          <xs:enumeration value="DV" />
+          <xs:enumeration value="DZ" />
+          <xs:enumeration value="DE" />
+          <xs:enumeration value="EL" />
+          <xs:enumeration value="EN" />
+          <xs:enumeration value="ES" />
+          <xs:enumeration value="ET" />
+          <xs:enumeration value="FA" />
+          <xs:enumeration value="FI" />
+          <xs:enumeration value="FR" />
+          <xs:enumeration value="HE" />
+          <xs:enumeration value="HI" />
+          <xs:enumeration value="HR" />
+          <xs:enumeration value="HU" />
+          <xs:enumeration value="HY" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="IN" />
+          <xs:enumeration value="IS" />
+          <xs:enumeration value="IT" />
+          <xs:enumeration value="IW" />
+          <xs:enumeration value="JA" />
+          <xs:enumeration value="KA" />
+          <xs:enumeration value="KM" />
+          <xs:enumeration value="KO" />
+          <xs:enumeration value="LO" />
+          <xs:enumeration value="LT" />
+          <xs:enumeration value="LV" />
+          <xs:enumeration value="MK" />
+          <xs:enumeration value="MN" />
+          <xs:enumeration value="MS" />
+          <xs:enumeration value="MY" />
+          <xs:enumeration value="NB" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NL" />
+          <xs:enumeration value="NO" />
+          <xs:enumeration value="PL" />
+          <xs:enumeration value="PT" />
+          <xs:enumeration value="RO" />
+          <xs:enumeration value="RU" />
+          <xs:enumeration value="SK" />
+          <xs:enumeration value="SL" />
+          <xs:enumeration value="SQ" />
+          <xs:enumeration value="SR" />
+          <xs:enumeration value="SV" />
+          <xs:enumeration value="TL" />
+          <xs:enumeration value="UK" />
+          <xs:enumeration value="VI" />
+          <xs:enumeration value="TE" />
+          <xs:enumeration value="TH" />
+          <xs:enumeration value="TR" />
+          <xs:enumeration value="XX" />
+          <xs:enumeration value="ZH" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Language">
+        <xs:annotation>
+          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="af-ZA" />
+          <xs:enumeration value="ar-SA" />
+          <xs:enumeration value="bg-BG" />
+          <xs:enumeration value="bn-IN" />
+          <xs:enumeration value="cs-CZ" />
+          <xs:enumeration value="da-DK" />
+          <xs:enumeration value="de" />
+          <xs:enumeration value="el-GR" />
+          <xs:enumeration value="en-AU" />
+          <xs:enumeration value="en-CA" />
+          <xs:enumeration value="en-GB" />
+          <xs:enumeration value="en-IN" />
+          <xs:enumeration value="en-US" />
+          <xs:enumeration value="es-419" />
+          <xs:enumeration value="es-AR" />
+          <xs:enumeration value="es-ES" />
+          <xs:enumeration value="es-MX" />
+          <xs:enumeration value="fi-FI" />
+          <xs:enumeration value="fr" />
+          <xs:enumeration value="fr-CA" />
+          <xs:enumeration value="he-IL" />
+          <xs:enumeration value="hi-IN" />
+          <xs:enumeration value="hr-HR" />
+          <xs:enumeration value="hu-HU" />
+          <xs:enumeration value="id-ID" />
+          <xs:enumeration value="it" />
+          <xs:enumeration value="ja" />
+          <xs:enumeration value="ko-KR" />
+          <xs:enumeration value="ms-MY" />
+          <xs:enumeration value="nb-NO" />
+          <xs:enumeration value="nl" />
+          <xs:enumeration value="pl-PL" />
+          <xs:enumeration value="pt-BR" />
+          <xs:enumeration value="pt-PT" />
+          <xs:enumeration value="ro-RO" />
+          <xs:enumeration value="ru-RU" />
+          <xs:enumeration value="sk-SK" />
+          <xs:enumeration value="sv-SE" />
+          <xs:enumeration value="te-IN" />
+          <xs:enumeration value="th-TH" />
+          <xs:enumeration value="tl-PH" />
+          <xs:enumeration value="tr" />
+          <xs:enumeration value="uk-UA" />
+          <xs:enumeration value="vi-VN" />
+          <xs:enumeration value="zh-CN" />
+          <xs:enumeration value="zh-TW" />
+          <xs:enumeration value="AM" />
+          <xs:enumeration value="AR" />
+          <xs:enumeration value="AZ" />
+          <xs:enumeration value="BG" />
+          <xs:enumeration value="BN" />
+          <xs:enumeration value="BS" />
+          <xs:enumeration value="CA" />
+          <xs:enumeration value="CS" />
+          <xs:enumeration value="DA" />
+          <xs:enumeration value="DV" />
+          <xs:enumeration value="DZ" />
+          <xs:enumeration value="DE" />
+          <xs:enumeration value="EL" />
+          <xs:enumeration value="EN" />
+          <xs:enumeration value="ES" />
+          <xs:enumeration value="ET" />
+          <xs:enumeration value="FA" />
+          <xs:enumeration value="FI" />
+          <xs:enumeration value="FR" />
+          <xs:enumeration value="HE" />
+          <xs:enumeration value="HI" />
+          <xs:enumeration value="HR" />
+          <xs:enumeration value="HU" />
+          <xs:enumeration value="HY" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="IN" />
+          <xs:enumeration value="IS" />
+          <xs:enumeration value="IT" />
+          <xs:enumeration value="IW" />
+          <xs:enumeration value="JA" />
+          <xs:enumeration value="KA" />
+          <xs:enumeration value="KM" />
+          <xs:enumeration value="KO" />
+          <xs:enumeration value="LO" />
+          <xs:enumeration value="LT" />
+          <xs:enumeration value="LV" />
+          <xs:enumeration value="MK" />
+          <xs:enumeration value="MN" />
+          <xs:enumeration value="MS" />
+          <xs:enumeration value="MY" />
+          <xs:enumeration value="NB" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NL" />
+          <xs:enumeration value="NO" />
+          <xs:enumeration value="PL" />
+          <xs:enumeration value="PT" />
+          <xs:enumeration value="RO" />
+          <xs:enumeration value="RU" />
+          <xs:enumeration value="SK" />
+          <xs:enumeration value="SL" />
+          <xs:enumeration value="SQ" />
+          <xs:enumeration value="SR" />
+          <xs:enumeration value="SV" />
+          <xs:enumeration value="TL" />
+          <xs:enumeration value="UK" />
+          <xs:enumeration value="VI" />
+          <xs:enumeration value="TE" />
+          <xs:enumeration value="TH" />
+          <xs:enumeration value="TR" />
+          <xs:enumeration value="XX" />
+          <xs:enumeration value="ZH" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Language">
+        <xs:annotation>
+          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="af-ZA" />
+          <xs:enumeration value="ar-SA" />
+          <xs:enumeration value="bg-BG" />
+          <xs:enumeration value="bn-IN" />
+          <xs:enumeration value="cs-CZ" />
+          <xs:enumeration value="da-DK" />
+          <xs:enumeration value="de" />
+          <xs:enumeration value="el-GR" />
+          <xs:enumeration value="en-AU" />
+          <xs:enumeration value="en-CA" />
+          <xs:enumeration value="en-GB" />
+          <xs:enumeration value="en-IN" />
+          <xs:enumeration value="en-US" />
+          <xs:enumeration value="es-419" />
+          <xs:enumeration value="es-AR" />
+          <xs:enumeration value="es-ES" />
+          <xs:enumeration value="es-MX" />
+          <xs:enumeration value="fi-FI" />
+          <xs:enumeration value="fr" />
+          <xs:enumeration value="fr-CA" />
+          <xs:enumeration value="he-IL" />
+          <xs:enumeration value="hi-IN" />
+          <xs:enumeration value="hr-HR" />
+          <xs:enumeration value="hu-HU" />
+          <xs:enumeration value="id-ID" />
+          <xs:enumeration value="it" />
+          <xs:enumeration value="ja" />
+          <xs:enumeration value="ko-KR" />
+          <xs:enumeration value="ms-MY" />
+          <xs:enumeration value="nb-NO" />
+          <xs:enumeration value="nl" />
+          <xs:enumeration value="pl-PL" />
+          <xs:enumeration value="pt-BR" />
+          <xs:enumeration value="pt-PT" />
+          <xs:enumeration value="ro-RO" />
+          <xs:enumeration value="ru-RU" />
+          <xs:enumeration value="sk-SK" />
+          <xs:enumeration value="sv-SE" />
+          <xs:enumeration value="te-IN" />
+          <xs:enumeration value="th-TH" />
+          <xs:enumeration value="tl-PH" />
+          <xs:enumeration value="tr" />
+          <xs:enumeration value="uk-UA" />
+          <xs:enumeration value="vi-VN" />
+          <xs:enumeration value="zh-CN" />
+          <xs:enumeration value="zh-TW" />
+          <xs:enumeration value="AM" />
+          <xs:enumeration value="AR" />
+          <xs:enumeration value="AZ" />
+          <xs:enumeration value="BG" />
+          <xs:enumeration value="BN" />
+          <xs:enumeration value="BS" />
+          <xs:enumeration value="CA" />
+          <xs:enumeration value="CS" />
+          <xs:enumeration value="DA" />
+          <xs:enumeration value="DV" />
+          <xs:enumeration value="DZ" />
+          <xs:enumeration value="DE" />
+          <xs:enumeration value="EL" />
+          <xs:enumeration value="EN" />
+          <xs:enumeration value="ES" />
+          <xs:enumeration value="ET" />
+          <xs:enumeration value="FA" />
+          <xs:enumeration value="FI" />
+          <xs:enumeration value="FR" />
+          <xs:enumeration value="HE" />
+          <xs:enumeration value="HI" />
+          <xs:enumeration value="HR" />
+          <xs:enumeration value="HU" />
+          <xs:enumeration value="HY" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="IN" />
+          <xs:enumeration value="IS" />
+          <xs:enumeration value="IT" />
+          <xs:enumeration value="IW" />
+          <xs:enumeration value="JA" />
+          <xs:enumeration value="KA" />
+          <xs:enumeration value="KM" />
+          <xs:enumeration value="KO" />
+          <xs:enumeration value="LO" />
+          <xs:enumeration value="LT" />
+          <xs:enumeration value="LV" />
+          <xs:enumeration value="MK" />
+          <xs:enumeration value="MN" />
+          <xs:enumeration value="MS" />
+          <xs:enumeration value="MY" />
+          <xs:enumeration value="NB" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NL" />
+          <xs:enumeration value="NO" />
+          <xs:enumeration value="PL" />
+          <xs:enumeration value="PT" />
+          <xs:enumeration value="RO" />
+          <xs:enumeration value="RU" />
+          <xs:enumeration value="SK" />
+          <xs:enumeration value="SL" />
+          <xs:enumeration value="SQ" />
+          <xs:enumeration value="SR" />
+          <xs:enumeration value="SV" />
+          <xs:enumeration value="TL" />
+          <xs:enumeration value="UK" />
+          <xs:enumeration value="VI" />
+          <xs:enumeration value="TE" />
+          <xs:enumeration value="TH" />
+          <xs:enumeration value="TR" />
+          <xs:enumeration value="XX" />
+          <xs:enumeration value="ZH" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Language">
+        <xs:annotation>
+          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="af-ZA" />
+          <xs:enumeration value="ar-SA" />
+          <xs:enumeration value="bg-BG" />
+          <xs:enumeration value="bn-IN" />
+          <xs:enumeration value="cs-CZ" />
+          <xs:enumeration value="da-DK" />
+          <xs:enumeration value="de" />
+          <xs:enumeration value="el-GR" />
+          <xs:enumeration value="en-AU" />
+          <xs:enumeration value="en-CA" />
+          <xs:enumeration value="en-GB" />
+          <xs:enumeration value="en-IN" />
+          <xs:enumeration value="en-US" />
+          <xs:enumeration value="es-419" />
+          <xs:enumeration value="es-AR" />
+          <xs:enumeration value="es-ES" />
+          <xs:enumeration value="es-MX" />
+          <xs:enumeration value="fi-FI" />
+          <xs:enumeration value="fr" />
+          <xs:enumeration value="fr-CA" />
+          <xs:enumeration value="he-IL" />
+          <xs:enumeration value="hi-IN" />
+          <xs:enumeration value="hr-HR" />
+          <xs:enumeration value="hu-HU" />
+          <xs:enumeration value="id-ID" />
+          <xs:enumeration value="it" />
+          <xs:enumeration value="ja" />
+          <xs:enumeration value="ko-KR" />
+          <xs:enumeration value="ms-MY" />
+          <xs:enumeration value="nb-NO" />
+          <xs:enumeration value="nl" />
+          <xs:enumeration value="pl-PL" />
+          <xs:enumeration value="pt-BR" />
+          <xs:enumeration value="pt-PT" />
+          <xs:enumeration value="ro-RO" />
+          <xs:enumeration value="ru-RU" />
+          <xs:enumeration value="sk-SK" />
+          <xs:enumeration value="sv-SE" />
+          <xs:enumeration value="te-IN" />
+          <xs:enumeration value="th-TH" />
+          <xs:enumeration value="tl-PH" />
+          <xs:enumeration value="tr" />
+          <xs:enumeration value="uk-UA" />
+          <xs:enumeration value="vi-VN" />
+          <xs:enumeration value="zh-CN" />
+          <xs:enumeration value="zh-TW" />
+          <xs:enumeration value="AM" />
+          <xs:enumeration value="AR" />
+          <xs:enumeration value="AZ" />
+          <xs:enumeration value="BG" />
+          <xs:enumeration value="BN" />
+          <xs:enumeration value="BS" />
+          <xs:enumeration value="CA" />
+          <xs:enumeration value="CS" />
+          <xs:enumeration value="DA" />
+          <xs:enumeration value="DV" />
+          <xs:enumeration value="DZ" />
+          <xs:enumeration value="DE" />
+          <xs:enumeration value="EL" />
+          <xs:enumeration value="EN" />
+          <xs:enumeration value="ES" />
+          <xs:enumeration value="ET" />
+          <xs:enumeration value="FA" />
+          <xs:enumeration value="FI" />
+          <xs:enumeration value="FR" />
+          <xs:enumeration value="HE" />
+          <xs:enumeration value="HI" />
+          <xs:enumeration value="HR" />
+          <xs:enumeration value="HU" />
+          <xs:enumeration value="HY" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="IN" />
+          <xs:enumeration value="IS" />
+          <xs:enumeration value="IT" />
+          <xs:enumeration value="IW" />
+          <xs:enumeration value="JA" />
+          <xs:enumeration value="KA" />
+          <xs:enumeration value="KM" />
+          <xs:enumeration value="KO" />
+          <xs:enumeration value="LO" />
+          <xs:enumeration value="LT" />
+          <xs:enumeration value="LV" />
+          <xs:enumeration value="MK" />
+          <xs:enumeration value="MN" />
+          <xs:enumeration value="MS" />
+          <xs:enumeration value="MY" />
+          <xs:enumeration value="NB" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NL" />
+          <xs:enumeration value="NO" />
+          <xs:enumeration value="PL" />
+          <xs:enumeration value="PT" />
+          <xs:enumeration value="RO" />
+          <xs:enumeration value="RU" />
+          <xs:enumeration value="SK" />
+          <xs:enumeration value="SL" />
+          <xs:enumeration value="SQ" />
+          <xs:enumeration value="SR" />
+          <xs:enumeration value="SV" />
+          <xs:enumeration value="TL" />
+          <xs:enumeration value="UK" />
+          <xs:enumeration value="VI" />
+          <xs:enumeration value="TE" />
+          <xs:enumeration value="TH" />
+          <xs:enumeration value="TR" />
+          <xs:enumeration value="XX" />
+          <xs:enumeration value="ZH" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Language">
+        <xs:annotation>
+          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="af-ZA" />
+          <xs:enumeration value="ar-SA" />
+          <xs:enumeration value="bg-BG" />
+          <xs:enumeration value="bn-IN" />
+          <xs:enumeration value="cs-CZ" />
+          <xs:enumeration value="da-DK" />
+          <xs:enumeration value="de" />
+          <xs:enumeration value="el-GR" />
+          <xs:enumeration value="en-AU" />
+          <xs:enumeration value="en-CA" />
+          <xs:enumeration value="en-GB" />
+          <xs:enumeration value="en-IN" />
+          <xs:enumeration value="en-US" />
+          <xs:enumeration value="es-419" />
+          <xs:enumeration value="es-AR" />
+          <xs:enumeration value="es-ES" />
+          <xs:enumeration value="es-MX" />
+          <xs:enumeration value="fi-FI" />
+          <xs:enumeration value="fr" />
+          <xs:enumeration value="fr-CA" />
+          <xs:enumeration value="he-IL" />
+          <xs:enumeration value="hi-IN" />
+          <xs:enumeration value="hr-HR" />
+          <xs:enumeration value="hu-HU" />
+          <xs:enumeration value="id-ID" />
+          <xs:enumeration value="it" />
+          <xs:enumeration value="ja" />
+          <xs:enumeration value="ko-KR" />
+          <xs:enumeration value="ms-MY" />
+          <xs:enumeration value="nb-NO" />
+          <xs:enumeration value="nl" />
+          <xs:enumeration value="pl-PL" />
+          <xs:enumeration value="pt-BR" />
+          <xs:enumeration value="pt-PT" />
+          <xs:enumeration value="ro-RO" />
+          <xs:enumeration value="ru-RU" />
+          <xs:enumeration value="sk-SK" />
+          <xs:enumeration value="sv-SE" />
+          <xs:enumeration value="te-IN" />
+          <xs:enumeration value="th-TH" />
+          <xs:enumeration value="tl-PH" />
+          <xs:enumeration value="tr" />
+          <xs:enumeration value="uk-UA" />
+          <xs:enumeration value="vi-VN" />
+          <xs:enumeration value="zh-CN" />
+          <xs:enumeration value="zh-TW" />
+          <xs:enumeration value="AM" />
+          <xs:enumeration value="AR" />
+          <xs:enumeration value="AZ" />
+          <xs:enumeration value="BG" />
+          <xs:enumeration value="BN" />
+          <xs:enumeration value="BS" />
+          <xs:enumeration value="CA" />
+          <xs:enumeration value="CS" />
+          <xs:enumeration value="DA" />
+          <xs:enumeration value="DV" />
+          <xs:enumeration value="DZ" />
+          <xs:enumeration value="DE" />
+          <xs:enumeration value="EL" />
+          <xs:enumeration value="EN" />
+          <xs:enumeration value="ES" />
+          <xs:enumeration value="ET" />
+          <xs:enumeration value="FA" />
+          <xs:enumeration value="FI" />
+          <xs:enumeration value="FR" />
+          <xs:enumeration value="HE" />
+          <xs:enumeration value="HI" />
+          <xs:enumeration value="HR" />
+          <xs:enumeration value="HU" />
+          <xs:enumeration value="HY" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="IN" />
+          <xs:enumeration value="IS" />
+          <xs:enumeration value="IT" />
+          <xs:enumeration value="IW" />
+          <xs:enumeration value="JA" />
+          <xs:enumeration value="KA" />
+          <xs:enumeration value="KM" />
+          <xs:enumeration value="KO" />
+          <xs:enumeration value="LO" />
+          <xs:enumeration value="LT" />
+          <xs:enumeration value="LV" />
+          <xs:enumeration value="MK" />
+          <xs:enumeration value="MN" />
+          <xs:enumeration value="MS" />
+          <xs:enumeration value="MY" />
+          <xs:enumeration value="NB" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NL" />
+          <xs:enumeration value="NO" />
+          <xs:enumeration value="PL" />
+          <xs:enumeration value="PT" />
+          <xs:enumeration value="RO" />
+          <xs:enumeration value="RU" />
+          <xs:enumeration value="SK" />
+          <xs:enumeration value="SL" />
+          <xs:enumeration value="SQ" />
+          <xs:enumeration value="SR" />
+          <xs:enumeration value="SV" />
+          <xs:enumeration value="TL" />
+          <xs:enumeration value="UK" />
+          <xs:enumeration value="VI" />
+          <xs:enumeration value="TE" />
+          <xs:enumeration value="TH" />
+          <xs:enumeration value="TR" />
+          <xs:enumeration value="XX" />
+          <xs:enumeration value="ZH" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Language">
+        <xs:annotation>
+          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="af-ZA" />
+          <xs:enumeration value="ar-SA" />
+          <xs:enumeration value="bg-BG" />
+          <xs:enumeration value="bn-IN" />
+          <xs:enumeration value="cs-CZ" />
+          <xs:enumeration value="da-DK" />
+          <xs:enumeration value="de" />
+          <xs:enumeration value="el-GR" />
+          <xs:enumeration value="en-AU" />
+          <xs:enumeration value="en-CA" />
+          <xs:enumeration value="en-GB" />
+          <xs:enumeration value="en-IN" />
+          <xs:enumeration value="en-US" />
+          <xs:enumeration value="es-419" />
+          <xs:enumeration value="es-AR" />
+          <xs:enumeration value="es-ES" />
+          <xs:enumeration value="es-MX" />
+          <xs:enumeration value="fi-FI" />
+          <xs:enumeration value="fr" />
+          <xs:enumeration value="fr-CA" />
+          <xs:enumeration value="he-IL" />
+          <xs:enumeration value="hi-IN" />
+          <xs:enumeration value="hr-HR" />
+          <xs:enumeration value="hu-HU" />
+          <xs:enumeration value="id-ID" />
+          <xs:enumeration value="it" />
+          <xs:enumeration value="ja" />
+          <xs:enumeration value="ko-KR" />
+          <xs:enumeration value="ms-MY" />
+          <xs:enumeration value="nb-NO" />
+          <xs:enumeration value="nl" />
+          <xs:enumeration value="pl-PL" />
+          <xs:enumeration value="pt-BR" />
+          <xs:enumeration value="pt-PT" />
+          <xs:enumeration value="ro-RO" />
+          <xs:enumeration value="ru-RU" />
+          <xs:enumeration value="sk-SK" />
+          <xs:enumeration value="sv-SE" />
+          <xs:enumeration value="te-IN" />
+          <xs:enumeration value="th-TH" />
+          <xs:enumeration value="tl-PH" />
+          <xs:enumeration value="tr" />
+          <xs:enumeration value="uk-UA" />
+          <xs:enumeration value="vi-VN" />
+          <xs:enumeration value="zh-CN" />
+          <xs:enumeration value="zh-TW" />
+          <xs:enumeration value="AM" />
+          <xs:enumeration value="AR" />
+          <xs:enumeration value="AZ" />
+          <xs:enumeration value="BG" />
+          <xs:enumeration value="BN" />
+          <xs:enumeration value="BS" />
+          <xs:enumeration value="CA" />
+          <xs:enumeration value="CS" />
+          <xs:enumeration value="DA" />
+          <xs:enumeration value="DV" />
+          <xs:enumeration value="DZ" />
+          <xs:enumeration value="DE" />
+          <xs:enumeration value="EL" />
+          <xs:enumeration value="EN" />
+          <xs:enumeration value="ES" />
+          <xs:enumeration value="ET" />
+          <xs:enumeration value="FA" />
+          <xs:enumeration value="FI" />
+          <xs:enumeration value="FR" />
+          <xs:enumeration value="HE" />
+          <xs:enumeration value="HI" />
+          <xs:enumeration value="HR" />
+          <xs:enumeration value="HU" />
+          <xs:enumeration value="HY" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="IN" />
+          <xs:enumeration value="IS" />
+          <xs:enumeration value="IT" />
+          <xs:enumeration value="IW" />
+          <xs:enumeration value="JA" />
+          <xs:enumeration value="KA" />
+          <xs:enumeration value="KM" />
+          <xs:enumeration value="KO" />
+          <xs:enumeration value="LO" />
+          <xs:enumeration value="LT" />
+          <xs:enumeration value="LV" />
+          <xs:enumeration value="MK" />
+          <xs:enumeration value="MN" />
+          <xs:enumeration value="MS" />
+          <xs:enumeration value="MY" />
+          <xs:enumeration value="NB" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NL" />
+          <xs:enumeration value="NO" />
+          <xs:enumeration value="PL" />
+          <xs:enumeration value="PT" />
+          <xs:enumeration value="RO" />
+          <xs:enumeration value="RU" />
+          <xs:enumeration value="SK" />
+          <xs:enumeration value="SL" />
+          <xs:enumeration value="SQ" />
+          <xs:enumeration value="SR" />
+          <xs:enumeration value="SV" />
+          <xs:enumeration value="TL" />
+          <xs:enumeration value="UK" />
+          <xs:enumeration value="VI" />
+          <xs:enumeration value="TE" />
+          <xs:enumeration value="TH" />
+          <xs:enumeration value="TR" />
+          <xs:enumeration value="XX" />
+          <xs:enumeration value="ZH" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="CatalogUnderscoretype">
@@ -15772,6 +16814,120 @@
       <xs:simpleType name="CatalogUnderscoretype">
         <xs:restriction base="xs:string">
           <xs:enumeration value="RETAIL" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Language">
+        <xs:annotation>
+          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="af-ZA" />
+          <xs:enumeration value="ar-SA" />
+          <xs:enumeration value="bg-BG" />
+          <xs:enumeration value="bn-IN" />
+          <xs:enumeration value="cs-CZ" />
+          <xs:enumeration value="da-DK" />
+          <xs:enumeration value="de" />
+          <xs:enumeration value="el-GR" />
+          <xs:enumeration value="en-AU" />
+          <xs:enumeration value="en-CA" />
+          <xs:enumeration value="en-GB" />
+          <xs:enumeration value="en-IN" />
+          <xs:enumeration value="en-US" />
+          <xs:enumeration value="es-419" />
+          <xs:enumeration value="es-AR" />
+          <xs:enumeration value="es-ES" />
+          <xs:enumeration value="es-MX" />
+          <xs:enumeration value="fi-FI" />
+          <xs:enumeration value="fr" />
+          <xs:enumeration value="fr-CA" />
+          <xs:enumeration value="he-IL" />
+          <xs:enumeration value="hi-IN" />
+          <xs:enumeration value="hr-HR" />
+          <xs:enumeration value="hu-HU" />
+          <xs:enumeration value="id-ID" />
+          <xs:enumeration value="it" />
+          <xs:enumeration value="ja" />
+          <xs:enumeration value="ko-KR" />
+          <xs:enumeration value="ms-MY" />
+          <xs:enumeration value="nb-NO" />
+          <xs:enumeration value="nl" />
+          <xs:enumeration value="pl-PL" />
+          <xs:enumeration value="pt-BR" />
+          <xs:enumeration value="pt-PT" />
+          <xs:enumeration value="ro-RO" />
+          <xs:enumeration value="ru-RU" />
+          <xs:enumeration value="sk-SK" />
+          <xs:enumeration value="sv-SE" />
+          <xs:enumeration value="te-IN" />
+          <xs:enumeration value="th-TH" />
+          <xs:enumeration value="tl-PH" />
+          <xs:enumeration value="tr" />
+          <xs:enumeration value="uk-UA" />
+          <xs:enumeration value="vi-VN" />
+          <xs:enumeration value="zh-CN" />
+          <xs:enumeration value="zh-TW" />
+          <xs:enumeration value="AM" />
+          <xs:enumeration value="AR" />
+          <xs:enumeration value="AZ" />
+          <xs:enumeration value="BG" />
+          <xs:enumeration value="BN" />
+          <xs:enumeration value="BS" />
+          <xs:enumeration value="CA" />
+          <xs:enumeration value="CS" />
+          <xs:enumeration value="DA" />
+          <xs:enumeration value="DV" />
+          <xs:enumeration value="DZ" />
+          <xs:enumeration value="DE" />
+          <xs:enumeration value="EL" />
+          <xs:enumeration value="EN" />
+          <xs:enumeration value="ES" />
+          <xs:enumeration value="ET" />
+          <xs:enumeration value="FA" />
+          <xs:enumeration value="FI" />
+          <xs:enumeration value="FR" />
+          <xs:enumeration value="HE" />
+          <xs:enumeration value="HI" />
+          <xs:enumeration value="HR" />
+          <xs:enumeration value="HU" />
+          <xs:enumeration value="HY" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="IN" />
+          <xs:enumeration value="IS" />
+          <xs:enumeration value="IT" />
+          <xs:enumeration value="IW" />
+          <xs:enumeration value="JA" />
+          <xs:enumeration value="KA" />
+          <xs:enumeration value="KM" />
+          <xs:enumeration value="KO" />
+          <xs:enumeration value="LO" />
+          <xs:enumeration value="LT" />
+          <xs:enumeration value="LV" />
+          <xs:enumeration value="MK" />
+          <xs:enumeration value="MN" />
+          <xs:enumeration value="MS" />
+          <xs:enumeration value="MY" />
+          <xs:enumeration value="NB" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NL" />
+          <xs:enumeration value="NO" />
+          <xs:enumeration value="PL" />
+          <xs:enumeration value="PT" />
+          <xs:enumeration value="RO" />
+          <xs:enumeration value="RU" />
+          <xs:enumeration value="SK" />
+          <xs:enumeration value="SL" />
+          <xs:enumeration value="SQ" />
+          <xs:enumeration value="SR" />
+          <xs:enumeration value="SV" />
+          <xs:enumeration value="TL" />
+          <xs:enumeration value="UK" />
+          <xs:enumeration value="VI" />
+          <xs:enumeration value="TE" />
+          <xs:enumeration value="TH" />
+          <xs:enumeration value="TR" />
+          <xs:enumeration value="XX" />
+          <xs:enumeration value="ZH" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="Operation">
@@ -15866,6 +17022,120 @@
       <xs:simpleType name="CatalogUnderscoretype">
         <xs:restriction base="xs:string">
           <xs:enumeration value="CREATIVE_ASSETS" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Language">
+        <xs:annotation>
+          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="af-ZA" />
+          <xs:enumeration value="ar-SA" />
+          <xs:enumeration value="bg-BG" />
+          <xs:enumeration value="bn-IN" />
+          <xs:enumeration value="cs-CZ" />
+          <xs:enumeration value="da-DK" />
+          <xs:enumeration value="de" />
+          <xs:enumeration value="el-GR" />
+          <xs:enumeration value="en-AU" />
+          <xs:enumeration value="en-CA" />
+          <xs:enumeration value="en-GB" />
+          <xs:enumeration value="en-IN" />
+          <xs:enumeration value="en-US" />
+          <xs:enumeration value="es-419" />
+          <xs:enumeration value="es-AR" />
+          <xs:enumeration value="es-ES" />
+          <xs:enumeration value="es-MX" />
+          <xs:enumeration value="fi-FI" />
+          <xs:enumeration value="fr" />
+          <xs:enumeration value="fr-CA" />
+          <xs:enumeration value="he-IL" />
+          <xs:enumeration value="hi-IN" />
+          <xs:enumeration value="hr-HR" />
+          <xs:enumeration value="hu-HU" />
+          <xs:enumeration value="id-ID" />
+          <xs:enumeration value="it" />
+          <xs:enumeration value="ja" />
+          <xs:enumeration value="ko-KR" />
+          <xs:enumeration value="ms-MY" />
+          <xs:enumeration value="nb-NO" />
+          <xs:enumeration value="nl" />
+          <xs:enumeration value="pl-PL" />
+          <xs:enumeration value="pt-BR" />
+          <xs:enumeration value="pt-PT" />
+          <xs:enumeration value="ro-RO" />
+          <xs:enumeration value="ru-RU" />
+          <xs:enumeration value="sk-SK" />
+          <xs:enumeration value="sv-SE" />
+          <xs:enumeration value="te-IN" />
+          <xs:enumeration value="th-TH" />
+          <xs:enumeration value="tl-PH" />
+          <xs:enumeration value="tr" />
+          <xs:enumeration value="uk-UA" />
+          <xs:enumeration value="vi-VN" />
+          <xs:enumeration value="zh-CN" />
+          <xs:enumeration value="zh-TW" />
+          <xs:enumeration value="AM" />
+          <xs:enumeration value="AR" />
+          <xs:enumeration value="AZ" />
+          <xs:enumeration value="BG" />
+          <xs:enumeration value="BN" />
+          <xs:enumeration value="BS" />
+          <xs:enumeration value="CA" />
+          <xs:enumeration value="CS" />
+          <xs:enumeration value="DA" />
+          <xs:enumeration value="DV" />
+          <xs:enumeration value="DZ" />
+          <xs:enumeration value="DE" />
+          <xs:enumeration value="EL" />
+          <xs:enumeration value="EN" />
+          <xs:enumeration value="ES" />
+          <xs:enumeration value="ET" />
+          <xs:enumeration value="FA" />
+          <xs:enumeration value="FI" />
+          <xs:enumeration value="FR" />
+          <xs:enumeration value="HE" />
+          <xs:enumeration value="HI" />
+          <xs:enumeration value="HR" />
+          <xs:enumeration value="HU" />
+          <xs:enumeration value="HY" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="IN" />
+          <xs:enumeration value="IS" />
+          <xs:enumeration value="IT" />
+          <xs:enumeration value="IW" />
+          <xs:enumeration value="JA" />
+          <xs:enumeration value="KA" />
+          <xs:enumeration value="KM" />
+          <xs:enumeration value="KO" />
+          <xs:enumeration value="LO" />
+          <xs:enumeration value="LT" />
+          <xs:enumeration value="LV" />
+          <xs:enumeration value="MK" />
+          <xs:enumeration value="MN" />
+          <xs:enumeration value="MS" />
+          <xs:enumeration value="MY" />
+          <xs:enumeration value="NB" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NL" />
+          <xs:enumeration value="NO" />
+          <xs:enumeration value="PL" />
+          <xs:enumeration value="PT" />
+          <xs:enumeration value="RO" />
+          <xs:enumeration value="RU" />
+          <xs:enumeration value="SK" />
+          <xs:enumeration value="SL" />
+          <xs:enumeration value="SQ" />
+          <xs:enumeration value="SR" />
+          <xs:enumeration value="SV" />
+          <xs:enumeration value="TL" />
+          <xs:enumeration value="UK" />
+          <xs:enumeration value="VI" />
+          <xs:enumeration value="TE" />
+          <xs:enumeration value="TH" />
+          <xs:enumeration value="TR" />
+          <xs:enumeration value="XX" />
+          <xs:enumeration value="ZH" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="CatalogUnderscoretype">
@@ -15999,6 +17269,120 @@
       <xs:simpleType name="CatalogUnderscoretype">
         <xs:restriction base="xs:string">
           <xs:enumeration value="CREATIVE_ASSETS" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Language">
+        <xs:annotation>
+          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="af-ZA" />
+          <xs:enumeration value="ar-SA" />
+          <xs:enumeration value="bg-BG" />
+          <xs:enumeration value="bn-IN" />
+          <xs:enumeration value="cs-CZ" />
+          <xs:enumeration value="da-DK" />
+          <xs:enumeration value="de" />
+          <xs:enumeration value="el-GR" />
+          <xs:enumeration value="en-AU" />
+          <xs:enumeration value="en-CA" />
+          <xs:enumeration value="en-GB" />
+          <xs:enumeration value="en-IN" />
+          <xs:enumeration value="en-US" />
+          <xs:enumeration value="es-419" />
+          <xs:enumeration value="es-AR" />
+          <xs:enumeration value="es-ES" />
+          <xs:enumeration value="es-MX" />
+          <xs:enumeration value="fi-FI" />
+          <xs:enumeration value="fr" />
+          <xs:enumeration value="fr-CA" />
+          <xs:enumeration value="he-IL" />
+          <xs:enumeration value="hi-IN" />
+          <xs:enumeration value="hr-HR" />
+          <xs:enumeration value="hu-HU" />
+          <xs:enumeration value="id-ID" />
+          <xs:enumeration value="it" />
+          <xs:enumeration value="ja" />
+          <xs:enumeration value="ko-KR" />
+          <xs:enumeration value="ms-MY" />
+          <xs:enumeration value="nb-NO" />
+          <xs:enumeration value="nl" />
+          <xs:enumeration value="pl-PL" />
+          <xs:enumeration value="pt-BR" />
+          <xs:enumeration value="pt-PT" />
+          <xs:enumeration value="ro-RO" />
+          <xs:enumeration value="ru-RU" />
+          <xs:enumeration value="sk-SK" />
+          <xs:enumeration value="sv-SE" />
+          <xs:enumeration value="te-IN" />
+          <xs:enumeration value="th-TH" />
+          <xs:enumeration value="tl-PH" />
+          <xs:enumeration value="tr" />
+          <xs:enumeration value="uk-UA" />
+          <xs:enumeration value="vi-VN" />
+          <xs:enumeration value="zh-CN" />
+          <xs:enumeration value="zh-TW" />
+          <xs:enumeration value="AM" />
+          <xs:enumeration value="AR" />
+          <xs:enumeration value="AZ" />
+          <xs:enumeration value="BG" />
+          <xs:enumeration value="BN" />
+          <xs:enumeration value="BS" />
+          <xs:enumeration value="CA" />
+          <xs:enumeration value="CS" />
+          <xs:enumeration value="DA" />
+          <xs:enumeration value="DV" />
+          <xs:enumeration value="DZ" />
+          <xs:enumeration value="DE" />
+          <xs:enumeration value="EL" />
+          <xs:enumeration value="EN" />
+          <xs:enumeration value="ES" />
+          <xs:enumeration value="ET" />
+          <xs:enumeration value="FA" />
+          <xs:enumeration value="FI" />
+          <xs:enumeration value="FR" />
+          <xs:enumeration value="HE" />
+          <xs:enumeration value="HI" />
+          <xs:enumeration value="HR" />
+          <xs:enumeration value="HU" />
+          <xs:enumeration value="HY" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="IN" />
+          <xs:enumeration value="IS" />
+          <xs:enumeration value="IT" />
+          <xs:enumeration value="IW" />
+          <xs:enumeration value="JA" />
+          <xs:enumeration value="KA" />
+          <xs:enumeration value="KM" />
+          <xs:enumeration value="KO" />
+          <xs:enumeration value="LO" />
+          <xs:enumeration value="LT" />
+          <xs:enumeration value="LV" />
+          <xs:enumeration value="MK" />
+          <xs:enumeration value="MN" />
+          <xs:enumeration value="MS" />
+          <xs:enumeration value="MY" />
+          <xs:enumeration value="NB" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NL" />
+          <xs:enumeration value="NO" />
+          <xs:enumeration value="PL" />
+          <xs:enumeration value="PT" />
+          <xs:enumeration value="RO" />
+          <xs:enumeration value="RU" />
+          <xs:enumeration value="SK" />
+          <xs:enumeration value="SL" />
+          <xs:enumeration value="SQ" />
+          <xs:enumeration value="SR" />
+          <xs:enumeration value="SV" />
+          <xs:enumeration value="TL" />
+          <xs:enumeration value="UK" />
+          <xs:enumeration value="VI" />
+          <xs:enumeration value="TE" />
+          <xs:enumeration value="TH" />
+          <xs:enumeration value="TR" />
+          <xs:enumeration value="XX" />
+          <xs:enumeration value="ZH" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="CatalogUnderscoretype">
@@ -18311,10 +19695,6 @@
           <xs:enumeration value="BUSINESS_ACCOUNT" />
         </xs:restriction>
       </xs:simpleType>
-      <xs:simpleType name="AudienceCreateRequest_1_audience_type">
-        <xs:restriction base="xs:AudienceType">
-        </xs:restriction>
-      </xs:simpleType>
       <xs:simpleType name="AudienceDataParty">
         <xs:annotation>
           <xs:documentation>Whether the data is owned by the partner (1p) or by the data provider (3p)</xs:documentation>
@@ -18598,13 +19978,6 @@
           <xs:enumeration value="TOO_MANY_ADDITIONAL_IMAGE_LINKS" />
           <xs:enumeration value="UTM_SOURCE_AUTO_CORRECTED" />
           <xs:enumeration value="WEIGHT_UNIT_INVALID" />
-        </xs:restriction>
-      </xs:simpleType>
-      <xs:simpleType name="CatalogsItemsRequest_language">
-        <xs:annotation>
-          <xs:documentation>We recommend using the CatalogsLocale values.</xs:documentation>
-        </xs:annotation>
-        <xs:restriction base="xs:anyOf&lt;CatalogsLocale,Language&gt;">
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="CatalogsLocale">
@@ -19957,10 +21330,6 @@
           <xs:enumeration value="ARCHIVED" />
           <xs:enumeration value="DRAFT" />
           <xs:enumeration value="DELETED_DRAFT" />
-        </xs:restriction>
-      </xs:simpleType>
-      <xs:simpleType name="pins_analytics_metric_types_parameter_inner">
-        <xs:restriction base="xs:oneOf&lt;string,string&gt;">
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="PlacementGroupType">
@@ -22497,12 +23866,50 @@
           <xs:enumeration value="DESCENDING" />
         </xs:restriction>
       </xs:simpleType>
+      <xs:simpleType name="Metric_types">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="IMPRESSION" />
+          <xs:enumeration value="OUTBOUND_CLICK" />
+          <xs:enumeration value="PIN_CLICK" />
+          <xs:enumeration value="SAVE" />
+          <xs:enumeration value="SAVE_RATE" />
+          <xs:enumeration value="TOTAL_COMMENTS" />
+          <xs:enumeration value="TOTAL_REACTIONS" />
+          <xs:enumeration value="USER_FOLLOW" />
+          <xs:enumeration value="PROFILE_VISIT" />
+          <xs:enumeration value="VIDEO_MRC_VIEW" />
+          <xs:enumeration value="VIDEO_10S_VIEW" />
+          <xs:enumeration value="QUARTILE_95_PERCENT_VIEW" />
+          <xs:enumeration value="VIDEO_V50_WATCH_TIME" />
+          <xs:enumeration value="VIDEO_START" />
+          <xs:enumeration value="VIDEO_AVG_WATCH_TIME" />
+        </xs:restriction>
+      </xs:simpleType>
       <xs:simpleType name="App_types">
         <xs:restriction base="xs:string">
           <xs:enumeration value="ALL" />
           <xs:enumeration value="MOBILE" />
           <xs:enumeration value="TABLET" />
           <xs:enumeration value="WEB" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Metric_types">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="IMPRESSION" />
+          <xs:enumeration value="OUTBOUND_CLICK" />
+          <xs:enumeration value="PIN_CLICK" />
+          <xs:enumeration value="SAVE" />
+          <xs:enumeration value="SAVE_RATE" />
+          <xs:enumeration value="TOTAL_COMMENTS" />
+          <xs:enumeration value="TOTAL_REACTIONS" />
+          <xs:enumeration value="USER_FOLLOW" />
+          <xs:enumeration value="PROFILE_VISIT" />
+          <xs:enumeration value="VIDEO_MRC_VIEW" />
+          <xs:enumeration value="VIDEO_10S_VIEW" />
+          <xs:enumeration value="QUARTILE_95_PERCENT_VIEW" />
+          <xs:enumeration value="VIDEO_V50_WATCH_TIME" />
+          <xs:enumeration value="VIDEO_START" />
+          <xs:enumeration value="VIDEO_AVG_WATCH_TIME" />
         </xs:restriction>
       </xs:simpleType>
       <xs:simpleType name="App_types">
@@ -26535,7 +27942,7 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:element>
-          <xs:element minOccurs="0" name="partnerType" type="schemas:PartnerType">
+          <xs:element minOccurs="0" default="INTERNAL" name="partnerType" type="xs:PartnerType">
             <xs:annotation>
               <xs:documentation>Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.</xs:documentation>
             </xs:annotation>
@@ -30262,7 +31669,7 @@
               <xs:documentation>Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="unbounded" name="metricTypes" type="xs:pins_analytics_metric_types_parameter_inner">
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="metricTypes" type="schemas:Metric_types">
             <xs:annotation>
               <xs:documentation>Pin metric types to get data for.</xs:documentation>
             </xs:annotation>
@@ -30319,7 +31726,7 @@
               <xs:documentation>Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element minOccurs="1" maxOccurs="unbounded" name="metricTypes" type="xs:pins_analytics_metric_types_parameter_inner">
+          <xs:element minOccurs="1" maxOccurs="unbounded" name="metricTypes" type="schemas:Metric_types">
             <xs:annotation>
               <xs:documentation>Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.</xs:documentation>
             </xs:annotation>

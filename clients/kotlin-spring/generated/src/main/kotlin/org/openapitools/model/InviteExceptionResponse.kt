@@ -34,7 +34,7 @@ data class InviteExceptionResponse(
 
     @Schema(example = "[\"businessMember0101\",\"business+member@business.com\"]", description = "A list of users' usernames or emails OR a list of partner ids that caused the error.")
     @get:JsonProperty("users_or_partner_ids") val usersOrPartnerIds: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
 }
 

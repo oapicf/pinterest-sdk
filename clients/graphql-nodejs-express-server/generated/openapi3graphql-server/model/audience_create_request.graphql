@@ -16,7 +16,8 @@ type AudienceCreateRequest {
   rule: AudienceRule
   # Audience description.
   description: String!
-  audience_type: AudienceCreateRequest1AudienceType
+  # <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+  audience_type: AudienceType
 }
 
 input AudienceCreateRequestInput {
@@ -27,6 +28,7 @@ input AudienceCreateRequestInput {
     rule: AudienceRuleInput
     # Audience description.
     description: String!
-    audience_type: AudienceCreateRequest1AudienceTypeInput
+    # <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+    audience_type: AudienceType
 }
 

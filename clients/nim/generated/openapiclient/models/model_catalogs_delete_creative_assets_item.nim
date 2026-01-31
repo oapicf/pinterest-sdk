@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type Operation* {.pure.} = enum
@@ -20,11 +22,35 @@ type CatalogsDeleteCreativeAssetsItem* = object
   operation*: Operation
 
 func `%`*(v: Operation): JsonNode =
-  let str = case v:
-    of Operation.DELETE: "DELETE"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Operation.DELETE: %"DELETE"
 func `$`*(v: Operation): string =
   result = case v:
-    of Operation.DELETE: "DELETE"
+    of Operation.DELETE: $("DELETE")
+
+proc to*(node: JsonNode, T: typedesc[Operation]): Operation =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Operation, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("DELETE"):
+    return Operation.DELETE
+  else:
+    raise newException(ValueError, "Invalid enum value for Operation: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsDeleteCreativeAssetsItem with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsDeleteCreativeAssetsItem]): CatalogsDeleteCreativeAssetsItem =
+  result = CatalogsDeleteCreativeAssetsItem()
+  if node.kind == JObject:
+    if node.hasKey("creative_assets_id"):
+      result.creativeAssetsId = to(node["creative_assets_id"], string)
+    if node.hasKey("operation"):
+      result.operation = to(node["operation"], Operation)
+
+# Custom JSON serialization for CatalogsDeleteCreativeAssetsItem with custom field names
+proc `%`*(obj: CatalogsDeleteCreativeAssetsItem): JsonNode =
+  result = newJObject()
+  result["creative_assets_id"] = %obj.creativeAssetsId
+  result["operation"] = %obj.operation
+

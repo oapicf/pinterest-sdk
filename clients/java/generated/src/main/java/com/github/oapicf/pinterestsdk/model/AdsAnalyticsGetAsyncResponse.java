@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdsAnalyticsGetAsyncResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsAnalyticsGetAsyncResponse {
   public static final String SERIALIZED_NAME_REPORT_STATUS = "report_status";
   @SerializedName(SERIALIZED_NAME_REPORT_STATUS)
@@ -187,13 +187,10 @@ public class AdsAnalyticsGetAsyncResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("report_status");
-    openapiFields.add("url");
-    openapiFields.add("size");
+    openapiFields = new HashSet<String>(Arrays.asList("report_status", "url", "size"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -205,7 +202,7 @@ public class AdsAnalyticsGetAsyncResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AdsAnalyticsGetAsyncResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdsAnalyticsGetAsyncResponse is not found in the empty JSON string", AdsAnalyticsGetAsyncResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AdsAnalyticsGetAsyncResponse is not found in the empty JSON string", AdsAnalyticsGetAsyncResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -213,7 +210,7 @@ public class AdsAnalyticsGetAsyncResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AdsAnalyticsGetAsyncResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AdsAnalyticsGetAsyncResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AdsAnalyticsGetAsyncResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -222,7 +219,7 @@ public class AdsAnalyticsGetAsyncResponse {
         BulkReportingJobStatus.validateJsonElement(jsonObj.get("report_status"));
       }
       if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
       }
   }
 

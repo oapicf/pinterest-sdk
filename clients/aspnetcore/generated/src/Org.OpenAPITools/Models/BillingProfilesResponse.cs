@@ -49,37 +49,37 @@ namespace Org.OpenAPITools.Models
             /// Enum UNKNOWNEnum for UNKNOWN
             /// </summary>
             [EnumMember(Value = "UNKNOWN")]
-            UNKNOWNEnum = 1,
+            UNKNOWNEnum,
             
             /// <summary>
             /// Enum VISAEnum for VISA
             /// </summary>
             [EnumMember(Value = "VISA")]
-            VISAEnum = 2,
+            VISAEnum,
             
             /// <summary>
             /// Enum MASTERCARDEnum for MASTERCARD
             /// </summary>
             [EnumMember(Value = "MASTERCARD")]
-            MASTERCARDEnum = 3,
+            MASTERCARDEnum,
             
             /// <summary>
             /// Enum AMERICANEXPRESSEnum for AMERICAN_EXPRESS
             /// </summary>
             [EnumMember(Value = "AMERICAN_EXPRESS")]
-            AMERICANEXPRESSEnum = 4,
+            AMERICANEXPRESSEnum,
             
             /// <summary>
             /// Enum DISCOVEREnum for DISCOVER
             /// </summary>
             [EnumMember(Value = "DISCOVER")]
-            DISCOVEREnum = 5,
+            DISCOVEREnum,
             
             /// <summary>
             /// Enum ELOEnum for ELO
             /// </summary>
             [EnumMember(Value = "ELO")]
-            ELOEnum = 6
+            ELOEnum
         }
 
         /// <summary>
@@ -174,55 +174,55 @@ namespace Org.OpenAPITools.Models
             /// Enum UNKNOWNEnum for UNKNOWN
             /// </summary>
             [EnumMember(Value = "UNKNOWN")]
-            UNKNOWNEnum = 1,
+            UNKNOWNEnum,
             
             /// <summary>
             /// Enum VISAEnum for VISA
             /// </summary>
             [EnumMember(Value = "VISA")]
-            VISAEnum = 2,
+            VISAEnum,
             
             /// <summary>
             /// Enum MASTERCARDEnum for MASTERCARD
             /// </summary>
             [EnumMember(Value = "MASTERCARD")]
-            MASTERCARDEnum = 3,
+            MASTERCARDEnum,
             
             /// <summary>
             /// Enum AMERICANEXPRESSEnum for AMERICAN_EXPRESS
             /// </summary>
             [EnumMember(Value = "AMERICAN_EXPRESS")]
-            AMERICANEXPRESSEnum = 4,
+            AMERICANEXPRESSEnum,
             
             /// <summary>
             /// Enum DISCOVEREnum for DISCOVER
             /// </summary>
             [EnumMember(Value = "DISCOVER")]
-            DISCOVEREnum = 5,
+            DISCOVEREnum,
             
             /// <summary>
             /// Enum SOFORTEnum for SOFORT
             /// </summary>
             [EnumMember(Value = "SOFORT")]
-            SOFORTEnum = 6,
+            SOFORTEnum,
             
             /// <summary>
             /// Enum DINERSCLUBEnum for DINERS_CLUB
             /// </summary>
             [EnumMember(Value = "DINERS_CLUB")]
-            DINERSCLUBEnum = 7,
+            DINERSCLUBEnum,
             
             /// <summary>
             /// Enum ELOEnum for ELO
             /// </summary>
             [EnumMember(Value = "ELO")]
-            ELOEnum = 8,
+            ELOEnum,
             
             /// <summary>
             /// Enum CARTEBANCAIREEnum for CARTE_BANCAIRE
             /// </summary>
             [EnumMember(Value = "CARTE_BANCAIRE")]
-            CARTEBANCAIREEnum = 9
+            CARTEBANCAIREEnum
         }
 
         /// <summary>

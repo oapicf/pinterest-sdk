@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "ITEM_ID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iTEMID = new Option<CatalogsProductGroupMultipleStringCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleStringCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            iTEMID = new Option<CatalogsProductGroupMultipleStringCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleStringCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

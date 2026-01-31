@@ -85,7 +85,6 @@ src/openapi_audience_category.erl
 src/openapi_audience_common.erl
 src/openapi_audience_create_custom_request.erl
 src/openapi_audience_create_request.erl
-src/openapi_audience_create_request_1_audience_type.erl
 src/openapi_audience_data_party.erl
 src/openapi_audience_definition.erl
 src/openapi_audience_definition_response.erl
@@ -274,7 +273,6 @@ src/openapi_catalogs_items_delete_discontinued_batch_request.erl
 src/openapi_catalogs_items_filters.erl
 src/openapi_catalogs_items_post_filters.erl
 src/openapi_catalogs_items_request.erl
-src/openapi_catalogs_items_request_language.erl
 src/openapi_catalogs_items_update_batch_request.erl
 src/openapi_catalogs_items_upsert_batch_request.erl
 src/openapi_catalogs_list_200_response.erl
@@ -619,7 +617,6 @@ src/openapi_pin_media_with_videos.erl
 src/openapi_pin_promotion_summary_status.erl
 src/openapi_pin_update.erl
 src/openapi_pin_update_carousel_slots_inner.erl
-src/openapi_pins_analytics_metric_types_parameter_inner.erl
 src/openapi_pins_api.erl
 src/openapi_pins_list_200_response.erl
 src/openapi_pins_save_request.erl

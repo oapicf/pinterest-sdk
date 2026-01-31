@@ -146,7 +146,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Gender gender, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(gender.ToString());
+            writer.WriteStringValue(GenderValueConverter.ToJsonValue(gender).ToString());
         }
     }
 
@@ -177,14 +177,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the Gender to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="gender"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Gender? gender, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(gender?.ToString() ?? "null");
+            writer.WriteStringValue(gender.HasValue ? GenderValueConverter.ToJsonValue(gender.Value).ToString() : "null");
         }
     }
 }

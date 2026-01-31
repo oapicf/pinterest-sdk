@@ -23,6 +23,10 @@
 @interface OAIOauthAccessTokenResponseCode : OAIObject
 
 
+@property(nonatomic) NSString* refreshToken;
+
+@property(nonatomic) NSNumber* refreshTokenExpiresIn;
+
 @property(nonatomic) NSString* responseType;
 
 @property(nonatomic) NSString* accessToken;
@@ -32,9 +36,5 @@
 @property(nonatomic) NSNumber* expiresIn;
 
 @property(nonatomic) NSString* scope;
-
-@property(nonatomic) NSString* refreshToken;
-
-@property(nonatomic) NSNumber* refreshTokenExpiresIn;
 
 @end

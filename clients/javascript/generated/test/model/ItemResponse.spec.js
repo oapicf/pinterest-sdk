@@ -66,8 +66,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property errors (base name: "errors")', function() {
-      // uncomment below and update the code to test the property errors
+    it('should have the property pins (base name: "pins")', function() {
+      // uncomment below and update the code to test the property pins
+      //var instance = new PinterestSdk.ItemResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property attributes (base name: "attributes")', function() {
+      // uncomment below and update the code to test the property attributes
       //var instance = new PinterestSdk.ItemResponse();
       //expect(instance).to.be();
     });
@@ -80,6 +86,12 @@
 
     it('should have the property creativeAssetsId (base name: "creative_assets_id")', function() {
       // uncomment below and update the code to test the property creativeAssetsId
+      //var instance = new PinterestSdk.ItemResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property errors (base name: "errors")', function() {
+      // uncomment below and update the code to test the property errors
       //var instance = new PinterestSdk.ItemResponse();
       //expect(instance).to.be();
     });

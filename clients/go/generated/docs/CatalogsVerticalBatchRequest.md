@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | **string** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
+**Language** | **string** | We recommend using the CatalogsLocale values. | 
 **Items** | [**[]CatalogsCreativeAssetsBatchItem**](CatalogsCreativeAssetsBatchItem.md) | Array with creative assets item operations | 
 **CatalogId** | Pointer to **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewCatalogsVerticalBatchRequest
 
-`func NewCatalogsVerticalBatchRequest(catalogType string, country Country, language CatalogsItemsRequestLanguage, items []CatalogsCreativeAssetsBatchItem, ) *CatalogsVerticalBatchRequest`
+`func NewCatalogsVerticalBatchRequest(catalogType string, country Country, language string, items []CatalogsCreativeAssetsBatchItem, ) *CatalogsVerticalBatchRequest`
 
 NewCatalogsVerticalBatchRequest instantiates a new CatalogsVerticalBatchRequest object
 This constructor will assign default values to properties that have it defined,
@@ -71,20 +71,20 @@ SetCountry sets Country field to given value.
 
 ### GetLanguage
 
-`func (o *CatalogsVerticalBatchRequest) GetLanguage() CatalogsItemsRequestLanguage`
+`func (o *CatalogsVerticalBatchRequest) GetLanguage() string`
 
 GetLanguage returns the Language field if non-nil, zero value otherwise.
 
 ### GetLanguageOk
 
-`func (o *CatalogsVerticalBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool)`
+`func (o *CatalogsVerticalBatchRequest) GetLanguageOk() (*string, bool)`
 
 GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLanguage
 
-`func (o *CatalogsVerticalBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage)`
+`func (o *CatalogsVerticalBatchRequest) SetLanguage(v string)`
 
 SetLanguage sets Language field to given value.
 

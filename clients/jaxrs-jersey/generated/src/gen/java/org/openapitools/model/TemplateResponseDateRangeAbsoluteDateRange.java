@@ -33,7 +33,7 @@ import javax.validation.Valid;
   TemplateResponseDateRangeAbsoluteDateRange.JSON_PROPERTY_START_DATE,
   TemplateResponseDateRangeAbsoluteDateRange.JSON_PROPERTY_END_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRangeAbsoluteDateRange   {
   public static final String JSON_PROPERTY_TYPE = "type";
   @JsonProperty(JSON_PROPERTY_TYPE)

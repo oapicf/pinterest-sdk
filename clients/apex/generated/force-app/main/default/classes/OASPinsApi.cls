@@ -49,7 +49,7 @@ public class OASPinsApi {
         query.addAll(client.makeParam('start_date', (Date) params.get('startDate')));
         query.addAll(client.makeParam('end_date', (Date) params.get('endDate')));
         query.addAll(client.makeParam('app_types', (String) params.get('appTypes')));
-        query.addAll(client.makeParam('metric_types', (List<OASPinsAnalyticsMetricTypesParameter>) params.get('metricTypes'), 'csv'));
+        query.addAll(client.makeParam('metric_types', (List<String>) params.get('metricTypes'), 'csv'));
         query.addAll(client.makeParam('ad_account_id', (String) params.get('adAccountId')));
 
         List<OAS.Param> form = new List<OAS.Param>();
@@ -89,7 +89,7 @@ public class OASPinsApi {
         query.addAll(client.makeParam('start_date', (Date) params.get('startDate')));
         query.addAll(client.makeParam('end_date', (Date) params.get('endDate')));
         query.addAll(client.makeParam('app_types', (String) params.get('appTypes')));
-        query.addAll(client.makeParam('metric_types', (List<OASPinsAnalyticsMetricTypesParameter>) params.get('metricTypes'), 'csv'));
+        query.addAll(client.makeParam('metric_types', (List<String>) params.get('metricTypes'), 'csv'));
         query.addAll(client.makeParam('split_field', (String) params.get('splitField')));
         query.addAll(client.makeParam('ad_account_id', (String) params.get('adAccountId')));
 

@@ -85,8 +85,12 @@ export class BulkApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/bulk/download`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/bulk/download`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -137,8 +141,13 @@ export class BulkApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+        urlPath = urlPath.replace(`{${"bulk_request_id"}}`, encodeURIComponent(String(requestParameters['bulkRequestId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))).replace(`{${"bulk_request_id"}}`, encodeURIComponent(String(requestParameters['bulkRequestId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -186,8 +195,12 @@ export class BulkApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/bulk/upsert`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/bulk/upsert`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,

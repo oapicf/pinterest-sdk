@@ -12,18 +12,12 @@
 /**
  * Refers ads entity type
  */
-export type BulkEntityType = 'CAMPAIGN' | 'AD_GROUP' | 'PRODUCT_GROUP' | 'AD' | 'KEYWORD';
-
 export const BulkEntityType = {
-
-    Campaign: 'CAMPAIGN' as BulkEntityType,
-
-    AdGroup: 'AD_GROUP' as BulkEntityType,
-
-    ProductGroup: 'PRODUCT_GROUP' as BulkEntityType,
-
-    Ad: 'AD' as BulkEntityType,
-
-    Keyword: 'KEYWORD' as BulkEntityType
-};
+    Campaign: 'CAMPAIGN',
+    AdGroup: 'AD_GROUP',
+    ProductGroup: 'PRODUCT_GROUP',
+    Ad: 'AD',
+    Keyword: 'KEYWORD'
+} as const;
+export type BulkEntityType = typeof BulkEntityType[keyof typeof BulkEntityType];
 

@@ -16,13 +16,13 @@ void main() {
   // final instance = OauthAccessTokenRequestClientCredentials();
 
   group('test OauthAccessTokenRequestClientCredentials', () {
-    // String grantType
-    test('to test the property `grantType`', () async {
+    // String scope
+    test('to test the property `scope`', () async {
       // TODO
     });
 
-    // String scope
-    test('to test the property `scope`', () async {
+    // String grantType
+    test('to test the property `grantType`', () async {
       // TODO
     });
 

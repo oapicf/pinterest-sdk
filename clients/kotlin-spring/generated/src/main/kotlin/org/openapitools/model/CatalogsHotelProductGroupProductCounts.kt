@@ -25,10 +25,10 @@ data class CatalogsHotelProductGroupProductCounts(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsHotelProductGroupProductCounts.CatalogType,
 
-    @get:DecimalMin("0")
+    @get:DecimalMin(value="0")
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("total", required = true) val total: java.math.BigDecimal
-    ) {
+) {
 
     /**
     * 
@@ -42,7 +42,8 @@ data class CatalogsHotelProductGroupProductCounts(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsHotelProductGroupProductCounts'")
             }
         }
     }

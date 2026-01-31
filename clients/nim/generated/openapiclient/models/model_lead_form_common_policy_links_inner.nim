@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type LeadFormCommonPolicyLinksInner* = object
   ## 
-  label*: string ## Policy label for an additional policy link.
-  link*: string ## Policy link for an additional policy link.
+  label*: Option[string] ## Policy label for an additional policy link.
+  link*: Option[string] ## Policy link for an additional policy link.
+

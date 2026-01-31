@@ -9,11 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_bulk_reporting_job_status
 
 type AdsAnalyticsGetAsyncResponse* = object
   ## 
-  reportStatus*: BulkReportingJobStatus
-  url*: string
-  size*: float
+  reportStatus*: Option[BulkReportingJobStatus]
+  url*: Option[string]
+  size*: Option[float]
+
+
+# Custom JSON deserialization for AdsAnalyticsGetAsyncResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[AdsAnalyticsGetAsyncResponse]): AdsAnalyticsGetAsyncResponse =
+  result = AdsAnalyticsGetAsyncResponse()
+  if node.kind == JObject:
+    if node.hasKey("report_status") and node["report_status"].kind != JNull:
+      result.reportStatus = some(to(node["report_status"], typeof(result.reportStatus.get())))
+    if node.hasKey("url") and node["url"].kind != JNull:
+      result.url = some(to(node["url"], typeof(result.url.get())))
+    if node.hasKey("size") and node["size"].kind != JNull:
+      result.size = some(to(node["size"], typeof(result.size.get())))
+
+# Custom JSON serialization for AdsAnalyticsGetAsyncResponse with custom field names
+proc `%`*(obj: AdsAnalyticsGetAsyncResponse): JsonNode =
+  result = newJObject()
+  if obj.reportStatus.isSome():
+    result["report_status"] = %obj.reportStatus.get()
+  if obj.url.isSome():
+    result["url"] = %obj.url.get()
+  if obj.size.isSome():
+    result["size"] = %obj.size.get()
+

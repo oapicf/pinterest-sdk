@@ -32,6 +32,8 @@ public:
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 	void WriteJson(JsonWriter& Writer) const final;
 
+	/* A List of countries for filtering */
+	TOptional<TArray<OpenAPITargetingAdvertiserCountry>> Countries;
 	/* Name of the Marketing Mix Modeling (MMM) report */
 	FString ReportName;
 	/* Metric report start date (UTC). Format: YYYY-MM-DD */
@@ -62,8 +64,6 @@ public:
 	TArray<OpenAPIMMMReportingTargetingType> TargetingTypes;
 	/* Metric and entity columns */
 	TArray<OpenAPIMMMReportingColumn> Columns;
-	/* A List of countries for filtering */
-	TOptional<TArray<OpenAPITargetingAdvertiserCountry>> Countries;
 };
 
 }

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_country
 import model_language
@@ -18,3 +20,23 @@ type AdvancedAuctionKey* = object
   itemId*: string ## The catalog retail item id in the merchant namespace
   country*: Country
   language*: Language
+
+
+# Custom JSON deserialization for AdvancedAuctionKey with custom field names
+proc to*(node: JsonNode, T: typedesc[AdvancedAuctionKey]): AdvancedAuctionKey =
+  result = AdvancedAuctionKey()
+  if node.kind == JObject:
+    if node.hasKey("item_id"):
+      result.itemId = to(node["item_id"], string)
+    if node.hasKey("country"):
+      result.country = to(node["country"], Country)
+    if node.hasKey("language"):
+      result.language = to(node["language"], Language)
+
+# Custom JSON serialization for AdvancedAuctionKey with custom field names
+proc `%`*(obj: AdvancedAuctionKey): JsonNode =
+  result = newJObject()
+  result["item_id"] = %obj.itemId
+  result["country"] = %obj.country
+  result["language"] = %obj.language
+

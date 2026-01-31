@@ -96,6 +96,9 @@ OauthApi <- R6::R6Class(
         stop("Missing required parameter `grant_type`.")
       }
 
+      if (!missing(`grant_type`) && is.null(`grant_type`)) {
+        stop("Invalid value for `grant_type` when calling OauthApi$OauthToken, `grant_type` is not nullable")
+      }
 
       form_params["grant_type"] <- `grant_type`
       local_var_url_path <- "/oauth/token"

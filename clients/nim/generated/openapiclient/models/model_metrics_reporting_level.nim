@@ -9,7 +9,88 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type MetricsReportingLevel* = object
-  ## Level of the reporting request
+type MetricsReportingLevel* {.pure.} = enum
+  ADVERTISER
+  ADVERTISERTARGETING
+  CAMPAIGN
+  CAMPAIGNTARGETING
+  ADGROUP
+  ADGROUPTARGETING
+  PINPROMOTION
+  PINPROMOTIONTARGETING
+  KEYWORD
+  PRODUCTGROUP
+  PRODUCTGROUPTARGETING
+  PRODUCTITEM
+  PRODUCTITEMTARGETING
+
+func `%`*(v: MetricsReportingLevel): JsonNode =
+  result = case v:
+    of MetricsReportingLevel.ADVERTISER: %"ADVERTISER"
+    of MetricsReportingLevel.ADVERTISERTARGETING: %"ADVERTISER_TARGETING"
+    of MetricsReportingLevel.CAMPAIGN: %"CAMPAIGN"
+    of MetricsReportingLevel.CAMPAIGNTARGETING: %"CAMPAIGN_TARGETING"
+    of MetricsReportingLevel.ADGROUP: %"AD_GROUP"
+    of MetricsReportingLevel.ADGROUPTARGETING: %"AD_GROUP_TARGETING"
+    of MetricsReportingLevel.PINPROMOTION: %"PIN_PROMOTION"
+    of MetricsReportingLevel.PINPROMOTIONTARGETING: %"PIN_PROMOTION_TARGETING"
+    of MetricsReportingLevel.KEYWORD: %"KEYWORD"
+    of MetricsReportingLevel.PRODUCTGROUP: %"PRODUCT_GROUP"
+    of MetricsReportingLevel.PRODUCTGROUPTARGETING: %"PRODUCT_GROUP_TARGETING"
+    of MetricsReportingLevel.PRODUCTITEM: %"PRODUCT_ITEM"
+    of MetricsReportingLevel.PRODUCTITEMTARGETING: %"PRODUCT_ITEM_TARGETING"
+
+func `$`*(v: MetricsReportingLevel): string =
+  result = case v:
+    of MetricsReportingLevel.ADVERTISER: $("ADVERTISER")
+    of MetricsReportingLevel.ADVERTISERTARGETING: $("ADVERTISER_TARGETING")
+    of MetricsReportingLevel.CAMPAIGN: $("CAMPAIGN")
+    of MetricsReportingLevel.CAMPAIGNTARGETING: $("CAMPAIGN_TARGETING")
+    of MetricsReportingLevel.ADGROUP: $("AD_GROUP")
+    of MetricsReportingLevel.ADGROUPTARGETING: $("AD_GROUP_TARGETING")
+    of MetricsReportingLevel.PINPROMOTION: $("PIN_PROMOTION")
+    of MetricsReportingLevel.PINPROMOTIONTARGETING: $("PIN_PROMOTION_TARGETING")
+    of MetricsReportingLevel.KEYWORD: $("KEYWORD")
+    of MetricsReportingLevel.PRODUCTGROUP: $("PRODUCT_GROUP")
+    of MetricsReportingLevel.PRODUCTGROUPTARGETING: $("PRODUCT_GROUP_TARGETING")
+    of MetricsReportingLevel.PRODUCTITEM: $("PRODUCT_ITEM")
+    of MetricsReportingLevel.PRODUCTITEMTARGETING: $("PRODUCT_ITEM_TARGETING")
+
+proc to*(node: JsonNode, T: typedesc[MetricsReportingLevel]): MetricsReportingLevel =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum MetricsReportingLevel, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ADVERTISER"):
+    return MetricsReportingLevel.ADVERTISER
+  of $("ADVERTISER_TARGETING"):
+    return MetricsReportingLevel.ADVERTISERTARGETING
+  of $("CAMPAIGN"):
+    return MetricsReportingLevel.CAMPAIGN
+  of $("CAMPAIGN_TARGETING"):
+    return MetricsReportingLevel.CAMPAIGNTARGETING
+  of $("AD_GROUP"):
+    return MetricsReportingLevel.ADGROUP
+  of $("AD_GROUP_TARGETING"):
+    return MetricsReportingLevel.ADGROUPTARGETING
+  of $("PIN_PROMOTION"):
+    return MetricsReportingLevel.PINPROMOTION
+  of $("PIN_PROMOTION_TARGETING"):
+    return MetricsReportingLevel.PINPROMOTIONTARGETING
+  of $("KEYWORD"):
+    return MetricsReportingLevel.KEYWORD
+  of $("PRODUCT_GROUP"):
+    return MetricsReportingLevel.PRODUCTGROUP
+  of $("PRODUCT_GROUP_TARGETING"):
+    return MetricsReportingLevel.PRODUCTGROUPTARGETING
+  of $("PRODUCT_ITEM"):
+    return MetricsReportingLevel.PRODUCTITEM
+  of $("PRODUCT_ITEM_TARGETING"):
+    return MetricsReportingLevel.PRODUCTITEMTARGETING
+  else:
+    raise newException(ValueError, "Invalid enum value for MetricsReportingLevel: " & strVal)
+

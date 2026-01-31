@@ -14,289 +14,337 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ItemAttributesRequest  {
   
-  @ApiModelProperty(example = "https://www.example.com/cat/denim-shirt/item012?utm_source=Pinterest", value = "Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.")
  /**
-   * Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
-  **/
+  * Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.
+  */
+  @ApiModelProperty(example = "https://www.example.com/cat/denim-shirt/item012?utm_source=Pinterest", value = "Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.")
+
   private String adLink;
 
-  @ApiModelProperty(example = "true", value = "Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.")
  /**
-   * Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
-  **/
+  * Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.
+  */
+  @ApiModelProperty(example = "true", value = "Set this attribute to TRUE if you're submitting items that are considered “adult”. These will not be shown on Pinterest.")
+
   private Boolean adult;
 
-  @ApiModelProperty(example = "newborn", value = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.")
  /**
-   * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
-  **/
+  * The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.
+  */
+  @ApiModelProperty(example = "newborn", value = "The age group to apply a demographic range to the product. Must be one of the following values (upper or lowercased): ‘newborn’ , ‘infant’, ‘toddler’, ‘kids’, or ‘adult’.")
+
   private String ageGroup;
 
-  @ApiModelProperty(example = "in stock", value = "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.")
  /**
-   * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
-  **/
+  * The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.
+  */
+  @ApiModelProperty(example = "in stock", value = "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.")
+
   private String availability;
 
-  @ApiModelProperty(example = "5", value = "Average reviews for the item. Can be a number from 1-5.")
  /**
-   * Average reviews for the item. Can be a number from 1-5.
-  **/
+  * Average reviews for the item. Can be a number from 1-5.
+  */
+  @ApiModelProperty(example = "5", value = "Average reviews for the item. Can be a number from 1-5.")
+
   private BigDecimal averageReviewRating;
 
-  @ApiModelProperty(example = "Josie’s Denim", value = "The brand of the product.")
  /**
-   * The brand of the product.
-  **/
+  * The brand of the product.
+  */
+  @ApiModelProperty(example = "Josie’s Denim", value = "The brand of the product.")
+
   private String brand;
 
-  @ApiModelProperty(example = "false", value = "This attribute is not supported anymore.")
  /**
-   * This attribute is not supported anymore.
-  **/
+  * This attribute is not supported anymore.
+  */
+  @ApiModelProperty(example = "false", value = "This attribute is not supported anymore.")
+
   private Boolean checkoutEnabled;
 
-  @ApiModelProperty(example = "blue", value = "The primary color of the product.")
  /**
-   * The primary color of the product.
-  **/
+  * The primary color of the product.
+  */
+  @ApiModelProperty(example = "blue", value = "The primary color of the product.")
+
   private String color;
 
-  @ApiModelProperty(example = "new", value = "The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.")
  /**
-   * The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.
-  **/
+  * The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.
+  */
+  @ApiModelProperty(example = "new", value = "The condition of the product. Must be one of the following values (upper or lowercased): ‘new’, ‘used’, or ‘refurbished’.")
+
   private String condition;
 
-  @ApiModelProperty(example = "Best sellers", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
  /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
-  **/
+  * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  */
+  @ApiModelProperty(example = "Best sellers", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
+
   private String customLabel0;
 
-  @ApiModelProperty(example = "Summer promotion", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
  /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
-  **/
+  * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  */
+  @ApiModelProperty(example = "Summer promotion", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
+
   private String customLabel1;
 
-  @ApiModelProperty(example = "Winter sales", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
  /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
-  **/
+  * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  */
+  @ApiModelProperty(example = "Winter sales", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
+
   private String customLabel2;
 
-  @ApiModelProperty(example = "Woman dress", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
  /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
-  **/
+  * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  */
+  @ApiModelProperty(example = "Woman dress", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
+
   private String customLabel3;
 
-  @ApiModelProperty(example = "Man hat", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
  /**
-   * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
-  **/
+  * <p><= 1000 characters</p> <p>Custom grouping of products.</p>
+  */
+  @ApiModelProperty(example = "Man hat", value = "<p><= 1000 characters</p> <p>Custom grouping of products.</p>")
+
   private String customLabel4;
 
-  @ApiModelProperty(example = "Casual fit denim shirt made with the finest quality Japanese denim.", value = "<p><= 10000 characters</p> <p>The description of the product.</p>")
  /**
-   * <p><= 10000 characters</p> <p>The description of the product.</p>
-  **/
+  * <p><= 10000 characters</p> <p>The description of the product.</p>
+  */
+  @ApiModelProperty(example = "Casual fit denim shirt made with the finest quality Japanese denim.", value = "<p><= 10000 characters</p> <p>The description of the product.</p>")
+
   private String description;
 
-  @ApiModelProperty(example = "true", value = "The item is free to ship.")
  /**
-   * The item is free to ship.
-  **/
+  * The item is free to ship.
+  */
+  @ApiModelProperty(example = "true", value = "The item is free to ship.")
+
   private Boolean freeShippingLabel;
 
-  @ApiModelProperty(example = "35 USD", value = "The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.")
  /**
-   * The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
-  **/
+  * The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.
+  */
+  @ApiModelProperty(example = "35 USD", value = "The minimum order purchase necessary for the customer to get free shipping. Only relevant if free shipping is offered.")
+
   private String freeShippingLimit;
 
-  @ApiModelProperty(example = "unisex", value = "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.")
  /**
-   * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
-  **/
+  * The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.
+  */
+  @ApiModelProperty(example = "unisex", value = "The gender associated with the product. Must be one of the following values (upper or lowercased): ‘male’, ‘female’ , or ‘unisex’.")
+
   private String gender;
 
-  @ApiModelProperty(example = "Apparel & Accessories > Clothing > Shirts & Tops", value = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.")
  /**
-   * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-  **/
+  * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+  */
+  @ApiModelProperty(example = "Apparel & Accessories > Clothing > Shirts & Tops", value = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.")
+
   private String googleProductCategory;
 
-  @ApiModelProperty(example = "3234567890126", value = "The unique universal product identifier.")
  /**
-   * The unique universal product identifier.
-  **/
+  * The unique universal product identifier.
+  */
+  @ApiModelProperty(example = "3234567890126", value = "The unique universal product identifier.")
+
   private Integer gtin;
 
-  @ApiModelProperty(example = "DS0294-L", value = "<p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>")
  /**
-   * <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
-  **/
+  * <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
+  */
+  @ApiModelProperty(example = "DS0294-L", value = "<p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>")
+
   private String id;
 
-  @ApiModelProperty(example = "DS0294", value = "<p><= 127 characters</p> <p>The parent ID of the product.</p>")
  /**
-   * <p><= 127 characters</p> <p>The parent ID of the product.</p>
-  **/
+  * <p><= 127 characters</p> <p>The parent ID of the product.</p>
+  */
+  @ApiModelProperty(example = "DS0294", value = "<p><= 127 characters</p> <p>The parent ID of the product.</p>")
+
   private String itemGroupId;
 
-  @ApiModelProperty(example = "1641483432072", value = "The millisecond timestamp when the item was lastly modified by the merchant.")
  /**
-   * The millisecond timestamp when the item was lastly modified by the merchant.
-  **/
+  * The millisecond timestamp when the item was lastly modified by the merchant.
+  */
+  @ApiModelProperty(example = "1641483432072", value = "The millisecond timestamp when the item was lastly modified by the merchant.")
+
   private Long lastUpdatedTime;
 
-  @ApiModelProperty(example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294", value = "<p><= 511 characters</p> <p>The landing page for the product.</p>")
  /**
-   * <p><= 511 characters</p> <p>The landing page for the product.</p>
-  **/
+  * <p><= 511 characters</p> <p>The landing page for the product.</p>
+  */
+  @ApiModelProperty(example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294", value = "<p><= 511 characters</p> <p>The landing page for the product.</p>")
+
   private String link;
 
-  @ApiModelProperty(example = "cotton", value = "The material used to make the product.")
  /**
-   * The material used to make the product.
-  **/
+  * The material used to make the product.
+  */
+  @ApiModelProperty(example = "cotton", value = "The material used to make the product.")
+
   private String material;
 
-  @ApiModelProperty(example = "19.99 USD", value = "The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.")
  /**
-   * The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
-  **/
+  * The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.
+  */
+  @ApiModelProperty(example = "19.99 USD", value = "The minimum advertised price of the product. It supports the following formats, \"19.99 USD\", \"19.99USD\" and \"19.99\". If the currency is not included, we default to US dollars.")
+
   private String minAdPrice;
 
-  @ApiModelProperty(example = "https://m.example.com/cat/womens-clothing/denim-shirt-0294", value = "The mobile-optimized version of your landing page. Must begin with http:// or https://.")
  /**
-   * The mobile-optimized version of your landing page. Must begin with http:// or https://.
-  **/
+  * The mobile-optimized version of your landing page. Must begin with http:// or https://.
+  */
+  @ApiModelProperty(example = "https://m.example.com/cat/womens-clothing/denim-shirt-0294", value = "The mobile-optimized version of your landing page. Must begin with http:// or https://.")
+
   private String mobileLink;
 
-  @ApiModelProperty(example = "PI12345NTEREST", value = "Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.")
  /**
-   * Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.
-  **/
+  * Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.
+  */
+  @ApiModelProperty(example = "PI12345NTEREST", value = "Manufacturer Part Number are alpha-numeric codes created by the manufacturer of a product to uniquely identify it among all products from the same manufacturer.")
+
   private String mpn;
 
-  @ApiModelProperty(example = "10", value = "The number of ratings for the item.")
  /**
-   * The number of ratings for the item.
-  **/
+  * The number of ratings for the item.
+  */
+  @ApiModelProperty(example = "10", value = "The number of ratings for the item.")
+
   private Integer numberOfRatings;
 
-  @ApiModelProperty(example = "10", value = "The number of reviews available for the item.")
  /**
-   * The number of reviews available for the item.
-  **/
+  * The number of reviews available for the item.
+  */
+  @ApiModelProperty(example = "10", value = "The number of reviews available for the item.")
+
   private Integer numberOfReviews;
 
-  @ApiModelProperty(example = "plaid", value = "The description of the pattern used for the product.")
  /**
-   * The description of the pattern used for the product.
-  **/
+  * The description of the pattern used for the product.
+  */
+  @ApiModelProperty(example = "plaid", value = "The description of the pattern used for the product.")
+
   private String pattern;
 
-  @ApiModelProperty(example = "24.99 USD", value = "The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.")
  /**
-   * The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
-  **/
+  * The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.
+  */
+  @ApiModelProperty(example = "24.99 USD", value = "The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.")
+
   private String price;
 
-  @ApiModelProperty(example = "Clothing > Women’s > Shirts > Denim", value = "<p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>")
  /**
-   * <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>
-  **/
+  * <p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>
+  */
+  @ApiModelProperty(example = "Clothing > Women’s > Shirts > Denim", value = "<p><= 1000 characters</p> <p>The categorization of your product based on your custom product taxonomy. Subcategories must be sent separated by “ > “. The > must be wrapped by spaces. We do not recognize any other delimiters such as comma or pipe.</p>")
+
   private String productType;
 
-  @ApiModelProperty(example = "14.99 USD", value = "The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.")
  /**
-   * The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
-  **/
+  * The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.
+  */
+  @ApiModelProperty(example = "14.99 USD", value = "The discounted price of the product. The sale_price must be lower than the price. It supports the following formats, \"14.99 USD\", \"14.99USD\" and \"14.99\". If the currency is not included, we default to US dollars.")
+
   private String salePrice;
 
-  @ApiModelProperty(example = "US:CA:Ground:0 USD", value = "Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.")
  /**
-   * Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.
-  **/
+  * Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.
+  */
+  @ApiModelProperty(example = "US:CA:Ground:0 USD", value = "Shipping consists of one group of up to four elements, country, region, service (all optional) and price (required). All colons, even for blank values, are required.")
+
   private String shipping;
 
-  @ApiModelProperty(example = "12 in", value = "The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.")
  /**
-   * The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
-  **/
+  * The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
+  */
+  @ApiModelProperty(example = "12 in", value = "The height of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.")
+
   private String shippingHeight;
 
-  @ApiModelProperty(example = "3 kg", value = "The weight of the product. Ensure there is a space between the numeric string and the metric.")
  /**
-   * The weight of the product. Ensure there is a space between the numeric string and the metric.
-  **/
+  * The weight of the product. Ensure there is a space between the numeric string and the metric.
+  */
+  @ApiModelProperty(example = "3 kg", value = "The weight of the product. Ensure there is a space between the numeric string and the metric.")
+
   private String shippingWeight;
 
-  @ApiModelProperty(example = "16 in", value = "The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.")
  /**
-   * The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
-  **/
+  * The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.
+  */
+  @ApiModelProperty(example = "16 in", value = "The width of the package needed to ship the product. Ensure there is a space between the numeric string and the metric.")
+
   private String shippingWidth;
 
-  @ApiModelProperty(example = "M", value = "The size of the product.")
  /**
-   * The size of the product.
-  **/
+  * The size of the product.
+  */
+  @ApiModelProperty(example = "M", value = "The size of the product.")
+
   private String size;
 
-  @ApiModelProperty(example = "US", value = "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.")
  /**
-   * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
-  **/
+  * Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.
+  */
+  @ApiModelProperty(example = "US", value = "Indicates the country’s sizing system in which you are submitting your product. Must be one of the following values (upper or lowercased): ‘US’, ‘UK’, ‘EU’, ‘DE’ , ‘FR’, ‘JP’, ‘CN’, ‘IT’, ‘ BR’, ‘MEX’, or ‘AU’.")
+
   private String sizeSystem;
 
-  @ApiModelProperty(example = "regular", value = "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.")
  /**
-   * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
-  **/
+  * Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.
+  */
+  @ApiModelProperty(example = "regular", value = "Additional description for the size. Must be one of the following values (upper or lowercased): ‘regular’, ‘petite’ , ‘plus’, ‘big_and_tall’, or ‘maternity’.")
+
   private String sizeType;
 
-  @ApiModelProperty(example = "US:1025433:6.00:y", value = "Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.")
  /**
-   * Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
-  **/
+  * Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.
+  */
+  @ApiModelProperty(example = "US:1025433:6.00:y", value = "Tax consists of one group of up to four elements, country, region, rate (all required) and tax_ship (optional). All colons, even for blank values, are required.")
+
   private String tax;
 
-  @ApiModelProperty(example = "Women’s denim shirt, large", value = "<p><= 500 characters</p> <p>The name of the product.</p>")
  /**
-   * <p><= 500 characters</p> <p>The name of the product.</p>
-  **/
+  * <p><= 500 characters</p> <p>The name of the product.</p>
+  */
+  @ApiModelProperty(example = "Women’s denim shirt, large", value = "<p><= 500 characters</p> <p>The name of the product.</p>")
+
   private String title;
 
-  @ApiModelProperty(example = "[Color, Size]", value = "Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.")
  /**
-   * Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
-  **/
+  * Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.
+  */
+  @ApiModelProperty(example = "[Color, Size]", value = "Options for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed.")
+
   private List<String> variantNames;
 
-  @ApiModelProperty(example = "[Red, Small]", value = "Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.")
  /**
-   * Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
-  **/
+  * Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.
+  */
+  @ApiModelProperty(example = "[Red, Small]", value = "Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.")
+
   private List<String> variantValues;
 
-  @ApiModelProperty(example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", value = "<p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p>")
  /**
-   * <p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p>
-  **/
+  * <p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p>
+  */
+  @ApiModelProperty(example = "[\"https://scene.example.com/image/image_v2.jpg\",\"https://scene.example.com/image/image_v3.jpg\"]", value = "<p><= 2000 characters</p> <p>The links to additional images for your product. Up to ten additional images can be used to show a product from different angles or to show different stages. Must begin with http:// or https://.</p>")
+
   private List<String> additionalImageLink;
 
   @ApiModelProperty(value = "")
+
   private ItemAttributesRequestAllOfImageLink imageLink;
 
-  @ApiModelProperty(example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294.mp4", value = "<p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>")
  /**
-   * <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
-  **/
+  * <p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>
+  */
+  @ApiModelProperty(example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294.mp4", value = "<p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>")
+
   private String videoLink;
  /**
    * Allows advertisers to specify a separate URL that can be used to track traffic coming from Pinterest shopping ads. Must send full URL including tracking—do not send tracking parameters only. At this time we do not support impression tracking. Must begin with http:// or https://.

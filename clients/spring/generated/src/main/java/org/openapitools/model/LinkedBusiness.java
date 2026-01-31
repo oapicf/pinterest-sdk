@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * LinkedBusiness
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LinkedBusiness {
 
   private @Nullable String username;
@@ -32,7 +32,7 @@ public class LinkedBusiness {
 
   private @Nullable String imageXlargeUrl;
 
-  public LinkedBusiness username(String username) {
+  public LinkedBusiness username(@Nullable String username) {
     this.username = username;
     return this;
   }
@@ -44,15 +44,15 @@ public class LinkedBusiness {
   
   @Schema(name = "username", example = "username", description = "Username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("username")
-  public String getUsername() {
+  public @Nullable String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@Nullable String username) {
     this.username = username;
   }
 
-  public LinkedBusiness imageSmallUrl(String imageSmallUrl) {
+  public LinkedBusiness imageSmallUrl(@Nullable String imageSmallUrl) {
     this.imageSmallUrl = imageSmallUrl;
     return this;
   }
@@ -64,15 +64,15 @@ public class LinkedBusiness {
   
   @Schema(name = "image_small_url", example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_small_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("image_small_url")
-  public String getImageSmallUrl() {
+  public @Nullable String getImageSmallUrl() {
     return imageSmallUrl;
   }
 
-  public void setImageSmallUrl(String imageSmallUrl) {
+  public void setImageSmallUrl(@Nullable String imageSmallUrl) {
     this.imageSmallUrl = imageSmallUrl;
   }
 
-  public LinkedBusiness imageMediumUrl(String imageMediumUrl) {
+  public LinkedBusiness imageMediumUrl(@Nullable String imageMediumUrl) {
     this.imageMediumUrl = imageMediumUrl;
     return this;
   }
@@ -84,15 +84,15 @@ public class LinkedBusiness {
   
   @Schema(name = "image_medium_url", example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_medium_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("image_medium_url")
-  public String getImageMediumUrl() {
+  public @Nullable String getImageMediumUrl() {
     return imageMediumUrl;
   }
 
-  public void setImageMediumUrl(String imageMediumUrl) {
+  public void setImageMediumUrl(@Nullable String imageMediumUrl) {
     this.imageMediumUrl = imageMediumUrl;
   }
 
-  public LinkedBusiness imageLargeUrl(String imageLargeUrl) {
+  public LinkedBusiness imageLargeUrl(@Nullable String imageLargeUrl) {
     this.imageLargeUrl = imageLargeUrl;
     return this;
   }
@@ -104,15 +104,15 @@ public class LinkedBusiness {
   
   @Schema(name = "image_large_url", example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_large_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("image_large_url")
-  public String getImageLargeUrl() {
+  public @Nullable String getImageLargeUrl() {
     return imageLargeUrl;
   }
 
-  public void setImageLargeUrl(String imageLargeUrl) {
+  public void setImageLargeUrl(@Nullable String imageLargeUrl) {
     this.imageLargeUrl = imageLargeUrl;
   }
 
-  public LinkedBusiness imageXlargeUrl(String imageXlargeUrl) {
+  public LinkedBusiness imageXlargeUrl(@Nullable String imageXlargeUrl) {
     this.imageXlargeUrl = imageXlargeUrl;
     return this;
   }
@@ -124,11 +124,11 @@ public class LinkedBusiness {
   
   @Schema(name = "image_xlarge_url", example = "https://www.example.com/dj23454f53dfk2324.jpg", description = "image_xlarge_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("image_xlarge_url")
-  public String getImageXlargeUrl() {
+  public @Nullable String getImageXlargeUrl() {
     return imageXlargeUrl;
   }
 
-  public void setImageXlargeUrl(String imageXlargeUrl) {
+  public void setImageXlargeUrl(@Nullable String imageXlargeUrl) {
     this.imageXlargeUrl = imageXlargeUrl;
   }
 

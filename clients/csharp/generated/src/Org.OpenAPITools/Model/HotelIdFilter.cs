@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "HOTEL_ID":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hOTELID = new Option<CatalogsProductGroupMultipleStringCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleStringCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            hOTELID = new Option<CatalogsProductGroupMultipleStringCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleStringCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

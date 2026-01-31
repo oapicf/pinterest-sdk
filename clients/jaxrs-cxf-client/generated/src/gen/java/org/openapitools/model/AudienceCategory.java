@@ -13,40 +13,46 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AudienceCategory  {
   
-  @ApiModelProperty(example = "1234567", value = "Interest unique key (same as ID).")
  /**
-   * Interest unique key (same as ID).
-  **/
+  * Interest unique key (same as ID).
+  */
+  @ApiModelProperty(example = "1234567", value = "Interest unique key (same as ID).")
+
   private String key;
 
-  @ApiModelProperty(example = "travel", value = "Interest name.")
  /**
-   * Interest name.
-  **/
+  * Interest name.
+  */
+  @ApiModelProperty(example = "travel", value = "Interest name.")
+
   private String name;
 
-  @ApiModelProperty(example = "0.551", value = "Interest's percent of category's total audience.")
  /**
-   * Interest's percent of category's total audience.
-  **/
+  * Interest's percent of category's total audience.
+  */
+  @ApiModelProperty(example = "0.551", value = "Interest's percent of category's total audience.")
+
   private BigDecimal ratio;
 
-  @ApiModelProperty(example = "1.2", value = "Interest affinity index.")
  /**
-   * Interest affinity index.
-  **/
+  * Interest affinity index.
+  */
+  @ApiModelProperty(example = "1.2", value = "Interest affinity index.")
+
   private BigDecimal index;
 
-  @ApiModelProperty(example = "1234567", value = "Interest ID.")
  /**
-   * Interest ID.
-  **/
+  * Interest ID.
+  */
+  @ApiModelProperty(example = "1234567", value = "Interest ID.")
+
   private String id;
 
-  @ApiModelProperty(value = "Subcategory interest distribution")
  /**
-   * Subcategory interest distribution
-  **/
+  * Subcategory interest distribution
+  */
+  @ApiModelProperty(value = "Subcategory interest distribution")
+
   private List<AudienceSubcategory> subcategories = new ArrayList<>();
  /**
    * Interest unique key (same as ID).

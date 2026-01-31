@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_creative_type
 import model_entity_status
@@ -38,68 +40,203 @@ type CustomizableCtaType* {.pure.} = enum
 
 type AdUpdateRequest* = object
   ## 
-  adGroupId*: string ## ID of the ad group that contains the ad.
-  androidDeepLink*: string ## Deep link URL for Android devices.
-  carouselAndroidDeepLinks*: seq[string] ## Comma-separated deep links for the carousel pin on Android.
-  carouselDestinationUrls*: seq[string] ## Comma-separated destination URLs for the carousel pin to promote.
-  carouselIosDeepLinks*: seq[string] ## Comma-separated deep links for the carousel pin on iOS.
-  clickTrackingUrl*: string ## Tracking url for the ad clicks.
-  creativeType*: CreativeType
-  destinationUrl*: string ## Destination URL.
-  iosDeepLink*: string ## Deep link URL for iOS devices.
-  isPinDeleted*: bool ## Is original pin deleted?
-  isRemovable*: bool ## Is pin repinnable?
-  name*: string ## Name of the ad - 255 chars max.
-  status*: EntityStatus
-  trackingUrls*: TrackingUrls
-  viewTrackingUrl*: string ## Tracking URL for ad impressions.
-  leadFormId*: string ## Lead form ID for lead ad generation.
-  gridClickType*: GridClickType
-  customizableCtaType*: CustomizableCtaType ## Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
-  quizPinData*: QuizPinData ## Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
+  adGroupId*: Option[string] ## ID of the ad group that contains the ad.
+  androidDeepLink*: Option[string] ## Deep link URL for Android devices.
+  carouselAndroidDeepLinks*: Option[seq[string]] ## Comma-separated deep links for the carousel pin on Android.
+  carouselDestinationUrls*: Option[seq[string]] ## Comma-separated destination URLs for the carousel pin to promote.
+  carouselIosDeepLinks*: Option[seq[string]] ## Comma-separated deep links for the carousel pin on iOS.
+  clickTrackingUrl*: Option[string] ## Tracking url for the ad clicks.
+  creativeType*: Option[CreativeType]
+  destinationUrl*: Option[string] ## Destination URL.
+  iosDeepLink*: Option[string] ## Deep link URL for iOS devices.
+  isPinDeleted*: Option[bool] ## Is original pin deleted?
+  isRemovable*: Option[bool] ## Is pin repinnable?
+  name*: Option[string] ## Name of the ad - 255 chars max.
+  status*: Option[EntityStatus]
+  trackingUrls*: Option[TrackingUrls]
+  viewTrackingUrl*: Option[string] ## Tracking URL for ad impressions.
+  leadFormId*: Option[string] ## Lead form ID for lead ad generation.
+  gridClickType*: Option[GridClickType]
+  customizableCtaType*: Option[CustomizableCtaType] ## Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
+  quizPinData*: Option[QuizPinData] ## Before creating a quiz ad, you must create an organic Pin using POST/Create Pin for each result in the quiz. Quiz ads cannot be saved by a Pinner. Quiz ad results can be saved.
   id*: string ## The ID of this ad.
-  pinId*: string ## Pin ID. This field may only be updated for draft ads.
+  pinId*: Option[string] ## Pin ID. This field may only be updated for draft ads.
 
 func `%`*(v: CustomizableCtaType): JsonNode =
-  let str = case v:
-    of CustomizableCtaType.GETOFFER: "GET_OFFER"
-    of CustomizableCtaType.LEARNMORE: "LEARN_MORE"
-    of CustomizableCtaType.ORDERNOW: "ORDER_NOW"
-    of CustomizableCtaType.SHOPNOW: "SHOP_NOW"
-    of CustomizableCtaType.SIGNUP: "SIGN_UP"
-    of CustomizableCtaType.SUBSCRIBE: "SUBSCRIBE"
-    of CustomizableCtaType.BUYNOW: "BUY_NOW"
-    of CustomizableCtaType.CONTACTUS: "CONTACT_US"
-    of CustomizableCtaType.GETQUOTE: "GET_QUOTE"
-    of CustomizableCtaType.VISITSITE: "VISIT_SITE"
-    of CustomizableCtaType.APPLYNOW: "APPLY_NOW"
-    of CustomizableCtaType.BOOKNOW: "BOOK_NOW"
-    of CustomizableCtaType.REQUESTDEMO: "REQUEST_DEMO"
-    of CustomizableCtaType.REGISTERNOW: "REGISTER_NOW"
-    of CustomizableCtaType.FINDADEALER: "FIND_A_DEALER"
-    of CustomizableCtaType.ADDTOCART: "ADD_TO_CART"
-    of CustomizableCtaType.WATCHNOW: "WATCH_NOW"
-    of CustomizableCtaType.READMORE: "READ_MORE"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CustomizableCtaType.GETOFFER: %"GET_OFFER"
+    of CustomizableCtaType.LEARNMORE: %"LEARN_MORE"
+    of CustomizableCtaType.ORDERNOW: %"ORDER_NOW"
+    of CustomizableCtaType.SHOPNOW: %"SHOP_NOW"
+    of CustomizableCtaType.SIGNUP: %"SIGN_UP"
+    of CustomizableCtaType.SUBSCRIBE: %"SUBSCRIBE"
+    of CustomizableCtaType.BUYNOW: %"BUY_NOW"
+    of CustomizableCtaType.CONTACTUS: %"CONTACT_US"
+    of CustomizableCtaType.GETQUOTE: %"GET_QUOTE"
+    of CustomizableCtaType.VISITSITE: %"VISIT_SITE"
+    of CustomizableCtaType.APPLYNOW: %"APPLY_NOW"
+    of CustomizableCtaType.BOOKNOW: %"BOOK_NOW"
+    of CustomizableCtaType.REQUESTDEMO: %"REQUEST_DEMO"
+    of CustomizableCtaType.REGISTERNOW: %"REGISTER_NOW"
+    of CustomizableCtaType.FINDADEALER: %"FIND_A_DEALER"
+    of CustomizableCtaType.ADDTOCART: %"ADD_TO_CART"
+    of CustomizableCtaType.WATCHNOW: %"WATCH_NOW"
+    of CustomizableCtaType.READMORE: %"READ_MORE"
 func `$`*(v: CustomizableCtaType): string =
   result = case v:
-    of CustomizableCtaType.GETOFFER: "GET_OFFER"
-    of CustomizableCtaType.LEARNMORE: "LEARN_MORE"
-    of CustomizableCtaType.ORDERNOW: "ORDER_NOW"
-    of CustomizableCtaType.SHOPNOW: "SHOP_NOW"
-    of CustomizableCtaType.SIGNUP: "SIGN_UP"
-    of CustomizableCtaType.SUBSCRIBE: "SUBSCRIBE"
-    of CustomizableCtaType.BUYNOW: "BUY_NOW"
-    of CustomizableCtaType.CONTACTUS: "CONTACT_US"
-    of CustomizableCtaType.GETQUOTE: "GET_QUOTE"
-    of CustomizableCtaType.VISITSITE: "VISIT_SITE"
-    of CustomizableCtaType.APPLYNOW: "APPLY_NOW"
-    of CustomizableCtaType.BOOKNOW: "BOOK_NOW"
-    of CustomizableCtaType.REQUESTDEMO: "REQUEST_DEMO"
-    of CustomizableCtaType.REGISTERNOW: "REGISTER_NOW"
-    of CustomizableCtaType.FINDADEALER: "FIND_A_DEALER"
-    of CustomizableCtaType.ADDTOCART: "ADD_TO_CART"
-    of CustomizableCtaType.WATCHNOW: "WATCH_NOW"
-    of CustomizableCtaType.READMORE: "READ_MORE"
+    of CustomizableCtaType.GETOFFER: $("GET_OFFER")
+    of CustomizableCtaType.LEARNMORE: $("LEARN_MORE")
+    of CustomizableCtaType.ORDERNOW: $("ORDER_NOW")
+    of CustomizableCtaType.SHOPNOW: $("SHOP_NOW")
+    of CustomizableCtaType.SIGNUP: $("SIGN_UP")
+    of CustomizableCtaType.SUBSCRIBE: $("SUBSCRIBE")
+    of CustomizableCtaType.BUYNOW: $("BUY_NOW")
+    of CustomizableCtaType.CONTACTUS: $("CONTACT_US")
+    of CustomizableCtaType.GETQUOTE: $("GET_QUOTE")
+    of CustomizableCtaType.VISITSITE: $("VISIT_SITE")
+    of CustomizableCtaType.APPLYNOW: $("APPLY_NOW")
+    of CustomizableCtaType.BOOKNOW: $("BOOK_NOW")
+    of CustomizableCtaType.REQUESTDEMO: $("REQUEST_DEMO")
+    of CustomizableCtaType.REGISTERNOW: $("REGISTER_NOW")
+    of CustomizableCtaType.FINDADEALER: $("FIND_A_DEALER")
+    of CustomizableCtaType.ADDTOCART: $("ADD_TO_CART")
+    of CustomizableCtaType.WATCHNOW: $("WATCH_NOW")
+    of CustomizableCtaType.READMORE: $("READ_MORE")
+
+proc to*(node: JsonNode, T: typedesc[CustomizableCtaType]): CustomizableCtaType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CustomizableCtaType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("GET_OFFER"):
+    return CustomizableCtaType.GETOFFER
+  of $("LEARN_MORE"):
+    return CustomizableCtaType.LEARNMORE
+  of $("ORDER_NOW"):
+    return CustomizableCtaType.ORDERNOW
+  of $("SHOP_NOW"):
+    return CustomizableCtaType.SHOPNOW
+  of $("SIGN_UP"):
+    return CustomizableCtaType.SIGNUP
+  of $("SUBSCRIBE"):
+    return CustomizableCtaType.SUBSCRIBE
+  of $("BUY_NOW"):
+    return CustomizableCtaType.BUYNOW
+  of $("CONTACT_US"):
+    return CustomizableCtaType.CONTACTUS
+  of $("GET_QUOTE"):
+    return CustomizableCtaType.GETQUOTE
+  of $("VISIT_SITE"):
+    return CustomizableCtaType.VISITSITE
+  of $("APPLY_NOW"):
+    return CustomizableCtaType.APPLYNOW
+  of $("BOOK_NOW"):
+    return CustomizableCtaType.BOOKNOW
+  of $("REQUEST_DEMO"):
+    return CustomizableCtaType.REQUESTDEMO
+  of $("REGISTER_NOW"):
+    return CustomizableCtaType.REGISTERNOW
+  of $("FIND_A_DEALER"):
+    return CustomizableCtaType.FINDADEALER
+  of $("ADD_TO_CART"):
+    return CustomizableCtaType.ADDTOCART
+  of $("WATCH_NOW"):
+    return CustomizableCtaType.WATCHNOW
+  of $("READ_MORE"):
+    return CustomizableCtaType.READMORE
+  else:
+    raise newException(ValueError, "Invalid enum value for CustomizableCtaType: " & strVal)
+
+
+# Custom JSON deserialization for AdUpdateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[AdUpdateRequest]): AdUpdateRequest =
+  result = AdUpdateRequest()
+  if node.kind == JObject:
+    if node.hasKey("ad_group_id") and node["ad_group_id"].kind != JNull:
+      result.adGroupId = some(to(node["ad_group_id"], typeof(result.adGroupId.get())))
+    if node.hasKey("android_deep_link") and node["android_deep_link"].kind != JNull:
+      result.androidDeepLink = some(to(node["android_deep_link"], typeof(result.androidDeepLink.get())))
+    if node.hasKey("carousel_android_deep_links") and node["carousel_android_deep_links"].kind != JNull:
+      result.carouselAndroidDeepLinks = some(to(node["carousel_android_deep_links"], typeof(result.carouselAndroidDeepLinks.get())))
+    if node.hasKey("carousel_destination_urls") and node["carousel_destination_urls"].kind != JNull:
+      result.carouselDestinationUrls = some(to(node["carousel_destination_urls"], typeof(result.carouselDestinationUrls.get())))
+    if node.hasKey("carousel_ios_deep_links") and node["carousel_ios_deep_links"].kind != JNull:
+      result.carouselIosDeepLinks = some(to(node["carousel_ios_deep_links"], typeof(result.carouselIosDeepLinks.get())))
+    if node.hasKey("click_tracking_url") and node["click_tracking_url"].kind != JNull:
+      result.clickTrackingUrl = some(to(node["click_tracking_url"], typeof(result.clickTrackingUrl.get())))
+    if node.hasKey("creative_type") and node["creative_type"].kind != JNull:
+      result.creativeType = some(to(node["creative_type"], typeof(result.creativeType.get())))
+    if node.hasKey("destination_url") and node["destination_url"].kind != JNull:
+      result.destinationUrl = some(to(node["destination_url"], typeof(result.destinationUrl.get())))
+    if node.hasKey("ios_deep_link") and node["ios_deep_link"].kind != JNull:
+      result.iosDeepLink = some(to(node["ios_deep_link"], typeof(result.iosDeepLink.get())))
+    if node.hasKey("is_pin_deleted") and node["is_pin_deleted"].kind != JNull:
+      result.isPinDeleted = some(to(node["is_pin_deleted"], typeof(result.isPinDeleted.get())))
+    if node.hasKey("is_removable") and node["is_removable"].kind != JNull:
+      result.isRemovable = some(to(node["is_removable"], typeof(result.isRemovable.get())))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+    if node.hasKey("tracking_urls") and node["tracking_urls"].kind != JNull:
+      result.trackingUrls = some(to(node["tracking_urls"], typeof(result.trackingUrls.get())))
+    if node.hasKey("view_tracking_url") and node["view_tracking_url"].kind != JNull:
+      result.viewTrackingUrl = some(to(node["view_tracking_url"], typeof(result.viewTrackingUrl.get())))
+    if node.hasKey("lead_form_id") and node["lead_form_id"].kind != JNull:
+      result.leadFormId = some(to(node["lead_form_id"], typeof(result.leadFormId.get())))
+    if node.hasKey("grid_click_type") and node["grid_click_type"].kind != JNull:
+      result.gridClickType = some(to(node["grid_click_type"], typeof(result.gridClickType.get())))
+    if node.hasKey("customizable_cta_type") and node["customizable_cta_type"].kind != JNull:
+      result.customizableCtaType = some(to(node["customizable_cta_type"], CustomizableCtaType))
+    if node.hasKey("quiz_pin_data") and node["quiz_pin_data"].kind != JNull:
+      result.quizPinData = some(to(node["quiz_pin_data"], typeof(result.quizPinData.get())))
+    if node.hasKey("id"):
+      result.id = to(node["id"], string)
+    if node.hasKey("pin_id") and node["pin_id"].kind != JNull:
+      result.pinId = some(to(node["pin_id"], typeof(result.pinId.get())))
+
+# Custom JSON serialization for AdUpdateRequest with custom field names
+proc `%`*(obj: AdUpdateRequest): JsonNode =
+  result = newJObject()
+  if obj.adGroupId.isSome():
+    result["ad_group_id"] = %obj.adGroupId.get()
+  if obj.androidDeepLink.isSome():
+    result["android_deep_link"] = %obj.androidDeepLink.get()
+  if obj.carouselAndroidDeepLinks.isSome():
+    result["carousel_android_deep_links"] = %obj.carouselAndroidDeepLinks.get()
+  if obj.carouselDestinationUrls.isSome():
+    result["carousel_destination_urls"] = %obj.carouselDestinationUrls.get()
+  if obj.carouselIosDeepLinks.isSome():
+    result["carousel_ios_deep_links"] = %obj.carouselIosDeepLinks.get()
+  if obj.clickTrackingUrl.isSome():
+    result["click_tracking_url"] = %obj.clickTrackingUrl.get()
+  if obj.creativeType.isSome():
+    result["creative_type"] = %obj.creativeType.get()
+  if obj.destinationUrl.isSome():
+    result["destination_url"] = %obj.destinationUrl.get()
+  if obj.iosDeepLink.isSome():
+    result["ios_deep_link"] = %obj.iosDeepLink.get()
+  if obj.isPinDeleted.isSome():
+    result["is_pin_deleted"] = %obj.isPinDeleted.get()
+  if obj.isRemovable.isSome():
+    result["is_removable"] = %obj.isRemovable.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.trackingUrls.isSome():
+    result["tracking_urls"] = %obj.trackingUrls.get()
+  if obj.viewTrackingUrl.isSome():
+    result["view_tracking_url"] = %obj.viewTrackingUrl.get()
+  if obj.leadFormId.isSome():
+    result["lead_form_id"] = %obj.leadFormId.get()
+  if obj.gridClickType.isSome():
+    result["grid_click_type"] = %obj.gridClickType.get()
+  if obj.customizableCtaType.isSome():
+    result["customizable_cta_type"] = %obj.customizableCtaType.get()
+  if obj.quizPinData.isSome():
+    result["quiz_pin_data"] = %obj.quizPinData.get()
+  result["id"] = %obj.id
+  if obj.pinId.isSome():
+    result["pin_id"] = %obj.pinId.get()
+

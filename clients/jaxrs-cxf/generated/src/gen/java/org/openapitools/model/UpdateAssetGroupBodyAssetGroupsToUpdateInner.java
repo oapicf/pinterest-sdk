@@ -15,41 +15,48 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UpdateAssetGroupBodyAssetGroupsToUpdateInner  {
   
-  @ApiModelProperty(example = "666791336903426391", required = true, value = "Unique identifier of the asset group to update.")
  /**
-   * Unique identifier of the asset group to update.
-  **/
+  * Unique identifier of the asset group to update.
+  */
+  @ApiModelProperty(example = "666791336903426391", required = true, value = "Unique identifier of the asset group to update.")
+
   private String assetGroupId;
 
-  @ApiModelProperty(example = "Canada Ad Accounts", value = "Asset Group name")
  /**
-   * Asset Group name
-  **/
+  * Asset Group name
+  */
+  @ApiModelProperty(example = "Canada Ad Accounts", value = "Asset Group name")
+
   private String name;
 
-  @ApiModelProperty(example = "Asset groups that has ad accounts shared in Canada", value = "Asset group description")
  /**
-   * Asset group description
-  **/
+  * Asset group description
+  */
+  @ApiModelProperty(example = "Asset groups that has ad accounts shared in Canada", value = "Asset group description")
+
   private String description;
 
-  @ApiModelProperty(example = "[\"BRAND\",\"LOCATION_OR_LANGUAGE\",\"PRODUCT_LINE\",\"OTHER\"]", value = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.")
-  @Valid
  /**
-   * Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
-  **/
+  * Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
+  */
+  @ApiModelProperty(example = "[\"BRAND\",\"LOCATION_OR_LANGUAGE\",\"PRODUCT_LINE\",\"OTHER\"]", value = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.")
+
+  @Valid
+
   private List<AssetGroupType> assetGroupTypes = new ArrayList<>();
 
-  @ApiModelProperty(value = "A list of asset ids to add to the asset group.")
  /**
-   * A list of asset ids to add to the asset group.
-  **/
+  * A list of asset ids to add to the asset group.
+  */
+  @ApiModelProperty(value = "A list of asset ids to add to the asset group.")
+
   private List<String> assetsToAdd = new ArrayList<>();
 
-  @ApiModelProperty(value = "A list of asset ids to remove from the asset group.")
  /**
-   * A list of asset ids to remove from the asset group.
-  **/
+  * A list of asset ids to remove from the asset group.
+  */
+  @ApiModelProperty(value = "A list of asset ids to remove from the asset group.")
+
   private List<String> assetsToRemove = new ArrayList<>();
  /**
    * Unique identifier of the asset group to update.

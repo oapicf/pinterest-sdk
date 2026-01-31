@@ -12,7 +12,7 @@
 
 import { RequestFile } from './models';
 
-export class CampaignsAnalyticsResponseInner extends any {
+export class CampaignsAnalyticsResponseInner {
     /**
     * The ID of the campaing that this metrics belongs to.
     */
@@ -37,7 +37,7 @@ export class CampaignsAnalyticsResponseInner extends any {
         }    ];
 
     static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(CampaignsAnalyticsResponseInner.attributeTypeMap);
+        return CampaignsAnalyticsResponseInner.attributeTypeMap;
     }
 }
 

@@ -13,16 +13,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BidFloor  {
   
-  @ApiModelProperty(example = "[100000,200000]", value = "A list of bid floors in micro currency. For example, [100000, 200000]")
  /**
-   * A list of bid floors in micro currency. For example, [100000, 200000]
-  **/
+  * A list of bid floors in micro currency. For example, [100000, 200000]
+  */
+  @ApiModelProperty(example = "[100000,200000]", value = "A list of bid floors in micro currency. For example, [100000, 200000]")
+
   private List<Integer> bidFloors = new ArrayList<>();
 
-  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'")
  /**
-   * Always the string 'bidfloor'
-  **/
+  * Always the string 'bidfloor'
+  */
+  @ApiModelProperty(example = "bidfloor", value = "Always the string 'bidfloor'")
+
   private String type = "bidfloor";
  /**
    * A list of bid floors in micro currency. For example, [100000, 200000]

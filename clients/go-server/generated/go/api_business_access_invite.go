@@ -54,37 +54,87 @@ func NewBusinessAccessInviteAPIController(s BusinessAccessInviteAPIServicer, opt
 func (c *BusinessAccessInviteAPIController) Routes() Routes {
 	return Routes{
 		"RespondBusinessAccessInvites": Route{
+			"RespondBusinessAccessInvites",
 			strings.ToUpper("Patch"),
 			"/v5/businesses/invites",
 			c.RespondBusinessAccessInvites,
 		},
 		"CreateAssetInvites": Route{
+			"CreateAssetInvites",
 			strings.ToUpper("Post"),
 			"/v5/businesses/{business_id}/invites/assets/access",
 			c.CreateAssetInvites,
 		},
 		"AssetAccessRequestsCreate": Route{
+			"AssetAccessRequestsCreate",
 			strings.ToUpper("Post"),
 			"/v5/businesses/{business_id}/requests/assets/access",
 			c.AssetAccessRequestsCreate,
 		},
 		"GetInvites": Route{
+			"GetInvites",
 			strings.ToUpper("Get"),
 			"/v5/businesses/{business_id}/invites",
 			c.GetInvites,
 		},
 		"CreateMembershipOrPartnershipInvites": Route{
+			"CreateMembershipOrPartnershipInvites",
 			strings.ToUpper("Post"),
 			"/v5/businesses/{business_id}/invites",
 			c.CreateMembershipOrPartnershipInvites,
 		},
 		"CancelInvitesOrRequests": Route{
+			"CancelInvitesOrRequests",
 			strings.ToUpper("Delete"),
 			"/v5/businesses/{business_id}/invites",
 			c.CancelInvitesOrRequests,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the BusinessAccessInviteAPIController
+func (c *BusinessAccessInviteAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"RespondBusinessAccessInvites",
+			strings.ToUpper("Patch"),
+			"/v5/businesses/invites",
+			c.RespondBusinessAccessInvites,
+		},
+		Route{
+			"CreateAssetInvites",
+			strings.ToUpper("Post"),
+			"/v5/businesses/{business_id}/invites/assets/access",
+			c.CreateAssetInvites,
+		},
+		Route{
+			"AssetAccessRequestsCreate",
+			strings.ToUpper("Post"),
+			"/v5/businesses/{business_id}/requests/assets/access",
+			c.AssetAccessRequestsCreate,
+		},
+		Route{
+			"GetInvites",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/invites",
+			c.GetInvites,
+		},
+		Route{
+			"CreateMembershipOrPartnershipInvites",
+			strings.ToUpper("Post"),
+			"/v5/businesses/{business_id}/invites",
+			c.CreateMembershipOrPartnershipInvites,
+		},
+		Route{
+			"CancelInvitesOrRequests",
+			strings.ToUpper("Delete"),
+			"/v5/businesses/{business_id}/invites",
+			c.CancelInvitesOrRequests,
+		},
+	}
+}
+
+
 
 // RespondBusinessAccessInvites - Accept or decline an invite/request
 func (c *BusinessAccessInviteAPIController) RespondBusinessAccessInvites(w http.ResponseWriter, r *http.Request) {

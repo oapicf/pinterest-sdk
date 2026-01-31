@@ -175,8 +175,7 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "rule":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                rule = new Option<AudienceRule?>(JsonSerializer.Deserialize<AudienceRule>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            rule = new Option<AudienceRule?>(JsonSerializer.Deserialize<AudienceRule>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

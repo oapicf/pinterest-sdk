@@ -9,18 +9,71 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_business_access_user_summary
 
 type AssetGroupBinding* = object
   ## 
-  id*: string ## Asset Group ID.
-  assetGroupName*: string ## Asset Group name
-  assetGroupDescription*: string ## Asset group description
-  assetGroupTypes*: seq[string] ## Asset group types
-  adAccountsIds*: seq[string] ## A list of ad account IDs under the asset group
-  profilesIds*: seq[string] ## A list of profile IDs under asset group
-  createdTime*: int ## The creation time of the asset group
-  updatedTime*: int ## The last update time of the asset group
-  owner*: BusinessAccessUserSummary ## The data of the business that owns the asset group.
-  createdBy*: BusinessAccessUserSummary ## The data of the user that created the asset group.
+  id*: Option[string] ## Asset Group ID.
+  assetGroupName*: Option[string] ## Asset Group name
+  assetGroupDescription*: Option[string] ## Asset group description
+  assetGroupTypes*: Option[seq[string]] ## Asset group types
+  adAccountsIds*: Option[seq[string]] ## A list of ad account IDs under the asset group
+  profilesIds*: Option[seq[string]] ## A list of profile IDs under asset group
+  createdTime*: Option[int] ## The creation time of the asset group
+  updatedTime*: Option[int] ## The last update time of the asset group
+  owner*: Option[BusinessAccessUserSummary] ## The data of the business that owns the asset group.
+  createdBy*: Option[BusinessAccessUserSummary] ## The data of the user that created the asset group.
+
+
+# Custom JSON deserialization for AssetGroupBinding with custom field names
+proc to*(node: JsonNode, T: typedesc[AssetGroupBinding]): AssetGroupBinding =
+  result = AssetGroupBinding()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("asset_group_name") and node["asset_group_name"].kind != JNull:
+      result.assetGroupName = some(to(node["asset_group_name"], typeof(result.assetGroupName.get())))
+    if node.hasKey("asset_group_description") and node["asset_group_description"].kind != JNull:
+      result.assetGroupDescription = some(to(node["asset_group_description"], typeof(result.assetGroupDescription.get())))
+    if node.hasKey("asset_group_types") and node["asset_group_types"].kind != JNull:
+      result.assetGroupTypes = some(to(node["asset_group_types"], typeof(result.assetGroupTypes.get())))
+    if node.hasKey("ad_accounts_ids") and node["ad_accounts_ids"].kind != JNull:
+      result.adAccountsIds = some(to(node["ad_accounts_ids"], typeof(result.adAccountsIds.get())))
+    if node.hasKey("profiles_ids") and node["profiles_ids"].kind != JNull:
+      result.profilesIds = some(to(node["profiles_ids"], typeof(result.profilesIds.get())))
+    if node.hasKey("created_time") and node["created_time"].kind != JNull:
+      result.createdTime = some(to(node["created_time"], typeof(result.createdTime.get())))
+    if node.hasKey("updated_time") and node["updated_time"].kind != JNull:
+      result.updatedTime = some(to(node["updated_time"], typeof(result.updatedTime.get())))
+    if node.hasKey("owner") and node["owner"].kind != JNull:
+      result.owner = some(to(node["owner"], typeof(result.owner.get())))
+    if node.hasKey("created_by") and node["created_by"].kind != JNull:
+      result.createdBy = some(to(node["created_by"], typeof(result.createdBy.get())))
+
+# Custom JSON serialization for AssetGroupBinding with custom field names
+proc `%`*(obj: AssetGroupBinding): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.assetGroupName.isSome():
+    result["asset_group_name"] = %obj.assetGroupName.get()
+  if obj.assetGroupDescription.isSome():
+    result["asset_group_description"] = %obj.assetGroupDescription.get()
+  if obj.assetGroupTypes.isSome():
+    result["asset_group_types"] = %obj.assetGroupTypes.get()
+  if obj.adAccountsIds.isSome():
+    result["ad_accounts_ids"] = %obj.adAccountsIds.get()
+  if obj.profilesIds.isSome():
+    result["profiles_ids"] = %obj.profilesIds.get()
+  if obj.createdTime.isSome():
+    result["created_time"] = %obj.createdTime.get()
+  if obj.updatedTime.isSome():
+    result["updated_time"] = %obj.updatedTime.get()
+  if obj.owner.isSome():
+    result["owner"] = %obj.owner.get()
+  if obj.createdBy.isSome():
+    result["created_by"] = %obj.createdBy.get()
+

@@ -9,8 +9,24 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type DeleteAssetGroupBody* = object
   ## Request body used to delete asset groups
   assetGroupsToDelete*: seq[string] ## List of ids of asset groups to be deleted
+
+
+# Custom JSON deserialization for DeleteAssetGroupBody with custom field names
+proc to*(node: JsonNode, T: typedesc[DeleteAssetGroupBody]): DeleteAssetGroupBody =
+  result = DeleteAssetGroupBody()
+  if node.kind == JObject:
+    if node.hasKey("asset_groups_to_delete"):
+      result.assetGroupsToDelete = to(node["asset_groups_to_delete"], seq[string])
+
+# Custom JSON serialization for DeleteAssetGroupBody with custom field names
+proc `%`*(obj: DeleteAssetGroupBody): JsonNode =
+  result = newJObject()
+  result["asset_groups_to_delete"] = %obj.assetGroupsToDelete
+

@@ -24,7 +24,7 @@ inherit
 feature -- API Access
 
 
-	multi_pins_analytics (pin_ids: LIST [STRING_32]; start_date: DATE; end_date: DATE; metric_types: LIST [PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER]; app_types: STRING_32; ad_account_id: STRING_32): detachable STRING_TABLE [STRING_TABLE]
+	multi_pins_analytics (pin_ids: LIST [STRING_32]; start_date: DATE; end_date: DATE; metric_types: LIST [STRING_32]; app_types: STRING_32; ad_account_id: STRING_32): detachable STRING_TABLE [STRING_TABLE]
 			-- Get multiple Pin analytics
 			-- &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get analytics for multiple pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 			-- 
@@ -75,7 +75,7 @@ feature -- API Access
 			end
 		end
 
-	pins_analytics (pin_id: STRING_32; start_date: DATE; end_date: DATE; metric_types: LIST [PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER]; app_types: STRING_32; split_field: STRING_32; ad_account_id: STRING_32): detachable STRING_TABLE [PIN_ANALYTICS_METRICS_RESPONSE]
+	pins_analytics (pin_id: STRING_32; start_date: DATE; end_date: DATE; metric_types: LIST [STRING_32]; app_types: STRING_32; split_field: STRING_32; ad_account_id: STRING_32): detachable STRING_TABLE [PIN_ANALYTICS_METRICS_RESPONSE]
 			-- Get Pin analytics
 			-- Get analytics for a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
 			-- 

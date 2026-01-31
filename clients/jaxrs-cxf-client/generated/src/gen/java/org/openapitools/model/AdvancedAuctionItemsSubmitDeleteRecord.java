@@ -1,30 +1,33 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.Country;
 import org.openapitools.model.Language;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object describing an item bid option deletion operation
- **/
+ * Object describing an item bid option deletion operation
+ */
 @ApiModel(description="Object describing an item bid option deletion operation")
 
 public class AdvancedAuctionItemsSubmitDeleteRecord  {
   
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
  /**
-   * The catalog retail item id in the merchant namespace
-  **/
+  * The catalog retail item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
+
   private String itemId;
 
   @ApiModelProperty(required = true, value = "")
+
   private Country country;
 
   @ApiModelProperty(required = true, value = "")
+
   private Language language;
  /**
    * The catalog retail item id in the merchant namespace

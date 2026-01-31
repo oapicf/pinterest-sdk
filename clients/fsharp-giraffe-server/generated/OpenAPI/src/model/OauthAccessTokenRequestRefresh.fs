@@ -12,9 +12,9 @@ module OauthAccessTokenRequestRefresh =
   //#endregion
 
   type OauthAccessTokenRequestRefresh = {
-    GrantType : GrantTypeEnum;
     RefreshToken : string;
     Scope : string;
     RefreshOn : bool;
+    GrantType : GrantTypeEnum;
   }
   //#endregion

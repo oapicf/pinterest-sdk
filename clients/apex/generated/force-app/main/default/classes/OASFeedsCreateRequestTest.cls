@@ -81,4 +81,21 @@ private class OASFeedsCreateRequestTest {
         System.assertEquals('defaultAvailability', x-property-mappings.get('default_availability'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
     }
+
+    @isTest
+    private static void defaultValuesPopulated() {
+        OASFeedsCreateRequest feedsCreateRequest = new OASFeedsCreateRequest();
+        System.assertEquals('ACTIVE', feedsCreateRequest.status);
+        System.assertEquals(null, feedsCreateRequest.defaultCurrency);
+        System.assertEquals(null, feedsCreateRequest.name);
+        System.assertEquals(null, feedsCreateRequest.format);
+        System.assertEquals(null, feedsCreateRequest.defaultLocale);
+        System.assertEquals(null, feedsCreateRequest.credentials);
+        System.assertEquals(null, feedsCreateRequest.location);
+        System.assertEquals(null, feedsCreateRequest.preferredProcessingSchedule);
+        System.assertEquals(null, feedsCreateRequest.catalogType);
+        System.assertEquals(null, feedsCreateRequest.defaultCountry);
+        System.assertEquals(null, feedsCreateRequest.defaultAvailability);
+        System.assertEquals(null, feedsCreateRequest.catalogId);
+    }
 }

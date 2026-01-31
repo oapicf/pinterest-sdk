@@ -69,12 +69,8 @@ class OauthController extends Controller
 
         $grantType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\OauthAccessTokenRequestGrantType::class);
 
-        try {
-            $apiResult = $this->api->oauthToken($grantType);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->oauthToken($grantType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\OauthAccessTokenResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

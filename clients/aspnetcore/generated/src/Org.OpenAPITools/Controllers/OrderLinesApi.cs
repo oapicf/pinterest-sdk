@@ -46,16 +46,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(OrderLine));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"start_time\" : 1452208622,\n  \"purchase_order_id\" : \"PO12345\",\n  \"campaign_ids\" : [ \"626735565838\" ],\n  \"end_time\" : 1461269616,\n  \"name\" : \"Order Line Name 1\",\n  \"id\" : \"2680059592705\",\n  \"paid_budget\" : 5000000,\n  \"paid_type\" : \"PAID\",\n  \"type\" : \"orderline\",\n  \"ad_account_id\" : \"549755885175\",\n  \"budget\" : 5000000,\n  \"status\" : \"ACTIVE\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<OrderLine>(exampleJson)
-            : default(OrderLine);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -80,16 +80,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(OrderLinesList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"start_time\" : 1452208622,\n    \"purchase_order_id\" : \"PO12345\",\n    \"campaign_ids\" : [ \"626735565838\" ],\n    \"end_time\" : 1461269616,\n    \"name\" : \"Order Line Name 1\",\n    \"id\" : \"2680059592705\",\n    \"paid_budget\" : 5000000,\n    \"paid_type\" : \"PAID\",\n    \"type\" : \"orderline\",\n    \"ad_account_id\" : \"549755885175\",\n    \"budget\" : 5000000,\n    \"status\" : \"ACTIVE\"\n  }, {\n    \"start_time\" : 1452208622,\n    \"purchase_order_id\" : \"PO12345\",\n    \"campaign_ids\" : [ \"626735565838\" ],\n    \"end_time\" : 1461269616,\n    \"name\" : \"Order Line Name 1\",\n    \"id\" : \"2680059592705\",\n    \"paid_budget\" : 5000000,\n    \"paid_type\" : \"PAID\",\n    \"type\" : \"orderline\",\n    \"ad_account_id\" : \"549755885175\",\n    \"budget\" : 5000000,\n    \"status\" : \"ACTIVE\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<OrderLinesList200Response>(exampleJson)
-            : default(OrderLinesList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

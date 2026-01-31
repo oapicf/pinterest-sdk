@@ -9,20 +9,37 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_image_metadata
 import model_image_metadata_images
 import model_video_metadata
 
+# AnyOf type
+type PinMediaMetadataKind* {.pure.} = enum
+  ImageMetadataVariant
+  VideoMetadataVariant
+
 type PinMediaMetadata* = object
   ## 
-  itemType*: string
-  title*: string
-  description*: string
-  link*: string
-  images*: ImageMetadata_images
-  coverImageUrl*: string
-  videoUrl*: string ## Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-  duration*: float ## Duration (in milliseconds)
-  height*: int ## Height (in pixels)
-  width*: int ## Width (in pixels)
+  case kind*: PinMediaMetadataKind
+  of PinMediaMetadataKind.ImageMetadataVariant:
+    ImageMetadataValue*: ImageMetadata
+  of PinMediaMetadataKind.VideoMetadataVariant:
+    VideoMetadataValue*: VideoMetadata
+
+proc to*(node: JsonNode, T: typedesc[PinMediaMetadata]): PinMediaMetadata =
+  ## Custom deserializer for anyOf type - tries each variant
+  try:
+    return PinMediaMetadata(kind: PinMediaMetadataKind.ImageMetadataVariant, ImageMetadataValue: to(node, ImageMetadata))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as ImageMetadata: ", e.msg
+  try:
+    return PinMediaMetadata(kind: PinMediaMetadataKind.VideoMetadataVariant, VideoMetadataValue: to(node, VideoMetadata))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as VideoMetadata: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of PinMediaMetadata. JSON: " & $node)
+

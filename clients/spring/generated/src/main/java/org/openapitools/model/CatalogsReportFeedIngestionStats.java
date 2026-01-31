@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * CatalogsReportFeedIngestionStats
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportFeedIngestionStats implements CatalogsReportStats {
 
   /**
@@ -32,7 +32,7 @@ public class CatalogsReportFeedIngestionStats implements CatalogsReportStats {
   public enum ReportTypeEnum {
     FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES");
 
-    private String value;
+    private final String value;
 
     ReportTypeEnum(String value) {
       this.value = value;
@@ -79,7 +79,7 @@ public class CatalogsReportFeedIngestionStats implements CatalogsReportStats {
     
     ERROR("ERROR");
 
-    private String value;
+    private final String value;
 
     SeverityEnum(String value) {
       this.value = value;
@@ -108,7 +108,7 @@ public class CatalogsReportFeedIngestionStats implements CatalogsReportStats {
 
   private @Nullable SeverityEnum severity;
 
-  public CatalogsReportFeedIngestionStats reportType(ReportTypeEnum reportType) {
+  public CatalogsReportFeedIngestionStats reportType(@Nullable ReportTypeEnum reportType) {
     this.reportType = reportType;
     return this;
   }
@@ -120,15 +120,15 @@ public class CatalogsReportFeedIngestionStats implements CatalogsReportStats {
   
   @Schema(name = "report_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("report_type")
-  public ReportTypeEnum getReportType() {
+  public @Nullable ReportTypeEnum getReportType() {
     return reportType;
   }
 
-  public void setReportType(ReportTypeEnum reportType) {
+  public void setReportType(@Nullable ReportTypeEnum reportType) {
     this.reportType = reportType;
   }
 
-  public CatalogsReportFeedIngestionStats catalogId(String catalogId) {
+  public CatalogsReportFeedIngestionStats catalogId(@Nullable String catalogId) {
     this.catalogId = catalogId;
     return this;
   }
@@ -140,15 +140,15 @@ public class CatalogsReportFeedIngestionStats implements CatalogsReportStats {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "catalog_id", description = "ID of the catalog entity.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_id")
-  public String getCatalogId() {
+  public @Nullable String getCatalogId() {
     return catalogId;
   }
 
-  public void setCatalogId(String catalogId) {
+  public void setCatalogId(@Nullable String catalogId) {
     this.catalogId = catalogId;
   }
 
-  public CatalogsReportFeedIngestionStats code(Integer code) {
+  public CatalogsReportFeedIngestionStats code(@Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -160,15 +160,15 @@ public class CatalogsReportFeedIngestionStats implements CatalogsReportStats {
   
   @Schema(name = "code", example = "112", description = "The event code that a diagnostics aggregated number references", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public Integer getCode() {
+  public @Nullable Integer getCode() {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@Nullable Integer code) {
     this.code = code;
   }
 
-  public CatalogsReportFeedIngestionStats codeLabel(String codeLabel) {
+  public CatalogsReportFeedIngestionStats codeLabel(@Nullable String codeLabel) {
     this.codeLabel = codeLabel;
     return this;
   }
@@ -180,15 +180,15 @@ public class CatalogsReportFeedIngestionStats implements CatalogsReportStats {
   
   @Schema(name = "code_label", example = "AVAILABILITY_INVALID", description = "A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code_label")
-  public String getCodeLabel() {
+  public @Nullable String getCodeLabel() {
     return codeLabel;
   }
 
-  public void setCodeLabel(String codeLabel) {
+  public void setCodeLabel(@Nullable String codeLabel) {
     this.codeLabel = codeLabel;
   }
 
-  public CatalogsReportFeedIngestionStats message(String message) {
+  public CatalogsReportFeedIngestionStats message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -200,15 +200,15 @@ public class CatalogsReportFeedIngestionStats implements CatalogsReportStats {
   
   @Schema(name = "message", description = "Title message describing the diagnostic issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
-  public String getMessage() {
+  public @Nullable String getMessage() {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 
-  public CatalogsReportFeedIngestionStats occurrences(Integer occurrences) {
+  public CatalogsReportFeedIngestionStats occurrences(@Nullable Integer occurrences) {
     this.occurrences = occurrences;
     return this;
   }
@@ -220,15 +220,15 @@ public class CatalogsReportFeedIngestionStats implements CatalogsReportStats {
   
   @Schema(name = "occurrences", example = "10", description = "Number of occurrences of the issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("occurrences")
-  public Integer getOccurrences() {
+  public @Nullable Integer getOccurrences() {
     return occurrences;
   }
 
-  public void setOccurrences(Integer occurrences) {
+  public void setOccurrences(@Nullable Integer occurrences) {
     this.occurrences = occurrences;
   }
 
-  public CatalogsReportFeedIngestionStats severity(SeverityEnum severity) {
+  public CatalogsReportFeedIngestionStats severity(@Nullable SeverityEnum severity) {
     this.severity = severity;
     return this;
   }
@@ -240,11 +240,11 @@ public class CatalogsReportFeedIngestionStats implements CatalogsReportStats {
   
   @Schema(name = "severity", description = "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("severity")
-  public SeverityEnum getSeverity() {
+  public @Nullable SeverityEnum getSeverity() {
     return severity;
   }
 
-  public void setSeverity(SeverityEnum severity) {
+  public void setSeverity(@Nullable SeverityEnum severity) {
     this.severity = severity;
   }
 

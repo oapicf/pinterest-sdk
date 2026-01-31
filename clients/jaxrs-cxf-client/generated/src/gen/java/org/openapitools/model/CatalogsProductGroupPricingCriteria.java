@@ -10,12 +10,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsProductGroupPricingCriteria  {
   
   @ApiModelProperty(value = "")
+
   private Boolean inclusion = true;
 
   @ApiModelProperty(required = true, value = "")
+
   private BigDecimal values;
 
   @ApiModelProperty(value = "")
+
   private Boolean negated = false;
  /**
    * Get inclusion

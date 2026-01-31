@@ -9,9 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_hotel_product_group_filter_keys
 
 type CatalogsHotelProductGroupFiltersAnyOf* = object
   ## 
   anyOf*: seq[CatalogsHotelProductGroupFilterKeys]
+
+
+# Custom JSON deserialization for CatalogsHotelProductGroupFiltersAnyOf with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsHotelProductGroupFiltersAnyOf]): CatalogsHotelProductGroupFiltersAnyOf =
+  result = CatalogsHotelProductGroupFiltersAnyOf()
+  if node.kind == JObject:
+    if node.hasKey("any_of"):
+      result.anyOf = to(node["any_of"], seq[CatalogsHotelProductGroupFilterKeys])
+
+# Custom JSON serialization for CatalogsHotelProductGroupFiltersAnyOf with custom field names
+proc `%`*(obj: CatalogsHotelProductGroupFiltersAnyOf): JsonNode =
+  result = newJObject()
+  result["any_of"] = %obj.anyOf
+

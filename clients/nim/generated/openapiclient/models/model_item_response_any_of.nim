@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_attributes
 import model_catalogs_creative_assets_item_response
@@ -17,11 +19,38 @@ import model_catalogs_retail_item_response
 import model_catalogs_type
 import model_pin
 
+# OneOf type
+type ItemResponseAnyOfKind* {.pure.} = enum
+  CatalogsRetailItemResponseVariant
+  CatalogsHotelItemResponseVariant
+  CatalogsCreativeAssetsItemResponseVariant
+
 type ItemResponseAnyOf* = object
   ## 
-  catalogType*: CatalogsType
-  itemId*: string ## The catalog retail item id in the merchant namespace
-  pins*: seq[Pin] ## The pins mapped to the item
-  attributes*: CatalogsCreativeAssetsAttributes
-  hotelId*: string ## The catalog hotel id in the merchant namespace
-  creativeAssetsId*: string ## The catalog creative assets id in the merchant namespace
+  case kind*: ItemResponseAnyOfKind
+  of ItemResponseAnyOfKind.CatalogsRetailItemResponseVariant:
+    CatalogsRetailItemResponseValue*: CatalogsRetailItemResponse
+  of ItemResponseAnyOfKind.CatalogsHotelItemResponseVariant:
+    CatalogsHotelItemResponseValue*: CatalogsHotelItemResponse
+  of ItemResponseAnyOfKind.CatalogsCreativeAssetsItemResponseVariant:
+    CatalogsCreativeAssetsItemResponseValue*: CatalogsCreativeAssetsItemResponse
+
+proc to*(node: JsonNode, T: typedesc[ItemResponseAnyOf]): ItemResponseAnyOf =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return ItemResponseAnyOf(kind: ItemResponseAnyOfKind.CatalogsRetailItemResponseVariant, CatalogsRetailItemResponseValue: to(node, CatalogsRetailItemResponse))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailItemResponse: ", e.msg
+  try:
+    return ItemResponseAnyOf(kind: ItemResponseAnyOfKind.CatalogsHotelItemResponseVariant, CatalogsHotelItemResponseValue: to(node, CatalogsHotelItemResponse))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelItemResponse: ", e.msg
+  try:
+    return ItemResponseAnyOf(kind: ItemResponseAnyOfKind.CatalogsCreativeAssetsItemResponseVariant, CatalogsCreativeAssetsItemResponseValue: to(node, CatalogsCreativeAssetsItemResponse))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsItemResponse: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of ItemResponseAnyOf. JSON: " & $node)
+

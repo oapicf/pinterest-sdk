@@ -54,12 +54,6 @@
       //expect(instance).to.be.a(PinterestSdk.ConversionTagCreate);
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instance = new PinterestSdk.ConversionTagCreate();
-      //expect(instance).to.be();
-    });
-
     it('should have the property aemEnabled (base name: "aem_enabled")', function() {
       // uncomment below and update the code to test the property aemEnabled
       //var instance = new PinterestSdk.ConversionTagCreate();
@@ -98,6 +92,12 @@
 
     it('should have the property aemLocEnabled (base name: "aem_loc_enabled")', function() {
       // uncomment below and update the code to test the property aemLocEnabled
+      //var instance = new PinterestSdk.ConversionTagCreate();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
       //var instance = new PinterestSdk.ConversionTagCreate();
       //expect(instance).to.be();
     });

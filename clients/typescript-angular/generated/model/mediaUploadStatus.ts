@@ -12,16 +12,11 @@
 /**
  * Media upload status
  */
-export type MediaUploadStatus = 'registered' | 'processing' | 'succeeded' | 'failed';
-
 export const MediaUploadStatus = {
-
-    Registered: 'registered' as MediaUploadStatus,
-
-    Processing: 'processing' as MediaUploadStatus,
-
-    Succeeded: 'succeeded' as MediaUploadStatus,
-
-    Failed: 'failed' as MediaUploadStatus
-};
+    Registered: 'registered',
+    Processing: 'processing',
+    Succeeded: 'succeeded',
+    Failed: 'failed'
+} as const;
+export type MediaUploadStatus = typeof MediaUploadStatus[keyof typeof MediaUploadStatus];
 

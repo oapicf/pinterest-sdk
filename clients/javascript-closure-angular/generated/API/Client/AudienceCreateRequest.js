@@ -33,7 +33,8 @@ API.Client.AudienceCreateRequest.prototype.rule;
 API.Client.AudienceCreateRequest.prototype.description;
 
 /**
- * @type {!API.Client.AudienceCreateRequest_1_audience_type}
+ * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+ * @type {!API.Client.AudienceType}
  * @export
  */
 API.Client.AudienceCreateRequest.prototype.audienceType;

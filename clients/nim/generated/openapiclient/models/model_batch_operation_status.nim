@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type BatchOperationStatus* = object
-  ## The status of the operation performed by the batch
+type BatchOperationStatus* {.pure.} = enum
+  PROCESSING
+  COMPLETED
+  FAILED
+
+func `%`*(v: BatchOperationStatus): JsonNode =
+  result = case v:
+    of BatchOperationStatus.PROCESSING: %"PROCESSING"
+    of BatchOperationStatus.COMPLETED: %"COMPLETED"
+    of BatchOperationStatus.FAILED: %"FAILED"
+
+func `$`*(v: BatchOperationStatus): string =
+  result = case v:
+    of BatchOperationStatus.PROCESSING: $("PROCESSING")
+    of BatchOperationStatus.COMPLETED: $("COMPLETED")
+    of BatchOperationStatus.FAILED: $("FAILED")
+
+proc to*(node: JsonNode, T: typedesc[BatchOperationStatus]): BatchOperationStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum BatchOperationStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("PROCESSING"):
+    return BatchOperationStatus.PROCESSING
+  of $("COMPLETED"):
+    return BatchOperationStatus.COMPLETED
+  of $("FAILED"):
+    return BatchOperationStatus.FAILED
+  else:
+    raise newException(ValueError, "Invalid enum value for BatchOperationStatus: " & strVal)
+

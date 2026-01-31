@@ -323,25 +323,25 @@ pub enum ReportsSlashStatsError {
 /// Get a list of product pins for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 pub async fn catalogs_product_group_pins_slash_list(configuration: &configuration::Configuration, product_group_id: &str, bookmark: Option<&str>, page_size: Option<i32>, ad_account_id: Option<&str>, pin_metrics: Option<bool>) -> Result<models::CatalogsProductGroupPinsList200Response, Error<CatalogsProductGroupPinsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_product_group_id = product_group_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_ad_account_id = ad_account_id;
-    let p_pin_metrics = pin_metrics;
+    let p_path_product_group_id = product_group_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_ad_account_id = ad_account_id;
+    let p_query_pin_metrics = pin_metrics;
 
-    let uri_str = format!("{}/catalogs/product_groups/{product_group_id}/products", configuration.base_path, product_group_id=crate::apis::urlencode(p_product_group_id));
+    let uri_str = format!("{}/catalogs/product_groups/{product_group_id}/products", configuration.base_path, product_group_id=crate::apis::urlencode(p_path_product_group_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_pin_metrics {
+    if let Some(ref param_value) = p_query_pin_metrics {
         req_builder = req_builder.query(&[("pin_metrics", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -379,13 +379,13 @@ pub async fn catalogs_product_group_pins_slash_list(configuration: &configuratio
 /// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 pub async fn catalogs_product_groups_slash_create(configuration: &configuration::Configuration, multiple_product_groups_inner: models::MultipleProductGroupsInner, ad_account_id: Option<&str>) -> Result<models::CatalogsVerticalProductGroup, Error<CatalogsProductGroupsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_multiple_product_groups_inner = multiple_product_groups_inner;
-    let p_ad_account_id = ad_account_id;
+    let p_body_multiple_product_groups_inner = multiple_product_groups_inner;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/catalogs/product_groups", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -394,7 +394,7 @@ pub async fn catalogs_product_groups_slash_create(configuration: &configuration:
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_multiple_product_groups_inner);
+    req_builder = req_builder.json(&p_body_multiple_product_groups_inner);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -424,13 +424,13 @@ pub async fn catalogs_product_groups_slash_create(configuration: &configuration:
 /// Create product group to use in Catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 pub async fn catalogs_product_groups_slash_create_many(configuration: &configuration::Configuration, multiple_product_groups_inner: Vec<models::MultipleProductGroupsInner>, ad_account_id: Option<&str>) -> Result<Vec<String>, Error<CatalogsProductGroupsSlashCreateManyError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_multiple_product_groups_inner = multiple_product_groups_inner;
-    let p_ad_account_id = ad_account_id;
+    let p_body_multiple_product_groups_inner = multiple_product_groups_inner;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/catalogs/product_groups/multiple", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -439,7 +439,7 @@ pub async fn catalogs_product_groups_slash_create_many(configuration: &configura
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_multiple_product_groups_inner);
+    req_builder = req_builder.json(&p_body_multiple_product_groups_inner);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -469,13 +469,13 @@ pub async fn catalogs_product_groups_slash_create_many(configuration: &configura
 /// Delete a product group owned by the \"operation user_account\" from being in use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 pub async fn catalogs_product_groups_slash_delete(configuration: &configuration::Configuration, product_group_id: &str, ad_account_id: Option<&str>) -> Result<(), Error<CatalogsProductGroupsSlashDeleteError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_product_group_id = product_group_id;
-    let p_ad_account_id = ad_account_id;
+    let p_path_product_group_id = product_group_id;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/catalogs/product_groups/{product_group_id}", configuration.base_path, product_group_id=crate::apis::urlencode(p_product_group_id));
+    let uri_str = format!("{}/catalogs/product_groups/{product_group_id}", configuration.base_path, product_group_id=crate::apis::urlencode(p_path_product_group_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -502,17 +502,17 @@ pub async fn catalogs_product_groups_slash_delete(configuration: &configuration:
 /// Delete product groups owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 pub async fn catalogs_product_groups_slash_delete_many(configuration: &configuration::Configuration, id: Vec<i32>, ad_account_id: Option<&str>) -> Result<(), Error<CatalogsProductGroupsSlashDeleteManyError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_id = id;
-    let p_ad_account_id = ad_account_id;
+    let p_query_id = id;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/catalogs/product_groups/multiple", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
     req_builder = match "csv" {
-        "multi" => req_builder.query(&p_id.into_iter().map(|p| ("id".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => req_builder.query(&[("id", &p_id.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        "multi" => req_builder.query(&p_query_id.into_iter().map(|p| ("id".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("id", &p_query_id.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -539,13 +539,13 @@ pub async fn catalogs_product_groups_slash_delete_many(configuration: &configura
 /// Get a singe product group for a given Catalogs Product Group Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 pub async fn catalogs_product_groups_slash_get(configuration: &configuration::Configuration, product_group_id: &str, ad_account_id: Option<&str>) -> Result<models::CatalogsVerticalProductGroup, Error<CatalogsProductGroupsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_product_group_id = product_group_id;
-    let p_ad_account_id = ad_account_id;
+    let p_path_product_group_id = product_group_id;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/catalogs/product_groups/{product_group_id}", configuration.base_path, product_group_id=crate::apis::urlencode(p_product_group_id));
+    let uri_str = format!("{}/catalogs/product_groups/{product_group_id}", configuration.base_path, product_group_id=crate::apis::urlencode(p_path_product_group_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -583,35 +583,35 @@ pub async fn catalogs_product_groups_slash_get(configuration: &configuration::Co
 /// Get a list of product groups for a given Catalogs Feed Id owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 pub async fn catalogs_product_groups_slash_list(configuration: &configuration::Configuration, id: Option<Vec<i32>>, feed_id: Option<&str>, catalog_id: Option<&str>, bookmark: Option<&str>, page_size: Option<i32>, ad_account_id: Option<&str>) -> Result<models::CatalogsProductGroupsList200Response, Error<CatalogsProductGroupsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_id = id;
-    let p_feed_id = feed_id;
-    let p_catalog_id = catalog_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_ad_account_id = ad_account_id;
+    let p_query_id = id;
+    let p_query_feed_id = feed_id;
+    let p_query_catalog_id = catalog_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/catalogs/product_groups", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_id {
+    if let Some(ref param_value) = p_query_id {
         req_builder = match "csv" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("id".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("id", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_feed_id {
+    if let Some(ref param_value) = p_query_feed_id {
         req_builder = req_builder.query(&[("feed_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_catalog_id {
+    if let Some(ref param_value) = p_query_catalog_id {
         req_builder = req_builder.query(&[("catalog_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -649,13 +649,13 @@ pub async fn catalogs_product_groups_slash_list(configuration: &configuration::C
 /// Get a product counts for a given Catalogs Product Group owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 pub async fn catalogs_product_groups_slash_product_counts_get(configuration: &configuration::Configuration, product_group_id: &str, ad_account_id: Option<&str>) -> Result<models::CatalogsProductGroupProductCountsVertical, Error<CatalogsProductGroupsSlashProductCountsGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_product_group_id = product_group_id;
-    let p_ad_account_id = ad_account_id;
+    let p_path_product_group_id = product_group_id;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/catalogs/product_groups/{product_group_id}/product_counts", configuration.base_path, product_group_id=crate::apis::urlencode(p_product_group_id));
+    let uri_str = format!("{}/catalogs/product_groups/{product_group_id}/product_counts", configuration.base_path, product_group_id=crate::apis::urlencode(p_path_product_group_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -693,14 +693,14 @@ pub async fn catalogs_product_groups_slash_product_counts_get(configuration: &co
 /// Update product group owned by the \"operation user_account\" to use in Catalogs. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 pub async fn catalogs_product_groups_slash_update(configuration: &configuration::Configuration, product_group_id: &str, catalogs_product_groups_update_request: models::CatalogsProductGroupsUpdateRequest, ad_account_id: Option<&str>) -> Result<models::CatalogsVerticalProductGroup, Error<CatalogsProductGroupsSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_product_group_id = product_group_id;
-    let p_catalogs_product_groups_update_request = catalogs_product_groups_update_request;
-    let p_ad_account_id = ad_account_id;
+    let p_path_product_group_id = product_group_id;
+    let p_body_catalogs_product_groups_update_request = catalogs_product_groups_update_request;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/catalogs/product_groups/{product_group_id}", configuration.base_path, product_group_id=crate::apis::urlencode(p_product_group_id));
+    let uri_str = format!("{}/catalogs/product_groups/{product_group_id}", configuration.base_path, product_group_id=crate::apis::urlencode(p_path_product_group_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -709,7 +709,7 @@ pub async fn catalogs_product_groups_slash_update(configuration: &configuration:
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_catalogs_product_groups_update_request);
+    req_builder = req_builder.json(&p_body_catalogs_product_groups_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -739,13 +739,13 @@ pub async fn catalogs_product_groups_slash_update(configuration: &configuration:
 /// Create a new catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: this API only supports the catalog type of HOTEL for now.
 pub async fn catalogs_slash_create(configuration: &configuration::Configuration, catalogs_create_request: models::CatalogsCreateRequest, ad_account_id: Option<&str>) -> Result<models::Catalog, Error<CatalogsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_catalogs_create_request = catalogs_create_request;
-    let p_ad_account_id = ad_account_id;
+    let p_body_catalogs_create_request = catalogs_create_request;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/catalogs", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -754,7 +754,7 @@ pub async fn catalogs_slash_create(configuration: &configuration::Configuration,
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_catalogs_create_request);
+    req_builder = req_builder.json(&p_body_catalogs_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -784,20 +784,20 @@ pub async fn catalogs_slash_create(configuration: &configuration::Configuration,
 /// Fetch catalogs owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 pub async fn catalogs_slash_list(configuration: &configuration::Configuration, bookmark: Option<&str>, page_size: Option<i32>, ad_account_id: Option<&str>) -> Result<models::CatalogsList200Response, Error<CatalogsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_ad_account_id = ad_account_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/catalogs", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -835,21 +835,21 @@ pub async fn catalogs_slash_list(configuration: &configuration::Configuration, b
 /// Fetch a feed processing results owned by the \"operation user_account\". Please note that for now the bookmark parameter is not functional and only the first page will be available until it is implemented in some release in the near future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 pub async fn feed_processing_results_slash_list(configuration: &configuration::Configuration, feed_id: &str, bookmark: Option<&str>, page_size: Option<i32>, ad_account_id: Option<&str>) -> Result<models::FeedProcessingResultsList200Response, Error<FeedProcessingResultsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_feed_id = feed_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_ad_account_id = ad_account_id;
+    let p_path_feed_id = feed_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/catalogs/feeds/{feed_id}/processing_results", configuration.base_path, feed_id=crate::apis::urlencode(p_feed_id));
+    let uri_str = format!("{}/catalogs/feeds/{feed_id}/processing_results", configuration.base_path, feed_id=crate::apis::urlencode(p_path_feed_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -887,13 +887,13 @@ pub async fn feed_processing_results_slash_list(configuration: &configuration::C
 /// Create a new feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 pub async fn feeds_slash_create(configuration: &configuration::Configuration, feeds_create_request: models::FeedsCreateRequest, ad_account_id: Option<&str>) -> Result<models::CatalogsFeed, Error<FeedsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_feeds_create_request = feeds_create_request;
-    let p_ad_account_id = ad_account_id;
+    let p_body_feeds_create_request = feeds_create_request;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/catalogs/feeds", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -905,7 +905,7 @@ pub async fn feeds_slash_create(configuration: &configuration::Configuration, fe
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_feeds_create_request);
+    req_builder = req_builder.json(&p_body_feeds_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -935,13 +935,13 @@ pub async fn feeds_slash_create(configuration: &configuration::Configuration, fe
 /// Delete a feed owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
 pub async fn feeds_slash_delete(configuration: &configuration::Configuration, feed_id: &str, ad_account_id: Option<&str>) -> Result<(), Error<FeedsSlashDeleteError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_feed_id = feed_id;
-    let p_ad_account_id = ad_account_id;
+    let p_path_feed_id = feed_id;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/catalogs/feeds/{feed_id}", configuration.base_path, feed_id=crate::apis::urlencode(p_feed_id));
+    let uri_str = format!("{}/catalogs/feeds/{feed_id}", configuration.base_path, feed_id=crate::apis::urlencode(p_path_feed_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -971,13 +971,13 @@ pub async fn feeds_slash_delete(configuration: &configuration::Configuration, fe
 /// Get a single feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
 pub async fn feeds_slash_get(configuration: &configuration::Configuration, feed_id: &str, ad_account_id: Option<&str>) -> Result<models::CatalogsFeed, Error<FeedsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_feed_id = feed_id;
-    let p_ad_account_id = ad_account_id;
+    let p_path_feed_id = feed_id;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/catalogs/feeds/{feed_id}", configuration.base_path, feed_id=crate::apis::urlencode(p_feed_id));
+    let uri_str = format!("{}/catalogs/feeds/{feed_id}", configuration.base_path, feed_id=crate::apis::urlencode(p_path_feed_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1018,13 +1018,13 @@ pub async fn feeds_slash_get(configuration: &configuration::Configuration, feed_
 /// Ingest items for a given feed owned by the \"operation user_account\".  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>  Note: This endpoint is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 pub async fn feeds_slash_ingest(configuration: &configuration::Configuration, feed_id: &str, ad_account_id: Option<&str>) -> Result<models::CatalogsFeedIngestion, Error<FeedsSlashIngestError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_feed_id = feed_id;
-    let p_ad_account_id = ad_account_id;
+    let p_path_feed_id = feed_id;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/catalogs/feeds/{feed_id}/ingest", configuration.base_path, feed_id=crate::apis::urlencode(p_feed_id));
+    let uri_str = format!("{}/catalogs/feeds/{feed_id}/ingest", configuration.base_path, feed_id=crate::apis::urlencode(p_path_feed_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1062,24 +1062,24 @@ pub async fn feeds_slash_ingest(configuration: &configuration::Configuration, fe
 /// Fetch feeds owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.
 pub async fn feeds_slash_list(configuration: &configuration::Configuration, bookmark: Option<&str>, page_size: Option<i32>, catalog_id: Option<&str>, ad_account_id: Option<&str>) -> Result<models::FeedsList200Response, Error<FeedsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_catalog_id = catalog_id;
-    let p_ad_account_id = ad_account_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_catalog_id = catalog_id;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/catalogs/feeds", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_catalog_id {
+    if let Some(ref param_value) = p_query_catalog_id {
         req_builder = req_builder.query(&[("catalog_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1120,14 +1120,14 @@ pub async fn feeds_slash_list(configuration: &configuration::Configuration, book
 /// Update a feed owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  For Retail partners, refer to <a href='https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs'>Before you get started with Catalogs</a>. For Hotel parterns, refer to <a href='/docs/api-features/shopping-overview/'>Pinterest API for shopping</a>.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 pub async fn feeds_slash_update(configuration: &configuration::Configuration, feed_id: &str, feeds_update_request: models::FeedsUpdateRequest, ad_account_id: Option<&str>) -> Result<models::CatalogsFeed, Error<FeedsSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_feed_id = feed_id;
-    let p_feeds_update_request = feeds_update_request;
-    let p_ad_account_id = ad_account_id;
+    let p_path_feed_id = feed_id;
+    let p_body_feeds_update_request = feeds_update_request;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/catalogs/feeds/{feed_id}", configuration.base_path, feed_id=crate::apis::urlencode(p_feed_id));
+    let uri_str = format!("{}/catalogs/feeds/{feed_id}", configuration.base_path, feed_id=crate::apis::urlencode(p_path_feed_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1139,7 +1139,7 @@ pub async fn feeds_slash_update(configuration: &configuration::Configuration, fe
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_feeds_update_request);
+    req_builder = req_builder.json(&p_body_feeds_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1169,13 +1169,13 @@ pub async fn feeds_slash_update(configuration: &configuration::Configuration, fe
 /// Get a single catalogs items batch owned by the \"operating user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 pub async fn items_batch_slash_get(configuration: &configuration::Configuration, batch_id: &str, ad_account_id: Option<&str>) -> Result<models::CatalogsItemsBatch, Error<ItemsBatchSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_batch_id = batch_id;
-    let p_ad_account_id = ad_account_id;
+    let p_path_batch_id = batch_id;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/catalogs/items/batch/{batch_id}", configuration.base_path, batch_id=crate::apis::urlencode(p_batch_id));
+    let uri_str = format!("{}/catalogs/items/batch/{batch_id}", configuration.base_path, batch_id=crate::apis::urlencode(p_path_batch_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1216,13 +1216,13 @@ pub async fn items_batch_slash_get(configuration: &configuration::Configuration,
 /// This endpoint supports multiple operations on a set of one or more catalog items owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager to get assistance.
 pub async fn items_batch_slash_post(configuration: &configuration::Configuration, items_batch_post_request: models::ItemsBatchPostRequest, ad_account_id: Option<&str>) -> Result<models::CatalogsItemsBatch, Error<ItemsBatchSlashPostError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_items_batch_post_request = items_batch_post_request;
-    let p_ad_account_id = ad_account_id;
+    let p_body_items_batch_post_request = items_batch_post_request;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/catalogs/items/batch", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1234,7 +1234,7 @@ pub async fn items_batch_slash_post(configuration: &configuration::Configuration
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_items_batch_post_request);
+    req_builder = req_builder.json(&p_body_items_batch_post_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1264,32 +1264,32 @@ pub async fn items_batch_slash_post(configuration: &configuration::Configuration
 /// List item validation issues for a given feed processing result owned by the \"operation user_account\". Up to 20 random samples of affected items are returned for each error and warning code. Please note that for now query parameters 'item_numbers' and 'item_validation_issue' cannot be used simultaneously until it is implemented in some release in the future. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: To get a list of all affected items instead of sampled issues, please refer to <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a> and <a href='/docs/api/v5/#operation/reports/get'>Get catalogs report</a> endpoints. Moreover, they support multiple types of catalogs.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 pub async fn items_issues_slash_list(configuration: &configuration::Configuration, processing_result_id: &str, bookmark: Option<&str>, page_size: Option<i32>, item_numbers: Option<Vec<i32>>, item_validation_issue: Option<models::CatalogsItemValidationIssue>, ad_account_id: Option<&str>) -> Result<models::ItemsIssuesList200Response, Error<ItemsIssuesSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_processing_result_id = processing_result_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_item_numbers = item_numbers;
-    let p_item_validation_issue = item_validation_issue;
-    let p_ad_account_id = ad_account_id;
+    let p_path_processing_result_id = processing_result_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_item_numbers = item_numbers;
+    let p_query_item_validation_issue = item_validation_issue;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/catalogs/processing_results/{processing_result_id}/item_issues", configuration.base_path, processing_result_id=crate::apis::urlencode(p_processing_result_id));
+    let uri_str = format!("{}/catalogs/processing_results/{processing_result_id}/item_issues", configuration.base_path, processing_result_id=crate::apis::urlencode(p_path_processing_result_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_item_numbers {
+    if let Some(ref param_value) = p_query_item_numbers {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("item_numbers".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("item_numbers", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_item_validation_issue {
-        req_builder = req_builder.query(&[("item_validation_issue", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_item_validation_issue {
+        req_builder = req_builder.query(&[("item_validation_issue", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1325,30 +1325,31 @@ pub async fn items_issues_slash_list(configuration: &configuration::Configuratio
 }
 
 /// Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: this endpoint is deprecated and will be deleted soon. Please use <a href='/docs/api/v5/#operation/items/post'>Get catalogs items (POST)</a> instead.
+#[deprecated]
 pub async fn items_slash_get(configuration: &configuration::Configuration, country: &str, language: &str, ad_account_id: Option<&str>, item_ids: Option<Vec<String>>, filters: Option<models::CatalogsItemsFilters>) -> Result<models::CatalogsItems, Error<ItemsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_country = country;
-    let p_language = language;
-    let p_ad_account_id = ad_account_id;
-    let p_item_ids = item_ids;
-    let p_filters = filters;
+    let p_query_country = country;
+    let p_query_language = language;
+    let p_query_ad_account_id = ad_account_id;
+    let p_query_item_ids = item_ids;
+    let p_query_filters = filters;
 
     let uri_str = format!("{}/catalogs/items", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    req_builder = req_builder.query(&[("country", &p_country.to_string())]);
-    req_builder = req_builder.query(&[("language", &p_language.to_string())]);
-    if let Some(ref param_value) = p_item_ids {
+    req_builder = req_builder.query(&[("country", &p_query_country.to_string())]);
+    req_builder = req_builder.query(&[("language", &p_query_language.to_string())]);
+    if let Some(ref param_value) = p_query_item_ids {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("item_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("item_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_filters {
-        let params = crate::apis::parse_deep_object("filters", param_value);
+    if let Some(ref param_value) = p_query_filters {
+        let params = crate::apis::parse_deep_object("filters", &serde_json::to_value(param_value)?);
         req_builder = req_builder.query(&params);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1386,13 +1387,13 @@ pub async fn items_slash_get(configuration: &configuration::Configuration, count
 /// Get the items of the catalog owned by the \"operation user_account\". <a href=\"/docs/api-features/shopping-overview/#Update%20items%20in%20batch\" target=\"_blank\">See detailed documentation here.</a> - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
 pub async fn items_slash_post(configuration: &configuration::Configuration, catalogs_items_request: models::CatalogsItemsRequest, ad_account_id: Option<&str>) -> Result<models::CatalogsItems, Error<ItemsSlashPostError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_catalogs_items_request = catalogs_items_request;
-    let p_ad_account_id = ad_account_id;
+    let p_body_catalogs_items_request = catalogs_items_request;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/catalogs/items", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1401,7 +1402,7 @@ pub async fn items_slash_post(configuration: &configuration::Configuration, cata
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_catalogs_items_request);
+    req_builder = req_builder.json(&p_body_catalogs_items_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1431,25 +1432,25 @@ pub async fn items_slash_post(configuration: &configuration::Configuration, cata
 /// List products Pins owned by the \"operation user_account\" that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  <a href='/docs/api-features/shopping-overview/'>Learn more</a>
 pub async fn products_by_product_group_filter_slash_list(configuration: &configuration::Configuration, catalogs_list_products_by_filter_request: models::CatalogsListProductsByFilterRequest, bookmark: Option<&str>, page_size: Option<i32>, ad_account_id: Option<&str>, pin_metrics: Option<bool>) -> Result<models::CatalogsProductGroupPinsList200Response, Error<ProductsByProductGroupFilterSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_catalogs_list_products_by_filter_request = catalogs_list_products_by_filter_request;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_ad_account_id = ad_account_id;
-    let p_pin_metrics = pin_metrics;
+    let p_body_catalogs_list_products_by_filter_request = catalogs_list_products_by_filter_request;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_ad_account_id = ad_account_id;
+    let p_query_pin_metrics = pin_metrics;
 
     let uri_str = format!("{}/catalogs/products/get_by_product_group_filters", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_pin_metrics {
+    if let Some(ref param_value) = p_query_pin_metrics {
         req_builder = req_builder.query(&[("pin_metrics", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1458,7 +1459,7 @@ pub async fn products_by_product_group_filter_slash_list(configuration: &configu
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_catalogs_list_products_by_filter_request);
+    req_builder = req_builder.json(&p_body_catalogs_list_products_by_filter_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1488,13 +1489,13 @@ pub async fn products_by_product_group_filter_slash_list(configuration: &configu
 /// Async request to create a report of the catalog owned by the \"operation user_account\". This endpoint generates a report upon receiving the first approved request of the day. Any following requests with identical parameters will yield the same report even if data has changed. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 pub async fn reports_slash_create(configuration: &configuration::Configuration, catalogs_report_parameters: models::CatalogsReportParameters, ad_account_id: Option<&str>) -> Result<models::CatalogsCreateReportResponse, Error<ReportsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_catalogs_report_parameters = catalogs_report_parameters;
-    let p_ad_account_id = ad_account_id;
+    let p_body_catalogs_report_parameters = catalogs_report_parameters;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/catalogs/reports", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -1503,7 +1504,7 @@ pub async fn reports_slash_create(configuration: &configuration::Configuration, 
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_catalogs_report_parameters);
+    req_builder = req_builder.json(&p_body_catalogs_report_parameters);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -1533,16 +1534,16 @@ pub async fn reports_slash_create(configuration: &configuration::Configuration, 
 /// This returns a URL to a report given a token returned from <a href='/docs/api/v5/#operation/reports/create'>Build catalogs report</a>. You can use the URL to download the report. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 pub async fn reports_slash_get(configuration: &configuration::Configuration, token: &str, ad_account_id: Option<&str>) -> Result<models::CatalogsReport, Error<ReportsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_token = token;
-    let p_ad_account_id = ad_account_id;
+    let p_query_token = token;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/catalogs/reports", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    req_builder = req_builder.query(&[("token", &p_token.to_string())]);
+    req_builder = req_builder.query(&[("token", &p_query_token.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -1578,24 +1579,24 @@ pub async fn reports_slash_get(configuration: &configuration::Configuration, tok
 /// List aggregated numbers of issues for a catalog owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account: Owner, Admin, Catalogs Manager.
 pub async fn reports_slash_stats(configuration: &configuration::Configuration, parameters: models::CatalogsReportParameters, ad_account_id: Option<&str>, page_size: Option<i32>, bookmark: Option<&str>) -> Result<models::ReportsStats200Response, Error<ReportsSlashStatsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_parameters = parameters;
-    let p_ad_account_id = ad_account_id;
-    let p_page_size = page_size;
-    let p_bookmark = bookmark;
+    let p_query_parameters = parameters;
+    let p_query_ad_account_id = ad_account_id;
+    let p_query_page_size = page_size;
+    let p_query_bookmark = bookmark;
 
     let uri_str = format!("{}/catalogs/reports/stats", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    req_builder = req_builder.query(&[("parameters", &p_parameters.to_string())]);
+    req_builder = req_builder.query(&[("parameters", &p_query_parameters.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

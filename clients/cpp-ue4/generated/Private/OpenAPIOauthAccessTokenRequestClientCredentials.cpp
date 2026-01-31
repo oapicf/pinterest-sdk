@@ -79,8 +79,8 @@ inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPIOaut
 void OpenAPIOauthAccessTokenRequestClientCredentials::WriteJson(JsonWriter& Writer) const
 {
 	Writer->WriteObjectStart();
-	Writer->WriteIdentifierPrefix(TEXT("grant_type")); WriteJsonValue(Writer, GrantType);
 	Writer->WriteIdentifierPrefix(TEXT("scope")); WriteJsonValue(Writer, Scope);
+	Writer->WriteIdentifierPrefix(TEXT("grant_type")); WriteJsonValue(Writer, GrantType);
 	Writer->WriteObjectEnd();
 }
 
@@ -92,8 +92,8 @@ bool OpenAPIOauthAccessTokenRequestClientCredentials::FromJson(const TSharedPtr<
 
 	bool ParseSuccess = true;
 
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("grant_type"), GrantType);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("scope"), Scope);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("grant_type"), GrantType);
 
 	return ParseSuccess;
 }

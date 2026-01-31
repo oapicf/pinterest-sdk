@@ -20,12 +20,12 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BulkUpsertResponse", description = "ID of the bulk request.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkUpsertResponse {
 
   private @Nullable String requestId;
 
-  public BulkUpsertResponse requestId(String requestId) {
+  public BulkUpsertResponse requestId(@Nullable String requestId) {
     this.requestId = requestId;
     return this;
   }
@@ -37,11 +37,11 @@ public class BulkUpsertResponse {
   
   @Schema(name = "request_id", example = "549763856477-1660864560-1407e16a-c586-4add-94df-d0b160bec0ff, 549763856477-1660864560-d0b160bec0ff", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("request_id")
-  public String getRequestId() {
+  public @Nullable String getRequestId() {
     return requestId;
   }
 
-  public void setRequestId(String requestId) {
+  public void setRequestId(@Nullable String requestId) {
     this.requestId = requestId;
   }
 

@@ -147,7 +147,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, UpdateMaskBidOptionField updateMaskBidOptionField, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(updateMaskBidOptionField.ToString());
+            writer.WriteStringValue(UpdateMaskBidOptionFieldValueConverter.ToJsonValue(updateMaskBidOptionField).ToString());
         }
     }
 
@@ -178,14 +178,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the UpdateMaskBidOptionField to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="updateMaskBidOptionField"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, UpdateMaskBidOptionField? updateMaskBidOptionField, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(updateMaskBidOptionField?.ToString() ?? "null");
+            writer.WriteStringValue(updateMaskBidOptionField.HasValue ? UpdateMaskBidOptionFieldValueConverter.ToJsonValue(updateMaskBidOptionField.Value).ToString() : "null");
         }
     }
 }

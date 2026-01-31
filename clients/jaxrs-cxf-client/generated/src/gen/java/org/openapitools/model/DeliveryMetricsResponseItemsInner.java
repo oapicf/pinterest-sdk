@@ -8,10 +8,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeliveryMetricsResponseItemsInner  {
   
-  @ApiModelProperty(example = "AD_GROUP_ID", value = "Metric's name.")
  /**
-   * Metric's name.
-  **/
+  * Metric's name.
+  */
+  @ApiModelProperty(example = "AD_GROUP_ID", value = "Metric's name.")
+
   private String name;
 
 public enum CategoryEnum {
@@ -44,22 +45,25 @@ ADS(String.valueOf("ADS")), ORGANIC(String.valueOf("ORGANIC"));
     }
 }
 
-  @ApiModelProperty(example = "ADS", value = "Category name")
  /**
-   * Category name
-  **/
+  * Category name
+  */
+  @ApiModelProperty(example = "ADS", value = "Category name")
+
   private CategoryEnum category;
 
-  @ApiModelProperty(example = "Unique ID for your ad group", value = "How the metric is defined.")
  /**
-   * How the metric is defined.
-  **/
+  * How the metric is defined.
+  */
+  @ApiModelProperty(example = "Unique ID for your ad group", value = "How the metric is defined.")
+
   private String definition;
 
-  @ApiModelProperty(example = "Ad group ID", value = "Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.")
  /**
-   * Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
-  **/
+  * Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
+  */
+  @ApiModelProperty(example = "Ad group ID", value = "Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.")
+
   private String displayName;
  /**
    * Metric&#39;s name.

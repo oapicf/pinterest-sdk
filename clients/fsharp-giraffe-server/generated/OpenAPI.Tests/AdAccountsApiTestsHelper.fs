@@ -48,6 +48,7 @@ module AdAccountsApiHandlerTestsHelper =
   &quot;level&quot; : &quot;CAMPAIGN_TARGETING&quot;,
   &quot;granularity&quot; : &quot;DAY&quot;,
   &quot;columns&quot; : [ &quot;SPEND_IN_DOLLAR&quot;, &quot;SPEND_IN_DOLLAR&quot; ],
+  &quot;countries&quot; : [ &quot;US&quot;, &quot;US&quot; ],
   &quot;report_name&quot; : &quot;report_name&quot;,
   &quot;targeting_types&quot; : [ &quot;GENDER&quot; ],
   &quot;start_date&quot; : &quot;2020-12-20&quot;

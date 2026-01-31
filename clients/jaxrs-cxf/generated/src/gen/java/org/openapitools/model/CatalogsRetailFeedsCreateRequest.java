@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
@@ -16,63 +15,85 @@ import org.openapitools.model.ProductAvailabilityType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for creating a retail feed.
- **/
+ * Request object for creating a retail feed.
+ */
 @ApiModel(description="Request object for creating a retail feed.")
 
 public class CatalogsRetailFeedsCreateRequest  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private NullableCurrency defaultCurrency;
 
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
  /**
-   * A human-friendly name associated to a given feed.
-  **/
+  * A human-friendly name associated to a given feed.
+  */
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
+
   private String name;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFormat format;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsFeedCredentials credentials;
 
-  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
  /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  **/
+  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  */
+  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+
   private String location;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsType catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private Country defaultCountry;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private ProductAvailabilityType defaultAvailability;
 
   @ApiModelProperty(value = "")
-  private CatalogsStatus status;
+
+  @Valid
+
+  private CatalogsStatus status = "ACTIVE";
  /**
    * Get defaultCurrency
    * @return defaultCurrency

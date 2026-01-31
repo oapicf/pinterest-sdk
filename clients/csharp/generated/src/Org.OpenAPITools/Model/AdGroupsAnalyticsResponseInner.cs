@@ -158,8 +158,7 @@ namespace Org.OpenAPITools.Model
                             aDGROUPID = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "DATE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dATE = new Option<DateOnly?>(JsonSerializer.Deserialize<DateOnly>(ref utf8JsonReader, jsonSerializerOptions));
+                            dATE = new Option<DateOnly?>(JsonSerializer.Deserialize<DateOnly>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

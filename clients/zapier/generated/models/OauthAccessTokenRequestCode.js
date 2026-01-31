@@ -5,17 +5,6 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}grant_type`,
-                label: `[${labelPrefix}grant_type]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'authorization_code',
-                    'refresh_token',
-                    'client_credentials',
-                ],
-            },
-            {
                 key: `${keyPrefix}code`,
                 label: `[${labelPrefix}code]`,
                 required: true,
@@ -27,14 +16,25 @@ module.exports = {
                 required: true,
                 type: 'string',
             },
+            {
+                key: `${keyPrefix}grant_type`,
+                label: `[${labelPrefix}grant_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'authorization_code',
+                    'refresh_token',
+                    'client_credentials',
+                ],
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'grant_type': bundle.inputData?.[`${keyPrefix}grant_type`],
             'code': bundle.inputData?.[`${keyPrefix}code`],
             'redirect_uri': bundle.inputData?.[`${keyPrefix}redirect_uri`],
+            'grant_type': bundle.inputData?.[`${keyPrefix}grant_type`],
         }
     },
 }

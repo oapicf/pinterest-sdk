@@ -102,32 +102,32 @@ pub enum PinsSlashUpdateError {
 
 
 /// <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-pub async fn multi_pins_slash_analytics(configuration: &configuration::Configuration, pin_ids: Vec<String>, start_date: String, end_date: String, metric_types: Vec<models::PinsAnalyticsMetricTypesParameterInner>, app_types: Option<&str>, ad_account_id: Option<&str>) -> Result<std::collections::HashMap<String, std::collections::HashMap<String, models::PinAnalyticsMetricsResponse>>, Error<MultiPinsSlashAnalyticsError>> {
+pub async fn multi_pins_slash_analytics(configuration: &configuration::Configuration, pin_ids: Vec<String>, start_date: String, end_date: String, metric_types: Vec<String>, app_types: Option<&str>, ad_account_id: Option<&str>) -> Result<std::collections::HashMap<String, std::collections::HashMap<String, models::PinAnalyticsMetricsResponse>>, Error<MultiPinsSlashAnalyticsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_pin_ids = pin_ids;
-    let p_start_date = start_date;
-    let p_end_date = end_date;
-    let p_metric_types = metric_types;
-    let p_app_types = app_types;
-    let p_ad_account_id = ad_account_id;
+    let p_query_pin_ids = pin_ids;
+    let p_query_start_date = start_date;
+    let p_query_end_date = end_date;
+    let p_query_metric_types = metric_types;
+    let p_query_app_types = app_types;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/pins/analytics", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     req_builder = match "multi" {
-        "multi" => req_builder.query(&p_pin_ids.into_iter().map(|p| ("pin_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => req_builder.query(&[("pin_ids", &p_pin_ids.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        "multi" => req_builder.query(&p_query_pin_ids.into_iter().map(|p| ("pin_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("pin_ids", &p_query_pin_ids.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
-    req_builder = req_builder.query(&[("start_date", &p_start_date.to_string())]);
-    req_builder = req_builder.query(&[("end_date", &p_end_date.to_string())]);
-    if let Some(ref param_value) = p_app_types {
-        req_builder = req_builder.query(&[("app_types", &param_value.to_string())]);
+    req_builder = req_builder.query(&[("start_date", &p_query_start_date.to_string())]);
+    req_builder = req_builder.query(&[("end_date", &p_query_end_date.to_string())]);
+    if let Some(ref param_value) = p_query_app_types {
+        req_builder = req_builder.query(&[("app_types", &serde_json::to_string(param_value)?)]);
     }
     req_builder = match "csv" {
-        "multi" => req_builder.query(&p_metric_types.into_iter().map(|p| ("metric_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => req_builder.query(&[("metric_types", &p_metric_types.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        "multi" => req_builder.query(&p_query_metric_types.into_iter().map(|p| ("metric_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("metric_types", &p_query_metric_types.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -166,32 +166,32 @@ pub async fn multi_pins_slash_analytics(configuration: &configuration::Configura
 }
 
 /// Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-pub async fn pins_slash_analytics(configuration: &configuration::Configuration, pin_id: &str, start_date: String, end_date: String, metric_types: Vec<models::PinsAnalyticsMetricTypesParameterInner>, app_types: Option<&str>, split_field: Option<&str>, ad_account_id: Option<&str>) -> Result<std::collections::HashMap<String, models::PinAnalyticsMetricsResponse>, Error<PinsSlashAnalyticsError>> {
+pub async fn pins_slash_analytics(configuration: &configuration::Configuration, pin_id: &str, start_date: String, end_date: String, metric_types: Vec<String>, app_types: Option<&str>, split_field: Option<&str>, ad_account_id: Option<&str>) -> Result<std::collections::HashMap<String, models::PinAnalyticsMetricsResponse>, Error<PinsSlashAnalyticsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_pin_id = pin_id;
-    let p_start_date = start_date;
-    let p_end_date = end_date;
-    let p_metric_types = metric_types;
-    let p_app_types = app_types;
-    let p_split_field = split_field;
-    let p_ad_account_id = ad_account_id;
+    let p_path_pin_id = pin_id;
+    let p_query_start_date = start_date;
+    let p_query_end_date = end_date;
+    let p_query_metric_types = metric_types;
+    let p_query_app_types = app_types;
+    let p_query_split_field = split_field;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/pins/{pin_id}/analytics", configuration.base_path, pin_id=crate::apis::urlencode(p_pin_id));
+    let uri_str = format!("{}/pins/{pin_id}/analytics", configuration.base_path, pin_id=crate::apis::urlencode(p_path_pin_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("start_date", &p_start_date.to_string())]);
-    req_builder = req_builder.query(&[("end_date", &p_end_date.to_string())]);
-    if let Some(ref param_value) = p_app_types {
-        req_builder = req_builder.query(&[("app_types", &param_value.to_string())]);
+    req_builder = req_builder.query(&[("start_date", &p_query_start_date.to_string())]);
+    req_builder = req_builder.query(&[("end_date", &p_query_end_date.to_string())]);
+    if let Some(ref param_value) = p_query_app_types {
+        req_builder = req_builder.query(&[("app_types", &serde_json::to_string(param_value)?)]);
     }
     req_builder = match "csv" {
-        "multi" => req_builder.query(&p_metric_types.into_iter().map(|p| ("metric_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => req_builder.query(&[("metric_types", &p_metric_types.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        "multi" => req_builder.query(&p_query_metric_types.into_iter().map(|p| ("metric_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("metric_types", &p_query_metric_types.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
-    if let Some(ref param_value) = p_split_field {
-        req_builder = req_builder.query(&[("split_field", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_split_field {
+        req_builder = req_builder.query(&[("split_field", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -232,13 +232,13 @@ pub async fn pins_slash_analytics(configuration: &configuration::Configuration, 
 /// Create a Pin on a board or board section owned by the \"operation user_account\".  Note: If the current \"operation user_account\" (defined by the access token) has access to another user's Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).  - This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called 'curated content', please use our <a href='/docs/web-features/add-ons-overview/'>Save button</a> instead. For more tips on creating fresh content for Pinterest, review our <a href='/docs/api-features/content-overview/'>Content App Solutions Guide</a>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 pub async fn pins_slash_create(configuration: &configuration::Configuration, pin_create: Option<models::PinCreate>, ad_account_id: Option<&str>) -> Result<models::Pin, Error<PinsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_pin_create = pin_create;
-    let p_ad_account_id = ad_account_id;
+    let p_body_pin_create = pin_create;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/pins", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -247,7 +247,7 @@ pub async fn pins_slash_create(configuration: &configuration::Configuration, pin
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_pin_create);
+    req_builder = req_builder.json(&p_body_pin_create);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -277,13 +277,13 @@ pub async fn pins_slash_create(configuration: &configuration::Configuration, pin
 /// Delete a Pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.
 pub async fn pins_slash_delete(configuration: &configuration::Configuration, pin_id: &str, ad_account_id: Option<&str>) -> Result<(), Error<PinsSlashDeleteError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_pin_id = pin_id;
-    let p_ad_account_id = ad_account_id;
+    let p_path_pin_id = pin_id;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/pins/{pin_id}", configuration.base_path, pin_id=crate::apis::urlencode(p_pin_id));
+    let uri_str = format!("{}/pins/{pin_id}", configuration.base_path, pin_id=crate::apis::urlencode(p_path_pin_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -310,17 +310,17 @@ pub async fn pins_slash_delete(configuration: &configuration::Configuration, pin
 /// Get a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.
 pub async fn pins_slash_get(configuration: &configuration::Configuration, pin_id: &str, pin_metrics: Option<bool>, ad_account_id: Option<&str>) -> Result<models::Pin, Error<PinsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_pin_id = pin_id;
-    let p_pin_metrics = pin_metrics;
-    let p_ad_account_id = ad_account_id;
+    let p_path_pin_id = pin_id;
+    let p_query_pin_metrics = pin_metrics;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/pins/{pin_id}", configuration.base_path, pin_id=crate::apis::urlencode(p_pin_id));
+    let uri_str = format!("{}/pins/{pin_id}", configuration.base_path, pin_id=crate::apis::urlencode(p_path_pin_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_pin_metrics {
+    if let Some(ref param_value) = p_query_pin_metrics {
         req_builder = req_builder.query(&[("pin_metrics", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -361,43 +361,43 @@ pub async fn pins_slash_get(configuration: &configuration::Configuration, pin_id
 /// Get a list of the Pins owned by the \"operation user_account\".   - By default, the \"operation user_account\" is the token user_account.   - All Pins owned by the \"operation user_account\" are included, regardless of who owns the board they are on. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\".  Disclaimer: there are known performance issues when filtering by field <code>creative_type</code> and including protected pins. If your request is timing out in this scenario we encourage you to use <a href='/docs/api/v5/#operation/boards/list_pins'>GET List Pins on Board</a>.
 pub async fn pins_slash_list(configuration: &configuration::Configuration, bookmark: Option<&str>, page_size: Option<i32>, pin_filter: Option<&str>, include_protected_pins: Option<bool>, pin_type: Option<&str>, creative_types: Option<Vec<String>>, ad_account_id: Option<&str>, pin_metrics: Option<bool>) -> Result<models::PinsList200Response, Error<PinsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_pin_filter = pin_filter;
-    let p_include_protected_pins = include_protected_pins;
-    let p_pin_type = pin_type;
-    let p_creative_types = creative_types;
-    let p_ad_account_id = ad_account_id;
-    let p_pin_metrics = pin_metrics;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_pin_filter = pin_filter;
+    let p_query_include_protected_pins = include_protected_pins;
+    let p_query_pin_type = pin_type;
+    let p_query_creative_types = creative_types;
+    let p_query_ad_account_id = ad_account_id;
+    let p_query_pin_metrics = pin_metrics;
 
     let uri_str = format!("{}/pins", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_pin_filter {
-        req_builder = req_builder.query(&[("pin_filter", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_pin_filter {
+        req_builder = req_builder.query(&[("pin_filter", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_include_protected_pins {
+    if let Some(ref param_value) = p_query_include_protected_pins {
         req_builder = req_builder.query(&[("include_protected_pins", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_pin_type {
-        req_builder = req_builder.query(&[("pin_type", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_pin_type {
+        req_builder = req_builder.query(&[("pin_type", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_creative_types {
+    if let Some(ref param_value) = p_query_creative_types {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("creative_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("creative_types", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_pin_metrics {
+    if let Some(ref param_value) = p_query_pin_metrics {
         req_builder = req_builder.query(&[("pin_metrics", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -438,14 +438,14 @@ pub async fn pins_slash_list(configuration: &configuration::Configuration, bookm
 /// Save a Pin on a board or board section owned by the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account. Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  - Any Pin type can be saved: image Pin, video Pin, Idea Pin, product Pin, etc. - Any public Pin can be saved given a pin ID.
 pub async fn pins_slash_save(configuration: &configuration::Configuration, pin_id: &str, pins_save_request: models::PinsSaveRequest, ad_account_id: Option<&str>) -> Result<models::Pin, Error<PinsSlashSaveError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_pin_id = pin_id;
-    let p_pins_save_request = pins_save_request;
-    let p_ad_account_id = ad_account_id;
+    let p_path_pin_id = pin_id;
+    let p_body_pins_save_request = pins_save_request;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/pins/{pin_id}/save", configuration.base_path, pin_id=crate::apis::urlencode(p_pin_id));
+    let uri_str = format!("{}/pins/{pin_id}/save", configuration.base_path, pin_id=crate::apis::urlencode(p_path_pin_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -454,7 +454,7 @@ pub async fn pins_slash_save(configuration: &configuration::Configuration, pin_i
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_pins_save_request);
+    req_builder = req_builder.json(&p_body_pins_save_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -484,14 +484,14 @@ pub async fn pins_slash_save(configuration: &configuration::Configuration, pin_i
 /// Update a pin owned by the \"operating user_account\". - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href='/docs/api/v5/#operation/ad_accounts/list'>List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager. - For Pins on secret boards: Owner, Admin.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 pub async fn pins_slash_update(configuration: &configuration::Configuration, pin_id: &str, pin_update: Option<models::PinUpdate>, ad_account_id: Option<&str>) -> Result<models::Pin, Error<PinsSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_pin_id = pin_id;
-    let p_pin_update = pin_update;
-    let p_ad_account_id = ad_account_id;
+    let p_path_pin_id = pin_id;
+    let p_body_pin_update = pin_update;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/pins/{pin_id}", configuration.base_path, pin_id=crate::apis::urlencode(p_pin_id));
+    let uri_str = format!("{}/pins/{pin_id}", configuration.base_path, pin_id=crate::apis::urlencode(p_path_pin_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -500,7 +500,7 @@ pub async fn pins_slash_update(configuration: &configuration::Configuration, pin
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_pin_update);
+    req_builder = req_builder.json(&p_body_pin_update);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

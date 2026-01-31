@@ -9,11 +9,40 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type InviteExceptionResponse* = object
   ## An exception object if there is an error performing the action. Will only be provided if there is an error.
-  inviteOrRequestId*: string ## Unique identifier of the invite/request.
-  code*: int ## Error code associated with the error in performing the action on the invite/request.
-  message*: string ## Error message associated with the error in performing the action on the invite/request.
-  usersOrPartnerIds*: seq[string] ## A list of users' usernames or emails OR a list of partner ids that caused the error.
+  inviteOrRequestId*: Option[string] ## Unique identifier of the invite/request.
+  code*: Option[int] ## Error code associated with the error in performing the action on the invite/request.
+  message*: Option[string] ## Error message associated with the error in performing the action on the invite/request.
+  usersOrPartnerIds*: Option[seq[string]] ## A list of users' usernames or emails OR a list of partner ids that caused the error.
+
+
+# Custom JSON deserialization for InviteExceptionResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[InviteExceptionResponse]): InviteExceptionResponse =
+  result = InviteExceptionResponse()
+  if node.kind == JObject:
+    if node.hasKey("invite_or_request_id") and node["invite_or_request_id"].kind != JNull:
+      result.inviteOrRequestId = some(to(node["invite_or_request_id"], typeof(result.inviteOrRequestId.get())))
+    if node.hasKey("code") and node["code"].kind != JNull:
+      result.code = some(to(node["code"], typeof(result.code.get())))
+    if node.hasKey("message") and node["message"].kind != JNull:
+      result.message = some(to(node["message"], typeof(result.message.get())))
+    if node.hasKey("users_or_partner_ids") and node["users_or_partner_ids"].kind != JNull:
+      result.usersOrPartnerIds = some(to(node["users_or_partner_ids"], typeof(result.usersOrPartnerIds.get())))
+
+# Custom JSON serialization for InviteExceptionResponse with custom field names
+proc `%`*(obj: InviteExceptionResponse): JsonNode =
+  result = newJObject()
+  if obj.inviteOrRequestId.isSome():
+    result["invite_or_request_id"] = %obj.inviteOrRequestId.get()
+  if obj.code.isSome():
+    result["code"] = %obj.code.get()
+  if obj.message.isSome():
+    result["message"] = %obj.message.get()
+  if obj.usersOrPartnerIds.isSome():
+    result["users_or_partner_ids"] = %obj.usersOrPartnerIds.get()
+

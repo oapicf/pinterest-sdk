@@ -13,7 +13,6 @@ import org.openapitools.model.Pin;
 import org.openapitools.model.PinAnalyticsMetricsResponse;
 import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
-import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
 
@@ -27,10 +26,10 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2025-05-10T05:40:26.530137127Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-26T05:37:19.298233885Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface PinsApiService {
-      public Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId, SecurityContext securityContext);
-      public Response pinsAnalytics(String pinId, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId, SecurityContext securityContext);
+      public Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds, LocalDate startDate, LocalDate endDate, List<String> metricTypes, String appTypes, String adAccountId, SecurityContext securityContext);
+      public Response pinsAnalytics(String pinId, LocalDate startDate, LocalDate endDate, List<String> metricTypes, String appTypes, String splitField, String adAccountId, SecurityContext securityContext);
       public Response pinsCreate(PinCreate pinCreate, String adAccountId, SecurityContext securityContext);
       public Response pinsDelete(String pinId, String adAccountId, SecurityContext securityContext);
       public Response pinsGet(String pinId, Boolean pinMetrics, String adAccountId, SecurityContext securityContext);

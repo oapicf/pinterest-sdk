@@ -97,7 +97,7 @@ private:
     /// Delete commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
     /// </remarks>
     /// <param name="externalBusinessId">External business ID for the integration.</param>
-    virtual void integrations_commerce_del(const std::string &externalBusinessId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void integrations_commerce_del( const std::string &externalBusinessId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get commerce integration
     /// </summary>
@@ -105,7 +105,7 @@ private:
     /// Get commerce integration metadata associated with the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
     /// </remarks>
     /// <param name="externalBusinessId">External business ID for the integration.</param>
-    virtual void integrations_commerce_get(const std::string &externalBusinessId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void integrations_commerce_get( const std::string &externalBusinessId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update commerce integration
     /// </summary>
@@ -114,7 +114,7 @@ private:
     /// </remarks>
     /// <param name="externalBusinessId">External business ID for the integration.</param>
     /// <param name="integrationRequestPatch">Parameters to get create/update the Integration Metadata (optional)</param>
-    virtual void integrations_commerce_patch(const std::string &externalBusinessId, const org::openapitools::server::model::IntegrationRequestPatch &integrationRequestPatch, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void integrations_commerce_patch( const std::string &externalBusinessId, const org::openapitools::server::model::IntegrationRequestPatch &integrationRequestPatch, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create commerce integration
     /// </summary>
@@ -122,7 +122,7 @@ private:
     /// Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
     /// </remarks>
     /// <param name="integrationRequest">Parameters to get create/update the Integration Metadata (optional)</param>
-    virtual void integrations_commerce_post(const org::openapitools::server::model::IntegrationRequest &integrationRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void integrations_commerce_post( const org::openapitools::server::model::IntegrationRequest &integrationRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Receives batched logs from integration applications.
     /// </summary>
@@ -130,7 +130,7 @@ private:
     /// This endpoint receives batched logs from integration applications on partner platforms. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
     /// </remarks>
     /// <param name="integrationLogsRequest">Ingest log information from external integration application.</param>
-    virtual void integrations_logs_post(const org::openapitools::server::model::IntegrationLogsRequest &integrationLogsRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void integrations_logs_post( const org::openapitools::server::model::IntegrationLogsRequest &integrationLogsRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get integration metadata
     /// </summary>
@@ -138,7 +138,7 @@ private:
     /// Get integration metadata by ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
     /// </remarks>
     /// <param name="id">Integration ID.</param>
-    virtual void integrations_get_by_id(const std::string &id, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void integrations_get_by_id( const std::string &id, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get integration metadata list
     /// </summary>
@@ -147,7 +147,7 @@ private:
     /// </remarks>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void integrations_get_list(const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void integrations_get_list( const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

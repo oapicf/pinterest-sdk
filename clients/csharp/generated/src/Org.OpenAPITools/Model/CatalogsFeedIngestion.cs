@@ -158,8 +158,7 @@ namespace Org.OpenAPITools.Model
                             feedId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "created_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
+                            createdAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "status":
                             string? statusRawValue = utf8JsonReader.GetString();

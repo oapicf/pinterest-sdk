@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SSIOAccountResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountResponse {
   public static final String SERIALIZED_NAME_ELIGIBLE = "eligible";
   @SerializedName(SERIALIZED_NAME_ELIGIBLE)
@@ -271,16 +271,10 @@ public class SSIOAccountResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("eligible");
-    openapiFields.add("can_edit");
-    openapiFields.add("billto_infos");
-    openapiFields.add("currency");
-    openapiFields.add("pmp_names");
-    openapiFields.add("error");
+    openapiFields = new HashSet<String>(Arrays.asList("eligible", "can_edit", "billto_infos", "currency", "pmp_names", "error"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -292,7 +286,7 @@ public class SSIOAccountResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SSIOAccountResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SSIOAccountResponse is not found in the empty JSON string", SSIOAccountResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in SSIOAccountResponse is not found in the empty JSON string", SSIOAccountResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -300,7 +294,7 @@ public class SSIOAccountResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!SSIOAccountResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SSIOAccountResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `SSIOAccountResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -309,7 +303,7 @@ public class SSIOAccountResponse {
         if (jsonArraybilltoInfos != null) {
           // ensure the json data is an array
           if (!jsonObj.get("billto_infos").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `billto_infos` to be an array in the JSON string but got `%s`", jsonObj.get("billto_infos").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `billto_infos` to be an array in the JSON string but got `%s`", jsonObj.get("billto_infos").toString()));
           }
 
           // validate the optional field `billto_infos` (array)
@@ -319,14 +313,14 @@ public class SSIOAccountResponse {
         }
       }
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       if (jsonObj.get("pmp_names") != null && !jsonObj.get("pmp_names").isJsonNull()) {
         JsonArray jsonArraypmpNames = jsonObj.getAsJsonArray("pmp_names");
         if (jsonArraypmpNames != null) {
           // ensure the json data is an array
           if (!jsonObj.get("pmp_names").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `pmp_names` to be an array in the JSON string but got `%s`", jsonObj.get("pmp_names").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `pmp_names` to be an array in the JSON string but got `%s`", jsonObj.get("pmp_names").toString()));
           }
 
           // validate the optional field `pmp_names` (array)
@@ -336,7 +330,7 @@ public class SSIOAccountResponse {
         }
       }
       if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
       }
   }
 

@@ -17,7 +17,7 @@ import org.openapitools.model.AuthRespondInvitesBodyInvitesInner;
  **/
 
 @ApiModel(description = "An object with a list of all the invites the user would like to respond to and the action to take.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2025-05-10T05:38:59.250229241Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AuthRespondInvitesBody   {
   @JsonProperty("invites")
   private List<AuthRespondInvitesBodyInvitesInner> invites = new ArrayList<>();

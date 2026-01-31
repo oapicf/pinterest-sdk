@@ -9,7 +9,48 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type MMMReportingTargetingType* = object
-  ## Ad targeting types for MMM report
+type MMMReportingTargetingType* {.pure.} = enum
+  APPTYPE
+  COUNTRY
+  CREATIVETYPE
+  GENDER
+  LOCATION
+
+func `%`*(v: MMMReportingTargetingType): JsonNode =
+  result = case v:
+    of MMMReportingTargetingType.APPTYPE: %"APPTYPE"
+    of MMMReportingTargetingType.COUNTRY: %"COUNTRY"
+    of MMMReportingTargetingType.CREATIVETYPE: %"CREATIVE_TYPE"
+    of MMMReportingTargetingType.GENDER: %"GENDER"
+    of MMMReportingTargetingType.LOCATION: %"LOCATION"
+
+func `$`*(v: MMMReportingTargetingType): string =
+  result = case v:
+    of MMMReportingTargetingType.APPTYPE: $("APPTYPE")
+    of MMMReportingTargetingType.COUNTRY: $("COUNTRY")
+    of MMMReportingTargetingType.CREATIVETYPE: $("CREATIVE_TYPE")
+    of MMMReportingTargetingType.GENDER: $("GENDER")
+    of MMMReportingTargetingType.LOCATION: $("LOCATION")
+
+proc to*(node: JsonNode, T: typedesc[MMMReportingTargetingType]): MMMReportingTargetingType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum MMMReportingTargetingType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("APPTYPE"):
+    return MMMReportingTargetingType.APPTYPE
+  of $("COUNTRY"):
+    return MMMReportingTargetingType.COUNTRY
+  of $("CREATIVE_TYPE"):
+    return MMMReportingTargetingType.CREATIVETYPE
+  of $("GENDER"):
+    return MMMReportingTargetingType.GENDER
+  of $("LOCATION"):
+    return MMMReportingTargetingType.LOCATION
+  else:
+    raise newException(ValueError, "Invalid enum value for MMMReportingTargetingType: " & strVal)
+

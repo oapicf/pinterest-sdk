@@ -7,7 +7,6 @@ import org.openapitools.model.Pin;
 import org.openapitools.model.PinAnalyticsMetricsResponse;
 import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
-import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
 
@@ -27,7 +26,7 @@ import javax.validation.Valid;
 */
 @Path("/pins")
 @Api(description = "the pins API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinsApi {
 
     @GET
@@ -49,7 +48,7 @@ public class PinsApi {
         @ApiResponse(code = 429, message = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response multiPinsAnalytics(@QueryParam("pin_ids") @NotNull @Size(min=1,max=100)  @ApiParam("List of Pin IDs.")  List<@Pattern(regexp = "^\\d+$")String> pinIds,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("metric_types") @NotNull  @ApiParam("Pin metric types to get data for.")  List<PinsAnalyticsMetricTypesParameterInner> metricTypes,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response multiPinsAnalytics(@QueryParam("pin_ids") @NotNull @Size(min=1,max=100)  @ApiParam("List of Pin IDs.")  List<@Pattern(regexp = "^\\d+$")String> pinIds,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("metric_types") @NotNull  @ApiParam("Pin metric types to get data for.")  List<String> metricTypes,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -71,7 +70,7 @@ public class PinsApi {
         @ApiResponse(code = 404, message = "Pin not found.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class)
     })
-    public Response pinsAnalytics(@PathParam("pin_id") @ApiParam("Unique identifier of a Pin.") String pinId,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("metric_types") @NotNull  @ApiParam("Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.")  List<PinsAnalyticsMetricTypesParameterInner> metricTypes,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes,@QueryParam("split_field") @DefaultValue("NO_SPLIT")  @ApiParam("How to split the data into groups. Not including this param means data won&#39;t be split.")  String splitField,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
+    public Response pinsAnalytics(@PathParam("pin_id") @ApiParam("Unique identifier of a Pin.") String pinId,@QueryParam("start_date") @NotNull  @ApiParam("Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.")  LocalDate startDate,@QueryParam("end_date") @NotNull  @ApiParam("Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.")  LocalDate endDate,@QueryParam("metric_types") @NotNull  @ApiParam("Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.")  List<String> metricTypes,@QueryParam("app_types") @DefaultValue("ALL")  @ApiParam("Apps or devices to get data for, default is all.")  String appTypes,@QueryParam("split_field") @DefaultValue("NO_SPLIT")  @ApiParam("How to split the data into groups. Not including this param means data won&#39;t be split.")  String splitField,@QueryParam("ad_account_id") @Pattern(regexp="^\\d+$") @Size(max=18)  @ApiParam("Unique identifier of an ad account.")  String adAccountId) {
         return Response.ok().entity("magic!").build();
     }
 

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type LARGEPRODUCTCOUNTDECREASE* {.pure.} = enum
@@ -16,21 +18,29 @@ type LARGEPRODUCTCOUNTDECREASE* {.pure.} = enum
 
 type CatalogsFeedIngestionErrors* = object
   ## 
-  LINE_LEVEL_INTERNAL_ERROR*: int ## We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
-  LARGE_PRODUCT_COUNT_DECREASE*: LARGEPRODUCTCOUNTDECREASE ## The product count has decreased by more than 99% compared to the last successful ingestion.
-  ACCOUNT_FLAGGED*: int ## We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
-  IMAGE_LEVEL_INTERNAL_ERROR*: int ## We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
-  IMAGE_FILE_NOT_ACCESSIBLE*: int ## Image files are unreadable. Please upload new files to continue.
-  IMAGE_MALFORMED_URL*: int ## Image files are unreadable. Please check your link and upload new files to continue.
-  IMAGE_FILE_NOT_FOUND*: int ## Image files are unreadable. Please upload new files to continue.
-  IMAGE_INVALID_FILE*: int ## Image files are unreadable. Please upload new files to continue.
+  LINE_LEVEL_INTERNAL_ERROR*: Option[int] ## We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
+  LARGE_PRODUCT_COUNT_DECREASE*: Option[LARGEPRODUCTCOUNTDECREASE] ## The product count has decreased by more than 99% compared to the last successful ingestion.
+  ACCOUNT_FLAGGED*: Option[int] ## We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
+  IMAGE_LEVEL_INTERNAL_ERROR*: Option[int] ## We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
+  IMAGE_FILE_NOT_ACCESSIBLE*: Option[int] ## Image files are unreadable. Please upload new files to continue.
+  IMAGE_MALFORMED_URL*: Option[int] ## Image files are unreadable. Please check your link and upload new files to continue.
+  IMAGE_FILE_NOT_FOUND*: Option[int] ## Image files are unreadable. Please upload new files to continue.
+  IMAGE_INVALID_FILE*: Option[int] ## Image files are unreadable. Please upload new files to continue.
 
 func `%`*(v: LARGEPRODUCTCOUNTDECREASE): JsonNode =
-  let str = case v:
-    of LARGEPRODUCTCOUNTDECREASE.`1`: "1"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of LARGEPRODUCTCOUNTDECREASE.`1`: %"1"
 func `$`*(v: LARGEPRODUCTCOUNTDECREASE): string =
   result = case v:
-    of LARGEPRODUCTCOUNTDECREASE.`1`: "1"
+    of LARGEPRODUCTCOUNTDECREASE.`1`: $("1")
+
+proc to*(node: JsonNode, T: typedesc[LARGEPRODUCTCOUNTDECREASE]): LARGEPRODUCTCOUNTDECREASE =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum LARGEPRODUCTCOUNTDECREASE, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("1"):
+    return LARGEPRODUCTCOUNTDECREASE.`1`
+  else:
+    raise newException(ValueError, "Invalid enum value for LARGEPRODUCTCOUNTDECREASE: " & strVal)
+

@@ -20,7 +20,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Request object for creating a feed.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2025-05-10T05:40:40.818990358Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@ApiModel(description="Request object for creating a feed.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsFeedsCreateRequest   {
   
   private NullableCurrency defaultCurrency;
@@ -33,7 +33,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private CatalogsType catalogType;
   private String catalogId;
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   /**
    **/
@@ -176,6 +176,7 @@ public class CatalogsCreativeAssetsFeedsCreateRequest   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("status")
+  @Valid
   public CatalogsStatus getStatus() {
     return status;
   }

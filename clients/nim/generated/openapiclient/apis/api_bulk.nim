@@ -30,10 +30,7 @@ const basepath = "https://api.pinterest.com/v5"
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -53,11 +50,12 @@ proc bulkDownloadCreate*(httpClient: HttpClient, adAccountId: string, bulkDownlo
 
 proc bulkRequestGet*(httpClient: HttpClient, adAccountId: string, bulkRequestId: string, includeDetails: bool): (Option[BulkUpsertStatusResponse], Response) =
   ## Download advertiser entities in bulk
-  let query_for_api_call = encodeQuery([
-    ("include_details", $includeDetails), # if set to True then attach the errors/details to all the requests
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $includeDetails != "":
+    query_params_list.add(("include_details", $includeDetails))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}" & "?" & url_encoded_query_params)
   constructResult[BulkUpsertStatusResponse](response)
 
 

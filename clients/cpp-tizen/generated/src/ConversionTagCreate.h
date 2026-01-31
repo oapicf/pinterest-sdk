@@ -45,13 +45,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Conversion tag name.
-	 */
-	std::string getName();
-
-	/*! \brief Set Conversion tag name.
-	 */
-	void setName(std::string  name);
 	/*! \brief Get Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
 	 */
 	bool getAemEnabled();
@@ -101,9 +94,15 @@ public:
 	/*! \brief Set Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
 	 */
 	void setAemLocEnabled(bool  aem_loc_enabled);
+	/*! \brief Get Conversion tag name.
+	 */
+	std::string getName();
+
+	/*! \brief Set Conversion tag name.
+	 */
+	void setName(std::string  name);
 
 private:
-	std::string name;
 	bool aem_enabled;
 	long long md_frequency;
 	bool aem_fnln_enabled;
@@ -111,6 +110,7 @@ private:
 	bool aem_ge_enabled;
 	bool aem_db_enabled;
 	bool aem_loc_enabled;
+	std::string name;
 	void __init();
 	void __cleanup();
 

@@ -6,7 +6,6 @@ import org.openapitools.model.Pin;
 import org.openapitools.model.PinAnalyticsMetricsResponse;
 import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
-import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -43,7 +42,7 @@ public class PinsApiTest {
         List<@Pattern(regexp = "^\\d+$")String> pinIds = Arrays.asList("example");
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = Arrays.asList();
+        List<String> metricTypes = Arrays.asList("example");
         String appTypes = "ALL";
         String adAccountId = "example";
 
@@ -67,7 +66,7 @@ public class PinsApiTest {
         String pinId = "example";
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = Arrays.asList();
+        List<String> metricTypes = Arrays.asList("example");
         String appTypes = "ALL";
         String splitField = "NO_SPLIT";
         String adAccountId = "example";

@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type InviteAssetsSummaryProfilesInner* = object
   ## 
-  id*: string ## Unique identifier of a business profile.
-  permissions*: seq[string] ## Permission levels member or partner has on an asset.
+  id*: Option[string] ## Unique identifier of a business profile.
+  permissions*: Option[seq[string]] ## Permission levels member or partner has on an asset.
+

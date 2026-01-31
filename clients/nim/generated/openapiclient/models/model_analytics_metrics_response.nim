@@ -9,10 +9,37 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_analytics_daily_metrics
 
 type AnalyticsMetricsResponse* = object
   ## 
-  summaryMetrics*: Table[string, float] ## The metric name and value over the requested period for each requested metric
-  dailyMetrics*: seq[AnalyticsDailyMetrics] ## Array with the requested daily metric records
+  summaryMetrics*: Option[Table[string, float]] ## The metric name and value over the requested period for each requested metric
+  dailyMetrics*: Option[seq[AnalyticsDailyMetrics]] ## Array with the requested daily metric records
+
+
+# Custom JSON deserialization for AnalyticsMetricsResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[AnalyticsMetricsResponse]): AnalyticsMetricsResponse =
+  result = AnalyticsMetricsResponse()
+  if node.kind == JObject:
+    if node.hasKey("summary_metrics") and node["summary_metrics"].kind != JNull:
+      result.summaryMetrics = some(to(node["summary_metrics"], typeof(result.summaryMetrics.get())))
+    if node.hasKey("daily_metrics") and node["daily_metrics"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["daily_metrics"]
+      if arrayNode.kind == JArray:
+        var arr: seq[AnalyticsDailyMetrics] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, AnalyticsDailyMetrics))
+        result.dailyMetrics = some(arr)
+
+# Custom JSON serialization for AnalyticsMetricsResponse with custom field names
+proc `%`*(obj: AnalyticsMetricsResponse): JsonNode =
+  result = newJObject()
+  if obj.summaryMetrics.isSome():
+    result["summary_metrics"] = %obj.summaryMetrics.get()
+  if obj.dailyMetrics.isSome():
+    result["daily_metrics"] = %obj.dailyMetrics.get()
+

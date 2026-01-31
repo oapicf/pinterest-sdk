@@ -9,11 +9,14 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type PinMediaSourceImagesURLItemsInner* = object
   ## 
-  title*: string
-  description*: string
-  link*: string ## Destination link for the image.
+  title*: Option[string]
+  description*: Option[string]
+  link*: Option[string] ## Destination link for the image.
   url*: string ## URL of image to upload.
+

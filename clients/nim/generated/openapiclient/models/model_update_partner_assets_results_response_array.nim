@@ -9,9 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_update_partner_assets_result
 
 type UpdatePartnerAssetsResultsResponseArray* = object
   ## 
-  items*: seq[UpdatePartnerAssetsResult] ## List of assigned/updated partner asset access.
+  items*: Option[seq[UpdatePartnerAssetsResult]] ## List of assigned/updated partner asset access.
+
+
+# Custom JSON deserialization for UpdatePartnerAssetsResultsResponseArray with custom field names
+proc to*(node: JsonNode, T: typedesc[UpdatePartnerAssetsResultsResponseArray]): UpdatePartnerAssetsResultsResponseArray =
+  result = UpdatePartnerAssetsResultsResponseArray()
+  if node.kind == JObject:
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[UpdatePartnerAssetsResult] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, UpdatePartnerAssetsResult))
+        result.items = some(arr)
+
+# Custom JSON serialization for UpdatePartnerAssetsResultsResponseArray with custom field names
+proc `%`*(obj: UpdatePartnerAssetsResultsResponseArray): JsonNode =
+  result = newJObject()
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

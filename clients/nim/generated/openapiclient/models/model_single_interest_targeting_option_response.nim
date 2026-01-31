@@ -9,11 +9,40 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type SingleInterestTargetingOptionResponse* = object
   ## 
-  id*: string
-  name*: string
-  childInterests*: seq[string]
-  level*: int
+  id*: Option[string]
+  name*: Option[string]
+  childInterests*: Option[seq[string]]
+  level*: Option[int]
+
+
+# Custom JSON deserialization for SingleInterestTargetingOptionResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[SingleInterestTargetingOptionResponse]): SingleInterestTargetingOptionResponse =
+  result = SingleInterestTargetingOptionResponse()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("child_interests") and node["child_interests"].kind != JNull:
+      result.childInterests = some(to(node["child_interests"], typeof(result.childInterests.get())))
+    if node.hasKey("level") and node["level"].kind != JNull:
+      result.level = some(to(node["level"], typeof(result.level.get())))
+
+# Custom JSON serialization for SingleInterestTargetingOptionResponse with custom field names
+proc `%`*(obj: SingleInterestTargetingOptionResponse): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.childInterests.isSome():
+    result["child_interests"] = %obj.childInterests.get()
+  if obj.level.isSome():
+    result["level"] = %obj.level.get()
+

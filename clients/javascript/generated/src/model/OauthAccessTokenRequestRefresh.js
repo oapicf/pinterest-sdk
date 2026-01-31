@@ -21,13 +21,13 @@ import ApiClient from '../ApiClient';
 class OauthAccessTokenRequestRefresh {
     /**
      * Constructs a new <code>OauthAccessTokenRequestRefresh</code>.
-     * A request to exchange a refresh token for a new access token.
      * @alias module:model/OauthAccessTokenRequestRefresh
      * @param refreshToken {String} 
+     * @param grantType {module:model/OauthAccessTokenRequestRefresh.GrantTypeEnum} 
      */
-    constructor(refreshToken) { 
+    constructor(refreshToken, grantType) { 
         
-        OauthAccessTokenRequestRefresh.initialize(this, refreshToken);
+        OauthAccessTokenRequestRefresh.initialize(this, refreshToken, grantType);
     }
 
     /**
@@ -35,9 +35,9 @@ class OauthAccessTokenRequestRefresh {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, refreshToken) { 
-        obj['grant_type'] = grantType;
+    static initialize(obj, refreshToken, grantType) { 
         obj['refresh_token'] = refreshToken;
+        obj['grant_type'] = grantType;
     }
 
     /**
@@ -51,9 +51,6 @@ class OauthAccessTokenRequestRefresh {
         if (data) {
             obj = obj || new OauthAccessTokenRequestRefresh();
 
-            if (data.hasOwnProperty('grant_type')) {
-                obj['grant_type'] = ApiClient.convertToType(data['grant_type'], 'String');
-            }
             if (data.hasOwnProperty('refresh_token')) {
                 obj['refresh_token'] = ApiClient.convertToType(data['refresh_token'], 'String');
             }
@@ -62,6 +59,9 @@ class OauthAccessTokenRequestRefresh {
             }
             if (data.hasOwnProperty('refresh_on')) {
                 obj['refresh_on'] = ApiClient.convertToType(data['refresh_on'], 'Boolean');
+            }
+            if (data.hasOwnProperty('grant_type')) {
+                obj['grant_type'] = ApiClient.convertToType(data['grant_type'], 'String');
             }
         }
         return obj;
@@ -80,16 +80,16 @@ class OauthAccessTokenRequestRefresh {
             }
         }
         // ensure the json data is a string
-        if (data['grant_type'] && !(typeof data['grant_type'] === 'string' || data['grant_type'] instanceof String)) {
-            throw new Error("Expected the field `grant_type` to be a primitive type in the JSON string but got " + data['grant_type']);
-        }
-        // ensure the json data is a string
         if (data['refresh_token'] && !(typeof data['refresh_token'] === 'string' || data['refresh_token'] instanceof String)) {
             throw new Error("Expected the field `refresh_token` to be a primitive type in the JSON string but got " + data['refresh_token']);
         }
         // ensure the json data is a string
         if (data['scope'] && !(typeof data['scope'] === 'string' || data['scope'] instanceof String)) {
             throw new Error("Expected the field `scope` to be a primitive type in the JSON string but got " + data['scope']);
+        }
+        // ensure the json data is a string
+        if (data['grant_type'] && !(typeof data['grant_type'] === 'string' || data['grant_type'] instanceof String)) {
+            throw new Error("Expected the field `grant_type` to be a primitive type in the JSON string but got " + data['grant_type']);
         }
 
         return true;
@@ -98,12 +98,7 @@ class OauthAccessTokenRequestRefresh {
 
 }
 
-OauthAccessTokenRequestRefresh.RequiredProperties = ["grant_type", "refresh_token"];
-
-/**
- * @member {module:model/OauthAccessTokenRequestRefresh.GrantTypeEnum} grant_type
- */
-OauthAccessTokenRequestRefresh.prototype['grant_type'] = undefined;
+OauthAccessTokenRequestRefresh.RequiredProperties = ["refresh_token", "grant_type"];
 
 /**
  * @member {String} refresh_token
@@ -120,6 +115,11 @@ OauthAccessTokenRequestRefresh.prototype['scope'] = undefined;
  * @member {Boolean} refresh_on
  */
 OauthAccessTokenRequestRefresh.prototype['refresh_on'] = undefined;
+
+/**
+ * @member {module:model/OauthAccessTokenRequestRefresh.GrantTypeEnum} grant_type
+ */
+OauthAccessTokenRequestRefresh.prototype['grant_type'] = undefined;
 
 
 

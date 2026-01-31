@@ -9,23 +9,100 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type SSIOEditInsertionOrderRequest* = object
   ## 
-  startDate*: string ## Starting date of time period. Format: YYYY-MM-DD
-  endDate*: string ## End date of time period. Format: YYYY-MM-DD
-  poNumber*: string ## The po number
-  budgetAmount*: float ## If Budget order line, the budget amount.
-  billingContactFirstname*: string ## The billing contact first name
-  billingContactLastname*: string ## The billing contact last name
-  billingContactEmail*: string ## The billing contact email
-  mediaContactFirstname*: string ## The media contact first name
-  mediaContactLastname*: string ## The media contact last name
-  mediaContactEmail*: string ## The media contact email
-  agencyLink*: string ## URL link for agency
-  userEmail*: string ## The email of user submitting the insertion order
-  oracleLineId*: string ## LineId in the Oracle DB
-  salesforceOrderId*: string ## OrderId in SFDC
-  salesforceOrderLineId*: string ## OrderLineId in SFDC
-  adsManagerOrderLineId*: string ## Ads manager OrderLineId
+  startDate*: Option[string] ## Starting date of time period. Format: YYYY-MM-DD
+  endDate*: Option[string] ## End date of time period. Format: YYYY-MM-DD
+  poNumber*: Option[string] ## The po number
+  budgetAmount*: Option[float] ## If Budget order line, the budget amount.
+  billingContactFirstname*: Option[string] ## The billing contact first name
+  billingContactLastname*: Option[string] ## The billing contact last name
+  billingContactEmail*: Option[string] ## The billing contact email
+  mediaContactFirstname*: Option[string] ## The media contact first name
+  mediaContactLastname*: Option[string] ## The media contact last name
+  mediaContactEmail*: Option[string] ## The media contact email
+  agencyLink*: Option[string] ## URL link for agency
+  userEmail*: Option[string] ## The email of user submitting the insertion order
+  oracleLineId*: Option[string] ## LineId in the Oracle DB
+  salesforceOrderId*: Option[string] ## OrderId in SFDC
+  salesforceOrderLineId*: Option[string] ## OrderLineId in SFDC
+  adsManagerOrderLineId*: Option[string] ## Ads manager OrderLineId
+
+
+# Custom JSON deserialization for SSIOEditInsertionOrderRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[SSIOEditInsertionOrderRequest]): SSIOEditInsertionOrderRequest =
+  result = SSIOEditInsertionOrderRequest()
+  if node.kind == JObject:
+    if node.hasKey("start_date") and node["start_date"].kind != JNull:
+      result.startDate = some(to(node["start_date"], typeof(result.startDate.get())))
+    if node.hasKey("end_date") and node["end_date"].kind != JNull:
+      result.endDate = some(to(node["end_date"], typeof(result.endDate.get())))
+    if node.hasKey("po_number") and node["po_number"].kind != JNull:
+      result.poNumber = some(to(node["po_number"], typeof(result.poNumber.get())))
+    if node.hasKey("budget_amount") and node["budget_amount"].kind != JNull:
+      result.budgetAmount = some(to(node["budget_amount"], typeof(result.budgetAmount.get())))
+    if node.hasKey("billing_contact_firstname") and node["billing_contact_firstname"].kind != JNull:
+      result.billingContactFirstname = some(to(node["billing_contact_firstname"], typeof(result.billingContactFirstname.get())))
+    if node.hasKey("billing_contact_lastname") and node["billing_contact_lastname"].kind != JNull:
+      result.billingContactLastname = some(to(node["billing_contact_lastname"], typeof(result.billingContactLastname.get())))
+    if node.hasKey("billing_contact_email") and node["billing_contact_email"].kind != JNull:
+      result.billingContactEmail = some(to(node["billing_contact_email"], typeof(result.billingContactEmail.get())))
+    if node.hasKey("media_contact_firstname") and node["media_contact_firstname"].kind != JNull:
+      result.mediaContactFirstname = some(to(node["media_contact_firstname"], typeof(result.mediaContactFirstname.get())))
+    if node.hasKey("media_contact_lastname") and node["media_contact_lastname"].kind != JNull:
+      result.mediaContactLastname = some(to(node["media_contact_lastname"], typeof(result.mediaContactLastname.get())))
+    if node.hasKey("media_contact_email") and node["media_contact_email"].kind != JNull:
+      result.mediaContactEmail = some(to(node["media_contact_email"], typeof(result.mediaContactEmail.get())))
+    if node.hasKey("agency_link") and node["agency_link"].kind != JNull:
+      result.agencyLink = some(to(node["agency_link"], typeof(result.agencyLink.get())))
+    if node.hasKey("user_email") and node["user_email"].kind != JNull:
+      result.userEmail = some(to(node["user_email"], typeof(result.userEmail.get())))
+    if node.hasKey("oracle_line_id") and node["oracle_line_id"].kind != JNull:
+      result.oracleLineId = some(to(node["oracle_line_id"], typeof(result.oracleLineId.get())))
+    if node.hasKey("salesforce_order_id") and node["salesforce_order_id"].kind != JNull:
+      result.salesforceOrderId = some(to(node["salesforce_order_id"], typeof(result.salesforceOrderId.get())))
+    if node.hasKey("salesforce_order_line_id") and node["salesforce_order_line_id"].kind != JNull:
+      result.salesforceOrderLineId = some(to(node["salesforce_order_line_id"], typeof(result.salesforceOrderLineId.get())))
+    if node.hasKey("ads_manager_order_line_id") and node["ads_manager_order_line_id"].kind != JNull:
+      result.adsManagerOrderLineId = some(to(node["ads_manager_order_line_id"], typeof(result.adsManagerOrderLineId.get())))
+
+# Custom JSON serialization for SSIOEditInsertionOrderRequest with custom field names
+proc `%`*(obj: SSIOEditInsertionOrderRequest): JsonNode =
+  result = newJObject()
+  if obj.startDate.isSome():
+    result["start_date"] = %obj.startDate.get()
+  if obj.endDate.isSome():
+    result["end_date"] = %obj.endDate.get()
+  if obj.poNumber.isSome():
+    result["po_number"] = %obj.poNumber.get()
+  if obj.budgetAmount.isSome():
+    result["budget_amount"] = %obj.budgetAmount.get()
+  if obj.billingContactFirstname.isSome():
+    result["billing_contact_firstname"] = %obj.billingContactFirstname.get()
+  if obj.billingContactLastname.isSome():
+    result["billing_contact_lastname"] = %obj.billingContactLastname.get()
+  if obj.billingContactEmail.isSome():
+    result["billing_contact_email"] = %obj.billingContactEmail.get()
+  if obj.mediaContactFirstname.isSome():
+    result["media_contact_firstname"] = %obj.mediaContactFirstname.get()
+  if obj.mediaContactLastname.isSome():
+    result["media_contact_lastname"] = %obj.mediaContactLastname.get()
+  if obj.mediaContactEmail.isSome():
+    result["media_contact_email"] = %obj.mediaContactEmail.get()
+  if obj.agencyLink.isSome():
+    result["agency_link"] = %obj.agencyLink.get()
+  if obj.userEmail.isSome():
+    result["user_email"] = %obj.userEmail.get()
+  if obj.oracleLineId.isSome():
+    result["oracle_line_id"] = %obj.oracleLineId.get()
+  if obj.salesforceOrderId.isSome():
+    result["salesforce_order_id"] = %obj.salesforceOrderId.get()
+  if obj.salesforceOrderLineId.isSome():
+    result["salesforce_order_line_id"] = %obj.salesforceOrderLineId.get()
+  if obj.adsManagerOrderLineId.isSome():
+    result["ads_manager_order_line_id"] = %obj.adsManagerOrderLineId.get()
+

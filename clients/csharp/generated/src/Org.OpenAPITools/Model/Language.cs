@@ -959,7 +959,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Language language, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(language.ToString());
+            writer.WriteStringValue(LanguageValueConverter.ToJsonValue(language).ToString());
         }
     }
 
@@ -990,14 +990,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the Language to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="language"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Language? language, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(language?.ToString() ?? "null");
+            writer.WriteStringValue(language.HasValue ? LanguageValueConverter.ToJsonValue(language.Value).ToString() : "null");
         }
     }
 }

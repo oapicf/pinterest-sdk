@@ -1,37 +1,40 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Queryable audience representation.
- **/
+ * Queryable audience representation.
+ */
 @ApiModel(description="Queryable audience representation.")
 
 public class AudienceDefinition  {
   
-  @ApiModelProperty(example = "2022-10-09", value = "Generation date")
  /**
-   * Generation date
-  **/
+  * Generation date
+  */
+  @ApiModelProperty(example = "2022-10-09", value = "Generation date")
+
   private String date;
 
-  @ApiModelProperty(value = "Generated audience type to request.")
  /**
-   * Generated audience type to request.
-  **/
+  * Generated audience type to request.
+  */
+  @ApiModelProperty(value = "Generated audience type to request.")
+
   private String type;
 
-  @ApiModelProperty(value = "Generated audience scope to request.")
  /**
-   * Generated audience scope to request.
-  **/
+  * Generated audience scope to request.
+  */
+  @ApiModelProperty(value = "Generated audience scope to request.")
+
   private String scope;
  /**
    * Generation date

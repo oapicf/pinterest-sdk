@@ -22,10 +22,10 @@ export interface PinMediaSourceImagesBase64 {
     index?: number;
 }
 export namespace PinMediaSourceImagesBase64 {
-    export type SourceTypeEnum = 'multiple_image_base64';
     export const SourceTypeEnum = {
-        MultipleImageBase64: 'multiple_image_base64' as SourceTypeEnum
-    };
+        MultipleImageBase64: 'multiple_image_base64'
+    } as const;
+    export type SourceTypeEnum = typeof SourceTypeEnum[keyof typeof SourceTypeEnum];
 }
 
 

@@ -43,13 +43,10 @@ import javax.annotation.Generated;
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsFeedsCreateRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelFeedsCreateRequest.class, name = "HOTEL"),
-  @JsonSubTypes.Type(value = CatalogsRetailFeedsCreateRequest.class, name = "RETAIL"),
-  @JsonSubTypes.Type(value = CatalogsCreativeAssetsFeedsCreateRequest.class, name = "CatalogsCreativeAssetsFeedsCreateRequest"),
-  @JsonSubTypes.Type(value = CatalogsHotelFeedsCreateRequest.class, name = "CatalogsHotelFeedsCreateRequest"),
-  @JsonSubTypes.Type(value = CatalogsRetailFeedsCreateRequest.class, name = "CatalogsRetailFeedsCreateRequest")
+  @JsonSubTypes.Type(value = CatalogsRetailFeedsCreateRequest.class, name = "RETAIL")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface CatalogsVerticalFeedsCreateRequest extends FeedsCreateRequest {
     public String getCatalogType();
 }

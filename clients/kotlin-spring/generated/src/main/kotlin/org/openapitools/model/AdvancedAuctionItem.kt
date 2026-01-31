@@ -41,7 +41,7 @@ data class AdvancedAuctionItem(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("bid_options", required = true) val bidOptions: AdvancedAuctionBidOptions
-    ) {
+) {
 
 }
 

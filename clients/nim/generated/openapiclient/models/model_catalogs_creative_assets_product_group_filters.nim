@@ -9,12 +9,37 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_product_group_filter_keys
 import model_catalogs_creative_assets_product_group_filters_all_of
 import model_catalogs_creative_assets_product_group_filters_any_of
 
+# AnyOf type
+type CatalogsCreativeAssetsProductGroupFiltersKind* {.pure.} = enum
+  CatalogsCreativeAssetsProductGroupFiltersAnyOfVariant
+  CatalogsCreativeAssetsProductGroupFiltersAllOfVariant
+
 type CatalogsCreativeAssetsProductGroupFilters* = object
   ## Object holding a group of filters for a creative assets product group
-  anyOf*: seq[CatalogsCreativeAssetsProductGroupFilterKeys]
-  allOf*: seq[CatalogsCreativeAssetsProductGroupFilterKeys]
+  case kind*: CatalogsCreativeAssetsProductGroupFiltersKind
+  of CatalogsCreativeAssetsProductGroupFiltersKind.CatalogsCreativeAssetsProductGroupFiltersAnyOfVariant:
+    CatalogsCreativeAssetsProductGroupFiltersAnyOfValue*: CatalogsCreativeAssetsProductGroupFiltersAnyOf
+  of CatalogsCreativeAssetsProductGroupFiltersKind.CatalogsCreativeAssetsProductGroupFiltersAllOfVariant:
+    CatalogsCreativeAssetsProductGroupFiltersAllOfValue*: CatalogsCreativeAssetsProductGroupFiltersAllOf
+
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsProductGroupFilters]): CatalogsCreativeAssetsProductGroupFilters =
+  ## Custom deserializer for anyOf type - tries each variant
+  try:
+    return CatalogsCreativeAssetsProductGroupFilters(kind: CatalogsCreativeAssetsProductGroupFiltersKind.CatalogsCreativeAssetsProductGroupFiltersAnyOfVariant, CatalogsCreativeAssetsProductGroupFiltersAnyOfValue: to(node, CatalogsCreativeAssetsProductGroupFiltersAnyOf))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsProductGroupFiltersAnyOf: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilters(kind: CatalogsCreativeAssetsProductGroupFiltersKind.CatalogsCreativeAssetsProductGroupFiltersAllOfVariant, CatalogsCreativeAssetsProductGroupFiltersAllOfValue: to(node, CatalogsCreativeAssetsProductGroupFiltersAllOf))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsProductGroupFiltersAllOf: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsCreativeAssetsProductGroupFilters. JSON: " & $node)
+

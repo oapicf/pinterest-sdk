@@ -9,13 +9,42 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_media_upload_all_of_upload_parameters
 import model_media_upload_type
 
 type MediaUpload* = object
   ## Media upload that has been registered but not uploaded/processed yet.
-  mediaId*: string ## Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
-  mediaType*: MediaUploadType
-  uploadUrl*: string ## The URL where you will POST your media file.
-  uploadParameters*: MediaUpload_allOf_upload_parameters
+  mediaId*: Option[string] ## Unique identifier for this media upload. Used to track status and for attaching during Pin creation.
+  mediaType*: Option[MediaUploadType]
+  uploadUrl*: Option[string] ## The URL where you will POST your media file.
+  uploadParameters*: Option[MediaUpload_allOf_upload_parameters]
+
+
+# Custom JSON deserialization for MediaUpload with custom field names
+proc to*(node: JsonNode, T: typedesc[MediaUpload]): MediaUpload =
+  result = MediaUpload()
+  if node.kind == JObject:
+    if node.hasKey("media_id") and node["media_id"].kind != JNull:
+      result.mediaId = some(to(node["media_id"], typeof(result.mediaId.get())))
+    if node.hasKey("media_type") and node["media_type"].kind != JNull:
+      result.mediaType = some(to(node["media_type"], typeof(result.mediaType.get())))
+    if node.hasKey("upload_url") and node["upload_url"].kind != JNull:
+      result.uploadUrl = some(to(node["upload_url"], typeof(result.uploadUrl.get())))
+    if node.hasKey("upload_parameters") and node["upload_parameters"].kind != JNull:
+      result.uploadParameters = some(to(node["upload_parameters"], typeof(result.uploadParameters.get())))
+
+# Custom JSON serialization for MediaUpload with custom field names
+proc `%`*(obj: MediaUpload): JsonNode =
+  result = newJObject()
+  if obj.mediaId.isSome():
+    result["media_id"] = %obj.mediaId.get()
+  if obj.mediaType.isSome():
+    result["media_type"] = %obj.mediaType.get()
+  if obj.uploadUrl.isSome():
+    result["upload_url"] = %obj.uploadUrl.get()
+  if obj.uploadParameters.isSome():
+    result["upload_parameters"] = %obj.uploadParameters.get()
+

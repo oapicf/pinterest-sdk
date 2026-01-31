@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "MIN_PRICE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                mINPRICE = new Option<CatalogsProductGroupPricingCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupPricingCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            mINPRICE = new Option<CatalogsProductGroupPricingCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupPricingCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

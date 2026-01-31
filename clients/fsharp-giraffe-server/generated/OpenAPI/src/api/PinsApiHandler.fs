@@ -13,7 +13,6 @@ open OpenAPI.Model.Pin
 open OpenAPI.Model.PinAnalyticsMetricsResponse
 open OpenAPI.Model.PinCreate
 open OpenAPI.Model.PinUpdate
-open OpenAPI.Model.PinsAnalyticsMetricTypesParameterInner
 open OpenAPI.Model.PinsList200Response
 open OpenAPI.Model.PinsSaveRequest
 

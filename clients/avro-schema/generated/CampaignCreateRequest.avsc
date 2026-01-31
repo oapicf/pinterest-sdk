@@ -16,9 +16,9 @@
     },
     {
       "name": "status",
-      "type": ["null", "model.EntityStatus"],
+      "type": ["model.EntityStatus", "null"],
       "doc": "",
-      "default": null
+      "default": EntityStatus.ACTIVE
     },
     {
       "name": "lifetime_spend_cap",
@@ -58,9 +58,9 @@
     },
     {
       "name": "is_flexible_daily_budgets",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "Determine if a campaign has flexible daily budgets setup.",
-      "default": null
+      "default": false
     },
     {
       "name": "default_ad_group_budget_in_micro_currency",
@@ -70,9 +70,9 @@
     },
     {
       "name": "is_automated_campaign",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "Specifies whether the campaign was created in the automated campaign flow",
-      "default": null
+      "default": false
     },
     {
       "name": "objective_type",

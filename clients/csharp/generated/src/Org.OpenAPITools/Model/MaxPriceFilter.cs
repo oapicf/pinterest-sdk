@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "MAX_PRICE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                mAXPRICE = new Option<CatalogsProductGroupPricingCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupPricingCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            mAXPRICE = new Option<CatalogsProductGroupPricingCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupPricingCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

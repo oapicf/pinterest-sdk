@@ -16,13 +16,6 @@ Please update as you see appropriate
 describe("oauth_access_token_request_code", function()
   local openapiclient_oauth_access_token_request_code = require "openapiclient.model.oauth_access_token_request_code"
 
-  -- unit tests for the property 'grant_type'
-  describe("property grant_type test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'code'
   describe("property code test", function()
     it("should work", function()
@@ -32,6 +25,13 @@ describe("oauth_access_token_request_code", function()
 
   -- unit tests for the property 'redirect_uri'
   describe("property redirect_uri test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'grant_type'
+  describe("property grant_type test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

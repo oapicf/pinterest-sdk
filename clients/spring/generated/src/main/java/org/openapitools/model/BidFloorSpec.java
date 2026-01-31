@@ -29,7 +29,7 @@ import javax.annotation.Generated;
  * BidFloorSpec
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BidFloorSpec {
 
   @Valid
@@ -105,7 +105,7 @@ public class BidFloorSpec {
     this.currency = currency;
   }
 
-  public BidFloorSpec objectiveType(ObjectiveType objectiveType) {
+  public BidFloorSpec objectiveType(@Nullable ObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
@@ -117,11 +117,11 @@ public class BidFloorSpec {
   @Valid 
   @Schema(name = "objective_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("objective_type")
-  public ObjectiveType getObjectiveType() {
+  public @Nullable ObjectiveType getObjectiveType() {
     return objectiveType;
   }
 
-  public void setObjectiveType(ObjectiveType objectiveType) {
+  public void setObjectiveType(@Nullable ObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }
 
@@ -145,7 +145,7 @@ public class BidFloorSpec {
     this.billableEvent = billableEvent;
   }
 
-  public BidFloorSpec optimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+  public BidFloorSpec optimizationGoalMetadata(@Nullable OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
     return this;
   }
@@ -157,15 +157,15 @@ public class BidFloorSpec {
   @Valid 
   @Schema(name = "optimization_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("optimization_goal_metadata")
-  public OptimizationGoalMetadata getOptimizationGoalMetadata() {
+  public @Nullable OptimizationGoalMetadata getOptimizationGoalMetadata() {
     return optimizationGoalMetadata;
   }
 
-  public void setOptimizationGoalMetadata(OptimizationGoalMetadata optimizationGoalMetadata) {
+  public void setOptimizationGoalMetadata(@Nullable OptimizationGoalMetadata optimizationGoalMetadata) {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
-  public BidFloorSpec creativeType(CreativeType creativeType) {
+  public BidFloorSpec creativeType(@Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
     return this;
   }
@@ -177,11 +177,11 @@ public class BidFloorSpec {
   @Valid 
   @Schema(name = "creative_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_type")
-  public CreativeType getCreativeType() {
+  public @Nullable CreativeType getCreativeType() {
     return creativeType;
   }
 
-  public void setCreativeType(CreativeType creativeType) {
+  public void setCreativeType(@Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
   }
 

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_audience_category
 import model_audience_demographics
@@ -16,9 +18,44 @@ import model_audience_insight_type
 
 type AudienceInsightsResponse* = object
   ## Audience interests and demographics.
-  categories*: seq[AudienceCategory] ## Category interest distribution
-  demographics*: AudienceDemographics
-  `type`*: AudienceInsightType
-  date*: string ## Generation date
-  size*: int ## Population count.
-  sizeIsUpperBound*: bool ## Indicates whether the audience size has been rounded up to the next highest upper boundary.
+  categories*: Option[seq[AudienceCategory]] ## Category interest distribution
+  demographics*: Option[AudienceDemographics]
+  `type`*: Option[AudienceInsightType]
+  date*: Option[string] ## Generation date
+  size*: Option[int] ## Population count.
+  sizeIsUpperBound*: Option[bool] ## Indicates whether the audience size has been rounded up to the next highest upper boundary.
+
+
+# Custom JSON deserialization for AudienceInsightsResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[AudienceInsightsResponse]): AudienceInsightsResponse =
+  result = AudienceInsightsResponse()
+  if node.kind == JObject:
+    if node.hasKey("categories") and node["categories"].kind != JNull:
+      result.categories = some(to(node["categories"], typeof(result.categories.get())))
+    if node.hasKey("demographics") and node["demographics"].kind != JNull:
+      result.demographics = some(to(node["demographics"], typeof(result.demographics.get())))
+    if node.hasKey("type") and node["type"].kind != JNull:
+      result.`type` = some(to(node["type"], typeof(result.`type`.get())))
+    if node.hasKey("date") and node["date"].kind != JNull:
+      result.date = some(to(node["date"], typeof(result.date.get())))
+    if node.hasKey("size") and node["size"].kind != JNull:
+      result.size = some(to(node["size"], typeof(result.size.get())))
+    if node.hasKey("size_is_upper_bound") and node["size_is_upper_bound"].kind != JNull:
+      result.sizeIsUpperBound = some(to(node["size_is_upper_bound"], typeof(result.sizeIsUpperBound.get())))
+
+# Custom JSON serialization for AudienceInsightsResponse with custom field names
+proc `%`*(obj: AudienceInsightsResponse): JsonNode =
+  result = newJObject()
+  if obj.categories.isSome():
+    result["categories"] = %obj.categories.get()
+  if obj.demographics.isSome():
+    result["demographics"] = %obj.demographics.get()
+  if obj.`type`.isSome():
+    result["type"] = %obj.`type`.get()
+  if obj.date.isSome():
+    result["date"] = %obj.date.get()
+  if obj.size.isSome():
+    result["size"] = %obj.size.get()
+  if obj.sizeIsUpperBound.isSome():
+    result["size_is_upper_bound"] = %obj.sizeIsUpperBound.get()
+

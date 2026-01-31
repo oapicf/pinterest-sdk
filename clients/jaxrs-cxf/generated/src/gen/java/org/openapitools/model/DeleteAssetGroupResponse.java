@@ -15,17 +15,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeleteAssetGroupResponse  {
   
-  @ApiModelProperty(value = "A list of ids of successfully deleted asset groups.")
  /**
-   * A list of ids of successfully deleted asset groups.
-  **/
+  * A list of ids of successfully deleted asset groups.
+  */
+  @ApiModelProperty(value = "A list of ids of successfully deleted asset groups.")
+
   private List<@Pattern(regexp = "^\\d+$")String> deletedAssetGroups = new ArrayList<>();
 
-  @ApiModelProperty(value = "A list of errors associated with the asset groups. Will be returned if there is an error.")
-  @Valid
  /**
-   * A list of errors associated with the asset groups. Will be returned if there is an error.
-  **/
+  * A list of errors associated with the asset groups. Will be returned if there is an error.
+  */
+  @ApiModelProperty(value = "A list of errors associated with the asset groups. Will be returned if there is an error.")
+
+  @Valid
+
   private List<@Valid DeleteAssetGroupResponseExceptionsInner> exceptions;
  /**
    * A list of ids of successfully deleted asset groups.

@@ -154,8 +154,7 @@ namespace Org.OpenAPITools.Model
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "user":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                user = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            user = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

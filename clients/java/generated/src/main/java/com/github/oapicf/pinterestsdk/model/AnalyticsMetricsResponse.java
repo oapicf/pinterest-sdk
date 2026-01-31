@@ -54,7 +54,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AnalyticsMetricsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AnalyticsMetricsResponse {
   public static final String SERIALIZED_NAME_SUMMARY_METRICS = "summary_metrics";
   @SerializedName(SERIALIZED_NAME_SUMMARY_METRICS)
@@ -169,12 +169,10 @@ public class AnalyticsMetricsResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("summary_metrics");
-    openapiFields.add("daily_metrics");
+    openapiFields = new HashSet<String>(Arrays.asList("summary_metrics", "daily_metrics"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -186,7 +184,7 @@ public class AnalyticsMetricsResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AnalyticsMetricsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AnalyticsMetricsResponse is not found in the empty JSON string", AnalyticsMetricsResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AnalyticsMetricsResponse is not found in the empty JSON string", AnalyticsMetricsResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -194,7 +192,7 @@ public class AnalyticsMetricsResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AnalyticsMetricsResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AnalyticsMetricsResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AnalyticsMetricsResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -203,7 +201,7 @@ public class AnalyticsMetricsResponse {
         if (jsonArraydailyMetrics != null) {
           // ensure the json data is an array
           if (!jsonObj.get("daily_metrics").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `daily_metrics` to be an array in the JSON string but got `%s`", jsonObj.get("daily_metrics").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `daily_metrics` to be an array in the JSON string but got `%s`", jsonObj.get("daily_metrics").toString()));
           }
 
           // validate the optional field `daily_metrics` (array)

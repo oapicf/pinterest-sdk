@@ -17,10 +17,10 @@ export interface CatalogsHotelProductGroupProductCounts {
     total: number;
 }
 export namespace CatalogsHotelProductGroupProductCounts {
-    export type CatalogTypeEnum = 'HOTEL';
     export const CatalogTypeEnum = {
-        Hotel: 'HOTEL' as CatalogTypeEnum
-    };
+        Hotel: 'HOTEL'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

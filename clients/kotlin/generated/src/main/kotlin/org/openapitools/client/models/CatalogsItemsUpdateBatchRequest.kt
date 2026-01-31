@@ -16,7 +16,6 @@
 package org.openapitools.client.models
 
 import org.openapitools.client.models.BatchOperation
-import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.ItemUpdateBatchRecord
 
@@ -27,7 +26,7 @@ import com.squareup.moshi.JsonClass
  * Request object to update catalogs items
  *
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param operation 
  * @param items Array with catalogs items
  */
@@ -38,8 +37,9 @@ data class CatalogsItemsUpdateBatchRequest (
     @Json(name = "country")
     val country: Country,
 
+    /* We recommend using the CatalogsLocale values. */
     @Json(name = "language")
-    val language: CatalogsItemsRequestLanguage,
+    val language: CatalogsItemsUpdateBatchRequest.Language,
 
     @Json(name = "operation")
     val operation: BatchOperation,
@@ -50,6 +50,121 @@ data class CatalogsItemsUpdateBatchRequest (
 
 ) {
 
+    /**
+     * We recommend using the CatalogsLocale values.
+     *
+     * Values: afMinusZA,arMinusSA,bgMinusBG,bnMinusIN,csMinusCZ,daMinusDK,de,elMinusGR,enMinusAU,enMinusCA,enMinusGB,enMinusIN,enMinusUS,esMinus419,esMinusAR,esMinusES,esMinusMX,fiMinusFI,fr,frMinusCA,heMinusIL,hiMinusIN,hrMinusHR,huMinusHU,idMinusID,`it`,ja,koMinusKR,msMinusMY,nbMinusNO,nl,plMinusPL,ptMinusBR,ptMinusPT,roMinusRO,ruMinusRU,skMinusSK,svMinusSE,teMinusIN,thMinusTH,tlMinusPH,tr,ukMinusUA,viMinusVN,zhMinusCN,zhMinusTW,AM,AR,AZ,BG,BN,BS,CA,CS,DA,DV,DZ,DE,EL,EN,ES,ET,FA,FI,FR,HE,HI,HR,HU,HY,ID,IN,IS,IT,IW,JA,KA,KM,KO,LO,LT,LV,MK,MN,MS,MY,NB,NE,NL,NO,PL,PT,RO,RU,SK,SL,SQ,SR,SV,TL,UK,VI,TE,TH,TR,XX,ZH
+     */
+    @JsonClass(generateAdapter = false)
+    enum class Language(val value: kotlin.String) {
+        @Json(name = "af-ZA") afMinusZA("af-ZA"),
+        @Json(name = "ar-SA") arMinusSA("ar-SA"),
+        @Json(name = "bg-BG") bgMinusBG("bg-BG"),
+        @Json(name = "bn-IN") bnMinusIN("bn-IN"),
+        @Json(name = "cs-CZ") csMinusCZ("cs-CZ"),
+        @Json(name = "da-DK") daMinusDK("da-DK"),
+        @Json(name = "de") de("de"),
+        @Json(name = "el-GR") elMinusGR("el-GR"),
+        @Json(name = "en-AU") enMinusAU("en-AU"),
+        @Json(name = "en-CA") enMinusCA("en-CA"),
+        @Json(name = "en-GB") enMinusGB("en-GB"),
+        @Json(name = "en-IN") enMinusIN("en-IN"),
+        @Json(name = "en-US") enMinusUS("en-US"),
+        @Json(name = "es-419") esMinus419("es-419"),
+        @Json(name = "es-AR") esMinusAR("es-AR"),
+        @Json(name = "es-ES") esMinusES("es-ES"),
+        @Json(name = "es-MX") esMinusMX("es-MX"),
+        @Json(name = "fi-FI") fiMinusFI("fi-FI"),
+        @Json(name = "fr") fr("fr"),
+        @Json(name = "fr-CA") frMinusCA("fr-CA"),
+        @Json(name = "he-IL") heMinusIL("he-IL"),
+        @Json(name = "hi-IN") hiMinusIN("hi-IN"),
+        @Json(name = "hr-HR") hrMinusHR("hr-HR"),
+        @Json(name = "hu-HU") huMinusHU("hu-HU"),
+        @Json(name = "id-ID") idMinusID("id-ID"),
+        @Json(name = "it") `it`("it"),
+        @Json(name = "ja") ja("ja"),
+        @Json(name = "ko-KR") koMinusKR("ko-KR"),
+        @Json(name = "ms-MY") msMinusMY("ms-MY"),
+        @Json(name = "nb-NO") nbMinusNO("nb-NO"),
+        @Json(name = "nl") nl("nl"),
+        @Json(name = "pl-PL") plMinusPL("pl-PL"),
+        @Json(name = "pt-BR") ptMinusBR("pt-BR"),
+        @Json(name = "pt-PT") ptMinusPT("pt-PT"),
+        @Json(name = "ro-RO") roMinusRO("ro-RO"),
+        @Json(name = "ru-RU") ruMinusRU("ru-RU"),
+        @Json(name = "sk-SK") skMinusSK("sk-SK"),
+        @Json(name = "sv-SE") svMinusSE("sv-SE"),
+        @Json(name = "te-IN") teMinusIN("te-IN"),
+        @Json(name = "th-TH") thMinusTH("th-TH"),
+        @Json(name = "tl-PH") tlMinusPH("tl-PH"),
+        @Json(name = "tr") tr("tr"),
+        @Json(name = "uk-UA") ukMinusUA("uk-UA"),
+        @Json(name = "vi-VN") viMinusVN("vi-VN"),
+        @Json(name = "zh-CN") zhMinusCN("zh-CN"),
+        @Json(name = "zh-TW") zhMinusTW("zh-TW"),
+        @Json(name = "AM") AM("AM"),
+        @Json(name = "AR") AR("AR"),
+        @Json(name = "AZ") AZ("AZ"),
+        @Json(name = "BG") BG("BG"),
+        @Json(name = "BN") BN("BN"),
+        @Json(name = "BS") BS("BS"),
+        @Json(name = "CA") CA("CA"),
+        @Json(name = "CS") CS("CS"),
+        @Json(name = "DA") DA("DA"),
+        @Json(name = "DV") DV("DV"),
+        @Json(name = "DZ") DZ("DZ"),
+        @Json(name = "DE") DE("DE"),
+        @Json(name = "EL") EL("EL"),
+        @Json(name = "EN") EN("EN"),
+        @Json(name = "ES") ES("ES"),
+        @Json(name = "ET") ET("ET"),
+        @Json(name = "FA") FA("FA"),
+        @Json(name = "FI") FI("FI"),
+        @Json(name = "FR") FR("FR"),
+        @Json(name = "HE") HE("HE"),
+        @Json(name = "HI") HI("HI"),
+        @Json(name = "HR") HR("HR"),
+        @Json(name = "HU") HU("HU"),
+        @Json(name = "HY") HY("HY"),
+        @Json(name = "ID") ID("ID"),
+        @Json(name = "IN") IN("IN"),
+        @Json(name = "IS") IS("IS"),
+        @Json(name = "IT") IT("IT"),
+        @Json(name = "IW") IW("IW"),
+        @Json(name = "JA") JA("JA"),
+        @Json(name = "KA") KA("KA"),
+        @Json(name = "KM") KM("KM"),
+        @Json(name = "KO") KO("KO"),
+        @Json(name = "LO") LO("LO"),
+        @Json(name = "LT") LT("LT"),
+        @Json(name = "LV") LV("LV"),
+        @Json(name = "MK") MK("MK"),
+        @Json(name = "MN") MN("MN"),
+        @Json(name = "MS") MS("MS"),
+        @Json(name = "MY") MY("MY"),
+        @Json(name = "NB") NB("NB"),
+        @Json(name = "NE") NE("NE"),
+        @Json(name = "NL") NL("NL"),
+        @Json(name = "NO") NO("NO"),
+        @Json(name = "PL") PL("PL"),
+        @Json(name = "PT") PT("PT"),
+        @Json(name = "RO") RO("RO"),
+        @Json(name = "RU") RU("RU"),
+        @Json(name = "SK") SK("SK"),
+        @Json(name = "SL") SL("SL"),
+        @Json(name = "SQ") SQ("SQ"),
+        @Json(name = "SR") SR("SR"),
+        @Json(name = "SV") SV("SV"),
+        @Json(name = "TL") TL("TL"),
+        @Json(name = "UK") UK("UK"),
+        @Json(name = "VI") VI("VI"),
+        @Json(name = "TE") TE("TE"),
+        @Json(name = "TH") TH("TH"),
+        @Json(name = "TR") TR("TR"),
+        @Json(name = "XX") XX("XX"),
+        @Json(name = "ZH") ZH("ZH");
+    }
 
 }
 

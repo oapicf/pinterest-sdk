@@ -467,9 +467,6 @@ entity AudienceCreateCustomRequest {
 entity AudienceCreateRequest {
 }
 
-entity AudienceCreateRequest1AudienceType {
-}
-
 entity AudienceDataParty {
 }
 
@@ -928,7 +925,7 @@ entity CatalogsCreativeAssetsBatchItem {
 entity CatalogsCreativeAssetsBatchRequest {
     * catalog_type: String
     * country: Country
-    * language: CatalogsItemsRequestLanguage
+    * language: String
     * items: List<CatalogsCreativeAssetsBatchItem>
     catalog_id: String
 }
@@ -1317,7 +1314,7 @@ entity CatalogsHotelBatchItem {
 entity CatalogsHotelBatchRequest {
     * catalog_type: String
     * country: Country
-    * language: CatalogsItemsRequestLanguage
+    * language: String
     * items: List<CatalogsHotelBatchItem>
     catalog_id: String
 }
@@ -1573,28 +1570,28 @@ entity CatalogsItemsBatch {
 
 entity CatalogsItemsBatchRequest {
     * country: Country
-    * language: CatalogsItemsRequestLanguage
+    * language: String
     * operation: BatchOperation
     * items: List<ItemDeleteBatchRecord>
 }
 
 entity CatalogsItemsCreateBatchRequest {
     * country: Country
-    * language: CatalogsItemsRequestLanguage
+    * language: String
     * operation: BatchOperation
     * items: List<ItemCreateBatchRecord>
 }
 
 entity CatalogsItemsDeleteBatchRequest {
     * country: Country
-    * language: CatalogsItemsRequestLanguage
+    * language: String
     * operation: BatchOperation
     * items: List<ItemDeleteBatchRecord>
 }
 
 entity CatalogsItemsDeleteDiscontinuedBatchRequest {
     * country: Country
-    * language: CatalogsItemsRequestLanguage
+    * language: String
     * operation: BatchOperation
     * items: List<ItemDeleteDiscontinuedBatchRecord>
 }
@@ -1617,23 +1614,20 @@ entity CatalogsItemsPostFilters {
 
 entity CatalogsItemsRequest {
     * country: Country
-    * language: CatalogsItemsRequestLanguage
+    * language: String
     * filters: CatalogsItemsPostFilters
-}
-
-entity CatalogsItemsRequestLanguage {
 }
 
 entity CatalogsItemsUpdateBatchRequest {
     * country: Country
-    * language: CatalogsItemsRequestLanguage
+    * language: String
     * operation: BatchOperation
     * items: List<ItemUpdateBatchRecord>
 }
 
 entity CatalogsItemsUpsertBatchRequest {
     * country: Country
-    * language: CatalogsItemsRequestLanguage
+    * language: String
     * operation: BatchOperation
     * items: List<ItemUpsertBatchRecord>
 }
@@ -1864,7 +1858,7 @@ entity CatalogsReportStats {
 entity CatalogsRetailBatchRequest {
     * catalog_type: String
     * country: Country
-    * language: CatalogsItemsRequestLanguage
+    * language: String
     * items: List<CatalogsRetailBatchRequestItemsInner>
 }
 
@@ -2092,7 +2086,7 @@ entity CatalogsUpsertRetailItem {
 entity CatalogsVerticalBatchRequest {
     * catalog_type: String
     * country: Country
-    * language: CatalogsItemsRequestLanguage
+    * language: String
     * items: List<CatalogsCreativeAssetsBatchItem>
     catalog_id: String
 }
@@ -2386,6 +2380,7 @@ entity CreateInvitesResultsResponseArrayItemsInnerInvite {
 }
 
 entity CreateMMMReportRequest {
+    countries: List<TargetingAdvertiserCountry>
     * report_name: String
     * start_date: String
     * end_date: String
@@ -2393,7 +2388,6 @@ entity CreateMMMReportRequest {
     * level: String
     * targeting_types: List<MMMReportingTargetingType>
     * columns: List<MMMReportingColumn>
-    countries: List<TargetingAdvertiserCountry>
 }
 
 entity CreateMMMReportResponse {
@@ -3019,7 +3013,7 @@ entity ItemValidationEvent {
 entity ItemsBatchPostRequest {
     * catalog_type: String
     * country: Country
-    * language: CatalogsItemsRequestLanguage
+    * language: String
     * items: List<ItemDeleteBatchRecord>
     catalog_id: String
     * operation: BatchOperation
@@ -3288,21 +3282,21 @@ entity NullableCurrency {
 }
 
 entity OauthAccessTokenRequestClientCredentials {
-    * grant_type: String
     * scope: String
+    * grant_type: String
 }
 
 entity OauthAccessTokenRequestCode {
-    * grant_type: String
     * code: String
     * redirect_uri: String
+    * grant_type: String
 }
 
 entity OauthAccessTokenRequestRefresh {
-    * grant_type: String
     * refresh_token: String
     scope: String
     refresh_on: Boolean
+    * grant_type: String
 }
 
 entity OauthAccessTokenResponse {
@@ -3322,34 +3316,34 @@ entity OauthAccessTokenResponseClientCredentials {
 }
 
 entity OauthAccessTokenResponseCode {
+    * refresh_token: String
+    * refresh_token_expires_in: Integer
     response_type: String
     * access_token: String
     * token_type: String
     * expires_in: Integer
     * scope: String
-    * refresh_token: String
-    * refresh_token_expires_in: Integer
 }
 
 entity OauthAccessTokenResponseEverlastingRefresh {
-    response_type: String
-    * access_token: String
-    * token_type: String
-    * expires_in: Integer
-    * scope: String
     * refresh_token: String
     * refresh_token_expires_in: Integer
     * refresh_token_expires_at: Integer
-}
-
-entity OauthAccessTokenResponseIntegrationRefresh {
     response_type: String
     * access_token: String
     * token_type: String
     * expires_in: Integer
     * scope: String
+}
+
+entity OauthAccessTokenResponseIntegrationRefresh {
     * refresh_token: String
     * refresh_token_expires_in: Integer
+    response_type: String
+    * access_token: String
+    * token_type: String
+    * expires_in: Integer
+    * scope: String
 }
 
 entity OauthAccessTokenResponseRefresh {
@@ -3637,9 +3631,6 @@ entity PinUpdateCarouselSlotsInner {
     title: String
     description: String
     link: String
-}
-
-entity PinsAnalyticsMetricTypesParameterInner {
 }
 
 entity PinsList200Response {
@@ -4393,7 +4384,6 @@ AdvancedAuctionItem <|--- AdvancedAuctionItemsSubmitUpsertRecord
 AdvancedAuctionItemsSubmitRecord <|--- AdvancedAuctionProcessedItem
 AudienceCommon <|--- AudienceCreateCustomRequest
 AudienceCommon <|--- AudienceCreateRequest
-AudienceType <|--- AudienceCreateRequest1AudienceType
 AudienceCommon <|--- AudienceUpdateRequest
 Paginated <|--- AudiencesList200Response
 Paginated <|--- BillingProfilesGet200Response
@@ -4518,7 +4508,7 @@ CatalogsRetailListProductsByCatalogBasedFilterRequest -- CatalogsProductGroupFil
 TrendingKeywordsResponse -- "0..*" TrendingKeywordsResponseTrendsInner : trends
 CatalogsUpdatableHotelAttributes -- CatalogsHotelAddress : address
 CatalogsUpdatableHotelAttributes -- CatalogsHotelGuestRatings : guest_ratings
-CatalogsCreativeAssetsBatchRequest -- CatalogsItemsRequestLanguage : language
+CatalogsCreativeAssetsBatchRequest -- String : language
 CatalogsCreativeAssetsBatchRequest -- "0..*" CatalogsCreativeAssetsBatchItem : items
 CatalogsVerticalProductGroup -- CatalogsCreativeAssetsProductGroupFilters : filters
 CatalogsProductGroupCreateRequest -- CatalogsProductGroupFiltersRequest : filters
@@ -4532,19 +4522,17 @@ TemplateResponseDateRange -- TemplateResponseDateRangeRelativeDateRange : relati
 TemplateResponseDateRange -- TemplateResponseDateRangeAbsoluteDateRange : absolute_date_range
 CatalogsRetailProductGroup -- CatalogsProductGroupFilters : filters
 CatalogsRetailReportParameters -- CatalogsHotelReportParametersReport : report
-CatalogsItemsBatchRequest -- CatalogsItemsRequestLanguage : language
 CatalogsItemsBatchRequest -- "0..*" ItemDeleteBatchRecord : items
 MediaUpload -- MediaUploadAllOfUploadParameters : upload_parameters
 FeedsUpdateRequest -- CatalogsFeedCredentials : credentials
 FeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
 CatalogsCreativeAssetsProductGroupUpdateRequest -- CatalogsCreativeAssetsProductGroupFilters : filters
-CatalogsItemsUpsertBatchRequest -- CatalogsItemsRequestLanguage : language
+CatalogsItemsUpsertBatchRequest -- String : language
 CatalogsItemsUpsertBatchRequest -- "0..*" ItemUpsertBatchRecord : items
 CatalogsItemsBatch -- "0..*" CreativeAssetsProcessingRecord : items
 AdGroupCommon -- OptimizationGoalMetadata : optimization_goal_metadata
 AdGroupCommon -- TargetingSpec : targeting_spec
 AdGroupCommon -- TrackingUrls : tracking_urls
-ItemsBatchPostRequest -- CatalogsItemsRequestLanguage : language
 ItemsBatchPostRequest -- "0..*" ItemDeleteBatchRecord : items
 CatalogsUpdateCreativeAssetsItem -- CatalogsUpdatableCreativeAssetsAttributes : attributes
 CampaignCreateResponseItem -- CampaignCreateResponseData : data
@@ -4565,7 +4553,7 @@ RespondToInvitesResponseArray -- "0..*" RespondToInvitesResponseArrayItemsInner 
 DeletePartnerAssetAccessBody -- "0..*" DeletePartnerAssetAccessBodyAccessesInner : accesses
 UpdateMemberResultsResponseArray -- "0..*" UpdateMemberResult : items
 KeywordUpdateBody -- "0..*" KeywordUpdate : keywords
-CatalogsItemsCreateBatchRequest -- CatalogsItemsRequestLanguage : language
+CatalogsItemsCreateBatchRequest -- String : language
 CatalogsItemsCreateBatchRequest -- "0..*" ItemCreateBatchRecord : items
 InviteAssetsSummary -- "0..*" InviteAssetsSummaryAdAccountsInner : ad_accounts
 InviteAssetsSummary -- "0..*" InviteAssetsSummaryProfilesInner : profiles
@@ -4575,7 +4563,7 @@ CatalogsCreativeAssetsItemsBatch -- "0..*" CreativeAssetsProcessingRecord : item
 CampaignCommon -- TrackingUrls : tracking_urls
 CatalogsRetailFeedsUpdateRequest -- CatalogsFeedCredentials : credentials
 CatalogsRetailFeedsUpdateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
-CatalogsItemsRequest -- CatalogsItemsRequestLanguage : language
+CatalogsItemsRequest -- String : language
 CatalogsItemsRequest -- CatalogsItemsPostFilters : filters
 HotelProcessingRecord -- "0..*" ItemValidationEvent : errors
 HotelProcessingRecord -- "0..*" ItemValidationEvent : warnings
@@ -4623,7 +4611,7 @@ ProductGroupPromotionCreateRequest -- "0..*" ProductGroupPromotionCreateRequestE
 CatalogsUpsertCreativeAssetsItem -- CatalogsCreativeAssetsAttributes : attributes
 CatalogsFeedValidationDetails -- CatalogsFeedValidationErrors : errors
 CatalogsFeedValidationDetails -- CatalogsFeedValidationWarnings : warnings
-CatalogsHotelBatchRequest -- CatalogsItemsRequestLanguage : language
+CatalogsHotelBatchRequest -- String : language
 CatalogsHotelBatchRequest -- "0..*" CatalogsHotelBatchItem : items
 CatalogsHotelItemErrorResponse -- "0..*" ItemValidationEvent : errors
 ItemProcessingRecord -- "0..*" ItemValidationEvent : errors
@@ -4631,7 +4619,6 @@ ItemProcessingRecord -- "0..*" ItemValidationEvent : warnings
 FeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
 FeedsCreateRequest -- CatalogsFeedCredentials : credentials
 FeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
-FeedsCreateRequest -- CatalogsStatus : status
 CampaignCreateResponse -- "0..*" CampaignCreateResponseItem : items
 AdGroupArrayResponseElement -- AdGroupResponse : data
 AdGroupArrayResponseElement -- "0..*" Exception : exceptions
@@ -4661,11 +4648,9 @@ CatalogsItemValidationIssues -- CatalogsItemValidationWarnings : warnings
 CatalogsRetailFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
 CatalogsRetailFeedsCreateRequest -- CatalogsFeedCredentials : credentials
 CatalogsRetailFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
-CatalogsRetailFeedsCreateRequest -- CatalogsStatus : status
 CatalogsFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
 CatalogsFeedsCreateRequest -- CatalogsFeedCredentials : credentials
 CatalogsFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
-CatalogsFeedsCreateRequest -- CatalogsStatus : status
 ProductGroupPromotionResponse -- "0..*" ProductGroupPromotionResponseItem : items
 CatalogsCreativeAssetsItemResponse -- "0..*" Pin : pins
 CatalogsCreativeAssetsItemResponse -- CatalogsCreativeAssetsAttributes : attributes
@@ -4677,7 +4662,7 @@ CatalogsFeed -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
 ItemCreateBatchRecord -- ItemAttributesRequest : attributes
 IntegrationLogsInvalidLogResponse -- "0..*" IntegrationLogsInvalidLogResponseRejectedLogsInner : rejected_logs
 PinterestTagEventData -- LineItem : line_items
-CatalogsItemsUpdateBatchRequest -- CatalogsItemsRequestLanguage : language
+CatalogsItemsUpdateBatchRequest -- String : language
 CatalogsItemsUpdateBatchRequest -- "0..*" ItemUpdateBatchRecord : items
 AdGroupArrayResponse -- "0..*" AdGroupArrayResponseElement : items
 TargetingSpec -- "0..*" TargetingSpecSHOPPINGRETARGETING : SHOPPING_RETARGETING
@@ -4728,12 +4713,11 @@ UpdateInvitesResultsResponseArray -- "0..*" UpdateInvitesResultsResponseArrayIte
 CatalogsVerticalFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
 CatalogsVerticalFeedsCreateRequest -- CatalogsFeedCredentials : credentials
 CatalogsVerticalFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
-CatalogsVerticalFeedsCreateRequest -- CatalogsStatus : status
 CatalogsUpsertHotelItem -- CatalogsHotelAttributes : attributes
 PinCreate -- BoardOwner : board_owner
 PinCreate -- PinMedia : media
 PinCreate -- PinMediaSource : media_source
-CatalogsRetailBatchRequest -- CatalogsItemsRequestLanguage : language
+CatalogsRetailBatchRequest -- String : language
 CatalogsRetailBatchRequest -- "0..*" CatalogsRetailBatchRequestItemsInner : items
 AdCommon -- TrackingUrls : tracking_urls
 AdCommon -- QuizPinData : quiz_pin_data
@@ -4752,10 +4736,8 @@ UserBusinessRoleBinding -- BusinessAccessUserSummary : user
 CatalogsHotelFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
 CatalogsHotelFeedsCreateRequest -- CatalogsFeedCredentials : credentials
 CatalogsHotelFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
-CatalogsHotelFeedsCreateRequest -- CatalogsStatus : status
 CatalogsRetailBatchRequestItemsInner -- ItemAttributesRequest : attributes
 AssetIdPermissions -- AssetGroupBinding : asset_group_info
-CatalogsVerticalBatchRequest -- CatalogsItemsRequestLanguage : language
 CatalogsVerticalBatchRequest -- "0..*" CatalogsCreativeAssetsBatchItem : items
 CatalogsItems -- "0..*" ItemResponse : items
 CatalogsProductGroupFiltersRequest -- "0..*" CatalogsProductGroupFilterKeys : any_of
@@ -4815,7 +4797,7 @@ CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : TITLE_LENGTH_T
 CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : TOO_MANY_ADDITIONAL_IMAGE_LINKS
 CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : UTM_SOURCE_AUTO_CORRECTED
 CatalogsItemValidationWarnings -- CatalogsItemValidationDetails : WEIGHT_UNIT_INVALID
-CatalogsItemsDeleteDiscontinuedBatchRequest -- CatalogsItemsRequestLanguage : language
+CatalogsItemsDeleteDiscontinuedBatchRequest -- String : language
 CatalogsItemsDeleteDiscontinuedBatchRequest -- "0..*" ItemDeleteDiscontinuedBatchRecord : items
 RespondToInvitesResponseArrayItemsInner -- InviteExceptionResponse : exception
 RespondToInvitesResponseArrayItemsInner -- BaseInviteDataResponse : invite
@@ -4823,7 +4805,7 @@ UpdateAssetGroupBody -- "0..*" UpdateAssetGroupBodyAssetGroupsToUpdateInner : as
 TopPinsAnalyticsResponse -- TopPinsAnalyticsResponseDateAvailability : date_availability
 TopPinsAnalyticsResponse -- "0..*" TopPinsAnalyticsResponsePinsInner : pins
 UpdatePartnerAssetAccessBody -- "0..*" UpdatePartnerAssetAccessBodyAccessesInner : accesses
-CatalogsItemsDeleteBatchRequest -- CatalogsItemsRequestLanguage : language
+CatalogsItemsDeleteBatchRequest -- String : language
 CatalogsItemsDeleteBatchRequest -- "0..*" ItemDeleteBatchRecord : items
 GetMMMReportResponse -- GetMMMReportResponseData : data
 TargetingTemplateCommon -- TargetingSpec : targeting_attributes
@@ -4868,7 +4850,6 @@ CatalogsUpdateHotelItem -- CatalogsUpdatableHotelAttributes : attributes
 CatalogsCreativeAssetsFeedsCreateRequest -- CatalogsFeedsCreateRequestDefaultLocale : default_locale
 CatalogsCreativeAssetsFeedsCreateRequest -- CatalogsFeedCredentials : credentials
 CatalogsCreativeAssetsFeedsCreateRequest -- CatalogsFeedProcessingSchedule : preferred_processing_schedule
-CatalogsCreativeAssetsFeedsCreateRequest -- CatalogsStatus : status
 CatalogsListProductsByFeedBasedFilter -- CatalogsProductGroupFilters : filters
 CreateMMMReportResponse -- CreateMMMReportResponseData : data
 ItemResponseAnyOf -- "0..*" Pin : pins

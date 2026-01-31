@@ -27,7 +27,7 @@ data class OptimizationGoalMetadataFrequencyGoalMetadata(
 
     @Schema(example = "DAY", description = "User entity counts time range")
     @get:JsonProperty("timerange") val timerange: OptimizationGoalMetadataFrequencyGoalMetadata.Timerange? = null
-    ) {
+) {
 
     /**
     * User entity counts time range
@@ -46,7 +46,8 @@ data class OptimizationGoalMetadataFrequencyGoalMetadata(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Timerange {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OptimizationGoalMetadataFrequencyGoalMetadata'")
             }
         }
     }

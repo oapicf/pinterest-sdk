@@ -1,50 +1,55 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AudienceDemographicValue;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Audience demographics
- **/
+ * Audience demographics
+ */
 @ApiModel(description="Audience demographics")
 
 public class AudienceDemographics  {
   
-  @ApiModelProperty(value = "Ages distribution.")
  /**
-   * Ages distribution.
-  **/
+  * Ages distribution.
+  */
+  @ApiModelProperty(value = "Ages distribution.")
+
   private List<AudienceDemographicValue> ages = new ArrayList<>();
 
-  @ApiModelProperty(value = "Gender distribution.")
  /**
-   * Gender distribution.
-  **/
+  * Gender distribution.
+  */
+  @ApiModelProperty(value = "Gender distribution.")
+
   private List<AudienceDemographicValue> genders = new ArrayList<>();
 
-  @ApiModelProperty(value = "Device usage distribution.")
  /**
-   * Device usage distribution.
-  **/
+  * Device usage distribution.
+  */
+  @ApiModelProperty(value = "Device usage distribution.")
+
   private List<AudienceDemographicValue> devices = new ArrayList<>();
 
-  @ApiModelProperty(value = "Geographic metro area distribution.")
  /**
-   * Geographic metro area distribution.
-  **/
+  * Geographic metro area distribution.
+  */
+  @ApiModelProperty(value = "Geographic metro area distribution.")
+
   private List<AudienceDemographicValue> metros = new ArrayList<>();
 
-  @ApiModelProperty(value = "Country area distribution.")
  /**
-   * Country area distribution.
-  **/
+  * Country area distribution.
+  */
+  @ApiModelProperty(value = "Country area distribution.")
+
   private List<AudienceDemographicValue> countries = new ArrayList<>();
  /**
    * Ages distribution.

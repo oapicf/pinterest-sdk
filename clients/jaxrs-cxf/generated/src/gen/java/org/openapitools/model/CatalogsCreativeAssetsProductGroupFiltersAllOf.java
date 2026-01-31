@@ -15,7 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsCreativeAssetsProductGroupFiltersAllOf  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private List<CatalogsCreativeAssetsProductGroupFilterKeys> allOf = new ArrayList<>();
  /**
    * Get allOf

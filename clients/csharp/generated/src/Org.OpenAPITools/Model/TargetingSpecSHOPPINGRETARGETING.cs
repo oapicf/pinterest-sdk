@@ -161,16 +161,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "lookback_window":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lookbackWindow = new Option<int?>(utf8JsonReader.GetInt32());
+                            lookbackWindow = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "tag_types":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tagTypes = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            tagTypes = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "exclusion_window":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exclusionWindow = new Option<int?>(utf8JsonReader.GetInt32());
+                            exclusionWindow = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

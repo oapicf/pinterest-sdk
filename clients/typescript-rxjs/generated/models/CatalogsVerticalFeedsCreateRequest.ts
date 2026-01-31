@@ -19,7 +19,7 @@ import type {
     CatalogsFormat,
     CatalogsHotelFeedsCreateRequest,
     CatalogsRetailFeedsCreateRequest,
-    CatalogsStatus & object,
+    CatalogsStatus,
     CatalogsType,
     Country,
     NullableCurrency,

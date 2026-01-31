@@ -37,7 +37,7 @@ use PHPUnit\Framework\TestCase;
  * OauthAccessTokenRequestCodeTest Class Doc Comment
  *
  * @category    Class
- * @description A request to exchange an authorization code for an access token.
+ * @description OauthAccessTokenRequestCode
  * @package     OpenAPI\Server\Tests\Model
  * @author      openapi-generator contributors
  * @link        https://github.com/openapitools/openapi-generator
@@ -87,17 +87,6 @@ class OauthAccessTokenRequestCodeTest extends TestCase
     }
 
     /**
-     * Test attribute "grantType"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyGrantType(): void
-    {
-        $this->markTestSkipped('Test for property grantType not implemented');
-    }
-
-    /**
      * Test attribute "code"
      *
      * @group unit
@@ -117,5 +106,16 @@ class OauthAccessTokenRequestCodeTest extends TestCase
     public function testPropertyRedirectUri(): void
     {
         $this->markTestSkipped('Test for property redirectUri not implemented');
+    }
+
+    /**
+     * Test attribute "grantType"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyGrantType(): void
+    {
+        $this->markTestSkipped('Test for property grantType not implemented');
     }
 }

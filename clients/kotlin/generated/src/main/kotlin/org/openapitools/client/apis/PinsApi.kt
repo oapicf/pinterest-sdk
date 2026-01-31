@@ -24,7 +24,6 @@ import org.openapitools.client.models.Pin
 import org.openapitools.client.models.PinAnalyticsMetricsResponse
 import org.openapitools.client.models.PinCreate
 import org.openapitools.client.models.PinUpdate
-import org.openapitools.client.models.PinsAnalyticsMetricTypesParameterInner
 import org.openapitools.client.models.PinsList200Response
 import org.openapitools.client.models.PinsSaveRequest
 
@@ -44,13 +43,43 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
+open class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
             System.getProperties().getProperty(ApiClient.baseUrlKey, "https://api.pinterest.com/v5")
         }
     }
+
+    /**
+     * enum for parameter metricTypes
+     */
+     enum class MetricTypesMultiPinsAnalytics(val value: kotlin.String) {
+         @Json(name = "IMPRESSION") IMPRESSION("IMPRESSION"),
+         @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
+         @Json(name = "PIN_CLICK") PIN_CLICK("PIN_CLICK"),
+         @Json(name = "SAVE") SAVE("SAVE"),
+         @Json(name = "SAVE_RATE") SAVE_RATE("SAVE_RATE"),
+         @Json(name = "TOTAL_COMMENTS") TOTAL_COMMENTS("TOTAL_COMMENTS"),
+         @Json(name = "TOTAL_REACTIONS") TOTAL_REACTIONS("TOTAL_REACTIONS"),
+         @Json(name = "USER_FOLLOW") USER_FOLLOW("USER_FOLLOW"),
+         @Json(name = "PROFILE_VISIT") PROFILE_VISIT("PROFILE_VISIT"),
+         @Json(name = "VIDEO_MRC_VIEW") VIDEO_MRC_VIEW("VIDEO_MRC_VIEW"),
+         @Json(name = "VIDEO_10S_VIEW") VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
+         @Json(name = "QUARTILE_95_PERCENT_VIEW") QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
+         @Json(name = "VIDEO_V50_WATCH_TIME") VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
+         @Json(name = "VIDEO_START") VIDEO_START("VIDEO_START"),
+         @Json(name = "VIDEO_AVG_WATCH_TIME") VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
+     }
 
     /**
      * enum for parameter appTypes
@@ -79,7 +108,7 @@ class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = 
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param metricTypes Pin metric types to get data for.
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>
      * @throws IllegalStateException If the request is not correctly configured
@@ -90,7 +119,7 @@ class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun multiPinsAnalytics(pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>, appTypes: AppTypesMultiPinsAnalytics? = AppTypesMultiPinsAnalytics.ALL, adAccountId: kotlin.String? = null) : kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>> {
+    fun multiPinsAnalytics(pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MetricTypesMultiPinsAnalytics>, appTypes: AppTypesMultiPinsAnalytics? = AppTypesMultiPinsAnalytics.ALL, adAccountId: kotlin.String? = null) : kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>> {
         val localVarResponse = multiPinsAnalyticsWithHttpInfo(pinIds = pinIds, startDate = startDate, endDate = endDate, metricTypes = metricTypes, appTypes = appTypes, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
@@ -116,7 +145,7 @@ class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = 
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param metricTypes Pin metric types to get data for.
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -124,7 +153,7 @@ class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun multiPinsAnalyticsWithHttpInfo(pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>, appTypes: AppTypesMultiPinsAnalytics?, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>?> {
+    fun multiPinsAnalyticsWithHttpInfo(pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MetricTypesMultiPinsAnalytics>, appTypes: AppTypesMultiPinsAnalytics?, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>?> {
         val localVariableConfig = multiPinsAnalyticsRequestConfig(pinIds = pinIds, startDate = startDate, endDate = endDate, metricTypes = metricTypes, appTypes = appTypes, adAccountId = adAccountId)
 
         return request<Unit, kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>>(
@@ -139,11 +168,11 @@ class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = 
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param metricTypes Pin metric types to get data for.
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun multiPinsAnalyticsRequestConfig(pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>, appTypes: AppTypesMultiPinsAnalytics?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun multiPinsAnalyticsRequestConfig(pinIds: kotlin.collections.List<kotlin.String>, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MetricTypesMultiPinsAnalytics>, appTypes: AppTypesMultiPinsAnalytics?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
@@ -170,6 +199,36 @@ class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = 
             body = localVariableBody
         )
     }
+
+    /**
+     * enum for parameter metricTypes
+     */
+     enum class MetricTypesPinsAnalytics(val value: kotlin.String) {
+         @Json(name = "IMPRESSION") IMPRESSION("IMPRESSION"),
+         @Json(name = "OUTBOUND_CLICK") OUTBOUND_CLICK("OUTBOUND_CLICK"),
+         @Json(name = "PIN_CLICK") PIN_CLICK("PIN_CLICK"),
+         @Json(name = "SAVE") SAVE("SAVE"),
+         @Json(name = "SAVE_RATE") SAVE_RATE("SAVE_RATE"),
+         @Json(name = "TOTAL_COMMENTS") TOTAL_COMMENTS("TOTAL_COMMENTS"),
+         @Json(name = "TOTAL_REACTIONS") TOTAL_REACTIONS("TOTAL_REACTIONS"),
+         @Json(name = "USER_FOLLOW") USER_FOLLOW("USER_FOLLOW"),
+         @Json(name = "PROFILE_VISIT") PROFILE_VISIT("PROFILE_VISIT"),
+         @Json(name = "VIDEO_MRC_VIEW") VIDEO_MRC_VIEW("VIDEO_MRC_VIEW"),
+         @Json(name = "VIDEO_10S_VIEW") VIDEO_10S_VIEW("VIDEO_10S_VIEW"),
+         @Json(name = "QUARTILE_95_PERCENT_VIEW") QUARTILE_95_PERCENT_VIEW("QUARTILE_95_PERCENT_VIEW"),
+         @Json(name = "VIDEO_V50_WATCH_TIME") VIDEO_V50_WATCH_TIME("VIDEO_V50_WATCH_TIME"),
+         @Json(name = "VIDEO_START") VIDEO_START("VIDEO_START"),
+         @Json(name = "VIDEO_AVG_WATCH_TIME") VIDEO_AVG_WATCH_TIME("VIDEO_AVG_WATCH_TIME");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
+     }
 
     /**
      * enum for parameter appTypes
@@ -215,8 +274,8 @@ class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = 
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
-     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to NO_SPLIT)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
+     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to SplitField.NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>
      * @throws IllegalStateException If the request is not correctly configured
@@ -227,7 +286,7 @@ class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun pinsAnalytics(pinId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>, appTypes: AppTypesPinsAnalytics? = AppTypesPinsAnalytics.ALL, splitField: SplitFieldPinsAnalytics? = SplitFieldPinsAnalytics.NO_SPLIT, adAccountId: kotlin.String? = null) : kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse> {
+    fun pinsAnalytics(pinId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MetricTypesPinsAnalytics>, appTypes: AppTypesPinsAnalytics? = AppTypesPinsAnalytics.ALL, splitField: SplitFieldPinsAnalytics? = SplitFieldPinsAnalytics.NO_SPLIT, adAccountId: kotlin.String? = null) : kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse> {
         val localVarResponse = pinsAnalyticsWithHttpInfo(pinId = pinId, startDate = startDate, endDate = endDate, metricTypes = metricTypes, appTypes = appTypes, splitField = splitField, adAccountId = adAccountId)
 
         return when (localVarResponse.responseType) {
@@ -253,8 +312,8 @@ class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = 
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
-     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to NO_SPLIT)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
+     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to SplitField.NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return ApiResponse<kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -262,7 +321,7 @@ class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = 
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun pinsAnalyticsWithHttpInfo(pinId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>, appTypes: AppTypesPinsAnalytics?, splitField: SplitFieldPinsAnalytics?, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>?> {
+    fun pinsAnalyticsWithHttpInfo(pinId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MetricTypesPinsAnalytics>, appTypes: AppTypesPinsAnalytics?, splitField: SplitFieldPinsAnalytics?, adAccountId: kotlin.String?) : ApiResponse<kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>?> {
         val localVariableConfig = pinsAnalyticsRequestConfig(pinId = pinId, startDate = startDate, endDate = endDate, metricTypes = metricTypes, appTypes = appTypes, splitField = splitField, adAccountId = adAccountId)
 
         return request<Unit, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>(
@@ -277,12 +336,12 @@ class PinsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = 
      * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
      * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
      * @param metricTypes Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
-     * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
-     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to NO_SPLIT)
+     * @param appTypes Apps or devices to get data for, default is all. (optional, default to AppTypes.ALL)
+     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to SplitField.NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      * @return RequestConfig
      */
-    fun pinsAnalyticsRequestConfig(pinId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>, appTypes: AppTypesPinsAnalytics?, splitField: SplitFieldPinsAnalytics?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
+    fun pinsAnalyticsRequestConfig(pinId: kotlin.String, startDate: java.time.LocalDate, endDate: java.time.LocalDate, metricTypes: kotlin.collections.List<MetricTypesPinsAnalytics>, appTypes: AppTypesPinsAnalytics?, splitField: SplitFieldPinsAnalytics?, adAccountId: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {

@@ -140,9 +140,9 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .feed(business_asset_members/getPATHFeeder)
         .exec(http("businessAssetMembersGet")
         .httpRequest("GET","/businesses/${business_id}/assets/${asset_id}/members")
-        .queryParam("start_index","${start_index}")
-        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("start_index","${start_index}")
 )
 
     // Run scnbusinessAssetMembersGet with warm up and reach a constant rate for entire duration
@@ -159,8 +159,8 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .exec(http("businessAssetPartnersGet")
         .httpRequest("GET","/businesses/${business_id}/assets/${asset_id}/partners")
         .queryParam("start_index","${start_index}")
-        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("page_size","${page_size}")
 )
 
     // Run scnbusinessAssetPartnersGet with warm up and reach a constant rate for entire duration
@@ -177,12 +177,12 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .exec(http("businessAssetsGet")
         .httpRequest("GET","/businesses/${business_id}/assets")
         .queryParam("start_index","${start_index}")
-        .queryParam("page_size","${page_size}")
-        .queryParam("child_asset_id","${child_asset_id}")
-        .queryParam("asset_type","${asset_type}")
-        .queryParam("asset_group_id","${asset_group_id}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("page_size","${page_size}")
         .queryParam("permissions","${permissions}")
+        .queryParam("child_asset_id","${child_asset_id}")
+        .queryParam("asset_group_id","${asset_group_id}")
+        .queryParam("asset_type","${asset_type}")
 )
 
     // Run scnbusinessAssetsGet with warm up and reach a constant rate for entire duration
@@ -199,9 +199,9 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .exec(http("businessMemberAssetsGet")
         .httpRequest("GET","/businesses/${business_id}/members/${member_id}/assets")
         .queryParam("start_index","${start_index}")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
         .queryParam("asset_type","${asset_type}")
-        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnbusinessMemberAssetsGet with warm up and reach a constant rate for entire duration
@@ -247,9 +247,9 @@ class BusinessAccessAssetsApiSimulation extends Simulation {
         .httpRequest("GET","/businesses/${business_id}/partners/${partner_id}/assets")
         .queryParam("start_index","${start_index}")
         .queryParam("page_size","${page_size}")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("partner_type","${partner_type}")
         .queryParam("asset_type","${asset_type}")
-        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnbusinessPartnerAssetAccessGet with warm up and reach a constant rate for entire duration

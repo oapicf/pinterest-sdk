@@ -5,13 +5,13 @@
 -export_type([openapi_lead_form_create_request/0]).
 
 -type openapi_lead_form_create_request() ::
-    #{ 'name' := binary(),
-       'privacy_policy_link' := binary(),
-       'has_accepted_terms' := boolean(),
-       'completion_message' := binary(),
+    #{ 'name' => binary(),
+       'privacy_policy_link' => binary(),
+       'has_accepted_terms' => boolean(),
+       'completion_message' => binary(),
        'status' => openapi_lead_form_status:openapi_lead_form_status(),
        'disclosure_language' => binary(),
-       'questions' := list(),
+       'questions' => list(),
        'policy_links' => list()
      }.
 

@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ItemGroupIdFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemGroupIdFilter {
   public static final String SERIALIZED_NAME_I_T_E_M_G_R_O_U_P_I_D = "ITEM_GROUP_ID";
   @SerializedName(SERIALIZED_NAME_I_T_E_M_G_R_O_U_P_I_D)
@@ -122,12 +122,10 @@ public class ItemGroupIdFilter {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ITEM_GROUP_ID");
+    openapiFields = new HashSet<String>(Arrays.asList("ITEM_GROUP_ID"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("ITEM_GROUP_ID");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("ITEM_GROUP_ID"));
   }
 
   /**
@@ -139,7 +137,7 @@ public class ItemGroupIdFilter {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ItemGroupIdFilter.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ItemGroupIdFilter is not found in the empty JSON string", ItemGroupIdFilter.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ItemGroupIdFilter is not found in the empty JSON string", ItemGroupIdFilter.openapiRequiredFields.toString()));
         }
       }
 
@@ -147,14 +145,14 @@ public class ItemGroupIdFilter {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ItemGroupIdFilter.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ItemGroupIdFilter` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ItemGroupIdFilter` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ItemGroupIdFilter.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

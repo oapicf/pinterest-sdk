@@ -21,8 +21,8 @@
 
 #include <QJsonObject>
 
-#include "OAIAudienceCreateRequest_1_audience_type.h"
 #include "OAIAudienceRule.h"
+#include "OAIAudienceType.h"
 #include <QString>
 
 #include "OAIEnum.h"
@@ -61,8 +61,8 @@ public:
     bool is_description_Set() const;
     bool is_description_Valid() const;
 
-    OAIAudienceCreateRequest_1_audience_type getAudienceType() const;
-    void setAudienceType(const OAIAudienceCreateRequest_1_audience_type &audience_type);
+    OAIAudienceType getAudienceType() const;
+    void setAudienceType(const OAIAudienceType &audience_type);
     bool is_audience_type_Set() const;
     bool is_audience_type_Valid() const;
 
@@ -88,7 +88,7 @@ private:
     bool m_description_isSet;
     bool m_description_isValid;
 
-    OAIAudienceCreateRequest_1_audience_type audience_type;
+    OAIAudienceType audience_type;
     bool m_audience_type_isSet;
     bool m_audience_type_isValid;
 };

@@ -1,7 +1,7 @@
 /*
  * InviteBusinessRoleBinding.h
  *
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+ * 
  */
 
 #ifndef _InviteBusinessRoleBinding_H_
@@ -10,7 +10,6 @@
 
 #include <string>
 #include "BaseInviteDataResponse_invite_data.h"
-#include "BusinessAccessUserSummary.h"
 #include "Object.h"
 
 /** \defgroup Models Data Structures for API
@@ -22,7 +21,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+/*! \brief 
  *
  *  \ingroup Models
  *
@@ -47,27 +46,6 @@ public:
 	 */
 	void fromJson(char* jsonStr);
 
-	/*! \brief Get Unique identifier for the business that created the invite/request.
-	 */
-	std::string getCreatedByBusinessId();
-
-	/*! \brief Set Unique identifier for the business that created the invite/request.
-	 */
-	void setCreatedByBusinessId(std::string  created_by_business_id);
-	/*! \brief Get Unique identifier for the user that created the invite/request.
-	 */
-	std::string getCreatedByUserId();
-
-	/*! \brief Set Unique identifier for the user that created the invite/request.
-	 */
-	void setCreatedByUserId(std::string  created_by_user_id);
-	/*! \brief Get Metadata for the user that updated the invite/request.
-	 */
-	BusinessAccessUserSummary getUser();
-
-	/*! \brief Set Metadata for the user that updated the invite/request.
-	 */
-	void setUser(BusinessAccessUserSummary  user);
 	/*! \brief Get Unique identifier of the invite/request.
 	 */
 	std::string getId();
@@ -89,14 +67,35 @@ public:
 	/*! \brief Set Indicates whether the invite/request was received.
 	 */
 	void setIsReceivedInvite(bool  is_received_invite);
+	/*! \brief Get Metadata for the user that updated the invite/request.
+	 */
+	std::string getUser();
+
+	/*! \brief Set Metadata for the user that updated the invite/request.
+	 */
+	void setUser(std::string  user);
+	/*! \brief Get Unique identifier for the business that created the invite/request.
+	 */
+	std::string getCreatedByBusinessId();
+
+	/*! \brief Set Unique identifier for the business that created the invite/request.
+	 */
+	void setCreatedByBusinessId(std::string  created_by_business_id);
+	/*! \brief Get Unique identifier for the user that created the invite/request.
+	 */
+	std::string getCreatedByUserId();
+
+	/*! \brief Set Unique identifier for the user that created the invite/request.
+	 */
+	void setCreatedByUserId(std::string  created_by_user_id);
 
 private:
-	std::string created_by_business_id;
-	std::string created_by_user_id;
-	BusinessAccessUserSummary user;
 	std::string id;
 	BaseInviteDataResponse_invite_data invite_data;
 	bool is_received_invite;
+	std::string user;
+	std::string created_by_business_id;
+	std::string created_by_user_id;
 	void __init();
 	void __cleanup();
 

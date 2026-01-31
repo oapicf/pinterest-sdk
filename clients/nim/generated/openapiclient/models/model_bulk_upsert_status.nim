@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type BulkUpsertStatus* = object
-  ## 
+type BulkUpsertStatus* {.pure.} = enum
+  RUNNING
+  SUCCEEDED
+  FAILED
+
+func `%`*(v: BulkUpsertStatus): JsonNode =
+  result = case v:
+    of BulkUpsertStatus.RUNNING: %"RUNNING"
+    of BulkUpsertStatus.SUCCEEDED: %"SUCCEEDED"
+    of BulkUpsertStatus.FAILED: %"FAILED"
+
+func `$`*(v: BulkUpsertStatus): string =
+  result = case v:
+    of BulkUpsertStatus.RUNNING: $("RUNNING")
+    of BulkUpsertStatus.SUCCEEDED: $("SUCCEEDED")
+    of BulkUpsertStatus.FAILED: $("FAILED")
+
+proc to*(node: JsonNode, T: typedesc[BulkUpsertStatus]): BulkUpsertStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum BulkUpsertStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RUNNING"):
+    return BulkUpsertStatus.RUNNING
+  of $("SUCCEEDED"):
+    return BulkUpsertStatus.SUCCEEDED
+  of $("FAILED"):
+    return BulkUpsertStatus.FAILED
+  else:
+    raise newException(ValueError, "Invalid enum value for BulkUpsertStatus: " & strVal)
+

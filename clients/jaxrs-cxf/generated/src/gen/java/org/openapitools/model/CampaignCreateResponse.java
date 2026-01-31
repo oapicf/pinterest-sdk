@@ -15,7 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CampaignCreateResponse  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid CampaignCreateResponseItem> items = new ArrayList<>();
  /**
    * Get items

@@ -12,25 +12,16 @@
 
 import { HttpFile } from '../http/http';
 
-/**
-* A request to exchange an authorization code for an access token.
-*/
 export class OauthAccessTokenRequestCode {
-    'grantType': OauthAccessTokenRequestCodeGrantTypeEnum;
     'code': string;
     'redirectUri': string;
+    'grantType': OauthAccessTokenRequestCodeGrantTypeEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "grantType",
-            "baseName": "grant_type",
-            "type": "OauthAccessTokenRequestCodeGrantTypeEnum",
-            "format": ""
-        },
         {
             "name": "code",
             "baseName": "code",
@@ -41,6 +32,12 @@ export class OauthAccessTokenRequestCode {
             "name": "redirectUri",
             "baseName": "redirect_uri",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "grantType",
+            "baseName": "grant_type",
+            "type": "OauthAccessTokenRequestCodeGrantTypeEnum",
             "format": ""
         }    ];
 

@@ -9,17 +9,46 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_product_group_product_counts
 import model_catalogs_hotel_product_group_product_counts
 import model_catalogs_retail_product_group_product_counts
 import model_catalogs_type
 
+# OneOf type
+type CatalogsProductGroupProductCountsVerticalKind* {.pure.} = enum
+  CatalogsRetailProductGroupProductCountsVariant
+  CatalogsHotelProductGroupProductCountsVariant
+  CatalogsCreativeAssetsProductGroupProductCountsVariant
+
 type CatalogsProductGroupProductCountsVertical* = object
   ## Product counts for a CatalogsProductGroup
-  catalogType*: CatalogsType
-  inStock*: float
-  outOfStock*: float
-  preorder*: float
-  total*: float
-  videos*: float
+  case kind*: CatalogsProductGroupProductCountsVerticalKind
+  of CatalogsProductGroupProductCountsVerticalKind.CatalogsRetailProductGroupProductCountsVariant:
+    CatalogsRetailProductGroupProductCountsValue*: CatalogsRetailProductGroupProductCounts
+  of CatalogsProductGroupProductCountsVerticalKind.CatalogsHotelProductGroupProductCountsVariant:
+    CatalogsHotelProductGroupProductCountsValue*: CatalogsHotelProductGroupProductCounts
+  of CatalogsProductGroupProductCountsVerticalKind.CatalogsCreativeAssetsProductGroupProductCountsVariant:
+    CatalogsCreativeAssetsProductGroupProductCountsValue*: CatalogsCreativeAssetsProductGroupProductCounts
+
+proc to*(node: JsonNode, T: typedesc[CatalogsProductGroupProductCountsVertical]): CatalogsProductGroupProductCountsVertical =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsProductGroupProductCountsVertical(kind: CatalogsProductGroupProductCountsVerticalKind.CatalogsRetailProductGroupProductCountsVariant, CatalogsRetailProductGroupProductCountsValue: to(node, CatalogsRetailProductGroupProductCounts))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailProductGroupProductCounts: ", e.msg
+  try:
+    return CatalogsProductGroupProductCountsVertical(kind: CatalogsProductGroupProductCountsVerticalKind.CatalogsHotelProductGroupProductCountsVariant, CatalogsHotelProductGroupProductCountsValue: to(node, CatalogsHotelProductGroupProductCounts))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelProductGroupProductCounts: ", e.msg
+  try:
+    return CatalogsProductGroupProductCountsVertical(kind: CatalogsProductGroupProductCountsVerticalKind.CatalogsCreativeAssetsProductGroupProductCountsVariant, CatalogsCreativeAssetsProductGroupProductCountsValue: to(node, CatalogsCreativeAssetsProductGroupProductCounts))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsProductGroupProductCounts: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsProductGroupProductCountsVertical. JSON: " & $node)
+

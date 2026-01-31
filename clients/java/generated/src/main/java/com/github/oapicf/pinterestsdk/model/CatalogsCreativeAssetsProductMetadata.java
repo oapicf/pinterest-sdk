@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Creative assets product metadata entity
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsProductMetadata {
   public static final String SERIALIZED_NAME_CREATIVE_ASSETS_ID = "creative_assets_id";
   @SerializedName(SERIALIZED_NAME_CREATIVE_ASSETS_ID)
@@ -148,14 +148,10 @@ public class CatalogsCreativeAssetsProductMetadata {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("creative_assets_id");
-    openapiFields.add("visibility");
+    openapiFields = new HashSet<String>(Arrays.asList("creative_assets_id", "visibility"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("creative_assets_id");
-    openapiRequiredFields.add("visibility");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("creative_assets_id", "visibility"));
   }
 
   /**
@@ -167,7 +163,7 @@ public class CatalogsCreativeAssetsProductMetadata {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsCreativeAssetsProductMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsCreativeAssetsProductMetadata is not found in the empty JSON string", CatalogsCreativeAssetsProductMetadata.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsCreativeAssetsProductMetadata is not found in the empty JSON string", CatalogsCreativeAssetsProductMetadata.openapiRequiredFields.toString()));
         }
       }
 
@@ -175,19 +171,19 @@ public class CatalogsCreativeAssetsProductMetadata {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsCreativeAssetsProductMetadata.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsCreativeAssetsProductMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsCreativeAssetsProductMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CatalogsCreativeAssetsProductMetadata.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("creative_assets_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `creative_assets_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creative_assets_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `creative_assets_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creative_assets_id").toString()));
       }
       // validate the required field `visibility`
       CreativeAssetsVisibilityType.validateJsonElement(jsonObj.get("visibility"));

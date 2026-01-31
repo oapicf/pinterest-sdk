@@ -43,10 +43,16 @@ class ItemResponseTest : ShouldSpec() {
             //modelInstance.itemId shouldBe ("TODO")
         }
 
-        // to test the property `errors` - Array with the errors for the item id requested
-        should("test errors") {
+        // to test the property `pins` - The pins mapped to the item
+        should("test pins") {
             // uncomment below to test the property
-            //modelInstance.errors shouldBe ("TODO")
+            //modelInstance.pins shouldBe ("TODO")
+        }
+
+        // to test the property `attributes`
+        should("test attributes") {
+            // uncomment below to test the property
+            //modelInstance.attributes shouldBe ("TODO")
         }
 
         // to test the property `hotelId` - The catalog hotel id in the merchant namespace
@@ -59,6 +65,12 @@ class ItemResponseTest : ShouldSpec() {
         should("test creativeAssetsId") {
             // uncomment below to test the property
             //modelInstance.creativeAssetsId shouldBe ("TODO")
+        }
+
+        // to test the property `errors` - Array with the errors for the item id requested
+        should("test errors") {
+            // uncomment below to test the property
+            //modelInstance.errors shouldBe ("TODO")
         }
 
     }

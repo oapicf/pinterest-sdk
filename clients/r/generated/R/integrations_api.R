@@ -194,6 +194,9 @@ IntegrationsApi <- R6::R6Class(
         stop("Missing required parameter `external_business_id`.")
       }
 
+      if (!missing(`external_business_id`) && is.null(`external_business_id`)) {
+        stop("Invalid value for `external_business_id` when calling IntegrationsApi$IntegrationsCommerceDel, `external_business_id` is not nullable")
+      }
 
       local_var_url_path <- "/integrations/commerce/{external_business_id}"
       if (!missing(`external_business_id`)) {
@@ -284,6 +287,9 @@ IntegrationsApi <- R6::R6Class(
         stop("Missing required parameter `external_business_id`.")
       }
 
+      if (!missing(`external_business_id`) && is.null(`external_business_id`)) {
+        stop("Invalid value for `external_business_id` when calling IntegrationsApi$IntegrationsCommerceGet, `external_business_id` is not nullable")
+      }
 
       local_var_url_path <- "/integrations/commerce/{external_business_id}"
       if (!missing(`external_business_id`)) {
@@ -387,7 +393,13 @@ IntegrationsApi <- R6::R6Class(
         stop("Missing required parameter `external_business_id`.")
       }
 
+      if (!missing(`external_business_id`) && is.null(`external_business_id`)) {
+        stop("Invalid value for `external_business_id` when calling IntegrationsApi$IntegrationsCommercePatch, `external_business_id` is not nullable")
+      }
 
+      if (!missing(`integration_request_patch`) && is.null(`integration_request_patch`)) {
+        stop("Invalid value for `integration_request_patch` when calling IntegrationsApi$IntegrationsCommercePatch, `integration_request_patch` is not nullable")
+      }
 
       if (!is.null(`integration_request_patch`)) {
         local_var_body <- `integration_request_patch`$toJSONString()
@@ -491,6 +503,9 @@ IntegrationsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`integration_request`) && is.null(`integration_request`)) {
+        stop("Invalid value for `integration_request` when calling IntegrationsApi$IntegrationsCommercePost, `integration_request` is not nullable")
+      }
 
       if (!is.null(`integration_request`)) {
         local_var_body <- `integration_request`$toJSONString()
@@ -594,6 +609,9 @@ IntegrationsApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling IntegrationsApi$IntegrationsGetById, `id` is not nullable")
+      }
 
       local_var_url_path <- "/integrations/{id}"
       if (!missing(`id`)) {
@@ -693,11 +711,17 @@ IntegrationsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling IntegrationsApi$IntegrationsGetList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling IntegrationsApi$IntegrationsGetList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling IntegrationsApi$IntegrationsGetList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling IntegrationsApi$IntegrationsGetList, must be bigger than or equal to 1.")
       }
 
@@ -801,6 +825,9 @@ IntegrationsApi <- R6::R6Class(
         stop("Missing required parameter `integration_logs_request`.")
       }
 
+      if (!missing(`integration_logs_request`) && is.null(`integration_logs_request`)) {
+        stop("Invalid value for `integration_logs_request` when calling IntegrationsApi$IntegrationsLogsPost, `integration_logs_request` is not nullable")
+      }
 
       if (!is.null(`integration_logs_request`)) {
         local_var_body <- `integration_logs_request`$toJSONString()

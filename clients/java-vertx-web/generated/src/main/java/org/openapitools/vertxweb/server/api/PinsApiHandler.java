@@ -6,7 +6,6 @@ import org.openapitools.vertxweb.server.model.Pin;
 import org.openapitools.vertxweb.server.model.PinAnalyticsMetricsResponse;
 import org.openapitools.vertxweb.server.model.PinCreate;
 import org.openapitools.vertxweb.server.model.PinUpdate;
-import org.openapitools.vertxweb.server.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.vertxweb.server.model.PinsList200Response;
 import org.openapitools.vertxweb.server.model.PinsSaveRequest;
 
@@ -59,7 +58,7 @@ public class PinsApiHandler {
         List<String> pinIds = requestParameters.queryParameter("pin_ids") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("pin_ids").get(), new TypeReference<List<String>>(){}) : null;
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<PinsAnalyticsMetricTypesParameterInner>>(){}) : null;
+        List<String> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<String>>(){}) : null;
         String appTypes = requestParameters.queryParameter("app_types") != null ? requestParameters.queryParameter("app_types").getString() : "ALL";
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;
 
@@ -91,7 +90,7 @@ public class PinsApiHandler {
         String pinId = requestParameters.pathParameter("pin_id") != null ? requestParameters.pathParameter("pin_id").getString() : null;
         LocalDate startDate = requestParameters.queryParameter("start_date") != null ? requestParameters.queryParameter("start_date").getLocalDate() : null;
         LocalDate endDate = requestParameters.queryParameter("end_date") != null ? requestParameters.queryParameter("end_date").getLocalDate() : null;
-        List<PinsAnalyticsMetricTypesParameterInner> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<PinsAnalyticsMetricTypesParameterInner>>(){}) : null;
+        List<String> metricTypes = requestParameters.queryParameter("metric_types") != null ? DatabindCodec.mapper().convertValue(requestParameters.queryParameter("metric_types").get(), new TypeReference<List<String>>(){}) : null;
         String appTypes = requestParameters.queryParameter("app_types") != null ? requestParameters.queryParameter("app_types").getString() : "ALL";
         String splitField = requestParameters.queryParameter("split_field") != null ? requestParameters.queryParameter("split_field").getString() : "NO_SPLIT";
         String adAccountId = requestParameters.queryParameter("ad_account_id") != null ? requestParameters.queryParameter("ad_account_id").getString() : null;

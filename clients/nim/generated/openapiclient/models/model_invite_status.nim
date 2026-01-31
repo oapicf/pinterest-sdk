@@ -9,7 +9,48 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type InviteStatus* = object
-  ## The current status of the invite.
+type InviteStatus* {.pure.} = enum
+  PENDING
+  ACCEPTED
+  DECLINED
+  CANCELLED
+  EXPIRED
+
+func `%`*(v: InviteStatus): JsonNode =
+  result = case v:
+    of InviteStatus.PENDING: %"PENDING"
+    of InviteStatus.ACCEPTED: %"ACCEPTED"
+    of InviteStatus.DECLINED: %"DECLINED"
+    of InviteStatus.CANCELLED: %"CANCELLED"
+    of InviteStatus.EXPIRED: %"EXPIRED"
+
+func `$`*(v: InviteStatus): string =
+  result = case v:
+    of InviteStatus.PENDING: $("PENDING")
+    of InviteStatus.ACCEPTED: $("ACCEPTED")
+    of InviteStatus.DECLINED: $("DECLINED")
+    of InviteStatus.CANCELLED: $("CANCELLED")
+    of InviteStatus.EXPIRED: $("EXPIRED")
+
+proc to*(node: JsonNode, T: typedesc[InviteStatus]): InviteStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum InviteStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("PENDING"):
+    return InviteStatus.PENDING
+  of $("ACCEPTED"):
+    return InviteStatus.ACCEPTED
+  of $("DECLINED"):
+    return InviteStatus.DECLINED
+  of $("CANCELLED"):
+    return InviteStatus.CANCELLED
+  of $("EXPIRED"):
+    return InviteStatus.EXPIRED
+  else:
+    raise newException(ValueError, "Invalid enum value for InviteStatus: " & strVal)
+

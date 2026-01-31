@@ -118,10 +118,10 @@ pub enum UpdatePartnerAssetAccessHandlerImplError {
 /// Create a new asset group with the specified parameters. - An <a href=\"https://help.pinterest.com/en/business/article/asset-groups\">asset group</a> is a custom group of assets based on how you’d like to manage your accounts.
 pub async fn asset_group_slash_create(configuration: &configuration::Configuration, business_id: &str, create_asset_group_body: models::CreateAssetGroupBody) -> Result<models::CreateAssetGroupResponse, Error<AssetGroupSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_create_asset_group_body = create_asset_group_body;
+    let p_path_business_id = business_id;
+    let p_body_create_asset_group_body = create_asset_group_body;
 
-    let uri_str = format!("{}/businesses/{business_id}/asset_groups", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/asset_groups", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -130,7 +130,7 @@ pub async fn asset_group_slash_create(configuration: &configuration::Configurati
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_create_asset_group_body);
+    req_builder = req_builder.json(&p_body_create_asset_group_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -160,10 +160,10 @@ pub async fn asset_group_slash_create(configuration: &configuration::Configurati
 /// Delete a batch of asset groups.
 pub async fn asset_group_slash_delete(configuration: &configuration::Configuration, business_id: &str, delete_asset_group_body: models::DeleteAssetGroupBody) -> Result<models::DeleteAssetGroupResponse, Error<AssetGroupSlashDeleteError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_delete_asset_group_body = delete_asset_group_body;
+    let p_path_business_id = business_id;
+    let p_body_delete_asset_group_body = delete_asset_group_body;
 
-    let uri_str = format!("{}/businesses/{business_id}/asset_groups", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/asset_groups", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -172,7 +172,7 @@ pub async fn asset_group_slash_delete(configuration: &configuration::Configurati
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_delete_asset_group_body);
+    req_builder = req_builder.json(&p_body_delete_asset_group_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -202,10 +202,10 @@ pub async fn asset_group_slash_delete(configuration: &configuration::Configurati
 /// Update a batch of asset groups with the specified parameters.
 pub async fn asset_group_slash_update(configuration: &configuration::Configuration, business_id: &str, update_asset_group_body: models::UpdateAssetGroupBody) -> Result<models::UpdateAssetGroupResponse, Error<AssetGroupSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_update_asset_group_body = update_asset_group_body;
+    let p_path_business_id = business_id;
+    let p_body_update_asset_group_body = update_asset_group_body;
 
-    let uri_str = format!("{}/businesses/{business_id}/asset_groups", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/asset_groups", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -214,7 +214,7 @@ pub async fn asset_group_slash_update(configuration: &configuration::Configurati
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_update_asset_group_body);
+    req_builder = req_builder.json(&p_body_update_asset_group_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -244,22 +244,22 @@ pub async fn asset_group_slash_update(configuration: &configuration::Configurati
 /// Get all the members the requesting business has granted access to on the given asset.
 pub async fn business_asset_members_slash_get(configuration: &configuration::Configuration, business_id: &str, asset_id: &str, bookmark: Option<&str>, page_size: Option<i32>, start_index: Option<i32>) -> Result<models::BusinessAssetMembersGet200Response, Error<BusinessAssetMembersSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_asset_id = asset_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_start_index = start_index;
+    let p_path_business_id = business_id;
+    let p_path_asset_id = asset_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_start_index = start_index;
 
-    let uri_str = format!("{}/businesses/{business_id}/assets/{asset_id}/members", configuration.base_path, business_id=crate::apis::urlencode(p_business_id), asset_id=crate::apis::urlencode(p_asset_id));
+    let uri_str = format!("{}/businesses/{business_id}/assets/{asset_id}/members", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id), asset_id=crate::apis::urlencode(p_path_asset_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_start_index {
+    if let Some(ref param_value) = p_query_start_index {
         req_builder = req_builder.query(&[("start_index", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -297,22 +297,22 @@ pub async fn business_asset_members_slash_get(configuration: &configuration::Con
 /// Get all the partners the requesting business has granted access to on the given asset. Note: If the asset has been shared with you, an empty array will be returned. This is because an asset shared with you cannot be shared with a different partner.
 pub async fn business_asset_partners_slash_get(configuration: &configuration::Configuration, business_id: &str, asset_id: &str, start_index: Option<i32>, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::BusinessAssetPartnersGet200Response, Error<BusinessAssetPartnersSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_asset_id = asset_id;
-    let p_start_index = start_index;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
+    let p_path_business_id = business_id;
+    let p_path_asset_id = asset_id;
+    let p_query_start_index = start_index;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
 
-    let uri_str = format!("{}/businesses/{business_id}/assets/{asset_id}/partners", configuration.base_path, business_id=crate::apis::urlencode(p_business_id), asset_id=crate::apis::urlencode(p_asset_id));
+    let uri_str = format!("{}/businesses/{business_id}/assets/{asset_id}/partners", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id), asset_id=crate::apis::urlencode(p_path_asset_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_start_index {
+    if let Some(ref param_value) = p_query_start_index {
         req_builder = req_builder.query(&[("start_index", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -350,40 +350,40 @@ pub async fn business_asset_partners_slash_get(configuration: &configuration::Co
 /// Get all the assets the requesting business has access to. This includes assets the business owns and assets the business has access to through partnerships.
 pub async fn business_assets_slash_get(configuration: &configuration::Configuration, business_id: &str, permissions: Option<Vec<models::PermissionsWithOwner>>, child_asset_id: Option<&str>, asset_group_id: Option<&str>, asset_type: Option<&str>, start_index: Option<i32>, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::BusinessAssetsGet200Response, Error<BusinessAssetsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_permissions = permissions;
-    let p_child_asset_id = child_asset_id;
-    let p_asset_group_id = asset_group_id;
-    let p_asset_type = asset_type;
-    let p_start_index = start_index;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
+    let p_path_business_id = business_id;
+    let p_query_permissions = permissions;
+    let p_query_child_asset_id = child_asset_id;
+    let p_query_asset_group_id = asset_group_id;
+    let p_query_asset_type = asset_type;
+    let p_query_start_index = start_index;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
 
-    let uri_str = format!("{}/businesses/{business_id}/assets", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/assets", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_permissions {
+    if let Some(ref param_value) = p_query_permissions {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("permissions".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("permissions", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_child_asset_id {
+    if let Some(ref param_value) = p_query_child_asset_id {
         req_builder = req_builder.query(&[("child_asset_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_asset_group_id {
+    if let Some(ref param_value) = p_query_asset_group_id {
         req_builder = req_builder.query(&[("asset_group_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_asset_type {
-        req_builder = req_builder.query(&[("asset_type", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_asset_type {
+        req_builder = req_builder.query(&[("asset_type", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_start_index {
+    if let Some(ref param_value) = p_query_start_index {
         req_builder = req_builder.query(&[("start_index", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -421,26 +421,26 @@ pub async fn business_assets_slash_get(configuration: &configuration::Configurat
 /// Get assets on which you assigned asset permissions to the given member. Can be used to: - get all assets, regardless of asset type or - get assets of one asset type by using the asset_type query. The return response will include the permissions the member has to that asset and the asset type.
 pub async fn business_member_assets_slash_get(configuration: &configuration::Configuration, business_id: &str, member_id: &str, asset_type: Option<&str>, start_index: Option<i32>, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::BusinessMemberAssetsGet200Response, Error<BusinessMemberAssetsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_member_id = member_id;
-    let p_asset_type = asset_type;
-    let p_start_index = start_index;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
+    let p_path_business_id = business_id;
+    let p_path_member_id = member_id;
+    let p_query_asset_type = asset_type;
+    let p_query_start_index = start_index;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
 
-    let uri_str = format!("{}/businesses/{business_id}/members/{member_id}/assets", configuration.base_path, business_id=crate::apis::urlencode(p_business_id), member_id=crate::apis::urlencode(p_member_id));
+    let uri_str = format!("{}/businesses/{business_id}/members/{member_id}/assets", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id), member_id=crate::apis::urlencode(p_path_member_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_asset_type {
-        req_builder = req_builder.query(&[("asset_type", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_asset_type {
+        req_builder = req_builder.query(&[("asset_type", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_start_index {
+    if let Some(ref param_value) = p_query_start_index {
         req_builder = req_builder.query(&[("start_index", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -478,10 +478,10 @@ pub async fn business_member_assets_slash_get(configuration: &configuration::Con
 /// Terminate multiple members' access to an asset.
 pub async fn business_members_asset_access_slash_delete(configuration: &configuration::Configuration, business_id: &str, business_members_asset_access_delete_request: models::BusinessMembersAssetAccessDeleteRequest) -> Result<models::DeleteMemberAccessResultsResponseArray, Error<BusinessMembersAssetAccessSlashDeleteError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_business_members_asset_access_delete_request = business_members_asset_access_delete_request;
+    let p_path_business_id = business_id;
+    let p_body_business_members_asset_access_delete_request = business_members_asset_access_delete_request;
 
-    let uri_str = format!("{}/businesses/{business_id}/members/assets/access", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/members/assets/access", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -490,7 +490,7 @@ pub async fn business_members_asset_access_slash_delete(configuration: &configur
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_business_members_asset_access_delete_request);
+    req_builder = req_builder.json(&p_body_business_members_asset_access_delete_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -520,10 +520,10 @@ pub async fn business_members_asset_access_slash_delete(configuration: &configur
 /// Grant multiple members access to assets and/or update multiple member's exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
 pub async fn business_members_asset_access_slash_update(configuration: &configuration::Configuration, business_id: &str, update_member_asset_access_body: models::UpdateMemberAssetAccessBody) -> Result<models::UpdateMemberAssetsResultsResponseArray, Error<BusinessMembersAssetAccessSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_update_member_asset_access_body = update_member_asset_access_body;
+    let p_path_business_id = business_id;
+    let p_body_update_member_asset_access_body = update_member_asset_access_body;
 
-    let uri_str = format!("{}/businesses/{business_id}/members/assets/access", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/members/assets/access", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -532,7 +532,7 @@ pub async fn business_members_asset_access_slash_update(configuration: &configur
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_update_member_asset_access_body);
+    req_builder = req_builder.json(&p_body_update_member_asset_access_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -562,30 +562,30 @@ pub async fn business_members_asset_access_slash_update(configuration: &configur
 /// Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type=INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type=EXTERNAL, you will retrieve the partner's business assets that the partner has granted you access to.
 pub async fn business_partner_asset_access_slash_get(configuration: &configuration::Configuration, business_id: &str, partner_id: &str, partner_type: Option<&str>, asset_type: Option<&str>, start_index: Option<i32>, page_size: Option<i32>, bookmark: Option<&str>) -> Result<models::BusinessPartnerAssetAccessGet200Response, Error<BusinessPartnerAssetAccessSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_partner_id = partner_id;
-    let p_partner_type = partner_type;
-    let p_asset_type = asset_type;
-    let p_start_index = start_index;
-    let p_page_size = page_size;
-    let p_bookmark = bookmark;
+    let p_path_business_id = business_id;
+    let p_path_partner_id = partner_id;
+    let p_query_partner_type = partner_type;
+    let p_query_asset_type = asset_type;
+    let p_query_start_index = start_index;
+    let p_query_page_size = page_size;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/businesses/{business_id}/partners/{partner_id}/assets", configuration.base_path, business_id=crate::apis::urlencode(p_business_id), partner_id=crate::apis::urlencode(p_partner_id));
+    let uri_str = format!("{}/businesses/{business_id}/partners/{partner_id}/assets", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id), partner_id=crate::apis::urlencode(p_path_partner_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_partner_type {
-        req_builder = req_builder.query(&[("partner_type", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_partner_type {
+        req_builder = req_builder.query(&[("partner_type", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_asset_type {
-        req_builder = req_builder.query(&[("asset_type", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_asset_type {
+        req_builder = req_builder.query(&[("asset_type", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_start_index {
+    if let Some(ref param_value) = p_query_start_index {
         req_builder = req_builder.query(&[("start_index", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -623,10 +623,10 @@ pub async fn business_partner_asset_access_slash_get(configuration: &configurati
 /// Terminate multiple partners' access to an asset. If - partner_type=INTERNAL: You will terminate a partner's asset access to your business assets. - partner_type=EXTERNAL: You will terminate your own access to your partner's business assets.
 pub async fn delete_partner_asset_access_handler_impl(configuration: &configuration::Configuration, business_id: &str, delete_partner_asset_access_body: models::DeletePartnerAssetAccessBody) -> Result<models::DeletePartnerAssetsResultsResponseArray, Error<DeletePartnerAssetAccessHandlerImplError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_delete_partner_asset_access_body = delete_partner_asset_access_body;
+    let p_path_business_id = business_id;
+    let p_body_delete_partner_asset_access_body = delete_partner_asset_access_body;
 
-    let uri_str = format!("{}/businesses/{business_id}/partners/assets", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/partners/assets", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -635,7 +635,7 @@ pub async fn delete_partner_asset_access_handler_impl(configuration: &configurat
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_delete_partner_asset_access_body);
+    req_builder = req_builder.json(&p_body_delete_partner_asset_access_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -665,10 +665,10 @@ pub async fn delete_partner_asset_access_handler_impl(configuration: &configurat
 /// Grant multiple partners access to assets and/or update multiple partner's exisiting permissions to an asset. If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them. To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
 pub async fn update_partner_asset_access_handler_impl(configuration: &configuration::Configuration, business_id: &str, update_partner_asset_access_body: models::UpdatePartnerAssetAccessBody) -> Result<models::UpdatePartnerAssetsResultsResponseArray, Error<UpdatePartnerAssetAccessHandlerImplError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_update_partner_asset_access_body = update_partner_asset_access_body;
+    let p_path_business_id = business_id;
+    let p_body_update_partner_asset_access_body = update_partner_asset_access_body;
 
-    let uri_str = format!("{}/businesses/{business_id}/partners/assets", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/partners/assets", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -677,7 +677,7 @@ pub async fn update_partner_asset_access_handler_impl(configuration: &configurat
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_update_partner_asset_access_body);
+    req_builder = req_builder.json(&p_body_update_partner_asset_access_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

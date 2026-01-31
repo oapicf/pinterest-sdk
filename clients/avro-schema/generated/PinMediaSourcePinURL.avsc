@@ -17,9 +17,9 @@
     },
     {
       "name": "is_affiliate_link",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.",
-      "default": null
+      "default": false
     }
   ]
 

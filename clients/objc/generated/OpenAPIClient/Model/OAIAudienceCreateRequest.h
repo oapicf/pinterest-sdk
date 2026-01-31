@@ -14,12 +14,12 @@
 */
 
 
-#import "OAIAudienceCreateRequest1AudienceType.h"
 #import "OAIAudienceRule.h"
-@protocol OAIAudienceCreateRequest1AudienceType;
-@class OAIAudienceCreateRequest1AudienceType;
+#import "OAIAudienceType.h"
 @protocol OAIAudienceRule;
 @class OAIAudienceRule;
+@protocol OAIAudienceType;
+@class OAIAudienceType;
 
 
 
@@ -39,7 +39,8 @@
 /* Audience description. [optional]
  */
 @property(nonatomic) NSString* _description;
-
-@property(nonatomic) OAIAudienceCreateRequest1AudienceType* audienceType;
+/* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. 
+ */
+@property(nonatomic) OAIAudienceType* audienceType;
 
 @end

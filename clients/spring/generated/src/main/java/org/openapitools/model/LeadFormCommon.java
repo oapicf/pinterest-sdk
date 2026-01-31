@@ -29,7 +29,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "LeadFormCommon", description = "Creation fields")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadFormCommon {
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
@@ -90,7 +90,7 @@ public class LeadFormCommon {
     this.privacyPolicyLink = privacyPolicyLink;
   }
 
-  public LeadFormCommon hasAcceptedTerms(Boolean hasAcceptedTerms) {
+  public LeadFormCommon hasAcceptedTerms(@Nullable Boolean hasAcceptedTerms) {
     this.hasAcceptedTerms = hasAcceptedTerms;
     return this;
   }
@@ -102,11 +102,11 @@ public class LeadFormCommon {
   
   @Schema(name = "has_accepted_terms", example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("has_accepted_terms")
-  public Boolean getHasAcceptedTerms() {
+  public @Nullable Boolean getHasAcceptedTerms() {
     return hasAcceptedTerms;
   }
 
-  public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
+  public void setHasAcceptedTerms(@Nullable Boolean hasAcceptedTerms) {
     this.hasAcceptedTerms = hasAcceptedTerms;
   }
 
@@ -130,7 +130,7 @@ public class LeadFormCommon {
     this.completionMessage = completionMessage;
   }
 
-  public LeadFormCommon status(LeadFormStatus status) {
+  public LeadFormCommon status(@Nullable LeadFormStatus status) {
     this.status = status;
     return this;
   }
@@ -142,11 +142,11 @@ public class LeadFormCommon {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public LeadFormStatus getStatus() {
+  public @Nullable LeadFormStatus getStatus() {
     return status;
   }
 
-  public void setStatus(LeadFormStatus status) {
+  public void setStatus(@Nullable LeadFormStatus status) {
     this.status = status;
   }
 

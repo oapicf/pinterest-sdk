@@ -51,7 +51,10 @@ module.exports = {
                 key: `${keyPrefix}default_availability`,
                 ...ProductAvailabilityType.fields(`${keyPrefix}default_availability`, isInput),
             },
-            ...CatalogsStatus.fields(`${keyPrefix}status`, isInput),
+            {
+                key: `${keyPrefix}status`,
+                ...CatalogsStatus.fields(`${keyPrefix}status`, isInput),
+            },
             {
                 key: `${keyPrefix}catalog_id`,
                 label: `Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. - [${labelPrefix}catalog_id]`,
@@ -72,7 +75,7 @@ module.exports = {
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'default_country': bundle.inputData?.[`${keyPrefix}default_country`],
             'default_availability': bundle.inputData?.[`${keyPrefix}default_availability`],
-            'status': utils.removeIfEmpty(CatalogsStatus.mapping(bundle, `${keyPrefix}status`)),
+            'status': bundle.inputData?.[`${keyPrefix}status`],
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
         }
     },

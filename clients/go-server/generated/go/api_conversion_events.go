@@ -53,12 +53,27 @@ func NewConversionEventsAPIController(s ConversionEventsAPIServicer, opts ...Con
 func (c *ConversionEventsAPIController) Routes() Routes {
 	return Routes{
 		"EventsCreate": Route{
+			"EventsCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/events",
 			c.EventsCreate,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the ConversionEventsAPIController
+func (c *ConversionEventsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"EventsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/events",
+			c.EventsCreate,
+		},
+	}
+}
+
+
 
 // EventsCreate - Send conversions
 func (c *ConversionEventsAPIController) EventsCreate(w http.ResponseWriter, r *http.Request) {

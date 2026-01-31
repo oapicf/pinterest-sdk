@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,26 +8,32 @@ import org.openapitools.model.QuizPinOption;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * A specific quiz inquiry.
- **/
+ * A specific quiz inquiry.
+ */
 @ApiModel(description="A specific quiz inquiry.")
 
 public class QuizPinQuestion  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BigDecimal questionId;
 
   @ApiModelProperty(value = "")
+
   private String questionText;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid QuizPinOption> options = new ArrayList<>();
  /**
    * Get questionId

@@ -164,7 +164,7 @@ public class AdAccountsApiTest {
     public void analyticsCreateMmmReportTest() {
         // given
         String adAccountId = "example";
-        CreateMMMReportRequest createMMMReportRequest = new CreateMMMReportRequest("example", "2020-12-20", "2020-12-20", "example", "example", Arrays.asList(), Arrays.asList());
+        CreateMMMReportRequest createMMMReportRequest = new CreateMMMReportRequest();
 
         // when
         CreateMMMReportResponse body = api.analyticsCreateMmmReport(adAccountId, createMMMReportRequest).block();

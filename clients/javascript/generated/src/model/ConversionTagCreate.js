@@ -24,10 +24,11 @@ class ConversionTagCreate {
      * Constructs a new <code>ConversionTagCreate</code>.
      * @alias module:model/ConversionTagCreate
      * @implements module:model/ConversionTagConfigs
+     * @param name {String} Conversion tag name.
      */
-    constructor() { 
+    constructor(name) { 
         ConversionTagConfigs.initialize(this);
-        ConversionTagCreate.initialize(this);
+        ConversionTagCreate.initialize(this, name);
     }
 
     /**
@@ -35,8 +36,7 @@ class ConversionTagCreate {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
-        obj['name'] = name;
+    static initialize(obj, name) { 
         obj['aem_enabled'] = false;
         obj['md_frequency'] = 1;
         obj['aem_fnln_enabled'] = false;
@@ -44,6 +44,7 @@ class ConversionTagCreate {
         obj['aem_ge_enabled'] = false;
         obj['aem_db_enabled'] = false;
         obj['aem_loc_enabled'] = false;
+        obj['name'] = name;
     }
 
     /**
@@ -58,9 +59,6 @@ class ConversionTagCreate {
             obj = obj || new ConversionTagCreate();
             ConversionTagConfigs.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
-            }
             if (data.hasOwnProperty('aem_enabled')) {
                 obj['aem_enabled'] = ApiClient.convertToType(data['aem_enabled'], 'Boolean');
             }
@@ -81,6 +79,9 @@ class ConversionTagCreate {
             }
             if (data.hasOwnProperty('aem_loc_enabled')) {
                 obj['aem_loc_enabled'] = ApiClient.convertToType(data['aem_loc_enabled'], 'Boolean');
+            }
+            if (data.hasOwnProperty('name')) {
+                obj['name'] = ApiClient.convertToType(data['name'], 'String');
             }
         }
         return obj;
@@ -110,12 +111,6 @@ class ConversionTagCreate {
 }
 
 ConversionTagCreate.RequiredProperties = ["name"];
-
-/**
- * Conversion tag name.
- * @member {String} name
- */
-ConversionTagCreate.prototype['name'] = undefined;
 
 /**
  * Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
@@ -165,6 +160,12 @@ ConversionTagCreate.prototype['aem_db_enabled'] = false;
  * @default false
  */
 ConversionTagCreate.prototype['aem_loc_enabled'] = false;
+
+/**
+ * Conversion tag name.
+ * @member {String} name
+ */
+ConversionTagCreate.prototype['name'] = undefined;
 
 
 // Implement ConversionTagConfigs interface:

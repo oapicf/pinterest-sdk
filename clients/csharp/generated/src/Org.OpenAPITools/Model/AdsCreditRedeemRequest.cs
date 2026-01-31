@@ -141,8 +141,7 @@ namespace Org.OpenAPITools.Model
                             offerCodeHash = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "validateOnly":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                validateOnly = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            validateOnly = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

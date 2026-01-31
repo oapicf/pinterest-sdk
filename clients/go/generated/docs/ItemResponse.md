@@ -6,9 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **ItemId** | Pointer to **string** | The catalog item id in the merchant namespace | [optional] 
-**Errors** | Pointer to [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] 
+**Pins** | Pointer to [**[]Pin**](Pin.md) | The pins mapped to the item | [optional] 
+**Attributes** | Pointer to [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] 
 **HotelId** | Pointer to **string** | The catalog hotel id in the merchant namespace | [optional] 
 **CreativeAssetsId** | Pointer to **string** | The catalog creative assets id in the merchant namespace | [optional] 
+**Errors** | Pointer to [**[]ItemValidationEvent**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] 
 
 ## Methods
 
@@ -74,30 +76,65 @@ SetItemId sets ItemId field to given value.
 
 HasItemId returns a boolean if a field has been set.
 
-### GetErrors
+### GetPins
 
-`func (o *ItemResponse) GetErrors() []ItemValidationEvent`
+`func (o *ItemResponse) GetPins() []Pin`
 
-GetErrors returns the Errors field if non-nil, zero value otherwise.
+GetPins returns the Pins field if non-nil, zero value otherwise.
 
-### GetErrorsOk
+### GetPinsOk
 
-`func (o *ItemResponse) GetErrorsOk() (*[]ItemValidationEvent, bool)`
+`func (o *ItemResponse) GetPinsOk() (*[]Pin, bool)`
 
-GetErrorsOk returns a tuple with the Errors field if it's non-nil, zero value otherwise
+GetPinsOk returns a tuple with the Pins field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetErrors
+### SetPins
 
-`func (o *ItemResponse) SetErrors(v []ItemValidationEvent)`
+`func (o *ItemResponse) SetPins(v []Pin)`
 
-SetErrors sets Errors field to given value.
+SetPins sets Pins field to given value.
 
-### HasErrors
+### HasPins
 
-`func (o *ItemResponse) HasErrors() bool`
+`func (o *ItemResponse) HasPins() bool`
 
-HasErrors returns a boolean if a field has been set.
+HasPins returns a boolean if a field has been set.
+
+### SetPinsNil
+
+`func (o *ItemResponse) SetPinsNil(b bool)`
+
+ SetPinsNil sets the value for Pins to be an explicit nil
+
+### UnsetPins
+`func (o *ItemResponse) UnsetPins()`
+
+UnsetPins ensures that no value is present for Pins, not even an explicit nil
+### GetAttributes
+
+`func (o *ItemResponse) GetAttributes() CatalogsCreativeAssetsAttributes`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *ItemResponse) GetAttributesOk() (*CatalogsCreativeAssetsAttributes, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *ItemResponse) SetAttributes(v CatalogsCreativeAssetsAttributes)`
+
+SetAttributes sets Attributes field to given value.
+
+### HasAttributes
+
+`func (o *ItemResponse) HasAttributes() bool`
+
+HasAttributes returns a boolean if a field has been set.
 
 ### GetHotelId
 
@@ -148,6 +185,31 @@ SetCreativeAssetsId sets CreativeAssetsId field to given value.
 `func (o *ItemResponse) HasCreativeAssetsId() bool`
 
 HasCreativeAssetsId returns a boolean if a field has been set.
+
+### GetErrors
+
+`func (o *ItemResponse) GetErrors() []ItemValidationEvent`
+
+GetErrors returns the Errors field if non-nil, zero value otherwise.
+
+### GetErrorsOk
+
+`func (o *ItemResponse) GetErrorsOk() (*[]ItemValidationEvent, bool)`
+
+GetErrorsOk returns a tuple with the Errors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrors
+
+`func (o *ItemResponse) SetErrors(v []ItemValidationEvent)`
+
+SetErrors sets Errors field to given value.
+
+### HasErrors
+
+`func (o *ItemResponse) HasErrors() bool`
+
+HasErrors returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

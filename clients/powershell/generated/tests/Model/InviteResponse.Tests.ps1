@@ -10,7 +10,7 @@ Describe -tag 'PSOpenAPITools' -name 'InviteResponse' {
     Context 'InviteResponse' {
         It 'Initialize-InviteResponse' {
             # a simple test to create an object
-            #$NewObject = Initialize-InviteResponse -AssetsSummary "TEST_VALUE" -BusinessRoles "TEST_VALUE" -CreatedByBusiness "TEST_VALUE" -CreatedByUser "TEST_VALUE" -CreatedTime "TEST_VALUE" -Id "TEST_VALUE" -InviteData "TEST_VALUE" -IsReceivedInvite "TEST_VALUE" -User "TEST_VALUE"
+            #$NewObject = Initialize-InviteResponse -Id "TEST_VALUE" -InviteData "TEST_VALUE" -IsReceivedInvite "TEST_VALUE" -User "TEST_VALUE" -AssetsSummary "TEST_VALUE" -BusinessRoles "TEST_VALUE" -CreatedByBusiness "TEST_VALUE" -CreatedByUser "TEST_VALUE" -CreatedTime "TEST_VALUE"
             #$NewObject | Should -BeOfType InviteResponse
             #$NewObject.property | Should -Be 0
         }

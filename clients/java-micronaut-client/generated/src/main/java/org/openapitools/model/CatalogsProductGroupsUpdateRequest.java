@@ -38,7 +38,7 @@ import javax.annotation.Generated;
   CatalogsProductGroupsUpdateRequest.JSON_PROPERTY_FILTERS
 })
 @JsonTypeName("catalogs_product_groups_update_request")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-01-26T05:35:55.554977681Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class CatalogsProductGroupsUpdateRequest {
     public static final String JSON_PROPERTY_NAME = "name";

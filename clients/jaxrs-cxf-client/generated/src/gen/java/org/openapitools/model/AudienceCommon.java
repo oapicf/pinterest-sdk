@@ -9,19 +9,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AudienceCommon  {
   
-  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
  /**
-   * Ad account ID.
-  **/
+  * Ad account ID.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "string", value = "Audience name.")
  /**
-   * Audience name.
-  **/
+  * Audience name.
+  */
+  @ApiModelProperty(example = "string", value = "Audience name.")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private AudienceRule rule;
  /**
    * Ad account ID.

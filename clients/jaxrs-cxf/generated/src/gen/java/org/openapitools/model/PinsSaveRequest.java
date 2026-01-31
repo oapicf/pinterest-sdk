@@ -12,16 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PinsSaveRequest  {
   
-  @ApiModelProperty(value = "Unique identifier of the board to which the pin will be saved.")
  /**
-   * Unique identifier of the board to which the pin will be saved.
-  **/
+  * Unique identifier of the board to which the pin will be saved.
+  */
+  @ApiModelProperty(value = "Unique identifier of the board to which the pin will be saved.")
+
   private String boardId;
 
-  @ApiModelProperty(value = "Unique identifier of the board section to which the pin will be saved.")
  /**
-   * Unique identifier of the board section to which the pin will be saved.
-  **/
+  * Unique identifier of the board section to which the pin will be saved.
+  */
+  @ApiModelProperty(value = "Unique identifier of the board section to which the pin will be saved.")
+
   private String boardSectionId;
  /**
    * Unique identifier of the board to which the pin will be saved.

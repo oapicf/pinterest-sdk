@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **grant_type** | **String** |  |  |
 | **scope** | **String** |  |  |
+| **grant_type** | **String** |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::OauthAccessTokenRequestClientCredentials.new(
-  grant_type: null,
-  scope: null
+  scope: null,
+  grant_type: null
 )
 ```
 

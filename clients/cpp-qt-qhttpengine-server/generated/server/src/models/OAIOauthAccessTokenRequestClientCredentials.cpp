@@ -34,11 +34,11 @@ OAIOauthAccessTokenRequestClientCredentials::~OAIOauthAccessTokenRequestClientCr
 
 void OAIOauthAccessTokenRequestClientCredentials::initializeModel() {
 
-    m_grant_type_isSet = false;
-    m_grant_type_isValid = false;
-
     m_scope_isSet = false;
     m_scope_isValid = false;
+
+    m_grant_type_isSet = false;
+    m_grant_type_isValid = false;
 }
 
 void OAIOauthAccessTokenRequestClientCredentials::fromJson(QString jsonString) {
@@ -50,11 +50,11 @@ void OAIOauthAccessTokenRequestClientCredentials::fromJson(QString jsonString) {
 
 void OAIOauthAccessTokenRequestClientCredentials::fromJsonObject(QJsonObject json) {
 
-    m_grant_type_isValid = ::OpenAPI::fromJsonValue(grant_type, json[QString("grant_type")]);
-    m_grant_type_isSet = !json[QString("grant_type")].isNull() && m_grant_type_isValid;
-
     m_scope_isValid = ::OpenAPI::fromJsonValue(scope, json[QString("scope")]);
     m_scope_isSet = !json[QString("scope")].isNull() && m_scope_isValid;
+
+    m_grant_type_isValid = ::OpenAPI::fromJsonValue(grant_type, json[QString("grant_type")]);
+    m_grant_type_isSet = !json[QString("grant_type")].isNull() && m_grant_type_isValid;
 }
 
 QString OAIOauthAccessTokenRequestClientCredentials::asJson() const {
@@ -66,29 +66,13 @@ QString OAIOauthAccessTokenRequestClientCredentials::asJson() const {
 
 QJsonObject OAIOauthAccessTokenRequestClientCredentials::asJsonObject() const {
     QJsonObject obj;
-    if (m_grant_type_isSet) {
-        obj.insert(QString("grant_type"), ::OpenAPI::toJsonValue(grant_type));
-    }
     if (m_scope_isSet) {
         obj.insert(QString("scope"), ::OpenAPI::toJsonValue(scope));
     }
+    if (m_grant_type_isSet) {
+        obj.insert(QString("grant_type"), ::OpenAPI::toJsonValue(grant_type));
+    }
     return obj;
-}
-
-QString OAIOauthAccessTokenRequestClientCredentials::getGrantType() const {
-    return grant_type;
-}
-void OAIOauthAccessTokenRequestClientCredentials::setGrantType(const QString &grant_type) {
-    this->grant_type = grant_type;
-    this->m_grant_type_isSet = true;
-}
-
-bool OAIOauthAccessTokenRequestClientCredentials::is_grant_type_Set() const{
-    return m_grant_type_isSet;
-}
-
-bool OAIOauthAccessTokenRequestClientCredentials::is_grant_type_Valid() const{
-    return m_grant_type_isValid;
 }
 
 QString OAIOauthAccessTokenRequestClientCredentials::getScope() const {
@@ -107,15 +91,31 @@ bool OAIOauthAccessTokenRequestClientCredentials::is_scope_Valid() const{
     return m_scope_isValid;
 }
 
+QString OAIOauthAccessTokenRequestClientCredentials::getGrantType() const {
+    return grant_type;
+}
+void OAIOauthAccessTokenRequestClientCredentials::setGrantType(const QString &grant_type) {
+    this->grant_type = grant_type;
+    this->m_grant_type_isSet = true;
+}
+
+bool OAIOauthAccessTokenRequestClientCredentials::is_grant_type_Set() const{
+    return m_grant_type_isSet;
+}
+
+bool OAIOauthAccessTokenRequestClientCredentials::is_grant_type_Valid() const{
+    return m_grant_type_isValid;
+}
+
 bool OAIOauthAccessTokenRequestClientCredentials::isSet() const {
     bool isObjectUpdated = false;
     do {
-        if (m_grant_type_isSet) {
+        if (m_scope_isSet) {
             isObjectUpdated = true;
             break;
         }
 
-        if (m_scope_isSet) {
+        if (m_grant_type_isSet) {
             isObjectUpdated = true;
             break;
         }
@@ -125,7 +125,7 @@ bool OAIOauthAccessTokenRequestClientCredentials::isSet() const {
 
 bool OAIOauthAccessTokenRequestClientCredentials::isValid() const {
     // only required properties are required for the object to be considered valid
-    return m_grant_type_isValid && m_scope_isValid && true;
+    return m_scope_isValid && m_grant_type_isValid && true;
 }
 
 } // namespace OpenAPI

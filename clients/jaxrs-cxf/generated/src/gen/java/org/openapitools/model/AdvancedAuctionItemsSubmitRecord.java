@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,13 +18,14 @@ import org.openapitools.model.UpdateMaskBidOptionField;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object describing an item bid option operation
- **/
+ * Object describing an item bid option operation
+ */
 @ApiModel(description="Object describing an item bid option operation")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
@@ -36,32 +36,43 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdvancedAuctionItemsSubmitRecord  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private AdvancedAuctionOperation operation;
 
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
  /**
-   * The catalog retail item id in the merchant namespace
-  **/
+  * The catalog retail item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
+
   private String itemId;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private Country country;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private Language language;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private AdvancedAuctionBidOptions bidOptions;
 
-  @ApiModelProperty(example = "[BID, APP_TYPE_BID_MULTIPLIER_SET]", required = true, value = "The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.")
-  @Valid
  /**
-   * The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
-  **/
+  * The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
+  */
+  @ApiModelProperty(example = "[BID, APP_TYPE_BID_MULTIPLIER_SET]", required = true, value = "The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.")
+
+  @Valid
+
   private List<UpdateMaskBidOptionField> updateMask;
  /**
    * Get operation

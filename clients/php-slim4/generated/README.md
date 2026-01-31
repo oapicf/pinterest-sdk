@@ -9,7 +9,7 @@ This server has been generated with [Slim PSR-7](https://github.com/slimphp/Slim
 ## Requirements
 
 * Web server with URL rewriting
-* PHP 7.4 or newer
+* PHP 8.1 or newer
 
 This package contains `.htaccess` for Apache configuration.
 If you use another server(Nginx, HHVM, IIS, lighttpd) check out [Web Servers](https://www.slimframework.com/docs/v3/start/web-servers.html) doc.
@@ -450,7 +450,6 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\AudienceCommon
 * OpenAPIServer\Model\AudienceCreateCustomRequest
 * OpenAPIServer\Model\AudienceCreateRequest
-* OpenAPIServer\Model\AudienceCreateRequest1AudienceType
 * OpenAPIServer\Model\AudienceDataParty
 * OpenAPIServer\Model\AudienceDefinition
 * OpenAPIServer\Model\AudienceDefinitionResponse
@@ -628,7 +627,6 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\CatalogsItemsFilters
 * OpenAPIServer\Model\CatalogsItemsPostFilters
 * OpenAPIServer\Model\CatalogsItemsRequest
-* OpenAPIServer\Model\CatalogsItemsRequestLanguage
 * OpenAPIServer\Model\CatalogsItemsUpdateBatchRequest
 * OpenAPIServer\Model\CatalogsItemsUpsertBatchRequest
 * OpenAPIServer\Model\CatalogsList200Response
@@ -962,7 +960,6 @@ Class | Method | HTTP request | Description
 * OpenAPIServer\Model\PinPromotionSummaryStatus
 * OpenAPIServer\Model\PinUpdate
 * OpenAPIServer\Model\PinUpdateCarouselSlotsInner
-* OpenAPIServer\Model\PinsAnalyticsMetricTypesParameterInner
 * OpenAPIServer\Model\PinsList200Response
 * OpenAPIServer\Model\PinsSaveRequest
 * OpenAPIServer\Model\PinterestTagEventData

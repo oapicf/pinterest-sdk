@@ -51,6 +51,7 @@ export interface CatalogsRetailProductGroup {
     filters: CatalogsProductGroupFilters;
     /**
      * boolean indicator of whether the product group is being featured or not
+     * @deprecated
      * @type {boolean}
      * @memberof CatalogsRetailProductGroup
      */

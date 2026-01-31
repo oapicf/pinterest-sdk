@@ -47,6 +47,8 @@ pub enum BulkUpsertSlashCreateResponse {
 }
 
 
+
+
 /// Bulk
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -56,6 +58,7 @@ pub trait Bulk<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHan
     /// BulkDownloadSlashCreate - POST /v5/ad_accounts/{ad_account_id}/bulk/download
     async fn bulk_download_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -68,6 +71,7 @@ pub trait Bulk<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHan
     /// BulkRequestSlashGet - GET /v5/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}
     async fn bulk_request_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -80,6 +84,7 @@ pub trait Bulk<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHan
     /// BulkUpsertSlashCreate - POST /v5/ad_accounts/{ad_account_id}/bulk/upsert
     async fn bulk_upsert_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

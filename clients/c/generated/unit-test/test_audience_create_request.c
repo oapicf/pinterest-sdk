@@ -17,7 +17,6 @@
 audience_create_request_t* instantiate_audience_create_request(int include_optional);
 
 #include "test_audience_rule.c"
-#include "test_audience_create_request_1_audience_type.c"
 
 
 audience_create_request_t* instantiate_audience_create_request(int include_optional) {
@@ -29,7 +28,7 @@ audience_create_request_t* instantiate_audience_create_request(int include_optio
        // false, not to have infinite recursion
       instantiate_audience_rule(0),
       "string",
-      "0"
+      "ACTALIKE"
     );
   } else {
     audience_create_request = audience_create_request_create(
@@ -37,7 +36,7 @@ audience_create_request_t* instantiate_audience_create_request(int include_optio
       "string",
       NULL,
       "string",
-      "0"
+      "ACTALIKE"
     );
   }
 

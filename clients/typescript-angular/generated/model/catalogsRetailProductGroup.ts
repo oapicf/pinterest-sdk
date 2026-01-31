@@ -51,10 +51,10 @@ export interface CatalogsRetailProductGroup {
     locale?: string | null;
 }
 export namespace CatalogsRetailProductGroup {
-    export type CatalogTypeEnum = 'RETAIL';
     export const CatalogTypeEnum = {
-        Retail: 'RETAIL' as CatalogTypeEnum
-    };
+        Retail: 'RETAIL'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

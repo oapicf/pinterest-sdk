@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  * TopVideoPinsAnalyticsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TopVideoPinsAnalyticsResponse {
 
   private @Nullable TopPinsAnalyticsResponseDateAvailability dateAvailability;
@@ -55,7 +55,7 @@ public class TopVideoPinsAnalyticsResponse {
     
     VIDEO_START("VIDEO_START");
 
-    private String value;
+    private final String value;
 
     SortByEnum(String value) {
       this.value = value;
@@ -84,7 +84,7 @@ public class TopVideoPinsAnalyticsResponse {
 
   private @Nullable SortByEnum sortBy;
 
-  public TopVideoPinsAnalyticsResponse dateAvailability(TopPinsAnalyticsResponseDateAvailability dateAvailability) {
+  public TopVideoPinsAnalyticsResponse dateAvailability(@Nullable TopPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
     return this;
   }
@@ -96,11 +96,11 @@ public class TopVideoPinsAnalyticsResponse {
   @Valid 
   @Schema(name = "date_availability", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("date_availability")
-  public TopPinsAnalyticsResponseDateAvailability getDateAvailability() {
+  public @Nullable TopPinsAnalyticsResponseDateAvailability getDateAvailability() {
     return dateAvailability;
   }
 
-  public void setDateAvailability(TopPinsAnalyticsResponseDateAvailability dateAvailability) {
+  public void setDateAvailability(@Nullable TopPinsAnalyticsResponseDateAvailability dateAvailability) {
     this.dateAvailability = dateAvailability;
   }
 
@@ -132,7 +132,7 @@ public class TopVideoPinsAnalyticsResponse {
     this.pins = pins;
   }
 
-  public TopVideoPinsAnalyticsResponse sortBy(SortByEnum sortBy) {
+  public TopVideoPinsAnalyticsResponse sortBy(@Nullable SortByEnum sortBy) {
     this.sortBy = sortBy;
     return this;
   }
@@ -144,11 +144,11 @@ public class TopVideoPinsAnalyticsResponse {
   
   @Schema(name = "sort_by", example = "IMPRESSION", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("sort_by")
-  public SortByEnum getSortBy() {
+  public @Nullable SortByEnum getSortBy() {
     return sortBy;
   }
 
-  public void setSortBy(SortByEnum sortBy) {
+  public void setSortBy(@Nullable SortByEnum sortBy) {
     this.sortBy = sortBy;
   }
 

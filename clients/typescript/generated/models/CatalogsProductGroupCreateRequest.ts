@@ -21,6 +21,7 @@ export class CatalogsProductGroupCreateRequest {
     'description'?: string | null;
     /**
     * boolean indicator of whether the product group is being featured or not
+    * @deprecated
     */
     'isFeatured'?: boolean;
     'filters': CatalogsProductGroupFiltersRequest;

@@ -9,14 +9,10 @@
  */
 
 
-export type Gender = 'FEMALE' | 'MALE' | 'UNISEX';
-
 export const Gender = {
-
-    Female: 'FEMALE' as Gender,
-
-    Male: 'MALE' as Gender,
-
-    Unisex: 'UNISEX' as Gender
-};
+    Female: 'FEMALE',
+    Male: 'MALE',
+    Unisex: 'UNISEX'
+} as const;
+export type Gender = typeof Gender[keyof typeof Gender];
 

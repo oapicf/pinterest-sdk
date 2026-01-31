@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_leads_export_status
 
 type LeadsExportResponseData* = object
   ## 
-  exportStatus*: LeadsExportStatus
-  downloadUrl*: string
+  exportStatus*: Option[LeadsExportStatus]
+  downloadUrl*: Option[string]
+
+
+# Custom JSON deserialization for LeadsExportResponseData with custom field names
+proc to*(node: JsonNode, T: typedesc[LeadsExportResponseData]): LeadsExportResponseData =
+  result = LeadsExportResponseData()
+  if node.kind == JObject:
+    if node.hasKey("export_status") and node["export_status"].kind != JNull:
+      result.exportStatus = some(to(node["export_status"], typeof(result.exportStatus.get())))
+    if node.hasKey("download_url") and node["download_url"].kind != JNull:
+      result.downloadUrl = some(to(node["download_url"], typeof(result.downloadUrl.get())))
+
+# Custom JSON serialization for LeadsExportResponseData with custom field names
+proc `%`*(obj: LeadsExportResponseData): JsonNode =
+  result = newJObject()
+  if obj.exportStatus.isSome():
+    result["export_status"] = %obj.exportStatus.get()
+  if obj.downloadUrl.isSome():
+    result["download_url"] = %obj.downloadUrl.get()
+

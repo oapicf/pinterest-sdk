@@ -12,12 +12,9 @@
 /**
  * Creative assets visibility.
  */
-export type CreativeAssetsVisibilityType = 'VISIBLE' | 'HIDDEN';
-
 export const CreativeAssetsVisibilityType = {
-
-    Visible: 'VISIBLE' as CreativeAssetsVisibilityType,
-
-    Hidden: 'HIDDEN' as CreativeAssetsVisibilityType
-};
+    Visible: 'VISIBLE',
+    Hidden: 'HIDDEN'
+} as const;
+export type CreativeAssetsVisibilityType = typeof CreativeAssetsVisibilityType[keyof typeof CreativeAssetsVisibilityType];
 

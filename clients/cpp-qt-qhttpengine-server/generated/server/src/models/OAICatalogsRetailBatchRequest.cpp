@@ -84,7 +84,7 @@ QJsonObject OAICatalogsRetailBatchRequest::asJsonObject() const {
     if (country.isSet()) {
         obj.insert(QString("country"), ::OpenAPI::toJsonValue(country));
     }
-    if (language.isSet()) {
+    if (m_language_isSet) {
         obj.insert(QString("language"), ::OpenAPI::toJsonValue(language));
     }
     if (items.size() > 0) {
@@ -125,10 +125,10 @@ bool OAICatalogsRetailBatchRequest::is_country_Valid() const{
     return m_country_isValid;
 }
 
-OAICatalogsItemsRequest_language OAICatalogsRetailBatchRequest::getLanguage() const {
+QString OAICatalogsRetailBatchRequest::getLanguage() const {
     return language;
 }
-void OAICatalogsRetailBatchRequest::setLanguage(const OAICatalogsItemsRequest_language &language) {
+void OAICatalogsRetailBatchRequest::setLanguage(const QString &language) {
     this->language = language;
     this->m_language_isSet = true;
 }
@@ -170,7 +170,7 @@ bool OAICatalogsRetailBatchRequest::isSet() const {
             break;
         }
 
-        if (language.isSet()) {
+        if (m_language_isSet) {
             isObjectUpdated = true;
             break;
         }

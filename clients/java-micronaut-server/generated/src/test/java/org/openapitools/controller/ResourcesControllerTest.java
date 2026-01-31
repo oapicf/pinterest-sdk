@@ -83,7 +83,7 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/ad_account_countries").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@59a45b95");
+            .accept("[Ljava.lang.String;@1485c38d");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountsCountryResponse.class);
@@ -126,7 +126,7 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/delivery_metrics").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@1faef660");
+            .accept("[Ljava.lang.String;@3a4aba84");
         request.getParameters()
             .add("report_type", "example"); // The query parameter format should be 
 
@@ -174,7 +174,7 @@ public class ResourcesControllerTest {
             put("interest_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2c5f702b");
+            .accept("[Ljava.lang.String;@5956be7c");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SingleInterestTargetingOptionResponse.class);
@@ -216,7 +216,7 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/lead_form_questions").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@26385ac2");
+            .accept("[Ljava.lang.String;@654a3f0b");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
@@ -259,7 +259,7 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/metrics_ready_state").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5d3bc563");
+            .accept("[Ljava.lang.String;@5fe91184");
         request.getParameters()
             .add("date", "2022-07-13"); // The query parameter format should be 
 
@@ -311,7 +311,7 @@ public class ResourcesControllerTest {
             put("targeting_type", "APPTYPE");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@35ce3552");
+            .accept("[Ljava.lang.String;@30180e67");
         request.getParameters()
             .add("client_id", "1094834") // The query parameter format should be 
             .add("oauth_signature", "8209f") // The query parameter format should be 

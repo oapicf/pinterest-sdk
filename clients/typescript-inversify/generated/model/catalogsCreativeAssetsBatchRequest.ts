@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 import { CatalogsCreativeAssetsBatchItem } from './catalogsCreativeAssetsBatchItem';
-import { CatalogsItemsRequestLanguage } from './catalogsItemsRequestLanguage';
 import { Country } from './country';
 
 
@@ -20,7 +19,10 @@ import { Country } from './country';
 export interface CatalogsCreativeAssetsBatchRequest { 
     catalog_type: CatalogsCreativeAssetsBatchRequest.CatalogTypeEnum;
     country: Country;
-    language: CatalogsItemsRequestLanguage;
+    /**
+     * We recommend using the CatalogsLocale values.
+     */
+    language: CatalogsCreativeAssetsBatchRequest.LanguageEnum;
     /**
      * Array with creative assets item operations
      */
@@ -34,5 +36,115 @@ export namespace CatalogsCreativeAssetsBatchRequest {
     export type CatalogTypeEnum = 'CREATIVE_ASSETS';
     export const CatalogTypeEnum = {
         CreativeAssets: 'CREATIVE_ASSETS' as CatalogTypeEnum
+    }
+    export type LanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
+    export const LanguageEnum = {
+        AfZa: 'af-ZA' as LanguageEnum,
+        ArSa: 'ar-SA' as LanguageEnum,
+        BgBg: 'bg-BG' as LanguageEnum,
+        BnIn: 'bn-IN' as LanguageEnum,
+        CsCz: 'cs-CZ' as LanguageEnum,
+        DaDk: 'da-DK' as LanguageEnum,
+        De: 'de' as LanguageEnum,
+        ElGr: 'el-GR' as LanguageEnum,
+        EnAu: 'en-AU' as LanguageEnum,
+        EnCa: 'en-CA' as LanguageEnum,
+        EnGb: 'en-GB' as LanguageEnum,
+        EnIn: 'en-IN' as LanguageEnum,
+        EnUs: 'en-US' as LanguageEnum,
+        Es419: 'es-419' as LanguageEnum,
+        EsAr: 'es-AR' as LanguageEnum,
+        EsEs: 'es-ES' as LanguageEnum,
+        EsMx: 'es-MX' as LanguageEnum,
+        FiFi: 'fi-FI' as LanguageEnum,
+        Fr: 'fr' as LanguageEnum,
+        FrCa: 'fr-CA' as LanguageEnum,
+        HeIl: 'he-IL' as LanguageEnum,
+        HiIn: 'hi-IN' as LanguageEnum,
+        HrHr: 'hr-HR' as LanguageEnum,
+        HuHu: 'hu-HU' as LanguageEnum,
+        IdId: 'id-ID' as LanguageEnum,
+        It: 'it' as LanguageEnum,
+        Ja: 'ja' as LanguageEnum,
+        KoKr: 'ko-KR' as LanguageEnum,
+        MsMy: 'ms-MY' as LanguageEnum,
+        NbNo: 'nb-NO' as LanguageEnum,
+        Nl: 'nl' as LanguageEnum,
+        PlPl: 'pl-PL' as LanguageEnum,
+        PtBr: 'pt-BR' as LanguageEnum,
+        PtPt: 'pt-PT' as LanguageEnum,
+        RoRo: 'ro-RO' as LanguageEnum,
+        RuRu: 'ru-RU' as LanguageEnum,
+        SkSk: 'sk-SK' as LanguageEnum,
+        SvSe: 'sv-SE' as LanguageEnum,
+        TeIn: 'te-IN' as LanguageEnum,
+        ThTh: 'th-TH' as LanguageEnum,
+        TlPh: 'tl-PH' as LanguageEnum,
+        Tr: 'tr' as LanguageEnum,
+        UkUa: 'uk-UA' as LanguageEnum,
+        ViVn: 'vi-VN' as LanguageEnum,
+        ZhCn: 'zh-CN' as LanguageEnum,
+        ZhTw: 'zh-TW' as LanguageEnum,
+        Am: 'AM' as LanguageEnum,
+        Ar: 'AR' as LanguageEnum,
+        Az: 'AZ' as LanguageEnum,
+        Bg: 'BG' as LanguageEnum,
+        Bn: 'BN' as LanguageEnum,
+        Bs: 'BS' as LanguageEnum,
+        Ca: 'CA' as LanguageEnum,
+        Cs: 'CS' as LanguageEnum,
+        Da: 'DA' as LanguageEnum,
+        Dv: 'DV' as LanguageEnum,
+        Dz: 'DZ' as LanguageEnum,
+        De2: 'DE' as LanguageEnum,
+        El: 'EL' as LanguageEnum,
+        En: 'EN' as LanguageEnum,
+        Es: 'ES' as LanguageEnum,
+        Et: 'ET' as LanguageEnum,
+        Fa: 'FA' as LanguageEnum,
+        Fi: 'FI' as LanguageEnum,
+        Fr2: 'FR' as LanguageEnum,
+        He: 'HE' as LanguageEnum,
+        Hi: 'HI' as LanguageEnum,
+        Hr: 'HR' as LanguageEnum,
+        Hu: 'HU' as LanguageEnum,
+        Hy: 'HY' as LanguageEnum,
+        Id: 'ID' as LanguageEnum,
+        In: 'IN' as LanguageEnum,
+        Is: 'IS' as LanguageEnum,
+        It2: 'IT' as LanguageEnum,
+        Iw: 'IW' as LanguageEnum,
+        Ja2: 'JA' as LanguageEnum,
+        Ka: 'KA' as LanguageEnum,
+        Km: 'KM' as LanguageEnum,
+        Ko: 'KO' as LanguageEnum,
+        Lo: 'LO' as LanguageEnum,
+        Lt: 'LT' as LanguageEnum,
+        Lv: 'LV' as LanguageEnum,
+        Mk: 'MK' as LanguageEnum,
+        Mn: 'MN' as LanguageEnum,
+        Ms: 'MS' as LanguageEnum,
+        My: 'MY' as LanguageEnum,
+        Nb: 'NB' as LanguageEnum,
+        Ne: 'NE' as LanguageEnum,
+        Nl2: 'NL' as LanguageEnum,
+        No: 'NO' as LanguageEnum,
+        Pl: 'PL' as LanguageEnum,
+        Pt: 'PT' as LanguageEnum,
+        Ro: 'RO' as LanguageEnum,
+        Ru: 'RU' as LanguageEnum,
+        Sk: 'SK' as LanguageEnum,
+        Sl: 'SL' as LanguageEnum,
+        Sq: 'SQ' as LanguageEnum,
+        Sr: 'SR' as LanguageEnum,
+        Sv: 'SV' as LanguageEnum,
+        Tl: 'TL' as LanguageEnum,
+        Uk: 'UK' as LanguageEnum,
+        Vi: 'VI' as LanguageEnum,
+        Te: 'TE' as LanguageEnum,
+        Th: 'TH' as LanguageEnum,
+        Tr2: 'TR' as LanguageEnum,
+        Xx: 'XX' as LanguageEnum,
+        Zh: 'ZH' as LanguageEnum
     }
 }

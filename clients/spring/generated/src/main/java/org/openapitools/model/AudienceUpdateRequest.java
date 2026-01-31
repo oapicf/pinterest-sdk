@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * AudienceUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceUpdateRequest {
 
   private @Nullable String adAccountId;
@@ -35,7 +35,7 @@ public class AudienceUpdateRequest {
 
   private AudienceUpdateOperationType operationType = AudienceUpdateOperationType.UPDATE;
 
-  public AudienceUpdateRequest adAccountId(String adAccountId) {
+  public AudienceUpdateRequest adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -47,15 +47,15 @@ public class AudienceUpdateRequest {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
-  public AudienceUpdateRequest name(String name) {
+  public AudienceUpdateRequest name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -67,15 +67,15 @@ public class AudienceUpdateRequest {
   
   @Schema(name = "name", example = "string", description = "Audience name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public AudienceUpdateRequest rule(AudienceRule rule) {
+  public AudienceUpdateRequest rule(@Nullable AudienceRule rule) {
     this.rule = rule;
     return this;
   }
@@ -87,15 +87,15 @@ public class AudienceUpdateRequest {
   @Valid 
   @Schema(name = "rule", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rule")
-  public AudienceRule getRule() {
+  public @Nullable AudienceRule getRule() {
     return rule;
   }
 
-  public void setRule(AudienceRule rule) {
+  public void setRule(@Nullable AudienceRule rule) {
     this.rule = rule;
   }
 
-  public AudienceUpdateRequest description(String description) {
+  public AudienceUpdateRequest description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -107,11 +107,11 @@ public class AudienceUpdateRequest {
   
   @Schema(name = "description", example = "string", description = "Audience description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
-  public String getDescription() {
+  public @Nullable String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 

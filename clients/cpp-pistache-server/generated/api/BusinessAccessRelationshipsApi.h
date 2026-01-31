@@ -101,7 +101,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Business id</param>
     /// <param name="membersToDeleteBody">List of members with role to delete.</param>
-    virtual void delete_business_membership(const std::string &businessId, const org::openapitools::server::model::MembersToDeleteBody &membersToDeleteBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_business_membership( const std::string &businessId, const org::openapitools::server::model::MembersToDeleteBody &membersToDeleteBody, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Terminate business partnerships
     /// </summary>
@@ -110,7 +110,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Unique identifier of the requesting business.</param>
     /// <param name="deletePartnersRequest">An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete. </param>
-    virtual void delete_business_partners(const std::string &businessId, const org::openapitools::server::model::DeletePartnersRequest &deletePartnersRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_business_partners( const std::string &businessId, const org::openapitools::server::model::DeletePartnersRequest &deletePartnersRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List business employers for user
     /// </summary>
@@ -119,7 +119,7 @@ private:
     /// </remarks>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void get_business_employers(const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_business_employers( const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get business members
     /// </summary>
@@ -133,7 +133,7 @@ private:
     /// <param name="startIndex">An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void get_business_members(const std::string &businessId, const std::optional<bool> &assetsSummary, const std::optional<std::vector<org::openapitools::server::model::MemberBusinessRole>> &businessRoles, const std::optional<std::string> &memberIds, const std::optional<int32_t> &startIndex, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_business_members( const std::string &businessId, const std::optional<bool> &assetsSummary, const std::optional<std::vector<org::openapitools::server::model::MemberBusinessRole>> &businessRoles, const std::optional<std::string> &memberIds, const std::optional<int32_t> &startIndex, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get business partners
     /// </summary>
@@ -147,7 +147,7 @@ private:
     /// <param name="startIndex">An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void get_business_partners(const std::string &businessId, const std::optional<bool> &assetsSummary, const std::optional<org::openapitools::server::model::PartnerType> &partnerType, const std::optional<std::string> &partnerIds, const std::optional<int32_t> &startIndex, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_business_partners( const std::string &businessId, const std::optional<bool> &assetsSummary, const std::optional<org::openapitools::server::model::PartnerType> &partnerType, const std::optional<std::string> &partnerIds, const std::optional<int32_t> &startIndex, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update member&#39;s business role
     /// </summary>
@@ -156,7 +156,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Business id</param>
     /// <param name="updateMemberBusinessRoleBody">List of objects with the member id and the business_role.</param>
-    virtual void update_business_memberships(const std::string &businessId, const std::vector<org::openapitools::server::model::UpdateMemberBusinessRoleBody> &updateMemberBusinessRoleBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_business_memberships( const std::string &businessId, const std::vector<org::openapitools::server::model::UpdateMemberBusinessRoleBody> &updateMemberBusinessRoleBody, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

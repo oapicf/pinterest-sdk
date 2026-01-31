@@ -9,17 +9,62 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_business_access_user_summary
 import model_business_member_assets_summary
 
 type UserBusinessRoleBinding* = object
   ## 
-  assetsSummary*: BusinessMemberAssetsSummary
-  businessRoles*: seq[string] ## The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-  createdByBusiness*: BusinessAccessUserSummary ## Metadata for the business that created the business relationship.
-  createdByUser*: BusinessAccessUserSummary ## Metadata for the user that created the business relationship.
-  createdTime*: int ## The time the business relationship was created. Returned in milliseconds.
-  id*: string ## Unique identifier of the business member/business partner/employer.
-  isSharedPartner*: bool ## This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
-  user*: BusinessAccessUserSummary ## Metadata for the business member/business partner/employer.
+  assetsSummary*: Option[BusinessMemberAssetsSummary]
+  businessRoles*: Option[seq[string]] ## The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+  createdByBusiness*: Option[BusinessAccessUserSummary] ## Metadata for the business that created the business relationship.
+  createdByUser*: Option[BusinessAccessUserSummary] ## Metadata for the user that created the business relationship.
+  createdTime*: Option[int] ## The time the business relationship was created. Returned in milliseconds.
+  id*: Option[string] ## Unique identifier of the business member/business partner/employer.
+  isSharedPartner*: Option[bool] ## This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+  user*: Option[BusinessAccessUserSummary] ## Metadata for the business member/business partner/employer.
+
+
+# Custom JSON deserialization for UserBusinessRoleBinding with custom field names
+proc to*(node: JsonNode, T: typedesc[UserBusinessRoleBinding]): UserBusinessRoleBinding =
+  result = UserBusinessRoleBinding()
+  if node.kind == JObject:
+    if node.hasKey("assets_summary") and node["assets_summary"].kind != JNull:
+      result.assetsSummary = some(to(node["assets_summary"], typeof(result.assetsSummary.get())))
+    if node.hasKey("business_roles") and node["business_roles"].kind != JNull:
+      result.businessRoles = some(to(node["business_roles"], typeof(result.businessRoles.get())))
+    if node.hasKey("created_by_business") and node["created_by_business"].kind != JNull:
+      result.createdByBusiness = some(to(node["created_by_business"], typeof(result.createdByBusiness.get())))
+    if node.hasKey("created_by_user") and node["created_by_user"].kind != JNull:
+      result.createdByUser = some(to(node["created_by_user"], typeof(result.createdByUser.get())))
+    if node.hasKey("created_time") and node["created_time"].kind != JNull:
+      result.createdTime = some(to(node["created_time"], typeof(result.createdTime.get())))
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("is_shared_partner") and node["is_shared_partner"].kind != JNull:
+      result.isSharedPartner = some(to(node["is_shared_partner"], typeof(result.isSharedPartner.get())))
+    if node.hasKey("user") and node["user"].kind != JNull:
+      result.user = some(to(node["user"], typeof(result.user.get())))
+
+# Custom JSON serialization for UserBusinessRoleBinding with custom field names
+proc `%`*(obj: UserBusinessRoleBinding): JsonNode =
+  result = newJObject()
+  if obj.assetsSummary.isSome():
+    result["assets_summary"] = %obj.assetsSummary.get()
+  if obj.businessRoles.isSome():
+    result["business_roles"] = %obj.businessRoles.get()
+  if obj.createdByBusiness.isSome():
+    result["created_by_business"] = %obj.createdByBusiness.get()
+  if obj.createdByUser.isSome():
+    result["created_by_user"] = %obj.createdByUser.get()
+  if obj.createdTime.isSome():
+    result["created_time"] = %obj.createdTime.get()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.isSharedPartner.isSome():
+    result["is_shared_partner"] = %obj.isSharedPartner.get()
+  if obj.user.isSome():
+    result["user"] = %obj.user.get()
+

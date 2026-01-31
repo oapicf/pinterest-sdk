@@ -77,12 +77,8 @@ class LeadAdsController extends Controller
 
 
 
-        try {
-            $apiResult = $this->api->adAccountsSubscriptionsDelById($adAccountId, $subscriptionId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adAccountsSubscriptionsDelById($adAccountId, $subscriptionId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent204) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 204);
@@ -144,12 +140,8 @@ class LeadAdsController extends Controller
 
 
 
-        try {
-            $apiResult = $this->api->adAccountsSubscriptionsGetById($adAccountId, $subscriptionId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adAccountsSubscriptionsGetById($adAccountId, $subscriptionId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdAccountGetSubscriptionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -217,12 +209,8 @@ class LeadAdsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->adAccountsSubscriptionsGetList($adAccountId, $pageSize, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adAccountsSubscriptionsGetList($adAccountId, $pageSize, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdAccountsSubscriptionsGetList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -266,12 +254,8 @@ class LeadAdsController extends Controller
 
         $adAccountCreateSubscriptionRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdAccountCreateSubscriptionRequest::class);
 
-        try {
-            $apiResult = $this->api->adAccountsSubscriptionsPost($adAccountId, $adAccountCreateSubscriptionRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adAccountsSubscriptionsPost($adAccountId, $adAccountCreateSubscriptionRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdAccountCreateSubscriptionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

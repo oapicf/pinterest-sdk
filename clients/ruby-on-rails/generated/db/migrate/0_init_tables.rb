@@ -817,11 +817,6 @@ class InitTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table "audience_create_request_1_audience_type".pluralize.to_sym, id: false do |t|
-
-      t.timestamps
-    end
-
     create_table "audience_data_party".pluralize.to_sym, id: false do |t|
 
       t.timestamps
@@ -2519,11 +2514,6 @@ class InitTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table "catalogs_items_request_language".pluralize.to_sym, id: false do |t|
-
-      t.timestamps
-    end
-
     create_table "catalogs_items_update_batch_request".pluralize.to_sym, id: false do |t|
       t.string :country
       t.string :language
@@ -3415,7 +3405,6 @@ class InitTables < ActiveRecord::Migration
     end
 
     create_table "conversion_tag_create".pluralize.to_sym, id: false do |t|
-      t.string :name
       t.boolean :aem_enabled
       t.Float :md_frequency
       t.boolean :aem_fnln_enabled
@@ -3423,6 +3412,7 @@ class InitTables < ActiveRecord::Migration
       t.boolean :aem_ge_enabled
       t.boolean :aem_db_enabled
       t.boolean :aem_loc_enabled
+      t.string :name
 
       t.timestamps
     end
@@ -3539,6 +3529,7 @@ class InitTables < ActiveRecord::Migration
     end
 
     create_table "create_mmm_report_request".pluralize.to_sym, id: false do |t|
+      t.string :countries
       t.string :report_name
       t.string :start_date
       t.string :end_date
@@ -3546,7 +3537,6 @@ class InitTables < ActiveRecord::Migration
       t.string :level
       t.string :targeting_types
       t.string :columns
-      t.string :countries
 
       t.timestamps
     end
@@ -4261,12 +4251,12 @@ class InitTables < ActiveRecord::Migration
     end
 
     create_table "invite_business_role_binding".pluralize.to_sym, id: false do |t|
-      t.string :created_by_business_id
-      t.string :created_by_user_id
-      t.string :user
       t.string :id
       t.string :invite_data
       t.boolean :is_received_invite
+      t.Object :user
+      t.string :created_by_business_id
+      t.string :created_by_user_id
 
       t.timestamps
     end
@@ -4281,15 +4271,15 @@ class InitTables < ActiveRecord::Migration
     end
 
     create_table "invite_response".pluralize.to_sym, id: false do |t|
-      t.string :assets_summary
-      t.string :business_roles
-      t.string :created_by_business
-      t.string :created_by_user
-      t.integer :created_time
       t.string :id
       t.string :invite_data
       t.boolean :is_received_invite
       t.string :user
+      t.string :assets_summary
+      t.string :business_roles
+      t.Object :created_by_business
+      t.Object :created_by_user
+      t.integer :created_time
 
       t.timestamps
     end
@@ -4959,25 +4949,25 @@ class InitTables < ActiveRecord::Migration
     end
 
     create_table "oauth_access_token_request_client_credentials".pluralize.to_sym, id: false do |t|
-      t.string :grant_type
       t.string :scope
+      t.string :grant_type
 
       t.timestamps
     end
 
     create_table "oauth_access_token_request_code".pluralize.to_sym, id: false do |t|
-      t.string :grant_type
       t.string :code
       t.string :redirect_uri
+      t.string :grant_type
 
       t.timestamps
     end
 
     create_table "oauth_access_token_request_refresh".pluralize.to_sym, id: false do |t|
-      t.string :grant_type
       t.string :refresh_token
       t.string :scope
       t.boolean :refresh_on
+      t.string :grant_type
 
       t.timestamps
     end
@@ -5003,38 +4993,38 @@ class InitTables < ActiveRecord::Migration
     end
 
     create_table "oauth_access_token_response_code".pluralize.to_sym, id: false do |t|
+      t.string :refresh_token
+      t.integer :refresh_token_expires_in
       t.string :response_type
       t.string :access_token
       t.string :token_type
       t.integer :expires_in
       t.string :scope
-      t.string :refresh_token
-      t.integer :refresh_token_expires_in
 
       t.timestamps
     end
 
     create_table "oauth_access_token_response_everlasting_refresh".pluralize.to_sym, id: false do |t|
+      t.string :refresh_token
+      t.integer :refresh_token_expires_in
+      t.integer :refresh_token_expires_at
       t.string :response_type
       t.string :access_token
       t.string :token_type
       t.integer :expires_in
       t.string :scope
-      t.string :refresh_token
-      t.integer :refresh_token_expires_in
-      t.integer :refresh_token_expires_at
 
       t.timestamps
     end
 
     create_table "oauth_access_token_response_integration_refresh".pluralize.to_sym, id: false do |t|
+      t.string :refresh_token
+      t.integer :refresh_token_expires_in
       t.string :response_type
       t.string :access_token
       t.string :token_type
       t.integer :expires_in
       t.string :scope
-      t.string :refresh_token
-      t.integer :refresh_token_expires_in
 
       t.timestamps
     end
@@ -5447,11 +5437,6 @@ class InitTables < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.string :link
-
-      t.timestamps
-    end
-
-    create_table "pins_analytics_metric_types_parameter_inner".pluralize.to_sym, id: false do |t|
 
       t.timestamps
     end

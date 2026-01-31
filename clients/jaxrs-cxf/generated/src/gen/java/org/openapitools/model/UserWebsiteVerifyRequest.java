@@ -2,22 +2,23 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * User website verification request
- **/
+ * User website verification request
+ */
 @ApiModel(description="User website verification request")
 
 public class UserWebsiteVerifyRequest  {
   
   @ApiModelProperty(example = "pintest-website-12345678.test/test_1", value = "")
+
   private String website;
 
 public enum VerificationMethodEnum {
@@ -53,6 +54,7 @@ FILENAME(String.valueOf("FILENAME")), METATAG(String.valueOf("METATAG")), DNSTXT
 }
 
   @ApiModelProperty(value = "")
+
   private VerificationMethodEnum verificationMethod = VerificationMethodEnum.METATAG;
  /**
    * Get website

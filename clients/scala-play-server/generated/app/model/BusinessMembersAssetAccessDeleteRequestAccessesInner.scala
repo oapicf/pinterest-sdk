@@ -7,7 +7,7 @@ import play.api.libs.json._
   * @param assetId Id of the asset on which to remove member permissions.
   * @param memberId Unique identifier of the member on which to perform the asset permission removal
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class BusinessMembersAssetAccessDeleteRequestAccessesInner(
   assetId: String,
   memberId: String

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_type
 import model_item_validation_event
@@ -16,5 +18,27 @@ import model_item_validation_event
 type CatalogsCreativeAssetsItemErrorResponse* = object
   ## Object describing a creative assets item error
   catalogType*: CatalogsType
-  creativeAssetsId*: string ## The catalog creative assets id in the merchant namespace
-  errors*: seq[ItemValidationEvent] ## Array with the errors for the item id requested
+  creativeAssetsId*: Option[string] ## The catalog creative assets id in the merchant namespace
+  errors*: Option[seq[ItemValidationEvent]] ## Array with the errors for the item id requested
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsItemErrorResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsItemErrorResponse]): CatalogsCreativeAssetsItemErrorResponse =
+  result = CatalogsCreativeAssetsItemErrorResponse()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogsType)
+    if node.hasKey("creative_assets_id") and node["creative_assets_id"].kind != JNull:
+      result.creativeAssetsId = some(to(node["creative_assets_id"], typeof(result.creativeAssetsId.get())))
+    if node.hasKey("errors") and node["errors"].kind != JNull:
+      result.errors = some(to(node["errors"], typeof(result.errors.get())))
+
+# Custom JSON serialization for CatalogsCreativeAssetsItemErrorResponse with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsItemErrorResponse): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  if obj.creativeAssetsId.isSome():
+    result["creative_assets_id"] = %obj.creativeAssetsId.get()
+  if obj.errors.isSome():
+    result["errors"] = %obj.errors.get()
+

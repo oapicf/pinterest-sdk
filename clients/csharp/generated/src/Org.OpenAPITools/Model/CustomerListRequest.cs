@@ -174,8 +174,7 @@ namespace Org.OpenAPITools.Model
                                 listType = new Option<UserListType?>(UserListTypeValueConverter.FromStringOrDefault(listTypeRawValue));
                             break;
                         case "exceptions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exceptions = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            exceptions = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

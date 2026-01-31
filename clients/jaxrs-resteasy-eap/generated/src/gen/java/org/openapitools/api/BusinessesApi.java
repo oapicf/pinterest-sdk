@@ -73,7 +73,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the businesses API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2025-05-10T05:40:48.086340579Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface BusinessesApi  {
 
     @POST
@@ -257,7 +257,7 @@ public interface BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Success", response = BusinessPartnerAssetAccessGet200Response.class),
         
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response businessPartnerAssetAccessGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("partner_id") String partnerId, @QueryParam("partner_type") PartnerType partnerType,, allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP" @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType, @Min(0) @DefaultValue("0") @QueryParam("start_index") Integer startIndex, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize, @QueryParam("bookmark") String bookmark,@Context SecurityContext securityContext);
+    public Response businessPartnerAssetAccessGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("business_id") String businessId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @PathParam("partner_id") String partnerId,, allowableValues="INTERNAL, EXTERNAL" @DefaultValue("INTERNAL") @QueryParam("partner_type") PartnerType partnerType,, allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP" @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType, @Min(0) @DefaultValue("0") @QueryParam("start_index") Integer startIndex, @Min(1) @Max(250) @DefaultValue("25") @QueryParam("page_size") Integer pageSize, @QueryParam("bookmark") String bookmark,@Context SecurityContext securityContext);
     @DELETE
     @Path("/{business_id}/invites")
     @Consumes({ "application/json" })

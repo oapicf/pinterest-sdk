@@ -83,9 +83,9 @@ pub enum IntegrationsSlashGetListError {
 /// Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 pub async fn integrations_commerce_slash_del(configuration: &configuration::Configuration, external_business_id: &str) -> Result<(), Error<IntegrationsCommerceSlashDelError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_external_business_id = external_business_id;
+    let p_path_external_business_id = external_business_id;
 
-    let uri_str = format!("{}/integrations/commerce/{external_business_id}", configuration.base_path, external_business_id=crate::apis::urlencode(p_external_business_id));
+    let uri_str = format!("{}/integrations/commerce/{external_business_id}", configuration.base_path, external_business_id=crate::apis::urlencode(p_path_external_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -112,9 +112,9 @@ pub async fn integrations_commerce_slash_del(configuration: &configuration::Conf
 /// Get commerce integration metadata associated with the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 pub async fn integrations_commerce_slash_get(configuration: &configuration::Configuration, external_business_id: &str) -> Result<models::IntegrationMetadata, Error<IntegrationsCommerceSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_external_business_id = external_business_id;
+    let p_path_external_business_id = external_business_id;
 
-    let uri_str = format!("{}/integrations/commerce/{external_business_id}", configuration.base_path, external_business_id=crate::apis::urlencode(p_external_business_id));
+    let uri_str = format!("{}/integrations/commerce/{external_business_id}", configuration.base_path, external_business_id=crate::apis::urlencode(p_path_external_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -152,10 +152,10 @@ pub async fn integrations_commerce_slash_get(configuration: &configuration::Conf
 /// Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 pub async fn integrations_commerce_slash_patch(configuration: &configuration::Configuration, external_business_id: &str, integration_request_patch: Option<models::IntegrationRequestPatch>) -> Result<models::IntegrationMetadata, Error<IntegrationsCommerceSlashPatchError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_external_business_id = external_business_id;
-    let p_integration_request_patch = integration_request_patch;
+    let p_path_external_business_id = external_business_id;
+    let p_body_integration_request_patch = integration_request_patch;
 
-    let uri_str = format!("{}/integrations/commerce/{external_business_id}", configuration.base_path, external_business_id=crate::apis::urlencode(p_external_business_id));
+    let uri_str = format!("{}/integrations/commerce/{external_business_id}", configuration.base_path, external_business_id=crate::apis::urlencode(p_path_external_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -164,7 +164,7 @@ pub async fn integrations_commerce_slash_patch(configuration: &configuration::Co
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_integration_request_patch);
+    req_builder = req_builder.json(&p_body_integration_request_patch);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -194,7 +194,7 @@ pub async fn integrations_commerce_slash_patch(configuration: &configuration::Co
 /// Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 pub async fn integrations_commerce_slash_post(configuration: &configuration::Configuration, integration_request: Option<models::IntegrationRequest>) -> Result<models::IntegrationMetadata, Error<IntegrationsCommerceSlashPostError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_integration_request = integration_request;
+    let p_body_integration_request = integration_request;
 
     let uri_str = format!("{}/integrations/commerce", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -205,7 +205,7 @@ pub async fn integrations_commerce_slash_post(configuration: &configuration::Con
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_integration_request);
+    req_builder = req_builder.json(&p_body_integration_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -235,7 +235,7 @@ pub async fn integrations_commerce_slash_post(configuration: &configuration::Con
 /// This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 pub async fn integrations_logs_slash_post(configuration: &configuration::Configuration, integration_logs_request: models::IntegrationLogsRequest) -> Result<models::IntegrationLogsSuccessResponse, Error<IntegrationsLogsSlashPostError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_integration_logs_request = integration_logs_request;
+    let p_body_integration_logs_request = integration_logs_request;
 
     let uri_str = format!("{}/integrations/logs", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -246,7 +246,7 @@ pub async fn integrations_logs_slash_post(configuration: &configuration::Configu
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_integration_logs_request);
+    req_builder = req_builder.json(&p_body_integration_logs_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -276,9 +276,9 @@ pub async fn integrations_logs_slash_post(configuration: &configuration::Configu
 /// Get integration metadata by ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 pub async fn integrations_slash_get_by_id(configuration: &configuration::Configuration, id: &str) -> Result<models::IntegrationRecord, Error<IntegrationsSlashGetByIdError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_id = id;
+    let p_path_id = id;
 
-    let uri_str = format!("{}/integrations/{id}", configuration.base_path, id=crate::apis::urlencode(p_id));
+    let uri_str = format!("{}/integrations/{id}", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -316,16 +316,16 @@ pub async fn integrations_slash_get_by_id(configuration: &configuration::Configu
 /// Get integration metadata list. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
 pub async fn integrations_slash_get_list(configuration: &configuration::Configuration, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::IntegrationsGetList200Response, Error<IntegrationsSlashGetListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
 
     let uri_str = format!("{}/integrations", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

@@ -9,7 +9,48 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AudienceType* = object
-  ## Audience type
+type AudienceType* {.pure.} = enum
+  CUSTOMERLIST
+  VISITOR
+  ENGAGEMENT
+  ACTALIKE
+  PERSONA
+
+func `%`*(v: AudienceType): JsonNode =
+  result = case v:
+    of AudienceType.CUSTOMERLIST: %"CUSTOMER_LIST"
+    of AudienceType.VISITOR: %"VISITOR"
+    of AudienceType.ENGAGEMENT: %"ENGAGEMENT"
+    of AudienceType.ACTALIKE: %"ACTALIKE"
+    of AudienceType.PERSONA: %"PERSONA"
+
+func `$`*(v: AudienceType): string =
+  result = case v:
+    of AudienceType.CUSTOMERLIST: $("CUSTOMER_LIST")
+    of AudienceType.VISITOR: $("VISITOR")
+    of AudienceType.ENGAGEMENT: $("ENGAGEMENT")
+    of AudienceType.ACTALIKE: $("ACTALIKE")
+    of AudienceType.PERSONA: $("PERSONA")
+
+proc to*(node: JsonNode, T: typedesc[AudienceType]): AudienceType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AudienceType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CUSTOMER_LIST"):
+    return AudienceType.CUSTOMERLIST
+  of $("VISITOR"):
+    return AudienceType.VISITOR
+  of $("ENGAGEMENT"):
+    return AudienceType.ENGAGEMENT
+  of $("ACTALIKE"):
+    return AudienceType.ACTALIKE
+  of $("PERSONA"):
+    return AudienceType.PERSONA
+  else:
+    raise newException(ValueError, "Invalid enum value for AudienceType: " & strVal)
+

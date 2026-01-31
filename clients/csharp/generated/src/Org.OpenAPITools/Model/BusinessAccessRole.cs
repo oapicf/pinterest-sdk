@@ -315,7 +315,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BusinessAccessRole businessAccessRole, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(businessAccessRole.ToString());
+            writer.WriteStringValue(BusinessAccessRoleValueConverter.ToJsonValue(businessAccessRole).ToString());
         }
     }
 
@@ -346,14 +346,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the BusinessAccessRole to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="businessAccessRole"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BusinessAccessRole? businessAccessRole, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(businessAccessRole?.ToString() ?? "null");
+            writer.WriteStringValue(businessAccessRole.HasValue ? BusinessAccessRoleValueConverter.ToJsonValue(businessAccessRole.Value).ToString() : "null");
         }
     }
 }

@@ -53,13 +53,13 @@ namespace Org.OpenAPITools.Controllers
             //TODO: Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(204);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
 
             throw new NotImplementedException();
         }
@@ -88,15 +88,15 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdAccountGetSubscriptionResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"cryptographic_key\" : \"ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54\",\n  \"created_time\" : 1699209842000,\n  \"user_account_id\" : \"549755885175\",\n  \"webhook_url\" : \"https://webhook.example.com/xyz\",\n  \"lead_form_id\" : \"383791336903426390\",\n  \"cryptographic_algorithm\" : \"AES-256-GCM\",\n  \"id\" : \"8078432025948590686\",\n  \"api_version\" : \"v5\",\n  \"ad_account_id\" : \"549755885176\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -106,7 +106,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdAccountGetSubscriptionResponse>(exampleJson)
-            : default(AdAccountGetSubscriptionResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -132,11 +132,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdAccountsSubscriptionsGetList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"cryptographic_key\" : \"ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54\",\n    \"created_time\" : 1699209842000,\n    \"user_account_id\" : \"549755885175\",\n    \"webhook_url\" : \"https://webhook.example.com/xyz\",\n    \"lead_form_id\" : \"383791336903426390\",\n    \"cryptographic_algorithm\" : \"AES-256-GCM\",\n    \"id\" : \"8078432025948590686\",\n    \"api_version\" : \"v5\",\n    \"ad_account_id\" : \"549755885176\"\n  }, {\n    \"cryptographic_key\" : \"ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54\",\n    \"created_time\" : 1699209842000,\n    \"user_account_id\" : \"549755885175\",\n    \"webhook_url\" : \"https://webhook.example.com/xyz\",\n    \"lead_form_id\" : \"383791336903426390\",\n    \"cryptographic_algorithm\" : \"AES-256-GCM\",\n    \"id\" : \"8078432025948590686\",\n    \"api_version\" : \"v5\",\n    \"ad_account_id\" : \"549755885176\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -144,7 +144,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdAccountsSubscriptionsGetList200Response>(exampleJson)
-            : default(AdAccountsSubscriptionsGetList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -172,13 +172,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdAccountCreateSubscriptionResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"cryptographic_key\" : \"ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54\",\n  \"created_time\" : 1699209842000,\n  \"cryptographic_algorithm\" : \"AES-256-GCM\",\n  \"id\" : \"8078432025948590686\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -187,7 +187,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdAccountCreateSubscriptionResponse>(exampleJson)
-            : default(AdAccountCreateSubscriptionResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

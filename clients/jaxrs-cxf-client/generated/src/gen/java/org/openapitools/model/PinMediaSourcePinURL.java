@@ -1,14 +1,14 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.
- **/
+ * Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.
+ */
 @ApiModel(description="Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.")
 
 public class PinMediaSourcePinURL  {
@@ -44,12 +44,14 @@ PIN_URL(String.valueOf("pin_url"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private SourceTypeEnum sourceType;
 
-  @ApiModelProperty(value = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
  /**
-   * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
-  **/
+  * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
+  */
+  @ApiModelProperty(value = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
+
   private Boolean isAffiliateLink = false;
  /**
    * Get sourceType

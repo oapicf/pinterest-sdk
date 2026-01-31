@@ -182,8 +182,8 @@ namespace Org.OpenAPITools.Model
 
             if (catalogsFeedsCreateRequestDefaultLocale.CatalogsLocaleOption.IsSet && catalogsFeedsCreateRequestDefaultLocale.CatalogsLocaleOption.Value != null)
             {
-                CatalogsLocaleJsonConverter CatalogsLocaleJsonConverter = (CatalogsLocaleJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsFeedsCreateRequestDefaultLocale.CatalogsLocaleOption.Value.GetType()));
-                CatalogsLocaleJsonConverter.WriteProperties(writer, catalogsFeedsCreateRequestDefaultLocale.CatalogsLocaleOption.Value, jsonSerializerOptions);
+                CatalogsLocaleJsonConverter catalogsLocaleJsonConverter = (CatalogsLocaleJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsFeedsCreateRequestDefaultLocale.CatalogsLocaleOption.Value.GetType()));
+                catalogsLocaleJsonConverter.Write(writer, catalogsFeedsCreateRequestDefaultLocale.CatalogsLocaleOption.Value.Value, jsonSerializerOptions);
             }
 
             if (catalogsFeedsCreateRequestDefaultLocale.StringOption.IsSet && catalogsFeedsCreateRequestDefaultLocale.StringOption.Value != null)

@@ -37,8 +37,6 @@ use JMS\Serializer\Annotation\SerializedName;
 /**
  * Class representing the InviteBusinessRoleBinding model.
  *
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
- *
  * @package OpenAPI\Server\Model
  * @author  OpenAPI Generator team
  */
@@ -46,36 +44,6 @@ use JMS\Serializer\Annotation\SerializedName;
 class InviteBusinessRoleBinding 
 {
         /**
-     * Unique identifier for the business that created the invite/request.
-     *
-     * @var string|null
-     * @SerializedName("created_by_business_id")
-     * @Type("string")
-    */
-    #[Assert\Type("string")]
-    protected ?string $createdByBusinessId = null;
-
-    /**
-     * Unique identifier for the user that created the invite/request.
-     *
-     * @var string|null
-     * @SerializedName("created_by_user_id")
-     * @Type("string")
-    */
-    #[Assert\Type("string")]
-    protected ?string $createdByUserId = null;
-
-    /**
-     * Metadata for the user that updated the invite/request.
-     *
-     * @var BusinessAccessUserSummary|null
-     * @SerializedName("user")
-     * @Type("OpenAPI\Server\Model\BusinessAccessUserSummary")
-    */
-    #[Assert\Type("OpenAPI\Server\Model\BusinessAccessUserSummary")]
-    protected ?BusinessAccessUserSummary $user = null;
-
-    /**
      * Unique identifier of the invite/request.
      *
      * @var string|null
@@ -105,101 +73,50 @@ class InviteBusinessRoleBinding
     protected ?bool $isReceivedInvite = null;
 
     /**
+     * Metadata for the user that updated the invite/request.
+     *
+     * @var array|null
+     * @SerializedName("user")
+     * @Type("array")
+    */
+    #[Assert\Type("array")]
+    protected ?array $user = null;
+
+    /**
+     * Unique identifier for the business that created the invite/request.
+     *
+     * @var string|null
+     * @SerializedName("created_by_business_id")
+     * @Type("string")
+    */
+    #[Assert\Type("string")]
+    protected ?string $createdByBusinessId = null;
+
+    /**
+     * Unique identifier for the user that created the invite/request.
+     *
+     * @var string|null
+     * @SerializedName("created_by_user_id")
+     * @Type("string")
+    */
+    #[Assert\Type("string")]
+    protected ?string $createdByUserId = null;
+
+    /**
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(?array $data = null)
     {
         if (is_array($data)) {
-            $this->createdByBusinessId = array_key_exists('createdByBusinessId', $data) ? $data['createdByBusinessId'] : $this->createdByBusinessId;
-            $this->createdByUserId = array_key_exists('createdByUserId', $data) ? $data['createdByUserId'] : $this->createdByUserId;
-            $this->user = array_key_exists('user', $data) ? $data['user'] : $this->user;
             $this->id = array_key_exists('id', $data) ? $data['id'] : $this->id;
             $this->inviteData = array_key_exists('inviteData', $data) ? $data['inviteData'] : $this->inviteData;
             $this->isReceivedInvite = array_key_exists('isReceivedInvite', $data) ? $data['isReceivedInvite'] : $this->isReceivedInvite;
+            $this->user = array_key_exists('user', $data) ? $data['user'] : $this->user;
+            $this->createdByBusinessId = array_key_exists('createdByBusinessId', $data) ? $data['createdByBusinessId'] : $this->createdByBusinessId;
+            $this->createdByUserId = array_key_exists('createdByUserId', $data) ? $data['createdByUserId'] : $this->createdByUserId;
         }
     }
-
-    /**
-     * Gets createdByBusinessId.
-     *
-     * @return string|null
-     */
-    public function getCreatedByBusinessId(): ?string
-    {
-        return $this->createdByBusinessId;
-    }
-
-    /**
-    * Sets createdByBusinessId.
-    *
-    * @param string|null $createdByBusinessId  Unique identifier for the business that created the invite/request.
-    *
-    * @return $this
-    */
-    public function setCreatedByBusinessId(?string $createdByBusinessId = null): self
-    {
-        $this->createdByBusinessId = $createdByBusinessId;
-
-        return $this;
-    }
-
-
-
-
-    /**
-     * Gets createdByUserId.
-     *
-     * @return string|null
-     */
-    public function getCreatedByUserId(): ?string
-    {
-        return $this->createdByUserId;
-    }
-
-    /**
-    * Sets createdByUserId.
-    *
-    * @param string|null $createdByUserId  Unique identifier for the user that created the invite/request.
-    *
-    * @return $this
-    */
-    public function setCreatedByUserId(?string $createdByUserId = null): self
-    {
-        $this->createdByUserId = $createdByUserId;
-
-        return $this;
-    }
-
-
-
-
-    /**
-     * Gets user.
-     *
-     * @return BusinessAccessUserSummary|null
-     */
-    public function getUser(): ?BusinessAccessUserSummary
-    {
-        return $this->user;
-    }
-
-    /**
-    * Sets user.
-    *
-    * @param BusinessAccessUserSummary|null $user  Metadata for the user that updated the invite/request.
-    *
-    * @return $this
-    */
-    public function setUser(?BusinessAccessUserSummary $user = null): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-
-
 
     /**
      * Gets id.
@@ -275,6 +192,87 @@ class InviteBusinessRoleBinding
     public function setIsReceivedInvite(?bool $isReceivedInvite = null): self
     {
         $this->isReceivedInvite = $isReceivedInvite;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets user.
+     *
+     * @return array|null
+     */
+    public function getUser(): ?array
+    {
+        return $this->user;
+    }
+
+    /**
+    * Sets user.
+    *
+    * @param array|null $user  Metadata for the user that updated the invite/request.
+    *
+    * @return $this
+    */
+    public function setUser(?array $user = null): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets createdByBusinessId.
+     *
+     * @return string|null
+     */
+    public function getCreatedByBusinessId(): ?string
+    {
+        return $this->createdByBusinessId;
+    }
+
+    /**
+    * Sets createdByBusinessId.
+    *
+    * @param string|null $createdByBusinessId  Unique identifier for the business that created the invite/request.
+    *
+    * @return $this
+    */
+    public function setCreatedByBusinessId(?string $createdByBusinessId = null): self
+    {
+        $this->createdByBusinessId = $createdByBusinessId;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets createdByUserId.
+     *
+     * @return string|null
+     */
+    public function getCreatedByUserId(): ?string
+    {
+        return $this->createdByUserId;
+    }
+
+    /**
+    * Sets createdByUserId.
+    *
+    * @param string|null $createdByUserId  Unique identifier for the user that created the invite/request.
+    *
+    * @return $this
+    */
+    public function setCreatedByUserId(?string $createdByUserId = null): self
+    {
+        $this->createdByUserId = $createdByUserId;
 
         return $this;
     }

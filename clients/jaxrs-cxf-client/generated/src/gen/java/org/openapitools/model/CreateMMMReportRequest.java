@@ -14,22 +14,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CreateMMMReportRequest  {
   
-  @ApiModelProperty(required = true, value = "Name of the Marketing Mix Modeling (MMM) report")
  /**
-   * Name of the Marketing Mix Modeling (MMM) report
-  **/
+  * A List of countries for filtering
+  */
+  @ApiModelProperty(value = "A List of countries for filtering")
+
+  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
+
+ /**
+  * Name of the Marketing Mix Modeling (MMM) report
+  */
+  @ApiModelProperty(required = true, value = "Name of the Marketing Mix Modeling (MMM) report")
+
   private String reportName;
 
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
  /**
-   * Metric report start date (UTC). Format: YYYY-MM-DD
-  **/
+  * Metric report start date (UTC). Format: YYYY-MM-DD
+  */
+  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
+
   private String startDate;
 
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report end date (UTC). Format: YYYY-MM-DD")
  /**
-   * Metric report end date (UTC). Format: YYYY-MM-DD
-  **/
+  * Metric report end date (UTC). Format: YYYY-MM-DD
+  */
+  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report end date (UTC). Format: YYYY-MM-DD")
+
   private String endDate;
 
 public enum GranularityEnum {
@@ -62,10 +72,11 @@ DAY(String.valueOf("DAY")), WEEK(String.valueOf("WEEK"));
     }
 }
 
-  @ApiModelProperty(required = true, value = "DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.")
  /**
-   * DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
-  **/
+  * DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
+  */
+  @ApiModelProperty(required = true, value = "DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.")
+
   private GranularityEnum granularity;
 
 public enum LevelEnum {
@@ -98,29 +109,49 @@ CAMPAIGN_TARGETING(String.valueOf("CAMPAIGN_TARGETING")), AD_GROUP_TARGETING(Str
     }
 }
 
-  @ApiModelProperty(required = true, value = "Level of the report")
  /**
-   * Level of the report
-  **/
+  * Level of the report
+  */
+  @ApiModelProperty(required = true, value = "Level of the report")
+
   private LevelEnum level;
 
-  @ApiModelProperty(example = "[\"GENDER\"]", required = true, value = "List of targeting types")
  /**
-   * List of targeting types
-  **/
+  * List of targeting types
+  */
+  @ApiModelProperty(example = "[\"GENDER\"]", required = true, value = "List of targeting types")
+
   private List<MMMReportingTargetingType> targetingTypes = new ArrayList<>();
 
-  @ApiModelProperty(required = true, value = "Metric and entity columns")
  /**
-   * Metric and entity columns
-  **/
-  private List<MMMReportingColumn> columns = new ArrayList<>();
+  * Metric and entity columns
+  */
+  @ApiModelProperty(required = true, value = "Metric and entity columns")
 
-  @ApiModelProperty(value = "A List of countries for filtering")
+  private List<MMMReportingColumn> columns = new ArrayList<>();
  /**
    * A List of countries for filtering
+   * @return countries
   **/
-  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
+  @JsonProperty("countries")
+  public List<TargetingAdvertiserCountry> getCountries() {
+    return countries;
+  }
+
+  public void setCountries(List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
+  }
+
+  public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
+    return this;
+  }
+
+  public CreateMMMReportRequest addCountriesItem(TargetingAdvertiserCountry countriesItem) {
+    this.countries.add(countriesItem);
+    return this;
+  }
+
  /**
    * Name of the Marketing Mix Modeling (MMM) report
    * @return reportName
@@ -263,29 +294,6 @@ CAMPAIGN_TARGETING(String.valueOf("CAMPAIGN_TARGETING")), AD_GROUP_TARGETING(Str
     return this;
   }
 
- /**
-   * A List of countries for filtering
-   * @return countries
-  **/
-  @JsonProperty("countries")
-  public List<TargetingAdvertiserCountry> getCountries() {
-    return countries;
-  }
-
-  public void setCountries(List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-  }
-
-  public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-    return this;
-  }
-
-  public CreateMMMReportRequest addCountriesItem(TargetingAdvertiserCountry countriesItem) {
-    this.countries.add(countriesItem);
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -295,19 +303,19 @@ CAMPAIGN_TARGETING(String.valueOf("CAMPAIGN_TARGETING")), AD_GROUP_TARGETING(Str
       return false;
     }
     CreateMMMReportRequest createMMMReportRequest = (CreateMMMReportRequest) o;
-    return Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
+    return Objects.equals(this.countries, createMMMReportRequest.countries) &&
+        Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
         Objects.equals(this.startDate, createMMMReportRequest.startDate) &&
         Objects.equals(this.endDate, createMMMReportRequest.endDate) &&
         Objects.equals(this.granularity, createMMMReportRequest.granularity) &&
         Objects.equals(this.level, createMMMReportRequest.level) &&
         Objects.equals(this.targetingTypes, createMMMReportRequest.targetingTypes) &&
-        Objects.equals(this.columns, createMMMReportRequest.columns) &&
-        Objects.equals(this.countries, createMMMReportRequest.countries);
+        Objects.equals(this.columns, createMMMReportRequest.columns);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportName, startDate, endDate, granularity, level, targetingTypes, columns, countries);
+    return Objects.hash(countries, reportName, startDate, endDate, granularity, level, targetingTypes, columns);
   }
 
   @Override
@@ -315,6 +323,7 @@ CAMPAIGN_TARGETING(String.valueOf("CAMPAIGN_TARGETING")), AD_GROUP_TARGETING(Str
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateMMMReportRequest {\n");
     
+    sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
@@ -322,7 +331,6 @@ CAMPAIGN_TARGETING(String.valueOf("CAMPAIGN_TARGETING")), AD_GROUP_TARGETING(Str
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    targetingTypes: ").append(toIndentedString(targetingTypes)).append("\n");
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
-    sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("}");
     return sb.toString();
   }

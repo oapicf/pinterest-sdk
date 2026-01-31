@@ -41,18 +41,21 @@ FINISHED(String.valueOf("FINISHED")), IN_PROGRESS(String.valueOf("IN_PROGRESS"))
 }
 
   @ApiModelProperty(value = "")
+
   private ReportStatusEnum reportStatus;
 
-  @ApiModelProperty(value = "URL to download the report")
  /**
-   * URL to download the report
-  **/
+  * URL to download the report
+  */
+  @ApiModelProperty(value = "URL to download the report")
+
   private String url;
 
-  @ApiModelProperty(value = "Size of the report in bytes")
  /**
-   * Size of the report in bytes
-  **/
+  * Size of the report in bytes
+  */
+  @ApiModelProperty(value = "Size of the report in bytes")
+
   private BigDecimal size;
  /**
    * Get reportStatus

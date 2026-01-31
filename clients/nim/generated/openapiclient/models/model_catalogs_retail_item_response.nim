@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_type
 import model_item_attributes
@@ -17,6 +19,38 @@ import model_pin
 type CatalogsRetailItemResponse* = object
   ## Object describing a retail item record
   catalogType*: CatalogsType
-  itemId*: string ## The catalog retail item id in the merchant namespace
-  pins*: seq[Pin] ## The pins mapped to the item
-  attributes*: ItemAttributes
+  itemId*: Option[string] ## The catalog retail item id in the merchant namespace
+  pins*: Option[seq[Pin]] ## The pins mapped to the item
+  attributes*: Option[ItemAttributes]
+
+
+# Custom JSON deserialization for CatalogsRetailItemResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsRetailItemResponse]): CatalogsRetailItemResponse =
+  result = CatalogsRetailItemResponse()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogsType)
+    if node.hasKey("item_id") and node["item_id"].kind != JNull:
+      result.itemId = some(to(node["item_id"], typeof(result.itemId.get())))
+    if node.hasKey("pins") and node["pins"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["pins"]
+      if arrayNode.kind == JArray:
+        var arr: seq[Pin] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, Pin))
+        result.pins = some(arr)
+    if node.hasKey("attributes") and node["attributes"].kind != JNull:
+      result.attributes = some(to(node["attributes"], typeof(result.attributes.get())))
+
+# Custom JSON serialization for CatalogsRetailItemResponse with custom field names
+proc `%`*(obj: CatalogsRetailItemResponse): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  if obj.itemId.isSome():
+    result["item_id"] = %obj.itemId.get()
+  if obj.pins.isSome():
+    result["pins"] = %obj.pins.get()
+  if obj.attributes.isSome():
+    result["attributes"] = %obj.attributes.get()
+

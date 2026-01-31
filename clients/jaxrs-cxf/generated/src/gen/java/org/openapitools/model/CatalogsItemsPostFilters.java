@@ -29,22 +29,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsItemsPostFilters  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsType catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private List<String> itemIds = new ArrayList<>();
 
-  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
  /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-  **/
+  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  */
+  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+
   private String catalogId;
 
   @ApiModelProperty(required = true, value = "")
+
   private List<String> hotelIds = new ArrayList<>();
 
   @ApiModelProperty(required = true, value = "")
+
   private List<String> creativeAssetsIds = new ArrayList<>();
  /**
    * Get catalogType

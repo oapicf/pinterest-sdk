@@ -100,38 +100,34 @@ cJSON *lead_form_create_request_convertToJSON(lead_form_create_request_t *lead_f
     cJSON *item = cJSON_CreateObject();
 
     // lead_form_create_request->name
-    if (!lead_form_create_request->name) {
-        goto fail;
-    }
+    if(lead_form_create_request->name) {
     if(cJSON_AddStringToObject(item, "name", lead_form_create_request->name) == NULL) {
     goto fail; //String
+    }
     }
 
 
     // lead_form_create_request->privacy_policy_link
-    if (!lead_form_create_request->privacy_policy_link) {
-        goto fail;
-    }
+    if(lead_form_create_request->privacy_policy_link) {
     if(cJSON_AddStringToObject(item, "privacy_policy_link", lead_form_create_request->privacy_policy_link) == NULL) {
     goto fail; //String
+    }
     }
 
 
     // lead_form_create_request->has_accepted_terms
-    if (!lead_form_create_request->has_accepted_terms) {
-        goto fail;
-    }
+    if(lead_form_create_request->has_accepted_terms) {
     if(cJSON_AddBoolToObject(item, "has_accepted_terms", lead_form_create_request->has_accepted_terms) == NULL) {
     goto fail; //Bool
+    }
     }
 
 
     // lead_form_create_request->completion_message
-    if (!lead_form_create_request->completion_message) {
-        goto fail;
-    }
+    if(lead_form_create_request->completion_message) {
     if(cJSON_AddStringToObject(item, "completion_message", lead_form_create_request->completion_message) == NULL) {
     goto fail; //String
+    }
     }
 
 
@@ -157,9 +153,7 @@ cJSON *lead_form_create_request_convertToJSON(lead_form_create_request_t *lead_f
 
 
     // lead_form_create_request->questions
-    if (!lead_form_create_request->questions) {
-        goto fail;
-    }
+    if(lead_form_create_request->questions) {
     cJSON *questions = cJSON_AddArrayToObject(item, "questions");
     if(questions == NULL) {
     goto fail; //nonprimitive container
@@ -173,6 +167,7 @@ cJSON *lead_form_create_request_convertToJSON(lead_form_create_request_t *lead_f
     goto fail;
     }
     cJSON_AddItemToArray(questions, itemLocal);
+    }
     }
     }
 
@@ -222,14 +217,11 @@ lead_form_create_request_t *lead_form_create_request_parseFromJSON(cJSON *lead_f
     if (cJSON_IsNull(name)) {
         name = NULL;
     }
-    if (!name) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(name))
+    if (name) { 
+    if(!cJSON_IsString(name) && !cJSON_IsNull(name))
     {
     goto end; //String
+    }
     }
 
     // lead_form_create_request->privacy_policy_link
@@ -237,14 +229,11 @@ lead_form_create_request_t *lead_form_create_request_parseFromJSON(cJSON *lead_f
     if (cJSON_IsNull(privacy_policy_link)) {
         privacy_policy_link = NULL;
     }
-    if (!privacy_policy_link) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(privacy_policy_link))
+    if (privacy_policy_link) { 
+    if(!cJSON_IsString(privacy_policy_link) && !cJSON_IsNull(privacy_policy_link))
     {
     goto end; //String
+    }
     }
 
     // lead_form_create_request->has_accepted_terms
@@ -252,14 +241,11 @@ lead_form_create_request_t *lead_form_create_request_parseFromJSON(cJSON *lead_f
     if (cJSON_IsNull(has_accepted_terms)) {
         has_accepted_terms = NULL;
     }
-    if (!has_accepted_terms) {
-        goto end;
-    }
-
-    
+    if (has_accepted_terms) { 
     if(!cJSON_IsBool(has_accepted_terms))
     {
     goto end; //Bool
+    }
     }
 
     // lead_form_create_request->completion_message
@@ -267,14 +253,11 @@ lead_form_create_request_t *lead_form_create_request_parseFromJSON(cJSON *lead_f
     if (cJSON_IsNull(completion_message)) {
         completion_message = NULL;
     }
-    if (!completion_message) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(completion_message))
+    if (completion_message) { 
+    if(!cJSON_IsString(completion_message) && !cJSON_IsNull(completion_message))
     {
     goto end; //String
+    }
     }
 
     // lead_form_create_request->status
@@ -303,11 +286,7 @@ lead_form_create_request_t *lead_form_create_request_parseFromJSON(cJSON *lead_f
     if (cJSON_IsNull(questions)) {
         questions = NULL;
     }
-    if (!questions) {
-        goto end;
-    }
-
-    
+    if (questions) { 
     cJSON *questions_local_nonprimitive = NULL;
     if(!cJSON_IsArray(questions)){
         goto end; //nonprimitive container
@@ -323,6 +302,7 @@ lead_form_create_request_t *lead_form_create_request_parseFromJSON(cJSON *lead_f
         lead_form_question_t *questionsItem = lead_form_question_parseFromJSON(questions_local_nonprimitive);
 
         list_addElement(questionsList, questionsItem);
+    }
     }
 
     // lead_form_create_request->policy_links
@@ -351,13 +331,13 @@ lead_form_create_request_t *lead_form_create_request_parseFromJSON(cJSON *lead_f
 
 
     lead_form_create_request_local_var = lead_form_create_request_create_internal (
-        strdup(name->valuestring),
-        strdup(privacy_policy_link->valuestring),
-        has_accepted_terms->valueint,
-        strdup(completion_message->valuestring),
+        name && !cJSON_IsNull(name) ? strdup(name->valuestring) : NULL,
+        privacy_policy_link && !cJSON_IsNull(privacy_policy_link) ? strdup(privacy_policy_link->valuestring) : NULL,
+        has_accepted_terms ? has_accepted_terms->valueint : 0,
+        completion_message && !cJSON_IsNull(completion_message) ? strdup(completion_message->valuestring) : NULL,
         status ? status_local_nonprim : 0,
         disclosure_language && !cJSON_IsNull(disclosure_language) ? strdup(disclosure_language->valuestring) : NULL,
-        questionsList,
+        questions ? questionsList : NULL,
         policy_links ? policy_linksList : NULL
         );
 

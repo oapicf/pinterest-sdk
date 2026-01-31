@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Video ID-based media source
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceVideoID {
   /**
    * Gets or Sets sourceType
@@ -353,18 +353,10 @@ public class PinMediaSourceVideoID {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("source_type");
-    openapiFields.add("cover_image_url");
-    openapiFields.add("cover_image_content_type");
-    openapiFields.add("cover_image_data");
-    openapiFields.add("media_id");
-    openapiFields.add("is_standard");
+    openapiFields = new HashSet<String>(Arrays.asList("source_type", "cover_image_url", "cover_image_content_type", "cover_image_data", "media_id", "is_standard"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("source_type");
-    openapiRequiredFields.add("media_id");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("source_type", "media_id"));
   }
 
   /**
@@ -376,7 +368,7 @@ public class PinMediaSourceVideoID {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PinMediaSourceVideoID.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PinMediaSourceVideoID is not found in the empty JSON string", PinMediaSourceVideoID.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in PinMediaSourceVideoID is not found in the empty JSON string", PinMediaSourceVideoID.openapiRequiredFields.toString()));
         }
       }
 
@@ -384,37 +376,37 @@ public class PinMediaSourceVideoID {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!PinMediaSourceVideoID.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PinMediaSourceVideoID` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PinMediaSourceVideoID` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : PinMediaSourceVideoID.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("source_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `source_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `source_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_type").toString()));
       }
       // validate the required field `source_type`
       SourceTypeEnum.validateJsonElement(jsonObj.get("source_type"));
       if ((jsonObj.get("cover_image_url") != null && !jsonObj.get("cover_image_url").isJsonNull()) && !jsonObj.get("cover_image_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cover_image_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cover_image_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `cover_image_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cover_image_url").toString()));
       }
       if ((jsonObj.get("cover_image_content_type") != null && !jsonObj.get("cover_image_content_type").isJsonNull()) && !jsonObj.get("cover_image_content_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cover_image_content_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cover_image_content_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `cover_image_content_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cover_image_content_type").toString()));
       }
       // validate the optional field `cover_image_content_type`
       if (jsonObj.get("cover_image_content_type") != null && !jsonObj.get("cover_image_content_type").isJsonNull()) {
         CoverImageContentTypeEnum.validateJsonElement(jsonObj.get("cover_image_content_type"));
       }
       if ((jsonObj.get("cover_image_data") != null && !jsonObj.get("cover_image_data").isJsonNull()) && !jsonObj.get("cover_image_data").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cover_image_data` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cover_image_data").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `cover_image_data` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cover_image_data").toString()));
       }
       if (!jsonObj.get("media_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `media_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("media_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `media_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("media_id").toString()));
       }
   }
 

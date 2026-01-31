@@ -29,7 +29,7 @@ data class DeleteInvitesResultsResponseArrayItemsInner(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("invite") val invite: BaseInviteDataResponse? = null
-    ) {
+) {
 
 }
 

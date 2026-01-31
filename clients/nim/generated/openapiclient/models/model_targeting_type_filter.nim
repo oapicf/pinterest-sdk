@@ -9,9 +9,26 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ads_analytics_targeting_type
 
 type TargetingTypeFilter* = object
   ## 
-  targetingTypes*: seq[AdsAnalyticsTargetingType] ## List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+  targetingTypes*: Option[seq[AdsAnalyticsTargetingType]] ## List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+
+
+# Custom JSON deserialization for TargetingTypeFilter with custom field names
+proc to*(node: JsonNode, T: typedesc[TargetingTypeFilter]): TargetingTypeFilter =
+  result = TargetingTypeFilter()
+  if node.kind == JObject:
+    if node.hasKey("targeting_types") and node["targeting_types"].kind != JNull:
+      result.targetingTypes = some(to(node["targeting_types"], typeof(result.targetingTypes.get())))
+
+# Custom JSON serialization for TargetingTypeFilter with custom field names
+proc `%`*(obj: TargetingTypeFilter): JsonNode =
+  result = newJObject()
+  if obj.targetingTypes.isSome():
+    result["targeting_types"] = %obj.targetingTypes.get()
+

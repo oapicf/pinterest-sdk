@@ -17,14 +17,14 @@ export interface TopPinsAnalyticsResponse {
     sort_by?: TopPinsAnalyticsResponse.SortByEnum;
 }
 export namespace TopPinsAnalyticsResponse {
-    export type SortByEnum = 'ENGAGEMENT' | 'SAVE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK';
     export const SortByEnum = {
-        Engagement: 'ENGAGEMENT' as SortByEnum,
-        Save: 'SAVE' as SortByEnum,
-        Impression: 'IMPRESSION' as SortByEnum,
-        OutboundClick: 'OUTBOUND_CLICK' as SortByEnum,
-        PinClick: 'PIN_CLICK' as SortByEnum
-    };
+        Engagement: 'ENGAGEMENT',
+        Save: 'SAVE',
+        Impression: 'IMPRESSION',
+        OutboundClick: 'OUTBOUND_CLICK',
+        PinClick: 'PIN_CLICK'
+    } as const;
+    export type SortByEnum = typeof SortByEnum[keyof typeof SortByEnum];
 }
 
 

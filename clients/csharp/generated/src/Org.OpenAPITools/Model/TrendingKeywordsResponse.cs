@@ -122,8 +122,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "trends":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                trends = new Option<List<TrendingKeywordsResponseTrendsInner>?>(JsonSerializer.Deserialize<List<TrendingKeywordsResponseTrendsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            trends = new Option<List<TrendingKeywordsResponseTrendsInner>?>(JsonSerializer.Deserialize<List<TrendingKeywordsResponseTrendsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

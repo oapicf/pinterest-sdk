@@ -12,12 +12,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows  {
   
   @ApiModelProperty(value = "")
+
   private Integer clickWindowDays;
 
   @ApiModelProperty(value = "")
+
   private Integer engagementWindowDays;
 
   @ApiModelProperty(value = "")
+
   private Integer viewWindowDays;
  /**
    * Get clickWindowDays

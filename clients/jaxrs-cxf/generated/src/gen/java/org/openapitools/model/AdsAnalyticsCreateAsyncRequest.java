@@ -29,158 +29,197 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdsAnalyticsCreateAsyncRequest  {
   
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
  /**
-   * Metric report start date (UTC). Format: YYYY-MM-DD
-  **/
+  * Metric report start date (UTC). Format: YYYY-MM-DD
+  */
+  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report start date (UTC). Format: YYYY-MM-DD")
+
   private String startDate;
 
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report end date (UTC). Format: YYYY-MM-DD")
  /**
-   * Metric report end date (UTC). Format: YYYY-MM-DD
-  **/
+  * Metric report end date (UTC). Format: YYYY-MM-DD
+  */
+  @ApiModelProperty(example = "2020-12-20", required = true, value = "Metric report end date (UTC). Format: YYYY-MM-DD")
+
   private String endDate;
 
-  @ApiModelProperty(required = true, value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly")
-  @Valid
  /**
-   * TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-  **/
+  * TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
+  */
+  @ApiModelProperty(required = true, value = "TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly")
+
+  @Valid
+
   private Granularity granularity;
 
-  @ApiModelProperty(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.")
-  @Valid
  /**
-   * Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-  **/
+  * Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+  */
+  @ApiModelProperty(value = "Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.")
+
+  @Valid
+
   private ConversionAttributionWindowDays clickWindowDays = ConversionAttributionWindowDays.NUMBER_30;
 
-  @ApiModelProperty(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.")
-  @Valid
  /**
-   * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-  **/
+  * Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+  */
+  @ApiModelProperty(value = "Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.")
+
+  @Valid
+
   private ConversionAttributionWindowDays engagementWindowDays = ConversionAttributionWindowDays.NUMBER_30;
 
-  @ApiModelProperty(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.")
-  @Valid
  /**
-   * Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-  **/
+  * Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+  */
+  @ApiModelProperty(value = "Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.")
+
+  @Valid
+
   private ConversionAttributionWindowDays viewWindowDays = ConversionAttributionWindowDays.NUMBER_1;
 
-  @ApiModelProperty(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")
-  @Valid
  /**
-   * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-  **/
+  * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+  */
+  @ApiModelProperty(value = "The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.")
+
+  @Valid
+
   private ConversionReportTimeType conversionReportTime = "TIME_OF_AD_ACTION";
 
-  @ApiModelProperty(value = "List of types of attribution for the conversion report")
-  @Valid
  /**
-   * List of types of attribution for the conversion report
-  **/
+  * List of types of attribution for the conversion report
+  */
+  @ApiModelProperty(value = "List of types of attribution for the conversion report")
+
+  @Valid
+
   private List<ConversionReportAttributionType> attributionTypes = new ArrayList<>();
 
-  @ApiModelProperty(example = "[\"12345678\"]", value = "List of campaign ids")
  /**
-   * List of campaign ids
-  **/
+  * List of campaign ids
+  */
+  @ApiModelProperty(example = "[\"12345678\"]", value = "List of campaign ids")
+
   private List<@Pattern(regexp = "^\\d+$")String> campaignIds = new ArrayList<>();
 
-  @ApiModelProperty(example = "[\"RUNNING\",\"PAUSED\"]", value = "List of status values for filtering")
-  @Valid
  /**
-   * List of status values for filtering
-  **/
+  * List of status values for filtering
+  */
+  @ApiModelProperty(example = "[\"RUNNING\",\"PAUSED\"]", value = "List of status values for filtering")
+
+  @Valid
+
   private List<CampaignSummaryStatus> campaignStatuses = new ArrayList<>();
 
-  @ApiModelProperty(example = "[\"AWARENESS\",\"VIDEO_VIEW\"]", value = "List of values for filtering. [\"WEB_SESSIONS\"] in BETA.")
-  @Valid
  /**
-   * List of values for filtering. [\"WEB_SESSIONS\"] in BETA.
-  **/
+  * List of values for filtering. [\"WEB_SESSIONS\"] in BETA.
+  */
+  @ApiModelProperty(example = "[\"AWARENESS\",\"VIDEO_VIEW\"]", value = "List of values for filtering. [\"WEB_SESSIONS\"] in BETA.")
+
+  @Valid
+
   private List<ObjectiveType> campaignObjectiveTypes = new ArrayList<>();
 
-  @ApiModelProperty(example = "[\"12345678\"]", value = "List of ad group ids")
  /**
-   * List of ad group ids
-  **/
+  * List of ad group ids
+  */
+  @ApiModelProperty(example = "[\"12345678\"]", value = "List of ad group ids")
+
   private List<@Pattern(regexp = "^\\d+$")String> adGroupIds = new ArrayList<>();
 
-  @ApiModelProperty(example = "[\"RUNNING\",\"PAUSED\"]", value = "List of values for filtering")
-  @Valid
  /**
-   * List of values for filtering
-  **/
+  * List of values for filtering
+  */
+  @ApiModelProperty(example = "[\"RUNNING\",\"PAUSED\"]", value = "List of values for filtering")
+
+  @Valid
+
   private List<AdGroupSummaryStatus> adGroupStatuses = new ArrayList<>();
 
-  @ApiModelProperty(example = "[\"12345678\"]", value = "List of ad ids [This parameter is no supported for Product Item Level Reports]")
  /**
-   * List of ad ids [This parameter is no supported for Product Item Level Reports]
-  **/
+  * List of ad ids [This parameter is no supported for Product Item Level Reports]
+  */
+  @ApiModelProperty(example = "[\"12345678\"]", value = "List of ad ids [This parameter is no supported for Product Item Level Reports]")
+
   private List<@Pattern(regexp = "^\\d+$")String> adIds = new ArrayList<>();
 
-  @ApiModelProperty(example = "[\"APPROVED\",\"PAUSED\"]", value = "List of values for filtering [This parameter is not supported for Product Item Level Reports]")
-  @Valid
  /**
-   * List of values for filtering [This parameter is not supported for Product Item Level Reports]
-  **/
+  * List of values for filtering [This parameter is not supported for Product Item Level Reports]
+  */
+  @ApiModelProperty(example = "[\"APPROVED\",\"PAUSED\"]", value = "List of values for filtering [This parameter is not supported for Product Item Level Reports]")
+
+  @Valid
+
   private List<PinPromotionSummaryStatus> adStatuses = new ArrayList<>();
 
-  @ApiModelProperty(example = "[\"12345678\"]", value = "List of product group ids")
  /**
-   * List of product group ids
-  **/
+  * List of product group ids
+  */
+  @ApiModelProperty(example = "[\"12345678\"]", value = "List of product group ids")
+
   private List<@Pattern(regexp = "^\\d+$")String> productGroupIds = new ArrayList<>();
 
-  @ApiModelProperty(example = "[\"RUNNING\",\"PAUSED\"]", value = "List of values for filtering")
-  @Valid
  /**
-   * List of values for filtering
-  **/
+  * List of values for filtering
+  */
+  @ApiModelProperty(example = "[\"RUNNING\",\"PAUSED\"]", value = "List of values for filtering")
+
+  @Valid
+
   private List<ProductGroupSummaryStatus> productGroupStatuses = new ArrayList<>();
 
-  @ApiModelProperty(example = "[\"12345678\"]", value = "List of product item ids")
  /**
-   * List of product item ids
-  **/
+  * List of product item ids
+  */
+  @ApiModelProperty(example = "[\"12345678\"]", value = "List of product item ids")
+
   private List<@Pattern(regexp = "^\\d+$")String> productItemIds = new ArrayList<>();
 
-  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
-  @Valid
  /**
-   * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-  **/
+  * List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+  */
+  @ApiModelProperty(value = "List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.")
+
+  @Valid
+
   private List<AdsAnalyticsTargetingType> targetingTypes = new ArrayList<>();
 
-  @ApiModelProperty(value = "List of metrics filters")
-  @Valid
  /**
-   * List of metrics filters
-  **/
+  * List of metrics filters
+  */
+  @ApiModelProperty(value = "List of metrics filters")
+
+  @Valid
+
   private List<@Valid AdsAnalyticsMetricsFilter> metricsFilters = new ArrayList<>();
 
-  @ApiModelProperty(required = true, value = "Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.")
-  @Valid
  /**
-   * Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.
-  **/
+  * Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.
+  */
+  @ApiModelProperty(required = true, value = "Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.")
+
+  @Valid
+
   private List<ReportingColumnAsync> columns = new ArrayList<>();
 
-  @ApiModelProperty(required = true, value = "Level of the report")
-  @Valid
  /**
-   * Level of the report
-  **/
+  * Level of the report
+  */
+  @ApiModelProperty(required = true, value = "Level of the report")
+
+  @Valid
+
   private MetricsReportingLevel level;
 
-  @ApiModelProperty(value = "Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.")
-  @Valid
  /**
-   * Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
-  **/
+  * Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+  */
+  @ApiModelProperty(value = "Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.")
+
+  @Valid
+
   private DataOutputFormat reportFormat = "JSON";
 
 public enum PrimarySortEnum {
@@ -215,22 +254,25 @@ BY_ID(String.valueOf("BY_ID")), BY_DATE(String.valueOf("BY_DATE"));
     }
 }
 
-  @ApiModelProperty(example = "BY_ID", value = "Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.")
  /**
-   * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
-  **/
+  * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+  */
+  @ApiModelProperty(example = "BY_ID", value = "Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.")
+
   private PrimarySortEnum primarySort;
 
-  @ApiModelProperty(value = "Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.")
  /**
-   * Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
-  **/
+  * Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+  */
+  @ApiModelProperty(value = "Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.")
+
   private Integer startHour;
 
-  @ApiModelProperty(value = "Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.")
  /**
-   * Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
-  **/
+  * Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+  */
+  @ApiModelProperty(value = "Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.")
+
   private Integer endHour;
  /**
    * Metric report start date (UTC). Format: YYYY-MM-DD

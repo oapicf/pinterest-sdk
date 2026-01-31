@@ -22,17 +22,14 @@ import ../models/model_error
 import ../models/model_media_upload
 import ../models/model_media_upload_details
 import ../models/model_media_upload_request
-import ../models/model_media_list_200_response
+import ../models/model_media_list200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -59,11 +56,13 @@ proc mediaGet*(httpClient: HttpClient, mediaId: string): (Option[MediaUploadDeta
 
 proc mediaList*(httpClient: HttpClient, bookmark: string, pageSize: int): (Option[media_list_200_response], Response) =
   ## List media uploads
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/media" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/media" & "?" & url_encoded_query_params)
   constructResult[media_list_200_response](response)
 

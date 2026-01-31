@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -22,6 +22,8 @@ import com.google.gson.annotations.SerializedName;
 @ApiModel(description = "")
 public class CreateMMMReportRequest {
   
+  @SerializedName("countries")
+  private List<TargetingAdvertiserCountry> countries = null;
   @SerializedName("report_name")
   private String reportName = null;
   @SerializedName("start_date")
@@ -42,8 +44,17 @@ public class CreateMMMReportRequest {
   private List<MMMReportingTargetingType> targetingTypes = null;
   @SerializedName("columns")
   private List<MMMReportingColumn> columns = null;
-  @SerializedName("countries")
-  private List<TargetingAdvertiserCountry> countries = null;
+
+  /**
+   * A List of countries for filtering
+   **/
+  @ApiModelProperty(value = "A List of countries for filtering")
+  public List<TargetingAdvertiserCountry> getCountries() {
+    return countries;
+  }
+  public void setCountries(List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
+  }
 
   /**
    * Name of the Marketing Mix Modeling (MMM) report
@@ -122,17 +133,6 @@ public class CreateMMMReportRequest {
     this.columns = columns;
   }
 
-  /**
-   * A List of countries for filtering
-   **/
-  @ApiModelProperty(value = "A List of countries for filtering")
-  public List<TargetingAdvertiserCountry> getCountries() {
-    return countries;
-  }
-  public void setCountries(List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -143,19 +143,20 @@ public class CreateMMMReportRequest {
       return false;
     }
     CreateMMMReportRequest createMMMReportRequest = (CreateMMMReportRequest) o;
-    return (this.reportName == null ? createMMMReportRequest.reportName == null : this.reportName.equals(createMMMReportRequest.reportName)) &&
+    return (this.countries == null ? createMMMReportRequest.countries == null : this.countries.equals(createMMMReportRequest.countries)) &&
+        (this.reportName == null ? createMMMReportRequest.reportName == null : this.reportName.equals(createMMMReportRequest.reportName)) &&
         (this.startDate == null ? createMMMReportRequest.startDate == null : this.startDate.equals(createMMMReportRequest.startDate)) &&
         (this.endDate == null ? createMMMReportRequest.endDate == null : this.endDate.equals(createMMMReportRequest.endDate)) &&
         (this.granularity == null ? createMMMReportRequest.granularity == null : this.granularity.equals(createMMMReportRequest.granularity)) &&
         (this.level == null ? createMMMReportRequest.level == null : this.level.equals(createMMMReportRequest.level)) &&
         (this.targetingTypes == null ? createMMMReportRequest.targetingTypes == null : this.targetingTypes.equals(createMMMReportRequest.targetingTypes)) &&
-        (this.columns == null ? createMMMReportRequest.columns == null : this.columns.equals(createMMMReportRequest.columns)) &&
-        (this.countries == null ? createMMMReportRequest.countries == null : this.countries.equals(createMMMReportRequest.countries));
+        (this.columns == null ? createMMMReportRequest.columns == null : this.columns.equals(createMMMReportRequest.columns));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this.countries == null ? 0: this.countries.hashCode());
     result = 31 * result + (this.reportName == null ? 0: this.reportName.hashCode());
     result = 31 * result + (this.startDate == null ? 0: this.startDate.hashCode());
     result = 31 * result + (this.endDate == null ? 0: this.endDate.hashCode());
@@ -163,7 +164,6 @@ public class CreateMMMReportRequest {
     result = 31 * result + (this.level == null ? 0: this.level.hashCode());
     result = 31 * result + (this.targetingTypes == null ? 0: this.targetingTypes.hashCode());
     result = 31 * result + (this.columns == null ? 0: this.columns.hashCode());
-    result = 31 * result + (this.countries == null ? 0: this.countries.hashCode());
     return result;
   }
 
@@ -172,6 +172,7 @@ public class CreateMMMReportRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateMMMReportRequest {\n");
     
+    sb.append("  countries: ").append(countries).append("\n");
     sb.append("  reportName: ").append(reportName).append("\n");
     sb.append("  startDate: ").append(startDate).append("\n");
     sb.append("  endDate: ").append(endDate).append("\n");
@@ -179,7 +180,6 @@ public class CreateMMMReportRequest {
     sb.append("  level: ").append(level).append("\n");
     sb.append("  targetingTypes: ").append(targetingTypes).append("\n");
     sb.append("  columns: ").append(columns).append("\n");
-    sb.append("  countries: ").append(countries).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

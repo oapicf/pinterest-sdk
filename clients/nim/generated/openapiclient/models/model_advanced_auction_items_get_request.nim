@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_advanced_auction_items_get_record
 
@@ -16,3 +18,25 @@ type AdvancedAuctionItemsGetRequest* = object
   ## Request object used to get bid options values for a batch of retail catalog items
   catalogId*: string ## Catalog id pertaining to the retail item
   items*: seq[AdvancedAuctionItemsGetRecord] ## A list of retail catalog items to fetch bid options for
+
+
+# Custom JSON deserialization for AdvancedAuctionItemsGetRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[AdvancedAuctionItemsGetRequest]): AdvancedAuctionItemsGetRequest =
+  result = AdvancedAuctionItemsGetRequest()
+  if node.kind == JObject:
+    if node.hasKey("catalog_id"):
+      result.catalogId = to(node["catalog_id"], string)
+    if node.hasKey("items"):
+      # Array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        result.items = @[]
+        for item in arrayNode.items:
+          result.items.add(to(item, AdvancedAuctionItemsGetRecord))
+
+# Custom JSON serialization for AdvancedAuctionItemsGetRequest with custom field names
+proc `%`*(obj: AdvancedAuctionItemsGetRequest): JsonNode =
+  result = newJObject()
+  result["catalog_id"] = %obj.catalogId
+  result["items"] = %obj.items
+

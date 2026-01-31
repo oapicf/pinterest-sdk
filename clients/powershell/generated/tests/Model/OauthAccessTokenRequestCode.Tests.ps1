@@ -10,7 +10,7 @@ Describe -tag 'PSOpenAPITools' -name 'OauthAccessTokenRequestCode' {
     Context 'OauthAccessTokenRequestCode' {
         It 'Initialize-OauthAccessTokenRequestCode' {
             # a simple test to create an object
-            #$NewObject = Initialize-OauthAccessTokenRequestCode -GrantType "TEST_VALUE" -Code "TEST_VALUE" -RedirectUri "TEST_VALUE"
+            #$NewObject = Initialize-OauthAccessTokenRequestCode -Code "TEST_VALUE" -RedirectUri "TEST_VALUE" -GrantType "TEST_VALUE"
             #$NewObject | Should -BeOfType OauthAccessTokenRequestCode
             #$NewObject.property | Should -Be 0
         }

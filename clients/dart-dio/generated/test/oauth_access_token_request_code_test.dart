@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(OauthAccessTokenRequestCode, () {
-    // String grantType
-    test('to test the property `grantType`', () async {
-      // TODO
-    });
-
     // String code
     test('to test the property `code`', () async {
       // TODO
@@ -19,6 +14,11 @@ void main() {
 
     // String redirectUri
     test('to test the property `redirectUri`', () async {
+      // TODO
+    });
+
+    // String grantType
+    test('to test the property `grantType`', () async {
       // TODO
     });
 

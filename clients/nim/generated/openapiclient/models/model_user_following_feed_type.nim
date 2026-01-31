@@ -9,7 +9,43 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type UserFollowingFeedType* = object
-  ## Specifies the type of followees to be kept when filtering them.
+type UserFollowingFeedType* {.pure.} = enum
+  ALL
+  RANKED
+  CREATORONLY
+  RANKEDCREATORONLY
+
+func `%`*(v: UserFollowingFeedType): JsonNode =
+  result = case v:
+    of UserFollowingFeedType.ALL: %"ALL"
+    of UserFollowingFeedType.RANKED: %"RANKED"
+    of UserFollowingFeedType.CREATORONLY: %"CREATOR_ONLY"
+    of UserFollowingFeedType.RANKEDCREATORONLY: %"RANKED_CREATOR_ONLY"
+
+func `$`*(v: UserFollowingFeedType): string =
+  result = case v:
+    of UserFollowingFeedType.ALL: $("ALL")
+    of UserFollowingFeedType.RANKED: $("RANKED")
+    of UserFollowingFeedType.CREATORONLY: $("CREATOR_ONLY")
+    of UserFollowingFeedType.RANKEDCREATORONLY: $("RANKED_CREATOR_ONLY")
+
+proc to*(node: JsonNode, T: typedesc[UserFollowingFeedType]): UserFollowingFeedType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum UserFollowingFeedType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ALL"):
+    return UserFollowingFeedType.ALL
+  of $("RANKED"):
+    return UserFollowingFeedType.RANKED
+  of $("CREATOR_ONLY"):
+    return UserFollowingFeedType.CREATORONLY
+  of $("RANKED_CREATOR_ONLY"):
+    return UserFollowingFeedType.RANKEDCREATORONLY
+  else:
+    raise newException(ValueError, "Invalid enum value for UserFollowingFeedType: " & strVal)
+

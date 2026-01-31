@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_create_invites_results_response_array_items_inner
 
 type CreateInvitesResultsResponseArray* = object
   ## 
-  items*: seq[CreateInvitesResultsResponseArray_items_inner] ## List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
+  items*: Option[seq[CreateInvitesResultsResponseArray_items_inner]] ## List of invite/request creation status. If there is an error, an exception object will be returned. If the action was successfully completed, an invite object will be returned.
+

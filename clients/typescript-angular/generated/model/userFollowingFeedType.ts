@@ -12,16 +12,11 @@
 /**
  * Specifies the type of followees to be kept when filtering them.
  */
-export type UserFollowingFeedType = 'ALL' | 'RANKED' | 'CREATOR_ONLY' | 'RANKED_CREATOR_ONLY';
-
 export const UserFollowingFeedType = {
-
-    All: 'ALL' as UserFollowingFeedType,
-
-    Ranked: 'RANKED' as UserFollowingFeedType,
-
-    CreatorOnly: 'CREATOR_ONLY' as UserFollowingFeedType,
-
-    RankedCreatorOnly: 'RANKED_CREATOR_ONLY' as UserFollowingFeedType
-};
+    All: 'ALL',
+    Ranked: 'RANKED',
+    CreatorOnly: 'CREATOR_ONLY',
+    RankedCreatorOnly: 'RANKED_CREATOR_ONLY'
+} as const;
+export type UserFollowingFeedType = typeof UserFollowingFeedType[keyof typeof UserFollowingFeedType];
 

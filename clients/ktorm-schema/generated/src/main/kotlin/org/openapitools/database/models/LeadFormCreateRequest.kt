@@ -23,16 +23,16 @@ import .*
  * @param privacyPolicyLink A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
  * @param hasAcceptedTerms Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
  * @param completionMessage A message for people who complete the form to let them know what happens next.
- * @param questions List of questions to be displayed on the lead form.
  * @param status 
  * @param disclosureLanguage Additional disclosure language to be included in the lead form.
+ * @param questions List of questions to be displayed on the lead form.
  * @param policyLinks List of additional policy links to be displayed on the lead form.
  */
 object LeadFormCreateRequests : BaseTable<LeadFormCreateRequest>("LeadFormCreateRequest") {
-    val name = text("name") /* Internal name of the lead form. */
-    val privacyPolicyLink = text("privacy_policy_link") /* A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. */
-    val hasAcceptedTerms = boolean("has_accepted_terms") /* Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO */
-    val completionMessage = text("completion_message") /* A message for people who complete the form to let them know what happens next. */
+    val name = text("name") /* null */ /* Internal name of the lead form. */
+    val privacyPolicyLink = text("privacy_policy_link") /* null */ /* A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. */
+    val hasAcceptedTerms = boolean("has_accepted_terms") /* null */ /* Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO */
+    val completionMessage = text("completion_message") /* null */ /* A message for people who complete the form to let them know what happens next. */
     val status = long("status") /* null */
     val disclosureLanguage = text("disclosure_language") /* null */ /* Additional disclosure language to be included in the lead form. */
 
@@ -40,13 +40,13 @@ object LeadFormCreateRequests : BaseTable<LeadFormCreateRequest>("LeadFormCreate
      * Create an entity of type LeadFormCreateRequest from the model
      */
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = LeadFormCreateRequest(
-        name = row[name] ?: "" /* kotlin.String */ /* Internal name of the lead form. */,
-        privacyPolicyLink = row[privacyPolicyLink] ?: "" /* kotlin.String */ /* A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. */,
-        hasAcceptedTerms = row[hasAcceptedTerms] ?: false /* kotlin.Boolean */ /* Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO */,
-        completionMessage = row[completionMessage] ?: "" /* kotlin.String */ /* A message for people who complete the form to let them know what happens next. */,
-        questions = emptyList() /* kotlin.Array<LeadFormQuestion> */ /* List of questions to be displayed on the lead form. */,
+        name = row[name]  /* kotlin.String? */ /* Internal name of the lead form. */,
+        privacyPolicyLink = row[privacyPolicyLink]  /* kotlin.String? */ /* A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. */,
+        hasAcceptedTerms = row[hasAcceptedTerms]  /* kotlin.Boolean? */ /* Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO */,
+        completionMessage = row[completionMessage]  /* kotlin.String? */ /* A message for people who complete the form to let them know what happens next. */,
         status = LeadFormStatuss.createEntity(row, withReferences) /* LeadFormStatus? */,
         disclosureLanguage = row[disclosureLanguage]  /* kotlin.String? */ /* Additional disclosure language to be included in the lead form. */,
+        questions = emptyList() /* kotlin.Array<LeadFormQuestion>? */ /* List of questions to be displayed on the lead form. */,
         policyLinks = emptyList() /* kotlin.Array<LeadFormCommonPolicyLinksInner>? */ /* List of additional policy links to be displayed on the lead form. */
     )
 

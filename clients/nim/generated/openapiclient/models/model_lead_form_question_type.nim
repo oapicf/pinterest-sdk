@@ -9,7 +9,93 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type LeadFormQuestionType* = object
-  ## Lead form question type
+type LeadFormQuestionType* {.pure.} = enum
+  CUSTOM
+  FULLNAME
+  FIRSTNAME
+  LASTNAME
+  EMAIL
+  PHONENUMBER
+  ZIPCODE
+  GENDER
+  CITY
+  COUNTRY
+  STATEPROVINCE
+  ADDRESS
+  DATEOFBIRTH
+  AGE
+
+func `%`*(v: LeadFormQuestionType): JsonNode =
+  result = case v:
+    of LeadFormQuestionType.CUSTOM: %"CUSTOM"
+    of LeadFormQuestionType.FULLNAME: %"FULL_NAME"
+    of LeadFormQuestionType.FIRSTNAME: %"FIRST_NAME"
+    of LeadFormQuestionType.LASTNAME: %"LAST_NAME"
+    of LeadFormQuestionType.EMAIL: %"EMAIL"
+    of LeadFormQuestionType.PHONENUMBER: %"PHONE_NUMBER"
+    of LeadFormQuestionType.ZIPCODE: %"ZIP_CODE"
+    of LeadFormQuestionType.GENDER: %"GENDER"
+    of LeadFormQuestionType.CITY: %"CITY"
+    of LeadFormQuestionType.COUNTRY: %"COUNTRY"
+    of LeadFormQuestionType.STATEPROVINCE: %"STATE_PROVINCE"
+    of LeadFormQuestionType.ADDRESS: %"ADDRESS"
+    of LeadFormQuestionType.DATEOFBIRTH: %"DATE_OF_BIRTH"
+    of LeadFormQuestionType.AGE: %"AGE"
+
+func `$`*(v: LeadFormQuestionType): string =
+  result = case v:
+    of LeadFormQuestionType.CUSTOM: $("CUSTOM")
+    of LeadFormQuestionType.FULLNAME: $("FULL_NAME")
+    of LeadFormQuestionType.FIRSTNAME: $("FIRST_NAME")
+    of LeadFormQuestionType.LASTNAME: $("LAST_NAME")
+    of LeadFormQuestionType.EMAIL: $("EMAIL")
+    of LeadFormQuestionType.PHONENUMBER: $("PHONE_NUMBER")
+    of LeadFormQuestionType.ZIPCODE: $("ZIP_CODE")
+    of LeadFormQuestionType.GENDER: $("GENDER")
+    of LeadFormQuestionType.CITY: $("CITY")
+    of LeadFormQuestionType.COUNTRY: $("COUNTRY")
+    of LeadFormQuestionType.STATEPROVINCE: $("STATE_PROVINCE")
+    of LeadFormQuestionType.ADDRESS: $("ADDRESS")
+    of LeadFormQuestionType.DATEOFBIRTH: $("DATE_OF_BIRTH")
+    of LeadFormQuestionType.AGE: $("AGE")
+
+proc to*(node: JsonNode, T: typedesc[LeadFormQuestionType]): LeadFormQuestionType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum LeadFormQuestionType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CUSTOM"):
+    return LeadFormQuestionType.CUSTOM
+  of $("FULL_NAME"):
+    return LeadFormQuestionType.FULLNAME
+  of $("FIRST_NAME"):
+    return LeadFormQuestionType.FIRSTNAME
+  of $("LAST_NAME"):
+    return LeadFormQuestionType.LASTNAME
+  of $("EMAIL"):
+    return LeadFormQuestionType.EMAIL
+  of $("PHONE_NUMBER"):
+    return LeadFormQuestionType.PHONENUMBER
+  of $("ZIP_CODE"):
+    return LeadFormQuestionType.ZIPCODE
+  of $("GENDER"):
+    return LeadFormQuestionType.GENDER
+  of $("CITY"):
+    return LeadFormQuestionType.CITY
+  of $("COUNTRY"):
+    return LeadFormQuestionType.COUNTRY
+  of $("STATE_PROVINCE"):
+    return LeadFormQuestionType.STATEPROVINCE
+  of $("ADDRESS"):
+    return LeadFormQuestionType.ADDRESS
+  of $("DATE_OF_BIRTH"):
+    return LeadFormQuestionType.DATEOFBIRTH
+  of $("AGE"):
+    return LeadFormQuestionType.AGE
+  else:
+    raise newException(ValueError, "Invalid enum value for LeadFormQuestionType: " & strVal)
+

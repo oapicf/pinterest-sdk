@@ -34,9 +34,9 @@
     },
     {
       "name": "is_standard",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.",
-      "default": null
+      "default": true
     },
     {
       "name": "url",
@@ -89,9 +89,9 @@
     },
     {
       "name": "is_affiliate_link",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.",
-      "default": null
+      "default": false
     }
   ]
 

@@ -25,7 +25,6 @@ namespace OpenAPI\Server\Model;
 
 /**
  * InviteBusinessRoleBinding
- * @description An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
  */
 use Crell\Serde\Renaming\Cases;
 use Crell\Serde\Attributes as Serde;
@@ -35,15 +34,6 @@ class InviteBusinessRoleBinding
 {
     /**
     *
-    * Unique identifier for the business that created the invite/request.
-    * @param string $createdByBusinessId
-    *
-    * Unique identifier for the user that created the invite/request.
-    * @param string $createdByUserId
-    *
-    * Metadata for the user that updated the invite/request.
-    * @param \OpenAPI\Server\Model\BusinessAccessUserSummary $user
-    *
     * Unique identifier of the invite/request.
     * @param string $id
     *
@@ -52,15 +42,24 @@ class InviteBusinessRoleBinding
     *
     * Indicates whether the invite/request was received.
     * @param bool $isReceivedInvite
+    *
+    * Metadata for the user that updated the invite/request.
+    * @param object $user
+    *
+    * Unique identifier for the business that created the invite/request.
+    * @param string $createdByBusinessId
+    *
+    * Unique identifier for the user that created the invite/request.
+    * @param string $createdByUserId
     */
 
     public function __construct(
-        public string $createdByBusinessId,
-        public string $createdByUserId,
-        public \OpenAPI\Server\Model\BusinessAccessUserSummary $user,
         public string $id,
         public \OpenAPI\Server\Model\BaseInviteDataResponseInviteData $inviteData,
         public bool $isReceivedInvite,
+        public object $user,
+        public string $createdByBusinessId,
+        public string $createdByUserId,
     ) {}
 }
 

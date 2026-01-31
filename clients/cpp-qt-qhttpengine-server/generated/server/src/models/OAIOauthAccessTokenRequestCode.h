@@ -13,7 +13,7 @@
 /*
  * OAIOauthAccessTokenRequestCode.h
  *
- * A request to exchange an authorization code for an access token.
+ * 
  */
 
 #ifndef OAIOauthAccessTokenRequestCode_H
@@ -39,11 +39,6 @@ public:
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
 
-    QString getGrantType() const;
-    void setGrantType(const QString &grant_type);
-    bool is_grant_type_Set() const;
-    bool is_grant_type_Valid() const;
-
     QString getCode() const;
     void setCode(const QString &code);
     bool is_code_Set() const;
@@ -54,15 +49,16 @@ public:
     bool is_redirect_uri_Set() const;
     bool is_redirect_uri_Valid() const;
 
+    QString getGrantType() const;
+    void setGrantType(const QString &grant_type);
+    bool is_grant_type_Set() const;
+    bool is_grant_type_Valid() const;
+
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
     void initializeModel();
-
-    QString grant_type;
-    bool m_grant_type_isSet;
-    bool m_grant_type_isValid;
 
     QString code;
     bool m_code_isSet;
@@ -71,6 +67,10 @@ private:
     QString redirect_uri;
     bool m_redirect_uri_isSet;
     bool m_redirect_uri_isValid;
+
+    QString grant_type;
+    bool m_grant_type_isSet;
+    bool m_grant_type_isValid;
 };
 
 } // namespace OpenAPI

@@ -9,11 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_role
 
 type BusinessSharedAudienceResponse* = object
   ## 
-  audienceId*: string ## Audience ID that was shared
-  permissions*: seq[Role]
-  recipientBusinessIds*: seq[string] ## Business IDs that received the audience
+  audienceId*: Option[string] ## Audience ID that was shared
+  permissions*: Option[seq[Role]]
+  recipientBusinessIds*: Option[seq[string]] ## Business IDs that received the audience
+
+
+# Custom JSON deserialization for BusinessSharedAudienceResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[BusinessSharedAudienceResponse]): BusinessSharedAudienceResponse =
+  result = BusinessSharedAudienceResponse()
+  if node.kind == JObject:
+    if node.hasKey("audience_id") and node["audience_id"].kind != JNull:
+      result.audienceId = some(to(node["audience_id"], typeof(result.audienceId.get())))
+    if node.hasKey("permissions") and node["permissions"].kind != JNull:
+      result.permissions = some(to(node["permissions"], typeof(result.permissions.get())))
+    if node.hasKey("recipient_business_ids") and node["recipient_business_ids"].kind != JNull:
+      result.recipientBusinessIds = some(to(node["recipient_business_ids"], typeof(result.recipientBusinessIds.get())))
+
+# Custom JSON serialization for BusinessSharedAudienceResponse with custom field names
+proc `%`*(obj: BusinessSharedAudienceResponse): JsonNode =
+  result = newJObject()
+  if obj.audienceId.isSome():
+    result["audience_id"] = %obj.audienceId.get()
+  if obj.permissions.isSome():
+    result["permissions"] = %obj.permissions.get()
+  if obj.recipientBusinessIds.isSome():
+    result["recipient_business_ids"] = %obj.recipientBusinessIds.get()
+

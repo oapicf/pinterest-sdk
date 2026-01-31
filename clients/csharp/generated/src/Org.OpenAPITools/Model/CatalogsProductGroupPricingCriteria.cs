@@ -154,16 +154,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "values":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                values = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            values = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "inclusion":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                inclusion = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            inclusion = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "negated":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                negated = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            negated = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

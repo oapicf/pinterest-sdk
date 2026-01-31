@@ -10,7 +10,7 @@ Describe -tag 'PSOpenAPITools' -name 'InviteBusinessRoleBinding' {
     Context 'InviteBusinessRoleBinding' {
         It 'Initialize-InviteBusinessRoleBinding' {
             # a simple test to create an object
-            #$NewObject = Initialize-InviteBusinessRoleBinding -CreatedByBusinessId "TEST_VALUE" -CreatedByUserId "TEST_VALUE" -User "TEST_VALUE" -Id "TEST_VALUE" -InviteData "TEST_VALUE" -IsReceivedInvite "TEST_VALUE"
+            #$NewObject = Initialize-InviteBusinessRoleBinding -Id "TEST_VALUE" -InviteData "TEST_VALUE" -IsReceivedInvite "TEST_VALUE" -User "TEST_VALUE" -CreatedByBusinessId "TEST_VALUE" -CreatedByUserId "TEST_VALUE"
             #$NewObject | Should -BeOfType InviteBusinessRoleBinding
             #$NewObject.property | Should -Be 0
         }

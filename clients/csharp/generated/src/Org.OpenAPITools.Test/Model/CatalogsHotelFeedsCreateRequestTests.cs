@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -56,15 +55,6 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'DefaultCurrency'
-        /// </summary>
-        [Fact]
-        public void DefaultCurrencyTest()
-        {
-            // TODO unit test for the property 'DefaultCurrency'
-        }
-
-        /// <summary>
         /// Test the property 'Name'
         /// </summary>
         [Fact]
@@ -92,15 +82,6 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Credentials'
-        /// </summary>
-        [Fact]
-        public void CredentialsTest()
-        {
-            // TODO unit test for the property 'Credentials'
-        }
-
-        /// <summary>
         /// Test the property 'Location'
         /// </summary>
         [Fact]
@@ -110,21 +91,39 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'PreferredProcessingSchedule'
-        /// </summary>
-        [Fact]
-        public void PreferredProcessingScheduleTest()
-        {
-            // TODO unit test for the property 'PreferredProcessingSchedule'
-        }
-
-        /// <summary>
         /// Test the property 'CatalogType'
         /// </summary>
         [Fact]
         public void CatalogTypeTest()
         {
             // TODO unit test for the property 'CatalogType'
+        }
+
+        /// <summary>
+        /// Test the property 'DefaultCurrency'
+        /// </summary>
+        [Fact]
+        public void DefaultCurrencyTest()
+        {
+            // TODO unit test for the property 'DefaultCurrency'
+        }
+
+        /// <summary>
+        /// Test the property 'Credentials'
+        /// </summary>
+        [Fact]
+        public void CredentialsTest()
+        {
+            // TODO unit test for the property 'Credentials'
+        }
+
+        /// <summary>
+        /// Test the property 'PreferredProcessingSchedule'
+        /// </summary>
+        [Fact]
+        public void PreferredProcessingScheduleTest()
+        {
+            // TODO unit test for the property 'PreferredProcessingSchedule'
         }
 
         /// <summary>

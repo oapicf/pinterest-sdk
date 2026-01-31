@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,36 +12,44 @@ import org.openapitools.model.Pin;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object describing a retail item record
- **/
+ * Object describing a retail item record
+ */
 @ApiModel(description="Object describing a retail item record")
 
 public class CatalogsRetailItemResponse  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsType catalogType;
 
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog retail item id in the merchant namespace")
  /**
-   * The catalog retail item id in the merchant namespace
-  **/
+  * The catalog retail item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog retail item id in the merchant namespace")
+
   private String itemId;
 
-  @ApiModelProperty(value = "The pins mapped to the item")
-  @Valid
  /**
-   * The pins mapped to the item
-  **/
+  * The pins mapped to the item
+  */
+  @ApiModelProperty(value = "The pins mapped to the item")
+
+  @Valid
+
   private List<@Valid Pin> pins;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private ItemAttributes attributes;
  /**
    * Get catalogType

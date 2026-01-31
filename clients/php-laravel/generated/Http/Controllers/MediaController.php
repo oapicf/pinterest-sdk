@@ -66,12 +66,8 @@ class MediaController extends Controller
 
         $mediaUploadRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\MediaUploadRequest::class);
 
-        try {
-            $apiResult = $this->api->mediaCreate($mediaUploadRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->mediaCreate($mediaUploadRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MediaUpload) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 201);
@@ -114,12 +110,8 @@ class MediaController extends Controller
         }
 
 
-        try {
-            $apiResult = $this->api->mediaGet($mediaId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->mediaGet($mediaId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MediaUploadDetails) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -172,12 +164,8 @@ class MediaController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->mediaList($bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->mediaList($bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MediaList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

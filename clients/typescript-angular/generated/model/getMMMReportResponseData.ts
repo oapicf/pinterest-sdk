@@ -15,15 +15,15 @@ export interface GetMMMReportResponseData {
     size?: number | null;
 }
 export namespace GetMMMReportResponseData {
-    export type ReportStatusEnum = 'DOES_NOT_EXIST' | 'FINISHED' | 'IN_PROGRESS' | 'EXPIRED' | 'FAILED' | 'CANCELLED';
     export const ReportStatusEnum = {
-        DoesNotExist: 'DOES_NOT_EXIST' as ReportStatusEnum,
-        Finished: 'FINISHED' as ReportStatusEnum,
-        InProgress: 'IN_PROGRESS' as ReportStatusEnum,
-        Expired: 'EXPIRED' as ReportStatusEnum,
-        Failed: 'FAILED' as ReportStatusEnum,
-        Cancelled: 'CANCELLED' as ReportStatusEnum
-    };
+        DoesNotExist: 'DOES_NOT_EXIST',
+        Finished: 'FINISHED',
+        InProgress: 'IN_PROGRESS',
+        Expired: 'EXPIRED',
+        Failed: 'FAILED',
+        Cancelled: 'CANCELLED'
+    } as const;
+    export type ReportStatusEnum = typeof ReportStatusEnum[keyof typeof ReportStatusEnum];
 }
 
 

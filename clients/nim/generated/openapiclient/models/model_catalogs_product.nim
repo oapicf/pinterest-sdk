@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_product
 import model_catalogs_creative_assets_product_metadata
@@ -17,8 +19,38 @@ import model_catalogs_retail_product
 import model_catalogs_type
 import model_pin
 
+# OneOf type
+type CatalogsProductKind* {.pure.} = enum
+  CatalogsRetailProductVariant
+  CatalogsHotelProductVariant
+  CatalogsCreativeAssetsProductVariant
+
 type CatalogsProduct* = object
   ## Catalogs product for all verticals
-  catalogType*: CatalogsType
-  metadata*: CatalogsCreativeAssetsProductMetadata
-  pin*: Pin
+  case kind*: CatalogsProductKind
+  of CatalogsProductKind.CatalogsRetailProductVariant:
+    CatalogsRetailProductValue*: CatalogsRetailProduct
+  of CatalogsProductKind.CatalogsHotelProductVariant:
+    CatalogsHotelProductValue*: CatalogsHotelProduct
+  of CatalogsProductKind.CatalogsCreativeAssetsProductVariant:
+    CatalogsCreativeAssetsProductValue*: CatalogsCreativeAssetsProduct
+
+proc to*(node: JsonNode, T: typedesc[CatalogsProduct]): CatalogsProduct =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsProduct(kind: CatalogsProductKind.CatalogsRetailProductVariant, CatalogsRetailProductValue: to(node, CatalogsRetailProduct))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailProduct: ", e.msg
+  try:
+    return CatalogsProduct(kind: CatalogsProductKind.CatalogsHotelProductVariant, CatalogsHotelProductValue: to(node, CatalogsHotelProduct))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelProduct: ", e.msg
+  try:
+    return CatalogsProduct(kind: CatalogsProductKind.CatalogsCreativeAssetsProductVariant, CatalogsCreativeAssetsProductValue: to(node, CatalogsCreativeAssetsProduct))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsProduct: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsProduct. JSON: " & $node)
+

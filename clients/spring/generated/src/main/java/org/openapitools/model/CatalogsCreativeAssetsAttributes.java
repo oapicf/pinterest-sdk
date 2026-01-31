@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * CatalogsCreativeAssetsAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsAttributes {
 
   private @Nullable String title;
@@ -53,7 +53,7 @@ public class CatalogsCreativeAssetsAttributes {
 
   private @Nullable String videoLink;
 
-  public CatalogsCreativeAssetsAttributes title(String title) {
+  public CatalogsCreativeAssetsAttributes title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -65,15 +65,15 @@ public class CatalogsCreativeAssetsAttributes {
   
   @Schema(name = "title", description = "The name of the creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
-  public String getTitle() {
+  public @Nullable String getTitle() {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
-  public CatalogsCreativeAssetsAttributes description(String description) {
+  public CatalogsCreativeAssetsAttributes description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -85,15 +85,15 @@ public class CatalogsCreativeAssetsAttributes {
   
   @Schema(name = "description", description = "Brief description of the creative assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
-  public String getDescription() {
+  public @Nullable String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
-  public CatalogsCreativeAssetsAttributes link(String link) {
+  public CatalogsCreativeAssetsAttributes link(@Nullable String link) {
     this.link = link;
     return this;
   }
@@ -105,11 +105,11 @@ public class CatalogsCreativeAssetsAttributes {
   
   @Schema(name = "link", description = "Link to the creative assets page.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
-  public String getLink() {
+  public @Nullable String getLink() {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@Nullable String link) {
     this.link = link;
   }
 
@@ -293,7 +293,7 @@ public class CatalogsCreativeAssetsAttributes {
     this.visibility = visibility;
   }
 
-  public CatalogsCreativeAssetsAttributes imageLink(String imageLink) {
+  public CatalogsCreativeAssetsAttributes imageLink(@Nullable String imageLink) {
     this.imageLink = imageLink;
     return this;
   }
@@ -305,15 +305,15 @@ public class CatalogsCreativeAssetsAttributes {
   
   @Schema(name = "image_link", example = "https://scene.example.com/image/image_v2.jpg", description = "The creative assets image.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("image_link")
-  public String getImageLink() {
+  public @Nullable String getImageLink() {
     return imageLink;
   }
 
-  public void setImageLink(String imageLink) {
+  public void setImageLink(@Nullable String imageLink) {
     this.imageLink = imageLink;
   }
 
-  public CatalogsCreativeAssetsAttributes videoLink(String videoLink) {
+  public CatalogsCreativeAssetsAttributes videoLink(@Nullable String videoLink) {
     this.videoLink = videoLink;
     return this;
   }
@@ -325,11 +325,11 @@ public class CatalogsCreativeAssetsAttributes {
   
   @Schema(name = "video_link", example = "https://scene.example.com/image/image_v2.mp4", description = "The creative assets video.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("video_link")
-  public String getVideoLink() {
+  public @Nullable String getVideoLink() {
     return videoLink;
   }
 
-  public void setVideoLink(String videoLink) {
+  public void setVideoLink(@Nullable String videoLink) {
     this.videoLink = videoLink;
   }
 

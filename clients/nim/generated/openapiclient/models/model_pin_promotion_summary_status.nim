@@ -9,7 +9,63 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type PinPromotionSummaryStatus* = object
-  ## Summary status for pin promotions
+type PinPromotionSummaryStatus* {.pure.} = enum
+  APPROVED
+  PAUSED
+  PENDING
+  REJECTED
+  ADVERTISERDISABLED
+  ARCHIVED
+  DRAFT
+  DELETEDDRAFT
+
+func `%`*(v: PinPromotionSummaryStatus): JsonNode =
+  result = case v:
+    of PinPromotionSummaryStatus.APPROVED: %"APPROVED"
+    of PinPromotionSummaryStatus.PAUSED: %"PAUSED"
+    of PinPromotionSummaryStatus.PENDING: %"PENDING"
+    of PinPromotionSummaryStatus.REJECTED: %"REJECTED"
+    of PinPromotionSummaryStatus.ADVERTISERDISABLED: %"ADVERTISER_DISABLED"
+    of PinPromotionSummaryStatus.ARCHIVED: %"ARCHIVED"
+    of PinPromotionSummaryStatus.DRAFT: %"DRAFT"
+    of PinPromotionSummaryStatus.DELETEDDRAFT: %"DELETED_DRAFT"
+
+func `$`*(v: PinPromotionSummaryStatus): string =
+  result = case v:
+    of PinPromotionSummaryStatus.APPROVED: $("APPROVED")
+    of PinPromotionSummaryStatus.PAUSED: $("PAUSED")
+    of PinPromotionSummaryStatus.PENDING: $("PENDING")
+    of PinPromotionSummaryStatus.REJECTED: $("REJECTED")
+    of PinPromotionSummaryStatus.ADVERTISERDISABLED: $("ADVERTISER_DISABLED")
+    of PinPromotionSummaryStatus.ARCHIVED: $("ARCHIVED")
+    of PinPromotionSummaryStatus.DRAFT: $("DRAFT")
+    of PinPromotionSummaryStatus.DELETEDDRAFT: $("DELETED_DRAFT")
+
+proc to*(node: JsonNode, T: typedesc[PinPromotionSummaryStatus]): PinPromotionSummaryStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum PinPromotionSummaryStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("APPROVED"):
+    return PinPromotionSummaryStatus.APPROVED
+  of $("PAUSED"):
+    return PinPromotionSummaryStatus.PAUSED
+  of $("PENDING"):
+    return PinPromotionSummaryStatus.PENDING
+  of $("REJECTED"):
+    return PinPromotionSummaryStatus.REJECTED
+  of $("ADVERTISER_DISABLED"):
+    return PinPromotionSummaryStatus.ADVERTISERDISABLED
+  of $("ARCHIVED"):
+    return PinPromotionSummaryStatus.ARCHIVED
+  of $("DRAFT"):
+    return PinPromotionSummaryStatus.DRAFT
+  of $("DELETED_DRAFT"):
+    return PinPromotionSummaryStatus.DELETEDDRAFT
+  else:
+    raise newException(ValueError, "Invalid enum value for PinPromotionSummaryStatus: " & strVal)
+

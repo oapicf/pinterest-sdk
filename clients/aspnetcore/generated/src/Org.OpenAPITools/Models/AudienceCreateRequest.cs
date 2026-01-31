@@ -60,11 +60,12 @@ namespace Org.OpenAPITools.Models
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets AudienceType
+        /// &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
         /// </summary>
+        /// <value>&lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.</value>
         [Required]
-        [DataMember(Name="audience_type", EmitDefaultValue=false)]
-        public AudienceCreateRequest1AudienceType AudienceType { get; set; }
+        [DataMember(Name="audience_type", EmitDefaultValue=true)]
+        public AudienceType AudienceType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,7 +138,7 @@ namespace Org.OpenAPITools.Models
                 ) && 
                 (
                     AudienceType == other.AudienceType ||
-                    AudienceType != null &&
+                    
                     AudienceType.Equals(other.AudienceType)
                 );
         }
@@ -160,7 +161,7 @@ namespace Org.OpenAPITools.Models
                     hashCode = hashCode * 59 + Rule.GetHashCode();
                     if (Description != null)
                     hashCode = hashCode * 59 + Description.GetHashCode();
-                    if (AudienceType != null)
+                    
                     hashCode = hashCode * 59 + AudienceType.GetHashCode();
                 return hashCode;
             }

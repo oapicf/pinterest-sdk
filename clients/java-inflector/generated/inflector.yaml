@@ -84,7 +84,6 @@ AudienceCategory : org.openapitools.model.AudienceCategory
 AudienceCommon : org.openapitools.model.AudienceCommon
 AudienceCreateCustomRequest : org.openapitools.model.AudienceCreateCustomRequest
 AudienceCreateRequest : org.openapitools.model.AudienceCreateRequest
-AudienceCreateRequest1AudienceType : org.openapitools.model.AudienceCreateRequest1AudienceType
 AudienceDataParty : org.openapitools.model.AudienceDataParty
 AudienceDefinition : org.openapitools.model.AudienceDefinition
 AudienceDefinitionResponse : org.openapitools.model.AudienceDefinitionResponse
@@ -262,7 +261,6 @@ CatalogsItemsDeleteDiscontinuedBatchRequest : org.openapitools.model.CatalogsIte
 CatalogsItemsFilters : org.openapitools.model.CatalogsItemsFilters
 CatalogsItemsPostFilters : org.openapitools.model.CatalogsItemsPostFilters
 CatalogsItemsRequest : org.openapitools.model.CatalogsItemsRequest
-CatalogsItemsRequestLanguage : org.openapitools.model.CatalogsItemsRequestLanguage
 CatalogsItemsUpdateBatchRequest : org.openapitools.model.CatalogsItemsUpdateBatchRequest
 CatalogsItemsUpsertBatchRequest : org.openapitools.model.CatalogsItemsUpsertBatchRequest
 CatalogsList200Response : org.openapitools.model.CatalogsList200Response
@@ -596,7 +594,6 @@ PinMediaWithVideos : org.openapitools.model.PinMediaWithVideos
 PinPromotionSummaryStatus : org.openapitools.model.PinPromotionSummaryStatus
 PinUpdate : org.openapitools.model.PinUpdate
 PinUpdateCarouselSlotsInner : org.openapitools.model.PinUpdateCarouselSlotsInner
-PinsAnalyticsMetricTypesParameterInner : org.openapitools.model.PinsAnalyticsMetricTypesParameterInner
 PinsList200Response : org.openapitools.model.PinsList200Response
 PinsSaveRequest : org.openapitools.model.PinsSaveRequest
 PinterestTagEventData : org.openapitools.model.PinterestTagEventData

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type Status* {.pure.} = enum
@@ -18,17 +20,48 @@ type Status* {.pure.} = enum
 type ConversionApiResponseEventsInner* = object
   ## 
   status*: Status ## Whether the event was processed successfully.
-  errorMessage*: string ## Error message containing more information about why the event failed to be processed.
-  warningMessage*: string ## Warning messages about any fields in the event which are not standard. These are not critical to event processing.
+  errorMessage*: Option[string] ## Error message containing more information about why the event failed to be processed.
+  warningMessage*: Option[string] ## Warning messages about any fields in the event which are not standard. These are not critical to event processing.
 
 func `%`*(v: Status): JsonNode =
-  let str = case v:
-    of Status.Failed: "failed"
-    of Status.Processed: "processed"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Status.Failed: %"failed"
+    of Status.Processed: %"processed"
 func `$`*(v: Status): string =
   result = case v:
-    of Status.Failed: "failed"
-    of Status.Processed: "processed"
+    of Status.Failed: $("failed")
+    of Status.Processed: $("processed")
+
+proc to*(node: JsonNode, T: typedesc[Status]): Status =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Status, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("failed"):
+    return Status.Failed
+  of $("processed"):
+    return Status.Processed
+  else:
+    raise newException(ValueError, "Invalid enum value for Status: " & strVal)
+
+
+# Custom JSON deserialization for ConversionApiResponseEventsInner with custom field names
+proc to*(node: JsonNode, T: typedesc[ConversionApiResponseEventsInner]): ConversionApiResponseEventsInner =
+  result = ConversionApiResponseEventsInner()
+  if node.kind == JObject:
+    if node.hasKey("status"):
+      result.status = to(node["status"], Status)
+    if node.hasKey("error_message") and node["error_message"].kind != JNull:
+      result.errorMessage = some(to(node["error_message"], typeof(result.errorMessage.get())))
+    if node.hasKey("warning_message") and node["warning_message"].kind != JNull:
+      result.warningMessage = some(to(node["warning_message"], typeof(result.warningMessage.get())))
+
+# Custom JSON serialization for ConversionApiResponseEventsInner with custom field names
+proc `%`*(obj: ConversionApiResponseEventsInner): JsonNode =
+  result = newJObject()
+  result["status"] = %obj.status
+  if obj.errorMessage.isSome():
+    result["error_message"] = %obj.errorMessage.get()
+  if obj.warningMessage.isSome():
+    result["warning_message"] = %obj.warningMessage.get()
+

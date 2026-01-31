@@ -14,16 +14,16 @@ package org.openapitools.client.model
 import org.openapitools.client.core.ApiModel
 
 case class InviteBusinessRoleBinding (
-  /* Unique identifier for the business that created the invite/request. */
-  createdByBusinessId: Option[String] = None,
-  /* Unique identifier for the user that created the invite/request. */
-  createdByUserId: Option[String] = None,
-  /* Metadata for the user that updated the invite/request. */
-  user: Option[BusinessAccessUserSummary] = None,
   /* Unique identifier of the invite/request. */
   id: Option[String] = None,
   inviteData: Option[BaseInviteDataResponseInviteData] = None,
   /* Indicates whether the invite/request was received. */
-  isReceivedInvite: Option[Boolean] = None
+  isReceivedInvite: Option[Boolean] = None,
+  /* Metadata for the user that updated the invite/request. */
+  user: Option[Any] = None,
+  /* Unique identifier for the business that created the invite/request. */
+  createdByBusinessId: Option[String] = None,
+  /* Unique identifier for the user that created the invite/request. */
+  createdByUserId: Option[String] = None
 ) extends ApiModel
 

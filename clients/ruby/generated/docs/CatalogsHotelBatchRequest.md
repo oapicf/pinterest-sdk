@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **catalog_type** | **String** |  |  |
 | **country** | [**Country**](Country.md) |  |  |
-| **language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  |  |
+| **language** | **String** | We recommend using the CatalogsLocale values. |  |
 | **items** | [**Array&lt;CatalogsHotelBatchItem&gt;**](CatalogsHotelBatchItem.md) | Array with catalogs item operations |  |
 | **catalog_id** | **String** | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional] |
 

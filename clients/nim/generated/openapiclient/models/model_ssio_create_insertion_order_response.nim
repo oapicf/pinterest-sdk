@@ -9,8 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type SSIOCreateInsertionOrderResponse* = object
   ## 
-  pinOrderId*: string ## Salesforce order id
+  pinOrderId*: Option[string] ## Salesforce order id
+
+
+# Custom JSON deserialization for SSIOCreateInsertionOrderResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[SSIOCreateInsertionOrderResponse]): SSIOCreateInsertionOrderResponse =
+  result = SSIOCreateInsertionOrderResponse()
+  if node.kind == JObject:
+    if node.hasKey("pin_order_id") and node["pin_order_id"].kind != JNull:
+      result.pinOrderId = some(to(node["pin_order_id"], typeof(result.pinOrderId.get())))
+
+# Custom JSON serialization for SSIOCreateInsertionOrderResponse with custom field names
+proc `%`*(obj: SSIOCreateInsertionOrderResponse): JsonNode =
+  result = newJObject()
+  if obj.pinOrderId.isSome():
+    result["pin_order_id"] = %obj.pinOrderId.get()
+

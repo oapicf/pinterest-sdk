@@ -29,7 +29,7 @@ data class AdGroupAudienceSizingRequestKeywordsInner(
 
     @Schema(example = "null", required = true, description = "Keyword value (120 chars max).")
     @get:JsonProperty("value", required = true) val `value`: kotlin.String
-    ) {
+) {
 
 }
 

@@ -12,6 +12,9 @@
 package org.openapitools.server.model
 
 case class CreateMMMReportRequest(
+  /* A List of countries for filtering */
+  countries: Option[List[TargetingAdvertiserCountry]],
+
   /* Name of the Marketing Mix Modeling (MMM) report */
   reportName: String,
 
@@ -31,9 +34,6 @@ case class CreateMMMReportRequest(
   targetingTypes: List[MMMReportingTargetingType],
 
   /* Metric and entity columns */
-  columns: List[MMMReportingColumn],
-
-  /* A List of countries for filtering */
-  countries: Option[List[TargetingAdvertiserCountry]]
+  columns: List[MMMReportingColumn]
 
  )

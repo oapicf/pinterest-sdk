@@ -136,8 +136,7 @@ namespace Org.OpenAPITools.Model
                                 values = new Option<NonNullableCatalogsCurrency?>(NonNullableCatalogsCurrencyValueConverter.FromStringOrDefault(valuesRawValue));
                             break;
                         case "negated":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                negated = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            negated = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

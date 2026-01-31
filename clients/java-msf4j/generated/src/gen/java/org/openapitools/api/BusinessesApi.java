@@ -77,7 +77,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the businesses API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessesApi  {
    private final BusinessesApiService delegate = BusinessesApiServiceFactory.getBusinessesApi();
 
@@ -338,7 +338,7 @@ public class BusinessesApi  {
         @io.swagger.annotations.ApiResponse(code = 200, message = "Unexpected error", response = BusinessPartnerAssetAccessGet200Response.class) })
     public Response businessPartnerAssetAccessGet(@ApiParam(value = "Unique identifier of the requesting business.",required=true) @PathParam("business_id") String businessId
 ,@ApiParam(value = "The partner id to be bound to the Business",required=true) @PathParam("partner_id") String partnerId
-,@ApiParam(value = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.") @QueryParam("partner_type") PartnerType partnerType
+,@ApiParam(value = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", allowableValues="INTERNAL, EXTERNAL", defaultValue="INTERNAL") @DefaultValue("INTERNAL") @QueryParam("partner_type") PartnerType partnerType
 ,@ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP", defaultValue="AD_ACCOUNT") @DefaultValue("AD_ACCOUNT") @QueryParam("asset_type") String assetType
 ,@ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue="0") @DefaultValue("0") @QueryParam("start_index") Integer startIndex
 ,@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25") @QueryParam("page_size") Integer pageSize

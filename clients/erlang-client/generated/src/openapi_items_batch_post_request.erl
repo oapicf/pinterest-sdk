@@ -7,7 +7,7 @@
 -type openapi_items_batch_post_request() ::
     #{ 'catalog_type' := binary(),
        'country' := openapi_country:openapi_country(),
-       'language' := openapi_catalogs_items_request_language:openapi_catalogs_items_request_language(),
+       'language' := binary(),
        'items' := list(),
        'catalog_id' => binary(),
        'operation' := openapi_batch_operation:openapi_batch_operation()

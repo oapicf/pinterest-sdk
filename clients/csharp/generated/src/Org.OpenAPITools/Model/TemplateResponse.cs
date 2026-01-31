@@ -23171,8 +23171,7 @@ namespace Org.OpenAPITools.Model
                             adAccountId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "ad_account_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                adAccountIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            adAccountIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "user_id":
                             userId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -23181,16 +23180,13 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "report_start_relative_days_in_past":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                reportStartRelativeDaysInPast = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            reportStartRelativeDaysInPast = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "report_end_relative_days_in_past":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                reportEndRelativeDaysInPast = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            reportEndRelativeDaysInPast = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "date_range":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dateRange = new Option<TemplateResponseDateRange?>(JsonSerializer.Deserialize<TemplateResponseDateRange>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            dateRange = new Option<TemplateResponseDateRange?>(JsonSerializer.Deserialize<TemplateResponseDateRange>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "report_level":
                             string? reportLevelRawValue = utf8JsonReader.GetString();
@@ -23203,8 +23199,7 @@ namespace Org.OpenAPITools.Model
                                 reportFormat = new Option<DataOutputFormat?>(DataOutputFormatValueConverter.FromStringOrDefault(reportFormatRawValue));
                             break;
                         case "columns":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                columns = new Option<List<TemplateResponse.ColumnsEnum>?>(JsonSerializer.Deserialize<List<TemplateResponse.ColumnsEnum>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            columns = new Option<List<TemplateResponse.ColumnsEnum>?>(JsonSerializer.Deserialize<List<TemplateResponse.ColumnsEnum>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "granularity":
                             string? granularityRawValue = utf8JsonReader.GetString();
@@ -23212,16 +23207,13 @@ namespace Org.OpenAPITools.Model
                                 granularity = new Option<Granularity?>(GranularityValueConverter.FromStringOrDefault(granularityRawValue));
                             break;
                         case "view_window_days":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                viewWindowDays = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            viewWindowDays = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "click_window_days":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                clickWindowDays = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            clickWindowDays = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "engagement_window_days":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                engagementWindowDays = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            engagementWindowDays = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "conversion_report_time_type":
                             string? conversionReportTimeTypeRawValue = utf8JsonReader.GetString();
@@ -23232,12 +23224,10 @@ namespace Org.OpenAPITools.Model
                             filtersJson = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "is_owned_by_user":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isOwnedByUser = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isOwnedByUser = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "is_scheduled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isScheduled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isScheduled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "creation_source":
                             string? creationSourceRawValue = utf8JsonReader.GetString();
@@ -23245,16 +23235,13 @@ namespace Org.OpenAPITools.Model
                                 creationSource = new Option<TemplateResponse.CreationSourceEnum?>(TemplateResponse.CreationSourceEnumFromStringOrDefault(creationSourceRawValue));
                             break;
                         case "is_deleted":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDeleted = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDeleted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "updated_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedTime = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            updatedTime = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "custom_column_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                customColumnIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            customColumnIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "type":
                             string? typeRawValue = utf8JsonReader.GetString();
@@ -23262,8 +23249,7 @@ namespace Org.OpenAPITools.Model
                                 type = new Option<TemplateResponse.TypeEnum?>(TemplateResponse.TypeEnumFromStringOrDefault(typeRawValue));
                             break;
                         case "ingestion_sources":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ingestionSources = new Option<List<TemplateResponse.IngestionSourcesEnum>?>(JsonSerializer.Deserialize<List<TemplateResponse.IngestionSourcesEnum>>(ref utf8JsonReader, jsonSerializerOptions));
+                            ingestionSources = new Option<List<TemplateResponse.IngestionSourcesEnum>?>(JsonSerializer.Deserialize<List<TemplateResponse.IngestionSourcesEnum>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

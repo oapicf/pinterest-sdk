@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ad_group_summary_status
 import model_ads_analytics_metrics_filter
@@ -34,38 +36,157 @@ type AdsAnalyticsCreateAsyncRequest* = object
   startDate*: string ## Metric report start date (UTC). Format: YYYY-MM-DD
   endDate*: string ## Metric report end date (UTC). Format: YYYY-MM-DD
   granularity*: Granularity ## TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-  clickWindowDays*: ConversionAttributionWindowDays ## Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-  engagementWindowDays*: ConversionAttributionWindowDays ## Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-  viewWindowDays*: ConversionAttributionWindowDays ## Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-  conversionReportTime*: ConversionReportTimeType ## The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-  attributionTypes*: seq[ConversionReportAttributionType] ## List of types of attribution for the conversion report
-  campaignIds*: seq[string] ## List of campaign ids
-  campaignStatuses*: seq[CampaignSummaryStatus] ## List of status values for filtering
-  campaignObjectiveTypes*: seq[ObjectiveType] ## List of values for filtering. [\"WEB_SESSIONS\"] in BETA.
-  adGroupIds*: seq[string] ## List of ad group ids
-  adGroupStatuses*: seq[AdGroupSummaryStatus] ## List of values for filtering
-  adIds*: seq[string] ## List of ad ids [This parameter is no supported for Product Item Level Reports]
-  adStatuses*: seq[PinPromotionSummaryStatus] ## List of values for filtering [This parameter is not supported for Product Item Level Reports]
-  productGroupIds*: seq[string] ## List of product group ids
-  productGroupStatuses*: seq[ProductGroupSummaryStatus] ## List of values for filtering
-  productItemIds*: seq[string] ## List of product item ids
-  targetingTypes*: seq[AdsAnalyticsTargetingType] ## List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-  metricsFilters*: seq[AdsAnalyticsMetricsFilter] ## List of metrics filters
+  clickWindowDays*: Option[ConversionAttributionWindowDays] ## Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+  engagementWindowDays*: Option[ConversionAttributionWindowDays] ## Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+  viewWindowDays*: Option[ConversionAttributionWindowDays] ## Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+  conversionReportTime*: Option[ConversionReportTimeType] ## The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+  attributionTypes*: Option[seq[ConversionReportAttributionType]] ## List of types of attribution for the conversion report
+  campaignIds*: Option[seq[string]] ## List of campaign ids
+  campaignStatuses*: Option[seq[CampaignSummaryStatus]] ## List of status values for filtering
+  campaignObjectiveTypes*: Option[seq[ObjectiveType]] ## List of values for filtering. [\"WEB_SESSIONS\"] in BETA.
+  adGroupIds*: Option[seq[string]] ## List of ad group ids
+  adGroupStatuses*: Option[seq[AdGroupSummaryStatus]] ## List of values for filtering
+  adIds*: Option[seq[string]] ## List of ad ids [This parameter is no supported for Product Item Level Reports]
+  adStatuses*: Option[seq[PinPromotionSummaryStatus]] ## List of values for filtering [This parameter is not supported for Product Item Level Reports]
+  productGroupIds*: Option[seq[string]] ## List of product group ids
+  productGroupStatuses*: Option[seq[ProductGroupSummaryStatus]] ## List of values for filtering
+  productItemIds*: Option[seq[string]] ## List of product item ids
+  targetingTypes*: Option[seq[AdsAnalyticsTargetingType]] ## List of targeting types. Requires `level` to be a value ending in `_TARGETING`. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+  metricsFilters*: Option[seq[AdsAnalyticsMetricsFilter]] ## List of metrics filters
   columns*: seq[ReportingColumnAsync] ## Metric and entity columns. Pin promotion and ad related columns are not supported for the Product Item level reports.
   level*: MetricsReportingLevel ## Level of the report
-  reportFormat*: DataOutputFormat ## Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
-  primarySort*: PrimarySort ## Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
-  startHour*: int ## Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
-  endHour*: int ## Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
+  reportFormat*: Option[DataOutputFormat] ## Specification for formatting the report data. Reports in JSON will not zero-fill metrics, whereas reports in CSV will. Both report formats will omit rows where all the columns are equal to 0.
+  primarySort*: Option[PrimarySort] ## Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
+  startHour*: Option[int] ## Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.
+  endHour*: Option[int] ## Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.
 
 func `%`*(v: PrimarySort): JsonNode =
-  let str = case v:
-    of PrimarySort.BYID: "BY_ID"
-    of PrimarySort.BYDATE: "BY_DATE"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of PrimarySort.BYID: %"BY_ID"
+    of PrimarySort.BYDATE: %"BY_DATE"
 func `$`*(v: PrimarySort): string =
   result = case v:
-    of PrimarySort.BYID: "BY_ID"
-    of PrimarySort.BYDATE: "BY_DATE"
+    of PrimarySort.BYID: $("BY_ID")
+    of PrimarySort.BYDATE: $("BY_DATE")
+
+proc to*(node: JsonNode, T: typedesc[PrimarySort]): PrimarySort =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum PrimarySort, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("BY_ID"):
+    return PrimarySort.BYID
+  of $("BY_DATE"):
+    return PrimarySort.BYDATE
+  else:
+    raise newException(ValueError, "Invalid enum value for PrimarySort: " & strVal)
+
+
+# Custom JSON deserialization for AdsAnalyticsCreateAsyncRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[AdsAnalyticsCreateAsyncRequest]): AdsAnalyticsCreateAsyncRequest =
+  result = AdsAnalyticsCreateAsyncRequest()
+  if node.kind == JObject:
+    if node.hasKey("start_date"):
+      result.startDate = to(node["start_date"], string)
+    if node.hasKey("end_date"):
+      result.endDate = to(node["end_date"], string)
+    if node.hasKey("granularity"):
+      result.granularity = to(node["granularity"], Granularity)
+    if node.hasKey("click_window_days") and node["click_window_days"].kind != JNull:
+      result.clickWindowDays = some(to(node["click_window_days"], typeof(result.clickWindowDays.get())))
+    if node.hasKey("engagement_window_days") and node["engagement_window_days"].kind != JNull:
+      result.engagementWindowDays = some(to(node["engagement_window_days"], typeof(result.engagementWindowDays.get())))
+    if node.hasKey("view_window_days") and node["view_window_days"].kind != JNull:
+      result.viewWindowDays = some(to(node["view_window_days"], typeof(result.viewWindowDays.get())))
+    if node.hasKey("conversion_report_time") and node["conversion_report_time"].kind != JNull:
+      result.conversionReportTime = some(to(node["conversion_report_time"], typeof(result.conversionReportTime.get())))
+    if node.hasKey("attribution_types") and node["attribution_types"].kind != JNull:
+      result.attributionTypes = some(to(node["attribution_types"], typeof(result.attributionTypes.get())))
+    if node.hasKey("campaign_ids") and node["campaign_ids"].kind != JNull:
+      result.campaignIds = some(to(node["campaign_ids"], typeof(result.campaignIds.get())))
+    if node.hasKey("campaign_statuses") and node["campaign_statuses"].kind != JNull:
+      result.campaignStatuses = some(to(node["campaign_statuses"], typeof(result.campaignStatuses.get())))
+    if node.hasKey("campaign_objective_types") and node["campaign_objective_types"].kind != JNull:
+      result.campaignObjectiveTypes = some(to(node["campaign_objective_types"], typeof(result.campaignObjectiveTypes.get())))
+    if node.hasKey("ad_group_ids") and node["ad_group_ids"].kind != JNull:
+      result.adGroupIds = some(to(node["ad_group_ids"], typeof(result.adGroupIds.get())))
+    if node.hasKey("ad_group_statuses") and node["ad_group_statuses"].kind != JNull:
+      result.adGroupStatuses = some(to(node["ad_group_statuses"], typeof(result.adGroupStatuses.get())))
+    if node.hasKey("ad_ids") and node["ad_ids"].kind != JNull:
+      result.adIds = some(to(node["ad_ids"], typeof(result.adIds.get())))
+    if node.hasKey("ad_statuses") and node["ad_statuses"].kind != JNull:
+      result.adStatuses = some(to(node["ad_statuses"], typeof(result.adStatuses.get())))
+    if node.hasKey("product_group_ids") and node["product_group_ids"].kind != JNull:
+      result.productGroupIds = some(to(node["product_group_ids"], typeof(result.productGroupIds.get())))
+    if node.hasKey("product_group_statuses") and node["product_group_statuses"].kind != JNull:
+      result.productGroupStatuses = some(to(node["product_group_statuses"], typeof(result.productGroupStatuses.get())))
+    if node.hasKey("product_item_ids") and node["product_item_ids"].kind != JNull:
+      result.productItemIds = some(to(node["product_item_ids"], typeof(result.productItemIds.get())))
+    if node.hasKey("targeting_types") and node["targeting_types"].kind != JNull:
+      result.targetingTypes = some(to(node["targeting_types"], typeof(result.targetingTypes.get())))
+    if node.hasKey("metrics_filters") and node["metrics_filters"].kind != JNull:
+      result.metricsFilters = some(to(node["metrics_filters"], typeof(result.metricsFilters.get())))
+    if node.hasKey("columns"):
+      result.columns = to(node["columns"], seq[ReportingColumnAsync])
+    if node.hasKey("level"):
+      result.level = to(node["level"], MetricsReportingLevel)
+    if node.hasKey("report_format") and node["report_format"].kind != JNull:
+      result.reportFormat = some(to(node["report_format"], typeof(result.reportFormat.get())))
+    if node.hasKey("primary_sort") and node["primary_sort"].kind != JNull:
+      result.primarySort = some(to(node["primary_sort"], PrimarySort))
+    if node.hasKey("start_hour") and node["start_hour"].kind != JNull:
+      result.startHour = some(to(node["start_hour"], typeof(result.startHour.get())))
+    if node.hasKey("end_hour") and node["end_hour"].kind != JNull:
+      result.endHour = some(to(node["end_hour"], typeof(result.endHour.get())))
+
+# Custom JSON serialization for AdsAnalyticsCreateAsyncRequest with custom field names
+proc `%`*(obj: AdsAnalyticsCreateAsyncRequest): JsonNode =
+  result = newJObject()
+  result["start_date"] = %obj.startDate
+  result["end_date"] = %obj.endDate
+  result["granularity"] = %obj.granularity
+  if obj.clickWindowDays.isSome():
+    result["click_window_days"] = %obj.clickWindowDays.get()
+  if obj.engagementWindowDays.isSome():
+    result["engagement_window_days"] = %obj.engagementWindowDays.get()
+  if obj.viewWindowDays.isSome():
+    result["view_window_days"] = %obj.viewWindowDays.get()
+  if obj.conversionReportTime.isSome():
+    result["conversion_report_time"] = %obj.conversionReportTime.get()
+  if obj.attributionTypes.isSome():
+    result["attribution_types"] = %obj.attributionTypes.get()
+  if obj.campaignIds.isSome():
+    result["campaign_ids"] = %obj.campaignIds.get()
+  if obj.campaignStatuses.isSome():
+    result["campaign_statuses"] = %obj.campaignStatuses.get()
+  if obj.campaignObjectiveTypes.isSome():
+    result["campaign_objective_types"] = %obj.campaignObjectiveTypes.get()
+  if obj.adGroupIds.isSome():
+    result["ad_group_ids"] = %obj.adGroupIds.get()
+  if obj.adGroupStatuses.isSome():
+    result["ad_group_statuses"] = %obj.adGroupStatuses.get()
+  if obj.adIds.isSome():
+    result["ad_ids"] = %obj.adIds.get()
+  if obj.adStatuses.isSome():
+    result["ad_statuses"] = %obj.adStatuses.get()
+  if obj.productGroupIds.isSome():
+    result["product_group_ids"] = %obj.productGroupIds.get()
+  if obj.productGroupStatuses.isSome():
+    result["product_group_statuses"] = %obj.productGroupStatuses.get()
+  if obj.productItemIds.isSome():
+    result["product_item_ids"] = %obj.productItemIds.get()
+  if obj.targetingTypes.isSome():
+    result["targeting_types"] = %obj.targetingTypes.get()
+  if obj.metricsFilters.isSome():
+    result["metrics_filters"] = %obj.metricsFilters.get()
+  result["columns"] = %obj.columns
+  result["level"] = %obj.level
+  if obj.reportFormat.isSome():
+    result["report_format"] = %obj.reportFormat.get()
+  if obj.primarySort.isSome():
+    result["primary_sort"] = %obj.primarySort.get()
+  if obj.startHour.isSome():
+    result["start_hour"] = %obj.startHour.get()
+  if obj.endHour.isSome():
+    result["end_hour"] = %obj.endHour.get()
+

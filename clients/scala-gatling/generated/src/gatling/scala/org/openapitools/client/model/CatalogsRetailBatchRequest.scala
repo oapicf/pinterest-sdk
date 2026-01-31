@@ -5,7 +5,8 @@ package org.openapitools.client.model
 case class CatalogsRetailBatchRequest (
     _catalogType: String,
     _country: Country,
-    _language: CatalogsItemsRequestLanguage,
+    /* We recommend using the CatalogsLocale values. */
+    _language: String,
     /* Array with catalogs item operations */
     _items: List[CatalogsRetailBatchRequestItemsInner]
 )

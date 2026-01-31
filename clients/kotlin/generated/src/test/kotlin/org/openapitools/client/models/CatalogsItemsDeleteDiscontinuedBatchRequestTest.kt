@@ -20,7 +20,6 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsItemsDeleteDiscontinuedBatchRequest
 import org.openapitools.client.models.BatchOperation
-import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.ItemDeleteDiscontinuedBatchRecord
 
@@ -35,7 +34,7 @@ class CatalogsItemsDeleteDiscontinuedBatchRequestTest : ShouldSpec() {
             //modelInstance.country shouldBe ("TODO")
         }
 
-        // to test the property `language`
+        // to test the property `language` - We recommend using the CatalogsLocale values.
         should("test language") {
             // uncomment below to test the property
             //modelInstance.language shouldBe ("TODO")

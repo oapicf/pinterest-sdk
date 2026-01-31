@@ -19,7 +19,6 @@ import { Pin } from '../model/pin';
 import { PinAnalyticsMetricsResponse } from '../model/pinAnalyticsMetricsResponse';
 import { PinCreate } from '../model/pinCreate';
 import { PinUpdate } from '../model/pinUpdate';
-import { PinsAnalyticsMetricTypesParameterInner } from '../model/pinsAnalyticsMetricTypesParameterInner';
 import { PinsList200Response } from '../model/pinsList200Response';
 import { PinsSaveRequest } from '../model/pinsSaveRequest';
 
@@ -130,7 +129,7 @@ export class PinsApi {
      * @param appTypes Apps or devices to get data for, default is all.
      * @param adAccountId Unique identifier of an ad account.
      */
-    public async multiPinsAnalytics (pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: { [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; };  }> {
+    public async multiPinsAnalytics (pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: { [key: string]: { [key: string]: PinAnalyticsMetricsResponse; }; };  }> {
         const localVarPath = this.basePath + '/pins/analytics';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -180,7 +179,7 @@ export class PinsApi {
         }
 
         if (metricTypes !== undefined) {
-            localVarQueryParameters['metric_types'] = ObjectSerializer.serialize(metricTypes, "Array<PinsAnalyticsMetricTypesParameterInner>");
+            localVarQueryParameters['metric_types'] = ObjectSerializer.serialize(metricTypes, "Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>");
         }
 
         if (adAccountId !== undefined) {
@@ -249,7 +248,7 @@ export class PinsApi {
      * @param splitField How to split the data into groups. Not including this param means data won\&#39;t be split.
      * @param adAccountId Unique identifier of an ad account.
      */
-    public async pinsAnalytics (pinId: string, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: { [key: string]: PinAnalyticsMetricsResponse; };  }> {
+    public async pinsAnalytics (pinId: string, startDate: string, endDate: string, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: { [key: string]: PinAnalyticsMetricsResponse; };  }> {
         const localVarPath = this.basePath + '/pins/{pin_id}/analytics'
             .replace('{' + 'pin_id' + '}', encodeURIComponent(String(pinId)));
         let localVarQueryParameters: any = {};
@@ -296,7 +295,7 @@ export class PinsApi {
         }
 
         if (metricTypes !== undefined) {
-            localVarQueryParameters['metric_types'] = ObjectSerializer.serialize(metricTypes, "Array<PinsAnalyticsMetricTypesParameterInner>");
+            localVarQueryParameters['metric_types'] = ObjectSerializer.serialize(metricTypes, "Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>");
         }
 
         if (splitField !== undefined) {

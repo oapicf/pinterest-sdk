@@ -637,7 +637,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TargetingAdvertiserCountry targetingAdvertiserCountry, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(targetingAdvertiserCountry.ToString());
+            writer.WriteStringValue(TargetingAdvertiserCountryValueConverter.ToJsonValue(targetingAdvertiserCountry).ToString());
         }
     }
 
@@ -668,14 +668,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the TargetingAdvertiserCountry to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="targetingAdvertiserCountry"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TargetingAdvertiserCountry? targetingAdvertiserCountry, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(targetingAdvertiserCountry?.ToString() ?? "null");
+            writer.WriteStringValue(targetingAdvertiserCountry.HasValue ? TargetingAdvertiserCountryValueConverter.ToJsonValue(targetingAdvertiserCountry.Value).ToString() : "null");
         }
     }
 }

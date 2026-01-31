@@ -25,7 +25,7 @@ data class LeadFormCommonPolicyLinksInner(
 
     @Schema(example = "null", description = "Policy link for an additional policy link.")
     @get:JsonProperty("link") val link: kotlin.String? = null
-    ) {
+) {
 
 }
 

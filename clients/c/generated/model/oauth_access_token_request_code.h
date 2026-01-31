@@ -1,7 +1,7 @@
 /*
  * oauth_access_token_request_code.h
  *
- * A request to exchange an authorization code for an access token.
+ * 
  */
 
 #ifndef _oauth_access_token_request_code_H_
@@ -27,17 +27,17 @@ pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e oauth_access_toke
 
 
 typedef struct oauth_access_token_request_code_t {
-    pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_type; //enum
     char *code; // string
     char *redirect_uri; // string
+    pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_type; //enum
 
     int _library_owned; // Is the library responsible for freeing this object?
 } oauth_access_token_request_code_t;
 
 __attribute__((deprecated)) oauth_access_token_request_code_t *oauth_access_token_request_code_create(
-    pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_type,
     char *code,
-    char *redirect_uri
+    char *redirect_uri,
+    pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_e grant_type
 );
 
 void oauth_access_token_request_code_free(oauth_access_token_request_code_t *oauth_access_token_request_code);

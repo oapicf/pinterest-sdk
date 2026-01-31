@@ -28,11 +28,11 @@ export interface DeliveryMetricsResponseItemsInner {
     display_name?: string;
 }
 export namespace DeliveryMetricsResponseItemsInner {
-    export type CategoryEnum = 'ADS' | 'ORGANIC';
     export const CategoryEnum = {
-        Ads: 'ADS' as CategoryEnum,
-        Organic: 'ORGANIC' as CategoryEnum
-    };
+        Ads: 'ADS',
+        Organic: 'ORGANIC'
+    } as const;
+    export type CategoryEnum = typeof CategoryEnum[keyof typeof CategoryEnum];
 }
 
 

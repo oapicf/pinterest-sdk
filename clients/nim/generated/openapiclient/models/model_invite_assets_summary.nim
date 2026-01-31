@@ -9,11 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_invite_assets_summary_ad_accounts_inner
 import model_invite_assets_summary_profiles_inner
 
 type InviteAssetsSummary* = object
   ## Ad accounts and profiles the member/partner will be granted access to with this invite/request.
-  adAccounts*: seq[InviteAssetsSummary_ad_accounts_inner] ## List of ad account IDs and respective permission levels that will be assigned.
-  profiles*: seq[InviteAssetsSummary_profiles_inner] ## List of profile IDs and respective permission levels that will be assigned.
+  adAccounts*: Option[seq[InviteAssetsSummary_ad_accounts_inner]] ## List of ad account IDs and respective permission levels that will be assigned.
+  profiles*: Option[seq[InviteAssetsSummary_profiles_inner]] ## List of profile IDs and respective permission levels that will be assigned.
+
+
+# Custom JSON deserialization for InviteAssetsSummary with custom field names
+proc to*(node: JsonNode, T: typedesc[InviteAssetsSummary]): InviteAssetsSummary =
+  result = InviteAssetsSummary()
+  if node.kind == JObject:
+    if node.hasKey("ad_accounts") and node["ad_accounts"].kind != JNull:
+      result.adAccounts = some(to(node["ad_accounts"], typeof(result.adAccounts.get())))
+    if node.hasKey("profiles") and node["profiles"].kind != JNull:
+      result.profiles = some(to(node["profiles"], typeof(result.profiles.get())))
+
+# Custom JSON serialization for InviteAssetsSummary with custom field names
+proc `%`*(obj: InviteAssetsSummary): JsonNode =
+  result = newJObject()
+  if obj.adAccounts.isSome():
+    result["ad_accounts"] = %obj.adAccounts.get()
+  if obj.profiles.isSome():
+    result["profiles"] = %obj.profiles.get()
+

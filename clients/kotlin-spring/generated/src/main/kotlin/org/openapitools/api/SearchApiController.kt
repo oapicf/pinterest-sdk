@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
+import org.openapitools.api.SearchApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -33,7 +34,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${api.base-path:/v5}")
+@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
 class SearchApiController() {
 
     @Operation(
@@ -50,10 +51,16 @@ Get the top 10 Pins by a given search term.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/search/partner/pins"],
+        value = [PATH_SEARCH_PARTNER_PINS /* "/search/partner/pins" */],
         produces = ["application/json"]
     )
-    fun searchPartnerPins(@NotNull @Parameter(description = "Search term to look up pins.", required = true) @Valid @RequestParam(value = "term", required = true) term: kotlin.String,@NotNull @Parameter(description = "Two letter country code (ISO 3166-1 alpha-2)", required = true) @Valid @RequestParam(value = "country_code", required = true) countryCode: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Parameter(description = "Search locale.") @Valid @RequestParam(value = "locale", required = false) locale: kotlin.String?,@Min(1) @Max(50) @Parameter(description = "Max search result size", schema = Schema(defaultValue = "10")) @Valid @RequestParam(value = "limit", required = false, defaultValue = "10") limit: kotlin.Int): ResponseEntity<SearchPartnerPins200Response> {
+    fun searchPartnerPins(
+        @NotNull @Parameter(description = "Search term to look up pins.", required = true) @Valid @RequestParam(value = "term", required = true) term: kotlin.String,
+        @NotNull @Parameter(description = "Two letter country code (ISO 3166-1 alpha-2)", required = true) @Valid @RequestParam(value = "country_code", required = true) countryCode: kotlin.String,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Parameter(description = "Search locale.") @Valid @RequestParam(value = "locale", required = false) locale: kotlin.String?,
+        @Min(value=1) @Max(value=50) @Parameter(description = "Max search result size", schema = Schema(defaultValue = "10")) @Valid @RequestParam(value = "limit", required = false, defaultValue = "10") limit: kotlin.Int
+    ): ResponseEntity<SearchPartnerPins200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -71,10 +78,15 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/search/boards"],
+        value = [PATH_SEARCH_USER_BOARDS_GET /* "/search/boards" */],
         produces = ["application/json"]
     )
-    fun searchUserBoardsGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Search query. Can contain pin description keywords or comma-separated pin IDs.") @Valid @RequestParam(value = "query", required = false) query: kotlin.String?): ResponseEntity<SearchUserBoardsGet200Response> {
+    fun searchUserBoardsGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Search query. Can contain pin description keywords or comma-separated pin IDs.") @Valid @RequestParam(value = "query", required = false) query: kotlin.String?
+    ): ResponseEntity<SearchUserBoardsGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -93,10 +105,22 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/search/pins"],
+        value = [PATH_SEARCH_USER_PINS_LIST /* "/search/pins" */],
         produces = ["application/json"]
     )
-    fun searchUserPinsList(@NotNull @Parameter(description = "Search query. Can contain pin description keywords or comma-separated pin IDs.", required = true) @Valid @RequestParam(value = "query", required = true) query: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<PinsList200Response> {
+    fun searchUserPinsList(
+        @NotNull @Parameter(description = "Search query. Can contain pin description keywords or comma-separated pin IDs.", required = true) @Valid @RequestParam(value = "query", required = true) query: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<PinsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    companion object {
+        //for your own safety never directly reuse these path definitions in tests
+        const val BASE_PATH: String = "/v5"
+        const val PATH_SEARCH_PARTNER_PINS: String = "/search/partner/pins"
+        const val PATH_SEARCH_USER_BOARDS_GET: String = "/search/boards"
+        const val PATH_SEARCH_USER_PINS_LIST: String = "/search/pins"
     }
 }

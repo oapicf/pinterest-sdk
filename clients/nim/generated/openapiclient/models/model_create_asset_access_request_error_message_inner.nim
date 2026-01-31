@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CreateAssetAccessRequestErrorMessageInner* = object
   ## 
-  code*: int ## Error code associated with the error in requesting asset access.
-  messages*: seq[string]
+  code*: Option[int] ## Error code associated with the error in requesting asset access.
+  messages*: Option[seq[string]]
+

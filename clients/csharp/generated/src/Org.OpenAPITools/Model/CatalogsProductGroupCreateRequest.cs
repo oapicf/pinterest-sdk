@@ -185,8 +185,7 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "filters":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                filters = new Option<CatalogsProductGroupFiltersRequest?>(JsonSerializer.Deserialize<CatalogsProductGroupFiltersRequest>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            filters = new Option<CatalogsProductGroupFiltersRequest?>(JsonSerializer.Deserialize<CatalogsProductGroupFiltersRequest>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "feed_id":
                             feedId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -195,8 +194,7 @@ namespace Org.OpenAPITools.Model
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "is_featured":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isFeatured = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isFeatured = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

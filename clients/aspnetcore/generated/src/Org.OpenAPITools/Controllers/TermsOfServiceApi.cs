@@ -47,16 +47,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(TermsOfService));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"has_accepted\" : true,\n  \"html\" : \"example test\",\n  \"id\" : \"2650449554526\",\n  \"ad_account_id\" : \"549755885175\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<TermsOfService>(exampleJson)
-            : default(TermsOfService);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object holding a group of filters for a hotel product group")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2025-05-10T05:40:48.086340579Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@ApiModel(description="Object holding a group of filters for a hotel product group")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProductGroupFilters   {
   
   private List<CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();

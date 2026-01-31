@@ -297,36 +297,28 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "LINE_LEVEL_INTERNAL_ERROR":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lINELEVELINTERNALERROR = new Option<int?>(utf8JsonReader.GetInt32());
+                            lINELEVELINTERNALERROR = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "LARGE_PRODUCT_COUNT_DECREASE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lARGEPRODUCTCOUNTDECREASE = new Option<CatalogsFeedIngestionErrors.LARGEPRODUCTCOUNTDECREASEEnum?>((CatalogsFeedIngestionErrors.LARGEPRODUCTCOUNTDECREASEEnum)utf8JsonReader.GetInt32());
+                            lARGEPRODUCTCOUNTDECREASE = new Option<CatalogsFeedIngestionErrors.LARGEPRODUCTCOUNTDECREASEEnum?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (CatalogsFeedIngestionErrors.LARGEPRODUCTCOUNTDECREASEEnum?)null : (CatalogsFeedIngestionErrors.LARGEPRODUCTCOUNTDECREASEEnum)utf8JsonReader.GetInt32());
                             break;
                         case "ACCOUNT_FLAGGED":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aCCOUNTFLAGGED = new Option<int?>(utf8JsonReader.GetInt32());
+                            aCCOUNTFLAGGED = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "IMAGE_LEVEL_INTERNAL_ERROR":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iMAGELEVELINTERNALERROR = new Option<int?>(utf8JsonReader.GetInt32());
+                            iMAGELEVELINTERNALERROR = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "IMAGE_FILE_NOT_ACCESSIBLE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iMAGEFILENOTACCESSIBLE = new Option<int?>(utf8JsonReader.GetInt32());
+                            iMAGEFILENOTACCESSIBLE = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "IMAGE_MALFORMED_URL":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iMAGEMALFORMEDURL = new Option<int?>(utf8JsonReader.GetInt32());
+                            iMAGEMALFORMEDURL = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "IMAGE_FILE_NOT_FOUND":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iMAGEFILENOTFOUND = new Option<int?>(utf8JsonReader.GetInt32());
+                            iMAGEFILENOTFOUND = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "IMAGE_INVALID_FILE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iMAGEINVALIDFILE = new Option<int?>(utf8JsonReader.GetInt32());
+                            iMAGEINVALIDFILE = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

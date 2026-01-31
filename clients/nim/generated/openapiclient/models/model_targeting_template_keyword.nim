@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_match_type
 
 type TargetingTemplateKeyword* = object
   ## 
-  matchType*: MatchType
-  value*: string ## The keyword targeting (120 chars max).
+  matchType*: Option[MatchType]
+  value*: Option[string] ## The keyword targeting (120 chars max).
+
+
+# Custom JSON deserialization for TargetingTemplateKeyword with custom field names
+proc to*(node: JsonNode, T: typedesc[TargetingTemplateKeyword]): TargetingTemplateKeyword =
+  result = TargetingTemplateKeyword()
+  if node.kind == JObject:
+    if node.hasKey("match_type") and node["match_type"].kind != JNull:
+      result.matchType = some(to(node["match_type"], typeof(result.matchType.get())))
+    if node.hasKey("value") and node["value"].kind != JNull:
+      result.value = some(to(node["value"], typeof(result.value.get())))
+
+# Custom JSON serialization for TargetingTemplateKeyword with custom field names
+proc `%`*(obj: TargetingTemplateKeyword): JsonNode =
+  result = newJObject()
+  if obj.matchType.isSome():
+    result["match_type"] = %obj.matchType.get()
+  if obj.value.isSome():
+    result["value"] = %obj.value.get()
+

@@ -90,7 +90,7 @@ public class AudienceInsightsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audienceInsightsGetCall(String adAccountId, AudienceInsightType audienceInsightType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call audienceInsightsGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceInsightType audienceInsightType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -140,7 +140,7 @@ public class AudienceInsightsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call audienceInsightsGetValidateBeforeCall(String adAccountId, AudienceInsightType audienceInsightType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call audienceInsightsGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceInsightType audienceInsightType, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling audienceInsightsGet(Async)");
@@ -170,7 +170,7 @@ public class AudienceInsightsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public AudienceInsightsResponse audienceInsightsGet(String adAccountId, AudienceInsightType audienceInsightType) throws ApiException {
+    public AudienceInsightsResponse audienceInsightsGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceInsightType audienceInsightType) throws ApiException {
         ApiResponse<AudienceInsightsResponse> localVarResp = audienceInsightsGetWithHttpInfo(adAccountId, audienceInsightType);
         return localVarResp.getData();
     }
@@ -190,7 +190,7 @@ public class AudienceInsightsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AudienceInsightsResponse> audienceInsightsGetWithHttpInfo(String adAccountId, AudienceInsightType audienceInsightType) throws ApiException {
+    public ApiResponse<AudienceInsightsResponse> audienceInsightsGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceInsightType audienceInsightType) throws ApiException {
         okhttp3.Call localVarCall = audienceInsightsGetValidateBeforeCall(adAccountId, audienceInsightType, null);
         Type localVarReturnType = new TypeToken<AudienceInsightsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -212,7 +212,7 @@ public class AudienceInsightsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audienceInsightsGetAsync(String adAccountId, AudienceInsightType audienceInsightType, final ApiCallback<AudienceInsightsResponse> _callback) throws ApiException {
+    public okhttp3.Call audienceInsightsGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AudienceInsightType audienceInsightType, final ApiCallback<AudienceInsightsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = audienceInsightsGetValidateBeforeCall(adAccountId, audienceInsightType, _callback);
         Type localVarReturnType = new TypeToken<AudienceInsightsResponse>(){}.getType();
@@ -233,7 +233,7 @@ public class AudienceInsightsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audienceInsightsScopeAndTypeGetCall(String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call audienceInsightsScopeAndTypeGetCall(@javax.annotation.Nonnull String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -279,7 +279,7 @@ public class AudienceInsightsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call audienceInsightsScopeAndTypeGetValidateBeforeCall(String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call audienceInsightsScopeAndTypeGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling audienceInsightsScopeAndTypeGet(Async)");
@@ -303,7 +303,7 @@ public class AudienceInsightsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public AudienceDefinitionResponse audienceInsightsScopeAndTypeGet(String adAccountId) throws ApiException {
+    public AudienceDefinitionResponse audienceInsightsScopeAndTypeGet(@javax.annotation.Nonnull String adAccountId) throws ApiException {
         ApiResponse<AudienceDefinitionResponse> localVarResp = audienceInsightsScopeAndTypeGetWithHttpInfo(adAccountId);
         return localVarResp.getData();
     }
@@ -322,7 +322,7 @@ public class AudienceInsightsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AudienceDefinitionResponse> audienceInsightsScopeAndTypeGetWithHttpInfo(String adAccountId) throws ApiException {
+    public ApiResponse<AudienceDefinitionResponse> audienceInsightsScopeAndTypeGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = audienceInsightsScopeAndTypeGetValidateBeforeCall(adAccountId, null);
         Type localVarReturnType = new TypeToken<AudienceDefinitionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -343,7 +343,7 @@ public class AudienceInsightsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call audienceInsightsScopeAndTypeGetAsync(String adAccountId, final ApiCallback<AudienceDefinitionResponse> _callback) throws ApiException {
+    public okhttp3.Call audienceInsightsScopeAndTypeGetAsync(@javax.annotation.Nonnull String adAccountId, final ApiCallback<AudienceDefinitionResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = audienceInsightsScopeAndTypeGetValidateBeforeCall(adAccountId, _callback);
         Type localVarReturnType = new TypeToken<AudienceDefinitionResponse>(){}.getType();

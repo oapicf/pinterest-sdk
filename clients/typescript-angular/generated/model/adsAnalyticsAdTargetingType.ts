@@ -12,36 +12,21 @@
 /**
  * Reporting targeting type for ads
  */
-export type AdsAnalyticsAdTargetingType = 'KEYWORD' | 'APPTYPE' | 'GENDER' | 'LOCATION' | 'PLACEMENT' | 'COUNTRY' | 'TARGETED_INTEREST' | 'PINNER_INTEREST' | 'AUDIENCE_INCLUDE' | 'GEO' | 'AGE_BUCKET' | 'REGION' | 'QUIZ_RESULT' | 'AGE_BUCKET_AND_GENDER';
-
 export const AdsAnalyticsAdTargetingType = {
-
-    Keyword: 'KEYWORD' as AdsAnalyticsAdTargetingType,
-
-    Apptype: 'APPTYPE' as AdsAnalyticsAdTargetingType,
-
-    Gender: 'GENDER' as AdsAnalyticsAdTargetingType,
-
-    Location: 'LOCATION' as AdsAnalyticsAdTargetingType,
-
-    Placement: 'PLACEMENT' as AdsAnalyticsAdTargetingType,
-
-    Country: 'COUNTRY' as AdsAnalyticsAdTargetingType,
-
-    TargetedInterest: 'TARGETED_INTEREST' as AdsAnalyticsAdTargetingType,
-
-    PinnerInterest: 'PINNER_INTEREST' as AdsAnalyticsAdTargetingType,
-
-    AudienceInclude: 'AUDIENCE_INCLUDE' as AdsAnalyticsAdTargetingType,
-
-    Geo: 'GEO' as AdsAnalyticsAdTargetingType,
-
-    AgeBucket: 'AGE_BUCKET' as AdsAnalyticsAdTargetingType,
-
-    Region: 'REGION' as AdsAnalyticsAdTargetingType,
-
-    QuizResult: 'QUIZ_RESULT' as AdsAnalyticsAdTargetingType,
-
-    AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER' as AdsAnalyticsAdTargetingType
-};
+    Keyword: 'KEYWORD',
+    Apptype: 'APPTYPE',
+    Gender: 'GENDER',
+    Location: 'LOCATION',
+    Placement: 'PLACEMENT',
+    Country: 'COUNTRY',
+    TargetedInterest: 'TARGETED_INTEREST',
+    PinnerInterest: 'PINNER_INTEREST',
+    AudienceInclude: 'AUDIENCE_INCLUDE',
+    Geo: 'GEO',
+    AgeBucket: 'AGE_BUCKET',
+    Region: 'REGION',
+    QuizResult: 'QUIZ_RESULT',
+    AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER'
+} as const;
+export type AdsAnalyticsAdTargetingType = typeof AdsAnalyticsAdTargetingType[keyof typeof AdsAnalyticsAdTargetingType];
 

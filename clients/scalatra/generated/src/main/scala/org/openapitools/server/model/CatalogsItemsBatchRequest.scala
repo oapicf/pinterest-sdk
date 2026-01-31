@@ -14,7 +14,8 @@ package org.openapitools.server.model
 case class CatalogsItemsBatchRequest(
   country: Country,
 
-  language: CatalogsItemsRequestLanguage,
+  /* We recommend using the CatalogsLocale values. */
+  language: String,
 
   operation: BatchOperation,
 

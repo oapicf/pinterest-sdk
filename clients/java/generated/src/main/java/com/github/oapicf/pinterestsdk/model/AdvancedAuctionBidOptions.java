@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing a retail catalog item&#39;s bid options (bid price and bid multipliers).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionBidOptions {
   public static final String SERIALIZED_NAME_BID_IN_MICRO_CURRENCY = "bid_in_micro_currency";
   @SerializedName(SERIALIZED_NAME_BID_IN_MICRO_CURRENCY)
@@ -187,13 +187,10 @@ public class AdvancedAuctionBidOptions {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("bid_in_micro_currency");
-    openapiFields.add("app_type_multipliers");
-    openapiFields.add("placement_multipliers");
+    openapiFields = new HashSet<String>(Arrays.asList("bid_in_micro_currency", "app_type_multipliers", "placement_multipliers"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -205,7 +202,7 @@ public class AdvancedAuctionBidOptions {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AdvancedAuctionBidOptions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdvancedAuctionBidOptions is not found in the empty JSON string", AdvancedAuctionBidOptions.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AdvancedAuctionBidOptions is not found in the empty JSON string", AdvancedAuctionBidOptions.openapiRequiredFields.toString()));
         }
       }
 
@@ -213,7 +210,7 @@ public class AdvancedAuctionBidOptions {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AdvancedAuctionBidOptions.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AdvancedAuctionBidOptions` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AdvancedAuctionBidOptions` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

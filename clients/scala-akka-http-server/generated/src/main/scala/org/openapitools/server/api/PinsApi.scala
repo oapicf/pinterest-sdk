@@ -13,7 +13,6 @@ import org.openapitools.server.model.Pin
 import org.openapitools.server.model.PinAnalyticsMetricsResponse
 import org.openapitools.server.model.PinCreate
 import org.openapitools.server.model.PinUpdate
-import org.openapitools.server.model.PinsAnalyticsMetricTypesParameterInner
 import org.openapitools.server.model.PinsList200Response
 import org.openapitools.server.model.PinsSaveRequest
 

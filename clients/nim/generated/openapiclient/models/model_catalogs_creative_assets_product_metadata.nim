@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_creative_assets_visibility_type
 
@@ -16,3 +18,20 @@ type CatalogsCreativeAssetsProductMetadata* = object
   ## Creative assets product metadata entity
   creativeAssetsId*: string ## The user-created unique ID that represents the creative assets item.
   visibility*: CreativeAssetsVisibilityType
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsProductMetadata with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsProductMetadata]): CatalogsCreativeAssetsProductMetadata =
+  result = CatalogsCreativeAssetsProductMetadata()
+  if node.kind == JObject:
+    if node.hasKey("creative_assets_id"):
+      result.creativeAssetsId = to(node["creative_assets_id"], string)
+    if node.hasKey("visibility"):
+      result.visibility = to(node["visibility"], CreativeAssetsVisibilityType)
+
+# Custom JSON serialization for CatalogsCreativeAssetsProductMetadata with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsProductMetadata): JsonNode =
+  result = newJObject()
+  result["creative_assets_id"] = %obj.creativeAssetsId
+  result["visibility"] = %obj.visibility
+

@@ -189,24 +189,19 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "campaigns":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                campaigns = new Option<List<CampaignUpdateRequest>?>(JsonSerializer.Deserialize<List<CampaignUpdateRequest>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            campaigns = new Option<List<CampaignUpdateRequest>?>(JsonSerializer.Deserialize<List<CampaignUpdateRequest>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ad_groups":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                adGroups = new Option<List<AdGroupUpdateRequest>?>(JsonSerializer.Deserialize<List<AdGroupUpdateRequest>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            adGroups = new Option<List<AdGroupUpdateRequest>?>(JsonSerializer.Deserialize<List<AdGroupUpdateRequest>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ads":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ads = new Option<List<AdUpdateRequest>?>(JsonSerializer.Deserialize<List<AdUpdateRequest>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            ads = new Option<List<AdUpdateRequest>?>(JsonSerializer.Deserialize<List<AdUpdateRequest>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "product_groups":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                productGroups = new Option<List<ProductGroupPromotionUpdateRequest>?>(JsonSerializer.Deserialize<List<ProductGroupPromotionUpdateRequest>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            productGroups = new Option<List<ProductGroupPromotionUpdateRequest>?>(JsonSerializer.Deserialize<List<ProductGroupPromotionUpdateRequest>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "keywords":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                keywords = new Option<List<KeywordUpdate>?>(JsonSerializer.Deserialize<List<KeywordUpdate>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            keywords = new Option<List<KeywordUpdate>?>(JsonSerializer.Deserialize<List<KeywordUpdate>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

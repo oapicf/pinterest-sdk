@@ -97,7 +97,7 @@ private:
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="leadFormId">Unique identifier of a lead form.</param>
     /// <param name="leadFormTestRequest">Subscription to create.</param>
-    virtual void lead_form_test_create(const std::string &adAccountId, const std::string &leadFormId, const org::openapitools::server::model::LeadFormTestRequest &leadFormTestRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void lead_form_test_create( const std::string &adAccountId, const std::string &leadFormId, const org::openapitools::server::model::LeadFormTestRequest &leadFormTestRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get lead form by id
     /// </summary>
@@ -106,7 +106,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="leadFormId">Unique identifier of a lead form.</param>
-    virtual void lead_form_get(const std::string &adAccountId, const std::string &leadFormId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void lead_form_get( const std::string &adAccountId, const std::string &leadFormId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create lead forms
     /// </summary>
@@ -115,7 +115,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="leadFormCreateRequest">List of lead forms to create, size limit [1, 30].</param>
-    virtual void lead_forms_create(const std::string &adAccountId, const std::vector<org::openapitools::server::model::LeadFormCreateRequest> &leadFormCreateRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void lead_forms_create( const std::string &adAccountId, const std::vector<org::openapitools::server::model::LeadFormCreateRequest> &leadFormCreateRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List lead forms
     /// </summary>
@@ -126,7 +126,7 @@ private:
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="order">The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to &quot;&quot;)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void lead_forms_list(const std::string &adAccountId, const std::optional<int32_t> &pageSize, const std::optional<std::string> &order, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void lead_forms_list( const std::string &adAccountId, const std::optional<int32_t> &pageSize, const std::optional<std::string> &order, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update lead forms
     /// </summary>
@@ -135,7 +135,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="leadFormUpdateRequest">List of lead forms to update, size limit [1, 30].</param>
-    virtual void lead_forms_update(const std::string &adAccountId, const std::vector<org::openapitools::server::model::LeadFormUpdateRequest> &leadFormUpdateRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void lead_forms_update( const std::string &adAccountId, const std::vector<org::openapitools::server::model::LeadFormUpdateRequest> &leadFormUpdateRequest, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

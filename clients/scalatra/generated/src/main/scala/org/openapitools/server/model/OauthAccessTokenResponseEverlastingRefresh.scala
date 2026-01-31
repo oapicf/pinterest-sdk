@@ -12,6 +12,12 @@
 package org.openapitools.server.model
 
 case class OauthAccessTokenResponseEverlastingRefresh(
+  refreshToken: String,
+
+  refreshTokenExpiresIn: Int,
+
+  refreshTokenExpiresAt: Int,
+
   responseType: Option[String],
 
   accessToken: String,
@@ -20,12 +26,6 @@ case class OauthAccessTokenResponseEverlastingRefresh(
 
   expiresIn: Int,
 
-  scope: String,
-
-  refreshToken: String,
-
-  refreshTokenExpiresIn: Int,
-
-  refreshTokenExpiresAt: Int
+  scope: String
 
  )

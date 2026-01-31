@@ -13,11 +13,23 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * A successful OAuth access token response for the authorization code flow.
+ * 
  * @export
  * @interface OauthAccessTokenResponseCode
  */
 export interface OauthAccessTokenResponseCode  {
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenResponseCode
+     */
+    refreshToken: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof OauthAccessTokenResponseCode
+     */
+    refreshTokenExpiresIn: number;
     /**
      * 
      * @type {string}
@@ -48,29 +60,17 @@ export interface OauthAccessTokenResponseCode  {
      * @memberof OauthAccessTokenResponseCode
      */
     scope: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof OauthAccessTokenResponseCode
-     */
-    refreshToken: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof OauthAccessTokenResponseCode
-     */
-    refreshTokenExpiresIn: number;
 }
 
 export function OauthAccessTokenResponseCodeFromJSON(json: any): OauthAccessTokenResponseCode {
     return {
+        'refreshToken': json['refresh_token'],
+        'refreshTokenExpiresIn': json['refresh_token_expires_in'],
         'responseType': !exists(json, 'response_type') ? undefined : json['response_type'],
         'accessToken': json['access_token'],
         'tokenType': json['token_type'],
         'expiresIn': json['expires_in'],
         'scope': json['scope'],
-        'refreshToken': json['refresh_token'],
-        'refreshTokenExpiresIn': json['refresh_token_expires_in'],
     };
 }
 
@@ -79,13 +79,13 @@ export function OauthAccessTokenResponseCodeToJSON(value?: OauthAccessTokenRespo
         return undefined;
     }
     return {
+        'refresh_token': value.refreshToken,
+        'refresh_token_expires_in': value.refreshTokenExpiresIn,
         'response_type': value.responseType,
         'access_token': value.accessToken,
         'token_type': value.tokenType,
         'expires_in': value.expiresIn,
         'scope': value.scope,
-        'refresh_token': value.refreshToken,
-        'refresh_token_expires_in': value.refreshTokenExpiresIn,
     };
 }
 

@@ -9,10 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_permissions
 
 type AuthRespondInvitesBodyInvitesInnerAction* = object
   ## 
   acceptInvite*: bool ## Whether the invite/request is accepted.
-  assetIdToPermissions*: Table[string, seq[Permissions]] ## An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+  assetIdToPermissions*: Option[Table[string, seq[Permissions]]] ## An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+
+
+# Custom JSON deserialization for AuthRespondInvitesBodyInvitesInnerAction with custom field names
+proc to*(node: JsonNode, T: typedesc[AuthRespondInvitesBodyInvitesInnerAction]): AuthRespondInvitesBodyInvitesInnerAction =
+  result = AuthRespondInvitesBodyInvitesInnerAction()
+  if node.kind == JObject:
+    if node.hasKey("accept_invite"):
+      result.acceptInvite = to(node["accept_invite"], bool)
+    if node.hasKey("asset_id_to_permissions") and node["asset_id_to_permissions"].kind != JNull:
+      result.assetIdToPermissions = some(to(node["asset_id_to_permissions"], typeof(result.assetIdToPermissions.get())))
+
+# Custom JSON serialization for AuthRespondInvitesBodyInvitesInnerAction with custom field names
+proc `%`*(obj: AuthRespondInvitesBodyInvitesInnerAction): JsonNode =
+  result = newJObject()
+  result["accept_invite"] = %obj.acceptInvite
+  if obj.assetIdToPermissions.isSome():
+    result["asset_id_to_permissions"] = %obj.assetIdToPermissions.get()
+

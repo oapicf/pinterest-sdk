@@ -23,7 +23,7 @@ data class DeletePartnerAssetsResultsResponseArray(
     @field:Valid
     @Schema(example = "null", description = "List of terminated asset access.")
     @get:JsonProperty("items") val items: kotlin.collections.List<DeletePartnerAssetsResult>? = null
-    ) {
+) {
 
 }
 

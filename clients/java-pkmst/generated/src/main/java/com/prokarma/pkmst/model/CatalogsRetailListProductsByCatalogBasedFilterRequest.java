@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Request object to list products for a given retail catalog_id and product group filter.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2025-05-10T05:39:31.012858315Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailListProductsByCatalogBasedFilterRequest   {
   /**
    * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.

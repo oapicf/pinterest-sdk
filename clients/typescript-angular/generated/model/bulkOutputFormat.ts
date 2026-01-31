@@ -12,12 +12,9 @@
 /**
  * Bulk file output format
  */
-export type BulkOutputFormat = 'CSV' | 'JSON';
-
 export const BulkOutputFormat = {
-
-    Csv: 'CSV' as BulkOutputFormat,
-
-    Json: 'JSON' as BulkOutputFormat
-};
+    Csv: 'CSV',
+    Json: 'JSON'
+} as const;
+export type BulkOutputFormat = typeof BulkOutputFormat[keyof typeof BulkOutputFormat];
 

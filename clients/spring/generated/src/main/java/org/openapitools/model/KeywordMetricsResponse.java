@@ -20,14 +20,14 @@ import javax.annotation.Generated;
  * KeywordMetricsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class KeywordMetricsResponse {
 
   private @Nullable String keyword;
 
   private @Nullable KeywordMetrics metrics;
 
-  public KeywordMetricsResponse keyword(String keyword) {
+  public KeywordMetricsResponse keyword(@Nullable String keyword) {
     this.keyword = keyword;
     return this;
   }
@@ -39,15 +39,15 @@ public class KeywordMetricsResponse {
   
   @Schema(name = "keyword", example = "animals", description = "Keyword name, e.g., \"keyword\":\"fashion outfits\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("keyword")
-  public String getKeyword() {
+  public @Nullable String getKeyword() {
     return keyword;
   }
 
-  public void setKeyword(String keyword) {
+  public void setKeyword(@Nullable String keyword) {
     this.keyword = keyword;
   }
 
-  public KeywordMetricsResponse metrics(KeywordMetrics metrics) {
+  public KeywordMetricsResponse metrics(@Nullable KeywordMetrics metrics) {
     this.metrics = metrics;
     return this;
   }
@@ -59,11 +59,11 @@ public class KeywordMetricsResponse {
   @Valid 
   @Schema(name = "metrics", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("metrics")
-  public KeywordMetrics getMetrics() {
+  public @Nullable KeywordMetrics getMetrics() {
     return metrics;
   }
 
-  public void setMetrics(KeywordMetrics metrics) {
+  public void setMetrics(@Nullable KeywordMetrics metrics) {
     this.metrics = metrics;
   }
 

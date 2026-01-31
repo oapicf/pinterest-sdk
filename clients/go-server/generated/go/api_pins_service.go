@@ -136,7 +136,7 @@ func (s *PinsAPIService) PinsUpdate(ctx context.Context, pinId string, pinUpdate
 }
 
 // PinsAnalytics - Get Pin analytics
-func (s *PinsAPIService) PinsAnalytics(ctx context.Context, pinId string, startDate string, endDate string, metricTypes []PinsAnalyticsMetricTypesParameterInner, appTypes string, splitField string, adAccountId string) (ImplResponse, error) {
+func (s *PinsAPIService) PinsAnalytics(ctx context.Context, pinId string, startDate string, endDate string, metricTypes []string, appTypes string, splitField string, adAccountId string) (ImplResponse, error) {
 	// TODO - update PinsAnalytics with the required logic for this service method.
 	// Add api_pins_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
@@ -159,7 +159,7 @@ func (s *PinsAPIService) PinsAnalytics(ctx context.Context, pinId string, startD
 }
 
 // MultiPinsAnalytics - Get multiple Pin analytics
-func (s *PinsAPIService) MultiPinsAnalytics(ctx context.Context, pinIds []string, startDate string, endDate string, metricTypes []PinsAnalyticsMetricTypesParameterInner, appTypes string, adAccountId string) (ImplResponse, error) {
+func (s *PinsAPIService) MultiPinsAnalytics(ctx context.Context, pinIds []string, startDate string, endDate string, metricTypes []string, appTypes string, adAccountId string) (ImplResponse, error) {
 	// TODO - update MultiPinsAnalytics with the required logic for this service method.
 	// Add api_pins_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

@@ -13,7 +13,7 @@
 /*
  * OAIOauthAccessTokenResponseIntegrationRefresh.h
  *
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
+ * 
  */
 
 #ifndef OAIOauthAccessTokenResponseIntegrationRefresh_H
@@ -38,6 +38,16 @@ public:
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
+
+    QString getRefreshToken() const;
+    void setRefreshToken(const QString &refresh_token);
+    bool is_refresh_token_Set() const;
+    bool is_refresh_token_Valid() const;
+
+    qint32 getRefreshTokenExpiresIn() const;
+    void setRefreshTokenExpiresIn(const qint32 &refresh_token_expires_in);
+    bool is_refresh_token_expires_in_Set() const;
+    bool is_refresh_token_expires_in_Valid() const;
 
     QString getResponseType() const;
     void setResponseType(const QString &response_type);
@@ -64,21 +74,19 @@ public:
     bool is_scope_Set() const;
     bool is_scope_Valid() const;
 
-    QString getRefreshToken() const;
-    void setRefreshToken(const QString &refresh_token);
-    bool is_refresh_token_Set() const;
-    bool is_refresh_token_Valid() const;
-
-    qint32 getRefreshTokenExpiresIn() const;
-    void setRefreshTokenExpiresIn(const qint32 &refresh_token_expires_in);
-    bool is_refresh_token_expires_in_Set() const;
-    bool is_refresh_token_expires_in_Valid() const;
-
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
     void initializeModel();
+
+    QString m_refresh_token;
+    bool m_refresh_token_isSet;
+    bool m_refresh_token_isValid;
+
+    qint32 m_refresh_token_expires_in;
+    bool m_refresh_token_expires_in_isSet;
+    bool m_refresh_token_expires_in_isValid;
 
     QString m_response_type;
     bool m_response_type_isSet;
@@ -99,14 +107,6 @@ private:
     QString m_scope;
     bool m_scope_isSet;
     bool m_scope_isValid;
-
-    QString m_refresh_token;
-    bool m_refresh_token_isSet;
-    bool m_refresh_token_isValid;
-
-    qint32 m_refresh_token_expires_in;
-    bool m_refresh_token_expires_in_isSet;
-    bool m_refresh_token_expires_in_isValid;
 };
 
 } // namespace OpenAPI

@@ -199,8 +199,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "invite_expiration":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                inviteExpiration = new Option<int?>(utf8JsonReader.GetInt32());
+                            inviteExpiration = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "invite_status":
                             inviteStatus = new Option<string?>(utf8JsonReader.GetString()!);
@@ -209,12 +208,10 @@ namespace Org.OpenAPITools.Model
                             inviteType = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "last_updated_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lastUpdatedTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            lastUpdatedTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "sent_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sentAt = new Option<int?>(utf8JsonReader.GetInt32());
+                            sentAt = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,19 +7,22 @@ import org.openapitools.model.AuthRespondInvitesBodyInvitesInner;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * An object with a list of all the invites the user would like to respond to and the action to take.
- **/
+ * An object with a list of all the invites the user would like to respond to and the action to take.
+ */
 @ApiModel(description="An object with a list of all the invites the user would like to respond to and the action to take.")
 
 public class AuthRespondInvitesBody  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private List<@Valid AuthRespondInvitesBodyInvitesInner> invites = new ArrayList<>();
  /**
    * Get invites

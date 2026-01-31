@@ -44,7 +44,7 @@ import javax.annotation.Generated;
   CatalogsRetailFeedsUpdateRequest.JSON_PROPERTY_DEFAULT_AVAILABILITY
 })
 @JsonTypeName("CatalogsRetailFeedsUpdateRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-01-26T05:35:55.554977681Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class CatalogsRetailFeedsUpdateRequest {
     public static final String JSON_PROPERTY_DEFAULT_CURRENCY = "default_currency";

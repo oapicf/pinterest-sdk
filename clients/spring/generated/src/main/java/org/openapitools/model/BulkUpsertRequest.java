@@ -22,14 +22,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BulkUpsertRequest", description = "Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkUpsertRequest {
 
   private @Nullable BulkUpsertRequestCreate create;
 
   private @Nullable BulkUpsertRequestUpdate update;
 
-  public BulkUpsertRequest create(BulkUpsertRequestCreate create) {
+  public BulkUpsertRequest create(@Nullable BulkUpsertRequestCreate create) {
     this.create = create;
     return this;
   }
@@ -41,15 +41,15 @@ public class BulkUpsertRequest {
   @Valid 
   @Schema(name = "create", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("create")
-  public BulkUpsertRequestCreate getCreate() {
+  public @Nullable BulkUpsertRequestCreate getCreate() {
     return create;
   }
 
-  public void setCreate(BulkUpsertRequestCreate create) {
+  public void setCreate(@Nullable BulkUpsertRequestCreate create) {
     this.create = create;
   }
 
-  public BulkUpsertRequest update(BulkUpsertRequestUpdate update) {
+  public BulkUpsertRequest update(@Nullable BulkUpsertRequestUpdate update) {
     this.update = update;
     return this;
   }
@@ -61,11 +61,11 @@ public class BulkUpsertRequest {
   @Valid 
   @Schema(name = "update", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("update")
-  public BulkUpsertRequestUpdate getUpdate() {
+  public @Nullable BulkUpsertRequestUpdate getUpdate() {
     return update;
   }
 
-  public void setUpdate(BulkUpsertRequestUpdate update) {
+  public void setUpdate(@Nullable BulkUpsertRequestUpdate update) {
     this.update = update;
   }
 

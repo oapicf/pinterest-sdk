@@ -42,7 +42,7 @@ import javax.annotation.Generated;
   LeadFormCreateRequest.JSON_PROPERTY_POLICY_LINKS
 })
 @JsonTypeName("LeadFormCreateRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-01-26T05:35:55.554977681Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class LeadFormCreateRequest {
     public static final String JSON_PROPERTY_NAME = "name";
@@ -64,17 +64,12 @@ public class LeadFormCreateRequest {
     private String disclosureLanguage;
 
     public static final String JSON_PROPERTY_QUESTIONS = "questions";
-    private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
+    private List<@Valid LeadFormQuestion> questions = null;
 
     public static final String JSON_PROPERTY_POLICY_LINKS = "policy_links";
     private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = null;
 
-    public LeadFormCreateRequest(String name, String privacyPolicyLink, Boolean hasAcceptedTerms, String completionMessage, List<@Valid LeadFormQuestion> questions) {
-        this.name = name;
-        this.privacyPolicyLink = privacyPolicyLink;
-        this.hasAcceptedTerms = hasAcceptedTerms;
-        this.completionMessage = completionMessage;
-        this.questions = questions;
+    public LeadFormCreateRequest() {
     }
 
     public LeadFormCreateRequest name(String name) {
@@ -88,13 +83,13 @@ public class LeadFormCreateRequest {
      */
     @Nullable
     @JsonProperty(JSON_PROPERTY_NAME)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public String getName() {
         return name;
     }
 
     @JsonProperty(JSON_PROPERTY_NAME)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public void setName(String name) {
         this.name = name;
     }
@@ -110,13 +105,13 @@ public class LeadFormCreateRequest {
      */
     @Nullable
     @JsonProperty(JSON_PROPERTY_PRIVACY_POLICY_LINK)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public String getPrivacyPolicyLink() {
         return privacyPolicyLink;
     }
 
     @JsonProperty(JSON_PROPERTY_PRIVACY_POLICY_LINK)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public void setPrivacyPolicyLink(String privacyPolicyLink) {
         this.privacyPolicyLink = privacyPolicyLink;
     }
@@ -130,15 +125,15 @@ public class LeadFormCreateRequest {
      * Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO
      * @return hasAcceptedTerms
      */
-    @NotNull
+    @Nullable
     @JsonProperty(JSON_PROPERTY_HAS_ACCEPTED_TERMS)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public Boolean getHasAcceptedTerms() {
         return hasAcceptedTerms;
     }
 
     @JsonProperty(JSON_PROPERTY_HAS_ACCEPTED_TERMS)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
         this.hasAcceptedTerms = hasAcceptedTerms;
     }
@@ -154,13 +149,13 @@ public class LeadFormCreateRequest {
      */
     @Nullable
     @JsonProperty(JSON_PROPERTY_COMPLETION_MESSAGE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public String getCompletionMessage() {
         return completionMessage;
     }
 
     @JsonProperty(JSON_PROPERTY_COMPLETION_MESSAGE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public void setCompletionMessage(String completionMessage) {
         this.completionMessage = completionMessage;
     }
@@ -215,6 +210,9 @@ public class LeadFormCreateRequest {
     }
 
     public LeadFormCreateRequest addQuestionsItem(LeadFormQuestion questionsItem) {
+        if (this.questions == null) {
+            this.questions = new ArrayList<>();
+        }
         this.questions.add(questionsItem);
         return this;
     }
@@ -223,16 +221,16 @@ public class LeadFormCreateRequest {
      * List of questions to be displayed on the lead form.
      * @return questions
      */
-    @NotNull
+    @Nullable
     @Size(min=0, max=10)
     @JsonProperty(JSON_PROPERTY_QUESTIONS)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public List<@Valid LeadFormQuestion> getQuestions() {
         return questions;
     }
 
     @JsonProperty(JSON_PROPERTY_QUESTIONS)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public void setQuestions(List<@Valid LeadFormQuestion> questions) {
         this.questions = questions;
     }

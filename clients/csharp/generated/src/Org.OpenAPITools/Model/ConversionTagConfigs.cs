@@ -237,32 +237,25 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "aem_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aemEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            aemEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "md_frequency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                mdFrequency = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            mdFrequency = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "aem_fnln_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aemFnlnEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            aemFnlnEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "aem_ph_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aemPhEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            aemPhEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "aem_ge_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aemGeEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            aemGeEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "aem_db_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aemDbEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            aemDbEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "aem_loc_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aemLocEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            aemLocEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

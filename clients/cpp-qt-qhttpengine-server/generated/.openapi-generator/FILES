@@ -235,8 +235,6 @@ server/src/models/OAIAudienceCreateCustomRequest.cpp
 server/src/models/OAIAudienceCreateCustomRequest.h
 server/src/models/OAIAudienceCreateRequest.cpp
 server/src/models/OAIAudienceCreateRequest.h
-server/src/models/OAIAudienceCreateRequest_1_audience_type.cpp
-server/src/models/OAIAudienceCreateRequest_1_audience_type.h
 server/src/models/OAIAudienceDataParty.cpp
 server/src/models/OAIAudienceDataParty.h
 server/src/models/OAIAudienceDefinition.cpp
@@ -591,8 +589,6 @@ server/src/models/OAICatalogsItemsPostFilters.cpp
 server/src/models/OAICatalogsItemsPostFilters.h
 server/src/models/OAICatalogsItemsRequest.cpp
 server/src/models/OAICatalogsItemsRequest.h
-server/src/models/OAICatalogsItemsRequest_language.cpp
-server/src/models/OAICatalogsItemsRequest_language.h
 server/src/models/OAICatalogsItemsUpdateBatchRequest.cpp
 server/src/models/OAICatalogsItemsUpdateBatchRequest.h
 server/src/models/OAICatalogsItemsUpsertBatchRequest.cpp
@@ -1265,8 +1261,6 @@ server/src/models/OAIPinUpdate.cpp
 server/src/models/OAIPinUpdate.h
 server/src/models/OAIPinUpdate_carousel_slots_inner.cpp
 server/src/models/OAIPinUpdate_carousel_slots_inner.h
-server/src/models/OAIPins_analytics_metric_types_parameter_inner.cpp
-server/src/models/OAIPins_analytics_metric_types_parameter_inner.h
 server/src/models/OAIPins_list_200_response.cpp
 server/src/models/OAIPins_list_200_response.h
 server/src/models/OAIPins_save_request.cpp

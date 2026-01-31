@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_item_attributes_request
 import model_item_create_batch_record
@@ -18,8 +20,54 @@ import model_item_update_batch_record
 import model_item_upsert_batch_record
 import model_update_mask_field_type
 
+# OneOf type
+type ItemBatchRecordKind* {.pure.} = enum
+  ItemCreateBatchRecordVariant
+  ItemDeleteDiscontinuedBatchRecordVariant
+  ItemUpdateBatchRecordVariant
+  ItemUpsertBatchRecordVariant
+  ItemDeleteBatchRecordVariant
+
 type ItemBatchRecord* = object
   ## Object describing an item batch record
-  itemId*: string ## The catalog item id in the merchant namespace
-  attributes*: ItemAttributesRequest
-  updateMask*: seq[UpdateMaskFieldType] ## The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+  case kind*: ItemBatchRecordKind
+  of ItemBatchRecordKind.ItemCreateBatchRecordVariant:
+    ItemCreateBatchRecordValue*: ItemCreateBatchRecord
+  of ItemBatchRecordKind.ItemDeleteDiscontinuedBatchRecordVariant:
+    ItemDeleteDiscontinuedBatchRecordValue*: ItemDeleteDiscontinuedBatchRecord
+  of ItemBatchRecordKind.ItemUpdateBatchRecordVariant:
+    ItemUpdateBatchRecordValue*: ItemUpdateBatchRecord
+  of ItemBatchRecordKind.ItemUpsertBatchRecordVariant:
+    ItemUpsertBatchRecordValue*: ItemUpsertBatchRecord
+  of ItemBatchRecordKind.ItemDeleteBatchRecordVariant:
+    ItemDeleteBatchRecordValue*: ItemDeleteBatchRecord
+
+proc to*(node: JsonNode, T: typedesc[ItemBatchRecord]): ItemBatchRecord =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return ItemBatchRecord(kind: ItemBatchRecordKind.ItemCreateBatchRecordVariant, ItemCreateBatchRecordValue: to(node, ItemCreateBatchRecord))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as ItemCreateBatchRecord: ", e.msg
+  try:
+    return ItemBatchRecord(kind: ItemBatchRecordKind.ItemDeleteDiscontinuedBatchRecordVariant, ItemDeleteDiscontinuedBatchRecordValue: to(node, ItemDeleteDiscontinuedBatchRecord))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as ItemDeleteDiscontinuedBatchRecord: ", e.msg
+  try:
+    return ItemBatchRecord(kind: ItemBatchRecordKind.ItemUpdateBatchRecordVariant, ItemUpdateBatchRecordValue: to(node, ItemUpdateBatchRecord))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as ItemUpdateBatchRecord: ", e.msg
+  try:
+    return ItemBatchRecord(kind: ItemBatchRecordKind.ItemUpsertBatchRecordVariant, ItemUpsertBatchRecordValue: to(node, ItemUpsertBatchRecord))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as ItemUpsertBatchRecord: ", e.msg
+  try:
+    return ItemBatchRecord(kind: ItemBatchRecordKind.ItemDeleteBatchRecordVariant, ItemDeleteBatchRecordValue: to(node, ItemDeleteBatchRecord))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as ItemDeleteBatchRecord: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of ItemBatchRecord. JSON: " & $node)
+

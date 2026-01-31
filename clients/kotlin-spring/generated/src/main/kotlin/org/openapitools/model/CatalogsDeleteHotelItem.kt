@@ -27,7 +27,7 @@ data class CatalogsDeleteHotelItem(
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("operation", required = true) val operation: CatalogsDeleteHotelItem.Operation
-    ) {
+) {
 
     /**
     * 
@@ -41,7 +41,8 @@ data class CatalogsDeleteHotelItem(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Operation {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsDeleteHotelItem'")
             }
         }
     }

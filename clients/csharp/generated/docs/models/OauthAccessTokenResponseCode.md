@@ -1,15 +1,14 @@
 # Org.OpenAPITools.Model.OauthAccessTokenResponseCode
-A successful OAuth access token response for the authorization code flow.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**RefreshToken** | **string** |  | 
+**RefreshTokenExpiresIn** | **int** |  | 
 **AccessToken** | **string** |  | 
 **ExpiresIn** | **int** |  | 
 **Scope** | **string** |  | 
-**RefreshToken** | **string** |  | 
-**RefreshTokenExpiresIn** | **int** |  | 
 **ResponseType** | **string** |  | [optional] 
 **TokenType** | **string** |  | [default to "bearer"]
 

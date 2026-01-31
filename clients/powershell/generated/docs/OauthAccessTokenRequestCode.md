@@ -3,17 +3,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GrantType** | **String** |  | 
 **Code** | **String** |  | 
 **RedirectUri** | **String** |  | 
+**GrantType** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$OauthAccessTokenRequestCode = Initialize-PSOpenAPIToolsOauthAccessTokenRequestCode  -GrantType null `
- -Code null `
- -RedirectUri null
+$OauthAccessTokenRequestCode = Initialize-PSOpenAPIToolsOauthAccessTokenRequestCode  -Code null `
+ -RedirectUri null `
+ -GrantType null
 ```
 
 - Convert the resource to JSON

@@ -13,15 +13,15 @@ import play.api.libs.json._
   * @param policyLinks List of additional policy links to be displayed on the lead form.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class LeadFormCreateRequest(
-  name: String,
-  privacyPolicyLink: String,
-  hasAcceptedTerms: Boolean,
-  completionMessage: String,
+  name: Option[String],
+  privacyPolicyLink: Option[String],
+  hasAcceptedTerms: Option[Boolean],
+  completionMessage: Option[String],
   status: Option[LeadFormStatus],
   disclosureLanguage: Option[String],
-  questions: List[LeadFormQuestion],
+  questions: Option[List[LeadFormQuestion]],
   policyLinks: Option[List[LeadFormCommonPolicyLinksInner]]
   additionalProperties: 
 )

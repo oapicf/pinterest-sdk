@@ -51,17 +51,39 @@ func NewAdvancedAuctionAPIController(s AdvancedAuctionAPIServicer, opts ...Advan
 func (c *AdvancedAuctionAPIController) Routes() Routes {
 	return Routes{
 		"AdvancedAuctionItemsGetPost": Route{
+			"AdvancedAuctionItemsGetPost",
 			strings.ToUpper("Post"),
 			"/v5/advanced_auction/items/get",
 			c.AdvancedAuctionItemsGetPost,
 		},
 		"AdvancedAuctionItemsSubmitPost": Route{
+			"AdvancedAuctionItemsSubmitPost",
 			strings.ToUpper("Post"),
 			"/v5/advanced_auction/items/submit",
 			c.AdvancedAuctionItemsSubmitPost,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the AdvancedAuctionAPIController
+func (c *AdvancedAuctionAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"AdvancedAuctionItemsGetPost",
+			strings.ToUpper("Post"),
+			"/v5/advanced_auction/items/get",
+			c.AdvancedAuctionItemsGetPost,
+		},
+		Route{
+			"AdvancedAuctionItemsSubmitPost",
+			strings.ToUpper("Post"),
+			"/v5/advanced_auction/items/submit",
+			c.AdvancedAuctionItemsSubmitPost,
+		},
+	}
+}
+
+
 
 // AdvancedAuctionItemsGetPost - Get item bid options (POST)
 func (c *AdvancedAuctionAPIController) AdvancedAuctionItemsGetPost(w http.ResponseWriter, r *http.Request) {

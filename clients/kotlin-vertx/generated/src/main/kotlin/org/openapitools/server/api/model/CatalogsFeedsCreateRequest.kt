@@ -51,7 +51,7 @@ data class CatalogsFeedsCreateRequest (
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
     val defaultCountry: Country? = null,
     val defaultAvailability: ProductAvailabilityType? = null,
-    val status: CatalogsStatus? = null
+    val status: CatalogsStatus? = "ACTIVE"
 ) {
 
         val name get() = _name ?: throw IllegalArgumentException("name is required")

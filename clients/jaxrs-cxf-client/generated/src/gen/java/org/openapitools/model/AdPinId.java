@@ -8,10 +8,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdPinId  {
   
-  @ApiModelProperty(example = "394205773611545468", value = "Pin ID.")
  /**
-   * Pin ID.
-  **/
+  * Pin ID.
+  */
+  @ApiModelProperty(example = "394205773611545468", value = "Pin ID.")
+
   private String pinId;
  /**
    * Pin ID.

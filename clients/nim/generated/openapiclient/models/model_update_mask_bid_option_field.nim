@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type UpdateMaskBidOptionField* = object
-  ## bid option field to apply operation updates to
+type UpdateMaskBidOptionField* {.pure.} = enum
+  BID
+  APPTYPEBIDMULTIPLIERSET
+  PLACEMENTBIDMULTIPLIERSET
+
+func `%`*(v: UpdateMaskBidOptionField): JsonNode =
+  result = case v:
+    of UpdateMaskBidOptionField.BID: %"BID"
+    of UpdateMaskBidOptionField.APPTYPEBIDMULTIPLIERSET: %"APP_TYPE_BID_MULTIPLIER_SET"
+    of UpdateMaskBidOptionField.PLACEMENTBIDMULTIPLIERSET: %"PLACEMENT_BID_MULTIPLIER_SET"
+
+func `$`*(v: UpdateMaskBidOptionField): string =
+  result = case v:
+    of UpdateMaskBidOptionField.BID: $("BID")
+    of UpdateMaskBidOptionField.APPTYPEBIDMULTIPLIERSET: $("APP_TYPE_BID_MULTIPLIER_SET")
+    of UpdateMaskBidOptionField.PLACEMENTBIDMULTIPLIERSET: $("PLACEMENT_BID_MULTIPLIER_SET")
+
+proc to*(node: JsonNode, T: typedesc[UpdateMaskBidOptionField]): UpdateMaskBidOptionField =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum UpdateMaskBidOptionField, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("BID"):
+    return UpdateMaskBidOptionField.BID
+  of $("APP_TYPE_BID_MULTIPLIER_SET"):
+    return UpdateMaskBidOptionField.APPTYPEBIDMULTIPLIERSET
+  of $("PLACEMENT_BID_MULTIPLIER_SET"):
+    return UpdateMaskBidOptionField.PLACEMENTBIDMULTIPLIERSET
+  else:
+    raise newException(ValueError, "Invalid enum value for UpdateMaskBidOptionField: " & strVal)
+

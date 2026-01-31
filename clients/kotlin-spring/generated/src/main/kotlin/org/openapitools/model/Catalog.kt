@@ -42,7 +42,7 @@ data class Catalog(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsType
-    ) {
+) {
 
 }
 

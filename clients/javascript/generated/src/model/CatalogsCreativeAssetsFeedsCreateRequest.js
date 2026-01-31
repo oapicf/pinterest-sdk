@@ -55,6 +55,7 @@ class CatalogsCreativeAssetsFeedsCreateRequest {
         obj['default_country'] = defaultCountry;
         obj['location'] = location;
         obj['catalog_type'] = catalogType;
+        obj['status'] = 'ACTIVE';
     }
 
     /**
@@ -141,14 +142,6 @@ class CatalogsCreativeAssetsFeedsCreateRequest {
         if (data['catalog_id'] && !(typeof data['catalog_id'] === 'string' || data['catalog_id'] instanceof String)) {
             throw new Error("Expected the field `catalog_id` to be a primitive type in the JSON string but got " + data['catalog_id']);
         }
-        // ensure the json data is a string
-        if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
-            throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
-        }
-        // validate the optional field `status`
-        if (data['status']) { // data not null
-          CatalogsStatus.validateJSON(data['status']);
-        }
 
         return true;
     }
@@ -213,8 +206,9 @@ CatalogsCreativeAssetsFeedsCreateRequest.prototype['catalog_id'] = undefined;
 
 /**
  * @member {module:model/CatalogsStatus} status
+ * @default 'ACTIVE'
  */
-CatalogsCreativeAssetsFeedsCreateRequest.prototype['status'] = undefined;
+CatalogsCreativeAssetsFeedsCreateRequest.prototype['status'] = 'ACTIVE';
 
 
 

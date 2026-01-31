@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_delete_asset_group_response_exceptions_inner
 
 type DeleteAssetGroupResponse* = object
   ## 
-  deletedAssetGroups*: seq[string] ## A list of ids of successfully deleted asset groups.
-  exceptions*: seq[DeleteAssetGroupResponse_exceptions_inner] ## A list of errors associated with the asset groups. Will be returned if there is an error.
+  deletedAssetGroups*: Option[seq[string]] ## A list of ids of successfully deleted asset groups.
+  exceptions*: Option[seq[DeleteAssetGroupResponse_exceptions_inner]] ## A list of errors associated with the asset groups. Will be returned if there is an error.
+
+
+# Custom JSON deserialization for DeleteAssetGroupResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[DeleteAssetGroupResponse]): DeleteAssetGroupResponse =
+  result = DeleteAssetGroupResponse()
+  if node.kind == JObject:
+    if node.hasKey("deleted_asset_groups") and node["deleted_asset_groups"].kind != JNull:
+      result.deletedAssetGroups = some(to(node["deleted_asset_groups"], typeof(result.deletedAssetGroups.get())))
+    if node.hasKey("exceptions") and node["exceptions"].kind != JNull:
+      result.exceptions = some(to(node["exceptions"], typeof(result.exceptions.get())))
+
+# Custom JSON serialization for DeleteAssetGroupResponse with custom field names
+proc `%`*(obj: DeleteAssetGroupResponse): JsonNode =
+  result = newJObject()
+  if obj.deletedAssetGroups.isSome():
+    result["deleted_asset_groups"] = %obj.deletedAssetGroups.get()
+  if obj.exceptions.isSome():
+    result["exceptions"] = %obj.exceptions.get()
+

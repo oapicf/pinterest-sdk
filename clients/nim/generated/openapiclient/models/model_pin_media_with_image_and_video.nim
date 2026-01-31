@@ -9,11 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_pin_media
 import model_pin_media_metadata
 
 type PinMediaWithImageAndVideo* = object
   ## Pin with a mix of images and videos.
-  mediaType*: string
-  items*: seq[PinMediaMetadata]
+  mediaType*: Option[string]
+  items*: Option[seq[PinMediaMetadata]]
+
+
+# Custom JSON deserialization for PinMediaWithImageAndVideo with custom field names
+proc to*(node: JsonNode, T: typedesc[PinMediaWithImageAndVideo]): PinMediaWithImageAndVideo =
+  result = PinMediaWithImageAndVideo()
+  if node.kind == JObject:
+    if node.hasKey("media_type") and node["media_type"].kind != JNull:
+      result.mediaType = some(to(node["media_type"], typeof(result.mediaType.get())))
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[PinMediaMetadata] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, PinMediaMetadata))
+        result.items = some(arr)
+
+# Custom JSON serialization for PinMediaWithImageAndVideo with custom field names
+proc `%`*(obj: PinMediaWithImageAndVideo): JsonNode =
+  result = newJObject()
+  if obj.mediaType.isSome():
+    result["media_type"] = %obj.mediaType.get()
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

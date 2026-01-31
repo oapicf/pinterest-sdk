@@ -39,7 +39,7 @@ data class DeletePartnerAssetsResult(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "140943737684417", description = "Unique identifier of a business partner.")
     @get:JsonProperty("partner_id") val partnerId: kotlin.String? = null
-    ) {
+) {
 
 }
 

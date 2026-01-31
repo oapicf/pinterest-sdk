@@ -10,13 +10,13 @@
 
 (def lead-form-create-request-data
   {
-   (ds/req :name) string?
-   (ds/req :privacy_policy_link) string?
-   (ds/req :has_accepted_terms) boolean?
-   (ds/req :completion_message) string?
+   (ds/opt :name) string?
+   (ds/opt :privacy_policy_link) string?
+   (ds/opt :has_accepted_terms) boolean?
+   (ds/opt :completion_message) string?
    (ds/opt :status) lead-form-status-spec
    (ds/opt :disclosure_language) string?
-   (ds/req :questions) (s/coll-of lead-form-question-spec)
+   (ds/opt :questions) (s/coll-of lead-form-question-spec)
    (ds/opt :policy_links) (s/coll-of lead-form-common-policy-links-inner-spec)
    })
 

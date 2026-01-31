@@ -146,7 +146,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedProcessingStatus catalogsFeedProcessingStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(catalogsFeedProcessingStatus.ToString());
+            writer.WriteStringValue(CatalogsFeedProcessingStatusValueConverter.ToJsonValue(catalogsFeedProcessingStatus).ToString());
         }
     }
 
@@ -177,14 +177,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the CatalogsFeedProcessingStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="catalogsFeedProcessingStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CatalogsFeedProcessingStatus? catalogsFeedProcessingStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(catalogsFeedProcessingStatus?.ToString() ?? "null");
+            writer.WriteStringValue(catalogsFeedProcessingStatus.HasValue ? CatalogsFeedProcessingStatusValueConverter.ToJsonValue(catalogsFeedProcessingStatus.Value).ToString() : "null");
         }
     }
 }

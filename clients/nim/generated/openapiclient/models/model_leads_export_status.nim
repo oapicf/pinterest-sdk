@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type LeadsExportStatus* = object
-  ## Status of a leads export job
+type LeadsExportStatus* {.pure.} = enum
+  INPROGRESS
+  FINISHED
+  FAILED
+
+func `%`*(v: LeadsExportStatus): JsonNode =
+  result = case v:
+    of LeadsExportStatus.INPROGRESS: %"IN_PROGRESS"
+    of LeadsExportStatus.FINISHED: %"FINISHED"
+    of LeadsExportStatus.FAILED: %"FAILED"
+
+func `$`*(v: LeadsExportStatus): string =
+  result = case v:
+    of LeadsExportStatus.INPROGRESS: $("IN_PROGRESS")
+    of LeadsExportStatus.FINISHED: $("FINISHED")
+    of LeadsExportStatus.FAILED: $("FAILED")
+
+proc to*(node: JsonNode, T: typedesc[LeadsExportStatus]): LeadsExportStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum LeadsExportStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("IN_PROGRESS"):
+    return LeadsExportStatus.INPROGRESS
+  of $("FINISHED"):
+    return LeadsExportStatus.FINISHED
+  of $("FAILED"):
+    return LeadsExportStatus.FAILED
+  else:
+    raise newException(ValueError, "Invalid enum value for LeadsExportStatus: " & strVal)
+

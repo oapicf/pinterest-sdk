@@ -33,15 +33,15 @@ export interface PinMediaSourceVideoID {
     is_standard?: boolean;
 }
 export namespace PinMediaSourceVideoID {
-    export type SourceTypeEnum = 'video_id';
     export const SourceTypeEnum = {
-        VideoId: 'video_id' as SourceTypeEnum
-    };
-    export type CoverImageContentTypeEnum = 'image/jpeg' | 'image/png';
+        VideoId: 'video_id'
+    } as const;
+    export type SourceTypeEnum = typeof SourceTypeEnum[keyof typeof SourceTypeEnum];
     export const CoverImageContentTypeEnum = {
-        ImageJpeg: 'image/jpeg' as CoverImageContentTypeEnum,
-        ImagePng: 'image/png' as CoverImageContentTypeEnum
-    };
+        ImageJpeg: 'image/jpeg',
+        ImagePng: 'image/png'
+    } as const;
+    export type CoverImageContentTypeEnum = typeof CoverImageContentTypeEnum[keyof typeof CoverImageContentTypeEnum];
 }
 
 

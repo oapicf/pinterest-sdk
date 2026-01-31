@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinMediaSourceImagesURL", description = "Multiple images urls-based media source")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceImagesURL implements PinMediaSource {
 
   /**
@@ -36,7 +36,7 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
   public enum SourceTypeEnum {
     MULTIPLE_IMAGE_URLS("multiple_image_urls");
 
-    private String value;
+    private final String value;
 
     SourceTypeEnum(String value) {
       this.value = value;
@@ -139,7 +139,7 @@ public class PinMediaSourceImagesURL implements PinMediaSource {
    * minimum: 0
    * @return index
    */
-  @Min(0) 
+  @Min(value = 0) 
   @Schema(name = "index", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("index")
   public Integer getIndex() {

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_feed_ingestion_errors
 import model_catalogs_feed_ingestion_info
@@ -19,3 +21,4 @@ type CatalogsFeedIngestionDetails* = object
   errors*: CatalogsFeedIngestionErrors
   info*: CatalogsFeedIngestionInfo
   warnings*: CatalogsFeedIngestionWarnings
+

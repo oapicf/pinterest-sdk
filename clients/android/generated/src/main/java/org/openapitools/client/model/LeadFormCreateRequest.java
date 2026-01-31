@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -42,7 +42,7 @@ public class LeadFormCreateRequest {
   /**
    * Internal name of the lead form.
    **/
-  @ApiModelProperty(required = true, value = "Internal name of the lead form.")
+  @ApiModelProperty(value = "Internal name of the lead form.")
   public String getName() {
     return name;
   }
@@ -53,7 +53,7 @@ public class LeadFormCreateRequest {
   /**
    * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
    **/
-  @ApiModelProperty(required = true, value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
+  @ApiModelProperty(value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
   public String getPrivacyPolicyLink() {
     return privacyPolicyLink;
   }
@@ -64,7 +64,7 @@ public class LeadFormCreateRequest {
   /**
    * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
    **/
-  @ApiModelProperty(required = true, value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
+  @ApiModelProperty(value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
   public Boolean getHasAcceptedTerms() {
     return hasAcceptedTerms;
   }
@@ -75,7 +75,7 @@ public class LeadFormCreateRequest {
   /**
    * A message for people who complete the form to let them know what happens next.
    **/
-  @ApiModelProperty(required = true, value = "A message for people who complete the form to let them know what happens next.")
+  @ApiModelProperty(value = "A message for people who complete the form to let them know what happens next.")
   public String getCompletionMessage() {
     return completionMessage;
   }
@@ -107,7 +107,7 @@ public class LeadFormCreateRequest {
   /**
    * List of questions to be displayed on the lead form.
    **/
-  @ApiModelProperty(required = true, value = "List of questions to be displayed on the lead form.")
+  @ApiModelProperty(value = "List of questions to be displayed on the lead form.")
   public List<LeadFormQuestion> getQuestions() {
     return questions;
   }

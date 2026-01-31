@@ -59,7 +59,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdGroupCommon
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupCommon {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -647,28 +647,10 @@ public class AdGroupCommon {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("status");
-    openapiFields.add("budget_in_micro_currency");
-    openapiFields.add("bid_in_micro_currency");
-    openapiFields.add("optimization_goal_metadata");
-    openapiFields.add("budget_type");
-    openapiFields.add("start_time");
-    openapiFields.add("end_time");
-    openapiFields.add("targeting_spec");
-    openapiFields.add("lifetime_frequency_cap");
-    openapiFields.add("tracking_urls");
-    openapiFields.add("auto_targeting_enabled");
-    openapiFields.add("placement_group");
-    openapiFields.add("pacing_delivery_type");
-    openapiFields.add("campaign_id");
-    openapiFields.add("billable_event");
-    openapiFields.add("bid_strategy_type");
-    openapiFields.add("targeting_template_ids");
+    openapiFields = new HashSet<String>(Arrays.asList("name", "status", "budget_in_micro_currency", "bid_in_micro_currency", "optimization_goal_metadata", "budget_type", "start_time", "end_time", "targeting_spec", "lifetime_frequency_cap", "tracking_urls", "auto_targeting_enabled", "placement_group", "pacing_delivery_type", "campaign_id", "billable_event", "bid_strategy_type", "targeting_template_ids"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -680,7 +662,7 @@ public class AdGroupCommon {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AdGroupCommon.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdGroupCommon is not found in the empty JSON string", AdGroupCommon.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AdGroupCommon is not found in the empty JSON string", AdGroupCommon.openapiRequiredFields.toString()));
         }
       }
 
@@ -688,12 +670,12 @@ public class AdGroupCommon {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AdGroupCommon.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AdGroupCommon` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AdGroupCommon` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the optional field `status`
       if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
@@ -724,14 +706,14 @@ public class AdGroupCommon {
         PacingDeliveryType.validateJsonElement(jsonObj.get("pacing_delivery_type"));
       }
       if ((jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull()) && !jsonObj.get("campaign_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `campaign_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
       }
       // validate the optional field `billable_event`
       if (jsonObj.get("billable_event") != null && !jsonObj.get("billable_event").isJsonNull()) {
         ActionType.validateJsonElement(jsonObj.get("billable_event"));
       }
       if ((jsonObj.get("bid_strategy_type") != null && !jsonObj.get("bid_strategy_type").isJsonNull()) && !jsonObj.get("bid_strategy_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `bid_strategy_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bid_strategy_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `bid_strategy_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bid_strategy_type").toString()));
       }
       // validate the optional field `bid_strategy_type`
       if (jsonObj.get("bid_strategy_type") != null && !jsonObj.get("bid_strategy_type").isJsonNull()) {
@@ -739,7 +721,7 @@ public class AdGroupCommon {
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("targeting_template_ids") != null && !jsonObj.get("targeting_template_ids").isJsonNull() && !jsonObj.get("targeting_template_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `targeting_template_ids` to be an array in the JSON string but got `%s`", jsonObj.get("targeting_template_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `targeting_template_ids` to be an array in the JSON string but got `%s`", jsonObj.get("targeting_template_ids").toString()));
       }
   }
 

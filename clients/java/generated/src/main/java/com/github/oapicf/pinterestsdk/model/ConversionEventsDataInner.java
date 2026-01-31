@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionEventsDataInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventsDataInner {
   public static final String SERIALIZED_NAME_EVENT_NAME = "event_name";
   @SerializedName(SERIALIZED_NAME_EVENT_NAME)
@@ -603,34 +603,10 @@ public class ConversionEventsDataInner {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("event_name");
-    openapiFields.add("action_source");
-    openapiFields.add("event_time");
-    openapiFields.add("event_id");
-    openapiFields.add("event_source_url");
-    openapiFields.add("opt_out");
-    openapiFields.add("partner_name");
-    openapiFields.add("user_data");
-    openapiFields.add("custom_data");
-    openapiFields.add("app_id");
-    openapiFields.add("app_name");
-    openapiFields.add("app_version");
-    openapiFields.add("device_brand");
-    openapiFields.add("device_carrier");
-    openapiFields.add("device_model");
-    openapiFields.add("device_type");
-    openapiFields.add("os_version");
-    openapiFields.add("wifi");
-    openapiFields.add("language");
+    openapiFields = new HashSet<String>(Arrays.asList("event_name", "action_source", "event_time", "event_id", "event_source_url", "opt_out", "partner_name", "user_data", "custom_data", "app_id", "app_name", "app_version", "device_brand", "device_carrier", "device_model", "device_type", "os_version", "wifi", "language"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("event_name");
-    openapiRequiredFields.add("action_source");
-    openapiRequiredFields.add("event_time");
-    openapiRequiredFields.add("event_id");
-    openapiRequiredFields.add("user_data");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("event_name", "action_source", "event_time", "event_id", "user_data"));
   }
 
   /**
@@ -642,7 +618,7 @@ public class ConversionEventsDataInner {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ConversionEventsDataInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ConversionEventsDataInner is not found in the empty JSON string", ConversionEventsDataInner.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ConversionEventsDataInner is not found in the empty JSON string", ConversionEventsDataInner.openapiRequiredFields.toString()));
         }
       }
 
@@ -650,31 +626,31 @@ public class ConversionEventsDataInner {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ConversionEventsDataInner.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConversionEventsDataInner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ConversionEventsDataInner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ConversionEventsDataInner.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("event_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `event_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("event_name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `event_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("event_name").toString()));
       }
       if (!jsonObj.get("action_source").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `action_source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("action_source").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `action_source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("action_source").toString()));
       }
       if (!jsonObj.get("event_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `event_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("event_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `event_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("event_id").toString()));
       }
       if ((jsonObj.get("event_source_url") != null && !jsonObj.get("event_source_url").isJsonNull()) && !jsonObj.get("event_source_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `event_source_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("event_source_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `event_source_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("event_source_url").toString()));
       }
       if ((jsonObj.get("partner_name") != null && !jsonObj.get("partner_name").isJsonNull()) && !jsonObj.get("partner_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `partner_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("partner_name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `partner_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("partner_name").toString()));
       }
       // validate the required field `user_data`
       ConversionEventsUserData.validateJsonElement(jsonObj.get("user_data"));
@@ -683,31 +659,31 @@ public class ConversionEventsDataInner {
         ConversionEventsDataInnerCustomData.validateJsonElement(jsonObj.get("custom_data"));
       }
       if ((jsonObj.get("app_id") != null && !jsonObj.get("app_id").isJsonNull()) && !jsonObj.get("app_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `app_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("app_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `app_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("app_id").toString()));
       }
       if ((jsonObj.get("app_name") != null && !jsonObj.get("app_name").isJsonNull()) && !jsonObj.get("app_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `app_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("app_name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `app_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("app_name").toString()));
       }
       if ((jsonObj.get("app_version") != null && !jsonObj.get("app_version").isJsonNull()) && !jsonObj.get("app_version").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `app_version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("app_version").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `app_version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("app_version").toString()));
       }
       if ((jsonObj.get("device_brand") != null && !jsonObj.get("device_brand").isJsonNull()) && !jsonObj.get("device_brand").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `device_brand` to be a primitive type in the JSON string but got `%s`", jsonObj.get("device_brand").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `device_brand` to be a primitive type in the JSON string but got `%s`", jsonObj.get("device_brand").toString()));
       }
       if ((jsonObj.get("device_carrier") != null && !jsonObj.get("device_carrier").isJsonNull()) && !jsonObj.get("device_carrier").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `device_carrier` to be a primitive type in the JSON string but got `%s`", jsonObj.get("device_carrier").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `device_carrier` to be a primitive type in the JSON string but got `%s`", jsonObj.get("device_carrier").toString()));
       }
       if ((jsonObj.get("device_model") != null && !jsonObj.get("device_model").isJsonNull()) && !jsonObj.get("device_model").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `device_model` to be a primitive type in the JSON string but got `%s`", jsonObj.get("device_model").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `device_model` to be a primitive type in the JSON string but got `%s`", jsonObj.get("device_model").toString()));
       }
       if ((jsonObj.get("device_type") != null && !jsonObj.get("device_type").isJsonNull()) && !jsonObj.get("device_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `device_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("device_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `device_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("device_type").toString()));
       }
       if ((jsonObj.get("os_version") != null && !jsonObj.get("os_version").isJsonNull()) && !jsonObj.get("os_version").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `os_version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("os_version").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `os_version` to be a primitive type in the JSON string but got `%s`", jsonObj.get("os_version").toString()));
       }
       if ((jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) && !jsonObj.get("language").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("language").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("language").toString()));
       }
   }
 

@@ -11,9 +11,21 @@
  */
 
 /**
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
+ * OASOauthAccessTokenResponseIntegrati
  */
 public class OASOauthAccessTokenResponseIntegrati implements OAS.MappedProperties {
+    /**
+     * Get refreshToken
+     * @return refreshToken
+     */
+    public String refreshToken { get; set; }
+
+    /**
+     * Get refreshTokenExpiresIn
+     * @return refreshTokenExpiresIn
+     */
+    public Integer refreshTokenExpiresIn { get; set; }
+
     /**
      * Gets or Sets responseType
      */
@@ -53,25 +65,13 @@ public class OASOauthAccessTokenResponseIntegrati implements OAS.MappedPropertie
      */
     public String scope { get; set; }
 
-    /**
-     * Get refreshToken
-     * @return refreshToken
-     */
-    public String refreshToken { get; set; }
-
-    /**
-     * Get refreshTokenExpiresIn
-     * @return refreshTokenExpiresIn
-     */
-    public Integer refreshTokenExpiresIn { get; set; }
-
     private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'refresh_token' => 'refreshToken',
+        'refresh_token_expires_in' => 'refreshTokenExpiresIn',
         'response_type' => 'responseType',
         'access_token' => 'accessToken',
         'token_type' => 'tokenType',
-        'expires_in' => 'expiresIn',
-        'refresh_token' => 'refreshToken',
-        'refresh_token_expires_in' => 'refreshTokenExpiresIn'
+        'expires_in' => 'expiresIn'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -79,12 +79,12 @@ public class OASOauthAccessTokenResponseIntegrati implements OAS.MappedPropertie
     }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'refresh_token' => 'refreshToken',
+        'refresh_token_expires_in' => 'refreshTokenExpiresIn',
         'response_type' => 'responseType',
         'access_token' => 'accessToken',
         'token_type' => 'tokenType',
-        'expires_in' => 'expiresIn',
-        'refresh_token' => 'refreshToken',
-        'refresh_token_expires_in' => 'refreshTokenExpiresIn'
+        'expires_in' => 'expiresIn'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -92,12 +92,12 @@ public class OASOauthAccessTokenResponseIntegrati implements OAS.MappedPropertie
     }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'refresh_token' => 'refreshToken',
+        'refresh_token_expires_in' => 'refreshTokenExpiresIn',
         'response_type' => 'responseType',
         'access_token' => 'accessToken',
         'token_type' => 'tokenType',
-        'expires_in' => 'expiresIn',
-        'refresh_token' => 'refreshToken',
-        'refresh_token_expires_in' => 'refreshTokenExpiresIn'
+        'expires_in' => 'expiresIn'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -105,12 +105,12 @@ public class OASOauthAccessTokenResponseIntegrati implements OAS.MappedPropertie
     }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'refresh_token' => 'refreshToken',
+        'refresh_token_expires_in' => 'refreshTokenExpiresIn',
         'response_type' => 'responseType',
         'access_token' => 'accessToken',
         'token_type' => 'tokenType',
-        'expires_in' => 'expiresIn',
-        'refresh_token' => 'refreshToken',
-        'refresh_token_expires_in' => 'refreshTokenExpiresIn'
+        'expires_in' => 'expiresIn'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -118,12 +118,12 @@ public class OASOauthAccessTokenResponseIntegrati implements OAS.MappedPropertie
     }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'refresh_token' => 'refreshToken',
+        'refresh_token_expires_in' => 'refreshTokenExpiresIn',
         'response_type' => 'responseType',
         'access_token' => 'accessToken',
         'token_type' => 'tokenType',
-        'expires_in' => 'expiresIn',
-        'refresh_token' => 'refreshToken',
-        'refresh_token_expires_in' => 'refreshTokenExpiresIn'
+        'expires_in' => 'expiresIn'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -131,12 +131,12 @@ public class OASOauthAccessTokenResponseIntegrati implements OAS.MappedPropertie
     }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
+        'refresh_token' => 'refreshToken',
+        'refresh_token_expires_in' => 'refreshTokenExpiresIn',
         'response_type' => 'responseType',
         'access_token' => 'accessToken',
         'token_type' => 'tokenType',
-        'expires_in' => 'expiresIn',
-        'refresh_token' => 'refreshToken',
-        'refresh_token_expires_in' => 'refreshTokenExpiresIn'
+        'expires_in' => 'expiresIn'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -149,39 +149,39 @@ public class OASOauthAccessTokenResponseIntegrati implements OAS.MappedPropertie
 
     public static OASOauthAccessTokenResponseIntegrati getExample() {
         OASOauthAccessTokenResponseIntegrati oauthAccessTokenResponseIntegrationRefresh = new OASOauthAccessTokenResponseIntegrati();
+          oauthAccessTokenResponseIntegrationRefresh.refreshToken = '';
+          oauthAccessTokenResponseIntegrationRefresh.refreshTokenExpiresIn = 0;
           oauthAccessTokenResponseIntegrationRefresh.responseType = ResponseTypeEnum.AUTHORIZATION_CODE;
           oauthAccessTokenResponseIntegrationRefresh.accessToken = '';
           oauthAccessTokenResponseIntegrationRefresh.tokenType = '';
           oauthAccessTokenResponseIntegrationRefresh.expiresIn = 0;
           oauthAccessTokenResponseIntegrationRefresh.scope = '';
-          oauthAccessTokenResponseIntegrationRefresh.refreshToken = '';
-          oauthAccessTokenResponseIntegrationRefresh.refreshTokenExpiresIn = 0;
         return oauthAccessTokenResponseIntegrationRefresh;
     }
 
     public Boolean equals(Object obj) {
         if (obj instanceof OASOauthAccessTokenResponseIntegrati) {           
             OASOauthAccessTokenResponseIntegrati oauthAccessTokenResponseIntegrationRefresh = (OASOauthAccessTokenResponseIntegrati) obj;
-            return this.responseType == oauthAccessTokenResponseIntegrationRefresh.responseType
+            return this.refreshToken == oauthAccessTokenResponseIntegrationRefresh.refreshToken
+                && this.refreshTokenExpiresIn == oauthAccessTokenResponseIntegrationRefresh.refreshTokenExpiresIn
+                && this.responseType == oauthAccessTokenResponseIntegrationRefresh.responseType
                 && this.accessToken == oauthAccessTokenResponseIntegrationRefresh.accessToken
                 && this.tokenType == oauthAccessTokenResponseIntegrationRefresh.tokenType
                 && this.expiresIn == oauthAccessTokenResponseIntegrationRefresh.expiresIn
-                && this.scope == oauthAccessTokenResponseIntegrationRefresh.scope
-                && this.refreshToken == oauthAccessTokenResponseIntegrationRefresh.refreshToken
-                && this.refreshTokenExpiresIn == oauthAccessTokenResponseIntegrationRefresh.refreshTokenExpiresIn;
+                && this.scope == oauthAccessTokenResponseIntegrationRefresh.scope;
         }
         return false;
     }
 
     public Integer hashCode() {
         Integer hashCode = 43;
+        hashCode = (17 * hashCode) + (refreshToken == null ? 0 : System.hashCode(refreshToken));
+        hashCode = (17 * hashCode) + (refreshTokenExpiresIn == null ? 0 : System.hashCode(refreshTokenExpiresIn));
         hashCode = (17 * hashCode) + (responseType == null ? 0 : System.hashCode(responseType));
         hashCode = (17 * hashCode) + (accessToken == null ? 0 : System.hashCode(accessToken));
         hashCode = (17 * hashCode) + (tokenType == null ? 0 : System.hashCode(tokenType));
         hashCode = (17 * hashCode) + (expiresIn == null ? 0 : System.hashCode(expiresIn));
         hashCode = (17 * hashCode) + (scope == null ? 0 : System.hashCode(scope));
-        hashCode = (17 * hashCode) + (refreshToken == null ? 0 : System.hashCode(refreshToken));
-        hashCode = (17 * hashCode) + (refreshTokenExpiresIn == null ? 0 : System.hashCode(refreshTokenExpiresIn));
         return hashCode;
     }
 }

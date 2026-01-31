@@ -1,65 +1,75 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardMedia;
 import org.openapitools.model.BoardOwner;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Board
- **/
+ * Board
+ */
 @ApiModel(description="Board")
 
 public class Board  {
   
   @ApiModelProperty(example = "549755885175", value = "")
+
   private String id;
 
-  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "Date and time of board creation.")
  /**
-   * Date and time of board creation.
-  **/
+  * Date and time of board creation.
+  */
+  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "Date and time of board creation.")
+
   private Date createdAt;
 
-  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "Date and time of last board pins modified.")
  /**
-   * Date and time of last board pins modified.
-  **/
+  * Date and time of last board pins modified.
+  */
+  @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "Date and time of last board pins modified.")
+
   private Date boardPinsModifiedAt;
 
   @ApiModelProperty(example = "Summer Recipes", required = true, value = "")
+
   private String name;
 
   @ApiModelProperty(example = "My favorite summer recipes", value = "")
+
   private String description;
 
-  @ApiModelProperty(example = "17", value = "Count of collaborators on the board.")
  /**
-   * Count of collaborators on the board.
-  **/
+  * Count of collaborators on the board.
+  */
+  @ApiModelProperty(example = "17", value = "Count of collaborators on the board.")
+
   private Integer collaboratorCount;
 
-  @ApiModelProperty(example = "5", value = "Count of pins on the board.")
  /**
-   * Count of pins on the board.
-  **/
+  * Count of pins on the board.
+  */
+  @ApiModelProperty(example = "5", value = "Count of pins on the board.")
+
   private Integer pinCount;
 
-  @ApiModelProperty(example = "13", value = "Board follower count.")
  /**
-   * Board follower count.
-  **/
+  * Board follower count.
+  */
+  @ApiModelProperty(example = "13", value = "Board follower count.")
+
   private Integer followerCount;
 
   @ApiModelProperty(value = "")
+
   private BoardMedia media;
 
   @ApiModelProperty(value = "")
+
   private BoardOwner owner;
 
 public enum PrivacyEnum {
@@ -92,10 +102,11 @@ PUBLIC(String.valueOf("PUBLIC")), PROTECTED(String.valueOf("PROTECTED")), SECRET
     }
 }
 
-  @ApiModelProperty(value = "Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>")
  /**
-   * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
-  **/
+  * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
+  */
+  @ApiModelProperty(value = "Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>")
+
   private PrivacyEnum privacy = PrivacyEnum.PUBLIC;
  /**
    * Get id

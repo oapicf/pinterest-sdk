@@ -90,7 +90,7 @@ public class BulkControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@7a8ddc9d");
+            .accept("[Ljava.lang.String;@70b456cf");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BulkDownloadResponse.class);
@@ -139,7 +139,7 @@ public class BulkControllerTest {
             put("bulk_request_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@301dc6d6");
+            .accept("[Ljava.lang.String;@75004ee2");
         request.getParameters()
             .add("include_details", String.valueOf(false)); // The query parameter format should be 
 
@@ -189,7 +189,7 @@ public class BulkControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@6a2c9220");
+            .accept("[Ljava.lang.String;@7974417e");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BulkUpsertResponse.class);

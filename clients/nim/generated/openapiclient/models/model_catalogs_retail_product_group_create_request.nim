@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_locale
 import model_catalogs_product_group_filters_request
@@ -21,18 +23,58 @@ type CatalogsRetailProductGroupCreateRequest* = object
   ## Request object for creating a product group.
   catalogType*: CatalogType ## Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
   name*: string
-  description*: string
+  description*: Option[string]
   filters*: CatalogsProductGroupFiltersRequest
   catalogId*: string ## Catalog id pertaining to the retail product group.
   country*: Country
   locale*: CatalogsLocale
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.RETAIL: "RETAIL"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.RETAIL: %"RETAIL"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.RETAIL: "RETAIL"
+    of CatalogType.RETAIL: $("RETAIL")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RETAIL"):
+    return CatalogType.RETAIL
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsRetailProductGroupCreateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsRetailProductGroupCreateRequest]): CatalogsRetailProductGroupCreateRequest =
+  result = CatalogsRetailProductGroupCreateRequest()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("name"):
+      result.name = to(node["name"], string)
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("filters"):
+      result.filters = to(node["filters"], CatalogsProductGroupFiltersRequest)
+    if node.hasKey("catalog_id"):
+      result.catalogId = to(node["catalog_id"], string)
+    if node.hasKey("country"):
+      result.country = to(node["country"], Country)
+    if node.hasKey("locale"):
+      result.locale = to(node["locale"], CatalogsLocale)
+
+# Custom JSON serialization for CatalogsRetailProductGroupCreateRequest with custom field names
+proc `%`*(obj: CatalogsRetailProductGroupCreateRequest): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["name"] = %obj.name
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  result["filters"] = %obj.filters
+  result["catalog_id"] = %obj.catalogId
+  result["country"] = %obj.country
+  result["locale"] = %obj.locale
+

@@ -16,7 +16,6 @@ package com.github.oapicf.pinterestsdk.model;
 import com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsBatchItem;
 import com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsBatchRequest;
 import com.github.oapicf.pinterestsdk.model.CatalogsHotelBatchRequest;
-import com.github.oapicf.pinterestsdk.model.CatalogsItemsRequestLanguage;
 import com.github.oapicf.pinterestsdk.model.CatalogsRetailBatchRequest;
 import com.github.oapicf.pinterestsdk.model.Country;
 import com.google.gson.TypeAdapter;

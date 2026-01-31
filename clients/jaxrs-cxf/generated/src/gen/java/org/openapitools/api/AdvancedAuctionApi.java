@@ -6,13 +6,9 @@ import org.openapitools.model.AdvancedAuctionItemsSubmitRequest;
 import org.openapitools.model.AdvancedAuctionProcessedItems;
 import org.openapitools.model.Error;
 
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.MediaType;
 import org.apache.cxf.jaxrs.ext.multipart.*;
 
 import io.swagger.annotations.Api;

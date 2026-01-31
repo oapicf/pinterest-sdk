@@ -132,7 +132,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupStatus catalogsProductGroupStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(catalogsProductGroupStatus.ToString());
+            writer.WriteStringValue(CatalogsProductGroupStatusValueConverter.ToJsonValue(catalogsProductGroupStatus).ToString());
         }
     }
 
@@ -163,14 +163,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the CatalogsProductGroupStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="catalogsProductGroupStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CatalogsProductGroupStatus? catalogsProductGroupStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(catalogsProductGroupStatus?.ToString() ?? "null");
+            writer.WriteStringValue(catalogsProductGroupStatus.HasValue ? CatalogsProductGroupStatusValueConverter.ToJsonValue(catalogsProductGroupStatus.Value).ToString() : "null");
         }
     }
 }

@@ -9,12 +9,15 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ad_country
 
 type AdAccountsCountryResponseData* = object
   ## 
-  code*: AdCountry
-  currency*: string ## Country currency.
-  index*: float ## Country index
-  name*: string ## Country name
+  code*: Option[AdCountry]
+  currency*: Option[string] ## Country currency.
+  index*: Option[float] ## Country index
+  name*: Option[string] ## Country name
+

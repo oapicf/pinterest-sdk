@@ -18,7 +18,7 @@ type UpdateInvitesResultsResponseArrayItemsInner struct {
 
 	Exception *InviteExceptionResponse `json:"exception,omitempty"`
 
-	Invite *InviteBusinessRoleBinding `json:"invite,omitempty"`
+	Invite InviteBusinessRoleBinding `json:"invite,omitempty"`
 }
 
 // AssertUpdateInvitesResultsResponseArrayItemsInnerRequired checks if the required fields are not zero-ed
@@ -28,10 +28,8 @@ func AssertUpdateInvitesResultsResponseArrayItemsInnerRequired(obj UpdateInvites
 			return err
 		}
 	}
-	if obj.Invite != nil {
-		if err := AssertInviteBusinessRoleBindingRequired(*obj.Invite); err != nil {
-			return err
-		}
+	if err := AssertInviteBusinessRoleBindingRequired(obj.Invite); err != nil {
+		return err
 	}
 	return nil
 }
@@ -43,10 +41,8 @@ func AssertUpdateInvitesResultsResponseArrayItemsInnerConstraints(obj UpdateInvi
      		return err
      	}
     }
-    if obj.Invite != nil {
-     	if err := AssertInviteBusinessRoleBindingConstraints(*obj.Invite); err != nil {
-     		return err
-     	}
-    }
+	if err := AssertInviteBusinessRoleBindingConstraints(obj.Invite); err != nil {
+		return err
+	}
 	return nil
 }

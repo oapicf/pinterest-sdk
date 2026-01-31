@@ -9,11 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_business_member_assets_summary_ad_accounts_inner
 import model_business_member_assets_summary_profiles_inner
 
 type BusinessMemberAssetsSummary* = object
   ## Ad accounts and profiles the business member/partner has access to.
-  adAccounts*: seq[BusinessMemberAssetsSummary_ad_accounts_inner] ## List of ad account IDs and respective permission levels.
-  profiles*: seq[BusinessMemberAssetsSummary_profiles_inner] ## List of profile IDs and respective permission levels.
+  adAccounts*: Option[seq[BusinessMemberAssetsSummary_ad_accounts_inner]] ## List of ad account IDs and respective permission levels.
+  profiles*: Option[seq[BusinessMemberAssetsSummary_profiles_inner]] ## List of profile IDs and respective permission levels.
+
+
+# Custom JSON deserialization for BusinessMemberAssetsSummary with custom field names
+proc to*(node: JsonNode, T: typedesc[BusinessMemberAssetsSummary]): BusinessMemberAssetsSummary =
+  result = BusinessMemberAssetsSummary()
+  if node.kind == JObject:
+    if node.hasKey("ad_accounts") and node["ad_accounts"].kind != JNull:
+      result.adAccounts = some(to(node["ad_accounts"], typeof(result.adAccounts.get())))
+    if node.hasKey("profiles") and node["profiles"].kind != JNull:
+      result.profiles = some(to(node["profiles"], typeof(result.profiles.get())))
+
+# Custom JSON serialization for BusinessMemberAssetsSummary with custom field names
+proc `%`*(obj: BusinessMemberAssetsSummary): JsonNode =
+  result = newJObject()
+  if obj.adAccounts.isSome():
+    result["ad_accounts"] = %obj.adAccounts.get()
+  if obj.profiles.isSome():
+    result["profiles"] = %obj.profiles.get()
+

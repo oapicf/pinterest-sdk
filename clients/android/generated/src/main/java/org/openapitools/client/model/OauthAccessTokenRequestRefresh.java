@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -15,33 +15,20 @@ package org.openapitools.client.model;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * A request to exchange a refresh token for a new access token.
- **/
-@ApiModel(description = "A request to exchange a refresh token for a new access token.")
+@ApiModel(description = "")
 public class OauthAccessTokenRequestRefresh {
   
-  public enum GrantTypeEnum {
-     authorization_code,  refresh_token,  client_credentials, 
-  };
-  @SerializedName("grant_type")
-  private GrantTypeEnum grantType = null;
   @SerializedName("refresh_token")
   private String refreshToken = null;
   @SerializedName("scope")
   private String scope = null;
   @SerializedName("refresh_on")
   private Boolean refreshOn = null;
-
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  public GrantTypeEnum getGrantType() {
-    return grantType;
-  }
-  public void setGrantType(GrantTypeEnum grantType) {
-    this.grantType = grantType;
-  }
+  public enum GrantTypeEnum {
+     authorization_code,  refresh_token,  client_credentials, 
+  };
+  @SerializedName("grant_type")
+  private GrantTypeEnum grantType = null;
 
   /**
    **/
@@ -74,6 +61,16 @@ public class OauthAccessTokenRequestRefresh {
     this.refreshOn = refreshOn;
   }
 
+  /**
+   **/
+  @ApiModelProperty(required = true, value = "")
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -84,19 +81,19 @@ public class OauthAccessTokenRequestRefresh {
       return false;
     }
     OauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = (OauthAccessTokenRequestRefresh) o;
-    return (this.grantType == null ? oauthAccessTokenRequestRefresh.grantType == null : this.grantType.equals(oauthAccessTokenRequestRefresh.grantType)) &&
-        (this.refreshToken == null ? oauthAccessTokenRequestRefresh.refreshToken == null : this.refreshToken.equals(oauthAccessTokenRequestRefresh.refreshToken)) &&
+    return (this.refreshToken == null ? oauthAccessTokenRequestRefresh.refreshToken == null : this.refreshToken.equals(oauthAccessTokenRequestRefresh.refreshToken)) &&
         (this.scope == null ? oauthAccessTokenRequestRefresh.scope == null : this.scope.equals(oauthAccessTokenRequestRefresh.scope)) &&
-        (this.refreshOn == null ? oauthAccessTokenRequestRefresh.refreshOn == null : this.refreshOn.equals(oauthAccessTokenRequestRefresh.refreshOn));
+        (this.refreshOn == null ? oauthAccessTokenRequestRefresh.refreshOn == null : this.refreshOn.equals(oauthAccessTokenRequestRefresh.refreshOn)) &&
+        (this.grantType == null ? oauthAccessTokenRequestRefresh.grantType == null : this.grantType.equals(oauthAccessTokenRequestRefresh.grantType));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
-    result = 31 * result + (this.grantType == null ? 0: this.grantType.hashCode());
     result = 31 * result + (this.refreshToken == null ? 0: this.refreshToken.hashCode());
     result = 31 * result + (this.scope == null ? 0: this.scope.hashCode());
     result = 31 * result + (this.refreshOn == null ? 0: this.refreshOn.hashCode());
+    result = 31 * result + (this.grantType == null ? 0: this.grantType.hashCode());
     return result;
   }
 
@@ -105,10 +102,10 @@ public class OauthAccessTokenRequestRefresh {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestRefresh {\n");
     
-    sb.append("  grantType: ").append(grantType).append("\n");
     sb.append("  refreshToken: ").append(refreshToken).append("\n");
     sb.append("  scope: ").append(scope).append("\n");
     sb.append("  refreshOn: ").append(refreshOn).append("\n");
+    sb.append("  grantType: ").append(grantType).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

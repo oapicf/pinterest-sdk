@@ -25,6 +25,18 @@ class OauthAccessTokenResponseCodeTest : ShouldSpec() {
         // uncomment below to create an instance of OauthAccessTokenResponseCode
         //val modelInstance = OauthAccessTokenResponseCode()
 
+        // to test the property `refreshToken`
+        should("test refreshToken") {
+            // uncomment below to test the property
+            //modelInstance.refreshToken shouldBe ("TODO")
+        }
+
+        // to test the property `refreshTokenExpiresIn`
+        should("test refreshTokenExpiresIn") {
+            // uncomment below to test the property
+            //modelInstance.refreshTokenExpiresIn shouldBe ("TODO")
+        }
+
         // to test the property `accessToken`
         should("test accessToken") {
             // uncomment below to test the property
@@ -47,18 +59,6 @@ class OauthAccessTokenResponseCodeTest : ShouldSpec() {
         should("test scope") {
             // uncomment below to test the property
             //modelInstance.scope shouldBe ("TODO")
-        }
-
-        // to test the property `refreshToken`
-        should("test refreshToken") {
-            // uncomment below to test the property
-            //modelInstance.refreshToken shouldBe ("TODO")
-        }
-
-        // to test the property `refreshTokenExpiresIn`
-        should("test refreshTokenExpiresIn") {
-            // uncomment below to test the property
-            //modelInstance.refreshTokenExpiresIn shouldBe ("TODO")
         }
 
         // to test the property `responseType`

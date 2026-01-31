@@ -98,7 +98,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardSectionsCreateCall(String boardId, BoardSection boardSection, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call boardSectionsCreateCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull BoardSection boardSection, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -149,7 +149,7 @@ public class BoardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call boardSectionsCreateValidateBeforeCall(String boardId, BoardSection boardSection, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call boardSectionsCreateValidateBeforeCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull BoardSection boardSection, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'boardId' is set
         if (boardId == null) {
             throw new ApiException("Missing the required parameter 'boardId' when calling boardSectionsCreate(Async)");
@@ -184,7 +184,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BoardSection boardSectionsCreate(String boardId, BoardSection boardSection, String adAccountId) throws ApiException {
+    public BoardSection boardSectionsCreate(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull BoardSection boardSection, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<BoardSection> localVarResp = boardSectionsCreateWithHttpInfo(boardId, boardSection, adAccountId);
         return localVarResp.getData();
     }
@@ -209,7 +209,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BoardSection> boardSectionsCreateWithHttpInfo(String boardId, BoardSection boardSection, String adAccountId) throws ApiException {
+    public ApiResponse<BoardSection> boardSectionsCreateWithHttpInfo(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull BoardSection boardSection, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = boardSectionsCreateValidateBeforeCall(boardId, boardSection, adAccountId, null);
         Type localVarReturnType = new TypeToken<BoardSection>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -236,7 +236,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardSectionsCreateAsync(String boardId, BoardSection boardSection, String adAccountId, final ApiCallback<BoardSection> _callback) throws ApiException {
+    public okhttp3.Call boardSectionsCreateAsync(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull BoardSection boardSection, @javax.annotation.Nullable String adAccountId, final ApiCallback<BoardSection> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = boardSectionsCreateValidateBeforeCall(boardId, boardSection, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<BoardSection>(){}.getType();
@@ -262,7 +262,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardSectionsDeleteCall(String boardId, String sectionId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call boardSectionsDeleteCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -313,7 +313,7 @@ public class BoardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call boardSectionsDeleteValidateBeforeCall(String boardId, String sectionId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call boardSectionsDeleteValidateBeforeCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'boardId' is set
         if (boardId == null) {
             throw new ApiException("Missing the required parameter 'boardId' when calling boardSectionsDelete(Async)");
@@ -346,7 +346,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public void boardSectionsDelete(String boardId, String sectionId, String adAccountId) throws ApiException {
+    public void boardSectionsDelete(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         boardSectionsDeleteWithHttpInfo(boardId, sectionId, adAccountId);
     }
 
@@ -369,7 +369,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> boardSectionsDeleteWithHttpInfo(String boardId, String sectionId, String adAccountId) throws ApiException {
+    public ApiResponse<Void> boardSectionsDeleteWithHttpInfo(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = boardSectionsDeleteValidateBeforeCall(boardId, sectionId, adAccountId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -394,7 +394,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardSectionsDeleteAsync(String boardId, String sectionId, String adAccountId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call boardSectionsDeleteAsync(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nullable String adAccountId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = boardSectionsDeleteValidateBeforeCall(boardId, sectionId, adAccountId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -417,7 +417,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardSectionsListCall(String boardId, String adAccountId, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call boardSectionsListCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -475,7 +475,7 @@ public class BoardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call boardSectionsListValidateBeforeCall(String boardId, String adAccountId, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call boardSectionsListValidateBeforeCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'boardId' is set
         if (boardId == null) {
             throw new ApiException("Missing the required parameter 'boardId' when calling boardSectionsList(Async)");
@@ -502,7 +502,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BoardSectionsList200Response boardSectionsList(String boardId, String adAccountId, String bookmark, Integer pageSize) throws ApiException {
+    public BoardSectionsList200Response boardSectionsList(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<BoardSectionsList200Response> localVarResp = boardSectionsListWithHttpInfo(boardId, adAccountId, bookmark, pageSize);
         return localVarResp.getData();
     }
@@ -524,7 +524,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BoardSectionsList200Response> boardSectionsListWithHttpInfo(String boardId, String adAccountId, String bookmark, Integer pageSize) throws ApiException {
+    public ApiResponse<BoardSectionsList200Response> boardSectionsListWithHttpInfo(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = boardSectionsListValidateBeforeCall(boardId, adAccountId, bookmark, pageSize, null);
         Type localVarReturnType = new TypeToken<BoardSectionsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -548,7 +548,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardSectionsListAsync(String boardId, String adAccountId, String bookmark, Integer pageSize, final ApiCallback<BoardSectionsList200Response> _callback) throws ApiException {
+    public okhttp3.Call boardSectionsListAsync(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback<BoardSectionsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = boardSectionsListValidateBeforeCall(boardId, adAccountId, bookmark, pageSize, _callback);
         Type localVarReturnType = new TypeToken<BoardSectionsList200Response>(){}.getType();
@@ -576,7 +576,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardSectionsListPinsCall(String boardId, String sectionId, String adAccountId, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call boardSectionsListPinsCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -635,7 +635,7 @@ public class BoardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call boardSectionsListPinsValidateBeforeCall(String boardId, String sectionId, String adAccountId, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call boardSectionsListPinsValidateBeforeCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'boardId' is set
         if (boardId == null) {
             throw new ApiException("Missing the required parameter 'boardId' when calling boardSectionsListPins(Async)");
@@ -671,7 +671,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BoardsListPins200Response boardSectionsListPins(String boardId, String sectionId, String adAccountId, String bookmark, Integer pageSize) throws ApiException {
+    public BoardsListPins200Response boardSectionsListPins(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<BoardsListPins200Response> localVarResp = boardSectionsListPinsWithHttpInfo(boardId, sectionId, adAccountId, bookmark, pageSize);
         return localVarResp.getData();
     }
@@ -697,7 +697,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BoardsListPins200Response> boardSectionsListPinsWithHttpInfo(String boardId, String sectionId, String adAccountId, String bookmark, Integer pageSize) throws ApiException {
+    public ApiResponse<BoardsListPins200Response> boardSectionsListPinsWithHttpInfo(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = boardSectionsListPinsValidateBeforeCall(boardId, sectionId, adAccountId, bookmark, pageSize, null);
         Type localVarReturnType = new TypeToken<BoardsListPins200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -725,7 +725,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardSectionsListPinsAsync(String boardId, String sectionId, String adAccountId, String bookmark, Integer pageSize, final ApiCallback<BoardsListPins200Response> _callback) throws ApiException {
+    public okhttp3.Call boardSectionsListPinsAsync(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback<BoardsListPins200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = boardSectionsListPinsValidateBeforeCall(boardId, sectionId, adAccountId, bookmark, pageSize, _callback);
         Type localVarReturnType = new TypeToken<BoardsListPins200Response>(){}.getType();
@@ -752,7 +752,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardSectionsUpdateCall(String boardId, String sectionId, BoardSection boardSection, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call boardSectionsUpdateCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nonnull BoardSection boardSection, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -804,7 +804,7 @@ public class BoardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call boardSectionsUpdateValidateBeforeCall(String boardId, String sectionId, BoardSection boardSection, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call boardSectionsUpdateValidateBeforeCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nonnull BoardSection boardSection, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'boardId' is set
         if (boardId == null) {
             throw new ApiException("Missing the required parameter 'boardId' when calling boardSectionsUpdate(Async)");
@@ -844,7 +844,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BoardSection boardSectionsUpdate(String boardId, String sectionId, BoardSection boardSection, String adAccountId) throws ApiException {
+    public BoardSection boardSectionsUpdate(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nonnull BoardSection boardSection, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<BoardSection> localVarResp = boardSectionsUpdateWithHttpInfo(boardId, sectionId, boardSection, adAccountId);
         return localVarResp.getData();
     }
@@ -869,7 +869,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BoardSection> boardSectionsUpdateWithHttpInfo(String boardId, String sectionId, BoardSection boardSection, String adAccountId) throws ApiException {
+    public ApiResponse<BoardSection> boardSectionsUpdateWithHttpInfo(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nonnull BoardSection boardSection, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = boardSectionsUpdateValidateBeforeCall(boardId, sectionId, boardSection, adAccountId, null);
         Type localVarReturnType = new TypeToken<BoardSection>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -896,7 +896,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardSectionsUpdateAsync(String boardId, String sectionId, BoardSection boardSection, String adAccountId, final ApiCallback<BoardSection> _callback) throws ApiException {
+    public okhttp3.Call boardSectionsUpdateAsync(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull String sectionId, @javax.annotation.Nonnull BoardSection boardSection, @javax.annotation.Nullable String adAccountId, final ApiCallback<BoardSection> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = boardSectionsUpdateValidateBeforeCall(boardId, sectionId, boardSection, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<BoardSection>(){}.getType();
@@ -919,7 +919,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardsCreateCall(Board board, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call boardsCreateCall(@javax.annotation.Nonnull Board board, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -969,7 +969,7 @@ public class BoardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call boardsCreateValidateBeforeCall(Board board, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call boardsCreateValidateBeforeCall(@javax.annotation.Nonnull Board board, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'board' is set
         if (board == null) {
             throw new ApiException("Missing the required parameter 'board' when calling boardsCreate(Async)");
@@ -995,7 +995,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public Board boardsCreate(Board board, String adAccountId) throws ApiException {
+    public Board boardsCreate(@javax.annotation.Nonnull Board board, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<Board> localVarResp = boardsCreateWithHttpInfo(board, adAccountId);
         return localVarResp.getData();
     }
@@ -1016,7 +1016,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Board> boardsCreateWithHttpInfo(Board board, String adAccountId) throws ApiException {
+    public ApiResponse<Board> boardsCreateWithHttpInfo(@javax.annotation.Nonnull Board board, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = boardsCreateValidateBeforeCall(board, adAccountId, null);
         Type localVarReturnType = new TypeToken<Board>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1039,7 +1039,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardsCreateAsync(Board board, String adAccountId, final ApiCallback<Board> _callback) throws ApiException {
+    public okhttp3.Call boardsCreateAsync(@javax.annotation.Nonnull Board board, @javax.annotation.Nullable String adAccountId, final ApiCallback<Board> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = boardsCreateValidateBeforeCall(board, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<Board>(){}.getType();
@@ -1065,7 +1065,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardsDeleteCall(String boardId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call boardsDeleteCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1115,7 +1115,7 @@ public class BoardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call boardsDeleteValidateBeforeCall(String boardId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call boardsDeleteValidateBeforeCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'boardId' is set
         if (boardId == null) {
             throw new ApiException("Missing the required parameter 'boardId' when calling boardsDelete(Async)");
@@ -1143,7 +1143,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public void boardsDelete(String boardId, String adAccountId) throws ApiException {
+    public void boardsDelete(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         boardsDeleteWithHttpInfo(boardId, adAccountId);
     }
 
@@ -1166,7 +1166,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> boardsDeleteWithHttpInfo(String boardId, String adAccountId) throws ApiException {
+    public ApiResponse<Void> boardsDeleteWithHttpInfo(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = boardsDeleteValidateBeforeCall(boardId, adAccountId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -1191,7 +1191,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardsDeleteAsync(String boardId, String adAccountId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call boardsDeleteAsync(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = boardsDeleteValidateBeforeCall(boardId, adAccountId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -1213,7 +1213,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardsGetCall(String boardId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call boardsGetCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1263,7 +1263,7 @@ public class BoardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call boardsGetValidateBeforeCall(String boardId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call boardsGetValidateBeforeCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'boardId' is set
         if (boardId == null) {
             throw new ApiException("Missing the required parameter 'boardId' when calling boardsGet(Async)");
@@ -1289,7 +1289,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public Board boardsGet(String boardId, String adAccountId) throws ApiException {
+    public Board boardsGet(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<Board> localVarResp = boardsGetWithHttpInfo(boardId, adAccountId);
         return localVarResp.getData();
     }
@@ -1310,7 +1310,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Board> boardsGetWithHttpInfo(String boardId, String adAccountId) throws ApiException {
+    public ApiResponse<Board> boardsGetWithHttpInfo(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = boardsGetValidateBeforeCall(boardId, adAccountId, null);
         Type localVarReturnType = new TypeToken<Board>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1333,7 +1333,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardsGetAsync(String boardId, String adAccountId, final ApiCallback<Board> _callback) throws ApiException {
+    public okhttp3.Call boardsGetAsync(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String adAccountId, final ApiCallback<Board> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = boardsGetValidateBeforeCall(boardId, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<Board>(){}.getType();
@@ -1357,7 +1357,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardsListCall(String adAccountId, String bookmark, Integer pageSize, String privacy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call boardsListCall(@javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String privacy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1418,7 +1418,7 @@ public class BoardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call boardsListValidateBeforeCall(String adAccountId, String bookmark, Integer pageSize, String privacy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call boardsListValidateBeforeCall(@javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String privacy, final ApiCallback _callback) throws ApiException {
         return boardsListCall(adAccountId, bookmark, pageSize, privacy, _callback);
 
     }
@@ -1440,7 +1440,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BoardsList200Response boardsList(String adAccountId, String bookmark, Integer pageSize, String privacy) throws ApiException {
+    public BoardsList200Response boardsList(@javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String privacy) throws ApiException {
         ApiResponse<BoardsList200Response> localVarResp = boardsListWithHttpInfo(adAccountId, bookmark, pageSize, privacy);
         return localVarResp.getData();
     }
@@ -1462,7 +1462,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BoardsList200Response> boardsListWithHttpInfo(String adAccountId, String bookmark, Integer pageSize, String privacy) throws ApiException {
+    public ApiResponse<BoardsList200Response> boardsListWithHttpInfo(@javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String privacy) throws ApiException {
         okhttp3.Call localVarCall = boardsListValidateBeforeCall(adAccountId, bookmark, pageSize, privacy, null);
         Type localVarReturnType = new TypeToken<BoardsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1486,7 +1486,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardsListAsync(String adAccountId, String bookmark, Integer pageSize, String privacy, final ApiCallback<BoardsList200Response> _callback) throws ApiException {
+    public okhttp3.Call boardsListAsync(@javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String privacy, final ApiCallback<BoardsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = boardsListValidateBeforeCall(adAccountId, bookmark, pageSize, privacy, _callback);
         Type localVarReturnType = new TypeToken<BoardsList200Response>(){}.getType();
@@ -1513,7 +1513,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardsListPinsCall(String boardId, String bookmark, Integer pageSize, List<String> creativeTypes, String adAccountId, Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call boardsListPinsCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable List<String> creativeTypes, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1579,7 +1579,7 @@ public class BoardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call boardsListPinsValidateBeforeCall(String boardId, String bookmark, Integer pageSize, List<String> creativeTypes, String adAccountId, Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call boardsListPinsValidateBeforeCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable List<String> creativeTypes, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'boardId' is set
         if (boardId == null) {
             throw new ApiException("Missing the required parameter 'boardId' when calling boardsListPins(Async)");
@@ -1609,7 +1609,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BoardsListPins200Response boardsListPins(String boardId, String bookmark, Integer pageSize, List<String> creativeTypes, String adAccountId, Boolean pinMetrics) throws ApiException {
+    public BoardsListPins200Response boardsListPins(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable List<String> creativeTypes, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics) throws ApiException {
         ApiResponse<BoardsListPins200Response> localVarResp = boardsListPinsWithHttpInfo(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics);
         return localVarResp.getData();
     }
@@ -1634,7 +1634,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BoardsListPins200Response> boardsListPinsWithHttpInfo(String boardId, String bookmark, Integer pageSize, List<String> creativeTypes, String adAccountId, Boolean pinMetrics) throws ApiException {
+    public ApiResponse<BoardsListPins200Response> boardsListPinsWithHttpInfo(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable List<String> creativeTypes, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics) throws ApiException {
         okhttp3.Call localVarCall = boardsListPinsValidateBeforeCall(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics, null);
         Type localVarReturnType = new TypeToken<BoardsListPins200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1661,7 +1661,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardsListPinsAsync(String boardId, String bookmark, Integer pageSize, List<String> creativeTypes, String adAccountId, Boolean pinMetrics, final ApiCallback<BoardsListPins200Response> _callback) throws ApiException {
+    public okhttp3.Call boardsListPinsAsync(@javax.annotation.Nonnull String boardId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable List<String> creativeTypes, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics, final ApiCallback<BoardsListPins200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = boardsListPinsValidateBeforeCall(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics, _callback);
         Type localVarReturnType = new TypeToken<BoardsListPins200Response>(){}.getType();
@@ -1687,7 +1687,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardsUpdateCall(String boardId, BoardUpdate boardUpdate, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call boardsUpdateCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull BoardUpdate boardUpdate, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1738,7 +1738,7 @@ public class BoardsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call boardsUpdateValidateBeforeCall(String boardId, BoardUpdate boardUpdate, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call boardsUpdateValidateBeforeCall(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull BoardUpdate boardUpdate, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'boardId' is set
         if (boardId == null) {
             throw new ApiException("Missing the required parameter 'boardId' when calling boardsUpdate(Async)");
@@ -1772,7 +1772,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public Board boardsUpdate(String boardId, BoardUpdate boardUpdate, String adAccountId) throws ApiException {
+    public Board boardsUpdate(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull BoardUpdate boardUpdate, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<Board> localVarResp = boardsUpdateWithHttpInfo(boardId, boardUpdate, adAccountId);
         return localVarResp.getData();
     }
@@ -1796,7 +1796,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Board> boardsUpdateWithHttpInfo(String boardId, BoardUpdate boardUpdate, String adAccountId) throws ApiException {
+    public ApiResponse<Board> boardsUpdateWithHttpInfo(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull BoardUpdate boardUpdate, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = boardsUpdateValidateBeforeCall(boardId, boardUpdate, adAccountId, null);
         Type localVarReturnType = new TypeToken<Board>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1822,7 +1822,7 @@ public class BoardsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call boardsUpdateAsync(String boardId, BoardUpdate boardUpdate, String adAccountId, final ApiCallback<Board> _callback) throws ApiException {
+    public okhttp3.Call boardsUpdateAsync(@javax.annotation.Nonnull String boardId, @javax.annotation.Nonnull BoardUpdate boardUpdate, @javax.annotation.Nullable String adAccountId, final ApiCallback<Board> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = boardsUpdateValidateBeforeCall(boardId, boardUpdate, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<Board>(){}.getType();

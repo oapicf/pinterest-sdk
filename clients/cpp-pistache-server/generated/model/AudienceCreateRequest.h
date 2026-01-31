@@ -19,9 +19,9 @@
 #define AudienceCreateRequest_H_
 
 
-#include "AudienceCreateRequest_1_audience_type.h"
 #include "AudienceRule.h"
 #include <string>
+#include "AudienceType.h"
 #include <nlohmann/json.hpp>
 
 namespace org::openapitools::server::model
@@ -85,10 +85,10 @@ public:
     bool descriptionIsSet() const;
     void unsetDescription();
     /// <summary>
-    /// 
+    /// &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
     /// </summary>
-    org::openapitools::server::model::AudienceCreateRequest_1_audience_type getAudienceType() const;
-    void setAudienceType(org::openapitools::server::model::AudienceCreateRequest_1_audience_type const& value);
+    org::openapitools::server::model::AudienceType getAudienceType() const;
+    void setAudienceType(org::openapitools::server::model::AudienceType const& value);
 
     friend  void to_json(nlohmann::json& j, const AudienceCreateRequest& o);
     friend  void from_json(const nlohmann::json& j, AudienceCreateRequest& o);
@@ -101,7 +101,7 @@ protected:
 
     std::string m_Description;
     bool m_DescriptionIsSet;
-    org::openapitools::server::model::AudienceCreateRequest_1_audience_type m_Audience_type;
+    org::openapitools::server::model::AudienceType m_Audience_type;
 
     
 };

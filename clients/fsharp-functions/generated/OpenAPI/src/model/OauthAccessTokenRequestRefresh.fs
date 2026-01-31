@@ -10,14 +10,14 @@ module OauthAccessTokenRequestRefresh =
 
   [<CLIMutable>]
   type OauthAccessTokenRequestRefresh = {
-    [<JsonProperty(PropertyName = "grant_type")>]
-    GrantType : string;
     [<JsonProperty(PropertyName = "refresh_token")>]
     RefreshToken : string;
     [<JsonProperty(PropertyName = "scope")>]
     Scope : string;
     [<JsonProperty(PropertyName = "refresh_on")>]
     RefreshOn : bool;
+    [<JsonProperty(PropertyName = "grant_type")>]
+    GrantType : string;
   }
 
   //#endregion

@@ -42,7 +42,7 @@ data class CatalogsHotelProductGroupCreateRequest(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("description") val description: kotlin.String? = null
-    ) {
+) {
 
     /**
     * 
@@ -56,7 +56,8 @@ data class CatalogsHotelProductGroupCreateRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsHotelProductGroupCreateRequest'")
             }
         }
     }

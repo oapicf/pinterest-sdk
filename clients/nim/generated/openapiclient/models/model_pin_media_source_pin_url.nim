@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type SourceType* {.pure.} = enum
@@ -17,14 +19,39 @@ type SourceType* {.pure.} = enum
 type PinMediaSourcePinURL* = object
   ## Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.
   sourceType*: SourceType
-  isAffiliateLink*: bool ## This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
+  isAffiliateLink*: Option[bool] ## This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
 
 func `%`*(v: SourceType): JsonNode =
-  let str = case v:
-    of SourceType.PinUrl: "pin_url"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of SourceType.PinUrl: %"pin_url"
 func `$`*(v: SourceType): string =
   result = case v:
-    of SourceType.PinUrl: "pin_url"
+    of SourceType.PinUrl: $("pin_url")
+
+proc to*(node: JsonNode, T: typedesc[SourceType]): SourceType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum SourceType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("pin_url"):
+    return SourceType.PinUrl
+  else:
+    raise newException(ValueError, "Invalid enum value for SourceType: " & strVal)
+
+
+# Custom JSON deserialization for PinMediaSourcePinURL with custom field names
+proc to*(node: JsonNode, T: typedesc[PinMediaSourcePinURL]): PinMediaSourcePinURL =
+  result = PinMediaSourcePinURL()
+  if node.kind == JObject:
+    if node.hasKey("source_type"):
+      result.sourceType = to(node["source_type"], SourceType)
+    if node.hasKey("is_affiliate_link") and node["is_affiliate_link"].kind != JNull:
+      result.isAffiliateLink = some(to(node["is_affiliate_link"], typeof(result.isAffiliateLink.get())))
+
+# Custom JSON serialization for PinMediaSourcePinURL with custom field names
+proc `%`*(obj: PinMediaSourcePinURL): JsonNode =
+  result = newJObject()
+  result["source_type"] = %obj.sourceType
+  if obj.isAffiliateLink.isSome():
+    result["is_affiliate_link"] = %obj.isAffiliateLink.get()
+

@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_create_mmm_report_response_data
 
 type CreateMMMReportResponse* = object
   ## 
-  code*: float
-  data*: CreateMMMReportResponseData
+  code*: Option[float]
+  data*: Option[CreateMMMReportResponseData]
+
+
+# Custom JSON deserialization for CreateMMMReportResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[CreateMMMReportResponse]): CreateMMMReportResponse =
+  result = CreateMMMReportResponse()
+  if node.kind == JObject:
+    if node.hasKey("code") and node["code"].kind != JNull:
+      result.code = some(to(node["code"], typeof(result.code.get())))
+    if node.hasKey("data") and node["data"].kind != JNull:
+      result.data = some(to(node["data"], typeof(result.data.get())))
+
+# Custom JSON serialization for CreateMMMReportResponse with custom field names
+proc `%`*(obj: CreateMMMReportResponse): JsonNode =
+  result = newJObject()
+  if obj.code.isSome():
+    result["code"] = %obj.code.get()
+  if obj.data.isSome():
+    result["data"] = %obj.data.get()
+

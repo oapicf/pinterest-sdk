@@ -44,17 +44,6 @@ use JMS\Serializer\Annotation\SerializedName;
 class ConversionTagCreate 
 {
         /**
-     * Conversion tag name.
-     *
-     * @var string|null
-     * @SerializedName("name")
-     * @Type("string")
-    */
-    #[Assert\NotNull]
-    #[Assert\Type("string")]
-    protected ?string $name = null;
-
-    /**
      * Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.
      *
      * @var bool|null
@@ -125,13 +114,23 @@ class ConversionTagCreate
     protected ?bool $aemLocEnabled = false;
 
     /**
+     * Conversion tag name.
+     *
+     * @var string|null
+     * @SerializedName("name")
+     * @Type("string")
+    */
+    #[Assert\NotNull]
+    #[Assert\Type("string")]
+    protected ?string $name = null;
+
+    /**
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(?array $data = null)
     {
         if (is_array($data)) {
-            $this->name = array_key_exists('name', $data) ? $data['name'] : $this->name;
             $this->aemEnabled = array_key_exists('aemEnabled', $data) ? $data['aemEnabled'] : $this->aemEnabled;
             $this->mdFrequency = array_key_exists('mdFrequency', $data) ? $data['mdFrequency'] : $this->mdFrequency;
             $this->aemFnlnEnabled = array_key_exists('aemFnlnEnabled', $data) ? $data['aemFnlnEnabled'] : $this->aemFnlnEnabled;
@@ -139,35 +138,9 @@ class ConversionTagCreate
             $this->aemGeEnabled = array_key_exists('aemGeEnabled', $data) ? $data['aemGeEnabled'] : $this->aemGeEnabled;
             $this->aemDbEnabled = array_key_exists('aemDbEnabled', $data) ? $data['aemDbEnabled'] : $this->aemDbEnabled;
             $this->aemLocEnabled = array_key_exists('aemLocEnabled', $data) ? $data['aemLocEnabled'] : $this->aemLocEnabled;
+            $this->name = array_key_exists('name', $data) ? $data['name'] : $this->name;
         }
     }
-
-    /**
-     * Gets name.
-     *
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-    * Sets name.
-    *
-    * @param string|null $name  Conversion tag name.
-    *
-    * @return $this
-    */
-    public function setName(?string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-
-
 
     /**
      * Gets aemEnabled.
@@ -351,6 +324,33 @@ class ConversionTagCreate
     public function setAemLocEnabled(?bool $aemLocEnabled = null): self
     {
         $this->aemLocEnabled = $aemLocEnabled;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets name.
+     *
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+    * Sets name.
+    *
+    * @param string|null $name  Conversion tag name.
+    *
+    * @return $this
+    */
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

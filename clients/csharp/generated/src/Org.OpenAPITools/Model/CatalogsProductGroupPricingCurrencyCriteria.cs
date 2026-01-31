@@ -256,8 +256,7 @@ namespace Org.OpenAPITools.Model
                                 varOperator = new Option<CatalogsProductGroupPricingCurrencyCriteria.OperatorEnum?>(CatalogsProductGroupPricingCurrencyCriteria.OperatorEnumFromStringOrDefault(varOperatorRawValue));
                             break;
                         case "value":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                value = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            value = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "currency":
                             string? currencyRawValue = utf8JsonReader.GetString();
@@ -265,8 +264,7 @@ namespace Org.OpenAPITools.Model
                                 currency = new Option<NonNullableCatalogsCurrency?>(NonNullableCatalogsCurrencyValueConverter.FromStringOrDefault(currencyRawValue));
                             break;
                         case "negated":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                negated = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            negated = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

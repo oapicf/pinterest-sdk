@@ -161,12 +161,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "success":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                success = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            success = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "errorCode":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                errorCode = new Option<int?>(utf8JsonReader.GetInt32());
+                            errorCode = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "errorMessage":
                             errorMessage = new Option<string?>(utf8JsonReader.GetString());

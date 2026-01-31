@@ -170,11 +170,6 @@ namespace Org.OpenAPITools.Model
             CatalogsItemsDeleteDiscontinuedBatchRequest? catalogsItemsDeleteDiscontinuedBatchRequest = null;
             CatalogsItemsUpdateBatchRequest? catalogsItemsUpdateBatchRequest = null;
             CatalogsItemsUpsertBatchRequest? catalogsItemsUpsertBatchRequest = null;
-            CatalogsItemsCreateBatchRequest? catalogsItemsCreateBatchRequest = null;
-            CatalogsItemsDeleteBatchRequest? catalogsItemsDeleteBatchRequest = null;
-            CatalogsItemsDeleteDiscontinuedBatchRequest? catalogsItemsDeleteDiscontinuedBatchRequest = null;
-            CatalogsItemsUpdateBatchRequest? catalogsItemsUpdateBatchRequest = null;
-            CatalogsItemsUpsertBatchRequest? catalogsItemsUpsertBatchRequest = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -217,31 +212,6 @@ namespace Org.OpenAPITools.Model
                             Utf8JsonReader utf8JsonReaderCatalogsItemsUpsertBatchRequest = utf8JsonReader;
                             catalogsItemsUpsertBatchRequest = JsonSerializer.Deserialize<CatalogsItemsUpsertBatchRequest>(ref utf8JsonReaderCatalogsItemsUpsertBatchRequest, jsonSerializerOptions);
                         }
-                        if (discriminator?.Equals("CatalogsItemsCreateBatchRequest") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsItemsCreateBatchRequest = utf8JsonReader;
-                            catalogsItemsCreateBatchRequest = JsonSerializer.Deserialize<CatalogsItemsCreateBatchRequest>(ref utf8JsonReaderCatalogsItemsCreateBatchRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsItemsDeleteBatchRequest") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsItemsDeleteBatchRequest = utf8JsonReader;
-                            catalogsItemsDeleteBatchRequest = JsonSerializer.Deserialize<CatalogsItemsDeleteBatchRequest>(ref utf8JsonReaderCatalogsItemsDeleteBatchRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsItemsDeleteDiscontinuedBatchRequest") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsItemsDeleteDiscontinuedBatchRequest = utf8JsonReader;
-                            catalogsItemsDeleteDiscontinuedBatchRequest = JsonSerializer.Deserialize<CatalogsItemsDeleteDiscontinuedBatchRequest>(ref utf8JsonReaderCatalogsItemsDeleteDiscontinuedBatchRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsItemsUpdateBatchRequest") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsItemsUpdateBatchRequest = utf8JsonReader;
-                            catalogsItemsUpdateBatchRequest = JsonSerializer.Deserialize<CatalogsItemsUpdateBatchRequest>(ref utf8JsonReaderCatalogsItemsUpdateBatchRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsItemsUpsertBatchRequest") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsItemsUpsertBatchRequest = utf8JsonReader;
-                            catalogsItemsUpsertBatchRequest = JsonSerializer.Deserialize<CatalogsItemsUpsertBatchRequest>(ref utf8JsonReaderCatalogsItemsUpsertBatchRequest, jsonSerializerOptions);
-                        }
                     }
                 }
             }
@@ -277,21 +247,6 @@ namespace Org.OpenAPITools.Model
 
             if (operation.IsSet && operation.Value == null)
                 throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsItemsBatchRequest.");
-
-            if (catalogsItemsCreateBatchRequest != null)
-                return new CatalogsItemsBatchRequest(catalogsItemsCreateBatchRequest);
-
-            if (catalogsItemsDeleteBatchRequest != null)
-                return new CatalogsItemsBatchRequest(catalogsItemsDeleteBatchRequest);
-
-            if (catalogsItemsDeleteDiscontinuedBatchRequest != null)
-                return new CatalogsItemsBatchRequest(catalogsItemsDeleteDiscontinuedBatchRequest);
-
-            if (catalogsItemsUpdateBatchRequest != null)
-                return new CatalogsItemsBatchRequest(catalogsItemsUpdateBatchRequest);
-
-            if (catalogsItemsUpsertBatchRequest != null)
-                return new CatalogsItemsBatchRequest(catalogsItemsUpsertBatchRequest);
 
             if (catalogsItemsCreateBatchRequest != null)
                 return new CatalogsItemsBatchRequest(catalogsItemsCreateBatchRequest);

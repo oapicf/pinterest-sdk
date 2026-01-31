@@ -15,7 +15,7 @@ import org.openapitools.model.CatalogsHotelProductGroupFilters;
  **/
 
 @ApiModel(description = "Request object to list products for a given hotel catalog_id and product group filter.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2025-05-10T05:38:59.250229241Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelListProductsByCatalogBasedFilterRequest   {
   /**
    * Gets or Sets catalogType

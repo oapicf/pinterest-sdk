@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AdvancedAuctionOperationError* = object
   ## Error which occurred when applying a bid options operation to a specific item.
-  code*: int ## The error code for the item bid option operation validation error
-  message*: string ## Message describing the item bid option operation validation error
+  code*: Option[int] ## The error code for the item bid option operation validation error
+  message*: Option[string] ## Message describing the item bid option operation validation error
+

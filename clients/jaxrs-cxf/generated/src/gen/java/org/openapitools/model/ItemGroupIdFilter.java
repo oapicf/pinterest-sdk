@@ -12,7 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ItemGroupIdFilter  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria ITEM_GROUP_ID;
  /**
    * Get ITEM_GROUP_ID

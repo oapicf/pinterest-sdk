@@ -138,9 +138,6 @@ namespace Org.OpenAPITools.Model
             CatalogsCreativeAssetsFeed? catalogsCreativeAssetsFeed = null;
             CatalogsHotelFeed? catalogsHotelFeed = null;
             CatalogsRetailFeed? catalogsRetailFeed = null;
-            CatalogsCreativeAssetsFeed? catalogsCreativeAssetsFeed = null;
-            CatalogsHotelFeed? catalogsHotelFeed = null;
-            CatalogsRetailFeed? catalogsRetailFeed = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -169,21 +166,6 @@ namespace Org.OpenAPITools.Model
                             catalogsHotelFeed = JsonSerializer.Deserialize<CatalogsHotelFeed>(ref utf8JsonReaderCatalogsHotelFeed, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("RETAIL") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsRetailFeed = utf8JsonReader;
-                            catalogsRetailFeed = JsonSerializer.Deserialize<CatalogsRetailFeed>(ref utf8JsonReaderCatalogsRetailFeed, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsCreativeAssetsFeed") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsCreativeAssetsFeed = utf8JsonReader;
-                            catalogsCreativeAssetsFeed = JsonSerializer.Deserialize<CatalogsCreativeAssetsFeed>(ref utf8JsonReaderCatalogsCreativeAssetsFeed, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsHotelFeed") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsHotelFeed = utf8JsonReader;
-                            catalogsHotelFeed = JsonSerializer.Deserialize<CatalogsHotelFeed>(ref utf8JsonReaderCatalogsHotelFeed, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsRetailFeed") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsRetailFeed = utf8JsonReader;
                             catalogsRetailFeed = JsonSerializer.Deserialize<CatalogsRetailFeed>(ref utf8JsonReaderCatalogsRetailFeed, jsonSerializerOptions);
@@ -223,15 +205,6 @@ namespace Org.OpenAPITools.Model
 
             if (catalogType.IsSet && catalogType.Value == null)
                 throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsFeed.");
-
-            if (catalogsCreativeAssetsFeed != null)
-                return new CatalogsFeed(catalogsCreativeAssetsFeed);
-
-            if (catalogsHotelFeed != null)
-                return new CatalogsFeed(catalogsHotelFeed);
-
-            if (catalogsRetailFeed != null)
-                return new CatalogsFeed(catalogsRetailFeed);
 
             if (catalogsCreativeAssetsFeed != null)
                 return new CatalogsFeed(catalogsCreativeAssetsFeed);

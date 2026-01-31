@@ -56,11 +56,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<AdGroupsAnalyticsResponseInner>));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "[ {\n  \"DATE\" : \"2021-04-01\",\n  \"AD_GROUP_ID\" : \"547602124502\",\n  \"SPEND_IN_DOLLAR\" : 30,\n  \"TOTAL_CLICKTHROUGH\" : 216\n}, {\n  \"DATE\" : \"2021-04-01\",\n  \"AD_GROUP_ID\" : \"547602124502\",\n  \"SPEND_IN_DOLLAR\" : 30,\n  \"TOTAL_CLICKTHROUGH\" : 216\n} ]";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -68,7 +68,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<AdGroupsAnalyticsResponseInner>>(exampleJson)
-            : default(List<AdGroupsAnalyticsResponseInner>);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -96,13 +96,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdGroupAudienceSizingResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"audience_size_upper_bound\" : 150000,\n  \"audience_size_lower_bound\" : 100000\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -111,7 +111,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdGroupAudienceSizingResponse>(exampleJson)
-            : default(AdGroupAudienceSizingResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -135,16 +135,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(BidFloor));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bid_floors\" : [ 100000, 200000 ],\n  \"type\" : \"bidfloor\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<BidFloor>(exampleJson)
-            : default(BidFloor);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -168,16 +168,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdGroupArrayResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"data\" : {\n      \"updated_time\" : 1476477189,\n      \"targeting_template_ids\" : [ \"643\" ],\n      \"type\" : \"adgroup\",\n      \"tracking_urls\" : \"{}\",\n      \"budget_in_micro_currency\" : 5000000,\n      \"bid_strategy_type\" : \"MAX_BID\",\n      \"ad_account_id\" : \"549755885175\",\n      \"conversion_learning_mode_type\" : \"ACTIVE\",\n      \"dca_assets\" : \"\",\n      \"feed_profile_id\" : \"626736533506\",\n      \"lifetime_frequency_cap\" : 100,\n      \"id\" : \"2680060704746\",\n      \"optimization_goal_metadata\" : \"{}\",\n      \"placement_group\" : \"placement_group\",\n      \"budget_type\" : \"budget_type\",\n      \"campaign_id\" : \"626736533506\",\n      \"pacing_delivery_type\" : \"pacing_delivery_type\",\n      \"created_time\" : 1476477189,\n      \"bid_in_micro_currency\" : 5000000,\n      \"end_time\" : 5705424000,\n      \"summary_status\" : \"summary_status\",\n      \"auto_targeting_enabled\" : true,\n      \"start_time\" : 5686848000,\n      \"billable_event\" : \"CLICKTHROUGH\",\n      \"targeting_spec\" : {\n        \"GEO\" : [ \"GEO\", \"GEO\" ],\n        \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ],\n        \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ],\n        \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ],\n        \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ],\n        \"SHOPPING_RETARGETING\" : [ {\n          \"lookback_window\" : 30,\n          \"exclusion_window\" : 14,\n          \"tag_types\" : [ 0, 6 ]\n        }, {\n          \"lookback_window\" : 30,\n          \"exclusion_window\" : 14,\n          \"tag_types\" : [ 0, 6 ]\n        } ],\n        \"GENDER\" : [ \"unknown\", \"unknown\" ],\n        \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ],\n        \"APPTYPE\" : [ \"ipad\", \"iphone\" ],\n        \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ],\n        \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ]\n      },\n      \"name\" : \"Ad Group For Pin: 687195905986\",\n      \"status\" : \"status\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  }, {\n    \"data\" : {\n      \"updated_time\" : 1476477189,\n      \"targeting_template_ids\" : [ \"643\" ],\n      \"type\" : \"adgroup\",\n      \"tracking_urls\" : \"{}\",\n      \"budget_in_micro_currency\" : 5000000,\n      \"bid_strategy_type\" : \"MAX_BID\",\n      \"ad_account_id\" : \"549755885175\",\n      \"conversion_learning_mode_type\" : \"ACTIVE\",\n      \"dca_assets\" : \"\",\n      \"feed_profile_id\" : \"626736533506\",\n      \"lifetime_frequency_cap\" : 100,\n      \"id\" : \"2680060704746\",\n      \"optimization_goal_metadata\" : \"{}\",\n      \"placement_group\" : \"placement_group\",\n      \"budget_type\" : \"budget_type\",\n      \"campaign_id\" : \"626736533506\",\n      \"pacing_delivery_type\" : \"pacing_delivery_type\",\n      \"created_time\" : 1476477189,\n      \"bid_in_micro_currency\" : 5000000,\n      \"end_time\" : 5705424000,\n      \"summary_status\" : \"summary_status\",\n      \"auto_targeting_enabled\" : true,\n      \"start_time\" : 5686848000,\n      \"billable_event\" : \"CLICKTHROUGH\",\n      \"targeting_spec\" : {\n        \"GEO\" : [ \"GEO\", \"GEO\" ],\n        \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ],\n        \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ],\n        \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ],\n        \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ],\n        \"SHOPPING_RETARGETING\" : [ {\n          \"lookback_window\" : 30,\n          \"exclusion_window\" : 14,\n          \"tag_types\" : [ 0, 6 ]\n        }, {\n          \"lookback_window\" : 30,\n          \"exclusion_window\" : 14,\n          \"tag_types\" : [ 0, 6 ]\n        } ],\n        \"GENDER\" : [ \"unknown\", \"unknown\" ],\n        \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ],\n        \"APPTYPE\" : [ \"ipad\", \"iphone\" ],\n        \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ],\n        \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ]\n      },\n      \"name\" : \"Ad Group For Pin: 687195905986\",\n      \"status\" : \"status\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdGroupArrayResponse>(exampleJson)
-            : default(AdGroupArrayResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -200,16 +200,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdGroupResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"updated_time\" : 1476477189,\n  \"targeting_template_ids\" : [ \"643\" ],\n  \"type\" : \"adgroup\",\n  \"tracking_urls\" : \"{}\",\n  \"budget_in_micro_currency\" : 5000000,\n  \"bid_strategy_type\" : \"MAX_BID\",\n  \"ad_account_id\" : \"549755885175\",\n  \"conversion_learning_mode_type\" : \"ACTIVE\",\n  \"dca_assets\" : \"\",\n  \"feed_profile_id\" : \"626736533506\",\n  \"lifetime_frequency_cap\" : 100,\n  \"id\" : \"2680060704746\",\n  \"optimization_goal_metadata\" : \"{}\",\n  \"placement_group\" : \"placement_group\",\n  \"budget_type\" : \"budget_type\",\n  \"campaign_id\" : \"626736533506\",\n  \"pacing_delivery_type\" : \"pacing_delivery_type\",\n  \"created_time\" : 1476477189,\n  \"bid_in_micro_currency\" : 5000000,\n  \"end_time\" : 5705424000,\n  \"summary_status\" : \"summary_status\",\n  \"auto_targeting_enabled\" : true,\n  \"start_time\" : 5686848000,\n  \"billable_event\" : \"CLICKTHROUGH\",\n  \"targeting_spec\" : {\n    \"GEO\" : [ \"GEO\", \"GEO\" ],\n    \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ],\n    \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ],\n    \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ],\n    \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ],\n    \"SHOPPING_RETARGETING\" : [ {\n      \"lookback_window\" : 30,\n      \"exclusion_window\" : 14,\n      \"tag_types\" : [ 0, 6 ]\n    }, {\n      \"lookback_window\" : 30,\n      \"exclusion_window\" : 14,\n      \"tag_types\" : [ 0, 6 ]\n    } ],\n    \"GENDER\" : [ \"unknown\", \"unknown\" ],\n    \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ],\n    \"APPTYPE\" : [ \"ipad\", \"iphone\" ],\n    \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ],\n    \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ]\n  },\n  \"name\" : \"Ad Group For Pin: 687195905986\",\n  \"status\" : \"status\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdGroupResponse>(exampleJson)
-            : default(AdGroupResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -240,11 +240,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdGroupsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"updated_time\" : 1476477189,\n    \"targeting_template_ids\" : [ \"643\" ],\n    \"type\" : \"adgroup\",\n    \"tracking_urls\" : \"{}\",\n    \"budget_in_micro_currency\" : 5000000,\n    \"bid_strategy_type\" : \"MAX_BID\",\n    \"ad_account_id\" : \"549755885175\",\n    \"conversion_learning_mode_type\" : \"ACTIVE\",\n    \"dca_assets\" : \"\",\n    \"feed_profile_id\" : \"626736533506\",\n    \"lifetime_frequency_cap\" : 100,\n    \"id\" : \"2680060704746\",\n    \"optimization_goal_metadata\" : \"{}\",\n    \"placement_group\" : \"placement_group\",\n    \"budget_type\" : \"budget_type\",\n    \"campaign_id\" : \"626736533506\",\n    \"pacing_delivery_type\" : \"pacing_delivery_type\",\n    \"created_time\" : 1476477189,\n    \"bid_in_micro_currency\" : 5000000,\n    \"end_time\" : 5705424000,\n    \"summary_status\" : \"summary_status\",\n    \"auto_targeting_enabled\" : true,\n    \"start_time\" : 5686848000,\n    \"billable_event\" : \"CLICKTHROUGH\",\n    \"targeting_spec\" : {\n      \"GEO\" : [ \"GEO\", \"GEO\" ],\n      \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ],\n      \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ],\n      \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ],\n      \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ],\n      \"SHOPPING_RETARGETING\" : [ {\n        \"lookback_window\" : 30,\n        \"exclusion_window\" : 14,\n        \"tag_types\" : [ 0, 6 ]\n      }, {\n        \"lookback_window\" : 30,\n        \"exclusion_window\" : 14,\n        \"tag_types\" : [ 0, 6 ]\n      } ],\n      \"GENDER\" : [ \"unknown\", \"unknown\" ],\n      \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ],\n      \"APPTYPE\" : [ \"ipad\", \"iphone\" ],\n      \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ],\n      \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ]\n    },\n    \"name\" : \"Ad Group For Pin: 687195905986\",\n    \"status\" : \"status\"\n  }, {\n    \"updated_time\" : 1476477189,\n    \"targeting_template_ids\" : [ \"643\" ],\n    \"type\" : \"adgroup\",\n    \"tracking_urls\" : \"{}\",\n    \"budget_in_micro_currency\" : 5000000,\n    \"bid_strategy_type\" : \"MAX_BID\",\n    \"ad_account_id\" : \"549755885175\",\n    \"conversion_learning_mode_type\" : \"ACTIVE\",\n    \"dca_assets\" : \"\",\n    \"feed_profile_id\" : \"626736533506\",\n    \"lifetime_frequency_cap\" : 100,\n    \"id\" : \"2680060704746\",\n    \"optimization_goal_metadata\" : \"{}\",\n    \"placement_group\" : \"placement_group\",\n    \"budget_type\" : \"budget_type\",\n    \"campaign_id\" : \"626736533506\",\n    \"pacing_delivery_type\" : \"pacing_delivery_type\",\n    \"created_time\" : 1476477189,\n    \"bid_in_micro_currency\" : 5000000,\n    \"end_time\" : 5705424000,\n    \"summary_status\" : \"summary_status\",\n    \"auto_targeting_enabled\" : true,\n    \"start_time\" : 5686848000,\n    \"billable_event\" : \"CLICKTHROUGH\",\n    \"targeting_spec\" : {\n      \"GEO\" : [ \"GEO\", \"GEO\" ],\n      \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ],\n      \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ],\n      \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ],\n      \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ],\n      \"SHOPPING_RETARGETING\" : [ {\n        \"lookback_window\" : 30,\n        \"exclusion_window\" : 14,\n        \"tag_types\" : [ 0, 6 ]\n      }, {\n        \"lookback_window\" : 30,\n        \"exclusion_window\" : 14,\n        \"tag_types\" : [ 0, 6 ]\n      } ],\n      \"GENDER\" : [ \"unknown\", \"unknown\" ],\n      \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ],\n      \"APPTYPE\" : [ \"ipad\", \"iphone\" ],\n      \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ],\n      \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ]\n    },\n    \"name\" : \"Ad Group For Pin: 687195905986\",\n    \"status\" : \"status\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -252,7 +252,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdGroupsList200Response>(exampleJson)
-            : default(AdGroupsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -285,16 +285,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(MetricsResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"data\" : [ {\n    \"targeting_type\" : \"KEYWORD\",\n    \"targeting_value\" : \"christmas decor ideas\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"iphone\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"ipad\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"web\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"web_mobile\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"android_mobile\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"android_tablet\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"GENDER\",\n    \"targeting_value\" : \"female\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"LOCATION\",\n    \"targeting_value\" : 500,\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"PLACEMENT\",\n    \"targeting_value\" : \"SEARCH\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"COUNTRY\",\n    \"targeting_value\" : \"US\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"TARGETED_INTEREST\",\n    \"targeting_value\" : \"Food and Drinks\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"PINNER_INTEREST\",\n    \"targeting_value\" : \"Chocolate Cookies\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"AUDIENCE_INCLUDE\",\n    \"targeting_value\" : 254261234567,\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"GEO\",\n    \"targeting_value\" : \"US:94102\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"AGE_BUCKET\",\n    \"targeting_value\" : \"45-49\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"REGION\",\n    \"targeting_value\" : \"US-CA\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<MetricsResponse>(exampleJson)
-            : default(MetricsResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -318,16 +318,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdGroupArrayResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"data\" : {\n      \"updated_time\" : 1476477189,\n      \"targeting_template_ids\" : [ \"643\" ],\n      \"type\" : \"adgroup\",\n      \"tracking_urls\" : \"{}\",\n      \"budget_in_micro_currency\" : 5000000,\n      \"bid_strategy_type\" : \"MAX_BID\",\n      \"ad_account_id\" : \"549755885175\",\n      \"conversion_learning_mode_type\" : \"ACTIVE\",\n      \"dca_assets\" : \"\",\n      \"feed_profile_id\" : \"626736533506\",\n      \"lifetime_frequency_cap\" : 100,\n      \"id\" : \"2680060704746\",\n      \"optimization_goal_metadata\" : \"{}\",\n      \"placement_group\" : \"placement_group\",\n      \"budget_type\" : \"budget_type\",\n      \"campaign_id\" : \"626736533506\",\n      \"pacing_delivery_type\" : \"pacing_delivery_type\",\n      \"created_time\" : 1476477189,\n      \"bid_in_micro_currency\" : 5000000,\n      \"end_time\" : 5705424000,\n      \"summary_status\" : \"summary_status\",\n      \"auto_targeting_enabled\" : true,\n      \"start_time\" : 5686848000,\n      \"billable_event\" : \"CLICKTHROUGH\",\n      \"targeting_spec\" : {\n        \"GEO\" : [ \"GEO\", \"GEO\" ],\n        \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ],\n        \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ],\n        \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ],\n        \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ],\n        \"SHOPPING_RETARGETING\" : [ {\n          \"lookback_window\" : 30,\n          \"exclusion_window\" : 14,\n          \"tag_types\" : [ 0, 6 ]\n        }, {\n          \"lookback_window\" : 30,\n          \"exclusion_window\" : 14,\n          \"tag_types\" : [ 0, 6 ]\n        } ],\n        \"GENDER\" : [ \"unknown\", \"unknown\" ],\n        \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ],\n        \"APPTYPE\" : [ \"ipad\", \"iphone\" ],\n        \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ],\n        \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ]\n      },\n      \"name\" : \"Ad Group For Pin: 687195905986\",\n      \"status\" : \"status\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  }, {\n    \"data\" : {\n      \"updated_time\" : 1476477189,\n      \"targeting_template_ids\" : [ \"643\" ],\n      \"type\" : \"adgroup\",\n      \"tracking_urls\" : \"{}\",\n      \"budget_in_micro_currency\" : 5000000,\n      \"bid_strategy_type\" : \"MAX_BID\",\n      \"ad_account_id\" : \"549755885175\",\n      \"conversion_learning_mode_type\" : \"ACTIVE\",\n      \"dca_assets\" : \"\",\n      \"feed_profile_id\" : \"626736533506\",\n      \"lifetime_frequency_cap\" : 100,\n      \"id\" : \"2680060704746\",\n      \"optimization_goal_metadata\" : \"{}\",\n      \"placement_group\" : \"placement_group\",\n      \"budget_type\" : \"budget_type\",\n      \"campaign_id\" : \"626736533506\",\n      \"pacing_delivery_type\" : \"pacing_delivery_type\",\n      \"created_time\" : 1476477189,\n      \"bid_in_micro_currency\" : 5000000,\n      \"end_time\" : 5705424000,\n      \"summary_status\" : \"summary_status\",\n      \"auto_targeting_enabled\" : true,\n      \"start_time\" : 5686848000,\n      \"billable_event\" : \"CLICKTHROUGH\",\n      \"targeting_spec\" : {\n        \"GEO\" : [ \"GEO\", \"GEO\" ],\n        \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ],\n        \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ],\n        \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ],\n        \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ],\n        \"SHOPPING_RETARGETING\" : [ {\n          \"lookback_window\" : 30,\n          \"exclusion_window\" : 14,\n          \"tag_types\" : [ 0, 6 ]\n        }, {\n          \"lookback_window\" : 30,\n          \"exclusion_window\" : 14,\n          \"tag_types\" : [ 0, 6 ]\n        } ],\n        \"GENDER\" : [ \"unknown\", \"unknown\" ],\n        \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ],\n        \"APPTYPE\" : [ \"ipad\", \"iphone\" ],\n        \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ],\n        \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ]\n      },\n      \"name\" : \"Ad Group For Pin: 687195905986\",\n      \"status\" : \"status\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdGroupArrayResponse>(exampleJson)
-            : default(AdGroupArrayResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

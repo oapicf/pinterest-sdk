@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_permissions
 
@@ -16,3 +18,20 @@ type CreateAssetAccessRequestBodyAssetRequestsInner* = object
   ## 
   partnerId*: string ## Unique identifier of a business partner to request asset access to.
   assetIdToPermissions*: Table[string, seq[Permissions]] ## An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+
+
+# Custom JSON deserialization for CreateAssetAccessRequestBodyAssetRequestsInner with custom field names
+proc to*(node: JsonNode, T: typedesc[CreateAssetAccessRequestBodyAssetRequestsInner]): CreateAssetAccessRequestBodyAssetRequestsInner =
+  result = CreateAssetAccessRequestBodyAssetRequestsInner()
+  if node.kind == JObject:
+    if node.hasKey("partner_id"):
+      result.partnerId = to(node["partner_id"], string)
+    if node.hasKey("asset_id_to_permissions"):
+      result.assetIdToPermissions = to(node["asset_id_to_permissions"], Table[string, seq[Permissions]])
+
+# Custom JSON serialization for CreateAssetAccessRequestBodyAssetRequestsInner with custom field names
+proc `%`*(obj: CreateAssetAccessRequestBodyAssetRequestsInner): JsonNode =
+  result = newJObject()
+  result["partner_id"] = %obj.partnerId
+  result["asset_id_to_permissions"] = %obj.assetIdToPermissions
+

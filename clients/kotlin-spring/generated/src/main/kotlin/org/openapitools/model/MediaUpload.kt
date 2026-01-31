@@ -39,7 +39,7 @@ data class MediaUpload(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("upload_parameters") val uploadParameters: MediaUploadAllOfUploadParameters? = null
-    ) {
+) {
 
 }
 

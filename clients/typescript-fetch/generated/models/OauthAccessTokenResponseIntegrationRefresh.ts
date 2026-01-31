@@ -14,11 +14,23 @@
 
 import { mapValues } from '../runtime';
 /**
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
+ * 
  * @export
  * @interface OauthAccessTokenResponseIntegrationRefresh
  */
 export interface OauthAccessTokenResponseIntegrationRefresh {
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenResponseIntegrationRefresh
+     */
+    refreshToken: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof OauthAccessTokenResponseIntegrationRefresh
+     */
+    refreshTokenExpiresIn: number;
     /**
      * 
      * @type {string}
@@ -49,18 +61,6 @@ export interface OauthAccessTokenResponseIntegrationRefresh {
      * @memberof OauthAccessTokenResponseIntegrationRefresh
      */
     scope: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof OauthAccessTokenResponseIntegrationRefresh
-     */
-    refreshToken: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof OauthAccessTokenResponseIntegrationRefresh
-     */
-    refreshTokenExpiresIn: number;
 }
 
 
@@ -79,12 +79,12 @@ export type OauthAccessTokenResponseIntegrationRefreshResponseTypeEnum = typeof 
  * Check if a given object implements the OauthAccessTokenResponseIntegrationRefresh interface.
  */
 export function instanceOfOauthAccessTokenResponseIntegrationRefresh(value: object): value is OauthAccessTokenResponseIntegrationRefresh {
+    if (!('refreshToken' in value) || value['refreshToken'] === undefined) return false;
+    if (!('refreshTokenExpiresIn' in value) || value['refreshTokenExpiresIn'] === undefined) return false;
     if (!('accessToken' in value) || value['accessToken'] === undefined) return false;
     if (!('tokenType' in value) || value['tokenType'] === undefined) return false;
     if (!('expiresIn' in value) || value['expiresIn'] === undefined) return false;
     if (!('scope' in value) || value['scope'] === undefined) return false;
-    if (!('refreshToken' in value) || value['refreshToken'] === undefined) return false;
-    if (!('refreshTokenExpiresIn' in value) || value['refreshTokenExpiresIn'] === undefined) return false;
     return true;
 }
 
@@ -98,13 +98,13 @@ export function OauthAccessTokenResponseIntegrationRefreshFromJSONTyped(json: an
     }
     return {
         
+        'refreshToken': json['refresh_token'],
+        'refreshTokenExpiresIn': json['refresh_token_expires_in'],
         'responseType': json['response_type'] == null ? undefined : json['response_type'],
         'accessToken': json['access_token'],
         'tokenType': json['token_type'],
         'expiresIn': json['expires_in'],
         'scope': json['scope'],
-        'refreshToken': json['refresh_token'],
-        'refreshTokenExpiresIn': json['refresh_token_expires_in'],
     };
 }
 
@@ -119,13 +119,13 @@ export function OauthAccessTokenResponseIntegrationRefreshToJSONTyped(value?: Oa
 
     return {
         
+        'refresh_token': value['refreshToken'],
+        'refresh_token_expires_in': value['refreshTokenExpiresIn'],
         'response_type': value['responseType'],
         'access_token': value['accessToken'],
         'token_type': value['tokenType'],
         'expires_in': value['expiresIn'],
         'scope': value['scope'],
-        'refresh_token': value['refreshToken'],
-        'refresh_token_expires_in': value['refreshTokenExpiresIn'],
     };
 }
 

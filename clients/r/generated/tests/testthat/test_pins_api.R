@@ -13,7 +13,7 @@ test_that("MultiPinsAnalytics", {
   # @param pin_ids array[character] List of Pin IDs.
   # @param start_date character Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   # @param end_date character Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-  # @param metric_types array[PinsAnalyticsMetricTypesParameterInner] Pin metric types to get data for.
+  # @param metric_types array[character] Pin metric types to get data for.
   # @param app_types character Apps or devices to get data for, default is all. (optional)
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [map(map)]
@@ -30,7 +30,7 @@ test_that("PinsAnalytics", {
   # @param pin_id character Unique identifier of a Pin.
   # @param start_date character Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   # @param end_date character Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-  # @param metric_types array[PinsAnalyticsMetricTypesParameterInner] Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+  # @param metric_types array[character] Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
   # @param app_types character Apps or devices to get data for, default is all. (optional)
   # @param split_field character How to split the data into groups. Not including this param means data won't be split. (optional)
   # @param ad_account_id character Unique identifier of an ad account. (optional)

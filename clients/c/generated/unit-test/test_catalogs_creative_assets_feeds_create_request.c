@@ -19,7 +19,6 @@ catalogs_creative_assets_feeds_create_request_t* instantiate_catalogs_creative_a
 #include "test_catalogs_feeds_create_request_default_locale.c"
 #include "test_catalogs_feed_credentials.c"
 #include "test_catalogs_feed_processing_schedule.c"
-#include "test_catalogs_status.c"
 
 
 catalogs_creative_assets_feeds_create_request_t* instantiate_catalogs_creative_assets_feeds_create_request(int include_optional) {
@@ -38,7 +37,7 @@ catalogs_creative_assets_feeds_create_request_t* instantiate_catalogs_creative_a
       instantiate_catalogs_feed_processing_schedule(0),
       pinterest_rest_api_catalogs_creative_assets_feeds_create_request__RETAIL,
       "a",
-      "0"
+      ACTIVE
     );
   } else {
     catalogs_creative_assets_feeds_create_request = catalogs_creative_assets_feeds_create_request_create(
@@ -52,7 +51,7 @@ catalogs_creative_assets_feeds_create_request_t* instantiate_catalogs_creative_a
       NULL,
       pinterest_rest_api_catalogs_creative_assets_feeds_create_request__RETAIL,
       "a",
-      "0"
+      ACTIVE
     );
   }
 

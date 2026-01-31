@@ -11,15 +11,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsFeedIngestion  {
   
   @ApiModelProperty(example = "01234", required = true, value = "")
+
   private String id;
 
   @ApiModelProperty(example = "56789", required = true, value = "")
+
   private String feedId;
 
   @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+
   private Date createdAt;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsFeedProcessingStatus status;
  /**
    * Get id

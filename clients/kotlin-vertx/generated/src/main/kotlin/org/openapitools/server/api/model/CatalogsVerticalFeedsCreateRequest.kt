@@ -58,7 +58,7 @@ data class CatalogsVerticalFeedsCreateRequest (
     val credentials: CatalogsFeedCredentials? = null,
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
     val defaultAvailability: ProductAvailabilityType? = null,
-    val status: CatalogsStatus? = null,
+    val status: CatalogsStatus? = "ACTIVE",
     /* Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. */
     val catalogId: kotlin.String? = null
 ) {

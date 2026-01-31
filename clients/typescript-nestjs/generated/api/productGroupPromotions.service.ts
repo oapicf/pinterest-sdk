@@ -374,7 +374,7 @@ export class ProductGroupPromotionsService {
             })
         }
         if (columns) {
-            queryParameters['columns'] = columns.join(COLLECTION_FORMATS['csv']);
+            queryParameters.append('columns', columns.join(COLLECTION_FORMATS['csv']));
         }
         if (granularity !== undefined && granularity !== null) {
             queryParameters.append('granularity', <any>granularity);

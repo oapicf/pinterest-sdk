@@ -71,7 +71,7 @@ export function ProductGroupAnalyticsResponseInnerToJSONTyped(value?: ProductGro
         
             ...value,
         'PRODUCT_GROUP_ID': value['pRODUCTGROUPID'],
-        'DATE': value['dATE'] == null ? undefined : ((value['dATE']).toISOString().substring(0,10)),
+        'DATE': value['dATE'] == null ? value['dATE'] : value['dATE'].toISOString().substring(0,10),
     };
 }
 

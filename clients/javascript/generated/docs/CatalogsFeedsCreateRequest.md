@@ -13,6 +13,6 @@ Name | Type | Description | Notes
 **preferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **defaultCountry** | [**Country**](Country.md) |  | [optional] 
 **defaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
-**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
+**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to &#39;ACTIVE&#39;]
 
 

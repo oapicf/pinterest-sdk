@@ -196,8 +196,7 @@ namespace Org.OpenAPITools.Model
                                 operation = new Option<CatalogsUpsertHotelItem.OperationEnum?>(CatalogsUpsertHotelItem.OperationEnumFromStringOrDefault(operationRawValue));
                             break;
                         case "attributes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                attributes = new Option<CatalogsHotelAttributes?>(JsonSerializer.Deserialize<CatalogsHotelAttributes>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            attributes = new Option<CatalogsHotelAttributes?>(JsonSerializer.Deserialize<CatalogsHotelAttributes>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

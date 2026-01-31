@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GrantType** | **string** |  | 
 **Scope** | **string** |  | 
+**GrantType** | **string** |  | 
 
 ## Methods
 
 ### NewOauthAccessTokenRequestClientCredentials
 
-`func NewOauthAccessTokenRequestClientCredentials(grantType string, scope string, ) *OauthAccessTokenRequestClientCredentials`
+`func NewOauthAccessTokenRequestClientCredentials(scope string, grantType string, ) *OauthAccessTokenRequestClientCredentials`
 
 NewOauthAccessTokenRequestClientCredentials instantiates a new OauthAccessTokenRequestClientCredentials object
 This constructor will assign default values to properties that have it defined,
@@ -25,26 +25,6 @@ will change when the set of required properties is changed
 NewOauthAccessTokenRequestClientCredentialsWithDefaults instantiates a new OauthAccessTokenRequestClientCredentials object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetGrantType
-
-`func (o *OauthAccessTokenRequestClientCredentials) GetGrantType() string`
-
-GetGrantType returns the GrantType field if non-nil, zero value otherwise.
-
-### GetGrantTypeOk
-
-`func (o *OauthAccessTokenRequestClientCredentials) GetGrantTypeOk() (*string, bool)`
-
-GetGrantTypeOk returns a tuple with the GrantType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGrantType
-
-`func (o *OauthAccessTokenRequestClientCredentials) SetGrantType(v string)`
-
-SetGrantType sets GrantType field to given value.
-
 
 ### GetScope
 
@@ -64,6 +44,26 @@ and a boolean to check if the value has been set.
 `func (o *OauthAccessTokenRequestClientCredentials) SetScope(v string)`
 
 SetScope sets Scope field to given value.
+
+
+### GetGrantType
+
+`func (o *OauthAccessTokenRequestClientCredentials) GetGrantType() string`
+
+GetGrantType returns the GrantType field if non-nil, zero value otherwise.
+
+### GetGrantTypeOk
+
+`func (o *OauthAccessTokenRequestClientCredentials) GetGrantTypeOk() (*string, bool)`
+
+GetGrantTypeOk returns a tuple with the GrantType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantType
+
+`func (o *OauthAccessTokenRequestClientCredentials) SetGrantType(v string)`
+
+SetGrantType sets GrantType field to given value.
 
 
 

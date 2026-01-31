@@ -14,14 +14,14 @@ package org.openapitools.client.model
 import org.openapitools.client.core.ApiModel
 
 case class OauthAccessTokenResponseEverlastingRefresh (
+  refreshToken: String,
+  refreshTokenExpiresIn: Int,
+  refreshTokenExpiresAt: Int,
   responseType: Option[OauthAccessTokenResponseEverlastingRefreshEnums.ResponseType] = None,
   accessToken: String,
   tokenType: String,
   expiresIn: Int,
-  scope: String,
-  refreshToken: String,
-  refreshTokenExpiresIn: Int,
-  refreshTokenExpiresAt: Int
+  scope: String
 ) extends ApiModel
 
 object OauthAccessTokenResponseEverlastingRefreshEnums {

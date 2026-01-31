@@ -25,7 +25,6 @@ namespace OpenAPI\Server\Model;
 
 /**
  * OauthAccessTokenRequestClientCredentials
- * @description A request to receive a client token.
  */
 use Crell\Serde\Renaming\Cases;
 use Crell\Serde\Attributes as Serde;
@@ -36,15 +35,15 @@ class OauthAccessTokenRequestClientCredentials
     /**
     *
     * 
-    * @param string $grantType
+    * @param string $scope
     *
     * 
-    * @param string $scope
+    * @param \OpenAPI\Server\Model\OauthAccessTokenRequestGrantType $grantType
     */
 
     public function __construct(
-        public string $grantType,
         public string $scope,
+        public \OpenAPI\Server\Model\OauthAccessTokenRequestGrantType $grantType,
     ) {}
 }
 

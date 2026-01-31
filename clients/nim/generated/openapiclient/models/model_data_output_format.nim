@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type DataOutputFormat* = object
-  ## Format of generated report
+type DataOutputFormat* {.pure.} = enum
+  JSON
+  CSV
+
+func `%`*(v: DataOutputFormat): JsonNode =
+  result = case v:
+    of DataOutputFormat.JSON: %"JSON"
+    of DataOutputFormat.CSV: %"CSV"
+
+func `$`*(v: DataOutputFormat): string =
+  result = case v:
+    of DataOutputFormat.JSON: $("JSON")
+    of DataOutputFormat.CSV: $("CSV")
+
+proc to*(node: JsonNode, T: typedesc[DataOutputFormat]): DataOutputFormat =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum DataOutputFormat, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("JSON"):
+    return DataOutputFormat.JSON
+  of $("CSV"):
+    return DataOutputFormat.CSV
+  else:
+    raise newException(ValueError, "Invalid enum value for DataOutputFormat: " & strVal)
+

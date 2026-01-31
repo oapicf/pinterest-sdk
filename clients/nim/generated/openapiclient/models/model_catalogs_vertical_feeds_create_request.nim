@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_feeds_create_request
 import model_catalogs_feed_credentials
@@ -23,17 +25,38 @@ import model_country
 import model_nullable_currency
 import model_product_availability_type
 
+# OneOf type
+type CatalogsVerticalFeedsCreateRequestKind* {.pure.} = enum
+  CatalogsRetailFeedsCreateRequestVariant
+  CatalogsHotelFeedsCreateRequestVariant
+  CatalogsCreativeAssetsFeedsCreateRequestVariant
+
 type CatalogsVerticalFeedsCreateRequest* = object
   ## Request object for creating a feed.
-  defaultCurrency*: NullableCurrency
-  name*: string ## A human-friendly name associated to a given feed.
-  format*: CatalogsFormat
-  defaultLocale*: CatalogsFeedsCreateRequest_default_locale
-  credentials*: CatalogsFeedCredentials
-  location*: string ## The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  preferredProcessingSchedule*: CatalogsFeedProcessingSchedule
-  catalogType*: CatalogsType
-  defaultCountry*: Country
-  defaultAvailability*: ProductAvailabilityType
-  status*: CatalogsStatus
-  catalogId*: string ## Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
+  case kind*: CatalogsVerticalFeedsCreateRequestKind
+  of CatalogsVerticalFeedsCreateRequestKind.CatalogsRetailFeedsCreateRequestVariant:
+    CatalogsRetailFeedsCreateRequestValue*: CatalogsRetailFeedsCreateRequest
+  of CatalogsVerticalFeedsCreateRequestKind.CatalogsHotelFeedsCreateRequestVariant:
+    CatalogsHotelFeedsCreateRequestValue*: CatalogsHotelFeedsCreateRequest
+  of CatalogsVerticalFeedsCreateRequestKind.CatalogsCreativeAssetsFeedsCreateRequestVariant:
+    CatalogsCreativeAssetsFeedsCreateRequestValue*: CatalogsCreativeAssetsFeedsCreateRequest
+
+proc to*(node: JsonNode, T: typedesc[CatalogsVerticalFeedsCreateRequest]): CatalogsVerticalFeedsCreateRequest =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsVerticalFeedsCreateRequest(kind: CatalogsVerticalFeedsCreateRequestKind.CatalogsRetailFeedsCreateRequestVariant, CatalogsRetailFeedsCreateRequestValue: to(node, CatalogsRetailFeedsCreateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailFeedsCreateRequest: ", e.msg
+  try:
+    return CatalogsVerticalFeedsCreateRequest(kind: CatalogsVerticalFeedsCreateRequestKind.CatalogsHotelFeedsCreateRequestVariant, CatalogsHotelFeedsCreateRequestValue: to(node, CatalogsHotelFeedsCreateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelFeedsCreateRequest: ", e.msg
+  try:
+    return CatalogsVerticalFeedsCreateRequest(kind: CatalogsVerticalFeedsCreateRequestKind.CatalogsCreativeAssetsFeedsCreateRequestVariant, CatalogsCreativeAssetsFeedsCreateRequestValue: to(node, CatalogsCreativeAssetsFeedsCreateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsFeedsCreateRequest: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsVerticalFeedsCreateRequest. JSON: " & $node)
+

@@ -14,7 +14,6 @@
 import type {
     BatchOperation,
     CatalogsItemsBatchRequest,
-    CatalogsItemsRequestLanguage,
     CatalogsVerticalBatchRequest,
     Country,
     ItemDeleteBatchRecord,

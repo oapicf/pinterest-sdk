@@ -54,67 +54,159 @@ func NewBusinessAccessAssetsAPIController(s BusinessAccessAssetsAPIServicer, opt
 func (c *BusinessAccessAssetsAPIController) Routes() Routes {
 	return Routes{
 		"BusinessAssetMembersGet": Route{
+			"BusinessAssetMembersGet",
 			strings.ToUpper("Get"),
 			"/v5/businesses/{business_id}/assets/{asset_id}/members",
 			c.BusinessAssetMembersGet,
 		},
 		"BusinessAssetPartnersGet": Route{
+			"BusinessAssetPartnersGet",
 			strings.ToUpper("Get"),
 			"/v5/businesses/{business_id}/assets/{asset_id}/partners",
 			c.BusinessAssetPartnersGet,
 		},
 		"BusinessAssetsGet": Route{
+			"BusinessAssetsGet",
 			strings.ToUpper("Get"),
 			"/v5/businesses/{business_id}/assets",
 			c.BusinessAssetsGet,
 		},
 		"BusinessMemberAssetsGet": Route{
+			"BusinessMemberAssetsGet",
 			strings.ToUpper("Get"),
 			"/v5/businesses/{business_id}/members/{member_id}/assets",
 			c.BusinessMemberAssetsGet,
 		},
 		"BusinessMembersAssetAccessDelete": Route{
+			"BusinessMembersAssetAccessDelete",
 			strings.ToUpper("Delete"),
 			"/v5/businesses/{business_id}/members/assets/access",
 			c.BusinessMembersAssetAccessDelete,
 		},
 		"BusinessMembersAssetAccessUpdate": Route{
+			"BusinessMembersAssetAccessUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/businesses/{business_id}/members/assets/access",
 			c.BusinessMembersAssetAccessUpdate,
 		},
 		"DeletePartnerAssetAccessHandlerImpl": Route{
+			"DeletePartnerAssetAccessHandlerImpl",
 			strings.ToUpper("Delete"),
 			"/v5/businesses/{business_id}/partners/assets",
 			c.DeletePartnerAssetAccessHandlerImpl,
 		},
 		"UpdatePartnerAssetAccessHandlerImpl": Route{
+			"UpdatePartnerAssetAccessHandlerImpl",
 			strings.ToUpper("Patch"),
 			"/v5/businesses/{business_id}/partners/assets",
 			c.UpdatePartnerAssetAccessHandlerImpl,
 		},
 		"BusinessPartnerAssetAccessGet": Route{
+			"BusinessPartnerAssetAccessGet",
 			strings.ToUpper("Get"),
 			"/v5/businesses/{business_id}/partners/{partner_id}/assets",
 			c.BusinessPartnerAssetAccessGet,
 		},
 		"AssetGroupCreate": Route{
+			"AssetGroupCreate",
 			strings.ToUpper("Post"),
 			"/v5/businesses/{business_id}/asset_groups",
 			c.AssetGroupCreate,
 		},
 		"AssetGroupDelete": Route{
+			"AssetGroupDelete",
 			strings.ToUpper("Delete"),
 			"/v5/businesses/{business_id}/asset_groups",
 			c.AssetGroupDelete,
 		},
 		"AssetGroupUpdate": Route{
+			"AssetGroupUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/businesses/{business_id}/asset_groups",
 			c.AssetGroupUpdate,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the BusinessAccessAssetsAPIController
+func (c *BusinessAccessAssetsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"BusinessAssetMembersGet",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/assets/{asset_id}/members",
+			c.BusinessAssetMembersGet,
+		},
+		Route{
+			"BusinessAssetPartnersGet",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/assets/{asset_id}/partners",
+			c.BusinessAssetPartnersGet,
+		},
+		Route{
+			"BusinessAssetsGet",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/assets",
+			c.BusinessAssetsGet,
+		},
+		Route{
+			"BusinessMemberAssetsGet",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/members/{member_id}/assets",
+			c.BusinessMemberAssetsGet,
+		},
+		Route{
+			"BusinessMembersAssetAccessDelete",
+			strings.ToUpper("Delete"),
+			"/v5/businesses/{business_id}/members/assets/access",
+			c.BusinessMembersAssetAccessDelete,
+		},
+		Route{
+			"BusinessMembersAssetAccessUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/businesses/{business_id}/members/assets/access",
+			c.BusinessMembersAssetAccessUpdate,
+		},
+		Route{
+			"DeletePartnerAssetAccessHandlerImpl",
+			strings.ToUpper("Delete"),
+			"/v5/businesses/{business_id}/partners/assets",
+			c.DeletePartnerAssetAccessHandlerImpl,
+		},
+		Route{
+			"UpdatePartnerAssetAccessHandlerImpl",
+			strings.ToUpper("Patch"),
+			"/v5/businesses/{business_id}/partners/assets",
+			c.UpdatePartnerAssetAccessHandlerImpl,
+		},
+		Route{
+			"BusinessPartnerAssetAccessGet",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/partners/{partner_id}/assets",
+			c.BusinessPartnerAssetAccessGet,
+		},
+		Route{
+			"AssetGroupCreate",
+			strings.ToUpper("Post"),
+			"/v5/businesses/{business_id}/asset_groups",
+			c.AssetGroupCreate,
+		},
+		Route{
+			"AssetGroupDelete",
+			strings.ToUpper("Delete"),
+			"/v5/businesses/{business_id}/asset_groups",
+			c.AssetGroupDelete,
+		},
+		Route{
+			"AssetGroupUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/businesses/{business_id}/asset_groups",
+			c.AssetGroupUpdate,
+		},
+	}
+}
+
+
 
 // BusinessAssetMembersGet - Get members with access to asset
 func (c *BusinessAccessAssetsAPIController) BusinessAssetMembersGet(w http.ResponseWriter, r *http.Request) {
@@ -592,6 +684,8 @@ func (c *BusinessAccessAssetsAPIController) BusinessPartnerAssetAccessGet(w http
 
 		partnerTypeParam = param
 	} else {
+		param := PartnerType("INTERNAL")
+		partnerTypeParam = param
 	}
 	var assetTypeParam string
 	if query.Has("asset_type") {

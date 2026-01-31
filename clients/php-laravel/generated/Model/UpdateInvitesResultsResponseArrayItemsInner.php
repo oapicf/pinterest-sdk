@@ -38,12 +38,12 @@ class UpdateInvitesResultsResponseArrayItemsInner
     * @param null | \OpenAPI\Server\Model\InviteExceptionResponse $exception
     *
     * 
-    * @param null | \OpenAPI\Server\Model\InviteBusinessRoleBinding $invite
+    * @param \OpenAPI\Server\Model\InviteBusinessRoleBinding $invite
     */
 
     public function __construct(
+        public \OpenAPI\Server\Model\InviteBusinessRoleBinding $invite,
         public ?\OpenAPI\Server\Model\InviteExceptionResponse $exception = null,
-        public ?\OpenAPI\Server\Model\InviteBusinessRoleBinding $invite = null,
     ) {}
 }
 

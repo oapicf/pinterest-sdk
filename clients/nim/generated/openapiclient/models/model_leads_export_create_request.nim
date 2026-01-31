@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type LeadsExportCreateRequest* = object
@@ -16,3 +18,23 @@ type LeadsExportCreateRequest* = object
   startDate*: string ## Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
   endDate*: string ## Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
   adId*: string ## ID for the ad collecting leads
+
+
+# Custom JSON deserialization for LeadsExportCreateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[LeadsExportCreateRequest]): LeadsExportCreateRequest =
+  result = LeadsExportCreateRequest()
+  if node.kind == JObject:
+    if node.hasKey("start_date"):
+      result.startDate = to(node["start_date"], string)
+    if node.hasKey("end_date"):
+      result.endDate = to(node["end_date"], string)
+    if node.hasKey("ad_id"):
+      result.adId = to(node["ad_id"], string)
+
+# Custom JSON serialization for LeadsExportCreateRequest with custom field names
+proc `%`*(obj: LeadsExportCreateRequest): JsonNode =
+  result = newJObject()
+  result["start_date"] = %obj.startDate
+  result["end_date"] = %obj.endDate
+  result["ad_id"] = %obj.adId
+

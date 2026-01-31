@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "GENDER":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                gENDER = new Option<CatalogsProductGroupMultipleGenderCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleGenderCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            gENDER = new Option<CatalogsProductGroupMultipleGenderCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleGenderCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

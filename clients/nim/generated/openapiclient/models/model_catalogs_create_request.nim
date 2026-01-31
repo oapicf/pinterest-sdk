@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogType* {.pure.} = enum
@@ -20,11 +22,35 @@ type CatalogsCreateRequest* = object
   name*: string ## A human-friendly name associated to a given catalog.
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.HOTEL: "HOTEL"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.HOTEL: %"HOTEL"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.HOTEL: "HOTEL"
+    of CatalogType.HOTEL: $("HOTEL")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("HOTEL"):
+    return CatalogType.HOTEL
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsCreateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreateRequest]): CatalogsCreateRequest =
+  result = CatalogsCreateRequest()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("name"):
+      result.name = to(node["name"], string)
+
+# Custom JSON serialization for CatalogsCreateRequest with custom field names
+proc `%`*(obj: CatalogsCreateRequest): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["name"] = %obj.name
+

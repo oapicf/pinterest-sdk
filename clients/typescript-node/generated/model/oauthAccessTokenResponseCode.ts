@@ -12,21 +12,28 @@
 
 import { RequestFile } from './models';
 
-/**
-* A successful OAuth access token response for the authorization code flow.
-*/
 export class OauthAccessTokenResponseCode {
+    'refreshToken': string;
+    'refreshTokenExpiresIn': number;
     'responseType'?: OauthAccessTokenResponseCode.ResponseTypeEnum;
     'accessToken': string;
     'tokenType': string = 'bearer';
     'expiresIn': number;
     'scope': string;
-    'refreshToken': string;
-    'refreshTokenExpiresIn': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            "name": "refreshToken",
+            "baseName": "refresh_token",
+            "type": "string"
+        },
+        {
+            "name": "refreshTokenExpiresIn",
+            "baseName": "refresh_token_expires_in",
+            "type": "number"
+        },
         {
             "name": "responseType",
             "baseName": "response_type",
@@ -51,16 +58,6 @@ export class OauthAccessTokenResponseCode {
             "name": "scope",
             "baseName": "scope",
             "type": "string"
-        },
-        {
-            "name": "refreshToken",
-            "baseName": "refresh_token",
-            "type": "string"
-        },
-        {
-            "name": "refreshTokenExpiresIn",
-            "baseName": "refresh_token_expires_in",
-            "type": "number"
         }    ];
 
     static getAttributeTypeMap() {

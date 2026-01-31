@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.Date;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
@@ -11,66 +10,81 @@ import org.openapitools.model.Country;
 import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ProductAvailabilityType;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Catalogs Retail Feed object
- **/
+ * Catalogs Retail Feed object
+ */
 @ApiModel(description="Catalogs Retail Feed object")
 
 public class CatalogsRetailFeed  {
   
   @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
+
   private Date createdAt;
 
   @ApiModelProperty(required = true, value = "")
+
   private String id;
 
   @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+
   private Date updatedAt;
 
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
  /**
-   * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
-  **/
+  * A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+  */
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.")
+
   private String name;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsFormat format;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsType catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsFeedCredentials credentials;
 
-  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
  /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  **/
+  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  */
+  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+
   private String location;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsStatus status;
 
   @ApiModelProperty(required = true, value = "")
+
   private NullableCurrency defaultCurrency;
 
-  @ApiModelProperty(example = "en-US", required = true, value = "The locale used within a feed for product descriptions.")
  /**
-   * The locale used within a feed for product descriptions.
-  **/
+  * The locale used within a feed for product descriptions.
+  */
+  @ApiModelProperty(example = "en-US", required = true, value = "The locale used within a feed for product descriptions.")
+
   private String defaultLocale;
 
   @ApiModelProperty(required = true, value = "")
+
   private Country defaultCountry;
 
   @ApiModelProperty(required = true, value = "")
+
   private ProductAvailabilityType defaultAvailability;
  /**
    * Get createdAt

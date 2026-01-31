@@ -16,14 +16,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdAccountsList200Response  {
   
-  @ApiModelProperty(required = true, value = "Ad accounts")
-  @Valid
  /**
-   * Ad accounts
-  **/
+  * Ad accounts
+  */
+  @ApiModelProperty(required = true, value = "Ad accounts")
+
+  @Valid
+
   private List<@Valid AdAccount> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * Ad accounts

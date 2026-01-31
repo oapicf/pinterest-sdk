@@ -48,7 +48,7 @@ export function CatalogsReportStatsFromJSONTyped(json: any, ignoreDiscriminator:
         case 'FEED_INGESTION_ISSUES':
             return Object.assign({}, CatalogsReportFeedIngestionStatsFromJSONTyped(json, true), { reportType: 'FEED_INGESTION_ISSUES' } as const);
         default:
-            throw new Error(`No variant of CatalogsReportStats exists with 'reportType=${json['reportType']}'`);
+            return json;
     }
 }
 
@@ -66,8 +66,7 @@ export function CatalogsReportStatsToJSONTyped(value?: CatalogsReportStats | nul
         case 'FEED_INGESTION_ISSUES':
             return Object.assign({}, CatalogsReportFeedIngestionStatsToJSON(value), { reportType: 'FEED_INGESTION_ISSUES' } as const);
         default:
-            throw new Error(`No variant of CatalogsReportStats exists with 'reportType=${value['reportType']}'`);
+            return value;
     }
-
 }
 

@@ -1,33 +1,35 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.BusinessMemberAssetsSummaryAdAccountsInner;
 import org.openapitools.model.BusinessMemberAssetsSummaryProfilesInner;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Ad accounts and profiles the business member/partner has access to.
- **/
+ * Ad accounts and profiles the business member/partner has access to.
+ */
 @ApiModel(description="Ad accounts and profiles the business member/partner has access to.")
 
 public class BusinessMemberAssetsSummary  {
   
-  @ApiModelProperty(value = "List of ad account IDs and respective permission levels.")
  /**
-   * List of ad account IDs and respective permission levels.
-  **/
+  * List of ad account IDs and respective permission levels.
+  */
+  @ApiModelProperty(value = "List of ad account IDs and respective permission levels.")
+
   private List<BusinessMemberAssetsSummaryAdAccountsInner> adAccounts = new ArrayList<>();
 
-  @ApiModelProperty(value = "List of profile IDs and respective permission levels.")
  /**
-   * List of profile IDs and respective permission levels.
-  **/
+  * List of profile IDs and respective permission levels.
+  */
+  @ApiModelProperty(value = "List of profile IDs and respective permission levels.")
+
   private List<BusinessMemberAssetsSummaryProfilesInner> profiles = new ArrayList<>();
  /**
    * List of ad account IDs and respective permission levels.

@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * Keyword
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Keyword {
 
   private JsonNullable<Integer> bid = JsonNullable.<Integer>undefined();
@@ -115,7 +115,7 @@ public class Keyword {
     this.value = value;
   }
 
-  public Keyword archived(Boolean archived) {
+  public Keyword archived(@Nullable Boolean archived) {
     this.archived = archived;
     return this;
   }
@@ -127,15 +127,15 @@ public class Keyword {
   
   @Schema(name = "archived", example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("archived")
-  public Boolean getArchived() {
+  public @Nullable Boolean getArchived() {
     return archived;
   }
 
-  public void setArchived(Boolean archived) {
+  public void setArchived(@Nullable Boolean archived) {
     this.archived = archived;
   }
 
-  public Keyword id(String id) {
+  public Keyword id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -147,15 +147,15 @@ public class Keyword {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "383791336903426391", description = "Keyword ID .", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public Keyword parentId(String parentId) {
+  public Keyword parentId(@Nullable String parentId) {
     this.parentId = parentId;
     return this;
   }
@@ -167,15 +167,15 @@ public class Keyword {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "parent_id", example = "383791336903426391", description = "Keyword parent entity ID (advertiser, campaign, ad group).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("parent_id")
-  public String getParentId() {
+  public @Nullable String getParentId() {
     return parentId;
   }
 
-  public void setParentId(String parentId) {
+  public void setParentId(@Nullable String parentId) {
     this.parentId = parentId;
   }
 
-  public Keyword parentType(String parentType) {
+  public Keyword parentType(@Nullable String parentType) {
     this.parentType = parentType;
     return this;
   }
@@ -187,15 +187,15 @@ public class Keyword {
   
   @Schema(name = "parent_type", example = "campaign", description = "Parent entity type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("parent_type")
-  public String getParentType() {
+  public @Nullable String getParentType() {
     return parentType;
   }
 
-  public void setParentType(String parentType) {
+  public void setParentType(@Nullable String parentType) {
     this.parentType = parentType;
   }
 
-  public Keyword type(String type) {
+  public Keyword type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -207,11 +207,11 @@ public class Keyword {
   
   @Schema(name = "type", example = "keyword", description = "Always keyword", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public String getType() {
+  public @Nullable String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 

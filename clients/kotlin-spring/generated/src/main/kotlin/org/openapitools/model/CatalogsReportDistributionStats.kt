@@ -52,7 +52,7 @@ data class CatalogsReportDistributionStats(
 
     @Schema(example = "true", description = "Indicates if issue makes items ineligible for organic distribution")
     @get:JsonProperty("ineligible_for_organic") val ineligibleForOrganic: kotlin.Boolean? = null
-    ) {
+) {
 
     /**
     * 
@@ -66,7 +66,8 @@ data class CatalogsReportDistributionStats(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ReportType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsReportDistributionStats'")
             }
         }
     }

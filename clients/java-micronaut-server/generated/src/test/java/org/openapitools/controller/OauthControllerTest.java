@@ -85,7 +85,7 @@ public class OauthControllerTest {
         }};
         String uri = UriTemplate.of("/oauth/token").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, form)
-            .accept("[Ljava.lang.String;@6a97c028");
+            .accept("[Ljava.lang.String;@4d571e3e");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, OauthAccessTokenResponse.class);

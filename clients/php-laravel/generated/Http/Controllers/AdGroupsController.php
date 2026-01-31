@@ -116,12 +116,8 @@ class AdGroupsController extends Controller
 
         $conversionReportTime = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdGroupsAnalyticsConversionReportTimeParameter::class);
 
-        try {
-            $apiResult = $this->api->adGroupsAnalytics($adAccountId, $startDate, $endDate, $adGroupIds, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adGroupsAnalytics($adAccountId, $startDate, $endDate, $adGroupIds, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -166,12 +162,8 @@ class AdGroupsController extends Controller
 
         $adGroupAudienceSizingRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdGroupAudienceSizingRequest::class);
 
-        try {
-            $apiResult = $this->api->adGroupsAudienceSizing($adAccountId, $adGroupAudienceSizingRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adGroupsAudienceSizing($adAccountId, $adGroupAudienceSizingRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdGroupAudienceSizingResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -219,12 +211,8 @@ class AdGroupsController extends Controller
 
         $bidFloorRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BidFloorRequest::class);
 
-        try {
-            $apiResult = $this->api->adGroupsBidFloorGet($adAccountId, $bidFloorRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adGroupsBidFloorGet($adAccountId, $bidFloorRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BidFloor) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -264,12 +252,8 @@ class AdGroupsController extends Controller
 
         $adGroupCreateRequest = $request->get('adGroupCreateRequest');
 
-        try {
-            $apiResult = $this->api->adGroupsCreate($adAccountId, $adGroupCreateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adGroupsCreate($adAccountId, $adGroupCreateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdGroupArrayResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -320,12 +304,8 @@ class AdGroupsController extends Controller
 
 
 
-        try {
-            $apiResult = $this->api->adGroupsGet($adAccountId, $adGroupId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adGroupsGet($adAccountId, $adGroupId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdGroupResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -407,14 +387,10 @@ class AdGroupsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        $translateInterestsToNames = $request->bool('translateInterestsToNames');
+        $translateInterestsToNames = $request->boolean('translateInterestsToNames');
 
-        try {
-            $apiResult = $this->api->adGroupsList($adAccountId, $campaignIds, $adGroupIds, $entityStatuses, $pageSize, $order, $bookmark, $translateInterestsToNames);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adGroupsList($adAccountId, $campaignIds, $adGroupIds, $entityStatuses, $pageSize, $order, $bookmark, $translateInterestsToNames);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdGroupsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -519,12 +495,8 @@ class AdGroupsController extends Controller
 
         $attributionTypes = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ConversionReportAttributionType::class);
 
-        try {
-            $apiResult = $this->api->adGroupsTargetingAnalyticsGet($adAccountId, $adGroupIds, $startDate, $endDate, $targetingTypes, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime, $attributionTypes);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adGroupsTargetingAnalyticsGet($adAccountId, $adGroupIds, $startDate, $endDate, $targetingTypes, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime, $attributionTypes);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MetricsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -564,12 +536,8 @@ class AdGroupsController extends Controller
 
         $adGroupUpdateRequest = $request->get('adGroupUpdateRequest');
 
-        try {
-            $apiResult = $this->api->adGroupsUpdate($adAccountId, $adGroupUpdateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adGroupsUpdate($adAccountId, $adGroupUpdateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdGroupArrayResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

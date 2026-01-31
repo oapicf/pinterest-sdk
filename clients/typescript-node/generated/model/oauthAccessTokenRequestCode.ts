@@ -12,22 +12,14 @@
 
 import { RequestFile } from './models';
 
-/**
-* A request to exchange an authorization code for an access token.
-*/
 export class OauthAccessTokenRequestCode {
-    'grantType': OauthAccessTokenRequestCode.GrantTypeEnum;
     'code': string;
     'redirectUri': string;
+    'grantType': OauthAccessTokenRequestCode.GrantTypeEnum;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
-        {
-            "name": "grantType",
-            "baseName": "grant_type",
-            "type": "OauthAccessTokenRequestCode.GrantTypeEnum"
-        },
         {
             "name": "code",
             "baseName": "code",
@@ -37,6 +29,11 @@ export class OauthAccessTokenRequestCode {
             "name": "redirectUri",
             "baseName": "redirect_uri",
             "type": "string"
+        },
+        {
+            "name": "grantType",
+            "baseName": "grant_type",
+            "type": "OauthAccessTokenRequestCode.GrantTypeEnum"
         }    ];
 
     static getAttributeTypeMap() {

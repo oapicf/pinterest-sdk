@@ -15,13 +15,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CreateAssetAccessRequestResponse  {
   
-  @ApiModelProperty(value = "A list of errors associated with the asset access requests. Will be returned if there is an error.")
  /**
-   * A list of errors associated with the asset access requests. Will be returned if there is an error.
-  **/
+  * A list of errors associated with the asset access requests. Will be returned if there is an error.
+  */
+  @ApiModelProperty(value = "A list of errors associated with the asset access requests. Will be returned if there is an error.")
+
   private List<CreateAssetAccessRequestErrorMessageInner> exceptions;
 
   @ApiModelProperty(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", value = "")
+
   private Map<String, String> invites;
  /**
    * A list of errors associated with the asset access requests. Will be returned if there is an error.

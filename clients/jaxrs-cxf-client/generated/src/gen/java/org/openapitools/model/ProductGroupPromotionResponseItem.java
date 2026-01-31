@@ -15,9 +15,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ProductGroupPromotionResponseItem  {
   
   @ApiModelProperty(value = "")
+
   private ProductGroupPromotionResponseElement data;
 
   @ApiModelProperty(value = "")
+
   private List<Exception> exceptions;
  /**
    * Get data

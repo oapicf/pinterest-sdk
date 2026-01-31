@@ -58,7 +58,7 @@ import org.openapitools.client.infrastructure.ResponseType
 import org.openapitools.client.infrastructure.Success
 import org.openapitools.client.infrastructure.toMultiValue
 
-class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
+open class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, client: Call.Factory = ApiClient.defaultClient) : ApiClient(basePath, client) {
     companion object {
         @JvmStatic
         val defaultBasePath: String by lazy {
@@ -515,7 +515,7 @@ class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, client:
      * @param permissions A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. (optional)
      * @param childAssetId A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional)
      * @param assetGroupId An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
-     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
+     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -554,7 +554,7 @@ class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, client:
      * @param permissions A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. (optional)
      * @param childAssetId A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional)
      * @param assetGroupId An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
-     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
+     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -579,7 +579,7 @@ class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, client:
      * @param permissions A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. (optional)
      * @param childAssetId A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. (optional)
      * @param assetGroupId An asset group unique identifier. Used to fetch assets contained within the specified asset group. (optional)
-     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
+     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -648,7 +648,7 @@ class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, client:
      * Get assets on which you assigned asset permissions to the given member. Can be used to: - get all assets, regardless of asset type or - get assets of one asset type by using the asset_type query. The return response will include the permissions the member has to that asset and the asset type.
      * @param businessId Unique identifier of the requesting business.
      * @param memberId The member id to fetch assets for.
-     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
+     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -685,7 +685,7 @@ class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, client:
      * Get assets on which you assigned asset permissions to the given member. Can be used to: - get all assets, regardless of asset type or - get assets of one asset type by using the asset_type query. The return response will include the permissions the member has to that asset and the asset type.
      * @param businessId Unique identifier of the requesting business.
      * @param memberId The member id to fetch assets for.
-     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
+     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -708,7 +708,7 @@ class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, client:
      *
      * @param businessId Unique identifier of the requesting business.
      * @param memberId The member id to fetch assets for.
-     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
+     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param bookmark Cursor used to fetch the next page of items (optional)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -923,7 +923,7 @@ class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, client:
      * @param businessId Unique identifier of the requesting business.
      * @param partnerId The partner id to be bound to the Business
      * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
-     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
+     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -961,7 +961,7 @@ class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, client:
      * @param businessId Unique identifier of the requesting business.
      * @param partnerId The partner id to be bound to the Business
      * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
-     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
+     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -985,7 +985,7 @@ class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, client:
      * @param businessId Unique identifier of the requesting business.
      * @param partnerId The partner id to be bound to the Business
      * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
-     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
+     * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AssetType.AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
      * @param bookmark Cursor used to fetch the next page of items (optional)
@@ -996,6 +996,7 @@ class BusinessAccessAssetsApi(basePath: kotlin.String = defaultBasePath, client:
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (partnerType != null) {
+                    put("partner_type", listOf(partnerType.toString()))
                 }
                 if (assetType != null) {
                     put("asset_type", listOf(assetType.value))

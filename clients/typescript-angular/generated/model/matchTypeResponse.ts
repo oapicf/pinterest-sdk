@@ -12,18 +12,12 @@
 /**
  * Keyword match type
  */
-export type MatchTypeResponse = 'BROAD' | 'PHRASE' | 'EXACT' | 'EXACT_NEGATIVE' | 'PHRASE_NEGATIVE';
-
 export const MatchTypeResponse = {
-
-    Broad: 'BROAD' as MatchTypeResponse,
-
-    Phrase: 'PHRASE' as MatchTypeResponse,
-
-    Exact: 'EXACT' as MatchTypeResponse,
-
-    ExactNegative: 'EXACT_NEGATIVE' as MatchTypeResponse,
-
-    PhraseNegative: 'PHRASE_NEGATIVE' as MatchTypeResponse
-};
+    Broad: 'BROAD',
+    Phrase: 'PHRASE',
+    Exact: 'EXACT',
+    ExactNegative: 'EXACT_NEGATIVE',
+    PhraseNegative: 'PHRASE_NEGATIVE'
+} as const;
+export type MatchTypeResponse = typeof MatchTypeResponse[keyof typeof MatchTypeResponse];
 

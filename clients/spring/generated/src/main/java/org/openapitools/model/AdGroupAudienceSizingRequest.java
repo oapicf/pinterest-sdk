@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  * AdGroupAudienceSizingRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupAudienceSizingRequest {
 
   private Boolean autoTargetingEnabled = true;
@@ -55,7 +55,7 @@ public class AdGroupAudienceSizingRequest {
     
     IDEA("IDEA");
 
-    private String value;
+    private final String value;
 
     CreativeTypesEnum(String value) {
       this.value = value;
@@ -161,7 +161,7 @@ public class AdGroupAudienceSizingRequest {
     this.creativeTypes = creativeTypes;
   }
 
-  public AdGroupAudienceSizingRequest targetingSpec(TargetingSpec targetingSpec) {
+  public AdGroupAudienceSizingRequest targetingSpec(@Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
     return this;
   }
@@ -173,11 +173,11 @@ public class AdGroupAudienceSizingRequest {
   @Valid 
   @Schema(name = "targeting_spec", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
+  public @Nullable TargetingSpec getTargetingSpec() {
     return targetingSpec;
   }
 
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
+  public void setTargetingSpec(@Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
   }
 

@@ -431,12 +431,10 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "auto_targeting_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                autoTargetingEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            autoTargetingEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "targeting_attributes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                targetingAttributes = new Option<TargetingSpec?>(JsonSerializer.Deserialize<TargetingSpec>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            targetingAttributes = new Option<TargetingSpec?>(JsonSerializer.Deserialize<TargetingSpec>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "placement_group":
                             string? placementGroupRawValue = utf8JsonReader.GetString();
@@ -444,23 +442,19 @@ namespace Org.OpenAPITools.Model
                                 placementGroup = new Option<PlacementGroupType?>(PlacementGroupTypeValueConverter.FromStringOrDefault(placementGroupRawValue));
                             break;
                         case "keywords":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                keywords = new Option<List<TargetingTemplateKeyword>?>(JsonSerializer.Deserialize<List<TargetingTemplateKeyword>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            keywords = new Option<List<TargetingTemplateKeyword>?>(JsonSerializer.Deserialize<List<TargetingTemplateKeyword>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "tracking_urls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                trackingUrls = new Option<TrackingUrls?>(JsonSerializer.Deserialize<TrackingUrls>(ref utf8JsonReader, jsonSerializerOptions));
+                            trackingUrls = new Option<TrackingUrls?>(JsonSerializer.Deserialize<TrackingUrls>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "created_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "updated_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            updatedTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ad_account_id":
                             adAccountId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -471,12 +465,10 @@ namespace Org.OpenAPITools.Model
                                 status = new Option<TargetingTemplateGetResponseData.StatusEnum?>(TargetingTemplateGetResponseData.StatusEnumFromStringOrDefault(statusRawValue));
                             break;
                         case "sizing":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sizing = new Option<TargetingTemplateAudienceSizing?>(JsonSerializer.Deserialize<TargetingTemplateAudienceSizing>(ref utf8JsonReader, jsonSerializerOptions));
+                            sizing = new Option<TargetingTemplateAudienceSizing?>(JsonSerializer.Deserialize<TargetingTemplateAudienceSizing>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "valid":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                valid = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            valid = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

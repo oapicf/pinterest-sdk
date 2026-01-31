@@ -2,7 +2,7 @@
   (:require [clojure.spec.alpha :as s]
             [spec-tools.data-spec :as ds]
             [pinterest-rest-api.specs.audience-rule :refer :all]
-            [pinterest-rest-api.specs.audience-create-request-1-audience-type :refer :all]
+            [pinterest-rest-api.specs.audience-type :refer :all]
             )
   (:import (java.io File)))
 
@@ -13,7 +13,7 @@
    (ds/req :name) string?
    (ds/req :rule) audience-rule-spec
    (ds/opt :description) string?
-   (ds/req :audience_type) audience-create-request-1-audience-type-spec
+   (ds/req :audience_type) audience-type-spec
    })
 
 (def audience-create-request-spec

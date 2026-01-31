@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type PinUpdateCarouselSlotsInner* = object
   ## 
-  title*: string ## Carousel Pin slot title.
-  description*: string ## Carousel Pin slot description.
-  link*: string ## Carousel Pin slot link.
+  title*: Option[string] ## Carousel Pin slot title.
+  description*: Option[string] ## Carousel Pin slot description.
+  link*: Option[string] ## Carousel Pin slot link.
+

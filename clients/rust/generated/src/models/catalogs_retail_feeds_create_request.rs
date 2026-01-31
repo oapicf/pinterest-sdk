@@ -37,7 +37,7 @@ pub struct CatalogsRetailFeedsCreateRequest {
     #[serde(rename = "default_availability", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub default_availability: Option<Option<models::ProductAvailabilityType>>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
-    pub status: Option<Box<models::CatalogsStatus>>,
+    pub status: Option<models::CatalogsStatus>,
 }
 
 impl CatalogsRetailFeedsCreateRequest {

@@ -2,26 +2,27 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.ItemAttributesRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * An item to be upserted
- **/
+ * An item to be upserted
+ */
 @ApiModel(description="An item to be upserted")
 
 public class CatalogsUpsertRetailItem  {
   
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog item id in the merchant namespace")
  /**
-   * The catalog item id in the merchant namespace
-  **/
+  * The catalog item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog item id in the merchant namespace")
+
   private String itemId;
 
 public enum OperationEnum {
@@ -57,10 +58,13 @@ UPSERT(String.valueOf("UPSERT"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private OperationEnum operation;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private ItemAttributesRequest attributes;
  /**
    * The catalog item id in the merchant namespace

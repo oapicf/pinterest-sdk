@@ -141,8 +141,7 @@ namespace Org.OpenAPITools.Model
                             partnerId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "asset_id_to_permissions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetIdToPermissions = new Option<Dictionary<string, List<Permissions>>?>(JsonSerializer.Deserialize<Dictionary<string, List<Permissions>>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            assetIdToPermissions = new Option<Dictionary<string, List<Permissions>>?>(JsonSerializer.Deserialize<Dictionary<string, List<Permissions>>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

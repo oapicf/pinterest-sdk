@@ -23,7 +23,7 @@ data class TargetingTemplateAudienceSizing(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("reach_estimate") val reachEstimate: TargetingTemplateAudienceSizingReachEstimate? = null
-    ) {
+) {
 
 }
 

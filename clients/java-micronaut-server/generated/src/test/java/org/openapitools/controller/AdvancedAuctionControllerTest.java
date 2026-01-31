@@ -86,7 +86,7 @@ public class AdvancedAuctionControllerTest {
         AdvancedAuctionItemsGetRequest body = new AdvancedAuctionItemsGetRequest("2680059592705", Arrays.asList());
         String uri = UriTemplate.of("/advanced_auction/items/get").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@2be4a633");
+            .accept("[Ljava.lang.String;@3d23c882");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -133,7 +133,7 @@ public class AdvancedAuctionControllerTest {
         AdvancedAuctionItemsSubmitRequest body = new AdvancedAuctionItemsSubmitRequest("2680059592705", Arrays.asList());
         String uri = UriTemplate.of("/advanced_auction/items/submit").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@90a4093");
+            .accept("[Ljava.lang.String;@295e928f");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 

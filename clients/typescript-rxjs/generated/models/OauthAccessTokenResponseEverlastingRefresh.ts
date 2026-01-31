@@ -12,11 +12,25 @@
  */
 
 /**
- * A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
  * @export
  * @interface OauthAccessTokenResponseEverlastingRefresh
  */
 export interface OauthAccessTokenResponseEverlastingRefresh {
+    /**
+     * @type {string}
+     * @memberof OauthAccessTokenResponseEverlastingRefresh
+     */
+    refresh_token: string;
+    /**
+     * @type {number}
+     * @memberof OauthAccessTokenResponseEverlastingRefresh
+     */
+    refresh_token_expires_in: number;
+    /**
+     * @type {number}
+     * @memberof OauthAccessTokenResponseEverlastingRefresh
+     */
+    refresh_token_expires_at: number;
     /**
      * @type {string}
      * @memberof OauthAccessTokenResponseEverlastingRefresh
@@ -42,21 +56,6 @@ export interface OauthAccessTokenResponseEverlastingRefresh {
      * @memberof OauthAccessTokenResponseEverlastingRefresh
      */
     scope: string;
-    /**
-     * @type {string}
-     * @memberof OauthAccessTokenResponseEverlastingRefresh
-     */
-    refresh_token: string;
-    /**
-     * @type {number}
-     * @memberof OauthAccessTokenResponseEverlastingRefresh
-     */
-    refresh_token_expires_in: number;
-    /**
-     * @type {number}
-     * @memberof OauthAccessTokenResponseEverlastingRefresh
-     */
-    refresh_token_expires_at: number;
 }
 
 /**

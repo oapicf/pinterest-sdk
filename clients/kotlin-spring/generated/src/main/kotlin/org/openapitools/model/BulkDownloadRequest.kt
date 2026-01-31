@@ -47,7 +47,7 @@ data class BulkDownloadRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("output_format") val outputFormat: BulkOutputFormat? = "JSON"
-    ) {
+) {
 
 }
 

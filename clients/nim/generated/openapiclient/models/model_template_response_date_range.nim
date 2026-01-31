@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_template_response_date_range_absolute_date_range
 import model_template_response_date_range_dynamic_date_range
@@ -16,6 +18,29 @@ import model_template_response_date_range_relative_date_range
 
 type TemplateResponseDateRange* = object
   ## 
-  dynamicDateRange*: TemplateResponse_date_range_dynamic_date_range
-  relativeDateRange*: TemplateResponse_date_range_relative_date_range
-  absoluteDateRange*: TemplateResponse_date_range_absolute_date_range
+  dynamicDateRange*: Option[TemplateResponse_date_range_dynamic_date_range]
+  relativeDateRange*: Option[TemplateResponse_date_range_relative_date_range]
+  absoluteDateRange*: Option[TemplateResponse_date_range_absolute_date_range]
+
+
+# Custom JSON deserialization for TemplateResponseDateRange with custom field names
+proc to*(node: JsonNode, T: typedesc[TemplateResponseDateRange]): TemplateResponseDateRange =
+  result = TemplateResponseDateRange()
+  if node.kind == JObject:
+    if node.hasKey("dynamic_date_range") and node["dynamic_date_range"].kind != JNull:
+      result.dynamicDateRange = some(to(node["dynamic_date_range"], typeof(result.dynamicDateRange.get())))
+    if node.hasKey("relative_date_range") and node["relative_date_range"].kind != JNull:
+      result.relativeDateRange = some(to(node["relative_date_range"], typeof(result.relativeDateRange.get())))
+    if node.hasKey("absolute_date_range") and node["absolute_date_range"].kind != JNull:
+      result.absoluteDateRange = some(to(node["absolute_date_range"], typeof(result.absoluteDateRange.get())))
+
+# Custom JSON serialization for TemplateResponseDateRange with custom field names
+proc `%`*(obj: TemplateResponseDateRange): JsonNode =
+  result = newJObject()
+  if obj.dynamicDateRange.isSome():
+    result["dynamic_date_range"] = %obj.dynamicDateRange.get()
+  if obj.relativeDateRange.isSome():
+    result["relative_date_range"] = %obj.relativeDateRange.get()
+  if obj.absoluteDateRange.isSome():
+    result["absolute_date_range"] = %obj.absoluteDateRange.get()
+

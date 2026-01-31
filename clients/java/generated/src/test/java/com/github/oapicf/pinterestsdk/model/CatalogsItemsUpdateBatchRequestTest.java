@@ -14,7 +14,6 @@
 package com.github.oapicf.pinterestsdk.model;
 
 import com.github.oapicf.pinterestsdk.model.BatchOperation;
-import com.github.oapicf.pinterestsdk.model.CatalogsItemsRequestLanguage;
 import com.github.oapicf.pinterestsdk.model.Country;
 import com.github.oapicf.pinterestsdk.model.ItemUpdateBatchRecord;
 import com.google.gson.TypeAdapter;

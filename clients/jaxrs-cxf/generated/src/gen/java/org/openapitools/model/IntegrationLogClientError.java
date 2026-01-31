@@ -1,72 +1,81 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * System error details included in the log sent by the client.
- **/
+ * System error details included in the log sent by the client.
+ */
 @ApiModel(description="System error details included in the log sent by the client.")
 
 public class IntegrationLogClientError  {
   
-  @ApiModelProperty(value = "Original cause of the error.")
  /**
-   * Original cause of the error.
-  **/
+  * Original cause of the error.
+  */
+  @ApiModelProperty(value = "Original cause of the error.")
+
   private String cause;
 
-  @ApiModelProperty(value = "Column number in the line of the file that raised the error.")
  /**
-   * Column number in the line of the file that raised the error.
-  **/
+  * Column number in the line of the file that raised the error.
+  */
+  @ApiModelProperty(value = "Column number in the line of the file that raised the error.")
+
   private Integer columnNumber;
 
-  @ApiModelProperty(value = "Filename where the error happened.")
  /**
-   * Filename where the error happened.
-  **/
+  * Filename where the error happened.
+  */
+  @ApiModelProperty(value = "Filename where the error happened.")
+
   private String fileName;
 
-  @ApiModelProperty(value = "Line number where the error happened.")
  /**
-   * Line number where the error happened.
-  **/
+  * Line number where the error happened.
+  */
+  @ApiModelProperty(value = "Line number where the error happened.")
+
   private Integer lineNumber;
 
-  @ApiModelProperty(value = "Human-readable description of the error.")
  /**
-   * Human-readable description of the error.
-  **/
+  * Human-readable description of the error.
+  */
+  @ApiModelProperty(value = "Human-readable description of the error.")
+
   private String message;
 
-  @ApiModelProperty(value = "More detail about the message.")
  /**
-   * More detail about the message.
-  **/
+  * More detail about the message.
+  */
+  @ApiModelProperty(value = "More detail about the message.")
+
   private String messageDetail;
 
-  @ApiModelProperty(value = "Filename where the error happened.")
  /**
-   * Filename where the error happened.
-  **/
+  * Filename where the error happened.
+  */
+  @ApiModelProperty(value = "Filename where the error happened.")
+
   private String name;
 
-  @ApiModelProperty(value = "Integer that specifies the error code.")
  /**
-   * Integer that specifies the error code.
-  **/
+  * Integer that specifies the error code.
+  */
+  @ApiModelProperty(value = "Integer that specifies the error code.")
+
   private Integer number;
 
-  @ApiModelProperty(value = "Stack trace of where the error happened.")
  /**
-   * Stack trace of where the error happened.
-  **/
+  * Stack trace of where the error happened.
+  */
+  @ApiModelProperty(value = "Stack trace of where the error happened.")
+
   private String stackTrace;
  /**
    * Original cause of the error.

@@ -24,7 +24,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Pin media source.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2025-05-10T05:40:48.086340579Z[Etc/UTC]", comments = "Generator version: 7.12.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "source_type", visible = true)
+@ApiModel(description="Pin media source.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "source_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = PinMediaSourceImageBase64.class, name = "image_base64"),
   @JsonSubTypes.Type(value = PinMediaSourceImageURL.class, name = "image_url"),

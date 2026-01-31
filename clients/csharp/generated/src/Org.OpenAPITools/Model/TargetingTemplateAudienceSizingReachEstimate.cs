@@ -158,16 +158,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "estimate":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                estimate = new Option<long?>(utf8JsonReader.GetInt64());
+                            estimate = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "lower_bound":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lowerBound = new Option<long?>(utf8JsonReader.GetInt64());
+                            lowerBound = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "upper_bound":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                upperBound = new Option<long?>(utf8JsonReader.GetInt64());
+                            upperBound = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         default:
                             break;

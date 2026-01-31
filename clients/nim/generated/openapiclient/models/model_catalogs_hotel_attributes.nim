@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_hotel_address
 import model_catalogs_hotel_attributes_all_of_main_image
@@ -16,22 +18,109 @@ import model_catalogs_hotel_guest_ratings
 
 type CatalogsHotelAttributes* = object
   ## 
-  name*: string ## The hotel's name.
-  link*: string ## Link to the product page
-  description*: string ## Brief description of the hotel.
-  brand*: string ## The brand to which this hotel belongs to.
-  latitude*: float ## Latitude of the hotel.
-  longitude*: float ## Longitude of the hotel.
-  neighborhood*: seq[string] ## A list of neighborhoods where the hotel is located
-  address*: CatalogsHotelAddress
-  customLabel0*: string ## Custom grouping of hotels
-  customLabel1*: string ## Custom grouping of hotels
-  customLabel2*: string ## Custom grouping of hotels
-  customLabel3*: string ## Custom grouping of hotels
-  customLabel4*: string ## Custom grouping of hotels
-  category*: string ## The type of property. The category can be any type of internal description desired.
-  basePrice*: string ## Base price of the hotel room per night followed by the ISO currency code
-  salePrice*: string ## Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
-  guestRatings*: CatalogsHotelGuestRatings
-  mainImage*: CatalogsHotelAttributes_allOf_main_image
-  additionalImageLink*: seq[string] ## <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+  name*: Option[string] ## The hotel's name.
+  link*: Option[string] ## Link to the product page
+  description*: Option[string] ## Brief description of the hotel.
+  brand*: Option[string] ## The brand to which this hotel belongs to.
+  latitude*: Option[float] ## Latitude of the hotel.
+  longitude*: Option[float] ## Longitude of the hotel.
+  neighborhood*: Option[seq[string]] ## A list of neighborhoods where the hotel is located
+  address*: Option[CatalogsHotelAddress]
+  customLabel0*: Option[string] ## Custom grouping of hotels
+  customLabel1*: Option[string] ## Custom grouping of hotels
+  customLabel2*: Option[string] ## Custom grouping of hotels
+  customLabel3*: Option[string] ## Custom grouping of hotels
+  customLabel4*: Option[string] ## Custom grouping of hotels
+  category*: Option[string] ## The type of property. The category can be any type of internal description desired.
+  basePrice*: Option[string] ## Base price of the hotel room per night followed by the ISO currency code
+  salePrice*: Option[string] ## Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
+  guestRatings*: Option[CatalogsHotelGuestRatings]
+  mainImage*: Option[CatalogsHotelAttributes_allOf_main_image]
+  additionalImageLink*: Option[seq[string]] ## <p><= 2000 characters</p> <p>The links to additional images for your hotel. Up to ten additional images can be used to show a hotel from different angles. Must begin with http:// or https://.</p>
+
+
+# Custom JSON deserialization for CatalogsHotelAttributes with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsHotelAttributes]): CatalogsHotelAttributes =
+  result = CatalogsHotelAttributes()
+  if node.kind == JObject:
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("link") and node["link"].kind != JNull:
+      result.link = some(to(node["link"], typeof(result.link.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("brand") and node["brand"].kind != JNull:
+      result.brand = some(to(node["brand"], typeof(result.brand.get())))
+    if node.hasKey("latitude") and node["latitude"].kind != JNull:
+      result.latitude = some(to(node["latitude"], typeof(result.latitude.get())))
+    if node.hasKey("longitude") and node["longitude"].kind != JNull:
+      result.longitude = some(to(node["longitude"], typeof(result.longitude.get())))
+    if node.hasKey("neighborhood") and node["neighborhood"].kind != JNull:
+      result.neighborhood = some(to(node["neighborhood"], typeof(result.neighborhood.get())))
+    if node.hasKey("address") and node["address"].kind != JNull:
+      result.address = some(to(node["address"], typeof(result.address.get())))
+    if node.hasKey("custom_label_0") and node["custom_label_0"].kind != JNull:
+      result.customLabel0 = some(to(node["custom_label_0"], typeof(result.customLabel0.get())))
+    if node.hasKey("custom_label_1") and node["custom_label_1"].kind != JNull:
+      result.customLabel1 = some(to(node["custom_label_1"], typeof(result.customLabel1.get())))
+    if node.hasKey("custom_label_2") and node["custom_label_2"].kind != JNull:
+      result.customLabel2 = some(to(node["custom_label_2"], typeof(result.customLabel2.get())))
+    if node.hasKey("custom_label_3") and node["custom_label_3"].kind != JNull:
+      result.customLabel3 = some(to(node["custom_label_3"], typeof(result.customLabel3.get())))
+    if node.hasKey("custom_label_4") and node["custom_label_4"].kind != JNull:
+      result.customLabel4 = some(to(node["custom_label_4"], typeof(result.customLabel4.get())))
+    if node.hasKey("category") and node["category"].kind != JNull:
+      result.category = some(to(node["category"], typeof(result.category.get())))
+    if node.hasKey("base_price") and node["base_price"].kind != JNull:
+      result.basePrice = some(to(node["base_price"], typeof(result.basePrice.get())))
+    if node.hasKey("sale_price") and node["sale_price"].kind != JNull:
+      result.salePrice = some(to(node["sale_price"], typeof(result.salePrice.get())))
+    if node.hasKey("guest_ratings") and node["guest_ratings"].kind != JNull:
+      result.guestRatings = some(to(node["guest_ratings"], typeof(result.guestRatings.get())))
+    if node.hasKey("main_image") and node["main_image"].kind != JNull:
+      result.mainImage = some(to(node["main_image"], typeof(result.mainImage.get())))
+    if node.hasKey("additional_image_link") and node["additional_image_link"].kind != JNull:
+      result.additionalImageLink = some(to(node["additional_image_link"], typeof(result.additionalImageLink.get())))
+
+# Custom JSON serialization for CatalogsHotelAttributes with custom field names
+proc `%`*(obj: CatalogsHotelAttributes): JsonNode =
+  result = newJObject()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.link.isSome():
+    result["link"] = %obj.link.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  if obj.brand.isSome():
+    result["brand"] = %obj.brand.get()
+  if obj.latitude.isSome():
+    result["latitude"] = %obj.latitude.get()
+  if obj.longitude.isSome():
+    result["longitude"] = %obj.longitude.get()
+  if obj.neighborhood.isSome():
+    result["neighborhood"] = %obj.neighborhood.get()
+  if obj.address.isSome():
+    result["address"] = %obj.address.get()
+  if obj.customLabel0.isSome():
+    result["custom_label_0"] = %obj.customLabel0.get()
+  if obj.customLabel1.isSome():
+    result["custom_label_1"] = %obj.customLabel1.get()
+  if obj.customLabel2.isSome():
+    result["custom_label_2"] = %obj.customLabel2.get()
+  if obj.customLabel3.isSome():
+    result["custom_label_3"] = %obj.customLabel3.get()
+  if obj.customLabel4.isSome():
+    result["custom_label_4"] = %obj.customLabel4.get()
+  if obj.category.isSome():
+    result["category"] = %obj.category.get()
+  if obj.basePrice.isSome():
+    result["base_price"] = %obj.basePrice.get()
+  if obj.salePrice.isSome():
+    result["sale_price"] = %obj.salePrice.get()
+  if obj.guestRatings.isSome():
+    result["guest_ratings"] = %obj.guestRatings.get()
+  if obj.mainImage.isSome():
+    result["main_image"] = %obj.mainImage.get()
+  if obj.additionalImageLink.isSome():
+    result["additional_image_link"] = %obj.additionalImageLink.get()
+

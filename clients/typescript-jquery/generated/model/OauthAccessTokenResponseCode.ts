@@ -12,10 +12,11 @@
 
 import * as models from './models';
 
-/**
- * A successful OAuth access token response for the authorization code flow.
- */
 export interface OauthAccessTokenResponseCode {
+    refresh_token: string;
+
+    refresh_token_expires_in: number;
+
     response_type?: OauthAccessTokenResponseCode.ResponseTypeEnum;
 
     access_token: string;
@@ -25,10 +26,6 @@ export interface OauthAccessTokenResponseCode {
     expires_in: number;
 
     scope: string;
-
-    refresh_token: string;
-
-    refresh_token_expires_in: number;
 
 }
 export namespace OauthAccessTokenResponseCode {

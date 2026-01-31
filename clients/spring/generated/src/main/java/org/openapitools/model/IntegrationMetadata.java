@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationMetadata", description = "Integration metadata")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationMetadata {
 
   private @Nullable String id;
@@ -52,7 +52,7 @@ public class IntegrationMetadata {
 
   private @Nullable String partnerMetadata;
 
-  public IntegrationMetadata id(String id) {
+  public IntegrationMetadata id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -64,15 +64,15 @@ public class IntegrationMetadata {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public IntegrationMetadata externalBusinessId(String externalBusinessId) {
+  public IntegrationMetadata externalBusinessId(@Nullable String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
     return this;
   }
@@ -84,15 +84,15 @@ public class IntegrationMetadata {
   
   @Schema(name = "external_business_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("external_business_id")
-  public String getExternalBusinessId() {
+  public @Nullable String getExternalBusinessId() {
     return externalBusinessId;
   }
 
-  public void setExternalBusinessId(String externalBusinessId) {
+  public void setExternalBusinessId(@Nullable String externalBusinessId) {
     this.externalBusinessId = externalBusinessId;
   }
 
-  public IntegrationMetadata connectedMerchantId(String connectedMerchantId) {
+  public IntegrationMetadata connectedMerchantId(@Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
     return this;
   }
@@ -104,15 +104,15 @@ public class IntegrationMetadata {
   
   @Schema(name = "connected_merchant_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_merchant_id")
-  public String getConnectedMerchantId() {
+  public @Nullable String getConnectedMerchantId() {
     return connectedMerchantId;
   }
 
-  public void setConnectedMerchantId(String connectedMerchantId) {
+  public void setConnectedMerchantId(@Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
   }
 
-  public IntegrationMetadata connectedUserId(String connectedUserId) {
+  public IntegrationMetadata connectedUserId(@Nullable String connectedUserId) {
     this.connectedUserId = connectedUserId;
     return this;
   }
@@ -124,15 +124,15 @@ public class IntegrationMetadata {
   
   @Schema(name = "connected_user_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_user_id")
-  public String getConnectedUserId() {
+  public @Nullable String getConnectedUserId() {
     return connectedUserId;
   }
 
-  public void setConnectedUserId(String connectedUserId) {
+  public void setConnectedUserId(@Nullable String connectedUserId) {
     this.connectedUserId = connectedUserId;
   }
 
-  public IntegrationMetadata connectedAdvertiserId(String connectedAdvertiserId) {
+  public IntegrationMetadata connectedAdvertiserId(@Nullable String connectedAdvertiserId) {
     this.connectedAdvertiserId = connectedAdvertiserId;
     return this;
   }
@@ -144,15 +144,15 @@ public class IntegrationMetadata {
   
   @Schema(name = "connected_advertiser_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_advertiser_id")
-  public String getConnectedAdvertiserId() {
+  public @Nullable String getConnectedAdvertiserId() {
     return connectedAdvertiserId;
   }
 
-  public void setConnectedAdvertiserId(String connectedAdvertiserId) {
+  public void setConnectedAdvertiserId(@Nullable String connectedAdvertiserId) {
     this.connectedAdvertiserId = connectedAdvertiserId;
   }
 
-  public IntegrationMetadata connectedLbaId(String connectedLbaId) {
+  public IntegrationMetadata connectedLbaId(@Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
     return this;
   }
@@ -164,15 +164,15 @@ public class IntegrationMetadata {
   
   @Schema(name = "connected_lba_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_lba_id")
-  public String getConnectedLbaId() {
+  public @Nullable String getConnectedLbaId() {
     return connectedLbaId;
   }
 
-  public void setConnectedLbaId(String connectedLbaId) {
+  public void setConnectedLbaId(@Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
   }
 
-  public IntegrationMetadata connectedTagId(String connectedTagId) {
+  public IntegrationMetadata connectedTagId(@Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
     return this;
   }
@@ -184,15 +184,15 @@ public class IntegrationMetadata {
   
   @Schema(name = "connected_tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_tag_id")
-  public String getConnectedTagId() {
+  public @Nullable String getConnectedTagId() {
     return connectedTagId;
   }
 
-  public void setConnectedTagId(String connectedTagId) {
+  public void setConnectedTagId(@Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
   }
 
-  public IntegrationMetadata partnerAccessTokenExpiry(BigDecimal partnerAccessTokenExpiry) {
+  public IntegrationMetadata partnerAccessTokenExpiry(@Nullable BigDecimal partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
     return this;
   }
@@ -204,15 +204,15 @@ public class IntegrationMetadata {
   @Valid 
   @Schema(name = "partner_access_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_access_token_expiry")
-  public BigDecimal getPartnerAccessTokenExpiry() {
+  public @Nullable BigDecimal getPartnerAccessTokenExpiry() {
     return partnerAccessTokenExpiry;
   }
 
-  public void setPartnerAccessTokenExpiry(BigDecimal partnerAccessTokenExpiry) {
+  public void setPartnerAccessTokenExpiry(@Nullable BigDecimal partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
   }
 
-  public IntegrationMetadata partnerRefreshTokenExpiry(BigDecimal partnerRefreshTokenExpiry) {
+  public IntegrationMetadata partnerRefreshTokenExpiry(@Nullable BigDecimal partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
     return this;
   }
@@ -224,15 +224,15 @@ public class IntegrationMetadata {
   @Valid 
   @Schema(name = "partner_refresh_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_refresh_token_expiry")
-  public BigDecimal getPartnerRefreshTokenExpiry() {
+  public @Nullable BigDecimal getPartnerRefreshTokenExpiry() {
     return partnerRefreshTokenExpiry;
   }
 
-  public void setPartnerRefreshTokenExpiry(BigDecimal partnerRefreshTokenExpiry) {
+  public void setPartnerRefreshTokenExpiry(@Nullable BigDecimal partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
   }
 
-  public IntegrationMetadata scopes(String scopes) {
+  public IntegrationMetadata scopes(@Nullable String scopes) {
     this.scopes = scopes;
     return this;
   }
@@ -244,15 +244,15 @@ public class IntegrationMetadata {
   
   @Schema(name = "scopes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scopes")
-  public String getScopes() {
+  public @Nullable String getScopes() {
     return scopes;
   }
 
-  public void setScopes(String scopes) {
+  public void setScopes(@Nullable String scopes) {
     this.scopes = scopes;
   }
 
-  public IntegrationMetadata createdTimestamp(BigDecimal createdTimestamp) {
+  public IntegrationMetadata createdTimestamp(@Nullable BigDecimal createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
     return this;
   }
@@ -264,15 +264,15 @@ public class IntegrationMetadata {
   @Valid 
   @Schema(name = "created_timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_timestamp")
-  public BigDecimal getCreatedTimestamp() {
+  public @Nullable BigDecimal getCreatedTimestamp() {
     return createdTimestamp;
   }
 
-  public void setCreatedTimestamp(BigDecimal createdTimestamp) {
+  public void setCreatedTimestamp(@Nullable BigDecimal createdTimestamp) {
     this.createdTimestamp = createdTimestamp;
   }
 
-  public IntegrationMetadata updatedTimestamp(BigDecimal updatedTimestamp) {
+  public IntegrationMetadata updatedTimestamp(@Nullable BigDecimal updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
     return this;
   }
@@ -284,15 +284,15 @@ public class IntegrationMetadata {
   @Valid 
   @Schema(name = "updated_timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_timestamp")
-  public BigDecimal getUpdatedTimestamp() {
+  public @Nullable BigDecimal getUpdatedTimestamp() {
     return updatedTimestamp;
   }
 
-  public void setUpdatedTimestamp(BigDecimal updatedTimestamp) {
+  public void setUpdatedTimestamp(@Nullable BigDecimal updatedTimestamp) {
     this.updatedTimestamp = updatedTimestamp;
   }
 
-  public IntegrationMetadata additionalId1(String additionalId1) {
+  public IntegrationMetadata additionalId1(@Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
     return this;
   }
@@ -304,15 +304,15 @@ public class IntegrationMetadata {
   
   @Schema(name = "additional_id_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("additional_id_1")
-  public String getAdditionalId1() {
+  public @Nullable String getAdditionalId1() {
     return additionalId1;
   }
 
-  public void setAdditionalId1(String additionalId1) {
+  public void setAdditionalId1(@Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
   }
 
-  public IntegrationMetadata partnerMetadata(String partnerMetadata) {
+  public IntegrationMetadata partnerMetadata(@Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
@@ -324,11 +324,11 @@ public class IntegrationMetadata {
   
   @Schema(name = "partner_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_metadata")
-  public String getPartnerMetadata() {
+  public @Nullable String getPartnerMetadata() {
     return partnerMetadata;
   }
 
-  public void setPartnerMetadata(String partnerMetadata) {
+  public void setPartnerMetadata(@Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 

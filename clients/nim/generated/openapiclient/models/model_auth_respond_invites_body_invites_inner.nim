@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_auth_respond_invites_body_invites_inner_action
 
@@ -16,3 +18,20 @@ type AuthRespondInvitesBodyInvitesInner* = object
   ## 
   action*: AuthRespondInvitesBody_invites_inner_action
   inviteId*: string ## Unique identifier of an invite.
+
+
+# Custom JSON deserialization for AuthRespondInvitesBodyInvitesInner with custom field names
+proc to*(node: JsonNode, T: typedesc[AuthRespondInvitesBodyInvitesInner]): AuthRespondInvitesBodyInvitesInner =
+  result = AuthRespondInvitesBodyInvitesInner()
+  if node.kind == JObject:
+    if node.hasKey("action"):
+      result.action = to(node["action"], AuthRespondInvitesBody_invites_inner_action)
+    if node.hasKey("invite_id"):
+      result.inviteId = to(node["invite_id"], string)
+
+# Custom JSON serialization for AuthRespondInvitesBodyInvitesInner with custom field names
+proc `%`*(obj: AuthRespondInvitesBodyInvitesInner): JsonNode =
+  result = newJObject()
+  result["action"] = %obj.action
+  result["invite_id"] = %obj.inviteId
+

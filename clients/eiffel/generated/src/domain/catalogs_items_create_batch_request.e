@@ -21,8 +21,8 @@ feature --Access
 
     country: detachable COUNTRY
       
-    language: detachable CATALOGS_ITEMS_REQUEST_LANGUAGE
-      
+    language: detachable STRING_32
+      -- We recommend using the CatalogsLocale values.
     operation: detachable BATCH_OPERATION
       
     items: detachable LIST [ITEM_CREATE_BATCH_RECORD]

@@ -23,7 +23,6 @@
 #include "OAIPinAnalyticsMetricsResponse.h"
 #include "OAIPinCreate.h"
 #include "OAIPinUpdate.h"
-#include "OAIPins_analytics_metric_types_parameter_inner.h"
 #include "OAIPins_list_200_response.h"
 #include "OAIPins_save_request.h"
 #include <QMap>
@@ -69,22 +68,22 @@ public:
     * @param[in]  pin_ids QList<QString> [required]
     * @param[in]  start_date QDate [required]
     * @param[in]  end_date QDate [required]
-    * @param[in]  metric_types QList<OAIPins_analytics_metric_types_parameter_inner> [required]
+    * @param[in]  metric_types QList<QString> [required]
     * @param[in]  app_types QString [optional]
     * @param[in]  ad_account_id QString [optional]
     */
-    virtual void multiPins_analytics(const QList<QString> &pin_ids, const QDate &start_date, const QDate &end_date, const QList<OAIPins_analytics_metric_types_parameter_inner> &metric_types, const ::OpenAPI::OptionalParam<QString> &app_types = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &ad_account_id = ::OpenAPI::OptionalParam<QString>());
+    virtual void multiPins_analytics(const QList<QString> &pin_ids, const QDate &start_date, const QDate &end_date, const QList<QString> &metric_types, const ::OpenAPI::OptionalParam<QString> &app_types = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &ad_account_id = ::OpenAPI::OptionalParam<QString>());
 
     /**
     * @param[in]  pin_id QString [required]
     * @param[in]  start_date QDate [required]
     * @param[in]  end_date QDate [required]
-    * @param[in]  metric_types QList<OAIPins_analytics_metric_types_parameter_inner> [required]
+    * @param[in]  metric_types QList<QString> [required]
     * @param[in]  app_types QString [optional]
     * @param[in]  split_field QString [optional]
     * @param[in]  ad_account_id QString [optional]
     */
-    virtual void pins_analytics(const QString &pin_id, const QDate &start_date, const QDate &end_date, const QList<OAIPins_analytics_metric_types_parameter_inner> &metric_types, const ::OpenAPI::OptionalParam<QString> &app_types = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &split_field = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &ad_account_id = ::OpenAPI::OptionalParam<QString>());
+    virtual void pins_analytics(const QString &pin_id, const QDate &start_date, const QDate &end_date, const QList<QString> &metric_types, const ::OpenAPI::OptionalParam<QString> &app_types = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &split_field = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &ad_account_id = ::OpenAPI::OptionalParam<QString>());
 
     /**
     * @param[in]  oai_pin_create OAIPinCreate [required]

@@ -9,26 +9,107 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_entity_status
 import model_grid_click_type
 
 type ProductGroupPromotion* = object
   ## 
-  id*: string ## ID of the product group promotion.
-  adGroupId*: string ## ID of the ad group the product group belongs to.
-  bidInMicroCurrency*: int ## The bid in micro currency.
-  included*: bool ## True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
-  definition*: string ## The full product group definition path
-  relativeDefinition*: string ## The definition of the product group, relative to its parent - an attribute name/value pair
-  parentId*: string ## The parent Product Group ID of this Product Group
-  slideshowCollectionsTitle*: string ## Slideshow Collections Title
-  slideshowCollectionsDescription*: string ## Slideshow Collections Description
-  isMdl*: bool ## If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
-  status*: EntityStatus
-  trackingUrl*: string ## Tracking template for proudct group promotions. 4000 limit
-  catalogProductGroupId*: string ## ID of the catalogs product group that this product group promotion references
-  catalogProductGroupName*: string ## Catalogs product group name
-  collectionsHeroPinId*: string ## Hero Pin ID if this PG is promoted as a Collection
-  collectionsHeroDestinationUrl*: string ## Collections Hero Destination Url
-  gridClickType*: GridClickType
+  id*: Option[string] ## ID of the product group promotion.
+  adGroupId*: Option[string] ## ID of the ad group the product group belongs to.
+  bidInMicroCurrency*: Option[int] ## The bid in micro currency.
+  included*: Option[bool] ## True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
+  definition*: Option[string] ## The full product group definition path
+  relativeDefinition*: Option[string] ## The definition of the product group, relative to its parent - an attribute name/value pair
+  parentId*: Option[string] ## The parent Product Group ID of this Product Group
+  slideshowCollectionsTitle*: Option[string] ## Slideshow Collections Title
+  slideshowCollectionsDescription*: Option[string] ## Slideshow Collections Description
+  isMdl*: Option[bool] ## If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+  status*: Option[EntityStatus]
+  trackingUrl*: Option[string] ## Tracking template for proudct group promotions. 4000 limit
+  catalogProductGroupId*: Option[string] ## ID of the catalogs product group that this product group promotion references
+  catalogProductGroupName*: Option[string] ## Catalogs product group name
+  collectionsHeroPinId*: Option[string] ## Hero Pin ID if this PG is promoted as a Collection
+  collectionsHeroDestinationUrl*: Option[string] ## Collections Hero Destination Url
+  gridClickType*: Option[GridClickType]
+
+
+# Custom JSON deserialization for ProductGroupPromotion with custom field names
+proc to*(node: JsonNode, T: typedesc[ProductGroupPromotion]): ProductGroupPromotion =
+  result = ProductGroupPromotion()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("ad_group_id") and node["ad_group_id"].kind != JNull:
+      result.adGroupId = some(to(node["ad_group_id"], typeof(result.adGroupId.get())))
+    if node.hasKey("bid_in_micro_currency") and node["bid_in_micro_currency"].kind != JNull:
+      result.bidInMicroCurrency = some(to(node["bid_in_micro_currency"], typeof(result.bidInMicroCurrency.get())))
+    if node.hasKey("included") and node["included"].kind != JNull:
+      result.included = some(to(node["included"], typeof(result.included.get())))
+    if node.hasKey("definition") and node["definition"].kind != JNull:
+      result.definition = some(to(node["definition"], typeof(result.definition.get())))
+    if node.hasKey("relative_definition") and node["relative_definition"].kind != JNull:
+      result.relativeDefinition = some(to(node["relative_definition"], typeof(result.relativeDefinition.get())))
+    if node.hasKey("parent_id") and node["parent_id"].kind != JNull:
+      result.parentId = some(to(node["parent_id"], typeof(result.parentId.get())))
+    if node.hasKey("slideshow_collections_title") and node["slideshow_collections_title"].kind != JNull:
+      result.slideshowCollectionsTitle = some(to(node["slideshow_collections_title"], typeof(result.slideshowCollectionsTitle.get())))
+    if node.hasKey("slideshow_collections_description") and node["slideshow_collections_description"].kind != JNull:
+      result.slideshowCollectionsDescription = some(to(node["slideshow_collections_description"], typeof(result.slideshowCollectionsDescription.get())))
+    if node.hasKey("is_mdl") and node["is_mdl"].kind != JNull:
+      result.isMdl = some(to(node["is_mdl"], typeof(result.isMdl.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+    if node.hasKey("tracking_url") and node["tracking_url"].kind != JNull:
+      result.trackingUrl = some(to(node["tracking_url"], typeof(result.trackingUrl.get())))
+    if node.hasKey("catalog_product_group_id") and node["catalog_product_group_id"].kind != JNull:
+      result.catalogProductGroupId = some(to(node["catalog_product_group_id"], typeof(result.catalogProductGroupId.get())))
+    if node.hasKey("catalog_product_group_name") and node["catalog_product_group_name"].kind != JNull:
+      result.catalogProductGroupName = some(to(node["catalog_product_group_name"], typeof(result.catalogProductGroupName.get())))
+    if node.hasKey("collections_hero_pin_id") and node["collections_hero_pin_id"].kind != JNull:
+      result.collectionsHeroPinId = some(to(node["collections_hero_pin_id"], typeof(result.collectionsHeroPinId.get())))
+    if node.hasKey("collections_hero_destination_url") and node["collections_hero_destination_url"].kind != JNull:
+      result.collectionsHeroDestinationUrl = some(to(node["collections_hero_destination_url"], typeof(result.collectionsHeroDestinationUrl.get())))
+    if node.hasKey("grid_click_type") and node["grid_click_type"].kind != JNull:
+      result.gridClickType = some(to(node["grid_click_type"], typeof(result.gridClickType.get())))
+
+# Custom JSON serialization for ProductGroupPromotion with custom field names
+proc `%`*(obj: ProductGroupPromotion): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.adGroupId.isSome():
+    result["ad_group_id"] = %obj.adGroupId.get()
+  if obj.bidInMicroCurrency.isSome():
+    result["bid_in_micro_currency"] = %obj.bidInMicroCurrency.get()
+  if obj.included.isSome():
+    result["included"] = %obj.included.get()
+  if obj.definition.isSome():
+    result["definition"] = %obj.definition.get()
+  if obj.relativeDefinition.isSome():
+    result["relative_definition"] = %obj.relativeDefinition.get()
+  if obj.parentId.isSome():
+    result["parent_id"] = %obj.parentId.get()
+  if obj.slideshowCollectionsTitle.isSome():
+    result["slideshow_collections_title"] = %obj.slideshowCollectionsTitle.get()
+  if obj.slideshowCollectionsDescription.isSome():
+    result["slideshow_collections_description"] = %obj.slideshowCollectionsDescription.get()
+  if obj.isMdl.isSome():
+    result["is_mdl"] = %obj.isMdl.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.trackingUrl.isSome():
+    result["tracking_url"] = %obj.trackingUrl.get()
+  if obj.catalogProductGroupId.isSome():
+    result["catalog_product_group_id"] = %obj.catalogProductGroupId.get()
+  if obj.catalogProductGroupName.isSome():
+    result["catalog_product_group_name"] = %obj.catalogProductGroupName.get()
+  if obj.collectionsHeroPinId.isSome():
+    result["collections_hero_pin_id"] = %obj.collectionsHeroPinId.get()
+  if obj.collectionsHeroDestinationUrl.isSome():
+    result["collections_hero_destination_url"] = %obj.collectionsHeroDestinationUrl.get()
+  if obj.gridClickType.isSome():
+    result["grid_click_type"] = %obj.gridClickType.get()
+

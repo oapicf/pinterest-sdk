@@ -33,7 +33,7 @@ data class CatalogsReportFeedIngestionFilter(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", description = "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.")
     @get:JsonProperty("processing_result_id") val processingResultId: kotlin.String? = null
-    ) {
+) {
 
     /**
     * 
@@ -47,7 +47,8 @@ data class CatalogsReportFeedIngestionFilter(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ReportType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsReportFeedIngestionFilter'")
             }
         }
     }

@@ -18,6 +18,7 @@ import org.openapitools.model.ItemResponseAnyOf;
 import org.openapitools.model.ItemResponseAnyOf1;
 import org.openapitools.model.ItemValidationEvent;
 import org.openapitools.model.Pin;
+import java.util.NoSuchElementException;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -46,7 +47,7 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = ItemResponseAnyOf1.class, name = "ItemResponse_anyOf_1")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemResponse {
 
   private CatalogsType catalogType;
@@ -54,11 +55,16 @@ public class ItemResponse {
   private String itemId;
 
   @Valid
-  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+  private JsonNullable<List<@Valid Pin>> pins = JsonNullable.<List<@Valid Pin>>undefined();
+
+  private CatalogsCreativeAssetsAttributes attributes;
 
   private String hotelId;
 
   private String creativeAssetsId;
+
+  @Valid
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   public ItemResponse() {
     super();
@@ -111,32 +117,52 @@ public class ItemResponse {
     this.itemId = itemId;
   }
 
-  public ItemResponse errors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
+  public ItemResponse pins(List<@Valid Pin> pins) {
+    this.pins = JsonNullable.of(pins);
     return this;
   }
 
-  public ItemResponse addErrorsItem(ItemValidationEvent errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
+  public ItemResponse addPinsItem(Pin pinsItem) {
+    if (this.pins == null || !this.pins.isPresent()) {
+      this.pins = JsonNullable.of(new ArrayList<>());
     }
-    this.errors.add(errorsItem);
+    this.pins.get().add(pinsItem);
     return this;
   }
 
   /**
-   * Array with the errors for the item id requested
-   * @return errors
+   * The pins mapped to the item
+   * @return pins
    */
-  @Valid 
-  @Schema(name = "errors", description = "Array with the errors for the item id requested", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("errors")
-  public List<@Valid ItemValidationEvent> getErrors() {
-    return errors;
+  @Valid @Size(max = 11) 
+  @Schema(name = "pins", description = "The pins mapped to the item", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("pins")
+  public JsonNullable<List<@Valid Pin>> getPins() {
+    return pins;
   }
 
-  public void setErrors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
+  public void setPins(JsonNullable<List<@Valid Pin>> pins) {
+    this.pins = pins;
+  }
+
+  public ItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+   */
+  @Valid 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("attributes")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
   }
 
   public ItemResponse hotelId(String hotelId) {
@@ -179,6 +205,34 @@ public class ItemResponse {
     this.creativeAssetsId = creativeAssetsId;
   }
 
+  public ItemResponse errors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public ItemResponse addErrorsItem(ItemValidationEvent errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+  /**
+   * Array with the errors for the item id requested
+   * @return errors
+   */
+  @Valid 
+  @Schema(name = "errors", description = "Array with the errors for the item id requested", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("errors")
+  public List<@Valid ItemValidationEvent> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -190,9 +244,11 @@ public class ItemResponse {
     ItemResponse itemResponse = (ItemResponse) o;
     return Objects.equals(this.catalogType, itemResponse.catalogType) &&
         Objects.equals(this.itemId, itemResponse.itemId) &&
-        Objects.equals(this.errors, itemResponse.errors) &&
+        equalsNullable(this.pins, itemResponse.pins) &&
+        Objects.equals(this.attributes, itemResponse.attributes) &&
         Objects.equals(this.hotelId, itemResponse.hotelId) &&
-        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId);
+        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId) &&
+        Objects.equals(this.errors, itemResponse.errors);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -201,7 +257,7 @@ public class ItemResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
+    return Objects.hash(catalogType, itemId, hashCodeNullable(pins), attributes, hotelId, creativeAssetsId, errors);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -217,9 +273,11 @@ public class ItemResponse {
     sb.append("class ItemResponse {\n");
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

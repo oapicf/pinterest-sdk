@@ -127,8 +127,6 @@ namespace Org.OpenAPITools.Model
 
             AdvancedAuctionItemsSubmitDeleteRecord? advancedAuctionItemsSubmitDeleteRecord = null;
             AdvancedAuctionItemsSubmitUpsertRecord? advancedAuctionItemsSubmitUpsertRecord = null;
-            AdvancedAuctionItemsSubmitDeleteRecord? advancedAuctionItemsSubmitDeleteRecord = null;
-            AdvancedAuctionItemsSubmitUpsertRecord? advancedAuctionItemsSubmitUpsertRecord = null;
             AdvancedAuctionProcessedItem? advancedAuctionProcessedItem = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
@@ -153,16 +151,6 @@ namespace Org.OpenAPITools.Model
                             advancedAuctionItemsSubmitDeleteRecord = JsonSerializer.Deserialize<AdvancedAuctionItemsSubmitDeleteRecord>(ref utf8JsonReaderAdvancedAuctionItemsSubmitDeleteRecord, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("UPSERT") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderAdvancedAuctionItemsSubmitUpsertRecord = utf8JsonReader;
-                            advancedAuctionItemsSubmitUpsertRecord = JsonSerializer.Deserialize<AdvancedAuctionItemsSubmitUpsertRecord>(ref utf8JsonReaderAdvancedAuctionItemsSubmitUpsertRecord, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("AdvancedAuctionItemsSubmitDeleteRecord") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderAdvancedAuctionItemsSubmitDeleteRecord = utf8JsonReader;
-                            advancedAuctionItemsSubmitDeleteRecord = JsonSerializer.Deserialize<AdvancedAuctionItemsSubmitDeleteRecord>(ref utf8JsonReaderAdvancedAuctionItemsSubmitDeleteRecord, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("AdvancedAuctionItemsSubmitUpsertRecord") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderAdvancedAuctionItemsSubmitUpsertRecord = utf8JsonReader;
                             advancedAuctionItemsSubmitUpsertRecord = JsonSerializer.Deserialize<AdvancedAuctionItemsSubmitUpsertRecord>(ref utf8JsonReaderAdvancedAuctionItemsSubmitUpsertRecord, jsonSerializerOptions);
@@ -207,12 +195,6 @@ namespace Org.OpenAPITools.Model
 
             if (operation.IsSet && operation.Value == null)
                 throw new ArgumentNullException(nameof(operation), "Property is not nullable for class AdvancedAuctionItemsSubmitRecord.");
-
-            if (advancedAuctionItemsSubmitDeleteRecord != null)
-                return new AdvancedAuctionItemsSubmitRecord(advancedAuctionItemsSubmitDeleteRecord);
-
-            if (advancedAuctionItemsSubmitUpsertRecord != null)
-                return new AdvancedAuctionItemsSubmitRecord(advancedAuctionItemsSubmitUpsertRecord);
 
             if (advancedAuctionItemsSubmitDeleteRecord != null)
                 return new AdvancedAuctionItemsSubmitRecord(advancedAuctionItemsSubmitDeleteRecord);

@@ -9,8 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type PinMedia* = object
   ## Pin media objects.
-  mediaType*: string
+  mediaType*: Option[string]
+
+
+# Custom JSON deserialization for PinMedia with custom field names
+proc to*(node: JsonNode, T: typedesc[PinMedia]): PinMedia =
+  result = PinMedia()
+  if node.kind == JObject:
+    if node.hasKey("media_type") and node["media_type"].kind != JNull:
+      result.mediaType = some(to(node["media_type"], typeof(result.mediaType.get())))
+
+# Custom JSON serialization for PinMedia with custom field names
+proc `%`*(obj: PinMedia): JsonNode =
+  result = newJObject()
+  if obj.mediaType.isSome():
+    result["media_type"] = %obj.mediaType.get()
+

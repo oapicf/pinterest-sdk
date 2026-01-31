@@ -10,7 +10,7 @@ Describe -tag 'PSOpenAPITools' -name 'ConversionTagCreate' {
     Context 'ConversionTagCreate' {
         It 'Initialize-ConversionTagCreate' {
             # a simple test to create an object
-            #$NewObject = Initialize-ConversionTagCreate -Name "TEST_VALUE" -AemEnabled "TEST_VALUE" -MdFrequency "TEST_VALUE" -AemFnlnEnabled "TEST_VALUE" -AemPhEnabled "TEST_VALUE" -AemGeEnabled "TEST_VALUE" -AemDbEnabled "TEST_VALUE" -AemLocEnabled "TEST_VALUE"
+            #$NewObject = Initialize-ConversionTagCreate -AemEnabled "TEST_VALUE" -MdFrequency "TEST_VALUE" -AemFnlnEnabled "TEST_VALUE" -AemPhEnabled "TEST_VALUE" -AemGeEnabled "TEST_VALUE" -AemDbEnabled "TEST_VALUE" -AemLocEnabled "TEST_VALUE" -Name "TEST_VALUE"
             #$NewObject | Should -BeOfType ConversionTagCreate
             #$NewObject.property | Should -Be 0
         }

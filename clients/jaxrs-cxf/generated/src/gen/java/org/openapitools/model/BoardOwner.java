@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BoardOwner  {
   
   @ApiModelProperty(value = "")
+
   private String username;
  /**
    * Get username

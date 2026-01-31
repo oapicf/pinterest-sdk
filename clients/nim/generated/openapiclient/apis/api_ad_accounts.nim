@@ -32,18 +32,15 @@ import ../models/model_error
 import ../models/model_get_mmm_report_response
 import ../models/model_granularity
 import ../models/model_metrics_response
-import ../models/model_ad_accounts_list_200_response
-import ../models/model_templates_list_200_response
+import ../models/model_ad_accounts_list200response
+import ../models/model_templates_list200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -55,37 +52,46 @@ template constructResult[T](response: Response): untyped =
 
 proc adAccountAnalytics*(httpClient: HttpClient, adAccountId: string, startDate: string, endDate: string, columns: seq[Columns], granularity: Granularity, clickWindowDays: ClickWindowDays, engagementWindowDays: EngagementWindowDays, viewWindowDays: ViewWindowDays, conversionReportTime: string): (Option[seq[AdAccountAnalyticsResponse_inner]], Response) =
   ## Get ad account analytics
-  let query_for_api_call = encodeQuery([
-    ("start_date", $startDate), # Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-    ("end_date", $endDate), # Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    ("columns", $columns.join(",")), # Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-    ("granularity", $granularity), # TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-    ("click_window_days", $clickWindowDays), # Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-    ("engagement_window_days", $engagementWindowDays), # Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-    ("view_window_days", $viewWindowDays), # Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-    ("conversion_report_time", $conversionReportTime), # The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("start_date", $startDate))
+  query_params_list.add(("end_date", $endDate))
+  query_params_list.add(("columns", $columns.join(",")))
+  query_params_list.add(("granularity", $granularity))
+  if $clickWindowDays != "":
+    query_params_list.add(("click_window_days", $clickWindowDays))
+  if $engagementWindowDays != "":
+    query_params_list.add(("engagement_window_days", $engagementWindowDays))
+  if $viewWindowDays != "":
+    query_params_list.add(("view_window_days", $viewWindowDays))
+  if $conversionReportTime != "":
+    query_params_list.add(("conversion_report_time", $conversionReportTime))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/analytics" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/analytics" & "?" & url_encoded_query_params)
   constructResult[seq[AdAccountAnalyticsResponse_inner]](response)
 
 
 proc adAccountTargetingAnalyticsGet*(httpClient: HttpClient, adAccountId: string, startDate: string, endDate: string, targetingTypes: seq[AdsAnalyticsTargetingType], columns: seq[Columns], granularity: Granularity, clickWindowDays: ClickWindowDays, engagementWindowDays: EngagementWindowDays, viewWindowDays: ViewWindowDays, conversionReportTime: string, attributionTypes: ConversionReportAttributionType): (Option[MetricsResponse], Response) =
   ## Get targeting analytics for an ad account
-  let query_for_api_call = encodeQuery([
-    ("start_date", $startDate), # Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-    ("end_date", $endDate), # Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    ("targeting_types", $targetingTypes.join(",")), # Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-    ("columns", $columns.join(",")), # Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-    ("granularity", $granularity), # TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-    ("click_window_days", $clickWindowDays), # Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-    ("engagement_window_days", $engagementWindowDays), # Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-    ("view_window_days", $viewWindowDays), # Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-    ("conversion_report_time", $conversionReportTime), # The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-    ("attribution_types", $attributionTypes), # List of types of attribution for the conversion report
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("start_date", $startDate))
+  query_params_list.add(("end_date", $endDate))
+  query_params_list.add(("targeting_types", $targetingTypes.join(",")))
+  query_params_list.add(("columns", $columns.join(",")))
+  query_params_list.add(("granularity", $granularity))
+  if $clickWindowDays != "":
+    query_params_list.add(("click_window_days", $clickWindowDays))
+  if $engagementWindowDays != "":
+    query_params_list.add(("engagement_window_days", $engagementWindowDays))
+  if $viewWindowDays != "":
+    query_params_list.add(("view_window_days", $viewWindowDays))
+  if $conversionReportTime != "":
+    query_params_list.add(("conversion_report_time", $conversionReportTime))
+  if $attributionTypes != "":
+    query_params_list.add(("attribution_types", $attributionTypes))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/targeting_analytics" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/targeting_analytics" & "?" & url_encoded_query_params)
   constructResult[MetricsResponse](response)
 
 
@@ -106,13 +112,16 @@ proc adAccountsGet*(httpClient: HttpClient, adAccountId: string): (Option[AdAcco
 
 proc adAccountsList*(httpClient: HttpClient, bookmark: string, pageSize: int, includeSharedAccounts: bool): (Option[ad_accounts_list_200_response], Response) =
   ## List ad accounts
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("include_shared_accounts", $includeSharedAccounts), # Include shared ad accounts
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $includeSharedAccounts != "":
+    query_params_list.add(("include_shared_accounts", $includeSharedAccounts))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/ad_accounts" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/ad_accounts" & "?" & url_encoded_query_params)
   constructResult[ad_accounts_list_200_response](response)
 
 
@@ -134,33 +143,36 @@ proc analyticsCreateReport*(httpClient: HttpClient, adAccountId: string, adsAnal
 
 proc analyticsCreateTemplateReport*(httpClient: HttpClient, adAccountId: string, templateId: string, startDate: string, endDate: string, granularity: Granularity): (Option[AdsAnalyticsCreateAsyncResponse], Response) =
   ## Create async request for an analytics report using a template
-  let query_for_api_call = encodeQuery([
-    ("start_date", $startDate), # Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years back from today.
-    ("end_date", $endDate), # Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 2.5 years past start date.
-    ("granularity", $granularity), # TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $startDate != "":
+    query_params_list.add(("start_date", $startDate))
+  if $endDate != "":
+    query_params_list.add(("end_date", $endDate))
+  if $granularity != "":
+    query_params_list.add(("granularity", $granularity))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & fmt"/ad_accounts/{ad_account_id}/templates/{template_id}/reports" & "?" & query_for_api_call)
+  let response = httpClient.post(basepath & fmt"/ad_accounts/{ad_account_id}/templates/{template_id}/reports" & "?" & url_encoded_query_params)
   constructResult[AdsAnalyticsCreateAsyncResponse](response)
 
 
 proc analyticsGetMmmReport*(httpClient: HttpClient, adAccountId: string, token: string): (Option[GetMMMReportResponse], Response) =
   ## Get advertiser Marketing Mix Modeling (MMM) report.
-  let query_for_api_call = encodeQuery([
-    ("token", $token), # Token returned from the post request creation call
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("token", $token))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/mmm_reports" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/mmm_reports" & "?" & url_encoded_query_params)
   constructResult[GetMMMReportResponse](response)
 
 
 proc analyticsGetReport*(httpClient: HttpClient, adAccountId: string, token: string): (Option[AdsAnalyticsGetAsyncResponse], Response) =
   ## Get the account analytics report created by the async call
-  let query_for_api_call = encodeQuery([
-    ("token", $token), # Token returned from the post request creation call
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("token", $token))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/reports" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/reports" & "?" & url_encoded_query_params)
   constructResult[AdsAnalyticsGetAsyncResponse](response)
 
 
@@ -173,12 +185,15 @@ proc sandboxDelete*(httpClient: HttpClient, adAccountId: string): (Option[string
 
 proc templatesList*(httpClient: HttpClient, adAccountId: string, pageSize: int, order: string, bookmark: string): (Option[templates_list_200_response], Response) =
   ## List templates
-  let query_for_api_call = encodeQuery([
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("order", $order), # The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $order != "":
+    query_params_list.add(("order", $order))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/templates" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/templates" & "?" & url_encoded_query_params)
   constructResult[templates_list_200_response](response)
 

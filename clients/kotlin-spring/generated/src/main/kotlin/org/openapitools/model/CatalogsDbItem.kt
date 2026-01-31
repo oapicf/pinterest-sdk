@@ -29,7 +29,7 @@ data class CatalogsDbItem(
 
     @Schema(example = "2022-03-14T15:16:34Z", required = true, description = "")
     @get:JsonProperty("updated_at", required = true) val updatedAt: java.time.OffsetDateTime
-    ) {
+) {
 
 }
 

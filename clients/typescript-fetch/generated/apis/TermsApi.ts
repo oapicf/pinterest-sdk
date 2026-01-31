@@ -61,8 +61,11 @@ export class TermsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/terms/related`;
+
         const response = await this.request({
-            path: `/terms/related`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -109,8 +112,11 @@ export class TermsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/terms/suggested`;
+
         const response = await this.request({
-            path: `/terms/suggested`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

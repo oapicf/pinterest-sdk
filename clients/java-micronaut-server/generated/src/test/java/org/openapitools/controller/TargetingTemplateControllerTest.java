@@ -89,7 +89,7 @@ public class TargetingTemplateControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@23353f43");
+            .accept("[Ljava.lang.String;@4c292313");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, TargetingTemplateGetResponseData.class);
@@ -140,7 +140,7 @@ public class TargetingTemplateControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@74ed9cd6");
+            .accept("[Ljava.lang.String;@636fdfa0");
         request.getParameters()
             .add("order", "ASCENDING") // The query parameter format should be 
             .add("include_sizing", String.valueOf(false)) // The query parameter format should be 
@@ -194,7 +194,7 @@ public class TargetingTemplateControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@2de8cadc");
+            .accept("[Ljava.lang.String;@2e8076");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 

@@ -9,7 +9,6 @@ import org.openapitools.models.BigDecimal
 
 /**
  * 
- * @param name Conversion tag name.
  * @param aemUnderscoreenabled Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
  * @param mdUnderscorefrequency Metadata ingestion frequency.
  * @param aemUnderscorefnlnUnderscoreenabled Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
@@ -17,15 +16,16 @@ import org.openapitools.models.BigDecimal
  * @param aemUnderscoregeUnderscoreenabled Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
  * @param aemUnderscoredbUnderscoreenabled Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
  * @param aemUnderscorelocUnderscoreenabled Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+ * @param name Conversion tag name.
  */
-case class ConversionTagCreate(name: String,
-                aemUnderscoreenabled: Option[Boolean],
+case class ConversionTagCreate(aemUnderscoreenabled: Option[Boolean],
                 mdUnderscorefrequency: Option[BigDecimal],
                 aemUnderscorefnlnUnderscoreenabled: Option[Boolean],
                 aemUnderscorephUnderscoreenabled: Option[Boolean],
                 aemUnderscoregeUnderscoreenabled: Option[Boolean],
                 aemUnderscoredbUnderscoreenabled: Option[Boolean],
-                aemUnderscorelocUnderscoreenabled: Option[Boolean]
+                aemUnderscorelocUnderscoreenabled: Option[Boolean],
+                name: String
                 )
 
 object ConversionTagCreate {

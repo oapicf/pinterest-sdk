@@ -15,7 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DeliveryMetricsResponse  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid DeliveryMetricsResponseItemsInner> items = new ArrayList<>();
  /**
    * Get items

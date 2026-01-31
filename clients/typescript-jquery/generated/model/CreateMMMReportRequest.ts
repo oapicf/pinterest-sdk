@@ -14,6 +14,11 @@ import * as models from './models';
 
 export interface CreateMMMReportRequest {
     /**
+     * A List of countries for filtering
+     */
+    countries?: Array<models.TargetingAdvertiserCountry>;
+
+    /**
      * Name of the Marketing Mix Modeling (MMM) report
      */
     report_name: string;
@@ -47,11 +52,6 @@ export interface CreateMMMReportRequest {
      * Metric and entity columns
      */
     columns: Array<models.MMMReportingColumn>;
-
-    /**
-     * A List of countries for filtering
-     */
-    countries?: Array<models.TargetingAdvertiserCountry>;
 
 }
 export namespace CreateMMMReportRequest {

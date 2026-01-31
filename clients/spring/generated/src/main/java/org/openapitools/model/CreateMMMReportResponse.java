@@ -21,14 +21,14 @@ import javax.annotation.Generated;
  * CreateMMMReportResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateMMMReportResponse {
 
   private @Nullable BigDecimal code;
 
   private @Nullable CreateMMMReportResponseData data;
 
-  public CreateMMMReportResponse code(BigDecimal code) {
+  public CreateMMMReportResponse code(@Nullable BigDecimal code) {
     this.code = code;
     return this;
   }
@@ -40,15 +40,15 @@ public class CreateMMMReportResponse {
   @Valid 
   @Schema(name = "code", example = "0", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public BigDecimal getCode() {
+  public @Nullable BigDecimal getCode() {
     return code;
   }
 
-  public void setCode(BigDecimal code) {
+  public void setCode(@Nullable BigDecimal code) {
     this.code = code;
   }
 
-  public CreateMMMReportResponse data(CreateMMMReportResponseData data) {
+  public CreateMMMReportResponse data(@Nullable CreateMMMReportResponseData data) {
     this.data = data;
     return this;
   }
@@ -60,11 +60,11 @@ public class CreateMMMReportResponse {
   @Valid 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")
-  public CreateMMMReportResponseData getData() {
+  public @Nullable CreateMMMReportResponseData getData() {
     return data;
   }
 
-  public void setData(CreateMMMReportResponseData data) {
+  public void setData(@Nullable CreateMMMReportResponseData data) {
     this.data = data;
   }
 

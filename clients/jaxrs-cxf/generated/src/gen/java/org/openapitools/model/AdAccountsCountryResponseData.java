@@ -15,25 +15,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdAccountsCountryResponseData  {
   
   @ApiModelProperty(value = "")
+
   private AdCountry code;
 
-  @ApiModelProperty(example = "Dollars", value = "Country currency.")
  /**
-   * Country currency.
-  **/
+  * Country currency.
+  */
+  @ApiModelProperty(example = "Dollars", value = "Country currency.")
+
   private String currency;
 
-  @ApiModelProperty(example = "1", value = "Country index")
-  @Valid
  /**
-   * Country index
-  **/
+  * Country index
+  */
+  @ApiModelProperty(example = "1", value = "Country index")
+
+  @Valid
+
   private BigDecimal index;
 
-  @ApiModelProperty(example = "United States of America", value = "Country name")
  /**
-   * Country name
-  **/
+  * Country name
+  */
+  @ApiModelProperty(example = "United States of America", value = "Country name")
+
   private String name;
  /**
    * Get code

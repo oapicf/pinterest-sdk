@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupCreateRequest;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
@@ -9,13 +8,14 @@ import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsRetailProductGroupCreateRequest;
 import org.openapitools.model.Country;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for creating a catalog based product group.
- **/
+ * Request object for creating a catalog based product group.
+ */
 @ApiModel(description="Request object for creating a catalog based product group.")
 
 public class CatalogsVerticalProductGroupCreateRequest  {
@@ -51,27 +51,34 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
  /**
-   * Catalog id pertaining to the creative assets product group.
-  **/
+  * Catalog id pertaining to the creative assets product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
+
   private String catalogId;
 
   @ApiModelProperty(required = true, value = "")
+
   private Country country;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsLocale locale;
  /**
    * Get catalogType

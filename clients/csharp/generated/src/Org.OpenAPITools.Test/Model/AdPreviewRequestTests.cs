@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -53,33 +52,6 @@ namespace Org.OpenAPITools.Test.Model
         {
             // TODO uncomment below to test "IsType" AdPreviewRequest
             //Assert.IsType<AdPreviewRequest>(instance);
-        }
-
-        /// <summary>
-        /// Test the property 'ImageUrl'
-        /// </summary>
-        [Fact]
-        public void ImageUrlTest()
-        {
-            // TODO unit test for the property 'ImageUrl'
-        }
-
-        /// <summary>
-        /// Test the property 'Title'
-        /// </summary>
-        [Fact]
-        public void TitleTest()
-        {
-            // TODO unit test for the property 'Title'
-        }
-
-        /// <summary>
-        /// Test the property 'PinId'
-        /// </summary>
-        [Fact]
-        public void PinIdTest()
-        {
-            // TODO unit test for the property 'PinId'
         }
     }
 }

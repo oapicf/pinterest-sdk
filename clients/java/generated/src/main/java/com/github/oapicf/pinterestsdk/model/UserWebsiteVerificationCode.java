@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UserWebsiteVerificationCode
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserWebsiteVerificationCode {
   public static final String SERIALIZED_NAME_VERIFICATION_CODE = "verification_code";
   @SerializedName(SERIALIZED_NAME_VERIFICATION_CODE)
@@ -225,15 +225,10 @@ public class UserWebsiteVerificationCode {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("verification_code");
-    openapiFields.add("dns_txt_record");
-    openapiFields.add("metatag");
-    openapiFields.add("filename");
-    openapiFields.add("file_content");
+    openapiFields = new HashSet<String>(Arrays.asList("verification_code", "dns_txt_record", "metatag", "filename", "file_content"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -245,7 +240,7 @@ public class UserWebsiteVerificationCode {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!UserWebsiteVerificationCode.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UserWebsiteVerificationCode is not found in the empty JSON string", UserWebsiteVerificationCode.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in UserWebsiteVerificationCode is not found in the empty JSON string", UserWebsiteVerificationCode.openapiRequiredFields.toString()));
         }
       }
 
@@ -253,24 +248,24 @@ public class UserWebsiteVerificationCode {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!UserWebsiteVerificationCode.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UserWebsiteVerificationCode` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `UserWebsiteVerificationCode` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("verification_code") != null && !jsonObj.get("verification_code").isJsonNull()) && !jsonObj.get("verification_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `verification_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("verification_code").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `verification_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("verification_code").toString()));
       }
       if ((jsonObj.get("dns_txt_record") != null && !jsonObj.get("dns_txt_record").isJsonNull()) && !jsonObj.get("dns_txt_record").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `dns_txt_record` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dns_txt_record").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `dns_txt_record` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dns_txt_record").toString()));
       }
       if ((jsonObj.get("metatag") != null && !jsonObj.get("metatag").isJsonNull()) && !jsonObj.get("metatag").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `metatag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metatag").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `metatag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metatag").toString()));
       }
       if ((jsonObj.get("filename") != null && !jsonObj.get("filename").isJsonNull()) && !jsonObj.get("filename").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `filename` to be a primitive type in the JSON string but got `%s`", jsonObj.get("filename").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `filename` to be a primitive type in the JSON string but got `%s`", jsonObj.get("filename").toString()));
       }
       if ((jsonObj.get("file_content") != null && !jsonObj.get("file_content").isJsonNull()) && !jsonObj.get("file_content").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `file_content` to be a primitive type in the JSON string but got `%s`", jsonObj.get("file_content").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `file_content` to be a primitive type in the JSON string but got `%s`", jsonObj.get("file_content").toString()));
       }
   }
 

@@ -217,7 +217,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, PinPromotionSummaryStatus pinPromotionSummaryStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(pinPromotionSummaryStatus.ToString());
+            writer.WriteStringValue(PinPromotionSummaryStatusValueConverter.ToJsonValue(pinPromotionSummaryStatus).ToString());
         }
     }
 
@@ -248,14 +248,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the PinPromotionSummaryStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="pinPromotionSummaryStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, PinPromotionSummaryStatus? pinPromotionSummaryStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(pinPromotionSummaryStatus?.ToString() ?? "null");
+            writer.WriteStringValue(pinPromotionSummaryStatus.HasValue ? PinPromotionSummaryStatusValueConverter.ToJsonValue(pinPromotionSummaryStatus.Value).ToString() : "null");
         }
     }
 }

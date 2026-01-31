@@ -9,22 +9,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdsCreditRedeemResponse  {
   
-  @ApiModelProperty(example = "false", value = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).")
  /**
-   * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
-  **/
+  * Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).
+  */
+  @ApiModelProperty(example = "false", value = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).")
+
   private Boolean success;
 
-  @ApiModelProperty(example = "2708", value = "Error code type if error occurs")
  /**
-   * Error code type if error occurs
-  **/
+  * Error code type if error occurs
+  */
+  @ApiModelProperty(example = "2708", value = "Error code type if error occurs")
+
   private Integer errorCode;
 
-  @ApiModelProperty(example = "The offer has already been redeemed by this advertiser", value = "Reason for failure")
  /**
-   * Reason for failure
-  **/
+  * Reason for failure
+  */
+  @ApiModelProperty(example = "The offer has already been redeemed by this advertiser", value = "Reason for failure")
+
   private String errorMessage;
  /**
    * Returns true if the offer code was successfully applied(validateOnly&#x3D;false) or can be applied(validateOnly&#x3D;true).

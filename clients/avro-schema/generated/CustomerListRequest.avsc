@@ -16,9 +16,9 @@
     },
     {
       "name": "list_type",
-      "type": ["null", "model.UserListType"],
+      "type": ["model.UserListType", "null"],
       "doc": "",
-      "default": null
+      "default": UserListType.EMAIL
     },
     {
       "name": "exceptions",

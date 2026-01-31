@@ -154,7 +154,6 @@ Model/AudienceCategory.php
 Model/AudienceCommon.php
 Model/AudienceCreateCustomRequest.php
 Model/AudienceCreateRequest.php
-Model/AudienceCreateRequest1AudienceType.php
 Model/AudienceDataParty.php
 Model/AudienceDefinition.php
 Model/AudienceDefinitionResponse.php
@@ -332,7 +331,6 @@ Model/CatalogsItemsDeleteDiscontinuedBatchRequest.php
 Model/CatalogsItemsFilters.php
 Model/CatalogsItemsPostFilters.php
 Model/CatalogsItemsRequest.php
-Model/CatalogsItemsRequestLanguage.php
 Model/CatalogsItemsUpdateBatchRequest.php
 Model/CatalogsItemsUpsertBatchRequest.php
 Model/CatalogsList200Response.php
@@ -666,7 +664,6 @@ Model/PinMediaWithVideos.php
 Model/PinPromotionSummaryStatus.php
 Model/PinUpdate.php
 Model/PinUpdateCarouselSlotsInner.php
-Model/PinsAnalyticsMetricTypesParameterInner.php
 Model/PinsList200Response.php
 Model/PinsSaveRequest.php
 Model/PinterestTagEventData.php
@@ -922,7 +919,6 @@ docs/Model/AudienceCategory.md
 docs/Model/AudienceCommon.md
 docs/Model/AudienceCreateCustomRequest.md
 docs/Model/AudienceCreateRequest.md
-docs/Model/AudienceCreateRequest1AudienceType.md
 docs/Model/AudienceDataParty.md
 docs/Model/AudienceDefinition.md
 docs/Model/AudienceDefinitionResponse.md
@@ -1100,7 +1096,6 @@ docs/Model/CatalogsItemsDeleteDiscontinuedBatchRequest.md
 docs/Model/CatalogsItemsFilters.md
 docs/Model/CatalogsItemsPostFilters.md
 docs/Model/CatalogsItemsRequest.md
-docs/Model/CatalogsItemsRequestLanguage.md
 docs/Model/CatalogsItemsUpdateBatchRequest.md
 docs/Model/CatalogsItemsUpsertBatchRequest.md
 docs/Model/CatalogsList200Response.md
@@ -1434,7 +1429,6 @@ docs/Model/PinMediaWithVideos.md
 docs/Model/PinPromotionSummaryStatus.md
 docs/Model/PinUpdate.md
 docs/Model/PinUpdateCarouselSlotsInner.md
-docs/Model/PinsAnalyticsMetricTypesParameterInner.md
 docs/Model/PinsList200Response.md
 docs/Model/PinsSaveRequest.md
 docs/Model/PinterestTagEventData.md

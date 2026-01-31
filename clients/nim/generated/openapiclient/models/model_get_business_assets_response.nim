@@ -9,11 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_asset_group_binding
 
 type GetBusinessAssetsResponse* = object
   ## An object containing the permissions a business has on the asset.
-  assetId*: string ## Unique identifier of a business asset.
-  assetType*: string ## Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
-  assetGroupInfo*: AssetGroupBinding
+  assetId*: Option[string] ## Unique identifier of a business asset.
+  assetType*: Option[string] ## Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  assetGroupInfo*: Option[AssetGroupBinding]
+
+
+# Custom JSON deserialization for GetBusinessAssetsResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[GetBusinessAssetsResponse]): GetBusinessAssetsResponse =
+  result = GetBusinessAssetsResponse()
+  if node.kind == JObject:
+    if node.hasKey("asset_id") and node["asset_id"].kind != JNull:
+      result.assetId = some(to(node["asset_id"], typeof(result.assetId.get())))
+    if node.hasKey("asset_type") and node["asset_type"].kind != JNull:
+      result.assetType = some(to(node["asset_type"], typeof(result.assetType.get())))
+    if node.hasKey("asset_group_info") and node["asset_group_info"].kind != JNull:
+      result.assetGroupInfo = some(to(node["asset_group_info"], typeof(result.assetGroupInfo.get())))
+
+# Custom JSON serialization for GetBusinessAssetsResponse with custom field names
+proc `%`*(obj: GetBusinessAssetsResponse): JsonNode =
+  result = newJObject()
+  if obj.assetId.isSome():
+    result["asset_id"] = %obj.assetId.get()
+  if obj.assetType.isSome():
+    result["asset_type"] = %obj.assetType.get()
+  if obj.assetGroupInfo.isSome():
+    result["asset_group_info"] = %obj.assetGroupInfo.get()
+

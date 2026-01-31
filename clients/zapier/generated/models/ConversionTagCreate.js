@@ -5,12 +5,6 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}name`,
-                label: `Conversion tag name. - [${labelPrefix}name]`,
-                required: true,
-                type: 'string',
-            },
-            {
                 key: `${keyPrefix}aem_enabled`,
                 label: `Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. - [${labelPrefix}aem_enabled]`,
                 type: 'boolean',
@@ -45,12 +39,17 @@ module.exports = {
                 label: `Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. - [${labelPrefix}aem_loc_enabled]`,
                 type: 'boolean',
             },
+            {
+                key: `${keyPrefix}name`,
+                label: `Conversion tag name. - [${labelPrefix}name]`,
+                required: true,
+                type: 'string',
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'name': bundle.inputData?.[`${keyPrefix}name`],
             'aem_enabled': bundle.inputData?.[`${keyPrefix}aem_enabled`],
             'md_frequency': bundle.inputData?.[`${keyPrefix}md_frequency`],
             'aem_fnln_enabled': bundle.inputData?.[`${keyPrefix}aem_fnln_enabled`],
@@ -58,6 +57,7 @@ module.exports = {
             'aem_ge_enabled': bundle.inputData?.[`${keyPrefix}aem_ge_enabled`],
             'aem_db_enabled': bundle.inputData?.[`${keyPrefix}aem_db_enabled`],
             'aem_loc_enabled': bundle.inputData?.[`${keyPrefix}aem_loc_enabled`],
+            'name': bundle.inputData?.[`${keyPrefix}name`],
         }
     },
 }

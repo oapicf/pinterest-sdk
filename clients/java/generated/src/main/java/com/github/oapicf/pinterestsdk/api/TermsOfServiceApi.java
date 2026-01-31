@@ -89,7 +89,7 @@ public class TermsOfServiceApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call termsOfServiceGetCall(String adAccountId, Boolean includeHtml, String tosType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call termsOfServiceGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Boolean includeHtml, @javax.annotation.Nullable String tosType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -143,7 +143,7 @@ public class TermsOfServiceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call termsOfServiceGetValidateBeforeCall(String adAccountId, Boolean includeHtml, String tosType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call termsOfServiceGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Boolean includeHtml, @javax.annotation.Nullable String tosType, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling termsOfServiceGet(Async)");
@@ -169,7 +169,7 @@ public class TermsOfServiceApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public TermsOfService termsOfServiceGet(String adAccountId, Boolean includeHtml, String tosType) throws ApiException {
+    public TermsOfService termsOfServiceGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Boolean includeHtml, @javax.annotation.Nullable String tosType) throws ApiException {
         ApiResponse<TermsOfService> localVarResp = termsOfServiceGetWithHttpInfo(adAccountId, includeHtml, tosType);
         return localVarResp.getData();
     }
@@ -190,7 +190,7 @@ public class TermsOfServiceApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TermsOfService> termsOfServiceGetWithHttpInfo(String adAccountId, Boolean includeHtml, String tosType) throws ApiException {
+    public ApiResponse<TermsOfService> termsOfServiceGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Boolean includeHtml, @javax.annotation.Nullable String tosType) throws ApiException {
         okhttp3.Call localVarCall = termsOfServiceGetValidateBeforeCall(adAccountId, includeHtml, tosType, null);
         Type localVarReturnType = new TypeToken<TermsOfService>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -213,7 +213,7 @@ public class TermsOfServiceApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call termsOfServiceGetAsync(String adAccountId, Boolean includeHtml, String tosType, final ApiCallback<TermsOfService> _callback) throws ApiException {
+    public okhttp3.Call termsOfServiceGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Boolean includeHtml, @javax.annotation.Nullable String tosType, final ApiCallback<TermsOfService> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = termsOfServiceGetValidateBeforeCall(adAccountId, includeHtml, tosType, _callback);
         Type localVarReturnType = new TypeToken<TermsOfService>(){}.getType();

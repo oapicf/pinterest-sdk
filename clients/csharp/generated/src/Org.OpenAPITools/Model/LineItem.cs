@@ -262,8 +262,7 @@ namespace Org.OpenAPITools.Model
                             productCategory = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "product_id":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                productId = new Option<int?>(utf8JsonReader.GetInt32());
+                            productId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "product_name":
                             productName = new Option<string?>(utf8JsonReader.GetString()!);
@@ -272,8 +271,7 @@ namespace Org.OpenAPITools.Model
                             productPrice = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "product_quantity":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                productQuantity = new Option<int?>(utf8JsonReader.GetInt32());
+                            productQuantity = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "product_variant":
                             productVariant = new Option<string?>(utf8JsonReader.GetString()!);

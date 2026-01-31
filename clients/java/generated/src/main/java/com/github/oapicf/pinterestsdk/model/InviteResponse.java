@@ -54,33 +54,8 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * InviteResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class InviteResponse {
-  public static final String SERIALIZED_NAME_ASSETS_SUMMARY = "assets_summary";
-  @SerializedName(SERIALIZED_NAME_ASSETS_SUMMARY)
-  @javax.annotation.Nullable
-  private InviteAssetsSummary assetsSummary;
-
-  public static final String SERIALIZED_NAME_BUSINESS_ROLES = "business_roles";
-  @SerializedName(SERIALIZED_NAME_BUSINESS_ROLES)
-  @javax.annotation.Nullable
-  private List<String> businessRoles = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_CREATED_BY_BUSINESS = "created_by_business";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY_BUSINESS)
-  @javax.annotation.Nullable
-  private BusinessAccessUserSummary createdByBusiness;
-
-  public static final String SERIALIZED_NAME_CREATED_BY_USER = "created_by_user";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY_USER)
-  @javax.annotation.Nullable
-  private BusinessAccessUserSummary createdByUser;
-
-  public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
-  @SerializedName(SERIALIZED_NAME_CREATED_TIME)
-  @javax.annotation.Nullable
-  private Integer createdTime;
-
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
@@ -101,111 +76,33 @@ public class InviteResponse {
   @javax.annotation.Nullable
   private BusinessAccessUserSummary user;
 
+  public static final String SERIALIZED_NAME_ASSETS_SUMMARY = "assets_summary";
+  @SerializedName(SERIALIZED_NAME_ASSETS_SUMMARY)
+  @javax.annotation.Nullable
+  private InviteAssetsSummary assetsSummary;
+
+  public static final String SERIALIZED_NAME_BUSINESS_ROLES = "business_roles";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_ROLES)
+  @javax.annotation.Nullable
+  private List<String> businessRoles = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_CREATED_BY_BUSINESS = "created_by_business";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY_BUSINESS)
+  @javax.annotation.Nullable
+  private Object createdByBusiness;
+
+  public static final String SERIALIZED_NAME_CREATED_BY_USER = "created_by_user";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY_USER)
+  @javax.annotation.Nullable
+  private Object createdByUser;
+
+  public static final String SERIALIZED_NAME_CREATED_TIME = "created_time";
+  @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+  @javax.annotation.Nullable
+  private Integer createdTime;
+
   public InviteResponse() {
   }
-
-  public InviteResponse assetsSummary(@javax.annotation.Nullable InviteAssetsSummary assetsSummary) {
-    this.assetsSummary = assetsSummary;
-    return this;
-  }
-
-  /**
-   * Get assetsSummary
-   * @return assetsSummary
-   */
-  @javax.annotation.Nullable
-  public InviteAssetsSummary getAssetsSummary() {
-    return assetsSummary;
-  }
-
-  public void setAssetsSummary(@javax.annotation.Nullable InviteAssetsSummary assetsSummary) {
-    this.assetsSummary = assetsSummary;
-  }
-
-
-  public InviteResponse businessRoles(@javax.annotation.Nullable List<String> businessRoles) {
-    this.businessRoles = businessRoles;
-    return this;
-  }
-
-  public InviteResponse addBusinessRolesItem(String businessRolesItem) {
-    if (this.businessRoles == null) {
-      this.businessRoles = new ArrayList<>();
-    }
-    this.businessRoles.add(businessRolesItem);
-    return this;
-  }
-
-  /**
-   * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-   * @return businessRoles
-   */
-  @javax.annotation.Nullable
-  public List<String> getBusinessRoles() {
-    return businessRoles;
-  }
-
-  public void setBusinessRoles(@javax.annotation.Nullable List<String> businessRoles) {
-    this.businessRoles = businessRoles;
-  }
-
-
-  public InviteResponse createdByBusiness(@javax.annotation.Nullable BusinessAccessUserSummary createdByBusiness) {
-    this.createdByBusiness = createdByBusiness;
-    return this;
-  }
-
-  /**
-   * Metadata for the business that created the invite/request.
-   * @return createdByBusiness
-   */
-  @javax.annotation.Nullable
-  public BusinessAccessUserSummary getCreatedByBusiness() {
-    return createdByBusiness;
-  }
-
-  public void setCreatedByBusiness(@javax.annotation.Nullable BusinessAccessUserSummary createdByBusiness) {
-    this.createdByBusiness = createdByBusiness;
-  }
-
-
-  public InviteResponse createdByUser(@javax.annotation.Nullable BusinessAccessUserSummary createdByUser) {
-    this.createdByUser = createdByUser;
-    return this;
-  }
-
-  /**
-   * Metadata for the user that created the invite/request.
-   * @return createdByUser
-   */
-  @javax.annotation.Nullable
-  public BusinessAccessUserSummary getCreatedByUser() {
-    return createdByUser;
-  }
-
-  public void setCreatedByUser(@javax.annotation.Nullable BusinessAccessUserSummary createdByUser) {
-    this.createdByUser = createdByUser;
-  }
-
-
-  public InviteResponse createdTime(@javax.annotation.Nullable Integer createdTime) {
-    this.createdTime = createdTime;
-    return this;
-  }
-
-  /**
-   * The time the invite/request was created. Returned in milliseconds.
-   * @return createdTime
-   */
-  @javax.annotation.Nullable
-  public Integer getCreatedTime() {
-    return createdTime;
-  }
-
-  public void setCreatedTime(@javax.annotation.Nullable Integer createdTime) {
-    this.createdTime = createdTime;
-  }
-
 
   public InviteResponse id(@javax.annotation.Nullable String id) {
     this.id = id;
@@ -283,6 +180,109 @@ public class InviteResponse {
   }
 
 
+  public InviteResponse assetsSummary(@javax.annotation.Nullable InviteAssetsSummary assetsSummary) {
+    this.assetsSummary = assetsSummary;
+    return this;
+  }
+
+  /**
+   * Get assetsSummary
+   * @return assetsSummary
+   */
+  @javax.annotation.Nullable
+  public InviteAssetsSummary getAssetsSummary() {
+    return assetsSummary;
+  }
+
+  public void setAssetsSummary(@javax.annotation.Nullable InviteAssetsSummary assetsSummary) {
+    this.assetsSummary = assetsSummary;
+  }
+
+
+  public InviteResponse businessRoles(@javax.annotation.Nullable List<String> businessRoles) {
+    this.businessRoles = businessRoles;
+    return this;
+  }
+
+  public InviteResponse addBusinessRolesItem(String businessRolesItem) {
+    if (this.businessRoles == null) {
+      this.businessRoles = new ArrayList<>();
+    }
+    this.businessRoles.add(businessRolesItem);
+    return this;
+  }
+
+  /**
+   * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+   * @return businessRoles
+   */
+  @javax.annotation.Nullable
+  public List<String> getBusinessRoles() {
+    return businessRoles;
+  }
+
+  public void setBusinessRoles(@javax.annotation.Nullable List<String> businessRoles) {
+    this.businessRoles = businessRoles;
+  }
+
+
+  public InviteResponse createdByBusiness(@javax.annotation.Nullable Object createdByBusiness) {
+    this.createdByBusiness = createdByBusiness;
+    return this;
+  }
+
+  /**
+   * Metadata for the business that created the invite/request.
+   * @return createdByBusiness
+   */
+  @javax.annotation.Nullable
+  public Object getCreatedByBusiness() {
+    return createdByBusiness;
+  }
+
+  public void setCreatedByBusiness(@javax.annotation.Nullable Object createdByBusiness) {
+    this.createdByBusiness = createdByBusiness;
+  }
+
+
+  public InviteResponse createdByUser(@javax.annotation.Nullable Object createdByUser) {
+    this.createdByUser = createdByUser;
+    return this;
+  }
+
+  /**
+   * Metadata for the user that created the invite/request.
+   * @return createdByUser
+   */
+  @javax.annotation.Nullable
+  public Object getCreatedByUser() {
+    return createdByUser;
+  }
+
+  public void setCreatedByUser(@javax.annotation.Nullable Object createdByUser) {
+    this.createdByUser = createdByUser;
+  }
+
+
+  public InviteResponse createdTime(@javax.annotation.Nullable Integer createdTime) {
+    this.createdTime = createdTime;
+    return this;
+  }
+
+  /**
+   * The time the invite/request was created. Returned in milliseconds.
+   * @return createdTime
+   */
+  @javax.annotation.Nullable
+  public Integer getCreatedTime() {
+    return createdTime;
+  }
+
+  public void setCreatedTime(@javax.annotation.Nullable Integer createdTime) {
+    this.createdTime = createdTime;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -293,15 +293,15 @@ public class InviteResponse {
       return false;
     }
     InviteResponse inviteResponse = (InviteResponse) o;
-    return Objects.equals(this.assetsSummary, inviteResponse.assetsSummary) &&
+    return Objects.equals(this.id, inviteResponse.id) &&
+        Objects.equals(this.inviteData, inviteResponse.inviteData) &&
+        Objects.equals(this.isReceivedInvite, inviteResponse.isReceivedInvite) &&
+        Objects.equals(this.user, inviteResponse.user) &&
+        Objects.equals(this.assetsSummary, inviteResponse.assetsSummary) &&
         Objects.equals(this.businessRoles, inviteResponse.businessRoles) &&
         Objects.equals(this.createdByBusiness, inviteResponse.createdByBusiness) &&
         Objects.equals(this.createdByUser, inviteResponse.createdByUser) &&
-        Objects.equals(this.createdTime, inviteResponse.createdTime) &&
-        Objects.equals(this.id, inviteResponse.id) &&
-        Objects.equals(this.inviteData, inviteResponse.inviteData) &&
-        Objects.equals(this.isReceivedInvite, inviteResponse.isReceivedInvite) &&
-        Objects.equals(this.user, inviteResponse.user);
+        Objects.equals(this.createdTime, inviteResponse.createdTime);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -310,7 +310,7 @@ public class InviteResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetsSummary, businessRoles, createdByBusiness, createdByUser, createdTime, id, inviteData, isReceivedInvite, user);
+    return Objects.hash(id, inviteData, isReceivedInvite, user, assetsSummary, businessRoles, createdByBusiness, createdByUser, createdTime);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -324,15 +324,15 @@ public class InviteResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteResponse {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
+    sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
+    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    assetsSummary: ").append(toIndentedString(assetsSummary)).append("\n");
     sb.append("    businessRoles: ").append(toIndentedString(businessRoles)).append("\n");
     sb.append("    createdByBusiness: ").append(toIndentedString(createdByBusiness)).append("\n");
     sb.append("    createdByUser: ").append(toIndentedString(createdByUser)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
-    sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -354,14 +354,10 @@ public class InviteResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("invite_data");
-    openapiFields.add("is_received_invite");
-    openapiFields.add("user");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "invite_data", "is_received_invite", "user", "assets_summary", "business_roles", "created_by_business", "created_by_user", "created_time"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -373,7 +369,7 @@ public class InviteResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!InviteResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in InviteResponse is not found in the empty JSON string", InviteResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in InviteResponse is not found in the empty JSON string", InviteResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -381,28 +377,12 @@ public class InviteResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!InviteResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `InviteResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `InviteResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `assets_summary`
-      if (jsonObj.get("assets_summary") != null && !jsonObj.get("assets_summary").isJsonNull()) {
-        InviteAssetsSummary.validateJsonElement(jsonObj.get("assets_summary"));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("business_roles") != null && !jsonObj.get("business_roles").isJsonNull() && !jsonObj.get("business_roles").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `business_roles` to be an array in the JSON string but got `%s`", jsonObj.get("business_roles").toString()));
-      }
-      // validate the optional field `created_by_business`
-      if (jsonObj.get("created_by_business") != null && !jsonObj.get("created_by_business").isJsonNull()) {
-        BusinessAccessUserSummary.validateJsonElement(jsonObj.get("created_by_business"));
-      }
-      // validate the optional field `created_by_user`
-      if (jsonObj.get("created_by_user") != null && !jsonObj.get("created_by_user").isJsonNull()) {
-        BusinessAccessUserSummary.validateJsonElement(jsonObj.get("created_by_user"));
-      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // validate the optional field `invite_data`
       if (jsonObj.get("invite_data") != null && !jsonObj.get("invite_data").isJsonNull()) {
@@ -411,6 +391,14 @@ public class InviteResponse {
       // validate the optional field `user`
       if (jsonObj.get("user") != null && !jsonObj.get("user").isJsonNull()) {
         BusinessAccessUserSummary.validateJsonElement(jsonObj.get("user"));
+      }
+      // validate the optional field `assets_summary`
+      if (jsonObj.get("assets_summary") != null && !jsonObj.get("assets_summary").isJsonNull()) {
+        InviteAssetsSummary.validateJsonElement(jsonObj.get("assets_summary"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("business_roles") != null && !jsonObj.get("business_roles").isJsonNull() && !jsonObj.get("business_roles").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `business_roles` to be an array in the JSON string but got `%s`", jsonObj.get("business_roles").toString()));
       }
   }
 

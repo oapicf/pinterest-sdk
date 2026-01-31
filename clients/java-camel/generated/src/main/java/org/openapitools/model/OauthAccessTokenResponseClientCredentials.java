@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "OauthAccessTokenResponseClientCredentials", description = "A successful OAuth client token response for the client token flow.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenResponseClientCredentials {
 
   /**
@@ -33,7 +33,7 @@ public class OauthAccessTokenResponseClientCredentials {
     
     CLIENT_CREDENTIALS("client_credentials");
 
-    private String value;
+    private final String value;
 
     ResponseTypeEnum(String value) {
       this.value = value;

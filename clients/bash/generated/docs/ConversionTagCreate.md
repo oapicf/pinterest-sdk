@@ -3,7 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | name | [default to null]
 **aemUnderscoreenabled** | **boolean** | aem_enabled | [optional] [default to false]
 **mdUnderscorefrequency** | **integer** | md_frequency | [optional] [default to 1]
 **aemUnderscorefnlnUnderscoreenabled** | **boolean** | aem_fnln_enabled | [optional] [default to false]
@@ -11,6 +10,7 @@ Name | Type | Description | Notes
 **aemUnderscoregeUnderscoreenabled** | **boolean** | aem_ge_enabled | [optional] [default to false]
 **aemUnderscoredbUnderscoreenabled** | **boolean** | aem_db_enabled | [optional] [default to false]
 **aemUnderscorelocUnderscoreenabled** | **boolean** | aem_loc_enabled | [optional] [default to false]
+**name** | **string** | name | [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

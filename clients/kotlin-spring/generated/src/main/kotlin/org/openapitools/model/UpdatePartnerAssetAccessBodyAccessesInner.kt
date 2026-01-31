@@ -36,7 +36,7 @@ data class UpdatePartnerAssetAccessBodyAccessesInner(
     @get:Size(min=1,max=50) 
     @Schema(example = "[\"ANALYST\",\"ADMIN\"]", required = true, description = "A non-empty array of permissions to assign to the partner.")
     @get:JsonProperty("permissions", required = true) val permissions: kotlin.collections.List<Permissions>
-    ) {
+) {
 
 }
 

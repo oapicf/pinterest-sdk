@@ -118,7 +118,7 @@ BusinessAccessAssetsAPI_businessMembersAssetAccessUpdate(apiClient_t *apiClient,
 // Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type=INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type=EXTERNAL, you will retrieve the partner's business assets that the partner has granted you access to.
 //
 business_partner_asset_access_get_200_response_t*
-BusinessAccessAssetsAPI_businessPartnerAssetAccessGet(apiClient_t *apiClient, char *business_id, char *partner_id, partner_type_t *partner_type, pinterest_rest_api_businessPartnerAssetAccessGet_asset_type_e asset_type, int *start_index, int *page_size, char *bookmark);
+BusinessAccessAssetsAPI_businessPartnerAssetAccessGet(apiClient_t *apiClient, char *business_id, char *partner_id, partner_type, pinterest_rest_api_businessPartnerAssetAccessGet_asset_type_e asset_type, int *start_index, int *page_size, char *bookmark);
 
 
 // Delete partner access to asset

@@ -140,12 +140,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "permissions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                permissions = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            permissions = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "user":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                user = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            user = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

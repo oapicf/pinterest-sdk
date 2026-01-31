@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsCreateHotelItem;
 import org.openapitools.model.CatalogsDeleteHotelItem;
 import org.openapitools.model.CatalogsUpdatableHotelAttributes;
@@ -14,13 +13,14 @@ import org.openapitools.model.CatalogsUpsertHotelItem;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Hotel batch item
- **/
+ * Hotel batch item
+ */
 @ApiModel(description="Hotel batch item")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "operation", visible = true)
 @JsonSubTypes({
@@ -32,10 +32,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelBatchItem  {
   
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog hotel id in the merchant namespace")
  /**
-   * The catalog hotel id in the merchant namespace
-  **/
+  * The catalog hotel id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog hotel id in the merchant namespace")
+
   private String hotelId;
 
 public enum OperationEnum {
@@ -71,10 +72,13 @@ DELETE(String.valueOf("DELETE"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private OperationEnum operation;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsUpdatableHotelAttributes attributes;
  /**
    * The catalog hotel id in the merchant namespace

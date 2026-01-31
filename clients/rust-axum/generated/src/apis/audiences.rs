@@ -81,6 +81,8 @@ pub enum AudiencesSlashUpdateResponse {
 }
 
 
+
+
 /// Audiences
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -90,6 +92,7 @@ pub trait Audiences<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// AudiencesSlashCreate - POST /v5/ad_accounts/{ad_account_id}/audiences
     async fn audiences_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -102,6 +105,7 @@ pub trait Audiences<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// AudiencesSlashCreateCustom - POST /v5/ad_accounts/{ad_account_id}/audiences/custom
     async fn audiences_slash_create_custom(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -114,6 +118,7 @@ pub trait Audiences<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// AudiencesSlashGet - GET /v5/ad_accounts/{ad_account_id}/audiences/{audience_id}
     async fn audiences_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -125,6 +130,7 @@ pub trait Audiences<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// AudiencesSlashList - GET /v5/ad_accounts/{ad_account_id}/audiences
     async fn audiences_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -137,6 +143,7 @@ pub trait Audiences<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// AudiencesSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/audiences/{audience_id}
     async fn audiences_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

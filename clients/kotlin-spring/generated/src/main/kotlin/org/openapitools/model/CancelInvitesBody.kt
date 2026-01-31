@@ -22,7 +22,7 @@ data class CancelInvitesBody(
     @get:Size(min=1,max=50) 
     @Schema(example = "[\"1234567890123456789\",\"1122334455667788991\"]", required = true, description = "List of invite/request ids to be cancelled")
     @get:JsonProperty("invite_ids", required = true) val inviteIds: kotlin.collections.List<kotlin.String>
-    ) {
+) {
 
 }
 

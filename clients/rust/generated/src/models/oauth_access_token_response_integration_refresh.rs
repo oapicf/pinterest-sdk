@@ -11,9 +11,12 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// OauthAccessTokenResponseIntegrationRefresh : A successful OAuth access token response for the refresh token flow, with an added refresh token.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct OauthAccessTokenResponseIntegrationRefresh {
+    #[serde(rename = "refresh_token")]
+    pub refresh_token: String,
+    #[serde(rename = "refresh_token_expires_in")]
+    pub refresh_token_expires_in: i32,
     #[serde(rename = "response_type", skip_serializing_if = "Option::is_none")]
     pub response_type: Option<ResponseType>,
     #[serde(rename = "access_token")]
@@ -24,23 +27,18 @@ pub struct OauthAccessTokenResponseIntegrationRefresh {
     pub expires_in: i32,
     #[serde(rename = "scope")]
     pub scope: String,
-    #[serde(rename = "refresh_token")]
-    pub refresh_token: String,
-    #[serde(rename = "refresh_token_expires_in")]
-    pub refresh_token_expires_in: i32,
 }
 
 impl OauthAccessTokenResponseIntegrationRefresh {
-    /// A successful OAuth access token response for the refresh token flow, with an added refresh token.
-    pub fn new(access_token: String, token_type: String, expires_in: i32, scope: String, refresh_token: String, refresh_token_expires_in: i32) -> OauthAccessTokenResponseIntegrationRefresh {
+    pub fn new(refresh_token: String, refresh_token_expires_in: i32, access_token: String, token_type: String, expires_in: i32, scope: String) -> OauthAccessTokenResponseIntegrationRefresh {
         OauthAccessTokenResponseIntegrationRefresh {
+            refresh_token,
+            refresh_token_expires_in,
             response_type: None,
             access_token,
             token_type,
             expires_in,
             scope,
-            refresh_token,
-            refresh_token_expires_in,
         }
     }
 }

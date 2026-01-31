@@ -19,12 +19,12 @@ import javax.annotation.Generated;
  * LeadsExportCreateResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadsExportCreateResponse {
 
   private @Nullable String leadsExportId;
 
-  public LeadsExportCreateResponse leadsExportId(String leadsExportId) {
+  public LeadsExportCreateResponse leadsExportId(@Nullable String leadsExportId) {
     this.leadsExportId = leadsExportId;
     return this;
   }
@@ -36,11 +36,11 @@ public class LeadsExportCreateResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "leads_export_id", example = "123456789012", description = "ID for the leads export job", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("leads_export_id")
-  public String getLeadsExportId() {
+  public @Nullable String getLeadsExportId() {
     return leadsExportId;
   }
 
-  public void setLeadsExportId(String leadsExportId) {
+  public void setLeadsExportId(@Nullable String leadsExportId) {
     this.leadsExportId = leadsExportId;
   }
 

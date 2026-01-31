@@ -660,8 +660,9 @@ func (a *BusinessAccessInviteAPIService) GetInvitesExecute(r ApiGetInvitesReques
 	if r.isMember != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "is_member", r.isMember, "form", "")
 	} else {
-		var defaultValue bool = true
-		r.isMember = &defaultValue
+        var defaultValue bool = true
+        parameterAddToHeaderOrQuery(localVarQueryParams, "is_member", defaultValue, "form", "")
+        r.isMember = &defaultValue
 	}
 	if r.inviteStatus != nil {
 		t := *r.inviteStatus
@@ -683,8 +684,9 @@ func (a *BusinessAccessInviteAPIService) GetInvitesExecute(r ApiGetInvitesReques
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

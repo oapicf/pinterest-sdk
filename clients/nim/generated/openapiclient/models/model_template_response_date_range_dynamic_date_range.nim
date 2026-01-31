@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type Range* {.pure.} = enum
@@ -19,21 +21,35 @@ type Range* {.pure.} = enum
 
 type TemplateResponseDateRangeDynamicDateRange* = object
   ## The dynamic date range of the template
-  `type`*: string ## The date range type
-  range*: Range ## The dynamic range type
+  `type`*: Option[string] ## The date range type
+  range*: Option[Range] ## The dynamic range type
 
 func `%`*(v: Range): JsonNode =
-  let str = case v:
-    of Range.YEARTODATE: "YEAR_TO_DATE"
-    of Range.QUARTERTODATE: "QUARTER_TO_DATE"
-    of Range.MONTHTODATE: "MONTH_TO_DATE"
-    of Range.LASTMONTH: "LAST_MONTH"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Range.YEARTODATE: %"YEAR_TO_DATE"
+    of Range.QUARTERTODATE: %"QUARTER_TO_DATE"
+    of Range.MONTHTODATE: %"MONTH_TO_DATE"
+    of Range.LASTMONTH: %"LAST_MONTH"
 func `$`*(v: Range): string =
   result = case v:
-    of Range.YEARTODATE: "YEAR_TO_DATE"
-    of Range.QUARTERTODATE: "QUARTER_TO_DATE"
-    of Range.MONTHTODATE: "MONTH_TO_DATE"
-    of Range.LASTMONTH: "LAST_MONTH"
+    of Range.YEARTODATE: $("YEAR_TO_DATE")
+    of Range.QUARTERTODATE: $("QUARTER_TO_DATE")
+    of Range.MONTHTODATE: $("MONTH_TO_DATE")
+    of Range.LASTMONTH: $("LAST_MONTH")
+
+proc to*(node: JsonNode, T: typedesc[Range]): Range =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Range, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("YEAR_TO_DATE"):
+    return Range.YEARTODATE
+  of $("QUARTER_TO_DATE"):
+    return Range.QUARTERTODATE
+  of $("MONTH_TO_DATE"):
+    return Range.MONTHTODATE
+  of $("LAST_MONTH"):
+    return Range.LASTMONTH
+  else:
+    raise newException(ValueError, "Invalid enum value for Range: " & strVal)
+

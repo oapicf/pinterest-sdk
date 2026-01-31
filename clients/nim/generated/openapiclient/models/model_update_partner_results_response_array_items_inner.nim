@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_business_access_error
 
 type UpdatePartnerResultsResponseArrayItemsInner* = object
   ## 
-  exception*: BusinessAccessError
-  memberOrPartnerId*: string
+  exception*: Option[BusinessAccessError]
+  memberOrPartnerId*: Option[string]
+
+
+# Custom JSON deserialization for UpdatePartnerResultsResponseArrayItemsInner with custom field names
+proc to*(node: JsonNode, T: typedesc[UpdatePartnerResultsResponseArrayItemsInner]): UpdatePartnerResultsResponseArrayItemsInner =
+  result = UpdatePartnerResultsResponseArrayItemsInner()
+  if node.kind == JObject:
+    if node.hasKey("exception") and node["exception"].kind != JNull:
+      result.exception = some(to(node["exception"], typeof(result.exception.get())))
+    if node.hasKey("member_or_partner_id") and node["member_or_partner_id"].kind != JNull:
+      result.memberOrPartnerId = some(to(node["member_or_partner_id"], typeof(result.memberOrPartnerId.get())))
+
+# Custom JSON serialization for UpdatePartnerResultsResponseArrayItemsInner with custom field names
+proc `%`*(obj: UpdatePartnerResultsResponseArrayItemsInner): JsonNode =
+  result = newJObject()
+  if obj.exception.isSome():
+    result["exception"] = %obj.exception.get()
+  if obj.memberOrPartnerId.isSome():
+    result["member_or_partner_id"] = %obj.memberOrPartnerId.get()
+

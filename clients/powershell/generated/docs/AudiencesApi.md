@@ -34,8 +34,7 @@ $PinterestTagEventData = Initialize-PinterestTagEventData -Currency "UNK" -LeadT
 
 $AudienceRule = Initialize-AudienceRule -Country "US" -CustomerListId "5497558859876" -EngagementDomain "MyEngagementDomain" -EngagementType "click" -VarEvent "checkout" -EventData $PinterestTagEventData -Percentage 3 -PinId "MyPinId" -Prefill $true -RetentionDays 30 -SeedId "MySeedId" -Url "MyUrl" -VisitorSourceId "549755885175" -EventSource  -IngestionSource  -EngagerType 1 -CampaignId "MyCampaignId" -AdId "MyAdId" -ObjectiveType "AWARENESS" -AdAccountId "549755885175"
 
-$AudienceCreateRequest1AudienceType = Initialize-AudienceCreateRequest1AudienceType 
-$AudienceCreateRequest = Initialize-AudienceCreateRequest -AdAccountId "549755885175" -Name "string" -Rule $AudienceRule -Description "string" -AudienceType $AudienceCreateRequest1AudienceType # AudienceCreateRequest | List of ads to create, size limit [1, 30]
+$AudienceCreateRequest = Initialize-AudienceCreateRequest -AdAccountId "549755885175" -Name "string" -Rule $AudienceRule -Description "string" -AudienceType "CUSTOMER_LIST" # AudienceCreateRequest | List of ads to create, size limit [1, 30]
 
 # Create audience
 try {

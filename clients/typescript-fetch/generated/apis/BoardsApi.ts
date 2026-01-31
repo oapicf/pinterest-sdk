@@ -147,8 +147,12 @@ export class BoardsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "boards:write"]);
         }
 
+
+        let urlPath = `/boards/{board_id}/sections`;
+        urlPath = urlPath.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId'])));
+
         const response = await this.request({
-            path: `/boards/{board_id}/sections`.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -199,8 +203,13 @@ export class BoardsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "boards:write"]);
         }
 
+
+        let urlPath = `/boards/{board_id}/sections/{section_id}`;
+        urlPath = urlPath.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId'])));
+        urlPath = urlPath.replace(`{${"section_id"}}`, encodeURIComponent(String(requestParameters['sectionId'])));
+
         const response = await this.request({
-            path: `/boards/{board_id}/sections/{section_id}`.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId']))).replace(`{${"section_id"}}`, encodeURIComponent(String(requestParameters['sectionId']))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -255,8 +264,12 @@ export class BoardsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["boards:read"]);
         }
 
+
+        let urlPath = `/boards/{board_id}/sections`;
+        urlPath = urlPath.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId'])));
+
         const response = await this.request({
-            path: `/boards/{board_id}/sections`.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -319,8 +332,13 @@ export class BoardsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["boards:read", "pins:read"]);
         }
 
+
+        let urlPath = `/boards/{board_id}/sections/{section_id}/pins`;
+        urlPath = urlPath.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId'])));
+        urlPath = urlPath.replace(`{${"section_id"}}`, encodeURIComponent(String(requestParameters['sectionId'])));
+
         const response = await this.request({
-            path: `/boards/{board_id}/sections/{section_id}/pins`.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId']))).replace(`{${"section_id"}}`, encodeURIComponent(String(requestParameters['sectionId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -379,8 +397,13 @@ export class BoardsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "boards:write"]);
         }
 
+
+        let urlPath = `/boards/{board_id}/sections/{section_id}`;
+        urlPath = urlPath.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId'])));
+        urlPath = urlPath.replace(`{${"section_id"}}`, encodeURIComponent(String(requestParameters['sectionId'])));
+
         const response = await this.request({
-            path: `/boards/{board_id}/sections/{section_id}`.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId']))).replace(`{${"section_id"}}`, encodeURIComponent(String(requestParameters['sectionId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -426,8 +449,11 @@ export class BoardsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "boards:write"]);
         }
 
+
+        let urlPath = `/boards`;
+
         const response = await this.request({
-            path: `/boards`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -471,8 +497,12 @@ export class BoardsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "boards:write"]);
         }
 
+
+        let urlPath = `/boards/{board_id}`;
+        urlPath = urlPath.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId'])));
+
         const response = await this.request({
-            path: `/boards/{board_id}`.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId']))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -519,8 +549,12 @@ export class BoardsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["boards:read"]);
         }
 
+
+        let urlPath = `/boards/{board_id}`;
+        urlPath = urlPath.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId'])));
+
         const response = await this.request({
-            path: `/boards/{board_id}`.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -573,8 +607,11 @@ export class BoardsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["boards:read"]);
         }
 
+
+        let urlPath = `/boards`;
+
         const response = await this.request({
-            path: `/boards`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -638,8 +675,12 @@ export class BoardsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["boards:read", "pins:read"]);
         }
 
+
+        let urlPath = `/boards/{board_id}/pins`;
+        urlPath = urlPath.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId'])));
+
         const response = await this.request({
-            path: `/boards/{board_id}/pins`.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -691,8 +732,12 @@ export class BoardsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "boards:write"]);
         }
 
+
+        let urlPath = `/boards/{board_id}`;
+        urlPath = urlPath.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId'])));
+
         const response = await this.request({
-            path: `/boards/{board_id}`.replace(`{${"board_id"}}`, encodeURIComponent(String(requestParameters['boardId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,

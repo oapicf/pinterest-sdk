@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type PinsSaveRequest* = object
   ## 
-  boardId*: string ## Unique identifier of the board to which the pin will be saved.
-  boardSectionId*: string ## Unique identifier of the board section to which the pin will be saved.
+  boardId*: Option[string] ## Unique identifier of the board to which the pin will be saved.
+  boardSectionId*: Option[string] ## Unique identifier of the board section to which the pin will be saved.
+
+
+# Custom JSON deserialization for PinsSaveRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[PinsSaveRequest]): PinsSaveRequest =
+  result = PinsSaveRequest()
+  if node.kind == JObject:
+    if node.hasKey("board_id") and node["board_id"].kind != JNull:
+      result.boardId = some(to(node["board_id"], typeof(result.boardId.get())))
+    if node.hasKey("board_section_id") and node["board_section_id"].kind != JNull:
+      result.boardSectionId = some(to(node["board_section_id"], typeof(result.boardSectionId.get())))
+
+# Custom JSON serialization for PinsSaveRequest with custom field names
+proc `%`*(obj: PinsSaveRequest): JsonNode =
+  result = newJObject()
+  if obj.boardId.isSome():
+    result["board_id"] = %obj.boardId.get()
+  if obj.boardSectionId.isSome():
+    result["board_section_id"] = %obj.boardSectionId.get()
+

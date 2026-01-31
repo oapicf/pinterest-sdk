@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_update_partner_results_response_array_items_inner
 
 type UpdatePartnerResultsResponseArray* = object
   ## 
-  items*: seq[UpdatePartnerResultsResponseArray_items_inner]
+  items*: Option[seq[UpdatePartnerResultsResponseArray_items_inner]]
+

@@ -12,14 +12,10 @@
 /**
  * Order Line Status
  */
-export type OrderLineStatus = 'ACTIVE' | 'PAUSED' | 'DELETED';
-
 export const OrderLineStatus = {
-
-    Active: 'ACTIVE' as OrderLineStatus,
-
-    Paused: 'PAUSED' as OrderLineStatus,
-
-    Deleted: 'DELETED' as OrderLineStatus
-};
+    Active: 'ACTIVE',
+    Paused: 'PAUSED',
+    Deleted: 'DELETED'
+} as const;
+export type OrderLineStatus = typeof OrderLineStatus[keyof typeof OrderLineStatus];
 

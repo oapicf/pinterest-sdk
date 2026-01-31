@@ -87,17 +87,6 @@ class ConversionTagCreateTest extends TestCase
     }
 
     /**
-     * Test attribute "name"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyName(): void
-    {
-        $this->markTestSkipped('Test for property name not implemented');
-    }
-
-    /**
      * Test attribute "aemEnabled"
      *
      * @group unit
@@ -172,5 +161,16 @@ class ConversionTagCreateTest extends TestCase
     public function testPropertyAemLocEnabled(): void
     {
         $this->markTestSkipped('Test for property aemLocEnabled not implemented');
+    }
+
+    /**
+     * Test attribute "name"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyName(): void
+    {
+        $this->markTestSkipped('Test for property name not implemented');
     }
 }

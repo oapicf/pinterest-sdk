@@ -9,12 +9,15 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AudienceSubcategory* = object
   ## 
-  key*: string ## Interest unique key (same as ID).
-  name*: string ## Subinterest name.
-  ratio*: float ## Subinterest's percent of category's total audience.
-  index*: float ## Subinterest affinity index.
-  id*: string ## Subinterest ID.
+  key*: Option[string] ## Interest unique key (same as ID).
+  name*: Option[string] ## Subinterest name.
+  ratio*: Option[float] ## Subinterest's percent of category's total audience.
+  index*: Option[float] ## Subinterest affinity index.
+  id*: Option[string] ## Subinterest ID.
+

@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * JSON object defining targeted audience users. Example rule formats per audience type:&lt;br&gt;CUSTOMER_LIST: { \&quot;customer_list_id\&quot;: \&quot;&amp;lt;customer list ID&amp;gt;\&quot;}&lt;br&gt;ACTALIKE: { \&quot;seed_id\&quot;: [\&quot;&amp;lt;audience ID&amp;gt;\&quot;], \&quot;country\&quot;: \&quot;US\&quot;, \&quot;percentage\&quot;: \&quot;10\&quot; }&lt;br&gt;(Valid countries include: \&quot;US\&quot;, \&quot;CA\&quot;, and \&quot;GB\&quot;. Percentage should be 1-10.&lt;br&gt;The targeted audience should be this % size across Pinterest.)&lt;br&gt;VISITOR: { \&quot;visitor_source_id\&quot;: [\&quot;&amp;lt;conversion tag ID&amp;gt;\&quot;], \&quot;retention_days\&quot;: \&quot;180\&quot;, \&quot;event_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;web\&quot;, \&quot;mobile\&quot;]}, \&quot;ingestion_source\&quot;: {\&quot;&#x3D;\&quot;: [\&quot;tag\&quot;]}}&lt;br&gt;(Retention days should be 1-540. Retention applies to specific customers.)&lt;br&gt;ENGAGEMENT: {\&quot;engagement_domain\&quot;: [\&quot;www.entomi.com\&quot;], \&quot;engager_type\&quot;: 1}&lt;br&gt;For more details on engagement audiences, see &lt;a href&#x3D;\&quot;/docs/redoc/adtech_ads_v4/#section/November-2021\&quot; target&#x3D;\&quot;_blank\&quot;&gt;November 2021 changelog&lt;/a&gt;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceRule {
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
@@ -675,30 +675,10 @@ public class AudienceRule {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("country");
-    openapiFields.add("customer_list_id");
-    openapiFields.add("engagement_domain");
-    openapiFields.add("engagement_type");
-    openapiFields.add("event");
-    openapiFields.add("event_data");
-    openapiFields.add("percentage");
-    openapiFields.add("pin_id");
-    openapiFields.add("prefill");
-    openapiFields.add("retention_days");
-    openapiFields.add("seed_id");
-    openapiFields.add("url");
-    openapiFields.add("visitor_source_id");
-    openapiFields.add("event_source");
-    openapiFields.add("ingestion_source");
-    openapiFields.add("engager_type");
-    openapiFields.add("campaign_id");
-    openapiFields.add("ad_id");
-    openapiFields.add("objective_type");
-    openapiFields.add("ad_account_id");
+    openapiFields = new HashSet<String>(Arrays.asList("country", "customer_list_id", "engagement_domain", "engagement_type", "event", "event_data", "percentage", "pin_id", "prefill", "retention_days", "seed_id", "url", "visitor_source_id", "event_source", "ingestion_source", "engager_type", "campaign_id", "ad_id", "objective_type", "ad_account_id"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -710,7 +690,7 @@ public class AudienceRule {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AudienceRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceRule is not found in the empty JSON string", AudienceRule.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AudienceRule is not found in the empty JSON string", AudienceRule.openapiRequiredFields.toString()));
         }
       }
 
@@ -718,25 +698,25 @@ public class AudienceRule {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AudienceRule.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AudienceRule` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AudienceRule` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
       }
       if ((jsonObj.get("customer_list_id") != null && !jsonObj.get("customer_list_id").isJsonNull()) && !jsonObj.get("customer_list_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customer_list_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_list_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `customer_list_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customer_list_id").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("engagement_domain") != null && !jsonObj.get("engagement_domain").isJsonNull() && !jsonObj.get("engagement_domain").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `engagement_domain` to be an array in the JSON string but got `%s`", jsonObj.get("engagement_domain").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `engagement_domain` to be an array in the JSON string but got `%s`", jsonObj.get("engagement_domain").toString()));
       }
       if ((jsonObj.get("engagement_type") != null && !jsonObj.get("engagement_type").isJsonNull()) && !jsonObj.get("engagement_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `engagement_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("engagement_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `engagement_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("engagement_type").toString()));
       }
       if ((jsonObj.get("event") != null && !jsonObj.get("event").isJsonNull()) && !jsonObj.get("event").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `event` to be a primitive type in the JSON string but got `%s`", jsonObj.get("event").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `event` to be a primitive type in the JSON string but got `%s`", jsonObj.get("event").toString()));
       }
       // validate the optional field `event_data`
       if (jsonObj.get("event_data") != null && !jsonObj.get("event_data").isJsonNull()) {
@@ -744,33 +724,33 @@ public class AudienceRule {
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("pin_id") != null && !jsonObj.get("pin_id").isJsonNull() && !jsonObj.get("pin_id").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pin_id` to be an array in the JSON string but got `%s`", jsonObj.get("pin_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `pin_id` to be an array in the JSON string but got `%s`", jsonObj.get("pin_id").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("seed_id") != null && !jsonObj.get("seed_id").isJsonNull() && !jsonObj.get("seed_id").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `seed_id` to be an array in the JSON string but got `%s`", jsonObj.get("seed_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `seed_id` to be an array in the JSON string but got `%s`", jsonObj.get("seed_id").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull() && !jsonObj.get("url").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `url` to be an array in the JSON string but got `%s`", jsonObj.get("url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `url` to be an array in the JSON string but got `%s`", jsonObj.get("url").toString()));
       }
       if ((jsonObj.get("visitor_source_id") != null && !jsonObj.get("visitor_source_id").isJsonNull()) && !jsonObj.get("visitor_source_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `visitor_source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("visitor_source_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `visitor_source_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("visitor_source_id").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("campaign_id") != null && !jsonObj.get("campaign_id").isJsonNull() && !jsonObj.get("campaign_id").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign_id` to be an array in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `campaign_id` to be an array in the JSON string but got `%s`", jsonObj.get("campaign_id").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("ad_id") != null && !jsonObj.get("ad_id").isJsonNull() && !jsonObj.get("ad_id").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_id` to be an array in the JSON string but got `%s`", jsonObj.get("ad_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_id` to be an array in the JSON string but got `%s`", jsonObj.get("ad_id").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("objective_type") != null && !jsonObj.get("objective_type").isJsonNull() && !jsonObj.get("objective_type").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `objective_type` to be an array in the JSON string but got `%s`", jsonObj.get("objective_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `objective_type` to be an array in the JSON string but got `%s`", jsonObj.get("objective_type").toString()));
       }
       if ((jsonObj.get("ad_account_id") != null && !jsonObj.get("ad_account_id").isJsonNull()) && !jsonObj.get("ad_account_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
       }
   }
 

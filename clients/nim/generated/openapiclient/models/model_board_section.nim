@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type BoardSection* = object
   ## Sections help organize pins within a board.
   id*: string
   name*: string
+

@@ -20,7 +20,6 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsHotelBatchRequest
 import org.openapitools.client.models.CatalogsHotelBatchItem
-import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.Country
 
 class CatalogsHotelBatchRequestTest : ShouldSpec() {
@@ -40,7 +39,7 @@ class CatalogsHotelBatchRequestTest : ShouldSpec() {
             //modelInstance.country shouldBe ("TODO")
         }
 
-        // to test the property `language`
+        // to test the property `language` - We recommend using the CatalogsLocale values.
         should("test language") {
             // uncomment below to test the property
             //modelInstance.language shouldBe ("TODO")

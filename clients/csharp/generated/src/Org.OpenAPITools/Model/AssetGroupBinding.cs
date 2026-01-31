@@ -311,32 +311,25 @@ namespace Org.OpenAPITools.Model
                             assetGroupDescription = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "asset_group_types":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetGroupTypes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            assetGroupTypes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ad_accounts_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                adAccountsIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            adAccountsIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "profiles_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                profilesIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            profilesIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "created_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "updated_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            updatedTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "owner":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                owner = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions));
+                            owner = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "created_by":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdBy = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions));
+                            createdBy = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

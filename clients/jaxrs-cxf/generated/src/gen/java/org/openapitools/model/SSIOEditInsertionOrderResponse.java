@@ -10,10 +10,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SSIOEditInsertionOrderResponse  {
   
-  @ApiModelProperty(value = "Salesforce order id")
  /**
-   * Salesforce order id
-  **/
+  * Salesforce order id
+  */
+  @ApiModelProperty(value = "Salesforce order id")
+
   private String pinOrderId;
  /**
    * Salesforce order id

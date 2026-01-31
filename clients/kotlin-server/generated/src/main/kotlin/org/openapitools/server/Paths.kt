@@ -2050,7 +2050,7 @@ If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics w
      * @param appTypes Apps or devices to get data for, default is all. (optional, default to ALL)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Resource("/pins/analytics") class multiPinsAnalytics(val pinIds: kotlin.collections.List<kotlin.String>, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val appTypes: kotlin.String? = null, val metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>, val adAccountId: kotlin.String? = null)
+    @Resource("/pins/analytics") class multiPinsAnalytics(val pinIds: kotlin.collections.List<kotlin.String>, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val appTypes: kotlin.String? = null, val metricTypes: kotlin.collections.List<kotlin.String>, val adAccountId: kotlin.String? = null)
 
     /**
      * Get Pin analytics
@@ -2071,7 +2071,7 @@ If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics w
      * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split. (optional, default to NO_SPLIT)
      * @param adAccountId Unique identifier of an ad account. (optional)
      */
-    @Resource("/pins/{pin_id}/analytics") class pinsAnalytics(val pinId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val appTypes: kotlin.String? = null, val metricTypes: kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>, val splitField: kotlin.String? = null, val adAccountId: kotlin.String? = null)
+    @Resource("/pins/{pin_id}/analytics") class pinsAnalytics(val pinId: kotlin.String, val startDate: java.time.LocalDate, val endDate: java.time.LocalDate, val appTypes: kotlin.String? = null, val metricTypes: kotlin.collections.List<kotlin.String>, val splitField: kotlin.String? = null, val adAccountId: kotlin.String? = null)
 
     /**
      * Create Pin

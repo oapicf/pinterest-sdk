@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **PreferredProcessingSchedule** | Pointer to [**NullableCatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **CatalogId** | Pointer to **NullableString** | Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future. | [optional] 
-**Status** | Pointer to [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
+**Status** | Pointer to [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to ACTIVE]
 
 ## Methods
 

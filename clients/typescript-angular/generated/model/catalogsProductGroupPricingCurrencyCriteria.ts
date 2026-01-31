@@ -17,13 +17,13 @@ export interface CatalogsProductGroupPricingCurrencyCriteria {
     negated?: boolean;
 }
 export namespace CatalogsProductGroupPricingCurrencyCriteria {
-    export type OperatorEnum = 'GREATER_THAN' | 'GREATER_THAN_OR_EQUALS' | 'LESS_THAN' | 'LESS_THAN_OR_EQUALS';
     export const OperatorEnum = {
-        GreaterThan: 'GREATER_THAN' as OperatorEnum,
-        GreaterThanOrEquals: 'GREATER_THAN_OR_EQUALS' as OperatorEnum,
-        LessThan: 'LESS_THAN' as OperatorEnum,
-        LessThanOrEquals: 'LESS_THAN_OR_EQUALS' as OperatorEnum
-    };
+        GreaterThan: 'GREATER_THAN',
+        GreaterThanOrEquals: 'GREATER_THAN_OR_EQUALS',
+        LessThan: 'LESS_THAN',
+        LessThanOrEquals: 'LESS_THAN_OR_EQUALS'
+    } as const;
+    export type OperatorEnum = typeof OperatorEnum[keyof typeof OperatorEnum];
 }
 
 

@@ -12,10 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UpdateAssetGroupBody  {
   
-  @ApiModelProperty(value = "A list of asset groups and the data that will be used to update them.")
  /**
-   * A list of asset groups and the data that will be used to update them.
-  **/
+  * A list of asset groups and the data that will be used to update them.
+  */
+  @ApiModelProperty(value = "A list of asset groups and the data that will be used to update them.")
+
   private List<UpdateAssetGroupBodyAssetGroupsToUpdateInner> assetGroupsToUpdate = new ArrayList<>();
  /**
    * A list of asset groups and the data that will be used to update them.

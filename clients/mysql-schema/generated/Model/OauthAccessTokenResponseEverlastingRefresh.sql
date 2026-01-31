@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `OauthAccessTokenResponseEverlastingRefresh`
 --
-SELECT `response_type`, `access_token`, `token_type`, `expires_in`, `scope`, `refresh_token`, `refresh_token_expires_in`, `refresh_token_expires_at` FROM `OauthAccessTokenResponseEverlastingRefresh` WHERE 1;
+SELECT `refresh_token`, `refresh_token_expires_in`, `refresh_token_expires_at`, `response_type`, `access_token`, `token_type`, `expires_in`, `scope` FROM `OauthAccessTokenResponseEverlastingRefresh` WHERE 1;
 
 --
 -- INSERT template for table `OauthAccessTokenResponseEverlastingRefresh`
 --
-INSERT INTO `OauthAccessTokenResponseEverlastingRefresh`(`response_type`, `access_token`, `token_type`, `expires_in`, `scope`, `refresh_token`, `refresh_token_expires_in`, `refresh_token_expires_at`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+INSERT INTO `OauthAccessTokenResponseEverlastingRefresh`(`refresh_token`, `refresh_token_expires_in`, `refresh_token_expires_at`, `response_type`, `access_token`, `token_type`, `expires_in`, `scope`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 --
 -- UPDATE template for table `OauthAccessTokenResponseEverlastingRefresh`
 --
-UPDATE `OauthAccessTokenResponseEverlastingRefresh` SET `response_type` = ?, `access_token` = ?, `token_type` = ?, `expires_in` = ?, `scope` = ?, `refresh_token` = ?, `refresh_token_expires_in` = ?, `refresh_token_expires_at` = ? WHERE 1;
+UPDATE `OauthAccessTokenResponseEverlastingRefresh` SET `refresh_token` = ?, `refresh_token_expires_in` = ?, `refresh_token_expires_at` = ?, `response_type` = ?, `access_token` = ?, `token_type` = ?, `expires_in` = ?, `scope` = ? WHERE 1;
 
 --
 -- DELETE template for table `OauthAccessTokenResponseEverlastingRefresh`

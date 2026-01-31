@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class OauthAccessTokenRequestClientCredentials {
+    
+    String scope
 
     enum GrantTypeEnum {
     
@@ -33,6 +35,4 @@ class OauthAccessTokenRequestClientCredentials {
 
     
     GrantTypeEnum grantType
-    
-    String scope
 }

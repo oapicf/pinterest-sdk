@@ -1,36 +1,42 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.PinMedia;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Summarized pin information
- **/
+ * Summarized pin information
+ */
 @ApiModel(description="Summarized pin information")
 
 public class SummaryPin  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private PinMedia media;
 
   @ApiModelProperty(value = "")
+
   private String altText;
 
   @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
+
   private String link;
 
   @ApiModelProperty(value = "")
+
   private String title;
 
   @ApiModelProperty(value = "")
+
   private String description;
  /**
    * Get media

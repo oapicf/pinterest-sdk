@@ -29,7 +29,7 @@ data class CatalogsProductGroupCurrencyCriteria(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("negated") val negated: kotlin.Boolean? = false
-    ) {
+) {
 
 }
 

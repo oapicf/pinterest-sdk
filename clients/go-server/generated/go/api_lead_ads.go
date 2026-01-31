@@ -53,27 +53,63 @@ func NewLeadAdsAPIController(s LeadAdsAPIServicer, opts ...LeadAdsAPIOption) *Le
 func (c *LeadAdsAPIController) Routes() Routes {
 	return Routes{
 		"AdAccountsSubscriptionsGetList": Route{
+			"AdAccountsSubscriptionsGetList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/leads/subscriptions",
 			c.AdAccountsSubscriptionsGetList,
 		},
 		"AdAccountsSubscriptionsPost": Route{
+			"AdAccountsSubscriptionsPost",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/leads/subscriptions",
 			c.AdAccountsSubscriptionsPost,
 		},
 		"AdAccountsSubscriptionsGetById": Route{
+			"AdAccountsSubscriptionsGetById",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}",
 			c.AdAccountsSubscriptionsGetById,
 		},
 		"AdAccountsSubscriptionsDelById": Route{
+			"AdAccountsSubscriptionsDelById",
 			strings.ToUpper("Delete"),
 			"/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}",
 			c.AdAccountsSubscriptionsDelById,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the LeadAdsAPIController
+func (c *LeadAdsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"AdAccountsSubscriptionsGetList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/leads/subscriptions",
+			c.AdAccountsSubscriptionsGetList,
+		},
+		Route{
+			"AdAccountsSubscriptionsPost",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/leads/subscriptions",
+			c.AdAccountsSubscriptionsPost,
+		},
+		Route{
+			"AdAccountsSubscriptionsGetById",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}",
+			c.AdAccountsSubscriptionsGetById,
+		},
+		Route{
+			"AdAccountsSubscriptionsDelById",
+			strings.ToUpper("Delete"),
+			"/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}",
+			c.AdAccountsSubscriptionsDelById,
+		},
+	}
+}
+
+
 
 // AdAccountsSubscriptionsGetList - Get lead ads subscriptions
 func (c *LeadAdsAPIController) AdAccountsSubscriptionsGetList(w http.ResponseWriter, r *http.Request) {

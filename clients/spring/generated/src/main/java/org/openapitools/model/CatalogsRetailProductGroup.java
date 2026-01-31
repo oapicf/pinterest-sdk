@@ -29,7 +29,7 @@ import javax.annotation.Generated;
  * CatalogsRetailProductGroup
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup {
 
   /**
@@ -38,7 +38,7 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
   public enum CatalogTypeEnum {
     RETAIL("RETAIL");
 
-    private String value;
+    private final String value;
 
     CatalogTypeEnum(String value) {
       this.value = value;
@@ -149,7 +149,7 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
     this.id = id;
   }
 
-  public CatalogsRetailProductGroup name(String name) {
+  public CatalogsRetailProductGroup name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -161,11 +161,11 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
   
   @Schema(name = "name", example = "Most Popular", description = "Name of catalog product group", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
@@ -209,7 +209,7 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
     this.filters = filters;
   }
 
-  public CatalogsRetailProductGroup isFeatured(Boolean isFeatured) {
+  public CatalogsRetailProductGroup isFeatured(@Nullable Boolean isFeatured) {
     this.isFeatured = isFeatured;
     return this;
   }
@@ -223,7 +223,7 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
   @Schema(name = "is_featured", description = "boolean indicator of whether the product group is being featured or not", deprecated = true, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_featured")
   @Deprecated
-  public Boolean getIsFeatured() {
+  public @Nullable Boolean getIsFeatured() {
     return isFeatured;
   }
 
@@ -231,11 +231,11 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
    * @deprecated
    */
   @Deprecated
-  public void setIsFeatured(Boolean isFeatured) {
+  public void setIsFeatured(@Nullable Boolean isFeatured) {
     this.isFeatured = isFeatured;
   }
 
-  public CatalogsRetailProductGroup type(CatalogsProductGroupType type) {
+  public CatalogsRetailProductGroup type(@Nullable CatalogsProductGroupType type) {
     this.type = type;
     return this;
   }
@@ -247,15 +247,15 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
   @Valid 
   @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public CatalogsProductGroupType getType() {
+  public @Nullable CatalogsProductGroupType getType() {
     return type;
   }
 
-  public void setType(CatalogsProductGroupType type) {
+  public void setType(@Nullable CatalogsProductGroupType type) {
     this.type = type;
   }
 
-  public CatalogsRetailProductGroup status(CatalogsProductGroupStatus status) {
+  public CatalogsRetailProductGroup status(@Nullable CatalogsProductGroupStatus status) {
     this.status = status;
     return this;
   }
@@ -267,15 +267,15 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public CatalogsProductGroupStatus getStatus() {
+  public @Nullable CatalogsProductGroupStatus getStatus() {
     return status;
   }
 
-  public void setStatus(CatalogsProductGroupStatus status) {
+  public void setStatus(@Nullable CatalogsProductGroupStatus status) {
     this.status = status;
   }
 
-  public CatalogsRetailProductGroup createdAt(Integer createdAt) {
+  public CatalogsRetailProductGroup createdAt(@Nullable Integer createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -287,15 +287,15 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
   
   @Schema(name = "created_at", example = "1621350033000", description = "Unix timestamp in seconds of when catalog product group was created.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_at")
-  public Integer getCreatedAt() {
+  public @Nullable Integer getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(Integer createdAt) {
+  public void setCreatedAt(@Nullable Integer createdAt) {
     this.createdAt = createdAt;
   }
 
-  public CatalogsRetailProductGroup updatedAt(Integer updatedAt) {
+  public CatalogsRetailProductGroup updatedAt(@Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -307,11 +307,11 @@ public class CatalogsRetailProductGroup implements CatalogsVerticalProductGroup 
   
   @Schema(name = "updated_at", example = "1622742155000", description = "Unix timestamp in seconds of last time catalog product group was updated.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_at")
-  public Integer getUpdatedAt() {
+  public @Nullable Integer getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(Integer updatedAt) {
+  public void setUpdatedAt(@Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
   }
 

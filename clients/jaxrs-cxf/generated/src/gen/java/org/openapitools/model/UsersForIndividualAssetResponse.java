@@ -1,39 +1,42 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * An object containing the permissions a business member has on the asset.
- **/
+ * An object containing the permissions a business member has on the asset.
+ */
 @ApiModel(description="An object containing the permissions a business member has on the asset.")
 
 public class UsersForIndividualAssetResponse  {
   
-  @ApiModelProperty(example = "549755885175", value = "Unique identifier of a business asset.")
  /**
-   * Unique identifier of a business asset.
-  **/
+  * Unique identifier of a business asset.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Unique identifier of a business asset.")
+
   private String assetId;
 
-  @ApiModelProperty(example = "140943737684417", value = "Unique identifier of the business member with asset access.")
  /**
-   * Unique identifier of the business member with asset access.
-  **/
+  * Unique identifier of the business member with asset access.
+  */
+  @ApiModelProperty(example = "140943737684417", value = "Unique identifier of the business member with asset access.")
+
   private String memberId;
 
-  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
  /**
-   * Permission levels member or partner has on an asset.
-  **/
+  * Permission levels member or partner has on an asset.
+  */
+  @ApiModelProperty(example = "[\"FINANCE_MANAGER\",\"CATALOGS_MANAGER\",\"AUDIENCE_MANAGER\"]", value = "Permission levels member or partner has on an asset.")
+
   private List<String> permissions = new ArrayList<>();
  /**
    * Unique identifier of a business asset.

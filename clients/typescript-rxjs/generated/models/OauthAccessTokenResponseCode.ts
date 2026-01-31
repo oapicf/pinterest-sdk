@@ -12,11 +12,20 @@
  */
 
 /**
- * A successful OAuth access token response for the authorization code flow.
  * @export
  * @interface OauthAccessTokenResponseCode
  */
 export interface OauthAccessTokenResponseCode {
+    /**
+     * @type {string}
+     * @memberof OauthAccessTokenResponseCode
+     */
+    refresh_token: string;
+    /**
+     * @type {number}
+     * @memberof OauthAccessTokenResponseCode
+     */
+    refresh_token_expires_in: number;
     /**
      * @type {string}
      * @memberof OauthAccessTokenResponseCode
@@ -42,16 +51,6 @@ export interface OauthAccessTokenResponseCode {
      * @memberof OauthAccessTokenResponseCode
      */
     scope: string;
-    /**
-     * @type {string}
-     * @memberof OauthAccessTokenResponseCode
-     */
-    refresh_token: string;
-    /**
-     * @type {number}
-     * @memberof OauthAccessTokenResponseCode
-     */
-    refresh_token_expires_in: number;
 }
 
 /**

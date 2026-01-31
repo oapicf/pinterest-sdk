@@ -50,12 +50,27 @@ func NewOauthAPIController(s OauthAPIServicer, opts ...OauthAPIOption) *OauthAPI
 func (c *OauthAPIController) Routes() Routes {
 	return Routes{
 		"OauthToken": Route{
+			"OauthToken",
 			strings.ToUpper("Post"),
 			"/v5/oauth/token",
 			c.OauthToken,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the OauthAPIController
+func (c *OauthAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"OauthToken",
+			strings.ToUpper("Post"),
+			"/v5/oauth/token",
+			c.OauthToken,
+		},
+	}
+}
+
+
 
 // OauthToken - Generate OAuth access token
 func (c *OauthAPIController) OauthToken(w http.ResponseWriter, r *http.Request) {

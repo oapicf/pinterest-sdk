@@ -13,7 +13,7 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * A request to receive a client token.
+ * 
  * @export
  * @interface OauthAccessTokenRequestClientCredentials
  */
@@ -23,19 +23,19 @@ export interface OauthAccessTokenRequestClientCredentials  {
      * @type {string}
      * @memberof OauthAccessTokenRequestClientCredentials
      */
-    grantType: OauthAccessTokenRequestClientCredentialsGrantTypeEnum;
+    scope: string;
     /**
      * 
      * @type {string}
      * @memberof OauthAccessTokenRequestClientCredentials
      */
-    scope: string;
+    grantType: OauthAccessTokenRequestClientCredentialsGrantTypeEnum;
 }
 
 export function OauthAccessTokenRequestClientCredentialsFromJSON(json: any): OauthAccessTokenRequestClientCredentials {
     return {
-        'grantType': json['grant_type'],
         'scope': json['scope'],
+        'grantType': json['grant_type'],
     };
 }
 
@@ -44,8 +44,8 @@ export function OauthAccessTokenRequestClientCredentialsToJSON(value?: OauthAcce
         return undefined;
     }
     return {
-        'grant_type': value.grantType,
         'scope': value.scope,
+        'grant_type': value.grantType,
     };
 }
 

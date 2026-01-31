@@ -27,7 +27,6 @@ CatalogsRetailFeedsCreateRequest::CatalogsRetailFeedsCreateRequest()
     m_Location = "";
     m_Preferred_processing_scheduleIsSet = false;
     m_Default_availabilityIsSet = false;
-    m_Status = "";
     m_StatusIsSet = false;
     
 }
@@ -288,11 +287,11 @@ void CatalogsRetailFeedsCreateRequest::unsetDefault_availability()
 {
     m_Default_availabilityIsSet = false;
 }
-CatalogsStatus CatalogsRetailFeedsCreateRequest::getStatus() const
+org::openapitools::server::model::CatalogsStatus CatalogsRetailFeedsCreateRequest::getStatus() const
 {
     return m_Status;
 }
-void CatalogsRetailFeedsCreateRequest::setStatus(CatalogsStatus const& value)
+void CatalogsRetailFeedsCreateRequest::setStatus(org::openapitools::server::model::CatalogsStatus const& value)
 {
     m_Status = value;
     m_StatusIsSet = true;

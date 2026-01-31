@@ -25,12 +25,6 @@ class OauthAccessTokenRequestCodeTest : ShouldSpec() {
         // uncomment below to create an instance of OauthAccessTokenRequestCode
         //val modelInstance = OauthAccessTokenRequestCode()
 
-        // to test the property `grantType`
-        should("test grantType") {
-            // uncomment below to test the property
-            //modelInstance.grantType shouldBe ("TODO")
-        }
-
         // to test the property `code`
         should("test code") {
             // uncomment below to test the property
@@ -41,6 +35,12 @@ class OauthAccessTokenRequestCodeTest : ShouldSpec() {
         should("test redirectUri") {
             // uncomment below to test the property
             //modelInstance.redirectUri shouldBe ("TODO")
+        }
+
+        // to test the property `grantType`
+        should("test grantType") {
+            // uncomment below to test the property
+            //modelInstance.grantType shouldBe ("TODO")
         }
 
     }

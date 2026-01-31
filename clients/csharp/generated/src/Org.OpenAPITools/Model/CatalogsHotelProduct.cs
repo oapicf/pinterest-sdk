@@ -191,12 +191,10 @@ namespace Org.OpenAPITools.Model
                                 catalogType = new Option<CatalogsHotelProduct.CatalogTypeEnum?>(CatalogsHotelProduct.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
                             break;
                         case "metadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                metadata = new Option<CatalogsHotelProductMetadata?>(JsonSerializer.Deserialize<CatalogsHotelProductMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            metadata = new Option<CatalogsHotelProductMetadata?>(JsonSerializer.Deserialize<CatalogsHotelProductMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "pin":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pin = new Option<Pin?>(JsonSerializer.Deserialize<Pin>(ref utf8JsonReader, jsonSerializerOptions));
+                            pin = new Option<Pin?>(JsonSerializer.Deserialize<Pin>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

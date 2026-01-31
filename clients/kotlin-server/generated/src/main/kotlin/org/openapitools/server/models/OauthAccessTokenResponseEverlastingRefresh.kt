@@ -14,25 +14,25 @@ package org.openapitools.server.models
 
 import kotlinx.serialization.Serializable
 /**
- * A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
+ * 
+ * @param refreshToken 
+ * @param refreshTokenExpiresIn 
+ * @param refreshTokenExpiresAt 
  * @param accessToken 
  * @param tokenType 
  * @param expiresIn 
  * @param scope 
- * @param refreshToken 
- * @param refreshTokenExpiresIn 
- * @param refreshTokenExpiresAt 
  * @param responseType 
  */
 @Serializable
 data class OauthAccessTokenResponseEverlastingRefresh(
+    val refreshToken: kotlin.String,
+    val refreshTokenExpiresIn: kotlin.Int,
+    val refreshTokenExpiresAt: kotlin.Int,
     val accessToken: kotlin.String,
     val tokenType: kotlin.String = "bearer",
     val expiresIn: kotlin.Int,
     val scope: kotlin.String,
-    val refreshToken: kotlin.String,
-    val refreshTokenExpiresIn: kotlin.Int,
-    val refreshTokenExpiresAt: kotlin.Int,
     val responseType: OauthAccessTokenResponseEverlastingRefresh.ResponseType? = null
 )
 {

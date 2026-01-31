@@ -432,86 +432,86 @@ namespace Org.OpenAPITools.Model
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.CreativeAssetsIdFilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.CreativeAssetsIdFilterOption.Value != null)
             {
-                CreativeAssetsIdFilterJsonConverter CreativeAssetsIdFilterJsonConverter = (CreativeAssetsIdFilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.CreativeAssetsIdFilterOption.Value.GetType()));
-                CreativeAssetsIdFilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.CreativeAssetsIdFilterOption.Value, jsonSerializerOptions);
+                CreativeAssetsIdFilterJsonConverter creativeAssetsIdFilterJsonConverter = (CreativeAssetsIdFilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.CreativeAssetsIdFilterOption.Value.GetType()));
+                creativeAssetsIdFilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.CreativeAssetsIdFilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel0FilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel0FilterOption.Value != null)
             {
-                CustomLabel0FilterJsonConverter CustomLabel0FilterJsonConverter = (CustomLabel0FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel0FilterOption.Value.GetType()));
-                CustomLabel0FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel0FilterOption.Value, jsonSerializerOptions);
+                CustomLabel0FilterJsonConverter customLabel0FilterJsonConverter = (CustomLabel0FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel0FilterOption.Value.GetType()));
+                customLabel0FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel0FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel1FilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel1FilterOption.Value != null)
             {
-                CustomLabel1FilterJsonConverter CustomLabel1FilterJsonConverter = (CustomLabel1FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel1FilterOption.Value.GetType()));
-                CustomLabel1FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel1FilterOption.Value, jsonSerializerOptions);
+                CustomLabel1FilterJsonConverter customLabel1FilterJsonConverter = (CustomLabel1FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel1FilterOption.Value.GetType()));
+                customLabel1FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel1FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel2FilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel2FilterOption.Value != null)
             {
-                CustomLabel2FilterJsonConverter CustomLabel2FilterJsonConverter = (CustomLabel2FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel2FilterOption.Value.GetType()));
-                CustomLabel2FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel2FilterOption.Value, jsonSerializerOptions);
+                CustomLabel2FilterJsonConverter customLabel2FilterJsonConverter = (CustomLabel2FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel2FilterOption.Value.GetType()));
+                customLabel2FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel2FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel3FilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel3FilterOption.Value != null)
             {
-                CustomLabel3FilterJsonConverter CustomLabel3FilterJsonConverter = (CustomLabel3FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel3FilterOption.Value.GetType()));
-                CustomLabel3FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel3FilterOption.Value, jsonSerializerOptions);
+                CustomLabel3FilterJsonConverter customLabel3FilterJsonConverter = (CustomLabel3FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel3FilterOption.Value.GetType()));
+                customLabel3FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel3FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel4FilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel4FilterOption.Value != null)
             {
-                CustomLabel4FilterJsonConverter CustomLabel4FilterJsonConverter = (CustomLabel4FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel4FilterOption.Value.GetType()));
-                CustomLabel4FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel4FilterOption.Value, jsonSerializerOptions);
+                CustomLabel4FilterJsonConverter customLabel4FilterJsonConverter = (CustomLabel4FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel4FilterOption.Value.GetType()));
+                customLabel4FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.CustomLabel4FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory6FilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory6FilterOption.Value != null)
             {
-                GoogleProductCategory6FilterJsonConverter GoogleProductCategory6FilterJsonConverter = (GoogleProductCategory6FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory6FilterOption.Value.GetType()));
-                GoogleProductCategory6FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory6FilterOption.Value, jsonSerializerOptions);
+                GoogleProductCategory6FilterJsonConverter googleProductCategory6FilterJsonConverter = (GoogleProductCategory6FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory6FilterOption.Value.GetType()));
+                googleProductCategory6FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory6FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory5FilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory5FilterOption.Value != null)
             {
-                GoogleProductCategory5FilterJsonConverter GoogleProductCategory5FilterJsonConverter = (GoogleProductCategory5FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory5FilterOption.Value.GetType()));
-                GoogleProductCategory5FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory5FilterOption.Value, jsonSerializerOptions);
+                GoogleProductCategory5FilterJsonConverter googleProductCategory5FilterJsonConverter = (GoogleProductCategory5FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory5FilterOption.Value.GetType()));
+                googleProductCategory5FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory5FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory4FilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory4FilterOption.Value != null)
             {
-                GoogleProductCategory4FilterJsonConverter GoogleProductCategory4FilterJsonConverter = (GoogleProductCategory4FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory4FilterOption.Value.GetType()));
-                GoogleProductCategory4FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory4FilterOption.Value, jsonSerializerOptions);
+                GoogleProductCategory4FilterJsonConverter googleProductCategory4FilterJsonConverter = (GoogleProductCategory4FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory4FilterOption.Value.GetType()));
+                googleProductCategory4FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory4FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory3FilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory3FilterOption.Value != null)
             {
-                GoogleProductCategory3FilterJsonConverter GoogleProductCategory3FilterJsonConverter = (GoogleProductCategory3FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory3FilterOption.Value.GetType()));
-                GoogleProductCategory3FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory3FilterOption.Value, jsonSerializerOptions);
+                GoogleProductCategory3FilterJsonConverter googleProductCategory3FilterJsonConverter = (GoogleProductCategory3FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory3FilterOption.Value.GetType()));
+                googleProductCategory3FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory3FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory2FilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory2FilterOption.Value != null)
             {
-                GoogleProductCategory2FilterJsonConverter GoogleProductCategory2FilterJsonConverter = (GoogleProductCategory2FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory2FilterOption.Value.GetType()));
-                GoogleProductCategory2FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory2FilterOption.Value, jsonSerializerOptions);
+                GoogleProductCategory2FilterJsonConverter googleProductCategory2FilterJsonConverter = (GoogleProductCategory2FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory2FilterOption.Value.GetType()));
+                googleProductCategory2FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory2FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory1FilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory1FilterOption.Value != null)
             {
-                GoogleProductCategory1FilterJsonConverter GoogleProductCategory1FilterJsonConverter = (GoogleProductCategory1FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory1FilterOption.Value.GetType()));
-                GoogleProductCategory1FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory1FilterOption.Value, jsonSerializerOptions);
+                GoogleProductCategory1FilterJsonConverter googleProductCategory1FilterJsonConverter = (GoogleProductCategory1FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory1FilterOption.Value.GetType()));
+                googleProductCategory1FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory1FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory0FilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory0FilterOption.Value != null)
             {
-                GoogleProductCategory0FilterJsonConverter GoogleProductCategory0FilterJsonConverter = (GoogleProductCategory0FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory0FilterOption.Value.GetType()));
-                GoogleProductCategory0FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory0FilterOption.Value, jsonSerializerOptions);
+                GoogleProductCategory0FilterJsonConverter googleProductCategory0FilterJsonConverter = (GoogleProductCategory0FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory0FilterOption.Value.GetType()));
+                googleProductCategory0FilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.GoogleProductCategory0FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilterKeys.MediaTypeFilterOption.IsSet && catalogsCreativeAssetsProductGroupFilterKeys.MediaTypeFilterOption.Value != null)
             {
-                MediaTypeFilterJsonConverter MediaTypeFilterJsonConverter = (MediaTypeFilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.MediaTypeFilterOption.Value.GetType()));
-                MediaTypeFilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.MediaTypeFilterOption.Value, jsonSerializerOptions);
+                MediaTypeFilterJsonConverter mediaTypeFilterJsonConverter = (MediaTypeFilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilterKeys.MediaTypeFilterOption.Value.GetType()));
+                mediaTypeFilterJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys.MediaTypeFilterOption.Value, jsonSerializerOptions);
             }
 
             WriteProperties(writer, catalogsCreativeAssetsProductGroupFilterKeys, jsonSerializerOptions);

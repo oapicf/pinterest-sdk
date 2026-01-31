@@ -1,10 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
+
 #include "BulkAPI.h"
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
+#define MAX_NUMBER_LENGTH_LONG 21
 
 
 // Get advertiser entities in bulk

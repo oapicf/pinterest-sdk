@@ -13,13 +13,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsProductGroupPinsList200Response  {
   
-  @ApiModelProperty(required = true, value = "Pins")
  /**
-   * Pins
-  **/
+  * Pins
+  */
+  @ApiModelProperty(required = true, value = "Pins")
+
   private List<CatalogsProduct> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * Pins

@@ -133,7 +133,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BulkOutputFormat bulkOutputFormat, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(bulkOutputFormat.ToString());
+            writer.WriteStringValue(BulkOutputFormatValueConverter.ToJsonValue(bulkOutputFormat).ToString());
         }
     }
 
@@ -164,14 +164,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the BulkOutputFormat to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="bulkOutputFormat"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BulkOutputFormat? bulkOutputFormat, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(bulkOutputFormat?.ToString() ?? "null");
+            writer.WriteStringValue(bulkOutputFormat.HasValue ? BulkOutputFormatValueConverter.ToJsonValue(bulkOutputFormat.Value).ToString() : "null");
         }
     }
 }

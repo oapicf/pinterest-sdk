@@ -65,7 +65,7 @@ data class CatalogsUpdatableCreativeAssetsAttributes(
 
     @Schema(example = "null", description = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.")
     @get:JsonProperty("visibility") val visibility: kotlin.String? = null
-    ) {
+) {
 
 }
 

@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreateAssetGroupResponse  {
   
   @ApiModelProperty(value = "")
+
   private AssetGroupBinding assetGroup;
  /**
    * Get assetGroup

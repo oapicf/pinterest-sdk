@@ -20,30 +20,11 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.InviteBusinessRoleBinding
 import org.openapitools.client.models.BaseInviteDataResponseInviteData
-import org.openapitools.client.models.BusinessAccessUserSummary
 
 class InviteBusinessRoleBindingTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of InviteBusinessRoleBinding
         //val modelInstance = InviteBusinessRoleBinding()
-
-        // to test the property `createdByBusinessId` - Unique identifier for the business that created the invite/request.
-        should("test createdByBusinessId") {
-            // uncomment below to test the property
-            //modelInstance.createdByBusinessId shouldBe ("TODO")
-        }
-
-        // to test the property `createdByUserId` - Unique identifier for the user that created the invite/request.
-        should("test createdByUserId") {
-            // uncomment below to test the property
-            //modelInstance.createdByUserId shouldBe ("TODO")
-        }
-
-        // to test the property `user` - Metadata for the user that updated the invite/request.
-        should("test user") {
-            // uncomment below to test the property
-            //modelInstance.user shouldBe ("TODO")
-        }
 
         // to test the property `id` - Unique identifier of the invite/request.
         should("test id") {
@@ -61,6 +42,24 @@ class InviteBusinessRoleBindingTest : ShouldSpec() {
         should("test isReceivedInvite") {
             // uncomment below to test the property
             //modelInstance.isReceivedInvite shouldBe ("TODO")
+        }
+
+        // to test the property `user` - Metadata for the user that updated the invite/request.
+        should("test user") {
+            // uncomment below to test the property
+            //modelInstance.user shouldBe ("TODO")
+        }
+
+        // to test the property `createdByBusinessId` - Unique identifier for the business that created the invite/request.
+        should("test createdByBusinessId") {
+            // uncomment below to test the property
+            //modelInstance.createdByBusinessId shouldBe ("TODO")
+        }
+
+        // to test the property `createdByUserId` - Unique identifier for the user that created the invite/request.
+        should("test createdByUserId") {
+            // uncomment below to test the property
+            //modelInstance.createdByUserId shouldBe ("TODO")
         }
 
     }

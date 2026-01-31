@@ -9,15 +9,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PinMediaSourceImagesBase64ItemsInner  {
   
   @ApiModelProperty(value = "")
+
   private String title;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
-  @ApiModelProperty(value = "Destination link for the image.")
  /**
-   * Destination link for the image.
-  **/
+  * Destination link for the image.
+  */
+  @ApiModelProperty(value = "Destination link for the image.")
+
   private String link;
 
 public enum ContentTypeEnum {
@@ -51,12 +54,14 @@ IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"))
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private ContentTypeEnum contentType;
 
-  @ApiModelProperty(required = true, value = "Image to upload as base64 string.")
  /**
-   * Image to upload as base64 string.
-  **/
+  * Image to upload as base64 string.
+  */
+  @ApiModelProperty(required = true, value = "Image to upload as base64 string.")
+
   private String data;
  /**
    * Get title

@@ -13,8 +13,8 @@
 
 import type {
     AudienceCommon,
-    AudienceCreateRequest1AudienceType,
     AudienceRule,
+    AudienceType,
 } from './';
 
 /**

@@ -19,9 +19,8 @@ local function cast_conversion_tag_create(t)
 	return setmetatable(t, conversion_tag_create_mt)
 end
 
-local function new_conversion_tag_create(name, aem_enabled, md_frequency, aem_fnln_enabled, aem_ph_enabled, aem_ge_enabled, aem_db_enabled, aem_loc_enabled)
+local function new_conversion_tag_create(aem_enabled, md_frequency, aem_fnln_enabled, aem_ph_enabled, aem_ge_enabled, aem_db_enabled, aem_loc_enabled, name)
 	return cast_conversion_tag_create({
-		["name"] = name;
 		["aem_enabled"] = aem_enabled;
 		["md_frequency"] = md_frequency;
 		["aem_fnln_enabled"] = aem_fnln_enabled;
@@ -29,6 +28,7 @@ local function new_conversion_tag_create(name, aem_enabled, md_frequency, aem_fn
 		["aem_ge_enabled"] = aem_ge_enabled;
 		["aem_db_enabled"] = aem_db_enabled;
 		["aem_loc_enabled"] = aem_loc_enabled;
+		["name"] = name;
 	})
 end
 

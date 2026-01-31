@@ -73,23 +73,23 @@ private class OASOauthAccessTokenResponseCodeTest {
     private static void maintainRenamedProperties() {
         OASOauthAccessTokenResponseCode oauthAccessTokenResponseCode = new OASOauthAccessTokenResponseCode();
         Map<String, String> x-property-mappings = oauthAccessTokenResponseCode.getx-property-mappings();
+        System.assertEquals('refreshToken', x-property-mappings.get('refresh_token'));
+        System.assertEquals('refreshTokenExpiresIn', x-property-mappings.get('refresh_token_expires_in'));
         System.assertEquals('responseType', x-property-mappings.get('response_type'));
         System.assertEquals('accessToken', x-property-mappings.get('access_token'));
         System.assertEquals('tokenType', x-property-mappings.get('token_type'));
         System.assertEquals('expiresIn', x-property-mappings.get('expires_in'));
-        System.assertEquals('refreshToken', x-property-mappings.get('refresh_token'));
-        System.assertEquals('refreshTokenExpiresIn', x-property-mappings.get('refresh_token_expires_in'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASOauthAccessTokenResponseCode oauthAccessTokenResponseCode = new OASOauthAccessTokenResponseCode();
         System.assertEquals('bearer', oauthAccessTokenResponseCode.tokenType);
+        System.assertEquals(null, oauthAccessTokenResponseCode.refreshToken);
+        System.assertEquals(null, oauthAccessTokenResponseCode.refreshTokenExpiresIn);
         System.assertEquals(null, oauthAccessTokenResponseCode.responseType);
         System.assertEquals(null, oauthAccessTokenResponseCode.accessToken);
         System.assertEquals(null, oauthAccessTokenResponseCode.expiresIn);
         System.assertEquals(null, oauthAccessTokenResponseCode.scope);
-        System.assertEquals(null, oauthAccessTokenResponseCode.refreshToken);
-        System.assertEquals(null, oauthAccessTokenResponseCode.refreshTokenExpiresIn);
     }
 }

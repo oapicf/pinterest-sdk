@@ -54,37 +54,87 @@ func NewBusinessAccessRelationshipsAPIController(s BusinessAccessRelationshipsAP
 func (c *BusinessAccessRelationshipsAPIController) Routes() Routes {
 	return Routes{
 		"GetBusinessEmployers": Route{
+			"GetBusinessEmployers",
 			strings.ToUpper("Get"),
 			"/v5/businesses/employers",
 			c.GetBusinessEmployers,
 		},
 		"GetBusinessMembers": Route{
+			"GetBusinessMembers",
 			strings.ToUpper("Get"),
 			"/v5/businesses/{business_id}/members",
 			c.GetBusinessMembers,
 		},
 		"DeleteBusinessMembership": Route{
+			"DeleteBusinessMembership",
 			strings.ToUpper("Delete"),
 			"/v5/businesses/{business_id}/members",
 			c.DeleteBusinessMembership,
 		},
 		"UpdateBusinessMemberships": Route{
+			"UpdateBusinessMemberships",
 			strings.ToUpper("Patch"),
 			"/v5/businesses/{business_id}/members",
 			c.UpdateBusinessMemberships,
 		},
 		"GetBusinessPartners": Route{
+			"GetBusinessPartners",
 			strings.ToUpper("Get"),
 			"/v5/businesses/{business_id}/partners",
 			c.GetBusinessPartners,
 		},
 		"DeleteBusinessPartners": Route{
+			"DeleteBusinessPartners",
 			strings.ToUpper("Delete"),
 			"/v5/businesses/{business_id}/partners",
 			c.DeleteBusinessPartners,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the BusinessAccessRelationshipsAPIController
+func (c *BusinessAccessRelationshipsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"GetBusinessEmployers",
+			strings.ToUpper("Get"),
+			"/v5/businesses/employers",
+			c.GetBusinessEmployers,
+		},
+		Route{
+			"GetBusinessMembers",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/members",
+			c.GetBusinessMembers,
+		},
+		Route{
+			"DeleteBusinessMembership",
+			strings.ToUpper("Delete"),
+			"/v5/businesses/{business_id}/members",
+			c.DeleteBusinessMembership,
+		},
+		Route{
+			"UpdateBusinessMemberships",
+			strings.ToUpper("Patch"),
+			"/v5/businesses/{business_id}/members",
+			c.UpdateBusinessMemberships,
+		},
+		Route{
+			"GetBusinessPartners",
+			strings.ToUpper("Get"),
+			"/v5/businesses/{business_id}/partners",
+			c.GetBusinessPartners,
+		},
+		Route{
+			"DeleteBusinessPartners",
+			strings.ToUpper("Delete"),
+			"/v5/businesses/{business_id}/partners",
+			c.DeleteBusinessPartners,
+		},
+	}
+}
+
+
 
 // GetBusinessEmployers - List business employers for user
 func (c *BusinessAccessRelationshipsAPIController) GetBusinessEmployers(w http.ResponseWriter, r *http.Request) {

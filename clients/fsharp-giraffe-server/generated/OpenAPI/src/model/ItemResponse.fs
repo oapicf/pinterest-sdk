@@ -17,8 +17,10 @@ module ItemResponse =
   type ItemResponse = {
     CatalogType : CatalogsType;
     ItemId : string;
-    Errors : ItemValidationEvent[];
+    Pins : Pin[];
+    Attributes : CatalogsCreativeAssetsAttributes;
     HotelId : string;
     CreativeAssetsId : string;
+    Errors : ItemValidationEvent[];
   }
   //#endregion

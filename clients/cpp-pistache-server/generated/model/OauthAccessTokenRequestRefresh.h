@@ -12,7 +12,7 @@
 /*
  * OauthAccessTokenRequestRefresh.h
  *
- * A request to exchange a refresh token for a new access token.
+ * 
  */
 
 #ifndef OauthAccessTokenRequestRefresh_H_
@@ -26,7 +26,7 @@ namespace org::openapitools::server::model
 {
 
 /// <summary>
-/// A request to exchange a refresh token for a new access token.
+/// 
 /// </summary>
 class  OauthAccessTokenRequestRefresh
 {
@@ -61,11 +61,6 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::string getGrantType() const;
-    void setGrantType(std::string const& value);
-    /// <summary>
-    /// 
-    /// </summary>
     std::string getRefreshToken() const;
     void setRefreshToken(std::string const& value);
     /// <summary>
@@ -82,18 +77,23 @@ public:
     void setRefreshOn(bool const value);
     bool refreshOnIsSet() const;
     void unsetRefresh_on();
+    /// <summary>
+    /// 
+    /// </summary>
+    std::string getGrantType() const;
+    void setGrantType(std::string const& value);
 
     friend  void to_json(nlohmann::json& j, const OauthAccessTokenRequestRefresh& o);
     friend  void from_json(const nlohmann::json& j, OauthAccessTokenRequestRefresh& o);
 protected:
-    std::string m_Grant_type;
-
     std::string m_Refresh_token;
 
     std::string m_Scope;
     bool m_ScopeIsSet;
     bool m_Refresh_on;
     bool m_Refresh_onIsSet;
+    std::string m_Grant_type;
+
     
 };
 

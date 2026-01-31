@@ -41,7 +41,7 @@ data class BillingProfilesResponse(
 
     @Schema(example = "VISA", description = "Brand of the payment method.")
     @get:JsonProperty("payment_method_brand") val paymentMethodBrand: BillingProfilesResponse.PaymentMethodBrand? = null
-    ) {
+) {
 
     /**
     * Type of the card.
@@ -60,7 +60,8 @@ data class BillingProfilesResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CardType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingProfilesResponse'")
             }
         }
     }
@@ -83,7 +84,8 @@ data class BillingProfilesResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Status {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingProfilesResponse'")
             }
         }
     }
@@ -108,7 +110,8 @@ data class BillingProfilesResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): PaymentMethodBrand {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BillingProfilesResponse'")
             }
         }
     }

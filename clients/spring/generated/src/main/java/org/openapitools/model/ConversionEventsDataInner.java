@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("ConversionEvents_data_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventsDataInner {
 
   private String eventName;
@@ -182,7 +182,7 @@ public class ConversionEventsDataInner {
     this.eventSourceUrl = eventSourceUrl;
   }
 
-  public ConversionEventsDataInner optOut(Boolean optOut) {
+  public ConversionEventsDataInner optOut(@Nullable Boolean optOut) {
     this.optOut = optOut;
     return this;
   }
@@ -194,11 +194,11 @@ public class ConversionEventsDataInner {
   
   @Schema(name = "opt_out", example = "false", description = "When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("opt_out")
-  public Boolean getOptOut() {
+  public @Nullable Boolean getOptOut() {
     return optOut;
   }
 
-  public void setOptOut(Boolean optOut) {
+  public void setOptOut(@Nullable Boolean optOut) {
     this.optOut = optOut;
   }
 
@@ -242,7 +242,7 @@ public class ConversionEventsDataInner {
     this.userData = userData;
   }
 
-  public ConversionEventsDataInner customData(ConversionEventsDataInnerCustomData customData) {
+  public ConversionEventsDataInner customData(@Nullable ConversionEventsDataInnerCustomData customData) {
     this.customData = customData;
     return this;
   }
@@ -254,11 +254,11 @@ public class ConversionEventsDataInner {
   @Valid 
   @Schema(name = "custom_data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("custom_data")
-  public ConversionEventsDataInnerCustomData getCustomData() {
+  public @Nullable ConversionEventsDataInnerCustomData getCustomData() {
     return customData;
   }
 
-  public void setCustomData(ConversionEventsDataInnerCustomData customData) {
+  public void setCustomData(@Nullable ConversionEventsDataInnerCustomData customData) {
     this.customData = customData;
   }
 
@@ -422,7 +422,7 @@ public class ConversionEventsDataInner {
     this.osVersion = osVersion;
   }
 
-  public ConversionEventsDataInner wifi(Boolean wifi) {
+  public ConversionEventsDataInner wifi(@Nullable Boolean wifi) {
     this.wifi = wifi;
     return this;
   }
@@ -434,11 +434,11 @@ public class ConversionEventsDataInner {
   
   @Schema(name = "wifi", example = "false", description = "Whether the event occurred when the user device was connected to wifi.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("wifi")
-  public Boolean getWifi() {
+  public @Nullable Boolean getWifi() {
     return wifi;
   }
 
-  public void setWifi(Boolean wifi) {
+  public void setWifi(@Nullable Boolean wifi) {
     this.wifi = wifi;
   }
 

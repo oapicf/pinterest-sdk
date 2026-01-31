@@ -42,7 +42,7 @@ import javax.validation.Valid;
   LeadFormCreateRequest.JSON_PROPERTY_QUESTIONS,
   LeadFormCreateRequest.JSON_PROPERTY_POLICY_LINKS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadFormCreateRequest   {
   public static final String JSON_PROPERTY_NAME = "name";
   @JsonProperty(JSON_PROPERTY_NAME)
@@ -86,8 +86,8 @@ public class LeadFormCreateRequest   {
    * @return name
    **/
   @JsonProperty(value = "name")
-  @ApiModelProperty(example = "Lead Form 3/14/2023", required = true, value = "Internal name of the lead form.")
-  @NotNull 
+  @ApiModelProperty(example = "Lead Form 3/14/2023", value = "Internal name of the lead form.")
+  
   public String getName() {
     return name;
   }
@@ -106,8 +106,8 @@ public class LeadFormCreateRequest   {
    * @return privacyPolicyLink
    **/
   @JsonProperty(value = "privacy_policy_link")
-  @ApiModelProperty(example = "https://www.advertisername.com/privacy-policy", required = true, value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
-  @NotNull 
+  @ApiModelProperty(example = "https://www.advertisername.com/privacy-policy", value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
+  
   public String getPrivacyPolicyLink() {
     return privacyPolicyLink;
   }
@@ -126,8 +126,8 @@ public class LeadFormCreateRequest   {
    * @return hasAcceptedTerms
    **/
   @JsonProperty(value = "has_accepted_terms")
-  @ApiModelProperty(example = "false", required = true, value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
-  @NotNull 
+  @ApiModelProperty(example = "false", value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
+  
   public Boolean getHasAcceptedTerms() {
     return hasAcceptedTerms;
   }
@@ -146,8 +146,8 @@ public class LeadFormCreateRequest   {
    * @return completionMessage
    **/
   @JsonProperty(value = "completion_message")
-  @ApiModelProperty(example = "Thank you for submitting. We will contact you soon.", required = true, value = "A message for people who complete the form to let them know what happens next.")
-  @NotNull 
+  @ApiModelProperty(example = "Thank you for submitting. We will contact you soon.", value = "A message for people who complete the form to let them know what happens next.")
+  
   public String getCompletionMessage() {
     return completionMessage;
   }
@@ -214,8 +214,8 @@ public class LeadFormCreateRequest   {
    * @return questions
    **/
   @JsonProperty(value = "questions")
-  @ApiModelProperty(example = "[{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}]", required = true, value = "List of questions to be displayed on the lead form.")
-  @NotNull @Valid  @Size(min=0,max=10)
+  @ApiModelProperty(example = "[{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}]", value = "List of questions to be displayed on the lead form.")
+  @Valid  @Size(min=0,max=10)
   public List<@Valid LeadFormQuestion> getQuestions() {
     return questions;
   }

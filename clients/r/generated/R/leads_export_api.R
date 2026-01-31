@@ -120,13 +120,19 @@ LeadsExportApi <- R6::R6Class(
         stop("Missing required parameter `leads_export_create_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling LeadsExportApi$LeadsExportCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling LeadsExportApi$LeadsExportCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling LeadsExportApi$LeadsExportCreate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`leads_export_create_request`) && is.null(`leads_export_create_request`)) {
+        stop("Invalid value for `leads_export_create_request` when calling LeadsExportApi$LeadsExportCreate, `leads_export_create_request` is not nullable")
+      }
 
       if (!is.null(`leads_export_create_request`)) {
         local_var_body <- `leads_export_create_request`$toJSONString()
@@ -240,14 +246,20 @@ LeadsExportApi <- R6::R6Class(
         stop("Missing required parameter `leads_export_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling LeadsExportApi$LeadsExportGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling LeadsExportApi$LeadsExportGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling LeadsExportApi$LeadsExportGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (!str_detect(`leads_export_id`, "^\\d+$")) {
+      if (!missing(`leads_export_id`) && is.null(`leads_export_id`)) {
+        stop("Invalid value for `leads_export_id` when calling LeadsExportApi$LeadsExportGet, `leads_export_id` is not nullable")
+      }
+      if (!is.null(`leads_export_id`) && !stringr::str_detect(`leads_export_id`, "^\\d+$")) {
         stop("Invalid value for `leads_export_id` when calling LeadsExportApi$LeadsExportGet, must conform to the pattern ^\\d+$.")
       }
 

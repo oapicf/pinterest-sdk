@@ -735,48 +735,37 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "AGE_BUCKET":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aGEBUCKET = new Option<List<TargetingSpec.AGEBUCKETEnum>?>(JsonSerializer.Deserialize<List<TargetingSpec.AGEBUCKETEnum>>(ref utf8JsonReader, jsonSerializerOptions));
+                            aGEBUCKET = new Option<List<TargetingSpec.AGEBUCKETEnum>?>(JsonSerializer.Deserialize<List<TargetingSpec.AGEBUCKETEnum>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "APPTYPE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aPPTYPE = new Option<List<TargetingSpec.APPTYPEEnum>?>(JsonSerializer.Deserialize<List<TargetingSpec.APPTYPEEnum>>(ref utf8JsonReader, jsonSerializerOptions));
+                            aPPTYPE = new Option<List<TargetingSpec.APPTYPEEnum>?>(JsonSerializer.Deserialize<List<TargetingSpec.APPTYPEEnum>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "AUDIENCE_EXCLUDE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aUDIENCEEXCLUDE = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            aUDIENCEEXCLUDE = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "AUDIENCE_INCLUDE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aUDIENCEINCLUDE = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            aUDIENCEINCLUDE = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "GENDER":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                gENDER = new Option<List<TargetingSpec.GENDEREnum>?>(JsonSerializer.Deserialize<List<TargetingSpec.GENDEREnum>>(ref utf8JsonReader, jsonSerializerOptions));
+                            gENDER = new Option<List<TargetingSpec.GENDEREnum>?>(JsonSerializer.Deserialize<List<TargetingSpec.GENDEREnum>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "GEO":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                gEO = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            gEO = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "INTEREST":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                iNTEREST = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            iNTEREST = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "LOCALE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lOCALE = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            lOCALE = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "LOCATION":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lOCATION = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            lOCATION = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "SHOPPING_RETARGETING":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sHOPPINGRETARGETING = new Option<List<TargetingSpecSHOPPINGRETARGETING>?>(JsonSerializer.Deserialize<List<TargetingSpecSHOPPINGRETARGETING>>(ref utf8JsonReader, jsonSerializerOptions));
+                            sHOPPINGRETARGETING = new Option<List<TargetingSpecSHOPPINGRETARGETING>?>(JsonSerializer.Deserialize<List<TargetingSpecSHOPPINGRETARGETING>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "TARGETING_STRATEGY":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tARGETINGSTRATEGY = new Option<List<TargetingSpec.TARGETINGSTRATEGYEnum>?>(JsonSerializer.Deserialize<List<TargetingSpec.TARGETINGSTRATEGYEnum>>(ref utf8JsonReader, jsonSerializerOptions));
+                            tARGETINGSTRATEGY = new Option<List<TargetingSpec.TARGETINGSTRATEGYEnum>?>(JsonSerializer.Deserialize<List<TargetingSpec.TARGETINGSTRATEGYEnum>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

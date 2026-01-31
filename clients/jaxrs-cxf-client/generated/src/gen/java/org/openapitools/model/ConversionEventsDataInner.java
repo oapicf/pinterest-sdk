@@ -11,112 +11,131 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ConversionEventsDataInner  {
   
-  @ApiModelProperty(example = "checkout", required = true, value = "<p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> ")
  /**
-   * <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
-  **/
+  * <p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> 
+  */
+  @ApiModelProperty(example = "checkout", required = true, value = "<p>The type of the user event. Please use the right event_name otherwise the event won't be accepted and show up correctly in reports.   <ul>   <li><code>add_to_cart</code></li>   <li><code>checkout</code></li>   <li><code>custom</code></li>   <li><code>lead</code></li>   <li><code>page_visit</code></li>   <li><code>search</code></li>   <li><code>signup</code></li>   <li><code>view_category</code></li>   <li><code>watch_video</code></li>   </ul> </p> ")
+
   private String eventName;
 
-  @ApiModelProperty(example = "app_ios", required = true, value = "<p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> ")
  /**
-   * <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
-  **/
+  * <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
+  */
+  @ApiModelProperty(example = "app_ios", required = true, value = "<p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> ")
+
   private String actionSource;
 
-  @ApiModelProperty(example = "1451431341", required = true, value = "The time when the event happened. Unix timestamp in seconds.")
  /**
-   * The time when the event happened. Unix timestamp in seconds.
-  **/
+  * The time when the event happened. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1451431341", required = true, value = "The time when the event happened. Unix timestamp in seconds.")
+
   private Long eventTime;
 
-  @ApiModelProperty(example = "eventId0001", required = true, value = "A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.")
  /**
-   * A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
-  **/
+  * A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
+  */
+  @ApiModelProperty(example = "eventId0001", required = true, value = "A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.")
+
   private String eventId;
 
-  @ApiModelProperty(example = "https://www.my-clothing-shop.org/", value = "URL of the web conversion event.")
  /**
-   * URL of the web conversion event.
-  **/
+  * URL of the web conversion event.
+  */
+  @ApiModelProperty(example = "https://www.my-clothing-shop.org/", value = "URL of the web conversion event.")
+
   private String eventSourceUrl;
 
-  @ApiModelProperty(example = "false", value = "When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.")
  /**
-   * When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
-  **/
+  * When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
+  */
+  @ApiModelProperty(example = "false", value = "When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.")
+
   private Boolean optOut;
 
-  @ApiModelProperty(example = "ss-partnername", value = "The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’")
  /**
-   * The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
-  **/
+  * The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
+  */
+  @ApiModelProperty(example = "ss-partnername", value = "The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’")
+
   private String partnerName;
 
   @ApiModelProperty(required = true, value = "")
+
   private ConversionEventsUserData userData;
 
   @ApiModelProperty(value = "")
+
   private ConversionEventsDataInnerCustomData customData;
 
-  @ApiModelProperty(example = "429047995", value = "The app store app ID.")
  /**
-   * The app store app ID.
-  **/
+  * The app store app ID.
+  */
+  @ApiModelProperty(example = "429047995", value = "The app store app ID.")
+
   private String appId;
 
-  @ApiModelProperty(example = "Pinterest", value = "Name of the app.")
  /**
-   * Name of the app.
-  **/
+  * Name of the app.
+  */
+  @ApiModelProperty(example = "Pinterest", value = "Name of the app.")
+
   private String appName;
 
-  @ApiModelProperty(example = "7.9", value = "Version of the app.")
  /**
-   * Version of the app.
-  **/
+  * Version of the app.
+  */
+  @ApiModelProperty(example = "7.9", value = "Version of the app.")
+
   private String appVersion;
 
-  @ApiModelProperty(example = "Apple", value = "Brand of the user device.")
  /**
-   * Brand of the user device.
-  **/
+  * Brand of the user device.
+  */
+  @ApiModelProperty(example = "Apple", value = "Brand of the user device.")
+
   private String deviceBrand;
 
-  @ApiModelProperty(example = "T-Mobile", value = "User device's mobile carrier.")
  /**
-   * User device's mobile carrier.
-  **/
+  * User device's mobile carrier.
+  */
+  @ApiModelProperty(example = "T-Mobile", value = "User device's mobile carrier.")
+
   private String deviceCarrier;
 
-  @ApiModelProperty(example = "iPhone X", value = "Model of the user device.")
  /**
-   * Model of the user device.
-  **/
+  * Model of the user device.
+  */
+  @ApiModelProperty(example = "iPhone X", value = "Model of the user device.")
+
   private String deviceModel;
 
-  @ApiModelProperty(example = "iPhone", value = "Type of the user device.")
  /**
-   * Type of the user device.
-  **/
+  * Type of the user device.
+  */
+  @ApiModelProperty(example = "iPhone", value = "Type of the user device.")
+
   private String deviceType;
 
-  @ApiModelProperty(example = "12.1.4", value = "Version of the device operating system.")
  /**
-   * Version of the device operating system.
-  **/
+  * Version of the device operating system.
+  */
+  @ApiModelProperty(example = "12.1.4", value = "Version of the device operating system.")
+
   private String osVersion;
 
-  @ApiModelProperty(example = "false", value = "Whether the event occurred when the user device was connected to wifi.")
  /**
-   * Whether the event occurred when the user device was connected to wifi.
-  **/
+  * Whether the event occurred when the user device was connected to wifi.
+  */
+  @ApiModelProperty(example = "false", value = "Whether the event occurred when the user device was connected to wifi.")
+
   private Boolean wifi;
 
-  @ApiModelProperty(example = "en", value = "Two-character ISO-639-1 language code indicating the user's language.")
  /**
-   * Two-character ISO-639-1 language code indicating the user's language.
-  **/
+  * Two-character ISO-639-1 language code indicating the user's language.
+  */
+  @ApiModelProperty(example = "en", value = "Two-character ISO-639-1 language code indicating the user's language.")
+
   private String language;
  /**
    * &lt;p&gt;The type of the user event. Please use the right event_name otherwise the event won&#39;t be accepted and show up correctly in reports.   &lt;ul&gt;   &lt;li&gt;&lt;code&gt;add_to_cart&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;checkout&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;custom&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;lead&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;page_visit&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;search&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;signup&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;view_category&lt;/code&gt;&lt;/li&gt;   &lt;li&gt;&lt;code&gt;watch_video&lt;/code&gt;&lt;/li&gt;   &lt;/ul&gt; &lt;/p&gt; 

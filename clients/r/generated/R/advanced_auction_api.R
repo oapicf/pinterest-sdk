@@ -116,11 +116,17 @@ AdvancedAuctionApi <- R6::R6Class(
         stop("Missing required parameter `advanced_auction_items_get_request`.")
       }
 
+      if (!missing(`advanced_auction_items_get_request`) && is.null(`advanced_auction_items_get_request`)) {
+        stop("Invalid value for `advanced_auction_items_get_request` when calling AdvancedAuctionApi$AdvancedAuctionItemsGetPost, `advanced_auction_items_get_request` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdvancedAuctionApi$AdvancedAuctionItemsGetPost, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdvancedAuctionApi$AdvancedAuctionItemsGetPost, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdvancedAuctionApi$AdvancedAuctionItemsGetPost, must conform to the pattern ^\\d+$.")
       }
 
@@ -230,11 +236,17 @@ AdvancedAuctionApi <- R6::R6Class(
         stop("Missing required parameter `advanced_auction_items_submit_request`.")
       }
 
+      if (!missing(`advanced_auction_items_submit_request`) && is.null(`advanced_auction_items_submit_request`)) {
+        stop("Invalid value for `advanced_auction_items_submit_request` when calling AdvancedAuctionApi$AdvancedAuctionItemsSubmitPost, `advanced_auction_items_submit_request` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdvancedAuctionApi$AdvancedAuctionItemsSubmitPost, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdvancedAuctionApi$AdvancedAuctionItemsSubmitPost, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdvancedAuctionApi$AdvancedAuctionItemsSubmitPost, must conform to the pattern ^\\d+$.")
       }
 

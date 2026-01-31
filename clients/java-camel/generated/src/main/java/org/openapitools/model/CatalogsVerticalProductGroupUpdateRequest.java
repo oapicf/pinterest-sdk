@@ -37,13 +37,10 @@ import javax.annotation.Generated;
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroupUpdateRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelProductGroupUpdateRequest.class, name = "HOTEL"),
-  @JsonSubTypes.Type(value = CatalogsRetailProductGroupUpdateRequest.class, name = "RETAIL"),
-  @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroupUpdateRequest.class, name = "CatalogsCreativeAssetsProductGroupUpdateRequest"),
-  @JsonSubTypes.Type(value = CatalogsHotelProductGroupUpdateRequest.class, name = "CatalogsHotelProductGroupUpdateRequest"),
-  @JsonSubTypes.Type(value = CatalogsRetailProductGroupUpdateRequest.class, name = "CatalogsRetailProductGroupUpdateRequest")
+  @JsonSubTypes.Type(value = CatalogsRetailProductGroupUpdateRequest.class, name = "RETAIL")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface CatalogsVerticalProductGroupUpdateRequest extends CatalogsProductGroupsUpdateRequest {
     public String getCatalogType();
 }

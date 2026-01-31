@@ -9,31 +9,47 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_batch_item
 import model_catalogs_creative_assets_batch_request
 import model_catalogs_hotel_batch_request
-import model_catalogs_items_request_language
 import model_catalogs_retail_batch_request
 import model_country
 
-type CatalogType* {.pure.} = enum
-  CREATIVEASSETS
+# OneOf type
+type CatalogsVerticalBatchRequestKind* {.pure.} = enum
+  CatalogsRetailBatchRequestVariant
+  CatalogsHotelBatchRequestVariant
+  CatalogsCreativeAssetsBatchRequestVariant
 
 type CatalogsVerticalBatchRequest* = object
   ## A request object that can have multiple operations on a single batch
-  catalogType*: CatalogType
-  country*: Country
-  language*: CatalogsItemsRequest_language
-  items*: seq[CatalogsCreativeAssetsBatchItem] ## Array with creative assets item operations
-  catalogId*: string ## Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  case kind*: CatalogsVerticalBatchRequestKind
+  of CatalogsVerticalBatchRequestKind.CatalogsRetailBatchRequestVariant:
+    CatalogsRetailBatchRequestValue*: CatalogsRetailBatchRequest
+  of CatalogsVerticalBatchRequestKind.CatalogsHotelBatchRequestVariant:
+    CatalogsHotelBatchRequestValue*: CatalogsHotelBatchRequest
+  of CatalogsVerticalBatchRequestKind.CatalogsCreativeAssetsBatchRequestVariant:
+    CatalogsCreativeAssetsBatchRequestValue*: CatalogsCreativeAssetsBatchRequest
 
-func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
+proc to*(node: JsonNode, T: typedesc[CatalogsVerticalBatchRequest]): CatalogsVerticalBatchRequest =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsVerticalBatchRequest(kind: CatalogsVerticalBatchRequestKind.CatalogsRetailBatchRequestVariant, CatalogsRetailBatchRequestValue: to(node, CatalogsRetailBatchRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailBatchRequest: ", e.msg
+  try:
+    return CatalogsVerticalBatchRequest(kind: CatalogsVerticalBatchRequestKind.CatalogsHotelBatchRequestVariant, CatalogsHotelBatchRequestValue: to(node, CatalogsHotelBatchRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelBatchRequest: ", e.msg
+  try:
+    return CatalogsVerticalBatchRequest(kind: CatalogsVerticalBatchRequestKind.CatalogsCreativeAssetsBatchRequestVariant, CatalogsCreativeAssetsBatchRequestValue: to(node, CatalogsCreativeAssetsBatchRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsBatchRequest: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsVerticalBatchRequest. JSON: " & $node)
 
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: CatalogType): string =
-  result = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"

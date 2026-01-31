@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class MediaTypeFilter  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsProductGroupMultipleMediaTypesCriteria MEDIA_TYPE;
  /**
    * Get MEDIA_TYPE

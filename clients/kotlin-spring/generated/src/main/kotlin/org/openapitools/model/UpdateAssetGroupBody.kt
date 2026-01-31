@@ -23,7 +23,7 @@ data class UpdateAssetGroupBody(
     @field:Valid
     @Schema(example = "null", description = "A list of asset groups and the data that will be used to update them.")
     @get:JsonProperty("asset_groups_to_update") val assetGroupsToUpdate: kotlin.collections.List<UpdateAssetGroupBodyAssetGroupsToUpdateInner>? = null
-    ) {
+) {
 
 }
 

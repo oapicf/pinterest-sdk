@@ -14,8 +14,13 @@ package openapi
 
 
 
-// OauthAccessTokenResponseEverlastingRefresh - A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
 type OauthAccessTokenResponseEverlastingRefresh struct {
+
+	RefreshToken string `json:"refresh_token"`
+
+	RefreshTokenExpiresIn int32 `json:"refresh_token_expires_in"`
+
+	RefreshTokenExpiresAt int32 `json:"refresh_token_expires_at"`
 
 	ResponseType string `json:"response_type,omitempty"`
 
@@ -26,24 +31,18 @@ type OauthAccessTokenResponseEverlastingRefresh struct {
 	ExpiresIn int32 `json:"expires_in"`
 
 	Scope string `json:"scope"`
-
-	RefreshToken string `json:"refresh_token"`
-
-	RefreshTokenExpiresIn int32 `json:"refresh_token_expires_in"`
-
-	RefreshTokenExpiresAt int32 `json:"refresh_token_expires_at"`
 }
 
 // AssertOauthAccessTokenResponseEverlastingRefreshRequired checks if the required fields are not zero-ed
 func AssertOauthAccessTokenResponseEverlastingRefreshRequired(obj OauthAccessTokenResponseEverlastingRefresh) error {
 	elements := map[string]interface{}{
+		"refresh_token": obj.RefreshToken,
+		"refresh_token_expires_in": obj.RefreshTokenExpiresIn,
+		"refresh_token_expires_at": obj.RefreshTokenExpiresAt,
 		"access_token": obj.AccessToken,
 		"token_type": obj.TokenType,
 		"expires_in": obj.ExpiresIn,
 		"scope": obj.Scope,
-		"refresh_token": obj.RefreshToken,
-		"refresh_token_expires_in": obj.RefreshTokenExpiresIn,
-		"refresh_token_expires_at": obj.RefreshTokenExpiresAt,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

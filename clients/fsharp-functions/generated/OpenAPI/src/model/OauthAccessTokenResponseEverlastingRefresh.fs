@@ -10,6 +10,12 @@ module OauthAccessTokenResponseEverlastingRefresh =
 
   [<CLIMutable>]
   type OauthAccessTokenResponseEverlastingRefresh = {
+    [<JsonProperty(PropertyName = "refresh_token")>]
+    RefreshToken : string;
+    [<JsonProperty(PropertyName = "refresh_token_expires_in")>]
+    RefreshTokenExpiresIn : int;
+    [<JsonProperty(PropertyName = "refresh_token_expires_at")>]
+    RefreshTokenExpiresAt : int;
     [<JsonProperty(PropertyName = "response_type")>]
     ResponseType : string;
     [<JsonProperty(PropertyName = "access_token")>]
@@ -20,12 +26,6 @@ module OauthAccessTokenResponseEverlastingRefresh =
     ExpiresIn : int;
     [<JsonProperty(PropertyName = "scope")>]
     Scope : string;
-    [<JsonProperty(PropertyName = "refresh_token")>]
-    RefreshToken : string;
-    [<JsonProperty(PropertyName = "refresh_token_expires_in")>]
-    RefreshTokenExpiresIn : int;
-    [<JsonProperty(PropertyName = "refresh_token_expires_at")>]
-    RefreshTokenExpiresAt : int;
   }
 
   //#endregion

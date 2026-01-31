@@ -138,12 +138,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "exception":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exception = new Option<DeleteInvitesResultsResponseArrayItemsInnerException?>(JsonSerializer.Deserialize<DeleteInvitesResultsResponseArrayItemsInnerException>(ref utf8JsonReader, jsonSerializerOptions));
+                            exception = new Option<DeleteInvitesResultsResponseArrayItemsInnerException?>(JsonSerializer.Deserialize<DeleteInvitesResultsResponseArrayItemsInnerException>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "invite":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                invite = new Option<BaseInviteDataResponse?>(JsonSerializer.Deserialize<BaseInviteDataResponse>(ref utf8JsonReader, jsonSerializerOptions));
+                            invite = new Option<BaseInviteDataResponse?>(JsonSerializer.Deserialize<BaseInviteDataResponse>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

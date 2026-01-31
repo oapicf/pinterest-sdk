@@ -17,7 +17,6 @@ import org.openapitools.client.model.Pin
 import org.openapitools.client.model.PinAnalyticsMetricsResponse
 import org.openapitools.client.model.PinCreate
 import org.openapitools.client.model.PinUpdate
-import org.openapitools.client.model.PinsAnalyticsMetricTypesParameterInner
 import org.openapitools.client.model.PinsList200Response
 import org.openapitools.client.model.PinsSaveRequest
 import org.openapitools.client.core._
@@ -49,7 +48,7 @@ class PinsApi(baseUrl: String) {
    * @param appTypes Apps or devices to get data for, default is all.
    * @param adAccountId Unique identifier of an ad account.
    */
-  def multiPinsAnalytics(pinIds: Seq[String], startDate: LocalDate, endDate: LocalDate, metricTypes: Seq[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String] = None, adAccountId: Option[String] = None): ApiRequest[Map[String, Map[String, PinAnalyticsMetricsResponse]]] =
+  def multiPinsAnalytics(pinIds: Seq[String], startDate: LocalDate, endDate: LocalDate, metricTypes: Seq[String], appTypes: Option[String] = None, adAccountId: Option[String] = None): ApiRequest[Map[String, Map[String, PinAnalyticsMetricsResponse]]] =
     ApiRequest[Map[String, Map[String, PinAnalyticsMetricsResponse]]](ApiMethods.GET, baseUrl, "/pins/analytics", "application/json")
       .withQueryParam("pin_ids", ArrayValues(pinIds, MULTI))
       .withQueryParam("start_date", startDate)
@@ -83,7 +82,7 @@ class PinsApi(baseUrl: String) {
    * @param splitField How to split the data into groups. Not including this param means data won't be split.
    * @param adAccountId Unique identifier of an ad account.
    */
-  def pinsAnalytics(pinId: String, startDate: LocalDate, endDate: LocalDate, metricTypes: Seq[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String] = None, splitField: Option[String] = None, adAccountId: Option[String] = None): ApiRequest[Map[String, PinAnalyticsMetricsResponse]] =
+  def pinsAnalytics(pinId: String, startDate: LocalDate, endDate: LocalDate, metricTypes: Seq[String], appTypes: Option[String] = None, splitField: Option[String] = None, adAccountId: Option[String] = None): ApiRequest[Map[String, PinAnalyticsMetricsResponse]] =
     ApiRequest[Map[String, PinAnalyticsMetricsResponse]](ApiMethods.GET, baseUrl, "/pins/{pin_id}/analytics", "application/json")
       .withQueryParam("start_date", startDate)
       .withQueryParam("end_date", endDate)

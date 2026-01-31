@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Name** | **string** | Audience name. | 
 **Rule** | [**AudienceRule**](AudienceRule.md) |  | 
 **Description** | Pointer to **string** | Audience description. | [optional] 
-**AudienceType** | [**AudienceCreateRequest1AudienceType**](AudienceCreateRequest1AudienceType.md) |  | 
+**AudienceType** | [**AudienceType**](AudienceType.md) | &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. | 
 
 ## Methods
 
 ### NewAudienceCreateRequest
 
-`func NewAudienceCreateRequest(name string, rule AudienceRule, audienceType AudienceCreateRequest1AudienceType, ) *AudienceCreateRequest`
+`func NewAudienceCreateRequest(name string, rule AudienceRule, audienceType AudienceType, ) *AudienceCreateRequest`
 
 NewAudienceCreateRequest instantiates a new AudienceCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -121,20 +121,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetAudienceType
 
-`func (o *AudienceCreateRequest) GetAudienceType() AudienceCreateRequest1AudienceType`
+`func (o *AudienceCreateRequest) GetAudienceType() AudienceType`
 
 GetAudienceType returns the AudienceType field if non-nil, zero value otherwise.
 
 ### GetAudienceTypeOk
 
-`func (o *AudienceCreateRequest) GetAudienceTypeOk() (*AudienceCreateRequest1AudienceType, bool)`
+`func (o *AudienceCreateRequest) GetAudienceTypeOk() (*AudienceType, bool)`
 
 GetAudienceTypeOk returns a tuple with the AudienceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAudienceType
 
-`func (o *AudienceCreateRequest) SetAudienceType(v AudienceCreateRequest1AudienceType)`
+`func (o *AudienceCreateRequest) SetAudienceType(v AudienceType)`
 
 SetAudienceType sets AudienceType field to given value.
 

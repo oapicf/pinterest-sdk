@@ -66,10 +66,10 @@ pub enum LeadFormsSlashUpdateError {
 /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Gets a lead form given it's ID. It must also be associated with the provided ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
 pub async fn lead_form_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, lead_form_id: &str) -> Result<models::LeadFormResponse, Error<LeadFormSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_lead_form_id = lead_form_id;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_lead_form_id = lead_form_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), lead_form_id=crate::apis::urlencode(p_lead_form_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), lead_form_id=crate::apis::urlencode(p_path_lead_form_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -107,11 +107,11 @@ pub async fn lead_form_slash_get(configuration: &configuration::Configuration, a
 /// Create lead form test data based on the list of answers provided as part of the body. - List of answers should follow the questions creation order.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 pub async fn lead_form_test_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, lead_form_id: &str, lead_form_test_request: models::LeadFormTestRequest) -> Result<models::LeadFormTestResponse, Error<LeadFormTestSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_lead_form_id = lead_form_id;
-    let p_lead_form_test_request = lead_form_test_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_lead_form_id = lead_form_id;
+    let p_body_lead_form_test_request = lead_form_test_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), lead_form_id=crate::apis::urlencode(p_lead_form_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), lead_form_id=crate::apis::urlencode(p_path_lead_form_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -120,7 +120,7 @@ pub async fn lead_form_test_slash_create(configuration: &configuration::Configur
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_lead_form_test_request);
+    req_builder = req_builder.json(&p_body_lead_form_test_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -150,10 +150,10 @@ pub async fn lead_form_test_slash_create(configuration: &configuration::Configur
 /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’ s description, questions and confirmation sections.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
 pub async fn lead_forms_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, lead_form_create_request: Vec<models::LeadFormCreateRequest>) -> Result<models::LeadFormArrayResponse, Error<LeadFormsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_lead_form_create_request = lead_form_create_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_lead_form_create_request = lead_form_create_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/lead_forms", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/lead_forms", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -162,7 +162,7 @@ pub async fn lead_forms_slash_create(configuration: &configuration::Configuratio
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_lead_form_create_request);
+    req_builder = req_builder.json(&p_body_lead_form_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -192,21 +192,21 @@ pub async fn lead_forms_slash_create(configuration: &configuration::Configuratio
 /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  List lead forms associated with an ad account ID.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
 pub async fn lead_forms_slash_list(configuration: &configuration::Configuration, ad_account_id: &str, page_size: Option<i32>, order: Option<&str>, bookmark: Option<&str>) -> Result<models::LeadFormsList200Response, Error<LeadFormsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_page_size = page_size;
-    let p_order = order;
-    let p_bookmark = bookmark;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_page_size = page_size;
+    let p_query_order = order;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/lead_forms", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/lead_forms", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
-        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_order {
+        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -244,10 +244,10 @@ pub async fn lead_forms_slash_list(configuration: &configuration::Configuration,
 /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
 pub async fn lead_forms_slash_update(configuration: &configuration::Configuration, ad_account_id: &str, lead_form_update_request: Vec<models::LeadFormUpdateRequest>) -> Result<models::LeadFormArrayResponse, Error<LeadFormsSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_lead_form_update_request = lead_form_update_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_lead_form_update_request = lead_form_update_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/lead_forms", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/lead_forms", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -256,7 +256,7 @@ pub async fn lead_forms_slash_update(configuration: &configuration::Configuratio
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_lead_form_update_request);
+    req_builder = req_builder.json(&p_body_lead_form_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

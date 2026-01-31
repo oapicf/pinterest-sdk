@@ -12,22 +12,14 @@
 /**
  * Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"WEB_CONVERSION\", \"CATALOG_SALES\", \"VIDEO_COMPLETION\"] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\"WEB_SESSIONS\"] is DEPRECATED. For update, only draft campaigns may update objective type.
  */
-export type ObjectiveType = 'AWARENESS' | 'CONSIDERATION' | 'VIDEO_VIEW' | 'WEB_CONVERSION' | 'CATALOG_SALES' | 'WEB_SESSIONS' | 'VIDEO_COMPLETION';
-
 export const ObjectiveType = {
-
-    Awareness: 'AWARENESS' as ObjectiveType,
-
-    Consideration: 'CONSIDERATION' as ObjectiveType,
-
-    VideoView: 'VIDEO_VIEW' as ObjectiveType,
-
-    WebConversion: 'WEB_CONVERSION' as ObjectiveType,
-
-    CatalogSales: 'CATALOG_SALES' as ObjectiveType,
-
-    WebSessions: 'WEB_SESSIONS' as ObjectiveType,
-
-    VideoCompletion: 'VIDEO_COMPLETION' as ObjectiveType
-};
+    Awareness: 'AWARENESS',
+    Consideration: 'CONSIDERATION',
+    VideoView: 'VIDEO_VIEW',
+    WebConversion: 'WEB_CONVERSION',
+    CatalogSales: 'CATALOG_SALES',
+    WebSessions: 'WEB_SESSIONS',
+    VideoCompletion: 'VIDEO_COMPLETION'
+} as const;
+export type ObjectiveType = typeof ObjectiveType[keyof typeof ObjectiveType];
 

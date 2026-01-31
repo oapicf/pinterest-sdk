@@ -16,43 +16,39 @@
 #include "../model/invite_response.h"
 invite_response_t* instantiate_invite_response(int include_optional);
 
-#include "test_invite_assets_summary.c"
-#include "test_business_access_user_summary.c"
-#include "test_business_access_user_summary.c"
 #include "test_base_invite_data_response_invite_data.c"
 #include "test_business_access_user_summary.c"
+#include "test_invite_assets_summary.c"
 
 
 invite_response_t* instantiate_invite_response(int include_optional) {
   invite_response_t* invite_response = NULL;
   if (include_optional) {
     invite_response = invite_response_create(
-       // false, not to have infinite recursion
-      instantiate_invite_assets_summary(0),
-      ["BIZ_ADMIN"],
-       // false, not to have infinite recursion
-      instantiate_business_access_user_summary(0),
-       // false, not to have infinite recursion
-      instantiate_business_access_user_summary(0),
-      1646767577816,
       "383791336903426391",
        // false, not to have infinite recursion
       instantiate_base_invite_data_response_invite_data(0),
       1,
        // false, not to have infinite recursion
-      instantiate_business_access_user_summary(0)
+      instantiate_business_access_user_summary(0),
+       // false, not to have infinite recursion
+      instantiate_invite_assets_summary(0),
+      ["BIZ_ADMIN"],
+      0,
+      0,
+      1646767577816
     );
   } else {
     invite_response = invite_response_create(
-      NULL,
-      ["BIZ_ADMIN"],
-      NULL,
-      NULL,
-      1646767577816,
       "383791336903426391",
       NULL,
       1,
-      NULL
+      NULL,
+      NULL,
+      ["BIZ_ADMIN"],
+      0,
+      0,
+      1646767577816
     );
   }
 

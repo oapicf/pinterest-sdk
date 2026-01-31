@@ -169,8 +169,6 @@ client/OAIAudienceCreateCustomRequest.cpp
 client/OAIAudienceCreateCustomRequest.h
 client/OAIAudienceCreateRequest.cpp
 client/OAIAudienceCreateRequest.h
-client/OAIAudienceCreateRequest_1_audience_type.cpp
-client/OAIAudienceCreateRequest_1_audience_type.h
 client/OAIAudienceDataParty.cpp
 client/OAIAudienceDataParty.h
 client/OAIAudienceDefinition.cpp
@@ -547,8 +545,6 @@ client/OAICatalogsItemsPostFilters.cpp
 client/OAICatalogsItemsPostFilters.h
 client/OAICatalogsItemsRequest.cpp
 client/OAICatalogsItemsRequest.h
-client/OAICatalogsItemsRequest_language.cpp
-client/OAICatalogsItemsRequest_language.h
 client/OAICatalogsItemsUpdateBatchRequest.cpp
 client/OAICatalogsItemsUpdateBatchRequest.h
 client/OAICatalogsItemsUpsertBatchRequest.cpp
@@ -1249,8 +1245,6 @@ client/OAIPinUpdate_carousel_slots_inner.cpp
 client/OAIPinUpdate_carousel_slots_inner.h
 client/OAIPinsApi.cpp
 client/OAIPinsApi.h
-client/OAIPins_analytics_metric_types_parameter_inner.cpp
-client/OAIPins_analytics_metric_types_parameter_inner.h
 client/OAIPins_list_200_response.cpp
 client/OAIPins_list_200_response.h
 client/OAIPins_save_request.cpp

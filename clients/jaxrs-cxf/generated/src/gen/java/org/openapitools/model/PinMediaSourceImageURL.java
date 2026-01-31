@@ -2,17 +2,17 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Image URL-based media source
- **/
+ * Image URL-based media source
+ */
 @ApiModel(description="Image URL-based media source")
 
 public class PinMediaSourceImageURL  {
@@ -50,15 +50,18 @@ IMAGE_URL(String.valueOf("image_url"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private SourceTypeEnum sourceType;
 
   @ApiModelProperty(required = true, value = "")
+
   private String url;
 
-  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
  /**
-   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-  **/
+  * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+  */
+  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
+
   private Boolean isStandard = true;
  /**
    * Get sourceType

@@ -9,7 +9,838 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type NullableCurrency* = object
-  ## Currency Codes from ISO 4217.
+type NullableCurrency* {.pure.} = enum
+  AED
+  AFN
+  ALL
+  AMD
+  ANG
+  AOA
+  ARS
+  AUD
+  AWG
+  AZN
+  BAM
+  BBD
+  BDT
+  BGN
+  BHD
+  BIF
+  BMD
+  BND
+  BOB
+  BRL
+  BSD
+  BTN
+  BWP
+  BYN
+  BYR
+  BZD
+  CAD
+  CDF
+  CHF
+  CLP
+  CNY
+  COP
+  CRC
+  CUC
+  CUP
+  CVE
+  CZK
+  DJF
+  DKK
+  DOP
+  DZD
+  EGP
+  ERN
+  ETB
+  EUR
+  FJD
+  FKP
+  GBP
+  GEL
+  GGP
+  GHS
+  GIP
+  GMD
+  GNF
+  GTQ
+  GYD
+  HKD
+  HNL
+  HRK
+  HTG
+  HUF
+  IDR
+  ILS
+  IMP
+  INR
+  IQD
+  IRR
+  ISK
+  JEP
+  JMD
+  JOD
+  JPY
+  KES
+  KGS
+  KHR
+  KMF
+  KPW
+  KRW
+  KWD
+  KYD
+  KZT
+  LAK
+  LBP
+  LKR
+  LRD
+  LSL
+  LYD
+  MAD
+  MDL
+  MGA
+  MKD
+  MMK
+  MNT
+  MOP
+  MRO
+  MUR
+  MVR
+  MWK
+  MXN
+  MYR
+  MZN
+  NAD
+  NGN
+  NIO
+  NOK
+  NPR
+  NZD
+  OMR
+  PAB
+  PEN
+  PGK
+  PHP
+  PKR
+  PLN
+  PYG
+  QAR
+  RON
+  RSD
+  RUB
+  RWF
+  SAR
+  SBD
+  SCR
+  SDG
+  SEK
+  SGD
+  SHP
+  SLL
+  SOS
+  SPL
+  SRD
+  STD
+  SVC
+  SYP
+  SZL
+  THB
+  TJS
+  TMT
+  TND
+  TOP
+  TRY
+  TTD
+  TVD
+  TWD
+  TZS
+  UAH
+  UGX
+  USD
+  UYU
+  UZS
+  VEF
+  VND
+  VUV
+  WST
+  XAF
+  XCD
+  XDR
+  XOF
+  XPF
+  YER
+  ZAR
+  ZMW
+  ZWD
+
+func `%`*(v: NullableCurrency): JsonNode =
+  result = case v:
+    of NullableCurrency.AED: %"AED"
+    of NullableCurrency.AFN: %"AFN"
+    of NullableCurrency.ALL: %"ALL"
+    of NullableCurrency.AMD: %"AMD"
+    of NullableCurrency.ANG: %"ANG"
+    of NullableCurrency.AOA: %"AOA"
+    of NullableCurrency.ARS: %"ARS"
+    of NullableCurrency.AUD: %"AUD"
+    of NullableCurrency.AWG: %"AWG"
+    of NullableCurrency.AZN: %"AZN"
+    of NullableCurrency.BAM: %"BAM"
+    of NullableCurrency.BBD: %"BBD"
+    of NullableCurrency.BDT: %"BDT"
+    of NullableCurrency.BGN: %"BGN"
+    of NullableCurrency.BHD: %"BHD"
+    of NullableCurrency.BIF: %"BIF"
+    of NullableCurrency.BMD: %"BMD"
+    of NullableCurrency.BND: %"BND"
+    of NullableCurrency.BOB: %"BOB"
+    of NullableCurrency.BRL: %"BRL"
+    of NullableCurrency.BSD: %"BSD"
+    of NullableCurrency.BTN: %"BTN"
+    of NullableCurrency.BWP: %"BWP"
+    of NullableCurrency.BYN: %"BYN"
+    of NullableCurrency.BYR: %"BYR"
+    of NullableCurrency.BZD: %"BZD"
+    of NullableCurrency.CAD: %"CAD"
+    of NullableCurrency.CDF: %"CDF"
+    of NullableCurrency.CHF: %"CHF"
+    of NullableCurrency.CLP: %"CLP"
+    of NullableCurrency.CNY: %"CNY"
+    of NullableCurrency.COP: %"COP"
+    of NullableCurrency.CRC: %"CRC"
+    of NullableCurrency.CUC: %"CUC"
+    of NullableCurrency.CUP: %"CUP"
+    of NullableCurrency.CVE: %"CVE"
+    of NullableCurrency.CZK: %"CZK"
+    of NullableCurrency.DJF: %"DJF"
+    of NullableCurrency.DKK: %"DKK"
+    of NullableCurrency.DOP: %"DOP"
+    of NullableCurrency.DZD: %"DZD"
+    of NullableCurrency.EGP: %"EGP"
+    of NullableCurrency.ERN: %"ERN"
+    of NullableCurrency.ETB: %"ETB"
+    of NullableCurrency.EUR: %"EUR"
+    of NullableCurrency.FJD: %"FJD"
+    of NullableCurrency.FKP: %"FKP"
+    of NullableCurrency.GBP: %"GBP"
+    of NullableCurrency.GEL: %"GEL"
+    of NullableCurrency.GGP: %"GGP"
+    of NullableCurrency.GHS: %"GHS"
+    of NullableCurrency.GIP: %"GIP"
+    of NullableCurrency.GMD: %"GMD"
+    of NullableCurrency.GNF: %"GNF"
+    of NullableCurrency.GTQ: %"GTQ"
+    of NullableCurrency.GYD: %"GYD"
+    of NullableCurrency.HKD: %"HKD"
+    of NullableCurrency.HNL: %"HNL"
+    of NullableCurrency.HRK: %"HRK"
+    of NullableCurrency.HTG: %"HTG"
+    of NullableCurrency.HUF: %"HUF"
+    of NullableCurrency.IDR: %"IDR"
+    of NullableCurrency.ILS: %"ILS"
+    of NullableCurrency.IMP: %"IMP"
+    of NullableCurrency.INR: %"INR"
+    of NullableCurrency.IQD: %"IQD"
+    of NullableCurrency.IRR: %"IRR"
+    of NullableCurrency.ISK: %"ISK"
+    of NullableCurrency.JEP: %"JEP"
+    of NullableCurrency.JMD: %"JMD"
+    of NullableCurrency.JOD: %"JOD"
+    of NullableCurrency.JPY: %"JPY"
+    of NullableCurrency.KES: %"KES"
+    of NullableCurrency.KGS: %"KGS"
+    of NullableCurrency.KHR: %"KHR"
+    of NullableCurrency.KMF: %"KMF"
+    of NullableCurrency.KPW: %"KPW"
+    of NullableCurrency.KRW: %"KRW"
+    of NullableCurrency.KWD: %"KWD"
+    of NullableCurrency.KYD: %"KYD"
+    of NullableCurrency.KZT: %"KZT"
+    of NullableCurrency.LAK: %"LAK"
+    of NullableCurrency.LBP: %"LBP"
+    of NullableCurrency.LKR: %"LKR"
+    of NullableCurrency.LRD: %"LRD"
+    of NullableCurrency.LSL: %"LSL"
+    of NullableCurrency.LYD: %"LYD"
+    of NullableCurrency.MAD: %"MAD"
+    of NullableCurrency.MDL: %"MDL"
+    of NullableCurrency.MGA: %"MGA"
+    of NullableCurrency.MKD: %"MKD"
+    of NullableCurrency.MMK: %"MMK"
+    of NullableCurrency.MNT: %"MNT"
+    of NullableCurrency.MOP: %"MOP"
+    of NullableCurrency.MRO: %"MRO"
+    of NullableCurrency.MUR: %"MUR"
+    of NullableCurrency.MVR: %"MVR"
+    of NullableCurrency.MWK: %"MWK"
+    of NullableCurrency.MXN: %"MXN"
+    of NullableCurrency.MYR: %"MYR"
+    of NullableCurrency.MZN: %"MZN"
+    of NullableCurrency.NAD: %"NAD"
+    of NullableCurrency.NGN: %"NGN"
+    of NullableCurrency.NIO: %"NIO"
+    of NullableCurrency.NOK: %"NOK"
+    of NullableCurrency.NPR: %"NPR"
+    of NullableCurrency.NZD: %"NZD"
+    of NullableCurrency.OMR: %"OMR"
+    of NullableCurrency.PAB: %"PAB"
+    of NullableCurrency.PEN: %"PEN"
+    of NullableCurrency.PGK: %"PGK"
+    of NullableCurrency.PHP: %"PHP"
+    of NullableCurrency.PKR: %"PKR"
+    of NullableCurrency.PLN: %"PLN"
+    of NullableCurrency.PYG: %"PYG"
+    of NullableCurrency.QAR: %"QAR"
+    of NullableCurrency.RON: %"RON"
+    of NullableCurrency.RSD: %"RSD"
+    of NullableCurrency.RUB: %"RUB"
+    of NullableCurrency.RWF: %"RWF"
+    of NullableCurrency.SAR: %"SAR"
+    of NullableCurrency.SBD: %"SBD"
+    of NullableCurrency.SCR: %"SCR"
+    of NullableCurrency.SDG: %"SDG"
+    of NullableCurrency.SEK: %"SEK"
+    of NullableCurrency.SGD: %"SGD"
+    of NullableCurrency.SHP: %"SHP"
+    of NullableCurrency.SLL: %"SLL"
+    of NullableCurrency.SOS: %"SOS"
+    of NullableCurrency.SPL: %"SPL"
+    of NullableCurrency.SRD: %"SRD"
+    of NullableCurrency.STD: %"STD"
+    of NullableCurrency.SVC: %"SVC"
+    of NullableCurrency.SYP: %"SYP"
+    of NullableCurrency.SZL: %"SZL"
+    of NullableCurrency.THB: %"THB"
+    of NullableCurrency.TJS: %"TJS"
+    of NullableCurrency.TMT: %"TMT"
+    of NullableCurrency.TND: %"TND"
+    of NullableCurrency.TOP: %"TOP"
+    of NullableCurrency.TRY: %"TRY"
+    of NullableCurrency.TTD: %"TTD"
+    of NullableCurrency.TVD: %"TVD"
+    of NullableCurrency.TWD: %"TWD"
+    of NullableCurrency.TZS: %"TZS"
+    of NullableCurrency.UAH: %"UAH"
+    of NullableCurrency.UGX: %"UGX"
+    of NullableCurrency.USD: %"USD"
+    of NullableCurrency.UYU: %"UYU"
+    of NullableCurrency.UZS: %"UZS"
+    of NullableCurrency.VEF: %"VEF"
+    of NullableCurrency.VND: %"VND"
+    of NullableCurrency.VUV: %"VUV"
+    of NullableCurrency.WST: %"WST"
+    of NullableCurrency.XAF: %"XAF"
+    of NullableCurrency.XCD: %"XCD"
+    of NullableCurrency.XDR: %"XDR"
+    of NullableCurrency.XOF: %"XOF"
+    of NullableCurrency.XPF: %"XPF"
+    of NullableCurrency.YER: %"YER"
+    of NullableCurrency.ZAR: %"ZAR"
+    of NullableCurrency.ZMW: %"ZMW"
+    of NullableCurrency.ZWD: %"ZWD"
+
+func `$`*(v: NullableCurrency): string =
+  result = case v:
+    of NullableCurrency.AED: $("AED")
+    of NullableCurrency.AFN: $("AFN")
+    of NullableCurrency.ALL: $("ALL")
+    of NullableCurrency.AMD: $("AMD")
+    of NullableCurrency.ANG: $("ANG")
+    of NullableCurrency.AOA: $("AOA")
+    of NullableCurrency.ARS: $("ARS")
+    of NullableCurrency.AUD: $("AUD")
+    of NullableCurrency.AWG: $("AWG")
+    of NullableCurrency.AZN: $("AZN")
+    of NullableCurrency.BAM: $("BAM")
+    of NullableCurrency.BBD: $("BBD")
+    of NullableCurrency.BDT: $("BDT")
+    of NullableCurrency.BGN: $("BGN")
+    of NullableCurrency.BHD: $("BHD")
+    of NullableCurrency.BIF: $("BIF")
+    of NullableCurrency.BMD: $("BMD")
+    of NullableCurrency.BND: $("BND")
+    of NullableCurrency.BOB: $("BOB")
+    of NullableCurrency.BRL: $("BRL")
+    of NullableCurrency.BSD: $("BSD")
+    of NullableCurrency.BTN: $("BTN")
+    of NullableCurrency.BWP: $("BWP")
+    of NullableCurrency.BYN: $("BYN")
+    of NullableCurrency.BYR: $("BYR")
+    of NullableCurrency.BZD: $("BZD")
+    of NullableCurrency.CAD: $("CAD")
+    of NullableCurrency.CDF: $("CDF")
+    of NullableCurrency.CHF: $("CHF")
+    of NullableCurrency.CLP: $("CLP")
+    of NullableCurrency.CNY: $("CNY")
+    of NullableCurrency.COP: $("COP")
+    of NullableCurrency.CRC: $("CRC")
+    of NullableCurrency.CUC: $("CUC")
+    of NullableCurrency.CUP: $("CUP")
+    of NullableCurrency.CVE: $("CVE")
+    of NullableCurrency.CZK: $("CZK")
+    of NullableCurrency.DJF: $("DJF")
+    of NullableCurrency.DKK: $("DKK")
+    of NullableCurrency.DOP: $("DOP")
+    of NullableCurrency.DZD: $("DZD")
+    of NullableCurrency.EGP: $("EGP")
+    of NullableCurrency.ERN: $("ERN")
+    of NullableCurrency.ETB: $("ETB")
+    of NullableCurrency.EUR: $("EUR")
+    of NullableCurrency.FJD: $("FJD")
+    of NullableCurrency.FKP: $("FKP")
+    of NullableCurrency.GBP: $("GBP")
+    of NullableCurrency.GEL: $("GEL")
+    of NullableCurrency.GGP: $("GGP")
+    of NullableCurrency.GHS: $("GHS")
+    of NullableCurrency.GIP: $("GIP")
+    of NullableCurrency.GMD: $("GMD")
+    of NullableCurrency.GNF: $("GNF")
+    of NullableCurrency.GTQ: $("GTQ")
+    of NullableCurrency.GYD: $("GYD")
+    of NullableCurrency.HKD: $("HKD")
+    of NullableCurrency.HNL: $("HNL")
+    of NullableCurrency.HRK: $("HRK")
+    of NullableCurrency.HTG: $("HTG")
+    of NullableCurrency.HUF: $("HUF")
+    of NullableCurrency.IDR: $("IDR")
+    of NullableCurrency.ILS: $("ILS")
+    of NullableCurrency.IMP: $("IMP")
+    of NullableCurrency.INR: $("INR")
+    of NullableCurrency.IQD: $("IQD")
+    of NullableCurrency.IRR: $("IRR")
+    of NullableCurrency.ISK: $("ISK")
+    of NullableCurrency.JEP: $("JEP")
+    of NullableCurrency.JMD: $("JMD")
+    of NullableCurrency.JOD: $("JOD")
+    of NullableCurrency.JPY: $("JPY")
+    of NullableCurrency.KES: $("KES")
+    of NullableCurrency.KGS: $("KGS")
+    of NullableCurrency.KHR: $("KHR")
+    of NullableCurrency.KMF: $("KMF")
+    of NullableCurrency.KPW: $("KPW")
+    of NullableCurrency.KRW: $("KRW")
+    of NullableCurrency.KWD: $("KWD")
+    of NullableCurrency.KYD: $("KYD")
+    of NullableCurrency.KZT: $("KZT")
+    of NullableCurrency.LAK: $("LAK")
+    of NullableCurrency.LBP: $("LBP")
+    of NullableCurrency.LKR: $("LKR")
+    of NullableCurrency.LRD: $("LRD")
+    of NullableCurrency.LSL: $("LSL")
+    of NullableCurrency.LYD: $("LYD")
+    of NullableCurrency.MAD: $("MAD")
+    of NullableCurrency.MDL: $("MDL")
+    of NullableCurrency.MGA: $("MGA")
+    of NullableCurrency.MKD: $("MKD")
+    of NullableCurrency.MMK: $("MMK")
+    of NullableCurrency.MNT: $("MNT")
+    of NullableCurrency.MOP: $("MOP")
+    of NullableCurrency.MRO: $("MRO")
+    of NullableCurrency.MUR: $("MUR")
+    of NullableCurrency.MVR: $("MVR")
+    of NullableCurrency.MWK: $("MWK")
+    of NullableCurrency.MXN: $("MXN")
+    of NullableCurrency.MYR: $("MYR")
+    of NullableCurrency.MZN: $("MZN")
+    of NullableCurrency.NAD: $("NAD")
+    of NullableCurrency.NGN: $("NGN")
+    of NullableCurrency.NIO: $("NIO")
+    of NullableCurrency.NOK: $("NOK")
+    of NullableCurrency.NPR: $("NPR")
+    of NullableCurrency.NZD: $("NZD")
+    of NullableCurrency.OMR: $("OMR")
+    of NullableCurrency.PAB: $("PAB")
+    of NullableCurrency.PEN: $("PEN")
+    of NullableCurrency.PGK: $("PGK")
+    of NullableCurrency.PHP: $("PHP")
+    of NullableCurrency.PKR: $("PKR")
+    of NullableCurrency.PLN: $("PLN")
+    of NullableCurrency.PYG: $("PYG")
+    of NullableCurrency.QAR: $("QAR")
+    of NullableCurrency.RON: $("RON")
+    of NullableCurrency.RSD: $("RSD")
+    of NullableCurrency.RUB: $("RUB")
+    of NullableCurrency.RWF: $("RWF")
+    of NullableCurrency.SAR: $("SAR")
+    of NullableCurrency.SBD: $("SBD")
+    of NullableCurrency.SCR: $("SCR")
+    of NullableCurrency.SDG: $("SDG")
+    of NullableCurrency.SEK: $("SEK")
+    of NullableCurrency.SGD: $("SGD")
+    of NullableCurrency.SHP: $("SHP")
+    of NullableCurrency.SLL: $("SLL")
+    of NullableCurrency.SOS: $("SOS")
+    of NullableCurrency.SPL: $("SPL")
+    of NullableCurrency.SRD: $("SRD")
+    of NullableCurrency.STD: $("STD")
+    of NullableCurrency.SVC: $("SVC")
+    of NullableCurrency.SYP: $("SYP")
+    of NullableCurrency.SZL: $("SZL")
+    of NullableCurrency.THB: $("THB")
+    of NullableCurrency.TJS: $("TJS")
+    of NullableCurrency.TMT: $("TMT")
+    of NullableCurrency.TND: $("TND")
+    of NullableCurrency.TOP: $("TOP")
+    of NullableCurrency.TRY: $("TRY")
+    of NullableCurrency.TTD: $("TTD")
+    of NullableCurrency.TVD: $("TVD")
+    of NullableCurrency.TWD: $("TWD")
+    of NullableCurrency.TZS: $("TZS")
+    of NullableCurrency.UAH: $("UAH")
+    of NullableCurrency.UGX: $("UGX")
+    of NullableCurrency.USD: $("USD")
+    of NullableCurrency.UYU: $("UYU")
+    of NullableCurrency.UZS: $("UZS")
+    of NullableCurrency.VEF: $("VEF")
+    of NullableCurrency.VND: $("VND")
+    of NullableCurrency.VUV: $("VUV")
+    of NullableCurrency.WST: $("WST")
+    of NullableCurrency.XAF: $("XAF")
+    of NullableCurrency.XCD: $("XCD")
+    of NullableCurrency.XDR: $("XDR")
+    of NullableCurrency.XOF: $("XOF")
+    of NullableCurrency.XPF: $("XPF")
+    of NullableCurrency.YER: $("YER")
+    of NullableCurrency.ZAR: $("ZAR")
+    of NullableCurrency.ZMW: $("ZMW")
+    of NullableCurrency.ZWD: $("ZWD")
+
+proc to*(node: JsonNode, T: typedesc[NullableCurrency]): NullableCurrency =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum NullableCurrency, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("AED"):
+    return NullableCurrency.AED
+  of $("AFN"):
+    return NullableCurrency.AFN
+  of $("ALL"):
+    return NullableCurrency.ALL
+  of $("AMD"):
+    return NullableCurrency.AMD
+  of $("ANG"):
+    return NullableCurrency.ANG
+  of $("AOA"):
+    return NullableCurrency.AOA
+  of $("ARS"):
+    return NullableCurrency.ARS
+  of $("AUD"):
+    return NullableCurrency.AUD
+  of $("AWG"):
+    return NullableCurrency.AWG
+  of $("AZN"):
+    return NullableCurrency.AZN
+  of $("BAM"):
+    return NullableCurrency.BAM
+  of $("BBD"):
+    return NullableCurrency.BBD
+  of $("BDT"):
+    return NullableCurrency.BDT
+  of $("BGN"):
+    return NullableCurrency.BGN
+  of $("BHD"):
+    return NullableCurrency.BHD
+  of $("BIF"):
+    return NullableCurrency.BIF
+  of $("BMD"):
+    return NullableCurrency.BMD
+  of $("BND"):
+    return NullableCurrency.BND
+  of $("BOB"):
+    return NullableCurrency.BOB
+  of $("BRL"):
+    return NullableCurrency.BRL
+  of $("BSD"):
+    return NullableCurrency.BSD
+  of $("BTN"):
+    return NullableCurrency.BTN
+  of $("BWP"):
+    return NullableCurrency.BWP
+  of $("BYN"):
+    return NullableCurrency.BYN
+  of $("BYR"):
+    return NullableCurrency.BYR
+  of $("BZD"):
+    return NullableCurrency.BZD
+  of $("CAD"):
+    return NullableCurrency.CAD
+  of $("CDF"):
+    return NullableCurrency.CDF
+  of $("CHF"):
+    return NullableCurrency.CHF
+  of $("CLP"):
+    return NullableCurrency.CLP
+  of $("CNY"):
+    return NullableCurrency.CNY
+  of $("COP"):
+    return NullableCurrency.COP
+  of $("CRC"):
+    return NullableCurrency.CRC
+  of $("CUC"):
+    return NullableCurrency.CUC
+  of $("CUP"):
+    return NullableCurrency.CUP
+  of $("CVE"):
+    return NullableCurrency.CVE
+  of $("CZK"):
+    return NullableCurrency.CZK
+  of $("DJF"):
+    return NullableCurrency.DJF
+  of $("DKK"):
+    return NullableCurrency.DKK
+  of $("DOP"):
+    return NullableCurrency.DOP
+  of $("DZD"):
+    return NullableCurrency.DZD
+  of $("EGP"):
+    return NullableCurrency.EGP
+  of $("ERN"):
+    return NullableCurrency.ERN
+  of $("ETB"):
+    return NullableCurrency.ETB
+  of $("EUR"):
+    return NullableCurrency.EUR
+  of $("FJD"):
+    return NullableCurrency.FJD
+  of $("FKP"):
+    return NullableCurrency.FKP
+  of $("GBP"):
+    return NullableCurrency.GBP
+  of $("GEL"):
+    return NullableCurrency.GEL
+  of $("GGP"):
+    return NullableCurrency.GGP
+  of $("GHS"):
+    return NullableCurrency.GHS
+  of $("GIP"):
+    return NullableCurrency.GIP
+  of $("GMD"):
+    return NullableCurrency.GMD
+  of $("GNF"):
+    return NullableCurrency.GNF
+  of $("GTQ"):
+    return NullableCurrency.GTQ
+  of $("GYD"):
+    return NullableCurrency.GYD
+  of $("HKD"):
+    return NullableCurrency.HKD
+  of $("HNL"):
+    return NullableCurrency.HNL
+  of $("HRK"):
+    return NullableCurrency.HRK
+  of $("HTG"):
+    return NullableCurrency.HTG
+  of $("HUF"):
+    return NullableCurrency.HUF
+  of $("IDR"):
+    return NullableCurrency.IDR
+  of $("ILS"):
+    return NullableCurrency.ILS
+  of $("IMP"):
+    return NullableCurrency.IMP
+  of $("INR"):
+    return NullableCurrency.INR
+  of $("IQD"):
+    return NullableCurrency.IQD
+  of $("IRR"):
+    return NullableCurrency.IRR
+  of $("ISK"):
+    return NullableCurrency.ISK
+  of $("JEP"):
+    return NullableCurrency.JEP
+  of $("JMD"):
+    return NullableCurrency.JMD
+  of $("JOD"):
+    return NullableCurrency.JOD
+  of $("JPY"):
+    return NullableCurrency.JPY
+  of $("KES"):
+    return NullableCurrency.KES
+  of $("KGS"):
+    return NullableCurrency.KGS
+  of $("KHR"):
+    return NullableCurrency.KHR
+  of $("KMF"):
+    return NullableCurrency.KMF
+  of $("KPW"):
+    return NullableCurrency.KPW
+  of $("KRW"):
+    return NullableCurrency.KRW
+  of $("KWD"):
+    return NullableCurrency.KWD
+  of $("KYD"):
+    return NullableCurrency.KYD
+  of $("KZT"):
+    return NullableCurrency.KZT
+  of $("LAK"):
+    return NullableCurrency.LAK
+  of $("LBP"):
+    return NullableCurrency.LBP
+  of $("LKR"):
+    return NullableCurrency.LKR
+  of $("LRD"):
+    return NullableCurrency.LRD
+  of $("LSL"):
+    return NullableCurrency.LSL
+  of $("LYD"):
+    return NullableCurrency.LYD
+  of $("MAD"):
+    return NullableCurrency.MAD
+  of $("MDL"):
+    return NullableCurrency.MDL
+  of $("MGA"):
+    return NullableCurrency.MGA
+  of $("MKD"):
+    return NullableCurrency.MKD
+  of $("MMK"):
+    return NullableCurrency.MMK
+  of $("MNT"):
+    return NullableCurrency.MNT
+  of $("MOP"):
+    return NullableCurrency.MOP
+  of $("MRO"):
+    return NullableCurrency.MRO
+  of $("MUR"):
+    return NullableCurrency.MUR
+  of $("MVR"):
+    return NullableCurrency.MVR
+  of $("MWK"):
+    return NullableCurrency.MWK
+  of $("MXN"):
+    return NullableCurrency.MXN
+  of $("MYR"):
+    return NullableCurrency.MYR
+  of $("MZN"):
+    return NullableCurrency.MZN
+  of $("NAD"):
+    return NullableCurrency.NAD
+  of $("NGN"):
+    return NullableCurrency.NGN
+  of $("NIO"):
+    return NullableCurrency.NIO
+  of $("NOK"):
+    return NullableCurrency.NOK
+  of $("NPR"):
+    return NullableCurrency.NPR
+  of $("NZD"):
+    return NullableCurrency.NZD
+  of $("OMR"):
+    return NullableCurrency.OMR
+  of $("PAB"):
+    return NullableCurrency.PAB
+  of $("PEN"):
+    return NullableCurrency.PEN
+  of $("PGK"):
+    return NullableCurrency.PGK
+  of $("PHP"):
+    return NullableCurrency.PHP
+  of $("PKR"):
+    return NullableCurrency.PKR
+  of $("PLN"):
+    return NullableCurrency.PLN
+  of $("PYG"):
+    return NullableCurrency.PYG
+  of $("QAR"):
+    return NullableCurrency.QAR
+  of $("RON"):
+    return NullableCurrency.RON
+  of $("RSD"):
+    return NullableCurrency.RSD
+  of $("RUB"):
+    return NullableCurrency.RUB
+  of $("RWF"):
+    return NullableCurrency.RWF
+  of $("SAR"):
+    return NullableCurrency.SAR
+  of $("SBD"):
+    return NullableCurrency.SBD
+  of $("SCR"):
+    return NullableCurrency.SCR
+  of $("SDG"):
+    return NullableCurrency.SDG
+  of $("SEK"):
+    return NullableCurrency.SEK
+  of $("SGD"):
+    return NullableCurrency.SGD
+  of $("SHP"):
+    return NullableCurrency.SHP
+  of $("SLL"):
+    return NullableCurrency.SLL
+  of $("SOS"):
+    return NullableCurrency.SOS
+  of $("SPL"):
+    return NullableCurrency.SPL
+  of $("SRD"):
+    return NullableCurrency.SRD
+  of $("STD"):
+    return NullableCurrency.STD
+  of $("SVC"):
+    return NullableCurrency.SVC
+  of $("SYP"):
+    return NullableCurrency.SYP
+  of $("SZL"):
+    return NullableCurrency.SZL
+  of $("THB"):
+    return NullableCurrency.THB
+  of $("TJS"):
+    return NullableCurrency.TJS
+  of $("TMT"):
+    return NullableCurrency.TMT
+  of $("TND"):
+    return NullableCurrency.TND
+  of $("TOP"):
+    return NullableCurrency.TOP
+  of $("TRY"):
+    return NullableCurrency.TRY
+  of $("TTD"):
+    return NullableCurrency.TTD
+  of $("TVD"):
+    return NullableCurrency.TVD
+  of $("TWD"):
+    return NullableCurrency.TWD
+  of $("TZS"):
+    return NullableCurrency.TZS
+  of $("UAH"):
+    return NullableCurrency.UAH
+  of $("UGX"):
+    return NullableCurrency.UGX
+  of $("USD"):
+    return NullableCurrency.USD
+  of $("UYU"):
+    return NullableCurrency.UYU
+  of $("UZS"):
+    return NullableCurrency.UZS
+  of $("VEF"):
+    return NullableCurrency.VEF
+  of $("VND"):
+    return NullableCurrency.VND
+  of $("VUV"):
+    return NullableCurrency.VUV
+  of $("WST"):
+    return NullableCurrency.WST
+  of $("XAF"):
+    return NullableCurrency.XAF
+  of $("XCD"):
+    return NullableCurrency.XCD
+  of $("XDR"):
+    return NullableCurrency.XDR
+  of $("XOF"):
+    return NullableCurrency.XOF
+  of $("XPF"):
+    return NullableCurrency.XPF
+  of $("YER"):
+    return NullableCurrency.YER
+  of $("ZAR"):
+    return NullableCurrency.ZAR
+  of $("ZMW"):
+    return NullableCurrency.ZMW
+  of $("ZWD"):
+    return NullableCurrency.ZWD
+  else:
+    raise newException(ValueError, "Invalid enum value for NullableCurrency: " & strVal)
+

@@ -12,16 +12,11 @@
 /**
  * Summary status for product group
  */
-export type ProductGroupSummaryStatus = 'RUNNING' | 'PAUSED' | 'EXCLUDED' | 'ARCHIVED';
-
 export const ProductGroupSummaryStatus = {
-
-    Running: 'RUNNING' as ProductGroupSummaryStatus,
-
-    Paused: 'PAUSED' as ProductGroupSummaryStatus,
-
-    Excluded: 'EXCLUDED' as ProductGroupSummaryStatus,
-
-    Archived: 'ARCHIVED' as ProductGroupSummaryStatus
-};
+    Running: 'RUNNING',
+    Paused: 'PAUSED',
+    Excluded: 'EXCLUDED',
+    Archived: 'ARCHIVED'
+} as const;
+export type ProductGroupSummaryStatus = typeof ProductGroupSummaryStatus[keyof typeof ProductGroupSummaryStatus];
 

@@ -128,11 +128,11 @@ class BusinessAccessRelationshipsApiSimulation extends Simulation {
         .exec(http("getBusinessMembers")
         .httpRequest("GET","/businesses/${business_id}/members")
         .queryParam("start_index","${start_index}")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
         .queryParam("business_roles","${business_roles}")
-        .queryParam("member_ids","${member_ids}")
         .queryParam("assets_summary","${assets_summary}")
-        .queryParam("bookmark","${bookmark}")
+        .queryParam("member_ids","${member_ids}")
 )
 
     // Run scngetBusinessMembers with warm up and reach a constant rate for entire duration
@@ -149,11 +149,11 @@ class BusinessAccessRelationshipsApiSimulation extends Simulation {
         .exec(http("getBusinessPartners")
         .httpRequest("GET","/businesses/${business_id}/partners")
         .queryParam("start_index","${start_index}")
-        .queryParam("partner_type","${partner_type}")
-        .queryParam("partner_ids","${partner_ids}")
         .queryParam("page_size","${page_size}")
-        .queryParam("assets_summary","${assets_summary}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("partner_ids","${partner_ids}")
+        .queryParam("assets_summary","${assets_summary}")
+        .queryParam("partner_type","${partner_type}")
 )
 
     // Run scngetBusinessPartners with warm up and reach a constant rate for entire duration

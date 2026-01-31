@@ -27,7 +27,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "CatalogsHotelAttributes_allOf_main_image", description = "The main hotel image")
 @JsonTypeName("CatalogsHotelAttributes_allOf_main_image")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelAttributesAllOfMainImage {
 
   private @Nullable String link;
@@ -35,7 +35,7 @@ public class CatalogsHotelAttributesAllOfMainImage {
   @Valid
   private JsonNullable<List<String>> tag = JsonNullable.<List<String>>undefined();
 
-  public CatalogsHotelAttributesAllOfMainImage link(String link) {
+  public CatalogsHotelAttributesAllOfMainImage link(@Nullable String link) {
     this.link = link;
     return this;
   }
@@ -47,11 +47,11 @@ public class CatalogsHotelAttributesAllOfMainImage {
   
   @Schema(name = "link", description = "<p><= 2000 characters</p> <p>The link to the main hotel image. Image should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your hotel. The URL of your main_image.link must be accessible by the Pinterest user-agent, and send the accurate image. Please make sure there is no template or placeholder image at the link. Must start with http:// or https://.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
-  public String getLink() {
+  public @Nullable String getLink() {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@Nullable String link) {
     this.link = link;
   }
 

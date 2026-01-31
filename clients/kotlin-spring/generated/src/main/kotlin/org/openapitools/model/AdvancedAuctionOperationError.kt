@@ -25,7 +25,7 @@ data class AdvancedAuctionOperationError(
 
     @Schema(example = "Bid in micro currency should be non-negative", description = "Message describing the item bid option operation validation error")
     @get:JsonProperty("message") val message: kotlin.String? = null
-    ) {
+) {
 
 }
 

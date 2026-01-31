@@ -927,7 +927,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **String**| Unique identifier of the requesting business. |
  **partnerId** | **String**| The partner id to be bound to the Business |
- **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional]
+ **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [enum: INTERNAL, EXTERNAL]
  **assetType** | **String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP]
  **startIndex** | **Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional]
  **pageSize** | **Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional]

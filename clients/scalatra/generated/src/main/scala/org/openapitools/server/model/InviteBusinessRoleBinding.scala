@@ -12,21 +12,21 @@
 package org.openapitools.server.model
 
 case class InviteBusinessRoleBinding(
-  /* Unique identifier for the business that created the invite/request. */
-  createdByBusinessId: Option[String],
-
-  /* Unique identifier for the user that created the invite/request. */
-  createdByUserId: Option[String],
-
-  /* Metadata for the user that updated the invite/request. */
-  user: Option[BusinessAccessUserSummary],
-
   /* Unique identifier of the invite/request. */
   id: Option[String],
 
   inviteData: Option[BaseInviteDataResponseInviteData],
 
   /* Indicates whether the invite/request was received. */
-  isReceivedInvite: Option[Boolean]
+  isReceivedInvite: Option[Boolean],
+
+  /* Metadata for the user that updated the invite/request. */
+  user: Option[Any],
+
+  /* Unique identifier for the business that created the invite/request. */
+  createdByBusinessId: Option[String],
+
+  /* Unique identifier for the user that created the invite/request. */
+  createdByUserId: Option[String]
 
  )

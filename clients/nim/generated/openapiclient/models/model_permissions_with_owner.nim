@@ -9,7 +9,68 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type PermissionsWithOwner* = object
-  ## 
+type PermissionsWithOwner* {.pure.} = enum
+  ADMIN
+  ANALYST
+  FINANCEMANAGER
+  AUDIENCEMANAGER
+  CAMPAIGNMANAGER
+  CATALOGSMANAGER
+  CATALOGSVIEWER
+  PROFILEPUBLISHER
+  OWNER
+
+func `%`*(v: PermissionsWithOwner): JsonNode =
+  result = case v:
+    of PermissionsWithOwner.ADMIN: %"ADMIN"
+    of PermissionsWithOwner.ANALYST: %"ANALYST"
+    of PermissionsWithOwner.FINANCEMANAGER: %"FINANCE_MANAGER"
+    of PermissionsWithOwner.AUDIENCEMANAGER: %"AUDIENCE_MANAGER"
+    of PermissionsWithOwner.CAMPAIGNMANAGER: %"CAMPAIGN_MANAGER"
+    of PermissionsWithOwner.CATALOGSMANAGER: %"CATALOGS_MANAGER"
+    of PermissionsWithOwner.CATALOGSVIEWER: %"CATALOGS_VIEWER"
+    of PermissionsWithOwner.PROFILEPUBLISHER: %"PROFILE_PUBLISHER"
+    of PermissionsWithOwner.OWNER: %"OWNER"
+
+func `$`*(v: PermissionsWithOwner): string =
+  result = case v:
+    of PermissionsWithOwner.ADMIN: $("ADMIN")
+    of PermissionsWithOwner.ANALYST: $("ANALYST")
+    of PermissionsWithOwner.FINANCEMANAGER: $("FINANCE_MANAGER")
+    of PermissionsWithOwner.AUDIENCEMANAGER: $("AUDIENCE_MANAGER")
+    of PermissionsWithOwner.CAMPAIGNMANAGER: $("CAMPAIGN_MANAGER")
+    of PermissionsWithOwner.CATALOGSMANAGER: $("CATALOGS_MANAGER")
+    of PermissionsWithOwner.CATALOGSVIEWER: $("CATALOGS_VIEWER")
+    of PermissionsWithOwner.PROFILEPUBLISHER: $("PROFILE_PUBLISHER")
+    of PermissionsWithOwner.OWNER: $("OWNER")
+
+proc to*(node: JsonNode, T: typedesc[PermissionsWithOwner]): PermissionsWithOwner =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum PermissionsWithOwner, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ADMIN"):
+    return PermissionsWithOwner.ADMIN
+  of $("ANALYST"):
+    return PermissionsWithOwner.ANALYST
+  of $("FINANCE_MANAGER"):
+    return PermissionsWithOwner.FINANCEMANAGER
+  of $("AUDIENCE_MANAGER"):
+    return PermissionsWithOwner.AUDIENCEMANAGER
+  of $("CAMPAIGN_MANAGER"):
+    return PermissionsWithOwner.CAMPAIGNMANAGER
+  of $("CATALOGS_MANAGER"):
+    return PermissionsWithOwner.CATALOGSMANAGER
+  of $("CATALOGS_VIEWER"):
+    return PermissionsWithOwner.CATALOGSVIEWER
+  of $("PROFILE_PUBLISHER"):
+    return PermissionsWithOwner.PROFILEPUBLISHER
+  of $("OWNER"):
+    return PermissionsWithOwner.OWNER
+  else:
+    raise newException(ValueError, "Invalid enum value for PermissionsWithOwner: " & strVal)
+

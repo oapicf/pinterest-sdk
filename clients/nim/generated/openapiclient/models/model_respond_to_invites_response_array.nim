@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_respond_to_invites_response_array_items_inner
 
 type RespondToInvitesResponseArray* = object
   ## 
-  items*: seq[RespondToInvitesResponseArray_items_inner] ## List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
+  items*: Option[seq[RespondToInvitesResponseArray_items_inner]] ## List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.
+

@@ -9,12 +9,37 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_updatable_item_attributes
 import model_update_mask_field_type
 
 type ItemUpdateBatchRecord* = object
   ## Object describing an item batch record to update items
-  itemId*: string ## The catalog item id in the merchant namespace
-  attributes*: UpdatableItemAttributes
-  updateMask*: seq[UpdateMaskFieldType] ## The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+  itemId*: Option[string] ## The catalog item id in the merchant namespace
+  attributes*: Option[UpdatableItemAttributes]
+  updateMask*: Option[seq[UpdateMaskFieldType]] ## The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+
+
+# Custom JSON deserialization for ItemUpdateBatchRecord with custom field names
+proc to*(node: JsonNode, T: typedesc[ItemUpdateBatchRecord]): ItemUpdateBatchRecord =
+  result = ItemUpdateBatchRecord()
+  if node.kind == JObject:
+    if node.hasKey("item_id") and node["item_id"].kind != JNull:
+      result.itemId = some(to(node["item_id"], typeof(result.itemId.get())))
+    if node.hasKey("attributes") and node["attributes"].kind != JNull:
+      result.attributes = some(to(node["attributes"], typeof(result.attributes.get())))
+    if node.hasKey("update_mask") and node["update_mask"].kind != JNull:
+      result.updateMask = some(to(node["update_mask"], typeof(result.updateMask.get())))
+
+# Custom JSON serialization for ItemUpdateBatchRecord with custom field names
+proc `%`*(obj: ItemUpdateBatchRecord): JsonNode =
+  result = newJObject()
+  if obj.itemId.isSome():
+    result["item_id"] = %obj.itemId.get()
+  if obj.attributes.isSome():
+    result["attributes"] = %obj.attributes.get()
+  if obj.updateMask.isSome():
+    result["update_mask"] = %obj.updateMask.get()
+

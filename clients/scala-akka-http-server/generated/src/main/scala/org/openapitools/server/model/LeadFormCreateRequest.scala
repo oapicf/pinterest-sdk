@@ -12,13 +12,13 @@ package org.openapitools.server.model
  * @param policyLinks List of additional policy links to be displayed on the lead form. for example: ''[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]''
 */
 final case class LeadFormCreateRequest (
-  name: String,
-  privacyPolicyLink: String,
-  hasAcceptedTerms: Boolean,
-  completionMessage: String,
+  name: Option[String] = None,
+  privacyPolicyLink: Option[String] = None,
+  hasAcceptedTerms: Option[Boolean] = None,
+  completionMessage: Option[String] = None,
   status: Option[LeadFormStatus] = None,
   disclosureLanguage: Option[String] = None,
-  questions: Seq[LeadFormQuestion],
+  questions: Option[Seq[LeadFormQuestion]] = None,
   policyLinks: Option[Seq[LeadFormCommonPolicyLinksInner]] = None
 )
 

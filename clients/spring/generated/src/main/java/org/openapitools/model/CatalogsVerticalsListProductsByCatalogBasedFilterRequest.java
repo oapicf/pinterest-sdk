@@ -34,13 +34,10 @@ import javax.annotation.Generated;
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelListProductsByCatalogBasedFilterRequest.class, name = "HOTEL"),
-  @JsonSubTypes.Type(value = CatalogsRetailListProductsByCatalogBasedFilterRequest.class, name = "RETAIL"),
-  @JsonSubTypes.Type(value = CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.class, name = "CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest"),
-  @JsonSubTypes.Type(value = CatalogsHotelListProductsByCatalogBasedFilterRequest.class, name = "CatalogsHotelListProductsByCatalogBasedFilterRequest"),
-  @JsonSubTypes.Type(value = CatalogsRetailListProductsByCatalogBasedFilterRequest.class, name = "CatalogsRetailListProductsByCatalogBasedFilterRequest")
+  @JsonSubTypes.Type(value = CatalogsRetailListProductsByCatalogBasedFilterRequest.class, name = "RETAIL")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface CatalogsVerticalsListProductsByCatalogBasedFilterRequest extends CatalogsListProductsByFilterRequest {
     public String getCatalogType();
 }

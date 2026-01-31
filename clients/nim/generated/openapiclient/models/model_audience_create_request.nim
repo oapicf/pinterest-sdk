@@ -9,14 +9,44 @@
 
 import json
 import tables
+import marshal
+import options
 
-import model_audience_create_request_1_audience_type
 import model_audience_rule
+import model_audience_type
 
 type AudienceCreateRequest* = object
   ## 
-  adAccountId*: string ## Ad account ID.
+  adAccountId*: Option[string] ## Ad account ID.
   name*: string ## Audience name.
   rule*: AudienceRule
-  description*: string ## Audience description.
-  audienceType*: AudienceCreateRequest_1_audience_type
+  description*: Option[string] ## Audience description.
+  audienceType*: AudienceType ## <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+
+
+# Custom JSON deserialization for AudienceCreateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[AudienceCreateRequest]): AudienceCreateRequest =
+  result = AudienceCreateRequest()
+  if node.kind == JObject:
+    if node.hasKey("ad_account_id") and node["ad_account_id"].kind != JNull:
+      result.adAccountId = some(to(node["ad_account_id"], typeof(result.adAccountId.get())))
+    if node.hasKey("name"):
+      result.name = to(node["name"], string)
+    if node.hasKey("rule"):
+      result.rule = to(node["rule"], AudienceRule)
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("audience_type"):
+      result.audienceType = to(node["audience_type"], AudienceType)
+
+# Custom JSON serialization for AudienceCreateRequest with custom field names
+proc `%`*(obj: AudienceCreateRequest): JsonNode =
+  result = newJObject()
+  if obj.adAccountId.isSome():
+    result["ad_account_id"] = %obj.adAccountId.get()
+  result["name"] = %obj.name
+  result["rule"] = %obj.rule
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  result["audience_type"] = %obj.audienceType
+

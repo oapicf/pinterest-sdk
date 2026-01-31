@@ -35,7 +35,7 @@ namespace Org.OpenAPITools.Models
         /// <summary>
         /// Gets or Sets Invite
         /// </summary>
-        [DataMember(Name="invite", EmitDefaultValue=true)]
+        [DataMember(Name="invite", EmitDefaultValue=false)]
         public InviteBusinessRoleBinding Invite { get; set; }
 
         /// <summary>

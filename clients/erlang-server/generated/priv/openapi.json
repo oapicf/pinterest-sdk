@@ -10946,9 +10946,8 @@
           "schema" : {
             "allOf" : [ {
               "$ref" : "#/components/schemas/PartnerType"
-            }, {
-              "default" : "INTERNAL"
-            } ]
+            } ],
+            "default" : "INTERNAL"
           },
           "style" : "form"
         }, {
@@ -17071,7 +17070,8 @@
           "required" : true,
           "schema" : {
             "items" : {
-              "$ref" : "#/components/schemas/pins_analytics_metric_types_parameter_inner"
+              "enum" : [ "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "TOTAL_COMMENTS", "TOTAL_REACTIONS", "USER_FOLLOW", "PROFILE_VISIT", "VIDEO_MRC_VIEW", "VIDEO_10S_VIEW", "QUARTILE_95_PERCENT_VIEW", "VIDEO_V50_WATCH_TIME", "VIDEO_START", "VIDEO_AVG_WATCH_TIME" ],
+              "type" : "string"
             },
             "type" : "array"
           },
@@ -17238,7 +17238,8 @@
           "required" : true,
           "schema" : {
             "items" : {
-              "$ref" : "#/components/schemas/pins_analytics_metric_types_parameter_inner"
+              "enum" : [ "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "TOTAL_COMMENTS", "TOTAL_REACTIONS", "USER_FOLLOW", "PROFILE_VISIT", "VIDEO_MRC_VIEW", "VIDEO_10S_VIEW", "QUARTILE_95_PERCENT_VIEW", "VIDEO_V50_WATCH_TIME", "VIDEO_START", "VIDEO_AVG_WATCH_TIME" ],
+              "type" : "string"
             },
             "type" : "array"
           },
@@ -21220,7 +21221,8 @@
         "required" : true,
         "schema" : {
           "items" : {
-            "$ref" : "#/components/schemas/pins_analytics_metric_types_parameter_inner"
+            "enum" : [ "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "TOTAL_COMMENTS", "TOTAL_REACTIONS", "USER_FOLLOW", "PROFILE_VISIT", "VIDEO_MRC_VIEW", "VIDEO_10S_VIEW", "QUARTILE_95_PERCENT_VIEW", "VIDEO_V50_WATCH_TIME", "VIDEO_START", "VIDEO_AVG_WATCH_TIME" ],
+            "type" : "string"
           },
           "type" : "array"
         },
@@ -24703,14 +24705,19 @@
               "$ref" : "#/components/schemas/AudienceDescription"
             },
             "audience_type" : {
-              "$ref" : "#/components/schemas/AudienceCreateRequest_1_audience_type"
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/AudienceType"
+              } ],
+              "description" : "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.",
+              "title" : "audience_type",
+              "type" : "string"
             }
           },
           "required" : [ "audience_type", "name", "rule" ],
           "title" : "AudienceCreateRequest"
         } ],
         "example" : {
-          "audience_type" : { },
+          "audience_type" : "audience_type",
           "name" : "string",
           "rule" : {
             "country" : "US",
@@ -29356,9 +29363,8 @@
           "status" : {
             "allOf" : [ {
               "$ref" : "#/components/schemas/CatalogsStatus"
-            }, {
-              "default" : "ACTIVE"
             } ],
+            "default" : "ACTIVE",
             "type" : "string"
           }
         },
@@ -29428,9 +29434,8 @@
           "status" : {
             "allOf" : [ {
               "$ref" : "#/components/schemas/CatalogsStatus"
-            }, {
-              "default" : "ACTIVE"
             } ],
+            "default" : "ACTIVE",
             "type" : "string"
           }
         },
@@ -29524,9 +29529,8 @@
           "status" : {
             "allOf" : [ {
               "$ref" : "#/components/schemas/CatalogsStatus"
-            }, {
-              "default" : "ACTIVE"
             } ],
+            "default" : "ACTIVE",
             "type" : "string"
           }
         },
@@ -29669,9 +29673,8 @@
           "status" : {
             "allOf" : [ {
               "$ref" : "#/components/schemas/CatalogsStatus"
-            }, {
-              "default" : "ACTIVE"
             } ],
+            "default" : "ACTIVE",
             "type" : "string"
           }
         },
@@ -30902,7 +30905,9 @@
             "$ref" : "#/components/schemas/Country"
           },
           "language" : {
-            "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+            "description" : "We recommend using the CatalogsLocale values.",
+            "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ],
+            "type" : "string"
           },
           "filters" : {
             "$ref" : "#/components/schemas/CatalogsItemsPostFilters"
@@ -30945,7 +30950,9 @@
             "$ref" : "#/components/schemas/Country"
           },
           "language" : {
-            "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+            "description" : "We recommend using the CatalogsLocale values.",
+            "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ],
+            "type" : "string"
           },
           "operation" : {
             "$ref" : "#/components/schemas/BatchOperation"
@@ -30971,7 +30978,9 @@
             "$ref" : "#/components/schemas/Country"
           },
           "language" : {
-            "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+            "description" : "We recommend using the CatalogsLocale values.",
+            "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ],
+            "type" : "string"
           },
           "operation" : {
             "$ref" : "#/components/schemas/BatchOperation"
@@ -30995,7 +31004,9 @@
             "$ref" : "#/components/schemas/Country"
           },
           "language" : {
-            "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+            "description" : "We recommend using the CatalogsLocale values.",
+            "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ],
+            "type" : "string"
           },
           "operation" : {
             "$ref" : "#/components/schemas/BatchOperation"
@@ -31019,7 +31030,9 @@
             "$ref" : "#/components/schemas/Country"
           },
           "language" : {
-            "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+            "description" : "We recommend using the CatalogsLocale values.",
+            "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ],
+            "type" : "string"
           },
           "operation" : {
             "$ref" : "#/components/schemas/BatchOperation"
@@ -31044,7 +31057,9 @@
             "$ref" : "#/components/schemas/Country"
           },
           "language" : {
-            "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+            "description" : "We recommend using the CatalogsLocale values.",
+            "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ],
+            "type" : "string"
           },
           "operation" : {
             "$ref" : "#/components/schemas/BatchOperation"
@@ -32409,7 +32424,9 @@
             "$ref" : "#/components/schemas/Country"
           },
           "language" : {
-            "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+            "description" : "We recommend using the CatalogsLocale values.",
+            "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ],
+            "type" : "string"
           },
           "items" : {
             "description" : "Array with catalogs item operations",
@@ -32567,7 +32584,9 @@
             "$ref" : "#/components/schemas/Country"
           },
           "language" : {
-            "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+            "description" : "We recommend using the CatalogsLocale values.",
+            "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ],
+            "type" : "string"
           },
           "items" : {
             "description" : "Array with catalogs item operations",
@@ -32853,7 +32872,9 @@
             "$ref" : "#/components/schemas/Country"
           },
           "language" : {
-            "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+            "description" : "We recommend using the CatalogsLocale values.",
+            "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ],
+            "type" : "string"
           },
           "items" : {
             "description" : "Array with creative assets item operations",
@@ -33751,20 +33772,32 @@
       "ConversionTagCreate" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/ConversionTagConfigs"
+        }, {
+          "example" : {
+            "name" : "ACME Tools Tag"
+          },
+          "properties" : {
+            "name" : {
+              "description" : "Conversion tag name.",
+              "example" : "ACME Tools Tag",
+              "title" : "name",
+              "type" : "string"
+            }
+          },
+          "required" : [ "name" ],
+          "title" : "ConversionTagCreate",
+          "type" : "object"
         } ],
         "example" : {
-          "name" : "ACME Tools Tag"
+          "aem_fnln_enabled" : true,
+          "aem_enabled" : true,
+          "aem_db_enabled" : true,
+          "name" : "ACME Tools Tag",
+          "md_frequency" : 0.6,
+          "aem_ph_enabled" : true,
+          "aem_ge_enabled" : true,
+          "aem_loc_enabled" : true
         },
-        "properties" : {
-          "name" : {
-            "description" : "Conversion tag name.",
-            "example" : "ACME Tools Tag",
-            "title" : "name",
-            "type" : "string"
-          }
-        },
-        "required" : [ "name" ],
-        "title" : "ConversionTagCreate",
         "type" : "object"
       },
       "ConversionTagListResponse" : {
@@ -34132,64 +34165,68 @@
             }
           },
           "type" : "object"
+        }, {
+          "properties" : {
+            "report_name" : {
+              "description" : "Name of the Marketing Mix Modeling (MMM) report",
+              "title" : "report_name",
+              "type" : "string"
+            },
+            "start_date" : {
+              "description" : "Metric report start date (UTC). Format: YYYY-MM-DD",
+              "example" : "2020-12-20",
+              "pattern" : "^(\\d{4})-(\\d{2})-(\\d{2})$",
+              "type" : "string"
+            },
+            "end_date" : {
+              "description" : "Metric report end date (UTC). Format: YYYY-MM-DD",
+              "example" : "2020-12-20",
+              "pattern" : "^(\\d{4})-(\\d{2})-(\\d{2})$",
+              "type" : "string"
+            },
+            "granularity" : {
+              "description" : "DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.",
+              "enum" : [ "DAY", "WEEK" ],
+              "type" : "string"
+            },
+            "level" : {
+              "description" : "Level of the report",
+              "enum" : [ "CAMPAIGN_TARGETING", "AD_GROUP_TARGETING" ],
+              "type" : "string"
+            },
+            "targeting_types" : {
+              "description" : "List of targeting types",
+              "example" : [ "GENDER" ],
+              "items" : {
+                "$ref" : "#/components/schemas/MMMReportingTargetingType"
+              },
+              "maxItems" : 5,
+              "minItems" : 1,
+              "title" : "targeting_types",
+              "type" : "array"
+            },
+            "columns" : {
+              "description" : "Metric and entity columns",
+              "items" : {
+                "$ref" : "#/components/schemas/MMMReportingColumn"
+              },
+              "type" : "array"
+            }
+          },
+          "required" : [ "columns", "end_date", "granularity", "level", "report_name", "start_date", "targeting_types" ],
+          "type" : "object",
+          "example" : null
         } ],
         "example" : {
           "end_date" : "2020-12-20",
           "level" : "CAMPAIGN_TARGETING",
           "granularity" : "DAY",
           "columns" : [ "SPEND_IN_DOLLAR", "SPEND_IN_DOLLAR" ],
+          "countries" : [ "US", "US" ],
           "report_name" : "report_name",
           "targeting_types" : [ "GENDER" ],
           "start_date" : "2020-12-20"
         },
-        "properties" : {
-          "report_name" : {
-            "description" : "Name of the Marketing Mix Modeling (MMM) report",
-            "title" : "report_name",
-            "type" : "string"
-          },
-          "start_date" : {
-            "description" : "Metric report start date (UTC). Format: YYYY-MM-DD",
-            "example" : "2020-12-20",
-            "pattern" : "^(\\d{4})-(\\d{2})-(\\d{2})$",
-            "type" : "string"
-          },
-          "end_date" : {
-            "description" : "Metric report end date (UTC). Format: YYYY-MM-DD",
-            "example" : "2020-12-20",
-            "pattern" : "^(\\d{4})-(\\d{2})-(\\d{2})$",
-            "type" : "string"
-          },
-          "granularity" : {
-            "description" : "DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.",
-            "enum" : [ "DAY", "WEEK" ],
-            "type" : "string"
-          },
-          "level" : {
-            "description" : "Level of the report",
-            "enum" : [ "CAMPAIGN_TARGETING", "AD_GROUP_TARGETING" ],
-            "type" : "string"
-          },
-          "targeting_types" : {
-            "description" : "List of targeting types",
-            "example" : [ "GENDER" ],
-            "items" : {
-              "$ref" : "#/components/schemas/MMMReportingTargetingType"
-            },
-            "maxItems" : 5,
-            "minItems" : 1,
-            "title" : "targeting_types",
-            "type" : "array"
-          },
-          "columns" : {
-            "description" : "Metric and entity columns",
-            "items" : {
-              "$ref" : "#/components/schemas/MMMReportingColumn"
-            },
-            "type" : "array"
-          }
-        },
-        "required" : [ "columns", "end_date", "granularity", "level", "report_name", "start_date", "targeting_types" ],
         "type" : "object"
       },
       "CreateMMMReportResponse" : {
@@ -35895,38 +35932,73 @@
       "InviteBusinessRoleBinding" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/BaseInviteDataResponse"
+        }, {
+          "description" : "An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.",
+          "nullable" : true,
+          "properties" : {
+            "created_by_business_id" : {
+              "description" : "Unique identifier for the business that created the invite/request.",
+              "example" : "1234567890123",
+              "type" : "string"
+            },
+            "created_by_user_id" : {
+              "description" : "Unique identifier for the user that created the invite/request.",
+              "example" : "1234567890123",
+              "type" : "string"
+            },
+            "user" : {
+              "$ref" : "#/components/schemas/InviteBusinessRoleBinding_allOf_user"
+            }
+          },
+          "type" : "object",
+          "example" : null
         } ],
-        "description" : "An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.",
         "example" : {
           "created_by_business_id" : "1234567890123",
+          "invite_data" : {
+            "invite_type" : "MEMBER_INVITE",
+            "sent_at" : 1646767577816,
+            "last_updated_time" : 1646767577816,
+            "invite_expiration" : 1709748104775,
+            "invite_status" : "PENDING"
+          },
+          "id" : "383791336903426391",
+          "user" : null,
           "created_by_user_id" : "1234567890123",
-          "user" : "{}"
-        },
-        "nullable" : true,
-        "properties" : {
-          "created_by_business_id" : {
-            "description" : "Unique identifier for the business that created the invite/request.",
-            "example" : "1234567890123",
-            "type" : "string"
-          },
-          "created_by_user_id" : {
-            "description" : "Unique identifier for the user that created the invite/request.",
-            "example" : "1234567890123",
-            "type" : "string"
-          },
-          "user" : {
-            "allOf" : [ {
-              "$ref" : "#/components/schemas/BusinessAccessUserSummary"
-            } ],
-            "description" : "Metadata for the user that updated the invite/request.",
-            "type" : "object"
-          }
+          "is_received_invite" : true
         },
         "type" : "object"
       },
       "InviteResponse" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/BaseInviteDataResponse"
+        }, {
+          "properties" : {
+            "assets_summary" : {
+              "$ref" : "#/components/schemas/InviteAssetsSummary"
+            },
+            "business_roles" : {
+              "description" : "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.",
+              "example" : [ "BIZ_ADMIN" ],
+              "items" : {
+                "$ref" : "#/components/schemas/BusinessRoleResponse"
+              },
+              "type" : "array"
+            },
+            "created_by_business" : {
+              "$ref" : "#/components/schemas/InviteResponse_allOf_created_by_business"
+            },
+            "created_by_user" : {
+              "$ref" : "#/components/schemas/InviteResponse_allOf_created_by_user"
+            },
+            "created_time" : {
+              "description" : "The time the invite/request was created. Returned in milliseconds.",
+              "example" : 1646767577816,
+              "type" : "integer"
+            }
+          },
+          "type" : "object",
+          "example" : null
         } ],
         "example" : {
           "created_time" : 1646767577816,
@@ -35947,42 +36019,18 @@
             } ]
           },
           "business_roles" : [ "BIZ_ADMIN" ],
-          "created_by_business" : "{}",
-          "created_by_user" : "{}"
-        },
-        "properties" : {
-          "assets_summary" : {
-            "$ref" : "#/components/schemas/InviteAssetsSummary"
+          "invite_data" : {
+            "invite_type" : "MEMBER_INVITE",
+            "sent_at" : 1646767577816,
+            "last_updated_time" : 1646767577816,
+            "invite_expiration" : 1709748104775,
+            "invite_status" : "PENDING"
           },
-          "business_roles" : {
-            "description" : "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.",
-            "example" : [ "BIZ_ADMIN" ],
-            "items" : {
-              "$ref" : "#/components/schemas/BusinessRoleResponse"
-            },
-            "type" : "array"
-          },
-          "created_by_business" : {
-            "allOf" : [ {
-              "$ref" : "#/components/schemas/BusinessAccessUserSummary"
-            } ],
-            "description" : "Metadata for the business that created the invite/request.",
-            "nullable" : true,
-            "type" : "object"
-          },
-          "created_by_user" : {
-            "allOf" : [ {
-              "$ref" : "#/components/schemas/BusinessAccessUserSummary"
-            } ],
-            "description" : "Metadata for the user that created the invite/request.",
-            "nullable" : true,
-            "type" : "object"
-          },
-          "created_time" : {
-            "description" : "The time the invite/request was created. Returned in milliseconds.",
-            "example" : 1646767577816,
-            "type" : "integer"
-          }
+          "created_by_business" : null,
+          "id" : "383791336903426391",
+          "user" : "{}",
+          "is_received_invite" : true,
+          "created_by_user" : null
         },
         "type" : "object"
       },
@@ -36970,8 +37018,6 @@
       "LeadFormCreateRequest" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/LeadFormCommon"
-        }, {
-          "required" : [ "completion_message", "has_accepted_terms", "name", "privacy_policy_link", "questions" ]
         } ],
         "example" : {
           "completion_message" : "Thank you for submitting. We will contact you soon.",
@@ -37720,17 +37766,21 @@
           },
           "required" : [ "code", "redirect_uri" ],
           "type" : "object"
+        }, {
+          "description" : "A request to exchange an authorization code for an access token.",
+          "properties" : {
+            "grant_type" : {
+              "enum" : [ "authorization_code", "refresh_token", "client_credentials" ],
+              "type" : "string"
+            }
+          },
+          "required" : [ "grant_type" ],
+          "title" : "authorization_code",
+          "type" : "object",
+          "example" : null
         } ],
-        "description" : "A request to exchange an authorization code for an access token.",
-        "properties" : {
-          "grant_type" : {
-            "enum" : [ "authorization_code", "refresh_token", "client_credentials" ],
-            "type" : "string"
-          }
-        },
-        "required" : [ "grant_type" ],
-        "title" : "authorization_code",
-        "type" : "object"
+        "type" : "object",
+        "example" : null
       },
       "OauthAccessTokenRequestRefresh" : {
         "allOf" : [ {
@@ -37748,17 +37798,21 @@
           },
           "required" : [ "refresh_token" ],
           "type" : "object"
+        }, {
+          "description" : "A request to exchange a refresh token for a new access token.",
+          "properties" : {
+            "grant_type" : {
+              "enum" : [ "authorization_code", "refresh_token", "client_credentials" ],
+              "type" : "string"
+            }
+          },
+          "required" : [ "grant_type" ],
+          "title" : "refresh_token",
+          "type" : "object",
+          "example" : null
         } ],
-        "description" : "A request to exchange a refresh token for a new access token.",
-        "properties" : {
-          "grant_type" : {
-            "enum" : [ "authorization_code", "refresh_token", "client_credentials" ],
-            "type" : "string"
-          }
-        },
-        "required" : [ "grant_type" ],
-        "title" : "refresh_token",
-        "type" : "object"
+        "type" : "object",
+        "example" : null
       },
       "OauthAccessTokenRequestClientCredentials" : {
         "allOf" : [ {
@@ -37769,17 +37823,21 @@
           },
           "required" : [ "scope" ],
           "type" : "object"
+        }, {
+          "description" : "A request to receive a client token.",
+          "properties" : {
+            "grant_type" : {
+              "enum" : [ "authorization_code", "refresh_token", "client_credentials" ],
+              "type" : "string"
+            }
+          },
+          "required" : [ "grant_type" ],
+          "title" : "client_credentials",
+          "type" : "object",
+          "example" : null
         } ],
-        "description" : "A request to receive a client token.",
-        "properties" : {
-          "grant_type" : {
-            "enum" : [ "authorization_code", "refresh_token", "client_credentials" ],
-            "type" : "string"
-          }
-        },
-        "required" : [ "grant_type" ],
-        "title" : "client_credentials",
-        "type" : "object"
+        "type" : "object",
+        "example" : null
       },
       "OauthAccessTokenResponse" : {
         "description" : "A successful OAuth access token response.",
@@ -37835,30 +37893,34 @@
           },
           "required" : [ "refresh_token", "refresh_token_expires_in" ],
           "type" : "object"
+        }, {
+          "description" : "A successful OAuth access token response for the authorization code flow.",
+          "properties" : {
+            "response_type" : {
+              "enum" : [ "authorization_code", "refresh_token", "client_credentials" ],
+              "type" : "string"
+            },
+            "access_token" : {
+              "type" : "string"
+            },
+            "token_type" : {
+              "default" : "bearer",
+              "type" : "string"
+            },
+            "expires_in" : {
+              "type" : "integer"
+            },
+            "scope" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "access_token", "expires_in", "scope", "token_type" ],
+          "title" : "OAuth access token response",
+          "type" : "object",
+          "example" : null
         } ],
-        "description" : "A successful OAuth access token response for the authorization code flow.",
-        "properties" : {
-          "response_type" : {
-            "enum" : [ "authorization_code", "refresh_token", "client_credentials" ],
-            "type" : "string"
-          },
-          "access_token" : {
-            "type" : "string"
-          },
-          "token_type" : {
-            "default" : "bearer",
-            "type" : "string"
-          },
-          "expires_in" : {
-            "type" : "integer"
-          },
-          "scope" : {
-            "type" : "string"
-          }
-        },
-        "required" : [ "access_token", "expires_in", "scope", "token_type" ],
-        "title" : "OAuth access token response",
-        "type" : "object"
+        "type" : "object",
+        "example" : null
       },
       "OauthAccessTokenResponseEverlastingRefresh" : {
         "allOf" : [ {
@@ -37875,30 +37937,34 @@
           },
           "required" : [ "refresh_token", "refresh_token_expires_at", "refresh_token_expires_in" ],
           "type" : "object"
+        }, {
+          "description" : "A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.",
+          "properties" : {
+            "response_type" : {
+              "enum" : [ "authorization_code", "refresh_token", "client_credentials" ],
+              "type" : "string"
+            },
+            "access_token" : {
+              "type" : "string"
+            },
+            "token_type" : {
+              "default" : "bearer",
+              "type" : "string"
+            },
+            "expires_in" : {
+              "type" : "integer"
+            },
+            "scope" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "access_token", "expires_in", "scope", "token_type" ],
+          "title" : "OAuth access token response",
+          "type" : "object",
+          "example" : null
         } ],
-        "description" : "A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.",
-        "properties" : {
-          "response_type" : {
-            "enum" : [ "authorization_code", "refresh_token", "client_credentials" ],
-            "type" : "string"
-          },
-          "access_token" : {
-            "type" : "string"
-          },
-          "token_type" : {
-            "default" : "bearer",
-            "type" : "string"
-          },
-          "expires_in" : {
-            "type" : "integer"
-          },
-          "scope" : {
-            "type" : "string"
-          }
-        },
-        "required" : [ "access_token", "expires_in", "scope", "token_type" ],
-        "title" : "OAuth access token response",
-        "type" : "object"
+        "type" : "object",
+        "example" : null
       },
       "OauthAccessTokenResponseIntegrationRefresh" : {
         "allOf" : [ {
@@ -37912,30 +37978,34 @@
           },
           "required" : [ "refresh_token", "refresh_token_expires_in" ],
           "type" : "object"
+        }, {
+          "description" : "A successful OAuth access token response for the refresh token flow, with an added refresh token.",
+          "properties" : {
+            "response_type" : {
+              "enum" : [ "authorization_code", "refresh_token", "client_credentials" ],
+              "type" : "string"
+            },
+            "access_token" : {
+              "type" : "string"
+            },
+            "token_type" : {
+              "default" : "bearer",
+              "type" : "string"
+            },
+            "expires_in" : {
+              "type" : "integer"
+            },
+            "scope" : {
+              "type" : "string"
+            }
+          },
+          "required" : [ "access_token", "expires_in", "scope", "token_type" ],
+          "title" : "OAuth access token response",
+          "type" : "object",
+          "example" : null
         } ],
-        "description" : "A successful OAuth access token response for the refresh token flow, with an added refresh token.",
-        "properties" : {
-          "response_type" : {
-            "enum" : [ "authorization_code", "refresh_token", "client_credentials" ],
-            "type" : "string"
-          },
-          "access_token" : {
-            "type" : "string"
-          },
-          "token_type" : {
-            "default" : "bearer",
-            "type" : "string"
-          },
-          "expires_in" : {
-            "type" : "integer"
-          },
-          "scope" : {
-            "type" : "string"
-          }
-        },
-        "required" : [ "access_token", "expires_in", "scope", "token_type" ],
-        "title" : "OAuth access token response",
-        "type" : "object"
+        "type" : "object",
+        "example" : null
       },
       "OauthAccessTokenResponseRefresh" : {
         "allOf" : [ {
@@ -41904,8 +41974,17 @@
             },
             "invite" : {
               "created_by_business_id" : "1234567890123",
+              "invite_data" : {
+                "invite_type" : "MEMBER_INVITE",
+                "sent_at" : 1646767577816,
+                "last_updated_time" : 1646767577816,
+                "invite_expiration" : 1709748104775,
+                "invite_status" : "PENDING"
+              },
+              "id" : "383791336903426391",
+              "user" : null,
               "created_by_user_id" : "1234567890123",
-              "user" : "{}"
+              "is_received_invite" : true
             }
           }, {
             "exception" : {
@@ -41916,8 +41995,17 @@
             },
             "invite" : {
               "created_by_business_id" : "1234567890123",
+              "invite_data" : {
+                "invite_type" : "MEMBER_INVITE",
+                "sent_at" : 1646767577816,
+                "last_updated_time" : 1646767577816,
+                "invite_expiration" : 1709748104775,
+                "invite_status" : "PENDING"
+              },
+              "id" : "383791336903426391",
+              "user" : null,
               "created_by_user_id" : "1234567890123",
-              "user" : "{}"
+              "is_received_invite" : true
             }
           } ]
         },
@@ -44095,8 +44183,18 @@
               } ]
             },
             "business_roles" : [ "BIZ_ADMIN" ],
-            "created_by_business" : "{}",
-            "created_by_user" : "{}"
+            "invite_data" : {
+              "invite_type" : "MEMBER_INVITE",
+              "sent_at" : 1646767577816,
+              "last_updated_time" : 1646767577816,
+              "invite_expiration" : 1709748104775,
+              "invite_status" : "PENDING"
+            },
+            "created_by_business" : null,
+            "id" : "383791336903426391",
+            "user" : "{}",
+            "is_received_invite" : true,
+            "created_by_user" : null
           }, {
             "created_time" : 1646767577816,
             "assets_summary" : {
@@ -44116,8 +44214,18 @@
               } ]
             },
             "business_roles" : [ "BIZ_ADMIN" ],
-            "created_by_business" : "{}",
-            "created_by_user" : "{}"
+            "invite_data" : {
+              "invite_type" : "MEMBER_INVITE",
+              "sent_at" : 1646767577816,
+              "last_updated_time" : 1646767577816,
+              "invite_expiration" : 1709748104775,
+              "invite_status" : "PENDING"
+            },
+            "created_by_business" : null,
+            "id" : "383791336903426391",
+            "user" : "{}",
+            "is_received_invite" : true,
+            "created_by_user" : null
           } ]
         }
       },
@@ -45462,17 +45570,6 @@
           } ]
         }
       },
-      "pins_analytics_metric_types_parameter_inner" : {
-        "oneOf" : [ {
-          "description" : "Standard Pin metric types",
-          "enum" : [ "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "TOTAL_COMMENTS", "TOTAL_REACTIONS", "USER_FOLLOW", "PROFILE_VISIT" ],
-          "type" : "string"
-        }, {
-          "description" : "Video Pin metric types",
-          "enum" : [ "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "VIDEO_MRC_VIEW", "VIDEO_10S_VIEW", "QUARTILE_95_PERCENT_VIEW", "VIDEO_V50_WATCH_TIME", "VIDEO_START", "VIDEO_AVG_WATCH_TIME", "TOTAL_COMMENTS", "TOTAL_REACTIONS" ],
-          "type" : "string"
-        } ]
-      },
       "pins_save_request" : {
         "properties" : {
           "board_id" : {
@@ -45922,16 +46019,6 @@
         },
         "title" : "AudienceSubcategory",
         "type" : "object"
-      },
-      "AudienceCreateRequest_1_audience_type" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/AudienceType"
-        }, {
-          "description" : "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.",
-          "title" : "audience_type"
-        } ],
-        "example" : { },
-        "type" : "string"
       },
       "LineItem" : {
         "example" : {
@@ -46525,14 +46612,6 @@
           }
         },
         "type" : "object"
-      },
-      "CatalogsItemsRequest_language" : {
-        "anyOf" : [ {
-          "$ref" : "#/components/schemas/CatalogsLocale"
-        }, {
-          "$ref" : "#/components/schemas/Language"
-        } ],
-        "description" : "We recommend using the CatalogsLocale values."
       },
       "CatalogsProductGroupFiltersRequest_anyOf" : {
         "additionalProperties" : false,
@@ -47316,6 +47395,20 @@
             "type" : "array"
           }
         },
+        "type" : "object"
+      },
+      "InviteBusinessRoleBinding_allOf_user" : {
+        "description" : "Metadata for the user that updated the invite/request.",
+        "type" : "object"
+      },
+      "InviteResponse_allOf_created_by_business" : {
+        "description" : "Metadata for the business that created the invite/request.",
+        "nullable" : true,
+        "type" : "object"
+      },
+      "InviteResponse_allOf_created_by_user" : {
+        "description" : "Metadata for the user that created the invite/request.",
+        "nullable" : true,
         "type" : "object"
       },
       "ItemAttributesRequest_allOf_image_link" : {
@@ -48260,8 +48353,17 @@
           },
           "invite" : {
             "created_by_business_id" : "1234567890123",
+            "invite_data" : {
+              "invite_type" : "MEMBER_INVITE",
+              "sent_at" : 1646767577816,
+              "last_updated_time" : 1646767577816,
+              "invite_expiration" : 1709748104775,
+              "invite_status" : "PENDING"
+            },
+            "id" : "383791336903426391",
+            "user" : null,
             "created_by_user_id" : "1234567890123",
-            "user" : "{}"
+            "is_received_invite" : true
           }
         },
         "properties" : {

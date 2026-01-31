@@ -57,9 +57,9 @@
     },
     {
       "name": "status",
-      "type": ["null", "model.CatalogsStatus"],
+      "type": ["model.CatalogsStatus", "null"],
       "doc": "",
-      "default": null
+      "default": CatalogsStatus.ACTIVE
     }
   ]
 

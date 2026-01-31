@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ItemValidationEvent", description = "Object describing an item validation event")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemValidationEvent {
 
   private @Nullable String attribute;
@@ -29,7 +29,7 @@ public class ItemValidationEvent {
 
   private @Nullable String message;
 
-  public ItemValidationEvent attribute(String attribute) {
+  public ItemValidationEvent attribute(@Nullable String attribute) {
     this.attribute = attribute;
     return this;
   }
@@ -41,15 +41,15 @@ public class ItemValidationEvent {
   
   @Schema(name = "attribute", example = "title", description = "The attribute that the item validation event references", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attribute")
-  public String getAttribute() {
+  public @Nullable String getAttribute() {
     return attribute;
   }
 
-  public void setAttribute(String attribute) {
+  public void setAttribute(@Nullable String attribute) {
     this.attribute = attribute;
   }
 
-  public ItemValidationEvent code(Integer code) {
+  public ItemValidationEvent code(@Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -61,15 +61,15 @@ public class ItemValidationEvent {
   
   @Schema(name = "code", example = "106", description = "The event code that the item validation event references", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public Integer getCode() {
+  public @Nullable Integer getCode() {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@Nullable Integer code) {
     this.code = code;
   }
 
-  public ItemValidationEvent message(String message) {
+  public ItemValidationEvent message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -81,11 +81,11 @@ public class ItemValidationEvent {
   
   @Schema(name = "message", example = "Title is missing from product metadata.", description = "Title message describing the item validation event", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
-  public String getMessage() {
+  public @Nullable String getMessage() {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 

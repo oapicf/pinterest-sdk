@@ -1,25 +1,26 @@
 package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
- **/
+ * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
+ */
 @ApiModel(description="Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.")
 
 public class AdAccountCreateSubscriptionRequestPartnerMetadata  {
   
-  @ApiModelProperty(value = "Text field value that uniquely identifies a subscriber.")
  /**
-   * Text field value that uniquely identifies a subscriber.
-  **/
+  * Text field value that uniquely identifies a subscriber.
+  */
+  @ApiModelProperty(value = "Text field value that uniquely identifies a subscriber.")
+
   private String subscriberKey;
  /**
    * Text field value that uniquely identifies a subscriber.

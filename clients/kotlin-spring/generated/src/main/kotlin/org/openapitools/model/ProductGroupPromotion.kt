@@ -96,7 +96,7 @@ data class ProductGroupPromotion(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("grid_click_type") val gridClickType: GridClickType? = null
-    ) {
+) {
 
 }
 

@@ -12,12 +12,9 @@
 /**
  * Conversion report time type
  */
-export type ConversionReportTimeType = 'TIME_OF_AD_ACTION' | 'TIME_OF_CONVERSION';
-
 export const ConversionReportTimeType = {
-
-    TimeOfAdAction: 'TIME_OF_AD_ACTION' as ConversionReportTimeType,
-
-    TimeOfConversion: 'TIME_OF_CONVERSION' as ConversionReportTimeType
-};
+    TimeOfAdAction: 'TIME_OF_AD_ACTION',
+    TimeOfConversion: 'TIME_OF_CONVERSION'
+} as const;
+export type ConversionReportTimeType = typeof ConversionReportTimeType[keyof typeof ConversionReportTimeType];
 

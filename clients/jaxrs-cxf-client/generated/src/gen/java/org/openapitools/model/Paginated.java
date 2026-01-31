@@ -13,9 +13,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Paginated  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<Object> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * Get items

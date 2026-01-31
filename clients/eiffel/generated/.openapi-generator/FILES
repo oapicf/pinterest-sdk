@@ -89,7 +89,6 @@ docs/AUDIENCE_CATEGORY.md
 docs/AUDIENCE_COMMON.md
 docs/AUDIENCE_CREATE_CUSTOM_REQUEST.md
 docs/AUDIENCE_CREATE_REQUEST.md
-docs/AUDIENCE_CREATE_REQUEST_1_AUDIENCE_TYPE.md
 docs/AUDIENCE_DATA_PARTY.md
 docs/AUDIENCE_DEFINITION.md
 docs/AUDIENCE_DEFINITION_RESPONSE.md
@@ -269,7 +268,6 @@ docs/CATALOGS_ITEMS_DELETE_DISCONTINUED_BATCH_REQUEST.md
 docs/CATALOGS_ITEMS_FILTERS.md
 docs/CATALOGS_ITEMS_POST_FILTERS.md
 docs/CATALOGS_ITEMS_REQUEST.md
-docs/CATALOGS_ITEMS_REQUEST_LANGUAGE.md
 docs/CATALOGS_ITEMS_UPDATE_BATCH_REQUEST.md
 docs/CATALOGS_ITEMS_UPSERT_BATCH_REQUEST.md
 docs/CATALOGS_ITEM_VALIDATION_DETAILS.md
@@ -596,7 +594,6 @@ docs/PARTNER_TYPE.md
 docs/PERMISSIONS.md
 docs/PERMISSIONS_WITH_OWNER.md
 docs/PIN.md
-docs/PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER.md
 docs/PINS_API.md
 docs/PINS_LIST_200_RESPONSE.md
 docs/PINS_SAVE_REQUEST.md
@@ -868,7 +865,6 @@ src/domain/audience_category.e
 src/domain/audience_common.e
 src/domain/audience_create_custom_request.e
 src/domain/audience_create_request.e
-src/domain/audience_create_request_1_audience_type.e
 src/domain/audience_data_party.e
 src/domain/audience_definition.e
 src/domain/audience_definition_response.e
@@ -1046,7 +1042,6 @@ src/domain/catalogs_items_delete_discontinued_batch_request.e
 src/domain/catalogs_items_filters.e
 src/domain/catalogs_items_post_filters.e
 src/domain/catalogs_items_request.e
-src/domain/catalogs_items_request_language.e
 src/domain/catalogs_items_update_batch_request.e
 src/domain/catalogs_items_upsert_batch_request.e
 src/domain/catalogs_list_200_response.e
@@ -1380,7 +1375,6 @@ src/domain/pin_media_with_videos.e
 src/domain/pin_promotion_summary_status.e
 src/domain/pin_update.e
 src/domain/pin_update_carousel_slots_inner.e
-src/domain/pins_analytics_metric_types_parameter_inner.e
 src/domain/pins_list_200_response.e
 src/domain/pins_save_request.e
 src/domain/pinterest_tag_event_data.e

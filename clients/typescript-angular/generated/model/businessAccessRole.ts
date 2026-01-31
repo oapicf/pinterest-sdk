@@ -12,38 +12,22 @@
 /**
  * Permission role for business access.
  */
-export type BusinessAccessRole = 'OWNER' | 'ADMIN' | 'ANALYST' | 'SOS_READER' | 'FINANCE_MANAGER' | 'AUDIENCE_MANAGER' | 'CAMPAIGN_MANAGER' | 'CATALOGS_MANAGER' | 'RESTRICTED_OWNER' | 'PROFILE_MANAGER' | 'PROFILE_PUBLISHER' | 'RESOURCE_PINNER_LIST_OWNER' | 'RESOURCE_PINNER_LIST_READER' | 'BIZ_PINNER_LIST_SHARER' | 'RESOURCE_CONVERSION_TAGS_READER';
-
 export const BusinessAccessRole = {
-
-    Owner: 'OWNER' as BusinessAccessRole,
-
-    Admin: 'ADMIN' as BusinessAccessRole,
-
-    Analyst: 'ANALYST' as BusinessAccessRole,
-
-    SosReader: 'SOS_READER' as BusinessAccessRole,
-
-    FinanceManager: 'FINANCE_MANAGER' as BusinessAccessRole,
-
-    AudienceManager: 'AUDIENCE_MANAGER' as BusinessAccessRole,
-
-    CampaignManager: 'CAMPAIGN_MANAGER' as BusinessAccessRole,
-
-    CatalogsManager: 'CATALOGS_MANAGER' as BusinessAccessRole,
-
-    RestrictedOwner: 'RESTRICTED_OWNER' as BusinessAccessRole,
-
-    ProfileManager: 'PROFILE_MANAGER' as BusinessAccessRole,
-
-    ProfilePublisher: 'PROFILE_PUBLISHER' as BusinessAccessRole,
-
-    ResourcePinnerListOwner: 'RESOURCE_PINNER_LIST_OWNER' as BusinessAccessRole,
-
-    ResourcePinnerListReader: 'RESOURCE_PINNER_LIST_READER' as BusinessAccessRole,
-
-    BizPinnerListSharer: 'BIZ_PINNER_LIST_SHARER' as BusinessAccessRole,
-
-    ResourceConversionTagsReader: 'RESOURCE_CONVERSION_TAGS_READER' as BusinessAccessRole
-};
+    Owner: 'OWNER',
+    Admin: 'ADMIN',
+    Analyst: 'ANALYST',
+    SosReader: 'SOS_READER',
+    FinanceManager: 'FINANCE_MANAGER',
+    AudienceManager: 'AUDIENCE_MANAGER',
+    CampaignManager: 'CAMPAIGN_MANAGER',
+    CatalogsManager: 'CATALOGS_MANAGER',
+    RestrictedOwner: 'RESTRICTED_OWNER',
+    ProfileManager: 'PROFILE_MANAGER',
+    ProfilePublisher: 'PROFILE_PUBLISHER',
+    ResourcePinnerListOwner: 'RESOURCE_PINNER_LIST_OWNER',
+    ResourcePinnerListReader: 'RESOURCE_PINNER_LIST_READER',
+    BizPinnerListSharer: 'BIZ_PINNER_LIST_SHARER',
+    ResourceConversionTagsReader: 'RESOURCE_CONVERSION_TAGS_READER'
+} as const;
+export type BusinessAccessRole = typeof BusinessAccessRole[keyof typeof BusinessAccessRole];
 

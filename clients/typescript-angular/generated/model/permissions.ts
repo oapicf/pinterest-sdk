@@ -9,22 +9,14 @@
  */
 
 
-export type Permissions = 'ADMIN' | 'ANALYST' | 'FINANCE_MANAGER' | 'AUDIENCE_MANAGER' | 'CAMPAIGN_MANAGER' | 'CATALOGS_MANAGER' | 'PROFILE_PUBLISHER';
-
 export const Permissions = {
-
-    Admin: 'ADMIN' as Permissions,
-
-    Analyst: 'ANALYST' as Permissions,
-
-    FinanceManager: 'FINANCE_MANAGER' as Permissions,
-
-    AudienceManager: 'AUDIENCE_MANAGER' as Permissions,
-
-    CampaignManager: 'CAMPAIGN_MANAGER' as Permissions,
-
-    CatalogsManager: 'CATALOGS_MANAGER' as Permissions,
-
-    ProfilePublisher: 'PROFILE_PUBLISHER' as Permissions
-};
+    Admin: 'ADMIN',
+    Analyst: 'ANALYST',
+    FinanceManager: 'FINANCE_MANAGER',
+    AudienceManager: 'AUDIENCE_MANAGER',
+    CampaignManager: 'CAMPAIGN_MANAGER',
+    CatalogsManager: 'CATALOGS_MANAGER',
+    ProfilePublisher: 'PROFILE_PUBLISHER'
+} as const;
+export type Permissions = typeof Permissions[keyof typeof Permissions];
 

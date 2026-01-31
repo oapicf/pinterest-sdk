@@ -9,9 +9,26 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_update_asset_group_body_asset_groups_to_update_inner
 
 type UpdateAssetGroupBody* = object
   ## 
-  assetGroupsToUpdate*: seq[UpdateAssetGroupBody_asset_groups_to_update_inner] ## A list of asset groups and the data that will be used to update them.
+  assetGroupsToUpdate*: Option[seq[UpdateAssetGroupBody_asset_groups_to_update_inner]] ## A list of asset groups and the data that will be used to update them.
+
+
+# Custom JSON deserialization for UpdateAssetGroupBody with custom field names
+proc to*(node: JsonNode, T: typedesc[UpdateAssetGroupBody]): UpdateAssetGroupBody =
+  result = UpdateAssetGroupBody()
+  if node.kind == JObject:
+    if node.hasKey("asset_groups_to_update") and node["asset_groups_to_update"].kind != JNull:
+      result.assetGroupsToUpdate = some(to(node["asset_groups_to_update"], typeof(result.assetGroupsToUpdate.get())))
+
+# Custom JSON serialization for UpdateAssetGroupBody with custom field names
+proc `%`*(obj: UpdateAssetGroupBody): JsonNode =
+  result = newJObject()
+  if obj.assetGroupsToUpdate.isSome():
+    result["asset_groups_to_update"] = %obj.assetGroupsToUpdate.get()
+

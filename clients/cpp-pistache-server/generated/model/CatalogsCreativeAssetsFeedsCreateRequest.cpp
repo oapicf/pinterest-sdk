@@ -28,7 +28,6 @@ CatalogsCreativeAssetsFeedsCreateRequest::CatalogsCreativeAssetsFeedsCreateReque
     m_Preferred_processing_scheduleIsSet = false;
     m_Catalog_id = "";
     m_Catalog_idIsSet = false;
-    m_Status = "";
     m_StatusIsSet = false;
     
 }
@@ -298,11 +297,11 @@ void CatalogsCreativeAssetsFeedsCreateRequest::unsetCatalog_id()
 {
     m_Catalog_idIsSet = false;
 }
-CatalogsStatus CatalogsCreativeAssetsFeedsCreateRequest::getStatus() const
+org::openapitools::server::model::CatalogsStatus CatalogsCreativeAssetsFeedsCreateRequest::getStatus() const
 {
     return m_Status;
 }
-void CatalogsCreativeAssetsFeedsCreateRequest::setStatus(CatalogsStatus const& value)
+void CatalogsCreativeAssetsFeedsCreateRequest::setStatus(org::openapitools::server::model::CatalogsStatus const& value)
 {
     m_Status = value;
     m_StatusIsSet = true;

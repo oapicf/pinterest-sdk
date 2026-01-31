@@ -186,8 +186,7 @@ namespace Org.OpenAPITools.Model
                             html = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "has_accepted":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hasAccepted = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            hasAccepted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "ad_account_id":
                             adAccountId = new Option<string?>(utf8JsonReader.GetString()!);

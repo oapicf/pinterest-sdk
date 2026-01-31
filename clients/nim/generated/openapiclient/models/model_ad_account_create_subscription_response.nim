@@ -9,11 +9,40 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AdAccountCreateSubscriptionResponse* = object
   ## 
-  id*: string ## Subscription ID.
-  cryptographicKey*: string ## Base64 encoded key for client to decrypt lead data.
-  cryptographicAlgorithm*: string ## Lead data encryption algorithm.
-  createdTime*: int ## Subscription creation time. Unix timestamp in milliseconds.
+  id*: Option[string] ## Subscription ID.
+  cryptographicKey*: Option[string] ## Base64 encoded key for client to decrypt lead data.
+  cryptographicAlgorithm*: Option[string] ## Lead data encryption algorithm.
+  createdTime*: Option[int] ## Subscription creation time. Unix timestamp in milliseconds.
+
+
+# Custom JSON deserialization for AdAccountCreateSubscriptionResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[AdAccountCreateSubscriptionResponse]): AdAccountCreateSubscriptionResponse =
+  result = AdAccountCreateSubscriptionResponse()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("cryptographic_key") and node["cryptographic_key"].kind != JNull:
+      result.cryptographicKey = some(to(node["cryptographic_key"], typeof(result.cryptographicKey.get())))
+    if node.hasKey("cryptographic_algorithm") and node["cryptographic_algorithm"].kind != JNull:
+      result.cryptographicAlgorithm = some(to(node["cryptographic_algorithm"], typeof(result.cryptographicAlgorithm.get())))
+    if node.hasKey("created_time") and node["created_time"].kind != JNull:
+      result.createdTime = some(to(node["created_time"], typeof(result.createdTime.get())))
+
+# Custom JSON serialization for AdAccountCreateSubscriptionResponse with custom field names
+proc `%`*(obj: AdAccountCreateSubscriptionResponse): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.cryptographicKey.isSome():
+    result["cryptographic_key"] = %obj.cryptographicKey.get()
+  if obj.cryptographicAlgorithm.isSome():
+    result["cryptographic_algorithm"] = %obj.cryptographicAlgorithm.get()
+  if obj.createdTime.isSome():
+    result["created_time"] = %obj.createdTime.get()
+

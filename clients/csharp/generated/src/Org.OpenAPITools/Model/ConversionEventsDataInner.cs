@@ -432,29 +432,25 @@ namespace Org.OpenAPITools.Model
                             actionSource = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "event_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                eventTime = new Option<long?>(utf8JsonReader.GetInt64());
+                            eventTime = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "event_id":
                             eventId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "user_data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                userData = new Option<ConversionEventsUserData?>(JsonSerializer.Deserialize<ConversionEventsUserData>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            userData = new Option<ConversionEventsUserData?>(JsonSerializer.Deserialize<ConversionEventsUserData>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "event_source_url":
                             eventSourceUrl = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "opt_out":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                optOut = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            optOut = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "partner_name":
                             partnerName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "custom_data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                customData = new Option<ConversionEventsDataInnerCustomData?>(JsonSerializer.Deserialize<ConversionEventsDataInnerCustomData>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            customData = new Option<ConversionEventsDataInnerCustomData?>(JsonSerializer.Deserialize<ConversionEventsDataInnerCustomData>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "app_id":
                             appId = new Option<string?>(utf8JsonReader.GetString());
@@ -481,8 +477,7 @@ namespace Org.OpenAPITools.Model
                             osVersion = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "wifi":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                wifi = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            wifi = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "language":
                             language = new Option<string?>(utf8JsonReader.GetString());

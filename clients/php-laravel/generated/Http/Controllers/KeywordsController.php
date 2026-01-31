@@ -85,12 +85,8 @@ class KeywordsController extends Controller
 
         $keywords = $request->get('keywords');
 
-        try {
-            $apiResult = $this->api->countryKeywordsMetricsGet($adAccountId, $countryCode, $keywords);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->countryKeywordsMetricsGet($adAccountId, $countryCode, $keywords);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\KeywordsMetricsArrayResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -130,12 +126,8 @@ class KeywordsController extends Controller
 
         $keywordsRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\KeywordsRequest::class);
 
-        try {
-            $apiResult = $this->api->keywordsCreate($adAccountId, $keywordsRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->keywordsCreate($adAccountId, $keywordsRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\KeywordsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -212,12 +204,8 @@ class KeywordsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->keywordsGet($adAccountId, $campaignId, $adGroupId, $matchTypes, $pageSize, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->keywordsGet($adAccountId, $campaignId, $adGroupId, $matchTypes, $pageSize, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\KeywordsGet200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -257,12 +245,8 @@ class KeywordsController extends Controller
 
         $keywordUpdateBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\KeywordUpdateBody::class);
 
-        try {
-            $apiResult = $this->api->keywordsUpdate($adAccountId, $keywordUpdateBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->keywordsUpdate($adAccountId, $keywordUpdateBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\KeywordsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -337,16 +321,12 @@ class KeywordsController extends Controller
 
         $includeKeywords = $request->get('includeKeywords');
 
-        $normalizeAgainstGroup = $request->bool('normalizeAgainstGroup');
+        $normalizeAgainstGroup = $request->boolean('normalizeAgainstGroup');
 
         $limit = $request->integer('limit');
 
-        try {
-            $apiResult = $this->api->trendingKeywordsList($region, $trendType, $interests, $genders, $ages, $includeKeywords, $normalizeAgainstGroup, $limit);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->trendingKeywordsList($region, $trendType, $interests, $genders, $ages, $includeKeywords, $normalizeAgainstGroup, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TrendingKeywordsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

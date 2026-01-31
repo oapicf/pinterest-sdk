@@ -42,11 +42,17 @@ namespace Org.OpenAPITools.Models
         public string ItemId { get; set; }
 
         /// <summary>
-        /// Array with the errors for the item id requested
+        /// The pins mapped to the item
         /// </summary>
-        /// <value>Array with the errors for the item id requested</value>
-        [DataMember(Name="errors", EmitDefaultValue=false)]
-        public List<ItemValidationEvent> Errors { get; set; }
+        /// <value>The pins mapped to the item</value>
+        [DataMember(Name="pins", EmitDefaultValue=true)]
+        public List<Pin> Pins { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Attributes
+        /// </summary>
+        [DataMember(Name="attributes", EmitDefaultValue=false)]
+        public CatalogsCreativeAssetsAttributes Attributes { get; set; }
 
         /// <summary>
         /// The catalog hotel id in the merchant namespace
@@ -65,6 +71,13 @@ namespace Org.OpenAPITools.Models
         public string CreativeAssetsId { get; set; }
 
         /// <summary>
+        /// Array with the errors for the item id requested
+        /// </summary>
+        /// <value>Array with the errors for the item id requested</value>
+        [DataMember(Name="errors", EmitDefaultValue=false)]
+        public List<ItemValidationEvent> Errors { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -74,9 +87,11 @@ namespace Org.OpenAPITools.Models
             sb.Append("class ItemResponse {\n");
             sb.Append("  CatalogType: ").Append(CatalogType).Append("\n");
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
-            sb.Append("  Errors: ").Append(Errors).Append("\n");
+            sb.Append("  Pins: ").Append(Pins).Append("\n");
+            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("  HotelId: ").Append(HotelId).Append("\n");
             sb.Append("  CreativeAssetsId: ").Append(CreativeAssetsId).Append("\n");
+            sb.Append("  Errors: ").Append(Errors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -124,10 +139,15 @@ namespace Org.OpenAPITools.Models
                     ItemId.Equals(other.ItemId)
                 ) && 
                 (
-                    Errors == other.Errors ||
-                    Errors != null &&
-                    other.Errors != null &&
-                    Errors.SequenceEqual(other.Errors)
+                    Pins == other.Pins ||
+                    Pins != null &&
+                    other.Pins != null &&
+                    Pins.SequenceEqual(other.Pins)
+                ) && 
+                (
+                    Attributes == other.Attributes ||
+                    Attributes != null &&
+                    Attributes.Equals(other.Attributes)
                 ) && 
                 (
                     HotelId == other.HotelId ||
@@ -138,6 +158,12 @@ namespace Org.OpenAPITools.Models
                     CreativeAssetsId == other.CreativeAssetsId ||
                     CreativeAssetsId != null &&
                     CreativeAssetsId.Equals(other.CreativeAssetsId)
+                ) && 
+                (
+                    Errors == other.Errors ||
+                    Errors != null &&
+                    other.Errors != null &&
+                    Errors.SequenceEqual(other.Errors)
                 );
         }
 
@@ -155,12 +181,16 @@ namespace Org.OpenAPITools.Models
                     hashCode = hashCode * 59 + CatalogType.GetHashCode();
                     if (ItemId != null)
                     hashCode = hashCode * 59 + ItemId.GetHashCode();
-                    if (Errors != null)
-                    hashCode = hashCode * 59 + Errors.GetHashCode();
+                    if (Pins != null)
+                    hashCode = hashCode * 59 + Pins.GetHashCode();
+                    if (Attributes != null)
+                    hashCode = hashCode * 59 + Attributes.GetHashCode();
                     if (HotelId != null)
                     hashCode = hashCode * 59 + HotelId.GetHashCode();
                     if (CreativeAssetsId != null)
                     hashCode = hashCode * 59 + CreativeAssetsId.GetHashCode();
+                    if (Errors != null)
+                    hashCode = hashCode * 59 + Errors.GetHashCode();
                 return hashCode;
             }
         }

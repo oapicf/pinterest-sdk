@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **preferredProcessingSchedule** | [**OpenAPI\Server\Model\CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] 
 **defaultCountry** | [**OpenAPI\Server\Model\Country**](Country.md) |  | [optional] 
 **defaultAvailability** | [**OpenAPI\Server\Model\ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
-**status** | [**OpenAPIServerModelCatalogsStatusArray**](OpenAPIServerModelCatalogsStatusArray.md) |  | [optional] 
+**status** | [**OpenAPI\Server\Model\CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to self::OpenAPI\Server\Model\CatalogsStatus_ACTIVE]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

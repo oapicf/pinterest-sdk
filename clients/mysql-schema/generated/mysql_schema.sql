@@ -907,7 +907,7 @@ CREATE TABLE IF NOT EXISTS `AudienceCreateRequest` (
   `name` TEXT NOT NULL COMMENT 'Audience name.',
   `rule` TEXT NOT NULL,
   `description` TEXT DEFAULT NULL COMMENT 'Audience description.',
-  `audience_type` TEXT NOT NULL
+  `audience_type` TEXT NOT NULL COMMENT '&lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1782,7 +1782,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsBatchItem` (
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsBatchRequest` (
   `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
   `country` TEXT NOT NULL,
-  `language` TEXT NOT NULL,
+  `language` ENUM('af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH') NOT NULL COMMENT 'We recommend using the CatalogsLocale values.',
   `items` JSON NOT NULL COMMENT 'Array with creative assets item operations',
   `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to update catalogs creative assets items';
@@ -1825,7 +1825,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsFeedsCreateRequest` (
   `preferred_processing_schedule` TEXT DEFAULT NULL,
   `catalog_type` TEXT NOT NULL,
   `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.',
-  `status` TEXT DEFAULT NULL
+  `status` TEXT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a feed.';
 
 --
@@ -2316,7 +2316,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsFeedsCreateRequest` (
   `preferred_processing_schedule` TEXT DEFAULT NULL,
   `default_country` TEXT DEFAULT NULL,
   `default_availability` TEXT DEFAULT NULL,
-  `status` TEXT DEFAULT NULL
+  `status` TEXT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.';
 
 --
@@ -2402,7 +2402,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelBatchItem` (
 CREATE TABLE IF NOT EXISTS `CatalogsHotelBatchRequest` (
   `catalog_type` ENUM('HOTEL') NOT NULL,
   `country` TEXT NOT NULL,
-  `language` TEXT NOT NULL,
+  `language` ENUM('af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH') NOT NULL COMMENT 'We recommend using the CatalogsLocale values.',
   `items` JSON NOT NULL COMMENT 'Array with catalogs item operations',
   `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to update catalogs hotel items';
@@ -2443,7 +2443,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelFeedsCreateRequest` (
   `preferred_processing_schedule` TEXT DEFAULT NULL,
   `catalog_type` TEXT NOT NULL,
   `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.',
-  `status` TEXT DEFAULT NULL
+  `status` TEXT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a feed. Please, be aware that \&quot;default_country\&quot; and \&quot;default_locale\&quot; are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.';
 
 --
@@ -2805,7 +2805,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsBatch` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsBatchRequest` (
   `country` TEXT NOT NULL,
-  `language` TEXT NOT NULL,
+  `language` ENUM('af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH') NOT NULL COMMENT 'We recommend using the CatalogsLocale values.',
   `operation` TEXT NOT NULL,
   `items` JSON NOT NULL COMMENT 'Array with catalogs items'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object of catalogs items batch';
@@ -2817,7 +2817,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsBatchRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsCreateBatchRequest` (
   `country` TEXT NOT NULL,
-  `language` TEXT NOT NULL,
+  `language` ENUM('af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH') NOT NULL COMMENT 'We recommend using the CatalogsLocale values.',
   `operation` TEXT NOT NULL,
   `items` JSON NOT NULL COMMENT 'Array with catalogs items'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to create catalogs items';
@@ -2829,7 +2829,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsCreateBatchRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsDeleteBatchRequest` (
   `country` TEXT NOT NULL,
-  `language` TEXT NOT NULL,
+  `language` ENUM('af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH') NOT NULL COMMENT 'We recommend using the CatalogsLocale values.',
   `operation` TEXT NOT NULL,
   `items` JSON NOT NULL COMMENT 'Array with catalogs items'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to delete catalogs items';
@@ -2841,7 +2841,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsDeleteBatchRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsDeleteDiscontinuedBatchRequest` (
   `country` TEXT NOT NULL,
-  `language` TEXT NOT NULL,
+  `language` ENUM('af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH') NOT NULL COMMENT 'We recommend using the CatalogsLocale values.',
   `operation` TEXT NOT NULL,
   `items` JSON NOT NULL COMMENT 'Array with catalogs items'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to discontinue catalogs items';
@@ -2877,7 +2877,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsPostFilters` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsRequest` (
   `country` TEXT NOT NULL,
-  `language` TEXT NOT NULL,
+  `language` ENUM('af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH') NOT NULL COMMENT 'We recommend using the CatalogsLocale values.',
   `filters` TEXT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object of catalogs items';
 
@@ -2888,7 +2888,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsUpdateBatchRequest` (
   `country` TEXT NOT NULL,
-  `language` TEXT NOT NULL,
+  `language` ENUM('af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH') NOT NULL COMMENT 'We recommend using the CatalogsLocale values.',
   `operation` TEXT NOT NULL,
   `items` JSON NOT NULL COMMENT 'Array with catalogs items'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to update catalogs items';
@@ -2900,7 +2900,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsUpdateBatchRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsUpsertBatchRequest` (
   `country` TEXT NOT NULL,
-  `language` TEXT NOT NULL,
+  `language` ENUM('af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH') NOT NULL COMMENT 'We recommend using the CatalogsLocale values.',
   `operation` TEXT NOT NULL,
   `items` JSON NOT NULL COMMENT 'Array with catalogs items'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object to upsert catalogs items';
@@ -3276,7 +3276,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsReportStats` (
 CREATE TABLE IF NOT EXISTS `CatalogsRetailBatchRequest` (
   `catalog_type` ENUM('RETAIL') NOT NULL,
   `country` TEXT NOT NULL,
-  `language` TEXT NOT NULL,
+  `language` ENUM('af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH') NOT NULL COMMENT 'We recommend using the CatalogsLocale values.',
   `items` JSON NOT NULL COMMENT 'Array with catalogs item operations'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A request object that can have multiple operations on a single retail batch';
 
@@ -3329,7 +3329,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsRetailFeedsCreateRequest` (
   `catalog_type` TEXT NOT NULL,
   `default_country` TEXT NOT NULL,
   `default_availability` TEXT DEFAULT NULL,
-  `status` TEXT DEFAULT NULL
+  `status` TEXT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a retail feed.';
 
 --
@@ -3635,7 +3635,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpsertRetailItem` (
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalBatchRequest` (
   `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
   `country` TEXT NOT NULL,
-  `language` TEXT NOT NULL,
+  `language` ENUM('af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH') NOT NULL COMMENT 'We recommend using the CatalogsLocale values.',
   `items` JSON NOT NULL COMMENT 'Array with creative assets item operations',
   `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A request object that can have multiple operations on a single batch';
@@ -3656,7 +3656,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsVerticalFeedsCreateRequest` (
   `catalog_type` TEXT NOT NULL,
   `default_country` TEXT NOT NULL,
   `default_availability` TEXT DEFAULT NULL,
-  `status` TEXT DEFAULT NULL,
+  `status` TEXT,
   `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Request object for creating a feed.';
 
@@ -3940,14 +3940,14 @@ CREATE TABLE IF NOT EXISTS `ConversionTagConfigs` (
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionTagCreate` (
-  `name` TEXT NOT NULL COMMENT 'Conversion tag name.',
   `aem_enabled` TINYINT(1) DEFAULT false COMMENT 'Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.',
   `md_frequency` DECIMAL(20, 9) DEFAULT '1' COMMENT 'Metadata ingestion frequency.',
   `aem_fnln_enabled` TINYINT(1) DEFAULT false COMMENT 'Whether Automatic Enhanced Match name is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.',
   `aem_ph_enabled` TINYINT(1) DEFAULT false COMMENT 'Whether Automatic Enhanced Match phone is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.',
   `aem_ge_enabled` TINYINT(1) DEFAULT false COMMENT 'Whether Automatic Enhanced Match gender is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.',
   `aem_db_enabled` TINYINT(1) DEFAULT false COMMENT 'Whether Automatic Enhanced Match birthdate is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.',
-  `aem_loc_enabled` TINYINT(1) DEFAULT false COMMENT 'Whether Automatic Enhanced Match location is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.'
+  `aem_loc_enabled` TINYINT(1) DEFAULT false COMMENT 'Whether Automatic Enhanced Match location is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.',
+  `name` TEXT NOT NULL COMMENT 'Conversion tag name.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -4088,14 +4088,14 @@ CREATE TABLE IF NOT EXISTS `CreateInvitesResultsResponseArray_items_inner_invite
 --
 
 CREATE TABLE IF NOT EXISTS `CreateMMMReportRequest` (
+  `countries` JSON DEFAULT NULL COMMENT 'A List of countries for filtering',
   `report_name` TEXT NOT NULL COMMENT 'Name of the Marketing Mix Modeling (MMM) report',
   `start_date` TEXT NOT NULL COMMENT 'Metric report start date (UTC). Format: YYYY-MM-DD',
   `end_date` TEXT NOT NULL COMMENT 'Metric report end date (UTC). Format: YYYY-MM-DD',
   `granularity` ENUM('DAY', 'WEEK') NOT NULL COMMENT 'DAY - metrics are broken down daily.&lt;br&gt; WEEK - metrics are broken down weekly.',
   `level` ENUM('CAMPAIGN_TARGETING', 'AD_GROUP_TARGETING') NOT NULL COMMENT 'Level of the report',
   `targeting_types` JSON NOT NULL COMMENT 'List of targeting types',
-  `columns` JSON NOT NULL COMMENT 'Metric and entity columns',
-  `countries` JSON DEFAULT NULL COMMENT 'A List of countries for filtering'
+  `columns` JSON NOT NULL COMMENT 'Metric and entity columns'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -4458,7 +4458,7 @@ CREATE TABLE IF NOT EXISTS `feeds_create_request` (
   `catalog_type` TEXT NOT NULL,
   `default_country` TEXT NOT NULL,
   `default_availability` TEXT DEFAULT NULL,
-  `status` TEXT DEFAULT NULL,
+  `status` TEXT,
   `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -4929,17 +4929,16 @@ CREATE TABLE IF NOT EXISTS `InviteAssetsSummary_profiles_inner` (
 
 --
 -- Table structure for table `InviteBusinessRoleBinding` generated from model 'InviteBusinessRoleBinding'
--- An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
 --
 
 CREATE TABLE IF NOT EXISTS `InviteBusinessRoleBinding` (
-  `created_by_business_id` TEXT DEFAULT NULL COMMENT 'Unique identifier for the business that created the invite/request.',
-  `created_by_user_id` TEXT DEFAULT NULL COMMENT 'Unique identifier for the user that created the invite/request.',
-  `user` TEXT DEFAULT NULL COMMENT 'Metadata for the user that updated the invite/request.',
   `id` TEXT DEFAULT NULL COMMENT 'Unique identifier of the invite/request.',
   `invite_data` TEXT DEFAULT NULL,
-  `is_received_invite` TINYINT(1) DEFAULT NULL COMMENT 'Indicates whether the invite/request was received.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.';
+  `is_received_invite` TINYINT(1) DEFAULT NULL COMMENT 'Indicates whether the invite/request was received.',
+  `user` JSON DEFAULT NULL COMMENT 'Metadata for the user that updated the invite/request.',
+  `created_by_business_id` TEXT DEFAULT NULL COMMENT 'Unique identifier for the business that created the invite/request.',
+  `created_by_user_id` TEXT DEFAULT NULL COMMENT 'Unique identifier for the user that created the invite/request.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `InviteExceptionResponse` generated from model 'InviteExceptionResponse'
@@ -4958,15 +4957,15 @@ CREATE TABLE IF NOT EXISTS `InviteExceptionResponse` (
 --
 
 CREATE TABLE IF NOT EXISTS `InviteResponse` (
-  `assets_summary` TEXT DEFAULT NULL,
-  `business_roles` JSON DEFAULT NULL COMMENT 'The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.',
-  `created_by_business` TEXT DEFAULT NULL COMMENT 'Metadata for the business that created the invite/request.',
-  `created_by_user` TEXT DEFAULT NULL COMMENT 'Metadata for the user that created the invite/request.',
-  `created_time` INT DEFAULT NULL COMMENT 'The time the invite/request was created. Returned in milliseconds.',
   `id` TEXT DEFAULT NULL COMMENT 'Unique identifier of the invite/request.',
   `invite_data` TEXT DEFAULT NULL,
   `is_received_invite` TINYINT(1) DEFAULT NULL COMMENT 'Indicates whether the invite/request was received.',
-  `user` TEXT DEFAULT NULL COMMENT 'Metadata for the member/partner that was sent the invite/request.'
+  `user` TEXT DEFAULT NULL COMMENT 'Metadata for the member/partner that was sent the invite/request.',
+  `assets_summary` TEXT DEFAULT NULL,
+  `business_roles` JSON DEFAULT NULL COMMENT 'The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.',
+  `created_by_business` JSON DEFAULT NULL COMMENT 'Metadata for the business that created the invite/request.',
+  `created_by_user` JSON DEFAULT NULL COMMENT 'Metadata for the user that created the invite/request.',
+  `created_time` INT DEFAULT NULL COMMENT 'The time the invite/request was created. Returned in milliseconds.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -5225,7 +5224,7 @@ CREATE TABLE IF NOT EXISTS `ItemValidationEvent` (
 CREATE TABLE IF NOT EXISTS `items_batch_post_request` (
   `catalog_type` ENUM('CREATIVE_ASSETS') NOT NULL,
   `country` TEXT NOT NULL,
-  `language` TEXT NOT NULL,
+  `language` ENUM('af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH') NOT NULL COMMENT 'We recommend using the CatalogsLocale values.',
   `items` JSON NOT NULL COMMENT 'Array with catalogs items',
   `catalog_id` TEXT DEFAULT NULL COMMENT 'Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog',
   `operation` TEXT NOT NULL
@@ -5393,13 +5392,13 @@ CREATE TABLE IF NOT EXISTS `LeadFormCommon_policy_links_inner` (
 --
 
 CREATE TABLE IF NOT EXISTS `LeadFormCreateRequest` (
-  `name` TEXT NOT NULL COMMENT 'Internal name of the lead form.',
-  `privacy_policy_link` TEXT NOT NULL COMMENT 'A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.',
-  `has_accepted_terms` TINYINT(1) NOT NULL COMMENT 'Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO',
-  `completion_message` TEXT NOT NULL COMMENT 'A message for people who complete the form to let them know what happens next.',
+  `name` TEXT DEFAULT NULL COMMENT 'Internal name of the lead form.',
+  `privacy_policy_link` TEXT DEFAULT NULL COMMENT 'A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.',
+  `has_accepted_terms` TINYINT(1) DEFAULT NULL COMMENT 'Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO',
+  `completion_message` TEXT DEFAULT NULL COMMENT 'A message for people who complete the form to let them know what happens next.',
   `status` TEXT DEFAULT NULL,
   `disclosure_language` TEXT DEFAULT NULL COMMENT 'Additional disclosure language to be included in the lead form.',
-  `questions` JSON NOT NULL COMMENT 'List of questions to be displayed on the lead form.',
+  `questions` JSON DEFAULT NULL COMMENT 'List of questions to be displayed on the lead form.',
   `policy_links` JSON DEFAULT NULL COMMENT 'List of additional policy links to be displayed on the lead form.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -5654,36 +5653,33 @@ CREATE TABLE IF NOT EXISTS `multiple_product_groups_inner` (
 
 --
 -- Table structure for table `OauthAccessTokenRequestClientCredentials` generated from model 'OauthAccessTokenRequestClientCredentials'
--- A request to receive a client token.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestClientCredentials` (
-  `grant_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') NOT NULL,
-  `scope` TEXT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A request to receive a client token.';
+  `scope` TEXT NOT NULL,
+  `grant_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `OauthAccessTokenRequestCode` generated from model 'OauthAccessTokenRequestCode'
--- A request to exchange an authorization code for an access token.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestCode` (
-  `grant_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') NOT NULL,
   `code` TEXT NOT NULL,
-  `redirect_uri` TEXT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A request to exchange an authorization code for an access token.';
+  `redirect_uri` TEXT NOT NULL,
+  `grant_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `OauthAccessTokenRequestRefresh` generated from model 'OauthAccessTokenRequestRefresh'
--- A request to exchange a refresh token for a new access token.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestRefresh` (
-  `grant_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') NOT NULL,
   `refresh_token` TEXT NOT NULL,
   `scope` TEXT DEFAULT NULL,
-  `refresh_on` TINYINT(1) DEFAULT NULL COMMENT 'Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A request to exchange a refresh token for a new access token.';
+  `refresh_on` TINYINT(1) DEFAULT NULL COMMENT 'Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.',
+  `grant_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `OauthAccessTokenResponse` generated from model 'OauthAccessTokenResponse'
@@ -5713,49 +5709,46 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseClientCredentials` (
 
 --
 -- Table structure for table `OauthAccessTokenResponseCode` generated from model 'OauthAccessTokenResponseCode'
--- A successful OAuth access token response for the authorization code flow.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseCode` (
+  `refresh_token` TEXT NOT NULL,
+  `refresh_token_expires_in` INT NOT NULL,
   `response_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') DEFAULT NULL,
   `access_token` TEXT NOT NULL,
   `token_type` TEXT NOT NULL,
   `expires_in` INT NOT NULL,
-  `scope` TEXT NOT NULL,
-  `refresh_token` TEXT NOT NULL,
-  `refresh_token_expires_in` INT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A successful OAuth access token response for the authorization code flow.';
+  `scope` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `OauthAccessTokenResponseEverlastingRefresh` generated from model 'OauthAccessTokenResponseEverlastingRefresh'
--- A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseEverlastingRefresh` (
+  `refresh_token` TEXT NOT NULL,
+  `refresh_token_expires_in` INT NOT NULL,
+  `refresh_token_expires_at` INT NOT NULL,
   `response_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') DEFAULT NULL,
   `access_token` TEXT NOT NULL,
   `token_type` TEXT NOT NULL,
   `expires_in` INT NOT NULL,
-  `scope` TEXT NOT NULL,
-  `refresh_token` TEXT NOT NULL,
-  `refresh_token_expires_in` INT NOT NULL,
-  `refresh_token_expires_at` INT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.';
+  `scope` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `OauthAccessTokenResponseIntegrationRefresh` generated from model 'OauthAccessTokenResponseIntegrationRefresh'
--- A successful OAuth access token response for the refresh token flow, with an added refresh token.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseIntegrationRefresh` (
+  `refresh_token` TEXT NOT NULL,
+  `refresh_token_expires_in` INT NOT NULL,
   `response_type` ENUM('authorization_code', 'refresh_token', 'client_credentials') DEFAULT NULL,
   `access_token` TEXT NOT NULL,
   `token_type` TEXT NOT NULL,
   `expires_in` INT NOT NULL,
-  `scope` TEXT NOT NULL,
-  `refresh_token` TEXT NOT NULL,
-  `refresh_token_expires_in` INT NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='A successful OAuth access token response for the refresh token flow, with an added refresh token.';
+  `scope` TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Table structure for table `OauthAccessTokenResponseRefresh` generated from model 'OauthAccessTokenResponseRefresh'

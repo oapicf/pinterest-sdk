@@ -53,21 +53,6 @@ class InviteResponse {
             obj = obj || new InviteResponse();
             BaseInviteDataResponse.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('assets_summary')) {
-                obj['assets_summary'] = InviteAssetsSummary.constructFromObject(data['assets_summary']);
-            }
-            if (data.hasOwnProperty('business_roles')) {
-                obj['business_roles'] = ApiClient.convertToType(data['business_roles'], ['String']);
-            }
-            if (data.hasOwnProperty('created_by_business')) {
-                obj['created_by_business'] = ApiClient.convertToType(data['created_by_business'], BusinessAccessUserSummary);
-            }
-            if (data.hasOwnProperty('created_by_user')) {
-                obj['created_by_user'] = ApiClient.convertToType(data['created_by_user'], BusinessAccessUserSummary);
-            }
-            if (data.hasOwnProperty('created_time')) {
-                obj['created_time'] = ApiClient.convertToType(data['created_time'], 'Number');
-            }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
@@ -80,6 +65,21 @@ class InviteResponse {
             if (data.hasOwnProperty('user')) {
                 obj['user'] = ApiClient.convertToType(data['user'], BusinessAccessUserSummary);
             }
+            if (data.hasOwnProperty('assets_summary')) {
+                obj['assets_summary'] = InviteAssetsSummary.constructFromObject(data['assets_summary']);
+            }
+            if (data.hasOwnProperty('business_roles')) {
+                obj['business_roles'] = ApiClient.convertToType(data['business_roles'], ['String']);
+            }
+            if (data.hasOwnProperty('created_by_business')) {
+                obj['created_by_business'] = ApiClient.convertToType(data['created_by_business'], Object);
+            }
+            if (data.hasOwnProperty('created_by_user')) {
+                obj['created_by_user'] = ApiClient.convertToType(data['created_by_user'], Object);
+            }
+            if (data.hasOwnProperty('created_time')) {
+                obj['created_time'] = ApiClient.convertToType(data['created_time'], 'Number');
+            }
         }
         return obj;
     }
@@ -90,22 +90,6 @@ class InviteResponse {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>InviteResponse</code>.
      */
     static validateJSON(data) {
-        // validate the optional field `assets_summary`
-        if (data['assets_summary']) { // data not null
-          InviteAssetsSummary.validateJSON(data['assets_summary']);
-        }
-        // ensure the json data is an array
-        if (!Array.isArray(data['business_roles'])) {
-            throw new Error("Expected the field `business_roles` to be an array in the JSON data but got " + data['business_roles']);
-        }
-        // validate the optional field `created_by_business`
-        if (data['created_by_business']) { // data not null
-          BusinessAccessUserSummary.validateJSON(data['created_by_business']);
-        }
-        // validate the optional field `created_by_user`
-        if (data['created_by_user']) { // data not null
-          BusinessAccessUserSummary.validateJSON(data['created_by_user']);
-        }
         // ensure the json data is a string
         if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
@@ -118,6 +102,14 @@ class InviteResponse {
         if (data['user']) { // data not null
           BusinessAccessUserSummary.validateJSON(data['user']);
         }
+        // validate the optional field `assets_summary`
+        if (data['assets_summary']) { // data not null
+          InviteAssetsSummary.validateJSON(data['assets_summary']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['business_roles'])) {
+            throw new Error("Expected the field `business_roles` to be an array in the JSON data but got " + data['business_roles']);
+        }
 
         return true;
     }
@@ -126,35 +118,6 @@ class InviteResponse {
 }
 
 
-
-/**
- * @member {module:model/InviteAssetsSummary} assets_summary
- */
-InviteResponse.prototype['assets_summary'] = undefined;
-
-/**
- * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
- * @member {Array.<String>} business_roles
- */
-InviteResponse.prototype['business_roles'] = undefined;
-
-/**
- * Metadata for the business that created the invite/request.
- * @member {module:model/BusinessAccessUserSummary} created_by_business
- */
-InviteResponse.prototype['created_by_business'] = undefined;
-
-/**
- * Metadata for the user that created the invite/request.
- * @member {module:model/BusinessAccessUserSummary} created_by_user
- */
-InviteResponse.prototype['created_by_user'] = undefined;
-
-/**
- * The time the invite/request was created. Returned in milliseconds.
- * @member {Number} created_time
- */
-InviteResponse.prototype['created_time'] = undefined;
 
 /**
  * Unique identifier of the invite/request.
@@ -178,6 +141,35 @@ InviteResponse.prototype['is_received_invite'] = undefined;
  * @member {module:model/BusinessAccessUserSummary} user
  */
 InviteResponse.prototype['user'] = undefined;
+
+/**
+ * @member {module:model/InviteAssetsSummary} assets_summary
+ */
+InviteResponse.prototype['assets_summary'] = undefined;
+
+/**
+ * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+ * @member {Array.<String>} business_roles
+ */
+InviteResponse.prototype['business_roles'] = undefined;
+
+/**
+ * Metadata for the business that created the invite/request.
+ * @member {Object} created_by_business
+ */
+InviteResponse.prototype['created_by_business'] = undefined;
+
+/**
+ * Metadata for the user that created the invite/request.
+ * @member {Object} created_by_user
+ */
+InviteResponse.prototype['created_by_user'] = undefined;
+
+/**
+ * The time the invite/request was created. Returned in milliseconds.
+ * @member {Number} created_time
+ */
+InviteResponse.prototype['created_time'] = undefined;
 
 
 // Implement BaseInviteDataResponse interface:

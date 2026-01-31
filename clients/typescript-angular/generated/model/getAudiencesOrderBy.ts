@@ -9,24 +9,15 @@
  */
 
 
-export type GetAudiencesOrderBy = 'NONE' | 'ID' | 'SIZE' | 'CREATION_DATE' | 'UPDATED_TIME' | 'NAME' | 'STATUS' | 'TYPE';
-
 export const GetAudiencesOrderBy = {
-
-    None: 'NONE' as GetAudiencesOrderBy,
-
-    Id: 'ID' as GetAudiencesOrderBy,
-
-    Size: 'SIZE' as GetAudiencesOrderBy,
-
-    CreationDate: 'CREATION_DATE' as GetAudiencesOrderBy,
-
-    UpdatedTime: 'UPDATED_TIME' as GetAudiencesOrderBy,
-
-    Name: 'NAME' as GetAudiencesOrderBy,
-
-    Status: 'STATUS' as GetAudiencesOrderBy,
-
-    Type: 'TYPE' as GetAudiencesOrderBy
-};
+    None: 'NONE',
+    Id: 'ID',
+    Size: 'SIZE',
+    CreationDate: 'CREATION_DATE',
+    UpdatedTime: 'UPDATED_TIME',
+    Name: 'NAME',
+    Status: 'STATUS',
+    Type: 'TYPE'
+} as const;
+export type GetAudiencesOrderBy = typeof GetAudiencesOrderBy[keyof typeof GetAudiencesOrderBy];
 

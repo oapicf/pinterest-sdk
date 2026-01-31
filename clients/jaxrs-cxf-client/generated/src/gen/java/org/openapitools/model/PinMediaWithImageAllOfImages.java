@@ -9,15 +9,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PinMediaWithImageAllOfImages  {
   
   @ApiModelProperty(value = "")
+
   private Object _150x150;
 
   @ApiModelProperty(value = "")
+
   private Object _400x300;
 
   @ApiModelProperty(value = "")
+
   private Object _600x;
 
   @ApiModelProperty(value = "")
+
   private Object _1200x;
  /**
    * Get _150x150

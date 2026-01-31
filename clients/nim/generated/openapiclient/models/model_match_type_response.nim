@@ -9,7 +9,48 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type MatchTypeResponse* = object
-  ## Keyword match type
+type MatchTypeResponse* {.pure.} = enum
+  BROAD
+  PHRASE
+  EXACT
+  EXACTNEGATIVE
+  PHRASENEGATIVE
+
+func `%`*(v: MatchTypeResponse): JsonNode =
+  result = case v:
+    of MatchTypeResponse.BROAD: %"BROAD"
+    of MatchTypeResponse.PHRASE: %"PHRASE"
+    of MatchTypeResponse.EXACT: %"EXACT"
+    of MatchTypeResponse.EXACTNEGATIVE: %"EXACT_NEGATIVE"
+    of MatchTypeResponse.PHRASENEGATIVE: %"PHRASE_NEGATIVE"
+
+func `$`*(v: MatchTypeResponse): string =
+  result = case v:
+    of MatchTypeResponse.BROAD: $("BROAD")
+    of MatchTypeResponse.PHRASE: $("PHRASE")
+    of MatchTypeResponse.EXACT: $("EXACT")
+    of MatchTypeResponse.EXACTNEGATIVE: $("EXACT_NEGATIVE")
+    of MatchTypeResponse.PHRASENEGATIVE: $("PHRASE_NEGATIVE")
+
+proc to*(node: JsonNode, T: typedesc[MatchTypeResponse]): MatchTypeResponse =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum MatchTypeResponse, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("BROAD"):
+    return MatchTypeResponse.BROAD
+  of $("PHRASE"):
+    return MatchTypeResponse.PHRASE
+  of $("EXACT"):
+    return MatchTypeResponse.EXACT
+  of $("EXACT_NEGATIVE"):
+    return MatchTypeResponse.EXACTNEGATIVE
+  of $("PHRASE_NEGATIVE"):
+    return MatchTypeResponse.PHRASENEGATIVE
+  else:
+    raise newException(ValueError, "Invalid enum value for MatchTypeResponse: " & strVal)
+

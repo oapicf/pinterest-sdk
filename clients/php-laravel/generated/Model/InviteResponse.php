@@ -34,21 +34,6 @@ class InviteResponse
 {
     /**
     *
-    * 
-    * @param null | \OpenAPI\Server\Model\InviteAssetsSummary $assetsSummary
-    *
-    * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-    * @param string[] $businessRoles
-    *
-    * Metadata for the business that created the invite/request.
-    * @param null | \OpenAPI\Server\Model\BusinessAccessUserSummary $createdByBusiness
-    *
-    * Metadata for the user that created the invite/request.
-    * @param null | \OpenAPI\Server\Model\BusinessAccessUserSummary $createdByUser
-    *
-    * The time the invite/request was created. Returned in milliseconds.
-    * @param int $createdTime
-    *
     * Unique identifier of the invite/request.
     * @param string $id
     *
@@ -60,18 +45,33 @@ class InviteResponse
     *
     * Metadata for the member/partner that was sent the invite/request.
     * @param \OpenAPI\Server\Model\BusinessAccessUserSummary $user
+    *
+    * 
+    * @param null | \OpenAPI\Server\Model\InviteAssetsSummary $assetsSummary
+    *
+    * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+    * @param string[] $businessRoles
+    *
+    * Metadata for the business that created the invite/request.
+    * @param null | object $createdByBusiness
+    *
+    * Metadata for the user that created the invite/request.
+    * @param null | object $createdByUser
+    *
+    * The time the invite/request was created. Returned in milliseconds.
+    * @param int $createdTime
     */
 
     public function __construct(
-        public array $businessRoles,
-        public int $createdTime,
         public string $id,
         public \OpenAPI\Server\Model\BaseInviteDataResponseInviteData $inviteData,
         public bool $isReceivedInvite,
         public \OpenAPI\Server\Model\BusinessAccessUserSummary $user,
+        public array $businessRoles,
+        public int $createdTime,
         public ?\OpenAPI\Server\Model\InviteAssetsSummary $assetsSummary = null,
-        public ?\OpenAPI\Server\Model\BusinessAccessUserSummary $createdByBusiness = null,
-        public ?\OpenAPI\Server\Model\BusinessAccessUserSummary $createdByUser = null,
+        public ?object $createdByBusiness = null,
+        public ?object $createdByUser = null,
     ) {}
 }
 

@@ -21,6 +21,7 @@ class MediaApiTest {
     @Test
     fun mediaCreateTest() {
         val mediaUploadRequest: MediaUploadRequest = TODO()
+        
         val response: ResponseEntity<MediaUpload> = api.mediaCreate(mediaUploadRequest)
 
         // TODO: test validations
@@ -35,6 +36,7 @@ class MediaApiTest {
     @Test
     fun mediaGetTest() {
         val mediaId: kotlin.String = TODO()
+        
         val response: ResponseEntity<MediaUploadDetails> = api.mediaGet(mediaId)
 
         // TODO: test validations
@@ -50,6 +52,7 @@ class MediaApiTest {
     fun mediaListTest() {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<MediaList200Response> = api.mediaList(bookmark, pageSize)
 
         // TODO: test validations

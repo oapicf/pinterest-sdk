@@ -16,24 +16,30 @@ package openapi
 
 type ItemsBatchPostRequest struct {
 
+	CatalogType string `json:"catalog_type"`
+
 	Country Country `json:"country"`
 
-	Language CatalogsItemsRequestLanguage `json:"language"`
-
-	Operation BatchOperation `json:"operation"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 
 	// Array with catalogs items
 	Items []ItemDeleteBatchRecord `json:"items"`
+
+	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+	CatalogId string `json:"catalog_id,omitempty"`
+
+	Operation BatchOperation `json:"operation"`
 }
 
 // AssertItemsBatchPostRequestRequired checks if the required fields are not zero-ed
 func AssertItemsBatchPostRequestRequired(obj ItemsBatchPostRequest) error {
 	elements := map[string]interface{}{
+		"catalog_type": obj.CatalogType,
 		"country": obj.Country,
 		"language": obj.Language,
-		"operation": obj.Operation,
 		"items": obj.Items,
-		"catalog_type": obj.CatalogType,
+		"operation": obj.Operation,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {
@@ -41,9 +47,6 @@ func AssertItemsBatchPostRequestRequired(obj ItemsBatchPostRequest) error {
 		}
 	}
 
-	if err := AssertCatalogsItemsRequestLanguageRequired(obj.Language); err != nil {
-		return err
-	}
 	for _, el := range obj.Items {
 		if err := AssertItemDeleteBatchRecordRequired(el); err != nil {
 			return err
@@ -54,9 +57,6 @@ func AssertItemsBatchPostRequestRequired(obj ItemsBatchPostRequest) error {
 
 // AssertItemsBatchPostRequestConstraints checks if the values respects the defined constraints
 func AssertItemsBatchPostRequestConstraints(obj ItemsBatchPostRequest) error {
-	if err := AssertCatalogsItemsRequestLanguageConstraints(obj.Language); err != nil {
-		return err
-	}
 	for _, el := range obj.Items {
 		if err := AssertItemDeleteBatchRecordConstraints(el); err != nil {
 			return err

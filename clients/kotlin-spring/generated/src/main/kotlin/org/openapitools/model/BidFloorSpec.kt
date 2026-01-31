@@ -55,7 +55,7 @@ data class BidFloorSpec(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("creative_type") val creativeType: CreativeType? = null
-    ) {
+) {
 
 }
 

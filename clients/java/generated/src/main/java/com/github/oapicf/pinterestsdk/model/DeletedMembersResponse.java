@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An object with a list of members that were deleted.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeletedMembersResponse {
   public static final String SERIALIZED_NAME_DELETED_MEMBERS = "deleted_members";
   @SerializedName(SERIALIZED_NAME_DELETED_MEMBERS)
@@ -131,11 +131,10 @@ public class DeletedMembersResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("deleted_members");
+    openapiFields = new HashSet<String>(Arrays.asList("deleted_members"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -147,7 +146,7 @@ public class DeletedMembersResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!DeletedMembersResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DeletedMembersResponse is not found in the empty JSON string", DeletedMembersResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in DeletedMembersResponse is not found in the empty JSON string", DeletedMembersResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -155,13 +154,13 @@ public class DeletedMembersResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!DeletedMembersResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeletedMembersResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `DeletedMembersResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the optional json data is an array if present
       if (jsonObj.get("deleted_members") != null && !jsonObj.get("deleted_members").isJsonNull() && !jsonObj.get("deleted_members").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `deleted_members` to be an array in the JSON string but got `%s`", jsonObj.get("deleted_members").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `deleted_members` to be an array in the JSON string but got `%s`", jsonObj.get("deleted_members").toString()));
       }
   }
 

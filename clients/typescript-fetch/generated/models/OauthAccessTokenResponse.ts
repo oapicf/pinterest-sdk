@@ -13,11 +13,11 @@
  */
 
 import { mapValues } from '../runtime';
-import { OauthAccessTokenResponseCode, OauthAccessTokenResponseCodeFromJSONTyped, OauthAccessTokenResponseCodeToJSON, OauthAccessTokenResponseCodeToJSONTyped } from './OauthAccessTokenResponseCode';
-import { OauthAccessTokenResponseClientCredentials, OauthAccessTokenResponseClientCredentialsFromJSONTyped, OauthAccessTokenResponseClientCredentialsToJSON, OauthAccessTokenResponseClientCredentialsToJSONTyped } from './OauthAccessTokenResponseClientCredentials';
-import { OauthAccessTokenResponseEverlastingRefresh, OauthAccessTokenResponseEverlastingRefreshFromJSONTyped, OauthAccessTokenResponseEverlastingRefreshToJSON, OauthAccessTokenResponseEverlastingRefreshToJSONTyped } from './OauthAccessTokenResponseEverlastingRefresh';
-import { OauthAccessTokenResponseIntegrationRefresh, OauthAccessTokenResponseIntegrationRefreshFromJSONTyped, OauthAccessTokenResponseIntegrationRefreshToJSON, OauthAccessTokenResponseIntegrationRefreshToJSONTyped } from './OauthAccessTokenResponseIntegrationRefresh';
-import { OauthAccessTokenResponseRefresh, OauthAccessTokenResponseRefreshFromJSONTyped, OauthAccessTokenResponseRefreshToJSON, OauthAccessTokenResponseRefreshToJSONTyped } from './OauthAccessTokenResponseRefresh';
+import { type OauthAccessTokenResponseCode, OauthAccessTokenResponseCodeFromJSONTyped, OauthAccessTokenResponseCodeToJSON, OauthAccessTokenResponseCodeToJSONTyped } from './OauthAccessTokenResponseCode';
+import { type OauthAccessTokenResponseClientCredentials, OauthAccessTokenResponseClientCredentialsFromJSONTyped, OauthAccessTokenResponseClientCredentialsToJSON, OauthAccessTokenResponseClientCredentialsToJSONTyped } from './OauthAccessTokenResponseClientCredentials';
+import { type OauthAccessTokenResponseEverlastingRefresh, OauthAccessTokenResponseEverlastingRefreshFromJSONTyped, OauthAccessTokenResponseEverlastingRefreshToJSON, OauthAccessTokenResponseEverlastingRefreshToJSONTyped } from './OauthAccessTokenResponseEverlastingRefresh';
+import { type OauthAccessTokenResponseIntegrationRefresh, OauthAccessTokenResponseIntegrationRefreshFromJSONTyped, OauthAccessTokenResponseIntegrationRefreshToJSON, OauthAccessTokenResponseIntegrationRefreshToJSONTyped } from './OauthAccessTokenResponseIntegrationRefresh';
+import { type OauthAccessTokenResponseRefresh, OauthAccessTokenResponseRefreshFromJSONTyped, OauthAccessTokenResponseRefreshToJSON, OauthAccessTokenResponseRefreshToJSONTyped } from './OauthAccessTokenResponseRefresh';
 /**
  * A successful OAuth access token response.
  * @export
@@ -103,6 +103,7 @@ export function OauthAccessTokenResponseFromJSONTyped(json: any, ignoreDiscrimin
         if (json['response_type'] === 'refresh_token') {
             return OauthAccessTokenResponseRefreshFromJSONTyped(json, ignoreDiscriminator);
         }
+
     }
     return {
         
@@ -136,7 +137,7 @@ export function OauthAccessTokenResponseToJSONTyped(value?: OauthAccessTokenResp
             case 'refresh_token':
                 return OauthAccessTokenResponseRefreshToJSONTyped(value as OauthAccessTokenResponseRefresh, ignoreDiscriminator);
             default:
-                throw new Error(`No variant of OauthAccessTokenResponse exists with 'responseType=${value['responseType']}'`);
+                return value;
         }
     }
 

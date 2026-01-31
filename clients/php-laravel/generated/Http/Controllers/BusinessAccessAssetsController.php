@@ -67,12 +67,8 @@ class BusinessAccessAssetsController extends Controller
 
         $createAssetGroupBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CreateAssetGroupBody::class);
 
-        try {
-            $apiResult = $this->api->assetGroupCreate($businessId, $createAssetGroupBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->assetGroupCreate($businessId, $createAssetGroupBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CreateAssetGroupResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -116,12 +112,8 @@ class BusinessAccessAssetsController extends Controller
 
         $deleteAssetGroupBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\DeleteAssetGroupBody::class);
 
-        try {
-            $apiResult = $this->api->assetGroupDelete($businessId, $deleteAssetGroupBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->assetGroupDelete($businessId, $deleteAssetGroupBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\DeleteAssetGroupResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -165,12 +157,8 @@ class BusinessAccessAssetsController extends Controller
 
         $updateAssetGroupBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UpdateAssetGroupBody::class);
 
-        try {
-            $apiResult = $this->api->assetGroupUpdate($businessId, $updateAssetGroupBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->assetGroupUpdate($businessId, $updateAssetGroupBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UpdateAssetGroupResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -245,12 +233,8 @@ class BusinessAccessAssetsController extends Controller
 
         $startIndex = $request->integer('startIndex');
 
-        try {
-            $apiResult = $this->api->businessAssetMembersGet($businessId, $assetId, $bookmark, $pageSize, $startIndex);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->businessAssetMembersGet($businessId, $assetId, $bookmark, $pageSize, $startIndex);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BusinessAssetMembersGet200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -321,12 +305,8 @@ class BusinessAccessAssetsController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->businessAssetPartnersGet($businessId, $assetId, $startIndex, $bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->businessAssetPartnersGet($businessId, $assetId, $startIndex, $bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BusinessAssetPartnersGet200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -414,12 +394,8 @@ class BusinessAccessAssetsController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->businessAssetsGet($businessId, $permissions, $childAssetId, $assetGroupId, $assetType, $startIndex, $bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->businessAssetsGet($businessId, $permissions, $childAssetId, $assetGroupId, $assetType, $startIndex, $bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BusinessAssetsGet200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -494,12 +470,8 @@ class BusinessAccessAssetsController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->businessMemberAssetsGet($businessId, $memberId, $assetType, $startIndex, $bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->businessMemberAssetsGet($businessId, $memberId, $assetType, $startIndex, $bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BusinessMemberAssetsGet200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -539,12 +511,8 @@ class BusinessAccessAssetsController extends Controller
 
         $businessMembersAssetAccessDeleteRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BusinessMembersAssetAccessDeleteRequest::class);
 
-        try {
-            $apiResult = $this->api->businessMembersAssetAccessDelete($businessId, $businessMembersAssetAccessDeleteRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->businessMembersAssetAccessDelete($businessId, $businessMembersAssetAccessDeleteRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\DeleteMemberAccessResultsResponseArray) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -584,12 +552,8 @@ class BusinessAccessAssetsController extends Controller
 
         $updateMemberAssetAccessBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UpdateMemberAssetAccessBody::class);
 
-        try {
-            $apiResult = $this->api->businessMembersAssetAccessUpdate($businessId, $updateMemberAssetAccessBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->businessMembersAssetAccessUpdate($businessId, $updateMemberAssetAccessBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UpdateMemberAssetsResultsResponseArray) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -658,7 +622,7 @@ class BusinessAccessAssetsController extends Controller
 
 
 
-        $partnerType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPIServerModelPartnerTypeMixed::class);
+        $partnerType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PartnerType::class);
 
         $assetType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BusinessAssetsGetAssetTypeParameter::class);
 
@@ -668,12 +632,8 @@ class BusinessAccessAssetsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->businessPartnerAssetAccessGet($businessId, $partnerId, $partnerType, $assetType, $startIndex, $pageSize, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->businessPartnerAssetAccessGet($businessId, $partnerId, $partnerType, $assetType, $startIndex, $pageSize, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BusinessPartnerAssetAccessGet200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -713,12 +673,8 @@ class BusinessAccessAssetsController extends Controller
 
         $deletePartnerAssetAccessBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\DeletePartnerAssetAccessBody::class);
 
-        try {
-            $apiResult = $this->api->deletePartnerAssetAccessHandlerImpl($businessId, $deletePartnerAssetAccessBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->deletePartnerAssetAccessHandlerImpl($businessId, $deletePartnerAssetAccessBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\DeletePartnerAssetsResultsResponseArray) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -758,12 +714,8 @@ class BusinessAccessAssetsController extends Controller
 
         $updatePartnerAssetAccessBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\UpdatePartnerAssetAccessBody::class);
 
-        try {
-            $apiResult = $this->api->updatePartnerAssetAccessHandlerImpl($businessId, $updatePartnerAssetAccessBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->updatePartnerAssetAccessHandlerImpl($businessId, $updatePartnerAssetAccessBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UpdatePartnerAssetsResultsResponseArray) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

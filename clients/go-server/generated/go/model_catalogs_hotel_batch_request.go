@@ -21,7 +21,8 @@ type CatalogsHotelBatchRequest struct {
 
 	Country Country `json:"country"`
 
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 
 	// Array with catalogs item operations
 	Items []CatalogsHotelBatchItem `json:"items"`
@@ -44,7 +45,7 @@ func AssertCatalogsHotelBatchRequestRequired(obj CatalogsHotelBatchRequest) erro
 		}
 	}
 
-	if err := AssertCatalogsItemsRequestLanguageRequired(obj.Language); err != nil {
+	if err := AssertstringRequired(obj.Language); err != nil {
 		return err
 	}
 	for _, el := range obj.Items {
@@ -57,7 +58,7 @@ func AssertCatalogsHotelBatchRequestRequired(obj CatalogsHotelBatchRequest) erro
 
 // AssertCatalogsHotelBatchRequestConstraints checks if the values respects the defined constraints
 func AssertCatalogsHotelBatchRequestConstraints(obj CatalogsHotelBatchRequest) error {
-	if err := AssertCatalogsItemsRequestLanguageConstraints(obj.Language); err != nil {
+	if err := AssertstringConstraints(obj.Language); err != nil {
 		return err
 	}
 	for _, el := range obj.Items {

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
+import org.openapitools.api.BoardsApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -36,7 +37,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${api.base-path:/v5}")
+@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
 class BoardsApiController() {
 
     @Operation(
@@ -56,11 +57,15 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/boards/{board_id}/sections"],
+        value = [PATH_BOARD_SECTIONS_CREATE /* "/boards/{board_id}/sections" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun boardSectionsCreate(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Parameter(description = "Create a board section.", required = true) @Valid @RequestBody boardSection: BoardSection,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<BoardSection> {
+    fun boardSectionsCreate(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,
+        @Parameter(description = "Create a board section.", required = true) @Valid @RequestBody boardSection: BoardSection,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<BoardSection> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -80,10 +85,14 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/boards/{board_id}/sections/{section_id}"],
+        value = [PATH_BOARD_SECTIONS_DELETE /* "/boards/{board_id}/sections/{section_id}" */],
         produces = ["application/json"]
     )
-    fun boardSectionsDelete(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board section.", required = true) @PathVariable("section_id") sectionId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<Unit> {
+    fun boardSectionsDelete(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board section.", required = true) @PathVariable("section_id") sectionId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<Unit> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -100,10 +109,15 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/boards/{board_id}/sections"],
+        value = [PATH_BOARD_SECTIONS_LIST /* "/boards/{board_id}/sections" */],
         produces = ["application/json"]
     )
-    fun boardSectionsList(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<BoardSectionsList200Response> {
+    fun boardSectionsList(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<BoardSectionsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -123,10 +137,16 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/boards/{board_id}/sections/{section_id}/pins"],
+        value = [PATH_BOARD_SECTIONS_LIST_PINS /* "/boards/{board_id}/sections/{section_id}/pins" */],
         produces = ["application/json"]
     )
-    fun boardSectionsListPins(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board section.", required = true) @PathVariable("section_id") sectionId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<BoardsListPins200Response> {
+    fun boardSectionsListPins(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board section.", required = true) @PathVariable("section_id") sectionId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<BoardsListPins200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -146,11 +166,16 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/boards/{board_id}/sections/{section_id}"],
+        value = [PATH_BOARD_SECTIONS_UPDATE /* "/boards/{board_id}/sections/{section_id}" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun boardSectionsUpdate(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board section.", required = true) @PathVariable("section_id") sectionId: kotlin.String,@Parameter(description = "Update a board section.", required = true) @Valid @RequestBody boardSection: BoardSection,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<BoardSection> {
+    fun boardSectionsUpdate(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board section.", required = true) @PathVariable("section_id") sectionId: kotlin.String,
+        @Parameter(description = "Update a board section.", required = true) @Valid @RequestBody boardSection: BoardSection,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<BoardSection> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -168,11 +193,14 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/boards"],
+        value = [PATH_BOARDS_CREATE /* "/boards" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun boardsCreate(@Parameter(description = "Create a board using a single board json object.", required = true) @Valid @RequestBody board: Board,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<Board> {
+    fun boardsCreate(
+        @Parameter(description = "Create a board using a single board json object.", required = true) @Valid @RequestBody board: Board,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<Board> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -193,10 +221,13 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/boards/{board_id}"],
+        value = [PATH_BOARDS_DELETE /* "/boards/{board_id}" */],
         produces = ["application/json"]
     )
-    fun boardsDelete(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<Unit> {
+    fun boardsDelete(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<Unit> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -214,10 +245,13 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/boards/{board_id}"],
+        value = [PATH_BOARDS_GET /* "/boards/{board_id}" */],
         produces = ["application/json"]
     )
-    fun boardsGet(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<Board> {
+    fun boardsGet(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<Board> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -235,10 +269,15 @@ Optional: Specify a privacy type (public, protected, or secret) to indicate whic
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/boards"],
+        value = [PATH_BOARDS_LIST /* "/boards" */],
         produces = ["application/json"]
     )
-    fun boardsList(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Privacy setting for a board.", schema = Schema(allowableValues = ["ALL", "PROTECTED", "PUBLIC", "SECRET", "PUBLIC_AND_SECRET"])) @Valid @RequestParam(value = "privacy", required = false) privacy: kotlin.String?): ResponseEntity<BoardsList200Response> {
+    fun boardsList(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Privacy setting for a board.", schema = Schema(allowableValues = ["ALL", "PROTECTED", "PUBLIC", "SECRET", "PUBLIC_AND_SECRET"])) @Valid @RequestParam(value = "privacy", required = false) privacy: kotlin.String?
+    ): ResponseEntity<BoardsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -256,10 +295,17 @@ Optional: Specify a privacy type (public, protected, or secret) to indicate whic
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/boards/{board_id}/pins"],
+        value = [PATH_BOARDS_LIST_PINS /* "/boards/{board_id}/pins" */],
         produces = ["application/json"]
     )
-    fun boardsListPins(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", schema = Schema(allowableValues = ["REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA"])) @Valid @RequestParam(value = "creative_types", required = false) creativeTypes: kotlin.collections.List<kotlin.String>?,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") pinMetrics: kotlin.Boolean): ResponseEntity<BoardsListPins200Response> {
+    fun boardsListPins(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.", schema = Schema(allowableValues = ["REGULAR", "VIDEO", "SHOPPING", "CAROUSEL", "MAX_VIDEO", "SHOP_THE_PIN", "COLLECTION", "IDEA"])) @Valid @RequestParam(value = "creative_types", required = false) creativeTypes: kotlin.collections.List<kotlin.String>?,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
+        @Parameter(description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") pinMetrics: kotlin.Boolean
+    ): ResponseEntity<BoardsListPins200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -279,11 +325,31 @@ Optional: Specify a privacy type (public, protected, or secret) to indicate whic
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/boards/{board_id}"],
+        value = [PATH_BOARDS_UPDATE /* "/boards/{board_id}" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun boardsUpdate(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,@Parameter(description = "Update a board.", required = true) @Valid @RequestBody boardUpdate: BoardUpdate,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<Board> {
+    fun boardsUpdate(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a board.", required = true) @PathVariable("board_id") boardId: kotlin.String,
+        @Parameter(description = "Update a board.", required = true) @Valid @RequestBody boardUpdate: BoardUpdate,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<Board> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    companion object {
+        //for your own safety never directly reuse these path definitions in tests
+        const val BASE_PATH: String = "/v5"
+        const val PATH_BOARD_SECTIONS_CREATE: String = "/boards/{board_id}/sections"
+        const val PATH_BOARD_SECTIONS_DELETE: String = "/boards/{board_id}/sections/{section_id}"
+        const val PATH_BOARD_SECTIONS_LIST: String = "/boards/{board_id}/sections"
+        const val PATH_BOARD_SECTIONS_LIST_PINS: String = "/boards/{board_id}/sections/{section_id}/pins"
+        const val PATH_BOARD_SECTIONS_UPDATE: String = "/boards/{board_id}/sections/{section_id}"
+        const val PATH_BOARDS_CREATE: String = "/boards"
+        const val PATH_BOARDS_DELETE: String = "/boards/{board_id}"
+        const val PATH_BOARDS_GET: String = "/boards/{board_id}"
+        const val PATH_BOARDS_LIST: String = "/boards"
+        const val PATH_BOARDS_LIST_PINS: String = "/boards/{board_id}/pins"
+        const val PATH_BOARDS_UPDATE: String = "/boards/{board_id}"
     }
 }

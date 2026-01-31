@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type ItemValidationEvent* = object
   ## Object describing an item validation event
-  attribute*: string ## The attribute that the item validation event references
-  code*: int ## The event code that the item validation event references
-  message*: string ## Title message describing the item validation event
+  attribute*: Option[string] ## The attribute that the item validation event references
+  code*: Option[int] ## The event code that the item validation event references
+  message*: Option[string] ## Title message describing the item validation event
+

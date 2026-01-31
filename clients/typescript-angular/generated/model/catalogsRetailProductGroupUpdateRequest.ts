@@ -27,10 +27,10 @@ export interface CatalogsRetailProductGroupUpdateRequest {
     locale?: CatalogsLocale;
 }
 export namespace CatalogsRetailProductGroupUpdateRequest {
-    export type CatalogTypeEnum = 'RETAIL';
     export const CatalogTypeEnum = {
-        Retail: 'RETAIL' as CatalogTypeEnum
-    };
+        Retail: 'RETAIL'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Schema describing the object in the response, which contains information about the events that were received and processed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionApiResponse {
   public static final String SERIALIZED_NAME_NUM_EVENTS_RECEIVED = "num_events_received";
   @SerializedName(SERIALIZED_NAME_NUM_EVENTS_RECEIVED)
@@ -184,16 +184,10 @@ public class ConversionApiResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("num_events_received");
-    openapiFields.add("num_events_processed");
-    openapiFields.add("events");
+    openapiFields = new HashSet<String>(Arrays.asList("num_events_received", "num_events_processed", "events"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("num_events_received");
-    openapiRequiredFields.add("num_events_processed");
-    openapiRequiredFields.add("events");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("num_events_received", "num_events_processed", "events"));
   }
 
   /**
@@ -205,7 +199,7 @@ public class ConversionApiResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ConversionApiResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ConversionApiResponse is not found in the empty JSON string", ConversionApiResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ConversionApiResponse is not found in the empty JSON string", ConversionApiResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -213,20 +207,20 @@ public class ConversionApiResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ConversionApiResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConversionApiResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ConversionApiResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ConversionApiResponse.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
       if (!jsonObj.get("events").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `events` to be an array in the JSON string but got `%s`", jsonObj.get("events").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `events` to be an array in the JSON string but got `%s`", jsonObj.get("events").toString()));
       }
 
       JsonArray jsonArrayevents = jsonObj.getAsJsonArray("events");

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AccountType* {.pure.} = enum
@@ -23,13 +25,45 @@ type SharedAudienceAccount* = object
   sharedOnTimestamp*: int ## Epoch timestamp in seconds for the shared audience event
 
 func `%`*(v: AccountType): JsonNode =
-  let str = case v:
-    of AccountType.ADACCOUNT: "AD_ACCOUNT"
-    of AccountType.BUSINESSACCOUNT: "BUSINESS_ACCOUNT"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of AccountType.ADACCOUNT: %"AD_ACCOUNT"
+    of AccountType.BUSINESSACCOUNT: %"BUSINESS_ACCOUNT"
 func `$`*(v: AccountType): string =
   result = case v:
-    of AccountType.ADACCOUNT: "AD_ACCOUNT"
-    of AccountType.BUSINESSACCOUNT: "BUSINESS_ACCOUNT"
+    of AccountType.ADACCOUNT: $("AD_ACCOUNT")
+    of AccountType.BUSINESSACCOUNT: $("BUSINESS_ACCOUNT")
+
+proc to*(node: JsonNode, T: typedesc[AccountType]): AccountType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AccountType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("AD_ACCOUNT"):
+    return AccountType.ADACCOUNT
+  of $("BUSINESS_ACCOUNT"):
+    return AccountType.BUSINESSACCOUNT
+  else:
+    raise newException(ValueError, "Invalid enum value for AccountType: " & strVal)
+
+
+# Custom JSON deserialization for SharedAudienceAccount with custom field names
+proc to*(node: JsonNode, T: typedesc[SharedAudienceAccount]): SharedAudienceAccount =
+  result = SharedAudienceAccount()
+  if node.kind == JObject:
+    if node.hasKey("account_id"):
+      result.accountId = to(node["account_id"], string)
+    if node.hasKey("account_name"):
+      result.accountName = to(node["account_name"], string)
+    if node.hasKey("account_type"):
+      result.accountType = to(node["account_type"], AccountType)
+    if node.hasKey("shared_on_timestamp"):
+      result.sharedOnTimestamp = to(node["shared_on_timestamp"], int)
+
+# Custom JSON serialization for SharedAudienceAccount with custom field names
+proc `%`*(obj: SharedAudienceAccount): JsonNode =
+  result = newJObject()
+  result["account_id"] = %obj.accountId
+  result["account_name"] = %obj.accountName
+  result["account_type"] = %obj.accountType
+  result["shared_on_timestamp"] = %obj.sharedOnTimestamp
+

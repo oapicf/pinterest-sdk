@@ -29,7 +29,7 @@ import javax.annotation.Generated;
   HotelIdFilter.JSON_PROPERTY_H_O_T_E_L_I_D
 })
 @JsonTypeName("HotelIdFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-01-26T05:35:55.554977681Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class HotelIdFilter {
     public static final String JSON_PROPERTY_H_O_T_E_L_I_D = "HOTEL_ID";

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_product_group_filters
 import model_catalogs_list_products_by_feed_based_filter
@@ -16,24 +18,30 @@ import model_catalogs_locale
 import model_catalogs_verticals_list_products_by_catalog_based_filter_request
 import model_country
 
-type CatalogType* {.pure.} = enum
-  CREATIVEASSETS
+# OneOf type
+type CatalogsListProductsByFilterRequestKind* {.pure.} = enum
+  CatalogsListProductsByFeedBasedFilterVariant
+  CatalogsVerticalsListProductsByCatalogBasedFilterRequestVariant
 
 type CatalogsListProductsByFilterRequest* = object
   ## Request object to list products for a given product group filter.
-  feedId*: string ## Catalog Feed id pertaining to the catalog product group filter.
-  filters*: CatalogsCreativeAssetsProductGroupFilters
-  catalogType*: CatalogType
-  catalogId*: string ## Catalog id pertaining to the creative assets product group.
-  country*: Country
-  locale*: CatalogsLocale
+  case kind*: CatalogsListProductsByFilterRequestKind
+  of CatalogsListProductsByFilterRequestKind.CatalogsListProductsByFeedBasedFilterVariant:
+    CatalogsListProductsByFeedBasedFilterValue*: CatalogsListProductsByFeedBasedFilter
+  of CatalogsListProductsByFilterRequestKind.CatalogsVerticalsListProductsByCatalogBasedFilterRequestVariant:
+    CatalogsVerticalsListProductsByCatalogBasedFilterRequestValue*: CatalogsVerticalsListProductsByCatalogBasedFilterRequest
 
-func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
+proc to*(node: JsonNode, T: typedesc[CatalogsListProductsByFilterRequest]): CatalogsListProductsByFilterRequest =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsListProductsByFilterRequest(kind: CatalogsListProductsByFilterRequestKind.CatalogsListProductsByFeedBasedFilterVariant, CatalogsListProductsByFeedBasedFilterValue: to(node, CatalogsListProductsByFeedBasedFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsListProductsByFeedBasedFilter: ", e.msg
+  try:
+    return CatalogsListProductsByFilterRequest(kind: CatalogsListProductsByFilterRequestKind.CatalogsVerticalsListProductsByCatalogBasedFilterRequestVariant, CatalogsVerticalsListProductsByCatalogBasedFilterRequestValue: to(node, CatalogsVerticalsListProductsByCatalogBasedFilterRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsVerticalsListProductsByCatalogBasedFilterRequest: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsListProductsByFilterRequest. JSON: " & $node)
 
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: CatalogType): string =
-  result = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"

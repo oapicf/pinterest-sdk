@@ -14,9 +14,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdAccountsSubscriptionsGetList200Response  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<AdAccountGetSubscriptionResponse> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * Get items

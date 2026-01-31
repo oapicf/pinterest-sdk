@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * BaseInviteDataResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BaseInviteDataResponse {
 
   private @Nullable String id;
@@ -32,7 +32,7 @@ public class BaseInviteDataResponse {
 
   private @Nullable BusinessAccessUserSummary user;
 
-  public BaseInviteDataResponse id(String id) {
+  public BaseInviteDataResponse id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -44,15 +44,15 @@ public class BaseInviteDataResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "383791336903426391", description = "Unique identifier of the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public BaseInviteDataResponse inviteData(BaseInviteDataResponseInviteData inviteData) {
+  public BaseInviteDataResponse inviteData(@Nullable BaseInviteDataResponseInviteData inviteData) {
     this.inviteData = inviteData;
     return this;
   }
@@ -64,15 +64,15 @@ public class BaseInviteDataResponse {
   @Valid 
   @Schema(name = "invite_data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("invite_data")
-  public BaseInviteDataResponseInviteData getInviteData() {
+  public @Nullable BaseInviteDataResponseInviteData getInviteData() {
     return inviteData;
   }
 
-  public void setInviteData(BaseInviteDataResponseInviteData inviteData) {
+  public void setInviteData(@Nullable BaseInviteDataResponseInviteData inviteData) {
     this.inviteData = inviteData;
   }
 
-  public BaseInviteDataResponse isReceivedInvite(Boolean isReceivedInvite) {
+  public BaseInviteDataResponse isReceivedInvite(@Nullable Boolean isReceivedInvite) {
     this.isReceivedInvite = isReceivedInvite;
     return this;
   }
@@ -84,15 +84,15 @@ public class BaseInviteDataResponse {
   
   @Schema(name = "is_received_invite", description = "Indicates whether the invite/request was received.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_received_invite")
-  public Boolean getIsReceivedInvite() {
+  public @Nullable Boolean getIsReceivedInvite() {
     return isReceivedInvite;
   }
 
-  public void setIsReceivedInvite(Boolean isReceivedInvite) {
+  public void setIsReceivedInvite(@Nullable Boolean isReceivedInvite) {
     this.isReceivedInvite = isReceivedInvite;
   }
 
-  public BaseInviteDataResponse user(BusinessAccessUserSummary user) {
+  public BaseInviteDataResponse user(@Nullable BusinessAccessUserSummary user) {
     this.user = user;
     return this;
   }
@@ -104,11 +104,11 @@ public class BaseInviteDataResponse {
   @Valid 
   @Schema(name = "user", description = "Metadata for the member/partner that was sent the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("user")
-  public BusinessAccessUserSummary getUser() {
+  public @Nullable BusinessAccessUserSummary getUser() {
     return user;
   }
 
-  public void setUser(BusinessAccessUserSummary user) {
+  public void setUser(@Nullable BusinessAccessUserSummary user) {
     this.user = user;
   }
 

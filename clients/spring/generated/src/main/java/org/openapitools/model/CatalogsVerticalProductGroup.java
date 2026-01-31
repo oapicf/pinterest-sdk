@@ -37,13 +37,10 @@ import javax.annotation.Generated;
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroup.class, name = "CREATIVE_ASSETS"),
   @JsonSubTypes.Type(value = CatalogsHotelProductGroup.class, name = "HOTEL"),
-  @JsonSubTypes.Type(value = CatalogsRetailProductGroup.class, name = "RETAIL"),
-  @JsonSubTypes.Type(value = CatalogsCreativeAssetsProductGroup.class, name = "CatalogsCreativeAssetsProductGroup"),
-  @JsonSubTypes.Type(value = CatalogsHotelProductGroup.class, name = "CatalogsHotelProductGroup"),
-  @JsonSubTypes.Type(value = CatalogsRetailProductGroup.class, name = "CatalogsRetailProductGroup")
+  @JsonSubTypes.Type(value = CatalogsRetailProductGroup.class, name = "RETAIL")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface CatalogsVerticalProductGroup {
     public String getCatalogType();
 }

@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * AdsCreditDiscountsResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsCreditDiscountsResponse {
 
   private @Nullable Boolean active;
@@ -75,7 +75,7 @@ public class AdsCreditDiscountsResponse {
     
     PREPAID_CREDIT_REFUND("PREPAID_CREDIT_REFUND");
 
-    private String value;
+    private final String value;
 
     DiscountTypeEnum(String value) {
       this.value = value;
@@ -112,7 +112,7 @@ public class AdsCreditDiscountsResponse {
 
   private JsonNullable<BigDecimal> remainingDiscountInMicroCurrency = JsonNullable.<BigDecimal>undefined();
 
-  public AdsCreditDiscountsResponse active(Boolean active) {
+  public AdsCreditDiscountsResponse active(@Nullable Boolean active) {
     this.active = active;
     return this;
   }
@@ -124,15 +124,15 @@ public class AdsCreditDiscountsResponse {
   
   @Schema(name = "active", example = "true", description = "True if the offer code is currently active.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("active")
-  public Boolean getActive() {
+  public @Nullable Boolean getActive() {
     return active;
   }
 
-  public void setActive(Boolean active) {
+  public void setActive(@Nullable Boolean active) {
     this.active = active;
   }
 
-  public AdsCreditDiscountsResponse advertiserId(String advertiserId) {
+  public AdsCreditDiscountsResponse advertiserId(@Nullable String advertiserId) {
     this.advertiserId = advertiserId;
     return this;
   }
@@ -144,11 +144,11 @@ public class AdsCreditDiscountsResponse {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "advertiser_id", example = "12312451231", description = "Advertiser ID the offer was applied to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("advertiser_id")
-  public String getAdvertiserId() {
+  public @Nullable String getAdvertiserId() {
     return advertiserId;
   }
 
-  public void setAdvertiserId(String advertiserId) {
+  public void setAdvertiserId(@Nullable String advertiserId) {
     this.advertiserId = advertiserId;
   }
 

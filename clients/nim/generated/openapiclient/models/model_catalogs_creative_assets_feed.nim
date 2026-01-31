@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_feed_credentials
 import model_catalogs_feed_processing_schedule
@@ -23,14 +25,72 @@ type CatalogsCreativeAssetsFeed* = object
   createdAt*: string
   id*: string
   updatedAt*: string
-  name*: string ## A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
+  name*: Option[string] ## A human-friendly name associated to a given feed. This value is currently nullable due to historical reasons. It is expected to become non-nullable in the future.
   format*: CatalogsFormat
   catalogType*: CatalogsType
-  credentials*: CatalogsFeedCredentials
+  credentials*: Option[CatalogsFeedCredentials]
   location*: string ## The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  preferredProcessingSchedule*: CatalogsFeedProcessingSchedule
+  preferredProcessingSchedule*: Option[CatalogsFeedProcessingSchedule]
   status*: CatalogsStatus
-  defaultCurrency*: NullableCurrency
+  defaultCurrency*: Option[NullableCurrency]
   defaultLocale*: string ## The locale used within a feed for product descriptions.
   defaultCountry*: Country
-  catalogId*: string ## Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+  catalogId*: Option[string] ## Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsFeed with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsFeed]): CatalogsCreativeAssetsFeed =
+  result = CatalogsCreativeAssetsFeed()
+  if node.kind == JObject:
+    if node.hasKey("created_at"):
+      result.createdAt = to(node["created_at"], string)
+    if node.hasKey("id"):
+      result.id = to(node["id"], string)
+    if node.hasKey("updated_at"):
+      result.updatedAt = to(node["updated_at"], string)
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("format"):
+      result.format = to(node["format"], CatalogsFormat)
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogsType)
+    if node.hasKey("credentials") and node["credentials"].kind != JNull:
+      result.credentials = some(to(node["credentials"], typeof(result.credentials.get())))
+    if node.hasKey("location"):
+      result.location = to(node["location"], string)
+    if node.hasKey("preferred_processing_schedule") and node["preferred_processing_schedule"].kind != JNull:
+      result.preferredProcessingSchedule = some(to(node["preferred_processing_schedule"], typeof(result.preferredProcessingSchedule.get())))
+    if node.hasKey("status"):
+      result.status = to(node["status"], CatalogsStatus)
+    if node.hasKey("default_currency") and node["default_currency"].kind != JNull:
+      result.defaultCurrency = some(to(node["default_currency"], typeof(result.defaultCurrency.get())))
+    if node.hasKey("default_locale"):
+      result.defaultLocale = to(node["default_locale"], string)
+    if node.hasKey("default_country"):
+      result.defaultCountry = to(node["default_country"], Country)
+    if node.hasKey("catalog_id") and node["catalog_id"].kind != JNull:
+      result.catalogId = some(to(node["catalog_id"], typeof(result.catalogId.get())))
+
+# Custom JSON serialization for CatalogsCreativeAssetsFeed with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsFeed): JsonNode =
+  result = newJObject()
+  result["created_at"] = %obj.createdAt
+  result["id"] = %obj.id
+  result["updated_at"] = %obj.updatedAt
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  result["format"] = %obj.format
+  result["catalog_type"] = %obj.catalogType
+  if obj.credentials.isSome():
+    result["credentials"] = %obj.credentials.get()
+  result["location"] = %obj.location
+  if obj.preferredProcessingSchedule.isSome():
+    result["preferred_processing_schedule"] = %obj.preferredProcessingSchedule.get()
+  result["status"] = %obj.status
+  if obj.defaultCurrency.isSome():
+    result["default_currency"] = %obj.defaultCurrency.get()
+  result["default_locale"] = %obj.defaultLocale
+  result["default_country"] = %obj.defaultCountry
+  if obj.catalogId.isSome():
+    result["catalog_id"] = %obj.catalogId.get()
+

@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaWithImageAllOfImages;
 import javax.validation.constraints.*;

@@ -10,16 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Exception  {
   
-  @ApiModelProperty(example = "2", value = "Exception error code.")
  /**
-   * Exception error code.
-  **/
+  * Exception error code.
+  */
+  @ApiModelProperty(example = "2", value = "Exception error code.")
+
   private Integer code;
 
-  @ApiModelProperty(example = "Advertiser not found.", value = "Exception message.")
  /**
-   * Exception message.
-  **/
+  * Exception message.
+  */
+  @ApiModelProperty(example = "Advertiser not found.", value = "Exception message.")
+
   private String message;
  /**
    * Exception error code.

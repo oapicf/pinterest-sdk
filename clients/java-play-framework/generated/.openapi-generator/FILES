@@ -81,7 +81,6 @@ app/apimodels/AudienceCategory.java
 app/apimodels/AudienceCommon.java
 app/apimodels/AudienceCreateCustomRequest.java
 app/apimodels/AudienceCreateRequest.java
-app/apimodels/AudienceCreateRequest1AudienceType.java
 app/apimodels/AudienceDataParty.java
 app/apimodels/AudienceDefinition.java
 app/apimodels/AudienceDefinitionResponse.java
@@ -259,7 +258,6 @@ app/apimodels/CatalogsItemsDeleteDiscontinuedBatchRequest.java
 app/apimodels/CatalogsItemsFilters.java
 app/apimodels/CatalogsItemsPostFilters.java
 app/apimodels/CatalogsItemsRequest.java
-app/apimodels/CatalogsItemsRequestLanguage.java
 app/apimodels/CatalogsItemsUpdateBatchRequest.java
 app/apimodels/CatalogsItemsUpsertBatchRequest.java
 app/apimodels/CatalogsList200Response.java
@@ -593,7 +591,6 @@ app/apimodels/PinMediaWithVideos.java
 app/apimodels/PinPromotionSummaryStatus.java
 app/apimodels/PinUpdate.java
 app/apimodels/PinUpdateCarouselSlotsInner.java
-app/apimodels/PinsAnalyticsMetricTypesParameterInner.java
 app/apimodels/PinsList200Response.java
 app/apimodels/PinsSaveRequest.java
 app/apimodels/PinterestTagEventData.java

@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_any_type
 
 type AdsAnalyticsResponseInner* = object
   ## 
   AD_ID*: string ## The ID of the ad that this metrics belongs to.
-  DATE*: string ## Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
+  DATE*: Option[string] ## Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)
+

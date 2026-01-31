@@ -92,7 +92,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@582957b1");
+            .accept("[Ljava.lang.String;@73be117d");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -143,7 +143,7 @@ public class BoardsControllerTest {
             put("section_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@4555583b");
+            .accept("[Ljava.lang.String;@259615df");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -194,7 +194,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@43dad60c");
+            .accept("[Ljava.lang.String;@57cbaefb");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -249,7 +249,7 @@ public class BoardsControllerTest {
             put("section_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@1a9660c9");
+            .accept("[Ljava.lang.String;@6c9b69a0");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -304,7 +304,7 @@ public class BoardsControllerTest {
             put("section_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@81028f5");
+            .accept("[Ljava.lang.String;@6fadb8b7");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -351,7 +351,7 @@ public class BoardsControllerTest {
         Board body = new Board("Summer Recipes");
         String uri = UriTemplate.of("/boards").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@676b3d4c");
+            .accept("[Ljava.lang.String;@7a807070");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -400,7 +400,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@7214fd1b");
+            .accept("[Ljava.lang.String;@7036a5ad");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -449,7 +449,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5b2d5bb8");
+            .accept("[Ljava.lang.String;@47d70462");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -497,7 +497,7 @@ public class BoardsControllerTest {
         // given
         String uri = UriTemplate.of("/boards").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@52f387a8");
+            .accept("[Ljava.lang.String;@453d742f");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -553,7 +553,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6ccc41e7");
+            .accept("[Ljava.lang.String;@3cc78f08");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -608,7 +608,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@39659540");
+            .accept("[Ljava.lang.String;@79994ef0");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 

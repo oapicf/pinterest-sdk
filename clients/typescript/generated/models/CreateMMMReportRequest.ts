@@ -17,6 +17,10 @@ import { HttpFile } from '../http/http';
 
 export class CreateMMMReportRequest {
     /**
+    * A List of countries for filtering
+    */
+    'countries'?: Array<TargetingAdvertiserCountry>;
+    /**
     * Name of the Marketing Mix Modeling (MMM) report
     */
     'reportName': string;
@@ -44,16 +48,18 @@ export class CreateMMMReportRequest {
     * Metric and entity columns
     */
     'columns': Array<MMMReportingColumn>;
-    /**
-    * A List of countries for filtering
-    */
-    'countries'?: Array<TargetingAdvertiserCountry>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "countries",
+            "baseName": "countries",
+            "type": "Array<TargetingAdvertiserCountry>",
+            "format": ""
+        },
         {
             "name": "reportName",
             "baseName": "report_name",
@@ -94,12 +100,6 @@ export class CreateMMMReportRequest {
             "name": "columns",
             "baseName": "columns",
             "type": "Array<MMMReportingColumn>",
-            "format": ""
-        },
-        {
-            "name": "countries",
-            "baseName": "countries",
-            "type": "Array<TargetingAdvertiserCountry>",
             "format": ""
         }    ];
 

@@ -16,23 +16,6 @@ import { InviteAssetsSummary } from '../models/InviteAssetsSummary';
 import { HttpFile } from '../http/http';
 
 export class InviteResponse {
-    'assetsSummary'?: InviteAssetsSummary | null;
-    /**
-    * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-    */
-    'businessRoles'?: Array<string>;
-    /**
-    * Metadata for the business that created the invite/request.
-    */
-    'createdByBusiness'?: BusinessAccessUserSummary | null;
-    /**
-    * Metadata for the user that created the invite/request.
-    */
-    'createdByUser'?: BusinessAccessUserSummary | null;
-    /**
-    * The time the invite/request was created. Returned in milliseconds.
-    */
-    'createdTime'?: number;
     /**
     * Unique identifier of the invite/request.
     */
@@ -46,42 +29,29 @@ export class InviteResponse {
     * Metadata for the member/partner that was sent the invite/request.
     */
     'user'?: BusinessAccessUserSummary;
+    'assetsSummary'?: InviteAssetsSummary | null;
+    /**
+    * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+    */
+    'businessRoles'?: Array<string>;
+    /**
+    * Metadata for the business that created the invite/request.
+    */
+    'createdByBusiness'?: any | null;
+    /**
+    * Metadata for the user that created the invite/request.
+    */
+    'createdByUser'?: any | null;
+    /**
+    * The time the invite/request was created. Returned in milliseconds.
+    */
+    'createdTime'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "assetsSummary",
-            "baseName": "assets_summary",
-            "type": "InviteAssetsSummary",
-            "format": ""
-        },
-        {
-            "name": "businessRoles",
-            "baseName": "business_roles",
-            "type": "Array<string>",
-            "format": ""
-        },
-        {
-            "name": "createdByBusiness",
-            "baseName": "created_by_business",
-            "type": "BusinessAccessUserSummary",
-            "format": ""
-        },
-        {
-            "name": "createdByUser",
-            "baseName": "created_by_user",
-            "type": "BusinessAccessUserSummary",
-            "format": ""
-        },
-        {
-            "name": "createdTime",
-            "baseName": "created_time",
-            "type": "number",
-            "format": ""
-        },
         {
             "name": "id",
             "baseName": "id",
@@ -104,6 +74,36 @@ export class InviteResponse {
             "name": "user",
             "baseName": "user",
             "type": "BusinessAccessUserSummary",
+            "format": ""
+        },
+        {
+            "name": "assetsSummary",
+            "baseName": "assets_summary",
+            "type": "InviteAssetsSummary",
+            "format": ""
+        },
+        {
+            "name": "businessRoles",
+            "baseName": "business_roles",
+            "type": "Array<string>",
+            "format": ""
+        },
+        {
+            "name": "createdByBusiness",
+            "baseName": "created_by_business",
+            "type": "any",
+            "format": ""
+        },
+        {
+            "name": "createdByUser",
+            "baseName": "created_by_user",
+            "type": "any",
+            "format": ""
+        },
+        {
+            "name": "createdTime",
+            "baseName": "created_time",
+            "type": "number",
             "format": ""
         }    ];
 

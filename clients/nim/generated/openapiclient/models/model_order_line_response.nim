@@ -9,11 +9,44 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_order_line
 import model_order_line_error
 
 type OrderLineResponse* = object
   ## 
-  errors*: seq[OrderLineError] ## Error list if update(s) fail.
-  orderLine*: seq[OrderLine] ## Order Line object array.
+  errors*: Option[seq[OrderLineError]] ## Error list if update(s) fail.
+  orderLine*: Option[seq[OrderLine]] ## Order Line object array.
+
+
+# Custom JSON deserialization for OrderLineResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[OrderLineResponse]): OrderLineResponse =
+  result = OrderLineResponse()
+  if node.kind == JObject:
+    if node.hasKey("errors") and node["errors"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["errors"]
+      if arrayNode.kind == JArray:
+        var arr: seq[OrderLineError] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, OrderLineError))
+        result.errors = some(arr)
+    if node.hasKey("order_line") and node["order_line"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["order_line"]
+      if arrayNode.kind == JArray:
+        var arr: seq[OrderLine] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, OrderLine))
+        result.orderLine = some(arr)
+
+# Custom JSON serialization for OrderLineResponse with custom field names
+proc `%`*(obj: OrderLineResponse): JsonNode =
+  result = newJObject()
+  if obj.errors.isSome():
+    result["errors"] = %obj.errors.get()
+  if obj.orderLine.isSome():
+    result["order_line"] = %obj.orderLine.get()
+

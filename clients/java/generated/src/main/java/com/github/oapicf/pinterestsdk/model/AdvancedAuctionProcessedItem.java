@@ -57,7 +57,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing the result of an operation on an item bid option
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionProcessedItem extends AdvancedAuctionItemsSubmitRecord {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
@@ -141,23 +141,10 @@ public class AdvancedAuctionProcessedItem extends AdvancedAuctionItemsSubmitReco
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("operation");
-    openapiFields.add("item_id");
-    openapiFields.add("country");
-    openapiFields.add("language");
-    openapiFields.add("bid_options");
-    openapiFields.add("update_mask");
-    openapiFields.add("errors");
+    openapiFields = new HashSet<String>(Arrays.asList("operation", "item_id", "country", "language", "bid_options", "update_mask", "errors"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("operation");
-    openapiRequiredFields.add("item_id");
-    openapiRequiredFields.add("country");
-    openapiRequiredFields.add("language");
-    openapiRequiredFields.add("bid_options");
-    openapiRequiredFields.add("update_mask");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("operation", "item_id", "country", "language", "bid_options", "update_mask"));
   }
 
   /**
@@ -169,7 +156,7 @@ public class AdvancedAuctionProcessedItem extends AdvancedAuctionItemsSubmitReco
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AdvancedAuctionProcessedItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdvancedAuctionProcessedItem is not found in the empty JSON string", AdvancedAuctionProcessedItem.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AdvancedAuctionProcessedItem is not found in the empty JSON string", AdvancedAuctionProcessedItem.openapiRequiredFields.toString()));
         }
       }
 
@@ -177,14 +164,14 @@ public class AdvancedAuctionProcessedItem extends AdvancedAuctionItemsSubmitReco
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AdvancedAuctionProcessedItem.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AdvancedAuctionProcessedItem` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AdvancedAuctionProcessedItem` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AdvancedAuctionProcessedItem.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
   }

@@ -13,7 +13,6 @@
 #include "CatalogsItemsCreateBatchRequest.h"
 #include "CatalogsItemsDeleteBatchRequest.h"
 #include "CatalogsItemsDeleteDiscontinuedBatchRequest.h"
-#include "CatalogsItemsRequest_language.h"
 #include "CatalogsItemsUpdateBatchRequest.h"
 #include "CatalogsItemsUpsertBatchRequest.h"
 #include "Country.h"
@@ -62,13 +61,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCountry(Country  country);
-	/*! \brief Get 
+	/*! \brief Get We recommend using the CatalogsLocale values.
 	 */
-	CatalogsItemsRequest_language getLanguage();
+	std::string getLanguage();
 
-	/*! \brief Set 
+	/*! \brief Set We recommend using the CatalogsLocale values.
 	 */
-	void setLanguage(CatalogsItemsRequest_language  language);
+	void setLanguage(std::string  language);
 	/*! \brief Get 
 	 */
 	BatchOperation getOperation();
@@ -86,7 +85,7 @@ public:
 
 private:
 	Country country;
-	CatalogsItemsRequest_language language;
+	std::string language;
 	BatchOperation operation;
 	std::list <ItemDeleteBatchRecord>items;
 	void __init();

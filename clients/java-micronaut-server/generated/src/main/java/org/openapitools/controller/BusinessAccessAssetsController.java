@@ -58,7 +58,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-01-26T05:36:06.173633742Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 @Tag(name = "BusinessAccessAssets", description = "The BusinessAccessAssets API")
 public class BusinessAccessAssetsController {
@@ -481,7 +481,7 @@ public class BusinessAccessAssetsController {
      *
      * @param businessId Unique identifier of the requesting business. (required)
      * @param partnerId The partner id to be bound to the Business (required)
-     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional)
+     * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to INTERNAL)
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)
@@ -518,7 +518,7 @@ public class BusinessAccessAssetsController {
     public Mono<BusinessPartnerAssetAccessGet200Response> businessPartnerAssetAccessGet(
         @PathVariable(value="business_id") @NotNull @Pattern(regexp="^\\d+$") @Size(min=1, max=20) String businessId, 
         @PathVariable(value="partner_id") @NotNull @Pattern(regexp="^\\d+$") @Size(min=1, max=20) String partnerId, 
-        @QueryValue(value="partner_type") @Nullable @Valid PartnerType partnerType, 
+        @QueryValue(value="partner_type", defaultValue="INTERNAL") @Nullable PartnerType partnerType, 
         @QueryValue(value="asset_type", defaultValue="AD_ACCOUNT") @Nullable String assetType, 
         @QueryValue(value="start_index", defaultValue="0") @Nullable @Min(0) Integer startIndex, 
         @QueryValue(value="page_size", defaultValue="25") @Nullable @Min(1) @Max(250) Integer pageSize, 

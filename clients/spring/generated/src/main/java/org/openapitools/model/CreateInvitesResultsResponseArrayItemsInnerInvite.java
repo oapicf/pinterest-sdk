@@ -23,14 +23,14 @@ import javax.annotation.Generated;
 
 @Schema(name = "CreateInvitesResultsResponseArray_items_inner_invite", description = "An invite object if the invite/request was successfully created. Will only be provided if the an invite/request is successfully created.")
 @JsonTypeName("CreateInvitesResultsResponseArray_items_inner_invite")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateInvitesResultsResponseArrayItemsInnerInvite {
 
   private @Nullable String id;
 
   private @Nullable BusinessAccessUserSummary user;
 
-  public CreateInvitesResultsResponseArrayItemsInnerInvite id(String id) {
+  public CreateInvitesResultsResponseArrayItemsInnerInvite id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -42,15 +42,15 @@ public class CreateInvitesResultsResponseArrayItemsInnerInvite {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "383791336903426391", description = "Unique identifier of the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public CreateInvitesResultsResponseArrayItemsInnerInvite user(BusinessAccessUserSummary user) {
+  public CreateInvitesResultsResponseArrayItemsInnerInvite user(@Nullable BusinessAccessUserSummary user) {
     this.user = user;
     return this;
   }
@@ -62,11 +62,11 @@ public class CreateInvitesResultsResponseArrayItemsInnerInvite {
   @Valid 
   @Schema(name = "user", description = "Metadata for the member/partner that was sent the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("user")
-  public BusinessAccessUserSummary getUser() {
+  public @Nullable BusinessAccessUserSummary getUser() {
     return user;
   }
 
-  public void setUser(BusinessAccessUserSummary user) {
+  public void setUser(@Nullable BusinessAccessUserSummary user) {
     this.user = user;
   }
 

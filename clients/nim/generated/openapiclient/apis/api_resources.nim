@@ -30,10 +30,7 @@ const basepath = "https://api.pinterest.com/v5"
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -52,11 +49,12 @@ proc adAccountCountriesGet*(httpClient: HttpClient): (Option[AdAccountsCountryRe
 
 proc deliveryMetricsGet*(httpClient: HttpClient, reportType: string): (Option[DeliveryMetricsResponse], Response) =
   ## Get available metrics' definitions
-  let query_for_api_call = encodeQuery([
-    ("report_type", $reportType), # Report type.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $reportType != "":
+    query_params_list.add(("report_type", $reportType))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/resources/delivery_metrics" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/resources/delivery_metrics" & "?" & url_encoded_query_params)
   constructResult[DeliveryMetricsResponse](response)
 
 
@@ -72,25 +70,30 @@ proc leadFormQuestionsGet*(httpClient: HttpClient): Response =
   httpClient.get(basepath & "/resources/lead_form_questions")
 
 
+
 proc metricsReadyStateGet*(httpClient: HttpClient, date: string): (Option[BookClosedResponse], Response) =
   ## Get metrics ready state
-  let query_for_api_call = encodeQuery([
-    ("date", $date), # Analytics reports request date (UTC). Format: YYYY-MM-DD
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("date", $date))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/resources/metrics_ready_state" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/resources/metrics_ready_state" & "?" & url_encoded_query_params)
   constructResult[BookClosedResponse](response)
 
 
-proc targetingOptionsGet*(httpClient: HttpClient, targetingType: string, clientId: string, oauthSignature: string, timestamp: string, adAccountId: string): (Option[seq[object]], Response) =
+proc targetingOptionsGet*(httpClient: HttpClient, targetingType: string, clientId: string, oauthSignature: string, timestamp: string, adAccountId: string): (Option[seq[JsonNode]], Response) =
   ## Get targeting options
-  let query_for_api_call = encodeQuery([
-    ("client_id", $clientId), # Client ID.
-    ("oauth_signature", $oauthSignature), # Oauth signature
-    ("timestamp", $timestamp), # Timestamp
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $clientId != "":
+    query_params_list.add(("client_id", $clientId))
+  if $oauthSignature != "":
+    query_params_list.add(("oauth_signature", $oauthSignature))
+  if $timestamp != "":
+    query_params_list.add(("timestamp", $timestamp))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/resources/targeting/{targeting_type}" & "?" & query_for_api_call)
-  constructResult[seq[object]](response)
+  let response = httpClient.get(basepath & fmt"/resources/targeting/{targeting_type}" & "?" & url_encoded_query_params)
+  constructResult[seq[JsonNode]](response)
 

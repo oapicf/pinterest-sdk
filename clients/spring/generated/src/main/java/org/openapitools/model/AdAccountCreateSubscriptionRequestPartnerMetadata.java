@@ -22,12 +22,12 @@ import javax.annotation.Generated;
 
 @Schema(name = "AdAccountCreateSubscriptionRequest_partner_metadata", description = "Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.")
 @JsonTypeName("AdAccountCreateSubscriptionRequest_partner_metadata")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountCreateSubscriptionRequestPartnerMetadata {
 
   private @Nullable String subscriberKey;
 
-  public AdAccountCreateSubscriptionRequestPartnerMetadata subscriberKey(String subscriberKey) {
+  public AdAccountCreateSubscriptionRequestPartnerMetadata subscriberKey(@Nullable String subscriberKey) {
     this.subscriberKey = subscriberKey;
     return this;
   }
@@ -39,11 +39,11 @@ public class AdAccountCreateSubscriptionRequestPartnerMetadata {
   
   @Schema(name = "subscriber_key", description = "Text field value that uniquely identifies a subscriber.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("subscriber_key")
-  public String getSubscriberKey() {
+  public @Nullable String getSubscriberKey() {
     return subscriberKey;
   }
 
-  public void setSubscriberKey(String subscriberKey) {
+  public void setSubscriberKey(@Nullable String subscriberKey) {
     this.subscriberKey = subscriberKey;
   }
 

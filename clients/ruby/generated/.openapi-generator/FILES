@@ -90,7 +90,6 @@ docs/AudienceCategory.md
 docs/AudienceCommon.md
 docs/AudienceCreateCustomRequest.md
 docs/AudienceCreateRequest.md
-docs/AudienceCreateRequest1AudienceType.md
 docs/AudienceDataParty.md
 docs/AudienceDefinition.md
 docs/AudienceDefinitionResponse.md
@@ -279,7 +278,6 @@ docs/CatalogsItemsDeleteDiscontinuedBatchRequest.md
 docs/CatalogsItemsFilters.md
 docs/CatalogsItemsPostFilters.md
 docs/CatalogsItemsRequest.md
-docs/CatalogsItemsRequestLanguage.md
 docs/CatalogsItemsUpdateBatchRequest.md
 docs/CatalogsItemsUpsertBatchRequest.md
 docs/CatalogsList200Response.md
@@ -624,7 +622,6 @@ docs/PinMediaWithVideos.md
 docs/PinPromotionSummaryStatus.md
 docs/PinUpdate.md
 docs/PinUpdateCarouselSlotsInner.md
-docs/PinsAnalyticsMetricTypesParameterInner.md
 docs/PinsApi.md
 docs/PinsList200Response.md
 docs/PinsSaveRequest.md
@@ -796,6 +793,7 @@ lib/pinterest_sdk/api/terms_of_service_api.rb
 lib/pinterest_sdk/api/user_account_api.rb
 lib/pinterest_sdk/api_client.rb
 lib/pinterest_sdk/api_error.rb
+lib/pinterest_sdk/api_model_base.rb
 lib/pinterest_sdk/configuration.rb
 lib/pinterest_sdk/models/account.rb
 lib/pinterest_sdk/models/action_type.rb
@@ -877,7 +875,6 @@ lib/pinterest_sdk/models/audience_category.rb
 lib/pinterest_sdk/models/audience_common.rb
 lib/pinterest_sdk/models/audience_create_custom_request.rb
 lib/pinterest_sdk/models/audience_create_request.rb
-lib/pinterest_sdk/models/audience_create_request1_audience_type.rb
 lib/pinterest_sdk/models/audience_data_party.rb
 lib/pinterest_sdk/models/audience_definition.rb
 lib/pinterest_sdk/models/audience_definition_response.rb
@@ -1055,7 +1052,6 @@ lib/pinterest_sdk/models/catalogs_items_delete_discontinued_batch_request.rb
 lib/pinterest_sdk/models/catalogs_items_filters.rb
 lib/pinterest_sdk/models/catalogs_items_post_filters.rb
 lib/pinterest_sdk/models/catalogs_items_request.rb
-lib/pinterest_sdk/models/catalogs_items_request_language.rb
 lib/pinterest_sdk/models/catalogs_items_update_batch_request.rb
 lib/pinterest_sdk/models/catalogs_items_upsert_batch_request.rb
 lib/pinterest_sdk/models/catalogs_list200_response.rb
@@ -1389,7 +1385,6 @@ lib/pinterest_sdk/models/pin_media_with_videos.rb
 lib/pinterest_sdk/models/pin_promotion_summary_status.rb
 lib/pinterest_sdk/models/pin_update.rb
 lib/pinterest_sdk/models/pin_update_carousel_slots_inner.rb
-lib/pinterest_sdk/models/pins_analytics_metric_types_parameter_inner.rb
 lib/pinterest_sdk/models/pins_list200_response.rb
 lib/pinterest_sdk/models/pins_save_request.rb
 lib/pinterest_sdk/models/pinterest_tag_event_data.rb

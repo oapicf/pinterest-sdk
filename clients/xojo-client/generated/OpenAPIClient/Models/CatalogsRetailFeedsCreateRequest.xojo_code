@@ -58,7 +58,7 @@ Protected Class CatalogsRetailFeedsCreateRequest
 
 
 	#tag Property, Flags = &h0
-		status As OpenAPIClient.Models.CatalogsStatus
+		status As Xoson.O.OptionalString
 	#tag EndProperty
 
 

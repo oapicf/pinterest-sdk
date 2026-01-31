@@ -79,4 +79,19 @@ private class OASCatalogsHotelFeedsCreateRequestTest {
         System.assertEquals('catalogType', x-property-mappings.get('catalog_type'));
         System.assertEquals('catalogId', x-property-mappings.get('catalog_id'));
     }
+
+    @isTest
+    private static void defaultValuesPopulated() {
+        OASCatalogsHotelFeedsCreateRequest catalogsHotelFeedsCreateRequest = new OASCatalogsHotelFeedsCreateRequest();
+        System.assertEquals('ACTIVE', catalogsHotelFeedsCreateRequest.status);
+        System.assertEquals(null, catalogsHotelFeedsCreateRequest.defaultCurrency);
+        System.assertEquals(null, catalogsHotelFeedsCreateRequest.name);
+        System.assertEquals(null, catalogsHotelFeedsCreateRequest.format);
+        System.assertEquals(null, catalogsHotelFeedsCreateRequest.defaultLocale);
+        System.assertEquals(null, catalogsHotelFeedsCreateRequest.credentials);
+        System.assertEquals(null, catalogsHotelFeedsCreateRequest.location);
+        System.assertEquals(null, catalogsHotelFeedsCreateRequest.preferredProcessingSchedule);
+        System.assertEquals(null, catalogsHotelFeedsCreateRequest.catalogType);
+        System.assertEquals(null, catalogsHotelFeedsCreateRequest.catalogId);
+    }
 }

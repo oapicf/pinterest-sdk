@@ -140,12 +140,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "deleted_asset_groups":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                deletedAssetGroups = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            deletedAssetGroups = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "exceptions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exceptions = new Option<List<DeleteAssetGroupResponseExceptionsInner>?>(JsonSerializer.Deserialize<List<DeleteAssetGroupResponseExceptionsInner>>(ref utf8JsonReader, jsonSerializerOptions));
+                            exceptions = new Option<List<DeleteAssetGroupResponseExceptionsInner>?>(JsonSerializer.Deserialize<List<DeleteAssetGroupResponseExceptionsInner>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

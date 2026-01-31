@@ -52,17 +52,39 @@ func NewOrderLinesAPIController(s OrderLinesAPIServicer, opts ...OrderLinesAPIOp
 func (c *OrderLinesAPIController) Routes() Routes {
 	return Routes{
 		"OrderLinesList": Route{
+			"OrderLinesList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/order_lines",
 			c.OrderLinesList,
 		},
 		"OrderLinesGet": Route{
+			"OrderLinesGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/order_lines/{order_line_id}",
 			c.OrderLinesGet,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the OrderLinesAPIController
+func (c *OrderLinesAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"OrderLinesList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/order_lines",
+			c.OrderLinesList,
+		},
+		Route{
+			"OrderLinesGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/order_lines/{order_line_id}",
+			c.OrderLinesGet,
+		},
+	}
+}
+
+
 
 // OrderLinesList - Get order lines
 func (c *OrderLinesAPIController) OrderLinesList(w http.ResponseWriter, r *http.Request) {

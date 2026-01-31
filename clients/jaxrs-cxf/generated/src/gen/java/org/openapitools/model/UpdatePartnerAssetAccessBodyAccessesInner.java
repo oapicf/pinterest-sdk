@@ -15,23 +15,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UpdatePartnerAssetAccessBodyAccessesInner  {
   
-  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
  /**
-   * Unique identifier of a business partner to update asset access to.
-  **/
+  * Unique identifier of a business partner to update asset access to.
+  */
+  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
+
   private String partnerId;
 
-  @ApiModelProperty(example = "549755885175", required = true, value = "Unique identifier of the business asset.")
  /**
-   * Unique identifier of the business asset.
-  **/
+  * Unique identifier of the business asset.
+  */
+  @ApiModelProperty(example = "549755885175", required = true, value = "Unique identifier of the business asset.")
+
   private String assetId;
 
-  @ApiModelProperty(example = "[\"ANALYST\",\"ADMIN\"]", required = true, value = "A non-empty array of permissions to assign to the partner.")
-  @Valid
  /**
-   * A non-empty array of permissions to assign to the partner.
-  **/
+  * A non-empty array of permissions to assign to the partner.
+  */
+  @ApiModelProperty(example = "[\"ANALYST\",\"ADMIN\"]", required = true, value = "A non-empty array of permissions to assign to the partner.")
+
+  @Valid
+
   private List<Permissions> permissions = new ArrayList<>();
  /**
    * Unique identifier of a business partner to update asset access to.

@@ -36,7 +36,7 @@ data class CatalogsProductGroupUpdateRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("filters") val filters: CatalogsProductGroupFiltersRequest? = null
-    ) {
+) {
 
 }
 

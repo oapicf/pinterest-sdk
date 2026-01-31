@@ -11,19 +11,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdvancedAuctionItem  {
   
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
  /**
-   * The catalog retail item id in the merchant namespace
-  **/
+  * The catalog retail item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
+
   private String itemId;
 
   @ApiModelProperty(required = true, value = "")
+
   private Country country;
 
   @ApiModelProperty(required = true, value = "")
+
   private Language language;
 
   @ApiModelProperty(required = true, value = "")
+
   private AdvancedAuctionBidOptions bidOptions;
  /**
    * The catalog retail item id in the merchant namespace

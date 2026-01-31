@@ -29,7 +29,7 @@ data class TargetingTemplateKeyword(
 
     @Schema(example = "couples halloween costumes", description = "The keyword targeting (120 chars max).")
     @get:JsonProperty("value") val `value`: kotlin.String? = null
-    ) {
+) {
 
 }
 

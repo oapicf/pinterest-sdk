@@ -9,11 +9,40 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type SSIOAccountAddress* = object
   ## 
-  display*: string ## Address display
-  purpose*: string ## Purpose for which the address is used, usually Billing or Businness
-  addressId*: string ## Salesforce id for address
-  orderLegalEntity*: string ## Legal entity for this insertion order
+  display*: Option[string] ## Address display
+  purpose*: Option[string] ## Purpose for which the address is used, usually Billing or Businness
+  addressId*: Option[string] ## Salesforce id for address
+  orderLegalEntity*: Option[string] ## Legal entity for this insertion order
+
+
+# Custom JSON deserialization for SSIOAccountAddress with custom field names
+proc to*(node: JsonNode, T: typedesc[SSIOAccountAddress]): SSIOAccountAddress =
+  result = SSIOAccountAddress()
+  if node.kind == JObject:
+    if node.hasKey("display") and node["display"].kind != JNull:
+      result.display = some(to(node["display"], typeof(result.display.get())))
+    if node.hasKey("purpose") and node["purpose"].kind != JNull:
+      result.purpose = some(to(node["purpose"], typeof(result.purpose.get())))
+    if node.hasKey("address_id") and node["address_id"].kind != JNull:
+      result.addressId = some(to(node["address_id"], typeof(result.addressId.get())))
+    if node.hasKey("order_legal_entity") and node["order_legal_entity"].kind != JNull:
+      result.orderLegalEntity = some(to(node["order_legal_entity"], typeof(result.orderLegalEntity.get())))
+
+# Custom JSON serialization for SSIOAccountAddress with custom field names
+proc `%`*(obj: SSIOAccountAddress): JsonNode =
+  result = newJObject()
+  if obj.display.isSome():
+    result["display"] = %obj.display.get()
+  if obj.purpose.isSome():
+    result["purpose"] = %obj.purpose.get()
+  if obj.addressId.isSome():
+    result["address_id"] = %obj.addressId.get()
+  if obj.orderLegalEntity.isSome():
+    result["order_legal_entity"] = %obj.orderLegalEntity.get()
+

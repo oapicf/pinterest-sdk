@@ -46,10 +46,10 @@ pub enum TargetingTemplateSlashUpdateError {
 /// <p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
 pub async fn targeting_template_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, targeting_template_create: models::TargetingTemplateCreate) -> Result<models::TargetingTemplateGetResponseData, Error<TargetingTemplateSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_targeting_template_create = targeting_template_create;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_targeting_template_create = targeting_template_create;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/targeting_templates", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/targeting_templates", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -58,7 +58,7 @@ pub async fn targeting_template_slash_create(configuration: &configuration::Conf
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_targeting_template_create);
+    req_builder = req_builder.json(&p_body_targeting_template_create);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -88,29 +88,29 @@ pub async fn targeting_template_slash_create(configuration: &configuration::Conf
 /// Get a list of the targeting templates in the specified <code>ad_account_id</code>
 pub async fn targeting_template_slash_list(configuration: &configuration::Configuration, ad_account_id: &str, order: Option<&str>, include_sizing: Option<bool>, search_query: Option<&str>, page_size: Option<i32>, bookmark: Option<&str>) -> Result<models::TargetingTemplateList200Response, Error<TargetingTemplateSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_order = order;
-    let p_include_sizing = include_sizing;
-    let p_search_query = search_query;
-    let p_page_size = page_size;
-    let p_bookmark = bookmark;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_order = order;
+    let p_query_include_sizing = include_sizing;
+    let p_query_search_query = search_query;
+    let p_query_page_size = page_size;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/targeting_templates", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/targeting_templates", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_order {
-        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_order {
+        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_include_sizing {
+    if let Some(ref param_value) = p_query_include_sizing {
         req_builder = req_builder.query(&[("include_sizing", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_search_query {
+    if let Some(ref param_value) = p_query_search_query {
         req_builder = req_builder.query(&[("search_query", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -148,10 +148,10 @@ pub async fn targeting_template_slash_list(configuration: &configuration::Config
 /// <p>Update the targeting template given advertiser ID and targeting template ID</p>
 pub async fn targeting_template_slash_update(configuration: &configuration::Configuration, ad_account_id: &str, targeting_template_update_request: models::TargetingTemplateUpdateRequest) -> Result<(), Error<TargetingTemplateSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_targeting_template_update_request = targeting_template_update_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_targeting_template_update_request = targeting_template_update_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/targeting_templates", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/targeting_templates", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -160,7 +160,7 @@ pub async fn targeting_template_slash_update(configuration: &configuration::Conf
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_targeting_template_update_request);
+    req_builder = req_builder.json(&p_body_targeting_template_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

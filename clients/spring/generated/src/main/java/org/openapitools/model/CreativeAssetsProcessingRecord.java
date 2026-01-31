@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CreativeAssetsProcessingRecord", description = "Object describing an item processing record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreativeAssetsProcessingRecord {
 
   private @Nullable String creativeAssetsId;
@@ -39,7 +39,7 @@ public class CreativeAssetsProcessingRecord {
 
   private @Nullable ItemProcessingStatus status;
 
-  public CreativeAssetsProcessingRecord creativeAssetsId(String creativeAssetsId) {
+  public CreativeAssetsProcessingRecord creativeAssetsId(@Nullable String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
     return this;
   }
@@ -51,11 +51,11 @@ public class CreativeAssetsProcessingRecord {
   
   @Schema(name = "creative_assets_id", example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_assets_id")
-  public String getCreativeAssetsId() {
+  public @Nullable String getCreativeAssetsId() {
     return creativeAssetsId;
   }
 
-  public void setCreativeAssetsId(String creativeAssetsId) {
+  public void setCreativeAssetsId(@Nullable String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
 
@@ -115,7 +115,7 @@ public class CreativeAssetsProcessingRecord {
     this.warnings = warnings;
   }
 
-  public CreativeAssetsProcessingRecord status(ItemProcessingStatus status) {
+  public CreativeAssetsProcessingRecord status(@Nullable ItemProcessingStatus status) {
     this.status = status;
     return this;
   }
@@ -127,11 +127,11 @@ public class CreativeAssetsProcessingRecord {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public ItemProcessingStatus getStatus() {
+  public @Nullable ItemProcessingStatus getStatus() {
     return status;
   }
 
-  public void setStatus(ItemProcessingStatus status) {
+  public void setStatus(@Nullable ItemProcessingStatus status) {
     this.status = status;
   }
 

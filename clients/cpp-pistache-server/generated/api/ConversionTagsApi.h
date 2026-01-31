@@ -95,7 +95,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="conversionTagCreate">Conversion Tag to create</param>
-    virtual void conversion_tags_create(const std::string &adAccountId, const org::openapitools::server::model::ConversionTagCreate &conversionTagCreate, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void conversion_tags_create( const std::string &adAccountId, const org::openapitools::server::model::ConversionTagCreate &conversionTagCreate, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get conversion tag
     /// </summary>
@@ -104,7 +104,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="conversionTagId">Id of the conversion tag.</param>
-    virtual void conversion_tags_get(const std::string &adAccountId, const std::string &conversionTagId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void conversion_tags_get( const std::string &adAccountId, const std::string &conversionTagId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get conversion tags
     /// </summary>
@@ -113,7 +113,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="filterDeleted">Filter out deleted tags. (optional, default to false)</param>
-    virtual void conversion_tags_list(const std::string &adAccountId, const std::optional<bool> &filterDeleted, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void conversion_tags_list( const std::string &adAccountId, const std::optional<bool> &filterDeleted, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get Ocpm eligible conversion tags
     /// </summary>
@@ -121,7 +121,7 @@ private:
     /// Get Ocpm eligible conversion tag events for an ad account.
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
-    virtual void ocpm_eligible_conversion_tags_get(const std::string &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ocpm_eligible_conversion_tags_get( const std::string &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get page visit conversion tags
     /// </summary>
@@ -132,7 +132,7 @@ private:
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="order">The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to &quot;&quot;)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void page_visit_conversion_tags_get(const std::string &adAccountId, const std::optional<int32_t> &pageSize, const std::optional<std::string> &order, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void page_visit_conversion_tags_get( const std::string &adAccountId, const std::optional<int32_t> &pageSize, const std::optional<std::string> &order, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

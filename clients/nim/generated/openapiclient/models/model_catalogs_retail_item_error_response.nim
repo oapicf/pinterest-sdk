@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_type
 import model_item_validation_event
@@ -16,5 +18,27 @@ import model_item_validation_event
 type CatalogsRetailItemErrorResponse* = object
   ## Object describing a retail item error
   catalogType*: CatalogsType
-  itemId*: string ## The catalog item id in the merchant namespace
-  errors*: seq[ItemValidationEvent] ## Array with the errors for the item id requested
+  itemId*: Option[string] ## The catalog item id in the merchant namespace
+  errors*: Option[seq[ItemValidationEvent]] ## Array with the errors for the item id requested
+
+
+# Custom JSON deserialization for CatalogsRetailItemErrorResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsRetailItemErrorResponse]): CatalogsRetailItemErrorResponse =
+  result = CatalogsRetailItemErrorResponse()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogsType)
+    if node.hasKey("item_id") and node["item_id"].kind != JNull:
+      result.itemId = some(to(node["item_id"], typeof(result.itemId.get())))
+    if node.hasKey("errors") and node["errors"].kind != JNull:
+      result.errors = some(to(node["errors"], typeof(result.errors.get())))
+
+# Custom JSON serialization for CatalogsRetailItemErrorResponse with custom field names
+proc `%`*(obj: CatalogsRetailItemErrorResponse): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  if obj.itemId.isSome():
+    result["item_id"] = %obj.itemId.get()
+  if obj.errors.isSome():
+    result["errors"] = %obj.errors.get()
+

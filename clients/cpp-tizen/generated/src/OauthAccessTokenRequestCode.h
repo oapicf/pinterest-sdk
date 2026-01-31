@@ -1,7 +1,7 @@
 /*
  * OauthAccessTokenRequestCode.h
  *
- * A request to exchange an authorization code for an access token.
+ * 
  */
 
 #ifndef _OauthAccessTokenRequestCode_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief A request to exchange an authorization code for an access token.
+/*! \brief 
  *
  *  \ingroup Models
  *
@@ -47,13 +47,6 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getGrantType();
-
-	/*! \brief Set 
-	 */
-	void setGrantType(std::string  grant_type);
-	/*! \brief Get 
-	 */
 	std::string getCode();
 
 	/*! \brief Set 
@@ -66,11 +59,18 @@ public:
 	/*! \brief Set 
 	 */
 	void setRedirectUri(std::string  redirect_uri);
+	/*! \brief Get 
+	 */
+	std::string getGrantType();
+
+	/*! \brief Set 
+	 */
+	void setGrantType(std::string  grant_type);
 
 private:
-	std::string grant_type;
 	std::string code;
 	std::string redirect_uri;
+	std::string grant_type;
 	void __init();
 	void __cleanup();
 

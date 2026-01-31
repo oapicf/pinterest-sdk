@@ -12,10 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UpdateMemberAssetsResultsResponseArray  {
   
-  @ApiModelProperty(value = "List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.")
  /**
-   * List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
-  **/
+  * List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
+  */
+  @ApiModelProperty(value = "List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.")
+
   private List<UpdateMemberAssetsResultsResponseArrayItemsInner> items = new ArrayList<>();
  /**
    * List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.

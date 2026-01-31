@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -80,6 +79,24 @@ namespace Org.OpenAPITools.Test.Model
         public void GranularityTest()
         {
             // TODO unit test for the property 'Granularity'
+        }
+
+        /// <summary>
+        /// Test the property 'Columns'
+        /// </summary>
+        [Fact]
+        public void ColumnsTest()
+        {
+            // TODO unit test for the property 'Columns'
+        }
+
+        /// <summary>
+        /// Test the property 'Level'
+        /// </summary>
+        [Fact]
+        public void LevelTest()
+        {
+            // TODO unit test for the property 'Level'
         }
 
         /// <summary>
@@ -233,24 +250,6 @@ namespace Org.OpenAPITools.Test.Model
         public void MetricsFiltersTest()
         {
             // TODO unit test for the property 'MetricsFilters'
-        }
-
-        /// <summary>
-        /// Test the property 'Columns'
-        /// </summary>
-        [Fact]
-        public void ColumnsTest()
-        {
-            // TODO unit test for the property 'Columns'
-        }
-
-        /// <summary>
-        /// Test the property 'Level'
-        /// </summary>
-        [Fact]
-        public void LevelTest()
-        {
-            // TODO unit test for the property 'Level'
         }
 
         /// <summary>

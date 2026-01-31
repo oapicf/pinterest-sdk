@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "logs":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                logs = new Option<List<IntegrationLog>?>(JsonSerializer.Deserialize<List<IntegrationLog>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            logs = new Option<List<IntegrationLog>?>(JsonSerializer.Deserialize<List<IntegrationLog>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

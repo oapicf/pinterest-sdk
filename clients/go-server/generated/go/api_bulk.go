@@ -53,22 +53,51 @@ func NewBulkAPIController(s BulkAPIServicer, opts ...BulkAPIOption) *BulkAPICont
 func (c *BulkAPIController) Routes() Routes {
 	return Routes{
 		"BulkDownloadCreate": Route{
+			"BulkDownloadCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/bulk/download",
 			c.BulkDownloadCreate,
 		},
 		"BulkUpsertCreate": Route{
+			"BulkUpsertCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/bulk/upsert",
 			c.BulkUpsertCreate,
 		},
 		"BulkRequestGet": Route{
+			"BulkRequestGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}",
 			c.BulkRequestGet,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the BulkAPIController
+func (c *BulkAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"BulkDownloadCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/bulk/download",
+			c.BulkDownloadCreate,
+		},
+		Route{
+			"BulkUpsertCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/bulk/upsert",
+			c.BulkUpsertCreate,
+		},
+		Route{
+			"BulkRequestGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}",
+			c.BulkRequestGet,
+		},
+	}
+}
+
+
 
 // BulkDownloadCreate - Get advertiser entities in bulk
 func (c *BulkAPIController) BulkDownloadCreate(w http.ResponseWriter, r *http.Request) {

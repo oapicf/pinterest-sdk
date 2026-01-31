@@ -51,17 +51,39 @@ func NewTermsAPIController(s TermsAPIServicer, opts ...TermsAPIOption) *TermsAPI
 func (c *TermsAPIController) Routes() Routes {
 	return Routes{
 		"TermsRelatedList": Route{
+			"TermsRelatedList",
 			strings.ToUpper("Get"),
 			"/v5/terms/related",
 			c.TermsRelatedList,
 		},
 		"TermsSuggestedList": Route{
+			"TermsSuggestedList",
 			strings.ToUpper("Get"),
 			"/v5/terms/suggested",
 			c.TermsSuggestedList,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the TermsAPIController
+func (c *TermsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"TermsRelatedList",
+			strings.ToUpper("Get"),
+			"/v5/terms/related",
+			c.TermsRelatedList,
+		},
+		Route{
+			"TermsSuggestedList",
+			strings.ToUpper("Get"),
+			"/v5/terms/suggested",
+			c.TermsSuggestedList,
+		},
+	}
+}
+
+
 
 // TermsRelatedList - List related terms
 func (c *TermsAPIController) TermsRelatedList(w http.ResponseWriter, r *http.Request) {

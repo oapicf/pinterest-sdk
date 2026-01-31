@@ -45,12 +45,14 @@ REMOVE(String.valueOf("REMOVE"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private OperationTypeEnum operationType;
 
-  @ApiModelProperty(example = "643", required = true, value = "Targeting template ID")
  /**
-   * Targeting template ID
-  **/
+  * Targeting template ID
+  */
+  @ApiModelProperty(example = "643", required = true, value = "Targeting template ID")
+
   private String id;
  /**
    * Get operationType

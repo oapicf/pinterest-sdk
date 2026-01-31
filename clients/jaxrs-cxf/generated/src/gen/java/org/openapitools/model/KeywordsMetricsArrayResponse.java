@@ -15,7 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class KeywordsMetricsArrayResponse  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid KeywordMetricsResponse> data = new ArrayList<>();
  /**
    * Get data

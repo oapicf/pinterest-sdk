@@ -1,22 +1,23 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * A creative assets item to be deleted
- **/
+ * A creative assets item to be deleted
+ */
 @ApiModel(description="A creative assets item to be deleted")
 
 public class CatalogsDeleteCreativeAssetsItem  {
   
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog creative assets id in the merchant namespace")
  /**
-   * The catalog creative assets id in the merchant namespace
-  **/
+  * The catalog creative assets id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog creative assets id in the merchant namespace")
+
   private String creativeAssetsId;
 
 public enum OperationEnum {
@@ -50,6 +51,7 @@ DELETE(String.valueOf("DELETE"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private OperationEnum operation;
  /**
    * The catalog creative assets id in the merchant namespace

@@ -44,7 +44,7 @@ data class AudienceUpdateRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("operation_type") val operationType: AudienceUpdateOperationType? = AudienceUpdateOperationType.UPDATE
-    ) {
+) {
 
 }
 

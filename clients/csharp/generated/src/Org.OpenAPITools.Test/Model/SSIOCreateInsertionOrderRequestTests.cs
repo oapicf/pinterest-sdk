@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -65,30 +64,12 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'EndDate'
-        /// </summary>
-        [Fact]
-        public void EndDateTest()
-        {
-            // TODO unit test for the property 'EndDate'
-        }
-
-        /// <summary>
         /// Test the property 'PoNumber'
         /// </summary>
         [Fact]
         public void PoNumberTest()
         {
             // TODO unit test for the property 'PoNumber'
-        }
-
-        /// <summary>
-        /// Test the property 'BudgetAmount'
-        /// </summary>
-        [Fact]
-        public void BudgetAmountTest()
-        {
-            // TODO unit test for the property 'BudgetAmount'
         }
 
         /// <summary>
@@ -143,33 +124,6 @@ namespace Org.OpenAPITools.Test.Model
         public void MediaContactEmailTest()
         {
             // TODO unit test for the property 'MediaContactEmail'
-        }
-
-        /// <summary>
-        /// Test the property 'AgencyLink'
-        /// </summary>
-        [Fact]
-        public void AgencyLinkTest()
-        {
-            // TODO unit test for the property 'AgencyLink'
-        }
-
-        /// <summary>
-        /// Test the property 'UserEmail'
-        /// </summary>
-        [Fact]
-        public void UserEmailTest()
-        {
-            // TODO unit test for the property 'UserEmail'
-        }
-
-        /// <summary>
-        /// Test the property 'AcceptedTermsTime'
-        /// </summary>
-        [Fact]
-        public void AcceptedTermsTimeTest()
-        {
-            // TODO unit test for the property 'AcceptedTermsTime'
         }
 
         /// <summary>
@@ -236,21 +190,66 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'EstimatedMonthlySpend'
-        /// </summary>
-        [Fact]
-        public void EstimatedMonthlySpendTest()
-        {
-            // TODO unit test for the property 'EstimatedMonthlySpend'
-        }
-
-        /// <summary>
         /// Test the property 'CurrencyInfo'
         /// </summary>
         [Fact]
         public void CurrencyInfoTest()
         {
             // TODO unit test for the property 'CurrencyInfo'
+        }
+
+        /// <summary>
+        /// Test the property 'EndDate'
+        /// </summary>
+        [Fact]
+        public void EndDateTest()
+        {
+            // TODO unit test for the property 'EndDate'
+        }
+
+        /// <summary>
+        /// Test the property 'BudgetAmount'
+        /// </summary>
+        [Fact]
+        public void BudgetAmountTest()
+        {
+            // TODO unit test for the property 'BudgetAmount'
+        }
+
+        /// <summary>
+        /// Test the property 'AgencyLink'
+        /// </summary>
+        [Fact]
+        public void AgencyLinkTest()
+        {
+            // TODO unit test for the property 'AgencyLink'
+        }
+
+        /// <summary>
+        /// Test the property 'UserEmail'
+        /// </summary>
+        [Fact]
+        public void UserEmailTest()
+        {
+            // TODO unit test for the property 'UserEmail'
+        }
+
+        /// <summary>
+        /// Test the property 'AcceptedTermsTime'
+        /// </summary>
+        [Fact]
+        public void AcceptedTermsTimeTest()
+        {
+            // TODO unit test for the property 'AcceptedTermsTime'
+        }
+
+        /// <summary>
+        /// Test the property 'EstimatedMonthlySpend'
+        /// </summary>
+        [Fact]
+        public void EstimatedMonthlySpendTest()
+        {
+            // TODO unit test for the property 'EstimatedMonthlySpend'
         }
     }
 }

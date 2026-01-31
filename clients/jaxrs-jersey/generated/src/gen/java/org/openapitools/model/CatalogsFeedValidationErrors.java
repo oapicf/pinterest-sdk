@@ -60,7 +60,7 @@ import javax.validation.Valid;
   CatalogsFeedValidationErrors.JSON_PROPERTY_L_I_S_T_P_R_I_C_E_I_N_V_A_L_I_D,
   CatalogsFeedValidationErrors.JSON_PROPERTY_P_R_I_C_E_C_A_N_N_O_T_B_E_D_E_T_E_R_M_I_N_E_D
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedValidationErrors   {
   public static final String JSON_PROPERTY_F_E_T_C_H_E_R_R_O_R = "FETCH_ERROR";
   @JsonProperty(JSON_PROPERTY_F_E_T_C_H_E_R_R_O_R)

@@ -7,7 +7,6 @@
 
 (def conversion-tag-create-data
   {
-   (ds/req :name) string?
    (ds/opt :aem_enabled) boolean?
    (ds/opt :md_frequency) float?
    (ds/opt :aem_fnln_enabled) boolean?
@@ -15,6 +14,7 @@
    (ds/opt :aem_ge_enabled) boolean?
    (ds/opt :aem_db_enabled) boolean?
    (ds/opt :aem_loc_enabled) boolean?
+   (ds/req :name) string?
    })
 
 (def conversion-tag-create-spec

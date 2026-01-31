@@ -122,7 +122,6 @@ src/main/kotlin/org/openapitools/server/models/AudienceCategory.kt
 src/main/kotlin/org/openapitools/server/models/AudienceCommon.kt
 src/main/kotlin/org/openapitools/server/models/AudienceCreateCustomRequest.kt
 src/main/kotlin/org/openapitools/server/models/AudienceCreateRequest.kt
-src/main/kotlin/org/openapitools/server/models/AudienceCreateRequest1AudienceType.kt
 src/main/kotlin/org/openapitools/server/models/AudienceDataParty.kt
 src/main/kotlin/org/openapitools/server/models/AudienceDefinition.kt
 src/main/kotlin/org/openapitools/server/models/AudienceDefinitionResponse.kt
@@ -300,7 +299,6 @@ src/main/kotlin/org/openapitools/server/models/CatalogsItemsDeleteDiscontinuedBa
 src/main/kotlin/org/openapitools/server/models/CatalogsItemsFilters.kt
 src/main/kotlin/org/openapitools/server/models/CatalogsItemsPostFilters.kt
 src/main/kotlin/org/openapitools/server/models/CatalogsItemsRequest.kt
-src/main/kotlin/org/openapitools/server/models/CatalogsItemsRequestLanguage.kt
 src/main/kotlin/org/openapitools/server/models/CatalogsItemsUpdateBatchRequest.kt
 src/main/kotlin/org/openapitools/server/models/CatalogsItemsUpsertBatchRequest.kt
 src/main/kotlin/org/openapitools/server/models/CatalogsList200Response.kt
@@ -634,7 +632,6 @@ src/main/kotlin/org/openapitools/server/models/PinMediaWithVideos.kt
 src/main/kotlin/org/openapitools/server/models/PinPromotionSummaryStatus.kt
 src/main/kotlin/org/openapitools/server/models/PinUpdate.kt
 src/main/kotlin/org/openapitools/server/models/PinUpdateCarouselSlotsInner.kt
-src/main/kotlin/org/openapitools/server/models/PinsAnalyticsMetricTypesParameterInner.kt
 src/main/kotlin/org/openapitools/server/models/PinsList200Response.kt
 src/main/kotlin/org/openapitools/server/models/PinsSaveRequest.kt
 src/main/kotlin/org/openapitools/server/models/PinterestTagEventData.kt

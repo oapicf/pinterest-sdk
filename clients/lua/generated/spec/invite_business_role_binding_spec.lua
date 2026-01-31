@@ -16,27 +16,6 @@ Please update as you see appropriate
 describe("invite_business_role_binding", function()
   local openapiclient_invite_business_role_binding = require "openapiclient.model.invite_business_role_binding"
 
-  -- unit tests for the property 'created_by_business_id'
-  describe("property created_by_business_id test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'created_by_user_id'
-  describe("property created_by_user_id test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'user'
-  describe("property user test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'id'
   describe("property id test", function()
     it("should work", function()
@@ -53,6 +32,27 @@ describe("invite_business_role_binding", function()
 
   -- unit tests for the property 'is_received_invite'
   describe("property is_received_invite test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'user'
+  describe("property user test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'created_by_business_id'
+  describe("property created_by_business_id test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'created_by_user_id'
+  describe("property created_by_user_id test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

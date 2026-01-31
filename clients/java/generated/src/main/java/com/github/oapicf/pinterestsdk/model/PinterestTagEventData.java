@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Optional for VISITOR &#x60;audience_type&#x60;. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s &#x60;rule&#x60;; however, you **must** specify an &#x60;event&#x60; for the &#x60;event_data&#x60; fields to be evaluated. Besides what’s listed, you can also create your own set of &#x60;event_data&#x60; fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields&#39; data.&lt;br&gt;Examples per &#x60;event&#x60; type:&lt;br&gt;&#x60;pagevisit&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;page_name\&quot;: \&quot;My online store 123 | view items | shoe\&quot; }&lt;br&gt;&#x60;signup&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;New release promotion\&quot; }&lt;br&gt;&#x60;checkout&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 116, \&quot;order_quantity\&quot;: 2, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Pillows (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;11\&quot;, \&quot;product_price\&quot;: 48, \&quot;product_quantity\&quot;: 1 }, { \&quot;product_name\&quot;: \&quot;Pillows, Large (Set of 2)\&quot;, \&quot;product_id\&quot;: \&quot;15\&quot;, \&quot;product_price\&quot;: 68, \&quot;product_quantity\&quot;: 1 } ] }&lt;br&gt;&#x60;addtocart&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;value\&quot;: 499, \&quot;order_quantity\&quot;: 1, \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;line_items\&quot;: [ { \&quot;product_name\&quot;: \&quot;Red leather boots\&quot;, \&quot;product_id\&quot;: \&quot;3486\&quot;, \&quot;product_category\&quot;: \&quot;shoe\&quot;, \&quot;product_variant_id\&quot;: \&quot;JB11103000\&quot;, \&quot;product_price\&quot;: 499, \&quot;product_quantity\&quot;: \&quot;1\&quot; , \&quot;product_brand\&quot;: \&quot;My brand\&quot; }]}&lt;br&gt;&#x60;watchvideo&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;video_title\&quot;: \&quot;My Product Video 01\&quot; }&lt;br&gt;&#x60;lead&#x60;&lt;br&gt;\&quot;event_data\&quot;: { \&quot;lead_type\&quot;: \&quot;Newsletter\&quot; }
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinterestTagEventData {
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -383,21 +383,10 @@ public class PinterestTagEventData {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("currency");
-    openapiFields.add("lead_type");
-    openapiFields.add("line_items");
-    openapiFields.add("order_id");
-    openapiFields.add("order_quantity");
-    openapiFields.add("page_name");
-    openapiFields.add("promo_code");
-    openapiFields.add("property");
-    openapiFields.add("search_query");
-    openapiFields.add("value");
-    openapiFields.add("video_title");
+    openapiFields = new HashSet<String>(Arrays.asList("currency", "lead_type", "line_items", "order_id", "order_quantity", "page_name", "promo_code", "property", "search_query", "value", "video_title"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -409,7 +398,7 @@ public class PinterestTagEventData {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PinterestTagEventData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PinterestTagEventData is not found in the empty JSON string", PinterestTagEventData.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in PinterestTagEventData is not found in the empty JSON string", PinterestTagEventData.openapiRequiredFields.toString()));
         }
       }
 
@@ -417,7 +406,7 @@ public class PinterestTagEventData {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!PinterestTagEventData.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PinterestTagEventData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PinterestTagEventData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -426,32 +415,32 @@ public class PinterestTagEventData {
         Currency.validateJsonElement(jsonObj.get("currency"));
       }
       if ((jsonObj.get("lead_type") != null && !jsonObj.get("lead_type").isJsonNull()) && !jsonObj.get("lead_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lead_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lead_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `lead_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lead_type").toString()));
       }
       // validate the optional field `line_items`
       if (jsonObj.get("line_items") != null && !jsonObj.get("line_items").isJsonNull()) {
         LineItem.validateJsonElement(jsonObj.get("line_items"));
       }
       if ((jsonObj.get("order_id") != null && !jsonObj.get("order_id").isJsonNull()) && !jsonObj.get("order_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `order_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("order_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `order_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("order_id").toString()));
       }
       if ((jsonObj.get("page_name") != null && !jsonObj.get("page_name").isJsonNull()) && !jsonObj.get("page_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `page_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("page_name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `page_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("page_name").toString()));
       }
       if ((jsonObj.get("promo_code") != null && !jsonObj.get("promo_code").isJsonNull()) && !jsonObj.get("promo_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `promo_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("promo_code").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `promo_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("promo_code").toString()));
       }
       if ((jsonObj.get("property") != null && !jsonObj.get("property").isJsonNull()) && !jsonObj.get("property").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `property` to be a primitive type in the JSON string but got `%s`", jsonObj.get("property").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `property` to be a primitive type in the JSON string but got `%s`", jsonObj.get("property").toString()));
       }
       if ((jsonObj.get("search_query") != null && !jsonObj.get("search_query").isJsonNull()) && !jsonObj.get("search_query").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `search_query` to be a primitive type in the JSON string but got `%s`", jsonObj.get("search_query").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `search_query` to be a primitive type in the JSON string but got `%s`", jsonObj.get("search_query").toString()));
       }
       if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) && !jsonObj.get("value").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
       }
       if ((jsonObj.get("video_title") != null && !jsonObj.get("video_title").isJsonNull()) && !jsonObj.get("video_title").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `video_title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("video_title").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `video_title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("video_title").toString()));
       }
   }
 

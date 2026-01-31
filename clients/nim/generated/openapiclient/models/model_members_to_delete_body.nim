@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_members_to_delete_body_members_inner
 
 type MembersToDeleteBody* = object
   ## 
   members*: seq[MembersToDeleteBody_members_inner]
+

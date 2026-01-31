@@ -5,7 +5,8 @@ package org.openapitools.client.model
 case class ItemsBatchPostRequest (
     _catalogType: String,
     _country: Country,
-    _language: CatalogsItemsRequestLanguage,
+    /* We recommend using the CatalogsLocale values. */
+    _language: String,
     /* Array with catalogs items */
     _items: List[ItemDeleteBatchRecord],
     /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */

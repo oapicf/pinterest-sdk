@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalogType** | **String!** |  | [default to null]
 **country** | [***Country**](Country.md) |  | [default to null]
-**language** | [***CatalogsItemsRequestLanguage**](CatalogsItemsRequest_language.md) |  | [default to null]
+**language** | **String!** | We recommend using the CatalogsLocale values. | [default to null]
 **items** | [**ItemDeleteBatchRecord**](ItemDeleteBatchRecord.md) | Array with catalogs items | [default to null]
 **catalogId** | **String!** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] [default to null]
 **operation** | [***BatchOperation**](BatchOperation.md) |  | [default to null]

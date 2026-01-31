@@ -12,8 +12,8 @@
 package org.openapitools.server.model
 
 case class OauthAccessTokenRequestClientCredentials(
-  grantType: String,
+  scope: String,
 
-  scope: String
+  grantType: String
 
  )

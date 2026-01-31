@@ -4,7 +4,6 @@ const Pin = require('../models/Pin');
 const PinAnalyticsMetricsResponse = require('../models/PinAnalyticsMetricsResponse');
 const PinCreate = require('../models/PinCreate');
 const PinUpdate = require('../models/PinUpdate');
-const pins_analytics_metric_types_parameter_inner = require('../models/pins_analytics_metric_types_parameter_inner');
 const pins_list_200_response = require('../models/pins_list_200_response');
 const pins_save_request = require('../models/pins_save_request');
 const utils = require('../utils/utils');

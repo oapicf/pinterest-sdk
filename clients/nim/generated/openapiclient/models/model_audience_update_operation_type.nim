@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AudienceUpdateOperationType* = object
-  ## Audience operation type (update or remove).
+type AudienceUpdateOperationType* {.pure.} = enum
+  UPDATE
+  REMOVE
+
+func `%`*(v: AudienceUpdateOperationType): JsonNode =
+  result = case v:
+    of AudienceUpdateOperationType.UPDATE: %"UPDATE"
+    of AudienceUpdateOperationType.REMOVE: %"REMOVE"
+
+func `$`*(v: AudienceUpdateOperationType): string =
+  result = case v:
+    of AudienceUpdateOperationType.UPDATE: $("UPDATE")
+    of AudienceUpdateOperationType.REMOVE: $("REMOVE")
+
+proc to*(node: JsonNode, T: typedesc[AudienceUpdateOperationType]): AudienceUpdateOperationType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AudienceUpdateOperationType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("UPDATE"):
+    return AudienceUpdateOperationType.UPDATE
+  of $("REMOVE"):
+    return AudienceUpdateOperationType.REMOVE
+  else:
+    raise newException(ValueError, "Invalid enum value for AudienceUpdateOperationType: " & strVal)
+

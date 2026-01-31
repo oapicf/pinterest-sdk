@@ -535,16 +535,13 @@ namespace Org.OpenAPITools.Model
                                 status = new Option<EntityStatus?>(EntityStatusValueConverter.FromStringOrDefault(statusRawValue));
                             break;
                         case "budget_in_micro_currency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                budgetInMicroCurrency = new Option<int?>(utf8JsonReader.GetInt32());
+                            budgetInMicroCurrency = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "bid_in_micro_currency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                bidInMicroCurrency = new Option<int?>(utf8JsonReader.GetInt32());
+                            bidInMicroCurrency = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "optimization_goal_metadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                optimizationGoalMetadata = new Option<OptimizationGoalMetadata?>(JsonSerializer.Deserialize<OptimizationGoalMetadata>(ref utf8JsonReader, jsonSerializerOptions));
+                            optimizationGoalMetadata = new Option<OptimizationGoalMetadata?>(JsonSerializer.Deserialize<OptimizationGoalMetadata>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "budget_type":
                             string? budgetTypeRawValue = utf8JsonReader.GetString();
@@ -552,28 +549,22 @@ namespace Org.OpenAPITools.Model
                                 budgetType = new Option<BudgetType?>(BudgetTypeValueConverter.FromStringOrDefault(budgetTypeRawValue));
                             break;
                         case "start_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                startTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            startTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "end_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                endTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            endTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "targeting_spec":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                targetingSpec = new Option<TargetingSpec?>(JsonSerializer.Deserialize<TargetingSpec>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            targetingSpec = new Option<TargetingSpec?>(JsonSerializer.Deserialize<TargetingSpec>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "lifetime_frequency_cap":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lifetimeFrequencyCap = new Option<int?>(utf8JsonReader.GetInt32());
+                            lifetimeFrequencyCap = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "tracking_urls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                trackingUrls = new Option<TrackingUrls?>(JsonSerializer.Deserialize<TrackingUrls>(ref utf8JsonReader, jsonSerializerOptions));
+                            trackingUrls = new Option<TrackingUrls?>(JsonSerializer.Deserialize<TrackingUrls>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "auto_targeting_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                autoTargetingEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            autoTargetingEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "placement_group":
                             string? placementGroupRawValue = utf8JsonReader.GetString();
@@ -599,8 +590,7 @@ namespace Org.OpenAPITools.Model
                                 bidStrategyType = new Option<AdGroupCommon.BidStrategyTypeEnum?>(AdGroupCommon.BidStrategyTypeEnumFromStringOrDefault(bidStrategyTypeRawValue));
                             break;
                         case "targeting_template_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                targetingTemplateIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            targetingTemplateIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

@@ -12,12 +12,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OptimizationGoalMetadata  {
   
   @ApiModelProperty(value = "")
+
   private OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
 
   @ApiModelProperty(value = "")
+
   private OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata;
 
   @ApiModelProperty(value = "")
+
   private OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata;
  /**
    * Get conversionTagV3GoalMetadata

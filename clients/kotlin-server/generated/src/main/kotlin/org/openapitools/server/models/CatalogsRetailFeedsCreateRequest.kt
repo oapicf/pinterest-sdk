@@ -50,6 +50,6 @@ data class CatalogsRetailFeedsCreateRequest(
     val credentials: CatalogsFeedCredentials? = null,
     val preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = null,
     val defaultAvailability: ProductAvailabilityType? = null,
-    val status: CatalogsStatus? = null
+    val status: CatalogsStatus? = "ACTIVE"
 )
 

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_feeds_update_request
 import model_catalogs_feed_credentials
@@ -21,14 +23,38 @@ import model_catalogs_type
 import model_nullable_currency
 import model_product_availability_type
 
+# OneOf type
+type CatalogsVerticalFeedsUpdateRequestKind* {.pure.} = enum
+  CatalogsRetailFeedsUpdateRequestVariant
+  CatalogsHotelFeedsUpdateRequestVariant
+  CatalogsCreativeAssetsFeedsUpdateRequestVariant
+
 type CatalogsVerticalFeedsUpdateRequest* = object
   ## Request object for updating a feed.
-  defaultCurrency*: NullableCurrency
-  name*: string ## A human-friendly name associated to a given feed.
-  format*: CatalogsFormat
-  credentials*: CatalogsFeedCredentials
-  location*: string ## The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  preferredProcessingSchedule*: CatalogsFeedProcessingSchedule
-  status*: CatalogsStatus
-  catalogType*: CatalogsType
-  defaultAvailability*: ProductAvailabilityType
+  case kind*: CatalogsVerticalFeedsUpdateRequestKind
+  of CatalogsVerticalFeedsUpdateRequestKind.CatalogsRetailFeedsUpdateRequestVariant:
+    CatalogsRetailFeedsUpdateRequestValue*: CatalogsRetailFeedsUpdateRequest
+  of CatalogsVerticalFeedsUpdateRequestKind.CatalogsHotelFeedsUpdateRequestVariant:
+    CatalogsHotelFeedsUpdateRequestValue*: CatalogsHotelFeedsUpdateRequest
+  of CatalogsVerticalFeedsUpdateRequestKind.CatalogsCreativeAssetsFeedsUpdateRequestVariant:
+    CatalogsCreativeAssetsFeedsUpdateRequestValue*: CatalogsCreativeAssetsFeedsUpdateRequest
+
+proc to*(node: JsonNode, T: typedesc[CatalogsVerticalFeedsUpdateRequest]): CatalogsVerticalFeedsUpdateRequest =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsVerticalFeedsUpdateRequest(kind: CatalogsVerticalFeedsUpdateRequestKind.CatalogsRetailFeedsUpdateRequestVariant, CatalogsRetailFeedsUpdateRequestValue: to(node, CatalogsRetailFeedsUpdateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailFeedsUpdateRequest: ", e.msg
+  try:
+    return CatalogsVerticalFeedsUpdateRequest(kind: CatalogsVerticalFeedsUpdateRequestKind.CatalogsHotelFeedsUpdateRequestVariant, CatalogsHotelFeedsUpdateRequestValue: to(node, CatalogsHotelFeedsUpdateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelFeedsUpdateRequest: ", e.msg
+  try:
+    return CatalogsVerticalFeedsUpdateRequest(kind: CatalogsVerticalFeedsUpdateRequestKind.CatalogsCreativeAssetsFeedsUpdateRequestVariant, CatalogsCreativeAssetsFeedsUpdateRequestValue: to(node, CatalogsCreativeAssetsFeedsUpdateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsFeedsUpdateRequest: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsVerticalFeedsUpdateRequest. JSON: " & $node)
+

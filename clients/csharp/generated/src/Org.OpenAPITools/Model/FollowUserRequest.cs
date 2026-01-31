@@ -123,8 +123,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "auto_follow":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                autoFollow = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            autoFollow = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

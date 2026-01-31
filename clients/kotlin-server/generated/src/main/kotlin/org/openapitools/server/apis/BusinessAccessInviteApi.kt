@@ -143,8 +143,16 @@ fun Route.BusinessAccessInviteApi() {
                 },
                 "invite" : {
                   "created_by_business_id" : "1234567890123",
+                  "invite_data" : {
+                    "invite_type" : "MEMBER_INVITE",
+                    "sent_at" : 1646767577816,
+                    "last_updated_time" : 1646767577816,
+                    "invite_expiration" : 1709748104775,
+                    "invite_status" : "PENDING"
+                  },
+                  "id" : "383791336903426391",
                   "created_by_user_id" : "1234567890123",
-                  "user" : "{}"
+                  "is_received_invite" : true
                 }
               }, {
                 "exception" : {
@@ -155,8 +163,16 @@ fun Route.BusinessAccessInviteApi() {
                 },
                 "invite" : {
                   "created_by_business_id" : "1234567890123",
+                  "invite_data" : {
+                    "invite_type" : "MEMBER_INVITE",
+                    "sent_at" : 1646767577816,
+                    "last_updated_time" : 1646767577816,
+                    "invite_expiration" : 1709748104775,
+                    "invite_status" : "PENDING"
+                  },
+                  "id" : "383791336903426391",
                   "created_by_user_id" : "1234567890123",
-                  "user" : "{}"
+                  "is_received_invite" : true
                 }
               } ]
             }"""
@@ -240,8 +256,16 @@ fun Route.BusinessAccessInviteApi() {
                   } ]
                 },
                 "business_roles" : [ "BIZ_ADMIN" ],
-                "created_by_business" : "{}",
-                "created_by_user" : "{}"
+                "invite_data" : {
+                  "invite_type" : "MEMBER_INVITE",
+                  "sent_at" : 1646767577816,
+                  "last_updated_time" : 1646767577816,
+                  "invite_expiration" : 1709748104775,
+                  "invite_status" : "PENDING"
+                },
+                "id" : "383791336903426391",
+                "user" : "{}",
+                "is_received_invite" : true
               }, {
                 "created_time" : 1646767577816,
                 "assets_summary" : {
@@ -261,8 +285,16 @@ fun Route.BusinessAccessInviteApi() {
                   } ]
                 },
                 "business_roles" : [ "BIZ_ADMIN" ],
-                "created_by_business" : "{}",
-                "created_by_user" : "{}"
+                "invite_data" : {
+                  "invite_type" : "MEMBER_INVITE",
+                  "sent_at" : 1646767577816,
+                  "last_updated_time" : 1646767577816,
+                  "invite_expiration" : 1709748104775,
+                  "invite_status" : "PENDING"
+                },
+                "id" : "383791336903426391",
+                "user" : "{}",
+                "is_received_invite" : true
               } ]
             }"""
             

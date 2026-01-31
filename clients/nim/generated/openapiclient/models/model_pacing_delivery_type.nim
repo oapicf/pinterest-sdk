@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type PacingDeliveryType* = object
-  ## Ad group pacing delivery type. With ACCELERATED, an ad group budget is spent as fast as possible. With STANDARD, an ad group budget is spent smoothly over a day. When using CBO, only the STANDARD pacing delivery type is allowed.
+type PacingDeliveryType* {.pure.} = enum
+  STANDARD
+  ACCELERATED
+
+func `%`*(v: PacingDeliveryType): JsonNode =
+  result = case v:
+    of PacingDeliveryType.STANDARD: %"STANDARD"
+    of PacingDeliveryType.ACCELERATED: %"ACCELERATED"
+
+func `$`*(v: PacingDeliveryType): string =
+  result = case v:
+    of PacingDeliveryType.STANDARD: $("STANDARD")
+    of PacingDeliveryType.ACCELERATED: $("ACCELERATED")
+
+proc to*(node: JsonNode, T: typedesc[PacingDeliveryType]): PacingDeliveryType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum PacingDeliveryType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("STANDARD"):
+    return PacingDeliveryType.STANDARD
+  of $("ACCELERATED"):
+    return PacingDeliveryType.ACCELERATED
+  else:
+    raise newException(ValueError, "Invalid enum value for PacingDeliveryType: " & strVal)
+

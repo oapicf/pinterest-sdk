@@ -12,14 +12,10 @@
 /**
  * Status of a leads export job
  */
-export type LeadsExportStatus = 'IN_PROGRESS' | 'FINISHED' | 'FAILED';
-
 export const LeadsExportStatus = {
-
-    InProgress: 'IN_PROGRESS' as LeadsExportStatus,
-
-    Finished: 'FINISHED' as LeadsExportStatus,
-
-    Failed: 'FAILED' as LeadsExportStatus
-};
+    InProgress: 'IN_PROGRESS',
+    Finished: 'FINISHED',
+    Failed: 'FAILED'
+} as const;
+export type LeadsExportStatus = typeof LeadsExportStatus[keyof typeof LeadsExportStatus];
 

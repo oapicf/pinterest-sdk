@@ -12,6 +12,7 @@
 import { CatalogsFeedProcessingSchedule } from './catalogsFeedProcessingSchedule';
 import { ProductAvailabilityType } from './productAvailabilityType';
 import { CatalogsHotelFeedsCreateRequest } from './catalogsHotelFeedsCreateRequest';
+import { CatalogsStatus } from './catalogsStatus';
 import { CatalogsFeedsCreateRequestDefaultLocale } from './catalogsFeedsCreateRequestDefaultLocale';
 import { CatalogsCreativeAssetsFeedsCreateRequest } from './catalogsCreativeAssetsFeedsCreateRequest';
 import { CatalogsFeedCredentials } from './catalogsFeedCredentials';
@@ -19,7 +20,6 @@ import { CatalogsRetailFeedsCreateRequest } from './catalogsRetailFeedsCreateReq
 import { CatalogsType } from './catalogsType';
 import { Country } from './country';
 import { CatalogsFormat } from './catalogsFormat';
-import { CatalogsStatus &amp; object } from './catalogsStatusObject';
 import { NullableCurrency } from './nullableCurrency';
 
 

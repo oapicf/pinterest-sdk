@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type SourceType* {.pure.} = enum
@@ -18,14 +20,42 @@ type PinMediaSourceImageURL* = object
   ## Image URL-based media source
   sourceType*: SourceType
   url*: string
-  isStandard*: bool ## Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+  isStandard*: Option[bool] ## Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 
 func `%`*(v: SourceType): JsonNode =
-  let str = case v:
-    of SourceType.ImageUrl: "image_url"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of SourceType.ImageUrl: %"image_url"
 func `$`*(v: SourceType): string =
   result = case v:
-    of SourceType.ImageUrl: "image_url"
+    of SourceType.ImageUrl: $("image_url")
+
+proc to*(node: JsonNode, T: typedesc[SourceType]): SourceType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum SourceType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("image_url"):
+    return SourceType.ImageUrl
+  else:
+    raise newException(ValueError, "Invalid enum value for SourceType: " & strVal)
+
+
+# Custom JSON deserialization for PinMediaSourceImageURL with custom field names
+proc to*(node: JsonNode, T: typedesc[PinMediaSourceImageURL]): PinMediaSourceImageURL =
+  result = PinMediaSourceImageURL()
+  if node.kind == JObject:
+    if node.hasKey("source_type"):
+      result.sourceType = to(node["source_type"], SourceType)
+    if node.hasKey("url"):
+      result.url = to(node["url"], string)
+    if node.hasKey("is_standard") and node["is_standard"].kind != JNull:
+      result.isStandard = some(to(node["is_standard"], typeof(result.isStandard.get())))
+
+# Custom JSON serialization for PinMediaSourceImageURL with custom field names
+proc `%`*(obj: PinMediaSourceImageURL): JsonNode =
+  result = newJObject()
+  result["source_type"] = %obj.sourceType
+  result["url"] = %obj.url
+  if obj.isStandard.isSome():
+    result["is_standard"] = %obj.isStandard.get()
+

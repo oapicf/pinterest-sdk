@@ -6,13 +6,13 @@ package org.openapitools.server.model
  *
  * @param catalogType  for example: ''null''
  * @param country  for example: ''null''
- * @param language  for example: ''null''
+ * @param language We recommend using the CatalogsLocale values. for example: ''null''
  * @param items Array with catalogs item operations for example: ''null''
 */
 final case class CatalogsRetailBatchRequest (
   catalogType: String,
   country: Country,
-  language: CatalogsItemsRequestLanguage,
+  language: String,
   items: Seq[CatalogsRetailBatchRequestItemsInner]
 )
 

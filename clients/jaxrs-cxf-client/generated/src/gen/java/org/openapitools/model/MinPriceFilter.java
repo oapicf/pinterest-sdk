@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class MinPriceFilter  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsProductGroupPricingCriteria MIN_PRICE;
  /**
    * Get MIN_PRICE

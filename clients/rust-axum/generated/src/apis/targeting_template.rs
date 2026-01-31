@@ -58,6 +58,8 @@ pub enum TargetingTemplateSlashUpdateResponse {
 }
 
 
+
+
 /// TargetingTemplate
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -67,6 +69,7 @@ pub trait TargetingTemplate<E: std::fmt::Debug + Send + Sync + 'static = ()>: su
     /// TargetingTemplateSlashCreate - POST /v5/ad_accounts/{ad_account_id}/targeting_templates
     async fn targeting_template_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -79,6 +82,7 @@ pub trait TargetingTemplate<E: std::fmt::Debug + Send + Sync + 'static = ()>: su
     /// TargetingTemplateSlashList - GET /v5/ad_accounts/{ad_account_id}/targeting_templates
     async fn targeting_template_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -91,6 +95,7 @@ pub trait TargetingTemplate<E: std::fmt::Debug + Send + Sync + 'static = ()>: su
     /// TargetingTemplateSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/targeting_templates
     async fn targeting_template_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

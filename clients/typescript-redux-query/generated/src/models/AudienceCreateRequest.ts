@@ -12,12 +12,12 @@
  */
 
 import {
-    AudienceCreateRequest1AudienceType,
-    AudienceCreateRequest1AudienceTypeFromJSON,
-    AudienceCreateRequest1AudienceTypeToJSON,
     AudienceRule,
     AudienceRuleFromJSON,
     AudienceRuleToJSON,
+    AudienceType,
+    AudienceTypeFromJSON,
+    AudienceTypeToJSON,
 } from './';
 
 /**

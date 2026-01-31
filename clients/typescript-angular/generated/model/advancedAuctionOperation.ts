@@ -9,12 +9,9 @@
  */
 
 
-export type AdvancedAuctionOperation = 'UPSERT' | 'DELETE';
-
 export const AdvancedAuctionOperation = {
-
-    Upsert: 'UPSERT' as AdvancedAuctionOperation,
-
-    Delete: 'DELETE' as AdvancedAuctionOperation
-};
+    Upsert: 'UPSERT',
+    Delete: 'DELETE'
+} as const;
+export type AdvancedAuctionOperation = typeof AdvancedAuctionOperation[keyof typeof AdvancedAuctionOperation];
 

@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -15,31 +15,18 @@ package org.openapitools.client.model;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * A request to exchange an authorization code for an access token.
- **/
-@ApiModel(description = "A request to exchange an authorization code for an access token.")
+@ApiModel(description = "")
 public class OauthAccessTokenRequestCode {
   
+  @SerializedName("code")
+  private String code = null;
+  @SerializedName("redirect_uri")
+  private String redirectUri = null;
   public enum GrantTypeEnum {
      authorization_code,  refresh_token,  client_credentials, 
   };
   @SerializedName("grant_type")
   private GrantTypeEnum grantType = null;
-  @SerializedName("code")
-  private String code = null;
-  @SerializedName("redirect_uri")
-  private String redirectUri = null;
-
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  public GrantTypeEnum getGrantType() {
-    return grantType;
-  }
-  public void setGrantType(GrantTypeEnum grantType) {
-    this.grantType = grantType;
-  }
 
   /**
    **/
@@ -61,6 +48,16 @@ public class OauthAccessTokenRequestCode {
     this.redirectUri = redirectUri;
   }
 
+  /**
+   **/
+  @ApiModelProperty(required = true, value = "")
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -71,17 +68,17 @@ public class OauthAccessTokenRequestCode {
       return false;
     }
     OauthAccessTokenRequestCode oauthAccessTokenRequestCode = (OauthAccessTokenRequestCode) o;
-    return (this.grantType == null ? oauthAccessTokenRequestCode.grantType == null : this.grantType.equals(oauthAccessTokenRequestCode.grantType)) &&
-        (this.code == null ? oauthAccessTokenRequestCode.code == null : this.code.equals(oauthAccessTokenRequestCode.code)) &&
-        (this.redirectUri == null ? oauthAccessTokenRequestCode.redirectUri == null : this.redirectUri.equals(oauthAccessTokenRequestCode.redirectUri));
+    return (this.code == null ? oauthAccessTokenRequestCode.code == null : this.code.equals(oauthAccessTokenRequestCode.code)) &&
+        (this.redirectUri == null ? oauthAccessTokenRequestCode.redirectUri == null : this.redirectUri.equals(oauthAccessTokenRequestCode.redirectUri)) &&
+        (this.grantType == null ? oauthAccessTokenRequestCode.grantType == null : this.grantType.equals(oauthAccessTokenRequestCode.grantType));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
-    result = 31 * result + (this.grantType == null ? 0: this.grantType.hashCode());
     result = 31 * result + (this.code == null ? 0: this.code.hashCode());
     result = 31 * result + (this.redirectUri == null ? 0: this.redirectUri.hashCode());
+    result = 31 * result + (this.grantType == null ? 0: this.grantType.hashCode());
     return result;
   }
 
@@ -90,9 +87,9 @@ public class OauthAccessTokenRequestCode {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestCode {\n");
     
-    sb.append("  grantType: ").append(grantType).append("\n");
     sb.append("  code: ").append(code).append("\n");
     sb.append("  redirectUri: ").append(redirectUri).append("\n");
+    sb.append("  grantType: ").append(grantType).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

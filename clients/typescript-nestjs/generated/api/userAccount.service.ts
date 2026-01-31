@@ -426,7 +426,7 @@ export class UserAccountService {
             queryParameters.append('source', <any>source);
         }
         if (metricTypes) {
-            queryParameters['metric_types'] = metricTypes.join(COLLECTION_FORMATS['csv']);
+            queryParameters.append('metric_types', metricTypes.join(COLLECTION_FORMATS['csv']));
         }
         if (splitField !== undefined && splitField !== null) {
             queryParameters.append('split_field', <any>splitField);
@@ -534,7 +534,7 @@ export class UserAccountService {
             queryParameters.append('source', <any>source);
         }
         if (metricTypes) {
-            queryParameters['metric_types'] = metricTypes.join(COLLECTION_FORMATS['csv']);
+            queryParameters.append('metric_types', metricTypes.join(COLLECTION_FORMATS['csv']));
         }
         if (numOfPins !== undefined && numOfPins !== null) {
             queryParameters.append('num_of_pins', <any>numOfPins);
@@ -652,7 +652,7 @@ export class UserAccountService {
             queryParameters.append('source', <any>source);
         }
         if (metricTypes) {
-            queryParameters['metric_types'] = metricTypes.join(COLLECTION_FORMATS['csv']);
+            queryParameters.append('metric_types', metricTypes.join(COLLECTION_FORMATS['csv']));
         }
         if (numOfPins !== undefined && numOfPins !== null) {
             queryParameters.append('num_of_pins', <any>numOfPins);

@@ -9,13 +9,16 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_audience_demographic_value
 
 type AudienceDemographics* = object
   ## Audience demographics
-  ages*: seq[AudienceDemographicValue] ## Ages distribution.
-  genders*: seq[AudienceDemographicValue] ## Gender distribution.
-  devices*: seq[AudienceDemographicValue] ## Device usage distribution.
-  metros*: seq[AudienceDemographicValue] ## Geographic metro area distribution.
-  countries*: seq[AudienceDemographicValue] ## Country area distribution.
+  ages*: Option[seq[AudienceDemographicValue]] ## Ages distribution.
+  genders*: Option[seq[AudienceDemographicValue]] ## Gender distribution.
+  devices*: Option[seq[AudienceDemographicValue]] ## Device usage distribution.
+  metros*: Option[seq[AudienceDemographicValue]] ## Geographic metro area distribution.
+  countries*: Option[seq[AudienceDemographicValue]] ## Country area distribution.
+

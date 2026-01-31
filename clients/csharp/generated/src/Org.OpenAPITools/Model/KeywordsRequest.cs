@@ -137,8 +137,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "keywords":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                keywords = new Option<List<KeywordsCommon>?>(JsonSerializer.Deserialize<List<KeywordsCommon>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            keywords = new Option<List<KeywordsCommon>?>(JsonSerializer.Deserialize<List<KeywordsCommon>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "parent_id":
                             parentId = new Option<string?>(utf8JsonReader.GetString()!);

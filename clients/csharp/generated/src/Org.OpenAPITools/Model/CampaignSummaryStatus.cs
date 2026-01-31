@@ -217,7 +217,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CampaignSummaryStatus campaignSummaryStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(campaignSummaryStatus.ToString());
+            writer.WriteStringValue(CampaignSummaryStatusValueConverter.ToJsonValue(campaignSummaryStatus).ToString());
         }
     }
 
@@ -248,14 +248,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the CampaignSummaryStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="campaignSummaryStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CampaignSummaryStatus? campaignSummaryStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(campaignSummaryStatus?.ToString() ?? "null");
+            writer.WriteStringValue(campaignSummaryStatus.HasValue ? CampaignSummaryStatusValueConverter.ToJsonValue(campaignSummaryStatus.Value).ToString() : "null");
         }
     }
 }

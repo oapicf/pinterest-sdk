@@ -201,9 +201,9 @@ export function CatalogsHotelFeedToJSONTyped(value?: CatalogsHotelFeed | null, i
 
     return {
         
-        'created_at': ((value['createdAt']).toISOString()),
+        'created_at': value['createdAt'].toISOString(),
         'id': value['id'],
-        'updated_at': ((value['updatedAt']).toISOString()),
+        'updated_at': value['updatedAt'].toISOString(),
         'name': value['name'],
         'format': CatalogsFormatToJSON(value['format']),
         'catalog_type': CatalogsTypeToJSON(value['catalogType']),

@@ -12,10 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UpdateMemberResultsResponseArray  {
   
-  @ApiModelProperty(value = "List of members with updated business access role.")
  /**
-   * List of members with updated business access role.
-  **/
+  * List of members with updated business access role.
+  */
+  @ApiModelProperty(value = "List of members with updated business access role.")
+
   private List<UpdateMemberResult> items = new ArrayList<>();
  /**
    * List of members with updated business access role.

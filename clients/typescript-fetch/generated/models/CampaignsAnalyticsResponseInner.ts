@@ -71,7 +71,7 @@ export function CampaignsAnalyticsResponseInnerToJSONTyped(value?: CampaignsAnal
         
             ...value,
         'CAMPAIGN_ID': value['cAMPAIGNID'],
-        'DATE': value['dATE'] == null ? undefined : ((value['dATE']).toISOString().substring(0,10)),
+        'DATE': value['dATE'] == null ? value['dATE'] : value['dATE'].toISOString().substring(0,10),
     };
 }
 

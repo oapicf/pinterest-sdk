@@ -15,11 +15,8 @@
 
 
 #import "OAIBaseInviteDataResponseInviteData.h"
-#import "OAIBusinessAccessUserSummary.h"
 @protocol OAIBaseInviteDataResponseInviteData;
 @class OAIBaseInviteDataResponseInviteData;
-@protocol OAIBusinessAccessUserSummary;
-@class OAIBusinessAccessUserSummary;
 
 
 
@@ -28,15 +25,6 @@
 
 @interface OAIInviteBusinessRoleBinding : OAIObject
 
-/* Unique identifier for the business that created the invite/request. [optional]
- */
-@property(nonatomic) NSString* createdByBusinessId;
-/* Unique identifier for the user that created the invite/request. [optional]
- */
-@property(nonatomic) NSString* createdByUserId;
-/* Metadata for the user that updated the invite/request. [optional]
- */
-@property(nonatomic) OAIBusinessAccessUserSummary* user;
 /* Unique identifier of the invite/request. [optional]
  */
 @property(nonatomic) NSString* _id;
@@ -45,5 +33,14 @@
 /* Indicates whether the invite/request was received. [optional]
  */
 @property(nonatomic) NSNumber* isReceivedInvite;
+/* Metadata for the user that updated the invite/request. [optional]
+ */
+@property(nonatomic) NSObject* user;
+/* Unique identifier for the business that created the invite/request. [optional]
+ */
+@property(nonatomic) NSString* createdByBusinessId;
+/* Unique identifier for the user that created the invite/request. [optional]
+ */
+@property(nonatomic) NSString* createdByUserId;
 
 @end

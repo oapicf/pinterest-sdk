@@ -16,7 +16,8 @@
 #include "../model/catalogs_items_delete_discontinued_batch_request.h"
 catalogs_items_delete_discontinued_batch_request_t* instantiate_catalogs_items_delete_discontinued_batch_request(int include_optional);
 
-#include "test_catalogs_items_request_language.c"
+
+// it is enum. Work in Progress
 
 
 catalogs_items_delete_discontinued_batch_request_t* instantiate_catalogs_items_delete_discontinued_batch_request(int include_optional) {
@@ -24,14 +25,14 @@ catalogs_items_delete_discontinued_batch_request_t* instantiate_catalogs_items_d
   if (include_optional) {
     catalogs_items_delete_discontinued_batch_request = catalogs_items_delete_discontinued_batch_request_create(
       pinterest_rest_api_catalogs_items_delete_discontinued_batch_request__"US",
-      null,
+      pinterest_rest_api_catalogs_items_delete_discontinued_batch_request_LANGUAGE_af-ZA,
       pinterest_rest_api_catalogs_items_delete_discontinued_batch_request__"UPDATE",
       list_createList()
     );
   } else {
     catalogs_items_delete_discontinued_batch_request = catalogs_items_delete_discontinued_batch_request_create(
       pinterest_rest_api_catalogs_items_delete_discontinued_batch_request__"US",
-      null,
+      pinterest_rest_api_catalogs_items_delete_discontinued_batch_request_LANGUAGE_af-ZA,
       pinterest_rest_api_catalogs_items_delete_discontinued_batch_request__"UPDATE",
       list_createList()
     );

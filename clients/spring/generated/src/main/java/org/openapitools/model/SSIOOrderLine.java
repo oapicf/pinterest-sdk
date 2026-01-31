@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  * SSIOOrderLine
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOOrderLine {
 
   private JsonNullable<String> salesforceOrderLineId = JsonNullable.<String>undefined();
@@ -336,7 +336,7 @@ public class SSIOOrderLine {
     this.mediaContactLastname = mediaContactLastname;
   }
 
-  public SSIOOrderLine currencyInfo(Currency currencyInfo) {
+  public SSIOOrderLine currencyInfo(@Nullable Currency currencyInfo) {
     this.currencyInfo = currencyInfo;
     return this;
   }
@@ -348,11 +348,11 @@ public class SSIOOrderLine {
   @Valid 
   @Schema(name = "currency_info", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("currency_info")
-  public Currency getCurrencyInfo() {
+  public @Nullable Currency getCurrencyInfo() {
     return currencyInfo;
   }
 
-  public void setCurrencyInfo(Currency currencyInfo) {
+  public void setCurrencyInfo(@Nullable Currency currencyInfo) {
     this.currencyInfo = currencyInfo;
   }
 

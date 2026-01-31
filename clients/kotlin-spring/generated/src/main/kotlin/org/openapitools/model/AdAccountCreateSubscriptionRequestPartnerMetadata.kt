@@ -21,7 +21,7 @@ data class AdAccountCreateSubscriptionRequestPartnerMetadata(
 
     @Schema(example = "null", description = "Text field value that uniquely identifies a subscriber.")
     @get:JsonProperty("subscriber_key") val subscriberKey: kotlin.String? = null
-    ) {
+) {
 
 }
 

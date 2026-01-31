@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type Gender* = object
-  ## 
+type Gender* {.pure.} = enum
+  FEMALE
+  MALE
+  UNISEX
+
+func `%`*(v: Gender): JsonNode =
+  result = case v:
+    of Gender.FEMALE: %"FEMALE"
+    of Gender.MALE: %"MALE"
+    of Gender.UNISEX: %"UNISEX"
+
+func `$`*(v: Gender): string =
+  result = case v:
+    of Gender.FEMALE: $("FEMALE")
+    of Gender.MALE: $("MALE")
+    of Gender.UNISEX: $("UNISEX")
+
+proc to*(node: JsonNode, T: typedesc[Gender]): Gender =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Gender, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("FEMALE"):
+    return Gender.FEMALE
+  of $("MALE"):
+    return Gender.MALE
+  of $("UNISEX"):
+    return Gender.UNISEX
+  else:
+    raise newException(ValueError, "Invalid enum value for Gender: " & strVal)
+

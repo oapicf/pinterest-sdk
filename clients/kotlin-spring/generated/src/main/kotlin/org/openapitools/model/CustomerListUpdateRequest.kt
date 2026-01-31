@@ -35,7 +35,7 @@ data class CustomerListUpdateRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("exceptions") val exceptions: Exception? = null
-    ) {
+) {
 
 }
 

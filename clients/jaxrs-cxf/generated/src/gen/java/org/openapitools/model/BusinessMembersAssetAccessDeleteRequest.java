@@ -15,11 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BusinessMembersAssetAccessDeleteRequest  {
   
-  @ApiModelProperty(required = true, value = "List of members asset access to be deleted")
-  @Valid
  /**
-   * List of members asset access to be deleted
-  **/
+  * List of members asset access to be deleted
+  */
+  @ApiModelProperty(required = true, value = "List of members asset access to be deleted")
+
+  @Valid
+
   private List<@Valid BusinessMembersAssetAccessDeleteRequestAccessesInner> accesses = new ArrayList<>();
  /**
    * List of members asset access to be deleted

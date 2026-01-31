@@ -25,96 +25,120 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdGroupResponse  {
   
-  @ApiModelProperty(example = "Ad Group For Pin: 687195905986", value = "Ad group name.")
  /**
-   * Ad group name.
-  **/
+  * Ad group name.
+  */
+  @ApiModelProperty(example = "Ad Group For Pin: 687195905986", value = "Ad group name.")
+
   private String name;
 
-  @ApiModelProperty(value = "Ad group/entity status.")
-  @Valid
  /**
-   * Ad group/entity status.
-  **/
+  * Ad group/entity status.
+  */
+  @ApiModelProperty(value = "Ad group/entity status.")
+
+  @Valid
+
   private EntityStatus status;
 
-  @ApiModelProperty(example = "5000000", value = "Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.")
  /**
-   * Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
-  **/
+  * Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
+  */
+  @ApiModelProperty(example = "5000000", value = "Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.")
+
   private Integer budgetInMicroCurrency;
 
-  @ApiModelProperty(example = "5000000", value = "Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.")
  /**
-   * Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
-  **/
+  * Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
+  */
+  @ApiModelProperty(example = "5000000", value = "Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.")
+
   private Integer bidInMicroCurrency;
 
-  @ApiModelProperty(value = "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.")
-  @Valid
  /**
-   * Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
-  **/
+  * Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
+  */
+  @ApiModelProperty(value = "Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.")
+
+  @Valid
+
   private OptimizationGoalMetadata optimizationGoalMetadata;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BudgetType budgetType;
 
-  @ApiModelProperty(example = "5686848000", value = "Ad group start time. Unix timestamp in seconds. Defaults to current time.")
  /**
-   * Ad group start time. Unix timestamp in seconds. Defaults to current time.
-  **/
+  * Ad group start time. Unix timestamp in seconds. Defaults to current time.
+  */
+  @ApiModelProperty(example = "5686848000", value = "Ad group start time. Unix timestamp in seconds. Defaults to current time.")
+
   private Integer startTime;
 
-  @ApiModelProperty(example = "5705424000", value = "Ad group end time. Unix timestamp in seconds.")
  /**
-   * Ad group end time. Unix timestamp in seconds.
-  **/
+  * Ad group end time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "5705424000", value = "Ad group end time. Unix timestamp in seconds.")
+
   private Integer endTime;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private TargetingSpec targetingSpec;
 
-  @ApiModelProperty(example = "100", value = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.")
  /**
-   * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
-  **/
+  * Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+  */
+  @ApiModelProperty(example = "100", value = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.")
+
   private Integer lifetimeFrequencyCap;
 
-  @ApiModelProperty(value = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
-  @Valid
  /**
-   * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
-  **/
+  * Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+  */
+  @ApiModelProperty(value = "Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
+
+  @Valid
+
   private TrackingUrls trackingUrls;
 
-  @ApiModelProperty(example = "true", value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
  /**
-   * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  **/
+  * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  */
+  @ApiModelProperty(example = "true", value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
+
   private Boolean autoTargetingEnabled;
 
-  @ApiModelProperty(value = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.")
-  @Valid
  /**
-   * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
-  **/
+  * <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+  */
+  @ApiModelProperty(value = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.")
+
+  @Valid
+
   private PlacementGroupType placementGroup;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private PacingDeliveryType pacingDeliveryType;
 
-  @ApiModelProperty(example = "626736533506", value = "Campaign ID of the ad group.")
  /**
-   * Campaign ID of the ad group.
-  **/
+  * Campaign ID of the ad group.
+  */
+  @ApiModelProperty(example = "626736533506", value = "Campaign ID of the ad group.")
+
   private String campaignId;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private ActionType billableEvent;
 
 public enum BidStrategyTypeEnum {
@@ -149,46 +173,53 @@ AUTOMATIC_BID(String.valueOf("AUTOMATIC_BID")), MAX_BID(String.valueOf("MAX_BID"
     }
 }
 
-  @ApiModelProperty(example = "MAX_BID", value = "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.")
  /**
-   * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
-  **/
+  * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
+  */
+  @ApiModelProperty(example = "MAX_BID", value = "Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.")
+
   private BidStrategyTypeEnum bidStrategyType;
 
-  @ApiModelProperty(value = "Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].")
  /**
-   * Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
-  **/
+  * Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
+  */
+  @ApiModelProperty(value = "Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].")
+
   private List<@Pattern(regexp = "^\\d+$")String> targetingTemplateIds;
 
-  @ApiModelProperty(example = "2680060704746", value = "Ad group ID.")
  /**
-   * Ad group ID.
-  **/
+  * Ad group ID.
+  */
+  @ApiModelProperty(example = "2680060704746", value = "Ad group ID.")
+
   private String id;
 
-  @ApiModelProperty(example = "549755885175", value = "Advertiser ID.")
  /**
-   * Advertiser ID.
-  **/
+  * Advertiser ID.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Advertiser ID.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "1476477189", value = "Ad group creation time. Unix timestamp in seconds.")
  /**
-   * Ad group creation time. Unix timestamp in seconds.
-  **/
+  * Ad group creation time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1476477189", value = "Ad group creation time. Unix timestamp in seconds.")
+
   private Integer createdTime;
 
-  @ApiModelProperty(example = "1476477189", value = "Ad group last update time. Unix timestamp in seconds.")
  /**
-   * Ad group last update time. Unix timestamp in seconds.
-  **/
+  * Ad group last update time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1476477189", value = "Ad group last update time. Unix timestamp in seconds.")
+
   private Integer updatedTime;
 
-  @ApiModelProperty(value = "Always \"adgroup\".")
  /**
-   * Always \"adgroup\".
-  **/
+  * Always \"adgroup\".
+  */
+  @ApiModelProperty(value = "Always \"adgroup\".")
+
   private String type = "adgroup";
 
 public enum ConversionLearningModeTypeEnum {
@@ -223,29 +254,34 @@ NOT_ACTIVE(String.valueOf("NOT_ACTIVE")), ACTIVE(String.valueOf("ACTIVE"));
     }
 }
 
-  @ApiModelProperty(example = "ACTIVE", value = "oCPM learn mode")
  /**
-   * oCPM learn mode
-  **/
+  * oCPM learn mode
+  */
+  @ApiModelProperty(example = "ACTIVE", value = "oCPM learn mode")
+
   private ConversionLearningModeTypeEnum conversionLearningModeType;
 
-  @ApiModelProperty(value = "Ad group summary status.")
-  @Valid
  /**
-   * Ad group summary status.
-  **/
+  * Ad group summary status.
+  */
+  @ApiModelProperty(value = "Ad group summary status.")
+
+  @Valid
+
   private AdGroupSummaryStatus summaryStatus;
 
-  @ApiModelProperty(example = "626736533506", value = "Feed Profile ID associated to the adgroup.")
  /**
-   * Feed Profile ID associated to the adgroup.
-  **/
+  * Feed Profile ID associated to the adgroup.
+  */
+  @ApiModelProperty(example = "626736533506", value = "Feed Profile ID associated to the adgroup.")
+
   private String feedProfileId;
 
-  @ApiModelProperty(value = "[DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.")
  /**
-   * [DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.
-  **/
+  * [DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.
+  */
+  @ApiModelProperty(value = "[DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.")
+
   private Object dcaAssets = null;
  /**
    * Ad group name.

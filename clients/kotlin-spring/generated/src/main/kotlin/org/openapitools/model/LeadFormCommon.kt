@@ -59,7 +59,7 @@ data class LeadFormCommon(
     @get:Size(min=0,max=3) 
     @Schema(example = "[{\"label\":\"Copyright\",\"link\":\"https://policy.pinterest.com/en/copyright\"}]", description = "List of additional policy links to be displayed on the lead form.")
     @get:JsonProperty("policy_links") val policyLinks: kotlin.collections.List<LeadFormCommonPolicyLinksInner>? = null
-    ) {
+) {
 
 }
 

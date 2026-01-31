@@ -217,7 +217,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AdGroupSummaryStatus adGroupSummaryStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(adGroupSummaryStatus.ToString());
+            writer.WriteStringValue(AdGroupSummaryStatusValueConverter.ToJsonValue(adGroupSummaryStatus).ToString());
         }
     }
 
@@ -248,14 +248,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the AdGroupSummaryStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="adGroupSummaryStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AdGroupSummaryStatus? adGroupSummaryStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(adGroupSummaryStatus?.ToString() ?? "null");
+            writer.WriteStringValue(adGroupSummaryStatus.HasValue ? AdGroupSummaryStatusValueConverter.ToJsonValue(adGroupSummaryStatus.Value).ToString() : "null");
         }
     }
 }

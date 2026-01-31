@@ -9,58 +9,67 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdAccountGetSubscriptionResponse  {
   
-  @ApiModelProperty(example = "383791336903426390", value = "Lead form ID.")
  /**
-   * Lead form ID.
-  **/
+  * Lead form ID.
+  */
+  @ApiModelProperty(example = "383791336903426390", value = "Lead form ID.")
+
   private String leadFormId;
 
-  @ApiModelProperty(example = "https://webhook.example.com/xyz", value = "Standard HTTPS webhook URL.")
  /**
-   * Standard HTTPS webhook URL.
-  **/
+  * Standard HTTPS webhook URL.
+  */
+  @ApiModelProperty(example = "https://webhook.example.com/xyz", value = "Standard HTTPS webhook URL.")
+
   private String webhookUrl;
 
-  @ApiModelProperty(example = "8078432025948590686", value = "Subscription ID.")
  /**
-   * Subscription ID.
-  **/
+  * Subscription ID.
+  */
+  @ApiModelProperty(example = "8078432025948590686", value = "Subscription ID.")
+
   private String id;
 
-  @ApiModelProperty(example = "549755885175", value = "User account used to subscribe lead data.")
  /**
-   * User account used to subscribe lead data.
-  **/
+  * User account used to subscribe lead data.
+  */
+  @ApiModelProperty(example = "549755885175", value = "User account used to subscribe lead data.")
+
   private String userAccountId;
 
-  @ApiModelProperty(example = "549755885176", value = "The Ad Account ID that this lead form belongs to.")
  /**
-   * The Ad Account ID that this lead form belongs to.
-  **/
+  * The Ad Account ID that this lead form belongs to.
+  */
+  @ApiModelProperty(example = "549755885176", value = "The Ad Account ID that this lead form belongs to.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "v5", value = "API version.")
  /**
-   * API version.
-  **/
+  * API version.
+  */
+  @ApiModelProperty(example = "v5", value = "API version.")
+
   private String apiVersion;
 
-  @ApiModelProperty(example = "ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54", value = "Base64 encoded key for client to decrypt lead data.")
  /**
-   * Base64 encoded key for client to decrypt lead data.
-  **/
+  * Base64 encoded key for client to decrypt lead data.
+  */
+  @ApiModelProperty(example = "ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54", value = "Base64 encoded key for client to decrypt lead data.")
+
   private String cryptographicKey;
 
-  @ApiModelProperty(example = "AES-256-GCM", value = "Lead data encryption algorithm.")
  /**
-   * Lead data encryption algorithm.
-  **/
+  * Lead data encryption algorithm.
+  */
+  @ApiModelProperty(example = "AES-256-GCM", value = "Lead data encryption algorithm.")
+
   private String cryptographicAlgorithm;
 
-  @ApiModelProperty(example = "1699209842000", value = "Lead form creation time. Unix timestamp in milliseconds.")
  /**
-   * Lead form creation time. Unix timestamp in milliseconds.
-  **/
+  * Lead form creation time. Unix timestamp in milliseconds.
+  */
+  @ApiModelProperty(example = "1699209842000", value = "Lead form creation time. Unix timestamp in milliseconds.")
+
   private Integer createdTime;
  /**
    * Lead form ID.

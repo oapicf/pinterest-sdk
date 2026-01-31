@@ -31,20 +31,6 @@
 
 @interface OAIInviteResponse : OAIObject
 
-
-@property(nonatomic) OAIInviteAssetsSummary* assetsSummary;
-/* The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. [optional]
- */
-@property(nonatomic) NSArray<NSString*>* businessRoles;
-/* Metadata for the business that created the invite/request. [optional]
- */
-@property(nonatomic) OAIBusinessAccessUserSummary* createdByBusiness;
-/* Metadata for the user that created the invite/request. [optional]
- */
-@property(nonatomic) OAIBusinessAccessUserSummary* createdByUser;
-/* The time the invite/request was created. Returned in milliseconds. [optional]
- */
-@property(nonatomic) NSNumber* createdTime;
 /* Unique identifier of the invite/request. [optional]
  */
 @property(nonatomic) NSString* _id;
@@ -56,5 +42,19 @@
 /* Metadata for the member/partner that was sent the invite/request. [optional]
  */
 @property(nonatomic) OAIBusinessAccessUserSummary* user;
+
+@property(nonatomic) OAIInviteAssetsSummary* assetsSummary;
+/* The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. [optional]
+ */
+@property(nonatomic) NSArray<NSString*>* businessRoles;
+/* Metadata for the business that created the invite/request. [optional]
+ */
+@property(nonatomic) NSObject* createdByBusiness;
+/* Metadata for the user that created the invite/request. [optional]
+ */
+@property(nonatomic) NSObject* createdByUser;
+/* The time the invite/request was created. Returned in milliseconds. [optional]
+ */
+@property(nonatomic) NSNumber* createdTime;
 
 @end

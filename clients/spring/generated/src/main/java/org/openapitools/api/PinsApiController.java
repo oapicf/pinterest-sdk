@@ -4,11 +4,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.openapitools.model.Error;
 import java.time.LocalDate;
 import java.util.Map;
+import org.springframework.lang.Nullable;
 import org.openapitools.model.Pin;
 import org.openapitools.model.PinAnalyticsMetricsResponse;
 import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
-import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
 
@@ -36,7 +36,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-25T14:29:26.456489381Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 @RequestMapping("${openapi.pinterestREST.base-path:/v5}")
 public class PinsApiController implements PinsApi {

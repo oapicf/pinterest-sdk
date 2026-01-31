@@ -56,7 +56,7 @@ data class UserBusinessRoleBinding(
     @field:Valid
     @Schema(example = "null", description = "Metadata for the business member/business partner/employer.")
     @get:JsonProperty("user") val user: BusinessAccessUserSummary? = null
-    ) {
+) {
 
 }
 

@@ -56,7 +56,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdUpdateRequest {
   public static final String SERIALIZED_NAME_AD_GROUP_ID = "ad_group_id";
   @SerializedName(SERIALIZED_NAME_AD_GROUP_ID)
@@ -768,32 +768,10 @@ public class AdUpdateRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ad_group_id");
-    openapiFields.add("android_deep_link");
-    openapiFields.add("carousel_android_deep_links");
-    openapiFields.add("carousel_destination_urls");
-    openapiFields.add("carousel_ios_deep_links");
-    openapiFields.add("click_tracking_url");
-    openapiFields.add("creative_type");
-    openapiFields.add("destination_url");
-    openapiFields.add("ios_deep_link");
-    openapiFields.add("is_pin_deleted");
-    openapiFields.add("is_removable");
-    openapiFields.add("name");
-    openapiFields.add("status");
-    openapiFields.add("tracking_urls");
-    openapiFields.add("view_tracking_url");
-    openapiFields.add("lead_form_id");
-    openapiFields.add("grid_click_type");
-    openapiFields.add("customizable_cta_type");
-    openapiFields.add("quiz_pin_data");
-    openapiFields.add("id");
-    openapiFields.add("pin_id");
+    openapiFields = new HashSet<String>(Arrays.asList("ad_group_id", "android_deep_link", "carousel_android_deep_links", "carousel_destination_urls", "carousel_ios_deep_links", "click_tracking_url", "creative_type", "destination_url", "ios_deep_link", "is_pin_deleted", "is_removable", "name", "status", "tracking_urls", "view_tracking_url", "lead_form_id", "grid_click_type", "customizable_cta_type", "quiz_pin_data", "id", "pin_id"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("id"));
   }
 
   /**
@@ -805,7 +783,7 @@ public class AdUpdateRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AdUpdateRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdUpdateRequest is not found in the empty JSON string", AdUpdateRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AdUpdateRequest is not found in the empty JSON string", AdUpdateRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -813,50 +791,50 @@ public class AdUpdateRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AdUpdateRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AdUpdateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AdUpdateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AdUpdateRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("ad_group_id") != null && !jsonObj.get("ad_group_id").isJsonNull()) && !jsonObj.get("ad_group_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_group_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_group_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_group_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_group_id").toString()));
       }
       if ((jsonObj.get("android_deep_link") != null && !jsonObj.get("android_deep_link").isJsonNull()) && !jsonObj.get("android_deep_link").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `android_deep_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("android_deep_link").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `android_deep_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("android_deep_link").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("carousel_android_deep_links") != null && !jsonObj.get("carousel_android_deep_links").isJsonNull() && !jsonObj.get("carousel_android_deep_links").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `carousel_android_deep_links` to be an array in the JSON string but got `%s`", jsonObj.get("carousel_android_deep_links").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `carousel_android_deep_links` to be an array in the JSON string but got `%s`", jsonObj.get("carousel_android_deep_links").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("carousel_destination_urls") != null && !jsonObj.get("carousel_destination_urls").isJsonNull() && !jsonObj.get("carousel_destination_urls").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `carousel_destination_urls` to be an array in the JSON string but got `%s`", jsonObj.get("carousel_destination_urls").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `carousel_destination_urls` to be an array in the JSON string but got `%s`", jsonObj.get("carousel_destination_urls").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("carousel_ios_deep_links") != null && !jsonObj.get("carousel_ios_deep_links").isJsonNull() && !jsonObj.get("carousel_ios_deep_links").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `carousel_ios_deep_links` to be an array in the JSON string but got `%s`", jsonObj.get("carousel_ios_deep_links").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `carousel_ios_deep_links` to be an array in the JSON string but got `%s`", jsonObj.get("carousel_ios_deep_links").toString()));
       }
       if ((jsonObj.get("click_tracking_url") != null && !jsonObj.get("click_tracking_url").isJsonNull()) && !jsonObj.get("click_tracking_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `click_tracking_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("click_tracking_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `click_tracking_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("click_tracking_url").toString()));
       }
       // validate the optional field `creative_type`
       if (jsonObj.get("creative_type") != null && !jsonObj.get("creative_type").isJsonNull()) {
         CreativeType.validateJsonElement(jsonObj.get("creative_type"));
       }
       if ((jsonObj.get("destination_url") != null && !jsonObj.get("destination_url").isJsonNull()) && !jsonObj.get("destination_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `destination_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destination_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `destination_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destination_url").toString()));
       }
       if ((jsonObj.get("ios_deep_link") != null && !jsonObj.get("ios_deep_link").isJsonNull()) && !jsonObj.get("ios_deep_link").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ios_deep_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ios_deep_link").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ios_deep_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ios_deep_link").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the optional field `status`
       if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
@@ -867,17 +845,17 @@ public class AdUpdateRequest {
         TrackingUrls.validateJsonElement(jsonObj.get("tracking_urls"));
       }
       if ((jsonObj.get("view_tracking_url") != null && !jsonObj.get("view_tracking_url").isJsonNull()) && !jsonObj.get("view_tracking_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `view_tracking_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("view_tracking_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `view_tracking_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("view_tracking_url").toString()));
       }
       if ((jsonObj.get("lead_form_id") != null && !jsonObj.get("lead_form_id").isJsonNull()) && !jsonObj.get("lead_form_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lead_form_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lead_form_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `lead_form_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lead_form_id").toString()));
       }
       // validate the optional field `grid_click_type`
       if (jsonObj.get("grid_click_type") != null && !jsonObj.get("grid_click_type").isJsonNull()) {
         GridClickType.validateJsonElement(jsonObj.get("grid_click_type"));
       }
       if ((jsonObj.get("customizable_cta_type") != null && !jsonObj.get("customizable_cta_type").isJsonNull()) && !jsonObj.get("customizable_cta_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customizable_cta_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customizable_cta_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `customizable_cta_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customizable_cta_type").toString()));
       }
       // validate the optional field `customizable_cta_type`
       if (jsonObj.get("customizable_cta_type") != null && !jsonObj.get("customizable_cta_type").isJsonNull()) {
@@ -888,10 +866,10 @@ public class AdUpdateRequest {
         QuizPinData.validateJsonElement(jsonObj.get("quiz_pin_data"));
       }
       if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("pin_id") != null && !jsonObj.get("pin_id").isJsonNull()) && !jsonObj.get("pin_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pin_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pin_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `pin_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pin_id").toString()));
       }
   }
 

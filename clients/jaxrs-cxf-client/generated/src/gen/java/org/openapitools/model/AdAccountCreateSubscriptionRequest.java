@@ -9,31 +9,36 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdAccountCreateSubscriptionRequest  {
   
-  @ApiModelProperty(example = "https://webhook.example.com/xyz", required = true, value = "Standard HTTPS webhook URL.")
  /**
-   * Standard HTTPS webhook URL.
-  **/
+  * Standard HTTPS webhook URL.
+  */
+  @ApiModelProperty(example = "https://webhook.example.com/xyz", required = true, value = "Standard HTTPS webhook URL.")
+
   private String webhookUrl;
 
-  @ApiModelProperty(example = "383791336903426390", value = "Lead form ID.")
  /**
-   * Lead form ID.
-  **/
+  * Lead form ID.
+  */
+  @ApiModelProperty(example = "383791336903426390", value = "Lead form ID.")
+
   private String leadFormId;
 
-  @ApiModelProperty(value = "Partner access token. Only for clients that requires authentication. We recommend to avoid this param.")
  /**
-   * Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
-  **/
+  * Partner access token. Only for clients that requires authentication. We recommend to avoid this param.
+  */
+  @ApiModelProperty(value = "Partner access token. Only for clients that requires authentication. We recommend to avoid this param.")
+
   private String partnerAccessToken;
 
-  @ApiModelProperty(value = "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.")
  /**
-   * Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
-  **/
+  * Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.
+  */
+  @ApiModelProperty(value = "Partner refresh token. Only for clients that requires authentication. We recommend to avoid this param.")
+
   private String partnerRefreshToken;
 
   @ApiModelProperty(value = "")
+
   private AdAccountCreateSubscriptionRequestPartnerMetadata partnerMetadata;
  /**
    * Standard HTTPS webhook URL.

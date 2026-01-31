@@ -24,10 +24,10 @@ export interface CatalogsCreativeAssetsProductGroupCreateRequest {
     catalog_id: string;
 }
 export namespace CatalogsCreativeAssetsProductGroupCreateRequest {
-    export type CatalogTypeEnum = 'CREATIVE_ASSETS';
     export const CatalogTypeEnum = {
-        CreativeAssets: 'CREATIVE_ASSETS' as CatalogTypeEnum
-    };
+        CreativeAssets: 'CREATIVE_ASSETS'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

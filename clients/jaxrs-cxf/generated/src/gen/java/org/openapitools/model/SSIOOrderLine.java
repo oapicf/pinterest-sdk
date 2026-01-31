@@ -16,136 +16,161 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SSIOOrderLine  {
   
-  @ApiModelProperty(value = "OrderLineId in SFDC")
  /**
-   * OrderLineId in SFDC
-  **/
+  * OrderLineId in SFDC
+  */
+  @ApiModelProperty(value = "OrderLineId in SFDC")
+
   private String salesforceOrderLineId;
 
-  @ApiModelProperty(value = "Ads manager OrderLineId")
  /**
-   * Ads manager OrderLineId
-  **/
+  * Ads manager OrderLineId
+  */
+  @ApiModelProperty(value = "Ads manager OrderLineId")
+
   private String adsManagerOrderLineId;
 
-  @ApiModelProperty(value = "The pin order id associated with the order line in SFDC")
  /**
-   * The pin order id associated with the order line in SFDC
-  **/
+  * The pin order id associated with the order line in SFDC
+  */
+  @ApiModelProperty(value = "The pin order id associated with the order line in SFDC")
+
   private String pinOrderId;
 
-  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "Last modified date.")
  /**
-   * Last modified date.
-  **/
+  * Last modified date.
+  */
+  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "Last modified date.")
+
   private String lastModifiedDateTime;
 
-  @ApiModelProperty(example = "2018-03-01", value = "Start date of the order line.")
  /**
-   * Start date of the order line.
-  **/
+  * Start date of the order line.
+  */
+  @ApiModelProperty(example = "2018-03-01", value = "Start date of the order line.")
+
   private LocalDate startDate;
 
-  @ApiModelProperty(example = "2020-10-05", value = "End date of the order line.")
  /**
-   * End date of the order line.
-  **/
+  * End date of the order line.
+  */
+  @ApiModelProperty(example = "2020-10-05", value = "End date of the order line.")
+
   private LocalDate endDate;
 
-  @ApiModelProperty(example = "Home Depot Inc.", value = "Bill To Company name")
  /**
-   * Bill To Company name
-  **/
+  * Bill To Company name
+  */
+  @ApiModelProperty(example = "Home Depot Inc.", value = "Bill To Company name")
+
   private String billToCompanyName;
 
-  @ApiModelProperty(example = "Mary", value = "Billing contact first name")
  /**
-   * Billing contact first name
-  **/
+  * Billing contact first name
+  */
+  @ApiModelProperty(example = "Mary", value = "Billing contact first name")
+
   private String billingContactFirstname;
 
-  @ApiModelProperty(example = "Smith", value = "Billing contact last name")
  /**
-   * Billing contact last name
-  **/
+  * Billing contact last name
+  */
+  @ApiModelProperty(example = "Smith", value = "Billing contact last name")
+
   private String billingContactLastname;
 
-  @ApiModelProperty(example = "mail@test.com", value = "Billing contact email")
  /**
-   * Billing contact email
-  **/
+  * Billing contact email
+  */
+  @ApiModelProperty(example = "mail@test.com", value = "Billing contact email")
+
   private String billingContactEmail;
 
-  @ApiModelProperty(example = "mail@test.com", value = "Billing media email")
  /**
-   * Billing media email
-  **/
+  * Billing media email
+  */
+  @ApiModelProperty(example = "mail@test.com", value = "Billing media email")
+
   private String mediaContactEmail;
 
-  @ApiModelProperty(example = "John", value = "Billing contact first name")
  /**
-   * Billing contact first name
-  **/
+  * Billing contact first name
+  */
+  @ApiModelProperty(example = "John", value = "Billing contact first name")
+
   private String mediaContactFirstname;
 
-  @ApiModelProperty(example = "Doe", value = "Billing contact first name")
  /**
-   * Billing contact first name
-  **/
+  * Billing contact first name
+  */
+  @ApiModelProperty(example = "Doe", value = "Billing contact first name")
+
   private String mediaContactLastname;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private Currency currencyInfo;
 
-  @ApiModelProperty(example = "", value = "Agency link")
  /**
-   * Agency link
-  **/
+  * Agency link
+  */
+  @ApiModelProperty(example = "", value = "Agency link")
+
   private String agencyLink;
 
-  @ApiModelProperty(value = "The po number")
  /**
-   * The po number
-  **/
+  * The po number
+  */
+  @ApiModelProperty(value = "The po number")
+
   private String poNumber;
 
-  @ApiModelProperty(value = "The order name")
  /**
-   * The order name
-  **/
+  * The order name
+  */
+  @ApiModelProperty(value = "The order name")
+
   private String orderName;
 
-  @ApiModelProperty(value = "The Pinterest marketing partner name")
  /**
-   * The Pinterest marketing partner name
-  **/
+  * The Pinterest marketing partner name
+  */
+  @ApiModelProperty(value = "The Pinterest marketing partner name")
+
   private String pmpName;
 
-  @ApiModelProperty(value = "The SFDC id for the terms")
  /**
-   * The SFDC id for the terms
-  **/
+  * The SFDC id for the terms
+  */
+  @ApiModelProperty(value = "The SFDC id for the terms")
+
   private String acceptedTermsId;
 
-  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
  /**
-   * The UTC timestamp (to the nearest sec) of when terms were accepted
-  **/
+  * The UTC timestamp (to the nearest sec) of when terms were accepted
+  */
+  @ApiModelProperty(example = "2020-10-06T13:07:04.000Z", value = "The UTC timestamp (to the nearest sec) of when terms were accepted")
+
   private String acceptedTermsTime;
 
-  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
-  @Valid
  /**
-   * If Budget order line, the budget amount.
-  **/
+  * If Budget order line, the budget amount.
+  */
+  @ApiModelProperty(example = "5000000", value = "If Budget order line, the budget amount.")
+
+  @Valid
+
   private BigDecimal budgetAmount;
 
-  @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
-  @Valid
  /**
-   * If Ongoing (perpetual) order line, the estimated monthly spend
-  **/
+  * If Ongoing (perpetual) order line, the estimated monthly spend
+  */
+  @ApiModelProperty(value = "If Ongoing (perpetual) order line, the estimated monthly spend")
+
+  @Valid
+
   private BigDecimal estimatedMonthlySpend;
  /**
    * OrderLineId in SFDC

@@ -1,0 +1,130 @@
+
+# CatalogsFeedValidationWarnings
+
+
+## Properties
+
+Name | Type
+------------ | -------------
+`aDLINKFORMATWARNING` | number
+`aDLINKSAMEASLINK` | number
+`tITLELENGTHTOOLONG` | number
+`dESCRIPTIONLENGTHTOOLONG` | number
+`gENDERINVALID` | number
+`aGEGROUPINVALID` | number
+`sIZETYPEINVALID` | number
+`sIZESYSTEMINVALID` | number
+`lINKFORMATWARNING` | number
+`sALESPRICEINVALID` | number
+`pRODUCTCATEGORYDEPTHWARNING` | number
+`aDWORDSFORMATWARNING` | number
+`aDWORDSSAMEASLINK` | number
+`dUPLICATEHEADERS` | number
+`fETCHSAMESIGNATURE` | number
+`aDDITIONALIMAGELINKLENGTHTOOLONG` | number
+`aDDITIONALIMAGELINKWARNING` | number
+`iMAGELINKWARNING` | number
+`sHIPPINGINVALID` | number
+`tAXINVALID` | number
+`sHIPPINGWEIGHTINVALID` | number
+`eXPIRATIONDATEINVALID` | number
+`aVAILABILITYDATEINVALID` | number
+`sALEDATEINVALID` | number
+`wEIGHTUNITINVALID` | number
+`iSBUNDLEINVALID` | number
+`uPDATEDTIMEINVALID` | number
+`cUSTOMLABELLENGTHTOOLONG` | number
+`pRODUCTTYPELENGTHTOOLONG` | number
+`tOOMANYADDITIONALIMAGELINKS` | number
+`mULTIPACKINVALID` | number
+`iNDEXEDPRODUCTCOUNTLARGEDELTA` | number
+`iTEMADDITIONALIMAGEDOWNLOADFAILURE` | number
+`oPTIONALPRODUCTCATEGORYMISSING` | number
+`oPTIONALPRODUCTCATEGORYINVALID` | number
+`oPTIONALCONDITIONMISSING` | number
+`oPTIONALCONDITIONINVALID` | number
+`iOSDEEPLINKINVALID` | number
+`aNDROIDDEEPLINKINVALID` | number
+`uTMSOURCEAUTOCORRECTED` | number
+`cOUNTRYDOESNOTMAPTOCURRENCY` | number
+`mINADPRICEINVALID` | number
+`gTININVALID` | number
+`iNCONSISTENTCURRENCYVALUES` | number
+`sALESPRICETOOLOW` | number
+`sHIPPINGWIDTHINVALID` | number
+`sHIPPINGHEIGHTINVALID` | number
+`sALESPRICETOOHIGH` | number
+`mPNINVALID` | number
+
+## Example
+
+```typescript
+import type { CatalogsFeedValidationWarnings } from ''
+
+// TODO: Update the object below with actual values
+const example = {
+  "aDLINKFORMATWARNING": null,
+  "aDLINKSAMEASLINK": null,
+  "tITLELENGTHTOOLONG": null,
+  "dESCRIPTIONLENGTHTOOLONG": null,
+  "gENDERINVALID": null,
+  "aGEGROUPINVALID": null,
+  "sIZETYPEINVALID": null,
+  "sIZESYSTEMINVALID": null,
+  "lINKFORMATWARNING": null,
+  "sALESPRICEINVALID": null,
+  "pRODUCTCATEGORYDEPTHWARNING": null,
+  "aDWORDSFORMATWARNING": null,
+  "aDWORDSSAMEASLINK": null,
+  "dUPLICATEHEADERS": null,
+  "fETCHSAMESIGNATURE": null,
+  "aDDITIONALIMAGELINKLENGTHTOOLONG": null,
+  "aDDITIONALIMAGELINKWARNING": null,
+  "iMAGELINKWARNING": null,
+  "sHIPPINGINVALID": null,
+  "tAXINVALID": null,
+  "sHIPPINGWEIGHTINVALID": null,
+  "eXPIRATIONDATEINVALID": null,
+  "aVAILABILITYDATEINVALID": null,
+  "sALEDATEINVALID": null,
+  "wEIGHTUNITINVALID": null,
+  "iSBUNDLEINVALID": null,
+  "uPDATEDTIMEINVALID": null,
+  "cUSTOMLABELLENGTHTOOLONG": null,
+  "pRODUCTTYPELENGTHTOOLONG": null,
+  "tOOMANYADDITIONALIMAGELINKS": null,
+  "mULTIPACKINVALID": null,
+  "iNDEXEDPRODUCTCOUNTLARGEDELTA": null,
+  "iTEMADDITIONALIMAGEDOWNLOADFAILURE": null,
+  "oPTIONALPRODUCTCATEGORYMISSING": null,
+  "oPTIONALPRODUCTCATEGORYINVALID": null,
+  "oPTIONALCONDITIONMISSING": null,
+  "oPTIONALCONDITIONINVALID": null,
+  "iOSDEEPLINKINVALID": null,
+  "aNDROIDDEEPLINKINVALID": null,
+  "uTMSOURCEAUTOCORRECTED": null,
+  "cOUNTRYDOESNOTMAPTOCURRENCY": null,
+  "mINADPRICEINVALID": null,
+  "gTININVALID": null,
+  "iNCONSISTENTCURRENCYVALUES": null,
+  "sALESPRICETOOLOW": null,
+  "sHIPPINGWIDTHINVALID": null,
+  "sHIPPINGHEIGHTINVALID": null,
+  "sALESPRICETOOHIGH": null,
+  "mPNINVALID": null,
+} satisfies CatalogsFeedValidationWarnings
+
+console.log(example)
+
+// Convert the instance to a JSON string
+const exampleJSON: string = JSON.stringify(example)
+console.log(exampleJSON)
+
+// Parse the JSON string back to an object
+const exampleParsed = JSON.parse(exampleJSON) as CatalogsFeedValidationWarnings
+console.log(exampleParsed)
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+

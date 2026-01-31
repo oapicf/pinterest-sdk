@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
@@ -10,55 +9,66 @@ import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.NullableCurrency;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
- **/
+ * Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.
+ */
 @ApiModel(description="Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
 
 public class CatalogsHotelFeedsCreateRequest  {
   
   @ApiModelProperty(value = "")
+
   private NullableCurrency defaultCurrency;
 
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
  /**
-   * A human-friendly name associated to a given feed.
-  **/
+  * A human-friendly name associated to a given feed.
+  */
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
+
   private String name;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsFormat format;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
 
   @ApiModelProperty(value = "")
+
   private CatalogsFeedCredentials credentials;
 
-  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
  /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  **/
+  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  */
+  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+
   private String location;
 
   @ApiModelProperty(value = "")
+
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsType catalogType;
 
-  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.")
  /**
-   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
-  **/
+  * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
+  */
+  @ApiModelProperty(value = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.")
+
   private String catalogId;
 
   @ApiModelProperty(value = "")
-  private CatalogsStatus status;
+
+  private CatalogsStatus status = "ACTIVE";
  /**
    * Get defaultCurrency
    * @return defaultCurrency

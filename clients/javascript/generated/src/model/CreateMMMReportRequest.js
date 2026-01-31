@@ -25,10 +25,17 @@ class CreateMMMReportRequest {
     /**
      * Constructs a new <code>CreateMMMReportRequest</code>.
      * @alias module:model/CreateMMMReportRequest
+     * @param reportName {String} Name of the Marketing Mix Modeling (MMM) report
+     * @param startDate {String} Metric report start date (UTC). Format: YYYY-MM-DD
+     * @param endDate {String} Metric report end date (UTC). Format: YYYY-MM-DD
+     * @param granularity {module:model/CreateMMMReportRequest.GranularityEnum} DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
+     * @param level {module:model/CreateMMMReportRequest.LevelEnum} Level of the report
+     * @param targetingTypes {Array.<module:model/MMMReportingTargetingType>} List of targeting types
+     * @param columns {Array.<module:model/MMMReportingColumn>} Metric and entity columns
      */
-    constructor() { 
+    constructor(reportName, startDate, endDate, granularity, level, targetingTypes, columns) { 
         
-        CreateMMMReportRequest.initialize(this);
+        CreateMMMReportRequest.initialize(this, reportName, startDate, endDate, granularity, level, targetingTypes, columns);
     }
 
     /**
@@ -36,7 +43,7 @@ class CreateMMMReportRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, reportName, startDate, endDate, granularity, level, targetingTypes, columns) { 
         obj['report_name'] = reportName;
         obj['start_date'] = startDate;
         obj['end_date'] = endDate;
@@ -57,6 +64,9 @@ class CreateMMMReportRequest {
         if (data) {
             obj = obj || new CreateMMMReportRequest();
 
+            if (data.hasOwnProperty('countries')) {
+                obj['countries'] = ApiClient.convertToType(data['countries'], [TargetingAdvertiserCountry]);
+            }
             if (data.hasOwnProperty('report_name')) {
                 obj['report_name'] = ApiClient.convertToType(data['report_name'], 'String');
             }
@@ -78,9 +88,6 @@ class CreateMMMReportRequest {
             if (data.hasOwnProperty('columns')) {
                 obj['columns'] = ApiClient.convertToType(data['columns'], [MMMReportingColumn]);
             }
-            if (data.hasOwnProperty('countries')) {
-                obj['countries'] = ApiClient.convertToType(data['countries'], [TargetingAdvertiserCountry]);
-            }
         }
         return obj;
     }
@@ -96,6 +103,10 @@ class CreateMMMReportRequest {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['countries'])) {
+            throw new Error("Expected the field `countries` to be an array in the JSON data but got " + data['countries']);
         }
         // ensure the json data is a string
         if (data['report_name'] && !(typeof data['report_name'] === 'string' || data['report_name'] instanceof String)) {
@@ -125,10 +136,6 @@ class CreateMMMReportRequest {
         if (!Array.isArray(data['columns'])) {
             throw new Error("Expected the field `columns` to be an array in the JSON data but got " + data['columns']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['countries'])) {
-            throw new Error("Expected the field `countries` to be an array in the JSON data but got " + data['countries']);
-        }
 
         return true;
     }
@@ -137,6 +144,12 @@ class CreateMMMReportRequest {
 }
 
 CreateMMMReportRequest.RequiredProperties = ["report_name", "start_date", "end_date", "granularity", "level", "targeting_types", "columns"];
+
+/**
+ * A List of countries for filtering
+ * @member {Array.<module:model/TargetingAdvertiserCountry>} countries
+ */
+CreateMMMReportRequest.prototype['countries'] = undefined;
 
 /**
  * Name of the Marketing Mix Modeling (MMM) report
@@ -179,12 +192,6 @@ CreateMMMReportRequest.prototype['targeting_types'] = undefined;
  * @member {Array.<module:model/MMMReportingColumn>} columns
  */
 CreateMMMReportRequest.prototype['columns'] = undefined;
-
-/**
- * A List of countries for filtering
- * @member {Array.<module:model/TargetingAdvertiserCountry>} countries
- */
-CreateMMMReportRequest.prototype['countries'] = undefined;
 
 
 

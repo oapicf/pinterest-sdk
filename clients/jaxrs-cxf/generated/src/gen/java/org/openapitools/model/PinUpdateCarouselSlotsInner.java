@@ -11,22 +11,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PinUpdateCarouselSlotsInner  {
   
-  @ApiModelProperty(value = "Carousel Pin slot title.")
  /**
-   * Carousel Pin slot title.
-  **/
+  * Carousel Pin slot title.
+  */
+  @ApiModelProperty(value = "Carousel Pin slot title.")
+
   private String title;
 
-  @ApiModelProperty(value = "Carousel Pin slot description.")
  /**
-   * Carousel Pin slot description.
-  **/
+  * Carousel Pin slot description.
+  */
+  @ApiModelProperty(value = "Carousel Pin slot description.")
+
   private String description;
 
-  @ApiModelProperty(value = "Carousel Pin slot link.")
  /**
-   * Carousel Pin slot link.
-  **/
+  * Carousel Pin slot link.
+  */
+  @ApiModelProperty(value = "Carousel Pin slot link.")
+
   private String link;
  /**
    * Carousel Pin slot title.

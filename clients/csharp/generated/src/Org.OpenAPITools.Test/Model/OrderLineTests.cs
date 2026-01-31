@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -53,6 +52,15 @@ namespace Org.OpenAPITools.Test.Model
         {
             // TODO uncomment below to test "IsType" OrderLine
             //Assert.IsType<OrderLine>(instance);
+        }
+
+        /// <summary>
+        /// Test the property 'CampaignIds'
+        /// </summary>
+        [Fact]
+        public void CampaignIdsTest()
+        {
+            // TODO unit test for the property 'CampaignIds'
         }
 
         /// <summary>
@@ -152,15 +160,6 @@ namespace Org.OpenAPITools.Test.Model
         public void PaidTypeTest()
         {
             // TODO unit test for the property 'PaidType'
-        }
-
-        /// <summary>
-        /// Test the property 'CampaignIds'
-        /// </summary>
-        [Fact]
-        public void CampaignIdsTest()
-        {
-            // TODO unit test for the property 'CampaignIds'
         }
     }
 }

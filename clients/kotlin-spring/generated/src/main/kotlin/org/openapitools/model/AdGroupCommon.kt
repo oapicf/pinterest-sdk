@@ -109,7 +109,7 @@ data class AdGroupCommon(
     @get:Size(max=1)
     @Schema(example = "null", description = "Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].")
     @get:JsonProperty("targeting_template_ids") val targetingTemplateIds: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
     /**
     * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
@@ -125,7 +125,8 @@ data class AdGroupCommon(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): BidStrategyType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdGroupCommon'")
             }
         }
     }

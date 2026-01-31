@@ -19,6 +19,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreateMMMReportRequest  {
   
  /**
+  * A List of countries for filtering
+  */
+  @ApiModelProperty(value = "A List of countries for filtering")
+  @Valid
+  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
+
+ /**
   * Name of the Marketing Mix Modeling (MMM) report
   */
   @ApiModelProperty(required = true, value = "Name of the Marketing Mix Modeling (MMM) report")
@@ -121,13 +128,38 @@ public enum LevelEnum {
   @ApiModelProperty(required = true, value = "Metric and entity columns")
   @Valid
   private List<MMMReportingColumn> columns = new ArrayList<>();
-
  /**
   * A List of countries for filtering
+  * @return countries
   */
-  @ApiModelProperty(value = "A List of countries for filtering")
-  @Valid
-  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
+  @JsonProperty("countries")
+  public List<TargetingAdvertiserCountry> getCountries() {
+    return countries;
+  }
+
+  /**
+   * Sets the <code>countries</code> property.
+   */
+ public void setCountries(List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
+  }
+
+  /**
+   * Sets the <code>countries</code> property.
+   */
+  public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
+    return this;
+  }
+
+  /**
+   * Adds a new item to the <code>countries</code> list.
+   */
+  public CreateMMMReportRequest addCountriesItem(TargetingAdvertiserCountry countriesItem) {
+    this.countries.add(countriesItem);
+    return this;
+  }
+
  /**
   * Name of the Marketing Mix Modeling (MMM) report
   * @return reportName
@@ -319,38 +351,6 @@ public enum LevelEnum {
     return this;
   }
 
- /**
-  * A List of countries for filtering
-  * @return countries
-  */
-  @JsonProperty("countries")
-  public List<TargetingAdvertiserCountry> getCountries() {
-    return countries;
-  }
-
-  /**
-   * Sets the <code>countries</code> property.
-   */
- public void setCountries(List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-  }
-
-  /**
-   * Sets the <code>countries</code> property.
-   */
-  public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-    return this;
-  }
-
-  /**
-   * Adds a new item to the <code>countries</code> list.
-   */
-  public CreateMMMReportRequest addCountriesItem(TargetingAdvertiserCountry countriesItem) {
-    this.countries.add(countriesItem);
-    return this;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -361,19 +361,19 @@ public enum LevelEnum {
       return false;
     }
     CreateMMMReportRequest createMMMReportRequest = (CreateMMMReportRequest) o;
-    return Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
+    return Objects.equals(this.countries, createMMMReportRequest.countries) &&
+        Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
         Objects.equals(this.startDate, createMMMReportRequest.startDate) &&
         Objects.equals(this.endDate, createMMMReportRequest.endDate) &&
         Objects.equals(this.granularity, createMMMReportRequest.granularity) &&
         Objects.equals(this.level, createMMMReportRequest.level) &&
         Objects.equals(this.targetingTypes, createMMMReportRequest.targetingTypes) &&
-        Objects.equals(this.columns, createMMMReportRequest.columns) &&
-        Objects.equals(this.countries, createMMMReportRequest.countries);
+        Objects.equals(this.columns, createMMMReportRequest.columns);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportName, startDate, endDate, granularity, level, targetingTypes, columns, countries);
+    return Objects.hash(countries, reportName, startDate, endDate, granularity, level, targetingTypes, columns);
   }
 
   @Override
@@ -381,6 +381,7 @@ public enum LevelEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateMMMReportRequest {\n");
     
+    sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
@@ -388,7 +389,6 @@ public enum LevelEnum {
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    targetingTypes: ").append(toIndentedString(targetingTypes)).append("\n");
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
-    sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("}");
     return sb.toString();
   }

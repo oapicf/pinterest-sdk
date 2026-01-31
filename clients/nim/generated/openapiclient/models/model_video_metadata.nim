@@ -9,13 +9,50 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type VideoMetadata* = object
   ## 
-  itemType*: string
-  coverImageUrl*: string
-  videoUrl*: string ## Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-  duration*: float ## Duration (in milliseconds)
-  height*: int ## Height (in pixels)
-  width*: int ## Width (in pixels)
+  itemType*: Option[string]
+  coverImageUrl*: Option[string]
+  videoUrl*: Option[string] ## Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+  duration*: Option[float] ## Duration (in milliseconds)
+  height*: Option[int] ## Height (in pixels)
+  width*: Option[int] ## Width (in pixels)
+
+
+# Custom JSON deserialization for VideoMetadata with custom field names
+proc to*(node: JsonNode, T: typedesc[VideoMetadata]): VideoMetadata =
+  result = VideoMetadata()
+  if node.kind == JObject:
+    if node.hasKey("item_type") and node["item_type"].kind != JNull:
+      result.itemType = some(to(node["item_type"], typeof(result.itemType.get())))
+    if node.hasKey("cover_image_url") and node["cover_image_url"].kind != JNull:
+      result.coverImageUrl = some(to(node["cover_image_url"], typeof(result.coverImageUrl.get())))
+    if node.hasKey("video_url") and node["video_url"].kind != JNull:
+      result.videoUrl = some(to(node["video_url"], typeof(result.videoUrl.get())))
+    if node.hasKey("duration") and node["duration"].kind != JNull:
+      result.duration = some(to(node["duration"], typeof(result.duration.get())))
+    if node.hasKey("height") and node["height"].kind != JNull:
+      result.height = some(to(node["height"], typeof(result.height.get())))
+    if node.hasKey("width") and node["width"].kind != JNull:
+      result.width = some(to(node["width"], typeof(result.width.get())))
+
+# Custom JSON serialization for VideoMetadata with custom field names
+proc `%`*(obj: VideoMetadata): JsonNode =
+  result = newJObject()
+  if obj.itemType.isSome():
+    result["item_type"] = %obj.itemType.get()
+  if obj.coverImageUrl.isSome():
+    result["cover_image_url"] = %obj.coverImageUrl.get()
+  if obj.videoUrl.isSome():
+    result["video_url"] = %obj.videoUrl.get()
+  if obj.duration.isSome():
+    result["duration"] = %obj.duration.get()
+  if obj.height.isSome():
+    result["height"] = %obj.height.get()
+  if obj.width.isSome():
+    result["width"] = %obj.width.get()
+

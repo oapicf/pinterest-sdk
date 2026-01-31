@@ -176,12 +176,10 @@ namespace Org.OpenAPITools.Model
                             hotelId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "pins":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pins = new Option<List<Pin>?>(JsonSerializer.Deserialize<List<Pin>>(ref utf8JsonReader, jsonSerializerOptions));
+                            pins = new Option<List<Pin>?>(JsonSerializer.Deserialize<List<Pin>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "attributes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                attributes = new Option<CatalogsHotelAttributes?>(JsonSerializer.Deserialize<CatalogsHotelAttributes>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            attributes = new Option<CatalogsHotelAttributes?>(JsonSerializer.Deserialize<CatalogsHotelAttributes>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

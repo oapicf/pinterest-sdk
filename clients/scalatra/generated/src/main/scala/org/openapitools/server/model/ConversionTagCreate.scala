@@ -12,9 +12,6 @@
 package org.openapitools.server.model
 
 case class ConversionTagCreate(
-  /* Conversion tag name. */
-  name: String,
-
   /* Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
   aemEnabled: Option[Boolean],
 
@@ -34,6 +31,9 @@ case class ConversionTagCreate(
   aemDbEnabled: Option[Boolean],
 
   /* Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
-  aemLocEnabled: Option[Boolean]
+  aemLocEnabled: Option[Boolean],
+
+  /* Conversion tag name. */
+  name: String
 
  )

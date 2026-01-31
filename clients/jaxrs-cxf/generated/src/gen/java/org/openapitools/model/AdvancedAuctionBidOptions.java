@@ -1,35 +1,40 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.AppTypeMultipliers;
 import org.openapitools.model.PlacementMultipliers;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object describing a retail catalog item's bid options (bid price and bid multipliers).
- **/
+ * Object describing a retail catalog item's bid options (bid price and bid multipliers).
+ */
 @ApiModel(description="Object describing a retail catalog item's bid options (bid price and bid multipliers).")
 
 public class AdvancedAuctionBidOptions  {
   
-  @ApiModelProperty(example = "5000000", value = "Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.")
  /**
-   * Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
-  **/
+  * Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.
+  */
+  @ApiModelProperty(example = "5000000", value = "Bid price in micro currency. A value of 0 will stop distribution for this item in `MAX_BID` ad groups in `CATALOG_SALES` campaigns. A value of `null` will fallback to the ad group's `bid_in_micro_currency`.")
+
   private Long bidInMicroCurrency;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private AppTypeMultipliers appTypeMultipliers;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private PlacementMultipliers placementMultipliers;
  /**
    * Bid price in micro currency. A value of 0 will stop distribution for this item in &#x60;MAX_BID&#x60; ad groups in &#x60;CATALOG_SALES&#x60; campaigns. A value of &#x60;null&#x60; will fallback to the ad group&#39;s &#x60;bid_in_micro_currency&#x60;.

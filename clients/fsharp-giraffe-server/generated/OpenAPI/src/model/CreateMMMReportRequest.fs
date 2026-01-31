@@ -18,6 +18,7 @@ module CreateMMMReportRequest =
   //#endregion
 
   type CreateMMMReportRequest = {
+    Countries : TargetingAdvertiserCountry[];
     ReportName : string;
     StartDate : string;
     EndDate : string;
@@ -25,6 +26,5 @@ module CreateMMMReportRequest =
     Level : LevelEnum;
     TargetingTypes : MMMReportingTargetingType[];
     Columns : MMMReportingColumn[];
-    Countries : TargetingAdvertiserCountry[];
   }
   //#endregion

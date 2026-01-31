@@ -68,10 +68,7 @@ export class AudienceSharingApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (accountType !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(accountType, "AudienceAccountType", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
-            }
+            requestContext.setQueryParam("account_type", ObjectSerializer.serialize(accountType, "AudienceAccountType", ""));
         }
 
         // Query Params
@@ -147,10 +144,7 @@ export class AudienceSharingApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (accountType !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(accountType, "AudienceAccountType", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
-            }
+            requestContext.setQueryParam("account_type", ObjectSerializer.serialize(accountType, "AudienceAccountType", ""));
         }
 
         // Query Params

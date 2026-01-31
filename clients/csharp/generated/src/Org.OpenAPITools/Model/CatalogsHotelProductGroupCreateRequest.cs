@@ -233,8 +233,7 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "filters":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                filters = new Option<CatalogsHotelProductGroupFilters?>(JsonSerializer.Deserialize<CatalogsHotelProductGroupFilters>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            filters = new Option<CatalogsHotelProductGroupFilters?>(JsonSerializer.Deserialize<CatalogsHotelProductGroupFilters>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "catalog_id":
                             catalogId = new Option<string?>(utf8JsonReader.GetString()!);

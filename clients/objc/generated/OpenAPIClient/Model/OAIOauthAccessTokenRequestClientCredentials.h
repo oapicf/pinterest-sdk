@@ -23,8 +23,8 @@
 @interface OAIOauthAccessTokenRequestClientCredentials : OAIObject
 
 
-@property(nonatomic) NSString* grantType;
-
 @property(nonatomic) NSString* scope;
+
+@property(nonatomic) NSString* grantType;
 
 @end

@@ -35,7 +35,7 @@ data class AdvancedAuctionItemsGetRecord(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("language", required = true) val language: Language
-    ) {
+) {
 
 }
 

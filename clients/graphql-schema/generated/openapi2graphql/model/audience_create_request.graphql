@@ -18,6 +18,7 @@ type AudienceCreateRequest {
   # Audience description.
   description: String!
 
-  audience_type: AudienceCreateRequest1AudienceType
+  # &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+  audience_type: AudienceType
 
 }

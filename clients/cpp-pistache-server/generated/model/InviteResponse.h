@@ -19,6 +19,7 @@
 #define InviteResponse_H_
 
 
+#include <nlohmann/json.hpp>
 #include "InviteAssetsSummary.h"
 #include <string>
 #include "BaseInviteDataResponse_invite_data.h"
@@ -63,41 +64,6 @@ public:
     /// InviteResponse members
 
     /// <summary>
-    /// 
-    /// </summary>
-    org::openapitools::server::model::InviteAssetsSummary getAssetsSummary() const;
-    void setAssetsSummary(org::openapitools::server::model::InviteAssetsSummary const& value);
-    bool assetsSummaryIsSet() const;
-    void unsetAssets_summary();
-    /// <summary>
-    /// The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-    /// </summary>
-    std::vector<std::string> getBusinessRoles() const;
-    void setBusinessRoles(std::vector<std::string> const& value);
-    bool businessRolesIsSet() const;
-    void unsetBusiness_roles();
-    /// <summary>
-    /// Metadata for the business that created the invite/request.
-    /// </summary>
-    org::openapitools::server::model::BusinessAccessUserSummary getCreatedByBusiness() const;
-    void setCreatedByBusiness(org::openapitools::server::model::BusinessAccessUserSummary const& value);
-    bool createdByBusinessIsSet() const;
-    void unsetCreated_by_business();
-    /// <summary>
-    /// Metadata for the user that created the invite/request.
-    /// </summary>
-    org::openapitools::server::model::BusinessAccessUserSummary getCreatedByUser() const;
-    void setCreatedByUser(org::openapitools::server::model::BusinessAccessUserSummary const& value);
-    bool createdByUserIsSet() const;
-    void unsetCreated_by_user();
-    /// <summary>
-    /// The time the invite/request was created. Returned in milliseconds.
-    /// </summary>
-    int32_t getCreatedTime() const;
-    void setCreatedTime(int32_t const value);
-    bool createdTimeIsSet() const;
-    void unsetCreated_time();
-    /// <summary>
     /// Unique identifier of the invite/request.
     /// </summary>
     std::string getId() const;
@@ -125,20 +91,45 @@ public:
     void setUser(org::openapitools::server::model::BusinessAccessUserSummary const& value);
     bool userIsSet() const;
     void unsetUser();
+    /// <summary>
+    /// 
+    /// </summary>
+    org::openapitools::server::model::InviteAssetsSummary getAssetsSummary() const;
+    void setAssetsSummary(org::openapitools::server::model::InviteAssetsSummary const& value);
+    bool assetsSummaryIsSet() const;
+    void unsetAssets_summary();
+    /// <summary>
+    /// The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+    /// </summary>
+    std::vector<std::string> getBusinessRoles() const;
+    void setBusinessRoles(std::vector<std::string> const& value);
+    bool businessRolesIsSet() const;
+    void unsetBusiness_roles();
+    /// <summary>
+    /// Metadata for the business that created the invite/request.
+    /// </summary>
+    nlohmann::json getCreatedByBusiness() const;
+    void setCreatedByBusiness(nlohmann::json const& value);
+    bool createdByBusinessIsSet() const;
+    void unsetCreated_by_business();
+    /// <summary>
+    /// Metadata for the user that created the invite/request.
+    /// </summary>
+    nlohmann::json getCreatedByUser() const;
+    void setCreatedByUser(nlohmann::json const& value);
+    bool createdByUserIsSet() const;
+    void unsetCreated_by_user();
+    /// <summary>
+    /// The time the invite/request was created. Returned in milliseconds.
+    /// </summary>
+    int32_t getCreatedTime() const;
+    void setCreatedTime(int32_t const value);
+    bool createdTimeIsSet() const;
+    void unsetCreated_time();
 
     friend  void to_json(nlohmann::json& j, const InviteResponse& o);
     friend  void from_json(const nlohmann::json& j, InviteResponse& o);
 protected:
-    org::openapitools::server::model::InviteAssetsSummary m_Assets_summary;
-    bool m_Assets_summaryIsSet;
-    std::vector<std::string> m_Business_roles;
-    bool m_Business_rolesIsSet;
-    org::openapitools::server::model::BusinessAccessUserSummary m_Created_by_business;
-    bool m_Created_by_businessIsSet;
-    org::openapitools::server::model::BusinessAccessUserSummary m_Created_by_user;
-    bool m_Created_by_userIsSet;
-    int32_t m_Created_time;
-    bool m_Created_timeIsSet;
     std::string m_Id;
     bool m_IdIsSet;
     org::openapitools::server::model::BaseInviteDataResponse_invite_data m_Invite_data;
@@ -147,6 +138,16 @@ protected:
     bool m_Is_received_inviteIsSet;
     org::openapitools::server::model::BusinessAccessUserSummary m_User;
     bool m_UserIsSet;
+    org::openapitools::server::model::InviteAssetsSummary m_Assets_summary;
+    bool m_Assets_summaryIsSet;
+    std::vector<std::string> m_Business_roles;
+    bool m_Business_rolesIsSet;
+    nlohmann::json m_Created_by_business;
+    bool m_Created_by_businessIsSet;
+    nlohmann::json m_Created_by_user;
+    bool m_Created_by_userIsSet;
+    int32_t m_Created_time;
+    bool m_Created_timeIsSet;
     
 };
 

@@ -168,8 +168,6 @@ force-app/main/default/classes/OASAudienceCreateCustomRequest.cls
 force-app/main/default/classes/OASAudienceCreateCustomRequest.cls-meta.xml
 force-app/main/default/classes/OASAudienceCreateRequest.cls
 force-app/main/default/classes/OASAudienceCreateRequest.cls-meta.xml
-force-app/main/default/classes/OASAudienceCreateRequest1AudienceTyp.cls
-force-app/main/default/classes/OASAudienceCreateRequest1AudienceTyp.cls-meta.xml
 force-app/main/default/classes/OASAudienceDataParty.cls
 force-app/main/default/classes/OASAudienceDataParty.cls-meta.xml
 force-app/main/default/classes/OASAudienceDefinition.cls
@@ -526,8 +524,6 @@ force-app/main/default/classes/OASCatalogsItemsPostFilters.cls
 force-app/main/default/classes/OASCatalogsItemsPostFilters.cls-meta.xml
 force-app/main/default/classes/OASCatalogsItemsRequest.cls
 force-app/main/default/classes/OASCatalogsItemsRequest.cls-meta.xml
-force-app/main/default/classes/OASCatalogsItemsRequestLanguage.cls
-force-app/main/default/classes/OASCatalogsItemsRequestLanguage.cls-meta.xml
 force-app/main/default/classes/OASCatalogsItemsUpdateBatchRequest.cls
 force-app/main/default/classes/OASCatalogsItemsUpdateBatchRequest.cls-meta.xml
 force-app/main/default/classes/OASCatalogsItemsUpsertBatchRequest.cls
@@ -1198,8 +1194,6 @@ force-app/main/default/classes/OASPinUpdate.cls
 force-app/main/default/classes/OASPinUpdate.cls-meta.xml
 force-app/main/default/classes/OASPinUpdateCarouselSlotsInner.cls
 force-app/main/default/classes/OASPinUpdateCarouselSlotsInner.cls-meta.xml
-force-app/main/default/classes/OASPinsAnalyticsMetricTypesParameter.cls
-force-app/main/default/classes/OASPinsAnalyticsMetricTypesParameter.cls-meta.xml
 force-app/main/default/classes/OASPinsApi.cls
 force-app/main/default/classes/OASPinsApi.cls-meta.xml
 force-app/main/default/classes/OASPinsList200Response.cls

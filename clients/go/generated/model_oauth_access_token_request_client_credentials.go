@@ -20,10 +20,10 @@ import (
 // checks if the OauthAccessTokenRequestClientCredentials type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OauthAccessTokenRequestClientCredentials{}
 
-// OauthAccessTokenRequestClientCredentials A request to receive a client token.
+// OauthAccessTokenRequestClientCredentials struct for OauthAccessTokenRequestClientCredentials
 type OauthAccessTokenRequestClientCredentials struct {
-	GrantType string `json:"grant_type"`
 	Scope string `json:"scope"`
+	GrantType string `json:"grant_type"`
 }
 
 type _OauthAccessTokenRequestClientCredentials OauthAccessTokenRequestClientCredentials
@@ -32,9 +32,10 @@ type _OauthAccessTokenRequestClientCredentials OauthAccessTokenRequestClientCred
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOauthAccessTokenRequestClientCredentials(grantType string, scope string) *OauthAccessTokenRequestClientCredentials {
+func NewOauthAccessTokenRequestClientCredentials(scope string, grantType string) *OauthAccessTokenRequestClientCredentials {
 	this := OauthAccessTokenRequestClientCredentials{}
 	this.Scope = scope
+	this.GrantType = grantType
 	return &this
 }
 
@@ -44,30 +45,6 @@ func NewOauthAccessTokenRequestClientCredentials(grantType string, scope string)
 func NewOauthAccessTokenRequestClientCredentialsWithDefaults() *OauthAccessTokenRequestClientCredentials {
 	this := OauthAccessTokenRequestClientCredentials{}
 	return &this
-}
-
-// GetGrantType returns the GrantType field value
-func (o *OauthAccessTokenRequestClientCredentials) GetGrantType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.GrantType
-}
-
-// GetGrantTypeOk returns a tuple with the GrantType field value
-// and a boolean to check if the value has been set.
-func (o *OauthAccessTokenRequestClientCredentials) GetGrantTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.GrantType, true
-}
-
-// SetGrantType sets field value
-func (o *OauthAccessTokenRequestClientCredentials) SetGrantType(v string) {
-	o.GrantType = v
 }
 
 // GetScope returns the Scope field value
@@ -94,6 +71,30 @@ func (o *OauthAccessTokenRequestClientCredentials) SetScope(v string) {
 	o.Scope = v
 }
 
+// GetGrantType returns the GrantType field value
+func (o *OauthAccessTokenRequestClientCredentials) GetGrantType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.GrantType
+}
+
+// GetGrantTypeOk returns a tuple with the GrantType field value
+// and a boolean to check if the value has been set.
+func (o *OauthAccessTokenRequestClientCredentials) GetGrantTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GrantType, true
+}
+
+// SetGrantType sets field value
+func (o *OauthAccessTokenRequestClientCredentials) SetGrantType(v string) {
+	o.GrantType = v
+}
+
 func (o OauthAccessTokenRequestClientCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -104,8 +105,8 @@ func (o OauthAccessTokenRequestClientCredentials) MarshalJSON() ([]byte, error) 
 
 func (o OauthAccessTokenRequestClientCredentials) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["grant_type"] = o.GrantType
 	toSerialize["scope"] = o.Scope
+	toSerialize["grant_type"] = o.GrantType
 	return toSerialize, nil
 }
 
@@ -114,8 +115,8 @@ func (o *OauthAccessTokenRequestClientCredentials) UnmarshalJSON(data []byte) (e
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"grant_type",
 		"scope",
+		"grant_type",
 	}
 
 	allProperties := make(map[string]interface{})

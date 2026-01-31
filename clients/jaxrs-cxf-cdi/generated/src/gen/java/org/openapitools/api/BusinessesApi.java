@@ -74,10 +74,10 @@ import javax.validation.Valid;
 @Path("/businesses")
 @RequestScoped
 
-@Api(description = "the businesses API")
+@Api
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2025-05-10T05:40:26.530137127Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-26T05:37:19.298233885Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 
 public class BusinessesApi  {
 
@@ -271,7 +271,7 @@ public class BusinessesApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = BusinessPartnerAssetAccessGet200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response businessPartnerAssetAccessGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)@ApiParam(value = "Unique identifier of the requesting business.",required=true) @PathParam("business_id") String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)@ApiParam(value = "The partner id to be bound to the Business",required=true) @PathParam("partner_id") String partnerId, @ApiParam(value = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.")  @QueryParam("partner_type") PartnerType partnerType, @ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP", defaultValue="AD_ACCOUNT") @DefaultValue("AD_ACCOUNT")  @QueryParam("asset_type") String assetType,  @Min(0)@ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue="0") @DefaultValue("0")  @QueryParam("start_index") Integer startIndex,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
+    public Response businessPartnerAssetAccessGet( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)@ApiParam(value = "Unique identifier of the requesting business.",required=true) @PathParam("business_id") String businessId,  @Pattern(regexp="^\\d+$") @Size(min=1,max=20)@ApiParam(value = "The partner id to be bound to the Business",required=true) @PathParam("partner_id") String partnerId, @ApiParam(value = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", allowableValues="INTERNAL, EXTERNAL", defaultValue="INTERNAL") @DefaultValue("INTERNAL")  @QueryParam("partner_type") PartnerType partnerType, @ApiParam(value = "A resource type to filter the assets by. Only assets of the specified type will be returned.", allowableValues="AD_ACCOUNT, PROFILE, ASSET_GROUP", defaultValue="AD_ACCOUNT") @DefaultValue("AD_ACCOUNT")  @QueryParam("asset_type") String assetType,  @Min(0)@ApiParam(value = "An index to start fetching the results from. Only the results starting from this index will be returned.", defaultValue="0") @DefaultValue("0")  @QueryParam("start_index") Integer startIndex,  @Min(1) @Max(250)@ApiParam(value = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", defaultValue="25") @DefaultValue("25")  @QueryParam("page_size") Integer pageSize, @ApiParam(value = "Cursor used to fetch the next page of items")  @QueryParam("bookmark") String bookmark) {
         return delegate.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark, securityContext);
     }
 

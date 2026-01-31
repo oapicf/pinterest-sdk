@@ -116,7 +116,6 @@ model/AudienceCategory.ts
 model/AudienceCommon.ts
 model/AudienceCreateCustomRequest.ts
 model/AudienceCreateRequest.ts
-model/AudienceCreateRequest1AudienceType.ts
 model/AudienceDataParty.ts
 model/AudienceDefinition.ts
 model/AudienceDefinitionResponse.ts
@@ -294,7 +293,6 @@ model/CatalogsItemsDeleteDiscontinuedBatchRequest.ts
 model/CatalogsItemsFilters.ts
 model/CatalogsItemsPostFilters.ts
 model/CatalogsItemsRequest.ts
-model/CatalogsItemsRequestLanguage.ts
 model/CatalogsItemsUpdateBatchRequest.ts
 model/CatalogsItemsUpsertBatchRequest.ts
 model/CatalogsList200Response.ts
@@ -628,7 +626,6 @@ model/PinMediaWithVideos.ts
 model/PinPromotionSummaryStatus.ts
 model/PinUpdate.ts
 model/PinUpdateCarouselSlotsInner.ts
-model/PinsAnalyticsMetricTypesParameterInner.ts
 model/PinsList200Response.ts
 model/PinsSaveRequest.ts
 model/PinterestTagEventData.ts

@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * CatalogsItemValidationWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemValidationWarnings {
 
   private @Nullable CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING;
@@ -111,7 +111,7 @@ public class CatalogsItemValidationWarnings {
 
   private @Nullable CatalogsItemValidationDetails WEIGHT_UNIT_INVALID;
 
-  public CatalogsItemValidationWarnings AD_LINK_FORMAT_WARNING(CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING) {
+  public CatalogsItemValidationWarnings AD_LINK_FORMAT_WARNING(@Nullable CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING) {
     this.AD_LINK_FORMAT_WARNING = AD_LINK_FORMAT_WARNING;
     return this;
   }
@@ -123,15 +123,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "AD_LINK_FORMAT_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_LINK_FORMAT_WARNING")
-  public CatalogsItemValidationDetails getADLINKFORMATWARNING() {
+  public @Nullable CatalogsItemValidationDetails getADLINKFORMATWARNING() {
     return AD_LINK_FORMAT_WARNING;
   }
 
-  public void setADLINKFORMATWARNING(CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING) {
+  public void setADLINKFORMATWARNING(@Nullable CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING) {
     this.AD_LINK_FORMAT_WARNING = AD_LINK_FORMAT_WARNING;
   }
 
-  public CatalogsItemValidationWarnings AD_LINK_SAME_AS_LINK(CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK) {
+  public CatalogsItemValidationWarnings AD_LINK_SAME_AS_LINK(@Nullable CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK) {
     this.AD_LINK_SAME_AS_LINK = AD_LINK_SAME_AS_LINK;
     return this;
   }
@@ -143,15 +143,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "AD_LINK_SAME_AS_LINK", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AD_LINK_SAME_AS_LINK")
-  public CatalogsItemValidationDetails getADLINKSAMEASLINK() {
+  public @Nullable CatalogsItemValidationDetails getADLINKSAMEASLINK() {
     return AD_LINK_SAME_AS_LINK;
   }
 
-  public void setADLINKSAMEASLINK(CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK) {
+  public void setADLINKSAMEASLINK(@Nullable CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK) {
     this.AD_LINK_SAME_AS_LINK = AD_LINK_SAME_AS_LINK;
   }
 
-  public CatalogsItemValidationWarnings ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG(CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
+  public CatalogsItemValidationWarnings ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG(@Nullable CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
     this.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
     return this;
   }
@@ -163,15 +163,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG")
-  public CatalogsItemValidationDetails getADDITIONALIMAGELINKLENGTHTOOLONG() {
+  public @Nullable CatalogsItemValidationDetails getADDITIONALIMAGELINKLENGTHTOOLONG() {
     return ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
-  public void setADDITIONALIMAGELINKLENGTHTOOLONG(CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
+  public void setADDITIONALIMAGELINKLENGTHTOOLONG(@Nullable CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG) {
     this.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
-  public CatalogsItemValidationWarnings ADDITIONAL_IMAGE_LINK_WARNING(CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING) {
+  public CatalogsItemValidationWarnings ADDITIONAL_IMAGE_LINK_WARNING(@Nullable CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING) {
     this.ADDITIONAL_IMAGE_LINK_WARNING = ADDITIONAL_IMAGE_LINK_WARNING;
     return this;
   }
@@ -183,15 +183,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "ADDITIONAL_IMAGE_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_LINK_WARNING")
-  public CatalogsItemValidationDetails getADDITIONALIMAGELINKWARNING() {
+  public @Nullable CatalogsItemValidationDetails getADDITIONALIMAGELINKWARNING() {
     return ADDITIONAL_IMAGE_LINK_WARNING;
   }
 
-  public void setADDITIONALIMAGELINKWARNING(CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING) {
+  public void setADDITIONALIMAGELINKWARNING(@Nullable CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING) {
     this.ADDITIONAL_IMAGE_LINK_WARNING = ADDITIONAL_IMAGE_LINK_WARNING;
   }
 
-  public CatalogsItemValidationWarnings ADWORDS_FORMAT_WARNING(CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING) {
+  public CatalogsItemValidationWarnings ADWORDS_FORMAT_WARNING(@Nullable CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING) {
     this.ADWORDS_FORMAT_WARNING = ADWORDS_FORMAT_WARNING;
     return this;
   }
@@ -203,15 +203,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "ADWORDS_FORMAT_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_FORMAT_WARNING")
-  public CatalogsItemValidationDetails getADWORDSFORMATWARNING() {
+  public @Nullable CatalogsItemValidationDetails getADWORDSFORMATWARNING() {
     return ADWORDS_FORMAT_WARNING;
   }
 
-  public void setADWORDSFORMATWARNING(CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING) {
+  public void setADWORDSFORMATWARNING(@Nullable CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING) {
     this.ADWORDS_FORMAT_WARNING = ADWORDS_FORMAT_WARNING;
   }
 
-  public CatalogsItemValidationWarnings ADWORDS_SAME_AS_LINK(CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK) {
+  public CatalogsItemValidationWarnings ADWORDS_SAME_AS_LINK(@Nullable CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK) {
     this.ADWORDS_SAME_AS_LINK = ADWORDS_SAME_AS_LINK;
     return this;
   }
@@ -223,15 +223,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "ADWORDS_SAME_AS_LINK", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_SAME_AS_LINK")
-  public CatalogsItemValidationDetails getADWORDSSAMEASLINK() {
+  public @Nullable CatalogsItemValidationDetails getADWORDSSAMEASLINK() {
     return ADWORDS_SAME_AS_LINK;
   }
 
-  public void setADWORDSSAMEASLINK(CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK) {
+  public void setADWORDSSAMEASLINK(@Nullable CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK) {
     this.ADWORDS_SAME_AS_LINK = ADWORDS_SAME_AS_LINK;
   }
 
-  public CatalogsItemValidationWarnings AGE_GROUP_INVALID(CatalogsItemValidationDetails AGE_GROUP_INVALID) {
+  public CatalogsItemValidationWarnings AGE_GROUP_INVALID(@Nullable CatalogsItemValidationDetails AGE_GROUP_INVALID) {
     this.AGE_GROUP_INVALID = AGE_GROUP_INVALID;
     return this;
   }
@@ -243,15 +243,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "AGE_GROUP_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AGE_GROUP_INVALID")
-  public CatalogsItemValidationDetails getAGEGROUPINVALID() {
+  public @Nullable CatalogsItemValidationDetails getAGEGROUPINVALID() {
     return AGE_GROUP_INVALID;
   }
 
-  public void setAGEGROUPINVALID(CatalogsItemValidationDetails AGE_GROUP_INVALID) {
+  public void setAGEGROUPINVALID(@Nullable CatalogsItemValidationDetails AGE_GROUP_INVALID) {
     this.AGE_GROUP_INVALID = AGE_GROUP_INVALID;
   }
 
-  public CatalogsItemValidationWarnings SIZE_SYSTEM_INVALID(CatalogsItemValidationDetails SIZE_SYSTEM_INVALID) {
+  public CatalogsItemValidationWarnings SIZE_SYSTEM_INVALID(@Nullable CatalogsItemValidationDetails SIZE_SYSTEM_INVALID) {
     this.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID;
     return this;
   }
@@ -263,15 +263,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "SIZE_SYSTEM_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SIZE_SYSTEM_INVALID")
-  public CatalogsItemValidationDetails getSIZESYSTEMINVALID() {
+  public @Nullable CatalogsItemValidationDetails getSIZESYSTEMINVALID() {
     return SIZE_SYSTEM_INVALID;
   }
 
-  public void setSIZESYSTEMINVALID(CatalogsItemValidationDetails SIZE_SYSTEM_INVALID) {
+  public void setSIZESYSTEMINVALID(@Nullable CatalogsItemValidationDetails SIZE_SYSTEM_INVALID) {
     this.SIZE_SYSTEM_INVALID = SIZE_SYSTEM_INVALID;
   }
 
-  public CatalogsItemValidationWarnings ANDROID_DEEP_LINK_INVALID(CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID) {
+  public CatalogsItemValidationWarnings ANDROID_DEEP_LINK_INVALID(@Nullable CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID) {
     this.ANDROID_DEEP_LINK_INVALID = ANDROID_DEEP_LINK_INVALID;
     return this;
   }
@@ -283,15 +283,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "ANDROID_DEEP_LINK_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ANDROID_DEEP_LINK_INVALID")
-  public CatalogsItemValidationDetails getANDROIDDEEPLINKINVALID() {
+  public @Nullable CatalogsItemValidationDetails getANDROIDDEEPLINKINVALID() {
     return ANDROID_DEEP_LINK_INVALID;
   }
 
-  public void setANDROIDDEEPLINKINVALID(CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID) {
+  public void setANDROIDDEEPLINKINVALID(@Nullable CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID) {
     this.ANDROID_DEEP_LINK_INVALID = ANDROID_DEEP_LINK_INVALID;
   }
 
-  public CatalogsItemValidationWarnings AVAILABILITY_DATE_INVALID(CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID) {
+  public CatalogsItemValidationWarnings AVAILABILITY_DATE_INVALID(@Nullable CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID) {
     this.AVAILABILITY_DATE_INVALID = AVAILABILITY_DATE_INVALID;
     return this;
   }
@@ -303,15 +303,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "AVAILABILITY_DATE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AVAILABILITY_DATE_INVALID")
-  public CatalogsItemValidationDetails getAVAILABILITYDATEINVALID() {
+  public @Nullable CatalogsItemValidationDetails getAVAILABILITYDATEINVALID() {
     return AVAILABILITY_DATE_INVALID;
   }
 
-  public void setAVAILABILITYDATEINVALID(CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID) {
+  public void setAVAILABILITYDATEINVALID(@Nullable CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID) {
     this.AVAILABILITY_DATE_INVALID = AVAILABILITY_DATE_INVALID;
   }
 
-  public CatalogsItemValidationWarnings COUNTRY_DOES_NOT_MAP_TO_CURRENCY(CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
+  public CatalogsItemValidationWarnings COUNTRY_DOES_NOT_MAP_TO_CURRENCY(@Nullable CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
     this.COUNTRY_DOES_NOT_MAP_TO_CURRENCY = COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
     return this;
   }
@@ -323,15 +323,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "COUNTRY_DOES_NOT_MAP_TO_CURRENCY", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("COUNTRY_DOES_NOT_MAP_TO_CURRENCY")
-  public CatalogsItemValidationDetails getCOUNTRYDOESNOTMAPTOCURRENCY() {
+  public @Nullable CatalogsItemValidationDetails getCOUNTRYDOESNOTMAPTOCURRENCY() {
     return COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
   }
 
-  public void setCOUNTRYDOESNOTMAPTOCURRENCY(CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
+  public void setCOUNTRYDOESNOTMAPTOCURRENCY(@Nullable CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY) {
     this.COUNTRY_DOES_NOT_MAP_TO_CURRENCY = COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
   }
 
-  public CatalogsItemValidationWarnings CUSTOM_LABEL_LENGTH_TOO_LONG(CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG) {
+  public CatalogsItemValidationWarnings CUSTOM_LABEL_LENGTH_TOO_LONG(@Nullable CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG) {
     this.CUSTOM_LABEL_LENGTH_TOO_LONG = CUSTOM_LABEL_LENGTH_TOO_LONG;
     return this;
   }
@@ -343,15 +343,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "CUSTOM_LABEL_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("CUSTOM_LABEL_LENGTH_TOO_LONG")
-  public CatalogsItemValidationDetails getCUSTOMLABELLENGTHTOOLONG() {
+  public @Nullable CatalogsItemValidationDetails getCUSTOMLABELLENGTHTOOLONG() {
     return CUSTOM_LABEL_LENGTH_TOO_LONG;
   }
 
-  public void setCUSTOMLABELLENGTHTOOLONG(CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG) {
+  public void setCUSTOMLABELLENGTHTOOLONG(@Nullable CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG) {
     this.CUSTOM_LABEL_LENGTH_TOO_LONG = CUSTOM_LABEL_LENGTH_TOO_LONG;
   }
 
-  public CatalogsItemValidationWarnings DESCRIPTION_LENGTH_TOO_LONG(CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG) {
+  public CatalogsItemValidationWarnings DESCRIPTION_LENGTH_TOO_LONG(@Nullable CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG) {
     this.DESCRIPTION_LENGTH_TOO_LONG = DESCRIPTION_LENGTH_TOO_LONG;
     return this;
   }
@@ -363,15 +363,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "DESCRIPTION_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DESCRIPTION_LENGTH_TOO_LONG")
-  public CatalogsItemValidationDetails getDESCRIPTIONLENGTHTOOLONG() {
+  public @Nullable CatalogsItemValidationDetails getDESCRIPTIONLENGTHTOOLONG() {
     return DESCRIPTION_LENGTH_TOO_LONG;
   }
 
-  public void setDESCRIPTIONLENGTHTOOLONG(CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG) {
+  public void setDESCRIPTIONLENGTHTOOLONG(@Nullable CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG) {
     this.DESCRIPTION_LENGTH_TOO_LONG = DESCRIPTION_LENGTH_TOO_LONG;
   }
 
-  public CatalogsItemValidationWarnings EXPIRATION_DATE_INVALID(CatalogsItemValidationDetails EXPIRATION_DATE_INVALID) {
+  public CatalogsItemValidationWarnings EXPIRATION_DATE_INVALID(@Nullable CatalogsItemValidationDetails EXPIRATION_DATE_INVALID) {
     this.EXPIRATION_DATE_INVALID = EXPIRATION_DATE_INVALID;
     return this;
   }
@@ -383,15 +383,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "EXPIRATION_DATE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("EXPIRATION_DATE_INVALID")
-  public CatalogsItemValidationDetails getEXPIRATIONDATEINVALID() {
+  public @Nullable CatalogsItemValidationDetails getEXPIRATIONDATEINVALID() {
     return EXPIRATION_DATE_INVALID;
   }
 
-  public void setEXPIRATIONDATEINVALID(CatalogsItemValidationDetails EXPIRATION_DATE_INVALID) {
+  public void setEXPIRATIONDATEINVALID(@Nullable CatalogsItemValidationDetails EXPIRATION_DATE_INVALID) {
     this.EXPIRATION_DATE_INVALID = EXPIRATION_DATE_INVALID;
   }
 
-  public CatalogsItemValidationWarnings GENDER_INVALID(CatalogsItemValidationDetails GENDER_INVALID) {
+  public CatalogsItemValidationWarnings GENDER_INVALID(@Nullable CatalogsItemValidationDetails GENDER_INVALID) {
     this.GENDER_INVALID = GENDER_INVALID;
     return this;
   }
@@ -403,15 +403,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "GENDER_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("GENDER_INVALID")
-  public CatalogsItemValidationDetails getGENDERINVALID() {
+  public @Nullable CatalogsItemValidationDetails getGENDERINVALID() {
     return GENDER_INVALID;
   }
 
-  public void setGENDERINVALID(CatalogsItemValidationDetails GENDER_INVALID) {
+  public void setGENDERINVALID(@Nullable CatalogsItemValidationDetails GENDER_INVALID) {
     this.GENDER_INVALID = GENDER_INVALID;
   }
 
-  public CatalogsItemValidationWarnings GTIN_INVALID(CatalogsItemValidationDetails GTIN_INVALID) {
+  public CatalogsItemValidationWarnings GTIN_INVALID(@Nullable CatalogsItemValidationDetails GTIN_INVALID) {
     this.GTIN_INVALID = GTIN_INVALID;
     return this;
   }
@@ -423,15 +423,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "GTIN_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("GTIN_INVALID")
-  public CatalogsItemValidationDetails getGTININVALID() {
+  public @Nullable CatalogsItemValidationDetails getGTININVALID() {
     return GTIN_INVALID;
   }
 
-  public void setGTININVALID(CatalogsItemValidationDetails GTIN_INVALID) {
+  public void setGTININVALID(@Nullable CatalogsItemValidationDetails GTIN_INVALID) {
     this.GTIN_INVALID = GTIN_INVALID;
   }
 
-  public CatalogsItemValidationWarnings IMAGE_LINK_WARNING(CatalogsItemValidationDetails IMAGE_LINK_WARNING) {
+  public CatalogsItemValidationWarnings IMAGE_LINK_WARNING(@Nullable CatalogsItemValidationDetails IMAGE_LINK_WARNING) {
     this.IMAGE_LINK_WARNING = IMAGE_LINK_WARNING;
     return this;
   }
@@ -443,15 +443,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "IMAGE_LINK_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_WARNING")
-  public CatalogsItemValidationDetails getIMAGELINKWARNING() {
+  public @Nullable CatalogsItemValidationDetails getIMAGELINKWARNING() {
     return IMAGE_LINK_WARNING;
   }
 
-  public void setIMAGELINKWARNING(CatalogsItemValidationDetails IMAGE_LINK_WARNING) {
+  public void setIMAGELINKWARNING(@Nullable CatalogsItemValidationDetails IMAGE_LINK_WARNING) {
     this.IMAGE_LINK_WARNING = IMAGE_LINK_WARNING;
   }
 
-  public CatalogsItemValidationWarnings IOS_DEEP_LINK_INVALID(CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID) {
+  public CatalogsItemValidationWarnings IOS_DEEP_LINK_INVALID(@Nullable CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID) {
     this.IOS_DEEP_LINK_INVALID = IOS_DEEP_LINK_INVALID;
     return this;
   }
@@ -463,15 +463,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "IOS_DEEP_LINK_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IOS_DEEP_LINK_INVALID")
-  public CatalogsItemValidationDetails getIOSDEEPLINKINVALID() {
+  public @Nullable CatalogsItemValidationDetails getIOSDEEPLINKINVALID() {
     return IOS_DEEP_LINK_INVALID;
   }
 
-  public void setIOSDEEPLINKINVALID(CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID) {
+  public void setIOSDEEPLINKINVALID(@Nullable CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID) {
     this.IOS_DEEP_LINK_INVALID = IOS_DEEP_LINK_INVALID;
   }
 
-  public CatalogsItemValidationWarnings IS_BUNDLE_INVALID(CatalogsItemValidationDetails IS_BUNDLE_INVALID) {
+  public CatalogsItemValidationWarnings IS_BUNDLE_INVALID(@Nullable CatalogsItemValidationDetails IS_BUNDLE_INVALID) {
     this.IS_BUNDLE_INVALID = IS_BUNDLE_INVALID;
     return this;
   }
@@ -483,15 +483,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "IS_BUNDLE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IS_BUNDLE_INVALID")
-  public CatalogsItemValidationDetails getISBUNDLEINVALID() {
+  public @Nullable CatalogsItemValidationDetails getISBUNDLEINVALID() {
     return IS_BUNDLE_INVALID;
   }
 
-  public void setISBUNDLEINVALID(CatalogsItemValidationDetails IS_BUNDLE_INVALID) {
+  public void setISBUNDLEINVALID(@Nullable CatalogsItemValidationDetails IS_BUNDLE_INVALID) {
     this.IS_BUNDLE_INVALID = IS_BUNDLE_INVALID;
   }
 
-  public CatalogsItemValidationWarnings ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE(CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
+  public CatalogsItemValidationWarnings ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE(@Nullable CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
     return this;
   }
@@ -503,15 +503,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE")
-  public CatalogsItemValidationDetails getITEMADDITIONALIMAGEDOWNLOADFAILURE() {
+  public @Nullable CatalogsItemValidationDetails getITEMADDITIONALIMAGEDOWNLOADFAILURE() {
     return ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
   }
 
-  public void setITEMADDITIONALIMAGEDOWNLOADFAILURE(CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
+  public void setITEMADDITIONALIMAGEDOWNLOADFAILURE(@Nullable CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
   }
 
-  public CatalogsItemValidationWarnings LINK_FORMAT_WARNING(CatalogsItemValidationDetails LINK_FORMAT_WARNING) {
+  public CatalogsItemValidationWarnings LINK_FORMAT_WARNING(@Nullable CatalogsItemValidationDetails LINK_FORMAT_WARNING) {
     this.LINK_FORMAT_WARNING = LINK_FORMAT_WARNING;
     return this;
   }
@@ -523,15 +523,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "LINK_FORMAT_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_FORMAT_WARNING")
-  public CatalogsItemValidationDetails getLINKFORMATWARNING() {
+  public @Nullable CatalogsItemValidationDetails getLINKFORMATWARNING() {
     return LINK_FORMAT_WARNING;
   }
 
-  public void setLINKFORMATWARNING(CatalogsItemValidationDetails LINK_FORMAT_WARNING) {
+  public void setLINKFORMATWARNING(@Nullable CatalogsItemValidationDetails LINK_FORMAT_WARNING) {
     this.LINK_FORMAT_WARNING = LINK_FORMAT_WARNING;
   }
 
-  public CatalogsItemValidationWarnings MIN_AD_PRICE_INVALID(CatalogsItemValidationDetails MIN_AD_PRICE_INVALID) {
+  public CatalogsItemValidationWarnings MIN_AD_PRICE_INVALID(@Nullable CatalogsItemValidationDetails MIN_AD_PRICE_INVALID) {
     this.MIN_AD_PRICE_INVALID = MIN_AD_PRICE_INVALID;
     return this;
   }
@@ -543,15 +543,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "MIN_AD_PRICE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MIN_AD_PRICE_INVALID")
-  public CatalogsItemValidationDetails getMINADPRICEINVALID() {
+  public @Nullable CatalogsItemValidationDetails getMINADPRICEINVALID() {
     return MIN_AD_PRICE_INVALID;
   }
 
-  public void setMINADPRICEINVALID(CatalogsItemValidationDetails MIN_AD_PRICE_INVALID) {
+  public void setMINADPRICEINVALID(@Nullable CatalogsItemValidationDetails MIN_AD_PRICE_INVALID) {
     this.MIN_AD_PRICE_INVALID = MIN_AD_PRICE_INVALID;
   }
 
-  public CatalogsItemValidationWarnings MPN_INVALID(CatalogsItemValidationDetails MPN_INVALID) {
+  public CatalogsItemValidationWarnings MPN_INVALID(@Nullable CatalogsItemValidationDetails MPN_INVALID) {
     this.MPN_INVALID = MPN_INVALID;
     return this;
   }
@@ -563,15 +563,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "MPN_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MPN_INVALID")
-  public CatalogsItemValidationDetails getMPNINVALID() {
+  public @Nullable CatalogsItemValidationDetails getMPNINVALID() {
     return MPN_INVALID;
   }
 
-  public void setMPNINVALID(CatalogsItemValidationDetails MPN_INVALID) {
+  public void setMPNINVALID(@Nullable CatalogsItemValidationDetails MPN_INVALID) {
     this.MPN_INVALID = MPN_INVALID;
   }
 
-  public CatalogsItemValidationWarnings MULTIPACK_INVALID(CatalogsItemValidationDetails MULTIPACK_INVALID) {
+  public CatalogsItemValidationWarnings MULTIPACK_INVALID(@Nullable CatalogsItemValidationDetails MULTIPACK_INVALID) {
     this.MULTIPACK_INVALID = MULTIPACK_INVALID;
     return this;
   }
@@ -583,15 +583,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "MULTIPACK_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MULTIPACK_INVALID")
-  public CatalogsItemValidationDetails getMULTIPACKINVALID() {
+  public @Nullable CatalogsItemValidationDetails getMULTIPACKINVALID() {
     return MULTIPACK_INVALID;
   }
 
-  public void setMULTIPACKINVALID(CatalogsItemValidationDetails MULTIPACK_INVALID) {
+  public void setMULTIPACKINVALID(@Nullable CatalogsItemValidationDetails MULTIPACK_INVALID) {
     this.MULTIPACK_INVALID = MULTIPACK_INVALID;
   }
 
-  public CatalogsItemValidationWarnings OPTIONAL_CONDITION_INVALID(CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID) {
+  public CatalogsItemValidationWarnings OPTIONAL_CONDITION_INVALID(@Nullable CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID) {
     this.OPTIONAL_CONDITION_INVALID = OPTIONAL_CONDITION_INVALID;
     return this;
   }
@@ -603,15 +603,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "OPTIONAL_CONDITION_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_CONDITION_INVALID")
-  public CatalogsItemValidationDetails getOPTIONALCONDITIONINVALID() {
+  public @Nullable CatalogsItemValidationDetails getOPTIONALCONDITIONINVALID() {
     return OPTIONAL_CONDITION_INVALID;
   }
 
-  public void setOPTIONALCONDITIONINVALID(CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID) {
+  public void setOPTIONALCONDITIONINVALID(@Nullable CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID) {
     this.OPTIONAL_CONDITION_INVALID = OPTIONAL_CONDITION_INVALID;
   }
 
-  public CatalogsItemValidationWarnings OPTIONAL_CONDITION_MISSING(CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING) {
+  public CatalogsItemValidationWarnings OPTIONAL_CONDITION_MISSING(@Nullable CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING) {
     this.OPTIONAL_CONDITION_MISSING = OPTIONAL_CONDITION_MISSING;
     return this;
   }
@@ -623,15 +623,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "OPTIONAL_CONDITION_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_CONDITION_MISSING")
-  public CatalogsItemValidationDetails getOPTIONALCONDITIONMISSING() {
+  public @Nullable CatalogsItemValidationDetails getOPTIONALCONDITIONMISSING() {
     return OPTIONAL_CONDITION_MISSING;
   }
 
-  public void setOPTIONALCONDITIONMISSING(CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING) {
+  public void setOPTIONALCONDITIONMISSING(@Nullable CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING) {
     this.OPTIONAL_CONDITION_MISSING = OPTIONAL_CONDITION_MISSING;
   }
 
-  public CatalogsItemValidationWarnings OPTIONAL_PRODUCT_CATEGORY_INVALID(CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID) {
+  public CatalogsItemValidationWarnings OPTIONAL_PRODUCT_CATEGORY_INVALID(@Nullable CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID) {
     this.OPTIONAL_PRODUCT_CATEGORY_INVALID = OPTIONAL_PRODUCT_CATEGORY_INVALID;
     return this;
   }
@@ -643,15 +643,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "OPTIONAL_PRODUCT_CATEGORY_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_INVALID")
-  public CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYINVALID() {
+  public @Nullable CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYINVALID() {
     return OPTIONAL_PRODUCT_CATEGORY_INVALID;
   }
 
-  public void setOPTIONALPRODUCTCATEGORYINVALID(CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID) {
+  public void setOPTIONALPRODUCTCATEGORYINVALID(@Nullable CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID) {
     this.OPTIONAL_PRODUCT_CATEGORY_INVALID = OPTIONAL_PRODUCT_CATEGORY_INVALID;
   }
 
-  public CatalogsItemValidationWarnings OPTIONAL_PRODUCT_CATEGORY_MISSING(CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING) {
+  public CatalogsItemValidationWarnings OPTIONAL_PRODUCT_CATEGORY_MISSING(@Nullable CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING) {
     this.OPTIONAL_PRODUCT_CATEGORY_MISSING = OPTIONAL_PRODUCT_CATEGORY_MISSING;
     return this;
   }
@@ -663,15 +663,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "OPTIONAL_PRODUCT_CATEGORY_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OPTIONAL_PRODUCT_CATEGORY_MISSING")
-  public CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYMISSING() {
+  public @Nullable CatalogsItemValidationDetails getOPTIONALPRODUCTCATEGORYMISSING() {
     return OPTIONAL_PRODUCT_CATEGORY_MISSING;
   }
 
-  public void setOPTIONALPRODUCTCATEGORYMISSING(CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING) {
+  public void setOPTIONALPRODUCTCATEGORYMISSING(@Nullable CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING) {
     this.OPTIONAL_PRODUCT_CATEGORY_MISSING = OPTIONAL_PRODUCT_CATEGORY_MISSING;
   }
 
-  public CatalogsItemValidationWarnings PRODUCT_CATEGORY_DEPTH_WARNING(CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING) {
+  public CatalogsItemValidationWarnings PRODUCT_CATEGORY_DEPTH_WARNING(@Nullable CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING) {
     this.PRODUCT_CATEGORY_DEPTH_WARNING = PRODUCT_CATEGORY_DEPTH_WARNING;
     return this;
   }
@@ -683,15 +683,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "PRODUCT_CATEGORY_DEPTH_WARNING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_CATEGORY_DEPTH_WARNING")
-  public CatalogsItemValidationDetails getPRODUCTCATEGORYDEPTHWARNING() {
+  public @Nullable CatalogsItemValidationDetails getPRODUCTCATEGORYDEPTHWARNING() {
     return PRODUCT_CATEGORY_DEPTH_WARNING;
   }
 
-  public void setPRODUCTCATEGORYDEPTHWARNING(CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING) {
+  public void setPRODUCTCATEGORYDEPTHWARNING(@Nullable CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING) {
     this.PRODUCT_CATEGORY_DEPTH_WARNING = PRODUCT_CATEGORY_DEPTH_WARNING;
   }
 
-  public CatalogsItemValidationWarnings PRODUCT_TYPE_LENGTH_TOO_LONG(CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG) {
+  public CatalogsItemValidationWarnings PRODUCT_TYPE_LENGTH_TOO_LONG(@Nullable CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG) {
     this.PRODUCT_TYPE_LENGTH_TOO_LONG = PRODUCT_TYPE_LENGTH_TOO_LONG;
     return this;
   }
@@ -703,15 +703,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "PRODUCT_TYPE_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_TYPE_LENGTH_TOO_LONG")
-  public CatalogsItemValidationDetails getPRODUCTTYPELENGTHTOOLONG() {
+  public @Nullable CatalogsItemValidationDetails getPRODUCTTYPELENGTHTOOLONG() {
     return PRODUCT_TYPE_LENGTH_TOO_LONG;
   }
 
-  public void setPRODUCTTYPELENGTHTOOLONG(CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG) {
+  public void setPRODUCTTYPELENGTHTOOLONG(@Nullable CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG) {
     this.PRODUCT_TYPE_LENGTH_TOO_LONG = PRODUCT_TYPE_LENGTH_TOO_LONG;
   }
 
-  public CatalogsItemValidationWarnings SALES_PRICE_INVALID(CatalogsItemValidationDetails SALES_PRICE_INVALID) {
+  public CatalogsItemValidationWarnings SALES_PRICE_INVALID(@Nullable CatalogsItemValidationDetails SALES_PRICE_INVALID) {
     this.SALES_PRICE_INVALID = SALES_PRICE_INVALID;
     return this;
   }
@@ -723,15 +723,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "SALES_PRICE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALES_PRICE_INVALID")
-  public CatalogsItemValidationDetails getSALESPRICEINVALID() {
+  public @Nullable CatalogsItemValidationDetails getSALESPRICEINVALID() {
     return SALES_PRICE_INVALID;
   }
 
-  public void setSALESPRICEINVALID(CatalogsItemValidationDetails SALES_PRICE_INVALID) {
+  public void setSALESPRICEINVALID(@Nullable CatalogsItemValidationDetails SALES_PRICE_INVALID) {
     this.SALES_PRICE_INVALID = SALES_PRICE_INVALID;
   }
 
-  public CatalogsItemValidationWarnings SALES_PRICE_TOO_LOW(CatalogsItemValidationDetails SALES_PRICE_TOO_LOW) {
+  public CatalogsItemValidationWarnings SALES_PRICE_TOO_LOW(@Nullable CatalogsItemValidationDetails SALES_PRICE_TOO_LOW) {
     this.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW;
     return this;
   }
@@ -743,15 +743,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "SALES_PRICE_TOO_LOW", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALES_PRICE_TOO_LOW")
-  public CatalogsItemValidationDetails getSALESPRICETOOLOW() {
+  public @Nullable CatalogsItemValidationDetails getSALESPRICETOOLOW() {
     return SALES_PRICE_TOO_LOW;
   }
 
-  public void setSALESPRICETOOLOW(CatalogsItemValidationDetails SALES_PRICE_TOO_LOW) {
+  public void setSALESPRICETOOLOW(@Nullable CatalogsItemValidationDetails SALES_PRICE_TOO_LOW) {
     this.SALES_PRICE_TOO_LOW = SALES_PRICE_TOO_LOW;
   }
 
-  public CatalogsItemValidationWarnings SALES_PRICE_TOO_HIGH(CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH) {
+  public CatalogsItemValidationWarnings SALES_PRICE_TOO_HIGH(@Nullable CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH) {
     this.SALES_PRICE_TOO_HIGH = SALES_PRICE_TOO_HIGH;
     return this;
   }
@@ -763,15 +763,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "SALES_PRICE_TOO_HIGH", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALES_PRICE_TOO_HIGH")
-  public CatalogsItemValidationDetails getSALESPRICETOOHIGH() {
+  public @Nullable CatalogsItemValidationDetails getSALESPRICETOOHIGH() {
     return SALES_PRICE_TOO_HIGH;
   }
 
-  public void setSALESPRICETOOHIGH(CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH) {
+  public void setSALESPRICETOOHIGH(@Nullable CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH) {
     this.SALES_PRICE_TOO_HIGH = SALES_PRICE_TOO_HIGH;
   }
 
-  public CatalogsItemValidationWarnings SALE_DATE_INVALID(CatalogsItemValidationDetails SALE_DATE_INVALID) {
+  public CatalogsItemValidationWarnings SALE_DATE_INVALID(@Nullable CatalogsItemValidationDetails SALE_DATE_INVALID) {
     this.SALE_DATE_INVALID = SALE_DATE_INVALID;
     return this;
   }
@@ -783,15 +783,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "SALE_DATE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SALE_DATE_INVALID")
-  public CatalogsItemValidationDetails getSALEDATEINVALID() {
+  public @Nullable CatalogsItemValidationDetails getSALEDATEINVALID() {
     return SALE_DATE_INVALID;
   }
 
-  public void setSALEDATEINVALID(CatalogsItemValidationDetails SALE_DATE_INVALID) {
+  public void setSALEDATEINVALID(@Nullable CatalogsItemValidationDetails SALE_DATE_INVALID) {
     this.SALE_DATE_INVALID = SALE_DATE_INVALID;
   }
 
-  public CatalogsItemValidationWarnings SHIPPING_INVALID(CatalogsItemValidationDetails SHIPPING_INVALID) {
+  public CatalogsItemValidationWarnings SHIPPING_INVALID(@Nullable CatalogsItemValidationDetails SHIPPING_INVALID) {
     this.SHIPPING_INVALID = SHIPPING_INVALID;
     return this;
   }
@@ -803,15 +803,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "SHIPPING_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_INVALID")
-  public CatalogsItemValidationDetails getSHIPPINGINVALID() {
+  public @Nullable CatalogsItemValidationDetails getSHIPPINGINVALID() {
     return SHIPPING_INVALID;
   }
 
-  public void setSHIPPINGINVALID(CatalogsItemValidationDetails SHIPPING_INVALID) {
+  public void setSHIPPINGINVALID(@Nullable CatalogsItemValidationDetails SHIPPING_INVALID) {
     this.SHIPPING_INVALID = SHIPPING_INVALID;
   }
 
-  public CatalogsItemValidationWarnings SHIPPING_HEIGHT_INVALID(CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID) {
+  public CatalogsItemValidationWarnings SHIPPING_HEIGHT_INVALID(@Nullable CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID) {
     this.SHIPPING_HEIGHT_INVALID = SHIPPING_HEIGHT_INVALID;
     return this;
   }
@@ -823,15 +823,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "SHIPPING_HEIGHT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_HEIGHT_INVALID")
-  public CatalogsItemValidationDetails getSHIPPINGHEIGHTINVALID() {
+  public @Nullable CatalogsItemValidationDetails getSHIPPINGHEIGHTINVALID() {
     return SHIPPING_HEIGHT_INVALID;
   }
 
-  public void setSHIPPINGHEIGHTINVALID(CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID) {
+  public void setSHIPPINGHEIGHTINVALID(@Nullable CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID) {
     this.SHIPPING_HEIGHT_INVALID = SHIPPING_HEIGHT_INVALID;
   }
 
-  public CatalogsItemValidationWarnings SHIPPING_WEIGHT_INVALID(CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID) {
+  public CatalogsItemValidationWarnings SHIPPING_WEIGHT_INVALID(@Nullable CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID) {
     this.SHIPPING_WEIGHT_INVALID = SHIPPING_WEIGHT_INVALID;
     return this;
   }
@@ -843,15 +843,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "SHIPPING_WEIGHT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_WEIGHT_INVALID")
-  public CatalogsItemValidationDetails getSHIPPINGWEIGHTINVALID() {
+  public @Nullable CatalogsItemValidationDetails getSHIPPINGWEIGHTINVALID() {
     return SHIPPING_WEIGHT_INVALID;
   }
 
-  public void setSHIPPINGWEIGHTINVALID(CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID) {
+  public void setSHIPPINGWEIGHTINVALID(@Nullable CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID) {
     this.SHIPPING_WEIGHT_INVALID = SHIPPING_WEIGHT_INVALID;
   }
 
-  public CatalogsItemValidationWarnings SHIPPING_WIDTH_INVALID(CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID) {
+  public CatalogsItemValidationWarnings SHIPPING_WIDTH_INVALID(@Nullable CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID) {
     this.SHIPPING_WIDTH_INVALID = SHIPPING_WIDTH_INVALID;
     return this;
   }
@@ -863,15 +863,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "SHIPPING_WIDTH_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SHIPPING_WIDTH_INVALID")
-  public CatalogsItemValidationDetails getSHIPPINGWIDTHINVALID() {
+  public @Nullable CatalogsItemValidationDetails getSHIPPINGWIDTHINVALID() {
     return SHIPPING_WIDTH_INVALID;
   }
 
-  public void setSHIPPINGWIDTHINVALID(CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID) {
+  public void setSHIPPINGWIDTHINVALID(@Nullable CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID) {
     this.SHIPPING_WIDTH_INVALID = SHIPPING_WIDTH_INVALID;
   }
 
-  public CatalogsItemValidationWarnings SIZE_TYPE_INVALID(CatalogsItemValidationDetails SIZE_TYPE_INVALID) {
+  public CatalogsItemValidationWarnings SIZE_TYPE_INVALID(@Nullable CatalogsItemValidationDetails SIZE_TYPE_INVALID) {
     this.SIZE_TYPE_INVALID = SIZE_TYPE_INVALID;
     return this;
   }
@@ -883,15 +883,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "SIZE_TYPE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("SIZE_TYPE_INVALID")
-  public CatalogsItemValidationDetails getSIZETYPEINVALID() {
+  public @Nullable CatalogsItemValidationDetails getSIZETYPEINVALID() {
     return SIZE_TYPE_INVALID;
   }
 
-  public void setSIZETYPEINVALID(CatalogsItemValidationDetails SIZE_TYPE_INVALID) {
+  public void setSIZETYPEINVALID(@Nullable CatalogsItemValidationDetails SIZE_TYPE_INVALID) {
     this.SIZE_TYPE_INVALID = SIZE_TYPE_INVALID;
   }
 
-  public CatalogsItemValidationWarnings TAX_INVALID(CatalogsItemValidationDetails TAX_INVALID) {
+  public CatalogsItemValidationWarnings TAX_INVALID(@Nullable CatalogsItemValidationDetails TAX_INVALID) {
     this.TAX_INVALID = TAX_INVALID;
     return this;
   }
@@ -903,15 +903,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "TAX_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TAX_INVALID")
-  public CatalogsItemValidationDetails getTAXINVALID() {
+  public @Nullable CatalogsItemValidationDetails getTAXINVALID() {
     return TAX_INVALID;
   }
 
-  public void setTAXINVALID(CatalogsItemValidationDetails TAX_INVALID) {
+  public void setTAXINVALID(@Nullable CatalogsItemValidationDetails TAX_INVALID) {
     this.TAX_INVALID = TAX_INVALID;
   }
 
-  public CatalogsItemValidationWarnings TITLE_LENGTH_TOO_LONG(CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG) {
+  public CatalogsItemValidationWarnings TITLE_LENGTH_TOO_LONG(@Nullable CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG) {
     this.TITLE_LENGTH_TOO_LONG = TITLE_LENGTH_TOO_LONG;
     return this;
   }
@@ -923,15 +923,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "TITLE_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TITLE_LENGTH_TOO_LONG")
-  public CatalogsItemValidationDetails getTITLELENGTHTOOLONG() {
+  public @Nullable CatalogsItemValidationDetails getTITLELENGTHTOOLONG() {
     return TITLE_LENGTH_TOO_LONG;
   }
 
-  public void setTITLELENGTHTOOLONG(CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG) {
+  public void setTITLELENGTHTOOLONG(@Nullable CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG) {
     this.TITLE_LENGTH_TOO_LONG = TITLE_LENGTH_TOO_LONG;
   }
 
-  public CatalogsItemValidationWarnings TOO_MANY_ADDITIONAL_IMAGE_LINKS(CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
+  public CatalogsItemValidationWarnings TOO_MANY_ADDITIONAL_IMAGE_LINKS(@Nullable CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
     this.TOO_MANY_ADDITIONAL_IMAGE_LINKS = TOO_MANY_ADDITIONAL_IMAGE_LINKS;
     return this;
   }
@@ -943,15 +943,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "TOO_MANY_ADDITIONAL_IMAGE_LINKS", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TOO_MANY_ADDITIONAL_IMAGE_LINKS")
-  public CatalogsItemValidationDetails getTOOMANYADDITIONALIMAGELINKS() {
+  public @Nullable CatalogsItemValidationDetails getTOOMANYADDITIONALIMAGELINKS() {
     return TOO_MANY_ADDITIONAL_IMAGE_LINKS;
   }
 
-  public void setTOOMANYADDITIONALIMAGELINKS(CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
+  public void setTOOMANYADDITIONALIMAGELINKS(@Nullable CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS) {
     this.TOO_MANY_ADDITIONAL_IMAGE_LINKS = TOO_MANY_ADDITIONAL_IMAGE_LINKS;
   }
 
-  public CatalogsItemValidationWarnings UTM_SOURCE_AUTO_CORRECTED(CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED) {
+  public CatalogsItemValidationWarnings UTM_SOURCE_AUTO_CORRECTED(@Nullable CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED) {
     this.UTM_SOURCE_AUTO_CORRECTED = UTM_SOURCE_AUTO_CORRECTED;
     return this;
   }
@@ -963,15 +963,15 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "UTM_SOURCE_AUTO_CORRECTED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("UTM_SOURCE_AUTO_CORRECTED")
-  public CatalogsItemValidationDetails getUTMSOURCEAUTOCORRECTED() {
+  public @Nullable CatalogsItemValidationDetails getUTMSOURCEAUTOCORRECTED() {
     return UTM_SOURCE_AUTO_CORRECTED;
   }
 
-  public void setUTMSOURCEAUTOCORRECTED(CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED) {
+  public void setUTMSOURCEAUTOCORRECTED(@Nullable CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED) {
     this.UTM_SOURCE_AUTO_CORRECTED = UTM_SOURCE_AUTO_CORRECTED;
   }
 
-  public CatalogsItemValidationWarnings WEIGHT_UNIT_INVALID(CatalogsItemValidationDetails WEIGHT_UNIT_INVALID) {
+  public CatalogsItemValidationWarnings WEIGHT_UNIT_INVALID(@Nullable CatalogsItemValidationDetails WEIGHT_UNIT_INVALID) {
     this.WEIGHT_UNIT_INVALID = WEIGHT_UNIT_INVALID;
     return this;
   }
@@ -983,11 +983,11 @@ public class CatalogsItemValidationWarnings {
   @Valid 
   @Schema(name = "WEIGHT_UNIT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("WEIGHT_UNIT_INVALID")
-  public CatalogsItemValidationDetails getWEIGHTUNITINVALID() {
+  public @Nullable CatalogsItemValidationDetails getWEIGHTUNITINVALID() {
     return WEIGHT_UNIT_INVALID;
   }
 
-  public void setWEIGHTUNITINVALID(CatalogsItemValidationDetails WEIGHT_UNIT_INVALID) {
+  public void setWEIGHTUNITINVALID(@Nullable CatalogsItemValidationDetails WEIGHT_UNIT_INVALID) {
     this.WEIGHT_UNIT_INVALID = WEIGHT_UNIT_INVALID;
   }
 

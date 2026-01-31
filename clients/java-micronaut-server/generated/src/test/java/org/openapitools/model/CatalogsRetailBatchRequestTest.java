@@ -3,7 +3,6 @@ package org.openapitools.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsRetailBatchRequestItemsInner;
 import org.openapitools.model.Country;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;

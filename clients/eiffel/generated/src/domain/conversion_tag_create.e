@@ -19,8 +19,6 @@ class CONVERSION_TAG_CREATE
 
 feature --Access
 
-    name: detachable STRING_32
-      -- Conversion tag name.
     aem_enabled: BOOLEAN
       -- Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
     md_frequency: REAL_32
@@ -35,16 +33,10 @@ feature --Access
       -- Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
     aem_loc_enabled: BOOLEAN
       -- Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+    name: detachable STRING_32
+      -- Conversion tag name.
 
 feature -- Change Element
-
-    set_name (a_name: like name)
-        -- Set 'name' with 'a_name'.
-      do
-        name := a_name
-      ensure
-        name_set: name = a_name
-      end
 
     set_aem_enabled (a_name: like aem_enabled)
         -- Set 'aem_enabled' with 'a_name'.
@@ -102,6 +94,14 @@ feature -- Change Element
         aem_loc_enabled_set: aem_loc_enabled = a_name
       end
 
+    set_name (a_name: like name)
+        -- Set 'name' with 'a_name'.
+      do
+        name := a_name
+      ensure
+        name_set: name = a_name
+      end
+
 
  feature -- Status Report
 
@@ -110,11 +110,6 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass CONVERSION_TAG_CREATE%N")
-        if attached name as l_name then
-          Result.append ("%Nname:")
-          Result.append (l_name.out)
-          Result.append ("%N")
-        end
         if attached aem_enabled as l_aem_enabled then
           Result.append ("%Naem_enabled:")
           Result.append (l_aem_enabled.out)
@@ -148,6 +143,11 @@ feature -- Change Element
         if attached aem_loc_enabled as l_aem_loc_enabled then
           Result.append ("%Naem_loc_enabled:")
           Result.append (l_aem_loc_enabled.out)
+          Result.append ("%N")
+        end
+        if attached name as l_name then
+          Result.append ("%Nname:")
+          Result.append (l_name.out)
           Result.append ("%N")
         end
       end

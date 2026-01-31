@@ -9,9 +9,26 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_order_line_response
 
 type OrderLineSingleResponse* = object
   ## 
-  data*: OrderLineResponse
+  data*: Option[OrderLineResponse]
+
+
+# Custom JSON deserialization for OrderLineSingleResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[OrderLineSingleResponse]): OrderLineSingleResponse =
+  result = OrderLineSingleResponse()
+  if node.kind == JObject:
+    if node.hasKey("data") and node["data"].kind != JNull:
+      result.data = some(to(node["data"], typeof(result.data.get())))
+
+# Custom JSON serialization for OrderLineSingleResponse with custom field names
+proc `%`*(obj: OrderLineSingleResponse): JsonNode =
+  result = newJObject()
+  if obj.data.isSome():
+    result["data"] = %obj.data.get()
+

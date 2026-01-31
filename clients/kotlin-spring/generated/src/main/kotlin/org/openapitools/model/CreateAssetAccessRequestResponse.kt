@@ -27,7 +27,7 @@ data class CreateAssetAccessRequestResponse(
 
     @Schema(example = "{\"766456567741825556\":\"5349280584552211583\",\"733242520489967216\":\"5349280584552211845\"}", description = "")
     @get:JsonProperty("invites") val invites: kotlin.collections.Map<kotlin.String, kotlin.String>? = null
-    ) {
+) {
 
 }
 

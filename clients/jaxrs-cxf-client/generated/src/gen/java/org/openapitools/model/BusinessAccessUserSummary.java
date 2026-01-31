@@ -1,35 +1,38 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Metadata of the member/partner that has access to the asset.
- **/
+ * Metadata of the member/partner that has access to the asset.
+ */
 @ApiModel(description="Metadata of the member/partner that has access to the asset.")
 
 public class BusinessAccessUserSummary  {
   
-  @ApiModelProperty(example = "business0101@business.com", value = "Email of the business member/partner.")
  /**
-   * Email of the business member/partner.
-  **/
+  * Email of the business member/partner.
+  */
+  @ApiModelProperty(example = "business0101@business.com", value = "Email of the business member/partner.")
+
   private String email;
 
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the business member/partner.")
  /**
-   * Unique identifier of the business member/partner.
-  **/
+  * Unique identifier of the business member/partner.
+  */
+  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the business member/partner.")
+
   private String id;
 
-  @ApiModelProperty(example = "business0101", value = "Username of the business member/partner.")
  /**
-   * Username of the business member/partner.
-  **/
+  * Username of the business member/partner.
+  */
+  @ApiModelProperty(example = "business0101", value = "Username of the business member/partner.")
+
   private String username;
  /**
    * Email of the business member/partner.

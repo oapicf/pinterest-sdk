@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -15,29 +15,16 @@ package org.openapitools.client.model;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * A request to receive a client token.
- **/
-@ApiModel(description = "A request to receive a client token.")
+@ApiModel(description = "")
 public class OauthAccessTokenRequestClientCredentials {
   
+  @SerializedName("scope")
+  private String scope = null;
   public enum GrantTypeEnum {
      authorization_code,  refresh_token,  client_credentials, 
   };
   @SerializedName("grant_type")
   private GrantTypeEnum grantType = null;
-  @SerializedName("scope")
-  private String scope = null;
-
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  public GrantTypeEnum getGrantType() {
-    return grantType;
-  }
-  public void setGrantType(GrantTypeEnum grantType) {
-    this.grantType = grantType;
-  }
 
   /**
    **/
@@ -47,6 +34,16 @@ public class OauthAccessTokenRequestClientCredentials {
   }
   public void setScope(String scope) {
     this.scope = scope;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(required = true, value = "")
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
   }
 
 
@@ -59,15 +56,15 @@ public class OauthAccessTokenRequestClientCredentials {
       return false;
     }
     OauthAccessTokenRequestClientCredentials oauthAccessTokenRequestClientCredentials = (OauthAccessTokenRequestClientCredentials) o;
-    return (this.grantType == null ? oauthAccessTokenRequestClientCredentials.grantType == null : this.grantType.equals(oauthAccessTokenRequestClientCredentials.grantType)) &&
-        (this.scope == null ? oauthAccessTokenRequestClientCredentials.scope == null : this.scope.equals(oauthAccessTokenRequestClientCredentials.scope));
+    return (this.scope == null ? oauthAccessTokenRequestClientCredentials.scope == null : this.scope.equals(oauthAccessTokenRequestClientCredentials.scope)) &&
+        (this.grantType == null ? oauthAccessTokenRequestClientCredentials.grantType == null : this.grantType.equals(oauthAccessTokenRequestClientCredentials.grantType));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
-    result = 31 * result + (this.grantType == null ? 0: this.grantType.hashCode());
     result = 31 * result + (this.scope == null ? 0: this.scope.hashCode());
+    result = 31 * result + (this.grantType == null ? 0: this.grantType.hashCode());
     return result;
   }
 
@@ -76,8 +73,8 @@ public class OauthAccessTokenRequestClientCredentials {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestClientCredentials {\n");
     
-    sb.append("  grantType: ").append(grantType).append("\n");
     sb.append("  scope: ").append(scope).append("\n");
+    sb.append("  grantType: ").append(grantType).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

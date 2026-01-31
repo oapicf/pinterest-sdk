@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_pin_media_source_images_url_items_inner
 
@@ -17,16 +19,45 @@ type SourceType* {.pure.} = enum
 
 type PinMediaSourceImagesURL* = object
   ## Multiple images urls-based media source
-  sourceType*: SourceType
+  sourceType*: Option[SourceType]
   items*: seq[PinMediaSourceImagesURL_items_inner] ## Array with image objects.
-  index*: int
+  index*: Option[int]
 
 func `%`*(v: SourceType): JsonNode =
-  let str = case v:
-    of SourceType.MultipleImageUrls: "multiple_image_urls"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of SourceType.MultipleImageUrls: %"multiple_image_urls"
 func `$`*(v: SourceType): string =
   result = case v:
-    of SourceType.MultipleImageUrls: "multiple_image_urls"
+    of SourceType.MultipleImageUrls: $("multiple_image_urls")
+
+proc to*(node: JsonNode, T: typedesc[SourceType]): SourceType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum SourceType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("multiple_image_urls"):
+    return SourceType.MultipleImageUrls
+  else:
+    raise newException(ValueError, "Invalid enum value for SourceType: " & strVal)
+
+
+# Custom JSON deserialization for PinMediaSourceImagesURL with custom field names
+proc to*(node: JsonNode, T: typedesc[PinMediaSourceImagesURL]): PinMediaSourceImagesURL =
+  result = PinMediaSourceImagesURL()
+  if node.kind == JObject:
+    if node.hasKey("source_type") and node["source_type"].kind != JNull:
+      result.sourceType = some(to(node["source_type"], SourceType))
+    if node.hasKey("items"):
+      result.items = to(node["items"], seq[PinMediaSourceImagesURL_items_inner])
+    if node.hasKey("index") and node["index"].kind != JNull:
+      result.index = some(to(node["index"], typeof(result.index.get())))
+
+# Custom JSON serialization for PinMediaSourceImagesURL with custom field names
+proc `%`*(obj: PinMediaSourceImagesURL): JsonNode =
+  result = newJObject()
+  if obj.sourceType.isSome():
+    result["source_type"] = %obj.sourceType.get()
+  result["items"] = %obj.items
+  if obj.index.isSome():
+    result["index"] = %obj.index.get()
+

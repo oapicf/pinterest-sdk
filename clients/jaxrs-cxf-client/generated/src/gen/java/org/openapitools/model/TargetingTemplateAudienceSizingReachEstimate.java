@@ -9,12 +9,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TargetingTemplateAudienceSizingReachEstimate  {
   
   @ApiModelProperty(example = "63492000", value = "")
+
   private Long estimate;
 
   @ApiModelProperty(example = "47619000", value = "")
+
   private Long lowerBound;
 
   @ApiModelProperty(example = "79365000", value = "")
+
   private Long upperBound;
  /**
    * Get estimate

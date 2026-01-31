@@ -9,13 +9,45 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_pin_media
 
 type SummaryPin* = object
   ## Summarized pin information
   media*: PinMedia
-  altText*: string
-  link*: string
-  title*: string
-  description*: string
+  altText*: Option[string]
+  link*: Option[string]
+  title*: Option[string]
+  description*: Option[string]
+
+
+# Custom JSON deserialization for SummaryPin with custom field names
+proc to*(node: JsonNode, T: typedesc[SummaryPin]): SummaryPin =
+  result = SummaryPin()
+  if node.kind == JObject:
+    if node.hasKey("media"):
+      result.media = to(node["media"], PinMedia)
+    if node.hasKey("alt_text") and node["alt_text"].kind != JNull:
+      result.altText = some(to(node["alt_text"], typeof(result.altText.get())))
+    if node.hasKey("link") and node["link"].kind != JNull:
+      result.link = some(to(node["link"], typeof(result.link.get())))
+    if node.hasKey("title") and node["title"].kind != JNull:
+      result.title = some(to(node["title"], typeof(result.title.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+
+# Custom JSON serialization for SummaryPin with custom field names
+proc `%`*(obj: SummaryPin): JsonNode =
+  result = newJObject()
+  result["media"] = %obj.media
+  if obj.altText.isSome():
+    result["alt_text"] = %obj.altText.get()
+  if obj.link.isSome():
+    result["link"] = %obj.link.get()
+  if obj.title.isSome():
+    result["title"] = %obj.title.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+

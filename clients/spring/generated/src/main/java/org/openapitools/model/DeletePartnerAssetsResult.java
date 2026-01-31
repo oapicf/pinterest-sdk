@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "DeletePartnerAssetsResult", description = "The terminated asset access.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeletePartnerAssetsResult {
 
   private @Nullable String assetId;
@@ -37,7 +37,7 @@ public class DeletePartnerAssetsResult {
 
   private @Nullable String partnerId;
 
-  public DeletePartnerAssetsResult assetId(String assetId) {
+  public DeletePartnerAssetsResult assetId(@Nullable String assetId) {
     this.assetId = assetId;
     return this;
   }
@@ -49,15 +49,15 @@ public class DeletePartnerAssetsResult {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "asset_id", example = "549755885175", description = "Unique identifier of a business asset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_id")
-  public String getAssetId() {
+  public @Nullable String getAssetId() {
     return assetId;
   }
 
-  public void setAssetId(String assetId) {
+  public void setAssetId(@Nullable String assetId) {
     this.assetId = assetId;
   }
 
-  public DeletePartnerAssetsResult assetType(String assetType) {
+  public DeletePartnerAssetsResult assetType(@Nullable String assetType) {
     this.assetType = assetType;
     return this;
   }
@@ -69,11 +69,11 @@ public class DeletePartnerAssetsResult {
   
   @Schema(name = "asset_type", example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_type")
-  public String getAssetType() {
+  public @Nullable String getAssetType() {
     return assetType;
   }
 
-  public void setAssetType(String assetType) {
+  public void setAssetType(@Nullable String assetType) {
     this.assetType = assetType;
   }
 
@@ -105,7 +105,7 @@ public class DeletePartnerAssetsResult {
     this.permissions = permissions;
   }
 
-  public DeletePartnerAssetsResult isSharedPartner(Boolean isSharedPartner) {
+  public DeletePartnerAssetsResult isSharedPartner(@Nullable Boolean isSharedPartner) {
     this.isSharedPartner = isSharedPartner;
     return this;
   }
@@ -117,15 +117,15 @@ public class DeletePartnerAssetsResult {
   
   @Schema(name = "is_shared_partner", example = "false", description = "If is_shared_partner=FALSE, you terminated a partner's asset access to your business asset.<br> If is_shared_partner=TRUE, you terminated your asset access to your partner's business asset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_shared_partner")
-  public Boolean getIsSharedPartner() {
+  public @Nullable Boolean getIsSharedPartner() {
     return isSharedPartner;
   }
 
-  public void setIsSharedPartner(Boolean isSharedPartner) {
+  public void setIsSharedPartner(@Nullable Boolean isSharedPartner) {
     this.isSharedPartner = isSharedPartner;
   }
 
-  public DeletePartnerAssetsResult partnerId(String partnerId) {
+  public DeletePartnerAssetsResult partnerId(@Nullable String partnerId) {
     this.partnerId = partnerId;
     return this;
   }
@@ -137,11 +137,11 @@ public class DeletePartnerAssetsResult {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "partner_id", example = "140943737684417", description = "Unique identifier of a business partner.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_id")
-  public String getPartnerId() {
+  public @Nullable String getPartnerId() {
     return partnerId;
   }
 
-  public void setPartnerId(String partnerId) {
+  public void setPartnerId(@Nullable String partnerId) {
     this.partnerId = partnerId;
   }
 

@@ -127,8 +127,12 @@ export class BusinessAccessRelationshipsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read", "biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/members`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/members`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -177,8 +181,12 @@ export class BusinessAccessRelationshipsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/partners`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/partners`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -219,8 +227,11 @@ export class BusinessAccessRelationshipsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read"]);
         }
 
+
+        let urlPath = `/businesses/employers`;
+
         const response = await this.request({
-            path: `/businesses/employers`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -283,8 +294,12 @@ export class BusinessAccessRelationshipsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/members`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/members`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -347,8 +362,12 @@ export class BusinessAccessRelationshipsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/partners`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/partners`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -396,8 +415,12 @@ export class BusinessAccessRelationshipsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/members`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/members`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,

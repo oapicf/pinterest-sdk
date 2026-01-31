@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogType* {.pure.} = enum
@@ -21,14 +23,51 @@ type CatalogsRetailProductGroupProductCounts* = object
   outOfStock*: float
   preorder*: float
   total*: float
-  videos*: float
+  videos*: Option[float]
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.RETAIL: "RETAIL"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.RETAIL: %"RETAIL"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.RETAIL: "RETAIL"
+    of CatalogType.RETAIL: $("RETAIL")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RETAIL"):
+    return CatalogType.RETAIL
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsRetailProductGroupProductCounts with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsRetailProductGroupProductCounts]): CatalogsRetailProductGroupProductCounts =
+  result = CatalogsRetailProductGroupProductCounts()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("in_stock"):
+      result.inStock = to(node["in_stock"], float)
+    if node.hasKey("out_of_stock"):
+      result.outOfStock = to(node["out_of_stock"], float)
+    if node.hasKey("preorder"):
+      result.preorder = to(node["preorder"], float)
+    if node.hasKey("total"):
+      result.total = to(node["total"], float)
+    if node.hasKey("videos") and node["videos"].kind != JNull:
+      result.videos = some(to(node["videos"], typeof(result.videos.get())))
+
+# Custom JSON serialization for CatalogsRetailProductGroupProductCounts with custom field names
+proc `%`*(obj: CatalogsRetailProductGroupProductCounts): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["in_stock"] = %obj.inStock
+  result["out_of_stock"] = %obj.outOfStock
+  result["preorder"] = %obj.preorder
+  result["total"] = %obj.total
+  if obj.videos.isSome():
+    result["videos"] = %obj.videos.get()
+

@@ -27,7 +27,7 @@ using Org.OpenAPITools.Client;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// A successful OAuth access token response for the refresh token flow, with an added refresh token.
+    /// OauthAccessTokenResponseIntegrationRefresh
     /// </summary>
     public partial class OauthAccessTokenResponseIntegrationRefresh : IValidatableObject
     {
@@ -193,11 +193,11 @@ namespace Org.OpenAPITools.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class OauthAccessTokenResponseIntegrationRefresh {\n");
+            sb.Append("  RefreshToken: ").Append(RefreshToken).Append("\n");
+            sb.Append("  RefreshTokenExpiresIn: ").Append(RefreshTokenExpiresIn).Append("\n");
             sb.Append("  AccessToken: ").Append(AccessToken).Append("\n");
             sb.Append("  ExpiresIn: ").Append(ExpiresIn).Append("\n");
             sb.Append("  Scope: ").Append(Scope).Append("\n");
-            sb.Append("  RefreshToken: ").Append(RefreshToken).Append("\n");
-            sb.Append("  RefreshTokenExpiresIn: ").Append(RefreshTokenExpiresIn).Append("\n");
             sb.Append("  ResponseType: ").Append(ResponseType).Append("\n");
             sb.Append("  TokenType: ").Append(TokenType).Append("\n");
             sb.Append("}\n");
@@ -264,15 +264,13 @@ namespace Org.OpenAPITools.Model
                             refreshToken = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "refresh_token_expires_in":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                refreshTokenExpiresIn = new Option<int?>(utf8JsonReader.GetInt32());
+                            refreshTokenExpiresIn = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "access_token":
                             accessToken = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "expires_in":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                expiresIn = new Option<int?>(utf8JsonReader.GetInt32());
+                            expiresIn = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "scope":
                             scope = new Option<string?>(utf8JsonReader.GetString()!);

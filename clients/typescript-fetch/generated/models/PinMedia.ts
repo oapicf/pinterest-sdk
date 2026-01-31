@@ -13,11 +13,11 @@
  */
 
 import { mapValues } from '../runtime';
-import { PinMediaWithImage, PinMediaWithImageFromJSONTyped, PinMediaWithImageToJSON, PinMediaWithImageToJSONTyped } from './PinMediaWithImage';
-import { PinMediaWithImages, PinMediaWithImagesFromJSONTyped, PinMediaWithImagesToJSON, PinMediaWithImagesToJSONTyped } from './PinMediaWithImages';
-import { PinMediaWithImageAndVideo, PinMediaWithImageAndVideoFromJSONTyped, PinMediaWithImageAndVideoToJSON, PinMediaWithImageAndVideoToJSONTyped } from './PinMediaWithImageAndVideo';
-import { PinMediaWithVideos, PinMediaWithVideosFromJSONTyped, PinMediaWithVideosToJSON, PinMediaWithVideosToJSONTyped } from './PinMediaWithVideos';
-import { PinMediaWithVideo, PinMediaWithVideoFromJSONTyped, PinMediaWithVideoToJSON, PinMediaWithVideoToJSONTyped } from './PinMediaWithVideo';
+import { type PinMediaWithImage, PinMediaWithImageFromJSONTyped, PinMediaWithImageToJSON, PinMediaWithImageToJSONTyped } from './PinMediaWithImage';
+import { type PinMediaWithImages, PinMediaWithImagesFromJSONTyped, PinMediaWithImagesToJSON, PinMediaWithImagesToJSONTyped } from './PinMediaWithImages';
+import { type PinMediaWithImageAndVideo, PinMediaWithImageAndVideoFromJSONTyped, PinMediaWithImageAndVideoToJSON, PinMediaWithImageAndVideoToJSONTyped } from './PinMediaWithImageAndVideo';
+import { type PinMediaWithVideos, PinMediaWithVideosFromJSONTyped, PinMediaWithVideosToJSON, PinMediaWithVideosToJSONTyped } from './PinMediaWithVideos';
+import { type PinMediaWithVideo, PinMediaWithVideoFromJSONTyped, PinMediaWithVideoToJSON, PinMediaWithVideoToJSONTyped } from './PinMediaWithVideo';
 /**
  * Pin media objects.
  * @export
@@ -63,6 +63,7 @@ export function PinMediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         if (json['media_type'] === 'video') {
             return PinMediaWithVideoFromJSONTyped(json, ignoreDiscriminator);
         }
+
     }
     return {
         
@@ -92,7 +93,7 @@ export function PinMediaToJSONTyped(value?: PinMedia | null, ignoreDiscriminator
             case 'video':
                 return PinMediaWithVideoToJSONTyped(value as PinMediaWithVideo, ignoreDiscriminator);
             default:
-                throw new Error(`No variant of PinMedia exists with 'mediaType=${value['mediaType']}'`);
+                return value;
         }
     }
 

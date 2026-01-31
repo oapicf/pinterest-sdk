@@ -15,7 +15,6 @@ package com.github.oapicf.pinterestsdk.model;
 
 import com.github.oapicf.pinterestsdk.model.BatchOperation;
 import com.github.oapicf.pinterestsdk.model.CatalogsItemsBatchRequest;
-import com.github.oapicf.pinterestsdk.model.CatalogsItemsRequestLanguage;
 import com.github.oapicf.pinterestsdk.model.CatalogsVerticalBatchRequest;
 import com.github.oapicf.pinterestsdk.model.Country;
 import com.github.oapicf.pinterestsdk.model.ItemDeleteBatchRecord;

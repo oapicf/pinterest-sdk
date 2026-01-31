@@ -141,12 +141,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "summary_metrics":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                summaryMetrics = new Option<Dictionary<string, decimal>?>(JsonSerializer.Deserialize<Dictionary<string, decimal>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            summaryMetrics = new Option<Dictionary<string, decimal>?>(JsonSerializer.Deserialize<Dictionary<string, decimal>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "daily_metrics":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dailyMetrics = new Option<List<AnalyticsDailyMetrics>?>(JsonSerializer.Deserialize<List<AnalyticsDailyMetrics>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            dailyMetrics = new Option<List<AnalyticsDailyMetrics>?>(JsonSerializer.Deserialize<List<AnalyticsDailyMetrics>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_integration_log
 
 type IntegrationLogsRequest* = object
   ## Batch of logs sent from an integration application.
   logs*: seq[IntegrationLog]
+
+
+# Custom JSON deserialization for IntegrationLogsRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[IntegrationLogsRequest]): IntegrationLogsRequest =
+  result = IntegrationLogsRequest()
+  if node.kind == JObject:
+    if node.hasKey("logs"):
+      # Array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["logs"]
+      if arrayNode.kind == JArray:
+        result.logs = @[]
+        for item in arrayNode.items:
+          result.logs.add(to(item, IntegrationLog))
+
+# Custom JSON serialization for IntegrationLogsRequest with custom field names
+proc `%`*(obj: IntegrationLogsRequest): JsonNode =
+  result = newJObject()
+  result["logs"] = %obj.logs
+

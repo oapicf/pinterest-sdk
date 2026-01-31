@@ -19,6 +19,7 @@ import .*
 
 /**
  * 
+ * @param name Conversion tag name.
  * @param aemEnabled Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
  * @param mdFrequency Metadata ingestion frequency.
  * @param aemFnlnEnabled Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
@@ -28,6 +29,7 @@ import .*
  * @param aemLocEnabled Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
  */
 object ConversionTagCreates : BaseTable<ConversionTagCreate>("ConversionTagCreate") {
+    val name = text("name") /* Conversion tag name. */
     val aemEnabled = boolean("aem_enabled") /* null */ /* Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
     val mdFrequency = decimal("md_frequency") /* null */ /* Metadata ingestion frequency. */
     val aemFnlnEnabled = boolean("aem_fnln_enabled") /* null */ /* Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
@@ -40,6 +42,7 @@ object ConversionTagCreates : BaseTable<ConversionTagCreate>("ConversionTagCreat
      * Create an entity of type ConversionTagCreate from the model
      */
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = ConversionTagCreate(
+        name = row[name] ?: "" /* kotlin.String */ /* Conversion tag name. */,
         aemEnabled = row[aemEnabled] ?: false /* kotlin.Boolean? */ /* Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */,
         mdFrequency = row[mdFrequency] ?: 1 /* java.math.BigDecimal? */ /* Metadata ingestion frequency. */,
         aemFnlnEnabled = row[aemFnlnEnabled] ?: false /* kotlin.Boolean? */ /* Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */,
@@ -64,6 +67,7 @@ object ConversionTagCreates : BaseTable<ConversionTagCreate>("ConversionTagCreat
     */
     fun AssignmentsBuilder.assignFrom(entity: ConversionTagCreate) {
         this.apply {
+            set(ConversionTagCreates.name, entity.name)
             set(ConversionTagCreates.aemEnabled, entity.aemEnabled)
             set(ConversionTagCreates.mdFrequency, entity.mdFrequency)
             set(ConversionTagCreates.aemFnlnEnabled, entity.aemFnlnEnabled)

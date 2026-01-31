@@ -17,24 +17,24 @@ import com.google.gson.annotations.SerializedName
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 /**
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
+ * 
+ * @param refreshToken 
+ * @param refreshTokenExpiresIn 
  * @param accessToken 
  * @param tokenType 
  * @param expiresIn 
  * @param scope 
- * @param refreshToken 
- * @param refreshTokenExpiresIn 
  * @param responseType 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class OauthAccessTokenResponseIntegrationRefresh (
+    @SerializedName("refreshToken") private val _refreshToken: kotlin.String?,
+    @SerializedName("refreshTokenExpiresIn") private val _refreshTokenExpiresIn: kotlin.Int?,
     @SerializedName("accessToken") private val _accessToken: kotlin.String?,
     @SerializedName("tokenType") private val _tokenType: kotlin.String?,
     @SerializedName("expiresIn") private val _expiresIn: kotlin.Int?,
     @SerializedName("scope") private val _scope: kotlin.String?,
-    @SerializedName("refreshToken") private val _refreshToken: kotlin.String?,
-    @SerializedName("refreshTokenExpiresIn") private val _refreshTokenExpiresIn: kotlin.Int?,
     val responseType: OauthAccessTokenResponseIntegrationRefresh.ResponseType? = null
 ) {
 
@@ -52,6 +52,10 @@ data class OauthAccessTokenResponseIntegrationRefresh (
     
     }
 
+        val refreshToken get() = _refreshToken ?: throw IllegalArgumentException("refreshToken is required")
+                    
+        val refreshTokenExpiresIn get() = _refreshTokenExpiresIn ?: throw IllegalArgumentException("refreshTokenExpiresIn is required")
+                    
         val accessToken get() = _accessToken ?: throw IllegalArgumentException("accessToken is required")
                     
         val tokenType get() = _tokenType ?: throw IllegalArgumentException("tokenType is required")
@@ -59,10 +63,6 @@ data class OauthAccessTokenResponseIntegrationRefresh (
         val expiresIn get() = _expiresIn ?: throw IllegalArgumentException("expiresIn is required")
                     
         val scope get() = _scope ?: throw IllegalArgumentException("scope is required")
-                    
-        val refreshToken get() = _refreshToken ?: throw IllegalArgumentException("refreshToken is required")
-                    
-        val refreshTokenExpiresIn get() = _refreshTokenExpiresIn ?: throw IllegalArgumentException("refreshTokenExpiresIn is required")
                     
 }
 

@@ -14,7 +14,6 @@
 import ApiClient from '../ApiClient';
 import BaseInviteDataResponse from './BaseInviteDataResponse';
 import BaseInviteDataResponseInviteData from './BaseInviteDataResponseInviteData';
-import BusinessAccessUserSummary from './BusinessAccessUserSummary';
 
 /**
  * The InviteBusinessRoleBinding model module.
@@ -24,7 +23,6 @@ import BusinessAccessUserSummary from './BusinessAccessUserSummary';
 class InviteBusinessRoleBinding {
     /**
      * Constructs a new <code>InviteBusinessRoleBinding</code>.
-     * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
      * @alias module:model/InviteBusinessRoleBinding
      * @implements module:model/BaseInviteDataResponse
      */
@@ -53,15 +51,6 @@ class InviteBusinessRoleBinding {
             obj = obj || new InviteBusinessRoleBinding();
             BaseInviteDataResponse.constructFromObject(data, obj);
 
-            if (data.hasOwnProperty('created_by_business_id')) {
-                obj['created_by_business_id'] = ApiClient.convertToType(data['created_by_business_id'], 'String');
-            }
-            if (data.hasOwnProperty('created_by_user_id')) {
-                obj['created_by_user_id'] = ApiClient.convertToType(data['created_by_user_id'], 'String');
-            }
-            if (data.hasOwnProperty('user')) {
-                obj['user'] = ApiClient.convertToType(data['user'], BusinessAccessUserSummary);
-            }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
@@ -70,6 +59,15 @@ class InviteBusinessRoleBinding {
             }
             if (data.hasOwnProperty('is_received_invite')) {
                 obj['is_received_invite'] = ApiClient.convertToType(data['is_received_invite'], 'Boolean');
+            }
+            if (data.hasOwnProperty('user')) {
+                obj['user'] = ApiClient.convertToType(data['user'], Object);
+            }
+            if (data.hasOwnProperty('created_by_business_id')) {
+                obj['created_by_business_id'] = ApiClient.convertToType(data['created_by_business_id'], 'String');
+            }
+            if (data.hasOwnProperty('created_by_user_id')) {
+                obj['created_by_user_id'] = ApiClient.convertToType(data['created_by_user_id'], 'String');
             }
         }
         return obj;
@@ -82,24 +80,20 @@ class InviteBusinessRoleBinding {
      */
     static validateJSON(data) {
         // ensure the json data is a string
-        if (data['created_by_business_id'] && !(typeof data['created_by_business_id'] === 'string' || data['created_by_business_id'] instanceof String)) {
-            throw new Error("Expected the field `created_by_business_id` to be a primitive type in the JSON string but got " + data['created_by_business_id']);
-        }
-        // ensure the json data is a string
-        if (data['created_by_user_id'] && !(typeof data['created_by_user_id'] === 'string' || data['created_by_user_id'] instanceof String)) {
-            throw new Error("Expected the field `created_by_user_id` to be a primitive type in the JSON string but got " + data['created_by_user_id']);
-        }
-        // validate the optional field `user`
-        if (data['user']) { // data not null
-          BusinessAccessUserSummary.validateJSON(data['user']);
-        }
-        // ensure the json data is a string
         if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
         // validate the optional field `invite_data`
         if (data['invite_data']) { // data not null
           BaseInviteDataResponseInviteData.validateJSON(data['invite_data']);
+        }
+        // ensure the json data is a string
+        if (data['created_by_business_id'] && !(typeof data['created_by_business_id'] === 'string' || data['created_by_business_id'] instanceof String)) {
+            throw new Error("Expected the field `created_by_business_id` to be a primitive type in the JSON string but got " + data['created_by_business_id']);
+        }
+        // ensure the json data is a string
+        if (data['created_by_user_id'] && !(typeof data['created_by_user_id'] === 'string' || data['created_by_user_id'] instanceof String)) {
+            throw new Error("Expected the field `created_by_user_id` to be a primitive type in the JSON string but got " + data['created_by_user_id']);
         }
 
         return true;
@@ -109,24 +103,6 @@ class InviteBusinessRoleBinding {
 }
 
 
-
-/**
- * Unique identifier for the business that created the invite/request.
- * @member {String} created_by_business_id
- */
-InviteBusinessRoleBinding.prototype['created_by_business_id'] = undefined;
-
-/**
- * Unique identifier for the user that created the invite/request.
- * @member {String} created_by_user_id
- */
-InviteBusinessRoleBinding.prototype['created_by_user_id'] = undefined;
-
-/**
- * Metadata for the user that updated the invite/request.
- * @member {module:model/BusinessAccessUserSummary} user
- */
-InviteBusinessRoleBinding.prototype['user'] = undefined;
 
 /**
  * Unique identifier of the invite/request.
@@ -144,6 +120,24 @@ InviteBusinessRoleBinding.prototype['invite_data'] = undefined;
  * @member {Boolean} is_received_invite
  */
 InviteBusinessRoleBinding.prototype['is_received_invite'] = undefined;
+
+/**
+ * Metadata for the user that updated the invite/request.
+ * @member {Object} user
+ */
+InviteBusinessRoleBinding.prototype['user'] = undefined;
+
+/**
+ * Unique identifier for the business that created the invite/request.
+ * @member {String} created_by_business_id
+ */
+InviteBusinessRoleBinding.prototype['created_by_business_id'] = undefined;
+
+/**
+ * Unique identifier for the user that created the invite/request.
+ * @member {String} created_by_user_id
+ */
+InviteBusinessRoleBinding.prototype['created_by_user_id'] = undefined;
 
 
 // Implement BaseInviteDataResponse interface:

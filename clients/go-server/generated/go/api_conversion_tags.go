@@ -53,32 +53,75 @@ func NewConversionTagsAPIController(s ConversionTagsAPIServicer, opts ...Convers
 func (c *ConversionTagsAPIController) Routes() Routes {
 	return Routes{
 		"ConversionTagsList": Route{
+			"ConversionTagsList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/conversion_tags",
 			c.ConversionTagsList,
 		},
 		"ConversionTagsCreate": Route{
+			"ConversionTagsCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/conversion_tags",
 			c.ConversionTagsCreate,
 		},
 		"OcpmEligibleConversionTagsGet": Route{
+			"OcpmEligibleConversionTagsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible",
 			c.OcpmEligibleConversionTagsGet,
 		},
 		"PageVisitConversionTagsGet": Route{
+			"PageVisitConversionTagsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/conversion_tags/page_visit",
 			c.PageVisitConversionTagsGet,
 		},
 		"ConversionTagsGet": Route{
+			"ConversionTagsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}",
 			c.ConversionTagsGet,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the ConversionTagsAPIController
+func (c *ConversionTagsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"ConversionTagsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/conversion_tags",
+			c.ConversionTagsList,
+		},
+		Route{
+			"ConversionTagsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/conversion_tags",
+			c.ConversionTagsCreate,
+		},
+		Route{
+			"OcpmEligibleConversionTagsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible",
+			c.OcpmEligibleConversionTagsGet,
+		},
+		Route{
+			"PageVisitConversionTagsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/conversion_tags/page_visit",
+			c.PageVisitConversionTagsGet,
+		},
+		Route{
+			"ConversionTagsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}",
+			c.ConversionTagsGet,
+		},
+	}
+}
+
+
 
 // ConversionTagsList - Get conversion tags
 func (c *ConversionTagsAPIController) ConversionTagsList(w http.ResponseWriter, r *http.Request) {

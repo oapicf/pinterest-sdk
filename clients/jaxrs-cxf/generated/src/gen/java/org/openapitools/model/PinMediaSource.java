@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,13 +18,14 @@ import org.openapitools.model.PinMediaSourceVideoID;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Pin media source.
- **/
+ * Pin media source.
+ */
 @ApiModel(description="Pin media source.")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "source_type", visible = true)
 @JsonSubTypes({
@@ -72,6 +72,7 @@ PIN_URL(String.valueOf("pin_url"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private SourceTypeEnum sourceType;
 
 public enum ContentTypeEnum {
@@ -107,24 +108,29 @@ IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"))
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private ContentTypeEnum contentType;
 
   @ApiModelProperty(required = true, value = "")
+
   private String data;
 
-  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
  /**
-   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-  **/
+  * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+  */
+  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
+
   private Boolean isStandard = true;
 
   @ApiModelProperty(required = true, value = "")
+
   private String url;
 
-  @ApiModelProperty(value = "Cover image url.")
  /**
-   * Cover image url.
-  **/
+  * Cover image url.
+  */
+  @ApiModelProperty(value = "Cover image url.")
+
   private String coverImageUrl;
 
 public enum CoverImageContentTypeEnum {
@@ -159,35 +165,42 @@ IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"))
     }
 }
 
-  @ApiModelProperty(value = "Content type for cover image Base64.")
  /**
-   * Content type for cover image Base64.
-  **/
+  * Content type for cover image Base64.
+  */
+  @ApiModelProperty(value = "Content type for cover image Base64.")
+
   private CoverImageContentTypeEnum coverImageContentType;
 
-  @ApiModelProperty(value = "Cover image Base64.")
  /**
-   * Cover image Base64.
-  **/
+  * Cover image Base64.
+  */
+  @ApiModelProperty(value = "Cover image Base64.")
+
   private String coverImageData;
 
   @ApiModelProperty(required = true, value = "")
+
   private String mediaId;
 
-  @ApiModelProperty(required = true, value = "Array with image objects.")
-  @Valid
  /**
-   * Array with image objects.
-  **/
+  * Array with image objects.
+  */
+  @ApiModelProperty(required = true, value = "Array with image objects.")
+
+  @Valid
+
   private List<@Valid PinMediaSourceImagesURLItemsInner> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private Integer index;
 
-  @ApiModelProperty(value = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
  /**
-   * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
-  **/
+  * This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.
+  */
+  @ApiModelProperty(value = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
+
   private Boolean isAffiliateLink = false;
  /**
    * Get sourceType

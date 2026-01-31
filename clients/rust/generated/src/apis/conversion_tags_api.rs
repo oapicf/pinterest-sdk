@@ -59,10 +59,10 @@ pub enum PageVisitConversionTagsSlashGetError {
 /// Create a conversion tag, also known as <a href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\" target=\"_blank\">Pinterest tag</a>, with the option to enable enhanced match.<p/> The Pinterest Tag tracks actions people take on the ad account’ s website after they view the ad account's ad on Pinterest. The advertiser needs to customize this tag to track conversions.<p/> For more information, see:<p/> <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/set-up-the-pinterest-tag\">Set up the Pinterest tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/\">Pinterest Tag</a><p/> <a class=\"reference external\" href=\"/docs/api-features/pinterest-tag/#enhanced-match\">Enhanced match</a>
 pub async fn conversion_tags_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, conversion_tag_create: models::ConversionTagCreate) -> Result<models::ConversionTagResponse, Error<ConversionTagsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_conversion_tag_create = conversion_tag_create;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_conversion_tag_create = conversion_tag_create;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/conversion_tags", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/conversion_tags", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -71,7 +71,7 @@ pub async fn conversion_tags_slash_create(configuration: &configuration::Configu
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_conversion_tag_create);
+    req_builder = req_builder.json(&p_body_conversion_tag_create);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -101,10 +101,10 @@ pub async fn conversion_tags_slash_create(configuration: &configuration::Configu
 /// Get information about an existing conversion tag.
 pub async fn conversion_tags_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, conversion_tag_id: &str) -> Result<models::ConversionTagResponse, Error<ConversionTagsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_conversion_tag_id = conversion_tag_id;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_conversion_tag_id = conversion_tag_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), conversion_tag_id=crate::apis::urlencode(p_conversion_tag_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), conversion_tag_id=crate::apis::urlencode(p_path_conversion_tag_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -142,13 +142,13 @@ pub async fn conversion_tags_slash_get(configuration: &configuration::Configurat
 /// List conversion tags associated with an ad account.
 pub async fn conversion_tags_slash_list(configuration: &configuration::Configuration, ad_account_id: &str, filter_deleted: Option<bool>) -> Result<models::ConversionTagListResponse, Error<ConversionTagsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_filter_deleted = filter_deleted;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_filter_deleted = filter_deleted;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/conversion_tags", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/conversion_tags", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_filter_deleted {
+    if let Some(ref param_value) = p_query_filter_deleted {
         req_builder = req_builder.query(&[("filter_deleted", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -186,9 +186,9 @@ pub async fn conversion_tags_slash_list(configuration: &configuration::Configura
 /// Get Ocpm eligible conversion tag events for an ad account.
 pub async fn ocpm_eligible_conversion_tags_slash_get(configuration: &configuration::Configuration, ad_account_id: &str) -> Result<std::collections::HashMap<String, Vec<models::ConversionEventResponse>>, Error<OcpmEligibleConversionTagsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
+    let p_path_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -226,21 +226,21 @@ pub async fn ocpm_eligible_conversion_tags_slash_get(configuration: &configurati
 /// Get all page visit conversion tag events for an ad account.
 pub async fn page_visit_conversion_tags_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, page_size: Option<i32>, order: Option<&str>, bookmark: Option<&str>) -> Result<models::PageVisitConversionTagsGet200Response, Error<PageVisitConversionTagsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_page_size = page_size;
-    let p_order = order;
-    let p_bookmark = bookmark;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_page_size = page_size;
+    let p_query_order = order;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/conversion_tags/page_visit", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/conversion_tags/page_visit", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
-        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_order {
+        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

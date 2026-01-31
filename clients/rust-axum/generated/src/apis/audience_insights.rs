@@ -34,6 +34,8 @@ pub enum AudienceInsightsSlashGetResponse {
 }
 
 
+
+
 /// AudienceInsights
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -43,6 +45,7 @@ pub trait AudienceInsights<E: std::fmt::Debug + Send + Sync + 'static = ()>: sup
     /// AudienceInsightsScopeAndTypeSlashGet - GET /v5/ad_accounts/{ad_account_id}/insights/audiences
     async fn audience_insights_scope_and_type_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -54,6 +57,7 @@ pub trait AudienceInsights<E: std::fmt::Debug + Send + Sync + 'static = ()>: sup
     /// AudienceInsightsSlashGet - GET /v5/ad_accounts/{ad_account_id}/audience_insights
     async fn audience_insights_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

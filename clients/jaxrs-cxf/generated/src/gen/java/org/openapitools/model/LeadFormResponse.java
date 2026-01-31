@@ -19,76 +19,91 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LeadFormResponse  {
   
-  @ApiModelProperty(example = "Lead Form 3/14/2023", value = "Internal name of the lead form.")
  /**
-   * Internal name of the lead form.
-  **/
+  * Internal name of the lead form.
+  */
+  @ApiModelProperty(example = "Lead Form 3/14/2023", value = "Internal name of the lead form.")
+
   private String name;
 
-  @ApiModelProperty(example = "https://www.advertisername.com/privacy-policy", value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
  /**
-   * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-  **/
+  * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
+  */
+  @ApiModelProperty(example = "https://www.advertisername.com/privacy-policy", value = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.")
+
   private String privacyPolicyLink;
 
-  @ApiModelProperty(example = "false", value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
  /**
-   * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
-  **/
+  * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
+  */
+  @ApiModelProperty(example = "false", value = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO")
+
   private Boolean hasAcceptedTerms;
 
-  @ApiModelProperty(example = "Thank you for submitting. We will contact you soon.", value = "A message for people who complete the form to let them know what happens next.")
  /**
-   * A message for people who complete the form to let them know what happens next.
-  **/
+  * A message for people who complete the form to let them know what happens next.
+  */
+  @ApiModelProperty(example = "Thank you for submitting. We will contact you soon.", value = "A message for people who complete the form to let them know what happens next.")
+
   private String completionMessage;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private LeadFormStatus status;
 
-  @ApiModelProperty(example = "By entering your personal information, you agree that your data will be collected and used.", value = "Additional disclosure language to be included in the lead form.")
  /**
-   * Additional disclosure language to be included in the lead form.
-  **/
+  * Additional disclosure language to be included in the lead form.
+  */
+  @ApiModelProperty(example = "By entering your personal information, you agree that your data will be collected and used.", value = "Additional disclosure language to be included in the lead form.")
+
   private String disclosureLanguage;
 
-  @ApiModelProperty(example = "[{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}]", value = "List of questions to be displayed on the lead form.")
-  @Valid
  /**
-   * List of questions to be displayed on the lead form.
-  **/
+  * List of questions to be displayed on the lead form.
+  */
+  @ApiModelProperty(example = "[{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}]", value = "List of questions to be displayed on the lead form.")
+
+  @Valid
+
   private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
 
-  @ApiModelProperty(example = "[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]", value = "List of additional policy links to be displayed on the lead form.")
-  @Valid
  /**
-   * List of additional policy links to be displayed on the lead form.
-  **/
+  * List of additional policy links to be displayed on the lead form.
+  */
+  @ApiModelProperty(example = "[{label=Copyright, link=https://policy.pinterest.com/en/copyright}]", value = "List of additional policy links to be displayed on the lead form.")
+
+  @Valid
+
   private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
 
-  @ApiModelProperty(example = "7765300871171", value = "The ID of this lead form")
  /**
-   * The ID of this lead form
-  **/
+  * The ID of this lead form
+  */
+  @ApiModelProperty(example = "7765300871171", value = "The ID of this lead form")
+
   private String id;
 
-  @ApiModelProperty(example = "549755885175", value = "The Ad Account ID that this lead form belongs to.")
  /**
-   * The Ad Account ID that this lead form belongs to.
-  **/
+  * The Ad Account ID that this lead form belongs to.
+  */
+  @ApiModelProperty(example = "549755885175", value = "The Ad Account ID that this lead form belongs to.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "1451431341", value = "Lead form creation time. Unix timestamp in seconds.")
  /**
-   * Lead form creation time. Unix timestamp in seconds.
-  **/
+  * Lead form creation time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1451431341", value = "Lead form creation time. Unix timestamp in seconds.")
+
   private Integer createdTime;
 
-  @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
  /**
-   * Last update time. Unix timestamp in seconds.
-  **/
+  * Last update time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
+
   private Integer updatedTime;
  /**
    * Internal name of the lead form.

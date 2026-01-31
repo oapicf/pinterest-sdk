@@ -5,19 +5,19 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsReportDistributionStats;
 import org.openapitools.model.CatalogsReportFeedIngestionStats;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Diagnostics aggregated numbers
- **/
+ * Diagnostics aggregated numbers
+ */
 @ApiModel(description="Diagnostics aggregated numbers")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "report_type", visible = true)
 @JsonSubTypes({
@@ -60,36 +60,42 @@ FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISS
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private ReportTypeEnum reportType;
 
-  @ApiModelProperty(value = "ID of the catalog entity.")
  /**
-   * ID of the catalog entity.
-  **/
+  * ID of the catalog entity.
+  */
+  @ApiModelProperty(value = "ID of the catalog entity.")
+
   private String catalogId;
 
-  @ApiModelProperty(value = "The event code that a diagnostics aggregated number references")
  /**
-   * The event code that a diagnostics aggregated number references
-  **/
+  * The event code that a diagnostics aggregated number references
+  */
+  @ApiModelProperty(value = "The event code that a diagnostics aggregated number references")
+
   private Integer code;
 
-  @ApiModelProperty(example = "SPAM", value = "A human-friendly label for the event code (e.g, 'SPAM')")
  /**
-   * A human-friendly label for the event code (e.g, 'SPAM')
-  **/
+  * A human-friendly label for the event code (e.g, 'SPAM')
+  */
+  @ApiModelProperty(example = "SPAM", value = "A human-friendly label for the event code (e.g, 'SPAM')")
+
   private String codeLabel;
 
-  @ApiModelProperty(value = "Title message describing the diagnostic issue")
  /**
-   * Title message describing the diagnostic issue
-  **/
+  * Title message describing the diagnostic issue
+  */
+  @ApiModelProperty(value = "Title message describing the diagnostic issue")
+
   private String message;
 
-  @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
  /**
-   * Number of occurrences of the issue
-  **/
+  * Number of occurrences of the issue
+  */
+  @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
+
   private Integer occurrences;
 
 public enum SeverityEnum {
@@ -124,22 +130,25 @@ WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
     }
 }
 
-  @ApiModelProperty(value = "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue")
  /**
-   * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
-  **/
+  * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
+  */
+  @ApiModelProperty(value = "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue")
+
   private SeverityEnum severity;
 
-  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for ads distribution")
  /**
-   * Indicates if issue makes items ineligible for ads distribution
-  **/
+  * Indicates if issue makes items ineligible for ads distribution
+  */
+  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for ads distribution")
+
   private Boolean ineligibleForAds;
 
-  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for organic distribution")
  /**
-   * Indicates if issue makes items ineligible for organic distribution
-  **/
+  * Indicates if issue makes items ineligible for organic distribution
+  */
+  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for organic distribution")
+
   private Boolean ineligibleForOrganic;
  /**
    * Get reportType

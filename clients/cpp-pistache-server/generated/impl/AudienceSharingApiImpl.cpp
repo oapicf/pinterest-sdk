@@ -22,6 +22,129 @@ using namespace org::openapitools::server::model;
 AudienceSharingApiImpl::AudienceSharingApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : AudienceSharingApi(rtr)
 {
+    
+    
+
+    /*
+
+    Http Basic Bearer
+    ===============
+
+    Do this in the individual classes in the constructor
+
+    this->setBearerTokenAuthenticator(
+        [](HttpBearerToken &token)->bool
+        {
+            if(token.token == "Zm9vYmFyCg==")
+            {
+                const int userIdOfFoo = 99;
+                token.userdata = std::unique_ptr<void,std::function<void(void*)>>(
+                    reinterpret_cast<void*>(new int(userIdOfFoo)),
+                    [&](void* ptr)
+                    {
+                        int * value = reinterpret_cast<int*>(ptr);
+                        delete value;
+                    }
+                );
+                return true;
+            }
+            return false;
+        }
+        );
+
+    or in main:
+
+    for (auto api : apiImpls) {
+        api->init();
+
+        api->setBearerTokenAuthenticator(
+        [](HttpBearerToken &token)->bool
+        {
+            if(token.token == "Zm9vYmFyCg==")
+            {
+                const int userIdOfFoo = 99;
+                token.userdata = std::unique_ptr<void,std::function<void(void*)>>(
+                    reinterpret_cast<void*>(new int(userIdOfFoo)),
+                    [&](void* ptr)
+                    {
+                        int * value = reinterpret_cast<int*>(ptr);
+                        delete value;
+                    }
+                );
+                return true;
+            }
+            return false;
+        }
+        );
+    }
+
+    or a mix.
+
+    Until you do either, protected resources will result in a 401.
+    */
+/*
+
+    Http Basic Auth
+    ===============
+
+    Do this in the individual classes in the constructor
+
+    this->setBasicCredentialsAuthenticator(
+        [](HttpBasicCredentials &credentials)->bool
+        {
+            if(credentials.user == "foo" && credentials.password == "bar")
+            {
+
+                const int userIdOfFoo = 66;
+                credentials.userdata = std::unique_ptr<void, std::function<void(void*)>> (
+                    reinterpret_cast<void*>(new int(userIdOfFoo)),
+                    [&](void* ptr)
+                    {
+                        int * value = reinterpret_cast<int*>(ptr);
+                        delete value;
+                    }
+                );
+                return true;
+            }
+            return false;
+        }
+        );
+
+    or in main:
+
+    for (auto api : apiImpls) {
+        api->init();
+
+        api->setBasicCredentialsAuthenticator(
+        []( HttpBasicCredentials &credentials)->bool
+        {
+            if(credentials.user == "foo" && credentials.password == "bar")
+            {
+
+                const int userIdOfFoo = 66;
+                credentials.userdata = std::unique_ptr<void, std::function<void(void*)>> (
+                    reinterpret_cast<void*>(new int(userIdOfFoo)),
+                    [&](void* ptr)
+                    {
+                        int * value = reinterpret_cast<int*>(ptr);
+                        delete value;
+                    }
+                );
+                return true;
+            }
+            return false;
+        }
+        );
+    }
+
+    or a mix.
+
+    Until you do either, protected resources will result in a 401.
+    */
+    
+
+    
+
 }
 
 void AudienceSharingApiImpl::ad_accounts_audiences_shared_accounts_list(const std::string &adAccountId, const std::optional<std::string> &audienceId, const std::optional<org::openapitools::server::model::AudienceAccountType> &accountType, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) {

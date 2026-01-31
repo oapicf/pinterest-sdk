@@ -16,106 +16,127 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ProductGroupPromotionCreateRequestElement  {
   
-  @ApiModelProperty(example = "2680059592705", value = "ID of the product group promotion.")
  /**
-   * ID of the product group promotion.
-  **/
+  * ID of the product group promotion.
+  */
+  @ApiModelProperty(example = "2680059592705", value = "ID of the product group promotion.")
+
   private String id;
 
-  @ApiModelProperty(example = "2680059592705", value = "ID of the ad group the product group belongs to.")
  /**
-   * ID of the ad group the product group belongs to.
-  **/
+  * ID of the ad group the product group belongs to.
+  */
+  @ApiModelProperty(example = "2680059592705", value = "ID of the ad group the product group belongs to.")
+
   private String adGroupId;
 
-  @ApiModelProperty(example = "14000000", value = "The bid in micro currency.")
  /**
-   * The bid in micro currency.
-  **/
+  * The bid in micro currency.
+  */
+  @ApiModelProperty(example = "14000000", value = "The bid in micro currency.")
+
   private Integer bidInMicroCurrency;
 
-  @ApiModelProperty(example = "true", value = "True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.")
  /**
-   * True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
-  **/
+  * True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.
+  */
+  @ApiModelProperty(example = "true", value = "True if the group is BIDDABLE, false if it should be EXCLUDED from serving ads.")
+
   private Boolean included;
 
-  @ApiModelProperty(example = "*_/product_type_0='kitchen'/product_type_1='beverage appliances'", value = "The full product group definition path")
  /**
-   * The full product group definition path
-  **/
+  * The full product group definition path
+  */
+  @ApiModelProperty(example = "*_/product_type_0='kitchen'/product_type_1='beverage appliances'", value = "The full product group definition path")
+
   private String definition;
 
-  @ApiModelProperty(example = "product_type_1='beverage appliances'", value = "The definition of the product group, relative to its parent - an attribute name/value pair")
  /**
-   * The definition of the product group, relative to its parent - an attribute name/value pair
-  **/
+  * The definition of the product group, relative to its parent - an attribute name/value pair
+  */
+  @ApiModelProperty(example = "product_type_1='beverage appliances'", value = "The definition of the product group, relative to its parent - an attribute name/value pair")
+
   private String relativeDefinition;
 
-  @ApiModelProperty(example = "1231234", value = "The parent Product Group ID of this Product Group")
  /**
-   * The parent Product Group ID of this Product Group
-  **/
+  * The parent Product Group ID of this Product Group
+  */
+  @ApiModelProperty(example = "1231234", value = "The parent Product Group ID of this Product Group")
+
   private String parentId;
 
-  @ApiModelProperty(example = "slideshow title", value = "Slideshow Collections Title")
  /**
-   * Slideshow Collections Title
-  **/
+  * Slideshow Collections Title
+  */
+  @ApiModelProperty(example = "slideshow title", value = "Slideshow Collections Title")
+
   private String slideshowCollectionsTitle;
 
-  @ApiModelProperty(example = "slideshow description", value = "Slideshow Collections Description")
  /**
-   * Slideshow Collections Description
-  **/
+  * Slideshow Collections Description
+  */
+  @ApiModelProperty(example = "slideshow description", value = "Slideshow Collections Description")
+
   private String slideshowCollectionsDescription;
 
-  @ApiModelProperty(example = "true", value = "If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog")
  /**
-   * If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
-  **/
+  * If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog
+  */
+  @ApiModelProperty(example = "true", value = "If set to true products promoted in this product group will use the Mobile Deep Link specified in your catalog")
+
   private Boolean isMdl;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private EntityStatus status;
 
-  @ApiModelProperty(example = "https://www.pinterest.com", value = "Tracking template for proudct group promotions. 4000 limit")
  /**
-   * Tracking template for proudct group promotions. 4000 limit
-  **/
+  * Tracking template for proudct group promotions. 4000 limit
+  */
+  @ApiModelProperty(example = "https://www.pinterest.com", value = "Tracking template for proudct group promotions. 4000 limit")
+
   private String trackingUrl;
 
-  @ApiModelProperty(example = "1231235", value = "ID of the catalogs product group that this product group promotion references")
  /**
-   * ID of the catalogs product group that this product group promotion references
-  **/
+  * ID of the catalogs product group that this product group promotion references
+  */
+  @ApiModelProperty(example = "1231235", value = "ID of the catalogs product group that this product group promotion references")
+
   private String catalogProductGroupId;
 
-  @ApiModelProperty(example = "catalogProductGroupName", value = "Catalogs product group name")
  /**
-   * Catalogs product group name
-  **/
+  * Catalogs product group name
+  */
+  @ApiModelProperty(example = "catalogProductGroupName", value = "Catalogs product group name")
+
   private String catalogProductGroupName;
 
-  @ApiModelProperty(example = "123123", value = "Hero Pin ID if this PG is promoted as a Collection")
  /**
-   * Hero Pin ID if this PG is promoted as a Collection
-  **/
+  * Hero Pin ID if this PG is promoted as a Collection
+  */
+  @ApiModelProperty(example = "123123", value = "Hero Pin ID if this PG is promoted as a Collection")
+
   private String collectionsHeroPinId;
 
-  @ApiModelProperty(example = "http://www.pinterest.com", value = "Collections Hero Destination Url")
  /**
-   * Collections Hero Destination Url
-  **/
+  * Collections Hero Destination Url
+  */
+  @ApiModelProperty(example = "http://www.pinterest.com", value = "Collections Hero Destination Url")
+
   private String collectionsHeroDestinationUrl;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private GridClickType gridClickType;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CreativeType creativeType;
  /**
    * ID of the product group promotion.

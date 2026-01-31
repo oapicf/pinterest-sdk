@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsProductGroupProductCounts", description = "Product counts for a Creative Assets CatalogsProductGroup")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsProductGroupProductCounts implements CatalogsProductGroupProductCountsVertical {
 
   /**
@@ -34,7 +34,7 @@ public class CatalogsCreativeAssetsProductGroupProductCounts implements Catalogs
   public enum CatalogTypeEnum {
     CREATIVE_ASSETS("CREATIVE_ASSETS");
 
-    private String value;
+    private final String value;
 
     CatalogTypeEnum(String value) {
       this.value = value;
@@ -110,7 +110,7 @@ public class CatalogsCreativeAssetsProductGroupProductCounts implements Catalogs
    * minimum: 0
    * @return total
    */
-  @NotNull @Valid @DecimalMin("0") 
+  @NotNull @Valid @DecimalMin(value = "0") 
   @Schema(name = "total", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("total")
   public BigDecimal getTotal() {
@@ -131,7 +131,7 @@ public class CatalogsCreativeAssetsProductGroupProductCounts implements Catalogs
    * minimum: 0
    * @return videos
    */
-  @NotNull @Valid @DecimalMin("0") 
+  @NotNull @Valid @DecimalMin(value = "0") 
   @Schema(name = "videos", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("videos")
   public BigDecimal getVideos() {

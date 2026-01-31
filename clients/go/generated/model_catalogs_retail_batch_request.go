@@ -24,7 +24,8 @@ var _ MappedNullable = &CatalogsRetailBatchRequest{}
 type CatalogsRetailBatchRequest struct {
 	CatalogType string `json:"catalog_type"`
 	Country Country `json:"country"`
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 	// Array with catalogs item operations
 	Items []CatalogsRetailBatchRequestItemsInner `json:"items"`
 }
@@ -35,7 +36,7 @@ type _CatalogsRetailBatchRequest CatalogsRetailBatchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsRetailBatchRequest(catalogType string, country Country, language CatalogsItemsRequestLanguage, items []CatalogsRetailBatchRequestItemsInner) *CatalogsRetailBatchRequest {
+func NewCatalogsRetailBatchRequest(catalogType string, country Country, language string, items []CatalogsRetailBatchRequestItemsInner) *CatalogsRetailBatchRequest {
 	this := CatalogsRetailBatchRequest{}
 	this.CatalogType = catalogType
 	this.Country = country
@@ -101,9 +102,9 @@ func (o *CatalogsRetailBatchRequest) SetCountry(v Country) {
 }
 
 // GetLanguage returns the Language field value
-func (o *CatalogsRetailBatchRequest) GetLanguage() CatalogsItemsRequestLanguage {
+func (o *CatalogsRetailBatchRequest) GetLanguage() string {
 	if o == nil {
-		var ret CatalogsItemsRequestLanguage
+		var ret string
 		return ret
 	}
 
@@ -112,7 +113,7 @@ func (o *CatalogsRetailBatchRequest) GetLanguage() CatalogsItemsRequestLanguage 
 
 // GetLanguageOk returns a tuple with the Language field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsRetailBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool) {
+func (o *CatalogsRetailBatchRequest) GetLanguageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -120,7 +121,7 @@ func (o *CatalogsRetailBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLangu
 }
 
 // SetLanguage sets field value
-func (o *CatalogsRetailBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage) {
+func (o *CatalogsRetailBatchRequest) SetLanguage(v string) {
 	o.Language = v
 }
 

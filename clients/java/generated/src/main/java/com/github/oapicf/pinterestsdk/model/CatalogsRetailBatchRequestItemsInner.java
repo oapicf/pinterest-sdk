@@ -66,7 +66,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsRetailBatchRequestItemsInner.class.getName());
 
@@ -136,7 +136,7 @@ public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema 
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsCreateRetailItem failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreateRetailItem failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsCreateRetailItem'", e);
                     }
                     // deserialize CatalogsUpdateRetailItem
@@ -149,7 +149,7 @@ public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema 
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsUpdateRetailItem failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsUpdateRetailItem failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsUpdateRetailItem'", e);
                     }
                     // deserialize CatalogsUpsertRetailItem
@@ -162,7 +162,7 @@ public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema 
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsUpsertRetailItem failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsUpsertRetailItem failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsUpsertRetailItem'", e);
                     }
                     // deserialize CatalogsDeleteRetailItem
@@ -175,11 +175,11 @@ public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema 
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsDeleteRetailItem failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsDeleteRetailItem failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsDeleteRetailItem'", e);
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CatalogsRetailBatchRequestItemsInner: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CatalogsRetailBatchRequestItemsInner: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -311,7 +311,7 @@ public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema 
             CatalogsCreateRetailItem.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsCreateRetailItem failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreateRetailItem failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsUpdateRetailItem
@@ -319,7 +319,7 @@ public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema 
             CatalogsUpdateRetailItem.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsUpdateRetailItem failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsUpdateRetailItem failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsUpsertRetailItem
@@ -327,7 +327,7 @@ public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema 
             CatalogsUpsertRetailItem.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsUpsertRetailItem failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsUpsertRetailItem failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsDeleteRetailItem
@@ -335,10 +335,10 @@ public class CatalogsRetailBatchRequestItemsInner extends AbstractOpenApiSchema 
             CatalogsDeleteRetailItem.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsDeleteRetailItem failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsDeleteRetailItem failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        throw new IOException(String.format("The JSON string is invalid for CatalogsRetailBatchRequestItemsInner with anyOf schemas: CatalogsCreateRetailItem, CatalogsDeleteRetailItem, CatalogsUpdateRetailItem, CatalogsUpsertRetailItem. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+        throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CatalogsRetailBatchRequestItemsInner with anyOf schemas: CatalogsCreateRetailItem, CatalogsDeleteRetailItem, CatalogsUpdateRetailItem, CatalogsUpsertRetailItem. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
     }
 
     /**

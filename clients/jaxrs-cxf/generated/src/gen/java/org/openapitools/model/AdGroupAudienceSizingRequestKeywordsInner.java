@@ -15,13 +15,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdGroupAudienceSizingRequestKeywordsInner  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private MatchTypeResponse matchType;
 
-  @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
  /**
-   * Keyword value (120 chars max).
-  **/
+  * Keyword value (120 chars max).
+  */
+  @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
+
   private String value;
  /**
    * Get matchType

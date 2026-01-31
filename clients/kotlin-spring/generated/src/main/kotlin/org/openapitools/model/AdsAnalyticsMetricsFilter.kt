@@ -37,7 +37,7 @@ data class AdsAnalyticsMetricsFilter(
     @get:Size(min=1)
     @Schema(example = "null", required = true, description = "List of values for filtering")
     @get:JsonProperty("values", required = true) val propertyValues: kotlin.collections.List<java.math.BigDecimal>
-    ) {
+) {
 
 }
 

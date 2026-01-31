@@ -54,6 +54,12 @@
       //expect(instance).to.be.a(PinterestSdk.ItemsBatchPostRequest);
     });
 
+    it('should have the property catalogType (base name: "catalog_type")', function() {
+      // uncomment below and update the code to test the property catalogType
+      //var instance = new PinterestSdk.ItemsBatchPostRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property country (base name: "country")', function() {
       // uncomment below and update the code to test the property country
       //var instance = new PinterestSdk.ItemsBatchPostRequest();
@@ -66,14 +72,20 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property operation (base name: "operation")', function() {
-      // uncomment below and update the code to test the property operation
+    it('should have the property items (base name: "items")', function() {
+      // uncomment below and update the code to test the property items
       //var instance = new PinterestSdk.ItemsBatchPostRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property items (base name: "items")', function() {
-      // uncomment below and update the code to test the property items
+    it('should have the property catalogId (base name: "catalog_id")', function() {
+      // uncomment below and update the code to test the property catalogId
+      //var instance = new PinterestSdk.ItemsBatchPostRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property operation (base name: "operation")', function() {
+      // uncomment below and update the code to test the property operation
       //var instance = new PinterestSdk.ItemsBatchPostRequest();
       //expect(instance).to.be();
     });

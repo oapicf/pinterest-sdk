@@ -9,9 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_media_upload_type
 
 type MediaUploadRequest* = object
   ## Media upload request
   mediaType*: MediaUploadType
+
+
+# Custom JSON deserialization for MediaUploadRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[MediaUploadRequest]): MediaUploadRequest =
+  result = MediaUploadRequest()
+  if node.kind == JObject:
+    if node.hasKey("media_type"):
+      result.mediaType = to(node["media_type"], MediaUploadType)
+
+# Custom JSON serialization for MediaUploadRequest with custom field names
+proc `%`*(obj: MediaUploadRequest): JsonNode =
+  result = newJObject()
+  result["media_type"] = %obj.mediaType
+

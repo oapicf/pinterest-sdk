@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AudienceDemographicValue* = object
   ## Demographic detail for a single audience demographic
-  key*: string ## Unique key for demographic item
-  name*: string ## Display name for demographic
-  ratio*: float ## Value of demographic item as a percent of total audience
+  key*: Option[string] ## Unique key for demographic item
+  name*: Option[string] ## Display name for demographic
+  ratio*: Option[float] ## Value of demographic item as a percent of total audience
+

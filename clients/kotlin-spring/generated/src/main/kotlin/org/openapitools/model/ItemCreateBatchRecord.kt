@@ -27,7 +27,7 @@ data class ItemCreateBatchRecord(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("attributes") val attributes: ItemAttributesRequest? = null
-    ) {
+) {
 
 }
 

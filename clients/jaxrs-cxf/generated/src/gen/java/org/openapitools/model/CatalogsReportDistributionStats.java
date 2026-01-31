@@ -45,48 +45,56 @@ DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
 }
 
   @ApiModelProperty(value = "")
+
   private ReportTypeEnum reportType;
 
-  @ApiModelProperty(value = "ID of the catalog entity.")
  /**
-   * ID of the catalog entity.
-  **/
+  * ID of the catalog entity.
+  */
+  @ApiModelProperty(value = "ID of the catalog entity.")
+
   private String catalogId;
 
-  @ApiModelProperty(value = "The event code that a diagnostics aggregated number references")
  /**
-   * The event code that a diagnostics aggregated number references
-  **/
+  * The event code that a diagnostics aggregated number references
+  */
+  @ApiModelProperty(value = "The event code that a diagnostics aggregated number references")
+
   private Integer code;
 
-  @ApiModelProperty(example = "SPAM", value = "A human-friendly label for the event code (e.g, 'SPAM')")
  /**
-   * A human-friendly label for the event code (e.g, 'SPAM')
-  **/
+  * A human-friendly label for the event code (e.g, 'SPAM')
+  */
+  @ApiModelProperty(example = "SPAM", value = "A human-friendly label for the event code (e.g, 'SPAM')")
+
   private String codeLabel;
 
-  @ApiModelProperty(value = "Title message describing the diagnostic issue")
  /**
-   * Title message describing the diagnostic issue
-  **/
+  * Title message describing the diagnostic issue
+  */
+  @ApiModelProperty(value = "Title message describing the diagnostic issue")
+
   private String message;
 
-  @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
  /**
-   * Number of occurrences of the issue
-  **/
+  * Number of occurrences of the issue
+  */
+  @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
+
   private Integer occurrences;
 
-  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for ads distribution")
  /**
-   * Indicates if issue makes items ineligible for ads distribution
-  **/
+  * Indicates if issue makes items ineligible for ads distribution
+  */
+  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for ads distribution")
+
   private Boolean ineligibleForAds;
 
-  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for organic distribution")
  /**
-   * Indicates if issue makes items ineligible for organic distribution
-  **/
+  * Indicates if issue makes items ineligible for organic distribution
+  */
+  @ApiModelProperty(example = "true", value = "Indicates if issue makes items ineligible for organic distribution")
+
   private Boolean ineligibleForOrganic;
  /**
    * Get reportType

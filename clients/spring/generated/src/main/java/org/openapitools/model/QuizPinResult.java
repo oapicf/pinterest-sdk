@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "QuizPinResult", description = "The result, and link out, based on the user’s choice.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinResult {
 
   private @Nullable String organicPinId;
@@ -34,7 +34,7 @@ public class QuizPinResult {
 
   private @Nullable BigDecimal resultId;
 
-  public QuizPinResult organicPinId(String organicPinId) {
+  public QuizPinResult organicPinId(@Nullable String organicPinId) {
     this.organicPinId = organicPinId;
     return this;
   }
@@ -46,15 +46,15 @@ public class QuizPinResult {
   
   @Schema(name = "organic_pin_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("organic_pin_id")
-  public String getOrganicPinId() {
+  public @Nullable String getOrganicPinId() {
     return organicPinId;
   }
 
-  public void setOrganicPinId(String organicPinId) {
+  public void setOrganicPinId(@Nullable String organicPinId) {
     this.organicPinId = organicPinId;
   }
 
-  public QuizPinResult androidDeepLink(String androidDeepLink) {
+  public QuizPinResult androidDeepLink(@Nullable String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
     return this;
   }
@@ -66,15 +66,15 @@ public class QuizPinResult {
   
   @Schema(name = "android_deep_link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("android_deep_link")
-  public String getAndroidDeepLink() {
+  public @Nullable String getAndroidDeepLink() {
     return androidDeepLink;
   }
 
-  public void setAndroidDeepLink(String androidDeepLink) {
+  public void setAndroidDeepLink(@Nullable String androidDeepLink) {
     this.androidDeepLink = androidDeepLink;
   }
 
-  public QuizPinResult iosDeepLink(String iosDeepLink) {
+  public QuizPinResult iosDeepLink(@Nullable String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
     return this;
   }
@@ -86,15 +86,15 @@ public class QuizPinResult {
   
   @Schema(name = "ios_deep_link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ios_deep_link")
-  public String getIosDeepLink() {
+  public @Nullable String getIosDeepLink() {
     return iosDeepLink;
   }
 
-  public void setIosDeepLink(String iosDeepLink) {
+  public void setIosDeepLink(@Nullable String iosDeepLink) {
     this.iosDeepLink = iosDeepLink;
   }
 
-  public QuizPinResult destinationUrl(String destinationUrl) {
+  public QuizPinResult destinationUrl(@Nullable String destinationUrl) {
     this.destinationUrl = destinationUrl;
     return this;
   }
@@ -106,15 +106,15 @@ public class QuizPinResult {
   
   @Schema(name = "destination_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("destination_url")
-  public String getDestinationUrl() {
+  public @Nullable String getDestinationUrl() {
     return destinationUrl;
   }
 
-  public void setDestinationUrl(String destinationUrl) {
+  public void setDestinationUrl(@Nullable String destinationUrl) {
     this.destinationUrl = destinationUrl;
   }
 
-  public QuizPinResult resultId(BigDecimal resultId) {
+  public QuizPinResult resultId(@Nullable BigDecimal resultId) {
     this.resultId = resultId;
     return this;
   }
@@ -126,11 +126,11 @@ public class QuizPinResult {
   @Valid 
   @Schema(name = "result_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("result_id")
-  public BigDecimal getResultId() {
+  public @Nullable BigDecimal getResultId() {
     return resultId;
   }
 
-  public void setResultId(BigDecimal resultId) {
+  public void setResultId(@Nullable BigDecimal resultId) {
     this.resultId = resultId;
   }
 

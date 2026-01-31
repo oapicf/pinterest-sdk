@@ -23,7 +23,7 @@ data class UpdateMemberAssetsResultsResponseArray(
     @field:Valid
     @Schema(example = "null", description = "List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.")
     @get:JsonProperty("items") val items: kotlin.collections.List<UpdateMemberAssetsResultsResponseArrayItemsInner>? = null
-    ) {
+) {
 
 }
 

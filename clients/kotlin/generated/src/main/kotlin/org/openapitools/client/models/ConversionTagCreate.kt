@@ -22,6 +22,7 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
+ * @param name Conversion tag name.
  * @param aemEnabled Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
  * @param mdFrequency Metadata ingestion frequency.
  * @param aemFnlnEnabled Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
@@ -33,6 +34,10 @@ import com.squareup.moshi.JsonClass
 
 
 data class ConversionTagCreate (
+
+    /* Conversion tag name. */
+    @Json(name = "name")
+    val name: kotlin.String,
 
     /* Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
     @Json(name = "aem_enabled")

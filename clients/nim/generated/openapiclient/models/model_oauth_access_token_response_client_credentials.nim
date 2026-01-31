@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type ResponseType* {.pure.} = enum
@@ -18,22 +20,60 @@ type ResponseType* {.pure.} = enum
 
 type OauthAccessTokenResponseClientCredentials* = object
   ## A successful OAuth client token response for the client token flow.
-  responseType*: ResponseType
+  responseType*: Option[ResponseType]
   accessToken*: string
   tokenType*: string
   expiresIn*: int
   scope*: string
 
 func `%`*(v: ResponseType): JsonNode =
-  let str = case v:
-    of ResponseType.AuthorizationCode: "authorization_code"
-    of ResponseType.RefreshToken: "refresh_token"
-    of ResponseType.ClientCredentials: "client_credentials"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of ResponseType.AuthorizationCode: %"authorization_code"
+    of ResponseType.RefreshToken: %"refresh_token"
+    of ResponseType.ClientCredentials: %"client_credentials"
 func `$`*(v: ResponseType): string =
   result = case v:
-    of ResponseType.AuthorizationCode: "authorization_code"
-    of ResponseType.RefreshToken: "refresh_token"
-    of ResponseType.ClientCredentials: "client_credentials"
+    of ResponseType.AuthorizationCode: $("authorization_code")
+    of ResponseType.RefreshToken: $("refresh_token")
+    of ResponseType.ClientCredentials: $("client_credentials")
+
+proc to*(node: JsonNode, T: typedesc[ResponseType]): ResponseType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ResponseType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("authorization_code"):
+    return ResponseType.AuthorizationCode
+  of $("refresh_token"):
+    return ResponseType.RefreshToken
+  of $("client_credentials"):
+    return ResponseType.ClientCredentials
+  else:
+    raise newException(ValueError, "Invalid enum value for ResponseType: " & strVal)
+
+
+# Custom JSON deserialization for OauthAccessTokenResponseClientCredentials with custom field names
+proc to*(node: JsonNode, T: typedesc[OauthAccessTokenResponseClientCredentials]): OauthAccessTokenResponseClientCredentials =
+  result = OauthAccessTokenResponseClientCredentials()
+  if node.kind == JObject:
+    if node.hasKey("response_type") and node["response_type"].kind != JNull:
+      result.responseType = some(to(node["response_type"], ResponseType))
+    if node.hasKey("access_token"):
+      result.accessToken = to(node["access_token"], string)
+    if node.hasKey("token_type"):
+      result.tokenType = to(node["token_type"], string)
+    if node.hasKey("expires_in"):
+      result.expiresIn = to(node["expires_in"], int)
+    if node.hasKey("scope"):
+      result.scope = to(node["scope"], string)
+
+# Custom JSON serialization for OauthAccessTokenResponseClientCredentials with custom field names
+proc `%`*(obj: OauthAccessTokenResponseClientCredentials): JsonNode =
+  result = newJObject()
+  if obj.responseType.isSome():
+    result["response_type"] = %obj.responseType.get()
+  result["access_token"] = %obj.accessToken
+  result["token_type"] = %obj.tokenType
+  result["expires_in"] = %obj.expiresIn
+  result["scope"] = %obj.scope
+

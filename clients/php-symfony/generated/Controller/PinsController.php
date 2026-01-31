@@ -42,7 +42,6 @@ use OpenAPI\Server\Model\Pin;
 use OpenAPI\Server\Model\PinAnalyticsMetricsResponse;
 use OpenAPI\Server\Model\PinCreate;
 use OpenAPI\Server\Model\PinUpdate;
-use OpenAPI\Server\Model\PinsAnalyticsMetricTypesParameterInner;
 use OpenAPI\Server\Model\PinsList200Response;
 use OpenAPI\Server\Model\PinsSaveRequest;
 
@@ -99,7 +98,7 @@ class PinsController extends Controller
             $pinIds = $this->deserialize($pinIds, 'array<multi,string>', 'string');
             $startDate = $this->deserialize($startDate, '\DateTime', 'string');
             $endDate = $this->deserialize($endDate, '\DateTime', 'string');
-            $metricTypes = $this->deserialize($metricTypes, 'array<csv,OpenAPI\Server\Model\PinsAnalyticsMetricTypesParameterInner>', 'string');
+            $metricTypes = $this->deserialize($metricTypes, 'array<csv,string>', 'string');
             $appTypes = $this->deserialize($appTypes, 'string', 'string');
             $adAccountId = $this->deserialize($adAccountId, 'string', 'string');
         } catch (SerializerRuntimeException $exception) {
@@ -140,7 +139,10 @@ class PinsController extends Controller
         $asserts = [];
         $asserts[] = new Assert\NotNull();
         $asserts[] = new Assert\All([
-            new Assert\Type("OpenAPI\Server\Model\PinsAnalyticsMetricTypesParameterInner"),
+            new Assert\Choice([ 'IMPRESSION', 'OUTBOUND_CLICK', 'PIN_CLICK', 'SAVE', 'SAVE_RATE', 'TOTAL_COMMENTS', 'TOTAL_REACTIONS', 'USER_FOLLOW', 'PROFILE_VISIT', 'VIDEO_MRC_VIEW', 'VIDEO_10S_VIEW', 'QUARTILE_95_PERCENT_VIEW', 'VIDEO_V50_WATCH_TIME', 'VIDEO_START', 'VIDEO_AVG_WATCH_TIME' ])
+        ]);
+        $asserts[] = new Assert\All([
+            new Assert\Type("string"),
         ]);
         $asserts[] = new Assert\Valid();
         $response = $this->validate($metricTypes, $asserts);
@@ -248,7 +250,7 @@ class PinsController extends Controller
             $pinId = $this->deserialize($pinId, 'string', 'string');
             $startDate = $this->deserialize($startDate, '\DateTime', 'string');
             $endDate = $this->deserialize($endDate, '\DateTime', 'string');
-            $metricTypes = $this->deserialize($metricTypes, 'array<csv,OpenAPI\Server\Model\PinsAnalyticsMetricTypesParameterInner>', 'string');
+            $metricTypes = $this->deserialize($metricTypes, 'array<csv,string>', 'string');
             $appTypes = $this->deserialize($appTypes, 'string', 'string');
             $splitField = $this->deserialize($splitField, 'string', 'string');
             $adAccountId = $this->deserialize($adAccountId, 'string', 'string');
@@ -281,7 +283,10 @@ class PinsController extends Controller
         $asserts = [];
         $asserts[] = new Assert\NotNull();
         $asserts[] = new Assert\All([
-            new Assert\Type("OpenAPI\Server\Model\PinsAnalyticsMetricTypesParameterInner"),
+            new Assert\Choice([ 'IMPRESSION', 'OUTBOUND_CLICK', 'PIN_CLICK', 'SAVE', 'SAVE_RATE', 'TOTAL_COMMENTS', 'TOTAL_REACTIONS', 'USER_FOLLOW', 'PROFILE_VISIT', 'VIDEO_MRC_VIEW', 'VIDEO_10S_VIEW', 'QUARTILE_95_PERCENT_VIEW', 'VIDEO_V50_WATCH_TIME', 'VIDEO_START', 'VIDEO_AVG_WATCH_TIME' ])
+        ]);
+        $asserts[] = new Assert\All([
+            new Assert\Type("string"),
         ]);
         $asserts[] = new Assert\Valid();
         $response = $this->validate($metricTypes, $asserts);

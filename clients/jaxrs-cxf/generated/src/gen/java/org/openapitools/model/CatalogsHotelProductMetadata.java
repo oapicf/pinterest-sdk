@@ -1,24 +1,25 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Hotel product metadata entity
- **/
+ * Hotel product metadata entity
+ */
 @ApiModel(description="Hotel product metadata entity")
 
 public class CatalogsHotelProductMetadata  {
   
-  @ApiModelProperty(example = "123abc", required = true, value = "The user-created unique ID that represents the hotel item.")
  /**
-   * The user-created unique ID that represents the hotel item.
-  **/
+  * The user-created unique ID that represents the hotel item.
+  */
+  @ApiModelProperty(example = "123abc", required = true, value = "The user-created unique ID that represents the hotel item.")
+
   private String hotelId;
  /**
    * The user-created unique ID that represents the hotel item.

@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type TopPinsAnalyticsResponseDateAvailability* = object
   ## 
-  latestAvailableTimestamp*: float
-  isRealtime*: bool
+  latestAvailableTimestamp*: Option[float]
+  isRealtime*: Option[bool]
+
+
+# Custom JSON deserialization for TopPinsAnalyticsResponseDateAvailability with custom field names
+proc to*(node: JsonNode, T: typedesc[TopPinsAnalyticsResponseDateAvailability]): TopPinsAnalyticsResponseDateAvailability =
+  result = TopPinsAnalyticsResponseDateAvailability()
+  if node.kind == JObject:
+    if node.hasKey("latest_available_timestamp") and node["latest_available_timestamp"].kind != JNull:
+      result.latestAvailableTimestamp = some(to(node["latest_available_timestamp"], typeof(result.latestAvailableTimestamp.get())))
+    if node.hasKey("is_realtime") and node["is_realtime"].kind != JNull:
+      result.isRealtime = some(to(node["is_realtime"], typeof(result.isRealtime.get())))
+
+# Custom JSON serialization for TopPinsAnalyticsResponseDateAvailability with custom field names
+proc `%`*(obj: TopPinsAnalyticsResponseDateAvailability): JsonNode =
+  result = newJObject()
+  if obj.latestAvailableTimestamp.isSome():
+    result["latest_available_timestamp"] = %obj.latestAvailableTimestamp.get()
+  if obj.isRealtime.isSome():
+    result["is_realtime"] = %obj.isRealtime.get()
+

@@ -12,19 +12,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BusinessSharedAudience  {
   
-  @ApiModelProperty(example = "2542621871096", required = true, value = "Unique identifier of an audience")
  /**
-   * Unique identifier of an audience
-  **/
+  * Unique identifier of an audience
+  */
+  @ApiModelProperty(example = "2542621871096", required = true, value = "Unique identifier of an audience")
+
   private String audienceId;
 
   @ApiModelProperty(required = true, value = "")
+
   private OperationType operationType;
 
-  @ApiModelProperty(required = true, value = "List of business IDs to share with or revoke from.")
  /**
-   * List of business IDs to share with or revoke from.
-  **/
+  * List of business IDs to share with or revoke from.
+  */
+  @ApiModelProperty(required = true, value = "List of business IDs to share with or revoke from.")
+
   private List<String> recipientBusinessIds = new ArrayList<>();
  /**
    * Unique identifier of an audience

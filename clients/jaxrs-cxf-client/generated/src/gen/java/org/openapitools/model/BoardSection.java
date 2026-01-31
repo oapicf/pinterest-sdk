@@ -1,22 +1,24 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Sections help organize pins within a board.
- **/
+ * Sections help organize pins within a board.
+ */
 @ApiModel(description="Sections help organize pins within a board.")
 
 public class BoardSection  {
   
   @ApiModelProperty(example = "549755885175", value = "")
+
   private String id;
 
   @ApiModelProperty(example = "Salads", required = true, value = "")
+
   private String name;
  /**
    * Get id

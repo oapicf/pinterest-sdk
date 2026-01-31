@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsCreateHotelItem;
 import org.openapitools.model.CatalogsDeleteHotelItem;
 import org.openapitools.model.CatalogsUpdatableHotelAttributes;

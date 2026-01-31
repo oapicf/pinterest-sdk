@@ -16,18 +16,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UpdateAssetGroupResponse  {
   
-  @ApiModelProperty(value = "A list of successfully edited asset groups.")
-  @Valid
  /**
-   * A list of successfully edited asset groups.
-  **/
+  * A list of successfully edited asset groups.
+  */
+  @ApiModelProperty(value = "A list of successfully edited asset groups.")
+
+  @Valid
+
   private List<@Valid AssetGroupBinding> updatedAssetGroups = new ArrayList<>();
 
-  @ApiModelProperty(value = "A list of errors associated with the asset groups. Will be returned if there is an error.")
-  @Valid
  /**
-   * A list of errors associated with the asset groups. Will be returned if there is an error.
-  **/
+  * A list of errors associated with the asset groups. Will be returned if there is an error.
+  */
+  @ApiModelProperty(value = "A list of errors associated with the asset groups. Will be returned if there is an error.")
+
+  @Valid
+
   private List<@Valid UpdateAssetGroupResponseExceptionsInner> exceptions;
  /**
    * A list of successfully edited asset groups.

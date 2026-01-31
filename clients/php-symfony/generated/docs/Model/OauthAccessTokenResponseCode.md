@@ -3,13 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**refreshToken** | **string** |  | 
+**refreshTokenExpiresIn** | **int** |  | 
 **responseType** | **string** |  | [optional] 
 **accessToken** | **string** |  | 
 **tokenType** | **string** |  | [default to 'bearer']
 **expiresIn** | **int** |  | 
 **scope** | **string** |  | 
-**refreshToken** | **string** |  | 
-**refreshTokenExpiresIn** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

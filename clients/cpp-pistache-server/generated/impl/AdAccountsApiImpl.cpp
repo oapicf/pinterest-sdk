@@ -22,6 +22,129 @@ using namespace org::openapitools::server::model;
 AdAccountsApiImpl::AdAccountsApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : AdAccountsApi(rtr)
 {
+    
+    
+
+    /*
+
+    Http Basic Bearer
+    ===============
+
+    Do this in the individual classes in the constructor
+
+    this->setBearerTokenAuthenticator(
+        [](HttpBearerToken &token)->bool
+        {
+            if(token.token == "Zm9vYmFyCg==")
+            {
+                const int userIdOfFoo = 99;
+                token.userdata = std::unique_ptr<void,std::function<void(void*)>>(
+                    reinterpret_cast<void*>(new int(userIdOfFoo)),
+                    [&](void* ptr)
+                    {
+                        int * value = reinterpret_cast<int*>(ptr);
+                        delete value;
+                    }
+                );
+                return true;
+            }
+            return false;
+        }
+        );
+
+    or in main:
+
+    for (auto api : apiImpls) {
+        api->init();
+
+        api->setBearerTokenAuthenticator(
+        [](HttpBearerToken &token)->bool
+        {
+            if(token.token == "Zm9vYmFyCg==")
+            {
+                const int userIdOfFoo = 99;
+                token.userdata = std::unique_ptr<void,std::function<void(void*)>>(
+                    reinterpret_cast<void*>(new int(userIdOfFoo)),
+                    [&](void* ptr)
+                    {
+                        int * value = reinterpret_cast<int*>(ptr);
+                        delete value;
+                    }
+                );
+                return true;
+            }
+            return false;
+        }
+        );
+    }
+
+    or a mix.
+
+    Until you do either, protected resources will result in a 401.
+    */
+/*
+
+    Http Basic Auth
+    ===============
+
+    Do this in the individual classes in the constructor
+
+    this->setBasicCredentialsAuthenticator(
+        [](HttpBasicCredentials &credentials)->bool
+        {
+            if(credentials.user == "foo" && credentials.password == "bar")
+            {
+
+                const int userIdOfFoo = 66;
+                credentials.userdata = std::unique_ptr<void, std::function<void(void*)>> (
+                    reinterpret_cast<void*>(new int(userIdOfFoo)),
+                    [&](void* ptr)
+                    {
+                        int * value = reinterpret_cast<int*>(ptr);
+                        delete value;
+                    }
+                );
+                return true;
+            }
+            return false;
+        }
+        );
+
+    or in main:
+
+    for (auto api : apiImpls) {
+        api->init();
+
+        api->setBasicCredentialsAuthenticator(
+        []( HttpBasicCredentials &credentials)->bool
+        {
+            if(credentials.user == "foo" && credentials.password == "bar")
+            {
+
+                const int userIdOfFoo = 66;
+                credentials.userdata = std::unique_ptr<void, std::function<void(void*)>> (
+                    reinterpret_cast<void*>(new int(userIdOfFoo)),
+                    [&](void* ptr)
+                    {
+                        int * value = reinterpret_cast<int*>(ptr);
+                        delete value;
+                    }
+                );
+                return true;
+            }
+            return false;
+        }
+        );
+    }
+
+    or a mix.
+
+    Until you do either, protected resources will result in a 401.
+    */
+    
+
+    
+
 }
 
 void AdAccountsApiImpl::ad_account_targeting_analytics_get(const std::string &adAccountId, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<org::openapitools::server::model::AdsAnalyticsTargetingType>> &targetingTypes, const std::optional<std::vector<std::string>> &columns, const std::optional<org::openapitools::server::model::Granularity> &granularity, const std::optional<int32_t> &clickWindowDays, const std::optional<int32_t> &engagementWindowDays, const std::optional<int32_t> &viewWindowDays, const std::optional<std::string> &conversionReportTime, const std::optional<org::openapitools::server::model::ConversionReportAttributionType> &attributionTypes, Pistache::Http::ResponseWriter &response) {

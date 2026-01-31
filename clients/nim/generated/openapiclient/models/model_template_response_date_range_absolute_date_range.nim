@@ -9,10 +9,35 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type TemplateResponseDateRangeAbsoluteDateRange* = object
   ## The absolute date range of the template
-  `type`*: string ## The date range type
-  startDate*: float ## The start date of the date range
-  endDate*: float ## The end date of the date range
+  `type`*: Option[string] ## The date range type
+  startDate*: Option[float] ## The start date of the date range
+  endDate*: Option[float] ## The end date of the date range
+
+
+# Custom JSON deserialization for TemplateResponseDateRangeAbsoluteDateRange with custom field names
+proc to*(node: JsonNode, T: typedesc[TemplateResponseDateRangeAbsoluteDateRange]): TemplateResponseDateRangeAbsoluteDateRange =
+  result = TemplateResponseDateRangeAbsoluteDateRange()
+  if node.kind == JObject:
+    if node.hasKey("type") and node["type"].kind != JNull:
+      result.`type` = some(to(node["type"], typeof(result.`type`.get())))
+    if node.hasKey("start_date") and node["start_date"].kind != JNull:
+      result.startDate = some(to(node["start_date"], typeof(result.startDate.get())))
+    if node.hasKey("end_date") and node["end_date"].kind != JNull:
+      result.endDate = some(to(node["end_date"], typeof(result.endDate.get())))
+
+# Custom JSON serialization for TemplateResponseDateRangeAbsoluteDateRange with custom field names
+proc `%`*(obj: TemplateResponseDateRangeAbsoluteDateRange): JsonNode =
+  result = newJObject()
+  if obj.`type`.isSome():
+    result["type"] = %obj.`type`.get()
+  if obj.startDate.isSome():
+    result["start_date"] = %obj.startDate.get()
+  if obj.endDate.isSome():
+    result["end_date"] = %obj.endDate.get()
+

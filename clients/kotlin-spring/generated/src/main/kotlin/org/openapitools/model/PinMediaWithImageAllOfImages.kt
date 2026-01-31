@@ -37,7 +37,7 @@ data class PinMediaWithImageAllOfImages(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("1200x") val `1200x`: kotlin.Any? = null
-    ) {
+) {
 
 }
 

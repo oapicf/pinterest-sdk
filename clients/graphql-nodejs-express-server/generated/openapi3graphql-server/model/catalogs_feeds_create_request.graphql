@@ -36,6 +36,6 @@ input CatalogsFeedsCreateRequestInput {
     preferred_processing_schedule: CatalogsFeedProcessingScheduleInput
     default_country: Country
     default_availability: ProductAvailabilityType
-    status: CatalogsStatusInput
+    status: CatalogsStatus
 }
 

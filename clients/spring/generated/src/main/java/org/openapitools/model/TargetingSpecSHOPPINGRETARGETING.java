@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("TargetingSpec_SHOPPING_RETARGETING")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingSpecSHOPPINGRETARGETING {
 
   private @Nullable Integer lookbackWindow;
@@ -34,7 +34,7 @@ public class TargetingSpecSHOPPINGRETARGETING {
 
   private @Nullable Integer exclusionWindow;
 
-  public TargetingSpecSHOPPINGRETARGETING lookbackWindow(Integer lookbackWindow) {
+  public TargetingSpecSHOPPINGRETARGETING lookbackWindow(@Nullable Integer lookbackWindow) {
     this.lookbackWindow = lookbackWindow;
     return this;
   }
@@ -46,11 +46,11 @@ public class TargetingSpecSHOPPINGRETARGETING {
   
   @Schema(name = "lookback_window", example = "30", description = "Number of days ago to start lookback timeframe for dynamic retargeting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lookback_window")
-  public Integer getLookbackWindow() {
+  public @Nullable Integer getLookbackWindow() {
     return lookbackWindow;
   }
 
-  public void setLookbackWindow(Integer lookbackWindow) {
+  public void setLookbackWindow(@Nullable Integer lookbackWindow) {
     this.lookbackWindow = lookbackWindow;
   }
 
@@ -82,7 +82,7 @@ public class TargetingSpecSHOPPINGRETARGETING {
     this.tagTypes = tagTypes;
   }
 
-  public TargetingSpecSHOPPINGRETARGETING exclusionWindow(Integer exclusionWindow) {
+  public TargetingSpecSHOPPINGRETARGETING exclusionWindow(@Nullable Integer exclusionWindow) {
     this.exclusionWindow = exclusionWindow;
     return this;
   }
@@ -94,11 +94,11 @@ public class TargetingSpecSHOPPINGRETARGETING {
   
   @Schema(name = "exclusion_window", example = "14", description = "Number of days ago to stop lookback timeframe for dynamic retargeting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exclusion_window")
-  public Integer getExclusionWindow() {
+  public @Nullable Integer getExclusionWindow() {
     return exclusionWindow;
   }
 
-  public void setExclusionWindow(Integer exclusionWindow) {
+  public void setExclusionWindow(@Nullable Integer exclusionWindow) {
     this.exclusionWindow = exclusionWindow;
   }
 

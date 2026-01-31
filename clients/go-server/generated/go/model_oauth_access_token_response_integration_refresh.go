@@ -14,8 +14,11 @@ package openapi
 
 
 
-// OauthAccessTokenResponseIntegrationRefresh - A successful OAuth access token response for the refresh token flow, with an added refresh token.
 type OauthAccessTokenResponseIntegrationRefresh struct {
+
+	RefreshToken string `json:"refresh_token"`
+
+	RefreshTokenExpiresIn int32 `json:"refresh_token_expires_in"`
 
 	ResponseType string `json:"response_type,omitempty"`
 
@@ -26,21 +29,17 @@ type OauthAccessTokenResponseIntegrationRefresh struct {
 	ExpiresIn int32 `json:"expires_in"`
 
 	Scope string `json:"scope"`
-
-	RefreshToken string `json:"refresh_token"`
-
-	RefreshTokenExpiresIn int32 `json:"refresh_token_expires_in"`
 }
 
 // AssertOauthAccessTokenResponseIntegrationRefreshRequired checks if the required fields are not zero-ed
 func AssertOauthAccessTokenResponseIntegrationRefreshRequired(obj OauthAccessTokenResponseIntegrationRefresh) error {
 	elements := map[string]interface{}{
+		"refresh_token": obj.RefreshToken,
+		"refresh_token_expires_in": obj.RefreshTokenExpiresIn,
 		"access_token": obj.AccessToken,
 		"token_type": obj.TokenType,
 		"expires_in": obj.ExpiresIn,
 		"scope": obj.Scope,
-		"refresh_token": obj.RefreshToken,
-		"refresh_token_expires_in": obj.RefreshTokenExpiresIn,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

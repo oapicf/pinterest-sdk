@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_product_group_filters
 
@@ -19,16 +21,50 @@ type CatalogsCreativeAssetsProductGroupCreateRequest* = object
   ## Request object for creating a creative assets product group.
   catalogType*: CatalogType
   name*: string
-  description*: string
+  description*: Option[string]
   filters*: CatalogsCreativeAssetsProductGroupFilters
   catalogId*: string ## Catalog id pertaining to the creative assets product group.
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.CREATIVEASSETS: %"CREATIVE_ASSETS"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
+    of CatalogType.CREATIVEASSETS: $("CREATIVE_ASSETS")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CREATIVE_ASSETS"):
+    return CatalogType.CREATIVEASSETS
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsProductGroupCreateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsProductGroupCreateRequest]): CatalogsCreativeAssetsProductGroupCreateRequest =
+  result = CatalogsCreativeAssetsProductGroupCreateRequest()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("name"):
+      result.name = to(node["name"], string)
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("filters"):
+      result.filters = to(node["filters"], CatalogsCreativeAssetsProductGroupFilters)
+    if node.hasKey("catalog_id"):
+      result.catalogId = to(node["catalog_id"], string)
+
+# Custom JSON serialization for CatalogsCreativeAssetsProductGroupCreateRequest with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsProductGroupCreateRequest): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["name"] = %obj.name
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  result["filters"] = %obj.filters
+  result["catalog_id"] = %obj.catalogId
+

@@ -214,23 +214,19 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "eligible":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                eligible = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            eligible = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "can_edit":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                canEdit = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            canEdit = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "billto_infos":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                billtoInfos = new Option<List<SSIOAccountItem>?>(JsonSerializer.Deserialize<List<SSIOAccountItem>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            billtoInfos = new Option<List<SSIOAccountItem>?>(JsonSerializer.Deserialize<List<SSIOAccountItem>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "currency":
                             currency = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "pmp_names":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pmpNames = new Option<List<SSIOAccountPMPName>?>(JsonSerializer.Deserialize<List<SSIOAccountPMPName>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            pmpNames = new Option<List<SSIOAccountPMPName>?>(JsonSerializer.Deserialize<List<SSIOAccountPMPName>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "error":
                             error = new Option<string?>(utf8JsonReader.GetString()!);

@@ -73,7 +73,7 @@ private class OASOauthAccessTokenRequestCodeTest {
     private static void maintainRenamedProperties() {
         OASOauthAccessTokenRequestCode oauthAccessTokenRequestCode = new OASOauthAccessTokenRequestCode();
         Map<String, String> x-property-mappings = oauthAccessTokenRequestCode.getx-property-mappings();
-        System.assertEquals('grantType', x-property-mappings.get('grant_type'));
         System.assertEquals('redirectUri', x-property-mappings.get('redirect_uri'));
+        System.assertEquals('grantType', x-property-mappings.get('grant_type'));
     }
 }

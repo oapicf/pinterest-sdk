@@ -91,7 +91,6 @@ R/audience_category.R
 R/audience_common.R
 R/audience_create_custom_request.R
 R/audience_create_request.R
-R/audience_create_request1_audience_type.R
 R/audience_data_party.R
 R/audience_definition.R
 R/audience_definition_response.R
@@ -280,7 +279,6 @@ R/catalogs_items_delete_discontinued_batch_request.R
 R/catalogs_items_filters.R
 R/catalogs_items_post_filters.R
 R/catalogs_items_request.R
-R/catalogs_items_request_language.R
 R/catalogs_items_update_batch_request.R
 R/catalogs_items_upsert_batch_request.R
 R/catalogs_list200_response.R
@@ -625,7 +623,6 @@ R/pin_media_with_videos.R
 R/pin_promotion_summary_status.R
 R/pin_update.R
 R/pin_update_carousel_slots_inner.R
-R/pins_analytics_metric_types_parameter_inner.R
 R/pins_api.R
 R/pins_list200_response.R
 R/pins_save_request.R
@@ -844,7 +841,6 @@ docs/AudienceCategory.md
 docs/AudienceCommon.md
 docs/AudienceCreateCustomRequest.md
 docs/AudienceCreateRequest.md
-docs/AudienceCreateRequest1AudienceType.md
 docs/AudienceDataParty.md
 docs/AudienceDefinition.md
 docs/AudienceDefinitionResponse.md
@@ -1033,7 +1029,6 @@ docs/CatalogsItemsDeleteDiscontinuedBatchRequest.md
 docs/CatalogsItemsFilters.md
 docs/CatalogsItemsPostFilters.md
 docs/CatalogsItemsRequest.md
-docs/CatalogsItemsRequestLanguage.md
 docs/CatalogsItemsUpdateBatchRequest.md
 docs/CatalogsItemsUpsertBatchRequest.md
 docs/CatalogsList200Response.md
@@ -1378,7 +1373,6 @@ docs/PinMediaWithVideos.md
 docs/PinPromotionSummaryStatus.md
 docs/PinUpdate.md
 docs/PinUpdateCarouselSlotsInner.md
-docs/PinsAnalyticsMetricTypesParameterInner.md
 docs/PinsApi.md
 docs/PinsList200Response.md
 docs/PinsSaveRequest.md

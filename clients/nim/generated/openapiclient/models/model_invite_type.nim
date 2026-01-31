@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type InviteType* = object
-  ## The type of invite. <br>'MEMBER_INVITE' is to invite a member to access your business assets. <br>'PARTNER INVITE' is to invite a partner to access your business assets. <br>'PARTNER_REQUEST' is to request access a partner's business assets.
+type InviteType* {.pure.} = enum
+  MEMBERINVITE
+  PARTNERINVITE
+  PARTNERREQUEST
+
+func `%`*(v: InviteType): JsonNode =
+  result = case v:
+    of InviteType.MEMBERINVITE: %"MEMBER_INVITE"
+    of InviteType.PARTNERINVITE: %"PARTNER_INVITE"
+    of InviteType.PARTNERREQUEST: %"PARTNER_REQUEST"
+
+func `$`*(v: InviteType): string =
+  result = case v:
+    of InviteType.MEMBERINVITE: $("MEMBER_INVITE")
+    of InviteType.PARTNERINVITE: $("PARTNER_INVITE")
+    of InviteType.PARTNERREQUEST: $("PARTNER_REQUEST")
+
+proc to*(node: JsonNode, T: typedesc[InviteType]): InviteType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum InviteType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("MEMBER_INVITE"):
+    return InviteType.MEMBERINVITE
+  of $("PARTNER_INVITE"):
+    return InviteType.PARTNERINVITE
+  of $("PARTNER_REQUEST"):
+    return InviteType.PARTNERREQUEST
+  else:
+    raise newException(ValueError, "Invalid enum value for InviteType: " & strVal)
+

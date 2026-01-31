@@ -39,10 +39,10 @@ public class OASAudienceCreateRequest implements OASAudienceCommon, OAS.MappedPr
     public String description { get; set; }
 
     /**
-     * Get audienceType
+     * <a href="/docs/reference/glossary/#Audience Types">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
      * @return audienceType
      */
-    public OASAudienceCreateRequest1AudienceTyp audienceType { get; set; }
+    public OASAudienceType audienceType { get; set; }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
         'ad_account_id' => 'adAccountId',
@@ -68,7 +68,7 @@ public class OASAudienceCreateRequest implements OASAudienceCommon, OAS.MappedPr
           audienceCreateRequest.name = 'string';
           audienceCreateRequest.rule = OASAudienceRule.getExample();
           audienceCreateRequest.description = 'string';
-          audienceCreateRequest.audienceType = OASAudienceCreateRequest1AudienceTyp.getExample();
+          audienceCreateRequest.audienceType = OASAudienceType.getExample();
         return audienceCreateRequest;
     }
 

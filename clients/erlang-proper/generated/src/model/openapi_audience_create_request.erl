@@ -13,7 +13,7 @@
   | {'name', binary() }
   | {'rule', openapi_audience_rule:openapi_audience_rule() }
   | {'description', binary() }
-  | {'audience_type', openapi_audience_create_request_1_audience_type:openapi_audience_create_request_1_audience_type() }
+  | {'audience_type', openapi_audience_type:openapi_audience_type() }
   ].
 
 
@@ -25,7 +25,7 @@ openapi_audience_create_request(Fields) ->
             , {'name', binary() }
             , {'rule', openapi_audience_rule:openapi_audience_rule() }
             , {'description', binary() }
-            , {'audience_type', openapi_audience_create_request_1_audience_type:openapi_audience_create_request_1_audience_type() }
+            , {'audience_type', openapi_audience_type:openapi_audience_type() }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

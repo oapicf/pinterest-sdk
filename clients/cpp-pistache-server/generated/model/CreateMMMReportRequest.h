@@ -63,6 +63,13 @@ public:
     /// CreateMMMReportRequest members
 
     /// <summary>
+    /// A List of countries for filtering
+    /// </summary>
+    std::vector<org::openapitools::server::model::TargetingAdvertiserCountry> getCountries() const;
+    void setCountries(std::vector<org::openapitools::server::model::TargetingAdvertiserCountry> const& value);
+    bool countriesIsSet() const;
+    void unsetCountries();
+    /// <summary>
     /// Name of the Marketing Mix Modeling (MMM) report
     /// </summary>
     std::string getReportName() const;
@@ -97,17 +104,12 @@ public:
     /// </summary>
     std::vector<org::openapitools::server::model::MMMReportingColumn> getColumns() const;
     void setColumns(std::vector<org::openapitools::server::model::MMMReportingColumn> const& value);
-    /// <summary>
-    /// A List of countries for filtering
-    /// </summary>
-    std::vector<org::openapitools::server::model::TargetingAdvertiserCountry> getCountries() const;
-    void setCountries(std::vector<org::openapitools::server::model::TargetingAdvertiserCountry> const& value);
-    bool countriesIsSet() const;
-    void unsetCountries();
 
     friend  void to_json(nlohmann::json& j, const CreateMMMReportRequest& o);
     friend  void from_json(const nlohmann::json& j, CreateMMMReportRequest& o);
 protected:
+    std::vector<org::openapitools::server::model::TargetingAdvertiserCountry> m_Countries;
+    bool m_CountriesIsSet;
     std::string m_Report_name;
 
     std::string m_Start_date;
@@ -122,8 +124,6 @@ protected:
 
     std::vector<org::openapitools::server::model::MMMReportingColumn> m_Columns;
 
-    std::vector<org::openapitools::server::model::TargetingAdvertiserCountry> m_Countries;
-    bool m_CountriesIsSet;
     
 };
 

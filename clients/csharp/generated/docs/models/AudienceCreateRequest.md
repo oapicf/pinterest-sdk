@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Audience name. | 
 **Rule** | [**AudienceRule**](AudienceRule.md) |  | 
-**AudienceType** | [**AudienceCreateRequest1AudienceType**](AudienceCreateRequest1AudienceType.md) |  | 
+**AudienceType** | **AudienceType** | &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. | 
 **AdAccountId** | **string** | Ad account ID. | [optional] 
 **Description** | **string** | Audience description. | [optional] 
 

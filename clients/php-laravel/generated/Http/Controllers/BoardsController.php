@@ -69,12 +69,8 @@ class BoardsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->boardSectionsCreate($boardId, $boardSection, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->boardSectionsCreate($boardId, $boardSection, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BoardSection) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 201);
@@ -146,12 +142,8 @@ class BoardsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->boardSectionsDelete($boardId, $sectionId, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->boardSectionsDelete($boardId, $sectionId, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent204) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 204);
@@ -225,12 +217,8 @@ class BoardsController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->boardSectionsList($boardId, $adAccountId, $bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->boardSectionsList($boardId, $adAccountId, $bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BoardSectionsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -298,12 +286,8 @@ class BoardsController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->boardSectionsListPins($boardId, $sectionId, $adAccountId, $bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->boardSectionsListPins($boardId, $sectionId, $adAccountId, $bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BoardsListPins200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -358,12 +342,8 @@ class BoardsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->boardSectionsUpdate($boardId, $sectionId, $boardSection, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->boardSectionsUpdate($boardId, $sectionId, $boardSection, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BoardSection) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -416,12 +396,8 @@ class BoardsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->boardsCreate($board, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->boardsCreate($board, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Board) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 201);
@@ -475,12 +451,8 @@ class BoardsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->boardsDelete($boardId, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->boardsDelete($boardId, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent204) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 204);
@@ -546,12 +518,8 @@ class BoardsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->boardsGet($boardId, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->boardsGet($boardId, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Board) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -615,12 +583,8 @@ class BoardsController extends Controller
 
         $privacy = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BoardsListPrivacyParameter::class);
 
-        try {
-            $apiResult = $this->api->boardsList($adAccountId, $bookmark, $pageSize, $privacy);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->boardsList($adAccountId, $bookmark, $pageSize, $privacy);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BoardsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -690,14 +654,10 @@ class BoardsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        $pinMetrics = $request->bool('pinMetrics');
+        $pinMetrics = $request->boolean('pinMetrics');
 
-        try {
-            $apiResult = $this->api->boardsListPins($boardId, $bookmark, $pageSize, $creativeTypes, $adAccountId, $pinMetrics);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->boardsListPins($boardId, $bookmark, $pageSize, $creativeTypes, $adAccountId, $pinMetrics);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BoardsListPins200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -743,12 +703,8 @@ class BoardsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->boardsUpdate($boardId, $boardUpdate, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->boardsUpdate($boardId, $boardUpdate, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Board) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

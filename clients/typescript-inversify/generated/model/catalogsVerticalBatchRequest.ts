@@ -12,7 +12,6 @@
 import { CatalogsCreativeAssetsBatchItem } from './catalogsCreativeAssetsBatchItem';
 import { CatalogsCreativeAssetsBatchRequest } from './catalogsCreativeAssetsBatchRequest';
 import { CatalogsHotelBatchRequest } from './catalogsHotelBatchRequest';
-import { CatalogsItemsRequestLanguage } from './catalogsItemsRequestLanguage';
 import { CatalogsRetailBatchRequest } from './catalogsRetailBatchRequest';
 import { Country } from './country';
 

@@ -14,6 +14,8 @@ package org.openapitools.client.model
 import org.openapitools.client.core.ApiModel
 
 case class CreateMMMReportRequest (
+  /* A List of countries for filtering */
+  countries: Option[Seq[TargetingAdvertiserCountry]] = None,
   /* Name of the Marketing Mix Modeling (MMM) report */
   reportName: String,
   /* Metric report start date (UTC). Format: YYYY-MM-DD */
@@ -27,9 +29,7 @@ case class CreateMMMReportRequest (
   /* List of targeting types */
   targetingTypes: Seq[MMMReportingTargetingType],
   /* Metric and entity columns */
-  columns: Seq[MMMReportingColumn],
-  /* A List of countries for filtering */
-  countries: Option[Seq[TargetingAdvertiserCountry]] = None
+  columns: Seq[MMMReportingColumn]
 ) extends ApiModel
 
 object CreateMMMReportRequestEnums {

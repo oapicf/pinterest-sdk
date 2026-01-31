@@ -92,7 +92,7 @@ private:
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="locale">Search locale. (optional, default to &quot;&quot;)</param>
     /// <param name="limit">Max search result size (optional, default to 10)</param>
-    virtual void search_partner_pins(const std::optional<std::string> &term, const std::optional<std::string> &countryCode, const std::optional<std::string> &bookmark, const std::optional<std::string> &locale, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_partner_pins( const std::optional<std::string> &term, const std::optional<std::string> &countryCode, const std::optional<std::string> &bookmark, const std::optional<std::string> &locale, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search user&#39;s boards
     /// </summary>
@@ -103,7 +103,7 @@ private:
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="query">Search query. Can contain pin description keywords or comma-separated pin IDs. (optional, default to &quot;&quot;)</param>
-    virtual void search_user_boards_get(const std::optional<std::string> &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &query, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_user_boards_get( const std::optional<std::string> &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &query, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Search user&#39;s Pins
     /// </summary>
@@ -113,7 +113,7 @@ private:
     /// <param name="query">Search query. Can contain pin description keywords or comma-separated pin IDs.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void search_user_pins_list(const std::optional<std::string> &query, const std::optional<std::string> &adAccountId, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void search_user_pins_list( const std::optional<std::string> &query, const std::optional<std::string> &adAccountId, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

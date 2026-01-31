@@ -23,10 +23,10 @@
 @interface OAIOauthAccessTokenRequestCode : OAIObject
 
 
-@property(nonatomic) NSString* grantType;
-
 @property(nonatomic) NSString* code;
 
 @property(nonatomic) NSString* redirectUri;
+
+@property(nonatomic) NSString* grantType;
 
 @end

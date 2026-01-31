@@ -14,30 +14,37 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AudienceUpdateRequest  {
   
-  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
  /**
-   * Ad account ID.
-  **/
+  * Ad account ID.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "string", value = "Audience name.")
  /**
-   * Audience name.
-  **/
+  * Audience name.
+  */
+  @ApiModelProperty(example = "string", value = "Audience name.")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private AudienceRule rule;
 
-  @ApiModelProperty(example = "string", value = "Audience description.")
  /**
-   * Audience description.
-  **/
+  * Audience description.
+  */
+  @ApiModelProperty(example = "string", value = "Audience description.")
+
   private String description;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private AudienceUpdateOperationType operationType = AudienceUpdateOperationType.UPDATE;
  /**
    * Ad account ID.

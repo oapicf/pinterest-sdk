@@ -22,6 +22,7 @@ class AdvancedAuctionApiTest {
     fun advancedAuctionItemsGetPostTest() {
         val advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<AdvancedAuctionItems> = api.advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest, adAccountId)
 
         // TODO: test validations
@@ -37,6 +38,7 @@ class AdvancedAuctionApiTest {
     fun advancedAuctionItemsSubmitPostTest() {
         val advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<AdvancedAuctionProcessedItems> = api.advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest, adAccountId)
 
         // TODO: test validations

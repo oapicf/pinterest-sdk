@@ -9,10 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_match_type_response
 
 type AdGroupAudienceSizingRequestKeywordsInner* = object
   ## 
-  matchType*: MatchTypeResponse
+  matchType*: Option[MatchTypeResponse]
   value*: string ## Keyword value (120 chars max).
+
+
+# Custom JSON deserialization for AdGroupAudienceSizingRequestKeywordsInner with custom field names
+proc to*(node: JsonNode, T: typedesc[AdGroupAudienceSizingRequestKeywordsInner]): AdGroupAudienceSizingRequestKeywordsInner =
+  result = AdGroupAudienceSizingRequestKeywordsInner()
+  if node.kind == JObject:
+    if node.hasKey("match_type") and node["match_type"].kind != JNull:
+      result.matchType = some(to(node["match_type"], typeof(result.matchType.get())))
+    if node.hasKey("value"):
+      result.value = to(node["value"], string)
+
+# Custom JSON serialization for AdGroupAudienceSizingRequestKeywordsInner with custom field names
+proc `%`*(obj: AdGroupAudienceSizingRequestKeywordsInner): JsonNode =
+  result = newJObject()
+  if obj.matchType.isSome():
+    result["match_type"] = %obj.matchType.get()
+  result["value"] = %obj.value
+

@@ -15,7 +15,6 @@ import ApiClient from '../ApiClient';
 import CatalogsCreativeAssetsBatchItem from './CatalogsCreativeAssetsBatchItem';
 import CatalogsCreativeAssetsBatchRequest from './CatalogsCreativeAssetsBatchRequest';
 import CatalogsHotelBatchRequest from './CatalogsHotelBatchRequest';
-import CatalogsItemsRequestLanguage from './CatalogsItemsRequestLanguage';
 import CatalogsRetailBatchRequest from './CatalogsRetailBatchRequest';
 import Country from './Country';
 
@@ -153,7 +152,8 @@ CatalogsVerticalBatchRequest.prototype['catalog_type'] = undefined;
 CatalogsVerticalBatchRequest.prototype['country'] = undefined;
 
 /**
- * @member {module:model/CatalogsItemsRequestLanguage} language
+ * We recommend using the CatalogsLocale values.
+ * @member {module:model/CatalogsVerticalBatchRequest.LanguageEnum} language
  */
 CatalogsVerticalBatchRequest.prototype['language'] = undefined;
 

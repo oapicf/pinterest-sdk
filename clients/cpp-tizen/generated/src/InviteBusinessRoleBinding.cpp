@@ -23,32 +23,17 @@ InviteBusinessRoleBinding::~InviteBusinessRoleBinding()
 void
 InviteBusinessRoleBinding::__init()
 {
-	//created_by_business_id = std::string();
-	//created_by_user_id = std::string();
-	//user = null;
 	//id = std::string();
 	//invite_data = new BaseInviteDataResponse_invite_data();
 	//is_received_invite = bool(false);
+	//user = null;
+	//created_by_business_id = std::string();
+	//created_by_user_id = std::string();
 }
 
 void
 InviteBusinessRoleBinding::__cleanup()
 {
-	//if(created_by_business_id != NULL) {
-	//
-	//delete created_by_business_id;
-	//created_by_business_id = NULL;
-	//}
-	//if(created_by_user_id != NULL) {
-	//
-	//delete created_by_user_id;
-	//created_by_user_id = NULL;
-	//}
-	//if(user != NULL) {
-	//
-	//delete user;
-	//user = NULL;
-	//}
 	//if(id != NULL) {
 	//
 	//delete id;
@@ -64,6 +49,21 @@ InviteBusinessRoleBinding::__cleanup()
 	//delete is_received_invite;
 	//is_received_invite = NULL;
 	//}
+	//if(user != NULL) {
+	//
+	//delete user;
+	//user = NULL;
+	//}
+	//if(created_by_business_id != NULL) {
+	//
+	//delete created_by_business_id;
+	//created_by_business_id = NULL;
+	//}
+	//if(created_by_user_id != NULL) {
+	//
+	//delete created_by_user_id;
+	//created_by_user_id = NULL;
+	//}
 	//
 }
 
@@ -72,42 +72,6 @@ InviteBusinessRoleBinding::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *created_by_business_idKey = "created_by_business_id";
-	node = json_object_get_member(pJsonObject, created_by_business_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&created_by_business_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *created_by_user_idKey = "created_by_user_id";
-	node = json_object_get_member(pJsonObject, created_by_user_idKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&created_by_user_id, node, "std::string", "");
-		} else {
-			
-		}
-	}
-	const gchar *userKey = "user";
-	node = json_object_get_member(pJsonObject, userKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("BusinessAccessUserSummary")) {
-			jsonToValue(&user, node, "BusinessAccessUserSummary", "BusinessAccessUserSummary");
-		} else {
-			
-			BusinessAccessUserSummary* obj = static_cast<BusinessAccessUserSummary*> (&user);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
-	}
 	const gchar *idKey = "id";
 	node = json_object_get_member(pJsonObject, idKey);
 	if (node !=NULL) {
@@ -144,6 +108,42 @@ InviteBusinessRoleBinding::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *userKey = "user";
+	node = json_object_get_member(pJsonObject, userKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&user, node, "std::string", "");
+		} else {
+			
+			std::string* obj = static_cast<std::string*> (&user);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
+	const gchar *created_by_business_idKey = "created_by_business_id";
+	node = json_object_get_member(pJsonObject, created_by_business_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&created_by_business_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *created_by_user_idKey = "created_by_user_id";
+	node = json_object_get_member(pJsonObject, created_by_user_idKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&created_by_user_id, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 InviteBusinessRoleBinding::InviteBusinessRoleBinding(char* json)
@@ -156,38 +156,6 @@ InviteBusinessRoleBinding::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getCreatedByBusinessId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *created_by_business_idKey = "created_by_business_id";
-	json_object_set_member(pJsonObject, created_by_business_idKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getCreatedByUserId();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *created_by_user_idKey = "created_by_user_id";
-	json_object_set_member(pJsonObject, created_by_user_idKey, node);
-	if (isprimitive("BusinessAccessUserSummary")) {
-		BusinessAccessUserSummary obj = getUser();
-		node = converttoJson(&obj, "BusinessAccessUserSummary", "");
-	}
-	else {
-		
-		BusinessAccessUserSummary obj = static_cast<BusinessAccessUserSummary> (getUser());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *userKey = "user";
-	json_object_set_member(pJsonObject, userKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getId();
 		node = converttoJson(&obj, "std::string", "");
@@ -220,48 +188,44 @@ InviteBusinessRoleBinding::toJson()
 	}
 	const gchar *is_received_inviteKey = "is_received_invite";
 	json_object_set_member(pJsonObject, is_received_inviteKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getUser();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+		std::string obj = static_cast<std::string> (getUser());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *userKey = "user";
+	json_object_set_member(pJsonObject, userKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCreatedByBusinessId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *created_by_business_idKey = "created_by_business_id";
+	json_object_set_member(pJsonObject, created_by_business_idKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getCreatedByUserId();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *created_by_user_idKey = "created_by_user_id";
+	json_object_set_member(pJsonObject, created_by_user_idKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-InviteBusinessRoleBinding::getCreatedByBusinessId()
-{
-	return created_by_business_id;
-}
-
-void
-InviteBusinessRoleBinding::setCreatedByBusinessId(std::string  created_by_business_id)
-{
-	this->created_by_business_id = created_by_business_id;
-}
-
-std::string
-InviteBusinessRoleBinding::getCreatedByUserId()
-{
-	return created_by_user_id;
-}
-
-void
-InviteBusinessRoleBinding::setCreatedByUserId(std::string  created_by_user_id)
-{
-	this->created_by_user_id = created_by_user_id;
-}
-
-BusinessAccessUserSummary
-InviteBusinessRoleBinding::getUser()
-{
-	return user;
-}
-
-void
-InviteBusinessRoleBinding::setUser(BusinessAccessUserSummary  user)
-{
-	this->user = user;
 }
 
 std::string
@@ -298,6 +262,42 @@ void
 InviteBusinessRoleBinding::setIsReceivedInvite(bool  is_received_invite)
 {
 	this->is_received_invite = is_received_invite;
+}
+
+std::string
+InviteBusinessRoleBinding::getUser()
+{
+	return user;
+}
+
+void
+InviteBusinessRoleBinding::setUser(std::string  user)
+{
+	this->user = user;
+}
+
+std::string
+InviteBusinessRoleBinding::getCreatedByBusinessId()
+{
+	return created_by_business_id;
+}
+
+void
+InviteBusinessRoleBinding::setCreatedByBusinessId(std::string  created_by_business_id)
+{
+	this->created_by_business_id = created_by_business_id;
+}
+
+std::string
+InviteBusinessRoleBinding::getCreatedByUserId()
+{
+	return created_by_user_id;
+}
+
+void
+InviteBusinessRoleBinding::setCreatedByUserId(std::string  created_by_user_id)
+{
+	this->created_by_user_id = created_by_user_id;
 }
 
 

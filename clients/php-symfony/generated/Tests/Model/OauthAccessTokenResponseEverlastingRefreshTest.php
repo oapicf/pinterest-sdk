@@ -37,7 +37,7 @@ use PHPUnit\Framework\TestCase;
  * OauthAccessTokenResponseEverlastingRefreshTest Class Doc Comment
  *
  * @category    Class
- * @description A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
+ * @description OauthAccessTokenResponseEverlastingRefresh
  * @package     OpenAPI\Server\Tests\Model
  * @author      openapi-generator contributors
  * @link        https://github.com/openapitools/openapi-generator
@@ -84,6 +84,39 @@ class OauthAccessTokenResponseEverlastingRefreshTest extends TestCase
     {
         $this->assertTrue(class_exists(OauthAccessTokenResponseEverlastingRefresh::class));
         $this->assertInstanceOf(OauthAccessTokenResponseEverlastingRefresh::class, $this->object);
+    }
+
+    /**
+     * Test attribute "refreshToken"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyRefreshToken(): void
+    {
+        $this->markTestSkipped('Test for property refreshToken not implemented');
+    }
+
+    /**
+     * Test attribute "refreshTokenExpiresIn"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyRefreshTokenExpiresIn(): void
+    {
+        $this->markTestSkipped('Test for property refreshTokenExpiresIn not implemented');
+    }
+
+    /**
+     * Test attribute "refreshTokenExpiresAt"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyRefreshTokenExpiresAt(): void
+    {
+        $this->markTestSkipped('Test for property refreshTokenExpiresAt not implemented');
     }
 
     /**
@@ -139,38 +172,5 @@ class OauthAccessTokenResponseEverlastingRefreshTest extends TestCase
     public function testPropertyScope(): void
     {
         $this->markTestSkipped('Test for property scope not implemented');
-    }
-
-    /**
-     * Test attribute "refreshToken"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyRefreshToken(): void
-    {
-        $this->markTestSkipped('Test for property refreshToken not implemented');
-    }
-
-    /**
-     * Test attribute "refreshTokenExpiresIn"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyRefreshTokenExpiresIn(): void
-    {
-        $this->markTestSkipped('Test for property refreshTokenExpiresIn not implemented');
-    }
-
-    /**
-     * Test attribute "refreshTokenExpiresAt"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyRefreshTokenExpiresAt(): void
-    {
-        $this->markTestSkipped('Test for property refreshTokenExpiresAt not implemented');
     }
 }

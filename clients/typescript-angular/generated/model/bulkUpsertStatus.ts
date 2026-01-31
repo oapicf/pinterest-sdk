@@ -9,14 +9,10 @@
  */
 
 
-export type BulkUpsertStatus = 'RUNNING' | 'SUCCEEDED' | 'FAILED';
-
 export const BulkUpsertStatus = {
-
-    Running: 'RUNNING' as BulkUpsertStatus,
-
-    Succeeded: 'SUCCEEDED' as BulkUpsertStatus,
-
-    Failed: 'FAILED' as BulkUpsertStatus
-};
+    Running: 'RUNNING',
+    Succeeded: 'SUCCEEDED',
+    Failed: 'FAILED'
+} as const;
+export type BulkUpsertStatus = typeof BulkUpsertStatus[keyof typeof BulkUpsertStatus];
 

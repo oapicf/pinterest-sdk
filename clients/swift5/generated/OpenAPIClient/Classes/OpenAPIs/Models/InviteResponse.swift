@@ -13,15 +13,6 @@ import AnyCodable
 public struct InviteResponse: Codable, JSONEncodable, Hashable {
 
     public static let idRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^\\d+$/")
-    public var assetsSummary: InviteAssetsSummary?
-    /** The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
-    public var businessRoles: [String]?
-    /** Metadata for the business that created the invite/request. */
-    public var createdByBusiness: BusinessAccessUserSummary?
-    /** Metadata for the user that created the invite/request. */
-    public var createdByUser: BusinessAccessUserSummary?
-    /** The time the invite/request was created. Returned in milliseconds. */
-    public var createdTime: Int?
     /** Unique identifier of the invite/request. */
     public var id: String?
     public var inviteData: BaseInviteDataResponseInviteData?
@@ -29,44 +20,53 @@ public struct InviteResponse: Codable, JSONEncodable, Hashable {
     public var isReceivedInvite: Bool?
     /** Metadata for the member/partner that was sent the invite/request. */
     public var user: BusinessAccessUserSummary?
+    public var assetsSummary: InviteAssetsSummary?
+    /** The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
+    public var businessRoles: [String]?
+    /** Metadata for the business that created the invite/request. */
+    public var createdByBusiness: AnyCodable?
+    /** Metadata for the user that created the invite/request. */
+    public var createdByUser: AnyCodable?
+    /** The time the invite/request was created. Returned in milliseconds. */
+    public var createdTime: Int?
 
-    public init(assetsSummary: InviteAssetsSummary? = nil, businessRoles: [String]? = nil, createdByBusiness: BusinessAccessUserSummary? = nil, createdByUser: BusinessAccessUserSummary? = nil, createdTime: Int? = nil, id: String? = nil, inviteData: BaseInviteDataResponseInviteData? = nil, isReceivedInvite: Bool? = nil, user: BusinessAccessUserSummary? = nil) {
+    public init(id: String? = nil, inviteData: BaseInviteDataResponseInviteData? = nil, isReceivedInvite: Bool? = nil, user: BusinessAccessUserSummary? = nil, assetsSummary: InviteAssetsSummary? = nil, businessRoles: [String]? = nil, createdByBusiness: AnyCodable? = nil, createdByUser: AnyCodable? = nil, createdTime: Int? = nil) {
+        self.id = id
+        self.inviteData = inviteData
+        self.isReceivedInvite = isReceivedInvite
+        self.user = user
         self.assetsSummary = assetsSummary
         self.businessRoles = businessRoles
         self.createdByBusiness = createdByBusiness
         self.createdByUser = createdByUser
         self.createdTime = createdTime
-        self.id = id
-        self.inviteData = inviteData
-        self.isReceivedInvite = isReceivedInvite
-        self.user = user
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
+        case inviteData = "invite_data"
+        case isReceivedInvite = "is_received_invite"
+        case user
         case assetsSummary = "assets_summary"
         case businessRoles = "business_roles"
         case createdByBusiness = "created_by_business"
         case createdByUser = "created_by_user"
         case createdTime = "created_time"
-        case id
-        case inviteData = "invite_data"
-        case isReceivedInvite = "is_received_invite"
-        case user
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(id, forKey: .id)
+        try container.encodeIfPresent(inviteData, forKey: .inviteData)
+        try container.encodeIfPresent(isReceivedInvite, forKey: .isReceivedInvite)
+        try container.encodeIfPresent(user, forKey: .user)
         try container.encodeIfPresent(assetsSummary, forKey: .assetsSummary)
         try container.encodeIfPresent(businessRoles, forKey: .businessRoles)
         try container.encodeIfPresent(createdByBusiness, forKey: .createdByBusiness)
         try container.encodeIfPresent(createdByUser, forKey: .createdByUser)
         try container.encodeIfPresent(createdTime, forKey: .createdTime)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(inviteData, forKey: .inviteData)
-        try container.encodeIfPresent(isReceivedInvite, forKey: .isReceivedInvite)
-        try container.encodeIfPresent(user, forKey: .user)
     }
 }
 

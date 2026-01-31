@@ -14,11 +14,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeleteMemberAccessResultsResponseArray  {
   
-  @ApiModelProperty(value = "List of member asset permissions that were deleted.")
-  @Valid
  /**
-   * List of member asset permissions that were deleted.
-  **/
+  * List of member asset permissions that were deleted.
+  */
+  @ApiModelProperty(value = "List of member asset permissions that were deleted.")
+
+  @Valid
+
   private List<@Valid DeleteMemberAccessResult> items = new ArrayList<>();
  /**
    * List of member asset permissions that were deleted.

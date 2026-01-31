@@ -496,12 +496,10 @@ namespace Org.OpenAPITools.Model
                             adGroupId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "bid_in_micro_currency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                bidInMicroCurrency = new Option<int?>(utf8JsonReader.GetInt32());
+                            bidInMicroCurrency = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "included":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                included = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            included = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "definition":
                             definition = new Option<string?>(utf8JsonReader.GetString());
@@ -519,8 +517,7 @@ namespace Org.OpenAPITools.Model
                             slideshowCollectionsDescription = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "is_mdl":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isMdl = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isMdl = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "status":
                             string? statusRawValue = utf8JsonReader.GetString();

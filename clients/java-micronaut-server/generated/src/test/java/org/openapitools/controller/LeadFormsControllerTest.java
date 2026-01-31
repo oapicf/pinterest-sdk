@@ -92,7 +92,7 @@ public class LeadFormsControllerTest {
             put("lead_form_id", "1234567890123");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6d51e2d");
+            .accept("[Ljava.lang.String;@6f886e9b");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormResponse.class);
@@ -142,7 +142,7 @@ public class LeadFormsControllerTest {
             put("lead_form_id", "1234567890123");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@7565b151");
+            .accept("[Ljava.lang.String;@1c9d2d9b");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormTestResponse.class);
@@ -190,7 +190,7 @@ public class LeadFormsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@12045d72");
+            .accept("[Ljava.lang.String;@195cb879");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormArrayResponse.class);
@@ -239,7 +239,7 @@ public class LeadFormsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6bb2a28a");
+            .accept("[Ljava.lang.String;@4457fec");
         request.getParameters()
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("order", "ASCENDING") // The query parameter format should be 
@@ -291,7 +291,7 @@ public class LeadFormsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@4538fda7");
+            .accept("[Ljava.lang.String;@28953549");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormArrayResponse.class);

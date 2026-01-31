@@ -88,7 +88,7 @@ public class LeadsExportControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@5245b69c");
+            .accept("[Ljava.lang.String;@38192075");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadsExportCreateResponse.class);
@@ -136,7 +136,7 @@ public class LeadsExportControllerTest {
             put("leads_export_id", "123755885175");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6cd3a9ef");
+            .accept("[Ljava.lang.String;@7f3147b3");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadsExportResponseData.class);

@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * SingleInterestTargetingOptionResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SingleInterestTargetingOptionResponse {
 
   private @Nullable String id;
@@ -34,7 +34,7 @@ public class SingleInterestTargetingOptionResponse {
 
   private @Nullable Integer level;
 
-  public SingleInterestTargetingOptionResponse id(String id) {
+  public SingleInterestTargetingOptionResponse id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -46,15 +46,15 @@ public class SingleInterestTargetingOptionResponse {
   @Pattern(regexp = "\\d+") 
   @Schema(name = "id", example = "945391946569", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public SingleInterestTargetingOptionResponse name(String name) {
+  public SingleInterestTargetingOptionResponse name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -66,11 +66,11 @@ public class SingleInterestTargetingOptionResponse {
   
   @Schema(name = "name", example = "Dress", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
@@ -102,7 +102,7 @@ public class SingleInterestTargetingOptionResponse {
     this.childInterests = childInterests;
   }
 
-  public SingleInterestTargetingOptionResponse level(Integer level) {
+  public SingleInterestTargetingOptionResponse level(@Nullable Integer level) {
     this.level = level;
     return this;
   }
@@ -114,11 +114,11 @@ public class SingleInterestTargetingOptionResponse {
   
   @Schema(name = "level", example = "2", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("level")
-  public Integer getLevel() {
+  public @Nullable Integer getLevel() {
     return level;
   }
 
-  public void setLevel(Integer level) {
+  public void setLevel(@Nullable Integer level) {
     this.level = level;
   }
 

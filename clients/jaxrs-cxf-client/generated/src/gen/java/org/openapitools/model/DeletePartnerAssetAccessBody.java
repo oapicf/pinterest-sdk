@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DeletePartnerAssetAccessBody  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<DeletePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
  /**
    * Get accesses

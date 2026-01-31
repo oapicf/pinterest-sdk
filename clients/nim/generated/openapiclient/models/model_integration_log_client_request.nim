@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type `Method`* {.pure.} = enum
@@ -27,32 +29,87 @@ type IntegrationLogClientRequest* = object
   `method`*: `Method`
   host*: string ## HTTP request host from host header.
   path*: string ## HTTP request path.
-  requestHeaders*: Table[string, string] ## HTTP request headers as key-value pairs.
-  responseHeaders*: Table[string, string] ## HTTP response headers as key-value pairs.
-  responseStatusCode*: int
+  requestHeaders*: Option[Table[string, string]] ## HTTP request headers as key-value pairs.
+  responseHeaders*: Option[Table[string, string]] ## HTTP response headers as key-value pairs.
+  responseStatusCode*: Option[int]
 
 func `%`*(v: `Method`): JsonNode =
-  let str = case v:
-    of `Method`.GET: "GET"
-    of `Method`.HEAD: "HEAD"
-    of `Method`.POST: "POST"
-    of `Method`.PUT: "PUT"
-    of `Method`.DELETE: "DELETE"
-    of `Method`.CONNECT: "CONNECT"
-    of `Method`.OPTIONS: "OPTIONS"
-    of `Method`.TRACE: "TRACE"
-    of `Method`.PATCH: "PATCH"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of `Method`.GET: %"GET"
+    of `Method`.HEAD: %"HEAD"
+    of `Method`.POST: %"POST"
+    of `Method`.PUT: %"PUT"
+    of `Method`.DELETE: %"DELETE"
+    of `Method`.CONNECT: %"CONNECT"
+    of `Method`.OPTIONS: %"OPTIONS"
+    of `Method`.TRACE: %"TRACE"
+    of `Method`.PATCH: %"PATCH"
 func `$`*(v: `Method`): string =
   result = case v:
-    of `Method`.GET: "GET"
-    of `Method`.HEAD: "HEAD"
-    of `Method`.POST: "POST"
-    of `Method`.PUT: "PUT"
-    of `Method`.DELETE: "DELETE"
-    of `Method`.CONNECT: "CONNECT"
-    of `Method`.OPTIONS: "OPTIONS"
-    of `Method`.TRACE: "TRACE"
-    of `Method`.PATCH: "PATCH"
+    of `Method`.GET: $("GET")
+    of `Method`.HEAD: $("HEAD")
+    of `Method`.POST: $("POST")
+    of `Method`.PUT: $("PUT")
+    of `Method`.DELETE: $("DELETE")
+    of `Method`.CONNECT: $("CONNECT")
+    of `Method`.OPTIONS: $("OPTIONS")
+    of `Method`.TRACE: $("TRACE")
+    of `Method`.PATCH: $("PATCH")
+
+proc to*(node: JsonNode, T: typedesc[`Method`]): `Method` =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum `Method`, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("GET"):
+    return `Method`.GET
+  of $("HEAD"):
+    return `Method`.HEAD
+  of $("POST"):
+    return `Method`.POST
+  of $("PUT"):
+    return `Method`.PUT
+  of $("DELETE"):
+    return `Method`.DELETE
+  of $("CONNECT"):
+    return `Method`.CONNECT
+  of $("OPTIONS"):
+    return `Method`.OPTIONS
+  of $("TRACE"):
+    return `Method`.TRACE
+  of $("PATCH"):
+    return `Method`.PATCH
+  else:
+    raise newException(ValueError, "Invalid enum value for `Method`: " & strVal)
+
+
+# Custom JSON deserialization for IntegrationLogClientRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[IntegrationLogClientRequest]): IntegrationLogClientRequest =
+  result = IntegrationLogClientRequest()
+  if node.kind == JObject:
+    if node.hasKey("method"):
+      result.`method` = to(node["method"], `Method`)
+    if node.hasKey("host"):
+      result.host = to(node["host"], string)
+    if node.hasKey("path"):
+      result.path = to(node["path"], string)
+    if node.hasKey("request_headers") and node["request_headers"].kind != JNull:
+      result.requestHeaders = some(to(node["request_headers"], typeof(result.requestHeaders.get())))
+    if node.hasKey("response_headers") and node["response_headers"].kind != JNull:
+      result.responseHeaders = some(to(node["response_headers"], typeof(result.responseHeaders.get())))
+    if node.hasKey("response_status_code") and node["response_status_code"].kind != JNull:
+      result.responseStatusCode = some(to(node["response_status_code"], typeof(result.responseStatusCode.get())))
+
+# Custom JSON serialization for IntegrationLogClientRequest with custom field names
+proc `%`*(obj: IntegrationLogClientRequest): JsonNode =
+  result = newJObject()
+  result["method"] = %obj.`method`
+  result["host"] = %obj.host
+  result["path"] = %obj.path
+  if obj.requestHeaders.isSome():
+    result["request_headers"] = %obj.requestHeaders.get()
+  if obj.responseHeaders.isSome():
+    result["response_headers"] = %obj.responseHeaders.get()
+  if obj.responseStatusCode.isSome():
+    result["response_status_code"] = %obj.responseStatusCode.get()
+

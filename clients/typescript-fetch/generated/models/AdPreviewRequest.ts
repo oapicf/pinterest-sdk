@@ -42,13 +42,15 @@ export function AdPreviewRequestFromJSONTyped(json: any, ignoreDiscriminator: bo
     if (json == null) {
         return json;
     }
+    if (typeof json !== 'object') {
+        return json;
+    }
     if (instanceOfAdPreviewCreateFromImage(json)) {
         return AdPreviewCreateFromImageFromJSONTyped(json, true);
     }
     if (instanceOfAdPreviewCreateFromPin(json)) {
         return AdPreviewCreateFromPinFromJSONTyped(json, true);
     }
-
     return {} as any;
 }
 
@@ -60,14 +62,15 @@ export function AdPreviewRequestToJSONTyped(value?: AdPreviewRequest | null, ign
     if (value == null) {
         return value;
     }
-
+    if (typeof value !== 'object') {
+        return value;
+    }
     if (instanceOfAdPreviewCreateFromImage(value)) {
         return AdPreviewCreateFromImageToJSON(value as AdPreviewCreateFromImage);
     }
     if (instanceOfAdPreviewCreateFromPin(value)) {
         return AdPreviewCreateFromPinToJSON(value as AdPreviewCreateFromPin);
     }
-
     return {};
 }
 

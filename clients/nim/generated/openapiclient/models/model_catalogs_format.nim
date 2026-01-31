@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type CatalogsFormat* = object
-  ## The file format of a feed.
+type CatalogsFormat* {.pure.} = enum
+  TSV
+  CSV
+  XML
+
+func `%`*(v: CatalogsFormat): JsonNode =
+  result = case v:
+    of CatalogsFormat.TSV: %"TSV"
+    of CatalogsFormat.CSV: %"CSV"
+    of CatalogsFormat.XML: %"XML"
+
+func `$`*(v: CatalogsFormat): string =
+  result = case v:
+    of CatalogsFormat.TSV: $("TSV")
+    of CatalogsFormat.CSV: $("CSV")
+    of CatalogsFormat.XML: $("XML")
+
+proc to*(node: JsonNode, T: typedesc[CatalogsFormat]): CatalogsFormat =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogsFormat, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("TSV"):
+    return CatalogsFormat.TSV
+  of $("CSV"):
+    return CatalogsFormat.CSV
+  of $("XML"):
+    return CatalogsFormat.XML
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogsFormat: " & strVal)
+

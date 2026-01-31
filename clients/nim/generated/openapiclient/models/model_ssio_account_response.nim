@@ -9,15 +9,58 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ssio_account_item
 import model_ssio_account_pmp_name
 
 type SSIOAccountResponse* = object
   ## 
-  eligible*: bool ## Advertiser eligible to create order lines
-  canEdit*: bool ## Advertiser eligible to update order lines
-  billtoInfos*: seq[SSIOAccountItem] ## An array of Salesforce account information that includes address, io terms, etc.
-  currency*: string
-  pmpNames*: seq[SSIOAccountPMPName]
-  error*: string ## Error indicator from Salesforce which could be \"No Error\"
+  eligible*: Option[bool] ## Advertiser eligible to create order lines
+  canEdit*: Option[bool] ## Advertiser eligible to update order lines
+  billtoInfos*: Option[seq[SSIOAccountItem]] ## An array of Salesforce account information that includes address, io terms, etc.
+  currency*: Option[string]
+  pmpNames*: Option[seq[SSIOAccountPMPName]]
+  error*: Option[string] ## Error indicator from Salesforce which could be \"No Error\"
+
+
+# Custom JSON deserialization for SSIOAccountResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[SSIOAccountResponse]): SSIOAccountResponse =
+  result = SSIOAccountResponse()
+  if node.kind == JObject:
+    if node.hasKey("eligible") and node["eligible"].kind != JNull:
+      result.eligible = some(to(node["eligible"], typeof(result.eligible.get())))
+    if node.hasKey("can_edit") and node["can_edit"].kind != JNull:
+      result.canEdit = some(to(node["can_edit"], typeof(result.canEdit.get())))
+    if node.hasKey("billto_infos") and node["billto_infos"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["billto_infos"]
+      if arrayNode.kind == JArray:
+        var arr: seq[SSIOAccountItem] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, SSIOAccountItem))
+        result.billtoInfos = some(arr)
+    if node.hasKey("currency") and node["currency"].kind != JNull:
+      result.currency = some(to(node["currency"], typeof(result.currency.get())))
+    if node.hasKey("pmp_names") and node["pmp_names"].kind != JNull:
+      result.pmpNames = some(to(node["pmp_names"], typeof(result.pmpNames.get())))
+    if node.hasKey("error") and node["error"].kind != JNull:
+      result.error = some(to(node["error"], typeof(result.error.get())))
+
+# Custom JSON serialization for SSIOAccountResponse with custom field names
+proc `%`*(obj: SSIOAccountResponse): JsonNode =
+  result = newJObject()
+  if obj.eligible.isSome():
+    result["eligible"] = %obj.eligible.get()
+  if obj.canEdit.isSome():
+    result["can_edit"] = %obj.canEdit.get()
+  if obj.billtoInfos.isSome():
+    result["billto_infos"] = %obj.billtoInfos.get()
+  if obj.currency.isSome():
+    result["currency"] = %obj.currency.get()
+  if obj.pmpNames.isSome():
+    result["pmp_names"] = %obj.pmpNames.get()
+  if obj.error.isSome():
+    result["error"] = %obj.error.get()
+

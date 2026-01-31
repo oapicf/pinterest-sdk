@@ -12,84 +12,45 @@
 /**
  * Advertiser\'s ISO two character country code.
  */
-export type TargetingAdvertiserCountry = 'US' | 'GB' | 'CA' | 'IE' | 'AU' | 'NZ' | 'FR' | 'SE' | 'IL' | 'DE' | 'AT' | 'IT' | 'ES' | 'NL' | 'BE' | 'PT' | 'CH' | 'HK' | 'JP' | 'KR' | 'SG' | 'NO' | 'DK' | 'FI' | 'CY' | 'LU' | 'MT' | 'PL' | 'RO' | 'HU' | 'CZ' | 'GR' | 'SK' | 'BR' | 'MX' | 'AR' | 'CL' | 'CO';
-
 export const TargetingAdvertiserCountry = {
-
-    Us: 'US' as TargetingAdvertiserCountry,
-
-    Gb: 'GB' as TargetingAdvertiserCountry,
-
-    Ca: 'CA' as TargetingAdvertiserCountry,
-
-    Ie: 'IE' as TargetingAdvertiserCountry,
-
-    Au: 'AU' as TargetingAdvertiserCountry,
-
-    Nz: 'NZ' as TargetingAdvertiserCountry,
-
-    Fr: 'FR' as TargetingAdvertiserCountry,
-
-    Se: 'SE' as TargetingAdvertiserCountry,
-
-    Il: 'IL' as TargetingAdvertiserCountry,
-
-    De: 'DE' as TargetingAdvertiserCountry,
-
-    At: 'AT' as TargetingAdvertiserCountry,
-
-    It: 'IT' as TargetingAdvertiserCountry,
-
-    Es: 'ES' as TargetingAdvertiserCountry,
-
-    Nl: 'NL' as TargetingAdvertiserCountry,
-
-    Be: 'BE' as TargetingAdvertiserCountry,
-
-    Pt: 'PT' as TargetingAdvertiserCountry,
-
-    Ch: 'CH' as TargetingAdvertiserCountry,
-
-    Hk: 'HK' as TargetingAdvertiserCountry,
-
-    Jp: 'JP' as TargetingAdvertiserCountry,
-
-    Kr: 'KR' as TargetingAdvertiserCountry,
-
-    Sg: 'SG' as TargetingAdvertiserCountry,
-
-    No: 'NO' as TargetingAdvertiserCountry,
-
-    Dk: 'DK' as TargetingAdvertiserCountry,
-
-    Fi: 'FI' as TargetingAdvertiserCountry,
-
-    Cy: 'CY' as TargetingAdvertiserCountry,
-
-    Lu: 'LU' as TargetingAdvertiserCountry,
-
-    Mt: 'MT' as TargetingAdvertiserCountry,
-
-    Pl: 'PL' as TargetingAdvertiserCountry,
-
-    Ro: 'RO' as TargetingAdvertiserCountry,
-
-    Hu: 'HU' as TargetingAdvertiserCountry,
-
-    Cz: 'CZ' as TargetingAdvertiserCountry,
-
-    Gr: 'GR' as TargetingAdvertiserCountry,
-
-    Sk: 'SK' as TargetingAdvertiserCountry,
-
-    Br: 'BR' as TargetingAdvertiserCountry,
-
-    Mx: 'MX' as TargetingAdvertiserCountry,
-
-    Ar: 'AR' as TargetingAdvertiserCountry,
-
-    Cl: 'CL' as TargetingAdvertiserCountry,
-
-    Co: 'CO' as TargetingAdvertiserCountry
-};
+    Us: 'US',
+    Gb: 'GB',
+    Ca: 'CA',
+    Ie: 'IE',
+    Au: 'AU',
+    Nz: 'NZ',
+    Fr: 'FR',
+    Se: 'SE',
+    Il: 'IL',
+    De: 'DE',
+    At: 'AT',
+    It: 'IT',
+    Es: 'ES',
+    Nl: 'NL',
+    Be: 'BE',
+    Pt: 'PT',
+    Ch: 'CH',
+    Hk: 'HK',
+    Jp: 'JP',
+    Kr: 'KR',
+    Sg: 'SG',
+    No: 'NO',
+    Dk: 'DK',
+    Fi: 'FI',
+    Cy: 'CY',
+    Lu: 'LU',
+    Mt: 'MT',
+    Pl: 'PL',
+    Ro: 'RO',
+    Hu: 'HU',
+    Cz: 'CZ',
+    Gr: 'GR',
+    Sk: 'SK',
+    Br: 'BR',
+    Mx: 'MX',
+    Ar: 'AR',
+    Cl: 'CL',
+    Co: 'CO'
+} as const;
+export type TargetingAdvertiserCountry = typeof TargetingAdvertiserCountry[keyof typeof TargetingAdvertiserCountry];
 

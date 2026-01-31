@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * AdsCreditRedeemResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsCreditRedeemResponse {
 
   private @Nullable Boolean success;
@@ -31,7 +31,7 @@ public class AdsCreditRedeemResponse {
 
   private JsonNullable<String> errorMessage = JsonNullable.<String>undefined();
 
-  public AdsCreditRedeemResponse success(Boolean success) {
+  public AdsCreditRedeemResponse success(@Nullable Boolean success) {
     this.success = success;
     return this;
   }
@@ -43,11 +43,11 @@ public class AdsCreditRedeemResponse {
   
   @Schema(name = "success", example = "false", description = "Returns true if the offer code was successfully applied(validateOnly=false) or can be applied(validateOnly=true).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("success")
-  public Boolean getSuccess() {
+  public @Nullable Boolean getSuccess() {
     return success;
   }
 
-  public void setSuccess(Boolean success) {
+  public void setSuccess(@Nullable Boolean success) {
     this.success = success;
   }
 

@@ -9,13 +9,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SharedAudienceCommon  {
   
-  @ApiModelProperty(example = "2542621871096", value = "Unique identifier of an audience")
  /**
-   * Unique identifier of an audience
-  **/
+  * Unique identifier of an audience
+  */
+  @ApiModelProperty(example = "2542621871096", value = "Unique identifier of an audience")
+
   private String audienceId;
 
   @ApiModelProperty(value = "")
+
   private OperationType operationType;
  /**
    * Unique identifier of an audience

@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLogClientRequest", description = "HTTP request details included in the log sent by the client.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogClientRequest {
 
   /**
@@ -48,7 +48,7 @@ public class IntegrationLogClientRequest {
     
     PATCH("PATCH");
 
-    private String value;
+    private final String value;
 
     MethodEnum(String value) {
       this.value = value;
@@ -218,7 +218,7 @@ public class IntegrationLogClientRequest {
     this.responseHeaders = responseHeaders;
   }
 
-  public IntegrationLogClientRequest responseStatusCode(Integer responseStatusCode) {
+  public IntegrationLogClientRequest responseStatusCode(@Nullable Integer responseStatusCode) {
     this.responseStatusCode = responseStatusCode;
     return this;
   }
@@ -230,11 +230,11 @@ public class IntegrationLogClientRequest {
   
   @Schema(name = "response_status_code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("response_status_code")
-  public Integer getResponseStatusCode() {
+  public @Nullable Integer getResponseStatusCode() {
     return responseStatusCode;
   }
 
-  public void setResponseStatusCode(Integer responseStatusCode) {
+  public void setResponseStatusCode(@Nullable Integer responseStatusCode) {
     this.responseStatusCode = responseStatusCode;
   }
 

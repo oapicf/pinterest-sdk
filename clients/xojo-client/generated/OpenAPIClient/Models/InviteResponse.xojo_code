@@ -2,43 +2,6 @@
 Protected Class InviteResponse
 
 	#tag Property, Flags = &h0
-		assets_summary As OpenAPIClient.Models.InviteAssetsSummary
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-		#tag EndNote
-		business_roles() As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Metadata for the business that created the invite/request.
-		#tag EndNote
-		created_by_business As OpenAPIClient.Models.BusinessAccessUserSummary
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			Metadata for the user that created the invite/request.
-		#tag EndNote
-		created_by_user As OpenAPIClient.Models.BusinessAccessUserSummary
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			The time the invite/request was created. Returned in milliseconds.
-		#tag EndNote
-		created_time As Xoson.O.OptionalInteger
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		#tag Note
 			Unique identifier of the invite/request.
 		#tag EndNote
@@ -64,6 +27,43 @@ Protected Class InviteResponse
 			Metadata for the member/partner that was sent the invite/request.
 		#tag EndNote
 		user As OpenAPIClient.Models.BusinessAccessUserSummary
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		assets_summary As OpenAPIClient.Models.InviteAssetsSummary
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+		#tag EndNote
+		business_roles() As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Metadata for the business that created the invite/request.
+		#tag EndNote
+		created_by_business As Object
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			Metadata for the user that created the invite/request.
+		#tag EndNote
+		created_by_user As Object
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
+			The time the invite/request was created. Returned in milliseconds.
+		#tag EndNote
+		created_time As Xoson.O.OptionalInteger
 	#tag EndProperty
 
 
@@ -104,46 +104,6 @@ Protected Class InviteResponse
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="assets_summary"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="InviteAssetsSummary"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="business_roles"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="created_by_business"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="BusinessAccessUserSummary"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="created_by_user"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="BusinessAccessUserSummary"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="created_time"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="id"
 			Visible=false
 			Group="Behavior"
@@ -173,6 +133,46 @@ Protected Class InviteResponse
 			Group="Behavior"
 			InitialValue=""
 			Type="BusinessAccessUserSummary"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="assets_summary"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="InviteAssetsSummary"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="business_roles"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="created_by_business"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Object"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="created_by_user"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Object"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="created_time"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

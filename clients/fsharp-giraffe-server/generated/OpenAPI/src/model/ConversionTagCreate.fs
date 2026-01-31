@@ -11,7 +11,6 @@ module ConversionTagCreate =
 
 
   type ConversionTagCreate = {
-    Name : string;
     AemEnabled : bool option;
     MdFrequency : decimal option;
     AemFnlnEnabled : bool option;
@@ -19,5 +18,6 @@ module ConversionTagCreate =
     AemGeEnabled : bool option;
     AemDbEnabled : bool option;
     AemLocEnabled : bool option;
+    Name : string;
   }
   //#endregion

@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "COUNTRY":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                cOUNTRY = new Option<CatalogsProductGroupMultipleCountriesCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleCountriesCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            cOUNTRY = new Option<CatalogsProductGroupMultipleCountriesCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleCountriesCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

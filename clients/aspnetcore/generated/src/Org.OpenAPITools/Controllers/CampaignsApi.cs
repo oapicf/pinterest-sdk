@@ -56,16 +56,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(MetricsResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"data\" : [ {\n    \"targeting_type\" : \"KEYWORD\",\n    \"targeting_value\" : \"christmas decor ideas\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"iphone\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"ipad\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"web\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"web_mobile\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"android_mobile\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"android_tablet\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"GENDER\",\n    \"targeting_value\" : \"female\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"LOCATION\",\n    \"targeting_value\" : 500,\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"PLACEMENT\",\n    \"targeting_value\" : \"SEARCH\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"COUNTRY\",\n    \"targeting_value\" : \"US\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"TARGETED_INTEREST\",\n    \"targeting_value\" : \"Food and Drinks\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"PINNER_INTEREST\",\n    \"targeting_value\" : \"Chocolate Cookies\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"AUDIENCE_INCLUDE\",\n    \"targeting_value\" : 254261234567,\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"GEO\",\n    \"targeting_value\" : \"US:94102\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"AGE_BUCKET\",\n    \"targeting_value\" : \"45-49\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"REGION\",\n    \"targeting_value\" : \"US-CA\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<MetricsResponse>(exampleJson)
-            : default(MetricsResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -98,11 +98,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<CampaignsAnalyticsResponseInner>));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "[ {\n  \"DATE\" : \"2021-04-01\",\n  \"CAMPAIGN_ID\" : \"547602124502\",\n  \"SPEND_IN_DOLLAR\" : 30,\n  \"TOTAL_CLICKTHROUGH\" : 216\n}, {\n  \"DATE\" : \"2021-04-01\",\n  \"CAMPAIGN_ID\" : \"547602124502\",\n  \"SPEND_IN_DOLLAR\" : 30,\n  \"TOTAL_CLICKTHROUGH\" : 216\n} ]";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -110,7 +110,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<CampaignsAnalyticsResponseInner>>(exampleJson)
-            : default(List<CampaignsAnalyticsResponseInner>);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -134,16 +134,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CampaignCreateResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"data\" : {\n      \"created_time\" : 1432744744,\n      \"updated_time\" : 1432744744,\n      \"default_ad_group_budget_in_micro_currency\" : 0,\n      \"lifetime_spend_cap\" : 1432744744,\n      \"end_time\" : 1644023526,\n      \"is_flexible_daily_budgets\" : true,\n      \"daily_spend_cap\" : 1432744744,\n      \"is_campaign_budget_optimization\" : true,\n      \"summary_status\" : \"RUNNING\",\n      \"type\" : \"campaign\",\n      \"tracking_urls\" : \"{}\",\n      \"ad_account_id\" : \"549755885175\",\n      \"is_automated_campaign\" : true,\n      \"start_time\" : 1580865126,\n      \"name\" : \"ACME Tools\",\n      \"order_line_id\" : \"549755885175\",\n      \"id\" : \"549755885175\",\n      \"status\" : \"status\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  }, {\n    \"data\" : {\n      \"created_time\" : 1432744744,\n      \"updated_time\" : 1432744744,\n      \"default_ad_group_budget_in_micro_currency\" : 0,\n      \"lifetime_spend_cap\" : 1432744744,\n      \"end_time\" : 1644023526,\n      \"is_flexible_daily_budgets\" : true,\n      \"daily_spend_cap\" : 1432744744,\n      \"is_campaign_budget_optimization\" : true,\n      \"summary_status\" : \"RUNNING\",\n      \"type\" : \"campaign\",\n      \"tracking_urls\" : \"{}\",\n      \"ad_account_id\" : \"549755885175\",\n      \"is_automated_campaign\" : true,\n      \"start_time\" : 1580865126,\n      \"name\" : \"ACME Tools\",\n      \"order_line_id\" : \"549755885175\",\n      \"id\" : \"549755885175\",\n      \"status\" : \"status\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CampaignCreateResponse>(exampleJson)
-            : default(CampaignCreateResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -166,16 +166,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CampaignResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"created_time\" : 1432744744,\n  \"updated_time\" : 1432744744,\n  \"lifetime_spend_cap\" : 1432744744,\n  \"end_time\" : 1644023526,\n  \"is_flexible_daily_budgets\" : true,\n  \"daily_spend_cap\" : 1432744744,\n  \"objective_type\" : \"AWARENESS\",\n  \"is_campaign_budget_optimization\" : true,\n  \"summary_status\" : \"RUNNING\",\n  \"type\" : \"campaign\",\n  \"tracking_urls\" : \"{}\",\n  \"ad_account_id\" : \"549755885175\",\n  \"start_time\" : 1580865126,\n  \"name\" : \"ACME Tools\",\n  \"order_line_id\" : \"549755885175\",\n  \"id\" : \"549755885175\",\n  \"status\" : \"status\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CampaignResponse>(exampleJson)
-            : default(CampaignResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -204,11 +204,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CampaignsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"created_time\" : 1432744744,\n    \"updated_time\" : 1432744744,\n    \"lifetime_spend_cap\" : 1432744744,\n    \"end_time\" : 1644023526,\n    \"is_flexible_daily_budgets\" : true,\n    \"daily_spend_cap\" : 1432744744,\n    \"objective_type\" : \"AWARENESS\",\n    \"is_campaign_budget_optimization\" : true,\n    \"summary_status\" : \"RUNNING\",\n    \"type\" : \"campaign\",\n    \"tracking_urls\" : \"{}\",\n    \"ad_account_id\" : \"549755885175\",\n    \"start_time\" : 1580865126,\n    \"name\" : \"ACME Tools\",\n    \"order_line_id\" : \"549755885175\",\n    \"id\" : \"549755885175\",\n    \"status\" : \"status\"\n  }, {\n    \"created_time\" : 1432744744,\n    \"updated_time\" : 1432744744,\n    \"lifetime_spend_cap\" : 1432744744,\n    \"end_time\" : 1644023526,\n    \"is_flexible_daily_budgets\" : true,\n    \"daily_spend_cap\" : 1432744744,\n    \"objective_type\" : \"AWARENESS\",\n    \"is_campaign_budget_optimization\" : true,\n    \"summary_status\" : \"RUNNING\",\n    \"type\" : \"campaign\",\n    \"tracking_urls\" : \"{}\",\n    \"ad_account_id\" : \"549755885175\",\n    \"start_time\" : 1580865126,\n    \"name\" : \"ACME Tools\",\n    \"order_line_id\" : \"549755885175\",\n    \"id\" : \"549755885175\",\n    \"status\" : \"status\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -216,7 +216,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CampaignsList200Response>(exampleJson)
-            : default(CampaignsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -240,16 +240,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CampaignUpdateResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"data\" : {\n      \"created_time\" : 1432744744,\n      \"updated_time\" : 1432744744,\n      \"default_ad_group_budget_in_micro_currency\" : 0,\n      \"lifetime_spend_cap\" : 1432744744,\n      \"end_time\" : 1644023526,\n      \"is_flexible_daily_budgets\" : true,\n      \"daily_spend_cap\" : 1432744744,\n      \"is_campaign_budget_optimization\" : true,\n      \"summary_status\" : \"RUNNING\",\n      \"type\" : \"campaign\",\n      \"tracking_urls\" : \"{}\",\n      \"ad_account_id\" : \"549755885175\",\n      \"is_automated_campaign\" : true,\n      \"start_time\" : 1580865126,\n      \"name\" : \"ACME Tools\",\n      \"order_line_id\" : \"549755885175\",\n      \"id\" : \"549755885175\",\n      \"status\" : \"status\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  }, {\n    \"data\" : {\n      \"created_time\" : 1432744744,\n      \"updated_time\" : 1432744744,\n      \"default_ad_group_budget_in_micro_currency\" : 0,\n      \"lifetime_spend_cap\" : 1432744744,\n      \"end_time\" : 1644023526,\n      \"is_flexible_daily_budgets\" : true,\n      \"daily_spend_cap\" : 1432744744,\n      \"is_campaign_budget_optimization\" : true,\n      \"summary_status\" : \"RUNNING\",\n      \"type\" : \"campaign\",\n      \"tracking_urls\" : \"{}\",\n      \"ad_account_id\" : \"549755885175\",\n      \"is_automated_campaign\" : true,\n      \"start_time\" : 1580865126,\n      \"name\" : \"ACME Tools\",\n      \"order_line_id\" : \"549755885175\",\n      \"id\" : \"549755885175\",\n      \"status\" : \"status\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CampaignUpdateResponse>(exampleJson)
-            : default(CampaignUpdateResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * CatalogsReportFeedIngestionFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportFeedIngestionFilter implements CatalogsHotelReportParametersReport {
 
   /**
@@ -33,7 +33,7 @@ public class CatalogsReportFeedIngestionFilter implements CatalogsHotelReportPar
   public enum ReportTypeEnum {
     FEED_INGESTION_ISSUES("FEED_INGESTION_ISSUES");
 
-    private String value;
+    private final String value;
 
     ReportTypeEnum(String value) {
       this.value = value;
@@ -118,7 +118,7 @@ public class CatalogsReportFeedIngestionFilter implements CatalogsHotelReportPar
     this.feedId = feedId;
   }
 
-  public CatalogsReportFeedIngestionFilter processingResultId(String processingResultId) {
+  public CatalogsReportFeedIngestionFilter processingResultId(@Nullable String processingResultId) {
     this.processingResultId = processingResultId;
     return this;
   }
@@ -130,11 +130,11 @@ public class CatalogsReportFeedIngestionFilter implements CatalogsHotelReportPar
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "processing_result_id", description = "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("processing_result_id")
-  public String getProcessingResultId() {
+  public @Nullable String getProcessingResultId() {
     return processingResultId;
   }
 
-  public void setProcessingResultId(String processingResultId) {
+  public void setProcessingResultId(@Nullable String processingResultId) {
     this.processingResultId = processingResultId;
   }
 

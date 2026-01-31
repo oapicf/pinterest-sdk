@@ -9,7 +9,238 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type UpdateMaskFieldType* = object
-  ## The field types supported by the update mask
+type UpdateMaskFieldType* {.pure.} = enum
+  AdLink
+  Adult
+  AgeGroup
+  Availability
+  AverageReviewRating
+  Brand
+  CheckoutEnabled
+  Color
+  Condition
+  CustomLabel0
+  CustomLabel1
+  CustomLabel2
+  CustomLabel3
+  CustomLabel4
+  Description
+  FreeShippingLabel
+  FreeShippingLimit
+  Gender
+  GoogleProductCategory
+  Gtin
+  ItemGroupId
+  LastUpdatedTime
+  Link
+  Material
+  MinAdPrice
+  Mpn
+  NumberOfRatings
+  NumberOfReviews
+  Pattern
+  Price
+  ProductType
+  SalePrice
+  Shipping
+  ShippingHeight
+  ShippingWeight
+  ShippingWidth
+  Size
+  SizeSystem
+  SizeType
+  Tax
+  Title
+  VariantNames
+  VariantValues
+
+func `%`*(v: UpdateMaskFieldType): JsonNode =
+  result = case v:
+    of UpdateMaskFieldType.AdLink: %"ad_link"
+    of UpdateMaskFieldType.Adult: %"adult"
+    of UpdateMaskFieldType.AgeGroup: %"age_group"
+    of UpdateMaskFieldType.Availability: %"availability"
+    of UpdateMaskFieldType.AverageReviewRating: %"average_review_rating"
+    of UpdateMaskFieldType.Brand: %"brand"
+    of UpdateMaskFieldType.CheckoutEnabled: %"checkout_enabled"
+    of UpdateMaskFieldType.Color: %"color"
+    of UpdateMaskFieldType.Condition: %"condition"
+    of UpdateMaskFieldType.CustomLabel0: %"custom_label_0"
+    of UpdateMaskFieldType.CustomLabel1: %"custom_label_1"
+    of UpdateMaskFieldType.CustomLabel2: %"custom_label_2"
+    of UpdateMaskFieldType.CustomLabel3: %"custom_label_3"
+    of UpdateMaskFieldType.CustomLabel4: %"custom_label_4"
+    of UpdateMaskFieldType.Description: %"description"
+    of UpdateMaskFieldType.FreeShippingLabel: %"free_shipping_label"
+    of UpdateMaskFieldType.FreeShippingLimit: %"free_shipping_limit"
+    of UpdateMaskFieldType.Gender: %"gender"
+    of UpdateMaskFieldType.GoogleProductCategory: %"google_product_category"
+    of UpdateMaskFieldType.Gtin: %"gtin"
+    of UpdateMaskFieldType.ItemGroupId: %"item_group_id"
+    of UpdateMaskFieldType.LastUpdatedTime: %"last_updated_time"
+    of UpdateMaskFieldType.Link: %"link"
+    of UpdateMaskFieldType.Material: %"material"
+    of UpdateMaskFieldType.MinAdPrice: %"min_ad_price"
+    of UpdateMaskFieldType.Mpn: %"mpn"
+    of UpdateMaskFieldType.NumberOfRatings: %"number_of_ratings"
+    of UpdateMaskFieldType.NumberOfReviews: %"number_of_reviews"
+    of UpdateMaskFieldType.Pattern: %"pattern"
+    of UpdateMaskFieldType.Price: %"price"
+    of UpdateMaskFieldType.ProductType: %"product_type"
+    of UpdateMaskFieldType.SalePrice: %"sale_price"
+    of UpdateMaskFieldType.Shipping: %"shipping"
+    of UpdateMaskFieldType.ShippingHeight: %"shipping_height"
+    of UpdateMaskFieldType.ShippingWeight: %"shipping_weight"
+    of UpdateMaskFieldType.ShippingWidth: %"shipping_width"
+    of UpdateMaskFieldType.Size: %"size"
+    of UpdateMaskFieldType.SizeSystem: %"size_system"
+    of UpdateMaskFieldType.SizeType: %"size_type"
+    of UpdateMaskFieldType.Tax: %"tax"
+    of UpdateMaskFieldType.Title: %"title"
+    of UpdateMaskFieldType.VariantNames: %"variant_names"
+    of UpdateMaskFieldType.VariantValues: %"variant_values"
+
+func `$`*(v: UpdateMaskFieldType): string =
+  result = case v:
+    of UpdateMaskFieldType.AdLink: $("ad_link")
+    of UpdateMaskFieldType.Adult: $("adult")
+    of UpdateMaskFieldType.AgeGroup: $("age_group")
+    of UpdateMaskFieldType.Availability: $("availability")
+    of UpdateMaskFieldType.AverageReviewRating: $("average_review_rating")
+    of UpdateMaskFieldType.Brand: $("brand")
+    of UpdateMaskFieldType.CheckoutEnabled: $("checkout_enabled")
+    of UpdateMaskFieldType.Color: $("color")
+    of UpdateMaskFieldType.Condition: $("condition")
+    of UpdateMaskFieldType.CustomLabel0: $("custom_label_0")
+    of UpdateMaskFieldType.CustomLabel1: $("custom_label_1")
+    of UpdateMaskFieldType.CustomLabel2: $("custom_label_2")
+    of UpdateMaskFieldType.CustomLabel3: $("custom_label_3")
+    of UpdateMaskFieldType.CustomLabel4: $("custom_label_4")
+    of UpdateMaskFieldType.Description: $("description")
+    of UpdateMaskFieldType.FreeShippingLabel: $("free_shipping_label")
+    of UpdateMaskFieldType.FreeShippingLimit: $("free_shipping_limit")
+    of UpdateMaskFieldType.Gender: $("gender")
+    of UpdateMaskFieldType.GoogleProductCategory: $("google_product_category")
+    of UpdateMaskFieldType.Gtin: $("gtin")
+    of UpdateMaskFieldType.ItemGroupId: $("item_group_id")
+    of UpdateMaskFieldType.LastUpdatedTime: $("last_updated_time")
+    of UpdateMaskFieldType.Link: $("link")
+    of UpdateMaskFieldType.Material: $("material")
+    of UpdateMaskFieldType.MinAdPrice: $("min_ad_price")
+    of UpdateMaskFieldType.Mpn: $("mpn")
+    of UpdateMaskFieldType.NumberOfRatings: $("number_of_ratings")
+    of UpdateMaskFieldType.NumberOfReviews: $("number_of_reviews")
+    of UpdateMaskFieldType.Pattern: $("pattern")
+    of UpdateMaskFieldType.Price: $("price")
+    of UpdateMaskFieldType.ProductType: $("product_type")
+    of UpdateMaskFieldType.SalePrice: $("sale_price")
+    of UpdateMaskFieldType.Shipping: $("shipping")
+    of UpdateMaskFieldType.ShippingHeight: $("shipping_height")
+    of UpdateMaskFieldType.ShippingWeight: $("shipping_weight")
+    of UpdateMaskFieldType.ShippingWidth: $("shipping_width")
+    of UpdateMaskFieldType.Size: $("size")
+    of UpdateMaskFieldType.SizeSystem: $("size_system")
+    of UpdateMaskFieldType.SizeType: $("size_type")
+    of UpdateMaskFieldType.Tax: $("tax")
+    of UpdateMaskFieldType.Title: $("title")
+    of UpdateMaskFieldType.VariantNames: $("variant_names")
+    of UpdateMaskFieldType.VariantValues: $("variant_values")
+
+proc to*(node: JsonNode, T: typedesc[UpdateMaskFieldType]): UpdateMaskFieldType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum UpdateMaskFieldType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ad_link"):
+    return UpdateMaskFieldType.AdLink
+  of $("adult"):
+    return UpdateMaskFieldType.Adult
+  of $("age_group"):
+    return UpdateMaskFieldType.AgeGroup
+  of $("availability"):
+    return UpdateMaskFieldType.Availability
+  of $("average_review_rating"):
+    return UpdateMaskFieldType.AverageReviewRating
+  of $("brand"):
+    return UpdateMaskFieldType.Brand
+  of $("checkout_enabled"):
+    return UpdateMaskFieldType.CheckoutEnabled
+  of $("color"):
+    return UpdateMaskFieldType.Color
+  of $("condition"):
+    return UpdateMaskFieldType.Condition
+  of $("custom_label_0"):
+    return UpdateMaskFieldType.CustomLabel0
+  of $("custom_label_1"):
+    return UpdateMaskFieldType.CustomLabel1
+  of $("custom_label_2"):
+    return UpdateMaskFieldType.CustomLabel2
+  of $("custom_label_3"):
+    return UpdateMaskFieldType.CustomLabel3
+  of $("custom_label_4"):
+    return UpdateMaskFieldType.CustomLabel4
+  of $("description"):
+    return UpdateMaskFieldType.Description
+  of $("free_shipping_label"):
+    return UpdateMaskFieldType.FreeShippingLabel
+  of $("free_shipping_limit"):
+    return UpdateMaskFieldType.FreeShippingLimit
+  of $("gender"):
+    return UpdateMaskFieldType.Gender
+  of $("google_product_category"):
+    return UpdateMaskFieldType.GoogleProductCategory
+  of $("gtin"):
+    return UpdateMaskFieldType.Gtin
+  of $("item_group_id"):
+    return UpdateMaskFieldType.ItemGroupId
+  of $("last_updated_time"):
+    return UpdateMaskFieldType.LastUpdatedTime
+  of $("link"):
+    return UpdateMaskFieldType.Link
+  of $("material"):
+    return UpdateMaskFieldType.Material
+  of $("min_ad_price"):
+    return UpdateMaskFieldType.MinAdPrice
+  of $("mpn"):
+    return UpdateMaskFieldType.Mpn
+  of $("number_of_ratings"):
+    return UpdateMaskFieldType.NumberOfRatings
+  of $("number_of_reviews"):
+    return UpdateMaskFieldType.NumberOfReviews
+  of $("pattern"):
+    return UpdateMaskFieldType.Pattern
+  of $("price"):
+    return UpdateMaskFieldType.Price
+  of $("product_type"):
+    return UpdateMaskFieldType.ProductType
+  of $("sale_price"):
+    return UpdateMaskFieldType.SalePrice
+  of $("shipping"):
+    return UpdateMaskFieldType.Shipping
+  of $("shipping_height"):
+    return UpdateMaskFieldType.ShippingHeight
+  of $("shipping_weight"):
+    return UpdateMaskFieldType.ShippingWeight
+  of $("shipping_width"):
+    return UpdateMaskFieldType.ShippingWidth
+  of $("size"):
+    return UpdateMaskFieldType.Size
+  of $("size_system"):
+    return UpdateMaskFieldType.SizeSystem
+  of $("size_type"):
+    return UpdateMaskFieldType.SizeType
+  of $("tax"):
+    return UpdateMaskFieldType.Tax
+  of $("title"):
+    return UpdateMaskFieldType.Title
+  of $("variant_names"):
+    return UpdateMaskFieldType.VariantNames
+  of $("variant_values"):
+    return UpdateMaskFieldType.VariantValues
+  else:
+    raise newException(ValueError, "Invalid enum value for UpdateMaskFieldType: " & strVal)
+

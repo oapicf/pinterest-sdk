@@ -5,6 +5,14 @@ context("Test CreateMMMReportRequest")
 
 model_instance <- CreateMMMReportRequest$new()
 
+test_that("countries", {
+  # tests for the property `countries` (array[TargetingAdvertiserCountry])
+  # A List of countries for filtering
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`countries`, "EXPECTED_RESULT")
+})
+
 test_that("report_name", {
   # tests for the property `report_name` (character)
   # Name of the Marketing Mix Modeling (MMM) report
@@ -59,12 +67,4 @@ test_that("columns", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`columns`, "EXPECTED_RESULT")
-})
-
-test_that("countries", {
-  # tests for the property `countries` (array[TargetingAdvertiserCountry])
-  # A List of countries for filtering
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`countries`, "EXPECTED_RESULT")
 })

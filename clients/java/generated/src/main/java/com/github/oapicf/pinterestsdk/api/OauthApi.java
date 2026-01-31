@@ -87,7 +87,7 @@ public class OauthApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call oauthTokenCall(String grantType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call oauthTokenCall(@javax.annotation.Nonnull String grantType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,7 +137,7 @@ public class OauthApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call oauthTokenValidateBeforeCall(String grantType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call oauthTokenValidateBeforeCall(@javax.annotation.Nonnull String grantType, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'grantType' is set
         if (grantType == null) {
             throw new ApiException("Missing the required parameter 'grantType' when calling oauthToken(Async)");
@@ -161,7 +161,7 @@ public class OauthApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public OauthAccessTokenResponse oauthToken(String grantType) throws ApiException {
+    public OauthAccessTokenResponse oauthToken(@javax.annotation.Nonnull String grantType) throws ApiException {
         ApiResponse<OauthAccessTokenResponse> localVarResp = oauthTokenWithHttpInfo(grantType);
         return localVarResp.getData();
     }
@@ -180,7 +180,7 @@ public class OauthApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OauthAccessTokenResponse> oauthTokenWithHttpInfo(String grantType) throws ApiException {
+    public ApiResponse<OauthAccessTokenResponse> oauthTokenWithHttpInfo(@javax.annotation.Nonnull String grantType) throws ApiException {
         okhttp3.Call localVarCall = oauthTokenValidateBeforeCall(grantType, null);
         Type localVarReturnType = new TypeToken<OauthAccessTokenResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -201,7 +201,7 @@ public class OauthApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call oauthTokenAsync(String grantType, final ApiCallback<OauthAccessTokenResponse> _callback) throws ApiException {
+    public okhttp3.Call oauthTokenAsync(@javax.annotation.Nonnull String grantType, final ApiCallback<OauthAccessTokenResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = oauthTokenValidateBeforeCall(grantType, _callback);
         Type localVarReturnType = new TypeToken<OauthAccessTokenResponse>(){}.getType();

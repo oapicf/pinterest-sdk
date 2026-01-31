@@ -22,15 +22,15 @@ export interface PinMediaSourceImageBase64 {
     is_standard?: boolean;
 }
 export namespace PinMediaSourceImageBase64 {
-    export type SourceTypeEnum = 'image_base64';
     export const SourceTypeEnum = {
-        ImageBase64: 'image_base64' as SourceTypeEnum
-    };
-    export type ContentTypeEnum = 'image/jpeg' | 'image/png';
+        ImageBase64: 'image_base64'
+    } as const;
+    export type SourceTypeEnum = typeof SourceTypeEnum[keyof typeof SourceTypeEnum];
     export const ContentTypeEnum = {
-        ImageJpeg: 'image/jpeg' as ContentTypeEnum,
-        ImagePng: 'image/png' as ContentTypeEnum
-    };
+        ImageJpeg: 'image/jpeg',
+        ImagePng: 'image/png'
+    } as const;
+    export type ContentTypeEnum = typeof ContentTypeEnum[keyof typeof ContentTypeEnum];
 }
 
 

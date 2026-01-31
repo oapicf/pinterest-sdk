@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  * CatalogsCreativeAssetsItemsFilter
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsItemsFilter implements CatalogsItemsFilters {
 
   /**
@@ -34,7 +34,7 @@ public class CatalogsCreativeAssetsItemsFilter implements CatalogsItemsFilters {
   public enum CatalogTypeEnum {
     CREATIVE_ASSETS("CREATIVE_ASSETS");
 
-    private String value;
+    private final String value;
 
     CatalogTypeEnum(String value) {
       this.value = value;

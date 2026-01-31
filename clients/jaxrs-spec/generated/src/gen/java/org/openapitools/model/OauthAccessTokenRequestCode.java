@@ -11,14 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.openapitools.jackson.nullable.JsonNullable;
 
-/**
- * A request to exchange an authorization code for an access token.
- **/
-@ApiModel(description = "A request to exchange an authorization code for an access token.")
+
+
 @JsonTypeName("OauthAccessTokenRequestCode")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenRequestCode   {
+  private String code;
+  private String redirectUri;
   public enum GrantTypeEnum {
 
     AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.valueOf("refresh_token")), CLIENT_CREDENTIALS(String.valueOf("client_credentials"));
@@ -67,39 +68,18 @@ public class OauthAccessTokenRequestCode   {
 }
 
   private GrantTypeEnum grantType;
-  private String code;
-  private String redirectUri;
 
   public OauthAccessTokenRequestCode() {
   }
 
   @JsonCreator
   public OauthAccessTokenRequestCode(
-    @JsonProperty(required = true, value = "grant_type") GrantTypeEnum grantType,
     @JsonProperty(required = true, value = "code") String code,
-    @JsonProperty(required = true, value = "redirect_uri") String redirectUri
+    @JsonProperty(required = true, value = "redirect_uri") String redirectUri,
+    @JsonProperty(required = true, value = "grant_type") GrantTypeEnum grantType
   ) {
-    this.grantType = grantType;
     this.code = code;
     this.redirectUri = redirectUri;
-  }
-
-  /**
-   **/
-  public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
-    this.grantType = grantType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(required = true, value = "grant_type")
-  @NotNull public GrantTypeEnum getGrantType() {
-    return grantType;
-  }
-
-  @JsonProperty(required = true, value = "grant_type")
-  public void setGrantType(GrantTypeEnum grantType) {
     this.grantType = grantType;
   }
 
@@ -141,6 +121,25 @@ public class OauthAccessTokenRequestCode   {
     this.redirectUri = redirectUri;
   }
 
+  /**
+   **/
+  public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(required = true, value = "grant_type")
+  @NotNull public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+
+  @JsonProperty(required = true, value = "grant_type")
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -151,14 +150,14 @@ public class OauthAccessTokenRequestCode   {
       return false;
     }
     OauthAccessTokenRequestCode oauthAccessTokenRequestCode = (OauthAccessTokenRequestCode) o;
-    return Objects.equals(this.grantType, oauthAccessTokenRequestCode.grantType) &&
-        Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
-        Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri);
+    return Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
+        Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri) &&
+        Objects.equals(this.grantType, oauthAccessTokenRequestCode.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, code, redirectUri);
+    return Objects.hash(code, redirectUri, grantType);
   }
 
   @Override
@@ -166,9 +165,9 @@ public class OauthAccessTokenRequestCode   {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestCode {\n");
     
-    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

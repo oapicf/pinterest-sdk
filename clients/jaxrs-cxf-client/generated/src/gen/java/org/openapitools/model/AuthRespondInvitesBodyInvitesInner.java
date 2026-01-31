@@ -10,12 +10,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AuthRespondInvitesBodyInvitesInner  {
   
   @ApiModelProperty(required = true, value = "")
+
   private AuthRespondInvitesBodyInvitesInnerAction action;
 
-  @ApiModelProperty(required = true, value = "Unique identifier of an invite.")
  /**
-   * Unique identifier of an invite.
-  **/
+  * Unique identifier of an invite.
+  */
+  @ApiModelProperty(required = true, value = "Unique identifier of an invite.")
+
   private String inviteId;
  /**
    * Get action

@@ -19,7 +19,6 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.CatalogsRetailBatchRequest
-import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.CatalogsRetailBatchRequestItemsInner
 import org.openapitools.client.models.Country
 
@@ -40,7 +39,7 @@ class CatalogsRetailBatchRequestTest : ShouldSpec() {
             //modelInstance.country shouldBe ("TODO")
         }
 
-        // to test the property `language`
+        // to test the property `language` - We recommend using the CatalogsLocale values.
         should("test language") {
             // uncomment below to test the property
             //modelInstance.language shouldBe ("TODO")

@@ -20,6 +20,7 @@ class ResourcesApiTest {
      */
     @Test
     fun adAccountCountriesGetTest() {
+        
         val response: ResponseEntity<AdAccountsCountryResponse> = api.adAccountCountriesGet()
 
         // TODO: test validations
@@ -34,6 +35,7 @@ class ResourcesApiTest {
     @Test
     fun deliveryMetricsGetTest() {
         val reportType: kotlin.String? = TODO()
+        
         val response: ResponseEntity<DeliveryMetricsResponse> = api.deliveryMetricsGet(reportType)
 
         // TODO: test validations
@@ -48,6 +50,7 @@ class ResourcesApiTest {
     @Test
     fun interestTargetingOptionsGetTest() {
         val interestId: kotlin.String = TODO()
+        
         val response: ResponseEntity<SingleInterestTargetingOptionResponse> = api.interestTargetingOptionsGet(interestId)
 
         // TODO: test validations
@@ -61,6 +64,7 @@ class ResourcesApiTest {
      */
     @Test
     fun leadFormQuestionsGetTest() {
+        
         val response: ResponseEntity<Unit> = api.leadFormQuestionsGet()
 
         // TODO: test validations
@@ -75,6 +79,7 @@ class ResourcesApiTest {
     @Test
     fun metricsReadyStateGetTest() {
         val date: kotlin.String = TODO()
+        
         val response: ResponseEntity<BookClosedResponse> = api.metricsReadyStateGet(date)
 
         // TODO: test validations
@@ -93,6 +98,7 @@ class ResourcesApiTest {
         val oauthSignature: kotlin.String? = TODO()
         val timestamp: kotlin.String? = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<List<kotlin.Any>> = api.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId)
 
         // TODO: test validations

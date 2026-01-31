@@ -102,7 +102,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Unique identifier of the requesting business.</param>
     /// <param name="createAssetAccessRequestBody"></param>
-    virtual void asset_access_requests_create(const std::string &businessId, const org::openapitools::server::model::CreateAssetAccessRequestBody &createAssetAccessRequestBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void asset_access_requests_create( const std::string &businessId, const org::openapitools::server::model::CreateAssetAccessRequestBody &createAssetAccessRequestBody, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Cancel invites/requests
     /// </summary>
@@ -111,7 +111,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Business id</param>
     /// <param name="cancelInvitesBody">A list with invite ids</param>
-    virtual void cancel_invites_or_requests(const std::string &businessId, const org::openapitools::server::model::CancelInvitesBody &cancelInvitesBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void cancel_invites_or_requests( const std::string &businessId, const org::openapitools::server::model::CancelInvitesBody &cancelInvitesBody, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update invite/request with an asset permission
     /// </summary>
@@ -120,7 +120,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Unique identifier of the requesting business.</param>
     /// <param name="createAssetInvitesRequest">A list of invites/requests together with the asset permissions to be assigned to the invite/request. </param>
-    virtual void create_asset_invites(const std::string &businessId, const org::openapitools::server::model::CreateAssetInvitesRequest &createAssetInvitesRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_asset_invites( const std::string &businessId, const org::openapitools::server::model::CreateAssetInvitesRequest &createAssetInvitesRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create invites or requests
     /// </summary>
@@ -129,7 +129,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Business id</param>
     /// <param name="createMembershipOrPartnershipInvitesBody">An object with the properties: invite_type, partners, members, business_role</param>
-    virtual void create_membership_or_partnership_invites(const std::string &businessId, const org::openapitools::server::model::CreateMembershipOrPartnershipInvitesBody &createMembershipOrPartnershipInvitesBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void create_membership_or_partnership_invites( const std::string &businessId, const org::openapitools::server::model::CreateMembershipOrPartnershipInvitesBody &createMembershipOrPartnershipInvitesBody, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get invites/requests
     /// </summary>
@@ -142,7 +142,7 @@ private:
     /// <param name="inviteType">Invite type to filter invites by. Only invites of the specified type will be returned. (optional, default to std::make_shared&lt;InviteType&gt;())</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void get_invites(const std::string &businessId, const std::optional<bool> &isMember, const std::optional<std::vector<std::string>> &inviteStatus, const std::optional<org::openapitools::server::model::InviteType> &inviteType, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void get_invites( const std::string &businessId, const std::optional<bool> &isMember, const std::optional<std::vector<std::string>> &inviteStatus, const std::optional<org::openapitools::server::model::InviteType> &inviteType, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Accept or decline an invite/request
     /// </summary>
@@ -150,7 +150,7 @@ private:
     /// Accept or decline invites or requests.
     /// </remarks>
     /// <param name="authRespondInvitesBody"></param>
-    virtual void respond_business_access_invites(const org::openapitools::server::model::AuthRespondInvitesBody &authRespondInvitesBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void respond_business_access_invites( const org::openapitools::server::model::AuthRespondInvitesBody &authRespondInvitesBody, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

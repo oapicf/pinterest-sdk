@@ -130,6 +130,8 @@ pub enum IntegrationsSlashGetListResponse {
 }
 
 
+
+
 /// Integrations
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -139,6 +141,7 @@ pub trait Integrations<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::
     /// IntegrationsCommerceSlashDel - DELETE /v5/integrations/commerce/{external_business_id}
     async fn integrations_commerce_slash_del(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -150,6 +153,7 @@ pub trait Integrations<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::
     /// IntegrationsCommerceSlashGet - GET /v5/integrations/commerce/{external_business_id}
     async fn integrations_commerce_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -161,6 +165,7 @@ pub trait Integrations<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::
     /// IntegrationsCommerceSlashPatch - PATCH /v5/integrations/commerce/{external_business_id}
     async fn integrations_commerce_slash_patch(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -173,6 +178,7 @@ pub trait Integrations<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::
     /// IntegrationsCommerceSlashPost - POST /v5/integrations/commerce
     async fn integrations_commerce_slash_post(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -184,6 +190,7 @@ pub trait Integrations<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::
     /// IntegrationsLogsSlashPost - POST /v5/integrations/logs
     async fn integrations_logs_slash_post(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -195,6 +202,7 @@ pub trait Integrations<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::
     /// IntegrationsSlashGetById - GET /v5/integrations/{id}
     async fn integrations_slash_get_by_id(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -206,6 +214,7 @@ pub trait Integrations<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::
     /// IntegrationsSlashGetList - GET /v5/integrations
     async fn integrations_slash_get_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

@@ -215,7 +215,7 @@ data class CatalogsFeedValidationWarnings(
 
     @Schema(example = "null", description = "Some items include incorrectly formatted MPNs.")
     @get:JsonProperty("MPN_INVALID") val MPN_INVALID: kotlin.Int? = null
-    ) {
+) {
 
     /**
     * Ingestion completed early because there are no changes to your feed since the last successful update.
@@ -229,7 +229,8 @@ data class CatalogsFeedValidationWarnings(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.Int): FETCHSAMESIGNATURE {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsFeedValidationWarnings'")
             }
         }
     }

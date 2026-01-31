@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **NullableString** | Internal name of the lead form. | 
-**PrivacyPolicyLink** | **NullableString** | A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language. | 
-**HasAcceptedTerms** | **bool** | Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO | 
-**CompletionMessage** | **NullableString** | A message for people who complete the form to let them know what happens next. | 
+**Name** | Pointer to **NullableString** | Internal name of the lead form. | [optional] 
+**PrivacyPolicyLink** | Pointer to **NullableString** | A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language. | [optional] 
+**HasAcceptedTerms** | Pointer to **bool** | Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO | [optional] 
+**CompletionMessage** | Pointer to **NullableString** | A message for people who complete the form to let them know what happens next. | [optional] 
 **Status** | Pointer to [**LeadFormStatus**](LeadFormStatus.md) |  | [optional] 
 **DisclosureLanguage** | Pointer to **NullableString** | Additional disclosure language to be included in the lead form. | [optional] 
-**Questions** | [**[]LeadFormQuestion**](LeadFormQuestion.md) | List of questions to be displayed on the lead form. | 
+**Questions** | Pointer to [**[]LeadFormQuestion**](LeadFormQuestion.md) | List of questions to be displayed on the lead form. | [optional] 
 **PolicyLinks** | Pointer to [**[]LeadFormCommonPolicyLinksInner**](LeadFormCommonPolicyLinksInner.md) | List of additional policy links to be displayed on the lead form. | [optional] 
 
 ## Methods
 
 ### NewLeadFormCreateRequest
 
-`func NewLeadFormCreateRequest(name NullableString, privacyPolicyLink NullableString, hasAcceptedTerms bool, completionMessage NullableString, questions []LeadFormQuestion, ) *LeadFormCreateRequest`
+`func NewLeadFormCreateRequest() *LeadFormCreateRequest`
 
 NewLeadFormCreateRequest instantiates a new LeadFormCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -51,6 +51,11 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+### HasName
+
+`func (o *LeadFormCreateRequest) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### SetNameNil
 
@@ -81,6 +86,11 @@ and a boolean to check if the value has been set.
 
 SetPrivacyPolicyLink sets PrivacyPolicyLink field to given value.
 
+### HasPrivacyPolicyLink
+
+`func (o *LeadFormCreateRequest) HasPrivacyPolicyLink() bool`
+
+HasPrivacyPolicyLink returns a boolean if a field has been set.
 
 ### SetPrivacyPolicyLinkNil
 
@@ -111,6 +121,11 @@ and a boolean to check if the value has been set.
 
 SetHasAcceptedTerms sets HasAcceptedTerms field to given value.
 
+### HasHasAcceptedTerms
+
+`func (o *LeadFormCreateRequest) HasHasAcceptedTerms() bool`
+
+HasHasAcceptedTerms returns a boolean if a field has been set.
 
 ### GetCompletionMessage
 
@@ -131,6 +146,11 @@ and a boolean to check if the value has been set.
 
 SetCompletionMessage sets CompletionMessage field to given value.
 
+### HasCompletionMessage
+
+`func (o *LeadFormCreateRequest) HasCompletionMessage() bool`
+
+HasCompletionMessage returns a boolean if a field has been set.
 
 ### SetCompletionMessageNil
 
@@ -221,6 +241,11 @@ and a boolean to check if the value has been set.
 
 SetQuestions sets Questions field to given value.
 
+### HasQuestions
+
+`func (o *LeadFormCreateRequest) HasQuestions() bool`
+
+HasQuestions returns a boolean if a field has been set.
 
 ### GetPolicyLinks
 

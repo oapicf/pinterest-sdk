@@ -39,36 +39,42 @@ FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES"));
 }
 
   @ApiModelProperty(value = "")
+
   private ReportTypeEnum reportType;
 
-  @ApiModelProperty(value = "ID of the catalog entity.")
  /**
-   * ID of the catalog entity.
-  **/
+  * ID of the catalog entity.
+  */
+  @ApiModelProperty(value = "ID of the catalog entity.")
+
   private String catalogId;
 
-  @ApiModelProperty(example = "112", value = "The event code that a diagnostics aggregated number references")
  /**
-   * The event code that a diagnostics aggregated number references
-  **/
+  * The event code that a diagnostics aggregated number references
+  */
+  @ApiModelProperty(example = "112", value = "The event code that a diagnostics aggregated number references")
+
   private Integer code;
 
-  @ApiModelProperty(example = "AVAILABILITY_INVALID", value = "A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')")
  /**
-   * A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')
-  **/
+  * A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')
+  */
+  @ApiModelProperty(example = "AVAILABILITY_INVALID", value = "A human-friendly label for the event code (e.g, 'AVAILABILITY_INVALID')")
+
   private String codeLabel;
 
-  @ApiModelProperty(value = "Title message describing the diagnostic issue")
  /**
-   * Title message describing the diagnostic issue
-  **/
+  * Title message describing the diagnostic issue
+  */
+  @ApiModelProperty(value = "Title message describing the diagnostic issue")
+
   private String message;
 
-  @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
  /**
-   * Number of occurrences of the issue
-  **/
+  * Number of occurrences of the issue
+  */
+  @ApiModelProperty(example = "10", value = "Number of occurrences of the issue")
+
   private Integer occurrences;
 
 public enum SeverityEnum {
@@ -101,10 +107,11 @@ WARN(String.valueOf("WARN")), ERROR(String.valueOf("ERROR"));
     }
 }
 
-  @ApiModelProperty(value = "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue")
  /**
-   * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
-  **/
+  * An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
+  */
+  @ApiModelProperty(value = "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue")
+
   private SeverityEnum severity;
  /**
    * Get reportType

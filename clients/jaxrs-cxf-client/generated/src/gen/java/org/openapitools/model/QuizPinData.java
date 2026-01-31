@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,21 +7,24 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.QuizPinQuestion;
 import org.openapitools.model.QuizPinResult;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * This field includes all quiz data including questions, options, and results.
- **/
+ * This field includes all quiz data including questions, options, and results.
+ */
 @ApiModel(description="This field includes all quiz data including questions, options, and results.")
 
 public class QuizPinData  {
   
   @ApiModelProperty(value = "")
+
   private List<QuizPinQuestion> questions = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private List<QuizPinResult> results = new ArrayList<>();
 
 public enum TieBreakerTypeEnum {
@@ -55,13 +57,15 @@ RANDOM(String.valueOf("RANDOM")), CUSTOM(String.valueOf("CUSTOM"));
     }
 }
 
-  @ApiModelProperty(value = "Quiz ad tie breaker type, default is RANDOM")
  /**
-   * Quiz ad tie breaker type, default is RANDOM
-  **/
+  * Quiz ad tie breaker type, default is RANDOM
+  */
+  @ApiModelProperty(value = "Quiz ad tie breaker type, default is RANDOM")
+
   private TieBreakerTypeEnum tieBreakerType;
 
   @ApiModelProperty(value = "")
+
   private QuizPinResult tieBreakerCustomResult;
  /**
    * Get questions

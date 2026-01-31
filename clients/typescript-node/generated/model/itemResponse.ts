@@ -28,9 +28,10 @@ export class ItemResponse {
     */
     'itemId'?: string;
     /**
-    * Array with the errors for the item id requested
+    * The pins mapped to the item
     */
-    'errors'?: Array<ItemValidationEvent>;
+    'pins'?: Array<Pin> | null;
+    'attributes'?: CatalogsCreativeAssetsAttributes;
     /**
     * The catalog hotel id in the merchant namespace
     */
@@ -39,6 +40,10 @@ export class ItemResponse {
     * The catalog creative assets id in the merchant namespace
     */
     'creativeAssetsId'?: string;
+    /**
+    * Array with the errors for the item id requested
+    */
+    'errors'?: Array<ItemValidationEvent>;
 
     static discriminator: string | undefined = undefined;
 
@@ -54,9 +59,14 @@ export class ItemResponse {
             "type": "string"
         },
         {
-            "name": "errors",
-            "baseName": "errors",
-            "type": "Array<ItemValidationEvent>"
+            "name": "pins",
+            "baseName": "pins",
+            "type": "Array<Pin>"
+        },
+        {
+            "name": "attributes",
+            "baseName": "attributes",
+            "type": "CatalogsCreativeAssetsAttributes"
         },
         {
             "name": "hotelId",
@@ -67,6 +77,11 @@ export class ItemResponse {
             "name": "creativeAssetsId",
             "baseName": "creative_assets_id",
             "type": "string"
+        },
+        {
+            "name": "errors",
+            "baseName": "errors",
+            "type": "Array<ItemValidationEvent>"
         }    ];
 
     static getAttributeTypeMap() {

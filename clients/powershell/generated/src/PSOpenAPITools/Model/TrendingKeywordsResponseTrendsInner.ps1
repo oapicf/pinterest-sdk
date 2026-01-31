@@ -55,7 +55,7 @@ function Initialize-TrendingKeywordsResponseTrendsInner {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         if (!$Keyword -and $Keyword.length -lt 1) {
-            throw "invalid value for 'Keyword', the character length must be great than or equal to 1."
+            throw "invalid value for 'Keyword', the character length must be greater than or equal to 1."
         }
 
 

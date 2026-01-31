@@ -131,7 +131,6 @@ The following models have been auto-generated from the provided OpenAPI schema:
 - model/SSIOCreateInsertionOrderRequestModel.fs
 - model/PinsSaveRequestModel.fs
 - model/ProductGroupPromotionCreateRequestElementModel.fs
-- model/PinsAnalyticsMetricTypesParameterInnerModel.fs
 - model/PinUpdateCarouselSlotsInnerModel.fs
 - model/PinUpdateModel.fs
 - model/PinPromotionSummaryStatusModel.fs
@@ -463,7 +462,6 @@ The following models have been auto-generated from the provided OpenAPI schema:
 - model/CatalogsRetailProductGroupModel.fs
 - model/CatalogsRetailListProductsByCatalogBasedFilterRequestModel.fs
 - model/CatalogModel.fs
-- model/CatalogsItemsRequestLanguageModel.fs
 - model/CatalogsItemsCreateBatchRequestModel.fs
 - model/CatalogsItemsUpsertBatchRequestModel.fs
 - model/CatalogsHotelItemsPostFilterModel.fs
@@ -643,7 +641,6 @@ The following models have been auto-generated from the provided OpenAPI schema:
 - model/AudienceDefinitionModel.fs
 - model/AudienceDefinitionResponseModel.fs
 - model/AudienceDataPartyModel.fs
-- model/AudienceCreateRequest1AudienceTypeModel.fs
 - model/AudienceCreateRequestModel.fs
 - model/AudienceCreateCustomRequestModel.fs
 - model/AudienceCommonModel.fs

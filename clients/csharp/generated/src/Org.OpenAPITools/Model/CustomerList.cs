@@ -410,8 +410,7 @@ namespace Org.OpenAPITools.Model
                             adAccountId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "created_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdTime = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            createdTime = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString()!);
@@ -420,16 +419,13 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "num_batches":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numBatches = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            numBatches = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "num_removed_user_records":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numRemovedUserRecords = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            numRemovedUserRecords = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "num_uploaded_user_records":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numUploadedUserRecords = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            numUploadedUserRecords = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "status":
                             string? statusRawValue = utf8JsonReader.GetString();
@@ -440,12 +436,10 @@ namespace Org.OpenAPITools.Model
                             type = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "updated_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedTime = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            updatedTime = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "exceptions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exceptions = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            exceptions = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

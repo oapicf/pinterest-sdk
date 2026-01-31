@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ad_group_update_request
 import model_ad_update_request
@@ -18,8 +20,63 @@ import model_product_group_promotion_update_request
 
 type BulkUpsertRequestUpdate* = object
   ## Request for creation of entities in bulk.
-  campaigns*: seq[CampaignUpdateRequest]
-  adGroups*: seq[AdGroupUpdateRequest]
-  ads*: seq[AdUpdateRequest]
-  productGroups*: seq[ProductGroupPromotionUpdateRequest]
-  keywords*: seq[KeywordUpdate]
+  campaigns*: Option[seq[CampaignUpdateRequest]]
+  adGroups*: Option[seq[AdGroupUpdateRequest]]
+  ads*: Option[seq[AdUpdateRequest]]
+  productGroups*: Option[seq[ProductGroupPromotionUpdateRequest]]
+  keywords*: Option[seq[KeywordUpdate]]
+
+
+# Custom JSON deserialization for BulkUpsertRequestUpdate with custom field names
+proc to*(node: JsonNode, T: typedesc[BulkUpsertRequestUpdate]): BulkUpsertRequestUpdate =
+  result = BulkUpsertRequestUpdate()
+  if node.kind == JObject:
+    if node.hasKey("campaigns") and node["campaigns"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["campaigns"]
+      if arrayNode.kind == JArray:
+        var arr: seq[CampaignUpdateRequest] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, CampaignUpdateRequest))
+        result.campaigns = some(arr)
+    if node.hasKey("ad_groups") and node["ad_groups"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["ad_groups"]
+      if arrayNode.kind == JArray:
+        var arr: seq[AdGroupUpdateRequest] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, AdGroupUpdateRequest))
+        result.adGroups = some(arr)
+    if node.hasKey("ads") and node["ads"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["ads"]
+      if arrayNode.kind == JArray:
+        var arr: seq[AdUpdateRequest] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, AdUpdateRequest))
+        result.ads = some(arr)
+    if node.hasKey("product_groups") and node["product_groups"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["product_groups"]
+      if arrayNode.kind == JArray:
+        var arr: seq[ProductGroupPromotionUpdateRequest] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, ProductGroupPromotionUpdateRequest))
+        result.productGroups = some(arr)
+    if node.hasKey("keywords") and node["keywords"].kind != JNull:
+      result.keywords = some(to(node["keywords"], typeof(result.keywords.get())))
+
+# Custom JSON serialization for BulkUpsertRequestUpdate with custom field names
+proc `%`*(obj: BulkUpsertRequestUpdate): JsonNode =
+  result = newJObject()
+  if obj.campaigns.isSome():
+    result["campaigns"] = %obj.campaigns.get()
+  if obj.adGroups.isSome():
+    result["ad_groups"] = %obj.adGroups.get()
+  if obj.ads.isSome():
+    result["ads"] = %obj.ads.get()
+  if obj.productGroups.isSome():
+    result["product_groups"] = %obj.productGroups.get()
+  if obj.keywords.isSome():
+    result["keywords"] = %obj.keywords.get()
+

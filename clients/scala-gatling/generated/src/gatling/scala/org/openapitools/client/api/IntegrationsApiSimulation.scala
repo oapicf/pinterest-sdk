@@ -149,8 +149,8 @@ class IntegrationsApiSimulation extends Simulation {
         .feed(integrations/get_listQUERYFeeder)
         .exec(http("integrationsGetList")
         .httpRequest("GET","/integrations")
-        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("page_size","${page_size}")
 )
 
     // Run scnintegrationsGetList with warm up and reach a constant rate for entire duration

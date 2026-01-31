@@ -69,9 +69,6 @@ func AssertCatalogsHotelFeedsCreateRequestRequired(obj CatalogsHotelFeedsCreateR
 			return err
 		}
 	}
-	if err := AssertCatalogsStatusRequired(obj.Status); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -90,8 +87,5 @@ func AssertCatalogsHotelFeedsCreateRequestConstraints(obj CatalogsHotelFeedsCrea
      		return err
      	}
     }
-	if err := AssertCatalogsStatusConstraints(obj.Status); err != nil {
-		return err
-	}
 	return nil
 }

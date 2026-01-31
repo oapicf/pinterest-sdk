@@ -14,9 +14,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TopVideoPinsAnalyticsResponse  {
   
   @ApiModelProperty(value = "")
+
   private TopPinsAnalyticsResponseDateAvailability dateAvailability;
 
   @ApiModelProperty(value = "")
+
   private List<TopVideoPinsAnalyticsResponsePinsInner> pins = new ArrayList<>();
 
 public enum SortByEnum {
@@ -50,6 +52,7 @@ SAVE(String.valueOf("SAVE")), IMPRESSION(String.valueOf("IMPRESSION")), OUTBOUND
 }
 
   @ApiModelProperty(example = "IMPRESSION", value = "")
+
   private SortByEnum sortBy;
  /**
    * Get dateAvailability

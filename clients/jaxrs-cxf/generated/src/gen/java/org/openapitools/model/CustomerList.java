@@ -13,50 +13,61 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CustomerList  {
   
-  @ApiModelProperty(example = "549756359984", value = "Associated ad account ID.")
  /**
-   * Associated ad account ID.
-  **/
+  * Associated ad account ID.
+  */
+  @ApiModelProperty(example = "549756359984", value = "Associated ad account ID.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "1452208622", value = "Creation time. Unix timestamp in seconds.")
-  @Valid
  /**
-   * Creation time. Unix timestamp in seconds.
-  **/
+  * Creation time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1452208622", value = "Creation time. Unix timestamp in seconds.")
+
+  @Valid
+
   private BigDecimal createdTime;
 
-  @ApiModelProperty(example = "643", value = "Customer list ID.")
  /**
-   * Customer list ID.
-  **/
+  * Customer list ID.
+  */
+  @ApiModelProperty(example = "643", value = "Customer list ID.")
+
   private String id;
 
-  @ApiModelProperty(example = "The Glengarry Glen Ross leads", value = "Customer list name.")
  /**
-   * Customer list name.
-  **/
+  * Customer list name.
+  */
+  @ApiModelProperty(example = "The Glengarry Glen Ross leads", value = "Customer list name.")
+
   private String name;
 
-  @ApiModelProperty(example = "2", value = "Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.")
-  @Valid
  /**
-   * Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
-  **/
+  * Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.
+  */
+  @ApiModelProperty(example = "2", value = "Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.")
+
+  @Valid
+
   private BigDecimal numBatches;
 
-  @ApiModelProperty(example = "0", value = "Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.")
-  @Valid
  /**
-   * Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
-  **/
+  * Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.
+  */
+  @ApiModelProperty(example = "0", value = "Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.")
+
+  @Valid
+
   private BigDecimal numRemovedUserRecords;
 
-  @ApiModelProperty(example = "11", value = "Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.")
-  @Valid
  /**
-   * Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
-  **/
+  * Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.
+  */
+  @ApiModelProperty(example = "11", value = "Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.")
+
+  @Valid
+
   private BigDecimal numUploadedUserRecords;
 
 public enum StatusEnum {
@@ -91,29 +102,34 @@ PROCESSING(String.valueOf("PROCESSING")), READY(String.valueOf("READY")), TOO_SM
     }
 }
 
-  @ApiModelProperty(example = "PROCESSING", value = "Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.")
  /**
-   * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
-  **/
+  * Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.
+  */
+  @ApiModelProperty(example = "PROCESSING", value = "Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.")
+
   private StatusEnum status;
 
-  @ApiModelProperty(example = "customerlist", value = "Always \"customerlist\".")
  /**
-   * Always \"customerlist\".
-  **/
+  * Always \"customerlist\".
+  */
+  @ApiModelProperty(example = "customerlist", value = "Always \"customerlist\".")
+
   private String type;
 
-  @ApiModelProperty(example = "1461269616", value = "Last update time. Unix timestamp in seconds.")
-  @Valid
  /**
-   * Last update time. Unix timestamp in seconds.
-  **/
+  * Last update time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1461269616", value = "Last update time. Unix timestamp in seconds.")
+
+  @Valid
+
   private BigDecimal updatedTime;
 
-  @ApiModelProperty(value = "Customer list errors")
  /**
-   * Customer list errors
-  **/
+  * Customer list errors
+  */
+  @ApiModelProperty(value = "Customer list errors")
+
   private Object exceptions;
  /**
    * Associated ad account ID.

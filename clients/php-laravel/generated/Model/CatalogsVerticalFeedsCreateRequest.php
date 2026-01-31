@@ -66,7 +66,7 @@ class CatalogsVerticalFeedsCreateRequest
     * @param null | \OpenAPI\Server\Model\ProductAvailabilityType $defaultAvailability
     *
     * 
-    * @param \OpenAPI\Server\Model\CatalogsFeedsCreateRequestStatus $status
+    * @param \OpenAPI\Server\Model\CatalogsStatus $status
     *
     * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.
     * @param null | string $catalogId
@@ -79,7 +79,7 @@ class CatalogsVerticalFeedsCreateRequest
         public string $location,
         public \OpenAPI\Server\Model\CatalogsType $catalogType,
         public \OpenAPI\Server\Model\Country $defaultCountry,
-        public \OpenAPI\Server\Model\CatalogsFeedsCreateRequestStatus $status,
+        public \OpenAPI\Server\Model\CatalogsStatus $status = self::\OpenAPI\Server\Model\CatalogsStatus_ACTIVE,
         public ?\OpenAPI\Server\Model\NullableCurrency $defaultCurrency = null,
         public ?\OpenAPI\Server\Model\CatalogsFeedCredentials $credentials = null,
         public ?\OpenAPI\Server\Model\CatalogsFeedProcessingSchedule $preferredProcessingSchedule = null,

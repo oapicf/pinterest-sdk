@@ -196,7 +196,6 @@
             [pinterest-rest-api.specs.integration-request-patch :refer :all]
             [pinterest-rest-api.specs.bid-floor-request :refer :all]
             [pinterest-rest-api.specs.catalogs-product-group-currency-criteria :refer :all]
-            [pinterest-rest-api.specs.audience-create-request-1-audience-type :refer :all]
             [pinterest-rest-api.specs.optimization-goal-metadata-conversion-tag-v3-goal-metadata :refer :all]
             [pinterest-rest-api.specs.conversion-event-response :refer :all]
             [pinterest-rest-api.specs.catalogs-retail-product-group-create-request :refer :all]
@@ -311,7 +310,6 @@
             [pinterest-rest-api.specs.catalogs-creative-assets-batch-item :refer :all]
             [pinterest-rest-api.specs.integration-logs-request :refer :all]
             [pinterest-rest-api.specs.top-pins-analytics-response :refer :all]
-            [pinterest-rest-api.specs.pins-analytics-metric-types-parameter-inner :refer :all]
             [pinterest-rest-api.specs.catalogs-product-group-pricing-currency-criteria :refer :all]
             [pinterest-rest-api.specs.conversion-tag-type :refer :all]
             [pinterest-rest-api.specs.template-response-date-range :refer :all]
@@ -332,7 +330,6 @@
             [pinterest-rest-api.specs.targeting-template-create :refer :all]
             [pinterest-rest-api.specs.catalogs-upsert-hotel-item :refer :all]
             [pinterest-rest-api.specs.user-summary :refer :all]
-            [pinterest-rest-api.specs.catalogs-items-request-language :refer :all]
             [pinterest-rest-api.specs.product-group-reference-filter :refer :all]
             [pinterest-rest-api.specs.bid-floor-spec :refer :all]
             [pinterest-rest-api.specs.keyword-error :refer :all]
@@ -750,8 +747,8 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 - For Pins on secret boards: Admin.
 
 If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
-  ([pin_ids (s/coll-of string?), start_date inst?, end_date inst?, metric_types (s/coll-of pins-analytics-metric-types-parameter-inner-spec), ] (multi-pins-analytics-with-http-info pin_ids start_date end_date metric_types nil))
-  ([pin_ids (s/coll-of string?), start_date inst?, end_date inst?, metric_types (s/coll-of pins-analytics-metric-types-parameter-inner-spec), {:keys [app_types ad_account_id]} (s/map-of keyword? any?)]
+  ([pin_ids (s/coll-of string?), start_date inst?, end_date inst?, metric_types (s/coll-of string?), ] (multi-pins-analytics-with-http-info pin_ids start_date end_date metric_types nil))
+  ([pin_ids (s/coll-of string?), start_date inst?, end_date inst?, metric_types (s/coll-of string?), {:keys [app_types ad_account_id]} (s/map-of keyword? any?)]
    (check-required-params pin_ids start_date end_date metric_types)
    (call-api "/pins/analytics" :get
              {:path-params   {}
@@ -776,8 +773,8 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 - For Pins on secret boards: Admin.
 
 If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
-  ([pin_ids (s/coll-of string?), start_date inst?, end_date inst?, metric_types (s/coll-of pins-analytics-metric-types-parameter-inner-spec), ] (multi-pins-analytics pin_ids start_date end_date metric_types nil))
-  ([pin_ids (s/coll-of string?), start_date inst?, end_date inst?, metric_types (s/coll-of pins-analytics-metric-types-parameter-inner-spec), optional-params any?]
+  ([pin_ids (s/coll-of string?), start_date inst?, end_date inst?, metric_types (s/coll-of string?), ] (multi-pins-analytics pin_ids start_date end_date metric_types nil))
+  ([pin_ids (s/coll-of string?), start_date inst?, end_date inst?, metric_types (s/coll-of string?), optional-params any?]
    (let [res (:data (multi-pins-analytics-with-http-info pin_ids start_date end_date metric_types optional-params))]
      (if (:decode-models *api-context*)
         (st/decode (s/map-of string? map?) res st/string-transformer)
@@ -795,8 +792,8 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 - For Pins on secret boards: Admin.
 
 If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
-  ([pin_id string?, start_date inst?, end_date inst?, metric_types (s/coll-of pins-analytics-metric-types-parameter-inner-spec), ] (pins-analytics-with-http-info pin_id start_date end_date metric_types nil))
-  ([pin_id string?, start_date inst?, end_date inst?, metric_types (s/coll-of pins-analytics-metric-types-parameter-inner-spec), {:keys [app_types split_field ad_account_id]} (s/map-of keyword? any?)]
+  ([pin_id string?, start_date inst?, end_date inst?, metric_types (s/coll-of string?), ] (pins-analytics-with-http-info pin_id start_date end_date metric_types nil))
+  ([pin_id string?, start_date inst?, end_date inst?, metric_types (s/coll-of string?), {:keys [app_types split_field ad_account_id]} (s/map-of keyword? any?)]
    (check-required-params pin_id start_date end_date metric_types)
    (call-api "/pins/{pin_id}/analytics" :get
              {:path-params   {"pin_id" pin_id }
@@ -818,8 +815,8 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
 - For Pins on secret boards: Admin.
 
 If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then."
-  ([pin_id string?, start_date inst?, end_date inst?, metric_types (s/coll-of pins-analytics-metric-types-parameter-inner-spec), ] (pins-analytics pin_id start_date end_date metric_types nil))
-  ([pin_id string?, start_date inst?, end_date inst?, metric_types (s/coll-of pins-analytics-metric-types-parameter-inner-spec), optional-params any?]
+  ([pin_id string?, start_date inst?, end_date inst?, metric_types (s/coll-of string?), ] (pins-analytics pin_id start_date end_date metric_types nil))
+  ([pin_id string?, start_date inst?, end_date inst?, metric_types (s/coll-of string?), optional-params any?]
    (let [res (:data (pins-analytics-with-http-info pin_id start_date end_date metric_types optional-params))]
      (if (:decode-models *api-context*)
         (st/decode (s/map-of string? pin-analytics-metrics-response-spec) res st/string-transformer)

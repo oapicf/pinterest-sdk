@@ -98,14 +98,14 @@ class AdAccountsApiSimulation extends Simulation {
         .feed(ad_account/analyticsPATHFeeder)
         .exec(http("adAccountAnalytics")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/analytics")
-        .queryParam("conversion_report_time","${conversion_report_time}")
         .queryParam("end_date","${end_date}")
+        .queryParam("click_window_days","${click_window_days}")
+        .queryParam("conversion_report_time","${conversion_report_time}")
+        .queryParam("start_date","${start_date}")
+        .queryParam("granularity","${granularity}")
+        .queryParam("columns","${columns}")
         .queryParam("engagement_window_days","${engagement_window_days}")
         .queryParam("view_window_days","${view_window_days}")
-        .queryParam("columns","${columns}")
-        .queryParam("granularity","${granularity}")
-        .queryParam("click_window_days","${click_window_days}")
-        .queryParam("start_date","${start_date}")
 )
 
     // Run scnadAccountAnalytics with warm up and reach a constant rate for entire duration
@@ -121,16 +121,16 @@ class AdAccountsApiSimulation extends Simulation {
         .feed(ad_account_targeting_analytics/getPATHFeeder)
         .exec(http("adAccountTargetingAnalyticsGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/targeting_analytics")
-        .queryParam("conversion_report_time","${conversion_report_time}")
         .queryParam("end_date","${end_date}")
-        .queryParam("engagement_window_days","${engagement_window_days}")
-        .queryParam("view_window_days","${view_window_days}")
-        .queryParam("columns","${columns}")
-        .queryParam("granularity","${granularity}")
         .queryParam("click_window_days","${click_window_days}")
+        .queryParam("conversion_report_time","${conversion_report_time}")
         .queryParam("start_date","${start_date}")
+        .queryParam("granularity","${granularity}")
+        .queryParam("columns","${columns}")
+        .queryParam("engagement_window_days","${engagement_window_days}")
         .queryParam("targeting_types","${targeting_types}")
         .queryParam("attribution_types","${attribution_types}")
+        .queryParam("view_window_days","${view_window_days}")
 )
 
     // Run scnadAccountTargetingAnalyticsGet with warm up and reach a constant rate for entire duration
@@ -172,9 +172,9 @@ class AdAccountsApiSimulation extends Simulation {
         .feed(ad_accounts/listQUERYFeeder)
         .exec(http("adAccountsList")
         .httpRequest("GET","/ad_accounts")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
         .queryParam("include_shared_accounts","${include_shared_accounts}")
-        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnadAccountsList with warm up and reach a constant rate for entire duration
@@ -283,8 +283,8 @@ class AdAccountsApiSimulation extends Simulation {
         .exec(http("templatesList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/templates")
         .queryParam("page_size","${page_size}")
-        .queryParam("order","${order}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("order","${order}")
 )
 
     // Run scntemplatesList with warm up and reach a constant rate for entire duration

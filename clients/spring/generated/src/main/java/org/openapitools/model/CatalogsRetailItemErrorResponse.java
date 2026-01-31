@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailItemErrorResponse", description = "Object describing a retail item error")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
 
   private CatalogsType catalogType;
@@ -71,7 +71,7 @@ public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
     this.catalogType = catalogType;
   }
 
-  public CatalogsRetailItemErrorResponse itemId(String itemId) {
+  public CatalogsRetailItemErrorResponse itemId(@Nullable String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -83,11 +83,11 @@ public class CatalogsRetailItemErrorResponse implements ItemResponseAnyOf1 {
   
   @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_id")
-  public String getItemId() {
+  public @Nullable String getItemId() {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@Nullable String itemId) {
     this.itemId = itemId;
   }
 

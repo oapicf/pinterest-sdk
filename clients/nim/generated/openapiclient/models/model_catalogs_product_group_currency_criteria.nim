@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_non_nullable_catalogs_currency
 
 type CatalogsProductGroupCurrencyCriteria* = object
   ## A currency filter. This filter cannot be negated
   values*: NonNullableCatalogsCurrency
-  negated*: bool
+  negated*: Option[bool]
+

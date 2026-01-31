@@ -53,7 +53,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedProcessingResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedProcessingResult {
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -282,24 +282,10 @@ public class CatalogsFeedProcessingResult {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("created_at");
-    openapiFields.add("id");
-    openapiFields.add("updated_at");
-    openapiFields.add("ingestion_details");
-    openapiFields.add("status");
-    openapiFields.add("product_counts");
-    openapiFields.add("validation_details");
+    openapiFields = new HashSet<String>(Arrays.asList("created_at", "id", "updated_at", "ingestion_details", "status", "product_counts", "validation_details"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("created_at");
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("updated_at");
-    openapiRequiredFields.add("ingestion_details");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("product_counts");
-    openapiRequiredFields.add("validation_details");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("created_at", "id", "updated_at", "ingestion_details", "status", "product_counts", "validation_details"));
   }
 
   /**
@@ -311,7 +297,7 @@ public class CatalogsFeedProcessingResult {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsFeedProcessingResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsFeedProcessingResult is not found in the empty JSON string", CatalogsFeedProcessingResult.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsFeedProcessingResult is not found in the empty JSON string", CatalogsFeedProcessingResult.openapiRequiredFields.toString()));
         }
       }
 
@@ -319,19 +305,19 @@ public class CatalogsFeedProcessingResult {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsFeedProcessingResult.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsFeedProcessingResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsFeedProcessingResult` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CatalogsFeedProcessingResult.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // validate the required field `ingestion_details`
       CatalogsFeedIngestionDetails.validateJsonElement(jsonObj.get("ingestion_details"));

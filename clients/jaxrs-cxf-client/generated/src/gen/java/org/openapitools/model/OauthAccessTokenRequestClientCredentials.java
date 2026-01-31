@@ -1,18 +1,17 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
-  * A request to receive a client token.
- **/
-@ApiModel(description="A request to receive a client token.")
 
 public class OauthAccessTokenRequestClientCredentials  {
   
+  @ApiModelProperty(required = true, value = "")
+
+  private String scope;
+
 public enum GrantTypeEnum {
 
 AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.valueOf("refresh_token")), CLIENT_CREDENTIALS(String.valueOf("client_credentials"));
@@ -44,10 +43,26 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
 }
 
   @ApiModelProperty(required = true, value = "")
-  private GrantTypeEnum grantType;
 
-  @ApiModelProperty(required = true, value = "")
-  private String scope;
+  private GrantTypeEnum grantType;
+ /**
+   * Get scope
+   * @return scope
+  **/
+  @JsonProperty("scope")
+  public String getScope() {
+    return scope;
+  }
+
+  public void setScope(String scope) {
+    this.scope = scope;
+  }
+
+  public OauthAccessTokenRequestClientCredentials scope(String scope) {
+    this.scope = scope;
+    return this;
+  }
+
  /**
    * Get grantType
    * @return grantType
@@ -69,24 +84,6 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
     return this;
   }
 
- /**
-   * Get scope
-   * @return scope
-  **/
-  @JsonProperty("scope")
-  public String getScope() {
-    return scope;
-  }
-
-  public void setScope(String scope) {
-    this.scope = scope;
-  }
-
-  public OauthAccessTokenRequestClientCredentials scope(String scope) {
-    this.scope = scope;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -96,13 +93,13 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
       return false;
     }
     OauthAccessTokenRequestClientCredentials oauthAccessTokenRequestClientCredentials = (OauthAccessTokenRequestClientCredentials) o;
-    return Objects.equals(this.grantType, oauthAccessTokenRequestClientCredentials.grantType) &&
-        Objects.equals(this.scope, oauthAccessTokenRequestClientCredentials.scope);
+    return Objects.equals(this.scope, oauthAccessTokenRequestClientCredentials.scope) &&
+        Objects.equals(this.grantType, oauthAccessTokenRequestClientCredentials.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, scope);
+    return Objects.hash(scope, grantType);
   }
 
   @Override
@@ -110,8 +107,8 @@ AUTHORIZATION_CODE(String.valueOf("authorization_code")), REFRESH_TOKEN(String.v
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestClientCredentials {\n");
     
-    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

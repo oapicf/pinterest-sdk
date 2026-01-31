@@ -50,13 +50,8 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionTagCreate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagCreate {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  @javax.annotation.Nonnull
-  private String name;
-
   public static final String SERIALIZED_NAME_AEM_ENABLED = "aem_enabled";
   @SerializedName(SERIALIZED_NAME_AEM_ENABLED)
   @javax.annotation.Nullable
@@ -92,27 +87,13 @@ public class ConversionTagCreate {
   @javax.annotation.Nullable
   private Boolean aemLocEnabled = false;
 
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nonnull
+  private String name;
+
   public ConversionTagCreate() {
   }
-
-  public ConversionTagCreate name(@javax.annotation.Nonnull String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Conversion tag name.
-   * @return name
-   */
-  @javax.annotation.Nonnull
-  public String getName() {
-    return name;
-  }
-
-  public void setName(@javax.annotation.Nonnull String name) {
-    this.name = name;
-  }
-
 
   public ConversionTagCreate aemEnabled(@javax.annotation.Nullable Boolean aemEnabled) {
     this.aemEnabled = aemEnabled;
@@ -247,6 +228,25 @@ public class ConversionTagCreate {
   }
 
 
+  public ConversionTagCreate name(@javax.annotation.Nonnull String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Conversion tag name.
+   * @return name
+   */
+  @javax.annotation.Nonnull
+  public String getName() {
+    return name;
+  }
+
+  public void setName(@javax.annotation.Nonnull String name) {
+    this.name = name;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -257,14 +257,14 @@ public class ConversionTagCreate {
       return false;
     }
     ConversionTagCreate conversionTagCreate = (ConversionTagCreate) o;
-    return Objects.equals(this.name, conversionTagCreate.name) &&
-        Objects.equals(this.aemEnabled, conversionTagCreate.aemEnabled) &&
+    return Objects.equals(this.aemEnabled, conversionTagCreate.aemEnabled) &&
         Objects.equals(this.mdFrequency, conversionTagCreate.mdFrequency) &&
         Objects.equals(this.aemFnlnEnabled, conversionTagCreate.aemFnlnEnabled) &&
         Objects.equals(this.aemPhEnabled, conversionTagCreate.aemPhEnabled) &&
         Objects.equals(this.aemGeEnabled, conversionTagCreate.aemGeEnabled) &&
         Objects.equals(this.aemDbEnabled, conversionTagCreate.aemDbEnabled) &&
-        Objects.equals(this.aemLocEnabled, conversionTagCreate.aemLocEnabled);
+        Objects.equals(this.aemLocEnabled, conversionTagCreate.aemLocEnabled) &&
+        Objects.equals(this.name, conversionTagCreate.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -273,7 +273,7 @@ public class ConversionTagCreate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, aemEnabled, mdFrequency, aemFnlnEnabled, aemPhEnabled, aemGeEnabled, aemDbEnabled, aemLocEnabled);
+    return Objects.hash(aemEnabled, mdFrequency, aemFnlnEnabled, aemPhEnabled, aemGeEnabled, aemDbEnabled, aemLocEnabled, name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -287,7 +287,6 @@ public class ConversionTagCreate {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagCreate {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    aemEnabled: ").append(toIndentedString(aemEnabled)).append("\n");
     sb.append("    mdFrequency: ").append(toIndentedString(mdFrequency)).append("\n");
     sb.append("    aemFnlnEnabled: ").append(toIndentedString(aemFnlnEnabled)).append("\n");
@@ -295,6 +294,7 @@ public class ConversionTagCreate {
     sb.append("    aemGeEnabled: ").append(toIndentedString(aemGeEnabled)).append("\n");
     sb.append("    aemDbEnabled: ").append(toIndentedString(aemDbEnabled)).append("\n");
     sb.append("    aemLocEnabled: ").append(toIndentedString(aemLocEnabled)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -316,18 +316,10 @@ public class ConversionTagCreate {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("aem_enabled");
-    openapiFields.add("md_frequency");
-    openapiFields.add("aem_fnln_enabled");
-    openapiFields.add("aem_ph_enabled");
-    openapiFields.add("aem_ge_enabled");
-    openapiFields.add("aem_db_enabled");
-    openapiFields.add("aem_loc_enabled");
+    openapiFields = new HashSet<String>(Arrays.asList("aem_enabled", "md_frequency", "aem_fnln_enabled", "aem_ph_enabled", "aem_ge_enabled", "aem_db_enabled", "aem_loc_enabled", "name"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("name"));
   }
 
   /**
@@ -339,7 +331,7 @@ public class ConversionTagCreate {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ConversionTagCreate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ConversionTagCreate is not found in the empty JSON string", ConversionTagCreate.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ConversionTagCreate is not found in the empty JSON string", ConversionTagCreate.openapiRequiredFields.toString()));
         }
       }
 
@@ -347,19 +339,19 @@ public class ConversionTagCreate {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ConversionTagCreate.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConversionTagCreate` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ConversionTagCreate` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ConversionTagCreate.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
   }
 

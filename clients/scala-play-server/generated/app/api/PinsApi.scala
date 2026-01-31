@@ -7,11 +7,10 @@ import model.Pin
 import model.PinAnalyticsMetricsResponse
 import model.PinCreate
 import model.PinUpdate
-import model.PinsAnalyticsMetricTypesParameterInner
 import model.PinsList200Response
 import model.PinsSaveRequest
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 trait PinsApi {
   /**
     * Get multiple Pin analytics
@@ -23,7 +22,7 @@ trait PinsApi {
     * @param appTypes Apps or devices to get data for, default is all.
     * @param adAccountId Unique identifier of an ad account.
     */
-  def multiPinsAnalytics(pinIds: List[String], startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String], adAccountId: Option[String]): Map[String, Map[String, PinAnalyticsMetricsResponse]]
+  def multiPinsAnalytics(pinIds: List[String], startDate: LocalDate, endDate: LocalDate, metricTypes: List[String], appTypes: Option[String], adAccountId: Option[String]): Map[String, Map[String, PinAnalyticsMetricsResponse]]
 
   /**
     * Get Pin analytics
@@ -36,7 +35,7 @@ trait PinsApi {
     * @param splitField How to split the data into groups. Not including this param means data won&#39;t be split.
     * @param adAccountId Unique identifier of an ad account.
     */
-  def pinsAnalytics(pinId: String, startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String], splitField: Option[String], adAccountId: Option[String]): Map[String, PinAnalyticsMetricsResponse]
+  def pinsAnalytics(pinId: String, startDate: LocalDate, endDate: LocalDate, metricTypes: List[String], appTypes: Option[String], splitField: Option[String], adAccountId: Option[String]): Map[String, PinAnalyticsMetricsResponse]
 
   /**
     * Create Pin

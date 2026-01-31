@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CardType* {.pure.} = enum
@@ -41,76 +43,166 @@ type PaymentMethodBrand* {.pure.} = enum
 
 type BillingProfilesResponse* = object
   ## 
-  id*: string ## Billing ID.
-  cardType*: CardType ## Type of the card.
-  status*: Status ## Status of the billing.
-  advertiserId*: string ## Advertiser ID of the billing.
-  paymentMethodBrand*: PaymentMethodBrand ## Brand of the payment method.
+  id*: Option[string] ## Billing ID.
+  cardType*: Option[CardType] ## Type of the card.
+  status*: Option[Status] ## Status of the billing.
+  advertiserId*: Option[string] ## Advertiser ID of the billing.
+  paymentMethodBrand*: Option[PaymentMethodBrand] ## Brand of the payment method.
 
 func `%`*(v: CardType): JsonNode =
-  let str = case v:
-    of CardType.UNKNOWN: "UNKNOWN"
-    of CardType.VISA: "VISA"
-    of CardType.MASTERCARD: "MASTERCARD"
-    of CardType.AMERICANEXPRESS: "AMERICAN_EXPRESS"
-    of CardType.DISCOVER: "DISCOVER"
-    of CardType.ELO: "ELO"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CardType.UNKNOWN: %"UNKNOWN"
+    of CardType.VISA: %"VISA"
+    of CardType.MASTERCARD: %"MASTERCARD"
+    of CardType.AMERICANEXPRESS: %"AMERICAN_EXPRESS"
+    of CardType.DISCOVER: %"DISCOVER"
+    of CardType.ELO: %"ELO"
 func `$`*(v: CardType): string =
   result = case v:
-    of CardType.UNKNOWN: "UNKNOWN"
-    of CardType.VISA: "VISA"
-    of CardType.MASTERCARD: "MASTERCARD"
-    of CardType.AMERICANEXPRESS: "AMERICAN_EXPRESS"
-    of CardType.DISCOVER: "DISCOVER"
-    of CardType.ELO: "ELO"
+    of CardType.UNKNOWN: $("UNKNOWN")
+    of CardType.VISA: $("VISA")
+    of CardType.MASTERCARD: $("MASTERCARD")
+    of CardType.AMERICANEXPRESS: $("AMERICAN_EXPRESS")
+    of CardType.DISCOVER: $("DISCOVER")
+    of CardType.ELO: $("ELO")
+
+proc to*(node: JsonNode, T: typedesc[CardType]): CardType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CardType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("UNKNOWN"):
+    return CardType.UNKNOWN
+  of $("VISA"):
+    return CardType.VISA
+  of $("MASTERCARD"):
+    return CardType.MASTERCARD
+  of $("AMERICAN_EXPRESS"):
+    return CardType.AMERICANEXPRESS
+  of $("DISCOVER"):
+    return CardType.DISCOVER
+  of $("ELO"):
+    return CardType.ELO
+  else:
+    raise newException(ValueError, "Invalid enum value for CardType: " & strVal)
 
 func `%`*(v: Status): JsonNode =
-  let str = case v:
-    of Status.UNSPECIFIED: "UNSPECIFIED"
-    of Status.VALID: "VALID"
-    of Status.INVALID: "INVALID"
-    of Status.PENDING: "PENDING"
-    of Status.DELETED: "DELETED"
-    of Status.SECONDARY: "SECONDARY"
-    of Status.PENDINGSECONDARY: "PENDING_SECONDARY"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Status.UNSPECIFIED: %"UNSPECIFIED"
+    of Status.VALID: %"VALID"
+    of Status.INVALID: %"INVALID"
+    of Status.PENDING: %"PENDING"
+    of Status.DELETED: %"DELETED"
+    of Status.SECONDARY: %"SECONDARY"
+    of Status.PENDINGSECONDARY: %"PENDING_SECONDARY"
 func `$`*(v: Status): string =
   result = case v:
-    of Status.UNSPECIFIED: "UNSPECIFIED"
-    of Status.VALID: "VALID"
-    of Status.INVALID: "INVALID"
-    of Status.PENDING: "PENDING"
-    of Status.DELETED: "DELETED"
-    of Status.SECONDARY: "SECONDARY"
-    of Status.PENDINGSECONDARY: "PENDING_SECONDARY"
+    of Status.UNSPECIFIED: $("UNSPECIFIED")
+    of Status.VALID: $("VALID")
+    of Status.INVALID: $("INVALID")
+    of Status.PENDING: $("PENDING")
+    of Status.DELETED: $("DELETED")
+    of Status.SECONDARY: $("SECONDARY")
+    of Status.PENDINGSECONDARY: $("PENDING_SECONDARY")
+
+proc to*(node: JsonNode, T: typedesc[Status]): Status =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Status, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("UNSPECIFIED"):
+    return Status.UNSPECIFIED
+  of $("VALID"):
+    return Status.VALID
+  of $("INVALID"):
+    return Status.INVALID
+  of $("PENDING"):
+    return Status.PENDING
+  of $("DELETED"):
+    return Status.DELETED
+  of $("SECONDARY"):
+    return Status.SECONDARY
+  of $("PENDING_SECONDARY"):
+    return Status.PENDINGSECONDARY
+  else:
+    raise newException(ValueError, "Invalid enum value for Status: " & strVal)
 
 func `%`*(v: PaymentMethodBrand): JsonNode =
-  let str = case v:
-    of PaymentMethodBrand.UNKNOWN: "UNKNOWN"
-    of PaymentMethodBrand.VISA: "VISA"
-    of PaymentMethodBrand.MASTERCARD: "MASTERCARD"
-    of PaymentMethodBrand.AMERICANEXPRESS: "AMERICAN_EXPRESS"
-    of PaymentMethodBrand.DISCOVER: "DISCOVER"
-    of PaymentMethodBrand.SOFORT: "SOFORT"
-    of PaymentMethodBrand.DINERSCLUB: "DINERS_CLUB"
-    of PaymentMethodBrand.ELO: "ELO"
-    of PaymentMethodBrand.CARTEBANCAIRE: "CARTE_BANCAIRE"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of PaymentMethodBrand.UNKNOWN: %"UNKNOWN"
+    of PaymentMethodBrand.VISA: %"VISA"
+    of PaymentMethodBrand.MASTERCARD: %"MASTERCARD"
+    of PaymentMethodBrand.AMERICANEXPRESS: %"AMERICAN_EXPRESS"
+    of PaymentMethodBrand.DISCOVER: %"DISCOVER"
+    of PaymentMethodBrand.SOFORT: %"SOFORT"
+    of PaymentMethodBrand.DINERSCLUB: %"DINERS_CLUB"
+    of PaymentMethodBrand.ELO: %"ELO"
+    of PaymentMethodBrand.CARTEBANCAIRE: %"CARTE_BANCAIRE"
 func `$`*(v: PaymentMethodBrand): string =
   result = case v:
-    of PaymentMethodBrand.UNKNOWN: "UNKNOWN"
-    of PaymentMethodBrand.VISA: "VISA"
-    of PaymentMethodBrand.MASTERCARD: "MASTERCARD"
-    of PaymentMethodBrand.AMERICANEXPRESS: "AMERICAN_EXPRESS"
-    of PaymentMethodBrand.DISCOVER: "DISCOVER"
-    of PaymentMethodBrand.SOFORT: "SOFORT"
-    of PaymentMethodBrand.DINERSCLUB: "DINERS_CLUB"
-    of PaymentMethodBrand.ELO: "ELO"
-    of PaymentMethodBrand.CARTEBANCAIRE: "CARTE_BANCAIRE"
+    of PaymentMethodBrand.UNKNOWN: $("UNKNOWN")
+    of PaymentMethodBrand.VISA: $("VISA")
+    of PaymentMethodBrand.MASTERCARD: $("MASTERCARD")
+    of PaymentMethodBrand.AMERICANEXPRESS: $("AMERICAN_EXPRESS")
+    of PaymentMethodBrand.DISCOVER: $("DISCOVER")
+    of PaymentMethodBrand.SOFORT: $("SOFORT")
+    of PaymentMethodBrand.DINERSCLUB: $("DINERS_CLUB")
+    of PaymentMethodBrand.ELO: $("ELO")
+    of PaymentMethodBrand.CARTEBANCAIRE: $("CARTE_BANCAIRE")
+
+proc to*(node: JsonNode, T: typedesc[PaymentMethodBrand]): PaymentMethodBrand =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum PaymentMethodBrand, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("UNKNOWN"):
+    return PaymentMethodBrand.UNKNOWN
+  of $("VISA"):
+    return PaymentMethodBrand.VISA
+  of $("MASTERCARD"):
+    return PaymentMethodBrand.MASTERCARD
+  of $("AMERICAN_EXPRESS"):
+    return PaymentMethodBrand.AMERICANEXPRESS
+  of $("DISCOVER"):
+    return PaymentMethodBrand.DISCOVER
+  of $("SOFORT"):
+    return PaymentMethodBrand.SOFORT
+  of $("DINERS_CLUB"):
+    return PaymentMethodBrand.DINERSCLUB
+  of $("ELO"):
+    return PaymentMethodBrand.ELO
+  of $("CARTE_BANCAIRE"):
+    return PaymentMethodBrand.CARTEBANCAIRE
+  else:
+    raise newException(ValueError, "Invalid enum value for PaymentMethodBrand: " & strVal)
+
+
+# Custom JSON deserialization for BillingProfilesResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[BillingProfilesResponse]): BillingProfilesResponse =
+  result = BillingProfilesResponse()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("card_type") and node["card_type"].kind != JNull:
+      result.cardType = some(to(node["card_type"], CardType))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], Status))
+    if node.hasKey("advertiser_id") and node["advertiser_id"].kind != JNull:
+      result.advertiserId = some(to(node["advertiser_id"], typeof(result.advertiserId.get())))
+    if node.hasKey("payment_method_brand") and node["payment_method_brand"].kind != JNull:
+      result.paymentMethodBrand = some(to(node["payment_method_brand"], PaymentMethodBrand))
+
+# Custom JSON serialization for BillingProfilesResponse with custom field names
+proc `%`*(obj: BillingProfilesResponse): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.cardType.isSome():
+    result["card_type"] = %obj.cardType.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.advertiserId.isSome():
+    result["advertiser_id"] = %obj.advertiserId.get()
+  if obj.paymentMethodBrand.isSome():
+    result["payment_method_brand"] = %obj.paymentMethodBrand.get()
+

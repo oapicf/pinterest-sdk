@@ -14,10 +14,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UpdatePartnerResultsResponseArrayItemsInner  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BusinessAccessError exception;
 
   @ApiModelProperty(example = "1234567890123", value = "")
+
   private String memberOrPartnerId;
  /**
    * Get exception

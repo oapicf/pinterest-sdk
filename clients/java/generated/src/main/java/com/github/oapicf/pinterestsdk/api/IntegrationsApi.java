@@ -94,7 +94,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsCommerceDelCall(String externalBusinessId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call integrationsCommerceDelCall(@javax.annotation.Nonnull String externalBusinessId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -140,7 +140,7 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call integrationsCommerceDelValidateBeforeCall(String externalBusinessId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call integrationsCommerceDelValidateBeforeCall(@javax.annotation.Nonnull String externalBusinessId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'externalBusinessId' is set
         if (externalBusinessId == null) {
             throw new ApiException("Missing the required parameter 'externalBusinessId' when calling integrationsCommerceDel(Async)");
@@ -163,7 +163,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public void integrationsCommerceDel(String externalBusinessId) throws ApiException {
+    public void integrationsCommerceDel(@javax.annotation.Nonnull String externalBusinessId) throws ApiException {
         integrationsCommerceDelWithHttpInfo(externalBusinessId);
     }
 
@@ -181,7 +181,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> integrationsCommerceDelWithHttpInfo(String externalBusinessId) throws ApiException {
+    public ApiResponse<Void> integrationsCommerceDelWithHttpInfo(@javax.annotation.Nonnull String externalBusinessId) throws ApiException {
         okhttp3.Call localVarCall = integrationsCommerceDelValidateBeforeCall(externalBusinessId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -201,7 +201,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsCommerceDelAsync(String externalBusinessId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call integrationsCommerceDelAsync(@javax.annotation.Nonnull String externalBusinessId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = integrationsCommerceDelValidateBeforeCall(externalBusinessId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -223,7 +223,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsCommerceGetCall(String externalBusinessId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call integrationsCommerceGetCall(@javax.annotation.Nonnull String externalBusinessId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -269,7 +269,7 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call integrationsCommerceGetValidateBeforeCall(String externalBusinessId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call integrationsCommerceGetValidateBeforeCall(@javax.annotation.Nonnull String externalBusinessId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'externalBusinessId' is set
         if (externalBusinessId == null) {
             throw new ApiException("Missing the required parameter 'externalBusinessId' when calling integrationsCommerceGet(Async)");
@@ -295,7 +295,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public IntegrationMetadata integrationsCommerceGet(String externalBusinessId) throws ApiException {
+    public IntegrationMetadata integrationsCommerceGet(@javax.annotation.Nonnull String externalBusinessId) throws ApiException {
         ApiResponse<IntegrationMetadata> localVarResp = integrationsCommerceGetWithHttpInfo(externalBusinessId);
         return localVarResp.getData();
     }
@@ -316,7 +316,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IntegrationMetadata> integrationsCommerceGetWithHttpInfo(String externalBusinessId) throws ApiException {
+    public ApiResponse<IntegrationMetadata> integrationsCommerceGetWithHttpInfo(@javax.annotation.Nonnull String externalBusinessId) throws ApiException {
         okhttp3.Call localVarCall = integrationsCommerceGetValidateBeforeCall(externalBusinessId, null);
         Type localVarReturnType = new TypeToken<IntegrationMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -339,7 +339,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsCommerceGetAsync(String externalBusinessId, final ApiCallback<IntegrationMetadata> _callback) throws ApiException {
+    public okhttp3.Call integrationsCommerceGetAsync(@javax.annotation.Nonnull String externalBusinessId, final ApiCallback<IntegrationMetadata> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = integrationsCommerceGetValidateBeforeCall(externalBusinessId, _callback);
         Type localVarReturnType = new TypeToken<IntegrationMetadata>(){}.getType();
@@ -363,7 +363,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsCommercePatchCall(String externalBusinessId, IntegrationRequestPatch integrationRequestPatch, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call integrationsCommercePatchCall(@javax.annotation.Nonnull String externalBusinessId, @javax.annotation.Nullable IntegrationRequestPatch integrationRequestPatch, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -410,7 +410,7 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call integrationsCommercePatchValidateBeforeCall(String externalBusinessId, IntegrationRequestPatch integrationRequestPatch, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call integrationsCommercePatchValidateBeforeCall(@javax.annotation.Nonnull String externalBusinessId, @javax.annotation.Nullable IntegrationRequestPatch integrationRequestPatch, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'externalBusinessId' is set
         if (externalBusinessId == null) {
             throw new ApiException("Missing the required parameter 'externalBusinessId' when calling integrationsCommercePatch(Async)");
@@ -437,7 +437,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public IntegrationMetadata integrationsCommercePatch(String externalBusinessId, IntegrationRequestPatch integrationRequestPatch) throws ApiException {
+    public IntegrationMetadata integrationsCommercePatch(@javax.annotation.Nonnull String externalBusinessId, @javax.annotation.Nullable IntegrationRequestPatch integrationRequestPatch) throws ApiException {
         ApiResponse<IntegrationMetadata> localVarResp = integrationsCommercePatchWithHttpInfo(externalBusinessId, integrationRequestPatch);
         return localVarResp.getData();
     }
@@ -459,7 +459,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IntegrationMetadata> integrationsCommercePatchWithHttpInfo(String externalBusinessId, IntegrationRequestPatch integrationRequestPatch) throws ApiException {
+    public ApiResponse<IntegrationMetadata> integrationsCommercePatchWithHttpInfo(@javax.annotation.Nonnull String externalBusinessId, @javax.annotation.Nullable IntegrationRequestPatch integrationRequestPatch) throws ApiException {
         okhttp3.Call localVarCall = integrationsCommercePatchValidateBeforeCall(externalBusinessId, integrationRequestPatch, null);
         Type localVarReturnType = new TypeToken<IntegrationMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -483,7 +483,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsCommercePatchAsync(String externalBusinessId, IntegrationRequestPatch integrationRequestPatch, final ApiCallback<IntegrationMetadata> _callback) throws ApiException {
+    public okhttp3.Call integrationsCommercePatchAsync(@javax.annotation.Nonnull String externalBusinessId, @javax.annotation.Nullable IntegrationRequestPatch integrationRequestPatch, final ApiCallback<IntegrationMetadata> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = integrationsCommercePatchValidateBeforeCall(externalBusinessId, integrationRequestPatch, _callback);
         Type localVarReturnType = new TypeToken<IntegrationMetadata>(){}.getType();
@@ -506,7 +506,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsCommercePostCall(IntegrationRequest integrationRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call integrationsCommercePostCall(@javax.annotation.Nullable IntegrationRequest integrationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -552,7 +552,7 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call integrationsCommercePostValidateBeforeCall(IntegrationRequest integrationRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call integrationsCommercePostValidateBeforeCall(@javax.annotation.Nullable IntegrationRequest integrationRequest, final ApiCallback _callback) throws ApiException {
         return integrationsCommercePostCall(integrationRequest, _callback);
 
     }
@@ -573,7 +573,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public IntegrationMetadata integrationsCommercePost(IntegrationRequest integrationRequest) throws ApiException {
+    public IntegrationMetadata integrationsCommercePost(@javax.annotation.Nullable IntegrationRequest integrationRequest) throws ApiException {
         ApiResponse<IntegrationMetadata> localVarResp = integrationsCommercePostWithHttpInfo(integrationRequest);
         return localVarResp.getData();
     }
@@ -594,7 +594,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IntegrationMetadata> integrationsCommercePostWithHttpInfo(IntegrationRequest integrationRequest) throws ApiException {
+    public ApiResponse<IntegrationMetadata> integrationsCommercePostWithHttpInfo(@javax.annotation.Nullable IntegrationRequest integrationRequest) throws ApiException {
         okhttp3.Call localVarCall = integrationsCommercePostValidateBeforeCall(integrationRequest, null);
         Type localVarReturnType = new TypeToken<IntegrationMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -617,7 +617,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsCommercePostAsync(IntegrationRequest integrationRequest, final ApiCallback<IntegrationMetadata> _callback) throws ApiException {
+    public okhttp3.Call integrationsCommercePostAsync(@javax.annotation.Nullable IntegrationRequest integrationRequest, final ApiCallback<IntegrationMetadata> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = integrationsCommercePostValidateBeforeCall(integrationRequest, _callback);
         Type localVarReturnType = new TypeToken<IntegrationMetadata>(){}.getType();
@@ -639,7 +639,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsGetByIdCall(String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call integrationsGetByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -685,7 +685,7 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call integrationsGetByIdValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call integrationsGetByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling integrationsGetById(Async)");
@@ -710,7 +710,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public IntegrationRecord integrationsGetById(String id) throws ApiException {
+    public IntegrationRecord integrationsGetById(@javax.annotation.Nonnull String id) throws ApiException {
         ApiResponse<IntegrationRecord> localVarResp = integrationsGetByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
@@ -730,7 +730,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IntegrationRecord> integrationsGetByIdWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<IntegrationRecord> integrationsGetByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = integrationsGetByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<IntegrationRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -752,7 +752,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsGetByIdAsync(String id, final ApiCallback<IntegrationRecord> _callback) throws ApiException {
+    public okhttp3.Call integrationsGetByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<IntegrationRecord> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = integrationsGetByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<IntegrationRecord>(){}.getType();
@@ -774,7 +774,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsGetListCall(String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call integrationsGetListCall(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -827,7 +827,7 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call integrationsGetListValidateBeforeCall(String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call integrationsGetListValidateBeforeCall(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         return integrationsGetListCall(bookmark, pageSize, _callback);
 
     }
@@ -847,7 +847,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public IntegrationsGetList200Response integrationsGetList(String bookmark, Integer pageSize) throws ApiException {
+    public IntegrationsGetList200Response integrationsGetList(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<IntegrationsGetList200Response> localVarResp = integrationsGetListWithHttpInfo(bookmark, pageSize);
         return localVarResp.getData();
     }
@@ -867,7 +867,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IntegrationsGetList200Response> integrationsGetListWithHttpInfo(String bookmark, Integer pageSize) throws ApiException {
+    public ApiResponse<IntegrationsGetList200Response> integrationsGetListWithHttpInfo(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = integrationsGetListValidateBeforeCall(bookmark, pageSize, null);
         Type localVarReturnType = new TypeToken<IntegrationsGetList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -889,7 +889,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsGetListAsync(String bookmark, Integer pageSize, final ApiCallback<IntegrationsGetList200Response> _callback) throws ApiException {
+    public okhttp3.Call integrationsGetListAsync(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback<IntegrationsGetList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = integrationsGetListValidateBeforeCall(bookmark, pageSize, _callback);
         Type localVarReturnType = new TypeToken<IntegrationsGetList200Response>(){}.getType();
@@ -911,7 +911,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsLogsPostCall(IntegrationLogsRequest integrationLogsRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call integrationsLogsPostCall(@javax.annotation.Nonnull IntegrationLogsRequest integrationLogsRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -957,7 +957,7 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call integrationsLogsPostValidateBeforeCall(IntegrationLogsRequest integrationLogsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call integrationsLogsPostValidateBeforeCall(@javax.annotation.Nonnull IntegrationLogsRequest integrationLogsRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'integrationLogsRequest' is set
         if (integrationLogsRequest == null) {
             throw new ApiException("Missing the required parameter 'integrationLogsRequest' when calling integrationsLogsPost(Async)");
@@ -982,7 +982,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public IntegrationLogsSuccessResponse integrationsLogsPost(IntegrationLogsRequest integrationLogsRequest) throws ApiException {
+    public IntegrationLogsSuccessResponse integrationsLogsPost(@javax.annotation.Nonnull IntegrationLogsRequest integrationLogsRequest) throws ApiException {
         ApiResponse<IntegrationLogsSuccessResponse> localVarResp = integrationsLogsPostWithHttpInfo(integrationLogsRequest);
         return localVarResp.getData();
     }
@@ -1002,7 +1002,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IntegrationLogsSuccessResponse> integrationsLogsPostWithHttpInfo(IntegrationLogsRequest integrationLogsRequest) throws ApiException {
+    public ApiResponse<IntegrationLogsSuccessResponse> integrationsLogsPostWithHttpInfo(@javax.annotation.Nonnull IntegrationLogsRequest integrationLogsRequest) throws ApiException {
         okhttp3.Call localVarCall = integrationsLogsPostValidateBeforeCall(integrationLogsRequest, null);
         Type localVarReturnType = new TypeToken<IntegrationLogsSuccessResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1024,7 +1024,7 @@ public class IntegrationsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call integrationsLogsPostAsync(IntegrationLogsRequest integrationLogsRequest, final ApiCallback<IntegrationLogsSuccessResponse> _callback) throws ApiException {
+    public okhttp3.Call integrationsLogsPostAsync(@javax.annotation.Nonnull IntegrationLogsRequest integrationLogsRequest, final ApiCallback<IntegrationLogsSuccessResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = integrationsLogsPostValidateBeforeCall(integrationLogsRequest, _callback);
         Type localVarReturnType = new TypeToken<IntegrationLogsSuccessResponse>(){}.getType();

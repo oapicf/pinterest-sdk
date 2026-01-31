@@ -16,7 +16,6 @@
 typedef struct catalogs_items_delete_batch_request_t catalogs_items_delete_batch_request_t;
 
 #include "batch_operation.h"
-#include "catalogs_items_request_language.h"
 #include "country.h"
 #include "item_delete_batch_record.h"
 
@@ -24,7 +23,7 @@ typedef struct catalogs_items_delete_batch_request_t catalogs_items_delete_batch
 
 typedef struct catalogs_items_delete_batch_request_t {
     pinterest_rest_api_country__e country; //referenced enum
-    struct catalogs_items_request_language_t *language; //model
+    pinterest_rest_api_catalogs_items_delete_batch_request_LANGUAGE_e language; //enum
     pinterest_rest_api_batch_operation__e operation; //referenced enum
     list_t *items; //nonprimitive container
 
@@ -33,7 +32,7 @@ typedef struct catalogs_items_delete_batch_request_t {
 
 __attribute__((deprecated)) catalogs_items_delete_batch_request_t *catalogs_items_delete_batch_request_create(
     pinterest_rest_api_country__e country,
-    catalogs_items_request_language_t *language,
+    pinterest_rest_api_catalogs_items_delete_batch_request_LANGUAGE_e language,
     pinterest_rest_api_batch_operation__e operation,
     list_t *items
 );

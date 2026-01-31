@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -53,6 +52,42 @@ namespace Org.OpenAPITools.Test.Model
         {
             // TODO uncomment below to test "IsType" InviteResponse
             //Assert.IsType<InviteResponse>(instance);
+        }
+
+        /// <summary>
+        /// Test the property 'Id'
+        /// </summary>
+        [Fact]
+        public void IdTest()
+        {
+            // TODO unit test for the property 'Id'
+        }
+
+        /// <summary>
+        /// Test the property 'InviteData'
+        /// </summary>
+        [Fact]
+        public void InviteDataTest()
+        {
+            // TODO unit test for the property 'InviteData'
+        }
+
+        /// <summary>
+        /// Test the property 'IsReceivedInvite'
+        /// </summary>
+        [Fact]
+        public void IsReceivedInviteTest()
+        {
+            // TODO unit test for the property 'IsReceivedInvite'
+        }
+
+        /// <summary>
+        /// Test the property 'User'
+        /// </summary>
+        [Fact]
+        public void UserTest()
+        {
+            // TODO unit test for the property 'User'
         }
 
         /// <summary>
@@ -98,42 +133,6 @@ namespace Org.OpenAPITools.Test.Model
         public void CreatedTimeTest()
         {
             // TODO unit test for the property 'CreatedTime'
-        }
-
-        /// <summary>
-        /// Test the property 'Id'
-        /// </summary>
-        [Fact]
-        public void IdTest()
-        {
-            // TODO unit test for the property 'Id'
-        }
-
-        /// <summary>
-        /// Test the property 'InviteData'
-        /// </summary>
-        [Fact]
-        public void InviteDataTest()
-        {
-            // TODO unit test for the property 'InviteData'
-        }
-
-        /// <summary>
-        /// Test the property 'IsReceivedInvite'
-        /// </summary>
-        [Fact]
-        public void IsReceivedInviteTest()
-        {
-            // TODO unit test for the property 'IsReceivedInvite'
-        }
-
-        /// <summary>
-        /// Test the property 'User'
-        /// </summary>
-        [Fact]
-        public void UserTest()
-        {
-            // TODO unit test for the property 'User'
         }
     }
 }

@@ -14,47 +14,56 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Keyword  {
   
-  @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
  /**
-   * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-  **/
+  * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+  */
+  @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+
   private Integer bid;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private MatchTypeResponse matchType;
 
-  @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
  /**
-   * Keyword value (120 chars max).
-  **/
+  * Keyword value (120 chars max).
+  */
+  @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
+
   private String value;
 
   @ApiModelProperty(example = "false", value = "")
+
   private Boolean archived;
 
-  @ApiModelProperty(example = "383791336903426391", value = "Keyword ID .")
  /**
-   * Keyword ID .
-  **/
+  * Keyword ID .
+  */
+  @ApiModelProperty(example = "383791336903426391", value = "Keyword ID .")
+
   private String id;
 
-  @ApiModelProperty(example = "383791336903426391", value = "Keyword parent entity ID (advertiser, campaign, ad group).")
  /**
-   * Keyword parent entity ID (advertiser, campaign, ad group).
-  **/
+  * Keyword parent entity ID (advertiser, campaign, ad group).
+  */
+  @ApiModelProperty(example = "383791336903426391", value = "Keyword parent entity ID (advertiser, campaign, ad group).")
+
   private String parentId;
 
-  @ApiModelProperty(example = "campaign", value = "Parent entity type")
  /**
-   * Parent entity type
-  **/
+  * Parent entity type
+  */
+  @ApiModelProperty(example = "campaign", value = "Parent entity type")
+
   private String parentType;
 
-  @ApiModelProperty(example = "keyword", value = "Always keyword")
  /**
-   * Always keyword
-  **/
+  * Always keyword
+  */
+  @ApiModelProperty(example = "keyword", value = "Always keyword")
+
   private String type;
  /**
    * &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.

@@ -16,7 +16,8 @@
 #include "../model/catalogs_hotel_batch_request.h"
 catalogs_hotel_batch_request_t* instantiate_catalogs_hotel_batch_request(int include_optional);
 
-#include "test_catalogs_items_request_language.c"
+
+// it is enum. Work in Progress
 
 
 catalogs_hotel_batch_request_t* instantiate_catalogs_hotel_batch_request(int include_optional) {
@@ -25,7 +26,7 @@ catalogs_hotel_batch_request_t* instantiate_catalogs_hotel_batch_request(int inc
     catalogs_hotel_batch_request = catalogs_hotel_batch_request_create(
       pinterest_rest_api_catalogs_hotel_batch_request_CATALOGTYPE_HOTEL,
       pinterest_rest_api_catalogs_hotel_batch_request__"US",
-      null,
+      pinterest_rest_api_catalogs_hotel_batch_request_LANGUAGE_af-ZA,
       list_createList(),
       "2680059592705"
     );
@@ -33,7 +34,7 @@ catalogs_hotel_batch_request_t* instantiate_catalogs_hotel_batch_request(int inc
     catalogs_hotel_batch_request = catalogs_hotel_batch_request_create(
       pinterest_rest_api_catalogs_hotel_batch_request_CATALOGTYPE_HOTEL,
       pinterest_rest_api_catalogs_hotel_batch_request__"US",
-      null,
+      pinterest_rest_api_catalogs_hotel_batch_request_LANGUAGE_af-ZA,
       list_createList(),
       "2680059592705"
     );

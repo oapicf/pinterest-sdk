@@ -317,15 +317,13 @@ namespace Org.OpenAPITools.Model
                             leadType = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "line_items":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lineItems = new Option<LineItem?>(JsonSerializer.Deserialize<LineItem>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            lineItems = new Option<LineItem?>(JsonSerializer.Deserialize<LineItem>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "order_id":
                             orderId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "order_quantity":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                orderQuantity = new Option<int?>(utf8JsonReader.GetInt32());
+                            orderQuantity = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "page_name":
                             pageName = new Option<string?>(utf8JsonReader.GetString()!);

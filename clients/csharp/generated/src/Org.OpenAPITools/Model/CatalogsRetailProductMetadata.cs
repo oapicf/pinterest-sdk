@@ -180,8 +180,7 @@ namespace Org.OpenAPITools.Model
                                 availability = new Option<NonNullableProductAvailabilityType?>(NonNullableProductAvailabilityTypeValueConverter.FromStringOrDefault(availabilityRawValue));
                             break;
                         case "price":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                price = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            price = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "currency":
                             string? currencyRawValue = utf8JsonReader.GetString();
@@ -192,8 +191,7 @@ namespace Org.OpenAPITools.Model
                             itemGroupId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "sale_price":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                salePrice = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            salePrice = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         default:
                             break;

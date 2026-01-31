@@ -116,8 +116,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "asset_groups_to_delete":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetGroupsToDelete = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            assetGroupsToDelete = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -17,9 +17,9 @@
     },
     {
       "name": "is_featured",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "boolean indicator of whether the product group is being featured or not",
-      "default": null
+      "default": false
     },
     {
       "name": "filters",

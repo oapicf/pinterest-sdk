@@ -45,7 +45,7 @@ public:
     explicit ConversionEventsApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~ConversionEventsApiImpl() override = default;
 
-    void events_create(const std::string &adAccountId, const ConversionEvents &conversionEvents, const std::optional<bool> &test, Pistache::Http::ResponseWriter &response);
+    void events_create(const HttpBearerToken &bearerToken, const std::string &adAccountId, const ConversionEvents &conversionEvents, const std::optional<bool> &test, Pistache::Http::ResponseWriter &response);
 
 };
 

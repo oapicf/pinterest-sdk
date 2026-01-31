@@ -12,7 +12,7 @@
 
 import { RequestFile } from './models';
 
-export class ProductGroupAnalyticsResponseInner extends any {
+export class ProductGroupAnalyticsResponseInner {
     /**
     * The ID of the product group that this metrics belongs to.
     */
@@ -37,7 +37,7 @@ export class ProductGroupAnalyticsResponseInner extends any {
         }    ];
 
     static getAttributeTypeMap() {
-        return super.getAttributeTypeMap().concat(ProductGroupAnalyticsResponseInner.attributeTypeMap);
+        return ProductGroupAnalyticsResponseInner.attributeTypeMap;
     }
 }
 

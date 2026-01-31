@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("OptimizationGoalMetadata_conversion_tag_v3_goal_metadata")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
 
   private OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows;
@@ -54,7 +54,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     
     APP_INSTALL("APP_INSTALL");
 
-    private String value;
+    private final String value;
 
     ConversionEventEnum(String value) {
       this.value = value;
@@ -97,7 +97,7 @@ public class OptimizationGoalMetadataConversionTagV3GoalMetadata {
     
     ACTIVE("ACTIVE");
 
-    private String value;
+    private final String value;
 
     LearningModeTypeEnum(String value) {
       this.value = value;

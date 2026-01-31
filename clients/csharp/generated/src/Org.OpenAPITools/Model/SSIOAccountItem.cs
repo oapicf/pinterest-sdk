@@ -299,8 +299,7 @@ https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement</e
                             ioType = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "addresses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                addresses = new Option<List<SSIOAccountAddress>?>(JsonSerializer.Deserialize<List<SSIOAccountAddress>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            addresses = new Option<List<SSIOAccountAddress>?>(JsonSerializer.Deserialize<List<SSIOAccountAddress>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

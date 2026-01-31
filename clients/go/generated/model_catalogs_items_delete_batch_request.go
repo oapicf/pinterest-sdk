@@ -23,7 +23,8 @@ var _ MappedNullable = &CatalogsItemsDeleteBatchRequest{}
 // CatalogsItemsDeleteBatchRequest Request object to delete catalogs items
 type CatalogsItemsDeleteBatchRequest struct {
 	Country Country `json:"country"`
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 	Operation BatchOperation `json:"operation"`
 	// Array with catalogs items
 	Items []ItemDeleteBatchRecord `json:"items"`
@@ -35,7 +36,7 @@ type _CatalogsItemsDeleteBatchRequest CatalogsItemsDeleteBatchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsItemsDeleteBatchRequest(country Country, language CatalogsItemsRequestLanguage, operation BatchOperation, items []ItemDeleteBatchRecord) *CatalogsItemsDeleteBatchRequest {
+func NewCatalogsItemsDeleteBatchRequest(country Country, language string, operation BatchOperation, items []ItemDeleteBatchRecord) *CatalogsItemsDeleteBatchRequest {
 	this := CatalogsItemsDeleteBatchRequest{}
 	this.Country = country
 	this.Language = language
@@ -77,9 +78,9 @@ func (o *CatalogsItemsDeleteBatchRequest) SetCountry(v Country) {
 }
 
 // GetLanguage returns the Language field value
-func (o *CatalogsItemsDeleteBatchRequest) GetLanguage() CatalogsItemsRequestLanguage {
+func (o *CatalogsItemsDeleteBatchRequest) GetLanguage() string {
 	if o == nil {
-		var ret CatalogsItemsRequestLanguage
+		var ret string
 		return ret
 	}
 
@@ -88,7 +89,7 @@ func (o *CatalogsItemsDeleteBatchRequest) GetLanguage() CatalogsItemsRequestLang
 
 // GetLanguageOk returns a tuple with the Language field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsItemsDeleteBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool) {
+func (o *CatalogsItemsDeleteBatchRequest) GetLanguageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -96,7 +97,7 @@ func (o *CatalogsItemsDeleteBatchRequest) GetLanguageOk() (*CatalogsItemsRequest
 }
 
 // SetLanguage sets field value
-func (o *CatalogsItemsDeleteBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage) {
+func (o *CatalogsItemsDeleteBatchRequest) SetLanguage(v string) {
 	o.Language = v
 }
 

@@ -17,7 +17,6 @@ import com.github.oapicf.pinterestsdk.model.BatchOperation;
 import com.github.oapicf.pinterestsdk.model.CatalogsItemsCreateBatchRequest;
 import com.github.oapicf.pinterestsdk.model.CatalogsItemsDeleteBatchRequest;
 import com.github.oapicf.pinterestsdk.model.CatalogsItemsDeleteDiscontinuedBatchRequest;
-import com.github.oapicf.pinterestsdk.model.CatalogsItemsRequestLanguage;
 import com.github.oapicf.pinterestsdk.model.CatalogsItemsUpdateBatchRequest;
 import com.github.oapicf.pinterestsdk.model.CatalogsItemsUpsertBatchRequest;
 import com.github.oapicf.pinterestsdk.model.Country;

@@ -59,11 +59,6 @@ public:
     /// ConversionTagCreate members
 
     /// <summary>
-    /// Conversion tag name.
-    /// </summary>
-    std::string getName() const;
-    void setName(std::string const& value);
-    /// <summary>
     /// Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.
     /// </summary>
     bool isAemEnabled() const;
@@ -112,12 +107,15 @@ public:
     void setAemLocEnabled(bool const value);
     bool aemLocEnabledIsSet() const;
     void unsetAem_loc_enabled();
+    /// <summary>
+    /// Conversion tag name.
+    /// </summary>
+    std::string getName() const;
+    void setName(std::string const& value);
 
     friend  void to_json(nlohmann::json& j, const ConversionTagCreate& o);
     friend  void from_json(const nlohmann::json& j, ConversionTagCreate& o);
 protected:
-    std::string m_Name;
-
     bool m_Aem_enabled;
     bool m_Aem_enabledIsSet;
     double m_Md_frequency;
@@ -132,6 +130,8 @@ protected:
     bool m_Aem_db_enabledIsSet;
     bool m_Aem_loc_enabled;
     bool m_Aem_loc_enabledIsSet;
+    std::string m_Name;
+
     
 };
 

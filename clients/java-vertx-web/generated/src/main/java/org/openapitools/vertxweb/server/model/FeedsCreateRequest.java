@@ -29,7 +29,7 @@ public class FeedsCreateRequest   {
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
   private Country defaultCountry;
   private ProductAvailabilityType defaultAvailability;
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   public FeedsCreateRequest () {
 

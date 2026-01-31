@@ -13,28 +13,6 @@
 import * as models from './models';
 
 export interface InviteResponse {
-    assets_summary?: models.InviteAssetsSummary;
-
-    /**
-     * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-     */
-    business_roles?: Array<string>;
-
-    /**
-     * Metadata for the business that created the invite/request.
-     */
-    created_by_business?: models.BusinessAccessUserSummary;
-
-    /**
-     * Metadata for the user that created the invite/request.
-     */
-    created_by_user?: models.BusinessAccessUserSummary;
-
-    /**
-     * The time the invite/request was created. Returned in milliseconds.
-     */
-    created_time?: number;
-
     /**
      * Unique identifier of the invite/request.
      */
@@ -51,5 +29,27 @@ export interface InviteResponse {
      * Metadata for the member/partner that was sent the invite/request.
      */
     user?: models.BusinessAccessUserSummary;
+
+    assets_summary?: models.InviteAssetsSummary;
+
+    /**
+     * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+     */
+    business_roles?: Array<string>;
+
+    /**
+     * Metadata for the business that created the invite/request.
+     */
+    created_by_business?: object;
+
+    /**
+     * Metadata for the user that created the invite/request.
+     */
+    created_by_user?: object;
+
+    /**
+     * The time the invite/request was created. Returned in milliseconds.
+     */
+    created_time?: number;
 
 }

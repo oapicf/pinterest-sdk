@@ -49,9 +49,9 @@ CatalogsRetailFeedsCreateRequest <- R6::R6Class(
     #' @param credentials credentials
     #' @param preferred_processing_schedule preferred_processing_schedule
     #' @param default_availability default_availability
-    #' @param status status
+    #' @param status status. Default to "ACTIVE".
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `format`, `default_locale`, `location`, `catalog_type`, `default_country`, `default_currency` = NULL, `credentials` = NULL, `preferred_processing_schedule` = NULL, `default_availability` = NULL, `status` = NULL, ...) {
+    initialize = function(`name`, `format`, `default_locale`, `location`, `catalog_type`, `default_country`, `default_currency` = NULL, `credentials` = NULL, `preferred_processing_schedule` = NULL, `default_availability` = NULL, `status` = "ACTIVE", ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -112,8 +112,8 @@ CatalogsRetailFeedsCreateRequest <- R6::R6Class(
         self$`default_availability` <- `default_availability`
       }
       if (!is.null(`status`)) {
-        if (!(is.character(`status`) && length(`status`) == 1)) {
-          stop(paste("Error! Invalid data for `status`. Must be a string:", `status`))
+        if (!(`status` %in% c())) {
+          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`

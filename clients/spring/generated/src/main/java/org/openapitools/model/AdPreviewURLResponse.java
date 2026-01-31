@@ -19,12 +19,12 @@ import javax.annotation.Generated;
  * AdPreviewURLResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdPreviewURLResponse {
 
   private @Nullable String url;
 
-  public AdPreviewURLResponse url(String url) {
+  public AdPreviewURLResponse url(@Nullable String url) {
     this.url = url;
     return this;
   }
@@ -36,11 +36,11 @@ public class AdPreviewURLResponse {
   
   @Schema(name = "url", example = "https://ads.pinterest.com/ad-preview/58f1a0e9ab0bd0f99462a0e4c5dd7e8297888c8a36331e88f757abe8f0295d31/", description = "'Preview URL, expires in 7 days. Can be used in an iframe. For example: https://ads.pinterest.com/ad-preview/74667c814dd2b19/ The preview object ID/key is the last param - 74667c814dd2b19'", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("url")
-  public String getUrl() {
+  public @Nullable String getUrl() {
     return url;
   }
 
-  public void setUrl(String url) {
+  public void setUrl(@Nullable String url) {
     this.url = url;
   }
 

@@ -53,27 +53,63 @@ func NewCustomerListsAPIController(s CustomerListsAPIServicer, opts ...CustomerL
 func (c *CustomerListsAPIController) Routes() Routes {
 	return Routes{
 		"CustomerListsList": Route{
+			"CustomerListsList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/customer_lists",
 			c.CustomerListsList,
 		},
 		"CustomerListsCreate": Route{
+			"CustomerListsCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/customer_lists",
 			c.CustomerListsCreate,
 		},
 		"CustomerListsGet": Route{
+			"CustomerListsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}",
 			c.CustomerListsGet,
 		},
 		"CustomerListsUpdate": Route{
+			"CustomerListsUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}",
 			c.CustomerListsUpdate,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the CustomerListsAPIController
+func (c *CustomerListsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"CustomerListsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/customer_lists",
+			c.CustomerListsList,
+		},
+		Route{
+			"CustomerListsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/customer_lists",
+			c.CustomerListsCreate,
+		},
+		Route{
+			"CustomerListsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}",
+			c.CustomerListsGet,
+		},
+		Route{
+			"CustomerListsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}",
+			c.CustomerListsUpdate,
+		},
+	}
+}
+
+
 
 // CustomerListsList - Get customer lists
 func (c *CustomerListsAPIController) CustomerListsList(w http.ResponseWriter, r *http.Request) {

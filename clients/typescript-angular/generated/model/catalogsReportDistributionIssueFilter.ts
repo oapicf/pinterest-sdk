@@ -17,10 +17,10 @@ export interface CatalogsReportDistributionIssueFilter {
     catalog_id?: string;
 }
 export namespace CatalogsReportDistributionIssueFilter {
-    export type ReportTypeEnum = 'DISTRIBUTION_ISSUES';
     export const ReportTypeEnum = {
-        DistributionIssues: 'DISTRIBUTION_ISSUES' as ReportTypeEnum
-    };
+        DistributionIssues: 'DISTRIBUTION_ISSUES'
+    } as const;
+    export type ReportTypeEnum = typeof ReportTypeEnum[keyof typeof ReportTypeEnum];
 }
 
 

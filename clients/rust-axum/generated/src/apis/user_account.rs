@@ -245,6 +245,8 @@ pub enum WebsiteVerificationSlashGetResponse {
 }
 
 
+
+
 /// UserAccount
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -254,6 +256,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// BoardsUserFollowsSlashList - GET /v5/user_account/following/boards
     async fn boards_user_follows_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -265,6 +268,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// FollowUserSlashUpdate - POST /v5/user_account/following/{username}
     async fn follow_user_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -277,6 +281,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// FollowersSlashList - GET /v5/user_account/followers
     async fn followers_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -288,6 +293,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// LinkedBusinessAccountsSlashGet - GET /v5/user_account/businesses
     async fn linked_business_accounts_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -298,6 +304,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// UnverifyWebsiteSlashDelete - DELETE /v5/user_account/websites
     async fn unverify_website_slash_delete(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -309,6 +316,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// UserAccountSlashAnalytics - GET /v5/user_account/analytics
     async fn user_account_slash_analytics(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -320,6 +328,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// UserAccountSlashAnalyticsSlashTopPins - GET /v5/user_account/analytics/top_pins
     async fn user_account_slash_analytics_slash_top_pins(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -331,6 +340,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// UserAccountSlashAnalyticsSlashTopVideoPins - GET /v5/user_account/analytics/top_video_pins
     async fn user_account_slash_analytics_slash_top_video_pins(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -342,6 +352,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// UserAccountSlashFollowedInterests - GET /v5/users/{username}/interests/follow
     async fn user_account_slash_followed_interests(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -354,6 +365,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// UserAccountSlashGet - GET /v5/user_account
     async fn user_account_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -365,6 +377,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// UserFollowingSlashGet - GET /v5/user_account/following
     async fn user_following_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -376,6 +389,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// UserWebsitesSlashGet - GET /v5/user_account/websites
     async fn user_websites_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -387,6 +401,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// VerifyWebsiteSlashUpdate - POST /v5/user_account/websites
     async fn verify_website_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -399,6 +414,7 @@ pub trait UserAccount<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::E
     /// WebsiteVerificationSlashGet - GET /v5/user_account/websites/verification
     async fn website_verification_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

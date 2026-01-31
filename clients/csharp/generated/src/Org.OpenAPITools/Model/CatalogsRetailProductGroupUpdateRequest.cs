@@ -271,8 +271,7 @@ namespace Org.OpenAPITools.Model
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "filters":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                filters = new Option<CatalogsProductGroupFiltersRequest?>(JsonSerializer.Deserialize<CatalogsProductGroupFiltersRequest>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            filters = new Option<CatalogsProductGroupFiltersRequest?>(JsonSerializer.Deserialize<CatalogsProductGroupFiltersRequest>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "country":
                             string? countryRawValue = utf8JsonReader.GetString();

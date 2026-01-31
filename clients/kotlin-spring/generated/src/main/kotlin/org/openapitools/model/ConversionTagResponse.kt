@@ -61,7 +61,7 @@ data class ConversionTagResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("configs") val configs: ConversionTagConfigs? = null
-    ) {
+) {
 
 }
 

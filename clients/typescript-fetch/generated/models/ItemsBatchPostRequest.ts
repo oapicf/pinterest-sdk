@@ -42,13 +42,15 @@ export function ItemsBatchPostRequestFromJSONTyped(json: any, ignoreDiscriminato
     if (json == null) {
         return json;
     }
+    if (typeof json !== 'object') {
+        return json;
+    }
     if (instanceOfCatalogsItemsBatchRequest(json)) {
         return CatalogsItemsBatchRequestFromJSONTyped(json, true);
     }
     if (instanceOfCatalogsVerticalBatchRequest(json)) {
         return CatalogsVerticalBatchRequestFromJSONTyped(json, true);
     }
-
     return {} as any;
 }
 
@@ -60,14 +62,15 @@ export function ItemsBatchPostRequestToJSONTyped(value?: ItemsBatchPostRequest |
     if (value == null) {
         return value;
     }
-
+    if (typeof value !== 'object') {
+        return value;
+    }
     if (instanceOfCatalogsItemsBatchRequest(value)) {
         return CatalogsItemsBatchRequestToJSON(value as CatalogsItemsBatchRequest);
     }
     if (instanceOfCatalogsVerticalBatchRequest(value)) {
         return CatalogsVerticalBatchRequestToJSON(value as CatalogsVerticalBatchRequest);
     }
-
     return {};
 }
 

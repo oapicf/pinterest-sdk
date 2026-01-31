@@ -23,8 +23,8 @@ feature --Access
       
     country: detachable COUNTRY
       
-    language: detachable CATALOGS_ITEMS_REQUEST_LANGUAGE
-      
+    language: detachable STRING_32
+      -- We recommend using the CatalogsLocale values.
     items: detachable LIST [CATALOGS_CREATIVE_ASSETS_BATCH_ITEM]
       -- Array with creative assets item operations
     catalog_id: detachable STRING_32

@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * GetMMMReportResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class GetMMMReportResponse {
 
   private @Nullable BigDecimal code;
@@ -32,7 +32,7 @@ public class GetMMMReportResponse {
 
   private @Nullable String status;
 
-  public GetMMMReportResponse code(BigDecimal code) {
+  public GetMMMReportResponse code(@Nullable BigDecimal code) {
     this.code = code;
     return this;
   }
@@ -44,15 +44,15 @@ public class GetMMMReportResponse {
   @Valid 
   @Schema(name = "code", example = "0", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public BigDecimal getCode() {
+  public @Nullable BigDecimal getCode() {
     return code;
   }
 
-  public void setCode(BigDecimal code) {
+  public void setCode(@Nullable BigDecimal code) {
     this.code = code;
   }
 
-  public GetMMMReportResponse data(GetMMMReportResponseData data) {
+  public GetMMMReportResponse data(@Nullable GetMMMReportResponseData data) {
     this.data = data;
     return this;
   }
@@ -64,15 +64,15 @@ public class GetMMMReportResponse {
   @Valid 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")
-  public GetMMMReportResponseData getData() {
+  public @Nullable GetMMMReportResponseData getData() {
     return data;
   }
 
-  public void setData(GetMMMReportResponseData data) {
+  public void setData(@Nullable GetMMMReportResponseData data) {
     this.data = data;
   }
 
-  public GetMMMReportResponse message(String message) {
+  public GetMMMReportResponse message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -84,15 +84,15 @@ public class GetMMMReportResponse {
   
   @Schema(name = "message", example = "ok", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
-  public String getMessage() {
+  public @Nullable String getMessage() {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 
-  public GetMMMReportResponse status(String status) {
+  public GetMMMReportResponse status(@Nullable String status) {
     this.status = status;
     return this;
   }
@@ -104,11 +104,11 @@ public class GetMMMReportResponse {
   
   @Schema(name = "status", example = "success", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public String getStatus() {
+  public @Nullable String getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@Nullable String status) {
     this.status = status;
   }
 

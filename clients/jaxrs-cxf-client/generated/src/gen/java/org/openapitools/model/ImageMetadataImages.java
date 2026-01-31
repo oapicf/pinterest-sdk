@@ -10,15 +10,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ImageMetadataImages  {
   
   @ApiModelProperty(value = "")
+
   private ImageDetails _150x150;
 
   @ApiModelProperty(value = "")
+
   private ImageDetails _400x300;
 
   @ApiModelProperty(value = "")
+
   private ImageDetails _600x;
 
   @ApiModelProperty(value = "")
+
   private ImageDetails _1200x;
  /**
    * Get _150x150

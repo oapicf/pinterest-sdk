@@ -25,7 +25,6 @@ namespace OpenAPI\Server\Model;
 
 /**
  * OauthAccessTokenResponseIntegrationRefresh
- * @description A successful OAuth access token response for the refresh token flow, with an added refresh token.
  */
 use Crell\Serde\Renaming\Cases;
 use Crell\Serde\Attributes as Serde;
@@ -36,7 +35,13 @@ class OauthAccessTokenResponseIntegrationRefresh
     /**
     *
     * 
-    * @param string $responseType
+    * @param string $refreshToken
+    *
+    * 
+    * @param int $refreshTokenExpiresIn
+    *
+    * 
+    * @param \OpenAPI\Server\Model\OauthAccessTokenRequestGrantType $responseType
     *
     * 
     * @param string $accessToken
@@ -49,22 +54,16 @@ class OauthAccessTokenResponseIntegrationRefresh
     *
     * 
     * @param string $scope
-    *
-    * 
-    * @param string $refreshToken
-    *
-    * 
-    * @param int $refreshTokenExpiresIn
     */
 
     public function __construct(
-        public string $responseType,
+        public string $refreshToken,
+        public int $refreshTokenExpiresIn,
+        public \OpenAPI\Server\Model\OauthAccessTokenRequestGrantType $responseType,
         public string $accessToken,
         public string $tokenType = 'bearer',
         public int $expiresIn,
         public string $scope,
-        public string $refreshToken,
-        public int $refreshTokenExpiresIn,
     ) {}
 }
 

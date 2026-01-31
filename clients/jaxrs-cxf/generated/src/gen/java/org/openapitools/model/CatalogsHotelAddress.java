@@ -10,34 +10,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsHotelAddress  {
   
-  @ApiModelProperty(value = "Primary street address of hotel.")
  /**
-   * Primary street address of hotel.
-  **/
+  * Primary street address of hotel.
+  */
+  @ApiModelProperty(value = "Primary street address of hotel.")
+
   private String addr1;
 
-  @ApiModelProperty(value = "City where the hotel is located.")
  /**
-   * City where the hotel is located.
-  **/
+  * City where the hotel is located.
+  */
+  @ApiModelProperty(value = "City where the hotel is located.")
+
   private String city;
 
-  @ApiModelProperty(value = "State, county, province, where the hotel is located.")
  /**
-   * State, county, province, where the hotel is located.
-  **/
+  * State, county, province, where the hotel is located.
+  */
+  @ApiModelProperty(value = "State, county, province, where the hotel is located.")
+
   private String region;
 
-  @ApiModelProperty(value = "Country where the hotel is located.")
  /**
-   * Country where the hotel is located.
-  **/
+  * Country where the hotel is located.
+  */
+  @ApiModelProperty(value = "Country where the hotel is located.")
+
   private String country;
 
-  @ApiModelProperty(value = "Required for countries with a postal code system. Postal or zip code of the hotel.")
  /**
-   * Required for countries with a postal code system. Postal or zip code of the hotel.
-  **/
+  * Required for countries with a postal code system. Postal or zip code of the hotel.
+  */
+  @ApiModelProperty(value = "Required for countries with a postal code system. Postal or zip code of the hotel.")
+
   private String postalCode;
  /**
    * Primary street address of hotel.

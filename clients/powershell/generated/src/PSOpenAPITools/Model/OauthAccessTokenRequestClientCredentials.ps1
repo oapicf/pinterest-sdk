@@ -13,11 +13,11 @@ No summary available.
 
 .DESCRIPTION
 
-A request to receive a client token.
-
-.PARAMETER GrantType
 No description available.
+
 .PARAMETER Scope
+No description available.
+.PARAMETER GrantType
 No description available.
 .OUTPUTS
 
@@ -28,30 +28,30 @@ function Initialize-OauthAccessTokenRequestClientCredentials {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Scope},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("authorization_code", "refresh_token", "client_credentials")]
         [String]
-        ${GrantType},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${Scope}
+        ${GrantType}
     )
 
     Process {
         'Creating PSCustomObject: PSOpenAPITools => OauthAccessTokenRequestClientCredentials' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if ($null -eq $GrantType) {
-            throw "invalid value for 'GrantType', 'GrantType' cannot be null."
-        }
-
         if ($null -eq $Scope) {
             throw "invalid value for 'Scope', 'Scope' cannot be null."
         }
 
+        if ($null -eq $GrantType) {
+            throw "invalid value for 'GrantType', 'GrantType' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
-            "grant_type" = ${GrantType}
             "scope" = ${Scope}
+            "grant_type" = ${GrantType}
         }
 
 
@@ -89,7 +89,7 @@ function ConvertFrom-JsonToOauthAccessTokenRequestClientCredentials {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in OauthAccessTokenRequestClientCredentials
-        $AllProperties = ("grant_type", "scope")
+        $AllProperties = ("scope", "grant_type")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -97,13 +97,7 @@ function ConvertFrom-JsonToOauthAccessTokenRequestClientCredentials {
         }
 
         If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property 'grant_type' missing."
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "grant_type"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'grant_type' missing."
-        } else {
-            $GrantType = $JsonParameters.PSobject.Properties["grant_type"].value
+            throw "Error! Empty JSON cannot be serialized due to the required property 'scope' missing."
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "scope"))) {
@@ -112,9 +106,15 @@ function ConvertFrom-JsonToOauthAccessTokenRequestClientCredentials {
             $Scope = $JsonParameters.PSobject.Properties["scope"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "grant_type"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'grant_type' missing."
+        } else {
+            $GrantType = $JsonParameters.PSobject.Properties["grant_type"].value
+        }
+
         $PSO = [PSCustomObject]@{
-            "grant_type" = ${GrantType}
             "scope" = ${Scope}
+            "grant_type" = ${GrantType}
         }
 
         return $PSO

@@ -21,10 +21,10 @@ import {
     CatalogsUpdatableCreativeAssetsAttributesToJSONTyped,
 } from './CatalogsUpdatableCreativeAssetsAttributes';
 
-import { CatalogsCreateCreativeAssetsItem, CatalogsCreateCreativeAssetsItemFromJSONTyped, CatalogsCreateCreativeAssetsItemToJSON, CatalogsCreateCreativeAssetsItemToJSONTyped } from './CatalogsCreateCreativeAssetsItem';
-import { CatalogsDeleteCreativeAssetsItem, CatalogsDeleteCreativeAssetsItemFromJSONTyped, CatalogsDeleteCreativeAssetsItemToJSON, CatalogsDeleteCreativeAssetsItemToJSONTyped } from './CatalogsDeleteCreativeAssetsItem';
-import { CatalogsUpdateCreativeAssetsItem, CatalogsUpdateCreativeAssetsItemFromJSONTyped, CatalogsUpdateCreativeAssetsItemToJSON, CatalogsUpdateCreativeAssetsItemToJSONTyped } from './CatalogsUpdateCreativeAssetsItem';
-import { CatalogsUpsertCreativeAssetsItem, CatalogsUpsertCreativeAssetsItemFromJSONTyped, CatalogsUpsertCreativeAssetsItemToJSON, CatalogsUpsertCreativeAssetsItemToJSONTyped } from './CatalogsUpsertCreativeAssetsItem';
+import { type CatalogsCreateCreativeAssetsItem, CatalogsCreateCreativeAssetsItemFromJSONTyped, CatalogsCreateCreativeAssetsItemToJSON, CatalogsCreateCreativeAssetsItemToJSONTyped } from './CatalogsCreateCreativeAssetsItem';
+import { type CatalogsDeleteCreativeAssetsItem, CatalogsDeleteCreativeAssetsItemFromJSONTyped, CatalogsDeleteCreativeAssetsItemToJSON, CatalogsDeleteCreativeAssetsItemToJSONTyped } from './CatalogsDeleteCreativeAssetsItem';
+import { type CatalogsUpdateCreativeAssetsItem, CatalogsUpdateCreativeAssetsItemFromJSONTyped, CatalogsUpdateCreativeAssetsItemToJSON, CatalogsUpdateCreativeAssetsItemToJSONTyped } from './CatalogsUpdateCreativeAssetsItem';
+import { type CatalogsUpsertCreativeAssetsItem, CatalogsUpsertCreativeAssetsItemFromJSONTyped, CatalogsUpsertCreativeAssetsItemToJSON, CatalogsUpsertCreativeAssetsItemToJSONTyped } from './CatalogsUpsertCreativeAssetsItem';
 /**
  * Creative assets batch item
  * @export
@@ -92,6 +92,7 @@ export function CatalogsCreativeAssetsBatchItemFromJSONTyped(json: any, ignoreDi
         if (json['operation'] === 'UPSERT') {
             return CatalogsUpsertCreativeAssetsItemFromJSONTyped(json, ignoreDiscriminator);
         }
+
     }
     return {
         
@@ -121,7 +122,7 @@ export function CatalogsCreativeAssetsBatchItemToJSONTyped(value?: CatalogsCreat
             case 'UPSERT':
                 return CatalogsUpsertCreativeAssetsItemToJSONTyped(value as CatalogsUpsertCreativeAssetsItem, ignoreDiscriminator);
             default:
-                throw new Error(`No variant of CatalogsCreativeAssetsBatchItem exists with 'operation=${value['operation']}'`);
+                return value;
         }
     }
 

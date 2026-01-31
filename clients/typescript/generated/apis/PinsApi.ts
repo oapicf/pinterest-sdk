@@ -12,7 +12,6 @@ import { Pin } from '../models/Pin';
 import { PinAnalyticsMetricsResponse } from '../models/PinAnalyticsMetricsResponse';
 import { PinCreate } from '../models/PinCreate';
 import { PinUpdate } from '../models/PinUpdate';
-import { PinsAnalyticsMetricTypesParameterInner } from '../models/PinsAnalyticsMetricTypesParameterInner';
 import { PinsList200Response } from '../models/PinsList200Response';
 import { PinsSaveRequest } from '../models/PinsSaveRequest';
 
@@ -31,7 +30,7 @@ export class PinsApiRequestFactory extends BaseAPIRequestFactory {
      * @param appTypes Apps or devices to get data for, default is all.
      * @param adAccountId Unique identifier of an ad account.
      */
-    public async multiPinsAnalytics(pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
+    public async multiPinsAnalytics(pinIds: Array<string>, startDate: string, endDate: string, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'pinIds' is not null or undefined
@@ -92,7 +91,7 @@ export class PinsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (metricTypes !== undefined) {
-            requestContext.setQueryParam("metric_types", ObjectSerializer.serialize(metricTypes, "Array<PinsAnalyticsMetricTypesParameterInner>", ""));
+            requestContext.setQueryParam("metric_types", ObjectSerializer.serialize(metricTypes, "Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>", ""));
         }
 
         // Query Params
@@ -132,7 +131,7 @@ export class PinsApiRequestFactory extends BaseAPIRequestFactory {
      * @param splitField How to split the data into groups. Not including this param means data won\&#39;t be split.
      * @param adAccountId Unique identifier of an ad account.
      */
-    public async pinsAnalytics(pinId: string, startDate: string, endDate: string, metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
+    public async pinsAnalytics(pinId: string, startDate: string, endDate: string, metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>, appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB', splitField?: 'NO_SPLIT' | 'APP_TYPE', adAccountId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'pinId' is not null or undefined
@@ -187,7 +186,7 @@ export class PinsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (metricTypes !== undefined) {
-            requestContext.setQueryParam("metric_types", ObjectSerializer.serialize(metricTypes, "Array<PinsAnalyticsMetricTypesParameterInner>", ""));
+            requestContext.setQueryParam("metric_types", ObjectSerializer.serialize(metricTypes, "Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>", ""));
         }
 
         // Query Params

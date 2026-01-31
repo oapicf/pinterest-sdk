@@ -44,7 +44,7 @@ pub enum MediaSlashListError {
 /// Register your intent to upload media  The response includes all of the information needed to upload the media to Pinterest.  To upload the media, make an HTTP POST request (using <tt>curl</tt>, for example) to <tt>upload_url</tt> using the <tt>Content-Type</tt> header value. Send the media file's contents as the request's <tt>file</tt> parameter and also include all of the parameters from <tt>upload_parameters</tt>.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 pub async fn media_slash_create(configuration: &configuration::Configuration, media_upload_request: models::MediaUploadRequest) -> Result<models::MediaUpload, Error<MediaSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_media_upload_request = media_upload_request;
+    let p_body_media_upload_request = media_upload_request;
 
     let uri_str = format!("{}/media", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -55,7 +55,7 @@ pub async fn media_slash_create(configuration: &configuration::Configuration, me
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_media_upload_request);
+    req_builder = req_builder.json(&p_body_media_upload_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -85,9 +85,9 @@ pub async fn media_slash_create(configuration: &configuration::Configuration, me
 /// Get details for a registered media upload, including its current status.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 pub async fn media_slash_get(configuration: &configuration::Configuration, media_id: &str) -> Result<models::MediaUploadDetails, Error<MediaSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_media_id = media_id;
+    let p_path_media_id = media_id;
 
-    let uri_str = format!("{}/media/{media_id}", configuration.base_path, media_id=crate::apis::urlencode(p_media_id));
+    let uri_str = format!("{}/media/{media_id}", configuration.base_path, media_id=crate::apis::urlencode(p_path_media_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -125,16 +125,16 @@ pub async fn media_slash_get(configuration: &configuration::Configuration, media
 /// List media uploads filtered by given parameters.  <strong><a href='/docs/api-features/creating-boards-and-pins/#creating-video-pins'>Learn more</a></strong> about video Pin creation.
 pub async fn media_slash_list(configuration: &configuration::Configuration, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::MediaList200Response, Error<MediaSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
 
     let uri_str = format!("{}/media", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

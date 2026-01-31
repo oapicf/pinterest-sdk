@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_permissions
 
@@ -17,3 +19,23 @@ type UpdateMemberAssetAccessBodyAccessesInner* = object
   assetId*: string ## Id of the asset to update.
   memberId*: string ## Unique identifier of the member on which to perform the update
   permissions*: seq[Permissions] ## A non-empty array of permissions to assign to the member.
+
+
+# Custom JSON deserialization for UpdateMemberAssetAccessBodyAccessesInner with custom field names
+proc to*(node: JsonNode, T: typedesc[UpdateMemberAssetAccessBodyAccessesInner]): UpdateMemberAssetAccessBodyAccessesInner =
+  result = UpdateMemberAssetAccessBodyAccessesInner()
+  if node.kind == JObject:
+    if node.hasKey("asset_id"):
+      result.assetId = to(node["asset_id"], string)
+    if node.hasKey("member_id"):
+      result.memberId = to(node["member_id"], string)
+    if node.hasKey("permissions"):
+      result.permissions = to(node["permissions"], seq[Permissions])
+
+# Custom JSON serialization for UpdateMemberAssetAccessBodyAccessesInner with custom field names
+proc `%`*(obj: UpdateMemberAssetAccessBodyAccessesInner): JsonNode =
+  result = newJObject()
+  result["asset_id"] = %obj.assetId
+  result["member_id"] = %obj.memberId
+  result["permissions"] = %obj.permissions
+

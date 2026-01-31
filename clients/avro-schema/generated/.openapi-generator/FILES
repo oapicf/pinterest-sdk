@@ -78,7 +78,6 @@ AudienceCategory.avsc
 AudienceCommon.avsc
 AudienceCreateCustomRequest.avsc
 AudienceCreateRequest.avsc
-AudienceCreateRequest1AudienceType.avsc
 AudienceDataParty.avsc
 AudienceDefinition.avsc
 AudienceDefinitionResponse.avsc
@@ -256,7 +255,6 @@ CatalogsItemsDeleteDiscontinuedBatchRequest.avsc
 CatalogsItemsFilters.avsc
 CatalogsItemsPostFilters.avsc
 CatalogsItemsRequest.avsc
-CatalogsItemsRequestLanguage.avsc
 CatalogsItemsUpdateBatchRequest.avsc
 CatalogsItemsUpsertBatchRequest.avsc
 CatalogsList200Response.avsc
@@ -590,7 +588,6 @@ PinMediaWithVideos.avsc
 PinPromotionSummaryStatus.avsc
 PinUpdate.avsc
 PinUpdateCarouselSlotsInner.avsc
-PinsAnalyticsMetricTypesParameterInner.avsc
 PinsList200Response.avsc
 PinsSaveRequest.avsc
 PinterestTagEventData.avsc

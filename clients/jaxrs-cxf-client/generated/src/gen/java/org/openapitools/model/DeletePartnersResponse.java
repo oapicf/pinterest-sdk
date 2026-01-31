@@ -1,25 +1,26 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * An object with a list of partners that were deleted.
- **/
+ * An object with a list of partners that were deleted.
+ */
 @ApiModel(description="An object with a list of partners that were deleted.")
 
 public class DeletePartnersResponse  {
   
-  @ApiModelProperty(example = "[\"809944451643622187\",\"383791336903426391\"]", value = "List of partners whose business partnership have been terminated.")
  /**
-   * List of partners whose business partnership have been terminated.
-  **/
+  * List of partners whose business partnership have been terminated.
+  */
+  @ApiModelProperty(example = "[\"809944451643622187\",\"383791336903426391\"]", value = "List of partners whose business partnership have been terminated.")
+
   private List<String> deletedPartners = new ArrayList<>();
  /**
    * List of partners whose business partnership have been terminated.

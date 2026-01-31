@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsUpdatableCreativeAssetsAttributes
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpdatableCreativeAssetsAttributes {
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -419,22 +419,10 @@ public class CatalogsUpdatableCreativeAssetsAttributes {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("title");
-    openapiFields.add("description");
-    openapiFields.add("link");
-    openapiFields.add("ios_deep_link");
-    openapiFields.add("android_deep_link");
-    openapiFields.add("google_product_category");
-    openapiFields.add("custom_label_0");
-    openapiFields.add("custom_label_1");
-    openapiFields.add("custom_label_2");
-    openapiFields.add("custom_label_3");
-    openapiFields.add("custom_label_4");
-    openapiFields.add("visibility");
+    openapiFields = new HashSet<String>(Arrays.asList("title", "description", "link", "ios_deep_link", "android_deep_link", "google_product_category", "custom_label_0", "custom_label_1", "custom_label_2", "custom_label_3", "custom_label_4", "visibility"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -446,7 +434,7 @@ public class CatalogsUpdatableCreativeAssetsAttributes {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsUpdatableCreativeAssetsAttributes.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsUpdatableCreativeAssetsAttributes is not found in the empty JSON string", CatalogsUpdatableCreativeAssetsAttributes.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsUpdatableCreativeAssetsAttributes is not found in the empty JSON string", CatalogsUpdatableCreativeAssetsAttributes.openapiRequiredFields.toString()));
         }
       }
 
@@ -454,45 +442,45 @@ public class CatalogsUpdatableCreativeAssetsAttributes {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsUpdatableCreativeAssetsAttributes.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsUpdatableCreativeAssetsAttributes` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsUpdatableCreativeAssetsAttributes` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       if ((jsonObj.get("link") != null && !jsonObj.get("link").isJsonNull()) && !jsonObj.get("link").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("link").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("link").toString()));
       }
       if ((jsonObj.get("ios_deep_link") != null && !jsonObj.get("ios_deep_link").isJsonNull()) && !jsonObj.get("ios_deep_link").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ios_deep_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ios_deep_link").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ios_deep_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ios_deep_link").toString()));
       }
       if ((jsonObj.get("android_deep_link") != null && !jsonObj.get("android_deep_link").isJsonNull()) && !jsonObj.get("android_deep_link").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `android_deep_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("android_deep_link").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `android_deep_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("android_deep_link").toString()));
       }
       if ((jsonObj.get("google_product_category") != null && !jsonObj.get("google_product_category").isJsonNull()) && !jsonObj.get("google_product_category").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `google_product_category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("google_product_category").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `google_product_category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("google_product_category").toString()));
       }
       if ((jsonObj.get("custom_label_0") != null && !jsonObj.get("custom_label_0").isJsonNull()) && !jsonObj.get("custom_label_0").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `custom_label_0` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_label_0").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `custom_label_0` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_label_0").toString()));
       }
       if ((jsonObj.get("custom_label_1") != null && !jsonObj.get("custom_label_1").isJsonNull()) && !jsonObj.get("custom_label_1").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `custom_label_1` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_label_1").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `custom_label_1` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_label_1").toString()));
       }
       if ((jsonObj.get("custom_label_2") != null && !jsonObj.get("custom_label_2").isJsonNull()) && !jsonObj.get("custom_label_2").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `custom_label_2` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_label_2").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `custom_label_2` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_label_2").toString()));
       }
       if ((jsonObj.get("custom_label_3") != null && !jsonObj.get("custom_label_3").isJsonNull()) && !jsonObj.get("custom_label_3").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `custom_label_3` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_label_3").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `custom_label_3` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_label_3").toString()));
       }
       if ((jsonObj.get("custom_label_4") != null && !jsonObj.get("custom_label_4").isJsonNull()) && !jsonObj.get("custom_label_4").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `custom_label_4` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_label_4").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `custom_label_4` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_label_4").toString()));
       }
       if ((jsonObj.get("visibility") != null && !jsonObj.get("visibility").isJsonNull()) && !jsonObj.get("visibility").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `visibility` to be a primitive type in the JSON string but got `%s`", jsonObj.get("visibility").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `visibility` to be a primitive type in the JSON string but got `%s`", jsonObj.get("visibility").toString()));
       }
   }
 

@@ -10,22 +10,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserWebsiteSummary  {
   
-  @ApiModelProperty(example = "mysite.test", value = "Website with path or domain only")
  /**
-   * Website with path or domain only
-  **/
+  * Website with path or domain only
+  */
+  @ApiModelProperty(example = "mysite.test", value = "Website with path or domain only")
+
   private String website;
 
-  @ApiModelProperty(example = "success", value = "Status of the verification process")
  /**
-   * Status of the verification process
-  **/
+  * Status of the verification process
+  */
+  @ApiModelProperty(example = "success", value = "Status of the verification process")
+
   private String status;
 
-  @ApiModelProperty(example = "2022-12-14T21:03:01.602000", value = "UTC timestamp when the verification happened - sometimes missing")
  /**
-   * UTC timestamp when the verification happened - sometimes missing
-  **/
+  * UTC timestamp when the verification happened - sometimes missing
+  */
+  @ApiModelProperty(example = "2022-12-14T21:03:01.602000", value = "UTC timestamp when the verification happened - sometimes missing")
+
   private String verifiedAt;
  /**
    * Website with path or domain only

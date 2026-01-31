@@ -14,22 +14,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TargetingSpecSHOPPINGRETARGETING  {
   
-  @ApiModelProperty(example = "30", value = "Number of days ago to start lookback timeframe for dynamic retargeting")
  /**
-   * Number of days ago to start lookback timeframe for dynamic retargeting
-  **/
+  * Number of days ago to start lookback timeframe for dynamic retargeting
+  */
+  @ApiModelProperty(example = "30", value = "Number of days ago to start lookback timeframe for dynamic retargeting")
+
   private Integer lookbackWindow;
 
-  @ApiModelProperty(example = "[0,6]", value = "Event types to target for dynamic retargeting")
  /**
-   * Event types to target for dynamic retargeting
-  **/
+  * Event types to target for dynamic retargeting
+  */
+  @ApiModelProperty(example = "[0,6]", value = "Event types to target for dynamic retargeting")
+
   private List<Integer> tagTypes = new ArrayList<>();
 
-  @ApiModelProperty(example = "14", value = "Number of days ago to stop lookback timeframe for dynamic retargeting")
  /**
-   * Number of days ago to stop lookback timeframe for dynamic retargeting
-  **/
+  * Number of days ago to stop lookback timeframe for dynamic retargeting
+  */
+  @ApiModelProperty(example = "14", value = "Number of days ago to stop lookback timeframe for dynamic retargeting")
+
   private Integer exclusionWindow;
  /**
    * Number of days ago to start lookback timeframe for dynamic retargeting

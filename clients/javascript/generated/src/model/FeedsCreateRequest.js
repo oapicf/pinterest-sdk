@@ -179,8 +179,9 @@ FeedsCreateRequest.prototype['default_availability'] = undefined;
 
 /**
  * @member {module:model/CatalogsStatus} status
+ * @default 'ACTIVE'
  */
-FeedsCreateRequest.prototype['status'] = undefined;
+FeedsCreateRequest.prototype['status'] = 'ACTIVE';
 
 
 FeedsCreateRequest.OneOf = ["CatalogsFeedsCreateRequest", "CatalogsVerticalFeedsCreateRequest"];

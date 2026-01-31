@@ -22,9 +22,6 @@
 
 @interface OAIConversionTagCreate : OAIObject
 
-/* Conversion tag name. 
- */
-@property(nonatomic) NSString* name;
 /* Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. [optional]
  */
 @property(nonatomic) NSNumber* aemEnabled;
@@ -46,5 +43,8 @@
 /* Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. [optional]
  */
 @property(nonatomic) NSNumber* aemLocEnabled;
+/* Conversion tag name. 
+ */
+@property(nonatomic) NSString* name;
 
 @end

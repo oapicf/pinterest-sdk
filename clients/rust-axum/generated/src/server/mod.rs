@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 use axum::{body::Body, extract::*, response::Response, routing::*};
-use axum_extra::extract::{CookieJar, Host};
+use axum_extra::extract::{CookieJar, Host, Query as QueryExtra};
 use bytes::Bytes;
 use http::{header::CONTENT_TYPE, HeaderMap, HeaderName, HeaderValue, Method, StatusCode};
 use tracing::error;
@@ -11,6 +11,9 @@ use crate::{header, types::*};
 
 #[allow(unused_imports)]
 use crate::{apis, models};
+
+#[allow(unused_imports)]
+use crate::{models::check_xss_string, models::check_xss_vec_string, models::check_xss_map_string, models::check_xss_map_nested, models::check_xss_map};
 
 
 /// Setup API Server.
@@ -492,7 +495,7 @@ async fn ad_account_slash_analytics<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AdAccountSlashAnalyticsPathParams>,
-  Query(query_params): Query<models::AdAccountSlashAnalyticsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdAccountSlashAnalyticsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -500,6 +503,8 @@ where
     A: apis::ad_accounts::AdAccounts<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -520,7 +525,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_account_slash_analytics(
+
+
+let result = api_impl.as_ref().ad_account_slash_analytics(
+      
       &method,
       &host,
       &cookies,
@@ -540,7 +548,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -558,7 +566,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -576,7 +584,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -588,11 +596,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -622,7 +631,7 @@ async fn ad_account_targeting_analytics_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AdAccountTargetingAnalyticsSlashGetPathParams>,
-  Query(query_params): Query<models::AdAccountTargetingAnalyticsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdAccountTargetingAnalyticsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -630,6 +639,8 @@ where
     A: apis::ad_accounts::AdAccounts<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -650,7 +661,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_account_targeting_analytics_slash_get(
+
+
+let result = api_impl.as_ref().ad_account_targeting_analytics_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -670,7 +684,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -688,7 +702,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -700,11 +714,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -712,7 +727,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AdAccountsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::AdAccountCreateRequest,
     }
 
@@ -747,6 +762,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ad_accounts_slash_create_validation(
@@ -763,7 +780,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_accounts_slash_create(
+
+
+let result = api_impl.as_ref().ad_accounts_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -782,7 +802,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -800,7 +820,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -812,11 +832,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -851,6 +872,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ad_accounts_slash_get_validation(
@@ -867,7 +890,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_accounts_slash_get(
+
+
+let result = api_impl.as_ref().ad_accounts_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -886,7 +912,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -904,7 +930,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -916,11 +942,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -945,7 +972,7 @@ async fn ad_accounts_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::AdAccountsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdAccountsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -953,6 +980,8 @@ where
     A: apis::ad_accounts::AdAccounts<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -971,7 +1000,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_accounts_slash_list(
+
+
+let result = api_impl.as_ref().ad_accounts_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -990,7 +1022,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1008,7 +1040,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1020,11 +1052,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -1032,7 +1065,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AnalyticsSlashCreateMmmReportBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CreateMmmReportRequest,
     }
 
@@ -1072,6 +1105,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     analytics_slash_create_mmm_report_validation(
@@ -1090,7 +1125,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().analytics_slash_create_mmm_report(
+
+
+let result = api_impl.as_ref().analytics_slash_create_mmm_report(
+      
       &method,
       &host,
       &cookies,
@@ -1110,7 +1148,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1128,7 +1166,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1146,7 +1184,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1158,11 +1196,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -1170,7 +1209,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AnalyticsSlashCreateReportBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::AdsAnalyticsCreateAsyncRequest,
     }
 
@@ -1210,6 +1249,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     analytics_slash_create_report_validation(
@@ -1228,7 +1269,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().analytics_slash_create_report(
+
+
+let result = api_impl.as_ref().analytics_slash_create_report(
+      
       &method,
       &host,
       &cookies,
@@ -1248,7 +1292,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1266,7 +1310,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1284,7 +1328,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1296,11 +1340,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -1330,7 +1375,7 @@ async fn analytics_slash_create_template_report<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AnalyticsSlashCreateTemplateReportPathParams>,
-  Query(query_params): Query<models::AnalyticsSlashCreateTemplateReportQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AnalyticsSlashCreateTemplateReportQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -1338,6 +1383,8 @@ where
     A: apis::ad_accounts::AdAccounts<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -1358,7 +1405,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().analytics_slash_create_template_report(
+
+
+let result = api_impl.as_ref().analytics_slash_create_template_report(
+      
       &method,
       &host,
       &cookies,
@@ -1378,7 +1428,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1396,7 +1446,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1414,7 +1464,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1426,11 +1476,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -1460,7 +1511,7 @@ async fn analytics_slash_get_mmm_report<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AnalyticsSlashGetMmmReportPathParams>,
-  Query(query_params): Query<models::AnalyticsSlashGetMmmReportQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AnalyticsSlashGetMmmReportQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -1468,6 +1519,8 @@ where
     A: apis::ad_accounts::AdAccounts<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -1488,7 +1541,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().analytics_slash_get_mmm_report(
+
+
+let result = api_impl.as_ref().analytics_slash_get_mmm_report(
+      
       &method,
       &host,
       &cookies,
@@ -1508,7 +1564,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1526,7 +1582,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1544,7 +1600,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1556,11 +1612,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -1590,7 +1647,7 @@ async fn analytics_slash_get_report<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AnalyticsSlashGetReportPathParams>,
-  Query(query_params): Query<models::AnalyticsSlashGetReportQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AnalyticsSlashGetReportQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -1598,6 +1655,8 @@ where
     A: apis::ad_accounts::AdAccounts<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -1618,7 +1677,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().analytics_slash_get_report(
+
+
+let result = api_impl.as_ref().analytics_slash_get_report(
+      
       &method,
       &host,
       &cookies,
@@ -1638,7 +1700,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1656,7 +1718,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1674,7 +1736,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1686,11 +1748,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -1725,6 +1788,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     sandbox_slash_delete_validation(
@@ -1741,7 +1806,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().sandbox_slash_delete(
+
+
+let result = api_impl.as_ref().sandbox_slash_delete(
+      
       &method,
       &host,
       &cookies,
@@ -1760,7 +1828,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1778,7 +1846,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1796,7 +1864,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1808,11 +1876,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -1842,7 +1911,7 @@ async fn templates_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::TemplatesSlashListPathParams>,
-  Query(query_params): Query<models::TemplatesSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::TemplatesSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -1850,6 +1919,8 @@ where
     A: apis::ad_accounts::AdAccounts<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -1870,7 +1941,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().templates_slash_list(
+
+
+let result = api_impl.as_ref().templates_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -1890,7 +1964,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1908,7 +1982,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1926,7 +2000,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -1938,11 +2012,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -1950,7 +2025,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AdGroupsBidFloorSlashGetBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::BidFloorRequest,
     }
 
@@ -1990,6 +2065,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ad_groups_bid_floor_slash_get_validation(
@@ -2008,7 +2085,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_groups_bid_floor_slash_get(
+
+
+let result = api_impl.as_ref().ad_groups_bid_floor_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -2028,7 +2108,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2046,7 +2126,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2058,11 +2138,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -2092,7 +2173,7 @@ async fn ad_groups_slash_analytics<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AdGroupsSlashAnalyticsPathParams>,
-  Query(query_params): Query<models::AdGroupsSlashAnalyticsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdGroupsSlashAnalyticsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -2100,6 +2181,8 @@ where
     A: apis::ad_groups::AdGroups<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -2120,7 +2203,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_groups_slash_analytics(
+
+
+let result = api_impl.as_ref().ad_groups_slash_analytics(
+      
       &method,
       &host,
       &cookies,
@@ -2140,7 +2226,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2158,7 +2244,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2176,7 +2262,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2188,11 +2274,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -2200,7 +2287,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AdGroupsSlashAudienceSizingBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::AdGroupAudienceSizingRequest,
     }
 
@@ -2242,6 +2329,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ad_groups_slash_audience_sizing_validation(
@@ -2260,7 +2349,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_groups_slash_audience_sizing(
+
+
+let result = api_impl.as_ref().ad_groups_slash_audience_sizing(
+      
       &method,
       &host,
       &cookies,
@@ -2280,7 +2372,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2298,7 +2390,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2316,7 +2408,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2334,7 +2426,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2346,11 +2438,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -2358,9 +2451,10 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AdGroupsSlashCreateBodyValidator<'a> {
-          #[validate(
-                  length(min = 1, max = 30),
-              )]
+            #[validate(
+                    length(min = 1, max = 30),
+                   nested,
+            )]
           body: &'a Vec<models::AdGroupCreateRequest>,
     }
 
@@ -2400,6 +2494,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ad_groups_slash_create_validation(
@@ -2418,7 +2514,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_groups_slash_create(
+
+
+let result = api_impl.as_ref().ad_groups_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -2438,7 +2537,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2456,7 +2555,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2468,11 +2567,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -2507,6 +2607,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ad_groups_slash_get_validation(
@@ -2523,7 +2625,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_groups_slash_get(
+
+
+let result = api_impl.as_ref().ad_groups_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -2542,7 +2647,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2560,7 +2665,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2572,11 +2677,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -2606,7 +2712,7 @@ async fn ad_groups_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AdGroupsSlashListPathParams>,
-  Query(query_params): Query<models::AdGroupsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdGroupsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -2614,6 +2720,8 @@ where
     A: apis::ad_groups::AdGroups<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -2634,7 +2742,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_groups_slash_list(
+
+
+let result = api_impl.as_ref().ad_groups_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -2654,7 +2765,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2672,7 +2783,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2690,7 +2801,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2702,11 +2813,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -2714,9 +2826,10 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AdGroupsSlashUpdateBodyValidator<'a> {
-          #[validate(
-                  length(min = 1, max = 30),
-              )]
+            #[validate(
+                    length(min = 1, max = 30),
+                   nested,
+            )]
           body: &'a Vec<models::AdGroupUpdateRequest>,
     }
 
@@ -2756,6 +2869,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ad_groups_slash_update_validation(
@@ -2774,7 +2889,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_groups_slash_update(
+
+
+let result = api_impl.as_ref().ad_groups_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -2794,7 +2912,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2812,7 +2930,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2824,11 +2942,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -2858,7 +2977,7 @@ async fn ad_groups_targeting_analytics_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AdGroupsTargetingAnalyticsSlashGetPathParams>,
-  Query(query_params): Query<models::AdGroupsTargetingAnalyticsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdGroupsTargetingAnalyticsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -2866,6 +2985,8 @@ where
     A: apis::ad_groups::AdGroups<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -2886,7 +3007,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_groups_targeting_analytics_slash_get(
+
+
+let result = api_impl.as_ref().ad_groups_targeting_analytics_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -2906,7 +3030,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2924,7 +3048,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -2936,11 +3060,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -2948,7 +3073,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AdPreviewsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::AdPreviewRequest,
     }
 
@@ -2988,6 +3113,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ad_previews_slash_create_validation(
@@ -3006,7 +3133,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_previews_slash_create(
+
+
+let result = api_impl.as_ref().ad_previews_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -3026,7 +3156,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3044,7 +3174,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3062,7 +3192,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3074,11 +3204,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -3108,7 +3239,7 @@ async fn ad_targeting_analytics_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AdTargetingAnalyticsSlashGetPathParams>,
-  Query(query_params): Query<models::AdTargetingAnalyticsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdTargetingAnalyticsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -3116,6 +3247,8 @@ where
     A: apis::ads::Ads<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -3136,7 +3269,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_targeting_analytics_slash_get(
+
+
+let result = api_impl.as_ref().ad_targeting_analytics_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -3156,7 +3292,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3174,7 +3310,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3186,11 +3322,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -3220,7 +3357,7 @@ async fn ads_slash_analytics<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AdsSlashAnalyticsPathParams>,
-  Query(query_params): Query<models::AdsSlashAnalyticsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdsSlashAnalyticsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -3228,6 +3365,8 @@ where
     A: apis::ads::Ads<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -3248,7 +3387,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ads_slash_analytics(
+
+
+let result = api_impl.as_ref().ads_slash_analytics(
+      
       &method,
       &host,
       &cookies,
@@ -3268,7 +3410,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3286,7 +3428,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3304,7 +3446,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3316,11 +3458,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -3328,9 +3471,10 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AdsSlashCreateBodyValidator<'a> {
-          #[validate(
-                  length(min = 1, max = 30),
-              )]
+            #[validate(
+                    length(min = 1, max = 30),
+                   nested,
+            )]
           body: &'a Vec<models::AdCreateRequest>,
     }
 
@@ -3370,6 +3514,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ads_slash_create_validation(
@@ -3388,7 +3534,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ads_slash_create(
+
+
+let result = api_impl.as_ref().ads_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -3408,7 +3557,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3426,7 +3575,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3438,11 +3587,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -3477,6 +3627,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ads_slash_get_validation(
@@ -3493,7 +3645,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ads_slash_get(
+
+
+let result = api_impl.as_ref().ads_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -3512,7 +3667,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3530,7 +3685,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3542,11 +3697,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -3576,7 +3732,7 @@ async fn ads_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AdsSlashListPathParams>,
-  Query(query_params): Query<models::AdsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -3584,6 +3740,8 @@ where
     A: apis::ads::Ads<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -3604,7 +3762,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ads_slash_list(
+
+
+let result = api_impl.as_ref().ads_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -3624,7 +3785,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3642,7 +3803,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3660,7 +3821,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3672,11 +3833,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -3684,9 +3846,10 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AdsSlashUpdateBodyValidator<'a> {
-          #[validate(
-                  length(min = 1, max = 30),
-              )]
+            #[validate(
+                    length(min = 1, max = 30),
+                   nested,
+            )]
           body: &'a Vec<models::AdUpdateRequest>,
     }
 
@@ -3726,6 +3889,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ads_slash_update_validation(
@@ -3744,7 +3909,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ads_slash_update(
+
+
+let result = api_impl.as_ref().ads_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -3764,7 +3932,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3782,7 +3950,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3794,11 +3962,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -3806,7 +3975,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AdvancedAuctionItemsGetSlashPostBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::AdvancedAuctionItemsGetRequest,
     }
 
@@ -3835,7 +4004,7 @@ async fn advanced_auction_items_get_slash_post<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::AdvancedAuctionItemsGetSlashPostQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdvancedAuctionItemsGetSlashPostQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::AdvancedAuctionItemsGetRequest>,
 ) -> Result<Response, StatusCode>
@@ -3844,6 +4013,8 @@ where
     A: apis::advanced_auction::AdvancedAuction<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -3864,7 +4035,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().advanced_auction_items_get_slash_post(
+
+
+let result = api_impl.as_ref().advanced_auction_items_get_slash_post(
+      
       &method,
       &host,
       &cookies,
@@ -3884,7 +4058,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3902,7 +4076,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3920,7 +4094,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3938,7 +4112,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3956,7 +4130,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3974,7 +4148,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -3986,11 +4160,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -3998,7 +4173,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AdvancedAuctionItemsSubmitSlashPostBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::AdvancedAuctionItemsSubmitRequest,
     }
 
@@ -4027,7 +4202,7 @@ async fn advanced_auction_items_submit_slash_post<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::AdvancedAuctionItemsSubmitSlashPostQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdvancedAuctionItemsSubmitSlashPostQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::AdvancedAuctionItemsSubmitRequest>,
 ) -> Result<Response, StatusCode>
@@ -4036,6 +4211,8 @@ where
     A: apis::advanced_auction::AdvancedAuction<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -4056,7 +4233,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().advanced_auction_items_submit_slash_post(
+
+
+let result = api_impl.as_ref().advanced_auction_items_submit_slash_post(
+      
       &method,
       &host,
       &cookies,
@@ -4076,7 +4256,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4094,7 +4274,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4112,7 +4292,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4130,7 +4310,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4148,7 +4328,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4166,7 +4346,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4178,11 +4358,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -4217,6 +4398,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     audience_insights_scope_and_type_slash_get_validation(
@@ -4233,7 +4416,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().audience_insights_scope_and_type_slash_get(
+
+
+let result = api_impl.as_ref().audience_insights_scope_and_type_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -4252,7 +4438,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4270,7 +4456,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4282,11 +4468,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -4316,7 +4503,7 @@ async fn audience_insights_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AudienceInsightsSlashGetPathParams>,
-  Query(query_params): Query<models::AudienceInsightsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AudienceInsightsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -4324,6 +4511,8 @@ where
     A: apis::audience_insights::AudienceInsights<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -4344,7 +4533,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().audience_insights_slash_get(
+
+
+let result = api_impl.as_ref().audience_insights_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -4364,7 +4556,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4382,7 +4574,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4394,11 +4586,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -4428,7 +4621,7 @@ async fn ad_accounts_audiences_shared_accounts_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AdAccountsAudiencesSharedAccountsSlashListPathParams>,
-  Query(query_params): Query<models::AdAccountsAudiencesSharedAccountsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdAccountsAudiencesSharedAccountsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -4436,6 +4629,8 @@ where
     A: apis::audience_sharing::AudienceSharing<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -4456,7 +4651,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_accounts_audiences_shared_accounts_slash_list(
+
+
+let result = api_impl.as_ref().ad_accounts_audiences_shared_accounts_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -4476,7 +4674,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4494,7 +4692,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4512,7 +4710,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4530,7 +4728,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4542,11 +4740,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -4576,7 +4775,7 @@ async fn business_account_audiences_shared_accounts_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BusinessAccountAudiencesSharedAccountsSlashListPathParams>,
-  Query(query_params): Query<models::BusinessAccountAudiencesSharedAccountsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BusinessAccountAudiencesSharedAccountsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -4584,6 +4783,8 @@ where
     A: apis::audience_sharing::AudienceSharing<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -4604,7 +4805,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().business_account_audiences_shared_accounts_slash_list(
+
+
+let result = api_impl.as_ref().business_account_audiences_shared_accounts_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -4624,7 +4828,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4642,7 +4846,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4660,7 +4864,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4678,7 +4882,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4690,11 +4894,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -4724,7 +4929,7 @@ async fn shared_audiences_for_business_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::SharedAudiencesForBusinessSlashListPathParams>,
-  Query(query_params): Query<models::SharedAudiencesForBusinessSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::SharedAudiencesForBusinessSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -4732,6 +4937,8 @@ where
     A: apis::audience_sharing::AudienceSharing<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -4752,7 +4959,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().shared_audiences_for_business_slash_list(
+
+
+let result = api_impl.as_ref().shared_audiences_for_business_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -4772,7 +4982,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4790,7 +5000,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4808,7 +5018,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4820,11 +5030,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -4832,7 +5043,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct UpdateAdAccountToAdAccountSharedAudienceBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::SharedAudience,
     }
 
@@ -4872,6 +5083,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     update_ad_account_to_ad_account_shared_audience_validation(
@@ -4890,7 +5103,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().update_ad_account_to_ad_account_shared_audience(
+
+
+let result = api_impl.as_ref().update_ad_account_to_ad_account_shared_audience(
+      
       &method,
       &host,
       &cookies,
@@ -4910,7 +5126,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4928,7 +5144,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4946,7 +5162,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -4958,11 +5174,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -4970,7 +5187,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct UpdateAdAccountToBusinessSharedAudienceBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::BusinessSharedAudience,
     }
 
@@ -5010,6 +5227,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     update_ad_account_to_business_shared_audience_validation(
@@ -5028,7 +5247,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().update_ad_account_to_business_shared_audience(
+
+
+let result = api_impl.as_ref().update_ad_account_to_business_shared_audience(
+      
       &method,
       &host,
       &cookies,
@@ -5048,7 +5270,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5066,7 +5288,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5084,7 +5306,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5096,11 +5318,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -5108,7 +5331,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct UpdateBusinessToAdAccountSharedAudienceBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::SharedAudience,
     }
 
@@ -5148,6 +5371,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     update_business_to_ad_account_shared_audience_validation(
@@ -5166,7 +5391,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().update_business_to_ad_account_shared_audience(
+
+
+let result = api_impl.as_ref().update_business_to_ad_account_shared_audience(
+      
       &method,
       &host,
       &cookies,
@@ -5186,7 +5414,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5204,7 +5432,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5222,7 +5450,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5234,11 +5462,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -5246,7 +5475,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct UpdateBusinessToBusinessSharedAudienceBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::BusinessSharedAudience,
     }
 
@@ -5286,6 +5515,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     update_business_to_business_shared_audience_validation(
@@ -5304,7 +5535,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().update_business_to_business_shared_audience(
+
+
+let result = api_impl.as_ref().update_business_to_business_shared_audience(
+      
       &method,
       &host,
       &cookies,
@@ -5324,7 +5558,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5342,7 +5576,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5360,7 +5594,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5372,11 +5606,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -5384,7 +5619,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AudiencesSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::AudienceCreateRequest,
     }
 
@@ -5424,6 +5659,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     audiences_slash_create_validation(
@@ -5442,7 +5679,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().audiences_slash_create(
+
+
+let result = api_impl.as_ref().audiences_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -5462,7 +5702,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5480,7 +5720,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5492,11 +5732,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -5504,7 +5745,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AudiencesSlashCreateCustomBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::AudienceCreateCustomRequest,
     }
 
@@ -5544,6 +5785,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     audiences_slash_create_custom_validation(
@@ -5562,7 +5805,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().audiences_slash_create_custom(
+
+
+let result = api_impl.as_ref().audiences_slash_create_custom(
+      
       &method,
       &host,
       &cookies,
@@ -5582,7 +5828,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5600,7 +5846,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5612,11 +5858,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -5651,6 +5898,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     audiences_slash_get_validation(
@@ -5667,7 +5916,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().audiences_slash_get(
+
+
+let result = api_impl.as_ref().audiences_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -5686,7 +5938,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5704,7 +5956,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5722,7 +5974,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5734,11 +5986,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -5768,7 +6021,7 @@ async fn audiences_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AudiencesSlashListPathParams>,
-  Query(query_params): Query<models::AudiencesSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AudiencesSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -5776,6 +6029,8 @@ where
     A: apis::audiences::Audiences<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -5796,7 +6051,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().audiences_slash_list(
+
+
+let result = api_impl.as_ref().audiences_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -5816,7 +6074,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5834,7 +6092,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5852,7 +6110,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5864,11 +6122,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -5876,7 +6135,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AudiencesSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::AudienceUpdateRequest,
     }
 
@@ -5918,6 +6177,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     audiences_slash_update_validation(
@@ -5936,7 +6197,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().audiences_slash_update(
+
+
+let result = api_impl.as_ref().audiences_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -5956,7 +6220,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5974,7 +6238,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -5986,11 +6250,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -5998,7 +6263,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AdsCreditSlashRedeemBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::AdsCreditRedeemRequest,
     }
 
@@ -6038,6 +6303,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ads_credit_slash_redeem_validation(
@@ -6056,7 +6323,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ads_credit_slash_redeem(
+
+
+let result = api_impl.as_ref().ads_credit_slash_redeem(
+      
       &method,
       &host,
       &cookies,
@@ -6076,7 +6346,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6094,7 +6364,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6112,7 +6382,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6124,11 +6394,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -6158,7 +6429,7 @@ async fn ads_credits_discounts_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AdsCreditsDiscountsSlashGetPathParams>,
-  Query(query_params): Query<models::AdsCreditsDiscountsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdsCreditsDiscountsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -6166,6 +6437,8 @@ where
     A: apis::billing::Billing<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -6186,7 +6459,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ads_credits_discounts_slash_get(
+
+
+let result = api_impl.as_ref().ads_credits_discounts_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -6206,7 +6482,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6224,7 +6500,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6236,11 +6512,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -6270,7 +6547,7 @@ async fn billing_profiles_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BillingProfilesSlashGetPathParams>,
-  Query(query_params): Query<models::BillingProfilesSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BillingProfilesSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -6278,6 +6555,8 @@ where
     A: apis::billing::Billing<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -6298,7 +6577,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().billing_profiles_slash_get(
+
+
+let result = api_impl.as_ref().billing_profiles_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -6318,7 +6600,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6336,7 +6618,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6348,11 +6630,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -6387,6 +6670,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ssio_accounts_slash_get_validation(
@@ -6403,7 +6688,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ssio_accounts_slash_get(
+
+
+let result = api_impl.as_ref().ssio_accounts_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -6422,7 +6710,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6440,7 +6728,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6458,7 +6746,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6470,11 +6758,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -6482,7 +6771,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct SsioInsertionOrderSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::SsioCreateInsertionOrderRequest,
     }
 
@@ -6522,6 +6811,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ssio_insertion_order_slash_create_validation(
@@ -6540,7 +6831,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ssio_insertion_order_slash_create(
+
+
+let result = api_impl.as_ref().ssio_insertion_order_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -6560,7 +6854,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6578,7 +6872,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6596,7 +6890,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6608,11 +6902,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -6620,7 +6915,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct SsioInsertionOrderSlashEditBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::SsioEditInsertionOrderRequest,
     }
 
@@ -6660,6 +6955,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ssio_insertion_order_slash_edit_validation(
@@ -6678,7 +6975,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ssio_insertion_order_slash_edit(
+
+
+let result = api_impl.as_ref().ssio_insertion_order_slash_edit(
+      
       &method,
       &host,
       &cookies,
@@ -6698,7 +6998,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6716,7 +7016,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6734,7 +7034,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6746,11 +7046,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -6780,7 +7081,7 @@ async fn ssio_insertion_orders_status_slash_get_by_ad_account<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::SsioInsertionOrdersStatusSlashGetByAdAccountPathParams>,
-  Query(query_params): Query<models::SsioInsertionOrdersStatusSlashGetByAdAccountQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::SsioInsertionOrdersStatusSlashGetByAdAccountQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -6788,6 +7089,8 @@ where
     A: apis::billing::Billing<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -6808,7 +7111,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ssio_insertion_orders_status_slash_get_by_ad_account(
+
+
+let result = api_impl.as_ref().ssio_insertion_orders_status_slash_get_by_ad_account(
+      
       &method,
       &host,
       &cookies,
@@ -6828,7 +7134,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6846,7 +7152,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6864,7 +7170,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6876,11 +7182,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -6915,6 +7222,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ssio_insertion_orders_status_slash_get_by_pin_order_id_validation(
@@ -6931,7 +7240,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ssio_insertion_orders_status_slash_get_by_pin_order_id(
+
+
+let result = api_impl.as_ref().ssio_insertion_orders_status_slash_get_by_pin_order_id(
+      
       &method,
       &host,
       &cookies,
@@ -6950,7 +7262,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6968,7 +7280,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6986,7 +7298,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -6998,11 +7310,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -7032,7 +7345,7 @@ async fn ssio_order_lines_slash_get_by_ad_account<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::SsioOrderLinesSlashGetByAdAccountPathParams>,
-  Query(query_params): Query<models::SsioOrderLinesSlashGetByAdAccountQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::SsioOrderLinesSlashGetByAdAccountQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -7040,6 +7353,8 @@ where
     A: apis::billing::Billing<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -7060,7 +7375,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ssio_order_lines_slash_get_by_ad_account(
+
+
+let result = api_impl.as_ref().ssio_order_lines_slash_get_by_ad_account(
+      
       &method,
       &host,
       &cookies,
@@ -7080,7 +7398,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7098,7 +7416,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7116,7 +7434,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7128,11 +7446,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -7140,7 +7459,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct BoardSectionsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::BoardSection,
     }
 
@@ -7174,7 +7493,7 @@ async fn board_sections_slash_create<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BoardSectionsSlashCreatePathParams>,
-  Query(query_params): Query<models::BoardSectionsSlashCreateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BoardSectionsSlashCreateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::BoardSection>,
 ) -> Result<Response, StatusCode>
@@ -7183,6 +7502,8 @@ where
     A: apis::boards::Boards<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -7205,7 +7526,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().board_sections_slash_create(
+
+
+let result = api_impl.as_ref().board_sections_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -7226,7 +7550,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7244,7 +7568,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7262,7 +7586,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7280,7 +7604,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7298,7 +7622,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7316,7 +7640,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7328,11 +7652,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -7362,7 +7687,7 @@ async fn board_sections_slash_delete<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BoardSectionsSlashDeletePathParams>,
-  Query(query_params): Query<models::BoardSectionsSlashDeleteQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BoardSectionsSlashDeleteQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -7370,6 +7695,8 @@ where
     A: apis::boards::Boards<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -7390,7 +7717,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().board_sections_slash_delete(
+
+
+let result = api_impl.as_ref().board_sections_slash_delete(
+      
       &method,
       &host,
       &cookies,
@@ -7415,7 +7745,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7433,7 +7763,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7451,7 +7781,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7469,7 +7799,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7481,11 +7811,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -7515,7 +7846,7 @@ async fn board_sections_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BoardSectionsSlashListPathParams>,
-  Query(query_params): Query<models::BoardSectionsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BoardSectionsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -7523,6 +7854,8 @@ where
     A: apis::boards::Boards<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -7543,7 +7876,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().board_sections_slash_list(
+
+
+let result = api_impl.as_ref().board_sections_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -7563,7 +7899,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7581,7 +7917,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7593,11 +7929,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -7627,7 +7964,7 @@ async fn board_sections_slash_list_pins<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BoardSectionsSlashListPinsPathParams>,
-  Query(query_params): Query<models::BoardSectionsSlashListPinsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BoardSectionsSlashListPinsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -7635,6 +7972,8 @@ where
     A: apis::boards::Boards<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -7655,7 +7994,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().board_sections_slash_list_pins(
+
+
+let result = api_impl.as_ref().board_sections_slash_list_pins(
+      
       &method,
       &host,
       &cookies,
@@ -7675,7 +8017,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7693,7 +8035,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7711,7 +8053,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7729,7 +8071,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7747,7 +8089,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7759,11 +8101,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -7771,7 +8114,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct BoardSectionsSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::BoardSection,
     }
 
@@ -7805,7 +8148,7 @@ async fn board_sections_slash_update<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BoardSectionsSlashUpdatePathParams>,
-  Query(query_params): Query<models::BoardSectionsSlashUpdateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BoardSectionsSlashUpdateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::BoardSection>,
 ) -> Result<Response, StatusCode>
@@ -7814,6 +8157,8 @@ where
     A: apis::boards::Boards<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -7836,7 +8181,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().board_sections_slash_update(
+
+
+let result = api_impl.as_ref().board_sections_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -7857,7 +8205,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7875,7 +8223,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7893,7 +8241,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7911,7 +8259,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7929,7 +8277,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -7941,11 +8289,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -7953,7 +8302,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct BoardsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::Board,
     }
 
@@ -7982,7 +8331,7 @@ async fn boards_slash_create<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::BoardsSlashCreateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BoardsSlashCreateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::Board>,
 ) -> Result<Response, StatusCode>
@@ -7991,6 +8340,8 @@ where
     A: apis::boards::Boards<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -8011,7 +8362,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().boards_slash_create(
+
+
+let result = api_impl.as_ref().boards_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -8031,7 +8385,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8049,7 +8403,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8067,7 +8421,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8079,11 +8433,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -8113,7 +8468,7 @@ async fn boards_slash_delete<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BoardsSlashDeletePathParams>,
-  Query(query_params): Query<models::BoardsSlashDeleteQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BoardsSlashDeleteQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -8121,6 +8476,8 @@ where
     A: apis::boards::Boards<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -8141,7 +8498,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().boards_slash_delete(
+
+
+let result = api_impl.as_ref().boards_slash_delete(
+      
       &method,
       &host,
       &cookies,
@@ -8166,7 +8526,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8184,7 +8544,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8202,7 +8562,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8220,7 +8580,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8238,7 +8598,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8250,11 +8610,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -8284,7 +8645,7 @@ async fn boards_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BoardsSlashGetPathParams>,
-  Query(query_params): Query<models::BoardsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BoardsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -8292,6 +8653,8 @@ where
     A: apis::boards::Boards<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -8312,7 +8675,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().boards_slash_get(
+
+
+let result = api_impl.as_ref().boards_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -8332,7 +8698,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8350,7 +8716,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8368,7 +8734,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8380,11 +8746,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -8409,7 +8776,7 @@ async fn boards_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::BoardsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BoardsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -8417,6 +8784,8 @@ where
     A: apis::boards::Boards<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -8435,7 +8804,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().boards_slash_list(
+
+
+let result = api_impl.as_ref().boards_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -8454,7 +8826,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8472,7 +8844,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8484,11 +8856,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -8518,7 +8891,7 @@ async fn boards_slash_list_pins<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BoardsSlashListPinsPathParams>,
-  Query(query_params): Query<models::BoardsSlashListPinsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BoardsSlashListPinsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -8526,6 +8899,8 @@ where
     A: apis::boards::Boards<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -8546,7 +8921,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().boards_slash_list_pins(
+
+
+let result = api_impl.as_ref().boards_slash_list_pins(
+      
       &method,
       &host,
       &cookies,
@@ -8566,7 +8944,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8584,7 +8962,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8602,7 +8980,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8614,11 +8992,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -8626,7 +9005,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct BoardsSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::BoardUpdate,
     }
 
@@ -8660,7 +9039,7 @@ async fn boards_slash_update<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BoardsSlashUpdatePathParams>,
-  Query(query_params): Query<models::BoardsSlashUpdateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BoardsSlashUpdateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::BoardUpdate>,
 ) -> Result<Response, StatusCode>
@@ -8669,6 +9048,8 @@ where
     A: apis::boards::Boards<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -8691,7 +9072,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().boards_slash_update(
+
+
+let result = api_impl.as_ref().boards_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -8712,7 +9096,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8730,7 +9114,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8748,7 +9132,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8766,7 +9150,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8784,7 +9168,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8796,11 +9180,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -8808,7 +9193,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct BulkDownloadSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::BulkDownloadRequest,
     }
 
@@ -8848,6 +9233,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     bulk_download_slash_create_validation(
@@ -8866,7 +9253,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().bulk_download_slash_create(
+
+
+let result = api_impl.as_ref().bulk_download_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -8886,7 +9276,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8904,7 +9294,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -8916,11 +9306,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -8950,7 +9341,7 @@ async fn bulk_request_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BulkRequestSlashGetPathParams>,
-  Query(query_params): Query<models::BulkRequestSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BulkRequestSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -8958,6 +9349,8 @@ where
     A: apis::bulk::Bulk<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -8978,7 +9371,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().bulk_request_slash_get(
+
+
+let result = api_impl.as_ref().bulk_request_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -8998,7 +9394,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9016,7 +9412,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9028,11 +9424,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -9040,7 +9437,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct BulkUpsertSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::BulkUpsertRequest,
     }
 
@@ -9080,6 +9477,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     bulk_upsert_slash_create_validation(
@@ -9098,7 +9497,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().bulk_upsert_slash_create(
+
+
+let result = api_impl.as_ref().bulk_upsert_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -9118,7 +9520,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9136,7 +9538,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9148,11 +9550,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -9160,7 +9563,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AssetGroupSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CreateAssetGroupBody,
     }
 
@@ -9200,6 +9603,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     asset_group_slash_create_validation(
@@ -9218,7 +9623,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().asset_group_slash_create(
+
+
+let result = api_impl.as_ref().asset_group_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -9238,7 +9646,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9256,7 +9664,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9274,7 +9682,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9286,11 +9694,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -9298,7 +9707,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AssetGroupSlashDeleteBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::DeleteAssetGroupBody,
     }
 
@@ -9338,6 +9747,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     asset_group_slash_delete_validation(
@@ -9356,7 +9767,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().asset_group_slash_delete(
+
+
+let result = api_impl.as_ref().asset_group_slash_delete(
+      
       &method,
       &host,
       &cookies,
@@ -9376,7 +9790,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9394,7 +9808,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9412,7 +9826,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9424,11 +9838,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -9436,7 +9851,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AssetGroupSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::UpdateAssetGroupBody,
     }
 
@@ -9476,6 +9891,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     asset_group_slash_update_validation(
@@ -9494,7 +9911,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().asset_group_slash_update(
+
+
+let result = api_impl.as_ref().asset_group_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -9514,7 +9934,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9532,7 +9952,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9550,7 +9970,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9562,11 +9982,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -9596,7 +10017,7 @@ async fn business_asset_members_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BusinessAssetMembersSlashGetPathParams>,
-  Query(query_params): Query<models::BusinessAssetMembersSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BusinessAssetMembersSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -9604,6 +10025,8 @@ where
     A: apis::business_access_assets::BusinessAccessAssets<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -9624,7 +10047,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().business_asset_members_slash_get(
+
+
+let result = api_impl.as_ref().business_asset_members_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -9644,7 +10070,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9662,7 +10088,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9674,11 +10100,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -9708,7 +10135,7 @@ async fn business_asset_partners_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BusinessAssetPartnersSlashGetPathParams>,
-  Query(query_params): Query<models::BusinessAssetPartnersSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BusinessAssetPartnersSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -9716,6 +10143,8 @@ where
     A: apis::business_access_assets::BusinessAccessAssets<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -9736,7 +10165,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().business_asset_partners_slash_get(
+
+
+let result = api_impl.as_ref().business_asset_partners_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -9756,7 +10188,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9774,7 +10206,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9786,11 +10218,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -9820,7 +10253,7 @@ async fn business_assets_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BusinessAssetsSlashGetPathParams>,
-  Query(query_params): Query<models::BusinessAssetsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BusinessAssetsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -9828,6 +10261,8 @@ where
     A: apis::business_access_assets::BusinessAccessAssets<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -9848,7 +10283,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().business_assets_slash_get(
+
+
+let result = api_impl.as_ref().business_assets_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -9868,7 +10306,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9886,7 +10324,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9898,11 +10336,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -9932,7 +10371,7 @@ async fn business_member_assets_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BusinessMemberAssetsSlashGetPathParams>,
-  Query(query_params): Query<models::BusinessMemberAssetsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BusinessMemberAssetsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -9940,6 +10379,8 @@ where
     A: apis::business_access_assets::BusinessAccessAssets<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -9960,7 +10401,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().business_member_assets_slash_get(
+
+
+let result = api_impl.as_ref().business_member_assets_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -9980,7 +10424,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -9998,7 +10442,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10010,11 +10454,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -10022,7 +10467,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct BusinessMembersAssetAccessSlashDeleteBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::BusinessMembersAssetAccessDeleteRequest,
     }
 
@@ -10062,6 +10507,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     business_members_asset_access_slash_delete_validation(
@@ -10080,7 +10527,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().business_members_asset_access_slash_delete(
+
+
+let result = api_impl.as_ref().business_members_asset_access_slash_delete(
+      
       &method,
       &host,
       &cookies,
@@ -10100,7 +10550,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10118,7 +10568,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10130,11 +10580,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -10142,7 +10593,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct BusinessMembersAssetAccessSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::UpdateMemberAssetAccessBody,
     }
 
@@ -10182,6 +10633,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     business_members_asset_access_slash_update_validation(
@@ -10200,7 +10653,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().business_members_asset_access_slash_update(
+
+
+let result = api_impl.as_ref().business_members_asset_access_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -10220,7 +10676,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10238,7 +10694,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10250,11 +10706,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -10284,7 +10741,7 @@ async fn business_partner_asset_access_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::BusinessPartnerAssetAccessSlashGetPathParams>,
-  Query(query_params): Query<models::BusinessPartnerAssetAccessSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BusinessPartnerAssetAccessSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -10292,6 +10749,8 @@ where
     A: apis::business_access_assets::BusinessAccessAssets<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -10312,7 +10771,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().business_partner_asset_access_slash_get(
+
+
+let result = api_impl.as_ref().business_partner_asset_access_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -10332,7 +10794,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10350,7 +10812,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10362,11 +10824,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -10374,7 +10837,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct DeletePartnerAssetAccessHandlerImplBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::DeletePartnerAssetAccessBody,
     }
 
@@ -10414,6 +10877,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     delete_partner_asset_access_handler_impl_validation(
@@ -10432,7 +10897,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().delete_partner_asset_access_handler_impl(
+
+
+let result = api_impl.as_ref().delete_partner_asset_access_handler_impl(
+      
       &method,
       &host,
       &cookies,
@@ -10452,7 +10920,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10470,7 +10938,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10482,11 +10950,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -10494,7 +10963,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct UpdatePartnerAssetAccessHandlerImplBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::UpdatePartnerAssetAccessBody,
     }
 
@@ -10534,6 +11003,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     update_partner_asset_access_handler_impl_validation(
@@ -10552,7 +11023,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().update_partner_asset_access_handler_impl(
+
+
+let result = api_impl.as_ref().update_partner_asset_access_handler_impl(
+      
       &method,
       &host,
       &cookies,
@@ -10572,7 +11046,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10590,7 +11064,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10602,11 +11076,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -10614,7 +11089,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AssetAccessRequestsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CreateAssetAccessRequestBody,
     }
 
@@ -10654,6 +11129,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     asset_access_requests_slash_create_validation(
@@ -10672,7 +11149,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().asset_access_requests_slash_create(
+
+
+let result = api_impl.as_ref().asset_access_requests_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -10692,7 +11172,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10710,7 +11190,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10722,11 +11202,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -10734,7 +11215,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct CancelInvitesOrRequestsBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CancelInvitesBody,
     }
 
@@ -10774,6 +11255,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     cancel_invites_or_requests_validation(
@@ -10792,7 +11275,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().cancel_invites_or_requests(
+
+
+let result = api_impl.as_ref().cancel_invites_or_requests(
+      
       &method,
       &host,
       &cookies,
@@ -10812,7 +11298,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10830,7 +11316,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10842,11 +11328,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -10854,7 +11341,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct CreateAssetInvitesBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CreateAssetInvitesRequest,
     }
 
@@ -10894,6 +11381,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     create_asset_invites_validation(
@@ -10912,7 +11401,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().create_asset_invites(
+
+
+let result = api_impl.as_ref().create_asset_invites(
+      
       &method,
       &host,
       &cookies,
@@ -10932,7 +11424,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10950,7 +11442,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -10962,11 +11454,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -10974,7 +11467,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct CreateMembershipOrPartnershipInvitesBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CreateMembershipOrPartnershipInvitesBody,
     }
 
@@ -11014,6 +11507,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     create_membership_or_partnership_invites_validation(
@@ -11032,7 +11527,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().create_membership_or_partnership_invites(
+
+
+let result = api_impl.as_ref().create_membership_or_partnership_invites(
+      
       &method,
       &host,
       &cookies,
@@ -11052,7 +11550,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11070,7 +11568,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11082,11 +11580,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -11116,7 +11615,7 @@ async fn get_slash_invites<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::GetSlashInvitesPathParams>,
-  Query(query_params): Query<models::GetSlashInvitesQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::GetSlashInvitesQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -11124,6 +11623,8 @@ where
     A: apis::business_access_invite::BusinessAccessInvite<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -11144,7 +11645,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().get_slash_invites(
+
+
+let result = api_impl.as_ref().get_slash_invites(
+      
       &method,
       &host,
       &cookies,
@@ -11164,7 +11668,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11182,7 +11686,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11194,11 +11698,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -11206,7 +11711,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct RespondBusinessAccessInvitesBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::AuthRespondInvitesBody,
     }
 
@@ -11241,6 +11746,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     respond_business_access_invites_validation(
@@ -11257,7 +11764,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().respond_business_access_invites(
+
+
+let result = api_impl.as_ref().respond_business_access_invites(
+      
       &method,
       &host,
       &cookies,
@@ -11276,7 +11786,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11294,7 +11804,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11306,11 +11816,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -11318,7 +11829,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct DeleteBusinessMembershipBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::MembersToDeleteBody,
     }
 
@@ -11358,6 +11869,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     delete_business_membership_validation(
@@ -11376,7 +11889,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().delete_business_membership(
+
+
+let result = api_impl.as_ref().delete_business_membership(
+      
       &method,
       &host,
       &cookies,
@@ -11396,7 +11912,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11414,7 +11930,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11426,11 +11942,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -11438,7 +11955,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct DeleteBusinessPartnersBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::DeletePartnersRequest,
     }
 
@@ -11478,6 +11995,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     delete_business_partners_validation(
@@ -11496,7 +12015,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().delete_business_partners(
+
+
+let result = api_impl.as_ref().delete_business_partners(
+      
       &method,
       &host,
       &cookies,
@@ -11516,7 +12038,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11534,7 +12056,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11552,7 +12074,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11564,11 +12086,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -11593,7 +12116,7 @@ async fn get_slash_business_employers<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::GetSlashBusinessEmployersQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::GetSlashBusinessEmployersQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -11601,6 +12124,8 @@ where
     A: apis::business_access_relationships::BusinessAccessRelationships<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -11619,7 +12144,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().get_slash_business_employers(
+
+
+let result = api_impl.as_ref().get_slash_business_employers(
+      
       &method,
       &host,
       &cookies,
@@ -11638,7 +12166,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11656,7 +12184,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11668,11 +12196,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -11702,7 +12231,7 @@ async fn get_slash_business_members<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::GetSlashBusinessMembersPathParams>,
-  Query(query_params): Query<models::GetSlashBusinessMembersQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::GetSlashBusinessMembersQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -11710,6 +12239,8 @@ where
     A: apis::business_access_relationships::BusinessAccessRelationships<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -11730,7 +12261,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().get_slash_business_members(
+
+
+let result = api_impl.as_ref().get_slash_business_members(
+      
       &method,
       &host,
       &cookies,
@@ -11750,7 +12284,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11768,7 +12302,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11780,11 +12314,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -11814,7 +12349,7 @@ async fn get_slash_business_partners<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::GetSlashBusinessPartnersPathParams>,
-  Query(query_params): Query<models::GetSlashBusinessPartnersQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::GetSlashBusinessPartnersQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -11822,6 +12357,8 @@ where
     A: apis::business_access_relationships::BusinessAccessRelationships<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -11842,7 +12379,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().get_slash_business_partners(
+
+
+let result = api_impl.as_ref().get_slash_business_partners(
+      
       &method,
       &host,
       &cookies,
@@ -11862,7 +12402,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11880,7 +12420,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -11892,11 +12432,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -11904,9 +12445,10 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct UpdateSlashBusinessMembershipsBodyValidator<'a> {
-          #[validate(
-                  length(min = 1),
-              )]
+            #[validate(
+                    length(min = 1),
+                   nested,
+            )]
           body: &'a Vec<models::UpdateMemberBusinessRoleBody>,
     }
 
@@ -11946,6 +12488,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     update_slash_business_memberships_validation(
@@ -11964,7 +12508,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().update_slash_business_memberships(
+
+
+let result = api_impl.as_ref().update_slash_business_memberships(
+      
       &method,
       &host,
       &cookies,
@@ -11984,7 +12531,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12002,7 +12549,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12014,11 +12561,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -12048,7 +12596,7 @@ async fn campaign_targeting_analytics_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::CampaignTargetingAnalyticsSlashGetPathParams>,
-  Query(query_params): Query<models::CampaignTargetingAnalyticsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CampaignTargetingAnalyticsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -12056,6 +12604,8 @@ where
     A: apis::campaigns::Campaigns<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -12076,7 +12626,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().campaign_targeting_analytics_slash_get(
+
+
+let result = api_impl.as_ref().campaign_targeting_analytics_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -12096,7 +12649,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12114,7 +12667,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12126,11 +12679,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -12160,7 +12714,7 @@ async fn campaigns_slash_analytics<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::CampaignsSlashAnalyticsPathParams>,
-  Query(query_params): Query<models::CampaignsSlashAnalyticsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CampaignsSlashAnalyticsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -12168,6 +12722,8 @@ where
     A: apis::campaigns::Campaigns<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -12188,7 +12744,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().campaigns_slash_analytics(
+
+
+let result = api_impl.as_ref().campaigns_slash_analytics(
+      
       &method,
       &host,
       &cookies,
@@ -12208,7 +12767,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12226,7 +12785,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12244,7 +12803,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12256,11 +12815,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -12268,9 +12828,10 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct CampaignsSlashCreateBodyValidator<'a> {
-          #[validate(
-                  length(min = 1, max = 30),
-              )]
+            #[validate(
+                    length(min = 1, max = 30),
+                   nested,
+            )]
           body: &'a Vec<models::CampaignCreateRequest>,
     }
 
@@ -12310,6 +12871,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     campaigns_slash_create_validation(
@@ -12328,7 +12891,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().campaigns_slash_create(
+
+
+let result = api_impl.as_ref().campaigns_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -12348,7 +12914,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12366,7 +12932,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12378,11 +12944,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -12417,6 +12984,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     campaigns_slash_get_validation(
@@ -12433,7 +13002,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().campaigns_slash_get(
+
+
+let result = api_impl.as_ref().campaigns_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -12452,7 +13024,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12470,7 +13042,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12482,11 +13054,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -12516,7 +13089,7 @@ async fn campaigns_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::CampaignsSlashListPathParams>,
-  Query(query_params): Query<models::CampaignsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CampaignsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -12524,6 +13097,8 @@ where
     A: apis::campaigns::Campaigns<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -12544,7 +13119,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().campaigns_slash_list(
+
+
+let result = api_impl.as_ref().campaigns_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -12564,7 +13142,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12582,7 +13160,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12600,7 +13178,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12612,11 +13190,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -12624,9 +13203,10 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct CampaignsSlashUpdateBodyValidator<'a> {
-          #[validate(
-                  length(min = 1, max = 30),
-              )]
+            #[validate(
+                    length(min = 1, max = 30),
+                   nested,
+            )]
           body: &'a Vec<models::CampaignUpdateRequest>,
     }
 
@@ -12666,6 +13246,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     campaigns_slash_update_validation(
@@ -12684,7 +13266,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().campaigns_slash_update(
+
+
+let result = api_impl.as_ref().campaigns_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -12704,7 +13289,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12722,7 +13307,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12734,11 +13319,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -12768,7 +13354,7 @@ async fn catalogs_product_group_pins_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::CatalogsProductGroupPinsSlashListPathParams>,
-  Query(query_params): Query<models::CatalogsProductGroupPinsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CatalogsProductGroupPinsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -12776,6 +13362,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -12796,7 +13384,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().catalogs_product_group_pins_slash_list(
+
+
+let result = api_impl.as_ref().catalogs_product_group_pins_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -12816,7 +13407,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12834,7 +13425,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12852,7 +13443,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12870,7 +13461,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12888,7 +13479,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -12900,11 +13491,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -12912,7 +13504,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct CatalogsProductGroupsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::MultipleProductGroupsInner,
     }
 
@@ -12941,7 +13533,7 @@ async fn catalogs_product_groups_slash_create<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::CatalogsProductGroupsSlashCreateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CatalogsProductGroupsSlashCreateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::MultipleProductGroupsInner>,
 ) -> Result<Response, StatusCode>
@@ -12950,6 +13542,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -12970,7 +13564,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().catalogs_product_groups_slash_create(
+
+
+let result = api_impl.as_ref().catalogs_product_groups_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -12990,7 +13587,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13008,7 +13605,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13026,7 +13623,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13044,7 +13641,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13062,7 +13659,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13080,7 +13677,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13092,11 +13689,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -13104,7 +13702,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct CatalogsProductGroupsSlashCreateManyBodyValidator<'a> {
-            #[validate(nested)]
+                #[validate(nested)]
           body: &'a Vec<models::MultipleProductGroupsInner>,
     }
 
@@ -13133,7 +13731,7 @@ async fn catalogs_product_groups_slash_create_many<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::CatalogsProductGroupsSlashCreateManyQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CatalogsProductGroupsSlashCreateManyQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<Vec<models::MultipleProductGroupsInner>>,
 ) -> Result<Response, StatusCode>
@@ -13142,6 +13740,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -13162,7 +13762,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().catalogs_product_groups_slash_create_many(
+
+
+let result = api_impl.as_ref().catalogs_product_groups_slash_create_many(
+      
       &method,
       &host,
       &cookies,
@@ -13182,7 +13785,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13200,7 +13803,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13218,7 +13821,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13236,7 +13839,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13254,7 +13857,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13272,7 +13875,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13284,11 +13887,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -13318,7 +13922,7 @@ async fn catalogs_product_groups_slash_delete<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::CatalogsProductGroupsSlashDeletePathParams>,
-  Query(query_params): Query<models::CatalogsProductGroupsSlashDeleteQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CatalogsProductGroupsSlashDeleteQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -13326,6 +13930,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -13346,7 +13952,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().catalogs_product_groups_slash_delete(
+
+
+let result = api_impl.as_ref().catalogs_product_groups_slash_delete(
+      
       &method,
       &host,
       &cookies,
@@ -13371,7 +13980,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13389,7 +13998,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13407,7 +14016,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13425,7 +14034,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13443,7 +14052,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13461,7 +14070,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13473,11 +14082,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -13502,7 +14112,7 @@ async fn catalogs_product_groups_slash_delete_many<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::CatalogsProductGroupsSlashDeleteManyQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CatalogsProductGroupsSlashDeleteManyQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -13510,6 +14120,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -13528,7 +14140,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().catalogs_product_groups_slash_delete_many(
+
+
+let result = api_impl.as_ref().catalogs_product_groups_slash_delete_many(
+      
       &method,
       &host,
       &cookies,
@@ -13552,7 +14167,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13570,7 +14185,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13588,7 +14203,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13606,7 +14221,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13624,7 +14239,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13636,11 +14251,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -13670,7 +14286,7 @@ async fn catalogs_product_groups_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::CatalogsProductGroupsSlashGetPathParams>,
-  Query(query_params): Query<models::CatalogsProductGroupsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CatalogsProductGroupsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -13678,6 +14294,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -13698,7 +14316,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().catalogs_product_groups_slash_get(
+
+
+let result = api_impl.as_ref().catalogs_product_groups_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -13718,7 +14339,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13736,7 +14357,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13754,7 +14375,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13772,7 +14393,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13790,7 +14411,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13808,7 +14429,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13826,7 +14447,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13838,11 +14459,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -13867,7 +14489,7 @@ async fn catalogs_product_groups_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::CatalogsProductGroupsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CatalogsProductGroupsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -13875,6 +14497,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -13893,7 +14517,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().catalogs_product_groups_slash_list(
+
+
+let result = api_impl.as_ref().catalogs_product_groups_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -13912,7 +14539,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13930,7 +14557,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13948,7 +14575,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13966,7 +14593,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -13984,7 +14611,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14002,7 +14629,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14020,7 +14647,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14032,11 +14659,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -14066,7 +14694,7 @@ async fn catalogs_product_groups_slash_product_counts_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::CatalogsProductGroupsSlashProductCountsGetPathParams>,
-  Query(query_params): Query<models::CatalogsProductGroupsSlashProductCountsGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CatalogsProductGroupsSlashProductCountsGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -14074,6 +14702,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -14094,7 +14724,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().catalogs_product_groups_slash_product_counts_get(
+
+
+let result = api_impl.as_ref().catalogs_product_groups_slash_product_counts_get(
+      
       &method,
       &host,
       &cookies,
@@ -14114,7 +14747,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14132,7 +14765,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14150,7 +14783,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14168,7 +14801,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14180,11 +14813,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -14192,7 +14826,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct CatalogsProductGroupsSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CatalogsProductGroupsUpdateRequest,
     }
 
@@ -14226,7 +14860,7 @@ async fn catalogs_product_groups_slash_update<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::CatalogsProductGroupsSlashUpdatePathParams>,
-  Query(query_params): Query<models::CatalogsProductGroupsSlashUpdateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CatalogsProductGroupsSlashUpdateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::CatalogsProductGroupsUpdateRequest>,
 ) -> Result<Response, StatusCode>
@@ -14235,6 +14869,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -14257,7 +14893,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().catalogs_product_groups_slash_update(
+
+
+let result = api_impl.as_ref().catalogs_product_groups_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -14278,7 +14917,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14296,7 +14935,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14314,7 +14953,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14332,7 +14971,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14350,7 +14989,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14368,7 +15007,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14386,7 +15025,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14398,11 +15037,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -14410,7 +15050,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct CatalogsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CatalogsCreateRequest,
     }
 
@@ -14439,7 +15079,7 @@ async fn catalogs_slash_create<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::CatalogsSlashCreateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CatalogsSlashCreateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::CatalogsCreateRequest>,
 ) -> Result<Response, StatusCode>
@@ -14448,6 +15088,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -14468,7 +15110,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().catalogs_slash_create(
+
+
+let result = api_impl.as_ref().catalogs_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -14488,7 +15133,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14506,7 +15151,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14524,7 +15169,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14542,7 +15187,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14554,11 +15199,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -14583,7 +15229,7 @@ async fn catalogs_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::CatalogsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CatalogsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -14591,6 +15237,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -14609,7 +15257,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().catalogs_slash_list(
+
+
+let result = api_impl.as_ref().catalogs_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -14628,7 +15279,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14646,7 +15297,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14664,7 +15315,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14682,7 +15333,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14694,11 +15345,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -14728,7 +15380,7 @@ async fn feed_processing_results_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::FeedProcessingResultsSlashListPathParams>,
-  Query(query_params): Query<models::FeedProcessingResultsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::FeedProcessingResultsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -14736,6 +15388,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -14756,7 +15410,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().feed_processing_results_slash_list(
+
+
+let result = api_impl.as_ref().feed_processing_results_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -14776,7 +15433,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14794,7 +15451,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14812,7 +15469,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14830,7 +15487,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14848,7 +15505,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14860,11 +15517,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -14872,7 +15530,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct FeedsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::FeedsCreateRequest,
     }
 
@@ -14901,7 +15559,7 @@ async fn feeds_slash_create<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::FeedsSlashCreateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::FeedsSlashCreateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::FeedsCreateRequest>,
 ) -> Result<Response, StatusCode>
@@ -14910,6 +15568,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -14930,7 +15590,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().feeds_slash_create(
+
+
+let result = api_impl.as_ref().feeds_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -14950,7 +15613,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14968,7 +15631,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -14986,7 +15649,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15004,7 +15667,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15022,7 +15685,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15040,7 +15703,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15058,7 +15721,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15076,7 +15739,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15088,11 +15751,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -15122,7 +15786,7 @@ async fn feeds_slash_delete<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::FeedsSlashDeletePathParams>,
-  Query(query_params): Query<models::FeedsSlashDeleteQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::FeedsSlashDeleteQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -15130,6 +15794,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -15150,7 +15816,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().feeds_slash_delete(
+
+
+let result = api_impl.as_ref().feeds_slash_delete(
+      
       &method,
       &host,
       &cookies,
@@ -15175,7 +15844,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15193,7 +15862,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15211,7 +15880,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15229,7 +15898,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15247,7 +15916,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15259,11 +15928,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -15293,7 +15963,7 @@ async fn feeds_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::FeedsSlashGetPathParams>,
-  Query(query_params): Query<models::FeedsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::FeedsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -15301,6 +15971,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -15321,7 +15993,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().feeds_slash_get(
+
+
+let result = api_impl.as_ref().feeds_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -15341,7 +16016,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15359,7 +16034,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15377,7 +16052,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15395,7 +16070,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15413,7 +16088,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15425,11 +16100,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -15459,7 +16135,7 @@ async fn feeds_slash_ingest<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::FeedsSlashIngestPathParams>,
-  Query(query_params): Query<models::FeedsSlashIngestQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::FeedsSlashIngestQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -15467,6 +16143,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -15487,7 +16165,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().feeds_slash_ingest(
+
+
+let result = api_impl.as_ref().feeds_slash_ingest(
+      
       &method,
       &host,
       &cookies,
@@ -15507,7 +16188,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15525,7 +16206,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15543,7 +16224,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15561,7 +16242,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15579,7 +16260,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15591,11 +16272,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -15620,7 +16302,7 @@ async fn feeds_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::FeedsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::FeedsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -15628,6 +16310,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -15646,7 +16330,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().feeds_slash_list(
+
+
+let result = api_impl.as_ref().feeds_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -15665,7 +16352,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15683,7 +16370,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15701,7 +16388,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15719,7 +16406,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15731,11 +16418,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -15743,7 +16431,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct FeedsSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::FeedsUpdateRequest,
     }
 
@@ -15777,7 +16465,7 @@ async fn feeds_slash_update<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::FeedsSlashUpdatePathParams>,
-  Query(query_params): Query<models::FeedsSlashUpdateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::FeedsSlashUpdateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::FeedsUpdateRequest>,
 ) -> Result<Response, StatusCode>
@@ -15786,6 +16474,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -15808,7 +16498,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().feeds_slash_update(
+
+
+let result = api_impl.as_ref().feeds_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -15829,7 +16522,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15847,7 +16540,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15865,7 +16558,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15883,7 +16576,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15901,7 +16594,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -15913,11 +16606,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -15947,7 +16641,7 @@ async fn items_batch_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::ItemsBatchSlashGetPathParams>,
-  Query(query_params): Query<models::ItemsBatchSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::ItemsBatchSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -15955,6 +16649,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -15975,7 +16671,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().items_batch_slash_get(
+
+
+let result = api_impl.as_ref().items_batch_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -15995,7 +16694,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16013,7 +16712,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16031,7 +16730,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16049,7 +16748,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16067,7 +16766,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16085,7 +16784,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16097,11 +16796,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -16109,7 +16809,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct ItemsBatchSlashPostBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::ItemsBatchPostRequest,
     }
 
@@ -16138,7 +16838,7 @@ async fn items_batch_slash_post<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::ItemsBatchSlashPostQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::ItemsBatchSlashPostQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::ItemsBatchPostRequest>,
 ) -> Result<Response, StatusCode>
@@ -16147,6 +16847,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -16167,7 +16869,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().items_batch_slash_post(
+
+
+let result = api_impl.as_ref().items_batch_slash_post(
+      
       &method,
       &host,
       &cookies,
@@ -16187,7 +16892,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16205,7 +16910,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16223,7 +16928,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16241,7 +16946,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16259,7 +16964,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16271,11 +16976,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -16305,7 +17011,7 @@ async fn items_issues_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::ItemsIssuesSlashListPathParams>,
-  Query(query_params): Query<models::ItemsIssuesSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::ItemsIssuesSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -16313,6 +17019,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -16333,7 +17041,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().items_issues_slash_list(
+
+
+let result = api_impl.as_ref().items_issues_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -16353,7 +17064,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16371,7 +17082,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16389,7 +17100,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16407,7 +17118,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16425,7 +17136,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16437,11 +17148,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -16466,7 +17178,7 @@ async fn items_slash_get<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::ItemsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::ItemsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -16474,6 +17186,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -16492,7 +17206,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().items_slash_get(
+
+
+let result = api_impl.as_ref().items_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -16511,7 +17228,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16529,7 +17246,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16547,7 +17264,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16565,7 +17282,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16583,7 +17300,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16595,11 +17312,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -16607,7 +17325,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct ItemsSlashPostBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CatalogsItemsRequest,
     }
 
@@ -16636,7 +17354,7 @@ async fn items_slash_post<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::ItemsSlashPostQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::ItemsSlashPostQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::CatalogsItemsRequest>,
 ) -> Result<Response, StatusCode>
@@ -16645,6 +17363,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -16665,7 +17385,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().items_slash_post(
+
+
+let result = api_impl.as_ref().items_slash_post(
+      
       &method,
       &host,
       &cookies,
@@ -16685,7 +17408,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16703,7 +17426,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16721,7 +17444,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16739,7 +17462,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16757,7 +17480,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16769,11 +17492,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -16781,7 +17505,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct ProductsByProductGroupFilterSlashListBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CatalogsListProductsByFilterRequest,
     }
 
@@ -16810,7 +17534,7 @@ async fn products_by_product_group_filter_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::ProductsByProductGroupFilterSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::ProductsByProductGroupFilterSlashListQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::CatalogsListProductsByFilterRequest>,
 ) -> Result<Response, StatusCode>
@@ -16819,6 +17543,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -16839,7 +17565,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().products_by_product_group_filter_slash_list(
+
+
+let result = api_impl.as_ref().products_by_product_group_filter_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -16859,7 +17588,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16877,7 +17606,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16895,7 +17624,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16913,7 +17642,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -16925,11 +17654,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -16937,7 +17667,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct ReportsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CatalogsReportParameters,
     }
 
@@ -16966,7 +17696,7 @@ async fn reports_slash_create<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::ReportsSlashCreateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::ReportsSlashCreateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::CatalogsReportParameters>,
 ) -> Result<Response, StatusCode>
@@ -16975,6 +17705,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -16995,7 +17727,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().reports_slash_create(
+
+
+let result = api_impl.as_ref().reports_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -17015,7 +17750,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17033,7 +17768,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17051,7 +17786,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17069,7 +17804,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17081,11 +17816,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -17110,7 +17846,7 @@ async fn reports_slash_get<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::ReportsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::ReportsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -17118,6 +17854,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -17136,7 +17874,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().reports_slash_get(
+
+
+let result = api_impl.as_ref().reports_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -17155,7 +17896,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17173,7 +17914,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17191,7 +17932,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17209,7 +17950,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17221,11 +17962,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -17250,7 +17992,7 @@ async fn reports_slash_stats<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::ReportsSlashStatsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::ReportsSlashStatsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -17258,6 +18000,8 @@ where
     A: apis::catalogs::Catalogs<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -17276,7 +18020,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().reports_slash_stats(
+
+
+let result = api_impl.as_ref().reports_slash_stats(
+      
       &method,
       &host,
       &cookies,
@@ -17295,7 +18042,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17313,7 +18060,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17331,7 +18078,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17343,11 +18090,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -17355,7 +18103,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct EventsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::ConversionEvents,
     }
 
@@ -17390,7 +18138,7 @@ async fn events_slash_create<I, A, E, C>(
   cookies: CookieJar,
   headers: HeaderMap,
   Path(path_params): Path<models::EventsSlashCreatePathParams>,
-  Query(query_params): Query<models::EventsSlashCreateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::EventsSlashCreateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::ConversionEvents>,
 ) -> Result<Response, StatusCode>
@@ -17399,16 +18147,15 @@ where
     A: apis::conversion_events::ConversionEvents<E, Claims = C>+ apis::ApiAuthBasic<Claims = C> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
     // Authentication
     let claims_in_auth_header = api_impl.as_ref().extract_claims_from_auth_header(apis::BasicAuthKind::Bearer, &headers, "authorization").await;
     let claims = None
              .or(claims_in_auth_header)
           ;
     let Some(claims) = claims else {
-        return Response::builder()
-                        .status(StatusCode::UNAUTHORIZED)
-                        .body(Body::empty())
-                        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR);
+        return response_with_status_code_only(StatusCode::UNAUTHORIZED);
     };
 
 
@@ -17432,7 +18179,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().events_slash_create(
+
+
+let result = api_impl.as_ref().events_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -17454,7 +18204,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17472,7 +18222,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17490,7 +18240,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17508,7 +18258,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17526,7 +18276,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17544,7 +18294,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17562,7 +18312,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17580,7 +18330,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17592,11 +18342,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -17604,7 +18355,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct ConversionTagsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::ConversionTagCreate,
     }
 
@@ -17644,6 +18395,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     conversion_tags_slash_create_validation(
@@ -17662,7 +18415,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().conversion_tags_slash_create(
+
+
+let result = api_impl.as_ref().conversion_tags_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -17682,7 +18438,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17700,7 +18456,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17712,11 +18468,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -17751,6 +18508,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     conversion_tags_slash_get_validation(
@@ -17767,7 +18526,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().conversion_tags_slash_get(
+
+
+let result = api_impl.as_ref().conversion_tags_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -17786,7 +18548,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17804,7 +18566,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17816,11 +18578,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -17850,7 +18613,7 @@ async fn conversion_tags_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::ConversionTagsSlashListPathParams>,
-  Query(query_params): Query<models::ConversionTagsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::ConversionTagsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -17858,6 +18621,8 @@ where
     A: apis::conversion_tags::ConversionTags<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -17878,7 +18643,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().conversion_tags_slash_list(
+
+
+let result = api_impl.as_ref().conversion_tags_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -17898,7 +18666,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17916,7 +18684,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -17928,11 +18696,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -17967,6 +18736,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ocpm_eligible_conversion_tags_slash_get_validation(
@@ -17983,7 +18754,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ocpm_eligible_conversion_tags_slash_get(
+
+
+let result = api_impl.as_ref().ocpm_eligible_conversion_tags_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -18002,7 +18776,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18020,7 +18794,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18032,11 +18806,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -18066,7 +18841,7 @@ async fn page_visit_conversion_tags_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::PageVisitConversionTagsSlashGetPathParams>,
-  Query(query_params): Query<models::PageVisitConversionTagsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::PageVisitConversionTagsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -18074,6 +18849,8 @@ where
     A: apis::conversion_tags::ConversionTags<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -18094,7 +18871,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().page_visit_conversion_tags_slash_get(
+
+
+let result = api_impl.as_ref().page_visit_conversion_tags_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -18114,7 +18894,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18132,7 +18912,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18144,11 +18924,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -18156,7 +18937,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct CustomerListsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CustomerListRequest,
     }
 
@@ -18196,6 +18977,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     customer_lists_slash_create_validation(
@@ -18214,7 +18997,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().customer_lists_slash_create(
+
+
+let result = api_impl.as_ref().customer_lists_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -18234,7 +19020,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18252,7 +19038,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18264,11 +19050,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -18303,6 +19090,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     customer_lists_slash_get_validation(
@@ -18319,7 +19108,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().customer_lists_slash_get(
+
+
+let result = api_impl.as_ref().customer_lists_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -18338,7 +19130,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18356,7 +19148,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18368,11 +19160,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -18402,7 +19195,7 @@ async fn customer_lists_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::CustomerListsSlashListPathParams>,
-  Query(query_params): Query<models::CustomerListsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CustomerListsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -18410,6 +19203,8 @@ where
     A: apis::customer_lists::CustomerLists<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -18430,7 +19225,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().customer_lists_slash_list(
+
+
+let result = api_impl.as_ref().customer_lists_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -18450,7 +19248,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18468,7 +19266,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18480,11 +19278,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -18492,7 +19291,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct CustomerListsSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::CustomerListUpdateRequest,
     }
 
@@ -18532,6 +19331,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     customer_lists_slash_update_validation(
@@ -18550,7 +19351,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().customer_lists_slash_update(
+
+
+let result = api_impl.as_ref().customer_lists_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -18570,7 +19374,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18588,7 +19392,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18600,11 +19404,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -18639,6 +19444,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     integrations_commerce_slash_del_validation(
@@ -18655,7 +19462,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().integrations_commerce_slash_del(
+
+
+let result = api_impl.as_ref().integrations_commerce_slash_del(
+      
       &method,
       &host,
       &cookies,
@@ -18679,7 +19489,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18691,11 +19501,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -18730,6 +19541,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     integrations_commerce_slash_get_validation(
@@ -18746,7 +19559,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().integrations_commerce_slash_get(
+
+
+let result = api_impl.as_ref().integrations_commerce_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -18765,7 +19581,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18783,7 +19599,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18801,7 +19617,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18819,7 +19635,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18831,11 +19647,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -18843,7 +19660,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct IntegrationsCommerceSlashPatchBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::IntegrationRequestPatch,
     }
 
@@ -18885,6 +19702,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     integrations_commerce_slash_patch_validation(
@@ -18903,7 +19722,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().integrations_commerce_slash_patch(
+
+
+let result = api_impl.as_ref().integrations_commerce_slash_patch(
+      
       &method,
       &host,
       &cookies,
@@ -18923,7 +19745,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18941,7 +19763,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18959,7 +19781,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18977,7 +19799,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -18989,11 +19811,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -19001,7 +19824,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct IntegrationsCommerceSlashPostBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::IntegrationRequest,
     }
 
@@ -19038,6 +19861,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     integrations_commerce_slash_post_validation(
@@ -19054,7 +19879,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().integrations_commerce_slash_post(
+
+
+let result = api_impl.as_ref().integrations_commerce_slash_post(
+      
       &method,
       &host,
       &cookies,
@@ -19073,7 +19901,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19091,7 +19919,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19109,7 +19937,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19127,7 +19955,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19139,11 +19967,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -19151,7 +19980,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct IntegrationsLogsSlashPostBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::IntegrationLogsRequest,
     }
 
@@ -19186,6 +20015,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     integrations_logs_slash_post_validation(
@@ -19202,7 +20033,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().integrations_logs_slash_post(
+
+
+let result = api_impl.as_ref().integrations_logs_slash_post(
+      
       &method,
       &host,
       &cookies,
@@ -19221,7 +20055,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19239,7 +20073,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19257,7 +20091,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19269,11 +20103,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -19308,6 +20143,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     integrations_slash_get_by_id_validation(
@@ -19324,7 +20161,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().integrations_slash_get_by_id(
+
+
+let result = api_impl.as_ref().integrations_slash_get_by_id(
+      
       &method,
       &host,
       &cookies,
@@ -19343,7 +20183,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19361,7 +20201,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19379,7 +20219,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19391,11 +20231,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -19420,7 +20261,7 @@ async fn integrations_slash_get_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::IntegrationsSlashGetListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::IntegrationsSlashGetListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -19428,6 +20269,8 @@ where
     A: apis::integrations::Integrations<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -19446,7 +20289,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().integrations_slash_get_list(
+
+
+let result = api_impl.as_ref().integrations_slash_get_list(
+      
       &method,
       &host,
       &cookies,
@@ -19465,7 +20311,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19483,7 +20329,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19495,11 +20341,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -19529,7 +20376,7 @@ async fn country_keywords_metrics_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::CountryKeywordsMetricsSlashGetPathParams>,
-  Query(query_params): Query<models::CountryKeywordsMetricsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::CountryKeywordsMetricsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -19537,6 +20384,8 @@ where
     A: apis::keywords::Keywords<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -19557,7 +20406,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().country_keywords_metrics_slash_get(
+
+
+let result = api_impl.as_ref().country_keywords_metrics_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -19577,7 +20429,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19595,7 +20447,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19607,11 +20459,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -19619,7 +20472,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct KeywordsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::KeywordsRequest,
     }
 
@@ -19659,6 +20512,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     keywords_slash_create_validation(
@@ -19677,7 +20532,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().keywords_slash_create(
+
+
+let result = api_impl.as_ref().keywords_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -19697,7 +20555,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19715,7 +20573,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19727,11 +20585,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -19761,7 +20620,7 @@ async fn keywords_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::KeywordsSlashGetPathParams>,
-  Query(query_params): Query<models::KeywordsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::KeywordsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -19769,6 +20628,8 @@ where
     A: apis::keywords::Keywords<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -19789,7 +20650,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().keywords_slash_get(
+
+
+let result = api_impl.as_ref().keywords_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -19809,7 +20673,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19827,7 +20691,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19839,11 +20703,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -19851,7 +20716,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct KeywordsSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::KeywordUpdateBody,
     }
 
@@ -19891,6 +20756,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     keywords_slash_update_validation(
@@ -19909,7 +20776,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().keywords_slash_update(
+
+
+let result = api_impl.as_ref().keywords_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -19929,7 +20799,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19947,7 +20817,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -19959,11 +20829,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -19993,7 +20864,7 @@ async fn trending_keywords_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::TrendingKeywordsSlashListPathParams>,
-  Query(query_params): Query<models::TrendingKeywordsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::TrendingKeywordsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -20001,6 +20872,8 @@ where
     A: apis::keywords::Keywords<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -20021,7 +20894,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().trending_keywords_slash_list(
+
+
+let result = api_impl.as_ref().trending_keywords_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -20041,7 +20917,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20059,7 +20935,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20077,7 +20953,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20089,11 +20965,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -20128,6 +21005,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ad_accounts_subscriptions_slash_del_by_id_validation(
@@ -20144,7 +21023,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_accounts_subscriptions_slash_del_by_id(
+
+
+let result = api_impl.as_ref().ad_accounts_subscriptions_slash_del_by_id(
+      
       &method,
       &host,
       &cookies,
@@ -20168,7 +21050,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20186,7 +21068,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20204,7 +21086,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20222,7 +21104,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20234,11 +21116,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -20273,6 +21156,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ad_accounts_subscriptions_slash_get_by_id_validation(
@@ -20289,7 +21174,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_by_id(
+
+
+let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_by_id(
+      
       &method,
       &host,
       &cookies,
@@ -20308,7 +21196,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20326,7 +21214,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20344,7 +21232,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20362,7 +21250,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20380,7 +21268,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20392,11 +21280,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -20426,7 +21315,7 @@ async fn ad_accounts_subscriptions_slash_get_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::AdAccountsSubscriptionsSlashGetListPathParams>,
-  Query(query_params): Query<models::AdAccountsSubscriptionsSlashGetListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::AdAccountsSubscriptionsSlashGetListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -20434,6 +21323,8 @@ where
     A: apis::lead_ads::LeadAds<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -20454,7 +21345,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_list(
+
+
+let result = api_impl.as_ref().ad_accounts_subscriptions_slash_get_list(
+      
       &method,
       &host,
       &cookies,
@@ -20474,7 +21368,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20492,7 +21386,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20510,7 +21404,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20522,11 +21416,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -20534,7 +21429,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct AdAccountsSubscriptionsSlashPostBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::AdAccountCreateSubscriptionRequest,
     }
 
@@ -20574,6 +21469,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ad_accounts_subscriptions_slash_post_validation(
@@ -20592,7 +21489,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_accounts_subscriptions_slash_post(
+
+
+let result = api_impl.as_ref().ad_accounts_subscriptions_slash_post(
+      
       &method,
       &host,
       &cookies,
@@ -20612,7 +21512,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20630,7 +21530,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20648,7 +21548,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20666,7 +21566,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20678,11 +21578,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -20717,6 +21618,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     lead_form_slash_get_validation(
@@ -20733,7 +21636,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().lead_form_slash_get(
+
+
+let result = api_impl.as_ref().lead_form_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -20752,7 +21658,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20770,7 +21676,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20788,7 +21694,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20806,7 +21712,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20818,11 +21724,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -20830,7 +21737,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct LeadFormTestSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::LeadFormTestRequest,
     }
 
@@ -20870,6 +21777,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     lead_form_test_slash_create_validation(
@@ -20888,7 +21797,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().lead_form_test_slash_create(
+
+
+let result = api_impl.as_ref().lead_form_test_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -20908,7 +21820,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20926,7 +21838,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20944,7 +21856,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20962,7 +21874,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -20974,11 +21886,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -20986,9 +21899,10 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct LeadFormsSlashCreateBodyValidator<'a> {
-          #[validate(
-                  length(min = 1, max = 30),
-              )]
+            #[validate(
+                    length(min = 1, max = 30),
+                   nested,
+            )]
           body: &'a Vec<models::LeadFormCreateRequest>,
     }
 
@@ -21028,6 +21942,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     lead_forms_slash_create_validation(
@@ -21046,7 +21962,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().lead_forms_slash_create(
+
+
+let result = api_impl.as_ref().lead_forms_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -21066,7 +21985,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21084,7 +22003,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21102,7 +22021,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21114,11 +22033,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -21148,7 +22068,7 @@ async fn lead_forms_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::LeadFormsSlashListPathParams>,
-  Query(query_params): Query<models::LeadFormsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::LeadFormsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -21156,6 +22076,8 @@ where
     A: apis::lead_forms::LeadForms<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -21176,7 +22098,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().lead_forms_slash_list(
+
+
+let result = api_impl.as_ref().lead_forms_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -21196,7 +22121,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21214,7 +22139,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21232,7 +22157,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21244,11 +22169,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -21256,9 +22182,10 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct LeadFormsSlashUpdateBodyValidator<'a> {
-          #[validate(
-                  length(min = 1, max = 30),
-              )]
+            #[validate(
+                    length(min = 1, max = 30),
+                   nested,
+            )]
           body: &'a Vec<models::LeadFormUpdateRequest>,
     }
 
@@ -21298,6 +22225,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     lead_forms_slash_update_validation(
@@ -21316,7 +22245,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().lead_forms_slash_update(
+
+
+let result = api_impl.as_ref().lead_forms_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -21336,7 +22268,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21354,7 +22286,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21372,7 +22304,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21384,11 +22316,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -21396,7 +22329,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct LeadsExportSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::LeadsExportCreateRequest,
     }
 
@@ -21436,6 +22369,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     leads_export_slash_create_validation(
@@ -21454,7 +22389,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().leads_export_slash_create(
+
+
+let result = api_impl.as_ref().leads_export_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -21474,7 +22412,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21492,7 +22430,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21510,7 +22448,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21522,11 +22460,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -21561,6 +22500,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     leads_export_slash_get_validation(
@@ -21577,7 +22518,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().leads_export_slash_get(
+
+
+let result = api_impl.as_ref().leads_export_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -21596,7 +22540,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21614,7 +22558,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21632,7 +22576,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21650,7 +22594,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21662,11 +22606,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -21674,7 +22619,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct MediaSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::MediaUploadRequest,
     }
 
@@ -21709,6 +22654,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     media_slash_create_validation(
@@ -21725,7 +22672,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().media_slash_create(
+
+
+let result = api_impl.as_ref().media_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -21744,7 +22694,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21762,7 +22712,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21774,11 +22724,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -21813,6 +22764,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     media_slash_get_validation(
@@ -21829,7 +22782,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().media_slash_get(
+
+
+let result = api_impl.as_ref().media_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -21848,7 +22804,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21866,7 +22822,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21884,7 +22840,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21896,11 +22852,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -21925,7 +22882,7 @@ async fn media_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::MediaSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::MediaSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -21933,6 +22890,8 @@ where
     A: apis::media::Media<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -21951,7 +22910,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().media_slash_list(
+
+
+let result = api_impl.as_ref().media_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -21970,7 +22932,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -21988,7 +22950,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22000,11 +22962,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -22012,7 +22975,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct OauthSlashTokenBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::OauthAccessTokenRequest,
     }
 
@@ -22046,16 +23009,15 @@ where
     A: apis::oauth::Oauth<E, Claims = C>+ apis::ApiAuthBasic<Claims = C> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
     // Authentication
     let claims_in_auth_header = api_impl.as_ref().extract_claims_from_auth_header(apis::BasicAuthKind::Basic, &headers, "authorization").await;
     let claims = None
              .or(claims_in_auth_header)
           ;
     let Some(claims) = claims else {
-        return Response::builder()
-                        .status(StatusCode::UNAUTHORIZED)
-                        .body(Body::empty())
-                        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR);
+        return response_with_status_code_only(StatusCode::UNAUTHORIZED);
     };
 
 
@@ -22075,7 +23037,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().oauth_slash_token(
+
+
+let result = api_impl.as_ref().oauth_slash_token(
+      
       &method,
       &host,
       &cookies,
@@ -22095,7 +23060,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22113,7 +23078,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22125,11 +23090,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -22164,6 +23130,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     order_lines_slash_get_validation(
@@ -22180,7 +23148,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().order_lines_slash_get(
+
+
+let result = api_impl.as_ref().order_lines_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -22199,7 +23170,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22217,7 +23188,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22229,11 +23200,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -22263,7 +23235,7 @@ async fn order_lines_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::OrderLinesSlashListPathParams>,
-  Query(query_params): Query<models::OrderLinesSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::OrderLinesSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -22271,6 +23243,8 @@ where
     A: apis::order_lines::OrderLines<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -22291,7 +23265,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().order_lines_slash_list(
+
+
+let result = api_impl.as_ref().order_lines_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -22311,7 +23288,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22329,7 +23306,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22341,11 +23318,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -22370,7 +23348,7 @@ async fn multi_pins_slash_analytics<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::MultiPinsSlashAnalyticsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::MultiPinsSlashAnalyticsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -22378,6 +23356,8 @@ where
     A: apis::pins::Pins<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -22396,7 +23376,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().multi_pins_slash_analytics(
+
+
+let result = api_impl.as_ref().multi_pins_slash_analytics(
+      
       &method,
       &host,
       &cookies,
@@ -22415,7 +23398,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22433,7 +23416,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22451,7 +23434,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22469,7 +23452,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22487,7 +23470,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22505,7 +23488,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22517,11 +23500,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -22551,7 +23535,7 @@ async fn pins_slash_analytics<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::PinsSlashAnalyticsPathParams>,
-  Query(query_params): Query<models::PinsSlashAnalyticsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::PinsSlashAnalyticsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -22559,6 +23543,8 @@ where
     A: apis::pins::Pins<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -22579,7 +23565,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().pins_slash_analytics(
+
+
+let result = api_impl.as_ref().pins_slash_analytics(
+      
       &method,
       &host,
       &cookies,
@@ -22599,7 +23588,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22617,7 +23606,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22635,7 +23624,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22653,7 +23642,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22671,7 +23660,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22683,11 +23672,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -22695,7 +23685,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct PinsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::PinCreate,
     }
 
@@ -22724,7 +23714,7 @@ async fn pins_slash_create<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::PinsSlashCreateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::PinsSlashCreateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::PinCreate>,
 ) -> Result<Response, StatusCode>
@@ -22733,6 +23723,8 @@ where
     A: apis::pins::Pins<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -22753,7 +23745,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().pins_slash_create(
+
+
+let result = api_impl.as_ref().pins_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -22773,7 +23768,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22791,7 +23786,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22809,7 +23804,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22827,7 +23822,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22845,7 +23840,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22863,7 +23858,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22875,11 +23870,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -22909,7 +23905,7 @@ async fn pins_slash_delete<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::PinsSlashDeletePathParams>,
-  Query(query_params): Query<models::PinsSlashDeleteQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::PinsSlashDeleteQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -22917,6 +23913,8 @@ where
     A: apis::pins::Pins<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -22937,7 +23935,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().pins_slash_delete(
+
+
+let result = api_impl.as_ref().pins_slash_delete(
+      
       &method,
       &host,
       &cookies,
@@ -22962,7 +23963,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22980,7 +23981,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -22998,7 +23999,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23010,11 +24011,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -23044,7 +24046,7 @@ async fn pins_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::PinsSlashGetPathParams>,
-  Query(query_params): Query<models::PinsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::PinsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -23052,6 +24054,8 @@ where
     A: apis::pins::Pins<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -23072,7 +24076,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().pins_slash_get(
+
+
+let result = api_impl.as_ref().pins_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -23092,7 +24099,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23110,7 +24117,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23128,7 +24135,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23146,7 +24153,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23158,11 +24165,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -23187,7 +24195,7 @@ async fn pins_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::PinsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::PinsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -23195,6 +24203,8 @@ where
     A: apis::pins::Pins<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -23213,7 +24223,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().pins_slash_list(
+
+
+let result = api_impl.as_ref().pins_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -23232,7 +24245,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23250,7 +24263,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23268,7 +24281,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23280,11 +24293,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -23292,7 +24306,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct PinsSlashSaveBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::PinsSaveRequest,
     }
 
@@ -23326,7 +24340,7 @@ async fn pins_slash_save<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::PinsSlashSavePathParams>,
-  Query(query_params): Query<models::PinsSlashSaveQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::PinsSlashSaveQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::PinsSaveRequest>,
 ) -> Result<Response, StatusCode>
@@ -23335,6 +24349,8 @@ where
     A: apis::pins::Pins<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -23357,7 +24373,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().pins_slash_save(
+
+
+let result = api_impl.as_ref().pins_slash_save(
+      
       &method,
       &host,
       &cookies,
@@ -23378,7 +24397,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23396,7 +24415,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23414,7 +24433,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23432,7 +24451,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23444,11 +24463,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -23456,7 +24476,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct PinsSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::PinUpdate,
     }
 
@@ -23490,7 +24510,7 @@ async fn pins_slash_update<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::PinsSlashUpdatePathParams>,
-  Query(query_params): Query<models::PinsSlashUpdateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::PinsSlashUpdateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::PinUpdate>,
 ) -> Result<Response, StatusCode>
@@ -23499,6 +24519,8 @@ where
     A: apis::pins::Pins<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -23521,7 +24543,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().pins_slash_update(
+
+
+let result = api_impl.as_ref().pins_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -23542,7 +24567,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23560,7 +24585,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23578,7 +24603,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23596,7 +24621,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23614,7 +24639,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23626,11 +24651,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -23638,7 +24664,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct ProductGroupPromotionsSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::ProductGroupPromotionCreateRequest,
     }
 
@@ -23678,6 +24704,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     product_group_promotions_slash_create_validation(
@@ -23696,7 +24724,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().product_group_promotions_slash_create(
+
+
+let result = api_impl.as_ref().product_group_promotions_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -23716,7 +24747,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23734,7 +24765,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23746,11 +24777,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -23785,6 +24817,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     product_group_promotions_slash_get_validation(
@@ -23801,7 +24835,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().product_group_promotions_slash_get(
+
+
+let result = api_impl.as_ref().product_group_promotions_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -23820,7 +24857,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23838,7 +24875,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23850,11 +24887,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -23884,7 +24922,7 @@ async fn product_group_promotions_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::ProductGroupPromotionsSlashListPathParams>,
-  Query(query_params): Query<models::ProductGroupPromotionsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::ProductGroupPromotionsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -23892,6 +24930,8 @@ where
     A: apis::product_group_promotions::ProductGroupPromotions<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -23912,7 +24952,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().product_group_promotions_slash_list(
+
+
+let result = api_impl.as_ref().product_group_promotions_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -23932,7 +24975,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23950,7 +24993,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -23962,11 +25005,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -23974,7 +25018,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct ProductGroupPromotionsSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::ProductGroupPromotionUpdateRequest,
     }
 
@@ -24014,6 +25058,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     product_group_promotions_slash_update_validation(
@@ -24032,7 +25078,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().product_group_promotions_slash_update(
+
+
+let result = api_impl.as_ref().product_group_promotions_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -24052,7 +25101,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24070,7 +25119,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24082,11 +25131,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -24116,7 +25166,7 @@ async fn product_groups_slash_analytics<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::ProductGroupsSlashAnalyticsPathParams>,
-  Query(query_params): Query<models::ProductGroupsSlashAnalyticsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::ProductGroupsSlashAnalyticsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -24124,6 +25174,8 @@ where
     A: apis::product_group_promotions::ProductGroupPromotions<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -24144,7 +25196,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().product_groups_slash_analytics(
+
+
+let result = api_impl.as_ref().product_groups_slash_analytics(
+      
       &method,
       &host,
       &cookies,
@@ -24164,7 +25219,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24182,7 +25237,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24200,7 +25255,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24212,11 +25267,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -24246,6 +25302,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     ad_account_countries_slash_get_validation(
@@ -24260,7 +25318,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().ad_account_countries_slash_get(
+
+
+let result = api_impl.as_ref().ad_account_countries_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -24278,7 +25339,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24296,7 +25357,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24308,11 +25369,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -24337,7 +25399,7 @@ async fn delivery_metrics_slash_get<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::DeliveryMetricsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::DeliveryMetricsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -24345,6 +25407,8 @@ where
     A: apis::resources::Resources<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -24363,7 +25427,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().delivery_metrics_slash_get(
+
+
+let result = api_impl.as_ref().delivery_metrics_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -24382,7 +25449,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24400,7 +25467,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24412,11 +25479,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -24451,6 +25519,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     interest_targeting_options_slash_get_validation(
@@ -24467,7 +25537,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().interest_targeting_options_slash_get(
+
+
+let result = api_impl.as_ref().interest_targeting_options_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -24486,7 +25559,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24504,7 +25577,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24516,11 +25589,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -24550,6 +25624,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     lead_form_questions_slash_get_validation(
@@ -24564,7 +25640,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().lead_form_questions_slash_get(
+
+
+let result = api_impl.as_ref().lead_form_questions_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -24587,7 +25666,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24599,11 +25678,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -24628,7 +25708,7 @@ async fn metrics_ready_state_slash_get<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::MetricsReadyStateSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::MetricsReadyStateSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -24636,6 +25716,8 @@ where
     A: apis::resources::Resources<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -24654,7 +25736,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().metrics_ready_state_slash_get(
+
+
+let result = api_impl.as_ref().metrics_ready_state_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -24673,7 +25758,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24691,7 +25776,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24703,11 +25788,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -24737,7 +25823,7 @@ async fn targeting_options_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::TargetingOptionsSlashGetPathParams>,
-  Query(query_params): Query<models::TargetingOptionsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::TargetingOptionsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -24745,6 +25831,8 @@ where
     A: apis::resources::Resources<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -24765,7 +25853,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().targeting_options_slash_get(
+
+
+let result = api_impl.as_ref().targeting_options_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -24785,7 +25876,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24803,7 +25894,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24815,11 +25906,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -24844,7 +25936,7 @@ async fn search_partner_pins<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::SearchPartnerPinsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::SearchPartnerPinsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -24852,6 +25944,8 @@ where
     A: apis::search::Search<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -24870,7 +25964,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().search_partner_pins(
+
+
+let result = api_impl.as_ref().search_partner_pins(
+      
       &method,
       &host,
       &cookies,
@@ -24889,7 +25986,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24907,7 +26004,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24925,7 +26022,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -24937,11 +26034,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -24966,7 +26064,7 @@ async fn search_user_boards_slash_get<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::SearchUserBoardsSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::SearchUserBoardsSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -24974,6 +26072,8 @@ where
     A: apis::search::Search<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -24992,7 +26092,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().search_user_boards_slash_get(
+
+
+let result = api_impl.as_ref().search_user_boards_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -25011,7 +26114,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25029,7 +26132,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25041,11 +26144,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -25070,7 +26174,7 @@ async fn search_user_pins_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::SearchUserPinsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::SearchUserPinsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -25078,6 +26182,8 @@ where
     A: apis::search::Search<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -25096,7 +26202,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().search_user_pins_slash_list(
+
+
+let result = api_impl.as_ref().search_user_pins_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -25115,7 +26224,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25133,7 +26242,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25151,7 +26260,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25163,11 +26272,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -25175,7 +26285,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct TargetingTemplateSlashCreateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::TargetingTemplateCreate,
     }
 
@@ -25215,6 +26325,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     targeting_template_slash_create_validation(
@@ -25233,7 +26345,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().targeting_template_slash_create(
+
+
+let result = api_impl.as_ref().targeting_template_slash_create(
+      
       &method,
       &host,
       &cookies,
@@ -25253,7 +26368,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25271,7 +26386,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25289,7 +26404,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25301,11 +26416,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -25335,7 +26451,7 @@ async fn targeting_template_slash_list<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::TargetingTemplateSlashListPathParams>,
-  Query(query_params): Query<models::TargetingTemplateSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::TargetingTemplateSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -25343,6 +26459,8 @@ where
     A: apis::targeting_template::TargetingTemplate<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -25363,7 +26481,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().targeting_template_slash_list(
+
+
+let result = api_impl.as_ref().targeting_template_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -25383,7 +26504,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25401,7 +26522,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25419,7 +26540,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25431,11 +26552,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -25443,7 +26565,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct TargetingTemplateSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::TargetingTemplateUpdateRequest,
     }
 
@@ -25483,6 +26605,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     targeting_template_slash_update_validation(
@@ -25501,7 +26625,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().targeting_template_slash_update(
+
+
+let result = api_impl.as_ref().targeting_template_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -25526,7 +26653,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25544,7 +26671,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25556,11 +26683,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -25585,7 +26713,7 @@ async fn terms_related_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::TermsRelatedSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::TermsRelatedSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -25593,6 +26721,8 @@ where
     A: apis::terms::Terms<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -25611,7 +26741,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().terms_related_slash_list(
+
+
+let result = api_impl.as_ref().terms_related_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -25630,7 +26763,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25648,7 +26781,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25666,7 +26799,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25678,11 +26811,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -25707,7 +26841,7 @@ async fn terms_suggested_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::TermsSuggestedSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::TermsSuggestedSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -25715,6 +26849,8 @@ where
     A: apis::terms::Terms<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -25733,7 +26869,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().terms_suggested_slash_list(
+
+
+let result = api_impl.as_ref().terms_suggested_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -25752,7 +26891,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25770,7 +26909,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25788,7 +26927,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25800,11 +26939,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -25834,7 +26974,7 @@ async fn terms_of_service_slash_get<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::TermsOfServiceSlashGetPathParams>,
-  Query(query_params): Query<models::TermsOfServiceSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::TermsOfServiceSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -25842,6 +26982,8 @@ where
     A: apis::terms_of_service::TermsOfService<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -25862,7 +27004,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().terms_of_service_slash_get(
+
+
+let result = api_impl.as_ref().terms_of_service_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -25882,7 +27027,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25900,7 +27045,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -25912,11 +27057,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -25941,7 +27087,7 @@ async fn boards_user_follows_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::BoardsUserFollowsSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::BoardsUserFollowsSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -25949,6 +27095,8 @@ where
     A: apis::user_account::UserAccount<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -25967,7 +27115,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().boards_user_follows_slash_list(
+
+
+let result = api_impl.as_ref().boards_user_follows_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -25986,7 +27137,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26004,7 +27155,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26022,7 +27173,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26034,11 +27185,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -26046,7 +27198,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct FollowUserSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::FollowUserRequest,
     }
 
@@ -26086,6 +27238,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     follow_user_slash_update_validation(
@@ -26104,7 +27258,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().follow_user_slash_update(
+
+
+let result = api_impl.as_ref().follow_user_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -26124,7 +27281,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26142,7 +27299,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26160,7 +27317,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26172,11 +27329,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -26201,7 +27359,7 @@ async fn followers_slash_list<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::FollowersSlashListQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::FollowersSlashListQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -26209,6 +27367,8 @@ where
     A: apis::user_account::UserAccount<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -26227,7 +27387,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().followers_slash_list(
+
+
+let result = api_impl.as_ref().followers_slash_list(
+      
       &method,
       &host,
       &cookies,
@@ -26246,7 +27409,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26264,7 +27427,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26282,7 +27445,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26294,11 +27457,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -26328,6 +27492,8 @@ where
         {
 
 
+
+
       #[allow(clippy::redundant_closure)]
       let validation = tokio::task::spawn_blocking(move ||
     linked_business_accounts_slash_get_validation(
@@ -26342,7 +27508,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().linked_business_accounts_slash_get(
+
+
+let result = api_impl.as_ref().linked_business_accounts_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -26360,7 +27529,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26378,7 +27547,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26390,11 +27559,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -26419,7 +27589,7 @@ async fn unverify_website_slash_delete<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::UnverifyWebsiteSlashDeleteQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::UnverifyWebsiteSlashDeleteQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -26427,6 +27597,8 @@ where
     A: apis::user_account::UserAccount<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -26445,7 +27617,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().unverify_website_slash_delete(
+
+
+let result = api_impl.as_ref().unverify_website_slash_delete(
+      
       &method,
       &host,
       &cookies,
@@ -26469,7 +27644,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26487,7 +27662,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26499,11 +27674,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -26528,7 +27704,7 @@ async fn user_account_slash_analytics<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::UserAccountSlashAnalyticsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::UserAccountSlashAnalyticsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -26536,6 +27712,8 @@ where
     A: apis::user_account::UserAccount<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -26554,7 +27732,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().user_account_slash_analytics(
+
+
+let result = api_impl.as_ref().user_account_slash_analytics(
+      
       &method,
       &host,
       &cookies,
@@ -26573,7 +27754,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26591,7 +27772,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26609,7 +27790,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26627,7 +27808,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26639,11 +27820,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -26668,7 +27850,7 @@ async fn user_account_slash_analytics_slash_top_pins<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::UserAccountSlashAnalyticsSlashTopPinsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::UserAccountSlashAnalyticsSlashTopPinsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -26676,6 +27858,8 @@ where
     A: apis::user_account::UserAccount<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -26694,7 +27878,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().user_account_slash_analytics_slash_top_pins(
+
+
+let result = api_impl.as_ref().user_account_slash_analytics_slash_top_pins(
+      
       &method,
       &host,
       &cookies,
@@ -26713,7 +27900,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26731,7 +27918,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26749,7 +27936,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26761,11 +27948,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -26790,7 +27978,7 @@ async fn user_account_slash_analytics_slash_top_video_pins<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::UserAccountSlashAnalyticsSlashTopVideoPinsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::UserAccountSlashAnalyticsSlashTopVideoPinsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -26798,6 +27986,8 @@ where
     A: apis::user_account::UserAccount<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -26816,7 +28006,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().user_account_slash_analytics_slash_top_video_pins(
+
+
+let result = api_impl.as_ref().user_account_slash_analytics_slash_top_video_pins(
+      
       &method,
       &host,
       &cookies,
@@ -26835,7 +28028,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26853,7 +28046,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26871,7 +28064,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26883,11 +28076,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -26917,7 +28111,7 @@ async fn user_account_slash_followed_interests<I, A, E>(
   host: Host,
   cookies: CookieJar,
   Path(path_params): Path<models::UserAccountSlashFollowedInterestsPathParams>,
-  Query(query_params): Query<models::UserAccountSlashFollowedInterestsQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::UserAccountSlashFollowedInterestsQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -26925,6 +28119,8 @@ where
     A: apis::user_account::UserAccount<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -26945,7 +28141,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().user_account_slash_followed_interests(
+
+
+let result = api_impl.as_ref().user_account_slash_followed_interests(
+      
       &method,
       &host,
       &cookies,
@@ -26965,7 +28164,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -26983,7 +28182,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27001,7 +28200,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27019,7 +28218,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27037,7 +28236,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27049,11 +28248,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -27078,7 +28278,7 @@ async fn user_account_slash_get<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::UserAccountSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::UserAccountSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -27086,6 +28286,8 @@ where
     A: apis::user_account::UserAccount<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -27104,7 +28306,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().user_account_slash_get(
+
+
+let result = api_impl.as_ref().user_account_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -27123,7 +28328,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27141,7 +28346,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27159,7 +28364,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27171,11 +28376,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -27200,7 +28406,7 @@ async fn user_following_slash_get<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::UserFollowingSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::UserFollowingSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -27208,6 +28414,8 @@ where
     A: apis::user_account::UserAccount<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -27226,7 +28434,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().user_following_slash_get(
+
+
+let result = api_impl.as_ref().user_following_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -27245,7 +28456,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27263,7 +28474,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27275,11 +28486,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -27304,7 +28516,7 @@ async fn user_websites_slash_get<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::UserWebsitesSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::UserWebsitesSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -27312,6 +28524,8 @@ where
     A: apis::user_account::UserAccount<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -27330,7 +28544,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().user_websites_slash_get(
+
+
+let result = api_impl.as_ref().user_websites_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -27349,7 +28566,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27367,7 +28584,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27385,7 +28602,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27397,11 +28614,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -27409,7 +28627,7 @@ where
     #[derive(validator::Validate)]
     #[allow(dead_code)]
     struct VerifyWebsiteSlashUpdateBodyValidator<'a> {
-            #[validate(nested)]
+          #[validate(nested)]
           body: &'a models::UserWebsiteVerifyRequest,
     }
 
@@ -27438,7 +28656,7 @@ async fn verify_website_slash_update<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::VerifyWebsiteSlashUpdateQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::VerifyWebsiteSlashUpdateQueryParams>,
  State(api_impl): State<I>,
           Json(body): Json<models::UserWebsiteVerifyRequest>,
 ) -> Result<Response, StatusCode>
@@ -27447,6 +28665,8 @@ where
     A: apis::user_account::UserAccount<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -27467,7 +28687,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().verify_website_slash_update(
+
+
+let result = api_impl.as_ref().verify_website_slash_update(
+      
       &method,
       &host,
       &cookies,
@@ -27487,7 +28710,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27505,7 +28728,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27517,11 +28740,12 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
@@ -27546,7 +28770,7 @@ async fn website_verification_slash_get<I, A, E>(
   method: Method,
   host: Host,
   cookies: CookieJar,
-  Query(query_params): Query<models::WebsiteVerificationSlashGetQueryParams>,
+  QueryExtra(query_params): QueryExtra<models::WebsiteVerificationSlashGetQueryParams>,
  State(api_impl): State<I>,
 ) -> Result<Response, StatusCode>
 where
@@ -27554,6 +28778,8 @@ where
     A: apis::user_account::UserAccount<E> + Send + Sync,
     E: std::fmt::Debug + Send + Sync + 'static,
         {
+
+
 
 
       #[allow(clippy::redundant_closure)]
@@ -27572,7 +28798,10 @@ where
             .map_err(|_| StatusCode::BAD_REQUEST);
   };
 
-  let result = api_impl.as_ref().website_verification_slash_get(
+
+
+let result = api_impl.as_ref().website_verification_slash_get(
+      
       &method,
       &host,
       &cookies,
@@ -27591,7 +28820,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27609,7 +28838,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27627,7 +28856,7 @@ where
                                                     let mut response_headers = response.headers_mut().unwrap();
                                                     response_headers.insert(
                                                         CONTENT_TYPE,
-                                                        HeaderValue::from_str("application/json").map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })?);
+                                                        HeaderValue::from_static("application/json"));
                                                   }
 
                                                   let body_content =  tokio::task::spawn_blocking(move ||
@@ -27639,12 +28868,22 @@ where
                                                 },
                                             },
                                             Err(why) => {
-                                                // Application code returned an error. This should not happen, as the implementation should
-                                                // return a valid response.
-                                                return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
+                                                    // Application code returned an error. This should not happen, as the implementation should
+                                                    // return a valid response.
+                                                    return api_impl.as_ref().handle_error(&method, &host, &cookies, why).await;
                                             },
                                         };
+
 
                                         resp.map_err(|e| { error!(error = ?e); StatusCode::INTERNAL_SERVER_ERROR })
 }
 
+
+#[allow(dead_code)]
+#[inline]
+fn response_with_status_code_only(code: StatusCode) -> Result<Response, StatusCode> {
+   Response::builder()
+          .status(code)
+          .body(Body::empty())
+          .map_err(|_| code)
+}

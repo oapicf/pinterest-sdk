@@ -116,7 +116,6 @@ src/pinterest_rest_api/specs/audience_category.clj
 src/pinterest_rest_api/specs/audience_common.clj
 src/pinterest_rest_api/specs/audience_create_custom_request.clj
 src/pinterest_rest_api/specs/audience_create_request.clj
-src/pinterest_rest_api/specs/audience_create_request_1_audience_type.clj
 src/pinterest_rest_api/specs/audience_data_party.clj
 src/pinterest_rest_api/specs/audience_definition.clj
 src/pinterest_rest_api/specs/audience_definition_response.clj
@@ -294,7 +293,6 @@ src/pinterest_rest_api/specs/catalogs_items_delete_discontinued_batch_request.cl
 src/pinterest_rest_api/specs/catalogs_items_filters.clj
 src/pinterest_rest_api/specs/catalogs_items_post_filters.clj
 src/pinterest_rest_api/specs/catalogs_items_request.clj
-src/pinterest_rest_api/specs/catalogs_items_request_language.clj
 src/pinterest_rest_api/specs/catalogs_items_update_batch_request.clj
 src/pinterest_rest_api/specs/catalogs_items_upsert_batch_request.clj
 src/pinterest_rest_api/specs/catalogs_list_200_response.clj
@@ -628,7 +626,6 @@ src/pinterest_rest_api/specs/pin_media_with_videos.clj
 src/pinterest_rest_api/specs/pin_promotion_summary_status.clj
 src/pinterest_rest_api/specs/pin_update.clj
 src/pinterest_rest_api/specs/pin_update_carousel_slots_inner.clj
-src/pinterest_rest_api/specs/pins_analytics_metric_types_parameter_inner.clj
 src/pinterest_rest_api/specs/pins_list_200_response.clj
 src/pinterest_rest_api/specs/pins_save_request.clj
 src/pinterest_rest_api/specs/pinterest_tag_event_data.clj

@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
+import org.openapitools.api.UserAccountApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -45,7 +46,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${api.base-path:/v5}")
+@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
 class UserAccountApiController() {
 
     @Operation(
@@ -60,10 +61,15 @@ class UserAccountApiController() {
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/user_account/following/boards"],
+        value = [PATH_BOARDS_USER_FOLLOWS_LIST /* "/user_account/following/boards" */],
         produces = ["application/json"]
     )
-    fun boardsUserFollowsList(@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "explicit_following", required = false, defaultValue = "false") explicitFollowing: kotlin.Boolean,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<BoardsUserFollowsList200Response> {
+    fun boardsUserFollowsList(
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "explicit_following", required = false, defaultValue = "false") explicitFollowing: kotlin.Boolean,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<BoardsUserFollowsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -81,11 +87,14 @@ Use this request, as a signed-in user, to follow another user.""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/user_account/following/{username}"],
+        value = [PATH_FOLLOW_USER_UPDATE /* "/user_account/following/{username}" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun followUserUpdate(@Pattern(regexp="(?!^\\d+$)^.+$") @Parameter(description = "A valid username", required = true) @PathVariable("username") username: kotlin.String,@Parameter(description = "Follow a user.", required = true) @Valid @RequestBody followUserRequest: FollowUserRequest): ResponseEntity<UserSummary> {
+    fun followUserUpdate(
+        @Pattern(regexp="(?!^\\d+$)^.+$") @Parameter(description = "A valid username", required = true) @PathVariable("username") username: kotlin.String,
+        @Parameter(description = "Follow a user.", required = true) @Valid @RequestBody followUserRequest: FollowUserRequest
+    ): ResponseEntity<UserSummary> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -101,10 +110,13 @@ Use this request, as a signed-in user, to follow another user.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/user_account/followers"],
+        value = [PATH_FOLLOWERS_LIST /* "/user_account/followers" */],
         produces = ["application/json"]
     )
-    fun followersList(@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<FollowersList200Response> {
+    fun followersList(
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<FollowersList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -119,7 +131,7 @@ Use this request, as a signed-in user, to follow another user.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/user_account/businesses"],
+        value = [PATH_LINKED_BUSINESS_ACCOUNTS_GET /* "/user_account/businesses" */],
         produces = ["application/json"]
     )
     fun linkedBusinessAccountsGet(): ResponseEntity<List<LinkedBusiness>> {
@@ -138,10 +150,12 @@ Use this request, as a signed-in user, to follow another user.""",
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/user_account/websites"],
+        value = [PATH_UNVERIFY_WEBSITE_DELETE /* "/user_account/websites" */],
         produces = ["application/json"]
     )
-    fun unverifyWebsiteDelete(@NotNull @Parameter(description = "Website with path or domain only", required = true) @Valid @RequestParam(value = "website", required = true) website: kotlin.String): ResponseEntity<Unit> {
+    fun unverifyWebsiteDelete(
+        @NotNull @Parameter(description = "Website with path or domain only", required = true) @Valid @RequestParam(value = "website", required = true) website: kotlin.String
+    ): ResponseEntity<Unit> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -161,10 +175,21 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/user_account/analytics"],
+        value = [PATH_USER_ACCOUNT_ANALYTICS /* "/user_account/analytics" */],
         produces = ["application/json"]
     )
-    fun userAccountAnalytics(@NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,@NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,@Parameter(description = "Filter on Pins that match your claimed domain.", schema = Schema(allowableValues = ["OTHER", "CLAIMED", "BOTH"], defaultValue = "BOTH")) @Valid @RequestParam(value = "from_claimed_content", required = false, defaultValue = "BOTH") fromClaimedContent: kotlin.String,@Parameter(description = "Pin formats to get data for, default is all.", schema = Schema(allowableValues = ["ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA"], defaultValue = "ALL")) @Valid @RequestParam(value = "pin_format", required = false, defaultValue = "ALL") pinFormat: kotlin.String,@Parameter(description = "Apps or devices to get data for, default is all.", schema = Schema(allowableValues = ["ALL", "MOBILE", "TABLET", "WEB"], defaultValue = "ALL")) @Valid @RequestParam(value = "app_types", required = false, defaultValue = "ALL") appTypes: kotlin.String,@Parameter(description = "Filter to paid or organic data. Default is all.", schema = Schema(allowableValues = ["ALL", "PAID", "ORGANIC"], defaultValue = "ALL")) @Valid @RequestParam(value = "content_type", required = false, defaultValue = "ALL") contentType: kotlin.String,@Parameter(description = "Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", schema = Schema(allowableValues = ["ALL", "YOUR_PINS", "OTHER_PINS"], defaultValue = "ALL")) @Valid @RequestParam(value = "source", required = false, defaultValue = "ALL") source: kotlin.String,@Parameter(description = "Metric types to get data for, default is all. ", schema = Schema(allowableValues = ["ENGAGEMENT", "ENGAGEMENT_RATE", "IMPRESSION", "OUTBOUND_CLICK", "OUTBOUND_CLICK_RATE", "PIN_CLICK", "PIN_CLICK_RATE", "SAVE", "SAVE_RATE"])) @Valid @RequestParam(value = "metric_types", required = false) metricTypes: kotlin.collections.List<kotlin.String>?,@Parameter(description = "How to split the data into groups. Not including this param means data won't be split.", schema = Schema(allowableValues = ["NO_SPLIT", "APP_TYPE", "OWNED_CONTENT", "SOURCE", "PIN_FORMAT"], defaultValue = "NO_SPLIT")) @Valid @RequestParam(value = "split_field", required = false, defaultValue = "NO_SPLIT") splitField: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<Map<String, AnalyticsMetricsResponse>> {
+    fun userAccountAnalytics(
+        @NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,
+        @Parameter(description = "Filter on Pins that match your claimed domain.", schema = Schema(allowableValues = ["OTHER", "CLAIMED", "BOTH"], defaultValue = "BOTH")) @Valid @RequestParam(value = "from_claimed_content", required = false, defaultValue = "BOTH") fromClaimedContent: kotlin.String,
+        @Parameter(description = "Pin formats to get data for, default is all.", schema = Schema(allowableValues = ["ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA"], defaultValue = "ALL")) @Valid @RequestParam(value = "pin_format", required = false, defaultValue = "ALL") pinFormat: kotlin.String,
+        @Parameter(description = "Apps or devices to get data for, default is all.", schema = Schema(allowableValues = ["ALL", "MOBILE", "TABLET", "WEB"], defaultValue = "ALL")) @Valid @RequestParam(value = "app_types", required = false, defaultValue = "ALL") appTypes: kotlin.String,
+        @Parameter(description = "Filter to paid or organic data. Default is all.", schema = Schema(allowableValues = ["ALL", "PAID", "ORGANIC"], defaultValue = "ALL")) @Valid @RequestParam(value = "content_type", required = false, defaultValue = "ALL") contentType: kotlin.String,
+        @Parameter(description = "Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", schema = Schema(allowableValues = ["ALL", "YOUR_PINS", "OTHER_PINS"], defaultValue = "ALL")) @Valid @RequestParam(value = "source", required = false, defaultValue = "ALL") source: kotlin.String,
+        @Parameter(description = "Metric types to get data for, default is all. ", schema = Schema(allowableValues = ["ENGAGEMENT", "ENGAGEMENT_RATE", "IMPRESSION", "OUTBOUND_CLICK", "OUTBOUND_CLICK_RATE", "PIN_CLICK", "PIN_CLICK_RATE", "SAVE", "SAVE_RATE"])) @Valid @RequestParam(value = "metric_types", required = false) metricTypes: kotlin.collections.List<kotlin.String>?,
+        @Parameter(description = "How to split the data into groups. Not including this param means data won't be split.", schema = Schema(allowableValues = ["NO_SPLIT", "APP_TYPE", "OWNED_CONTENT", "SOURCE", "PIN_FORMAT"], defaultValue = "NO_SPLIT")) @Valid @RequestParam(value = "split_field", required = false, defaultValue = "NO_SPLIT") splitField: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<Map<String, AnalyticsMetricsResponse>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -183,10 +208,23 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/user_account/analytics/top_pins"],
+        value = [PATH_USER_ACCOUNT_ANALYTICS_TOP_PINS /* "/user_account/analytics/top_pins" */],
         produces = ["application/json"]
     )
-    fun userAccountAnalyticsTopPins(@NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,@NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,@NotNull @Parameter(description = "Specify sorting order for metrics", required = true, schema = Schema(allowableValues = ["ENGAGEMENT", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE"])) @Valid @RequestParam(value = "sort_by", required = true) sortBy: kotlin.String,@Parameter(description = "Filter on Pins that match your claimed domain.", schema = Schema(allowableValues = ["OTHER", "CLAIMED", "BOTH"], defaultValue = "BOTH")) @Valid @RequestParam(value = "from_claimed_content", required = false, defaultValue = "BOTH") fromClaimedContent: kotlin.String,@Parameter(description = "Pin formats to get data for, default is all.", schema = Schema(allowableValues = ["ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA"], defaultValue = "ALL")) @Valid @RequestParam(value = "pin_format", required = false, defaultValue = "ALL") pinFormat: kotlin.String,@Parameter(description = "Apps or devices to get data for, default is all.", schema = Schema(allowableValues = ["ALL", "MOBILE", "TABLET", "WEB"], defaultValue = "ALL")) @Valid @RequestParam(value = "app_types", required = false, defaultValue = "ALL") appTypes: kotlin.String,@Parameter(description = "Filter to paid or organic data. Default is all.", schema = Schema(allowableValues = ["ALL", "PAID", "ORGANIC"], defaultValue = "ALL")) @Valid @RequestParam(value = "content_type", required = false, defaultValue = "ALL") contentType: kotlin.String,@Parameter(description = "Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", schema = Schema(allowableValues = ["ALL", "YOUR_PINS", "OTHER_PINS"], defaultValue = "ALL")) @Valid @RequestParam(value = "source", required = false, defaultValue = "ALL") source: kotlin.String,@Parameter(description = "Metric types to get data for, default is all. ", schema = Schema(allowableValues = ["ENGAGEMENT", "ENGAGEMENT_RATE", "IMPRESSION", "OUTBOUND_CLICK", "OUTBOUND_CLICK_RATE", "PIN_CLICK", "PIN_CLICK_RATE", "SAVE", "SAVE_RATE"])) @Valid @RequestParam(value = "metric_types", required = false) metricTypes: kotlin.collections.List<kotlin.String>?,@Min(1) @Max(50) @Parameter(description = "Number of pins to include, default is 10. Max is 50.", schema = Schema(defaultValue = "10")) @Valid @RequestParam(value = "num_of_pins", required = false, defaultValue = "10") numOfPins: kotlin.Int,@Parameter(description = "Get metrics for pins created in the last \"n\" days.", schema = Schema(allowableValues = ["30"])) @Valid @RequestParam(value = "created_in_last_n_days", required = false) createdInLastNDays: kotlin.Int?,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<TopPinsAnalyticsResponse> {
+    fun userAccountAnalyticsTopPins(
+        @NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Specify sorting order for metrics", required = true, schema = Schema(allowableValues = ["ENGAGEMENT", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE"])) @Valid @RequestParam(value = "sort_by", required = true) sortBy: kotlin.String,
+        @Parameter(description = "Filter on Pins that match your claimed domain.", schema = Schema(allowableValues = ["OTHER", "CLAIMED", "BOTH"], defaultValue = "BOTH")) @Valid @RequestParam(value = "from_claimed_content", required = false, defaultValue = "BOTH") fromClaimedContent: kotlin.String,
+        @Parameter(description = "Pin formats to get data for, default is all.", schema = Schema(allowableValues = ["ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA"], defaultValue = "ALL")) @Valid @RequestParam(value = "pin_format", required = false, defaultValue = "ALL") pinFormat: kotlin.String,
+        @Parameter(description = "Apps or devices to get data for, default is all.", schema = Schema(allowableValues = ["ALL", "MOBILE", "TABLET", "WEB"], defaultValue = "ALL")) @Valid @RequestParam(value = "app_types", required = false, defaultValue = "ALL") appTypes: kotlin.String,
+        @Parameter(description = "Filter to paid or organic data. Default is all.", schema = Schema(allowableValues = ["ALL", "PAID", "ORGANIC"], defaultValue = "ALL")) @Valid @RequestParam(value = "content_type", required = false, defaultValue = "ALL") contentType: kotlin.String,
+        @Parameter(description = "Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", schema = Schema(allowableValues = ["ALL", "YOUR_PINS", "OTHER_PINS"], defaultValue = "ALL")) @Valid @RequestParam(value = "source", required = false, defaultValue = "ALL") source: kotlin.String,
+        @Parameter(description = "Metric types to get data for, default is all. ", schema = Schema(allowableValues = ["ENGAGEMENT", "ENGAGEMENT_RATE", "IMPRESSION", "OUTBOUND_CLICK", "OUTBOUND_CLICK_RATE", "PIN_CLICK", "PIN_CLICK_RATE", "SAVE", "SAVE_RATE"])) @Valid @RequestParam(value = "metric_types", required = false) metricTypes: kotlin.collections.List<kotlin.String>?,
+        @Min(value=1) @Max(value=50) @Parameter(description = "Number of pins to include, default is 10. Max is 50.", schema = Schema(defaultValue = "10")) @Valid @RequestParam(value = "num_of_pins", required = false, defaultValue = "10") numOfPins: kotlin.Int,
+        @Parameter(description = "Get metrics for pins created in the last \"n\" days.", schema = Schema(allowableValues = ["30"])) @Valid @RequestParam(value = "created_in_last_n_days", required = false) createdInLastNDays: kotlin.Int?,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<TopPinsAnalyticsResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -205,10 +243,23 @@ Optional: Business Access: Specify an ad_account_id to use the owner of that ad_
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/user_account/analytics/top_video_pins"],
+        value = [PATH_USER_ACCOUNT_ANALYTICS_TOP_VIDEO_PINS /* "/user_account/analytics/top_video_pins" */],
         produces = ["application/json"]
     )
-    fun userAccountAnalyticsTopVideoPins(@NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,@NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,@NotNull @Parameter(description = "Specify sorting order for video metrics", required = true, schema = Schema(allowableValues = ["IMPRESSION", "SAVE", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START"])) @Valid @RequestParam(value = "sort_by", required = true) sortBy: kotlin.String,@Parameter(description = "Filter on Pins that match your claimed domain.", schema = Schema(allowableValues = ["OTHER", "CLAIMED", "BOTH"], defaultValue = "BOTH")) @Valid @RequestParam(value = "from_claimed_content", required = false, defaultValue = "BOTH") fromClaimedContent: kotlin.String,@Parameter(description = "Pin formats to get data for, default is all.", schema = Schema(allowableValues = ["ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA"], defaultValue = "ALL")) @Valid @RequestParam(value = "pin_format", required = false, defaultValue = "ALL") pinFormat: kotlin.String,@Parameter(description = "Apps or devices to get data for, default is all.", schema = Schema(allowableValues = ["ALL", "MOBILE", "TABLET", "WEB"], defaultValue = "ALL")) @Valid @RequestParam(value = "app_types", required = false, defaultValue = "ALL") appTypes: kotlin.String,@Parameter(description = "Filter to paid or organic data. Default is all.", schema = Schema(allowableValues = ["ALL", "PAID", "ORGANIC"], defaultValue = "ALL")) @Valid @RequestParam(value = "content_type", required = false, defaultValue = "ALL") contentType: kotlin.String,@Parameter(description = "Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", schema = Schema(allowableValues = ["ALL", "YOUR_PINS", "OTHER_PINS"], defaultValue = "ALL")) @Valid @RequestParam(value = "source", required = false, defaultValue = "ALL") source: kotlin.String,@Parameter(description = "Metric types to get video data for, default is all. ", schema = Schema(allowableValues = ["IMPRESSION", "SAVE", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START", "OUTBOUND_CLICK"])) @Valid @RequestParam(value = "metric_types", required = false) metricTypes: kotlin.collections.List<kotlin.String>?,@Min(1) @Max(50) @Parameter(description = "Number of pins to include, default is 10. Max is 50.", schema = Schema(defaultValue = "10")) @Valid @RequestParam(value = "num_of_pins", required = false, defaultValue = "10") numOfPins: kotlin.Int,@Parameter(description = "Get metrics for pins created in the last \"n\" days.", schema = Schema(allowableValues = ["30"])) @Valid @RequestParam(value = "created_in_last_n_days", required = false) createdInLastNDays: kotlin.Int?,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<TopVideoPinsAnalyticsResponse> {
+    fun userAccountAnalyticsTopVideoPins(
+        @NotNull @Parameter(description = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.", required = true) @Valid @RequestParam(value = "start_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) startDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.", required = true) @Valid @RequestParam(value = "end_date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) endDate: java.time.LocalDate,
+        @NotNull @Parameter(description = "Specify sorting order for video metrics", required = true, schema = Schema(allowableValues = ["IMPRESSION", "SAVE", "OUTBOUND_CLICK", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START"])) @Valid @RequestParam(value = "sort_by", required = true) sortBy: kotlin.String,
+        @Parameter(description = "Filter on Pins that match your claimed domain.", schema = Schema(allowableValues = ["OTHER", "CLAIMED", "BOTH"], defaultValue = "BOTH")) @Valid @RequestParam(value = "from_claimed_content", required = false, defaultValue = "BOTH") fromClaimedContent: kotlin.String,
+        @Parameter(description = "Pin formats to get data for, default is all.", schema = Schema(allowableValues = ["ALL", "ORGANIC_IMAGE", "ORGANIC_PRODUCT", "ORGANIC_VIDEO", "ADS_STANDARD", "ADS_PRODUCT", "ADS_VIDEO", "ADS_IDEA"], defaultValue = "ALL")) @Valid @RequestParam(value = "pin_format", required = false, defaultValue = "ALL") pinFormat: kotlin.String,
+        @Parameter(description = "Apps or devices to get data for, default is all.", schema = Schema(allowableValues = ["ALL", "MOBILE", "TABLET", "WEB"], defaultValue = "ALL")) @Valid @RequestParam(value = "app_types", required = false, defaultValue = "ALL") appTypes: kotlin.String,
+        @Parameter(description = "Filter to paid or organic data. Default is all.", schema = Schema(allowableValues = ["ALL", "PAID", "ORGANIC"], defaultValue = "ALL")) @Valid @RequestParam(value = "content_type", required = false, defaultValue = "ALL") contentType: kotlin.String,
+        @Parameter(description = "Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts", schema = Schema(allowableValues = ["ALL", "YOUR_PINS", "OTHER_PINS"], defaultValue = "ALL")) @Valid @RequestParam(value = "source", required = false, defaultValue = "ALL") source: kotlin.String,
+        @Parameter(description = "Metric types to get video data for, default is all. ", schema = Schema(allowableValues = ["IMPRESSION", "SAVE", "VIDEO_MRC_VIEW", "VIDEO_AVG_WATCH_TIME", "VIDEO_V50_WATCH_TIME", "QUARTILE_95_PERCENT_VIEW", "VIDEO_10S_VIEW", "VIDEO_START", "OUTBOUND_CLICK"])) @Valid @RequestParam(value = "metric_types", required = false) metricTypes: kotlin.collections.List<kotlin.String>?,
+        @Min(value=1) @Max(value=50) @Parameter(description = "Number of pins to include, default is 10. Max is 50.", schema = Schema(defaultValue = "10")) @Valid @RequestParam(value = "num_of_pins", required = false, defaultValue = "10") numOfPins: kotlin.Int,
+        @Parameter(description = "Get metrics for pins created in the last \"n\" days.", schema = Schema(allowableValues = ["30"])) @Valid @RequestParam(value = "created_in_last_n_days", required = false) createdInLastNDays: kotlin.Int?,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<TopVideoPinsAnalyticsResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -227,10 +278,12 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/user_account"],
+        value = [PATH_USER_ACCOUNT_GET /* "/user_account" */],
         produces = ["application/json"]
     )
-    fun userAccountGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<Account> {
+    fun userAccountGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<Account> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -245,10 +298,16 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/user_account/following"],
+        value = [PATH_USER_FOLLOWING_GET /* "/user_account/following" */],
         produces = ["application/json"]
     )
-    fun userFollowingGet(@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Thrift param specifying what type of followees will be kept. Default to include all followees.", schema = Schema(allowableValues = ["ALL", "RANKED", "CREATOR_ONLY", "RANKED_CREATOR_ONLY"], defaultValue = ALL)) @Valid @RequestParam(value = "feed_type", required = false, defaultValue = ALL) feedType: UserFollowingFeedType,@Parameter(description = "Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "explicit_following", required = false, defaultValue = "false") explicitFollowing: kotlin.Boolean,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<UserFollowingGet200Response> {
+    fun userFollowingGet(
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Thrift param specifying what type of followees will be kept. Default to include all followees.", schema = Schema(allowableValues = ["ALL", "RANKED", "CREATOR_ONLY", "RANKED_CREATOR_ONLY"], defaultValue = ALL)) @Valid @RequestParam(value = "feed_type", required = false, defaultValue = ALL) feedType: UserFollowingFeedType,
+        @Parameter(description = "Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "explicit_following", required = false, defaultValue = "false") explicitFollowing: kotlin.Boolean,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<UserFollowingGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -264,10 +323,13 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/user_account/websites"],
+        value = [PATH_USER_WEBSITES_GET /* "/user_account/websites" */],
         produces = ["application/json"]
     )
-    fun userWebsitesGet(@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<UserWebsitesGet200Response> {
+    fun userWebsitesGet(
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<UserWebsitesGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -282,11 +344,14 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/user_account/websites"],
+        value = [PATH_VERIFY_WEBSITE_UPDATE /* "/user_account/websites" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun verifyWebsiteUpdate(@Parameter(description = "Verify a website.", required = true) @Valid @RequestBody userWebsiteVerifyRequest: UserWebsiteVerifyRequest,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<UserWebsiteSummary> {
+    fun verifyWebsiteUpdate(
+        @Parameter(description = "Verify a website.", required = true) @Valid @RequestBody userWebsiteVerifyRequest: UserWebsiteVerifyRequest,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<UserWebsiteSummary> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -302,10 +367,30 @@ If using Business Access: Specify an ad_account_id to use the owner of that ad_a
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/user_account/websites/verification"],
+        value = [PATH_WEBSITE_VERIFICATION_GET /* "/user_account/websites/verification" */],
         produces = ["application/json"]
     )
-    fun websiteVerificationGet(@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<UserWebsiteVerificationCode> {
+    fun websiteVerificationGet(
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<UserWebsiteVerificationCode> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    companion object {
+        //for your own safety never directly reuse these path definitions in tests
+        const val BASE_PATH: String = "/v5"
+        const val PATH_BOARDS_USER_FOLLOWS_LIST: String = "/user_account/following/boards"
+        const val PATH_FOLLOW_USER_UPDATE: String = "/user_account/following/{username}"
+        const val PATH_FOLLOWERS_LIST: String = "/user_account/followers"
+        const val PATH_LINKED_BUSINESS_ACCOUNTS_GET: String = "/user_account/businesses"
+        const val PATH_UNVERIFY_WEBSITE_DELETE: String = "/user_account/websites"
+        const val PATH_USER_ACCOUNT_ANALYTICS: String = "/user_account/analytics"
+        const val PATH_USER_ACCOUNT_ANALYTICS_TOP_PINS: String = "/user_account/analytics/top_pins"
+        const val PATH_USER_ACCOUNT_ANALYTICS_TOP_VIDEO_PINS: String = "/user_account/analytics/top_video_pins"
+        const val PATH_USER_ACCOUNT_GET: String = "/user_account"
+        const val PATH_USER_FOLLOWING_GET: String = "/user_account/following"
+        const val PATH_USER_WEBSITES_GET: String = "/user_account/websites"
+        const val PATH_VERIFY_WEBSITE_UPDATE: String = "/user_account/websites"
+        const val PATH_WEBSITE_VERIFICATION_GET: String = "/user_account/websites/verification"
     }
 }

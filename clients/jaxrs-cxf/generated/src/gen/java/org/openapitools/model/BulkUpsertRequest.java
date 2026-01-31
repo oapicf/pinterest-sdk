@@ -1,28 +1,32 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.BulkUpsertRequestCreate;
 import org.openapitools.model.BulkUpsertRequestUpdate;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.
- **/
+ * Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.
+ */
 @ApiModel(description="Two set of objects to be managed asyncronusly by bulk. One for creations, one for modifications.")
 
 public class BulkUpsertRequest  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BulkUpsertRequestCreate create;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BulkUpsertRequestUpdate update;
  /**
    * Get create

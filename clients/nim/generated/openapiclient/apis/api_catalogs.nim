@@ -34,28 +34,25 @@ import ../models/model_catalogs_report
 import ../models/model_catalogs_report_parameters
 import ../models/model_catalogs_vertical_product_group
 import ../models/model_error
-import ../models/model_catalogs_list_200_response
-import ../models/model_catalogs_product_group_pins_list_200_response
-import ../models/model_catalogs_product_groups_list_200_response
+import ../models/model_catalogs_list200response
+import ../models/model_catalogs_product_group_pins_list200response
+import ../models/model_catalogs_product_groups_list200response
 import ../models/model_catalogs_product_groups_update_request
-import ../models/model_feed_processing_results_list_200_response
+import ../models/model_feed_processing_results_list200response
 import ../models/model_feeds_create_request
-import ../models/model_feeds_list_200_response
+import ../models/model_feeds_list200response
 import ../models/model_feeds_update_request
 import ../models/model_items_batch_post_request
-import ../models/model_items_issues_list_200_response
+import ../models/model_items_issues_list200response
 import ../models/model_multiple_product_groups_inner
-import ../models/model_reports_stats_200_response
+import ../models/model_reports_stats200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -68,304 +65,360 @@ template constructResult[T](response: Response): untyped =
 proc catalogsCreate*(httpClient: HttpClient, catalogsCreateRequest: CatalogsCreateRequest, adAccountId: string): (Option[Catalog], Response) =
   ## Create catalog
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/catalogs" & "?" & query_for_api_call, $(%catalogsCreateRequest))
+  let response = httpClient.post(basepath & "/catalogs" & "?" & url_encoded_query_params, $(%catalogsCreateRequest))
   constructResult[Catalog](response)
 
 
 proc catalogsList*(httpClient: HttpClient, bookmark: string, pageSize: int, adAccountId: string): (Option[catalogs_list_200_response], Response) =
   ## List catalogs
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/catalogs" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/catalogs" & "?" & url_encoded_query_params)
   constructResult[catalogs_list_200_response](response)
 
 
 proc catalogsProductGroupPinsList*(httpClient: HttpClient, productGroupId: string, bookmark: string, pageSize: int, adAccountId: string, pinMetrics: bool): (Option[catalogs_product_group_pins_list_200_response], Response) =
   ## List products by product group
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-    ("pin_metrics", $pinMetrics), # Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  if $pinMetrics != "":
+    query_params_list.add(("pin_metrics", $pinMetrics))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/catalogs/product_groups/{product_group_id}/products" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/catalogs/product_groups/{product_group_id}/products" & "?" & url_encoded_query_params)
   constructResult[catalogs_product_group_pins_list_200_response](response)
 
 
 proc catalogsProductGroupsCreate*(httpClient: HttpClient, multipleProductGroupsInner: MultipleProductGroupsInner, adAccountId: string): (Option[CatalogsVerticalProductGroup], Response) =
   ## Create product group
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/catalogs/product_groups" & "?" & query_for_api_call, $(%multipleProductGroupsInner))
+  let response = httpClient.post(basepath & "/catalogs/product_groups" & "?" & url_encoded_query_params, $(%multipleProductGroupsInner))
   constructResult[CatalogsVerticalProductGroup](response)
 
 
 proc catalogsProductGroupsCreateMany*(httpClient: HttpClient, multipleProductGroupsInner: seq[multiple_product_groups_inner], adAccountId: string): (Option[seq[string]], Response) =
   ## Create product groups
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/catalogs/product_groups/multiple" & "?" & query_for_api_call, $(%multipleProductGroupsInner))
+  let response = httpClient.post(basepath & "/catalogs/product_groups/multiple" & "?" & url_encoded_query_params, $(%multipleProductGroupsInner))
   constructResult[seq[string]](response)
 
 
 proc catalogsProductGroupsDelete*(httpClient: HttpClient, productGroupId: string, adAccountId: string): Response =
   ## Delete product group
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
-  httpClient.delete(basepath & fmt"/catalogs/product_groups/{product_group_id}" & "?" & query_for_api_call)
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
+  httpClient.delete(basepath & fmt"/catalogs/product_groups/{product_group_id}" & "?" & url_encoded_query_params)
+
 
 
 proc catalogsProductGroupsDeleteMany*(httpClient: HttpClient, id: seq[int], adAccountId: string): Response =
   ## Delete product groups
-  let query_for_api_call = encodeQuery([
-    ("id", $id.join(",")), # Comma-separated list of product group ids
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
-  httpClient.delete(basepath & "/catalogs/product_groups/multiple" & "?" & query_for_api_call)
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("id", $id.join(",")))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
+  httpClient.delete(basepath & "/catalogs/product_groups/multiple" & "?" & url_encoded_query_params)
+
 
 
 proc catalogsProductGroupsGet*(httpClient: HttpClient, productGroupId: string, adAccountId: string): (Option[CatalogsVerticalProductGroup], Response) =
   ## Get product group
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/catalogs/product_groups/{product_group_id}" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/catalogs/product_groups/{product_group_id}" & "?" & url_encoded_query_params)
   constructResult[CatalogsVerticalProductGroup](response)
 
 
 proc catalogsProductGroupsList*(httpClient: HttpClient, id: seq[int], feedId: string, catalogId: string, bookmark: string, pageSize: int, adAccountId: string): (Option[catalogs_product_groups_list_200_response], Response) =
   ## List product groups
-  let query_for_api_call = encodeQuery([
-    ("id", $id.join(",")), # Comma-separated list of product group ids
-    ("feed_id", $feedId), # Filter entities for a given feed_id. If not given, all feeds are considered.
-    ("catalog_id", $catalogId), # Filter entities for a given catalog_id. If not given, all catalogs are considered.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if id.len > 0:
+    query_params_list.add(("id", $id.join(",")))
+  if $feedId != "":
+    query_params_list.add(("feed_id", $feedId))
+  if $catalogId != "":
+    query_params_list.add(("catalog_id", $catalogId))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/catalogs/product_groups" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/catalogs/product_groups" & "?" & url_encoded_query_params)
   constructResult[catalogs_product_groups_list_200_response](response)
 
 
 proc catalogsProductGroupsProductCountsGet*(httpClient: HttpClient, productGroupId: string, adAccountId: string): (Option[CatalogsProductGroupProductCountsVertical], Response) =
   ## Get product counts
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/catalogs/product_groups/{product_group_id}/product_counts" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/catalogs/product_groups/{product_group_id}/product_counts" & "?" & url_encoded_query_params)
   constructResult[CatalogsProductGroupProductCountsVertical](response)
 
 
 proc catalogsProductGroupsUpdate*(httpClient: HttpClient, productGroupId: string, catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest, adAccountId: string): (Option[CatalogsVerticalProductGroup], Response) =
   ## Update single product group
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.patch(basepath & fmt"/catalogs/product_groups/{product_group_id}" & "?" & query_for_api_call, $(%catalogsProductGroupsUpdateRequest))
+  let response = httpClient.patch(basepath & fmt"/catalogs/product_groups/{product_group_id}" & "?" & url_encoded_query_params, $(%catalogsProductGroupsUpdateRequest))
   constructResult[CatalogsVerticalProductGroup](response)
 
 
 proc feedProcessingResultsList*(httpClient: HttpClient, feedId: string, bookmark: string, pageSize: int, adAccountId: string): (Option[feed_processing_results_list_200_response], Response) =
   ## List feed processing results
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/catalogs/feeds/{feed_id}/processing_results" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/catalogs/feeds/{feed_id}/processing_results" & "?" & url_encoded_query_params)
   constructResult[feed_processing_results_list_200_response](response)
 
 
 proc feedsCreate*(httpClient: HttpClient, feedsCreateRequest: FeedsCreateRequest, adAccountId: string): (Option[CatalogsFeed], Response) =
   ## Create feed
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/catalogs/feeds" & "?" & query_for_api_call, $(%feedsCreateRequest))
+  let response = httpClient.post(basepath & "/catalogs/feeds" & "?" & url_encoded_query_params, $(%feedsCreateRequest))
   constructResult[CatalogsFeed](response)
 
 
 proc feedsDelete*(httpClient: HttpClient, feedId: string, adAccountId: string): Response =
   ## Delete feed
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
-  httpClient.delete(basepath & fmt"/catalogs/feeds/{feed_id}" & "?" & query_for_api_call)
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
+  httpClient.delete(basepath & fmt"/catalogs/feeds/{feed_id}" & "?" & url_encoded_query_params)
+
 
 
 proc feedsGet*(httpClient: HttpClient, feedId: string, adAccountId: string): (Option[CatalogsFeed], Response) =
   ## Get feed
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/catalogs/feeds/{feed_id}" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/catalogs/feeds/{feed_id}" & "?" & url_encoded_query_params)
   constructResult[CatalogsFeed](response)
 
 
 proc feedsIngest*(httpClient: HttpClient, feedId: string, adAccountId: string): (Option[CatalogsFeedIngestion], Response) =
   ## Ingest feed items
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & fmt"/catalogs/feeds/{feed_id}/ingest" & "?" & query_for_api_call)
+  let response = httpClient.post(basepath & fmt"/catalogs/feeds/{feed_id}/ingest" & "?" & url_encoded_query_params)
   constructResult[CatalogsFeedIngestion](response)
 
 
 proc feedsList*(httpClient: HttpClient, bookmark: string, pageSize: int, catalogId: string, adAccountId: string): (Option[feeds_list_200_response], Response) =
   ## List feeds
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("catalog_id", $catalogId), # Filter entities for a given catalog_id. If not given, all catalogs are considered.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $catalogId != "":
+    query_params_list.add(("catalog_id", $catalogId))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/catalogs/feeds" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/catalogs/feeds" & "?" & url_encoded_query_params)
   constructResult[feeds_list_200_response](response)
 
 
 proc feedsUpdate*(httpClient: HttpClient, feedId: string, feedsUpdateRequest: FeedsUpdateRequest, adAccountId: string): (Option[CatalogsFeed], Response) =
   ## Update feed
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.patch(basepath & fmt"/catalogs/feeds/{feed_id}" & "?" & query_for_api_call, $(%feedsUpdateRequest))
+  let response = httpClient.patch(basepath & fmt"/catalogs/feeds/{feed_id}" & "?" & url_encoded_query_params, $(%feedsUpdateRequest))
   constructResult[CatalogsFeed](response)
 
 
 proc itemsBatchGet*(httpClient: HttpClient, batchId: string, adAccountId: string): (Option[CatalogsItemsBatch], Response) =
   ## Get item batch status
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/catalogs/items/batch/{batch_id}" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/catalogs/items/batch/{batch_id}" & "?" & url_encoded_query_params)
   constructResult[CatalogsItemsBatch](response)
 
 
 proc itemsBatchPost*(httpClient: HttpClient, itemsBatchPostRequest: ItemsBatchPostRequest, adAccountId: string): (Option[CatalogsItemsBatch], Response) =
   ## Operate on item batch
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/catalogs/items/batch" & "?" & query_for_api_call, $(%itemsBatchPostRequest))
+  let response = httpClient.post(basepath & "/catalogs/items/batch" & "?" & url_encoded_query_params, $(%itemsBatchPostRequest))
   constructResult[CatalogsItemsBatch](response)
 
 
 proc itemsGet*(httpClient: HttpClient, country: string, language: string, adAccountId: string, itemIds: seq[string], filters: CatalogsItemsFilters): (Option[CatalogsItems], Response) {.deprecated.} =
   ## Get catalogs items
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-    ("country", $country), # Country for the Catalogs Items
-    ("language", $language), # Language for the Catalogs Items
-    ("item_ids", $itemIds.join(",")), # This parameter is deprecated. Use filters instead.
-    ("filters", $filters), # Identifies items to be retrieved. This is a required parameter.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  query_params_list.add(("country", $country))
+  query_params_list.add(("language", $language))
+  if itemIds.len > 0:
+    query_params_list.add(("item_ids", $itemIds.join(",")))
+  if $filters != "":
+    query_params_list.add(("filters", $filters))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/catalogs/items" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/catalogs/items" & "?" & url_encoded_query_params)
   constructResult[CatalogsItems](response)
 
 
 proc itemsIssuesList*(httpClient: HttpClient, processingResultId: string, bookmark: string, pageSize: int, itemNumbers: seq[int], itemValidationIssue: CatalogsItemValidationIssue, adAccountId: string): (Option[items_issues_list_200_response], Response) =
   ## List item issues
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("item_numbers", $itemNumbers.join(",")), # Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-    ("item_validation_issue", $itemValidationIssue), # Filter item validation issues that have a given type of item validation issue.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if itemNumbers.len > 0:
+    query_params_list.add(("item_numbers", $itemNumbers.join(",")))
+  if $itemValidationIssue != "":
+    query_params_list.add(("item_validation_issue", $itemValidationIssue))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/catalogs/processing_results/{processing_result_id}/item_issues" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/catalogs/processing_results/{processing_result_id}/item_issues" & "?" & url_encoded_query_params)
   constructResult[items_issues_list_200_response](response)
 
 
 proc itemsPost*(httpClient: HttpClient, catalogsItemsRequest: CatalogsItemsRequest, adAccountId: string): (Option[CatalogsItems], Response) =
   ## Get catalogs items (POST)
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/catalogs/items" & "?" & query_for_api_call, $(%catalogsItemsRequest))
+  let response = httpClient.post(basepath & "/catalogs/items" & "?" & url_encoded_query_params, $(%catalogsItemsRequest))
   constructResult[CatalogsItems](response)
 
 
 proc productsByProductGroupFilterList*(httpClient: HttpClient, catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest, bookmark: string, pageSize: int, adAccountId: string, pinMetrics: bool): (Option[catalogs_product_group_pins_list_200_response], Response) =
   ## List products by filter
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-    ("pin_metrics", $pinMetrics), # Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  if $pinMetrics != "":
+    query_params_list.add(("pin_metrics", $pinMetrics))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/catalogs/products/get_by_product_group_filters" & "?" & query_for_api_call, $(%catalogsListProductsByFilterRequest))
+  let response = httpClient.post(basepath & "/catalogs/products/get_by_product_group_filters" & "?" & url_encoded_query_params, $(%catalogsListProductsByFilterRequest))
   constructResult[catalogs_product_group_pins_list_200_response](response)
 
 
 proc reportsCreate*(httpClient: HttpClient, catalogsReportParameters: CatalogsReportParameters, adAccountId: string): (Option[CatalogsCreateReportResponse], Response) =
   ## Build catalogs report
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/catalogs/reports" & "?" & query_for_api_call, $(%catalogsReportParameters))
+  let response = httpClient.post(basepath & "/catalogs/reports" & "?" & url_encoded_query_params, $(%catalogsReportParameters))
   constructResult[CatalogsCreateReportResponse](response)
 
 
 proc reportsGet*(httpClient: HttpClient, token: string, adAccountId: string): (Option[CatalogsReport], Response) =
   ## Get catalogs report
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-    ("token", $token), # Token returned from async build report call
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  query_params_list.add(("token", $token))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/catalogs/reports" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/catalogs/reports" & "?" & url_encoded_query_params)
   constructResult[CatalogsReport](response)
 
 
 proc reportsStats*(httpClient: HttpClient, parameters: CatalogsReportParameters, adAccountId: string, pageSize: int, bookmark: string): (Option[reports_stats_200_response], Response) =
   ## List report stats
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("parameters", $parameters), # Contains the parameters for report identification.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  query_params_list.add(("parameters", $parameters))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/catalogs/reports/stats" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/catalogs/reports/stats" & "?" & url_encoded_query_params)
   constructResult[reports_stats_200_response](response)
 

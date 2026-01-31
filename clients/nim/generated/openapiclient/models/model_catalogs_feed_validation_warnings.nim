@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type FETCHSAMESIGNATURE* {.pure.} = enum
@@ -16,62 +18,70 @@ type FETCHSAMESIGNATURE* {.pure.} = enum
 
 type CatalogsFeedValidationWarnings* = object
   ## 
-  AD_LINK_FORMAT_WARNING*: int ## Some items have ad links that are formatted incorrectly.
-  AD_LINK_SAME_AS_LINK*: int ## Some items have ad link URLs that are duplicates of the link URLs for those items.
-  TITLE_LENGTH_TOO_LONG*: int ## The title for some items were truncated because they contain too many characters.
-  DESCRIPTION_LENGTH_TOO_LONG*: int ## The description for some items were truncated because they contain too many characters.
-  GENDER_INVALID*: int ## Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-  AGE_GROUP_INVALID*: int ## Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-  SIZE_TYPE_INVALID*: int ## Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-  SIZE_SYSTEM_INVALID*: int ## Some items have size system values which are not one of the supported size systems.
-  LINK_FORMAT_WARNING*: int ## Some items have an invalid product link which contains invalid UTM tracking paramaters.
-  SALES_PRICE_INVALID*: int ## Some items have sale price values that are higher than the original price of the item.
-  PRODUCT_CATEGORY_DEPTH_WARNING*: int ## Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
-  ADWORDS_FORMAT_WARNING*: int ## Some items have adwords_redirect links that are formatted incorrectly.
-  ADWORDS_SAME_AS_LINK*: int ## Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
-  DUPLICATE_HEADERS*: int ## Your feed contains duplicate headers.
-  FETCH_SAME_SIGNATURE*: FETCHSAMESIGNATURE ## Ingestion completed early because there are no changes to your feed since the last successful update.
-  ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG*: int ## Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
-  ADDITIONAL_IMAGE_LINK_WARNING*: int ## Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.
-  IMAGE_LINK_WARNING*: int ## Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
-  SHIPPING_INVALID*: int ## Some items have shipping values that are formatted incorrectly.
-  TAX_INVALID*: int ## Some items have tax values that are formatted incorrectly.
-  SHIPPING_WEIGHT_INVALID*: int ## Some items have invalid shipping_weight values.
-  EXPIRATION_DATE_INVALID*: int ## Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
-  AVAILABILITY_DATE_INVALID*: int ## Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
-  SALE_DATE_INVALID*: int ## Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
-  WEIGHT_UNIT_INVALID*: int ## Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
-  IS_BUNDLE_INVALID*: int ## Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
-  UPDATED_TIME_INVALID*: int ## Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
-  CUSTOM_LABEL_LENGTH_TOO_LONG*: int ## Some items have custom_label values that are too long, those items will be published without that custom label.
-  PRODUCT_TYPE_LENGTH_TOO_LONG*: int ## Some items have product_type values that are too long, those items will be published without that product type.
-  TOO_MANY_ADDITIONAL_IMAGE_LINKS*: int ## Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
-  MULTIPACK_INVALID*: int ## Some items have invalid multipack values.
-  INDEXED_PRODUCT_COUNT_LARGE_DELTA*: int ## The product count has increased or decreased significantly compared to the last successful ingestion.
-  ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE*: int ## Some items include additional_image_links that can't be found.
-  OPTIONAL_PRODUCT_CATEGORY_MISSING*: int ## Some items are missing a google_product_category.
-  OPTIONAL_PRODUCT_CATEGORY_INVALID*: int ## Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
-  OPTIONAL_CONDITION_MISSING*: int ## Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
-  OPTIONAL_CONDITION_INVALID*: int ## Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-  IOS_DEEP_LINK_INVALID*: int ## Some items include invalid ios_deep_link values.
-  ANDROID_DEEP_LINK_INVALID*: int ## Some items include invalid android_deep_link.
-  UTM_SOURCE_AUTO_CORRECTED*: int ## Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
-  COUNTRY_DOES_NOT_MAP_TO_CURRENCY*: int ## Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.
-  MIN_AD_PRICE_INVALID*: int ## Some items include min_ad_price values that are formatted incorrectly.
-  GTIN_INVALID*: int ## Some items include incorrectly formatted GTINs.
-  INCONSISTENT_CURRENCY_VALUES*: int ## Some items include inconsistent currencies in price fields.
-  SALES_PRICE_TOO_LOW*: int ## Some items include sales price that is much lower than the list price.
-  SHIPPING_WIDTH_INVALID*: int ## Some items include incorrectly formatted shipping_width.
-  SHIPPING_HEIGHT_INVALID*: int ## Some items include incorrectly formatted shipping_height.
-  SALES_PRICE_TOO_HIGH*: int ## Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
-  MPN_INVALID*: int ## Some items include incorrectly formatted MPNs.
+  AD_LINK_FORMAT_WARNING*: Option[int] ## Some items have ad links that are formatted incorrectly.
+  AD_LINK_SAME_AS_LINK*: Option[int] ## Some items have ad link URLs that are duplicates of the link URLs for those items.
+  TITLE_LENGTH_TOO_LONG*: Option[int] ## The title for some items were truncated because they contain too many characters.
+  DESCRIPTION_LENGTH_TOO_LONG*: Option[int] ## The description for some items were truncated because they contain too many characters.
+  GENDER_INVALID*: Option[int] ## Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+  AGE_GROUP_INVALID*: Option[int] ## Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+  SIZE_TYPE_INVALID*: Option[int] ## Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+  SIZE_SYSTEM_INVALID*: Option[int] ## Some items have size system values which are not one of the supported size systems.
+  LINK_FORMAT_WARNING*: Option[int] ## Some items have an invalid product link which contains invalid UTM tracking paramaters.
+  SALES_PRICE_INVALID*: Option[int] ## Some items have sale price values that are higher than the original price of the item.
+  PRODUCT_CATEGORY_DEPTH_WARNING*: Option[int] ## Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
+  ADWORDS_FORMAT_WARNING*: Option[int] ## Some items have adwords_redirect links that are formatted incorrectly.
+  ADWORDS_SAME_AS_LINK*: Option[int] ## Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
+  DUPLICATE_HEADERS*: Option[int] ## Your feed contains duplicate headers.
+  FETCH_SAME_SIGNATURE*: Option[FETCHSAMESIGNATURE] ## Ingestion completed early because there are no changes to your feed since the last successful update.
+  ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG*: Option[int] ## Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
+  ADDITIONAL_IMAGE_LINK_WARNING*: Option[int] ## Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.
+  IMAGE_LINK_WARNING*: Option[int] ## Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
+  SHIPPING_INVALID*: Option[int] ## Some items have shipping values that are formatted incorrectly.
+  TAX_INVALID*: Option[int] ## Some items have tax values that are formatted incorrectly.
+  SHIPPING_WEIGHT_INVALID*: Option[int] ## Some items have invalid shipping_weight values.
+  EXPIRATION_DATE_INVALID*: Option[int] ## Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
+  AVAILABILITY_DATE_INVALID*: Option[int] ## Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
+  SALE_DATE_INVALID*: Option[int] ## Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
+  WEIGHT_UNIT_INVALID*: Option[int] ## Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
+  IS_BUNDLE_INVALID*: Option[int] ## Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
+  UPDATED_TIME_INVALID*: Option[int] ## Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
+  CUSTOM_LABEL_LENGTH_TOO_LONG*: Option[int] ## Some items have custom_label values that are too long, those items will be published without that custom label.
+  PRODUCT_TYPE_LENGTH_TOO_LONG*: Option[int] ## Some items have product_type values that are too long, those items will be published without that product type.
+  TOO_MANY_ADDITIONAL_IMAGE_LINKS*: Option[int] ## Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
+  MULTIPACK_INVALID*: Option[int] ## Some items have invalid multipack values.
+  INDEXED_PRODUCT_COUNT_LARGE_DELTA*: Option[int] ## The product count has increased or decreased significantly compared to the last successful ingestion.
+  ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE*: Option[int] ## Some items include additional_image_links that can't be found.
+  OPTIONAL_PRODUCT_CATEGORY_MISSING*: Option[int] ## Some items are missing a google_product_category.
+  OPTIONAL_PRODUCT_CATEGORY_INVALID*: Option[int] ## Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
+  OPTIONAL_CONDITION_MISSING*: Option[int] ## Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
+  OPTIONAL_CONDITION_INVALID*: Option[int] ## Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+  IOS_DEEP_LINK_INVALID*: Option[int] ## Some items include invalid ios_deep_link values.
+  ANDROID_DEEP_LINK_INVALID*: Option[int] ## Some items include invalid android_deep_link.
+  UTM_SOURCE_AUTO_CORRECTED*: Option[int] ## Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
+  COUNTRY_DOES_NOT_MAP_TO_CURRENCY*: Option[int] ## Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.
+  MIN_AD_PRICE_INVALID*: Option[int] ## Some items include min_ad_price values that are formatted incorrectly.
+  GTIN_INVALID*: Option[int] ## Some items include incorrectly formatted GTINs.
+  INCONSISTENT_CURRENCY_VALUES*: Option[int] ## Some items include inconsistent currencies in price fields.
+  SALES_PRICE_TOO_LOW*: Option[int] ## Some items include sales price that is much lower than the list price.
+  SHIPPING_WIDTH_INVALID*: Option[int] ## Some items include incorrectly formatted shipping_width.
+  SHIPPING_HEIGHT_INVALID*: Option[int] ## Some items include incorrectly formatted shipping_height.
+  SALES_PRICE_TOO_HIGH*: Option[int] ## Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
+  MPN_INVALID*: Option[int] ## Some items include incorrectly formatted MPNs.
 
 func `%`*(v: FETCHSAMESIGNATURE): JsonNode =
-  let str = case v:
-    of FETCHSAMESIGNATURE.`1`: "1"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of FETCHSAMESIGNATURE.`1`: %"1"
 func `$`*(v: FETCHSAMESIGNATURE): string =
   result = case v:
-    of FETCHSAMESIGNATURE.`1`: "1"
+    of FETCHSAMESIGNATURE.`1`: $("1")
+
+proc to*(node: JsonNode, T: typedesc[FETCHSAMESIGNATURE]): FETCHSAMESIGNATURE =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum FETCHSAMESIGNATURE, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("1"):
+    return FETCHSAMESIGNATURE.`1`
+  else:
+    raise newException(ValueError, "Invalid enum value for FETCHSAMESIGNATURE: " & strVal)
+

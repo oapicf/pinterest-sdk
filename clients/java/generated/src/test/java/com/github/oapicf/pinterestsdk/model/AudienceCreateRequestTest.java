@@ -13,8 +13,8 @@
 
 package com.github.oapicf.pinterestsdk.model;
 
-import com.github.oapicf.pinterestsdk.model.AudienceCreateRequest1AudienceType;
 import com.github.oapicf.pinterestsdk.model.AudienceRule;
+import com.github.oapicf.pinterestsdk.model.AudienceType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;

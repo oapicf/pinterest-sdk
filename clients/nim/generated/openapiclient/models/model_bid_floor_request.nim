@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_bid_floor_spec
 import model_targeting_spec
@@ -16,4 +18,27 @@ import model_targeting_spec
 type BidFloorRequest* = object
   ## 
   bidFloorSpecs*: seq[BidFloorSpec]
-  targetingSpec*: TargetingSpec
+  targetingSpec*: Option[TargetingSpec]
+
+
+# Custom JSON deserialization for BidFloorRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[BidFloorRequest]): BidFloorRequest =
+  result = BidFloorRequest()
+  if node.kind == JObject:
+    if node.hasKey("bid_floor_specs"):
+      # Array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["bid_floor_specs"]
+      if arrayNode.kind == JArray:
+        result.bidFloorSpecs = @[]
+        for item in arrayNode.items:
+          result.bidFloorSpecs.add(to(item, BidFloorSpec))
+    if node.hasKey("targeting_spec") and node["targeting_spec"].kind != JNull:
+      result.targetingSpec = some(to(node["targeting_spec"], typeof(result.targetingSpec.get())))
+
+# Custom JSON serialization for BidFloorRequest with custom field names
+proc `%`*(obj: BidFloorRequest): JsonNode =
+  result = newJObject()
+  result["bid_floor_specs"] = %obj.bidFloorSpecs
+  if obj.targetingSpec.isSome():
+    result["targeting_spec"] = %obj.targetingSpec.get()
+

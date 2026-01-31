@@ -820,16 +820,13 @@ namespace Org.OpenAPITools.Model
                             androidDeepLink = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "carousel_android_deep_links":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                carouselAndroidDeepLinks = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            carouselAndroidDeepLinks = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "carousel_destination_urls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                carouselDestinationUrls = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            carouselDestinationUrls = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "carousel_ios_deep_links":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                carouselIosDeepLinks = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            carouselIosDeepLinks = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "click_tracking_url":
                             clickTrackingUrl = new Option<string?>(utf8JsonReader.GetString());
@@ -846,12 +843,10 @@ namespace Org.OpenAPITools.Model
                             iosDeepLink = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "is_pin_deleted":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isPinDeleted = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isPinDeleted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "is_removable":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isRemovable = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isRemovable = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "name":
                             name = new Option<string?>(utf8JsonReader.GetString());
@@ -862,8 +857,7 @@ namespace Org.OpenAPITools.Model
                                 status = new Option<EntityStatus?>(EntityStatusValueConverter.FromStringOrDefault(statusRawValue));
                             break;
                         case "tracking_urls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                trackingUrls = new Option<TrackingUrls?>(JsonSerializer.Deserialize<TrackingUrls>(ref utf8JsonReader, jsonSerializerOptions));
+                            trackingUrls = new Option<TrackingUrls?>(JsonSerializer.Deserialize<TrackingUrls>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "view_tracking_url":
                             viewTrackingUrl = new Option<string?>(utf8JsonReader.GetString());
@@ -882,8 +876,7 @@ namespace Org.OpenAPITools.Model
                                 customizableCtaType = new Option<AdUpdateRequest.CustomizableCtaTypeEnum?>(AdUpdateRequest.CustomizableCtaTypeEnumFromStringOrDefault(customizableCtaTypeRawValue));
                             break;
                         case "quiz_pin_data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                quizPinData = new Option<QuizPinData?>(JsonSerializer.Deserialize<QuizPinData>(ref utf8JsonReader, jsonSerializerOptions));
+                            quizPinData = new Option<QuizPinData?>(JsonSerializer.Deserialize<QuizPinData>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "pin_id":
                             pinId = new Option<string?>(utf8JsonReader.GetString());

@@ -33,7 +33,7 @@ data class ConversionEventsUserDataAnyOf2(
 
     @Schema(example = "[\"0192518eb84137ccfe82c8b6322d29631dae7e28ed9d0f6dd5f245d73a58c5f1\",\"837b850ac46d62b2272a71de73c27801ff011ac1e36c5432620c8755cf90db46\"]", description = "Sha256 hashes of user's \"Google Advertising IDs\" (GAIDs) or \"Apple's Identifier for Advertisers\" (IDFAs). Used for matching. We highly recommend this on checkout events at least. It may improve reporting performance such as ROAS/CPA. The string should be in the UTF-8 format.")
     @get:JsonProperty("hashed_maids") val hashedMaids: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
 }
 

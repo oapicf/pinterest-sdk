@@ -9,7 +9,58 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type Permissions* = object
-  ## 
+type Permissions* {.pure.} = enum
+  ADMIN
+  ANALYST
+  FINANCEMANAGER
+  AUDIENCEMANAGER
+  CAMPAIGNMANAGER
+  CATALOGSMANAGER
+  PROFILEPUBLISHER
+
+func `%`*(v: Permissions): JsonNode =
+  result = case v:
+    of Permissions.ADMIN: %"ADMIN"
+    of Permissions.ANALYST: %"ANALYST"
+    of Permissions.FINANCEMANAGER: %"FINANCE_MANAGER"
+    of Permissions.AUDIENCEMANAGER: %"AUDIENCE_MANAGER"
+    of Permissions.CAMPAIGNMANAGER: %"CAMPAIGN_MANAGER"
+    of Permissions.CATALOGSMANAGER: %"CATALOGS_MANAGER"
+    of Permissions.PROFILEPUBLISHER: %"PROFILE_PUBLISHER"
+
+func `$`*(v: Permissions): string =
+  result = case v:
+    of Permissions.ADMIN: $("ADMIN")
+    of Permissions.ANALYST: $("ANALYST")
+    of Permissions.FINANCEMANAGER: $("FINANCE_MANAGER")
+    of Permissions.AUDIENCEMANAGER: $("AUDIENCE_MANAGER")
+    of Permissions.CAMPAIGNMANAGER: $("CAMPAIGN_MANAGER")
+    of Permissions.CATALOGSMANAGER: $("CATALOGS_MANAGER")
+    of Permissions.PROFILEPUBLISHER: $("PROFILE_PUBLISHER")
+
+proc to*(node: JsonNode, T: typedesc[Permissions]): Permissions =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Permissions, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ADMIN"):
+    return Permissions.ADMIN
+  of $("ANALYST"):
+    return Permissions.ANALYST
+  of $("FINANCE_MANAGER"):
+    return Permissions.FINANCEMANAGER
+  of $("AUDIENCE_MANAGER"):
+    return Permissions.AUDIENCEMANAGER
+  of $("CAMPAIGN_MANAGER"):
+    return Permissions.CAMPAIGNMANAGER
+  of $("CATALOGS_MANAGER"):
+    return Permissions.CATALOGSMANAGER
+  of $("PROFILE_PUBLISHER"):
+    return Permissions.PROFILEPUBLISHER
+  else:
+    raise newException(ValueError, "Invalid enum value for Permissions: " & strVal)
+

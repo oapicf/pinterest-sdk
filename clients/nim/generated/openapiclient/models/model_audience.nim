@@ -9,19 +9,76 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_audience_rule
 
 type Audience* = object
   ## 
-  adAccountId*: string ## Ad account ID.
-  id*: string ## Audience ID.
-  name*: string ## Audience name.
-  audienceType*: string ## <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
-  description*: string ## Audience description.
-  rule*: AudienceRule
-  size*: int ## Audience size.
-  status*: string ## Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
-  `type`*: string ## Always \"audience\".
-  createdTimestamp*: int ## Creation time. Unix timestamp in seconds.
-  updatedTimestamp*: int ## Last update time. Unix timestamp in seconds.
+  adAccountId*: Option[string] ## Ad account ID.
+  id*: Option[string] ## Audience ID.
+  name*: Option[string] ## Audience name.
+  audienceType*: Option[string] ## <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR
+  description*: Option[string] ## Audience description.
+  rule*: Option[AudienceRule]
+  size*: Option[int] ## Audience size.
+  status*: Option[string] ## Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.
+  `type`*: Option[string] ## Always \"audience\".
+  createdTimestamp*: Option[int] ## Creation time. Unix timestamp in seconds.
+  updatedTimestamp*: Option[int] ## Last update time. Unix timestamp in seconds.
+
+
+# Custom JSON deserialization for Audience with custom field names
+proc to*(node: JsonNode, T: typedesc[Audience]): Audience =
+  result = Audience()
+  if node.kind == JObject:
+    if node.hasKey("ad_account_id") and node["ad_account_id"].kind != JNull:
+      result.adAccountId = some(to(node["ad_account_id"], typeof(result.adAccountId.get())))
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("audience_type") and node["audience_type"].kind != JNull:
+      result.audienceType = some(to(node["audience_type"], typeof(result.audienceType.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("rule") and node["rule"].kind != JNull:
+      result.rule = some(to(node["rule"], typeof(result.rule.get())))
+    if node.hasKey("size") and node["size"].kind != JNull:
+      result.size = some(to(node["size"], typeof(result.size.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+    if node.hasKey("type") and node["type"].kind != JNull:
+      result.`type` = some(to(node["type"], typeof(result.`type`.get())))
+    if node.hasKey("created_timestamp") and node["created_timestamp"].kind != JNull:
+      result.createdTimestamp = some(to(node["created_timestamp"], typeof(result.createdTimestamp.get())))
+    if node.hasKey("updated_timestamp") and node["updated_timestamp"].kind != JNull:
+      result.updatedTimestamp = some(to(node["updated_timestamp"], typeof(result.updatedTimestamp.get())))
+
+# Custom JSON serialization for Audience with custom field names
+proc `%`*(obj: Audience): JsonNode =
+  result = newJObject()
+  if obj.adAccountId.isSome():
+    result["ad_account_id"] = %obj.adAccountId.get()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.audienceType.isSome():
+    result["audience_type"] = %obj.audienceType.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  if obj.rule.isSome():
+    result["rule"] = %obj.rule.get()
+  if obj.size.isSome():
+    result["size"] = %obj.size.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.`type`.isSome():
+    result["type"] = %obj.`type`.get()
+  if obj.createdTimestamp.isSome():
+    result["created_timestamp"] = %obj.createdTimestamp.get()
+  if obj.updatedTimestamp.isSome():
+    result["updated_timestamp"] = %obj.updatedTimestamp.get()
+

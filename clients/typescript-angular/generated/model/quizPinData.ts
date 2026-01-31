@@ -24,11 +24,11 @@ export interface QuizPinData {
     tie_breaker_custom_result?: QuizPinResult | null;
 }
 export namespace QuizPinData {
-    export type TieBreakerTypeEnum = 'RANDOM' | 'CUSTOM';
     export const TieBreakerTypeEnum = {
-        Random: 'RANDOM' as TieBreakerTypeEnum,
-        Custom: 'CUSTOM' as TieBreakerTypeEnum
-    };
+        Random: 'RANDOM',
+        Custom: 'CUSTOM'
+    } as const;
+    export type TieBreakerTypeEnum = typeof TieBreakerTypeEnum[keyof typeof TieBreakerTypeEnum];
 }
 
 

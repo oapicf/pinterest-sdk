@@ -1,24 +1,26 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.PinMedia;
 import org.openapitools.model.PinMediaWithImageAllOfImages;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Pin with image.
- **/
+ * Pin with image.
+ */
 @ApiModel(description="Pin with image.")
 
 public class PinMediaWithImage extends PinMedia {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private PinMediaWithImageAllOfImages images;
  /**
    * Get images

@@ -7,7 +7,6 @@ open OpenAPI.Model.BatchOperation
 open OpenAPI.Model.CatalogsItemsCreateBatchRequest
 open OpenAPI.Model.CatalogsItemsDeleteBatchRequest
 open OpenAPI.Model.CatalogsItemsDeleteDiscontinuedBatchRequest
-open OpenAPI.Model.CatalogsItemsRequestLanguage
 open OpenAPI.Model.CatalogsItemsUpdateBatchRequest
 open OpenAPI.Model.CatalogsItemsUpsertBatchRequest
 open OpenAPI.Model.Country
@@ -22,7 +21,7 @@ module CatalogsItemsBatchRequest =
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
     [<JsonProperty(PropertyName = "language")>]
-    Language : CatalogsItemsRequestLanguage;
+    Language : string;
     [<JsonProperty(PropertyName = "operation")>]
     Operation : BatchOperation;
     [<JsonProperty(PropertyName = "items")>]

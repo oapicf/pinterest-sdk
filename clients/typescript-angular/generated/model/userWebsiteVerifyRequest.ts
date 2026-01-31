@@ -17,12 +17,12 @@ export interface UserWebsiteVerifyRequest {
     verification_method?: UserWebsiteVerifyRequest.VerificationMethodEnum;
 }
 export namespace UserWebsiteVerifyRequest {
-    export type VerificationMethodEnum = 'FILENAME' | 'METATAG' | 'DNSTXT';
     export const VerificationMethodEnum = {
-        Filename: 'FILENAME' as VerificationMethodEnum,
-        Metatag: 'METATAG' as VerificationMethodEnum,
-        Dnstxt: 'DNSTXT' as VerificationMethodEnum
-    };
+        Filename: 'FILENAME',
+        Metatag: 'METATAG',
+        Dnstxt: 'DNSTXT'
+    } as const;
+    export type VerificationMethodEnum = typeof VerificationMethodEnum[keyof typeof VerificationMethodEnum];
 }
 
 

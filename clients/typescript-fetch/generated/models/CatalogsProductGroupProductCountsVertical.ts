@@ -57,7 +57,7 @@ export function CatalogsProductGroupProductCountsVerticalFromJSONTyped(json: any
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailProductGroupProductCountsFromJSONTyped(json, true), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsProductGroupProductCountsVertical exists with 'catalogType=${json['catalogType']}'`);
+            return json;
     }
 }
 
@@ -77,8 +77,7 @@ export function CatalogsProductGroupProductCountsVerticalToJSONTyped(value?: Cat
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailProductGroupProductCountsToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsProductGroupProductCountsVertical exists with 'catalogType=${value['catalogType']}'`);
+            return value;
     }
-
 }
 

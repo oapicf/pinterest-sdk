@@ -18,11 +18,10 @@ import org.openapitools.model.Pin;
 import org.openapitools.model.PinAnalyticsMetricsResponse;
 import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
-import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2025-05-10T05:38:59.250229241Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinsController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map
@@ -31,13 +30,13 @@ public class PinsController  {
    **/
 
   /*
-    public ResponseContext multiPinsAnalytics(RequestContext request , List<String> pinIds, Date startDate, Date endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId) {
+    public ResponseContext multiPinsAnalytics(RequestContext request , List<String> pinIds, Date startDate, Date endDate, List<String> metricTypes, String appTypes, String adAccountId) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext pinsAnalytics(RequestContext request , String pinId, Date startDate, Date endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId) {
+    public ResponseContext pinsAnalytics(RequestContext request , String pinId, Date startDate, Date endDate, List<String> metricTypes, String appTypes, String splitField, String adAccountId) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

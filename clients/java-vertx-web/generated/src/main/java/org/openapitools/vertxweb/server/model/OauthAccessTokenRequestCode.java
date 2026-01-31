@@ -5,12 +5,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-/**
- * A request to exchange an authorization code for an access token.
- **/
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OauthAccessTokenRequestCode   {
   
+  private String code;
+  private String redirectUri;
 
 
   public enum GrantTypeEnum {
@@ -32,25 +31,14 @@ public class OauthAccessTokenRequestCode   {
   }
 
   private GrantTypeEnum grantType;
-  private String code;
-  private String redirectUri;
 
   public OauthAccessTokenRequestCode () {
 
   }
 
-  public OauthAccessTokenRequestCode (GrantTypeEnum grantType, String code, String redirectUri) {
-    this.grantType = grantType;
+  public OauthAccessTokenRequestCode (String code, String redirectUri, GrantTypeEnum grantType) {
     this.code = code;
     this.redirectUri = redirectUri;
-  }
-
-    
-  @JsonProperty("grant_type")
-  public GrantTypeEnum getGrantType() {
-    return grantType;
-  }
-  public void setGrantType(GrantTypeEnum grantType) {
     this.grantType = grantType;
   }
 
@@ -72,6 +60,15 @@ public class OauthAccessTokenRequestCode   {
     this.redirectUri = redirectUri;
   }
 
+    
+  @JsonProperty("grant_type")
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -82,14 +79,14 @@ public class OauthAccessTokenRequestCode   {
       return false;
     }
     OauthAccessTokenRequestCode oauthAccessTokenRequestCode = (OauthAccessTokenRequestCode) o;
-    return Objects.equals(grantType, oauthAccessTokenRequestCode.grantType) &&
-        Objects.equals(code, oauthAccessTokenRequestCode.code) &&
-        Objects.equals(redirectUri, oauthAccessTokenRequestCode.redirectUri);
+    return Objects.equals(code, oauthAccessTokenRequestCode.code) &&
+        Objects.equals(redirectUri, oauthAccessTokenRequestCode.redirectUri) &&
+        Objects.equals(grantType, oauthAccessTokenRequestCode.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, code, redirectUri);
+    return Objects.hash(code, redirectUri, grantType);
   }
 
   @Override
@@ -97,9 +94,9 @@ public class OauthAccessTokenRequestCode   {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestCode {\n");
     
-    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

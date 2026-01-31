@@ -990,13 +990,13 @@ trait DataAccessor {
         * 
         * @return A Map[String, Map]
         */
-        def Pins_multiPins/analytics(pinIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, metricTypes: Seq[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String], adAccountId: Option[String]): Either[CommonError,Map[String, Map]] = Left(TODO)
+        def Pins_multiPins/analytics(pinIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, metricTypes: Seq[String], appTypes: Option[String], adAccountId: Option[String]): Either[CommonError,Map[String, Map]] = Left(TODO)
 
         /**
         * 
         * @return A Map[String, PinAnalyticsMetricsResponse]
         */
-        def Pins_pins/analytics(pinId: String, startDate: LocalDateTime, endDate: LocalDateTime, metricTypes: Seq[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String], splitField: Option[String], adAccountId: Option[String]): Either[CommonError,Map[String, PinAnalyticsMetricsResponse]] = Left(TODO)
+        def Pins_pins/analytics(pinId: String, startDate: LocalDateTime, endDate: LocalDateTime, metricTypes: Seq[String], appTypes: Option[String], splitField: Option[String], adAccountId: Option[String]): Either[CommonError,Map[String, PinAnalyticsMetricsResponse]] = Left(TODO)
 
         /**
         * 

@@ -68,8 +68,11 @@ export class OauthApi extends runtime.BaseAPI {
             formParams.append('grant_type', requestParameters['grantType'] as any);
         }
 
+
+        let urlPath = `/oauth/token`;
+
         const response = await this.request({
-            path: `/oauth/token`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,

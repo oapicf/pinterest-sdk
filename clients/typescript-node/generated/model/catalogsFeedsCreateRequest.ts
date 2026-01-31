@@ -39,7 +39,7 @@ export class CatalogsFeedsCreateRequest {
     'preferredProcessingSchedule'?: CatalogsFeedProcessingSchedule | null;
     'defaultCountry'?: Country;
     'defaultAvailability'?: ProductAvailabilityType | null;
-    'status'?: CatalogsStatus;
+    'status'?: CatalogsStatus = CatalogsStatus.Active;
 
     static discriminator: string | undefined = undefined;
 

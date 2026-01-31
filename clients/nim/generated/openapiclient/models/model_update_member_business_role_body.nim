@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_business_role_for_members
 
@@ -16,3 +18,20 @@ type UpdateMemberBusinessRoleBody* = object
   ## Single instance of a business member to have its role updated
   businessRole*: BusinessRoleForMembers
   memberId*: string ## Unique identifier of the member
+
+
+# Custom JSON deserialization for UpdateMemberBusinessRoleBody with custom field names
+proc to*(node: JsonNode, T: typedesc[UpdateMemberBusinessRoleBody]): UpdateMemberBusinessRoleBody =
+  result = UpdateMemberBusinessRoleBody()
+  if node.kind == JObject:
+    if node.hasKey("business_role"):
+      result.businessRole = to(node["business_role"], BusinessRoleForMembers)
+    if node.hasKey("member_id"):
+      result.memberId = to(node["member_id"], string)
+
+# Custom JSON serialization for UpdateMemberBusinessRoleBody with custom field names
+proc `%`*(obj: UpdateMemberBusinessRoleBody): JsonNode =
+  result = newJObject()
+  result["business_role"] = %obj.businessRole
+  result["member_id"] = %obj.memberId
+

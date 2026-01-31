@@ -29,6 +29,7 @@ export class CatalogsRetailProductGroup {
     'filters': CatalogsProductGroupFilters;
     /**
     * boolean indicator of whether the product group is being featured or not
+    * @deprecated
     */
     'isFeatured'?: boolean;
     'type'?: CatalogsProductGroupType;

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type SourceType* {.pure.} = enum
@@ -21,30 +23,79 @@ type CoverImageContentType* {.pure.} = enum
 type PinMediaSourceVideoID* = object
   ## Video ID-based media source
   sourceType*: SourceType
-  coverImageUrl*: string ## Cover image url.
-  coverImageContentType*: CoverImageContentType ## Content type for cover image Base64.
-  coverImageData*: string ## Cover image Base64.
+  coverImageUrl*: Option[string] ## Cover image url.
+  coverImageContentType*: Option[CoverImageContentType] ## Content type for cover image Base64.
+  coverImageData*: Option[string] ## Cover image Base64.
   mediaId*: string
-  isStandard*: bool ## Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+  isStandard*: Option[bool] ## Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
 
 func `%`*(v: SourceType): JsonNode =
-  let str = case v:
-    of SourceType.VideoId: "video_id"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of SourceType.VideoId: %"video_id"
 func `$`*(v: SourceType): string =
   result = case v:
-    of SourceType.VideoId: "video_id"
+    of SourceType.VideoId: $("video_id")
+
+proc to*(node: JsonNode, T: typedesc[SourceType]): SourceType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum SourceType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("video_id"):
+    return SourceType.VideoId
+  else:
+    raise newException(ValueError, "Invalid enum value for SourceType: " & strVal)
 
 func `%`*(v: CoverImageContentType): JsonNode =
-  let str = case v:
-    of CoverImageContentType.ImageJpeg: "image/jpeg"
-    of CoverImageContentType.ImagePng: "image/png"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CoverImageContentType.ImageJpeg: %"image/jpeg"
+    of CoverImageContentType.ImagePng: %"image/png"
 func `$`*(v: CoverImageContentType): string =
   result = case v:
-    of CoverImageContentType.ImageJpeg: "image/jpeg"
-    of CoverImageContentType.ImagePng: "image/png"
+    of CoverImageContentType.ImageJpeg: $("image/jpeg")
+    of CoverImageContentType.ImagePng: $("image/png")
+
+proc to*(node: JsonNode, T: typedesc[CoverImageContentType]): CoverImageContentType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CoverImageContentType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("image/jpeg"):
+    return CoverImageContentType.ImageJpeg
+  of $("image/png"):
+    return CoverImageContentType.ImagePng
+  else:
+    raise newException(ValueError, "Invalid enum value for CoverImageContentType: " & strVal)
+
+
+# Custom JSON deserialization for PinMediaSourceVideoID with custom field names
+proc to*(node: JsonNode, T: typedesc[PinMediaSourceVideoID]): PinMediaSourceVideoID =
+  result = PinMediaSourceVideoID()
+  if node.kind == JObject:
+    if node.hasKey("source_type"):
+      result.sourceType = to(node["source_type"], SourceType)
+    if node.hasKey("cover_image_url") and node["cover_image_url"].kind != JNull:
+      result.coverImageUrl = some(to(node["cover_image_url"], typeof(result.coverImageUrl.get())))
+    if node.hasKey("cover_image_content_type") and node["cover_image_content_type"].kind != JNull:
+      result.coverImageContentType = some(to(node["cover_image_content_type"], CoverImageContentType))
+    if node.hasKey("cover_image_data") and node["cover_image_data"].kind != JNull:
+      result.coverImageData = some(to(node["cover_image_data"], typeof(result.coverImageData.get())))
+    if node.hasKey("media_id"):
+      result.mediaId = to(node["media_id"], string)
+    if node.hasKey("is_standard") and node["is_standard"].kind != JNull:
+      result.isStandard = some(to(node["is_standard"], typeof(result.isStandard.get())))
+
+# Custom JSON serialization for PinMediaSourceVideoID with custom field names
+proc `%`*(obj: PinMediaSourceVideoID): JsonNode =
+  result = newJObject()
+  result["source_type"] = %obj.sourceType
+  if obj.coverImageUrl.isSome():
+    result["cover_image_url"] = %obj.coverImageUrl.get()
+  if obj.coverImageContentType.isSome():
+    result["cover_image_content_type"] = %obj.coverImageContentType.get()
+  if obj.coverImageData.isSome():
+    result["cover_image_data"] = %obj.coverImageData.get()
+  result["media_id"] = %obj.mediaId
+  if obj.isStandard.isSome():
+    result["is_standard"] = %obj.isStandard.get()
+

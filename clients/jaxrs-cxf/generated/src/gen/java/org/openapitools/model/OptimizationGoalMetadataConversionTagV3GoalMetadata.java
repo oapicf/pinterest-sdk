@@ -16,7 +16,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OptimizationGoalMetadataConversionTagV3GoalMetadata  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows attributionWindows;
 
 public enum ConversionEventEnum {
@@ -52,18 +54,22 @@ PAGE_VISIT(String.valueOf("PAGE_VISIT")), SIGNUP(String.valueOf("SIGNUP")), CHEC
 }
 
   @ApiModelProperty(value = "")
+
   private ConversionEventEnum conversionEvent;
 
   @ApiModelProperty(value = "")
+
   private String conversionTagId;
 
   @ApiModelProperty(value = "")
+
   private String cpaGoalValueInMicroCurrency;
 
-  @ApiModelProperty(value = "ROAS optimization is not supported")
  /**
-   * ROAS optimization is not supported
-  **/
+  * ROAS optimization is not supported
+  */
+  @ApiModelProperty(value = "ROAS optimization is not supported")
+
   private Boolean isRoasOptimized;
 
 public enum LearningModeTypeEnum {
@@ -98,10 +104,11 @@ NOT_ACTIVE(String.valueOf("NOT_ACTIVE")), ACTIVE(String.valueOf("ACTIVE"));
     }
 }
 
-  @ApiModelProperty(example = "ACTIVE", value = "Conversion learning model type")
  /**
-   * Conversion learning model type
-  **/
+  * Conversion learning model type
+  */
+  @ApiModelProperty(example = "ACTIVE", value = "Conversion learning model type")
+
   private LearningModeTypeEnum learningModeType;
  /**
    * Get attributionWindows

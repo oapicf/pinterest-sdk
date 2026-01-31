@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_item_validation_errors
 import model_catalogs_item_validation_warnings
@@ -16,6 +18,30 @@ import model_catalogs_item_validation_warnings
 type CatalogsItemValidationIssues* = object
   ## 
   itemNumber*: int ## Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-  itemId*: string ## The merchant-created unique ID that represents the product.
+  itemId*: Option[string] ## The merchant-created unique ID that represents the product.
   errors*: CatalogsItemValidationErrors
   warnings*: CatalogsItemValidationWarnings
+
+
+# Custom JSON deserialization for CatalogsItemValidationIssues with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsItemValidationIssues]): CatalogsItemValidationIssues =
+  result = CatalogsItemValidationIssues()
+  if node.kind == JObject:
+    if node.hasKey("item_number"):
+      result.itemNumber = to(node["item_number"], int)
+    if node.hasKey("item_id") and node["item_id"].kind != JNull:
+      result.itemId = some(to(node["item_id"], typeof(result.itemId.get())))
+    if node.hasKey("errors"):
+      result.errors = to(node["errors"], CatalogsItemValidationErrors)
+    if node.hasKey("warnings"):
+      result.warnings = to(node["warnings"], CatalogsItemValidationWarnings)
+
+# Custom JSON serialization for CatalogsItemValidationIssues with custom field names
+proc `%`*(obj: CatalogsItemValidationIssues): JsonNode =
+  result = newJObject()
+  result["item_number"] = %obj.itemNumber
+  if obj.itemId.isSome():
+    result["item_id"] = %obj.itemId.get()
+  result["errors"] = %obj.errors
+  result["warnings"] = %obj.warnings
+

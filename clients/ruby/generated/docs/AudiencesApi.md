@@ -32,7 +32,7 @@ end
 
 api_instance = PinterestSdkClient::AudiencesApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-audience_create_request = PinterestSdkClient::AudienceCreateRequest.new({name: 'string', rule: PinterestSdkClient::AudienceRule.new, audience_type: PinterestSdkClient::AudienceCreateRequest1AudienceType.new}) # AudienceCreateRequest | List of ads to create, size limit [1, 30]
+audience_create_request = PinterestSdkClient::AudienceCreateRequest.new({name: 'string', rule: PinterestSdkClient::AudienceRule.new, audience_type: PinterestSdkClient::AudienceType::CUSTOMER_LIST}) # AudienceCreateRequest | List of ads to create, size limit [1, 30]
 
 begin
   # Create audience

@@ -26,7 +26,8 @@
     {
       "name": "token_type",
       "type": "string",
-      "doc": ""
+      "doc": "",
+      "default": "bearer"
     },
     {
       "name": "expires_in",

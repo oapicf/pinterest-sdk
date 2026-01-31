@@ -9,8 +9,11 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CampaignId* = object
   ## 
-  id*: string ## Campaign ID.
+  id*: Option[string] ## Campaign ID.
+

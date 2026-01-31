@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_delete_partner_asset_access_body_accesses_inner
 
 type DeletePartnerAssetAccessBody* = object
   ## 
   accesses*: seq[DeletePartnerAssetAccessBody_accesses_inner]
+

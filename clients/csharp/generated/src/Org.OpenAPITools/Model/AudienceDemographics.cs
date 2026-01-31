@@ -194,24 +194,19 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "ages":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ages = new Option<List<AudienceDemographicValue>?>(JsonSerializer.Deserialize<List<AudienceDemographicValue>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            ages = new Option<List<AudienceDemographicValue>?>(JsonSerializer.Deserialize<List<AudienceDemographicValue>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "genders":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                genders = new Option<List<AudienceDemographicValue>?>(JsonSerializer.Deserialize<List<AudienceDemographicValue>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            genders = new Option<List<AudienceDemographicValue>?>(JsonSerializer.Deserialize<List<AudienceDemographicValue>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "devices":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                devices = new Option<List<AudienceDemographicValue>?>(JsonSerializer.Deserialize<List<AudienceDemographicValue>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            devices = new Option<List<AudienceDemographicValue>?>(JsonSerializer.Deserialize<List<AudienceDemographicValue>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "metros":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                metros = new Option<List<AudienceDemographicValue>?>(JsonSerializer.Deserialize<List<AudienceDemographicValue>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            metros = new Option<List<AudienceDemographicValue>?>(JsonSerializer.Deserialize<List<AudienceDemographicValue>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "countries":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                countries = new Option<List<AudienceDemographicValue>?>(JsonSerializer.Deserialize<List<AudienceDemographicValue>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            countries = new Option<List<AudienceDemographicValue>?>(JsonSerializer.Deserialize<List<AudienceDemographicValue>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

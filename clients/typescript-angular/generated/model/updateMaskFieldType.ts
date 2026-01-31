@@ -12,94 +12,50 @@
 /**
  * The field types supported by the update mask
  */
-export type UpdateMaskFieldType = 'ad_link' | 'adult' | 'age_group' | 'availability' | 'average_review_rating' | 'brand' | 'checkout_enabled' | 'color' | 'condition' | 'custom_label_0' | 'custom_label_1' | 'custom_label_2' | 'custom_label_3' | 'custom_label_4' | 'description' | 'free_shipping_label' | 'free_shipping_limit' | 'gender' | 'google_product_category' | 'gtin' | 'item_group_id' | 'last_updated_time' | 'link' | 'material' | 'min_ad_price' | 'mpn' | 'number_of_ratings' | 'number_of_reviews' | 'pattern' | 'price' | 'product_type' | 'sale_price' | 'shipping' | 'shipping_height' | 'shipping_weight' | 'shipping_width' | 'size' | 'size_system' | 'size_type' | 'tax' | 'title' | 'variant_names' | 'variant_values';
-
 export const UpdateMaskFieldType = {
-
-    AdLink: 'ad_link' as UpdateMaskFieldType,
-
-    Adult: 'adult' as UpdateMaskFieldType,
-
-    AgeGroup: 'age_group' as UpdateMaskFieldType,
-
-    Availability: 'availability' as UpdateMaskFieldType,
-
-    AverageReviewRating: 'average_review_rating' as UpdateMaskFieldType,
-
-    Brand: 'brand' as UpdateMaskFieldType,
-
-    CheckoutEnabled: 'checkout_enabled' as UpdateMaskFieldType,
-
-    Color: 'color' as UpdateMaskFieldType,
-
-    Condition: 'condition' as UpdateMaskFieldType,
-
-    CustomLabel0: 'custom_label_0' as UpdateMaskFieldType,
-
-    CustomLabel1: 'custom_label_1' as UpdateMaskFieldType,
-
-    CustomLabel2: 'custom_label_2' as UpdateMaskFieldType,
-
-    CustomLabel3: 'custom_label_3' as UpdateMaskFieldType,
-
-    CustomLabel4: 'custom_label_4' as UpdateMaskFieldType,
-
-    Description: 'description' as UpdateMaskFieldType,
-
-    FreeShippingLabel: 'free_shipping_label' as UpdateMaskFieldType,
-
-    FreeShippingLimit: 'free_shipping_limit' as UpdateMaskFieldType,
-
-    Gender: 'gender' as UpdateMaskFieldType,
-
-    GoogleProductCategory: 'google_product_category' as UpdateMaskFieldType,
-
-    Gtin: 'gtin' as UpdateMaskFieldType,
-
-    ItemGroupId: 'item_group_id' as UpdateMaskFieldType,
-
-    LastUpdatedTime: 'last_updated_time' as UpdateMaskFieldType,
-
-    Link: 'link' as UpdateMaskFieldType,
-
-    Material: 'material' as UpdateMaskFieldType,
-
-    MinAdPrice: 'min_ad_price' as UpdateMaskFieldType,
-
-    Mpn: 'mpn' as UpdateMaskFieldType,
-
-    NumberOfRatings: 'number_of_ratings' as UpdateMaskFieldType,
-
-    NumberOfReviews: 'number_of_reviews' as UpdateMaskFieldType,
-
-    Pattern: 'pattern' as UpdateMaskFieldType,
-
-    Price: 'price' as UpdateMaskFieldType,
-
-    ProductType: 'product_type' as UpdateMaskFieldType,
-
-    SalePrice: 'sale_price' as UpdateMaskFieldType,
-
-    Shipping: 'shipping' as UpdateMaskFieldType,
-
-    ShippingHeight: 'shipping_height' as UpdateMaskFieldType,
-
-    ShippingWeight: 'shipping_weight' as UpdateMaskFieldType,
-
-    ShippingWidth: 'shipping_width' as UpdateMaskFieldType,
-
-    Size: 'size' as UpdateMaskFieldType,
-
-    SizeSystem: 'size_system' as UpdateMaskFieldType,
-
-    SizeType: 'size_type' as UpdateMaskFieldType,
-
-    Tax: 'tax' as UpdateMaskFieldType,
-
-    Title: 'title' as UpdateMaskFieldType,
-
-    VariantNames: 'variant_names' as UpdateMaskFieldType,
-
-    VariantValues: 'variant_values' as UpdateMaskFieldType
-};
+    AdLink: 'ad_link',
+    Adult: 'adult',
+    AgeGroup: 'age_group',
+    Availability: 'availability',
+    AverageReviewRating: 'average_review_rating',
+    Brand: 'brand',
+    CheckoutEnabled: 'checkout_enabled',
+    Color: 'color',
+    Condition: 'condition',
+    CustomLabel0: 'custom_label_0',
+    CustomLabel1: 'custom_label_1',
+    CustomLabel2: 'custom_label_2',
+    CustomLabel3: 'custom_label_3',
+    CustomLabel4: 'custom_label_4',
+    Description: 'description',
+    FreeShippingLabel: 'free_shipping_label',
+    FreeShippingLimit: 'free_shipping_limit',
+    Gender: 'gender',
+    GoogleProductCategory: 'google_product_category',
+    Gtin: 'gtin',
+    ItemGroupId: 'item_group_id',
+    LastUpdatedTime: 'last_updated_time',
+    Link: 'link',
+    Material: 'material',
+    MinAdPrice: 'min_ad_price',
+    Mpn: 'mpn',
+    NumberOfRatings: 'number_of_ratings',
+    NumberOfReviews: 'number_of_reviews',
+    Pattern: 'pattern',
+    Price: 'price',
+    ProductType: 'product_type',
+    SalePrice: 'sale_price',
+    Shipping: 'shipping',
+    ShippingHeight: 'shipping_height',
+    ShippingWeight: 'shipping_weight',
+    ShippingWidth: 'shipping_width',
+    Size: 'size',
+    SizeSystem: 'size_system',
+    SizeType: 'size_type',
+    Tax: 'tax',
+    Title: 'title',
+    VariantNames: 'variant_names',
+    VariantValues: 'variant_values'
+} as const;
+export type UpdateMaskFieldType = typeof UpdateMaskFieldType[keyof typeof UpdateMaskFieldType];
 

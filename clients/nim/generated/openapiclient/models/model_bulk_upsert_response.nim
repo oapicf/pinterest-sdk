@@ -9,8 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type BulkUpsertResponse* = object
   ## ID of the bulk request.
-  requestId*: string
+  requestId*: Option[string]
+
+
+# Custom JSON deserialization for BulkUpsertResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[BulkUpsertResponse]): BulkUpsertResponse =
+  result = BulkUpsertResponse()
+  if node.kind == JObject:
+    if node.hasKey("request_id") and node["request_id"].kind != JNull:
+      result.requestId = some(to(node["request_id"], typeof(result.requestId.get())))
+
+# Custom JSON serialization for BulkUpsertResponse with custom field names
+proc `%`*(obj: BulkUpsertResponse): JsonNode =
+  result = newJObject()
+  if obj.requestId.isSome():
+    result["request_id"] = %obj.requestId.get()
+

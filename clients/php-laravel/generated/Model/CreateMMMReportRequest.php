@@ -34,6 +34,9 @@ class CreateMMMReportRequest
 {
     /**
     *
+    * A List of countries for filtering
+    * @param \OpenAPI\Server\Model\TargetingAdvertiserCountry[] $countries
+    *
     * Name of the Marketing Mix Modeling (MMM) report
     * @param string $reportName
     *
@@ -43,31 +46,28 @@ class CreateMMMReportRequest
     * Metric report end date (UTC). Format: YYYY-MM-DD
     * @param string $endDate
     *
-    * DAY - metrics are broken down daily.&lt;br&gt; WEEK - metrics are broken down weekly.
-    * @param string $granularity
+    * 
+    * @param \OpenAPI\Server\Model\CreateMMMReportRequestAllOfGranularity $granularity
     *
-    * Level of the report
-    * @param string $level
+    * 
+    * @param \OpenAPI\Server\Model\CreateMMMReportRequestAllOfLevel $level
     *
     * List of targeting types
     * @param \OpenAPI\Server\Model\MMMReportingTargetingType[] $targetingTypes
     *
     * Metric and entity columns
     * @param \OpenAPI\Server\Model\MMMReportingColumn[] $columns
-    *
-    * A List of countries for filtering
-    * @param \OpenAPI\Server\Model\TargetingAdvertiserCountry[] $countries
     */
 
     public function __construct(
+        public array $countries,
         public string $reportName,
         public string $startDate,
         public string $endDate,
-        public string $granularity,
-        public string $level,
+        public \OpenAPI\Server\Model\CreateMMMReportRequestAllOfGranularity $granularity,
+        public \OpenAPI\Server\Model\CreateMMMReportRequestAllOfLevel $level,
         public array $targetingTypes,
         public array $columns,
-        public array $countries,
     ) {}
 }
 

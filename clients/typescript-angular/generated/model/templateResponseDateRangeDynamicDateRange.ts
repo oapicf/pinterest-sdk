@@ -23,13 +23,13 @@ export interface TemplateResponseDateRangeDynamicDateRange {
     range?: TemplateResponseDateRangeDynamicDateRange.RangeEnum;
 }
 export namespace TemplateResponseDateRangeDynamicDateRange {
-    export type RangeEnum = 'YEAR_TO_DATE' | 'QUARTER_TO_DATE' | 'MONTH_TO_DATE' | 'LAST_MONTH';
     export const RangeEnum = {
-        YearToDate: 'YEAR_TO_DATE' as RangeEnum,
-        QuarterToDate: 'QUARTER_TO_DATE' as RangeEnum,
-        MonthToDate: 'MONTH_TO_DATE' as RangeEnum,
-        LastMonth: 'LAST_MONTH' as RangeEnum
-    };
+        YearToDate: 'YEAR_TO_DATE',
+        QuarterToDate: 'QUARTER_TO_DATE',
+        MonthToDate: 'MONTH_TO_DATE',
+        LastMonth: 'LAST_MONTH'
+    } as const;
+    export type RangeEnum = typeof RangeEnum[keyof typeof RangeEnum];
 }
 
 

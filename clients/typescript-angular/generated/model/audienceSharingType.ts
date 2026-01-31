@@ -12,12 +12,9 @@
 /**
  * Audience sharing type: [\"CUSTOM\", \"SYNDICATED\"]
  */
-export type AudienceSharingType = 'CUSTOM' | 'SYNDICATED';
-
 export const AudienceSharingType = {
-
-    Custom: 'CUSTOM' as AudienceSharingType,
-
-    Syndicated: 'SYNDICATED' as AudienceSharingType
-};
+    Custom: 'CUSTOM',
+    Syndicated: 'SYNDICATED'
+} as const;
+export type AudienceSharingType = typeof AudienceSharingType[keyof typeof AudienceSharingType];
 

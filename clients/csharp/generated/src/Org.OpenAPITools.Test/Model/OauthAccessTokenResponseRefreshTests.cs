@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -56,30 +55,12 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'ResponseType'
-        /// </summary>
-        [Fact]
-        public void ResponseTypeTest()
-        {
-            // TODO unit test for the property 'ResponseType'
-        }
-
-        /// <summary>
         /// Test the property 'AccessToken'
         /// </summary>
         [Fact]
         public void AccessTokenTest()
         {
             // TODO unit test for the property 'AccessToken'
-        }
-
-        /// <summary>
-        /// Test the property 'TokenType'
-        /// </summary>
-        [Fact]
-        public void TokenTypeTest()
-        {
-            // TODO unit test for the property 'TokenType'
         }
 
         /// <summary>
@@ -98,6 +79,24 @@ namespace Org.OpenAPITools.Test.Model
         public void ScopeTest()
         {
             // TODO unit test for the property 'Scope'
+        }
+
+        /// <summary>
+        /// Test the property 'ResponseType'
+        /// </summary>
+        [Fact]
+        public void ResponseTypeTest()
+        {
+            // TODO unit test for the property 'ResponseType'
+        }
+
+        /// <summary>
+        /// Test the property 'TokenType'
+        /// </summary>
+        [Fact]
+        public void TokenTypeTest()
+        {
+            // TODO unit test for the property 'TokenType'
         }
     }
 }

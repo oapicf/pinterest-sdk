@@ -11,9 +11,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsFeedValidationDetails  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsFeedValidationErrors errors;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsFeedValidationWarnings warnings;
  /**
    * Get errors

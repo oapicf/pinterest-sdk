@@ -1,25 +1,26 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request body used to delete asset groups
- **/
+ * Request body used to delete asset groups
+ */
 @ApiModel(description="Request body used to delete asset groups")
 
 public class DeleteAssetGroupBody  {
   
-  @ApiModelProperty(example = "[\"666791336903426391\",\"666791336903426392\"]", required = true, value = "List of ids of asset groups to be deleted")
  /**
-   * List of ids of asset groups to be deleted
-  **/
+  * List of ids of asset groups to be deleted
+  */
+  @ApiModelProperty(example = "[\"666791336903426391\",\"666791336903426392\"]", required = true, value = "List of ids of asset groups to be deleted")
+
   private List<String> assetGroupsToDelete = new ArrayList<>();
  /**
    * List of ids of asset groups to be deleted

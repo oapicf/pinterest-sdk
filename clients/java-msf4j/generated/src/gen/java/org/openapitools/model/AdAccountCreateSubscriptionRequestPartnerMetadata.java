@@ -11,7 +11,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.
  */
 @ApiModel(description = "Partner metadata. Only for clients that requires special handling. We recommend to avoid this param.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountCreateSubscriptionRequestPartnerMetadata   {
   @JsonProperty("subscriber_key")
   private String subscriberKey;

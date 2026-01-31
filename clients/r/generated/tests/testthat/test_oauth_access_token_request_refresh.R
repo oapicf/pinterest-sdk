@@ -5,13 +5,6 @@ context("Test OauthAccessTokenRequestRefresh")
 
 model_instance <- OauthAccessTokenRequestRefresh$new()
 
-test_that("grant_type", {
-  # tests for the property `grant_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`grant_type`, "EXPECTED_RESULT")
-})
-
 test_that("refresh_token", {
   # tests for the property `refresh_token` (character)
 
@@ -32,4 +25,11 @@ test_that("refresh_on", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`refresh_on`, "EXPECTED_RESULT")
+})
+
+test_that("grant_type", {
+  # tests for the property `grant_type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`grant_type`, "EXPECTED_RESULT")
 })

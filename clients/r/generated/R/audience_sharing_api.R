@@ -228,28 +228,43 @@ AudienceSharingApi <- R6::R6Class(
         stop("Missing required parameter `account_type`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AudienceSharingApi$AdAccountsAudiencesSharedAccountsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AudienceSharingApi$AdAccountsAudiencesSharedAccountsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AudienceSharingApi$AdAccountsAudiencesSharedAccountsList, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`audience_id`) > 18) {
+      if (!missing(`audience_id`) && is.null(`audience_id`)) {
+        stop("Invalid value for `audience_id` when calling AudienceSharingApi$AdAccountsAudiencesSharedAccountsList, `audience_id` is not nullable")
+      }
+      if (!is.null(`audience_id`) && nchar(`audience_id`) > 18) {
         stop("Invalid length for `audience_id` when calling AudienceSharingApi$AdAccountsAudiencesSharedAccountsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`audience_id`, "^\\d+$")) {
+      if (!is.null(`audience_id`) && !stringr::str_detect(`audience_id`, "^\\d+$")) {
         stop("Invalid value for `audience_id` when calling AudienceSharingApi$AdAccountsAudiencesSharedAccountsList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`account_type`) && is.null(`account_type`)) {
+        stop("Invalid value for `account_type` when calling AudienceSharingApi$AdAccountsAudiencesSharedAccountsList, `account_type` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling AudienceSharingApi$AdAccountsAudiencesSharedAccountsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling AudienceSharingApi$AdAccountsAudiencesSharedAccountsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling AudienceSharingApi$AdAccountsAudiencesSharedAccountsList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling AudienceSharingApi$AdAccountsAudiencesSharedAccountsList, `bookmark` is not nullable")
+      }
 
       query_params[["audience_id"]] <- `audience_id`
 
@@ -375,31 +390,46 @@ AudienceSharingApi <- R6::R6Class(
         stop("Missing required parameter `account_type`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling AudienceSharingApi$BusinessAccountAudiencesSharedAccountsList, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling AudienceSharingApi$BusinessAccountAudiencesSharedAccountsList, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling AudienceSharingApi$BusinessAccountAudiencesSharedAccountsList, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling AudienceSharingApi$BusinessAccountAudiencesSharedAccountsList, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`audience_id`) > 18) {
+      if (!missing(`audience_id`) && is.null(`audience_id`)) {
+        stop("Invalid value for `audience_id` when calling AudienceSharingApi$BusinessAccountAudiencesSharedAccountsList, `audience_id` is not nullable")
+      }
+      if (!is.null(`audience_id`) && nchar(`audience_id`) > 18) {
         stop("Invalid length for `audience_id` when calling AudienceSharingApi$BusinessAccountAudiencesSharedAccountsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`audience_id`, "^\\d+$")) {
+      if (!is.null(`audience_id`) && !stringr::str_detect(`audience_id`, "^\\d+$")) {
         stop("Invalid value for `audience_id` when calling AudienceSharingApi$BusinessAccountAudiencesSharedAccountsList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`account_type`) && is.null(`account_type`)) {
+        stop("Invalid value for `account_type` when calling AudienceSharingApi$BusinessAccountAudiencesSharedAccountsList, `account_type` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling AudienceSharingApi$BusinessAccountAudiencesSharedAccountsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling AudienceSharingApi$BusinessAccountAudiencesSharedAccountsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling AudienceSharingApi$BusinessAccountAudiencesSharedAccountsList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling AudienceSharingApi$BusinessAccountAudiencesSharedAccountsList, `bookmark` is not nullable")
+      }
 
       query_params[["audience_id"]] <- `audience_id`
 
@@ -515,22 +545,34 @@ AudienceSharingApi <- R6::R6Class(
         stop("Missing required parameter `business_id`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling AudienceSharingApi$SharedAudiencesForBusinessList, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling AudienceSharingApi$SharedAudiencesForBusinessList, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling AudienceSharingApi$SharedAudiencesForBusinessList, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling AudienceSharingApi$SharedAudiencesForBusinessList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling AudienceSharingApi$SharedAudiencesForBusinessList, `bookmark` is not nullable")
+      }
 
+      if (!missing(`order`) && is.null(`order`)) {
+        stop("Invalid value for `order` when calling AudienceSharingApi$SharedAudiencesForBusinessList, `order` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling AudienceSharingApi$SharedAudiencesForBusinessList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling AudienceSharingApi$SharedAudiencesForBusinessList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling AudienceSharingApi$SharedAudiencesForBusinessList, must be bigger than or equal to 1.")
       }
 
@@ -649,13 +691,19 @@ AudienceSharingApi <- R6::R6Class(
         stop("Missing required parameter `shared_audience`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AudienceSharingApi$UpdateAdAccountToAdAccountSharedAudience, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AudienceSharingApi$UpdateAdAccountToAdAccountSharedAudience, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AudienceSharingApi$UpdateAdAccountToAdAccountSharedAudience, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`shared_audience`) && is.null(`shared_audience`)) {
+        stop("Invalid value for `shared_audience` when calling AudienceSharingApi$UpdateAdAccountToAdAccountSharedAudience, `shared_audience` is not nullable")
+      }
 
       if (!is.null(`shared_audience`)) {
         local_var_body <- `shared_audience`$toJSONString()
@@ -769,13 +817,19 @@ AudienceSharingApi <- R6::R6Class(
         stop("Missing required parameter `business_shared_audience`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AudienceSharingApi$UpdateAdAccountToBusinessSharedAudience, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AudienceSharingApi$UpdateAdAccountToBusinessSharedAudience, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AudienceSharingApi$UpdateAdAccountToBusinessSharedAudience, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`business_shared_audience`) && is.null(`business_shared_audience`)) {
+        stop("Invalid value for `business_shared_audience` when calling AudienceSharingApi$UpdateAdAccountToBusinessSharedAudience, `business_shared_audience` is not nullable")
+      }
 
       if (!is.null(`business_shared_audience`)) {
         local_var_body <- `business_shared_audience`$toJSONString()
@@ -889,16 +943,22 @@ AudienceSharingApi <- R6::R6Class(
         stop("Missing required parameter `shared_audience`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling AudienceSharingApi$UpdateBusinessToAdAccountSharedAudience, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling AudienceSharingApi$UpdateBusinessToAdAccountSharedAudience, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling AudienceSharingApi$UpdateBusinessToAdAccountSharedAudience, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling AudienceSharingApi$UpdateBusinessToAdAccountSharedAudience, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`shared_audience`) && is.null(`shared_audience`)) {
+        stop("Invalid value for `shared_audience` when calling AudienceSharingApi$UpdateBusinessToAdAccountSharedAudience, `shared_audience` is not nullable")
+      }
 
       if (!is.null(`shared_audience`)) {
         local_var_body <- `shared_audience`$toJSONString()
@@ -1012,16 +1072,22 @@ AudienceSharingApi <- R6::R6Class(
         stop("Missing required parameter `business_shared_audience`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling AudienceSharingApi$UpdateBusinessToBusinessSharedAudience, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling AudienceSharingApi$UpdateBusinessToBusinessSharedAudience, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling AudienceSharingApi$UpdateBusinessToBusinessSharedAudience, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling AudienceSharingApi$UpdateBusinessToBusinessSharedAudience, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`business_shared_audience`) && is.null(`business_shared_audience`)) {
+        stop("Invalid value for `business_shared_audience` when calling AudienceSharingApi$UpdateBusinessToBusinessSharedAudience, `business_shared_audience` is not nullable")
+      }
 
       if (!is.null(`business_shared_audience`)) {
         local_var_body <- `business_shared_audience`$toJSONString()

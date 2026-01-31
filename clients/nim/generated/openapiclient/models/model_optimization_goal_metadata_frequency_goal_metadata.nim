@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type Timerange* {.pure.} = enum
@@ -21,25 +23,43 @@ type Timerange* {.pure.} = enum
 
 type OptimizationGoalMetadataFrequencyGoalMetadata* = object
   ## 
-  frequency*: int
-  timerange*: Timerange ## User entity counts time range
+  frequency*: Option[int]
+  timerange*: Option[Timerange] ## User entity counts time range
 
 func `%`*(v: Timerange): JsonNode =
-  let str = case v:
-    of Timerange.THIRTYDAY: "THIRTY_DAY"
-    of Timerange.DAY: "DAY"
-    of Timerange.SEVENDAY: "SEVEN_DAY"
-    of Timerange.TWENTYMINUTE: "TWENTY_MINUTE"
-    of Timerange.TENMINUTE: "TEN_MINUTE"
-    of Timerange.TWENTYFOURHOUR: "TWENTY_FOUR_HOUR"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Timerange.THIRTYDAY: %"THIRTY_DAY"
+    of Timerange.DAY: %"DAY"
+    of Timerange.SEVENDAY: %"SEVEN_DAY"
+    of Timerange.TWENTYMINUTE: %"TWENTY_MINUTE"
+    of Timerange.TENMINUTE: %"TEN_MINUTE"
+    of Timerange.TWENTYFOURHOUR: %"TWENTY_FOUR_HOUR"
 func `$`*(v: Timerange): string =
   result = case v:
-    of Timerange.THIRTYDAY: "THIRTY_DAY"
-    of Timerange.DAY: "DAY"
-    of Timerange.SEVENDAY: "SEVEN_DAY"
-    of Timerange.TWENTYMINUTE: "TWENTY_MINUTE"
-    of Timerange.TENMINUTE: "TEN_MINUTE"
-    of Timerange.TWENTYFOURHOUR: "TWENTY_FOUR_HOUR"
+    of Timerange.THIRTYDAY: $("THIRTY_DAY")
+    of Timerange.DAY: $("DAY")
+    of Timerange.SEVENDAY: $("SEVEN_DAY")
+    of Timerange.TWENTYMINUTE: $("TWENTY_MINUTE")
+    of Timerange.TENMINUTE: $("TEN_MINUTE")
+    of Timerange.TWENTYFOURHOUR: $("TWENTY_FOUR_HOUR")
+
+proc to*(node: JsonNode, T: typedesc[Timerange]): Timerange =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Timerange, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("THIRTY_DAY"):
+    return Timerange.THIRTYDAY
+  of $("DAY"):
+    return Timerange.DAY
+  of $("SEVEN_DAY"):
+    return Timerange.SEVENDAY
+  of $("TWENTY_MINUTE"):
+    return Timerange.TWENTYMINUTE
+  of $("TEN_MINUTE"):
+    return Timerange.TENMINUTE
+  of $("TWENTY_FOUR_HOUR"):
+    return Timerange.TWENTYFOURHOUR
+  else:
+    raise newException(ValueError, "Invalid enum value for Timerange: " & strVal)
+

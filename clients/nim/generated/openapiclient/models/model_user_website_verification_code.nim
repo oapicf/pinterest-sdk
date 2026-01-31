@@ -9,12 +9,45 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type UserWebsiteVerificationCode* = object
   ## 
-  verificationCode*: string ## Code to check against the user claiming the website
-  dnsTxtRecord*: string ## DNS TXT record to check against for the website to be claimed
-  metatag*: string ## Metatag the verification process searchs for the website to be claimed
-  filename*: string ## File expected to find on the website being claimed
-  fileContent*: string ## A full html file to upload to the website in order for it to be claimed
+  verificationCode*: Option[string] ## Code to check against the user claiming the website
+  dnsTxtRecord*: Option[string] ## DNS TXT record to check against for the website to be claimed
+  metatag*: Option[string] ## Metatag the verification process searchs for the website to be claimed
+  filename*: Option[string] ## File expected to find on the website being claimed
+  fileContent*: Option[string] ## A full html file to upload to the website in order for it to be claimed
+
+
+# Custom JSON deserialization for UserWebsiteVerificationCode with custom field names
+proc to*(node: JsonNode, T: typedesc[UserWebsiteVerificationCode]): UserWebsiteVerificationCode =
+  result = UserWebsiteVerificationCode()
+  if node.kind == JObject:
+    if node.hasKey("verification_code") and node["verification_code"].kind != JNull:
+      result.verificationCode = some(to(node["verification_code"], typeof(result.verificationCode.get())))
+    if node.hasKey("dns_txt_record") and node["dns_txt_record"].kind != JNull:
+      result.dnsTxtRecord = some(to(node["dns_txt_record"], typeof(result.dnsTxtRecord.get())))
+    if node.hasKey("metatag") and node["metatag"].kind != JNull:
+      result.metatag = some(to(node["metatag"], typeof(result.metatag.get())))
+    if node.hasKey("filename") and node["filename"].kind != JNull:
+      result.filename = some(to(node["filename"], typeof(result.filename.get())))
+    if node.hasKey("file_content") and node["file_content"].kind != JNull:
+      result.fileContent = some(to(node["file_content"], typeof(result.fileContent.get())))
+
+# Custom JSON serialization for UserWebsiteVerificationCode with custom field names
+proc `%`*(obj: UserWebsiteVerificationCode): JsonNode =
+  result = newJObject()
+  if obj.verificationCode.isSome():
+    result["verification_code"] = %obj.verificationCode.get()
+  if obj.dnsTxtRecord.isSome():
+    result["dns_txt_record"] = %obj.dnsTxtRecord.get()
+  if obj.metatag.isSome():
+    result["metatag"] = %obj.metatag.get()
+  if obj.filename.isSome():
+    result["filename"] = %obj.filename.get()
+  if obj.fileContent.isSome():
+    result["file_content"] = %obj.fileContent.get()
+

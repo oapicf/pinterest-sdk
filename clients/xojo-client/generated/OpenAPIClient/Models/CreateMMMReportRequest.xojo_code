@@ -3,6 +3,14 @@ Protected Class CreateMMMReportRequest
 
 	#tag Property, Flags = &h0
 		#tag Note
+			A List of countries for filtering
+		#tag EndNote
+		countries() As TargetingAdvertiserCountry
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		#tag Note
 			Name of the Marketing Mix Modeling (MMM) report
 		#tag EndNote
 		report_name As String
@@ -54,14 +62,6 @@ Protected Class CreateMMMReportRequest
 			Metric and entity columns
 		#tag EndNote
 		columns() As MMMReportingColumn
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
-			A List of countries for filtering
-		#tag EndNote
-		countries() As TargetingAdvertiserCountry
 	#tag EndProperty
 
 
@@ -142,6 +142,14 @@ Protected Class CreateMMMReportRequest
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="countries"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="TargetingAdvertiserCountry"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="report_name"
 			Visible=false
 			Group="Behavior"
@@ -179,14 +187,6 @@ Protected Class CreateMMMReportRequest
 			Group="Behavior"
 			InitialValue=""
 			Type="MMMReportingColumn"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="countries"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="TargetingAdvertiserCountry"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

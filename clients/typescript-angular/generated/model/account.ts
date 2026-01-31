@@ -48,11 +48,11 @@ export interface Account {
     readonly monthly_views?: number | null;
 }
 export namespace Account {
-    export type AccountTypeEnum = 'PINNER' | 'BUSINESS';
     export const AccountTypeEnum = {
-        Pinner: 'PINNER' as AccountTypeEnum,
-        Business: 'BUSINESS' as AccountTypeEnum
-    };
+        Pinner: 'PINNER',
+        Business: 'BUSINESS'
+    } as const;
+    export type AccountTypeEnum = typeof AccountTypeEnum[keyof typeof AccountTypeEnum];
 }
 
 

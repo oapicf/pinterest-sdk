@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(OauthAccessTokenRequestClientCredentials, () {
-    // String grantType
-    test('to test the property `grantType`', () async {
+    // String scope
+    test('to test the property `scope`', () async {
       // TODO
     });
 
-    // String scope
-    test('to test the property `scope`', () async {
+    // String grantType
+    test('to test the property `grantType`', () async {
       // TODO
     });
 

@@ -109,7 +109,6 @@ src/gen/java/org/openapitools/model/AudienceCategory.java
 src/gen/java/org/openapitools/model/AudienceCommon.java
 src/gen/java/org/openapitools/model/AudienceCreateCustomRequest.java
 src/gen/java/org/openapitools/model/AudienceCreateRequest.java
-src/gen/java/org/openapitools/model/AudienceCreateRequest1AudienceType.java
 src/gen/java/org/openapitools/model/AudienceDataParty.java
 src/gen/java/org/openapitools/model/AudienceDefinition.java
 src/gen/java/org/openapitools/model/AudienceDefinitionResponse.java
@@ -287,7 +286,6 @@ src/gen/java/org/openapitools/model/CatalogsItemsDeleteDiscontinuedBatchRequest.
 src/gen/java/org/openapitools/model/CatalogsItemsFilters.java
 src/gen/java/org/openapitools/model/CatalogsItemsPostFilters.java
 src/gen/java/org/openapitools/model/CatalogsItemsRequest.java
-src/gen/java/org/openapitools/model/CatalogsItemsRequestLanguage.java
 src/gen/java/org/openapitools/model/CatalogsItemsUpdateBatchRequest.java
 src/gen/java/org/openapitools/model/CatalogsItemsUpsertBatchRequest.java
 src/gen/java/org/openapitools/model/CatalogsList200Response.java
@@ -621,7 +619,6 @@ src/gen/java/org/openapitools/model/PinMediaWithVideos.java
 src/gen/java/org/openapitools/model/PinPromotionSummaryStatus.java
 src/gen/java/org/openapitools/model/PinUpdate.java
 src/gen/java/org/openapitools/model/PinUpdateCarouselSlotsInner.java
-src/gen/java/org/openapitools/model/PinsAnalyticsMetricTypesParameterInner.java
 src/gen/java/org/openapitools/model/PinsList200Response.java
 src/gen/java/org/openapitools/model/PinsSaveRequest.java
 src/gen/java/org/openapitools/model/PinterestTagEventData.java

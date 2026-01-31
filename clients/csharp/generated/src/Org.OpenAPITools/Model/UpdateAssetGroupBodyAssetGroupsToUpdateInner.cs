@@ -218,16 +218,13 @@ namespace Org.OpenAPITools.Model
                             description = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "asset_group_types":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetGroupTypes = new Option<List<AssetGroupType>?>(JsonSerializer.Deserialize<List<AssetGroupType>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            assetGroupTypes = new Option<List<AssetGroupType>?>(JsonSerializer.Deserialize<List<AssetGroupType>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "assets_to_add":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetsToAdd = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            assetsToAdd = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "assets_to_remove":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetsToRemove = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            assetsToRemove = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

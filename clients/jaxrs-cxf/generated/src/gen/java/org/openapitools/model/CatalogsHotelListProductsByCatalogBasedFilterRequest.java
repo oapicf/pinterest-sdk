@@ -2,18 +2,18 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsHotelProductGroupFilters;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object to list products for a given hotel catalog_id and product group filter.
- **/
+ * Request object to list products for a given hotel catalog_id and product group filter.
+ */
 @ApiModel(description="Request object to list products for a given hotel catalog_id and product group filter.")
 
 public class CatalogsHotelListProductsByCatalogBasedFilterRequest  {
@@ -51,16 +51,20 @@ HOTEL(String.valueOf("HOTEL"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
  /**
-   * Catalog id pertaining to the hotel product group.
-  **/
+  * Catalog id pertaining to the hotel product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
+
   private String catalogId;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsHotelProductGroupFilters filters;
  /**
    * Get catalogType

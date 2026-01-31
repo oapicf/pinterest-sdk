@@ -140,12 +140,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "ad_accounts":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                adAccounts = new Option<List<InviteAssetsSummaryAdAccountsInner>?>(JsonSerializer.Deserialize<List<InviteAssetsSummaryAdAccountsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            adAccounts = new Option<List<InviteAssetsSummaryAdAccountsInner>?>(JsonSerializer.Deserialize<List<InviteAssetsSummaryAdAccountsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "profiles":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                profiles = new Option<List<InviteAssetsSummaryProfilesInner>?>(JsonSerializer.Deserialize<List<InviteAssetsSummaryProfilesInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            profiles = new Option<List<InviteAssetsSummaryProfilesInner>?>(JsonSerializer.Deserialize<List<InviteAssetsSummaryProfilesInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

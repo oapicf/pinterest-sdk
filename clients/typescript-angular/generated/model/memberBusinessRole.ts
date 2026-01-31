@@ -12,12 +12,9 @@
 /**
  * The access level a member/partner has to the business. Values are case-sensitive. <br> - EMPLOYEE: Can only view and access ad accounts you assign to them. They cannot see details about other employees, external partners or other ad accounts. <br> - BIZ_ADMIN: Have full control of roles and can add employees, external partners as well as grant ad account access.
  */
-export type MemberBusinessRole = 'EMPLOYEE' | 'BIZ_ADMIN';
-
 export const MemberBusinessRole = {
-
-    Employee: 'EMPLOYEE' as MemberBusinessRole,
-
-    BizAdmin: 'BIZ_ADMIN' as MemberBusinessRole
-};
+    Employee: 'EMPLOYEE',
+    BizAdmin: 'BIZ_ADMIN'
+} as const;
+export type MemberBusinessRole = typeof MemberBusinessRole[keyof typeof MemberBusinessRole];
 

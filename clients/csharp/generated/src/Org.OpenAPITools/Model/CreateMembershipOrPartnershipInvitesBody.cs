@@ -255,12 +255,10 @@ namespace Org.OpenAPITools.Model
                                 inviteType = new Option<InviteType?>(InviteTypeValueConverter.FromStringOrDefault(inviteTypeRawValue));
                             break;
                         case "members":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                members = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            members = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "partners":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                partners = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            partners = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AudienceSharingType* = object
-  ## Audience sharing type: [\"CUSTOM\", \"SYNDICATED\"]
+type AudienceSharingType* {.pure.} = enum
+  CUSTOM
+  SYNDICATED
+
+func `%`*(v: AudienceSharingType): JsonNode =
+  result = case v:
+    of AudienceSharingType.CUSTOM: %"CUSTOM"
+    of AudienceSharingType.SYNDICATED: %"SYNDICATED"
+
+func `$`*(v: AudienceSharingType): string =
+  result = case v:
+    of AudienceSharingType.CUSTOM: $("CUSTOM")
+    of AudienceSharingType.SYNDICATED: $("SYNDICATED")
+
+proc to*(node: JsonNode, T: typedesc[AudienceSharingType]): AudienceSharingType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AudienceSharingType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CUSTOM"):
+    return AudienceSharingType.CUSTOM
+  of $("SYNDICATED"):
+    return AudienceSharingType.SYNDICATED
+  else:
+    raise newException(ValueError, "Invalid enum value for AudienceSharingType: " & strVal)
+

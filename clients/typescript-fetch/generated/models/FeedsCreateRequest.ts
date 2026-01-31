@@ -42,13 +42,15 @@ export function FeedsCreateRequestFromJSONTyped(json: any, ignoreDiscriminator: 
     if (json == null) {
         return json;
     }
+    if (typeof json !== 'object') {
+        return json;
+    }
     if (instanceOfCatalogsFeedsCreateRequest(json)) {
         return CatalogsFeedsCreateRequestFromJSONTyped(json, true);
     }
     if (instanceOfCatalogsVerticalFeedsCreateRequest(json)) {
         return CatalogsVerticalFeedsCreateRequestFromJSONTyped(json, true);
     }
-
     return {} as any;
 }
 
@@ -60,14 +62,15 @@ export function FeedsCreateRequestToJSONTyped(value?: FeedsCreateRequest | null,
     if (value == null) {
         return value;
     }
-
+    if (typeof value !== 'object') {
+        return value;
+    }
     if (instanceOfCatalogsFeedsCreateRequest(value)) {
         return CatalogsFeedsCreateRequestToJSON(value as CatalogsFeedsCreateRequest);
     }
     if (instanceOfCatalogsVerticalFeedsCreateRequest(value)) {
         return CatalogsVerticalFeedsCreateRequestToJSON(value as CatalogsVerticalFeedsCreateRequest);
     }
-
     return {};
 }
 

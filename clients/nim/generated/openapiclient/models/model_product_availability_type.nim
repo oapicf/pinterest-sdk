@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type ProductAvailabilityType* = object
-  ## Default availability for products in a feed.
+type ProductAvailabilityType* {.pure.} = enum
+  INSTOCK
+  OUTOFSTOCK
+  PREORDER
+
+func `%`*(v: ProductAvailabilityType): JsonNode =
+  result = case v:
+    of ProductAvailabilityType.INSTOCK: %"IN_STOCK"
+    of ProductAvailabilityType.OUTOFSTOCK: %"OUT_OF_STOCK"
+    of ProductAvailabilityType.PREORDER: %"PREORDER"
+
+func `$`*(v: ProductAvailabilityType): string =
+  result = case v:
+    of ProductAvailabilityType.INSTOCK: $("IN_STOCK")
+    of ProductAvailabilityType.OUTOFSTOCK: $("OUT_OF_STOCK")
+    of ProductAvailabilityType.PREORDER: $("PREORDER")
+
+proc to*(node: JsonNode, T: typedesc[ProductAvailabilityType]): ProductAvailabilityType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ProductAvailabilityType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("IN_STOCK"):
+    return ProductAvailabilityType.INSTOCK
+  of $("OUT_OF_STOCK"):
+    return ProductAvailabilityType.OUTOFSTOCK
+  of $("PREORDER"):
+    return ProductAvailabilityType.PREORDER
+  else:
+    raise newException(ValueError, "Invalid enum value for ProductAvailabilityType: " & strVal)
+

@@ -142,12 +142,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "conversion_metrics_ready":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                conversionMetricsReady = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            conversionMetricsReady = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "non_conversion_metrics_ready":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                nonConversionMetricsReady = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            nonConversionMetricsReady = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

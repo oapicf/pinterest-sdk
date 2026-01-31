@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type LeadFormStatus* = object
-  ## Status of the lead form
+type LeadFormStatus* {.pure.} = enum
+  DRAFT
+  ACTIVE
+
+func `%`*(v: LeadFormStatus): JsonNode =
+  result = case v:
+    of LeadFormStatus.DRAFT: %"DRAFT"
+    of LeadFormStatus.ACTIVE: %"ACTIVE"
+
+func `$`*(v: LeadFormStatus): string =
+  result = case v:
+    of LeadFormStatus.DRAFT: $("DRAFT")
+    of LeadFormStatus.ACTIVE: $("ACTIVE")
+
+proc to*(node: JsonNode, T: typedesc[LeadFormStatus]): LeadFormStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum LeadFormStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("DRAFT"):
+    return LeadFormStatus.DRAFT
+  of $("ACTIVE"):
+    return LeadFormStatus.ACTIVE
+  else:
+    raise newException(ValueError, "Invalid enum value for LeadFormStatus: " & strVal)
+

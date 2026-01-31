@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * CatalogsFeedIngestionErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedIngestionErrors {
 
   private @Nullable Integer LINE_LEVEL_INTERNAL_ERROR;
@@ -31,7 +31,7 @@ public class CatalogsFeedIngestionErrors {
   public enum LARGEPRODUCTCOUNTDECREASEEnum {
     NUMBER_1(1);
 
-    private Integer value;
+    private final Integer value;
 
     LARGEPRODUCTCOUNTDECREASEEnum(Integer value) {
       this.value = value;
@@ -72,7 +72,7 @@ public class CatalogsFeedIngestionErrors {
 
   private @Nullable Integer IMAGE_INVALID_FILE;
 
-  public CatalogsFeedIngestionErrors LINE_LEVEL_INTERNAL_ERROR(Integer LINE_LEVEL_INTERNAL_ERROR) {
+  public CatalogsFeedIngestionErrors LINE_LEVEL_INTERNAL_ERROR(@Nullable Integer LINE_LEVEL_INTERNAL_ERROR) {
     this.LINE_LEVEL_INTERNAL_ERROR = LINE_LEVEL_INTERNAL_ERROR;
     return this;
   }
@@ -84,15 +84,15 @@ public class CatalogsFeedIngestionErrors {
   
   @Schema(name = "LINE_LEVEL_INTERNAL_ERROR", description = "We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINE_LEVEL_INTERNAL_ERROR")
-  public Integer getLINELEVELINTERNALERROR() {
+  public @Nullable Integer getLINELEVELINTERNALERROR() {
     return LINE_LEVEL_INTERNAL_ERROR;
   }
 
-  public void setLINELEVELINTERNALERROR(Integer LINE_LEVEL_INTERNAL_ERROR) {
+  public void setLINELEVELINTERNALERROR(@Nullable Integer LINE_LEVEL_INTERNAL_ERROR) {
     this.LINE_LEVEL_INTERNAL_ERROR = LINE_LEVEL_INTERNAL_ERROR;
   }
 
-  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public CatalogsFeedIngestionErrors LARGE_PRODUCT_COUNT_DECREASE(@Nullable LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
     return this;
   }
@@ -104,15 +104,15 @@ public class CatalogsFeedIngestionErrors {
   
   @Schema(name = "LARGE_PRODUCT_COUNT_DECREASE", description = "The product count has decreased by more than 99% compared to the last successful ingestion.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LARGE_PRODUCT_COUNT_DECREASE")
-  public LARGEPRODUCTCOUNTDECREASEEnum getLARGEPRODUCTCOUNTDECREASE() {
+  public @Nullable LARGEPRODUCTCOUNTDECREASEEnum getLARGEPRODUCTCOUNTDECREASE() {
     return LARGE_PRODUCT_COUNT_DECREASE;
   }
 
-  public void setLARGEPRODUCTCOUNTDECREASE(LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
+  public void setLARGEPRODUCTCOUNTDECREASE(@Nullable LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE) {
     this.LARGE_PRODUCT_COUNT_DECREASE = LARGE_PRODUCT_COUNT_DECREASE;
   }
 
-  public CatalogsFeedIngestionErrors ACCOUNT_FLAGGED(Integer ACCOUNT_FLAGGED) {
+  public CatalogsFeedIngestionErrors ACCOUNT_FLAGGED(@Nullable Integer ACCOUNT_FLAGGED) {
     this.ACCOUNT_FLAGGED = ACCOUNT_FLAGGED;
     return this;
   }
@@ -124,15 +124,15 @@ public class CatalogsFeedIngestionErrors {
   
   @Schema(name = "ACCOUNT_FLAGGED", description = "We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ACCOUNT_FLAGGED")
-  public Integer getACCOUNTFLAGGED() {
+  public @Nullable Integer getACCOUNTFLAGGED() {
     return ACCOUNT_FLAGGED;
   }
 
-  public void setACCOUNTFLAGGED(Integer ACCOUNT_FLAGGED) {
+  public void setACCOUNTFLAGGED(@Nullable Integer ACCOUNT_FLAGGED) {
     this.ACCOUNT_FLAGGED = ACCOUNT_FLAGGED;
   }
 
-  public CatalogsFeedIngestionErrors IMAGE_LEVEL_INTERNAL_ERROR(Integer IMAGE_LEVEL_INTERNAL_ERROR) {
+  public CatalogsFeedIngestionErrors IMAGE_LEVEL_INTERNAL_ERROR(@Nullable Integer IMAGE_LEVEL_INTERNAL_ERROR) {
     this.IMAGE_LEVEL_INTERNAL_ERROR = IMAGE_LEVEL_INTERNAL_ERROR;
     return this;
   }
@@ -144,15 +144,15 @@ public class CatalogsFeedIngestionErrors {
   
   @Schema(name = "IMAGE_LEVEL_INTERNAL_ERROR", description = "We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LEVEL_INTERNAL_ERROR")
-  public Integer getIMAGELEVELINTERNALERROR() {
+  public @Nullable Integer getIMAGELEVELINTERNALERROR() {
     return IMAGE_LEVEL_INTERNAL_ERROR;
   }
 
-  public void setIMAGELEVELINTERNALERROR(Integer IMAGE_LEVEL_INTERNAL_ERROR) {
+  public void setIMAGELEVELINTERNALERROR(@Nullable Integer IMAGE_LEVEL_INTERNAL_ERROR) {
     this.IMAGE_LEVEL_INTERNAL_ERROR = IMAGE_LEVEL_INTERNAL_ERROR;
   }
 
-  public CatalogsFeedIngestionErrors IMAGE_FILE_NOT_ACCESSIBLE(Integer IMAGE_FILE_NOT_ACCESSIBLE) {
+  public CatalogsFeedIngestionErrors IMAGE_FILE_NOT_ACCESSIBLE(@Nullable Integer IMAGE_FILE_NOT_ACCESSIBLE) {
     this.IMAGE_FILE_NOT_ACCESSIBLE = IMAGE_FILE_NOT_ACCESSIBLE;
     return this;
   }
@@ -164,15 +164,15 @@ public class CatalogsFeedIngestionErrors {
   
   @Schema(name = "IMAGE_FILE_NOT_ACCESSIBLE", description = "Image files are unreadable. Please upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_FILE_NOT_ACCESSIBLE")
-  public Integer getIMAGEFILENOTACCESSIBLE() {
+  public @Nullable Integer getIMAGEFILENOTACCESSIBLE() {
     return IMAGE_FILE_NOT_ACCESSIBLE;
   }
 
-  public void setIMAGEFILENOTACCESSIBLE(Integer IMAGE_FILE_NOT_ACCESSIBLE) {
+  public void setIMAGEFILENOTACCESSIBLE(@Nullable Integer IMAGE_FILE_NOT_ACCESSIBLE) {
     this.IMAGE_FILE_NOT_ACCESSIBLE = IMAGE_FILE_NOT_ACCESSIBLE;
   }
 
-  public CatalogsFeedIngestionErrors IMAGE_MALFORMED_URL(Integer IMAGE_MALFORMED_URL) {
+  public CatalogsFeedIngestionErrors IMAGE_MALFORMED_URL(@Nullable Integer IMAGE_MALFORMED_URL) {
     this.IMAGE_MALFORMED_URL = IMAGE_MALFORMED_URL;
     return this;
   }
@@ -184,15 +184,15 @@ public class CatalogsFeedIngestionErrors {
   
   @Schema(name = "IMAGE_MALFORMED_URL", description = "Image files are unreadable. Please check your link and upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_MALFORMED_URL")
-  public Integer getIMAGEMALFORMEDURL() {
+  public @Nullable Integer getIMAGEMALFORMEDURL() {
     return IMAGE_MALFORMED_URL;
   }
 
-  public void setIMAGEMALFORMEDURL(Integer IMAGE_MALFORMED_URL) {
+  public void setIMAGEMALFORMEDURL(@Nullable Integer IMAGE_MALFORMED_URL) {
     this.IMAGE_MALFORMED_URL = IMAGE_MALFORMED_URL;
   }
 
-  public CatalogsFeedIngestionErrors IMAGE_FILE_NOT_FOUND(Integer IMAGE_FILE_NOT_FOUND) {
+  public CatalogsFeedIngestionErrors IMAGE_FILE_NOT_FOUND(@Nullable Integer IMAGE_FILE_NOT_FOUND) {
     this.IMAGE_FILE_NOT_FOUND = IMAGE_FILE_NOT_FOUND;
     return this;
   }
@@ -204,15 +204,15 @@ public class CatalogsFeedIngestionErrors {
   
   @Schema(name = "IMAGE_FILE_NOT_FOUND", description = "Image files are unreadable. Please upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_FILE_NOT_FOUND")
-  public Integer getIMAGEFILENOTFOUND() {
+  public @Nullable Integer getIMAGEFILENOTFOUND() {
     return IMAGE_FILE_NOT_FOUND;
   }
 
-  public void setIMAGEFILENOTFOUND(Integer IMAGE_FILE_NOT_FOUND) {
+  public void setIMAGEFILENOTFOUND(@Nullable Integer IMAGE_FILE_NOT_FOUND) {
     this.IMAGE_FILE_NOT_FOUND = IMAGE_FILE_NOT_FOUND;
   }
 
-  public CatalogsFeedIngestionErrors IMAGE_INVALID_FILE(Integer IMAGE_INVALID_FILE) {
+  public CatalogsFeedIngestionErrors IMAGE_INVALID_FILE(@Nullable Integer IMAGE_INVALID_FILE) {
     this.IMAGE_INVALID_FILE = IMAGE_INVALID_FILE;
     return this;
   }
@@ -224,11 +224,11 @@ public class CatalogsFeedIngestionErrors {
   
   @Schema(name = "IMAGE_INVALID_FILE", description = "Image files are unreadable. Please upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_INVALID_FILE")
-  public Integer getIMAGEINVALIDFILE() {
+  public @Nullable Integer getIMAGEINVALIDFILE() {
     return IMAGE_INVALID_FILE;
   }
 
-  public void setIMAGEINVALIDFILE(Integer IMAGE_INVALID_FILE) {
+  public void setIMAGEINVALIDFILE(@Nullable Integer IMAGE_INVALID_FILE) {
     this.IMAGE_INVALID_FILE = IMAGE_INVALID_FILE;
   }
 

@@ -707,7 +707,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, UpdateMaskFieldType updateMaskFieldType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(updateMaskFieldType.ToString());
+            writer.WriteStringValue(UpdateMaskFieldTypeValueConverter.ToJsonValue(updateMaskFieldType).ToString());
         }
     }
 
@@ -738,14 +738,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the UpdateMaskFieldType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="updateMaskFieldType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, UpdateMaskFieldType? updateMaskFieldType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(updateMaskFieldType?.ToString() ?? "null");
+            writer.WriteStringValue(updateMaskFieldType.HasValue ? UpdateMaskFieldTypeValueConverter.ToJsonValue(updateMaskFieldType.Value).ToString() : "null");
         }
     }
 }

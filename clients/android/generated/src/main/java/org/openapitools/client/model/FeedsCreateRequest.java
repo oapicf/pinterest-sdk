@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -50,7 +50,7 @@ public class FeedsCreateRequest {
   @SerializedName("default_availability")
   private ProductAvailabilityType defaultAvailability = null;
   @SerializedName("status")
-  private CatalogsStatus status = null;
+  private CatalogsStatus status = ACTIVE;
   @SerializedName("catalog_id")
   private String catalogId = null;
 

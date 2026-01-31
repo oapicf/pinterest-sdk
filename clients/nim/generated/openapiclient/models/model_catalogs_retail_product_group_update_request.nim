@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_locale
 import model_catalogs_product_group_filters_request
@@ -19,19 +21,61 @@ type CatalogType* {.pure.} = enum
 
 type CatalogsRetailProductGroupUpdateRequest* = object
   ## Request object for updating a retail product group.
-  catalogType*: CatalogType ## Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
-  name*: string
-  description*: string
-  filters*: CatalogsProductGroupFiltersRequest
-  country*: Country
-  locale*: CatalogsLocale
+  catalogType*: Option[CatalogType] ## Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
+  name*: Option[string]
+  description*: Option[string]
+  filters*: Option[CatalogsProductGroupFiltersRequest]
+  country*: Option[Country]
+  locale*: Option[CatalogsLocale]
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.RETAIL: "RETAIL"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.RETAIL: %"RETAIL"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.RETAIL: "RETAIL"
+    of CatalogType.RETAIL: $("RETAIL")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RETAIL"):
+    return CatalogType.RETAIL
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsRetailProductGroupUpdateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsRetailProductGroupUpdateRequest]): CatalogsRetailProductGroupUpdateRequest =
+  result = CatalogsRetailProductGroupUpdateRequest()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type") and node["catalog_type"].kind != JNull:
+      result.catalogType = some(to(node["catalog_type"], CatalogType))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("filters") and node["filters"].kind != JNull:
+      result.filters = some(to(node["filters"], typeof(result.filters.get())))
+    if node.hasKey("country") and node["country"].kind != JNull:
+      result.country = some(to(node["country"], typeof(result.country.get())))
+    if node.hasKey("locale") and node["locale"].kind != JNull:
+      result.locale = some(to(node["locale"], typeof(result.locale.get())))
+
+# Custom JSON serialization for CatalogsRetailProductGroupUpdateRequest with custom field names
+proc `%`*(obj: CatalogsRetailProductGroupUpdateRequest): JsonNode =
+  result = newJObject()
+  if obj.catalogType.isSome():
+    result["catalog_type"] = %obj.catalogType.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  if obj.filters.isSome():
+    result["filters"] = %obj.filters.get()
+  if obj.country.isSome():
+    result["country"] = %obj.country.get()
+  if obj.locale.isSome():
+    result["locale"] = %obj.locale.get()
+

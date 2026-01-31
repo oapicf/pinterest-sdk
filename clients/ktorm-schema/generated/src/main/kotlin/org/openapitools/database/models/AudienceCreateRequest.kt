@@ -21,14 +21,14 @@ import .*
  * 
  * @param name Audience name.
  * @param rule 
- * @param audienceType 
+ * @param audienceType <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
  * @param adAccountId Ad account ID.
  * @param description Audience description.
  */
 object AudienceCreateRequests : BaseTable<AudienceCreateRequest>("AudienceCreateRequest") {
     val name = text("name") /* Audience name. */
     val rule = long("rule")
-    val audienceType = long("audience_type")
+    val audienceType = long("audience_type") /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
     val adAccountId = text("ad_account_id") /* null */ /* Ad account ID. */
     val description = text("description") /* null */ /* Audience description. */
 
@@ -38,7 +38,7 @@ object AudienceCreateRequests : BaseTable<AudienceCreateRequest>("AudienceCreate
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = AudienceCreateRequest(
         name = row[name] ?: "" /* kotlin.String */ /* Audience name. */,
         rule = AudienceRules.createEntity(row, withReferences) /* AudienceRule */,
-        audienceType = AudienceCreateRequest1AudienceTypes.createEntity(row, withReferences) /* AudienceCreateRequest1AudienceType */,
+        audienceType = AudienceTypes.createEntity(row, withReferences) /* AudienceType */ /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */,
         adAccountId = row[adAccountId]  /* kotlin.String? */ /* Ad account ID. */,
         description = row[description]  /* kotlin.String? */ /* Audience description. */
     )

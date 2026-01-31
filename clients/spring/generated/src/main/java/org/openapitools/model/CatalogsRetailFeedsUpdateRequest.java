@@ -34,7 +34,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailFeedsUpdateRequest", description = "Request object for updating a feed.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUpdateRequest {
 
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
@@ -86,7 +86,7 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
     this.defaultCurrency = defaultCurrency;
   }
 
-  public CatalogsRetailFeedsUpdateRequest name(String name) {
+  public CatalogsRetailFeedsUpdateRequest name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -98,15 +98,15 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
   
   @Schema(name = "name", description = "A human-friendly name associated to a given feed.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public CatalogsRetailFeedsUpdateRequest format(CatalogsFormat format) {
+  public CatalogsRetailFeedsUpdateRequest format(@Nullable CatalogsFormat format) {
     this.format = format;
     return this;
   }
@@ -118,11 +118,11 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
   @Valid 
   @Schema(name = "format", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("format")
-  public CatalogsFormat getFormat() {
+  public @Nullable CatalogsFormat getFormat() {
     return format;
   }
 
-  public void setFormat(CatalogsFormat format) {
+  public void setFormat(@Nullable CatalogsFormat format) {
     this.format = format;
   }
 
@@ -146,7 +146,7 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
     this.credentials = credentials;
   }
 
-  public CatalogsRetailFeedsUpdateRequest location(String location) {
+  public CatalogsRetailFeedsUpdateRequest location(@Nullable String location) {
     this.location = location;
     return this;
   }
@@ -158,11 +158,11 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
   @Pattern(regexp = "^(http|https|ftp|sftp)://") 
   @Schema(name = "location", description = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("location")
-  public String getLocation() {
+  public @Nullable String getLocation() {
     return location;
   }
 
-  public void setLocation(String location) {
+  public void setLocation(@Nullable String location) {
     this.location = location;
   }
 
@@ -186,7 +186,7 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
     this.preferredProcessingSchedule = preferredProcessingSchedule;
   }
 
-  public CatalogsRetailFeedsUpdateRequest status(CatalogsStatus status) {
+  public CatalogsRetailFeedsUpdateRequest status(@Nullable CatalogsStatus status) {
     this.status = status;
     return this;
   }
@@ -198,11 +198,11 @@ public class CatalogsRetailFeedsUpdateRequest implements CatalogsVerticalFeedsUp
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public CatalogsStatus getStatus() {
+  public @Nullable CatalogsStatus getStatus() {
     return status;
   }
 
-  public void setStatus(CatalogsStatus status) {
+  public void setStatus(@Nullable CatalogsStatus status) {
     this.status = status;
   }
 

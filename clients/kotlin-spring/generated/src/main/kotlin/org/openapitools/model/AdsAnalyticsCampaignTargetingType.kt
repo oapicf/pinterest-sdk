@@ -40,7 +40,8 @@ enum class AdsAnalyticsCampaignTargetingType(@get:JsonValue val value: kotlin.St
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AdsAnalyticsCampaignTargetingType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdsAnalyticsCampaignTargetingType'")
         }
     }
 }

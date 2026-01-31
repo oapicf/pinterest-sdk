@@ -13,6 +13,27 @@ import AnyCodable
 open class PinsAPI {
 
     /**
+     * enum for parameter metricTypes
+     */
+    public enum MetricTypes_multiPinsAnalytics: String, CaseIterable {
+        case impression = "IMPRESSION"
+        case outboundClick = "OUTBOUND_CLICK"
+        case pinClick = "PIN_CLICK"
+        case save = "SAVE"
+        case saveRate = "SAVE_RATE"
+        case totalComments = "TOTAL_COMMENTS"
+        case totalReactions = "TOTAL_REACTIONS"
+        case userFollow = "USER_FOLLOW"
+        case profileVisit = "PROFILE_VISIT"
+        case videoMrcView = "VIDEO_MRC_VIEW"
+        case video10sView = "VIDEO_10S_VIEW"
+        case quartile95PercentView = "QUARTILE_95_PERCENT_VIEW"
+        case videoV50WatchTime = "VIDEO_V50_WATCH_TIME"
+        case videoStart = "VIDEO_START"
+        case videoAvgWatchTime = "VIDEO_AVG_WATCH_TIME"
+    }
+
+    /**
      * enum for parameter appTypes
      */
     public enum AppTypes_multiPinsAnalytics: String, CaseIterable {
@@ -35,7 +56,7 @@ open class PinsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func multiPinsAnalytics(pinIds: [String], startDate: Date, endDate: Date, metricTypes: [PinsAnalyticsMetricTypesParameterInner], appTypes: AppTypes_multiPinsAnalytics? = nil, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [String: Dictionary]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func multiPinsAnalytics(pinIds: [String], startDate: Date, endDate: Date, metricTypes: [MetricTypes_multiPinsAnalytics], appTypes: AppTypes_multiPinsAnalytics? = nil, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [String: Dictionary]?, _ error: Error?) -> Void)) -> RequestTask {
         return multiPinsAnalyticsWithRequestBuilder(pinIds: pinIds, startDate: startDate, endDate: endDate, metricTypes: metricTypes, appTypes: appTypes, adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -64,7 +85,7 @@ open class PinsAPI {
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<[String: Dictionary]> 
      */
-    open class func multiPinsAnalyticsWithRequestBuilder(pinIds: [String], startDate: Date, endDate: Date, metricTypes: [PinsAnalyticsMetricTypesParameterInner], appTypes: AppTypes_multiPinsAnalytics? = nil, adAccountId: String? = nil) -> RequestBuilder<[String: Dictionary]> {
+    open class func multiPinsAnalyticsWithRequestBuilder(pinIds: [String], startDate: Date, endDate: Date, metricTypes: [MetricTypes_multiPinsAnalytics], appTypes: AppTypes_multiPinsAnalytics? = nil, adAccountId: String? = nil) -> RequestBuilder<[String: Dictionary]> {
         let localVariablePath = "/pins/analytics"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -88,6 +109,27 @@ open class PinsAPI {
         let localVariableRequestBuilder: RequestBuilder<[String: Dictionary]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     * enum for parameter metricTypes
+     */
+    public enum MetricTypes_pinsAnalytics: String, CaseIterable {
+        case impression = "IMPRESSION"
+        case outboundClick = "OUTBOUND_CLICK"
+        case pinClick = "PIN_CLICK"
+        case save = "SAVE"
+        case saveRate = "SAVE_RATE"
+        case totalComments = "TOTAL_COMMENTS"
+        case totalReactions = "TOTAL_REACTIONS"
+        case userFollow = "USER_FOLLOW"
+        case profileVisit = "PROFILE_VISIT"
+        case videoMrcView = "VIDEO_MRC_VIEW"
+        case video10sView = "VIDEO_10S_VIEW"
+        case quartile95PercentView = "QUARTILE_95_PERCENT_VIEW"
+        case videoV50WatchTime = "VIDEO_V50_WATCH_TIME"
+        case videoStart = "VIDEO_START"
+        case videoAvgWatchTime = "VIDEO_AVG_WATCH_TIME"
     }
 
     /**
@@ -122,7 +164,7 @@ open class PinsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func pinsAnalytics(pinId: String, startDate: Date, endDate: Date, metricTypes: [PinsAnalyticsMetricTypesParameterInner], appTypes: AppTypes_pinsAnalytics? = nil, splitField: SplitField_pinsAnalytics? = nil, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [String: PinAnalyticsMetricsResponse]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func pinsAnalytics(pinId: String, startDate: Date, endDate: Date, metricTypes: [MetricTypes_pinsAnalytics], appTypes: AppTypes_pinsAnalytics? = nil, splitField: SplitField_pinsAnalytics? = nil, adAccountId: String? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [String: PinAnalyticsMetricsResponse]?, _ error: Error?) -> Void)) -> RequestTask {
         return pinsAnalyticsWithRequestBuilder(pinId: pinId, startDate: startDate, endDate: endDate, metricTypes: metricTypes, appTypes: appTypes, splitField: splitField, adAccountId: adAccountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -152,7 +194,7 @@ open class PinsAPI {
      - parameter adAccountId: (query) Unique identifier of an ad account. (optional)
      - returns: RequestBuilder<[String: PinAnalyticsMetricsResponse]> 
      */
-    open class func pinsAnalyticsWithRequestBuilder(pinId: String, startDate: Date, endDate: Date, metricTypes: [PinsAnalyticsMetricTypesParameterInner], appTypes: AppTypes_pinsAnalytics? = nil, splitField: SplitField_pinsAnalytics? = nil, adAccountId: String? = nil) -> RequestBuilder<[String: PinAnalyticsMetricsResponse]> {
+    open class func pinsAnalyticsWithRequestBuilder(pinId: String, startDate: Date, endDate: Date, metricTypes: [MetricTypes_pinsAnalytics], appTypes: AppTypes_pinsAnalytics? = nil, splitField: SplitField_pinsAnalytics? = nil, adAccountId: String? = nil) -> RequestBuilder<[String: PinAnalyticsMetricsResponse]> {
         var localVariablePath = "/pins/{pin_id}/analytics"
         let pinIdPreEscape = "\(APIHelper.mapValueToPathItem(pinId))"
         let pinIdPostEscape = pinIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

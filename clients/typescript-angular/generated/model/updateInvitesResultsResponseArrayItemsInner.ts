@@ -13,6 +13,6 @@ import { InviteExceptionResponse } from './inviteExceptionResponse';
 
 export interface UpdateInvitesResultsResponseArrayItemsInner { 
     exception?: InviteExceptionResponse | null;
-    invite?: InviteBusinessRoleBinding | null;
+    invite?: InviteBusinessRoleBinding;
 }
 

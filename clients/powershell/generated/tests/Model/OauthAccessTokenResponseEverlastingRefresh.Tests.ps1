@@ -10,7 +10,7 @@ Describe -tag 'PSOpenAPITools' -name 'OauthAccessTokenResponseEverlastingRefresh
     Context 'OauthAccessTokenResponseEverlastingRefresh' {
         It 'Initialize-OauthAccessTokenResponseEverlastingRefresh' {
             # a simple test to create an object
-            #$NewObject = Initialize-OauthAccessTokenResponseEverlastingRefresh -ResponseType "TEST_VALUE" -AccessToken "TEST_VALUE" -TokenType "TEST_VALUE" -ExpiresIn "TEST_VALUE" -Scope "TEST_VALUE" -RefreshToken "TEST_VALUE" -RefreshTokenExpiresIn "TEST_VALUE" -RefreshTokenExpiresAt "TEST_VALUE"
+            #$NewObject = Initialize-OauthAccessTokenResponseEverlastingRefresh -RefreshToken "TEST_VALUE" -RefreshTokenExpiresIn "TEST_VALUE" -RefreshTokenExpiresAt "TEST_VALUE" -ResponseType "TEST_VALUE" -AccessToken "TEST_VALUE" -TokenType "TEST_VALUE" -ExpiresIn "TEST_VALUE" -Scope "TEST_VALUE"
             #$NewObject | Should -BeOfType OauthAccessTokenResponseEverlastingRefresh
             #$NewObject.property | Should -Be 0
         }

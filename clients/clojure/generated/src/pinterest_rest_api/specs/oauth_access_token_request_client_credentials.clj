@@ -7,8 +7,8 @@
 
 (def oauth-access-token-request-client-credentials-data
   {
-   (ds/req :grant_type) string?
    (ds/req :scope) string?
+   (ds/req :grant_type) string?
    })
 
 (def oauth-access-token-request-client-credentials-spec

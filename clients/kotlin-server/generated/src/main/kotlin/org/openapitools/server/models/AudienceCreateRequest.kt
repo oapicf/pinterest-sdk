@@ -11,15 +11,15 @@
 */
 package org.openapitools.server.models
 
-import org.openapitools.server.models.AudienceCreateRequest1AudienceType
 import org.openapitools.server.models.AudienceRule
+import org.openapitools.server.models.AudienceType
 
 import kotlinx.serialization.Serializable
 /**
  * 
  * @param name Audience name.
  * @param rule 
- * @param audienceType 
+ * @param audienceType <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
  * @param adAccountId Ad account ID.
  * @param description Audience description.
  */
@@ -28,7 +28,8 @@ data class AudienceCreateRequest(
     /* Audience name. */
     val name: kotlin.String,
     val rule: AudienceRule,
-    val audienceType: AudienceCreateRequest1AudienceType,
+    /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
+    val audienceType: AudienceType,
     /* Ad account ID. */
     val adAccountId: kotlin.String? = null,
     /* Audience description. */

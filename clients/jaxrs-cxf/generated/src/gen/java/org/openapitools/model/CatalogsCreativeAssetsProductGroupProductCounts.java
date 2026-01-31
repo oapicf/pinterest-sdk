@@ -2,18 +2,18 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Product counts for a Creative Assets CatalogsProductGroup
- **/
+ * Product counts for a Creative Assets CatalogsProductGroup
+ */
 @ApiModel(description="Product counts for a Creative Assets CatalogsProductGroup")
 
 public class CatalogsCreativeAssetsProductGroupProductCounts  {
@@ -51,14 +51,19 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private BigDecimal total;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private BigDecimal videos;
  /**
    * Get catalogType

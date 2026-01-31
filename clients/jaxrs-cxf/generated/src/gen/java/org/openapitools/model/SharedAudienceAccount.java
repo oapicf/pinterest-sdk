@@ -12,16 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SharedAudienceAccount  {
   
-  @ApiModelProperty(example = "549755885175", required = true, value = "Account ID (ad account or business ID).")
  /**
-   * Account ID (ad account or business ID).
-  **/
+  * Account ID (ad account or business ID).
+  */
+  @ApiModelProperty(example = "549755885175", required = true, value = "Account ID (ad account or business ID).")
+
   private String accountId;
 
-  @ApiModelProperty(example = "Home Depot USA", required = true, value = "Account name.")
  /**
-   * Account name.
-  **/
+  * Account name.
+  */
+  @ApiModelProperty(example = "Home Depot USA", required = true, value = "Account name.")
+
   private String accountName;
 
 public enum AccountTypeEnum {
@@ -56,16 +58,18 @@ AD_ACCOUNT(String.valueOf("AD_ACCOUNT")), BUSINESS_ACCOUNT(String.valueOf("BUSIN
     }
 }
 
-  @ApiModelProperty(required = true, value = "account type")
  /**
-   * account type
-  **/
+  * account type
+  */
+  @ApiModelProperty(required = true, value = "account type")
+
   private AccountTypeEnum accountType;
 
-  @ApiModelProperty(example = "1677003860", required = true, value = "Epoch timestamp in seconds for the shared audience event")
  /**
-   * Epoch timestamp in seconds for the shared audience event
-  **/
+  * Epoch timestamp in seconds for the shared audience event
+  */
+  @ApiModelProperty(example = "1677003860", required = true, value = "Epoch timestamp in seconds for the shared audience event")
+
   private Integer sharedOnTimestamp;
  /**
    * Account ID (ad account or business ID).

@@ -127,7 +127,7 @@ data class TemplateResponse(
 
     @Schema(example = "null", description = "The filter on the conversion ingestion source method for conversion metrics")
     @get:JsonProperty("ingestion_sources") val ingestionSources: kotlin.collections.List<TemplateResponse.IngestionSources>? = null
-    ) {
+) {
 
     /**
     * A list of columns to be included in the report
@@ -1726,7 +1726,8 @@ data class TemplateResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Columns {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TemplateResponse'")
             }
         }
     }
@@ -1744,7 +1745,8 @@ data class TemplateResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ConversionReportTimeType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TemplateResponse'")
             }
         }
     }
@@ -1763,7 +1765,8 @@ data class TemplateResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CreationSource {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TemplateResponse'")
             }
         }
     }
@@ -1783,7 +1786,8 @@ data class TemplateResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Type {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TemplateResponse'")
             }
         }
     }
@@ -1804,7 +1808,8 @@ data class TemplateResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): IngestionSources {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TemplateResponse'")
             }
         }
     }

@@ -11,16 +11,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BusinessMembersAssetAccessDeleteRequestAccessesInner  {
   
-  @ApiModelProperty(example = "549755885175", required = true, value = "Id of the asset on which to remove member permissions.")
  /**
-   * Id of the asset on which to remove member permissions.
-  **/
+  * Id of the asset on which to remove member permissions.
+  */
+  @ApiModelProperty(example = "549755885175", required = true, value = "Id of the asset on which to remove member permissions.")
+
   private String assetId;
 
-  @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member on which to perform the asset permission removal")
  /**
-   * Unique identifier of the member on which to perform the asset permission removal
-  **/
+  * Unique identifier of the member on which to perform the asset permission removal
+  */
+  @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member on which to perform the asset permission removal")
+
   private String memberId;
  /**
    * Id of the asset on which to remove member permissions.

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Countries** | Pointer to [**[]TargetingAdvertiserCountry**](TargetingAdvertiserCountry.md) | A List of countries for filtering | [optional] 
 **ReportName** | **string** | Name of the Marketing Mix Modeling (MMM) report | 
 **StartDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD | 
 **EndDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD | 
@@ -11,7 +12,6 @@ Name | Type | Description | Notes
 **Level** | **string** | Level of the report | 
 **TargetingTypes** | [**[]MMMReportingTargetingType**](MMMReportingTargetingType.md) | List of targeting types | 
 **Columns** | [**[]MMMReportingColumn**](MMMReportingColumn.md) | Metric and entity columns | 
-**Countries** | Pointer to [**[]TargetingAdvertiserCountry**](TargetingAdvertiserCountry.md) | A List of countries for filtering | [optional] 
 
 ## Methods
 
@@ -31,6 +31,31 @@ will change when the set of required properties is changed
 NewCreateMMMReportRequestWithDefaults instantiates a new CreateMMMReportRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCountries
+
+`func (o *CreateMMMReportRequest) GetCountries() []TargetingAdvertiserCountry`
+
+GetCountries returns the Countries field if non-nil, zero value otherwise.
+
+### GetCountriesOk
+
+`func (o *CreateMMMReportRequest) GetCountriesOk() (*[]TargetingAdvertiserCountry, bool)`
+
+GetCountriesOk returns a tuple with the Countries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountries
+
+`func (o *CreateMMMReportRequest) SetCountries(v []TargetingAdvertiserCountry)`
+
+SetCountries sets Countries field to given value.
+
+### HasCountries
+
+`func (o *CreateMMMReportRequest) HasCountries() bool`
+
+HasCountries returns a boolean if a field has been set.
 
 ### GetReportName
 
@@ -171,31 +196,6 @@ and a boolean to check if the value has been set.
 
 SetColumns sets Columns field to given value.
 
-
-### GetCountries
-
-`func (o *CreateMMMReportRequest) GetCountries() []TargetingAdvertiserCountry`
-
-GetCountries returns the Countries field if non-nil, zero value otherwise.
-
-### GetCountriesOk
-
-`func (o *CreateMMMReportRequest) GetCountriesOk() (*[]TargetingAdvertiserCountry, bool)`
-
-GetCountriesOk returns a tuple with the Countries field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCountries
-
-`func (o *CreateMMMReportRequest) SetCountries(v []TargetingAdvertiserCountry)`
-
-SetCountries sets Countries field to given value.
-
-### HasCountries
-
-`func (o *CreateMMMReportRequest) HasCountries() bool`
-
-HasCountries returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

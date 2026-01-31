@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_feed_processing_status
 
@@ -18,3 +20,26 @@ type CatalogsFeedIngestion* = object
   feedId*: string
   createdAt*: string
   status*: CatalogsFeedProcessingStatus
+
+
+# Custom JSON deserialization for CatalogsFeedIngestion with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsFeedIngestion]): CatalogsFeedIngestion =
+  result = CatalogsFeedIngestion()
+  if node.kind == JObject:
+    if node.hasKey("id"):
+      result.id = to(node["id"], string)
+    if node.hasKey("feed_id"):
+      result.feedId = to(node["feed_id"], string)
+    if node.hasKey("created_at"):
+      result.createdAt = to(node["created_at"], string)
+    if node.hasKey("status"):
+      result.status = to(node["status"], CatalogsFeedProcessingStatus)
+
+# Custom JSON serialization for CatalogsFeedIngestion with custom field names
+proc `%`*(obj: CatalogsFeedIngestion): JsonNode =
+  result = newJObject()
+  result["id"] = %obj.id
+  result["feed_id"] = %obj.feedId
+  result["created_at"] = %obj.createdAt
+  result["status"] = %obj.status
+

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsCreativeAssetsProduct;
 import org.openapitools.model.CatalogsCreativeAssetsProductMetadata;
 import org.openapitools.model.CatalogsHotelProduct;
@@ -15,13 +14,14 @@ import org.openapitools.model.Pin;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Catalogs product for all verticals
- **/
+ * Catalogs product for all verticals
+ */
 @ApiModel(description="Catalogs product for all verticals")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
@@ -33,15 +33,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsProduct  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsType catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsCreativeAssetsProductMetadata metadata;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private Pin pin;
  /**
    * Get catalogType

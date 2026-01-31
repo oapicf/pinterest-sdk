@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,30 +9,36 @@ import org.openapitools.model.CampaignCreateRequest;
 import org.openapitools.model.KeywordsRequest;
 import org.openapitools.model.ProductGroupPromotionCreateRequest;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request for creation of entities in bulk.
- **/
+ * Request for creation of entities in bulk.
+ */
 @ApiModel(description="Request for creation of entities in bulk.")
 
 public class BulkUpsertRequestCreate  {
   
   @ApiModelProperty(value = "")
+
   private List<CampaignCreateRequest> campaigns = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private List<AdGroupCreateRequest> adGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private List<AdCreateRequest> ads = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private List<ProductGroupPromotionCreateRequest> productGroups = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private List<KeywordsRequest> keywords = new ArrayList<>();
  /**
    * Get campaigns

@@ -23,7 +23,7 @@ data class RespondToInvitesResponseArray(
     @field:Valid
     @Schema(example = "null", description = "List of invite/request accept/decline status. If there is an error, an exception object will be returned. If the invite/request was successfully accepted/declined, an invite object will be returned.")
     @get:JsonProperty("items") val items: kotlin.collections.List<RespondToInvitesResponseArrayItemsInner>? = null
-    ) {
+) {
 
 }
 

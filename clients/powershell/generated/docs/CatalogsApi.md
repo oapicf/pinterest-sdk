@@ -710,8 +710,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $CatalogsFeedsCreateRequestDefaultLocale = Initialize-CatalogsFeedsCreateRequestDefaultLocale 
 $CatalogsFeedCredentials = Initialize-CatalogsFeedCredentials -Password "MyPassword" -Username "MyUsername"
 $CatalogsFeedProcessingSchedule = Initialize-CatalogsFeedProcessingSchedule -Time "02:59" -Timezone "Africa/Abidjan"
-"MyStatus"
-$FeedsCreateRequest = Initialize-FeedsCreateRequest -DefaultCurrency "AED" -Name "MyName" -Format "TSV" -DefaultLocale $CatalogsFeedsCreateRequestDefaultLocale -Credentials $CatalogsFeedCredentials -Location "MyLocation" -PreferredProcessingSchedule $CatalogsFeedProcessingSchedule -CatalogType "RETAIL" -DefaultCountry "AD" -DefaultAvailability "IN_STOCK" -Status $CatalogsStatus -CatalogId "MyCatalogId" # FeedsCreateRequest | Request object used to created a feed.
+$FeedsCreateRequest = Initialize-FeedsCreateRequest -DefaultCurrency "AED" -Name "MyName" -Format "TSV" -DefaultLocale $CatalogsFeedsCreateRequestDefaultLocale -Credentials $CatalogsFeedCredentials -Location "MyLocation" -PreferredProcessingSchedule $CatalogsFeedProcessingSchedule -CatalogType "RETAIL" -DefaultCountry "AD" -DefaultAvailability "IN_STOCK" -Status "ACTIVE" -CatalogId "MyCatalogId" # FeedsCreateRequest | Request object used to created a feed.
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Create feed
@@ -1097,9 +1096,8 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 # Configure OAuth2 access token for authorization: client_credentials
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$CatalogsItemsRequestLanguage = Initialize-CatalogsItemsRequestLanguage 
 $ItemDeleteBatchRecord = Initialize-ItemDeleteBatchRecord -ItemId "DS0294-M"
-$ItemsBatchPostRequest = Initialize-ItemsBatchPostRequest -CatalogType "CREATIVE_ASSETS" -Country "AD" -Language $CatalogsItemsRequestLanguage -Items $ItemDeleteBatchRecord -CatalogId "2680059592705" -Operation "UPDATE" # ItemsBatchPostRequest | Request object used to create catalogs items in a batch
+$ItemsBatchPostRequest = Initialize-ItemsBatchPostRequest -CatalogType "CREATIVE_ASSETS" -Country "AD" -Language "af-ZA" -Items $ItemDeleteBatchRecord -CatalogId "2680059592705" -Operation "UPDATE" # ItemsBatchPostRequest | Request object used to create catalogs items in a batch
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Operate on item batch
@@ -1273,9 +1271,9 @@ $Configuration = Get-Configuration
 # Configure OAuth2 access token for authorization: pinterest_oauth2
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
-$CatalogsItemsRequestLanguage = Initialize-CatalogsItemsRequestLanguage 
+"af-ZA"
 $CatalogsItemsPostFilters = Initialize-CatalogsItemsPostFilters -CatalogType "RETAIL" -ItemIds "MyItemIds" -CatalogId "MyCatalogId" -HotelIds "MyHotelIds" -CreativeAssetsIds "MyCreativeAssetsIds"
-$CatalogsItemsRequest = Initialize-CatalogsItemsRequest -Country "AD" -Language $CatalogsItemsRequestLanguage -Filters $CatalogsItemsPostFilters # CatalogsItemsRequest | Request object used to get catalogs items
+$CatalogsItemsRequest = Initialize-CatalogsItemsRequest -Country "AD" -Language $String -Filters $CatalogsItemsPostFilters # CatalogsItemsRequest | Request object used to get catalogs items
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
 # Get catalogs items (POST)

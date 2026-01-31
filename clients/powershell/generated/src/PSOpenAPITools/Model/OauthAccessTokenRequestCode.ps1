@@ -13,13 +13,13 @@ No summary available.
 
 .DESCRIPTION
 
-A request to exchange an authorization code for an access token.
-
-.PARAMETER GrantType
 No description available.
+
 .PARAMETER Code
 No description available.
 .PARAMETER RedirectUri
+No description available.
+.PARAMETER GrantType
 No description available.
 .OUTPUTS
 
@@ -30,24 +30,20 @@ function Initialize-OauthAccessTokenRequestCode {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [ValidateSet("authorization_code", "refresh_token", "client_credentials")]
-        [String]
-        ${GrantType},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${Code},
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${RedirectUri}
+        ${RedirectUri},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("authorization_code", "refresh_token", "client_credentials")]
+        [String]
+        ${GrantType}
     )
 
     Process {
         'Creating PSCustomObject: PSOpenAPITools => OauthAccessTokenRequestCode' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
-
-        if ($null -eq $GrantType) {
-            throw "invalid value for 'GrantType', 'GrantType' cannot be null."
-        }
 
         if ($null -eq $Code) {
             throw "invalid value for 'Code', 'Code' cannot be null."
@@ -57,11 +53,15 @@ function Initialize-OauthAccessTokenRequestCode {
             throw "invalid value for 'RedirectUri', 'RedirectUri' cannot be null."
         }
 
+        if ($null -eq $GrantType) {
+            throw "invalid value for 'GrantType', 'GrantType' cannot be null."
+        }
+
 
         $PSO = [PSCustomObject]@{
-            "grant_type" = ${GrantType}
             "code" = ${Code}
             "redirect_uri" = ${RedirectUri}
+            "grant_type" = ${GrantType}
         }
 
 
@@ -99,7 +99,7 @@ function ConvertFrom-JsonToOauthAccessTokenRequestCode {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in OauthAccessTokenRequestCode
-        $AllProperties = ("grant_type", "code", "redirect_uri")
+        $AllProperties = ("code", "redirect_uri", "grant_type")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -107,13 +107,7 @@ function ConvertFrom-JsonToOauthAccessTokenRequestCode {
         }
 
         If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property 'grant_type' missing."
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "grant_type"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'grant_type' missing."
-        } else {
-            $GrantType = $JsonParameters.PSobject.Properties["grant_type"].value
+            throw "Error! Empty JSON cannot be serialized due to the required property 'code' missing."
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "code"))) {
@@ -128,10 +122,16 @@ function ConvertFrom-JsonToOauthAccessTokenRequestCode {
             $RedirectUri = $JsonParameters.PSobject.Properties["redirect_uri"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "grant_type"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'grant_type' missing."
+        } else {
+            $GrantType = $JsonParameters.PSobject.Properties["grant_type"].value
+        }
+
         $PSO = [PSCustomObject]@{
-            "grant_type" = ${GrantType}
             "code" = ${Code}
             "redirect_uri" = ${RedirectUri}
+            "grant_type" = ${GrantType}
         }
 
         return $PSO

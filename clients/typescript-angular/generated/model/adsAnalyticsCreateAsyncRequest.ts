@@ -130,11 +130,11 @@ export interface AdsAnalyticsCreateAsyncRequest {
     end_hour?: number;
 }
 export namespace AdsAnalyticsCreateAsyncRequest {
-    export type PrimarySortEnum = 'BY_ID' | 'BY_DATE';
     export const PrimarySortEnum = {
-        ById: 'BY_ID' as PrimarySortEnum,
-        ByDate: 'BY_DATE' as PrimarySortEnum
-    };
+        ById: 'BY_ID',
+        ByDate: 'BY_DATE'
+    } as const;
+    export type PrimarySortEnum = typeof PrimarySortEnum[keyof typeof PrimarySortEnum];
 }
 
 

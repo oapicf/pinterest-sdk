@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A successful OAuth client token response for the client token flow.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenResponseClientCredentials {
   /**
    * Gets or Sets responseType
@@ -279,19 +279,10 @@ public class OauthAccessTokenResponseClientCredentials {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("response_type");
-    openapiFields.add("access_token");
-    openapiFields.add("token_type");
-    openapiFields.add("expires_in");
-    openapiFields.add("scope");
+    openapiFields = new HashSet<String>(Arrays.asList("response_type", "access_token", "token_type", "expires_in", "scope"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("access_token");
-    openapiRequiredFields.add("token_type");
-    openapiRequiredFields.add("expires_in");
-    openapiRequiredFields.add("scope");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("access_token", "token_type", "expires_in", "scope"));
   }
 
   /**
@@ -303,7 +294,7 @@ public class OauthAccessTokenResponseClientCredentials {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!OauthAccessTokenResponseClientCredentials.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OauthAccessTokenResponseClientCredentials is not found in the empty JSON string", OauthAccessTokenResponseClientCredentials.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in OauthAccessTokenResponseClientCredentials is not found in the empty JSON string", OauthAccessTokenResponseClientCredentials.openapiRequiredFields.toString()));
         }
       }
 
@@ -311,32 +302,32 @@ public class OauthAccessTokenResponseClientCredentials {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!OauthAccessTokenResponseClientCredentials.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OauthAccessTokenResponseClientCredentials` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `OauthAccessTokenResponseClientCredentials` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : OauthAccessTokenResponseClientCredentials.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("response_type") != null && !jsonObj.get("response_type").isJsonNull()) && !jsonObj.get("response_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `response_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `response_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response_type").toString()));
       }
       // validate the optional field `response_type`
       if (jsonObj.get("response_type") != null && !jsonObj.get("response_type").isJsonNull()) {
         ResponseTypeEnum.validateJsonElement(jsonObj.get("response_type"));
       }
       if (!jsonObj.get("access_token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `access_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_token").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `access_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("access_token").toString()));
       }
       if (!jsonObj.get("token_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `token_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `token_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_type").toString()));
       }
       if (!jsonObj.get("scope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
   }
 

@@ -12,14 +12,10 @@
 /**
  * The status of the item processing record
  */
-export type ItemProcessingStatus = 'SUCCESS' | 'FAILURE' | 'PROCESSING';
-
 export const ItemProcessingStatus = {
-
-    Success: 'SUCCESS' as ItemProcessingStatus,
-
-    Failure: 'FAILURE' as ItemProcessingStatus,
-
-    Processing: 'PROCESSING' as ItemProcessingStatus
-};
+    Success: 'SUCCESS',
+    Failure: 'FAILURE',
+    Processing: 'PROCESSING'
+} as const;
+export type ItemProcessingStatus = typeof ItemProcessingStatus[keyof typeof ItemProcessingStatus];
 

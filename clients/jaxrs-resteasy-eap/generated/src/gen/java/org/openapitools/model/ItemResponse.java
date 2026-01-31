@@ -21,14 +21,16 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing an item record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2025-05-10T05:40:48.086340579Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@ApiModel(description="Object describing an item record")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-01-26T05:37:49.085059204Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemResponse   {
   
   private CatalogsType catalogType;
   private String itemId;
-  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+  private List<@Valid Pin> pins;
+  private CatalogsCreativeAssetsAttributes attributes;
   private String hotelId;
   private String creativeAssetsId;
+  private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   /**
    **/
@@ -57,16 +59,28 @@ public class ItemResponse   {
   }
 
   /**
-   * Array with the errors for the item id requested
+   * The pins mapped to the item
    **/
   
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-  @JsonProperty("errors")
-  public List<@Valid ItemValidationEvent> getErrors() {
-    return errors;
+  @ApiModelProperty(value = "The pins mapped to the item")
+  @JsonProperty("pins")
+ @Size(max=11)  public List<@Valid Pin> getPins() {
+    return pins;
   }
-  public void setErrors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
+  public void setPins(List<@Valid Pin> pins) {
+    this.pins = pins;
+  }
+
+  /**
+   **/
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
   }
 
   /**
@@ -95,6 +109,19 @@ public class ItemResponse   {
     this.creativeAssetsId = creativeAssetsId;
   }
 
+  /**
+   * Array with the errors for the item id requested
+   **/
+  
+  @ApiModelProperty(value = "Array with the errors for the item id requested")
+  @JsonProperty("errors")
+  public List<@Valid ItemValidationEvent> getErrors() {
+    return errors;
+  }
+  public void setErrors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -107,14 +134,16 @@ public class ItemResponse   {
     ItemResponse itemResponse = (ItemResponse) o;
     return Objects.equals(this.catalogType, itemResponse.catalogType) &&
         Objects.equals(this.itemId, itemResponse.itemId) &&
-        Objects.equals(this.errors, itemResponse.errors) &&
+        Objects.equals(this.pins, itemResponse.pins) &&
+        Objects.equals(this.attributes, itemResponse.attributes) &&
         Objects.equals(this.hotelId, itemResponse.hotelId) &&
-        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId);
+        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId) &&
+        Objects.equals(this.errors, itemResponse.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
+    return Objects.hash(catalogType, itemId, pins, attributes, hotelId, creativeAssetsId, errors);
   }
 
   @Override
@@ -124,9 +153,11 @@ public class ItemResponse   {
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

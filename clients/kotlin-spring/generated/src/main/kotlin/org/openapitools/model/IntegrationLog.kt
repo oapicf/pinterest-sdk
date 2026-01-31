@@ -83,7 +83,7 @@ data class IntegrationLog(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("request") val request: IntegrationLogClientRequest? = null
-    ) {
+) {
 
     /**
     * Log event type
@@ -98,7 +98,8 @@ data class IntegrationLog(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): EventType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'IntegrationLog'")
             }
         }
     }
@@ -117,7 +118,8 @@ data class IntegrationLog(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): LogLevel {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'IntegrationLog'")
             }
         }
     }

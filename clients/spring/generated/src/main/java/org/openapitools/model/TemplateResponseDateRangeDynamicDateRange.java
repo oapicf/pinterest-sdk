@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "TemplateResponse_date_range_dynamic_date_range", description = "The dynamic date range of the template")
 @JsonTypeName("TemplateResponse_date_range_dynamic_date_range")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRangeDynamicDateRange {
 
   private @Nullable String type;
@@ -40,7 +40,7 @@ public class TemplateResponseDateRangeDynamicDateRange {
     
     LAST_MONTH("LAST_MONTH");
 
-    private String value;
+    private final String value;
 
     RangeEnum(String value) {
       this.value = value;
@@ -69,7 +69,7 @@ public class TemplateResponseDateRangeDynamicDateRange {
 
   private @Nullable RangeEnum range;
 
-  public TemplateResponseDateRangeDynamicDateRange type(String type) {
+  public TemplateResponseDateRangeDynamicDateRange type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -81,15 +81,15 @@ public class TemplateResponseDateRangeDynamicDateRange {
   
   @Schema(name = "type", example = "dynamic", description = "The date range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public String getType() {
+  public @Nullable String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
-  public TemplateResponseDateRangeDynamicDateRange range(RangeEnum range) {
+  public TemplateResponseDateRangeDynamicDateRange range(@Nullable RangeEnum range) {
     this.range = range;
     return this;
   }
@@ -101,11 +101,11 @@ public class TemplateResponseDateRangeDynamicDateRange {
   
   @Schema(name = "range", example = "YEAR_TO_DATE", description = "The dynamic range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("range")
-  public RangeEnum getRange() {
+  public @Nullable RangeEnum getRange() {
     return range;
   }
 
-  public void setRange(RangeEnum range) {
+  public void setRange(@Nullable RangeEnum range) {
     this.range = range;
   }
 

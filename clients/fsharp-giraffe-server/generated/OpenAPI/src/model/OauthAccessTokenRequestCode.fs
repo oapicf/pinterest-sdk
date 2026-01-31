@@ -12,8 +12,8 @@ module OauthAccessTokenRequestCode =
   //#endregion
 
   type OauthAccessTokenRequestCode = {
-    GrantType : GrantTypeEnum;
     Code : string;
     RedirectUri : string;
+    GrantType : GrantTypeEnum;
   }
   //#endregion

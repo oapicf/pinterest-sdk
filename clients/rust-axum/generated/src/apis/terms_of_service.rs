@@ -21,6 +21,8 @@ pub enum TermsOfServiceSlashGetResponse {
 }
 
 
+
+
 /// TermsOfService
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -30,6 +32,7 @@ pub trait TermsOfService<E: std::fmt::Debug + Send + Sync + 'static = ()>: super
     /// TermsOfServiceSlashGet - GET /v5/ad_accounts/{ad_account_id}/terms_of_service
     async fn terms_of_service_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

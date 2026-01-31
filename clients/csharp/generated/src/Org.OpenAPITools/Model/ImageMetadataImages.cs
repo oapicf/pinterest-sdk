@@ -172,20 +172,16 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "150x150":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                var150x150 = new Option<ImageDetails?>(JsonSerializer.Deserialize<ImageDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            var150x150 = new Option<ImageDetails?>(JsonSerializer.Deserialize<ImageDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "400x300":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                var400x300 = new Option<ImageDetails?>(JsonSerializer.Deserialize<ImageDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            var400x300 = new Option<ImageDetails?>(JsonSerializer.Deserialize<ImageDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "600x":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                var600x = new Option<ImageDetails?>(JsonSerializer.Deserialize<ImageDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            var600x = new Option<ImageDetails?>(JsonSerializer.Deserialize<ImageDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "1200x":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                var1200x = new Option<ImageDetails?>(JsonSerializer.Deserialize<ImageDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            var1200x = new Option<ImageDetails?>(JsonSerializer.Deserialize<ImageDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

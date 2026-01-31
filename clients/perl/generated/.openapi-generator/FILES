@@ -87,7 +87,6 @@ docs/AudienceCategory.md
 docs/AudienceCommon.md
 docs/AudienceCreateCustomRequest.md
 docs/AudienceCreateRequest.md
-docs/AudienceCreateRequest1AudienceType.md
 docs/AudienceDataParty.md
 docs/AudienceDefinition.md
 docs/AudienceDefinitionResponse.md
@@ -276,7 +275,6 @@ docs/CatalogsItemsDeleteDiscontinuedBatchRequest.md
 docs/CatalogsItemsFilters.md
 docs/CatalogsItemsPostFilters.md
 docs/CatalogsItemsRequest.md
-docs/CatalogsItemsRequestLanguage.md
 docs/CatalogsItemsUpdateBatchRequest.md
 docs/CatalogsItemsUpsertBatchRequest.md
 docs/CatalogsList200Response.md
@@ -621,7 +619,6 @@ docs/PinMediaWithVideos.md
 docs/PinPromotionSummaryStatus.md
 docs/PinUpdate.md
 docs/PinUpdateCarouselSlotsInner.md
-docs/PinsAnalyticsMetricTypesParameterInner.md
 docs/PinsApi.md
 docs/PinsList200Response.md
 docs/PinsSaveRequest.md
@@ -864,7 +861,6 @@ lib/WWW/OpenAPIClient/Object/AudienceCategory.pm
 lib/WWW/OpenAPIClient/Object/AudienceCommon.pm
 lib/WWW/OpenAPIClient/Object/AudienceCreateCustomRequest.pm
 lib/WWW/OpenAPIClient/Object/AudienceCreateRequest.pm
-lib/WWW/OpenAPIClient/Object/AudienceCreateRequest1AudienceType.pm
 lib/WWW/OpenAPIClient/Object/AudienceDataParty.pm
 lib/WWW/OpenAPIClient/Object/AudienceDefinition.pm
 lib/WWW/OpenAPIClient/Object/AudienceDefinitionResponse.pm
@@ -1042,7 +1038,6 @@ lib/WWW/OpenAPIClient/Object/CatalogsItemsDeleteDiscontinuedBatchRequest.pm
 lib/WWW/OpenAPIClient/Object/CatalogsItemsFilters.pm
 lib/WWW/OpenAPIClient/Object/CatalogsItemsPostFilters.pm
 lib/WWW/OpenAPIClient/Object/CatalogsItemsRequest.pm
-lib/WWW/OpenAPIClient/Object/CatalogsItemsRequestLanguage.pm
 lib/WWW/OpenAPIClient/Object/CatalogsItemsUpdateBatchRequest.pm
 lib/WWW/OpenAPIClient/Object/CatalogsItemsUpsertBatchRequest.pm
 lib/WWW/OpenAPIClient/Object/CatalogsList200Response.pm
@@ -1376,7 +1371,6 @@ lib/WWW/OpenAPIClient/Object/PinMediaWithVideos.pm
 lib/WWW/OpenAPIClient/Object/PinPromotionSummaryStatus.pm
 lib/WWW/OpenAPIClient/Object/PinUpdate.pm
 lib/WWW/OpenAPIClient/Object/PinUpdateCarouselSlotsInner.pm
-lib/WWW/OpenAPIClient/Object/PinsAnalyticsMetricTypesParameterInner.pm
 lib/WWW/OpenAPIClient/Object/PinsList200Response.pm
 lib/WWW/OpenAPIClient/Object/PinsSaveRequest.pm
 lib/WWW/OpenAPIClient/Object/PinterestTagEventData.pm

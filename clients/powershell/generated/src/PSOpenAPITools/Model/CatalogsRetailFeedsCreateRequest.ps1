@@ -82,8 +82,9 @@ function Initialize-CatalogsRetailFeedsCreateRequest {
         [PSCustomObject]
         ${DefaultAvailability},
         [Parameter(Position = 10, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("ACTIVE", "INACTIVE")]
         [PSCustomObject]
-        ${Status}
+        ${Status} = "ACTIVE"
     )
 
     Process {

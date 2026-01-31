@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "TemplateResponse", description = "Template fields")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponse {
 
   private String id;
@@ -3230,7 +3230,7 @@ public class TemplateResponse {
     
     TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE("TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE");
 
-    private String value;
+    private final String value;
 
     ColumnsEnum(String value) {
       this.value = value;
@@ -3276,7 +3276,7 @@ public class TemplateResponse {
     
     TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
-    private String value;
+    private final String value;
 
     ConversionReportTimeTypeEnum(String value) {
       this.value = value;
@@ -3321,7 +3321,7 @@ public class TemplateResponse {
     
     ADS_MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
 
-    private String value;
+    private final String value;
 
     CreationSourceEnum(String value) {
       this.value = value;
@@ -3369,7 +3369,7 @@ public class TemplateResponse {
     
     TABLE("TABLE");
 
-    private String value;
+    private final String value;
 
     TypeEnum(String value) {
       this.value = value;
@@ -3412,7 +3412,7 @@ public class TemplateResponse {
     
     NATIVE("NATIVE");
 
-    private String value;
+    private final String value;
 
     IngestionSourcesEnum(String value) {
       this.value = value;

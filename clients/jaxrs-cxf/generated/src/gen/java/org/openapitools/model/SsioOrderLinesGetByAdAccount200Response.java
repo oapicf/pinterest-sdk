@@ -16,14 +16,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SsioOrderLinesGetByAdAccount200Response  {
   
-  @ApiModelProperty(required = true, value = "SSIO order lines by ad acount id")
-  @Valid
  /**
-   * SSIO order lines by ad acount id
-  **/
+  * SSIO order lines by ad acount id
+  */
+  @ApiModelProperty(required = true, value = "SSIO order lines by ad acount id")
+
+  @Valid
+
   private List<@Valid SSIOOrderLine> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * SSIO order lines by ad acount id

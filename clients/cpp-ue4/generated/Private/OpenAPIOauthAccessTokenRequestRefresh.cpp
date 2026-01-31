@@ -79,7 +79,6 @@ inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPIOaut
 void OpenAPIOauthAccessTokenRequestRefresh::WriteJson(JsonWriter& Writer) const
 {
 	Writer->WriteObjectStart();
-	Writer->WriteIdentifierPrefix(TEXT("grant_type")); WriteJsonValue(Writer, GrantType);
 	Writer->WriteIdentifierPrefix(TEXT("refresh_token")); WriteJsonValue(Writer, RefreshToken);
 	if (Scope.IsSet())
 	{
@@ -89,6 +88,7 @@ void OpenAPIOauthAccessTokenRequestRefresh::WriteJson(JsonWriter& Writer) const
 	{
 		Writer->WriteIdentifierPrefix(TEXT("refresh_on")); WriteJsonValue(Writer, RefreshOn.GetValue());
 	}
+	Writer->WriteIdentifierPrefix(TEXT("grant_type")); WriteJsonValue(Writer, GrantType);
 	Writer->WriteObjectEnd();
 }
 
@@ -100,10 +100,10 @@ bool OpenAPIOauthAccessTokenRequestRefresh::FromJson(const TSharedPtr<FJsonValue
 
 	bool ParseSuccess = true;
 
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("grant_type"), GrantType);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("refresh_token"), RefreshToken);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("scope"), Scope);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("refresh_on"), RefreshOn);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("grant_type"), GrantType);
 
 	return ParseSuccess;
 }

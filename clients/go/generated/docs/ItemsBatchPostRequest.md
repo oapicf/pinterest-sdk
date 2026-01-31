@@ -4,16 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CatalogType** | **string** |  | 
 **Country** | [**Country**](Country.md) |  | 
-**Language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
-**Operation** | [**BatchOperation**](BatchOperation.md) |  | 
+**Language** | **string** | We recommend using the CatalogsLocale values. | 
 **Items** | [**[]ItemDeleteBatchRecord**](ItemDeleteBatchRecord.md) | Array with catalogs items | 
+**CatalogId** | Pointer to **string** | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog | [optional] 
+**Operation** | [**BatchOperation**](BatchOperation.md) |  | 
 
 ## Methods
 
 ### NewItemsBatchPostRequest
 
-`func NewItemsBatchPostRequest(country Country, language CatalogsItemsRequestLanguage, operation BatchOperation, items []ItemDeleteBatchRecord, ) *ItemsBatchPostRequest`
+`func NewItemsBatchPostRequest(catalogType string, country Country, language string, items []ItemDeleteBatchRecord, operation BatchOperation, ) *ItemsBatchPostRequest`
 
 NewItemsBatchPostRequest instantiates a new ItemsBatchPostRequest object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +29,26 @@ will change when the set of required properties is changed
 NewItemsBatchPostRequestWithDefaults instantiates a new ItemsBatchPostRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCatalogType
+
+`func (o *ItemsBatchPostRequest) GetCatalogType() string`
+
+GetCatalogType returns the CatalogType field if non-nil, zero value otherwise.
+
+### GetCatalogTypeOk
+
+`func (o *ItemsBatchPostRequest) GetCatalogTypeOk() (*string, bool)`
+
+GetCatalogTypeOk returns a tuple with the CatalogType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogType
+
+`func (o *ItemsBatchPostRequest) SetCatalogType(v string)`
+
+SetCatalogType sets CatalogType field to given value.
+
 
 ### GetCountry
 
@@ -50,42 +72,22 @@ SetCountry sets Country field to given value.
 
 ### GetLanguage
 
-`func (o *ItemsBatchPostRequest) GetLanguage() CatalogsItemsRequestLanguage`
+`func (o *ItemsBatchPostRequest) GetLanguage() string`
 
 GetLanguage returns the Language field if non-nil, zero value otherwise.
 
 ### GetLanguageOk
 
-`func (o *ItemsBatchPostRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool)`
+`func (o *ItemsBatchPostRequest) GetLanguageOk() (*string, bool)`
 
 GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLanguage
 
-`func (o *ItemsBatchPostRequest) SetLanguage(v CatalogsItemsRequestLanguage)`
+`func (o *ItemsBatchPostRequest) SetLanguage(v string)`
 
 SetLanguage sets Language field to given value.
-
-
-### GetOperation
-
-`func (o *ItemsBatchPostRequest) GetOperation() BatchOperation`
-
-GetOperation returns the Operation field if non-nil, zero value otherwise.
-
-### GetOperationOk
-
-`func (o *ItemsBatchPostRequest) GetOperationOk() (*BatchOperation, bool)`
-
-GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOperation
-
-`func (o *ItemsBatchPostRequest) SetOperation(v BatchOperation)`
-
-SetOperation sets Operation field to given value.
 
 
 ### GetItems
@@ -106,6 +108,51 @@ and a boolean to check if the value has been set.
 `func (o *ItemsBatchPostRequest) SetItems(v []ItemDeleteBatchRecord)`
 
 SetItems sets Items field to given value.
+
+
+### GetCatalogId
+
+`func (o *ItemsBatchPostRequest) GetCatalogId() string`
+
+GetCatalogId returns the CatalogId field if non-nil, zero value otherwise.
+
+### GetCatalogIdOk
+
+`func (o *ItemsBatchPostRequest) GetCatalogIdOk() (*string, bool)`
+
+GetCatalogIdOk returns a tuple with the CatalogId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogId
+
+`func (o *ItemsBatchPostRequest) SetCatalogId(v string)`
+
+SetCatalogId sets CatalogId field to given value.
+
+### HasCatalogId
+
+`func (o *ItemsBatchPostRequest) HasCatalogId() bool`
+
+HasCatalogId returns a boolean if a field has been set.
+
+### GetOperation
+
+`func (o *ItemsBatchPostRequest) GetOperation() BatchOperation`
+
+GetOperation returns the Operation field if non-nil, zero value otherwise.
+
+### GetOperationOk
+
+`func (o *ItemsBatchPostRequest) GetOperationOk() (*BatchOperation, bool)`
+
+GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperation
+
+`func (o *ItemsBatchPostRequest) SetOperation(v BatchOperation)`
+
+SetOperation sets Operation field to given value.
 
 
 

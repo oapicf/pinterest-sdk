@@ -33,12 +33,666 @@ namespace Org.OpenAPITools.Models
         [DataMember(Name="country", EmitDefaultValue=true)]
         public Country Country { get; set; }
 
+
         /// <summary>
-        /// Gets or Sets Language
+        /// We recommend using the CatalogsLocale values.
         /// </summary>
+        /// <value>We recommend using the CatalogsLocale values.</value>
+        [TypeConverter(typeof(CustomEnumConverter<LanguageEnum>))]
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public enum LanguageEnum
+        {
+            
+            /// <summary>
+            /// Enum AfZAEnum for af-ZA
+            /// </summary>
+            [EnumMember(Value = "af-ZA")]
+            AfZAEnum = 1,
+            
+            /// <summary>
+            /// Enum ArSAEnum for ar-SA
+            /// </summary>
+            [EnumMember(Value = "ar-SA")]
+            ArSAEnum = 2,
+            
+            /// <summary>
+            /// Enum BgBGEnum for bg-BG
+            /// </summary>
+            [EnumMember(Value = "bg-BG")]
+            BgBGEnum = 3,
+            
+            /// <summary>
+            /// Enum BnINEnum for bn-IN
+            /// </summary>
+            [EnumMember(Value = "bn-IN")]
+            BnINEnum = 4,
+            
+            /// <summary>
+            /// Enum CsCZEnum for cs-CZ
+            /// </summary>
+            [EnumMember(Value = "cs-CZ")]
+            CsCZEnum = 5,
+            
+            /// <summary>
+            /// Enum DaDKEnum for da-DK
+            /// </summary>
+            [EnumMember(Value = "da-DK")]
+            DaDKEnum = 6,
+            
+            /// <summary>
+            /// Enum DeEnum for de
+            /// </summary>
+            [EnumMember(Value = "de")]
+            DeEnum = 7,
+            
+            /// <summary>
+            /// Enum ElGREnum for el-GR
+            /// </summary>
+            [EnumMember(Value = "el-GR")]
+            ElGREnum = 8,
+            
+            /// <summary>
+            /// Enum EnAUEnum for en-AU
+            /// </summary>
+            [EnumMember(Value = "en-AU")]
+            EnAUEnum = 9,
+            
+            /// <summary>
+            /// Enum EnCAEnum for en-CA
+            /// </summary>
+            [EnumMember(Value = "en-CA")]
+            EnCAEnum = 10,
+            
+            /// <summary>
+            /// Enum EnGBEnum for en-GB
+            /// </summary>
+            [EnumMember(Value = "en-GB")]
+            EnGBEnum = 11,
+            
+            /// <summary>
+            /// Enum EnINEnum for en-IN
+            /// </summary>
+            [EnumMember(Value = "en-IN")]
+            EnINEnum = 12,
+            
+            /// <summary>
+            /// Enum EnUSEnum for en-US
+            /// </summary>
+            [EnumMember(Value = "en-US")]
+            EnUSEnum = 13,
+            
+            /// <summary>
+            /// Enum Es419Enum for es-419
+            /// </summary>
+            [EnumMember(Value = "es-419")]
+            Es419Enum = 14,
+            
+            /// <summary>
+            /// Enum EsAREnum for es-AR
+            /// </summary>
+            [EnumMember(Value = "es-AR")]
+            EsAREnum = 15,
+            
+            /// <summary>
+            /// Enum EsESEnum for es-ES
+            /// </summary>
+            [EnumMember(Value = "es-ES")]
+            EsESEnum = 16,
+            
+            /// <summary>
+            /// Enum EsMXEnum for es-MX
+            /// </summary>
+            [EnumMember(Value = "es-MX")]
+            EsMXEnum = 17,
+            
+            /// <summary>
+            /// Enum FiFIEnum for fi-FI
+            /// </summary>
+            [EnumMember(Value = "fi-FI")]
+            FiFIEnum = 18,
+            
+            /// <summary>
+            /// Enum FrEnum for fr
+            /// </summary>
+            [EnumMember(Value = "fr")]
+            FrEnum = 19,
+            
+            /// <summary>
+            /// Enum FrCAEnum for fr-CA
+            /// </summary>
+            [EnumMember(Value = "fr-CA")]
+            FrCAEnum = 20,
+            
+            /// <summary>
+            /// Enum HeILEnum for he-IL
+            /// </summary>
+            [EnumMember(Value = "he-IL")]
+            HeILEnum = 21,
+            
+            /// <summary>
+            /// Enum HiINEnum for hi-IN
+            /// </summary>
+            [EnumMember(Value = "hi-IN")]
+            HiINEnum = 22,
+            
+            /// <summary>
+            /// Enum HrHREnum for hr-HR
+            /// </summary>
+            [EnumMember(Value = "hr-HR")]
+            HrHREnum = 23,
+            
+            /// <summary>
+            /// Enum HuHUEnum for hu-HU
+            /// </summary>
+            [EnumMember(Value = "hu-HU")]
+            HuHUEnum = 24,
+            
+            /// <summary>
+            /// Enum IdIDEnum for id-ID
+            /// </summary>
+            [EnumMember(Value = "id-ID")]
+            IdIDEnum = 25,
+            
+            /// <summary>
+            /// Enum ItEnum for it
+            /// </summary>
+            [EnumMember(Value = "it")]
+            ItEnum = 26,
+            
+            /// <summary>
+            /// Enum JaEnum for ja
+            /// </summary>
+            [EnumMember(Value = "ja")]
+            JaEnum = 27,
+            
+            /// <summary>
+            /// Enum KoKREnum for ko-KR
+            /// </summary>
+            [EnumMember(Value = "ko-KR")]
+            KoKREnum = 28,
+            
+            /// <summary>
+            /// Enum MsMYEnum for ms-MY
+            /// </summary>
+            [EnumMember(Value = "ms-MY")]
+            MsMYEnum = 29,
+            
+            /// <summary>
+            /// Enum NbNOEnum for nb-NO
+            /// </summary>
+            [EnumMember(Value = "nb-NO")]
+            NbNOEnum = 30,
+            
+            /// <summary>
+            /// Enum NlEnum for nl
+            /// </summary>
+            [EnumMember(Value = "nl")]
+            NlEnum = 31,
+            
+            /// <summary>
+            /// Enum PlPLEnum for pl-PL
+            /// </summary>
+            [EnumMember(Value = "pl-PL")]
+            PlPLEnum = 32,
+            
+            /// <summary>
+            /// Enum PtBREnum for pt-BR
+            /// </summary>
+            [EnumMember(Value = "pt-BR")]
+            PtBREnum = 33,
+            
+            /// <summary>
+            /// Enum PtPTEnum for pt-PT
+            /// </summary>
+            [EnumMember(Value = "pt-PT")]
+            PtPTEnum = 34,
+            
+            /// <summary>
+            /// Enum RoROEnum for ro-RO
+            /// </summary>
+            [EnumMember(Value = "ro-RO")]
+            RoROEnum = 35,
+            
+            /// <summary>
+            /// Enum RuRUEnum for ru-RU
+            /// </summary>
+            [EnumMember(Value = "ru-RU")]
+            RuRUEnum = 36,
+            
+            /// <summary>
+            /// Enum SkSKEnum for sk-SK
+            /// </summary>
+            [EnumMember(Value = "sk-SK")]
+            SkSKEnum = 37,
+            
+            /// <summary>
+            /// Enum SvSEEnum for sv-SE
+            /// </summary>
+            [EnumMember(Value = "sv-SE")]
+            SvSEEnum = 38,
+            
+            /// <summary>
+            /// Enum TeINEnum for te-IN
+            /// </summary>
+            [EnumMember(Value = "te-IN")]
+            TeINEnum = 39,
+            
+            /// <summary>
+            /// Enum ThTHEnum for th-TH
+            /// </summary>
+            [EnumMember(Value = "th-TH")]
+            ThTHEnum = 40,
+            
+            /// <summary>
+            /// Enum TlPHEnum for tl-PH
+            /// </summary>
+            [EnumMember(Value = "tl-PH")]
+            TlPHEnum = 41,
+            
+            /// <summary>
+            /// Enum TrEnum for tr
+            /// </summary>
+            [EnumMember(Value = "tr")]
+            TrEnum = 42,
+            
+            /// <summary>
+            /// Enum UkUAEnum for uk-UA
+            /// </summary>
+            [EnumMember(Value = "uk-UA")]
+            UkUAEnum = 43,
+            
+            /// <summary>
+            /// Enum ViVNEnum for vi-VN
+            /// </summary>
+            [EnumMember(Value = "vi-VN")]
+            ViVNEnum = 44,
+            
+            /// <summary>
+            /// Enum ZhCNEnum for zh-CN
+            /// </summary>
+            [EnumMember(Value = "zh-CN")]
+            ZhCNEnum = 45,
+            
+            /// <summary>
+            /// Enum ZhTWEnum for zh-TW
+            /// </summary>
+            [EnumMember(Value = "zh-TW")]
+            ZhTWEnum = 46,
+            
+            /// <summary>
+            /// Enum AMEnum for AM
+            /// </summary>
+            [EnumMember(Value = "AM")]
+            AMEnum = 47,
+            
+            /// <summary>
+            /// Enum AREnum for AR
+            /// </summary>
+            [EnumMember(Value = "AR")]
+            AREnum = 48,
+            
+            /// <summary>
+            /// Enum AZEnum for AZ
+            /// </summary>
+            [EnumMember(Value = "AZ")]
+            AZEnum = 49,
+            
+            /// <summary>
+            /// Enum BGEnum for BG
+            /// </summary>
+            [EnumMember(Value = "BG")]
+            BGEnum = 50,
+            
+            /// <summary>
+            /// Enum BNEnum for BN
+            /// </summary>
+            [EnumMember(Value = "BN")]
+            BNEnum = 51,
+            
+            /// <summary>
+            /// Enum BSEnum for BS
+            /// </summary>
+            [EnumMember(Value = "BS")]
+            BSEnum = 52,
+            
+            /// <summary>
+            /// Enum CAEnum for CA
+            /// </summary>
+            [EnumMember(Value = "CA")]
+            CAEnum = 53,
+            
+            /// <summary>
+            /// Enum CSEnum for CS
+            /// </summary>
+            [EnumMember(Value = "CS")]
+            CSEnum = 54,
+            
+            /// <summary>
+            /// Enum DAEnum for DA
+            /// </summary>
+            [EnumMember(Value = "DA")]
+            DAEnum = 55,
+            
+            /// <summary>
+            /// Enum DVEnum for DV
+            /// </summary>
+            [EnumMember(Value = "DV")]
+            DVEnum = 56,
+            
+            /// <summary>
+            /// Enum DZEnum for DZ
+            /// </summary>
+            [EnumMember(Value = "DZ")]
+            DZEnum = 57,
+            
+            /// <summary>
+            /// Enum DEEnum for DE
+            /// </summary>
+            [EnumMember(Value = "DE")]
+            DEEnum = 58,
+            
+            /// <summary>
+            /// Enum ELEnum for EL
+            /// </summary>
+            [EnumMember(Value = "EL")]
+            ELEnum = 59,
+            
+            /// <summary>
+            /// Enum ENEnum for EN
+            /// </summary>
+            [EnumMember(Value = "EN")]
+            ENEnum = 60,
+            
+            /// <summary>
+            /// Enum ESEnum for ES
+            /// </summary>
+            [EnumMember(Value = "ES")]
+            ESEnum = 61,
+            
+            /// <summary>
+            /// Enum ETEnum for ET
+            /// </summary>
+            [EnumMember(Value = "ET")]
+            ETEnum = 62,
+            
+            /// <summary>
+            /// Enum FAEnum for FA
+            /// </summary>
+            [EnumMember(Value = "FA")]
+            FAEnum = 63,
+            
+            /// <summary>
+            /// Enum FIEnum for FI
+            /// </summary>
+            [EnumMember(Value = "FI")]
+            FIEnum = 64,
+            
+            /// <summary>
+            /// Enum FREnum for FR
+            /// </summary>
+            [EnumMember(Value = "FR")]
+            FREnum = 65,
+            
+            /// <summary>
+            /// Enum HEEnum for HE
+            /// </summary>
+            [EnumMember(Value = "HE")]
+            HEEnum = 66,
+            
+            /// <summary>
+            /// Enum HIEnum for HI
+            /// </summary>
+            [EnumMember(Value = "HI")]
+            HIEnum = 67,
+            
+            /// <summary>
+            /// Enum HREnum for HR
+            /// </summary>
+            [EnumMember(Value = "HR")]
+            HREnum = 68,
+            
+            /// <summary>
+            /// Enum HUEnum for HU
+            /// </summary>
+            [EnumMember(Value = "HU")]
+            HUEnum = 69,
+            
+            /// <summary>
+            /// Enum HYEnum for HY
+            /// </summary>
+            [EnumMember(Value = "HY")]
+            HYEnum = 70,
+            
+            /// <summary>
+            /// Enum IDEnum for ID
+            /// </summary>
+            [EnumMember(Value = "ID")]
+            IDEnum = 71,
+            
+            /// <summary>
+            /// Enum INEnum for IN
+            /// </summary>
+            [EnumMember(Value = "IN")]
+            INEnum = 72,
+            
+            /// <summary>
+            /// Enum ISEnum for IS
+            /// </summary>
+            [EnumMember(Value = "IS")]
+            ISEnum = 73,
+            
+            /// <summary>
+            /// Enum ITEnum for IT
+            /// </summary>
+            [EnumMember(Value = "IT")]
+            ITEnum = 74,
+            
+            /// <summary>
+            /// Enum IWEnum for IW
+            /// </summary>
+            [EnumMember(Value = "IW")]
+            IWEnum = 75,
+            
+            /// <summary>
+            /// Enum JAEnum for JA
+            /// </summary>
+            [EnumMember(Value = "JA")]
+            JAEnum = 76,
+            
+            /// <summary>
+            /// Enum KAEnum for KA
+            /// </summary>
+            [EnumMember(Value = "KA")]
+            KAEnum = 77,
+            
+            /// <summary>
+            /// Enum KMEnum for KM
+            /// </summary>
+            [EnumMember(Value = "KM")]
+            KMEnum = 78,
+            
+            /// <summary>
+            /// Enum KOEnum for KO
+            /// </summary>
+            [EnumMember(Value = "KO")]
+            KOEnum = 79,
+            
+            /// <summary>
+            /// Enum LOEnum for LO
+            /// </summary>
+            [EnumMember(Value = "LO")]
+            LOEnum = 80,
+            
+            /// <summary>
+            /// Enum LTEnum for LT
+            /// </summary>
+            [EnumMember(Value = "LT")]
+            LTEnum = 81,
+            
+            /// <summary>
+            /// Enum LVEnum for LV
+            /// </summary>
+            [EnumMember(Value = "LV")]
+            LVEnum = 82,
+            
+            /// <summary>
+            /// Enum MKEnum for MK
+            /// </summary>
+            [EnumMember(Value = "MK")]
+            MKEnum = 83,
+            
+            /// <summary>
+            /// Enum MNEnum for MN
+            /// </summary>
+            [EnumMember(Value = "MN")]
+            MNEnum = 84,
+            
+            /// <summary>
+            /// Enum MSEnum for MS
+            /// </summary>
+            [EnumMember(Value = "MS")]
+            MSEnum = 85,
+            
+            /// <summary>
+            /// Enum MYEnum for MY
+            /// </summary>
+            [EnumMember(Value = "MY")]
+            MYEnum = 86,
+            
+            /// <summary>
+            /// Enum NBEnum for NB
+            /// </summary>
+            [EnumMember(Value = "NB")]
+            NBEnum = 87,
+            
+            /// <summary>
+            /// Enum NEEnum for NE
+            /// </summary>
+            [EnumMember(Value = "NE")]
+            NEEnum = 88,
+            
+            /// <summary>
+            /// Enum NLEnum for NL
+            /// </summary>
+            [EnumMember(Value = "NL")]
+            NLEnum = 89,
+            
+            /// <summary>
+            /// Enum NOEnum for NO
+            /// </summary>
+            [EnumMember(Value = "NO")]
+            NOEnum = 90,
+            
+            /// <summary>
+            /// Enum PLEnum for PL
+            /// </summary>
+            [EnumMember(Value = "PL")]
+            PLEnum = 91,
+            
+            /// <summary>
+            /// Enum PTEnum for PT
+            /// </summary>
+            [EnumMember(Value = "PT")]
+            PTEnum = 92,
+            
+            /// <summary>
+            /// Enum ROEnum for RO
+            /// </summary>
+            [EnumMember(Value = "RO")]
+            ROEnum = 93,
+            
+            /// <summary>
+            /// Enum RUEnum for RU
+            /// </summary>
+            [EnumMember(Value = "RU")]
+            RUEnum = 94,
+            
+            /// <summary>
+            /// Enum SKEnum for SK
+            /// </summary>
+            [EnumMember(Value = "SK")]
+            SKEnum = 95,
+            
+            /// <summary>
+            /// Enum SLEnum for SL
+            /// </summary>
+            [EnumMember(Value = "SL")]
+            SLEnum = 96,
+            
+            /// <summary>
+            /// Enum SQEnum for SQ
+            /// </summary>
+            [EnumMember(Value = "SQ")]
+            SQEnum = 97,
+            
+            /// <summary>
+            /// Enum SREnum for SR
+            /// </summary>
+            [EnumMember(Value = "SR")]
+            SREnum = 98,
+            
+            /// <summary>
+            /// Enum SVEnum for SV
+            /// </summary>
+            [EnumMember(Value = "SV")]
+            SVEnum = 99,
+            
+            /// <summary>
+            /// Enum TLEnum for TL
+            /// </summary>
+            [EnumMember(Value = "TL")]
+            TLEnum = 100,
+            
+            /// <summary>
+            /// Enum UKEnum for UK
+            /// </summary>
+            [EnumMember(Value = "UK")]
+            UKEnum = 101,
+            
+            /// <summary>
+            /// Enum VIEnum for VI
+            /// </summary>
+            [EnumMember(Value = "VI")]
+            VIEnum = 102,
+            
+            /// <summary>
+            /// Enum TEEnum for TE
+            /// </summary>
+            [EnumMember(Value = "TE")]
+            TEEnum = 103,
+            
+            /// <summary>
+            /// Enum THEnum for TH
+            /// </summary>
+            [EnumMember(Value = "TH")]
+            THEnum = 104,
+            
+            /// <summary>
+            /// Enum TREnum for TR
+            /// </summary>
+            [EnumMember(Value = "TR")]
+            TREnum = 105,
+            
+            /// <summary>
+            /// Enum XXEnum for XX
+            /// </summary>
+            [EnumMember(Value = "XX")]
+            XXEnum = 106,
+            
+            /// <summary>
+            /// Enum ZHEnum for ZH
+            /// </summary>
+            [EnumMember(Value = "ZH")]
+            ZHEnum = 107
+        }
+
+        /// <summary>
+        /// We recommend using the CatalogsLocale values.
+        /// </summary>
+        /// <value>We recommend using the CatalogsLocale values.</value>
         [Required]
-        [DataMember(Name="language", EmitDefaultValue=false)]
-        public CatalogsItemsRequestLanguage Language { get; set; }
+        [DataMember(Name="language", EmitDefaultValue=true)]
+        public LanguageEnum Language { get; set; }
 
         /// <summary>
         /// Gets or Sets Filters
@@ -101,7 +755,7 @@ namespace Org.OpenAPITools.Models
                 ) && 
                 (
                     Language == other.Language ||
-                    Language != null &&
+                    
                     Language.Equals(other.Language)
                 ) && 
                 (
@@ -123,7 +777,7 @@ namespace Org.OpenAPITools.Models
                 // Suitable nullity checks etc, of course :)
                     
                     hashCode = hashCode * 59 + Country.GetHashCode();
-                    if (Language != null)
+                    
                     hashCode = hashCode * 59 + Language.GetHashCode();
                     if (Filters != null)
                     hashCode = hashCode * 59 + Filters.GetHashCode();

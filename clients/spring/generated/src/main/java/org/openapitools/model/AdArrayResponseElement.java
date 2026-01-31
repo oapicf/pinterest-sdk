@@ -21,14 +21,14 @@ import javax.annotation.Generated;
  * AdArrayResponseElement
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdArrayResponseElement {
 
   private @Nullable AdResponse data;
 
   private @Nullable Exception exceptions;
 
-  public AdArrayResponseElement data(AdResponse data) {
+  public AdArrayResponseElement data(@Nullable AdResponse data) {
     this.data = data;
     return this;
   }
@@ -40,15 +40,15 @@ public class AdArrayResponseElement {
   @Valid 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")
-  public AdResponse getData() {
+  public @Nullable AdResponse getData() {
     return data;
   }
 
-  public void setData(AdResponse data) {
+  public void setData(@Nullable AdResponse data) {
     this.data = data;
   }
 
-  public AdArrayResponseElement exceptions(Exception exceptions) {
+  public AdArrayResponseElement exceptions(@Nullable Exception exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -60,11 +60,11 @@ public class AdArrayResponseElement {
   @Valid 
   @Schema(name = "exceptions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exceptions")
-  public Exception getExceptions() {
+  public @Nullable Exception getExceptions() {
     return exceptions;
   }
 
-  public void setExceptions(Exception exceptions) {
+  public void setExceptions(@Nullable Exception exceptions) {
     this.exceptions = exceptions;
   }
 

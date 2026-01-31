@@ -23,8 +23,8 @@ feature --Access
       
     country: detachable COUNTRY
       
-    language: detachable CATALOGS_ITEMS_REQUEST_LANGUAGE
-      
+    language: detachable STRING_32
+      -- We recommend using the CatalogsLocale values.
     items: detachable LIST [ITEM_DELETE_BATCH_RECORD]
       -- Array with catalogs items
     catalog_id: detachable STRING_32

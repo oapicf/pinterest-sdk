@@ -19,10 +19,14 @@ class ItemResponse {
     CatalogsType catalogType
     /* The catalog item id in the merchant namespace */
     String itemId
-    /* Array with the errors for the item id requested */
-    List<ItemValidationEvent> errors = new ArrayList<>()
+    /* The pins mapped to the item */
+    List<Pin> pins
+    
+    CatalogsCreativeAssetsAttributes attributes
     /* The catalog hotel id in the merchant namespace */
     String hotelId
     /* The catalog creative assets id in the merchant namespace */
     String creativeAssetsId
+    /* Array with the errors for the item id requested */
+    List<ItemValidationEvent> errors = new ArrayList<>()
 }

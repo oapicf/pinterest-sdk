@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.PinMedia;
@@ -8,47 +7,56 @@ import org.openapitools.model.PinMediaWithImageAllOfImages;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Pin with video.
- **/
+ * Pin with video.
+ */
 @ApiModel(description="Pin with video.")
 
 public class PinMediaWithVideo extends PinMedia {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private PinMediaWithImageAllOfImages images;
 
   @ApiModelProperty(value = "")
+
   private String coverImageUrl;
 
-  @ApiModelProperty(value = "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.")
  /**
-   * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
-  **/
+  * Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.
+  */
+  @ApiModelProperty(value = "Video url (720p). </p><strong>Note:</strong> This field is limited and not available to all apps.")
+
   private String videoUrl;
 
-  @ApiModelProperty(value = "Duration (in milliseconds)")
-  @Valid
  /**
-   * Duration (in milliseconds)
-  **/
+  * Duration (in milliseconds)
+  */
+  @ApiModelProperty(value = "Duration (in milliseconds)")
+
+  @Valid
+
   private BigDecimal duration;
 
-  @ApiModelProperty(value = "Height (in pixels)")
  /**
-   * Height (in pixels)
-  **/
+  * Height (in pixels)
+  */
+  @ApiModelProperty(value = "Height (in pixels)")
+
   private Integer height;
 
-  @ApiModelProperty(value = "Width (in pixels)")
  /**
-   * Width (in pixels)
-  **/
+  * Width (in pixels)
+  */
+  @ApiModelProperty(value = "Width (in pixels)")
+
   private Integer width;
  /**
    * Get images

@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type SSIOAccountPMPName* = object
   ## 
-  name*: string ## Display name
-  id*: string ## Salesforce id for PMP
+  name*: Option[string] ## Display name
+  id*: Option[string] ## Salesforce id for PMP
+

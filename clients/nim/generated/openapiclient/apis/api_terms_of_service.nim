@@ -26,10 +26,7 @@ const basepath = "https://api.pinterest.com/v5"
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -41,11 +38,13 @@ template constructResult[T](response: Response): untyped =
 
 proc termsOfServiceGet*(httpClient: HttpClient, adAccountId: string, includeHtml: bool, tosType: string): (Option[TermsOfService], Response) =
   ## Get terms of service
-  let query_for_api_call = encodeQuery([
-    ("include_html", $includeHtml), # Return HTML in TOS text.
-    ("tos_type", $tosType), # Request type.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $includeHtml != "":
+    query_params_list.add(("include_html", $includeHtml))
+  if $tosType != "":
+    query_params_list.add(("tos_type", $tosType))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/terms_of_service" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/terms_of_service" & "?" & url_encoded_query_params)
   constructResult[TermsOfService](response)
 

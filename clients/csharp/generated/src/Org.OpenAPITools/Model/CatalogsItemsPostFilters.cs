@@ -138,9 +138,6 @@ namespace Org.OpenAPITools.Model
             CatalogsCreativeAssetsItemsPostFilter? catalogsCreativeAssetsItemsPostFilter = null;
             CatalogsHotelItemsPostFilter? catalogsHotelItemsPostFilter = null;
             CatalogsRetailItemsPostFilter? catalogsRetailItemsPostFilter = null;
-            CatalogsCreativeAssetsItemsPostFilter? catalogsCreativeAssetsItemsPostFilter = null;
-            CatalogsHotelItemsPostFilter? catalogsHotelItemsPostFilter = null;
-            CatalogsRetailItemsPostFilter? catalogsRetailItemsPostFilter = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -169,21 +166,6 @@ namespace Org.OpenAPITools.Model
                             catalogsHotelItemsPostFilter = JsonSerializer.Deserialize<CatalogsHotelItemsPostFilter>(ref utf8JsonReaderCatalogsHotelItemsPostFilter, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("RETAIL") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsRetailItemsPostFilter = utf8JsonReader;
-                            catalogsRetailItemsPostFilter = JsonSerializer.Deserialize<CatalogsRetailItemsPostFilter>(ref utf8JsonReaderCatalogsRetailItemsPostFilter, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsCreativeAssetsItemsPostFilter") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsCreativeAssetsItemsPostFilter = utf8JsonReader;
-                            catalogsCreativeAssetsItemsPostFilter = JsonSerializer.Deserialize<CatalogsCreativeAssetsItemsPostFilter>(ref utf8JsonReaderCatalogsCreativeAssetsItemsPostFilter, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsHotelItemsPostFilter") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsHotelItemsPostFilter = utf8JsonReader;
-                            catalogsHotelItemsPostFilter = JsonSerializer.Deserialize<CatalogsHotelItemsPostFilter>(ref utf8JsonReaderCatalogsHotelItemsPostFilter, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsRetailItemsPostFilter") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsRetailItemsPostFilter = utf8JsonReader;
                             catalogsRetailItemsPostFilter = JsonSerializer.Deserialize<CatalogsRetailItemsPostFilter>(ref utf8JsonReaderCatalogsRetailItemsPostFilter, jsonSerializerOptions);
@@ -223,15 +205,6 @@ namespace Org.OpenAPITools.Model
 
             if (catalogType.IsSet && catalogType.Value == null)
                 throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsItemsPostFilters.");
-
-            if (catalogsCreativeAssetsItemsPostFilter != null)
-                return new CatalogsItemsPostFilters(catalogsCreativeAssetsItemsPostFilter);
-
-            if (catalogsHotelItemsPostFilter != null)
-                return new CatalogsItemsPostFilters(catalogsHotelItemsPostFilter);
-
-            if (catalogsRetailItemsPostFilter != null)
-                return new CatalogsItemsPostFilters(catalogsRetailItemsPostFilter);
 
             if (catalogsCreativeAssetsItemsPostFilter != null)
                 return new CatalogsItemsPostFilters(catalogsCreativeAssetsItemsPostFilter);

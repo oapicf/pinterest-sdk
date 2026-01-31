@@ -93,7 +93,6 @@ import AudienceCategory from './model/AudienceCategory';
 import AudienceCommon from './model/AudienceCommon';
 import AudienceCreateCustomRequest from './model/AudienceCreateCustomRequest';
 import AudienceCreateRequest from './model/AudienceCreateRequest';
-import AudienceCreateRequest1AudienceType from './model/AudienceCreateRequest1AudienceType';
 import AudienceDataParty from './model/AudienceDataParty';
 import AudienceDefinition from './model/AudienceDefinition';
 import AudienceDefinitionResponse from './model/AudienceDefinitionResponse';
@@ -271,7 +270,6 @@ import CatalogsItemsDeleteDiscontinuedBatchRequest from './model/CatalogsItemsDe
 import CatalogsItemsFilters from './model/CatalogsItemsFilters';
 import CatalogsItemsPostFilters from './model/CatalogsItemsPostFilters';
 import CatalogsItemsRequest from './model/CatalogsItemsRequest';
-import CatalogsItemsRequestLanguage from './model/CatalogsItemsRequestLanguage';
 import CatalogsItemsUpdateBatchRequest from './model/CatalogsItemsUpdateBatchRequest';
 import CatalogsItemsUpsertBatchRequest from './model/CatalogsItemsUpsertBatchRequest';
 import CatalogsList200Response from './model/CatalogsList200Response';
@@ -605,7 +603,6 @@ import PinMediaWithVideos from './model/PinMediaWithVideos';
 import PinPromotionSummaryStatus from './model/PinPromotionSummaryStatus';
 import PinUpdate from './model/PinUpdate';
 import PinUpdateCarouselSlotsInner from './model/PinUpdateCarouselSlotsInner';
-import PinsAnalyticsMetricTypesParameterInner from './model/PinsAnalyticsMetricTypesParameterInner';
 import PinsList200Response from './model/PinsList200Response';
 import PinsSaveRequest from './model/PinsSaveRequest';
 import PinterestTagEventData from './model/PinterestTagEventData';
@@ -1284,12 +1281,6 @@ export {
      * @property {module:model/AudienceCreateRequest}
      */
     AudienceCreateRequest,
-
-    /**
-     * The AudienceCreateRequest1AudienceType model constructor.
-     * @property {module:model/AudienceCreateRequest1AudienceType}
-     */
-    AudienceCreateRequest1AudienceType,
 
     /**
      * The AudienceDataParty model constructor.
@@ -2352,12 +2343,6 @@ export {
      * @property {module:model/CatalogsItemsRequest}
      */
     CatalogsItemsRequest,
-
-    /**
-     * The CatalogsItemsRequestLanguage model constructor.
-     * @property {module:model/CatalogsItemsRequestLanguage}
-     */
-    CatalogsItemsRequestLanguage,
 
     /**
      * The CatalogsItemsUpdateBatchRequest model constructor.
@@ -4356,12 +4341,6 @@ export {
      * @property {module:model/PinUpdateCarouselSlotsInner}
      */
     PinUpdateCarouselSlotsInner,
-
-    /**
-     * The PinsAnalyticsMetricTypesParameterInner model constructor.
-     * @property {module:model/PinsAnalyticsMetricTypesParameterInner}
-     */
-    PinsAnalyticsMetricTypesParameterInner,
 
     /**
      * The PinsList200Response model constructor.

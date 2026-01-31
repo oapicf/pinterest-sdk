@@ -91,7 +91,6 @@ add_library(${PROJECT_NAME}
   OAIAudienceCommon.h
   OAIAudienceCreateCustomRequest.h
   OAIAudienceCreateRequest.h
-  OAIAudienceCreateRequest_1_audience_type.h
   OAIAudienceDataParty.h
   OAIAudienceDefinition.h
   OAIAudienceDefinitionResponse.h
@@ -269,7 +268,6 @@ add_library(${PROJECT_NAME}
   OAICatalogsItemsFilters.h
   OAICatalogsItemsPostFilters.h
   OAICatalogsItemsRequest.h
-  OAICatalogsItemsRequest_language.h
   OAICatalogsItemsUpdateBatchRequest.h
   OAICatalogsItemsUpsertBatchRequest.h
   OAICatalogsListProductsByFeedBasedFilter.h
@@ -603,7 +601,6 @@ add_library(${PROJECT_NAME}
   OAIPinPromotionSummaryStatus.h
   OAIPinUpdate.h
   OAIPinUpdate_carousel_slots_inner.h
-  OAIPins_analytics_metric_types_parameter_inner.h
   OAIPins_list_200_response.h
   OAIPins_save_request.h
   OAIPinterestTagEventData.h
@@ -851,7 +848,6 @@ add_library(${PROJECT_NAME}
   OAIAudienceCommon.cpp
   OAIAudienceCreateCustomRequest.cpp
   OAIAudienceCreateRequest.cpp
-  OAIAudienceCreateRequest_1_audience_type.cpp
   OAIAudienceDataParty.cpp
   OAIAudienceDefinition.cpp
   OAIAudienceDefinitionResponse.cpp
@@ -1029,7 +1025,6 @@ add_library(${PROJECT_NAME}
   OAICatalogsItemsFilters.cpp
   OAICatalogsItemsPostFilters.cpp
   OAICatalogsItemsRequest.cpp
-  OAICatalogsItemsRequest_language.cpp
   OAICatalogsItemsUpdateBatchRequest.cpp
   OAICatalogsItemsUpsertBatchRequest.cpp
   OAICatalogsListProductsByFeedBasedFilter.cpp
@@ -1363,7 +1358,6 @@ add_library(${PROJECT_NAME}
   OAIPinPromotionSummaryStatus.cpp
   OAIPinUpdate.cpp
   OAIPinUpdate_carousel_slots_inner.cpp
-  OAIPins_analytics_metric_types_parameter_inner.cpp
   OAIPins_list_200_response.cpp
   OAIPins_save_request.cpp
   OAIPinterestTagEventData.cpp

@@ -146,7 +146,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BulkUpsertStatus bulkUpsertStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(bulkUpsertStatus.ToString());
+            writer.WriteStringValue(BulkUpsertStatusValueConverter.ToJsonValue(bulkUpsertStatus).ToString());
         }
     }
 
@@ -177,14 +177,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the BulkUpsertStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="bulkUpsertStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BulkUpsertStatus? bulkUpsertStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(bulkUpsertStatus?.ToString() ?? "null");
+            writer.WriteStringValue(bulkUpsertStatus.HasValue ? BulkUpsertStatusValueConverter.ToJsonValue(bulkUpsertStatus.Value).ToString() : "null");
         }
     }
 }

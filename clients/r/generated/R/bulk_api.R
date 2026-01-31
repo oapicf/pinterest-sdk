@@ -139,13 +139,19 @@ BulkApi <- R6::R6Class(
         stop("Missing required parameter `bulk_download_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BulkApi$BulkDownloadCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BulkApi$BulkDownloadCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BulkApi$BulkDownloadCreate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bulk_download_request`) && is.null(`bulk_download_request`)) {
+        stop("Invalid value for `bulk_download_request` when calling BulkApi$BulkDownloadCreate, `bulk_download_request` is not nullable")
+      }
 
       if (!is.null(`bulk_download_request`)) {
         local_var_body <- `bulk_download_request`$toJSONString()
@@ -261,14 +267,23 @@ BulkApi <- R6::R6Class(
         stop("Missing required parameter `bulk_request_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BulkApi$BulkRequestGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BulkApi$BulkRequestGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BulkApi$BulkRequestGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bulk_request_id`) && is.null(`bulk_request_id`)) {
+        stop("Invalid value for `bulk_request_id` when calling BulkApi$BulkRequestGet, `bulk_request_id` is not nullable")
+      }
 
+      if (!missing(`include_details`) && is.null(`include_details`)) {
+        stop("Invalid value for `include_details` when calling BulkApi$BulkRequestGet, `include_details` is not nullable")
+      }
 
       query_params[["include_details"]] <- `include_details`
 
@@ -382,13 +397,19 @@ BulkApi <- R6::R6Class(
         stop("Missing required parameter `bulk_upsert_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BulkApi$BulkUpsertCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BulkApi$BulkUpsertCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BulkApi$BulkUpsertCreate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bulk_upsert_request`) && is.null(`bulk_upsert_request`)) {
+        stop("Invalid value for `bulk_upsert_request` when calling BulkApi$BulkUpsertCreate, `bulk_upsert_request` is not nullable")
+      }
 
       if (!is.null(`bulk_upsert_request`)) {
         local_var_body <- `bulk_upsert_request`$toJSONString()

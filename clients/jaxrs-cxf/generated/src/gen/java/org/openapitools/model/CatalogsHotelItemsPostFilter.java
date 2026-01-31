@@ -48,15 +48,18 @@ HOTEL(String.valueOf("HOTEL"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private List<String> hotelIds = new ArrayList<>();
 
-  @ApiModelProperty(value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
  /**
-   * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
-  **/
+  * Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
+  */
+  @ApiModelProperty(value = "Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog")
+
   private String catalogId;
  /**
    * Get catalogType

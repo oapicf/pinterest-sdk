@@ -84,7 +84,7 @@ data class ConversionEventsUserData(
 
     @Schema(example = "BUJrTlRRzGJmWhRXFZdkioV6wKPBve7Lom__GU9J74hq2NIQj4O3nOZJrp3mcUr5MptkXsI14juMOIM9mNZnM4zEUFT2JLVaFhcOfuuWz3IWEDtBf6I0DPc", description = "A unique identifier of visitors' information defined by third party partners. e.g RampID")
     @get:JsonProperty("partner_id") val partnerId: kotlin.String? = null
-    ) {
+) {
 
 }
 

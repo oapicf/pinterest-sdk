@@ -16,7 +16,6 @@ import BatchOperation from './BatchOperation';
 import CatalogsItemsCreateBatchRequest from './CatalogsItemsCreateBatchRequest';
 import CatalogsItemsDeleteBatchRequest from './CatalogsItemsDeleteBatchRequest';
 import CatalogsItemsDeleteDiscontinuedBatchRequest from './CatalogsItemsDeleteDiscontinuedBatchRequest';
-import CatalogsItemsRequestLanguage from './CatalogsItemsRequestLanguage';
 import CatalogsItemsUpdateBatchRequest from './CatalogsItemsUpdateBatchRequest';
 import CatalogsItemsUpsertBatchRequest from './CatalogsItemsUpsertBatchRequest';
 import Country from './Country';
@@ -183,7 +182,8 @@ class CatalogsItemsBatchRequest {
 CatalogsItemsBatchRequest.prototype['country'] = undefined;
 
 /**
- * @member {module:model/CatalogsItemsRequestLanguage} language
+ * We recommend using the CatalogsLocale values.
+ * @member {module:model/CatalogsItemsBatchRequest.LanguageEnum} language
  */
 CatalogsItemsBatchRequest.prototype['language'] = undefined;
 

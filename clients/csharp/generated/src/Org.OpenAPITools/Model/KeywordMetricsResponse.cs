@@ -143,8 +143,7 @@ namespace Org.OpenAPITools.Model
                             keyword = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "metrics":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                metrics = new Option<KeywordMetrics?>(JsonSerializer.Deserialize<KeywordMetrics>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            metrics = new Option<KeywordMetrics?>(JsonSerializer.Deserialize<KeywordMetrics>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

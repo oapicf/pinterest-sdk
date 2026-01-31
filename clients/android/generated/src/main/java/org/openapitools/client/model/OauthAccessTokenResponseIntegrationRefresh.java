@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -15,12 +15,13 @@ package org.openapitools.client.model;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
- **/
-@ApiModel(description = "A successful OAuth access token response for the refresh token flow, with an added refresh token.")
+@ApiModel(description = "")
 public class OauthAccessTokenResponseIntegrationRefresh {
   
+  @SerializedName("refresh_token")
+  private String refreshToken = null;
+  @SerializedName("refresh_token_expires_in")
+  private Integer refreshTokenExpiresIn = null;
   public enum ResponseTypeEnum {
      authorization_code,  refresh_token,  client_credentials, 
   };
@@ -34,10 +35,26 @@ public class OauthAccessTokenResponseIntegrationRefresh {
   private Integer expiresIn = null;
   @SerializedName("scope")
   private String scope = null;
-  @SerializedName("refresh_token")
-  private String refreshToken = null;
-  @SerializedName("refresh_token_expires_in")
-  private Integer refreshTokenExpiresIn = null;
+
+  /**
+   **/
+  @ApiModelProperty(required = true, value = "")
+  public String getRefreshToken() {
+    return refreshToken;
+  }
+  public void setRefreshToken(String refreshToken) {
+    this.refreshToken = refreshToken;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(required = true, value = "")
+  public Integer getRefreshTokenExpiresIn() {
+    return refreshTokenExpiresIn;
+  }
+  public void setRefreshTokenExpiresIn(Integer refreshTokenExpiresIn) {
+    this.refreshTokenExpiresIn = refreshTokenExpiresIn;
+  }
 
   /**
    **/
@@ -89,26 +106,6 @@ public class OauthAccessTokenResponseIntegrationRefresh {
     this.scope = scope;
   }
 
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  public String getRefreshToken() {
-    return refreshToken;
-  }
-  public void setRefreshToken(String refreshToken) {
-    this.refreshToken = refreshToken;
-  }
-
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  public Integer getRefreshTokenExpiresIn() {
-    return refreshTokenExpiresIn;
-  }
-  public void setRefreshTokenExpiresIn(Integer refreshTokenExpiresIn) {
-    this.refreshTokenExpiresIn = refreshTokenExpiresIn;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -119,25 +116,25 @@ public class OauthAccessTokenResponseIntegrationRefresh {
       return false;
     }
     OauthAccessTokenResponseIntegrationRefresh oauthAccessTokenResponseIntegrationRefresh = (OauthAccessTokenResponseIntegrationRefresh) o;
-    return (this.responseType == null ? oauthAccessTokenResponseIntegrationRefresh.responseType == null : this.responseType.equals(oauthAccessTokenResponseIntegrationRefresh.responseType)) &&
+    return (this.refreshToken == null ? oauthAccessTokenResponseIntegrationRefresh.refreshToken == null : this.refreshToken.equals(oauthAccessTokenResponseIntegrationRefresh.refreshToken)) &&
+        (this.refreshTokenExpiresIn == null ? oauthAccessTokenResponseIntegrationRefresh.refreshTokenExpiresIn == null : this.refreshTokenExpiresIn.equals(oauthAccessTokenResponseIntegrationRefresh.refreshTokenExpiresIn)) &&
+        (this.responseType == null ? oauthAccessTokenResponseIntegrationRefresh.responseType == null : this.responseType.equals(oauthAccessTokenResponseIntegrationRefresh.responseType)) &&
         (this.accessToken == null ? oauthAccessTokenResponseIntegrationRefresh.accessToken == null : this.accessToken.equals(oauthAccessTokenResponseIntegrationRefresh.accessToken)) &&
         (this.tokenType == null ? oauthAccessTokenResponseIntegrationRefresh.tokenType == null : this.tokenType.equals(oauthAccessTokenResponseIntegrationRefresh.tokenType)) &&
         (this.expiresIn == null ? oauthAccessTokenResponseIntegrationRefresh.expiresIn == null : this.expiresIn.equals(oauthAccessTokenResponseIntegrationRefresh.expiresIn)) &&
-        (this.scope == null ? oauthAccessTokenResponseIntegrationRefresh.scope == null : this.scope.equals(oauthAccessTokenResponseIntegrationRefresh.scope)) &&
-        (this.refreshToken == null ? oauthAccessTokenResponseIntegrationRefresh.refreshToken == null : this.refreshToken.equals(oauthAccessTokenResponseIntegrationRefresh.refreshToken)) &&
-        (this.refreshTokenExpiresIn == null ? oauthAccessTokenResponseIntegrationRefresh.refreshTokenExpiresIn == null : this.refreshTokenExpiresIn.equals(oauthAccessTokenResponseIntegrationRefresh.refreshTokenExpiresIn));
+        (this.scope == null ? oauthAccessTokenResponseIntegrationRefresh.scope == null : this.scope.equals(oauthAccessTokenResponseIntegrationRefresh.scope));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this.refreshToken == null ? 0: this.refreshToken.hashCode());
+    result = 31 * result + (this.refreshTokenExpiresIn == null ? 0: this.refreshTokenExpiresIn.hashCode());
     result = 31 * result + (this.responseType == null ? 0: this.responseType.hashCode());
     result = 31 * result + (this.accessToken == null ? 0: this.accessToken.hashCode());
     result = 31 * result + (this.tokenType == null ? 0: this.tokenType.hashCode());
     result = 31 * result + (this.expiresIn == null ? 0: this.expiresIn.hashCode());
     result = 31 * result + (this.scope == null ? 0: this.scope.hashCode());
-    result = 31 * result + (this.refreshToken == null ? 0: this.refreshToken.hashCode());
-    result = 31 * result + (this.refreshTokenExpiresIn == null ? 0: this.refreshTokenExpiresIn.hashCode());
     return result;
   }
 
@@ -146,13 +143,13 @@ public class OauthAccessTokenResponseIntegrationRefresh {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenResponseIntegrationRefresh {\n");
     
+    sb.append("  refreshToken: ").append(refreshToken).append("\n");
+    sb.append("  refreshTokenExpiresIn: ").append(refreshTokenExpiresIn).append("\n");
     sb.append("  responseType: ").append(responseType).append("\n");
     sb.append("  accessToken: ").append(accessToken).append("\n");
     sb.append("  tokenType: ").append(tokenType).append("\n");
     sb.append("  expiresIn: ").append(expiresIn).append("\n");
     sb.append("  scope: ").append(scope).append("\n");
-    sb.append("  refreshToken: ").append(refreshToken).append("\n");
-    sb.append("  refreshTokenExpiresIn: ").append(refreshTokenExpiresIn).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

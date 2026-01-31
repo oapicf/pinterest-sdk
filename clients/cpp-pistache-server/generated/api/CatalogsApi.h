@@ -141,7 +141,7 @@ private:
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
     /// <param name="pinMetrics">Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)</param>
-    virtual void catalogs_product_group_pins_list(const std::string &productGroupId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &adAccountId, const std::optional<bool> &pinMetrics, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void catalogs_product_group_pins_list( const std::string &productGroupId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &adAccountId, const std::optional<bool> &pinMetrics, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create product group
     /// </summary>
@@ -150,7 +150,7 @@ private:
     /// </remarks>
     /// <param name="multipleProductGroupsInner">Request object used to create a single catalogs product groups.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void catalogs_product_groups_create(const org::openapitools::server::model::Multiple_product_groups_inner &multipleProductGroupsInner, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void catalogs_product_groups_create( const org::openapitools::server::model::Multiple_product_groups_inner &multipleProductGroupsInner, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create product groups
     /// </summary>
@@ -159,7 +159,7 @@ private:
     /// </remarks>
     /// <param name="multipleProductGroupsInner">Request object used to create one or more catalogs product groups.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void catalogs_product_groups_create_many(const std::vector<org::openapitools::server::model::Multiple_product_groups_inner> &multipleProductGroupsInner, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void catalogs_product_groups_create_many( const std::vector<org::openapitools::server::model::Multiple_product_groups_inner> &multipleProductGroupsInner, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete product group
     /// </summary>
@@ -168,7 +168,7 @@ private:
     /// </remarks>
     /// <param name="productGroupId">Unique identifier of a product group</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void catalogs_product_groups_delete(const std::string &productGroupId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void catalogs_product_groups_delete( const std::string &productGroupId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete product groups
     /// </summary>
@@ -177,7 +177,7 @@ private:
     /// </remarks>
     /// <param name="id">Comma-separated list of product group ids</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void catalogs_product_groups_delete_many(const std::optional<std::vector<int32_t>> &id, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void catalogs_product_groups_delete_many( const std::optional<std::vector<int32_t>> &id, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get product group
     /// </summary>
@@ -186,7 +186,7 @@ private:
     /// </remarks>
     /// <param name="productGroupId">Unique identifier of a product group</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void catalogs_product_groups_get(const std::string &productGroupId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void catalogs_product_groups_get( const std::string &productGroupId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List product groups
     /// </summary>
@@ -199,7 +199,7 @@ private:
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void catalogs_product_groups_list(const std::optional<std::vector<int32_t>> &id, const std::optional<std::string> &feedId, const std::optional<std::string> &catalogId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void catalogs_product_groups_list( const std::optional<std::vector<int32_t>> &id, const std::optional<std::string> &feedId, const std::optional<std::string> &catalogId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get product counts
     /// </summary>
@@ -208,7 +208,7 @@ private:
     /// </remarks>
     /// <param name="productGroupId">Unique identifier of a product group</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void catalogs_product_groups_product_counts_get(const std::string &productGroupId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void catalogs_product_groups_product_counts_get( const std::string &productGroupId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update single product group
     /// </summary>
@@ -218,7 +218,7 @@ private:
     /// <param name="productGroupId">Unique identifier of a product group</param>
     /// <param name="catalogsProductGroupsUpdateRequest">Request object used to Update a catalogs product group.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void catalogs_product_groups_update(const std::string &productGroupId, const org::openapitools::server::model::Catalogs_product_groups_update_request &catalogsProductGroupsUpdateRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void catalogs_product_groups_update( const std::string &productGroupId, const org::openapitools::server::model::Catalogs_product_groups_update_request &catalogsProductGroupsUpdateRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create catalog
     /// </summary>
@@ -227,7 +227,7 @@ private:
     /// </remarks>
     /// <param name="catalogsCreateRequest">Request object used to created a feed.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void catalogs_create(const org::openapitools::server::model::CatalogsCreateRequest &catalogsCreateRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void catalogs_create( const org::openapitools::server::model::CatalogsCreateRequest &catalogsCreateRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List catalogs
     /// </summary>
@@ -237,7 +237,7 @@ private:
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void catalogs_list(const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void catalogs_list( const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List feed processing results
     /// </summary>
@@ -248,7 +248,7 @@ private:
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void feed_processing_results_list(const std::string &feedId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void feed_processing_results_list( const std::string &feedId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create feed
     /// </summary>
@@ -257,7 +257,7 @@ private:
     /// </remarks>
     /// <param name="feedsCreateRequest">Request object used to created a feed.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void feeds_create(const org::openapitools::server::model::Feeds_create_request &feedsCreateRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void feeds_create( const org::openapitools::server::model::Feeds_create_request &feedsCreateRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete feed
     /// </summary>
@@ -266,7 +266,7 @@ private:
     /// </remarks>
     /// <param name="feedId">Unique identifier of a feed</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void feeds_delete(const std::string &feedId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void feeds_delete( const std::string &feedId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get feed
     /// </summary>
@@ -275,7 +275,7 @@ private:
     /// </remarks>
     /// <param name="feedId">Unique identifier of a feed</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void feeds_get(const std::string &feedId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void feeds_get( const std::string &feedId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Ingest feed items
     /// </summary>
@@ -284,7 +284,7 @@ private:
     /// </remarks>
     /// <param name="feedId">Unique identifier of a feed</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void feeds_ingest(const std::string &feedId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void feeds_ingest( const std::string &feedId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List feeds
     /// </summary>
@@ -295,7 +295,7 @@ private:
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="catalogId">Filter entities for a given catalog_id. If not given, all catalogs are considered. (optional, default to &quot;&quot;)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void feeds_list(const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &catalogId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void feeds_list( const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &catalogId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update feed
     /// </summary>
@@ -305,7 +305,7 @@ private:
     /// <param name="feedId">Unique identifier of a feed</param>
     /// <param name="feedsUpdateRequest">Request object used to update a feed.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void feeds_update(const std::string &feedId, const org::openapitools::server::model::Feeds_update_request &feedsUpdateRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void feeds_update( const std::string &feedId, const org::openapitools::server::model::Feeds_update_request &feedsUpdateRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get item batch status
     /// </summary>
@@ -314,7 +314,7 @@ private:
     /// </remarks>
     /// <param name="batchId">Id of a catalogs items batch to fetch</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void items_batch_get(const std::string &batchId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void items_batch_get( const std::string &batchId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Operate on item batch
     /// </summary>
@@ -323,7 +323,7 @@ private:
     /// </remarks>
     /// <param name="itemsBatchPostRequest">Request object used to create catalogs items in a batch</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void items_batch_post(const org::openapitools::server::model::Items_batch_post_request &itemsBatchPostRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void items_batch_post( const org::openapitools::server::model::Items_batch_post_request &itemsBatchPostRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List item issues
     /// </summary>
@@ -336,7 +336,7 @@ private:
     /// <param name="itemNumbers">Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation. (optional, default to std::vector&lt;int32_t&gt;())</param>
     /// <param name="itemValidationIssue">Filter item validation issues that have a given type of item validation issue. (optional, default to std::make_shared&lt;CatalogsItemValidationIssue&gt;())</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void items_issues_list(const std::string &processingResultId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::vector<int32_t>> &itemNumbers, const std::optional<org::openapitools::server::model::CatalogsItemValidationIssue> &itemValidationIssue, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void items_issues_list( const std::string &processingResultId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::vector<int32_t>> &itemNumbers, const std::optional<org::openapitools::server::model::CatalogsItemValidationIssue> &itemValidationIssue, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get catalogs items
     /// </summary>
@@ -348,7 +348,7 @@ private:
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
     /// <param name="itemIds">This parameter is deprecated. Use filters instead. (optional, default to std::vector&lt;std::shared_ptr&lt;std::string&gt;&gt;())</param>
     /// <param name="filters">Identifies items to be retrieved. This is a required parameter. (optional, default to nullptr)</param>
-    virtual void items_get(const std::optional<std::string> &country, const std::optional<std::string> &language, const std::optional<std::string> &adAccountId, const std::optional<std::vector<std::string>> &itemIds, const std::optional<org::openapitools::server::model::CatalogsItemsFilters> &filters, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void items_get( const std::optional<std::string> &country, const std::optional<std::string> &language, const std::optional<std::string> &adAccountId, const std::optional<std::vector<std::string>> &itemIds, const std::optional<org::openapitools::server::model::CatalogsItemsFilters> &filters, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get catalogs items (POST)
     /// </summary>
@@ -357,7 +357,7 @@ private:
     /// </remarks>
     /// <param name="catalogsItemsRequest">Request object used to get catalogs items</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void items_post(const org::openapitools::server::model::CatalogsItemsRequest &catalogsItemsRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void items_post( const org::openapitools::server::model::CatalogsItemsRequest &catalogsItemsRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List products by filter
     /// </summary>
@@ -369,7 +369,7 @@ private:
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
     /// <param name="pinMetrics">Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)</param>
-    virtual void products_by_product_group_filter_list(const org::openapitools::server::model::CatalogsListProductsByFilterRequest &catalogsListProductsByFilterRequest, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &adAccountId, const std::optional<bool> &pinMetrics, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void products_by_product_group_filter_list( const org::openapitools::server::model::CatalogsListProductsByFilterRequest &catalogsListProductsByFilterRequest, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &adAccountId, const std::optional<bool> &pinMetrics, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Build catalogs report
     /// </summary>
@@ -378,7 +378,7 @@ private:
     /// </remarks>
     /// <param name="catalogsReportParameters">Request object to asynchronously create a report.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void reports_create(const org::openapitools::server::model::CatalogsReportParameters &catalogsReportParameters, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void reports_create( const org::openapitools::server::model::CatalogsReportParameters &catalogsReportParameters, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get catalogs report
     /// </summary>
@@ -387,7 +387,7 @@ private:
     /// </remarks>
     /// <param name="token">Token returned from async build report call</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void reports_get(const std::optional<std::string> &token, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void reports_get( const std::optional<std::string> &token, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List report stats
     /// </summary>
@@ -398,7 +398,7 @@ private:
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void reports_stats(const std::optional<org::openapitools::server::model::CatalogsReportParameters> &parameters, const std::optional<std::string> &adAccountId, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void reports_stats( const std::optional<org::openapitools::server::model::CatalogsReportParameters> &parameters, const std::optional<std::string> &adAccountId, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

@@ -51,7 +51,7 @@ data class CatalogsFeedIngestionErrors(
 
     @Schema(example = "null", description = "Image files are unreadable. Please upload new files to continue.")
     @get:JsonProperty("IMAGE_INVALID_FILE") val IMAGE_INVALID_FILE: kotlin.Int? = null
-    ) {
+) {
 
     /**
     * The product count has decreased by more than 99% compared to the last successful ingestion.
@@ -65,7 +65,8 @@ data class CatalogsFeedIngestionErrors(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.Int): LARGEPRODUCTCOUNTDECREASE {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsFeedIngestionErrors'")
             }
         }
     }

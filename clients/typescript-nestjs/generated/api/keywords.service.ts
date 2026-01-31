@@ -80,7 +80,7 @@ export class KeywordsService {
             queryParameters.append('country_code', <any>countryCode);
         }
         if (keywords) {
-            queryParameters['keywords'] = keywords.join(COLLECTION_FORMATS['csv']);
+            queryParameters.append('keywords', keywords.join(COLLECTION_FORMATS['csv']));
         }
 
         let headers = {...this.defaultHeaders};

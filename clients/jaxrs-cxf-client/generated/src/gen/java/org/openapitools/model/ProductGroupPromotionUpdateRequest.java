@@ -12,13 +12,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ProductGroupPromotionUpdateRequest  {
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the ad group the product group belongs to.")
  /**
-   * ID of the ad group the product group belongs to.
-  **/
+  * ID of the ad group the product group belongs to.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the ad group the product group belongs to.")
+
   private String adGroupId;
 
   @ApiModelProperty(required = true, value = "")
+
   private List<ProductGroupPromotion> productGroupPromotion = new ArrayList<>();
  /**
    * ID of the ad group the product group belongs to.

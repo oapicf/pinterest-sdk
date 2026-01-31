@@ -55,11 +55,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<AdAccountAnalyticsResponseInner>));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "[ {\n  \"DATE\" : \"2021-04-01\",\n  \"AD_ACCOUNT_ID\" : \"547602124502\",\n  \"SPEND_IN_DOLLAR\" : 30,\n  \"TOTAL_CLICKTHROUGH\" : 216\n}, {\n  \"DATE\" : \"2021-04-01\",\n  \"AD_ACCOUNT_ID\" : \"547602124502\",\n  \"SPEND_IN_DOLLAR\" : 30,\n  \"TOTAL_CLICKTHROUGH\" : 216\n} ]";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -67,7 +67,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<AdAccountAnalyticsResponseInner>>(exampleJson)
-            : default(List<AdAccountAnalyticsResponseInner>);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -99,16 +99,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(MetricsResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"data\" : [ {\n    \"targeting_type\" : \"KEYWORD\",\n    \"targeting_value\" : \"christmas decor ideas\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"iphone\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"ipad\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"web\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"web_mobile\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"android_mobile\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"APPTYPE\",\n    \"targeting_value\" : \"android_tablet\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"GENDER\",\n    \"targeting_value\" : \"female\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"LOCATION\",\n    \"targeting_value\" : 500,\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"PLACEMENT\",\n    \"targeting_value\" : \"SEARCH\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"COUNTRY\",\n    \"targeting_value\" : \"US\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"TARGETED_INTEREST\",\n    \"targeting_value\" : \"Food and Drinks\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"PINNER_INTEREST\",\n    \"targeting_value\" : \"Chocolate Cookies\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"AUDIENCE_INCLUDE\",\n    \"targeting_value\" : 254261234567,\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"GEO\",\n    \"targeting_value\" : \"US:94102\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"AGE_BUCKET\",\n    \"targeting_value\" : \"45-49\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  }, {\n    \"targeting_type\" : \"REGION\",\n    \"targeting_value\" : \"US-CA\",\n    \"metrics\" : {\n      \"AD_GROUP_ID\" : 2680067996745,\n      \"DATE\" : \"2022-04-26\",\n      \"SPEND_IN_DOLLAR\" : 240\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<MetricsResponse>(exampleJson)
-            : default(MetricsResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -131,16 +131,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdAccount));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"owner\" : {\n    \"id\" : \"id\",\n    \"username\" : \"username\"\n  },\n  \"country\" : \"US\",\n  \"created_time\" : 1451431341,\n  \"updated_time\" : 1451431341,\n  \"permissions\" : [ \"ADMIN\", \"ADMIN\" ],\n  \"name\" : \"name\",\n  \"currency\" : \"USD\",\n  \"id\" : \"id\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdAccount>(exampleJson)
-            : default(AdAccount);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -162,16 +162,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdAccount));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"owner\" : {\n    \"id\" : \"id\",\n    \"username\" : \"username\"\n  },\n  \"country\" : \"US\",\n  \"created_time\" : 1451431341,\n  \"updated_time\" : 1451431341,\n  \"permissions\" : [ \"ADMIN\", \"ADMIN\" ],\n  \"name\" : \"name\",\n  \"currency\" : \"USD\",\n  \"id\" : \"id\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdAccount>(exampleJson)
-            : default(AdAccount);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -195,16 +195,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdAccountsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"owner\" : {\n      \"id\" : \"id\",\n      \"username\" : \"username\"\n    },\n    \"country\" : \"US\",\n    \"created_time\" : 1451431341,\n    \"updated_time\" : 1451431341,\n    \"permissions\" : [ \"ADMIN\", \"ADMIN\" ],\n    \"name\" : \"name\",\n    \"currency\" : \"USD\",\n    \"id\" : \"id\"\n  }, {\n    \"owner\" : {\n      \"id\" : \"id\",\n      \"username\" : \"username\"\n    },\n    \"country\" : \"US\",\n    \"created_time\" : 1451431341,\n    \"updated_time\" : 1451431341,\n    \"permissions\" : [ \"ADMIN\", \"ADMIN\" ],\n    \"name\" : \"name\",\n    \"currency\" : \"USD\",\n    \"id\" : \"id\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdAccountsList200Response>(exampleJson)
-            : default(AdAccountsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -230,11 +230,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CreateMMMReportResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"code\" : 0,\n  \"data\" : {\n    \"report_status\" : \"report_status\",\n    \"message\" : \"message\",\n    \"token\" : \"token\",\n    \"status\" : \"success\"\n  }\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -242,7 +242,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CreateMMMReportResponse>(exampleJson)
-            : default(CreateMMMReportResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -268,11 +268,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdsAnalyticsCreateAsyncResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"report_status\" : \"report_status\",\n  \"message\" : \"message\",\n  \"token\" : \"token\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -280,7 +280,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdsAnalyticsCreateAsyncResponse>(exampleJson)
-            : default(AdsAnalyticsCreateAsyncResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -308,11 +308,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdsAnalyticsCreateAsyncResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"report_status\" : \"report_status\",\n  \"message\" : \"message\",\n  \"token\" : \"token\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -320,7 +320,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdsAnalyticsCreateAsyncResponse>(exampleJson)
-            : default(AdsAnalyticsCreateAsyncResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -345,11 +345,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(GetMMMReportResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"code\" : 0,\n  \"data\" : {\n    \"size\" : 0.8008281904610115,\n    \"report_status\" : \"DOES_NOT_EXIST\",\n    \"url\" : \"url\"\n  },\n  \"message\" : \"ok\",\n  \"status\" : \"success\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -357,7 +357,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<GetMMMReportResponse>(exampleJson)
-            : default(GetMMMReportResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -382,11 +382,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdsAnalyticsGetAsyncResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"size\" : 0.8008281904610115,\n  \"report_status\" : \"report_status\",\n  \"url\" : \"url\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -394,7 +394,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdsAnalyticsGetAsyncResponse>(exampleJson)
-            : default(AdsAnalyticsGetAsyncResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -418,11 +418,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(string));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "\"Delete Success\"";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -430,7 +430,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<string>(exampleJson)
-            : default(string);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -457,11 +457,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(TemplatesList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"updated_time\" : 1432744744,\n    \"ad_account_ids\" : [ \"547664674848\" ],\n    \"report_level\" : \"CAMPAIGN\",\n    \"report_format\" : \"JSON\",\n    \"view_window_days\" : 7,\n    \"columns\" : [ \"SPEND_IN_DOLLAR\" ],\n    \"click_window_days\" : 7,\n    \"ingestion_sources\" : [ \"CONVERSIONS_API\", \"CONVERSIONS_API\" ],\n    \"type\" : \"BULK\",\n    \"conversion_report_time_type\" : \"TIME_OF_AD_ACTION\",\n    \"ad_account_id\" : \"547664674848\",\n    \"is_deleted\" : false,\n    \"id\" : \"6739202847590\",\n    \"is_scheduled\" : true,\n    \"custom_column_ids\" : [ \"1597252063\" ],\n    \"date_range\" : {\n      \"absolute_date_range\" : {\n        \"end_date\" : 6.027456183070403,\n        \"type\" : \"absolute\",\n        \"start_date\" : 0.8008281904610115\n      },\n      \"relative_date_range\" : {\n        \"end_days_in_past\" : 7,\n        \"type\" : \"relative\",\n        \"start_days_in_past\" : 14\n      },\n      \"dynamic_date_range\" : {\n        \"range\" : \"YEAR_TO_DATE\",\n        \"type\" : \"dynamic\"\n      }\n    },\n    \"is_owned_by_user\" : true,\n    \"report_start_relative_days_in_past\" : 7,\n    \"report_end_relative_days_in_past\" : 7,\n    \"user_id\" : \"784762938748396\",\n    \"granularity\" : \"TOTAL\",\n    \"filters_json\" : \"[{\\"field\\": \\"SPEND_IN_DOLLAR\\", \\"operator\\": \\"=\\", \\"value\\": 100}]\",\n    \"creation_source\" : \"ADS_MANAGER_REPORT_BUILDER\",\n    \"name\" : \"Week over week spend\",\n    \"engagement_window_days\" : 7\n  }, {\n    \"updated_time\" : 1432744744,\n    \"ad_account_ids\" : [ \"547664674848\" ],\n    \"report_level\" : \"CAMPAIGN\",\n    \"report_format\" : \"JSON\",\n    \"view_window_days\" : 7,\n    \"columns\" : [ \"SPEND_IN_DOLLAR\" ],\n    \"click_window_days\" : 7,\n    \"ingestion_sources\" : [ \"CONVERSIONS_API\", \"CONVERSIONS_API\" ],\n    \"type\" : \"BULK\",\n    \"conversion_report_time_type\" : \"TIME_OF_AD_ACTION\",\n    \"ad_account_id\" : \"547664674848\",\n    \"is_deleted\" : false,\n    \"id\" : \"6739202847590\",\n    \"is_scheduled\" : true,\n    \"custom_column_ids\" : [ \"1597252063\" ],\n    \"date_range\" : {\n      \"absolute_date_range\" : {\n        \"end_date\" : 6.027456183070403,\n        \"type\" : \"absolute\",\n        \"start_date\" : 0.8008281904610115\n      },\n      \"relative_date_range\" : {\n        \"end_days_in_past\" : 7,\n        \"type\" : \"relative\",\n        \"start_days_in_past\" : 14\n      },\n      \"dynamic_date_range\" : {\n        \"range\" : \"YEAR_TO_DATE\",\n        \"type\" : \"dynamic\"\n      }\n    },\n    \"is_owned_by_user\" : true,\n    \"report_start_relative_days_in_past\" : 7,\n    \"report_end_relative_days_in_past\" : 7,\n    \"user_id\" : \"784762938748396\",\n    \"granularity\" : \"TOTAL\",\n    \"filters_json\" : \"[{\\"field\\": \\"SPEND_IN_DOLLAR\\", \\"operator\\": \\"=\\", \\"value\\": 100}]\",\n    \"creation_source\" : \"ADS_MANAGER_REPORT_BUILDER\",\n    \"name\" : \"Week over week spend\",\n    \"engagement_window_days\" : 7\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -469,7 +469,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<TemplatesList200Response>(exampleJson)
-            : default(TemplatesList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

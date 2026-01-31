@@ -122,8 +122,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "items":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                items = new Option<List<UpdateMemberAssetsResultsResponseArrayItemsInner>?>(JsonSerializer.Deserialize<List<UpdateMemberAssetsResultsResponseArrayItemsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            items = new Option<List<UpdateMemberAssetsResultsResponseArrayItemsInner>?>(JsonSerializer.Deserialize<List<UpdateMemberAssetsResultsResponseArrayItemsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -29,4 +29,228 @@ impl Default for CatalogsVerticalBatchRequest {
     }
 }
 
+/// We recommend using the CatalogsLocale values.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Language {
+    #[serde(rename = "af-ZA")]
+    AfZa,
+    #[serde(rename = "ar-SA")]
+    ArSa,
+    #[serde(rename = "bg-BG")]
+    BgBg,
+    #[serde(rename = "bn-IN")]
+    BnIn,
+    #[serde(rename = "cs-CZ")]
+    CsCz,
+    #[serde(rename = "da-DK")]
+    DaDk,
+    #[serde(rename = "de")]
+    De,
+    #[serde(rename = "el-GR")]
+    ElGr,
+    #[serde(rename = "en-AU")]
+    EnAu,
+    #[serde(rename = "en-CA")]
+    EnCa,
+    #[serde(rename = "en-GB")]
+    EnGb,
+    #[serde(rename = "en-IN")]
+    EnIn,
+    #[serde(rename = "en-US")]
+    EnUs,
+    #[serde(rename = "es-419")]
+    Es419,
+    #[serde(rename = "es-AR")]
+    EsAr,
+    #[serde(rename = "es-ES")]
+    EsEs,
+    #[serde(rename = "es-MX")]
+    EsMx,
+    #[serde(rename = "fi-FI")]
+    FiFi,
+    #[serde(rename = "fr")]
+    Fr,
+    #[serde(rename = "fr-CA")]
+    FrCa,
+    #[serde(rename = "he-IL")]
+    HeIl,
+    #[serde(rename = "hi-IN")]
+    HiIn,
+    #[serde(rename = "hr-HR")]
+    HrHr,
+    #[serde(rename = "hu-HU")]
+    HuHu,
+    #[serde(rename = "id-ID")]
+    IdId,
+    #[serde(rename = "it")]
+    It,
+    #[serde(rename = "ja")]
+    Ja,
+    #[serde(rename = "ko-KR")]
+    KoKr,
+    #[serde(rename = "ms-MY")]
+    MsMy,
+    #[serde(rename = "nb-NO")]
+    NbNo,
+    #[serde(rename = "nl")]
+    Nl,
+    #[serde(rename = "pl-PL")]
+    PlPl,
+    #[serde(rename = "pt-BR")]
+    PtBr,
+    #[serde(rename = "pt-PT")]
+    PtPt,
+    #[serde(rename = "ro-RO")]
+    RoRo,
+    #[serde(rename = "ru-RU")]
+    RuRu,
+    #[serde(rename = "sk-SK")]
+    SkSk,
+    #[serde(rename = "sv-SE")]
+    SvSe,
+    #[serde(rename = "te-IN")]
+    TeIn,
+    #[serde(rename = "th-TH")]
+    ThTh,
+    #[serde(rename = "tl-PH")]
+    TlPh,
+    #[serde(rename = "tr")]
+    Tr,
+    #[serde(rename = "uk-UA")]
+    UkUa,
+    #[serde(rename = "vi-VN")]
+    ViVn,
+    #[serde(rename = "zh-CN")]
+    ZhCn,
+    #[serde(rename = "zh-TW")]
+    ZhTw,
+    #[serde(rename = "AM")]
+    Am,
+    #[serde(rename = "AR")]
+    Ar,
+    #[serde(rename = "AZ")]
+    Az,
+    #[serde(rename = "BG")]
+    Bg,
+    #[serde(rename = "BN")]
+    Bn,
+    #[serde(rename = "BS")]
+    Bs,
+    #[serde(rename = "CA")]
+    Ca,
+    #[serde(rename = "CS")]
+    Cs,
+    #[serde(rename = "DA")]
+    Da,
+    #[serde(rename = "DV")]
+    Dv,
+    #[serde(rename = "DZ")]
+    Dz,
+    #[serde(rename = "DE")]
+    De2,
+    #[serde(rename = "EL")]
+    El,
+    #[serde(rename = "EN")]
+    En,
+    #[serde(rename = "ES")]
+    Es,
+    #[serde(rename = "ET")]
+    Et,
+    #[serde(rename = "FA")]
+    Fa,
+    #[serde(rename = "FI")]
+    Fi,
+    #[serde(rename = "FR")]
+    Fr2,
+    #[serde(rename = "HE")]
+    He,
+    #[serde(rename = "HI")]
+    Hi,
+    #[serde(rename = "HR")]
+    Hr,
+    #[serde(rename = "HU")]
+    Hu,
+    #[serde(rename = "HY")]
+    Hy,
+    #[serde(rename = "ID")]
+    Id,
+    #[serde(rename = "IN")]
+    In,
+    #[serde(rename = "IS")]
+    Is,
+    #[serde(rename = "IT")]
+    It2,
+    #[serde(rename = "IW")]
+    Iw,
+    #[serde(rename = "JA")]
+    Ja2,
+    #[serde(rename = "KA")]
+    Ka,
+    #[serde(rename = "KM")]
+    Km,
+    #[serde(rename = "KO")]
+    Ko,
+    #[serde(rename = "LO")]
+    Lo,
+    #[serde(rename = "LT")]
+    Lt,
+    #[serde(rename = "LV")]
+    Lv,
+    #[serde(rename = "MK")]
+    Mk,
+    #[serde(rename = "MN")]
+    Mn,
+    #[serde(rename = "MS")]
+    Ms,
+    #[serde(rename = "MY")]
+    My,
+    #[serde(rename = "NB")]
+    Nb,
+    #[serde(rename = "NE")]
+    Ne,
+    #[serde(rename = "NL")]
+    Nl2,
+    #[serde(rename = "NO")]
+    No,
+    #[serde(rename = "PL")]
+    Pl,
+    #[serde(rename = "PT")]
+    Pt,
+    #[serde(rename = "RO")]
+    Ro,
+    #[serde(rename = "RU")]
+    Ru,
+    #[serde(rename = "SK")]
+    Sk,
+    #[serde(rename = "SL")]
+    Sl,
+    #[serde(rename = "SQ")]
+    Sq,
+    #[serde(rename = "SR")]
+    Sr,
+    #[serde(rename = "SV")]
+    Sv,
+    #[serde(rename = "TL")]
+    Tl,
+    #[serde(rename = "UK")]
+    Uk,
+    #[serde(rename = "VI")]
+    Vi,
+    #[serde(rename = "TE")]
+    Te,
+    #[serde(rename = "TH")]
+    Th,
+    #[serde(rename = "TR")]
+    Tr2,
+    #[serde(rename = "XX")]
+    Xx,
+    #[serde(rename = "ZH")]
+    Zh,
+}
+
+impl Default for Language {
+    fn default() -> Language {
+        Self::AfZa
+    }
+}
 

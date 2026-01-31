@@ -139,12 +139,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "code":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                code = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            code = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                data = new Option<CreateMMMReportResponseData?>(JsonSerializer.Deserialize<CreateMMMReportResponseData>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            data = new Option<CreateMMMReportResponseData?>(JsonSerializer.Deserialize<CreateMMMReportResponseData>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

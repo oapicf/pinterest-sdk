@@ -16,6 +16,10 @@ import { TargetingAdvertiserCountry } from './targetingAdvertiserCountry';
 
 export interface CreateMMMReportRequest { 
     /**
+     * A List of countries for filtering
+     */
+    countries?: Array<TargetingAdvertiserCountry>;
+    /**
      * Name of the Marketing Mix Modeling (MMM) report
      */
     report_name: string;
@@ -43,10 +47,6 @@ export interface CreateMMMReportRequest {
      * Metric and entity columns
      */
     columns: Array<MMMReportingColumn>;
-    /**
-     * A List of countries for filtering
-     */
-    countries?: Array<TargetingAdvertiserCountry>;
 }
 export namespace CreateMMMReportRequest {
     export type GranularityEnum = 'DAY' | 'WEEK';

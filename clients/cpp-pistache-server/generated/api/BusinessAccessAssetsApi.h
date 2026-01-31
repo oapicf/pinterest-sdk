@@ -117,7 +117,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Unique identifier of the requesting business.</param>
     /// <param name="createAssetGroupBody"></param>
-    virtual void asset_group_create(const std::string &businessId, const org::openapitools::server::model::CreateAssetGroupBody &createAssetGroupBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void asset_group_create( const std::string &businessId, const org::openapitools::server::model::CreateAssetGroupBody &createAssetGroupBody, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete asset groups.
     /// </summary>
@@ -126,7 +126,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Unique identifier of the requesting business.</param>
     /// <param name="deleteAssetGroupBody"></param>
-    virtual void asset_group_delete(const std::string &businessId, const org::openapitools::server::model::DeleteAssetGroupBody &deleteAssetGroupBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void asset_group_delete( const std::string &businessId, const org::openapitools::server::model::DeleteAssetGroupBody &deleteAssetGroupBody, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update asset groups.
     /// </summary>
@@ -135,7 +135,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Unique identifier of the requesting business.</param>
     /// <param name="updateAssetGroupBody"></param>
-    virtual void asset_group_update(const std::string &businessId, const org::openapitools::server::model::UpdateAssetGroupBody &updateAssetGroupBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void asset_group_update( const std::string &businessId, const org::openapitools::server::model::UpdateAssetGroupBody &updateAssetGroupBody, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get members with access to asset
     /// </summary>
@@ -147,7 +147,7 @@ private:
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="startIndex">An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)</param>
-    virtual void business_asset_members_get(const std::string &businessId, const std::string &assetId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<int32_t> &startIndex, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void business_asset_members_get( const std::string &businessId, const std::string &assetId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<int32_t> &startIndex, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get partners with access to asset
     /// </summary>
@@ -159,7 +159,7 @@ private:
     /// <param name="startIndex">An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void business_asset_partners_get(const std::string &businessId, const std::string &assetId, const std::optional<int32_t> &startIndex, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void business_asset_partners_get( const std::string &businessId, const std::string &assetId, const std::optional<int32_t> &startIndex, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List business assets
     /// </summary>
@@ -174,7 +174,7 @@ private:
     /// <param name="startIndex">An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void business_assets_get(const std::string &businessId, const std::optional<std::vector<org::openapitools::server::model::PermissionsWithOwner>> &permissions, const std::optional<std::string> &childAssetId, const std::optional<std::string> &assetGroupId, const std::optional<std::string> &assetType, const std::optional<int32_t> &startIndex, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void business_assets_get( const std::string &businessId, const std::optional<std::vector<org::openapitools::server::model::PermissionsWithOwner>> &permissions, const std::optional<std::string> &childAssetId, const std::optional<std::string> &assetGroupId, const std::optional<std::string> &assetType, const std::optional<int32_t> &startIndex, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get assets assigned to a member
     /// </summary>
@@ -187,7 +187,7 @@ private:
     /// <param name="startIndex">An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void business_member_assets_get(const std::string &businessId, const std::string &memberId, const std::optional<std::string> &assetType, const std::optional<int32_t> &startIndex, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void business_member_assets_get( const std::string &businessId, const std::string &memberId, const std::optional<std::string> &assetType, const std::optional<int32_t> &startIndex, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete member access to asset
     /// </summary>
@@ -196,7 +196,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Unique identifier of the requesting business.</param>
     /// <param name="businessMembersAssetAccessDeleteRequest">List member assset permissions to delete.</param>
-    virtual void business_members_asset_access_delete(const std::string &businessId, const org::openapitools::server::model::Business_members_asset_access_delete_request &businessMembersAssetAccessDeleteRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void business_members_asset_access_delete( const std::string &businessId, const org::openapitools::server::model::Business_members_asset_access_delete_request &businessMembersAssetAccessDeleteRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Assign/Update member asset permissions
     /// </summary>
@@ -205,7 +205,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Unique identifier of the requesting business.</param>
     /// <param name="updateMemberAssetAccessBody">List of member asset permissions to create or update.</param>
-    virtual void business_members_asset_access_update(const std::string &businessId, const org::openapitools::server::model::UpdateMemberAssetAccessBody &updateMemberAssetAccessBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void business_members_asset_access_update( const std::string &businessId, const org::openapitools::server::model::UpdateMemberAssetAccessBody &updateMemberAssetAccessBody, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get assets assigned to a partner or assets assigned by a partner
     /// </summary>
@@ -219,7 +219,7 @@ private:
     /// <param name="startIndex">An index to start fetching the results from. Only the results starting from this index will be returned. (optional, default to 0)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void business_partner_asset_access_get(const std::string &businessId, const std::string &partnerId, const std::optional<org::openapitools::server::model::org::openapitools::server::model::PartnerType> &partnerType, const std::optional<std::string> &assetType, const std::optional<int32_t> &startIndex, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void business_partner_asset_access_get( const std::string &businessId, const std::string &partnerId, const std::optional<org::openapitools::server::model::org::openapitools::server::model::PartnerType> &partnerType, const std::optional<std::string> &assetType, const std::optional<int32_t> &startIndex, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete partner access to asset
     /// </summary>
@@ -228,7 +228,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Unique identifier of the requesting business.</param>
     /// <param name="deletePartnerAssetAccessBody"></param>
-    virtual void delete_partner_asset_access_handler_impl(const std::string &businessId, const org::openapitools::server::model::DeletePartnerAssetAccessBody &deletePartnerAssetAccessBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delete_partner_asset_access_handler_impl( const std::string &businessId, const org::openapitools::server::model::DeletePartnerAssetAccessBody &deletePartnerAssetAccessBody, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Assign/Update partner asset permissions
     /// </summary>
@@ -237,7 +237,7 @@ private:
     /// </remarks>
     /// <param name="businessId">Unique identifier of the requesting business.</param>
     /// <param name="updatePartnerAssetAccessBody">A list of assets and permissions to assign to your partners.</param>
-    virtual void update_partner_asset_access_handler_impl(const std::string &businessId, const org::openapitools::server::model::UpdatePartnerAssetAccessBody &updatePartnerAssetAccessBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void update_partner_asset_access_handler_impl( const std::string &businessId, const org::openapitools::server::model::UpdatePartnerAssetAccessBody &updatePartnerAssetAccessBody, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

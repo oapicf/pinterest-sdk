@@ -10,16 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdsCreditDiscountsResponse  {
   
-  @ApiModelProperty(example = "true", value = "True if the offer code is currently active.")
  /**
-   * True if the offer code is currently active.
-  **/
+  * True if the offer code is currently active.
+  */
+  @ApiModelProperty(example = "true", value = "True if the offer code is currently active.")
+
   private Boolean active;
 
-  @ApiModelProperty(example = "12312451231", value = "Advertiser ID the offer was applied to.")
  /**
-   * Advertiser ID the offer was applied to.
-  **/
+  * Advertiser ID the offer was applied to.
+  */
+  @ApiModelProperty(example = "12312451231", value = "Advertiser ID the offer was applied to.")
+
   private String advertiserId;
 
 public enum DiscountTypeEnum {
@@ -52,34 +54,39 @@ COUPON(String.valueOf("COUPON")), CREDIT(String.valueOf("CREDIT")), COUPON_APPLI
     }
 }
 
-  @ApiModelProperty(value = "The type of discount of this credit")
  /**
-   * The type of discount of this credit
-  **/
+  * The type of discount of this credit
+  */
+  @ApiModelProperty(value = "The type of discount of this credit")
+
   private DiscountTypeEnum discountType;
 
-  @ApiModelProperty(example = "125000000", value = "The discount applied in the offer’s currency value.")
  /**
-   * The discount applied in the offer’s currency value.
-  **/
+  * The discount applied in the offer’s currency value.
+  */
+  @ApiModelProperty(example = "125000000", value = "The discount applied in the offer’s currency value.")
+
   private BigDecimal discountInMicroCurrency;
 
-  @ApiModelProperty(example = "USD", value = "Currency value for the discount.")
  /**
-   * Currency value for the discount.
-  **/
+  * Currency value for the discount.
+  */
+  @ApiModelProperty(example = "USD", value = "Currency value for the discount.")
+
   private String discountCurrency;
 
-  @ApiModelProperty(example = "Ads Credits", value = "Human readable title of the offer code.")
  /**
-   * Human readable title of the offer code.
-  **/
+  * Human readable title of the offer code.
+  */
+  @ApiModelProperty(example = "Ads Credits", value = "Human readable title of the offer code.")
+
   private String title;
 
-  @ApiModelProperty(example = "125000000", value = "The credits left to spend.")
  /**
-   * The credits left to spend.
-  **/
+  * The credits left to spend.
+  */
+  @ApiModelProperty(example = "125000000", value = "The credits left to spend.")
+
   private BigDecimal remainingDiscountInMicroCurrency;
  /**
    * True if the offer code is currently active.

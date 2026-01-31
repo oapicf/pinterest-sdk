@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_locale
 import model_catalogs_product_group_filters
@@ -26,11 +28,44 @@ type CatalogsRetailListProductsByCatalogBasedFilterRequest* = object
   locale*: CatalogsLocale
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.RETAIL: "RETAIL"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.RETAIL: %"RETAIL"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.RETAIL: "RETAIL"
+    of CatalogType.RETAIL: $("RETAIL")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RETAIL"):
+    return CatalogType.RETAIL
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsRetailListProductsByCatalogBasedFilterRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsRetailListProductsByCatalogBasedFilterRequest]): CatalogsRetailListProductsByCatalogBasedFilterRequest =
+  result = CatalogsRetailListProductsByCatalogBasedFilterRequest()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("catalog_id"):
+      result.catalogId = to(node["catalog_id"], string)
+    if node.hasKey("filters"):
+      result.filters = to(node["filters"], CatalogsProductGroupFilters)
+    if node.hasKey("country"):
+      result.country = to(node["country"], Country)
+    if node.hasKey("locale"):
+      result.locale = to(node["locale"], CatalogsLocale)
+
+# Custom JSON serialization for CatalogsRetailListProductsByCatalogBasedFilterRequest with custom field names
+proc `%`*(obj: CatalogsRetailListProductsByCatalogBasedFilterRequest): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["catalog_id"] = %obj.catalogId
+  result["filters"] = %obj.filters
+  result["country"] = %obj.country
+  result["locale"] = %obj.locale
+

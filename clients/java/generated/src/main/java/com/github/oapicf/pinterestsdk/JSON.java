@@ -27,8 +27,11 @@ import io.gsonfire.TypeSelector;
 import okio.ByteString;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
@@ -64,8 +67,6 @@ public class JSON {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("DELETE", com.github.oapicf.pinterestsdk.model.AdvancedAuctionItemsSubmitDeleteRecord.class);
                         classByDiscriminatorValue.put("UPSERT", com.github.oapicf.pinterestsdk.model.AdvancedAuctionItemsSubmitUpsertRecord.class);
-                        classByDiscriminatorValue.put("AdvancedAuctionItemsSubmitDeleteRecord", com.github.oapicf.pinterestsdk.model.AdvancedAuctionItemsSubmitDeleteRecord.class);
-                        classByDiscriminatorValue.put("AdvancedAuctionItemsSubmitUpsertRecord", com.github.oapicf.pinterestsdk.model.AdvancedAuctionItemsSubmitUpsertRecord.class);
                         classByDiscriminatorValue.put("AdvancedAuctionProcessedItem", com.github.oapicf.pinterestsdk.model.AdvancedAuctionProcessedItem.class);
                         classByDiscriminatorValue.put("AdvancedAuctionItemsSubmitRecord", com.github.oapicf.pinterestsdk.model.AdvancedAuctionItemsSubmitRecord.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
@@ -89,10 +90,6 @@ public class JSON {
                         classByDiscriminatorValue.put("DELETE", com.github.oapicf.pinterestsdk.model.CatalogsDeleteCreativeAssetsItem.class);
                         classByDiscriminatorValue.put("UPDATE", com.github.oapicf.pinterestsdk.model.CatalogsUpdateCreativeAssetsItem.class);
                         classByDiscriminatorValue.put("UPSERT", com.github.oapicf.pinterestsdk.model.CatalogsUpsertCreativeAssetsItem.class);
-                        classByDiscriminatorValue.put("CatalogsCreateCreativeAssetsItem", com.github.oapicf.pinterestsdk.model.CatalogsCreateCreativeAssetsItem.class);
-                        classByDiscriminatorValue.put("CatalogsDeleteCreativeAssetsItem", com.github.oapicf.pinterestsdk.model.CatalogsDeleteCreativeAssetsItem.class);
-                        classByDiscriminatorValue.put("CatalogsUpdateCreativeAssetsItem", com.github.oapicf.pinterestsdk.model.CatalogsUpdateCreativeAssetsItem.class);
-                        classByDiscriminatorValue.put("CatalogsUpsertCreativeAssetsItem", com.github.oapicf.pinterestsdk.model.CatalogsUpsertCreativeAssetsItem.class);
                         classByDiscriminatorValue.put("CatalogsCreativeAssetsBatchItem", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsBatchItem.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "operation"));
@@ -105,9 +102,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsFeed.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelFeed.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailFeed.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsFeed", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsFeed.class);
-                        classByDiscriminatorValue.put("CatalogsHotelFeed", com.github.oapicf.pinterestsdk.model.CatalogsHotelFeed.class);
-                        classByDiscriminatorValue.put("CatalogsRetailFeed", com.github.oapicf.pinterestsdk.model.CatalogsRetailFeed.class);
                         classByDiscriminatorValue.put("CatalogsFeed", com.github.oapicf.pinterestsdk.model.CatalogsFeed.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -121,10 +115,6 @@ public class JSON {
                         classByDiscriminatorValue.put("DELETE", com.github.oapicf.pinterestsdk.model.CatalogsDeleteHotelItem.class);
                         classByDiscriminatorValue.put("UPDATE", com.github.oapicf.pinterestsdk.model.CatalogsUpdateHotelItem.class);
                         classByDiscriminatorValue.put("UPSERT", com.github.oapicf.pinterestsdk.model.CatalogsUpsertHotelItem.class);
-                        classByDiscriminatorValue.put("CatalogsCreateHotelItem", com.github.oapicf.pinterestsdk.model.CatalogsCreateHotelItem.class);
-                        classByDiscriminatorValue.put("CatalogsDeleteHotelItem", com.github.oapicf.pinterestsdk.model.CatalogsDeleteHotelItem.class);
-                        classByDiscriminatorValue.put("CatalogsUpdateHotelItem", com.github.oapicf.pinterestsdk.model.CatalogsUpdateHotelItem.class);
-                        classByDiscriminatorValue.put("CatalogsUpsertHotelItem", com.github.oapicf.pinterestsdk.model.CatalogsUpsertHotelItem.class);
                         classByDiscriminatorValue.put("CatalogsHotelBatchItem", com.github.oapicf.pinterestsdk.model.CatalogsHotelBatchItem.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "operation"));
@@ -136,8 +126,6 @@ public class JSON {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("DISTRIBUTION_ISSUES", com.github.oapicf.pinterestsdk.model.CatalogsReportDistributionIssueFilter.class);
                         classByDiscriminatorValue.put("FEED_INGESTION_ISSUES", com.github.oapicf.pinterestsdk.model.CatalogsReportFeedIngestionFilter.class);
-                        classByDiscriminatorValue.put("CatalogsReportDistributionIssueFilter", com.github.oapicf.pinterestsdk.model.CatalogsReportDistributionIssueFilter.class);
-                        classByDiscriminatorValue.put("CatalogsReportFeedIngestionFilter", com.github.oapicf.pinterestsdk.model.CatalogsReportFeedIngestionFilter.class);
                         classByDiscriminatorValue.put("CatalogsHotelReportParameters_report", com.github.oapicf.pinterestsdk.model.CatalogsHotelReportParametersReport.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "report_type"));
@@ -150,9 +138,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsItemsBatch.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelItemsBatch.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailItemsBatch.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsItemsBatch", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsItemsBatch.class);
-                        classByDiscriminatorValue.put("CatalogsHotelItemsBatch", com.github.oapicf.pinterestsdk.model.CatalogsHotelItemsBatch.class);
-                        classByDiscriminatorValue.put("CatalogsRetailItemsBatch", com.github.oapicf.pinterestsdk.model.CatalogsRetailItemsBatch.class);
                         classByDiscriminatorValue.put("CatalogsItemsBatch", com.github.oapicf.pinterestsdk.model.CatalogsItemsBatch.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -167,11 +152,6 @@ public class JSON {
                         classByDiscriminatorValue.put("DELETE_DISCONTINUED", com.github.oapicf.pinterestsdk.model.CatalogsItemsDeleteDiscontinuedBatchRequest.class);
                         classByDiscriminatorValue.put("UPDATE", com.github.oapicf.pinterestsdk.model.CatalogsItemsUpdateBatchRequest.class);
                         classByDiscriminatorValue.put("UPSERT", com.github.oapicf.pinterestsdk.model.CatalogsItemsUpsertBatchRequest.class);
-                        classByDiscriminatorValue.put("CatalogsItemsCreateBatchRequest", com.github.oapicf.pinterestsdk.model.CatalogsItemsCreateBatchRequest.class);
-                        classByDiscriminatorValue.put("CatalogsItemsDeleteBatchRequest", com.github.oapicf.pinterestsdk.model.CatalogsItemsDeleteBatchRequest.class);
-                        classByDiscriminatorValue.put("CatalogsItemsDeleteDiscontinuedBatchRequest", com.github.oapicf.pinterestsdk.model.CatalogsItemsDeleteDiscontinuedBatchRequest.class);
-                        classByDiscriminatorValue.put("CatalogsItemsUpdateBatchRequest", com.github.oapicf.pinterestsdk.model.CatalogsItemsUpdateBatchRequest.class);
-                        classByDiscriminatorValue.put("CatalogsItemsUpsertBatchRequest", com.github.oapicf.pinterestsdk.model.CatalogsItemsUpsertBatchRequest.class);
                         classByDiscriminatorValue.put("CatalogsItemsBatchRequest", com.github.oapicf.pinterestsdk.model.CatalogsItemsBatchRequest.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "operation"));
@@ -184,9 +164,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsItemsFilter.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelItemsFilter.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailItemsFilter.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsItemsFilter", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsItemsFilter.class);
-                        classByDiscriminatorValue.put("CatalogsHotelItemsFilter", com.github.oapicf.pinterestsdk.model.CatalogsHotelItemsFilter.class);
-                        classByDiscriminatorValue.put("CatalogsRetailItemsFilter", com.github.oapicf.pinterestsdk.model.CatalogsRetailItemsFilter.class);
                         classByDiscriminatorValue.put("CatalogsItemsFilters", com.github.oapicf.pinterestsdk.model.CatalogsItemsFilters.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -199,9 +176,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsItemsPostFilter.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelItemsPostFilter.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailItemsPostFilter.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsItemsPostFilter", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsItemsPostFilter.class);
-                        classByDiscriminatorValue.put("CatalogsHotelItemsPostFilter", com.github.oapicf.pinterestsdk.model.CatalogsHotelItemsPostFilter.class);
-                        classByDiscriminatorValue.put("CatalogsRetailItemsPostFilter", com.github.oapicf.pinterestsdk.model.CatalogsRetailItemsPostFilter.class);
                         classByDiscriminatorValue.put("CatalogsItemsPostFilters", com.github.oapicf.pinterestsdk.model.CatalogsItemsPostFilters.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -214,9 +188,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsProduct.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelProduct.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailProduct.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsProduct", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsProduct.class);
-                        classByDiscriminatorValue.put("CatalogsHotelProduct", com.github.oapicf.pinterestsdk.model.CatalogsHotelProduct.class);
-                        classByDiscriminatorValue.put("CatalogsRetailProduct", com.github.oapicf.pinterestsdk.model.CatalogsRetailProduct.class);
                         classByDiscriminatorValue.put("CatalogsProduct", com.github.oapicf.pinterestsdk.model.CatalogsProduct.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -229,9 +200,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsProductGroupProductCounts.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelProductGroupProductCounts.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailProductGroupProductCounts.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsProductGroupProductCounts", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsProductGroupProductCounts.class);
-                        classByDiscriminatorValue.put("CatalogsHotelProductGroupProductCounts", com.github.oapicf.pinterestsdk.model.CatalogsHotelProductGroupProductCounts.class);
-                        classByDiscriminatorValue.put("CatalogsRetailProductGroupProductCounts", com.github.oapicf.pinterestsdk.model.CatalogsRetailProductGroupProductCounts.class);
                         classByDiscriminatorValue.put("CatalogsProductGroupProductCountsVertical", com.github.oapicf.pinterestsdk.model.CatalogsProductGroupProductCountsVertical.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -243,8 +211,6 @@ public class JSON {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelReportParameters.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailReportParameters.class);
-                        classByDiscriminatorValue.put("CatalogsHotelReportParameters", com.github.oapicf.pinterestsdk.model.CatalogsHotelReportParameters.class);
-                        classByDiscriminatorValue.put("CatalogsRetailReportParameters", com.github.oapicf.pinterestsdk.model.CatalogsRetailReportParameters.class);
                         classByDiscriminatorValue.put("CatalogsReportParameters", com.github.oapicf.pinterestsdk.model.CatalogsReportParameters.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -256,8 +222,6 @@ public class JSON {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("DISTRIBUTION_ISSUES", com.github.oapicf.pinterestsdk.model.CatalogsReportDistributionStats.class);
                         classByDiscriminatorValue.put("FEED_INGESTION_ISSUES", com.github.oapicf.pinterestsdk.model.CatalogsReportFeedIngestionStats.class);
-                        classByDiscriminatorValue.put("CatalogsReportDistributionStats", com.github.oapicf.pinterestsdk.model.CatalogsReportDistributionStats.class);
-                        classByDiscriminatorValue.put("CatalogsReportFeedIngestionStats", com.github.oapicf.pinterestsdk.model.CatalogsReportFeedIngestionStats.class);
                         classByDiscriminatorValue.put("CatalogsReportStats", com.github.oapicf.pinterestsdk.model.CatalogsReportStats.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "report_type"));
@@ -271,10 +235,6 @@ public class JSON {
                         classByDiscriminatorValue.put("DELETE", com.github.oapicf.pinterestsdk.model.CatalogsDeleteRetailItem.class);
                         classByDiscriminatorValue.put("UPDATE", com.github.oapicf.pinterestsdk.model.CatalogsUpdateRetailItem.class);
                         classByDiscriminatorValue.put("UPSERT", com.github.oapicf.pinterestsdk.model.CatalogsUpsertRetailItem.class);
-                        classByDiscriminatorValue.put("CatalogsCreateRetailItem", com.github.oapicf.pinterestsdk.model.CatalogsCreateRetailItem.class);
-                        classByDiscriminatorValue.put("CatalogsDeleteRetailItem", com.github.oapicf.pinterestsdk.model.CatalogsDeleteRetailItem.class);
-                        classByDiscriminatorValue.put("CatalogsUpdateRetailItem", com.github.oapicf.pinterestsdk.model.CatalogsUpdateRetailItem.class);
-                        classByDiscriminatorValue.put("CatalogsUpsertRetailItem", com.github.oapicf.pinterestsdk.model.CatalogsUpsertRetailItem.class);
                         classByDiscriminatorValue.put("CatalogsRetailBatchRequest_items_inner", com.github.oapicf.pinterestsdk.model.CatalogsRetailBatchRequestItemsInner.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "operation"));
@@ -287,9 +247,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsBatchRequest.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelBatchRequest.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailBatchRequest.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsBatchRequest", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsBatchRequest.class);
-                        classByDiscriminatorValue.put("CatalogsHotelBatchRequest", com.github.oapicf.pinterestsdk.model.CatalogsHotelBatchRequest.class);
-                        classByDiscriminatorValue.put("CatalogsRetailBatchRequest", com.github.oapicf.pinterestsdk.model.CatalogsRetailBatchRequest.class);
                         classByDiscriminatorValue.put("CatalogsVerticalBatchRequest", com.github.oapicf.pinterestsdk.model.CatalogsVerticalBatchRequest.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -302,9 +259,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsFeedsCreateRequest.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelFeedsCreateRequest.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailFeedsCreateRequest.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsFeedsCreateRequest", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsFeedsCreateRequest.class);
-                        classByDiscriminatorValue.put("CatalogsHotelFeedsCreateRequest", com.github.oapicf.pinterestsdk.model.CatalogsHotelFeedsCreateRequest.class);
-                        classByDiscriminatorValue.put("CatalogsRetailFeedsCreateRequest", com.github.oapicf.pinterestsdk.model.CatalogsRetailFeedsCreateRequest.class);
                         classByDiscriminatorValue.put("CatalogsVerticalFeedsCreateRequest", com.github.oapicf.pinterestsdk.model.CatalogsVerticalFeedsCreateRequest.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -317,9 +271,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsFeedsUpdateRequest.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelFeedsUpdateRequest.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailFeedsUpdateRequest.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsFeedsUpdateRequest", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsFeedsUpdateRequest.class);
-                        classByDiscriminatorValue.put("CatalogsHotelFeedsUpdateRequest", com.github.oapicf.pinterestsdk.model.CatalogsHotelFeedsUpdateRequest.class);
-                        classByDiscriminatorValue.put("CatalogsRetailFeedsUpdateRequest", com.github.oapicf.pinterestsdk.model.CatalogsRetailFeedsUpdateRequest.class);
                         classByDiscriminatorValue.put("CatalogsVerticalFeedsUpdateRequest", com.github.oapicf.pinterestsdk.model.CatalogsVerticalFeedsUpdateRequest.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -332,9 +283,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsProductGroup.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelProductGroup.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailProductGroup.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsProductGroup", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsProductGroup.class);
-                        classByDiscriminatorValue.put("CatalogsHotelProductGroup", com.github.oapicf.pinterestsdk.model.CatalogsHotelProductGroup.class);
-                        classByDiscriminatorValue.put("CatalogsRetailProductGroup", com.github.oapicf.pinterestsdk.model.CatalogsRetailProductGroup.class);
                         classByDiscriminatorValue.put("CatalogsVerticalProductGroup", com.github.oapicf.pinterestsdk.model.CatalogsVerticalProductGroup.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -347,9 +295,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsProductGroupCreateRequest.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelProductGroupCreateRequest.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailProductGroupCreateRequest.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsProductGroupCreateRequest", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsProductGroupCreateRequest.class);
-                        classByDiscriminatorValue.put("CatalogsHotelProductGroupCreateRequest", com.github.oapicf.pinterestsdk.model.CatalogsHotelProductGroupCreateRequest.class);
-                        classByDiscriminatorValue.put("CatalogsRetailProductGroupCreateRequest", com.github.oapicf.pinterestsdk.model.CatalogsRetailProductGroupCreateRequest.class);
                         classByDiscriminatorValue.put("CatalogsVerticalProductGroupCreateRequest", com.github.oapicf.pinterestsdk.model.CatalogsVerticalProductGroupCreateRequest.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -362,9 +307,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsProductGroupUpdateRequest.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelProductGroupUpdateRequest.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailProductGroupUpdateRequest.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsProductGroupUpdateRequest", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsProductGroupUpdateRequest.class);
-                        classByDiscriminatorValue.put("CatalogsHotelProductGroupUpdateRequest", com.github.oapicf.pinterestsdk.model.CatalogsHotelProductGroupUpdateRequest.class);
-                        classByDiscriminatorValue.put("CatalogsRetailProductGroupUpdateRequest", com.github.oapicf.pinterestsdk.model.CatalogsRetailProductGroupUpdateRequest.class);
                         classByDiscriminatorValue.put("CatalogsVerticalProductGroupUpdateRequest", com.github.oapicf.pinterestsdk.model.CatalogsVerticalProductGroupUpdateRequest.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -377,9 +319,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelListProductsByCatalogBasedFilterRequest.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailListProductsByCatalogBasedFilterRequest.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.class);
-                        classByDiscriminatorValue.put("CatalogsHotelListProductsByCatalogBasedFilterRequest", com.github.oapicf.pinterestsdk.model.CatalogsHotelListProductsByCatalogBasedFilterRequest.class);
-                        classByDiscriminatorValue.put("CatalogsRetailListProductsByCatalogBasedFilterRequest", com.github.oapicf.pinterestsdk.model.CatalogsRetailListProductsByCatalogBasedFilterRequest.class);
                         classByDiscriminatorValue.put("CatalogsVerticalsListProductsByCatalogBasedFilterRequest", com.github.oapicf.pinterestsdk.model.CatalogsVerticalsListProductsByCatalogBasedFilterRequest.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -406,9 +345,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsItemResponse.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelItemResponse.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailItemResponse.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsItemResponse", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsItemResponse.class);
-                        classByDiscriminatorValue.put("CatalogsHotelItemResponse", com.github.oapicf.pinterestsdk.model.CatalogsHotelItemResponse.class);
-                        classByDiscriminatorValue.put("CatalogsRetailItemResponse", com.github.oapicf.pinterestsdk.model.CatalogsRetailItemResponse.class);
                         classByDiscriminatorValue.put("ItemResponse_anyOf", com.github.oapicf.pinterestsdk.model.ItemResponseAnyOf.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -421,9 +357,6 @@ public class JSON {
                         classByDiscriminatorValue.put("CREATIVE_ASSETS", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsItemErrorResponse.class);
                         classByDiscriminatorValue.put("HOTEL", com.github.oapicf.pinterestsdk.model.CatalogsHotelItemErrorResponse.class);
                         classByDiscriminatorValue.put("RETAIL", com.github.oapicf.pinterestsdk.model.CatalogsRetailItemErrorResponse.class);
-                        classByDiscriminatorValue.put("CatalogsCreativeAssetsItemErrorResponse", com.github.oapicf.pinterestsdk.model.CatalogsCreativeAssetsItemErrorResponse.class);
-                        classByDiscriminatorValue.put("CatalogsHotelItemErrorResponse", com.github.oapicf.pinterestsdk.model.CatalogsHotelItemErrorResponse.class);
-                        classByDiscriminatorValue.put("CatalogsRetailItemErrorResponse", com.github.oapicf.pinterestsdk.model.CatalogsRetailItemErrorResponse.class);
                         classByDiscriminatorValue.put("ItemResponse_anyOf_1", com.github.oapicf.pinterestsdk.model.ItemResponseAnyOf1.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "catalog_type"));
@@ -462,12 +395,6 @@ public class JSON {
                         classByDiscriminatorValue.put("multiple_image_urls", com.github.oapicf.pinterestsdk.model.PinMediaSourceImagesURL.class);
                         classByDiscriminatorValue.put("pin_url", com.github.oapicf.pinterestsdk.model.PinMediaSourcePinURL.class);
                         classByDiscriminatorValue.put("video_id", com.github.oapicf.pinterestsdk.model.PinMediaSourceVideoID.class);
-                        classByDiscriminatorValue.put("PinMediaSourceImageBase64", com.github.oapicf.pinterestsdk.model.PinMediaSourceImageBase64.class);
-                        classByDiscriminatorValue.put("PinMediaSourceImageURL", com.github.oapicf.pinterestsdk.model.PinMediaSourceImageURL.class);
-                        classByDiscriminatorValue.put("PinMediaSourceImagesBase64", com.github.oapicf.pinterestsdk.model.PinMediaSourceImagesBase64.class);
-                        classByDiscriminatorValue.put("PinMediaSourceImagesURL", com.github.oapicf.pinterestsdk.model.PinMediaSourceImagesURL.class);
-                        classByDiscriminatorValue.put("PinMediaSourcePinURL", com.github.oapicf.pinterestsdk.model.PinMediaSourcePinURL.class);
-                        classByDiscriminatorValue.put("PinMediaSourceVideoID", com.github.oapicf.pinterestsdk.model.PinMediaSourceVideoID.class);
                         classByDiscriminatorValue.put("PinMediaSource", com.github.oapicf.pinterestsdk.model.PinMediaSource.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "source_type"));
@@ -621,7 +548,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.AudienceCommon.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.AudienceCreateCustomRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.AudienceCreateRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.AudienceCreateRequest1AudienceType.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.AudienceDefinition.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.AudienceDefinitionResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.AudienceDemographicValue.CustomTypeAdapterFactory());
@@ -778,7 +704,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.CatalogsItemsFilters.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.CatalogsItemsPostFilters.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.CatalogsItemsRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.CatalogsItemsRequestLanguage.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.CatalogsItemsUpdateBatchRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.CatalogsItemsUpsertBatchRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.CatalogsList200Response.CustomTypeAdapterFactory());
@@ -1059,7 +984,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.PinMediaWithVideos.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.PinUpdate.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.PinUpdateCarouselSlotsInner.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.PinsAnalyticsMetricTypesParameterInner.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.PinsList200Response.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.PinsSaveRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.github.oapicf.pinterestsdk.model.PinterestTagEventData.CustomTypeAdapterFactory());
@@ -1232,6 +1156,28 @@ public class JSON {
                 return (T) body;
             } else {
                 throw (e);
+            }
+        }
+    }
+
+    /**
+    * Deserialize the given JSON InputStream to a Java object.
+    *
+    * @param <T>         Type
+    * @param inputStream The JSON InputStream
+    * @param returnType  The type to deserialize into
+    * @return The deserialized Java object
+    */
+    @SuppressWarnings("unchecked")
+    public static <T> T deserialize(InputStream inputStream, Type returnType) throws IOException {
+        try (InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8)) {
+        if (isLenientOnJson) {
+            // see https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/stream/JsonReader.html#setLenient(boolean)
+            JsonReader jsonReader = new JsonReader(reader);
+            jsonReader.setLenient(true);
+            return gson.fromJson(jsonReader, returnType);
+            } else {
+                return gson.fromJson(reader, returnType);
             }
         }
     }

@@ -54,6 +54,30 @@
       //expect(instance).to.be.a(PinterestSdk.InviteResponse);
     });
 
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instance = new PinterestSdk.InviteResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property inviteData (base name: "invite_data")', function() {
+      // uncomment below and update the code to test the property inviteData
+      //var instance = new PinterestSdk.InviteResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property isReceivedInvite (base name: "is_received_invite")', function() {
+      // uncomment below and update the code to test the property isReceivedInvite
+      //var instance = new PinterestSdk.InviteResponse();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property user (base name: "user")', function() {
+      // uncomment below and update the code to test the property user
+      //var instance = new PinterestSdk.InviteResponse();
+      //expect(instance).to.be();
+    });
+
     it('should have the property assetsSummary (base name: "assets_summary")', function() {
       // uncomment below and update the code to test the property assetsSummary
       //var instance = new PinterestSdk.InviteResponse();
@@ -80,30 +104,6 @@
 
     it('should have the property createdTime (base name: "created_time")', function() {
       // uncomment below and update the code to test the property createdTime
-      //var instance = new PinterestSdk.InviteResponse();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instance = new PinterestSdk.InviteResponse();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property inviteData (base name: "invite_data")', function() {
-      // uncomment below and update the code to test the property inviteData
-      //var instance = new PinterestSdk.InviteResponse();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property isReceivedInvite (base name: "is_received_invite")', function() {
-      // uncomment below and update the code to test the property isReceivedInvite
-      //var instance = new PinterestSdk.InviteResponse();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property user (base name: "user")', function() {
-      // uncomment below and update the code to test the property user
       //var instance = new PinterestSdk.InviteResponse();
       //expect(instance).to.be();
     });

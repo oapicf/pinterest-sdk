@@ -42,6 +42,8 @@ pub enum TermsSuggestedSlashListResponse {
 }
 
 
+
+
 /// Terms
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -51,6 +53,7 @@ pub trait Terms<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHa
     /// TermsRelatedSlashList - GET /v5/terms/related
     async fn terms_related_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -62,6 +65,7 @@ pub trait Terms<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHa
     /// TermsSuggestedSlashList - GET /v5/terms/suggested
     async fn terms_suggested_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

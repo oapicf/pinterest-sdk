@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 # **multiPinsAnalytics**
 ```swift
-    open class func multiPinsAnalytics(pinIds: [String], startDate: Date, endDate: Date, metricTypes: [PinsAnalyticsMetricTypesParameterInner], appTypes: AppTypes_multiPinsAnalytics? = nil, adAccountId: String? = nil, completion: @escaping (_ data: [String: Dictionary]?, _ error: Error?) -> Void)
+    open class func multiPinsAnalytics(pinIds: [String], startDate: Date, endDate: Date, metricTypes: [MetricTypes_multiPinsAnalytics], appTypes: AppTypes_multiPinsAnalytics? = nil, adAccountId: String? = nil, completion: @escaping (_ data: [String: Dictionary]?, _ error: Error?) -> Void)
 ```
 
 Get multiple Pin analytics
@@ -31,7 +31,7 @@ import OpenAPIClient
 let pinIds = ["inner_example"] // [String] | List of Pin IDs.
 let startDate = Date() // Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 let endDate = Date() // Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-let metricTypes = [pins_analytics_metric_types_parameter_inner()] // [PinsAnalyticsMetricTypesParameterInner] | Pin metric types to get data for.
+let metricTypes = ["metricTypes_example"] // [String] | Pin metric types to get data for.
 let appTypes = "appTypes_example" // String | Apps or devices to get data for, default is all. (optional) (default to .all)
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
  **pinIds** | [**[String]**](String.md) | List of Pin IDs. | 
  **startDate** | **Date** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **Date** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **metricTypes** | [**[PinsAnalyticsMetricTypesParameterInner]**](PinsAnalyticsMetricTypesParameterInner.md) | Pin metric types to get data for. | 
+ **metricTypes** | [**[String]**](String.md) | Pin metric types to get data for. | 
  **appTypes** | **String** | Apps or devices to get data for, default is all. | [optional] [default to .all]
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 # **pinsAnalytics**
 ```swift
-    open class func pinsAnalytics(pinId: String, startDate: Date, endDate: Date, metricTypes: [PinsAnalyticsMetricTypesParameterInner], appTypes: AppTypes_pinsAnalytics? = nil, splitField: SplitField_pinsAnalytics? = nil, adAccountId: String? = nil, completion: @escaping (_ data: [String: PinAnalyticsMetricsResponse]?, _ error: Error?) -> Void)
+    open class func pinsAnalytics(pinId: String, startDate: Date, endDate: Date, metricTypes: [MetricTypes_pinsAnalytics], appTypes: AppTypes_pinsAnalytics? = nil, splitField: SplitField_pinsAnalytics? = nil, adAccountId: String? = nil, completion: @escaping (_ data: [String: PinAnalyticsMetricsResponse]?, _ error: Error?) -> Void)
 ```
 
 Get Pin analytics
@@ -91,7 +91,7 @@ import OpenAPIClient
 let pinId = "pinId_example" // String | Unique identifier of a Pin.
 let startDate = Date() // Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 let endDate = Date() // Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-let metricTypes = [pins_analytics_metric_types_parameter_inner()] // [PinsAnalyticsMetricTypesParameterInner] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+let metricTypes = ["metricTypes_example"] // [String] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 let appTypes = "appTypes_example" // String | Apps or devices to get data for, default is all. (optional) (default to .all)
 let splitField = "splitField_example" // String | How to split the data into groups. Not including this param means data won't be split. (optional) (default to .noSplit)
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
  **pinId** | **String** | Unique identifier of a Pin. | 
  **startDate** | **Date** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **Date** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **metricTypes** | [**[PinsAnalyticsMetricTypesParameterInner]**](PinsAnalyticsMetricTypesParameterInner.md) | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
+ **metricTypes** | [**[String]**](String.md) | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
  **appTypes** | **String** | Apps or devices to get data for, default is all. | [optional] [default to .all]
  **splitField** | **String** | How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to .noSplit]
  **adAccountId** | **String** | Unique identifier of an ad account. | [optional] 

@@ -451,7 +451,6 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*AudienceCommon* | |
 |*AudienceCreateCustomRequest* | |
 |*AudienceCreateRequest* | |
-|*AudienceCreateRequest_1_audience_type* | |
 |*AudienceDataParty* | Whether the data is owned by the partner (1p) or by the data provider (3p)|
 |*AudienceDefinition* | Queryable audience representation.|
 |*AudienceDefinitionResponse* | |
@@ -629,7 +628,6 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*CatalogsItemsFilters* | |
 |*CatalogsItemsPostFilters* | |
 |*CatalogsItemsRequest* | Request object of catalogs items|
-|*CatalogsItemsRequest_language* | We recommend using the CatalogsLocale values.|
 |*CatalogsItemsUpdateBatchRequest* | Request object to update catalogs items|
 |*CatalogsItemsUpsertBatchRequest* | Request object to upsert catalogs items|
 |*CatalogsListProductsByFeedBasedFilter* | Request object to list products for a given feed_id and product group filter.|
@@ -827,7 +825,7 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*InviteAssetsSummary* | Ad accounts and profiles the member/partner will be granted access to with this invite/request.|
 |*InviteAssetsSummary_ad_accounts_inner* | |
 |*InviteAssetsSummary_profiles_inner* | |
-|*InviteBusinessRoleBinding* | An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.|
+|*InviteBusinessRoleBinding* | |
 |*InviteExceptionResponse* | An exception object if there is an error performing the action. Will only be provided if there is an error.|
 |*InviteResponse* | |
 |*InviteStatus* | The current status of the invite.|
@@ -908,14 +906,14 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*NonNullableProductAvailabilityType* | Product availability.|
 |*NullableCatalogsItemFieldType* | Product item fields|
 |*NullableCurrency* | Currency Codes from ISO 4217.|
-|*OauthAccessTokenRequestClientCredentials* | A request to receive a client token.|
-|*OauthAccessTokenRequestCode* | A request to exchange an authorization code for an access token.|
-|*OauthAccessTokenRequestRefresh* | A request to exchange a refresh token for a new access token.|
+|*OauthAccessTokenRequestClientCredentials* | |
+|*OauthAccessTokenRequestCode* | |
+|*OauthAccessTokenRequestRefresh* | |
 |*OauthAccessTokenResponse* | A successful OAuth access token response.|
 |*OauthAccessTokenResponseClientCredentials* | A successful OAuth client token response for the client token flow.|
-|*OauthAccessTokenResponseCode* | A successful OAuth access token response for the authorization code flow.|
-|*OauthAccessTokenResponseEverlastingRefresh* | A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.|
-|*OauthAccessTokenResponseIntegrationRefresh* | A successful OAuth access token response for the refresh token flow, with an added refresh token.|
+|*OauthAccessTokenResponseCode* | |
+|*OauthAccessTokenResponseEverlastingRefresh* | |
+|*OauthAccessTokenResponseIntegrationRefresh* | |
 |*OauthAccessTokenResponseRefresh* | A successful OAuth access token response for the refresh token flow.|
 |*ObjectiveType* | Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"WEB_CONVERSION\", \"CATALOG_SALES\", \"VIDEO_COMPLETION\"] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\"WEB_SESSIONS\"] is DEPRECATED. For update, only draft campaigns may update objective type.|
 |*OperationType* | Operation type to share a specific audience or revoke access to a previously shared audience|
@@ -963,7 +961,6 @@ All URIs are relative to https://api.pinterest.comhttps://api.pinterest.com/v5
 |*PinPromotionSummaryStatus* | Summary status for pin promotions|
 |*PinUpdate* | Pin fields for updates|
 |*PinUpdate_carousel_slots_inner* | |
-|*Pins_analytics_metric_types_parameter_inner* | |
 |*Pins_list_200_response* | |
 |*Pins_save_request* | |
 |*PinterestTagEventData* | Optional for VISITOR `audience_type`. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s `rule`; however, you **must** specify an `event` for the `event_data` fields to be evaluated. Besides what’s listed, you can also create your own set of `event_data` fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields' data.<br>Examples per `event` type:<br>`pagevisit`<br>\"event_data\": { \"page_name\": \"My online store 123 | view items | shoe\" }<br>`signup`<br>\"event_data\": { \"lead_type\": \"New release promotion\" }<br>`checkout`<br>\"event_data\": { \"value\": 116, \"order_quantity\": 2, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Pillows (Set of 2)\", \"product_id\": \"11\", \"product_price\": 48, \"product_quantity\": 1 }, { \"product_name\": \"Pillows, Large (Set of 2)\", \"product_id\": \"15\", \"product_price\": 68, \"product_quantity\": 1 } ] }<br>`addtocart`<br>\"event_data\": { \"value\": 499, \"order_quantity\": 1, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Red leather boots\", \"product_id\": \"3486\", \"product_category\": \"shoe\", \"product_variant_id\": \"JB11103000\", \"product_price\": 499, \"product_quantity\": \"1\" , \"product_brand\": \"My brand\" }]}<br>`watchvideo`<br>\"event_data\": { \"video_title\": \"My Product Video 01\" }<br>`lead`<br>\"event_data\": { \"lead_type\": \"Newsletter\" }|

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogsDbItem* = object
@@ -16,3 +18,23 @@ type CatalogsDbItem* = object
   createdAt*: string
   id*: string
   updatedAt*: string
+
+
+# Custom JSON deserialization for CatalogsDbItem with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsDbItem]): CatalogsDbItem =
+  result = CatalogsDbItem()
+  if node.kind == JObject:
+    if node.hasKey("created_at"):
+      result.createdAt = to(node["created_at"], string)
+    if node.hasKey("id"):
+      result.id = to(node["id"], string)
+    if node.hasKey("updated_at"):
+      result.updatedAt = to(node["updated_at"], string)
+
+# Custom JSON serialization for CatalogsDbItem with custom field names
+proc `%`*(obj: CatalogsDbItem): JsonNode =
+  result = newJObject()
+  result["created_at"] = %obj.createdAt
+  result["id"] = %obj.id
+  result["updated_at"] = %obj.updatedAt
+

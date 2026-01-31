@@ -30,9 +30,9 @@
     },
     {
       "name": "negated",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "",
-      "default": null
+      "default": false
     }
   ]
 

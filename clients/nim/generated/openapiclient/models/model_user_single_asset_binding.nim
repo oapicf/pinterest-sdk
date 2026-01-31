@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_business_access_user_summary
 
 type UserSingleAssetBinding* = object
   ## An object containing the permissions a business member/partner has on the asset.
-  permissions*: seq[string] ## Permission levels member or partner has on an asset.
-  user*: BusinessAccessUserSummary
+  permissions*: Option[seq[string]] ## Permission levels member or partner has on an asset.
+  user*: Option[BusinessAccessUserSummary]
+

@@ -16,14 +16,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GetBusinessEmployers200Response  {
   
-  @ApiModelProperty(required = true, value = "List of employers.")
-  @Valid
  /**
-   * List of employers.
-  **/
+  * List of employers.
+  */
+  @ApiModelProperty(required = true, value = "List of employers.")
+
+  @Valid
+
   private List<@Valid UserBusinessRoleBinding> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * List of employers.

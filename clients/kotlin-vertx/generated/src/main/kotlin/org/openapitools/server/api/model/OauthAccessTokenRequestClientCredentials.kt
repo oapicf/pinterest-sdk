@@ -17,15 +17,15 @@ import com.google.gson.annotations.SerializedName
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 /**
- * A request to receive a client token.
- * @param grantType 
+ * 
  * @param scope 
+ * @param grantType 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class OauthAccessTokenRequestClientCredentials (
-    @SerializedName("grantType") private val _grantType: OauthAccessTokenRequestClientCredentials.GrantType?,
-    @SerializedName("scope") private val _scope: kotlin.String?
+    @SerializedName("scope") private val _scope: kotlin.String?,
+    @SerializedName("grantType") private val _grantType: OauthAccessTokenRequestClientCredentials.GrantType?
 ) {
 
     /**
@@ -42,9 +42,9 @@ data class OauthAccessTokenRequestClientCredentials (
     
     }
 
-        val grantType get() = _grantType ?: throw IllegalArgumentException("grantType is required")
-                    
         val scope get() = _scope ?: throw IllegalArgumentException("scope is required")
+                    
+        val grantType get() = _grantType ?: throw IllegalArgumentException("grantType is required")
                     
 }
 

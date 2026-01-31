@@ -3577,7 +3577,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Country country, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(country.ToString());
+            writer.WriteStringValue(CountryValueConverter.ToJsonValue(country).ToString());
         }
     }
 
@@ -3608,14 +3608,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the Country to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="country"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Country? country, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(country?.ToString() ?? "null");
+            writer.WriteStringValue(country.HasValue ? CountryValueConverter.ToJsonValue(country.Value).ToString() : "null");
         }
     }
 }

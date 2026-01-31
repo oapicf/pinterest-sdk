@@ -9,12 +9,41 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_conversion_tag_type
 
 type ConversionEventResponse* = object
   ## 
-  conversionEvent*: ConversionTagType
-  conversionTagId*: string ## Id of the tag.
-  adAccountId*: string ## Id of the ad account.
-  createdTime*: int ## Creation date in epoch format.
+  conversionEvent*: Option[ConversionTagType]
+  conversionTagId*: Option[string] ## Id of the tag.
+  adAccountId*: Option[string] ## Id of the ad account.
+  createdTime*: Option[int] ## Creation date in epoch format.
+
+
+# Custom JSON deserialization for ConversionEventResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[ConversionEventResponse]): ConversionEventResponse =
+  result = ConversionEventResponse()
+  if node.kind == JObject:
+    if node.hasKey("conversion_event") and node["conversion_event"].kind != JNull:
+      result.conversionEvent = some(to(node["conversion_event"], typeof(result.conversionEvent.get())))
+    if node.hasKey("conversion_tag_id") and node["conversion_tag_id"].kind != JNull:
+      result.conversionTagId = some(to(node["conversion_tag_id"], typeof(result.conversionTagId.get())))
+    if node.hasKey("ad_account_id") and node["ad_account_id"].kind != JNull:
+      result.adAccountId = some(to(node["ad_account_id"], typeof(result.adAccountId.get())))
+    if node.hasKey("created_time") and node["created_time"].kind != JNull:
+      result.createdTime = some(to(node["created_time"], typeof(result.createdTime.get())))
+
+# Custom JSON serialization for ConversionEventResponse with custom field names
+proc `%`*(obj: ConversionEventResponse): JsonNode =
+  result = newJObject()
+  if obj.conversionEvent.isSome():
+    result["conversion_event"] = %obj.conversionEvent.get()
+  if obj.conversionTagId.isSome():
+    result["conversion_tag_id"] = %obj.conversionTagId.get()
+  if obj.adAccountId.isSome():
+    result["ad_account_id"] = %obj.adAccountId.get()
+  if obj.createdTime.isSome():
+    result["created_time"] = %obj.createdTime.get()
+

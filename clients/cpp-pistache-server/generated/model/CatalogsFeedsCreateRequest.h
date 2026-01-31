@@ -126,8 +126,8 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    CatalogsStatus getStatus() const;
-    void setStatus(CatalogsStatus const& value);
+    org::openapitools::server::model::CatalogsStatus getStatus() const;
+    void setStatus(org::openapitools::server::model::CatalogsStatus const& value);
     bool statusIsSet() const;
     void unsetStatus();
 
@@ -152,7 +152,7 @@ protected:
     bool m_Default_countryIsSet;
     org::openapitools::server::model::ProductAvailabilityType m_Default_availability;
     bool m_Default_availabilityIsSet;
-    CatalogsStatus m_Status;
+    org::openapitools::server::model::CatalogsStatus m_Status;
     bool m_StatusIsSet;
     
 };

@@ -94,6 +94,8 @@ pub enum CampaignsSlashUpdateResponse {
 }
 
 
+
+
 /// Campaigns
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -103,6 +105,7 @@ pub trait Campaigns<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// CampaignTargetingAnalyticsSlashGet - GET /v5/ad_accounts/{ad_account_id}/campaigns/targeting_analytics
     async fn campaign_targeting_analytics_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -115,6 +118,7 @@ pub trait Campaigns<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// CampaignsSlashAnalytics - GET /v5/ad_accounts/{ad_account_id}/campaigns/analytics
     async fn campaigns_slash_analytics(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -127,6 +131,7 @@ pub trait Campaigns<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// CampaignsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/campaigns
     async fn campaigns_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -139,6 +144,7 @@ pub trait Campaigns<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// CampaignsSlashGet - GET /v5/ad_accounts/{ad_account_id}/campaigns/{campaign_id}
     async fn campaigns_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -150,6 +156,7 @@ pub trait Campaigns<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// CampaignsSlashList - GET /v5/ad_accounts/{ad_account_id}/campaigns
     async fn campaigns_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -162,6 +169,7 @@ pub trait Campaigns<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// CampaignsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/campaigns
     async fn campaigns_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

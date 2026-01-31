@@ -35,6 +35,7 @@ class UserAccountApiTest {
         val pageSize: kotlin.Int = TODO()
         val explicitFollowing: kotlin.Boolean = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<BoardsUserFollowsList200Response> = api.boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId)
 
         // TODO: test validations
@@ -50,6 +51,7 @@ class UserAccountApiTest {
     fun followUserUpdateTest() {
         val username: kotlin.String = TODO()
         val followUserRequest: FollowUserRequest = TODO()
+        
         val response: ResponseEntity<UserSummary> = api.followUserUpdate(username, followUserRequest)
 
         // TODO: test validations
@@ -65,6 +67,7 @@ class UserAccountApiTest {
     fun followersListTest() {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<FollowersList200Response> = api.followersList(bookmark, pageSize)
 
         // TODO: test validations
@@ -78,6 +81,7 @@ class UserAccountApiTest {
      */
     @Test
     fun linkedBusinessAccountsGetTest() {
+        
         val response: ResponseEntity<List<LinkedBusiness>> = api.linkedBusinessAccountsGet()
 
         // TODO: test validations
@@ -92,6 +96,7 @@ class UserAccountApiTest {
     @Test
     fun unverifyWebsiteDeleteTest() {
         val website: kotlin.String = TODO()
+        
         val response: ResponseEntity<Unit> = api.unverifyWebsiteDelete(website)
 
         // TODO: test validations
@@ -115,6 +120,7 @@ class UserAccountApiTest {
         val metricTypes: kotlin.collections.List<kotlin.String>? = TODO()
         val splitField: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<Map<String, AnalyticsMetricsResponse>> = api.userAccountAnalytics(startDate, endDate, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, splitField, adAccountId)
 
         // TODO: test validations
@@ -140,6 +146,7 @@ class UserAccountApiTest {
         val numOfPins: kotlin.Int = TODO()
         val createdInLastNDays: kotlin.Int? = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<TopPinsAnalyticsResponse> = api.userAccountAnalyticsTopPins(startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId)
 
         // TODO: test validations
@@ -165,6 +172,7 @@ class UserAccountApiTest {
         val numOfPins: kotlin.Int = TODO()
         val createdInLastNDays: kotlin.Int? = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<TopVideoPinsAnalyticsResponse> = api.userAccountAnalyticsTopVideoPins(startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId)
 
         // TODO: test validations
@@ -179,6 +187,7 @@ class UserAccountApiTest {
     @Test
     fun userAccountGetTest() {
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<Account> = api.userAccountGet(adAccountId)
 
         // TODO: test validations
@@ -197,6 +206,7 @@ class UserAccountApiTest {
         val feedType: UserFollowingFeedType = TODO()
         val explicitFollowing: kotlin.Boolean = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<UserFollowingGet200Response> = api.userFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId)
 
         // TODO: test validations
@@ -212,6 +222,7 @@ class UserAccountApiTest {
     fun userWebsitesGetTest() {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<UserWebsitesGet200Response> = api.userWebsitesGet(bookmark, pageSize)
 
         // TODO: test validations
@@ -227,6 +238,7 @@ class UserAccountApiTest {
     fun verifyWebsiteUpdateTest() {
         val userWebsiteVerifyRequest: UserWebsiteVerifyRequest = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<UserWebsiteSummary> = api.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
 
         // TODO: test validations
@@ -241,6 +253,7 @@ class UserAccountApiTest {
     @Test
     fun websiteVerificationGetTest() {
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<UserWebsiteVerificationCode> = api.websiteVerificationGet(adAccountId)
 
         // TODO: test validations

@@ -12,36 +12,21 @@
 /**
  * Reporting targeting type for campaigns
  */
-export type AdsAnalyticsCampaignTargetingType = 'KEYWORD' | 'APPTYPE' | 'GENDER' | 'LOCATION' | 'PLACEMENT' | 'COUNTRY' | 'TARGETED_INTEREST' | 'PINNER_INTEREST' | 'AUDIENCE_INCLUDE' | 'GEO' | 'AGE_BUCKET' | 'REGION' | 'CREATIVE_TYPE' | 'AGE_BUCKET_AND_GENDER';
-
 export const AdsAnalyticsCampaignTargetingType = {
-
-    Keyword: 'KEYWORD' as AdsAnalyticsCampaignTargetingType,
-
-    Apptype: 'APPTYPE' as AdsAnalyticsCampaignTargetingType,
-
-    Gender: 'GENDER' as AdsAnalyticsCampaignTargetingType,
-
-    Location: 'LOCATION' as AdsAnalyticsCampaignTargetingType,
-
-    Placement: 'PLACEMENT' as AdsAnalyticsCampaignTargetingType,
-
-    Country: 'COUNTRY' as AdsAnalyticsCampaignTargetingType,
-
-    TargetedInterest: 'TARGETED_INTEREST' as AdsAnalyticsCampaignTargetingType,
-
-    PinnerInterest: 'PINNER_INTEREST' as AdsAnalyticsCampaignTargetingType,
-
-    AudienceInclude: 'AUDIENCE_INCLUDE' as AdsAnalyticsCampaignTargetingType,
-
-    Geo: 'GEO' as AdsAnalyticsCampaignTargetingType,
-
-    AgeBucket: 'AGE_BUCKET' as AdsAnalyticsCampaignTargetingType,
-
-    Region: 'REGION' as AdsAnalyticsCampaignTargetingType,
-
-    CreativeType: 'CREATIVE_TYPE' as AdsAnalyticsCampaignTargetingType,
-
-    AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER' as AdsAnalyticsCampaignTargetingType
-};
+    Keyword: 'KEYWORD',
+    Apptype: 'APPTYPE',
+    Gender: 'GENDER',
+    Location: 'LOCATION',
+    Placement: 'PLACEMENT',
+    Country: 'COUNTRY',
+    TargetedInterest: 'TARGETED_INTEREST',
+    PinnerInterest: 'PINNER_INTEREST',
+    AudienceInclude: 'AUDIENCE_INCLUDE',
+    Geo: 'GEO',
+    AgeBucket: 'AGE_BUCKET',
+    Region: 'REGION',
+    CreativeType: 'CREATIVE_TYPE',
+    AgeBucketAndGender: 'AGE_BUCKET_AND_GENDER'
+} as const;
+export type AdsAnalyticsCampaignTargetingType = typeof AdsAnalyticsCampaignTargetingType[keyof typeof AdsAnalyticsCampaignTargetingType];
 

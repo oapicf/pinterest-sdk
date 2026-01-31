@@ -10,7 +10,7 @@ Describe -tag 'PSOpenAPITools' -name 'OauthAccessTokenRequestRefresh' {
     Context 'OauthAccessTokenRequestRefresh' {
         It 'Initialize-OauthAccessTokenRequestRefresh' {
             # a simple test to create an object
-            #$NewObject = Initialize-OauthAccessTokenRequestRefresh -GrantType "TEST_VALUE" -RefreshToken "TEST_VALUE" -Scope "TEST_VALUE" -RefreshOn "TEST_VALUE"
+            #$NewObject = Initialize-OauthAccessTokenRequestRefresh -RefreshToken "TEST_VALUE" -Scope "TEST_VALUE" -RefreshOn "TEST_VALUE" -GrantType "TEST_VALUE"
             #$NewObject | Should -BeOfType OauthAccessTokenRequestRefresh
             #$NewObject.property | Should -Be 0
         }

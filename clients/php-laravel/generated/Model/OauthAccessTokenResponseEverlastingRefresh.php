@@ -25,7 +25,6 @@ namespace OpenAPI\Server\Model;
 
 /**
  * OauthAccessTokenResponseEverlastingRefresh
- * @description A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
  */
 use Crell\Serde\Renaming\Cases;
 use Crell\Serde\Attributes as Serde;
@@ -36,7 +35,16 @@ class OauthAccessTokenResponseEverlastingRefresh
     /**
     *
     * 
-    * @param string $responseType
+    * @param string $refreshToken
+    *
+    * 
+    * @param int $refreshTokenExpiresIn
+    *
+    * 
+    * @param int $refreshTokenExpiresAt
+    *
+    * 
+    * @param \OpenAPI\Server\Model\OauthAccessTokenRequestGrantType $responseType
     *
     * 
     * @param string $accessToken
@@ -49,26 +57,17 @@ class OauthAccessTokenResponseEverlastingRefresh
     *
     * 
     * @param string $scope
-    *
-    * 
-    * @param string $refreshToken
-    *
-    * 
-    * @param int $refreshTokenExpiresIn
-    *
-    * 
-    * @param int $refreshTokenExpiresAt
     */
 
     public function __construct(
-        public string $responseType,
+        public string $refreshToken,
+        public int $refreshTokenExpiresIn,
+        public int $refreshTokenExpiresAt,
+        public \OpenAPI\Server\Model\OauthAccessTokenRequestGrantType $responseType,
         public string $accessToken,
         public string $tokenType = 'bearer',
         public int $expiresIn,
         public string $scope,
-        public string $refreshToken,
-        public int $refreshTokenExpiresIn,
-        public int $refreshTokenExpiresAt,
     ) {}
 }
 

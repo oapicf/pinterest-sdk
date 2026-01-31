@@ -107,8 +107,8 @@ class CustomerListsApiSimulation extends Simulation {
         .exec(http("customerListsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/customer_lists")
         .queryParam("page_size","${page_size}")
-        .queryParam("order","${order}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("order","${order}")
 )
 
     // Run scncustomerListsList with warm up and reach a constant rate for entire duration

@@ -16,15 +16,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TemplateResponseDateRange  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private TemplateResponseDateRangeDynamicDateRange dynamicDateRange;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private TemplateResponseDateRangeRelativeDateRange relativeDateRange;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private TemplateResponseDateRangeAbsoluteDateRange absoluteDateRange;
  /**
    * Get dynamicDateRange

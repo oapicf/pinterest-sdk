@@ -14,7 +14,6 @@
 
 #include "OpenAPIBaseModel.h"
 #include "OpenAPIBaseInviteDataResponseInviteData.h"
-#include "OpenAPIBusinessAccessUserSummary.h"
 
 namespace OpenAPI
 {
@@ -22,7 +21,7 @@ namespace OpenAPI
 /*
  * OpenAPIInviteBusinessRoleBinding
  *
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+ * 
  */
 class OPENAPI_API OpenAPIInviteBusinessRoleBinding : public Model
 {
@@ -31,17 +30,17 @@ public:
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 	void WriteJson(JsonWriter& Writer) const final;
 
-	/* Unique identifier for the business that created the invite/request. */
-	TOptional<FString> CreatedByBusinessId;
-	/* Unique identifier for the user that created the invite/request. */
-	TOptional<FString> CreatedByUserId;
-	/* Metadata for the user that updated the invite/request. */
-	TOptional<OpenAPIBusinessAccessUserSummary> User;
 	/* Unique identifier of the invite/request. */
 	TOptional<FString> Id;
 	TOptional<OpenAPIBaseInviteDataResponseInviteData> InviteData;
 	/* Indicates whether the invite/request was received. */
 	TOptional<bool> IsReceivedInvite;
+	/* Metadata for the user that updated the invite/request. */
+	TOptional<TSharedPtr<FJsonObject>> User;
+	/* Unique identifier for the business that created the invite/request. */
+	TOptional<FString> CreatedByBusinessId;
+	/* Unique identifier for the user that created the invite/request. */
+	TOptional<FString> CreatedByUserId;
 };
 
 }

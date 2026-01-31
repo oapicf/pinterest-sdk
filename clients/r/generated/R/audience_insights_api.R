@@ -119,13 +119,19 @@ AudienceInsightsApi <- R6::R6Class(
         stop("Missing required parameter `audience_insight_type`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AudienceInsightsApi$AudienceInsightsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AudienceInsightsApi$AudienceInsightsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AudienceInsightsApi$AudienceInsightsGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`audience_insight_type`) && is.null(`audience_insight_type`)) {
+        stop("Invalid value for `audience_insight_type` when calling AudienceInsightsApi$AudienceInsightsGet, `audience_insight_type` is not nullable")
+      }
 
       query_params[["audience_insight_type"]] <- `audience_insight_type`
 
@@ -229,10 +235,13 @@ AudienceInsightsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AudienceInsightsApi$AudienceInsightsScopeAndTypeGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AudienceInsightsApi$AudienceInsightsScopeAndTypeGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AudienceInsightsApi$AudienceInsightsScopeAndTypeGet, must conform to the pattern ^\\d+$.")
       }
 

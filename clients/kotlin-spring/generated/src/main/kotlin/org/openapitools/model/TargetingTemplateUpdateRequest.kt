@@ -28,7 +28,7 @@ data class TargetingTemplateUpdateRequest(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "643", required = true, description = "Targeting template ID")
     @get:JsonProperty("id", required = true) val id: kotlin.String
-    ) {
+) {
 
     /**
     * 
@@ -42,7 +42,8 @@ data class TargetingTemplateUpdateRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): OperationType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingTemplateUpdateRequest'")
             }
         }
     }

@@ -9,10 +9,35 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type UsersForIndividualAssetResponse* = object
   ## An object containing the permissions a business member has on the asset.
-  assetId*: string ## Unique identifier of a business asset.
-  memberId*: string ## Unique identifier of the business member with asset access.
-  permissions*: seq[string] ## Permission levels member or partner has on an asset.
+  assetId*: Option[string] ## Unique identifier of a business asset.
+  memberId*: Option[string] ## Unique identifier of the business member with asset access.
+  permissions*: Option[seq[string]] ## Permission levels member or partner has on an asset.
+
+
+# Custom JSON deserialization for UsersForIndividualAssetResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[UsersForIndividualAssetResponse]): UsersForIndividualAssetResponse =
+  result = UsersForIndividualAssetResponse()
+  if node.kind == JObject:
+    if node.hasKey("asset_id") and node["asset_id"].kind != JNull:
+      result.assetId = some(to(node["asset_id"], typeof(result.assetId.get())))
+    if node.hasKey("member_id") and node["member_id"].kind != JNull:
+      result.memberId = some(to(node["member_id"], typeof(result.memberId.get())))
+    if node.hasKey("permissions") and node["permissions"].kind != JNull:
+      result.permissions = some(to(node["permissions"], typeof(result.permissions.get())))
+
+# Custom JSON serialization for UsersForIndividualAssetResponse with custom field names
+proc `%`*(obj: UsersForIndividualAssetResponse): JsonNode =
+  result = newJObject()
+  if obj.assetId.isSome():
+    result["asset_id"] = %obj.assetId.get()
+  if obj.memberId.isSome():
+    result["member_id"] = %obj.memberId.get()
+  if obj.permissions.isSome():
+    result["permissions"] = %obj.permissions.get()
+

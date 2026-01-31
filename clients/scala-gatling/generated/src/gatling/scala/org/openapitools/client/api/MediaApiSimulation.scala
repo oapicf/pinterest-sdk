@@ -100,8 +100,8 @@ class MediaApiSimulation extends Simulation {
         .feed(media/listQUERYFeeder)
         .exec(http("mediaList")
         .httpRequest("GET","/media")
-        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("page_size","${page_size}")
 )
 
     // Run scnmediaList with warm up and reach a constant rate for entire duration

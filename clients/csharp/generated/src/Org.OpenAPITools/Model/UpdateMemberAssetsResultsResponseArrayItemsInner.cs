@@ -121,8 +121,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "response":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                response = new Option<UsersForIndividualAssetResponse?>(JsonSerializer.Deserialize<UsersForIndividualAssetResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            response = new Option<UsersForIndividualAssetResponse?>(JsonSerializer.Deserialize<UsersForIndividualAssetResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

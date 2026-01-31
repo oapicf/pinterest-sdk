@@ -14,17 +14,7 @@ package openapi
 
 
 
-// InviteBusinessRoleBinding - An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
 type InviteBusinessRoleBinding struct {
-
-	// Unique identifier for the business that created the invite/request.
-	CreatedByBusinessId string `json:"created_by_business_id,omitempty"`
-
-	// Unique identifier for the user that created the invite/request.
-	CreatedByUserId string `json:"created_by_user_id,omitempty"`
-
-	// Metadata for the user that updated the invite/request.
-	User BusinessAccessUserSummary `json:"user,omitempty"`
 
 	// Unique identifier of the invite/request.
 	Id string `json:"id,omitempty" validate:"regexp=^\\\\d+$"`
@@ -33,13 +23,19 @@ type InviteBusinessRoleBinding struct {
 
 	// Indicates whether the invite/request was received.
 	IsReceivedInvite bool `json:"is_received_invite,omitempty"`
+
+	// Metadata for the user that updated the invite/request.
+	User map[string]interface{} `json:"user,omitempty"`
+
+	// Unique identifier for the business that created the invite/request.
+	CreatedByBusinessId string `json:"created_by_business_id,omitempty"`
+
+	// Unique identifier for the user that created the invite/request.
+	CreatedByUserId string `json:"created_by_user_id,omitempty"`
 }
 
 // AssertInviteBusinessRoleBindingRequired checks if the required fields are not zero-ed
 func AssertInviteBusinessRoleBindingRequired(obj InviteBusinessRoleBinding) error {
-	if err := AssertBusinessAccessUserSummaryRequired(obj.User); err != nil {
-		return err
-	}
 	if err := AssertBaseInviteDataResponseInviteDataRequired(obj.InviteData); err != nil {
 		return err
 	}
@@ -48,9 +44,6 @@ func AssertInviteBusinessRoleBindingRequired(obj InviteBusinessRoleBinding) erro
 
 // AssertInviteBusinessRoleBindingConstraints checks if the values respects the defined constraints
 func AssertInviteBusinessRoleBindingConstraints(obj InviteBusinessRoleBinding) error {
-	if err := AssertBusinessAccessUserSummaryConstraints(obj.User); err != nil {
-		return err
-	}
 	if err := AssertBaseInviteDataResponseInviteDataConstraints(obj.InviteData); err != nil {
 		return err
 	}

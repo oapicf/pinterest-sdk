@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelProductGroupProductCounts", description = "Product counts for a Hotel CatalogsProductGroup")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProductGroupProductCounts implements CatalogsProductGroupProductCountsVertical {
 
   /**
@@ -34,7 +34,7 @@ public class CatalogsHotelProductGroupProductCounts implements CatalogsProductGr
   public enum CatalogTypeEnum {
     HOTEL("HOTEL");
 
-    private String value;
+    private final String value;
 
     CatalogTypeEnum(String value) {
       this.value = value;
@@ -107,7 +107,7 @@ public class CatalogsHotelProductGroupProductCounts implements CatalogsProductGr
    * minimum: 0
    * @return total
    */
-  @NotNull @Valid @DecimalMin("0") 
+  @NotNull @Valid @DecimalMin(value = "0") 
   @Schema(name = "total", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("total")
   public BigDecimal getTotal() {

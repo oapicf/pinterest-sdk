@@ -77,12 +77,8 @@ class LeadFormsController extends Controller
 
 
 
-        try {
-            $apiResult = $this->api->leadFormGet($adAccountId, $leadFormId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->leadFormGet($adAccountId, $leadFormId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LeadFormResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -131,12 +127,8 @@ class LeadFormsController extends Controller
 
         $leadFormTestRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\LeadFormTestRequest::class);
 
-        try {
-            $apiResult = $this->api->leadFormTestCreate($adAccountId, $leadFormId, $leadFormTestRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->leadFormTestCreate($adAccountId, $leadFormId, $leadFormTestRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LeadFormTestResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -184,12 +176,8 @@ class LeadFormsController extends Controller
 
         $leadFormCreateRequest = $request->get('leadFormCreateRequest');
 
-        try {
-            $apiResult = $this->api->leadFormsCreate($adAccountId, $leadFormCreateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->leadFormsCreate($adAccountId, $leadFormCreateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LeadFormArrayResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -253,12 +241,8 @@ class LeadFormsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->leadFormsList($adAccountId, $pageSize, $order, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->leadFormsList($adAccountId, $pageSize, $order, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LeadFormsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -302,12 +286,8 @@ class LeadFormsController extends Controller
 
         $leadFormUpdateRequest = $request->get('leadFormUpdateRequest');
 
-        try {
-            $apiResult = $this->api->leadFormsUpdate($adAccountId, $leadFormUpdateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->leadFormsUpdate($adAccountId, $leadFormUpdateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\LeadFormArrayResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

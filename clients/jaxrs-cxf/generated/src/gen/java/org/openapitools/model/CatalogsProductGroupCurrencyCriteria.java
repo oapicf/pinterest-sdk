@@ -2,27 +2,30 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.NonNullableCatalogsCurrency;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * A currency filter. This filter cannot be negated
- **/
+ * A currency filter. This filter cannot be negated
+ */
 @ApiModel(description="A currency filter. This filter cannot be negated")
 
 public class CatalogsProductGroupCurrencyCriteria  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private NonNullableCatalogsCurrency values;
 
   @ApiModelProperty(value = "")
+
   private Boolean negated = false;
  /**
    * Get values

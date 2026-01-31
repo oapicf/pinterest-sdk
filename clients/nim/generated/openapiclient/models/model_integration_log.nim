@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_integration_log_client_error
 import model_integration_log_client_request
@@ -27,39 +29,119 @@ type IntegrationLog* = object
   clientTimestamp*: int ## Timestamp in milliseconds of when the log was executed at the client.
   eventType*: EventType ## Log event type
   logLevel*: LogLevel ## Log level type
-  externalBusinessId*: string
-  advertiserId*: string
-  merchantId*: string
-  tagId*: string
-  feedProfileId*: string
-  message*: string ## Explanation of the event that occured.
-  appVersionNumber*: string ## Version number of the integration application.
-  platformVersionNumber*: string ## Version number of the platform the integration application is running on.
-  error*: IntegrationLogClientError
-  request*: IntegrationLogClientRequest
+  externalBusinessId*: Option[string]
+  advertiserId*: Option[string]
+  merchantId*: Option[string]
+  tagId*: Option[string]
+  feedProfileId*: Option[string]
+  message*: Option[string] ## Explanation of the event that occured.
+  appVersionNumber*: Option[string] ## Version number of the integration application.
+  platformVersionNumber*: Option[string] ## Version number of the platform the integration application is running on.
+  error*: Option[IntegrationLogClientError]
+  request*: Option[IntegrationLogClientRequest]
 
 func `%`*(v: EventType): JsonNode =
-  let str = case v:
-    of EventType.APP: "APP"
-    of EventType.API: "API"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of EventType.APP: %"APP"
+    of EventType.API: %"API"
 func `$`*(v: EventType): string =
   result = case v:
-    of EventType.APP: "APP"
-    of EventType.API: "API"
+    of EventType.APP: $("APP")
+    of EventType.API: $("API")
+
+proc to*(node: JsonNode, T: typedesc[EventType]): EventType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum EventType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("APP"):
+    return EventType.APP
+  of $("API"):
+    return EventType.API
+  else:
+    raise newException(ValueError, "Invalid enum value for EventType: " & strVal)
 
 func `%`*(v: LogLevel): JsonNode =
-  let str = case v:
-    of LogLevel.INFO: "INFO"
-    of LogLevel.WARN: "WARN"
-    of LogLevel.ERROR: "ERROR"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of LogLevel.INFO: %"INFO"
+    of LogLevel.WARN: %"WARN"
+    of LogLevel.ERROR: %"ERROR"
 func `$`*(v: LogLevel): string =
   result = case v:
-    of LogLevel.INFO: "INFO"
-    of LogLevel.WARN: "WARN"
-    of LogLevel.ERROR: "ERROR"
+    of LogLevel.INFO: $("INFO")
+    of LogLevel.WARN: $("WARN")
+    of LogLevel.ERROR: $("ERROR")
+
+proc to*(node: JsonNode, T: typedesc[LogLevel]): LogLevel =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum LogLevel, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("INFO"):
+    return LogLevel.INFO
+  of $("WARN"):
+    return LogLevel.WARN
+  of $("ERROR"):
+    return LogLevel.ERROR
+  else:
+    raise newException(ValueError, "Invalid enum value for LogLevel: " & strVal)
+
+
+# Custom JSON deserialization for IntegrationLog with custom field names
+proc to*(node: JsonNode, T: typedesc[IntegrationLog]): IntegrationLog =
+  result = IntegrationLog()
+  if node.kind == JObject:
+    if node.hasKey("client_timestamp"):
+      result.clientTimestamp = to(node["client_timestamp"], int)
+    if node.hasKey("event_type"):
+      result.eventType = to(node["event_type"], EventType)
+    if node.hasKey("log_level"):
+      result.logLevel = to(node["log_level"], LogLevel)
+    if node.hasKey("external_business_id") and node["external_business_id"].kind != JNull:
+      result.externalBusinessId = some(to(node["external_business_id"], typeof(result.externalBusinessId.get())))
+    if node.hasKey("advertiser_id") and node["advertiser_id"].kind != JNull:
+      result.advertiserId = some(to(node["advertiser_id"], typeof(result.advertiserId.get())))
+    if node.hasKey("merchant_id") and node["merchant_id"].kind != JNull:
+      result.merchantId = some(to(node["merchant_id"], typeof(result.merchantId.get())))
+    if node.hasKey("tag_id") and node["tag_id"].kind != JNull:
+      result.tagId = some(to(node["tag_id"], typeof(result.tagId.get())))
+    if node.hasKey("feed_profile_id") and node["feed_profile_id"].kind != JNull:
+      result.feedProfileId = some(to(node["feed_profile_id"], typeof(result.feedProfileId.get())))
+    if node.hasKey("message") and node["message"].kind != JNull:
+      result.message = some(to(node["message"], typeof(result.message.get())))
+    if node.hasKey("app_version_number") and node["app_version_number"].kind != JNull:
+      result.appVersionNumber = some(to(node["app_version_number"], typeof(result.appVersionNumber.get())))
+    if node.hasKey("platform_version_number") and node["platform_version_number"].kind != JNull:
+      result.platformVersionNumber = some(to(node["platform_version_number"], typeof(result.platformVersionNumber.get())))
+    if node.hasKey("error") and node["error"].kind != JNull:
+      result.error = some(to(node["error"], typeof(result.error.get())))
+    if node.hasKey("request") and node["request"].kind != JNull:
+      result.request = some(to(node["request"], typeof(result.request.get())))
+
+# Custom JSON serialization for IntegrationLog with custom field names
+proc `%`*(obj: IntegrationLog): JsonNode =
+  result = newJObject()
+  result["client_timestamp"] = %obj.clientTimestamp
+  result["event_type"] = %obj.eventType
+  result["log_level"] = %obj.logLevel
+  if obj.externalBusinessId.isSome():
+    result["external_business_id"] = %obj.externalBusinessId.get()
+  if obj.advertiserId.isSome():
+    result["advertiser_id"] = %obj.advertiserId.get()
+  if obj.merchantId.isSome():
+    result["merchant_id"] = %obj.merchantId.get()
+  if obj.tagId.isSome():
+    result["tag_id"] = %obj.tagId.get()
+  if obj.feedProfileId.isSome():
+    result["feed_profile_id"] = %obj.feedProfileId.get()
+  if obj.message.isSome():
+    result["message"] = %obj.message.get()
+  if obj.appVersionNumber.isSome():
+    result["app_version_number"] = %obj.appVersionNumber.get()
+  if obj.platformVersionNumber.isSome():
+    result["platform_version_number"] = %obj.platformVersionNumber.get()
+  if obj.error.isSome():
+    result["error"] = %obj.error.get()
+  if obj.request.isSome():
+    result["request"] = %obj.request.get()
+

@@ -31,7 +31,7 @@ data class MembersToDeleteBodyMembersInner(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("business_role", required = true) val businessRole: BusinessRoleForMembers
-    ) {
+) {
 
 }
 

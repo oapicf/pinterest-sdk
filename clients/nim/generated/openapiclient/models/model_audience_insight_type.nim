@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AudienceInsightType* = object
-  ## 
+type AudienceInsightType* {.pure.} = enum
+  YOURTOTALAUDIENCE
+  YOURENGAGEDAUDIENCE
+  PINTERESTTOTALAUDIENCE
+
+func `%`*(v: AudienceInsightType): JsonNode =
+  result = case v:
+    of AudienceInsightType.YOURTOTALAUDIENCE: %"YOUR_TOTAL_AUDIENCE"
+    of AudienceInsightType.YOURENGAGEDAUDIENCE: %"YOUR_ENGAGED_AUDIENCE"
+    of AudienceInsightType.PINTERESTTOTALAUDIENCE: %"PINTEREST_TOTAL_AUDIENCE"
+
+func `$`*(v: AudienceInsightType): string =
+  result = case v:
+    of AudienceInsightType.YOURTOTALAUDIENCE: $("YOUR_TOTAL_AUDIENCE")
+    of AudienceInsightType.YOURENGAGEDAUDIENCE: $("YOUR_ENGAGED_AUDIENCE")
+    of AudienceInsightType.PINTERESTTOTALAUDIENCE: $("PINTEREST_TOTAL_AUDIENCE")
+
+proc to*(node: JsonNode, T: typedesc[AudienceInsightType]): AudienceInsightType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AudienceInsightType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("YOUR_TOTAL_AUDIENCE"):
+    return AudienceInsightType.YOURTOTALAUDIENCE
+  of $("YOUR_ENGAGED_AUDIENCE"):
+    return AudienceInsightType.YOURENGAGEDAUDIENCE
+  of $("PINTEREST_TOTAL_AUDIENCE"):
+    return AudienceInsightType.PINTERESTTOTALAUDIENCE
+  else:
+    raise newException(ValueError, "Invalid enum value for AudienceInsightType: " & strVal)
+

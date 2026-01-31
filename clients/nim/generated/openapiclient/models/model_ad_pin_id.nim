@@ -9,8 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AdPinId* = object
   ## 
-  pinId*: string ## Pin ID.
+  pinId*: Option[string] ## Pin ID.
+
+
+# Custom JSON deserialization for AdPinId with custom field names
+proc to*(node: JsonNode, T: typedesc[AdPinId]): AdPinId =
+  result = AdPinId()
+  if node.kind == JObject:
+    if node.hasKey("pin_id") and node["pin_id"].kind != JNull:
+      result.pinId = some(to(node["pin_id"], typeof(result.pinId.get())))
+
+# Custom JSON serialization for AdPinId with custom field names
+proc `%`*(obj: AdPinId): JsonNode =
+  result = newJObject()
+  if obj.pinId.isSome():
+    result["pin_id"] = %obj.pinId.get()
+

@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  * AssetGroupBinding
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AssetGroupBinding {
 
   private @Nullable String id;
@@ -51,7 +51,7 @@ public class AssetGroupBinding {
 
   private JsonNullable<BusinessAccessUserSummary> createdBy = JsonNullable.<BusinessAccessUserSummary>undefined();
 
-  public AssetGroupBinding id(String id) {
+  public AssetGroupBinding id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -63,11 +63,11 @@ public class AssetGroupBinding {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "666791336903426391", description = "Asset Group ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 

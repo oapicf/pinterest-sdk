@@ -11,12 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ImageDetails  {
   
   @ApiModelProperty(required = true, value = "")
+
   private Integer width;
 
   @ApiModelProperty(required = true, value = "")
+
   private Integer height;
 
   @ApiModelProperty(required = true, value = "")
+
   private String url;
  /**
    * Get width

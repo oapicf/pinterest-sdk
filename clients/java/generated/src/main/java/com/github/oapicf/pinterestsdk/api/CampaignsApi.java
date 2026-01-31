@@ -109,7 +109,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call campaignTargetingAnalyticsGetCall(String adAccountId, List<String> campaignIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call campaignTargetingAnalyticsGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<String> campaignIds, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<AdsAnalyticsCampaignTargetingType> targetingTypes, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime, @javax.annotation.Nullable ConversionReportAttributionType attributionTypes, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -199,7 +199,7 @@ public class CampaignsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call campaignTargetingAnalyticsGetValidateBeforeCall(String adAccountId, List<String> campaignIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call campaignTargetingAnalyticsGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<String> campaignIds, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<AdsAnalyticsCampaignTargetingType> targetingTypes, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime, @javax.annotation.Nullable ConversionReportAttributionType attributionTypes, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling campaignTargetingAnalyticsGet(Async)");
@@ -264,7 +264,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public MetricsResponse campaignTargetingAnalyticsGet(String adAccountId, List<String> campaignIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) throws ApiException {
+    public MetricsResponse campaignTargetingAnalyticsGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<String> campaignIds, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<AdsAnalyticsCampaignTargetingType> targetingTypes, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime, @javax.annotation.Nullable ConversionReportAttributionType attributionTypes) throws ApiException {
         ApiResponse<MetricsResponse> localVarResp = campaignTargetingAnalyticsGetWithHttpInfo(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes);
         return localVarResp.getData();
     }
@@ -294,7 +294,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MetricsResponse> campaignTargetingAnalyticsGetWithHttpInfo(String adAccountId, List<String> campaignIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes) throws ApiException {
+    public ApiResponse<MetricsResponse> campaignTargetingAnalyticsGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<String> campaignIds, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<AdsAnalyticsCampaignTargetingType> targetingTypes, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime, @javax.annotation.Nullable ConversionReportAttributionType attributionTypes) throws ApiException {
         okhttp3.Call localVarCall = campaignTargetingAnalyticsGetValidateBeforeCall(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, null);
         Type localVarReturnType = new TypeToken<MetricsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -326,7 +326,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call campaignTargetingAnalyticsGetAsync(String adAccountId, List<String> campaignIds, LocalDate startDate, LocalDate endDate, List<AdsAnalyticsCampaignTargetingType> targetingTypes, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ConversionReportAttributionType attributionTypes, final ApiCallback<MetricsResponse> _callback) throws ApiException {
+    public okhttp3.Call campaignTargetingAnalyticsGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<String> campaignIds, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<AdsAnalyticsCampaignTargetingType> targetingTypes, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime, @javax.annotation.Nullable ConversionReportAttributionType attributionTypes, final ApiCallback<MetricsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = campaignTargetingAnalyticsGetValidateBeforeCall(adAccountId, campaignIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, _callback);
         Type localVarReturnType = new TypeToken<MetricsResponse>(){}.getType();
@@ -357,7 +357,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call campaignsAnalyticsCall(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> campaignIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call campaignsAnalyticsCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> campaignIds, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -439,7 +439,7 @@ public class CampaignsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call campaignsAnalyticsValidateBeforeCall(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> campaignIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call campaignsAnalyticsValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> campaignIds, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling campaignsAnalytics(Async)");
@@ -498,7 +498,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public List<CampaignsAnalyticsResponseInner> campaignsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> campaignIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) throws ApiException {
+    public List<CampaignsAnalyticsResponseInner> campaignsAnalytics(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> campaignIds, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime) throws ApiException {
         ApiResponse<List<CampaignsAnalyticsResponseInner>> localVarResp = campaignsAnalyticsWithHttpInfo(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime);
         return localVarResp.getData();
     }
@@ -527,7 +527,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<CampaignsAnalyticsResponseInner>> campaignsAnalyticsWithHttpInfo(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> campaignIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime) throws ApiException {
+    public ApiResponse<List<CampaignsAnalyticsResponseInner>> campaignsAnalyticsWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> campaignIds, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime) throws ApiException {
         okhttp3.Call localVarCall = campaignsAnalyticsValidateBeforeCall(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, null);
         Type localVarReturnType = new TypeToken<List<CampaignsAnalyticsResponseInner>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -558,7 +558,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call campaignsAnalyticsAsync(String adAccountId, LocalDate startDate, LocalDate endDate, List<String> campaignIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, final ApiCallback<List<CampaignsAnalyticsResponseInner>> _callback) throws ApiException {
+    public okhttp3.Call campaignsAnalyticsAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> campaignIds, @javax.annotation.Nonnull List<String> columns, @javax.annotation.Nonnull Granularity granularity, @javax.annotation.Nullable Integer clickWindowDays, @javax.annotation.Nullable Integer engagementWindowDays, @javax.annotation.Nullable Integer viewWindowDays, @javax.annotation.Nullable String conversionReportTime, final ApiCallback<List<CampaignsAnalyticsResponseInner>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = campaignsAnalyticsValidateBeforeCall(adAccountId, startDate, endDate, campaignIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, _callback);
         Type localVarReturnType = new TypeToken<List<CampaignsAnalyticsResponseInner>>(){}.getType();
@@ -580,7 +580,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call campaignsCreateCall(String adAccountId, List<CampaignCreateRequest> campaignCreateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call campaignsCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<CampaignCreateRequest> campaignCreateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -627,7 +627,7 @@ public class CampaignsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call campaignsCreateValidateBeforeCall(String adAccountId, List<CampaignCreateRequest> campaignCreateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call campaignsCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<CampaignCreateRequest> campaignCreateRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling campaignsCreate(Async)");
@@ -657,7 +657,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignCreateResponse campaignsCreate(String adAccountId, List<CampaignCreateRequest> campaignCreateRequest) throws ApiException {
+    public CampaignCreateResponse campaignsCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<CampaignCreateRequest> campaignCreateRequest) throws ApiException {
         ApiResponse<CampaignCreateResponse> localVarResp = campaignsCreateWithHttpInfo(adAccountId, campaignCreateRequest);
         return localVarResp.getData();
     }
@@ -677,7 +677,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignCreateResponse> campaignsCreateWithHttpInfo(String adAccountId, List<CampaignCreateRequest> campaignCreateRequest) throws ApiException {
+    public ApiResponse<CampaignCreateResponse> campaignsCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<CampaignCreateRequest> campaignCreateRequest) throws ApiException {
         okhttp3.Call localVarCall = campaignsCreateValidateBeforeCall(adAccountId, campaignCreateRequest, null);
         Type localVarReturnType = new TypeToken<CampaignCreateResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -699,7 +699,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call campaignsCreateAsync(String adAccountId, List<CampaignCreateRequest> campaignCreateRequest, final ApiCallback<CampaignCreateResponse> _callback) throws ApiException {
+    public okhttp3.Call campaignsCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<CampaignCreateRequest> campaignCreateRequest, final ApiCallback<CampaignCreateResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = campaignsCreateValidateBeforeCall(adAccountId, campaignCreateRequest, _callback);
         Type localVarReturnType = new TypeToken<CampaignCreateResponse>(){}.getType();
@@ -721,7 +721,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call campaignsGetCall(String adAccountId, String campaignId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call campaignsGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String campaignId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -768,7 +768,7 @@ public class CampaignsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call campaignsGetValidateBeforeCall(String adAccountId, String campaignId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call campaignsGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String campaignId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling campaignsGet(Async)");
@@ -798,7 +798,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignResponse campaignsGet(String adAccountId, String campaignId) throws ApiException {
+    public CampaignResponse campaignsGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String campaignId) throws ApiException {
         ApiResponse<CampaignResponse> localVarResp = campaignsGetWithHttpInfo(adAccountId, campaignId);
         return localVarResp.getData();
     }
@@ -818,7 +818,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignResponse> campaignsGetWithHttpInfo(String adAccountId, String campaignId) throws ApiException {
+    public ApiResponse<CampaignResponse> campaignsGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String campaignId) throws ApiException {
         okhttp3.Call localVarCall = campaignsGetValidateBeforeCall(adAccountId, campaignId, null);
         Type localVarReturnType = new TypeToken<CampaignResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -840,7 +840,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call campaignsGetAsync(String adAccountId, String campaignId, final ApiCallback<CampaignResponse> _callback) throws ApiException {
+    public okhttp3.Call campaignsGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String campaignId, final ApiCallback<CampaignResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = campaignsGetValidateBeforeCall(adAccountId, campaignId, _callback);
         Type localVarReturnType = new TypeToken<CampaignResponse>(){}.getType();
@@ -867,7 +867,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call campaignsListCall(String adAccountId, List<String> campaignIds, List<String> entityStatuses, Integer pageSize, String order, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call campaignsListCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable List<String> campaignIds, @javax.annotation.Nullable List<String> entityStatuses, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -933,7 +933,7 @@ public class CampaignsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call campaignsListValidateBeforeCall(String adAccountId, List<String> campaignIds, List<String> entityStatuses, Integer pageSize, String order, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call campaignsListValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable List<String> campaignIds, @javax.annotation.Nullable List<String> entityStatuses, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling campaignsList(Async)");
@@ -963,7 +963,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignsList200Response campaignsList(String adAccountId, List<String> campaignIds, List<String> entityStatuses, Integer pageSize, String order, String bookmark) throws ApiException {
+    public CampaignsList200Response campaignsList(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable List<String> campaignIds, @javax.annotation.Nullable List<String> entityStatuses, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<CampaignsList200Response> localVarResp = campaignsListWithHttpInfo(adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark);
         return localVarResp.getData();
     }
@@ -988,7 +988,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignsList200Response> campaignsListWithHttpInfo(String adAccountId, List<String> campaignIds, List<String> entityStatuses, Integer pageSize, String order, String bookmark) throws ApiException {
+    public ApiResponse<CampaignsList200Response> campaignsListWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable List<String> campaignIds, @javax.annotation.Nullable List<String> entityStatuses, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = campaignsListValidateBeforeCall(adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark, null);
         Type localVarReturnType = new TypeToken<CampaignsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1015,7 +1015,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call campaignsListAsync(String adAccountId, List<String> campaignIds, List<String> entityStatuses, Integer pageSize, String order, String bookmark, final ApiCallback<CampaignsList200Response> _callback) throws ApiException {
+    public okhttp3.Call campaignsListAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable List<String> campaignIds, @javax.annotation.Nullable List<String> entityStatuses, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback<CampaignsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = campaignsListValidateBeforeCall(adAccountId, campaignIds, entityStatuses, pageSize, order, bookmark, _callback);
         Type localVarReturnType = new TypeToken<CampaignsList200Response>(){}.getType();
@@ -1037,7 +1037,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call campaignsUpdateCall(String adAccountId, List<CampaignUpdateRequest> campaignUpdateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call campaignsUpdateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<CampaignUpdateRequest> campaignUpdateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1084,7 +1084,7 @@ public class CampaignsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call campaignsUpdateValidateBeforeCall(String adAccountId, List<CampaignUpdateRequest> campaignUpdateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call campaignsUpdateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<CampaignUpdateRequest> campaignUpdateRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling campaignsUpdate(Async)");
@@ -1114,7 +1114,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignUpdateResponse campaignsUpdate(String adAccountId, List<CampaignUpdateRequest> campaignUpdateRequest) throws ApiException {
+    public CampaignUpdateResponse campaignsUpdate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<CampaignUpdateRequest> campaignUpdateRequest) throws ApiException {
         ApiResponse<CampaignUpdateResponse> localVarResp = campaignsUpdateWithHttpInfo(adAccountId, campaignUpdateRequest);
         return localVarResp.getData();
     }
@@ -1134,7 +1134,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignUpdateResponse> campaignsUpdateWithHttpInfo(String adAccountId, List<CampaignUpdateRequest> campaignUpdateRequest) throws ApiException {
+    public ApiResponse<CampaignUpdateResponse> campaignsUpdateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<CampaignUpdateRequest> campaignUpdateRequest) throws ApiException {
         okhttp3.Call localVarCall = campaignsUpdateValidateBeforeCall(adAccountId, campaignUpdateRequest, null);
         Type localVarReturnType = new TypeToken<CampaignUpdateResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1156,7 +1156,7 @@ public class CampaignsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call campaignsUpdateAsync(String adAccountId, List<CampaignUpdateRequest> campaignUpdateRequest, final ApiCallback<CampaignUpdateResponse> _callback) throws ApiException {
+    public okhttp3.Call campaignsUpdateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull List<CampaignUpdateRequest> campaignUpdateRequest, final ApiCallback<CampaignUpdateResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = campaignsUpdateValidateBeforeCall(adAccountId, campaignUpdateRequest, _callback);
         Type localVarReturnType = new TypeToken<CampaignUpdateResponse>(){}.getType();

@@ -9,9 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_filter_keys
 
 type CatalogsProductGroupFiltersAnyOf* = object
   ## 
   anyOf*: seq[CatalogsProductGroupFilterKeys]
+
+
+# Custom JSON deserialization for CatalogsProductGroupFiltersAnyOf with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsProductGroupFiltersAnyOf]): CatalogsProductGroupFiltersAnyOf =
+  result = CatalogsProductGroupFiltersAnyOf()
+  if node.kind == JObject:
+    if node.hasKey("any_of"):
+      result.anyOf = to(node["any_of"], seq[CatalogsProductGroupFilterKeys])
+
+# Custom JSON serialization for CatalogsProductGroupFiltersAnyOf with custom field names
+proc `%`*(obj: CatalogsProductGroupFiltersAnyOf): JsonNode =
+  result = newJObject()
+  result["any_of"] = %obj.anyOf
+

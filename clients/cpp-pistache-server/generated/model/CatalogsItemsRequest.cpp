@@ -21,6 +21,7 @@ namespace org::openapitools::server::model
 
 CatalogsItemsRequest::CatalogsItemsRequest()
 {
+    m_Language = "";
     
 }
 
@@ -102,11 +103,11 @@ void CatalogsItemsRequest::setCountry(org::openapitools::server::model::Country 
 {
     m_Country = value;
 }
-org::openapitools::server::model::CatalogsItemsRequest_language CatalogsItemsRequest::getLanguage() const
+std::string CatalogsItemsRequest::getLanguage() const
 {
     return m_Language;
 }
-void CatalogsItemsRequest::setLanguage(org::openapitools::server::model::CatalogsItemsRequest_language const& value)
+void CatalogsItemsRequest::setLanguage(std::string const& value)
 {
     m_Language = value;
 }

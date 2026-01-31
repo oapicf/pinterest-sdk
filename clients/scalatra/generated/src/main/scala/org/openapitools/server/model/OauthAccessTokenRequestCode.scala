@@ -12,10 +12,10 @@
 package org.openapitools.server.model
 
 case class OauthAccessTokenRequestCode(
-  grantType: String,
-
   code: String,
 
-  redirectUri: String
+  redirectUri: String,
+
+  grantType: String
 
  )

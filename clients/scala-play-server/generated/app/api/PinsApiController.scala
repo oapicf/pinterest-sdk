@@ -10,11 +10,10 @@ import model.Pin
 import model.PinAnalyticsMetricsResponse
 import model.PinCreate
 import model.PinUpdate
-import model.PinsAnalyticsMetricTypesParameterInner
 import model.PinsList200Response
 import model.PinsSaveRequest
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Singleton
 class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extends AbstractController(cc) {
   /**
@@ -44,7 +43,6 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
         
       val metricTypes = request.getQueryString("metric_types")
         .map(values => splitCollectionParam(values, "csv"))
-        .map(_.map(value => )
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("metric_types", "query string")
         }
@@ -81,7 +79,6 @@ class PinsApiController @Inject()(cc: ControllerComponents, api: PinsApi) extend
         
       val metricTypes = request.getQueryString("metric_types")
         .map(values => splitCollectionParam(values, "csv"))
-        .map(_.map(value => )
         .getOrElse {
           throw new OpenApiExceptions.MissingRequiredParameterException("metric_types", "query string")
         }

@@ -79,6 +79,9 @@ inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPIOaut
 void OpenAPIOauthAccessTokenResponseEverlastingRefresh::WriteJson(JsonWriter& Writer) const
 {
 	Writer->WriteObjectStart();
+	Writer->WriteIdentifierPrefix(TEXT("refresh_token")); WriteJsonValue(Writer, RefreshToken);
+	Writer->WriteIdentifierPrefix(TEXT("refresh_token_expires_in")); WriteJsonValue(Writer, RefreshTokenExpiresIn);
+	Writer->WriteIdentifierPrefix(TEXT("refresh_token_expires_at")); WriteJsonValue(Writer, RefreshTokenExpiresAt);
 	if (ResponseType.IsSet())
 	{
 		Writer->WriteIdentifierPrefix(TEXT("response_type")); WriteJsonValue(Writer, ResponseType.GetValue());
@@ -87,9 +90,6 @@ void OpenAPIOauthAccessTokenResponseEverlastingRefresh::WriteJson(JsonWriter& Wr
 	Writer->WriteIdentifierPrefix(TEXT("token_type")); WriteJsonValue(Writer, TokenType);
 	Writer->WriteIdentifierPrefix(TEXT("expires_in")); WriteJsonValue(Writer, ExpiresIn);
 	Writer->WriteIdentifierPrefix(TEXT("scope")); WriteJsonValue(Writer, Scope);
-	Writer->WriteIdentifierPrefix(TEXT("refresh_token")); WriteJsonValue(Writer, RefreshToken);
-	Writer->WriteIdentifierPrefix(TEXT("refresh_token_expires_in")); WriteJsonValue(Writer, RefreshTokenExpiresIn);
-	Writer->WriteIdentifierPrefix(TEXT("refresh_token_expires_at")); WriteJsonValue(Writer, RefreshTokenExpiresAt);
 	Writer->WriteObjectEnd();
 }
 
@@ -101,14 +101,14 @@ bool OpenAPIOauthAccessTokenResponseEverlastingRefresh::FromJson(const TSharedPt
 
 	bool ParseSuccess = true;
 
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("refresh_token"), RefreshToken);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("refresh_token_expires_in"), RefreshTokenExpiresIn);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("refresh_token_expires_at"), RefreshTokenExpiresAt);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("response_type"), ResponseType);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("access_token"), AccessToken);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("token_type"), TokenType);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("expires_in"), ExpiresIn);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("scope"), Scope);
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("refresh_token"), RefreshToken);
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("refresh_token_expires_in"), RefreshTokenExpiresIn);
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("refresh_token_expires_at"), RefreshTokenExpiresAt);
 
 	return ParseSuccess;
 }

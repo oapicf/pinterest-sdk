@@ -130,14 +130,14 @@ pub enum BoardsSlashUpdateError {
 /// Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 pub async fn board_sections_slash_create(configuration: &configuration::Configuration, board_id: &str, board_section: models::BoardSection, ad_account_id: Option<&str>) -> Result<models::BoardSection, Error<BoardSectionsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_board_id = board_id;
-    let p_board_section = board_section;
-    let p_ad_account_id = ad_account_id;
+    let p_path_board_id = board_id;
+    let p_body_board_section = board_section;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/boards/{board_id}/sections", configuration.base_path, board_id=crate::apis::urlencode(p_board_id));
+    let uri_str = format!("{}/boards/{board_id}/sections", configuration.base_path, board_id=crate::apis::urlencode(p_path_board_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -146,7 +146,7 @@ pub async fn board_sections_slash_create(configuration: &configuration::Configur
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_board_section);
+    req_builder = req_builder.json(&p_body_board_section);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -176,14 +176,14 @@ pub async fn board_sections_slash_create(configuration: &configuration::Configur
 /// Delete a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 pub async fn board_sections_slash_delete(configuration: &configuration::Configuration, board_id: &str, section_id: &str, ad_account_id: Option<&str>) -> Result<(), Error<BoardSectionsSlashDeleteError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_board_id = board_id;
-    let p_section_id = section_id;
-    let p_ad_account_id = ad_account_id;
+    let p_path_board_id = board_id;
+    let p_path_section_id = section_id;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/boards/{board_id}/sections/{section_id}", configuration.base_path, board_id=crate::apis::urlencode(p_board_id), section_id=crate::apis::urlencode(p_section_id));
+    let uri_str = format!("{}/boards/{board_id}/sections/{section_id}", configuration.base_path, board_id=crate::apis::urlencode(p_path_board_id), section_id=crate::apis::urlencode(p_path_section_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -210,21 +210,21 @@ pub async fn board_sections_slash_delete(configuration: &configuration::Configur
 /// Get a list of all board sections from a board owned by the \"operation user_account\" - or a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 pub async fn board_sections_slash_list(configuration: &configuration::Configuration, board_id: &str, ad_account_id: Option<&str>, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::BoardSectionsList200Response, Error<BoardSectionsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_board_id = board_id;
-    let p_ad_account_id = ad_account_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
+    let p_path_board_id = board_id;
+    let p_query_ad_account_id = ad_account_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
 
-    let uri_str = format!("{}/boards/{board_id}/sections", configuration.base_path, board_id=crate::apis::urlencode(p_board_id));
+    let uri_str = format!("{}/boards/{board_id}/sections", configuration.base_path, board_id=crate::apis::urlencode(p_path_board_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -265,22 +265,22 @@ pub async fn board_sections_slash_list(configuration: &configuration::Configurat
 /// Get a list of the Pins on a board section of a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 pub async fn board_sections_slash_list_pins(configuration: &configuration::Configuration, board_id: &str, section_id: &str, ad_account_id: Option<&str>, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::BoardsListPins200Response, Error<BoardSectionsSlashListPinsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_board_id = board_id;
-    let p_section_id = section_id;
-    let p_ad_account_id = ad_account_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
+    let p_path_board_id = board_id;
+    let p_path_section_id = section_id;
+    let p_query_ad_account_id = ad_account_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
 
-    let uri_str = format!("{}/boards/{board_id}/sections/{section_id}/pins", configuration.base_path, board_id=crate::apis::urlencode(p_board_id), section_id=crate::apis::urlencode(p_section_id));
+    let uri_str = format!("{}/boards/{board_id}/sections/{section_id}/pins", configuration.base_path, board_id=crate::apis::urlencode(p_path_board_id), section_id=crate::apis::urlencode(p_path_section_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -321,15 +321,15 @@ pub async fn board_sections_slash_list_pins(configuration: &configuration::Confi
 /// Update a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 pub async fn board_sections_slash_update(configuration: &configuration::Configuration, board_id: &str, section_id: &str, board_section: models::BoardSection, ad_account_id: Option<&str>) -> Result<models::BoardSection, Error<BoardSectionsSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_board_id = board_id;
-    let p_section_id = section_id;
-    let p_board_section = board_section;
-    let p_ad_account_id = ad_account_id;
+    let p_path_board_id = board_id;
+    let p_path_section_id = section_id;
+    let p_body_board_section = board_section;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/boards/{board_id}/sections/{section_id}", configuration.base_path, board_id=crate::apis::urlencode(p_board_id), section_id=crate::apis::urlencode(p_section_id));
+    let uri_str = format!("{}/boards/{board_id}/sections/{section_id}", configuration.base_path, board_id=crate::apis::urlencode(p_path_board_id), section_id=crate::apis::urlencode(p_path_section_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -338,7 +338,7 @@ pub async fn board_sections_slash_update(configuration: &configuration::Configur
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_board_section);
+    req_builder = req_builder.json(&p_body_board_section);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -368,13 +368,13 @@ pub async fn board_sections_slash_update(configuration: &configuration::Configur
 /// Create a board owned by the \"operation user_account\". Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 pub async fn boards_slash_create(configuration: &configuration::Configuration, board: models::Board, ad_account_id: Option<&str>) -> Result<models::Board, Error<BoardsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_board = board;
-    let p_ad_account_id = ad_account_id;
+    let p_body_board = board;
+    let p_query_ad_account_id = ad_account_id;
 
     let uri_str = format!("{}/boards", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -383,7 +383,7 @@ pub async fn boards_slash_create(configuration: &configuration::Configuration, b
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_board);
+    req_builder = req_builder.json(&p_body_board);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -413,13 +413,13 @@ pub async fn boards_slash_create(configuration: &configuration::Configuration, b
 /// Delete a board owned by the \"operation user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 pub async fn boards_slash_delete(configuration: &configuration::Configuration, board_id: &str, ad_account_id: Option<&str>) -> Result<(), Error<BoardsSlashDeleteError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_board_id = board_id;
-    let p_ad_account_id = ad_account_id;
+    let p_path_board_id = board_id;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/boards/{board_id}", configuration.base_path, board_id=crate::apis::urlencode(p_board_id));
+    let uri_str = format!("{}/boards/{board_id}", configuration.base_path, board_id=crate::apis::urlencode(p_path_board_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -446,13 +446,13 @@ pub async fn boards_slash_delete(configuration: &configuration::Configuration, b
 /// Get a board owned by the operation user_account - or a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 pub async fn boards_slash_get(configuration: &configuration::Configuration, board_id: &str, ad_account_id: Option<&str>) -> Result<models::Board, Error<BoardsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_board_id = board_id;
-    let p_ad_account_id = ad_account_id;
+    let p_path_board_id = board_id;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/boards/{board_id}", configuration.base_path, board_id=crate::apis::urlencode(p_board_id));
+    let uri_str = format!("{}/boards/{board_id}", configuration.base_path, board_id=crate::apis::urlencode(p_path_board_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -493,25 +493,25 @@ pub async fn boards_slash_get(configuration: &configuration::Configuration, boar
 /// Get a list of the boards owned by the \"operation user_account\" + group boards where this account is a collaborator Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". Optional: Specify a privacy type (public, protected, or secret) to indicate which boards to return. - If no privacy is specified, all boards that can be returned (based on the scopes of the token and ad_account role if applicable) will be returned.
 pub async fn boards_slash_list(configuration: &configuration::Configuration, ad_account_id: Option<&str>, bookmark: Option<&str>, page_size: Option<i32>, privacy: Option<&str>) -> Result<models::BoardsList200Response, Error<BoardsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_privacy = privacy;
+    let p_query_ad_account_id = ad_account_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_privacy = privacy;
 
     let uri_str = format!("{}/boards", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_privacy {
-        req_builder = req_builder.query(&[("privacy", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_privacy {
+        req_builder = req_builder.query(&[("privacy", &serde_json::to_string(param_value)?)]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -551,32 +551,32 @@ pub async fn boards_slash_list(configuration: &configuration::Configuration, ad_
 /// Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 pub async fn boards_slash_list_pins(configuration: &configuration::Configuration, board_id: &str, bookmark: Option<&str>, page_size: Option<i32>, creative_types: Option<Vec<String>>, ad_account_id: Option<&str>, pin_metrics: Option<bool>) -> Result<models::BoardsListPins200Response, Error<BoardsSlashListPinsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_board_id = board_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_creative_types = creative_types;
-    let p_ad_account_id = ad_account_id;
-    let p_pin_metrics = pin_metrics;
+    let p_path_board_id = board_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_creative_types = creative_types;
+    let p_query_ad_account_id = ad_account_id;
+    let p_query_pin_metrics = pin_metrics;
 
-    let uri_str = format!("{}/boards/{board_id}/pins", configuration.base_path, board_id=crate::apis::urlencode(p_board_id));
+    let uri_str = format!("{}/boards/{board_id}/pins", configuration.base_path, board_id=crate::apis::urlencode(p_path_board_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_creative_types {
+    if let Some(ref param_value) = p_query_creative_types {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("creative_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("creative_types", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_pin_metrics {
+    if let Some(ref param_value) = p_query_pin_metrics {
         req_builder = req_builder.query(&[("pin_metrics", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -617,14 +617,14 @@ pub async fn boards_slash_list_pins(configuration: &configuration::Configuration
 /// Update a board owned by the \"operating user_account\". - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
 pub async fn boards_slash_update(configuration: &configuration::Configuration, board_id: &str, board_update: models::BoardUpdate, ad_account_id: Option<&str>) -> Result<models::Board, Error<BoardsSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_board_id = board_id;
-    let p_board_update = board_update;
-    let p_ad_account_id = ad_account_id;
+    let p_path_board_id = board_id;
+    let p_body_board_update = board_update;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/boards/{board_id}", configuration.base_path, board_id=crate::apis::urlencode(p_board_id));
+    let uri_str = format!("{}/boards/{board_id}", configuration.base_path, board_id=crate::apis::urlencode(p_path_board_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -633,7 +633,7 @@ pub async fn boards_slash_update(configuration: &configuration::Configuration, b
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_board_update);
+    req_builder = req_builder.json(&p_body_board_update);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

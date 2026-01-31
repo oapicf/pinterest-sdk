@@ -6,6 +6,10 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Canonical
 class OauthAccessTokenRequestCode {
+    
+    String code
+    
+    String redirectUri
 
     enum GrantTypeEnum {
     
@@ -33,8 +37,4 @@ class OauthAccessTokenRequestCode {
 
     
     GrantTypeEnum grantType
-    
-    String code
-    
-    String redirectUri
 }

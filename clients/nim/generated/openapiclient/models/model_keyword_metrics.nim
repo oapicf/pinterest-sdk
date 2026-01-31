@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type KeywordMetrics* = object
   ## Keyword metrics JSON
-  avgCpcInMicroCurrency*: float ## Average cost per click
-  keywordQueryVolume*: string ## Keyword's search frequency. This value is based on keyword frequency in pepsi client response
+  avgCpcInMicroCurrency*: Option[float] ## Average cost per click
+  keywordQueryVolume*: Option[string] ## Keyword's search frequency. This value is based on keyword frequency in pepsi client response
+
+
+# Custom JSON deserialization for KeywordMetrics with custom field names
+proc to*(node: JsonNode, T: typedesc[KeywordMetrics]): KeywordMetrics =
+  result = KeywordMetrics()
+  if node.kind == JObject:
+    if node.hasKey("avg_cpc_in_micro_currency") and node["avg_cpc_in_micro_currency"].kind != JNull:
+      result.avgCpcInMicroCurrency = some(to(node["avg_cpc_in_micro_currency"], typeof(result.avgCpcInMicroCurrency.get())))
+    if node.hasKey("keyword_query_volume") and node["keyword_query_volume"].kind != JNull:
+      result.keywordQueryVolume = some(to(node["keyword_query_volume"], typeof(result.keywordQueryVolume.get())))
+
+# Custom JSON serialization for KeywordMetrics with custom field names
+proc `%`*(obj: KeywordMetrics): JsonNode =
+  result = newJObject()
+  if obj.avgCpcInMicroCurrency.isSome():
+    result["avg_cpc_in_micro_currency"] = %obj.avgCpcInMicroCurrency.get()
+  if obj.keywordQueryVolume.isSome():
+    result["keyword_query_volume"] = %obj.keywordQueryVolume.get()
+

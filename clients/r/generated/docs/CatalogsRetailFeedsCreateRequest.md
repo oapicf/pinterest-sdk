@@ -15,6 +15,6 @@ Name | Type | Description | Notes
 **catalog_type** | [**CatalogsType**](CatalogsType.md) |  | [Enum: ] 
 **default_country** | [**Country**](Country.md) |  | [Enum: ] 
 **default_availability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] [Enum: ] 
-**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
+**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to &quot;ACTIVE&quot;] [Enum: ] 
 
 

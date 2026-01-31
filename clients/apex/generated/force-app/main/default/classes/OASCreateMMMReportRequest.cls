@@ -15,6 +15,12 @@
  */
 public class OASCreateMMMReportRequest implements OAS.MappedProperties {
     /**
+     * A List of countries for filtering
+     * @return countries
+     */
+    public List<OASTargetingAdvertiserCountry> countries { get; set; }
+
+    /**
      * Name of the Marketing Mix Modeling (MMM) report
      * @return reportName
      */
@@ -72,12 +78,6 @@ public class OASCreateMMMReportRequest implements OAS.MappedProperties {
      */
     public List<OASMMMReportingColumn> columns { get; set; }
 
-    /**
-     * A List of countries for filtering
-     * @return countries
-     */
-    public List<OASTargetingAdvertiserCountry> countries { get; set; }
-
     private static final Map<String, String> propertyMappings = new Map<String, String>{
         'report_name' => 'reportName',
         'start_date' => 'startDate',
@@ -123,13 +123,14 @@ public class OASCreateMMMReportRequest implements OAS.MappedProperties {
     }
 
     public OASCreateMMMReportRequest() {
+        countries = new List<OASTargetingAdvertiserCountry>();
         targetingTypes = new List<OASMMMReportingTargetingType>();
         columns = new List<OASMMMReportingColumn>();
-        countries = new List<OASTargetingAdvertiserCountry>();
     }
 
     public static OASCreateMMMReportRequest getExample() {
         OASCreateMMMReportRequest createMMMReportRequest = new OASCreateMMMReportRequest();
+          createMMMReportRequest.countries = new List<OASTargetingAdvertiserCountry>{OASTargetingAdvertiserCountry.getExample()};
           createMMMReportRequest.reportName = '';
           createMMMReportRequest.startDate = '2020-12-20';
           createMMMReportRequest.endDate = '2020-12-20';
@@ -137,27 +138,27 @@ public class OASCreateMMMReportRequest implements OAS.MappedProperties {
           createMMMReportRequest.level = LevelEnum.CAMPAIGN_TARGETING;
           createMMMReportRequest.targetingTypes = new List<OASMMMReportingTargetingType>{OASMMMReportingTargetingType.getExample()};
           createMMMReportRequest.columns = new List<OASMMMReportingColumn>{OASMMMReportingColumn.getExample()};
-          createMMMReportRequest.countries = new List<OASTargetingAdvertiserCountry>{OASTargetingAdvertiserCountry.getExample()};
         return createMMMReportRequest;
     }
 
     public Boolean equals(Object obj) {
         if (obj instanceof OASCreateMMMReportRequest) {           
             OASCreateMMMReportRequest createMMMReportRequest = (OASCreateMMMReportRequest) obj;
-            return this.reportName == createMMMReportRequest.reportName
+            return this.countries == createMMMReportRequest.countries
+                && this.reportName == createMMMReportRequest.reportName
                 && this.startDate == createMMMReportRequest.startDate
                 && this.endDate == createMMMReportRequest.endDate
                 && this.granularity == createMMMReportRequest.granularity
                 && this.level == createMMMReportRequest.level
                 && this.targetingTypes == createMMMReportRequest.targetingTypes
-                && this.columns == createMMMReportRequest.columns
-                && this.countries == createMMMReportRequest.countries;
+                && this.columns == createMMMReportRequest.columns;
         }
         return false;
     }
 
     public Integer hashCode() {
         Integer hashCode = 43;
+        hashCode = (17 * hashCode) + (countries == null ? 0 : System.hashCode(countries));
         hashCode = (17 * hashCode) + (reportName == null ? 0 : System.hashCode(reportName));
         hashCode = (17 * hashCode) + (startDate == null ? 0 : System.hashCode(startDate));
         hashCode = (17 * hashCode) + (endDate == null ? 0 : System.hashCode(endDate));
@@ -165,7 +166,6 @@ public class OASCreateMMMReportRequest implements OAS.MappedProperties {
         hashCode = (17 * hashCode) + (level == null ? 0 : System.hashCode(level));
         hashCode = (17 * hashCode) + (targetingTypes == null ? 0 : System.hashCode(targetingTypes));
         hashCode = (17 * hashCode) + (columns == null ? 0 : System.hashCode(columns));
-        hashCode = (17 * hashCode) + (countries == null ? 0 : System.hashCode(countries));
         return hashCode;
     }
 }

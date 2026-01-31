@@ -21,7 +21,6 @@ import org.openapitools.server.api.model.Pin
 import org.openapitools.server.api.model.PinAnalyticsMetricsResponse
 import org.openapitools.server.api.model.PinCreate
 import org.openapitools.server.api.model.PinUpdate
-import org.openapitools.server.api.model.PinsAnalyticsMetricTypesParameterInner
 import org.openapitools.server.api.model.PinsList200Response
 import org.openapitools.server.api.model.PinsSaveRequest
 
@@ -91,8 +90,8 @@ class PinsApiVertxProxyHandler(private val vertx: Vertx, private val service: Pi
                     if(metricTypesParam == null){
                          throw IllegalArgumentException("metricTypes is required")
                     }
-                    val metricTypes:kotlin.Array<PinsAnalyticsMetricTypesParameterInner> = Gson().fromJson(metricTypesParam.encode()
-                            , object : TypeToken<kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>>(){}.type)
+                    val metricTypes:kotlin.Array<kotlin.String> = Gson().fromJson(metricTypesParam.encode()
+                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
                     val appTypes = ApiHandlerUtils.searchStringInJson(params,"app_types")
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")
                     GlobalScope.launch(vertx.dispatcher()){
@@ -123,8 +122,8 @@ class PinsApiVertxProxyHandler(private val vertx: Vertx, private val service: Pi
                     if(metricTypesParam == null){
                          throw IllegalArgumentException("metricTypes is required")
                     }
-                    val metricTypes:kotlin.Array<PinsAnalyticsMetricTypesParameterInner> = Gson().fromJson(metricTypesParam.encode()
-                            , object : TypeToken<kotlin.collections.List<PinsAnalyticsMetricTypesParameterInner>>(){}.type)
+                    val metricTypes:kotlin.Array<kotlin.String> = Gson().fromJson(metricTypesParam.encode()
+                            , object : TypeToken<kotlin.collections.List<kotlin.String>>(){}.type)
                     val appTypes = ApiHandlerUtils.searchStringInJson(params,"app_types")
                     val splitField = ApiHandlerUtils.searchStringInJson(params,"split_field")
                     val adAccountId = ApiHandlerUtils.searchStringInJson(params,"ad_account_id")

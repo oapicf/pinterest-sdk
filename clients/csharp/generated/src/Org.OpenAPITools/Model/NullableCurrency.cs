@@ -2387,7 +2387,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, NullableCurrency nullableCurrency, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(nullableCurrency.ToString());
+            writer.WriteStringValue(NullableCurrencyValueConverter.ToJsonValue(nullableCurrency).ToString());
         }
     }
 
@@ -2418,14 +2418,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the NullableCurrency to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="nullableCurrency"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, NullableCurrency? nullableCurrency, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(nullableCurrency?.ToString() ?? "null");
+            writer.WriteStringValue(nullableCurrency.HasValue ? NullableCurrencyValueConverter.ToJsonValue(nullableCurrency.Value).ToString() : "null");
         }
     }
 }

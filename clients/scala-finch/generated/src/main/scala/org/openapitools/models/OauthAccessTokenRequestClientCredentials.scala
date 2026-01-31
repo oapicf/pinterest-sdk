@@ -7,12 +7,12 @@ import io.circe.java8.time._
 import org.openapitools._
 
 /**
- * A request to receive a client token.
- * @param grantUnderscoretype 
+ * 
  * @param scope 
+ * @param grantUnderscoretype 
  */
-case class OauthAccessTokenRequestClientCredentials(grantUnderscoretype: String,
-                scope: String
+case class OauthAccessTokenRequestClientCredentials(scope: String,
+                grantUnderscoretype: String
                 )
 
 object OauthAccessTokenRequestClientCredentials {

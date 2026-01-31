@@ -146,8 +146,7 @@ namespace Org.OpenAPITools.Model
                             assetGroupDescription = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "asset_group_types":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetGroupTypes = new Option<List<AssetGroupType>?>(JsonSerializer.Deserialize<List<AssetGroupType>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            assetGroupTypes = new Option<List<AssetGroupType>?>(JsonSerializer.Deserialize<List<AssetGroupType>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

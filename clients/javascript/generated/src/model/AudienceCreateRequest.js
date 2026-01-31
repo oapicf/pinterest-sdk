@@ -13,8 +13,8 @@
 
 import ApiClient from '../ApiClient';
 import AudienceCommon from './AudienceCommon';
-import AudienceCreateRequest1AudienceType from './AudienceCreateRequest1AudienceType';
 import AudienceRule from './AudienceRule';
+import AudienceType from './AudienceType';
 
 /**
  * The AudienceCreateRequest model module.
@@ -28,7 +28,7 @@ class AudienceCreateRequest {
      * @implements module:model/AudienceCommon
      * @param name {String} Audience name.
      * @param rule {module:model/AudienceRule} 
-     * @param audienceType {module:model/AudienceCreateRequest1AudienceType} 
+     * @param audienceType {module:model/AudienceType} <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
      */
     constructor(name, rule, audienceType) { 
         AudienceCommon.initialize(this);
@@ -71,7 +71,7 @@ class AudienceCreateRequest {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
             if (data.hasOwnProperty('audience_type')) {
-                obj['audience_type'] = AudienceCreateRequest1AudienceType.constructFromObject(data['audience_type']);
+                obj['audience_type'] = ApiClient.convertToType(data['audience_type'], AudienceType);
             }
         }
         return obj;
@@ -104,10 +104,6 @@ class AudienceCreateRequest {
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
-        }
-        // validate the optional field `audience_type`
-        if (data['audience_type']) { // data not null
-          AudienceCreateRequest1AudienceType.validateJSON(data['audience_type']);
         }
 
         return true;
@@ -142,7 +138,8 @@ AudienceCreateRequest.prototype['rule'] = undefined;
 AudienceCreateRequest.prototype['description'] = undefined;
 
 /**
- * @member {module:model/AudienceCreateRequest1AudienceType} audience_type
+ * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+ * @member {module:model/AudienceType} audience_type
  */
 AudienceCreateRequest.prototype['audience_type'] = undefined;
 

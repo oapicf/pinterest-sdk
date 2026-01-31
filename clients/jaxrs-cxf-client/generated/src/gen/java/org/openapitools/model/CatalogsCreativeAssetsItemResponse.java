@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,33 +8,38 @@ import org.openapitools.model.CatalogsCreativeAssetsAttributes;
 import org.openapitools.model.CatalogsType;
 import org.openapitools.model.Pin;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object describing a hotel record
- **/
+ * Object describing a hotel record
+ */
 @ApiModel(description="Object describing a hotel record")
 
 public class CatalogsCreativeAssetsItemResponse  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsType catalogType;
 
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
  /**
-   * The catalog creative assets id in the merchant namespace
-  **/
+  * The catalog creative assets id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
+
   private String creativeAssetsId;
 
-  @ApiModelProperty(value = "The pins mapped to the item")
  /**
-   * The pins mapped to the item
-  **/
+  * The pins mapped to the item
+  */
+  @ApiModelProperty(value = "The pins mapped to the item")
+
   private List<Pin> pins;
 
   @ApiModelProperty(value = "")
+
   private CatalogsCreativeAssetsAttributes attributes;
  /**
    * Get catalogType

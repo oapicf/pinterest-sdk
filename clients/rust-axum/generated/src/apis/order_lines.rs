@@ -34,6 +34,8 @@ pub enum OrderLinesSlashListResponse {
 }
 
 
+
+
 /// OrderLines
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -43,6 +45,7 @@ pub trait OrderLines<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// OrderLinesSlashGet - GET /v5/ad_accounts/{ad_account_id}/order_lines/{order_line_id}
     async fn order_lines_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -54,6 +57,7 @@ pub trait OrderLines<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Er
     /// OrderLinesSlashList - GET /v5/ad_accounts/{ad_account_id}/order_lines
     async fn order_lines_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

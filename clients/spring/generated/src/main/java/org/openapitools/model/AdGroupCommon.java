@@ -33,7 +33,7 @@ import javax.annotation.Generated;
  * AdGroupCommon
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupCommon {
 
   private @Nullable String name;
@@ -78,7 +78,7 @@ public class AdGroupCommon {
     
     TARGET_AVG("TARGET_AVG");
 
-    private String value;
+    private final String value;
 
     BidStrategyTypeEnum(String value) {
       this.value = value;
@@ -110,7 +110,7 @@ public class AdGroupCommon {
   @Valid
   private JsonNullable<List<@Pattern(regexp = "^\\d+$")String>> targetingTemplateIds = JsonNullable.<List<@Pattern(regexp = "^\\d+$")String>>undefined();
 
-  public AdGroupCommon name(String name) {
+  public AdGroupCommon name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -122,15 +122,15 @@ public class AdGroupCommon {
   
   @Schema(name = "name", example = "Ad Group For Pin: 687195905986", description = "Ad group name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public AdGroupCommon status(EntityStatus status) {
+  public AdGroupCommon status(@Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -142,11 +142,11 @@ public class AdGroupCommon {
   @Valid 
   @Schema(name = "status", description = "Ad group/entity status.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public EntityStatus getStatus() {
+  public @Nullable EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 
@@ -210,7 +210,7 @@ public class AdGroupCommon {
     this.optimizationGoalMetadata = optimizationGoalMetadata;
   }
 
-  public AdGroupCommon budgetType(BudgetType budgetType) {
+  public AdGroupCommon budgetType(@Nullable BudgetType budgetType) {
     this.budgetType = budgetType;
     return this;
   }
@@ -222,11 +222,11 @@ public class AdGroupCommon {
   @Valid 
   @Schema(name = "budget_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget_type")
-  public BudgetType getBudgetType() {
+  public @Nullable BudgetType getBudgetType() {
     return budgetType;
   }
 
-  public void setBudgetType(BudgetType budgetType) {
+  public void setBudgetType(@Nullable BudgetType budgetType) {
     this.budgetType = budgetType;
   }
 
@@ -270,7 +270,7 @@ public class AdGroupCommon {
     this.endTime = endTime;
   }
 
-  public AdGroupCommon targetingSpec(TargetingSpec targetingSpec) {
+  public AdGroupCommon targetingSpec(@Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
     return this;
   }
@@ -282,15 +282,15 @@ public class AdGroupCommon {
   @Valid 
   @Schema(name = "targeting_spec", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
+  public @Nullable TargetingSpec getTargetingSpec() {
     return targetingSpec;
   }
 
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
+  public void setTargetingSpec(@Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
   }
 
-  public AdGroupCommon lifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
+  public AdGroupCommon lifetimeFrequencyCap(@Nullable Integer lifetimeFrequencyCap) {
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
     return this;
   }
@@ -302,11 +302,11 @@ public class AdGroupCommon {
   
   @Schema(name = "lifetime_frequency_cap", example = "100", description = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lifetime_frequency_cap")
-  public Integer getLifetimeFrequencyCap() {
+  public @Nullable Integer getLifetimeFrequencyCap() {
     return lifetimeFrequencyCap;
   }
 
-  public void setLifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
+  public void setLifetimeFrequencyCap(@Nullable Integer lifetimeFrequencyCap) {
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
   }
 
@@ -350,7 +350,7 @@ public class AdGroupCommon {
     this.autoTargetingEnabled = autoTargetingEnabled;
   }
 
-  public AdGroupCommon placementGroup(PlacementGroupType placementGroup) {
+  public AdGroupCommon placementGroup(@Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
     return this;
   }
@@ -362,15 +362,15 @@ public class AdGroupCommon {
   @Valid 
   @Schema(name = "placement_group", description = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("placement_group")
-  public PlacementGroupType getPlacementGroup() {
+  public @Nullable PlacementGroupType getPlacementGroup() {
     return placementGroup;
   }
 
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
+  public void setPlacementGroup(@Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
   }
 
-  public AdGroupCommon pacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
+  public AdGroupCommon pacingDeliveryType(@Nullable PacingDeliveryType pacingDeliveryType) {
     this.pacingDeliveryType = pacingDeliveryType;
     return this;
   }
@@ -382,15 +382,15 @@ public class AdGroupCommon {
   @Valid 
   @Schema(name = "pacing_delivery_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pacing_delivery_type")
-  public PacingDeliveryType getPacingDeliveryType() {
+  public @Nullable PacingDeliveryType getPacingDeliveryType() {
     return pacingDeliveryType;
   }
 
-  public void setPacingDeliveryType(PacingDeliveryType pacingDeliveryType) {
+  public void setPacingDeliveryType(@Nullable PacingDeliveryType pacingDeliveryType) {
     this.pacingDeliveryType = pacingDeliveryType;
   }
 
-  public AdGroupCommon campaignId(String campaignId) {
+  public AdGroupCommon campaignId(@Nullable String campaignId) {
     this.campaignId = campaignId;
     return this;
   }
@@ -402,15 +402,15 @@ public class AdGroupCommon {
   @Pattern(regexp = "^[C]?\\d+$") 
   @Schema(name = "campaign_id", example = "626736533506", description = "Campaign ID of the ad group.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_id")
-  public String getCampaignId() {
+  public @Nullable String getCampaignId() {
     return campaignId;
   }
 
-  public void setCampaignId(String campaignId) {
+  public void setCampaignId(@Nullable String campaignId) {
     this.campaignId = campaignId;
   }
 
-  public AdGroupCommon billableEvent(ActionType billableEvent) {
+  public AdGroupCommon billableEvent(@Nullable ActionType billableEvent) {
     this.billableEvent = billableEvent;
     return this;
   }
@@ -422,11 +422,11 @@ public class AdGroupCommon {
   @Valid 
   @Schema(name = "billable_event", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billable_event")
-  public ActionType getBillableEvent() {
+  public @Nullable ActionType getBillableEvent() {
     return billableEvent;
   }
 
-  public void setBillableEvent(ActionType billableEvent) {
+  public void setBillableEvent(@Nullable ActionType billableEvent) {
     this.billableEvent = billableEvent;
   }
 

@@ -13,9 +13,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsProductGroupMultipleMediaTypesCriteria  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<MediaType> values = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private Boolean negated = false;
  /**
    * Get values

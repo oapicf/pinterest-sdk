@@ -28,7 +28,8 @@ enum class AudienceUpdateOperationType(@get:JsonValue val value: kotlin.String) 
         @JvmStatic
         @JsonCreator
         fun forValue(value: kotlin.String): AudienceUpdateOperationType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AudienceUpdateOperationType'")
         }
     }
 }

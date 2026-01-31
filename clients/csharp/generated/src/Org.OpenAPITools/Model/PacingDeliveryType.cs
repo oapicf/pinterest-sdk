@@ -133,7 +133,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, PacingDeliveryType pacingDeliveryType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(pacingDeliveryType.ToString());
+            writer.WriteStringValue(PacingDeliveryTypeValueConverter.ToJsonValue(pacingDeliveryType).ToString());
         }
     }
 
@@ -164,14 +164,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the PacingDeliveryType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="pacingDeliveryType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, PacingDeliveryType? pacingDeliveryType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(pacingDeliveryType?.ToString() ?? "null");
+            writer.WriteStringValue(pacingDeliveryType.HasValue ? PacingDeliveryTypeValueConverter.ToJsonValue(pacingDeliveryType.Value).ToString() : "null");
         }
     }
 }

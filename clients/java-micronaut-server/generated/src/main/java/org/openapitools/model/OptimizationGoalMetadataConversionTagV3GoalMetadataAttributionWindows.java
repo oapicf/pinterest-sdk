@@ -32,7 +32,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows.JSON_PROPERTY_VIEW_WINDOW_DAYS
 })
 @JsonTypeName("OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_attribution_windows")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-01-26T05:36:06.173633742Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows {
     public static final String JSON_PROPERTY_CLICK_WINDOW_DAYS = "click_window_days";

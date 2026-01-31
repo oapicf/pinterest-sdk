@@ -75,11 +75,17 @@ export interface ItemResponse {
      */
     itemId?: string;
     /**
-     * Array with the errors for the item id requested
-     * @type {Array<ItemValidationEvent>}
+     * The pins mapped to the item
+     * @type {Array<Pin>}
      * @memberof ItemResponse
      */
-    errors?: Array<ItemValidationEvent>;
+    pins?: Array<Pin> | null;
+    /**
+     * 
+     * @type {CatalogsCreativeAssetsAttributes}
+     * @memberof ItemResponse
+     */
+    attributes?: CatalogsCreativeAssetsAttributes;
     /**
      * The catalog hotel id in the merchant namespace
      * @type {string}
@@ -92,6 +98,12 @@ export interface ItemResponse {
      * @memberof ItemResponse
      */
     creativeAssetsId?: string;
+    /**
+     * Array with the errors for the item id requested
+     * @type {Array<ItemValidationEvent>}
+     * @memberof ItemResponse
+     */
+    errors?: Array<ItemValidationEvent>;
 }
 
 
@@ -116,9 +128,11 @@ export function ItemResponseFromJSONTyped(json: any, ignoreDiscriminator: boolea
         
         'catalogType': CatalogsTypeFromJSON(json['catalog_type']),
         'itemId': json['item_id'] == null ? undefined : json['item_id'],
-        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ItemValidationEventFromJSON)),
+        'pins': json['pins'] == null ? undefined : ((json['pins'] as Array<any>).map(PinFromJSON)),
+        'attributes': json['attributes'] == null ? undefined : CatalogsCreativeAssetsAttributesFromJSON(json['attributes']),
         'hotelId': json['hotel_id'] == null ? undefined : json['hotel_id'],
         'creativeAssetsId': json['creative_assets_id'] == null ? undefined : json['creative_assets_id'],
+        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ItemValidationEventFromJSON)),
     };
 }
 
@@ -135,9 +149,11 @@ export function ItemResponseToJSONTyped(value?: ItemResponse | null, ignoreDiscr
         
         'catalog_type': CatalogsTypeToJSON(value['catalogType']),
         'item_id': value['itemId'],
-        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ItemValidationEventToJSON)),
+        'pins': value['pins'] == null ? undefined : ((value['pins'] as Array<any>).map(PinToJSON)),
+        'attributes': CatalogsCreativeAssetsAttributesToJSON(value['attributes']),
         'hotel_id': value['hotelId'],
         'creative_assets_id': value['creativeAssetsId'],
+        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ItemValidationEventToJSON)),
     };
 }
 

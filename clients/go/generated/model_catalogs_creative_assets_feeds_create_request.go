@@ -52,6 +52,8 @@ func NewCatalogsCreativeAssetsFeedsCreateRequest(name string, format CatalogsFor
 	this.DefaultCountry = defaultCountry
 	this.Location = location
 	this.CatalogType = catalogType
+	var status CatalogsStatus = ACTIVE
+	this.Status = &status
 	return &this
 }
 
@@ -60,6 +62,8 @@ func NewCatalogsCreativeAssetsFeedsCreateRequest(name string, format CatalogsFor
 // but it doesn't guarantee that properties required by API are set
 func NewCatalogsCreativeAssetsFeedsCreateRequestWithDefaults() *CatalogsCreativeAssetsFeedsCreateRequest {
 	this := CatalogsCreativeAssetsFeedsCreateRequest{}
+	var status CatalogsStatus = ACTIVE
+	this.Status = &status
 	return &this
 }
 

@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type CatalogsType* = object
-  ## Type of the catalog entity.
+type CatalogsType* {.pure.} = enum
+  RETAIL
+  HOTEL
+  CREATIVEASSETS
+
+func `%`*(v: CatalogsType): JsonNode =
+  result = case v:
+    of CatalogsType.RETAIL: %"RETAIL"
+    of CatalogsType.HOTEL: %"HOTEL"
+    of CatalogsType.CREATIVEASSETS: %"CREATIVE_ASSETS"
+
+func `$`*(v: CatalogsType): string =
+  result = case v:
+    of CatalogsType.RETAIL: $("RETAIL")
+    of CatalogsType.HOTEL: $("HOTEL")
+    of CatalogsType.CREATIVEASSETS: $("CREATIVE_ASSETS")
+
+proc to*(node: JsonNode, T: typedesc[CatalogsType]): CatalogsType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogsType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RETAIL"):
+    return CatalogsType.RETAIL
+  of $("HOTEL"):
+    return CatalogsType.HOTEL
+  of $("CREATIVE_ASSETS"):
+    return CatalogsType.CREATIVEASSETS
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogsType: " & strVal)
+

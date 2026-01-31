@@ -160,7 +160,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TrendType trendType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(trendType.ToString());
+            writer.WriteStringValue(TrendTypeValueConverter.ToJsonValue(trendType).ToString());
         }
     }
 
@@ -191,14 +191,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the TrendType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="trendType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TrendType? trendType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(trendType?.ToString() ?? "null");
+            writer.WriteStringValue(trendType.HasValue ? TrendTypeValueConverter.ToJsonValue(trendType.Value).ToString() : "null");
         }
     }
 }

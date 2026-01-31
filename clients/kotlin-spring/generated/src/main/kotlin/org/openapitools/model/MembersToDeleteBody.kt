@@ -24,7 +24,7 @@ data class MembersToDeleteBody(
     @get:Size(min=1,max=50) 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("members", required = true) val members: kotlin.collections.List<MembersToDeleteBodyMembersInner>
-    ) {
+) {
 
 }
 

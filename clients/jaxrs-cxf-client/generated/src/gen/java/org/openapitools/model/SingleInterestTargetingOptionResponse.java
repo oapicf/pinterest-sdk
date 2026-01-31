@@ -12,15 +12,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SingleInterestTargetingOptionResponse  {
   
   @ApiModelProperty(example = "945391946569", value = "")
+
   private String id;
 
   @ApiModelProperty(example = "Dress", value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private List<String> childInterests = new ArrayList<>();
 
   @ApiModelProperty(example = "2", value = "")
+
   private Integer level;
  /**
    * Get id

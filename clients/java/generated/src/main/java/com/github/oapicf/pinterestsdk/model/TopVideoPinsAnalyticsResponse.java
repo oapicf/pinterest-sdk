@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * TopVideoPinsAnalyticsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TopVideoPinsAnalyticsResponse {
   public static final String SERIALIZED_NAME_DATE_AVAILABILITY = "date_availability";
   @SerializedName(SERIALIZED_NAME_DATE_AVAILABILITY)
@@ -251,13 +251,10 @@ public class TopVideoPinsAnalyticsResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("date_availability");
-    openapiFields.add("pins");
-    openapiFields.add("sort_by");
+    openapiFields = new HashSet<String>(Arrays.asList("date_availability", "pins", "sort_by"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -269,7 +266,7 @@ public class TopVideoPinsAnalyticsResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!TopVideoPinsAnalyticsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in TopVideoPinsAnalyticsResponse is not found in the empty JSON string", TopVideoPinsAnalyticsResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in TopVideoPinsAnalyticsResponse is not found in the empty JSON string", TopVideoPinsAnalyticsResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -277,7 +274,7 @@ public class TopVideoPinsAnalyticsResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!TopVideoPinsAnalyticsResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TopVideoPinsAnalyticsResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `TopVideoPinsAnalyticsResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -290,7 +287,7 @@ public class TopVideoPinsAnalyticsResponse {
         if (jsonArraypins != null) {
           // ensure the json data is an array
           if (!jsonObj.get("pins").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `pins` to be an array in the JSON string but got `%s`", jsonObj.get("pins").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `pins` to be an array in the JSON string but got `%s`", jsonObj.get("pins").toString()));
           }
 
           // validate the optional field `pins` (array)
@@ -300,7 +297,7 @@ public class TopVideoPinsAnalyticsResponse {
         }
       }
       if ((jsonObj.get("sort_by") != null && !jsonObj.get("sort_by").isJsonNull()) && !jsonObj.get("sort_by").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sort_by` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sort_by").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `sort_by` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sort_by").toString()));
       }
       // validate the optional field `sort_by`
       if (jsonObj.get("sort_by") != null && !jsonObj.get("sort_by").isJsonNull()) {

@@ -9,31 +9,136 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_item_validation_details
 
 type CatalogsItemValidationErrors* = object
   ## 
-  ADULT_INVALID*: CatalogsItemValidationDetails
-  ADWORDS_FORMAT_INVALID*: CatalogsItemValidationDetails
-  AVAILABILITY_INVALID*: CatalogsItemValidationDetails
-  BLOCKLISTED_IMAGE_SIGNATURE*: CatalogsItemValidationDetails
-  DESCRIPTION_MISSING*: CatalogsItemValidationDetails
-  DUPLICATE_PRODUCTS*: CatalogsItemValidationDetails
-  IMAGE_LINK_INVALID*: CatalogsItemValidationDetails
-  IMAGE_LINK_LENGTH_TOO_LONG*: CatalogsItemValidationDetails
-  IMAGE_LINK_MISSING*: CatalogsItemValidationDetails
-  INVALID_DOMAIN*: CatalogsItemValidationDetails
-  ITEMID_MISSING*: CatalogsItemValidationDetails
-  ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE*: CatalogsItemValidationDetails
-  LINK_FORMAT_INVALID*: CatalogsItemValidationDetails
-  LINK_LENGTH_TOO_LONG*: CatalogsItemValidationDetails
-  LIST_PRICE_INVALID*: CatalogsItemValidationDetails
-  MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED*: CatalogsItemValidationDetails
-  PARSE_LINE_ERROR*: CatalogsItemValidationDetails
-  PINJOIN_CONTENT_UNSAFE*: CatalogsItemValidationDetails
-  PRICE_CANNOT_BE_DETERMINED*: CatalogsItemValidationDetails
-  PRICE_MISSING*: CatalogsItemValidationDetails
-  PRODUCT_LINK_MISSING*: CatalogsItemValidationDetails
-  PRODUCT_PRICE_INVALID*: CatalogsItemValidationDetails
-  TITLE_MISSING*: CatalogsItemValidationDetails
+  ADULT_INVALID*: Option[CatalogsItemValidationDetails]
+  ADWORDS_FORMAT_INVALID*: Option[CatalogsItemValidationDetails]
+  AVAILABILITY_INVALID*: Option[CatalogsItemValidationDetails]
+  BLOCKLISTED_IMAGE_SIGNATURE*: Option[CatalogsItemValidationDetails]
+  DESCRIPTION_MISSING*: Option[CatalogsItemValidationDetails]
+  DUPLICATE_PRODUCTS*: Option[CatalogsItemValidationDetails]
+  IMAGE_LINK_INVALID*: Option[CatalogsItemValidationDetails]
+  IMAGE_LINK_LENGTH_TOO_LONG*: Option[CatalogsItemValidationDetails]
+  IMAGE_LINK_MISSING*: Option[CatalogsItemValidationDetails]
+  INVALID_DOMAIN*: Option[CatalogsItemValidationDetails]
+  ITEMID_MISSING*: Option[CatalogsItemValidationDetails]
+  ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE*: Option[CatalogsItemValidationDetails]
+  LINK_FORMAT_INVALID*: Option[CatalogsItemValidationDetails]
+  LINK_LENGTH_TOO_LONG*: Option[CatalogsItemValidationDetails]
+  LIST_PRICE_INVALID*: Option[CatalogsItemValidationDetails]
+  MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED*: Option[CatalogsItemValidationDetails]
+  PARSE_LINE_ERROR*: Option[CatalogsItemValidationDetails]
+  PINJOIN_CONTENT_UNSAFE*: Option[CatalogsItemValidationDetails]
+  PRICE_CANNOT_BE_DETERMINED*: Option[CatalogsItemValidationDetails]
+  PRICE_MISSING*: Option[CatalogsItemValidationDetails]
+  PRODUCT_LINK_MISSING*: Option[CatalogsItemValidationDetails]
+  PRODUCT_PRICE_INVALID*: Option[CatalogsItemValidationDetails]
+  TITLE_MISSING*: Option[CatalogsItemValidationDetails]
+
+
+# Custom JSON deserialization for CatalogsItemValidationErrors with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsItemValidationErrors]): CatalogsItemValidationErrors =
+  result = CatalogsItemValidationErrors()
+  if node.kind == JObject:
+    if node.hasKey("ADULT_INVALID") and node["ADULT_INVALID"].kind != JNull:
+      result.ADULT_INVALID = some(to(node["ADULT_INVALID"], typeof(result.ADULT_INVALID.get())))
+    if node.hasKey("ADWORDS_FORMAT_INVALID") and node["ADWORDS_FORMAT_INVALID"].kind != JNull:
+      result.ADWORDS_FORMAT_INVALID = some(to(node["ADWORDS_FORMAT_INVALID"], typeof(result.ADWORDS_FORMAT_INVALID.get())))
+    if node.hasKey("AVAILABILITY_INVALID") and node["AVAILABILITY_INVALID"].kind != JNull:
+      result.AVAILABILITY_INVALID = some(to(node["AVAILABILITY_INVALID"], typeof(result.AVAILABILITY_INVALID.get())))
+    if node.hasKey("BLOCKLISTED_IMAGE_SIGNATURE") and node["BLOCKLISTED_IMAGE_SIGNATURE"].kind != JNull:
+      result.BLOCKLISTED_IMAGE_SIGNATURE = some(to(node["BLOCKLISTED_IMAGE_SIGNATURE"], typeof(result.BLOCKLISTED_IMAGE_SIGNATURE.get())))
+    if node.hasKey("DESCRIPTION_MISSING") and node["DESCRIPTION_MISSING"].kind != JNull:
+      result.DESCRIPTION_MISSING = some(to(node["DESCRIPTION_MISSING"], typeof(result.DESCRIPTION_MISSING.get())))
+    if node.hasKey("DUPLICATE_PRODUCTS") and node["DUPLICATE_PRODUCTS"].kind != JNull:
+      result.DUPLICATE_PRODUCTS = some(to(node["DUPLICATE_PRODUCTS"], typeof(result.DUPLICATE_PRODUCTS.get())))
+    if node.hasKey("IMAGE_LINK_INVALID") and node["IMAGE_LINK_INVALID"].kind != JNull:
+      result.IMAGE_LINK_INVALID = some(to(node["IMAGE_LINK_INVALID"], typeof(result.IMAGE_LINK_INVALID.get())))
+    if node.hasKey("IMAGE_LINK_LENGTH_TOO_LONG") and node["IMAGE_LINK_LENGTH_TOO_LONG"].kind != JNull:
+      result.IMAGE_LINK_LENGTH_TOO_LONG = some(to(node["IMAGE_LINK_LENGTH_TOO_LONG"], typeof(result.IMAGE_LINK_LENGTH_TOO_LONG.get())))
+    if node.hasKey("IMAGE_LINK_MISSING") and node["IMAGE_LINK_MISSING"].kind != JNull:
+      result.IMAGE_LINK_MISSING = some(to(node["IMAGE_LINK_MISSING"], typeof(result.IMAGE_LINK_MISSING.get())))
+    if node.hasKey("INVALID_DOMAIN") and node["INVALID_DOMAIN"].kind != JNull:
+      result.INVALID_DOMAIN = some(to(node["INVALID_DOMAIN"], typeof(result.INVALID_DOMAIN.get())))
+    if node.hasKey("ITEMID_MISSING") and node["ITEMID_MISSING"].kind != JNull:
+      result.ITEMID_MISSING = some(to(node["ITEMID_MISSING"], typeof(result.ITEMID_MISSING.get())))
+    if node.hasKey("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE") and node["ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE"].kind != JNull:
+      result.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = some(to(node["ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE"], typeof(result.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE.get())))
+    if node.hasKey("LINK_FORMAT_INVALID") and node["LINK_FORMAT_INVALID"].kind != JNull:
+      result.LINK_FORMAT_INVALID = some(to(node["LINK_FORMAT_INVALID"], typeof(result.LINK_FORMAT_INVALID.get())))
+    if node.hasKey("LINK_LENGTH_TOO_LONG") and node["LINK_LENGTH_TOO_LONG"].kind != JNull:
+      result.LINK_LENGTH_TOO_LONG = some(to(node["LINK_LENGTH_TOO_LONG"], typeof(result.LINK_LENGTH_TOO_LONG.get())))
+    if node.hasKey("LIST_PRICE_INVALID") and node["LIST_PRICE_INVALID"].kind != JNull:
+      result.LIST_PRICE_INVALID = some(to(node["LIST_PRICE_INVALID"], typeof(result.LIST_PRICE_INVALID.get())))
+    if node.hasKey("MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED") and node["MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED"].kind != JNull:
+      result.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = some(to(node["MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED"], typeof(result.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED.get())))
+    if node.hasKey("PARSE_LINE_ERROR") and node["PARSE_LINE_ERROR"].kind != JNull:
+      result.PARSE_LINE_ERROR = some(to(node["PARSE_LINE_ERROR"], typeof(result.PARSE_LINE_ERROR.get())))
+    if node.hasKey("PINJOIN_CONTENT_UNSAFE") and node["PINJOIN_CONTENT_UNSAFE"].kind != JNull:
+      result.PINJOIN_CONTENT_UNSAFE = some(to(node["PINJOIN_CONTENT_UNSAFE"], typeof(result.PINJOIN_CONTENT_UNSAFE.get())))
+    if node.hasKey("PRICE_CANNOT_BE_DETERMINED") and node["PRICE_CANNOT_BE_DETERMINED"].kind != JNull:
+      result.PRICE_CANNOT_BE_DETERMINED = some(to(node["PRICE_CANNOT_BE_DETERMINED"], typeof(result.PRICE_CANNOT_BE_DETERMINED.get())))
+    if node.hasKey("PRICE_MISSING") and node["PRICE_MISSING"].kind != JNull:
+      result.PRICE_MISSING = some(to(node["PRICE_MISSING"], typeof(result.PRICE_MISSING.get())))
+    if node.hasKey("PRODUCT_LINK_MISSING") and node["PRODUCT_LINK_MISSING"].kind != JNull:
+      result.PRODUCT_LINK_MISSING = some(to(node["PRODUCT_LINK_MISSING"], typeof(result.PRODUCT_LINK_MISSING.get())))
+    if node.hasKey("PRODUCT_PRICE_INVALID") and node["PRODUCT_PRICE_INVALID"].kind != JNull:
+      result.PRODUCT_PRICE_INVALID = some(to(node["PRODUCT_PRICE_INVALID"], typeof(result.PRODUCT_PRICE_INVALID.get())))
+    if node.hasKey("TITLE_MISSING") and node["TITLE_MISSING"].kind != JNull:
+      result.TITLE_MISSING = some(to(node["TITLE_MISSING"], typeof(result.TITLE_MISSING.get())))
+
+# Custom JSON serialization for CatalogsItemValidationErrors with custom field names
+proc `%`*(obj: CatalogsItemValidationErrors): JsonNode =
+  result = newJObject()
+  if obj.ADULT_INVALID.isSome():
+    result["ADULT_INVALID"] = %obj.ADULT_INVALID.get()
+  if obj.ADWORDS_FORMAT_INVALID.isSome():
+    result["ADWORDS_FORMAT_INVALID"] = %obj.ADWORDS_FORMAT_INVALID.get()
+  if obj.AVAILABILITY_INVALID.isSome():
+    result["AVAILABILITY_INVALID"] = %obj.AVAILABILITY_INVALID.get()
+  if obj.BLOCKLISTED_IMAGE_SIGNATURE.isSome():
+    result["BLOCKLISTED_IMAGE_SIGNATURE"] = %obj.BLOCKLISTED_IMAGE_SIGNATURE.get()
+  if obj.DESCRIPTION_MISSING.isSome():
+    result["DESCRIPTION_MISSING"] = %obj.DESCRIPTION_MISSING.get()
+  if obj.DUPLICATE_PRODUCTS.isSome():
+    result["DUPLICATE_PRODUCTS"] = %obj.DUPLICATE_PRODUCTS.get()
+  if obj.IMAGE_LINK_INVALID.isSome():
+    result["IMAGE_LINK_INVALID"] = %obj.IMAGE_LINK_INVALID.get()
+  if obj.IMAGE_LINK_LENGTH_TOO_LONG.isSome():
+    result["IMAGE_LINK_LENGTH_TOO_LONG"] = %obj.IMAGE_LINK_LENGTH_TOO_LONG.get()
+  if obj.IMAGE_LINK_MISSING.isSome():
+    result["IMAGE_LINK_MISSING"] = %obj.IMAGE_LINK_MISSING.get()
+  if obj.INVALID_DOMAIN.isSome():
+    result["INVALID_DOMAIN"] = %obj.INVALID_DOMAIN.get()
+  if obj.ITEMID_MISSING.isSome():
+    result["ITEMID_MISSING"] = %obj.ITEMID_MISSING.get()
+  if obj.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE.isSome():
+    result["ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE"] = %obj.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE.get()
+  if obj.LINK_FORMAT_INVALID.isSome():
+    result["LINK_FORMAT_INVALID"] = %obj.LINK_FORMAT_INVALID.get()
+  if obj.LINK_LENGTH_TOO_LONG.isSome():
+    result["LINK_LENGTH_TOO_LONG"] = %obj.LINK_LENGTH_TOO_LONG.get()
+  if obj.LIST_PRICE_INVALID.isSome():
+    result["LIST_PRICE_INVALID"] = %obj.LIST_PRICE_INVALID.get()
+  if obj.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED.isSome():
+    result["MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED"] = %obj.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED.get()
+  if obj.PARSE_LINE_ERROR.isSome():
+    result["PARSE_LINE_ERROR"] = %obj.PARSE_LINE_ERROR.get()
+  if obj.PINJOIN_CONTENT_UNSAFE.isSome():
+    result["PINJOIN_CONTENT_UNSAFE"] = %obj.PINJOIN_CONTENT_UNSAFE.get()
+  if obj.PRICE_CANNOT_BE_DETERMINED.isSome():
+    result["PRICE_CANNOT_BE_DETERMINED"] = %obj.PRICE_CANNOT_BE_DETERMINED.get()
+  if obj.PRICE_MISSING.isSome():
+    result["PRICE_MISSING"] = %obj.PRICE_MISSING.get()
+  if obj.PRODUCT_LINK_MISSING.isSome():
+    result["PRODUCT_LINK_MISSING"] = %obj.PRODUCT_LINK_MISSING.get()
+  if obj.PRODUCT_PRICE_INVALID.isSome():
+    result["PRODUCT_PRICE_INVALID"] = %obj.PRODUCT_PRICE_INVALID.get()
+  if obj.TITLE_MISSING.isSome():
+    result["TITLE_MISSING"] = %obj.TITLE_MISSING.get()
+

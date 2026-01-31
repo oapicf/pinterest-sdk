@@ -48,15 +48,18 @@ RETAIL(String.valueOf("RETAIL"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private List<String> itemIds = new ArrayList<>();
 
-  @ApiModelProperty(value = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog")
  /**
-   * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
-  **/
+  * Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+  */
+  @ApiModelProperty(value = "Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog")
+
   private String catalogId;
  /**
    * Get catalogType

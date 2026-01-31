@@ -33,7 +33,7 @@ data class AdsAnalyticsCreateAsyncResponse(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("message") val message: kotlin.String? = null
-    ) {
+) {
 
 }
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **String** | Audience name. | 
 **rule** | [**models::AudienceRule**](AudienceRule.md) |  | 
 **description** | Option<**String**> | Audience description. | [optional]
-**audience_type** | [**models::AudienceCreateRequest1AudienceType**](AudienceCreateRequest_1_audience_type.md) |  | 
+**audience_type** | [**models::AudienceType**](AudienceType.md) | <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -89,7 +89,7 @@ public class CustomerListsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@6254b3ce");
+            .accept("[Ljava.lang.String;@498785eb");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CustomerList.class);
@@ -137,7 +137,7 @@ public class CustomerListsControllerTest {
             put("customer_list_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2e1ce704");
+            .accept("[Ljava.lang.String;@4e4c5b5a");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CustomerList.class);
@@ -186,7 +186,7 @@ public class CustomerListsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2a8fc705");
+            .accept("[Ljava.lang.String;@6bdebaef");
         request.getParameters()
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("order", "ASCENDING") // The query parameter format should be 
@@ -240,7 +240,7 @@ public class CustomerListsControllerTest {
             put("customer_list_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@24029871");
+            .accept("[Ljava.lang.String;@7a8495a");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CustomerList.class);

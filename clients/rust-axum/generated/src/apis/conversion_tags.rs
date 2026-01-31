@@ -73,6 +73,8 @@ pub enum PageVisitConversionTagsSlashGetResponse {
 }
 
 
+
+
 /// ConversionTags
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -82,6 +84,7 @@ pub trait ConversionTags<E: std::fmt::Debug + Send + Sync + 'static = ()>: super
     /// ConversionTagsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/conversion_tags
     async fn conversion_tags_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -94,6 +97,7 @@ pub trait ConversionTags<E: std::fmt::Debug + Send + Sync + 'static = ()>: super
     /// ConversionTagsSlashGet - GET /v5/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}
     async fn conversion_tags_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -105,6 +109,7 @@ pub trait ConversionTags<E: std::fmt::Debug + Send + Sync + 'static = ()>: super
     /// ConversionTagsSlashList - GET /v5/ad_accounts/{ad_account_id}/conversion_tags
     async fn conversion_tags_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -117,6 +122,7 @@ pub trait ConversionTags<E: std::fmt::Debug + Send + Sync + 'static = ()>: super
     /// OcpmEligibleConversionTagsSlashGet - GET /v5/ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible
     async fn ocpm_eligible_conversion_tags_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -128,6 +134,7 @@ pub trait ConversionTags<E: std::fmt::Debug + Send + Sync + 'static = ()>: super
     /// PageVisitConversionTagsSlashGet - GET /v5/ad_accounts/{ad_account_id}/conversion_tags/page_visit
     async fn page_visit_conversion_tags_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

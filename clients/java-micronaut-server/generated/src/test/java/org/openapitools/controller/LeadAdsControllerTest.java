@@ -89,7 +89,7 @@ public class LeadAdsControllerTest {
             put("subscription_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@25600e60");
+            .accept("[Ljava.lang.String;@58e391f3");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
@@ -137,7 +137,7 @@ public class LeadAdsControllerTest {
             put("subscription_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@416a9223");
+            .accept("[Ljava.lang.String;@6a50ca2");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountGetSubscriptionResponse.class);
@@ -185,7 +185,7 @@ public class LeadAdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3687bc0d");
+            .accept("[Ljava.lang.String;@75371622");
         request.getParameters()
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("bookmark", "example"); // The query parameter format should be 
@@ -236,7 +236,7 @@ public class LeadAdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@1a4451cb");
+            .accept("[Ljava.lang.String;@5a56c453");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountCreateSubscriptionResponse.class);

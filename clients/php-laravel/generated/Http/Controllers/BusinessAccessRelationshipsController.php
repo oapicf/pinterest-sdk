@@ -67,12 +67,8 @@ class BusinessAccessRelationshipsController extends Controller
 
         $membersToDeleteBody = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\MembersToDeleteBody::class);
 
-        try {
-            $apiResult = $this->api->deleteBusinessMembership($businessId, $membersToDeleteBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->deleteBusinessMembership($businessId, $membersToDeleteBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\DeletedMembersResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -112,12 +108,8 @@ class BusinessAccessRelationshipsController extends Controller
 
         $deletePartnersRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\DeletePartnersRequest::class);
 
-        try {
-            $apiResult = $this->api->deleteBusinessPartners($businessId, $deletePartnersRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->deleteBusinessPartners($businessId, $deletePartnersRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\DeletePartnersResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -170,12 +162,8 @@ class BusinessAccessRelationshipsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->getBusinessEmployers($pageSize, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->getBusinessEmployers($pageSize, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GetBusinessEmployers200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -242,7 +230,7 @@ class BusinessAccessRelationshipsController extends Controller
         }
 
 
-        $assetsSummary = $request->bool('assetsSummary');
+        $assetsSummary = $request->boolean('assetsSummary');
 
         $businessRoles = $request->get('businessRoles');
 
@@ -254,12 +242,8 @@ class BusinessAccessRelationshipsController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->getBusinessMembers($businessId, $assetsSummary, $businessRoles, $memberIds, $startIndex, $bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->getBusinessMembers($businessId, $assetsSummary, $businessRoles, $memberIds, $startIndex, $bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GetBusinessMembers200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -325,7 +309,7 @@ class BusinessAccessRelationshipsController extends Controller
         }
 
 
-        $assetsSummary = $request->bool('assetsSummary');
+        $assetsSummary = $request->boolean('assetsSummary');
 
         $partnerType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PartnerType::class);
 
@@ -337,12 +321,8 @@ class BusinessAccessRelationshipsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->getBusinessPartners($businessId, $assetsSummary, $partnerType, $partnerIds, $startIndex, $pageSize, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->getBusinessPartners($businessId, $assetsSummary, $partnerType, $partnerIds, $startIndex, $pageSize, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GetBusinessPartners200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -382,12 +362,8 @@ class BusinessAccessRelationshipsController extends Controller
 
         $updateMemberBusinessRoleBody = $request->get('updateMemberBusinessRoleBody');
 
-        try {
-            $apiResult = $this->api->updateBusinessMemberships($businessId, $updateMemberBusinessRoleBody);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->updateBusinessMemberships($businessId, $updateMemberBusinessRoleBody);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\UpdateMemberResultsResponseArray) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

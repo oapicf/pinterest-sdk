@@ -140,8 +140,7 @@ namespace Org.OpenAPITools.Model
                             catalogId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "items":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                items = new Option<List<AdvancedAuctionItemsGetRecord>?>(JsonSerializer.Deserialize<List<AdvancedAuctionItemsGetRecord>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            items = new Option<List<AdvancedAuctionItemsGetRecord>?>(JsonSerializer.Deserialize<List<AdvancedAuctionItemsGetRecord>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

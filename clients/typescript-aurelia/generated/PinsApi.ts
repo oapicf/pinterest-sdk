@@ -30,7 +30,7 @@ export interface IMultiPinsAnalyticsParams {
   pinIds: Array<string>;
   startDate: string;
   endDate: string;
-  metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>;
+  metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>;
   appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB';
   adAccountId?: string;
 }
@@ -42,7 +42,7 @@ export interface IPinsAnalyticsParams {
   pinId: string;
   startDate: string;
   endDate: string;
-  metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>;
+  metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>;
   appTypes?: 'ALL' | 'MOBILE' | 'TABLET' | 'WEB';
   splitField?: 'NO_SPLIT' | 'APP_TYPE';
   adAccountId?: string;

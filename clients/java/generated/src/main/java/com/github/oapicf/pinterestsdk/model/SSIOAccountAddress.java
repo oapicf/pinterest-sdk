@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * SSIOAccountAddress
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountAddress {
   public static final String SERIALIZED_NAME_DISPLAY = "display";
   @SerializedName(SERIALIZED_NAME_DISPLAY)
@@ -199,14 +199,10 @@ public class SSIOAccountAddress {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("display");
-    openapiFields.add("purpose");
-    openapiFields.add("address_id");
-    openapiFields.add("order_legal_entity");
+    openapiFields = new HashSet<String>(Arrays.asList("display", "purpose", "address_id", "order_legal_entity"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -218,7 +214,7 @@ public class SSIOAccountAddress {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SSIOAccountAddress.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SSIOAccountAddress is not found in the empty JSON string", SSIOAccountAddress.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in SSIOAccountAddress is not found in the empty JSON string", SSIOAccountAddress.openapiRequiredFields.toString()));
         }
       }
 
@@ -226,21 +222,21 @@ public class SSIOAccountAddress {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!SSIOAccountAddress.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SSIOAccountAddress` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `SSIOAccountAddress` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("display") != null && !jsonObj.get("display").isJsonNull()) && !jsonObj.get("display").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `display` to be a primitive type in the JSON string but got `%s`", jsonObj.get("display").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `display` to be a primitive type in the JSON string but got `%s`", jsonObj.get("display").toString()));
       }
       if ((jsonObj.get("purpose") != null && !jsonObj.get("purpose").isJsonNull()) && !jsonObj.get("purpose").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `purpose` to be a primitive type in the JSON string but got `%s`", jsonObj.get("purpose").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `purpose` to be a primitive type in the JSON string but got `%s`", jsonObj.get("purpose").toString()));
       }
       if ((jsonObj.get("address_id") != null && !jsonObj.get("address_id").isJsonNull()) && !jsonObj.get("address_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `address_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `address_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address_id").toString()));
       }
       if ((jsonObj.get("order_legal_entity") != null && !jsonObj.get("order_legal_entity").isJsonNull()) && !jsonObj.get("order_legal_entity").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `order_legal_entity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("order_legal_entity").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `order_legal_entity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("order_legal_entity").toString()));
       }
   }
 

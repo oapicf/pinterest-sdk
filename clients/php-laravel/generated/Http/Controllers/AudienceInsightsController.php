@@ -76,12 +76,8 @@ class AudienceInsightsController extends Controller
 
         $audienceInsightType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AudienceInsightType::class);
 
-        try {
-            $apiResult = $this->api->audienceInsightsGet($adAccountId, $audienceInsightType);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->audienceInsightsGet($adAccountId, $audienceInsightType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AudienceInsightsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -125,12 +121,8 @@ class AudienceInsightsController extends Controller
         }
 
 
-        try {
-            $apiResult = $this->api->audienceInsightsScopeAndTypeGet($adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->audienceInsightsScopeAndTypeGet($adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AudienceDefinitionResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -22,6 +22,7 @@ namespace org::openapitools::server::model
 CatalogsVerticalBatchRequest::CatalogsVerticalBatchRequest()
 {
     m_Catalog_type = "";
+    m_Language = "";
     m_Catalog_id = "";
     m_Catalog_idIsSet = false;
     
@@ -46,11 +47,7 @@ bool CatalogsVerticalBatchRequest::validate(std::stringstream& msg, const std::s
     bool success = true;
     const std::string _pathPrefix = pathPrefix.empty() ? "CatalogsVerticalBatchRequest" : pathPrefix;
 
-                
-    if (!m_Language.validate(msg, _pathPrefix + ".language")) {
-        msg << _pathPrefix << ": Language is invalid;";
-        success = false;
-    }     
+                     
     
     /* Items */ {
         const std::vector<org::openapitools::server::model::CatalogsCreativeAssetsBatchItem>& value = m_Items;
@@ -164,11 +161,11 @@ void CatalogsVerticalBatchRequest::setCountry(org::openapitools::server::model::
 {
     m_Country = value;
 }
-org::openapitools::server::model::CatalogsItemsRequest_language CatalogsVerticalBatchRequest::getLanguage() const
+std::string CatalogsVerticalBatchRequest::getLanguage() const
 {
     return m_Language;
 }
-void CatalogsVerticalBatchRequest::setLanguage(org::openapitools::server::model::CatalogsItemsRequest_language const& value)
+void CatalogsVerticalBatchRequest::setLanguage(std::string const& value)
 {
     m_Language = value;
 }

@@ -38,6 +38,6 @@ input CatalogsRetailFeedsCreateRequestInput {
     catalog_type: CatalogsType
     default_country: Country
     default_availability: ProductAvailabilityType
-    status: CatalogsStatusInput
+    status: CatalogsStatus
 }
 

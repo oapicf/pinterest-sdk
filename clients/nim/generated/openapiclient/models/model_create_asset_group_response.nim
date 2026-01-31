@@ -9,9 +9,26 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_asset_group_binding
 
 type CreateAssetGroupResponse* = object
   ## 
-  assetGroup*: AssetGroupBinding
+  assetGroup*: Option[AssetGroupBinding]
+
+
+# Custom JSON deserialization for CreateAssetGroupResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[CreateAssetGroupResponse]): CreateAssetGroupResponse =
+  result = CreateAssetGroupResponse()
+  if node.kind == JObject:
+    if node.hasKey("asset_group") and node["asset_group"].kind != JNull:
+      result.assetGroup = some(to(node["asset_group"], typeof(result.assetGroup.get())))
+
+# Custom JSON serialization for CreateAssetGroupResponse with custom field names
+proc `%`*(obj: CreateAssetGroupResponse): JsonNode =
+  result = newJObject()
+  if obj.assetGroup.isSome():
+    result["asset_group"] = %obj.assetGroup.get()
+

@@ -21,12 +21,12 @@ namespace org::openapitools::server::model
 
 OauthAccessTokenRequestRefresh::OauthAccessTokenRequestRefresh()
 {
-    m_Grant_type = "";
     m_Refresh_token = "";
     m_Scope = "";
     m_ScopeIsSet = false;
     m_Refresh_on = false;
     m_Refresh_onIsSet = false;
+    m_Grant_type = "";
     
 }
 
@@ -58,9 +58,6 @@ bool OauthAccessTokenRequestRefresh::operator==(const OauthAccessTokenRequestRef
     return
     
     
-    (getGrantType() == rhs.getGrantType())
-     &&
-    
     (getRefreshToken() == rhs.getRefreshToken())
      &&
     
@@ -68,7 +65,10 @@ bool OauthAccessTokenRequestRefresh::operator==(const OauthAccessTokenRequestRef
     ((!scopeIsSet() && !rhs.scopeIsSet()) || (scopeIsSet() && rhs.scopeIsSet() && getScope() == rhs.getScope())) &&
     
     
-    ((!refreshOnIsSet() && !rhs.refreshOnIsSet()) || (refreshOnIsSet() && rhs.refreshOnIsSet() && isRefreshOn() == rhs.isRefreshOn()))
+    ((!refreshOnIsSet() && !rhs.refreshOnIsSet()) || (refreshOnIsSet() && rhs.refreshOnIsSet() && isRefreshOn() == rhs.isRefreshOn())) &&
+    
+    (getGrantType() == rhs.getGrantType())
+    
     
     ;
 }
@@ -81,18 +81,17 @@ bool OauthAccessTokenRequestRefresh::operator!=(const OauthAccessTokenRequestRef
 void to_json(nlohmann::json& j, const OauthAccessTokenRequestRefresh& o)
 {
     j = nlohmann::json::object();
-    j["grant_type"] = o.m_Grant_type;
     j["refresh_token"] = o.m_Refresh_token;
     if(o.scopeIsSet())
         j["scope"] = o.m_Scope;
     if(o.refreshOnIsSet())
         j["refresh_on"] = o.m_Refresh_on;
+    j["grant_type"] = o.m_Grant_type;
     
 }
 
 void from_json(const nlohmann::json& j, OauthAccessTokenRequestRefresh& o)
 {
-    j.at("grant_type").get_to(o.m_Grant_type);
     j.at("refresh_token").get_to(o.m_Refresh_token);
     if(j.find("scope") != j.end())
     {
@@ -104,17 +103,10 @@ void from_json(const nlohmann::json& j, OauthAccessTokenRequestRefresh& o)
         j.at("refresh_on").get_to(o.m_Refresh_on);
         o.m_Refresh_onIsSet = true;
     } 
+    j.at("grant_type").get_to(o.m_Grant_type);
     
 }
 
-std::string OauthAccessTokenRequestRefresh::getGrantType() const
-{
-    return m_Grant_type;
-}
-void OauthAccessTokenRequestRefresh::setGrantType(std::string const& value)
-{
-    m_Grant_type = value;
-}
 std::string OauthAccessTokenRequestRefresh::getRefreshToken() const
 {
     return m_Refresh_token;
@@ -156,6 +148,14 @@ bool OauthAccessTokenRequestRefresh::refreshOnIsSet() const
 void OauthAccessTokenRequestRefresh::unsetRefresh_on()
 {
     m_Refresh_onIsSet = false;
+}
+std::string OauthAccessTokenRequestRefresh::getGrantType() const
+{
+    return m_Grant_type;
+}
+void OauthAccessTokenRequestRefresh::setGrantType(std::string const& value)
+{
+    m_Grant_type = value;
 }
 
 

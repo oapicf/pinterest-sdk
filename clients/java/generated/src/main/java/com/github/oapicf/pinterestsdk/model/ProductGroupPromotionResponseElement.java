@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ProductGroupPromotionResponseElement
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupPromotionResponseElement {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -578,28 +578,10 @@ public class ProductGroupPromotionResponseElement {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("ad_group_id");
-    openapiFields.add("bid_in_micro_currency");
-    openapiFields.add("included");
-    openapiFields.add("definition");
-    openapiFields.add("relative_definition");
-    openapiFields.add("parent_id");
-    openapiFields.add("slideshow_collections_title");
-    openapiFields.add("slideshow_collections_description");
-    openapiFields.add("is_mdl");
-    openapiFields.add("status");
-    openapiFields.add("tracking_url");
-    openapiFields.add("catalog_product_group_id");
-    openapiFields.add("catalog_product_group_name");
-    openapiFields.add("collections_hero_pin_id");
-    openapiFields.add("collections_hero_destination_url");
-    openapiFields.add("grid_click_type");
-    openapiFields.add("creative_type");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "ad_group_id", "bid_in_micro_currency", "included", "definition", "relative_definition", "parent_id", "slideshow_collections_title", "slideshow_collections_description", "is_mdl", "status", "tracking_url", "catalog_product_group_id", "catalog_product_group_name", "collections_hero_pin_id", "collections_hero_destination_url", "grid_click_type", "creative_type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -611,7 +593,7 @@ public class ProductGroupPromotionResponseElement {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ProductGroupPromotionResponseElement.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductGroupPromotionResponseElement is not found in the empty JSON string", ProductGroupPromotionResponseElement.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ProductGroupPromotionResponseElement is not found in the empty JSON string", ProductGroupPromotionResponseElement.openapiRequiredFields.toString()));
         }
       }
 
@@ -619,49 +601,49 @@ public class ProductGroupPromotionResponseElement {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ProductGroupPromotionResponseElement.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ProductGroupPromotionResponseElement` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ProductGroupPromotionResponseElement` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("ad_group_id") != null && !jsonObj.get("ad_group_id").isJsonNull()) && !jsonObj.get("ad_group_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_group_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_group_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_group_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_group_id").toString()));
       }
       if ((jsonObj.get("definition") != null && !jsonObj.get("definition").isJsonNull()) && !jsonObj.get("definition").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `definition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("definition").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `definition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("definition").toString()));
       }
       if ((jsonObj.get("relative_definition") != null && !jsonObj.get("relative_definition").isJsonNull()) && !jsonObj.get("relative_definition").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `relative_definition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("relative_definition").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `relative_definition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("relative_definition").toString()));
       }
       if ((jsonObj.get("parent_id") != null && !jsonObj.get("parent_id").isJsonNull()) && !jsonObj.get("parent_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `parent_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parent_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `parent_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parent_id").toString()));
       }
       if ((jsonObj.get("slideshow_collections_title") != null && !jsonObj.get("slideshow_collections_title").isJsonNull()) && !jsonObj.get("slideshow_collections_title").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `slideshow_collections_title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("slideshow_collections_title").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `slideshow_collections_title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("slideshow_collections_title").toString()));
       }
       if ((jsonObj.get("slideshow_collections_description") != null && !jsonObj.get("slideshow_collections_description").isJsonNull()) && !jsonObj.get("slideshow_collections_description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `slideshow_collections_description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("slideshow_collections_description").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `slideshow_collections_description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("slideshow_collections_description").toString()));
       }
       // validate the optional field `status`
       if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
         EntityStatus.validateJsonElement(jsonObj.get("status"));
       }
       if ((jsonObj.get("tracking_url") != null && !jsonObj.get("tracking_url").isJsonNull()) && !jsonObj.get("tracking_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tracking_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tracking_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `tracking_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tracking_url").toString()));
       }
       if ((jsonObj.get("catalog_product_group_id") != null && !jsonObj.get("catalog_product_group_id").isJsonNull()) && !jsonObj.get("catalog_product_group_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `catalog_product_group_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_product_group_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `catalog_product_group_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_product_group_id").toString()));
       }
       if ((jsonObj.get("catalog_product_group_name") != null && !jsonObj.get("catalog_product_group_name").isJsonNull()) && !jsonObj.get("catalog_product_group_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `catalog_product_group_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_product_group_name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `catalog_product_group_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_product_group_name").toString()));
       }
       if ((jsonObj.get("collections_hero_pin_id") != null && !jsonObj.get("collections_hero_pin_id").isJsonNull()) && !jsonObj.get("collections_hero_pin_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `collections_hero_pin_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("collections_hero_pin_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `collections_hero_pin_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("collections_hero_pin_id").toString()));
       }
       if ((jsonObj.get("collections_hero_destination_url") != null && !jsonObj.get("collections_hero_destination_url").isJsonNull()) && !jsonObj.get("collections_hero_destination_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `collections_hero_destination_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("collections_hero_destination_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `collections_hero_destination_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("collections_hero_destination_url").toString()));
       }
       // validate the optional field `grid_click_type`
       if (jsonObj.get("grid_click_type") != null && !jsonObj.get("grid_click_type").isJsonNull()) {

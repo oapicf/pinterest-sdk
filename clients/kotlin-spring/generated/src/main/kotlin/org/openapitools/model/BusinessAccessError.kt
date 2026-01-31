@@ -25,7 +25,7 @@ data class BusinessAccessError(
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("message", required = true) val message: kotlin.String
-    ) {
+) {
 
 }
 

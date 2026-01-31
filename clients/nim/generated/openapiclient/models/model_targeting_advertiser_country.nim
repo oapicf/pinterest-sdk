@@ -9,7 +9,213 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type TargetingAdvertiserCountry* = object
-  ## Advertiser's ISO two character country code.
+type TargetingAdvertiserCountry* {.pure.} = enum
+  US
+  GB
+  CA
+  IE
+  AU
+  NZ
+  FR
+  SE
+  IL
+  DE
+  AT
+  IT
+  ES
+  NL
+  BE
+  PT
+  CH
+  HK
+  JP
+  KR
+  SG
+  NO
+  DK
+  FI
+  CY
+  LU
+  MT
+  PL
+  RO
+  HU
+  CZ
+  GR
+  SK
+  BR
+  MX
+  AR
+  CL
+  CO
+
+func `%`*(v: TargetingAdvertiserCountry): JsonNode =
+  result = case v:
+    of TargetingAdvertiserCountry.US: %"US"
+    of TargetingAdvertiserCountry.GB: %"GB"
+    of TargetingAdvertiserCountry.CA: %"CA"
+    of TargetingAdvertiserCountry.IE: %"IE"
+    of TargetingAdvertiserCountry.AU: %"AU"
+    of TargetingAdvertiserCountry.NZ: %"NZ"
+    of TargetingAdvertiserCountry.FR: %"FR"
+    of TargetingAdvertiserCountry.SE: %"SE"
+    of TargetingAdvertiserCountry.IL: %"IL"
+    of TargetingAdvertiserCountry.DE: %"DE"
+    of TargetingAdvertiserCountry.AT: %"AT"
+    of TargetingAdvertiserCountry.IT: %"IT"
+    of TargetingAdvertiserCountry.ES: %"ES"
+    of TargetingAdvertiserCountry.NL: %"NL"
+    of TargetingAdvertiserCountry.BE: %"BE"
+    of TargetingAdvertiserCountry.PT: %"PT"
+    of TargetingAdvertiserCountry.CH: %"CH"
+    of TargetingAdvertiserCountry.HK: %"HK"
+    of TargetingAdvertiserCountry.JP: %"JP"
+    of TargetingAdvertiserCountry.KR: %"KR"
+    of TargetingAdvertiserCountry.SG: %"SG"
+    of TargetingAdvertiserCountry.NO: %"NO"
+    of TargetingAdvertiserCountry.DK: %"DK"
+    of TargetingAdvertiserCountry.FI: %"FI"
+    of TargetingAdvertiserCountry.CY: %"CY"
+    of TargetingAdvertiserCountry.LU: %"LU"
+    of TargetingAdvertiserCountry.MT: %"MT"
+    of TargetingAdvertiserCountry.PL: %"PL"
+    of TargetingAdvertiserCountry.RO: %"RO"
+    of TargetingAdvertiserCountry.HU: %"HU"
+    of TargetingAdvertiserCountry.CZ: %"CZ"
+    of TargetingAdvertiserCountry.GR: %"GR"
+    of TargetingAdvertiserCountry.SK: %"SK"
+    of TargetingAdvertiserCountry.BR: %"BR"
+    of TargetingAdvertiserCountry.MX: %"MX"
+    of TargetingAdvertiserCountry.AR: %"AR"
+    of TargetingAdvertiserCountry.CL: %"CL"
+    of TargetingAdvertiserCountry.CO: %"CO"
+
+func `$`*(v: TargetingAdvertiserCountry): string =
+  result = case v:
+    of TargetingAdvertiserCountry.US: $("US")
+    of TargetingAdvertiserCountry.GB: $("GB")
+    of TargetingAdvertiserCountry.CA: $("CA")
+    of TargetingAdvertiserCountry.IE: $("IE")
+    of TargetingAdvertiserCountry.AU: $("AU")
+    of TargetingAdvertiserCountry.NZ: $("NZ")
+    of TargetingAdvertiserCountry.FR: $("FR")
+    of TargetingAdvertiserCountry.SE: $("SE")
+    of TargetingAdvertiserCountry.IL: $("IL")
+    of TargetingAdvertiserCountry.DE: $("DE")
+    of TargetingAdvertiserCountry.AT: $("AT")
+    of TargetingAdvertiserCountry.IT: $("IT")
+    of TargetingAdvertiserCountry.ES: $("ES")
+    of TargetingAdvertiserCountry.NL: $("NL")
+    of TargetingAdvertiserCountry.BE: $("BE")
+    of TargetingAdvertiserCountry.PT: $("PT")
+    of TargetingAdvertiserCountry.CH: $("CH")
+    of TargetingAdvertiserCountry.HK: $("HK")
+    of TargetingAdvertiserCountry.JP: $("JP")
+    of TargetingAdvertiserCountry.KR: $("KR")
+    of TargetingAdvertiserCountry.SG: $("SG")
+    of TargetingAdvertiserCountry.NO: $("NO")
+    of TargetingAdvertiserCountry.DK: $("DK")
+    of TargetingAdvertiserCountry.FI: $("FI")
+    of TargetingAdvertiserCountry.CY: $("CY")
+    of TargetingAdvertiserCountry.LU: $("LU")
+    of TargetingAdvertiserCountry.MT: $("MT")
+    of TargetingAdvertiserCountry.PL: $("PL")
+    of TargetingAdvertiserCountry.RO: $("RO")
+    of TargetingAdvertiserCountry.HU: $("HU")
+    of TargetingAdvertiserCountry.CZ: $("CZ")
+    of TargetingAdvertiserCountry.GR: $("GR")
+    of TargetingAdvertiserCountry.SK: $("SK")
+    of TargetingAdvertiserCountry.BR: $("BR")
+    of TargetingAdvertiserCountry.MX: $("MX")
+    of TargetingAdvertiserCountry.AR: $("AR")
+    of TargetingAdvertiserCountry.CL: $("CL")
+    of TargetingAdvertiserCountry.CO: $("CO")
+
+proc to*(node: JsonNode, T: typedesc[TargetingAdvertiserCountry]): TargetingAdvertiserCountry =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum TargetingAdvertiserCountry, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("US"):
+    return TargetingAdvertiserCountry.US
+  of $("GB"):
+    return TargetingAdvertiserCountry.GB
+  of $("CA"):
+    return TargetingAdvertiserCountry.CA
+  of $("IE"):
+    return TargetingAdvertiserCountry.IE
+  of $("AU"):
+    return TargetingAdvertiserCountry.AU
+  of $("NZ"):
+    return TargetingAdvertiserCountry.NZ
+  of $("FR"):
+    return TargetingAdvertiserCountry.FR
+  of $("SE"):
+    return TargetingAdvertiserCountry.SE
+  of $("IL"):
+    return TargetingAdvertiserCountry.IL
+  of $("DE"):
+    return TargetingAdvertiserCountry.DE
+  of $("AT"):
+    return TargetingAdvertiserCountry.AT
+  of $("IT"):
+    return TargetingAdvertiserCountry.IT
+  of $("ES"):
+    return TargetingAdvertiserCountry.ES
+  of $("NL"):
+    return TargetingAdvertiserCountry.NL
+  of $("BE"):
+    return TargetingAdvertiserCountry.BE
+  of $("PT"):
+    return TargetingAdvertiserCountry.PT
+  of $("CH"):
+    return TargetingAdvertiserCountry.CH
+  of $("HK"):
+    return TargetingAdvertiserCountry.HK
+  of $("JP"):
+    return TargetingAdvertiserCountry.JP
+  of $("KR"):
+    return TargetingAdvertiserCountry.KR
+  of $("SG"):
+    return TargetingAdvertiserCountry.SG
+  of $("NO"):
+    return TargetingAdvertiserCountry.NO
+  of $("DK"):
+    return TargetingAdvertiserCountry.DK
+  of $("FI"):
+    return TargetingAdvertiserCountry.FI
+  of $("CY"):
+    return TargetingAdvertiserCountry.CY
+  of $("LU"):
+    return TargetingAdvertiserCountry.LU
+  of $("MT"):
+    return TargetingAdvertiserCountry.MT
+  of $("PL"):
+    return TargetingAdvertiserCountry.PL
+  of $("RO"):
+    return TargetingAdvertiserCountry.RO
+  of $("HU"):
+    return TargetingAdvertiserCountry.HU
+  of $("CZ"):
+    return TargetingAdvertiserCountry.CZ
+  of $("GR"):
+    return TargetingAdvertiserCountry.GR
+  of $("SK"):
+    return TargetingAdvertiserCountry.SK
+  of $("BR"):
+    return TargetingAdvertiserCountry.BR
+  of $("MX"):
+    return TargetingAdvertiserCountry.MX
+  of $("AR"):
+    return TargetingAdvertiserCountry.AR
+  of $("CL"):
+    return TargetingAdvertiserCountry.CL
+  of $("CO"):
+    return TargetingAdvertiserCountry.CO
+  else:
+    raise newException(ValueError, "Invalid enum value for TargetingAdvertiserCountry: " & strVal)
+

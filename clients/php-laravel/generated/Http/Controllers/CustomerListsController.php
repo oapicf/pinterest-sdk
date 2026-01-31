@@ -67,12 +67,8 @@ class CustomerListsController extends Controller
 
         $customerListRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CustomerListRequest::class);
 
-        try {
-            $apiResult = $this->api->customerListsCreate($adAccountId, $customerListRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->customerListsCreate($adAccountId, $customerListRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CustomerList) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -123,12 +119,8 @@ class CustomerListsController extends Controller
 
 
 
-        try {
-            $apiResult = $this->api->customerListsGet($adAccountId, $customerListId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->customerListsGet($adAccountId, $customerListId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CustomerList) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -188,12 +180,8 @@ class CustomerListsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->customerListsList($adAccountId, $pageSize, $order, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->customerListsList($adAccountId, $pageSize, $order, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CustomerListsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -234,12 +222,8 @@ class CustomerListsController extends Controller
 
         $customerListUpdateRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CustomerListUpdateRequest::class);
 
-        try {
-            $apiResult = $this->api->customerListsUpdate($adAccountId, $customerListId, $customerListUpdateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->customerListsUpdate($adAccountId, $customerListId, $customerListUpdateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CustomerList) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

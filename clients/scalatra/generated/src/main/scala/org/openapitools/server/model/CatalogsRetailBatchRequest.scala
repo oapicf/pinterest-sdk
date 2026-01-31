@@ -16,7 +16,8 @@ case class CatalogsRetailBatchRequest(
 
   country: Country,
 
-  language: CatalogsItemsRequestLanguage,
+  /* We recommend using the CatalogsLocale values. */
+  language: String,
 
   /* Array with catalogs item operations */
   items: List[CatalogsRetailBatchRequestItemsInner]

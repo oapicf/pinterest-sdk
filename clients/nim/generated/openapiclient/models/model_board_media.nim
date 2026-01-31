@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type BoardMedia* = object
   ## Board media.
-  imageCoverUrl*: string ## Board cover image.
-  pinThumbnailUrls*: seq[string] ## Board pin thumbnail urls.
+  imageCoverUrl*: Option[string] ## Board cover image.
+  pinThumbnailUrls*: Option[seq[string]] ## Board pin thumbnail urls.
+
+
+# Custom JSON deserialization for BoardMedia with custom field names
+proc to*(node: JsonNode, T: typedesc[BoardMedia]): BoardMedia =
+  result = BoardMedia()
+  if node.kind == JObject:
+    if node.hasKey("image_cover_url") and node["image_cover_url"].kind != JNull:
+      result.imageCoverUrl = some(to(node["image_cover_url"], typeof(result.imageCoverUrl.get())))
+    if node.hasKey("pin_thumbnail_urls") and node["pin_thumbnail_urls"].kind != JNull:
+      result.pinThumbnailUrls = some(to(node["pin_thumbnail_urls"], typeof(result.pinThumbnailUrls.get())))
+
+# Custom JSON serialization for BoardMedia with custom field names
+proc `%`*(obj: BoardMedia): JsonNode =
+  result = newJObject()
+  if obj.imageCoverUrl.isSome():
+    result["image_cover_url"] = %obj.imageCoverUrl.get()
+  if obj.pinThumbnailUrls.isSome():
+    result["pin_thumbnail_urls"] = %obj.pinThumbnailUrls.get()
+

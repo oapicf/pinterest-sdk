@@ -68,12 +68,8 @@ class AdvancedAuctionController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->advancedAuctionItemsGetPost($advancedAuctionItemsGetRequest, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->advancedAuctionItemsGetPost($advancedAuctionItemsGetRequest, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdvancedAuctionItems) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -130,12 +126,8 @@ class AdvancedAuctionController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->advancedAuctionItemsSubmitPost($advancedAuctionItemsSubmitRequest, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->advancedAuctionItemsSubmitPost($advancedAuctionItemsSubmitRequest, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdvancedAuctionProcessedItems) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

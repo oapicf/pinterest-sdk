@@ -889,7 +889,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, NullableCatalogsItemFieldType nullableCatalogsItemFieldType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(nullableCatalogsItemFieldType.ToString());
+            writer.WriteStringValue(NullableCatalogsItemFieldTypeValueConverter.ToJsonValue(nullableCatalogsItemFieldType).ToString());
         }
     }
 
@@ -920,14 +920,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the NullableCatalogsItemFieldType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="nullableCatalogsItemFieldType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, NullableCatalogsItemFieldType? nullableCatalogsItemFieldType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(nullableCatalogsItemFieldType?.ToString() ?? "null");
+            writer.WriteStringValue(nullableCatalogsItemFieldType.HasValue ? NullableCatalogsItemFieldTypeValueConverter.ToJsonValue(nullableCatalogsItemFieldType.Value).ToString() : "null");
         }
     }
 }

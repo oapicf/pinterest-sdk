@@ -33,24 +33,24 @@ namespace Org.OpenAPITools.Models
             /// Enum UNKNOWNEnum for UNKNOWN
             /// </summary>
             [EnumMember(Value = "UNKNOWN")]
-            UNKNOWNEnum = 1,
+            UNKNOWNEnum,
             
             /// <summary>
             /// Enum NOTVALIDATEDEnum for NOT_VALIDATED
             /// </summary>
             [EnumMember(Value = "NOT_VALIDATED")]
-            NOTVALIDATEDEnum = 2,
+            NOTVALIDATEDEnum,
             
             /// <summary>
             /// Enum VALIDATINGINPROGRESSEnum for VALIDATING_IN_PROGRESS
             /// </summary>
             [EnumMember(Value = "VALIDATING_IN_PROGRESS")]
-            VALIDATINGINPROGRESSEnum = 3,
+            VALIDATINGINPROGRESSEnum,
             
             /// <summary>
             /// Enum VALIDATIONCOMPLETEEnum for VALIDATION_COMPLETE
             /// </summary>
             [EnumMember(Value = "VALIDATION_COMPLETE")]
-            VALIDATIONCOMPLETEEnum = 4
+            VALIDATIONCOMPLETEEnum
         }
 }

@@ -73,25 +73,25 @@ private class OASOauthAccessTokenResponseEverlastiTest {
     private static void maintainRenamedProperties() {
         OASOauthAccessTokenResponseEverlasti oauthAccessTokenResponseEverlastingRefresh = new OASOauthAccessTokenResponseEverlasti();
         Map<String, String> x-property-mappings = oauthAccessTokenResponseEverlastingRefresh.getx-property-mappings();
+        System.assertEquals('refreshToken', x-property-mappings.get('refresh_token'));
+        System.assertEquals('refreshTokenExpiresIn', x-property-mappings.get('refresh_token_expires_in'));
+        System.assertEquals('refreshTokenExpiresAt', x-property-mappings.get('refresh_token_expires_at'));
         System.assertEquals('responseType', x-property-mappings.get('response_type'));
         System.assertEquals('accessToken', x-property-mappings.get('access_token'));
         System.assertEquals('tokenType', x-property-mappings.get('token_type'));
         System.assertEquals('expiresIn', x-property-mappings.get('expires_in'));
-        System.assertEquals('refreshToken', x-property-mappings.get('refresh_token'));
-        System.assertEquals('refreshTokenExpiresIn', x-property-mappings.get('refresh_token_expires_in'));
-        System.assertEquals('refreshTokenExpiresAt', x-property-mappings.get('refresh_token_expires_at'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASOauthAccessTokenResponseEverlasti oauthAccessTokenResponseEverlastingRefresh = new OASOauthAccessTokenResponseEverlasti();
         System.assertEquals('bearer', oauthAccessTokenResponseEverlastingRefresh.tokenType);
+        System.assertEquals(null, oauthAccessTokenResponseEverlastingRefresh.refreshToken);
+        System.assertEquals(null, oauthAccessTokenResponseEverlastingRefresh.refreshTokenExpiresIn);
+        System.assertEquals(null, oauthAccessTokenResponseEverlastingRefresh.refreshTokenExpiresAt);
         System.assertEquals(null, oauthAccessTokenResponseEverlastingRefresh.responseType);
         System.assertEquals(null, oauthAccessTokenResponseEverlastingRefresh.accessToken);
         System.assertEquals(null, oauthAccessTokenResponseEverlastingRefresh.expiresIn);
         System.assertEquals(null, oauthAccessTokenResponseEverlastingRefresh.scope);
-        System.assertEquals(null, oauthAccessTokenResponseEverlastingRefresh.refreshToken);
-        System.assertEquals(null, oauthAccessTokenResponseEverlastingRefresh.refreshTokenExpiresIn);
-        System.assertEquals(null, oauthAccessTokenResponseEverlastingRefresh.refreshTokenExpiresAt);
     }
 }

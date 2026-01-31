@@ -28,6 +28,30 @@ class InviteResponseTest : ShouldSpec() {
         // uncomment below to create an instance of InviteResponse
         //val modelInstance = InviteResponse()
 
+        // to test the property `id` - Unique identifier of the invite/request.
+        should("test id") {
+            // uncomment below to test the property
+            //modelInstance.id shouldBe ("TODO")
+        }
+
+        // to test the property `inviteData`
+        should("test inviteData") {
+            // uncomment below to test the property
+            //modelInstance.inviteData shouldBe ("TODO")
+        }
+
+        // to test the property `isReceivedInvite` - Indicates whether the invite/request was received.
+        should("test isReceivedInvite") {
+            // uncomment below to test the property
+            //modelInstance.isReceivedInvite shouldBe ("TODO")
+        }
+
+        // to test the property `user` - Metadata for the member/partner that was sent the invite/request.
+        should("test user") {
+            // uncomment below to test the property
+            //modelInstance.user shouldBe ("TODO")
+        }
+
         // to test the property `assetsSummary`
         should("test assetsSummary") {
             // uncomment below to test the property
@@ -56,30 +80,6 @@ class InviteResponseTest : ShouldSpec() {
         should("test createdTime") {
             // uncomment below to test the property
             //modelInstance.createdTime shouldBe ("TODO")
-        }
-
-        // to test the property `id` - Unique identifier of the invite/request.
-        should("test id") {
-            // uncomment below to test the property
-            //modelInstance.id shouldBe ("TODO")
-        }
-
-        // to test the property `inviteData`
-        should("test inviteData") {
-            // uncomment below to test the property
-            //modelInstance.inviteData shouldBe ("TODO")
-        }
-
-        // to test the property `isReceivedInvite` - Indicates whether the invite/request was received.
-        should("test isReceivedInvite") {
-            // uncomment below to test the property
-            //modelInstance.isReceivedInvite shouldBe ("TODO")
-        }
-
-        // to test the property `user` - Metadata for the member/partner that was sent the invite/request.
-        should("test user") {
-            // uncomment below to test the property
-            //modelInstance.user shouldBe ("TODO")
         }
 
     }

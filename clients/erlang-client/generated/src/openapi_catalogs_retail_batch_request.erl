@@ -7,7 +7,7 @@
 -type openapi_catalogs_retail_batch_request() ::
     #{ 'catalog_type' := binary(),
        'country' := openapi_country:openapi_country(),
-       'language' := openapi_catalogs_items_request_language:openapi_catalogs_items_request_language(),
+       'language' := binary(),
        'items' := list()
      }.
 

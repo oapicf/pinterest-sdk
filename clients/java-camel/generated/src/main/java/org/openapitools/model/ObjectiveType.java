@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Campaign objective type. If set as one of [\"AWARENESS\", \"CONSIDERATION\", \"WEB_CONVERSION\", \"CATALOG_SALES\", \"VIDEO_COMPLETION\"] the campaign is considered as a Campaign Budget Optimization (CBO) campaign, meaning budget needs to be set at the campaign level rather than at the ad group level. [\"WEB_SESSIONS\"] is DEPRECATED. For update, only draft campaigns may update objective type.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum ObjectiveType {
   
   AWARENESS("AWARENESS"),
@@ -37,7 +37,7 @@ public enum ObjectiveType {
   
   VIDEO_COMPLETION("VIDEO_COMPLETION");
 
-  private String value;
+  private final String value;
 
   ObjectiveType(String value) {
     this.value = value;

@@ -1042,7 +1042,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CatalogsItemValidationIssue catalogsItemValidationIssue, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(catalogsItemValidationIssue.ToString());
+            writer.WriteStringValue(CatalogsItemValidationIssueValueConverter.ToJsonValue(catalogsItemValidationIssue).ToString());
         }
     }
 
@@ -1073,14 +1073,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the CatalogsItemValidationIssue to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="catalogsItemValidationIssue"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CatalogsItemValidationIssue? catalogsItemValidationIssue, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(catalogsItemValidationIssue?.ToString() ?? "null");
+            writer.WriteStringValue(catalogsItemValidationIssue.HasValue ? CatalogsItemValidationIssueValueConverter.ToJsonValue(catalogsItemValidationIssue.Value).ToString() : "null");
         }
     }
 }

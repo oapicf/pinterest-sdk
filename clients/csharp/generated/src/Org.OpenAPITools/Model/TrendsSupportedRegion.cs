@@ -356,7 +356,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TrendsSupportedRegion trendsSupportedRegion, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(trendsSupportedRegion.ToString());
+            writer.WriteStringValue(TrendsSupportedRegionValueConverter.ToJsonValue(trendsSupportedRegion).ToString());
         }
     }
 
@@ -387,14 +387,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the TrendsSupportedRegion to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="trendsSupportedRegion"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TrendsSupportedRegion? trendsSupportedRegion, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(trendsSupportedRegion?.ToString() ?? "null");
+            writer.WriteStringValue(trendsSupportedRegion.HasValue ? TrendsSupportedRegionValueConverter.ToJsonValue(trendsSupportedRegion.Value).ToString() : "null");
         }
     }
 }

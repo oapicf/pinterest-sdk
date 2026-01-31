@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_advanced_auction_bid_options
 import model_country
@@ -20,3 +22,26 @@ type AdvancedAuctionItem* = object
   country*: Country
   language*: Language
   bidOptions*: AdvancedAuctionBidOptions
+
+
+# Custom JSON deserialization for AdvancedAuctionItem with custom field names
+proc to*(node: JsonNode, T: typedesc[AdvancedAuctionItem]): AdvancedAuctionItem =
+  result = AdvancedAuctionItem()
+  if node.kind == JObject:
+    if node.hasKey("item_id"):
+      result.itemId = to(node["item_id"], string)
+    if node.hasKey("country"):
+      result.country = to(node["country"], Country)
+    if node.hasKey("language"):
+      result.language = to(node["language"], Language)
+    if node.hasKey("bid_options"):
+      result.bidOptions = to(node["bid_options"], AdvancedAuctionBidOptions)
+
+# Custom JSON serialization for AdvancedAuctionItem with custom field names
+proc `%`*(obj: AdvancedAuctionItem): JsonNode =
+  result = newJObject()
+  result["item_id"] = %obj.itemId
+  result["country"] = %obj.country
+  result["language"] = %obj.language
+  result["bid_options"] = %obj.bidOptions
+

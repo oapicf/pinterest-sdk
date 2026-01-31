@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_invite_type
 
@@ -21,19 +23,55 @@ type CreateMembershipOrPartnershipInvitesBody* = object
   ## Body to be used on path to send Members or Partners Invite or Request
   businessRole*: BusinessRole ## The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
   inviteType*: InviteType
-  members*: seq[string] ## A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
-  partners*: seq[string] ## A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
+  members*: Option[seq[string]] ## A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
+  partners*: Option[seq[string]] ## A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
 
 func `%`*(v: BusinessRole): JsonNode =
-  let str = case v:
-    of BusinessRole.EMPLOYEE: "EMPLOYEE"
-    of BusinessRole.BIZADMIN: "BIZ_ADMIN"
-    of BusinessRole.PARTNER: "PARTNER"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of BusinessRole.EMPLOYEE: %"EMPLOYEE"
+    of BusinessRole.BIZADMIN: %"BIZ_ADMIN"
+    of BusinessRole.PARTNER: %"PARTNER"
 func `$`*(v: BusinessRole): string =
   result = case v:
-    of BusinessRole.EMPLOYEE: "EMPLOYEE"
-    of BusinessRole.BIZADMIN: "BIZ_ADMIN"
-    of BusinessRole.PARTNER: "PARTNER"
+    of BusinessRole.EMPLOYEE: $("EMPLOYEE")
+    of BusinessRole.BIZADMIN: $("BIZ_ADMIN")
+    of BusinessRole.PARTNER: $("PARTNER")
+
+proc to*(node: JsonNode, T: typedesc[BusinessRole]): BusinessRole =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum BusinessRole, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("EMPLOYEE"):
+    return BusinessRole.EMPLOYEE
+  of $("BIZ_ADMIN"):
+    return BusinessRole.BIZADMIN
+  of $("PARTNER"):
+    return BusinessRole.PARTNER
+  else:
+    raise newException(ValueError, "Invalid enum value for BusinessRole: " & strVal)
+
+
+# Custom JSON deserialization for CreateMembershipOrPartnershipInvitesBody with custom field names
+proc to*(node: JsonNode, T: typedesc[CreateMembershipOrPartnershipInvitesBody]): CreateMembershipOrPartnershipInvitesBody =
+  result = CreateMembershipOrPartnershipInvitesBody()
+  if node.kind == JObject:
+    if node.hasKey("business_role"):
+      result.businessRole = to(node["business_role"], BusinessRole)
+    if node.hasKey("invite_type"):
+      result.inviteType = to(node["invite_type"], InviteType)
+    if node.hasKey("members") and node["members"].kind != JNull:
+      result.members = some(to(node["members"], typeof(result.members.get())))
+    if node.hasKey("partners") and node["partners"].kind != JNull:
+      result.partners = some(to(node["partners"], typeof(result.partners.get())))
+
+# Custom JSON serialization for CreateMembershipOrPartnershipInvitesBody with custom field names
+proc `%`*(obj: CreateMembershipOrPartnershipInvitesBody): JsonNode =
+  result = newJObject()
+  result["business_role"] = %obj.businessRole
+  result["invite_type"] = %obj.inviteType
+  if obj.members.isSome():
+    result["members"] = %obj.members.get()
+  if obj.partners.isSome():
+    result["partners"] = %obj.partners.get()
+

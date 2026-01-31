@@ -33,7 +33,7 @@ data class ConversionEventsUserDataAnyOf(
 
     @Schema(example = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36", description = "The user agent string of the user's web browser. We highly recommend this for all events. It may improve reporting performance such as ROAS/CPA.")
     @get:JsonProperty("client_user_agent") val clientUserAgent: kotlin.String? = null
-    ) {
+) {
 
 }
 

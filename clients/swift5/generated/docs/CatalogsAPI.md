@@ -1063,7 +1063,7 @@ This endpoint supports multiple operations on a set of one or more catalog items
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let itemsBatchPostRequest = items_batch_post_request(catalogType: "catalogType_example", country: Country(), language: CatalogsItemsRequest_language(), items: [ItemDeleteBatchRecord(itemId: "itemId_example")], catalogId: "catalogId_example", operation: BatchOperation()) // ItemsBatchPostRequest | Request object used to create catalogs items in a batch
+let itemsBatchPostRequest = items_batch_post_request(catalogType: "catalogType_example", country: Country(), language: "language_example", items: [ItemDeleteBatchRecord(itemId: "itemId_example")], catalogId: "catalogId_example", operation: BatchOperation()) // ItemsBatchPostRequest | Request object used to create catalogs items in a batch
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Operate on item batch
@@ -1233,7 +1233,7 @@ Get the items of the catalog owned by the \"operation user_account\". <a href=\"
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let catalogsItemsRequest = CatalogsItemsRequest(country: Country(), language: CatalogsItemsRequest_language(), filters: CatalogsItemsPostFilters(catalogType: CatalogsType(), itemIds: ["itemIds_example"], catalogId: "catalogId_example", hotelIds: ["hotelIds_example"], creativeAssetsIds: ["creativeAssetsIds_example"])) // CatalogsItemsRequest | Request object used to get catalogs items
+let catalogsItemsRequest = CatalogsItemsRequest(country: Country(), language: "language_example", filters: CatalogsItemsPostFilters(catalogType: CatalogsType(), itemIds: ["itemIds_example"], catalogId: "catalogId_example", hotelIds: ["hotelIds_example"], creativeAssetsIds: ["creativeAssetsIds_example"])) // CatalogsItemsRequest | Request object used to get catalogs items
 let adAccountId = "adAccountId_example" // String | Unique identifier of an ad account. (optional)
 
 // Get catalogs items (POST)

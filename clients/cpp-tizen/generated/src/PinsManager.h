@@ -11,7 +11,6 @@
 #include "PinAnalyticsMetricsResponse.h"
 #include "PinCreate.h"
 #include "PinUpdate.h"
-#include "Pins_analytics_metric_types_parameter_inner.h"
 #include "Pins_list_200_response.h"
 #include "Pins_save_request.h"
 #include <list>
@@ -48,7 +47,7 @@ public:
  * \param userData The user data to be passed to the callback function.
  */
 bool multiPinsAnalyticsSync(char * accessToken,
-	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string adAccountId, 
+	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string adAccountId, 
 	void(* handler)(std::map<std::string,std::string>, Error, void* )
 	, void* userData);
 
@@ -66,7 +65,7 @@ bool multiPinsAnalyticsSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool multiPinsAnalyticsAsync(char * accessToken,
-	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string adAccountId, 
+	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string adAccountId, 
 	void(* handler)(std::map<std::string,std::string>, Error, void* )
 	, void* userData);
 
@@ -86,7 +85,7 @@ bool multiPinsAnalyticsAsync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool pinsAnalyticsSync(char * accessToken,
-	std::string pinId, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
+	std::string pinId, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<std::string,std::string>, Error, void* )
 	, void* userData);
 
@@ -105,7 +104,7 @@ bool pinsAnalyticsSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool pinsAnalyticsAsync(char * accessToken,
-	std::string pinId, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
+	std::string pinId, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<std::string,std::string>, Error, void* )
 	, void* userData);
 

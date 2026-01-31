@@ -12,13 +12,10 @@
 
 import * as models from './models';
 
-/**
- * A request to receive a client token.
- */
 export interface OauthAccessTokenRequestClientCredentials {
-    grant_type: OauthAccessTokenRequestClientCredentials.GrantTypeEnum;
-
     scope: string;
+
+    grant_type: OauthAccessTokenRequestClientCredentials.GrantTypeEnum;
 
 }
 export namespace OauthAccessTokenRequestClientCredentials {

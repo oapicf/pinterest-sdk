@@ -5,16 +5,16 @@
 -export_type([openapi_oauth_access_token_request_code/0]).
 
 -type openapi_oauth_access_token_request_code() ::
-    #{ 'grant_type' := binary(),
-       'code' := binary(),
-       'redirect_uri' := binary()
+    #{ 'code' := binary(),
+       'redirect_uri' := binary(),
+       'grant_type' := binary()
      }.
 
-encode(#{ 'grant_type' := GrantType,
-          'code' := Code,
-          'redirect_uri' := RedirectUri
+encode(#{ 'code' := Code,
+          'redirect_uri' := RedirectUri,
+          'grant_type' := GrantType
         }) ->
-    #{ 'grant_type' => GrantType,
-       'code' => Code,
-       'redirect_uri' => RedirectUri
+    #{ 'code' => Code,
+       'redirect_uri' => RedirectUri,
+       'grant_type' => GrantType
      }.

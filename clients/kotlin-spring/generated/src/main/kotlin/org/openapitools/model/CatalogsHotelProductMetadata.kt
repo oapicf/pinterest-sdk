@@ -21,7 +21,7 @@ data class CatalogsHotelProductMetadata(
 
     @Schema(example = "123abc", required = true, description = "The user-created unique ID that represents the hotel item.")
     @get:JsonProperty("hotel_id", required = true) val hotelId: kotlin.String
-    ) {
+) {
 
 }
 

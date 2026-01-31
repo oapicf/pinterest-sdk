@@ -25,6 +25,7 @@ class IntegrationsApiTest {
     @Test
     fun integrationsCommerceDelTest() {
         val externalBusinessId: kotlin.String = TODO()
+        
         val response: ResponseEntity<Unit> = api.integrationsCommerceDel(externalBusinessId)
 
         // TODO: test validations
@@ -39,6 +40,7 @@ class IntegrationsApiTest {
     @Test
     fun integrationsCommerceGetTest() {
         val externalBusinessId: kotlin.String = TODO()
+        
         val response: ResponseEntity<IntegrationMetadata> = api.integrationsCommerceGet(externalBusinessId)
 
         // TODO: test validations
@@ -54,6 +56,7 @@ class IntegrationsApiTest {
     fun integrationsCommercePatchTest() {
         val externalBusinessId: kotlin.String = TODO()
         val integrationRequestPatch: IntegrationRequestPatch? = TODO()
+        
         val response: ResponseEntity<IntegrationMetadata> = api.integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
 
         // TODO: test validations
@@ -68,6 +71,7 @@ class IntegrationsApiTest {
     @Test
     fun integrationsCommercePostTest() {
         val integrationRequest: IntegrationRequest? = TODO()
+        
         val response: ResponseEntity<IntegrationMetadata> = api.integrationsCommercePost(integrationRequest)
 
         // TODO: test validations
@@ -82,6 +86,7 @@ class IntegrationsApiTest {
     @Test
     fun integrationsGetByIdTest() {
         val id: kotlin.String = TODO()
+        
         val response: ResponseEntity<IntegrationRecord> = api.integrationsGetById(id)
 
         // TODO: test validations
@@ -97,6 +102,7 @@ class IntegrationsApiTest {
     fun integrationsGetListTest() {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<IntegrationsGetList200Response> = api.integrationsGetList(bookmark, pageSize)
 
         // TODO: test validations
@@ -111,6 +117,7 @@ class IntegrationsApiTest {
     @Test
     fun integrationsLogsPostTest() {
         val integrationLogsRequest: IntegrationLogsRequest = TODO()
+        
         val response: ResponseEntity<IntegrationLogsSuccessResponse> = api.integrationsLogsPost(integrationLogsRequest)
 
         // TODO: test validations

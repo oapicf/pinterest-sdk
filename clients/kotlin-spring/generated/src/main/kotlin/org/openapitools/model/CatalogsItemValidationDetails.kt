@@ -29,7 +29,7 @@ data class CatalogsItemValidationDetails(
 
     @Schema(example = "null", required = true, description = "Provided value that caused the validation issue.")
     @get:JsonProperty("provided_value", required = true) val providedValue: kotlin.String?
-    ) {
+) {
 
 }
 

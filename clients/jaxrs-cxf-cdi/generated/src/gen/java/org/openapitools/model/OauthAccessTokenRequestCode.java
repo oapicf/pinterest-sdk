@@ -7,17 +7,18 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
-/**
- * A request to exchange an authorization code for an access token.
- **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "A request to exchange an authorization code for an access token.")
+
 public class OauthAccessTokenRequestCode   {
   
+  private String code;
+
+  private String redirectUri;
+
 
 public enum GrantTypeEnum {
 
@@ -50,29 +51,6 @@ public enum GrantTypeEnum {
 }
 
   private GrantTypeEnum grantType;
-
-  private String code;
-
-  private String redirectUri;
-
-  /**
-   **/
-  public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
-    this.grantType = grantType;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("grant_type")
-  @NotNull
-  public GrantTypeEnum getGrantType() {
-    return grantType;
-  }
-  public void setGrantType(GrantTypeEnum grantType) {
-    this.grantType = grantType;
-  }
-
 
   /**
    **/
@@ -112,6 +90,25 @@ public enum GrantTypeEnum {
   }
 
 
+  /**
+   **/
+  public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("grant_type")
+  @NotNull
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -122,14 +119,14 @@ public enum GrantTypeEnum {
       return false;
     }
     OauthAccessTokenRequestCode oauthAccessTokenRequestCode = (OauthAccessTokenRequestCode) o;
-    return Objects.equals(this.grantType, oauthAccessTokenRequestCode.grantType) &&
-        Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
-        Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri);
+    return Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
+        Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri) &&
+        Objects.equals(this.grantType, oauthAccessTokenRequestCode.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, code, redirectUri);
+    return Objects.hash(code, redirectUri, grantType);
   }
 
   @Override
@@ -137,9 +134,9 @@ public enum GrantTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestCode {\n");
     
-    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

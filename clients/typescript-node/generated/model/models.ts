@@ -80,7 +80,6 @@ export * from './audienceCategory';
 export * from './audienceCommon';
 export * from './audienceCreateCustomRequest';
 export * from './audienceCreateRequest';
-export * from './audienceCreateRequest1AudienceType';
 export * from './audienceDataParty';
 export * from './audienceDefinition';
 export * from './audienceDefinitionResponse';
@@ -258,7 +257,6 @@ export * from './catalogsItemsDeleteDiscontinuedBatchRequest';
 export * from './catalogsItemsFilters';
 export * from './catalogsItemsPostFilters';
 export * from './catalogsItemsRequest';
-export * from './catalogsItemsRequestLanguage';
 export * from './catalogsItemsUpdateBatchRequest';
 export * from './catalogsItemsUpsertBatchRequest';
 export * from './catalogsList200Response';
@@ -592,7 +590,6 @@ export * from './pinMediaWithVideos';
 export * from './pinPromotionSummaryStatus';
 export * from './pinUpdate';
 export * from './pinUpdateCarouselSlotsInner';
-export * from './pinsAnalyticsMetricTypesParameterInner';
 export * from './pinsList200Response';
 export * from './pinsSaveRequest';
 export * from './pinterestTagEventData';
@@ -812,7 +809,6 @@ import { AudienceCategory } from './audienceCategory';
 import { AudienceCommon } from './audienceCommon';
 import { AudienceCreateCustomRequest } from './audienceCreateCustomRequest';
 import { AudienceCreateRequest } from './audienceCreateRequest';
-import { AudienceCreateRequest1AudienceType } from './audienceCreateRequest1AudienceType';
 import { AudienceDataParty } from './audienceDataParty';
 import { AudienceDefinition } from './audienceDefinition';
 import { AudienceDefinitionResponse } from './audienceDefinitionResponse';
@@ -990,7 +986,6 @@ import { CatalogsItemsDeleteDiscontinuedBatchRequest } from './catalogsItemsDele
 import { CatalogsItemsFilters } from './catalogsItemsFilters';
 import { CatalogsItemsPostFilters } from './catalogsItemsPostFilters';
 import { CatalogsItemsRequest } from './catalogsItemsRequest';
-import { CatalogsItemsRequestLanguage } from './catalogsItemsRequestLanguage';
 import { CatalogsItemsUpdateBatchRequest } from './catalogsItemsUpdateBatchRequest';
 import { CatalogsItemsUpsertBatchRequest } from './catalogsItemsUpsertBatchRequest';
 import { CatalogsList200Response } from './catalogsList200Response';
@@ -1324,7 +1319,6 @@ import { PinMediaWithVideos } from './pinMediaWithVideos';
 import { PinPromotionSummaryStatus } from './pinPromotionSummaryStatus';
 import { PinUpdate } from './pinUpdate';
 import { PinUpdateCarouselSlotsInner } from './pinUpdateCarouselSlotsInner';
-import { PinsAnalyticsMetricTypesParameterInner } from './pinsAnalyticsMetricTypesParameterInner';
 import { PinsList200Response } from './pinsList200Response';
 import { PinsSaveRequest } from './pinsSaveRequest';
 import { PinterestTagEventData } from './pinterestTagEventData';
@@ -1519,6 +1513,7 @@ let enumsMap: {[index: string]: any} = {
         "CatalogsCreateRetailItem.OperationEnum": CatalogsCreateRetailItem.OperationEnum,
         "CatalogsCreativeAssetsBatchItem.OperationEnum": CatalogsCreativeAssetsBatchItem.OperationEnum,
         "CatalogsCreativeAssetsBatchRequest.CatalogTypeEnum": CatalogsCreativeAssetsBatchRequest.CatalogTypeEnum,
+        "CatalogsCreativeAssetsBatchRequest.LanguageEnum": CatalogsCreativeAssetsBatchRequest.LanguageEnum,
         "CatalogsCreativeAssetsItemsFilter.CatalogTypeEnum": CatalogsCreativeAssetsItemsFilter.CatalogTypeEnum,
         "CatalogsCreativeAssetsItemsPostFilter.CatalogTypeEnum": CatalogsCreativeAssetsItemsPostFilter.CatalogTypeEnum,
         "CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.CatalogTypeEnum": CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest.CatalogTypeEnum,
@@ -1537,6 +1532,7 @@ let enumsMap: {[index: string]: any} = {
         "CatalogsFormat": CatalogsFormat,
         "CatalogsHotelBatchItem.OperationEnum": CatalogsHotelBatchItem.OperationEnum,
         "CatalogsHotelBatchRequest.CatalogTypeEnum": CatalogsHotelBatchRequest.CatalogTypeEnum,
+        "CatalogsHotelBatchRequest.LanguageEnum": CatalogsHotelBatchRequest.LanguageEnum,
         "CatalogsHotelItemsFilter.CatalogTypeEnum": CatalogsHotelItemsFilter.CatalogTypeEnum,
         "CatalogsHotelItemsPostFilter.CatalogTypeEnum": CatalogsHotelItemsPostFilter.CatalogTypeEnum,
         "CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogTypeEnum": CatalogsHotelListProductsByCatalogBasedFilterRequest.CatalogTypeEnum,
@@ -1548,6 +1544,13 @@ let enumsMap: {[index: string]: any} = {
         "CatalogsHotelReportParameters.CatalogTypeEnum": CatalogsHotelReportParameters.CatalogTypeEnum,
         "CatalogsHotelReportParametersReport.ReportTypeEnum": CatalogsHotelReportParametersReport.ReportTypeEnum,
         "CatalogsItemValidationIssue": CatalogsItemValidationIssue,
+        "CatalogsItemsBatchRequest.LanguageEnum": CatalogsItemsBatchRequest.LanguageEnum,
+        "CatalogsItemsCreateBatchRequest.LanguageEnum": CatalogsItemsCreateBatchRequest.LanguageEnum,
+        "CatalogsItemsDeleteBatchRequest.LanguageEnum": CatalogsItemsDeleteBatchRequest.LanguageEnum,
+        "CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnum": CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnum,
+        "CatalogsItemsRequest.LanguageEnum": CatalogsItemsRequest.LanguageEnum,
+        "CatalogsItemsUpdateBatchRequest.LanguageEnum": CatalogsItemsUpdateBatchRequest.LanguageEnum,
+        "CatalogsItemsUpsertBatchRequest.LanguageEnum": CatalogsItemsUpsertBatchRequest.LanguageEnum,
         "CatalogsLocale": CatalogsLocale,
         "CatalogsProductGroupPricingCurrencyCriteria.OperatorEnum": CatalogsProductGroupPricingCurrencyCriteria.OperatorEnum,
         "CatalogsProductGroupStatus": CatalogsProductGroupStatus,
@@ -1561,6 +1564,7 @@ let enumsMap: {[index: string]: any} = {
         "CatalogsReportStats.ReportTypeEnum": CatalogsReportStats.ReportTypeEnum,
         "CatalogsReportStats.SeverityEnum": CatalogsReportStats.SeverityEnum,
         "CatalogsRetailBatchRequest.CatalogTypeEnum": CatalogsRetailBatchRequest.CatalogTypeEnum,
+        "CatalogsRetailBatchRequest.LanguageEnum": CatalogsRetailBatchRequest.LanguageEnum,
         "CatalogsRetailBatchRequestItemsInner.OperationEnum": CatalogsRetailBatchRequestItemsInner.OperationEnum,
         "CatalogsRetailItemsFilter.CatalogTypeEnum": CatalogsRetailItemsFilter.CatalogTypeEnum,
         "CatalogsRetailItemsPostFilter.CatalogTypeEnum": CatalogsRetailItemsPostFilter.CatalogTypeEnum,
@@ -1580,6 +1584,7 @@ let enumsMap: {[index: string]: any} = {
         "CatalogsUpsertHotelItem.OperationEnum": CatalogsUpsertHotelItem.OperationEnum,
         "CatalogsUpsertRetailItem.OperationEnum": CatalogsUpsertRetailItem.OperationEnum,
         "CatalogsVerticalBatchRequest.CatalogTypeEnum": CatalogsVerticalBatchRequest.CatalogTypeEnum,
+        "CatalogsVerticalBatchRequest.LanguageEnum": CatalogsVerticalBatchRequest.LanguageEnum,
         "CatalogsVerticalProductGroup.CatalogTypeEnum": CatalogsVerticalProductGroup.CatalogTypeEnum,
         "CatalogsVerticalProductGroupCreateRequest.CatalogTypeEnum": CatalogsVerticalProductGroupCreateRequest.CatalogTypeEnum,
         "CatalogsVerticalProductGroupUpdateRequest.CatalogTypeEnum": CatalogsVerticalProductGroupUpdateRequest.CatalogTypeEnum,
@@ -1615,6 +1620,8 @@ let enumsMap: {[index: string]: any} = {
         "InviteStatus": InviteStatus,
         "InviteType": InviteType,
         "ItemProcessingStatus": ItemProcessingStatus,
+        "ItemsBatchPostRequest.CatalogTypeEnum": ItemsBatchPostRequest.CatalogTypeEnum,
+        "ItemsBatchPostRequest.LanguageEnum": ItemsBatchPostRequest.LanguageEnum,
         "Language": Language,
         "LeadFormQuestionFieldType": LeadFormQuestionFieldType,
         "LeadFormQuestionType": LeadFormQuestionType,
@@ -1772,7 +1779,6 @@ let typeMap: {[index: string]: any} = {
     "AudienceCommon": AudienceCommon,
     "AudienceCreateCustomRequest": AudienceCreateCustomRequest,
     "AudienceCreateRequest": AudienceCreateRequest,
-    "AudienceCreateRequest1AudienceType": AudienceCreateRequest1AudienceType,
     "AudienceDefinition": AudienceDefinition,
     "AudienceDefinitionResponse": AudienceDefinitionResponse,
     "AudienceDemographicValue": AudienceDemographicValue,
@@ -1929,7 +1935,6 @@ let typeMap: {[index: string]: any} = {
     "CatalogsItemsFilters": CatalogsItemsFilters,
     "CatalogsItemsPostFilters": CatalogsItemsPostFilters,
     "CatalogsItemsRequest": CatalogsItemsRequest,
-    "CatalogsItemsRequestLanguage": CatalogsItemsRequestLanguage,
     "CatalogsItemsUpdateBatchRequest": CatalogsItemsUpdateBatchRequest,
     "CatalogsItemsUpsertBatchRequest": CatalogsItemsUpsertBatchRequest,
     "CatalogsList200Response": CatalogsList200Response,
@@ -2211,7 +2216,6 @@ let typeMap: {[index: string]: any} = {
     "PinMediaWithVideos": PinMediaWithVideos,
     "PinUpdate": PinUpdate,
     "PinUpdateCarouselSlotsInner": PinUpdateCarouselSlotsInner,
-    "PinsAnalyticsMetricTypesParameterInner": PinsAnalyticsMetricTypesParameterInner,
     "PinsList200Response": PinsList200Response,
     "PinsSaveRequest": PinsSaveRequest,
     "PinterestTagEventData": PinterestTagEventData,

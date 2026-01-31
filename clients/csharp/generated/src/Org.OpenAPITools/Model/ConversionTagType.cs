@@ -315,7 +315,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ConversionTagType conversionTagType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(conversionTagType.ToString());
+            writer.WriteStringValue(ConversionTagTypeValueConverter.ToJsonValue(conversionTagType).ToString());
         }
     }
 
@@ -346,14 +346,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the ConversionTagType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="conversionTagType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ConversionTagType? conversionTagType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(conversionTagType?.ToString() ?? "null");
+            writer.WriteStringValue(conversionTagType.HasValue ? ConversionTagTypeValueConverter.ToJsonValue(conversionTagType.Value).ToString() : "null");
         }
     }
 }

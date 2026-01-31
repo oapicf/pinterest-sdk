@@ -9,16 +9,65 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AdAccountGetSubscriptionResponse* = object
   ## 
-  leadFormId*: string ## Lead form ID.
-  webhookUrl*: string ## Standard HTTPS webhook URL.
-  id*: string ## Subscription ID.
-  userAccountId*: string ## User account used to subscribe lead data.
-  adAccountId*: string ## The Ad Account ID that this lead form belongs to.
-  apiVersion*: string ## API version.
-  cryptographicKey*: string ## Base64 encoded key for client to decrypt lead data.
-  cryptographicAlgorithm*: string ## Lead data encryption algorithm.
-  createdTime*: int ## Lead form creation time. Unix timestamp in milliseconds.
+  leadFormId*: Option[string] ## Lead form ID.
+  webhookUrl*: Option[string] ## Standard HTTPS webhook URL.
+  id*: Option[string] ## Subscription ID.
+  userAccountId*: Option[string] ## User account used to subscribe lead data.
+  adAccountId*: Option[string] ## The Ad Account ID that this lead form belongs to.
+  apiVersion*: Option[string] ## API version.
+  cryptographicKey*: Option[string] ## Base64 encoded key for client to decrypt lead data.
+  cryptographicAlgorithm*: Option[string] ## Lead data encryption algorithm.
+  createdTime*: Option[int] ## Lead form creation time. Unix timestamp in milliseconds.
+
+
+# Custom JSON deserialization for AdAccountGetSubscriptionResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[AdAccountGetSubscriptionResponse]): AdAccountGetSubscriptionResponse =
+  result = AdAccountGetSubscriptionResponse()
+  if node.kind == JObject:
+    if node.hasKey("lead_form_id") and node["lead_form_id"].kind != JNull:
+      result.leadFormId = some(to(node["lead_form_id"], typeof(result.leadFormId.get())))
+    if node.hasKey("webhook_url") and node["webhook_url"].kind != JNull:
+      result.webhookUrl = some(to(node["webhook_url"], typeof(result.webhookUrl.get())))
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("user_account_id") and node["user_account_id"].kind != JNull:
+      result.userAccountId = some(to(node["user_account_id"], typeof(result.userAccountId.get())))
+    if node.hasKey("ad_account_id") and node["ad_account_id"].kind != JNull:
+      result.adAccountId = some(to(node["ad_account_id"], typeof(result.adAccountId.get())))
+    if node.hasKey("api_version") and node["api_version"].kind != JNull:
+      result.apiVersion = some(to(node["api_version"], typeof(result.apiVersion.get())))
+    if node.hasKey("cryptographic_key") and node["cryptographic_key"].kind != JNull:
+      result.cryptographicKey = some(to(node["cryptographic_key"], typeof(result.cryptographicKey.get())))
+    if node.hasKey("cryptographic_algorithm") and node["cryptographic_algorithm"].kind != JNull:
+      result.cryptographicAlgorithm = some(to(node["cryptographic_algorithm"], typeof(result.cryptographicAlgorithm.get())))
+    if node.hasKey("created_time") and node["created_time"].kind != JNull:
+      result.createdTime = some(to(node["created_time"], typeof(result.createdTime.get())))
+
+# Custom JSON serialization for AdAccountGetSubscriptionResponse with custom field names
+proc `%`*(obj: AdAccountGetSubscriptionResponse): JsonNode =
+  result = newJObject()
+  if obj.leadFormId.isSome():
+    result["lead_form_id"] = %obj.leadFormId.get()
+  if obj.webhookUrl.isSome():
+    result["webhook_url"] = %obj.webhookUrl.get()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.userAccountId.isSome():
+    result["user_account_id"] = %obj.userAccountId.get()
+  if obj.adAccountId.isSome():
+    result["ad_account_id"] = %obj.adAccountId.get()
+  if obj.apiVersion.isSome():
+    result["api_version"] = %obj.apiVersion.get()
+  if obj.cryptographicKey.isSome():
+    result["cryptographic_key"] = %obj.cryptographicKey.get()
+  if obj.cryptographicAlgorithm.isSome():
+    result["cryptographic_algorithm"] = %obj.cryptographicAlgorithm.get()
+  if obj.createdTime.isSome():
+    result["created_time"] = %obj.createdTime.get()
+

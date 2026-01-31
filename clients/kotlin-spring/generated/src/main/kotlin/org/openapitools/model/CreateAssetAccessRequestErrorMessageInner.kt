@@ -25,7 +25,7 @@ data class CreateAssetAccessRequestErrorMessageInner(
 
     @Schema(example = "[\"Invalid asset id: 549760723247\",\"Invalid asset id: 546760723248\"]", description = "")
     @get:JsonProperty("messages") val messages: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
 }
 

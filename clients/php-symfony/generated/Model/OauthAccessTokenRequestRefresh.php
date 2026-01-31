@@ -37,8 +37,6 @@ use JMS\Serializer\Annotation\SerializedName;
 /**
  * Class representing the OauthAccessTokenRequestRefresh model.
  *
- * A request to exchange a refresh token for a new access token.
- *
  * @package OpenAPI\Server\Model
  * @author  OpenAPI Generator team
  */
@@ -46,16 +44,6 @@ use JMS\Serializer\Annotation\SerializedName;
 class OauthAccessTokenRequestRefresh 
 {
         /**
-     * @var string|null
-     * @SerializedName("grant_type")
-     * @Type("string")
-    */
-    #[Assert\NotNull]
-    #[Assert\Choice(['authorization_code', 'refresh_token', 'client_credentials'])]
-    #[Assert\Type("string")]
-    protected ?string $grantType = null;
-
-    /**
      * @var string|null
      * @SerializedName("refresh_token")
      * @Type("string")
@@ -83,45 +71,28 @@ class OauthAccessTokenRequestRefresh
     protected ?bool $refreshOn = null;
 
     /**
+     * @var string|null
+     * @SerializedName("grant_type")
+     * @Type("string")
+    */
+    #[Assert\NotNull]
+    #[Assert\Choice(['authorization_code', 'refresh_token', 'client_credentials'])]
+    #[Assert\Type("string")]
+    protected ?string $grantType = null;
+
+    /**
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(?array $data = null)
     {
         if (is_array($data)) {
-            $this->grantType = array_key_exists('grantType', $data) ? $data['grantType'] : $this->grantType;
             $this->refreshToken = array_key_exists('refreshToken', $data) ? $data['refreshToken'] : $this->refreshToken;
             $this->scope = array_key_exists('scope', $data) ? $data['scope'] : $this->scope;
             $this->refreshOn = array_key_exists('refreshOn', $data) ? $data['refreshOn'] : $this->refreshOn;
+            $this->grantType = array_key_exists('grantType', $data) ? $data['grantType'] : $this->grantType;
         }
     }
-
-    /**
-     * Gets grantType.
-     *
-     * @return string|null
-     */
-    public function getGrantType(): ?string
-    {
-        return $this->grantType;
-    }
-
-    /**
-    * Sets grantType.
-    *
-    * @param string|null $grantType
-    *
-    * @return $this
-    */
-    public function setGrantType(?string $grantType): self
-    {
-        $this->grantType = $grantType;
-
-        return $this;
-    }
-
-
-
 
     /**
      * Gets refreshToken.
@@ -197,6 +168,33 @@ class OauthAccessTokenRequestRefresh
     public function setRefreshOn(?bool $refreshOn = null): self
     {
         $this->refreshOn = $refreshOn;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets grantType.
+     *
+     * @return string|null
+     */
+    public function getGrantType(): ?string
+    {
+        return $this->grantType;
+    }
+
+    /**
+    * Sets grantType.
+    *
+    * @param string|null $grantType
+    *
+    * @return $this
+    */
+    public function setGrantType(?string $grantType): self
+    {
+        $this->grantType = $grantType;
 
         return $this;
     }

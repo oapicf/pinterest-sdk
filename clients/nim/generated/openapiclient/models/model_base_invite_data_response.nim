@@ -9,13 +9,42 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_base_invite_data_response_invite_data
 import model_business_access_user_summary
 
 type BaseInviteDataResponse* = object
   ## 
-  id*: string ## Unique identifier of the invite/request.
-  inviteData*: BaseInviteDataResponse_invite_data
-  isReceivedInvite*: bool ## Indicates whether the invite/request was received.
-  user*: BusinessAccessUserSummary ## Metadata for the member/partner that was sent the invite/request.
+  id*: Option[string] ## Unique identifier of the invite/request.
+  inviteData*: Option[BaseInviteDataResponse_invite_data]
+  isReceivedInvite*: Option[bool] ## Indicates whether the invite/request was received.
+  user*: Option[BusinessAccessUserSummary] ## Metadata for the member/partner that was sent the invite/request.
+
+
+# Custom JSON deserialization for BaseInviteDataResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[BaseInviteDataResponse]): BaseInviteDataResponse =
+  result = BaseInviteDataResponse()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("invite_data") and node["invite_data"].kind != JNull:
+      result.inviteData = some(to(node["invite_data"], typeof(result.inviteData.get())))
+    if node.hasKey("is_received_invite") and node["is_received_invite"].kind != JNull:
+      result.isReceivedInvite = some(to(node["is_received_invite"], typeof(result.isReceivedInvite.get())))
+    if node.hasKey("user") and node["user"].kind != JNull:
+      result.user = some(to(node["user"], typeof(result.user.get())))
+
+# Custom JSON serialization for BaseInviteDataResponse with custom field names
+proc `%`*(obj: BaseInviteDataResponse): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.inviteData.isSome():
+    result["invite_data"] = %obj.inviteData.get()
+  if obj.isReceivedInvite.isSome():
+    result["is_received_invite"] = %obj.isReceivedInvite.get()
+  if obj.user.isSome():
+    result["user"] = %obj.user.get()
+

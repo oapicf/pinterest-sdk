@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Board", description = "Board")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Board {
 
   private String id;
@@ -62,7 +62,7 @@ public class Board {
     
     SECRET("SECRET");
 
-    private String value;
+    private final String value;
 
     PrivacyEnum(String value) {
       this.value = value;
@@ -212,7 +212,7 @@ public class Board {
    * minimum: 0
    * @return collaboratorCount
    */
-  @Min(0) 
+  @Min(value = 0) 
   @Schema(name = "collaborator_count", accessMode = Schema.AccessMode.READ_ONLY, example = "17", description = "Count of collaborators on the board.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("collaborator_count")
   public Integer getCollaboratorCount() {
@@ -233,7 +233,7 @@ public class Board {
    * minimum: 0
    * @return pinCount
    */
-  @Min(0) 
+  @Min(value = 0) 
   @Schema(name = "pin_count", accessMode = Schema.AccessMode.READ_ONLY, example = "5", description = "Count of pins on the board.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_count")
   public Integer getPinCount() {
@@ -254,7 +254,7 @@ public class Board {
    * minimum: 0
    * @return followerCount
    */
-  @Min(0) 
+  @Min(value = 0) 
   @Schema(name = "follower_count", accessMode = Schema.AccessMode.READ_ONLY, example = "13", description = "Board follower count.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("follower_count")
   public Integer getFollowerCount() {

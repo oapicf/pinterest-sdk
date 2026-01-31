@@ -9,12 +9,45 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type QuizPinResult* = object
   ## The result, and link out, based on the user’s choice.
-  organicPinId*: string
-  androidDeepLink*: string
-  iosDeepLink*: string
-  destinationUrl*: string
-  resultId*: float
+  organicPinId*: Option[string]
+  androidDeepLink*: Option[string]
+  iosDeepLink*: Option[string]
+  destinationUrl*: Option[string]
+  resultId*: Option[float]
+
+
+# Custom JSON deserialization for QuizPinResult with custom field names
+proc to*(node: JsonNode, T: typedesc[QuizPinResult]): QuizPinResult =
+  result = QuizPinResult()
+  if node.kind == JObject:
+    if node.hasKey("organic_pin_id") and node["organic_pin_id"].kind != JNull:
+      result.organicPinId = some(to(node["organic_pin_id"], typeof(result.organicPinId.get())))
+    if node.hasKey("android_deep_link") and node["android_deep_link"].kind != JNull:
+      result.androidDeepLink = some(to(node["android_deep_link"], typeof(result.androidDeepLink.get())))
+    if node.hasKey("ios_deep_link") and node["ios_deep_link"].kind != JNull:
+      result.iosDeepLink = some(to(node["ios_deep_link"], typeof(result.iosDeepLink.get())))
+    if node.hasKey("destination_url") and node["destination_url"].kind != JNull:
+      result.destinationUrl = some(to(node["destination_url"], typeof(result.destinationUrl.get())))
+    if node.hasKey("result_id") and node["result_id"].kind != JNull:
+      result.resultId = some(to(node["result_id"], typeof(result.resultId.get())))
+
+# Custom JSON serialization for QuizPinResult with custom field names
+proc `%`*(obj: QuizPinResult): JsonNode =
+  result = newJObject()
+  if obj.organicPinId.isSome():
+    result["organic_pin_id"] = %obj.organicPinId.get()
+  if obj.androidDeepLink.isSome():
+    result["android_deep_link"] = %obj.androidDeepLink.get()
+  if obj.iosDeepLink.isSome():
+    result["ios_deep_link"] = %obj.iosDeepLink.get()
+  if obj.destinationUrl.isSome():
+    result["destination_url"] = %obj.destinationUrl.get()
+  if obj.resultId.isSome():
+    result["result_id"] = %obj.resultId.get()
+

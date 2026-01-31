@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"status", @"disclosureLanguage", @"policyLinks"];
+  NSArray *optionalProperties = @[@"name", @"privacyPolicyLink", @"hasAcceptedTerms", @"completionMessage", @"status", @"disclosureLanguage", @"questions", @"policyLinks"];
   return [optionalProperties containsObject:propertyName];
 }
 

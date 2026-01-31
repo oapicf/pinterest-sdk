@@ -3804,52 +3804,12 @@ void OAICatalogsApi::itemsIssues_list(const QString &processing_result_id, const
             fullPath.append(queryPrefix);
         else
             fullPath.append("?");
-        QString paramString = (queryStyle == "form" && true) ? "" : (queryStyle == "form" && !(true)) ? "item_validation_issue"+querySuffix : "";
-        QJsonObject parameter = item_validation_issue.value().asJsonObject();
-        qint32 count = 0;
-        for(const QString& key : parameter.keys()) {
-            if (count > 0) {
-                queryDelimiter =  ((queryStyle == "form" || queryStyle == "deepObject") && true) ? "&" : getParamStyleDelimiter(queryStyle, key, true);
-                paramString.append(queryDelimiter);
-            }
-            QString assignOperator;
-            if (queryStyle == "form")
-                assignOperator = (true) ? "=" : ",";
-            else if (queryStyle == "deepObject")
-                assignOperator = (true) ? "=" : "none";
-            switch(parameter.value(key).type()) {
-                case QJsonValue::String:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("item_validation_issue").append("[").append(key).append("]"))+assignOperator+parameter.value(key).toString());
-                    break;
-                }
-                case QJsonValue::Double:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("item_validation_issue").append("[").append(key).append("]"))+assignOperator+QString::number(parameter.value(key).toDouble()));
-                    break;
-                }
-                case QJsonValue::Bool:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("item_validation_issue").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toBool()).toString());
-                    break;
-                }
-                case QJsonValue::Array:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("item_validation_issue").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toArray()).toString());
-                    break;
-                }
-                case QJsonValue::Object:
-                {
-                    paramString.append(((queryStyle == "form") ? key : QString("item_validation_issue").append("[").append(key).append("]"))+assignOperator+QVariant(parameter.value(key).toObject()).toString());
-                    break;
-                }
-                case QJsonValue::Null:
-                case QJsonValue::Undefined:
-                    break;
-            }
-            count++;
+        // For enum reference parameters, use direct string serialization instead of object iteration
+        QString enumValue = item_validation_issue.value().asJson();
+        if (!enumValue.isEmpty()) {
+            fullPath.append(QUrl::toPercentEncoding("item_validation_issue")).append("=").append(QUrl::toPercentEncoding(enumValue));
         }
-        fullPath.append(paramString);
+        
             }
     if (ad_account_id.hasValue())
     {
@@ -4120,6 +4080,7 @@ void OAICatalogsApi::items_get(const QString &country, const QString &language, 
             fullPath.append(queryPrefix);
         else
             fullPath.append("?");
+        
         QString paramString = (queryStyle == "form" && false) ? "" : (queryStyle == "form" && !(false)) ? "filters"+querySuffix : "";
         QJsonObject parameter = filters.value().asJsonObject();
         qint32 count = 0;
@@ -4166,6 +4127,7 @@ void OAICatalogsApi::items_get(const QString &country, const QString &language, 
             count++;
         }
         fullPath.append(paramString);
+        
             }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -4923,6 +4885,7 @@ void OAICatalogsApi::reports_stats(const OAICatalogsReportParameters &parameters
             fullPath.append(queryPrefix);
         else
             fullPath.append("?");
+        
         QString paramString = (queryStyle == "form" && false) ? "" : (queryStyle == "form" && !(false)) ? "parameters"+querySuffix : "";
         QJsonObject parameter = parameters.asJsonObject();
         qint32 count = 0;
@@ -4969,6 +4932,7 @@ void OAICatalogsApi::reports_stats(const OAICatalogsReportParameters &parameters
             count++;
         }
         fullPath.append(paramString);
+        
             }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);

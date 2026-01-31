@@ -38,7 +38,7 @@ public class ConversionTagsApiTest {
     public void conversionTagsCreateTest() {
         // given
         String adAccountId = "example";
-        ConversionTagCreate conversionTagCreate = new ConversionTagCreate("ACME Tools Tag");
+        ConversionTagCreate conversionTagCreate = new ConversionTagCreate();
 
         // when
         ConversionTagResponse body = api.conversionTagsCreate(adAccountId, conversionTagCreate).block();

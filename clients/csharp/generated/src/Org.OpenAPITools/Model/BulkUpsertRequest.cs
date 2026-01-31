@@ -138,12 +138,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "create":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                create = new Option<BulkUpsertRequestCreate?>(JsonSerializer.Deserialize<BulkUpsertRequestCreate>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            create = new Option<BulkUpsertRequestCreate?>(JsonSerializer.Deserialize<BulkUpsertRequestCreate>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "update":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                update = new Option<BulkUpsertRequestUpdate?>(JsonSerializer.Deserialize<BulkUpsertRequestUpdate>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            update = new Option<BulkUpsertRequestUpdate?>(JsonSerializer.Deserialize<BulkUpsertRequestUpdate>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

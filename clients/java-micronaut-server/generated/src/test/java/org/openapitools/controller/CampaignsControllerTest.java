@@ -106,7 +106,7 @@ public class CampaignsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@19b114f2");
+            .accept("[Ljava.lang.String;@45ebdfba");
         request.getParameters()
             .add("campaign_ids", Arrays.asList("example")) // The query format should be multi
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -173,7 +173,7 @@ public class CampaignsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3403cb00");
+            .accept("[Ljava.lang.String;@75024403");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -231,7 +231,7 @@ public class CampaignsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@765772ae");
+            .accept("[Ljava.lang.String;@33d23057");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CampaignCreateResponse.class);
@@ -279,7 +279,7 @@ public class CampaignsControllerTest {
             put("campaign_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@503dcf80");
+            .accept("[Ljava.lang.String;@78a923cb");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CampaignResponse.class);
@@ -330,7 +330,7 @@ public class CampaignsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@41ba47f1");
+            .accept("[Ljava.lang.String;@63a4356b");
         request.getParameters()
             .add("campaign_ids", Arrays.asList("example")) // The query format should be multi
             .add("entity_statuses", Arrays.asList("example")) // The query format should be multi
@@ -384,7 +384,7 @@ public class CampaignsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@6b4bdf0d");
+            .accept("[Ljava.lang.String;@4614740");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CampaignUpdateResponse.class);

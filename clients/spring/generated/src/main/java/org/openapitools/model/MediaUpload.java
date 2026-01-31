@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "MediaUpload", description = "Media upload that has been registered but not uploaded/processed yet.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MediaUpload {
 
   private @Nullable String mediaId;
@@ -34,7 +34,7 @@ public class MediaUpload {
 
   private @Nullable MediaUploadAllOfUploadParameters uploadParameters;
 
-  public MediaUpload mediaId(String mediaId) {
+  public MediaUpload mediaId(@Nullable String mediaId) {
     this.mediaId = mediaId;
     return this;
   }
@@ -46,15 +46,15 @@ public class MediaUpload {
   
   @Schema(name = "media_id", description = "Unique identifier for this media upload. Used to track status and for attaching during Pin creation.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_id")
-  public String getMediaId() {
+  public @Nullable String getMediaId() {
     return mediaId;
   }
 
-  public void setMediaId(String mediaId) {
+  public void setMediaId(@Nullable String mediaId) {
     this.mediaId = mediaId;
   }
 
-  public MediaUpload mediaType(MediaUploadType mediaType) {
+  public MediaUpload mediaType(@Nullable MediaUploadType mediaType) {
     this.mediaType = mediaType;
     return this;
   }
@@ -66,15 +66,15 @@ public class MediaUpload {
   @Valid 
   @Schema(name = "media_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_type")
-  public MediaUploadType getMediaType() {
+  public @Nullable MediaUploadType getMediaType() {
     return mediaType;
   }
 
-  public void setMediaType(MediaUploadType mediaType) {
+  public void setMediaType(@Nullable MediaUploadType mediaType) {
     this.mediaType = mediaType;
   }
 
-  public MediaUpload uploadUrl(String uploadUrl) {
+  public MediaUpload uploadUrl(@Nullable String uploadUrl) {
     this.uploadUrl = uploadUrl;
     return this;
   }
@@ -86,15 +86,15 @@ public class MediaUpload {
   
   @Schema(name = "upload_url", example = "https://pinterest-media-upload.s3-accelerate.amazonaws.com/", description = "The URL where you will POST your media file.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("upload_url")
-  public String getUploadUrl() {
+  public @Nullable String getUploadUrl() {
     return uploadUrl;
   }
 
-  public void setUploadUrl(String uploadUrl) {
+  public void setUploadUrl(@Nullable String uploadUrl) {
     this.uploadUrl = uploadUrl;
   }
 
-  public MediaUpload uploadParameters(MediaUploadAllOfUploadParameters uploadParameters) {
+  public MediaUpload uploadParameters(@Nullable MediaUploadAllOfUploadParameters uploadParameters) {
     this.uploadParameters = uploadParameters;
     return this;
   }
@@ -106,11 +106,11 @@ public class MediaUpload {
   @Valid 
   @Schema(name = "upload_parameters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("upload_parameters")
-  public MediaUploadAllOfUploadParameters getUploadParameters() {
+  public @Nullable MediaUploadAllOfUploadParameters getUploadParameters() {
     return uploadParameters;
   }
 
-  public void setUploadParameters(MediaUploadAllOfUploadParameters uploadParameters) {
+  public void setUploadParameters(@Nullable MediaUploadAllOfUploadParameters uploadParameters) {
     this.uploadParameters = uploadParameters;
   }
 

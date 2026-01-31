@@ -21,7 +21,6 @@ namespace org::openapitools::server::model
 
 ConversionTagCreate::ConversionTagCreate()
 {
-    m_Name = "";
     m_Aem_enabled = false;
     m_Aem_enabledIsSet = false;
     m_Md_frequency = 1;
@@ -36,6 +35,7 @@ ConversionTagCreate::ConversionTagCreate()
     m_Aem_db_enabledIsSet = false;
     m_Aem_loc_enabled = false;
     m_Aem_loc_enabledIsSet = false;
+    m_Name = "";
     
 }
 
@@ -67,9 +67,6 @@ bool ConversionTagCreate::operator==(const ConversionTagCreate& rhs) const
     return
     
     
-    (getName() == rhs.getName())
-     &&
-    
     
     ((!aemEnabledIsSet() && !rhs.aemEnabledIsSet()) || (aemEnabledIsSet() && rhs.aemEnabledIsSet() && isAemEnabled() == rhs.isAemEnabled())) &&
     
@@ -89,7 +86,10 @@ bool ConversionTagCreate::operator==(const ConversionTagCreate& rhs) const
     ((!aemDbEnabledIsSet() && !rhs.aemDbEnabledIsSet()) || (aemDbEnabledIsSet() && rhs.aemDbEnabledIsSet() && isAemDbEnabled() == rhs.isAemDbEnabled())) &&
     
     
-    ((!aemLocEnabledIsSet() && !rhs.aemLocEnabledIsSet()) || (aemLocEnabledIsSet() && rhs.aemLocEnabledIsSet() && isAemLocEnabled() == rhs.isAemLocEnabled()))
+    ((!aemLocEnabledIsSet() && !rhs.aemLocEnabledIsSet()) || (aemLocEnabledIsSet() && rhs.aemLocEnabledIsSet() && isAemLocEnabled() == rhs.isAemLocEnabled())) &&
+    
+    (getName() == rhs.getName())
+    
     
     ;
 }
@@ -102,7 +102,6 @@ bool ConversionTagCreate::operator!=(const ConversionTagCreate& rhs) const
 void to_json(nlohmann::json& j, const ConversionTagCreate& o)
 {
     j = nlohmann::json::object();
-    j["name"] = o.m_Name;
     if(o.aemEnabledIsSet())
         j["aem_enabled"] = o.m_Aem_enabled;
     if(o.mdFrequencyIsSet())
@@ -117,12 +116,12 @@ void to_json(nlohmann::json& j, const ConversionTagCreate& o)
         j["aem_db_enabled"] = o.m_Aem_db_enabled;
     if(o.aemLocEnabledIsSet())
         j["aem_loc_enabled"] = o.m_Aem_loc_enabled;
+    j["name"] = o.m_Name;
     
 }
 
 void from_json(const nlohmann::json& j, ConversionTagCreate& o)
 {
-    j.at("name").get_to(o.m_Name);
     if(j.find("aem_enabled") != j.end())
     {
         j.at("aem_enabled").get_to(o.m_Aem_enabled);
@@ -158,17 +157,10 @@ void from_json(const nlohmann::json& j, ConversionTagCreate& o)
         j.at("aem_loc_enabled").get_to(o.m_Aem_loc_enabled);
         o.m_Aem_loc_enabledIsSet = true;
     } 
+    j.at("name").get_to(o.m_Name);
     
 }
 
-std::string ConversionTagCreate::getName() const
-{
-    return m_Name;
-}
-void ConversionTagCreate::setName(std::string const& value)
-{
-    m_Name = value;
-}
 bool ConversionTagCreate::isAemEnabled() const
 {
     return m_Aem_enabled;
@@ -287,6 +279,14 @@ bool ConversionTagCreate::aemLocEnabledIsSet() const
 void ConversionTagCreate::unsetAem_loc_enabled()
 {
     m_Aem_loc_enabledIsSet = false;
+}
+std::string ConversionTagCreate::getName() const
+{
+    return m_Name;
+}
+void ConversionTagCreate::setName(std::string const& value)
+{
+    m_Name = value;
 }
 
 

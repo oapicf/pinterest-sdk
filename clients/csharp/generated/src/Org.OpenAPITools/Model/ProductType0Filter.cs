@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "PRODUCT_TYPE_0":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pRODUCTTYPE0 = new Option<CatalogsProductGroupMultipleStringListCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleStringListCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            pRODUCTTYPE0 = new Option<CatalogsProductGroupMultipleStringListCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleStringListCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

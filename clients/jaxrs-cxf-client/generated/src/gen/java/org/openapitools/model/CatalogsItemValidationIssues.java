@@ -10,22 +10,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsItemValidationIssues  {
   
-  @ApiModelProperty(example = "0", required = true, value = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")
  /**
-   * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-  **/
+  * Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+  */
+  @ApiModelProperty(example = "0", required = true, value = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.")
+
   private Integer itemNumber;
 
-  @ApiModelProperty(example = "DS0294-L", required = true, value = "The merchant-created unique ID that represents the product.")
  /**
-   * The merchant-created unique ID that represents the product.
-  **/
+  * The merchant-created unique ID that represents the product.
+  */
+  @ApiModelProperty(example = "DS0294-L", required = true, value = "The merchant-created unique ID that represents the product.")
+
   private String itemId;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsItemValidationErrors errors;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsItemValidationWarnings warnings;
  /**
    * Item number based on order of appearance in the Catalogs Feed. For example, &#39;0&#39; refers to first item found in a feed that was downloaded from a &#39;location&#39; specified during feed creation.

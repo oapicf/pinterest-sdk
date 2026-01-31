@@ -164,8 +164,7 @@ namespace Org.OpenAPITools.Model
                             reason = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "log_index":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                logIndex = new Option<int?>(utf8JsonReader.GetInt32());
+                            logIndex = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

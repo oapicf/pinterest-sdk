@@ -9,11 +9,44 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_keyword
 import model_keyword_error
 
 type KeywordsResponse* = object
   ## 
-  errors*: seq[KeywordError]
-  keywords*: seq[Keyword]
+  errors*: Option[seq[KeywordError]]
+  keywords*: Option[seq[Keyword]]
+
+
+# Custom JSON deserialization for KeywordsResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[KeywordsResponse]): KeywordsResponse =
+  result = KeywordsResponse()
+  if node.kind == JObject:
+    if node.hasKey("errors") and node["errors"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["errors"]
+      if arrayNode.kind == JArray:
+        var arr: seq[KeywordError] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, KeywordError))
+        result.errors = some(arr)
+    if node.hasKey("keywords") and node["keywords"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["keywords"]
+      if arrayNode.kind == JArray:
+        var arr: seq[Keyword] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, Keyword))
+        result.keywords = some(arr)
+
+# Custom JSON serialization for KeywordsResponse with custom field names
+proc `%`*(obj: KeywordsResponse): JsonNode =
+  result = newJObject()
+  if obj.errors.isSome():
+    result["errors"] = %obj.errors.get()
+  if obj.keywords.isSome():
+    result["keywords"] = %obj.keywords.get()
+

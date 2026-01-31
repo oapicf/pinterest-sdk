@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * CatalogsReport
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReport {
 
   /**
@@ -35,7 +35,7 @@ public class CatalogsReport {
     
     IN_PROGRESS("IN_PROGRESS");
 
-    private String value;
+    private final String value;
 
     ReportStatusEnum(String value) {
       this.value = value;
@@ -68,7 +68,7 @@ public class CatalogsReport {
 
   private JsonNullable<BigDecimal> size = JsonNullable.<BigDecimal>undefined();
 
-  public CatalogsReport reportStatus(ReportStatusEnum reportStatus) {
+  public CatalogsReport reportStatus(@Nullable ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
     return this;
   }
@@ -80,11 +80,11 @@ public class CatalogsReport {
   
   @Schema(name = "report_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("report_status")
-  public ReportStatusEnum getReportStatus() {
+  public @Nullable ReportStatusEnum getReportStatus() {
     return reportStatus;
   }
 
-  public void setReportStatus(ReportStatusEnum reportStatus) {
+  public void setReportStatus(@Nullable ReportStatusEnum reportStatus) {
     this.reportStatus = reportStatus;
   }
 

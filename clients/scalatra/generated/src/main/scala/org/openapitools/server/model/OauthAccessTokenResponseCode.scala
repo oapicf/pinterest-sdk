@@ -12,6 +12,10 @@
 package org.openapitools.server.model
 
 case class OauthAccessTokenResponseCode(
+  refreshToken: String,
+
+  refreshTokenExpiresIn: Int,
+
   responseType: Option[String],
 
   accessToken: String,
@@ -20,10 +24,6 @@ case class OauthAccessTokenResponseCode(
 
   expiresIn: Int,
 
-  scope: String,
-
-  refreshToken: String,
-
-  refreshTokenExpiresIn: Int
+  scope: String
 
  )

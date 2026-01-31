@@ -13,7 +13,7 @@ import org.openapitools.model.PlacementMultipliers;
  * Object describing a retail catalog item&#39;s bid options (bid price and bid multipliers).
  */
 @ApiModel(description = "Object describing a retail catalog item's bid options (bid price and bid multipliers).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionBidOptions   {
   @JsonProperty("bid_in_micro_currency")
   private Long bidInMicroCurrency;

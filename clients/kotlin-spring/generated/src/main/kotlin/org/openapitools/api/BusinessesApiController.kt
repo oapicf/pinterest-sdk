@@ -64,6 +64,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
+import org.openapitools.api.BusinessesApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -80,7 +81,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${api.base-path:/v5}")
+@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
 class BusinessesApiController() {
 
     @Operation(
@@ -94,11 +95,14 @@ class BusinessesApiController() {
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/businesses/{business_id}/requests/assets/access"],
+        value = [PATH_ASSET_ACCESS_REQUESTS_CREATE /* "/businesses/{business_id}/requests/assets/access" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun assetAccessRequestsCreate(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody createAssetAccessRequestBody: CreateAssetAccessRequestBody): ResponseEntity<CreateAssetAccessRequestResponse> {
+    fun assetAccessRequestsCreate(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody createAssetAccessRequestBody: CreateAssetAccessRequestBody
+    ): ResponseEntity<CreateAssetAccessRequestResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -115,11 +119,14 @@ class BusinessesApiController() {
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/businesses/{business_id}/asset_groups"],
+        value = [PATH_ASSET_GROUP_CREATE /* "/businesses/{business_id}/asset_groups" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun assetGroupCreate(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody createAssetGroupBody: CreateAssetGroupBody): ResponseEntity<CreateAssetGroupResponse> {
+    fun assetGroupCreate(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody createAssetGroupBody: CreateAssetGroupBody
+    ): ResponseEntity<CreateAssetGroupResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -135,11 +142,14 @@ class BusinessesApiController() {
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/businesses/{business_id}/asset_groups"],
+        value = [PATH_ASSET_GROUP_DELETE /* "/businesses/{business_id}/asset_groups" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun assetGroupDelete(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody deleteAssetGroupBody: DeleteAssetGroupBody): ResponseEntity<DeleteAssetGroupResponse> {
+    fun assetGroupDelete(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody deleteAssetGroupBody: DeleteAssetGroupBody
+    ): ResponseEntity<DeleteAssetGroupResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -155,11 +165,14 @@ class BusinessesApiController() {
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/businesses/{business_id}/asset_groups"],
+        value = [PATH_ASSET_GROUP_UPDATE /* "/businesses/{business_id}/asset_groups" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun assetGroupUpdate(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody updateAssetGroupBody: UpdateAssetGroupBody): ResponseEntity<UpdateAssetGroupResponse> {
+    fun assetGroupUpdate(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody updateAssetGroupBody: UpdateAssetGroupBody
+    ): ResponseEntity<UpdateAssetGroupResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -178,10 +191,16 @@ If the requesting business is not the owner of the audience, only ad accounts ow
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/businesses/{business_id}/audiences/shared/accounts"],
+        value = [PATH_BUSINESS_ACCOUNT_AUDIENCES_SHARED_ACCOUNTS_LIST /* "/businesses/{business_id}/audiences/shared/accounts" */],
         produces = ["application/json"]
     )
-    fun businessAccountAudiencesSharedAccountsList(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@NotNull @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of the audience to use to filter the results.", required = true) @Valid @RequestParam(value = "audience_id", required = true) audienceId: kotlin.String,@NotNull @Parameter(description = "Filter accounts by account type.", required = true, schema = Schema(allowableValues = ["AD_ACCOUNT", "BUSINESS_ACCOUNT"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "account_type", required = true, defaultValue = "AD_ACCOUNT") accountType: AudienceAccountType,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<AdAccountsAudiencesSharedAccountsList200Response> {
+    fun businessAccountAudiencesSharedAccountsList(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @NotNull @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of the audience to use to filter the results.", required = true) @Valid @RequestParam(value = "audience_id", required = true) audienceId: kotlin.String,
+        @NotNull @Parameter(description = "Filter accounts by account type.", required = true, schema = Schema(allowableValues = ["AD_ACCOUNT", "BUSINESS_ACCOUNT"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "account_type", required = true, defaultValue = "AD_ACCOUNT") accountType: AudienceAccountType,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<AdAccountsAudiencesSharedAccountsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -196,10 +215,16 @@ If the requesting business is not the owner of the audience, only ad accounts ow
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/businesses/{business_id}/assets/{asset_id}/members"],
+        value = [PATH_BUSINESS_ASSET_MEMBERS_GET /* "/businesses/{business_id}/assets/{asset_id}/members" */],
         produces = ["application/json"]
     )
-    fun businessAssetMembersGet(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of a business asset.", required = true) @PathVariable("asset_id") assetId: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Min(0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int): ResponseEntity<BusinessAssetMembersGet200Response> {
+    fun businessAssetMembersGet(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of a business asset.", required = true) @PathVariable("asset_id") assetId: kotlin.String,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int
+    ): ResponseEntity<BusinessAssetMembersGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -216,10 +241,16 @@ you cannot be shared with a different partner.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/businesses/{business_id}/assets/{asset_id}/partners"],
+        value = [PATH_BUSINESS_ASSET_PARTNERS_GET /* "/businesses/{business_id}/assets/{asset_id}/partners" */],
         produces = ["application/json"]
     )
-    fun businessAssetPartnersGet(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of a business asset.", required = true) @PathVariable("asset_id") assetId: kotlin.String,@Min(0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<BusinessAssetPartnersGet200Response> {
+    fun businessAssetPartnersGet(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of a business asset.", required = true) @PathVariable("asset_id") assetId: kotlin.String,
+        @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<BusinessAssetPartnersGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -234,10 +265,19 @@ you cannot be shared with a different partner.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/businesses/{business_id}/assets"],
+        value = [PATH_BUSINESS_ASSETS_GET /* "/businesses/{business_id}/assets" */],
         produces = ["application/json"]
     )
-    fun businessAssetsGet(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.") @Valid @RequestParam(value = "permissions", required = false) permissions: kotlin.collections.List<PermissionsWithOwner>?,@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.") @Valid @RequestParam(value = "child_asset_id", required = false) childAssetId: kotlin.String?,@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "An asset group unique identifier. Used to fetch assets contained within the specified asset group.") @Valid @RequestParam(value = "asset_group_id", required = false) assetGroupId: kotlin.String?,@Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,@Min(0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<BusinessAssetsGet200Response> {
+    fun businessAssetsGet(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.") @Valid @RequestParam(value = "permissions", required = false) permissions: kotlin.collections.List<PermissionsWithOwner>?,
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.") @Valid @RequestParam(value = "child_asset_id", required = false) childAssetId: kotlin.String?,
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "An asset group unique identifier. Used to fetch assets contained within the specified asset group.") @Valid @RequestParam(value = "asset_group_id", required = false) assetGroupId: kotlin.String?,
+        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
+        @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<BusinessAssetsGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -255,10 +295,17 @@ The return response will include the permissions the member has to that asset an
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/businesses/{business_id}/members/{member_id}/assets"],
+        value = [PATH_BUSINESS_MEMBER_ASSETS_GET /* "/businesses/{business_id}/members/{member_id}/assets" */],
         produces = ["application/json"]
     )
-    fun businessMemberAssetsGet(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "The member id to fetch assets for.", required = true) @PathVariable("member_id") memberId: kotlin.String,@Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,@Min(0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<BusinessMemberAssetsGet200Response> {
+    fun businessMemberAssetsGet(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "The member id to fetch assets for.", required = true) @PathVariable("member_id") memberId: kotlin.String,
+        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
+        @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<BusinessMemberAssetsGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -273,11 +320,14 @@ The return response will include the permissions the member has to that asset an
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/businesses/{business_id}/members/assets/access"],
+        value = [PATH_BUSINESS_MEMBERS_ASSET_ACCESS_DELETE /* "/businesses/{business_id}/members/assets/access" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun businessMembersAssetAccessDelete(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "List member assset permissions to delete.", required = true) @Valid @RequestBody businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest): ResponseEntity<DeleteMemberAccessResultsResponseArray> {
+    fun businessMembersAssetAccessDelete(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "List member assset permissions to delete.", required = true) @Valid @RequestBody businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest
+    ): ResponseEntity<DeleteMemberAccessResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -294,11 +344,14 @@ Note: Not all listed permissions are applicable to each asset type. For example,
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/businesses/{business_id}/members/assets/access"],
+        value = [PATH_BUSINESS_MEMBERS_ASSET_ACCESS_UPDATE /* "/businesses/{business_id}/members/assets/access" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun businessMembersAssetAccessUpdate(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "List of member asset permissions to create or update.", required = true) @Valid @RequestBody updateMemberAssetAccessBody: UpdateMemberAssetAccessBody): ResponseEntity<UpdateMemberAssetsResultsResponseArray> {
+    fun businessMembersAssetAccessUpdate(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "List of member asset permissions to create or update.", required = true) @Valid @RequestBody updateMemberAssetAccessBody: UpdateMemberAssetAccessBody
+    ): ResponseEntity<UpdateMemberAssetsResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -316,10 +369,18 @@ granted your partner access to. If you specify:
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/businesses/{business_id}/partners/{partner_id}/assets"],
+        value = [PATH_BUSINESS_PARTNER_ASSET_ACCESS_GET /* "/businesses/{business_id}/partners/{partner_id}/assets" */],
         produces = ["application/json"]
     )
-    fun businessPartnerAssetAccessGet(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "The partner id to be bound to the Business", required = true) @PathVariable("partner_id") partnerId: kotlin.String,@Parameter(description = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.") @Valid partnerType: PartnerType?,@Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,@Min(0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<BusinessPartnerAssetAccessGet200Response> {
+    fun businessPartnerAssetAccessGet(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "The partner id to be bound to the Business", required = true) @PathVariable("partner_id") partnerId: kotlin.String,
+        @Parameter(description = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", schema = Schema(allowableValues = ["INTERNAL", "EXTERNAL"])) @Valid @RequestParam(value = "partner_type", required = false) partnerType: PartnerType?,
+        @Parameter(description = "A resource type to filter the assets by. Only assets of the specified type will be returned.", schema = Schema(allowableValues = ["AD_ACCOUNT", "PROFILE", "ASSET_GROUP"], defaultValue = "AD_ACCOUNT")) @Valid @RequestParam(value = "asset_type", required = false, defaultValue = "AD_ACCOUNT") assetType: kotlin.String,
+        @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<BusinessPartnerAssetAccessGet200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -334,11 +395,14 @@ granted your partner access to. If you specify:
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/businesses/{business_id}/invites"],
+        value = [PATH_CANCEL_INVITES_OR_REQUESTS /* "/businesses/{business_id}/invites" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun cancelInvitesOrRequests(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Business id", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "A list with invite ids", required = true) @Valid @RequestBody cancelInvitesBody: CancelInvitesBody): ResponseEntity<DeleteInvitesResultsResponseArray> {
+    fun cancelInvitesOrRequests(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Business id", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "A list with invite ids", required = true) @Valid @RequestBody cancelInvitesBody: CancelInvitesBody
+    ): ResponseEntity<DeleteInvitesResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -367,11 +431,14 @@ To learn more about permission levels, visit https://help.pinterest.com/en/busin
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/businesses/{business_id}/invites/assets/access"],
+        value = [PATH_CREATE_ASSET_INVITES /* "/businesses/{business_id}/invites/assets/access" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun createAssetInvites(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "A list of invites/requests together with the asset permissions to be assigned to the invite/request. ", required = true) @Valid @RequestBody createAssetInvitesRequest: CreateAssetInvitesRequest): ResponseEntity<UpdateInvitesResultsResponseArray> {
+    fun createAssetInvites(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "A list of invites/requests together with the asset permissions to be assigned to the invite/request. ", required = true) @Valid @RequestBody createAssetInvitesRequest: CreateAssetInvitesRequest
+    ): ResponseEntity<UpdateInvitesResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -399,11 +466,14 @@ To learn more about permission levels, visit https://help.pinterest.com/en/busin
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/businesses/{business_id}/invites"],
+        value = [PATH_CREATE_MEMBERSHIP_OR_PARTNERSHIP_INVITES /* "/businesses/{business_id}/invites" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun createMembershipOrPartnershipInvites(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Business id", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "An object with the properties: invite_type, partners, members, business_role", required = true) @Valid @RequestBody createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody): ResponseEntity<CreateInvitesResultsResponseArray> {
+    fun createMembershipOrPartnershipInvites(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Business id", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "An object with the properties: invite_type, partners, members, business_role", required = true) @Valid @RequestBody createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody
+    ): ResponseEntity<CreateInvitesResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -418,11 +488,14 @@ To learn more about permission levels, visit https://help.pinterest.com/en/busin
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/businesses/{business_id}/members"],
+        value = [PATH_DELETE_BUSINESS_MEMBERSHIP /* "/businesses/{business_id}/members" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun deleteBusinessMembership(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Business id", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "List of members with role to delete.", required = true) @Valid @RequestBody membersToDeleteBody: MembersToDeleteBody): ResponseEntity<DeletedMembersResponse> {
+    fun deleteBusinessMembership(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Business id", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "List of members with role to delete.", required = true) @Valid @RequestBody membersToDeleteBody: MembersToDeleteBody
+    ): ResponseEntity<DeletedMembersResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -439,11 +512,14 @@ Note: You may only batch terminate partners of the same partner type.""",
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/businesses/{business_id}/partners"],
+        value = [PATH_DELETE_BUSINESS_PARTNERS /* "/businesses/{business_id}/partners" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun deleteBusinessPartners(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. ", required = true) @Valid @RequestBody deletePartnersRequest: DeletePartnersRequest): ResponseEntity<DeletePartnersResponse> {
+    fun deleteBusinessPartners(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. ", required = true) @Valid @RequestBody deletePartnersRequest: DeletePartnersRequest
+    ): ResponseEntity<DeletePartnersResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -460,11 +536,14 @@ Note: You may only batch terminate partners of the same partner type.""",
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/businesses/{business_id}/partners/assets"],
+        value = [PATH_DELETE_PARTNER_ASSET_ACCESS_HANDLER_IMPL /* "/businesses/{business_id}/partners/assets" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun deletePartnerAssetAccessHandlerImpl(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody): ResponseEntity<DeletePartnerAssetsResultsResponseArray> {
+    fun deletePartnerAssetAccessHandlerImpl(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody
+    ): ResponseEntity<DeletePartnerAssetsResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -479,10 +558,13 @@ Note: You may only batch terminate partners of the same partner type.""",
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/businesses/employers"],
+        value = [PATH_GET_BUSINESS_EMPLOYERS /* "/businesses/employers" */],
         produces = ["application/json"]
     )
-    fun getBusinessEmployers(@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<GetBusinessEmployers200Response> {
+    fun getBusinessEmployers(
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<GetBusinessEmployers200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -498,10 +580,18 @@ The return response will include the member's business_role and assets they have
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/businesses/{business_id}/members"],
+        value = [PATH_GET_BUSINESS_MEMBERS /* "/businesses/{business_id}/members" */],
         produces = ["application/json"]
     )
-    fun getBusinessMembers(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "assets_summary", required = false, defaultValue = "false") assetsSummary: kotlin.Boolean,@Parameter(description = "A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.") @Valid @RequestParam(value = "business_roles", required = false) businessRoles: kotlin.collections.List<MemberBusinessRole>?,@Size(max=500) @Parameter(description = "A list of business members ids separated by comma.") @Valid @RequestParam(value = "member_ids", required = false) memberIds: kotlin.String?,@Min(0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<GetBusinessMembers200Response> {
+    fun getBusinessMembers(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "assets_summary", required = false, defaultValue = "false") assetsSummary: kotlin.Boolean,
+        @Parameter(description = "A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.") @Valid @RequestParam(value = "business_roles", required = false) businessRoles: kotlin.collections.List<MemberBusinessRole>?,
+        @Size(max=500) @Parameter(description = "A list of business members ids separated by comma.") @Valid @RequestParam(value = "member_ids", required = false) memberIds: kotlin.String?,
+        @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<GetBusinessMembers200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -521,10 +611,18 @@ If the assets_summary=TRUE and:
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/businesses/{business_id}/partners"],
+        value = [PATH_GET_BUSINESS_PARTNERS /* "/businesses/{business_id}/partners" */],
         produces = ["application/json"]
     )
-    fun getBusinessPartners(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "assets_summary", required = false, defaultValue = "false") assetsSummary: kotlin.Boolean,@Parameter(description = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", schema = Schema(allowableValues = ["INTERNAL", "EXTERNAL"])) @Valid @RequestParam(value = "partner_type", required = false) partnerType: PartnerType?,@Size(max=500) @Parameter(description = "A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.") @Valid @RequestParam(value = "partner_ids", required = false) partnerIds: kotlin.String?,@Min(0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<GetBusinessPartners200Response> {
+    fun getBusinessPartners(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "assets_summary", required = false, defaultValue = "false") assetsSummary: kotlin.Boolean,
+        @Parameter(description = "Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.", schema = Schema(allowableValues = ["INTERNAL", "EXTERNAL"])) @Valid @RequestParam(value = "partner_type", required = false) partnerType: PartnerType?,
+        @Size(max=500) @Parameter(description = "A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.") @Valid @RequestParam(value = "partner_ids", required = false) partnerIds: kotlin.String?,
+        @Min(value=0)@Parameter(description = "An index to start fetching the results from. Only the results starting from this index will be returned.", schema = Schema(defaultValue = "0")) @Valid @RequestParam(value = "start_index", required = false, defaultValue = "0") startIndex: kotlin.Int,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<GetBusinessPartners200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -539,10 +637,17 @@ If the assets_summary=TRUE and:
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/businesses/{business_id}/invites"],
+        value = [PATH_GET_INVITES /* "/businesses/{business_id}/invites" */],
         produces = ["application/json"]
     )
-    fun getInvites(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "A boolean field to indicate whether the invite is to create a partnership or a membership.", schema = Schema(defaultValue = "true")) @Valid @RequestParam(value = "is_member", required = false, defaultValue = "true") isMember: kotlin.Boolean,@Size(min=1) @Parameter(description = "A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.", schema = Schema(allowableValues = ["PENDING", "EXPIRED"])) @Valid @RequestParam(value = "invite_status", required = false) inviteStatus: kotlin.collections.List<kotlin.String>?,@Parameter(description = "Invite type to filter invites by. Only invites of the specified type will be returned.", schema = Schema(allowableValues = ["MEMBER_INVITE", "PARTNER_INVITE", "PARTNER_REQUEST"])) @Valid @RequestParam(value = "invite_type", required = false) inviteType: InviteType?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<GetInvites200Response> {
+    fun getInvites(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "A boolean field to indicate whether the invite is to create a partnership or a membership.", schema = Schema(defaultValue = "true")) @Valid @RequestParam(value = "is_member", required = false, defaultValue = "true") isMember: kotlin.Boolean,
+        @Size(min=1) @Parameter(description = "A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.", schema = Schema(allowableValues = ["PENDING", "EXPIRED"])) @Valid @RequestParam(value = "invite_status", required = false) inviteStatus: kotlin.collections.List<kotlin.String>?,
+        @Parameter(description = "Invite type to filter invites by. Only invites of the specified type will be returned.", schema = Schema(allowableValues = ["MEMBER_INVITE", "PARTNER_INVITE", "PARTNER_REQUEST"])) @Valid @RequestParam(value = "invite_type", required = false) inviteType: InviteType?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<GetInvites200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -557,11 +662,13 @@ If the assets_summary=TRUE and:
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/businesses/invites"],
+        value = [PATH_RESPOND_BUSINESS_ACCESS_INVITES /* "/businesses/invites" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun respondBusinessAccessInvites(@Parameter(description = "", required = true) @Valid @RequestBody authRespondInvitesBody: AuthRespondInvitesBody): ResponseEntity<RespondToInvitesResponseArray> {
+    fun respondBusinessAccessInvites(
+        @Parameter(description = "", required = true) @Valid @RequestBody authRespondInvitesBody: AuthRespondInvitesBody
+    ): ResponseEntity<RespondToInvitesResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -577,10 +684,15 @@ If the assets_summary=TRUE and:
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/businesses/{business_id}/audiences"],
+        value = [PATH_SHARED_AUDIENCES_FOR_BUSINESS_LIST /* "/businesses/{business_id}/audiences" */],
         produces = ["application/json"]
     )
-    fun sharedAudiencesForBusinessList(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<AudiencesList200Response> {
+    fun sharedAudiencesForBusinessList(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Parameter(description = "The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.", schema = Schema(allowableValues = ["ASCENDING", "DESCENDING"])) @Valid @RequestParam(value = "order", required = false) order: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<AudiencesList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -595,11 +707,14 @@ If the assets_summary=TRUE and:
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/businesses/{business_id}/members"],
+        value = [PATH_UPDATE_BUSINESS_MEMBERSHIPS /* "/businesses/{business_id}/members" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun updateBusinessMemberships(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Business id", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "List of objects with the member id and the business_role.", required = true) @Valid@Size(min=1)  @RequestBody updateMemberBusinessRoleBody: kotlin.collections.List<UpdateMemberBusinessRoleBody>): ResponseEntity<UpdateMemberResultsResponseArray> {
+    fun updateBusinessMemberships(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Business id", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "List of objects with the member id and the business_role.", required = true) @Valid@Size(min=1)  @RequestBody updateMemberBusinessRoleBody: kotlin.collections.List<UpdateMemberBusinessRoleBody>
+    ): ResponseEntity<UpdateMemberResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -615,11 +730,14 @@ If the assets_summary=TRUE and:
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/businesses/{business_id}/audiences/ad_accounts/shared"],
+        value = [PATH_UPDATE_BUSINESS_TO_AD_ACCOUNT_SHARED_AUDIENCE /* "/businesses/{business_id}/audiences/ad_accounts/shared" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun updateBusinessToAdAccountSharedAudience(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody sharedAudience: SharedAudience): ResponseEntity<SharedAudienceResponse> {
+    fun updateBusinessToAdAccountSharedAudience(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody sharedAudience: SharedAudience
+    ): ResponseEntity<SharedAudienceResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -635,11 +753,14 @@ If the assets_summary=TRUE and:
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/businesses/{business_id}/audiences/businesses/shared"],
+        value = [PATH_UPDATE_BUSINESS_TO_BUSINESS_SHARED_AUDIENCE /* "/businesses/{business_id}/audiences/businesses/shared" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun updateBusinessToBusinessSharedAudience(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "", required = true) @Valid @RequestBody businessSharedAudience: BusinessSharedAudience): ResponseEntity<BusinessSharedAudienceResponse> {
+    fun updateBusinessToBusinessSharedAudience(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "", required = true) @Valid @RequestBody businessSharedAudience: BusinessSharedAudience
+    ): ResponseEntity<BusinessSharedAudienceResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -660,11 +781,47 @@ the type PROFILE.""",
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/businesses/{business_id}/partners/assets"],
+        value = [PATH_UPDATE_PARTNER_ASSET_ACCESS_HANDLER_IMPL /* "/businesses/{business_id}/partners/assets" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun updatePartnerAssetAccessHandlerImpl(@Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,@Parameter(description = "A list of assets and permissions to assign to your partners.", required = true) @Valid @RequestBody updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody): ResponseEntity<UpdatePartnerAssetsResultsResponseArray> {
+    fun updatePartnerAssetAccessHandlerImpl(
+        @Pattern(regexp="^\\d+$") @Size(min=1,max=20) @Parameter(description = "Unique identifier of the requesting business.", required = true) @PathVariable("business_id") businessId: kotlin.String,
+        @Parameter(description = "A list of assets and permissions to assign to your partners.", required = true) @Valid @RequestBody updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody
+    ): ResponseEntity<UpdatePartnerAssetsResultsResponseArray> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    companion object {
+        //for your own safety never directly reuse these path definitions in tests
+        const val BASE_PATH: String = "/v5"
+        const val PATH_ASSET_ACCESS_REQUESTS_CREATE: String = "/businesses/{business_id}/requests/assets/access"
+        const val PATH_ASSET_GROUP_CREATE: String = "/businesses/{business_id}/asset_groups"
+        const val PATH_ASSET_GROUP_DELETE: String = "/businesses/{business_id}/asset_groups"
+        const val PATH_ASSET_GROUP_UPDATE: String = "/businesses/{business_id}/asset_groups"
+        const val PATH_BUSINESS_ACCOUNT_AUDIENCES_SHARED_ACCOUNTS_LIST: String = "/businesses/{business_id}/audiences/shared/accounts"
+        const val PATH_BUSINESS_ASSET_MEMBERS_GET: String = "/businesses/{business_id}/assets/{asset_id}/members"
+        const val PATH_BUSINESS_ASSET_PARTNERS_GET: String = "/businesses/{business_id}/assets/{asset_id}/partners"
+        const val PATH_BUSINESS_ASSETS_GET: String = "/businesses/{business_id}/assets"
+        const val PATH_BUSINESS_MEMBER_ASSETS_GET: String = "/businesses/{business_id}/members/{member_id}/assets"
+        const val PATH_BUSINESS_MEMBERS_ASSET_ACCESS_DELETE: String = "/businesses/{business_id}/members/assets/access"
+        const val PATH_BUSINESS_MEMBERS_ASSET_ACCESS_UPDATE: String = "/businesses/{business_id}/members/assets/access"
+        const val PATH_BUSINESS_PARTNER_ASSET_ACCESS_GET: String = "/businesses/{business_id}/partners/{partner_id}/assets"
+        const val PATH_CANCEL_INVITES_OR_REQUESTS: String = "/businesses/{business_id}/invites"
+        const val PATH_CREATE_ASSET_INVITES: String = "/businesses/{business_id}/invites/assets/access"
+        const val PATH_CREATE_MEMBERSHIP_OR_PARTNERSHIP_INVITES: String = "/businesses/{business_id}/invites"
+        const val PATH_DELETE_BUSINESS_MEMBERSHIP: String = "/businesses/{business_id}/members"
+        const val PATH_DELETE_BUSINESS_PARTNERS: String = "/businesses/{business_id}/partners"
+        const val PATH_DELETE_PARTNER_ASSET_ACCESS_HANDLER_IMPL: String = "/businesses/{business_id}/partners/assets"
+        const val PATH_GET_BUSINESS_EMPLOYERS: String = "/businesses/employers"
+        const val PATH_GET_BUSINESS_MEMBERS: String = "/businesses/{business_id}/members"
+        const val PATH_GET_BUSINESS_PARTNERS: String = "/businesses/{business_id}/partners"
+        const val PATH_GET_INVITES: String = "/businesses/{business_id}/invites"
+        const val PATH_RESPOND_BUSINESS_ACCESS_INVITES: String = "/businesses/invites"
+        const val PATH_SHARED_AUDIENCES_FOR_BUSINESS_LIST: String = "/businesses/{business_id}/audiences"
+        const val PATH_UPDATE_BUSINESS_MEMBERSHIPS: String = "/businesses/{business_id}/members"
+        const val PATH_UPDATE_BUSINESS_TO_AD_ACCOUNT_SHARED_AUDIENCE: String = "/businesses/{business_id}/audiences/ad_accounts/shared"
+        const val PATH_UPDATE_BUSINESS_TO_BUSINESS_SHARED_AUDIENCE: String = "/businesses/{business_id}/audiences/businesses/shared"
+        const val PATH_UPDATE_PARTNER_ASSET_ACCESS_HANDLER_IMPL: String = "/businesses/{business_id}/partners/assets"
     }
 }

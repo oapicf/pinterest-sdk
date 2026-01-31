@@ -121,8 +121,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "reach_estimate":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                reachEstimate = new Option<TargetingTemplateAudienceSizingReachEstimate?>(JsonSerializer.Deserialize<TargetingTemplateAudienceSizingReachEstimate>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            reachEstimate = new Option<TargetingTemplateAudienceSizingReachEstimate?>(JsonSerializer.Deserialize<TargetingTemplateAudienceSizingReachEstimate>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

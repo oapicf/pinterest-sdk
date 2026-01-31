@@ -158,6 +158,10 @@ public class OASCatalogsCreativeAssetsFeedsCreate implements OAS.MappedPropertie
         return propertyMappings;
     }
 
+    public OASCatalogsCreativeAssetsFeedsCreate() {
+        status = 'ACTIVE';
+    }
+
     public static OASCatalogsCreativeAssetsFeedsCreate getExample() {
         OASCatalogsCreativeAssetsFeedsCreate catalogsCreativeAssetsFeedsCreateRequest = new OASCatalogsCreativeAssetsFeedsCreate();
           catalogsCreativeAssetsFeedsCreateRequest.defaultCurrency = OASNullableCurrency.getExample();
@@ -170,7 +174,7 @@ public class OASCatalogsCreativeAssetsFeedsCreate implements OAS.MappedPropertie
           catalogsCreativeAssetsFeedsCreateRequest.preferredProcessingSchedule = OASCatalogsFeedProcessingSchedule.getExample();
           catalogsCreativeAssetsFeedsCreateRequest.catalogType = OASCatalogsType.getExample();
           catalogsCreativeAssetsFeedsCreateRequest.catalogId = '';
-          catalogsCreativeAssetsFeedsCreateRequest.status = '';
+          catalogsCreativeAssetsFeedsCreateRequest.status = OASCatalogsStatus.getExample();
         return catalogsCreativeAssetsFeedsCreateRequest;
     }
 

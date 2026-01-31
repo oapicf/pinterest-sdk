@@ -23,7 +23,7 @@ data class CreateAssetGroupResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("asset_group") val assetGroup: AssetGroupBinding? = null
-    ) {
+) {
 
 }
 

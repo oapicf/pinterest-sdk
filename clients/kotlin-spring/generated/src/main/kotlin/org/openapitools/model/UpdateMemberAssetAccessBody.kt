@@ -24,7 +24,7 @@ data class UpdateMemberAssetAccessBody(
     @get:Size(min=1,max=50) 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("accesses", required = true) val accesses: kotlin.collections.List<UpdateMemberAssetAccessBodyAccessesInner>
-    ) {
+) {
 
 }
 

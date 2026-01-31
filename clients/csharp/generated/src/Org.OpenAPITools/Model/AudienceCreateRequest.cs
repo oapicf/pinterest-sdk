@@ -36,11 +36,11 @@ namespace Org.OpenAPITools.Model
         /// </summary>
         /// <param name="name">Audience name.</param>
         /// <param name="rule">rule</param>
-        /// <param name="audienceType">audienceType</param>
+        /// <param name="audienceType">&lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.</param>
         /// <param name="adAccountId">Ad account ID.</param>
         /// <param name="description">Audience description.</param>
         [JsonConstructor]
-        public AudienceCreateRequest(string name, AudienceRule rule, AudienceCreateRequest1AudienceType audienceType, Option<string?> adAccountId = default, Option<string?> description = default)
+        public AudienceCreateRequest(string name, AudienceRule rule, AudienceType audienceType, Option<string?> adAccountId = default, Option<string?> description = default)
         {
             Name = name;
             Rule = rule;
@@ -51,6 +51,13 @@ namespace Org.OpenAPITools.Model
         }
 
         partial void OnCreated();
+
+        /// <summary>
+        /// &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+        /// </summary>
+        /// <value>&lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.</value>
+        [JsonPropertyName("audience_type")]
+        public AudienceType AudienceType { get; set; }
 
         /// <summary>
         /// Audience name.
@@ -65,12 +72,6 @@ namespace Org.OpenAPITools.Model
         /// </summary>
         [JsonPropertyName("rule")]
         public AudienceRule Rule { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AudienceType
-        /// </summary>
-        [JsonPropertyName("audience_type")]
-        public AudienceCreateRequest1AudienceType AudienceType { get; set; }
 
         /// <summary>
         /// Used to track the state of AdAccountId
@@ -164,7 +165,7 @@ namespace Org.OpenAPITools.Model
 
             Option<string?> name = default;
             Option<AudienceRule?> rule = default;
-            Option<AudienceCreateRequest1AudienceType?> audienceType = default;
+            Option<AudienceType?> audienceType = default;
             Option<string?> adAccountId = default;
             Option<string?> description = default;
 
@@ -187,12 +188,12 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "rule":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                rule = new Option<AudienceRule?>(JsonSerializer.Deserialize<AudienceRule>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            rule = new Option<AudienceRule?>(JsonSerializer.Deserialize<AudienceRule>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "audience_type":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                audienceType = new Option<AudienceCreateRequest1AudienceType?>(JsonSerializer.Deserialize<AudienceCreateRequest1AudienceType>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            string? audienceTypeRawValue = utf8JsonReader.GetString();
+                            if (audienceTypeRawValue != null)
+                                audienceType = new Option<AudienceType?>(AudienceTypeValueConverter.FromStringOrDefault(audienceTypeRawValue));
                             break;
                         case "ad_account_id":
                             adAccountId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -230,7 +231,7 @@ namespace Org.OpenAPITools.Model
             if (description.IsSet && description.Value == null)
                 throw new ArgumentNullException(nameof(description), "Property is not nullable for class AudienceCreateRequest.");
 
-            return new AudienceCreateRequest(name.Value!, rule.Value!, audienceType.Value!, adAccountId, description);
+            return new AudienceCreateRequest(name.Value!, rule.Value!, audienceType.Value!.Value!, adAccountId, description);
         }
 
         /// <summary>
@@ -263,9 +264,6 @@ namespace Org.OpenAPITools.Model
             if (audienceCreateRequest.Rule == null)
                 throw new ArgumentNullException(nameof(audienceCreateRequest.Rule), "Property is required for class AudienceCreateRequest.");
 
-            if (audienceCreateRequest.AudienceType == null)
-                throw new ArgumentNullException(nameof(audienceCreateRequest.AudienceType), "Property is required for class AudienceCreateRequest.");
-
             if (audienceCreateRequest.AdAccountIdOption.IsSet && audienceCreateRequest.AdAccountId == null)
                 throw new ArgumentNullException(nameof(audienceCreateRequest.AdAccountId), "Property is required for class AudienceCreateRequest.");
 
@@ -276,8 +274,9 @@ namespace Org.OpenAPITools.Model
 
             writer.WritePropertyName("rule");
             JsonSerializer.Serialize(writer, audienceCreateRequest.Rule, jsonSerializerOptions);
-            writer.WritePropertyName("audience_type");
-            JsonSerializer.Serialize(writer, audienceCreateRequest.AudienceType, jsonSerializerOptions);
+            var audienceTypeRawValue = AudienceTypeValueConverter.ToJsonValue(audienceCreateRequest.AudienceType);
+            writer.WriteString("audience_type", audienceTypeRawValue);
+
             if (audienceCreateRequest.AdAccountIdOption.IsSet)
                 writer.WriteString("ad_account_id", audienceCreateRequest.AdAccountId);
 

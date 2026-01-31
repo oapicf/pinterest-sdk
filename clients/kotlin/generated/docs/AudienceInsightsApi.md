@@ -41,7 +41,7 @@ try {
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **audienceInsightType** | [**AudienceInsightType**](.md)| Type of audience insights. | [default to YOUR_TOTAL_AUDIENCE] [enum: YOUR_TOTAL_AUDIENCE, YOUR_ENGAGED_AUDIENCE, PINTEREST_TOTAL_AUDIENCE] |
+| **audienceInsightType** | [**AudienceInsightType**](.md)| Type of audience insights. | [default to AudienceInsightType.YOUR_TOTAL_AUDIENCE] [enum: YOUR_TOTAL_AUDIENCE, YOUR_ENGAGED_AUDIENCE, PINTEREST_TOTAL_AUDIENCE] |
 
 ### Return type
 

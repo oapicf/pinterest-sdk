@@ -48,7 +48,7 @@ data class CatalogsReportFeedIngestionStats(
 
     @Schema(example = "null", description = "An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue")
     @get:JsonProperty("severity") val severity: CatalogsReportFeedIngestionStats.Severity? = null
-    ) {
+) {
 
     /**
     * 
@@ -62,7 +62,8 @@ data class CatalogsReportFeedIngestionStats(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ReportType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsReportFeedIngestionStats'")
             }
         }
     }
@@ -80,7 +81,8 @@ data class CatalogsReportFeedIngestionStats(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Severity {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsReportFeedIngestionStats'")
             }
         }
     }

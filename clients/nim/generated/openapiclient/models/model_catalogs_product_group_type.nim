@@ -9,7 +9,68 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type CatalogsProductGroupType* = object
-  ## <p>Catalog product group type</p> <p>MERCHANT_CREATED: Product groups created by merchants. <br>ALL_PRODUCTS: Consists of every product in your latest successful feed upload. <br>BEST_DEALS: Consists of products with the deepest drop in price. <br>PINNER_FAVORITES: Consists of products that are resonating most with people on Pinterest, based on engagement. <br>TOP_SELLERS: Consists of products with the highest conversion rate, if you have the conversion tag installed. <br>BACK_IN_STOCK: Consists of products that were previously out of stock and are now in stock. <br>NEW_ARRIVALS: Consists of products that are new to your Catalog. <br>SHOPIFY_COLLECTION: Product groups created based on Shopify Product Collections. <br>I2PC: Product groups created based on predicted product category.</p>
+type CatalogsProductGroupType* {.pure.} = enum
+  MERCHANTCREATED
+  ALLPRODUCTS
+  BESTDEALS
+  PINNERFAVORITES
+  TOPSELLERS
+  BACKINSTOCK
+  NEWARRIVALS
+  SHOPIFYCOLLECTIONS
+  I2PC
+
+func `%`*(v: CatalogsProductGroupType): JsonNode =
+  result = case v:
+    of CatalogsProductGroupType.MERCHANTCREATED: %"MERCHANT_CREATED"
+    of CatalogsProductGroupType.ALLPRODUCTS: %"ALL_PRODUCTS"
+    of CatalogsProductGroupType.BESTDEALS: %"BEST_DEALS"
+    of CatalogsProductGroupType.PINNERFAVORITES: %"PINNER_FAVORITES"
+    of CatalogsProductGroupType.TOPSELLERS: %"TOP_SELLERS"
+    of CatalogsProductGroupType.BACKINSTOCK: %"BACK_IN_STOCK"
+    of CatalogsProductGroupType.NEWARRIVALS: %"NEW_ARRIVALS"
+    of CatalogsProductGroupType.SHOPIFYCOLLECTIONS: %"SHOPIFY_COLLECTIONS"
+    of CatalogsProductGroupType.I2PC: %"I2PC"
+
+func `$`*(v: CatalogsProductGroupType): string =
+  result = case v:
+    of CatalogsProductGroupType.MERCHANTCREATED: $("MERCHANT_CREATED")
+    of CatalogsProductGroupType.ALLPRODUCTS: $("ALL_PRODUCTS")
+    of CatalogsProductGroupType.BESTDEALS: $("BEST_DEALS")
+    of CatalogsProductGroupType.PINNERFAVORITES: $("PINNER_FAVORITES")
+    of CatalogsProductGroupType.TOPSELLERS: $("TOP_SELLERS")
+    of CatalogsProductGroupType.BACKINSTOCK: $("BACK_IN_STOCK")
+    of CatalogsProductGroupType.NEWARRIVALS: $("NEW_ARRIVALS")
+    of CatalogsProductGroupType.SHOPIFYCOLLECTIONS: $("SHOPIFY_COLLECTIONS")
+    of CatalogsProductGroupType.I2PC: $("I2PC")
+
+proc to*(node: JsonNode, T: typedesc[CatalogsProductGroupType]): CatalogsProductGroupType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogsProductGroupType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("MERCHANT_CREATED"):
+    return CatalogsProductGroupType.MERCHANTCREATED
+  of $("ALL_PRODUCTS"):
+    return CatalogsProductGroupType.ALLPRODUCTS
+  of $("BEST_DEALS"):
+    return CatalogsProductGroupType.BESTDEALS
+  of $("PINNER_FAVORITES"):
+    return CatalogsProductGroupType.PINNERFAVORITES
+  of $("TOP_SELLERS"):
+    return CatalogsProductGroupType.TOPSELLERS
+  of $("BACK_IN_STOCK"):
+    return CatalogsProductGroupType.BACKINSTOCK
+  of $("NEW_ARRIVALS"):
+    return CatalogsProductGroupType.NEWARRIVALS
+  of $("SHOPIFY_COLLECTIONS"):
+    return CatalogsProductGroupType.SHOPIFYCOLLECTIONS
+  of $("I2PC"):
+    return CatalogsProductGroupType.I2PC
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogsProductGroupType: " & strVal)
+

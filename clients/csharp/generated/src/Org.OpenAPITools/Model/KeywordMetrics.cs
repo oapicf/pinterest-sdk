@@ -142,8 +142,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "avg_cpc_in_micro_currency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                avgCpcInMicroCurrency = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            avgCpcInMicroCurrency = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "keyword_query_volume":
                             keywordQueryVolume = new Option<string?>(utf8JsonReader.GetString()!);

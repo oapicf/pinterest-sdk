@@ -138,12 +138,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "errors":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                errors = new Option<List<KeywordError>?>(JsonSerializer.Deserialize<List<KeywordError>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            errors = new Option<List<KeywordError>?>(JsonSerializer.Deserialize<List<KeywordError>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "keywords":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                keywords = new Option<List<Keyword>?>(JsonSerializer.Deserialize<List<Keyword>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            keywords = new Option<List<Keyword>?>(JsonSerializer.Deserialize<List<Keyword>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

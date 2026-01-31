@@ -659,7 +659,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **businessId** | **string**| Unique identifier of the requesting business. |
  **partnerId** | **string**| The partner id to be bound to the Business |
- **partnerType** | [**OpenAPIServerModelPartnerTypeAnyType**](../Model/.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional]
+ **partnerType** | [**OpenAPIServerModelPartnerType**](../Model/.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional]
  **assetType** | **string**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to &#39;AD_ACCOUNT&#39;]
  **startIndex** | **int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0]
  **pageSize** | **int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25]

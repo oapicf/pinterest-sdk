@@ -150,9 +150,9 @@ class ResourcesApiSimulation extends Simulation {
         .feed(targeting_options/getPATHFeeder)
         .exec(http("targetingOptionsGet")
         .httpRequest("GET","/resources/targeting/${targeting_type}")
-        .queryParam("client_id","${client_id}")
-        .queryParam("timestamp","${timestamp}")
         .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("timestamp","${timestamp}")
+        .queryParam("client_id","${client_id}")
         .queryParam("oauth_signature","${oauth_signature}")
 )
 

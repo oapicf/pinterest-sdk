@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type CreativeAssetsVisibilityType* = object
-  ## Creative assets visibility.
+type CreativeAssetsVisibilityType* {.pure.} = enum
+  VISIBLE
+  HIDDEN
+
+func `%`*(v: CreativeAssetsVisibilityType): JsonNode =
+  result = case v:
+    of CreativeAssetsVisibilityType.VISIBLE: %"VISIBLE"
+    of CreativeAssetsVisibilityType.HIDDEN: %"HIDDEN"
+
+func `$`*(v: CreativeAssetsVisibilityType): string =
+  result = case v:
+    of CreativeAssetsVisibilityType.VISIBLE: $("VISIBLE")
+    of CreativeAssetsVisibilityType.HIDDEN: $("HIDDEN")
+
+proc to*(node: JsonNode, T: typedesc[CreativeAssetsVisibilityType]): CreativeAssetsVisibilityType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CreativeAssetsVisibilityType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("VISIBLE"):
+    return CreativeAssetsVisibilityType.VISIBLE
+  of $("HIDDEN"):
+    return CreativeAssetsVisibilityType.HIDDEN
+  else:
+    raise newException(ValueError, "Invalid enum value for CreativeAssetsVisibilityType: " & strVal)
+

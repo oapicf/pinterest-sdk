@@ -21,15 +21,15 @@ namespace org::openapitools::server::model
 
 OauthAccessTokenResponseEverlastingRefresh::OauthAccessTokenResponseEverlastingRefresh()
 {
+    m_Refresh_token = "";
+    m_Refresh_token_expires_in = 0;
+    m_Refresh_token_expires_at = 0;
     m_Response_type = "";
     m_Response_typeIsSet = false;
     m_Access_token = "";
     m_Token_type = "bearer";
     m_Expires_in = 0;
     m_Scope = "";
-    m_Refresh_token = "";
-    m_Refresh_token_expires_in = 0;
-    m_Refresh_token_expires_at = 0;
     
 }
 
@@ -61,6 +61,15 @@ bool OauthAccessTokenResponseEverlastingRefresh::operator==(const OauthAccessTok
     return
     
     
+    (getRefreshToken() == rhs.getRefreshToken())
+     &&
+    
+    (getRefreshTokenExpiresIn() == rhs.getRefreshTokenExpiresIn())
+     &&
+    
+    (getRefreshTokenExpiresAt() == rhs.getRefreshTokenExpiresAt())
+     &&
+    
     
     ((!responseTypeIsSet() && !rhs.responseTypeIsSet()) || (responseTypeIsSet() && rhs.responseTypeIsSet() && getResponseType() == rhs.getResponseType())) &&
     
@@ -74,15 +83,6 @@ bool OauthAccessTokenResponseEverlastingRefresh::operator==(const OauthAccessTok
      &&
     
     (getScope() == rhs.getScope())
-     &&
-    
-    (getRefreshToken() == rhs.getRefreshToken())
-     &&
-    
-    (getRefreshTokenExpiresIn() == rhs.getRefreshTokenExpiresIn())
-     &&
-    
-    (getRefreshTokenExpiresAt() == rhs.getRefreshTokenExpiresAt())
     
     
     ;
@@ -96,20 +96,23 @@ bool OauthAccessTokenResponseEverlastingRefresh::operator!=(const OauthAccessTok
 void to_json(nlohmann::json& j, const OauthAccessTokenResponseEverlastingRefresh& o)
 {
     j = nlohmann::json::object();
+    j["refresh_token"] = o.m_Refresh_token;
+    j["refresh_token_expires_in"] = o.m_Refresh_token_expires_in;
+    j["refresh_token_expires_at"] = o.m_Refresh_token_expires_at;
     if(o.responseTypeIsSet())
         j["response_type"] = o.m_Response_type;
     j["access_token"] = o.m_Access_token;
     j["token_type"] = o.m_Token_type;
     j["expires_in"] = o.m_Expires_in;
     j["scope"] = o.m_Scope;
-    j["refresh_token"] = o.m_Refresh_token;
-    j["refresh_token_expires_in"] = o.m_Refresh_token_expires_in;
-    j["refresh_token_expires_at"] = o.m_Refresh_token_expires_at;
     
 }
 
 void from_json(const nlohmann::json& j, OauthAccessTokenResponseEverlastingRefresh& o)
 {
+    j.at("refresh_token").get_to(o.m_Refresh_token);
+    j.at("refresh_token_expires_in").get_to(o.m_Refresh_token_expires_in);
+    j.at("refresh_token_expires_at").get_to(o.m_Refresh_token_expires_at);
     if(j.find("response_type") != j.end())
     {
         j.at("response_type").get_to(o.m_Response_type);
@@ -119,12 +122,33 @@ void from_json(const nlohmann::json& j, OauthAccessTokenResponseEverlastingRefre
     j.at("token_type").get_to(o.m_Token_type);
     j.at("expires_in").get_to(o.m_Expires_in);
     j.at("scope").get_to(o.m_Scope);
-    j.at("refresh_token").get_to(o.m_Refresh_token);
-    j.at("refresh_token_expires_in").get_to(o.m_Refresh_token_expires_in);
-    j.at("refresh_token_expires_at").get_to(o.m_Refresh_token_expires_at);
     
 }
 
+std::string OauthAccessTokenResponseEverlastingRefresh::getRefreshToken() const
+{
+    return m_Refresh_token;
+}
+void OauthAccessTokenResponseEverlastingRefresh::setRefreshToken(std::string const& value)
+{
+    m_Refresh_token = value;
+}
+int32_t OauthAccessTokenResponseEverlastingRefresh::getRefreshTokenExpiresIn() const
+{
+    return m_Refresh_token_expires_in;
+}
+void OauthAccessTokenResponseEverlastingRefresh::setRefreshTokenExpiresIn(int32_t const value)
+{
+    m_Refresh_token_expires_in = value;
+}
+int32_t OauthAccessTokenResponseEverlastingRefresh::getRefreshTokenExpiresAt() const
+{
+    return m_Refresh_token_expires_at;
+}
+void OauthAccessTokenResponseEverlastingRefresh::setRefreshTokenExpiresAt(int32_t const value)
+{
+    m_Refresh_token_expires_at = value;
+}
 std::string OauthAccessTokenResponseEverlastingRefresh::getResponseType() const
 {
     return m_Response_type;
@@ -173,30 +197,6 @@ std::string OauthAccessTokenResponseEverlastingRefresh::getScope() const
 void OauthAccessTokenResponseEverlastingRefresh::setScope(std::string const& value)
 {
     m_Scope = value;
-}
-std::string OauthAccessTokenResponseEverlastingRefresh::getRefreshToken() const
-{
-    return m_Refresh_token;
-}
-void OauthAccessTokenResponseEverlastingRefresh::setRefreshToken(std::string const& value)
-{
-    m_Refresh_token = value;
-}
-int32_t OauthAccessTokenResponseEverlastingRefresh::getRefreshTokenExpiresIn() const
-{
-    return m_Refresh_token_expires_in;
-}
-void OauthAccessTokenResponseEverlastingRefresh::setRefreshTokenExpiresIn(int32_t const value)
-{
-    m_Refresh_token_expires_in = value;
-}
-int32_t OauthAccessTokenResponseEverlastingRefresh::getRefreshTokenExpiresAt() const
-{
-    return m_Refresh_token_expires_at;
-}
-void OauthAccessTokenResponseEverlastingRefresh::setRefreshTokenExpiresAt(int32_t const value)
-{
-    m_Refresh_token_expires_at = value;
 }
 
 

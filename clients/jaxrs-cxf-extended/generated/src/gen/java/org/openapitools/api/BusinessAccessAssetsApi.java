@@ -206,7 +206,7 @@ public interface BusinessAccessAssetsApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Success", response = BusinessPartnerAssetAccessGet200Response.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @PathParam("partner_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String partnerId, @QueryParam("partner_type") PartnerType partnerType, @QueryParam("asset_type") @DefaultValue("AD_ACCOUNT") String assetType, @QueryParam("start_index") @Min(0) @DefaultValue("0") Integer startIndex, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize, @QueryParam("bookmark") String bookmark);
+    public BusinessPartnerAssetAccessGet200Response businessPartnerAssetAccessGet(@PathParam("business_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String businessId, @PathParam("partner_id") @Pattern(regexp="^\\d+$") @Size(min=1,max=20) String partnerId, @QueryParam("partner_type") @DefaultValue("INTERNAL") PartnerType partnerType, @QueryParam("asset_type") @DefaultValue("AD_ACCOUNT") String assetType, @QueryParam("start_index") @Min(0) @DefaultValue("0") Integer startIndex, @QueryParam("page_size") @Min(1) @Max(250) @DefaultValue("25") Integer pageSize, @QueryParam("bookmark") String bookmark);
 
     /**
      * Delete partner access to asset

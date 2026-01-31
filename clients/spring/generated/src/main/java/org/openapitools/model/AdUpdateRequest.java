@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  * AdUpdateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdUpdateRequest {
 
   private @Nullable String adGroupId;
@@ -110,7 +110,7 @@ public class AdUpdateRequest {
     
     READ_MORE("READ_MORE");
 
-    private String value;
+    private final String value;
 
     CustomizableCtaTypeEnum(String value) {
       this.value = value;
@@ -156,7 +156,7 @@ public class AdUpdateRequest {
     this.id = id;
   }
 
-  public AdUpdateRequest adGroupId(String adGroupId) {
+  public AdUpdateRequest adGroupId(@Nullable String adGroupId) {
     this.adGroupId = adGroupId;
     return this;
   }
@@ -168,11 +168,11 @@ public class AdUpdateRequest {
   @Pattern(regexp = "^(AG)?\\d+$") 
   @Schema(name = "ad_group_id", example = "2680059592705", description = "ID of the ad group that contains the ad.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_group_id")
-  public String getAdGroupId() {
+  public @Nullable String getAdGroupId() {
     return adGroupId;
   }
 
-  public void setAdGroupId(String adGroupId) {
+  public void setAdGroupId(@Nullable String adGroupId) {
     this.adGroupId = adGroupId;
   }
 
@@ -300,7 +300,7 @@ public class AdUpdateRequest {
     this.clickTrackingUrl = clickTrackingUrl;
   }
 
-  public AdUpdateRequest creativeType(CreativeType creativeType) {
+  public AdUpdateRequest creativeType(@Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
     return this;
   }
@@ -312,11 +312,11 @@ public class AdUpdateRequest {
   @Valid 
   @Schema(name = "creative_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_type")
-  public CreativeType getCreativeType() {
+  public @Nullable CreativeType getCreativeType() {
     return creativeType;
   }
 
-  public void setCreativeType(CreativeType creativeType) {
+  public void setCreativeType(@Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
   }
 
@@ -360,7 +360,7 @@ public class AdUpdateRequest {
     this.iosDeepLink = iosDeepLink;
   }
 
-  public AdUpdateRequest isPinDeleted(Boolean isPinDeleted) {
+  public AdUpdateRequest isPinDeleted(@Nullable Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
     return this;
   }
@@ -372,15 +372,15 @@ public class AdUpdateRequest {
   
   @Schema(name = "is_pin_deleted", example = "false", description = "Is original pin deleted?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_pin_deleted")
-  public Boolean getIsPinDeleted() {
+  public @Nullable Boolean getIsPinDeleted() {
     return isPinDeleted;
   }
 
-  public void setIsPinDeleted(Boolean isPinDeleted) {
+  public void setIsPinDeleted(@Nullable Boolean isPinDeleted) {
     this.isPinDeleted = isPinDeleted;
   }
 
-  public AdUpdateRequest isRemovable(Boolean isRemovable) {
+  public AdUpdateRequest isRemovable(@Nullable Boolean isRemovable) {
     this.isRemovable = isRemovable;
     return this;
   }
@@ -392,11 +392,11 @@ public class AdUpdateRequest {
   
   @Schema(name = "is_removable", example = "false", description = "Is pin repinnable?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_removable")
-  public Boolean getIsRemovable() {
+  public @Nullable Boolean getIsRemovable() {
     return isRemovable;
   }
 
-  public void setIsRemovable(Boolean isRemovable) {
+  public void setIsRemovable(@Nullable Boolean isRemovable) {
     this.isRemovable = isRemovable;
   }
 
@@ -420,7 +420,7 @@ public class AdUpdateRequest {
     this.name = name;
   }
 
-  public AdUpdateRequest status(EntityStatus status) {
+  public AdUpdateRequest status(@Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -432,11 +432,11 @@ public class AdUpdateRequest {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public EntityStatus getStatus() {
+  public @Nullable EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 

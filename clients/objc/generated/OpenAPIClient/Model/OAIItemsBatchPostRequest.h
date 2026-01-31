@@ -16,7 +16,6 @@
 
 #import "OAIBatchOperation.h"
 #import "OAICatalogsItemsBatchRequest.h"
-#import "OAICatalogsItemsRequestLanguage.h"
 #import "OAICatalogsVerticalBatchRequest.h"
 #import "OAICountry.h"
 #import "OAIItemDeleteBatchRecord.h"
@@ -24,8 +23,6 @@
 @class OAIBatchOperation;
 @protocol OAICatalogsItemsBatchRequest;
 @class OAICatalogsItemsBatchRequest;
-@protocol OAICatalogsItemsRequestLanguage;
-@class OAICatalogsItemsRequestLanguage;
 @protocol OAICatalogsVerticalBatchRequest;
 @class OAICatalogsVerticalBatchRequest;
 @protocol OAICountry;
@@ -41,13 +38,19 @@
 @interface OAIItemsBatchPostRequest : OAIObject
 
 
+@property(nonatomic) NSString* catalogType;
+
 @property(nonatomic) OAICountry* country;
-
-@property(nonatomic) OAICatalogsItemsRequestLanguage* language;
-
-@property(nonatomic) OAIBatchOperation* operation;
+/* We recommend using the CatalogsLocale values. 
+ */
+@property(nonatomic) NSString* language;
 /* Array with catalogs items 
  */
 @property(nonatomic) NSArray<OAIItemDeleteBatchRecord>* items;
+/* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog [optional]
+ */
+@property(nonatomic) NSString* catalogId;
+
+@property(nonatomic) OAIBatchOperation* operation;
 
 @end

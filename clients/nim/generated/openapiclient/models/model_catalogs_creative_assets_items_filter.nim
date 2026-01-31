@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogType* {.pure.} = enum
@@ -18,14 +20,42 @@ type CatalogsCreativeAssetsItemsFilter* = object
   ## 
   catalogType*: CatalogType
   creativeAssetsIds*: seq[string]
-  catalogId*: string ## Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  catalogId*: Option[string] ## Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.CREATIVEASSETS: %"CREATIVE_ASSETS"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
+    of CatalogType.CREATIVEASSETS: $("CREATIVE_ASSETS")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CREATIVE_ASSETS"):
+    return CatalogType.CREATIVEASSETS
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsItemsFilter with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsItemsFilter]): CatalogsCreativeAssetsItemsFilter =
+  result = CatalogsCreativeAssetsItemsFilter()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("creative_assets_ids"):
+      result.creativeAssetsIds = to(node["creative_assets_ids"], seq[string])
+    if node.hasKey("catalog_id") and node["catalog_id"].kind != JNull:
+      result.catalogId = some(to(node["catalog_id"], typeof(result.catalogId.get())))
+
+# Custom JSON serialization for CatalogsCreativeAssetsItemsFilter with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsItemsFilter): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["creative_assets_ids"] = %obj.creativeAssetsIds
+  if obj.catalogId.isSome():
+    result["catalog_id"] = %obj.catalogId.get()
+

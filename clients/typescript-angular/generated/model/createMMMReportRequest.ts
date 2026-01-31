@@ -14,6 +14,10 @@ import { TargetingAdvertiserCountry } from './targetingAdvertiserCountry';
 
 export interface CreateMMMReportRequest { 
     /**
+     * A List of countries for filtering
+     */
+    countries?: Array<TargetingAdvertiserCountry>;
+    /**
      * Name of the Marketing Mix Modeling (MMM) report
      */
     report_name: string;
@@ -41,22 +45,18 @@ export interface CreateMMMReportRequest {
      * Metric and entity columns
      */
     columns: Array<MMMReportingColumn>;
-    /**
-     * A List of countries for filtering
-     */
-    countries?: Array<TargetingAdvertiserCountry>;
 }
 export namespace CreateMMMReportRequest {
-    export type GranularityEnum = 'DAY' | 'WEEK';
     export const GranularityEnum = {
-        Day: 'DAY' as GranularityEnum,
-        Week: 'WEEK' as GranularityEnum
-    };
-    export type LevelEnum = 'CAMPAIGN_TARGETING' | 'AD_GROUP_TARGETING';
+        Day: 'DAY',
+        Week: 'WEEK'
+    } as const;
+    export type GranularityEnum = typeof GranularityEnum[keyof typeof GranularityEnum];
     export const LevelEnum = {
-        CampaignTargeting: 'CAMPAIGN_TARGETING' as LevelEnum,
-        AdGroupTargeting: 'AD_GROUP_TARGETING' as LevelEnum
-    };
+        CampaignTargeting: 'CAMPAIGN_TARGETING',
+        AdGroupTargeting: 'AD_GROUP_TARGETING'
+    } as const;
+    export type LevelEnum = typeof LevelEnum[keyof typeof LevelEnum];
 }
 
 

@@ -13,8 +13,8 @@
 #pragma once
 
 #include "OpenAPIBaseModel.h"
-#include "OpenAPIAudienceCreateRequest1AudienceType.h"
 #include "OpenAPIAudienceRule.h"
+#include "OpenAPIAudienceType.h"
 
 namespace OpenAPI
 {
@@ -38,7 +38,8 @@ public:
 	OpenAPIAudienceRule Rule;
 	/* Audience description. */
 	TOptional<FString> Description;
-	OpenAPIAudienceCreateRequest1AudienceType AudienceType;
+	/* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
+	OpenAPIAudienceType AudienceType;
 };
 
 }

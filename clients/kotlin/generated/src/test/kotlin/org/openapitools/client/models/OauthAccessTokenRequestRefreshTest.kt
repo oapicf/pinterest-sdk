@@ -25,16 +25,16 @@ class OauthAccessTokenRequestRefreshTest : ShouldSpec() {
         // uncomment below to create an instance of OauthAccessTokenRequestRefresh
         //val modelInstance = OauthAccessTokenRequestRefresh()
 
-        // to test the property `grantType`
-        should("test grantType") {
-            // uncomment below to test the property
-            //modelInstance.grantType shouldBe ("TODO")
-        }
-
         // to test the property `refreshToken`
         should("test refreshToken") {
             // uncomment below to test the property
             //modelInstance.refreshToken shouldBe ("TODO")
+        }
+
+        // to test the property `grantType`
+        should("test grantType") {
+            // uncomment below to test the property
+            //modelInstance.grantType shouldBe ("TODO")
         }
 
         // to test the property `scope`

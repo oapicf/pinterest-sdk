@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * The field types supported by the update mask
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum UpdateMaskFieldType {
   
   AD_LINK("ad_link"),
@@ -109,7 +109,7 @@ public enum UpdateMaskFieldType {
   
   VARIANT_VALUES("variant_values");
 
-  private String value;
+  private final String value;
 
   UpdateMaskFieldType(String value) {
     this.value = value;

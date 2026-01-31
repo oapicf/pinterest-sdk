@@ -27,7 +27,7 @@ data class UserWebsiteVerifyRequest(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("verification_method") val verificationMethod: UserWebsiteVerifyRequest.VerificationMethod? = VerificationMethod.METATAG
-    ) {
+) {
 
     /**
     * 
@@ -43,7 +43,8 @@ data class UserWebsiteVerifyRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): VerificationMethod {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'UserWebsiteVerifyRequest'")
             }
         }
     }

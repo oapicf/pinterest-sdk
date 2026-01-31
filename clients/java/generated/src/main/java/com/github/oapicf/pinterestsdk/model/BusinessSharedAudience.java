@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * BusinessSharedAudience
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessSharedAudience {
   public static final String SERIALIZED_NAME_AUDIENCE_ID = "audience_id";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_ID)
@@ -184,16 +184,10 @@ public class BusinessSharedAudience {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("audience_id");
-    openapiFields.add("operation_type");
-    openapiFields.add("recipient_business_ids");
+    openapiFields = new HashSet<String>(Arrays.asList("audience_id", "operation_type", "recipient_business_ids"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("audience_id");
-    openapiRequiredFields.add("operation_type");
-    openapiRequiredFields.add("recipient_business_ids");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("audience_id", "operation_type", "recipient_business_ids"));
   }
 
   /**
@@ -205,7 +199,7 @@ public class BusinessSharedAudience {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!BusinessSharedAudience.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in BusinessSharedAudience is not found in the empty JSON string", BusinessSharedAudience.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in BusinessSharedAudience is not found in the empty JSON string", BusinessSharedAudience.openapiRequiredFields.toString()));
         }
       }
 
@@ -213,19 +207,19 @@ public class BusinessSharedAudience {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!BusinessSharedAudience.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BusinessSharedAudience` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `BusinessSharedAudience` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : BusinessSharedAudience.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("audience_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `audience_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("audience_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `audience_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("audience_id").toString()));
       }
       // validate the required field `operation_type`
       OperationType.validateJsonElement(jsonObj.get("operation_type"));
@@ -233,7 +227,7 @@ public class BusinessSharedAudience {
       if (jsonObj.get("recipient_business_ids") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("recipient_business_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `recipient_business_ids` to be an array in the JSON string but got `%s`", jsonObj.get("recipient_business_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `recipient_business_ids` to be an array in the JSON string but got `%s`", jsonObj.get("recipient_business_ids").toString()));
       }
   }
 

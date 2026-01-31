@@ -239,7 +239,7 @@ class BusinessAccessAssetsApi(implicit val swagger: Swagger) extends ScalatraSer
 
   val businessPartnerAssetAccessGetOperation = (apiOperation[BusinessPartnerAssetAccessGet200Response]("businessPartnerAssetAccessGet")
     summary "Get assets assigned to a partner or assets assigned by a partner"
-    parameters(pathParam[String]("businessId").description(""), pathParam[String]("partnerId").description(""), queryParam[PartnerType]("partnerType").description("").optional, queryParam[String]("assetType").description("").optional.defaultValue(AD_ACCOUNT), queryParam[Int]("startIndex").description("").optional.defaultValue(0), queryParam[Int]("pageSize").description("").optional.defaultValue(25), queryParam[String]("bookmark").description("").optional)
+    parameters(pathParam[String]("businessId").description(""), pathParam[String]("partnerId").description(""), queryParam[PartnerType]("partnerType").description("").optional.defaultValue(INTERNAL), queryParam[String]("assetType").description("").optional.defaultValue(AD_ACCOUNT), queryParam[Int]("startIndex").description("").optional.defaultValue(0), queryParam[Int]("pageSize").description("").optional.defaultValue(25), queryParam[String]("bookmark").description("").optional)
   )
 
   get("/businesses/:business_id/partners/:partner_id/assets", operation(businessPartnerAssetAccessGetOperation)) {

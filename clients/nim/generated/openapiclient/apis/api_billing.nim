@@ -27,20 +27,17 @@ import ../models/model_ssio_create_insertion_order_response
 import ../models/model_ssio_edit_insertion_order_request
 import ../models/model_ssio_edit_insertion_order_response
 import ../models/model_ssio_insertion_order_status_response
-import ../models/model_ads_credits_discounts_get_200_response
-import ../models/model_billing_profiles_get_200_response
-import ../models/model_ssio_insertion_orders_status_get_by_ad_account_200_response
-import ../models/model_ssio_order_lines_get_by_ad_account_200_response
+import ../models/model_ads_credits_discounts_get200response
+import ../models/model_billing_profiles_get200response
+import ../models/model_ssio_insertion_orders_status_get_by_ad_account200response
+import ../models/model_ssio_order_lines_get_by_ad_account200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -60,24 +57,28 @@ proc adsCreditRedeem*(httpClient: HttpClient, adAccountId: string, adsCreditRede
 
 proc adsCreditsDiscountsGet*(httpClient: HttpClient, adAccountId: string, bookmark: string, pageSize: int): (Option[ads_credits_discounts_get_200_response], Response) =
   ## Get ads credit discounts
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/ads_credit/discounts" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/ads_credit/discounts" & "?" & url_encoded_query_params)
   constructResult[ads_credits_discounts_get_200_response](response)
 
 
 proc billingProfilesGet*(httpClient: HttpClient, adAccountId: string, isActive: bool, bookmark: string, pageSize: int): (Option[billing_profiles_get_200_response], Response) =
   ## Get billing profiles
-  let query_for_api_call = encodeQuery([
-    ("is_active", $isActive), # Return active billing profiles, if false return all billing profiles.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("is_active", $isActive))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/billing_profiles" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/billing_profiles" & "?" & url_encoded_query_params)
   constructResult[billing_profiles_get_200_response](response)
 
 
@@ -106,12 +107,14 @@ proc ssioInsertionOrderEdit*(httpClient: HttpClient, adAccountId: string, sSIOEd
 
 proc ssioInsertionOrdersStatusGetByAdAccount*(httpClient: HttpClient, adAccountId: string, bookmark: string, pageSize: int): (Option[ssio_insertion_orders_status_get_by_ad_account_200_response], Response) =
   ## Get insertion order status by ad account id.
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/ssio/insertion_orders/status" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/ssio/insertion_orders/status" & "?" & url_encoded_query_params)
   constructResult[ssio_insertion_orders_status_get_by_ad_account_200_response](response)
 
 
@@ -124,12 +127,15 @@ proc ssioInsertionOrdersStatusGetByPinOrderId*(httpClient: HttpClient, adAccount
 
 proc ssioOrderLinesGetByAdAccount*(httpClient: HttpClient, adAccountId: string, bookmark: string, pageSize: int, pinOrderId: string): (Option[ssio_order_lines_get_by_ad_account_200_response], Response) =
   ## Get Salesforce order lines by ad account id.
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("pin_order_id", $pinOrderId), # The pin order id associated with the ssio insertino order
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $pinOrderId != "":
+    query_params_list.add(("pin_order_id", $pinOrderId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/ssio/order_lines" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/ssio/order_lines" & "?" & url_encoded_query_params)
   constructResult[ssio_order_lines_get_by_ad_account_200_response](response)
 

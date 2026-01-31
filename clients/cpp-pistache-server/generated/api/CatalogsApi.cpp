@@ -23,8 +23,7 @@ const std::string CatalogsApi::base = "/v5";
 
 CatalogsApi::CatalogsApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
-{
-}
+{}
 
 void CatalogsApi::init() {
     setupRoutes();
@@ -65,14 +64,12 @@ void CatalogsApi::setupRoutes() {
     router->addCustomHandler(Routes::bind(&CatalogsApi::catalogs_api_default_handler, this));
 }
 
-void CatalogsApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void CatalogsApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleParsingException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> CatalogsApi::handleParsingException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> CatalogsApi::handleParsingException(const std::exception& ex) const noexcept {
     try {
         throw;
     } catch (nlohmann::detail::exception &e) {
@@ -84,1192 +81,2068 @@ std::pair<Pistache::Http::Code, std::string> CatalogsApi::handleParsingException
     }
 }
 
-void CatalogsApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void CatalogsApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleOperationException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> CatalogsApi::handleOperationException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> CatalogsApi::handleOperationException(const std::exception& ex) const noexcept {
     return std::make_pair(Pistache::Http::Code::Internal_Server_Error, ex.what());
 }
 
-void CatalogsApi::catalogs_product_group_pins_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+void CatalogsApi::catalogs_product_group_pins_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto productGroupId = request.param(":productGroupId").as<std::string>();
+        // Getting the path params
+        auto productGroupId = request.param(":productGroupId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
+        }
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
+        }
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
+        }
+        auto pinMetricsQuery = request.query().get("pin_metrics");
+        std::optional<bool> pinMetrics;
+        if (pinMetricsQuery.has_value()) {
+            bool valueQuery_instance;
+            if (fromStringValue(pinMetricsQuery.value(), valueQuery_instance)) {
+                pinMetrics = valueQuery_instance;
+            }
+        }
     
-    // Getting the query params
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
-        }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
-        }
-    }
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
-        }
-    }
-    auto pinMetricsQuery = request.query().get("pin_metrics");
-    std::optional<bool> pinMetrics;
-    if(pinMetricsQuery.has_value()){
-        bool valueQuery_instance;
-        if(fromStringValue(pinMetricsQuery.value(), valueQuery_instance)){
-            pinMetrics = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->catalogs_product_group_pins_list(productGroupId, bookmark, pageSize, adAccountId, pinMetrics, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->catalogs_product_group_pins_list(productGroupId, bookmark, pageSize, adAccountId, pinMetrics, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/product_groups/:product_group_id/products" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::catalogs_product_groups_create_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::catalogs_product_groups_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the body param
-    
-    Multiple_product_groups_inner multipleProductGroupsInner;
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        // Getting the body param
+        
+        Multiple_product_groups_inner multipleProductGroupsInner;
+        
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        nlohmann::json::parse(request.body()).get_to(multipleProductGroupsInner);
-        multipleProductGroupsInner.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->catalogs_product_groups_create(multipleProductGroupsInner, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(multipleProductGroupsInner);
+            multipleProductGroupsInner.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->catalogs_product_groups_create(multipleProductGroupsInner, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/product_groups" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::catalogs_product_groups_create_many_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::catalogs_product_groups_create_many_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the body param
-    std::vector<Multiple_product_groups_inner> multipleProductGroupsInner;
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        // Getting the body param
+                std::vector<Multiple_product_groups_inner> multipleProductGroupsInner;
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        nlohmann::json::parse(request.body()).get_to(multipleProductGroupsInner);
-        for (const auto& validationParam : multipleProductGroupsInner)
-             validationParam.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->catalogs_product_groups_create_many(multipleProductGroupsInner, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(multipleProductGroupsInner);
+            for (const auto& validationParam : multipleProductGroupsInner) 
+                validationParam.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->catalogs_product_groups_create_many(multipleProductGroupsInner, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/product_groups/multiple" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::catalogs_product_groups_delete_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::catalogs_product_groups_delete_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto productGroupId = request.param(":productGroupId").as<std::string>();
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        // Getting the path params
+        auto productGroupId = request.param(":productGroupId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->catalogs_product_groups_delete(productGroupId, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->catalogs_product_groups_delete(productGroupId, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/product_groups/:product_group_id" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::catalogs_product_groups_delete_many_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::catalogs_product_groups_delete_many_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto idQuery = request.query().get("id");
-    std::optional<std::vector<int32_t>> id;
-    if(idQuery.has_value()){
-        std::vector<int32_t> valueQuery_instance;
-        if(fromStringValue(idQuery.value(), valueQuery_instance)){
-            id = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto idQuery = request.query().get("id");
+        std::optional<std::vector<int32_t>> id;
+        if (idQuery.has_value()) {
+            std::vector<int32_t> valueQuery_instance;
+            if (fromStringValue(idQuery.value(), valueQuery_instance)) {
+                id = valueQuery_instance;
+            }
         }
-    }
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->catalogs_product_groups_delete_many(id, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->catalogs_product_groups_delete_many(id, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/product_groups/multiple" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::catalogs_product_groups_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::catalogs_product_groups_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto productGroupId = request.param(":productGroupId").as<std::string>();
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        // Getting the path params
+        auto productGroupId = request.param(":productGroupId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->catalogs_product_groups_get(productGroupId, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->catalogs_product_groups_get(productGroupId, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/product_groups/:product_group_id" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::catalogs_product_groups_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::catalogs_product_groups_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto idQuery = request.query().get("id");
-    std::optional<std::vector<int32_t>> id;
-    if(idQuery.has_value()){
-        std::vector<int32_t> valueQuery_instance;
-        if(fromStringValue(idQuery.value(), valueQuery_instance)){
-            id = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto idQuery = request.query().get("id");
+        std::optional<std::vector<int32_t>> id;
+        if (idQuery.has_value()) {
+            std::vector<int32_t> valueQuery_instance;
+            if (fromStringValue(idQuery.value(), valueQuery_instance)) {
+                id = valueQuery_instance;
+            }
         }
-    }
-    auto feedIdQuery = request.query().get("feed_id");
-    std::optional<std::string> feedId;
-    if(feedIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(feedIdQuery.value(), valueQuery_instance)){
-            feedId = valueQuery_instance;
+        auto feedIdQuery = request.query().get("feed_id");
+        std::optional<std::string> feedId;
+        if (feedIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(feedIdQuery.value(), valueQuery_instance)) {
+                feedId = valueQuery_instance;
+            }
         }
-    }
-    auto catalogIdQuery = request.query().get("catalog_id");
-    std::optional<std::string> catalogId;
-    if(catalogIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(catalogIdQuery.value(), valueQuery_instance)){
-            catalogId = valueQuery_instance;
+        auto catalogIdQuery = request.query().get("catalog_id");
+        std::optional<std::string> catalogId;
+        if (catalogIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(catalogIdQuery.value(), valueQuery_instance)) {
+                catalogId = valueQuery_instance;
+            }
         }
-    }
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
         }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
         }
-    }
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->catalogs_product_groups_list(id, feedId, catalogId, bookmark, pageSize, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->catalogs_product_groups_list(id, feedId, catalogId, bookmark, pageSize, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/product_groups" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::catalogs_product_groups_product_counts_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::catalogs_product_groups_product_counts_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto productGroupId = request.param(":productGroupId").as<std::string>();
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        // Getting the path params
+        auto productGroupId = request.param(":productGroupId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->catalogs_product_groups_product_counts_get(productGroupId, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->catalogs_product_groups_product_counts_get(productGroupId, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/product_groups/:product_group_id/product_counts" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::catalogs_product_groups_update_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::catalogs_product_groups_update_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto productGroupId = request.param(":productGroupId").as<std::string>();
-    
-    // Getting the body param
-    
-    Catalogs_product_groups_update_request catalogsProductGroupsUpdateRequest;
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        // Getting the path params
+        auto productGroupId = request.param(":productGroupId").as<std::string>();
+        
+        // Getting the body param
+        
+        Catalogs_product_groups_update_request catalogsProductGroupsUpdateRequest;
+        
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        nlohmann::json::parse(request.body()).get_to(catalogsProductGroupsUpdateRequest);
-        catalogsProductGroupsUpdateRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->catalogs_product_groups_update(productGroupId, catalogsProductGroupsUpdateRequest, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(catalogsProductGroupsUpdateRequest);
+            catalogsProductGroupsUpdateRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->catalogs_product_groups_update(productGroupId, catalogsProductGroupsUpdateRequest, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/product_groups/:product_group_id" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::catalogs_create_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::catalogs_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the body param
-    
-    CatalogsCreateRequest catalogsCreateRequest;
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        // Getting the body param
+        
+        CatalogsCreateRequest catalogsCreateRequest;
+        
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        nlohmann::json::parse(request.body()).get_to(catalogsCreateRequest);
-        catalogsCreateRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->catalogs_create(catalogsCreateRequest, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(catalogsCreateRequest);
+            catalogsCreateRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->catalogs_create(catalogsCreateRequest, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::catalogs_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::catalogs_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
         }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
         }
-    }
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->catalogs_list(bookmark, pageSize, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->catalogs_list(bookmark, pageSize, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::feed_processing_results_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::feed_processing_results_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto feedId = request.param(":feedId").as<std::string>();
+        // Getting the path params
+        auto feedId = request.param(":feedId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
+        }
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
+        }
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
+        }
     
-    // Getting the query params
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
-        }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
-        }
-    }
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->feed_processing_results_list(feedId, bookmark, pageSize, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->feed_processing_results_list(feedId, bookmark, pageSize, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/feeds/:feed_id/processing_results" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::feeds_create_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::feeds_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the body param
-    
-    Feeds_create_request feedsCreateRequest;
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        // Getting the body param
+        
+        Feeds_create_request feedsCreateRequest;
+        
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        nlohmann::json::parse(request.body()).get_to(feedsCreateRequest);
-        feedsCreateRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->feeds_create(feedsCreateRequest, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(feedsCreateRequest);
+            feedsCreateRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->feeds_create(feedsCreateRequest, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/feeds" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::feeds_delete_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::feeds_delete_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto feedId = request.param(":feedId").as<std::string>();
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        // Getting the path params
+        auto feedId = request.param(":feedId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->feeds_delete(feedId, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->feeds_delete(feedId, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/feeds/:feed_id" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::feeds_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::feeds_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto feedId = request.param(":feedId").as<std::string>();
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        // Getting the path params
+        auto feedId = request.param(":feedId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->feeds_get(feedId, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->feeds_get(feedId, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/feeds/:feed_id" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::feeds_ingest_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::feeds_ingest_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto feedId = request.param(":feedId").as<std::string>();
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        // Getting the path params
+        auto feedId = request.param(":feedId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->feeds_ingest(feedId, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->feeds_ingest(feedId, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/feeds/:feed_id/ingest" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::feeds_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::feeds_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
         }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
         }
-    }
-    auto catalogIdQuery = request.query().get("catalog_id");
-    std::optional<std::string> catalogId;
-    if(catalogIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(catalogIdQuery.value(), valueQuery_instance)){
-            catalogId = valueQuery_instance;
+        auto catalogIdQuery = request.query().get("catalog_id");
+        std::optional<std::string> catalogId;
+        if (catalogIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(catalogIdQuery.value(), valueQuery_instance)) {
+                catalogId = valueQuery_instance;
+            }
         }
-    }
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->feeds_list(bookmark, pageSize, catalogId, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->feeds_list(bookmark, pageSize, catalogId, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/feeds" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::feeds_update_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::feeds_update_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto feedId = request.param(":feedId").as<std::string>();
-    
-    // Getting the body param
-    
-    Feeds_update_request feedsUpdateRequest;
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        // Getting the path params
+        auto feedId = request.param(":feedId").as<std::string>();
+        
+        // Getting the body param
+        
+        Feeds_update_request feedsUpdateRequest;
+        
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        nlohmann::json::parse(request.body()).get_to(feedsUpdateRequest);
-        feedsUpdateRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->feeds_update(feedId, feedsUpdateRequest, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(feedsUpdateRequest);
+            feedsUpdateRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->feeds_update(feedId, feedsUpdateRequest, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/feeds/:feed_id" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::items_batch_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::items_batch_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto batchId = request.param(":batchId").as<std::string>();
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        // Getting the path params
+        auto batchId = request.param(":batchId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->items_batch_get(batchId, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->items_batch_get(batchId, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/items/batch/:batch_id" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::items_batch_post_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::items_batch_post_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the body param
-    
-    Items_batch_post_request itemsBatchPostRequest;
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        // Getting the body param
+        
+        Items_batch_post_request itemsBatchPostRequest;
+        
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        nlohmann::json::parse(request.body()).get_to(itemsBatchPostRequest);
-        itemsBatchPostRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->items_batch_post(itemsBatchPostRequest, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(itemsBatchPostRequest);
+            itemsBatchPostRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->items_batch_post(itemsBatchPostRequest, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/items/batch" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::items_issues_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::items_issues_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-    // Getting the path params
-    auto processingResultId = request.param(":processingResultId").as<std::string>();
+        // Getting the path params
+        auto processingResultId = request.param(":processingResultId").as<std::string>();
+        
+        
+        // Getting the query params
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
+        }
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
+        }
+        auto itemNumbersQuery = request.query().get("item_numbers");
+        std::optional<std::vector<int32_t>> itemNumbers;
+        if (itemNumbersQuery.has_value()) {
+            std::vector<int32_t> valueQuery_instance;
+            if (fromStringValue(itemNumbersQuery.value(), valueQuery_instance)) {
+                itemNumbers = valueQuery_instance;
+            }
+        }
+        auto itemValidationIssueQuery = request.query().get("item_validation_issue");
+        std::optional<CatalogsItemValidationIssue> itemValidationIssue;
+        if (itemValidationIssueQuery.has_value()) {
+            CatalogsItemValidationIssue valueQuery_instance;
+            if (fromStringValue(itemValidationIssueQuery.value(), valueQuery_instance)) {
+                itemValidationIssue = valueQuery_instance;
+            }
+        }
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
+        }
     
-    // Getting the query params
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
-        }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
-        }
-    }
-    auto itemNumbersQuery = request.query().get("item_numbers");
-    std::optional<std::vector<int32_t>> itemNumbers;
-    if(itemNumbersQuery.has_value()){
-        std::vector<int32_t> valueQuery_instance;
-        if(fromStringValue(itemNumbersQuery.value(), valueQuery_instance)){
-            itemNumbers = valueQuery_instance;
-        }
-    }
-    auto itemValidationIssueQuery = request.query().get("item_validation_issue");
-    std::optional<CatalogsItemValidationIssue> itemValidationIssue;
-    if(itemValidationIssueQuery.has_value()){
-        CatalogsItemValidationIssue valueQuery_instance;
-        if(fromStringValue(itemValidationIssueQuery.value(), valueQuery_instance)){
-            itemValidationIssue = valueQuery_instance;
-        }
-    }
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
-        }
-    }
-    
-    try {
-        this->items_issues_list(processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->items_issues_list(processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/processing_results/:processing_result_id/item_issues" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::items_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::items_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
-    auto countryQuery = request.query().get("country");
-    std::optional<std::string> country;
-    if(countryQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(countryQuery.value(), valueQuery_instance)){
-            country = valueQuery_instance;
+        auto countryQuery = request.query().get("country");
+        std::optional<std::string> country;
+        if (countryQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(countryQuery.value(), valueQuery_instance)) {
+                country = valueQuery_instance;
+            }
         }
-    }
-    auto languageQuery = request.query().get("language");
-    std::optional<std::string> language;
-    if(languageQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(languageQuery.value(), valueQuery_instance)){
-            language = valueQuery_instance;
+        auto languageQuery = request.query().get("language");
+        std::optional<std::string> language;
+        if (languageQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(languageQuery.value(), valueQuery_instance)) {
+                language = valueQuery_instance;
+            }
         }
-    }
-    auto itemIdsQuery = request.query().get("item_ids");
-    std::optional<std::vector<std::string>> itemIds;
-    if(itemIdsQuery.has_value()){
-        std::vector<std::string> valueQuery_instance;
-        if(fromStringValue(itemIdsQuery.value(), valueQuery_instance)){
-            itemIds = valueQuery_instance;
+        auto itemIdsQuery = request.query().get("item_ids");
+        std::optional<std::vector<std::string>> itemIds;
+        if (itemIdsQuery.has_value()) {
+            std::vector<std::string> valueQuery_instance;
+            if (fromStringValue(itemIdsQuery.value(), valueQuery_instance)) {
+                itemIds = valueQuery_instance;
+            }
         }
-    }
-    auto filtersQuery = request.query().get("filters");
-    std::optional<CatalogsItemsFilters> filters;
-    if(filtersQuery.has_value()){
-        CatalogsItemsFilters valueQuery_instance;
-        if(fromStringValue(filtersQuery.value(), valueQuery_instance)){
-            filters = valueQuery_instance;
+        auto filtersQuery = request.query().get("filters");
+        std::optional<CatalogsItemsFilters> filters;
+        if (filtersQuery.has_value()) {
+            CatalogsItemsFilters valueQuery_instance;
+            if (fromStringValue(filtersQuery.value(), valueQuery_instance)) {
+                filters = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->items_get(country, language, adAccountId, itemIds, filters, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->items_get(country, language, adAccountId, itemIds, filters, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/items" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::items_post_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::items_post_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the body param
-    
-    CatalogsItemsRequest catalogsItemsRequest;
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        // Getting the body param
+        
+        CatalogsItemsRequest catalogsItemsRequest;
+        
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        nlohmann::json::parse(request.body()).get_to(catalogsItemsRequest);
-        catalogsItemsRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->items_post(catalogsItemsRequest, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(catalogsItemsRequest);
+            catalogsItemsRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->items_post(catalogsItemsRequest, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/items" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::products_by_product_group_filter_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::products_by_product_group_filter_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
+        
+        // Getting the body param
+        
+        CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest;
+        
+        
+        
+        // Getting the query params
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
+        }
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
+        }
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
+        }
+        auto pinMetricsQuery = request.query().get("pin_metrics");
+        std::optional<bool> pinMetrics;
+        if (pinMetricsQuery.has_value()) {
+            bool valueQuery_instance;
+            if (fromStringValue(pinMetricsQuery.value(), valueQuery_instance)) {
+                pinMetrics = valueQuery_instance;
+            }
+        }
+    
 
-    // Getting the body param
-    
-    CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest;
-    
-    // Getting the query params
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
+        try {
+            nlohmann::json::parse(request.body()).get_to(catalogsListProductsByFilterRequest);
+            catalogsListProductsByFilterRequest.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
         }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
-        }
-    }
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
-        }
-    }
-    auto pinMetricsQuery = request.query().get("pin_metrics");
-    std::optional<bool> pinMetrics;
-    if(pinMetricsQuery.has_value()){
-        bool valueQuery_instance;
-        if(fromStringValue(pinMetricsQuery.value(), valueQuery_instance)){
-            pinMetrics = valueQuery_instance;
-        }
-    }
-    
-    try {
-        nlohmann::json::parse(request.body()).get_to(catalogsListProductsByFilterRequest);
-        catalogsListProductsByFilterRequest.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->products_by_product_group_filter_list(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->products_by_product_group_filter_list(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/products/get_by_product_group_filters" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::reports_create_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::reports_create_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the body param
-    
-    CatalogsReportParameters catalogsReportParameters;
-    
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        // Getting the body param
+        
+        CatalogsReportParameters catalogsReportParameters;
+        
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        nlohmann::json::parse(request.body()).get_to(catalogsReportParameters);
-        catalogsReportParameters.validate();
-    } catch (std::exception &e) {
-        this->handleParsingException(e, response);
-        return;
-    }
 
-    try {
-        this->reports_create(catalogsReportParameters, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+        try {
+            nlohmann::json::parse(request.body()).get_to(catalogsReportParameters);
+            catalogsReportParameters.validate();
+        } catch (std::exception& e) {
+            this->handleParsingException(e, response);
+            return;
+        }
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->reports_create(catalogsReportParameters, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/reports" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::reports_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::reports_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
-    auto tokenQuery = request.query().get("token");
-    std::optional<std::string> token;
-    if(tokenQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(tokenQuery.value(), valueQuery_instance)){
-            token = valueQuery_instance;
+        auto tokenQuery = request.query().get("token");
+        std::optional<std::string> token;
+        if (tokenQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(tokenQuery.value(), valueQuery_instance)) {
+                token = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->reports_get(token, adAccountId, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->reports_get(token, adAccountId, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/reports" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void CatalogsApi::reports_stats_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void CatalogsApi::reports_stats_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
         }
-    }
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
         }
-    }
-    auto parametersQuery = request.query().get("parameters");
-    std::optional<CatalogsReportParameters> parameters;
-    if(parametersQuery.has_value()){
-        CatalogsReportParameters valueQuery_instance;
-        if(fromStringValue(parametersQuery.value(), valueQuery_instance)){
-            parameters = valueQuery_instance;
+        auto parametersQuery = request.query().get("parameters");
+        std::optional<CatalogsReportParameters> parameters;
+        if (parametersQuery.has_value()) {
+            CatalogsReportParameters valueQuery_instance;
+            if (fromStringValue(parametersQuery.value(), valueQuery_instance)) {
+                parameters = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->reports_stats(parameters, adAccountId, pageSize, bookmark, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->reports_stats(parameters, adAccountId, pageSize, bookmark, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/catalogs/reports/stats" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
+
 
 void CatalogsApi::catalogs_api_default_handler(const Pistache::Rest::Request &, Pistache::Http::ResponseWriter response) {
     response.send(Pistache::Http::Code::Not_Found, "The requested method does not exist");

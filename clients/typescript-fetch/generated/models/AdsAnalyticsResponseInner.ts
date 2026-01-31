@@ -71,7 +71,7 @@ export function AdsAnalyticsResponseInnerToJSONTyped(value?: AdsAnalyticsRespons
         
             ...value,
         'AD_ID': value['aDID'],
-        'DATE': value['dATE'] == null ? undefined : ((value['dATE']).toISOString().substring(0,10)),
+        'DATE': value['dATE'] == null ? value['dATE'] : value['dATE'].toISOString().substring(0,10),
     };
 }
 

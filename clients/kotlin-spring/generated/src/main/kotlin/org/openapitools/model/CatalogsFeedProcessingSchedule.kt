@@ -28,7 +28,7 @@ data class CatalogsFeedProcessingSchedule(
 
     @Schema(example = "null", required = true, description = "The timezone considered for the processing schedule time.")
     @get:JsonProperty("timezone", required = true) val timezone: CatalogsFeedProcessingSchedule.Timezone?
-    ) {
+) {
 
     /**
     * The timezone considered for the processing schedule time.
@@ -428,7 +428,8 @@ data class CatalogsFeedProcessingSchedule(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Timezone {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsFeedProcessingSchedule'")
             }
         }
     }

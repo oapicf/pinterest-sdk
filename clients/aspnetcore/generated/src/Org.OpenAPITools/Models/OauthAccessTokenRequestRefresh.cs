@@ -21,11 +21,31 @@ using Org.OpenAPITools.Converters;
 namespace Org.OpenAPITools.Models
 { 
     /// <summary>
-    /// A request to exchange a refresh token for a new access token.
+    /// 
     /// </summary>
     [DataContract]
     public partial class OauthAccessTokenRequestRefresh : IEquatable<OauthAccessTokenRequestRefresh>
     {
+        /// <summary>
+        /// Gets or Sets RefreshToken
+        /// </summary>
+        [Required]
+        [DataMember(Name="refresh_token", EmitDefaultValue=false)]
+        public string RefreshToken { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Scope
+        /// </summary>
+        [DataMember(Name="scope", EmitDefaultValue=false)]
+        public string Scope { get; set; }
+
+        /// <summary>
+        /// Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.
+        /// </summary>
+        /// <value>Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.</value>
+        [DataMember(Name="refresh_on", EmitDefaultValue=true)]
+        public bool RefreshOn { get; set; }
+
 
         /// <summary>
         /// Gets or Sets GrantType
@@ -62,26 +82,6 @@ namespace Org.OpenAPITools.Models
         public GrantTypeEnum GrantType { get; set; }
 
         /// <summary>
-        /// Gets or Sets RefreshToken
-        /// </summary>
-        [Required]
-        [DataMember(Name="refresh_token", EmitDefaultValue=false)]
-        public string RefreshToken { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Scope
-        /// </summary>
-        [DataMember(Name="scope", EmitDefaultValue=false)]
-        public string Scope { get; set; }
-
-        /// <summary>
-        /// Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.
-        /// </summary>
-        /// <value>Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.</value>
-        [DataMember(Name="refresh_on", EmitDefaultValue=true)]
-        public bool RefreshOn { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -89,10 +89,10 @@ namespace Org.OpenAPITools.Models
         {
             var sb = new StringBuilder();
             sb.Append("class OauthAccessTokenRequestRefresh {\n");
-            sb.Append("  GrantType: ").Append(GrantType).Append("\n");
             sb.Append("  RefreshToken: ").Append(RefreshToken).Append("\n");
             sb.Append("  Scope: ").Append(Scope).Append("\n");
             sb.Append("  RefreshOn: ").Append(RefreshOn).Append("\n");
+            sb.Append("  GrantType: ").Append(GrantType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -130,11 +130,6 @@ namespace Org.OpenAPITools.Models
 
             return 
                 (
-                    GrantType == other.GrantType ||
-                    
-                    GrantType.Equals(other.GrantType)
-                ) && 
-                (
                     RefreshToken == other.RefreshToken ||
                     RefreshToken != null &&
                     RefreshToken.Equals(other.RefreshToken)
@@ -148,6 +143,11 @@ namespace Org.OpenAPITools.Models
                     RefreshOn == other.RefreshOn ||
                     
                     RefreshOn.Equals(other.RefreshOn)
+                ) && 
+                (
+                    GrantType == other.GrantType ||
+                    
+                    GrantType.Equals(other.GrantType)
                 );
         }
 
@@ -161,14 +161,14 @@ namespace Org.OpenAPITools.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    
-                    hashCode = hashCode * 59 + GrantType.GetHashCode();
                     if (RefreshToken != null)
                     hashCode = hashCode * 59 + RefreshToken.GetHashCode();
                     if (Scope != null)
                     hashCode = hashCode * 59 + Scope.GetHashCode();
                     
                     hashCode = hashCode * 59 + RefreshOn.GetHashCode();
+                    
+                    hashCode = hashCode * 59 + GrantType.GetHashCode();
                 return hashCode;
             }
         }

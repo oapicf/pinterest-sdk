@@ -21,14 +21,17 @@ import ApiClient from '../ApiClient';
 class OauthAccessTokenResponseIntegrationRefresh {
     /**
      * Constructs a new <code>OauthAccessTokenResponseIntegrationRefresh</code>.
-     * A successful OAuth access token response for the refresh token flow, with an added refresh token.
      * @alias module:model/OauthAccessTokenResponseIntegrationRefresh
      * @param refreshToken {String} 
      * @param refreshTokenExpiresIn {Number} 
+     * @param accessToken {String} 
+     * @param tokenType {String} 
+     * @param expiresIn {Number} 
+     * @param scope {String} 
      */
-    constructor(refreshToken, refreshTokenExpiresIn) { 
+    constructor(refreshToken, refreshTokenExpiresIn, accessToken, tokenType, expiresIn, scope) { 
         
-        OauthAccessTokenResponseIntegrationRefresh.initialize(this, refreshToken, refreshTokenExpiresIn);
+        OauthAccessTokenResponseIntegrationRefresh.initialize(this, refreshToken, refreshTokenExpiresIn, accessToken, tokenType, expiresIn, scope);
     }
 
     /**
@@ -36,13 +39,13 @@ class OauthAccessTokenResponseIntegrationRefresh {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, refreshToken, refreshTokenExpiresIn) { 
+    static initialize(obj, refreshToken, refreshTokenExpiresIn, accessToken, tokenType, expiresIn, scope) { 
+        obj['refresh_token'] = refreshToken;
+        obj['refresh_token_expires_in'] = refreshTokenExpiresIn;
         obj['access_token'] = accessToken;
         obj['token_type'] = tokenType || 'bearer';
         obj['expires_in'] = expiresIn;
         obj['scope'] = scope;
-        obj['refresh_token'] = refreshToken;
-        obj['refresh_token_expires_in'] = refreshTokenExpiresIn;
     }
 
     /**
@@ -56,6 +59,12 @@ class OauthAccessTokenResponseIntegrationRefresh {
         if (data) {
             obj = obj || new OauthAccessTokenResponseIntegrationRefresh();
 
+            if (data.hasOwnProperty('refresh_token')) {
+                obj['refresh_token'] = ApiClient.convertToType(data['refresh_token'], 'String');
+            }
+            if (data.hasOwnProperty('refresh_token_expires_in')) {
+                obj['refresh_token_expires_in'] = ApiClient.convertToType(data['refresh_token_expires_in'], 'Number');
+            }
             if (data.hasOwnProperty('response_type')) {
                 obj['response_type'] = ApiClient.convertToType(data['response_type'], 'String');
             }
@@ -70,12 +79,6 @@ class OauthAccessTokenResponseIntegrationRefresh {
             }
             if (data.hasOwnProperty('scope')) {
                 obj['scope'] = ApiClient.convertToType(data['scope'], 'String');
-            }
-            if (data.hasOwnProperty('refresh_token')) {
-                obj['refresh_token'] = ApiClient.convertToType(data['refresh_token'], 'String');
-            }
-            if (data.hasOwnProperty('refresh_token_expires_in')) {
-                obj['refresh_token_expires_in'] = ApiClient.convertToType(data['refresh_token_expires_in'], 'Number');
             }
         }
         return obj;
@@ -94,6 +97,10 @@ class OauthAccessTokenResponseIntegrationRefresh {
             }
         }
         // ensure the json data is a string
+        if (data['refresh_token'] && !(typeof data['refresh_token'] === 'string' || data['refresh_token'] instanceof String)) {
+            throw new Error("Expected the field `refresh_token` to be a primitive type in the JSON string but got " + data['refresh_token']);
+        }
+        // ensure the json data is a string
         if (data['response_type'] && !(typeof data['response_type'] === 'string' || data['response_type'] instanceof String)) {
             throw new Error("Expected the field `response_type` to be a primitive type in the JSON string but got " + data['response_type']);
         }
@@ -109,10 +116,6 @@ class OauthAccessTokenResponseIntegrationRefresh {
         if (data['scope'] && !(typeof data['scope'] === 'string' || data['scope'] instanceof String)) {
             throw new Error("Expected the field `scope` to be a primitive type in the JSON string but got " + data['scope']);
         }
-        // ensure the json data is a string
-        if (data['refresh_token'] && !(typeof data['refresh_token'] === 'string' || data['refresh_token'] instanceof String)) {
-            throw new Error("Expected the field `refresh_token` to be a primitive type in the JSON string but got " + data['refresh_token']);
-        }
 
         return true;
     }
@@ -120,7 +123,17 @@ class OauthAccessTokenResponseIntegrationRefresh {
 
 }
 
-OauthAccessTokenResponseIntegrationRefresh.RequiredProperties = ["access_token", "token_type", "expires_in", "scope", "refresh_token", "refresh_token_expires_in"];
+OauthAccessTokenResponseIntegrationRefresh.RequiredProperties = ["refresh_token", "refresh_token_expires_in", "access_token", "token_type", "expires_in", "scope"];
+
+/**
+ * @member {String} refresh_token
+ */
+OauthAccessTokenResponseIntegrationRefresh.prototype['refresh_token'] = undefined;
+
+/**
+ * @member {Number} refresh_token_expires_in
+ */
+OauthAccessTokenResponseIntegrationRefresh.prototype['refresh_token_expires_in'] = undefined;
 
 /**
  * @member {module:model/OauthAccessTokenResponseIntegrationRefresh.ResponseTypeEnum} response_type
@@ -147,16 +160,6 @@ OauthAccessTokenResponseIntegrationRefresh.prototype['expires_in'] = undefined;
  * @member {String} scope
  */
 OauthAccessTokenResponseIntegrationRefresh.prototype['scope'] = undefined;
-
-/**
- * @member {String} refresh_token
- */
-OauthAccessTokenResponseIntegrationRefresh.prototype['refresh_token'] = undefined;
-
-/**
- * @member {Number} refresh_token_expires_in
- */
-OauthAccessTokenResponseIntegrationRefresh.prototype['refresh_token_expires_in'] = undefined;
 
 
 

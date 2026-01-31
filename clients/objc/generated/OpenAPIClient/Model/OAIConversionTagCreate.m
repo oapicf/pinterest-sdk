@@ -24,7 +24,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"name": @"name", @"aemEnabled": @"aem_enabled", @"mdFrequency": @"md_frequency", @"aemFnlnEnabled": @"aem_fnln_enabled", @"aemPhEnabled": @"aem_ph_enabled", @"aemGeEnabled": @"aem_ge_enabled", @"aemDbEnabled": @"aem_db_enabled", @"aemLocEnabled": @"aem_loc_enabled" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"aemEnabled": @"aem_enabled", @"mdFrequency": @"md_frequency", @"aemFnlnEnabled": @"aem_fnln_enabled", @"aemPhEnabled": @"aem_ph_enabled", @"aemGeEnabled": @"aem_ge_enabled", @"aemDbEnabled": @"aem_db_enabled", @"aemLocEnabled": @"aem_loc_enabled", @"name": @"name" }];
 }
 
 /**
@@ -34,7 +34,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"aemEnabled", @"mdFrequency", @"aemFnlnEnabled", @"aemPhEnabled", @"aemGeEnabled", @"aemDbEnabled", @"aemLocEnabled"];
+  NSArray *optionalProperties = @[@"aemEnabled", @"mdFrequency", @"aemFnlnEnabled", @"aemPhEnabled", @"aemGeEnabled", @"aemDbEnabled", @"aemLocEnabled", ];
   return [optionalProperties containsObject:propertyName];
 }
 

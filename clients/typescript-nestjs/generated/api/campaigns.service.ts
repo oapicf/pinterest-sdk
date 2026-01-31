@@ -115,10 +115,10 @@ export class CampaignsService {
             queryParameters.append('end_date', <any>endDate);
         }
         if (targetingTypes) {
-            queryParameters['targeting_types'] = targetingTypes.join(COLLECTION_FORMATS['csv']);
+            queryParameters.append('targeting_types', targetingTypes.join(COLLECTION_FORMATS['csv']));
         }
         if (columns) {
-            queryParameters['columns'] = columns.join(COLLECTION_FORMATS['csv']);
+            queryParameters.append('columns', columns.join(COLLECTION_FORMATS['csv']));
         }
         if (granularity !== undefined && granularity !== null) {
             queryParameters.append('granularity', <any>granularity);
@@ -235,7 +235,7 @@ export class CampaignsService {
             })
         }
         if (columns) {
-            queryParameters['columns'] = columns.join(COLLECTION_FORMATS['csv']);
+            queryParameters.append('columns', columns.join(COLLECTION_FORMATS['csv']));
         }
         if (granularity !== undefined && granularity !== null) {
             queryParameters.append('granularity', <any>granularity);

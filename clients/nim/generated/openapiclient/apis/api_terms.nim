@@ -26,10 +26,7 @@ const basepath = "https://api.pinterest.com/v5"
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -41,21 +38,22 @@ template constructResult[T](response: Response): untyped =
 
 proc termsRelatedList*(httpClient: HttpClient, terms: seq[string]): (Option[RelatedTerms], Response) =
   ## List related terms
-  let query_for_api_call = encodeQuery([
-    ("terms", $terms.join(",")), # List of input terms.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("terms", $terms.join(",")))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/terms/related" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/terms/related" & "?" & url_encoded_query_params)
   constructResult[RelatedTerms](response)
 
 
 proc termsSuggestedList*(httpClient: HttpClient, term: string, limit: int): (Option[seq[string]], Response) =
   ## List suggested terms
-  let query_for_api_call = encodeQuery([
-    ("term", $term), # Input term.
-    ("limit", $limit), # Max suggested terms to return.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("term", $term))
+  if $limit != "":
+    query_params_list.add(("limit", $limit))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/terms/suggested" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/terms/suggested" & "?" & url_encoded_query_params)
   constructResult[seq[string]](response)
 

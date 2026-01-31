@@ -73,8 +73,11 @@ export class AdvancedAuctionApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read", "catalogs:read"]);
         }
 
+
+        let urlPath = `/advanced_auction/items/get`;
+
         const response = await this.request({
-            path: `/advanced_auction/items/get`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -120,8 +123,11 @@ export class AdvancedAuctionApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write", "catalogs:read"]);
         }
 
+
+        let urlPath = `/advanced_auction/items/submit`;
+
         const response = await this.request({
-            path: `/advanced_auction/items/submit`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,

@@ -1,28 +1,30 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * An exception object if there is an error performing the cancellation. It will only be provided if there is an error.
- **/
+ * An exception object if there is an error performing the cancellation. It will only be provided if there is an error.
+ */
 @ApiModel(description="An exception object if there is an error performing the cancellation. It will only be provided if there is an error.")
 
 public class DeleteInvitesResultsResponseArrayItemsInnerException  {
   
-  @ApiModelProperty(value = "Unique identifier of an invite.")
  /**
-   * Unique identifier of an invite.
-  **/
+  * Unique identifier of an invite.
+  */
+  @ApiModelProperty(value = "Unique identifier of an invite.")
+
   private String inviteId;
 
-  @ApiModelProperty(example = "Business Invite request cannot be performed on current invitation status.", value = "Error message associated with the error in performing the action on the invite/request.")
  /**
-   * Error message associated with the error in performing the action on the invite/request.
-  **/
+  * Error message associated with the error in performing the action on the invite/request.
+  */
+  @ApiModelProperty(example = "Business Invite request cannot be performed on current invitation status.", value = "Error message associated with the error in performing the action on the invite/request.")
+
   private String message;
  /**
    * Unique identifier of an invite.

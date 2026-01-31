@@ -11,9 +11,12 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// OauthAccessTokenResponseCode : A successful OAuth access token response for the authorization code flow.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct OauthAccessTokenResponseCode {
+    #[serde(rename = "refresh_token")]
+    pub refresh_token: String,
+    #[serde(rename = "refresh_token_expires_in")]
+    pub refresh_token_expires_in: i32,
     #[serde(rename = "response_type", skip_serializing_if = "Option::is_none")]
     pub response_type: Option<ResponseType>,
     #[serde(rename = "access_token")]
@@ -24,23 +27,18 @@ pub struct OauthAccessTokenResponseCode {
     pub expires_in: i32,
     #[serde(rename = "scope")]
     pub scope: String,
-    #[serde(rename = "refresh_token")]
-    pub refresh_token: String,
-    #[serde(rename = "refresh_token_expires_in")]
-    pub refresh_token_expires_in: i32,
 }
 
 impl OauthAccessTokenResponseCode {
-    /// A successful OAuth access token response for the authorization code flow.
-    pub fn new(access_token: String, token_type: String, expires_in: i32, scope: String, refresh_token: String, refresh_token_expires_in: i32) -> OauthAccessTokenResponseCode {
+    pub fn new(refresh_token: String, refresh_token_expires_in: i32, access_token: String, token_type: String, expires_in: i32, scope: String) -> OauthAccessTokenResponseCode {
         OauthAccessTokenResponseCode {
+            refresh_token,
+            refresh_token_expires_in,
             response_type: None,
             access_token,
             token_type,
             expires_in,
             scope,
-            refresh_token,
-            refresh_token_expires_in,
         }
     }
 }

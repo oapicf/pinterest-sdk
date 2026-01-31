@@ -106,7 +106,7 @@ data class CampaignCreateResponseData(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("summary_status") val summaryStatus: CampaignSummaryStatus? = null
-    ) {
+) {
 
 }
 

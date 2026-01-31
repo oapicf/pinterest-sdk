@@ -13,7 +13,6 @@ import { BatchOperation } from './batchOperation';
 import { CatalogsItemsCreateBatchRequest } from './catalogsItemsCreateBatchRequest';
 import { CatalogsItemsDeleteBatchRequest } from './catalogsItemsDeleteBatchRequest';
 import { CatalogsItemsDeleteDiscontinuedBatchRequest } from './catalogsItemsDeleteDiscontinuedBatchRequest';
-import { CatalogsItemsRequestLanguage } from './catalogsItemsRequestLanguage';
 import { CatalogsItemsUpdateBatchRequest } from './catalogsItemsUpdateBatchRequest';
 import { CatalogsItemsUpsertBatchRequest } from './catalogsItemsUpsertBatchRequest';
 import { Country } from './country';

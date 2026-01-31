@@ -17,17 +17,17 @@ import com.google.gson.annotations.SerializedName
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 /**
- * A request to exchange a refresh token for a new access token.
- * @param grantType 
+ * 
  * @param refreshToken 
+ * @param grantType 
  * @param scope 
  * @param refreshOn Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class OauthAccessTokenRequestRefresh (
-    @SerializedName("grantType") private val _grantType: OauthAccessTokenRequestRefresh.GrantType?,
     @SerializedName("refreshToken") private val _refreshToken: kotlin.String?,
+    @SerializedName("grantType") private val _grantType: OauthAccessTokenRequestRefresh.GrantType?,
     val scope: kotlin.String? = null,
     /* Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\". */
     val refreshOn: kotlin.Boolean? = null
@@ -47,9 +47,9 @@ data class OauthAccessTokenRequestRefresh (
     
     }
 
-        val grantType get() = _grantType ?: throw IllegalArgumentException("grantType is required")
-                    
         val refreshToken get() = _refreshToken ?: throw IllegalArgumentException("refreshToken is required")
+                    
+        val grantType get() = _grantType ?: throw IllegalArgumentException("grantType is required")
                     
 }
 

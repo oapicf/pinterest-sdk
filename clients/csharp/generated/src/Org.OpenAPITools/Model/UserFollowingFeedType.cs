@@ -161,7 +161,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, UserFollowingFeedType userFollowingFeedType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(userFollowingFeedType.ToString());
+            writer.WriteStringValue(UserFollowingFeedTypeValueConverter.ToJsonValue(userFollowingFeedType).ToString());
         }
     }
 
@@ -192,14 +192,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the UserFollowingFeedType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="userFollowingFeedType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, UserFollowingFeedType? userFollowingFeedType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(userFollowingFeedType?.ToString() ?? "null");
+            writer.WriteStringValue(userFollowingFeedType.HasValue ? UserFollowingFeedTypeValueConverter.ToJsonValue(userFollowingFeedType.Value).ToString() : "null");
         }
     }
 }

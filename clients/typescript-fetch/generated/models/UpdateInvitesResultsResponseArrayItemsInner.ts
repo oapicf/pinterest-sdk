@@ -45,7 +45,7 @@ export interface UpdateInvitesResultsResponseArrayItemsInner {
      * @type {InviteBusinessRoleBinding}
      * @memberof UpdateInvitesResultsResponseArrayItemsInner
      */
-    invite?: InviteBusinessRoleBinding | null;
+    invite?: InviteBusinessRoleBinding;
 }
 
 /**

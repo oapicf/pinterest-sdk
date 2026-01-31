@@ -11,7 +11,7 @@ import play.api.libs.json._
   * @param ADDITIONAL_IMAGE_INVALID_FILE Additional image files are unreadable. Please upload new files to continue.
   * @param HOTEL_PRICE_HEADER_IS_PRESENT price is not a supported column. Use base_price and sale_price instead.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CatalogsFeedIngestionWarnings(
   ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR: Option[Int],
   ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE: Option[Int],

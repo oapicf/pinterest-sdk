@@ -7,7 +7,6 @@
 #' @title ConversionTagCreate
 #' @description ConversionTagCreate Class
 #' @format An \code{R6Class} generator object
-#' @field name Conversion tag name. character
 #' @field aem_enabled Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. character [optional]
 #' @field md_frequency Metadata ingestion frequency. numeric [optional]
 #' @field aem_fnln_enabled Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. character [optional]
@@ -15,13 +14,13 @@
 #' @field aem_ge_enabled Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. character [optional]
 #' @field aem_db_enabled Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. character [optional]
 #' @field aem_loc_enabled Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. character [optional]
+#' @field name Conversion tag name. character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 ConversionTagCreate <- R6::R6Class(
   "ConversionTagCreate",
   public = list(
-    `name` = NULL,
     `aem_enabled` = NULL,
     `md_frequency` = NULL,
     `aem_fnln_enabled` = NULL,
@@ -29,6 +28,7 @@ ConversionTagCreate <- R6::R6Class(
     `aem_ge_enabled` = NULL,
     `aem_db_enabled` = NULL,
     `aem_loc_enabled` = NULL,
+    `name` = NULL,
 
     #' @description
     #' Initialize a new ConversionTagCreate class.
@@ -121,10 +121,6 @@ ConversionTagCreate <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       ConversionTagCreateObject <- list()
-      if (!is.null(self$`name`)) {
-        ConversionTagCreateObject[["name"]] <-
-          self$`name`
-      }
       if (!is.null(self$`aem_enabled`)) {
         ConversionTagCreateObject[["aem_enabled"]] <-
           self$`aem_enabled`
@@ -153,6 +149,10 @@ ConversionTagCreate <- R6::R6Class(
         ConversionTagCreateObject[["aem_loc_enabled"]] <-
           self$`aem_loc_enabled`
       }
+      if (!is.null(self$`name`)) {
+        ConversionTagCreateObject[["name"]] <-
+          self$`name`
+      }
       return(ConversionTagCreateObject)
     },
 
@@ -163,9 +163,6 @@ ConversionTagCreate <- R6::R6Class(
     #' @return the instance of ConversionTagCreate
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`name`)) {
-        self$`name` <- this_object$`name`
-      }
       if (!is.null(this_object$`aem_enabled`)) {
         self$`aem_enabled` <- this_object$`aem_enabled`
       }
@@ -186,6 +183,9 @@ ConversionTagCreate <- R6::R6Class(
       }
       if (!is.null(this_object$`aem_loc_enabled`)) {
         self$`aem_loc_enabled` <- this_object$`aem_loc_enabled`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
       }
       self
     },
@@ -208,7 +208,6 @@ ConversionTagCreate <- R6::R6Class(
     #' @return the instance of ConversionTagCreate
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`name` <- this_object$`name`
       self$`aem_enabled` <- this_object$`aem_enabled`
       self$`md_frequency` <- this_object$`md_frequency`
       self$`aem_fnln_enabled` <- this_object$`aem_fnln_enabled`
@@ -216,6 +215,7 @@ ConversionTagCreate <- R6::R6Class(
       self$`aem_ge_enabled` <- this_object$`aem_ge_enabled`
       self$`aem_db_enabled` <- this_object$`aem_db_enabled`
       self$`aem_loc_enabled` <- this_object$`aem_loc_enabled`
+      self$`name` <- this_object$`name`
       self
     },
 

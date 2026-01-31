@@ -1,26 +1,28 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsHotelReportParameters;
 import org.openapitools.model.CatalogsHotelReportParametersReport;
 import org.openapitools.model.CatalogsRetailReportParameters;
 import org.openapitools.model.CatalogsType;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Report parameters
- **/
+ * Report parameters
+ */
 @ApiModel(description="Report parameters")
 
 public class CatalogsReportParameters  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsType catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsHotelReportParametersReport report;
  /**
    * Get catalogType

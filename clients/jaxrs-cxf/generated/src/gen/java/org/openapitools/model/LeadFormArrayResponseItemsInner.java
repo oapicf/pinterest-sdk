@@ -17,11 +17,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class LeadFormArrayResponseItemsInner  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private LeadFormResponse data;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid Exception> exceptions = new ArrayList<>();
  /**
    * Get data

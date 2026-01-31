@@ -8,14 +8,14 @@ package org.openapitools.server.model
  *
  * @param catalogType  for example: ''null''
  * @param country  for example: ''null''
- * @param language  for example: ''null''
+ * @param language We recommend using the CatalogsLocale values. for example: ''null''
  * @param items Array with creative assets item operations for example: ''null''
  * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog for example: ''2680059592705''
 */
 final case class CatalogsVerticalBatchRequest (
   catalogType: String,
   country: Country,
-  language: CatalogsItemsRequestLanguage,
+  language: String,
   items: Seq[CatalogsCreativeAssetsBatchItem],
   catalogId: Option[String] = None
 )

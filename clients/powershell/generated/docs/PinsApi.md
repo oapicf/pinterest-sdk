@@ -20,7 +20,7 @@ Method | HTTP request | Description
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PinIds] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartDate] <System.DateTime><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EndDate] <System.DateTime><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MetricTypes] <PSCustomObject[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MetricTypes] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AppTypes] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
 
@@ -41,7 +41,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $PinIds = "MyPinIds" # String[] | List of Pin IDs.
 $StartDate = (Get-Date) # System.DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $EndDate = (Get-Date) # System.DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-$PinsAnalyticsMetricTypesParameterInner = Initialize-PinsAnalyticsMetricTypesParameterInner # PinsAnalyticsMetricTypesParameterInner[] | Pin metric types to get data for.
+"IMPRESSION" # String[] | Pin metric types to get data for.
 $AppTypes = "ALL" # String | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
  **PinIds** | [**String[]**](String.md)| List of Pin IDs. | 
  **StartDate** | **System.DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **EndDate** | **System.DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **MetricTypes** | [**PinsAnalyticsMetricTypesParameterInner[]**](PinsAnalyticsMetricTypesParameterInner.md)| Pin metric types to get data for. | 
+ **MetricTypes** | [**String[]**](String.md)| Pin metric types to get data for. | 
  **AppTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-PinId] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-StartDate] <System.DateTime><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-EndDate] <System.DateTime><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MetricTypes] <PSCustomObject[]><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MetricTypes] <String[]><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AppTypes] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SplitField] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AdAccountId] <String><br>
@@ -108,7 +108,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 $PinId = "MyPinId" # String | Unique identifier of a Pin.
 $StartDate = (Get-Date) # System.DateTime | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $EndDate = (Get-Date) # System.DateTime | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-$PinsAnalyticsMetricTypesParameterInner = Initialize-PinsAnalyticsMetricTypesParameterInner # PinsAnalyticsMetricTypesParameterInner[] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+"IMPRESSION" # String[] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 $AppTypes = "ALL" # String | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 $SplitField = "NO_SPLIT" # String | How to split the data into groups. Not including this param means data won't be split. (optional) (default to "NO_SPLIT")
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account. (optional)
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
  **PinId** | **String**| Unique identifier of a Pin. | 
  **StartDate** | **System.DateTime**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **EndDate** | **System.DateTime**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **MetricTypes** | [**PinsAnalyticsMetricTypesParameterInner[]**](PinsAnalyticsMetricTypesParameterInner.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
+ **MetricTypes** | [**String[]**](String.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
  **AppTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to &quot;ALL&quot;]
  **SplitField** | **String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to &quot;NO_SPLIT&quot;]
  **AdAccountId** | **String**| Unique identifier of an ad account. | [optional] 

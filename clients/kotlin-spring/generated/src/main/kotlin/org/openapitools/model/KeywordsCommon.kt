@@ -33,7 +33,7 @@ data class KeywordsCommon(
 
     @Schema(example = "null", description = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
     @get:JsonProperty("bid") val bid: kotlin.Int? = null
-    ) {
+) {
 
 }
 

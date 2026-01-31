@@ -12,7 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OrderLineSingleResponse  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private OrderLineResponse data;
  /**
    * Get data

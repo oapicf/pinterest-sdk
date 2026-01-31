@@ -25,6 +25,24 @@ class OauthAccessTokenResponseEverlastingRefreshTest : ShouldSpec() {
         // uncomment below to create an instance of OauthAccessTokenResponseEverlastingRefresh
         //val modelInstance = OauthAccessTokenResponseEverlastingRefresh()
 
+        // to test the property `refreshToken`
+        should("test refreshToken") {
+            // uncomment below to test the property
+            //modelInstance.refreshToken shouldBe ("TODO")
+        }
+
+        // to test the property `refreshTokenExpiresIn`
+        should("test refreshTokenExpiresIn") {
+            // uncomment below to test the property
+            //modelInstance.refreshTokenExpiresIn shouldBe ("TODO")
+        }
+
+        // to test the property `refreshTokenExpiresAt`
+        should("test refreshTokenExpiresAt") {
+            // uncomment below to test the property
+            //modelInstance.refreshTokenExpiresAt shouldBe ("TODO")
+        }
+
         // to test the property `accessToken`
         should("test accessToken") {
             // uncomment below to test the property
@@ -47,24 +65,6 @@ class OauthAccessTokenResponseEverlastingRefreshTest : ShouldSpec() {
         should("test scope") {
             // uncomment below to test the property
             //modelInstance.scope shouldBe ("TODO")
-        }
-
-        // to test the property `refreshToken`
-        should("test refreshToken") {
-            // uncomment below to test the property
-            //modelInstance.refreshToken shouldBe ("TODO")
-        }
-
-        // to test the property `refreshTokenExpiresIn`
-        should("test refreshTokenExpiresIn") {
-            // uncomment below to test the property
-            //modelInstance.refreshTokenExpiresIn shouldBe ("TODO")
-        }
-
-        // to test the property `refreshTokenExpiresAt`
-        should("test refreshTokenExpiresAt") {
-            // uncomment below to test the property
-            //modelInstance.refreshTokenExpiresAt shouldBe ("TODO")
         }
 
         // to test the property `responseType`

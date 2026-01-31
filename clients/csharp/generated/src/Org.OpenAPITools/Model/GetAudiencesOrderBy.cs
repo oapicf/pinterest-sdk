@@ -216,7 +216,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, GetAudiencesOrderBy getAudiencesOrderBy, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(getAudiencesOrderBy.ToString());
+            writer.WriteStringValue(GetAudiencesOrderByValueConverter.ToJsonValue(getAudiencesOrderBy).ToString());
         }
     }
 
@@ -247,14 +247,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the GetAudiencesOrderBy to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="getAudiencesOrderBy"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, GetAudiencesOrderBy? getAudiencesOrderBy, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(getAudiencesOrderBy?.ToString() ?? "null");
+            writer.WriteStringValue(getAudiencesOrderBy.HasValue ? GetAudiencesOrderByValueConverter.ToJsonValue(getAudiencesOrderBy.Value).ToString() : "null");
         }
     }
 }

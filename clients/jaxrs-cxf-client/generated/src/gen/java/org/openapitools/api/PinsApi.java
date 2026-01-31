@@ -6,17 +6,12 @@ import org.openapitools.model.Pin;
 import org.openapitools.model.PinAnalyticsMetricsResponse;
 import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
-import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
 
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.MediaType;
 import org.apache.cxf.jaxrs.ext.multipart.*;
 
 import io.swagger.annotations.Api;
@@ -52,7 +47,7 @@ public interface PinsApi  {
         @ApiResponse(code = 404, message = "Pin not found.", response = Error.class),
         @ApiResponse(code = 429, message = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Map<String, Map<String, PinAnalyticsMetricsResponse>> multiPinsAnalytics(@QueryParam("pin_ids") List<String> pinIds, @QueryParam("start_date") LocalDate startDate, @QueryParam("end_date") LocalDate endDate, @QueryParam("metric_types") List<PinsAnalyticsMetricTypesParameterInner> metricTypes, @QueryParam("app_types") @DefaultValue("ALL")String appTypes, @QueryParam("ad_account_id") String adAccountId);
+    public Map<String, Map<String, PinAnalyticsMetricsResponse>> multiPinsAnalytics(@QueryParam("pin_ids") List<String> pinIds, @QueryParam("start_date") LocalDate startDate, @QueryParam("end_date") LocalDate endDate, @QueryParam("metric_types") List<String> metricTypes, @QueryParam("app_types") @DefaultValue("ALL")String appTypes, @QueryParam("ad_account_id") String adAccountId);
 
     /**
      * Get Pin analytics
@@ -70,7 +65,7 @@ public interface PinsApi  {
         @ApiResponse(code = 403, message = "Not authorized to access board or Pin.", response = Error.class),
         @ApiResponse(code = 404, message = "Pin not found.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Map<String, PinAnalyticsMetricsResponse> pinsAnalytics(@PathParam("pin_id") String pinId, @QueryParam("start_date") LocalDate startDate, @QueryParam("end_date") LocalDate endDate, @QueryParam("metric_types") List<PinsAnalyticsMetricTypesParameterInner> metricTypes, @QueryParam("app_types") @DefaultValue("ALL")String appTypes, @QueryParam("split_field") @DefaultValue("NO_SPLIT")String splitField, @QueryParam("ad_account_id") String adAccountId);
+    public Map<String, PinAnalyticsMetricsResponse> pinsAnalytics(@PathParam("pin_id") String pinId, @QueryParam("start_date") LocalDate startDate, @QueryParam("end_date") LocalDate endDate, @QueryParam("metric_types") List<String> metricTypes, @QueryParam("app_types") @DefaultValue("ALL")String appTypes, @QueryParam("split_field") @DefaultValue("NO_SPLIT")String splitField, @QueryParam("ad_account_id") String adAccountId);
 
     /**
      * Create Pin

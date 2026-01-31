@@ -50,11 +50,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(BoardsUserFollowsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"owner\" : \"{}\",\n    \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\",\n    \"name\" : \"Summer Recipes\",\n    \"pin_count\" : 5,\n    \"created_at\" : \"2020-01-01T20:10:40Z\",\n    \"description\" : \"My favorite summer recipes\",\n    \"collaborator_count\" : 17,\n    \"privacy\" : \"PUBLIC\",\n    \"id\" : \"549755885175\",\n    \"media\" : {\n      \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ],\n      \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\"\n    },\n    \"follower_count\" : 13\n  }, {\n    \"owner\" : \"{}\",\n    \"board_pins_modified_at\" : \"2020-01-01T20:10:40Z\",\n    \"name\" : \"Summer Recipes\",\n    \"pin_count\" : 5,\n    \"created_at\" : \"2020-01-01T20:10:40Z\",\n    \"description\" : \"My favorite summer recipes\",\n    \"collaborator_count\" : 17,\n    \"privacy\" : \"PUBLIC\",\n    \"id\" : \"549755885175\",\n    \"media\" : {\n      \"pin_thumbnail_urls\" : [ \"https://i.pinimg.com/150x150/b4/57/10/b45710f1ede96af55230f4b43935c4af.jpg\", \"https://i.pinimg.com/150x150/dd/ff/46/ddff4616e39c1935cd05738794fa860e.jpg\", \"https://i.pinimg.com/150x150/84/ac/59/84ac59b670ccb5b903dace480a98930c.jpg\", \"https://i.pinimg.com/150x150/4c/54/6f/4c546f521be85e30838fb742bfff6936.jpg\" ],\n      \"image_cover_url\" : \"https://i.pinimg.com/400x300/fd/cd/d5/fdcdd5a6d8a80824add0d054125cd957.jpg\"\n    },\n    \"follower_count\" : 13\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -62,7 +62,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<BoardsUserFollowsList200Response>(exampleJson)
-            : default(BoardsUserFollowsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -88,11 +88,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(UserSummary));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"type\" : \"user\",\n  \"username\" : \"username\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -100,7 +100,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<UserSummary>(exampleJson)
-            : default(UserSummary);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -125,11 +125,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(FollowersList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"type\" : \"user\",\n    \"username\" : \"username\"\n  }, {\n    \"type\" : \"user\",\n    \"username\" : \"username\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -137,7 +137,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<FollowersList200Response>(exampleJson)
-            : default(FollowersList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -158,16 +158,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<LinkedBusiness>));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "[ {\n  \"image_large_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\",\n  \"image_medium_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\",\n  \"image_xlarge_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\",\n  \"username\" : \"username\",\n  \"image_small_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\"\n}, {\n  \"image_large_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\",\n  \"image_medium_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\",\n  \"image_xlarge_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\",\n  \"username\" : \"username\",\n  \"image_small_url\" : \"https://www.example.com/dj23454f53dfk2324.jpg\"\n} ]";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<LinkedBusiness>>(exampleJson)
-            : default(List<LinkedBusiness>);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -192,9 +192,9 @@ namespace Org.OpenAPITools.Controllers
             //TODO: Uncomment the next line to return response 204 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(204);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
 
             throw new NotImplementedException();
         }
@@ -229,13 +229,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(Dictionary<string, AnalyticsMetricsResponse>));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -278,11 +278,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(TopPinsAnalyticsResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"date_availability\" : {\n    \"latest_available_timestamp\" : 1649116799000,\n    \"is_realtime\" : false\n  },\n  \"pins\" : [ {\n    \"metrics\" : {\n      \"CLOSEUP\" : 1,\n      \"CLOSEUP_RATE\" : 0,\n      \"ENGAGEMENT\" : 1,\n      \"ENGAGEMENT_RATE\" : 0,\n      \"IMPRESSION\" : 240,\n      \"OUTBOUND_CLICK\" : 20,\n      \"OUTBOUND_CLICK_RATE\" : 0.08,\n      \"PIN_CLICK\" : 37,\n      \"PIN_CLICK_RATE\" : 0.15,\n      \"QUARTILE_95_PERCENT_VIEW\" : 8,\n      \"SAVE\" : 20,\n      \"SAVE_RATE\" : 0.18,\n      \"VIDEO_10S_VIEW\" : 2,\n      \"VIDEO_AVG_WATCH_TIME\" : 2507.75,\n      \"VIDEO_MRC_VIEW\" : 20,\n      \"VIDEO_START\" : 29,\n      \"VIDEO_V50_WATCH_TIME\" : 10031\n    },\n    \"data_status\" : {\n      \"key\" : \"READY\"\n    },\n    \"pin_id\" : \"642396334344813594\"\n  }, {\n    \"metrics\" : {\n      \"CLOSEUP\" : 1,\n      \"CLOSEUP_RATE\" : 0,\n      \"ENGAGEMENT\" : 1,\n      \"ENGAGEMENT_RATE\" : 0,\n      \"IMPRESSION\" : 240,\n      \"OUTBOUND_CLICK\" : 20,\n      \"OUTBOUND_CLICK_RATE\" : 0.08,\n      \"PIN_CLICK\" : 37,\n      \"PIN_CLICK_RATE\" : 0.15,\n      \"QUARTILE_95_PERCENT_VIEW\" : 8,\n      \"SAVE\" : 20,\n      \"SAVE_RATE\" : 0.18,\n      \"VIDEO_10S_VIEW\" : 2,\n      \"VIDEO_AVG_WATCH_TIME\" : 2507.75,\n      \"VIDEO_MRC_VIEW\" : 20,\n      \"VIDEO_START\" : 29,\n      \"VIDEO_V50_WATCH_TIME\" : 10031\n    },\n    \"data_status\" : {\n      \"key\" : \"READY\"\n    },\n    \"pin_id\" : \"642396334344813594\"\n  } ],\n  \"sort_by\" : \"IMPRESSION\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -290,7 +290,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<TopPinsAnalyticsResponse>(exampleJson)
-            : default(TopPinsAnalyticsResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -325,11 +325,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(TopVideoPinsAnalyticsResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"date_availability\" : {\n    \"latest_available_timestamp\" : 1649116799000,\n    \"is_realtime\" : false\n  },\n  \"pins\" : [ {\n    \"metrics\" : {\n      \"IMPRESSION\" : 7,\n      \"QUARTILE_95_PERCENT_VIEW\" : 2,\n      \"SAVE\" : 1,\n      \"VIDEO_10S_VIEW\" : 5,\n      \"VIDEO_AVG_WATCH_TIME\" : 86989,\n      \"VIDEO_MRC_VIEW\" : 2,\n      \"VIDEO_START\" : 2,\n      \"VIDEO_V50_WATCH_TIME\" : 173979,\n      \"OUTBOUND_CLICK\" : 2\n    },\n    \"data_status\" : {\n      \"key\" : \"READY\"\n    },\n    \"pin_id\" : \"642396334344813594\"\n  }, {\n    \"metrics\" : {\n      \"IMPRESSION\" : 7,\n      \"QUARTILE_95_PERCENT_VIEW\" : 2,\n      \"SAVE\" : 1,\n      \"VIDEO_10S_VIEW\" : 5,\n      \"VIDEO_AVG_WATCH_TIME\" : 86989,\n      \"VIDEO_MRC_VIEW\" : 2,\n      \"VIDEO_START\" : 2,\n      \"VIDEO_V50_WATCH_TIME\" : 173979,\n      \"OUTBOUND_CLICK\" : 2\n    },\n    \"data_status\" : {\n      \"key\" : \"READY\"\n    },\n    \"pin_id\" : \"642396334344813594\"\n  } ],\n  \"sort_by\" : \"IMPRESSION\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -337,7 +337,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<TopVideoPinsAnalyticsResponse>(exampleJson)
-            : default(TopVideoPinsAnalyticsResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -367,15 +367,15 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(UserAccountFollowedInterests200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"name\" : \"Man cave\",\n    \"id\" : \"903972677830\",\n    \"canonical_url\" : \"canonical_url\",\n    \"key\" : \"man cave\"\n  }, {\n    \"name\" : \"Man cave\",\n    \"id\" : \"903972677830\",\n    \"canonical_url\" : \"canonical_url\",\n    \"key\" : \"man cave\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -385,7 +385,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<UserAccountFollowedInterests200Response>(exampleJson)
-            : default(UserAccountFollowedInterests200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -409,11 +409,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(Account));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"business_name\" : \"business_name\",\n  \"account_type\" : \"PINNER\",\n  \"profile_image\" : \"profile_image\",\n  \"website_url\" : \"website_url\",\n  \"following_count\" : 347,\n  \"about\" : \"about\",\n  \"pin_count\" : 339,\n  \"id\" : \"2783136121146311751\",\n  \"monthly_views\" : 163,\n  \"board_count\" : 14,\n  \"follower_count\" : 10,\n  \"username\" : \"username\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -421,7 +421,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<Account>(exampleJson)
-            : default(Account);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -447,16 +447,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(UserFollowingGet200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"type\" : \"user\",\n    \"username\" : \"username\"\n  }, {\n    \"type\" : \"user\",\n    \"username\" : \"username\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<UserFollowingGet200Response>(exampleJson)
-            : default(UserFollowingGet200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -481,11 +481,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(UserWebsitesGet200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"website\" : \"mysite.test\",\n    \"verified_at\" : \"2022-12-14T21:03:01.602000\",\n    \"status\" : \"success\"\n  }, {\n    \"website\" : \"mysite.test\",\n    \"verified_at\" : \"2022-12-14T21:03:01.602000\",\n    \"status\" : \"success\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -493,7 +493,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<UserWebsitesGet200Response>(exampleJson)
-            : default(UserWebsitesGet200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -517,16 +517,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(UserWebsiteSummary));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"website\" : \"mysite.test\",\n  \"verified_at\" : \"2022-12-14T21:03:01.602000\",\n  \"status\" : \"success\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<UserWebsiteSummary>(exampleJson)
-            : default(UserWebsiteSummary);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -550,11 +550,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(UserWebsiteVerificationCode));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"file_content\" : \"file_content\",\n  \"dns_txt_record\" : \"pinterest-site-verification=e1edcc1a43976c646367e9c6c9a9b7b6\",\n  \"filename\" : \"pinterest-e1edc.html\",\n  \"metatag\" : \"<meta name=\\"p:domain_verify\\" content=\\"e1edcc1a43976c646367e9c6c9a9b7b6\\"/>\",\n  \"verification_code\" : \"e1edcc1a43976c646367e9c6c9a9b7b6\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -562,7 +562,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<UserWebsiteVerificationCode>(exampleJson)
-            : default(UserWebsiteVerificationCode);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

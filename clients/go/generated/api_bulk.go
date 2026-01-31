@@ -219,8 +219,9 @@ func (a *BulkAPIService) BulkRequestGetExecute(r ApiBulkRequestGetRequest) (*Bul
 	if r.includeDetails != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_details", r.includeDetails, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.includeDetails = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "include_details", defaultValue, "form", "")
+        r.includeDetails = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

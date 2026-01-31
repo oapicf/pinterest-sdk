@@ -9,7 +9,6 @@ import java.util.List;
 import org.openapitools.model.CatalogsCreativeAssetsBatchItem;
 import org.openapitools.model.CatalogsCreativeAssetsBatchRequest;
 import org.openapitools.model.CatalogsHotelBatchRequest;
-import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsRetailBatchRequest;
 import org.openapitools.model.Country;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;

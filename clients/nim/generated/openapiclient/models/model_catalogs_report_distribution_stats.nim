@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type ReportType* {.pure.} = enum
@@ -16,21 +18,71 @@ type ReportType* {.pure.} = enum
 
 type CatalogsReportDistributionStats* = object
   ## 
-  reportType*: ReportType
-  catalogId*: string ## ID of the catalog entity.
-  code*: int ## The event code that a diagnostics aggregated number references
-  codeLabel*: string ## A human-friendly label for the event code (e.g, 'SPAM')
-  message*: string ## Title message describing the diagnostic issue
-  occurrences*: int ## Number of occurrences of the issue
-  ineligibleForAds*: bool ## Indicates if issue makes items ineligible for ads distribution
-  ineligibleForOrganic*: bool ## Indicates if issue makes items ineligible for organic distribution
+  reportType*: Option[ReportType]
+  catalogId*: Option[string] ## ID of the catalog entity.
+  code*: Option[int] ## The event code that a diagnostics aggregated number references
+  codeLabel*: Option[string] ## A human-friendly label for the event code (e.g, 'SPAM')
+  message*: Option[string] ## Title message describing the diagnostic issue
+  occurrences*: Option[int] ## Number of occurrences of the issue
+  ineligibleForAds*: Option[bool] ## Indicates if issue makes items ineligible for ads distribution
+  ineligibleForOrganic*: Option[bool] ## Indicates if issue makes items ineligible for organic distribution
 
 func `%`*(v: ReportType): JsonNode =
-  let str = case v:
-    of ReportType.DISTRIBUTIONISSUES: "DISTRIBUTION_ISSUES"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of ReportType.DISTRIBUTIONISSUES: %"DISTRIBUTION_ISSUES"
 func `$`*(v: ReportType): string =
   result = case v:
-    of ReportType.DISTRIBUTIONISSUES: "DISTRIBUTION_ISSUES"
+    of ReportType.DISTRIBUTIONISSUES: $("DISTRIBUTION_ISSUES")
+
+proc to*(node: JsonNode, T: typedesc[ReportType]): ReportType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ReportType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("DISTRIBUTION_ISSUES"):
+    return ReportType.DISTRIBUTIONISSUES
+  else:
+    raise newException(ValueError, "Invalid enum value for ReportType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsReportDistributionStats with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsReportDistributionStats]): CatalogsReportDistributionStats =
+  result = CatalogsReportDistributionStats()
+  if node.kind == JObject:
+    if node.hasKey("report_type") and node["report_type"].kind != JNull:
+      result.reportType = some(to(node["report_type"], ReportType))
+    if node.hasKey("catalog_id") and node["catalog_id"].kind != JNull:
+      result.catalogId = some(to(node["catalog_id"], typeof(result.catalogId.get())))
+    if node.hasKey("code") and node["code"].kind != JNull:
+      result.code = some(to(node["code"], typeof(result.code.get())))
+    if node.hasKey("code_label") and node["code_label"].kind != JNull:
+      result.codeLabel = some(to(node["code_label"], typeof(result.codeLabel.get())))
+    if node.hasKey("message") and node["message"].kind != JNull:
+      result.message = some(to(node["message"], typeof(result.message.get())))
+    if node.hasKey("occurrences") and node["occurrences"].kind != JNull:
+      result.occurrences = some(to(node["occurrences"], typeof(result.occurrences.get())))
+    if node.hasKey("ineligible_for_ads") and node["ineligible_for_ads"].kind != JNull:
+      result.ineligibleForAds = some(to(node["ineligible_for_ads"], typeof(result.ineligibleForAds.get())))
+    if node.hasKey("ineligible_for_organic") and node["ineligible_for_organic"].kind != JNull:
+      result.ineligibleForOrganic = some(to(node["ineligible_for_organic"], typeof(result.ineligibleForOrganic.get())))
+
+# Custom JSON serialization for CatalogsReportDistributionStats with custom field names
+proc `%`*(obj: CatalogsReportDistributionStats): JsonNode =
+  result = newJObject()
+  if obj.reportType.isSome():
+    result["report_type"] = %obj.reportType.get()
+  if obj.catalogId.isSome():
+    result["catalog_id"] = %obj.catalogId.get()
+  if obj.code.isSome():
+    result["code"] = %obj.code.get()
+  if obj.codeLabel.isSome():
+    result["code_label"] = %obj.codeLabel.get()
+  if obj.message.isSome():
+    result["message"] = %obj.message.get()
+  if obj.occurrences.isSome():
+    result["occurrences"] = %obj.occurrences.get()
+  if obj.ineligibleForAds.isSome():
+    result["ineligible_for_ads"] = %obj.ineligibleForAds.get()
+  if obj.ineligibleForOrganic.isSome():
+    result["ineligible_for_organic"] = %obj.ineligibleForOrganic.get()
+

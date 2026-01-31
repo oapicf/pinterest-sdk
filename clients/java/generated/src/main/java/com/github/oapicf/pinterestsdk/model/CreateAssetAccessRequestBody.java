@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An object containing a list of all the asset access requests
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateAssetAccessRequestBody {
   public static final String SERIALIZED_NAME_ASSET_REQUESTS = "asset_requests";
   @SerializedName(SERIALIZED_NAME_ASSET_REQUESTS)
@@ -132,12 +132,10 @@ public class CreateAssetAccessRequestBody {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("asset_requests");
+    openapiFields = new HashSet<String>(Arrays.asList("asset_requests"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("asset_requests");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("asset_requests"));
   }
 
   /**
@@ -149,7 +147,7 @@ public class CreateAssetAccessRequestBody {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CreateAssetAccessRequestBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateAssetAccessRequestBody is not found in the empty JSON string", CreateAssetAccessRequestBody.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CreateAssetAccessRequestBody is not found in the empty JSON string", CreateAssetAccessRequestBody.openapiRequiredFields.toString()));
         }
       }
 
@@ -157,20 +155,20 @@ public class CreateAssetAccessRequestBody {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CreateAssetAccessRequestBody.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateAssetAccessRequestBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CreateAssetAccessRequestBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CreateAssetAccessRequestBody.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
       if (!jsonObj.get("asset_requests").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `asset_requests` to be an array in the JSON string but got `%s`", jsonObj.get("asset_requests").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `asset_requests` to be an array in the JSON string but got `%s`", jsonObj.get("asset_requests").toString()));
       }
 
       JsonArray jsonArrayassetRequests = jsonObj.getAsJsonArray("asset_requests");

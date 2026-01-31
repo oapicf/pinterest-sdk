@@ -53,32 +53,75 @@ func NewLeadFormsAPIController(s LeadFormsAPIServicer, opts ...LeadFormsAPIOptio
 func (c *LeadFormsAPIController) Routes() Routes {
 	return Routes{
 		"LeadFormsList": Route{
+			"LeadFormsList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/lead_forms",
 			c.LeadFormsList,
 		},
 		"LeadFormsCreate": Route{
+			"LeadFormsCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/lead_forms",
 			c.LeadFormsCreate,
 		},
 		"LeadFormsUpdate": Route{
+			"LeadFormsUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/lead_forms",
 			c.LeadFormsUpdate,
 		},
 		"LeadFormGet": Route{
+			"LeadFormGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}",
 			c.LeadFormGet,
 		},
 		"LeadFormTestCreate": Route{
+			"LeadFormTestCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test",
 			c.LeadFormTestCreate,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the LeadFormsAPIController
+func (c *LeadFormsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"LeadFormsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/lead_forms",
+			c.LeadFormsList,
+		},
+		Route{
+			"LeadFormsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/lead_forms",
+			c.LeadFormsCreate,
+		},
+		Route{
+			"LeadFormsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/lead_forms",
+			c.LeadFormsUpdate,
+		},
+		Route{
+			"LeadFormGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}",
+			c.LeadFormGet,
+		},
+		Route{
+			"LeadFormTestCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test",
+			c.LeadFormTestCreate,
+		},
+	}
+}
+
+
 
 // LeadFormsList - List lead forms
 func (c *LeadFormsAPIController) LeadFormsList(w http.ResponseWriter, r *http.Request) {

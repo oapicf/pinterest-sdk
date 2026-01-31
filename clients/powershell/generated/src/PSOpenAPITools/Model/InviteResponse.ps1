@@ -15,6 +15,14 @@ No summary available.
 
 No description available.
 
+.PARAMETER Id
+Unique identifier of the invite/request.
+.PARAMETER InviteData
+No description available.
+.PARAMETER IsReceivedInvite
+Indicates whether the invite/request was received.
+.PARAMETER User
+Metadata for the member/partner that was sent the invite/request.
 .PARAMETER AssetsSummary
 No description available.
 .PARAMETER BusinessRoles
@@ -25,14 +33,6 @@ Metadata for the business that created the invite/request.
 Metadata for the user that created the invite/request.
 .PARAMETER CreatedTime
 The time the invite/request was created. Returned in milliseconds.
-.PARAMETER Id
-Unique identifier of the invite/request.
-.PARAMETER InviteData
-No description available.
-.PARAMETER IsReceivedInvite
-Indicates whether the invite/request was received.
-.PARAMETER User
-Metadata for the member/partner that was sent the invite/request.
 .OUTPUTS
 
 InviteResponse<PSCustomObject>
@@ -42,33 +42,33 @@ function Initialize-InviteResponse {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${AssetsSummary},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [String[]]
-        ${BusinessRoles},
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${CreatedByBusiness},
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${CreatedByUser},
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
-        [System.Nullable[Int32]]
-        ${CreatedTime},
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [ValidatePattern("^\d+$")]
         [String]
         ${Id},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${InviteData},
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
         ${IsReceivedInvite},
-        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
-        ${User}
+        ${User},
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${AssetsSummary},
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [String[]]
+        ${BusinessRoles},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${CreatedByBusiness},
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${CreatedByUser},
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = $true)]
+        [System.Nullable[Int32]]
+        ${CreatedTime}
     )
 
     Process {
@@ -77,15 +77,15 @@ function Initialize-InviteResponse {
 
 
         $PSO = [PSCustomObject]@{
+            "id" = ${Id}
+            "invite_data" = ${InviteData}
+            "is_received_invite" = ${IsReceivedInvite}
+            "user" = ${User}
             "assets_summary" = ${AssetsSummary}
             "business_roles" = ${BusinessRoles}
             "created_by_business" = ${CreatedByBusiness}
             "created_by_user" = ${CreatedByUser}
             "created_time" = ${CreatedTime}
-            "id" = ${Id}
-            "invite_data" = ${InviteData}
-            "is_received_invite" = ${IsReceivedInvite}
-            "user" = ${User}
         }
 
 
@@ -123,11 +123,35 @@ function ConvertFrom-JsonToInviteResponse {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in InviteResponse
-        $AllProperties = ("assets_summary", "business_roles", "created_by_business", "created_by_user", "created_time", "id", "invite_data", "is_received_invite", "user")
+        $AllProperties = ("id", "invite_data", "is_received_invite", "user", "assets_summary", "business_roles", "created_by_business", "created_by_user", "created_time")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
             }
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "id"))) { #optional property not found
+            $Id = $null
+        } else {
+            $Id = $JsonParameters.PSobject.Properties["id"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "invite_data"))) { #optional property not found
+            $InviteData = $null
+        } else {
+            $InviteData = $JsonParameters.PSobject.Properties["invite_data"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "is_received_invite"))) { #optional property not found
+            $IsReceivedInvite = $null
+        } else {
+            $IsReceivedInvite = $JsonParameters.PSobject.Properties["is_received_invite"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "user"))) { #optional property not found
+            $User = $null
+        } else {
+            $User = $JsonParameters.PSobject.Properties["user"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "assets_summary"))) { #optional property not found
@@ -160,40 +184,16 @@ function ConvertFrom-JsonToInviteResponse {
             $CreatedTime = $JsonParameters.PSobject.Properties["created_time"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "id"))) { #optional property not found
-            $Id = $null
-        } else {
-            $Id = $JsonParameters.PSobject.Properties["id"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "invite_data"))) { #optional property not found
-            $InviteData = $null
-        } else {
-            $InviteData = $JsonParameters.PSobject.Properties["invite_data"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "is_received_invite"))) { #optional property not found
-            $IsReceivedInvite = $null
-        } else {
-            $IsReceivedInvite = $JsonParameters.PSobject.Properties["is_received_invite"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "user"))) { #optional property not found
-            $User = $null
-        } else {
-            $User = $JsonParameters.PSobject.Properties["user"].value
-        }
-
         $PSO = [PSCustomObject]@{
+            "id" = ${Id}
+            "invite_data" = ${InviteData}
+            "is_received_invite" = ${IsReceivedInvite}
+            "user" = ${User}
             "assets_summary" = ${AssetsSummary}
             "business_roles" = ${BusinessRoles}
             "created_by_business" = ${CreatedByBusiness}
             "created_by_user" = ${CreatedByUser}
             "created_time" = ${CreatedTime}
-            "id" = ${Id}
-            "invite_data" = ${InviteData}
-            "is_received_invite" = ${IsReceivedInvite}
-            "user" = ${User}
         }
 
         return $PSO

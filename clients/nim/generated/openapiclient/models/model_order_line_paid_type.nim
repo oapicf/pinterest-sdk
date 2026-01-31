@@ -9,7 +9,43 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type OrderLinePaidType* = object
-  ## Order Line Paid Type
+type OrderLinePaidType* {.pure.} = enum
+  PAID
+  BONUS
+  MAKEGOOD
+  TEST
+
+func `%`*(v: OrderLinePaidType): JsonNode =
+  result = case v:
+    of OrderLinePaidType.PAID: %"PAID"
+    of OrderLinePaidType.BONUS: %"BONUS"
+    of OrderLinePaidType.MAKEGOOD: %"MAKE_GOOD"
+    of OrderLinePaidType.TEST: %"TEST"
+
+func `$`*(v: OrderLinePaidType): string =
+  result = case v:
+    of OrderLinePaidType.PAID: $("PAID")
+    of OrderLinePaidType.BONUS: $("BONUS")
+    of OrderLinePaidType.MAKEGOOD: $("MAKE_GOOD")
+    of OrderLinePaidType.TEST: $("TEST")
+
+proc to*(node: JsonNode, T: typedesc[OrderLinePaidType]): OrderLinePaidType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum OrderLinePaidType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("PAID"):
+    return OrderLinePaidType.PAID
+  of $("BONUS"):
+    return OrderLinePaidType.BONUS
+  of $("MAKE_GOOD"):
+    return OrderLinePaidType.MAKEGOOD
+  of $("TEST"):
+    return OrderLinePaidType.TEST
+  else:
+    raise newException(ValueError, "Invalid enum value for OrderLinePaidType: " & strVal)
+

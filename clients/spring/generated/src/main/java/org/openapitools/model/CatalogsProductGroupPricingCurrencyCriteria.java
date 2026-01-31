@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("catalogs_product_group_pricing_currency_criteria")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupPricingCurrencyCriteria {
 
   /**
@@ -39,7 +39,7 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
     
     LESS_THAN_OR_EQUALS("LESS_THAN_OR_EQUALS");
 
-    private String value;
+    private final String value;
 
     OperatorEnum(String value) {
       this.value = value;
@@ -117,7 +117,7 @@ public class CatalogsProductGroupPricingCurrencyCriteria {
    * minimum: 0
    * @return value
    */
-  @NotNull @Valid @DecimalMin("0") 
+  @NotNull @Valid @DecimalMin(value = "0") 
   @Schema(name = "value", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("value")
   public BigDecimal getValue() {

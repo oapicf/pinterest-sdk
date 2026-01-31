@@ -26,7 +26,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "Object describing an item record")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2025-05-10T05:39:31.012858315Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemResponse   {
   @JsonProperty("catalog_type")
   private CatalogsType catalogType;
@@ -34,15 +34,22 @@ public class ItemResponse   {
   @JsonProperty("item_id")
   private String itemId;
 
-  @JsonProperty("errors")
+  @JsonProperty("pins")
   
-  private List<ItemValidationEvent> errors = null;
+  private List<Pin> pins = null;
+
+  @JsonProperty("attributes")
+  private CatalogsCreativeAssetsAttributes attributes;
 
   @JsonProperty("hotel_id")
   private String hotelId;
 
   @JsonProperty("creative_assets_id")
   private String creativeAssetsId;
+
+  @JsonProperty("errors")
+  
+  private List<ItemValidationEvent> errors = null;
 
   public ItemResponse catalogType(CatalogsType catalogType) {
     this.catalogType = catalogType;
@@ -80,30 +87,48 @@ public class ItemResponse   {
     this.itemId = itemId;
   }
 
-  public ItemResponse errors(List<ItemValidationEvent> errors) {
-    this.errors = errors;
+  public ItemResponse pins(List<Pin> pins) {
+    this.pins = pins;
     return this;
   }
 
-  public ItemResponse addErrorsItem(ItemValidationEvent errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
+  public ItemResponse addPinsItem(Pin pinsItem) {
+    if (this.pins == null) {
+      this.pins = new ArrayList<>();
     }
-    this.errors.add(errorsItem);
+    this.pins.add(pinsItem);
     return this;
   }
 
   /**
-   * Array with the errors for the item id requested
-   * @return errors
+   * The pins mapped to the item
+   * @return pins
    */
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-  public List<ItemValidationEvent> getErrors() {
-    return errors;
+  @ApiModelProperty(value = "The pins mapped to the item")
+  public List<Pin> getPins() {
+    return pins;
   }
 
-  public void setErrors(List<ItemValidationEvent> errors) {
-    this.errors = errors;
+  public void setPins(List<Pin> pins) {
+    this.pins = pins;
+  }
+
+  public ItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+   */
+  @ApiModelProperty(value = "")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
   }
 
   public ItemResponse hotelId(String hotelId) {
@@ -142,6 +167,32 @@ public class ItemResponse   {
     this.creativeAssetsId = creativeAssetsId;
   }
 
+  public ItemResponse errors(List<ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public ItemResponse addErrorsItem(ItemValidationEvent errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+  /**
+   * Array with the errors for the item id requested
+   * @return errors
+   */
+  @ApiModelProperty(value = "Array with the errors for the item id requested")
+  public List<ItemValidationEvent> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<ItemValidationEvent> errors) {
+    this.errors = errors;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -154,14 +205,16 @@ public class ItemResponse   {
     ItemResponse itemResponse = (ItemResponse) o;
     return Objects.equals(this.catalogType, itemResponse.catalogType) &&
         Objects.equals(this.itemId, itemResponse.itemId) &&
-        Objects.equals(this.errors, itemResponse.errors) &&
+        Objects.equals(this.pins, itemResponse.pins) &&
+        Objects.equals(this.attributes, itemResponse.attributes) &&
         Objects.equals(this.hotelId, itemResponse.hotelId) &&
-        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId);
+        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId) &&
+        Objects.equals(this.errors, itemResponse.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
+    return Objects.hash(catalogType, itemId, pins, attributes, hotelId, creativeAssetsId, errors);
   }
 
   @Override
@@ -171,9 +224,11 @@ public class ItemResponse   {
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

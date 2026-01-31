@@ -11,9 +11,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdArrayResponseElement  {
   
   @ApiModelProperty(value = "")
+
   private AdResponse data;
 
   @ApiModelProperty(value = "")
+
   private Exception exceptions;
  /**
    * Get data

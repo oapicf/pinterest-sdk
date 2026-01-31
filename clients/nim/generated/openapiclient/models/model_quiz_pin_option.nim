@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type QuizPinOption* = object
   ##  This field contains multiple options to a quiz question.
-  id*: float
-  text*: string
+  id*: Option[float]
+  text*: Option[string]
+

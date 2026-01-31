@@ -9,7 +9,63 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AdGroupSummaryStatus* = object
-  ## Summary status for ad group
+type AdGroupSummaryStatus* {.pure.} = enum
+  RUNNING
+  PAUSED
+  NOTSTARTED
+  COMPLETED
+  ADVERTISERDISABLED
+  ARCHIVED
+  DRAFT
+  DELETEDDRAFT
+
+func `%`*(v: AdGroupSummaryStatus): JsonNode =
+  result = case v:
+    of AdGroupSummaryStatus.RUNNING: %"RUNNING"
+    of AdGroupSummaryStatus.PAUSED: %"PAUSED"
+    of AdGroupSummaryStatus.NOTSTARTED: %"NOT_STARTED"
+    of AdGroupSummaryStatus.COMPLETED: %"COMPLETED"
+    of AdGroupSummaryStatus.ADVERTISERDISABLED: %"ADVERTISER_DISABLED"
+    of AdGroupSummaryStatus.ARCHIVED: %"ARCHIVED"
+    of AdGroupSummaryStatus.DRAFT: %"DRAFT"
+    of AdGroupSummaryStatus.DELETEDDRAFT: %"DELETED_DRAFT"
+
+func `$`*(v: AdGroupSummaryStatus): string =
+  result = case v:
+    of AdGroupSummaryStatus.RUNNING: $("RUNNING")
+    of AdGroupSummaryStatus.PAUSED: $("PAUSED")
+    of AdGroupSummaryStatus.NOTSTARTED: $("NOT_STARTED")
+    of AdGroupSummaryStatus.COMPLETED: $("COMPLETED")
+    of AdGroupSummaryStatus.ADVERTISERDISABLED: $("ADVERTISER_DISABLED")
+    of AdGroupSummaryStatus.ARCHIVED: $("ARCHIVED")
+    of AdGroupSummaryStatus.DRAFT: $("DRAFT")
+    of AdGroupSummaryStatus.DELETEDDRAFT: $("DELETED_DRAFT")
+
+proc to*(node: JsonNode, T: typedesc[AdGroupSummaryStatus]): AdGroupSummaryStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AdGroupSummaryStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RUNNING"):
+    return AdGroupSummaryStatus.RUNNING
+  of $("PAUSED"):
+    return AdGroupSummaryStatus.PAUSED
+  of $("NOT_STARTED"):
+    return AdGroupSummaryStatus.NOTSTARTED
+  of $("COMPLETED"):
+    return AdGroupSummaryStatus.COMPLETED
+  of $("ADVERTISER_DISABLED"):
+    return AdGroupSummaryStatus.ADVERTISERDISABLED
+  of $("ARCHIVED"):
+    return AdGroupSummaryStatus.ARCHIVED
+  of $("DRAFT"):
+    return AdGroupSummaryStatus.DRAFT
+  of $("DELETED_DRAFT"):
+    return AdGroupSummaryStatus.DELETEDDRAFT
+  else:
+    raise newException(ValueError, "Invalid enum value for AdGroupSummaryStatus: " & strVal)
+

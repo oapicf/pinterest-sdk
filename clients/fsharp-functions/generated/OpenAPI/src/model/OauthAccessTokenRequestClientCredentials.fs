@@ -10,10 +10,10 @@ module OauthAccessTokenRequestClientCredentials =
 
   [<CLIMutable>]
   type OauthAccessTokenRequestClientCredentials = {
-    [<JsonProperty(PropertyName = "grant_type")>]
-    GrantType : string;
     [<JsonProperty(PropertyName = "scope")>]
     Scope : string;
+    [<JsonProperty(PropertyName = "grant_type")>]
+    GrantType : string;
   }
 
   //#endregion

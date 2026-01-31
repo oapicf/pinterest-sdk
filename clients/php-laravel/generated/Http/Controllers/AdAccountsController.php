@@ -108,12 +108,8 @@ class AdAccountsController extends Controller
 
         $conversionReportTime = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdGroupsAnalyticsConversionReportTimeParameter::class);
 
-        try {
-            $apiResult = $this->api->adAccountAnalytics($adAccountId, $startDate, $endDate, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adAccountAnalytics($adAccountId, $startDate, $endDate, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -211,12 +207,8 @@ class AdAccountsController extends Controller
 
         $attributionTypes = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ConversionReportAttributionType::class);
 
-        try {
-            $apiResult = $this->api->adAccountTargetingAnalyticsGet($adAccountId, $startDate, $endDate, $targetingTypes, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime, $attributionTypes);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adAccountTargetingAnalyticsGet($adAccountId, $startDate, $endDate, $targetingTypes, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime, $attributionTypes);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MetricsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -255,12 +247,8 @@ class AdAccountsController extends Controller
 
         $adAccountCreateRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdAccountCreateRequest::class);
 
-        try {
-            $apiResult = $this->api->adAccountsCreate($adAccountCreateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adAccountsCreate($adAccountCreateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdAccount) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -304,12 +292,8 @@ class AdAccountsController extends Controller
         }
 
 
-        try {
-            $apiResult = $this->api->adAccountsGet($adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adAccountsGet($adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdAccount) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -361,14 +345,10 @@ class AdAccountsController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        $includeSharedAccounts = $request->bool('includeSharedAccounts');
+        $includeSharedAccounts = $request->boolean('includeSharedAccounts');
 
-        try {
-            $apiResult = $this->api->adAccountsList($bookmark, $pageSize, $includeSharedAccounts);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adAccountsList($bookmark, $pageSize, $includeSharedAccounts);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdAccountsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -408,12 +388,8 @@ class AdAccountsController extends Controller
 
         $createMMMReportRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CreateMMMReportRequest::class);
 
-        try {
-            $apiResult = $this->api->analyticsCreateMmmReport($adAccountId, $createMMMReportRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->analyticsCreateMmmReport($adAccountId, $createMMMReportRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CreateMMMReportResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -457,12 +433,8 @@ class AdAccountsController extends Controller
 
         $adsAnalyticsCreateAsyncRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdsAnalyticsCreateAsyncRequest::class);
 
-        try {
-            $apiResult = $this->api->analyticsCreateReport($adAccountId, $adsAnalyticsCreateAsyncRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->analyticsCreateReport($adAccountId, $adsAnalyticsCreateAsyncRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdsAnalyticsCreateAsyncResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -529,12 +501,8 @@ class AdAccountsController extends Controller
 
         $granularity = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\Granularity::class);
 
-        try {
-            $apiResult = $this->api->analyticsCreateTemplateReport($adAccountId, $templateId, $startDate, $endDate, $granularity);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->analyticsCreateTemplateReport($adAccountId, $templateId, $startDate, $endDate, $granularity);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdsAnalyticsCreateAsyncResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -588,12 +556,8 @@ class AdAccountsController extends Controller
 
         $token = $request->string('token')->value();
 
-        try {
-            $apiResult = $this->api->analyticsGetMmmReport($adAccountId, $token);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->analyticsGetMmmReport($adAccountId, $token);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\GetMMMReportResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -647,12 +611,8 @@ class AdAccountsController extends Controller
 
         $token = $request->string('token')->value();
 
-        try {
-            $apiResult = $this->api->analyticsGetReport($adAccountId, $token);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->analyticsGetReport($adAccountId, $token);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdsAnalyticsGetAsyncResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -700,12 +660,8 @@ class AdAccountsController extends Controller
         }
 
 
-        try {
-            $apiResult = $this->api->sandboxDelete($adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->sandboxDelete($adAccountId);
 
         if ($apiResult instanceof string) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -769,12 +725,8 @@ class AdAccountsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->templatesList($adAccountId, $pageSize, $order, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->templatesList($adAccountId, $pageSize, $order, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TemplatesList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

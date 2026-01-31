@@ -87,7 +87,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="orderLineId">Unique identifier of an order line.</param>
-    virtual void order_lines_get(const std::string &adAccountId, const std::string &orderLineId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void order_lines_get( const std::string &adAccountId, const std::string &orderLineId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get order lines
     /// </summary>
@@ -98,7 +98,7 @@ private:
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="order">The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional, default to &quot;&quot;)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void order_lines_list(const std::string &adAccountId, const std::optional<int32_t> &pageSize, const std::optional<std::string> &order, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void order_lines_list( const std::string &adAccountId, const std::optional<int32_t> &pageSize, const std::optional<std::string> &order, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

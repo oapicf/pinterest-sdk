@@ -9,12 +9,9 @@
  */
 
 
-export type MediaType = 'IMAGE' | 'VIDEO';
-
 export const MediaType = {
-
-    Image: 'IMAGE' as MediaType,
-
-    Video: 'VIDEO' as MediaType
-};
+    Image: 'IMAGE',
+    Video: 'VIDEO'
+} as const;
+export type MediaType = typeof MediaType[keyof typeof MediaType];
 

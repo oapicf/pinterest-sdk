@@ -158,6 +158,10 @@ public class OASCatalogsRetailFeedsCreateRequest implements OAS.MappedProperties
         return propertyMappings;
     }
 
+    public OASCatalogsRetailFeedsCreateRequest() {
+        status = 'ACTIVE';
+    }
+
     public static OASCatalogsRetailFeedsCreateRequest getExample() {
         OASCatalogsRetailFeedsCreateRequest catalogsRetailFeedsCreateRequest = new OASCatalogsRetailFeedsCreateRequest();
           catalogsRetailFeedsCreateRequest.defaultCurrency = OASNullableCurrency.getExample();
@@ -170,7 +174,7 @@ public class OASCatalogsRetailFeedsCreateRequest implements OAS.MappedProperties
           catalogsRetailFeedsCreateRequest.catalogType = OASCatalogsType.getExample();
           catalogsRetailFeedsCreateRequest.defaultCountry = OASCountry.getExample();
           catalogsRetailFeedsCreateRequest.defaultAvailability = OASProductAvailabilityType.getExample();
-          catalogsRetailFeedsCreateRequest.status = '';
+          catalogsRetailFeedsCreateRequest.status = OASCatalogsStatus.getExample();
         return catalogsRetailFeedsCreateRequest;
     }
 

@@ -1,7 +1,6 @@
 goog.provide('API.Client.OauthAccessTokenRequestClientCredentials');
 
 /**
- * A request to receive a client token.
  * @record
  */
 API.Client.OauthAccessTokenRequestClientCredentials = function() {}
@@ -10,13 +9,13 @@ API.Client.OauthAccessTokenRequestClientCredentials = function() {}
  * @type {!string}
  * @export
  */
-API.Client.OauthAccessTokenRequestClientCredentials.prototype.grantType;
+API.Client.OauthAccessTokenRequestClientCredentials.prototype.scope;
 
 /**
  * @type {!string}
  * @export
  */
-API.Client.OauthAccessTokenRequestClientCredentials.prototype.scope;
+API.Client.OauthAccessTokenRequestClientCredentials.prototype.grantType;
 
 /** @enum {string} */
 API.Client.OauthAccessTokenRequestClientCredentials.GrantTypeEnum = { 

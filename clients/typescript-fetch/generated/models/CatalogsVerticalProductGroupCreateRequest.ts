@@ -57,7 +57,7 @@ export function CatalogsVerticalProductGroupCreateRequestFromJSONTyped(json: any
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailProductGroupCreateRequestFromJSONTyped(json, true), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsVerticalProductGroupCreateRequest exists with 'catalogType=${json['catalogType']}'`);
+            return json;
     }
 }
 
@@ -77,8 +77,7 @@ export function CatalogsVerticalProductGroupCreateRequestToJSONTyped(value?: Cat
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailProductGroupCreateRequestToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsVerticalProductGroupCreateRequest exists with 'catalogType=${value['catalogType']}'`);
+            return value;
     }
-
 }
 

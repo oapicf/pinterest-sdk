@@ -87,7 +87,7 @@ public class SearchControllerTest {
         // given
         String uri = UriTemplate.of("/search/partner/pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2498eb25");
+            .accept("[Ljava.lang.String;@50ebfc4f");
         request.getParameters()
             .add("term", "example") // The query parameter format should be 
             .add("country_code", "US") // The query parameter format should be 
@@ -139,7 +139,7 @@ public class SearchControllerTest {
         // given
         String uri = UriTemplate.of("/search/boards").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2dfafe6f");
+            .accept("[Ljava.lang.String;@32dcaffb");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -189,7 +189,7 @@ public class SearchControllerTest {
         // given
         String uri = UriTemplate.of("/search/pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3a456c10");
+            .accept("[Ljava.lang.String;@505e3cd4");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("query", "Plants") // The query parameter format should be 

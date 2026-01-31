@@ -12,18 +12,12 @@
 /**
  * Entity status
  */
-export type EntityStatus = 'ACTIVE' | 'PAUSED' | 'ARCHIVED' | 'DRAFT' | 'DELETED_DRAFT';
-
 export const EntityStatus = {
-
-    Active: 'ACTIVE' as EntityStatus,
-
-    Paused: 'PAUSED' as EntityStatus,
-
-    Archived: 'ARCHIVED' as EntityStatus,
-
-    Draft: 'DRAFT' as EntityStatus,
-
-    DeletedDraft: 'DELETED_DRAFT' as EntityStatus
-};
+    Active: 'ACTIVE',
+    Paused: 'PAUSED',
+    Archived: 'ARCHIVED',
+    Draft: 'DRAFT',
+    DeletedDraft: 'DELETED_DRAFT'
+} as const;
+export type EntityStatus = typeof EntityStatus[keyof typeof EntityStatus];
 

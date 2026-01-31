@@ -53,7 +53,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * This field includes all quiz data including questions, options, and results.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinData {
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
@@ -283,14 +283,10 @@ public class QuizPinData {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("questions");
-    openapiFields.add("results");
-    openapiFields.add("tie_breaker_type");
-    openapiFields.add("tie_breaker_custom_result");
+    openapiFields = new HashSet<String>(Arrays.asList("questions", "results", "tie_breaker_type", "tie_breaker_custom_result"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -302,7 +298,7 @@ public class QuizPinData {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!QuizPinData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in QuizPinData is not found in the empty JSON string", QuizPinData.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in QuizPinData is not found in the empty JSON string", QuizPinData.openapiRequiredFields.toString()));
         }
       }
 
@@ -310,7 +306,7 @@ public class QuizPinData {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!QuizPinData.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `QuizPinData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `QuizPinData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -319,7 +315,7 @@ public class QuizPinData {
         if (jsonArrayquestions != null) {
           // ensure the json data is an array
           if (!jsonObj.get("questions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `questions` to be an array in the JSON string but got `%s`", jsonObj.get("questions").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `questions` to be an array in the JSON string but got `%s`", jsonObj.get("questions").toString()));
           }
 
           // validate the optional field `questions` (array)
@@ -333,7 +329,7 @@ public class QuizPinData {
         if (jsonArrayresults != null) {
           // ensure the json data is an array
           if (!jsonObj.get("results").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `results` to be an array in the JSON string but got `%s`", jsonObj.get("results").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `results` to be an array in the JSON string but got `%s`", jsonObj.get("results").toString()));
           }
 
           // validate the optional field `results` (array)
@@ -343,7 +339,7 @@ public class QuizPinData {
         }
       }
       if ((jsonObj.get("tie_breaker_type") != null && !jsonObj.get("tie_breaker_type").isJsonNull()) && !jsonObj.get("tie_breaker_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tie_breaker_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tie_breaker_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `tie_breaker_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tie_breaker_type").toString()));
       }
       // validate the optional field `tie_breaker_type`
       if (jsonObj.get("tie_breaker_type") != null && !jsonObj.get("tie_breaker_type").isJsonNull()) {

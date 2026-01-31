@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -22,16 +22,6 @@ import com.google.gson.annotations.SerializedName;
 @ApiModel(description = "")
 public class InviteResponse {
   
-  @SerializedName("assets_summary")
-  private InviteAssetsSummary assetsSummary = null;
-  @SerializedName("business_roles")
-  private List<String> businessRoles = null;
-  @SerializedName("created_by_business")
-  private BusinessAccessUserSummary createdByBusiness = null;
-  @SerializedName("created_by_user")
-  private BusinessAccessUserSummary createdByUser = null;
-  @SerializedName("created_time")
-  private Integer createdTime = null;
   @SerializedName("id")
   private String id = null;
   @SerializedName("invite_data")
@@ -40,60 +30,16 @@ public class InviteResponse {
   private Boolean isReceivedInvite = null;
   @SerializedName("user")
   private BusinessAccessUserSummary user = null;
-
-  /**
-   **/
-  @ApiModelProperty(value = "")
-  public InviteAssetsSummary getAssetsSummary() {
-    return assetsSummary;
-  }
-  public void setAssetsSummary(InviteAssetsSummary assetsSummary) {
-    this.assetsSummary = assetsSummary;
-  }
-
-  /**
-   * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-   **/
-  @ApiModelProperty(value = "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.")
-  public List<String> getBusinessRoles() {
-    return businessRoles;
-  }
-  public void setBusinessRoles(List<String> businessRoles) {
-    this.businessRoles = businessRoles;
-  }
-
-  /**
-   * Metadata for the business that created the invite/request.
-   **/
-  @ApiModelProperty(value = "Metadata for the business that created the invite/request.")
-  public BusinessAccessUserSummary getCreatedByBusiness() {
-    return createdByBusiness;
-  }
-  public void setCreatedByBusiness(BusinessAccessUserSummary createdByBusiness) {
-    this.createdByBusiness = createdByBusiness;
-  }
-
-  /**
-   * Metadata for the user that created the invite/request.
-   **/
-  @ApiModelProperty(value = "Metadata for the user that created the invite/request.")
-  public BusinessAccessUserSummary getCreatedByUser() {
-    return createdByUser;
-  }
-  public void setCreatedByUser(BusinessAccessUserSummary createdByUser) {
-    this.createdByUser = createdByUser;
-  }
-
-  /**
-   * The time the invite/request was created. Returned in milliseconds.
-   **/
-  @ApiModelProperty(value = "The time the invite/request was created. Returned in milliseconds.")
-  public Integer getCreatedTime() {
-    return createdTime;
-  }
-  public void setCreatedTime(Integer createdTime) {
-    this.createdTime = createdTime;
-  }
+  @SerializedName("assets_summary")
+  private InviteAssetsSummary assetsSummary = null;
+  @SerializedName("business_roles")
+  private List<String> businessRoles = null;
+  @SerializedName("created_by_business")
+  private Object createdByBusiness = null;
+  @SerializedName("created_by_user")
+  private Object createdByUser = null;
+  @SerializedName("created_time")
+  private Integer createdTime = null;
 
   /**
    * Unique identifier of the invite/request.
@@ -138,6 +84,60 @@ public class InviteResponse {
     this.user = user;
   }
 
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public InviteAssetsSummary getAssetsSummary() {
+    return assetsSummary;
+  }
+  public void setAssetsSummary(InviteAssetsSummary assetsSummary) {
+    this.assetsSummary = assetsSummary;
+  }
+
+  /**
+   * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+   **/
+  @ApiModelProperty(value = "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.")
+  public List<String> getBusinessRoles() {
+    return businessRoles;
+  }
+  public void setBusinessRoles(List<String> businessRoles) {
+    this.businessRoles = businessRoles;
+  }
+
+  /**
+   * Metadata for the business that created the invite/request.
+   **/
+  @ApiModelProperty(value = "Metadata for the business that created the invite/request.")
+  public Object getCreatedByBusiness() {
+    return createdByBusiness;
+  }
+  public void setCreatedByBusiness(Object createdByBusiness) {
+    this.createdByBusiness = createdByBusiness;
+  }
+
+  /**
+   * Metadata for the user that created the invite/request.
+   **/
+  @ApiModelProperty(value = "Metadata for the user that created the invite/request.")
+  public Object getCreatedByUser() {
+    return createdByUser;
+  }
+  public void setCreatedByUser(Object createdByUser) {
+    this.createdByUser = createdByUser;
+  }
+
+  /**
+   * The time the invite/request was created. Returned in milliseconds.
+   **/
+  @ApiModelProperty(value = "The time the invite/request was created. Returned in milliseconds.")
+  public Integer getCreatedTime() {
+    return createdTime;
+  }
+  public void setCreatedTime(Integer createdTime) {
+    this.createdTime = createdTime;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -148,29 +148,29 @@ public class InviteResponse {
       return false;
     }
     InviteResponse inviteResponse = (InviteResponse) o;
-    return (this.assetsSummary == null ? inviteResponse.assetsSummary == null : this.assetsSummary.equals(inviteResponse.assetsSummary)) &&
+    return (this.id == null ? inviteResponse.id == null : this.id.equals(inviteResponse.id)) &&
+        (this.inviteData == null ? inviteResponse.inviteData == null : this.inviteData.equals(inviteResponse.inviteData)) &&
+        (this.isReceivedInvite == null ? inviteResponse.isReceivedInvite == null : this.isReceivedInvite.equals(inviteResponse.isReceivedInvite)) &&
+        (this.user == null ? inviteResponse.user == null : this.user.equals(inviteResponse.user)) &&
+        (this.assetsSummary == null ? inviteResponse.assetsSummary == null : this.assetsSummary.equals(inviteResponse.assetsSummary)) &&
         (this.businessRoles == null ? inviteResponse.businessRoles == null : this.businessRoles.equals(inviteResponse.businessRoles)) &&
         (this.createdByBusiness == null ? inviteResponse.createdByBusiness == null : this.createdByBusiness.equals(inviteResponse.createdByBusiness)) &&
         (this.createdByUser == null ? inviteResponse.createdByUser == null : this.createdByUser.equals(inviteResponse.createdByUser)) &&
-        (this.createdTime == null ? inviteResponse.createdTime == null : this.createdTime.equals(inviteResponse.createdTime)) &&
-        (this.id == null ? inviteResponse.id == null : this.id.equals(inviteResponse.id)) &&
-        (this.inviteData == null ? inviteResponse.inviteData == null : this.inviteData.equals(inviteResponse.inviteData)) &&
-        (this.isReceivedInvite == null ? inviteResponse.isReceivedInvite == null : this.isReceivedInvite.equals(inviteResponse.isReceivedInvite)) &&
-        (this.user == null ? inviteResponse.user == null : this.user.equals(inviteResponse.user));
+        (this.createdTime == null ? inviteResponse.createdTime == null : this.createdTime.equals(inviteResponse.createdTime));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this.id == null ? 0: this.id.hashCode());
+    result = 31 * result + (this.inviteData == null ? 0: this.inviteData.hashCode());
+    result = 31 * result + (this.isReceivedInvite == null ? 0: this.isReceivedInvite.hashCode());
+    result = 31 * result + (this.user == null ? 0: this.user.hashCode());
     result = 31 * result + (this.assetsSummary == null ? 0: this.assetsSummary.hashCode());
     result = 31 * result + (this.businessRoles == null ? 0: this.businessRoles.hashCode());
     result = 31 * result + (this.createdByBusiness == null ? 0: this.createdByBusiness.hashCode());
     result = 31 * result + (this.createdByUser == null ? 0: this.createdByUser.hashCode());
     result = 31 * result + (this.createdTime == null ? 0: this.createdTime.hashCode());
-    result = 31 * result + (this.id == null ? 0: this.id.hashCode());
-    result = 31 * result + (this.inviteData == null ? 0: this.inviteData.hashCode());
-    result = 31 * result + (this.isReceivedInvite == null ? 0: this.isReceivedInvite.hashCode());
-    result = 31 * result + (this.user == null ? 0: this.user.hashCode());
     return result;
   }
 
@@ -179,15 +179,15 @@ public class InviteResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteResponse {\n");
     
+    sb.append("  id: ").append(id).append("\n");
+    sb.append("  inviteData: ").append(inviteData).append("\n");
+    sb.append("  isReceivedInvite: ").append(isReceivedInvite).append("\n");
+    sb.append("  user: ").append(user).append("\n");
     sb.append("  assetsSummary: ").append(assetsSummary).append("\n");
     sb.append("  businessRoles: ").append(businessRoles).append("\n");
     sb.append("  createdByBusiness: ").append(createdByBusiness).append("\n");
     sb.append("  createdByUser: ").append(createdByUser).append("\n");
     sb.append("  createdTime: ").append(createdTime).append("\n");
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  inviteData: ").append(inviteData).append("\n");
-    sb.append("  isReceivedInvite: ").append(isReceivedInvite).append("\n");
-    sb.append("  user: ").append(user).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -17,14 +17,14 @@ use serde::{Deserialize, Serialize};
 #[serde(untagged)]
 pub enum ItemAttributesRequestAllOfImageLink {
     /// The list of links to the main product images
-    Array(Vec<String>),
+    ArrayVecString(Vec<String>),
     /// The main product image link.
     String(String),
 }
 
 impl Default for ItemAttributesRequestAllOfImageLink {
     fn default() -> Self {
-        Self::Array(Default::default())
+        Self::ArrayVecString(Default::default())
     }
 }
 

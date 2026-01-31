@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_mmm_reporting_column
 import model_mmm_reporting_targeting_type
@@ -24,6 +26,7 @@ type Level* {.pure.} = enum
 
 type CreateMMMReportRequest* = object
   ## 
+  countries*: Option[seq[TargetingAdvertiserCountry]] ## A List of countries for filtering
   reportName*: string ## Name of the Marketing Mix Modeling (MMM) report
   startDate*: string ## Metric report start date (UTC). Format: YYYY-MM-DD
   endDate*: string ## Metric report end date (UTC). Format: YYYY-MM-DD
@@ -31,28 +34,81 @@ type CreateMMMReportRequest* = object
   level*: Level ## Level of the report
   targetingTypes*: seq[MMMReportingTargetingType] ## List of targeting types
   columns*: seq[MMMReportingColumn] ## Metric and entity columns
-  countries*: seq[TargetingAdvertiserCountry] ## A List of countries for filtering
 
 func `%`*(v: Granularity): JsonNode =
-  let str = case v:
-    of Granularity.DAY: "DAY"
-    of Granularity.WEEK: "WEEK"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Granularity.DAY: %"DAY"
+    of Granularity.WEEK: %"WEEK"
 func `$`*(v: Granularity): string =
   result = case v:
-    of Granularity.DAY: "DAY"
-    of Granularity.WEEK: "WEEK"
+    of Granularity.DAY: $("DAY")
+    of Granularity.WEEK: $("WEEK")
+
+proc to*(node: JsonNode, T: typedesc[Granularity]): Granularity =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Granularity, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("DAY"):
+    return Granularity.DAY
+  of $("WEEK"):
+    return Granularity.WEEK
+  else:
+    raise newException(ValueError, "Invalid enum value for Granularity: " & strVal)
 
 func `%`*(v: Level): JsonNode =
-  let str = case v:
-    of Level.CAMPAIGNTARGETING: "CAMPAIGN_TARGETING"
-    of Level.ADGROUPTARGETING: "AD_GROUP_TARGETING"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Level.CAMPAIGNTARGETING: %"CAMPAIGN_TARGETING"
+    of Level.ADGROUPTARGETING: %"AD_GROUP_TARGETING"
 func `$`*(v: Level): string =
   result = case v:
-    of Level.CAMPAIGNTARGETING: "CAMPAIGN_TARGETING"
-    of Level.ADGROUPTARGETING: "AD_GROUP_TARGETING"
+    of Level.CAMPAIGNTARGETING: $("CAMPAIGN_TARGETING")
+    of Level.ADGROUPTARGETING: $("AD_GROUP_TARGETING")
+
+proc to*(node: JsonNode, T: typedesc[Level]): Level =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Level, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CAMPAIGN_TARGETING"):
+    return Level.CAMPAIGNTARGETING
+  of $("AD_GROUP_TARGETING"):
+    return Level.ADGROUPTARGETING
+  else:
+    raise newException(ValueError, "Invalid enum value for Level: " & strVal)
+
+
+# Custom JSON deserialization for CreateMMMReportRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CreateMMMReportRequest]): CreateMMMReportRequest =
+  result = CreateMMMReportRequest()
+  if node.kind == JObject:
+    if node.hasKey("countries") and node["countries"].kind != JNull:
+      result.countries = some(to(node["countries"], typeof(result.countries.get())))
+    if node.hasKey("report_name"):
+      result.reportName = to(node["report_name"], string)
+    if node.hasKey("start_date"):
+      result.startDate = to(node["start_date"], string)
+    if node.hasKey("end_date"):
+      result.endDate = to(node["end_date"], string)
+    if node.hasKey("granularity"):
+      result.granularity = to(node["granularity"], Granularity)
+    if node.hasKey("level"):
+      result.level = to(node["level"], Level)
+    if node.hasKey("targeting_types"):
+      result.targetingTypes = to(node["targeting_types"], seq[MMMReportingTargetingType])
+    if node.hasKey("columns"):
+      result.columns = to(node["columns"], seq[MMMReportingColumn])
+
+# Custom JSON serialization for CreateMMMReportRequest with custom field names
+proc `%`*(obj: CreateMMMReportRequest): JsonNode =
+  result = newJObject()
+  if obj.countries.isSome():
+    result["countries"] = %obj.countries.get()
+  result["report_name"] = %obj.reportName
+  result["start_date"] = %obj.startDate
+  result["end_date"] = %obj.endDate
+  result["granularity"] = %obj.granularity
+  result["level"] = %obj.level
+  result["targeting_types"] = %obj.targetingTypes
+  result["columns"] = %obj.columns
+

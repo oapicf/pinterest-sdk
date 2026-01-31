@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { AudienceCreateRequest1AudienceType } from './AudienceCreateRequest1AudienceType';
+import type { AudienceType } from './AudienceType';
 import {
-    AudienceCreateRequest1AudienceTypeFromJSON,
-    AudienceCreateRequest1AudienceTypeFromJSONTyped,
-    AudienceCreateRequest1AudienceTypeToJSON,
-    AudienceCreateRequest1AudienceTypeToJSONTyped,
-} from './AudienceCreateRequest1AudienceType';
+    AudienceTypeFromJSON,
+    AudienceTypeFromJSONTyped,
+    AudienceTypeToJSON,
+    AudienceTypeToJSONTyped,
+} from './AudienceType';
 import type { AudienceRule } from './AudienceRule';
 import {
     AudienceRuleFromJSON,
@@ -59,12 +59,14 @@ export interface AudienceCreateRequest {
      */
     description?: string;
     /**
-     * 
-     * @type {AudienceCreateRequest1AudienceType}
+     * <a href="/docs/reference/glossary/#Audience Types">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+     * @type {AudienceType}
      * @memberof AudienceCreateRequest
      */
-    audienceType: AudienceCreateRequest1AudienceType;
+    audienceType: AudienceType;
 }
+
+
 
 /**
  * Check if a given object implements the AudienceCreateRequest interface.
@@ -90,7 +92,7 @@ export function AudienceCreateRequestFromJSONTyped(json: any, ignoreDiscriminato
         'name': json['name'],
         'rule': AudienceRuleFromJSON(json['rule']),
         'description': json['description'] == null ? undefined : json['description'],
-        'audienceType': AudienceCreateRequest1AudienceTypeFromJSON(json['audience_type']),
+        'audienceType': AudienceTypeFromJSON(json['audience_type']),
     };
 }
 
@@ -109,7 +111,7 @@ export function AudienceCreateRequestToJSONTyped(value?: AudienceCreateRequest |
         'name': value['name'],
         'rule': AudienceRuleToJSON(value['rule']),
         'description': value['description'],
-        'audience_type': AudienceCreateRequest1AudienceTypeToJSON(value['audienceType']),
+        'audience_type': AudienceTypeToJSON(value['audienceType']),
     };
 }
 

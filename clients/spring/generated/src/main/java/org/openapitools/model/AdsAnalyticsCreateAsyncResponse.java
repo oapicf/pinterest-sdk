@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * AdsAnalyticsCreateAsyncResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsAnalyticsCreateAsyncResponse {
 
   private @Nullable BulkReportingJobStatus reportStatus;
@@ -33,7 +33,7 @@ public class AdsAnalyticsCreateAsyncResponse {
 
   private JsonNullable<String> message = JsonNullable.<String>undefined();
 
-  public AdsAnalyticsCreateAsyncResponse reportStatus(BulkReportingJobStatus reportStatus) {
+  public AdsAnalyticsCreateAsyncResponse reportStatus(@Nullable BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
     return this;
   }
@@ -45,15 +45,15 @@ public class AdsAnalyticsCreateAsyncResponse {
   @Valid 
   @Schema(name = "report_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("report_status")
-  public BulkReportingJobStatus getReportStatus() {
+  public @Nullable BulkReportingJobStatus getReportStatus() {
     return reportStatus;
   }
 
-  public void setReportStatus(BulkReportingJobStatus reportStatus) {
+  public void setReportStatus(@Nullable BulkReportingJobStatus reportStatus) {
     this.reportStatus = reportStatus;
   }
 
-  public AdsAnalyticsCreateAsyncResponse token(String token) {
+  public AdsAnalyticsCreateAsyncResponse token(@Nullable String token) {
     this.token = token;
     return this;
   }
@@ -65,11 +65,11 @@ public class AdsAnalyticsCreateAsyncResponse {
   
   @Schema(name = "token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("token")
-  public String getToken() {
+  public @Nullable String getToken() {
     return token;
   }
 
-  public void setToken(String token) {
+  public void setToken(@Nullable String token) {
     this.token = token;
   }
 

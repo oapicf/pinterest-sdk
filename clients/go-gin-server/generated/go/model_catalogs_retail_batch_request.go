@@ -17,7 +17,8 @@ type CatalogsRetailBatchRequest struct {
 
 	Country Country `json:"country"`
 
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 
 	// Array with catalogs item operations
 	Items []CatalogsRetailBatchRequestItemsInner `json:"items"`

@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AudienceRule", description = "JSON object defining targeted audience users. Example rule formats per audience type:<br>CUSTOMER_LIST: { \"customer_list_id\": \"&lt;customer list ID&gt;\"}<br>ACTALIKE: { \"seed_id\": [\"&lt;audience ID&gt;\"], \"country\": \"US\", \"percentage\": \"10\" }<br>(Valid countries include: \"US\", \"CA\", and \"GB\". Percentage should be 1-10.<br>The targeted audience should be this % size across Pinterest.)<br>VISITOR: { \"visitor_source_id\": [\"&lt;conversion tag ID&gt;\"], \"retention_days\": \"180\", \"event_source\": {\"=\": [\"web\", \"mobile\"]}, \"ingestion_source\": {\"=\": [\"tag\"]}}<br>(Retention days should be 1-540. Retention applies to specific customers.)<br>ENGAGEMENT: {\"engagement_domain\": [\"www.entomi.com\"], \"engager_type\": 1}<br>For more details on engagement audiences, see <a href=\"/docs/redoc/adtech_ads_v4/#section/November-2021\" target=\"_blank\">November 2021 changelog</a>.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceRule {
 
   private @Nullable String country;
@@ -75,7 +75,7 @@ public class AudienceRule {
 
   private @Nullable String adAccountId;
 
-  public AudienceRule country(String country) {
+  public AudienceRule country(@Nullable String country) {
     this.country = country;
     return this;
   }
@@ -87,15 +87,15 @@ public class AudienceRule {
   
   @Schema(name = "country", example = "US", description = "Valid countries include: \"US\", \"CA\", and \"GB\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("country")
-  public String getCountry() {
+  public @Nullable String getCountry() {
     return country;
   }
 
-  public void setCountry(String country) {
+  public void setCountry(@Nullable String country) {
     this.country = country;
   }
 
-  public AudienceRule customerListId(String customerListId) {
+  public AudienceRule customerListId(@Nullable String customerListId) {
     this.customerListId = customerListId;
     return this;
   }
@@ -107,11 +107,11 @@ public class AudienceRule {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "customer_list_id", example = "5497558859876", description = "Customer list ID. For CUSTOMER_LIST `audience_type`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("customer_list_id")
-  public String getCustomerListId() {
+  public @Nullable String getCustomerListId() {
     return customerListId;
   }
 
-  public void setCustomerListId(String customerListId) {
+  public void setCustomerListId(@Nullable String customerListId) {
     this.customerListId = customerListId;
   }
 
@@ -143,7 +143,7 @@ public class AudienceRule {
     this.engagementDomain = engagementDomain;
   }
 
-  public AudienceRule engagementType(String engagementType) {
+  public AudienceRule engagementType(@Nullable String engagementType) {
     this.engagementType = engagementType;
     return this;
   }
@@ -155,15 +155,15 @@ public class AudienceRule {
   
   @Schema(name = "engagement_type", example = "click", description = "Engagement type enum. Optional for ENGAGEMENT `audience_type`. Supported values are `click`, `save`, `closeup`, `comment` and `like`. All engagements are included if this field is not set. ", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("engagement_type")
-  public String getEngagementType() {
+  public @Nullable String getEngagementType() {
     return engagementType;
   }
 
-  public void setEngagementType(String engagementType) {
+  public void setEngagementType(@Nullable String engagementType) {
     this.engagementType = engagementType;
   }
 
-  public AudienceRule event(String event) {
+  public AudienceRule event(@Nullable String event) {
     this.event = event;
     return this;
   }
@@ -175,15 +175,15 @@ public class AudienceRule {
   
   @Schema(name = "event", example = "checkout", description = "A Pinterest tag event. Optional for VISITOR `audience_type`. Possible values are `pagevisit`, `signup`, `checkout`, `viewcategory`, `search`, `addtocart`, `watchvideo`, `lead`, and `custom`. This field also accepts a partner-defined Pinterest tag event.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("event")
-  public String getEvent() {
+  public @Nullable String getEvent() {
     return event;
   }
 
-  public void setEvent(String event) {
+  public void setEvent(@Nullable String event) {
     this.event = event;
   }
 
-  public AudienceRule eventData(PinterestTagEventData eventData) {
+  public AudienceRule eventData(@Nullable PinterestTagEventData eventData) {
     this.eventData = eventData;
     return this;
   }
@@ -195,15 +195,15 @@ public class AudienceRule {
   @Valid 
   @Schema(name = "event_data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("event_data")
-  public PinterestTagEventData getEventData() {
+  public @Nullable PinterestTagEventData getEventData() {
     return eventData;
   }
 
-  public void setEventData(PinterestTagEventData eventData) {
+  public void setEventData(@Nullable PinterestTagEventData eventData) {
     this.eventData = eventData;
   }
 
-  public AudienceRule percentage(Integer percentage) {
+  public AudienceRule percentage(@Nullable Integer percentage) {
     this.percentage = percentage;
     return this;
   }
@@ -215,11 +215,11 @@ public class AudienceRule {
   
   @Schema(name = "percentage", example = "3", description = "Percentage should be 1-10. The targeted audience should be this % size across Pinterest.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("percentage")
-  public Integer getPercentage() {
+  public @Nullable Integer getPercentage() {
     return percentage;
   }
 
-  public void setPercentage(Integer percentage) {
+  public void setPercentage(@Nullable Integer percentage) {
     this.percentage = percentage;
   }
 
@@ -251,7 +251,7 @@ public class AudienceRule {
     this.pinId = pinId;
   }
 
-  public AudienceRule prefill(Boolean prefill) {
+  public AudienceRule prefill(@Nullable Boolean prefill) {
     this.prefill = prefill;
     return this;
   }
@@ -263,15 +263,15 @@ public class AudienceRule {
   
   @Schema(name = "prefill", example = "true", description = "Optional for VISITOR `audience_type`. If `true`, the specified rule on existing engagement data is applied to pre-populate the audience. If `false`, the audience is empty at creation time. The default is `true`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("prefill")
-  public Boolean getPrefill() {
+  public @Nullable Boolean getPrefill() {
     return prefill;
   }
 
-  public void setPrefill(Boolean prefill) {
+  public void setPrefill(@Nullable Boolean prefill) {
     this.prefill = prefill;
   }
 
-  public AudienceRule retentionDays(Integer retentionDays) {
+  public AudienceRule retentionDays(@Nullable Integer retentionDays) {
     this.retentionDays = retentionDays;
     return this;
   }
@@ -283,11 +283,11 @@ public class AudienceRule {
   
   @Schema(name = "retention_days", example = "30", description = "Number of days a Pinterest user remains in the audience. Optional for ENGAGEMENT and VISITOR `audience_type`. Accepted range is 1-540. Defaults to 180 if not specified.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("retention_days")
-  public Integer getRetentionDays() {
+  public @Nullable Integer getRetentionDays() {
     return retentionDays;
   }
 
-  public void setRetentionDays(Integer retentionDays) {
+  public void setRetentionDays(@Nullable Integer retentionDays) {
     this.retentionDays = retentionDays;
   }
 
@@ -347,7 +347,7 @@ public class AudienceRule {
     this.url = url;
   }
 
-  public AudienceRule visitorSourceId(String visitorSourceId) {
+  public AudienceRule visitorSourceId(@Nullable String visitorSourceId) {
     this.visitorSourceId = visitorSourceId;
     return this;
   }
@@ -359,15 +359,15 @@ public class AudienceRule {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "visitor_source_id", example = "549755885175", description = "The conversion tag ID, or the Pinterest tag ID, that you use on your website. For VISITOR `audience_type`.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("visitor_source_id")
-  public String getVisitorSourceId() {
+  public @Nullable String getVisitorSourceId() {
     return visitorSourceId;
   }
 
-  public void setVisitorSourceId(String visitorSourceId) {
+  public void setVisitorSourceId(@Nullable String visitorSourceId) {
     this.visitorSourceId = visitorSourceId;
   }
 
-  public AudienceRule eventSource(Object eventSource) {
+  public AudienceRule eventSource(@Nullable Object eventSource) {
     this.eventSource = eventSource;
     return this;
   }
@@ -379,15 +379,15 @@ public class AudienceRule {
   
   @Schema(name = "event_source", example = "{\"=\":[\"web\",\"mobile\"]}", description = "Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: web, mobile, offline", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("event_source")
-  public Object getEventSource() {
+  public @Nullable Object getEventSource() {
     return eventSource;
   }
 
-  public void setEventSource(Object eventSource) {
+  public void setEventSource(@Nullable Object eventSource) {
     this.eventSource = eventSource;
   }
 
-  public AudienceRule ingestionSource(Object ingestionSource) {
+  public AudienceRule ingestionSource(@Nullable Object ingestionSource) {
     this.ingestionSource = ingestionSource;
     return this;
   }
@@ -399,15 +399,15 @@ public class AudienceRule {
   
   @Schema(name = "ingestion_source", example = "{\"=\":[\"tag\"]}", description = "Optional for VISITOR. You can use it as a {'=': [value]}. Supported values are: tag, mmp, file_upload, conversions_api", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ingestion_source")
-  public Object getIngestionSource() {
+  public @Nullable Object getIngestionSource() {
     return ingestionSource;
   }
 
-  public void setIngestionSource(Object ingestionSource) {
+  public void setIngestionSource(@Nullable Object ingestionSource) {
     this.ingestionSource = ingestionSource;
   }
 
-  public AudienceRule engagerType(Integer engagerType) {
+  public AudienceRule engagerType(@Nullable Integer engagerType) {
     this.engagerType = engagerType;
     return this;
   }
@@ -419,11 +419,11 @@ public class AudienceRule {
   
   @Schema(name = "engager_type", example = "1", description = "Optional for ENGAGEMENT. Engager type value should be 1-2.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("engager_type")
-  public Integer getEngagerType() {
+  public @Nullable Integer getEngagerType() {
     return engagerType;
   }
 
-  public void setEngagerType(Integer engagerType) {
+  public void setEngagerType(@Nullable Integer engagerType) {
     this.engagerType = engagerType;
   }
 
@@ -511,7 +511,7 @@ public class AudienceRule {
     this.objectiveType = objectiveType;
   }
 
-  public AudienceRule adAccountId(String adAccountId) {
+  public AudienceRule adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -523,11 +523,11 @@ public class AudienceRule {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 

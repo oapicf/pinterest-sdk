@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * Audience
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Audience {
 
   private @Nullable String adAccountId;
@@ -48,7 +48,7 @@ public class Audience {
 
   private JsonNullable<Integer> updatedTimestamp = JsonNullable.<Integer>undefined();
 
-  public Audience adAccountId(String adAccountId) {
+  public Audience adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -60,15 +60,15 @@ public class Audience {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
-  public Audience id(String id) {
+  public Audience id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -80,15 +80,15 @@ public class Audience {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "1234", description = "Audience ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public Audience name(String name) {
+  public Audience name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -100,15 +100,15 @@ public class Audience {
   
   @Schema(name = "name", example = "ACME Tools", description = "Audience name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public Audience audienceType(String audienceType) {
+  public Audience audienceType(@Nullable String audienceType) {
     this.audienceType = audienceType;
     return this;
   }
@@ -120,11 +120,11 @@ public class Audience {
   
   @Schema(name = "audience_type", description = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("audience_type")
-  public String getAudienceType() {
+  public @Nullable String getAudienceType() {
     return audienceType;
   }
 
-  public void setAudienceType(String audienceType) {
+  public void setAudienceType(@Nullable String audienceType) {
     this.audienceType = audienceType;
   }
 
@@ -148,7 +148,7 @@ public class Audience {
     this.description = description;
   }
 
-  public Audience rule(AudienceRule rule) {
+  public Audience rule(@Nullable AudienceRule rule) {
     this.rule = rule;
     return this;
   }
@@ -160,11 +160,11 @@ public class Audience {
   @Valid 
   @Schema(name = "rule", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rule")
-  public AudienceRule getRule() {
+  public @Nullable AudienceRule getRule() {
     return rule;
   }
 
-  public void setRule(AudienceRule rule) {
+  public void setRule(@Nullable AudienceRule rule) {
     this.rule = rule;
   }
 
@@ -188,7 +188,7 @@ public class Audience {
     this.size = size;
   }
 
-  public Audience status(String status) {
+  public Audience status(@Nullable String status) {
     this.status = status;
     return this;
   }
@@ -200,15 +200,15 @@ public class Audience {
   
   @Schema(name = "status", description = "Audience status. READY, INITIALIZING, TOO_SMALL - Each audience list needs to have at least 100 people with Pinterest accounts before you can start using it.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public String getStatus() {
+  public @Nullable String getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@Nullable String status) {
     this.status = status;
   }
 
-  public Audience type(String type) {
+  public Audience type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -220,11 +220,11 @@ public class Audience {
   
   @Schema(name = "type", example = "audience", description = "Always \"audience\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public String getType() {
+  public @Nullable String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 

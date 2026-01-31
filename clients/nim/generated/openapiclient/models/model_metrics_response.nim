@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_object
 
 type MetricsResponse* = object
   ## 
-  data*: seq[object]
+  data*: Option[seq[JsonNode]]
+

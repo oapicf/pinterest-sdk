@@ -9,11 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_bulk_reporting_job_status
 
 type AdsAnalyticsCreateAsyncResponse* = object
   ## 
-  reportStatus*: BulkReportingJobStatus
-  token*: string
-  message*: string
+  reportStatus*: Option[BulkReportingJobStatus]
+  token*: Option[string]
+  message*: Option[string]
+
+
+# Custom JSON deserialization for AdsAnalyticsCreateAsyncResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[AdsAnalyticsCreateAsyncResponse]): AdsAnalyticsCreateAsyncResponse =
+  result = AdsAnalyticsCreateAsyncResponse()
+  if node.kind == JObject:
+    if node.hasKey("report_status") and node["report_status"].kind != JNull:
+      result.reportStatus = some(to(node["report_status"], typeof(result.reportStatus.get())))
+    if node.hasKey("token") and node["token"].kind != JNull:
+      result.token = some(to(node["token"], typeof(result.token.get())))
+    if node.hasKey("message") and node["message"].kind != JNull:
+      result.message = some(to(node["message"], typeof(result.message.get())))
+
+# Custom JSON serialization for AdsAnalyticsCreateAsyncResponse with custom field names
+proc `%`*(obj: AdsAnalyticsCreateAsyncResponse): JsonNode =
+  result = newJObject()
+  if obj.reportStatus.isSome():
+    result["report_status"] = %obj.reportStatus.get()
+  if obj.token.isSome():
+    result["token"] = %obj.token.get()
+  if obj.message.isSome():
+    result["message"] = %obj.message.get()
+

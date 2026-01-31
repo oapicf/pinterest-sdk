@@ -48,7 +48,7 @@ export function CatalogsHotelReportParametersReportFromJSONTyped(json: any, igno
         case 'FEED_INGESTION_ISSUES':
             return Object.assign({}, CatalogsReportFeedIngestionFilterFromJSONTyped(json, true), { reportType: 'FEED_INGESTION_ISSUES' } as const);
         default:
-            throw new Error(`No variant of CatalogsHotelReportParametersReport exists with 'reportType=${json['reportType']}'`);
+            return json;
     }
 }
 
@@ -66,8 +66,7 @@ export function CatalogsHotelReportParametersReportToJSONTyped(value?: CatalogsH
         case 'FEED_INGESTION_ISSUES':
             return Object.assign({}, CatalogsReportFeedIngestionFilterToJSON(value), { reportType: 'FEED_INGESTION_ISSUES' } as const);
         default:
-            throw new Error(`No variant of CatalogsHotelReportParametersReport exists with 'reportType=${value['reportType']}'`);
+            return value;
     }
-
 }
 

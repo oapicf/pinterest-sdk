@@ -121,8 +121,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "rejected_logs":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                rejectedLogs = new Option<List<IntegrationLogsInvalidLogResponseRejectedLogsInner>?>(JsonSerializer.Deserialize<List<IntegrationLogsInvalidLogResponseRejectedLogsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            rejectedLogs = new Option<List<IntegrationLogsInvalidLogResponseRejectedLogsInner>?>(JsonSerializer.Deserialize<List<IntegrationLogsInvalidLogResponseRejectedLogsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

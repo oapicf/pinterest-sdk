@@ -9,15 +9,594 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_batch_operation
-import model_catalogs_items_request_language
 import model_country
 import model_item_delete_discontinued_batch_record
+
+type Language* {.pure.} = enum
+  AfZA
+  ArSA
+  BgBG
+  BnIN
+  CsCZ
+  DaDK
+  De
+  ElGR
+  EnAU
+  EnCA
+  EnGB
+  EnIN
+  EnUS
+  Es419
+  EsAR
+  EsES
+  EsMX
+  FiFI
+  Fr
+  FrCA
+  HeIL
+  HiIN
+  HrHR
+  HuHU
+  IdID
+  It
+  Ja
+  KoKR
+  MsMY
+  NbNO
+  Nl
+  PlPL
+  PtBR
+  PtPT
+  RoRO
+  RuRU
+  SkSK
+  SvSE
+  TeIN
+  ThTH
+  TlPH
+  Tr
+  UkUA
+  ViVN
+  ZhCN
+  ZhTW
+  AM
+  AR
+  AZ
+  BG
+  BN
+  BS
+  CA
+  CS
+  DA
+  DV
+  DZ
+  DE
+  EL
+  EN
+  ES
+  ET
+  FA
+  FI
+  FR
+  HE
+  HI
+  HR
+  HU
+  HY
+  ID
+  IN
+  IS
+  IT
+  IW
+  JA
+  KA
+  KM
+  KO
+  LO
+  LT
+  LV
+  MK
+  MN
+  MS
+  MY
+  NB
+  NE
+  NL
+  NO
+  PL
+  PT
+  RO
+  RU
+  SK
+  SL
+  SQ
+  SR
+  SV
+  TL
+  UK
+  VI
+  TE
+  TH
+  TR
+  XX
+  ZH
 
 type CatalogsItemsDeleteDiscontinuedBatchRequest* = object
   ## Request object to discontinue catalogs items
   country*: Country
-  language*: CatalogsItemsRequest_language
+  language*: Language ## We recommend using the CatalogsLocale values.
   operation*: BatchOperation
   items*: seq[ItemDeleteDiscontinuedBatchRecord] ## Array with catalogs items
+
+func `%`*(v: Language): JsonNode =
+  result = case v:
+    of Language.AfZA: %"af-ZA"
+    of Language.ArSA: %"ar-SA"
+    of Language.BgBG: %"bg-BG"
+    of Language.BnIN: %"bn-IN"
+    of Language.CsCZ: %"cs-CZ"
+    of Language.DaDK: %"da-DK"
+    of Language.De: %"de"
+    of Language.ElGR: %"el-GR"
+    of Language.EnAU: %"en-AU"
+    of Language.EnCA: %"en-CA"
+    of Language.EnGB: %"en-GB"
+    of Language.EnIN: %"en-IN"
+    of Language.EnUS: %"en-US"
+    of Language.Es419: %"es-419"
+    of Language.EsAR: %"es-AR"
+    of Language.EsES: %"es-ES"
+    of Language.EsMX: %"es-MX"
+    of Language.FiFI: %"fi-FI"
+    of Language.Fr: %"fr"
+    of Language.FrCA: %"fr-CA"
+    of Language.HeIL: %"he-IL"
+    of Language.HiIN: %"hi-IN"
+    of Language.HrHR: %"hr-HR"
+    of Language.HuHU: %"hu-HU"
+    of Language.IdID: %"id-ID"
+    of Language.It: %"it"
+    of Language.Ja: %"ja"
+    of Language.KoKR: %"ko-KR"
+    of Language.MsMY: %"ms-MY"
+    of Language.NbNO: %"nb-NO"
+    of Language.Nl: %"nl"
+    of Language.PlPL: %"pl-PL"
+    of Language.PtBR: %"pt-BR"
+    of Language.PtPT: %"pt-PT"
+    of Language.RoRO: %"ro-RO"
+    of Language.RuRU: %"ru-RU"
+    of Language.SkSK: %"sk-SK"
+    of Language.SvSE: %"sv-SE"
+    of Language.TeIN: %"te-IN"
+    of Language.ThTH: %"th-TH"
+    of Language.TlPH: %"tl-PH"
+    of Language.Tr: %"tr"
+    of Language.UkUA: %"uk-UA"
+    of Language.ViVN: %"vi-VN"
+    of Language.ZhCN: %"zh-CN"
+    of Language.ZhTW: %"zh-TW"
+    of Language.AM: %"AM"
+    of Language.AR: %"AR"
+    of Language.AZ: %"AZ"
+    of Language.BG: %"BG"
+    of Language.BN: %"BN"
+    of Language.BS: %"BS"
+    of Language.CA: %"CA"
+    of Language.CS: %"CS"
+    of Language.DA: %"DA"
+    of Language.DV: %"DV"
+    of Language.DZ: %"DZ"
+    of Language.DE: %"DE"
+    of Language.EL: %"EL"
+    of Language.EN: %"EN"
+    of Language.ES: %"ES"
+    of Language.ET: %"ET"
+    of Language.FA: %"FA"
+    of Language.FI: %"FI"
+    of Language.FR: %"FR"
+    of Language.HE: %"HE"
+    of Language.HI: %"HI"
+    of Language.HR: %"HR"
+    of Language.HU: %"HU"
+    of Language.HY: %"HY"
+    of Language.ID: %"ID"
+    of Language.IN: %"IN"
+    of Language.IS: %"IS"
+    of Language.IT: %"IT"
+    of Language.IW: %"IW"
+    of Language.JA: %"JA"
+    of Language.KA: %"KA"
+    of Language.KM: %"KM"
+    of Language.KO: %"KO"
+    of Language.LO: %"LO"
+    of Language.LT: %"LT"
+    of Language.LV: %"LV"
+    of Language.MK: %"MK"
+    of Language.MN: %"MN"
+    of Language.MS: %"MS"
+    of Language.MY: %"MY"
+    of Language.NB: %"NB"
+    of Language.NE: %"NE"
+    of Language.NL: %"NL"
+    of Language.NO: %"NO"
+    of Language.PL: %"PL"
+    of Language.PT: %"PT"
+    of Language.RO: %"RO"
+    of Language.RU: %"RU"
+    of Language.SK: %"SK"
+    of Language.SL: %"SL"
+    of Language.SQ: %"SQ"
+    of Language.SR: %"SR"
+    of Language.SV: %"SV"
+    of Language.TL: %"TL"
+    of Language.UK: %"UK"
+    of Language.VI: %"VI"
+    of Language.TE: %"TE"
+    of Language.TH: %"TH"
+    of Language.TR: %"TR"
+    of Language.XX: %"XX"
+    of Language.ZH: %"ZH"
+func `$`*(v: Language): string =
+  result = case v:
+    of Language.AfZA: $("af-ZA")
+    of Language.ArSA: $("ar-SA")
+    of Language.BgBG: $("bg-BG")
+    of Language.BnIN: $("bn-IN")
+    of Language.CsCZ: $("cs-CZ")
+    of Language.DaDK: $("da-DK")
+    of Language.De: $("de")
+    of Language.ElGR: $("el-GR")
+    of Language.EnAU: $("en-AU")
+    of Language.EnCA: $("en-CA")
+    of Language.EnGB: $("en-GB")
+    of Language.EnIN: $("en-IN")
+    of Language.EnUS: $("en-US")
+    of Language.Es419: $("es-419")
+    of Language.EsAR: $("es-AR")
+    of Language.EsES: $("es-ES")
+    of Language.EsMX: $("es-MX")
+    of Language.FiFI: $("fi-FI")
+    of Language.Fr: $("fr")
+    of Language.FrCA: $("fr-CA")
+    of Language.HeIL: $("he-IL")
+    of Language.HiIN: $("hi-IN")
+    of Language.HrHR: $("hr-HR")
+    of Language.HuHU: $("hu-HU")
+    of Language.IdID: $("id-ID")
+    of Language.It: $("it")
+    of Language.Ja: $("ja")
+    of Language.KoKR: $("ko-KR")
+    of Language.MsMY: $("ms-MY")
+    of Language.NbNO: $("nb-NO")
+    of Language.Nl: $("nl")
+    of Language.PlPL: $("pl-PL")
+    of Language.PtBR: $("pt-BR")
+    of Language.PtPT: $("pt-PT")
+    of Language.RoRO: $("ro-RO")
+    of Language.RuRU: $("ru-RU")
+    of Language.SkSK: $("sk-SK")
+    of Language.SvSE: $("sv-SE")
+    of Language.TeIN: $("te-IN")
+    of Language.ThTH: $("th-TH")
+    of Language.TlPH: $("tl-PH")
+    of Language.Tr: $("tr")
+    of Language.UkUA: $("uk-UA")
+    of Language.ViVN: $("vi-VN")
+    of Language.ZhCN: $("zh-CN")
+    of Language.ZhTW: $("zh-TW")
+    of Language.AM: $("AM")
+    of Language.AR: $("AR")
+    of Language.AZ: $("AZ")
+    of Language.BG: $("BG")
+    of Language.BN: $("BN")
+    of Language.BS: $("BS")
+    of Language.CA: $("CA")
+    of Language.CS: $("CS")
+    of Language.DA: $("DA")
+    of Language.DV: $("DV")
+    of Language.DZ: $("DZ")
+    of Language.DE: $("DE")
+    of Language.EL: $("EL")
+    of Language.EN: $("EN")
+    of Language.ES: $("ES")
+    of Language.ET: $("ET")
+    of Language.FA: $("FA")
+    of Language.FI: $("FI")
+    of Language.FR: $("FR")
+    of Language.HE: $("HE")
+    of Language.HI: $("HI")
+    of Language.HR: $("HR")
+    of Language.HU: $("HU")
+    of Language.HY: $("HY")
+    of Language.ID: $("ID")
+    of Language.IN: $("IN")
+    of Language.IS: $("IS")
+    of Language.IT: $("IT")
+    of Language.IW: $("IW")
+    of Language.JA: $("JA")
+    of Language.KA: $("KA")
+    of Language.KM: $("KM")
+    of Language.KO: $("KO")
+    of Language.LO: $("LO")
+    of Language.LT: $("LT")
+    of Language.LV: $("LV")
+    of Language.MK: $("MK")
+    of Language.MN: $("MN")
+    of Language.MS: $("MS")
+    of Language.MY: $("MY")
+    of Language.NB: $("NB")
+    of Language.NE: $("NE")
+    of Language.NL: $("NL")
+    of Language.NO: $("NO")
+    of Language.PL: $("PL")
+    of Language.PT: $("PT")
+    of Language.RO: $("RO")
+    of Language.RU: $("RU")
+    of Language.SK: $("SK")
+    of Language.SL: $("SL")
+    of Language.SQ: $("SQ")
+    of Language.SR: $("SR")
+    of Language.SV: $("SV")
+    of Language.TL: $("TL")
+    of Language.UK: $("UK")
+    of Language.VI: $("VI")
+    of Language.TE: $("TE")
+    of Language.TH: $("TH")
+    of Language.TR: $("TR")
+    of Language.XX: $("XX")
+    of Language.ZH: $("ZH")
+
+proc to*(node: JsonNode, T: typedesc[Language]): Language =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Language, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("af-ZA"):
+    return Language.AfZA
+  of $("ar-SA"):
+    return Language.ArSA
+  of $("bg-BG"):
+    return Language.BgBG
+  of $("bn-IN"):
+    return Language.BnIN
+  of $("cs-CZ"):
+    return Language.CsCZ
+  of $("da-DK"):
+    return Language.DaDK
+  of $("de"):
+    return Language.De
+  of $("el-GR"):
+    return Language.ElGR
+  of $("en-AU"):
+    return Language.EnAU
+  of $("en-CA"):
+    return Language.EnCA
+  of $("en-GB"):
+    return Language.EnGB
+  of $("en-IN"):
+    return Language.EnIN
+  of $("en-US"):
+    return Language.EnUS
+  of $("es-419"):
+    return Language.Es419
+  of $("es-AR"):
+    return Language.EsAR
+  of $("es-ES"):
+    return Language.EsES
+  of $("es-MX"):
+    return Language.EsMX
+  of $("fi-FI"):
+    return Language.FiFI
+  of $("fr"):
+    return Language.Fr
+  of $("fr-CA"):
+    return Language.FrCA
+  of $("he-IL"):
+    return Language.HeIL
+  of $("hi-IN"):
+    return Language.HiIN
+  of $("hr-HR"):
+    return Language.HrHR
+  of $("hu-HU"):
+    return Language.HuHU
+  of $("id-ID"):
+    return Language.IdID
+  of $("it"):
+    return Language.It
+  of $("ja"):
+    return Language.Ja
+  of $("ko-KR"):
+    return Language.KoKR
+  of $("ms-MY"):
+    return Language.MsMY
+  of $("nb-NO"):
+    return Language.NbNO
+  of $("nl"):
+    return Language.Nl
+  of $("pl-PL"):
+    return Language.PlPL
+  of $("pt-BR"):
+    return Language.PtBR
+  of $("pt-PT"):
+    return Language.PtPT
+  of $("ro-RO"):
+    return Language.RoRO
+  of $("ru-RU"):
+    return Language.RuRU
+  of $("sk-SK"):
+    return Language.SkSK
+  of $("sv-SE"):
+    return Language.SvSE
+  of $("te-IN"):
+    return Language.TeIN
+  of $("th-TH"):
+    return Language.ThTH
+  of $("tl-PH"):
+    return Language.TlPH
+  of $("tr"):
+    return Language.Tr
+  of $("uk-UA"):
+    return Language.UkUA
+  of $("vi-VN"):
+    return Language.ViVN
+  of $("zh-CN"):
+    return Language.ZhCN
+  of $("zh-TW"):
+    return Language.ZhTW
+  of $("AM"):
+    return Language.AM
+  of $("AR"):
+    return Language.AR
+  of $("AZ"):
+    return Language.AZ
+  of $("BG"):
+    return Language.BG
+  of $("BN"):
+    return Language.BN
+  of $("BS"):
+    return Language.BS
+  of $("CA"):
+    return Language.CA
+  of $("CS"):
+    return Language.CS
+  of $("DA"):
+    return Language.DA
+  of $("DV"):
+    return Language.DV
+  of $("DZ"):
+    return Language.DZ
+  of $("DE"):
+    return Language.DE
+  of $("EL"):
+    return Language.EL
+  of $("EN"):
+    return Language.EN
+  of $("ES"):
+    return Language.ES
+  of $("ET"):
+    return Language.ET
+  of $("FA"):
+    return Language.FA
+  of $("FI"):
+    return Language.FI
+  of $("FR"):
+    return Language.FR
+  of $("HE"):
+    return Language.HE
+  of $("HI"):
+    return Language.HI
+  of $("HR"):
+    return Language.HR
+  of $("HU"):
+    return Language.HU
+  of $("HY"):
+    return Language.HY
+  of $("ID"):
+    return Language.ID
+  of $("IN"):
+    return Language.IN
+  of $("IS"):
+    return Language.IS
+  of $("IT"):
+    return Language.IT
+  of $("IW"):
+    return Language.IW
+  of $("JA"):
+    return Language.JA
+  of $("KA"):
+    return Language.KA
+  of $("KM"):
+    return Language.KM
+  of $("KO"):
+    return Language.KO
+  of $("LO"):
+    return Language.LO
+  of $("LT"):
+    return Language.LT
+  of $("LV"):
+    return Language.LV
+  of $("MK"):
+    return Language.MK
+  of $("MN"):
+    return Language.MN
+  of $("MS"):
+    return Language.MS
+  of $("MY"):
+    return Language.MY
+  of $("NB"):
+    return Language.NB
+  of $("NE"):
+    return Language.NE
+  of $("NL"):
+    return Language.NL
+  of $("NO"):
+    return Language.NO
+  of $("PL"):
+    return Language.PL
+  of $("PT"):
+    return Language.PT
+  of $("RO"):
+    return Language.RO
+  of $("RU"):
+    return Language.RU
+  of $("SK"):
+    return Language.SK
+  of $("SL"):
+    return Language.SL
+  of $("SQ"):
+    return Language.SQ
+  of $("SR"):
+    return Language.SR
+  of $("SV"):
+    return Language.SV
+  of $("TL"):
+    return Language.TL
+  of $("UK"):
+    return Language.UK
+  of $("VI"):
+    return Language.VI
+  of $("TE"):
+    return Language.TE
+  of $("TH"):
+    return Language.TH
+  of $("TR"):
+    return Language.TR
+  of $("XX"):
+    return Language.XX
+  of $("ZH"):
+    return Language.ZH
+  else:
+    raise newException(ValueError, "Invalid enum value for Language: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsItemsDeleteDiscontinuedBatchRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsItemsDeleteDiscontinuedBatchRequest]): CatalogsItemsDeleteDiscontinuedBatchRequest =
+  result = CatalogsItemsDeleteDiscontinuedBatchRequest()
+  if node.kind == JObject:
+    if node.hasKey("country"):
+      result.country = to(node["country"], Country)
+    if node.hasKey("language"):
+      result.language = to(node["language"], Language)
+    if node.hasKey("operation"):
+      result.operation = to(node["operation"], BatchOperation)
+    if node.hasKey("items"):
+      # Array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        result.items = @[]
+        for item in arrayNode.items:
+          result.items.add(to(item, ItemDeleteDiscontinuedBatchRecord))
+
+# Custom JSON serialization for CatalogsItemsDeleteDiscontinuedBatchRequest with custom field names
+proc `%`*(obj: CatalogsItemsDeleteDiscontinuedBatchRequest): JsonNode =
+  result = newJObject()
+  result["country"] = %obj.country
+  result["language"] = %obj.language
+  result["operation"] = %obj.operation
+  result["items"] = %obj.items
+

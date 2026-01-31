@@ -29,7 +29,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AudienceInsightsResponse", description = "Audience interests and demographics.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceInsightsResponse {
 
   @Valid
@@ -73,7 +73,7 @@ public class AudienceInsightsResponse {
     this.categories = categories;
   }
 
-  public AudienceInsightsResponse demographics(AudienceDemographics demographics) {
+  public AudienceInsightsResponse demographics(@Nullable AudienceDemographics demographics) {
     this.demographics = demographics;
     return this;
   }
@@ -85,11 +85,11 @@ public class AudienceInsightsResponse {
   @Valid 
   @Schema(name = "demographics", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("demographics")
-  public AudienceDemographics getDemographics() {
+  public @Nullable AudienceDemographics getDemographics() {
     return demographics;
   }
 
-  public void setDemographics(AudienceDemographics demographics) {
+  public void setDemographics(@Nullable AudienceDemographics demographics) {
     this.demographics = demographics;
   }
 
@@ -133,7 +133,7 @@ public class AudienceInsightsResponse {
     this.date = date;
   }
 
-  public AudienceInsightsResponse size(Integer size) {
+  public AudienceInsightsResponse size(@Nullable Integer size) {
     this.size = size;
     return this;
   }
@@ -145,15 +145,15 @@ public class AudienceInsightsResponse {
   
   @Schema(name = "size", example = "10000", description = "Population count.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("size")
-  public Integer getSize() {
+  public @Nullable Integer getSize() {
     return size;
   }
 
-  public void setSize(Integer size) {
+  public void setSize(@Nullable Integer size) {
     this.size = size;
   }
 
-  public AudienceInsightsResponse sizeIsUpperBound(Boolean sizeIsUpperBound) {
+  public AudienceInsightsResponse sizeIsUpperBound(@Nullable Boolean sizeIsUpperBound) {
     this.sizeIsUpperBound = sizeIsUpperBound;
     return this;
   }
@@ -165,11 +165,11 @@ public class AudienceInsightsResponse {
   
   @Schema(name = "size_is_upper_bound", example = "true", description = "Indicates whether the audience size has been rounded up to the next highest upper boundary.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("size_is_upper_bound")
-  public Boolean getSizeIsUpperBound() {
+  public @Nullable Boolean getSizeIsUpperBound() {
     return sizeIsUpperBound;
   }
 
-  public void setSizeIsUpperBound(Boolean sizeIsUpperBound) {
+  public void setSizeIsUpperBound(@Nullable Boolean sizeIsUpperBound) {
     this.sizeIsUpperBound = sizeIsUpperBound;
   }
 

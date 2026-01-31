@@ -23,17 +23,14 @@ import ../models/model_audience_create_custom_request
 import ../models/model_audience_create_request
 import ../models/model_audience_update_request
 import ../models/model_error
-import ../models/model_audiences_list_200_response
+import ../models/model_audiences_list200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -68,14 +65,18 @@ proc audiencesGet*(httpClient: HttpClient, adAccountId: string, audienceId: stri
 
 proc audiencesList*(httpClient: HttpClient, adAccountId: string, bookmark: string, order: string, pageSize: int, ownershipType: string): (Option[audiences_list_200_response], Response) =
   ## List audiences
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("order", $order), # The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("ownership_type", $ownershipType), # Filter audiences by ownership type.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $order != "":
+    query_params_list.add(("order", $order))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $ownershipType != "":
+    query_params_list.add(("ownership_type", $ownershipType))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/audiences" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/audiences" & "?" & url_encoded_query_params)
   constructResult[audiences_list_200_response](response)
 
 

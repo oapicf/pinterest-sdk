@@ -12,7 +12,7 @@
 /*
  * OauthAccessTokenResponseIntegrationRefresh.h
  *
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
+ * 
  */
 
 #ifndef OauthAccessTokenResponseIntegrationRefresh_H_
@@ -26,7 +26,7 @@ namespace org::openapitools::server::model
 {
 
 /// <summary>
-/// A successful OAuth access token response for the refresh token flow, with an added refresh token.
+/// 
 /// </summary>
 class  OauthAccessTokenResponseIntegrationRefresh
 {
@@ -61,6 +61,16 @@ public:
     /// <summary>
     /// 
     /// </summary>
+    std::string getRefreshToken() const;
+    void setRefreshToken(std::string const& value);
+    /// <summary>
+    /// 
+    /// </summary>
+    int32_t getRefreshTokenExpiresIn() const;
+    void setRefreshTokenExpiresIn(int32_t const value);
+    /// <summary>
+    /// 
+    /// </summary>
     std::string getResponseType() const;
     void setResponseType(std::string const& value);
     bool responseTypeIsSet() const;
@@ -85,20 +95,14 @@ public:
     /// </summary>
     std::string getScope() const;
     void setScope(std::string const& value);
-    /// <summary>
-    /// 
-    /// </summary>
-    std::string getRefreshToken() const;
-    void setRefreshToken(std::string const& value);
-    /// <summary>
-    /// 
-    /// </summary>
-    int32_t getRefreshTokenExpiresIn() const;
-    void setRefreshTokenExpiresIn(int32_t const value);
 
     friend  void to_json(nlohmann::json& j, const OauthAccessTokenResponseIntegrationRefresh& o);
     friend  void from_json(const nlohmann::json& j, OauthAccessTokenResponseIntegrationRefresh& o);
 protected:
+    std::string m_Refresh_token;
+
+    int32_t m_Refresh_token_expires_in;
+
     std::string m_Response_type;
     bool m_Response_typeIsSet;
     std::string m_Access_token;
@@ -108,10 +112,6 @@ protected:
     int32_t m_Expires_in;
 
     std::string m_Scope;
-
-    std::string m_Refresh_token;
-
-    int32_t m_Refresh_token_expires_in;
 
     
 };

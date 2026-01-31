@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Body to be used on path to send Members or Partners Invite or Request
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateMembershipOrPartnershipInvitesBody {
   /**
    * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
@@ -272,16 +272,10 @@ public class CreateMembershipOrPartnershipInvitesBody {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("business_role");
-    openapiFields.add("invite_type");
-    openapiFields.add("members");
-    openapiFields.add("partners");
+    openapiFields = new HashSet<String>(Arrays.asList("business_role", "invite_type", "members", "partners"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("business_role");
-    openapiRequiredFields.add("invite_type");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("business_role", "invite_type"));
   }
 
   /**
@@ -293,7 +287,7 @@ public class CreateMembershipOrPartnershipInvitesBody {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CreateMembershipOrPartnershipInvitesBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateMembershipOrPartnershipInvitesBody is not found in the empty JSON string", CreateMembershipOrPartnershipInvitesBody.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CreateMembershipOrPartnershipInvitesBody is not found in the empty JSON string", CreateMembershipOrPartnershipInvitesBody.openapiRequiredFields.toString()));
         }
       }
 
@@ -301,19 +295,19 @@ public class CreateMembershipOrPartnershipInvitesBody {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CreateMembershipOrPartnershipInvitesBody.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateMembershipOrPartnershipInvitesBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CreateMembershipOrPartnershipInvitesBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CreateMembershipOrPartnershipInvitesBody.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("business_role").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `business_role` to be a primitive type in the JSON string but got `%s`", jsonObj.get("business_role").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `business_role` to be a primitive type in the JSON string but got `%s`", jsonObj.get("business_role").toString()));
       }
       // validate the required field `business_role`
       BusinessRoleEnum.validateJsonElement(jsonObj.get("business_role"));
@@ -321,11 +315,11 @@ public class CreateMembershipOrPartnershipInvitesBody {
       InviteType.validateJsonElement(jsonObj.get("invite_type"));
       // ensure the optional json data is an array if present
       if (jsonObj.get("members") != null && !jsonObj.get("members").isJsonNull() && !jsonObj.get("members").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `members` to be an array in the JSON string but got `%s`", jsonObj.get("members").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `members` to be an array in the JSON string but got `%s`", jsonObj.get("members").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("partners") != null && !jsonObj.get("partners").isJsonNull() && !jsonObj.get("partners").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `partners` to be an array in the JSON string but got `%s`", jsonObj.get("partners").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `partners` to be an array in the JSON string but got `%s`", jsonObj.get("partners").toString()));
       }
   }
 

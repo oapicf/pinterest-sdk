@@ -56,24 +56,28 @@ FEED_INGESTION_ISSUES(String.valueOf("FEED_INGESTION_ISSUES")), DISTRIBUTION_ISS
 }
 
   @ApiModelProperty(value = "")
+
   private ReportTypeEnum reportType;
 
-  @ApiModelProperty(required = true, value = "ID of the feed entity.")
  /**
-   * ID of the feed entity.
-  **/
+  * ID of the feed entity.
+  */
+  @ApiModelProperty(required = true, value = "ID of the feed entity.")
+
   private String feedId;
 
-  @ApiModelProperty(value = "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.")
  /**
-   * Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
-  **/
+  * Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
+  */
+  @ApiModelProperty(value = "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.")
+
   private String processingResultId;
 
-  @ApiModelProperty(value = "Unique identifier of a catalog. If not given, oldest catalog will be used")
  /**
-   * Unique identifier of a catalog. If not given, oldest catalog will be used
-  **/
+  * Unique identifier of a catalog. If not given, oldest catalog will be used
+  */
+  @ApiModelProperty(value = "Unique identifier of a catalog. If not given, oldest catalog will be used")
+
   private String catalogId;
  /**
    * Get reportType

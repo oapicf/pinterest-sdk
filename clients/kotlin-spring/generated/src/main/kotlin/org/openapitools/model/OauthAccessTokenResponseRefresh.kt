@@ -39,7 +39,7 @@ data class OauthAccessTokenResponseRefresh(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("response_type") val responseType: OauthAccessTokenResponseRefresh.ResponseType? = null
-    ) {
+) {
 
     /**
     * 
@@ -55,7 +55,8 @@ data class OauthAccessTokenResponseRefresh(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ResponseType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OauthAccessTokenResponseRefresh'")
             }
         }
     }

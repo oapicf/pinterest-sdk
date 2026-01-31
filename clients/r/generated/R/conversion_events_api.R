@@ -108,14 +108,23 @@ ConversionEventsApi <- R6::R6Class(
         stop("Missing required parameter `conversion_events`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling ConversionEventsApi$EventsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling ConversionEventsApi$EventsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling ConversionEventsApi$EventsCreate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`conversion_events`) && is.null(`conversion_events`)) {
+        stop("Invalid value for `conversion_events` when calling ConversionEventsApi$EventsCreate, `conversion_events` is not nullable")
+      }
 
+      if (!missing(`test`) && is.null(`test`)) {
+        stop("Invalid value for `test` when calling ConversionEventsApi$EventsCreate, `test` is not nullable")
+      }
 
       query_params[["test"]] <- `test`
 

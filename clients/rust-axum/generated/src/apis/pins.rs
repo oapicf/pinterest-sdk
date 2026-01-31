@@ -195,6 +195,8 @@ pub enum PinsSlashUpdateResponse {
 }
 
 
+
+
 /// Pins
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -204,6 +206,7 @@ pub trait Pins<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHan
     /// MultiPinsSlashAnalytics - GET /v5/pins/analytics
     async fn multi_pins_slash_analytics(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -215,6 +218,7 @@ pub trait Pins<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHan
     /// PinsSlashAnalytics - GET /v5/pins/{pin_id}/analytics
     async fn pins_slash_analytics(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -227,6 +231,7 @@ pub trait Pins<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHan
     /// PinsSlashCreate - POST /v5/pins
     async fn pins_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -239,6 +244,7 @@ pub trait Pins<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHan
     /// PinsSlashDelete - DELETE /v5/pins/{pin_id}
     async fn pins_slash_delete(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -251,6 +257,7 @@ pub trait Pins<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHan
     /// PinsSlashGet - GET /v5/pins/{pin_id}
     async fn pins_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -263,6 +270,7 @@ pub trait Pins<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHan
     /// PinsSlashList - GET /v5/pins
     async fn pins_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -274,6 +282,7 @@ pub trait Pins<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHan
     /// PinsSlashSave - POST /v5/pins/{pin_id}/save
     async fn pins_slash_save(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -287,6 +296,7 @@ pub trait Pins<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHan
     /// PinsSlashUpdate - PATCH /v5/pins/{pin_id}
     async fn pins_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

@@ -180,14 +180,14 @@ namespace Org.OpenAPITools.Model
 
             if (catalogsHotelProductGroupFilters.CatalogsHotelProductGroupFiltersAnyOfOption.IsSet && catalogsHotelProductGroupFilters.CatalogsHotelProductGroupFiltersAnyOfOption.Value != null)
             {
-                CatalogsHotelProductGroupFiltersAnyOfJsonConverter CatalogsHotelProductGroupFiltersAnyOfJsonConverter = (CatalogsHotelProductGroupFiltersAnyOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilters.CatalogsHotelProductGroupFiltersAnyOfOption.Value.GetType()));
-                CatalogsHotelProductGroupFiltersAnyOfJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilters.CatalogsHotelProductGroupFiltersAnyOfOption.Value, jsonSerializerOptions);
+                CatalogsHotelProductGroupFiltersAnyOfJsonConverter catalogsHotelProductGroupFiltersAnyOfJsonConverter = (CatalogsHotelProductGroupFiltersAnyOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilters.CatalogsHotelProductGroupFiltersAnyOfOption.Value.GetType()));
+                catalogsHotelProductGroupFiltersAnyOfJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilters.CatalogsHotelProductGroupFiltersAnyOfOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsHotelProductGroupFilters.CatalogsHotelProductGroupFiltersAllOfOption.IsSet && catalogsHotelProductGroupFilters.CatalogsHotelProductGroupFiltersAllOfOption.Value != null)
             {
-                CatalogsHotelProductGroupFiltersAllOfJsonConverter CatalogsHotelProductGroupFiltersAllOfJsonConverter = (CatalogsHotelProductGroupFiltersAllOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilters.CatalogsHotelProductGroupFiltersAllOfOption.Value.GetType()));
-                CatalogsHotelProductGroupFiltersAllOfJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilters.CatalogsHotelProductGroupFiltersAllOfOption.Value, jsonSerializerOptions);
+                CatalogsHotelProductGroupFiltersAllOfJsonConverter catalogsHotelProductGroupFiltersAllOfJsonConverter = (CatalogsHotelProductGroupFiltersAllOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilters.CatalogsHotelProductGroupFiltersAllOfOption.Value.GetType()));
+                catalogsHotelProductGroupFiltersAllOfJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilters.CatalogsHotelProductGroupFiltersAllOfOption.Value, jsonSerializerOptions);
             }
 
             WriteProperties(writer, catalogsHotelProductGroupFilters, jsonSerializerOptions);

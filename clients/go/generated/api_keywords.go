@@ -407,8 +407,9 @@ func (a *KeywordsAPIService) KeywordsGetExecute(r ApiKeywordsGetRequest) (*Keywo
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")
@@ -743,14 +744,16 @@ func (a *KeywordsAPIService) TrendingKeywordsListExecute(r ApiTrendingKeywordsLi
 	if r.normalizeAgainstGroup != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "normalize_against_group", r.normalizeAgainstGroup, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.normalizeAgainstGroup = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "normalize_against_group", defaultValue, "form", "")
+        r.normalizeAgainstGroup = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 50
-		r.limit = &defaultValue
+        var defaultValue int32 = 50
+        parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
+        r.limit = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

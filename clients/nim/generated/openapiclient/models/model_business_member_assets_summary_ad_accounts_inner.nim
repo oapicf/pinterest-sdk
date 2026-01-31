@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type BusinessMemberAssetsSummaryAdAccountsInner* = object
   ## 
-  id*: string ## Unique identifier of a business ad account.
-  permissions*: seq[string] ## Permission levels member or partner has on an asset.
+  id*: Option[string] ## Unique identifier of a business ad account.
+  permissions*: Option[seq[string]] ## Permission levels member or partner has on an asset.
+

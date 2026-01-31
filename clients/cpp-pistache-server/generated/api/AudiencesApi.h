@@ -93,7 +93,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="audienceCreateRequest">List of ads to create, size limit [1, 30]</param>
-    virtual void audiences_create(const std::string &adAccountId, const org::openapitools::server::model::AudienceCreateRequest &audienceCreateRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void audiences_create( const std::string &adAccountId, const org::openapitools::server::model::AudienceCreateRequest &audienceCreateRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create custom audience
     /// </summary>
@@ -102,7 +102,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="audienceCreateCustomRequest">Custom audience to create.</param>
-    virtual void audiences_create_custom(const std::string &adAccountId, const org::openapitools::server::model::AudienceCreateCustomRequest &audienceCreateCustomRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void audiences_create_custom( const std::string &adAccountId, const org::openapitools::server::model::AudienceCreateCustomRequest &audienceCreateCustomRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get audience
     /// </summary>
@@ -111,7 +111,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="audienceId">Unique identifier of an audience</param>
-    virtual void audiences_get(const std::string &adAccountId, const std::string &audienceId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void audiences_get( const std::string &adAccountId, const std::string &audienceId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List audiences
     /// </summary>
@@ -123,7 +123,7 @@ private:
     /// <param name="order">The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="ownershipType">Filter audiences by ownership type. (optional, default to &quot;OWNED&quot;)</param>
-    virtual void audiences_list(const std::string &adAccountId, const std::optional<std::string> &bookmark, const std::optional<std::string> &order, const std::optional<int32_t> &pageSize, const std::optional<std::string> &ownershipType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void audiences_list( const std::string &adAccountId, const std::optional<std::string> &bookmark, const std::optional<std::string> &order, const std::optional<int32_t> &pageSize, const std::optional<std::string> &ownershipType, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update audience
     /// </summary>
@@ -133,7 +133,7 @@ private:
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="audienceId">Unique identifier of an audience</param>
     /// <param name="audienceUpdateRequest">The audience to be updated. (optional)</param>
-    virtual void audiences_update(const std::string &adAccountId, const std::string &audienceId, const org::openapitools::server::model::AudienceUpdateRequest &audienceUpdateRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void audiences_update( const std::string &adAccountId, const std::string &audienceId, const org::openapitools::server::model::AudienceUpdateRequest &audienceUpdateRequest, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

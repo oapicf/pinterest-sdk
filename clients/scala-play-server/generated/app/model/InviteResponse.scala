@@ -4,28 +4,53 @@ import play.api.libs.json._
 
 /**
   * Represents the Swagger definition for InviteResponse.
+  * @param id Unique identifier of the invite/request.
+  * @param isReceivedInvite Indicates whether the invite/request was received.
+  * @param user Metadata for the member/partner that was sent the invite/request.
   * @param businessRoles The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
   * @param createdByBusiness Metadata for the business that created the invite/request.
   * @param createdByUser Metadata for the user that created the invite/request.
   * @param createdTime The time the invite/request was created. Returned in milliseconds.
-  * @param id Unique identifier of the invite/request.
-  * @param isReceivedInvite Indicates whether the invite/request was received.
-  * @param user Metadata for the member/partner that was sent the invite/request.
+  * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class InviteResponse(
-  assetsSummary: Option[InviteAssetsSummary],
-  businessRoles: Option[List[String]],
-  createdByBusiness: Option[BusinessAccessUserSummary],
-  createdByUser: Option[BusinessAccessUserSummary],
-  createdTime: Option[Int],
   id: Option[String],
   inviteData: Option[BaseInviteDataResponseInviteData],
   isReceivedInvite: Option[Boolean],
-  user: Option[BusinessAccessUserSummary]
+  user: Option[BusinessAccessUserSummary],
+  assetsSummary: Option[InviteAssetsSummary],
+  businessRoles: Option[List[String]],
+  createdByBusiness: Option[JsObject],
+  createdByUser: Option[JsObject],
+  createdTime: Option[Int]
+  additionalProperties: 
 )
 
 object InviteResponse {
-  implicit lazy val inviteResponseJsonFormat: Format[InviteResponse] = Json.format[InviteResponse]
+  implicit lazy val inviteResponseJsonFormat: Format[InviteResponse] = {
+    val realJsonFormat = Json.format[InviteResponse]
+    val declaredPropNames = Set("id", "inviteData", "isReceivedInvite", "user", "assetsSummary", "businessRoles", "createdByBusiness", "createdByUser", "createdTime")
+    
+    Format(
+      Reads {
+        case JsObject(xs) =>
+          val declaredProps = xs.filterKeys(declaredPropNames)
+          val additionalProps = JsObject(xs -- declaredPropNames)
+          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
+          val newObj = JsObject(restructuredProps)
+          realJsonFormat.reads(newObj)
+        case _ =>
+          JsError("error.expected.jsobject")
+      },
+      Writes { inviteResponse =>
+        val jsObj = realJsonFormat.writes(inviteResponse)
+        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
+        val declaredProps = jsObj - "additionalProperties"
+        val newObj = declaredProps ++ additionalProps
+        newObj
+      }
+    )
+  }
 }
 

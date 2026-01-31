@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param errorMessage Error message containing more information about why the event failed to be processed.
   * @param warningMessage Warning messages about any fields in the event which are not standard. These are not critical to event processing.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class ConversionApiResponseEventsInner(
   status: ConversionApiResponseEventsInner.Status.Value,
   errorMessage: Option[String],

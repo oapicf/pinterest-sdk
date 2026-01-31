@@ -21,6 +21,7 @@ namespace org::openapitools::server::model
 
 CatalogsItemsUpdateBatchRequest::CatalogsItemsUpdateBatchRequest()
 {
+    m_Language = "";
     
 }
 
@@ -134,11 +135,11 @@ void CatalogsItemsUpdateBatchRequest::setCountry(org::openapitools::server::mode
 {
     m_Country = value;
 }
-org::openapitools::server::model::CatalogsItemsRequest_language CatalogsItemsUpdateBatchRequest::getLanguage() const
+std::string CatalogsItemsUpdateBatchRequest::getLanguage() const
 {
     return m_Language;
 }
-void CatalogsItemsUpdateBatchRequest::setLanguage(org::openapitools::server::model::CatalogsItemsRequest_language const& value)
+void CatalogsItemsUpdateBatchRequest::setLanguage(std::string const& value)
 {
     m_Language = value;
 }

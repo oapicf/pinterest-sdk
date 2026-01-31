@@ -9,12 +9,15 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_image_details
 
 type ImageMetadataImages* = object
   ## 
-  `150x150`*: ImageDetails
-  `400x300`*: ImageDetails
-  `600x`*: ImageDetails
-  `1200x`*: ImageDetails
+  `150x150`*: Option[ImageDetails]
+  `400x300`*: Option[ImageDetails]
+  `600x`*: Option[ImageDetails]
+  `1200x`*: Option[ImageDetails]
+

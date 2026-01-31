@@ -8,22 +8,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LeadsExportCreateRequest  {
   
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Export leads collected on and after start date (UTC). Format: YYYY-MM-DD")
  /**
-   * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
-  **/
+  * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD
+  */
+  @ApiModelProperty(example = "2020-12-20", required = true, value = "Export leads collected on and after start date (UTC). Format: YYYY-MM-DD")
+
   private String startDate;
 
-  @ApiModelProperty(example = "2020-12-20", required = true, value = "Export leads collected on and before end date (UTC). Format: YYYY-MM-DD")
  /**
-   * Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
-  **/
+  * Export leads collected on and before end date (UTC). Format: YYYY-MM-DD
+  */
+  @ApiModelProperty(example = "2020-12-20", required = true, value = "Export leads collected on and before end date (UTC). Format: YYYY-MM-DD")
+
   private String endDate;
 
-  @ApiModelProperty(example = "687201361754", required = true, value = "ID for the ad collecting leads")
  /**
-   * ID for the ad collecting leads
-  **/
+  * ID for the ad collecting leads
+  */
+  @ApiModelProperty(example = "687201361754", required = true, value = "ID for the ad collecting leads")
+
   private String adId;
  /**
    * Export leads collected on and after start date (UTC). Format: YYYY-MM-DD

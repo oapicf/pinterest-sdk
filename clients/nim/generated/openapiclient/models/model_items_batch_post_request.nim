@@ -9,32 +9,39 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_batch_operation
 import model_catalogs_items_batch_request
-import model_catalogs_items_request_language
 import model_catalogs_vertical_batch_request
 import model_country
 import model_item_delete_batch_record
 
-type CatalogType* {.pure.} = enum
-  CREATIVEASSETS
+# OneOf type
+type ItemsBatchPostRequestKind* {.pure.} = enum
+  CatalogsVerticalBatchRequestVariant
+  CatalogsItemsBatchRequestVariant
 
 type ItemsBatchPostRequest* = object
   ## 
-  catalogType*: CatalogType
-  country*: Country
-  language*: CatalogsItemsRequest_language
-  items*: seq[ItemDeleteBatchRecord] ## Array with catalogs items
-  catalogId*: string ## Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-  operation*: BatchOperation
+  case kind*: ItemsBatchPostRequestKind
+  of ItemsBatchPostRequestKind.CatalogsVerticalBatchRequestVariant:
+    CatalogsVerticalBatchRequestValue*: CatalogsVerticalBatchRequest
+  of ItemsBatchPostRequestKind.CatalogsItemsBatchRequestVariant:
+    CatalogsItemsBatchRequestValue*: CatalogsItemsBatchRequest
 
-func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
+proc to*(node: JsonNode, T: typedesc[ItemsBatchPostRequest]): ItemsBatchPostRequest =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return ItemsBatchPostRequest(kind: ItemsBatchPostRequestKind.CatalogsVerticalBatchRequestVariant, CatalogsVerticalBatchRequestValue: to(node, CatalogsVerticalBatchRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsVerticalBatchRequest: ", e.msg
+  try:
+    return ItemsBatchPostRequest(kind: ItemsBatchPostRequestKind.CatalogsItemsBatchRequestVariant, CatalogsItemsBatchRequestValue: to(node, CatalogsItemsBatchRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsItemsBatchRequest: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of ItemsBatchPostRequest. JSON: " & $node)
 
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: CatalogType): string =
-  result = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"

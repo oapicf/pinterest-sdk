@@ -122,8 +122,9 @@ func (a *SearchAPIService) SearchPartnerPinsExecute(r ApiSearchPartnerPinsReques
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	} else {
-		var defaultValue int32 = 10
-		r.limit = &defaultValue
+        var defaultValue int32 = 10
+        parameterAddToHeaderOrQuery(localVarQueryParams, "limit", defaultValue, "form", "")
+        r.limit = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -283,8 +284,9 @@ func (a *SearchAPIService) SearchUserBoardsGetExecute(r ApiSearchUserBoardsGetRe
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.query != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "query", r.query, "form", "")

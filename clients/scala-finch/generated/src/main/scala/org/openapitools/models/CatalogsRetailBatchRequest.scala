@@ -5,7 +5,6 @@ import io.finch.circe._
 import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
-import org.openapitools.models.CatalogsItemsRequestLanguage
 import org.openapitools.models.CatalogsRetailBatchRequestItemsInner
 import org.openapitools.models.Country
 import scala.collection.immutable.Seq
@@ -14,12 +13,12 @@ import scala.collection.immutable.Seq
  * A request object that can have multiple operations on a single retail batch
  * @param catalogUnderscoretype 
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param items Array with catalogs item operations
  */
 case class CatalogsRetailBatchRequest(catalogUnderscoretype: String,
                 country: Country,
-                language: CatalogsItemsRequestLanguage,
+                language: String,
                 items: Seq[CatalogsRetailBatchRequestItemsInner]
                 )
 

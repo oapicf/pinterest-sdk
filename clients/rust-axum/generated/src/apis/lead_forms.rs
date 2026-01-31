@@ -101,6 +101,8 @@ pub enum LeadFormsSlashUpdateResponse {
 }
 
 
+
+
 /// LeadForms
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -110,6 +112,7 @@ pub trait LeadForms<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// LeadFormSlashGet - GET /v5/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}
     async fn lead_form_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -121,6 +124,7 @@ pub trait LeadForms<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// LeadFormTestSlashCreate - POST /v5/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test
     async fn lead_form_test_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -133,6 +137,7 @@ pub trait LeadForms<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// LeadFormsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/lead_forms
     async fn lead_forms_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -145,6 +150,7 @@ pub trait LeadForms<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// LeadFormsSlashList - GET /v5/ad_accounts/{ad_account_id}/lead_forms
     async fn lead_forms_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -157,6 +163,7 @@ pub trait LeadForms<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Err
     /// LeadFormsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/lead_forms
     async fn lead_forms_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

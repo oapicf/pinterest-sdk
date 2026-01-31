@@ -2,19 +2,19 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsHotelProductGroupFilters;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for creating a hotel product group.
- **/
+ * Request object for creating a hotel product group.
+ */
 @ApiModel(description="Request object for creating a hotel product group.")
 
 public class CatalogsHotelProductGroupCreateRequest  {
@@ -52,22 +52,28 @@ HOTEL(String.valueOf("HOTEL"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsHotelProductGroupFilters filters;
 
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
  /**
-   * Catalog id pertaining to the hotel product group.
-  **/
+  * Catalog id pertaining to the hotel product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the hotel product group.")
+
   private String catalogId;
  /**
    * Get catalogType

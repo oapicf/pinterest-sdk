@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_board_media
 import model_board_owner
@@ -24,24 +26,82 @@ type Board* = object
   createdAt*: string ## Date and time of board creation.
   boardPinsModifiedAt*: string ## Date and time of last board pins modified.
   name*: string
-  description*: string
+  description*: Option[string]
   collaboratorCount*: int ## Count of collaborators on the board.
   pinCount*: int ## Count of pins on the board.
   followerCount*: int ## Board follower count.
-  media*: Board_media
+  media*: Option[Board_media]
   owner*: BoardOwner
-  privacy*: Privacy ## Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
+  privacy*: Option[Privacy] ## Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
 
 func `%`*(v: Privacy): JsonNode =
-  let str = case v:
-    of Privacy.PUBLIC: "PUBLIC"
-    of Privacy.PROTECTED: "PROTECTED"
-    of Privacy.SECRET: "SECRET"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Privacy.PUBLIC: %"PUBLIC"
+    of Privacy.PROTECTED: %"PROTECTED"
+    of Privacy.SECRET: %"SECRET"
 func `$`*(v: Privacy): string =
   result = case v:
-    of Privacy.PUBLIC: "PUBLIC"
-    of Privacy.PROTECTED: "PROTECTED"
-    of Privacy.SECRET: "SECRET"
+    of Privacy.PUBLIC: $("PUBLIC")
+    of Privacy.PROTECTED: $("PROTECTED")
+    of Privacy.SECRET: $("SECRET")
+
+proc to*(node: JsonNode, T: typedesc[Privacy]): Privacy =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Privacy, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("PUBLIC"):
+    return Privacy.PUBLIC
+  of $("PROTECTED"):
+    return Privacy.PROTECTED
+  of $("SECRET"):
+    return Privacy.SECRET
+  else:
+    raise newException(ValueError, "Invalid enum value for Privacy: " & strVal)
+
+
+# Custom JSON deserialization for Board with custom field names
+proc to*(node: JsonNode, T: typedesc[Board]): Board =
+  result = Board()
+  if node.kind == JObject:
+    if node.hasKey("id"):
+      result.id = to(node["id"], string)
+    if node.hasKey("created_at"):
+      result.createdAt = to(node["created_at"], string)
+    if node.hasKey("board_pins_modified_at"):
+      result.boardPinsModifiedAt = to(node["board_pins_modified_at"], string)
+    if node.hasKey("name"):
+      result.name = to(node["name"], string)
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("collaborator_count"):
+      result.collaboratorCount = to(node["collaborator_count"], int)
+    if node.hasKey("pin_count"):
+      result.pinCount = to(node["pin_count"], int)
+    if node.hasKey("follower_count"):
+      result.followerCount = to(node["follower_count"], int)
+    if node.hasKey("media") and node["media"].kind != JNull:
+      result.media = some(to(node["media"], typeof(result.media.get())))
+    if node.hasKey("owner"):
+      result.owner = to(node["owner"], BoardOwner)
+    if node.hasKey("privacy") and node["privacy"].kind != JNull:
+      result.privacy = some(to(node["privacy"], Privacy))
+
+# Custom JSON serialization for Board with custom field names
+proc `%`*(obj: Board): JsonNode =
+  result = newJObject()
+  result["id"] = %obj.id
+  result["created_at"] = %obj.createdAt
+  result["board_pins_modified_at"] = %obj.boardPinsModifiedAt
+  result["name"] = %obj.name
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  result["collaborator_count"] = %obj.collaboratorCount
+  result["pin_count"] = %obj.pinCount
+  result["follower_count"] = %obj.followerCount
+  if obj.media.isSome():
+    result["media"] = %obj.media.get()
+  result["owner"] = %obj.owner
+  if obj.privacy.isSome():
+    result["privacy"] = %obj.privacy.get()
+

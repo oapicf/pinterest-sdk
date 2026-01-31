@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_action_type
 import model_budget_type
@@ -26,35 +28,129 @@ type BidStrategyType* {.pure.} = enum
 
 type AdGroupCommon* = object
   ## 
-  name*: string ## Ad group name.
-  status*: EntityStatus ## Ad group/entity status.
-  budgetInMicroCurrency*: int ## Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
-  bidInMicroCurrency*: int ## Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
-  optimizationGoalMetadata*: OptimizationGoalMetadata ## Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
-  budgetType*: BudgetType
-  startTime*: int ## Ad group start time. Unix timestamp in seconds. Defaults to current time.
-  endTime*: int ## Ad group end time. Unix timestamp in seconds.
-  targetingSpec*: TargetingSpec
-  lifetimeFrequencyCap*: int ## Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
-  trackingUrls*: TrackingUrls ## Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
-  autoTargetingEnabled*: bool ## Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  placementGroup*: PlacementGroupType ## <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
-  pacingDeliveryType*: PacingDeliveryType
-  campaignId*: string ## Campaign ID of the ad group.
-  billableEvent*: ActionType
-  bidStrategyType*: BidStrategyType ## Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
-  targetingTemplateIds*: seq[string] ## Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
+  name*: Option[string] ## Ad group name.
+  status*: Option[EntityStatus] ## Ad group/entity status.
+  budgetInMicroCurrency*: Option[int] ## Budget in micro currency. This field is **REQUIRED** for non-CBO (campaign budget optimization) campaigns.  A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. A CBO campaign is limited to 70 or less ad groups.
+  bidInMicroCurrency*: Option[int] ## Bid price in micro currency. This field is **REQUIRED** for the following campaign objective_type/billable_event combinations: AWARENESS/IMPRESSION, CONSIDERATION/CLICKTHROUGH, CATALOG_SALES/CLICKTHROUGH, VIDEO_VIEW/VIDEO_V_50_MRC.
+  optimizationGoalMetadata*: Option[OptimizationGoalMetadata] ## Optimization goals for objective-based performance campaigns. **REQUIRED** when campaign's `objective_type` is set to `\"WEB_CONVERSION\"`.
+  budgetType*: Option[BudgetType]
+  startTime*: Option[int] ## Ad group start time. Unix timestamp in seconds. Defaults to current time.
+  endTime*: Option[int] ## Ad group end time. Unix timestamp in seconds.
+  targetingSpec*: Option[TargetingSpec]
+  lifetimeFrequencyCap*: Option[int] ## Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.
+  trackingUrls*: Option[TrackingUrls] ## Third-party tracking URLs.<br> JSON object with the format: {\"<a href=\"/docs/redoc/#section/Tracking-URL-event\">Tracking event enum</a>\":[URL string array],...}<br> For example: {\"impression\": [\"URL1\", \"URL2\"], \"click\": [\"URL1\", \"URL2\", \"URL3\"]}.<br>Up to three tracking URLs are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. May be null. Pass in an empty object - {} - to remove tracking URLs.<br><br> For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+  autoTargetingEnabled*: Option[bool] ## Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  placementGroup*: Option[PlacementGroupType] ## <a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.
+  pacingDeliveryType*: Option[PacingDeliveryType]
+  campaignId*: Option[string] ## Campaign ID of the ad group.
+  billableEvent*: Option[ActionType]
+  bidStrategyType*: Option[BidStrategyType] ## Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
+  targetingTemplateIds*: Option[seq[string]] ## Targeting template IDs applied to the ad group. We currently only support 1 targeting template per ad group. To use targeting templates, do not set any other targeting fields: targeting_spec, tracking_urls, auto_targeting_enabled, placement_group. To clear all targeting template IDs, set this field to ['0'].
 
 func `%`*(v: BidStrategyType): JsonNode =
-  let str = case v:
-    of BidStrategyType.AUTOMATICBID: "AUTOMATIC_BID"
-    of BidStrategyType.MAXBID: "MAX_BID"
-    of BidStrategyType.TARGETAVG: "TARGET_AVG"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of BidStrategyType.AUTOMATICBID: %"AUTOMATIC_BID"
+    of BidStrategyType.MAXBID: %"MAX_BID"
+    of BidStrategyType.TARGETAVG: %"TARGET_AVG"
 func `$`*(v: BidStrategyType): string =
   result = case v:
-    of BidStrategyType.AUTOMATICBID: "AUTOMATIC_BID"
-    of BidStrategyType.MAXBID: "MAX_BID"
-    of BidStrategyType.TARGETAVG: "TARGET_AVG"
+    of BidStrategyType.AUTOMATICBID: $("AUTOMATIC_BID")
+    of BidStrategyType.MAXBID: $("MAX_BID")
+    of BidStrategyType.TARGETAVG: $("TARGET_AVG")
+
+proc to*(node: JsonNode, T: typedesc[BidStrategyType]): BidStrategyType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum BidStrategyType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("AUTOMATIC_BID"):
+    return BidStrategyType.AUTOMATICBID
+  of $("MAX_BID"):
+    return BidStrategyType.MAXBID
+  of $("TARGET_AVG"):
+    return BidStrategyType.TARGETAVG
+  else:
+    raise newException(ValueError, "Invalid enum value for BidStrategyType: " & strVal)
+
+
+# Custom JSON deserialization for AdGroupCommon with custom field names
+proc to*(node: JsonNode, T: typedesc[AdGroupCommon]): AdGroupCommon =
+  result = AdGroupCommon()
+  if node.kind == JObject:
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+    if node.hasKey("budget_in_micro_currency") and node["budget_in_micro_currency"].kind != JNull:
+      result.budgetInMicroCurrency = some(to(node["budget_in_micro_currency"], typeof(result.budgetInMicroCurrency.get())))
+    if node.hasKey("bid_in_micro_currency") and node["bid_in_micro_currency"].kind != JNull:
+      result.bidInMicroCurrency = some(to(node["bid_in_micro_currency"], typeof(result.bidInMicroCurrency.get())))
+    if node.hasKey("optimization_goal_metadata") and node["optimization_goal_metadata"].kind != JNull:
+      result.optimizationGoalMetadata = some(to(node["optimization_goal_metadata"], typeof(result.optimizationGoalMetadata.get())))
+    if node.hasKey("budget_type") and node["budget_type"].kind != JNull:
+      result.budgetType = some(to(node["budget_type"], typeof(result.budgetType.get())))
+    if node.hasKey("start_time") and node["start_time"].kind != JNull:
+      result.startTime = some(to(node["start_time"], typeof(result.startTime.get())))
+    if node.hasKey("end_time") and node["end_time"].kind != JNull:
+      result.endTime = some(to(node["end_time"], typeof(result.endTime.get())))
+    if node.hasKey("targeting_spec") and node["targeting_spec"].kind != JNull:
+      result.targetingSpec = some(to(node["targeting_spec"], typeof(result.targetingSpec.get())))
+    if node.hasKey("lifetime_frequency_cap") and node["lifetime_frequency_cap"].kind != JNull:
+      result.lifetimeFrequencyCap = some(to(node["lifetime_frequency_cap"], typeof(result.lifetimeFrequencyCap.get())))
+    if node.hasKey("tracking_urls") and node["tracking_urls"].kind != JNull:
+      result.trackingUrls = some(to(node["tracking_urls"], typeof(result.trackingUrls.get())))
+    if node.hasKey("auto_targeting_enabled") and node["auto_targeting_enabled"].kind != JNull:
+      result.autoTargetingEnabled = some(to(node["auto_targeting_enabled"], typeof(result.autoTargetingEnabled.get())))
+    if node.hasKey("placement_group") and node["placement_group"].kind != JNull:
+      result.placementGroup = some(to(node["placement_group"], typeof(result.placementGroup.get())))
+    if node.hasKey("pacing_delivery_type") and node["pacing_delivery_type"].kind != JNull:
+      result.pacingDeliveryType = some(to(node["pacing_delivery_type"], typeof(result.pacingDeliveryType.get())))
+    if node.hasKey("campaign_id") and node["campaign_id"].kind != JNull:
+      result.campaignId = some(to(node["campaign_id"], typeof(result.campaignId.get())))
+    if node.hasKey("billable_event") and node["billable_event"].kind != JNull:
+      result.billableEvent = some(to(node["billable_event"], typeof(result.billableEvent.get())))
+    if node.hasKey("bid_strategy_type") and node["bid_strategy_type"].kind != JNull:
+      result.bidStrategyType = some(to(node["bid_strategy_type"], BidStrategyType))
+    if node.hasKey("targeting_template_ids") and node["targeting_template_ids"].kind != JNull:
+      result.targetingTemplateIds = some(to(node["targeting_template_ids"], typeof(result.targetingTemplateIds.get())))
+
+# Custom JSON serialization for AdGroupCommon with custom field names
+proc `%`*(obj: AdGroupCommon): JsonNode =
+  result = newJObject()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.budgetInMicroCurrency.isSome():
+    result["budget_in_micro_currency"] = %obj.budgetInMicroCurrency.get()
+  if obj.bidInMicroCurrency.isSome():
+    result["bid_in_micro_currency"] = %obj.bidInMicroCurrency.get()
+  if obj.optimizationGoalMetadata.isSome():
+    result["optimization_goal_metadata"] = %obj.optimizationGoalMetadata.get()
+  if obj.budgetType.isSome():
+    result["budget_type"] = %obj.budgetType.get()
+  if obj.startTime.isSome():
+    result["start_time"] = %obj.startTime.get()
+  if obj.endTime.isSome():
+    result["end_time"] = %obj.endTime.get()
+  if obj.targetingSpec.isSome():
+    result["targeting_spec"] = %obj.targetingSpec.get()
+  if obj.lifetimeFrequencyCap.isSome():
+    result["lifetime_frequency_cap"] = %obj.lifetimeFrequencyCap.get()
+  if obj.trackingUrls.isSome():
+    result["tracking_urls"] = %obj.trackingUrls.get()
+  if obj.autoTargetingEnabled.isSome():
+    result["auto_targeting_enabled"] = %obj.autoTargetingEnabled.get()
+  if obj.placementGroup.isSome():
+    result["placement_group"] = %obj.placementGroup.get()
+  if obj.pacingDeliveryType.isSome():
+    result["pacing_delivery_type"] = %obj.pacingDeliveryType.get()
+  if obj.campaignId.isSome():
+    result["campaign_id"] = %obj.campaignId.get()
+  if obj.billableEvent.isSome():
+    result["billable_event"] = %obj.billableEvent.get()
+  if obj.bidStrategyType.isSome():
+    result["bid_strategy_type"] = %obj.bidStrategyType.get()
+  if obj.targetingTemplateIds.isSome():
+    result["targeting_template_ids"] = %obj.targetingTemplateIds.get()
+

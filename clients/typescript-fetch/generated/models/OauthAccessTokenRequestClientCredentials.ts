@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * A request to receive a client token.
+ * 
  * @export
  * @interface OauthAccessTokenRequestClientCredentials
  */
@@ -24,13 +24,13 @@ export interface OauthAccessTokenRequestClientCredentials {
      * @type {string}
      * @memberof OauthAccessTokenRequestClientCredentials
      */
-    grantType: OauthAccessTokenRequestClientCredentialsGrantTypeEnum;
+    scope: string;
     /**
      * 
      * @type {string}
      * @memberof OauthAccessTokenRequestClientCredentials
      */
-    scope: string;
+    grantType: OauthAccessTokenRequestClientCredentialsGrantTypeEnum;
 }
 
 
@@ -49,8 +49,8 @@ export type OauthAccessTokenRequestClientCredentialsGrantTypeEnum = typeof Oauth
  * Check if a given object implements the OauthAccessTokenRequestClientCredentials interface.
  */
 export function instanceOfOauthAccessTokenRequestClientCredentials(value: object): value is OauthAccessTokenRequestClientCredentials {
-    if (!('grantType' in value) || value['grantType'] === undefined) return false;
     if (!('scope' in value) || value['scope'] === undefined) return false;
+    if (!('grantType' in value) || value['grantType'] === undefined) return false;
     return true;
 }
 
@@ -64,8 +64,8 @@ export function OauthAccessTokenRequestClientCredentialsFromJSONTyped(json: any,
     }
     return {
         
-        'grantType': json['grant_type'],
         'scope': json['scope'],
+        'grantType': json['grant_type'],
     };
 }
 
@@ -80,8 +80,8 @@ export function OauthAccessTokenRequestClientCredentialsToJSONTyped(value?: Oaut
 
     return {
         
-        'grant_type': value['grantType'],
         'scope': value['scope'],
+        'grant_type': value['grantType'],
     };
 }
 

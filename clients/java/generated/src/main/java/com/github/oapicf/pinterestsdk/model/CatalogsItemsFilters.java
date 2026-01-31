@@ -63,7 +63,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsFilters extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsItemsFilters.class.getName());
 
@@ -126,7 +126,7 @@ public class CatalogsItemsFilters extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsRetailItemsFilter'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsRetailItemsFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsRetailItemsFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsRetailItemsFilter'", e);
                     }
                     // deserialize CatalogsHotelItemsFilter
@@ -138,7 +138,7 @@ public class CatalogsItemsFilters extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsHotelItemsFilter'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsHotelItemsFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsHotelItemsFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsHotelItemsFilter'", e);
                     }
                     // deserialize CatalogsCreativeAssetsItemsFilter
@@ -150,7 +150,7 @@ public class CatalogsItemsFilters extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'CatalogsCreativeAssetsItemsFilter'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsCreativeAssetsItemsFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreativeAssetsItemsFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsCreativeAssetsItemsFilter'", e);
                     }
 
@@ -160,7 +160,7 @@ public class CatalogsItemsFilters extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CatalogsItemsFilters: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CatalogsItemsFilters: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -276,7 +276,7 @@ public class CatalogsItemsFilters extends AbstractOpenApiSchema {
             CatalogsRetailItemsFilter.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsRetailItemsFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsRetailItemsFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsHotelItemsFilter
@@ -284,7 +284,7 @@ public class CatalogsItemsFilters extends AbstractOpenApiSchema {
             CatalogsHotelItemsFilter.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsHotelItemsFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsHotelItemsFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsCreativeAssetsItemsFilter
@@ -292,11 +292,11 @@ public class CatalogsItemsFilters extends AbstractOpenApiSchema {
             CatalogsCreativeAssetsItemsFilter.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsCreativeAssetsItemsFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreativeAssetsItemsFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CatalogsItemsFilters with oneOf schemas: CatalogsCreativeAssetsItemsFilter, CatalogsHotelItemsFilter, CatalogsRetailItemsFilter. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CatalogsItemsFilters with oneOf schemas: CatalogsCreativeAssetsItemsFilter, CatalogsHotelItemsFilter, CatalogsRetailItemsFilter. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

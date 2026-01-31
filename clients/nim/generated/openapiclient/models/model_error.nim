@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type Error* = object
   ## 
   code*: int
   message*: string
+

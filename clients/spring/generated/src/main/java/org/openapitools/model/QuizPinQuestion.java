@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "QuizPinQuestion", description = "A specific quiz inquiry.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinQuestion {
 
   private @Nullable BigDecimal questionId;
@@ -35,7 +35,7 @@ public class QuizPinQuestion {
   @Valid
   private List<@Valid QuizPinOption> options = new ArrayList<>();
 
-  public QuizPinQuestion questionId(BigDecimal questionId) {
+  public QuizPinQuestion questionId(@Nullable BigDecimal questionId) {
     this.questionId = questionId;
     return this;
   }
@@ -47,15 +47,15 @@ public class QuizPinQuestion {
   @Valid 
   @Schema(name = "question_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("question_id")
-  public BigDecimal getQuestionId() {
+  public @Nullable BigDecimal getQuestionId() {
     return questionId;
   }
 
-  public void setQuestionId(BigDecimal questionId) {
+  public void setQuestionId(@Nullable BigDecimal questionId) {
     this.questionId = questionId;
   }
 
-  public QuizPinQuestion questionText(String questionText) {
+  public QuizPinQuestion questionText(@Nullable String questionText) {
     this.questionText = questionText;
     return this;
   }
@@ -67,11 +67,11 @@ public class QuizPinQuestion {
   
   @Schema(name = "question_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("question_text")
-  public String getQuestionText() {
+  public @Nullable String getQuestionText() {
     return questionText;
   }
 
-  public void setQuestionText(String questionText) {
+  public void setQuestionText(@Nullable String questionText) {
     this.questionText = questionText;
   }
 

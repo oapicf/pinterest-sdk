@@ -57,7 +57,7 @@ export function CatalogsFeedFromJSONTyped(json: any, ignoreDiscriminator: boolea
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailFeedFromJSONTyped(json, true), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsFeed exists with 'catalogType=${json['catalogType']}'`);
+            return json;
     }
 }
 
@@ -77,8 +77,7 @@ export function CatalogsFeedToJSONTyped(value?: CatalogsFeed | null, ignoreDiscr
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailFeedToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsFeed exists with 'catalogType=${value['catalogType']}'`);
+            return value;
     }
-
 }
 

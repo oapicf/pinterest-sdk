@@ -31,7 +31,10 @@ void OpenAPILeadFormCreateRequest::WriteJson(JsonWriter& Writer) const
 	{
 		Writer->WriteIdentifierPrefix(TEXT("privacy_policy_link")); WriteJsonValue(Writer, PrivacyPolicyLink.GetValue());
 	}
-	Writer->WriteIdentifierPrefix(TEXT("has_accepted_terms")); WriteJsonValue(Writer, HasAcceptedTerms);
+	if (HasAcceptedTerms.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("has_accepted_terms")); WriteJsonValue(Writer, HasAcceptedTerms.GetValue());
+	}
 	if (CompletionMessage.IsSet())
 	{
 		Writer->WriteIdentifierPrefix(TEXT("completion_message")); WriteJsonValue(Writer, CompletionMessage.GetValue());
@@ -44,7 +47,10 @@ void OpenAPILeadFormCreateRequest::WriteJson(JsonWriter& Writer) const
 	{
 		Writer->WriteIdentifierPrefix(TEXT("disclosure_language")); WriteJsonValue(Writer, DisclosureLanguage.GetValue());
 	}
-	Writer->WriteIdentifierPrefix(TEXT("questions")); WriteJsonValue(Writer, Questions);
+	if (Questions.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("questions")); WriteJsonValue(Writer, Questions.GetValue());
+	}
 	if (PolicyLinks.IsSet())
 	{
 		Writer->WriteIdentifierPrefix(TEXT("policy_links")); WriteJsonValue(Writer, PolicyLinks.GetValue());

@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -12,8 +12,8 @@
 
 package org.openapitools.client.model;
 
-import org.openapitools.client.model.AudienceCreateRequest1AudienceType;
 import org.openapitools.client.model.AudienceRule;
+import org.openapitools.client.model.AudienceType;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
@@ -29,7 +29,7 @@ public class AudienceCreateRequest {
   @SerializedName("description")
   private String description = null;
   @SerializedName("audience_type")
-  private AudienceCreateRequest1AudienceType audienceType = null;
+  private AudienceType audienceType = null;
 
   /**
    * Ad account ID.
@@ -75,12 +75,13 @@ public class AudienceCreateRequest {
   }
 
   /**
+   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
    **/
-  @ApiModelProperty(required = true, value = "")
-  public AudienceCreateRequest1AudienceType getAudienceType() {
+  @ApiModelProperty(required = true, value = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.")
+  public AudienceType getAudienceType() {
     return audienceType;
   }
-  public void setAudienceType(AudienceCreateRequest1AudienceType audienceType) {
+  public void setAudienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
   }
 

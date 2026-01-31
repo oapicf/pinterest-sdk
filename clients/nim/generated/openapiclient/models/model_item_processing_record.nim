@@ -9,13 +9,42 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_item_processing_status
 import model_item_validation_event
 
 type ItemProcessingRecord* = object
   ## Object describing an item processing record
-  itemId*: string ## The catalog item id in the merchant namespace
-  errors*: seq[ItemValidationEvent] ## Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
-  warnings*: seq[ItemValidationEvent] ## Array with the validation warnings for the item processing record
-  status*: ItemProcessingStatus
+  itemId*: Option[string] ## The catalog item id in the merchant namespace
+  errors*: Option[seq[ItemValidationEvent]] ## Array with the validation errors for the item processing record. A non empty errors list causes the item processing to fail.
+  warnings*: Option[seq[ItemValidationEvent]] ## Array with the validation warnings for the item processing record
+  status*: Option[ItemProcessingStatus]
+
+
+# Custom JSON deserialization for ItemProcessingRecord with custom field names
+proc to*(node: JsonNode, T: typedesc[ItemProcessingRecord]): ItemProcessingRecord =
+  result = ItemProcessingRecord()
+  if node.kind == JObject:
+    if node.hasKey("item_id") and node["item_id"].kind != JNull:
+      result.itemId = some(to(node["item_id"], typeof(result.itemId.get())))
+    if node.hasKey("errors") and node["errors"].kind != JNull:
+      result.errors = some(to(node["errors"], typeof(result.errors.get())))
+    if node.hasKey("warnings") and node["warnings"].kind != JNull:
+      result.warnings = some(to(node["warnings"], typeof(result.warnings.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+
+# Custom JSON serialization for ItemProcessingRecord with custom field names
+proc `%`*(obj: ItemProcessingRecord): JsonNode =
+  result = newJObject()
+  if obj.itemId.isSome():
+    result["item_id"] = %obj.itemId.get()
+  if obj.errors.isSome():
+    result["errors"] = %obj.errors.get()
+  if obj.warnings.isSome():
+    result["warnings"] = %obj.warnings.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+

@@ -28,7 +28,7 @@ data class CatalogsListProductsByFeedBasedFilter(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("filters", required = true) val filters: CatalogsProductGroupFilters
-    ) {
+) {
 
 }
 

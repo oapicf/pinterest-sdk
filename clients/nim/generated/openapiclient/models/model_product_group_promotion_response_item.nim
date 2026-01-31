@@ -9,11 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_exception
 import model_product_group_promotion_response_element
 
 type ProductGroupPromotionResponseItem* = object
   ## 
-  data*: ProductGroupPromotionResponseElement
-  exceptions*: seq[Exception]
+  data*: Option[ProductGroupPromotionResponseElement]
+  exceptions*: Option[seq[Exception]]
+
+
+# Custom JSON deserialization for ProductGroupPromotionResponseItem with custom field names
+proc to*(node: JsonNode, T: typedesc[ProductGroupPromotionResponseItem]): ProductGroupPromotionResponseItem =
+  result = ProductGroupPromotionResponseItem()
+  if node.kind == JObject:
+    if node.hasKey("data") and node["data"].kind != JNull:
+      result.data = some(to(node["data"], typeof(result.data.get())))
+    if node.hasKey("exceptions") and node["exceptions"].kind != JNull:
+      result.exceptions = some(to(node["exceptions"], typeof(result.exceptions.get())))
+
+# Custom JSON serialization for ProductGroupPromotionResponseItem with custom field names
+proc `%`*(obj: ProductGroupPromotionResponseItem): JsonNode =
+  result = newJObject()
+  if obj.data.isSome():
+    result["data"] = %obj.data.get()
+  if obj.exceptions.isSome():
+    result["exceptions"] = %obj.exceptions.get()
+

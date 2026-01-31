@@ -20,7 +20,7 @@ import play.api.libs.json._
   * @param basePrice Base price of the hotel room per night followed by the ISO currency code
   * @param salePrice Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class CatalogsUpdatableHotelAttributes(
   name: Option[String],
   link: Option[String],

@@ -17,52 +17,62 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TargetingTemplateResponseData  {
   
-  @ApiModelProperty(example = "Gaming", value = "targeting template name")
  /**
-   * targeting template name
-  **/
+  * targeting template name
+  */
+  @ApiModelProperty(example = "Gaming", value = "targeting template name")
+
   private String name;
 
-  @ApiModelProperty(value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
  /**
-   * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
-  **/
+  * Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  */
+  @ApiModelProperty(value = "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.")
+
   private Boolean autoTargetingEnabled = true;
 
   @ApiModelProperty(value = "")
+
   private TargetingSpec targetingAttributes;
 
   @ApiModelProperty(value = "")
+
   private PlacementGroupType placementGroup = PlacementGroupType.ALL;
 
   @ApiModelProperty(example = "[{value=cats, match_type=EXACT_NEGATIVE}]", value = "")
+
   private List<TargetingTemplateKeyword> keywords = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private TrackingUrls trackingUrls;
 
-  @ApiModelProperty(example = "643", value = "Targeting template ID.")
  /**
-   * Targeting template ID.
-  **/
+  * Targeting template ID.
+  */
+  @ApiModelProperty(example = "643", value = "Targeting template ID.")
+
   private String id;
 
-  @ApiModelProperty(example = "1432744744", value = "Targeting template created time. Unix timestamp in seconds.")
  /**
-   * Targeting template created time. Unix timestamp in seconds.
-  **/
+  * Targeting template created time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1432744744", value = "Targeting template created time. Unix timestamp in seconds.")
+
   private Integer createdTime;
 
-  @ApiModelProperty(example = "1432744744", value = "Targeting template updated time.Unix timestamp in seconds.")
  /**
-   * Targeting template updated time.Unix timestamp in seconds.
-  **/
+  * Targeting template updated time.Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1432744744", value = "Targeting template updated time.Unix timestamp in seconds.")
+
   private Integer updatedTime;
 
-  @ApiModelProperty(example = "549755885175", value = "The ID of the advertiser that this targeting template belongs to.")
  /**
-   * The ID of the advertiser that this targeting template belongs to.
-  **/
+  * The ID of the advertiser that this targeting template belongs to.
+  */
+  @ApiModelProperty(example = "549755885175", value = "The ID of the advertiser that this targeting template belongs to.")
+
   private String adAccountId;
 
 public enum StatusEnum {
@@ -95,13 +105,15 @@ ACTIVE(String.valueOf("ACTIVE")), DELETED(String.valueOf("DELETED"));
     }
 }
 
-  @ApiModelProperty(example = "ACTIVE", value = "Indicate targeting template is active or Deleted")
  /**
-   * Indicate targeting template is active or Deleted
-  **/
+  * Indicate targeting template is active or Deleted
+  */
+  @ApiModelProperty(example = "ACTIVE", value = "Indicate targeting template is active or Deleted")
+
   private StatusEnum status = StatusEnum.ACTIVE;
 
   @ApiModelProperty(value = "")
+
   private TargetingTemplateAudienceSizing sizing;
  /**
    * targeting template name

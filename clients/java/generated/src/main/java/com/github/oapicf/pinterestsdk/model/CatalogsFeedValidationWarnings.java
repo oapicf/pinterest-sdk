@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedValidationWarnings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedValidationWarnings {
   public static final String SERIALIZED_NAME_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G = "AD_LINK_FORMAT_WARNING";
   @SerializedName(SERIALIZED_NAME_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G)
@@ -1419,59 +1419,10 @@ public class CatalogsFeedValidationWarnings {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("AD_LINK_FORMAT_WARNING");
-    openapiFields.add("AD_LINK_SAME_AS_LINK");
-    openapiFields.add("TITLE_LENGTH_TOO_LONG");
-    openapiFields.add("DESCRIPTION_LENGTH_TOO_LONG");
-    openapiFields.add("GENDER_INVALID");
-    openapiFields.add("AGE_GROUP_INVALID");
-    openapiFields.add("SIZE_TYPE_INVALID");
-    openapiFields.add("SIZE_SYSTEM_INVALID");
-    openapiFields.add("LINK_FORMAT_WARNING");
-    openapiFields.add("SALES_PRICE_INVALID");
-    openapiFields.add("PRODUCT_CATEGORY_DEPTH_WARNING");
-    openapiFields.add("ADWORDS_FORMAT_WARNING");
-    openapiFields.add("ADWORDS_SAME_AS_LINK");
-    openapiFields.add("DUPLICATE_HEADERS");
-    openapiFields.add("FETCH_SAME_SIGNATURE");
-    openapiFields.add("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG");
-    openapiFields.add("ADDITIONAL_IMAGE_LINK_WARNING");
-    openapiFields.add("IMAGE_LINK_WARNING");
-    openapiFields.add("SHIPPING_INVALID");
-    openapiFields.add("TAX_INVALID");
-    openapiFields.add("SHIPPING_WEIGHT_INVALID");
-    openapiFields.add("EXPIRATION_DATE_INVALID");
-    openapiFields.add("AVAILABILITY_DATE_INVALID");
-    openapiFields.add("SALE_DATE_INVALID");
-    openapiFields.add("WEIGHT_UNIT_INVALID");
-    openapiFields.add("IS_BUNDLE_INVALID");
-    openapiFields.add("UPDATED_TIME_INVALID");
-    openapiFields.add("CUSTOM_LABEL_LENGTH_TOO_LONG");
-    openapiFields.add("PRODUCT_TYPE_LENGTH_TOO_LONG");
-    openapiFields.add("TOO_MANY_ADDITIONAL_IMAGE_LINKS");
-    openapiFields.add("MULTIPACK_INVALID");
-    openapiFields.add("INDEXED_PRODUCT_COUNT_LARGE_DELTA");
-    openapiFields.add("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE");
-    openapiFields.add("OPTIONAL_PRODUCT_CATEGORY_MISSING");
-    openapiFields.add("OPTIONAL_PRODUCT_CATEGORY_INVALID");
-    openapiFields.add("OPTIONAL_CONDITION_MISSING");
-    openapiFields.add("OPTIONAL_CONDITION_INVALID");
-    openapiFields.add("IOS_DEEP_LINK_INVALID");
-    openapiFields.add("ANDROID_DEEP_LINK_INVALID");
-    openapiFields.add("UTM_SOURCE_AUTO_CORRECTED");
-    openapiFields.add("COUNTRY_DOES_NOT_MAP_TO_CURRENCY");
-    openapiFields.add("MIN_AD_PRICE_INVALID");
-    openapiFields.add("GTIN_INVALID");
-    openapiFields.add("INCONSISTENT_CURRENCY_VALUES");
-    openapiFields.add("SALES_PRICE_TOO_LOW");
-    openapiFields.add("SHIPPING_WIDTH_INVALID");
-    openapiFields.add("SHIPPING_HEIGHT_INVALID");
-    openapiFields.add("SALES_PRICE_TOO_HIGH");
-    openapiFields.add("MPN_INVALID");
+    openapiFields = new HashSet<String>(Arrays.asList("AD_LINK_FORMAT_WARNING", "AD_LINK_SAME_AS_LINK", "TITLE_LENGTH_TOO_LONG", "DESCRIPTION_LENGTH_TOO_LONG", "GENDER_INVALID", "AGE_GROUP_INVALID", "SIZE_TYPE_INVALID", "SIZE_SYSTEM_INVALID", "LINK_FORMAT_WARNING", "SALES_PRICE_INVALID", "PRODUCT_CATEGORY_DEPTH_WARNING", "ADWORDS_FORMAT_WARNING", "ADWORDS_SAME_AS_LINK", "DUPLICATE_HEADERS", "FETCH_SAME_SIGNATURE", "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG", "ADDITIONAL_IMAGE_LINK_WARNING", "IMAGE_LINK_WARNING", "SHIPPING_INVALID", "TAX_INVALID", "SHIPPING_WEIGHT_INVALID", "EXPIRATION_DATE_INVALID", "AVAILABILITY_DATE_INVALID", "SALE_DATE_INVALID", "WEIGHT_UNIT_INVALID", "IS_BUNDLE_INVALID", "UPDATED_TIME_INVALID", "CUSTOM_LABEL_LENGTH_TOO_LONG", "PRODUCT_TYPE_LENGTH_TOO_LONG", "TOO_MANY_ADDITIONAL_IMAGE_LINKS", "MULTIPACK_INVALID", "INDEXED_PRODUCT_COUNT_LARGE_DELTA", "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE", "OPTIONAL_PRODUCT_CATEGORY_MISSING", "OPTIONAL_PRODUCT_CATEGORY_INVALID", "OPTIONAL_CONDITION_MISSING", "OPTIONAL_CONDITION_INVALID", "IOS_DEEP_LINK_INVALID", "ANDROID_DEEP_LINK_INVALID", "UTM_SOURCE_AUTO_CORRECTED", "COUNTRY_DOES_NOT_MAP_TO_CURRENCY", "MIN_AD_PRICE_INVALID", "GTIN_INVALID", "INCONSISTENT_CURRENCY_VALUES", "SALES_PRICE_TOO_LOW", "SHIPPING_WIDTH_INVALID", "SHIPPING_HEIGHT_INVALID", "SALES_PRICE_TOO_HIGH", "MPN_INVALID"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -1483,7 +1434,7 @@ public class CatalogsFeedValidationWarnings {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsFeedValidationWarnings.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsFeedValidationWarnings is not found in the empty JSON string", CatalogsFeedValidationWarnings.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsFeedValidationWarnings is not found in the empty JSON string", CatalogsFeedValidationWarnings.openapiRequiredFields.toString()));
         }
       }
 
@@ -1491,7 +1442,7 @@ public class CatalogsFeedValidationWarnings {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsFeedValidationWarnings.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsFeedValidationWarnings` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsFeedValidationWarnings` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

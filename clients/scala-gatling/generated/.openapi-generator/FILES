@@ -120,7 +120,6 @@ src/gatling/scala/org/openapitools/client/model/AudienceCategory.scala
 src/gatling/scala/org/openapitools/client/model/AudienceCommon.scala
 src/gatling/scala/org/openapitools/client/model/AudienceCreateCustomRequest.scala
 src/gatling/scala/org/openapitools/client/model/AudienceCreateRequest.scala
-src/gatling/scala/org/openapitools/client/model/AudienceCreateRequest1AudienceType.scala
 src/gatling/scala/org/openapitools/client/model/AudienceDataParty.scala
 src/gatling/scala/org/openapitools/client/model/AudienceDefinition.scala
 src/gatling/scala/org/openapitools/client/model/AudienceDefinitionResponse.scala
@@ -298,7 +297,6 @@ src/gatling/scala/org/openapitools/client/model/CatalogsItemsDeleteDiscontinuedB
 src/gatling/scala/org/openapitools/client/model/CatalogsItemsFilters.scala
 src/gatling/scala/org/openapitools/client/model/CatalogsItemsPostFilters.scala
 src/gatling/scala/org/openapitools/client/model/CatalogsItemsRequest.scala
-src/gatling/scala/org/openapitools/client/model/CatalogsItemsRequestLanguage.scala
 src/gatling/scala/org/openapitools/client/model/CatalogsItemsUpdateBatchRequest.scala
 src/gatling/scala/org/openapitools/client/model/CatalogsItemsUpsertBatchRequest.scala
 src/gatling/scala/org/openapitools/client/model/CatalogsList200Response.scala
@@ -632,7 +630,6 @@ src/gatling/scala/org/openapitools/client/model/PinMediaWithVideos.scala
 src/gatling/scala/org/openapitools/client/model/PinPromotionSummaryStatus.scala
 src/gatling/scala/org/openapitools/client/model/PinUpdate.scala
 src/gatling/scala/org/openapitools/client/model/PinUpdateCarouselSlotsInner.scala
-src/gatling/scala/org/openapitools/client/model/PinsAnalyticsMetricTypesParameterInner.scala
 src/gatling/scala/org/openapitools/client/model/PinsList200Response.scala
 src/gatling/scala/org/openapitools/client/model/PinsSaveRequest.scala
 src/gatling/scala/org/openapitools/client/model/PinterestTagEventData.scala

@@ -213,7 +213,7 @@ data class ItemAttributesRequest(
 
     @Schema(example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294.mp4", description = "<p><= 2,000 characters</p> <p>Hosted link to the product video.</p> <p>File types for linked videos must be .mp4, .mov or .m4v.</p> <p>File size cannot exceed 2GB.</p>")
     @get:JsonProperty("video_link") val videoLink: kotlin.String? = null
-    ) {
+) {
 
 }
 

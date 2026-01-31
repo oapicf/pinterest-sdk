@@ -2,17 +2,17 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for creating a catalog.
- **/
+ * Request object for creating a catalog.
+ */
 @ApiModel(description="Request object for creating a catalog.")
 
 public class CatalogsCreateRequest  {
@@ -49,16 +49,18 @@ HOTEL(String.valueOf("HOTEL"));
     }
 }
 
-  @ApiModelProperty(required = true, value = "Type of the catalog entity.")
  /**
-   * Type of the catalog entity.
-  **/
+  * Type of the catalog entity.
+  */
+  @ApiModelProperty(required = true, value = "Type of the catalog entity.")
+
   private CatalogTypeEnum catalogType;
 
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given catalog.")
  /**
-   * A human-friendly name associated to a given catalog.
-  **/
+  * A human-friendly name associated to a given catalog.
+  */
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given catalog.")
+
   private String name;
  /**
    * Type of the catalog entity.

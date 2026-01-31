@@ -14,14 +14,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ProductGroupPromotionCreateRequest  {
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the Ad Group the Product Group Promotion belongs to.")
  /**
-   * ID of the Ad Group the Product Group Promotion belongs to.
-  **/
+  * ID of the Ad Group the Product Group Promotion belongs to.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "ID of the Ad Group the Product Group Promotion belongs to.")
+
   private String adGroupId;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private List<@Valid ProductGroupPromotionCreateRequestElement> productGroupPromotion = new ArrayList<>();
  /**
    * ID of the Ad Group the Product Group Promotion belongs to.

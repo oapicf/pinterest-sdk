@@ -19,14 +19,33 @@ import .*
 
 /**
  * 
+ * @param reportName Name of the Marketing Mix Modeling (MMM) report
+ * @param startDate Metric report start date (UTC). Format: YYYY-MM-DD
+ * @param endDate Metric report end date (UTC). Format: YYYY-MM-DD
+ * @param granularity DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
+ * @param level Level of the report
+ * @param targetingTypes List of targeting types
+ * @param columns Metric and entity columns
  * @param countries A List of countries for filtering
  */
 object CreateMMMReportRequests : BaseTable<CreateMMMReportRequest>("CreateMMMReportRequest") {
+    val reportName = text("report_name") /* Name of the Marketing Mix Modeling (MMM) report */
+    val startDate = text("start_date") /* Metric report start date (UTC). Format: YYYY-MM-DD */
+    val endDate = text("end_date") /* Metric report end date (UTC). Format: YYYY-MM-DD */
+    val granularity = text("granularity").transform({ CreateMMMReportRequest.Granularity.valueOf(it) }, { it.value }) /* DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly. */
+    val level = text("level").transform({ CreateMMMReportRequest.Level.valueOf(it) }, { it.value }) /* Level of the report */
 
     /**
      * Create an entity of type CreateMMMReportRequest from the model
      */
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = CreateMMMReportRequest(
+        reportName = row[reportName] ?: "" /* kotlin.String */ /* Name of the Marketing Mix Modeling (MMM) report */,
+        startDate = row[startDate] ?: "" /* kotlin.String */ /* Metric report start date (UTC). Format: YYYY-MM-DD */,
+        endDate = row[endDate] ?: "" /* kotlin.String */ /* Metric report end date (UTC). Format: YYYY-MM-DD */,
+        granularity = row[granularity] ?: CreateMMMReportRequest.Granularity.valueOf("") /* kotlin.String */ /* DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly. */,
+        level = row[level] ?: CreateMMMReportRequest.Level.valueOf("") /* kotlin.String */ /* Level of the report */,
+        targetingTypes = emptyList() /* kotlin.Array<MMMReportingTargetingType> */ /* List of targeting types */,
+        columns = emptyList() /* kotlin.Array<MMMReportingColumn> */ /* Metric and entity columns */,
         countries = emptyList() /* kotlin.Array<TargetingAdvertiserCountry>? */ /* A List of countries for filtering */
     )
 
@@ -45,11 +64,48 @@ object CreateMMMReportRequests : BaseTable<CreateMMMReportRequest>("CreateMMMRep
     */
     fun AssignmentsBuilder.assignFrom(entity: CreateMMMReportRequest) {
         this.apply {
+            set(CreateMMMReportRequests.reportName, entity.reportName)
+            set(CreateMMMReportRequests.startDate, entity.startDate)
+            set(CreateMMMReportRequests.endDate, entity.endDate)
+            set(CreateMMMReportRequests.granularity, entity.granularity)
+            set(CreateMMMReportRequests.level, entity.level)
         }
     }
 
 }
 
+
+object CreateMMMReportRequestMMMReportingTargetingType : BaseTable<Pair<kotlin.Long, kotlin.Long>>("CreateMMMReportRequestMMMReportingTargetingType") {
+    val createMMMReportRequest = long("createMMMReportRequest")
+    val mMMReportingTargetingType = long("mMMReportingTargetingType")
+
+    override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean): Pair<kotlin.Long, kotlin.Long> =
+        Pair(row[createMMMReportRequest] ?: 0, row[mMMReportingTargetingType] ?: 0)
+
+    fun AssignmentsBuilder.assignFrom(entity: Pair<kotlin.Long, kotlin.Long>) {
+        this.apply {
+            set(CreateMMMReportRequestMMMReportingTargetingType.createMMMReportRequest, entity.first)
+            set(CreateMMMReportRequestMMMReportingTargetingType.mMMReportingTargetingType, entity.second)
+        }
+    }
+
+}
+
+object CreateMMMReportRequestMMMReportingColumn : BaseTable<Pair<kotlin.Long, kotlin.Long>>("CreateMMMReportRequestMMMReportingColumn") {
+    val createMMMReportRequest = long("createMMMReportRequest")
+    val mMMReportingColumn = long("mMMReportingColumn")
+
+    override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean): Pair<kotlin.Long, kotlin.Long> =
+        Pair(row[createMMMReportRequest] ?: 0, row[mMMReportingColumn] ?: 0)
+
+    fun AssignmentsBuilder.assignFrom(entity: Pair<kotlin.Long, kotlin.Long>) {
+        this.apply {
+            set(CreateMMMReportRequestMMMReportingColumn.createMMMReportRequest, entity.first)
+            set(CreateMMMReportRequestMMMReportingColumn.mMMReportingColumn, entity.second)
+        }
+    }
+
+}
 
 object CreateMMMReportRequestTargetingAdvertiserCountry : BaseTable<Pair<kotlin.Long, kotlin.Long>>("CreateMMMReportRequestTargetingAdvertiserCountry") {
     val createMMMReportRequest = long("createMMMReportRequest")

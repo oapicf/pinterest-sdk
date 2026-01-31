@@ -15,13 +15,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Request object used to get bid options values for a batch of retail catalog items
  **/
 @ApiModel(description = "Request object used to get bid options values for a batch of retail catalog items")
 @JsonTypeName("AdvancedAuctionItemsGetRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionItemsGetRequest   {
   private String catalogId;
   private @Valid List<AdvancedAuctionItemsGetRecord> items = new ArrayList<>();

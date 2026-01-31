@@ -53,7 +53,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * UpdateAssetGroupResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdateAssetGroupResponse {
   public static final String SERIALIZED_NAME_UPDATED_ASSET_GROUPS = "updated_asset_groups";
   @SerializedName(SERIALIZED_NAME_UPDATED_ASSET_GROUPS)
@@ -179,12 +179,10 @@ public class UpdateAssetGroupResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("updated_asset_groups");
-    openapiFields.add("exceptions");
+    openapiFields = new HashSet<String>(Arrays.asList("updated_asset_groups", "exceptions"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -196,7 +194,7 @@ public class UpdateAssetGroupResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!UpdateAssetGroupResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateAssetGroupResponse is not found in the empty JSON string", UpdateAssetGroupResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in UpdateAssetGroupResponse is not found in the empty JSON string", UpdateAssetGroupResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -204,7 +202,7 @@ public class UpdateAssetGroupResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!UpdateAssetGroupResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateAssetGroupResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `UpdateAssetGroupResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -213,7 +211,7 @@ public class UpdateAssetGroupResponse {
         if (jsonArrayupdatedAssetGroups != null) {
           // ensure the json data is an array
           if (!jsonObj.get("updated_asset_groups").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `updated_asset_groups` to be an array in the JSON string but got `%s`", jsonObj.get("updated_asset_groups").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `updated_asset_groups` to be an array in the JSON string but got `%s`", jsonObj.get("updated_asset_groups").toString()));
           }
 
           // validate the optional field `updated_asset_groups` (array)
@@ -227,7 +225,7 @@ public class UpdateAssetGroupResponse {
         if (jsonArrayexceptions != null) {
           // ensure the json data is an array
           if (!jsonObj.get("exceptions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `exceptions` to be an array in the JSON string but got `%s`", jsonObj.get("exceptions").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `exceptions` to be an array in the JSON string but got `%s`", jsonObj.get("exceptions").toString()));
           }
 
           // validate the optional field `exceptions` (array)

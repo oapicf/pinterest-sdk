@@ -293,8 +293,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:write"]);
         }
 
+
+        let urlPath = `/catalogs`;
+
         const response = await this.request({
-            path: `/catalogs`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -339,8 +342,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs`;
+
         const response = await this.request({
-            path: `/catalogs`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -395,8 +401,12 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "catalogs:read", "pins:read"]);
         }
 
+
+        let urlPath = `/catalogs/product_groups/{product_group_id}/products`;
+        urlPath = urlPath.replace(`{${"product_group_id"}}`, encodeURIComponent(String(requestParameters['productGroupId'])));
+
         const response = await this.request({
-            path: `/catalogs/product_groups/{product_group_id}/products`.replace(`{${"product_group_id"}}`, encodeURIComponent(String(requestParameters['productGroupId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -441,8 +451,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:write"]);
         }
 
+
+        let urlPath = `/catalogs/product_groups`;
+
         const response = await this.request({
-            path: `/catalogs/product_groups`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -488,8 +501,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:write"]);
         }
 
+
+        let urlPath = `/catalogs/product_groups/multiple`;
+
         const response = await this.request({
-            path: `/catalogs/product_groups/multiple`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -533,8 +549,12 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:write"]);
         }
 
+
+        let urlPath = `/catalogs/product_groups/{product_group_id}`;
+        urlPath = urlPath.replace(`{${"product_group_id"}}`, encodeURIComponent(String(requestParameters['productGroupId'])));
+
         const response = await this.request({
-            path: `/catalogs/product_groups/{product_group_id}`.replace(`{${"product_group_id"}}`, encodeURIComponent(String(requestParameters['productGroupId']))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -580,8 +600,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:write"]);
         }
 
+
+        let urlPath = `/catalogs/product_groups/multiple`;
+
         const response = await this.request({
-            path: `/catalogs/product_groups/multiple`,
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -623,8 +646,12 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/product_groups/{product_group_id}`;
+        urlPath = urlPath.replace(`{${"product_group_id"}}`, encodeURIComponent(String(requestParameters['productGroupId'])));
+
         const response = await this.request({
-            path: `/catalogs/product_groups/{product_group_id}`.replace(`{${"product_group_id"}}`, encodeURIComponent(String(requestParameters['productGroupId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -680,8 +707,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/product_groups`;
+
         const response = await this.request({
-            path: `/catalogs/product_groups`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -724,8 +754,12 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/product_groups/{product_group_id}/product_counts`;
+        urlPath = urlPath.replace(`{${"product_group_id"}}`, encodeURIComponent(String(requestParameters['productGroupId'])));
+
         const response = await this.request({
-            path: `/catalogs/product_groups/{product_group_id}/product_counts`.replace(`{${"product_group_id"}}`, encodeURIComponent(String(requestParameters['productGroupId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -777,8 +811,12 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:write"]);
         }
 
+
+        let urlPath = `/catalogs/product_groups/{product_group_id}`;
+        urlPath = urlPath.replace(`{${"product_group_id"}}`, encodeURIComponent(String(requestParameters['productGroupId'])));
+
         const response = await this.request({
-            path: `/catalogs/product_groups/{product_group_id}`.replace(`{${"product_group_id"}}`, encodeURIComponent(String(requestParameters['productGroupId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -830,8 +868,12 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/feeds/{feed_id}/processing_results`;
+        urlPath = urlPath.replace(`{${"feed_id"}}`, encodeURIComponent(String(requestParameters['feedId'])));
+
         const response = await this.request({
-            path: `/catalogs/feeds/{feed_id}/processing_results`.replace(`{${"feed_id"}}`, encodeURIComponent(String(requestParameters['feedId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -881,8 +923,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["catalogs:read", "catalogs:write"]);
         }
 
+
+        let urlPath = `/catalogs/feeds`;
+
         const response = await this.request({
-            path: `/catalogs/feeds`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -931,8 +976,12 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["catalogs:read", "catalogs:write"]);
         }
 
+
+        let urlPath = `/catalogs/feeds/{feed_id}`;
+        urlPath = urlPath.replace(`{${"feed_id"}}`, encodeURIComponent(String(requestParameters['feedId'])));
+
         const response = await this.request({
-            path: `/catalogs/feeds/{feed_id}`.replace(`{${"feed_id"}}`, encodeURIComponent(String(requestParameters['feedId']))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -979,8 +1028,12 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/feeds/{feed_id}`;
+        urlPath = urlPath.replace(`{${"feed_id"}}`, encodeURIComponent(String(requestParameters['feedId'])));
+
         const response = await this.request({
-            path: `/catalogs/feeds/{feed_id}`.replace(`{${"feed_id"}}`, encodeURIComponent(String(requestParameters['feedId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -1023,8 +1076,12 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:write"]);
         }
 
+
+        let urlPath = `/catalogs/feeds/{feed_id}/ingest`;
+        urlPath = urlPath.replace(`{${"feed_id"}}`, encodeURIComponent(String(requestParameters['feedId'])));
+
         const response = await this.request({
-            path: `/catalogs/feeds/{feed_id}/ingest`.replace(`{${"feed_id"}}`, encodeURIComponent(String(requestParameters['feedId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -1077,8 +1134,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/feeds`;
+
         const response = await this.request({
-            path: `/catalogs/feeds`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -1135,8 +1195,12 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["catalogs:read", "catalogs:write"]);
         }
 
+
+        let urlPath = `/catalogs/feeds/{feed_id}`;
+        urlPath = urlPath.replace(`{${"feed_id"}}`, encodeURIComponent(String(requestParameters['feedId'])));
+
         const response = await this.request({
-            path: `/catalogs/feeds/{feed_id}`.replace(`{${"feed_id"}}`, encodeURIComponent(String(requestParameters['feedId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -1185,8 +1249,12 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/items/batch/{batch_id}`;
+        urlPath = urlPath.replace(`{${"batch_id"}}`, encodeURIComponent(String(requestParameters['batchId'])));
+
         const response = await this.request({
-            path: `/catalogs/items/batch/{batch_id}`.replace(`{${"batch_id"}}`, encodeURIComponent(String(requestParameters['batchId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -1236,8 +1304,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("client_credentials", ["catalogs:read", "catalogs:write"]);
         }
 
+
+        let urlPath = `/catalogs/items/batch`;
+
         const response = await this.request({
-            path: `/catalogs/items/batch`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -1305,8 +1376,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/items`;
+
         const response = await this.request({
-            path: `/catalogs/items`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -1366,8 +1440,12 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/processing_results/{processing_result_id}/item_issues`;
+        urlPath = urlPath.replace(`{${"processing_result_id"}}`, encodeURIComponent(String(requestParameters['processingResultId'])));
+
         const response = await this.request({
-            path: `/catalogs/processing_results/{processing_result_id}/item_issues`.replace(`{${"processing_result_id"}}`, encodeURIComponent(String(requestParameters['processingResultId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -1412,8 +1490,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/items`;
+
         const response = await this.request({
-            path: `/catalogs/items`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -1471,8 +1552,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["boards:read", "catalogs:read", "pins:read"]);
         }
 
+
+        let urlPath = `/catalogs/products/get_by_product_group_filters`;
+
         const response = await this.request({
-            path: `/catalogs/products/get_by_product_group_filters`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -1518,8 +1602,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/reports`;
+
         const response = await this.request({
-            path: `/catalogs/reports`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -1567,8 +1654,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/reports`;
+
         const response = await this.request({
-            path: `/catalogs/reports`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -1623,8 +1713,11 @@ export class CatalogsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["catalogs:read"]);
         }
 
+
+        let urlPath = `/catalogs/reports/stats`;
+
         const response = await this.request({
-            path: `/catalogs/reports/stats`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

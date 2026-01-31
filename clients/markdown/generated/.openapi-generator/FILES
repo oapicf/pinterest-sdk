@@ -106,7 +106,6 @@ Models/AudienceCategory.md
 Models/AudienceCommon.md
 Models/AudienceCreateCustomRequest.md
 Models/AudienceCreateRequest.md
-Models/AudienceCreateRequest_1_audience_type.md
 Models/AudienceDataParty.md
 Models/AudienceDefinition.md
 Models/AudienceDefinitionResponse.md
@@ -270,7 +269,6 @@ Models/CatalogsItemsDeleteDiscontinuedBatchRequest.md
 Models/CatalogsItemsFilters.md
 Models/CatalogsItemsPostFilters.md
 Models/CatalogsItemsRequest.md
-Models/CatalogsItemsRequest_language.md
 Models/CatalogsItemsUpdateBatchRequest.md
 Models/CatalogsItemsUpsertBatchRequest.md
 Models/CatalogsListProductsByFeedBasedFilter.md
@@ -736,7 +734,6 @@ Models/media_list_200_response.md
 Models/multiple_product_groups_inner.md
 Models/order_lines_list_200_response.md
 Models/page_visit_conversion_tags_get_200_response.md
-Models/pins_analytics_metric_types_parameter_inner.md
 Models/pins_list_200_response.md
 Models/pins_save_request.md
 Models/product_group_promotions_list_200_response.md

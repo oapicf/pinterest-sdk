@@ -9,7 +9,48 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type EntityStatus* = object
-  ## Entity status
+type EntityStatus* {.pure.} = enum
+  ACTIVE
+  PAUSED
+  ARCHIVED
+  DRAFT
+  DELETEDDRAFT
+
+func `%`*(v: EntityStatus): JsonNode =
+  result = case v:
+    of EntityStatus.ACTIVE: %"ACTIVE"
+    of EntityStatus.PAUSED: %"PAUSED"
+    of EntityStatus.ARCHIVED: %"ARCHIVED"
+    of EntityStatus.DRAFT: %"DRAFT"
+    of EntityStatus.DELETEDDRAFT: %"DELETED_DRAFT"
+
+func `$`*(v: EntityStatus): string =
+  result = case v:
+    of EntityStatus.ACTIVE: $("ACTIVE")
+    of EntityStatus.PAUSED: $("PAUSED")
+    of EntityStatus.ARCHIVED: $("ARCHIVED")
+    of EntityStatus.DRAFT: $("DRAFT")
+    of EntityStatus.DELETEDDRAFT: $("DELETED_DRAFT")
+
+proc to*(node: JsonNode, T: typedesc[EntityStatus]): EntityStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum EntityStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ACTIVE"):
+    return EntityStatus.ACTIVE
+  of $("PAUSED"):
+    return EntityStatus.PAUSED
+  of $("ARCHIVED"):
+    return EntityStatus.ARCHIVED
+  of $("DRAFT"):
+    return EntityStatus.DRAFT
+  of $("DELETED_DRAFT"):
+    return EntityStatus.DELETEDDRAFT
+  else:
+    raise newException(ValueError, "Invalid enum value for EntityStatus: " & strVal)
+

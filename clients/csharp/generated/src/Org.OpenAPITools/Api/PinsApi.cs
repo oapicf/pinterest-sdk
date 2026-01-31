@@ -51,7 +51,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="adAccountId">Unique identifier of an ad account. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IMultiPinsAnalyticsApiResponse"/>&gt;</returns>
-        Task<IMultiPinsAnalyticsApiResponse> MultiPinsAnalyticsAsync(List<string> pinIds, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IMultiPinsAnalyticsApiResponse> MultiPinsAnalyticsAsync(List<string> pinIds, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get multiple Pin analytics
@@ -67,7 +67,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="adAccountId">Unique identifier of an ad account. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IMultiPinsAnalyticsApiResponse"/>?&gt;</returns>
-        Task<IMultiPinsAnalyticsApiResponse?> MultiPinsAnalyticsOrDefaultAsync(List<string> pinIds, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IMultiPinsAnalyticsApiResponse?> MultiPinsAnalyticsOrDefaultAsync(List<string> pinIds, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Pin analytics
@@ -85,7 +85,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="adAccountId">Unique identifier of an ad account. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPinsAnalyticsApiResponse"/>&gt;</returns>
-        Task<IPinsAnalyticsApiResponse> PinsAnalyticsAsync(string pinId, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes = default, Option<string> splitField = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IPinsAnalyticsApiResponse> PinsAnalyticsAsync(string pinId, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes = default, Option<string> splitField = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Pin analytics
@@ -102,7 +102,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="adAccountId">Unique identifier of an ad account. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPinsAnalyticsApiResponse"/>?&gt;</returns>
-        Task<IPinsAnalyticsApiResponse?> PinsAnalyticsOrDefaultAsync(string pinId, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes = default, Option<string> splitField = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IPinsAnalyticsApiResponse?> PinsAnalyticsOrDefaultAsync(string pinId, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes = default, Option<string> splitField = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create Pin
@@ -770,7 +770,7 @@ namespace Org.OpenAPITools.Api
             OauthTokenProvider = oauthTokenProvider;
         }
 
-        partial void FormatMultiPinsAnalytics(List<string> pinIds, ref DateOnly startDate, ref DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, ref Option<string> appTypes, ref Option<string> adAccountId);
+        partial void FormatMultiPinsAnalytics(List<string> pinIds, ref DateOnly startDate, ref DateOnly endDate, List<string> metricTypes, ref Option<string> appTypes, ref Option<string> adAccountId);
 
         /// <summary>
         /// Validates the request parameters
@@ -780,7 +780,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="appTypes"></param>
         /// <param name="adAccountId"></param>
         /// <returns></returns>
-        private void ValidateMultiPinsAnalytics(List<string> pinIds, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes, Option<string> adAccountId)
+        private void ValidateMultiPinsAnalytics(List<string> pinIds, List<string> metricTypes, Option<string> appTypes, Option<string> adAccountId)
         {
             if (pinIds == null)
                 throw new ArgumentNullException(nameof(pinIds));
@@ -805,12 +805,12 @@ namespace Org.OpenAPITools.Api
         /// <param name="metricTypes"></param>
         /// <param name="appTypes"></param>
         /// <param name="adAccountId"></param>
-        private void AfterMultiPinsAnalyticsDefaultImplementation(IMultiPinsAnalyticsApiResponse apiResponseLocalVar, List<string> pinIds, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes, Option<string> adAccountId)
+        private void AfterMultiPinsAnalyticsDefaultImplementation(IMultiPinsAnalyticsApiResponse apiResponseLocalVar, List<string> pinIds, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes, Option<string> adAccountId)
         {
             bool suppressDefaultLog = false;
             AfterMultiPinsAnalytics(ref suppressDefaultLog, apiResponseLocalVar, pinIds, startDate, endDate, metricTypes, appTypes, adAccountId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -824,7 +824,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="metricTypes"></param>
         /// <param name="appTypes"></param>
         /// <param name="adAccountId"></param>
-        partial void AfterMultiPinsAnalytics(ref bool suppressDefaultLog, IMultiPinsAnalyticsApiResponse apiResponseLocalVar, List<string> pinIds, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes, Option<string> adAccountId);
+        partial void AfterMultiPinsAnalytics(ref bool suppressDefaultLog, IMultiPinsAnalyticsApiResponse apiResponseLocalVar, List<string> pinIds, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes, Option<string> adAccountId);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -838,7 +838,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="metricTypes"></param>
         /// <param name="appTypes"></param>
         /// <param name="adAccountId"></param>
-        private void OnErrorMultiPinsAnalyticsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, List<string> pinIds, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes, Option<string> adAccountId)
+        private void OnErrorMultiPinsAnalyticsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, List<string> pinIds, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes, Option<string> adAccountId)
         {
             bool suppressDefaultLogLocalVar = false;
             OnErrorMultiPinsAnalytics(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, pinIds, startDate, endDate, metricTypes, appTypes, adAccountId);
@@ -859,7 +859,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="metricTypes"></param>
         /// <param name="appTypes"></param>
         /// <param name="adAccountId"></param>
-        partial void OnErrorMultiPinsAnalytics(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, List<string> pinIds, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes, Option<string> adAccountId);
+        partial void OnErrorMultiPinsAnalytics(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, List<string> pinIds, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes, Option<string> adAccountId);
 
         /// <summary>
         /// Get multiple Pin analytics &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get analytics for multiple pins owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
@@ -872,7 +872,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="adAccountId">Unique identifier of an ad account. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IMultiPinsAnalyticsApiResponse"/>&gt;</returns>
-        public async Task<IMultiPinsAnalyticsApiResponse?> MultiPinsAnalyticsOrDefaultAsync(List<string> pinIds, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IMultiPinsAnalyticsApiResponse?> MultiPinsAnalyticsOrDefaultAsync(List<string> pinIds, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
@@ -896,7 +896,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="adAccountId">Unique identifier of an ad account. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IMultiPinsAnalyticsApiResponse"/>&gt;</returns>
-        public async Task<IMultiPinsAnalyticsApiResponse> MultiPinsAnalyticsAsync(List<string> pinIds, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IMultiPinsAnalyticsApiResponse> MultiPinsAnalyticsAsync(List<string> pinIds, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
@@ -911,7 +911,9 @@ namespace Org.OpenAPITools.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/pins/analytics";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/pins/analytics"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath, "/pins/analytics");
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
@@ -958,11 +960,17 @@ namespace Org.OpenAPITools.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<MultiPinsAnalyticsApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<MultiPinsAnalyticsApiResponse>();
+                        MultiPinsAnalyticsApiResponse apiResponseLocalVar;
 
-                        MultiPinsAnalyticsApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins/analytics", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins/analytics", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterMultiPinsAnalyticsDefaultImplementation(apiResponseLocalVar, pinIds, startDate, endDate, metricTypes, appTypes, adAccountId);
 
@@ -1005,6 +1013,22 @@ namespace Org.OpenAPITools.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public MultiPinsAnalyticsApiResponse(ILogger<MultiPinsAnalyticsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="MultiPinsAnalyticsApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public MultiPinsAnalyticsApiResponse(ILogger<MultiPinsAnalyticsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1251,7 +1275,7 @@ namespace Org.OpenAPITools.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatPinsAnalytics(ref string pinId, ref DateOnly startDate, ref DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, ref Option<string> appTypes, ref Option<string> splitField, ref Option<string> adAccountId);
+        partial void FormatPinsAnalytics(ref string pinId, ref DateOnly startDate, ref DateOnly endDate, List<string> metricTypes, ref Option<string> appTypes, ref Option<string> splitField, ref Option<string> adAccountId);
 
         /// <summary>
         /// Validates the request parameters
@@ -1262,7 +1286,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="splitField"></param>
         /// <param name="adAccountId"></param>
         /// <returns></returns>
-        private void ValidatePinsAnalytics(string pinId, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes, Option<string> splitField, Option<string> adAccountId)
+        private void ValidatePinsAnalytics(string pinId, List<string> metricTypes, Option<string> appTypes, Option<string> splitField, Option<string> adAccountId)
         {
             if (pinId == null)
                 throw new ArgumentNullException(nameof(pinId));
@@ -1291,12 +1315,12 @@ namespace Org.OpenAPITools.Api
         /// <param name="appTypes"></param>
         /// <param name="splitField"></param>
         /// <param name="adAccountId"></param>
-        private void AfterPinsAnalyticsDefaultImplementation(IPinsAnalyticsApiResponse apiResponseLocalVar, string pinId, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes, Option<string> splitField, Option<string> adAccountId)
+        private void AfterPinsAnalyticsDefaultImplementation(IPinsAnalyticsApiResponse apiResponseLocalVar, string pinId, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes, Option<string> splitField, Option<string> adAccountId)
         {
             bool suppressDefaultLog = false;
             AfterPinsAnalytics(ref suppressDefaultLog, apiResponseLocalVar, pinId, startDate, endDate, metricTypes, appTypes, splitField, adAccountId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -1311,7 +1335,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="appTypes"></param>
         /// <param name="splitField"></param>
         /// <param name="adAccountId"></param>
-        partial void AfterPinsAnalytics(ref bool suppressDefaultLog, IPinsAnalyticsApiResponse apiResponseLocalVar, string pinId, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes, Option<string> splitField, Option<string> adAccountId);
+        partial void AfterPinsAnalytics(ref bool suppressDefaultLog, IPinsAnalyticsApiResponse apiResponseLocalVar, string pinId, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes, Option<string> splitField, Option<string> adAccountId);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -1326,7 +1350,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="appTypes"></param>
         /// <param name="splitField"></param>
         /// <param name="adAccountId"></param>
-        private void OnErrorPinsAnalyticsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string pinId, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes, Option<string> splitField, Option<string> adAccountId)
+        private void OnErrorPinsAnalyticsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string pinId, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes, Option<string> splitField, Option<string> adAccountId)
         {
             bool suppressDefaultLogLocalVar = false;
             OnErrorPinsAnalytics(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, pinId, startDate, endDate, metricTypes, appTypes, splitField, adAccountId);
@@ -1348,7 +1372,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="appTypes"></param>
         /// <param name="splitField"></param>
         /// <param name="adAccountId"></param>
-        partial void OnErrorPinsAnalytics(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string pinId, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes, Option<string> splitField, Option<string> adAccountId);
+        partial void OnErrorPinsAnalytics(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string pinId, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes, Option<string> splitField, Option<string> adAccountId);
 
         /// <summary>
         /// Get Pin analytics Get analytics for a Pin owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/ad_accounts/list\&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
@@ -1362,7 +1386,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="adAccountId">Unique identifier of an ad account. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPinsAnalyticsApiResponse"/>&gt;</returns>
-        public async Task<IPinsAnalyticsApiResponse?> PinsAnalyticsOrDefaultAsync(string pinId, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes = default, Option<string> splitField = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IPinsAnalyticsApiResponse?> PinsAnalyticsOrDefaultAsync(string pinId, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes = default, Option<string> splitField = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
@@ -1387,7 +1411,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="adAccountId">Unique identifier of an ad account. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPinsAnalyticsApiResponse"/>&gt;</returns>
-        public async Task<IPinsAnalyticsApiResponse> PinsAnalyticsAsync(string pinId, DateOnly startDate, DateOnly endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, Option<string> appTypes = default, Option<string> splitField = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IPinsAnalyticsApiResponse> PinsAnalyticsAsync(string pinId, DateOnly startDate, DateOnly endDate, List<string> metricTypes, Option<string> appTypes = default, Option<string> splitField = default, Option<string> adAccountId = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
@@ -1402,7 +1426,9 @@ namespace Org.OpenAPITools.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/pins/{pin_id}/analytics";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/pins/{pin_id}/analytics"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath, "/pins/{pin_id}/analytics");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bpin_id%7D", Uri.EscapeDataString(pinId.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
@@ -1452,11 +1478,17 @@ namespace Org.OpenAPITools.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<PinsAnalyticsApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<PinsAnalyticsApiResponse>();
+                        PinsAnalyticsApiResponse apiResponseLocalVar;
 
-                        PinsAnalyticsApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins/{pin_id}/analytics", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins/{pin_id}/analytics", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterPinsAnalyticsDefaultImplementation(apiResponseLocalVar, pinId, startDate, endDate, metricTypes, appTypes, splitField, adAccountId);
 
@@ -1499,6 +1531,22 @@ namespace Org.OpenAPITools.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public PinsAnalyticsApiResponse(ILogger<PinsAnalyticsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="PinsAnalyticsApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PinsAnalyticsApiResponse(ILogger<PinsAnalyticsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1731,7 +1779,7 @@ namespace Org.OpenAPITools.Api
             bool suppressDefaultLog = false;
             AfterPinsCreate(ref suppressDefaultLog, apiResponseLocalVar, pinCreate, adAccountId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -1812,7 +1860,9 @@ namespace Org.OpenAPITools.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/pins";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/pins"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath, "/pins");
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
@@ -1858,11 +1908,17 @@ namespace Org.OpenAPITools.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<PinsCreateApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<PinsCreateApiResponse>();
+                        PinsCreateApiResponse apiResponseLocalVar;
 
-                        PinsCreateApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterPinsCreateDefaultImplementation(apiResponseLocalVar, pinCreate, adAccountId);
 
@@ -1905,6 +1961,22 @@ namespace Org.OpenAPITools.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public PinsCreateApiResponse(ILogger<PinsCreateApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="PinsCreateApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PinsCreateApiResponse(ILogger<PinsCreateApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2179,7 +2251,7 @@ namespace Org.OpenAPITools.Api
             bool suppressDefaultLog = false;
             AfterPinsDelete(ref suppressDefaultLog, apiResponseLocalVar, pinId, adAccountId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -2260,7 +2332,9 @@ namespace Org.OpenAPITools.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/pins/{pin_id}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/pins/{pin_id}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath, "/pins/{pin_id}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bpin_id%7D", Uri.EscapeDataString(pinId.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
@@ -2294,11 +2368,17 @@ namespace Org.OpenAPITools.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<PinsDeleteApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<PinsDeleteApiResponse>();
+                        PinsDeleteApiResponse apiResponseLocalVar;
 
-                        PinsDeleteApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins/{pin_id}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins/{pin_id}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterPinsDeleteDefaultImplementation(apiResponseLocalVar, pinId, adAccountId);
 
@@ -2341,6 +2421,22 @@ namespace Org.OpenAPITools.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public PinsDeleteApiResponse(ILogger<PinsDeleteApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="PinsDeleteApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PinsDeleteApiResponse(ILogger<PinsDeleteApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2508,7 +2604,7 @@ namespace Org.OpenAPITools.Api
             bool suppressDefaultLog = false;
             AfterPinsGet(ref suppressDefaultLog, apiResponseLocalVar, pinId, pinMetrics, adAccountId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -2594,7 +2690,9 @@ namespace Org.OpenAPITools.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/pins/{pin_id}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/pins/{pin_id}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath, "/pins/{pin_id}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bpin_id%7D", Uri.EscapeDataString(pinId.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
@@ -2637,11 +2735,17 @@ namespace Org.OpenAPITools.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<PinsGetApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<PinsGetApiResponse>();
+                        PinsGetApiResponse apiResponseLocalVar;
 
-                        PinsGetApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins/{pin_id}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins/{pin_id}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterPinsGetDefaultImplementation(apiResponseLocalVar, pinId, pinMetrics, adAccountId);
 
@@ -2684,6 +2788,22 @@ namespace Org.OpenAPITools.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public PinsGetApiResponse(ILogger<PinsGetApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="PinsGetApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PinsGetApiResponse(ILogger<PinsGetApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2900,7 +3020,7 @@ namespace Org.OpenAPITools.Api
             bool suppressDefaultLog = false;
             AfterPinsList(ref suppressDefaultLog, apiResponseLocalVar, bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -3011,7 +3131,9 @@ namespace Org.OpenAPITools.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/pins";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/pins"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath, "/pins");
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
@@ -3071,11 +3193,17 @@ namespace Org.OpenAPITools.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<PinsListApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<PinsListApiResponse>();
+                        PinsListApiResponse apiResponseLocalVar;
 
-                        PinsListApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterPinsListDefaultImplementation(apiResponseLocalVar, bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics);
 
@@ -3118,6 +3246,22 @@ namespace Org.OpenAPITools.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public PinsListApiResponse(ILogger<PinsListApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="PinsListApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PinsListApiResponse(ILogger<PinsListApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -3283,7 +3427,7 @@ namespace Org.OpenAPITools.Api
             bool suppressDefaultLog = false;
             AfterPinsSave(ref suppressDefaultLog, apiResponseLocalVar, pinId, pinsSaveRequest, adAccountId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -3369,7 +3513,9 @@ namespace Org.OpenAPITools.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/pins/{pin_id}/save";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/pins/{pin_id}/save"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath, "/pins/{pin_id}/save");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bpin_id%7D", Uri.EscapeDataString(pinId.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
@@ -3416,11 +3562,17 @@ namespace Org.OpenAPITools.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<PinsSaveApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<PinsSaveApiResponse>();
+                        PinsSaveApiResponse apiResponseLocalVar;
 
-                        PinsSaveApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins/{pin_id}/save", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins/{pin_id}/save", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterPinsSaveDefaultImplementation(apiResponseLocalVar, pinId, pinsSaveRequest, adAccountId);
 
@@ -3463,6 +3615,22 @@ namespace Org.OpenAPITools.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public PinsSaveApiResponse(ILogger<PinsSaveApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="PinsSaveApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PinsSaveApiResponse(ILogger<PinsSaveApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -3662,7 +3830,7 @@ namespace Org.OpenAPITools.Api
             bool suppressDefaultLog = false;
             AfterPinsUpdate(ref suppressDefaultLog, apiResponseLocalVar, pinId, pinUpdate, adAccountId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -3748,7 +3916,9 @@ namespace Org.OpenAPITools.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/pins/{pin_id}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/pins/{pin_id}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath, "/pins/{pin_id}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bpin_id%7D", Uri.EscapeDataString(pinId.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
@@ -3795,11 +3965,17 @@ namespace Org.OpenAPITools.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<PinsUpdateApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<PinsUpdateApiResponse>();
+                        PinsUpdateApiResponse apiResponseLocalVar;
 
-                        PinsUpdateApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins/{pin_id}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/pins/{pin_id}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterPinsUpdateDefaultImplementation(apiResponseLocalVar, pinId, pinUpdate, adAccountId);
 
@@ -3842,6 +4018,22 @@ namespace Org.OpenAPITools.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public PinsUpdateApiResponse(ILogger<PinsUpdateApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="PinsUpdateApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public PinsUpdateApiResponse(ILogger<PinsUpdateApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);

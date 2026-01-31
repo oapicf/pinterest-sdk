@@ -73,26 +73,26 @@ private class OASInviteResponseTest {
     private static void maintainRenamedProperties() {
         OASInviteResponse inviteResponse = new OASInviteResponse();
         Map<String, String> x-property-mappings = inviteResponse.getx-property-mappings();
+        System.assertEquals('inviteData', x-property-mappings.get('invite_data'));
+        System.assertEquals('isReceivedInvite', x-property-mappings.get('is_received_invite'));
         System.assertEquals('assetsSummary', x-property-mappings.get('assets_summary'));
         System.assertEquals('businessRoles', x-property-mappings.get('business_roles'));
         System.assertEquals('createdByBusiness', x-property-mappings.get('created_by_business'));
         System.assertEquals('createdByUser', x-property-mappings.get('created_by_user'));
         System.assertEquals('createdTime', x-property-mappings.get('created_time'));
-        System.assertEquals('inviteData', x-property-mappings.get('invite_data'));
-        System.assertEquals('isReceivedInvite', x-property-mappings.get('is_received_invite'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASInviteResponse inviteResponse = new OASInviteResponse();
         System.assertEquals(new List<String>(), inviteResponse.businessRoles);
-        System.assertEquals(null, inviteResponse.assetsSummary);
-        System.assertEquals(null, inviteResponse.createdByBusiness);
-        System.assertEquals(null, inviteResponse.createdByUser);
-        System.assertEquals(null, inviteResponse.createdTime);
         System.assertEquals(null, inviteResponse.id);
         System.assertEquals(null, inviteResponse.inviteData);
         System.assertEquals(null, inviteResponse.isReceivedInvite);
         System.assertEquals(null, inviteResponse.user);
+        System.assertEquals(null, inviteResponse.assetsSummary);
+        System.assertEquals(null, inviteResponse.createdByBusiness);
+        System.assertEquals(null, inviteResponse.createdByUser);
+        System.assertEquals(null, inviteResponse.createdTime);
     }
 }

@@ -2,30 +2,33 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CreativeAssetsVisibilityType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Creative assets product metadata entity
- **/
+ * Creative assets product metadata entity
+ */
 @ApiModel(description="Creative assets product metadata entity")
 
 public class CatalogsCreativeAssetsProductMetadata  {
   
-  @ApiModelProperty(example = "123abc", required = true, value = "The user-created unique ID that represents the creative assets item.")
  /**
-   * The user-created unique ID that represents the creative assets item.
-  **/
+  * The user-created unique ID that represents the creative assets item.
+  */
+  @ApiModelProperty(example = "123abc", required = true, value = "The user-created unique ID that represents the creative assets item.")
+
   private String creativeAssetsId;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CreativeAssetsVisibilityType visibility;
  /**
    * The user-created unique ID that represents the creative assets item.

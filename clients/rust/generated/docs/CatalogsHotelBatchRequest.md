@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **catalog_type** | **String** |  | 
 **country** | [**models::Country**](Country.md) |  | 
-**language** | [**models::CatalogsItemsRequestLanguage**](CatalogsItemsRequest_language.md) |  | 
+**language** | **String** | We recommend using the CatalogsLocale values. | 
 **items** | [**Vec<models::CatalogsHotelBatchItem>**](CatalogsHotelBatchItem.md) | Array with catalogs item operations | 
 **catalog_id** | Option<**String**> | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog | [optional]
 

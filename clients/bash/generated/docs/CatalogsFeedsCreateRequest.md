@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **preferredUnderscoreprocessingUnderscoreschedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional] [default to null]
 **defaultUnderscorecountry** | [**Country**](Country.md) |  | [optional] [default to null]
 **defaultUnderscoreavailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] [default to null]
-**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to null]
+**status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to ACTIVE]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

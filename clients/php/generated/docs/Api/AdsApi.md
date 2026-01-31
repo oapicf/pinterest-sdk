@@ -1,5 +1,7 @@
 # OpenAPI\Client\AdsApi
 
+View, create or update ads.
+
 All URIs are relative to https://api.pinterest.com/v5, except if the operation defines another base path.
 
 | Method | HTTP request | Description |

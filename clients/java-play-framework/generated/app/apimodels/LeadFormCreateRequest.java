@@ -16,27 +16,23 @@ import javax.validation.Valid;
 /**
  * LeadFormCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2025-05-10T05:39:37.342741110Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class LeadFormCreateRequest   {
   @JsonProperty("name")
-  @NotNull
-
+  
   private String name;
 
   @JsonProperty("privacy_policy_link")
-  @NotNull
-
+  
   private String privacyPolicyLink;
 
   @JsonProperty("has_accepted_terms")
-  @NotNull
-
+  
   private Boolean hasAcceptedTerms;
 
   @JsonProperty("completion_message")
-  @NotNull
-
+  
   private String completionMessage;
 
   @JsonProperty("status")
@@ -49,11 +45,10 @@ public class LeadFormCreateRequest   {
   private String disclosureLanguage;
 
   @JsonProperty("questions")
-  @NotNull
-@Size(min=0,max=10)
+  @Size(min=0,max=10)
 @Valid
 
-  private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
+  private List<@Valid LeadFormQuestion> questions = null;
 
   @JsonProperty("policy_links")
   @Size(min=0,max=3)

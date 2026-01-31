@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OrderLinesArrayResponse  {
   
   @ApiModelProperty(value = "")
+
   private List<OrderLines> items = new ArrayList<>();
  /**
    * Get items

@@ -133,7 +133,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, GridClickType gridClickType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(gridClickType.ToString());
+            writer.WriteStringValue(GridClickTypeValueConverter.ToJsonValue(gridClickType).ToString());
         }
     }
 
@@ -164,14 +164,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the GridClickType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="gridClickType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, GridClickType? gridClickType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(gridClickType?.ToString() ?? "null");
+            writer.WriteStringValue(gridClickType.HasValue ? GridClickTypeValueConverter.ToJsonValue(gridClickType.Value).ToString() : "null");
         }
     }
 }

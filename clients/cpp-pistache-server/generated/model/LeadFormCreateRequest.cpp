@@ -22,12 +22,17 @@ namespace org::openapitools::server::model
 LeadFormCreateRequest::LeadFormCreateRequest()
 {
     m_Name = "";
+    m_NameIsSet = false;
     m_Privacy_policy_link = "";
+    m_Privacy_policy_linkIsSet = false;
     m_Has_accepted_terms = false;
+    m_Has_accepted_termsIsSet = false;
     m_Completion_message = "";
+    m_Completion_messageIsSet = false;
     m_StatusIsSet = false;
     m_Disclosure_language = "";
     m_Disclosure_languageIsSet = false;
+    m_QuestionsIsSet = false;
     m_Policy_linksIsSet = false;
     
 }
@@ -52,8 +57,8 @@ bool LeadFormCreateRequest::validate(std::stringstream& msg, const std::string& 
     const std::string _pathPrefix = pathPrefix.empty() ? "LeadFormCreateRequest" : pathPrefix;
 
                                  
-    
-    /* Questions */ {
+    if (questionsIsSet())
+    {
         const std::vector<org::openapitools::server::model::LeadFormQuestion>& value = m_Questions;
         const std::string currentValuePath = _pathPrefix + ".questions";
                 
@@ -122,17 +127,17 @@ bool LeadFormCreateRequest::operator==(const LeadFormCreateRequest& rhs) const
     return
     
     
-    (getName() == rhs.getName())
-     &&
     
-    (getPrivacyPolicyLink() == rhs.getPrivacyPolicyLink())
-     &&
+    ((!nameIsSet() && !rhs.nameIsSet()) || (nameIsSet() && rhs.nameIsSet() && getName() == rhs.getName())) &&
     
-    (isHasAcceptedTerms() == rhs.isHasAcceptedTerms())
-     &&
     
-    (getCompletionMessage() == rhs.getCompletionMessage())
-     &&
+    ((!privacyPolicyLinkIsSet() && !rhs.privacyPolicyLinkIsSet()) || (privacyPolicyLinkIsSet() && rhs.privacyPolicyLinkIsSet() && getPrivacyPolicyLink() == rhs.getPrivacyPolicyLink())) &&
+    
+    
+    ((!hasAcceptedTermsIsSet() && !rhs.hasAcceptedTermsIsSet()) || (hasAcceptedTermsIsSet() && rhs.hasAcceptedTermsIsSet() && isHasAcceptedTerms() == rhs.isHasAcceptedTerms())) &&
+    
+    
+    ((!completionMessageIsSet() && !rhs.completionMessageIsSet()) || (completionMessageIsSet() && rhs.completionMessageIsSet() && getCompletionMessage() == rhs.getCompletionMessage())) &&
     
     
     ((!statusIsSet() && !rhs.statusIsSet()) || (statusIsSet() && rhs.statusIsSet() && getStatus() == rhs.getStatus())) &&
@@ -140,8 +145,8 @@ bool LeadFormCreateRequest::operator==(const LeadFormCreateRequest& rhs) const
     
     ((!disclosureLanguageIsSet() && !rhs.disclosureLanguageIsSet()) || (disclosureLanguageIsSet() && rhs.disclosureLanguageIsSet() && getDisclosureLanguage() == rhs.getDisclosureLanguage())) &&
     
-    (getQuestions() == rhs.getQuestions())
-     &&
+    
+    ((!questionsIsSet() && !rhs.questionsIsSet()) || (questionsIsSet() && rhs.questionsIsSet() && getQuestions() == rhs.getQuestions())) &&
     
     
     ((!policyLinksIsSet() && !rhs.policyLinksIsSet()) || (policyLinksIsSet() && rhs.policyLinksIsSet() && getPolicyLinks() == rhs.getPolicyLinks()))
@@ -157,15 +162,20 @@ bool LeadFormCreateRequest::operator!=(const LeadFormCreateRequest& rhs) const
 void to_json(nlohmann::json& j, const LeadFormCreateRequest& o)
 {
     j = nlohmann::json::object();
-    j["name"] = o.m_Name;
-    j["privacy_policy_link"] = o.m_Privacy_policy_link;
-    j["has_accepted_terms"] = o.m_Has_accepted_terms;
-    j["completion_message"] = o.m_Completion_message;
+    if(o.nameIsSet())
+        j["name"] = o.m_Name;
+    if(o.privacyPolicyLinkIsSet())
+        j["privacy_policy_link"] = o.m_Privacy_policy_link;
+    if(o.hasAcceptedTermsIsSet())
+        j["has_accepted_terms"] = o.m_Has_accepted_terms;
+    if(o.completionMessageIsSet())
+        j["completion_message"] = o.m_Completion_message;
     if(o.statusIsSet())
         j["status"] = o.m_Status;
     if(o.disclosureLanguageIsSet())
         j["disclosure_language"] = o.m_Disclosure_language;
-    j["questions"] = o.m_Questions;
+    if(o.questionsIsSet() || !o.m_Questions.empty())
+        j["questions"] = o.m_Questions;
     if(o.policyLinksIsSet() || !o.m_Policy_links.empty())
         j["policy_links"] = o.m_Policy_links;
     
@@ -173,10 +183,26 @@ void to_json(nlohmann::json& j, const LeadFormCreateRequest& o)
 
 void from_json(const nlohmann::json& j, LeadFormCreateRequest& o)
 {
-    j.at("name").get_to(o.m_Name);
-    j.at("privacy_policy_link").get_to(o.m_Privacy_policy_link);
-    j.at("has_accepted_terms").get_to(o.m_Has_accepted_terms);
-    j.at("completion_message").get_to(o.m_Completion_message);
+    if(j.find("name") != j.end())
+    {
+        j.at("name").get_to(o.m_Name);
+        o.m_NameIsSet = true;
+    } 
+    if(j.find("privacy_policy_link") != j.end())
+    {
+        j.at("privacy_policy_link").get_to(o.m_Privacy_policy_link);
+        o.m_Privacy_policy_linkIsSet = true;
+    } 
+    if(j.find("has_accepted_terms") != j.end())
+    {
+        j.at("has_accepted_terms").get_to(o.m_Has_accepted_terms);
+        o.m_Has_accepted_termsIsSet = true;
+    } 
+    if(j.find("completion_message") != j.end())
+    {
+        j.at("completion_message").get_to(o.m_Completion_message);
+        o.m_Completion_messageIsSet = true;
+    } 
     if(j.find("status") != j.end())
     {
         j.at("status").get_to(o.m_Status);
@@ -187,7 +213,11 @@ void from_json(const nlohmann::json& j, LeadFormCreateRequest& o)
         j.at("disclosure_language").get_to(o.m_Disclosure_language);
         o.m_Disclosure_languageIsSet = true;
     } 
-    j.at("questions").get_to(o.m_Questions);
+    if(j.find("questions") != j.end())
+    {
+        j.at("questions").get_to(o.m_Questions);
+        o.m_QuestionsIsSet = true;
+    } 
     if(j.find("policy_links") != j.end())
     {
         j.at("policy_links").get_to(o.m_Policy_links);
@@ -203,6 +233,15 @@ std::string LeadFormCreateRequest::getName() const
 void LeadFormCreateRequest::setName(std::string const& value)
 {
     m_Name = value;
+    m_NameIsSet = true;
+}
+bool LeadFormCreateRequest::nameIsSet() const
+{
+    return m_NameIsSet;
+}
+void LeadFormCreateRequest::unsetName()
+{
+    m_NameIsSet = false;
 }
 std::string LeadFormCreateRequest::getPrivacyPolicyLink() const
 {
@@ -211,6 +250,15 @@ std::string LeadFormCreateRequest::getPrivacyPolicyLink() const
 void LeadFormCreateRequest::setPrivacyPolicyLink(std::string const& value)
 {
     m_Privacy_policy_link = value;
+    m_Privacy_policy_linkIsSet = true;
+}
+bool LeadFormCreateRequest::privacyPolicyLinkIsSet() const
+{
+    return m_Privacy_policy_linkIsSet;
+}
+void LeadFormCreateRequest::unsetPrivacy_policy_link()
+{
+    m_Privacy_policy_linkIsSet = false;
 }
 bool LeadFormCreateRequest::isHasAcceptedTerms() const
 {
@@ -219,6 +267,15 @@ bool LeadFormCreateRequest::isHasAcceptedTerms() const
 void LeadFormCreateRequest::setHasAcceptedTerms(bool const value)
 {
     m_Has_accepted_terms = value;
+    m_Has_accepted_termsIsSet = true;
+}
+bool LeadFormCreateRequest::hasAcceptedTermsIsSet() const
+{
+    return m_Has_accepted_termsIsSet;
+}
+void LeadFormCreateRequest::unsetHas_accepted_terms()
+{
+    m_Has_accepted_termsIsSet = false;
 }
 std::string LeadFormCreateRequest::getCompletionMessage() const
 {
@@ -227,6 +284,15 @@ std::string LeadFormCreateRequest::getCompletionMessage() const
 void LeadFormCreateRequest::setCompletionMessage(std::string const& value)
 {
     m_Completion_message = value;
+    m_Completion_messageIsSet = true;
+}
+bool LeadFormCreateRequest::completionMessageIsSet() const
+{
+    return m_Completion_messageIsSet;
+}
+void LeadFormCreateRequest::unsetCompletion_message()
+{
+    m_Completion_messageIsSet = false;
 }
 org::openapitools::server::model::LeadFormStatus LeadFormCreateRequest::getStatus() const
 {
@@ -269,6 +335,15 @@ std::vector<org::openapitools::server::model::LeadFormQuestion> LeadFormCreateRe
 void LeadFormCreateRequest::setQuestions(std::vector<org::openapitools::server::model::LeadFormQuestion> const& value)
 {
     m_Questions = value;
+    m_QuestionsIsSet = true;
+}
+bool LeadFormCreateRequest::questionsIsSet() const
+{
+    return m_QuestionsIsSet;
+}
+void LeadFormCreateRequest::unsetQuestions()
+{
+    m_QuestionsIsSet = false;
 }
 std::vector<org::openapitools::server::model::LeadFormCommon_policy_links_inner> LeadFormCreateRequest::getPolicyLinks() const
 {

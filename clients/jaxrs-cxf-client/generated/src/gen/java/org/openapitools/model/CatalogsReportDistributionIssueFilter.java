@@ -39,12 +39,14 @@ DISTRIBUTION_ISSUES(String.valueOf("DISTRIBUTION_ISSUES"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private ReportTypeEnum reportType;
 
-  @ApiModelProperty(value = "Unique identifier of a catalog. If not given, oldest catalog will be used")
  /**
-   * Unique identifier of a catalog. If not given, oldest catalog will be used
-  **/
+  * Unique identifier of a catalog. If not given, oldest catalog will be used
+  */
+  @ApiModelProperty(value = "Unique identifier of a catalog. If not given, oldest catalog will be used")
+
   private String catalogId;
  /**
    * Get reportType

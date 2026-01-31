@@ -9,7 +9,53 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type TargetingSpecAppType* = object
-  ## 
+type TargetingSpecAppType* {.pure.} = enum
+  AndroidMobile
+  AndroidTablet
+  Ipad
+  Iphone
+  Web
+  WebMobile
+
+func `%`*(v: TargetingSpecAppType): JsonNode =
+  result = case v:
+    of TargetingSpecAppType.AndroidMobile: %"android_mobile"
+    of TargetingSpecAppType.AndroidTablet: %"android_tablet"
+    of TargetingSpecAppType.Ipad: %"ipad"
+    of TargetingSpecAppType.Iphone: %"iphone"
+    of TargetingSpecAppType.Web: %"web"
+    of TargetingSpecAppType.WebMobile: %"web_mobile"
+
+func `$`*(v: TargetingSpecAppType): string =
+  result = case v:
+    of TargetingSpecAppType.AndroidMobile: $("android_mobile")
+    of TargetingSpecAppType.AndroidTablet: $("android_tablet")
+    of TargetingSpecAppType.Ipad: $("ipad")
+    of TargetingSpecAppType.Iphone: $("iphone")
+    of TargetingSpecAppType.Web: $("web")
+    of TargetingSpecAppType.WebMobile: $("web_mobile")
+
+proc to*(node: JsonNode, T: typedesc[TargetingSpecAppType]): TargetingSpecAppType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum TargetingSpecAppType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("android_mobile"):
+    return TargetingSpecAppType.AndroidMobile
+  of $("android_tablet"):
+    return TargetingSpecAppType.AndroidTablet
+  of $("ipad"):
+    return TargetingSpecAppType.Ipad
+  of $("iphone"):
+    return TargetingSpecAppType.Iphone
+  of $("web"):
+    return TargetingSpecAppType.Web
+  of $("web_mobile"):
+    return TargetingSpecAppType.WebMobile
+  else:
+    raise newException(ValueError, "Invalid enum value for TargetingSpecAppType: " & strVal)
+

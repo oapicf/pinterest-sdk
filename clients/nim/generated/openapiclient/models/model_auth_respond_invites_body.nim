@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_auth_respond_invites_body_invites_inner
 
 type AuthRespondInvitesBody* = object
   ## An object with a list of all the invites the user would like to respond to and the action to take.
   invites*: seq[AuthRespondInvitesBody_invites_inner]
+

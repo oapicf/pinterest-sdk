@@ -13,16 +13,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeletePartnerAssetAccessBodyAccessesInner  {
   
-  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
  /**
-   * Unique identifier of a business partner to update asset access to.
-  **/
+  * Unique identifier of a business partner to update asset access to.
+  */
+  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of a business partner to update asset access to.")
+
   private String partnerId;
 
-  @ApiModelProperty(example = "549755885175", required = true, value = "Unique identifier of the business asset.")
  /**
-   * Unique identifier of the business asset.
-  **/
+  * Unique identifier of the business asset.
+  */
+  @ApiModelProperty(example = "549755885175", required = true, value = "Unique identifier of the business asset.")
+
   private String assetId;
 
 public enum PartnerTypeEnum {
@@ -57,10 +59,11 @@ INTERNAL(String.valueOf("INTERNAL")), EXTERNAL(String.valueOf("EXTERNAL"));
     }
 }
 
-  @ApiModelProperty(example = "INTERNAL", value = "If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.")
  /**
-   * If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
-  **/
+  * If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
+  */
+  @ApiModelProperty(example = "INTERNAL", value = "If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.")
+
   private PartnerTypeEnum partnerType = PartnerTypeEnum.INTERNAL;
  /**
    * Unique identifier of a business partner to update asset access to.

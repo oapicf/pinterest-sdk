@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class LeadFormArrayResponse  {
   
   @ApiModelProperty(value = "")
+
   private List<LeadFormArrayResponseItemsInner> items = new ArrayList<>();
  /**
    * Get items

@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionTagConfigs
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagConfigs {
   public static final String SERIALIZED_NAME_AEM_ENABLED = "aem_enabled";
   @SerializedName(SERIALIZED_NAME_AEM_ENABLED)
@@ -290,17 +290,10 @@ public class ConversionTagConfigs {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("aem_enabled");
-    openapiFields.add("md_frequency");
-    openapiFields.add("aem_fnln_enabled");
-    openapiFields.add("aem_ph_enabled");
-    openapiFields.add("aem_ge_enabled");
-    openapiFields.add("aem_db_enabled");
-    openapiFields.add("aem_loc_enabled");
+    openapiFields = new HashSet<String>(Arrays.asList("aem_enabled", "md_frequency", "aem_fnln_enabled", "aem_ph_enabled", "aem_ge_enabled", "aem_db_enabled", "aem_loc_enabled"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -312,7 +305,7 @@ public class ConversionTagConfigs {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ConversionTagConfigs.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ConversionTagConfigs is not found in the empty JSON string", ConversionTagConfigs.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ConversionTagConfigs is not found in the empty JSON string", ConversionTagConfigs.openapiRequiredFields.toString()));
         }
       }
 
@@ -320,7 +313,7 @@ public class ConversionTagConfigs {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ConversionTagConfigs.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConversionTagConfigs` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ConversionTagConfigs` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

@@ -12,16 +12,11 @@
 /**
  * Lead form question field type
  */
-export type LeadFormQuestionFieldType = 'TEXT_FIELD' | 'TEXT_AREA' | 'RADIO_LIST' | 'CHECKBOX';
-
 export const LeadFormQuestionFieldType = {
-
-    TextField: 'TEXT_FIELD' as LeadFormQuestionFieldType,
-
-    TextArea: 'TEXT_AREA' as LeadFormQuestionFieldType,
-
-    RadioList: 'RADIO_LIST' as LeadFormQuestionFieldType,
-
-    Checkbox: 'CHECKBOX' as LeadFormQuestionFieldType
-};
+    TextField: 'TEXT_FIELD',
+    TextArea: 'TEXT_AREA',
+    RadioList: 'RADIO_LIST',
+    Checkbox: 'CHECKBOX'
+} as const;
+export type LeadFormQuestionFieldType = typeof LeadFormQuestionFieldType[keyof typeof LeadFormQuestionFieldType];
 

@@ -21,8 +21,8 @@ feature --Access
 
     country: detachable COUNTRY
       
-    language: detachable CATALOGS_ITEMS_REQUEST_LANGUAGE
-      
+    language: detachable STRING_32
+      -- We recommend using the CatalogsLocale values.
     filters: detachable CATALOGS_ITEMS_POST_FILTERS
       
 

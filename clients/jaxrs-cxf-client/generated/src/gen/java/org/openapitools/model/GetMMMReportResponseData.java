@@ -41,12 +41,15 @@ DOES_NOT_EXIST(String.valueOf("DOES_NOT_EXIST")), FINISHED(String.valueOf("FINIS
 }
 
   @ApiModelProperty(value = "")
+
   private ReportStatusEnum reportStatus;
 
   @ApiModelProperty(value = "")
+
   private String url;
 
   @ApiModelProperty(value = "")
+
   private BigDecimal size;
  /**
    * Get reportStatus

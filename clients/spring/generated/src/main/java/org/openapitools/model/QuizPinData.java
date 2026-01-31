@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "QuizPinData", description = "This field includes all quiz data including questions, options, and results.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class QuizPinData {
 
   @Valid
@@ -45,7 +45,7 @@ public class QuizPinData {
     
     CUSTOM("CUSTOM");
 
-    private String value;
+    private final String value;
 
     TieBreakerTypeEnum(String value) {
       this.value = value;
@@ -132,7 +132,7 @@ public class QuizPinData {
     this.results = results;
   }
 
-  public QuizPinData tieBreakerType(TieBreakerTypeEnum tieBreakerType) {
+  public QuizPinData tieBreakerType(@Nullable TieBreakerTypeEnum tieBreakerType) {
     this.tieBreakerType = tieBreakerType;
     return this;
   }
@@ -144,11 +144,11 @@ public class QuizPinData {
   
   @Schema(name = "tie_breaker_type", description = "Quiz ad tie breaker type, default is RANDOM", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("tie_breaker_type")
-  public TieBreakerTypeEnum getTieBreakerType() {
+  public @Nullable TieBreakerTypeEnum getTieBreakerType() {
     return tieBreakerType;
   }
 
-  public void setTieBreakerType(TieBreakerTypeEnum tieBreakerType) {
+  public void setTieBreakerType(@Nullable TieBreakerTypeEnum tieBreakerType) {
     this.tieBreakerType = tieBreakerType;
   }
 

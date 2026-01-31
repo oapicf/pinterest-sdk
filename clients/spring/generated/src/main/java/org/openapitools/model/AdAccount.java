@@ -29,7 +29,7 @@ import javax.annotation.Generated;
  * AdAccount
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccount {
 
   private @Nullable String id;
@@ -49,7 +49,7 @@ public class AdAccount {
 
   private JsonNullable<Integer> updatedTime = JsonNullable.<Integer>undefined();
 
-  public AdAccount id(String id) {
+  public AdAccount id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -61,15 +61,15 @@ public class AdAccount {
   
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public AdAccount name(String name) {
+  public AdAccount name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -81,15 +81,15 @@ public class AdAccount {
   
   @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public AdAccount owner(AdAccountOwner owner) {
+  public AdAccount owner(@Nullable AdAccountOwner owner) {
     this.owner = owner;
     return this;
   }
@@ -101,15 +101,15 @@ public class AdAccount {
   @Valid 
   @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("owner")
-  public AdAccountOwner getOwner() {
+  public @Nullable AdAccountOwner getOwner() {
     return owner;
   }
 
-  public void setOwner(AdAccountOwner owner) {
+  public void setOwner(@Nullable AdAccountOwner owner) {
     this.owner = owner;
   }
 
-  public AdAccount country(Country country) {
+  public AdAccount country(@Nullable Country country) {
     this.country = country;
     return this;
   }
@@ -121,15 +121,15 @@ public class AdAccount {
   @Valid 
   @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("country")
-  public Country getCountry() {
+  public @Nullable Country getCountry() {
     return country;
   }
 
-  public void setCountry(Country country) {
+  public void setCountry(@Nullable Country country) {
     this.country = country;
   }
 
-  public AdAccount currency(Currency currency) {
+  public AdAccount currency(@Nullable Currency currency) {
     this.currency = currency;
     return this;
   }
@@ -141,11 +141,11 @@ public class AdAccount {
   @Valid 
   @Schema(name = "currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("currency")
-  public Currency getCurrency() {
+  public @Nullable Currency getCurrency() {
     return currency;
   }
 
-  public void setCurrency(Currency currency) {
+  public void setCurrency(@Nullable Currency currency) {
     this.currency = currency;
   }
 

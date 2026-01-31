@@ -125,7 +125,6 @@ lib/Model/AudienceCategory.php
 lib/Model/AudienceCommon.php
 lib/Model/AudienceCreateCustomRequest.php
 lib/Model/AudienceCreateRequest.php
-lib/Model/AudienceCreateRequest1AudienceType.php
 lib/Model/AudienceDataParty.php
 lib/Model/AudienceDefinition.php
 lib/Model/AudienceDefinitionResponse.php
@@ -303,7 +302,6 @@ lib/Model/CatalogsItemsDeleteDiscontinuedBatchRequest.php
 lib/Model/CatalogsItemsFilters.php
 lib/Model/CatalogsItemsPostFilters.php
 lib/Model/CatalogsItemsRequest.php
-lib/Model/CatalogsItemsRequestLanguage.php
 lib/Model/CatalogsItemsUpdateBatchRequest.php
 lib/Model/CatalogsItemsUpsertBatchRequest.php
 lib/Model/CatalogsList200Response.php
@@ -637,7 +635,6 @@ lib/Model/PinMediaWithVideos.php
 lib/Model/PinPromotionSummaryStatus.php
 lib/Model/PinUpdate.php
 lib/Model/PinUpdateCarouselSlotsInner.php
-lib/Model/PinsAnalyticsMetricTypesParameterInner.php
 lib/Model/PinsList200Response.php
 lib/Model/PinsSaveRequest.php
 lib/Model/PinterestTagEventData.php

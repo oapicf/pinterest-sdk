@@ -176,7 +176,7 @@ end
 
 api_instance = PinterestSdkClient::LeadFormsApi.new
 ad_account_id = 'ad_account_id_example' # String | Unique identifier of an ad account.
-lead_form_create_request = [PinterestSdkClient::LeadFormCreateRequest.new({name: 'Lead Form 3/14/2023', privacy_policy_link: 'https://www.advertisername.com/privacy-policy', has_accepted_terms: false, completion_message: 'Thank you for submitting. We will contact you soon.', questions: [{question_type=CUSTOM,  custom_question_field_type=CHECKBOX,  custom_question_label=What is your favorite animal?,  custom_question_options=[Dog,  Cat,  Bird,  Turtle]}]})] # Array<LeadFormCreateRequest> | List of lead forms to create, size limit [1, 30].
+lead_form_create_request = [PinterestSdkClient::LeadFormCreateRequest.new] # Array<LeadFormCreateRequest> | List of lead forms to create, size limit [1, 30].
 
 begin
   # Create lead forms

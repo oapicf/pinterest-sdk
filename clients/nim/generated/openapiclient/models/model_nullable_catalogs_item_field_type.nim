@@ -9,7 +9,303 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type NullableCatalogsItemFieldType* = object
-  ## Product item fields
+type NullableCatalogsItemFieldType* {.pure.} = enum
+  ITEMID
+  ITEMGROUPID
+  TITLE
+  DESCRIPTION
+  ITEMLINK
+  ORGANICLINK
+  IMAGELINK
+  ADWORDSREDIRECTLINK
+  ADLINK
+  SIZE
+  GOOGLEPRODUCTCATEGORY
+  PRODUCTCATEGORY
+  CONDITION
+  AVAILABILITY
+  GENDER
+  AGEGROUP
+  SIZETYPE
+  SIZESYSTEM
+  ADULT
+  SHIPPING
+  SHIPPINGWEIGHT
+  TAX
+  MULTIPACK
+  ADDITIONALIMAGELINK
+  PRICE
+  SALEPRICE
+  ISBUNDLE
+  EXPIRATIONDATE
+  SALEPRICEEFFECTIVEDATE
+  AVAILABILITYDATE
+  WEIGHTUNIT
+  PRODUCTTYPE
+  CUSTOMLABEL0
+  CUSTOMLABEL1
+  CUSTOMLABEL2
+  CUSTOMLABEL3
+  CUSTOMLABEL4
+  MATERIAL
+  PATTERN
+  COLOR
+  BRAND
+  GTIN
+  MPN
+  IOSDEEPLINK
+  ANDROIDDEEPLINK
+  FREESHIPPINGLABEL
+  FREESHIPPINGLIMIT
+  AVGREVIEWRATING
+  NUMRATINGS
+  NUMREVIEWS
+  ALTTEXT
+  VARIANTNAMES
+  VARIANTVALUES
+  MINADPRICE
+  SHIPPINGWIDTH
+  SHIPPINGHEIGHT
+
+func `%`*(v: NullableCatalogsItemFieldType): JsonNode =
+  result = case v:
+    of NullableCatalogsItemFieldType.ITEMID: %"ITEM_ID"
+    of NullableCatalogsItemFieldType.ITEMGROUPID: %"ITEM_GROUP_ID"
+    of NullableCatalogsItemFieldType.TITLE: %"TITLE"
+    of NullableCatalogsItemFieldType.DESCRIPTION: %"DESCRIPTION"
+    of NullableCatalogsItemFieldType.ITEMLINK: %"ITEM_LINK"
+    of NullableCatalogsItemFieldType.ORGANICLINK: %"ORGANIC_LINK"
+    of NullableCatalogsItemFieldType.IMAGELINK: %"IMAGE_LINK"
+    of NullableCatalogsItemFieldType.ADWORDSREDIRECTLINK: %"ADWORDS_REDIRECT_LINK"
+    of NullableCatalogsItemFieldType.ADLINK: %"AD_LINK"
+    of NullableCatalogsItemFieldType.SIZE: %"SIZE"
+    of NullableCatalogsItemFieldType.GOOGLEPRODUCTCATEGORY: %"GOOGLE_PRODUCT_CATEGORY"
+    of NullableCatalogsItemFieldType.PRODUCTCATEGORY: %"PRODUCT_CATEGORY"
+    of NullableCatalogsItemFieldType.CONDITION: %"CONDITION"
+    of NullableCatalogsItemFieldType.AVAILABILITY: %"AVAILABILITY"
+    of NullableCatalogsItemFieldType.GENDER: %"GENDER"
+    of NullableCatalogsItemFieldType.AGEGROUP: %"AGE_GROUP"
+    of NullableCatalogsItemFieldType.SIZETYPE: %"SIZE_TYPE"
+    of NullableCatalogsItemFieldType.SIZESYSTEM: %"SIZE_SYSTEM"
+    of NullableCatalogsItemFieldType.ADULT: %"ADULT"
+    of NullableCatalogsItemFieldType.SHIPPING: %"SHIPPING"
+    of NullableCatalogsItemFieldType.SHIPPINGWEIGHT: %"SHIPPING_WEIGHT"
+    of NullableCatalogsItemFieldType.TAX: %"TAX"
+    of NullableCatalogsItemFieldType.MULTIPACK: %"MULTIPACK"
+    of NullableCatalogsItemFieldType.ADDITIONALIMAGELINK: %"ADDITIONAL_IMAGE_LINK"
+    of NullableCatalogsItemFieldType.PRICE: %"PRICE"
+    of NullableCatalogsItemFieldType.SALEPRICE: %"SALE_PRICE"
+    of NullableCatalogsItemFieldType.ISBUNDLE: %"IS_BUNDLE"
+    of NullableCatalogsItemFieldType.EXPIRATIONDATE: %"EXPIRATION_DATE"
+    of NullableCatalogsItemFieldType.SALEPRICEEFFECTIVEDATE: %"SALE_PRICE_EFFECTIVE_DATE"
+    of NullableCatalogsItemFieldType.AVAILABILITYDATE: %"AVAILABILITY_DATE"
+    of NullableCatalogsItemFieldType.WEIGHTUNIT: %"WEIGHT_UNIT"
+    of NullableCatalogsItemFieldType.PRODUCTTYPE: %"PRODUCT_TYPE"
+    of NullableCatalogsItemFieldType.CUSTOMLABEL0: %"CUSTOM_LABEL_0"
+    of NullableCatalogsItemFieldType.CUSTOMLABEL1: %"CUSTOM_LABEL_1"
+    of NullableCatalogsItemFieldType.CUSTOMLABEL2: %"CUSTOM_LABEL_2"
+    of NullableCatalogsItemFieldType.CUSTOMLABEL3: %"CUSTOM_LABEL_3"
+    of NullableCatalogsItemFieldType.CUSTOMLABEL4: %"CUSTOM_LABEL_4"
+    of NullableCatalogsItemFieldType.MATERIAL: %"MATERIAL"
+    of NullableCatalogsItemFieldType.PATTERN: %"PATTERN"
+    of NullableCatalogsItemFieldType.COLOR: %"COLOR"
+    of NullableCatalogsItemFieldType.BRAND: %"BRAND"
+    of NullableCatalogsItemFieldType.GTIN: %"GTIN"
+    of NullableCatalogsItemFieldType.MPN: %"MPN"
+    of NullableCatalogsItemFieldType.IOSDEEPLINK: %"IOS_DEEP_LINK"
+    of NullableCatalogsItemFieldType.ANDROIDDEEPLINK: %"ANDROID_DEEP_LINK"
+    of NullableCatalogsItemFieldType.FREESHIPPINGLABEL: %"FREE_SHIPPING_LABEL"
+    of NullableCatalogsItemFieldType.FREESHIPPINGLIMIT: %"FREE_SHIPPING_LIMIT"
+    of NullableCatalogsItemFieldType.AVGREVIEWRATING: %"AVG_REVIEW_RATING"
+    of NullableCatalogsItemFieldType.NUMRATINGS: %"NUM_RATINGS"
+    of NullableCatalogsItemFieldType.NUMREVIEWS: %"NUM_REVIEWS"
+    of NullableCatalogsItemFieldType.ALTTEXT: %"ALT_TEXT"
+    of NullableCatalogsItemFieldType.VARIANTNAMES: %"VARIANT_NAMES"
+    of NullableCatalogsItemFieldType.VARIANTVALUES: %"VARIANT_VALUES"
+    of NullableCatalogsItemFieldType.MINADPRICE: %"MIN_AD_PRICE"
+    of NullableCatalogsItemFieldType.SHIPPINGWIDTH: %"SHIPPING_WIDTH"
+    of NullableCatalogsItemFieldType.SHIPPINGHEIGHT: %"SHIPPING_HEIGHT"
+
+func `$`*(v: NullableCatalogsItemFieldType): string =
+  result = case v:
+    of NullableCatalogsItemFieldType.ITEMID: $("ITEM_ID")
+    of NullableCatalogsItemFieldType.ITEMGROUPID: $("ITEM_GROUP_ID")
+    of NullableCatalogsItemFieldType.TITLE: $("TITLE")
+    of NullableCatalogsItemFieldType.DESCRIPTION: $("DESCRIPTION")
+    of NullableCatalogsItemFieldType.ITEMLINK: $("ITEM_LINK")
+    of NullableCatalogsItemFieldType.ORGANICLINK: $("ORGANIC_LINK")
+    of NullableCatalogsItemFieldType.IMAGELINK: $("IMAGE_LINK")
+    of NullableCatalogsItemFieldType.ADWORDSREDIRECTLINK: $("ADWORDS_REDIRECT_LINK")
+    of NullableCatalogsItemFieldType.ADLINK: $("AD_LINK")
+    of NullableCatalogsItemFieldType.SIZE: $("SIZE")
+    of NullableCatalogsItemFieldType.GOOGLEPRODUCTCATEGORY: $("GOOGLE_PRODUCT_CATEGORY")
+    of NullableCatalogsItemFieldType.PRODUCTCATEGORY: $("PRODUCT_CATEGORY")
+    of NullableCatalogsItemFieldType.CONDITION: $("CONDITION")
+    of NullableCatalogsItemFieldType.AVAILABILITY: $("AVAILABILITY")
+    of NullableCatalogsItemFieldType.GENDER: $("GENDER")
+    of NullableCatalogsItemFieldType.AGEGROUP: $("AGE_GROUP")
+    of NullableCatalogsItemFieldType.SIZETYPE: $("SIZE_TYPE")
+    of NullableCatalogsItemFieldType.SIZESYSTEM: $("SIZE_SYSTEM")
+    of NullableCatalogsItemFieldType.ADULT: $("ADULT")
+    of NullableCatalogsItemFieldType.SHIPPING: $("SHIPPING")
+    of NullableCatalogsItemFieldType.SHIPPINGWEIGHT: $("SHIPPING_WEIGHT")
+    of NullableCatalogsItemFieldType.TAX: $("TAX")
+    of NullableCatalogsItemFieldType.MULTIPACK: $("MULTIPACK")
+    of NullableCatalogsItemFieldType.ADDITIONALIMAGELINK: $("ADDITIONAL_IMAGE_LINK")
+    of NullableCatalogsItemFieldType.PRICE: $("PRICE")
+    of NullableCatalogsItemFieldType.SALEPRICE: $("SALE_PRICE")
+    of NullableCatalogsItemFieldType.ISBUNDLE: $("IS_BUNDLE")
+    of NullableCatalogsItemFieldType.EXPIRATIONDATE: $("EXPIRATION_DATE")
+    of NullableCatalogsItemFieldType.SALEPRICEEFFECTIVEDATE: $("SALE_PRICE_EFFECTIVE_DATE")
+    of NullableCatalogsItemFieldType.AVAILABILITYDATE: $("AVAILABILITY_DATE")
+    of NullableCatalogsItemFieldType.WEIGHTUNIT: $("WEIGHT_UNIT")
+    of NullableCatalogsItemFieldType.PRODUCTTYPE: $("PRODUCT_TYPE")
+    of NullableCatalogsItemFieldType.CUSTOMLABEL0: $("CUSTOM_LABEL_0")
+    of NullableCatalogsItemFieldType.CUSTOMLABEL1: $("CUSTOM_LABEL_1")
+    of NullableCatalogsItemFieldType.CUSTOMLABEL2: $("CUSTOM_LABEL_2")
+    of NullableCatalogsItemFieldType.CUSTOMLABEL3: $("CUSTOM_LABEL_3")
+    of NullableCatalogsItemFieldType.CUSTOMLABEL4: $("CUSTOM_LABEL_4")
+    of NullableCatalogsItemFieldType.MATERIAL: $("MATERIAL")
+    of NullableCatalogsItemFieldType.PATTERN: $("PATTERN")
+    of NullableCatalogsItemFieldType.COLOR: $("COLOR")
+    of NullableCatalogsItemFieldType.BRAND: $("BRAND")
+    of NullableCatalogsItemFieldType.GTIN: $("GTIN")
+    of NullableCatalogsItemFieldType.MPN: $("MPN")
+    of NullableCatalogsItemFieldType.IOSDEEPLINK: $("IOS_DEEP_LINK")
+    of NullableCatalogsItemFieldType.ANDROIDDEEPLINK: $("ANDROID_DEEP_LINK")
+    of NullableCatalogsItemFieldType.FREESHIPPINGLABEL: $("FREE_SHIPPING_LABEL")
+    of NullableCatalogsItemFieldType.FREESHIPPINGLIMIT: $("FREE_SHIPPING_LIMIT")
+    of NullableCatalogsItemFieldType.AVGREVIEWRATING: $("AVG_REVIEW_RATING")
+    of NullableCatalogsItemFieldType.NUMRATINGS: $("NUM_RATINGS")
+    of NullableCatalogsItemFieldType.NUMREVIEWS: $("NUM_REVIEWS")
+    of NullableCatalogsItemFieldType.ALTTEXT: $("ALT_TEXT")
+    of NullableCatalogsItemFieldType.VARIANTNAMES: $("VARIANT_NAMES")
+    of NullableCatalogsItemFieldType.VARIANTVALUES: $("VARIANT_VALUES")
+    of NullableCatalogsItemFieldType.MINADPRICE: $("MIN_AD_PRICE")
+    of NullableCatalogsItemFieldType.SHIPPINGWIDTH: $("SHIPPING_WIDTH")
+    of NullableCatalogsItemFieldType.SHIPPINGHEIGHT: $("SHIPPING_HEIGHT")
+
+proc to*(node: JsonNode, T: typedesc[NullableCatalogsItemFieldType]): NullableCatalogsItemFieldType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum NullableCatalogsItemFieldType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ITEM_ID"):
+    return NullableCatalogsItemFieldType.ITEMID
+  of $("ITEM_GROUP_ID"):
+    return NullableCatalogsItemFieldType.ITEMGROUPID
+  of $("TITLE"):
+    return NullableCatalogsItemFieldType.TITLE
+  of $("DESCRIPTION"):
+    return NullableCatalogsItemFieldType.DESCRIPTION
+  of $("ITEM_LINK"):
+    return NullableCatalogsItemFieldType.ITEMLINK
+  of $("ORGANIC_LINK"):
+    return NullableCatalogsItemFieldType.ORGANICLINK
+  of $("IMAGE_LINK"):
+    return NullableCatalogsItemFieldType.IMAGELINK
+  of $("ADWORDS_REDIRECT_LINK"):
+    return NullableCatalogsItemFieldType.ADWORDSREDIRECTLINK
+  of $("AD_LINK"):
+    return NullableCatalogsItemFieldType.ADLINK
+  of $("SIZE"):
+    return NullableCatalogsItemFieldType.SIZE
+  of $("GOOGLE_PRODUCT_CATEGORY"):
+    return NullableCatalogsItemFieldType.GOOGLEPRODUCTCATEGORY
+  of $("PRODUCT_CATEGORY"):
+    return NullableCatalogsItemFieldType.PRODUCTCATEGORY
+  of $("CONDITION"):
+    return NullableCatalogsItemFieldType.CONDITION
+  of $("AVAILABILITY"):
+    return NullableCatalogsItemFieldType.AVAILABILITY
+  of $("GENDER"):
+    return NullableCatalogsItemFieldType.GENDER
+  of $("AGE_GROUP"):
+    return NullableCatalogsItemFieldType.AGEGROUP
+  of $("SIZE_TYPE"):
+    return NullableCatalogsItemFieldType.SIZETYPE
+  of $("SIZE_SYSTEM"):
+    return NullableCatalogsItemFieldType.SIZESYSTEM
+  of $("ADULT"):
+    return NullableCatalogsItemFieldType.ADULT
+  of $("SHIPPING"):
+    return NullableCatalogsItemFieldType.SHIPPING
+  of $("SHIPPING_WEIGHT"):
+    return NullableCatalogsItemFieldType.SHIPPINGWEIGHT
+  of $("TAX"):
+    return NullableCatalogsItemFieldType.TAX
+  of $("MULTIPACK"):
+    return NullableCatalogsItemFieldType.MULTIPACK
+  of $("ADDITIONAL_IMAGE_LINK"):
+    return NullableCatalogsItemFieldType.ADDITIONALIMAGELINK
+  of $("PRICE"):
+    return NullableCatalogsItemFieldType.PRICE
+  of $("SALE_PRICE"):
+    return NullableCatalogsItemFieldType.SALEPRICE
+  of $("IS_BUNDLE"):
+    return NullableCatalogsItemFieldType.ISBUNDLE
+  of $("EXPIRATION_DATE"):
+    return NullableCatalogsItemFieldType.EXPIRATIONDATE
+  of $("SALE_PRICE_EFFECTIVE_DATE"):
+    return NullableCatalogsItemFieldType.SALEPRICEEFFECTIVEDATE
+  of $("AVAILABILITY_DATE"):
+    return NullableCatalogsItemFieldType.AVAILABILITYDATE
+  of $("WEIGHT_UNIT"):
+    return NullableCatalogsItemFieldType.WEIGHTUNIT
+  of $("PRODUCT_TYPE"):
+    return NullableCatalogsItemFieldType.PRODUCTTYPE
+  of $("CUSTOM_LABEL_0"):
+    return NullableCatalogsItemFieldType.CUSTOMLABEL0
+  of $("CUSTOM_LABEL_1"):
+    return NullableCatalogsItemFieldType.CUSTOMLABEL1
+  of $("CUSTOM_LABEL_2"):
+    return NullableCatalogsItemFieldType.CUSTOMLABEL2
+  of $("CUSTOM_LABEL_3"):
+    return NullableCatalogsItemFieldType.CUSTOMLABEL3
+  of $("CUSTOM_LABEL_4"):
+    return NullableCatalogsItemFieldType.CUSTOMLABEL4
+  of $("MATERIAL"):
+    return NullableCatalogsItemFieldType.MATERIAL
+  of $("PATTERN"):
+    return NullableCatalogsItemFieldType.PATTERN
+  of $("COLOR"):
+    return NullableCatalogsItemFieldType.COLOR
+  of $("BRAND"):
+    return NullableCatalogsItemFieldType.BRAND
+  of $("GTIN"):
+    return NullableCatalogsItemFieldType.GTIN
+  of $("MPN"):
+    return NullableCatalogsItemFieldType.MPN
+  of $("IOS_DEEP_LINK"):
+    return NullableCatalogsItemFieldType.IOSDEEPLINK
+  of $("ANDROID_DEEP_LINK"):
+    return NullableCatalogsItemFieldType.ANDROIDDEEPLINK
+  of $("FREE_SHIPPING_LABEL"):
+    return NullableCatalogsItemFieldType.FREESHIPPINGLABEL
+  of $("FREE_SHIPPING_LIMIT"):
+    return NullableCatalogsItemFieldType.FREESHIPPINGLIMIT
+  of $("AVG_REVIEW_RATING"):
+    return NullableCatalogsItemFieldType.AVGREVIEWRATING
+  of $("NUM_RATINGS"):
+    return NullableCatalogsItemFieldType.NUMRATINGS
+  of $("NUM_REVIEWS"):
+    return NullableCatalogsItemFieldType.NUMREVIEWS
+  of $("ALT_TEXT"):
+    return NullableCatalogsItemFieldType.ALTTEXT
+  of $("VARIANT_NAMES"):
+    return NullableCatalogsItemFieldType.VARIANTNAMES
+  of $("VARIANT_VALUES"):
+    return NullableCatalogsItemFieldType.VARIANTVALUES
+  of $("MIN_AD_PRICE"):
+    return NullableCatalogsItemFieldType.MINADPRICE
+  of $("SHIPPING_WIDTH"):
+    return NullableCatalogsItemFieldType.SHIPPINGWIDTH
+  of $("SHIPPING_HEIGHT"):
+    return NullableCatalogsItemFieldType.SHIPPINGHEIGHT
+  else:
+    raise newException(ValueError, "Invalid enum value for NullableCatalogsItemFieldType: " & strVal)
+

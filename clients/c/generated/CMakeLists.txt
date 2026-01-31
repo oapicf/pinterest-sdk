@@ -128,7 +128,6 @@ set(SRCS
     model/audience_common.c
     model/audience_create_custom_request.c
     model/audience_create_request.c
-    model/audience_create_request_1_audience_type.c
     model/audience_data_party.c
     model/audience_definition.c
     model/audience_definition_response.c
@@ -306,7 +305,6 @@ set(SRCS
     model/catalogs_items_filters.c
     model/catalogs_items_post_filters.c
     model/catalogs_items_request.c
-    model/catalogs_items_request_language.c
     model/catalogs_items_update_batch_request.c
     model/catalogs_items_upsert_batch_request.c
     model/catalogs_list_200_response.c
@@ -640,7 +638,6 @@ set(SRCS
     model/pin_promotion_summary_status.c
     model/pin_update.c
     model/pin_update_carousel_slots_inner.c
-    model/pins_analytics_metric_types_parameter_inner.c
     model/pins_list_200_response.c
     model/pins_save_request.c
     model/pinterest_tag_event_data.c
@@ -891,7 +888,6 @@ set(HDRS
     model/audience_common.h
     model/audience_create_custom_request.h
     model/audience_create_request.h
-    model/audience_create_request_1_audience_type.h
     model/audience_data_party.h
     model/audience_definition.h
     model/audience_definition_response.h
@@ -1069,7 +1065,6 @@ set(HDRS
     model/catalogs_items_filters.h
     model/catalogs_items_post_filters.h
     model/catalogs_items_request.h
-    model/catalogs_items_request_language.h
     model/catalogs_items_update_batch_request.h
     model/catalogs_items_upsert_batch_request.h
     model/catalogs_list_200_response.h
@@ -1403,7 +1398,6 @@ set(HDRS
     model/pin_promotion_summary_status.h
     model/pin_update.h
     model/pin_update_carousel_slots_inner.h
-    model/pins_analytics_metric_types_parameter_inner.h
     model/pins_list_200_response.h
     model/pins_save_request.h
     model/pinterest_tag_event_data.h
@@ -1571,7 +1565,11 @@ include(PreTarget.cmake OPTIONAL)
 set(PROJECT_VERSION_STRING "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
 
 # Add library with project file with project name as library name
-add_library(${pkgName} ${SRCS} ${HDRS})
+if(NOT BUILD_STATIC_LIBS)
+  add_library(${pkgName} ${SRCS} ${HDRS})
+else()
+  add_library(${pkgName} STATIC ${SRCS} ${HDRS})
+endif()
 # Link dependent libraries
 if(NOT CMAKE_VERSION VERSION_LESS 3.4)
     target_link_libraries(${pkgName} PRIVATE OpenSSL::SSL OpenSSL::Crypto)

@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * CatalogsFeedIngestionInfo
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedIngestionInfo {
 
   private @Nullable Integer IN_STOCK;
@@ -28,7 +28,7 @@ public class CatalogsFeedIngestionInfo {
 
   private @Nullable Integer PREORDER;
 
-  public CatalogsFeedIngestionInfo IN_STOCK(Integer IN_STOCK) {
+  public CatalogsFeedIngestionInfo IN_STOCK(@Nullable Integer IN_STOCK) {
     this.IN_STOCK = IN_STOCK;
     return this;
   }
@@ -40,15 +40,15 @@ public class CatalogsFeedIngestionInfo {
   
   @Schema(name = "IN_STOCK", description = "The number of ingested products that are in stock.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IN_STOCK")
-  public Integer getINSTOCK() {
+  public @Nullable Integer getINSTOCK() {
     return IN_STOCK;
   }
 
-  public void setINSTOCK(Integer IN_STOCK) {
+  public void setINSTOCK(@Nullable Integer IN_STOCK) {
     this.IN_STOCK = IN_STOCK;
   }
 
-  public CatalogsFeedIngestionInfo OUT_OF_STOCK(Integer OUT_OF_STOCK) {
+  public CatalogsFeedIngestionInfo OUT_OF_STOCK(@Nullable Integer OUT_OF_STOCK) {
     this.OUT_OF_STOCK = OUT_OF_STOCK;
     return this;
   }
@@ -60,15 +60,15 @@ public class CatalogsFeedIngestionInfo {
   
   @Schema(name = "OUT_OF_STOCK", description = "The number of ingested products that are in out of stock.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("OUT_OF_STOCK")
-  public Integer getOUTOFSTOCK() {
+  public @Nullable Integer getOUTOFSTOCK() {
     return OUT_OF_STOCK;
   }
 
-  public void setOUTOFSTOCK(Integer OUT_OF_STOCK) {
+  public void setOUTOFSTOCK(@Nullable Integer OUT_OF_STOCK) {
     this.OUT_OF_STOCK = OUT_OF_STOCK;
   }
 
-  public CatalogsFeedIngestionInfo PREORDER(Integer PREORDER) {
+  public CatalogsFeedIngestionInfo PREORDER(@Nullable Integer PREORDER) {
     this.PREORDER = PREORDER;
     return this;
   }
@@ -80,11 +80,11 @@ public class CatalogsFeedIngestionInfo {
   
   @Schema(name = "PREORDER", description = "The number of ingested products that are in preorder.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PREORDER")
-  public Integer getPREORDER() {
+  public @Nullable Integer getPREORDER() {
     return PREORDER;
   }
 
-  public void setPREORDER(Integer PREORDER) {
+  public void setPREORDER(@Nullable Integer PREORDER) {
     this.PREORDER = PREORDER;
   }
 

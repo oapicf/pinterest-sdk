@@ -9,7 +9,158 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type Currency* = object
-  ## Currency Codes from ISO 4217
+type Currency* {.pure.} = enum
+  UNK
+  USD
+  GBP
+  CAD
+  EUR
+  AUD
+  NZD
+  SEK
+  ILS
+  CHF
+  HKD
+  JPY
+  SGD
+  KRW
+  NOK
+  DKK
+  PLN
+  RON
+  HUF
+  CZK
+  BRL
+  MXN
+  ARS
+  CLP
+  COP
+  INR
+  TRY
+
+func `%`*(v: Currency): JsonNode =
+  result = case v:
+    of Currency.UNK: %"UNK"
+    of Currency.USD: %"USD"
+    of Currency.GBP: %"GBP"
+    of Currency.CAD: %"CAD"
+    of Currency.EUR: %"EUR"
+    of Currency.AUD: %"AUD"
+    of Currency.NZD: %"NZD"
+    of Currency.SEK: %"SEK"
+    of Currency.ILS: %"ILS"
+    of Currency.CHF: %"CHF"
+    of Currency.HKD: %"HKD"
+    of Currency.JPY: %"JPY"
+    of Currency.SGD: %"SGD"
+    of Currency.KRW: %"KRW"
+    of Currency.NOK: %"NOK"
+    of Currency.DKK: %"DKK"
+    of Currency.PLN: %"PLN"
+    of Currency.RON: %"RON"
+    of Currency.HUF: %"HUF"
+    of Currency.CZK: %"CZK"
+    of Currency.BRL: %"BRL"
+    of Currency.MXN: %"MXN"
+    of Currency.ARS: %"ARS"
+    of Currency.CLP: %"CLP"
+    of Currency.COP: %"COP"
+    of Currency.INR: %"INR"
+    of Currency.TRY: %"TRY"
+
+func `$`*(v: Currency): string =
+  result = case v:
+    of Currency.UNK: $("UNK")
+    of Currency.USD: $("USD")
+    of Currency.GBP: $("GBP")
+    of Currency.CAD: $("CAD")
+    of Currency.EUR: $("EUR")
+    of Currency.AUD: $("AUD")
+    of Currency.NZD: $("NZD")
+    of Currency.SEK: $("SEK")
+    of Currency.ILS: $("ILS")
+    of Currency.CHF: $("CHF")
+    of Currency.HKD: $("HKD")
+    of Currency.JPY: $("JPY")
+    of Currency.SGD: $("SGD")
+    of Currency.KRW: $("KRW")
+    of Currency.NOK: $("NOK")
+    of Currency.DKK: $("DKK")
+    of Currency.PLN: $("PLN")
+    of Currency.RON: $("RON")
+    of Currency.HUF: $("HUF")
+    of Currency.CZK: $("CZK")
+    of Currency.BRL: $("BRL")
+    of Currency.MXN: $("MXN")
+    of Currency.ARS: $("ARS")
+    of Currency.CLP: $("CLP")
+    of Currency.COP: $("COP")
+    of Currency.INR: $("INR")
+    of Currency.TRY: $("TRY")
+
+proc to*(node: JsonNode, T: typedesc[Currency]): Currency =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Currency, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("UNK"):
+    return Currency.UNK
+  of $("USD"):
+    return Currency.USD
+  of $("GBP"):
+    return Currency.GBP
+  of $("CAD"):
+    return Currency.CAD
+  of $("EUR"):
+    return Currency.EUR
+  of $("AUD"):
+    return Currency.AUD
+  of $("NZD"):
+    return Currency.NZD
+  of $("SEK"):
+    return Currency.SEK
+  of $("ILS"):
+    return Currency.ILS
+  of $("CHF"):
+    return Currency.CHF
+  of $("HKD"):
+    return Currency.HKD
+  of $("JPY"):
+    return Currency.JPY
+  of $("SGD"):
+    return Currency.SGD
+  of $("KRW"):
+    return Currency.KRW
+  of $("NOK"):
+    return Currency.NOK
+  of $("DKK"):
+    return Currency.DKK
+  of $("PLN"):
+    return Currency.PLN
+  of $("RON"):
+    return Currency.RON
+  of $("HUF"):
+    return Currency.HUF
+  of $("CZK"):
+    return Currency.CZK
+  of $("BRL"):
+    return Currency.BRL
+  of $("MXN"):
+    return Currency.MXN
+  of $("ARS"):
+    return Currency.ARS
+  of $("CLP"):
+    return Currency.CLP
+  of $("COP"):
+    return Currency.COP
+  of $("INR"):
+    return Currency.INR
+  of $("TRY"):
+    return Currency.TRY
+  else:
+    raise newException(ValueError, "Invalid enum value for Currency: " & strVal)
+

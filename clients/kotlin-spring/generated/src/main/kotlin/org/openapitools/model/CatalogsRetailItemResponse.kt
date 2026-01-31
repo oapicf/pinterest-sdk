@@ -42,7 +42,7 @@ data class CatalogsRetailItemResponse(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("attributes") val attributes: ItemAttributes? = null
-    ) {
+) {
 
 }
 

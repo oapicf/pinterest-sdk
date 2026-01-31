@@ -35,7 +35,7 @@ import javax.annotation.Generated;
   CatalogsFeedIngestionErrors.JSON_PROPERTY_I_M_A_G_E_I_N_V_A_L_I_D_F_I_L_E
 })
 @JsonTypeName("CatalogsFeedIngestionErrors")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2025-05-10T05:39:05.070592818Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-01-26T05:35:55.554977681Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class CatalogsFeedIngestionErrors {
     public static final String JSON_PROPERTY_L_I_N_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R = "LINE_LEVEL_INTERNAL_ERROR";

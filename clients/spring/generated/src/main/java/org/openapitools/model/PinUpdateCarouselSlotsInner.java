@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("PinUpdate_carousel_slots_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinUpdateCarouselSlotsInner {
 
   private @Nullable String title;
@@ -30,7 +30,7 @@ public class PinUpdateCarouselSlotsInner {
 
   private @Nullable String link;
 
-  public PinUpdateCarouselSlotsInner title(String title) {
+  public PinUpdateCarouselSlotsInner title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -42,15 +42,15 @@ public class PinUpdateCarouselSlotsInner {
   
   @Schema(name = "title", description = "Carousel Pin slot title.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
-  public String getTitle() {
+  public @Nullable String getTitle() {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
-  public PinUpdateCarouselSlotsInner description(String description) {
+  public PinUpdateCarouselSlotsInner description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -62,15 +62,15 @@ public class PinUpdateCarouselSlotsInner {
   
   @Schema(name = "description", description = "Carousel Pin slot description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
-  public String getDescription() {
+  public @Nullable String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
-  public PinUpdateCarouselSlotsInner link(String link) {
+  public PinUpdateCarouselSlotsInner link(@Nullable String link) {
     this.link = link;
     return this;
   }
@@ -82,11 +82,11 @@ public class PinUpdateCarouselSlotsInner {
   
   @Schema(name = "link", description = "Carousel Pin slot link.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
-  public String getLink() {
+  public @Nullable String getLink() {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@Nullable String link) {
     this.link = link;
   }
 

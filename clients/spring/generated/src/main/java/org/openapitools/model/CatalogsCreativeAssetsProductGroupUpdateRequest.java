@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsProductGroupUpdateRequest", description = "Request object for updating a creative assets product group.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsProductGroupUpdateRequest implements CatalogsVerticalProductGroupUpdateRequest {
 
   /**
@@ -37,7 +37,7 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest implements Catalogs
   public enum CatalogTypeEnum {
     CREATIVE_ASSETS("CREATIVE_ASSETS");
 
-    private String value;
+    private final String value;
 
     CatalogTypeEnum(String value) {
       this.value = value;
@@ -72,7 +72,7 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest implements Catalogs
 
   private @Nullable CatalogsCreativeAssetsProductGroupFilters filters;
 
-  public CatalogsCreativeAssetsProductGroupUpdateRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsCreativeAssetsProductGroupUpdateRequest catalogType(@Nullable CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -84,15 +84,15 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest implements Catalogs
   
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogTypeEnum getCatalogType() {
+  public @Nullable CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@Nullable CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
-  public CatalogsCreativeAssetsProductGroupUpdateRequest name(String name) {
+  public CatalogsCreativeAssetsProductGroupUpdateRequest name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -104,11 +104,11 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest implements Catalogs
   
   @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
@@ -132,7 +132,7 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest implements Catalogs
     this.description = description;
   }
 
-  public CatalogsCreativeAssetsProductGroupUpdateRequest filters(CatalogsCreativeAssetsProductGroupFilters filters) {
+  public CatalogsCreativeAssetsProductGroupUpdateRequest filters(@Nullable CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
     return this;
   }
@@ -144,11 +144,11 @@ public class CatalogsCreativeAssetsProductGroupUpdateRequest implements Catalogs
   @Valid 
   @Schema(name = "filters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("filters")
-  public CatalogsCreativeAssetsProductGroupFilters getFilters() {
+  public @Nullable CatalogsCreativeAssetsProductGroupFilters getFilters() {
     return filters;
   }
 
-  public void setFilters(CatalogsCreativeAssetsProductGroupFilters filters) {
+  public void setFilters(@Nullable CatalogsCreativeAssetsProductGroupFilters filters) {
     this.filters = filters;
   }
 

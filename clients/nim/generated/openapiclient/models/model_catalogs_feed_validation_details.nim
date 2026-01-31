@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_feed_validation_errors
 import model_catalogs_feed_validation_warnings
@@ -17,3 +19,4 @@ type CatalogsFeedValidationDetails* = object
   ## 
   errors*: CatalogsFeedValidationErrors
   warnings*: CatalogsFeedValidationWarnings
+

@@ -11,6 +11,8 @@ import org.openapitools.model.TargetingAdvertiserCountry;
 
 @Canonical
 class CreateMMMReportRequest {
+    /* A List of countries for filtering */
+    List<TargetingAdvertiserCountry> countries = new ArrayList<>()
     /* Name of the Marketing Mix Modeling (MMM) report */
     String reportName
     /* Metric report start date (UTC). Format: YYYY-MM-DD */
@@ -71,6 +73,4 @@ class CreateMMMReportRequest {
     List<MMMReportingTargetingType> targetingTypes = new ArrayList<>()
     /* Metric and entity columns */
     List<MMMReportingColumn> columns = new ArrayList<>()
-    /* A List of countries for filtering */
-    List<TargetingAdvertiserCountry> countries = new ArrayList<>()
 }

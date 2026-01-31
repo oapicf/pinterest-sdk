@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import org.openapitools.model.NonNullableCatalogsCurrency;
 import org.openapitools.model.NonNullableProductAvailabilityType;

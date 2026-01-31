@@ -102,7 +102,7 @@ private:
     /// <param name="boardId">Unique identifier of a board.</param>
     /// <param name="boardSection">Create a board section.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void board_sections_create(const std::string &boardId, const org::openapitools::server::model::BoardSection &boardSection, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void board_sections_create( const std::string &boardId, const org::openapitools::server::model::BoardSection &boardSection, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete board section
     /// </summary>
@@ -112,7 +112,7 @@ private:
     /// <param name="boardId">Unique identifier of a board.</param>
     /// <param name="sectionId">Unique identifier of a board section.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void board_sections_delete(const std::string &boardId, const std::string &sectionId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void board_sections_delete( const std::string &boardId, const std::string &sectionId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List board sections
     /// </summary>
@@ -123,7 +123,7 @@ private:
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void board_sections_list(const std::string &boardId, const std::optional<std::string> &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void board_sections_list( const std::string &boardId, const std::optional<std::string> &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Pins on board section
     /// </summary>
@@ -135,7 +135,7 @@ private:
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
-    virtual void board_sections_list_pins(const std::string &boardId, const std::string &sectionId, const std::optional<std::string> &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void board_sections_list_pins( const std::string &boardId, const std::string &sectionId, const std::optional<std::string> &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update board section
     /// </summary>
@@ -146,7 +146,7 @@ private:
     /// <param name="sectionId">Unique identifier of a board section.</param>
     /// <param name="boardSection">Update a board section.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void board_sections_update(const std::string &boardId, const std::string &sectionId, const org::openapitools::server::model::BoardSection &boardSection, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void board_sections_update( const std::string &boardId, const std::string &sectionId, const org::openapitools::server::model::BoardSection &boardSection, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create board
     /// </summary>
@@ -155,7 +155,7 @@ private:
     /// </remarks>
     /// <param name="board">Create a board using a single board json object.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void boards_create(const org::openapitools::server::model::Board &board, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void boards_create( const org::openapitools::server::model::Board &board, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Delete board
     /// </summary>
@@ -164,7 +164,7 @@ private:
     /// </remarks>
     /// <param name="boardId">Unique identifier of a board.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void boards_delete(const std::string &boardId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void boards_delete( const std::string &boardId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get board
     /// </summary>
@@ -173,7 +173,7 @@ private:
     /// </remarks>
     /// <param name="boardId">Unique identifier of a board.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void boards_get(const std::string &boardId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void boards_get( const std::string &boardId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List boards
     /// </summary>
@@ -184,7 +184,7 @@ private:
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="privacy">Privacy setting for a board. (optional, default to &quot;&quot;)</param>
-    virtual void boards_list(const std::optional<std::string> &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &privacy, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void boards_list( const std::optional<std::string> &adAccountId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::string> &privacy, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List Pins on board
     /// </summary>
@@ -197,7 +197,7 @@ private:
     /// <param name="creativeTypes">Pin creative types filter. &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional, default to std::vector&lt;std::shared_ptr&lt;std::string&gt;&gt;())</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
     /// <param name="pinMetrics">Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional, default to false)</param>
-    virtual void boards_list_pins(const std::string &boardId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::vector<std::string>> &creativeTypes, const std::optional<std::string> &adAccountId, const std::optional<bool> &pinMetrics, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void boards_list_pins( const std::string &boardId, const std::optional<std::string> &bookmark, const std::optional<int32_t> &pageSize, const std::optional<std::vector<std::string>> &creativeTypes, const std::optional<std::string> &adAccountId, const std::optional<bool> &pinMetrics, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update board
     /// </summary>
@@ -207,7 +207,7 @@ private:
     /// <param name="boardId">Unique identifier of a board.</param>
     /// <param name="boardUpdate">Update a board.</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void boards_update(const std::string &boardId, const org::openapitools::server::model::BoardUpdate &boardUpdate, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void boards_update( const std::string &boardId, const org::openapitools::server::model::BoardUpdate &boardUpdate, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

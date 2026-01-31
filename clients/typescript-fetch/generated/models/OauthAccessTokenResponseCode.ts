@@ -14,11 +14,23 @@
 
 import { mapValues } from '../runtime';
 /**
- * A successful OAuth access token response for the authorization code flow.
+ * 
  * @export
  * @interface OauthAccessTokenResponseCode
  */
 export interface OauthAccessTokenResponseCode {
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenResponseCode
+     */
+    refreshToken: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof OauthAccessTokenResponseCode
+     */
+    refreshTokenExpiresIn: number;
     /**
      * 
      * @type {string}
@@ -49,18 +61,6 @@ export interface OauthAccessTokenResponseCode {
      * @memberof OauthAccessTokenResponseCode
      */
     scope: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof OauthAccessTokenResponseCode
-     */
-    refreshToken: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof OauthAccessTokenResponseCode
-     */
-    refreshTokenExpiresIn: number;
 }
 
 
@@ -79,12 +79,12 @@ export type OauthAccessTokenResponseCodeResponseTypeEnum = typeof OauthAccessTok
  * Check if a given object implements the OauthAccessTokenResponseCode interface.
  */
 export function instanceOfOauthAccessTokenResponseCode(value: object): value is OauthAccessTokenResponseCode {
+    if (!('refreshToken' in value) || value['refreshToken'] === undefined) return false;
+    if (!('refreshTokenExpiresIn' in value) || value['refreshTokenExpiresIn'] === undefined) return false;
     if (!('accessToken' in value) || value['accessToken'] === undefined) return false;
     if (!('tokenType' in value) || value['tokenType'] === undefined) return false;
     if (!('expiresIn' in value) || value['expiresIn'] === undefined) return false;
     if (!('scope' in value) || value['scope'] === undefined) return false;
-    if (!('refreshToken' in value) || value['refreshToken'] === undefined) return false;
-    if (!('refreshTokenExpiresIn' in value) || value['refreshTokenExpiresIn'] === undefined) return false;
     return true;
 }
 
@@ -98,13 +98,13 @@ export function OauthAccessTokenResponseCodeFromJSONTyped(json: any, ignoreDiscr
     }
     return {
         
+        'refreshToken': json['refresh_token'],
+        'refreshTokenExpiresIn': json['refresh_token_expires_in'],
         'responseType': json['response_type'] == null ? undefined : json['response_type'],
         'accessToken': json['access_token'],
         'tokenType': json['token_type'],
         'expiresIn': json['expires_in'],
         'scope': json['scope'],
-        'refreshToken': json['refresh_token'],
-        'refreshTokenExpiresIn': json['refresh_token_expires_in'],
     };
 }
 
@@ -119,13 +119,13 @@ export function OauthAccessTokenResponseCodeToJSONTyped(value?: OauthAccessToken
 
     return {
         
+        'refresh_token': value['refreshToken'],
+        'refresh_token_expires_in': value['refreshTokenExpiresIn'],
         'response_type': value['responseType'],
         'access_token': value['accessToken'],
         'token_type': value['tokenType'],
         'expires_in': value['expiresIn'],
         'scope': value['scope'],
-        'refresh_token': value['refreshToken'],
-        'refresh_token_expires_in': value['refreshTokenExpiresIn'],
     };
 }
 

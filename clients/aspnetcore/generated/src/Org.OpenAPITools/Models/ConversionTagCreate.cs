@@ -27,15 +27,6 @@ namespace Org.OpenAPITools.Models
     public partial class ConversionTagCreate : IEquatable<ConversionTagCreate>
     {
         /// <summary>
-        /// Conversion tag name.
-        /// </summary>
-        /// <value>Conversion tag name.</value>
-        /* <example>ACME Tools Tag</example> */
-        [Required]
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
-
-        /// <summary>
         /// Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.
         /// </summary>
         /// <value>Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.</value>
@@ -92,6 +83,15 @@ namespace Org.OpenAPITools.Models
         public bool? AemLocEnabled { get; set; } = false;
 
         /// <summary>
+        /// Conversion tag name.
+        /// </summary>
+        /// <value>Conversion tag name.</value>
+        /* <example>ACME Tools Tag</example> */
+        [Required]
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -99,7 +99,6 @@ namespace Org.OpenAPITools.Models
         {
             var sb = new StringBuilder();
             sb.Append("class ConversionTagCreate {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  AemEnabled: ").Append(AemEnabled).Append("\n");
             sb.Append("  MdFrequency: ").Append(MdFrequency).Append("\n");
             sb.Append("  AemFnlnEnabled: ").Append(AemFnlnEnabled).Append("\n");
@@ -107,6 +106,7 @@ namespace Org.OpenAPITools.Models
             sb.Append("  AemGeEnabled: ").Append(AemGeEnabled).Append("\n");
             sb.Append("  AemDbEnabled: ").Append(AemDbEnabled).Append("\n");
             sb.Append("  AemLocEnabled: ").Append(AemLocEnabled).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -144,11 +144,6 @@ namespace Org.OpenAPITools.Models
 
             return 
                 (
-                    Name == other.Name ||
-                    Name != null &&
-                    Name.Equals(other.Name)
-                ) && 
-                (
                     AemEnabled == other.AemEnabled ||
                     AemEnabled != null &&
                     AemEnabled.Equals(other.AemEnabled)
@@ -182,6 +177,11 @@ namespace Org.OpenAPITools.Models
                     AemLocEnabled == other.AemLocEnabled ||
                     AemLocEnabled != null &&
                     AemLocEnabled.Equals(other.AemLocEnabled)
+                ) && 
+                (
+                    Name == other.Name ||
+                    Name != null &&
+                    Name.Equals(other.Name)
                 );
         }
 
@@ -195,8 +195,6 @@ namespace Org.OpenAPITools.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Name != null)
-                    hashCode = hashCode * 59 + Name.GetHashCode();
                     if (AemEnabled != null)
                     hashCode = hashCode * 59 + AemEnabled.GetHashCode();
                     if (MdFrequency != null)
@@ -211,6 +209,8 @@ namespace Org.OpenAPITools.Models
                     hashCode = hashCode * 59 + AemDbEnabled.GetHashCode();
                     if (AemLocEnabled != null)
                     hashCode = hashCode * 59 + AemLocEnabled.GetHashCode();
+                    if (Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
                 return hashCode;
             }
         }

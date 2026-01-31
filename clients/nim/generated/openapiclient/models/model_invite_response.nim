@@ -9,19 +9,69 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_base_invite_data_response_invite_data
 import model_business_access_user_summary
 import model_invite_assets_summary
+import model_object
 
 type InviteResponse* = object
   ## 
-  assetsSummary*: InviteAssetsSummary
-  businessRoles*: seq[string] ## The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-  createdByBusiness*: BusinessAccessUserSummary ## Metadata for the business that created the invite/request.
-  createdByUser*: BusinessAccessUserSummary ## Metadata for the user that created the invite/request.
-  createdTime*: int ## The time the invite/request was created. Returned in milliseconds.
-  id*: string ## Unique identifier of the invite/request.
-  inviteData*: BaseInviteDataResponse_invite_data
-  isReceivedInvite*: bool ## Indicates whether the invite/request was received.
-  user*: BusinessAccessUserSummary ## Metadata for the member/partner that was sent the invite/request.
+  id*: Option[string] ## Unique identifier of the invite/request.
+  inviteData*: Option[BaseInviteDataResponse_invite_data]
+  isReceivedInvite*: Option[bool] ## Indicates whether the invite/request was received.
+  user*: Option[BusinessAccessUserSummary] ## Metadata for the member/partner that was sent the invite/request.
+  assetsSummary*: Option[InviteAssetsSummary]
+  businessRoles*: Option[seq[string]] ## The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+  createdByBusiness*: Option[JsonNode] ## Metadata for the business that created the invite/request.
+  createdByUser*: Option[JsonNode] ## Metadata for the user that created the invite/request.
+  createdTime*: Option[int] ## The time the invite/request was created. Returned in milliseconds.
+
+
+# Custom JSON deserialization for InviteResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[InviteResponse]): InviteResponse =
+  result = InviteResponse()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("invite_data") and node["invite_data"].kind != JNull:
+      result.inviteData = some(to(node["invite_data"], typeof(result.inviteData.get())))
+    if node.hasKey("is_received_invite") and node["is_received_invite"].kind != JNull:
+      result.isReceivedInvite = some(to(node["is_received_invite"], typeof(result.isReceivedInvite.get())))
+    if node.hasKey("user") and node["user"].kind != JNull:
+      result.user = some(to(node["user"], typeof(result.user.get())))
+    if node.hasKey("assets_summary") and node["assets_summary"].kind != JNull:
+      result.assetsSummary = some(to(node["assets_summary"], typeof(result.assetsSummary.get())))
+    if node.hasKey("business_roles") and node["business_roles"].kind != JNull:
+      result.businessRoles = some(to(node["business_roles"], typeof(result.businessRoles.get())))
+    if node.hasKey("created_by_business") and node["created_by_business"].kind != JNull:
+      result.createdByBusiness = some(to(node["created_by_business"], typeof(result.createdByBusiness.get())))
+    if node.hasKey("created_by_user") and node["created_by_user"].kind != JNull:
+      result.createdByUser = some(to(node["created_by_user"], typeof(result.createdByUser.get())))
+    if node.hasKey("created_time") and node["created_time"].kind != JNull:
+      result.createdTime = some(to(node["created_time"], typeof(result.createdTime.get())))
+
+# Custom JSON serialization for InviteResponse with custom field names
+proc `%`*(obj: InviteResponse): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.inviteData.isSome():
+    result["invite_data"] = %obj.inviteData.get()
+  if obj.isReceivedInvite.isSome():
+    result["is_received_invite"] = %obj.isReceivedInvite.get()
+  if obj.user.isSome():
+    result["user"] = %obj.user.get()
+  if obj.assetsSummary.isSome():
+    result["assets_summary"] = %obj.assetsSummary.get()
+  if obj.businessRoles.isSome():
+    result["business_roles"] = %obj.businessRoles.get()
+  if obj.createdByBusiness.isSome():
+    result["created_by_business"] = %obj.createdByBusiness.get()
+  if obj.createdByUser.isSome():
+    result["created_by_user"] = %obj.createdByUser.get()
+  if obj.createdTime.isSome():
+    result["created_time"] = %obj.createdTime.get()
+

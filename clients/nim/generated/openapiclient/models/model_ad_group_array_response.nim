@@ -9,9 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ad_group_array_response_element
 
 type AdGroupArrayResponse* = object
   ## 
-  items*: seq[AdGroupArrayResponseElement]
+  items*: Option[seq[AdGroupArrayResponseElement]]
+
+
+# Custom JSON deserialization for AdGroupArrayResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[AdGroupArrayResponse]): AdGroupArrayResponse =
+  result = AdGroupArrayResponse()
+  if node.kind == JObject:
+    if node.hasKey("items") and node["items"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        var arr: seq[AdGroupArrayResponseElement] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, AdGroupArrayResponseElement))
+        result.items = some(arr)
+
+# Custom JSON serialization for AdGroupArrayResponse with custom field names
+proc `%`*(obj: AdGroupArrayResponse): JsonNode =
+  result = newJObject()
+  if obj.items.isSome():
+    result["items"] = %obj.items.get()
+

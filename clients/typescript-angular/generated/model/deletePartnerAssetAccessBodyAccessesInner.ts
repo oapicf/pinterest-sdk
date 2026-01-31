@@ -24,11 +24,11 @@ export interface DeletePartnerAssetAccessBodyAccessesInner {
     partner_type?: DeletePartnerAssetAccessBodyAccessesInner.PartnerTypeEnum;
 }
 export namespace DeletePartnerAssetAccessBodyAccessesInner {
-    export type PartnerTypeEnum = 'INTERNAL' | 'EXTERNAL';
     export const PartnerTypeEnum = {
-        Internal: 'INTERNAL' as PartnerTypeEnum,
-        External: 'EXTERNAL' as PartnerTypeEnum
-    };
+        Internal: 'INTERNAL',
+        External: 'EXTERNAL'
+    } as const;
+    export type PartnerTypeEnum = typeof PartnerTypeEnum[keyof typeof PartnerTypeEnum];
 }
 
 

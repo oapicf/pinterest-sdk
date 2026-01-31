@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinterestTagEventData", description = "Optional for VISITOR `audience_type`. With the Pinterest tag, you can use event data to capture event details from your website. This object lists all the available predefined event data fields in the Pinterest tag. You can include these event data fields as part of a VISITOR audience’ s `rule`; however, you **must** specify an `event` for the `event_data` fields to be evaluated. Besides what’s listed, you can also create your own set of `event_data` fields and define their usages or purposes according to your website needs. However, the benefit of using the predefined event data fields is that we can provide various metrics based on those fields' data.<br>Examples per `event` type:<br>`pagevisit`<br>\"event_data\": { \"page_name\": \"My online store 123 | view items | shoe\" }<br>`signup`<br>\"event_data\": { \"lead_type\": \"New release promotion\" }<br>`checkout`<br>\"event_data\": { \"value\": 116, \"order_quantity\": 2, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Pillows (Set of 2)\", \"product_id\": \"11\", \"product_price\": 48, \"product_quantity\": 1 }, { \"product_name\": \"Pillows, Large (Set of 2)\", \"product_id\": \"15\", \"product_price\": 68, \"product_quantity\": 1 } ] }<br>`addtocart`<br>\"event_data\": { \"value\": 499, \"order_quantity\": 1, \"currency\": \"USD\", \"line_items\": [ { \"product_name\": \"Red leather boots\", \"product_id\": \"3486\", \"product_category\": \"shoe\", \"product_variant_id\": \"JB11103000\", \"product_price\": 499, \"product_quantity\": \"1\" , \"product_brand\": \"My brand\" }]}<br>`watchvideo`<br>\"event_data\": { \"video_title\": \"My Product Video 01\" }<br>`lead`<br>\"event_data\": { \"lead_type\": \"Newsletter\" }")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinterestTagEventData {
 
   private @Nullable Currency currency;
@@ -48,7 +48,7 @@ public class PinterestTagEventData {
 
   private @Nullable String videoTitle;
 
-  public PinterestTagEventData currency(Currency currency) {
+  public PinterestTagEventData currency(@Nullable Currency currency) {
     this.currency = currency;
     return this;
   }
@@ -60,15 +60,15 @@ public class PinterestTagEventData {
   @Valid 
   @Schema(name = "currency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("currency")
-  public Currency getCurrency() {
+  public @Nullable Currency getCurrency() {
     return currency;
   }
 
-  public void setCurrency(Currency currency) {
+  public void setCurrency(@Nullable Currency currency) {
     this.currency = currency;
   }
 
-  public PinterestTagEventData leadType(String leadType) {
+  public PinterestTagEventData leadType(@Nullable String leadType) {
     this.leadType = leadType;
     return this;
   }
@@ -80,15 +80,15 @@ public class PinterestTagEventData {
   
   @Schema(name = "lead_type", example = "Newsletter", description = "Promotion code. For example, \"Newsletter\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lead_type")
-  public String getLeadType() {
+  public @Nullable String getLeadType() {
     return leadType;
   }
 
-  public void setLeadType(String leadType) {
+  public void setLeadType(@Nullable String leadType) {
     this.leadType = leadType;
   }
 
-  public PinterestTagEventData lineItems(LineItem lineItems) {
+  public PinterestTagEventData lineItems(@Nullable LineItem lineItems) {
     this.lineItems = lineItems;
     return this;
   }
@@ -100,15 +100,15 @@ public class PinterestTagEventData {
   @Valid 
   @Schema(name = "line_items", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("line_items")
-  public LineItem getLineItems() {
+  public @Nullable LineItem getLineItems() {
     return lineItems;
   }
 
-  public void setLineItems(LineItem lineItems) {
+  public void setLineItems(@Nullable LineItem lineItems) {
     this.lineItems = lineItems;
   }
 
-  public PinterestTagEventData orderId(String orderId) {
+  public PinterestTagEventData orderId(@Nullable String orderId) {
     this.orderId = orderId;
     return this;
   }
@@ -120,15 +120,15 @@ public class PinterestTagEventData {
   
   @Schema(name = "order_id", example = "X-151481", description = "Order ID. For example, \"X-151481\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("order_id")
-  public String getOrderId() {
+  public @Nullable String getOrderId() {
     return orderId;
   }
 
-  public void setOrderId(String orderId) {
+  public void setOrderId(@Nullable String orderId) {
     this.orderId = orderId;
   }
 
-  public PinterestTagEventData orderQuantity(Integer orderQuantity) {
+  public PinterestTagEventData orderQuantity(@Nullable Integer orderQuantity) {
     this.orderQuantity = orderQuantity;
     return this;
   }
@@ -140,15 +140,15 @@ public class PinterestTagEventData {
   
   @Schema(name = "order_quantity", example = "1", description = "Order quantity. For example, 1.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("order_quantity")
-  public Integer getOrderQuantity() {
+  public @Nullable Integer getOrderQuantity() {
     return orderQuantity;
   }
 
-  public void setOrderQuantity(Integer orderQuantity) {
+  public void setOrderQuantity(@Nullable Integer orderQuantity) {
     this.orderQuantity = orderQuantity;
   }
 
-  public PinterestTagEventData pageName(String pageName) {
+  public PinterestTagEventData pageName(@Nullable String pageName) {
     this.pageName = pageName;
     return this;
   }
@@ -160,15 +160,15 @@ public class PinterestTagEventData {
   
   @Schema(name = "page_name", example = "Our Favorite Pins on Pinterest.", description = "Page name. For example, \"Our Favorite Pins on Pinterest\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("page_name")
-  public String getPageName() {
+  public @Nullable String getPageName() {
     return pageName;
   }
 
-  public void setPageName(String pageName) {
+  public void setPageName(@Nullable String pageName) {
     this.pageName = pageName;
   }
 
-  public PinterestTagEventData promoCode(String promoCode) {
+  public PinterestTagEventData promoCode(@Nullable String promoCode) {
     this.promoCode = promoCode;
     return this;
   }
@@ -180,15 +180,15 @@ public class PinterestTagEventData {
   
   @Schema(name = "promo_code", example = "WINTER10", description = "Promotion code. For example, \"WINTER10\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("promo_code")
-  public String getPromoCode() {
+  public @Nullable String getPromoCode() {
     return promoCode;
   }
 
-  public void setPromoCode(String promoCode) {
+  public void setPromoCode(@Nullable String promoCode) {
     this.promoCode = promoCode;
   }
 
-  public PinterestTagEventData property(String property) {
+  public PinterestTagEventData property(@Nullable String property) {
     this.property = property;
     return this;
   }
@@ -200,15 +200,15 @@ public class PinterestTagEventData {
   
   @Schema(name = "property", example = "Athleta", description = "Property. For example, \"Athleta\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("property")
-  public String getProperty() {
+  public @Nullable String getProperty() {
     return property;
   }
 
-  public void setProperty(String property) {
+  public void setProperty(@Nullable String property) {
     this.property = property;
   }
 
-  public PinterestTagEventData searchQuery(String searchQuery) {
+  public PinterestTagEventData searchQuery(@Nullable String searchQuery) {
     this.searchQuery = searchQuery;
     return this;
   }
@@ -220,15 +220,15 @@ public class PinterestTagEventData {
   
   @Schema(name = "search_query", example = "boots", description = "Search query string. For example, \"boots\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("search_query")
-  public String getSearchQuery() {
+  public @Nullable String getSearchQuery() {
     return searchQuery;
   }
 
-  public void setSearchQuery(String searchQuery) {
+  public void setSearchQuery(@Nullable String searchQuery) {
     this.searchQuery = searchQuery;
   }
 
-  public PinterestTagEventData value(String value) {
+  public PinterestTagEventData value(@Nullable String value) {
     this.value = value;
     return this;
   }
@@ -240,15 +240,15 @@ public class PinterestTagEventData {
   
   @Schema(name = "value", example = "199.98", description = "Product value. For example, \"199.98\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("value")
-  public String getValue() {
+  public @Nullable String getValue() {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@Nullable String value) {
     this.value = value;
   }
 
-  public PinterestTagEventData videoTitle(String videoTitle) {
+  public PinterestTagEventData videoTitle(@Nullable String videoTitle) {
     this.videoTitle = videoTitle;
     return this;
   }
@@ -260,11 +260,11 @@ public class PinterestTagEventData {
   
   @Schema(name = "video_title", example = "How to style your Parker Boots", description = "Video title. For example, \"How to style your Parker Boots\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("video_title")
-  public String getVideoTitle() {
+  public @Nullable String getVideoTitle() {
     return videoTitle;
   }
 
-  public void setVideoTitle(String videoTitle) {
+  public void setVideoTitle(@Nullable String videoTitle) {
     this.videoTitle = videoTitle;
   }
 

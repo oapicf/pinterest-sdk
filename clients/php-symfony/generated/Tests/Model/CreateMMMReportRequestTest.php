@@ -87,6 +87,17 @@ class CreateMMMReportRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "countries"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyCountries(): void
+    {
+        $this->markTestSkipped('Test for property countries not implemented');
+    }
+
+    /**
      * Test attribute "reportName"
      *
      * @group unit
@@ -161,16 +172,5 @@ class CreateMMMReportRequestTest extends TestCase
     public function testPropertyColumns(): void
     {
         $this->markTestSkipped('Test for property columns not implemented');
-    }
-
-    /**
-     * Test attribute "countries"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyCountries(): void
-    {
-        $this->markTestSkipped('Test for property countries not implemented');
     }
 }

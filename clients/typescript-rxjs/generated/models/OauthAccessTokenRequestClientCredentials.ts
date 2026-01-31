@@ -12,7 +12,6 @@
  */
 
 /**
- * A request to receive a client token.
  * @export
  * @interface OauthAccessTokenRequestClientCredentials
  */
@@ -21,12 +20,12 @@ export interface OauthAccessTokenRequestClientCredentials {
      * @type {string}
      * @memberof OauthAccessTokenRequestClientCredentials
      */
-    grant_type: OauthAccessTokenRequestClientCredentialsGrantTypeEnum;
+    scope: string;
     /**
      * @type {string}
      * @memberof OauthAccessTokenRequestClientCredentials
      */
-    scope: string;
+    grant_type: OauthAccessTokenRequestClientCredentialsGrantTypeEnum;
 }
 
 /**

@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -56,15 +55,6 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'GrantType'
-        /// </summary>
-        [Fact]
-        public void GrantTypeTest()
-        {
-            // TODO unit test for the property 'GrantType'
-        }
-
-        /// <summary>
         /// Test the property 'Code'
         /// </summary>
         [Fact]
@@ -80,6 +70,15 @@ namespace Org.OpenAPITools.Test.Model
         public void RedirectUriTest()
         {
             // TODO unit test for the property 'RedirectUri'
+        }
+
+        /// <summary>
+        /// Test the property 'GrantType'
+        /// </summary>
+        [Fact]
+        public void GrantTypeTest()
+        {
+            // TODO unit test for the property 'GrantType'
         }
     }
 }

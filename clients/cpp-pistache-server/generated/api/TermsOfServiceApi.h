@@ -86,7 +86,7 @@ private:
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="includeHtml">Return HTML in TOS text. (optional, default to false)</param>
     /// <param name="tosType">Request type. (optional, default to &quot;&quot;)</param>
-    virtual void terms_of_service_get(const std::string &adAccountId, const std::optional<bool> &includeHtml, const std::optional<std::string> &tosType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void terms_of_service_get( const std::string &adAccountId, const std::optional<bool> &includeHtml, const std::optional<std::string> &tosType, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

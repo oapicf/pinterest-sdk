@@ -50,7 +50,7 @@ data class AudienceCreateCustomRequest(
 
     @Schema(example = "DLX Demographics", description = "")
     @get:JsonProperty("category") val category: kotlin.String? = null
-    ) {
+) {
 
 }
 

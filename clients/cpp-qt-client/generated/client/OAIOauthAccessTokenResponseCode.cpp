@@ -34,6 +34,12 @@ OAIOauthAccessTokenResponseCode::~OAIOauthAccessTokenResponseCode() {}
 
 void OAIOauthAccessTokenResponseCode::initializeModel() {
 
+    m_refresh_token_isSet = false;
+    m_refresh_token_isValid = false;
+
+    m_refresh_token_expires_in_isSet = false;
+    m_refresh_token_expires_in_isValid = false;
+
     m_response_type_isSet = false;
     m_response_type_isValid = false;
 
@@ -48,12 +54,6 @@ void OAIOauthAccessTokenResponseCode::initializeModel() {
 
     m_scope_isSet = false;
     m_scope_isValid = false;
-
-    m_refresh_token_isSet = false;
-    m_refresh_token_isValid = false;
-
-    m_refresh_token_expires_in_isSet = false;
-    m_refresh_token_expires_in_isValid = false;
 }
 
 void OAIOauthAccessTokenResponseCode::fromJson(QString jsonString) {
@@ -64,6 +64,12 @@ void OAIOauthAccessTokenResponseCode::fromJson(QString jsonString) {
 }
 
 void OAIOauthAccessTokenResponseCode::fromJsonObject(QJsonObject json) {
+
+    m_refresh_token_isValid = ::OpenAPI::fromJsonValue(m_refresh_token, json[QString("refresh_token")]);
+    m_refresh_token_isSet = !json[QString("refresh_token")].isNull() && m_refresh_token_isValid;
+
+    m_refresh_token_expires_in_isValid = ::OpenAPI::fromJsonValue(m_refresh_token_expires_in, json[QString("refresh_token_expires_in")]);
+    m_refresh_token_expires_in_isSet = !json[QString("refresh_token_expires_in")].isNull() && m_refresh_token_expires_in_isValid;
 
     m_response_type_isValid = ::OpenAPI::fromJsonValue(m_response_type, json[QString("response_type")]);
     m_response_type_isSet = !json[QString("response_type")].isNull() && m_response_type_isValid;
@@ -79,12 +85,6 @@ void OAIOauthAccessTokenResponseCode::fromJsonObject(QJsonObject json) {
 
     m_scope_isValid = ::OpenAPI::fromJsonValue(m_scope, json[QString("scope")]);
     m_scope_isSet = !json[QString("scope")].isNull() && m_scope_isValid;
-
-    m_refresh_token_isValid = ::OpenAPI::fromJsonValue(m_refresh_token, json[QString("refresh_token")]);
-    m_refresh_token_isSet = !json[QString("refresh_token")].isNull() && m_refresh_token_isValid;
-
-    m_refresh_token_expires_in_isValid = ::OpenAPI::fromJsonValue(m_refresh_token_expires_in, json[QString("refresh_token_expires_in")]);
-    m_refresh_token_expires_in_isSet = !json[QString("refresh_token_expires_in")].isNull() && m_refresh_token_expires_in_isValid;
 }
 
 QString OAIOauthAccessTokenResponseCode::asJson() const {
@@ -96,6 +96,12 @@ QString OAIOauthAccessTokenResponseCode::asJson() const {
 
 QJsonObject OAIOauthAccessTokenResponseCode::asJsonObject() const {
     QJsonObject obj;
+    if (m_refresh_token_isSet) {
+        obj.insert(QString("refresh_token"), ::OpenAPI::toJsonValue(m_refresh_token));
+    }
+    if (m_refresh_token_expires_in_isSet) {
+        obj.insert(QString("refresh_token_expires_in"), ::OpenAPI::toJsonValue(m_refresh_token_expires_in));
+    }
     if (m_response_type_isSet) {
         obj.insert(QString("response_type"), ::OpenAPI::toJsonValue(m_response_type));
     }
@@ -111,13 +117,39 @@ QJsonObject OAIOauthAccessTokenResponseCode::asJsonObject() const {
     if (m_scope_isSet) {
         obj.insert(QString("scope"), ::OpenAPI::toJsonValue(m_scope));
     }
-    if (m_refresh_token_isSet) {
-        obj.insert(QString("refresh_token"), ::OpenAPI::toJsonValue(m_refresh_token));
-    }
-    if (m_refresh_token_expires_in_isSet) {
-        obj.insert(QString("refresh_token_expires_in"), ::OpenAPI::toJsonValue(m_refresh_token_expires_in));
-    }
     return obj;
+}
+
+QString OAIOauthAccessTokenResponseCode::getRefreshToken() const {
+    return m_refresh_token;
+}
+void OAIOauthAccessTokenResponseCode::setRefreshToken(const QString &refresh_token) {
+    m_refresh_token = refresh_token;
+    m_refresh_token_isSet = true;
+}
+
+bool OAIOauthAccessTokenResponseCode::is_refresh_token_Set() const{
+    return m_refresh_token_isSet;
+}
+
+bool OAIOauthAccessTokenResponseCode::is_refresh_token_Valid() const{
+    return m_refresh_token_isValid;
+}
+
+qint32 OAIOauthAccessTokenResponseCode::getRefreshTokenExpiresIn() const {
+    return m_refresh_token_expires_in;
+}
+void OAIOauthAccessTokenResponseCode::setRefreshTokenExpiresIn(const qint32 &refresh_token_expires_in) {
+    m_refresh_token_expires_in = refresh_token_expires_in;
+    m_refresh_token_expires_in_isSet = true;
+}
+
+bool OAIOauthAccessTokenResponseCode::is_refresh_token_expires_in_Set() const{
+    return m_refresh_token_expires_in_isSet;
+}
+
+bool OAIOauthAccessTokenResponseCode::is_refresh_token_expires_in_Valid() const{
+    return m_refresh_token_expires_in_isValid;
 }
 
 QString OAIOauthAccessTokenResponseCode::getResponseType() const {
@@ -200,41 +232,19 @@ bool OAIOauthAccessTokenResponseCode::is_scope_Valid() const{
     return m_scope_isValid;
 }
 
-QString OAIOauthAccessTokenResponseCode::getRefreshToken() const {
-    return m_refresh_token;
-}
-void OAIOauthAccessTokenResponseCode::setRefreshToken(const QString &refresh_token) {
-    m_refresh_token = refresh_token;
-    m_refresh_token_isSet = true;
-}
-
-bool OAIOauthAccessTokenResponseCode::is_refresh_token_Set() const{
-    return m_refresh_token_isSet;
-}
-
-bool OAIOauthAccessTokenResponseCode::is_refresh_token_Valid() const{
-    return m_refresh_token_isValid;
-}
-
-qint32 OAIOauthAccessTokenResponseCode::getRefreshTokenExpiresIn() const {
-    return m_refresh_token_expires_in;
-}
-void OAIOauthAccessTokenResponseCode::setRefreshTokenExpiresIn(const qint32 &refresh_token_expires_in) {
-    m_refresh_token_expires_in = refresh_token_expires_in;
-    m_refresh_token_expires_in_isSet = true;
-}
-
-bool OAIOauthAccessTokenResponseCode::is_refresh_token_expires_in_Set() const{
-    return m_refresh_token_expires_in_isSet;
-}
-
-bool OAIOauthAccessTokenResponseCode::is_refresh_token_expires_in_Valid() const{
-    return m_refresh_token_expires_in_isValid;
-}
-
 bool OAIOauthAccessTokenResponseCode::isSet() const {
     bool isObjectUpdated = false;
     do {
+        if (m_refresh_token_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_refresh_token_expires_in_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
         if (m_response_type_isSet) {
             isObjectUpdated = true;
             break;
@@ -259,23 +269,13 @@ bool OAIOauthAccessTokenResponseCode::isSet() const {
             isObjectUpdated = true;
             break;
         }
-
-        if (m_refresh_token_isSet) {
-            isObjectUpdated = true;
-            break;
-        }
-
-        if (m_refresh_token_expires_in_isSet) {
-            isObjectUpdated = true;
-            break;
-        }
     } while (false);
     return isObjectUpdated;
 }
 
 bool OAIOauthAccessTokenResponseCode::isValid() const {
     // only required properties are required for the object to be considered valid
-    return m_access_token_isValid && m_token_type_isValid && m_expires_in_isValid && m_scope_isValid && m_refresh_token_isValid && m_refresh_token_expires_in_isValid && true;
+    return m_refresh_token_isValid && m_refresh_token_expires_in_isValid && m_access_token_isValid && m_token_type_isValid && m_expires_in_isValid && m_scope_isValid && true;
 }
 
 } // namespace OpenAPI

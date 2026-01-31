@@ -77,16 +77,12 @@ class TermsOfServiceController extends Controller
         }
 
 
-        $includeHtml = $request->bool('includeHtml');
+        $includeHtml = $request->boolean('includeHtml');
 
         $tosType = $request->string('tosType')->value();
 
-        try {
-            $apiResult = $this->api->termsOfServiceGet($adAccountId, $includeHtml, $tosType);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->termsOfServiceGet($adAccountId, $includeHtml, $tosType);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\TermsOfService) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

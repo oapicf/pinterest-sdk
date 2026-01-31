@@ -9,52 +9,241 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_item_validation_details
 
 type CatalogsItemValidationWarnings* = object
   ## 
-  AD_LINK_FORMAT_WARNING*: CatalogsItemValidationDetails
-  AD_LINK_SAME_AS_LINK*: CatalogsItemValidationDetails
-  ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG*: CatalogsItemValidationDetails
-  ADDITIONAL_IMAGE_LINK_WARNING*: CatalogsItemValidationDetails
-  ADWORDS_FORMAT_WARNING*: CatalogsItemValidationDetails
-  ADWORDS_SAME_AS_LINK*: CatalogsItemValidationDetails
-  AGE_GROUP_INVALID*: CatalogsItemValidationDetails
-  SIZE_SYSTEM_INVALID*: CatalogsItemValidationDetails
-  ANDROID_DEEP_LINK_INVALID*: CatalogsItemValidationDetails
-  AVAILABILITY_DATE_INVALID*: CatalogsItemValidationDetails
-  COUNTRY_DOES_NOT_MAP_TO_CURRENCY*: CatalogsItemValidationDetails
-  CUSTOM_LABEL_LENGTH_TOO_LONG*: CatalogsItemValidationDetails
-  DESCRIPTION_LENGTH_TOO_LONG*: CatalogsItemValidationDetails
-  EXPIRATION_DATE_INVALID*: CatalogsItemValidationDetails
-  GENDER_INVALID*: CatalogsItemValidationDetails
-  GTIN_INVALID*: CatalogsItemValidationDetails
-  IMAGE_LINK_WARNING*: CatalogsItemValidationDetails
-  IOS_DEEP_LINK_INVALID*: CatalogsItemValidationDetails
-  IS_BUNDLE_INVALID*: CatalogsItemValidationDetails
-  ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE*: CatalogsItemValidationDetails
-  LINK_FORMAT_WARNING*: CatalogsItemValidationDetails
-  MIN_AD_PRICE_INVALID*: CatalogsItemValidationDetails
-  MPN_INVALID*: CatalogsItemValidationDetails
-  MULTIPACK_INVALID*: CatalogsItemValidationDetails
-  OPTIONAL_CONDITION_INVALID*: CatalogsItemValidationDetails
-  OPTIONAL_CONDITION_MISSING*: CatalogsItemValidationDetails
-  OPTIONAL_PRODUCT_CATEGORY_INVALID*: CatalogsItemValidationDetails
-  OPTIONAL_PRODUCT_CATEGORY_MISSING*: CatalogsItemValidationDetails
-  PRODUCT_CATEGORY_DEPTH_WARNING*: CatalogsItemValidationDetails
-  PRODUCT_TYPE_LENGTH_TOO_LONG*: CatalogsItemValidationDetails
-  SALES_PRICE_INVALID*: CatalogsItemValidationDetails
-  SALES_PRICE_TOO_LOW*: CatalogsItemValidationDetails
-  SALES_PRICE_TOO_HIGH*: CatalogsItemValidationDetails
-  SALE_DATE_INVALID*: CatalogsItemValidationDetails
-  SHIPPING_INVALID*: CatalogsItemValidationDetails
-  SHIPPING_HEIGHT_INVALID*: CatalogsItemValidationDetails
-  SHIPPING_WEIGHT_INVALID*: CatalogsItemValidationDetails
-  SHIPPING_WIDTH_INVALID*: CatalogsItemValidationDetails
-  SIZE_TYPE_INVALID*: CatalogsItemValidationDetails
-  TAX_INVALID*: CatalogsItemValidationDetails
-  TITLE_LENGTH_TOO_LONG*: CatalogsItemValidationDetails
-  TOO_MANY_ADDITIONAL_IMAGE_LINKS*: CatalogsItemValidationDetails
-  UTM_SOURCE_AUTO_CORRECTED*: CatalogsItemValidationDetails
-  WEIGHT_UNIT_INVALID*: CatalogsItemValidationDetails
+  AD_LINK_FORMAT_WARNING*: Option[CatalogsItemValidationDetails]
+  AD_LINK_SAME_AS_LINK*: Option[CatalogsItemValidationDetails]
+  ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG*: Option[CatalogsItemValidationDetails]
+  ADDITIONAL_IMAGE_LINK_WARNING*: Option[CatalogsItemValidationDetails]
+  ADWORDS_FORMAT_WARNING*: Option[CatalogsItemValidationDetails]
+  ADWORDS_SAME_AS_LINK*: Option[CatalogsItemValidationDetails]
+  AGE_GROUP_INVALID*: Option[CatalogsItemValidationDetails]
+  SIZE_SYSTEM_INVALID*: Option[CatalogsItemValidationDetails]
+  ANDROID_DEEP_LINK_INVALID*: Option[CatalogsItemValidationDetails]
+  AVAILABILITY_DATE_INVALID*: Option[CatalogsItemValidationDetails]
+  COUNTRY_DOES_NOT_MAP_TO_CURRENCY*: Option[CatalogsItemValidationDetails]
+  CUSTOM_LABEL_LENGTH_TOO_LONG*: Option[CatalogsItemValidationDetails]
+  DESCRIPTION_LENGTH_TOO_LONG*: Option[CatalogsItemValidationDetails]
+  EXPIRATION_DATE_INVALID*: Option[CatalogsItemValidationDetails]
+  GENDER_INVALID*: Option[CatalogsItemValidationDetails]
+  GTIN_INVALID*: Option[CatalogsItemValidationDetails]
+  IMAGE_LINK_WARNING*: Option[CatalogsItemValidationDetails]
+  IOS_DEEP_LINK_INVALID*: Option[CatalogsItemValidationDetails]
+  IS_BUNDLE_INVALID*: Option[CatalogsItemValidationDetails]
+  ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE*: Option[CatalogsItemValidationDetails]
+  LINK_FORMAT_WARNING*: Option[CatalogsItemValidationDetails]
+  MIN_AD_PRICE_INVALID*: Option[CatalogsItemValidationDetails]
+  MPN_INVALID*: Option[CatalogsItemValidationDetails]
+  MULTIPACK_INVALID*: Option[CatalogsItemValidationDetails]
+  OPTIONAL_CONDITION_INVALID*: Option[CatalogsItemValidationDetails]
+  OPTIONAL_CONDITION_MISSING*: Option[CatalogsItemValidationDetails]
+  OPTIONAL_PRODUCT_CATEGORY_INVALID*: Option[CatalogsItemValidationDetails]
+  OPTIONAL_PRODUCT_CATEGORY_MISSING*: Option[CatalogsItemValidationDetails]
+  PRODUCT_CATEGORY_DEPTH_WARNING*: Option[CatalogsItemValidationDetails]
+  PRODUCT_TYPE_LENGTH_TOO_LONG*: Option[CatalogsItemValidationDetails]
+  SALES_PRICE_INVALID*: Option[CatalogsItemValidationDetails]
+  SALES_PRICE_TOO_LOW*: Option[CatalogsItemValidationDetails]
+  SALES_PRICE_TOO_HIGH*: Option[CatalogsItemValidationDetails]
+  SALE_DATE_INVALID*: Option[CatalogsItemValidationDetails]
+  SHIPPING_INVALID*: Option[CatalogsItemValidationDetails]
+  SHIPPING_HEIGHT_INVALID*: Option[CatalogsItemValidationDetails]
+  SHIPPING_WEIGHT_INVALID*: Option[CatalogsItemValidationDetails]
+  SHIPPING_WIDTH_INVALID*: Option[CatalogsItemValidationDetails]
+  SIZE_TYPE_INVALID*: Option[CatalogsItemValidationDetails]
+  TAX_INVALID*: Option[CatalogsItemValidationDetails]
+  TITLE_LENGTH_TOO_LONG*: Option[CatalogsItemValidationDetails]
+  TOO_MANY_ADDITIONAL_IMAGE_LINKS*: Option[CatalogsItemValidationDetails]
+  UTM_SOURCE_AUTO_CORRECTED*: Option[CatalogsItemValidationDetails]
+  WEIGHT_UNIT_INVALID*: Option[CatalogsItemValidationDetails]
+
+
+# Custom JSON deserialization for CatalogsItemValidationWarnings with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsItemValidationWarnings]): CatalogsItemValidationWarnings =
+  result = CatalogsItemValidationWarnings()
+  if node.kind == JObject:
+    if node.hasKey("AD_LINK_FORMAT_WARNING") and node["AD_LINK_FORMAT_WARNING"].kind != JNull:
+      result.AD_LINK_FORMAT_WARNING = some(to(node["AD_LINK_FORMAT_WARNING"], typeof(result.AD_LINK_FORMAT_WARNING.get())))
+    if node.hasKey("AD_LINK_SAME_AS_LINK") and node["AD_LINK_SAME_AS_LINK"].kind != JNull:
+      result.AD_LINK_SAME_AS_LINK = some(to(node["AD_LINK_SAME_AS_LINK"], typeof(result.AD_LINK_SAME_AS_LINK.get())))
+    if node.hasKey("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG") and node["ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG"].kind != JNull:
+      result.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG = some(to(node["ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG"], typeof(result.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG.get())))
+    if node.hasKey("ADDITIONAL_IMAGE_LINK_WARNING") and node["ADDITIONAL_IMAGE_LINK_WARNING"].kind != JNull:
+      result.ADDITIONAL_IMAGE_LINK_WARNING = some(to(node["ADDITIONAL_IMAGE_LINK_WARNING"], typeof(result.ADDITIONAL_IMAGE_LINK_WARNING.get())))
+    if node.hasKey("ADWORDS_FORMAT_WARNING") and node["ADWORDS_FORMAT_WARNING"].kind != JNull:
+      result.ADWORDS_FORMAT_WARNING = some(to(node["ADWORDS_FORMAT_WARNING"], typeof(result.ADWORDS_FORMAT_WARNING.get())))
+    if node.hasKey("ADWORDS_SAME_AS_LINK") and node["ADWORDS_SAME_AS_LINK"].kind != JNull:
+      result.ADWORDS_SAME_AS_LINK = some(to(node["ADWORDS_SAME_AS_LINK"], typeof(result.ADWORDS_SAME_AS_LINK.get())))
+    if node.hasKey("AGE_GROUP_INVALID") and node["AGE_GROUP_INVALID"].kind != JNull:
+      result.AGE_GROUP_INVALID = some(to(node["AGE_GROUP_INVALID"], typeof(result.AGE_GROUP_INVALID.get())))
+    if node.hasKey("SIZE_SYSTEM_INVALID") and node["SIZE_SYSTEM_INVALID"].kind != JNull:
+      result.SIZE_SYSTEM_INVALID = some(to(node["SIZE_SYSTEM_INVALID"], typeof(result.SIZE_SYSTEM_INVALID.get())))
+    if node.hasKey("ANDROID_DEEP_LINK_INVALID") and node["ANDROID_DEEP_LINK_INVALID"].kind != JNull:
+      result.ANDROID_DEEP_LINK_INVALID = some(to(node["ANDROID_DEEP_LINK_INVALID"], typeof(result.ANDROID_DEEP_LINK_INVALID.get())))
+    if node.hasKey("AVAILABILITY_DATE_INVALID") and node["AVAILABILITY_DATE_INVALID"].kind != JNull:
+      result.AVAILABILITY_DATE_INVALID = some(to(node["AVAILABILITY_DATE_INVALID"], typeof(result.AVAILABILITY_DATE_INVALID.get())))
+    if node.hasKey("COUNTRY_DOES_NOT_MAP_TO_CURRENCY") and node["COUNTRY_DOES_NOT_MAP_TO_CURRENCY"].kind != JNull:
+      result.COUNTRY_DOES_NOT_MAP_TO_CURRENCY = some(to(node["COUNTRY_DOES_NOT_MAP_TO_CURRENCY"], typeof(result.COUNTRY_DOES_NOT_MAP_TO_CURRENCY.get())))
+    if node.hasKey("CUSTOM_LABEL_LENGTH_TOO_LONG") and node["CUSTOM_LABEL_LENGTH_TOO_LONG"].kind != JNull:
+      result.CUSTOM_LABEL_LENGTH_TOO_LONG = some(to(node["CUSTOM_LABEL_LENGTH_TOO_LONG"], typeof(result.CUSTOM_LABEL_LENGTH_TOO_LONG.get())))
+    if node.hasKey("DESCRIPTION_LENGTH_TOO_LONG") and node["DESCRIPTION_LENGTH_TOO_LONG"].kind != JNull:
+      result.DESCRIPTION_LENGTH_TOO_LONG = some(to(node["DESCRIPTION_LENGTH_TOO_LONG"], typeof(result.DESCRIPTION_LENGTH_TOO_LONG.get())))
+    if node.hasKey("EXPIRATION_DATE_INVALID") and node["EXPIRATION_DATE_INVALID"].kind != JNull:
+      result.EXPIRATION_DATE_INVALID = some(to(node["EXPIRATION_DATE_INVALID"], typeof(result.EXPIRATION_DATE_INVALID.get())))
+    if node.hasKey("GENDER_INVALID") and node["GENDER_INVALID"].kind != JNull:
+      result.GENDER_INVALID = some(to(node["GENDER_INVALID"], typeof(result.GENDER_INVALID.get())))
+    if node.hasKey("GTIN_INVALID") and node["GTIN_INVALID"].kind != JNull:
+      result.GTIN_INVALID = some(to(node["GTIN_INVALID"], typeof(result.GTIN_INVALID.get())))
+    if node.hasKey("IMAGE_LINK_WARNING") and node["IMAGE_LINK_WARNING"].kind != JNull:
+      result.IMAGE_LINK_WARNING = some(to(node["IMAGE_LINK_WARNING"], typeof(result.IMAGE_LINK_WARNING.get())))
+    if node.hasKey("IOS_DEEP_LINK_INVALID") and node["IOS_DEEP_LINK_INVALID"].kind != JNull:
+      result.IOS_DEEP_LINK_INVALID = some(to(node["IOS_DEEP_LINK_INVALID"], typeof(result.IOS_DEEP_LINK_INVALID.get())))
+    if node.hasKey("IS_BUNDLE_INVALID") and node["IS_BUNDLE_INVALID"].kind != JNull:
+      result.IS_BUNDLE_INVALID = some(to(node["IS_BUNDLE_INVALID"], typeof(result.IS_BUNDLE_INVALID.get())))
+    if node.hasKey("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE") and node["ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE"].kind != JNull:
+      result.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE = some(to(node["ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE"], typeof(result.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE.get())))
+    if node.hasKey("LINK_FORMAT_WARNING") and node["LINK_FORMAT_WARNING"].kind != JNull:
+      result.LINK_FORMAT_WARNING = some(to(node["LINK_FORMAT_WARNING"], typeof(result.LINK_FORMAT_WARNING.get())))
+    if node.hasKey("MIN_AD_PRICE_INVALID") and node["MIN_AD_PRICE_INVALID"].kind != JNull:
+      result.MIN_AD_PRICE_INVALID = some(to(node["MIN_AD_PRICE_INVALID"], typeof(result.MIN_AD_PRICE_INVALID.get())))
+    if node.hasKey("MPN_INVALID") and node["MPN_INVALID"].kind != JNull:
+      result.MPN_INVALID = some(to(node["MPN_INVALID"], typeof(result.MPN_INVALID.get())))
+    if node.hasKey("MULTIPACK_INVALID") and node["MULTIPACK_INVALID"].kind != JNull:
+      result.MULTIPACK_INVALID = some(to(node["MULTIPACK_INVALID"], typeof(result.MULTIPACK_INVALID.get())))
+    if node.hasKey("OPTIONAL_CONDITION_INVALID") and node["OPTIONAL_CONDITION_INVALID"].kind != JNull:
+      result.OPTIONAL_CONDITION_INVALID = some(to(node["OPTIONAL_CONDITION_INVALID"], typeof(result.OPTIONAL_CONDITION_INVALID.get())))
+    if node.hasKey("OPTIONAL_CONDITION_MISSING") and node["OPTIONAL_CONDITION_MISSING"].kind != JNull:
+      result.OPTIONAL_CONDITION_MISSING = some(to(node["OPTIONAL_CONDITION_MISSING"], typeof(result.OPTIONAL_CONDITION_MISSING.get())))
+    if node.hasKey("OPTIONAL_PRODUCT_CATEGORY_INVALID") and node["OPTIONAL_PRODUCT_CATEGORY_INVALID"].kind != JNull:
+      result.OPTIONAL_PRODUCT_CATEGORY_INVALID = some(to(node["OPTIONAL_PRODUCT_CATEGORY_INVALID"], typeof(result.OPTIONAL_PRODUCT_CATEGORY_INVALID.get())))
+    if node.hasKey("OPTIONAL_PRODUCT_CATEGORY_MISSING") and node["OPTIONAL_PRODUCT_CATEGORY_MISSING"].kind != JNull:
+      result.OPTIONAL_PRODUCT_CATEGORY_MISSING = some(to(node["OPTIONAL_PRODUCT_CATEGORY_MISSING"], typeof(result.OPTIONAL_PRODUCT_CATEGORY_MISSING.get())))
+    if node.hasKey("PRODUCT_CATEGORY_DEPTH_WARNING") and node["PRODUCT_CATEGORY_DEPTH_WARNING"].kind != JNull:
+      result.PRODUCT_CATEGORY_DEPTH_WARNING = some(to(node["PRODUCT_CATEGORY_DEPTH_WARNING"], typeof(result.PRODUCT_CATEGORY_DEPTH_WARNING.get())))
+    if node.hasKey("PRODUCT_TYPE_LENGTH_TOO_LONG") and node["PRODUCT_TYPE_LENGTH_TOO_LONG"].kind != JNull:
+      result.PRODUCT_TYPE_LENGTH_TOO_LONG = some(to(node["PRODUCT_TYPE_LENGTH_TOO_LONG"], typeof(result.PRODUCT_TYPE_LENGTH_TOO_LONG.get())))
+    if node.hasKey("SALES_PRICE_INVALID") and node["SALES_PRICE_INVALID"].kind != JNull:
+      result.SALES_PRICE_INVALID = some(to(node["SALES_PRICE_INVALID"], typeof(result.SALES_PRICE_INVALID.get())))
+    if node.hasKey("SALES_PRICE_TOO_LOW") and node["SALES_PRICE_TOO_LOW"].kind != JNull:
+      result.SALES_PRICE_TOO_LOW = some(to(node["SALES_PRICE_TOO_LOW"], typeof(result.SALES_PRICE_TOO_LOW.get())))
+    if node.hasKey("SALES_PRICE_TOO_HIGH") and node["SALES_PRICE_TOO_HIGH"].kind != JNull:
+      result.SALES_PRICE_TOO_HIGH = some(to(node["SALES_PRICE_TOO_HIGH"], typeof(result.SALES_PRICE_TOO_HIGH.get())))
+    if node.hasKey("SALE_DATE_INVALID") and node["SALE_DATE_INVALID"].kind != JNull:
+      result.SALE_DATE_INVALID = some(to(node["SALE_DATE_INVALID"], typeof(result.SALE_DATE_INVALID.get())))
+    if node.hasKey("SHIPPING_INVALID") and node["SHIPPING_INVALID"].kind != JNull:
+      result.SHIPPING_INVALID = some(to(node["SHIPPING_INVALID"], typeof(result.SHIPPING_INVALID.get())))
+    if node.hasKey("SHIPPING_HEIGHT_INVALID") and node["SHIPPING_HEIGHT_INVALID"].kind != JNull:
+      result.SHIPPING_HEIGHT_INVALID = some(to(node["SHIPPING_HEIGHT_INVALID"], typeof(result.SHIPPING_HEIGHT_INVALID.get())))
+    if node.hasKey("SHIPPING_WEIGHT_INVALID") and node["SHIPPING_WEIGHT_INVALID"].kind != JNull:
+      result.SHIPPING_WEIGHT_INVALID = some(to(node["SHIPPING_WEIGHT_INVALID"], typeof(result.SHIPPING_WEIGHT_INVALID.get())))
+    if node.hasKey("SHIPPING_WIDTH_INVALID") and node["SHIPPING_WIDTH_INVALID"].kind != JNull:
+      result.SHIPPING_WIDTH_INVALID = some(to(node["SHIPPING_WIDTH_INVALID"], typeof(result.SHIPPING_WIDTH_INVALID.get())))
+    if node.hasKey("SIZE_TYPE_INVALID") and node["SIZE_TYPE_INVALID"].kind != JNull:
+      result.SIZE_TYPE_INVALID = some(to(node["SIZE_TYPE_INVALID"], typeof(result.SIZE_TYPE_INVALID.get())))
+    if node.hasKey("TAX_INVALID") and node["TAX_INVALID"].kind != JNull:
+      result.TAX_INVALID = some(to(node["TAX_INVALID"], typeof(result.TAX_INVALID.get())))
+    if node.hasKey("TITLE_LENGTH_TOO_LONG") and node["TITLE_LENGTH_TOO_LONG"].kind != JNull:
+      result.TITLE_LENGTH_TOO_LONG = some(to(node["TITLE_LENGTH_TOO_LONG"], typeof(result.TITLE_LENGTH_TOO_LONG.get())))
+    if node.hasKey("TOO_MANY_ADDITIONAL_IMAGE_LINKS") and node["TOO_MANY_ADDITIONAL_IMAGE_LINKS"].kind != JNull:
+      result.TOO_MANY_ADDITIONAL_IMAGE_LINKS = some(to(node["TOO_MANY_ADDITIONAL_IMAGE_LINKS"], typeof(result.TOO_MANY_ADDITIONAL_IMAGE_LINKS.get())))
+    if node.hasKey("UTM_SOURCE_AUTO_CORRECTED") and node["UTM_SOURCE_AUTO_CORRECTED"].kind != JNull:
+      result.UTM_SOURCE_AUTO_CORRECTED = some(to(node["UTM_SOURCE_AUTO_CORRECTED"], typeof(result.UTM_SOURCE_AUTO_CORRECTED.get())))
+    if node.hasKey("WEIGHT_UNIT_INVALID") and node["WEIGHT_UNIT_INVALID"].kind != JNull:
+      result.WEIGHT_UNIT_INVALID = some(to(node["WEIGHT_UNIT_INVALID"], typeof(result.WEIGHT_UNIT_INVALID.get())))
+
+# Custom JSON serialization for CatalogsItemValidationWarnings with custom field names
+proc `%`*(obj: CatalogsItemValidationWarnings): JsonNode =
+  result = newJObject()
+  if obj.AD_LINK_FORMAT_WARNING.isSome():
+    result["AD_LINK_FORMAT_WARNING"] = %obj.AD_LINK_FORMAT_WARNING.get()
+  if obj.AD_LINK_SAME_AS_LINK.isSome():
+    result["AD_LINK_SAME_AS_LINK"] = %obj.AD_LINK_SAME_AS_LINK.get()
+  if obj.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG.isSome():
+    result["ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG"] = %obj.ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG.get()
+  if obj.ADDITIONAL_IMAGE_LINK_WARNING.isSome():
+    result["ADDITIONAL_IMAGE_LINK_WARNING"] = %obj.ADDITIONAL_IMAGE_LINK_WARNING.get()
+  if obj.ADWORDS_FORMAT_WARNING.isSome():
+    result["ADWORDS_FORMAT_WARNING"] = %obj.ADWORDS_FORMAT_WARNING.get()
+  if obj.ADWORDS_SAME_AS_LINK.isSome():
+    result["ADWORDS_SAME_AS_LINK"] = %obj.ADWORDS_SAME_AS_LINK.get()
+  if obj.AGE_GROUP_INVALID.isSome():
+    result["AGE_GROUP_INVALID"] = %obj.AGE_GROUP_INVALID.get()
+  if obj.SIZE_SYSTEM_INVALID.isSome():
+    result["SIZE_SYSTEM_INVALID"] = %obj.SIZE_SYSTEM_INVALID.get()
+  if obj.ANDROID_DEEP_LINK_INVALID.isSome():
+    result["ANDROID_DEEP_LINK_INVALID"] = %obj.ANDROID_DEEP_LINK_INVALID.get()
+  if obj.AVAILABILITY_DATE_INVALID.isSome():
+    result["AVAILABILITY_DATE_INVALID"] = %obj.AVAILABILITY_DATE_INVALID.get()
+  if obj.COUNTRY_DOES_NOT_MAP_TO_CURRENCY.isSome():
+    result["COUNTRY_DOES_NOT_MAP_TO_CURRENCY"] = %obj.COUNTRY_DOES_NOT_MAP_TO_CURRENCY.get()
+  if obj.CUSTOM_LABEL_LENGTH_TOO_LONG.isSome():
+    result["CUSTOM_LABEL_LENGTH_TOO_LONG"] = %obj.CUSTOM_LABEL_LENGTH_TOO_LONG.get()
+  if obj.DESCRIPTION_LENGTH_TOO_LONG.isSome():
+    result["DESCRIPTION_LENGTH_TOO_LONG"] = %obj.DESCRIPTION_LENGTH_TOO_LONG.get()
+  if obj.EXPIRATION_DATE_INVALID.isSome():
+    result["EXPIRATION_DATE_INVALID"] = %obj.EXPIRATION_DATE_INVALID.get()
+  if obj.GENDER_INVALID.isSome():
+    result["GENDER_INVALID"] = %obj.GENDER_INVALID.get()
+  if obj.GTIN_INVALID.isSome():
+    result["GTIN_INVALID"] = %obj.GTIN_INVALID.get()
+  if obj.IMAGE_LINK_WARNING.isSome():
+    result["IMAGE_LINK_WARNING"] = %obj.IMAGE_LINK_WARNING.get()
+  if obj.IOS_DEEP_LINK_INVALID.isSome():
+    result["IOS_DEEP_LINK_INVALID"] = %obj.IOS_DEEP_LINK_INVALID.get()
+  if obj.IS_BUNDLE_INVALID.isSome():
+    result["IS_BUNDLE_INVALID"] = %obj.IS_BUNDLE_INVALID.get()
+  if obj.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE.isSome():
+    result["ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE"] = %obj.ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE.get()
+  if obj.LINK_FORMAT_WARNING.isSome():
+    result["LINK_FORMAT_WARNING"] = %obj.LINK_FORMAT_WARNING.get()
+  if obj.MIN_AD_PRICE_INVALID.isSome():
+    result["MIN_AD_PRICE_INVALID"] = %obj.MIN_AD_PRICE_INVALID.get()
+  if obj.MPN_INVALID.isSome():
+    result["MPN_INVALID"] = %obj.MPN_INVALID.get()
+  if obj.MULTIPACK_INVALID.isSome():
+    result["MULTIPACK_INVALID"] = %obj.MULTIPACK_INVALID.get()
+  if obj.OPTIONAL_CONDITION_INVALID.isSome():
+    result["OPTIONAL_CONDITION_INVALID"] = %obj.OPTIONAL_CONDITION_INVALID.get()
+  if obj.OPTIONAL_CONDITION_MISSING.isSome():
+    result["OPTIONAL_CONDITION_MISSING"] = %obj.OPTIONAL_CONDITION_MISSING.get()
+  if obj.OPTIONAL_PRODUCT_CATEGORY_INVALID.isSome():
+    result["OPTIONAL_PRODUCT_CATEGORY_INVALID"] = %obj.OPTIONAL_PRODUCT_CATEGORY_INVALID.get()
+  if obj.OPTIONAL_PRODUCT_CATEGORY_MISSING.isSome():
+    result["OPTIONAL_PRODUCT_CATEGORY_MISSING"] = %obj.OPTIONAL_PRODUCT_CATEGORY_MISSING.get()
+  if obj.PRODUCT_CATEGORY_DEPTH_WARNING.isSome():
+    result["PRODUCT_CATEGORY_DEPTH_WARNING"] = %obj.PRODUCT_CATEGORY_DEPTH_WARNING.get()
+  if obj.PRODUCT_TYPE_LENGTH_TOO_LONG.isSome():
+    result["PRODUCT_TYPE_LENGTH_TOO_LONG"] = %obj.PRODUCT_TYPE_LENGTH_TOO_LONG.get()
+  if obj.SALES_PRICE_INVALID.isSome():
+    result["SALES_PRICE_INVALID"] = %obj.SALES_PRICE_INVALID.get()
+  if obj.SALES_PRICE_TOO_LOW.isSome():
+    result["SALES_PRICE_TOO_LOW"] = %obj.SALES_PRICE_TOO_LOW.get()
+  if obj.SALES_PRICE_TOO_HIGH.isSome():
+    result["SALES_PRICE_TOO_HIGH"] = %obj.SALES_PRICE_TOO_HIGH.get()
+  if obj.SALE_DATE_INVALID.isSome():
+    result["SALE_DATE_INVALID"] = %obj.SALE_DATE_INVALID.get()
+  if obj.SHIPPING_INVALID.isSome():
+    result["SHIPPING_INVALID"] = %obj.SHIPPING_INVALID.get()
+  if obj.SHIPPING_HEIGHT_INVALID.isSome():
+    result["SHIPPING_HEIGHT_INVALID"] = %obj.SHIPPING_HEIGHT_INVALID.get()
+  if obj.SHIPPING_WEIGHT_INVALID.isSome():
+    result["SHIPPING_WEIGHT_INVALID"] = %obj.SHIPPING_WEIGHT_INVALID.get()
+  if obj.SHIPPING_WIDTH_INVALID.isSome():
+    result["SHIPPING_WIDTH_INVALID"] = %obj.SHIPPING_WIDTH_INVALID.get()
+  if obj.SIZE_TYPE_INVALID.isSome():
+    result["SIZE_TYPE_INVALID"] = %obj.SIZE_TYPE_INVALID.get()
+  if obj.TAX_INVALID.isSome():
+    result["TAX_INVALID"] = %obj.TAX_INVALID.get()
+  if obj.TITLE_LENGTH_TOO_LONG.isSome():
+    result["TITLE_LENGTH_TOO_LONG"] = %obj.TITLE_LENGTH_TOO_LONG.get()
+  if obj.TOO_MANY_ADDITIONAL_IMAGE_LINKS.isSome():
+    result["TOO_MANY_ADDITIONAL_IMAGE_LINKS"] = %obj.TOO_MANY_ADDITIONAL_IMAGE_LINKS.get()
+  if obj.UTM_SOURCE_AUTO_CORRECTED.isSome():
+    result["UTM_SOURCE_AUTO_CORRECTED"] = %obj.UTM_SOURCE_AUTO_CORRECTED.get()
+  if obj.WEIGHT_UNIT_INVALID.isSome():
+    result["WEIGHT_UNIT_INVALID"] = %obj.WEIGHT_UNIT_INVALID.get()
+

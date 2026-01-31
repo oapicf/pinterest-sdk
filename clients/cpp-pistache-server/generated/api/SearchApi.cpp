@@ -23,8 +23,7 @@ const std::string SearchApi::base = "/v5";
 
 SearchApi::SearchApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
-{
-}
+{}
 
 void SearchApi::init() {
     setupRoutes();
@@ -41,14 +40,12 @@ void SearchApi::setupRoutes() {
     router->addCustomHandler(Routes::bind(&SearchApi::search_api_default_handler, this));
 }
 
-void SearchApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void SearchApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleParsingException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> SearchApi::handleParsingException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> SearchApi::handleParsingException(const std::exception& ex) const noexcept {
     try {
         throw;
     } catch (nlohmann::detail::exception &e) {
@@ -60,176 +57,273 @@ std::pair<Pistache::Http::Code, std::string> SearchApi::handleParsingException(c
     }
 }
 
-void SearchApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void SearchApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleOperationException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> SearchApi::handleOperationException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> SearchApi::handleOperationException(const std::exception& ex) const noexcept {
     return std::make_pair(Pistache::Http::Code::Internal_Server_Error, ex.what());
 }
 
-void SearchApi::search_partner_pins_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+void SearchApi::search_partner_pins_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto termQuery = request.query().get("term");
-    std::optional<std::string> term;
-    if(termQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(termQuery.value(), valueQuery_instance)){
-            term = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto termQuery = request.query().get("term");
+        std::optional<std::string> term;
+        if (termQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(termQuery.value(), valueQuery_instance)) {
+                term = valueQuery_instance;
+            }
         }
-    }
-    auto countryCodeQuery = request.query().get("country_code");
-    std::optional<std::string> countryCode;
-    if(countryCodeQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(countryCodeQuery.value(), valueQuery_instance)){
-            countryCode = valueQuery_instance;
+        auto countryCodeQuery = request.query().get("country_code");
+        std::optional<std::string> countryCode;
+        if (countryCodeQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(countryCodeQuery.value(), valueQuery_instance)) {
+                countryCode = valueQuery_instance;
+            }
         }
-    }
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
         }
-    }
-    auto localeQuery = request.query().get("locale");
-    std::optional<std::string> locale;
-    if(localeQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(localeQuery.value(), valueQuery_instance)){
-            locale = valueQuery_instance;
+        auto localeQuery = request.query().get("locale");
+        std::optional<std::string> locale;
+        if (localeQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(localeQuery.value(), valueQuery_instance)) {
+                locale = valueQuery_instance;
+            }
         }
-    }
-    auto limitQuery = request.query().get("limit");
-    std::optional<int32_t> limit;
-    if(limitQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(limitQuery.value(), valueQuery_instance)){
-            limit = valueQuery_instance;
+        auto limitQuery = request.query().get("limit");
+        std::optional<int32_t> limit;
+        if (limitQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(limitQuery.value(), valueQuery_instance)) {
+                limit = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->search_partner_pins(term, countryCode, bookmark, locale, limit, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->search_partner_pins(term, countryCode, bookmark, locale, limit, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/search/partner/pins" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void SearchApi::search_user_boards_get_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void SearchApi::search_user_boards_get_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
         }
-    }
-    auto pageSizeQuery = request.query().get("page_size");
-    std::optional<int32_t> pageSize;
-    if(pageSizeQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(pageSizeQuery.value(), valueQuery_instance)){
-            pageSize = valueQuery_instance;
+        auto pageSizeQuery = request.query().get("page_size");
+        std::optional<int32_t> pageSize;
+        if (pageSizeQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(pageSizeQuery.value(), valueQuery_instance)) {
+                pageSize = valueQuery_instance;
+            }
         }
-    }
-    auto queryQuery = request.query().get("query");
-    std::optional<std::string> query;
-    if(queryQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(queryQuery.value(), valueQuery_instance)){
-            query = valueQuery_instance;
+        auto queryQuery = request.query().get("query");
+        std::optional<std::string> query;
+        if (queryQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(queryQuery.value(), valueQuery_instance)) {
+                query = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->search_user_boards_get(adAccountId, bookmark, pageSize, query, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->search_user_boards_get(adAccountId, bookmark, pageSize, query, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/search/boards" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void SearchApi::search_user_pins_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void SearchApi::search_user_pins_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto adAccountIdQuery = request.query().get("ad_account_id");
-    std::optional<std::string> adAccountId;
-    if(adAccountIdQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(adAccountIdQuery.value(), valueQuery_instance)){
-            adAccountId = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto adAccountIdQuery = request.query().get("ad_account_id");
+        std::optional<std::string> adAccountId;
+        if (adAccountIdQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(adAccountIdQuery.value(), valueQuery_instance)) {
+                adAccountId = valueQuery_instance;
+            }
         }
-    }
-    auto queryQuery = request.query().get("query");
-    std::optional<std::string> query;
-    if(queryQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(queryQuery.value(), valueQuery_instance)){
-            query = valueQuery_instance;
+        auto queryQuery = request.query().get("query");
+        std::optional<std::string> query;
+        if (queryQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(queryQuery.value(), valueQuery_instance)) {
+                query = valueQuery_instance;
+            }
         }
-    }
-    auto bookmarkQuery = request.query().get("bookmark");
-    std::optional<std::string> bookmark;
-    if(bookmarkQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(bookmarkQuery.value(), valueQuery_instance)){
-            bookmark = valueQuery_instance;
+        auto bookmarkQuery = request.query().get("bookmark");
+        std::optional<std::string> bookmark;
+        if (bookmarkQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(bookmarkQuery.value(), valueQuery_instance)) {
+                bookmark = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->search_user_pins_list(query, adAccountId, bookmark, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->search_user_pins_list(query, adAccountId, bookmark, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/search/pins" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
+
 
 void SearchApi::search_api_default_handler(const Pistache::Rest::Request &, Pistache::Http::ResponseWriter response) {
     response.send(Pistache::Http::Code::Not_Found, "The requested method does not exist");

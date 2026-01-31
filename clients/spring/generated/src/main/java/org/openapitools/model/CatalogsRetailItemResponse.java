@@ -33,7 +33,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailItemResponse", description = "Object describing a retail item record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
 
   private CatalogsType catalogType;
@@ -76,7 +76,7 @@ public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
     this.catalogType = catalogType;
   }
 
-  public CatalogsRetailItemResponse itemId(String itemId) {
+  public CatalogsRetailItemResponse itemId(@Nullable String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -88,11 +88,11 @@ public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
   
   @Schema(name = "item_id", example = "DS0294-M", description = "The catalog retail item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_id")
-  public String getItemId() {
+  public @Nullable String getItemId() {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@Nullable String itemId) {
     this.itemId = itemId;
   }
 
@@ -124,7 +124,7 @@ public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
     this.pins = pins;
   }
 
-  public CatalogsRetailItemResponse attributes(ItemAttributes attributes) {
+  public CatalogsRetailItemResponse attributes(@Nullable ItemAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -136,11 +136,11 @@ public class CatalogsRetailItemResponse implements ItemResponseAnyOf {
   @Valid 
   @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attributes")
-  public ItemAttributes getAttributes() {
+  public @Nullable ItemAttributes getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributes attributes) {
+  public void setAttributes(@Nullable ItemAttributes attributes) {
     this.attributes = attributes;
   }
 

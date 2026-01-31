@@ -19,14 +19,14 @@ import javax.annotation.Generated;
  * Exception
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Exception {
 
   private @Nullable Integer code;
 
   private @Nullable String message;
 
-  public Exception code(Integer code) {
+  public Exception code(@Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -38,15 +38,15 @@ public class Exception {
   
   @Schema(name = "code", example = "2", description = "Exception error code.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public Integer getCode() {
+  public @Nullable Integer getCode() {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@Nullable Integer code) {
     this.code = code;
   }
 
-  public Exception message(String message) {
+  public Exception message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -58,11 +58,11 @@ public class Exception {
   
   @Schema(name = "message", example = "Advertiser not found.", description = "Exception message.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
-  public String getMessage() {
+  public @Nullable String getMessage() {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 

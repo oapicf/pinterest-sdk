@@ -321,16 +321,22 @@ BusinessAccessAssetsApi <- R6::R6Class(
         stop("Missing required parameter `create_asset_group_body`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$AssetGroupCreate, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$AssetGroupCreate, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$AssetGroupCreate, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$AssetGroupCreate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`create_asset_group_body`) && is.null(`create_asset_group_body`)) {
+        stop("Invalid value for `create_asset_group_body` when calling BusinessAccessAssetsApi$AssetGroupCreate, `create_asset_group_body` is not nullable")
+      }
 
       if (!is.null(`create_asset_group_body`)) {
         local_var_body <- `create_asset_group_body`$toJSONString()
@@ -444,16 +450,22 @@ BusinessAccessAssetsApi <- R6::R6Class(
         stop("Missing required parameter `delete_asset_group_body`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$AssetGroupDelete, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$AssetGroupDelete, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$AssetGroupDelete, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$AssetGroupDelete, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`delete_asset_group_body`) && is.null(`delete_asset_group_body`)) {
+        stop("Invalid value for `delete_asset_group_body` when calling BusinessAccessAssetsApi$AssetGroupDelete, `delete_asset_group_body` is not nullable")
+      }
 
       if (!is.null(`delete_asset_group_body`)) {
         local_var_body <- `delete_asset_group_body`$toJSONString()
@@ -567,16 +579,22 @@ BusinessAccessAssetsApi <- R6::R6Class(
         stop("Missing required parameter `update_asset_group_body`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$AssetGroupUpdate, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$AssetGroupUpdate, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$AssetGroupUpdate, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$AssetGroupUpdate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`update_asset_group_body`) && is.null(`update_asset_group_body`)) {
+        stop("Invalid value for `update_asset_group_body` when calling BusinessAccessAssetsApi$AssetGroupUpdate, `update_asset_group_body` is not nullable")
+      }
 
       if (!is.null(`update_asset_group_body`)) {
         local_var_body <- `update_asset_group_body`$toJSONString()
@@ -696,35 +714,50 @@ BusinessAccessAssetsApi <- R6::R6Class(
         stop("Missing required parameter `asset_id`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`asset_id`) > 20) {
+      if (!missing(`asset_id`) && is.null(`asset_id`)) {
+        stop("Invalid value for `asset_id` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, `asset_id` is not nullable")
+      }
+      if (!is.null(`asset_id`) && nchar(`asset_id`) > 20) {
         stop("Invalid length for `asset_id` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, must be smaller than or equal to 20.")
       }
-      if (nchar(`asset_id`) < 1) {
+      if (!is.null(`asset_id`) && nchar(`asset_id`) < 1) {
         stop("Invalid length for `asset_id` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`asset_id`, "^\\d+$")) {
+      if (!is.null(`asset_id`) && !stringr::str_detect(`asset_id`, "^\\d+$")) {
         stop("Invalid value for `asset_id` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, must be bigger than or equal to 1.")
       }
 
-      if (`start_index` < 0) {
+      if (!missing(`start_index`) && is.null(`start_index`)) {
+        stop("Invalid value for `start_index` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, `start_index` is not nullable")
+      }
+      if (!is.null(`start_index`) && `start_index` <  0) {
         stop("Invalid value for `start_index` when calling BusinessAccessAssetsApi$BusinessAssetMembersGet, must be bigger than or equal to 0.")
       }
 
@@ -850,35 +883,50 @@ BusinessAccessAssetsApi <- R6::R6Class(
         stop("Missing required parameter `asset_id`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`asset_id`) > 20) {
+      if (!missing(`asset_id`) && is.null(`asset_id`)) {
+        stop("Invalid value for `asset_id` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, `asset_id` is not nullable")
+      }
+      if (!is.null(`asset_id`) && nchar(`asset_id`) > 20) {
         stop("Invalid length for `asset_id` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, must be smaller than or equal to 20.")
       }
-      if (nchar(`asset_id`) < 1) {
+      if (!is.null(`asset_id`) && nchar(`asset_id`) < 1) {
         stop("Invalid length for `asset_id` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`asset_id`, "^\\d+$")) {
+      if (!is.null(`asset_id`) && !stringr::str_detect(`asset_id`, "^\\d+$")) {
         stop("Invalid value for `asset_id` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (`start_index` < 0) {
+      if (!missing(`start_index`) && is.null(`start_index`)) {
+        stop("Invalid value for `start_index` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, `start_index` is not nullable")
+      }
+      if (!is.null(`start_index`) && `start_index` <  0) {
         stop("Invalid value for `start_index` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, must be bigger than or equal to 0.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessAssetPartnersGet, must be bigger than or equal to 1.")
       }
 
@@ -1006,47 +1054,71 @@ BusinessAccessAssetsApi <- R6::R6Class(
         stop("Missing required parameter `business_id`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessAssetsGet, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessAssetsGet, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessAssetsGet, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessAssetsGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`permissions`) && is.null(`permissions`)) {
+        stop("Invalid value for `permissions` when calling BusinessAccessAssetsApi$BusinessAssetsGet, `permissions` is not nullable")
+      }
 
-      if (nchar(`child_asset_id`) > 20) {
+      if (!missing(`child_asset_id`) && is.null(`child_asset_id`)) {
+        stop("Invalid value for `child_asset_id` when calling BusinessAccessAssetsApi$BusinessAssetsGet, `child_asset_id` is not nullable")
+      }
+      if (!is.null(`child_asset_id`) && nchar(`child_asset_id`) > 20) {
         stop("Invalid length for `child_asset_id` when calling BusinessAccessAssetsApi$BusinessAssetsGet, must be smaller than or equal to 20.")
       }
-      if (nchar(`child_asset_id`) < 1) {
+      if (!is.null(`child_asset_id`) && nchar(`child_asset_id`) < 1) {
         stop("Invalid length for `child_asset_id` when calling BusinessAccessAssetsApi$BusinessAssetsGet, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`child_asset_id`, "^\\d+$")) {
+      if (!is.null(`child_asset_id`) && !stringr::str_detect(`child_asset_id`, "^\\d+$")) {
         stop("Invalid value for `child_asset_id` when calling BusinessAccessAssetsApi$BusinessAssetsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`asset_group_id`) > 20) {
+      if (!missing(`asset_group_id`) && is.null(`asset_group_id`)) {
+        stop("Invalid value for `asset_group_id` when calling BusinessAccessAssetsApi$BusinessAssetsGet, `asset_group_id` is not nullable")
+      }
+      if (!is.null(`asset_group_id`) && nchar(`asset_group_id`) > 20) {
         stop("Invalid length for `asset_group_id` when calling BusinessAccessAssetsApi$BusinessAssetsGet, must be smaller than or equal to 20.")
       }
-      if (nchar(`asset_group_id`) < 1) {
+      if (!is.null(`asset_group_id`) && nchar(`asset_group_id`) < 1) {
         stop("Invalid length for `asset_group_id` when calling BusinessAccessAssetsApi$BusinessAssetsGet, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`asset_group_id`, "^\\d+$")) {
+      if (!is.null(`asset_group_id`) && !stringr::str_detect(`asset_group_id`, "^\\d+$")) {
         stop("Invalid value for `asset_group_id` when calling BusinessAccessAssetsApi$BusinessAssetsGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`asset_type`) && is.null(`asset_type`)) {
+        stop("Invalid value for `asset_type` when calling BusinessAccessAssetsApi$BusinessAssetsGet, `asset_type` is not nullable")
+      }
 
-      if (`start_index` < 0) {
+      if (!missing(`start_index`) && is.null(`start_index`)) {
+        stop("Invalid value for `start_index` when calling BusinessAccessAssetsApi$BusinessAssetsGet, `start_index` is not nullable")
+      }
+      if (!is.null(`start_index`) && `start_index` <  0) {
         stop("Invalid value for `start_index` when calling BusinessAccessAssetsApi$BusinessAssetsGet, must be bigger than or equal to 0.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BusinessAccessAssetsApi$BusinessAssetsGet, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessAssetsGet, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessAssetsGet, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessAssetsGet, must be bigger than or equal to 1.")
       }
 
@@ -1184,36 +1256,54 @@ BusinessAccessAssetsApi <- R6::R6Class(
         stop("Missing required parameter `member_id`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`member_id`) > 20) {
+      if (!missing(`member_id`) && is.null(`member_id`)) {
+        stop("Invalid value for `member_id` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, `member_id` is not nullable")
+      }
+      if (!is.null(`member_id`) && nchar(`member_id`) > 20) {
         stop("Invalid length for `member_id` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, must be smaller than or equal to 20.")
       }
-      if (nchar(`member_id`) < 1) {
+      if (!is.null(`member_id`) && nchar(`member_id`) < 1) {
         stop("Invalid length for `member_id` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`member_id`, "^\\d+$")) {
+      if (!is.null(`member_id`) && !stringr::str_detect(`member_id`, "^\\d+$")) {
         stop("Invalid value for `member_id` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`asset_type`) && is.null(`asset_type`)) {
+        stop("Invalid value for `asset_type` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, `asset_type` is not nullable")
+      }
 
-      if (`start_index` < 0) {
+      if (!missing(`start_index`) && is.null(`start_index`)) {
+        stop("Invalid value for `start_index` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, `start_index` is not nullable")
+      }
+      if (!is.null(`start_index`) && `start_index` <  0) {
         stop("Invalid value for `start_index` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, must be bigger than or equal to 0.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessMemberAssetsGet, must be bigger than or equal to 1.")
       }
 
@@ -1338,16 +1428,22 @@ BusinessAccessAssetsApi <- R6::R6Class(
         stop("Missing required parameter `business_members_asset_access_delete_request`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessMembersAssetAccessDelete, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessMembersAssetAccessDelete, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessMembersAssetAccessDelete, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessMembersAssetAccessDelete, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`business_members_asset_access_delete_request`) && is.null(`business_members_asset_access_delete_request`)) {
+        stop("Invalid value for `business_members_asset_access_delete_request` when calling BusinessAccessAssetsApi$BusinessMembersAssetAccessDelete, `business_members_asset_access_delete_request` is not nullable")
+      }
 
       if (!is.null(`business_members_asset_access_delete_request`)) {
         local_var_body <- `business_members_asset_access_delete_request`$toJSONString()
@@ -1461,16 +1557,22 @@ BusinessAccessAssetsApi <- R6::R6Class(
         stop("Missing required parameter `update_member_asset_access_body`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessMembersAssetAccessUpdate, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessMembersAssetAccessUpdate, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessMembersAssetAccessUpdate, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessMembersAssetAccessUpdate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`update_member_asset_access_body`) && is.null(`update_member_asset_access_body`)) {
+        stop("Invalid value for `update_member_asset_access_body` when calling BusinessAccessAssetsApi$BusinessMembersAssetAccessUpdate, `update_member_asset_access_body` is not nullable")
+      }
 
       if (!is.null(`update_member_asset_access_body`)) {
         local_var_body <- `update_member_asset_access_body`$toJSONString()
@@ -1594,39 +1696,60 @@ BusinessAccessAssetsApi <- R6::R6Class(
         stop("Missing required parameter `partner_id`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`partner_id`) > 20) {
+      if (!missing(`partner_id`) && is.null(`partner_id`)) {
+        stop("Invalid value for `partner_id` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, `partner_id` is not nullable")
+      }
+      if (!is.null(`partner_id`) && nchar(`partner_id`) > 20) {
         stop("Invalid length for `partner_id` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, must be smaller than or equal to 20.")
       }
-      if (nchar(`partner_id`) < 1) {
+      if (!is.null(`partner_id`) && nchar(`partner_id`) < 1) {
         stop("Invalid length for `partner_id` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`partner_id`, "^\\d+$")) {
+      if (!is.null(`partner_id`) && !stringr::str_detect(`partner_id`, "^\\d+$")) {
         stop("Invalid value for `partner_id` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`partner_type`) && is.null(`partner_type`)) {
+        stop("Invalid value for `partner_type` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, `partner_type` is not nullable")
+      }
 
+      if (!missing(`asset_type`) && is.null(`asset_type`)) {
+        stop("Invalid value for `asset_type` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, `asset_type` is not nullable")
+      }
 
-      if (`start_index` < 0) {
+      if (!missing(`start_index`) && is.null(`start_index`)) {
+        stop("Invalid value for `start_index` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, `start_index` is not nullable")
+      }
+      if (!is.null(`start_index`) && `start_index` <  0) {
         stop("Invalid value for `start_index` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, must be bigger than or equal to 0.")
       }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BusinessAccessAssetsApi$BusinessPartnerAssetAccessGet, `bookmark` is not nullable")
+      }
 
       query_params[["partner_type"]] <- `partner_type`
 
@@ -1751,16 +1874,22 @@ BusinessAccessAssetsApi <- R6::R6Class(
         stop("Missing required parameter `delete_partner_asset_access_body`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$DeletePartnerAssetAccessHandlerImpl, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$DeletePartnerAssetAccessHandlerImpl, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$DeletePartnerAssetAccessHandlerImpl, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$DeletePartnerAssetAccessHandlerImpl, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`delete_partner_asset_access_body`) && is.null(`delete_partner_asset_access_body`)) {
+        stop("Invalid value for `delete_partner_asset_access_body` when calling BusinessAccessAssetsApi$DeletePartnerAssetAccessHandlerImpl, `delete_partner_asset_access_body` is not nullable")
+      }
 
       if (!is.null(`delete_partner_asset_access_body`)) {
         local_var_body <- `delete_partner_asset_access_body`$toJSONString()
@@ -1874,16 +2003,22 @@ BusinessAccessAssetsApi <- R6::R6Class(
         stop("Missing required parameter `update_partner_asset_access_body`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$UpdatePartnerAssetAccessHandlerImpl, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$UpdatePartnerAssetAccessHandlerImpl, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessAssetsApi$UpdatePartnerAssetAccessHandlerImpl, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessAssetsApi$UpdatePartnerAssetAccessHandlerImpl, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`update_partner_asset_access_body`) && is.null(`update_partner_asset_access_body`)) {
+        stop("Invalid value for `update_partner_asset_access_body` when calling BusinessAccessAssetsApi$UpdatePartnerAssetAccessHandlerImpl, `update_partner_asset_access_body` is not nullable")
+      }
 
       if (!is.null(`update_partner_asset_access_body`)) {
         local_var_body <- `update_partner_asset_access_body`$toJSONString()

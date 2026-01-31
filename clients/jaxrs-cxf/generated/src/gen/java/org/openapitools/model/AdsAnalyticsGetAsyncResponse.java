@@ -16,14 +16,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdsAnalyticsGetAsyncResponse  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BulkReportingJobStatus reportStatus;
 
   @ApiModelProperty(value = "")
+
   private String url;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BigDecimal size;
  /**
    * Get reportStatus

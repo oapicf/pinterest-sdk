@@ -161,7 +161,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EnhancedMatchStatusType enhancedMatchStatusType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(enhancedMatchStatusType.ToString());
+            writer.WriteStringValue(EnhancedMatchStatusTypeValueConverter.ToJsonValue(enhancedMatchStatusType).ToString());
         }
     }
 
@@ -192,14 +192,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the EnhancedMatchStatusType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="enhancedMatchStatusType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EnhancedMatchStatusType? enhancedMatchStatusType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(enhancedMatchStatusType?.ToString() ?? "null");
+            writer.WriteStringValue(enhancedMatchStatusType.HasValue ? EnhancedMatchStatusTypeValueConverter.ToJsonValue(enhancedMatchStatusType.Value).ToString() : "null");
         }
     }
 }

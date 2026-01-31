@@ -6,8 +6,8 @@ This Groovy package, using the [http-builder-ng library](https://http-builder-ng
 
 - API version: 5.14.0
 - Package version: 5.14.0
-- Build date: 2025-05-10T05:37:53.044825608Z[Etc/UTC]
-- Generator version: 7.12.0
+- Build date: 2026-01-26T05:35:11.170605372Z[Etc/UTC]
+- Generator version: 7.18.0
 - Build package: org.openapitools.codegen.languages.GroovyClientCodegen
 For more information, please visit [https://github.com/oapicf/pinterest-sdk](https://github.com/oapicf/pinterest-sdk)
 

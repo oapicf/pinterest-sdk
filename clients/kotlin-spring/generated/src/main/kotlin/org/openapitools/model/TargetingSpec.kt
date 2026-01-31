@@ -65,7 +65,7 @@ data class TargetingSpec(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("TARGETING_STRATEGY") val TARGETING_STRATEGY: kotlin.collections.List<TargetingSpec.TARGETINGSTRATEGY>? = null
-    ) {
+) {
 
     /**
     * Age ranges. If the AGE_BUCKET field is missing, the default behavior in terms of ad delivery is that **All age buckets** will be targeted.
@@ -86,7 +86,8 @@ data class TargetingSpec(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): AGEBUCKET {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpec'")
             }
         }
     }
@@ -108,7 +109,8 @@ data class TargetingSpec(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): APPTYPE {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpec'")
             }
         }
     }
@@ -127,7 +129,8 @@ data class TargetingSpec(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): GENDER {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpec'")
             }
         }
     }
@@ -146,7 +149,8 @@ data class TargetingSpec(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): TARGETINGSTRATEGY {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingSpec'")
             }
         }
     }

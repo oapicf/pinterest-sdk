@@ -9,7 +9,34 @@
 
 import json
 import tables
+import marshal
+import options
 
+
+# OneOf type
+type ItemAttributesRequestAllOfImageLinkKind* {.pure.} = enum
+  ArrayVariant
+  StringVariant
 
 type ItemAttributesRequestAllOfImageLink* = object
   ## <p><= 2000 characters</p> <p>The links to the main product images. Images should be at least 75x75 pixels to avoid errors. Use the additional_image_link field to add more images of your product. The URL of your image_link must be accessible by the Pinterest user-agent, and send the accurate images. Please make sure there are no template or placeholder images at the link. Must start with http:// or https://.</p>
+  case kind*: ItemAttributesRequestAllOfImageLinkKind
+  of ItemAttributesRequestAllOfImageLinkKind.ArrayVariant:
+    arrayValue*: seq[string]
+  of ItemAttributesRequestAllOfImageLinkKind.StringVariant:
+    stringValue*: string
+
+proc to*(node: JsonNode, T: typedesc[ItemAttributesRequestAllOfImageLink]): ItemAttributesRequestAllOfImageLink =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return ItemAttributesRequestAllOfImageLink(kind: ItemAttributesRequestAllOfImageLinkKind.ArrayVariant, arrayValue: to(node, seq[string]))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as seq[string]: ", e.msg
+  try:
+    return ItemAttributesRequestAllOfImageLink(kind: ItemAttributesRequestAllOfImageLinkKind.StringVariant, stringValue: to(node, string))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as string: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of ItemAttributesRequestAllOfImageLink. JSON: " & $node)
+

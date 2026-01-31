@@ -9,26 +9,16 @@
  */
 
 
-export type PermissionsWithOwner = 'ADMIN' | 'ANALYST' | 'FINANCE_MANAGER' | 'AUDIENCE_MANAGER' | 'CAMPAIGN_MANAGER' | 'CATALOGS_MANAGER' | 'CATALOGS_VIEWER' | 'PROFILE_PUBLISHER' | 'OWNER';
-
 export const PermissionsWithOwner = {
-
-    Admin: 'ADMIN' as PermissionsWithOwner,
-
-    Analyst: 'ANALYST' as PermissionsWithOwner,
-
-    FinanceManager: 'FINANCE_MANAGER' as PermissionsWithOwner,
-
-    AudienceManager: 'AUDIENCE_MANAGER' as PermissionsWithOwner,
-
-    CampaignManager: 'CAMPAIGN_MANAGER' as PermissionsWithOwner,
-
-    CatalogsManager: 'CATALOGS_MANAGER' as PermissionsWithOwner,
-
-    CatalogsViewer: 'CATALOGS_VIEWER' as PermissionsWithOwner,
-
-    ProfilePublisher: 'PROFILE_PUBLISHER' as PermissionsWithOwner,
-
-    Owner: 'OWNER' as PermissionsWithOwner
-};
+    Admin: 'ADMIN',
+    Analyst: 'ANALYST',
+    FinanceManager: 'FINANCE_MANAGER',
+    AudienceManager: 'AUDIENCE_MANAGER',
+    CampaignManager: 'CAMPAIGN_MANAGER',
+    CatalogsManager: 'CATALOGS_MANAGER',
+    CatalogsViewer: 'CATALOGS_VIEWER',
+    ProfilePublisher: 'PROFILE_PUBLISHER',
+    Owner: 'OWNER'
+} as const;
+export type PermissionsWithOwner = typeof PermissionsWithOwner[keyof typeof PermissionsWithOwner];
 

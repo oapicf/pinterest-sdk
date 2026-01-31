@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type DiscountType* {.pure.} = enum
@@ -35,58 +37,142 @@ type DiscountType* {.pure.} = enum
 
 type AdsCreditDiscountsResponse* = object
   ## 
-  active*: bool ## True if the offer code is currently active.
-  advertiserId*: string ## Advertiser ID the offer was applied to.
-  discountType*: DiscountType ## The type of discount of this credit
-  discountInMicroCurrency*: float ## The discount applied in the offer’s currency value.
-  discountCurrency*: string ## Currency value for the discount.
-  title*: string ## Human readable title of the offer code.
-  remainingDiscountInMicroCurrency*: float ## The credits left to spend.
+  active*: Option[bool] ## True if the offer code is currently active.
+  advertiserId*: Option[string] ## Advertiser ID the offer was applied to.
+  discountType*: Option[DiscountType] ## The type of discount of this credit
+  discountInMicroCurrency*: Option[float] ## The discount applied in the offer’s currency value.
+  discountCurrency*: Option[string] ## Currency value for the discount.
+  title*: Option[string] ## Human readable title of the offer code.
+  remainingDiscountInMicroCurrency*: Option[float] ## The credits left to spend.
 
 func `%`*(v: DiscountType): JsonNode =
-  let str = case v:
-    of DiscountType.COUPON: "COUPON"
-    of DiscountType.CREDIT: "CREDIT"
-    of DiscountType.COUPONAPPLIED: "COUPON_APPLIED"
-    of DiscountType.CREDITAPPLIED: "CREDIT_APPLIED"
-    of DiscountType.MARKETINGOFFERCREDIT: "MARKETING_OFFER_CREDIT"
-    of DiscountType.MARKETINGOFFERCREDITAPPLIED: "MARKETING_OFFER_CREDIT_APPLIED"
-    of DiscountType.GOODWILLCREDIT: "GOODWILL_CREDIT"
-    of DiscountType.GOODWILLCREDITAPPLIED: "GOODWILL_CREDIT_APPLIED"
-    of DiscountType.INTERNALCREDIT: "INTERNAL_CREDIT"
-    of DiscountType.INTERNALCREDITAPPLIED: "INTERNAL_CREDIT_APPLIED"
-    of DiscountType.PREPAIDCREDIT: "PREPAID_CREDIT"
-    of DiscountType.PREPAIDCREDITAPPLIED: "PREPAID_CREDIT_APPLIED"
-    of DiscountType.SALESINCENTIVECREDIT: "SALES_INCENTIVE_CREDIT"
-    of DiscountType.SALESINCENTIVECREDITAPPLIED: "SALES_INCENTIVE_CREDIT_APPLIED"
-    of DiscountType.CREDITEXPIRED: "CREDIT_EXPIRED"
-    of DiscountType.FUTURECREDIT: "FUTURE_CREDIT"
-    of DiscountType.REFERRALCREDIT: "REFERRAL_CREDIT"
-    of DiscountType.INVOICESALESINCENTIVECREDIT: "INVOICE_SALES_INCENTIVE_CREDIT"
-    of DiscountType.INVOICESALESINCENTIVECREDITAPPLIED: "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"
-    of DiscountType.PREPAIDCREDITREFUND: "PREPAID_CREDIT_REFUND"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of DiscountType.COUPON: %"COUPON"
+    of DiscountType.CREDIT: %"CREDIT"
+    of DiscountType.COUPONAPPLIED: %"COUPON_APPLIED"
+    of DiscountType.CREDITAPPLIED: %"CREDIT_APPLIED"
+    of DiscountType.MARKETINGOFFERCREDIT: %"MARKETING_OFFER_CREDIT"
+    of DiscountType.MARKETINGOFFERCREDITAPPLIED: %"MARKETING_OFFER_CREDIT_APPLIED"
+    of DiscountType.GOODWILLCREDIT: %"GOODWILL_CREDIT"
+    of DiscountType.GOODWILLCREDITAPPLIED: %"GOODWILL_CREDIT_APPLIED"
+    of DiscountType.INTERNALCREDIT: %"INTERNAL_CREDIT"
+    of DiscountType.INTERNALCREDITAPPLIED: %"INTERNAL_CREDIT_APPLIED"
+    of DiscountType.PREPAIDCREDIT: %"PREPAID_CREDIT"
+    of DiscountType.PREPAIDCREDITAPPLIED: %"PREPAID_CREDIT_APPLIED"
+    of DiscountType.SALESINCENTIVECREDIT: %"SALES_INCENTIVE_CREDIT"
+    of DiscountType.SALESINCENTIVECREDITAPPLIED: %"SALES_INCENTIVE_CREDIT_APPLIED"
+    of DiscountType.CREDITEXPIRED: %"CREDIT_EXPIRED"
+    of DiscountType.FUTURECREDIT: %"FUTURE_CREDIT"
+    of DiscountType.REFERRALCREDIT: %"REFERRAL_CREDIT"
+    of DiscountType.INVOICESALESINCENTIVECREDIT: %"INVOICE_SALES_INCENTIVE_CREDIT"
+    of DiscountType.INVOICESALESINCENTIVECREDITAPPLIED: %"INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"
+    of DiscountType.PREPAIDCREDITREFUND: %"PREPAID_CREDIT_REFUND"
 func `$`*(v: DiscountType): string =
   result = case v:
-    of DiscountType.COUPON: "COUPON"
-    of DiscountType.CREDIT: "CREDIT"
-    of DiscountType.COUPONAPPLIED: "COUPON_APPLIED"
-    of DiscountType.CREDITAPPLIED: "CREDIT_APPLIED"
-    of DiscountType.MARKETINGOFFERCREDIT: "MARKETING_OFFER_CREDIT"
-    of DiscountType.MARKETINGOFFERCREDITAPPLIED: "MARKETING_OFFER_CREDIT_APPLIED"
-    of DiscountType.GOODWILLCREDIT: "GOODWILL_CREDIT"
-    of DiscountType.GOODWILLCREDITAPPLIED: "GOODWILL_CREDIT_APPLIED"
-    of DiscountType.INTERNALCREDIT: "INTERNAL_CREDIT"
-    of DiscountType.INTERNALCREDITAPPLIED: "INTERNAL_CREDIT_APPLIED"
-    of DiscountType.PREPAIDCREDIT: "PREPAID_CREDIT"
-    of DiscountType.PREPAIDCREDITAPPLIED: "PREPAID_CREDIT_APPLIED"
-    of DiscountType.SALESINCENTIVECREDIT: "SALES_INCENTIVE_CREDIT"
-    of DiscountType.SALESINCENTIVECREDITAPPLIED: "SALES_INCENTIVE_CREDIT_APPLIED"
-    of DiscountType.CREDITEXPIRED: "CREDIT_EXPIRED"
-    of DiscountType.FUTURECREDIT: "FUTURE_CREDIT"
-    of DiscountType.REFERRALCREDIT: "REFERRAL_CREDIT"
-    of DiscountType.INVOICESALESINCENTIVECREDIT: "INVOICE_SALES_INCENTIVE_CREDIT"
-    of DiscountType.INVOICESALESINCENTIVECREDITAPPLIED: "INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"
-    of DiscountType.PREPAIDCREDITREFUND: "PREPAID_CREDIT_REFUND"
+    of DiscountType.COUPON: $("COUPON")
+    of DiscountType.CREDIT: $("CREDIT")
+    of DiscountType.COUPONAPPLIED: $("COUPON_APPLIED")
+    of DiscountType.CREDITAPPLIED: $("CREDIT_APPLIED")
+    of DiscountType.MARKETINGOFFERCREDIT: $("MARKETING_OFFER_CREDIT")
+    of DiscountType.MARKETINGOFFERCREDITAPPLIED: $("MARKETING_OFFER_CREDIT_APPLIED")
+    of DiscountType.GOODWILLCREDIT: $("GOODWILL_CREDIT")
+    of DiscountType.GOODWILLCREDITAPPLIED: $("GOODWILL_CREDIT_APPLIED")
+    of DiscountType.INTERNALCREDIT: $("INTERNAL_CREDIT")
+    of DiscountType.INTERNALCREDITAPPLIED: $("INTERNAL_CREDIT_APPLIED")
+    of DiscountType.PREPAIDCREDIT: $("PREPAID_CREDIT")
+    of DiscountType.PREPAIDCREDITAPPLIED: $("PREPAID_CREDIT_APPLIED")
+    of DiscountType.SALESINCENTIVECREDIT: $("SALES_INCENTIVE_CREDIT")
+    of DiscountType.SALESINCENTIVECREDITAPPLIED: $("SALES_INCENTIVE_CREDIT_APPLIED")
+    of DiscountType.CREDITEXPIRED: $("CREDIT_EXPIRED")
+    of DiscountType.FUTURECREDIT: $("FUTURE_CREDIT")
+    of DiscountType.REFERRALCREDIT: $("REFERRAL_CREDIT")
+    of DiscountType.INVOICESALESINCENTIVECREDIT: $("INVOICE_SALES_INCENTIVE_CREDIT")
+    of DiscountType.INVOICESALESINCENTIVECREDITAPPLIED: $("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED")
+    of DiscountType.PREPAIDCREDITREFUND: $("PREPAID_CREDIT_REFUND")
+
+proc to*(node: JsonNode, T: typedesc[DiscountType]): DiscountType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum DiscountType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("COUPON"):
+    return DiscountType.COUPON
+  of $("CREDIT"):
+    return DiscountType.CREDIT
+  of $("COUPON_APPLIED"):
+    return DiscountType.COUPONAPPLIED
+  of $("CREDIT_APPLIED"):
+    return DiscountType.CREDITAPPLIED
+  of $("MARKETING_OFFER_CREDIT"):
+    return DiscountType.MARKETINGOFFERCREDIT
+  of $("MARKETING_OFFER_CREDIT_APPLIED"):
+    return DiscountType.MARKETINGOFFERCREDITAPPLIED
+  of $("GOODWILL_CREDIT"):
+    return DiscountType.GOODWILLCREDIT
+  of $("GOODWILL_CREDIT_APPLIED"):
+    return DiscountType.GOODWILLCREDITAPPLIED
+  of $("INTERNAL_CREDIT"):
+    return DiscountType.INTERNALCREDIT
+  of $("INTERNAL_CREDIT_APPLIED"):
+    return DiscountType.INTERNALCREDITAPPLIED
+  of $("PREPAID_CREDIT"):
+    return DiscountType.PREPAIDCREDIT
+  of $("PREPAID_CREDIT_APPLIED"):
+    return DiscountType.PREPAIDCREDITAPPLIED
+  of $("SALES_INCENTIVE_CREDIT"):
+    return DiscountType.SALESINCENTIVECREDIT
+  of $("SALES_INCENTIVE_CREDIT_APPLIED"):
+    return DiscountType.SALESINCENTIVECREDITAPPLIED
+  of $("CREDIT_EXPIRED"):
+    return DiscountType.CREDITEXPIRED
+  of $("FUTURE_CREDIT"):
+    return DiscountType.FUTURECREDIT
+  of $("REFERRAL_CREDIT"):
+    return DiscountType.REFERRALCREDIT
+  of $("INVOICE_SALES_INCENTIVE_CREDIT"):
+    return DiscountType.INVOICESALESINCENTIVECREDIT
+  of $("INVOICE_SALES_INCENTIVE_CREDIT_APPLIED"):
+    return DiscountType.INVOICESALESINCENTIVECREDITAPPLIED
+  of $("PREPAID_CREDIT_REFUND"):
+    return DiscountType.PREPAIDCREDITREFUND
+  else:
+    raise newException(ValueError, "Invalid enum value for DiscountType: " & strVal)
+
+
+# Custom JSON deserialization for AdsCreditDiscountsResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[AdsCreditDiscountsResponse]): AdsCreditDiscountsResponse =
+  result = AdsCreditDiscountsResponse()
+  if node.kind == JObject:
+    if node.hasKey("active") and node["active"].kind != JNull:
+      result.active = some(to(node["active"], typeof(result.active.get())))
+    if node.hasKey("advertiser_id") and node["advertiser_id"].kind != JNull:
+      result.advertiserId = some(to(node["advertiser_id"], typeof(result.advertiserId.get())))
+    if node.hasKey("discountType") and node["discountType"].kind != JNull:
+      result.discountType = some(to(node["discountType"], DiscountType))
+    if node.hasKey("discountInMicroCurrency") and node["discountInMicroCurrency"].kind != JNull:
+      result.discountInMicroCurrency = some(to(node["discountInMicroCurrency"], typeof(result.discountInMicroCurrency.get())))
+    if node.hasKey("discountCurrency") and node["discountCurrency"].kind != JNull:
+      result.discountCurrency = some(to(node["discountCurrency"], typeof(result.discountCurrency.get())))
+    if node.hasKey("title") and node["title"].kind != JNull:
+      result.title = some(to(node["title"], typeof(result.title.get())))
+    if node.hasKey("remainingDiscountInMicroCurrency") and node["remainingDiscountInMicroCurrency"].kind != JNull:
+      result.remainingDiscountInMicroCurrency = some(to(node["remainingDiscountInMicroCurrency"], typeof(result.remainingDiscountInMicroCurrency.get())))
+
+# Custom JSON serialization for AdsCreditDiscountsResponse with custom field names
+proc `%`*(obj: AdsCreditDiscountsResponse): JsonNode =
+  result = newJObject()
+  if obj.active.isSome():
+    result["active"] = %obj.active.get()
+  if obj.advertiserId.isSome():
+    result["advertiser_id"] = %obj.advertiserId.get()
+  if obj.discountType.isSome():
+    result["discountType"] = %obj.discountType.get()
+  if obj.discountInMicroCurrency.isSome():
+    result["discountInMicroCurrency"] = %obj.discountInMicroCurrency.get()
+  if obj.discountCurrency.isSome():
+    result["discountCurrency"] = %obj.discountCurrency.get()
+  if obj.title.isSome():
+    result["title"] = %obj.title.get()
+  if obj.remainingDiscountInMicroCurrency.isSome():
+    result["remainingDiscountInMicroCurrency"] = %obj.remainingDiscountInMicroCurrency.get()
+

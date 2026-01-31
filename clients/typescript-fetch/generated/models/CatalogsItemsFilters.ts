@@ -57,7 +57,7 @@ export function CatalogsItemsFiltersFromJSONTyped(json: any, ignoreDiscriminator
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailItemsFilterFromJSONTyped(json, true), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsItemsFilters exists with 'catalogType=${json['catalogType']}'`);
+            return json;
     }
 }
 
@@ -77,8 +77,7 @@ export function CatalogsItemsFiltersToJSONTyped(value?: CatalogsItemsFilters | n
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailItemsFilterToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsItemsFilters exists with 'catalogType=${value['catalogType']}'`);
+            return value;
     }
-
 }
 

@@ -10,18 +10,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdAccountCreateRequest  {
   
   @ApiModelProperty(value = "")
+
   private Country country;
 
-  @ApiModelProperty(example = "ACME Tools", value = "Ad Account name.")
  /**
-   * Ad Account name.
-  **/
+  * Ad Account name.
+  */
+  @ApiModelProperty(example = "ACME Tools", value = "Ad Account name.")
+
   private String name;
 
-  @ApiModelProperty(example = "383791336903426391", value = "Advertiser's owning user ID.")
  /**
-   * Advertiser's owning user ID.
-  **/
+  * Advertiser's owning user ID.
+  */
+  @ApiModelProperty(example = "383791336903426391", value = "Advertiser's owning user ID.")
+
   private String ownerUserId;
  /**
    * Get country

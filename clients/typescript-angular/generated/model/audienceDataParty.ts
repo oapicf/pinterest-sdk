@@ -12,12 +12,9 @@
 /**
  * Whether the data is owned by the partner (1p) or by the data provider (3p)
  */
-export type AudienceDataParty = '1p' | '3p';
-
 export const AudienceDataParty = {
-
-    _1p: '1p' as AudienceDataParty,
-
-    _3p: '3p' as AudienceDataParty
-};
+    _1p: '1p',
+    _3p: '3p'
+} as const;
+export type AudienceDataParty = typeof AudienceDataParty[keyof typeof AudienceDataParty];
 

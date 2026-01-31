@@ -23,7 +23,7 @@ data class UpdatePartnerAssetsResultsResponseArray(
     @field:Valid
     @Schema(example = "null", description = "List of assigned/updated partner asset access.")
     @get:JsonProperty("items") val items: kotlin.collections.List<UpdatePartnerAssetsResult>? = null
-    ) {
+) {
 
 }
 

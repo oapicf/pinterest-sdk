@@ -18,7 +18,6 @@
 #import "OAICatalogsItemsCreateBatchRequest.h"
 #import "OAICatalogsItemsDeleteBatchRequest.h"
 #import "OAICatalogsItemsDeleteDiscontinuedBatchRequest.h"
-#import "OAICatalogsItemsRequestLanguage.h"
 #import "OAICatalogsItemsUpdateBatchRequest.h"
 #import "OAICatalogsItemsUpsertBatchRequest.h"
 #import "OAICountry.h"
@@ -31,8 +30,6 @@
 @class OAICatalogsItemsDeleteBatchRequest;
 @protocol OAICatalogsItemsDeleteDiscontinuedBatchRequest;
 @class OAICatalogsItemsDeleteDiscontinuedBatchRequest;
-@protocol OAICatalogsItemsRequestLanguage;
-@class OAICatalogsItemsRequestLanguage;
 @protocol OAICatalogsItemsUpdateBatchRequest;
 @class OAICatalogsItemsUpdateBatchRequest;
 @protocol OAICatalogsItemsUpsertBatchRequest;
@@ -51,8 +48,9 @@
 
 
 @property(nonatomic) OAICountry* country;
-
-@property(nonatomic) OAICatalogsItemsRequestLanguage* language;
+/* We recommend using the CatalogsLocale values. 
+ */
+@property(nonatomic) NSString* language;
 
 @property(nonatomic) OAIBatchOperation* operation;
 /* Array with catalogs items 

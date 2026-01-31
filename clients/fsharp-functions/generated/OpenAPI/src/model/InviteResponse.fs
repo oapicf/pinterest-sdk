@@ -13,16 +13,6 @@ module InviteResponse =
 
   [<CLIMutable>]
   type InviteResponse = {
-    [<JsonProperty(PropertyName = "assets_summary")>]
-    AssetsSummary : InviteAssetsSummary;
-    [<JsonProperty(PropertyName = "business_roles")>]
-    BusinessRoles : string[];
-    [<JsonProperty(PropertyName = "created_by_business")>]
-    CreatedByBusiness : BusinessAccessUserSummary;
-    [<JsonProperty(PropertyName = "created_by_user")>]
-    CreatedByUser : BusinessAccessUserSummary;
-    [<JsonProperty(PropertyName = "created_time")>]
-    CreatedTime : int;
     [<JsonProperty(PropertyName = "id")>]
     Id : string;
     [<JsonProperty(PropertyName = "invite_data")>]
@@ -31,6 +21,16 @@ module InviteResponse =
     IsReceivedInvite : bool;
     [<JsonProperty(PropertyName = "user")>]
     User : BusinessAccessUserSummary;
+    [<JsonProperty(PropertyName = "assets_summary")>]
+    AssetsSummary : InviteAssetsSummary;
+    [<JsonProperty(PropertyName = "business_roles")>]
+    BusinessRoles : string[];
+    [<JsonProperty(PropertyName = "created_by_business")>]
+    CreatedByBusiness : obj;
+    [<JsonProperty(PropertyName = "created_by_user")>]
+    CreatedByUser : obj;
+    [<JsonProperty(PropertyName = "created_time")>]
+    CreatedTime : int;
   }
 
   //#endregion

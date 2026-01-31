@@ -9,7 +9,43 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type PlacementGroupType* = object
-  ## Campaign placement group type
+type PlacementGroupType* {.pure.} = enum
+  ALL
+  SEARCH
+  BROWSE
+  OTHER
+
+func `%`*(v: PlacementGroupType): JsonNode =
+  result = case v:
+    of PlacementGroupType.ALL: %"ALL"
+    of PlacementGroupType.SEARCH: %"SEARCH"
+    of PlacementGroupType.BROWSE: %"BROWSE"
+    of PlacementGroupType.OTHER: %"OTHER"
+
+func `$`*(v: PlacementGroupType): string =
+  result = case v:
+    of PlacementGroupType.ALL: $("ALL")
+    of PlacementGroupType.SEARCH: $("SEARCH")
+    of PlacementGroupType.BROWSE: $("BROWSE")
+    of PlacementGroupType.OTHER: $("OTHER")
+
+proc to*(node: JsonNode, T: typedesc[PlacementGroupType]): PlacementGroupType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum PlacementGroupType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ALL"):
+    return PlacementGroupType.ALL
+  of $("SEARCH"):
+    return PlacementGroupType.SEARCH
+  of $("BROWSE"):
+    return PlacementGroupType.BROWSE
+  of $("OTHER"):
+    return PlacementGroupType.OTHER
+  else:
+    raise newException(ValueError, "Invalid enum value for PlacementGroupType: " & strVal)
+

@@ -66,7 +66,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSource extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(PinMediaSource.class.getName());
 
@@ -150,7 +150,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PinMediaSourceImageBase64'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PinMediaSourceImageBase64 failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PinMediaSourceImageBase64 failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PinMediaSourceImageBase64'", e);
                     }
                     // deserialize PinMediaSourceImageURL
@@ -162,7 +162,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PinMediaSourceImageURL'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PinMediaSourceImageURL failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PinMediaSourceImageURL failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PinMediaSourceImageURL'", e);
                     }
                     // deserialize PinMediaSourceVideoID
@@ -174,7 +174,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PinMediaSourceVideoID'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PinMediaSourceVideoID failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PinMediaSourceVideoID failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PinMediaSourceVideoID'", e);
                     }
                     // deserialize PinMediaSourceImagesBase64
@@ -186,7 +186,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PinMediaSourceImagesBase64'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PinMediaSourceImagesBase64 failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PinMediaSourceImagesBase64 failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PinMediaSourceImagesBase64'", e);
                     }
                     // deserialize PinMediaSourceImagesURL
@@ -198,7 +198,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PinMediaSourceImagesURL'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PinMediaSourceImagesURL failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PinMediaSourceImagesURL failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PinMediaSourceImagesURL'", e);
                     }
                     // deserialize PinMediaSourcePinURL
@@ -210,7 +210,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'PinMediaSourcePinURL'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for PinMediaSourcePinURL failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PinMediaSourcePinURL failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'PinMediaSourcePinURL'", e);
                     }
 
@@ -220,7 +220,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for PinMediaSource: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for PinMediaSource: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -387,7 +387,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
             PinMediaSourceImageBase64.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PinMediaSourceImageBase64 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PinMediaSourceImageBase64 failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PinMediaSourceImageURL
@@ -395,7 +395,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
             PinMediaSourceImageURL.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PinMediaSourceImageURL failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PinMediaSourceImageURL failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PinMediaSourceVideoID
@@ -403,7 +403,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
             PinMediaSourceVideoID.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PinMediaSourceVideoID failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PinMediaSourceVideoID failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PinMediaSourceImagesBase64
@@ -411,7 +411,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
             PinMediaSourceImagesBase64.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PinMediaSourceImagesBase64 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PinMediaSourceImagesBase64 failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PinMediaSourceImagesURL
@@ -419,7 +419,7 @@ public class PinMediaSource extends AbstractOpenApiSchema {
             PinMediaSourceImagesURL.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PinMediaSourceImagesURL failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PinMediaSourceImagesURL failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with PinMediaSourcePinURL
@@ -427,11 +427,11 @@ public class PinMediaSource extends AbstractOpenApiSchema {
             PinMediaSourcePinURL.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for PinMediaSourcePinURL failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for PinMediaSourcePinURL failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for PinMediaSource with oneOf schemas: PinMediaSourceImageBase64, PinMediaSourceImageURL, PinMediaSourceImagesBase64, PinMediaSourceImagesURL, PinMediaSourcePinURL, PinMediaSourceVideoID. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for PinMediaSource with oneOf schemas: PinMediaSourceImageBase64, PinMediaSourceImageURL, PinMediaSourceImagesBase64, PinMediaSourceImagesURL, PinMediaSourcePinURL, PinMediaSourceVideoID. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

@@ -8,10 +8,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CampaignId  {
   
-  @ApiModelProperty(example = "549755885175", value = "Campaign ID.")
  /**
-   * Campaign ID.
-  **/
+  * Campaign ID.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Campaign ID.")
+
   private String id;
  /**
    * Campaign ID.

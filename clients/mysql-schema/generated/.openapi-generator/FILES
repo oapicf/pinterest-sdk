@@ -78,7 +78,6 @@ Model/AudienceCategory.sql
 Model/AudienceCommon.sql
 Model/AudienceCreateCustomRequest.sql
 Model/AudienceCreateRequest.sql
-Model/AudienceCreateRequest1AudienceType.sql
 Model/AudienceDataParty.sql
 Model/AudienceDefinition.sql
 Model/AudienceDefinitionResponse.sql
@@ -256,7 +255,6 @@ Model/CatalogsItemsDeleteDiscontinuedBatchRequest.sql
 Model/CatalogsItemsFilters.sql
 Model/CatalogsItemsPostFilters.sql
 Model/CatalogsItemsRequest.sql
-Model/CatalogsItemsRequestLanguage.sql
 Model/CatalogsItemsUpdateBatchRequest.sql
 Model/CatalogsItemsUpsertBatchRequest.sql
 Model/CatalogsList200Response.sql
@@ -590,7 +588,6 @@ Model/PinMediaWithVideos.sql
 Model/PinPromotionSummaryStatus.sql
 Model/PinUpdate.sql
 Model/PinUpdateCarouselSlotsInner.sql
-Model/PinsAnalyticsMetricTypesParameterInner.sql
 Model/PinsList200Response.sql
 Model/PinsSaveRequest.sql
 Model/PinterestTagEventData.sql

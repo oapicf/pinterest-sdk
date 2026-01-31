@@ -9,13 +9,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MembersToDeleteBodyMembersInner  {
   
-  @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member")
  /**
-   * Unique identifier of the member
-  **/
+  * Unique identifier of the member
+  */
+  @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member")
+
   private String memberId;
 
   @ApiModelProperty(required = true, value = "")
+
   private BusinessRoleForMembers businessRole;
  /**
    * Unique identifier of the member

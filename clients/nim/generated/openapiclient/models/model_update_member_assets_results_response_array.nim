@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_update_member_assets_results_response_array_items_inner
 
 type UpdateMemberAssetsResultsResponseArray* = object
   ## 
-  items*: seq[UpdateMemberAssetsResultsResponseArray_items_inner] ## List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
+  items*: Option[seq[UpdateMemberAssetsResultsResponseArray_items_inner]] ## List of assigned/updated member asset access. If there is an error, an exception object will be returned. If the action was successfully completed, a response object will be returned.
+

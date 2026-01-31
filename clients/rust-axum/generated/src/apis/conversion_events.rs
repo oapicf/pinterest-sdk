@@ -45,6 +45,8 @@ pub enum EventsSlashCreateResponse {
 }
 
 
+
+
 /// ConversionEvents
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -56,6 +58,7 @@ pub trait ConversionEvents<E: std::fmt::Debug + Send + Sync + 'static = ()>: sup
     /// EventsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/events
     async fn events_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

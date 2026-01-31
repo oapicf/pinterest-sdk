@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * SSIOEditInsertionOrderRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOEditInsertionOrderRequest {
 
   private @Nullable String startDate;
@@ -55,7 +55,7 @@ public class SSIOEditInsertionOrderRequest {
 
   private @Nullable String adsManagerOrderLineId;
 
-  public SSIOEditInsertionOrderRequest startDate(String startDate) {
+  public SSIOEditInsertionOrderRequest startDate(@Nullable String startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -67,15 +67,15 @@ public class SSIOEditInsertionOrderRequest {
   @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
   @Schema(name = "start_date", example = "2020-12-20", description = "Starting date of time period. Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_date")
-  public String getStartDate() {
+  public @Nullable String getStartDate() {
     return startDate;
   }
 
-  public void setStartDate(String startDate) {
+  public void setStartDate(@Nullable String startDate) {
     this.startDate = startDate;
   }
 
-  public SSIOEditInsertionOrderRequest endDate(String endDate) {
+  public SSIOEditInsertionOrderRequest endDate(@Nullable String endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -87,15 +87,15 @@ public class SSIOEditInsertionOrderRequest {
   @Pattern(regexp = "^(\\d{4})-(\\d{2})-(\\d{2})$") 
   @Schema(name = "end_date", example = "2020-12-20", description = "End date of time period. Format: YYYY-MM-DD", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_date")
-  public String getEndDate() {
+  public @Nullable String getEndDate() {
     return endDate;
   }
 
-  public void setEndDate(String endDate) {
+  public void setEndDate(@Nullable String endDate) {
     this.endDate = endDate;
   }
 
-  public SSIOEditInsertionOrderRequest poNumber(String poNumber) {
+  public SSIOEditInsertionOrderRequest poNumber(@Nullable String poNumber) {
     this.poNumber = poNumber;
     return this;
   }
@@ -107,15 +107,15 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "po_number", description = "The po number", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("po_number")
-  public String getPoNumber() {
+  public @Nullable String getPoNumber() {
     return poNumber;
   }
 
-  public void setPoNumber(String poNumber) {
+  public void setPoNumber(@Nullable String poNumber) {
     this.poNumber = poNumber;
   }
 
-  public SSIOEditInsertionOrderRequest budgetAmount(BigDecimal budgetAmount) {
+  public SSIOEditInsertionOrderRequest budgetAmount(@Nullable BigDecimal budgetAmount) {
     this.budgetAmount = budgetAmount;
     return this;
   }
@@ -127,15 +127,15 @@ public class SSIOEditInsertionOrderRequest {
   @Valid 
   @Schema(name = "budget_amount", example = "5000000", description = "If Budget order line, the budget amount.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("budget_amount")
-  public BigDecimal getBudgetAmount() {
+  public @Nullable BigDecimal getBudgetAmount() {
     return budgetAmount;
   }
 
-  public void setBudgetAmount(BigDecimal budgetAmount) {
+  public void setBudgetAmount(@Nullable BigDecimal budgetAmount) {
     this.budgetAmount = budgetAmount;
   }
 
-  public SSIOEditInsertionOrderRequest billingContactFirstname(String billingContactFirstname) {
+  public SSIOEditInsertionOrderRequest billingContactFirstname(@Nullable String billingContactFirstname) {
     this.billingContactFirstname = billingContactFirstname;
     return this;
   }
@@ -147,15 +147,15 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "billing_contact_firstname", description = "The billing contact first name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billing_contact_firstname")
-  public String getBillingContactFirstname() {
+  public @Nullable String getBillingContactFirstname() {
     return billingContactFirstname;
   }
 
-  public void setBillingContactFirstname(String billingContactFirstname) {
+  public void setBillingContactFirstname(@Nullable String billingContactFirstname) {
     this.billingContactFirstname = billingContactFirstname;
   }
 
-  public SSIOEditInsertionOrderRequest billingContactLastname(String billingContactLastname) {
+  public SSIOEditInsertionOrderRequest billingContactLastname(@Nullable String billingContactLastname) {
     this.billingContactLastname = billingContactLastname;
     return this;
   }
@@ -167,15 +167,15 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "billing_contact_lastname", description = "The billing contact last name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billing_contact_lastname")
-  public String getBillingContactLastname() {
+  public @Nullable String getBillingContactLastname() {
     return billingContactLastname;
   }
 
-  public void setBillingContactLastname(String billingContactLastname) {
+  public void setBillingContactLastname(@Nullable String billingContactLastname) {
     this.billingContactLastname = billingContactLastname;
   }
 
-  public SSIOEditInsertionOrderRequest billingContactEmail(String billingContactEmail) {
+  public SSIOEditInsertionOrderRequest billingContactEmail(@Nullable String billingContactEmail) {
     this.billingContactEmail = billingContactEmail;
     return this;
   }
@@ -187,15 +187,15 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "billing_contact_email", example = "test@example", description = "The billing contact email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("billing_contact_email")
-  public String getBillingContactEmail() {
+  public @Nullable String getBillingContactEmail() {
     return billingContactEmail;
   }
 
-  public void setBillingContactEmail(String billingContactEmail) {
+  public void setBillingContactEmail(@Nullable String billingContactEmail) {
     this.billingContactEmail = billingContactEmail;
   }
 
-  public SSIOEditInsertionOrderRequest mediaContactFirstname(String mediaContactFirstname) {
+  public SSIOEditInsertionOrderRequest mediaContactFirstname(@Nullable String mediaContactFirstname) {
     this.mediaContactFirstname = mediaContactFirstname;
     return this;
   }
@@ -207,15 +207,15 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "media_contact_firstname", description = "The media contact first name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_contact_firstname")
-  public String getMediaContactFirstname() {
+  public @Nullable String getMediaContactFirstname() {
     return mediaContactFirstname;
   }
 
-  public void setMediaContactFirstname(String mediaContactFirstname) {
+  public void setMediaContactFirstname(@Nullable String mediaContactFirstname) {
     this.mediaContactFirstname = mediaContactFirstname;
   }
 
-  public SSIOEditInsertionOrderRequest mediaContactLastname(String mediaContactLastname) {
+  public SSIOEditInsertionOrderRequest mediaContactLastname(@Nullable String mediaContactLastname) {
     this.mediaContactLastname = mediaContactLastname;
     return this;
   }
@@ -227,15 +227,15 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "media_contact_lastname", description = "The media contact last name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_contact_lastname")
-  public String getMediaContactLastname() {
+  public @Nullable String getMediaContactLastname() {
     return mediaContactLastname;
   }
 
-  public void setMediaContactLastname(String mediaContactLastname) {
+  public void setMediaContactLastname(@Nullable String mediaContactLastname) {
     this.mediaContactLastname = mediaContactLastname;
   }
 
-  public SSIOEditInsertionOrderRequest mediaContactEmail(String mediaContactEmail) {
+  public SSIOEditInsertionOrderRequest mediaContactEmail(@Nullable String mediaContactEmail) {
     this.mediaContactEmail = mediaContactEmail;
     return this;
   }
@@ -247,15 +247,15 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "media_contact_email", example = "test@example", description = "The media contact email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_contact_email")
-  public String getMediaContactEmail() {
+  public @Nullable String getMediaContactEmail() {
     return mediaContactEmail;
   }
 
-  public void setMediaContactEmail(String mediaContactEmail) {
+  public void setMediaContactEmail(@Nullable String mediaContactEmail) {
     this.mediaContactEmail = mediaContactEmail;
   }
 
-  public SSIOEditInsertionOrderRequest agencyLink(String agencyLink) {
+  public SSIOEditInsertionOrderRequest agencyLink(@Nullable String agencyLink) {
     this.agencyLink = agencyLink;
     return this;
   }
@@ -267,15 +267,15 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "agency_link", description = "URL link for agency", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("agency_link")
-  public String getAgencyLink() {
+  public @Nullable String getAgencyLink() {
     return agencyLink;
   }
 
-  public void setAgencyLink(String agencyLink) {
+  public void setAgencyLink(@Nullable String agencyLink) {
     this.agencyLink = agencyLink;
   }
 
-  public SSIOEditInsertionOrderRequest userEmail(String userEmail) {
+  public SSIOEditInsertionOrderRequest userEmail(@Nullable String userEmail) {
     this.userEmail = userEmail;
     return this;
   }
@@ -287,15 +287,15 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "user_email", example = "test@example", description = "The email of user submitting the insertion order", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("user_email")
-  public String getUserEmail() {
+  public @Nullable String getUserEmail() {
     return userEmail;
   }
 
-  public void setUserEmail(String userEmail) {
+  public void setUserEmail(@Nullable String userEmail) {
     this.userEmail = userEmail;
   }
 
-  public SSIOEditInsertionOrderRequest oracleLineId(String oracleLineId) {
+  public SSIOEditInsertionOrderRequest oracleLineId(@Nullable String oracleLineId) {
     this.oracleLineId = oracleLineId;
     return this;
   }
@@ -307,15 +307,15 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "oracle_line_id", description = "LineId in the Oracle DB", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("oracle_line_id")
-  public String getOracleLineId() {
+  public @Nullable String getOracleLineId() {
     return oracleLineId;
   }
 
-  public void setOracleLineId(String oracleLineId) {
+  public void setOracleLineId(@Nullable String oracleLineId) {
     this.oracleLineId = oracleLineId;
   }
 
-  public SSIOEditInsertionOrderRequest salesforceOrderId(String salesforceOrderId) {
+  public SSIOEditInsertionOrderRequest salesforceOrderId(@Nullable String salesforceOrderId) {
     this.salesforceOrderId = salesforceOrderId;
     return this;
   }
@@ -327,15 +327,15 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "salesforce_order_id", description = "OrderId in SFDC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("salesforce_order_id")
-  public String getSalesforceOrderId() {
+  public @Nullable String getSalesforceOrderId() {
     return salesforceOrderId;
   }
 
-  public void setSalesforceOrderId(String salesforceOrderId) {
+  public void setSalesforceOrderId(@Nullable String salesforceOrderId) {
     this.salesforceOrderId = salesforceOrderId;
   }
 
-  public SSIOEditInsertionOrderRequest salesforceOrderLineId(String salesforceOrderLineId) {
+  public SSIOEditInsertionOrderRequest salesforceOrderLineId(@Nullable String salesforceOrderLineId) {
     this.salesforceOrderLineId = salesforceOrderLineId;
     return this;
   }
@@ -347,15 +347,15 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "salesforce_order_line_id", description = "OrderLineId in SFDC", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("salesforce_order_line_id")
-  public String getSalesforceOrderLineId() {
+  public @Nullable String getSalesforceOrderLineId() {
     return salesforceOrderLineId;
   }
 
-  public void setSalesforceOrderLineId(String salesforceOrderLineId) {
+  public void setSalesforceOrderLineId(@Nullable String salesforceOrderLineId) {
     this.salesforceOrderLineId = salesforceOrderLineId;
   }
 
-  public SSIOEditInsertionOrderRequest adsManagerOrderLineId(String adsManagerOrderLineId) {
+  public SSIOEditInsertionOrderRequest adsManagerOrderLineId(@Nullable String adsManagerOrderLineId) {
     this.adsManagerOrderLineId = adsManagerOrderLineId;
     return this;
   }
@@ -367,11 +367,11 @@ public class SSIOEditInsertionOrderRequest {
   
   @Schema(name = "ads_manager_order_line_id", description = "Ads manager OrderLineId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ads_manager_order_line_id")
-  public String getAdsManagerOrderLineId() {
+  public @Nullable String getAdsManagerOrderLineId() {
     return adsManagerOrderLineId;
   }
 
-  public void setAdsManagerOrderLineId(String adsManagerOrderLineId) {
+  public void setAdsManagerOrderLineId(@Nullable String adsManagerOrderLineId) {
     this.adsManagerOrderLineId = adsManagerOrderLineId;
   }
 

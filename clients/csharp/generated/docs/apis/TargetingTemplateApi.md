@@ -16,65 +16,6 @@ Create targeting templates
 
 <p>Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords & interest, demographics, and placements to use more than once during the campaign creation process.</p>  <p>Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.</p>
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class TargetingTemplateCreateExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TargetingTemplateApi(config);
-            var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
-            var targetingTemplateCreate = new TargetingTemplateCreate(); // TargetingTemplateCreate | targeting template creation entity
-
-            try
-            {
-                // Create targeting templates
-                TargetingTemplateGetResponseData result = apiInstance.TargetingTemplateCreate(adAccountId, targetingTemplateCreate);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TargetingTemplateApi.TargetingTemplateCreate: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the TargetingTemplateCreateWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Create targeting templates
-    ApiResponse<TargetingTemplateGetResponseData> response = apiInstance.TargetingTemplateCreateWithHttpInfo(adAccountId, targetingTemplateCreate);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TargetingTemplateApi.TargetingTemplateCreateWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -114,69 +55,6 @@ List targeting templates
 
 Get a list of the targeting templates in the specified <code>ad_account_id</code>
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class TargetingTemplateListExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TargetingTemplateApi(config);
-            var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
-            var order = ASCENDING;  // string | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional) 
-            var includeSizing = false;  // bool | Include audience sizing in result or not (optional)  (default to false)
-            var searchQuery = gaming;  // string | Search keyword for targeting templates (optional) 
-            var pageSize = 25;  // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
-            var bookmark = "bookmark_example";  // string | Cursor used to fetch the next page of items (optional) 
-
-            try
-            {
-                // List targeting templates
-                TargetingTemplateList200Response result = apiInstance.TargetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TargetingTemplateApi.TargetingTemplateList: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the TargetingTemplateListWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // List targeting templates
-    ApiResponse<TargetingTemplateList200Response> response = apiInstance.TargetingTemplateListWithHttpInfo(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TargetingTemplateApi.TargetingTemplateListWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -220,61 +98,6 @@ Update targeting templates
 
 <p>Update the targeting template given advertiser ID and targeting template ID</p>
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class TargetingTemplateUpdateExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TargetingTemplateApi(config);
-            var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
-            var targetingTemplateUpdateRequest = new TargetingTemplateUpdateRequest(); // TargetingTemplateUpdateRequest | Operation type and targeting template ID
-
-            try
-            {
-                // Update targeting templates
-                apiInstance.TargetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TargetingTemplateApi.TargetingTemplateUpdate: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the TargetingTemplateUpdateWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Update targeting templates
-    apiInstance.TargetingTemplateUpdateWithHttpInfo(adAccountId, targetingTemplateUpdateRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TargetingTemplateApi.TargetingTemplateUpdateWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

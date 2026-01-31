@@ -12,54 +12,30 @@
 /**
  * Metrics availablity, e.g., \"READY\".
  */
-export type DataStatus = 'PROCESSING' | 'READY' | 'ESTIMATE' | 'BEFORE_BUSINESS_CREATED' | 'BEFORE_DATA_RETENTION_PERIOD' | 'BEFORE_PIN_DATA_RETENTION_PERIOD' | 'BEFORE_METRIC_START_DATE' | 'BEFORE_CORE_METRIC_START_DATE' | 'BEFORE_PIN_FORMAT_METRIC_START_DATE' | 'BEFORE_AUDIENCE_METRIC_START_DATE' | 'BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE' | 'BEFORE_VIDEO_METRIC_START_DATE' | 'BEFORE_CONVERSION_METRIC_START_DATE' | 'PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD' | 'IN_BAD_TAG_DATE' | 'BEFORE_PUBLISHED_METRIC_START_DATE' | 'BEFORE_ASSIST_METRIC_START_DATE' | 'BEFORE_PIN_CREATED' | 'BEFORE_ACCOUNT_CLAIMED' | 'BEFORE_DEMOGRAPHIC_FILTERS_START_DATE' | 'AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD' | 'AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD' | 'BEFORE_PRODUCT_GROUP_FILTER_START_DATE';
-
 export const DataStatus = {
-
-    Processing: 'PROCESSING' as DataStatus,
-
-    Ready: 'READY' as DataStatus,
-
-    Estimate: 'ESTIMATE' as DataStatus,
-
-    BeforeBusinessCreated: 'BEFORE_BUSINESS_CREATED' as DataStatus,
-
-    BeforeDataRetentionPeriod: 'BEFORE_DATA_RETENTION_PERIOD' as DataStatus,
-
-    BeforePinDataRetentionPeriod: 'BEFORE_PIN_DATA_RETENTION_PERIOD' as DataStatus,
-
-    BeforeMetricStartDate: 'BEFORE_METRIC_START_DATE' as DataStatus,
-
-    BeforeCoreMetricStartDate: 'BEFORE_CORE_METRIC_START_DATE' as DataStatus,
-
-    BeforePinFormatMetricStartDate: 'BEFORE_PIN_FORMAT_METRIC_START_DATE' as DataStatus,
-
-    BeforeAudienceMetricStartDate: 'BEFORE_AUDIENCE_METRIC_START_DATE' as DataStatus,
-
-    BeforeAudienceMonthlyMetricStartDate: 'BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE' as DataStatus,
-
-    BeforeVideoMetricStartDate: 'BEFORE_VIDEO_METRIC_START_DATE' as DataStatus,
-
-    BeforeConversionMetricStartDate: 'BEFORE_CONVERSION_METRIC_START_DATE' as DataStatus,
-
-    PurchasersMetricSmallerThanThreshold: 'PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD' as DataStatus,
-
-    InBadTagDate: 'IN_BAD_TAG_DATE' as DataStatus,
-
-    BeforePublishedMetricStartDate: 'BEFORE_PUBLISHED_METRIC_START_DATE' as DataStatus,
-
-    BeforeAssistMetricStartDate: 'BEFORE_ASSIST_METRIC_START_DATE' as DataStatus,
-
-    BeforePinCreated: 'BEFORE_PIN_CREATED' as DataStatus,
-
-    BeforeAccountClaimed: 'BEFORE_ACCOUNT_CLAIMED' as DataStatus,
-
-    BeforeDemographicFiltersStartDate: 'BEFORE_DEMOGRAPHIC_FILTERS_START_DATE' as DataStatus,
-
-    AudienceSegmentSmallerThanThreshold: 'AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD' as DataStatus,
-
-    AudienceTotalSmallerThanThreshold: 'AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD' as DataStatus,
-
-    BeforeProductGroupFilterStartDate: 'BEFORE_PRODUCT_GROUP_FILTER_START_DATE' as DataStatus
-};
+    Processing: 'PROCESSING',
+    Ready: 'READY',
+    Estimate: 'ESTIMATE',
+    BeforeBusinessCreated: 'BEFORE_BUSINESS_CREATED',
+    BeforeDataRetentionPeriod: 'BEFORE_DATA_RETENTION_PERIOD',
+    BeforePinDataRetentionPeriod: 'BEFORE_PIN_DATA_RETENTION_PERIOD',
+    BeforeMetricStartDate: 'BEFORE_METRIC_START_DATE',
+    BeforeCoreMetricStartDate: 'BEFORE_CORE_METRIC_START_DATE',
+    BeforePinFormatMetricStartDate: 'BEFORE_PIN_FORMAT_METRIC_START_DATE',
+    BeforeAudienceMetricStartDate: 'BEFORE_AUDIENCE_METRIC_START_DATE',
+    BeforeAudienceMonthlyMetricStartDate: 'BEFORE_AUDIENCE_MONTHLY_METRIC_START_DATE',
+    BeforeVideoMetricStartDate: 'BEFORE_VIDEO_METRIC_START_DATE',
+    BeforeConversionMetricStartDate: 'BEFORE_CONVERSION_METRIC_START_DATE',
+    PurchasersMetricSmallerThanThreshold: 'PURCHASERS_METRIC_SMALLER_THAN_THRESHOLD',
+    InBadTagDate: 'IN_BAD_TAG_DATE',
+    BeforePublishedMetricStartDate: 'BEFORE_PUBLISHED_METRIC_START_DATE',
+    BeforeAssistMetricStartDate: 'BEFORE_ASSIST_METRIC_START_DATE',
+    BeforePinCreated: 'BEFORE_PIN_CREATED',
+    BeforeAccountClaimed: 'BEFORE_ACCOUNT_CLAIMED',
+    BeforeDemographicFiltersStartDate: 'BEFORE_DEMOGRAPHIC_FILTERS_START_DATE',
+    AudienceSegmentSmallerThanThreshold: 'AUDIENCE_SEGMENT_SMALLER_THAN_THRESHOLD',
+    AudienceTotalSmallerThanThreshold: 'AUDIENCE_TOTAL_SMALLER_THAN_THRESHOLD',
+    BeforeProductGroupFilterStartDate: 'BEFORE_PRODUCT_GROUP_FILTER_START_DATE'
+} as const;
+export type DataStatus = typeof DataStatus[keyof typeof DataStatus];
 

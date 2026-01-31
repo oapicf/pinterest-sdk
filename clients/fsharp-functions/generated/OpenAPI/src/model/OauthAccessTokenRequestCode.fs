@@ -10,12 +10,12 @@ module OauthAccessTokenRequestCode =
 
   [<CLIMutable>]
   type OauthAccessTokenRequestCode = {
-    [<JsonProperty(PropertyName = "grant_type")>]
-    GrantType : string;
     [<JsonProperty(PropertyName = "code")>]
     Code : string;
     [<JsonProperty(PropertyName = "redirect_uri")>]
     RedirectUri : string;
+    [<JsonProperty(PropertyName = "grant_type")>]
+    GrantType : string;
   }
 
   //#endregion

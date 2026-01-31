@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type Category* {.pure.} = enum
@@ -17,19 +19,55 @@ type Category* {.pure.} = enum
 
 type DeliveryMetricsResponseItemsInner* = object
   ## 
-  name*: string ## Metric's name.
-  category*: Category ## Category name
-  definition*: string ## How the metric is defined.
-  displayName*: string ## Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
+  name*: Option[string] ## Metric's name.
+  category*: Option[Category] ## Category name
+  definition*: Option[string] ## How the metric is defined.
+  displayName*: Option[string] ## Display name, when available. If unavaible it will not be returned. Matches how the metric is named in our native tools like Pinterest Ads Manager.
 
 func `%`*(v: Category): JsonNode =
-  let str = case v:
-    of Category.ADS: "ADS"
-    of Category.ORGANIC: "ORGANIC"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Category.ADS: %"ADS"
+    of Category.ORGANIC: %"ORGANIC"
 func `$`*(v: Category): string =
   result = case v:
-    of Category.ADS: "ADS"
-    of Category.ORGANIC: "ORGANIC"
+    of Category.ADS: $("ADS")
+    of Category.ORGANIC: $("ORGANIC")
+
+proc to*(node: JsonNode, T: typedesc[Category]): Category =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Category, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ADS"):
+    return Category.ADS
+  of $("ORGANIC"):
+    return Category.ORGANIC
+  else:
+    raise newException(ValueError, "Invalid enum value for Category: " & strVal)
+
+
+# Custom JSON deserialization for DeliveryMetricsResponseItemsInner with custom field names
+proc to*(node: JsonNode, T: typedesc[DeliveryMetricsResponseItemsInner]): DeliveryMetricsResponseItemsInner =
+  result = DeliveryMetricsResponseItemsInner()
+  if node.kind == JObject:
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("category") and node["category"].kind != JNull:
+      result.category = some(to(node["category"], Category))
+    if node.hasKey("definition") and node["definition"].kind != JNull:
+      result.definition = some(to(node["definition"], typeof(result.definition.get())))
+    if node.hasKey("display_name") and node["display_name"].kind != JNull:
+      result.displayName = some(to(node["display_name"], typeof(result.displayName.get())))
+
+# Custom JSON serialization for DeliveryMetricsResponseItemsInner with custom field names
+proc `%`*(obj: DeliveryMetricsResponseItemsInner): JsonNode =
+  result = newJObject()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.category.isSome():
+    result["category"] = %obj.category.get()
+  if obj.definition.isSome():
+    result["definition"] = %obj.definition.get()
+  if obj.displayName.isSome():
+    result["display_name"] = %obj.displayName.get()
+

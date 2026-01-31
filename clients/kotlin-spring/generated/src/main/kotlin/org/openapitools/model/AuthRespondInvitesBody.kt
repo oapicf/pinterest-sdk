@@ -24,7 +24,7 @@ data class AuthRespondInvitesBody(
     @get:Size(min=1,max=100) 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("invites", required = true) val invites: kotlin.collections.List<AuthRespondInvitesBodyInvitesInner>
-    ) {
+) {
 
 }
 

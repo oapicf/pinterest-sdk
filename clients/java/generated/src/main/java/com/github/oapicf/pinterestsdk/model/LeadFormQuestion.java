@@ -53,7 +53,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LeadFormQuestion
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadFormQuestion {
   public static final String SERIALIZED_NAME_QUESTION_TYPE = "question_type";
   @SerializedName(SERIALIZED_NAME_QUESTION_TYPE)
@@ -223,14 +223,10 @@ public class LeadFormQuestion {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("question_type");
-    openapiFields.add("custom_question_field_type");
-    openapiFields.add("custom_question_label");
-    openapiFields.add("custom_question_options");
+    openapiFields = new HashSet<String>(Arrays.asList("question_type", "custom_question_field_type", "custom_question_label", "custom_question_options"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -242,7 +238,7 @@ public class LeadFormQuestion {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!LeadFormQuestion.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LeadFormQuestion is not found in the empty JSON string", LeadFormQuestion.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in LeadFormQuestion is not found in the empty JSON string", LeadFormQuestion.openapiRequiredFields.toString()));
         }
       }
 
@@ -250,7 +246,7 @@ public class LeadFormQuestion {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!LeadFormQuestion.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LeadFormQuestion` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `LeadFormQuestion` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -263,11 +259,11 @@ public class LeadFormQuestion {
         LeadFormQuestionFieldType.validateJsonElement(jsonObj.get("custom_question_field_type"));
       }
       if ((jsonObj.get("custom_question_label") != null && !jsonObj.get("custom_question_label").isJsonNull()) && !jsonObj.get("custom_question_label").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `custom_question_label` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_question_label").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `custom_question_label` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom_question_label").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("custom_question_options") != null && !jsonObj.get("custom_question_options").isJsonNull() && !jsonObj.get("custom_question_options").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `custom_question_options` to be an array in the JSON string but got `%s`", jsonObj.get("custom_question_options").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `custom_question_options` to be an array in the JSON string but got `%s`", jsonObj.get("custom_question_options").toString()));
       }
   }
 

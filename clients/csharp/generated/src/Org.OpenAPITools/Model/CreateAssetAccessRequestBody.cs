@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "asset_requests":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assetRequests = new Option<List<CreateAssetAccessRequestBodyAssetRequestsInner>?>(JsonSerializer.Deserialize<List<CreateAssetAccessRequestBodyAssetRequestsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            assetRequests = new Option<List<CreateAssetAccessRequestBodyAssetRequestsInner>?>(JsonSerializer.Deserialize<List<CreateAssetAccessRequestBodyAssetRequestsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

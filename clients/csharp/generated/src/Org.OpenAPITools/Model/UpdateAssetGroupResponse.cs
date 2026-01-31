@@ -140,12 +140,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "updated_asset_groups":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedAssetGroups = new Option<List<AssetGroupBinding>?>(JsonSerializer.Deserialize<List<AssetGroupBinding>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            updatedAssetGroups = new Option<List<AssetGroupBinding>?>(JsonSerializer.Deserialize<List<AssetGroupBinding>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "exceptions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exceptions = new Option<List<UpdateAssetGroupResponseExceptionsInner>?>(JsonSerializer.Deserialize<List<UpdateAssetGroupResponseExceptionsInner>>(ref utf8JsonReader, jsonSerializerOptions));
+                            exceptions = new Option<List<UpdateAssetGroupResponseExceptionsInner>?>(JsonSerializer.Deserialize<List<UpdateAssetGroupResponseExceptionsInner>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

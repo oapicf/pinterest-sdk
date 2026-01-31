@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_advanced_auction_bid_options
 import model_advanced_auction_items_submit_delete_record
@@ -18,11 +20,30 @@ import model_country
 import model_language
 import model_update_mask_bid_option_field
 
+# OneOf type
+type AdvancedAuctionItemsSubmitRecordKind* {.pure.} = enum
+  AdvancedAuctionItemsSubmitUpsertRecordVariant
+  AdvancedAuctionItemsSubmitDeleteRecordVariant
+
 type AdvancedAuctionItemsSubmitRecord* = object
   ## Object describing an item bid option operation
-  operation*: AdvancedAuctionOperation
-  itemId*: string ## The catalog retail item id in the merchant namespace
-  country*: Country
-  language*: Language
-  bidOptions*: AdvancedAuctionBidOptions
-  updateMask*: seq[UpdateMaskBidOptionField] ## The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
+  case kind*: AdvancedAuctionItemsSubmitRecordKind
+  of AdvancedAuctionItemsSubmitRecordKind.AdvancedAuctionItemsSubmitUpsertRecordVariant:
+    AdvancedAuctionItemsSubmitUpsertRecordValue*: AdvancedAuctionItemsSubmitUpsertRecord
+  of AdvancedAuctionItemsSubmitRecordKind.AdvancedAuctionItemsSubmitDeleteRecordVariant:
+    AdvancedAuctionItemsSubmitDeleteRecordValue*: AdvancedAuctionItemsSubmitDeleteRecord
+
+proc to*(node: JsonNode, T: typedesc[AdvancedAuctionItemsSubmitRecord]): AdvancedAuctionItemsSubmitRecord =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return AdvancedAuctionItemsSubmitRecord(kind: AdvancedAuctionItemsSubmitRecordKind.AdvancedAuctionItemsSubmitUpsertRecordVariant, AdvancedAuctionItemsSubmitUpsertRecordValue: to(node, AdvancedAuctionItemsSubmitUpsertRecord))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as AdvancedAuctionItemsSubmitUpsertRecord: ", e.msg
+  try:
+    return AdvancedAuctionItemsSubmitRecord(kind: AdvancedAuctionItemsSubmitRecordKind.AdvancedAuctionItemsSubmitDeleteRecordVariant, AdvancedAuctionItemsSubmitDeleteRecordValue: to(node, AdvancedAuctionItemsSubmitDeleteRecord))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as AdvancedAuctionItemsSubmitDeleteRecord: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of AdvancedAuctionItemsSubmitRecord. JSON: " & $node)
+

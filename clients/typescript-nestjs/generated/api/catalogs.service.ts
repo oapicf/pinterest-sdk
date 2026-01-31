@@ -481,7 +481,7 @@ export class CatalogsService {
 
         let queryParameters = new URLSearchParams();
         if (id) {
-            queryParameters['id'] = id.join(COLLECTION_FORMATS['csv']);
+            queryParameters.append('id', id.join(COLLECTION_FORMATS['csv']));
         }
         if (adAccountId !== undefined && adAccountId !== null) {
             queryParameters.append('ad_account_id', <any>adAccountId);
@@ -604,7 +604,7 @@ export class CatalogsService {
     public catalogsProductGroupsList(id?: Array<number>, feedId?: string, catalogId?: string, bookmark?: string, pageSize?: number, adAccountId?: string, catalogsProductGroupsListOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let queryParameters = new URLSearchParams();
         if (id) {
-            queryParameters['id'] = id.join(COLLECTION_FORMATS['csv']);
+            queryParameters.append('id', id.join(COLLECTION_FORMATS['csv']));
         }
         if (feedId !== undefined && feedId !== null) {
             queryParameters.append('feed_id', <any>feedId);

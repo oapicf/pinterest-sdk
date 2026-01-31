@@ -28,7 +28,6 @@ CatalogsHotelFeedsCreateRequest::CatalogsHotelFeedsCreateRequest()
     m_Preferred_processing_scheduleIsSet = false;
     m_Catalog_id = "";
     m_Catalog_idIsSet = false;
-    m_Status = "";
     m_StatusIsSet = false;
     
 }
@@ -285,11 +284,11 @@ void CatalogsHotelFeedsCreateRequest::unsetCatalog_id()
 {
     m_Catalog_idIsSet = false;
 }
-CatalogsStatus CatalogsHotelFeedsCreateRequest::getStatus() const
+org::openapitools::server::model::CatalogsStatus CatalogsHotelFeedsCreateRequest::getStatus() const
 {
     return m_Status;
 }
-void CatalogsHotelFeedsCreateRequest::setStatus(CatalogsStatus const& value)
+void CatalogsHotelFeedsCreateRequest::setStatus(org::openapitools::server::model::CatalogsStatus const& value)
 {
     m_Status = value;
     m_StatusIsSet = true;

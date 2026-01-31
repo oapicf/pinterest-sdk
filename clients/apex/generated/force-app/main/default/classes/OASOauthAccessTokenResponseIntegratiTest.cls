@@ -73,23 +73,23 @@ private class OASOauthAccessTokenResponseIntegratiTest {
     private static void maintainRenamedProperties() {
         OASOauthAccessTokenResponseIntegrati oauthAccessTokenResponseIntegrationRefresh = new OASOauthAccessTokenResponseIntegrati();
         Map<String, String> x-property-mappings = oauthAccessTokenResponseIntegrationRefresh.getx-property-mappings();
+        System.assertEquals('refreshToken', x-property-mappings.get('refresh_token'));
+        System.assertEquals('refreshTokenExpiresIn', x-property-mappings.get('refresh_token_expires_in'));
         System.assertEquals('responseType', x-property-mappings.get('response_type'));
         System.assertEquals('accessToken', x-property-mappings.get('access_token'));
         System.assertEquals('tokenType', x-property-mappings.get('token_type'));
         System.assertEquals('expiresIn', x-property-mappings.get('expires_in'));
-        System.assertEquals('refreshToken', x-property-mappings.get('refresh_token'));
-        System.assertEquals('refreshTokenExpiresIn', x-property-mappings.get('refresh_token_expires_in'));
     }
 
     @isTest
     private static void defaultValuesPopulated() {
         OASOauthAccessTokenResponseIntegrati oauthAccessTokenResponseIntegrationRefresh = new OASOauthAccessTokenResponseIntegrati();
         System.assertEquals('bearer', oauthAccessTokenResponseIntegrationRefresh.tokenType);
+        System.assertEquals(null, oauthAccessTokenResponseIntegrationRefresh.refreshToken);
+        System.assertEquals(null, oauthAccessTokenResponseIntegrationRefresh.refreshTokenExpiresIn);
         System.assertEquals(null, oauthAccessTokenResponseIntegrationRefresh.responseType);
         System.assertEquals(null, oauthAccessTokenResponseIntegrationRefresh.accessToken);
         System.assertEquals(null, oauthAccessTokenResponseIntegrationRefresh.expiresIn);
         System.assertEquals(null, oauthAccessTokenResponseIntegrationRefresh.scope);
-        System.assertEquals(null, oauthAccessTokenResponseIntegrationRefresh.refreshToken);
-        System.assertEquals(null, oauthAccessTokenResponseIntegrationRefresh.refreshTokenExpiresIn);
     }
 }

@@ -2,19 +2,18 @@
 
 # OauthAccessTokenResponseCode
 
-A successful OAuth access token response for the authorization code flow.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**refreshToken** | **String** |  | 
+**refreshTokenExpiresIn** | **Int** |  | 
 **responseType** | [**ResponseType**](#ResponseType) |  |  [optional]
 **accessToken** | **String** |  | 
 **tokenType** | **String** |  | 
 **expiresIn** | **Int** |  | 
 **scope** | **String** |  | 
-**refreshToken** | **String** |  | 
-**refreshTokenExpiresIn** | **Int** |  | 
 
 
 ## Enum: ResponseType

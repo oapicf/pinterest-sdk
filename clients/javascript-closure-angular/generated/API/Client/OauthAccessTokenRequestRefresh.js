@@ -1,16 +1,9 @@
 goog.provide('API.Client.OauthAccessTokenRequestRefresh');
 
 /**
- * A request to exchange a refresh token for a new access token.
  * @record
  */
 API.Client.OauthAccessTokenRequestRefresh = function() {}
-
-/**
- * @type {!string}
- * @export
- */
-API.Client.OauthAccessTokenRequestRefresh.prototype.grantType;
 
 /**
  * @type {!string}
@@ -30,6 +23,12 @@ API.Client.OauthAccessTokenRequestRefresh.prototype.scope;
  * @export
  */
 API.Client.OauthAccessTokenRequestRefresh.prototype.refreshOn;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.OauthAccessTokenRequestRefresh.prototype.grantType;
 
 /** @enum {string} */
 API.Client.OauthAccessTokenRequestRefresh.GrantTypeEnum = { 

@@ -188,7 +188,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TargetingSpecAppType targetingSpecAppType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(targetingSpecAppType.ToString());
+            writer.WriteStringValue(TargetingSpecAppTypeValueConverter.ToJsonValue(targetingSpecAppType).ToString());
         }
     }
 
@@ -219,14 +219,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the TargetingSpecAppType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="targetingSpecAppType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TargetingSpecAppType? targetingSpecAppType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(targetingSpecAppType?.ToString() ?? "null");
+            writer.WriteStringValue(targetingSpecAppType.HasValue ? TargetingSpecAppTypeValueConverter.ToJsonValue(targetingSpecAppType.Value).ToString() : "null");
         }
     }
 }

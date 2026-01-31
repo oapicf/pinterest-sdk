@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BulkDownloadRequest", description = "Ad entities to get in bulk request.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkDownloadRequest {
 
   @Valid
@@ -98,7 +98,7 @@ public class BulkDownloadRequest {
     this.entityIds = entityIds;
   }
 
-  public BulkDownloadRequest updatedSince(String updatedSince) {
+  public BulkDownloadRequest updatedSince(@Nullable String updatedSince) {
     this.updatedSince = updatedSince;
     return this;
   }
@@ -110,15 +110,15 @@ public class BulkDownloadRequest {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "updated_since", example = "1622848072", description = "Unix UTC timestamp to retrieve all entities that have changed since this time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_since")
-  public String getUpdatedSince() {
+  public @Nullable String getUpdatedSince() {
     return updatedSince;
   }
 
-  public void setUpdatedSince(String updatedSince) {
+  public void setUpdatedSince(@Nullable String updatedSince) {
     this.updatedSince = updatedSince;
   }
 
-  public BulkDownloadRequest campaignFilter(BulkDownloadRequestCampaignFilter campaignFilter) {
+  public BulkDownloadRequest campaignFilter(@Nullable BulkDownloadRequestCampaignFilter campaignFilter) {
     this.campaignFilter = campaignFilter;
     return this;
   }
@@ -130,11 +130,11 @@ public class BulkDownloadRequest {
   @Valid 
   @Schema(name = "campaign_filter", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("campaign_filter")
-  public BulkDownloadRequestCampaignFilter getCampaignFilter() {
+  public @Nullable BulkDownloadRequestCampaignFilter getCampaignFilter() {
     return campaignFilter;
   }
 
-  public void setCampaignFilter(BulkDownloadRequestCampaignFilter campaignFilter) {
+  public void setCampaignFilter(@Nullable BulkDownloadRequestCampaignFilter campaignFilter) {
     this.campaignFilter = campaignFilter;
   }
 

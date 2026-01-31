@@ -54,7 +54,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LeadFormCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadFormCreateRequest {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -68,7 +68,7 @@ public class LeadFormCreateRequest {
 
   public static final String SERIALIZED_NAME_HAS_ACCEPTED_TERMS = "has_accepted_terms";
   @SerializedName(SERIALIZED_NAME_HAS_ACCEPTED_TERMS)
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private Boolean hasAcceptedTerms;
 
   public static final String SERIALIZED_NAME_COMPLETION_MESSAGE = "completion_message";
@@ -88,7 +88,7 @@ public class LeadFormCreateRequest {
 
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private List<LeadFormQuestion> questions = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_POLICY_LINKS = "policy_links";
@@ -137,7 +137,7 @@ public class LeadFormCreateRequest {
   }
 
 
-  public LeadFormCreateRequest hasAcceptedTerms(@javax.annotation.Nonnull Boolean hasAcceptedTerms) {
+  public LeadFormCreateRequest hasAcceptedTerms(@javax.annotation.Nullable Boolean hasAcceptedTerms) {
     this.hasAcceptedTerms = hasAcceptedTerms;
     return this;
   }
@@ -146,12 +146,12 @@ public class LeadFormCreateRequest {
    * Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO
    * @return hasAcceptedTerms
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getHasAcceptedTerms() {
     return hasAcceptedTerms;
   }
 
-  public void setHasAcceptedTerms(@javax.annotation.Nonnull Boolean hasAcceptedTerms) {
+  public void setHasAcceptedTerms(@javax.annotation.Nullable Boolean hasAcceptedTerms) {
     this.hasAcceptedTerms = hasAcceptedTerms;
   }
 
@@ -213,7 +213,7 @@ public class LeadFormCreateRequest {
   }
 
 
-  public LeadFormCreateRequest questions(@javax.annotation.Nonnull List<LeadFormQuestion> questions) {
+  public LeadFormCreateRequest questions(@javax.annotation.Nullable List<LeadFormQuestion> questions) {
     this.questions = questions;
     return this;
   }
@@ -230,12 +230,12 @@ public class LeadFormCreateRequest {
    * List of questions to be displayed on the lead form.
    * @return questions
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<LeadFormQuestion> getQuestions() {
     return questions;
   }
 
-  public void setQuestions(@javax.annotation.Nonnull List<LeadFormQuestion> questions) {
+  public void setQuestions(@javax.annotation.Nullable List<LeadFormQuestion> questions) {
     this.questions = questions;
   }
 
@@ -336,23 +336,10 @@ public class LeadFormCreateRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("privacy_policy_link");
-    openapiFields.add("has_accepted_terms");
-    openapiFields.add("completion_message");
-    openapiFields.add("status");
-    openapiFields.add("disclosure_language");
-    openapiFields.add("questions");
-    openapiFields.add("policy_links");
+    openapiFields = new HashSet<String>(Arrays.asList("name", "privacy_policy_link", "has_accepted_terms", "completion_message", "status", "disclosure_language", "questions", "policy_links"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("privacy_policy_link");
-    openapiRequiredFields.add("has_accepted_terms");
-    openapiRequiredFields.add("completion_message");
-    openapiRequiredFields.add("questions");
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -364,7 +351,7 @@ public class LeadFormCreateRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!LeadFormCreateRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LeadFormCreateRequest is not found in the empty JSON string", LeadFormCreateRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in LeadFormCreateRequest is not found in the empty JSON string", LeadFormCreateRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -372,49 +359,46 @@ public class LeadFormCreateRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!LeadFormCreateRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LeadFormCreateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LeadFormCreateRequest.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `LeadFormCreateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("privacy_policy_link") != null && !jsonObj.get("privacy_policy_link").isJsonNull()) && !jsonObj.get("privacy_policy_link").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `privacy_policy_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("privacy_policy_link").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `privacy_policy_link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("privacy_policy_link").toString()));
       }
       if ((jsonObj.get("completion_message") != null && !jsonObj.get("completion_message").isJsonNull()) && !jsonObj.get("completion_message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `completion_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("completion_message").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `completion_message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("completion_message").toString()));
       }
       // validate the optional field `status`
       if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
         LeadFormStatus.validateJsonElement(jsonObj.get("status"));
       }
       if ((jsonObj.get("disclosure_language") != null && !jsonObj.get("disclosure_language").isJsonNull()) && !jsonObj.get("disclosure_language").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `disclosure_language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("disclosure_language").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `disclosure_language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("disclosure_language").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("questions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `questions` to be an array in the JSON string but got `%s`", jsonObj.get("questions").toString()));
-      }
+      if (jsonObj.get("questions") != null && !jsonObj.get("questions").isJsonNull()) {
+        JsonArray jsonArrayquestions = jsonObj.getAsJsonArray("questions");
+        if (jsonArrayquestions != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("questions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `questions` to be an array in the JSON string but got `%s`", jsonObj.get("questions").toString()));
+          }
 
-      JsonArray jsonArrayquestions = jsonObj.getAsJsonArray("questions");
-      // validate the required field `questions` (array)
-      for (int i = 0; i < jsonArrayquestions.size(); i++) {
-        LeadFormQuestion.validateJsonElement(jsonArrayquestions.get(i));
-      };
+          // validate the optional field `questions` (array)
+          for (int i = 0; i < jsonArrayquestions.size(); i++) {
+            LeadFormQuestion.validateJsonElement(jsonArrayquestions.get(i));
+          };
+        }
+      }
       if (jsonObj.get("policy_links") != null && !jsonObj.get("policy_links").isJsonNull()) {
         JsonArray jsonArraypolicyLinks = jsonObj.getAsJsonArray("policy_links");
         if (jsonArraypolicyLinks != null) {
           // ensure the json data is an array
           if (!jsonObj.get("policy_links").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `policy_links` to be an array in the JSON string but got `%s`", jsonObj.get("policy_links").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `policy_links` to be an array in the JSON string but got `%s`", jsonObj.get("policy_links").toString()));
           }
 
           // validate the optional field `policy_links` (array)

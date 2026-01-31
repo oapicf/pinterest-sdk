@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,22 +7,25 @@ import org.openapitools.model.ItemResponse;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Response object of catalogs items
- **/
+ * Response object of catalogs items
+ */
 @ApiModel(description="Response object of catalogs items")
 
 public class CatalogsItems  {
   
-  @ApiModelProperty(value = "Array with catalogs items")
-  @Valid
  /**
-   * Array with catalogs items
-  **/
+  * Array with catalogs items
+  */
+  @ApiModelProperty(value = "Array with catalogs items")
+
+  @Valid
+
   private List<@Valid ItemResponse> items = new ArrayList<>();
  /**
    * Array with catalogs items

@@ -8,6 +8,12 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}countries`,
+                list: true,
+                type: 'string',
+                ...TargetingAdvertiserCountry.fields(`${keyPrefix}countries`, isInput),
+            },
+            {
                 key: `${keyPrefix}report_name`,
                 label: `Name of the Marketing Mix Modeling (MMM) report - [${labelPrefix}report_name]`,
                 required: true,
@@ -57,17 +63,12 @@ module.exports = {
                 type: 'string',
                 ...MMMReportingColumn.fields(`${keyPrefix}columns`, isInput),
             },
-            {
-                key: `${keyPrefix}countries`,
-                list: true,
-                type: 'string',
-                ...TargetingAdvertiserCountry.fields(`${keyPrefix}countries`, isInput),
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
+            'countries': utils.childMapping(bundle.inputData?.[`${keyPrefix}countries`], `${keyPrefix}countries`, TargetingAdvertiserCountry),
             'report_name': bundle.inputData?.[`${keyPrefix}report_name`],
             'start_date': bundle.inputData?.[`${keyPrefix}start_date`],
             'end_date': bundle.inputData?.[`${keyPrefix}end_date`],
@@ -75,7 +76,6 @@ module.exports = {
             'level': bundle.inputData?.[`${keyPrefix}level`],
             'targeting_types': utils.childMapping(bundle.inputData?.[`${keyPrefix}targeting_types`], `${keyPrefix}targeting_types`, MMMReportingTargetingType),
             'columns': utils.childMapping(bundle.inputData?.[`${keyPrefix}columns`], `${keyPrefix}columns`, MMMReportingColumn),
-            'countries': utils.childMapping(bundle.inputData?.[`${keyPrefix}countries`], `${keyPrefix}countries`, TargetingAdvertiserCountry),
         }
     },
 }

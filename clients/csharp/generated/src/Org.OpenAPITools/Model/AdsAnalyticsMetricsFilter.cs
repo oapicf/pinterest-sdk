@@ -145,8 +145,7 @@ namespace Org.OpenAPITools.Model
                                 varOperator = new Option<AdsAnalyticsFilterOperator?>(AdsAnalyticsFilterOperatorValueConverter.FromStringOrDefault(varOperatorRawValue));
                             break;
                         case "values":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                values = new Option<List<decimal>?>(JsonSerializer.Deserialize<List<decimal>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            values = new Option<List<decimal>?>(JsonSerializer.Deserialize<List<decimal>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

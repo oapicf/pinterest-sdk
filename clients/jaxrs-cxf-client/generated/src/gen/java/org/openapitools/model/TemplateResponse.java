@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,66 +10,77 @@ import org.openapitools.model.Granularity;
 import org.openapitools.model.MetricsReportingLevel;
 import org.openapitools.model.TemplateResponseDateRange;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Template fields
- **/
+ * Template fields
+ */
 @ApiModel(description="Template fields")
 
 public class TemplateResponse  {
   
-  @ApiModelProperty(example = "6739202847590", value = "Template ID")
  /**
-   * Template ID
-  **/
+  * Template ID
+  */
+  @ApiModelProperty(example = "6739202847590", value = "Template ID")
+
   private String id;
 
-  @ApiModelProperty(example = "547664674848", value = "ID of the Ad Account that owns the template")
  /**
-   * ID of the Ad Account that owns the template
-  **/
+  * ID of the Ad Account that owns the template
+  */
+  @ApiModelProperty(example = "547664674848", value = "ID of the Ad Account that owns the template")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "[\"547664674848\"]", value = "IDs of the Ad Accounts that have access to this template")
  /**
-   * IDs of the Ad Accounts that have access to this template
-  **/
+  * IDs of the Ad Accounts that have access to this template
+  */
+  @ApiModelProperty(example = "[\"547664674848\"]", value = "IDs of the Ad Accounts that have access to this template")
+
   private List<String> adAccountIds = new ArrayList<>();
 
-  @ApiModelProperty(example = "784762938748396", value = "ID of the user who created the template")
  /**
-   * ID of the user who created the template
-  **/
+  * ID of the user who created the template
+  */
+  @ApiModelProperty(example = "784762938748396", value = "ID of the user who created the template")
+
   private String userId;
 
-  @ApiModelProperty(example = "Week over week spend", value = "Template Name")
  /**
-   * Template Name
-  **/
+  * Template Name
+  */
+  @ApiModelProperty(example = "Week over week spend", value = "Template Name")
+
   private String name;
 
-  @ApiModelProperty(example = "7", value = "The number of days prior to the day the report will be delivered at which the report will start")
  /**
-   * The number of days prior to the day the report will be delivered at which the report will start
-  **/
+  * The number of days prior to the day the report will be delivered at which the report will start
+  */
+  @ApiModelProperty(example = "7", value = "The number of days prior to the day the report will be delivered at which the report will start")
+
   private BigDecimal reportStartRelativeDaysInPast;
 
-  @ApiModelProperty(example = "7", value = "The number of days prior to the day the report will be delivered at which the report will end")
  /**
-   * The number of days prior to the day the report will be delivered at which the report will end
-  **/
+  * The number of days prior to the day the report will be delivered at which the report will end
+  */
+  @ApiModelProperty(example = "7", value = "The number of days prior to the day the report will be delivered at which the report will end")
+
   private BigDecimal reportEndRelativeDaysInPast;
 
   @ApiModelProperty(value = "")
+
   private TemplateResponseDateRange dateRange;
 
   @ApiModelProperty(value = "")
+
   private MetricsReportingLevel reportLevel;
 
   @ApiModelProperty(value = "")
+
   private DataOutputFormat reportFormat;
 
 public enum ColumnsEnum {
@@ -103,31 +113,36 @@ SPEND_IN_MICRO_DOLLAR(String.valueOf("SPEND_IN_MICRO_DOLLAR")), SPEND_IN_MICRO_U
     }
 }
 
-  @ApiModelProperty(example = "[\"SPEND_IN_DOLLAR\"]", value = "A list of columns to be included in the report")
  /**
-   * A list of columns to be included in the report
-  **/
+  * A list of columns to be included in the report
+  */
+  @ApiModelProperty(example = "[\"SPEND_IN_DOLLAR\"]", value = "A list of columns to be included in the report")
+
   private List<ColumnsEnum> columns = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private Granularity granularity;
 
-  @ApiModelProperty(example = "7", value = "The length of the sliding window over which view conversions will be attributed")
  /**
-   * The length of the sliding window over which view conversions will be attributed
-  **/
+  * The length of the sliding window over which view conversions will be attributed
+  */
+  @ApiModelProperty(example = "7", value = "The length of the sliding window over which view conversions will be attributed")
+
   private BigDecimal viewWindowDays;
 
-  @ApiModelProperty(example = "7", value = "The length of the sliding window over which click conversions will be attributed")
  /**
-   * The length of the sliding window over which click conversions will be attributed
-  **/
+  * The length of the sliding window over which click conversions will be attributed
+  */
+  @ApiModelProperty(example = "7", value = "The length of the sliding window over which click conversions will be attributed")
+
   private BigDecimal clickWindowDays;
 
-  @ApiModelProperty(example = "7", value = "The length of the sliding window over which engagement conversions will be attributed")
  /**
-   * The length of the sliding window over which engagement conversions will be attributed
-  **/
+  * The length of the sliding window over which engagement conversions will be attributed
+  */
+  @ApiModelProperty(example = "7", value = "The length of the sliding window over which engagement conversions will be attributed")
+
   private BigDecimal engagementWindowDays;
 
 public enum ConversionReportTimeTypeEnum {
@@ -160,28 +175,32 @@ TIME_OF_AD_ACTION(String.valueOf("TIME_OF_AD_ACTION")), TIME_OF_CONVERSION(Strin
     }
 }
 
-  @ApiModelProperty(example = "TIME_OF_AD_ACTION", value = "Conversion report time type")
  /**
-   * Conversion report time type
-  **/
+  * Conversion report time type
+  */
+  @ApiModelProperty(example = "TIME_OF_AD_ACTION", value = "Conversion report time type")
+
   private ConversionReportTimeTypeEnum conversionReportTimeType;
 
-  @ApiModelProperty(example = "[{\"field\": \"SPEND_IN_DOLLAR\", \"operator\": \"=\", \"value\": 100}]", value = "A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:<br> \"field\": The column name<br> \"operator\": The operator. Allowed operators: [\"=\", \"!=\", \"in\", \"not_in\", \"~\", \">\", \"<\", \"contains_substring\"]<br> \"value\": A single value or a list of values")
  /**
-   * A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:<br> \"field\": The column name<br> \"operator\": The operator. Allowed operators: [\"=\", \"!=\", \"in\", \"not_in\", \"~\", \">\", \"<\", \"contains_substring\"]<br> \"value\": A single value or a list of values
-  **/
+  * A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:<br> \"field\": The column name<br> \"operator\": The operator. Allowed operators: [\"=\", \"!=\", \"in\", \"not_in\", \"~\", \">\", \"<\", \"contains_substring\"]<br> \"value\": A single value or a list of values
+  */
+  @ApiModelProperty(example = "[{\"field\": \"SPEND_IN_DOLLAR\", \"operator\": \"=\", \"value\": 100}]", value = "A JSON representation of any filters to be applied before returning report data. Each filter object should contain all of the following fields:<br> \"field\": The column name<br> \"operator\": The operator. Allowed operators: [\"=\", \"!=\", \"in\", \"not_in\", \"~\", \">\", \"<\", \"contains_substring\"]<br> \"value\": A single value or a list of values")
+
   private String filtersJson;
 
-  @ApiModelProperty(example = "true", value = "A boolean value that indicates if the user owns the template")
  /**
-   * A boolean value that indicates if the user owns the template
-  **/
+  * A boolean value that indicates if the user owns the template
+  */
+  @ApiModelProperty(example = "true", value = "A boolean value that indicates if the user owns the template")
+
   private Boolean isOwnedByUser;
 
-  @ApiModelProperty(example = "true", value = "A boolean value that indicates if this template has been used to create a scheduled report")
  /**
-   * A boolean value that indicates if this template has been used to create a scheduled report
-  **/
+  * A boolean value that indicates if this template has been used to create a scheduled report
+  */
+  @ApiModelProperty(example = "true", value = "A boolean value that indicates if this template has been used to create a scheduled report")
+
   private Boolean isScheduled;
 
 public enum CreationSourceEnum {
@@ -214,28 +233,32 @@ ADS_API(String.valueOf("ADS_API")), ADS_MANAGER_REPORTING_PAGE(String.valueOf("A
     }
 }
 
-  @ApiModelProperty(example = "ADS_MANAGER_REPORT_BUILDER", value = "The surface used to create this template")
  /**
-   * The surface used to create this template
-  **/
+  * The surface used to create this template
+  */
+  @ApiModelProperty(example = "ADS_MANAGER_REPORT_BUILDER", value = "The surface used to create this template")
+
   private CreationSourceEnum creationSource;
 
-  @ApiModelProperty(example = "false", value = "A boolean that indicates if the template has been deleted")
  /**
-   * A boolean that indicates if the template has been deleted
-  **/
+  * A boolean that indicates if the template has been deleted
+  */
+  @ApiModelProperty(example = "false", value = "A boolean that indicates if the template has been deleted")
+
   private Boolean isDeleted;
 
-  @ApiModelProperty(example = "1432744744", value = "Time of last update in seconds since Unix epoch")
  /**
-   * Time of last update in seconds since Unix epoch
-  **/
+  * Time of last update in seconds since Unix epoch
+  */
+  @ApiModelProperty(example = "1432744744", value = "Time of last update in seconds since Unix epoch")
+
   private BigDecimal updatedTime;
 
-  @ApiModelProperty(example = "[\"1597252063\"]", value = "A list of custom column IDs")
  /**
-   * A list of custom column IDs
-  **/
+  * A list of custom column IDs
+  */
+  @ApiModelProperty(example = "[\"1597252063\"]", value = "A list of custom column IDs")
+
   private List<String> customColumnIds;
 
 public enum TypeEnum {
@@ -268,10 +291,11 @@ UNSPECIFIED(String.valueOf("UNSPECIFIED")), BULK(String.valueOf("BULK")), OVERVI
     }
 }
 
-  @ApiModelProperty(example = "BULK", value = "Reporting template type")
  /**
-   * Reporting template type
-  **/
+  * Reporting template type
+  */
+  @ApiModelProperty(example = "BULK", value = "Reporting template type")
+
   private TypeEnum type;
 
 public enum IngestionSourcesEnum {
@@ -304,10 +328,11 @@ TAG(String.valueOf("TAG")), MMP(String.valueOf("MMP")), FILE_UPLOAD(String.value
     }
 }
 
-  @ApiModelProperty(value = "The filter on the conversion ingestion source method for conversion metrics")
  /**
-   * The filter on the conversion ingestion source method for conversion metrics
-  **/
+  * The filter on the conversion ingestion source method for conversion metrics
+  */
+  @ApiModelProperty(value = "The filter on the conversion ingestion source method for conversion metrics")
+
   private List<IngestionSourcesEnum> ingestionSources;
  /**
    * Template ID

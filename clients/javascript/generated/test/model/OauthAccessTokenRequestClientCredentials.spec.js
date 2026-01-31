@@ -54,14 +54,14 @@
       //expect(instance).to.be.a(PinterestSdk.OauthAccessTokenRequestClientCredentials);
     });
 
-    it('should have the property grantType (base name: "grant_type")', function() {
-      // uncomment below and update the code to test the property grantType
+    it('should have the property scope (base name: "scope")', function() {
+      // uncomment below and update the code to test the property scope
       //var instance = new PinterestSdk.OauthAccessTokenRequestClientCredentials();
       //expect(instance).to.be();
     });
 
-    it('should have the property scope (base name: "scope")', function() {
-      // uncomment below and update the code to test the property scope
+    it('should have the property grantType (base name: "grant_type")', function() {
+      // uncomment below and update the code to test the property grantType
       //var instance = new PinterestSdk.OauthAccessTokenRequestClientCredentials();
       //expect(instance).to.be();
     });

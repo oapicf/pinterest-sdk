@@ -31,7 +31,7 @@ data class PinMediaSourceImageURL(
 
     @Schema(example = "null", description = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
     @get:JsonProperty("is_standard") val isStandard: kotlin.Boolean? = true
-    ) {
+) {
 
     /**
     * 
@@ -45,7 +45,8 @@ data class PinMediaSourceImageURL(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): SourceType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSourceImageURL'")
             }
         }
     }

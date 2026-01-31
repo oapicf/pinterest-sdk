@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "PRICE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pRICE = new Option<CatalogsProductGroupPricingCurrencyCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupPricingCurrencyCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            pRICE = new Option<CatalogsProductGroupPricingCurrencyCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupPricingCurrencyCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

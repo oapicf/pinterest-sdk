@@ -19,7 +19,7 @@ class CreateMMMReportRequest < ApplicationRecord
   validates_presence_of :targeting_types
   validates_presence_of :columns
 
+  serialize :countries, Array
   serialize :targeting_types, Array
   serialize :columns, Array
-  serialize :countries, Array
 end

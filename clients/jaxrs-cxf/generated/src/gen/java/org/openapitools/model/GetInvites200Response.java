@@ -16,14 +16,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GetInvites200Response  {
   
-  @ApiModelProperty(required = true, value = "List of invite and request data.")
-  @Valid
  /**
-   * List of invite and request data.
-  **/
+  * List of invite and request data.
+  */
+  @ApiModelProperty(required = true, value = "List of invite and request data.")
+
+  @Valid
+
   private List<@Valid InviteResponse> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * List of invite and request data.

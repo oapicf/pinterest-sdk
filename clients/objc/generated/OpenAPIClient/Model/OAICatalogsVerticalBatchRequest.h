@@ -17,7 +17,6 @@
 #import "OAICatalogsCreativeAssetsBatchItem.h"
 #import "OAICatalogsCreativeAssetsBatchRequest.h"
 #import "OAICatalogsHotelBatchRequest.h"
-#import "OAICatalogsItemsRequestLanguage.h"
 #import "OAICatalogsRetailBatchRequest.h"
 #import "OAICountry.h"
 @protocol OAICatalogsCreativeAssetsBatchItem;
@@ -26,8 +25,6 @@
 @class OAICatalogsCreativeAssetsBatchRequest;
 @protocol OAICatalogsHotelBatchRequest;
 @class OAICatalogsHotelBatchRequest;
-@protocol OAICatalogsItemsRequestLanguage;
-@class OAICatalogsItemsRequestLanguage;
 @protocol OAICatalogsRetailBatchRequest;
 @class OAICatalogsRetailBatchRequest;
 @protocol OAICountry;
@@ -44,8 +41,9 @@
 @property(nonatomic) NSString* catalogType;
 
 @property(nonatomic) OAICountry* country;
-
-@property(nonatomic) OAICatalogsItemsRequestLanguage* language;
+/* We recommend using the CatalogsLocale values. 
+ */
+@property(nonatomic) NSString* language;
 /* Array with creative assets item operations 
  */
 @property(nonatomic) NSArray<OAICatalogsCreativeAssetsBatchItem>* items;

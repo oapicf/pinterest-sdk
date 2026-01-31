@@ -9,13 +9,50 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type ConversionEventsDataInnerCustomDataContentsInner* = object
   ## 
-  id*: string ## The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
-  itemPrice*: string ## The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
-  quantity*: int64 ## The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
-  itemName*: string ## The name of a product.
-  itemCategory*: string ## The category of a product.
-  itemBrand*: string ## The brand of a product.
+  id*: Option[string] ## The id of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
+  itemPrice*: Option[string] ## The price of a product. Accepted as a string in the request; it will be parsed into a double. This is the original item value before any discount. We recommend using this if you are a merchant for PageVisit, AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
+  quantity*: Option[int64] ## The amount of a product. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).
+  itemName*: Option[string] ## The name of a product.
+  itemCategory*: Option[string] ## The category of a product.
+  itemBrand*: Option[string] ## The brand of a product.
+
+
+# Custom JSON deserialization for ConversionEventsDataInnerCustomDataContentsInner with custom field names
+proc to*(node: JsonNode, T: typedesc[ConversionEventsDataInnerCustomDataContentsInner]): ConversionEventsDataInnerCustomDataContentsInner =
+  result = ConversionEventsDataInnerCustomDataContentsInner()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("item_price") and node["item_price"].kind != JNull:
+      result.itemPrice = some(to(node["item_price"], typeof(result.itemPrice.get())))
+    if node.hasKey("quantity") and node["quantity"].kind != JNull:
+      result.quantity = some(to(node["quantity"], typeof(result.quantity.get())))
+    if node.hasKey("item_name") and node["item_name"].kind != JNull:
+      result.itemName = some(to(node["item_name"], typeof(result.itemName.get())))
+    if node.hasKey("item_category") and node["item_category"].kind != JNull:
+      result.itemCategory = some(to(node["item_category"], typeof(result.itemCategory.get())))
+    if node.hasKey("item_brand") and node["item_brand"].kind != JNull:
+      result.itemBrand = some(to(node["item_brand"], typeof(result.itemBrand.get())))
+
+# Custom JSON serialization for ConversionEventsDataInnerCustomDataContentsInner with custom field names
+proc `%`*(obj: ConversionEventsDataInnerCustomDataContentsInner): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.itemPrice.isSome():
+    result["item_price"] = %obj.itemPrice.get()
+  if obj.quantity.isSome():
+    result["quantity"] = %obj.quantity.get()
+  if obj.itemName.isSome():
+    result["item_name"] = %obj.itemName.get()
+  if obj.itemCategory.isSome():
+    result["item_category"] = %obj.itemCategory.get()
+  if obj.itemBrand.isSome():
+    result["item_brand"] = %obj.itemBrand.get()
+

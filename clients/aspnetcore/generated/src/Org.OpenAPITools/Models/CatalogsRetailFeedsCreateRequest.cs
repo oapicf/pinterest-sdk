@@ -99,7 +99,7 @@ namespace Org.OpenAPITools.Models
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name="status", EmitDefaultValue=true)]
-        public CatalogsStatus Status { get; set; }
+        public CatalogsStatus Status { get; set; } = "ACTIVE";
 
         /// <summary>
         /// Returns the string presentation of the object

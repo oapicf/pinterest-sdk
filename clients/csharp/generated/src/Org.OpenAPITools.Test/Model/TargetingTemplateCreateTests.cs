@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -65,21 +64,21 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'AutoTargetingEnabled'
-        /// </summary>
-        [Fact]
-        public void AutoTargetingEnabledTest()
-        {
-            // TODO unit test for the property 'AutoTargetingEnabled'
-        }
-
-        /// <summary>
         /// Test the property 'TargetingAttributes'
         /// </summary>
         [Fact]
         public void TargetingAttributesTest()
         {
             // TODO unit test for the property 'TargetingAttributes'
+        }
+
+        /// <summary>
+        /// Test the property 'AutoTargetingEnabled'
+        /// </summary>
+        [Fact]
+        public void AutoTargetingEnabledTest()
+        {
+            // TODO unit test for the property 'AutoTargetingEnabled'
         }
 
         /// <summary>

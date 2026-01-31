@@ -12,12 +12,9 @@
 /**
  * Where a user is taken after clicking on an ad in grid. </p><strong>Note:</strong>  This parameter is read-only and is set to DIRECT_TO_DESTINATION by default for direct links supported ads.  grid_click_type values provided will be ignored.
  */
-export type GridClickType = 'CLOSEUP' | 'DIRECT_TO_DESTINATION';
-
 export const GridClickType = {
-
-    Closeup: 'CLOSEUP' as GridClickType,
-
-    DirectToDestination: 'DIRECT_TO_DESTINATION' as GridClickType
-};
+    Closeup: 'CLOSEUP',
+    DirectToDestination: 'DIRECT_TO_DESTINATION'
+} as const;
+export type GridClickType = typeof GridClickType[keyof typeof GridClickType];
 

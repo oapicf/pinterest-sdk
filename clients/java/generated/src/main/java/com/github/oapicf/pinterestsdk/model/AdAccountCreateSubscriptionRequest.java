@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdAccountCreateSubscriptionRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountCreateSubscriptionRequest {
   public static final String SERIALIZED_NAME_WEBHOOK_URL = "webhook_url";
   @SerializedName(SERIALIZED_NAME_WEBHOOK_URL)
@@ -226,16 +226,10 @@ public class AdAccountCreateSubscriptionRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("webhook_url");
-    openapiFields.add("lead_form_id");
-    openapiFields.add("partner_access_token");
-    openapiFields.add("partner_refresh_token");
-    openapiFields.add("partner_metadata");
+    openapiFields = new HashSet<String>(Arrays.asList("webhook_url", "lead_form_id", "partner_access_token", "partner_refresh_token", "partner_metadata"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("webhook_url");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("webhook_url"));
   }
 
   /**
@@ -247,7 +241,7 @@ public class AdAccountCreateSubscriptionRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AdAccountCreateSubscriptionRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdAccountCreateSubscriptionRequest is not found in the empty JSON string", AdAccountCreateSubscriptionRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AdAccountCreateSubscriptionRequest is not found in the empty JSON string", AdAccountCreateSubscriptionRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -255,28 +249,28 @@ public class AdAccountCreateSubscriptionRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AdAccountCreateSubscriptionRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AdAccountCreateSubscriptionRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AdAccountCreateSubscriptionRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AdAccountCreateSubscriptionRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("webhook_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `webhook_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("webhook_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `webhook_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("webhook_url").toString()));
       }
       if ((jsonObj.get("lead_form_id") != null && !jsonObj.get("lead_form_id").isJsonNull()) && !jsonObj.get("lead_form_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lead_form_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lead_form_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `lead_form_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lead_form_id").toString()));
       }
       if ((jsonObj.get("partner_access_token") != null && !jsonObj.get("partner_access_token").isJsonNull()) && !jsonObj.get("partner_access_token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `partner_access_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("partner_access_token").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `partner_access_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("partner_access_token").toString()));
       }
       if ((jsonObj.get("partner_refresh_token") != null && !jsonObj.get("partner_refresh_token").isJsonNull()) && !jsonObj.get("partner_refresh_token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `partner_refresh_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("partner_refresh_token").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `partner_refresh_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("partner_refresh_token").toString()));
       }
       // validate the optional field `partner_metadata`
       if (jsonObj.get("partner_metadata") != null && !jsonObj.get("partner_metadata").isJsonNull()) {

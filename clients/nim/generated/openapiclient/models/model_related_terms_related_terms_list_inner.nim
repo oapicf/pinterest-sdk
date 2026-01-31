@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type RelatedTermsRelatedTermsListInner* = object
   ## 
-  term*: string
-  relatedTerms*: seq[string]
+  term*: Option[string]
+  relatedTerms*: Option[seq[string]]
+
+
+# Custom JSON deserialization for RelatedTermsRelatedTermsListInner with custom field names
+proc to*(node: JsonNode, T: typedesc[RelatedTermsRelatedTermsListInner]): RelatedTermsRelatedTermsListInner =
+  result = RelatedTermsRelatedTermsListInner()
+  if node.kind == JObject:
+    if node.hasKey("term") and node["term"].kind != JNull:
+      result.term = some(to(node["term"], typeof(result.term.get())))
+    if node.hasKey("related_terms") and node["related_terms"].kind != JNull:
+      result.relatedTerms = some(to(node["related_terms"], typeof(result.relatedTerms.get())))
+
+# Custom JSON serialization for RelatedTermsRelatedTermsListInner with custom field names
+proc `%`*(obj: RelatedTermsRelatedTermsListInner): JsonNode =
+  result = newJObject()
+  if obj.term.isSome():
+    result["term"] = %obj.term.get()
+  if obj.relatedTerms.isSome():
+    result["related_terms"] = %obj.relatedTerms.get()
+

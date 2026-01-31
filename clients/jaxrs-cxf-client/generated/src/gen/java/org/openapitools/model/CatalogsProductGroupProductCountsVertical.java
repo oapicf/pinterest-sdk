@@ -1,39 +1,45 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupProductCounts;
 import org.openapitools.model.CatalogsHotelProductGroupProductCounts;
 import org.openapitools.model.CatalogsRetailProductGroupProductCounts;
 import org.openapitools.model.CatalogsType;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Product counts for a CatalogsProductGroup
- **/
+ * Product counts for a CatalogsProductGroup
+ */
 @ApiModel(description="Product counts for a CatalogsProductGroup")
 
 public class CatalogsProductGroupProductCountsVertical  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsType catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private BigDecimal inStock;
 
   @ApiModelProperty(required = true, value = "")
+
   private BigDecimal outOfStock;
 
   @ApiModelProperty(required = true, value = "")
+
   private BigDecimal preorder;
 
   @ApiModelProperty(required = true, value = "")
+
   private BigDecimal total;
 
   @ApiModelProperty(required = true, value = "")
+
   private BigDecimal videos;
  /**
    * Get catalogType

@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
@@ -9,45 +8,54 @@ import org.openapitools.model.CatalogsStatus;
 import org.openapitools.model.NullableCurrency;
 import org.openapitools.model.ProductAvailabilityType;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for updating a feed.
- **/
+ * Request object for updating a feed.
+ */
 @ApiModel(description="Request object for updating a feed.")
 
 public class CatalogsFeedsUpdateRequest  {
   
   @ApiModelProperty(value = "")
+
   private ProductAvailabilityType defaultAvailability;
 
   @ApiModelProperty(value = "")
+
   private NullableCurrency defaultCurrency;
 
-  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
  /**
-   * A human-friendly name associated to a given feed.
-  **/
+  * A human-friendly name associated to a given feed.
+  */
+  @ApiModelProperty(value = "A human-friendly name associated to a given feed.")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private CatalogsFormat format;
 
   @ApiModelProperty(value = "")
+
   private CatalogsFeedCredentials credentials;
 
-  @ApiModelProperty(value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
  /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  **/
+  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  */
+  @ApiModelProperty(value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+
   private String location;
 
   @ApiModelProperty(value = "")
+
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @ApiModelProperty(value = "")
+
   private CatalogsStatus status;
  /**
    * Get defaultAvailability

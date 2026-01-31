@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AudienceDefinition", description = "Queryable audience representation.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceDefinition {
 
   private JsonNullable<String> date = JsonNullable.<String>undefined();
@@ -52,7 +52,7 @@ public class AudienceDefinition {
     this.date = date;
   }
 
-  public AudienceDefinition type(String type) {
+  public AudienceDefinition type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -64,15 +64,15 @@ public class AudienceDefinition {
   
   @Schema(name = "type", description = "Generated audience type to request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public String getType() {
+  public @Nullable String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
-  public AudienceDefinition scope(String scope) {
+  public AudienceDefinition scope(@Nullable String scope) {
     this.scope = scope;
     return this;
   }
@@ -84,11 +84,11 @@ public class AudienceDefinition {
   
   @Schema(name = "scope", description = "Generated audience scope to request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scope")
-  public String getScope() {
+  public @Nullable String getScope() {
     return scope;
   }
 
-  public void setScope(String scope) {
+  public void setScope(@Nullable String scope) {
     this.scope = scope;
   }
 

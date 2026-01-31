@@ -4,6 +4,7 @@ import org.openapitools.api.*;
 import org.openapitools.model.*;
 
 
+
 import org.openapitools.model.AdAccountsCountryResponse;
 import org.openapitools.model.BookClosedResponse;
 import org.openapitools.model.DeliveryMetricsResponse;
@@ -20,7 +21,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2025-05-10T05:40:40.818990358Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface ResourcesApiService {
       Response adAccountCountriesGet(SecurityContext securityContext)
       throws NotFoundException;
@@ -34,4 +35,6 @@ public interface ResourcesApiService {
       throws NotFoundException;
       Response targetingOptionsGet(String targetingType,String clientId,String oauthSignature,String timestamp,String adAccountId,SecurityContext securityContext)
       throws NotFoundException;
+
+
 }

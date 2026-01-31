@@ -15,7 +15,6 @@ package com.github.oapicf.pinterestsdk.model;
 
 import java.util.Objects;
 import com.github.oapicf.pinterestsdk.model.BaseInviteDataResponseInviteData;
-import com.github.oapicf.pinterestsdk.model.BusinessAccessUserSummary;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -48,25 +47,10 @@ import java.util.Set;
 import com.github.oapicf.pinterestsdk.JSON;
 
 /**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+ * InviteBusinessRoleBinding
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class InviteBusinessRoleBinding {
-  public static final String SERIALIZED_NAME_CREATED_BY_BUSINESS_ID = "created_by_business_id";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY_BUSINESS_ID)
-  @javax.annotation.Nullable
-  private String createdByBusinessId;
-
-  public static final String SERIALIZED_NAME_CREATED_BY_USER_ID = "created_by_user_id";
-  @SerializedName(SERIALIZED_NAME_CREATED_BY_USER_ID)
-  @javax.annotation.Nullable
-  private String createdByUserId;
-
-  public static final String SERIALIZED_NAME_USER = "user";
-  @SerializedName(SERIALIZED_NAME_USER)
-  @javax.annotation.Nullable
-  private BusinessAccessUserSummary user;
-
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
@@ -82,65 +66,23 @@ public class InviteBusinessRoleBinding {
   @javax.annotation.Nullable
   private Boolean isReceivedInvite;
 
+  public static final String SERIALIZED_NAME_USER = "user";
+  @SerializedName(SERIALIZED_NAME_USER)
+  @javax.annotation.Nullable
+  private Object user;
+
+  public static final String SERIALIZED_NAME_CREATED_BY_BUSINESS_ID = "created_by_business_id";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY_BUSINESS_ID)
+  @javax.annotation.Nullable
+  private String createdByBusinessId;
+
+  public static final String SERIALIZED_NAME_CREATED_BY_USER_ID = "created_by_user_id";
+  @SerializedName(SERIALIZED_NAME_CREATED_BY_USER_ID)
+  @javax.annotation.Nullable
+  private String createdByUserId;
+
   public InviteBusinessRoleBinding() {
   }
-
-  public InviteBusinessRoleBinding createdByBusinessId(@javax.annotation.Nullable String createdByBusinessId) {
-    this.createdByBusinessId = createdByBusinessId;
-    return this;
-  }
-
-  /**
-   * Unique identifier for the business that created the invite/request.
-   * @return createdByBusinessId
-   */
-  @javax.annotation.Nullable
-  public String getCreatedByBusinessId() {
-    return createdByBusinessId;
-  }
-
-  public void setCreatedByBusinessId(@javax.annotation.Nullable String createdByBusinessId) {
-    this.createdByBusinessId = createdByBusinessId;
-  }
-
-
-  public InviteBusinessRoleBinding createdByUserId(@javax.annotation.Nullable String createdByUserId) {
-    this.createdByUserId = createdByUserId;
-    return this;
-  }
-
-  /**
-   * Unique identifier for the user that created the invite/request.
-   * @return createdByUserId
-   */
-  @javax.annotation.Nullable
-  public String getCreatedByUserId() {
-    return createdByUserId;
-  }
-
-  public void setCreatedByUserId(@javax.annotation.Nullable String createdByUserId) {
-    this.createdByUserId = createdByUserId;
-  }
-
-
-  public InviteBusinessRoleBinding user(@javax.annotation.Nullable BusinessAccessUserSummary user) {
-    this.user = user;
-    return this;
-  }
-
-  /**
-   * Metadata for the user that updated the invite/request.
-   * @return user
-   */
-  @javax.annotation.Nullable
-  public BusinessAccessUserSummary getUser() {
-    return user;
-  }
-
-  public void setUser(@javax.annotation.Nullable BusinessAccessUserSummary user) {
-    this.user = user;
-  }
-
 
   public InviteBusinessRoleBinding id(@javax.annotation.Nullable String id) {
     this.id = id;
@@ -199,6 +141,63 @@ public class InviteBusinessRoleBinding {
   }
 
 
+  public InviteBusinessRoleBinding user(@javax.annotation.Nullable Object user) {
+    this.user = user;
+    return this;
+  }
+
+  /**
+   * Metadata for the user that updated the invite/request.
+   * @return user
+   */
+  @javax.annotation.Nullable
+  public Object getUser() {
+    return user;
+  }
+
+  public void setUser(@javax.annotation.Nullable Object user) {
+    this.user = user;
+  }
+
+
+  public InviteBusinessRoleBinding createdByBusinessId(@javax.annotation.Nullable String createdByBusinessId) {
+    this.createdByBusinessId = createdByBusinessId;
+    return this;
+  }
+
+  /**
+   * Unique identifier for the business that created the invite/request.
+   * @return createdByBusinessId
+   */
+  @javax.annotation.Nullable
+  public String getCreatedByBusinessId() {
+    return createdByBusinessId;
+  }
+
+  public void setCreatedByBusinessId(@javax.annotation.Nullable String createdByBusinessId) {
+    this.createdByBusinessId = createdByBusinessId;
+  }
+
+
+  public InviteBusinessRoleBinding createdByUserId(@javax.annotation.Nullable String createdByUserId) {
+    this.createdByUserId = createdByUserId;
+    return this;
+  }
+
+  /**
+   * Unique identifier for the user that created the invite/request.
+   * @return createdByUserId
+   */
+  @javax.annotation.Nullable
+  public String getCreatedByUserId() {
+    return createdByUserId;
+  }
+
+  public void setCreatedByUserId(@javax.annotation.Nullable String createdByUserId) {
+    this.createdByUserId = createdByUserId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -209,29 +208,29 @@ public class InviteBusinessRoleBinding {
       return false;
     }
     InviteBusinessRoleBinding inviteBusinessRoleBinding = (InviteBusinessRoleBinding) o;
-    return Objects.equals(this.createdByBusinessId, inviteBusinessRoleBinding.createdByBusinessId) &&
-        Objects.equals(this.createdByUserId, inviteBusinessRoleBinding.createdByUserId) &&
-        Objects.equals(this.user, inviteBusinessRoleBinding.user) &&
-        Objects.equals(this.id, inviteBusinessRoleBinding.id) &&
+    return Objects.equals(this.id, inviteBusinessRoleBinding.id) &&
         Objects.equals(this.inviteData, inviteBusinessRoleBinding.inviteData) &&
-        Objects.equals(this.isReceivedInvite, inviteBusinessRoleBinding.isReceivedInvite);
+        Objects.equals(this.isReceivedInvite, inviteBusinessRoleBinding.isReceivedInvite) &&
+        Objects.equals(this.user, inviteBusinessRoleBinding.user) &&
+        Objects.equals(this.createdByBusinessId, inviteBusinessRoleBinding.createdByBusinessId) &&
+        Objects.equals(this.createdByUserId, inviteBusinessRoleBinding.createdByUserId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdByBusinessId, createdByUserId, user, id, inviteData, isReceivedInvite);
+    return Objects.hash(id, inviteData, isReceivedInvite, user, createdByBusinessId, createdByUserId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteBusinessRoleBinding {\n");
-    sb.append("    createdByBusinessId: ").append(toIndentedString(createdByBusinessId)).append("\n");
-    sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
     sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
+    sb.append("    user: ").append(toIndentedString(user)).append("\n");
+    sb.append("    createdByBusinessId: ").append(toIndentedString(createdByBusinessId)).append("\n");
+    sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -253,14 +252,10 @@ public class InviteBusinessRoleBinding {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("invite_data");
-    openapiFields.add("is_received_invite");
-    openapiFields.add("user");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "invite_data", "is_received_invite", "user", "created_by_business_id", "created_by_user_id"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -272,7 +267,7 @@ public class InviteBusinessRoleBinding {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!InviteBusinessRoleBinding.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in InviteBusinessRoleBinding is not found in the empty JSON string", InviteBusinessRoleBinding.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in InviteBusinessRoleBinding is not found in the empty JSON string", InviteBusinessRoleBinding.openapiRequiredFields.toString()));
         }
       }
 
@@ -280,26 +275,22 @@ public class InviteBusinessRoleBinding {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!InviteBusinessRoleBinding.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `InviteBusinessRoleBinding` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `InviteBusinessRoleBinding` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("created_by_business_id") != null && !jsonObj.get("created_by_business_id").isJsonNull()) && !jsonObj.get("created_by_business_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `created_by_business_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_by_business_id").toString()));
-      }
-      if ((jsonObj.get("created_by_user_id") != null && !jsonObj.get("created_by_user_id").isJsonNull()) && !jsonObj.get("created_by_user_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `created_by_user_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_by_user_id").toString()));
-      }
-      // validate the optional field `user`
-      if (jsonObj.get("user") != null && !jsonObj.get("user").isJsonNull()) {
-        BusinessAccessUserSummary.validateJsonElement(jsonObj.get("user"));
-      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       // validate the optional field `invite_data`
       if (jsonObj.get("invite_data") != null && !jsonObj.get("invite_data").isJsonNull()) {
         BaseInviteDataResponseInviteData.validateJsonElement(jsonObj.get("invite_data"));
+      }
+      if ((jsonObj.get("created_by_business_id") != null && !jsonObj.get("created_by_business_id").isJsonNull()) && !jsonObj.get("created_by_business_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `created_by_business_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_by_business_id").toString()));
+      }
+      if ((jsonObj.get("created_by_user_id") != null && !jsonObj.get("created_by_user_id").isJsonNull()) && !jsonObj.get("created_by_user_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `created_by_user_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_by_user_id").toString()));
       }
   }
 

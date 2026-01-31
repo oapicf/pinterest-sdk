@@ -369,8 +369,7 @@ namespace Org.OpenAPITools.Model
                             catalogId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "code":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                code = new Option<int?>(utf8JsonReader.GetInt32());
+                            code = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "code_label":
                             codeLabel = new Option<string?>(utf8JsonReader.GetString()!);
@@ -379,8 +378,7 @@ namespace Org.OpenAPITools.Model
                             message = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "occurrences":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                occurrences = new Option<int?>(utf8JsonReader.GetInt32());
+                            occurrences = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "severity":
                             string? severityRawValue = utf8JsonReader.GetString();

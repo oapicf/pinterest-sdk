@@ -258,24 +258,19 @@ namespace Org.OpenAPITools.Model
                                 catalogType = new Option<CatalogsRetailProductGroupProductCounts.CatalogTypeEnum?>(CatalogsRetailProductGroupProductCounts.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
                             break;
                         case "in_stock":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                inStock = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            inStock = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "out_of_stock":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                outOfStock = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            outOfStock = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "preorder":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                preorder = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            preorder = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "total":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                total = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            total = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "videos":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                videos = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            videos = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         default:
                             break;

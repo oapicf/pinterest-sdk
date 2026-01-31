@@ -12,62 +12,34 @@
 /**
  * Currency Codes from ISO 4217
  */
-export type Currency = 'UNK' | 'USD' | 'GBP' | 'CAD' | 'EUR' | 'AUD' | 'NZD' | 'SEK' | 'ILS' | 'CHF' | 'HKD' | 'JPY' | 'SGD' | 'KRW' | 'NOK' | 'DKK' | 'PLN' | 'RON' | 'HUF' | 'CZK' | 'BRL' | 'MXN' | 'ARS' | 'CLP' | 'COP' | 'INR' | 'TRY';
-
 export const Currency = {
-
-    Unk: 'UNK' as Currency,
-
-    Usd: 'USD' as Currency,
-
-    Gbp: 'GBP' as Currency,
-
-    Cad: 'CAD' as Currency,
-
-    Eur: 'EUR' as Currency,
-
-    Aud: 'AUD' as Currency,
-
-    Nzd: 'NZD' as Currency,
-
-    Sek: 'SEK' as Currency,
-
-    Ils: 'ILS' as Currency,
-
-    Chf: 'CHF' as Currency,
-
-    Hkd: 'HKD' as Currency,
-
-    Jpy: 'JPY' as Currency,
-
-    Sgd: 'SGD' as Currency,
-
-    Krw: 'KRW' as Currency,
-
-    Nok: 'NOK' as Currency,
-
-    Dkk: 'DKK' as Currency,
-
-    Pln: 'PLN' as Currency,
-
-    Ron: 'RON' as Currency,
-
-    Huf: 'HUF' as Currency,
-
-    Czk: 'CZK' as Currency,
-
-    Brl: 'BRL' as Currency,
-
-    Mxn: 'MXN' as Currency,
-
-    Ars: 'ARS' as Currency,
-
-    Clp: 'CLP' as Currency,
-
-    Cop: 'COP' as Currency,
-
-    Inr: 'INR' as Currency,
-
-    Try: 'TRY' as Currency
-};
+    Unk: 'UNK',
+    Usd: 'USD',
+    Gbp: 'GBP',
+    Cad: 'CAD',
+    Eur: 'EUR',
+    Aud: 'AUD',
+    Nzd: 'NZD',
+    Sek: 'SEK',
+    Ils: 'ILS',
+    Chf: 'CHF',
+    Hkd: 'HKD',
+    Jpy: 'JPY',
+    Sgd: 'SGD',
+    Krw: 'KRW',
+    Nok: 'NOK',
+    Dkk: 'DKK',
+    Pln: 'PLN',
+    Ron: 'RON',
+    Huf: 'HUF',
+    Czk: 'CZK',
+    Brl: 'BRL',
+    Mxn: 'MXN',
+    Ars: 'ARS',
+    Clp: 'CLP',
+    Cop: 'COP',
+    Inr: 'INR',
+    Try: 'TRY'
+} as const;
+export type Currency = typeof Currency[keyof typeof Currency];
 

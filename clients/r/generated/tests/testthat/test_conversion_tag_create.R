@@ -5,14 +5,6 @@ context("Test ConversionTagCreate")
 
 model_instance <- ConversionTagCreate$new()
 
-test_that("name", {
-  # tests for the property `name` (character)
-  # Conversion tag name.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
-})
-
 test_that("aem_enabled", {
   # tests for the property `aem_enabled` (character)
   # Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.
@@ -67,4 +59,12 @@ test_that("aem_loc_enabled", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`aem_loc_enabled`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+  # Conversion tag name.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
 })

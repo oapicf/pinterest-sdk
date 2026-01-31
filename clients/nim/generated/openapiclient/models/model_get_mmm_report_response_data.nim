@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type ReportStatus* {.pure.} = enum
@@ -21,26 +23,66 @@ type ReportStatus* {.pure.} = enum
 
 type GetMMMReportResponseData* = object
   ## 
-  reportStatus*: ReportStatus
-  url*: string
-  size*: float
+  reportStatus*: Option[ReportStatus]
+  url*: Option[string]
+  size*: Option[float]
 
 func `%`*(v: ReportStatus): JsonNode =
-  let str = case v:
-    of ReportStatus.DOESNOTEXIST: "DOES_NOT_EXIST"
-    of ReportStatus.FINISHED: "FINISHED"
-    of ReportStatus.INPROGRESS: "IN_PROGRESS"
-    of ReportStatus.EXPIRED: "EXPIRED"
-    of ReportStatus.FAILED: "FAILED"
-    of ReportStatus.CANCELLED: "CANCELLED"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of ReportStatus.DOESNOTEXIST: %"DOES_NOT_EXIST"
+    of ReportStatus.FINISHED: %"FINISHED"
+    of ReportStatus.INPROGRESS: %"IN_PROGRESS"
+    of ReportStatus.EXPIRED: %"EXPIRED"
+    of ReportStatus.FAILED: %"FAILED"
+    of ReportStatus.CANCELLED: %"CANCELLED"
 func `$`*(v: ReportStatus): string =
   result = case v:
-    of ReportStatus.DOESNOTEXIST: "DOES_NOT_EXIST"
-    of ReportStatus.FINISHED: "FINISHED"
-    of ReportStatus.INPROGRESS: "IN_PROGRESS"
-    of ReportStatus.EXPIRED: "EXPIRED"
-    of ReportStatus.FAILED: "FAILED"
-    of ReportStatus.CANCELLED: "CANCELLED"
+    of ReportStatus.DOESNOTEXIST: $("DOES_NOT_EXIST")
+    of ReportStatus.FINISHED: $("FINISHED")
+    of ReportStatus.INPROGRESS: $("IN_PROGRESS")
+    of ReportStatus.EXPIRED: $("EXPIRED")
+    of ReportStatus.FAILED: $("FAILED")
+    of ReportStatus.CANCELLED: $("CANCELLED")
+
+proc to*(node: JsonNode, T: typedesc[ReportStatus]): ReportStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ReportStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("DOES_NOT_EXIST"):
+    return ReportStatus.DOESNOTEXIST
+  of $("FINISHED"):
+    return ReportStatus.FINISHED
+  of $("IN_PROGRESS"):
+    return ReportStatus.INPROGRESS
+  of $("EXPIRED"):
+    return ReportStatus.EXPIRED
+  of $("FAILED"):
+    return ReportStatus.FAILED
+  of $("CANCELLED"):
+    return ReportStatus.CANCELLED
+  else:
+    raise newException(ValueError, "Invalid enum value for ReportStatus: " & strVal)
+
+
+# Custom JSON deserialization for GetMMMReportResponseData with custom field names
+proc to*(node: JsonNode, T: typedesc[GetMMMReportResponseData]): GetMMMReportResponseData =
+  result = GetMMMReportResponseData()
+  if node.kind == JObject:
+    if node.hasKey("report_status") and node["report_status"].kind != JNull:
+      result.reportStatus = some(to(node["report_status"], ReportStatus))
+    if node.hasKey("url") and node["url"].kind != JNull:
+      result.url = some(to(node["url"], typeof(result.url.get())))
+    if node.hasKey("size") and node["size"].kind != JNull:
+      result.size = some(to(node["size"], typeof(result.size.get())))
+
+# Custom JSON serialization for GetMMMReportResponseData with custom field names
+proc `%`*(obj: GetMMMReportResponseData): JsonNode =
+  result = newJObject()
+  if obj.reportStatus.isSome():
+    result["report_status"] = %obj.reportStatus.get()
+  if obj.url.isSome():
+    result["url"] = %obj.url.get()
+  if obj.size.isSome():
+    result["size"] = %obj.size.get()
+

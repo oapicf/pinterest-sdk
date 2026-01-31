@@ -14,7 +14,7 @@ import play.api.libs.json._
   * @param value Product value. For example, \"199.98\"
   * @param videoTitle Video title. For example, \"How to style your Parker Boots\".
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class PinterestTagEventData(
   currency: Option[Currency],
   leadType: Option[String],

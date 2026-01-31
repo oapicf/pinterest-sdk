@@ -9,9 +9,26 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_targeting_template_audience_sizing_reach_estimate
 
 type TargetingTemplateAudienceSizing* = object
   ## Gets an audience size estimate for a set of given targeting spec data. <p>Returns:</p> An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. 
-  reachEstimate*: TargetingTemplateAudienceSizing_reach_estimate
+  reachEstimate*: Option[TargetingTemplateAudienceSizing_reach_estimate]
+
+
+# Custom JSON deserialization for TargetingTemplateAudienceSizing with custom field names
+proc to*(node: JsonNode, T: typedesc[TargetingTemplateAudienceSizing]): TargetingTemplateAudienceSizing =
+  result = TargetingTemplateAudienceSizing()
+  if node.kind == JObject:
+    if node.hasKey("reach_estimate") and node["reach_estimate"].kind != JNull:
+      result.reachEstimate = some(to(node["reach_estimate"], typeof(result.reachEstimate.get())))
+
+# Custom JSON serialization for TargetingTemplateAudienceSizing with custom field names
+proc `%`*(obj: TargetingTemplateAudienceSizing): JsonNode =
+  result = newJObject()
+  if obj.reachEstimate.isSome():
+    result["reach_estimate"] = %obj.reachEstimate.get()
+

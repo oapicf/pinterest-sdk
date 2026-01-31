@@ -54,12 +54,6 @@
       //expect(instance).to.be.a(PinterestSdk.OauthAccessTokenRequestCode);
     });
 
-    it('should have the property grantType (base name: "grant_type")', function() {
-      // uncomment below and update the code to test the property grantType
-      //var instance = new PinterestSdk.OauthAccessTokenRequestCode();
-      //expect(instance).to.be();
-    });
-
     it('should have the property code (base name: "code")', function() {
       // uncomment below and update the code to test the property code
       //var instance = new PinterestSdk.OauthAccessTokenRequestCode();
@@ -68,6 +62,12 @@
 
     it('should have the property redirectUri (base name: "redirect_uri")', function() {
       // uncomment below and update the code to test the property redirectUri
+      //var instance = new PinterestSdk.OauthAccessTokenRequestCode();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property grantType (base name: "grant_type")', function() {
+      // uncomment below and update the code to test the property grantType
       //var instance = new PinterestSdk.OauthAccessTokenRequestCode();
       //expect(instance).to.be();
     });

@@ -91,7 +91,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="bulkDownloadRequest">Parameters to get ad entities in bulk</param>
-    virtual void bulk_download_create(const std::string &adAccountId, const org::openapitools::server::model::BulkDownloadRequest &bulkDownloadRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void bulk_download_create( const std::string &adAccountId, const org::openapitools::server::model::BulkDownloadRequest &bulkDownloadRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Download advertiser entities in bulk
     /// </summary>
@@ -101,7 +101,7 @@ private:
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="bulkRequestId">Unique identifier of a bulk upsert request.</param>
     /// <param name="includeDetails">if set to True then attach the errors/details to all the requests (optional, default to false)</param>
-    virtual void bulk_request_get(const std::string &adAccountId, const std::string &bulkRequestId, const std::optional<bool> &includeDetails, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void bulk_request_get( const std::string &adAccountId, const std::string &bulkRequestId, const std::optional<bool> &includeDetails, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create/update ad entities in bulk
     /// </summary>
@@ -110,7 +110,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="bulkUpsertRequest">Parameters to get create/update ad entities in bulk</param>
-    virtual void bulk_upsert_create(const std::string &adAccountId, const org::openapitools::server::model::BulkUpsertRequest &bulkUpsertRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void bulk_upsert_create( const std::string &adAccountId, const org::openapitools::server::model::BulkUpsertRequest &bulkUpsertRequest, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

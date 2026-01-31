@@ -15,8 +15,6 @@ import java.math.BigDecimal
 import org.openapitools.client.core.ApiModel
 
 case class ConversionTagCreate (
-  /* Conversion tag name. */
-  name: String,
   /* Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
   aemEnabled: Option[Boolean] = None,
   /* Metadata ingestion frequency. */
@@ -30,6 +28,8 @@ case class ConversionTagCreate (
   /* Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
   aemDbEnabled: Option[Boolean] = None,
   /* Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
-  aemLocEnabled: Option[Boolean] = None
+  aemLocEnabled: Option[Boolean] = None,
+  /* Conversion tag name. */
+  name: String
 ) extends ApiModel
 

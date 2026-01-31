@@ -13,7 +13,6 @@
 
 package com.github.oapicf.pinterestsdk.model;
 
-import com.github.oapicf.pinterestsdk.model.CatalogsItemsRequestLanguage;
 import com.github.oapicf.pinterestsdk.model.CatalogsRetailBatchRequestItemsInner;
 import com.github.oapicf.pinterestsdk.model.Country;
 import com.google.gson.TypeAdapter;

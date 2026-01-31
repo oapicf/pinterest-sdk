@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsHotelReportParameters;
 import org.openapitools.model.CatalogsHotelReportParametersReport;
 import org.openapitools.model.CatalogsRetailReportParameters;
@@ -13,13 +12,14 @@ import org.openapitools.model.CatalogsType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Report parameters
- **/
+ * Report parameters
+ */
 @ApiModel(description="Report parameters")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
@@ -30,11 +30,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsReportParameters  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsType catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsHotelReportParametersReport report;
  /**
    * Get catalogType

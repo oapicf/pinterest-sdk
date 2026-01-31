@@ -24,7 +24,7 @@ No description available.
 .PARAMETER Description
 Audience description.
 .PARAMETER AudienceType
-No description available.
+<a href=""/docs/reference/glossary/#Audience Types"">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
 .OUTPUTS
 
 AudienceCreateRequest<PSCustomObject>
@@ -47,6 +47,7 @@ function Initialize-AudienceCreateRequest {
         [String]
         ${Description},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("CUSTOMER_LIST", "VISITOR", "ENGAGEMENT", "ACTALIKE", "PERSONA")]
         [PSCustomObject]
         ${AudienceType}
     )

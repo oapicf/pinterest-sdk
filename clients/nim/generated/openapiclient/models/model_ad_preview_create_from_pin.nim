@@ -9,8 +9,24 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AdPreviewCreateFromPin* = object
   ## 
   pinId*: string ## Pin ID.
+
+
+# Custom JSON deserialization for AdPreviewCreateFromPin with custom field names
+proc to*(node: JsonNode, T: typedesc[AdPreviewCreateFromPin]): AdPreviewCreateFromPin =
+  result = AdPreviewCreateFromPin()
+  if node.kind == JObject:
+    if node.hasKey("pin_id"):
+      result.pinId = to(node["pin_id"], string)
+
+# Custom JSON serialization for AdPreviewCreateFromPin with custom field names
+proc `%`*(obj: AdPreviewCreateFromPin): JsonNode =
+  result = newJObject()
+  result["pin_id"] = %obj.pinId
+

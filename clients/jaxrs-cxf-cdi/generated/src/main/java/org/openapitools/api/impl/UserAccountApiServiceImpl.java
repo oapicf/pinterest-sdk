@@ -36,7 +36,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2025-05-10T05:40:26.530137127Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-26T05:37:19.298233885Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserAccountApiServiceImpl implements UserAccountApiService {
       @Override
       public Response boardsUserFollowsList(String bookmark, Integer pageSize, Boolean explicitFollowing, String adAccountId, SecurityContext securityContext) {

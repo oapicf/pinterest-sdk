@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_audience_definition
 
 type AudienceDefinitionResponse* = object
   ## 
-  items*: seq[AudienceDefinition]
+  items*: Option[seq[AudienceDefinition]]
+

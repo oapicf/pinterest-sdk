@@ -34,6 +34,18 @@ OAIInviteResponse::~OAIInviteResponse() {}
 
 void OAIInviteResponse::initializeModel() {
 
+    m_id_isSet = false;
+    m_id_isValid = false;
+
+    m_invite_data_isSet = false;
+    m_invite_data_isValid = false;
+
+    m_is_received_invite_isSet = false;
+    m_is_received_invite_isValid = false;
+
+    m_user_isSet = false;
+    m_user_isValid = false;
+
     m_assets_summary_isSet = false;
     m_assets_summary_isValid = false;
 
@@ -48,18 +60,6 @@ void OAIInviteResponse::initializeModel() {
 
     m_created_time_isSet = false;
     m_created_time_isValid = false;
-
-    m_id_isSet = false;
-    m_id_isValid = false;
-
-    m_invite_data_isSet = false;
-    m_invite_data_isValid = false;
-
-    m_is_received_invite_isSet = false;
-    m_is_received_invite_isValid = false;
-
-    m_user_isSet = false;
-    m_user_isValid = false;
 }
 
 void OAIInviteResponse::fromJson(QString jsonString) {
@@ -70,6 +70,18 @@ void OAIInviteResponse::fromJson(QString jsonString) {
 }
 
 void OAIInviteResponse::fromJsonObject(QJsonObject json) {
+
+    m_id_isValid = ::OpenAPI::fromJsonValue(id, json[QString("id")]);
+    m_id_isSet = !json[QString("id")].isNull() && m_id_isValid;
+
+    m_invite_data_isValid = ::OpenAPI::fromJsonValue(invite_data, json[QString("invite_data")]);
+    m_invite_data_isSet = !json[QString("invite_data")].isNull() && m_invite_data_isValid;
+
+    m_is_received_invite_isValid = ::OpenAPI::fromJsonValue(is_received_invite, json[QString("is_received_invite")]);
+    m_is_received_invite_isSet = !json[QString("is_received_invite")].isNull() && m_is_received_invite_isValid;
+
+    m_user_isValid = ::OpenAPI::fromJsonValue(user, json[QString("user")]);
+    m_user_isSet = !json[QString("user")].isNull() && m_user_isValid;
 
     m_assets_summary_isValid = ::OpenAPI::fromJsonValue(assets_summary, json[QString("assets_summary")]);
     m_assets_summary_isSet = !json[QString("assets_summary")].isNull() && m_assets_summary_isValid;
@@ -85,18 +97,6 @@ void OAIInviteResponse::fromJsonObject(QJsonObject json) {
 
     m_created_time_isValid = ::OpenAPI::fromJsonValue(created_time, json[QString("created_time")]);
     m_created_time_isSet = !json[QString("created_time")].isNull() && m_created_time_isValid;
-
-    m_id_isValid = ::OpenAPI::fromJsonValue(id, json[QString("id")]);
-    m_id_isSet = !json[QString("id")].isNull() && m_id_isValid;
-
-    m_invite_data_isValid = ::OpenAPI::fromJsonValue(invite_data, json[QString("invite_data")]);
-    m_invite_data_isSet = !json[QString("invite_data")].isNull() && m_invite_data_isValid;
-
-    m_is_received_invite_isValid = ::OpenAPI::fromJsonValue(is_received_invite, json[QString("is_received_invite")]);
-    m_is_received_invite_isSet = !json[QString("is_received_invite")].isNull() && m_is_received_invite_isValid;
-
-    m_user_isValid = ::OpenAPI::fromJsonValue(user, json[QString("user")]);
-    m_user_isSet = !json[QString("user")].isNull() && m_user_isValid;
 }
 
 QString OAIInviteResponse::asJson() const {
@@ -108,21 +108,6 @@ QString OAIInviteResponse::asJson() const {
 
 QJsonObject OAIInviteResponse::asJsonObject() const {
     QJsonObject obj;
-    if (assets_summary.isSet()) {
-        obj.insert(QString("assets_summary"), ::OpenAPI::toJsonValue(assets_summary));
-    }
-    if (business_roles.size() > 0) {
-        obj.insert(QString("business_roles"), ::OpenAPI::toJsonValue(business_roles));
-    }
-    if (created_by_business.isSet()) {
-        obj.insert(QString("created_by_business"), ::OpenAPI::toJsonValue(created_by_business));
-    }
-    if (created_by_user.isSet()) {
-        obj.insert(QString("created_by_user"), ::OpenAPI::toJsonValue(created_by_user));
-    }
-    if (m_created_time_isSet) {
-        obj.insert(QString("created_time"), ::OpenAPI::toJsonValue(created_time));
-    }
     if (m_id_isSet) {
         obj.insert(QString("id"), ::OpenAPI::toJsonValue(id));
     }
@@ -135,87 +120,22 @@ QJsonObject OAIInviteResponse::asJsonObject() const {
     if (user.isSet()) {
         obj.insert(QString("user"), ::OpenAPI::toJsonValue(user));
     }
+    if (assets_summary.isSet()) {
+        obj.insert(QString("assets_summary"), ::OpenAPI::toJsonValue(assets_summary));
+    }
+    if (business_roles.size() > 0) {
+        obj.insert(QString("business_roles"), ::OpenAPI::toJsonValue(business_roles));
+    }
+    if (m_created_by_business_isSet) {
+        obj.insert(QString("created_by_business"), ::OpenAPI::toJsonValue(created_by_business));
+    }
+    if (m_created_by_user_isSet) {
+        obj.insert(QString("created_by_user"), ::OpenAPI::toJsonValue(created_by_user));
+    }
+    if (m_created_time_isSet) {
+        obj.insert(QString("created_time"), ::OpenAPI::toJsonValue(created_time));
+    }
     return obj;
-}
-
-OAIInviteAssetsSummary OAIInviteResponse::getAssetsSummary() const {
-    return assets_summary;
-}
-void OAIInviteResponse::setAssetsSummary(const OAIInviteAssetsSummary &assets_summary) {
-    this->assets_summary = assets_summary;
-    this->m_assets_summary_isSet = true;
-}
-
-bool OAIInviteResponse::is_assets_summary_Set() const{
-    return m_assets_summary_isSet;
-}
-
-bool OAIInviteResponse::is_assets_summary_Valid() const{
-    return m_assets_summary_isValid;
-}
-
-QList<QString> OAIInviteResponse::getBusinessRoles() const {
-    return business_roles;
-}
-void OAIInviteResponse::setBusinessRoles(const QList<QString> &business_roles) {
-    this->business_roles = business_roles;
-    this->m_business_roles_isSet = true;
-}
-
-bool OAIInviteResponse::is_business_roles_Set() const{
-    return m_business_roles_isSet;
-}
-
-bool OAIInviteResponse::is_business_roles_Valid() const{
-    return m_business_roles_isValid;
-}
-
-OAIBusinessAccessUserSummary OAIInviteResponse::getCreatedByBusiness() const {
-    return created_by_business;
-}
-void OAIInviteResponse::setCreatedByBusiness(const OAIBusinessAccessUserSummary &created_by_business) {
-    this->created_by_business = created_by_business;
-    this->m_created_by_business_isSet = true;
-}
-
-bool OAIInviteResponse::is_created_by_business_Set() const{
-    return m_created_by_business_isSet;
-}
-
-bool OAIInviteResponse::is_created_by_business_Valid() const{
-    return m_created_by_business_isValid;
-}
-
-OAIBusinessAccessUserSummary OAIInviteResponse::getCreatedByUser() const {
-    return created_by_user;
-}
-void OAIInviteResponse::setCreatedByUser(const OAIBusinessAccessUserSummary &created_by_user) {
-    this->created_by_user = created_by_user;
-    this->m_created_by_user_isSet = true;
-}
-
-bool OAIInviteResponse::is_created_by_user_Set() const{
-    return m_created_by_user_isSet;
-}
-
-bool OAIInviteResponse::is_created_by_user_Valid() const{
-    return m_created_by_user_isValid;
-}
-
-qint32 OAIInviteResponse::getCreatedTime() const {
-    return created_time;
-}
-void OAIInviteResponse::setCreatedTime(const qint32 &created_time) {
-    this->created_time = created_time;
-    this->m_created_time_isSet = true;
-}
-
-bool OAIInviteResponse::is_created_time_Set() const{
-    return m_created_time_isSet;
-}
-
-bool OAIInviteResponse::is_created_time_Valid() const{
-    return m_created_time_isValid;
 }
 
 QString OAIInviteResponse::getId() const {
@@ -282,34 +202,89 @@ bool OAIInviteResponse::is_user_Valid() const{
     return m_user_isValid;
 }
 
+OAIInviteAssetsSummary OAIInviteResponse::getAssetsSummary() const {
+    return assets_summary;
+}
+void OAIInviteResponse::setAssetsSummary(const OAIInviteAssetsSummary &assets_summary) {
+    this->assets_summary = assets_summary;
+    this->m_assets_summary_isSet = true;
+}
+
+bool OAIInviteResponse::is_assets_summary_Set() const{
+    return m_assets_summary_isSet;
+}
+
+bool OAIInviteResponse::is_assets_summary_Valid() const{
+    return m_assets_summary_isValid;
+}
+
+QList<QString> OAIInviteResponse::getBusinessRoles() const {
+    return business_roles;
+}
+void OAIInviteResponse::setBusinessRoles(const QList<QString> &business_roles) {
+    this->business_roles = business_roles;
+    this->m_business_roles_isSet = true;
+}
+
+bool OAIInviteResponse::is_business_roles_Set() const{
+    return m_business_roles_isSet;
+}
+
+bool OAIInviteResponse::is_business_roles_Valid() const{
+    return m_business_roles_isValid;
+}
+
+OAIObject OAIInviteResponse::getCreatedByBusiness() const {
+    return created_by_business;
+}
+void OAIInviteResponse::setCreatedByBusiness(const OAIObject &created_by_business) {
+    this->created_by_business = created_by_business;
+    this->m_created_by_business_isSet = true;
+}
+
+bool OAIInviteResponse::is_created_by_business_Set() const{
+    return m_created_by_business_isSet;
+}
+
+bool OAIInviteResponse::is_created_by_business_Valid() const{
+    return m_created_by_business_isValid;
+}
+
+OAIObject OAIInviteResponse::getCreatedByUser() const {
+    return created_by_user;
+}
+void OAIInviteResponse::setCreatedByUser(const OAIObject &created_by_user) {
+    this->created_by_user = created_by_user;
+    this->m_created_by_user_isSet = true;
+}
+
+bool OAIInviteResponse::is_created_by_user_Set() const{
+    return m_created_by_user_isSet;
+}
+
+bool OAIInviteResponse::is_created_by_user_Valid() const{
+    return m_created_by_user_isValid;
+}
+
+qint32 OAIInviteResponse::getCreatedTime() const {
+    return created_time;
+}
+void OAIInviteResponse::setCreatedTime(const qint32 &created_time) {
+    this->created_time = created_time;
+    this->m_created_time_isSet = true;
+}
+
+bool OAIInviteResponse::is_created_time_Set() const{
+    return m_created_time_isSet;
+}
+
+bool OAIInviteResponse::is_created_time_Valid() const{
+    return m_created_time_isValid;
+}
+
 bool OAIInviteResponse::isSet() const {
     bool isObjectUpdated = false;
     do {
-        if (assets_summary.isSet()) {
-            isObjectUpdated = true;
-            break;
-        }
-
-        if (business_roles.size() > 0) {
-            isObjectUpdated = true;
-            break;
-        }
-
-        if (created_by_business.isSet()) {
-            isObjectUpdated = true;
-            break;
-        }
-
-        if (created_by_user.isSet()) {
-            isObjectUpdated = true;
-            break;
-        }
-
-        if (m_created_time_isSet) {
-            isObjectUpdated = true;
-            break;
-        }
-
         if (m_id_isSet) {
             isObjectUpdated = true;
             break;
@@ -326,6 +301,31 @@ bool OAIInviteResponse::isSet() const {
         }
 
         if (user.isSet()) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (assets_summary.isSet()) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (business_roles.size() > 0) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_created_by_business_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_created_by_user_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_created_time_isSet) {
             isObjectUpdated = true;
             break;
         }

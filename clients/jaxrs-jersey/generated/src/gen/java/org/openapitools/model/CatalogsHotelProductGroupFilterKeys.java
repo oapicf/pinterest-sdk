@@ -48,7 +48,7 @@ import javax.validation.Valid;
   CatalogsHotelProductGroupFilterKeys.JSON_PROPERTY_C_U_S_T_O_M_L_A_B_E_L4,
   CatalogsHotelProductGroupFilterKeys.JSON_PROPERTY_C_O_U_N_T_R_Y
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProductGroupFilterKeys   {
   public static final String JSON_PROPERTY_P_R_I_C_E = "PRICE";
   @JsonProperty(JSON_PROPERTY_P_R_I_C_E)

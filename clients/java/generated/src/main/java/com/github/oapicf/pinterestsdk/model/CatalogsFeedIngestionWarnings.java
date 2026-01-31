@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedIngestionWarnings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedIngestionWarnings {
   public static final String SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R = "ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR";
   @SerializedName(SERIALIZED_NAME_A_D_D_I_T_I_O_N_A_L_I_M_A_G_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R)
@@ -251,16 +251,10 @@ public class CatalogsFeedIngestionWarnings {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR");
-    openapiFields.add("ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE");
-    openapiFields.add("ADDITIONAL_IMAGE_MALFORMED_URL");
-    openapiFields.add("ADDITIONAL_IMAGE_FILE_NOT_FOUND");
-    openapiFields.add("ADDITIONAL_IMAGE_INVALID_FILE");
-    openapiFields.add("HOTEL_PRICE_HEADER_IS_PRESENT");
+    openapiFields = new HashSet<String>(Arrays.asList("ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR", "ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE", "ADDITIONAL_IMAGE_MALFORMED_URL", "ADDITIONAL_IMAGE_FILE_NOT_FOUND", "ADDITIONAL_IMAGE_INVALID_FILE", "HOTEL_PRICE_HEADER_IS_PRESENT"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -272,7 +266,7 @@ public class CatalogsFeedIngestionWarnings {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsFeedIngestionWarnings.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsFeedIngestionWarnings is not found in the empty JSON string", CatalogsFeedIngestionWarnings.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsFeedIngestionWarnings is not found in the empty JSON string", CatalogsFeedIngestionWarnings.openapiRequiredFields.toString()));
         }
       }
 
@@ -280,7 +274,7 @@ public class CatalogsFeedIngestionWarnings {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsFeedIngestionWarnings.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsFeedIngestionWarnings` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsFeedIngestionWarnings` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

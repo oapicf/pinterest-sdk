@@ -47,7 +47,7 @@ data class CatalogsRetailProductMetadata(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("currency", required = true) val currency: NonNullableCatalogsCurrency
-    ) {
+) {
 
 }
 

@@ -27,7 +27,7 @@ pub enum OauthSlashTokenError {
 /// Generate an OAuth access token by using an authorization code or a refresh token.  IMPORTANT: You need to start the OAuth flow via www.pinterest.com/oauth before calling this endpoint (or have an existing refresh token).  See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a> for more.  <strong>Parameter <i>refresh_on</i> and its corresponding response type <i>everlasting_refresh</i> are now available to all apps! Later this year, continuous refresh will become the default behavior (ie you will no longer need to send this parameter). <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  <strong>Grant type <i>client_credentials</i> and its corresponding response type are not fully available. You will likely get a default error if you attempt to use this grant_type.</strong>
 pub async fn oauth_slash_token(configuration: &configuration::Configuration, grant_type: &str) -> Result<models::OauthAccessTokenResponse, Error<OauthSlashTokenError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_grant_type = grant_type;
+    let p_form_grant_type = grant_type;
 
     let uri_str = format!("{}/oauth/token", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -39,7 +39,7 @@ pub async fn oauth_slash_token(configuration: &configuration::Configuration, gra
         req_builder = req_builder.basic_auth(auth_conf.0.to_owned(), auth_conf.1.to_owned());
     };
     let mut multipart_form_params = std::collections::HashMap::new();
-    multipart_form_params.insert("grant_type", p_grant_type.to_string());
+    multipart_form_params.insert("grant_type", p_form_grant_type.to_string());
     req_builder = req_builder.form(&multipart_form_params);
 
     let req = req_builder.build()?;

@@ -131,8 +131,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "partner_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                partnerIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            partnerIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "partner_type":
                             partnerType = new Option<string?>(utf8JsonReader.GetString());

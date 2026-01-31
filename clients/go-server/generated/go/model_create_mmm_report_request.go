@@ -16,6 +16,9 @@ package openapi
 
 type CreateMmmReportRequest struct {
 
+	// A List of countries for filtering
+	Countries []TargetingAdvertiserCountry `json:"countries,omitempty"`
+
 	// Name of the Marketing Mix Modeling (MMM) report
 	ReportName string `json:"report_name"`
 
@@ -36,9 +39,6 @@ type CreateMmmReportRequest struct {
 
 	// Metric and entity columns
 	Columns []MmmReportingColumn `json:"columns"`
-
-	// A List of countries for filtering
-	Countries []TargetingAdvertiserCountry `json:"countries,omitempty"`
 }
 
 // AssertCreateMmmReportRequestRequired checks if the required fields are not zero-ed

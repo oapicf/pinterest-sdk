@@ -9,11 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_audience_rule
 
 type AudienceCommon* = object
   ## 
-  adAccountId*: string ## Ad account ID.
-  name*: string ## Audience name.
-  rule*: AudienceRule
+  adAccountId*: Option[string] ## Ad account ID.
+  name*: Option[string] ## Audience name.
+  rule*: Option[AudienceRule]
+
+
+# Custom JSON deserialization for AudienceCommon with custom field names
+proc to*(node: JsonNode, T: typedesc[AudienceCommon]): AudienceCommon =
+  result = AudienceCommon()
+  if node.kind == JObject:
+    if node.hasKey("ad_account_id") and node["ad_account_id"].kind != JNull:
+      result.adAccountId = some(to(node["ad_account_id"], typeof(result.adAccountId.get())))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("rule") and node["rule"].kind != JNull:
+      result.rule = some(to(node["rule"], typeof(result.rule.get())))
+
+# Custom JSON serialization for AudienceCommon with custom field names
+proc `%`*(obj: AudienceCommon): JsonNode =
+  result = newJObject()
+  if obj.adAccountId.isSome():
+    result["ad_account_id"] = %obj.adAccountId.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.rule.isSome():
+    result["rule"] = %obj.rule.get()
+

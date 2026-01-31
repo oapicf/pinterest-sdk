@@ -222,6 +222,8 @@ namespace Org.OpenAPITools.Client
                 return CatalogsCreativeAssetsBatchItem.OperationEnumToJsonValue(catalogsCreativeAssetsBatchItemOperationEnum);
             if (obj is CatalogsCreativeAssetsBatchRequest.CatalogTypeEnum catalogsCreativeAssetsBatchRequestCatalogTypeEnum)
                 return CatalogsCreativeAssetsBatchRequest.CatalogTypeEnumToJsonValue(catalogsCreativeAssetsBatchRequestCatalogTypeEnum);
+            if (obj is CatalogsCreativeAssetsBatchRequest.LanguageEnum catalogsCreativeAssetsBatchRequestLanguageEnum)
+                return CatalogsCreativeAssetsBatchRequest.LanguageEnumToJsonValue(catalogsCreativeAssetsBatchRequestLanguageEnum);
             if (obj is CatalogsCreativeAssetsItemsFilter.CatalogTypeEnum catalogsCreativeAssetsItemsFilterCatalogTypeEnum)
                 return CatalogsCreativeAssetsItemsFilter.CatalogTypeEnumToJsonValue(catalogsCreativeAssetsItemsFilterCatalogTypeEnum);
             if (obj is CatalogsCreativeAssetsItemsPostFilter.CatalogTypeEnum catalogsCreativeAssetsItemsPostFilterCatalogTypeEnum)
@@ -258,6 +260,8 @@ namespace Org.OpenAPITools.Client
                 return CatalogsHotelBatchItem.OperationEnumToJsonValue(catalogsHotelBatchItemOperationEnum);
             if (obj is CatalogsHotelBatchRequest.CatalogTypeEnum catalogsHotelBatchRequestCatalogTypeEnum)
                 return CatalogsHotelBatchRequest.CatalogTypeEnumToJsonValue(catalogsHotelBatchRequestCatalogTypeEnum);
+            if (obj is CatalogsHotelBatchRequest.LanguageEnum catalogsHotelBatchRequestLanguageEnum)
+                return CatalogsHotelBatchRequest.LanguageEnumToJsonValue(catalogsHotelBatchRequestLanguageEnum);
             if (obj is CatalogsHotelItemsFilter.CatalogTypeEnum catalogsHotelItemsFilterCatalogTypeEnum)
                 return CatalogsHotelItemsFilter.CatalogTypeEnumToJsonValue(catalogsHotelItemsFilterCatalogTypeEnum);
             if (obj is CatalogsHotelItemsPostFilter.CatalogTypeEnum catalogsHotelItemsPostFilterCatalogTypeEnum)
@@ -280,6 +284,18 @@ namespace Org.OpenAPITools.Client
                 return CatalogsHotelReportParametersReport.ReportTypeEnumToJsonValue(catalogsHotelReportParametersReportReportTypeEnum);
             if (obj is CatalogsItemValidationIssue catalogsItemValidationIssue)
                 return CatalogsItemValidationIssueValueConverter.ToJsonValue(catalogsItemValidationIssue);
+            if (obj is CatalogsItemsCreateBatchRequest.LanguageEnum catalogsItemsCreateBatchRequestLanguageEnum)
+                return CatalogsItemsCreateBatchRequest.LanguageEnumToJsonValue(catalogsItemsCreateBatchRequestLanguageEnum);
+            if (obj is CatalogsItemsDeleteBatchRequest.LanguageEnum catalogsItemsDeleteBatchRequestLanguageEnum)
+                return CatalogsItemsDeleteBatchRequest.LanguageEnumToJsonValue(catalogsItemsDeleteBatchRequestLanguageEnum);
+            if (obj is CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnum catalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum)
+                return CatalogsItemsDeleteDiscontinuedBatchRequest.LanguageEnumToJsonValue(catalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum);
+            if (obj is CatalogsItemsRequest.LanguageEnum catalogsItemsRequestLanguageEnum)
+                return CatalogsItemsRequest.LanguageEnumToJsonValue(catalogsItemsRequestLanguageEnum);
+            if (obj is CatalogsItemsUpdateBatchRequest.LanguageEnum catalogsItemsUpdateBatchRequestLanguageEnum)
+                return CatalogsItemsUpdateBatchRequest.LanguageEnumToJsonValue(catalogsItemsUpdateBatchRequestLanguageEnum);
+            if (obj is CatalogsItemsUpsertBatchRequest.LanguageEnum catalogsItemsUpsertBatchRequestLanguageEnum)
+                return CatalogsItemsUpsertBatchRequest.LanguageEnumToJsonValue(catalogsItemsUpsertBatchRequestLanguageEnum);
             if (obj is CatalogsLocale catalogsLocale)
                 return CatalogsLocaleValueConverter.ToJsonValue(catalogsLocale);
             if (obj is CatalogsProductGroupPricingCurrencyCriteria.OperatorEnum catalogsProductGroupPricingCurrencyCriteriaOperatorEnum)
@@ -304,6 +320,8 @@ namespace Org.OpenAPITools.Client
                 return CatalogsReportStats.ReportTypeEnumToJsonValue(catalogsReportStatsReportTypeEnum);
             if (obj is CatalogsRetailBatchRequest.CatalogTypeEnum catalogsRetailBatchRequestCatalogTypeEnum)
                 return CatalogsRetailBatchRequest.CatalogTypeEnumToJsonValue(catalogsRetailBatchRequestCatalogTypeEnum);
+            if (obj is CatalogsRetailBatchRequest.LanguageEnum catalogsRetailBatchRequestLanguageEnum)
+                return CatalogsRetailBatchRequest.LanguageEnumToJsonValue(catalogsRetailBatchRequestLanguageEnum);
             if (obj is CatalogsRetailBatchRequestItemsInner.OperationEnum catalogsRetailBatchRequestItemsInnerOperationEnum)
                 return CatalogsRetailBatchRequestItemsInner.OperationEnumToJsonValue(catalogsRetailBatchRequestItemsInnerOperationEnum);
             if (obj is CatalogsRetailItemsFilter.CatalogTypeEnum catalogsRetailItemsFilterCatalogTypeEnum)
@@ -412,6 +430,8 @@ namespace Org.OpenAPITools.Client
                 return InviteTypeValueConverter.ToJsonValue(inviteType);
             if (obj is ItemProcessingStatus itemProcessingStatus)
                 return ItemProcessingStatusValueConverter.ToJsonValue(itemProcessingStatus);
+            if (obj is ItemsBatchPostRequest.LanguageEnum itemsBatchPostRequestLanguageEnum)
+                return ItemsBatchPostRequest.LanguageEnumToJsonValue(itemsBatchPostRequestLanguageEnum);
             if (obj is Language language)
                 return LanguageValueConverter.ToJsonValue(language);
             if (obj is LeadFormQuestionFieldType leadFormQuestionFieldType)

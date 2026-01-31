@@ -22,7 +22,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "BaseInviteDataResponse_invite_data", description = "Metadata for the invite/request.")
 @JsonTypeName("BaseInviteDataResponse_invite_data")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BaseInviteDataResponseInviteData {
 
   private @Nullable Integer inviteExpiration;
@@ -35,7 +35,7 @@ public class BaseInviteDataResponseInviteData {
 
   private @Nullable Integer sentAt;
 
-  public BaseInviteDataResponseInviteData inviteExpiration(Integer inviteExpiration) {
+  public BaseInviteDataResponseInviteData inviteExpiration(@Nullable Integer inviteExpiration) {
     this.inviteExpiration = inviteExpiration;
     return this;
   }
@@ -47,15 +47,15 @@ public class BaseInviteDataResponseInviteData {
   
   @Schema(name = "invite_expiration", example = "1709748104775", description = "The date and time when the invite/request will expire. Returned in milliseconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("invite_expiration")
-  public Integer getInviteExpiration() {
+  public @Nullable Integer getInviteExpiration() {
     return inviteExpiration;
   }
 
-  public void setInviteExpiration(Integer inviteExpiration) {
+  public void setInviteExpiration(@Nullable Integer inviteExpiration) {
     this.inviteExpiration = inviteExpiration;
   }
 
-  public BaseInviteDataResponseInviteData inviteStatus(String inviteStatus) {
+  public BaseInviteDataResponseInviteData inviteStatus(@Nullable String inviteStatus) {
     this.inviteStatus = inviteStatus;
     return this;
   }
@@ -67,15 +67,15 @@ public class BaseInviteDataResponseInviteData {
   
   @Schema(name = "invite_status", example = "PENDING", description = "The current status of the invite. The invite can be in one of the following states PENDING, ACCEPTED, DECLINED, CANCELLED, EXPIRED.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("invite_status")
-  public String getInviteStatus() {
+  public @Nullable String getInviteStatus() {
     return inviteStatus;
   }
 
-  public void setInviteStatus(String inviteStatus) {
+  public void setInviteStatus(@Nullable String inviteStatus) {
     this.inviteStatus = inviteStatus;
   }
 
-  public BaseInviteDataResponseInviteData inviteType(String inviteType) {
+  public BaseInviteDataResponseInviteData inviteType(@Nullable String inviteType) {
     this.inviteType = inviteType;
     return this;
   }
@@ -87,15 +87,15 @@ public class BaseInviteDataResponseInviteData {
   
   @Schema(name = "invite_type", example = "MEMBER_INVITE", description = "The type of invite. <br>'MEMBER_INVITE' is to invite a member to access your business assets. <br>'PARTNER_INVITE' is to invite a partner to access your business assets. <br>'PARTNER_REQUEST' is to request access a partner's business assets.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("invite_type")
-  public String getInviteType() {
+  public @Nullable String getInviteType() {
     return inviteType;
   }
 
-  public void setInviteType(String inviteType) {
+  public void setInviteType(@Nullable String inviteType) {
     this.inviteType = inviteType;
   }
 
-  public BaseInviteDataResponseInviteData lastUpdatedTime(Integer lastUpdatedTime) {
+  public BaseInviteDataResponseInviteData lastUpdatedTime(@Nullable Integer lastUpdatedTime) {
     this.lastUpdatedTime = lastUpdatedTime;
     return this;
   }
@@ -107,15 +107,15 @@ public class BaseInviteDataResponseInviteData {
   
   @Schema(name = "last_updated_time", example = "1646767577816", description = "The date and time the invite/request was last updated. Returned in milliseconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("last_updated_time")
-  public Integer getLastUpdatedTime() {
+  public @Nullable Integer getLastUpdatedTime() {
     return lastUpdatedTime;
   }
 
-  public void setLastUpdatedTime(Integer lastUpdatedTime) {
+  public void setLastUpdatedTime(@Nullable Integer lastUpdatedTime) {
     this.lastUpdatedTime = lastUpdatedTime;
   }
 
-  public BaseInviteDataResponseInviteData sentAt(Integer sentAt) {
+  public BaseInviteDataResponseInviteData sentAt(@Nullable Integer sentAt) {
     this.sentAt = sentAt;
     return this;
   }
@@ -127,11 +127,11 @@ public class BaseInviteDataResponseInviteData {
   
   @Schema(name = "sent_at", example = "1646767577816", description = "The date and time the invite/request was sent/created. Returned in milliseconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("sent_at")
-  public Integer getSentAt() {
+  public @Nullable Integer getSentAt() {
     return sentAt;
   }
 
-  public void setSentAt(Integer sentAt) {
+  public void setSentAt(@Nullable Integer sentAt) {
     this.sentAt = sentAt;
   }
 

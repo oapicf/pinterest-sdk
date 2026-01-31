@@ -128,12 +128,8 @@ class CampaignsController extends Controller
 
         $attributionTypes = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\ConversionReportAttributionType::class);
 
-        try {
-            $apiResult = $this->api->campaignTargetingAnalyticsGet($adAccountId, $campaignIds, $startDate, $endDate, $targetingTypes, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime, $attributionTypes);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->campaignTargetingAnalyticsGet($adAccountId, $campaignIds, $startDate, $endDate, $targetingTypes, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime, $attributionTypes);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\MetricsResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -222,12 +218,8 @@ class CampaignsController extends Controller
 
         $conversionReportTime = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdGroupsAnalyticsConversionReportTimeParameter::class);
 
-        try {
-            $apiResult = $this->api->campaignsAnalytics($adAccountId, $startDate, $endDate, $campaignIds, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->campaignsAnalytics($adAccountId, $startDate, $endDate, $campaignIds, $columns, $granularity, $clickWindowDays, $engagementWindowDays, $viewWindowDays, $conversionReportTime);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -272,12 +264,8 @@ class CampaignsController extends Controller
 
         $campaignCreateRequest = $request->get('campaignCreateRequest');
 
-        try {
-            $apiResult = $this->api->campaignsCreate($adAccountId, $campaignCreateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->campaignsCreate($adAccountId, $campaignCreateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CampaignCreateResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -328,12 +316,8 @@ class CampaignsController extends Controller
 
 
 
-        try {
-            $apiResult = $this->api->campaignsGet($adAccountId, $campaignId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->campaignsGet($adAccountId, $campaignId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CampaignResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -405,12 +389,8 @@ class CampaignsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->campaignsList($adAccountId, $campaignIds, $entityStatuses, $pageSize, $order, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->campaignsList($adAccountId, $campaignIds, $entityStatuses, $pageSize, $order, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CampaignsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -454,12 +434,8 @@ class CampaignsController extends Controller
 
         $campaignUpdateRequest = $request->get('campaignUpdateRequest');
 
-        try {
-            $apiResult = $this->api->campaignsUpdate($adAccountId, $campaignUpdateRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->campaignsUpdate($adAccountId, $campaignUpdateRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CampaignUpdateResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

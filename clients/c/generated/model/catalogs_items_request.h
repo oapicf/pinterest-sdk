@@ -16,14 +16,13 @@
 typedef struct catalogs_items_request_t catalogs_items_request_t;
 
 #include "catalogs_items_post_filters.h"
-#include "catalogs_items_request_language.h"
 #include "country.h"
 
 
 
 typedef struct catalogs_items_request_t {
     pinterest_rest_api_country__e country; //referenced enum
-    struct catalogs_items_request_language_t *language; //model
+    pinterest_rest_api_catalogs_items_request_LANGUAGE_e language; //enum
     struct catalogs_items_post_filters_t *filters; //model
 
     int _library_owned; // Is the library responsible for freeing this object?
@@ -31,7 +30,7 @@ typedef struct catalogs_items_request_t {
 
 __attribute__((deprecated)) catalogs_items_request_t *catalogs_items_request_create(
     pinterest_rest_api_country__e country,
-    catalogs_items_request_language_t *language,
+    pinterest_rest_api_catalogs_items_request_LANGUAGE_e language,
     catalogs_items_post_filters_t *filters
 );
 

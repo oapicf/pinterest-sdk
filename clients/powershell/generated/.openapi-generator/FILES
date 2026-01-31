@@ -85,7 +85,6 @@ docs/AudienceCategory.md
 docs/AudienceCommon.md
 docs/AudienceCreateCustomRequest.md
 docs/AudienceCreateRequest.md
-docs/AudienceCreateRequest1AudienceType.md
 docs/AudienceDataParty.md
 docs/AudienceDefinition.md
 docs/AudienceDefinitionResponse.md
@@ -274,7 +273,6 @@ docs/CatalogsItemsDeleteDiscontinuedBatchRequest.md
 docs/CatalogsItemsFilters.md
 docs/CatalogsItemsPostFilters.md
 docs/CatalogsItemsRequest.md
-docs/CatalogsItemsRequestLanguage.md
 docs/CatalogsItemsUpdateBatchRequest.md
 docs/CatalogsItemsUpsertBatchRequest.md
 docs/CatalogsList200Response.md
@@ -619,7 +617,6 @@ docs/PinMediaWithVideos.md
 docs/PinPromotionSummaryStatus.md
 docs/PinUpdate.md
 docs/PinUpdateCarouselSlotsInner.md
-docs/PinsAnalyticsMetricTypesParameterInner.md
 docs/PinsApi.md
 docs/PinsList200Response.md
 docs/PinsSaveRequest.md
@@ -868,7 +865,6 @@ src/PSOpenAPITools/Model/AudienceCategory.ps1
 src/PSOpenAPITools/Model/AudienceCommon.ps1
 src/PSOpenAPITools/Model/AudienceCreateCustomRequest.ps1
 src/PSOpenAPITools/Model/AudienceCreateRequest.ps1
-src/PSOpenAPITools/Model/AudienceCreateRequest1AudienceType.ps1
 src/PSOpenAPITools/Model/AudienceDataParty.ps1
 src/PSOpenAPITools/Model/AudienceDefinition.ps1
 src/PSOpenAPITools/Model/AudienceDefinitionResponse.ps1
@@ -1046,7 +1042,6 @@ src/PSOpenAPITools/Model/CatalogsItemsDeleteDiscontinuedBatchRequest.ps1
 src/PSOpenAPITools/Model/CatalogsItemsFilters.ps1
 src/PSOpenAPITools/Model/CatalogsItemsPostFilters.ps1
 src/PSOpenAPITools/Model/CatalogsItemsRequest.ps1
-src/PSOpenAPITools/Model/CatalogsItemsRequestLanguage.ps1
 src/PSOpenAPITools/Model/CatalogsItemsUpdateBatchRequest.ps1
 src/PSOpenAPITools/Model/CatalogsItemsUpsertBatchRequest.ps1
 src/PSOpenAPITools/Model/CatalogsList200Response.ps1
@@ -1380,7 +1375,6 @@ src/PSOpenAPITools/Model/PinMediaWithVideos.ps1
 src/PSOpenAPITools/Model/PinPromotionSummaryStatus.ps1
 src/PSOpenAPITools/Model/PinUpdate.ps1
 src/PSOpenAPITools/Model/PinUpdateCarouselSlotsInner.ps1
-src/PSOpenAPITools/Model/PinsAnalyticsMetricTypesParameterInner.ps1
 src/PSOpenAPITools/Model/PinsList200Response.ps1
 src/PSOpenAPITools/Model/PinsSaveRequest.ps1
 src/PSOpenAPITools/Model/PinterestTagEventData.ps1

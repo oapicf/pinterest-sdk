@@ -10,16 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SSIOAccountPMPName  {
   
-  @ApiModelProperty(example = "Bidalgo", value = "Display name")
  /**
-   * Display name
-  **/
+  * Display name
+  */
+  @ApiModelProperty(example = "Bidalgo", value = "Display name")
+
   private String name;
 
-  @ApiModelProperty(example = "0011N00001LW2aSQAT", value = "Salesforce id for PMP")
  /**
-   * Salesforce id for PMP
-  **/
+  * Salesforce id for PMP
+  */
+  @ApiModelProperty(example = "0011N00001LW2aSQAT", value = "Salesforce id for PMP")
+
   private String id;
  /**
    * Display name

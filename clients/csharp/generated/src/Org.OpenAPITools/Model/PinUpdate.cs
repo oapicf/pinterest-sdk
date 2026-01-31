@@ -311,8 +311,7 @@ namespace Org.OpenAPITools.Model
                             title = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "carousel_slots":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                carouselSlots = new Option<List<PinUpdateCarouselSlotsInner>?>(JsonSerializer.Deserialize<List<PinUpdateCarouselSlotsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            carouselSlots = new Option<List<PinUpdateCarouselSlotsInner>?>(JsonSerializer.Deserialize<List<PinUpdateCarouselSlotsInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "note":
                             note = new Option<string?>(utf8JsonReader.GetString());

@@ -21,14 +21,14 @@ import javax.annotation.Generated;
  * SharedAudienceCommon
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SharedAudienceCommon {
 
   private @Nullable String audienceId;
 
   private @Nullable OperationType operationType;
 
-  public SharedAudienceCommon audienceId(String audienceId) {
+  public SharedAudienceCommon audienceId(@Nullable String audienceId) {
     this.audienceId = audienceId;
     return this;
   }
@@ -40,15 +40,15 @@ public class SharedAudienceCommon {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "audience_id", example = "2542621871096", description = "Unique identifier of an audience", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("audience_id")
-  public String getAudienceId() {
+  public @Nullable String getAudienceId() {
     return audienceId;
   }
 
-  public void setAudienceId(String audienceId) {
+  public void setAudienceId(@Nullable String audienceId) {
     this.audienceId = audienceId;
   }
 
-  public SharedAudienceCommon operationType(OperationType operationType) {
+  public SharedAudienceCommon operationType(@Nullable OperationType operationType) {
     this.operationType = operationType;
     return this;
   }
@@ -60,11 +60,11 @@ public class SharedAudienceCommon {
   @Valid 
   @Schema(name = "operation_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("operation_type")
-  public OperationType getOperationType() {
+  public @Nullable OperationType getOperationType() {
     return operationType;
   }
 
-  public void setOperationType(OperationType operationType) {
+  public void setOperationType(@Nullable OperationType operationType) {
     this.operationType = operationType;
   }
 

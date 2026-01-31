@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * System error details included in the log sent by the client.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogClientError {
   public static final String SERIALIZED_NAME_CAUSE = "cause";
   @SerializedName(SERIALIZED_NAME_CAUSE)
@@ -329,19 +329,10 @@ public class IntegrationLogClientError {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("cause");
-    openapiFields.add("column_number");
-    openapiFields.add("file_name");
-    openapiFields.add("line_number");
-    openapiFields.add("message");
-    openapiFields.add("message_detail");
-    openapiFields.add("name");
-    openapiFields.add("number");
-    openapiFields.add("stack_trace");
+    openapiFields = new HashSet<String>(Arrays.asList("cause", "column_number", "file_name", "line_number", "message", "message_detail", "name", "number", "stack_trace"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -353,7 +344,7 @@ public class IntegrationLogClientError {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!IntegrationLogClientError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in IntegrationLogClientError is not found in the empty JSON string", IntegrationLogClientError.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in IntegrationLogClientError is not found in the empty JSON string", IntegrationLogClientError.openapiRequiredFields.toString()));
         }
       }
 
@@ -361,27 +352,27 @@ public class IntegrationLogClientError {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!IntegrationLogClientError.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IntegrationLogClientError` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `IntegrationLogClientError` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("cause") != null && !jsonObj.get("cause").isJsonNull()) && !jsonObj.get("cause").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cause` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cause").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `cause` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cause").toString()));
       }
       if ((jsonObj.get("file_name") != null && !jsonObj.get("file_name").isJsonNull()) && !jsonObj.get("file_name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `file_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("file_name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `file_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("file_name").toString()));
       }
       if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
       if ((jsonObj.get("message_detail") != null && !jsonObj.get("message_detail").isJsonNull()) && !jsonObj.get("message_detail").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message_detail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message_detail").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `message_detail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message_detail").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("stack_trace") != null && !jsonObj.get("stack_trace").isJsonNull()) && !jsonObj.get("stack_trace").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `stack_trace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("stack_trace").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `stack_trace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("stack_trace").toString()));
       }
   }
 

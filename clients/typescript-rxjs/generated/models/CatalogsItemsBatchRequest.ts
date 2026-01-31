@@ -16,7 +16,6 @@ import type {
     CatalogsItemsCreateBatchRequest,
     CatalogsItemsDeleteBatchRequest,
     CatalogsItemsDeleteDiscontinuedBatchRequest,
-    CatalogsItemsRequestLanguage,
     CatalogsItemsUpdateBatchRequest,
     CatalogsItemsUpsertBatchRequest,
     Country,

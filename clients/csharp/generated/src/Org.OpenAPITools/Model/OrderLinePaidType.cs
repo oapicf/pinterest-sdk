@@ -161,7 +161,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, OrderLinePaidType orderLinePaidType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(orderLinePaidType.ToString());
+            writer.WriteStringValue(OrderLinePaidTypeValueConverter.ToJsonValue(orderLinePaidType).ToString());
         }
     }
 
@@ -192,14 +192,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the OrderLinePaidType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="orderLinePaidType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, OrderLinePaidType? orderLinePaidType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(orderLinePaidType?.ToString() ?? "null");
+            writer.WriteStringValue(orderLinePaidType.HasValue ? OrderLinePaidTypeValueConverter.ToJsonValue(orderLinePaidType.Value).ToString() : "null");
         }
     }
 }

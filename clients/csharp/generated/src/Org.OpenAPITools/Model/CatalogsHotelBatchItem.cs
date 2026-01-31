@@ -210,10 +210,6 @@ namespace Org.OpenAPITools.Model
             CatalogsDeleteHotelItem? catalogsDeleteHotelItem = null;
             CatalogsUpdateHotelItem? catalogsUpdateHotelItem = null;
             CatalogsUpsertHotelItem? catalogsUpsertHotelItem = null;
-            CatalogsCreateHotelItem? catalogsCreateHotelItem = null;
-            CatalogsDeleteHotelItem? catalogsDeleteHotelItem = null;
-            CatalogsUpdateHotelItem? catalogsUpdateHotelItem = null;
-            CatalogsUpsertHotelItem? catalogsUpsertHotelItem = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -247,26 +243,6 @@ namespace Org.OpenAPITools.Model
                             catalogsUpdateHotelItem = JsonSerializer.Deserialize<CatalogsUpdateHotelItem>(ref utf8JsonReaderCatalogsUpdateHotelItem, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("UPSERT") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsUpsertHotelItem = utf8JsonReader;
-                            catalogsUpsertHotelItem = JsonSerializer.Deserialize<CatalogsUpsertHotelItem>(ref utf8JsonReaderCatalogsUpsertHotelItem, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsCreateHotelItem") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsCreateHotelItem = utf8JsonReader;
-                            catalogsCreateHotelItem = JsonSerializer.Deserialize<CatalogsCreateHotelItem>(ref utf8JsonReaderCatalogsCreateHotelItem, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsDeleteHotelItem") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsDeleteHotelItem = utf8JsonReader;
-                            catalogsDeleteHotelItem = JsonSerializer.Deserialize<CatalogsDeleteHotelItem>(ref utf8JsonReaderCatalogsDeleteHotelItem, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsUpdateHotelItem") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsUpdateHotelItem = utf8JsonReader;
-                            catalogsUpdateHotelItem = JsonSerializer.Deserialize<CatalogsUpdateHotelItem>(ref utf8JsonReaderCatalogsUpdateHotelItem, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsUpsertHotelItem") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsUpsertHotelItem = utf8JsonReader;
                             catalogsUpsertHotelItem = JsonSerializer.Deserialize<CatalogsUpsertHotelItem>(ref utf8JsonReaderCatalogsUpsertHotelItem, jsonSerializerOptions);
@@ -307,31 +283,6 @@ namespace Org.OpenAPITools.Model
             if (operation.IsSet && operation.Value == null)
                 throw new ArgumentNullException(nameof(operation), "Property is not nullable for class CatalogsHotelBatchItem.");
 
-            if (catalogsCreateHotelItem != null)
-                return new CatalogsHotelBatchItem(catalogsCreateHotelItem);
-
-            if (catalogsDeleteHotelItem != null)
-                return new CatalogsHotelBatchItem(catalogsDeleteHotelItem);
-
-            if (catalogsUpdateHotelItem != null)
-                return new CatalogsHotelBatchItem(catalogsUpdateHotelItem);
-
-            if (catalogsUpsertHotelItem != null)
-                return new CatalogsHotelBatchItem(catalogsUpsertHotelItem);
-
-            if (catalogsCreateHotelItem != null)
-                return new CatalogsHotelBatchItem(catalogsCreateHotelItem);
-
-            if (catalogsDeleteHotelItem != null)
-                return new CatalogsHotelBatchItem(catalogsDeleteHotelItem);
-
-            if (catalogsUpdateHotelItem != null)
-                return new CatalogsHotelBatchItem(catalogsUpdateHotelItem);
-
-            if (catalogsUpsertHotelItem != null)
-                return new CatalogsHotelBatchItem(catalogsUpsertHotelItem);
-
-            throw new JsonException();
             Option<CatalogsCreateHotelItem?> catalogsCreateHotelItemParsedValue = catalogsCreateHotelItem == null
                 ? default
                 : new Option<CatalogsCreateHotelItem?>(catalogsCreateHotelItem);

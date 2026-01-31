@@ -40,7 +40,7 @@ data class PinMediaSourceImagesBase64ItemsInner(
 
     @Schema(example = "null", description = "Destination link for the image.")
     @get:JsonProperty("link") val link: kotlin.String? = null
-    ) {
+) {
 
     /**
     * 
@@ -55,7 +55,8 @@ data class PinMediaSourceImagesBase64ItemsInner(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ContentType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSourceImagesBase64ItemsInner'")
             }
         }
     }

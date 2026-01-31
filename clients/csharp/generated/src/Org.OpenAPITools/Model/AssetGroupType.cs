@@ -161,7 +161,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AssetGroupType assetGroupType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(assetGroupType.ToString());
+            writer.WriteStringValue(AssetGroupTypeValueConverter.ToJsonValue(assetGroupType).ToString());
         }
     }
 
@@ -192,14 +192,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the AssetGroupType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="assetGroupType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AssetGroupType? assetGroupType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(assetGroupType?.ToString() ?? "null");
+            writer.WriteStringValue(assetGroupType.HasValue ? AssetGroupTypeValueConverter.ToJsonValue(assetGroupType.Value).ToString() : "null");
         }
     }
 }

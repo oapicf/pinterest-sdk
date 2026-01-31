@@ -51,10 +51,10 @@ pub enum CustomerListsSlashUpdateError {
 /// <p>Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).</p> <p>A customer list is one of the four types of Pinterest audiences: for more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.<p/>  <p><b>Please review our <u><a href=\"https://help.pinterest.com/en/business/article/audience-targeting#section-13341\" target=\"_blank\">requirements</a></u> for what type of information is allowed when uploading a customer list.</b></p> <p>When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.</p> <p>Note that once you have created your customer list, you must convert it into an audience (of the “ CUSTOMER_LIST” type) using the <a href=\"#operation/create_audience_handler\">create audience endpoint</a> before it can be used.</p>
 pub async fn customer_lists_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, customer_list_request: models::CustomerListRequest) -> Result<models::CustomerList, Error<CustomerListsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_customer_list_request = customer_list_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_customer_list_request = customer_list_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/customer_lists", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/customer_lists", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -63,7 +63,7 @@ pub async fn customer_lists_slash_create(configuration: &configuration::Configur
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_customer_list_request);
+    req_builder = req_builder.json(&p_body_customer_list_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -93,10 +93,10 @@ pub async fn customer_lists_slash_create(configuration: &configuration::Configur
 /// Gets a specific customer list given the customer list ID.
 pub async fn customer_lists_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, customer_list_id: &str) -> Result<models::CustomerList, Error<CustomerListsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_customer_list_id = customer_list_id;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_customer_list_id = customer_list_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), customer_list_id=crate::apis::urlencode(p_customer_list_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), customer_list_id=crate::apis::urlencode(p_path_customer_list_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -134,21 +134,21 @@ pub async fn customer_lists_slash_get(configuration: &configuration::Configurati
 /// <p>Get a set of customer lists including id and name based on the filters provided.</p> <p>(Customer lists are a type of audience.) For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>  or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
 pub async fn customer_lists_slash_list(configuration: &configuration::Configuration, ad_account_id: &str, page_size: Option<i32>, order: Option<&str>, bookmark: Option<&str>) -> Result<models::CustomerListsList200Response, Error<CustomerListsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_page_size = page_size;
-    let p_order = order;
-    let p_bookmark = bookmark;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_page_size = page_size;
+    let p_query_order = order;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/customer_lists", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/customer_lists", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
-        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_order {
+        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -186,11 +186,11 @@ pub async fn customer_lists_slash_list(configuration: &configuration::Configurat
 /// <p>Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)</p> <p>When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records  to add will be deleted when the matching process is complete.</p> <p>For more information, see <a href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a> or the <a href=\"/docs/api-features/targeting-overview/\" target=\"_blank\">Audiences</a> section of the ads management guide.</p>
 pub async fn customer_lists_slash_update(configuration: &configuration::Configuration, ad_account_id: &str, customer_list_id: &str, customer_list_update_request: models::CustomerListUpdateRequest) -> Result<models::CustomerList, Error<CustomerListsSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_customer_list_id = customer_list_id;
-    let p_customer_list_update_request = customer_list_update_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_customer_list_id = customer_list_id;
+    let p_body_customer_list_update_request = customer_list_update_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), customer_list_id=crate::apis::urlencode(p_customer_list_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), customer_list_id=crate::apis::urlencode(p_path_customer_list_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -199,7 +199,7 @@ pub async fn customer_lists_slash_update(configuration: &configuration::Configur
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_customer_list_update_request);
+    req_builder = req_builder.json(&p_body_customer_list_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

@@ -4,9 +4,9 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **grantType** | [**inline**](#GrantType) |  |  |
 | **code** | **kotlin.String** |  |  |
 | **redirectUri** | **kotlin.String** |  |  |
+| **grantType** | [**inline**](#GrantType) |  |  |
 
 
 <a id="GrantType"></a>

@@ -1,27 +1,28 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsCreateCreativeAssetsItem;
 import org.openapitools.model.CatalogsDeleteCreativeAssetsItem;
 import org.openapitools.model.CatalogsUpdatableCreativeAssetsAttributes;
 import org.openapitools.model.CatalogsUpdateCreativeAssetsItem;
 import org.openapitools.model.CatalogsUpsertCreativeAssetsItem;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Creative assets batch item
- **/
+ * Creative assets batch item
+ */
 @ApiModel(description="Creative assets batch item")
 
 public class CatalogsCreativeAssetsBatchItem  {
   
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog creative assets id in the merchant namespace")
  /**
-   * The catalog creative assets id in the merchant namespace
-  **/
+  * The catalog creative assets id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog creative assets id in the merchant namespace")
+
   private String creativeAssetsId;
 
 public enum OperationEnum {
@@ -55,9 +56,11 @@ DELETE(String.valueOf("DELETE"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private OperationEnum operation;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsUpdatableCreativeAssetsAttributes attributes;
  /**
    * The catalog creative assets id in the merchant namespace

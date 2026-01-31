@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ad_account_owner
 import model_business_access_role
@@ -17,11 +19,54 @@ import model_currency
 
 type AdAccount* = object
   ## 
-  id*: string
-  name*: string
-  owner*: Ad_account_owner
-  country*: Country
-  currency*: Currency
-  permissions*: seq[BusinessAccessRole]
-  createdTime*: int ## Creation time. Unix timestamp in seconds.
-  updatedTime*: int ## Last update time. Unix timestamp in seconds.
+  id*: Option[string]
+  name*: Option[string]
+  owner*: Option[Ad_account_owner]
+  country*: Option[Country]
+  currency*: Option[Currency]
+  permissions*: Option[seq[BusinessAccessRole]]
+  createdTime*: Option[int] ## Creation time. Unix timestamp in seconds.
+  updatedTime*: Option[int] ## Last update time. Unix timestamp in seconds.
+
+
+# Custom JSON deserialization for AdAccount with custom field names
+proc to*(node: JsonNode, T: typedesc[AdAccount]): AdAccount =
+  result = AdAccount()
+  if node.kind == JObject:
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("owner") and node["owner"].kind != JNull:
+      result.owner = some(to(node["owner"], typeof(result.owner.get())))
+    if node.hasKey("country") and node["country"].kind != JNull:
+      result.country = some(to(node["country"], typeof(result.country.get())))
+    if node.hasKey("currency") and node["currency"].kind != JNull:
+      result.currency = some(to(node["currency"], typeof(result.currency.get())))
+    if node.hasKey("permissions") and node["permissions"].kind != JNull:
+      result.permissions = some(to(node["permissions"], typeof(result.permissions.get())))
+    if node.hasKey("created_time") and node["created_time"].kind != JNull:
+      result.createdTime = some(to(node["created_time"], typeof(result.createdTime.get())))
+    if node.hasKey("updated_time") and node["updated_time"].kind != JNull:
+      result.updatedTime = some(to(node["updated_time"], typeof(result.updatedTime.get())))
+
+# Custom JSON serialization for AdAccount with custom field names
+proc `%`*(obj: AdAccount): JsonNode =
+  result = newJObject()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.owner.isSome():
+    result["owner"] = %obj.owner.get()
+  if obj.country.isSome():
+    result["country"] = %obj.country.get()
+  if obj.currency.isSome():
+    result["currency"] = %obj.currency.get()
+  if obj.permissions.isSome():
+    result["permissions"] = %obj.permissions.get()
+  if obj.createdTime.isSome():
+    result["created_time"] = %obj.createdTime.get()
+  if obj.updatedTime.isSome():
+    result["updated_time"] = %obj.updatedTime.get()
+

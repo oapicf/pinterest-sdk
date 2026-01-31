@@ -1,32 +1,34 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.AdvancedAuctionItemsSubmitRecord;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items
- **/
+ * Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items
+ */
 @ApiModel(description="Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items")
 
 public class AdvancedAuctionItemsSubmitRequest  {
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to all items")
  /**
-   * Catalog id pertaining to all items
-  **/
+  * Catalog id pertaining to all items
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to all items")
+
   private String catalogId;
 
-  @ApiModelProperty(required = true, value = "Array of item bid option operations")
  /**
-   * Array of item bid option operations
-  **/
+  * Array of item bid option operations
+  */
+  @ApiModelProperty(required = true, value = "Array of item bid option operations")
+
   private List<AdvancedAuctionItemsSubmitRecord> items = new ArrayList<>();
  /**
    * Catalog id pertaining to all items

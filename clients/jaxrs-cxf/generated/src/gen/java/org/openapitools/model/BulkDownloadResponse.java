@@ -10,10 +10,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BulkDownloadResponse  {
   
-  @ApiModelProperty(example = "2680059592705", value = "ID of the bulk request.")
  /**
-   * ID of the bulk request.
-  **/
+  * ID of the bulk request.
+  */
+  @ApiModelProperty(example = "2680059592705", value = "ID of the bulk request.")
+
   private String requestId;
  /**
    * ID of the bulk request.

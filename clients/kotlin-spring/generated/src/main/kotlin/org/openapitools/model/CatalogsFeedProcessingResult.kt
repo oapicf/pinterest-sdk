@@ -55,7 +55,7 @@ data class CatalogsFeedProcessingResult(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("validation_details", required = true) val validationDetails: CatalogsFeedValidationDetails
-    ) {
+) {
 
 }
 

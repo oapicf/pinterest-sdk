@@ -116,7 +116,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsCreateCall(CatalogsCreateRequest catalogsCreateRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call catalogsCreateCall(@javax.annotation.Nonnull CatalogsCreateRequest catalogsCreateRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -166,7 +166,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call catalogsCreateValidateBeforeCall(CatalogsCreateRequest catalogsCreateRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call catalogsCreateValidateBeforeCall(@javax.annotation.Nonnull CatalogsCreateRequest catalogsCreateRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'catalogsCreateRequest' is set
         if (catalogsCreateRequest == null) {
             throw new ApiException("Missing the required parameter 'catalogsCreateRequest' when calling catalogsCreate(Async)");
@@ -193,7 +193,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public Catalog catalogsCreate(CatalogsCreateRequest catalogsCreateRequest, String adAccountId) throws ApiException {
+    public Catalog catalogsCreate(@javax.annotation.Nonnull CatalogsCreateRequest catalogsCreateRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<Catalog> localVarResp = catalogsCreateWithHttpInfo(catalogsCreateRequest, adAccountId);
         return localVarResp.getData();
     }
@@ -215,7 +215,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Catalog> catalogsCreateWithHttpInfo(CatalogsCreateRequest catalogsCreateRequest, String adAccountId) throws ApiException {
+    public ApiResponse<Catalog> catalogsCreateWithHttpInfo(@javax.annotation.Nonnull CatalogsCreateRequest catalogsCreateRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = catalogsCreateValidateBeforeCall(catalogsCreateRequest, adAccountId, null);
         Type localVarReturnType = new TypeToken<Catalog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -239,7 +239,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsCreateAsync(CatalogsCreateRequest catalogsCreateRequest, String adAccountId, final ApiCallback<Catalog> _callback) throws ApiException {
+    public okhttp3.Call catalogsCreateAsync(@javax.annotation.Nonnull CatalogsCreateRequest catalogsCreateRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback<Catalog> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = catalogsCreateValidateBeforeCall(catalogsCreateRequest, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<Catalog>(){}.getType();
@@ -264,7 +264,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsListCall(String bookmark, Integer pageSize, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call catalogsListCall(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -321,7 +321,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call catalogsListValidateBeforeCall(String bookmark, Integer pageSize, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call catalogsListValidateBeforeCall(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         return catalogsListCall(bookmark, pageSize, adAccountId, _callback);
 
     }
@@ -344,7 +344,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsList200Response catalogsList(String bookmark, Integer pageSize, String adAccountId) throws ApiException {
+    public CatalogsList200Response catalogsList(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsList200Response> localVarResp = catalogsListWithHttpInfo(bookmark, pageSize, adAccountId);
         return localVarResp.getData();
     }
@@ -367,7 +367,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsList200Response> catalogsListWithHttpInfo(String bookmark, Integer pageSize, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsList200Response> catalogsListWithHttpInfo(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = catalogsListValidateBeforeCall(bookmark, pageSize, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -392,7 +392,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsListAsync(String bookmark, Integer pageSize, String adAccountId, final ApiCallback<CatalogsList200Response> _callback) throws ApiException {
+    public okhttp3.Call catalogsListAsync(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = catalogsListValidateBeforeCall(bookmark, pageSize, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsList200Response>(){}.getType();
@@ -420,7 +420,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupPinsListCall(String productGroupId, String bookmark, Integer pageSize, String adAccountId, Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupPinsListCall(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -482,7 +482,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call catalogsProductGroupPinsListValidateBeforeCall(String productGroupId, String bookmark, Integer pageSize, String adAccountId, Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call catalogsProductGroupPinsListValidateBeforeCall(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'productGroupId' is set
         if (productGroupId == null) {
             throw new ApiException("Missing the required parameter 'productGroupId' when calling catalogsProductGroupPinsList(Async)");
@@ -513,7 +513,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsProductGroupPinsList200Response catalogsProductGroupPinsList(String productGroupId, String bookmark, Integer pageSize, String adAccountId, Boolean pinMetrics) throws ApiException {
+    public CatalogsProductGroupPinsList200Response catalogsProductGroupPinsList(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics) throws ApiException {
         ApiResponse<CatalogsProductGroupPinsList200Response> localVarResp = catalogsProductGroupPinsListWithHttpInfo(productGroupId, bookmark, pageSize, adAccountId, pinMetrics);
         return localVarResp.getData();
     }
@@ -539,7 +539,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsProductGroupPinsList200Response> catalogsProductGroupPinsListWithHttpInfo(String productGroupId, String bookmark, Integer pageSize, String adAccountId, Boolean pinMetrics) throws ApiException {
+    public ApiResponse<CatalogsProductGroupPinsList200Response> catalogsProductGroupPinsListWithHttpInfo(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics) throws ApiException {
         okhttp3.Call localVarCall = catalogsProductGroupPinsListValidateBeforeCall(productGroupId, bookmark, pageSize, adAccountId, pinMetrics, null);
         Type localVarReturnType = new TypeToken<CatalogsProductGroupPinsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -567,7 +567,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupPinsListAsync(String productGroupId, String bookmark, Integer pageSize, String adAccountId, Boolean pinMetrics, final ApiCallback<CatalogsProductGroupPinsList200Response> _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupPinsListAsync(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics, final ApiCallback<CatalogsProductGroupPinsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = catalogsProductGroupPinsListValidateBeforeCall(productGroupId, bookmark, pageSize, adAccountId, pinMetrics, _callback);
         Type localVarReturnType = new TypeToken<CatalogsProductGroupPinsList200Response>(){}.getType();
@@ -593,7 +593,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsCreateCall(MultipleProductGroupsInner multipleProductGroupsInner, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsCreateCall(@javax.annotation.Nonnull MultipleProductGroupsInner multipleProductGroupsInner, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -643,7 +643,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call catalogsProductGroupsCreateValidateBeforeCall(MultipleProductGroupsInner multipleProductGroupsInner, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call catalogsProductGroupsCreateValidateBeforeCall(@javax.annotation.Nonnull MultipleProductGroupsInner multipleProductGroupsInner, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'multipleProductGroupsInner' is set
         if (multipleProductGroupsInner == null) {
             throw new ApiException("Missing the required parameter 'multipleProductGroupsInner' when calling catalogsProductGroupsCreate(Async)");
@@ -672,7 +672,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsVerticalProductGroup catalogsProductGroupsCreate(MultipleProductGroupsInner multipleProductGroupsInner, String adAccountId) throws ApiException {
+    public CatalogsVerticalProductGroup catalogsProductGroupsCreate(@javax.annotation.Nonnull MultipleProductGroupsInner multipleProductGroupsInner, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsVerticalProductGroup> localVarResp = catalogsProductGroupsCreateWithHttpInfo(multipleProductGroupsInner, adAccountId);
         return localVarResp.getData();
     }
@@ -696,7 +696,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsVerticalProductGroup> catalogsProductGroupsCreateWithHttpInfo(MultipleProductGroupsInner multipleProductGroupsInner, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsVerticalProductGroup> catalogsProductGroupsCreateWithHttpInfo(@javax.annotation.Nonnull MultipleProductGroupsInner multipleProductGroupsInner, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = catalogsProductGroupsCreateValidateBeforeCall(multipleProductGroupsInner, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsVerticalProductGroup>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -722,7 +722,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsCreateAsync(MultipleProductGroupsInner multipleProductGroupsInner, String adAccountId, final ApiCallback<CatalogsVerticalProductGroup> _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsCreateAsync(@javax.annotation.Nonnull MultipleProductGroupsInner multipleProductGroupsInner, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsVerticalProductGroup> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = catalogsProductGroupsCreateValidateBeforeCall(multipleProductGroupsInner, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsVerticalProductGroup>(){}.getType();
@@ -748,7 +748,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsCreateManyCall(List<MultipleProductGroupsInner> multipleProductGroupsInner, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsCreateManyCall(@javax.annotation.Nonnull List<MultipleProductGroupsInner> multipleProductGroupsInner, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -798,7 +798,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call catalogsProductGroupsCreateManyValidateBeforeCall(List<MultipleProductGroupsInner> multipleProductGroupsInner, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call catalogsProductGroupsCreateManyValidateBeforeCall(@javax.annotation.Nonnull List<MultipleProductGroupsInner> multipleProductGroupsInner, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'multipleProductGroupsInner' is set
         if (multipleProductGroupsInner == null) {
             throw new ApiException("Missing the required parameter 'multipleProductGroupsInner' when calling catalogsProductGroupsCreateMany(Async)");
@@ -827,7 +827,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public List<String> catalogsProductGroupsCreateMany(List<MultipleProductGroupsInner> multipleProductGroupsInner, String adAccountId) throws ApiException {
+    public List<String> catalogsProductGroupsCreateMany(@javax.annotation.Nonnull List<MultipleProductGroupsInner> multipleProductGroupsInner, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<List<String>> localVarResp = catalogsProductGroupsCreateManyWithHttpInfo(multipleProductGroupsInner, adAccountId);
         return localVarResp.getData();
     }
@@ -851,7 +851,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<String>> catalogsProductGroupsCreateManyWithHttpInfo(List<MultipleProductGroupsInner> multipleProductGroupsInner, String adAccountId) throws ApiException {
+    public ApiResponse<List<String>> catalogsProductGroupsCreateManyWithHttpInfo(@javax.annotation.Nonnull List<MultipleProductGroupsInner> multipleProductGroupsInner, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = catalogsProductGroupsCreateManyValidateBeforeCall(multipleProductGroupsInner, adAccountId, null);
         Type localVarReturnType = new TypeToken<List<String>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -877,7 +877,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsCreateManyAsync(List<MultipleProductGroupsInner> multipleProductGroupsInner, String adAccountId, final ApiCallback<List<String>> _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsCreateManyAsync(@javax.annotation.Nonnull List<MultipleProductGroupsInner> multipleProductGroupsInner, @javax.annotation.Nullable String adAccountId, final ApiCallback<List<String>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = catalogsProductGroupsCreateManyValidateBeforeCall(multipleProductGroupsInner, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<List<String>>(){}.getType();
@@ -904,7 +904,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsDeleteCall(String productGroupId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsDeleteCall(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -954,7 +954,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call catalogsProductGroupsDeleteValidateBeforeCall(String productGroupId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call catalogsProductGroupsDeleteValidateBeforeCall(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'productGroupId' is set
         if (productGroupId == null) {
             throw new ApiException("Missing the required parameter 'productGroupId' when calling catalogsProductGroupsDelete(Async)");
@@ -983,7 +983,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public void catalogsProductGroupsDelete(String productGroupId, String adAccountId) throws ApiException {
+    public void catalogsProductGroupsDelete(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         catalogsProductGroupsDeleteWithHttpInfo(productGroupId, adAccountId);
     }
 
@@ -1007,7 +1007,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> catalogsProductGroupsDeleteWithHttpInfo(String productGroupId, String adAccountId) throws ApiException {
+    public ApiResponse<Void> catalogsProductGroupsDeleteWithHttpInfo(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = catalogsProductGroupsDeleteValidateBeforeCall(productGroupId, adAccountId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -1033,7 +1033,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsDeleteAsync(String productGroupId, String adAccountId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsDeleteAsync(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = catalogsProductGroupsDeleteValidateBeforeCall(productGroupId, adAccountId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -1058,7 +1058,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsDeleteManyCall(List<Integer> id, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsDeleteManyCall(@javax.annotation.Nonnull List<Integer> id, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1111,7 +1111,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call catalogsProductGroupsDeleteManyValidateBeforeCall(List<Integer> id, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call catalogsProductGroupsDeleteManyValidateBeforeCall(@javax.annotation.Nonnull List<Integer> id, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling catalogsProductGroupsDeleteMany(Async)");
@@ -1139,7 +1139,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public void catalogsProductGroupsDeleteMany(List<Integer> id, String adAccountId) throws ApiException {
+    public void catalogsProductGroupsDeleteMany(@javax.annotation.Nonnull List<Integer> id, @javax.annotation.Nullable String adAccountId) throws ApiException {
         catalogsProductGroupsDeleteManyWithHttpInfo(id, adAccountId);
     }
 
@@ -1162,7 +1162,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> catalogsProductGroupsDeleteManyWithHttpInfo(List<Integer> id, String adAccountId) throws ApiException {
+    public ApiResponse<Void> catalogsProductGroupsDeleteManyWithHttpInfo(@javax.annotation.Nonnull List<Integer> id, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = catalogsProductGroupsDeleteManyValidateBeforeCall(id, adAccountId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -1187,7 +1187,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsDeleteManyAsync(List<Integer> id, String adAccountId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsDeleteManyAsync(@javax.annotation.Nonnull List<Integer> id, @javax.annotation.Nullable String adAccountId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = catalogsProductGroupsDeleteManyValidateBeforeCall(id, adAccountId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -1213,7 +1213,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsGetCall(String productGroupId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsGetCall(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1263,7 +1263,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call catalogsProductGroupsGetValidateBeforeCall(String productGroupId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call catalogsProductGroupsGetValidateBeforeCall(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'productGroupId' is set
         if (productGroupId == null) {
             throw new ApiException("Missing the required parameter 'productGroupId' when calling catalogsProductGroupsGet(Async)");
@@ -1293,7 +1293,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsVerticalProductGroup catalogsProductGroupsGet(String productGroupId, String adAccountId) throws ApiException {
+    public CatalogsVerticalProductGroup catalogsProductGroupsGet(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsVerticalProductGroup> localVarResp = catalogsProductGroupsGetWithHttpInfo(productGroupId, adAccountId);
         return localVarResp.getData();
     }
@@ -1318,7 +1318,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsVerticalProductGroup> catalogsProductGroupsGetWithHttpInfo(String productGroupId, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsVerticalProductGroup> catalogsProductGroupsGetWithHttpInfo(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = catalogsProductGroupsGetValidateBeforeCall(productGroupId, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsVerticalProductGroup>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1345,7 +1345,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsGetAsync(String productGroupId, String adAccountId, final ApiCallback<CatalogsVerticalProductGroup> _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsGetAsync(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsVerticalProductGroup> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = catalogsProductGroupsGetValidateBeforeCall(productGroupId, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsVerticalProductGroup>(){}.getType();
@@ -1376,7 +1376,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsListCall(List<Integer> id, String feedId, String catalogId, String bookmark, Integer pageSize, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsListCall(@javax.annotation.Nullable List<Integer> id, @javax.annotation.Nullable String feedId, @javax.annotation.Nullable String catalogId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1445,7 +1445,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call catalogsProductGroupsListValidateBeforeCall(List<Integer> id, String feedId, String catalogId, String bookmark, Integer pageSize, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call catalogsProductGroupsListValidateBeforeCall(@javax.annotation.Nullable List<Integer> id, @javax.annotation.Nullable String feedId, @javax.annotation.Nullable String catalogId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         return catalogsProductGroupsListCall(id, feedId, catalogId, bookmark, pageSize, adAccountId, _callback);
 
     }
@@ -1474,7 +1474,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsProductGroupsList200Response catalogsProductGroupsList(List<Integer> id, String feedId, String catalogId, String bookmark, Integer pageSize, String adAccountId) throws ApiException {
+    public CatalogsProductGroupsList200Response catalogsProductGroupsList(@javax.annotation.Nullable List<Integer> id, @javax.annotation.Nullable String feedId, @javax.annotation.Nullable String catalogId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsProductGroupsList200Response> localVarResp = catalogsProductGroupsListWithHttpInfo(id, feedId, catalogId, bookmark, pageSize, adAccountId);
         return localVarResp.getData();
     }
@@ -1503,7 +1503,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsProductGroupsList200Response> catalogsProductGroupsListWithHttpInfo(List<Integer> id, String feedId, String catalogId, String bookmark, Integer pageSize, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsProductGroupsList200Response> catalogsProductGroupsListWithHttpInfo(@javax.annotation.Nullable List<Integer> id, @javax.annotation.Nullable String feedId, @javax.annotation.Nullable String catalogId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = catalogsProductGroupsListValidateBeforeCall(id, feedId, catalogId, bookmark, pageSize, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsProductGroupsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1534,7 +1534,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsListAsync(List<Integer> id, String feedId, String catalogId, String bookmark, Integer pageSize, String adAccountId, final ApiCallback<CatalogsProductGroupsList200Response> _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsListAsync(@javax.annotation.Nullable List<Integer> id, @javax.annotation.Nullable String feedId, @javax.annotation.Nullable String catalogId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsProductGroupsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = catalogsProductGroupsListValidateBeforeCall(id, feedId, catalogId, bookmark, pageSize, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsProductGroupsList200Response>(){}.getType();
@@ -1558,7 +1558,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsProductCountsGetCall(String productGroupId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsProductCountsGetCall(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1608,7 +1608,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call catalogsProductGroupsProductCountsGetValidateBeforeCall(String productGroupId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call catalogsProductGroupsProductCountsGetValidateBeforeCall(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'productGroupId' is set
         if (productGroupId == null) {
             throw new ApiException("Missing the required parameter 'productGroupId' when calling catalogsProductGroupsProductCountsGet(Async)");
@@ -1635,7 +1635,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsProductGroupProductCountsVertical catalogsProductGroupsProductCountsGet(String productGroupId, String adAccountId) throws ApiException {
+    public CatalogsProductGroupProductCountsVertical catalogsProductGroupsProductCountsGet(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsProductGroupProductCountsVertical> localVarResp = catalogsProductGroupsProductCountsGetWithHttpInfo(productGroupId, adAccountId);
         return localVarResp.getData();
     }
@@ -1657,7 +1657,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsProductGroupProductCountsVertical> catalogsProductGroupsProductCountsGetWithHttpInfo(String productGroupId, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsProductGroupProductCountsVertical> catalogsProductGroupsProductCountsGetWithHttpInfo(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = catalogsProductGroupsProductCountsGetValidateBeforeCall(productGroupId, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsProductGroupProductCountsVertical>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1681,7 +1681,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsProductCountsGetAsync(String productGroupId, String adAccountId, final ApiCallback<CatalogsProductGroupProductCountsVertical> _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsProductCountsGetAsync(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsProductGroupProductCountsVertical> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = catalogsProductGroupsProductCountsGetValidateBeforeCall(productGroupId, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsProductGroupProductCountsVertical>(){}.getType();
@@ -1709,7 +1709,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsUpdateCall(String productGroupId, CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsUpdateCall(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nonnull CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1760,7 +1760,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call catalogsProductGroupsUpdateValidateBeforeCall(String productGroupId, CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call catalogsProductGroupsUpdateValidateBeforeCall(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nonnull CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'productGroupId' is set
         if (productGroupId == null) {
             throw new ApiException("Missing the required parameter 'productGroupId' when calling catalogsProductGroupsUpdate(Async)");
@@ -1796,7 +1796,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsVerticalProductGroup catalogsProductGroupsUpdate(String productGroupId, CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest, String adAccountId) throws ApiException {
+    public CatalogsVerticalProductGroup catalogsProductGroupsUpdate(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nonnull CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsVerticalProductGroup> localVarResp = catalogsProductGroupsUpdateWithHttpInfo(productGroupId, catalogsProductGroupsUpdateRequest, adAccountId);
         return localVarResp.getData();
     }
@@ -1822,7 +1822,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsVerticalProductGroup> catalogsProductGroupsUpdateWithHttpInfo(String productGroupId, CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsVerticalProductGroup> catalogsProductGroupsUpdateWithHttpInfo(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nonnull CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = catalogsProductGroupsUpdateValidateBeforeCall(productGroupId, catalogsProductGroupsUpdateRequest, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsVerticalProductGroup>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1850,7 +1850,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call catalogsProductGroupsUpdateAsync(String productGroupId, CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest, String adAccountId, final ApiCallback<CatalogsVerticalProductGroup> _callback) throws ApiException {
+    public okhttp3.Call catalogsProductGroupsUpdateAsync(@javax.annotation.Nonnull String productGroupId, @javax.annotation.Nonnull CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsVerticalProductGroup> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = catalogsProductGroupsUpdateValidateBeforeCall(productGroupId, catalogsProductGroupsUpdateRequest, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsVerticalProductGroup>(){}.getType();
@@ -1877,7 +1877,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedProcessingResultsListCall(String feedId, String bookmark, Integer pageSize, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call feedProcessingResultsListCall(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1935,7 +1935,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call feedProcessingResultsListValidateBeforeCall(String feedId, String bookmark, Integer pageSize, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call feedProcessingResultsListValidateBeforeCall(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'feedId' is set
         if (feedId == null) {
             throw new ApiException("Missing the required parameter 'feedId' when calling feedProcessingResultsList(Async)");
@@ -1965,7 +1965,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public FeedProcessingResultsList200Response feedProcessingResultsList(String feedId, String bookmark, Integer pageSize, String adAccountId) throws ApiException {
+    public FeedProcessingResultsList200Response feedProcessingResultsList(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<FeedProcessingResultsList200Response> localVarResp = feedProcessingResultsListWithHttpInfo(feedId, bookmark, pageSize, adAccountId);
         return localVarResp.getData();
     }
@@ -1990,7 +1990,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FeedProcessingResultsList200Response> feedProcessingResultsListWithHttpInfo(String feedId, String bookmark, Integer pageSize, String adAccountId) throws ApiException {
+    public ApiResponse<FeedProcessingResultsList200Response> feedProcessingResultsListWithHttpInfo(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = feedProcessingResultsListValidateBeforeCall(feedId, bookmark, pageSize, adAccountId, null);
         Type localVarReturnType = new TypeToken<FeedProcessingResultsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2017,7 +2017,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedProcessingResultsListAsync(String feedId, String bookmark, Integer pageSize, String adAccountId, final ApiCallback<FeedProcessingResultsList200Response> _callback) throws ApiException {
+    public okhttp3.Call feedProcessingResultsListAsync(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, final ApiCallback<FeedProcessingResultsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = feedProcessingResultsListValidateBeforeCall(feedId, bookmark, pageSize, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<FeedProcessingResultsList200Response>(){}.getType();
@@ -2045,7 +2045,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedsCreateCall(FeedsCreateRequest feedsCreateRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call feedsCreateCall(@javax.annotation.Nonnull FeedsCreateRequest feedsCreateRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2095,7 +2095,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call feedsCreateValidateBeforeCall(FeedsCreateRequest feedsCreateRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call feedsCreateValidateBeforeCall(@javax.annotation.Nonnull FeedsCreateRequest feedsCreateRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'feedsCreateRequest' is set
         if (feedsCreateRequest == null) {
             throw new ApiException("Missing the required parameter 'feedsCreateRequest' when calling feedsCreate(Async)");
@@ -2126,7 +2126,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsFeed feedsCreate(FeedsCreateRequest feedsCreateRequest, String adAccountId) throws ApiException {
+    public CatalogsFeed feedsCreate(@javax.annotation.Nonnull FeedsCreateRequest feedsCreateRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsFeed> localVarResp = feedsCreateWithHttpInfo(feedsCreateRequest, adAccountId);
         return localVarResp.getData();
     }
@@ -2152,7 +2152,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsFeed> feedsCreateWithHttpInfo(FeedsCreateRequest feedsCreateRequest, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsFeed> feedsCreateWithHttpInfo(@javax.annotation.Nonnull FeedsCreateRequest feedsCreateRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = feedsCreateValidateBeforeCall(feedsCreateRequest, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsFeed>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2180,7 +2180,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedsCreateAsync(FeedsCreateRequest feedsCreateRequest, String adAccountId, final ApiCallback<CatalogsFeed> _callback) throws ApiException {
+    public okhttp3.Call feedsCreateAsync(@javax.annotation.Nonnull FeedsCreateRequest feedsCreateRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsFeed> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = feedsCreateValidateBeforeCall(feedsCreateRequest, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsFeed>(){}.getType();
@@ -2206,7 +2206,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedsDeleteCall(String feedId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call feedsDeleteCall(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2256,7 +2256,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call feedsDeleteValidateBeforeCall(String feedId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call feedsDeleteValidateBeforeCall(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'feedId' is set
         if (feedId == null) {
             throw new ApiException("Missing the required parameter 'feedId' when calling feedsDelete(Async)");
@@ -2284,7 +2284,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public void feedsDelete(String feedId, String adAccountId) throws ApiException {
+    public void feedsDelete(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         feedsDeleteWithHttpInfo(feedId, adAccountId);
     }
 
@@ -2307,7 +2307,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> feedsDeleteWithHttpInfo(String feedId, String adAccountId) throws ApiException {
+    public ApiResponse<Void> feedsDeleteWithHttpInfo(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = feedsDeleteValidateBeforeCall(feedId, adAccountId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -2332,7 +2332,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedsDeleteAsync(String feedId, String adAccountId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call feedsDeleteAsync(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = feedsDeleteValidateBeforeCall(feedId, adAccountId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -2356,7 +2356,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedsGetCall(String feedId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call feedsGetCall(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2406,7 +2406,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call feedsGetValidateBeforeCall(String feedId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call feedsGetValidateBeforeCall(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'feedId' is set
         if (feedId == null) {
             throw new ApiException("Missing the required parameter 'feedId' when calling feedsGet(Async)");
@@ -2434,7 +2434,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsFeed feedsGet(String feedId, String adAccountId) throws ApiException {
+    public CatalogsFeed feedsGet(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsFeed> localVarResp = feedsGetWithHttpInfo(feedId, adAccountId);
         return localVarResp.getData();
     }
@@ -2457,7 +2457,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsFeed> feedsGetWithHttpInfo(String feedId, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsFeed> feedsGetWithHttpInfo(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = feedsGetValidateBeforeCall(feedId, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsFeed>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2482,7 +2482,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedsGetAsync(String feedId, String adAccountId, final ApiCallback<CatalogsFeed> _callback) throws ApiException {
+    public okhttp3.Call feedsGetAsync(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsFeed> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = feedsGetValidateBeforeCall(feedId, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsFeed>(){}.getType();
@@ -2507,7 +2507,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedsIngestCall(String feedId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call feedsIngestCall(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2557,7 +2557,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call feedsIngestValidateBeforeCall(String feedId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call feedsIngestValidateBeforeCall(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'feedId' is set
         if (feedId == null) {
             throw new ApiException("Missing the required parameter 'feedId' when calling feedsIngest(Async)");
@@ -2585,7 +2585,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsFeedIngestion feedsIngest(String feedId, String adAccountId) throws ApiException {
+    public CatalogsFeedIngestion feedsIngest(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsFeedIngestion> localVarResp = feedsIngestWithHttpInfo(feedId, adAccountId);
         return localVarResp.getData();
     }
@@ -2608,7 +2608,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsFeedIngestion> feedsIngestWithHttpInfo(String feedId, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsFeedIngestion> feedsIngestWithHttpInfo(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = feedsIngestValidateBeforeCall(feedId, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsFeedIngestion>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2633,7 +2633,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedsIngestAsync(String feedId, String adAccountId, final ApiCallback<CatalogsFeedIngestion> _callback) throws ApiException {
+    public okhttp3.Call feedsIngestAsync(@javax.annotation.Nonnull String feedId, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsFeedIngestion> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = feedsIngestValidateBeforeCall(feedId, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsFeedIngestion>(){}.getType();
@@ -2659,7 +2659,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedsListCall(String bookmark, Integer pageSize, String catalogId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call feedsListCall(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String catalogId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2720,7 +2720,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call feedsListValidateBeforeCall(String bookmark, Integer pageSize, String catalogId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call feedsListValidateBeforeCall(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String catalogId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         return feedsListCall(bookmark, pageSize, catalogId, adAccountId, _callback);
 
     }
@@ -2744,7 +2744,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public FeedsList200Response feedsList(String bookmark, Integer pageSize, String catalogId, String adAccountId) throws ApiException {
+    public FeedsList200Response feedsList(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String catalogId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<FeedsList200Response> localVarResp = feedsListWithHttpInfo(bookmark, pageSize, catalogId, adAccountId);
         return localVarResp.getData();
     }
@@ -2768,7 +2768,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FeedsList200Response> feedsListWithHttpInfo(String bookmark, Integer pageSize, String catalogId, String adAccountId) throws ApiException {
+    public ApiResponse<FeedsList200Response> feedsListWithHttpInfo(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String catalogId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = feedsListValidateBeforeCall(bookmark, pageSize, catalogId, adAccountId, null);
         Type localVarReturnType = new TypeToken<FeedsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2794,7 +2794,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedsListAsync(String bookmark, Integer pageSize, String catalogId, String adAccountId, final ApiCallback<FeedsList200Response> _callback) throws ApiException {
+    public okhttp3.Call feedsListAsync(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String catalogId, @javax.annotation.Nullable String adAccountId, final ApiCallback<FeedsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = feedsListValidateBeforeCall(bookmark, pageSize, catalogId, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<FeedsList200Response>(){}.getType();
@@ -2820,7 +2820,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedsUpdateCall(String feedId, FeedsUpdateRequest feedsUpdateRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call feedsUpdateCall(@javax.annotation.Nonnull String feedId, @javax.annotation.Nonnull FeedsUpdateRequest feedsUpdateRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2871,7 +2871,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call feedsUpdateValidateBeforeCall(String feedId, FeedsUpdateRequest feedsUpdateRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call feedsUpdateValidateBeforeCall(@javax.annotation.Nonnull String feedId, @javax.annotation.Nonnull FeedsUpdateRequest feedsUpdateRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'feedId' is set
         if (feedId == null) {
             throw new ApiException("Missing the required parameter 'feedId' when calling feedsUpdate(Async)");
@@ -2905,7 +2905,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsFeed feedsUpdate(String feedId, FeedsUpdateRequest feedsUpdateRequest, String adAccountId) throws ApiException {
+    public CatalogsFeed feedsUpdate(@javax.annotation.Nonnull String feedId, @javax.annotation.Nonnull FeedsUpdateRequest feedsUpdateRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsFeed> localVarResp = feedsUpdateWithHttpInfo(feedId, feedsUpdateRequest, adAccountId);
         return localVarResp.getData();
     }
@@ -2929,7 +2929,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsFeed> feedsUpdateWithHttpInfo(String feedId, FeedsUpdateRequest feedsUpdateRequest, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsFeed> feedsUpdateWithHttpInfo(@javax.annotation.Nonnull String feedId, @javax.annotation.Nonnull FeedsUpdateRequest feedsUpdateRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = feedsUpdateValidateBeforeCall(feedId, feedsUpdateRequest, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsFeed>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2955,7 +2955,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call feedsUpdateAsync(String feedId, FeedsUpdateRequest feedsUpdateRequest, String adAccountId, final ApiCallback<CatalogsFeed> _callback) throws ApiException {
+    public okhttp3.Call feedsUpdateAsync(@javax.annotation.Nonnull String feedId, @javax.annotation.Nonnull FeedsUpdateRequest feedsUpdateRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsFeed> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = feedsUpdateValidateBeforeCall(feedId, feedsUpdateRequest, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsFeed>(){}.getType();
@@ -2981,7 +2981,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call itemsBatchGetCall(String batchId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call itemsBatchGetCall(@javax.annotation.Nonnull String batchId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3031,7 +3031,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call itemsBatchGetValidateBeforeCall(String batchId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call itemsBatchGetValidateBeforeCall(@javax.annotation.Nonnull String batchId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'batchId' is set
         if (batchId == null) {
             throw new ApiException("Missing the required parameter 'batchId' when calling itemsBatchGet(Async)");
@@ -3060,7 +3060,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsItemsBatch itemsBatchGet(String batchId, String adAccountId) throws ApiException {
+    public CatalogsItemsBatch itemsBatchGet(@javax.annotation.Nonnull String batchId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsItemsBatch> localVarResp = itemsBatchGetWithHttpInfo(batchId, adAccountId);
         return localVarResp.getData();
     }
@@ -3084,7 +3084,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsItemsBatch> itemsBatchGetWithHttpInfo(String batchId, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsItemsBatch> itemsBatchGetWithHttpInfo(@javax.annotation.Nonnull String batchId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = itemsBatchGetValidateBeforeCall(batchId, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsItemsBatch>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3110,7 +3110,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call itemsBatchGetAsync(String batchId, String adAccountId, final ApiCallback<CatalogsItemsBatch> _callback) throws ApiException {
+    public okhttp3.Call itemsBatchGetAsync(@javax.annotation.Nonnull String batchId, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsItemsBatch> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = itemsBatchGetValidateBeforeCall(batchId, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsItemsBatch>(){}.getType();
@@ -3135,7 +3135,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call itemsBatchPostCall(ItemsBatchPostRequest itemsBatchPostRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call itemsBatchPostCall(@javax.annotation.Nonnull ItemsBatchPostRequest itemsBatchPostRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3185,7 +3185,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call itemsBatchPostValidateBeforeCall(ItemsBatchPostRequest itemsBatchPostRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call itemsBatchPostValidateBeforeCall(@javax.annotation.Nonnull ItemsBatchPostRequest itemsBatchPostRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'itemsBatchPostRequest' is set
         if (itemsBatchPostRequest == null) {
             throw new ApiException("Missing the required parameter 'itemsBatchPostRequest' when calling itemsBatchPost(Async)");
@@ -3213,7 +3213,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsItemsBatch itemsBatchPost(ItemsBatchPostRequest itemsBatchPostRequest, String adAccountId) throws ApiException {
+    public CatalogsItemsBatch itemsBatchPost(@javax.annotation.Nonnull ItemsBatchPostRequest itemsBatchPostRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsItemsBatch> localVarResp = itemsBatchPostWithHttpInfo(itemsBatchPostRequest, adAccountId);
         return localVarResp.getData();
     }
@@ -3236,7 +3236,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsItemsBatch> itemsBatchPostWithHttpInfo(ItemsBatchPostRequest itemsBatchPostRequest, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsItemsBatch> itemsBatchPostWithHttpInfo(@javax.annotation.Nonnull ItemsBatchPostRequest itemsBatchPostRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = itemsBatchPostValidateBeforeCall(itemsBatchPostRequest, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsItemsBatch>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3261,7 +3261,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call itemsBatchPostAsync(ItemsBatchPostRequest itemsBatchPostRequest, String adAccountId, final ApiCallback<CatalogsItemsBatch> _callback) throws ApiException {
+    public okhttp3.Call itemsBatchPostAsync(@javax.annotation.Nonnull ItemsBatchPostRequest itemsBatchPostRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsItemsBatch> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = itemsBatchPostValidateBeforeCall(itemsBatchPostRequest, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsItemsBatch>(){}.getType();
@@ -3291,7 +3291,7 @@ public class CatalogsApi {
      * @deprecated
      */
     @Deprecated
-    public okhttp3.Call itemsGetCall(String country, String language, String adAccountId, List<String> itemIds, CatalogsItemsFilters filters, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call itemsGetCall(@javax.annotation.Nonnull String country, @javax.annotation.Nonnull String language, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable List<String> itemIds, @javax.annotation.Nullable CatalogsItemsFilters filters, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3357,7 +3357,7 @@ public class CatalogsApi {
 
     @Deprecated
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call itemsGetValidateBeforeCall(String country, String language, String adAccountId, List<String> itemIds, CatalogsItemsFilters filters, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call itemsGetValidateBeforeCall(@javax.annotation.Nonnull String country, @javax.annotation.Nonnull String language, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable List<String> itemIds, @javax.annotation.Nullable CatalogsItemsFilters filters, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'country' is set
         if (country == null) {
             throw new ApiException("Missing the required parameter 'country' when calling itemsGet(Async)");
@@ -3395,7 +3395,7 @@ public class CatalogsApi {
      * @deprecated
      */
     @Deprecated
-    public CatalogsItems itemsGet(String country, String language, String adAccountId, List<String> itemIds, CatalogsItemsFilters filters) throws ApiException {
+    public CatalogsItems itemsGet(@javax.annotation.Nonnull String country, @javax.annotation.Nonnull String language, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable List<String> itemIds, @javax.annotation.Nullable CatalogsItemsFilters filters) throws ApiException {
         ApiResponse<CatalogsItems> localVarResp = itemsGetWithHttpInfo(country, language, adAccountId, itemIds, filters);
         return localVarResp.getData();
     }
@@ -3423,7 +3423,7 @@ public class CatalogsApi {
      * @deprecated
      */
     @Deprecated
-    public ApiResponse<CatalogsItems> itemsGetWithHttpInfo(String country, String language, String adAccountId, List<String> itemIds, CatalogsItemsFilters filters) throws ApiException {
+    public ApiResponse<CatalogsItems> itemsGetWithHttpInfo(@javax.annotation.Nonnull String country, @javax.annotation.Nonnull String language, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable List<String> itemIds, @javax.annotation.Nullable CatalogsItemsFilters filters) throws ApiException {
         okhttp3.Call localVarCall = itemsGetValidateBeforeCall(country, language, adAccountId, itemIds, filters, null);
         Type localVarReturnType = new TypeToken<CatalogsItems>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3453,7 +3453,7 @@ public class CatalogsApi {
      * @deprecated
      */
     @Deprecated
-    public okhttp3.Call itemsGetAsync(String country, String language, String adAccountId, List<String> itemIds, CatalogsItemsFilters filters, final ApiCallback<CatalogsItems> _callback) throws ApiException {
+    public okhttp3.Call itemsGetAsync(@javax.annotation.Nonnull String country, @javax.annotation.Nonnull String language, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable List<String> itemIds, @javax.annotation.Nullable CatalogsItemsFilters filters, final ApiCallback<CatalogsItems> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = itemsGetValidateBeforeCall(country, language, adAccountId, itemIds, filters, _callback);
         Type localVarReturnType = new TypeToken<CatalogsItems>(){}.getType();
@@ -3482,7 +3482,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call itemsIssuesListCall(String processingResultId, String bookmark, Integer pageSize, List<Integer> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call itemsIssuesListCall(@javax.annotation.Nonnull String processingResultId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable List<Integer> itemNumbers, @javax.annotation.Nullable CatalogsItemValidationIssue itemValidationIssue, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3548,7 +3548,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call itemsIssuesListValidateBeforeCall(String processingResultId, String bookmark, Integer pageSize, List<Integer> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call itemsIssuesListValidateBeforeCall(@javax.annotation.Nonnull String processingResultId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable List<Integer> itemNumbers, @javax.annotation.Nullable CatalogsItemValidationIssue itemValidationIssue, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'processingResultId' is set
         if (processingResultId == null) {
             throw new ApiException("Missing the required parameter 'processingResultId' when calling itemsIssuesList(Async)");
@@ -3580,7 +3580,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ItemsIssuesList200Response itemsIssuesList(String processingResultId, String bookmark, Integer pageSize, List<Integer> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, String adAccountId) throws ApiException {
+    public ItemsIssuesList200Response itemsIssuesList(@javax.annotation.Nonnull String processingResultId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable List<Integer> itemNumbers, @javax.annotation.Nullable CatalogsItemValidationIssue itemValidationIssue, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<ItemsIssuesList200Response> localVarResp = itemsIssuesListWithHttpInfo(processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId);
         return localVarResp.getData();
     }
@@ -3607,7 +3607,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ItemsIssuesList200Response> itemsIssuesListWithHttpInfo(String processingResultId, String bookmark, Integer pageSize, List<Integer> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, String adAccountId) throws ApiException {
+    public ApiResponse<ItemsIssuesList200Response> itemsIssuesListWithHttpInfo(@javax.annotation.Nonnull String processingResultId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable List<Integer> itemNumbers, @javax.annotation.Nullable CatalogsItemValidationIssue itemValidationIssue, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = itemsIssuesListValidateBeforeCall(processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId, null);
         Type localVarReturnType = new TypeToken<ItemsIssuesList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3636,7 +3636,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call itemsIssuesListAsync(String processingResultId, String bookmark, Integer pageSize, List<Integer> itemNumbers, CatalogsItemValidationIssue itemValidationIssue, String adAccountId, final ApiCallback<ItemsIssuesList200Response> _callback) throws ApiException {
+    public okhttp3.Call itemsIssuesListAsync(@javax.annotation.Nonnull String processingResultId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable List<Integer> itemNumbers, @javax.annotation.Nullable CatalogsItemValidationIssue itemValidationIssue, @javax.annotation.Nullable String adAccountId, final ApiCallback<ItemsIssuesList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = itemsIssuesListValidateBeforeCall(processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<ItemsIssuesList200Response>(){}.getType();
@@ -3661,7 +3661,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call itemsPostCall(CatalogsItemsRequest catalogsItemsRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call itemsPostCall(@javax.annotation.Nonnull CatalogsItemsRequest catalogsItemsRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3711,7 +3711,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call itemsPostValidateBeforeCall(CatalogsItemsRequest catalogsItemsRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call itemsPostValidateBeforeCall(@javax.annotation.Nonnull CatalogsItemsRequest catalogsItemsRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'catalogsItemsRequest' is set
         if (catalogsItemsRequest == null) {
             throw new ApiException("Missing the required parameter 'catalogsItemsRequest' when calling itemsPost(Async)");
@@ -3739,7 +3739,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsItems itemsPost(CatalogsItemsRequest catalogsItemsRequest, String adAccountId) throws ApiException {
+    public CatalogsItems itemsPost(@javax.annotation.Nonnull CatalogsItemsRequest catalogsItemsRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsItems> localVarResp = itemsPostWithHttpInfo(catalogsItemsRequest, adAccountId);
         return localVarResp.getData();
     }
@@ -3762,7 +3762,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsItems> itemsPostWithHttpInfo(CatalogsItemsRequest catalogsItemsRequest, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsItems> itemsPostWithHttpInfo(@javax.annotation.Nonnull CatalogsItemsRequest catalogsItemsRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = itemsPostValidateBeforeCall(catalogsItemsRequest, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsItems>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3787,7 +3787,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call itemsPostAsync(CatalogsItemsRequest catalogsItemsRequest, String adAccountId, final ApiCallback<CatalogsItems> _callback) throws ApiException {
+    public okhttp3.Call itemsPostAsync(@javax.annotation.Nonnull CatalogsItemsRequest catalogsItemsRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsItems> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = itemsPostValidateBeforeCall(catalogsItemsRequest, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsItems>(){}.getType();
@@ -3814,7 +3814,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call productsByProductGroupFilterListCall(CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest, String bookmark, Integer pageSize, String adAccountId, Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call productsByProductGroupFilterListCall(@javax.annotation.Nonnull CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3876,7 +3876,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call productsByProductGroupFilterListValidateBeforeCall(CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest, String bookmark, Integer pageSize, String adAccountId, Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call productsByProductGroupFilterListValidateBeforeCall(@javax.annotation.Nonnull CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'catalogsListProductsByFilterRequest' is set
         if (catalogsListProductsByFilterRequest == null) {
             throw new ApiException("Missing the required parameter 'catalogsListProductsByFilterRequest' when calling productsByProductGroupFilterList(Async)");
@@ -3906,7 +3906,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsProductGroupPinsList200Response productsByProductGroupFilterList(CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest, String bookmark, Integer pageSize, String adAccountId, Boolean pinMetrics) throws ApiException {
+    public CatalogsProductGroupPinsList200Response productsByProductGroupFilterList(@javax.annotation.Nonnull CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics) throws ApiException {
         ApiResponse<CatalogsProductGroupPinsList200Response> localVarResp = productsByProductGroupFilterListWithHttpInfo(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics);
         return localVarResp.getData();
     }
@@ -3931,7 +3931,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsProductGroupPinsList200Response> productsByProductGroupFilterListWithHttpInfo(CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest, String bookmark, Integer pageSize, String adAccountId, Boolean pinMetrics) throws ApiException {
+    public ApiResponse<CatalogsProductGroupPinsList200Response> productsByProductGroupFilterListWithHttpInfo(@javax.annotation.Nonnull CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics) throws ApiException {
         okhttp3.Call localVarCall = productsByProductGroupFilterListValidateBeforeCall(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics, null);
         Type localVarReturnType = new TypeToken<CatalogsProductGroupPinsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -3958,7 +3958,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call productsByProductGroupFilterListAsync(CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest, String bookmark, Integer pageSize, String adAccountId, Boolean pinMetrics, final ApiCallback<CatalogsProductGroupPinsList200Response> _callback) throws ApiException {
+    public okhttp3.Call productsByProductGroupFilterListAsync(@javax.annotation.Nonnull CatalogsListProductsByFilterRequest catalogsListProductsByFilterRequest, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics, final ApiCallback<CatalogsProductGroupPinsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = productsByProductGroupFilterListValidateBeforeCall(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics, _callback);
         Type localVarReturnType = new TypeToken<CatalogsProductGroupPinsList200Response>(){}.getType();
@@ -3982,7 +3982,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reportsCreateCall(CatalogsReportParameters catalogsReportParameters, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call reportsCreateCall(@javax.annotation.Nonnull CatalogsReportParameters catalogsReportParameters, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4032,7 +4032,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reportsCreateValidateBeforeCall(CatalogsReportParameters catalogsReportParameters, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call reportsCreateValidateBeforeCall(@javax.annotation.Nonnull CatalogsReportParameters catalogsReportParameters, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'catalogsReportParameters' is set
         if (catalogsReportParameters == null) {
             throw new ApiException("Missing the required parameter 'catalogsReportParameters' when calling reportsCreate(Async)");
@@ -4059,7 +4059,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsCreateReportResponse reportsCreate(CatalogsReportParameters catalogsReportParameters, String adAccountId) throws ApiException {
+    public CatalogsCreateReportResponse reportsCreate(@javax.annotation.Nonnull CatalogsReportParameters catalogsReportParameters, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsCreateReportResponse> localVarResp = reportsCreateWithHttpInfo(catalogsReportParameters, adAccountId);
         return localVarResp.getData();
     }
@@ -4081,7 +4081,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsCreateReportResponse> reportsCreateWithHttpInfo(CatalogsReportParameters catalogsReportParameters, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsCreateReportResponse> reportsCreateWithHttpInfo(@javax.annotation.Nonnull CatalogsReportParameters catalogsReportParameters, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = reportsCreateValidateBeforeCall(catalogsReportParameters, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsCreateReportResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -4105,7 +4105,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reportsCreateAsync(CatalogsReportParameters catalogsReportParameters, String adAccountId, final ApiCallback<CatalogsCreateReportResponse> _callback) throws ApiException {
+    public okhttp3.Call reportsCreateAsync(@javax.annotation.Nonnull CatalogsReportParameters catalogsReportParameters, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsCreateReportResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = reportsCreateValidateBeforeCall(catalogsReportParameters, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsCreateReportResponse>(){}.getType();
@@ -4129,7 +4129,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reportsGetCall(String token, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call reportsGetCall(@javax.annotation.Nonnull String token, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4182,7 +4182,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reportsGetValidateBeforeCall(String token, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call reportsGetValidateBeforeCall(@javax.annotation.Nonnull String token, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'token' is set
         if (token == null) {
             throw new ApiException("Missing the required parameter 'token' when calling reportsGet(Async)");
@@ -4209,7 +4209,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogsReport reportsGet(String token, String adAccountId) throws ApiException {
+    public CatalogsReport reportsGet(@javax.annotation.Nonnull String token, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<CatalogsReport> localVarResp = reportsGetWithHttpInfo(token, adAccountId);
         return localVarResp.getData();
     }
@@ -4231,7 +4231,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogsReport> reportsGetWithHttpInfo(String token, String adAccountId) throws ApiException {
+    public ApiResponse<CatalogsReport> reportsGetWithHttpInfo(@javax.annotation.Nonnull String token, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = reportsGetValidateBeforeCall(token, adAccountId, null);
         Type localVarReturnType = new TypeToken<CatalogsReport>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -4255,7 +4255,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reportsGetAsync(String token, String adAccountId, final ApiCallback<CatalogsReport> _callback) throws ApiException {
+    public okhttp3.Call reportsGetAsync(@javax.annotation.Nonnull String token, @javax.annotation.Nullable String adAccountId, final ApiCallback<CatalogsReport> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = reportsGetValidateBeforeCall(token, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<CatalogsReport>(){}.getType();
@@ -4280,7 +4280,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reportsStatsCall(CatalogsReportParameters parameters, String adAccountId, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call reportsStatsCall(@javax.annotation.Nonnull CatalogsReportParameters parameters, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4341,7 +4341,7 @@ public class CatalogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reportsStatsValidateBeforeCall(CatalogsReportParameters parameters, String adAccountId, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call reportsStatsValidateBeforeCall(@javax.annotation.Nonnull CatalogsReportParameters parameters, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'parameters' is set
         if (parameters == null) {
             throw new ApiException("Missing the required parameter 'parameters' when calling reportsStats(Async)");
@@ -4369,7 +4369,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ReportsStats200Response reportsStats(CatalogsReportParameters parameters, String adAccountId, Integer pageSize, String bookmark) throws ApiException {
+    public ReportsStats200Response reportsStats(@javax.annotation.Nonnull CatalogsReportParameters parameters, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<ReportsStats200Response> localVarResp = reportsStatsWithHttpInfo(parameters, adAccountId, pageSize, bookmark);
         return localVarResp.getData();
     }
@@ -4392,7 +4392,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReportsStats200Response> reportsStatsWithHttpInfo(CatalogsReportParameters parameters, String adAccountId, Integer pageSize, String bookmark) throws ApiException {
+    public ApiResponse<ReportsStats200Response> reportsStatsWithHttpInfo(@javax.annotation.Nonnull CatalogsReportParameters parameters, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = reportsStatsValidateBeforeCall(parameters, adAccountId, pageSize, bookmark, null);
         Type localVarReturnType = new TypeToken<ReportsStats200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -4417,7 +4417,7 @@ public class CatalogsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reportsStatsAsync(CatalogsReportParameters parameters, String adAccountId, Integer pageSize, String bookmark, final ApiCallback<ReportsStats200Response> _callback) throws ApiException {
+    public okhttp3.Call reportsStatsAsync(@javax.annotation.Nonnull CatalogsReportParameters parameters, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback<ReportsStats200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = reportsStatsValidateBeforeCall(parameters, adAccountId, pageSize, bookmark, _callback);
         Type localVarReturnType = new TypeToken<ReportsStats200Response>(){}.getType();

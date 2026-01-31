@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsHotelItemsPostFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemsPostFilter {
   /**
    * Gets or Sets catalogType
@@ -233,15 +233,10 @@ public class CatalogsHotelItemsPostFilter {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("catalog_type");
-    openapiFields.add("hotel_ids");
-    openapiFields.add("catalog_id");
+    openapiFields = new HashSet<String>(Arrays.asList("catalog_type", "hotel_ids", "catalog_id"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("catalog_type");
-    openapiRequiredFields.add("hotel_ids");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("catalog_type", "hotel_ids"));
   }
 
   /**
@@ -253,7 +248,7 @@ public class CatalogsHotelItemsPostFilter {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsHotelItemsPostFilter.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsHotelItemsPostFilter is not found in the empty JSON string", CatalogsHotelItemsPostFilter.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsHotelItemsPostFilter is not found in the empty JSON string", CatalogsHotelItemsPostFilter.openapiRequiredFields.toString()));
         }
       }
 
@@ -261,19 +256,19 @@ public class CatalogsHotelItemsPostFilter {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsHotelItemsPostFilter.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsHotelItemsPostFilter` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsHotelItemsPostFilter` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CatalogsHotelItemsPostFilter.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("catalog_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `catalog_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `catalog_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_type").toString()));
       }
       // validate the required field `catalog_type`
       CatalogTypeEnum.validateJsonElement(jsonObj.get("catalog_type"));
@@ -281,10 +276,10 @@ public class CatalogsHotelItemsPostFilter {
       if (jsonObj.get("hotel_ids") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("hotel_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `hotel_ids` to be an array in the JSON string but got `%s`", jsonObj.get("hotel_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `hotel_ids` to be an array in the JSON string but got `%s`", jsonObj.get("hotel_ids").toString()));
       }
       if ((jsonObj.get("catalog_id") != null && !jsonObj.get("catalog_id").isJsonNull()) && !jsonObj.get("catalog_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `catalog_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `catalog_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_id").toString()));
       }
   }
 

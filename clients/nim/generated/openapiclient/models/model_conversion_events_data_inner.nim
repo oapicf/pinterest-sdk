@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_conversion_events_data_inner_custom_data
 import model_conversion_events_user_data
@@ -19,18 +21,100 @@ type ConversionEventsDataInner* = object
   actionSource*: string ## <p>   The source indicating where the conversion event occurred.   <ul>     <li><code>app_android</code></li>     <li><code>app_ios</code></li>     <li><code>web</code></li>     <li><code>offline</code></li>   </ul> </p> 
   eventTime*: int64 ## The time when the event happened. Unix timestamp in seconds.
   eventId*: string ## A unique id string that identifies this event and can be used for deduping between events ingested via both the conversion API and Pinterest tracking. Without this, event's data is likely to be double counted and will cause report metric inflation. Third-party vendors make sure this field is updated on both Pinterest tag and Conversions API side before rolling out template for Conversions API.
-  eventSourceUrl*: string ## URL of the web conversion event.
-  optOut*: bool ## When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
-  partnerName*: string ## The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
+  eventSourceUrl*: Option[string] ## URL of the web conversion event.
+  optOut*: Option[bool] ## When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.
+  partnerName*: Option[string] ## The third party partner name responsible to send the event to Conversions API on behalf of the advertiser. The naming convention is \"ss-partnername\" lowercase. E.g ‘ss-shopify’
   userData*: ConversionEventsUserData
-  customData*: ConversionEvents_data_inner_custom_data
-  appId*: string ## The app store app ID.
-  appName*: string ## Name of the app.
-  appVersion*: string ## Version of the app.
-  deviceBrand*: string ## Brand of the user device.
-  deviceCarrier*: string ## User device's mobile carrier.
-  deviceModel*: string ## Model of the user device.
-  deviceType*: string ## Type of the user device.
-  osVersion*: string ## Version of the device operating system.
-  wifi*: bool ## Whether the event occurred when the user device was connected to wifi.
-  language*: string ## Two-character ISO-639-1 language code indicating the user's language.
+  customData*: Option[ConversionEvents_data_inner_custom_data]
+  appId*: Option[string] ## The app store app ID.
+  appName*: Option[string] ## Name of the app.
+  appVersion*: Option[string] ## Version of the app.
+  deviceBrand*: Option[string] ## Brand of the user device.
+  deviceCarrier*: Option[string] ## User device's mobile carrier.
+  deviceModel*: Option[string] ## Model of the user device.
+  deviceType*: Option[string] ## Type of the user device.
+  osVersion*: Option[string] ## Version of the device operating system.
+  wifi*: Option[bool] ## Whether the event occurred when the user device was connected to wifi.
+  language*: Option[string] ## Two-character ISO-639-1 language code indicating the user's language.
+
+
+# Custom JSON deserialization for ConversionEventsDataInner with custom field names
+proc to*(node: JsonNode, T: typedesc[ConversionEventsDataInner]): ConversionEventsDataInner =
+  result = ConversionEventsDataInner()
+  if node.kind == JObject:
+    if node.hasKey("event_name"):
+      result.eventName = to(node["event_name"], string)
+    if node.hasKey("action_source"):
+      result.actionSource = to(node["action_source"], string)
+    if node.hasKey("event_time"):
+      result.eventTime = to(node["event_time"], int64)
+    if node.hasKey("event_id"):
+      result.eventId = to(node["event_id"], string)
+    if node.hasKey("event_source_url") and node["event_source_url"].kind != JNull:
+      result.eventSourceUrl = some(to(node["event_source_url"], typeof(result.eventSourceUrl.get())))
+    if node.hasKey("opt_out") and node["opt_out"].kind != JNull:
+      result.optOut = some(to(node["opt_out"], typeof(result.optOut.get())))
+    if node.hasKey("partner_name") and node["partner_name"].kind != JNull:
+      result.partnerName = some(to(node["partner_name"], typeof(result.partnerName.get())))
+    if node.hasKey("user_data"):
+      result.userData = to(node["user_data"], ConversionEventsUserData)
+    if node.hasKey("custom_data") and node["custom_data"].kind != JNull:
+      result.customData = some(to(node["custom_data"], typeof(result.customData.get())))
+    if node.hasKey("app_id") and node["app_id"].kind != JNull:
+      result.appId = some(to(node["app_id"], typeof(result.appId.get())))
+    if node.hasKey("app_name") and node["app_name"].kind != JNull:
+      result.appName = some(to(node["app_name"], typeof(result.appName.get())))
+    if node.hasKey("app_version") and node["app_version"].kind != JNull:
+      result.appVersion = some(to(node["app_version"], typeof(result.appVersion.get())))
+    if node.hasKey("device_brand") and node["device_brand"].kind != JNull:
+      result.deviceBrand = some(to(node["device_brand"], typeof(result.deviceBrand.get())))
+    if node.hasKey("device_carrier") and node["device_carrier"].kind != JNull:
+      result.deviceCarrier = some(to(node["device_carrier"], typeof(result.deviceCarrier.get())))
+    if node.hasKey("device_model") and node["device_model"].kind != JNull:
+      result.deviceModel = some(to(node["device_model"], typeof(result.deviceModel.get())))
+    if node.hasKey("device_type") and node["device_type"].kind != JNull:
+      result.deviceType = some(to(node["device_type"], typeof(result.deviceType.get())))
+    if node.hasKey("os_version") and node["os_version"].kind != JNull:
+      result.osVersion = some(to(node["os_version"], typeof(result.osVersion.get())))
+    if node.hasKey("wifi") and node["wifi"].kind != JNull:
+      result.wifi = some(to(node["wifi"], typeof(result.wifi.get())))
+    if node.hasKey("language") and node["language"].kind != JNull:
+      result.language = some(to(node["language"], typeof(result.language.get())))
+
+# Custom JSON serialization for ConversionEventsDataInner with custom field names
+proc `%`*(obj: ConversionEventsDataInner): JsonNode =
+  result = newJObject()
+  result["event_name"] = %obj.eventName
+  result["action_source"] = %obj.actionSource
+  result["event_time"] = %obj.eventTime
+  result["event_id"] = %obj.eventId
+  if obj.eventSourceUrl.isSome():
+    result["event_source_url"] = %obj.eventSourceUrl.get()
+  if obj.optOut.isSome():
+    result["opt_out"] = %obj.optOut.get()
+  if obj.partnerName.isSome():
+    result["partner_name"] = %obj.partnerName.get()
+  result["user_data"] = %obj.userData
+  if obj.customData.isSome():
+    result["custom_data"] = %obj.customData.get()
+  if obj.appId.isSome():
+    result["app_id"] = %obj.appId.get()
+  if obj.appName.isSome():
+    result["app_name"] = %obj.appName.get()
+  if obj.appVersion.isSome():
+    result["app_version"] = %obj.appVersion.get()
+  if obj.deviceBrand.isSome():
+    result["device_brand"] = %obj.deviceBrand.get()
+  if obj.deviceCarrier.isSome():
+    result["device_carrier"] = %obj.deviceCarrier.get()
+  if obj.deviceModel.isSome():
+    result["device_model"] = %obj.deviceModel.get()
+  if obj.deviceType.isSome():
+    result["device_type"] = %obj.deviceType.get()
+  if obj.osVersion.isSome():
+    result["os_version"] = %obj.osVersion.get()
+  if obj.wifi.isSome():
+    result["wifi"] = %obj.wifi.get()
+  if obj.language.isSome():
+    result["language"] = %obj.language.get()
+

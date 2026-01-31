@@ -12,7 +12,6 @@
 #include "CatalogsCreativeAssetsBatchItem.h"
 #include "CatalogsCreativeAssetsBatchRequest.h"
 #include "CatalogsHotelBatchRequest.h"
-#include "CatalogsItemsRequest_language.h"
 #include "CatalogsRetailBatchRequest.h"
 #include "Country.h"
 #include <list>
@@ -66,13 +65,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCountry(Country  country);
-	/*! \brief Get 
+	/*! \brief Get We recommend using the CatalogsLocale values.
 	 */
-	CatalogsItemsRequest_language getLanguage();
+	std::string getLanguage();
 
-	/*! \brief Set 
+	/*! \brief Set We recommend using the CatalogsLocale values.
 	 */
-	void setLanguage(CatalogsItemsRequest_language  language);
+	void setLanguage(std::string  language);
 	/*! \brief Get Array with creative assets item operations
 	 */
 	std::list<CatalogsCreativeAssetsBatchItem> getItems();
@@ -91,7 +90,7 @@ public:
 private:
 	std::string catalog_type;
 	Country country;
-	CatalogsItemsRequest_language language;
+	std::string language;
 	std::list <CatalogsCreativeAssetsBatchItem>items;
 	std::string catalog_id;
 	void __init();

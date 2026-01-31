@@ -2,15 +2,14 @@
 
 # OauthAccessTokenRequestCode
 
-A request to exchange an authorization code for an access token.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**grantType** | [**GrantTypeEnum**](#GrantTypeEnum) |  |  |
 |**code** | **String** |  |  |
 |**redirectUri** | **String** |  |  |
+|**grantType** | [**GrantTypeEnum**](#GrantTypeEnum) |  |  |
 
 
 

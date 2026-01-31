@@ -31,7 +31,7 @@ data class BoardUpdate(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("privacy") val privacy: BoardUpdate.Privacy? = null
-    ) {
+) {
 
     /**
     * 
@@ -46,7 +46,8 @@ data class BoardUpdate(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Privacy {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'BoardUpdate'")
             }
         }
     }

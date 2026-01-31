@@ -5,16 +5,16 @@ context("Test OauthAccessTokenRequestClientCredentials")
 
 model_instance <- OauthAccessTokenRequestClientCredentials$new()
 
-test_that("grant_type", {
-  # tests for the property `grant_type` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`grant_type`, "EXPECTED_RESULT")
-})
-
 test_that("scope", {
   # tests for the property `scope` (character)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`scope`, "EXPECTED_RESULT")
+})
+
+test_that("grant_type", {
+  # tests for the property `grant_type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`grant_type`, "EXPECTED_RESULT")
 })

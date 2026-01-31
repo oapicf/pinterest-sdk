@@ -40,6 +40,7 @@ export class ItemAttributesRequest {
     'brand'?: string | null;
     /**
     * This attribute is not supported anymore.
+    * @deprecated
     */
     'checkoutEnabled'?: boolean | null;
     /**
@@ -96,6 +97,7 @@ export class ItemAttributesRequest {
     'gtin'?: number | null;
     /**
     * <p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>
+    * @deprecated
     */
     'id'?: string;
     /**

@@ -6,6 +6,13 @@ goog.provide('API.Client.CreateMMMReportRequest');
 API.Client.CreateMMMReportRequest = function() {}
 
 /**
+ * A List of countries for filtering
+ * @type {!Array<!API.Client.TargetingAdvertiserCountry>}
+ * @export
+ */
+API.Client.CreateMMMReportRequest.prototype.countries;
+
+/**
  * Name of the Marketing Mix Modeling (MMM) report
  * @type {!string}
  * @export
@@ -53,13 +60,6 @@ API.Client.CreateMMMReportRequest.prototype.targetingTypes;
  * @export
  */
 API.Client.CreateMMMReportRequest.prototype.columns;
-
-/**
- * A List of countries for filtering
- * @type {!Array<!API.Client.TargetingAdvertiserCountry>}
- * @export
- */
-API.Client.CreateMMMReportRequest.prototype.countries;
 
 /** @enum {string} */
 API.Client.CreateMMMReportRequest.GranularityEnum = { 

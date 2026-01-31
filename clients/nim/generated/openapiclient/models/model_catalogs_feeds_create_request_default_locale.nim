@@ -9,8 +9,35 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_locale
 
+# AnyOf type
+type CatalogsFeedsCreateRequestDefaultLocaleKind* {.pure.} = enum
+  CatalogsLocaleVariant
+  StringVariant
+
 type CatalogsFeedsCreateRequestDefaultLocale* = object
   ## The locale used within a feed for product descriptions.
+  case kind*: CatalogsFeedsCreateRequestDefaultLocaleKind
+  of CatalogsFeedsCreateRequestDefaultLocaleKind.CatalogsLocaleVariant:
+    CatalogsLocaleValue*: CatalogsLocale
+  of CatalogsFeedsCreateRequestDefaultLocaleKind.StringVariant:
+    stringValue*: string
+
+proc to*(node: JsonNode, T: typedesc[CatalogsFeedsCreateRequestDefaultLocale]): CatalogsFeedsCreateRequestDefaultLocale =
+  ## Custom deserializer for anyOf type - tries each variant
+  try:
+    return CatalogsFeedsCreateRequestDefaultLocale(kind: CatalogsFeedsCreateRequestDefaultLocaleKind.CatalogsLocaleVariant, CatalogsLocaleValue: to(node, CatalogsLocale))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsLocale: ", e.msg
+  try:
+    return CatalogsFeedsCreateRequestDefaultLocale(kind: CatalogsFeedsCreateRequestDefaultLocaleKind.StringVariant, stringValue: to(node, string))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as string: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsFeedsCreateRequestDefaultLocale. JSON: " & $node)
+

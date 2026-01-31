@@ -34,7 +34,7 @@ public class CatalogsVerticalFeedsCreateRequest   {
   private CatalogsType catalogType;
   private Country defaultCountry;
   private ProductAvailabilityType defaultAvailability;
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
   private String catalogId;
 
   public CatalogsVerticalFeedsCreateRequest () {

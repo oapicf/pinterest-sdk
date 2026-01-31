@@ -196,8 +196,7 @@ namespace Org.OpenAPITools.Model
                                 operation = new Option<CatalogsUpsertCreativeAssetsItem.OperationEnum?>(CatalogsUpsertCreativeAssetsItem.OperationEnumFromStringOrDefault(operationRawValue));
                             break;
                         case "attributes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                attributes = new Option<CatalogsCreativeAssetsAttributes?>(JsonSerializer.Deserialize<CatalogsCreativeAssetsAttributes>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            attributes = new Option<CatalogsCreativeAssetsAttributes?>(JsonSerializer.Deserialize<CatalogsCreativeAssetsAttributes>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

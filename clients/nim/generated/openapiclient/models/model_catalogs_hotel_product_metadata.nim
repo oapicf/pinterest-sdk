@@ -9,8 +9,24 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogsHotelProductMetadata* = object
   ## Hotel product metadata entity
   hotelId*: string ## The user-created unique ID that represents the hotel item.
+
+
+# Custom JSON deserialization for CatalogsHotelProductMetadata with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsHotelProductMetadata]): CatalogsHotelProductMetadata =
+  result = CatalogsHotelProductMetadata()
+  if node.kind == JObject:
+    if node.hasKey("hotel_id"):
+      result.hotelId = to(node["hotel_id"], string)
+
+# Custom JSON serialization for CatalogsHotelProductMetadata with custom field names
+proc `%`*(obj: CatalogsHotelProductMetadata): JsonNode =
+  result = newJObject()
+  result["hotel_id"] = %obj.hotelId
+

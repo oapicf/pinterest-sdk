@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UpdatePartnerResultsResponseArray  {
   
   @ApiModelProperty(value = "")
+
   private List<UpdatePartnerResultsResponseArrayItemsInner> items = new ArrayList<>();
  /**
    * Get items

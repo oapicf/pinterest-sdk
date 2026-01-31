@@ -52,37 +52,87 @@ func NewResourcesAPIController(s ResourcesAPIServicer, opts ...ResourcesAPIOptio
 func (c *ResourcesAPIController) Routes() Routes {
 	return Routes{
 		"AdAccountCountriesGet": Route{
+			"AdAccountCountriesGet",
 			strings.ToUpper("Get"),
 			"/v5/resources/ad_account_countries",
 			c.AdAccountCountriesGet,
 		},
 		"DeliveryMetricsGet": Route{
+			"DeliveryMetricsGet",
 			strings.ToUpper("Get"),
 			"/v5/resources/delivery_metrics",
 			c.DeliveryMetricsGet,
 		},
 		"LeadFormQuestionsGet": Route{
+			"LeadFormQuestionsGet",
 			strings.ToUpper("Get"),
 			"/v5/resources/lead_form_questions",
 			c.LeadFormQuestionsGet,
 		},
 		"MetricsReadyStateGet": Route{
+			"MetricsReadyStateGet",
 			strings.ToUpper("Get"),
 			"/v5/resources/metrics_ready_state",
 			c.MetricsReadyStateGet,
 		},
 		"InterestTargetingOptionsGet": Route{
+			"InterestTargetingOptionsGet",
 			strings.ToUpper("Get"),
 			"/v5/resources/targeting/interests/{interest_id}",
 			c.InterestTargetingOptionsGet,
 		},
 		"TargetingOptionsGet": Route{
+			"TargetingOptionsGet",
 			strings.ToUpper("Get"),
 			"/v5/resources/targeting/{targeting_type}",
 			c.TargetingOptionsGet,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the ResourcesAPIController
+func (c *ResourcesAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"AdAccountCountriesGet",
+			strings.ToUpper("Get"),
+			"/v5/resources/ad_account_countries",
+			c.AdAccountCountriesGet,
+		},
+		Route{
+			"DeliveryMetricsGet",
+			strings.ToUpper("Get"),
+			"/v5/resources/delivery_metrics",
+			c.DeliveryMetricsGet,
+		},
+		Route{
+			"LeadFormQuestionsGet",
+			strings.ToUpper("Get"),
+			"/v5/resources/lead_form_questions",
+			c.LeadFormQuestionsGet,
+		},
+		Route{
+			"MetricsReadyStateGet",
+			strings.ToUpper("Get"),
+			"/v5/resources/metrics_ready_state",
+			c.MetricsReadyStateGet,
+		},
+		Route{
+			"InterestTargetingOptionsGet",
+			strings.ToUpper("Get"),
+			"/v5/resources/targeting/interests/{interest_id}",
+			c.InterestTargetingOptionsGet,
+		},
+		Route{
+			"TargetingOptionsGet",
+			strings.ToUpper("Get"),
+			"/v5/resources/targeting/{targeting_type}",
+			c.TargetingOptionsGet,
+		},
+	}
+}
+
+
 
 // AdAccountCountriesGet - Get ad accounts countries
 func (c *ResourcesAPIController) AdAccountCountriesGet(w http.ResponseWriter, r *http.Request) {

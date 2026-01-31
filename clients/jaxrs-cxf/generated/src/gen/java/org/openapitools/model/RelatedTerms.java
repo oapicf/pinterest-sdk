@@ -14,23 +14,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RelatedTerms  {
   
-  @ApiModelProperty(example = "clothes", value = "First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"")
  /**
-   * First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"
-  **/
+  * First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"
+  */
+  @ApiModelProperty(example = "clothes", value = "First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"")
+
   private String id;
 
-  @ApiModelProperty(example = "2", value = "Total number of related terms returned")
  /**
-   * Total number of related terms returned
-  **/
+  * Total number of related terms returned
+  */
+  @ApiModelProperty(example = "2", value = "Total number of related terms returned")
+
   private Integer relatedTermCount;
 
-  @ApiModelProperty(value = "The id of the advertiser.")
-  @Valid
  /**
-   * The id of the advertiser.
-  **/
+  * The id of the advertiser.
+  */
+  @ApiModelProperty(value = "The id of the advertiser.")
+
+  @Valid
+
   private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
  /**
    * First input term. For example, if you pass \&quot;?terms&#x3D;clothes,workout\&quot;, then id will be \&quot;clothes\&quot;

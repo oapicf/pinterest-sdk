@@ -16,7 +16,7 @@ import { CatalogsFeedsCreateRequestDefaultLocale } from './catalogsFeedsCreateRe
 import { CatalogsFormat } from './catalogsFormat';
 import { CatalogsHotelFeedsCreateRequest } from './catalogsHotelFeedsCreateRequest';
 import { CatalogsRetailFeedsCreateRequest } from './catalogsRetailFeedsCreateRequest';
-import { CatalogsStatus &amp; object } from './catalogsStatus  object';
+import { CatalogsStatus } from './catalogsStatus';
 import { CatalogsType } from './catalogsType';
 import { Country } from './country';
 import { NullableCurrency } from './nullableCurrency';

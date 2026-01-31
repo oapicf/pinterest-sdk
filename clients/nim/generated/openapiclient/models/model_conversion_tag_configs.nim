@@ -9,14 +9,55 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type ConversionTagConfigs* = object
   ## 
-  aemEnabled*: bool ## Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-  mdFrequency*: float ## Metadata ingestion frequency.
-  aemFnlnEnabled*: bool ## Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-  aemPhEnabled*: bool ## Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-  aemGeEnabled*: bool ## Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-  aemDbEnabled*: bool ## Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
-  aemLocEnabled*: bool ## Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+  aemEnabled*: Option[bool] ## Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+  mdFrequency*: Option[float] ## Metadata ingestion frequency.
+  aemFnlnEnabled*: Option[bool] ## Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+  aemPhEnabled*: Option[bool] ## Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+  aemGeEnabled*: Option[bool] ## Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+  aemDbEnabled*: Option[bool] ## Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+  aemLocEnabled*: Option[bool] ## Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
+
+
+# Custom JSON deserialization for ConversionTagConfigs with custom field names
+proc to*(node: JsonNode, T: typedesc[ConversionTagConfigs]): ConversionTagConfigs =
+  result = ConversionTagConfigs()
+  if node.kind == JObject:
+    if node.hasKey("aem_enabled") and node["aem_enabled"].kind != JNull:
+      result.aemEnabled = some(to(node["aem_enabled"], typeof(result.aemEnabled.get())))
+    if node.hasKey("md_frequency") and node["md_frequency"].kind != JNull:
+      result.mdFrequency = some(to(node["md_frequency"], typeof(result.mdFrequency.get())))
+    if node.hasKey("aem_fnln_enabled") and node["aem_fnln_enabled"].kind != JNull:
+      result.aemFnlnEnabled = some(to(node["aem_fnln_enabled"], typeof(result.aemFnlnEnabled.get())))
+    if node.hasKey("aem_ph_enabled") and node["aem_ph_enabled"].kind != JNull:
+      result.aemPhEnabled = some(to(node["aem_ph_enabled"], typeof(result.aemPhEnabled.get())))
+    if node.hasKey("aem_ge_enabled") and node["aem_ge_enabled"].kind != JNull:
+      result.aemGeEnabled = some(to(node["aem_ge_enabled"], typeof(result.aemGeEnabled.get())))
+    if node.hasKey("aem_db_enabled") and node["aem_db_enabled"].kind != JNull:
+      result.aemDbEnabled = some(to(node["aem_db_enabled"], typeof(result.aemDbEnabled.get())))
+    if node.hasKey("aem_loc_enabled") and node["aem_loc_enabled"].kind != JNull:
+      result.aemLocEnabled = some(to(node["aem_loc_enabled"], typeof(result.aemLocEnabled.get())))
+
+# Custom JSON serialization for ConversionTagConfigs with custom field names
+proc `%`*(obj: ConversionTagConfigs): JsonNode =
+  result = newJObject()
+  if obj.aemEnabled.isSome():
+    result["aem_enabled"] = %obj.aemEnabled.get()
+  if obj.mdFrequency.isSome():
+    result["md_frequency"] = %obj.mdFrequency.get()
+  if obj.aemFnlnEnabled.isSome():
+    result["aem_fnln_enabled"] = %obj.aemFnlnEnabled.get()
+  if obj.aemPhEnabled.isSome():
+    result["aem_ph_enabled"] = %obj.aemPhEnabled.get()
+  if obj.aemGeEnabled.isSome():
+    result["aem_ge_enabled"] = %obj.aemGeEnabled.get()
+  if obj.aemDbEnabled.isSome():
+    result["aem_db_enabled"] = %obj.aemDbEnabled.get()
+  if obj.aemLocEnabled.isSome():
+    result["aem_loc_enabled"] = %obj.aemLocEnabled.get()
+

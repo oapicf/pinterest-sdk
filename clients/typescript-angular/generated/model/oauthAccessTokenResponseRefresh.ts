@@ -20,12 +20,12 @@ export interface OauthAccessTokenResponseRefresh {
     scope: string;
 }
 export namespace OauthAccessTokenResponseRefresh {
-    export type ResponseTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
     export const ResponseTypeEnum = {
-        AuthorizationCode: 'authorization_code' as ResponseTypeEnum,
-        RefreshToken: 'refresh_token' as ResponseTypeEnum,
-        ClientCredentials: 'client_credentials' as ResponseTypeEnum
-    };
+        AuthorizationCode: 'authorization_code',
+        RefreshToken: 'refresh_token',
+        ClientCredentials: 'client_credentials'
+    } as const;
+    export type ResponseTypeEnum = typeof ResponseTypeEnum[keyof typeof ResponseTypeEnum];
 }
 
 

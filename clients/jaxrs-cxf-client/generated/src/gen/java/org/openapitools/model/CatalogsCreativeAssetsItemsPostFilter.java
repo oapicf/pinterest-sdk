@@ -42,15 +42,18 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private List<String> creativeAssetsIds = new ArrayList<>();
 
-  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
  /**
-   * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-  **/
+  * Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+  */
+  @ApiModelProperty(value = "Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog")
+
   private String catalogId;
  /**
    * Get catalogType

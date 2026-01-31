@@ -6,20 +6,19 @@
 
 
 static conversion_tag_create_t *conversion_tag_create_create_internal(
-    char *name,
     int aem_enabled,
     double md_frequency,
     int aem_fnln_enabled,
     int aem_ph_enabled,
     int aem_ge_enabled,
     int aem_db_enabled,
-    int aem_loc_enabled
+    int aem_loc_enabled,
+    char *name
     ) {
     conversion_tag_create_t *conversion_tag_create_local_var = malloc(sizeof(conversion_tag_create_t));
     if (!conversion_tag_create_local_var) {
         return NULL;
     }
-    conversion_tag_create_local_var->name = name;
     conversion_tag_create_local_var->aem_enabled = aem_enabled;
     conversion_tag_create_local_var->md_frequency = md_frequency;
     conversion_tag_create_local_var->aem_fnln_enabled = aem_fnln_enabled;
@@ -27,30 +26,31 @@ static conversion_tag_create_t *conversion_tag_create_create_internal(
     conversion_tag_create_local_var->aem_ge_enabled = aem_ge_enabled;
     conversion_tag_create_local_var->aem_db_enabled = aem_db_enabled;
     conversion_tag_create_local_var->aem_loc_enabled = aem_loc_enabled;
+    conversion_tag_create_local_var->name = name;
 
     conversion_tag_create_local_var->_library_owned = 1;
     return conversion_tag_create_local_var;
 }
 
 __attribute__((deprecated)) conversion_tag_create_t *conversion_tag_create_create(
-    char *name,
     int aem_enabled,
     double md_frequency,
     int aem_fnln_enabled,
     int aem_ph_enabled,
     int aem_ge_enabled,
     int aem_db_enabled,
-    int aem_loc_enabled
+    int aem_loc_enabled,
+    char *name
     ) {
     return conversion_tag_create_create_internal (
-        name,
         aem_enabled,
         md_frequency,
         aem_fnln_enabled,
         aem_ph_enabled,
         aem_ge_enabled,
         aem_db_enabled,
-        aem_loc_enabled
+        aem_loc_enabled,
+        name
         );
 }
 
@@ -72,15 +72,6 @@ void conversion_tag_create_free(conversion_tag_create_t *conversion_tag_create) 
 
 cJSON *conversion_tag_create_convertToJSON(conversion_tag_create_t *conversion_tag_create) {
     cJSON *item = cJSON_CreateObject();
-
-    // conversion_tag_create->name
-    if (!conversion_tag_create->name) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "name", conversion_tag_create->name) == NULL) {
-    goto fail; //String
-    }
-
 
     // conversion_tag_create->aem_enabled
     if(conversion_tag_create->aem_enabled) {
@@ -137,6 +128,15 @@ cJSON *conversion_tag_create_convertToJSON(conversion_tag_create_t *conversion_t
     }
     }
 
+
+    // conversion_tag_create->name
+    if (!conversion_tag_create->name) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "name", conversion_tag_create->name) == NULL) {
+    goto fail; //String
+    }
+
     return item;
 fail:
     if (item) {
@@ -148,21 +148,6 @@ fail:
 conversion_tag_create_t *conversion_tag_create_parseFromJSON(cJSON *conversion_tag_createJSON){
 
     conversion_tag_create_t *conversion_tag_create_local_var = NULL;
-
-    // conversion_tag_create->name
-    cJSON *name = cJSON_GetObjectItemCaseSensitive(conversion_tag_createJSON, "name");
-    if (cJSON_IsNull(name)) {
-        name = NULL;
-    }
-    if (!name) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(name))
-    {
-    goto end; //String
-    }
 
     // conversion_tag_create->aem_enabled
     cJSON *aem_enabled = cJSON_GetObjectItemCaseSensitive(conversion_tag_createJSON, "aem_enabled");
@@ -248,16 +233,31 @@ conversion_tag_create_t *conversion_tag_create_parseFromJSON(cJSON *conversion_t
     }
     }
 
+    // conversion_tag_create->name
+    cJSON *name = cJSON_GetObjectItemCaseSensitive(conversion_tag_createJSON, "name");
+    if (cJSON_IsNull(name)) {
+        name = NULL;
+    }
+    if (!name) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(name))
+    {
+    goto end; //String
+    }
+
 
     conversion_tag_create_local_var = conversion_tag_create_create_internal (
-        strdup(name->valuestring),
         aem_enabled ? aem_enabled->valueint : 0,
         md_frequency ? md_frequency->valuedouble : 0,
         aem_fnln_enabled ? aem_fnln_enabled->valueint : 0,
         aem_ph_enabled ? aem_ph_enabled->valueint : 0,
         aem_ge_enabled ? aem_ge_enabled->valueint : 0,
         aem_db_enabled ? aem_db_enabled->valueint : 0,
-        aem_loc_enabled ? aem_loc_enabled->valueint : 0
+        aem_loc_enabled ? aem_loc_enabled->valueint : 0,
+        strdup(name->valuestring)
         );
 
     return conversion_tag_create_local_var;

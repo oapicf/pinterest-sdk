@@ -30,7 +30,7 @@ data class BusinessAccessUserSummary(
 
     @Schema(example = "business0101", description = "Username of the business member/partner.")
     @get:JsonProperty("username") val username: kotlin.String? = null
-    ) {
+) {
 
 }
 

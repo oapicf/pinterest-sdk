@@ -22,7 +22,14 @@ module ConversionTagsApiHandlerTestsHelper =
   let mutable ConversionTagsCreateBody = ""
 
   ConversionTagsCreateBody <- WebUtility.HtmlDecode "{
-  &quot;name&quot; : &quot;ACME Tools Tag&quot;
+  &quot;aem_fnln_enabled&quot; : true,
+  &quot;aem_enabled&quot; : true,
+  &quot;aem_db_enabled&quot; : true,
+  &quot;name&quot; : &quot;ACME Tools Tag&quot;,
+  &quot;md_frequency&quot; : 0.6,
+  &quot;aem_ph_enabled&quot; : true,
+  &quot;aem_ge_enabled&quot; : true,
+  &quot;aem_loc_enabled&quot; : true
 }"
   ConversionTagsCreateExamples <- ConversionTagsCreateExamples.Add("application/json", ConversionTagsCreateBody)
 

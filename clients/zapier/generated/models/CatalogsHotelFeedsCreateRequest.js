@@ -43,7 +43,10 @@ module.exports = {
                 label: `Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future. - [${labelPrefix}catalog_id]`,
                 type: 'string',
             },
-            ...CatalogsStatus.fields(`${keyPrefix}status`, isInput),
+            {
+                key: `${keyPrefix}status`,
+                ...CatalogsStatus.fields(`${keyPrefix}status`, isInput),
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -58,7 +61,7 @@ module.exports = {
             'preferred_processing_schedule': utils.removeIfEmpty(CatalogsFeedProcessingSchedule.mapping(bundle, `${keyPrefix}preferred_processing_schedule`)),
             'catalog_type': bundle.inputData?.[`${keyPrefix}catalog_type`],
             'catalog_id': bundle.inputData?.[`${keyPrefix}catalog_id`],
-            'status': utils.removeIfEmpty(CatalogsStatus.mapping(bundle, `${keyPrefix}status`)),
+            'status': bundle.inputData?.[`${keyPrefix}status`],
         }
     },
 }

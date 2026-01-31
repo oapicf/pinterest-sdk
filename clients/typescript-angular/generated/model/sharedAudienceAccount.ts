@@ -28,11 +28,11 @@ export interface SharedAudienceAccount {
     shared_on_timestamp: number;
 }
 export namespace SharedAudienceAccount {
-    export type AccountTypeEnum = 'AD_ACCOUNT' | 'BUSINESS_ACCOUNT';
     export const AccountTypeEnum = {
-        AdAccount: 'AD_ACCOUNT' as AccountTypeEnum,
-        BusinessAccount: 'BUSINESS_ACCOUNT' as AccountTypeEnum
-    };
+        AdAccount: 'AD_ACCOUNT',
+        BusinessAccount: 'BUSINESS_ACCOUNT'
+    } as const;
+    export type AccountTypeEnum = typeof AccountTypeEnum[keyof typeof AccountTypeEnum];
 }
 
 

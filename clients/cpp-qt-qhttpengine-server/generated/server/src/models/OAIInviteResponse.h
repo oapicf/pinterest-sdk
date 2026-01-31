@@ -24,6 +24,7 @@
 #include "OAIBaseInviteDataResponse_invite_data.h"
 #include "OAIBusinessAccessUserSummary.h"
 #include "OAIInviteAssetsSummary.h"
+#include "OAIObject.h"
 #include <QList>
 #include <QString>
 
@@ -42,31 +43,6 @@ public:
     QJsonObject asJsonObject() const override;
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
-
-    OAIInviteAssetsSummary getAssetsSummary() const;
-    void setAssetsSummary(const OAIInviteAssetsSummary &assets_summary);
-    bool is_assets_summary_Set() const;
-    bool is_assets_summary_Valid() const;
-
-    QList<QString> getBusinessRoles() const;
-    void setBusinessRoles(const QList<QString> &business_roles);
-    bool is_business_roles_Set() const;
-    bool is_business_roles_Valid() const;
-
-    OAIBusinessAccessUserSummary getCreatedByBusiness() const;
-    void setCreatedByBusiness(const OAIBusinessAccessUserSummary &created_by_business);
-    bool is_created_by_business_Set() const;
-    bool is_created_by_business_Valid() const;
-
-    OAIBusinessAccessUserSummary getCreatedByUser() const;
-    void setCreatedByUser(const OAIBusinessAccessUserSummary &created_by_user);
-    bool is_created_by_user_Set() const;
-    bool is_created_by_user_Valid() const;
-
-    qint32 getCreatedTime() const;
-    void setCreatedTime(const qint32 &created_time);
-    bool is_created_time_Set() const;
-    bool is_created_time_Valid() const;
 
     QString getId() const;
     void setId(const QString &id);
@@ -88,31 +64,36 @@ public:
     bool is_user_Set() const;
     bool is_user_Valid() const;
 
+    OAIInviteAssetsSummary getAssetsSummary() const;
+    void setAssetsSummary(const OAIInviteAssetsSummary &assets_summary);
+    bool is_assets_summary_Set() const;
+    bool is_assets_summary_Valid() const;
+
+    QList<QString> getBusinessRoles() const;
+    void setBusinessRoles(const QList<QString> &business_roles);
+    bool is_business_roles_Set() const;
+    bool is_business_roles_Valid() const;
+
+    OAIObject getCreatedByBusiness() const;
+    void setCreatedByBusiness(const OAIObject &created_by_business);
+    bool is_created_by_business_Set() const;
+    bool is_created_by_business_Valid() const;
+
+    OAIObject getCreatedByUser() const;
+    void setCreatedByUser(const OAIObject &created_by_user);
+    bool is_created_by_user_Set() const;
+    bool is_created_by_user_Valid() const;
+
+    qint32 getCreatedTime() const;
+    void setCreatedTime(const qint32 &created_time);
+    bool is_created_time_Set() const;
+    bool is_created_time_Valid() const;
+
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
     void initializeModel();
-
-    OAIInviteAssetsSummary assets_summary;
-    bool m_assets_summary_isSet;
-    bool m_assets_summary_isValid;
-
-    QList<QString> business_roles;
-    bool m_business_roles_isSet;
-    bool m_business_roles_isValid;
-
-    OAIBusinessAccessUserSummary created_by_business;
-    bool m_created_by_business_isSet;
-    bool m_created_by_business_isValid;
-
-    OAIBusinessAccessUserSummary created_by_user;
-    bool m_created_by_user_isSet;
-    bool m_created_by_user_isValid;
-
-    qint32 created_time;
-    bool m_created_time_isSet;
-    bool m_created_time_isValid;
 
     QString id;
     bool m_id_isSet;
@@ -129,6 +110,26 @@ private:
     OAIBusinessAccessUserSummary user;
     bool m_user_isSet;
     bool m_user_isValid;
+
+    OAIInviteAssetsSummary assets_summary;
+    bool m_assets_summary_isSet;
+    bool m_assets_summary_isValid;
+
+    QList<QString> business_roles;
+    bool m_business_roles_isSet;
+    bool m_business_roles_isValid;
+
+    OAIObject created_by_business;
+    bool m_created_by_business_isSet;
+    bool m_created_by_business_isValid;
+
+    OAIObject created_by_user;
+    bool m_created_by_user_isSet;
+    bool m_created_by_user_isValid;
+
+    qint32 created_time;
+    bool m_created_time_isSet;
+    bool m_created_time_isValid;
 };
 
 } // namespace OpenAPI

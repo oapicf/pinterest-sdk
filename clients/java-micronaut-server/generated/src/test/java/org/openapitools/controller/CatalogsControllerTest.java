@@ -109,7 +109,7 @@ public class CatalogsControllerTest {
         CatalogsCreateRequest body = new CatalogsCreateRequest("example", "example");
         String uri = UriTemplate.of("/catalogs").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@3cc78f08");
+            .accept("[Ljava.lang.String;@7de4a4d8");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -156,7 +156,7 @@ public class CatalogsControllerTest {
         // given
         String uri = UriTemplate.of("/catalogs").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@79994ef0");
+            .accept("[Ljava.lang.String;@6a19c2");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -210,7 +210,7 @@ public class CatalogsControllerTest {
             put("product_group_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@612b1b5");
+            .accept("[Ljava.lang.String;@7507ec0f");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -260,7 +260,7 @@ public class CatalogsControllerTest {
         MultipleProductGroupsInner body = new MultipleProductGroupsInner();
         String uri = UriTemplate.of("/catalogs/product_groups").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@28203154");
+            .accept("[Ljava.lang.String;@41b62549");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -307,7 +307,7 @@ public class CatalogsControllerTest {
         List<MultipleProductGroupsInner> body = Arrays.asList();
         String uri = UriTemplate.of("/catalogs/product_groups/multiple").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@281f4497");
+            .accept("[Ljava.lang.String;@19ac8bc3");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -356,7 +356,7 @@ public class CatalogsControllerTest {
             put("product_group_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@1bc271aa");
+            .accept("[Ljava.lang.String;@4958353d");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -402,7 +402,7 @@ public class CatalogsControllerTest {
         // given
         String uri = UriTemplate.of("/catalogs/product_groups/multiple").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@84ee47e");
+            .accept("[Ljava.lang.String;@3f5df8d");
         request.getParameters()
             .add("id", String.valueOf(Arrays.asList())) // The query parameter format should be csv
             .add("ad_account_id", "example"); // The query parameter format should be 
@@ -452,7 +452,7 @@ public class CatalogsControllerTest {
             put("product_group_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@21cdceb2");
+            .accept("[Ljava.lang.String;@73992ed7");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -502,7 +502,7 @@ public class CatalogsControllerTest {
         // given
         String uri = UriTemplate.of("/catalogs/product_groups").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@73a41de0");
+            .accept("[Ljava.lang.String;@e9651f4");
         request.getParameters()
             .add("id", String.valueOf(Arrays.asList())) // The query parameter format should be csv
             .add("feed_id", "example") // The query parameter format should be 
@@ -556,7 +556,7 @@ public class CatalogsControllerTest {
             put("product_group_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7b636d1f");
+            .accept("[Ljava.lang.String;@66f7cc6");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -607,7 +607,7 @@ public class CatalogsControllerTest {
             put("product_group_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@4f11b19");
+            .accept("[Ljava.lang.String;@2bcbc231");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -658,7 +658,7 @@ public class CatalogsControllerTest {
             put("feed_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4b86ed6b");
+            .accept("[Ljava.lang.String;@111eae09");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -707,7 +707,7 @@ public class CatalogsControllerTest {
         FeedsCreateRequest body = new FeedsCreateRequest();
         String uri = UriTemplate.of("/catalogs/feeds").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@181eb2e6");
+            .accept("[Ljava.lang.String;@2dbb542f");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -756,7 +756,7 @@ public class CatalogsControllerTest {
             put("feed_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@78753f6f");
+            .accept("[Ljava.lang.String;@504f9412");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -805,7 +805,7 @@ public class CatalogsControllerTest {
             put("feed_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7450daab");
+            .accept("[Ljava.lang.String;@25600e60");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -854,7 +854,7 @@ public class CatalogsControllerTest {
             put("feed_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, null)
-            .accept("[Ljava.lang.String;@8c19cff");
+            .accept("[Ljava.lang.String;@416a9223");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -902,7 +902,7 @@ public class CatalogsControllerTest {
         // given
         String uri = UriTemplate.of("/catalogs/feeds").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@65258683");
+            .accept("[Ljava.lang.String;@3687bc0d");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -956,7 +956,7 @@ public class CatalogsControllerTest {
             put("feed_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@34fa530f");
+            .accept("[Ljava.lang.String;@1a4451cb");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -1005,7 +1005,7 @@ public class CatalogsControllerTest {
             put("batch_id", "595953100599279259-66753b9bb65c46c49bd8503b27fecf9e");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@460d42b9");
+            .accept("[Ljava.lang.String;@3ff24fed");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -1052,7 +1052,7 @@ public class CatalogsControllerTest {
         ItemsBatchPostRequest body = new ItemsBatchPostRequest();
         String uri = UriTemplate.of("/catalogs/items/batch").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@42af18e3");
+            .accept("[Ljava.lang.String;@2a9c29ba");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -1101,7 +1101,7 @@ public class CatalogsControllerTest {
         // given
         String uri = UriTemplate.of("/catalogs/items").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@b779fab");
+            .accept("[Ljava.lang.String;@21f09f30");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("country", "US") // The query parameter format should be 
@@ -1158,7 +1158,7 @@ public class CatalogsControllerTest {
             put("processing_result_id", "5224831246441439241");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6d73c7e1");
+            .accept("[Ljava.lang.String;@190258cc");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -1186,7 +1186,7 @@ public class CatalogsControllerTest {
     @Disabled("Not Implemented")
     void itemsPostMethodTest() {
         // given
-        CatalogsItemsRequest catalogsItemsRequest = new CatalogsItemsRequest(org.openapitools.model.Country.fromValue("AD"), null, null);
+        CatalogsItemsRequest catalogsItemsRequest = new CatalogsItemsRequest(org.openapitools.model.Country.fromValue("AD"), "example", null);
         String adAccountId = "example";
 
         // when
@@ -1206,10 +1206,10 @@ public class CatalogsControllerTest {
     @Disabled("Not Implemented")
     void itemsPostClientApiTest() throws IOException {
         // given
-        CatalogsItemsRequest body = new CatalogsItemsRequest(org.openapitools.model.Country.fromValue("AD"), null, null);
+        CatalogsItemsRequest body = new CatalogsItemsRequest(org.openapitools.model.Country.fromValue("AD"), "example", null);
         String uri = UriTemplate.of("/catalogs/items").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@41c7487c");
+            .accept("[Ljava.lang.String;@34a2f126");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -1259,7 +1259,7 @@ public class CatalogsControllerTest {
         CatalogsListProductsByFilterRequest body = new CatalogsListProductsByFilterRequest();
         String uri = UriTemplate.of("/catalogs/products/get_by_product_group_filters").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@7b9528a7");
+            .accept("[Ljava.lang.String;@7fb8dff1");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -1309,7 +1309,7 @@ public class CatalogsControllerTest {
         CatalogsReportParameters body = new CatalogsReportParameters(org.openapitools.model.CatalogsType.fromValue("RETAIL"));
         String uri = UriTemplate.of("/catalogs/reports").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@4c286ab9");
+            .accept("[Ljava.lang.String;@5a14d629");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -1355,7 +1355,7 @@ public class CatalogsControllerTest {
         // given
         String uri = UriTemplate.of("/catalogs/reports").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3f17e012");
+            .accept("[Ljava.lang.String;@51db219f");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("token", "example"); // The query parameter format should be 
@@ -1404,7 +1404,7 @@ public class CatalogsControllerTest {
         // given
         String uri = UriTemplate.of("/catalogs/reports/stats").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@44e8cb24");
+            .accept("[Ljava.lang.String;@72d3c143");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 

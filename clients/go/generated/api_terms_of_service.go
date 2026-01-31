@@ -93,8 +93,9 @@ func (a *TermsOfServiceAPIService) TermsOfServiceGetExecute(r ApiTermsOfServiceG
 	if r.includeHtml != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_html", r.includeHtml, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.includeHtml = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "include_html", defaultValue, "form", "")
+        r.includeHtml = &defaultValue
 	}
 	if r.tosType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "tos_type", r.tosType, "form", "")

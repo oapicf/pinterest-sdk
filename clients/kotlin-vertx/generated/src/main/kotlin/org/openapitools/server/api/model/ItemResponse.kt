@@ -26,9 +26,11 @@ import com.fasterxml.jackson.annotation.JsonInclude
  * Object describing an item record
  * @param catalogType 
  * @param itemId The catalog item id in the merchant namespace
- * @param errors Array with the errors for the item id requested
+ * @param pins The pins mapped to the item
+ * @param attributes 
  * @param hotelId The catalog hotel id in the merchant namespace
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
+ * @param errors Array with the errors for the item id requested
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -36,15 +38,15 @@ data class ItemResponse (
     @SerializedName("catalogType") private val _catalogType: CatalogsType?,
     /* The catalog item id in the merchant namespace */
     val itemId: kotlin.String? = null,
-    /* Array with the errors for the item id requested */
-    val errors: kotlin.Array<ItemValidationEvent>? = null,
+    /* The pins mapped to the item */
+    val pins: kotlin.Array<Pin>? = null,
+    val attributes: CatalogsCreativeAssetsAttributes? = null,
     /* The catalog hotel id in the merchant namespace */
     val hotelId: kotlin.String? = null,
     /* The catalog creative assets id in the merchant namespace */
     val creativeAssetsId: kotlin.String? = null,
-    /* The pins mapped to the item */
-    val pins: kotlin.Array<Pin>? = null,
-    val attributes: CatalogsCreativeAssetsAttributes? = null
+    /* Array with the errors for the item id requested */
+    val errors: kotlin.Array<ItemValidationEvent>? = null
 ) {
 
         val catalogType get() = _catalogType ?: throw IllegalArgumentException("catalogType is required")

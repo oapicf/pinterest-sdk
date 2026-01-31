@@ -1,53 +1,65 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Schema used for updating the integration metadata.
- **/
+ * Schema used for updating the integration metadata.
+ */
 @ApiModel(description="Schema used for updating the integration metadata.")
 
 public class IntegrationRequestPatch  {
   
   @ApiModelProperty(value = "")
+
   private String connectedMerchantId;
 
   @ApiModelProperty(value = "")
+
   private String connectedAdvertiserId;
 
   @ApiModelProperty(value = "")
+
   private String connectedLbaId;
 
   @ApiModelProperty(value = "")
+
   private String connectedTagId;
 
   @ApiModelProperty(value = "")
+
   private String partnerAccessToken;
 
   @ApiModelProperty(value = "")
+
   private String partnerRefreshToken;
 
   @ApiModelProperty(value = "")
+
   private String partnerPrimaryEmail;
 
   @ApiModelProperty(value = "")
+
   private BigDecimal partnerAccessTokenExpiry;
 
   @ApiModelProperty(value = "")
+
   private BigDecimal partnerRefreshTokenExpiry;
 
   @ApiModelProperty(value = "")
+
   private String scopes;
 
   @ApiModelProperty(value = "")
+
   private String additionalId1;
 
   @ApiModelProperty(value = "")
+
   private String partnerMetadata;
  /**
    * Get connectedMerchantId

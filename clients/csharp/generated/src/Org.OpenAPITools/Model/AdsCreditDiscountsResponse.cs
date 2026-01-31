@@ -568,8 +568,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "active":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                active = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            active = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "advertiser_id":
                             advertiserId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -580,8 +579,7 @@ namespace Org.OpenAPITools.Model
                                 discountType = new Option<AdsCreditDiscountsResponse.DiscountTypeEnum?>(AdsCreditDiscountsResponse.DiscountTypeEnumFromStringOrDefault(discountTypeRawValue));
                             break;
                         case "discountInMicroCurrency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                discountInMicroCurrency = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            discountInMicroCurrency = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "discountCurrency":
                             discountCurrency = new Option<string?>(utf8JsonReader.GetString());
@@ -590,8 +588,7 @@ namespace Org.OpenAPITools.Model
                             title = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "remainingDiscountInMicroCurrency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                remainingDiscountInMicroCurrency = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            remainingDiscountInMicroCurrency = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         default:
                             break;

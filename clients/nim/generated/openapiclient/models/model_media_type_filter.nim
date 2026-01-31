@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_multiple_media_types_criteria
 
 type MediaTypeFilter* = object
   ## 
   MEDIA_TYPE*: CatalogsProductGroupMultipleMediaTypesCriteria
+

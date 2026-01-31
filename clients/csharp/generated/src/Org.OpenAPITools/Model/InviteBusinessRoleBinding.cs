@@ -27,7 +27,7 @@ using Org.OpenAPITools.Client;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+    /// InviteBusinessRoleBinding
     /// </summary>
     public partial class InviteBusinessRoleBinding : IValidatableObject
     {
@@ -37,11 +37,11 @@ namespace Org.OpenAPITools.Model
         /// <param name="id">Unique identifier of the invite/request.</param>
         /// <param name="inviteData">inviteData</param>
         /// <param name="isReceivedInvite">Indicates whether the invite/request was received.</param>
-        /// <param name="user">Metadata for the member/partner that was sent the invite/request.</param>
+        /// <param name="user">Metadata for the user that updated the invite/request.</param>
         /// <param name="createdByBusinessId">Unique identifier for the business that created the invite/request.</param>
         /// <param name="createdByUserId">Unique identifier for the user that created the invite/request.</param>
         [JsonConstructor]
-        public InviteBusinessRoleBinding(Option<string?> id = default, Option<BaseInviteDataResponseInviteData?> inviteData = default, Option<bool?> isReceivedInvite = default, Option<BusinessAccessUserSummary?> user = default, Option<string?> createdByBusinessId = default, Option<string?> createdByUserId = default)
+        public InviteBusinessRoleBinding(Option<string?> id = default, Option<BaseInviteDataResponseInviteData?> inviteData = default, Option<bool?> isReceivedInvite = default, Option<Object?> user = default, Option<string?> createdByBusinessId = default, Option<string?> createdByUserId = default)
         {
             IdOption = id;
             InviteDataOption = inviteData;
@@ -101,14 +101,14 @@ namespace Org.OpenAPITools.Model
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<BusinessAccessUserSummary?> UserOption { get; private set; }
+        public Option<Object?> UserOption { get; private set; }
 
         /// <summary>
-        /// Metadata for the member/partner that was sent the invite/request.
+        /// Metadata for the user that updated the invite/request.
         /// </summary>
-        /// <value>Metadata for the member/partner that was sent the invite/request.</value>
+        /// <value>Metadata for the user that updated the invite/request.</value>
         [JsonPropertyName("user")]
-        public BusinessAccessUserSummary? User { get { return this.UserOption; } set { this.UserOption = new(value); } }
+        public Object? User { get { return this.UserOption; } set { this.UserOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedByBusinessId
@@ -148,12 +148,12 @@ namespace Org.OpenAPITools.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class InviteBusinessRoleBinding {\n");
-            sb.Append("  CreatedByBusinessId: ").Append(CreatedByBusinessId).Append("\n");
-            sb.Append("  CreatedByUserId: ").Append(CreatedByUserId).Append("\n");
-            sb.Append("  User: ").Append(User).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  InviteData: ").Append(InviteData).Append("\n");
             sb.Append("  IsReceivedInvite: ").Append(IsReceivedInvite).Append("\n");
+            sb.Append("  User: ").Append(User).Append("\n");
+            sb.Append("  CreatedByBusinessId: ").Append(CreatedByBusinessId).Append("\n");
+            sb.Append("  CreatedByUserId: ").Append(CreatedByUserId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -204,7 +204,7 @@ namespace Org.OpenAPITools.Model
             Option<string?> id = default;
             Option<BaseInviteDataResponseInviteData?> inviteData = default;
             Option<bool?> isReceivedInvite = default;
-            Option<BusinessAccessUserSummary?> user = default;
+            Option<Object?> user = default;
             Option<string?> createdByBusinessId = default;
             Option<string?> createdByUserId = default;
 
@@ -227,16 +227,13 @@ namespace Org.OpenAPITools.Model
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "invite_data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                inviteData = new Option<BaseInviteDataResponseInviteData?>(JsonSerializer.Deserialize<BaseInviteDataResponseInviteData>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            inviteData = new Option<BaseInviteDataResponseInviteData?>(JsonSerializer.Deserialize<BaseInviteDataResponseInviteData>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "is_received_invite":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isReceivedInvite = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isReceivedInvite = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "user":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                user = new Option<BusinessAccessUserSummary?>(JsonSerializer.Deserialize<BusinessAccessUserSummary>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            user = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "created_by_business_id":
                             createdByBusinessId = new Option<string?>(utf8JsonReader.GetString()!);

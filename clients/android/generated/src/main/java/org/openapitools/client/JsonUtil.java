@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -375,10 +375,6 @@ public class JsonUtil {
     
     if ("AudienceCreateRequest".equalsIgnoreCase(className)) {
       return new TypeToken<List<AudienceCreateRequest>>(){}.getType();
-    }
-    
-    if ("AudienceCreateRequest1AudienceType".equalsIgnoreCase(className)) {
-      return new TypeToken<List<AudienceCreateRequest1AudienceType>>(){}.getType();
     }
     
     if ("AudienceDataParty".equalsIgnoreCase(className)) {
@@ -1087,10 +1083,6 @@ public class JsonUtil {
     
     if ("CatalogsItemsRequest".equalsIgnoreCase(className)) {
       return new TypeToken<List<CatalogsItemsRequest>>(){}.getType();
-    }
-    
-    if ("CatalogsItemsRequestLanguage".equalsIgnoreCase(className)) {
-      return new TypeToken<List<CatalogsItemsRequestLanguage>>(){}.getType();
     }
     
     if ("CatalogsItemsUpdateBatchRequest".equalsIgnoreCase(className)) {
@@ -2425,10 +2417,6 @@ public class JsonUtil {
       return new TypeToken<List<PinUpdateCarouselSlotsInner>>(){}.getType();
     }
     
-    if ("PinsAnalyticsMetricTypesParameterInner".equalsIgnoreCase(className)) {
-      return new TypeToken<List<PinsAnalyticsMetricTypesParameterInner>>(){}.getType();
-    }
-    
     if ("PinsList200Response".equalsIgnoreCase(className)) {
       return new TypeToken<List<PinsList200Response>>(){}.getType();
     }
@@ -3255,10 +3243,6 @@ public class JsonUtil {
       return new TypeToken<AudienceCreateRequest>(){}.getType();
     }
     
-    if ("AudienceCreateRequest1AudienceType".equalsIgnoreCase(className)) {
-      return new TypeToken<AudienceCreateRequest1AudienceType>(){}.getType();
-    }
-    
     if ("AudienceDataParty".equalsIgnoreCase(className)) {
       return new TypeToken<AudienceDataParty>(){}.getType();
     }
@@ -3965,10 +3949,6 @@ public class JsonUtil {
     
     if ("CatalogsItemsRequest".equalsIgnoreCase(className)) {
       return new TypeToken<CatalogsItemsRequest>(){}.getType();
-    }
-    
-    if ("CatalogsItemsRequestLanguage".equalsIgnoreCase(className)) {
-      return new TypeToken<CatalogsItemsRequestLanguage>(){}.getType();
     }
     
     if ("CatalogsItemsUpdateBatchRequest".equalsIgnoreCase(className)) {
@@ -5301,10 +5281,6 @@ public class JsonUtil {
     
     if ("PinUpdateCarouselSlotsInner".equalsIgnoreCase(className)) {
       return new TypeToken<PinUpdateCarouselSlotsInner>(){}.getType();
-    }
-    
-    if ("PinsAnalyticsMetricTypesParameterInner".equalsIgnoreCase(className)) {
-      return new TypeToken<PinsAnalyticsMetricTypesParameterInner>(){}.getType();
     }
     
     if ("PinsList200Response".equalsIgnoreCase(className)) {

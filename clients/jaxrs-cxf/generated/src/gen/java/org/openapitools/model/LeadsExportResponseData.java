@@ -15,10 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class LeadsExportResponseData  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private LeadsExportStatus exportStatus;
 
   @ApiModelProperty(value = "")
+
   private String downloadUrl;
  /**
    * Get exportStatus

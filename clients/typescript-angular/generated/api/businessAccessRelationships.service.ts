@@ -11,10 +11,10 @@
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent, HttpParameterCodec, HttpContext 
+         HttpResponse, HttpEvent, HttpContext 
         }       from '@angular/common/http';
-import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
+import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
 import { DeletePartnersRequest } from '../model/deletePartnersRequest';
@@ -58,10 +58,12 @@ export class BusinessAccessRelationshipsService extends BaseService {
     /**
      * Terminate business memberships
      * Terminate memberships between the specified members and your business.
+     * @endpoint delete /businesses/{business_id}/members
      * @param businessId Business id
      * @param membersToDeleteBody List of members with role to delete.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public deleteBusinessMembership(businessId: string, membersToDeleteBody: MembersToDeleteBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeletedMembersResponse>;
     public deleteBusinessMembership(businessId: string, membersToDeleteBody: MembersToDeleteBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeletedMembersResponse>>;
@@ -112,15 +114,16 @@ export class BusinessAccessRelationshipsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/members`;
-        return this.httpClient.request<DeletedMembersResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<DeletedMembersResponse>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: membersToDeleteBody,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -129,10 +132,12 @@ export class BusinessAccessRelationshipsService extends BaseService {
     /**
      * Terminate business partnerships
      * Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
+     * @endpoint delete /businesses/{business_id}/partners
      * @param businessId Unique identifier of the requesting business.
      * @param deletePartnersRequest An object containing a \&quot;partner_ids\&quot; property composed of a list of partner IDs and a \&quot;partners_type\&quot; property specifying the type of partners to delete. 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public deleteBusinessPartners(businessId: string, deletePartnersRequest: DeletePartnersRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeletePartnersResponse>;
     public deleteBusinessPartners(businessId: string, deletePartnersRequest: DeletePartnersRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeletePartnersResponse>>;
@@ -183,15 +188,16 @@ export class BusinessAccessRelationshipsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/partners`;
-        return this.httpClient.request<DeletePartnersResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<DeletePartnersResponse>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: deletePartnersRequest,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -200,21 +206,37 @@ export class BusinessAccessRelationshipsService extends BaseService {
     /**
      * List business employers for user
      * Get all of the viewing user\&#39;s business employers.
+     * @endpoint get /businesses/employers
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public getBusinessEmployers(pageSize?: number, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBusinessEmployers200Response>;
     public getBusinessEmployers(pageSize?: number, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBusinessEmployers200Response>>;
     public getBusinessEmployers(pageSize?: number, bookmark?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<GetBusinessEmployers200Response>>;
     public getBusinessEmployers(pageSize?: number, bookmark?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -245,15 +267,16 @@ export class BusinessAccessRelationshipsService extends BaseService {
         }
 
         let localVarPath = `/businesses/employers`;
-        return this.httpClient.request<GetBusinessEmployers200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<GetBusinessEmployers200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -262,6 +285,7 @@ export class BusinessAccessRelationshipsService extends BaseService {
     /**
      * Get business members
      * Get all members of the specified business. The return response will include the member\&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE
+     * @endpoint get /businesses/{business_id}/members
      * @param businessId Unique identifier of the requesting business.
      * @param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
      * @param businessRoles A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
@@ -271,6 +295,7 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public getBusinessMembers(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBusinessMembers200Response>;
     public getBusinessMembers(businessId: string, assetsSummary?: boolean, businessRoles?: Array<MemberBusinessRole>, memberIds?: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBusinessMembers200Response>>;
@@ -280,23 +305,61 @@ export class BusinessAccessRelationshipsService extends BaseService {
             throw new Error('Required parameter businessId was null or undefined when calling getBusinessMembers.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>assetsSummary, 'assets_summary');
-        if (businessRoles) {
-            businessRoles.forEach((element) => {
-                localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-                  <any>element, 'business_roles');
-            })
-        }
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>memberIds, 'member_ids');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>startIndex, 'start_index');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'assets_summary',
+            <any>assetsSummary,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'business_roles',
+            <any>businessRoles,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'member_ids',
+            <any>memberIds,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'start_index',
+            <any>startIndex,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -327,15 +390,16 @@ export class BusinessAccessRelationshipsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/members`;
-        return this.httpClient.request<GetBusinessMembers200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<GetBusinessMembers200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -344,6 +408,7 @@ export class BusinessAccessRelationshipsService extends BaseService {
     /**
      * Get business partners
      * Get all partners of the specified business.  If the assets_summary&#x3D;TRUE and: - partner_type&#x3D;INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type&#x3D;EXTERNAL, the business assets returned are your partner\&#39;s business assets the partner has granted you   access to.
+     * @endpoint get /businesses/{business_id}/partners
      * @param businessId Unique identifier of the requesting business.
      * @param assetsSummary Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
      * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset.
@@ -353,6 +418,7 @@ export class BusinessAccessRelationshipsService extends BaseService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, pageSize?: number, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<GetBusinessPartners200Response>;
     public getBusinessPartners(businessId: string, assetsSummary?: boolean, partnerType?: PartnerType, partnerIds?: string, startIndex?: number, pageSize?: number, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<GetBusinessPartners200Response>>;
@@ -362,19 +428,61 @@ export class BusinessAccessRelationshipsService extends BaseService {
             throw new Error('Required parameter businessId was null or undefined when calling getBusinessPartners.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>assetsSummary, 'assets_summary');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>partnerType, 'partner_type');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>partnerIds, 'partner_ids');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>startIndex, 'start_index');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'assets_summary',
+            <any>assetsSummary,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'partner_type',
+            <any>partnerType,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'partner_ids',
+            <any>partnerIds,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'start_index',
+            <any>startIndex,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -405,15 +513,16 @@ export class BusinessAccessRelationshipsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/partners`;
-        return this.httpClient.request<GetBusinessPartners200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<GetBusinessPartners200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -422,10 +531,12 @@ export class BusinessAccessRelationshipsService extends BaseService {
     /**
      * Update member\&#39;s business role
      * Update a member\&#39;s business role within the business.
+     * @endpoint patch /businesses/{business_id}/members
      * @param businessId Business id
      * @param updateMemberBusinessRoleBody List of objects with the member id and the business_role.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public updateBusinessMemberships(businessId: string, updateMemberBusinessRoleBody: Array<UpdateMemberBusinessRoleBody>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<UpdateMemberResultsResponseArray>;
     public updateBusinessMemberships(businessId: string, updateMemberBusinessRoleBody: Array<UpdateMemberBusinessRoleBody>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UpdateMemberResultsResponseArray>>;
@@ -476,15 +587,16 @@ export class BusinessAccessRelationshipsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/members`;
-        return this.httpClient.request<UpdateMemberResultsResponseArray>('patch', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<UpdateMemberResultsResponseArray>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: updateMemberBusinessRoleBody,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );

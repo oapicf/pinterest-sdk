@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CustomLabel2Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CustomLabel2Filter {
   public static final String SERIALIZED_NAME_C_U_S_T_O_M_L_A_B_E_L2 = "CUSTOM_LABEL_2";
   @SerializedName(SERIALIZED_NAME_C_U_S_T_O_M_L_A_B_E_L2)
@@ -122,12 +122,10 @@ public class CustomLabel2Filter {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("CUSTOM_LABEL_2");
+    openapiFields = new HashSet<String>(Arrays.asList("CUSTOM_LABEL_2"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("CUSTOM_LABEL_2");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("CUSTOM_LABEL_2"));
   }
 
   /**
@@ -139,7 +137,7 @@ public class CustomLabel2Filter {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CustomLabel2Filter.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CustomLabel2Filter is not found in the empty JSON string", CustomLabel2Filter.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CustomLabel2Filter is not found in the empty JSON string", CustomLabel2Filter.openapiRequiredFields.toString()));
         }
       }
 
@@ -147,14 +145,14 @@ public class CustomLabel2Filter {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CustomLabel2Filter.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CustomLabel2Filter` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CustomLabel2Filter` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CustomLabel2Filter.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

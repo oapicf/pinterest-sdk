@@ -9,10 +9,35 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type TargetingTemplateAudienceSizingReachEstimate* = object
   ## 
-  estimate*: int64
-  lowerBound*: int64
-  upperBound*: int64
+  estimate*: Option[int64]
+  lowerBound*: Option[int64]
+  upperBound*: Option[int64]
+
+
+# Custom JSON deserialization for TargetingTemplateAudienceSizingReachEstimate with custom field names
+proc to*(node: JsonNode, T: typedesc[TargetingTemplateAudienceSizingReachEstimate]): TargetingTemplateAudienceSizingReachEstimate =
+  result = TargetingTemplateAudienceSizingReachEstimate()
+  if node.kind == JObject:
+    if node.hasKey("estimate") and node["estimate"].kind != JNull:
+      result.estimate = some(to(node["estimate"], typeof(result.estimate.get())))
+    if node.hasKey("lower_bound") and node["lower_bound"].kind != JNull:
+      result.lowerBound = some(to(node["lower_bound"], typeof(result.lowerBound.get())))
+    if node.hasKey("upper_bound") and node["upper_bound"].kind != JNull:
+      result.upperBound = some(to(node["upper_bound"], typeof(result.upperBound.get())))
+
+# Custom JSON serialization for TargetingTemplateAudienceSizingReachEstimate with custom field names
+proc `%`*(obj: TargetingTemplateAudienceSizingReachEstimate): JsonNode =
+  result = newJObject()
+  if obj.estimate.isSome():
+    result["estimate"] = %obj.estimate.get()
+  if obj.lowerBound.isSome():
+    result["lower_bound"] = %obj.lowerBound.get()
+  if obj.upperBound.isSome():
+    result["upper_bound"] = %obj.upperBound.get()
+

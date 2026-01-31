@@ -7,17 +7,17 @@
 --
 -- SELECT template for table `OauthAccessTokenRequestClientCredentials`
 --
-SELECT `grant_type`, `scope` FROM `OauthAccessTokenRequestClientCredentials` WHERE 1;
+SELECT `scope`, `grant_type` FROM `OauthAccessTokenRequestClientCredentials` WHERE 1;
 
 --
 -- INSERT template for table `OauthAccessTokenRequestClientCredentials`
 --
-INSERT INTO `OauthAccessTokenRequestClientCredentials`(`grant_type`, `scope`) VALUES (?, ?);
+INSERT INTO `OauthAccessTokenRequestClientCredentials`(`scope`, `grant_type`) VALUES (?, ?);
 
 --
 -- UPDATE template for table `OauthAccessTokenRequestClientCredentials`
 --
-UPDATE `OauthAccessTokenRequestClientCredentials` SET `grant_type` = ?, `scope` = ? WHERE 1;
+UPDATE `OauthAccessTokenRequestClientCredentials` SET `scope` = ?, `grant_type` = ? WHERE 1;
 
 --
 -- DELETE template for table `OauthAccessTokenRequestClientCredentials`

@@ -8,40 +8,46 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsFeedIngestionWarnings  {
   
-  @ApiModelProperty(value = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
  /**
-   * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
-  **/
+  * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.
+  */
+  @ApiModelProperty(value = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.")
+
   private Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
 
-  @ApiModelProperty(value = "Additional image files are unreadable. Please upload new files to continue.")
  /**
-   * Additional image files are unreadable. Please upload new files to continue.
-  **/
+  * Additional image files are unreadable. Please upload new files to continue.
+  */
+  @ApiModelProperty(value = "Additional image files are unreadable. Please upload new files to continue.")
+
   private Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
 
-  @ApiModelProperty(value = "Additional image files are unreadable. Please check your link and upload new files to continue.")
  /**
-   * Additional image files are unreadable. Please check your link and upload new files to continue.
-  **/
+  * Additional image files are unreadable. Please check your link and upload new files to continue.
+  */
+  @ApiModelProperty(value = "Additional image files are unreadable. Please check your link and upload new files to continue.")
+
   private Integer ADDITIONAL_IMAGE_MALFORMED_URL;
 
-  @ApiModelProperty(value = "Additional image files are unreadable. Please upload new files to continue.")
  /**
-   * Additional image files are unreadable. Please upload new files to continue.
-  **/
+  * Additional image files are unreadable. Please upload new files to continue.
+  */
+  @ApiModelProperty(value = "Additional image files are unreadable. Please upload new files to continue.")
+
   private Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND;
 
-  @ApiModelProperty(value = "Additional image files are unreadable. Please upload new files to continue.")
  /**
-   * Additional image files are unreadable. Please upload new files to continue.
-  **/
+  * Additional image files are unreadable. Please upload new files to continue.
+  */
+  @ApiModelProperty(value = "Additional image files are unreadable. Please upload new files to continue.")
+
   private Integer ADDITIONAL_IMAGE_INVALID_FILE;
 
-  @ApiModelProperty(value = "price is not a supported column. Use base_price and sale_price instead.")
  /**
-   * price is not a supported column. Use base_price and sale_price instead.
-  **/
+  * price is not a supported column. Use base_price and sale_price instead.
+  */
+  @ApiModelProperty(value = "price is not a supported column. Use base_price and sale_price instead.")
+
   private Integer HOTEL_PRICE_HEADER_IS_PRESENT;
  /**
    * We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.

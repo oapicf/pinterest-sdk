@@ -14,9 +14,9 @@ package org.openapitools.client.model
 import org.openapitools.client.core.ApiModel
 
 case class OauthAccessTokenRequestCode (
-  grantType: OauthAccessTokenRequestCodeEnums.GrantType,
   code: String,
-  redirectUri: String
+  redirectUri: String,
+  grantType: OauthAccessTokenRequestCodeEnums.GrantType
 ) extends ApiModel
 
 object OauthAccessTokenRequestCodeEnums {

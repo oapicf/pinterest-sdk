@@ -29,17 +29,14 @@ import ../models/model_conversion_report_attribution_type
 import ../models/model_error
 import ../models/model_granularity
 import ../models/model_metrics_response
-import ../models/model_campaigns_list_200_response
+import ../models/model_campaigns_list200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -51,39 +48,48 @@ template constructResult[T](response: Response): untyped =
 
 proc campaignTargetingAnalyticsGet*(httpClient: HttpClient, adAccountId: string, campaignIds: seq[string], startDate: string, endDate: string, targetingTypes: seq[AdsAnalyticsCampaignTargetingType], columns: seq[Columns], granularity: Granularity, clickWindowDays: ClickWindowDays, engagementWindowDays: EngagementWindowDays, viewWindowDays: ViewWindowDays, conversionReportTime: string, attributionTypes: ConversionReportAttributionType): (Option[MetricsResponse], Response) =
   ## Get targeting analytics for campaigns
-  let query_for_api_call = encodeQuery([
-    ("campaign_ids", $campaignIds.join(",")), # List of Campaign Ids to use to filter the results.
-    ("start_date", $startDate), # Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-    ("end_date", $endDate), # Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    ("targeting_types", $targetingTypes.join(",")), # Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-    ("columns", $columns.join(",")), # Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-    ("granularity", $granularity), # TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-    ("click_window_days", $clickWindowDays), # Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-    ("engagement_window_days", $engagementWindowDays), # Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-    ("view_window_days", $viewWindowDays), # Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-    ("conversion_report_time", $conversionReportTime), # The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-    ("attribution_types", $attributionTypes), # List of types of attribution for the conversion report
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("campaign_ids", $campaignIds.join(",")))
+  query_params_list.add(("start_date", $startDate))
+  query_params_list.add(("end_date", $endDate))
+  query_params_list.add(("targeting_types", $targetingTypes.join(",")))
+  query_params_list.add(("columns", $columns.join(",")))
+  query_params_list.add(("granularity", $granularity))
+  if $clickWindowDays != "":
+    query_params_list.add(("click_window_days", $clickWindowDays))
+  if $engagementWindowDays != "":
+    query_params_list.add(("engagement_window_days", $engagementWindowDays))
+  if $viewWindowDays != "":
+    query_params_list.add(("view_window_days", $viewWindowDays))
+  if $conversionReportTime != "":
+    query_params_list.add(("conversion_report_time", $conversionReportTime))
+  if $attributionTypes != "":
+    query_params_list.add(("attribution_types", $attributionTypes))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/campaigns/targeting_analytics" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/campaigns/targeting_analytics" & "?" & url_encoded_query_params)
   constructResult[MetricsResponse](response)
 
 
 proc campaignsAnalytics*(httpClient: HttpClient, adAccountId: string, startDate: string, endDate: string, campaignIds: seq[string], columns: seq[Columns], granularity: Granularity, clickWindowDays: ClickWindowDays, engagementWindowDays: EngagementWindowDays, viewWindowDays: ViewWindowDays, conversionReportTime: string): (Option[seq[CampaignsAnalyticsResponse_inner]], Response) =
   ## Get campaign analytics
-  let query_for_api_call = encodeQuery([
-    ("start_date", $startDate), # Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-    ("end_date", $endDate), # Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    ("campaign_ids", $campaignIds.join(",")), # List of Campaign Ids to use to filter the results.
-    ("columns", $columns.join(",")), # Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-    ("granularity", $granularity), # TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-    ("click_window_days", $clickWindowDays), # Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-    ("engagement_window_days", $engagementWindowDays), # Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-    ("view_window_days", $viewWindowDays), # Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-    ("conversion_report_time", $conversionReportTime), # The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("start_date", $startDate))
+  query_params_list.add(("end_date", $endDate))
+  query_params_list.add(("campaign_ids", $campaignIds.join(",")))
+  query_params_list.add(("columns", $columns.join(",")))
+  query_params_list.add(("granularity", $granularity))
+  if $clickWindowDays != "":
+    query_params_list.add(("click_window_days", $clickWindowDays))
+  if $engagementWindowDays != "":
+    query_params_list.add(("engagement_window_days", $engagementWindowDays))
+  if $viewWindowDays != "":
+    query_params_list.add(("view_window_days", $viewWindowDays))
+  if $conversionReportTime != "":
+    query_params_list.add(("conversion_report_time", $conversionReportTime))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/campaigns/analytics" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/campaigns/analytics" & "?" & url_encoded_query_params)
   constructResult[seq[CampaignsAnalyticsResponse_inner]](response)
 
 
@@ -104,15 +110,20 @@ proc campaignsGet*(httpClient: HttpClient, adAccountId: string, campaignId: stri
 
 proc campaignsList*(httpClient: HttpClient, adAccountId: string, campaignIds: seq[string], entityStatuses: seq[EntityStatuses], pageSize: int, order: string, bookmark: string): (Option[campaigns_list_200_response], Response) =
   ## List campaigns
-  let query_for_api_call = encodeQuery([
-    ("campaign_ids", $campaignIds.join(",")), # List of Campaign Ids to use to filter the results.
-    ("entity_statuses", $entityStatuses.join(",")), # Entity status
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("order", $order), # The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if campaignIds.len > 0:
+    query_params_list.add(("campaign_ids", $campaignIds.join(",")))
+  if entityStatuses.len > 0:
+    query_params_list.add(("entity_statuses", $entityStatuses.join(",")))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $order != "":
+    query_params_list.add(("order", $order))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/campaigns" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/campaigns" & "?" & url_encoded_query_params)
   constructResult[campaigns_list_200_response](response)
 
 

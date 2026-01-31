@@ -14,13 +14,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsItemValidationDetails  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private NullableCatalogsItemFieldType attributeName;
 
-  @ApiModelProperty(required = true, value = "Provided value that caused the validation issue.")
  /**
-   * Provided value that caused the validation issue.
-  **/
+  * Provided value that caused the validation issue.
+  */
+  @ApiModelProperty(required = true, value = "Provided value that caused the validation issue.")
+
   private String providedValue;
  /**
    * Get attributeName

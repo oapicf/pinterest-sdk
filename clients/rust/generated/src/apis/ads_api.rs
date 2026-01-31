@@ -78,10 +78,10 @@ pub enum AdsSlashUpdateError {
 /// Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. <p/> If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See <a href=\"https://help.pinterest.com/en/business/article/promoted-pins-overview\" target=\"_blank\">Ads Overview</a>.) <p/> You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
 pub async fn ad_previews_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, ad_preview_request: models::AdPreviewRequest) -> Result<models::AdPreviewUrlResponse, Error<AdPreviewsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_ad_preview_request = ad_preview_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_ad_preview_request = ad_preview_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ad_previews", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ad_previews", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -90,7 +90,7 @@ pub async fn ad_previews_slash_create(configuration: &configuration::Configurati
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_ad_preview_request);
+    req_builder = req_builder.json(&p_body_ad_preview_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -120,51 +120,51 @@ pub async fn ad_previews_slash_create(configuration: &configuration::Configurati
 /// Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
 pub async fn ad_targeting_analytics_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, ad_ids: Vec<String>, start_date: String, end_date: String, targeting_types: Vec<models::AdsAnalyticsAdTargetingType>, columns: Vec<String>, granularity: models::Granularity, click_window_days: Option<i32>, engagement_window_days: Option<i32>, view_window_days: Option<i32>, conversion_report_time: Option<&str>, attribution_types: Option<models::ConversionReportAttributionType>) -> Result<models::MetricsResponse, Error<AdTargetingAnalyticsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_ad_ids = ad_ids;
-    let p_start_date = start_date;
-    let p_end_date = end_date;
-    let p_targeting_types = targeting_types;
-    let p_columns = columns;
-    let p_granularity = granularity;
-    let p_click_window_days = click_window_days;
-    let p_engagement_window_days = engagement_window_days;
-    let p_view_window_days = view_window_days;
-    let p_conversion_report_time = conversion_report_time;
-    let p_attribution_types = attribution_types;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_ad_ids = ad_ids;
+    let p_query_start_date = start_date;
+    let p_query_end_date = end_date;
+    let p_query_targeting_types = targeting_types;
+    let p_query_columns = columns;
+    let p_query_granularity = granularity;
+    let p_query_click_window_days = click_window_days;
+    let p_query_engagement_window_days = engagement_window_days;
+    let p_query_view_window_days = view_window_days;
+    let p_query_conversion_report_time = conversion_report_time;
+    let p_query_attribution_types = attribution_types;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads/targeting_analytics", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads/targeting_analytics", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     req_builder = match "multi" {
-        "multi" => req_builder.query(&p_ad_ids.into_iter().map(|p| ("ad_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => req_builder.query(&[("ad_ids", &p_ad_ids.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        "multi" => req_builder.query(&p_query_ad_ids.into_iter().map(|p| ("ad_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("ad_ids", &p_query_ad_ids.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
-    req_builder = req_builder.query(&[("start_date", &p_start_date.to_string())]);
-    req_builder = req_builder.query(&[("end_date", &p_end_date.to_string())]);
+    req_builder = req_builder.query(&[("start_date", &p_query_start_date.to_string())]);
+    req_builder = req_builder.query(&[("end_date", &p_query_end_date.to_string())]);
     req_builder = match "csv" {
-        "multi" => req_builder.query(&p_targeting_types.into_iter().map(|p| ("targeting_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => req_builder.query(&[("targeting_types", &p_targeting_types.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        "multi" => req_builder.query(&p_query_targeting_types.into_iter().map(|p| ("targeting_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("targeting_types", &p_query_targeting_types.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
     req_builder = match "csv" {
-        "multi" => req_builder.query(&p_columns.into_iter().map(|p| ("columns".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => req_builder.query(&[("columns", &p_columns.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        "multi" => req_builder.query(&p_query_columns.into_iter().map(|p| ("columns".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("columns", &p_query_columns.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
-    req_builder = req_builder.query(&[("granularity", &p_granularity.to_string())]);
-    if let Some(ref param_value) = p_click_window_days {
-        req_builder = req_builder.query(&[("click_window_days", &param_value.to_string())]);
+    req_builder = req_builder.query(&[("granularity", &p_query_granularity.to_string())]);
+    if let Some(ref param_value) = p_query_click_window_days {
+        req_builder = req_builder.query(&[("click_window_days", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_engagement_window_days {
-        req_builder = req_builder.query(&[("engagement_window_days", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_engagement_window_days {
+        req_builder = req_builder.query(&[("engagement_window_days", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_view_window_days {
-        req_builder = req_builder.query(&[("view_window_days", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_view_window_days {
+        req_builder = req_builder.query(&[("view_window_days", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_conversion_report_time {
-        req_builder = req_builder.query(&[("conversion_report_time", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_conversion_report_time {
+        req_builder = req_builder.query(&[("conversion_report_time", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_attribution_types {
-        req_builder = req_builder.query(&[("attribution_types", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_attribution_types {
+        req_builder = req_builder.query(&[("attribution_types", &serde_json::to_string(param_value)?)]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -201,54 +201,54 @@ pub async fn ad_targeting_analytics_slash_get(configuration: &configuration::Con
 /// Get analytics for the specified ads in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days.
 pub async fn ads_slash_analytics(configuration: &configuration::Configuration, ad_account_id: &str, start_date: String, end_date: String, columns: Vec<String>, granularity: models::Granularity, ad_ids: Option<Vec<String>>, click_window_days: Option<i32>, engagement_window_days: Option<i32>, view_window_days: Option<i32>, conversion_report_time: Option<&str>, pin_ids: Option<Vec<String>>, campaign_ids: Option<Vec<String>>) -> Result<Vec<models::AdsAnalyticsResponseInner>, Error<AdsSlashAnalyticsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_start_date = start_date;
-    let p_end_date = end_date;
-    let p_columns = columns;
-    let p_granularity = granularity;
-    let p_ad_ids = ad_ids;
-    let p_click_window_days = click_window_days;
-    let p_engagement_window_days = engagement_window_days;
-    let p_view_window_days = view_window_days;
-    let p_conversion_report_time = conversion_report_time;
-    let p_pin_ids = pin_ids;
-    let p_campaign_ids = campaign_ids;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_start_date = start_date;
+    let p_query_end_date = end_date;
+    let p_query_columns = columns;
+    let p_query_granularity = granularity;
+    let p_query_ad_ids = ad_ids;
+    let p_query_click_window_days = click_window_days;
+    let p_query_engagement_window_days = engagement_window_days;
+    let p_query_view_window_days = view_window_days;
+    let p_query_conversion_report_time = conversion_report_time;
+    let p_query_pin_ids = pin_ids;
+    let p_query_campaign_ids = campaign_ids;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads/analytics", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads/analytics", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("start_date", &p_start_date.to_string())]);
-    req_builder = req_builder.query(&[("end_date", &p_end_date.to_string())]);
-    if let Some(ref param_value) = p_ad_ids {
+    req_builder = req_builder.query(&[("start_date", &p_query_start_date.to_string())]);
+    req_builder = req_builder.query(&[("end_date", &p_query_end_date.to_string())]);
+    if let Some(ref param_value) = p_query_ad_ids {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("ad_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("ad_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
     req_builder = match "csv" {
-        "multi" => req_builder.query(&p_columns.into_iter().map(|p| ("columns".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => req_builder.query(&[("columns", &p_columns.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        "multi" => req_builder.query(&p_query_columns.into_iter().map(|p| ("columns".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("columns", &p_query_columns.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
-    req_builder = req_builder.query(&[("granularity", &p_granularity.to_string())]);
-    if let Some(ref param_value) = p_click_window_days {
-        req_builder = req_builder.query(&[("click_window_days", &param_value.to_string())]);
+    req_builder = req_builder.query(&[("granularity", &p_query_granularity.to_string())]);
+    if let Some(ref param_value) = p_query_click_window_days {
+        req_builder = req_builder.query(&[("click_window_days", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_engagement_window_days {
-        req_builder = req_builder.query(&[("engagement_window_days", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_engagement_window_days {
+        req_builder = req_builder.query(&[("engagement_window_days", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_view_window_days {
-        req_builder = req_builder.query(&[("view_window_days", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_view_window_days {
+        req_builder = req_builder.query(&[("view_window_days", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_conversion_report_time {
-        req_builder = req_builder.query(&[("conversion_report_time", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_conversion_report_time {
+        req_builder = req_builder.query(&[("conversion_report_time", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_pin_ids {
+    if let Some(ref param_value) = p_query_pin_ids {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("pin_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("pin_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_campaign_ids {
+    if let Some(ref param_value) = p_query_campaign_ids {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("campaign_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("campaign_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
@@ -289,10 +289,10 @@ pub async fn ads_slash_analytics(configuration: &configuration::Configuration, a
 /// Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
 pub async fn ads_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, ad_create_request: Vec<models::AdCreateRequest>) -> Result<models::AdArrayResponse, Error<AdsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_ad_create_request = ad_create_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_ad_create_request = ad_create_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -301,7 +301,7 @@ pub async fn ads_slash_create(configuration: &configuration::Configuration, ad_a
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_ad_create_request);
+    req_builder = req_builder.json(&p_body_ad_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -331,10 +331,10 @@ pub async fn ads_slash_create(configuration: &configuration::Configuration, ad_a
 /// Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the <a href=\"https://www.pinterest.com/_/_/policy/advertising-guidelines/\" target=\"_blank\">Pinterest advertising standards</a>.
 pub async fn ads_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, ad_id: &str) -> Result<models::AdResponse, Error<AdsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_ad_id = ad_id;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_ad_id = ad_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads/{ad_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), ad_id=crate::apis::urlencode(p_ad_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads/{ad_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), ad_id=crate::apis::urlencode(p_path_ad_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -372,49 +372,49 @@ pub async fn ads_slash_get(configuration: &configuration::Configuration, ad_acco
 /// List ads that meet the filters provided:   - Listed campaign ids or ad group ids or ad ids   - Listed entity statuses <p/> If no filter is provided, all ads in the ad account are returned. <p/> <strong>Note:</strong><p/> Provide only campaign_id or ad_group_id or ad_id. Do not provide more than one type. <p/> Review status is provided for each ad; if review_status is REJECTED, the rejected_reasons field will contain additional information. For more, see <a href=\"https://policy.pinterest.com/en/advertising-guidelines\">Pinterest advertising standards</a>.
 pub async fn ads_slash_list(configuration: &configuration::Configuration, ad_account_id: &str, campaign_ids: Option<Vec<String>>, ad_group_ids: Option<Vec<String>>, ad_ids: Option<Vec<String>>, entity_statuses: Option<Vec<String>>, page_size: Option<i32>, order: Option<&str>, bookmark: Option<&str>) -> Result<models::AdsList200Response, Error<AdsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_campaign_ids = campaign_ids;
-    let p_ad_group_ids = ad_group_ids;
-    let p_ad_ids = ad_ids;
-    let p_entity_statuses = entity_statuses;
-    let p_page_size = page_size;
-    let p_order = order;
-    let p_bookmark = bookmark;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_campaign_ids = campaign_ids;
+    let p_query_ad_group_ids = ad_group_ids;
+    let p_query_ad_ids = ad_ids;
+    let p_query_entity_statuses = entity_statuses;
+    let p_query_page_size = page_size;
+    let p_query_order = order;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_campaign_ids {
+    if let Some(ref param_value) = p_query_campaign_ids {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("campaign_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("campaign_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_ad_group_ids {
+    if let Some(ref param_value) = p_query_ad_group_ids {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("ad_group_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("ad_group_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_ad_ids {
+    if let Some(ref param_value) = p_query_ad_ids {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("ad_ids".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("ad_ids", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_entity_statuses {
+    if let Some(ref param_value) = p_query_entity_statuses {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("entity_statuses".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("entity_statuses", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
-        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_order {
+        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -452,10 +452,10 @@ pub async fn ads_slash_list(configuration: &configuration::Configuration, ad_acc
 /// Update multiple existing ads
 pub async fn ads_slash_update(configuration: &configuration::Configuration, ad_account_id: &str, ad_update_request: Vec<models::AdUpdateRequest>) -> Result<models::AdArrayResponse, Error<AdsSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_ad_update_request = ad_update_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_ad_update_request = ad_update_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -464,7 +464,7 @@ pub async fn ads_slash_update(configuration: &configuration::Configuration, ad_a
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_ad_update_request);
+    req_builder = req_builder.json(&p_body_ad_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

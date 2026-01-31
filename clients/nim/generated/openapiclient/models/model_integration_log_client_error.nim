@@ -9,16 +9,65 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type IntegrationLogClientError* = object
   ## System error details included in the log sent by the client.
-  cause*: string ## Original cause of the error.
-  columnNumber*: int ## Column number in the line of the file that raised the error.
-  fileName*: string ## Filename where the error happened.
-  lineNumber*: int ## Line number where the error happened.
-  message*: string ## Human-readable description of the error.
-  messageDetail*: string ## More detail about the message.
-  name*: string ## Filename where the error happened.
-  number*: int ## Integer that specifies the error code.
-  stackTrace*: string ## Stack trace of where the error happened.
+  cause*: Option[string] ## Original cause of the error.
+  columnNumber*: Option[int] ## Column number in the line of the file that raised the error.
+  fileName*: Option[string] ## Filename where the error happened.
+  lineNumber*: Option[int] ## Line number where the error happened.
+  message*: Option[string] ## Human-readable description of the error.
+  messageDetail*: Option[string] ## More detail about the message.
+  name*: Option[string] ## Filename where the error happened.
+  number*: Option[int] ## Integer that specifies the error code.
+  stackTrace*: Option[string] ## Stack trace of where the error happened.
+
+
+# Custom JSON deserialization for IntegrationLogClientError with custom field names
+proc to*(node: JsonNode, T: typedesc[IntegrationLogClientError]): IntegrationLogClientError =
+  result = IntegrationLogClientError()
+  if node.kind == JObject:
+    if node.hasKey("cause") and node["cause"].kind != JNull:
+      result.cause = some(to(node["cause"], typeof(result.cause.get())))
+    if node.hasKey("column_number") and node["column_number"].kind != JNull:
+      result.columnNumber = some(to(node["column_number"], typeof(result.columnNumber.get())))
+    if node.hasKey("file_name") and node["file_name"].kind != JNull:
+      result.fileName = some(to(node["file_name"], typeof(result.fileName.get())))
+    if node.hasKey("line_number") and node["line_number"].kind != JNull:
+      result.lineNumber = some(to(node["line_number"], typeof(result.lineNumber.get())))
+    if node.hasKey("message") and node["message"].kind != JNull:
+      result.message = some(to(node["message"], typeof(result.message.get())))
+    if node.hasKey("message_detail") and node["message_detail"].kind != JNull:
+      result.messageDetail = some(to(node["message_detail"], typeof(result.messageDetail.get())))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("number") and node["number"].kind != JNull:
+      result.number = some(to(node["number"], typeof(result.number.get())))
+    if node.hasKey("stack_trace") and node["stack_trace"].kind != JNull:
+      result.stackTrace = some(to(node["stack_trace"], typeof(result.stackTrace.get())))
+
+# Custom JSON serialization for IntegrationLogClientError with custom field names
+proc `%`*(obj: IntegrationLogClientError): JsonNode =
+  result = newJObject()
+  if obj.cause.isSome():
+    result["cause"] = %obj.cause.get()
+  if obj.columnNumber.isSome():
+    result["column_number"] = %obj.columnNumber.get()
+  if obj.fileName.isSome():
+    result["file_name"] = %obj.fileName.get()
+  if obj.lineNumber.isSome():
+    result["line_number"] = %obj.lineNumber.get()
+  if obj.message.isSome():
+    result["message"] = %obj.message.get()
+  if obj.messageDetail.isSome():
+    result["message_detail"] = %obj.messageDetail.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.number.isSome():
+    result["number"] = %obj.number.get()
+  if obj.stackTrace.isSome():
+    result["stack_trace"] = %obj.stackTrace.get()
+

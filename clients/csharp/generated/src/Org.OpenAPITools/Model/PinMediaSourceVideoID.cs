@@ -344,8 +344,7 @@ namespace Org.OpenAPITools.Model
                             coverImageData = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "is_standard":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isStandard = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isStandard = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

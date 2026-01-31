@@ -14,11 +14,8 @@
 */
 
 
-#import "OAICatalogsItemsRequestLanguage.h"
 #import "OAICatalogsRetailBatchRequestItemsInner.h"
 #import "OAICountry.h"
-@protocol OAICatalogsItemsRequestLanguage;
-@class OAICatalogsItemsRequestLanguage;
 @protocol OAICatalogsRetailBatchRequestItemsInner;
 @class OAICatalogsRetailBatchRequestItemsInner;
 @protocol OAICountry;
@@ -35,8 +32,9 @@
 @property(nonatomic) NSString* catalogType;
 
 @property(nonatomic) OAICountry* country;
-
-@property(nonatomic) OAICatalogsItemsRequestLanguage* language;
+/* We recommend using the CatalogsLocale values. 
+ */
+@property(nonatomic) NSString* language;
 /* Array with catalogs item operations 
  */
 @property(nonatomic) NSArray<OAICatalogsRetailBatchRequestItemsInner>* items;

@@ -25,9 +25,9 @@ public struct CatalogsFeedsCreateRequest: Codable, JSONEncodable, Hashable {
     public var preferredProcessingSchedule: CatalogsFeedProcessingSchedule?
     public var defaultCountry: Country?
     public var defaultAvailability: ProductAvailabilityType?
-    public var status: CatalogsStatus?
+    public var status: CatalogsStatus? = "ACTIVE"
 
-    public init(defaultCurrency: NullableCurrency? = nil, name: String, format: CatalogsFormat, defaultLocale: CatalogsFeedsCreateRequestDefaultLocale? = nil, credentials: CatalogsFeedCredentials? = nil, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, defaultCountry: Country? = nil, defaultAvailability: ProductAvailabilityType? = nil, status: CatalogsStatus? = nil) {
+    public init(defaultCurrency: NullableCurrency? = nil, name: String, format: CatalogsFormat, defaultLocale: CatalogsFeedsCreateRequestDefaultLocale? = nil, credentials: CatalogsFeedCredentials? = nil, location: String, preferredProcessingSchedule: CatalogsFeedProcessingSchedule? = nil, defaultCountry: Country? = nil, defaultAvailability: ProductAvailabilityType? = nil, status: CatalogsStatus? = "ACTIVE") {
         self.defaultCurrency = defaultCurrency
         self.name = name
         self.format = format

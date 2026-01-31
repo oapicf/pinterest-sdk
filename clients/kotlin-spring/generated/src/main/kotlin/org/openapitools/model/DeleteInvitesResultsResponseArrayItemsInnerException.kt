@@ -26,7 +26,7 @@ data class DeleteInvitesResultsResponseArrayItemsInnerException(
 
     @Schema(example = "Business Invite request cannot be performed on current invitation status.", description = "Error message associated with the error in performing the action on the invite/request.")
     @get:JsonProperty("message") val message: kotlin.String? = null
-    ) {
+) {
 
 }
 

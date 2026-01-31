@@ -95,6 +95,8 @@ pub enum AdAccountsSubscriptionsSlashPostResponse {
 }
 
 
+
+
 /// LeadAds
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -104,6 +106,7 @@ pub trait LeadAds<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// AdAccountsSubscriptionsSlashDelById - DELETE /v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
     async fn ad_accounts_subscriptions_slash_del_by_id(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -115,6 +118,7 @@ pub trait LeadAds<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// AdAccountsSubscriptionsSlashGetById - GET /v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}
     async fn ad_accounts_subscriptions_slash_get_by_id(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -126,6 +130,7 @@ pub trait LeadAds<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// AdAccountsSubscriptionsSlashGetList - GET /v5/ad_accounts/{ad_account_id}/leads/subscriptions
     async fn ad_accounts_subscriptions_slash_get_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -138,6 +143,7 @@ pub trait LeadAds<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Error
     /// AdAccountsSubscriptionsSlashPost - POST /v5/ad_accounts/{ad_account_id}/leads/subscriptions
     async fn ad_accounts_subscriptions_slash_post(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

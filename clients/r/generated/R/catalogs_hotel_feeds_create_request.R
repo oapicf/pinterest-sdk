@@ -46,9 +46,9 @@ CatalogsHotelFeedsCreateRequest <- R6::R6Class(
     #' @param credentials credentials
     #' @param preferred_processing_schedule preferred_processing_schedule
     #' @param catalog_id Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple hotel feeds but this will change in the future.
-    #' @param status status
+    #' @param status status. Default to "ACTIVE".
     #' @param ... Other optional arguments.
-    initialize = function(`name`, `format`, `default_locale`, `location`, `catalog_type`, `default_currency` = NULL, `credentials` = NULL, `preferred_processing_schedule` = NULL, `catalog_id` = NULL, `status` = NULL, ...) {
+    initialize = function(`name`, `format`, `default_locale`, `location`, `catalog_type`, `default_currency` = NULL, `credentials` = NULL, `preferred_processing_schedule` = NULL, `catalog_id` = NULL, `status` = "ACTIVE", ...) {
       if (!missing(`name`)) {
         if (!(is.character(`name`) && length(`name`) == 1)) {
           stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
@@ -101,8 +101,8 @@ CatalogsHotelFeedsCreateRequest <- R6::R6Class(
         self$`catalog_id` <- `catalog_id`
       }
       if (!is.null(`status`)) {
-        if (!(is.character(`status`) && length(`status`) == 1)) {
-          stop(paste("Error! Invalid data for `status`. Must be a string:", `status`))
+        if (!(`status` %in% c())) {
+          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be .", sep = ""))
         }
         stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`

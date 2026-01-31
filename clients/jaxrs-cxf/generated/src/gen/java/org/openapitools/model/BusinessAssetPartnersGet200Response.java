@@ -16,14 +16,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BusinessAssetPartnersGet200Response  {
   
-  @ApiModelProperty(required = true, value = "List of partners with permissions to the asset.")
-  @Valid
  /**
-   * List of partners with permissions to the asset.
-  **/
+  * List of partners with permissions to the asset.
+  */
+  @ApiModelProperty(required = true, value = "List of partners with permissions to the asset.")
+
+  @Valid
+
   private List<@Valid UserSingleAssetBinding> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * List of partners with permissions to the asset.

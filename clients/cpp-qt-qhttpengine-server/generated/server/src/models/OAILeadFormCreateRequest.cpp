@@ -305,7 +305,7 @@ bool OAILeadFormCreateRequest::isSet() const {
 
 bool OAILeadFormCreateRequest::isValid() const {
     // only required properties are required for the object to be considered valid
-    return m_name_isValid && m_privacy_policy_link_isValid && m_has_accepted_terms_isValid && m_completion_message_isValid && m_questions_isValid && true;
+    return true;
 }
 
 } // namespace OpenAPI

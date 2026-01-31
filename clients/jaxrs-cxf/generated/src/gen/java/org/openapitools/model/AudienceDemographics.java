@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,50 +7,61 @@ import org.openapitools.model.AudienceDemographicValue;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Audience demographics
- **/
+ * Audience demographics
+ */
 @ApiModel(description="Audience demographics")
 
 public class AudienceDemographics  {
   
-  @ApiModelProperty(value = "Ages distribution.")
-  @Valid
  /**
-   * Ages distribution.
-  **/
+  * Ages distribution.
+  */
+  @ApiModelProperty(value = "Ages distribution.")
+
+  @Valid
+
   private List<@Valid AudienceDemographicValue> ages = new ArrayList<>();
 
-  @ApiModelProperty(value = "Gender distribution.")
-  @Valid
  /**
-   * Gender distribution.
-  **/
+  * Gender distribution.
+  */
+  @ApiModelProperty(value = "Gender distribution.")
+
+  @Valid
+
   private List<@Valid AudienceDemographicValue> genders = new ArrayList<>();
 
-  @ApiModelProperty(value = "Device usage distribution.")
-  @Valid
  /**
-   * Device usage distribution.
-  **/
+  * Device usage distribution.
+  */
+  @ApiModelProperty(value = "Device usage distribution.")
+
+  @Valid
+
   private List<@Valid AudienceDemographicValue> devices = new ArrayList<>();
 
-  @ApiModelProperty(value = "Geographic metro area distribution.")
-  @Valid
  /**
-   * Geographic metro area distribution.
-  **/
+  * Geographic metro area distribution.
+  */
+  @ApiModelProperty(value = "Geographic metro area distribution.")
+
+  @Valid
+
   private List<@Valid AudienceDemographicValue> metros = new ArrayList<>();
 
-  @ApiModelProperty(value = "Country area distribution.")
-  @Valid
  /**
-   * Country area distribution.
-  **/
+  * Country area distribution.
+  */
+  @ApiModelProperty(value = "Country area distribution.")
+
+  @Valid
+
   private List<@Valid AudienceDemographicValue> countries = new ArrayList<>();
  /**
    * Ages distribution.

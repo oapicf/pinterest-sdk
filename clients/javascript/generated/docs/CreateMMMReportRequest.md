@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**countries** | [**[TargetingAdvertiserCountry]**](TargetingAdvertiserCountry.md) | A List of countries for filtering | [optional] 
 **reportName** | **String** | Name of the Marketing Mix Modeling (MMM) report | 
 **startDate** | **String** | Metric report start date (UTC). Format: YYYY-MM-DD | 
 **endDate** | **String** | Metric report end date (UTC). Format: YYYY-MM-DD | 
@@ -11,7 +12,6 @@ Name | Type | Description | Notes
 **level** | **String** | Level of the report | 
 **targetingTypes** | [**[MMMReportingTargetingType]**](MMMReportingTargetingType.md) | List of targeting types | 
 **columns** | [**[MMMReportingColumn]**](MMMReportingColumn.md) | Metric and entity columns | 
-**countries** | [**[TargetingAdvertiserCountry]**](TargetingAdvertiserCountry.md) | A List of countries for filtering | [optional] 
 
 
 

@@ -7,17 +7,16 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
-/**
- * A request to receive a client token.
- **/
 
 import io.swagger.annotations.*;
 import java.util.Objects;
 
 
-@ApiModel(description = "A request to receive a client token.")
+
 public class OauthAccessTokenRequestClientCredentials   {
   
+  private String scope;
+
 
 public enum GrantTypeEnum {
 
@@ -51,7 +50,24 @@ public enum GrantTypeEnum {
 
   private GrantTypeEnum grantType;
 
-  private String scope;
+  /**
+   **/
+  public OauthAccessTokenRequestClientCredentials scope(String scope) {
+    this.scope = scope;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("scope")
+  @NotNull
+  public String getScope() {
+    return scope;
+  }
+  public void setScope(String scope) {
+    this.scope = scope;
+  }
+
 
   /**
    **/
@@ -72,25 +88,6 @@ public enum GrantTypeEnum {
   }
 
 
-  /**
-   **/
-  public OauthAccessTokenRequestClientCredentials scope(String scope) {
-    this.scope = scope;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("scope")
-  @NotNull
-  public String getScope() {
-    return scope;
-  }
-  public void setScope(String scope) {
-    this.scope = scope;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -101,13 +98,13 @@ public enum GrantTypeEnum {
       return false;
     }
     OauthAccessTokenRequestClientCredentials oauthAccessTokenRequestClientCredentials = (OauthAccessTokenRequestClientCredentials) o;
-    return Objects.equals(this.grantType, oauthAccessTokenRequestClientCredentials.grantType) &&
-        Objects.equals(this.scope, oauthAccessTokenRequestClientCredentials.scope);
+    return Objects.equals(this.scope, oauthAccessTokenRequestClientCredentials.scope) &&
+        Objects.equals(this.grantType, oauthAccessTokenRequestClientCredentials.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, scope);
+    return Objects.hash(scope, grantType);
   }
 
   @Override
@@ -115,8 +112,8 @@ public enum GrantTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestClientCredentials {\n");
     
-    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

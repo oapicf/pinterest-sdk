@@ -5,39 +5,6 @@
   "name": "InviteResponse",
   "fields": [
     {
-      "name": "assets_summary",
-      "type": ["null", "model.InviteAssetsSummary"],
-      "doc": "",
-      "default": null
-    },
-    {
-      "name": "business_roles",
-      "type": ["null", {
-        "type": "array",
-        "items": "string"
-      }],
-      "doc": "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.",
-      "default": null
-    },
-    {
-      "name": "created_by_business",
-      "type": ["null", "model.BusinessAccessUserSummary"],
-      "doc": "Metadata for the business that created the invite/request.",
-      "default": null
-    },
-    {
-      "name": "created_by_user",
-      "type": ["null", "model.BusinessAccessUserSummary"],
-      "doc": "Metadata for the user that created the invite/request.",
-      "default": null
-    },
-    {
-      "name": "created_time",
-      "type": ["null", "int"],
-      "doc": "The time the invite/request was created. Returned in milliseconds.",
-      "default": null
-    },
-    {
       "name": "id",
       "type": ["null", "string"],
       "doc": "Unique identifier of the invite/request.",
@@ -59,6 +26,39 @@
       "name": "user",
       "type": ["null", "model.BusinessAccessUserSummary"],
       "doc": "Metadata for the member/partner that was sent the invite/request.",
+      "default": null
+    },
+    {
+      "name": "assets_summary",
+      "type": ["null", "model.InviteAssetsSummary"],
+      "doc": "",
+      "default": null
+    },
+    {
+      "name": "business_roles",
+      "type": ["null", {
+        "type": "array",
+        "items": "string"
+      }],
+      "doc": "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.",
+      "default": null
+    },
+    {
+      "name": "created_by_business",
+      "type": ["null", "model.object"],
+      "doc": "Metadata for the business that created the invite/request.",
+      "default": null
+    },
+    {
+      "name": "created_by_user",
+      "type": ["null", "model.object"],
+      "doc": "Metadata for the user that created the invite/request.",
+      "default": null
+    },
+    {
+      "name": "created_time",
+      "type": ["null", "int"],
+      "doc": "The time the invite/request was created. Returned in milliseconds.",
       "default": null
     }
   ]

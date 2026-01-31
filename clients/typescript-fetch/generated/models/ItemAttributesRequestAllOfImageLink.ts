@@ -33,13 +33,14 @@ export function ItemAttributesRequestAllOfImageLinkFromJSONTyped(json: any, igno
     if (json == null) {
         return json;
     }
-    if (instanceOfArray<string>(json)) {
-        return Array<string>FromJSONTyped(json, true);
+    if (Array.isArray(json)) {
+        if (json.every(item => typeof item === 'string')) {
+            return json;
+        }
     }
-    if (instanceOfstring(json)) {
-        return stringFromJSONTyped(json, true);
+    if (typeof json === 'string') {
+        return json;
     }
-
     return {} as any;
 }
 
@@ -51,14 +52,14 @@ export function ItemAttributesRequestAllOfImageLinkToJSONTyped(value?: ItemAttri
     if (value == null) {
         return value;
     }
-
-    if (instanceOfArray<string>(value)) {
-        return Array<string>ToJSON(value as Array<string>);
+    if (Array.isArray(value)) {
+        if (value.every(item => typeof item === 'string')) {
+            return value;
+        }
     }
-    if (instanceOfstring(value)) {
-        return stringToJSON(value as string);
+    if (typeof value === 'string') {
+        return value;
     }
-
     return {};
 }
 

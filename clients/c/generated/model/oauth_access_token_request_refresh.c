@@ -23,35 +23,35 @@ pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e oauth_access_t
 }
 
 static oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_create_internal(
-    pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_type,
     char *refresh_token,
     char *scope,
-    int refresh_on
+    int refresh_on,
+    pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_type
     ) {
     oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_local_var = malloc(sizeof(oauth_access_token_request_refresh_t));
     if (!oauth_access_token_request_refresh_local_var) {
         return NULL;
     }
-    oauth_access_token_request_refresh_local_var->grant_type = grant_type;
     oauth_access_token_request_refresh_local_var->refresh_token = refresh_token;
     oauth_access_token_request_refresh_local_var->scope = scope;
     oauth_access_token_request_refresh_local_var->refresh_on = refresh_on;
+    oauth_access_token_request_refresh_local_var->grant_type = grant_type;
 
     oauth_access_token_request_refresh_local_var->_library_owned = 1;
     return oauth_access_token_request_refresh_local_var;
 }
 
 __attribute__((deprecated)) oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_create(
-    pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_type,
     char *refresh_token,
     char *scope,
-    int refresh_on
+    int refresh_on,
+    pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_type
     ) {
     return oauth_access_token_request_refresh_create_internal (
-        grant_type,
         refresh_token,
         scope,
-        refresh_on
+        refresh_on,
+        grant_type
         );
 }
 
@@ -78,16 +78,6 @@ void oauth_access_token_request_refresh_free(oauth_access_token_request_refresh_
 cJSON *oauth_access_token_request_refresh_convertToJSON(oauth_access_token_request_refresh_t *oauth_access_token_request_refresh) {
     cJSON *item = cJSON_CreateObject();
 
-    // oauth_access_token_request_refresh->grant_type
-    if (pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_NULL == oauth_access_token_request_refresh->grant_type) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "grant_type", oauth_access_token_request_refresh_grant_type_ToString(oauth_access_token_request_refresh->grant_type)) == NULL)
-    {
-    goto fail; //Enum
-    }
-
-
     // oauth_access_token_request_refresh->refresh_token
     if (!oauth_access_token_request_refresh->refresh_token) {
         goto fail;
@@ -112,6 +102,16 @@ cJSON *oauth_access_token_request_refresh_convertToJSON(oauth_access_token_reque
     }
     }
 
+
+    // oauth_access_token_request_refresh->grant_type
+    if (pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_NULL == oauth_access_token_request_refresh->grant_type) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "grant_type", oauth_access_token_request_refresh_grant_type_ToString(oauth_access_token_request_refresh->grant_type)) == NULL)
+    {
+    goto fail; //Enum
+    }
+
     return item;
 fail:
     if (item) {
@@ -123,23 +123,6 @@ fail:
 oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_parseFromJSON(cJSON *oauth_access_token_request_refreshJSON){
 
     oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_local_var = NULL;
-
-    // oauth_access_token_request_refresh->grant_type
-    cJSON *grant_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_refreshJSON, "grant_type");
-    if (cJSON_IsNull(grant_type)) {
-        grant_type = NULL;
-    }
-    if (!grant_type) {
-        goto end;
-    }
-
-    pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_typeVariable;
-    
-    if(!cJSON_IsString(grant_type))
-    {
-    goto end; //Enum
-    }
-    grant_typeVariable = oauth_access_token_request_refresh_grant_type_FromString(grant_type->valuestring);
 
     // oauth_access_token_request_refresh->refresh_token
     cJSON *refresh_token = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_refreshJSON, "refresh_token");
@@ -180,12 +163,29 @@ oauth_access_token_request_refresh_t *oauth_access_token_request_refresh_parseFr
     }
     }
 
+    // oauth_access_token_request_refresh->grant_type
+    cJSON *grant_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_refreshJSON, "grant_type");
+    if (cJSON_IsNull(grant_type)) {
+        grant_type = NULL;
+    }
+    if (!grant_type) {
+        goto end;
+    }
+
+    pinterest_rest_api_oauth_access_token_request_refresh_GRANTTYPE_e grant_typeVariable;
+    
+    if(!cJSON_IsString(grant_type))
+    {
+    goto end; //Enum
+    }
+    grant_typeVariable = oauth_access_token_request_refresh_grant_type_FromString(grant_type->valuestring);
+
 
     oauth_access_token_request_refresh_local_var = oauth_access_token_request_refresh_create_internal (
-        grant_typeVariable,
         strdup(refresh_token->valuestring),
         scope && !cJSON_IsNull(scope) ? strdup(scope->valuestring) : NULL,
-        refresh_on ? refresh_on->valueint : 0
+        refresh_on ? refresh_on->valueint : 0,
+        grant_typeVariable
         );
 
     return oauth_access_token_request_refresh_local_var;

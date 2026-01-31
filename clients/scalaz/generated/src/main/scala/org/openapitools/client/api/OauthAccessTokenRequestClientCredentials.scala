@@ -12,8 +12,8 @@ import org.joda.time.DateTime
 import OauthAccessTokenRequestClientCredentials._
 
 case class OauthAccessTokenRequestClientCredentials (
-  grantType: GrantType,
-scope: String)
+  scope: String,
+grantType: GrantType)
 
 object OauthAccessTokenRequestClientCredentials {
   import DateTimeCodecs._

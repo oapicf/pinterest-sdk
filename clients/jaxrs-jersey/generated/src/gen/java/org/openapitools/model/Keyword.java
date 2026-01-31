@@ -37,7 +37,7 @@ import javax.validation.Valid;
   Keyword.JSON_PROPERTY_PARENT_TYPE,
   Keyword.JSON_PROPERTY_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Keyword   {
   public static final String JSON_PROPERTY_BID = "bid";
   @JsonProperty(JSON_PROPERTY_BID)

@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailProductGroupUpdateRequest", description = "Request object for updating a retail product group.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVerticalProductGroupUpdateRequest {
 
   /**
@@ -39,7 +39,7 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
   public enum CatalogTypeEnum {
     RETAIL("RETAIL");
 
-    private String value;
+    private final String value;
 
     CatalogTypeEnum(String value) {
       this.value = value;
@@ -78,7 +78,7 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
 
   private @Nullable CatalogsLocale locale;
 
-  public CatalogsRetailProductGroupUpdateRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsRetailProductGroupUpdateRequest catalogType(@Nullable CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -90,15 +90,15 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
   
   @Schema(name = "catalog_type", description = "Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogTypeEnum getCatalogType() {
+  public @Nullable CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@Nullable CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
-  public CatalogsRetailProductGroupUpdateRequest name(String name) {
+  public CatalogsRetailProductGroupUpdateRequest name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -110,11 +110,11 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
   
   @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
@@ -138,7 +138,7 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
     this.description = description;
   }
 
-  public CatalogsRetailProductGroupUpdateRequest filters(CatalogsProductGroupFiltersRequest filters) {
+  public CatalogsRetailProductGroupUpdateRequest filters(@Nullable CatalogsProductGroupFiltersRequest filters) {
     this.filters = filters;
     return this;
   }
@@ -150,15 +150,15 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
   @Valid 
   @Schema(name = "filters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("filters")
-  public CatalogsProductGroupFiltersRequest getFilters() {
+  public @Nullable CatalogsProductGroupFiltersRequest getFilters() {
     return filters;
   }
 
-  public void setFilters(CatalogsProductGroupFiltersRequest filters) {
+  public void setFilters(@Nullable CatalogsProductGroupFiltersRequest filters) {
     this.filters = filters;
   }
 
-  public CatalogsRetailProductGroupUpdateRequest country(Country country) {
+  public CatalogsRetailProductGroupUpdateRequest country(@Nullable Country country) {
     this.country = country;
     return this;
   }
@@ -170,15 +170,15 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
   @Valid 
   @Schema(name = "country", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("country")
-  public Country getCountry() {
+  public @Nullable Country getCountry() {
     return country;
   }
 
-  public void setCountry(Country country) {
+  public void setCountry(@Nullable Country country) {
     this.country = country;
   }
 
-  public CatalogsRetailProductGroupUpdateRequest locale(CatalogsLocale locale) {
+  public CatalogsRetailProductGroupUpdateRequest locale(@Nullable CatalogsLocale locale) {
     this.locale = locale;
     return this;
   }
@@ -190,11 +190,11 @@ public class CatalogsRetailProductGroupUpdateRequest implements CatalogsVertical
   @Valid 
   @Schema(name = "locale", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("locale")
-  public CatalogsLocale getLocale() {
+  public @Nullable CatalogsLocale getLocale() {
     return locale;
   }
 
-  public void setLocale(CatalogsLocale locale) {
+  public void setLocale(@Nullable CatalogsLocale locale) {
     this.locale = locale;
   }
 

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_entity_status
 import model_objective_type
@@ -18,14 +20,74 @@ type CampaignCreateRequest* = object
   ## 
   adAccountId*: string ## Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
   name*: string ## Campaign name.
-  status*: EntityStatus
-  lifetimeSpendCap*: int ## Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
-  dailySpendCap*: int ## Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
-  orderLineId*: string ## Order line ID that appears on the invoice.
-  trackingUrls*: TrackingUrls
-  startTime*: int ## Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  endTime*: int ## Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  isFlexibleDailyBudgets*: bool ## Determine if a campaign has flexible daily budgets setup.
-  defaultAdGroupBudgetInMicroCurrency*: int ## When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
-  isAutomatedCampaign*: bool ## Specifies whether the campaign was created in the automated campaign flow
+  status*: Option[EntityStatus]
+  lifetimeSpendCap*: Option[int] ## Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
+  dailySpendCap*: Option[int] ## Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
+  orderLineId*: Option[string] ## Order line ID that appears on the invoice.
+  trackingUrls*: Option[TrackingUrls]
+  startTime*: Option[int] ## Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+  endTime*: Option[int] ## Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+  isFlexibleDailyBudgets*: Option[bool] ## Determine if a campaign has flexible daily budgets setup.
+  defaultAdGroupBudgetInMicroCurrency*: Option[int] ## When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
+  isAutomatedCampaign*: Option[bool] ## Specifies whether the campaign was created in the automated campaign flow
   objectiveType*: ObjectiveType
+
+
+# Custom JSON deserialization for CampaignCreateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CampaignCreateRequest]): CampaignCreateRequest =
+  result = CampaignCreateRequest()
+  if node.kind == JObject:
+    if node.hasKey("ad_account_id"):
+      result.adAccountId = to(node["ad_account_id"], string)
+    if node.hasKey("name"):
+      result.name = to(node["name"], string)
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+    if node.hasKey("lifetime_spend_cap") and node["lifetime_spend_cap"].kind != JNull:
+      result.lifetimeSpendCap = some(to(node["lifetime_spend_cap"], typeof(result.lifetimeSpendCap.get())))
+    if node.hasKey("daily_spend_cap") and node["daily_spend_cap"].kind != JNull:
+      result.dailySpendCap = some(to(node["daily_spend_cap"], typeof(result.dailySpendCap.get())))
+    if node.hasKey("order_line_id") and node["order_line_id"].kind != JNull:
+      result.orderLineId = some(to(node["order_line_id"], typeof(result.orderLineId.get())))
+    if node.hasKey("tracking_urls") and node["tracking_urls"].kind != JNull:
+      result.trackingUrls = some(to(node["tracking_urls"], typeof(result.trackingUrls.get())))
+    if node.hasKey("start_time") and node["start_time"].kind != JNull:
+      result.startTime = some(to(node["start_time"], typeof(result.startTime.get())))
+    if node.hasKey("end_time") and node["end_time"].kind != JNull:
+      result.endTime = some(to(node["end_time"], typeof(result.endTime.get())))
+    if node.hasKey("is_flexible_daily_budgets") and node["is_flexible_daily_budgets"].kind != JNull:
+      result.isFlexibleDailyBudgets = some(to(node["is_flexible_daily_budgets"], typeof(result.isFlexibleDailyBudgets.get())))
+    if node.hasKey("default_ad_group_budget_in_micro_currency") and node["default_ad_group_budget_in_micro_currency"].kind != JNull:
+      result.defaultAdGroupBudgetInMicroCurrency = some(to(node["default_ad_group_budget_in_micro_currency"], typeof(result.defaultAdGroupBudgetInMicroCurrency.get())))
+    if node.hasKey("is_automated_campaign") and node["is_automated_campaign"].kind != JNull:
+      result.isAutomatedCampaign = some(to(node["is_automated_campaign"], typeof(result.isAutomatedCampaign.get())))
+    if node.hasKey("objective_type"):
+      result.objectiveType = to(node["objective_type"], ObjectiveType)
+
+# Custom JSON serialization for CampaignCreateRequest with custom field names
+proc `%`*(obj: CampaignCreateRequest): JsonNode =
+  result = newJObject()
+  result["ad_account_id"] = %obj.adAccountId
+  result["name"] = %obj.name
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.lifetimeSpendCap.isSome():
+    result["lifetime_spend_cap"] = %obj.lifetimeSpendCap.get()
+  if obj.dailySpendCap.isSome():
+    result["daily_spend_cap"] = %obj.dailySpendCap.get()
+  if obj.orderLineId.isSome():
+    result["order_line_id"] = %obj.orderLineId.get()
+  if obj.trackingUrls.isSome():
+    result["tracking_urls"] = %obj.trackingUrls.get()
+  if obj.startTime.isSome():
+    result["start_time"] = %obj.startTime.get()
+  if obj.endTime.isSome():
+    result["end_time"] = %obj.endTime.get()
+  if obj.isFlexibleDailyBudgets.isSome():
+    result["is_flexible_daily_budgets"] = %obj.isFlexibleDailyBudgets.get()
+  if obj.defaultAdGroupBudgetInMicroCurrency.isSome():
+    result["default_ad_group_budget_in_micro_currency"] = %obj.defaultAdGroupBudgetInMicroCurrency.get()
+  if obj.isAutomatedCampaign.isSome():
+    result["is_automated_campaign"] = %obj.isAutomatedCampaign.get()
+  result["objective_type"] = %obj.objectiveType
+

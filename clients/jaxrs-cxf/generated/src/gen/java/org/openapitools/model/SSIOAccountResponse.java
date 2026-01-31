@@ -15,36 +15,44 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SSIOAccountResponse  {
   
-  @ApiModelProperty(example = "true", value = "Advertiser eligible to create order lines")
  /**
-   * Advertiser eligible to create order lines
-  **/
+  * Advertiser eligible to create order lines
+  */
+  @ApiModelProperty(example = "true", value = "Advertiser eligible to create order lines")
+
   private Boolean eligible;
 
-  @ApiModelProperty(example = "true", value = "Advertiser eligible to update order lines")
  /**
-   * Advertiser eligible to update order lines
-  **/
+  * Advertiser eligible to update order lines
+  */
+  @ApiModelProperty(example = "true", value = "Advertiser eligible to update order lines")
+
   private Boolean canEdit;
 
-  @ApiModelProperty(value = "An array of Salesforce account information that includes address, io terms, etc.")
-  @Valid
  /**
-   * An array of Salesforce account information that includes address, io terms, etc.
-  **/
+  * An array of Salesforce account information that includes address, io terms, etc.
+  */
+  @ApiModelProperty(value = "An array of Salesforce account information that includes address, io terms, etc.")
+
+  @Valid
+
   private List<@Valid SSIOAccountItem> billtoInfos = new ArrayList<>();
 
   @ApiModelProperty(example = "USD", value = "")
+
   private String currency;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid SSIOAccountPMPName> pmpNames = new ArrayList<>();
 
-  @ApiModelProperty(example = "No Error", value = "Error indicator from Salesforce which could be \"No Error\"")
  /**
-   * Error indicator from Salesforce which could be \"No Error\"
-  **/
+  * Error indicator from Salesforce which could be \"No Error\"
+  */
+  @ApiModelProperty(example = "No Error", value = "Error indicator from Salesforce which could be \"No Error\"")
+
   private String error;
  /**
    * Advertiser eligible to create order lines

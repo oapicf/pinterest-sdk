@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,29 +8,34 @@ import org.openapitools.model.InviteAssetsSummaryProfilesInner;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Ad accounts and profiles the member/partner will be granted access to with this invite/request.
- **/
+ * Ad accounts and profiles the member/partner will be granted access to with this invite/request.
+ */
 @ApiModel(description="Ad accounts and profiles the member/partner will be granted access to with this invite/request.")
 
 public class InviteAssetsSummary  {
   
-  @ApiModelProperty(value = "List of ad account IDs and respective permission levels that will be assigned.")
-  @Valid
  /**
-   * List of ad account IDs and respective permission levels that will be assigned.
-  **/
+  * List of ad account IDs and respective permission levels that will be assigned.
+  */
+  @ApiModelProperty(value = "List of ad account IDs and respective permission levels that will be assigned.")
+
+  @Valid
+
   private List<@Valid InviteAssetsSummaryAdAccountsInner> adAccounts = new ArrayList<>();
 
-  @ApiModelProperty(value = "List of profile IDs and respective permission levels that will be assigned.")
-  @Valid
  /**
-   * List of profile IDs and respective permission levels that will be assigned.
-  **/
+  * List of profile IDs and respective permission levels that will be assigned.
+  */
+  @ApiModelProperty(value = "List of profile IDs and respective permission levels that will be assigned.")
+
+  @Valid
+
   private List<@Valid InviteAssetsSummaryProfilesInner> profiles = new ArrayList<>();
  /**
    * List of ad account IDs and respective permission levels that will be assigned.

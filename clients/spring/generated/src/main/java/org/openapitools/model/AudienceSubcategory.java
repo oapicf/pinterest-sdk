@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * AudienceSubcategory
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceSubcategory {
 
   private @Nullable String key;
@@ -33,7 +33,7 @@ public class AudienceSubcategory {
 
   private @Nullable String id;
 
-  public AudienceSubcategory key(String key) {
+  public AudienceSubcategory key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -45,15 +45,15 @@ public class AudienceSubcategory {
   
   @Schema(name = "key", example = "958862518888", description = "Interest unique key (same as ID).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
-  public String getKey() {
+  public @Nullable String getKey() {
     return key;
   }
 
-  public void setKey(String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 
-  public AudienceSubcategory name(String name) {
+  public AudienceSubcategory name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -65,15 +65,15 @@ public class AudienceSubcategory {
   
   @Schema(name = "name", example = "travel destinations", description = "Subinterest name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public AudienceSubcategory ratio(BigDecimal ratio) {
+  public AudienceSubcategory ratio(@Nullable BigDecimal ratio) {
     this.ratio = ratio;
     return this;
   }
@@ -85,15 +85,15 @@ public class AudienceSubcategory {
   @Valid 
   @Schema(name = "ratio", example = "0.482", description = "Subinterest's percent of category's total audience.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ratio")
-  public BigDecimal getRatio() {
+  public @Nullable BigDecimal getRatio() {
     return ratio;
   }
 
-  public void setRatio(BigDecimal ratio) {
+  public void setRatio(@Nullable BigDecimal ratio) {
     this.ratio = ratio;
   }
 
-  public AudienceSubcategory index(BigDecimal index) {
+  public AudienceSubcategory index(@Nullable BigDecimal index) {
     this.index = index;
     return this;
   }
@@ -105,15 +105,15 @@ public class AudienceSubcategory {
   @Valid 
   @Schema(name = "index", example = "1.2", description = "Subinterest affinity index.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("index")
-  public BigDecimal getIndex() {
+  public @Nullable BigDecimal getIndex() {
     return index;
   }
 
-  public void setIndex(BigDecimal index) {
+  public void setIndex(@Nullable BigDecimal index) {
     this.index = index;
   }
 
-  public AudienceSubcategory id(String id) {
+  public AudienceSubcategory id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -125,11 +125,11 @@ public class AudienceSubcategory {
   
   @Schema(name = "id", example = "958862518888", description = "Subinterest ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 

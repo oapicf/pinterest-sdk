@@ -43,6 +43,11 @@ public:
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
 
+    QList<OAITargetingAdvertiserCountry> getCountries() const;
+    void setCountries(const QList<OAITargetingAdvertiserCountry> &countries);
+    bool is_countries_Set() const;
+    bool is_countries_Valid() const;
+
     QString getReportName() const;
     void setReportName(const QString &report_name);
     bool is_report_name_Set() const;
@@ -78,16 +83,15 @@ public:
     bool is_columns_Set() const;
     bool is_columns_Valid() const;
 
-    QList<OAITargetingAdvertiserCountry> getCountries() const;
-    void setCountries(const QList<OAITargetingAdvertiserCountry> &countries);
-    bool is_countries_Set() const;
-    bool is_countries_Valid() const;
-
     virtual bool isSet() const override;
     virtual bool isValid() const override;
 
 private:
     void initializeModel();
+
+    QList<OAITargetingAdvertiserCountry> countries;
+    bool m_countries_isSet;
+    bool m_countries_isValid;
 
     QString report_name;
     bool m_report_name_isSet;
@@ -116,10 +120,6 @@ private:
     QList<OAIMMMReportingColumn> columns;
     bool m_columns_isSet;
     bool m_columns_isValid;
-
-    QList<OAITargetingAdvertiserCountry> countries;
-    bool m_countries_isSet;
-    bool m_countries_isValid;
 };
 
 } // namespace OpenAPI

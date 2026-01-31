@@ -263,15 +263,13 @@ namespace Org.OpenAPITools.Model
                                 format = new Option<CatalogsFormat?>(CatalogsFormatValueConverter.FromStringOrDefault(formatRawValue));
                             break;
                         case "credentials":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                credentials = new Option<CatalogsFeedCredentials?>(JsonSerializer.Deserialize<CatalogsFeedCredentials>(ref utf8JsonReader, jsonSerializerOptions));
+                            credentials = new Option<CatalogsFeedCredentials?>(JsonSerializer.Deserialize<CatalogsFeedCredentials>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "location":
                             location = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "preferred_processing_schedule":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                preferredProcessingSchedule = new Option<CatalogsFeedProcessingSchedule?>(JsonSerializer.Deserialize<CatalogsFeedProcessingSchedule>(ref utf8JsonReader, jsonSerializerOptions));
+                            preferredProcessingSchedule = new Option<CatalogsFeedProcessingSchedule?>(JsonSerializer.Deserialize<CatalogsFeedProcessingSchedule>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "status":
                             string? statusRawValue = utf8JsonReader.GetString();

@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * CatalogsFeedIngestionWarnings
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedIngestionWarnings {
 
   private @Nullable Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
@@ -34,7 +34,7 @@ public class CatalogsFeedIngestionWarnings {
 
   private @Nullable Integer HOTEL_PRICE_HEADER_IS_PRESENT;
 
-  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR(Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
+  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR(@Nullable Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
     this.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR = ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
     return this;
   }
@@ -46,15 +46,15 @@ public class CatalogsFeedIngestionWarnings {
   
   @Schema(name = "ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR", description = "We experienced a technical difficulty and were unable to download some additional images. The next download attempt will happen in 24 hours.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR")
-  public Integer getADDITIONALIMAGELEVELINTERNALERROR() {
+  public @Nullable Integer getADDITIONALIMAGELEVELINTERNALERROR() {
     return ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
   }
 
-  public void setADDITIONALIMAGELEVELINTERNALERROR(Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
+  public void setADDITIONALIMAGELEVELINTERNALERROR(@Nullable Integer ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR) {
     this.ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR = ADDITIONAL_IMAGE_LEVEL_INTERNAL_ERROR;
   }
 
-  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE(Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE) {
+  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE(@Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE) {
     this.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE = ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
     return this;
   }
@@ -66,15 +66,15 @@ public class CatalogsFeedIngestionWarnings {
   
   @Schema(name = "ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE", description = "Additional image files are unreadable. Please upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE")
-  public Integer getADDITIONALIMAGEFILENOTACCESSIBLE() {
+  public @Nullable Integer getADDITIONALIMAGEFILENOTACCESSIBLE() {
     return ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
   }
 
-  public void setADDITIONALIMAGEFILENOTACCESSIBLE(Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE) {
+  public void setADDITIONALIMAGEFILENOTACCESSIBLE(@Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE) {
     this.ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE = ADDITIONAL_IMAGE_FILE_NOT_ACCESSIBLE;
   }
 
-  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_MALFORMED_URL(Integer ADDITIONAL_IMAGE_MALFORMED_URL) {
+  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_MALFORMED_URL(@Nullable Integer ADDITIONAL_IMAGE_MALFORMED_URL) {
     this.ADDITIONAL_IMAGE_MALFORMED_URL = ADDITIONAL_IMAGE_MALFORMED_URL;
     return this;
   }
@@ -86,15 +86,15 @@ public class CatalogsFeedIngestionWarnings {
   
   @Schema(name = "ADDITIONAL_IMAGE_MALFORMED_URL", description = "Additional image files are unreadable. Please check your link and upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_MALFORMED_URL")
-  public Integer getADDITIONALIMAGEMALFORMEDURL() {
+  public @Nullable Integer getADDITIONALIMAGEMALFORMEDURL() {
     return ADDITIONAL_IMAGE_MALFORMED_URL;
   }
 
-  public void setADDITIONALIMAGEMALFORMEDURL(Integer ADDITIONAL_IMAGE_MALFORMED_URL) {
+  public void setADDITIONALIMAGEMALFORMEDURL(@Nullable Integer ADDITIONAL_IMAGE_MALFORMED_URL) {
     this.ADDITIONAL_IMAGE_MALFORMED_URL = ADDITIONAL_IMAGE_MALFORMED_URL;
   }
 
-  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_FILE_NOT_FOUND(Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND) {
+  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_FILE_NOT_FOUND(@Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND) {
     this.ADDITIONAL_IMAGE_FILE_NOT_FOUND = ADDITIONAL_IMAGE_FILE_NOT_FOUND;
     return this;
   }
@@ -106,15 +106,15 @@ public class CatalogsFeedIngestionWarnings {
   
   @Schema(name = "ADDITIONAL_IMAGE_FILE_NOT_FOUND", description = "Additional image files are unreadable. Please upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_FILE_NOT_FOUND")
-  public Integer getADDITIONALIMAGEFILENOTFOUND() {
+  public @Nullable Integer getADDITIONALIMAGEFILENOTFOUND() {
     return ADDITIONAL_IMAGE_FILE_NOT_FOUND;
   }
 
-  public void setADDITIONALIMAGEFILENOTFOUND(Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND) {
+  public void setADDITIONALIMAGEFILENOTFOUND(@Nullable Integer ADDITIONAL_IMAGE_FILE_NOT_FOUND) {
     this.ADDITIONAL_IMAGE_FILE_NOT_FOUND = ADDITIONAL_IMAGE_FILE_NOT_FOUND;
   }
 
-  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_INVALID_FILE(Integer ADDITIONAL_IMAGE_INVALID_FILE) {
+  public CatalogsFeedIngestionWarnings ADDITIONAL_IMAGE_INVALID_FILE(@Nullable Integer ADDITIONAL_IMAGE_INVALID_FILE) {
     this.ADDITIONAL_IMAGE_INVALID_FILE = ADDITIONAL_IMAGE_INVALID_FILE;
     return this;
   }
@@ -126,15 +126,15 @@ public class CatalogsFeedIngestionWarnings {
   
   @Schema(name = "ADDITIONAL_IMAGE_INVALID_FILE", description = "Additional image files are unreadable. Please upload new files to continue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADDITIONAL_IMAGE_INVALID_FILE")
-  public Integer getADDITIONALIMAGEINVALIDFILE() {
+  public @Nullable Integer getADDITIONALIMAGEINVALIDFILE() {
     return ADDITIONAL_IMAGE_INVALID_FILE;
   }
 
-  public void setADDITIONALIMAGEINVALIDFILE(Integer ADDITIONAL_IMAGE_INVALID_FILE) {
+  public void setADDITIONALIMAGEINVALIDFILE(@Nullable Integer ADDITIONAL_IMAGE_INVALID_FILE) {
     this.ADDITIONAL_IMAGE_INVALID_FILE = ADDITIONAL_IMAGE_INVALID_FILE;
   }
 
-  public CatalogsFeedIngestionWarnings HOTEL_PRICE_HEADER_IS_PRESENT(Integer HOTEL_PRICE_HEADER_IS_PRESENT) {
+  public CatalogsFeedIngestionWarnings HOTEL_PRICE_HEADER_IS_PRESENT(@Nullable Integer HOTEL_PRICE_HEADER_IS_PRESENT) {
     this.HOTEL_PRICE_HEADER_IS_PRESENT = HOTEL_PRICE_HEADER_IS_PRESENT;
     return this;
   }
@@ -146,11 +146,11 @@ public class CatalogsFeedIngestionWarnings {
   
   @Schema(name = "HOTEL_PRICE_HEADER_IS_PRESENT", description = "price is not a supported column. Use base_price and sale_price instead.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("HOTEL_PRICE_HEADER_IS_PRESENT")
-  public Integer getHOTELPRICEHEADERISPRESENT() {
+  public @Nullable Integer getHOTELPRICEHEADERISPRESENT() {
     return HOTEL_PRICE_HEADER_IS_PRESENT;
   }
 
-  public void setHOTELPRICEHEADERISPRESENT(Integer HOTEL_PRICE_HEADER_IS_PRESENT) {
+  public void setHOTELPRICEHEADERISPRESENT(@Nullable Integer HOTEL_PRICE_HEADER_IS_PRESENT) {
     this.HOTEL_PRICE_HEADER_IS_PRESENT = HOTEL_PRICE_HEADER_IS_PRESENT;
   }
 

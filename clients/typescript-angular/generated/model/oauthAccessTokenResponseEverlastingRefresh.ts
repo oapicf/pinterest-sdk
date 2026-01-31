@@ -9,26 +9,23 @@
  */
 
 
-/**
- * A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
- */
 export interface OauthAccessTokenResponseEverlastingRefresh { 
+    refresh_token: string;
+    refresh_token_expires_in: number;
+    refresh_token_expires_at: number;
     response_type?: OauthAccessTokenResponseEverlastingRefresh.ResponseTypeEnum;
     access_token: string;
     token_type: string;
     expires_in: number;
     scope: string;
-    refresh_token: string;
-    refresh_token_expires_in: number;
-    refresh_token_expires_at: number;
 }
 export namespace OauthAccessTokenResponseEverlastingRefresh {
-    export type ResponseTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
     export const ResponseTypeEnum = {
-        AuthorizationCode: 'authorization_code' as ResponseTypeEnum,
-        RefreshToken: 'refresh_token' as ResponseTypeEnum,
-        ClientCredentials: 'client_credentials' as ResponseTypeEnum
-    };
+        AuthorizationCode: 'authorization_code',
+        RefreshToken: 'refresh_token',
+        ClientCredentials: 'client_credentials'
+    } as const;
+    export type ResponseTypeEnum = typeof ResponseTypeEnum[keyof typeof ResponseTypeEnum];
 }
 
 

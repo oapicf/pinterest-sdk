@@ -12,12 +12,9 @@
 /**
  * Operation type to share a specific audience or revoke access to a previously shared audience
  */
-export type OperationType = 'SHARE' | 'REVOKE';
-
 export const OperationType = {
-
-    Share: 'SHARE' as OperationType,
-
-    Revoke: 'REVOKE' as OperationType
-};
+    Share: 'SHARE',
+    Revoke: 'REVOKE'
+} as const;
+export type OperationType = typeof OperationType[keyof typeof OperationType];
 

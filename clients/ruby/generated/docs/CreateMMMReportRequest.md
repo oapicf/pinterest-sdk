@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **countries** | [**Array&lt;TargetingAdvertiserCountry&gt;**](TargetingAdvertiserCountry.md) | A List of countries for filtering | [optional] |
 | **report_name** | **String** | Name of the Marketing Mix Modeling (MMM) report |  |
 | **start_date** | **String** | Metric report start date (UTC). Format: YYYY-MM-DD |  |
 | **end_date** | **String** | Metric report end date (UTC). Format: YYYY-MM-DD |  |
@@ -11,7 +12,6 @@
 | **level** | **String** | Level of the report |  |
 | **targeting_types** | [**Array&lt;MMMReportingTargetingType&gt;**](MMMReportingTargetingType.md) | List of targeting types |  |
 | **columns** | [**Array&lt;MMMReportingColumn&gt;**](MMMReportingColumn.md) | Metric and entity columns |  |
-| **countries** | [**Array&lt;TargetingAdvertiserCountry&gt;**](TargetingAdvertiserCountry.md) | A List of countries for filtering | [optional] |
 
 ## Example
 
@@ -19,14 +19,14 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::CreateMMMReportRequest.new(
+  countries: null,
   report_name: null,
   start_date: 2020-12-20,
   end_date: 2020-12-20,
   granularity: null,
   level: null,
   targeting_types: [&quot;GENDER&quot;],
-  columns: null,
-  countries: null
+  columns: null
 )
 ```
 

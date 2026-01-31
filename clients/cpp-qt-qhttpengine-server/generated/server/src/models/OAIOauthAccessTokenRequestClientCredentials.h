@@ -13,7 +13,7 @@
 /*
  * OAIOauthAccessTokenRequestClientCredentials.h
  *
- * A request to receive a client token.
+ * 
  */
 
 #ifndef OAIOauthAccessTokenRequestClientCredentials_H
@@ -39,15 +39,15 @@ public:
     void fromJsonObject(QJsonObject json) override;
     void fromJson(QString jsonString) override;
 
-    QString getGrantType() const;
-    void setGrantType(const QString &grant_type);
-    bool is_grant_type_Set() const;
-    bool is_grant_type_Valid() const;
-
     QString getScope() const;
     void setScope(const QString &scope);
     bool is_scope_Set() const;
     bool is_scope_Valid() const;
+
+    QString getGrantType() const;
+    void setGrantType(const QString &grant_type);
+    bool is_grant_type_Set() const;
+    bool is_grant_type_Valid() const;
 
     virtual bool isSet() const override;
     virtual bool isValid() const override;
@@ -55,13 +55,13 @@ public:
 private:
     void initializeModel();
 
-    QString grant_type;
-    bool m_grant_type_isSet;
-    bool m_grant_type_isValid;
-
     QString scope;
     bool m_scope_isSet;
     bool m_scope_isValid;
+
+    QString grant_type;
+    bool m_grant_type_isSet;
+    bool m_grant_type_isValid;
 };
 
 } // namespace OpenAPI

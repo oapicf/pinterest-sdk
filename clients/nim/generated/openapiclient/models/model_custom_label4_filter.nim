@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_multiple_string_criteria
 
 type CustomLabel4Filter* = object
   ## 
   CUSTOM_LABEL_4*: CatalogsProductGroupMultipleStringCriteria
+

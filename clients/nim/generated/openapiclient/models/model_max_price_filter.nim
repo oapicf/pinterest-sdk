@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_pricing_criteria
 
 type MaxPriceFilter* = object
   ## 
   MAX_PRICE*: CatalogsProductGroupPricingCriteria
+

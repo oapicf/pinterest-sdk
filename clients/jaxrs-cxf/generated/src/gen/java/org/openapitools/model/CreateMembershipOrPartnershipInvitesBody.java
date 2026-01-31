@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,13 +9,14 @@ import org.openapitools.model.InviteType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Body to be used on path to send Members or Partners Invite or Request
- **/
+ * Body to be used on path to send Members or Partners Invite or Request
+ */
 @ApiModel(description="Body to be used on path to send Members or Partners Invite or Request")
 
 public class CreateMembershipOrPartnershipInvitesBody  {
@@ -53,26 +53,31 @@ EMPLOYEE(String.valueOf("EMPLOYEE")), BIZ_ADMIN(String.valueOf("BIZ_ADMIN")), PA
     }
 }
 
-  @ApiModelProperty(example = "BIZ_ADMIN", required = true, value = "The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.")
  /**
-   * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
-  **/
+  * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+  */
+  @ApiModelProperty(example = "BIZ_ADMIN", required = true, value = "The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.")
+
   private BusinessRoleEnum businessRole;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private InviteType inviteType;
 
-  @ApiModelProperty(example = "[\"business0101\",\"user@business.com\"]", value = "A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE")
  /**
-   * A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
-  **/
+  * A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE
+  */
+  @ApiModelProperty(example = "[\"business0101\",\"user@business.com\"]", value = "A list of usernames, emails, or a mix of them. Should be used if invite_type is MEMBER_INVITE")
+
   private List<String> members = new ArrayList<>();
 
-  @ApiModelProperty(example = "[\"809944451643622187\",\"766456567741825556\"]", value = "A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST")
  /**
-   * A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
-  **/
+  * A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST
+  */
+  @ApiModelProperty(example = "[\"809944451643622187\",\"766456567741825556\"]", value = "A list of partner_id. Should be used if invite_type is PARTNER_INVITE or PARTNER_REQUEST")
+
   private List<@Pattern(regexp = "^\\d+$")@Size(max = 25)String> partners = new ArrayList<>();
  /**
    * The business access level to grant member/partner. Note, values are case-sensitive. - EMPLOYEE: Can only view and access assets you assign them to. They cannot see details about other employees, partners, or other assets. - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. - PARTNER: Can only view and access assets you assign them to/or they assign to you.

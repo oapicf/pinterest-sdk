@@ -53,77 +53,183 @@ func NewUserAccountAPIController(s UserAccountAPIServicer, opts ...UserAccountAP
 func (c *UserAccountAPIController) Routes() Routes {
 	return Routes{
 		"UserAccountGet": Route{
+			"UserAccountGet",
 			strings.ToUpper("Get"),
 			"/v5/user_account",
 			c.UserAccountGet,
 		},
 		"UserAccountAnalytics": Route{
+			"UserAccountAnalytics",
 			strings.ToUpper("Get"),
 			"/v5/user_account/analytics",
 			c.UserAccountAnalytics,
 		},
 		"UserAccountAnalyticsTopPins": Route{
+			"UserAccountAnalyticsTopPins",
 			strings.ToUpper("Get"),
 			"/v5/user_account/analytics/top_pins",
 			c.UserAccountAnalyticsTopPins,
 		},
 		"UserAccountAnalyticsTopVideoPins": Route{
+			"UserAccountAnalyticsTopVideoPins",
 			strings.ToUpper("Get"),
 			"/v5/user_account/analytics/top_video_pins",
 			c.UserAccountAnalyticsTopVideoPins,
 		},
 		"LinkedBusinessAccountsGet": Route{
+			"LinkedBusinessAccountsGet",
 			strings.ToUpper("Get"),
 			"/v5/user_account/businesses",
 			c.LinkedBusinessAccountsGet,
 		},
 		"FollowersList": Route{
+			"FollowersList",
 			strings.ToUpper("Get"),
 			"/v5/user_account/followers",
 			c.FollowersList,
 		},
 		"UserFollowingGet": Route{
+			"UserFollowingGet",
 			strings.ToUpper("Get"),
 			"/v5/user_account/following",
 			c.UserFollowingGet,
 		},
 		"BoardsUserFollowsList": Route{
+			"BoardsUserFollowsList",
 			strings.ToUpper("Get"),
 			"/v5/user_account/following/boards",
 			c.BoardsUserFollowsList,
 		},
 		"FollowUserUpdate": Route{
+			"FollowUserUpdate",
 			strings.ToUpper("Post"),
 			"/v5/user_account/following/{username}",
 			c.FollowUserUpdate,
 		},
 		"UserWebsitesGet": Route{
+			"UserWebsitesGet",
 			strings.ToUpper("Get"),
 			"/v5/user_account/websites",
 			c.UserWebsitesGet,
 		},
 		"VerifyWebsiteUpdate": Route{
+			"VerifyWebsiteUpdate",
 			strings.ToUpper("Post"),
 			"/v5/user_account/websites",
 			c.VerifyWebsiteUpdate,
 		},
 		"UnverifyWebsiteDelete": Route{
+			"UnverifyWebsiteDelete",
 			strings.ToUpper("Delete"),
 			"/v5/user_account/websites",
 			c.UnverifyWebsiteDelete,
 		},
 		"WebsiteVerificationGet": Route{
+			"WebsiteVerificationGet",
 			strings.ToUpper("Get"),
 			"/v5/user_account/websites/verification",
 			c.WebsiteVerificationGet,
 		},
 		"UserAccountFollowedInterests": Route{
+			"UserAccountFollowedInterests",
 			strings.ToUpper("Get"),
 			"/v5/users/{username}/interests/follow",
 			c.UserAccountFollowedInterests,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the UserAccountAPIController
+func (c *UserAccountAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"UserAccountGet",
+			strings.ToUpper("Get"),
+			"/v5/user_account",
+			c.UserAccountGet,
+		},
+		Route{
+			"UserAccountAnalytics",
+			strings.ToUpper("Get"),
+			"/v5/user_account/analytics",
+			c.UserAccountAnalytics,
+		},
+		Route{
+			"UserAccountAnalyticsTopPins",
+			strings.ToUpper("Get"),
+			"/v5/user_account/analytics/top_pins",
+			c.UserAccountAnalyticsTopPins,
+		},
+		Route{
+			"UserAccountAnalyticsTopVideoPins",
+			strings.ToUpper("Get"),
+			"/v5/user_account/analytics/top_video_pins",
+			c.UserAccountAnalyticsTopVideoPins,
+		},
+		Route{
+			"LinkedBusinessAccountsGet",
+			strings.ToUpper("Get"),
+			"/v5/user_account/businesses",
+			c.LinkedBusinessAccountsGet,
+		},
+		Route{
+			"FollowersList",
+			strings.ToUpper("Get"),
+			"/v5/user_account/followers",
+			c.FollowersList,
+		},
+		Route{
+			"UserFollowingGet",
+			strings.ToUpper("Get"),
+			"/v5/user_account/following",
+			c.UserFollowingGet,
+		},
+		Route{
+			"BoardsUserFollowsList",
+			strings.ToUpper("Get"),
+			"/v5/user_account/following/boards",
+			c.BoardsUserFollowsList,
+		},
+		Route{
+			"FollowUserUpdate",
+			strings.ToUpper("Post"),
+			"/v5/user_account/following/{username}",
+			c.FollowUserUpdate,
+		},
+		Route{
+			"UserWebsitesGet",
+			strings.ToUpper("Get"),
+			"/v5/user_account/websites",
+			c.UserWebsitesGet,
+		},
+		Route{
+			"VerifyWebsiteUpdate",
+			strings.ToUpper("Post"),
+			"/v5/user_account/websites",
+			c.VerifyWebsiteUpdate,
+		},
+		Route{
+			"UnverifyWebsiteDelete",
+			strings.ToUpper("Delete"),
+			"/v5/user_account/websites",
+			c.UnverifyWebsiteDelete,
+		},
+		Route{
+			"WebsiteVerificationGet",
+			strings.ToUpper("Get"),
+			"/v5/user_account/websites/verification",
+			c.WebsiteVerificationGet,
+		},
+		Route{
+			"UserAccountFollowedInterests",
+			strings.ToUpper("Get"),
+			"/v5/users/{username}/interests/follow",
+			c.UserAccountFollowedInterests,
+		},
+	}
+}
+
+
 
 // UserAccountGet - Get user account
 func (c *UserAccountAPIController) UserAccountGet(w http.ResponseWriter, r *http.Request) {

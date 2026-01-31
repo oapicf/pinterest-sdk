@@ -46,16 +46,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(OauthAccessTokenResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"access_token\" : \"access_token\",\n  \"scope\" : \"scope\",\n  \"response_type\" : \"authorization_code\",\n  \"token_type\" : \"bearer\",\n  \"expires_in\" : 0\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<OauthAccessTokenResponse>(exampleJson)
-            : default(OauthAccessTokenResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

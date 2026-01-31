@@ -84,12 +84,12 @@ export interface AdGroupUpdateRequest {
     id: string;
 }
 export namespace AdGroupUpdateRequest {
-    export type BidStrategyTypeEnum = 'AUTOMATIC_BID' | 'MAX_BID' | 'TARGET_AVG';
     export const BidStrategyTypeEnum = {
-        AutomaticBid: 'AUTOMATIC_BID' as BidStrategyTypeEnum,
-        MaxBid: 'MAX_BID' as BidStrategyTypeEnum,
-        TargetAvg: 'TARGET_AVG' as BidStrategyTypeEnum
-    };
+        AutomaticBid: 'AUTOMATIC_BID',
+        MaxBid: 'MAX_BID',
+        TargetAvg: 'TARGET_AVG'
+    } as const;
+    export type BidStrategyTypeEnum = typeof BidStrategyTypeEnum[keyof typeof BidStrategyTypeEnum];
 }
 
 

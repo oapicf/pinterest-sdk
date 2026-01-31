@@ -10,7 +10,7 @@ Describe -tag 'PSOpenAPITools' -name 'OauthAccessTokenRequestClientCredentials' 
     Context 'OauthAccessTokenRequestClientCredentials' {
         It 'Initialize-OauthAccessTokenRequestClientCredentials' {
             # a simple test to create an object
-            #$NewObject = Initialize-OauthAccessTokenRequestClientCredentials -GrantType "TEST_VALUE" -Scope "TEST_VALUE"
+            #$NewObject = Initialize-OauthAccessTokenRequestClientCredentials -Scope "TEST_VALUE" -GrantType "TEST_VALUE"
             #$NewObject | Should -BeOfType OauthAccessTokenRequestClientCredentials
             #$NewObject.property | Should -Be 0
         }

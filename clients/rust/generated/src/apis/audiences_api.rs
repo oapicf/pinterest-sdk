@@ -61,10 +61,10 @@ pub enum AudiencesSlashUpdateError {
 /// Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific audience_ids when you create an ad group. <p/> For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.
 pub async fn audiences_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, audience_create_request: models::AudienceCreateRequest) -> Result<models::Audience, Error<AudiencesSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_audience_create_request = audience_create_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_audience_create_request = audience_create_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -73,7 +73,7 @@ pub async fn audiences_slash_create(configuration: &configuration::Configuration
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_audience_create_request);
+    req_builder = req_builder.json(&p_body_audience_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -103,10 +103,10 @@ pub async fn audiences_slash_create(configuration: &configuration::Configuration
 /// Create a custom audience and find the audiences you want your ads to reach.
 pub async fn audiences_slash_create_custom(configuration: &configuration::Configuration, ad_account_id: &str, audience_create_custom_request: models::AudienceCreateCustomRequest) -> Result<models::Audience, Error<AudiencesSlashCreateCustomError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_audience_create_custom_request = audience_create_custom_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_audience_create_custom_request = audience_create_custom_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/custom", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/custom", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -115,7 +115,7 @@ pub async fn audiences_slash_create_custom(configuration: &configuration::Config
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_audience_create_custom_request);
+    req_builder = req_builder.json(&p_body_audience_create_custom_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -145,10 +145,10 @@ pub async fn audiences_slash_create_custom(configuration: &configuration::Config
 /// Get a specific audience given the audience ID.
 pub async fn audiences_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, audience_id: &str) -> Result<models::Audience, Error<AudiencesSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_audience_id = audience_id;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_audience_id = audience_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/{audience_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), audience_id=crate::apis::urlencode(p_audience_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/{audience_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), audience_id=crate::apis::urlencode(p_path_audience_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -186,26 +186,26 @@ pub async fn audiences_slash_get(configuration: &configuration::Configuration, a
 /// Get list of audiences for the ad account.
 pub async fn audiences_slash_list(configuration: &configuration::Configuration, ad_account_id: &str, bookmark: Option<&str>, order: Option<&str>, page_size: Option<i32>, ownership_type: Option<&str>) -> Result<models::AudiencesList200Response, Error<AudiencesSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_bookmark = bookmark;
-    let p_order = order;
-    let p_page_size = page_size;
-    let p_ownership_type = ownership_type;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_bookmark = bookmark;
+    let p_query_order = order;
+    let p_query_page_size = page_size;
+    let p_query_ownership_type = ownership_type;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
-        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_order {
+        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_ownership_type {
-        req_builder = req_builder.query(&[("ownership_type", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_ownership_type {
+        req_builder = req_builder.query(&[("ownership_type", &serde_json::to_string(param_value)?)]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -242,11 +242,11 @@ pub async fn audiences_slash_list(configuration: &configuration::Configuration, 
 /// Update (edit or remove) an existing targeting audience.
 pub async fn audiences_slash_update(configuration: &configuration::Configuration, ad_account_id: &str, audience_id: &str, audience_update_request: Option<models::AudienceUpdateRequest>) -> Result<models::Audience, Error<AudiencesSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_audience_id = audience_id;
-    let p_audience_update_request = audience_update_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_audience_id = audience_id;
+    let p_body_audience_update_request = audience_update_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/{audience_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), audience_id=crate::apis::urlencode(p_audience_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/{audience_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), audience_id=crate::apis::urlencode(p_path_audience_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -255,7 +255,7 @@ pub async fn audiences_slash_update(configuration: &configuration::Configuration
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_audience_update_request);
+    req_builder = req_builder.json(&p_body_audience_update_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

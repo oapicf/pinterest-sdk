@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_attributes
 
@@ -22,11 +24,38 @@ type CatalogsUpsertCreativeAssetsItem* = object
   attributes*: CatalogsCreativeAssetsAttributes
 
 func `%`*(v: Operation): JsonNode =
-  let str = case v:
-    of Operation.UPSERT: "UPSERT"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Operation.UPSERT: %"UPSERT"
 func `$`*(v: Operation): string =
   result = case v:
-    of Operation.UPSERT: "UPSERT"
+    of Operation.UPSERT: $("UPSERT")
+
+proc to*(node: JsonNode, T: typedesc[Operation]): Operation =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Operation, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("UPSERT"):
+    return Operation.UPSERT
+  else:
+    raise newException(ValueError, "Invalid enum value for Operation: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsUpsertCreativeAssetsItem with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsUpsertCreativeAssetsItem]): CatalogsUpsertCreativeAssetsItem =
+  result = CatalogsUpsertCreativeAssetsItem()
+  if node.kind == JObject:
+    if node.hasKey("creative_assets_id"):
+      result.creativeAssetsId = to(node["creative_assets_id"], string)
+    if node.hasKey("operation"):
+      result.operation = to(node["operation"], Operation)
+    if node.hasKey("attributes"):
+      result.attributes = to(node["attributes"], CatalogsCreativeAssetsAttributes)
+
+# Custom JSON serialization for CatalogsUpsertCreativeAssetsItem with custom field names
+proc `%`*(obj: CatalogsUpsertCreativeAssetsItem): JsonNode =
+  result = newJObject()
+  result["creative_assets_id"] = %obj.creativeAssetsId
+  result["operation"] = %obj.operation
+  result["attributes"] = %obj.attributes
+

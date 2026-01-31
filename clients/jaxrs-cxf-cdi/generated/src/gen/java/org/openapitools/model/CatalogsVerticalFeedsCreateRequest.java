@@ -60,7 +60,7 @@ public class CatalogsVerticalFeedsCreateRequest   {
 
   private ProductAvailabilityType defaultAvailability;
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   private String catalogId;
 

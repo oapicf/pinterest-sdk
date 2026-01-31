@@ -359,39 +359,31 @@ namespace Org.OpenAPITools.Model
                                 status = new Option<EntityStatus?>(EntityStatusValueConverter.FromStringOrDefault(statusRawValue));
                             break;
                         case "lifetime_spend_cap":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lifetimeSpendCap = new Option<int?>(utf8JsonReader.GetInt32());
+                            lifetimeSpendCap = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "daily_spend_cap":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dailySpendCap = new Option<int?>(utf8JsonReader.GetInt32());
+                            dailySpendCap = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "order_line_id":
                             orderLineId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "tracking_urls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                trackingUrls = new Option<TrackingUrls?>(JsonSerializer.Deserialize<TrackingUrls>(ref utf8JsonReader, jsonSerializerOptions));
+                            trackingUrls = new Option<TrackingUrls?>(JsonSerializer.Deserialize<TrackingUrls>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "start_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                startTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            startTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "end_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                endTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            endTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "is_flexible_daily_budgets":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isFlexibleDailyBudgets = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isFlexibleDailyBudgets = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "default_ad_group_budget_in_micro_currency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                defaultAdGroupBudgetInMicroCurrency = new Option<int?>(utf8JsonReader.GetInt32());
+                            defaultAdGroupBudgetInMicroCurrency = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "is_automated_campaign":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isAutomatedCampaign = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isAutomatedCampaign = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

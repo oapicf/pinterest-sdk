@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -53,96 +52,6 @@ namespace Org.OpenAPITools.Test.Model
         {
             // TODO uncomment below to test "IsType" PinMediaMetadata
             //Assert.IsType<PinMediaMetadata>(instance);
-        }
-
-        /// <summary>
-        /// Test the property 'ItemType'
-        /// </summary>
-        [Fact]
-        public void ItemTypeTest()
-        {
-            // TODO unit test for the property 'ItemType'
-        }
-
-        /// <summary>
-        /// Test the property 'Title'
-        /// </summary>
-        [Fact]
-        public void TitleTest()
-        {
-            // TODO unit test for the property 'Title'
-        }
-
-        /// <summary>
-        /// Test the property 'Description'
-        /// </summary>
-        [Fact]
-        public void DescriptionTest()
-        {
-            // TODO unit test for the property 'Description'
-        }
-
-        /// <summary>
-        /// Test the property 'Link'
-        /// </summary>
-        [Fact]
-        public void LinkTest()
-        {
-            // TODO unit test for the property 'Link'
-        }
-
-        /// <summary>
-        /// Test the property 'Images'
-        /// </summary>
-        [Fact]
-        public void ImagesTest()
-        {
-            // TODO unit test for the property 'Images'
-        }
-
-        /// <summary>
-        /// Test the property 'CoverImageUrl'
-        /// </summary>
-        [Fact]
-        public void CoverImageUrlTest()
-        {
-            // TODO unit test for the property 'CoverImageUrl'
-        }
-
-        /// <summary>
-        /// Test the property 'VideoUrl'
-        /// </summary>
-        [Fact]
-        public void VideoUrlTest()
-        {
-            // TODO unit test for the property 'VideoUrl'
-        }
-
-        /// <summary>
-        /// Test the property 'Duration'
-        /// </summary>
-        [Fact]
-        public void DurationTest()
-        {
-            // TODO unit test for the property 'Duration'
-        }
-
-        /// <summary>
-        /// Test the property 'Height'
-        /// </summary>
-        [Fact]
-        public void HeightTest()
-        {
-            // TODO unit test for the property 'Height'
-        }
-
-        /// <summary>
-        /// Test the property 'Width'
-        /// </summary>
-        [Fact]
-        public void WidthTest()
-        {
-            // TODO unit test for the property 'Width'
         }
     }
 }

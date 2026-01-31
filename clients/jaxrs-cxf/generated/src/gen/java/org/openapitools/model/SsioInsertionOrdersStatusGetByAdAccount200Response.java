@@ -16,14 +16,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SsioInsertionOrdersStatusGetByAdAccount200Response  {
   
-  @ApiModelProperty(required = true, value = "Insertion orders status by ad acount id")
-  @Valid
  /**
-   * Insertion orders status by ad acount id
-  **/
+  * Insertion orders status by ad acount id
+  */
+  @ApiModelProperty(required = true, value = "Insertion orders status by ad acount id")
+
+  @Valid
+
   private List<@Valid SSIOInsertionOrderStatus> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * Insertion orders status by ad acount id

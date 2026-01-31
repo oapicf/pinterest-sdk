@@ -21,6 +21,8 @@ pub enum OauthSlashTokenResponse {
 }
 
 
+
+
 /// Oauth
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -32,6 +34,7 @@ pub trait Oauth<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHa
     /// OauthSlashToken - POST /v5/oauth/token
     async fn oauth_slash_token(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

@@ -9,8 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type FollowUserRequest* = object
   ## 
-  autoFollow*: bool ## Whether this request comes as result of auto-follow after clicking on a link. Follow links can be used by partners on their site or in emails. Only selected partners can be followed this way. We verify that partner can be auto-followed.
+  autoFollow*: Option[bool] ## Whether this request comes as result of auto-follow after clicking on a link. Follow links can be used by partners on their site or in emails. Only selected partners can be followed this way. We verify that partner can be auto-followed.
+
+
+# Custom JSON deserialization for FollowUserRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[FollowUserRequest]): FollowUserRequest =
+  result = FollowUserRequest()
+  if node.kind == JObject:
+    if node.hasKey("auto_follow") and node["auto_follow"].kind != JNull:
+      result.autoFollow = some(to(node["auto_follow"], typeof(result.autoFollow.get())))
+
+# Custom JSON serialization for FollowUserRequest with custom field names
+proc `%`*(obj: FollowUserRequest): JsonNode =
+  result = newJObject()
+  if obj.autoFollow.isSome():
+    result["auto_follow"] = %obj.autoFollow.get()
+

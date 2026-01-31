@@ -26,10 +26,7 @@ const basepath = "https://api.pinterest.com/v5"
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -42,10 +39,10 @@ template constructResult[T](response: Response): untyped =
 proc oauthToken*(httpClient: HttpClient, grantType: string): (Option[OauthAccessTokenResponse], Response) =
   ## Generate OAuth access token
   httpClient.headers["Content-Type"] = "application/x-www-form-urlencoded"
-  let query_for_api_call = encodeQuery([
+  let form_data = encodeQuery([
     ("grant_type", $grantType), # 
   ])
 
-  let response = httpClient.post(basepath & "/oauth/token", $query_for_api_call)
+  let response = httpClient.post(basepath & "/oauth/token", $form_data)
   constructResult[OauthAccessTokenResponse](response)
 

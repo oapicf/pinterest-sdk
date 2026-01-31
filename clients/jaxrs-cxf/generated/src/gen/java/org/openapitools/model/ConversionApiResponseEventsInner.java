@@ -46,22 +46,25 @@ FAILED(String.valueOf("failed")), PROCESSED(String.valueOf("processed"));
     }
 }
 
-  @ApiModelProperty(example = "processed", required = true, value = "Whether the event was processed successfully.")
  /**
-   * Whether the event was processed successfully.
-  **/
+  * Whether the event was processed successfully.
+  */
+  @ApiModelProperty(example = "processed", required = true, value = "Whether the event was processed successfully.")
+
   private StatusEnum status;
 
-  @ApiModelProperty(value = "Error message containing more information about why the event failed to be processed.")
  /**
-   * Error message containing more information about why the event failed to be processed.
-  **/
+  * Error message containing more information about why the event failed to be processed.
+  */
+  @ApiModelProperty(value = "Error message containing more information about why the event failed to be processed.")
+
   private String errorMessage;
 
-  @ApiModelProperty(value = "Warning messages about any fields in the event which are not standard. These are not critical to event processing.")
  /**
-   * Warning messages about any fields in the event which are not standard. These are not critical to event processing.
-  **/
+  * Warning messages about any fields in the event which are not standard. These are not critical to event processing.
+  */
+  @ApiModelProperty(value = "Warning messages about any fields in the event which are not standard. These are not critical to event processing.")
+
   private String warningMessage;
  /**
    * Whether the event was processed successfully.

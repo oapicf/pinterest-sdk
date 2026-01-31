@@ -37,7 +37,7 @@ use PHPUnit\Framework\TestCase;
  * OauthAccessTokenRequestRefreshTest Class Doc Comment
  *
  * @category    Class
- * @description A request to exchange a refresh token for a new access token.
+ * @description OauthAccessTokenRequestRefresh
  * @package     OpenAPI\Server\Tests\Model
  * @author      openapi-generator contributors
  * @link        https://github.com/openapitools/openapi-generator
@@ -87,17 +87,6 @@ class OauthAccessTokenRequestRefreshTest extends TestCase
     }
 
     /**
-     * Test attribute "grantType"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyGrantType(): void
-    {
-        $this->markTestSkipped('Test for property grantType not implemented');
-    }
-
-    /**
      * Test attribute "refreshToken"
      *
      * @group unit
@@ -128,5 +117,16 @@ class OauthAccessTokenRequestRefreshTest extends TestCase
     public function testPropertyRefreshOn(): void
     {
         $this->markTestSkipped('Test for property refreshOn not implemented');
+    }
+
+    /**
+     * Test attribute "grantType"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyGrantType(): void
+    {
+        $this->markTestSkipped('Test for property grantType not implemented');
     }
 }

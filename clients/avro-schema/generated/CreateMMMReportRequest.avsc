@@ -5,6 +5,15 @@
   "name": "CreateMMMReportRequest",
   "fields": [
     {
+      "name": "countries",
+      "type": ["null", {
+        "type": "array",
+        "items": "model.TargetingAdvertiserCountry"
+      }],
+      "doc": "A List of countries for filtering",
+      "default": null
+    },
+    {
       "name": "report_name",
       "type": "string",
       "doc": "Name of the Marketing Mix Modeling (MMM) report"
@@ -58,15 +67,6 @@
         "items": "model.MMMReportingColumn"
       },
       "doc": "Metric and entity columns"
-    },
-    {
-      "name": "countries",
-      "type": ["null", {
-        "type": "array",
-        "items": "model.TargetingAdvertiserCountry"
-      }],
-      "doc": "A List of countries for filtering",
-      "default": null
     }
   ]
 

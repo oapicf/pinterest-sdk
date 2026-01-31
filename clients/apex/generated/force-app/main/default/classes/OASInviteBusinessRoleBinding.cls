@@ -11,27 +11,9 @@
  */
 
 /**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+ * OASInviteBusinessRoleBinding
  */
 public class OASInviteBusinessRoleBinding implements OASBaseInviteDataResponse, OAS.MappedProperties {
-    /**
-     * Unique identifier for the business that created the invite/request.
-     * @return createdByBusinessId
-     */
-    public String createdByBusinessId { get; set; }
-
-    /**
-     * Unique identifier for the user that created the invite/request.
-     * @return createdByUserId
-     */
-    public String createdByUserId { get; set; }
-
-    /**
-     * Metadata for the user that updated the invite/request.
-     * @return user
-     */
-    public OASBusinessAccessUserSummary user { get; set; }
-
     /**
      * Unique identifier of the invite/request.
      * @return id
@@ -50,11 +32,29 @@ public class OASInviteBusinessRoleBinding implements OASBaseInviteDataResponse, 
      */
     public Boolean isReceivedInvite { get; set; }
 
+    /**
+     * Metadata for the user that updated the invite/request.
+     * @return user
+     */
+    public Object user { get; set; }
+
+    /**
+     * Unique identifier for the business that created the invite/request.
+     * @return createdByBusinessId
+     */
+    public String createdByBusinessId { get; set; }
+
+    /**
+     * Unique identifier for the user that created the invite/request.
+     * @return createdByUserId
+     */
+    public String createdByUserId { get; set; }
+
     private static final Map<String, String> propertyMappings = new Map<String, String>{
-        'created_by_business_id' => 'createdByBusinessId',
-        'created_by_user_id' => 'createdByUserId',
         'invite_data' => 'inviteData',
-        'is_received_invite' => 'isReceivedInvite'
+        'is_received_invite' => 'isReceivedInvite',
+        'created_by_business_id' => 'createdByBusinessId',
+        'created_by_user_id' => 'createdByUserId'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -62,10 +62,10 @@ public class OASInviteBusinessRoleBinding implements OASBaseInviteDataResponse, 
     }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
-        'created_by_business_id' => 'createdByBusinessId',
-        'created_by_user_id' => 'createdByUserId',
         'invite_data' => 'inviteData',
-        'is_received_invite' => 'isReceivedInvite'
+        'is_received_invite' => 'isReceivedInvite',
+        'created_by_business_id' => 'createdByBusinessId',
+        'created_by_user_id' => 'createdByUserId'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -73,10 +73,10 @@ public class OASInviteBusinessRoleBinding implements OASBaseInviteDataResponse, 
     }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
-        'created_by_business_id' => 'createdByBusinessId',
-        'created_by_user_id' => 'createdByUserId',
         'invite_data' => 'inviteData',
-        'is_received_invite' => 'isReceivedInvite'
+        'is_received_invite' => 'isReceivedInvite',
+        'created_by_business_id' => 'createdByBusinessId',
+        'created_by_user_id' => 'createdByUserId'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -84,10 +84,10 @@ public class OASInviteBusinessRoleBinding implements OASBaseInviteDataResponse, 
     }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
-        'created_by_business_id' => 'createdByBusinessId',
-        'created_by_user_id' => 'createdByUserId',
         'invite_data' => 'inviteData',
-        'is_received_invite' => 'isReceivedInvite'
+        'is_received_invite' => 'isReceivedInvite',
+        'created_by_business_id' => 'createdByBusinessId',
+        'created_by_user_id' => 'createdByUserId'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -96,36 +96,36 @@ public class OASInviteBusinessRoleBinding implements OASBaseInviteDataResponse, 
 
     public static OASInviteBusinessRoleBinding getExample() {
         OASInviteBusinessRoleBinding inviteBusinessRoleBinding = new OASInviteBusinessRoleBinding();
-          inviteBusinessRoleBinding.createdByBusinessId = '1234567890123';
-          inviteBusinessRoleBinding.createdByUserId = '1234567890123';
-          inviteBusinessRoleBinding.user = OASBusinessAccessUserSummary.getExample();
           inviteBusinessRoleBinding.id = '383791336903426391';
           inviteBusinessRoleBinding.inviteData = OASBaseInviteDataResponseInviteData.getExample();
           inviteBusinessRoleBinding.isReceivedInvite = true;
+          inviteBusinessRoleBinding.user = null;
+          inviteBusinessRoleBinding.createdByBusinessId = '1234567890123';
+          inviteBusinessRoleBinding.createdByUserId = '1234567890123';
         return inviteBusinessRoleBinding;
     }
 
     public Boolean equals(Object obj) {
         if (obj instanceof OASInviteBusinessRoleBinding) {           
             OASInviteBusinessRoleBinding inviteBusinessRoleBinding = (OASInviteBusinessRoleBinding) obj;
-            return this.createdByBusinessId == inviteBusinessRoleBinding.createdByBusinessId
-                && this.createdByUserId == inviteBusinessRoleBinding.createdByUserId
-                && this.user == inviteBusinessRoleBinding.user
-                && this.id == inviteBusinessRoleBinding.id
+            return this.id == inviteBusinessRoleBinding.id
                 && this.inviteData == inviteBusinessRoleBinding.inviteData
-                && this.isReceivedInvite == inviteBusinessRoleBinding.isReceivedInvite;
+                && this.isReceivedInvite == inviteBusinessRoleBinding.isReceivedInvite
+                && this.user == inviteBusinessRoleBinding.user
+                && this.createdByBusinessId == inviteBusinessRoleBinding.createdByBusinessId
+                && this.createdByUserId == inviteBusinessRoleBinding.createdByUserId;
         }
         return false;
     }
 
     public Integer hashCode() {
         Integer hashCode = 43;
-        hashCode = (17 * hashCode) + (createdByBusinessId == null ? 0 : System.hashCode(createdByBusinessId));
-        hashCode = (17 * hashCode) + (createdByUserId == null ? 0 : System.hashCode(createdByUserId));
-        hashCode = (17 * hashCode) + (user == null ? 0 : System.hashCode(user));
         hashCode = (17 * hashCode) + (id == null ? 0 : System.hashCode(id));
         hashCode = (17 * hashCode) + (inviteData == null ? 0 : System.hashCode(inviteData));
         hashCode = (17 * hashCode) + (isReceivedInvite == null ? 0 : System.hashCode(isReceivedInvite));
+        hashCode = (17 * hashCode) + (user == null ? 0 : System.hashCode(user));
+        hashCode = (17 * hashCode) + (createdByBusinessId == null ? 0 : System.hashCode(createdByBusinessId));
+        hashCode = (17 * hashCode) + (createdByUserId == null ? 0 : System.hashCode(createdByUserId));
         return hashCode;
     }
 }

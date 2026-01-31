@@ -1135,7 +1135,7 @@ library(openapi)
 # Operate on item batch
 #
 # prepare function argument(s)
-var_items_batch_post_request <- items_batch_post_request$new("CREATIVE_ASSETS", Country$new(), CatalogsItemsRequest_language$new(), c(ItemDeleteBatchRecord$new("item_id_example")), BatchOperation$new(), "catalog_id_example") # ItemsBatchPostRequest | Request object used to create catalogs items in a batch
+var_items_batch_post_request <- items_batch_post_request$new("CREATIVE_ASSETS", Country$new(), "af-ZA", c(ItemDeleteBatchRecord$new("item_id_example")), BatchOperation$new(), "catalog_id_example") # ItemsBatchPostRequest | Request object used to create catalogs items in a batch
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- CatalogsApi$new()
@@ -1316,7 +1316,7 @@ library(openapi)
 # Get catalogs items (POST)
 #
 # prepare function argument(s)
-var_catalogs_items_request <- CatalogsItemsRequest$new(Country$new(), CatalogsItemsRequest_language$new(), CatalogsItemsPostFilters$new(CatalogsType$new(), c("item_ids_example"), c("hotel_ids_example"), c("creative_assets_ids_example"), "catalog_id_example")) # CatalogsItemsRequest | Request object used to get catalogs items
+var_catalogs_items_request <- CatalogsItemsRequest$new(Country$new(), "af-ZA", CatalogsItemsPostFilters$new(CatalogsType$new(), c("item_ids_example"), c("hotel_ids_example"), c("creative_assets_ids_example"), "catalog_id_example")) # CatalogsItemsRequest | Request object used to get catalogs items
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 
 api_instance <- CatalogsApi$new()

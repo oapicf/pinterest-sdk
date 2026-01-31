@@ -1,16 +1,16 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for updating a creative assets product group.
- **/
+ * Request object for updating a creative assets product group.
+ */
 @ApiModel(description="Request object for updating a creative assets product group.")
 
 public class CatalogsCreativeAssetsProductGroupUpdateRequest  {
@@ -46,15 +46,19 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 }
 
   @ApiModelProperty(value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
   @ApiModelProperty(value = "")
+
   private CatalogsCreativeAssetsProductGroupFilters filters;
  /**
    * Get catalogType

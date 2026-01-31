@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * ImageMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ImageMetadata {
 
   private @Nullable String itemType;
@@ -36,7 +36,7 @@ public class ImageMetadata {
 
   private @Nullable ImageMetadataImages images;
 
-  public ImageMetadata itemType(String itemType) {
+  public ImageMetadata itemType(@Nullable String itemType) {
     this.itemType = itemType;
     return this;
   }
@@ -48,11 +48,11 @@ public class ImageMetadata {
   
   @Schema(name = "item_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_type")
-  public String getItemType() {
+  public @Nullable String getItemType() {
     return itemType;
   }
 
-  public void setItemType(String itemType) {
+  public void setItemType(@Nullable String itemType) {
     this.itemType = itemType;
   }
 
@@ -116,7 +116,7 @@ public class ImageMetadata {
     this.link = link;
   }
 
-  public ImageMetadata images(ImageMetadataImages images) {
+  public ImageMetadata images(@Nullable ImageMetadataImages images) {
     this.images = images;
     return this;
   }
@@ -128,11 +128,11 @@ public class ImageMetadata {
   @Valid 
   @Schema(name = "images", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("images")
-  public ImageMetadataImages getImages() {
+  public @Nullable ImageMetadataImages getImages() {
     return images;
   }
 
-  public void setImages(ImageMetadataImages images) {
+  public void setImages(@Nullable ImageMetadataImages images) {
     this.images = images;
   }
 

@@ -198,8 +198,12 @@ export class BusinessAccessAssetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read", "biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/asset_groups`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/asset_groups`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -248,8 +252,12 @@ export class BusinessAccessAssetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read", "biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/asset_groups`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/asset_groups`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -298,8 +306,12 @@ export class BusinessAccessAssetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read", "biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/asset_groups`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/asset_groups`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -358,8 +370,13 @@ export class BusinessAccessAssetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/assets/{asset_id}/members`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+        urlPath = urlPath.replace(`{${"asset_id"}}`, encodeURIComponent(String(requestParameters['assetId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/assets/{asset_id}/members`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))).replace(`{${"asset_id"}}`, encodeURIComponent(String(requestParameters['assetId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -417,8 +434,13 @@ export class BusinessAccessAssetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/assets/{asset_id}/partners`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+        urlPath = urlPath.replace(`{${"asset_id"}}`, encodeURIComponent(String(requestParameters['assetId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/assets/{asset_id}/partners`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))).replace(`{${"asset_id"}}`, encodeURIComponent(String(requestParameters['assetId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -485,8 +507,12 @@ export class BusinessAccessAssetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/assets`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/assets`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -548,8 +574,13 @@ export class BusinessAccessAssetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/members/{member_id}/assets`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+        urlPath = urlPath.replace(`{${"member_id"}}`, encodeURIComponent(String(requestParameters['memberId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/members/{member_id}/assets`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))).replace(`{${"member_id"}}`, encodeURIComponent(String(requestParameters['memberId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -597,8 +628,12 @@ export class BusinessAccessAssetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/members/assets/access`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/members/assets/access`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -647,8 +682,12 @@ export class BusinessAccessAssetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/members/assets/access`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/members/assets/access`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -715,8 +754,13 @@ export class BusinessAccessAssetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/partners/{partner_id}/assets`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+        urlPath = urlPath.replace(`{${"partner_id"}}`, encodeURIComponent(String(requestParameters['partnerId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/partners/{partner_id}/assets`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))).replace(`{${"partner_id"}}`, encodeURIComponent(String(requestParameters['partnerId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -764,8 +808,12 @@ export class BusinessAccessAssetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/partners/assets`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/partners/assets`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -814,8 +862,12 @@ export class BusinessAccessAssetsApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/partners/assets`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/partners/assets`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,

@@ -86,14 +86,16 @@ class AudienceCreateRequest
     protected ?string $description = null;
 
     /**
-     * @var AudienceCreateRequest1AudienceType|null
+     * &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+     *
+     * @var AudienceType|null
      * @SerializedName("audience_type")
-     * @Type("OpenAPI\Server\Model\AudienceCreateRequest1AudienceType")
+    * @Accessor(getter="getSerializedAudienceType", setter="setDeserializedAudienceType")
+    * @Type("string")
     */
     #[Assert\NotNull]
     #[Assert\Valid]
-    #[Assert\Type("OpenAPI\Server\Model\AudienceCreateRequest1AudienceType")]
-    protected ?AudienceCreateRequest1AudienceType $audienceType = null;
+    protected ?AudienceType $audienceType = null;
 
     /**
      * Constructor
@@ -221,9 +223,9 @@ class AudienceCreateRequest
     /**
      * Gets audienceType.
      *
-     * @return AudienceCreateRequest1AudienceType|null
+     * @return AudienceType|null
      */
-    public function getAudienceType(): ?AudienceCreateRequest1AudienceType
+    public function getAudienceType(): ?AudienceType
     {
         return $this->audienceType;
     }
@@ -231,17 +233,44 @@ class AudienceCreateRequest
     /**
     * Sets audienceType.
     *
-    * @param AudienceCreateRequest1AudienceType|null $audienceType
+    * @param AudienceType|null $audienceType  <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
     *
     * @return $this
     */
-    public function setAudienceType(?AudienceCreateRequest1AudienceType $audienceType): self
+    public function setAudienceType(?AudienceType $audienceType): self
     {
         $this->audienceType = $audienceType;
 
         return $this;
     }
 
+    /**
+    * Gets audienceType for serialization.
+    *
+    * @return string|null
+    */
+    public function getSerializedAudienceType(): string|null
+    {
+        return !is_null($this->audienceType?->value) ? (string) $this->audienceType->value : null;
+    }
+
+    /**
+    * Sets audienceType.
+    *
+    * @param string|AudienceType|null $audienceType  <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+    *
+    * @return $this
+    */
+    public function setDeserializedAudienceType(string|AudienceType|null $audienceType): self
+    {
+        if (is_string($audienceType)) {
+            $audienceType = AudienceType::tryFrom($audienceType);
+        }
+
+        $this->audienceType = $audienceType;
+
+        return $this;
+    }
 
 
 }

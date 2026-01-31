@@ -30,12 +30,10 @@ import javax.annotation.Generated;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "report_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsReportDistributionIssueFilter.class, name = "DISTRIBUTION_ISSUES"),
-  @JsonSubTypes.Type(value = CatalogsReportFeedIngestionFilter.class, name = "FEED_INGESTION_ISSUES"),
-  @JsonSubTypes.Type(value = CatalogsReportDistributionIssueFilter.class, name = "CatalogsReportDistributionIssueFilter"),
-  @JsonSubTypes.Type(value = CatalogsReportFeedIngestionFilter.class, name = "CatalogsReportFeedIngestionFilter")
+  @JsonSubTypes.Type(value = CatalogsReportFeedIngestionFilter.class, name = "FEED_INGESTION_ISSUES")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface CatalogsHotelReportParametersReport {
     public String getReportType();
 }

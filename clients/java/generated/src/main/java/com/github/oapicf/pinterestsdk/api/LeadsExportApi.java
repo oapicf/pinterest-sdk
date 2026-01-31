@@ -91,7 +91,7 @@ public class LeadsExportApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadsExportCreateCall(String adAccountId, LeadsExportCreateRequest leadsExportCreateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call leadsExportCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LeadsExportCreateRequest leadsExportCreateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -138,7 +138,7 @@ public class LeadsExportApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call leadsExportCreateValidateBeforeCall(String adAccountId, LeadsExportCreateRequest leadsExportCreateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call leadsExportCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LeadsExportCreateRequest leadsExportCreateRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling leadsExportCreate(Async)");
@@ -169,7 +169,7 @@ public class LeadsExportApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public LeadsExportCreateResponse leadsExportCreate(String adAccountId, LeadsExportCreateRequest leadsExportCreateRequest) throws ApiException {
+    public LeadsExportCreateResponse leadsExportCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LeadsExportCreateRequest leadsExportCreateRequest) throws ApiException {
         ApiResponse<LeadsExportCreateResponse> localVarResp = leadsExportCreateWithHttpInfo(adAccountId, leadsExportCreateRequest);
         return localVarResp.getData();
     }
@@ -190,7 +190,7 @@ public class LeadsExportApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LeadsExportCreateResponse> leadsExportCreateWithHttpInfo(String adAccountId, LeadsExportCreateRequest leadsExportCreateRequest) throws ApiException {
+    public ApiResponse<LeadsExportCreateResponse> leadsExportCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LeadsExportCreateRequest leadsExportCreateRequest) throws ApiException {
         okhttp3.Call localVarCall = leadsExportCreateValidateBeforeCall(adAccountId, leadsExportCreateRequest, null);
         Type localVarReturnType = new TypeToken<LeadsExportCreateResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -213,7 +213,7 @@ public class LeadsExportApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadsExportCreateAsync(String adAccountId, LeadsExportCreateRequest leadsExportCreateRequest, final ApiCallback<LeadsExportCreateResponse> _callback) throws ApiException {
+    public okhttp3.Call leadsExportCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull LeadsExportCreateRequest leadsExportCreateRequest, final ApiCallback<LeadsExportCreateResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = leadsExportCreateValidateBeforeCall(adAccountId, leadsExportCreateRequest, _callback);
         Type localVarReturnType = new TypeToken<LeadsExportCreateResponse>(){}.getType();
@@ -237,7 +237,7 @@ public class LeadsExportApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadsExportGetCall(String adAccountId, String leadsExportId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call leadsExportGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadsExportId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -284,7 +284,7 @@ public class LeadsExportApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call leadsExportGetValidateBeforeCall(String adAccountId, String leadsExportId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call leadsExportGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadsExportId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling leadsExportGet(Async)");
@@ -316,7 +316,7 @@ public class LeadsExportApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public LeadsExportResponseData leadsExportGet(String adAccountId, String leadsExportId) throws ApiException {
+    public LeadsExportResponseData leadsExportGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadsExportId) throws ApiException {
         ApiResponse<LeadsExportResponseData> localVarResp = leadsExportGetWithHttpInfo(adAccountId, leadsExportId);
         return localVarResp.getData();
     }
@@ -338,7 +338,7 @@ public class LeadsExportApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LeadsExportResponseData> leadsExportGetWithHttpInfo(String adAccountId, String leadsExportId) throws ApiException {
+    public ApiResponse<LeadsExportResponseData> leadsExportGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadsExportId) throws ApiException {
         okhttp3.Call localVarCall = leadsExportGetValidateBeforeCall(adAccountId, leadsExportId, null);
         Type localVarReturnType = new TypeToken<LeadsExportResponseData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -362,7 +362,7 @@ public class LeadsExportApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leadsExportGetAsync(String adAccountId, String leadsExportId, final ApiCallback<LeadsExportResponseData> _callback) throws ApiException {
+    public okhttp3.Call leadsExportGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String leadsExportId, final ApiCallback<LeadsExportResponseData> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = leadsExportGetValidateBeforeCall(adAccountId, leadsExportId, _callback);
         Type localVarReturnType = new TypeToken<LeadsExportResponseData>(){}.getType();

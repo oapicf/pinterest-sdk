@@ -15,8 +15,8 @@ use serde::{Deserialize, Serialize};
 pub struct UpdateInvitesResultsResponseArrayItemsInner {
     #[serde(rename = "exception", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub exception: Option<Option<Box<models::InviteExceptionResponse>>>,
-    #[serde(rename = "invite", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub invite: Option<Option<Box<models::InviteBusinessRoleBinding>>>,
+    #[serde(rename = "invite", skip_serializing_if = "Option::is_none")]
+    pub invite: Option<Box<models::InviteBusinessRoleBinding>>,
 }
 
 impl UpdateInvitesResultsResponseArrayItemsInner {

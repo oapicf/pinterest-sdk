@@ -57,7 +57,7 @@ export function CatalogsVerticalBatchRequestFromJSONTyped(json: any, ignoreDiscr
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailBatchRequestFromJSONTyped(json, true), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsVerticalBatchRequest exists with 'catalogType=${json['catalogType']}'`);
+            return json;
     }
 }
 
@@ -77,8 +77,7 @@ export function CatalogsVerticalBatchRequestToJSONTyped(value?: CatalogsVertical
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailBatchRequestToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsVerticalBatchRequest exists with 'catalogType=${value['catalogType']}'`);
+            return value;
     }
-
 }
 

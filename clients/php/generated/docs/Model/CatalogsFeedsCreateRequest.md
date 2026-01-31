@@ -13,6 +13,6 @@ Name | Type | Description | Notes
 **preferred_processing_schedule** | [**\OpenAPI\Client\Model\CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  | [optional]
 **default_country** | [**\OpenAPI\Client\Model\Country**](Country.md) |  | [optional]
 **default_availability** | [**\OpenAPI\Client\Model\ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional]
-**status** | [**\OpenAPIClientModelCatalogsStatusMixed**](\OpenAPIClientModelCatalogsStatusMixed.md) |  | [optional]
+**status** | [**\OpenAPI\Client\Model\CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to self::\OpenAPI\Client\Model\CatalogsStatus_ACTIVE]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -385,19 +385,31 @@ UserAccountApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling UserAccountApi$BoardsUserFollowsList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling UserAccountApi$BoardsUserFollowsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling UserAccountApi$BoardsUserFollowsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling UserAccountApi$BoardsUserFollowsList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`explicit_following`) && is.null(`explicit_following`)) {
+        stop("Invalid value for `explicit_following` when calling UserAccountApi$BoardsUserFollowsList, `explicit_following` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling UserAccountApi$BoardsUserFollowsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling UserAccountApi$BoardsUserFollowsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling UserAccountApi$BoardsUserFollowsList, must conform to the pattern ^\\d+$.")
       }
 
@@ -514,10 +526,16 @@ UserAccountApi <- R6::R6Class(
         stop("Missing required parameter `follow_user_request`.")
       }
 
-      if (!str_detect(`username`, "(?!^\\d+$)^.+$")) {
+      if (!missing(`username`) && is.null(`username`)) {
+        stop("Invalid value for `username` when calling UserAccountApi$FollowUserUpdate, `username` is not nullable")
+      }
+      if (!is.null(`username`) && !stringr::str_detect(`username`, "(?!^\\d+$)^.+$")) {
         stop("Invalid value for `username` when calling UserAccountApi$FollowUserUpdate, must conform to the pattern (?!^\\d+$)^.+$.")
       }
 
+      if (!missing(`follow_user_request`) && is.null(`follow_user_request`)) {
+        stop("Invalid value for `follow_user_request` when calling UserAccountApi$FollowUserUpdate, `follow_user_request` is not nullable")
+      }
 
       if (!is.null(`follow_user_request`)) {
         local_var_body <- `follow_user_request`$toJSONString()
@@ -623,11 +641,17 @@ UserAccountApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling UserAccountApi$FollowersList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling UserAccountApi$FollowersList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling UserAccountApi$FollowersList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling UserAccountApi$FollowersList, must be bigger than or equal to 1.")
       }
 
@@ -825,6 +849,9 @@ UserAccountApi <- R6::R6Class(
         stop("Missing required parameter `website`.")
       }
 
+      if (!missing(`website`) && is.null(`website`)) {
+        stop("Invalid value for `website` when calling UserAccountApi$UnverifyWebsiteDelete, `website` is not nullable")
+      }
 
       query_params[["website"]] <- `website`
 
@@ -935,19 +962,49 @@ UserAccountApi <- R6::R6Class(
         stop("Missing required parameter `end_date`.")
       }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling UserAccountApi$UserAccountAnalytics, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling UserAccountApi$UserAccountAnalytics, `end_date` is not nullable")
+      }
 
+      if (!missing(`from_claimed_content`) && is.null(`from_claimed_content`)) {
+        stop("Invalid value for `from_claimed_content` when calling UserAccountApi$UserAccountAnalytics, `from_claimed_content` is not nullable")
+      }
 
+      if (!missing(`pin_format`) && is.null(`pin_format`)) {
+        stop("Invalid value for `pin_format` when calling UserAccountApi$UserAccountAnalytics, `pin_format` is not nullable")
+      }
 
+      if (!missing(`app_types`) && is.null(`app_types`)) {
+        stop("Invalid value for `app_types` when calling UserAccountApi$UserAccountAnalytics, `app_types` is not nullable")
+      }
 
+      if (!missing(`content_type`) && is.null(`content_type`)) {
+        stop("Invalid value for `content_type` when calling UserAccountApi$UserAccountAnalytics, `content_type` is not nullable")
+      }
 
+      if (!missing(`source`) && is.null(`source`)) {
+        stop("Invalid value for `source` when calling UserAccountApi$UserAccountAnalytics, `source` is not nullable")
+      }
 
+      if (!missing(`metric_types`) && is.null(`metric_types`)) {
+        stop("Invalid value for `metric_types` when calling UserAccountApi$UserAccountAnalytics, `metric_types` is not nullable")
+      }
 
+      if (!missing(`split_field`) && is.null(`split_field`)) {
+        stop("Invalid value for `split_field` when calling UserAccountApi$UserAccountAnalytics, `split_field` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling UserAccountApi$UserAccountAnalytics, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling UserAccountApi$UserAccountAnalytics, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling UserAccountApi$UserAccountAnalytics, must conform to the pattern ^\\d+$.")
       }
 
@@ -1122,27 +1179,63 @@ UserAccountApi <- R6::R6Class(
         stop("Missing required parameter `sort_by`.")
       }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling UserAccountApi$UserAccountAnalyticsTopPins, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling UserAccountApi$UserAccountAnalyticsTopPins, `end_date` is not nullable")
+      }
 
+      if (!missing(`sort_by`) && is.null(`sort_by`)) {
+        stop("Invalid value for `sort_by` when calling UserAccountApi$UserAccountAnalyticsTopPins, `sort_by` is not nullable")
+      }
 
+      if (!missing(`from_claimed_content`) && is.null(`from_claimed_content`)) {
+        stop("Invalid value for `from_claimed_content` when calling UserAccountApi$UserAccountAnalyticsTopPins, `from_claimed_content` is not nullable")
+      }
 
+      if (!missing(`pin_format`) && is.null(`pin_format`)) {
+        stop("Invalid value for `pin_format` when calling UserAccountApi$UserAccountAnalyticsTopPins, `pin_format` is not nullable")
+      }
 
+      if (!missing(`app_types`) && is.null(`app_types`)) {
+        stop("Invalid value for `app_types` when calling UserAccountApi$UserAccountAnalyticsTopPins, `app_types` is not nullable")
+      }
 
+      if (!missing(`content_type`) && is.null(`content_type`)) {
+        stop("Invalid value for `content_type` when calling UserAccountApi$UserAccountAnalyticsTopPins, `content_type` is not nullable")
+      }
 
+      if (!missing(`source`) && is.null(`source`)) {
+        stop("Invalid value for `source` when calling UserAccountApi$UserAccountAnalyticsTopPins, `source` is not nullable")
+      }
 
+      if (!missing(`metric_types`) && is.null(`metric_types`)) {
+        stop("Invalid value for `metric_types` when calling UserAccountApi$UserAccountAnalyticsTopPins, `metric_types` is not nullable")
+      }
 
-      if (`num_of_pins` > 50) {
+      if (!missing(`num_of_pins`) && is.null(`num_of_pins`)) {
+        stop("Invalid value for `num_of_pins` when calling UserAccountApi$UserAccountAnalyticsTopPins, `num_of_pins` is not nullable")
+      }
+      if (!is.null(`num_of_pins`) && `num_of_pins` >  50) {
         stop("Invalid value for `num_of_pins` when calling UserAccountApi$UserAccountAnalyticsTopPins, must be smaller than or equal to 50.")
       }
-      if (`num_of_pins` < 1) {
+      if (!is.null(`num_of_pins`) && `num_of_pins` <  1) {
         stop("Invalid value for `num_of_pins` when calling UserAccountApi$UserAccountAnalyticsTopPins, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`created_in_last_n_days`) && is.null(`created_in_last_n_days`)) {
+        stop("Invalid value for `created_in_last_n_days` when calling UserAccountApi$UserAccountAnalyticsTopPins, `created_in_last_n_days` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling UserAccountApi$UserAccountAnalyticsTopPins, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling UserAccountApi$UserAccountAnalyticsTopPins, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling UserAccountApi$UserAccountAnalyticsTopPins, must conform to the pattern ^\\d+$.")
       }
 
@@ -1327,27 +1420,63 @@ UserAccountApi <- R6::R6Class(
         stop("Missing required parameter `sort_by`.")
       }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, `end_date` is not nullable")
+      }
 
+      if (!missing(`sort_by`) && is.null(`sort_by`)) {
+        stop("Invalid value for `sort_by` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, `sort_by` is not nullable")
+      }
 
+      if (!missing(`from_claimed_content`) && is.null(`from_claimed_content`)) {
+        stop("Invalid value for `from_claimed_content` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, `from_claimed_content` is not nullable")
+      }
 
+      if (!missing(`pin_format`) && is.null(`pin_format`)) {
+        stop("Invalid value for `pin_format` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, `pin_format` is not nullable")
+      }
 
+      if (!missing(`app_types`) && is.null(`app_types`)) {
+        stop("Invalid value for `app_types` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, `app_types` is not nullable")
+      }
 
+      if (!missing(`content_type`) && is.null(`content_type`)) {
+        stop("Invalid value for `content_type` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, `content_type` is not nullable")
+      }
 
+      if (!missing(`source`) && is.null(`source`)) {
+        stop("Invalid value for `source` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, `source` is not nullable")
+      }
 
+      if (!missing(`metric_types`) && is.null(`metric_types`)) {
+        stop("Invalid value for `metric_types` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, `metric_types` is not nullable")
+      }
 
-      if (`num_of_pins` > 50) {
+      if (!missing(`num_of_pins`) && is.null(`num_of_pins`)) {
+        stop("Invalid value for `num_of_pins` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, `num_of_pins` is not nullable")
+      }
+      if (!is.null(`num_of_pins`) && `num_of_pins` >  50) {
         stop("Invalid value for `num_of_pins` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, must be smaller than or equal to 50.")
       }
-      if (`num_of_pins` < 1) {
+      if (!is.null(`num_of_pins`) && `num_of_pins` <  1) {
         stop("Invalid value for `num_of_pins` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`created_in_last_n_days`) && is.null(`created_in_last_n_days`)) {
+        stop("Invalid value for `created_in_last_n_days` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, `created_in_last_n_days` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling UserAccountApi$UserAccountAnalyticsTopVideoPins, must conform to the pattern ^\\d+$.")
       }
 
@@ -1506,15 +1635,24 @@ UserAccountApi <- R6::R6Class(
         stop("Missing required parameter `username`.")
       }
 
-      if (!str_detect(`username`, "(?!^\\d+$)^.+$")) {
+      if (!missing(`username`) && is.null(`username`)) {
+        stop("Invalid value for `username` when calling UserAccountApi$UserAccountFollowedInterests, `username` is not nullable")
+      }
+      if (!is.null(`username`) && !stringr::str_detect(`username`, "(?!^\\d+$)^.+$")) {
         stop("Invalid value for `username` when calling UserAccountApi$UserAccountFollowedInterests, must conform to the pattern (?!^\\d+$)^.+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling UserAccountApi$UserAccountFollowedInterests, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling UserAccountApi$UserAccountFollowedInterests, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling UserAccountApi$UserAccountFollowedInterests, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling UserAccountApi$UserAccountFollowedInterests, must be bigger than or equal to 1.")
       }
 
@@ -1621,10 +1759,13 @@ UserAccountApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling UserAccountApi$UserAccountGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling UserAccountApi$UserAccountGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling UserAccountApi$UserAccountGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -1733,20 +1874,35 @@ UserAccountApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling UserAccountApi$UserFollowingGet, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling UserAccountApi$UserFollowingGet, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling UserAccountApi$UserFollowingGet, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling UserAccountApi$UserFollowingGet, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`feed_type`) && is.null(`feed_type`)) {
+        stop("Invalid value for `feed_type` when calling UserAccountApi$UserFollowingGet, `feed_type` is not nullable")
+      }
 
+      if (!missing(`explicit_following`) && is.null(`explicit_following`)) {
+        stop("Invalid value for `explicit_following` when calling UserAccountApi$UserFollowingGet, `explicit_following` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling UserAccountApi$UserFollowingGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling UserAccountApi$UserFollowingGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling UserAccountApi$UserFollowingGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -1857,11 +2013,17 @@ UserAccountApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling UserAccountApi$UserWebsitesGet, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling UserAccountApi$UserWebsitesGet, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling UserAccountApi$UserWebsitesGet, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling UserAccountApi$UserWebsitesGet, must be bigger than or equal to 1.")
       }
 
@@ -1967,11 +2129,17 @@ UserAccountApi <- R6::R6Class(
         stop("Missing required parameter `user_website_verify_request`.")
       }
 
+      if (!missing(`user_website_verify_request`) && is.null(`user_website_verify_request`)) {
+        stop("Invalid value for `user_website_verify_request` when calling UserAccountApi$VerifyWebsiteUpdate, `user_website_verify_request` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling UserAccountApi$VerifyWebsiteUpdate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling UserAccountApi$VerifyWebsiteUpdate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling UserAccountApi$VerifyWebsiteUpdate, must conform to the pattern ^\\d+$.")
       }
 
@@ -2075,10 +2243,13 @@ UserAccountApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling UserAccountApi$WebsiteVerificationGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling UserAccountApi$WebsiteVerificationGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling UserAccountApi$WebsiteVerificationGet, must conform to the pattern ^\\d+$.")
       }
 

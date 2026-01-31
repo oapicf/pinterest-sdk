@@ -23,12 +23,21 @@ import .*
  * @param inviteData 
  * @param isReceivedInvite Indicates whether the invite/request was received.
  * @param user Metadata for the member/partner that was sent the invite/request.
+ * @param assetsSummary 
+ * @param businessRoles The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+ * @param createdByBusiness Metadata for the business that created the invite/request.
+ * @param createdByUser Metadata for the user that created the invite/request.
+ * @param createdTime The time the invite/request was created. Returned in milliseconds.
  */
 object InviteResponses : BaseTable<InviteResponse>("InviteResponse") {
     val id = text("id") /* null */ /* Unique identifier of the invite/request. */
     val inviteData = long("invite_data") /* null */
     val isReceivedInvite = boolean("is_received_invite") /* null */ /* Indicates whether the invite/request was received. */
     val user = long("user") /* null */ /* Metadata for the member/partner that was sent the invite/request. */
+    val assetsSummary = long("assets_summary") /* null */
+    val createdByBusiness = blob("created_by_business") /* null */ /* Metadata for the business that created the invite/request. */
+    val createdByUser = blob("created_by_user") /* null */ /* Metadata for the user that created the invite/request. */
+    val createdTime = int("created_time") /* null */ /* The time the invite/request was created. Returned in milliseconds. */
 
     /**
      * Create an entity of type InviteResponse from the model
@@ -37,7 +46,12 @@ object InviteResponses : BaseTable<InviteResponse>("InviteResponse") {
         id = row[id]  /* kotlin.String? */ /* Unique identifier of the invite/request. */,
         inviteData = BaseInviteDataResponseInviteDatas.createEntity(row, withReferences) /* BaseInviteDataResponseInviteData? */,
         isReceivedInvite = row[isReceivedInvite]  /* kotlin.Boolean? */ /* Indicates whether the invite/request was received. */,
-        user = BusinessAccessUserSummarys.createEntity(row, withReferences) /* BusinessAccessUserSummary? */ /* Metadata for the member/partner that was sent the invite/request. */
+        user = BusinessAccessUserSummarys.createEntity(row, withReferences) /* BusinessAccessUserSummary? */ /* Metadata for the member/partner that was sent the invite/request. */,
+        assetsSummary = InviteAssetsSummarys.createEntity(row, withReferences) /* InviteAssetsSummary? */,
+        businessRoles = emptyList() /* kotlin.Array<kotlin.String>? */ /* The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */,
+        createdByBusiness = row[createdByBusiness]  /* kotlin.Any? */ /* Metadata for the business that created the invite/request. */,
+        createdByUser = row[createdByUser]  /* kotlin.Any? */ /* Metadata for the user that created the invite/request. */,
+        createdTime = row[createdTime]  /* kotlin.Int? */ /* The time the invite/request was created. Returned in milliseconds. */
     )
 
     /**
@@ -59,9 +73,29 @@ object InviteResponses : BaseTable<InviteResponse>("InviteResponse") {
             set(InviteResponses.inviteData, entity.inviteData)
             set(InviteResponses.isReceivedInvite, entity.isReceivedInvite)
             set(InviteResponses.user, entity.user)
+            set(InviteResponses.assetsSummary, entity.assetsSummary)
+            set(InviteResponses.createdByBusiness, entity.createdByBusiness)
+            set(InviteResponses.createdByUser, entity.createdByUser)
+            set(InviteResponses.createdTime, entity.createdTime)
         }
     }
 
 }
 
+
+object InviteResponseBusinessRoles : BaseTable<Pair<kotlin.Long, kotlin.String>>("InviteResponseBusinessRoles") {
+    val inviteResponse = long("inviteResponse")
+    val businessRoles = text("businessRoles")
+
+    override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean): Pair<kotlin.Long, kotlin.String> =
+        Pair(row[inviteResponse] ?: 0, row[businessRoles] ?: "")
+
+    fun AssignmentsBuilder.assignFrom(entity: Pair<kotlin.Long, kotlin.String>) {
+        this.apply {
+            set(InviteResponseBusinessRoles.inviteResponse, entity.first)
+            set(InviteResponseBusinessRoles.businessRoles, entity.second)
+        }
+    }
+
+}
 

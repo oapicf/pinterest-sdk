@@ -1,7 +1,6 @@
 package org.openapitools.model;
 
 import org.openapitools.model.BaseInviteDataResponseInviteData;
-import org.openapitools.model.BusinessAccessUserSummary;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -51,6 +50,22 @@ public class InviteBusinessRoleBindingTest {
     @Test
     public void userTest() {
         // TODO: test user
+    }
+
+    /**
+     * Test the property 'createdByBusinessId'
+     */
+    @Test
+    public void createdByBusinessIdTest() {
+        // TODO: test createdByBusinessId
+    }
+
+    /**
+     * Test the property 'createdByUserId'
+     */
+    @Test
+    public void createdByUserIdTest() {
+        // TODO: test createdByUserId
     }
 
 }

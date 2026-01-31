@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.BoardOwner;
@@ -9,75 +8,93 @@ import org.openapitools.model.PinMediaSource;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Pin
- **/
+ * Pin
+ */
 @ApiModel(description="Pin")
 
 public class PinCreate  {
   
   @ApiModelProperty(example = "813744226420795884", value = "")
+
   private String id;
 
   @ApiModelProperty(example = "2020-01-01T20:10:40Z", value = "")
+
   private Date createdAt;
 
   @ApiModelProperty(example = "https://www.pinterest.com/", value = "")
+
   private String link;
 
   @ApiModelProperty(value = "")
+
   private String title;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
-  @ApiModelProperty(example = "#6E7874", value = "Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".")
  /**
-   * Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
-  **/
+  * Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".
+  */
+  @ApiModelProperty(example = "#6E7874", value = "Dominant pin color. Hex number, e.g. \\\"#6E7874\\\".")
+
   private String dominantColor;
 
   @ApiModelProperty(value = "")
+
   private String altText;
 
-  @ApiModelProperty(value = "The board to which this Pin belongs.")
  /**
-   * The board to which this Pin belongs.
-  **/
+  * The board to which this Pin belongs.
+  */
+  @ApiModelProperty(value = "The board to which this Pin belongs.")
+
   private String boardId;
 
-  @ApiModelProperty(value = "The board section to which this Pin belongs.")
  /**
-   * The board section to which this Pin belongs.
-  **/
+  * The board section to which this Pin belongs.
+  */
+  @ApiModelProperty(value = "The board section to which this Pin belongs.")
+
   private String boardSectionId;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BoardOwner boardOwner;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private PinMedia media;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private PinMediaSource mediaSource;
 
-  @ApiModelProperty(value = "The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.")
  /**
-   * The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
-  **/
+  * The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.
+  */
+  @ApiModelProperty(value = "The source pin id if this pin was saved from another pin. <a href=\"https://help.pinterest.com/article/save-pins-on-pinterest\">Learn more</a>.")
+
   private String parentPinId;
 
-  @ApiModelProperty(value = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.")
  /**
-   * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
-  **/
+  * Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+  */
+  @ApiModelProperty(value = "Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.")
+
   private String note;
  /**
    * Get id

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_attributes
 import model_catalogs_type
@@ -17,6 +19,38 @@ import model_pin
 type CatalogsCreativeAssetsItemResponse* = object
   ## Object describing a hotel record
   catalogType*: CatalogsType
-  creativeAssetsId*: string ## The catalog creative assets id in the merchant namespace
-  pins*: seq[Pin] ## The pins mapped to the item
-  attributes*: CatalogsCreativeAssetsAttributes
+  creativeAssetsId*: Option[string] ## The catalog creative assets id in the merchant namespace
+  pins*: Option[seq[Pin]] ## The pins mapped to the item
+  attributes*: Option[CatalogsCreativeAssetsAttributes]
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsItemResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsItemResponse]): CatalogsCreativeAssetsItemResponse =
+  result = CatalogsCreativeAssetsItemResponse()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogsType)
+    if node.hasKey("creative_assets_id") and node["creative_assets_id"].kind != JNull:
+      result.creativeAssetsId = some(to(node["creative_assets_id"], typeof(result.creativeAssetsId.get())))
+    if node.hasKey("pins") and node["pins"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["pins"]
+      if arrayNode.kind == JArray:
+        var arr: seq[Pin] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, Pin))
+        result.pins = some(arr)
+    if node.hasKey("attributes") and node["attributes"].kind != JNull:
+      result.attributes = some(to(node["attributes"], typeof(result.attributes.get())))
+
+# Custom JSON serialization for CatalogsCreativeAssetsItemResponse with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsItemResponse): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  if obj.creativeAssetsId.isSome():
+    result["creative_assets_id"] = %obj.creativeAssetsId.get()
+  if obj.pins.isSome():
+    result["pins"] = %obj.pins.get()
+  if obj.attributes.isSome():
+    result["attributes"] = %obj.attributes.get()
+

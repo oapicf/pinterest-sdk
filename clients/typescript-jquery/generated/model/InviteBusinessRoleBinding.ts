@@ -12,25 +12,7 @@
 
 import * as models from './models';
 
-/**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
- */
 export interface InviteBusinessRoleBinding {
-    /**
-     * Unique identifier for the business that created the invite/request.
-     */
-    created_by_business_id?: string;
-
-    /**
-     * Unique identifier for the user that created the invite/request.
-     */
-    created_by_user_id?: string;
-
-    /**
-     * Metadata for the user that updated the invite/request.
-     */
-    user?: models.BusinessAccessUserSummary;
-
     /**
      * Unique identifier of the invite/request.
      */
@@ -42,5 +24,20 @@ export interface InviteBusinessRoleBinding {
      * Indicates whether the invite/request was received.
      */
     is_received_invite?: boolean;
+
+    /**
+     * Metadata for the user that updated the invite/request.
+     */
+    user?: object;
+
+    /**
+     * Unique identifier for the business that created the invite/request.
+     */
+    created_by_business_id?: string;
+
+    /**
+     * Unique identifier for the user that created the invite/request.
+     */
+    created_by_user_id?: string;
 
 }

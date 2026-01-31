@@ -5,7 +5,7 @@ Protected Class LeadFormCreateRequest
 		#tag Note
 			Internal name of the lead form.
 		#tag EndNote
-		name As String
+		name As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -13,7 +13,7 @@ Protected Class LeadFormCreateRequest
 		#tag Note
 			A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
 		#tag EndNote
-		privacy_policy_link As String
+		privacy_policy_link As Xoson.O.OptionalString
 	#tag EndProperty
 
 
@@ -21,7 +21,7 @@ Protected Class LeadFormCreateRequest
 		#tag Note
 			Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href="https://policy.pinterest.com/en/lead-ad-terms">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href="https://business.pinterest.com/en/pinterest-advertising-services-agreement/">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
 		#tag EndNote
-		has_accepted_terms As Boolean
+		has_accepted_terms As Xoson.O.OptionalBoolean
 	#tag EndProperty
 
 
@@ -29,7 +29,7 @@ Protected Class LeadFormCreateRequest
 		#tag Note
 			A message for people who complete the form to let them know what happens next.
 		#tag EndNote
-		completion_message As String
+		completion_message As Xoson.O.OptionalString
 	#tag EndProperty
 
 

@@ -21,10 +21,10 @@ export interface PinMediaSourceImageURL {
     is_standard?: boolean;
 }
 export namespace PinMediaSourceImageURL {
-    export type SourceTypeEnum = 'image_url';
     export const SourceTypeEnum = {
-        ImageUrl: 'image_url' as SourceTypeEnum
-    };
+        ImageUrl: 'image_url'
+    } as const;
+    export type SourceTypeEnum = typeof SourceTypeEnum[keyof typeof SourceTypeEnum];
 }
 
 

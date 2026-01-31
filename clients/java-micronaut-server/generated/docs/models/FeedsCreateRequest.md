@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **preferredProcessingSchedule** | [`CatalogsFeedProcessingSchedule`](CatalogsFeedProcessingSchedule.md) |  |  [optional property]
 **defaultCountry** | `Country` |  |  [optional property]
 **defaultAvailability** | `ProductAvailabilityType` |  |  [optional property]
-**status** | [`CatalogsStatus`](CatalogsStatus.md) |  |  [optional property]
+**status** | `CatalogsStatus` |  |  [optional property]
 
 
 

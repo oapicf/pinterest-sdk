@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsRetailProductGroupProductCounts", description = "Product counts for a Retail CatalogsProductGroup")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductGroupProductCounts implements CatalogsProductGroupProductCountsVertical {
 
   /**
@@ -34,7 +34,7 @@ public class CatalogsRetailProductGroupProductCounts implements CatalogsProductG
   public enum CatalogTypeEnum {
     RETAIL("RETAIL");
 
-    private String value;
+    private final String value;
 
     CatalogTypeEnum(String value) {
       this.value = value;
@@ -118,7 +118,7 @@ public class CatalogsRetailProductGroupProductCounts implements CatalogsProductG
    * minimum: 0
    * @return inStock
    */
-  @NotNull @Valid @DecimalMin("0") 
+  @NotNull @Valid @DecimalMin(value = "0") 
   @Schema(name = "in_stock", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("in_stock")
   public BigDecimal getInStock() {
@@ -139,7 +139,7 @@ public class CatalogsRetailProductGroupProductCounts implements CatalogsProductG
    * minimum: 0
    * @return outOfStock
    */
-  @NotNull @Valid @DecimalMin("0") 
+  @NotNull @Valid @DecimalMin(value = "0") 
   @Schema(name = "out_of_stock", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("out_of_stock")
   public BigDecimal getOutOfStock() {
@@ -160,7 +160,7 @@ public class CatalogsRetailProductGroupProductCounts implements CatalogsProductG
    * minimum: 0
    * @return preorder
    */
-  @NotNull @Valid @DecimalMin("0") 
+  @NotNull @Valid @DecimalMin(value = "0") 
   @Schema(name = "preorder", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("preorder")
   public BigDecimal getPreorder() {
@@ -181,7 +181,7 @@ public class CatalogsRetailProductGroupProductCounts implements CatalogsProductG
    * minimum: 0
    * @return total
    */
-  @NotNull @Valid @DecimalMin("0") 
+  @NotNull @Valid @DecimalMin(value = "0") 
   @Schema(name = "total", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("total")
   public BigDecimal getTotal() {
@@ -192,7 +192,7 @@ public class CatalogsRetailProductGroupProductCounts implements CatalogsProductG
     this.total = total;
   }
 
-  public CatalogsRetailProductGroupProductCounts videos(BigDecimal videos) {
+  public CatalogsRetailProductGroupProductCounts videos(@Nullable BigDecimal videos) {
     this.videos = videos;
     return this;
   }
@@ -202,14 +202,14 @@ public class CatalogsRetailProductGroupProductCounts implements CatalogsProductG
    * minimum: 0
    * @return videos
    */
-  @Valid @DecimalMin("0") 
+  @Valid @DecimalMin(value = "0") 
   @Schema(name = "videos", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("videos")
-  public BigDecimal getVideos() {
+  public @Nullable BigDecimal getVideos() {
     return videos;
   }
 
-  public void setVideos(BigDecimal videos) {
+  public void setVideos(@Nullable BigDecimal videos) {
     this.videos = videos;
   }
 

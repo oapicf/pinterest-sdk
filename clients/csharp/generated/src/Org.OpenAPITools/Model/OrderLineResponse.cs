@@ -140,12 +140,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "errors":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                errors = new Option<List<OrderLineError>?>(JsonSerializer.Deserialize<List<OrderLineError>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            errors = new Option<List<OrderLineError>?>(JsonSerializer.Deserialize<List<OrderLineError>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "order_line":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                orderLine = new Option<List<OrderLine>?>(JsonSerializer.Deserialize<List<OrderLine>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            orderLine = new Option<List<OrderLine>?>(JsonSerializer.Deserialize<List<OrderLine>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -9,12 +9,45 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type LinkedBusiness* = object
   ## 
-  username*: string ## Username
-  imageSmallUrl*: string ## image_small_url
-  imageMediumUrl*: string ## image_medium_url
-  imageLargeUrl*: string ## image_large_url
-  imageXlargeUrl*: string ## image_xlarge_url
+  username*: Option[string] ## Username
+  imageSmallUrl*: Option[string] ## image_small_url
+  imageMediumUrl*: Option[string] ## image_medium_url
+  imageLargeUrl*: Option[string] ## image_large_url
+  imageXlargeUrl*: Option[string] ## image_xlarge_url
+
+
+# Custom JSON deserialization for LinkedBusiness with custom field names
+proc to*(node: JsonNode, T: typedesc[LinkedBusiness]): LinkedBusiness =
+  result = LinkedBusiness()
+  if node.kind == JObject:
+    if node.hasKey("username") and node["username"].kind != JNull:
+      result.username = some(to(node["username"], typeof(result.username.get())))
+    if node.hasKey("image_small_url") and node["image_small_url"].kind != JNull:
+      result.imageSmallUrl = some(to(node["image_small_url"], typeof(result.imageSmallUrl.get())))
+    if node.hasKey("image_medium_url") and node["image_medium_url"].kind != JNull:
+      result.imageMediumUrl = some(to(node["image_medium_url"], typeof(result.imageMediumUrl.get())))
+    if node.hasKey("image_large_url") and node["image_large_url"].kind != JNull:
+      result.imageLargeUrl = some(to(node["image_large_url"], typeof(result.imageLargeUrl.get())))
+    if node.hasKey("image_xlarge_url") and node["image_xlarge_url"].kind != JNull:
+      result.imageXlargeUrl = some(to(node["image_xlarge_url"], typeof(result.imageXlargeUrl.get())))
+
+# Custom JSON serialization for LinkedBusiness with custom field names
+proc `%`*(obj: LinkedBusiness): JsonNode =
+  result = newJObject()
+  if obj.username.isSome():
+    result["username"] = %obj.username.get()
+  if obj.imageSmallUrl.isSome():
+    result["image_small_url"] = %obj.imageSmallUrl.get()
+  if obj.imageMediumUrl.isSome():
+    result["image_medium_url"] = %obj.imageMediumUrl.get()
+  if obj.imageLargeUrl.isSome():
+    result["image_large_url"] = %obj.imageLargeUrl.get()
+  if obj.imageXlargeUrl.isSome():
+    result["image_xlarge_url"] = %obj.imageXlargeUrl.get()
+

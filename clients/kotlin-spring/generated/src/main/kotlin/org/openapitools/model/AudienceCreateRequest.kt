@@ -1,9 +1,11 @@
 package org.openapitools.model
 
 import java.util.Objects
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
-import org.openapitools.model.AudienceCreateRequest1AudienceType
+import com.fasterxml.jackson.annotation.JsonValue
 import org.openapitools.model.AudienceRule
+import org.openapitools.model.AudienceType
 import javax.validation.constraints.DecimalMax
 import javax.validation.constraints.DecimalMin
 import javax.validation.constraints.Email
@@ -19,7 +21,7 @@ import io.swagger.v3.oas.annotations.media.Schema
  * 
  * @param name Audience name.
  * @param rule 
- * @param audienceType 
+ * @param audienceType <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
  * @param adAccountId Ad account ID.
  * @param description Audience description.
  */
@@ -33,8 +35,8 @@ data class AudienceCreateRequest(
     @get:JsonProperty("rule", required = true) val rule: AudienceRule,
 
     @field:Valid
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("audience_type", required = true) val audienceType: AudienceCreateRequest1AudienceType,
+    @Schema(example = "null", required = true, description = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.")
+    @get:JsonProperty("audience_type", required = true) val audienceType: AudienceType,
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "549755885175", description = "Ad account ID.")
@@ -42,7 +44,7 @@ data class AudienceCreateRequest(
 
     @Schema(example = "string", description = "Audience description.")
     @get:JsonProperty("description") val description: kotlin.String? = null
-    ) {
+) {
 
 }
 

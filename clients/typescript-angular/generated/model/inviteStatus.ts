@@ -12,18 +12,12 @@
 /**
  * The current status of the invite.
  */
-export type InviteStatus = 'PENDING' | 'ACCEPTED' | 'DECLINED' | 'CANCELLED' | 'EXPIRED';
-
 export const InviteStatus = {
-
-    Pending: 'PENDING' as InviteStatus,
-
-    Accepted: 'ACCEPTED' as InviteStatus,
-
-    Declined: 'DECLINED' as InviteStatus,
-
-    Cancelled: 'CANCELLED' as InviteStatus,
-
-    Expired: 'EXPIRED' as InviteStatus
-};
+    Pending: 'PENDING',
+    Accepted: 'ACCEPTED',
+    Declined: 'DECLINED',
+    Cancelled: 'CANCELLED',
+    Expired: 'EXPIRED'
+} as const;
+export type InviteStatus = typeof InviteStatus[keyof typeof InviteStatus];
 

@@ -33,7 +33,7 @@ data class CatalogsCreateCreativeAssetsItem(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("attributes", required = true) val attributes: CatalogsCreativeAssetsAttributes
-    ) {
+) {
 
     /**
     * 
@@ -47,7 +47,8 @@ data class CatalogsCreateCreativeAssetsItem(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Operation {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsCreateCreativeAssetsItem'")
             }
         }
     }

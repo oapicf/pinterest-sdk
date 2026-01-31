@@ -3,8 +3,8 @@ package org.openapitools.model;
 import groovy.transform.Canonical
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.AudienceCreateRequest1AudienceType;
 import org.openapitools.model.AudienceRule;
+import org.openapitools.model.AudienceType;
 
 @Canonical
 class AudienceCreateRequest {
@@ -16,6 +16,6 @@ class AudienceCreateRequest {
     AudienceRule rule
     /* Audience description. */
     String description
-    
-    AudienceCreateRequest1AudienceType audienceType
+    /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
+    AudienceType audienceType
 }

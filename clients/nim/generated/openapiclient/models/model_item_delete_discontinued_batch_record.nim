@@ -9,8 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type ItemDeleteDiscontinuedBatchRecord* = object
   ## Object describing an item batch record to discontinue items
-  itemId*: string ## The catalog item id in the merchant namespace
+  itemId*: Option[string] ## The catalog item id in the merchant namespace
+
+
+# Custom JSON deserialization for ItemDeleteDiscontinuedBatchRecord with custom field names
+proc to*(node: JsonNode, T: typedesc[ItemDeleteDiscontinuedBatchRecord]): ItemDeleteDiscontinuedBatchRecord =
+  result = ItemDeleteDiscontinuedBatchRecord()
+  if node.kind == JObject:
+    if node.hasKey("item_id") and node["item_id"].kind != JNull:
+      result.itemId = some(to(node["item_id"], typeof(result.itemId.get())))
+
+# Custom JSON serialization for ItemDeleteDiscontinuedBatchRecord with custom field names
+proc `%`*(obj: ItemDeleteDiscontinuedBatchRecord): JsonNode =
+  result = newJObject()
+  if obj.itemId.isSome():
+    result["item_id"] = %obj.itemId.get()
+

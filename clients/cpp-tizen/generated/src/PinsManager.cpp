@@ -82,7 +82,7 @@ static bool multiPinsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool multiPinsAnalyticsHelper(char * accessToken,
-	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string adAccountId, 
+	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -121,8 +121,8 @@ static bool multiPinsAnalyticsHelper(char * accessToken,
 	}
 
 	for (std::list
-	<Pins_analytics_metric_types_parameter_inner>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "Pins_analytics_metric_types_parameter_inner");
+	<std::string>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
 		queryParams.insert(pair<string, string>("metricTypes", itemAt));
 	}
 	
@@ -187,7 +187,7 @@ static bool multiPinsAnalyticsHelper(char * accessToken,
 
 
 bool PinsManager::multiPinsAnalyticsAsync(char * accessToken,
-	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string adAccountId, 
+	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
@@ -197,7 +197,7 @@ bool PinsManager::multiPinsAnalyticsAsync(char * accessToken,
 }
 
 bool PinsManager::multiPinsAnalyticsSync(char * accessToken,
-	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string adAccountId, 
+	std::list<std::string> pinIds, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
@@ -240,7 +240,7 @@ static bool pinsAnalyticsProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool pinsAnalyticsHelper(char * accessToken,
-	std::string pinId, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
+	std::string pinId, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -273,8 +273,8 @@ static bool pinsAnalyticsHelper(char * accessToken,
 	}
 
 	for (std::list
-	<Pins_analytics_metric_types_parameter_inner>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "Pins_analytics_metric_types_parameter_inner");
+	<std::string>::iterator queryIter = metricTypes.begin(); queryIter != metricTypes.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
 		queryParams.insert(pair<string, string>("metricTypes", itemAt));
 	}
 	
@@ -352,7 +352,7 @@ static bool pinsAnalyticsHelper(char * accessToken,
 
 
 bool PinsManager::pinsAnalyticsAsync(char * accessToken,
-	std::string pinId, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
+	std::string pinId, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
@@ -362,7 +362,7 @@ bool PinsManager::pinsAnalyticsAsync(char * accessToken,
 }
 
 bool PinsManager::pinsAnalyticsSync(char * accessToken,
-	std::string pinId, Date startDate, Date endDate, std::list<Pins_analytics_metric_types_parameter_inner> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
+	std::string pinId, Date startDate, Date endDate, std::list<std::string> metricTypes, std::string appTypes, std::string splitField, std::string adAccountId, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {

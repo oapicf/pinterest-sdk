@@ -29,7 +29,8 @@ type AudienceCreateRequest struct {
 	Rule AudienceRule `json:"rule"`
 	// Audience description.
 	Description *string `json:"description,omitempty"`
-	AudienceType AudienceCreateRequest1AudienceType `json:"audience_type"`
+	// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+	AudienceType AudienceType `json:"audience_type"`
 }
 
 type _AudienceCreateRequest AudienceCreateRequest
@@ -38,7 +39,7 @@ type _AudienceCreateRequest AudienceCreateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAudienceCreateRequest(name string, rule AudienceRule, audienceType AudienceCreateRequest1AudienceType) *AudienceCreateRequest {
+func NewAudienceCreateRequest(name string, rule AudienceRule, audienceType AudienceType) *AudienceCreateRequest {
 	this := AudienceCreateRequest{}
 	this.Name = name
 	this.Rule = rule
@@ -167,9 +168,9 @@ func (o *AudienceCreateRequest) SetDescription(v string) {
 }
 
 // GetAudienceType returns the AudienceType field value
-func (o *AudienceCreateRequest) GetAudienceType() AudienceCreateRequest1AudienceType {
+func (o *AudienceCreateRequest) GetAudienceType() AudienceType {
 	if o == nil {
-		var ret AudienceCreateRequest1AudienceType
+		var ret AudienceType
 		return ret
 	}
 
@@ -178,7 +179,7 @@ func (o *AudienceCreateRequest) GetAudienceType() AudienceCreateRequest1Audience
 
 // GetAudienceTypeOk returns a tuple with the AudienceType field value
 // and a boolean to check if the value has been set.
-func (o *AudienceCreateRequest) GetAudienceTypeOk() (*AudienceCreateRequest1AudienceType, bool) {
+func (o *AudienceCreateRequest) GetAudienceTypeOk() (*AudienceType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -186,7 +187,7 @@ func (o *AudienceCreateRequest) GetAudienceTypeOk() (*AudienceCreateRequest1Audi
 }
 
 // SetAudienceType sets field value
-func (o *AudienceCreateRequest) SetAudienceType(v AudienceCreateRequest1AudienceType) {
+func (o *AudienceCreateRequest) SetAudienceType(v AudienceType) {
 	o.AudienceType = v
 }
 

@@ -25,7 +25,7 @@ CatalogsHotelBatchRequest::__init()
 {
 	//catalog_type = std::string();
 	//country = new Country();
-	//language = new CatalogsItemsRequest_language();
+	//language = std::string();
 	//new std::list()std::list> items;
 	//catalog_id = std::string();
 }
@@ -96,12 +96,9 @@ CatalogsHotelBatchRequest::fromJson(char* jsonStr)
 	if (node !=NULL) {
 	
 
-		if (isprimitive("CatalogsItemsRequest_language")) {
-			jsonToValue(&language, node, "CatalogsItemsRequest_language", "CatalogsItemsRequest_language");
+		if (isprimitive("std::string")) {
+			jsonToValue(&language, node, "std::string", "");
 		} else {
-			
-			CatalogsItemsRequest_language* obj = static_cast<CatalogsItemsRequest_language*> (&language);
-			obj->fromJson(json_to_string(node, false));
 			
 		}
 	}
@@ -175,16 +172,11 @@ CatalogsHotelBatchRequest::toJson()
 	}
 	const gchar *countryKey = "country";
 	json_object_set_member(pJsonObject, countryKey, node);
-	if (isprimitive("CatalogsItemsRequest_language")) {
-		CatalogsItemsRequest_language obj = getLanguage();
-		node = converttoJson(&obj, "CatalogsItemsRequest_language", "");
+	if (isprimitive("std::string")) {
+		std::string obj = getLanguage();
+		node = converttoJson(&obj, "std::string", "");
 	}
 	else {
-		
-		CatalogsItemsRequest_language obj = static_cast<CatalogsItemsRequest_language> (getLanguage());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
 		
 	}
 	const gchar *languageKey = "language";
@@ -255,14 +247,14 @@ CatalogsHotelBatchRequest::setCountry(Country  country)
 	this->country = country;
 }
 
-CatalogsItemsRequest_language
+std::string
 CatalogsHotelBatchRequest::getLanguage()
 {
 	return language;
 }
 
 void
-CatalogsHotelBatchRequest::setLanguage(CatalogsItemsRequest_language  language)
+CatalogsHotelBatchRequest::setLanguage(std::string  language)
 {
 	this->language = language;
 }

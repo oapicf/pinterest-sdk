@@ -122,7 +122,6 @@ app/models/audience_category.rb
 app/models/audience_common.rb
 app/models/audience_create_custom_request.rb
 app/models/audience_create_request.rb
-app/models/audience_create_request_1_audience_type.rb
 app/models/audience_data_party.rb
 app/models/audience_definition.rb
 app/models/audience_definition_response.rb
@@ -300,7 +299,6 @@ app/models/catalogs_items_delete_discontinued_batch_request.rb
 app/models/catalogs_items_filters.rb
 app/models/catalogs_items_post_filters.rb
 app/models/catalogs_items_request.rb
-app/models/catalogs_items_request_language.rb
 app/models/catalogs_items_update_batch_request.rb
 app/models/catalogs_items_upsert_batch_request.rb
 app/models/catalogs_list_200_response.rb
@@ -634,7 +632,6 @@ app/models/pin_media_with_videos.rb
 app/models/pin_promotion_summary_status.rb
 app/models/pin_update.rb
 app/models/pin_update_carousel_slots_inner.rb
-app/models/pins_analytics_metric_types_parameter_inner.rb
 app/models/pins_list_200_response.rb
 app/models/pins_save_request.rb
 app/models/pinterest_tag_event_data.rb

@@ -133,7 +133,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AdsAnalyticsFilterColumn adsAnalyticsFilterColumn, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(adsAnalyticsFilterColumn.ToString());
+            writer.WriteStringValue(AdsAnalyticsFilterColumnValueConverter.ToJsonValue(adsAnalyticsFilterColumn).ToString());
         }
     }
 
@@ -164,14 +164,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the AdsAnalyticsFilterColumn to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="adsAnalyticsFilterColumn"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AdsAnalyticsFilterColumn? adsAnalyticsFilterColumn, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(adsAnalyticsFilterColumn?.ToString() ?? "null");
+            writer.WriteStringValue(adsAnalyticsFilterColumn.HasValue ? AdsAnalyticsFilterColumnValueConverter.ToJsonValue(adsAnalyticsFilterColumn.Value).ToString() : "null");
         }
     }
 }

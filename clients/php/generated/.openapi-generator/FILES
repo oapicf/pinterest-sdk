@@ -117,7 +117,6 @@ docs/Model/AudienceCategory.md
 docs/Model/AudienceCommon.md
 docs/Model/AudienceCreateCustomRequest.md
 docs/Model/AudienceCreateRequest.md
-docs/Model/AudienceCreateRequest1AudienceType.md
 docs/Model/AudienceDataParty.md
 docs/Model/AudienceDefinition.md
 docs/Model/AudienceDefinitionResponse.md
@@ -295,7 +294,6 @@ docs/Model/CatalogsItemsDeleteDiscontinuedBatchRequest.md
 docs/Model/CatalogsItemsFilters.md
 docs/Model/CatalogsItemsPostFilters.md
 docs/Model/CatalogsItemsRequest.md
-docs/Model/CatalogsItemsRequestLanguage.md
 docs/Model/CatalogsItemsUpdateBatchRequest.md
 docs/Model/CatalogsItemsUpsertBatchRequest.md
 docs/Model/CatalogsList200Response.md
@@ -629,7 +627,6 @@ docs/Model/PinMediaWithVideos.md
 docs/Model/PinPromotionSummaryStatus.md
 docs/Model/PinUpdate.md
 docs/Model/PinUpdateCarouselSlotsInner.md
-docs/Model/PinsAnalyticsMetricTypesParameterInner.md
 docs/Model/PinsList200Response.md
 docs/Model/PinsSaveRequest.md
 docs/Model/PinterestTagEventData.md
@@ -792,6 +789,7 @@ lib/Api/TermsOfServiceApi.php
 lib/Api/UserAccountApi.php
 lib/ApiException.php
 lib/Configuration.php
+lib/FormDataProcessor.php
 lib/HeaderSelector.php
 lib/Model/Account.php
 lib/Model/ActionType.php
@@ -873,7 +871,6 @@ lib/Model/AudienceCategory.php
 lib/Model/AudienceCommon.php
 lib/Model/AudienceCreateCustomRequest.php
 lib/Model/AudienceCreateRequest.php
-lib/Model/AudienceCreateRequest1AudienceType.php
 lib/Model/AudienceDataParty.php
 lib/Model/AudienceDefinition.php
 lib/Model/AudienceDefinitionResponse.php
@@ -1051,7 +1048,6 @@ lib/Model/CatalogsItemsDeleteDiscontinuedBatchRequest.php
 lib/Model/CatalogsItemsFilters.php
 lib/Model/CatalogsItemsPostFilters.php
 lib/Model/CatalogsItemsRequest.php
-lib/Model/CatalogsItemsRequestLanguage.php
 lib/Model/CatalogsItemsUpdateBatchRequest.php
 lib/Model/CatalogsItemsUpsertBatchRequest.php
 lib/Model/CatalogsList200Response.php
@@ -1386,7 +1382,6 @@ lib/Model/PinMediaWithVideos.php
 lib/Model/PinPromotionSummaryStatus.php
 lib/Model/PinUpdate.php
 lib/Model/PinUpdateCarouselSlotsInner.php
-lib/Model/PinsAnalyticsMetricTypesParameterInner.php
 lib/Model/PinsList200Response.php
 lib/Model/PinsSaveRequest.php
 lib/Model/PinterestTagEventData.php

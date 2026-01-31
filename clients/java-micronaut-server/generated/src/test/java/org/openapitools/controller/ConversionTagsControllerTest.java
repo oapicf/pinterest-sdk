@@ -65,7 +65,7 @@ public class ConversionTagsControllerTest {
     void conversionTagsCreateMethodTest() {
         // given
         String adAccountId = "example";
-        ConversionTagCreate conversionTagCreate = new ConversionTagCreate("ACME Tools Tag");
+        ConversionTagCreate conversionTagCreate = new ConversionTagCreate();
 
         // when
         ConversionTagResponse result = controller.conversionTagsCreate(adAccountId, conversionTagCreate).block();
@@ -84,13 +84,13 @@ public class ConversionTagsControllerTest {
     @Disabled("Not Implemented")
     void conversionTagsCreateClientApiTest() throws IOException {
         // given
-        ConversionTagCreate body = new ConversionTagCreate("ACME Tools Tag");
+        ConversionTagCreate body = new ConversionTagCreate();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/conversion_tags").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@24111a03");
+            .accept("[Ljava.lang.String;@ca10f2a");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ConversionTagResponse.class);
@@ -138,7 +138,7 @@ public class ConversionTagsControllerTest {
             put("conversion_tag_id", "2617998078212");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@1a4f2755");
+            .accept("[Ljava.lang.String;@7f95a76a");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ConversionTagResponse.class);
@@ -185,7 +185,7 @@ public class ConversionTagsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@52c1775c");
+            .accept("[Ljava.lang.String;@2d045adb");
         request.getParameters()
             .add("filter_deleted", String.valueOf(false)); // The query parameter format should be 
 
@@ -233,7 +233,7 @@ public class ConversionTagsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@1e81c8c5");
+            .accept("[Ljava.lang.String;@4dda06f0");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(Map.class, String.class, List.class));
@@ -282,7 +282,7 @@ public class ConversionTagsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@32ec0814");
+            .accept("[Ljava.lang.String;@4986983e");
         request.getParameters()
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("order", "ASCENDING") // The query parameter format should be 

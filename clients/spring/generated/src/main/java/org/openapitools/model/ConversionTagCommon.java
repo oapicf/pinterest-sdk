@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  * ConversionTagCommon
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionTagCommon {
 
   private @Nullable String adAccountId;
@@ -48,7 +48,7 @@ public class ConversionTagCommon {
 
   private @Nullable ConversionTagConfigs configs;
 
-  public ConversionTagCommon adAccountId(String adAccountId) {
+  public ConversionTagCommon adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -60,15 +60,15 @@ public class ConversionTagCommon {
   
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
-  public ConversionTagCommon codeSnippet(String codeSnippet) {
+  public ConversionTagCommon codeSnippet(@Nullable String codeSnippet) {
     this.codeSnippet = codeSnippet;
     return this;
   }
@@ -80,11 +80,11 @@ public class ConversionTagCommon {
   
   @Schema(name = "code_snippet", example = "<script type=text/javascript> [...]", description = "Tag code snippet.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code_snippet")
-  public String getCodeSnippet() {
+  public @Nullable String getCodeSnippet() {
     return codeSnippet;
   }
 
-  public void setCodeSnippet(String codeSnippet) {
+  public void setCodeSnippet(@Nullable String codeSnippet) {
     this.codeSnippet = codeSnippet;
   }
 
@@ -108,7 +108,7 @@ public class ConversionTagCommon {
     this.enhancedMatchStatus = enhancedMatchStatus;
   }
 
-  public ConversionTagCommon id(String id) {
+  public ConversionTagCommon id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -120,11 +120,11 @@ public class ConversionTagCommon {
   
   @Schema(name = "id", example = "2617998078212", description = "Tag ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
@@ -148,7 +148,7 @@ public class ConversionTagCommon {
     this.lastFiredTimeMs = lastFiredTimeMs;
   }
 
-  public ConversionTagCommon name(String name) {
+  public ConversionTagCommon name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -160,15 +160,15 @@ public class ConversionTagCommon {
   
   @Schema(name = "name", example = "ACME Checkout Test Tag", description = "Conversion tag name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public ConversionTagCommon status(EntityStatus status) {
+  public ConversionTagCommon status(@Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -180,15 +180,15 @@ public class ConversionTagCommon {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public EntityStatus getStatus() {
+  public @Nullable EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 
-  public ConversionTagCommon version(String version) {
+  public ConversionTagCommon version(@Nullable String version) {
     this.version = version;
     return this;
   }
@@ -200,15 +200,15 @@ public class ConversionTagCommon {
   
   @Schema(name = "version", example = "3", description = "Version number.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("version")
-  public String getVersion() {
+  public @Nullable String getVersion() {
     return version;
   }
 
-  public void setVersion(String version) {
+  public void setVersion(@Nullable String version) {
     this.version = version;
   }
 
-  public ConversionTagCommon configs(ConversionTagConfigs configs) {
+  public ConversionTagCommon configs(@Nullable ConversionTagConfigs configs) {
     this.configs = configs;
     return this;
   }
@@ -220,11 +220,11 @@ public class ConversionTagCommon {
   @Valid 
   @Schema(name = "configs", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("configs")
-  public ConversionTagConfigs getConfigs() {
+  public @Nullable ConversionTagConfigs getConfigs() {
     return configs;
   }
 
-  public void setConfigs(ConversionTagConfigs configs) {
+  public void setConfigs(@Nullable ConversionTagConfigs configs) {
     this.configs = configs;
   }
 

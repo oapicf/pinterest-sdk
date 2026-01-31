@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AdsAnalyticsFilterColumn* = object
-  ## Reporting columns for sync reporting data filter
+type AdsAnalyticsFilterColumn* {.pure.} = enum
+  SPENDINDOLLAR
+  TOTALIMPRESSION
+
+func `%`*(v: AdsAnalyticsFilterColumn): JsonNode =
+  result = case v:
+    of AdsAnalyticsFilterColumn.SPENDINDOLLAR: %"SPEND_IN_DOLLAR"
+    of AdsAnalyticsFilterColumn.TOTALIMPRESSION: %"TOTAL_IMPRESSION"
+
+func `$`*(v: AdsAnalyticsFilterColumn): string =
+  result = case v:
+    of AdsAnalyticsFilterColumn.SPENDINDOLLAR: $("SPEND_IN_DOLLAR")
+    of AdsAnalyticsFilterColumn.TOTALIMPRESSION: $("TOTAL_IMPRESSION")
+
+proc to*(node: JsonNode, T: typedesc[AdsAnalyticsFilterColumn]): AdsAnalyticsFilterColumn =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AdsAnalyticsFilterColumn, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("SPEND_IN_DOLLAR"):
+    return AdsAnalyticsFilterColumn.SPENDINDOLLAR
+  of $("TOTAL_IMPRESSION"):
+    return AdsAnalyticsFilterColumn.TOTALIMPRESSION
+  else:
+    raise newException(ValueError, "Invalid enum value for AdsAnalyticsFilterColumn: " & strVal)
+

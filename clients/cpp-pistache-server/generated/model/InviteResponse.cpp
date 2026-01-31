@@ -21,18 +21,18 @@ namespace org::openapitools::server::model
 
 InviteResponse::InviteResponse()
 {
-    m_Assets_summaryIsSet = false;
-    m_Business_rolesIsSet = false;
-    m_Created_by_businessIsSet = false;
-    m_Created_by_userIsSet = false;
-    m_Created_time = 0;
-    m_Created_timeIsSet = false;
     m_Id = "";
     m_IdIsSet = false;
     m_Invite_dataIsSet = false;
     m_Is_received_invite = false;
     m_Is_received_inviteIsSet = false;
     m_UserIsSet = false;
+    m_Assets_summaryIsSet = false;
+    m_Business_rolesIsSet = false;
+    m_Created_by_businessIsSet = false;
+    m_Created_by_userIsSet = false;
+    m_Created_time = 0;
+    m_Created_timeIsSet = false;
     
 }
 
@@ -55,7 +55,16 @@ bool InviteResponse::validate(std::stringstream& msg, const std::string& pathPre
     bool success = true;
     const std::string _pathPrefix = pathPrefix.empty() ? "InviteResponse" : pathPrefix;
 
-             
+         
+    if (idIsSet())
+    {
+        const std::string& value = m_Id;
+        const std::string currentValuePath = _pathPrefix + ".id";
+                
+        
+
+    }
+                         
     if (businessRolesIsSet())
     {
         const std::vector<std::string>& value = m_Business_roles;
@@ -76,15 +85,6 @@ bool InviteResponse::validate(std::stringstream& msg, const std::string& pathPre
         }
 
     }
-                     
-    if (idIsSet())
-    {
-        const std::string& value = m_Id;
-        const std::string currentValuePath = _pathPrefix + ".id";
-                
-        
-
-    }
                 
     return success;
 }
@@ -93,6 +93,18 @@ bool InviteResponse::operator==(const InviteResponse& rhs) const
 {
     return
     
+    
+    
+    ((!idIsSet() && !rhs.idIsSet()) || (idIsSet() && rhs.idIsSet() && getId() == rhs.getId())) &&
+    
+    
+    ((!inviteDataIsSet() && !rhs.inviteDataIsSet()) || (inviteDataIsSet() && rhs.inviteDataIsSet() && getInviteData() == rhs.getInviteData())) &&
+    
+    
+    ((!isReceivedInviteIsSet() && !rhs.isReceivedInviteIsSet()) || (isReceivedInviteIsSet() && rhs.isReceivedInviteIsSet() && isIsReceivedInvite() == rhs.isIsReceivedInvite())) &&
+    
+    
+    ((!userIsSet() && !rhs.userIsSet()) || (userIsSet() && rhs.userIsSet() && getUser() == rhs.getUser())) &&
     
     
     ((!assetsSummaryIsSet() && !rhs.assetsSummaryIsSet()) || (assetsSummaryIsSet() && rhs.assetsSummaryIsSet() && getAssetsSummary() == rhs.getAssetsSummary())) &&
@@ -107,19 +119,7 @@ bool InviteResponse::operator==(const InviteResponse& rhs) const
     ((!createdByUserIsSet() && !rhs.createdByUserIsSet()) || (createdByUserIsSet() && rhs.createdByUserIsSet() && getCreatedByUser() == rhs.getCreatedByUser())) &&
     
     
-    ((!createdTimeIsSet() && !rhs.createdTimeIsSet()) || (createdTimeIsSet() && rhs.createdTimeIsSet() && getCreatedTime() == rhs.getCreatedTime())) &&
-    
-    
-    ((!idIsSet() && !rhs.idIsSet()) || (idIsSet() && rhs.idIsSet() && getId() == rhs.getId())) &&
-    
-    
-    ((!inviteDataIsSet() && !rhs.inviteDataIsSet()) || (inviteDataIsSet() && rhs.inviteDataIsSet() && getInviteData() == rhs.getInviteData())) &&
-    
-    
-    ((!isReceivedInviteIsSet() && !rhs.isReceivedInviteIsSet()) || (isReceivedInviteIsSet() && rhs.isReceivedInviteIsSet() && isIsReceivedInvite() == rhs.isIsReceivedInvite())) &&
-    
-    
-    ((!userIsSet() && !rhs.userIsSet()) || (userIsSet() && rhs.userIsSet() && getUser() == rhs.getUser()))
+    ((!createdTimeIsSet() && !rhs.createdTimeIsSet()) || (createdTimeIsSet() && rhs.createdTimeIsSet() && getCreatedTime() == rhs.getCreatedTime()))
     
     ;
 }
@@ -132,6 +132,14 @@ bool InviteResponse::operator!=(const InviteResponse& rhs) const
 void to_json(nlohmann::json& j, const InviteResponse& o)
 {
     j = nlohmann::json::object();
+    if(o.idIsSet())
+        j["id"] = o.m_Id;
+    if(o.inviteDataIsSet())
+        j["invite_data"] = o.m_Invite_data;
+    if(o.isReceivedInviteIsSet())
+        j["is_received_invite"] = o.m_Is_received_invite;
+    if(o.userIsSet())
+        j["user"] = o.m_User;
     if(o.assetsSummaryIsSet())
         j["assets_summary"] = o.m_Assets_summary;
     if(o.businessRolesIsSet() || !o.m_Business_roles.empty())
@@ -142,19 +150,31 @@ void to_json(nlohmann::json& j, const InviteResponse& o)
         j["created_by_user"] = o.m_Created_by_user;
     if(o.createdTimeIsSet())
         j["created_time"] = o.m_Created_time;
-    if(o.idIsSet())
-        j["id"] = o.m_Id;
-    if(o.inviteDataIsSet())
-        j["invite_data"] = o.m_Invite_data;
-    if(o.isReceivedInviteIsSet())
-        j["is_received_invite"] = o.m_Is_received_invite;
-    if(o.userIsSet())
-        j["user"] = o.m_User;
     
 }
 
 void from_json(const nlohmann::json& j, InviteResponse& o)
 {
+    if(j.find("id") != j.end())
+    {
+        j.at("id").get_to(o.m_Id);
+        o.m_IdIsSet = true;
+    } 
+    if(j.find("invite_data") != j.end())
+    {
+        j.at("invite_data").get_to(o.m_Invite_data);
+        o.m_Invite_dataIsSet = true;
+    } 
+    if(j.find("is_received_invite") != j.end())
+    {
+        j.at("is_received_invite").get_to(o.m_Is_received_invite);
+        o.m_Is_received_inviteIsSet = true;
+    } 
+    if(j.find("user") != j.end())
+    {
+        j.at("user").get_to(o.m_User);
+        o.m_UserIsSet = true;
+    } 
     if(j.find("assets_summary") != j.end())
     {
         j.at("assets_summary").get_to(o.m_Assets_summary);
@@ -180,114 +200,9 @@ void from_json(const nlohmann::json& j, InviteResponse& o)
         j.at("created_time").get_to(o.m_Created_time);
         o.m_Created_timeIsSet = true;
     } 
-    if(j.find("id") != j.end())
-    {
-        j.at("id").get_to(o.m_Id);
-        o.m_IdIsSet = true;
-    } 
-    if(j.find("invite_data") != j.end())
-    {
-        j.at("invite_data").get_to(o.m_Invite_data);
-        o.m_Invite_dataIsSet = true;
-    } 
-    if(j.find("is_received_invite") != j.end())
-    {
-        j.at("is_received_invite").get_to(o.m_Is_received_invite);
-        o.m_Is_received_inviteIsSet = true;
-    } 
-    if(j.find("user") != j.end())
-    {
-        j.at("user").get_to(o.m_User);
-        o.m_UserIsSet = true;
-    } 
     
 }
 
-org::openapitools::server::model::InviteAssetsSummary InviteResponse::getAssetsSummary() const
-{
-    return m_Assets_summary;
-}
-void InviteResponse::setAssetsSummary(org::openapitools::server::model::InviteAssetsSummary const& value)
-{
-    m_Assets_summary = value;
-    m_Assets_summaryIsSet = true;
-}
-bool InviteResponse::assetsSummaryIsSet() const
-{
-    return m_Assets_summaryIsSet;
-}
-void InviteResponse::unsetAssets_summary()
-{
-    m_Assets_summaryIsSet = false;
-}
-std::vector<std::string> InviteResponse::getBusinessRoles() const
-{
-    return m_Business_roles;
-}
-void InviteResponse::setBusinessRoles(std::vector<std::string> const& value)
-{
-    m_Business_roles = value;
-    m_Business_rolesIsSet = true;
-}
-bool InviteResponse::businessRolesIsSet() const
-{
-    return m_Business_rolesIsSet;
-}
-void InviteResponse::unsetBusiness_roles()
-{
-    m_Business_rolesIsSet = false;
-}
-org::openapitools::server::model::BusinessAccessUserSummary InviteResponse::getCreatedByBusiness() const
-{
-    return m_Created_by_business;
-}
-void InviteResponse::setCreatedByBusiness(org::openapitools::server::model::BusinessAccessUserSummary const& value)
-{
-    m_Created_by_business = value;
-    m_Created_by_businessIsSet = true;
-}
-bool InviteResponse::createdByBusinessIsSet() const
-{
-    return m_Created_by_businessIsSet;
-}
-void InviteResponse::unsetCreated_by_business()
-{
-    m_Created_by_businessIsSet = false;
-}
-org::openapitools::server::model::BusinessAccessUserSummary InviteResponse::getCreatedByUser() const
-{
-    return m_Created_by_user;
-}
-void InviteResponse::setCreatedByUser(org::openapitools::server::model::BusinessAccessUserSummary const& value)
-{
-    m_Created_by_user = value;
-    m_Created_by_userIsSet = true;
-}
-bool InviteResponse::createdByUserIsSet() const
-{
-    return m_Created_by_userIsSet;
-}
-void InviteResponse::unsetCreated_by_user()
-{
-    m_Created_by_userIsSet = false;
-}
-int32_t InviteResponse::getCreatedTime() const
-{
-    return m_Created_time;
-}
-void InviteResponse::setCreatedTime(int32_t const value)
-{
-    m_Created_time = value;
-    m_Created_timeIsSet = true;
-}
-bool InviteResponse::createdTimeIsSet() const
-{
-    return m_Created_timeIsSet;
-}
-void InviteResponse::unsetCreated_time()
-{
-    m_Created_timeIsSet = false;
-}
 std::string InviteResponse::getId() const
 {
     return m_Id;
@@ -355,6 +270,91 @@ bool InviteResponse::userIsSet() const
 void InviteResponse::unsetUser()
 {
     m_UserIsSet = false;
+}
+org::openapitools::server::model::InviteAssetsSummary InviteResponse::getAssetsSummary() const
+{
+    return m_Assets_summary;
+}
+void InviteResponse::setAssetsSummary(org::openapitools::server::model::InviteAssetsSummary const& value)
+{
+    m_Assets_summary = value;
+    m_Assets_summaryIsSet = true;
+}
+bool InviteResponse::assetsSummaryIsSet() const
+{
+    return m_Assets_summaryIsSet;
+}
+void InviteResponse::unsetAssets_summary()
+{
+    m_Assets_summaryIsSet = false;
+}
+std::vector<std::string> InviteResponse::getBusinessRoles() const
+{
+    return m_Business_roles;
+}
+void InviteResponse::setBusinessRoles(std::vector<std::string> const& value)
+{
+    m_Business_roles = value;
+    m_Business_rolesIsSet = true;
+}
+bool InviteResponse::businessRolesIsSet() const
+{
+    return m_Business_rolesIsSet;
+}
+void InviteResponse::unsetBusiness_roles()
+{
+    m_Business_rolesIsSet = false;
+}
+nlohmann::json InviteResponse::getCreatedByBusiness() const
+{
+    return m_Created_by_business;
+}
+void InviteResponse::setCreatedByBusiness(nlohmann::json const& value)
+{
+    m_Created_by_business = value;
+    m_Created_by_businessIsSet = true;
+}
+bool InviteResponse::createdByBusinessIsSet() const
+{
+    return m_Created_by_businessIsSet;
+}
+void InviteResponse::unsetCreated_by_business()
+{
+    m_Created_by_businessIsSet = false;
+}
+nlohmann::json InviteResponse::getCreatedByUser() const
+{
+    return m_Created_by_user;
+}
+void InviteResponse::setCreatedByUser(nlohmann::json const& value)
+{
+    m_Created_by_user = value;
+    m_Created_by_userIsSet = true;
+}
+bool InviteResponse::createdByUserIsSet() const
+{
+    return m_Created_by_userIsSet;
+}
+void InviteResponse::unsetCreated_by_user()
+{
+    m_Created_by_userIsSet = false;
+}
+int32_t InviteResponse::getCreatedTime() const
+{
+    return m_Created_time;
+}
+void InviteResponse::setCreatedTime(int32_t const value)
+{
+    m_Created_time = value;
+    m_Created_timeIsSet = true;
+}
+bool InviteResponse::createdTimeIsSet() const
+{
+    return m_Created_timeIsSet;
+}
+void InviteResponse::unsetCreated_time()
+{
+    m_Created_timeIsSet = false;
 }
 
 

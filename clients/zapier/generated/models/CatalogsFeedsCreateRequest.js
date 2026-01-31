@@ -43,7 +43,10 @@ module.exports = {
                 key: `${keyPrefix}default_availability`,
                 ...ProductAvailabilityType.fields(`${keyPrefix}default_availability`, isInput),
             },
-            ...CatalogsStatus.fields(`${keyPrefix}status`, isInput),
+            {
+                key: `${keyPrefix}status`,
+                ...CatalogsStatus.fields(`${keyPrefix}status`, isInput),
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
@@ -58,7 +61,7 @@ module.exports = {
             'preferred_processing_schedule': utils.removeIfEmpty(CatalogsFeedProcessingSchedule.mapping(bundle, `${keyPrefix}preferred_processing_schedule`)),
             'default_country': bundle.inputData?.[`${keyPrefix}default_country`],
             'default_availability': bundle.inputData?.[`${keyPrefix}default_availability`],
-            'status': utils.removeIfEmpty(CatalogsStatus.mapping(bundle, `${keyPrefix}status`)),
+            'status': bundle.inputData?.[`${keyPrefix}status`],
         }
     },
 }

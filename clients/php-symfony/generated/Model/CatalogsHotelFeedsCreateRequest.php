@@ -134,12 +134,12 @@ class CatalogsHotelFeedsCreateRequest
     protected ?string $catalogId = null;
 
     /**
-     * @var 
+     * @var CatalogsStatus|null
      * @SerializedName("status")
-     * @Type("OpenAPIServerModelCatalogsStatusAnyType")
+    * @Accessor(getter="getSerializedStatus", setter="setDeserializedStatus")
+    * @Type("string")
     */
-    #[Assert\Type("OpenAPIServerModelCatalogsStatusAnyType")]
-    protected  $status = null;
+    protected ?CatalogsStatus $status = self::OpenAPI\Server\Model\CatalogsStatus_ACTIVE;
 
     /**
      * Constructor
@@ -488,9 +488,9 @@ class CatalogsHotelFeedsCreateRequest
     /**
      * Gets status.
      *
-     * @return 
+     * @return CatalogsStatus|null
      */
-    public function getStatus(): 
+    public function getStatus(): ?CatalogsStatus
     {
         return $this->status;
     }
@@ -498,17 +498,44 @@ class CatalogsHotelFeedsCreateRequest
     /**
     * Sets status.
     *
-    * @param  $status
+    * @param CatalogsStatus|null $status
     *
     * @return $this
     */
-    public function setStatus( $status = null): self
+    public function setStatus(?CatalogsStatus $status = null): self
     {
         $this->status = $status;
 
         return $this;
     }
 
+    /**
+    * Gets status for serialization.
+    *
+    * @return string|null
+    */
+    public function getSerializedStatus(): string|null
+    {
+        return !is_null($this->status?->value) ? (string) $this->status->value : null;
+    }
+
+    /**
+    * Sets status.
+    *
+    * @param string|CatalogsStatus|null $status
+    *
+    * @return $this
+    */
+    public function setDeserializedStatus(string|CatalogsStatus|null $status = null): self
+    {
+        if (is_string($status)) {
+            $status = CatalogsStatus::tryFrom($status);
+        }
+
+        $this->status = $status;
+
+        return $this;
+    }
 
 
 }

@@ -62,7 +62,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsCreativeAssetsBatchItem.class.getName());
 
@@ -132,7 +132,7 @@ public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsCreateCreativeAssetsItem failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreateCreativeAssetsItem failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsCreateCreativeAssetsItem'", e);
                     }
                     // deserialize CatalogsUpsertCreativeAssetsItem
@@ -145,7 +145,7 @@ public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsUpsertCreativeAssetsItem failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsUpsertCreativeAssetsItem failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsUpsertCreativeAssetsItem'", e);
                     }
                     // deserialize CatalogsUpdateCreativeAssetsItem
@@ -158,7 +158,7 @@ public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsUpdateCreativeAssetsItem failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsUpdateCreativeAssetsItem failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsUpdateCreativeAssetsItem'", e);
                     }
                     // deserialize CatalogsDeleteCreativeAssetsItem
@@ -171,11 +171,11 @@ public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsDeleteCreativeAssetsItem failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsDeleteCreativeAssetsItem failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsDeleteCreativeAssetsItem'", e);
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CatalogsCreativeAssetsBatchItem: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CatalogsCreativeAssetsBatchItem: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -307,7 +307,7 @@ public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
             CatalogsCreateCreativeAssetsItem.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsCreateCreativeAssetsItem failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreateCreativeAssetsItem failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsUpsertCreativeAssetsItem
@@ -315,7 +315,7 @@ public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
             CatalogsUpsertCreativeAssetsItem.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsUpsertCreativeAssetsItem failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsUpsertCreativeAssetsItem failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsUpdateCreativeAssetsItem
@@ -323,7 +323,7 @@ public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
             CatalogsUpdateCreativeAssetsItem.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsUpdateCreativeAssetsItem failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsUpdateCreativeAssetsItem failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsDeleteCreativeAssetsItem
@@ -331,10 +331,10 @@ public class CatalogsCreativeAssetsBatchItem extends AbstractOpenApiSchema {
             CatalogsDeleteCreativeAssetsItem.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsDeleteCreativeAssetsItem failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsDeleteCreativeAssetsItem failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        throw new IOException(String.format("The JSON string is invalid for CatalogsCreativeAssetsBatchItem with anyOf schemas: CatalogsCreateCreativeAssetsItem, CatalogsDeleteCreativeAssetsItem, CatalogsUpdateCreativeAssetsItem, CatalogsUpsertCreativeAssetsItem. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+        throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CatalogsCreativeAssetsBatchItem with anyOf schemas: CatalogsCreateCreativeAssetsItem, CatalogsDeleteCreativeAssetsItem, CatalogsUpdateCreativeAssetsItem, CatalogsUpsertCreativeAssetsItem. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
     }
 
     /**

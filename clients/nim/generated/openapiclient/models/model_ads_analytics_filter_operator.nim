@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AdsAnalyticsFilterOperator* = object
-  ## Filter operator for sync reporting
+type AdsAnalyticsFilterOperator* {.pure.} = enum
+  LESSTHAN
+  GREATERTHAN
+
+func `%`*(v: AdsAnalyticsFilterOperator): JsonNode =
+  result = case v:
+    of AdsAnalyticsFilterOperator.LESSTHAN: %"LESS_THAN"
+    of AdsAnalyticsFilterOperator.GREATERTHAN: %"GREATER_THAN"
+
+func `$`*(v: AdsAnalyticsFilterOperator): string =
+  result = case v:
+    of AdsAnalyticsFilterOperator.LESSTHAN: $("LESS_THAN")
+    of AdsAnalyticsFilterOperator.GREATERTHAN: $("GREATER_THAN")
+
+proc to*(node: JsonNode, T: typedesc[AdsAnalyticsFilterOperator]): AdsAnalyticsFilterOperator =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AdsAnalyticsFilterOperator, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("LESS_THAN"):
+    return AdsAnalyticsFilterOperator.LESSTHAN
+  of $("GREATER_THAN"):
+    return AdsAnalyticsFilterOperator.GREATERTHAN
+  else:
+    raise newException(ValueError, "Invalid enum value for AdsAnalyticsFilterOperator: " & strVal)
+

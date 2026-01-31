@@ -15,7 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ProductGroupPromotionResponse  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid ProductGroupPromotionResponseItem> items = new ArrayList<>();
  /**
    * Get items

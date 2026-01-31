@@ -12,10 +12,11 @@
 
 import * as models from './models';
 
-/**
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
- */
 export interface OauthAccessTokenResponseIntegrationRefresh {
+    refresh_token: string;
+
+    refresh_token_expires_in: number;
+
     response_type?: OauthAccessTokenResponseIntegrationRefresh.ResponseTypeEnum;
 
     access_token: string;
@@ -25,10 +26,6 @@ export interface OauthAccessTokenResponseIntegrationRefresh {
     expires_in: number;
 
     scope: string;
-
-    refresh_token: string;
-
-    refresh_token_expires_in: number;
 
 }
 export namespace OauthAccessTokenResponseIntegrationRefresh {

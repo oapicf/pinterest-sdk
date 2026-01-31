@@ -552,7 +552,7 @@ $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $BusinessId = "729090764583391194" # String | Unique identifier of the requesting business.
 $PartnerId = "729090764583391194" # String | The partner id to be bound to the Business
-$PartnerType = Initialize-PartnerType # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
+$PartnerType = "INTERNAL" # PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
 $AssetType = "AD_ACCOUNT" # String | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to "AD_ACCOUNT")
 $StartIndex = 0 # Int32 | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 $PageSize = 56 # Int32 | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)

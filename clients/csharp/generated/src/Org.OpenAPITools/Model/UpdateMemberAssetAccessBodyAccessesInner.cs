@@ -178,8 +178,7 @@ namespace Org.OpenAPITools.Model
                             memberId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "permissions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                permissions = new Option<List<Permissions>?>(JsonSerializer.Deserialize<List<Permissions>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            permissions = new Option<List<Permissions>?>(JsonSerializer.Deserialize<List<Permissions>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

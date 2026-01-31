@@ -46,7 +46,7 @@ function Initialize-LeadFormCreateRequest {
         [String]
         ${PrivacyPolicyLink},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [Boolean]
+        [System.Nullable[Boolean]]
         ${HasAcceptedTerms},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
@@ -70,19 +70,11 @@ function Initialize-LeadFormCreateRequest {
         'Creating PSCustomObject: PSOpenAPITools => LeadFormCreateRequest' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        if ($null -eq $HasAcceptedTerms) {
-            throw "invalid value for 'HasAcceptedTerms', 'HasAcceptedTerms' cannot be null."
-        }
-
-        if ($null -eq $Questions) {
-            throw "invalid value for 'Questions', 'Questions' cannot be null."
-        }
-
-        if ($Questions.length -gt 10) {
+        if (!$Questions -and $Questions.length -gt 10) {
             throw "invalid value for 'Questions', number of items must be less than or equal to 10."
         }
 
-        if ($Questions.length -lt 0) {
+        if (!$Questions -and $Questions.length -lt 0) {
             throw "invalid value for 'Questions', number of items must be greater than or equal to 0."
         }
 
@@ -148,38 +140,28 @@ function ConvertFrom-JsonToLeadFormCreateRequest {
             }
         }
 
-        If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property 'name' missing."
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "name"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'name' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "name"))) { #optional property not found
+            $Name = $null
         } else {
             $Name = $JsonParameters.PSobject.Properties["name"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "privacy_policy_link"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'privacy_policy_link' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "privacy_policy_link"))) { #optional property not found
+            $PrivacyPolicyLink = $null
         } else {
             $PrivacyPolicyLink = $JsonParameters.PSobject.Properties["privacy_policy_link"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "has_accepted_terms"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'has_accepted_terms' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "has_accepted_terms"))) { #optional property not found
+            $HasAcceptedTerms = $null
         } else {
             $HasAcceptedTerms = $JsonParameters.PSobject.Properties["has_accepted_terms"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "completion_message"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'completion_message' missing."
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "completion_message"))) { #optional property not found
+            $CompletionMessage = $null
         } else {
             $CompletionMessage = $JsonParameters.PSobject.Properties["completion_message"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "questions"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'questions' missing."
-        } else {
-            $Questions = $JsonParameters.PSobject.Properties["questions"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "status"))) { #optional property not found
@@ -192,6 +174,12 @@ function ConvertFrom-JsonToLeadFormCreateRequest {
             $DisclosureLanguage = $null
         } else {
             $DisclosureLanguage = $JsonParameters.PSobject.Properties["disclosure_language"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "questions"))) { #optional property not found
+            $Questions = $null
+        } else {
+            $Questions = $JsonParameters.PSobject.Properties["questions"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "policy_links"))) { #optional property not found

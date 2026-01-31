@@ -15,10 +15,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OrderLineError  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private OrderLine data;
 
   @ApiModelProperty(value = "")
+
   private List<String> errorMessages = new ArrayList<>();
  /**
    * Get data

@@ -68,10 +68,10 @@ pub enum UpdateSlashBusinessMembershipsError {
 /// Terminate memberships between the specified members and your business.
 pub async fn delete_business_membership(configuration: &configuration::Configuration, business_id: &str, members_to_delete_body: models::MembersToDeleteBody) -> Result<models::DeletedMembersResponse, Error<DeleteBusinessMembershipError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_members_to_delete_body = members_to_delete_body;
+    let p_path_business_id = business_id;
+    let p_body_members_to_delete_body = members_to_delete_body;
 
-    let uri_str = format!("{}/businesses/{business_id}/members", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/members", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -80,7 +80,7 @@ pub async fn delete_business_membership(configuration: &configuration::Configura
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_members_to_delete_body);
+    req_builder = req_builder.json(&p_body_members_to_delete_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -110,10 +110,10 @@ pub async fn delete_business_membership(configuration: &configuration::Configura
 /// Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
 pub async fn delete_business_partners(configuration: &configuration::Configuration, business_id: &str, delete_partners_request: models::DeletePartnersRequest) -> Result<models::DeletePartnersResponse, Error<DeleteBusinessPartnersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_delete_partners_request = delete_partners_request;
+    let p_path_business_id = business_id;
+    let p_body_delete_partners_request = delete_partners_request;
 
-    let uri_str = format!("{}/businesses/{business_id}/partners", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/partners", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -122,7 +122,7 @@ pub async fn delete_business_partners(configuration: &configuration::Configurati
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_delete_partners_request);
+    req_builder = req_builder.json(&p_body_delete_partners_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -152,16 +152,16 @@ pub async fn delete_business_partners(configuration: &configuration::Configurati
 /// Get all of the viewing user's business employers.
 pub async fn get_slash_business_employers(configuration: &configuration::Configuration, page_size: Option<i32>, bookmark: Option<&str>) -> Result<models::GetBusinessEmployers200Response, Error<GetSlashBusinessEmployersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_page_size = page_size;
-    let p_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_bookmark = bookmark;
 
     let uri_str = format!("{}/businesses/employers", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -199,36 +199,36 @@ pub async fn get_slash_business_employers(configuration: &configuration::Configu
 /// Get all members of the specified business. The return response will include the member's business_role and assets they have access to if assets_summary=TRUE
 pub async fn get_slash_business_members(configuration: &configuration::Configuration, business_id: &str, assets_summary: Option<bool>, business_roles: Option<Vec<models::MemberBusinessRole>>, member_ids: Option<&str>, start_index: Option<i32>, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::GetBusinessMembers200Response, Error<GetSlashBusinessMembersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_assets_summary = assets_summary;
-    let p_business_roles = business_roles;
-    let p_member_ids = member_ids;
-    let p_start_index = start_index;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
+    let p_path_business_id = business_id;
+    let p_query_assets_summary = assets_summary;
+    let p_query_business_roles = business_roles;
+    let p_query_member_ids = member_ids;
+    let p_query_start_index = start_index;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
 
-    let uri_str = format!("{}/businesses/{business_id}/members", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/members", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_assets_summary {
+    if let Some(ref param_value) = p_query_assets_summary {
         req_builder = req_builder.query(&[("assets_summary", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_business_roles {
+    if let Some(ref param_value) = p_query_business_roles {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("business_roles".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("business_roles", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_member_ids {
+    if let Some(ref param_value) = p_query_member_ids {
         req_builder = req_builder.query(&[("member_ids", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_start_index {
+    if let Some(ref param_value) = p_query_start_index {
         req_builder = req_builder.query(&[("start_index", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -266,33 +266,33 @@ pub async fn get_slash_business_members(configuration: &configuration::Configura
 /// Get all partners of the specified business.  If the assets_summary=TRUE and: - partner_type=INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type=EXTERNAL, the business assets returned are your partner's business assets the partner has granted you   access to.
 pub async fn get_slash_business_partners(configuration: &configuration::Configuration, business_id: &str, assets_summary: Option<bool>, partner_type: Option<models::PartnerType>, partner_ids: Option<&str>, start_index: Option<i32>, page_size: Option<i32>, bookmark: Option<&str>) -> Result<models::GetBusinessPartners200Response, Error<GetSlashBusinessPartnersError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_assets_summary = assets_summary;
-    let p_partner_type = partner_type;
-    let p_partner_ids = partner_ids;
-    let p_start_index = start_index;
-    let p_page_size = page_size;
-    let p_bookmark = bookmark;
+    let p_path_business_id = business_id;
+    let p_query_assets_summary = assets_summary;
+    let p_query_partner_type = partner_type;
+    let p_query_partner_ids = partner_ids;
+    let p_query_start_index = start_index;
+    let p_query_page_size = page_size;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/businesses/{business_id}/partners", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/partners", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_assets_summary {
+    if let Some(ref param_value) = p_query_assets_summary {
         req_builder = req_builder.query(&[("assets_summary", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_partner_type {
-        req_builder = req_builder.query(&[("partner_type", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_partner_type {
+        req_builder = req_builder.query(&[("partner_type", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_partner_ids {
+    if let Some(ref param_value) = p_query_partner_ids {
         req_builder = req_builder.query(&[("partner_ids", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_start_index {
+    if let Some(ref param_value) = p_query_start_index {
         req_builder = req_builder.query(&[("start_index", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -330,10 +330,10 @@ pub async fn get_slash_business_partners(configuration: &configuration::Configur
 /// Update a member's business role within the business.
 pub async fn update_slash_business_memberships(configuration: &configuration::Configuration, business_id: &str, update_member_business_role_body: Vec<models::UpdateMemberBusinessRoleBody>) -> Result<models::UpdateMemberResultsResponseArray, Error<UpdateSlashBusinessMembershipsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_update_member_business_role_body = update_member_business_role_body;
+    let p_path_business_id = business_id;
+    let p_body_update_member_business_role_body = update_member_business_role_body;
 
-    let uri_str = format!("{}/businesses/{business_id}/members", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/members", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -342,7 +342,7 @@ pub async fn update_slash_business_memberships(configuration: &configuration::Co
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_update_member_business_role_body);
+    req_builder = req_builder.json(&p_body_update_member_business_role_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

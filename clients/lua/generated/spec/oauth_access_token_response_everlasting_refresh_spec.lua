@@ -16,6 +16,27 @@ Please update as you see appropriate
 describe("oauth_access_token_response_everlasting_refresh", function()
   local openapiclient_oauth_access_token_response_everlasting_refresh = require "openapiclient.model.oauth_access_token_response_everlasting_refresh"
 
+  -- unit tests for the property 'refresh_token'
+  describe("property refresh_token test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'refresh_token_expires_in'
+  describe("property refresh_token_expires_in test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'refresh_token_expires_at'
+  describe("property refresh_token_expires_at test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for the property 'response_type'
   describe("property response_type test", function()
     it("should work", function()
@@ -46,27 +67,6 @@ describe("oauth_access_token_response_everlasting_refresh", function()
 
   -- unit tests for the property 'scope'
   describe("property scope test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'refresh_token'
-  describe("property refresh_token test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'refresh_token_expires_in'
-  describe("property refresh_token_expires_in test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'refresh_token_expires_at'
-  describe("property refresh_token_expires_at test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

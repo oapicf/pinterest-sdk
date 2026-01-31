@@ -161,7 +161,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, LeadFormQuestionFieldType leadFormQuestionFieldType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(leadFormQuestionFieldType.ToString());
+            writer.WriteStringValue(LeadFormQuestionFieldTypeValueConverter.ToJsonValue(leadFormQuestionFieldType).ToString());
         }
     }
 
@@ -192,14 +192,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the LeadFormQuestionFieldType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="leadFormQuestionFieldType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, LeadFormQuestionFieldType? leadFormQuestionFieldType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(leadFormQuestionFieldType?.ToString() ?? "null");
+            writer.WriteStringValue(leadFormQuestionFieldType.HasValue ? LeadFormQuestionFieldTypeValueConverter.ToJsonValue(leadFormQuestionFieldType.Value).ToString() : "null");
         }
     }
 }

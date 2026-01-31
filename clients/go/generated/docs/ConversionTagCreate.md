@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Conversion tag name. | 
 **AemEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. | [optional] [default to false]
 **MdFrequency** | Pointer to **NullableFloat32** | Metadata ingestion frequency. | [optional] [default to 1]
 **AemFnlnEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match name is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. | [optional] [default to false]
@@ -12,6 +11,7 @@ Name | Type | Description | Notes
 **AemGeEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match gender is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. | [optional] [default to false]
 **AemDbEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match birthdate is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. | [optional] [default to false]
 **AemLocEnabled** | Pointer to **NullableBool** | Whether Automatic Enhanced Match location is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. | [optional] [default to false]
+**Name** | **string** | Conversion tag name. | 
 
 ## Methods
 
@@ -31,26 +31,6 @@ will change when the set of required properties is changed
 NewConversionTagCreateWithDefaults instantiates a new ConversionTagCreate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetName
-
-`func (o *ConversionTagCreate) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *ConversionTagCreate) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *ConversionTagCreate) SetName(v string)`
-
-SetName sets Name field to given value.
-
 
 ### GetAemEnabled
 
@@ -297,6 +277,26 @@ HasAemLocEnabled returns a boolean if a field has been set.
 `func (o *ConversionTagCreate) UnsetAemLocEnabled()`
 
 UnsetAemLocEnabled ensures that no value is present for AemLocEnabled, not even an explicit nil
+### GetName
+
+`func (o *ConversionTagCreate) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *ConversionTagCreate) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *ConversionTagCreate) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

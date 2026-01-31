@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_operation_type
 
@@ -17,3 +19,23 @@ type SharedAudience* = object
   audienceId*: string ## Unique identifier of an audience
   operationType*: OperationType
   recipientAccountIds*: seq[string] ## List of ad account IDs to share with or revoke from.
+
+
+# Custom JSON deserialization for SharedAudience with custom field names
+proc to*(node: JsonNode, T: typedesc[SharedAudience]): SharedAudience =
+  result = SharedAudience()
+  if node.kind == JObject:
+    if node.hasKey("audience_id"):
+      result.audienceId = to(node["audience_id"], string)
+    if node.hasKey("operation_type"):
+      result.operationType = to(node["operation_type"], OperationType)
+    if node.hasKey("recipient_account_ids"):
+      result.recipientAccountIds = to(node["recipient_account_ids"], seq[string])
+
+# Custom JSON serialization for SharedAudience with custom field names
+proc `%`*(obj: SharedAudience): JsonNode =
+  result = newJObject()
+  result["audience_id"] = %obj.audienceId
+  result["operation_type"] = %obj.operationType
+  result["recipient_account_ids"] = %obj.recipientAccountIds
+

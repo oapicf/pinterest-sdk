@@ -1,7 +1,7 @@
 /*
  * OauthAccessTokenRequestClientCredentials.h
  *
- * A request to receive a client token.
+ * 
  */
 
 #ifndef _OauthAccessTokenRequestClientCredentials_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief A request to receive a client token.
+/*! \brief 
  *
  *  \ingroup Models
  *
@@ -47,22 +47,22 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getGrantType();
-
-	/*! \brief Set 
-	 */
-	void setGrantType(std::string  grant_type);
-	/*! \brief Get 
-	 */
 	std::string getScope();
 
 	/*! \brief Set 
 	 */
 	void setScope(std::string  scope);
+	/*! \brief Get 
+	 */
+	std::string getGrantType();
+
+	/*! \brief Set 
+	 */
+	void setGrantType(std::string  grant_type);
 
 private:
-	std::string grant_type;
 	std::string scope;
+	std::string grant_type;
 	void __init();
 	void __cleanup();
 

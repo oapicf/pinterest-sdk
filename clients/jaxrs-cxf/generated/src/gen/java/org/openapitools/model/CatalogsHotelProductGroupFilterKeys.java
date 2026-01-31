@@ -23,39 +23,57 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsHotelProductGroupFilterKeys  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupPricingCurrencyCriteria PRICE;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria HOTEL_ID;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria BRAND;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_0;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_1;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_2;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_3;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CUSTOM_LABEL_4;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleCountriesCriteria COUNTRY;
  /**
    * Get PRICE

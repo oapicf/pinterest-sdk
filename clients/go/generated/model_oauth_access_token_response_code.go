@@ -20,15 +20,15 @@ import (
 // checks if the OauthAccessTokenResponseCode type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OauthAccessTokenResponseCode{}
 
-// OauthAccessTokenResponseCode A successful OAuth access token response for the authorization code flow.
+// OauthAccessTokenResponseCode struct for OauthAccessTokenResponseCode
 type OauthAccessTokenResponseCode struct {
+	RefreshToken string `json:"refresh_token"`
+	RefreshTokenExpiresIn int32 `json:"refresh_token_expires_in"`
 	ResponseType *string `json:"response_type,omitempty"`
 	AccessToken string `json:"access_token"`
 	TokenType string `json:"token_type"`
 	ExpiresIn int32 `json:"expires_in"`
 	Scope string `json:"scope"`
-	RefreshToken string `json:"refresh_token"`
-	RefreshTokenExpiresIn int32 `json:"refresh_token_expires_in"`
 }
 
 type _OauthAccessTokenResponseCode OauthAccessTokenResponseCode
@@ -37,10 +37,14 @@ type _OauthAccessTokenResponseCode OauthAccessTokenResponseCode
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOauthAccessTokenResponseCode(accessToken string, tokenType string, expiresIn int32, scope string, refreshToken string, refreshTokenExpiresIn int32) *OauthAccessTokenResponseCode {
+func NewOauthAccessTokenResponseCode(refreshToken string, refreshTokenExpiresIn int32, accessToken string, tokenType string, expiresIn int32, scope string) *OauthAccessTokenResponseCode {
 	this := OauthAccessTokenResponseCode{}
 	this.RefreshToken = refreshToken
 	this.RefreshTokenExpiresIn = refreshTokenExpiresIn
+	this.AccessToken = accessToken
+	this.TokenType = tokenType
+	this.ExpiresIn = expiresIn
+	this.Scope = scope
 	return &this
 }
 
@@ -52,6 +56,54 @@ func NewOauthAccessTokenResponseCodeWithDefaults() *OauthAccessTokenResponseCode
 	var tokenType string = "bearer"
 	this.TokenType = tokenType
 	return &this
+}
+
+// GetRefreshToken returns the RefreshToken field value
+func (o *OauthAccessTokenResponseCode) GetRefreshToken() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.RefreshToken
+}
+
+// GetRefreshTokenOk returns a tuple with the RefreshToken field value
+// and a boolean to check if the value has been set.
+func (o *OauthAccessTokenResponseCode) GetRefreshTokenOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RefreshToken, true
+}
+
+// SetRefreshToken sets field value
+func (o *OauthAccessTokenResponseCode) SetRefreshToken(v string) {
+	o.RefreshToken = v
+}
+
+// GetRefreshTokenExpiresIn returns the RefreshTokenExpiresIn field value
+func (o *OauthAccessTokenResponseCode) GetRefreshTokenExpiresIn() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.RefreshTokenExpiresIn
+}
+
+// GetRefreshTokenExpiresInOk returns a tuple with the RefreshTokenExpiresIn field value
+// and a boolean to check if the value has been set.
+func (o *OauthAccessTokenResponseCode) GetRefreshTokenExpiresInOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RefreshTokenExpiresIn, true
+}
+
+// SetRefreshTokenExpiresIn sets field value
+func (o *OauthAccessTokenResponseCode) SetRefreshTokenExpiresIn(v int32) {
+	o.RefreshTokenExpiresIn = v
 }
 
 // GetResponseType returns the ResponseType field value if set, zero value otherwise.
@@ -182,54 +234,6 @@ func (o *OauthAccessTokenResponseCode) SetScope(v string) {
 	o.Scope = v
 }
 
-// GetRefreshToken returns the RefreshToken field value
-func (o *OauthAccessTokenResponseCode) GetRefreshToken() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RefreshToken
-}
-
-// GetRefreshTokenOk returns a tuple with the RefreshToken field value
-// and a boolean to check if the value has been set.
-func (o *OauthAccessTokenResponseCode) GetRefreshTokenOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RefreshToken, true
-}
-
-// SetRefreshToken sets field value
-func (o *OauthAccessTokenResponseCode) SetRefreshToken(v string) {
-	o.RefreshToken = v
-}
-
-// GetRefreshTokenExpiresIn returns the RefreshTokenExpiresIn field value
-func (o *OauthAccessTokenResponseCode) GetRefreshTokenExpiresIn() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.RefreshTokenExpiresIn
-}
-
-// GetRefreshTokenExpiresInOk returns a tuple with the RefreshTokenExpiresIn field value
-// and a boolean to check if the value has been set.
-func (o *OauthAccessTokenResponseCode) GetRefreshTokenExpiresInOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RefreshTokenExpiresIn, true
-}
-
-// SetRefreshTokenExpiresIn sets field value
-func (o *OauthAccessTokenResponseCode) SetRefreshTokenExpiresIn(v int32) {
-	o.RefreshTokenExpiresIn = v
-}
-
 func (o OauthAccessTokenResponseCode) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -240,6 +244,8 @@ func (o OauthAccessTokenResponseCode) MarshalJSON() ([]byte, error) {
 
 func (o OauthAccessTokenResponseCode) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["refresh_token"] = o.RefreshToken
+	toSerialize["refresh_token_expires_in"] = o.RefreshTokenExpiresIn
 	if !IsNil(o.ResponseType) {
 		toSerialize["response_type"] = o.ResponseType
 	}
@@ -247,8 +253,6 @@ func (o OauthAccessTokenResponseCode) ToMap() (map[string]interface{}, error) {
 	toSerialize["token_type"] = o.TokenType
 	toSerialize["expires_in"] = o.ExpiresIn
 	toSerialize["scope"] = o.Scope
-	toSerialize["refresh_token"] = o.RefreshToken
-	toSerialize["refresh_token_expires_in"] = o.RefreshTokenExpiresIn
 	return toSerialize, nil
 }
 
@@ -257,12 +261,12 @@ func (o *OauthAccessTokenResponseCode) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"refresh_token",
+		"refresh_token_expires_in",
 		"access_token",
 		"token_type",
 		"expires_in",
 		"scope",
-		"refresh_token",
-		"refresh_token_expires_in",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -2,24 +2,26 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.MediaUploadType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Media upload request
- **/
+ * Media upload request
+ */
 @ApiModel(description="Media upload request")
 
 public class MediaUploadRequest  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private MediaUploadType mediaType;
  /**
    * Get mediaType

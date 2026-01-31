@@ -305,10 +305,7 @@ export class BusinessAccessRelationshipsApiRequestFactory extends BaseAPIRequest
 
         // Query Params
         if (partnerType !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(partnerType, "PartnerType", "");
-            for (const key of Object.keys(serializedParams)) {
-                requestContext.setQueryParam(key, serializedParams[key]);
-            }
+            requestContext.setQueryParam("partner_type", ObjectSerializer.serialize(partnerType, "PartnerType", ""));
         }
 
         // Query Params

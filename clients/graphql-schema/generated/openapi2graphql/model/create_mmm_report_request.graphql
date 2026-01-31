@@ -7,6 +7,9 @@
 
 type CreateMmmReportRequest {
 
+  # A List of countries for filtering
+  countries: [TargetingAdvertiserCountry]
+
   # Name of the Marketing Mix Modeling (MMM) report
   report_name: String!
 
@@ -27,9 +30,6 @@ type CreateMmmReportRequest {
 
   # Metric and entity columns
   columns: [MmmReportingColumn]
-
-  # A List of countries for filtering
-  countries: [TargetingAdvertiserCountry]
 
 }
 

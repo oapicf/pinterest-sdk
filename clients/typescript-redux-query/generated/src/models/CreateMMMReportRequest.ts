@@ -31,6 +31,12 @@ import {
  */
 export interface CreateMMMReportRequest  {
     /**
+     * A List of countries for filtering
+     * @type {Array<TargetingAdvertiserCountry>}
+     * @memberof CreateMMMReportRequest
+     */
+    countries?: Array<TargetingAdvertiserCountry>;
+    /**
      * Name of the Marketing Mix Modeling (MMM) report
      * @type {string}
      * @memberof CreateMMMReportRequest
@@ -72,16 +78,11 @@ export interface CreateMMMReportRequest  {
      * @memberof CreateMMMReportRequest
      */
     columns: Array<MMMReportingColumn>;
-    /**
-     * A List of countries for filtering
-     * @type {Array<TargetingAdvertiserCountry>}
-     * @memberof CreateMMMReportRequest
-     */
-    countries?: Array<TargetingAdvertiserCountry>;
 }
 
 export function CreateMMMReportRequestFromJSON(json: any): CreateMMMReportRequest {
     return {
+        'countries': !exists(json, 'countries') ? undefined : (json['countries'] as Array<any>).map(TargetingAdvertiserCountryFromJSON),
         'reportName': json['report_name'],
         'startDate': json['start_date'],
         'endDate': json['end_date'],
@@ -89,7 +90,6 @@ export function CreateMMMReportRequestFromJSON(json: any): CreateMMMReportReques
         'level': json['level'],
         'targetingTypes': (json['targeting_types'] as Array<any>).map(MMMReportingTargetingTypeFromJSON),
         'columns': (json['columns'] as Array<any>).map(MMMReportingColumnFromJSON),
-        'countries': !exists(json, 'countries') ? undefined : (json['countries'] as Array<any>).map(TargetingAdvertiserCountryFromJSON),
     };
 }
 
@@ -98,6 +98,7 @@ export function CreateMMMReportRequestToJSON(value?: CreateMMMReportRequest): an
         return undefined;
     }
     return {
+        'countries': value.countries === undefined ? undefined : (value.countries as Array<any>).map(TargetingAdvertiserCountryToJSON),
         'report_name': value.reportName,
         'start_date': value.startDate,
         'end_date': value.endDate,
@@ -105,7 +106,6 @@ export function CreateMMMReportRequestToJSON(value?: CreateMMMReportRequest): an
         'level': value.level,
         'targeting_types': (value.targetingTypes as Array<any>).map(MMMReportingTargetingTypeToJSON),
         'columns': (value.columns as Array<any>).map(MMMReportingColumnToJSON),
-        'countries': value.countries === undefined ? undefined : (value.countries as Array<any>).map(TargetingAdvertiserCountryToJSON),
     };
 }
 

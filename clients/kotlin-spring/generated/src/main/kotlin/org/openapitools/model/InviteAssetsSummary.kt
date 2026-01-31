@@ -29,7 +29,7 @@ data class InviteAssetsSummary(
     @field:Valid
     @Schema(example = "null", description = "List of profile IDs and respective permission levels that will be assigned.")
     @get:JsonProperty("profiles") val profiles: kotlin.collections.List<InviteAssetsSummaryProfilesInner>? = null
-    ) {
+) {
 
 }
 

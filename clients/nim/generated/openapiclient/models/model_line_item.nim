@@ -9,15 +9,60 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type LineItem* = object
   ## 
-  productBrand*: string ## Product brand. For example, \"Parker\".
-  productCategory*: string ## Product category. For example, \"Shoes\".
-  productId*: int ## Product ID. For example, 1414.
-  productName*: string ## Product name. For example, \"Parker Boots\".
-  productPrice*: string ## Product price. For example, \"99.99\".
-  productQuantity*: int ## Product quantity. For example, 2.
-  productVariant*: string ## Product variant. For example, \"Red\".
-  productVariantId*: string ## Product variant ID. For example, \"1414-34832\".
+  productBrand*: Option[string] ## Product brand. For example, \"Parker\".
+  productCategory*: Option[string] ## Product category. For example, \"Shoes\".
+  productId*: Option[int] ## Product ID. For example, 1414.
+  productName*: Option[string] ## Product name. For example, \"Parker Boots\".
+  productPrice*: Option[string] ## Product price. For example, \"99.99\".
+  productQuantity*: Option[int] ## Product quantity. For example, 2.
+  productVariant*: Option[string] ## Product variant. For example, \"Red\".
+  productVariantId*: Option[string] ## Product variant ID. For example, \"1414-34832\".
+
+
+# Custom JSON deserialization for LineItem with custom field names
+proc to*(node: JsonNode, T: typedesc[LineItem]): LineItem =
+  result = LineItem()
+  if node.kind == JObject:
+    if node.hasKey("product_brand") and node["product_brand"].kind != JNull:
+      result.productBrand = some(to(node["product_brand"], typeof(result.productBrand.get())))
+    if node.hasKey("product_category") and node["product_category"].kind != JNull:
+      result.productCategory = some(to(node["product_category"], typeof(result.productCategory.get())))
+    if node.hasKey("product_id") and node["product_id"].kind != JNull:
+      result.productId = some(to(node["product_id"], typeof(result.productId.get())))
+    if node.hasKey("product_name") and node["product_name"].kind != JNull:
+      result.productName = some(to(node["product_name"], typeof(result.productName.get())))
+    if node.hasKey("product_price") and node["product_price"].kind != JNull:
+      result.productPrice = some(to(node["product_price"], typeof(result.productPrice.get())))
+    if node.hasKey("product_quantity") and node["product_quantity"].kind != JNull:
+      result.productQuantity = some(to(node["product_quantity"], typeof(result.productQuantity.get())))
+    if node.hasKey("product_variant") and node["product_variant"].kind != JNull:
+      result.productVariant = some(to(node["product_variant"], typeof(result.productVariant.get())))
+    if node.hasKey("product_variant_id") and node["product_variant_id"].kind != JNull:
+      result.productVariantId = some(to(node["product_variant_id"], typeof(result.productVariantId.get())))
+
+# Custom JSON serialization for LineItem with custom field names
+proc `%`*(obj: LineItem): JsonNode =
+  result = newJObject()
+  if obj.productBrand.isSome():
+    result["product_brand"] = %obj.productBrand.get()
+  if obj.productCategory.isSome():
+    result["product_category"] = %obj.productCategory.get()
+  if obj.productId.isSome():
+    result["product_id"] = %obj.productId.get()
+  if obj.productName.isSome():
+    result["product_name"] = %obj.productName.get()
+  if obj.productPrice.isSome():
+    result["product_price"] = %obj.productPrice.get()
+  if obj.productQuantity.isSome():
+    result["product_quantity"] = %obj.productQuantity.get()
+  if obj.productVariant.isSome():
+    result["product_variant"] = %obj.productVariant.get()
+  if obj.productVariantId.isSome():
+    result["product_variant_id"] = %obj.productVariantId.get()
+

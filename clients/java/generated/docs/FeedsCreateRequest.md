@@ -16,7 +16,7 @@
 |**preferredProcessingSchedule** | [**CatalogsFeedProcessingSchedule**](CatalogsFeedProcessingSchedule.md) |  |  [optional] |
 |**defaultCountry** | **Country** |  |  [optional] |
 |**defaultAvailability** | **ProductAvailabilityType** |  |  [optional] |
-|**status** | [**CatalogsStatus**](CatalogsStatus.md) |  |  [optional] |
+|**status** | **CatalogsStatus** |  |  [optional] |
 
 
 

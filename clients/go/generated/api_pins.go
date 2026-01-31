@@ -31,7 +31,7 @@ type ApiMultiPinsAnalyticsRequest struct {
 	pinIds *[]string
 	startDate *string
 	endDate *string
-	metricTypes *[]PinsAnalyticsMetricTypesParameterInner
+	metricTypes *[]string
 	appTypes *string
 	adAccountId *string
 }
@@ -55,7 +55,7 @@ func (r ApiMultiPinsAnalyticsRequest) EndDate(endDate string) ApiMultiPinsAnalyt
 }
 
 // Pin metric types to get data for.
-func (r ApiMultiPinsAnalyticsRequest) MetricTypes(metricTypes []PinsAnalyticsMetricTypesParameterInner) ApiMultiPinsAnalyticsRequest {
+func (r ApiMultiPinsAnalyticsRequest) MetricTypes(metricTypes []string) ApiMultiPinsAnalyticsRequest {
 	r.metricTypes = &metricTypes
 	return r
 }
@@ -157,8 +157,9 @@ func (a *PinsAPIService) MultiPinsAnalyticsExecute(r ApiMultiPinsAnalyticsReques
 	if r.appTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.appTypes = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
+        r.appTypes = &defaultValue
 	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
 	if r.adAccountId != nil {
@@ -276,7 +277,7 @@ type ApiPinsAnalyticsRequest struct {
 	pinId string
 	startDate *string
 	endDate *string
-	metricTypes *[]PinsAnalyticsMetricTypesParameterInner
+	metricTypes *[]string
 	appTypes *string
 	splitField *string
 	adAccountId *string
@@ -295,7 +296,7 @@ func (r ApiPinsAnalyticsRequest) EndDate(endDate string) ApiPinsAnalyticsRequest
 }
 
 // Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
-func (r ApiPinsAnalyticsRequest) MetricTypes(metricTypes []PinsAnalyticsMetricTypesParameterInner) ApiPinsAnalyticsRequest {
+func (r ApiPinsAnalyticsRequest) MetricTypes(metricTypes []string) ApiPinsAnalyticsRequest {
 	r.metricTypes = &metricTypes
 	return r
 }
@@ -383,15 +384,17 @@ func (a *PinsAPIService) PinsAnalyticsExecute(r ApiPinsAnalyticsRequest) (*map[s
 	if r.appTypes != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", r.appTypes, "form", "")
 	} else {
-		var defaultValue string = "ALL"
-		r.appTypes = &defaultValue
+        var defaultValue string = "ALL"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "app_types", defaultValue, "form", "")
+        r.appTypes = &defaultValue
 	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "metric_types", r.metricTypes, "form", "csv")
 	if r.splitField != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", r.splitField, "form", "")
 	} else {
-		var defaultValue string = "NO_SPLIT"
-		r.splitField = &defaultValue
+        var defaultValue string = "NO_SPLIT"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "split_field", defaultValue, "form", "")
+        r.splitField = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -880,8 +883,9 @@ func (a *PinsAPIService) PinsGetExecute(r ApiPinsGetRequest) (*Pin, *http.Respon
 	if r.pinMetrics != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.pinMetrics = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
+        r.pinMetrics = &defaultValue
 	}
 	if r.adAccountId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ad_account_id", r.adAccountId, "form", "")
@@ -1083,8 +1087,9 @@ func (a *PinsAPIService) PinsListExecute(r ApiPinsListRequest) (*PinsList200Resp
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.pinFilter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_filter", r.pinFilter, "form", "")
@@ -1092,8 +1097,9 @@ func (a *PinsAPIService) PinsListExecute(r ApiPinsListRequest) (*PinsList200Resp
 	if r.includeProtectedPins != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_protected_pins", r.includeProtectedPins, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.includeProtectedPins = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "include_protected_pins", defaultValue, "form", "")
+        r.includeProtectedPins = &defaultValue
 	}
 	if r.pinType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_type", r.pinType, "form", "")
@@ -1115,8 +1121,9 @@ func (a *PinsAPIService) PinsListExecute(r ApiPinsListRequest) (*PinsList200Resp
 	if r.pinMetrics != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", r.pinMetrics, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.pinMetrics = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "pin_metrics", defaultValue, "form", "")
+        r.pinMetrics = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

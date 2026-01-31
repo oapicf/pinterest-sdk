@@ -382,7 +382,7 @@
 #' ####################  ItemsBatchPost  ####################
 #'
 #' library(openapi)
-#' var_items_batch_post_request <- items_batch_post_request$new("CREATIVE_ASSETS", Country$new(), CatalogsItemsRequest_language$new(), c(ItemDeleteBatchRecord$new("item_id_example")), BatchOperation$new(), "catalog_id_example") # ItemsBatchPostRequest | Request object used to create catalogs items in a batch
+#' var_items_batch_post_request <- items_batch_post_request$new("CREATIVE_ASSETS", Country$new(), "af-ZA", c(ItemDeleteBatchRecord$new("item_id_example")), BatchOperation$new(), "catalog_id_example") # ItemsBatchPostRequest | Request object used to create catalogs items in a batch
 #' var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 #'
 #' #Operate on item batch
@@ -446,7 +446,7 @@
 #' ####################  ItemsPost  ####################
 #'
 #' library(openapi)
-#' var_catalogs_items_request <- CatalogsItemsRequest$new(Country$new(), CatalogsItemsRequest_language$new(), CatalogsItemsPostFilters$new(CatalogsType$new(), c("item_ids_example"), c("hotel_ids_example"), c("creative_assets_ids_example"), "catalog_id_example")) # CatalogsItemsRequest | Request object used to get catalogs items
+#' var_catalogs_items_request <- CatalogsItemsRequest$new(Country$new(), "af-ZA", CatalogsItemsPostFilters$new(CatalogsType$new(), c("item_ids_example"), c("hotel_ids_example"), c("creative_assets_ids_example"), "catalog_id_example")) # CatalogsItemsRequest | Request object used to get catalogs items
 #' var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 #'
 #' #Get catalogs items (POST)
@@ -604,11 +604,17 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `catalogs_create_request`.")
       }
 
+      if (!missing(`catalogs_create_request`) && is.null(`catalogs_create_request`)) {
+        stop("Invalid value for `catalogs_create_request` when calling CatalogsApi$CatalogsCreate, `catalogs_create_request` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$CatalogsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsCreate, must conform to the pattern ^\\d+$.")
       }
 
@@ -716,18 +722,27 @@ CatalogsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling CatalogsApi$CatalogsList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling CatalogsApi$CatalogsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling CatalogsApi$CatalogsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling CatalogsApi$CatalogsList, must be bigger than or equal to 1.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$CatalogsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsList, must conform to the pattern ^\\d+$.")
       }
 
@@ -841,25 +856,40 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `product_group_id`.")
       }
 
-      if (!str_detect(`product_group_id`, "^\\d+$")) {
+      if (!missing(`product_group_id`) && is.null(`product_group_id`)) {
+        stop("Invalid value for `product_group_id` when calling CatalogsApi$CatalogsProductGroupPinsList, `product_group_id` is not nullable")
+      }
+      if (!is.null(`product_group_id`) && !stringr::str_detect(`product_group_id`, "^\\d+$")) {
         stop("Invalid value for `product_group_id` when calling CatalogsApi$CatalogsProductGroupPinsList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling CatalogsApi$CatalogsProductGroupPinsList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling CatalogsApi$CatalogsProductGroupPinsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling CatalogsApi$CatalogsProductGroupPinsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling CatalogsApi$CatalogsProductGroupPinsList, must be bigger than or equal to 1.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupPinsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupPinsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupPinsList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`pin_metrics`) && is.null(`pin_metrics`)) {
+        stop("Invalid value for `pin_metrics` when calling CatalogsApi$CatalogsProductGroupPinsList, `pin_metrics` is not nullable")
+      }
 
       query_params[["bookmark"]] <- `bookmark`
 
@@ -971,11 +1001,17 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `multiple_product_groups_inner`.")
       }
 
+      if (!missing(`multiple_product_groups_inner`) && is.null(`multiple_product_groups_inner`)) {
+        stop("Invalid value for `multiple_product_groups_inner` when calling CatalogsApi$CatalogsProductGroupsCreate, `multiple_product_groups_inner` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsCreate, must conform to the pattern ^\\d+$.")
       }
 
@@ -1085,11 +1121,17 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `multiple_product_groups_inner`.")
       }
 
+      if (!missing(`multiple_product_groups_inner`) && is.null(`multiple_product_groups_inner`)) {
+        stop("Invalid value for `multiple_product_groups_inner` when calling CatalogsApi$CatalogsProductGroupsCreateMany, `multiple_product_groups_inner` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsCreateMany, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsCreateMany, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsCreateMany, must conform to the pattern ^\\d+$.")
       }
 
@@ -1200,14 +1242,20 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `product_group_id`.")
       }
 
-      if (!str_detect(`product_group_id`, "^\\d+$")) {
+      if (!missing(`product_group_id`) && is.null(`product_group_id`)) {
+        stop("Invalid value for `product_group_id` when calling CatalogsApi$CatalogsProductGroupsDelete, `product_group_id` is not nullable")
+      }
+      if (!is.null(`product_group_id`) && !stringr::str_detect(`product_group_id`, "^\\d+$")) {
         stop("Invalid value for `product_group_id` when calling CatalogsApi$CatalogsProductGroupsDelete, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsDelete, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsDelete, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsDelete, must conform to the pattern ^\\d+$.")
       }
 
@@ -1302,17 +1350,23 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
-      if (length(`id`) > 1000) {
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling CatalogsApi$CatalogsProductGroupsDeleteMany, `id` is not nullable")
+      }
+      if (!is.null(`id`) && length(`id`) > 1000) {
         stop("Invalid length for `id` when calling CatalogsApi$CatalogsProductGroupsDeleteMany, number of items must be less than or equal to 1000.")
       }
-      if (length(`id`) < 1) {
+      if (!is.null(`id`) && length(`id`) < 1) {
         stop("Invalid length for `id` when calling CatalogsApi$CatalogsProductGroupsDeleteMany, number of items must be greater than or equal to 1.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsDeleteMany, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsDeleteMany, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsDeleteMany, must conform to the pattern ^\\d+$.")
       }
 
@@ -1408,14 +1462,20 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `product_group_id`.")
       }
 
-      if (!str_detect(`product_group_id`, "^\\d+$")) {
+      if (!missing(`product_group_id`) && is.null(`product_group_id`)) {
+        stop("Invalid value for `product_group_id` when calling CatalogsApi$CatalogsProductGroupsGet, `product_group_id` is not nullable")
+      }
+      if (!is.null(`product_group_id`) && !stringr::str_detect(`product_group_id`, "^\\d+$")) {
         stop("Invalid value for `product_group_id` when calling CatalogsApi$CatalogsProductGroupsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -1527,33 +1587,51 @@ CatalogsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
-      if (length(`id`) > 1000) {
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling CatalogsApi$CatalogsProductGroupsList, `id` is not nullable")
+      }
+      if (!is.null(`id`) && length(`id`) > 1000) {
         stop("Invalid length for `id` when calling CatalogsApi$CatalogsProductGroupsList, number of items must be less than or equal to 1000.")
       }
-      if (length(`id`) < 1) {
+      if (!is.null(`id`) && length(`id`) < 1) {
         stop("Invalid length for `id` when calling CatalogsApi$CatalogsProductGroupsList, number of items must be greater than or equal to 1.")
       }
 
-      if (!str_detect(`feed_id`, "^\\d+$")) {
+      if (!missing(`feed_id`) && is.null(`feed_id`)) {
+        stop("Invalid value for `feed_id` when calling CatalogsApi$CatalogsProductGroupsList, `feed_id` is not nullable")
+      }
+      if (!is.null(`feed_id`) && !stringr::str_detect(`feed_id`, "^\\d+$")) {
         stop("Invalid value for `feed_id` when calling CatalogsApi$CatalogsProductGroupsList, must conform to the pattern ^\\d+$.")
       }
 
-      if (!str_detect(`catalog_id`, "^\\d+$")) {
+      if (!missing(`catalog_id`) && is.null(`catalog_id`)) {
+        stop("Invalid value for `catalog_id` when calling CatalogsApi$CatalogsProductGroupsList, `catalog_id` is not nullable")
+      }
+      if (!is.null(`catalog_id`) && !stringr::str_detect(`catalog_id`, "^\\d+$")) {
         stop("Invalid value for `catalog_id` when calling CatalogsApi$CatalogsProductGroupsList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling CatalogsApi$CatalogsProductGroupsList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling CatalogsApi$CatalogsProductGroupsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling CatalogsApi$CatalogsProductGroupsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling CatalogsApi$CatalogsProductGroupsList, must be bigger than or equal to 1.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsList, must conform to the pattern ^\\d+$.")
       }
 
@@ -1668,14 +1746,20 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `product_group_id`.")
       }
 
-      if (!str_detect(`product_group_id`, "^\\d+$")) {
+      if (!missing(`product_group_id`) && is.null(`product_group_id`)) {
+        stop("Invalid value for `product_group_id` when calling CatalogsApi$CatalogsProductGroupsProductCountsGet, `product_group_id` is not nullable")
+      }
+      if (!is.null(`product_group_id`) && !stringr::str_detect(`product_group_id`, "^\\d+$")) {
         stop("Invalid value for `product_group_id` when calling CatalogsApi$CatalogsProductGroupsProductCountsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsProductCountsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsProductCountsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsProductCountsGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -1789,15 +1873,24 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `catalogs_product_groups_update_request`.")
       }
 
-      if (!str_detect(`product_group_id`, "^\\d+$")) {
+      if (!missing(`product_group_id`) && is.null(`product_group_id`)) {
+        stop("Invalid value for `product_group_id` when calling CatalogsApi$CatalogsProductGroupsUpdate, `product_group_id` is not nullable")
+      }
+      if (!is.null(`product_group_id`) && !stringr::str_detect(`product_group_id`, "^\\d+$")) {
         stop("Invalid value for `product_group_id` when calling CatalogsApi$CatalogsProductGroupsUpdate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`catalogs_product_groups_update_request`) && is.null(`catalogs_product_groups_update_request`)) {
+        stop("Invalid value for `catalogs_product_groups_update_request` when calling CatalogsApi$CatalogsProductGroupsUpdate, `catalogs_product_groups_update_request` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsUpdate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsUpdate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$CatalogsProductGroupsUpdate, must conform to the pattern ^\\d+$.")
       }
 
@@ -1915,22 +2008,34 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `feed_id`.")
       }
 
-      if (!str_detect(`feed_id`, "^\\d+$")) {
+      if (!missing(`feed_id`) && is.null(`feed_id`)) {
+        stop("Invalid value for `feed_id` when calling CatalogsApi$FeedProcessingResultsList, `feed_id` is not nullable")
+      }
+      if (!is.null(`feed_id`) && !stringr::str_detect(`feed_id`, "^\\d+$")) {
         stop("Invalid value for `feed_id` when calling CatalogsApi$FeedProcessingResultsList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling CatalogsApi$FeedProcessingResultsList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling CatalogsApi$FeedProcessingResultsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling CatalogsApi$FeedProcessingResultsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling CatalogsApi$FeedProcessingResultsList, must be bigger than or equal to 1.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedProcessingResultsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$FeedProcessingResultsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedProcessingResultsList, must conform to the pattern ^\\d+$.")
       }
 
@@ -2042,11 +2147,17 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `feeds_create_request`.")
       }
 
+      if (!missing(`feeds_create_request`) && is.null(`feeds_create_request`)) {
+        stop("Invalid value for `feeds_create_request` when calling CatalogsApi$FeedsCreate, `feeds_create_request` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$FeedsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedsCreate, must conform to the pattern ^\\d+$.")
       }
 
@@ -2157,14 +2268,20 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `feed_id`.")
       }
 
-      if (!str_detect(`feed_id`, "^\\d+$")) {
+      if (!missing(`feed_id`) && is.null(`feed_id`)) {
+        stop("Invalid value for `feed_id` when calling CatalogsApi$FeedsDelete, `feed_id` is not nullable")
+      }
+      if (!is.null(`feed_id`) && !stringr::str_detect(`feed_id`, "^\\d+$")) {
         stop("Invalid value for `feed_id` when calling CatalogsApi$FeedsDelete, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedsDelete, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$FeedsDelete, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedsDelete, must conform to the pattern ^\\d+$.")
       }
 
@@ -2264,14 +2381,20 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `feed_id`.")
       }
 
-      if (!str_detect(`feed_id`, "^\\d+$")) {
+      if (!missing(`feed_id`) && is.null(`feed_id`)) {
+        stop("Invalid value for `feed_id` when calling CatalogsApi$FeedsGet, `feed_id` is not nullable")
+      }
+      if (!is.null(`feed_id`) && !stringr::str_detect(`feed_id`, "^\\d+$")) {
         stop("Invalid value for `feed_id` when calling CatalogsApi$FeedsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$FeedsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedsGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -2382,14 +2505,20 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `feed_id`.")
       }
 
-      if (!str_detect(`feed_id`, "^\\d+$")) {
+      if (!missing(`feed_id`) && is.null(`feed_id`)) {
+        stop("Invalid value for `feed_id` when calling CatalogsApi$FeedsIngest, `feed_id` is not nullable")
+      }
+      if (!is.null(`feed_id`) && !stringr::str_detect(`feed_id`, "^\\d+$")) {
         stop("Invalid value for `feed_id` when calling CatalogsApi$FeedsIngest, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedsIngest, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$FeedsIngest, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedsIngest, must conform to the pattern ^\\d+$.")
       }
 
@@ -2497,22 +2626,34 @@ CatalogsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling CatalogsApi$FeedsList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling CatalogsApi$FeedsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling CatalogsApi$FeedsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling CatalogsApi$FeedsList, must be bigger than or equal to 1.")
       }
 
-      if (!str_detect(`catalog_id`, "^\\d+$")) {
+      if (!missing(`catalog_id`) && is.null(`catalog_id`)) {
+        stop("Invalid value for `catalog_id` when calling CatalogsApi$FeedsList, `catalog_id` is not nullable")
+      }
+      if (!is.null(`catalog_id`) && !stringr::str_detect(`catalog_id`, "^\\d+$")) {
         stop("Invalid value for `catalog_id` when calling CatalogsApi$FeedsList, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$FeedsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedsList, must conform to the pattern ^\\d+$.")
       }
 
@@ -2631,15 +2772,24 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `feeds_update_request`.")
       }
 
-      if (!str_detect(`feed_id`, "^\\d+$")) {
+      if (!missing(`feed_id`) && is.null(`feed_id`)) {
+        stop("Invalid value for `feed_id` when calling CatalogsApi$FeedsUpdate, `feed_id` is not nullable")
+      }
+      if (!is.null(`feed_id`) && !stringr::str_detect(`feed_id`, "^\\d+$")) {
         stop("Invalid value for `feed_id` when calling CatalogsApi$FeedsUpdate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`feeds_update_request`) && is.null(`feeds_update_request`)) {
+        stop("Invalid value for `feeds_update_request` when calling CatalogsApi$FeedsUpdate, `feeds_update_request` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedsUpdate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$FeedsUpdate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$FeedsUpdate, must conform to the pattern ^\\d+$.")
       }
 
@@ -2756,11 +2906,17 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `batch_id`.")
       }
 
+      if (!missing(`batch_id`) && is.null(`batch_id`)) {
+        stop("Invalid value for `batch_id` when calling CatalogsApi$ItemsBatchGet, `batch_id` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$ItemsBatchGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$ItemsBatchGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$ItemsBatchGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -2871,11 +3027,17 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `items_batch_post_request`.")
       }
 
+      if (!missing(`items_batch_post_request`) && is.null(`items_batch_post_request`)) {
+        stop("Invalid value for `items_batch_post_request` when calling CatalogsApi$ItemsBatchPost, `items_batch_post_request` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$ItemsBatchPost, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$ItemsBatchPost, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$ItemsBatchPost, must conform to the pattern ^\\d+$.")
       }
 
@@ -2998,16 +3160,31 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `language`.")
       }
 
+      if (!missing(`country`) && is.null(`country`)) {
+        stop("Invalid value for `country` when calling CatalogsApi$ItemsGet, `country` is not nullable")
+      }
 
+      if (!missing(`language`) && is.null(`language`)) {
+        stop("Invalid value for `language` when calling CatalogsApi$ItemsGet, `language` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$ItemsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$ItemsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$ItemsGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`item_ids`) && is.null(`item_ids`)) {
+        stop("Invalid value for `item_ids` when calling CatalogsApi$ItemsGet, `item_ids` is not nullable")
+      }
 
+      if (!missing(`filters`) && is.null(`filters`)) {
+        stop("Invalid value for `filters` when calling CatalogsApi$ItemsGet, `filters` is not nullable")
+      }
 
       query_params[["ad_account_id"]] <- `ad_account_id`
 
@@ -3128,24 +3305,42 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `processing_result_id`.")
       }
 
-      if (!str_detect(`processing_result_id`, "^\\d+$")) {
+      if (!missing(`processing_result_id`) && is.null(`processing_result_id`)) {
+        stop("Invalid value for `processing_result_id` when calling CatalogsApi$ItemsIssuesList, `processing_result_id` is not nullable")
+      }
+      if (!is.null(`processing_result_id`) && !stringr::str_detect(`processing_result_id`, "^\\d+$")) {
         stop("Invalid value for `processing_result_id` when calling CatalogsApi$ItemsIssuesList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling CatalogsApi$ItemsIssuesList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling CatalogsApi$ItemsIssuesList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling CatalogsApi$ItemsIssuesList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling CatalogsApi$ItemsIssuesList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`item_numbers`) && is.null(`item_numbers`)) {
+        stop("Invalid value for `item_numbers` when calling CatalogsApi$ItemsIssuesList, `item_numbers` is not nullable")
+      }
 
+      if (!missing(`item_validation_issue`) && is.null(`item_validation_issue`)) {
+        stop("Invalid value for `item_validation_issue` when calling CatalogsApi$ItemsIssuesList, `item_validation_issue` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$ItemsIssuesList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$ItemsIssuesList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$ItemsIssuesList, must conform to the pattern ^\\d+$.")
       }
 
@@ -3264,11 +3459,17 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `catalogs_items_request`.")
       }
 
+      if (!missing(`catalogs_items_request`) && is.null(`catalogs_items_request`)) {
+        stop("Invalid value for `catalogs_items_request` when calling CatalogsApi$ItemsPost, `catalogs_items_request` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$ItemsPost, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$ItemsPost, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$ItemsPost, must conform to the pattern ^\\d+$.")
       }
 
@@ -3384,22 +3585,37 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `catalogs_list_products_by_filter_request`.")
       }
 
+      if (!missing(`catalogs_list_products_by_filter_request`) && is.null(`catalogs_list_products_by_filter_request`)) {
+        stop("Invalid value for `catalogs_list_products_by_filter_request` when calling CatalogsApi$ProductsByProductGroupFilterList, `catalogs_list_products_by_filter_request` is not nullable")
+      }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling CatalogsApi$ProductsByProductGroupFilterList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling CatalogsApi$ProductsByProductGroupFilterList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling CatalogsApi$ProductsByProductGroupFilterList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling CatalogsApi$ProductsByProductGroupFilterList, must be bigger than or equal to 1.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$ProductsByProductGroupFilterList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$ProductsByProductGroupFilterList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$ProductsByProductGroupFilterList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`pin_metrics`) && is.null(`pin_metrics`)) {
+        stop("Invalid value for `pin_metrics` when calling CatalogsApi$ProductsByProductGroupFilterList, `pin_metrics` is not nullable")
+      }
 
       query_params[["bookmark"]] <- `bookmark`
 
@@ -3513,11 +3729,17 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `catalogs_report_parameters`.")
       }
 
+      if (!missing(`catalogs_report_parameters`) && is.null(`catalogs_report_parameters`)) {
+        stop("Invalid value for `catalogs_report_parameters` when calling CatalogsApi$ReportsCreate, `catalogs_report_parameters` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$ReportsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$ReportsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$ReportsCreate, must conform to the pattern ^\\d+$.")
       }
 
@@ -3627,11 +3849,17 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `token`.")
       }
 
+      if (!missing(`token`) && is.null(`token`)) {
+        stop("Invalid value for `token` when calling CatalogsApi$ReportsGet, `token` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$ReportsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$ReportsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$ReportsGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -3741,21 +3969,33 @@ CatalogsApi <- R6::R6Class(
         stop("Missing required parameter `parameters`.")
       }
 
+      if (!missing(`parameters`) && is.null(`parameters`)) {
+        stop("Invalid value for `parameters` when calling CatalogsApi$ReportsStats, `parameters` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CatalogsApi$ReportsStats, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CatalogsApi$ReportsStats, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CatalogsApi$ReportsStats, must conform to the pattern ^\\d+$.")
       }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling CatalogsApi$ReportsStats, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling CatalogsApi$ReportsStats, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling CatalogsApi$ReportsStats, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling CatalogsApi$ReportsStats, `bookmark` is not nullable")
+      }
 
       query_params[["ad_account_id"]] <- `ad_account_id`
 

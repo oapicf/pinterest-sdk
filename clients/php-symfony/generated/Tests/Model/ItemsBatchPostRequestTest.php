@@ -87,6 +87,17 @@ class ItemsBatchPostRequestTest extends TestCase
     }
 
     /**
+     * Test attribute "catalogType"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyCatalogType(): void
+    {
+        $this->markTestSkipped('Test for property catalogType not implemented');
+    }
+
+    /**
      * Test attribute "country"
      *
      * @group unit
@@ -109,17 +120,6 @@ class ItemsBatchPostRequestTest extends TestCase
     }
 
     /**
-     * Test attribute "operation"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyOperation(): void
-    {
-        $this->markTestSkipped('Test for property operation not implemented');
-    }
-
-    /**
      * Test attribute "items"
      *
      * @group unit
@@ -128,5 +128,27 @@ class ItemsBatchPostRequestTest extends TestCase
     public function testPropertyItems(): void
     {
         $this->markTestSkipped('Test for property items not implemented');
+    }
+
+    /**
+     * Test attribute "catalogId"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyCatalogId(): void
+    {
+        $this->markTestSkipped('Test for property catalogId not implemented');
+    }
+
+    /**
+     * Test attribute "operation"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyOperation(): void
+    {
+        $this->markTestSkipped('Test for property operation not implemented');
     }
 }

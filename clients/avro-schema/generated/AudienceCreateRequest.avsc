@@ -28,8 +28,8 @@
     },
     {
       "name": "audience_type",
-      "type": "model.AudienceCreateRequest1AudienceType",
-      "doc": ""
+      "type": "model.AudienceType",
+      "doc": "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive."
     }
   ]
 

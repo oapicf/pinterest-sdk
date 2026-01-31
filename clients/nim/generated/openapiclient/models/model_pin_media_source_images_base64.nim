@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_pin_media_source_images_base64_items_inner
 
@@ -17,16 +19,45 @@ type SourceType* {.pure.} = enum
 
 type PinMediaSourceImagesBase64* = object
   ## Multiple Base64-encoded images media source
-  sourceType*: SourceType
+  sourceType*: Option[SourceType]
   items*: seq[PinMediaSourceImagesBase64_items_inner] ## Array with image objects.
-  index*: int
+  index*: Option[int]
 
 func `%`*(v: SourceType): JsonNode =
-  let str = case v:
-    of SourceType.MultipleImageBase64: "multiple_image_base64"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of SourceType.MultipleImageBase64: %"multiple_image_base64"
 func `$`*(v: SourceType): string =
   result = case v:
-    of SourceType.MultipleImageBase64: "multiple_image_base64"
+    of SourceType.MultipleImageBase64: $("multiple_image_base64")
+
+proc to*(node: JsonNode, T: typedesc[SourceType]): SourceType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum SourceType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("multiple_image_base64"):
+    return SourceType.MultipleImageBase64
+  else:
+    raise newException(ValueError, "Invalid enum value for SourceType: " & strVal)
+
+
+# Custom JSON deserialization for PinMediaSourceImagesBase64 with custom field names
+proc to*(node: JsonNode, T: typedesc[PinMediaSourceImagesBase64]): PinMediaSourceImagesBase64 =
+  result = PinMediaSourceImagesBase64()
+  if node.kind == JObject:
+    if node.hasKey("source_type") and node["source_type"].kind != JNull:
+      result.sourceType = some(to(node["source_type"], SourceType))
+    if node.hasKey("items"):
+      result.items = to(node["items"], seq[PinMediaSourceImagesBase64_items_inner])
+    if node.hasKey("index") and node["index"].kind != JNull:
+      result.index = some(to(node["index"], typeof(result.index.get())))
+
+# Custom JSON serialization for PinMediaSourceImagesBase64 with custom field names
+proc `%`*(obj: PinMediaSourceImagesBase64): JsonNode =
+  result = newJObject()
+  if obj.sourceType.isSome():
+    result["source_type"] = %obj.sourceType.get()
+  result["items"] = %obj.items
+  if obj.index.isSome():
+    result["index"] = %obj.index.get()
+

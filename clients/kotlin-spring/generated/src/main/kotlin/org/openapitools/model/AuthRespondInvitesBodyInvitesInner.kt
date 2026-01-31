@@ -29,7 +29,7 @@ data class AuthRespondInvitesBodyInvitesInner(
     @get:Size(min=1,max=25)
     @Schema(example = "null", required = true, description = "Unique identifier of an invite.")
     @get:JsonProperty("invite_id", required = true) val inviteId: kotlin.String
-    ) {
+) {
 
 }
 

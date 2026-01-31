@@ -143,8 +143,7 @@ namespace Org.OpenAPITools.Model
                             itemId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "attributes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                attributes = new Option<ItemAttributesRequest?>(JsonSerializer.Deserialize<ItemAttributesRequest>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            attributes = new Option<ItemAttributesRequest?>(JsonSerializer.Deserialize<ItemAttributesRequest>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

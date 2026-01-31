@@ -9,20 +9,66 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_batch_operation
 import model_catalogs_items_create_batch_request
 import model_catalogs_items_delete_batch_request
 import model_catalogs_items_delete_discontinued_batch_request
-import model_catalogs_items_request_language
 import model_catalogs_items_update_batch_request
 import model_catalogs_items_upsert_batch_request
 import model_country
 import model_item_delete_batch_record
 
+# OneOf type
+type CatalogsItemsBatchRequestKind* {.pure.} = enum
+  CatalogsItemsUpdateBatchRequestVariant
+  CatalogsItemsUpsertBatchRequestVariant
+  CatalogsItemsCreateBatchRequestVariant
+  CatalogsItemsDeleteDiscontinuedBatchRequestVariant
+  CatalogsItemsDeleteBatchRequestVariant
+
 type CatalogsItemsBatchRequest* = object
   ## Request object of catalogs items batch
-  country*: Country
-  language*: CatalogsItemsRequest_language
-  operation*: BatchOperation
-  items*: seq[ItemDeleteBatchRecord] ## Array with catalogs items
+  case kind*: CatalogsItemsBatchRequestKind
+  of CatalogsItemsBatchRequestKind.CatalogsItemsUpdateBatchRequestVariant:
+    CatalogsItemsUpdateBatchRequestValue*: CatalogsItemsUpdateBatchRequest
+  of CatalogsItemsBatchRequestKind.CatalogsItemsUpsertBatchRequestVariant:
+    CatalogsItemsUpsertBatchRequestValue*: CatalogsItemsUpsertBatchRequest
+  of CatalogsItemsBatchRequestKind.CatalogsItemsCreateBatchRequestVariant:
+    CatalogsItemsCreateBatchRequestValue*: CatalogsItemsCreateBatchRequest
+  of CatalogsItemsBatchRequestKind.CatalogsItemsDeleteDiscontinuedBatchRequestVariant:
+    CatalogsItemsDeleteDiscontinuedBatchRequestValue*: CatalogsItemsDeleteDiscontinuedBatchRequest
+  of CatalogsItemsBatchRequestKind.CatalogsItemsDeleteBatchRequestVariant:
+    CatalogsItemsDeleteBatchRequestValue*: CatalogsItemsDeleteBatchRequest
+
+proc to*(node: JsonNode, T: typedesc[CatalogsItemsBatchRequest]): CatalogsItemsBatchRequest =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsItemsBatchRequest(kind: CatalogsItemsBatchRequestKind.CatalogsItemsUpdateBatchRequestVariant, CatalogsItemsUpdateBatchRequestValue: to(node, CatalogsItemsUpdateBatchRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsItemsUpdateBatchRequest: ", e.msg
+  try:
+    return CatalogsItemsBatchRequest(kind: CatalogsItemsBatchRequestKind.CatalogsItemsUpsertBatchRequestVariant, CatalogsItemsUpsertBatchRequestValue: to(node, CatalogsItemsUpsertBatchRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsItemsUpsertBatchRequest: ", e.msg
+  try:
+    return CatalogsItemsBatchRequest(kind: CatalogsItemsBatchRequestKind.CatalogsItemsCreateBatchRequestVariant, CatalogsItemsCreateBatchRequestValue: to(node, CatalogsItemsCreateBatchRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsItemsCreateBatchRequest: ", e.msg
+  try:
+    return CatalogsItemsBatchRequest(kind: CatalogsItemsBatchRequestKind.CatalogsItemsDeleteDiscontinuedBatchRequestVariant, CatalogsItemsDeleteDiscontinuedBatchRequestValue: to(node, CatalogsItemsDeleteDiscontinuedBatchRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsItemsDeleteDiscontinuedBatchRequest: ", e.msg
+  try:
+    return CatalogsItemsBatchRequest(kind: CatalogsItemsBatchRequestKind.CatalogsItemsDeleteBatchRequestVariant, CatalogsItemsDeleteBatchRequestValue: to(node, CatalogsItemsDeleteBatchRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsItemsDeleteBatchRequest: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsItemsBatchRequest. JSON: " & $node)
+

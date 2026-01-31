@@ -477,8 +477,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "attribution_windows":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                attributionWindows = new Option<OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows?>(JsonSerializer.Deserialize<OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            attributionWindows = new Option<OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows?>(JsonSerializer.Deserialize<OptimizationGoalMetadataConversionTagV3GoalMetadataAttributionWindows>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "conversion_event":
                             string? conversionEventRawValue = utf8JsonReader.GetString();
@@ -492,8 +491,7 @@ namespace Org.OpenAPITools.Model
                             cpaGoalValueInMicroCurrency = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "is_roas_optimized":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isRoasOptimized = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isRoasOptimized = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "learning_mode_type":
                             string? learningModeTypeRawValue = utf8JsonReader.GetString();

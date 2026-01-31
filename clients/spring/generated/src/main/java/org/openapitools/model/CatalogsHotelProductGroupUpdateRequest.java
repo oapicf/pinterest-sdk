@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelProductGroupUpdateRequest", description = "Request object for updating a hotel product group.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProductGroupUpdateRequest implements CatalogsVerticalProductGroupUpdateRequest {
 
   /**
@@ -37,7 +37,7 @@ public class CatalogsHotelProductGroupUpdateRequest implements CatalogsVerticalP
   public enum CatalogTypeEnum {
     HOTEL("HOTEL");
 
-    private String value;
+    private final String value;
 
     CatalogTypeEnum(String value) {
       this.value = value;
@@ -72,7 +72,7 @@ public class CatalogsHotelProductGroupUpdateRequest implements CatalogsVerticalP
 
   private @Nullable CatalogsHotelProductGroupFilters filters;
 
-  public CatalogsHotelProductGroupUpdateRequest catalogType(CatalogTypeEnum catalogType) {
+  public CatalogsHotelProductGroupUpdateRequest catalogType(@Nullable CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
     return this;
   }
@@ -84,15 +84,15 @@ public class CatalogsHotelProductGroupUpdateRequest implements CatalogsVerticalP
   
   @Schema(name = "catalog_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("catalog_type")
-  public CatalogTypeEnum getCatalogType() {
+  public @Nullable CatalogTypeEnum getCatalogType() {
     return catalogType;
   }
 
-  public void setCatalogType(CatalogTypeEnum catalogType) {
+  public void setCatalogType(@Nullable CatalogTypeEnum catalogType) {
     this.catalogType = catalogType;
   }
 
-  public CatalogsHotelProductGroupUpdateRequest name(String name) {
+  public CatalogsHotelProductGroupUpdateRequest name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -104,11 +104,11 @@ public class CatalogsHotelProductGroupUpdateRequest implements CatalogsVerticalP
   
   @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
@@ -132,7 +132,7 @@ public class CatalogsHotelProductGroupUpdateRequest implements CatalogsVerticalP
     this.description = description;
   }
 
-  public CatalogsHotelProductGroupUpdateRequest filters(CatalogsHotelProductGroupFilters filters) {
+  public CatalogsHotelProductGroupUpdateRequest filters(@Nullable CatalogsHotelProductGroupFilters filters) {
     this.filters = filters;
     return this;
   }
@@ -144,11 +144,11 @@ public class CatalogsHotelProductGroupUpdateRequest implements CatalogsVerticalP
   @Valid 
   @Schema(name = "filters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("filters")
-  public CatalogsHotelProductGroupFilters getFilters() {
+  public @Nullable CatalogsHotelProductGroupFilters getFilters() {
     return filters;
   }
 
-  public void setFilters(CatalogsHotelProductGroupFilters filters) {
+  public void setFilters(@Nullable CatalogsHotelProductGroupFilters filters) {
     this.filters = filters;
   }
 

@@ -6,26 +6,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.model.BaseInviteDataResponseInviteData;
-import org.openapitools.model.BusinessAccessUserSummary;
 
 
 
-/**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
- **/
 
-@ApiModel(description = "An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2025-05-10T05:38:59.250229241Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class InviteBusinessRoleBinding   {
-  @JsonProperty("created_by_business_id")
-  private String createdByBusinessId;
-
-  @JsonProperty("created_by_user_id")
-  private String createdByUserId;
-
-  @JsonProperty("user")
-  private BusinessAccessUserSummary user;
-
   @JsonProperty("id")
   private String id;
 
@@ -35,59 +22,14 @@ public class InviteBusinessRoleBinding   {
   @JsonProperty("is_received_invite")
   private Boolean isReceivedInvite;
 
-  /**
-   * Unique identifier for the business that created the invite/request.
-   **/
-  public InviteBusinessRoleBinding createdByBusinessId(String createdByBusinessId) {
-    this.createdByBusinessId = createdByBusinessId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1234567890123", value = "Unique identifier for the business that created the invite/request.")
-  @JsonProperty("created_by_business_id")
-  public String getCreatedByBusinessId() {
-    return createdByBusinessId;
-  }
-  public void setCreatedByBusinessId(String createdByBusinessId) {
-    this.createdByBusinessId = createdByBusinessId;
-  }
-
-  /**
-   * Unique identifier for the user that created the invite/request.
-   **/
-  public InviteBusinessRoleBinding createdByUserId(String createdByUserId) {
-    this.createdByUserId = createdByUserId;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "1234567890123", value = "Unique identifier for the user that created the invite/request.")
-  @JsonProperty("created_by_user_id")
-  public String getCreatedByUserId() {
-    return createdByUserId;
-  }
-  public void setCreatedByUserId(String createdByUserId) {
-    this.createdByUserId = createdByUserId;
-  }
-
-  /**
-   * Metadata for the user that updated the invite/request.
-   **/
-  public InviteBusinessRoleBinding user(BusinessAccessUserSummary user) {
-    this.user = user;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "Metadata for the user that updated the invite/request.")
   @JsonProperty("user")
-  public BusinessAccessUserSummary getUser() {
-    return user;
-  }
-  public void setUser(BusinessAccessUserSummary user) {
-    this.user = user;
-  }
+  private Object user;
+
+  @JsonProperty("created_by_business_id")
+  private String createdByBusinessId;
+
+  @JsonProperty("created_by_user_id")
+  private String createdByUserId;
 
   /**
    * Unique identifier of the invite/request.
@@ -142,6 +84,60 @@ public class InviteBusinessRoleBinding   {
     this.isReceivedInvite = isReceivedInvite;
   }
 
+  /**
+   * Metadata for the user that updated the invite/request.
+   **/
+  public InviteBusinessRoleBinding user(Object user) {
+    this.user = user;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Metadata for the user that updated the invite/request.")
+  @JsonProperty("user")
+  public Object getUser() {
+    return user;
+  }
+  public void setUser(Object user) {
+    this.user = user;
+  }
+
+  /**
+   * Unique identifier for the business that created the invite/request.
+   **/
+  public InviteBusinessRoleBinding createdByBusinessId(String createdByBusinessId) {
+    this.createdByBusinessId = createdByBusinessId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1234567890123", value = "Unique identifier for the business that created the invite/request.")
+  @JsonProperty("created_by_business_id")
+  public String getCreatedByBusinessId() {
+    return createdByBusinessId;
+  }
+  public void setCreatedByBusinessId(String createdByBusinessId) {
+    this.createdByBusinessId = createdByBusinessId;
+  }
+
+  /**
+   * Unique identifier for the user that created the invite/request.
+   **/
+  public InviteBusinessRoleBinding createdByUserId(String createdByUserId) {
+    this.createdByUserId = createdByUserId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "1234567890123", value = "Unique identifier for the user that created the invite/request.")
+  @JsonProperty("created_by_user_id")
+  public String getCreatedByUserId() {
+    return createdByUserId;
+  }
+  public void setCreatedByUserId(String createdByUserId) {
+    this.createdByUserId = createdByUserId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -152,17 +148,17 @@ public class InviteBusinessRoleBinding   {
       return false;
     }
     InviteBusinessRoleBinding inviteBusinessRoleBinding = (InviteBusinessRoleBinding) o;
-    return Objects.equals(createdByBusinessId, inviteBusinessRoleBinding.createdByBusinessId) &&
-        Objects.equals(createdByUserId, inviteBusinessRoleBinding.createdByUserId) &&
-        Objects.equals(user, inviteBusinessRoleBinding.user) &&
-        Objects.equals(id, inviteBusinessRoleBinding.id) &&
+    return Objects.equals(id, inviteBusinessRoleBinding.id) &&
         Objects.equals(inviteData, inviteBusinessRoleBinding.inviteData) &&
-        Objects.equals(isReceivedInvite, inviteBusinessRoleBinding.isReceivedInvite);
+        Objects.equals(isReceivedInvite, inviteBusinessRoleBinding.isReceivedInvite) &&
+        Objects.equals(user, inviteBusinessRoleBinding.user) &&
+        Objects.equals(createdByBusinessId, inviteBusinessRoleBinding.createdByBusinessId) &&
+        Objects.equals(createdByUserId, inviteBusinessRoleBinding.createdByUserId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdByBusinessId, createdByUserId, user, id, inviteData, isReceivedInvite);
+    return Objects.hash(id, inviteData, isReceivedInvite, user, createdByBusinessId, createdByUserId);
   }
 
   @Override
@@ -170,12 +166,12 @@ public class InviteBusinessRoleBinding   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteBusinessRoleBinding {\n");
     
-    sb.append("    createdByBusinessId: ").append(toIndentedString(createdByBusinessId)).append("\n");
-    sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
     sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
+    sb.append("    user: ").append(toIndentedString(user)).append("\n");
+    sb.append("    createdByBusinessId: ").append(toIndentedString(createdByBusinessId)).append("\n");
+    sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

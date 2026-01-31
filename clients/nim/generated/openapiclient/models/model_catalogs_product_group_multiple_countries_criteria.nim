@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_country
 
 type CatalogsProductGroupMultipleCountriesCriteria* = object
   ## 
   values*: seq[Country]
-  negated*: bool
+  negated*: Option[bool]
+

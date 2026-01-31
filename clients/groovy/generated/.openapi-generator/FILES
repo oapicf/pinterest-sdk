@@ -115,7 +115,6 @@ src/main/groovy/org/openapitools/model/AudienceCategory.groovy
 src/main/groovy/org/openapitools/model/AudienceCommon.groovy
 src/main/groovy/org/openapitools/model/AudienceCreateCustomRequest.groovy
 src/main/groovy/org/openapitools/model/AudienceCreateRequest.groovy
-src/main/groovy/org/openapitools/model/AudienceCreateRequest1AudienceType.groovy
 src/main/groovy/org/openapitools/model/AudienceDataParty.groovy
 src/main/groovy/org/openapitools/model/AudienceDefinition.groovy
 src/main/groovy/org/openapitools/model/AudienceDefinitionResponse.groovy
@@ -293,7 +292,6 @@ src/main/groovy/org/openapitools/model/CatalogsItemsDeleteDiscontinuedBatchReque
 src/main/groovy/org/openapitools/model/CatalogsItemsFilters.groovy
 src/main/groovy/org/openapitools/model/CatalogsItemsPostFilters.groovy
 src/main/groovy/org/openapitools/model/CatalogsItemsRequest.groovy
-src/main/groovy/org/openapitools/model/CatalogsItemsRequestLanguage.groovy
 src/main/groovy/org/openapitools/model/CatalogsItemsUpdateBatchRequest.groovy
 src/main/groovy/org/openapitools/model/CatalogsItemsUpsertBatchRequest.groovy
 src/main/groovy/org/openapitools/model/CatalogsList200Response.groovy
@@ -627,7 +625,6 @@ src/main/groovy/org/openapitools/model/PinMediaWithVideos.groovy
 src/main/groovy/org/openapitools/model/PinPromotionSummaryStatus.groovy
 src/main/groovy/org/openapitools/model/PinUpdate.groovy
 src/main/groovy/org/openapitools/model/PinUpdateCarouselSlotsInner.groovy
-src/main/groovy/org/openapitools/model/PinsAnalyticsMetricTypesParameterInner.groovy
 src/main/groovy/org/openapitools/model/PinsList200Response.groovy
 src/main/groovy/org/openapitools/model/PinsSaveRequest.groovy
 src/main/groovy/org/openapitools/model/PinterestTagEventData.groovy

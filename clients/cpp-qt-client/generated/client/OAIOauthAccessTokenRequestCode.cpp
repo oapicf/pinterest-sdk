@@ -34,14 +34,14 @@ OAIOauthAccessTokenRequestCode::~OAIOauthAccessTokenRequestCode() {}
 
 void OAIOauthAccessTokenRequestCode::initializeModel() {
 
-    m_grant_type_isSet = false;
-    m_grant_type_isValid = false;
-
     m_code_isSet = false;
     m_code_isValid = false;
 
     m_redirect_uri_isSet = false;
     m_redirect_uri_isValid = false;
+
+    m_grant_type_isSet = false;
+    m_grant_type_isValid = false;
 }
 
 void OAIOauthAccessTokenRequestCode::fromJson(QString jsonString) {
@@ -53,14 +53,14 @@ void OAIOauthAccessTokenRequestCode::fromJson(QString jsonString) {
 
 void OAIOauthAccessTokenRequestCode::fromJsonObject(QJsonObject json) {
 
-    m_grant_type_isValid = ::OpenAPI::fromJsonValue(m_grant_type, json[QString("grant_type")]);
-    m_grant_type_isSet = !json[QString("grant_type")].isNull() && m_grant_type_isValid;
-
     m_code_isValid = ::OpenAPI::fromJsonValue(m_code, json[QString("code")]);
     m_code_isSet = !json[QString("code")].isNull() && m_code_isValid;
 
     m_redirect_uri_isValid = ::OpenAPI::fromJsonValue(m_redirect_uri, json[QString("redirect_uri")]);
     m_redirect_uri_isSet = !json[QString("redirect_uri")].isNull() && m_redirect_uri_isValid;
+
+    m_grant_type_isValid = ::OpenAPI::fromJsonValue(m_grant_type, json[QString("grant_type")]);
+    m_grant_type_isSet = !json[QString("grant_type")].isNull() && m_grant_type_isValid;
 }
 
 QString OAIOauthAccessTokenRequestCode::asJson() const {
@@ -72,32 +72,16 @@ QString OAIOauthAccessTokenRequestCode::asJson() const {
 
 QJsonObject OAIOauthAccessTokenRequestCode::asJsonObject() const {
     QJsonObject obj;
-    if (m_grant_type_isSet) {
-        obj.insert(QString("grant_type"), ::OpenAPI::toJsonValue(m_grant_type));
-    }
     if (m_code_isSet) {
         obj.insert(QString("code"), ::OpenAPI::toJsonValue(m_code));
     }
     if (m_redirect_uri_isSet) {
         obj.insert(QString("redirect_uri"), ::OpenAPI::toJsonValue(m_redirect_uri));
     }
+    if (m_grant_type_isSet) {
+        obj.insert(QString("grant_type"), ::OpenAPI::toJsonValue(m_grant_type));
+    }
     return obj;
-}
-
-QString OAIOauthAccessTokenRequestCode::getGrantType() const {
-    return m_grant_type;
-}
-void OAIOauthAccessTokenRequestCode::setGrantType(const QString &grant_type) {
-    m_grant_type = grant_type;
-    m_grant_type_isSet = true;
-}
-
-bool OAIOauthAccessTokenRequestCode::is_grant_type_Set() const{
-    return m_grant_type_isSet;
-}
-
-bool OAIOauthAccessTokenRequestCode::is_grant_type_Valid() const{
-    return m_grant_type_isValid;
 }
 
 QString OAIOauthAccessTokenRequestCode::getCode() const {
@@ -132,14 +116,25 @@ bool OAIOauthAccessTokenRequestCode::is_redirect_uri_Valid() const{
     return m_redirect_uri_isValid;
 }
 
+QString OAIOauthAccessTokenRequestCode::getGrantType() const {
+    return m_grant_type;
+}
+void OAIOauthAccessTokenRequestCode::setGrantType(const QString &grant_type) {
+    m_grant_type = grant_type;
+    m_grant_type_isSet = true;
+}
+
+bool OAIOauthAccessTokenRequestCode::is_grant_type_Set() const{
+    return m_grant_type_isSet;
+}
+
+bool OAIOauthAccessTokenRequestCode::is_grant_type_Valid() const{
+    return m_grant_type_isValid;
+}
+
 bool OAIOauthAccessTokenRequestCode::isSet() const {
     bool isObjectUpdated = false;
     do {
-        if (m_grant_type_isSet) {
-            isObjectUpdated = true;
-            break;
-        }
-
         if (m_code_isSet) {
             isObjectUpdated = true;
             break;
@@ -149,13 +144,18 @@ bool OAIOauthAccessTokenRequestCode::isSet() const {
             isObjectUpdated = true;
             break;
         }
+
+        if (m_grant_type_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
     } while (false);
     return isObjectUpdated;
 }
 
 bool OAIOauthAccessTokenRequestCode::isValid() const {
     // only required properties are required for the object to be considered valid
-    return m_grant_type_isValid && m_code_isValid && m_redirect_uri_isValid && true;
+    return m_code_isValid && m_redirect_uri_isValid && m_grant_type_isValid && true;
 }
 
 } // namespace OpenAPI

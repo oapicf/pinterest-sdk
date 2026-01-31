@@ -57,7 +57,7 @@ export function CatalogsVerticalsListProductsByCatalogBasedFilterRequestFromJSON
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailListProductsByCatalogBasedFilterRequestFromJSONTyped(json, true), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsVerticalsListProductsByCatalogBasedFilterRequest exists with 'catalogType=${json['catalogType']}'`);
+            return json;
     }
 }
 
@@ -77,8 +77,7 @@ export function CatalogsVerticalsListProductsByCatalogBasedFilterRequestToJSONTy
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailListProductsByCatalogBasedFilterRequestToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsVerticalsListProductsByCatalogBasedFilterRequest exists with 'catalogType=${value['catalogType']}'`);
+            return value;
     }
-
 }
 

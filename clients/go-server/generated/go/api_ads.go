@@ -54,42 +54,99 @@ func NewAdsAPIController(s AdsAPIServicer, opts ...AdsAPIOption) *AdsAPIControll
 func (c *AdsAPIController) Routes() Routes {
 	return Routes{
 		"AdPreviewsCreate": Route{
+			"AdPreviewsCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/ad_previews",
 			c.AdPreviewsCreate,
 		},
 		"AdsList": Route{
+			"AdsList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ads",
 			c.AdsList,
 		},
 		"AdsCreate": Route{
+			"AdsCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/ads",
 			c.AdsCreate,
 		},
 		"AdsUpdate": Route{
+			"AdsUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/ads",
 			c.AdsUpdate,
 		},
 		"AdsAnalytics": Route{
+			"AdsAnalytics",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ads/analytics",
 			c.AdsAnalytics,
 		},
 		"AdTargetingAnalyticsGet": Route{
+			"AdTargetingAnalyticsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ads/targeting_analytics",
 			c.AdTargetingAnalyticsGet,
 		},
 		"AdsGet": Route{
+			"AdsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ads/{ad_id}",
 			c.AdsGet,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the AdsAPIController
+func (c *AdsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"AdPreviewsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/ad_previews",
+			c.AdPreviewsCreate,
+		},
+		Route{
+			"AdsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ads",
+			c.AdsList,
+		},
+		Route{
+			"AdsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/ads",
+			c.AdsCreate,
+		},
+		Route{
+			"AdsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/ads",
+			c.AdsUpdate,
+		},
+		Route{
+			"AdsAnalytics",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ads/analytics",
+			c.AdsAnalytics,
+		},
+		Route{
+			"AdTargetingAnalyticsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ads/targeting_analytics",
+			c.AdTargetingAnalyticsGet,
+		},
+		Route{
+			"AdsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ads/{ad_id}",
+			c.AdsGet,
+		},
+	}
+}
+
+
 
 // AdPreviewsCreate - Create ad preview with pin or image
 func (c *AdsAPIController) AdPreviewsCreate(w http.ResponseWriter, r *http.Request) {

@@ -12,11 +12,20 @@
  */
 
 /**
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
  * @export
  * @interface OauthAccessTokenResponseIntegrationRefresh
  */
 export interface OauthAccessTokenResponseIntegrationRefresh {
+    /**
+     * @type {string}
+     * @memberof OauthAccessTokenResponseIntegrationRefresh
+     */
+    refresh_token: string;
+    /**
+     * @type {number}
+     * @memberof OauthAccessTokenResponseIntegrationRefresh
+     */
+    refresh_token_expires_in: number;
     /**
      * @type {string}
      * @memberof OauthAccessTokenResponseIntegrationRefresh
@@ -42,16 +51,6 @@ export interface OauthAccessTokenResponseIntegrationRefresh {
      * @memberof OauthAccessTokenResponseIntegrationRefresh
      */
     scope: string;
-    /**
-     * @type {string}
-     * @memberof OauthAccessTokenResponseIntegrationRefresh
-     */
-    refresh_token: string;
-    /**
-     * @type {number}
-     * @memberof OauthAccessTokenResponseIntegrationRefresh
-     */
-    refresh_token_expires_in: number;
 }
 
 /**

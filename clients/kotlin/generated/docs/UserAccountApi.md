@@ -312,13 +312,13 @@ try {
 ### Parameters
 | **startDate** | **java.time.LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
 | **endDate** | **java.time.LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
-| **fromClaimedContent** | **kotlin.String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH] |
-| **pinFormat** | **kotlin.String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
-| **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
-| **contentType** | **kotlin.String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC] |
-| **source** | **kotlin.String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
+| **fromClaimedContent** | **kotlin.String**| Filter on Pins that match your claimed domain. | [optional] [default to FromClaimedContent.BOTH] [enum: OTHER, CLAIMED, BOTH] |
+| **pinFormat** | **kotlin.String**| Pin formats to get data for, default is all. | [optional] [default to PinFormat.ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
+| **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to AppTypes.ALL] [enum: ALL, MOBILE, TABLET, WEB] |
+| **contentType** | **kotlin.String**| Filter to paid or organic data. Default is all. | [optional] [default to ContentType.ALL] [enum: ALL, PAID, ORGANIC] |
+| **source** | **kotlin.String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to Source.ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
 | **metricTypes** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Metric types to get data for, default is all.  | [optional] [enum: ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE] |
-| **splitField** | **kotlin.String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to NO_SPLIT] [enum: NO_SPLIT, APP_TYPE, OWNED_CONTENT, SOURCE, PIN_FORMAT] |
+| **splitField** | **kotlin.String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to SplitField.NO_SPLIT] [enum: NO_SPLIT, APP_TYPE, OWNED_CONTENT, SOURCE, PIN_FORMAT] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **adAccountId** | **kotlin.String**| Unique identifier of an ad account. | [optional] |
@@ -381,11 +381,11 @@ try {
 | **startDate** | **java.time.LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
 | **endDate** | **java.time.LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
 | **sortBy** | **kotlin.String**| Specify sorting order for metrics | [enum: ENGAGEMENT, IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE] |
-| **fromClaimedContent** | **kotlin.String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH] |
-| **pinFormat** | **kotlin.String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
-| **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
-| **contentType** | **kotlin.String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC] |
-| **source** | **kotlin.String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
+| **fromClaimedContent** | **kotlin.String**| Filter on Pins that match your claimed domain. | [optional] [default to FromClaimedContent.BOTH] [enum: OTHER, CLAIMED, BOTH] |
+| **pinFormat** | **kotlin.String**| Pin formats to get data for, default is all. | [optional] [default to PinFormat.ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
+| **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to AppTypes.ALL] [enum: ALL, MOBILE, TABLET, WEB] |
+| **contentType** | **kotlin.String**| Filter to paid or organic data. Default is all. | [optional] [default to ContentType.ALL] [enum: ALL, PAID, ORGANIC] |
+| **source** | **kotlin.String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to Source.ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
 | **metricTypes** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Metric types to get data for, default is all.  | [optional] [enum: ENGAGEMENT, ENGAGEMENT_RATE, IMPRESSION, OUTBOUND_CLICK, OUTBOUND_CLICK_RATE, PIN_CLICK, PIN_CLICK_RATE, SAVE, SAVE_RATE] |
 | **numOfPins** | **kotlin.Int**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10] |
 | **createdInLastNDays** | **kotlin.Int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30] |
@@ -453,11 +453,11 @@ try {
 | **startDate** | **java.time.LocalDate**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | |
 | **endDate** | **java.time.LocalDate**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | |
 | **sortBy** | **kotlin.String**| Specify sorting order for video metrics | [enum: IMPRESSION, SAVE, OUTBOUND_CLICK, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START] |
-| **fromClaimedContent** | **kotlin.String**| Filter on Pins that match your claimed domain. | [optional] [default to BOTH] [enum: OTHER, CLAIMED, BOTH] |
-| **pinFormat** | **kotlin.String**| Pin formats to get data for, default is all. | [optional] [default to ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
-| **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB] |
-| **contentType** | **kotlin.String**| Filter to paid or organic data. Default is all. | [optional] [default to ALL] [enum: ALL, PAID, ORGANIC] |
-| **source** | **kotlin.String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
+| **fromClaimedContent** | **kotlin.String**| Filter on Pins that match your claimed domain. | [optional] [default to FromClaimedContent.BOTH] [enum: OTHER, CLAIMED, BOTH] |
+| **pinFormat** | **kotlin.String**| Pin formats to get data for, default is all. | [optional] [default to PinFormat.ALL] [enum: ALL, ORGANIC_IMAGE, ORGANIC_PRODUCT, ORGANIC_VIDEO, ADS_STANDARD, ADS_PRODUCT, ADS_VIDEO, ADS_IDEA] |
+| **appTypes** | **kotlin.String**| Apps or devices to get data for, default is all. | [optional] [default to AppTypes.ALL] [enum: ALL, MOBILE, TABLET, WEB] |
+| **contentType** | **kotlin.String**| Filter to paid or organic data. Default is all. | [optional] [default to ContentType.ALL] [enum: ALL, PAID, ORGANIC] |
+| **source** | **kotlin.String**| Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts | [optional] [default to Source.ALL] [enum: ALL, YOUR_PINS, OTHER_PINS] |
 | **metricTypes** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Metric types to get video data for, default is all.  | [optional] [enum: IMPRESSION, SAVE, VIDEO_MRC_VIEW, VIDEO_AVG_WATCH_TIME, VIDEO_V50_WATCH_TIME, QUARTILE_95_PERCENT_VIEW, VIDEO_10S_VIEW, VIDEO_START, OUTBOUND_CLICK] |
 | **numOfPins** | **kotlin.Int**| Number of pins to include, default is 10. Max is 50. | [optional] [default to 10] |
 | **createdInLastNDays** | **kotlin.Int**| Get metrics for pins created in the last \&quot;n\&quot; days. | [optional] [enum: 30] |
@@ -621,7 +621,7 @@ try {
 ### Parameters
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
-| **feedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [default to ALL] [enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY] |
+| **feedType** | **UserFollowingFeedType**| Thrift param specifying what type of followees will be kept. Default to include all followees. | [optional] [default to UserFollowingFeedType.ALL] [enum: ALL, RANKED, CREATOR_ONLY, RANKED_CREATOR_ONLY] |
 | **explicitFollowing** | **kotlin.Boolean**| Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. | [optional] [default to false] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |

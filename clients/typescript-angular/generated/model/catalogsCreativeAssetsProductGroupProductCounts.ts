@@ -18,10 +18,10 @@ export interface CatalogsCreativeAssetsProductGroupProductCounts {
     videos: number;
 }
 export namespace CatalogsCreativeAssetsProductGroupProductCounts {
-    export type CatalogTypeEnum = 'CREATIVE_ASSETS';
     export const CatalogTypeEnum = {
-        CreativeAssets: 'CREATIVE_ASSETS' as CatalogTypeEnum
-    };
+        CreativeAssets: 'CREATIVE_ASSETS'
+    } as const;
+    export type CatalogTypeEnum = typeof CatalogTypeEnum[keyof typeof CatalogTypeEnum];
 }
 
 

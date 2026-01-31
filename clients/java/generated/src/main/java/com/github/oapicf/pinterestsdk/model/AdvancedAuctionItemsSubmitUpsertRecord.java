@@ -54,7 +54,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Object describing an item bid option upsert operation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdvancedAuctionItemsSubmitUpsertRecord {
   public static final String SERIALIZED_NAME_ITEM_ID = "item_id";
   @SerializedName(SERIALIZED_NAME_ITEM_ID)
@@ -239,20 +239,10 @@ public class AdvancedAuctionItemsSubmitUpsertRecord {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("item_id");
-    openapiFields.add("country");
-    openapiFields.add("language");
-    openapiFields.add("bid_options");
-    openapiFields.add("update_mask");
+    openapiFields = new HashSet<String>(Arrays.asList("item_id", "country", "language", "bid_options", "update_mask"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("item_id");
-    openapiRequiredFields.add("country");
-    openapiRequiredFields.add("language");
-    openapiRequiredFields.add("bid_options");
-    openapiRequiredFields.add("update_mask");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("item_id", "country", "language", "bid_options", "update_mask"));
   }
 
   /**
@@ -264,7 +254,7 @@ public class AdvancedAuctionItemsSubmitUpsertRecord {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AdvancedAuctionItemsSubmitUpsertRecord.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdvancedAuctionItemsSubmitUpsertRecord is not found in the empty JSON string", AdvancedAuctionItemsSubmitUpsertRecord.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AdvancedAuctionItemsSubmitUpsertRecord is not found in the empty JSON string", AdvancedAuctionItemsSubmitUpsertRecord.openapiRequiredFields.toString()));
         }
       }
 
@@ -272,19 +262,19 @@ public class AdvancedAuctionItemsSubmitUpsertRecord {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AdvancedAuctionItemsSubmitUpsertRecord.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AdvancedAuctionItemsSubmitUpsertRecord` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AdvancedAuctionItemsSubmitUpsertRecord` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AdvancedAuctionItemsSubmitUpsertRecord.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("item_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `item_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("item_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `item_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("item_id").toString()));
       }
       // validate the required field `country`
       Country.validateJsonElement(jsonObj.get("country"));
@@ -296,7 +286,7 @@ public class AdvancedAuctionItemsSubmitUpsertRecord {
       if (jsonObj.get("update_mask") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("update_mask").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `update_mask` to be an array in the JSON string but got `%s`", jsonObj.get("update_mask").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `update_mask` to be an array in the JSON string but got `%s`", jsonObj.get("update_mask").toString()));
       }
   }
 

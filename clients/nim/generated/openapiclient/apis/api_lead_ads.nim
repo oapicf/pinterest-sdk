@@ -22,17 +22,14 @@ import ../models/model_ad_account_create_subscription_request
 import ../models/model_ad_account_create_subscription_response
 import ../models/model_ad_account_get_subscription_response
 import ../models/model_error
-import ../models/model_ad_accounts_subscriptions_get_list_200_response
+import ../models/model_ad_accounts_subscriptions_get_list200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -47,6 +44,7 @@ proc adAccountsSubscriptionsDelById*(httpClient: HttpClient, adAccountId: string
   httpClient.delete(basepath & fmt"/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}")
 
 
+
 proc adAccountsSubscriptionsGetById*(httpClient: HttpClient, adAccountId: string, subscriptionId: string): (Option[AdAccountGetSubscriptionResponse], Response) =
   ## Get lead ads subscription
 
@@ -56,12 +54,14 @@ proc adAccountsSubscriptionsGetById*(httpClient: HttpClient, adAccountId: string
 
 proc adAccountsSubscriptionsGetList*(httpClient: HttpClient, adAccountId: string, pageSize: int, bookmark: string): (Option[ad_accounts_subscriptions_get_list_200_response], Response) =
   ## Get lead ads subscriptions
-  let query_for_api_call = encodeQuery([
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/leads/subscriptions" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/leads/subscriptions" & "?" & url_encoded_query_params)
   constructResult[ad_accounts_subscriptions_get_list_200_response](response)
 
 

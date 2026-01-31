@@ -24,18 +24,15 @@ import ../models/model_business_shared_audience_response
 import ../models/model_error
 import ../models/model_shared_audience
 import ../models/model_shared_audience_response
-import ../models/model_ad_accounts_audiences_shared_accounts_list_200_response
-import ../models/model_audiences_list_200_response
+import ../models/model_ad_accounts_audiences_shared_accounts_list200response
+import ../models/model_audiences_list200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -47,39 +44,46 @@ template constructResult[T](response: Response): untyped =
 
 proc adAccountsAudiencesSharedAccountsList*(httpClient: HttpClient, adAccountId: string, audienceId: string, accountType: AudienceAccountType, pageSize: int, bookmark: string): (Option[ad_accounts_audiences_shared_accounts_list_200_response], Response) =
   ## List accounts with access to an audience owned by an ad account
-  let query_for_api_call = encodeQuery([
-    ("audience_id", $audienceId), # Unique identifier of the audience to use to filter the results.
-    ("account_type", $accountType), # Filter accounts by account type.
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("audience_id", $audienceId))
+  query_params_list.add(("account_type", $accountType))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/audiences/shared/accounts" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/ad_accounts/{ad_account_id}/audiences/shared/accounts" & "?" & url_encoded_query_params)
   constructResult[ad_accounts_audiences_shared_accounts_list_200_response](response)
 
 
 proc businessAccountAudiencesSharedAccountsList*(httpClient: HttpClient, businessId: string, audienceId: string, accountType: AudienceAccountType, pageSize: int, bookmark: string): (Option[ad_accounts_audiences_shared_accounts_list_200_response], Response) =
   ## List accounts with access to an audience owned by a business
-  let query_for_api_call = encodeQuery([
-    ("audience_id", $audienceId), # Unique identifier of the audience to use to filter the results.
-    ("account_type", $accountType), # Filter accounts by account type.
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("audience_id", $audienceId))
+  query_params_list.add(("account_type", $accountType))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/audiences/shared/accounts" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/audiences/shared/accounts" & "?" & url_encoded_query_params)
   constructResult[ad_accounts_audiences_shared_accounts_list_200_response](response)
 
 
 proc sharedAudiencesForBusinessList*(httpClient: HttpClient, businessId: string, bookmark: string, order: string, pageSize: int): (Option[audiences_list_200_response], Response) =
   ## List received audiences for a business
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("order", $order), # The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $order != "":
+    query_params_list.add(("order", $order))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/audiences" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/businesses/{business_id}/audiences" & "?" & url_encoded_query_params)
   constructResult[audiences_list_200_response](response)
 
 

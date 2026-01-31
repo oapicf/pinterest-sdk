@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_product_group_filters
 import model_catalogs_creative_assets_product_group_update_request
@@ -17,24 +19,38 @@ import model_catalogs_locale
 import model_catalogs_retail_product_group_update_request
 import model_country
 
-type CatalogType* {.pure.} = enum
-  CREATIVEASSETS
+# OneOf type
+type CatalogsVerticalProductGroupUpdateRequestKind* {.pure.} = enum
+  CatalogsRetailProductGroupUpdateRequestVariant
+  CatalogsHotelProductGroupUpdateRequestVariant
+  CatalogsCreativeAssetsProductGroupUpdateRequestVariant
 
 type CatalogsVerticalProductGroupUpdateRequest* = object
   ## Request object for updating a catalog based product group.
-  catalogType*: CatalogType
-  name*: string
-  description*: string
-  filters*: CatalogsCreativeAssetsProductGroupFilters
-  country*: Country
-  locale*: CatalogsLocale
+  case kind*: CatalogsVerticalProductGroupUpdateRequestKind
+  of CatalogsVerticalProductGroupUpdateRequestKind.CatalogsRetailProductGroupUpdateRequestVariant:
+    CatalogsRetailProductGroupUpdateRequestValue*: CatalogsRetailProductGroupUpdateRequest
+  of CatalogsVerticalProductGroupUpdateRequestKind.CatalogsHotelProductGroupUpdateRequestVariant:
+    CatalogsHotelProductGroupUpdateRequestValue*: CatalogsHotelProductGroupUpdateRequest
+  of CatalogsVerticalProductGroupUpdateRequestKind.CatalogsCreativeAssetsProductGroupUpdateRequestVariant:
+    CatalogsCreativeAssetsProductGroupUpdateRequestValue*: CatalogsCreativeAssetsProductGroupUpdateRequest
 
-func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
+proc to*(node: JsonNode, T: typedesc[CatalogsVerticalProductGroupUpdateRequest]): CatalogsVerticalProductGroupUpdateRequest =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsVerticalProductGroupUpdateRequest(kind: CatalogsVerticalProductGroupUpdateRequestKind.CatalogsRetailProductGroupUpdateRequestVariant, CatalogsRetailProductGroupUpdateRequestValue: to(node, CatalogsRetailProductGroupUpdateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailProductGroupUpdateRequest: ", e.msg
+  try:
+    return CatalogsVerticalProductGroupUpdateRequest(kind: CatalogsVerticalProductGroupUpdateRequestKind.CatalogsHotelProductGroupUpdateRequestVariant, CatalogsHotelProductGroupUpdateRequestValue: to(node, CatalogsHotelProductGroupUpdateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelProductGroupUpdateRequest: ", e.msg
+  try:
+    return CatalogsVerticalProductGroupUpdateRequest(kind: CatalogsVerticalProductGroupUpdateRequestKind.CatalogsCreativeAssetsProductGroupUpdateRequestVariant, CatalogsCreativeAssetsProductGroupUpdateRequestValue: to(node, CatalogsCreativeAssetsProductGroupUpdateRequest))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsProductGroupUpdateRequest: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsVerticalProductGroupUpdateRequest. JSON: " & $node)
 
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: CatalogType): string =
-  result = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"

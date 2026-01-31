@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Audience type
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum AudienceType {
   
   CUSTOMER_LIST("CUSTOMER_LIST"),
@@ -33,7 +33,7 @@ public enum AudienceType {
   
   PERSONA("PERSONA");
 
-  private String value;
+  private final String value;
 
   AudienceType(String value) {
     this.value = value;

@@ -16,11 +16,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class KeywordsResponse  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid KeywordError> errors = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid Keyword> keywords = new ArrayList<>();
  /**
    * Get errors

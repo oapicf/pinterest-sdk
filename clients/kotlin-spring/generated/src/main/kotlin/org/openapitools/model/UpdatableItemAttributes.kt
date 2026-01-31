@@ -199,7 +199,7 @@ data class UpdatableItemAttributes(
 
     @Schema(example = "[\"Red\",\"Small\"]", description = "Option values for this variant. People will see these options next to your Pin and can select the one they want. List them in the order you want them displayed. The order of the variant values must be consistent with the order of the variant names.")
     @get:JsonProperty("variant_values") val variantValues: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
 }
 

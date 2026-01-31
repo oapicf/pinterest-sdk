@@ -50,7 +50,7 @@ data class AudienceInsightsResponse(
 
     @Schema(example = "true", description = "Indicates whether the audience size has been rounded up to the next highest upper boundary.")
     @get:JsonProperty("size_is_upper_bound") val sizeIsUpperBound: kotlin.Boolean? = null
-    ) {
+) {
 
 }
 

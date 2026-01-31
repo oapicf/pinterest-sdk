@@ -1612,8 +1612,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -2131,8 +2131,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -2156,8 +2156,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -2282,8 +2282,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -2307,8 +2307,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -3508,8 +3508,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -6155,7 +6155,7 @@ h5. Query Parameters
         ||Name||Description||Type||Required||Default||Pattern||Enum||Example||
         |partner_type |Specifies whether to fetch internal or external (shared) partners.
 If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt;
-If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | PartnerType | (x) |null |  |  ||asset_type |A resource type to filter the assets by. Only assets of the specified type will be returned. | String | (x) |AD_ACCOUNT |  | [AD_ACCOUNT, PROFILE, ASSET_GROUP] ||start_index |An index to start fetching the results from. Only the results starting from this index will be returned. | Integer | (x) |0 |  |  ||page_size |Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | Integer | (x) |25 |  |  ||bookmark |Cursor used to fetch the next page of items | String | (x) |null |  |  |
+If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | PartnerType | (x) |INTERNAL |  |  ||asset_type |A resource type to filter the assets by. Only assets of the specified type will be returned. | String | (x) |AD_ACCOUNT |  | [AD_ACCOUNT, PROFILE, ASSET_GROUP] ||start_index |An index to start fetching the results from. Only the results starting from this index will be returned. | Integer | (x) |0 |  |  ||page_size |Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | Integer | (x) |25 |  |  ||bookmark |Cursor used to fetch the next page of items | String | (x) |null |  |  |
 ----
 h4. Responses
 
@@ -7629,8 +7629,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -7654,8 +7654,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -7742,8 +7742,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -7767,8 +7767,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -7858,8 +7858,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -7883,8 +7883,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -7908,8 +7908,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -8002,8 +8002,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -8027,8 +8027,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -8058,8 +8058,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -8101,8 +8101,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} ||| Example 3 | {code:title=Example  |collapse=true }{code} ||| Example 4 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -8201,8 +8201,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -8226,8 +8226,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -8257,8 +8257,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -8300,8 +8300,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} ||| Example 3 | {code:title=Example  |collapse=true }{code} ||| Example 4 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -8384,8 +8384,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -8409,8 +8409,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -8440,8 +8440,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -8465,8 +8465,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -8502,8 +8502,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} ||| Example 3 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -8583,8 +8583,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -8614,8 +8614,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -8639,8 +8639,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -8676,8 +8676,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} ||| Example 3 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -8767,8 +8767,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -8792,8 +8792,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -8823,8 +8823,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -8848,8 +8848,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -8873,8 +8873,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -8961,8 +8961,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -8986,8 +8986,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -9017,8 +9017,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -9042,8 +9042,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -9067,8 +9067,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -9158,8 +9158,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -9183,8 +9183,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -9280,8 +9280,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -9305,8 +9305,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -9336,8 +9336,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -9361,8 +9361,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -9410,8 +9410,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} ||| Example 3 | {code:title=Example  |collapse=true }{code} ||| Example 4 | {code:title=Example  |collapse=true }{code} ||| Example 5 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -9501,8 +9501,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -9526,8 +9526,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -9551,8 +9551,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -9649,8 +9649,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -9674,8 +9674,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -9705,8 +9705,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -9736,8 +9736,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=422|subtle=false} |
@@ -9761,8 +9761,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=501|subtle=false} |
@@ -9786,8 +9786,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -9870,8 +9870,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -9901,8 +9901,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -9926,8 +9926,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -9951,8 +9951,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -10042,8 +10042,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -10067,8 +10067,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -10092,8 +10092,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -10184,8 +10184,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -10215,8 +10215,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -10240,8 +10240,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -10328,8 +10328,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -10353,8 +10353,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -10450,8 +10450,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -10481,8 +10481,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -10506,8 +10506,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -10594,8 +10594,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -10619,8 +10619,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -10728,8 +10728,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -10753,8 +10753,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -10859,8 +10859,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -10901,8 +10901,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=405|subtle=false} |
@@ -10929,8 +10929,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -11023,8 +11023,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=401|subtle=false} |
@@ -11048,8 +11048,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -11158,8 +11158,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -11183,8 +11183,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=501|subtle=false} |
@@ -11208,8 +11208,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -11302,8 +11302,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -11333,8 +11333,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -11434,8 +11434,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} ||| Example 3 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -11459,8 +11459,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -11545,8 +11545,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -11570,8 +11570,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -11656,8 +11656,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -11771,8 +11771,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -11796,8 +11796,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=422|subtle=false} |
@@ -12508,8 +12508,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -12703,8 +12703,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -12728,8 +12728,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -12815,8 +12815,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -12840,8 +12840,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -12924,8 +12924,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=409|subtle=false} |
@@ -12949,8 +12949,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -13514,8 +13514,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -13539,8 +13539,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -13646,8 +13646,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -13671,8 +13671,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -13760,8 +13760,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -13873,8 +13873,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -14983,7 +14983,7 @@ h4. Parameters
 
 h5. Query Parameters
         ||Name||Description||Type||Required||Default||Pattern||Enum||Example||
-        |pin_ids |List of Pin IDs. | array[String] | (/) |null |  |  ||start_date |Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | date | (/) |null |  |  ||end_date |Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | date | (/) |null |  |  ||app_types |Apps or devices to get data for, default is all. | String | (x) |ALL |  | [ALL, MOBILE, TABLET, WEB] ||metric_types |Pin metric types to get data for. | array[pins_analytics_metric_types_parameter_inner] | (/) |null |  |  ||ad_account_id |Unique identifier of an ad account. | String | (x) |null | /^\\d+$/ |  |
+        |pin_ids |List of Pin IDs. | array[String] | (/) |null |  |  ||start_date |Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | date | (/) |null |  |  ||end_date |Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | date | (/) |null |  |  ||app_types |Apps or devices to get data for, default is all. | String | (x) |ALL |  | [ALL, MOBILE, TABLET, WEB] ||metric_types |Pin metric types to get data for. | array[String] | (/) |null |  |  ||ad_account_id |Unique identifier of an ad account. | String | (x) |null | /^\\d+$/ |  |
 ----
 h4. Responses
 
@@ -15138,7 +15138,7 @@ h5. Path Parameters
 
 h5. Query Parameters
         ||Name||Description||Type||Required||Default||Pattern||Enum||Example||
-        |start_date |Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | date | (/) |null |  |  ||end_date |Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | date | (/) |null |  |  ||app_types |Apps or devices to get data for, default is all. | String | (x) |ALL |  | [ALL, MOBILE, TABLET, WEB] ||metric_types |Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | array[pins_analytics_metric_types_parameter_inner] | (/) |null |  |  ||split_field |How to split the data into groups. Not including this param means data won&#39;t be split. | String | (x) |NO_SPLIT |  | [NO_SPLIT, APP_TYPE] ||ad_account_id |Unique identifier of an ad account. | String | (x) |null | /^\\d+$/ |  |
+        |start_date |Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | date | (/) |null |  |  ||end_date |Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | date | (/) |null |  |  ||app_types |Apps or devices to get data for, default is all. | String | (x) |ALL |  | [ALL, MOBILE, TABLET, WEB] ||metric_types |Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | array[String] | (/) |null |  |  ||split_field |How to split the data into groups. Not including this param means data won&#39;t be split. | String | (x) |NO_SPLIT |  | [NO_SPLIT, APP_TYPE] ||ad_account_id |Unique identifier of an ad account. | String | (x) |null | /^\\d+$/ |  |
 ----
 h4. Responses
 
@@ -15310,8 +15310,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=403|subtle=false} |
@@ -15341,8 +15341,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=404|subtle=false} |
@@ -15372,8 +15372,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Orange|title=429|subtle=false} |
@@ -15821,8 +15821,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} ||| Example 2 | {code:title=Example  |collapse=true }{code} ||| Example 3 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -16862,8 +16862,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -17494,8 +17494,8 @@ h4. Responses
       }
     }
   }
-}{code} |
-       
+}{code}{code:title=Example  |collapse=true }{code} |
+       || Example 1 | {code:title=Example  |collapse=true }{code} |
 
 
     	|| Status Code | {status:colour=Red|title=0|subtle=false} |
@@ -19828,15 +19828,7 @@ Multiplier values must be between 0 and 10. A value of 10 represents a 900% incr
          |name |(/) |{noformat:nopanel=true}String{noformat} | Audience name. |  | string
          |rule |(/) |{noformat:nopanel=true}AudienceRule{noformat} |  |  | null
          |description |(x) |{noformat:nopanel=true}String{noformat} | Audience description. |  | string
-         |audience_type |(/) |{noformat:nopanel=true}AudienceCreateRequest_1_audience_type{noformat} |  |  | null
-         
-        {anchor:AudienceCreateRequest1AudienceTypeModelAnchor}
-        h3. AudienceCreateRequest1AudienceType
-
-        
-
-        
-        ||Field Name||Required||Type||Description||Enum||Example||
+         |audience_type |(/) |{noformat:nopanel=true}AudienceType{noformat} | &lt;a href&#x3D;&quot;/docs/reference/glossary/#Audience Types&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. |  | null
          
         {anchor:AudienceDataPartyModelAnchor}
         h3. AudienceDataParty
@@ -20983,7 +20975,7 @@ They cannot see details about other employees, partners, or other assets.
         ||Field Name||Required||Type||Description||Enum||Example||
          |catalog_type |(/) |{noformat:nopanel=true}String{noformat} |  |  [CREATIVE_ASSETS]  | null
          |country |(/) |{noformat:nopanel=true}Country{noformat} |  |  | null
-         |language |(/) |{noformat:nopanel=true}CatalogsItemsRequest_language{noformat} |  |  | null
+         |language |(/) |{noformat:nopanel=true}String{noformat} | We recommend using the CatalogsLocale values. |  [af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH]  | null
          |items |(/) |{noformat:nopanel=true}array[CatalogsCreativeAssetsBatchItem]{noformat} | Array with creative assets item operations |  | null
          |catalog_id |(x) |{noformat:nopanel=true}String{noformat} | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog |  | 2680059592705
          
@@ -21661,7 +21653,7 @@ with http:// or https://.&lt;/p&gt; |  | null
         ||Field Name||Required||Type||Description||Enum||Example||
          |catalog_type |(/) |{noformat:nopanel=true}String{noformat} |  |  [HOTEL]  | null
          |country |(/) |{noformat:nopanel=true}Country{noformat} |  |  | null
-         |language |(/) |{noformat:nopanel=true}CatalogsItemsRequest_language{noformat} |  |  | null
+         |language |(/) |{noformat:nopanel=true}String{noformat} | We recommend using the CatalogsLocale values. |  [af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH]  | null
          |items |(/) |{noformat:nopanel=true}array[CatalogsHotelBatchItem]{noformat} | Array with catalogs item operations |  | null
          |catalog_id |(x) |{noformat:nopanel=true}String{noformat} | Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog |  | 2680059592705
          
@@ -22151,7 +22143,7 @@ with http:// or https://.&lt;/p&gt; |  | null
         
         ||Field Name||Required||Type||Description||Enum||Example||
          |country |(/) |{noformat:nopanel=true}Country{noformat} |  |  | null
-         |language |(/) |{noformat:nopanel=true}CatalogsItemsRequest_language{noformat} |  |  | null
+         |language |(/) |{noformat:nopanel=true}String{noformat} | We recommend using the CatalogsLocale values. |  [af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH]  | null
          |operation |(/) |{noformat:nopanel=true}BatchOperation{noformat} |  |  | null
          |items |(/) |{noformat:nopanel=true}array[ItemDeleteBatchRecord]{noformat} | Array with catalogs items |  | null
          
@@ -22163,7 +22155,7 @@ with http:// or https://.&lt;/p&gt; |  | null
         
         ||Field Name||Required||Type||Description||Enum||Example||
          |country |(/) |{noformat:nopanel=true}Country{noformat} |  |  | null
-         |language |(/) |{noformat:nopanel=true}CatalogsItemsRequest_language{noformat} |  |  | null
+         |language |(/) |{noformat:nopanel=true}String{noformat} | We recommend using the CatalogsLocale values. |  [af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH]  | null
          |operation |(/) |{noformat:nopanel=true}BatchOperation{noformat} |  |  | null
          |items |(/) |{noformat:nopanel=true}array[ItemCreateBatchRecord]{noformat} | Array with catalogs items |  | null
          
@@ -22175,7 +22167,7 @@ with http:// or https://.&lt;/p&gt; |  | null
         
         ||Field Name||Required||Type||Description||Enum||Example||
          |country |(/) |{noformat:nopanel=true}Country{noformat} |  |  | null
-         |language |(/) |{noformat:nopanel=true}CatalogsItemsRequest_language{noformat} |  |  | null
+         |language |(/) |{noformat:nopanel=true}String{noformat} | We recommend using the CatalogsLocale values. |  [af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH]  | null
          |operation |(/) |{noformat:nopanel=true}BatchOperation{noformat} |  |  | null
          |items |(/) |{noformat:nopanel=true}array[ItemDeleteBatchRecord]{noformat} | Array with catalogs items |  | null
          
@@ -22187,7 +22179,7 @@ with http:// or https://.&lt;/p&gt; |  | null
         
         ||Field Name||Required||Type||Description||Enum||Example||
          |country |(/) |{noformat:nopanel=true}Country{noformat} |  |  | null
-         |language |(/) |{noformat:nopanel=true}CatalogsItemsRequest_language{noformat} |  |  | null
+         |language |(/) |{noformat:nopanel=true}String{noformat} | We recommend using the CatalogsLocale values. |  [af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH]  | null
          |operation |(/) |{noformat:nopanel=true}BatchOperation{noformat} |  |  | null
          |items |(/) |{noformat:nopanel=true}array[ItemDeleteDiscontinuedBatchRecord]{noformat} | Array with catalogs items |  | null
          
@@ -22225,16 +22217,8 @@ with http:// or https://.&lt;/p&gt; |  | null
         
         ||Field Name||Required||Type||Description||Enum||Example||
          |country |(/) |{noformat:nopanel=true}Country{noformat} |  |  | null
-         |language |(/) |{noformat:nopanel=true}CatalogsItemsRequest_language{noformat} |  |  | null
+         |language |(/) |{noformat:nopanel=true}String{noformat} | We recommend using the CatalogsLocale values. |  [af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH]  | null
          |filters |(/) |{noformat:nopanel=true}CatalogsItemsPostFilters{noformat} |  |  | null
-         
-        {anchor:CatalogsItemsRequestLanguageModelAnchor}
-        h3. CatalogsItemsRequestLanguage
-
-        We recommend using the CatalogsLocale values.
-
-        
-        ||Field Name||Required||Type||Description||Enum||Example||
          
         {anchor:CatalogsItemsUpdateBatchRequestModelAnchor}
         h3. CatalogsItemsUpdateBatchRequest
@@ -22244,7 +22228,7 @@ with http:// or https://.&lt;/p&gt; |  | null
         
         ||Field Name||Required||Type||Description||Enum||Example||
          |country |(/) |{noformat:nopanel=true}Country{noformat} |  |  | null
-         |language |(/) |{noformat:nopanel=true}CatalogsItemsRequest_language{noformat} |  |  | null
+         |language |(/) |{noformat:nopanel=true}String{noformat} | We recommend using the CatalogsLocale values. |  [af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH]  | null
          |operation |(/) |{noformat:nopanel=true}BatchOperation{noformat} |  |  | null
          |items |(/) |{noformat:nopanel=true}array[ItemUpdateBatchRecord]{noformat} | Array with catalogs items |  | null
          
@@ -22256,7 +22240,7 @@ with http:// or https://.&lt;/p&gt; |  | null
         
         ||Field Name||Required||Type||Description||Enum||Example||
          |country |(/) |{noformat:nopanel=true}Country{noformat} |  |  | null
-         |language |(/) |{noformat:nopanel=true}CatalogsItemsRequest_language{noformat} |  |  | null
+         |language |(/) |{noformat:nopanel=true}String{noformat} | We recommend using the CatalogsLocale values. |  [af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH]  | null
          |operation |(/) |{noformat:nopanel=true}BatchOperation{noformat} |  |  | null
          |items |(/) |{noformat:nopanel=true}array[ItemUpsertBatchRecord]{noformat} | Array with catalogs items |  | null
          
@@ -22743,7 +22727,7 @@ with http:// or https://.&lt;/p&gt; |  | null
         ||Field Name||Required||Type||Description||Enum||Example||
          |catalog_type |(/) |{noformat:nopanel=true}String{noformat} |  |  [RETAIL]  | null
          |country |(/) |{noformat:nopanel=true}Country{noformat} |  |  | null
-         |language |(/) |{noformat:nopanel=true}CatalogsItemsRequest_language{noformat} |  |  | null
+         |language |(/) |{noformat:nopanel=true}String{noformat} | We recommend using the CatalogsLocale values. |  [af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH]  | null
          |items |(/) |{noformat:nopanel=true}array[CatalogsRetailBatchRequest_items_inner]{noformat} | Array with catalogs item operations |  | null
          
         {anchor:CatalogsRetailBatchRequestItemsInnerModelAnchor}
@@ -23130,7 +23114,7 @@ with http:// or https://.&lt;/p&gt; |  | null
         ||Field Name||Required||Type||Description||Enum||Example||
          |catalog_type |(/) |{noformat:nopanel=true}String{noformat} |  |  [CREATIVE_ASSETS]  | null
          |country |(/) |{noformat:nopanel=true}Country{noformat} |  |  | null
-         |language |(/) |{noformat:nopanel=true}CatalogsItemsRequest_language{noformat} |  |  | null
+         |language |(/) |{noformat:nopanel=true}String{noformat} | We recommend using the CatalogsLocale values. |  [af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH]  | null
          |items |(/) |{noformat:nopanel=true}array[CatalogsCreativeAssetsBatchItem]{noformat} | Array with creative assets item operations |  | null
          |catalog_id |(x) |{noformat:nopanel=true}String{noformat} | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog |  | 2680059592705
          
@@ -23501,7 +23485,6 @@ with http:// or https://.&lt;/p&gt; |  | null
 
         
         ||Field Name||Required||Type||Description||Enum||Example||
-         |name |(/) |{noformat:nopanel=true}String{noformat} | Conversion tag name. |  | ACME Tools Tag
          |aem_enabled |(x) |{noformat:nopanel=true}Boolean{noformat} | Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/enhanced-match&quot; target&#x3D;&quot;_blank&quot;&gt;Enhanced match&lt;/a&gt; for more information. |  | true
          |md_frequency |(x) |{noformat:nopanel=true}BigDecimal{noformat} | Metadata ingestion frequency. |  | 0.6
          |aem_fnln_enabled |(x) |{noformat:nopanel=true}Boolean{noformat} | Whether Automatic Enhanced Match name is enabled. See &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/enhanced-match&quot; target&#x3D;&quot;_blank&quot;&gt;Enhanced match&lt;/a&gt; for more information. |  | true
@@ -23509,6 +23492,7 @@ with http:// or https://.&lt;/p&gt; |  | null
          |aem_ge_enabled |(x) |{noformat:nopanel=true}Boolean{noformat} | Whether Automatic Enhanced Match gender is enabled. See &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/enhanced-match&quot; target&#x3D;&quot;_blank&quot;&gt;Enhanced match&lt;/a&gt; for more information. |  | true
          |aem_db_enabled |(x) |{noformat:nopanel=true}Boolean{noformat} | Whether Automatic Enhanced Match birthdate is enabled. See &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/enhanced-match&quot; target&#x3D;&quot;_blank&quot;&gt;Enhanced match&lt;/a&gt; for more information. |  | true
          |aem_loc_enabled |(x) |{noformat:nopanel=true}Boolean{noformat} | Whether Automatic Enhanced Match location is enabled. See &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/enhanced-match&quot; target&#x3D;&quot;_blank&quot;&gt;Enhanced match&lt;/a&gt; for more information. |  | true
+         |name |(/) |{noformat:nopanel=true}String{noformat} | Conversion tag name. |  | ACME Tools Tag
          
         {anchor:ConversionTagListResponseModelAnchor}
         h3. ConversionTagListResponse
@@ -23939,6 +23923,7 @@ with http:// or https://.&lt;/p&gt; |  | null
 
         
         ||Field Name||Required||Type||Description||Enum||Example||
+         |countries |(x) |{noformat:nopanel=true}array[TargetingAdvertiserCountry]{noformat} | A List of countries for filtering |  | null
          |report_name |(/) |{noformat:nopanel=true}String{noformat} | Name of the Marketing Mix Modeling (MMM) report |  | null
          |start_date |(/) |{noformat:nopanel=true}String{noformat} | Metric report start date (UTC). Format: YYYY-MM-DD |  | 2020-12-20
          |end_date |(/) |{noformat:nopanel=true}String{noformat} | Metric report end date (UTC). Format: YYYY-MM-DD |  | 2020-12-20
@@ -23946,7 +23931,6 @@ with http:// or https://.&lt;/p&gt; |  | null
          |level |(/) |{noformat:nopanel=true}String{noformat} | Level of the report |  [CAMPAIGN_TARGETING, AD_GROUP_TARGETING]  | null
          |targeting_types |(/) |{noformat:nopanel=true}array[MMMReportingTargetingType]{noformat} | List of targeting types |  | [&quot;GENDER&quot;]
          |columns |(/) |{noformat:nopanel=true}array[MMMReportingColumn]{noformat} | Metric and entity columns |  | null
-         |countries |(x) |{noformat:nopanel=true}array[TargetingAdvertiserCountry]{noformat} | A List of countries for filtering |  | null
          
         {anchor:CreateMMMReportResponseModelAnchor}
         h3. CreateMMMReportResponse
@@ -25031,16 +25015,16 @@ A non empty errors list causes the item processing to fail. |  | null
         {anchor:InviteBusinessRoleBindingModelAnchor}
         h3. InviteBusinessRoleBinding
 
-        An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+        
 
         
         ||Field Name||Required||Type||Description||Enum||Example||
-         |created_by_business_id |(x) |{noformat:nopanel=true}String{noformat} | Unique identifier for the business that created the invite/request. |  | 1234567890123
-         |created_by_user_id |(x) |{noformat:nopanel=true}String{noformat} | Unique identifier for the user that created the invite/request. |  | 1234567890123
-         |user |(x) |{noformat:nopanel=true}BusinessAccessUserSummary{noformat} | Metadata for the user that updated the invite/request. |  | null
          |id |(x) |{noformat:nopanel=true}String{noformat} | Unique identifier of the invite/request. |  | 383791336903426391
          |invite_data |(x) |{noformat:nopanel=true}BaseInviteDataResponse_invite_data{noformat} |  |  | null
          |is_received_invite |(x) |{noformat:nopanel=true}Boolean{noformat} | Indicates whether the invite/request was received. |  | null
+         |user |(x) |{noformat:nopanel=true}Object{noformat} | Metadata for the user that updated the invite/request. |  | null
+         |created_by_business_id |(x) |{noformat:nopanel=true}String{noformat} | Unique identifier for the business that created the invite/request. |  | 1234567890123
+         |created_by_user_id |(x) |{noformat:nopanel=true}String{noformat} | Unique identifier for the user that created the invite/request. |  | 1234567890123
          
         {anchor:InviteExceptionResponseModelAnchor}
         h3. InviteExceptionResponse
@@ -25061,15 +25045,15 @@ A non empty errors list causes the item processing to fail. |  | null
 
         
         ||Field Name||Required||Type||Description||Enum||Example||
-         |assets_summary |(x) |{noformat:nopanel=true}InviteAssetsSummary{noformat} |  |  | null
-         |business_roles |(x) |{noformat:nopanel=true}array[String]{noformat} | The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. |  | [&quot;BIZ_ADMIN&quot;]
-         |created_by_business |(x) |{noformat:nopanel=true}BusinessAccessUserSummary{noformat} | Metadata for the business that created the invite/request. |  | null
-         |created_by_user |(x) |{noformat:nopanel=true}BusinessAccessUserSummary{noformat} | Metadata for the user that created the invite/request. |  | null
-         |created_time |(x) |{noformat:nopanel=true}Integer{noformat} | The time the invite/request was created. Returned in milliseconds. |  | 1646767577816
          |id |(x) |{noformat:nopanel=true}String{noformat} | Unique identifier of the invite/request. |  | 383791336903426391
          |invite_data |(x) |{noformat:nopanel=true}BaseInviteDataResponse_invite_data{noformat} |  |  | null
          |is_received_invite |(x) |{noformat:nopanel=true}Boolean{noformat} | Indicates whether the invite/request was received. |  | null
          |user |(x) |{noformat:nopanel=true}BusinessAccessUserSummary{noformat} | Metadata for the member/partner that was sent the invite/request. |  | null
+         |assets_summary |(x) |{noformat:nopanel=true}InviteAssetsSummary{noformat} |  |  | null
+         |business_roles |(x) |{noformat:nopanel=true}array[String]{noformat} | The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. |  | [&quot;BIZ_ADMIN&quot;]
+         |created_by_business |(x) |{noformat:nopanel=true}Object{noformat} | Metadata for the business that created the invite/request. |  | null
+         |created_by_user |(x) |{noformat:nopanel=true}Object{noformat} | Metadata for the user that created the invite/request. |  | null
+         |created_time |(x) |{noformat:nopanel=true}Integer{noformat} | The time the invite/request was created. Returned in milliseconds. |  | 1646767577816
          
         {anchor:InviteStatusModelAnchor}
         h3. InviteStatus
@@ -25433,7 +25417,7 @@ A non empty errors list causes the item processing to fail. |  | null
         ||Field Name||Required||Type||Description||Enum||Example||
          |catalog_type |(/) |{noformat:nopanel=true}String{noformat} |  |  [CREATIVE_ASSETS]  | null
          |country |(/) |{noformat:nopanel=true}Country{noformat} |  |  | null
-         |language |(/) |{noformat:nopanel=true}CatalogsItemsRequest_language{noformat} |  |  | null
+         |language |(/) |{noformat:nopanel=true}String{noformat} | We recommend using the CatalogsLocale values. |  [af-ZA, ar-SA, bg-BG, bn-IN, cs-CZ, da-DK, de, el-GR, en-AU, en-CA, en-GB, en-IN, en-US, es-419, es-AR, es-ES, es-MX, fi-FI, fr, fr-CA, he-IL, hi-IN, hr-HR, hu-HU, id-ID, it, ja, ko-KR, ms-MY, nb-NO, nl, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sv-SE, te-IN, th-TH, tl-PH, tr, uk-UA, vi-VN, zh-CN, zh-TW, AM, AR, AZ, BG, BN, BS, CA, CS, DA, DV, DZ, DE, EL, EN, ES, ET, FA, FI, FR, HE, HI, HR, HU, HY, ID, IN, IS, IT, IW, JA, KA, KM, KO, LO, LT, LV, MK, MN, MS, MY, NB, NE, NL, NO, PL, PT, RO, RU, SK, SL, SQ, SR, SV, TL, UK, VI, TE, TH, TR, XX, ZH]  | null
          |items |(/) |{noformat:nopanel=true}array[ItemDeleteBatchRecord]{noformat} | Array with catalogs items |  | null
          |catalog_id |(x) |{noformat:nopanel=true}String{noformat} | Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog |  | 2680059592705
          |operation |(/) |{noformat:nopanel=true}BatchOperation{noformat} |  |  | null
@@ -25688,16 +25672,16 @@ compliance with the privacy policy you share with Pinterest, and (ii) you will c
 
         
         ||Field Name||Required||Type||Description||Enum||Example||
-         |name |(/) |{noformat:nopanel=true}String{noformat} | Internal name of the lead form. |  | Lead Form 3/14/2023
-         |privacy_policy_link |(/) |{noformat:nopanel=true}String{noformat} | A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language. |  | https://www.advertisername.com/privacy-policy
-         |has_accepted_terms |(/) |{noformat:nopanel=true}Boolean{noformat} | Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.
+         |name |(x) |{noformat:nopanel=true}String{noformat} | Internal name of the lead form. |  | Lead Form 3/14/2023
+         |privacy_policy_link |(x) |{noformat:nopanel=true}String{noformat} | A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language. |  | https://www.advertisername.com/privacy-policy
+         |has_accepted_terms |(x) |{noformat:nopanel=true}Boolean{noformat} | Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.
 
 By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in
 compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;&quot;https://policy.pinterest.com/en/lead-ad-terms&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO |  | false
-         |completion_message |(/) |{noformat:nopanel=true}String{noformat} | A message for people who complete the form to let them know what happens next. |  | Thank you for submitting. We will contact you soon.
+         |completion_message |(x) |{noformat:nopanel=true}String{noformat} | A message for people who complete the form to let them know what happens next. |  | Thank you for submitting. We will contact you soon.
          |status |(x) |{noformat:nopanel=true}LeadFormStatus{noformat} |  |  | null
          |disclosure_language |(x) |{noformat:nopanel=true}String{noformat} | Additional disclosure language to be included in the lead form. |  | By entering your personal information, you agree that your data will be collected and used.
-         |questions |(/) |{noformat:nopanel=true}array[LeadFormQuestion]{noformat} | List of questions to be displayed on the lead form. |  | [{question_type&#x3D;CUSTOM, custom_question_field_type&#x3D;CHECKBOX, custom_question_label&#x3D;What is your favorite animal?, custom_question_options&#x3D;[Dog, Cat, Bird, Turtle]}]
+         |questions |(x) |{noformat:nopanel=true}array[LeadFormQuestion]{noformat} | List of questions to be displayed on the lead form. |  | [{question_type&#x3D;CUSTOM, custom_question_field_type&#x3D;CHECKBOX, custom_question_label&#x3D;What is your favorite animal?, custom_question_options&#x3D;[Dog, Cat, Bird, Turtle]}]
          |policy_links |(x) |{noformat:nopanel=true}array[LeadFormCommon_policy_links_inner]{noformat} | List of additional policy links to be displayed on the lead form. |  | [{label&#x3D;Copyright, link&#x3D;https://policy.pinterest.com/en/copyright}]
          
         {anchor:LeadFormQuestionModelAnchor}
@@ -26579,35 +26563,35 @@ They cannot see details about other employees, external partners or other ad acc
         {anchor:OauthAccessTokenRequestClientCredentialsModelAnchor}
         h3. OauthAccessTokenRequestClientCredentials
 
-        A request to receive a client token.
+        
 
         
         ||Field Name||Required||Type||Description||Enum||Example||
-         |grant_type |(/) |{noformat:nopanel=true}String{noformat} |  |  [authorization_code, refresh_token, client_credentials]  | null
          |scope |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
+         |grant_type |(/) |{noformat:nopanel=true}String{noformat} |  |  [authorization_code, refresh_token, client_credentials]  | null
          
         {anchor:OauthAccessTokenRequestCodeModelAnchor}
         h3. OauthAccessTokenRequestCode
 
-        A request to exchange an authorization code for an access token.
+        
 
         
         ||Field Name||Required||Type||Description||Enum||Example||
-         |grant_type |(/) |{noformat:nopanel=true}String{noformat} |  |  [authorization_code, refresh_token, client_credentials]  | null
          |code |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
          |redirect_uri |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
+         |grant_type |(/) |{noformat:nopanel=true}String{noformat} |  |  [authorization_code, refresh_token, client_credentials]  | null
          
         {anchor:OauthAccessTokenRequestRefreshModelAnchor}
         h3. OauthAccessTokenRequestRefresh
 
-        A request to exchange a refresh token for a new access token.
+        
 
         
         ||Field Name||Required||Type||Description||Enum||Example||
-         |grant_type |(/) |{noformat:nopanel=true}String{noformat} |  |  [authorization_code, refresh_token, client_credentials]  | null
          |refresh_token |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
          |scope |(x) |{noformat:nopanel=true}String{noformat} |  |  | null
          |refresh_on |(x) |{noformat:nopanel=true}Boolean{noformat} | Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to &quot;everlasting_refresh&quot;. |  | null
+         |grant_type |(/) |{noformat:nopanel=true}String{noformat} |  |  [authorization_code, refresh_token, client_credentials]  | null
          
         {anchor:OauthAccessTokenResponseModelAnchor}
         h3. OauthAccessTokenResponse
@@ -26638,48 +26622,48 @@ They cannot see details about other employees, external partners or other ad acc
         {anchor:OauthAccessTokenResponseCodeModelAnchor}
         h3. OauthAccessTokenResponseCode
 
-        A successful OAuth access token response for the authorization code flow.
+        
 
         
         ||Field Name||Required||Type||Description||Enum||Example||
+         |refresh_token |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
+         |refresh_token_expires_in |(/) |{noformat:nopanel=true}Integer{noformat} |  |  | null
          |response_type |(x) |{noformat:nopanel=true}String{noformat} |  |  [authorization_code, refresh_token, client_credentials]  | null
          |access_token |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
          |token_type |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
          |expires_in |(/) |{noformat:nopanel=true}Integer{noformat} |  |  | null
          |scope |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
-         |refresh_token |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
-         |refresh_token_expires_in |(/) |{noformat:nopanel=true}Integer{noformat} |  |  | null
          
         {anchor:OauthAccessTokenResponseEverlastingRefreshModelAnchor}
         h3. OauthAccessTokenResponseEverlastingRefresh
 
-        A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
+        
 
         
         ||Field Name||Required||Type||Description||Enum||Example||
+         |refresh_token |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
+         |refresh_token_expires_in |(/) |{noformat:nopanel=true}Integer{noformat} |  |  | null
+         |refresh_token_expires_at |(/) |{noformat:nopanel=true}Integer{noformat} |  |  | null
          |response_type |(x) |{noformat:nopanel=true}String{noformat} |  |  [authorization_code, refresh_token, client_credentials]  | null
          |access_token |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
          |token_type |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
          |expires_in |(/) |{noformat:nopanel=true}Integer{noformat} |  |  | null
          |scope |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
-         |refresh_token |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
-         |refresh_token_expires_in |(/) |{noformat:nopanel=true}Integer{noformat} |  |  | null
-         |refresh_token_expires_at |(/) |{noformat:nopanel=true}Integer{noformat} |  |  | null
          
         {anchor:OauthAccessTokenResponseIntegrationRefreshModelAnchor}
         h3. OauthAccessTokenResponseIntegrationRefresh
 
-        A successful OAuth access token response for the refresh token flow, with an added refresh token.
+        
 
         
         ||Field Name||Required||Type||Description||Enum||Example||
+         |refresh_token |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
+         |refresh_token_expires_in |(/) |{noformat:nopanel=true}Integer{noformat} |  |  | null
          |response_type |(x) |{noformat:nopanel=true}String{noformat} |  |  [authorization_code, refresh_token, client_credentials]  | null
          |access_token |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
          |token_type |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
          |expires_in |(/) |{noformat:nopanel=true}Integer{noformat} |  |  | null
          |scope |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
-         |refresh_token |(/) |{noformat:nopanel=true}String{noformat} |  |  | null
-         |refresh_token_expires_in |(/) |{noformat:nopanel=true}Integer{noformat} |  |  | null
          
         {anchor:OauthAccessTokenResponseRefreshModelAnchor}
         h3. OauthAccessTokenResponseRefresh
@@ -27277,14 +27261,6 @@ They cannot see details about other employees, external partners or other ad acc
          |title |(x) |{noformat:nopanel=true}String{noformat} | Carousel Pin slot title. |  | null
          |description |(x) |{noformat:nopanel=true}String{noformat} | Carousel Pin slot description. |  | null
          |link |(x) |{noformat:nopanel=true}String{noformat} | Carousel Pin slot link. |  | null
-         
-        {anchor:PinsAnalyticsMetricTypesParameterInnerModelAnchor}
-        h3. PinsAnalyticsMetricTypesParameterInner
-
-        
-
-        
-        ||Field Name||Required||Type||Description||Enum||Example||
          
         {anchor:PinsList200ResponseModelAnchor}
         h3. PinsList200Response

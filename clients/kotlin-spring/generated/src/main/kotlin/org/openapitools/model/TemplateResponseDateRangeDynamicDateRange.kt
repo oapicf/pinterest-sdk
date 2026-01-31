@@ -27,7 +27,7 @@ data class TemplateResponseDateRangeDynamicDateRange(
 
     @Schema(example = "YEAR_TO_DATE", description = "The dynamic range type")
     @get:JsonProperty("range") val range: TemplateResponseDateRangeDynamicDateRange.Range? = null
-    ) {
+) {
 
     /**
     * The dynamic range type
@@ -44,7 +44,8 @@ data class TemplateResponseDateRangeDynamicDateRange(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Range {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TemplateResponseDateRangeDynamicDateRange'")
             }
         }
     }

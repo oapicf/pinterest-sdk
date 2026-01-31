@@ -208,10 +208,10 @@ export interface CatalogsFeedValidationWarnings {
     MPN_INVALID?: number;
 }
 export namespace CatalogsFeedValidationWarnings {
-    export type FETCHSAMESIGNATUREEnum = 1;
     export const FETCHSAMESIGNATUREEnum = {
-        NUMBER_1: 1 as FETCHSAMESIGNATUREEnum
-    };
+        NUMBER_1: 1
+    } as const;
+    export type FETCHSAMESIGNATUREEnum = typeof FETCHSAMESIGNATUREEnum[keyof typeof FETCHSAMESIGNATUREEnum];
 }
 
 

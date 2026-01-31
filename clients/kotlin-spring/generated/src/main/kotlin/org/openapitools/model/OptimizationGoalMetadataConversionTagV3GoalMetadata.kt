@@ -47,7 +47,7 @@ data class OptimizationGoalMetadataConversionTagV3GoalMetadata(
 
     @Schema(example = "ACTIVE", description = "Conversion learning model type")
     @get:JsonProperty("learning_mode_type") val learningModeType: OptimizationGoalMetadataConversionTagV3GoalMetadata.LearningModeType? = null
-    ) {
+) {
 
     /**
     * 
@@ -70,7 +70,8 @@ data class OptimizationGoalMetadataConversionTagV3GoalMetadata(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ConversionEvent {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OptimizationGoalMetadataConversionTagV3GoalMetadata'")
             }
         }
     }
@@ -88,7 +89,8 @@ data class OptimizationGoalMetadataConversionTagV3GoalMetadata(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): LearningModeType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OptimizationGoalMetadataConversionTagV3GoalMetadata'")
             }
         }
     }

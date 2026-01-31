@@ -191,12 +191,10 @@ namespace Org.OpenAPITools.Model
                                 catalogType = new Option<CatalogsCreativeAssetsProduct.CatalogTypeEnum?>(CatalogsCreativeAssetsProduct.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
                             break;
                         case "metadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                metadata = new Option<CatalogsCreativeAssetsProductMetadata?>(JsonSerializer.Deserialize<CatalogsCreativeAssetsProductMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            metadata = new Option<CatalogsCreativeAssetsProductMetadata?>(JsonSerializer.Deserialize<CatalogsCreativeAssetsProductMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "pin":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pin = new Option<Pin?>(JsonSerializer.Deserialize<Pin>(ref utf8JsonReader, jsonSerializerOptions));
+                            pin = new Option<Pin?>(JsonSerializer.Deserialize<Pin>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

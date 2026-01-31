@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **country** | [**Country**](Country.md) |  |  |
-| **language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  |  |
+| **language** | **String** | We recommend using the CatalogsLocale values. |  |
 | **operation** | [**BatchOperation**](BatchOperation.md) |  |  |
 | **items** | [**Array&lt;ItemDeleteBatchRecord&gt;**](ItemDeleteBatchRecord.md) | Array with catalogs items |  |
 

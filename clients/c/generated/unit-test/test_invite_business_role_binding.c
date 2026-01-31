@@ -16,7 +16,6 @@
 #include "../model/invite_business_role_binding.h"
 invite_business_role_binding_t* instantiate_invite_business_role_binding(int include_optional);
 
-#include "test_business_access_user_summary.c"
 #include "test_base_invite_data_response_invite_data.c"
 
 
@@ -24,23 +23,22 @@ invite_business_role_binding_t* instantiate_invite_business_role_binding(int inc
   invite_business_role_binding_t* invite_business_role_binding = NULL;
   if (include_optional) {
     invite_business_role_binding = invite_business_role_binding_create(
-      "1234567890123",
-      "1234567890123",
-       // false, not to have infinite recursion
-      instantiate_business_access_user_summary(0),
       "383791336903426391",
        // false, not to have infinite recursion
       instantiate_base_invite_data_response_invite_data(0),
-      1
+      1,
+      0,
+      "1234567890123",
+      "1234567890123"
     );
   } else {
     invite_business_role_binding = invite_business_role_binding_create(
-      "1234567890123",
-      "1234567890123",
-      NULL,
       "383791336903426391",
       NULL,
-      1
+      1,
+      0,
+      "1234567890123",
+      "1234567890123"
     );
   }
 

@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LinkedBusiness
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LinkedBusiness {
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
@@ -225,15 +225,10 @@ public class LinkedBusiness {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("username");
-    openapiFields.add("image_small_url");
-    openapiFields.add("image_medium_url");
-    openapiFields.add("image_large_url");
-    openapiFields.add("image_xlarge_url");
+    openapiFields = new HashSet<String>(Arrays.asList("username", "image_small_url", "image_medium_url", "image_large_url", "image_xlarge_url"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -245,7 +240,7 @@ public class LinkedBusiness {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!LinkedBusiness.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LinkedBusiness is not found in the empty JSON string", LinkedBusiness.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in LinkedBusiness is not found in the empty JSON string", LinkedBusiness.openapiRequiredFields.toString()));
         }
       }
 
@@ -253,24 +248,24 @@ public class LinkedBusiness {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!LinkedBusiness.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LinkedBusiness` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `LinkedBusiness` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
       }
       if ((jsonObj.get("image_small_url") != null && !jsonObj.get("image_small_url").isJsonNull()) && !jsonObj.get("image_small_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `image_small_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_small_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `image_small_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_small_url").toString()));
       }
       if ((jsonObj.get("image_medium_url") != null && !jsonObj.get("image_medium_url").isJsonNull()) && !jsonObj.get("image_medium_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `image_medium_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_medium_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `image_medium_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_medium_url").toString()));
       }
       if ((jsonObj.get("image_large_url") != null && !jsonObj.get("image_large_url").isJsonNull()) && !jsonObj.get("image_large_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `image_large_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_large_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `image_large_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_large_url").toString()));
       }
       if ((jsonObj.get("image_xlarge_url") != null && !jsonObj.get("image_xlarge_url").isJsonNull()) && !jsonObj.get("image_xlarge_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `image_xlarge_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_xlarge_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `image_xlarge_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image_xlarge_url").toString()));
       }
   }
 

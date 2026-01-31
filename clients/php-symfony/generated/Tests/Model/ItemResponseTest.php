@@ -109,14 +109,25 @@ class ItemResponseTest extends TestCase
     }
 
     /**
-     * Test attribute "errors"
+     * Test attribute "pins"
      *
      * @group unit
      * @small
      */
-    public function testPropertyErrors(): void
+    public function testPropertyPins(): void
     {
-        $this->markTestSkipped('Test for property errors not implemented');
+        $this->markTestSkipped('Test for property pins not implemented');
+    }
+
+    /**
+     * Test attribute "attributes"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyAttributes(): void
+    {
+        $this->markTestSkipped('Test for property attributes not implemented');
     }
 
     /**
@@ -139,5 +150,16 @@ class ItemResponseTest extends TestCase
     public function testPropertyCreativeAssetsId(): void
     {
         $this->markTestSkipped('Test for property creativeAssetsId not implemented');
+    }
+
+    /**
+     * Test attribute "errors"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyErrors(): void
+    {
+        $this->markTestSkipped('Test for property errors not implemented');
     }
 }

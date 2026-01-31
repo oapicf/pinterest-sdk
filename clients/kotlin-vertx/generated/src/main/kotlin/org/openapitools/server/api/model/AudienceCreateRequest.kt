@@ -11,8 +11,8 @@
 */
 package org.openapitools.server.api.model
 
-import org.openapitools.server.api.model.AudienceCreateRequest1AudienceType
 import org.openapitools.server.api.model.AudienceRule
+import org.openapitools.server.api.model.AudienceType
 
         
 import com.google.gson.annotations.SerializedName
@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
  * 
  * @param name Audience name.
  * @param rule 
- * @param audienceType 
+ * @param audienceType <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
  * @param adAccountId Ad account ID.
  * @param description Audience description.
  */
@@ -32,7 +32,8 @@ data class AudienceCreateRequest (
     /* Audience name. */
     @SerializedName("name") private val _name: kotlin.String?,
     @SerializedName("rule") private val _rule: AudienceRule?,
-    @SerializedName("audienceType") private val _audienceType: AudienceCreateRequest1AudienceType?,
+    /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
+    @SerializedName("audienceType") private val _audienceType: AudienceType?,
     /* Ad account ID. */
     val adAccountId: kotlin.String? = null,
     /* Audience description. */

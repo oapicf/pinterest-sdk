@@ -17,18 +17,18 @@ export interface TopVideoPinsAnalyticsResponse {
     sort_by?: TopVideoPinsAnalyticsResponse.SortByEnum;
 }
 export namespace TopVideoPinsAnalyticsResponse {
-    export type SortByEnum = 'SAVE' | 'IMPRESSION' | 'OUTBOUND_CLICK' | 'VIDEO_MRC_VIEW' | 'VIDEO_AVG_WATCH_TIME' | 'VIDEO_V50_WATCH_TIME' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_10S_VIEW' | 'VIDEO_START';
     export const SortByEnum = {
-        Save: 'SAVE' as SortByEnum,
-        Impression: 'IMPRESSION' as SortByEnum,
-        OutboundClick: 'OUTBOUND_CLICK' as SortByEnum,
-        VideoMrcView: 'VIDEO_MRC_VIEW' as SortByEnum,
-        VideoAvgWatchTime: 'VIDEO_AVG_WATCH_TIME' as SortByEnum,
-        VideoV50WatchTime: 'VIDEO_V50_WATCH_TIME' as SortByEnum,
-        Quartile95PercentView: 'QUARTILE_95_PERCENT_VIEW' as SortByEnum,
-        Video10SView: 'VIDEO_10S_VIEW' as SortByEnum,
-        VideoStart: 'VIDEO_START' as SortByEnum
-    };
+        Save: 'SAVE',
+        Impression: 'IMPRESSION',
+        OutboundClick: 'OUTBOUND_CLICK',
+        VideoMrcView: 'VIDEO_MRC_VIEW',
+        VideoAvgWatchTime: 'VIDEO_AVG_WATCH_TIME',
+        VideoV50WatchTime: 'VIDEO_V50_WATCH_TIME',
+        Quartile95PercentView: 'QUARTILE_95_PERCENT_VIEW',
+        Video10SView: 'VIDEO_10S_VIEW',
+        VideoStart: 'VIDEO_START'
+    } as const;
+    export type SortByEnum = typeof SortByEnum[keyof typeof SortByEnum];
 }
 
 

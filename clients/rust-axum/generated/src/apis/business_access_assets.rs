@@ -176,6 +176,8 @@ pub enum UpdatePartnerAssetAccessHandlerImplResponse {
 }
 
 
+
+
 /// BusinessAccessAssets
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -185,6 +187,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// AssetGroupSlashCreate - POST /v5/businesses/{business_id}/asset_groups
     async fn asset_group_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -197,6 +200,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// AssetGroupSlashDelete - DELETE /v5/businesses/{business_id}/asset_groups
     async fn asset_group_slash_delete(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -209,6 +213,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// AssetGroupSlashUpdate - PATCH /v5/businesses/{business_id}/asset_groups
     async fn asset_group_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -221,6 +226,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// BusinessAssetMembersSlashGet - GET /v5/businesses/{business_id}/assets/{asset_id}/members
     async fn business_asset_members_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -233,6 +239,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// BusinessAssetPartnersSlashGet - GET /v5/businesses/{business_id}/assets/{asset_id}/partners
     async fn business_asset_partners_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -245,6 +252,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// BusinessAssetsSlashGet - GET /v5/businesses/{business_id}/assets
     async fn business_assets_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -257,6 +265,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// BusinessMemberAssetsSlashGet - GET /v5/businesses/{business_id}/members/{member_id}/assets
     async fn business_member_assets_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -269,6 +278,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// BusinessMembersAssetAccessSlashDelete - DELETE /v5/businesses/{business_id}/members/assets/access
     async fn business_members_asset_access_slash_delete(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -281,6 +291,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// BusinessMembersAssetAccessSlashUpdate - PATCH /v5/businesses/{business_id}/members/assets/access
     async fn business_members_asset_access_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -293,6 +304,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// BusinessPartnerAssetAccessSlashGet - GET /v5/businesses/{business_id}/partners/{partner_id}/assets
     async fn business_partner_asset_access_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -305,6 +317,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// DeletePartnerAssetAccessHandlerImpl - DELETE /v5/businesses/{business_id}/partners/assets
     async fn delete_partner_asset_access_handler_impl(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -317,6 +330,7 @@ pub trait BusinessAccessAssets<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// UpdatePartnerAssetAccessHandlerImpl - PATCH /v5/businesses/{business_id}/partners/assets
     async fn update_partner_asset_access_handler_impl(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

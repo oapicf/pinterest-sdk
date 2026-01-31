@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type GrantType* {.pure.} = enum
@@ -17,22 +19,58 @@ type GrantType* {.pure.} = enum
   ClientCredentials
 
 type OauthAccessTokenRequestRefresh* = object
-  ## A request to exchange a refresh token for a new access token.
-  grantType*: GrantType
+  ## 
   refreshToken*: string
-  scope*: string
-  refreshOn*: bool ## Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
+  scope*: Option[string]
+  refreshOn*: Option[bool] ## Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
+  grantType*: GrantType
 
 func `%`*(v: GrantType): JsonNode =
-  let str = case v:
-    of GrantType.AuthorizationCode: "authorization_code"
-    of GrantType.RefreshToken: "refresh_token"
-    of GrantType.ClientCredentials: "client_credentials"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of GrantType.AuthorizationCode: %"authorization_code"
+    of GrantType.RefreshToken: %"refresh_token"
+    of GrantType.ClientCredentials: %"client_credentials"
 func `$`*(v: GrantType): string =
   result = case v:
-    of GrantType.AuthorizationCode: "authorization_code"
-    of GrantType.RefreshToken: "refresh_token"
-    of GrantType.ClientCredentials: "client_credentials"
+    of GrantType.AuthorizationCode: $("authorization_code")
+    of GrantType.RefreshToken: $("refresh_token")
+    of GrantType.ClientCredentials: $("client_credentials")
+
+proc to*(node: JsonNode, T: typedesc[GrantType]): GrantType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum GrantType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("authorization_code"):
+    return GrantType.AuthorizationCode
+  of $("refresh_token"):
+    return GrantType.RefreshToken
+  of $("client_credentials"):
+    return GrantType.ClientCredentials
+  else:
+    raise newException(ValueError, "Invalid enum value for GrantType: " & strVal)
+
+
+# Custom JSON deserialization for OauthAccessTokenRequestRefresh with custom field names
+proc to*(node: JsonNode, T: typedesc[OauthAccessTokenRequestRefresh]): OauthAccessTokenRequestRefresh =
+  result = OauthAccessTokenRequestRefresh()
+  if node.kind == JObject:
+    if node.hasKey("refresh_token"):
+      result.refreshToken = to(node["refresh_token"], string)
+    if node.hasKey("scope") and node["scope"].kind != JNull:
+      result.scope = some(to(node["scope"], typeof(result.scope.get())))
+    if node.hasKey("refresh_on") and node["refresh_on"].kind != JNull:
+      result.refreshOn = some(to(node["refresh_on"], typeof(result.refreshOn.get())))
+    if node.hasKey("grant_type"):
+      result.grantType = to(node["grant_type"], GrantType)
+
+# Custom JSON serialization for OauthAccessTokenRequestRefresh with custom field names
+proc `%`*(obj: OauthAccessTokenRequestRefresh): JsonNode =
+  result = newJObject()
+  result["refresh_token"] = %obj.refreshToken
+  if obj.scope.isSome():
+    result["scope"] = %obj.scope.get()
+  if obj.refreshOn.isSome():
+    result["refresh_on"] = %obj.refreshOn.get()
+  result["grant_type"] = %obj.grantType
+

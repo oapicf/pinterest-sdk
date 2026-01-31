@@ -21,37 +21,49 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdAccount  {
   
   @ApiModelProperty(value = "")
+
   private String id;
 
   @ApiModelProperty(value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private AdAccountOwner owner;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private Country country;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private Currency currency;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<BusinessAccessRole> permissions = new ArrayList<>();
 
-  @ApiModelProperty(example = "1451431341", value = "Creation time. Unix timestamp in seconds.")
  /**
-   * Creation time. Unix timestamp in seconds.
-  **/
+  * Creation time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1451431341", value = "Creation time. Unix timestamp in seconds.")
+
   private Integer createdTime;
 
-  @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
  /**
-   * Last update time. Unix timestamp in seconds.
-  **/
+  * Last update time. Unix timestamp in seconds.
+  */
+  @ApiModelProperty(example = "1451431341", value = "Last update time. Unix timestamp in seconds.")
+
   private Integer updatedTime;
  /**
    * Get id

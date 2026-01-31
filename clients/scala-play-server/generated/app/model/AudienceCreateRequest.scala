@@ -7,15 +7,16 @@ import play.api.libs.json._
   * @param adAccountId Ad account ID.
   * @param name Audience name.
   * @param description Audience description.
+  * @param audienceType <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class AudienceCreateRequest(
   adAccountId: Option[String],
   name: String,
   rule: AudienceRule,
   description: Option[String],
-  audienceType: AudienceCreateRequest1AudienceType
+  audienceType: AudienceType
   additionalProperties: 
 )
 

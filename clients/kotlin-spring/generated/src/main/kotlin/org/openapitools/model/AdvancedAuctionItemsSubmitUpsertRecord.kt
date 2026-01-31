@@ -47,7 +47,7 @@ data class AdvancedAuctionItemsSubmitUpsertRecord(
     @field:Valid
     @Schema(example = "[\"BID\",\"APP_TYPE_BID_MULTIPLIER_SET\"]", required = true, description = "The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.")
     @get:JsonProperty("update_mask", required = true) val updateMask: kotlin.collections.List<UpdateMaskBidOptionField>?
-    ) {
+) {
 
 }
 

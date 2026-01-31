@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "InviteExceptionResponse", description = "An exception object if there is an error performing the action. Will only be provided if there is an error.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class InviteExceptionResponse {
 
   private JsonNullable<@Pattern(regexp = "^\\d+$") String> inviteOrRequestId = JsonNullable.<String>undefined();
@@ -57,7 +57,7 @@ public class InviteExceptionResponse {
     this.inviteOrRequestId = inviteOrRequestId;
   }
 
-  public InviteExceptionResponse code(Integer code) {
+  public InviteExceptionResponse code(@Nullable Integer code) {
     this.code = code;
     return this;
   }
@@ -69,15 +69,15 @@ public class InviteExceptionResponse {
   
   @Schema(name = "code", example = "403", description = "Error code associated with the error in performing the action on the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("code")
-  public Integer getCode() {
+  public @Nullable Integer getCode() {
     return code;
   }
 
-  public void setCode(Integer code) {
+  public void setCode(@Nullable Integer code) {
     this.code = code;
   }
 
-  public InviteExceptionResponse message(String message) {
+  public InviteExceptionResponse message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -89,11 +89,11 @@ public class InviteExceptionResponse {
   
   @Schema(name = "message", example = "You hit the maximum number of pending invites allowed.", description = "Error message associated with the error in performing the action on the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
-  public String getMessage() {
+  public @Nullable String getMessage() {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 

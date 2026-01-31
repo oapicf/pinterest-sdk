@@ -64,7 +64,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AdsAnalyticsCreateAsyncRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdsAnalyticsCreateAsyncRequest {
   public static final String SERIALIZED_NAME_START_DATE = "start_date";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -955,41 +955,10 @@ public class AdsAnalyticsCreateAsyncRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("start_date");
-    openapiFields.add("end_date");
-    openapiFields.add("granularity");
-    openapiFields.add("click_window_days");
-    openapiFields.add("engagement_window_days");
-    openapiFields.add("view_window_days");
-    openapiFields.add("conversion_report_time");
-    openapiFields.add("attribution_types");
-    openapiFields.add("campaign_ids");
-    openapiFields.add("campaign_statuses");
-    openapiFields.add("campaign_objective_types");
-    openapiFields.add("ad_group_ids");
-    openapiFields.add("ad_group_statuses");
-    openapiFields.add("ad_ids");
-    openapiFields.add("ad_statuses");
-    openapiFields.add("product_group_ids");
-    openapiFields.add("product_group_statuses");
-    openapiFields.add("product_item_ids");
-    openapiFields.add("targeting_types");
-    openapiFields.add("metrics_filters");
-    openapiFields.add("columns");
-    openapiFields.add("level");
-    openapiFields.add("report_format");
-    openapiFields.add("primary_sort");
-    openapiFields.add("start_hour");
-    openapiFields.add("end_hour");
+    openapiFields = new HashSet<String>(Arrays.asList("start_date", "end_date", "granularity", "click_window_days", "engagement_window_days", "view_window_days", "conversion_report_time", "attribution_types", "campaign_ids", "campaign_statuses", "campaign_objective_types", "ad_group_ids", "ad_group_statuses", "ad_ids", "ad_statuses", "product_group_ids", "product_group_statuses", "product_item_ids", "targeting_types", "metrics_filters", "columns", "level", "report_format", "primary_sort", "start_hour", "end_hour"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("start_date");
-    openapiRequiredFields.add("end_date");
-    openapiRequiredFields.add("granularity");
-    openapiRequiredFields.add("columns");
-    openapiRequiredFields.add("level");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("start_date", "end_date", "granularity", "columns", "level"));
   }
 
   /**
@@ -1001,7 +970,7 @@ public class AdsAnalyticsCreateAsyncRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AdsAnalyticsCreateAsyncRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AdsAnalyticsCreateAsyncRequest is not found in the empty JSON string", AdsAnalyticsCreateAsyncRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AdsAnalyticsCreateAsyncRequest is not found in the empty JSON string", AdsAnalyticsCreateAsyncRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -1009,22 +978,22 @@ public class AdsAnalyticsCreateAsyncRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AdsAnalyticsCreateAsyncRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AdsAnalyticsCreateAsyncRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AdsAnalyticsCreateAsyncRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AdsAnalyticsCreateAsyncRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("start_date").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `start_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("start_date").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `start_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("start_date").toString()));
       }
       if (!jsonObj.get("end_date").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `end_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("end_date").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `end_date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("end_date").toString()));
       }
       // validate the required field `granularity`
       Granularity.validateJsonElement(jsonObj.get("granularity"));
@@ -1046,58 +1015,58 @@ public class AdsAnalyticsCreateAsyncRequest {
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("attribution_types") != null && !jsonObj.get("attribution_types").isJsonNull() && !jsonObj.get("attribution_types").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `attribution_types` to be an array in the JSON string but got `%s`", jsonObj.get("attribution_types").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `attribution_types` to be an array in the JSON string but got `%s`", jsonObj.get("attribution_types").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("campaign_ids") != null && !jsonObj.get("campaign_ids").isJsonNull() && !jsonObj.get("campaign_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign_ids` to be an array in the JSON string but got `%s`", jsonObj.get("campaign_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `campaign_ids` to be an array in the JSON string but got `%s`", jsonObj.get("campaign_ids").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("campaign_statuses") != null && !jsonObj.get("campaign_statuses").isJsonNull() && !jsonObj.get("campaign_statuses").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign_statuses` to be an array in the JSON string but got `%s`", jsonObj.get("campaign_statuses").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `campaign_statuses` to be an array in the JSON string but got `%s`", jsonObj.get("campaign_statuses").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("campaign_objective_types") != null && !jsonObj.get("campaign_objective_types").isJsonNull() && !jsonObj.get("campaign_objective_types").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `campaign_objective_types` to be an array in the JSON string but got `%s`", jsonObj.get("campaign_objective_types").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `campaign_objective_types` to be an array in the JSON string but got `%s`", jsonObj.get("campaign_objective_types").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("ad_group_ids") != null && !jsonObj.get("ad_group_ids").isJsonNull() && !jsonObj.get("ad_group_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_group_ids` to be an array in the JSON string but got `%s`", jsonObj.get("ad_group_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_group_ids` to be an array in the JSON string but got `%s`", jsonObj.get("ad_group_ids").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("ad_group_statuses") != null && !jsonObj.get("ad_group_statuses").isJsonNull() && !jsonObj.get("ad_group_statuses").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_group_statuses` to be an array in the JSON string but got `%s`", jsonObj.get("ad_group_statuses").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_group_statuses` to be an array in the JSON string but got `%s`", jsonObj.get("ad_group_statuses").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("ad_ids") != null && !jsonObj.get("ad_ids").isJsonNull() && !jsonObj.get("ad_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_ids` to be an array in the JSON string but got `%s`", jsonObj.get("ad_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_ids` to be an array in the JSON string but got `%s`", jsonObj.get("ad_ids").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("ad_statuses") != null && !jsonObj.get("ad_statuses").isJsonNull() && !jsonObj.get("ad_statuses").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_statuses` to be an array in the JSON string but got `%s`", jsonObj.get("ad_statuses").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_statuses` to be an array in the JSON string but got `%s`", jsonObj.get("ad_statuses").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("product_group_ids") != null && !jsonObj.get("product_group_ids").isJsonNull() && !jsonObj.get("product_group_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `product_group_ids` to be an array in the JSON string but got `%s`", jsonObj.get("product_group_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `product_group_ids` to be an array in the JSON string but got `%s`", jsonObj.get("product_group_ids").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("product_group_statuses") != null && !jsonObj.get("product_group_statuses").isJsonNull() && !jsonObj.get("product_group_statuses").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `product_group_statuses` to be an array in the JSON string but got `%s`", jsonObj.get("product_group_statuses").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `product_group_statuses` to be an array in the JSON string but got `%s`", jsonObj.get("product_group_statuses").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("product_item_ids") != null && !jsonObj.get("product_item_ids").isJsonNull() && !jsonObj.get("product_item_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `product_item_ids` to be an array in the JSON string but got `%s`", jsonObj.get("product_item_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `product_item_ids` to be an array in the JSON string but got `%s`", jsonObj.get("product_item_ids").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("targeting_types") != null && !jsonObj.get("targeting_types").isJsonNull() && !jsonObj.get("targeting_types").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `targeting_types` to be an array in the JSON string but got `%s`", jsonObj.get("targeting_types").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `targeting_types` to be an array in the JSON string but got `%s`", jsonObj.get("targeting_types").toString()));
       }
       if (jsonObj.get("metrics_filters") != null && !jsonObj.get("metrics_filters").isJsonNull()) {
         JsonArray jsonArraymetricsFilters = jsonObj.getAsJsonArray("metrics_filters");
         if (jsonArraymetricsFilters != null) {
           // ensure the json data is an array
           if (!jsonObj.get("metrics_filters").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `metrics_filters` to be an array in the JSON string but got `%s`", jsonObj.get("metrics_filters").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `metrics_filters` to be an array in the JSON string but got `%s`", jsonObj.get("metrics_filters").toString()));
           }
 
           // validate the optional field `metrics_filters` (array)
@@ -1110,7 +1079,7 @@ public class AdsAnalyticsCreateAsyncRequest {
       if (jsonObj.get("columns") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("columns").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `columns` to be an array in the JSON string but got `%s`", jsonObj.get("columns").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `columns` to be an array in the JSON string but got `%s`", jsonObj.get("columns").toString()));
       }
       // validate the required field `level`
       MetricsReportingLevel.validateJsonElement(jsonObj.get("level"));
@@ -1119,7 +1088,7 @@ public class AdsAnalyticsCreateAsyncRequest {
         DataOutputFormat.validateJsonElement(jsonObj.get("report_format"));
       }
       if ((jsonObj.get("primary_sort") != null && !jsonObj.get("primary_sort").isJsonNull()) && !jsonObj.get("primary_sort").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `primary_sort` to be a primitive type in the JSON string but got `%s`", jsonObj.get("primary_sort").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `primary_sort` to be a primitive type in the JSON string but got `%s`", jsonObj.get("primary_sort").toString()));
       }
       // validate the optional field `primary_sort`
       if (jsonObj.get("primary_sort") != null && !jsonObj.get("primary_sort").isJsonNull()) {

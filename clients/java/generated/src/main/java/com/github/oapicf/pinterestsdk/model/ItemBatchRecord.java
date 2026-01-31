@@ -67,7 +67,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemBatchRecord extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(ItemBatchRecord.class.getName());
 
@@ -144,7 +144,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ItemCreateBatchRecord'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ItemCreateBatchRecord failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemCreateBatchRecord failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ItemCreateBatchRecord'", e);
                     }
                     // deserialize ItemDeleteDiscontinuedBatchRecord
@@ -156,7 +156,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ItemDeleteDiscontinuedBatchRecord'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ItemDeleteDiscontinuedBatchRecord failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemDeleteDiscontinuedBatchRecord failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ItemDeleteDiscontinuedBatchRecord'", e);
                     }
                     // deserialize ItemUpdateBatchRecord
@@ -168,7 +168,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ItemUpdateBatchRecord'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ItemUpdateBatchRecord failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemUpdateBatchRecord failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ItemUpdateBatchRecord'", e);
                     }
                     // deserialize ItemUpsertBatchRecord
@@ -180,7 +180,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ItemUpsertBatchRecord'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ItemUpsertBatchRecord failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemUpsertBatchRecord failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ItemUpsertBatchRecord'", e);
                     }
                     // deserialize ItemDeleteBatchRecord
@@ -192,7 +192,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ItemDeleteBatchRecord'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ItemDeleteBatchRecord failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemDeleteBatchRecord failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ItemDeleteBatchRecord'", e);
                     }
 
@@ -202,7 +202,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for ItemBatchRecord: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for ItemBatchRecord: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -352,7 +352,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
             ItemCreateBatchRecord.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ItemCreateBatchRecord failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemCreateBatchRecord failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ItemDeleteDiscontinuedBatchRecord
@@ -360,7 +360,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
             ItemDeleteDiscontinuedBatchRecord.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ItemDeleteDiscontinuedBatchRecord failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemDeleteDiscontinuedBatchRecord failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ItemUpdateBatchRecord
@@ -368,7 +368,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
             ItemUpdateBatchRecord.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ItemUpdateBatchRecord failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemUpdateBatchRecord failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ItemUpsertBatchRecord
@@ -376,7 +376,7 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
             ItemUpsertBatchRecord.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ItemUpsertBatchRecord failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemUpsertBatchRecord failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ItemDeleteBatchRecord
@@ -384,11 +384,11 @@ public class ItemBatchRecord extends AbstractOpenApiSchema {
             ItemDeleteBatchRecord.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ItemDeleteBatchRecord failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemDeleteBatchRecord failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for ItemBatchRecord with oneOf schemas: ItemCreateBatchRecord, ItemDeleteBatchRecord, ItemDeleteDiscontinuedBatchRecord, ItemUpdateBatchRecord, ItemUpsertBatchRecord. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for ItemBatchRecord with oneOf schemas: ItemCreateBatchRecord, ItemDeleteBatchRecord, ItemDeleteDiscontinuedBatchRecord, ItemUpdateBatchRecord, ItemUpsertBatchRecord. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

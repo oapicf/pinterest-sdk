@@ -10,10 +10,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LeadsExportCreateResponse  {
   
-  @ApiModelProperty(example = "123456789012", value = "ID for the leads export job")
  /**
-   * ID for the leads export job
-  **/
+  * ID for the leads export job
+  */
+  @ApiModelProperty(example = "123456789012", value = "ID for the leads export job")
+
   private String leadsExportId;
  /**
    * ID for the leads export job

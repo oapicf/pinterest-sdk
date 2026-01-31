@@ -17,52 +17,64 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UserBusinessRoleBinding  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private BusinessMemberAssetsSummary assetsSummary;
 
-  @ApiModelProperty(example = "[\"BIZ_ADMIN\"]", value = "The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.")
  /**
-   * The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-  **/
+  * The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+  */
+  @ApiModelProperty(example = "[\"BIZ_ADMIN\"]", value = "The access level a user has on the business. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.")
+
   private List<String> businessRoles = new ArrayList<>();
 
-  @ApiModelProperty(value = "Metadata for the business that created the business relationship.")
-  @Valid
  /**
-   * Metadata for the business that created the business relationship.
-  **/
+  * Metadata for the business that created the business relationship.
+  */
+  @ApiModelProperty(value = "Metadata for the business that created the business relationship.")
+
+  @Valid
+
   private BusinessAccessUserSummary createdByBusiness;
 
-  @ApiModelProperty(value = "Metadata for the user that created the business relationship.")
-  @Valid
  /**
-   * Metadata for the user that created the business relationship.
-  **/
+  * Metadata for the user that created the business relationship.
+  */
+  @ApiModelProperty(value = "Metadata for the user that created the business relationship.")
+
+  @Valid
+
   private BusinessAccessUserSummary createdByUser;
 
-  @ApiModelProperty(example = "1646767577816", value = "The time the business relationship was created. Returned in milliseconds.")
  /**
-   * The time the business relationship was created. Returned in milliseconds.
-  **/
+  * The time the business relationship was created. Returned in milliseconds.
+  */
+  @ApiModelProperty(example = "1646767577816", value = "The time the business relationship was created. Returned in milliseconds.")
+
   private Integer createdTime;
 
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the business member/business partner/employer.")
  /**
-   * Unique identifier of the business member/business partner/employer.
-  **/
+  * Unique identifier of the business member/business partner/employer.
+  */
+  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the business member/business partner/employer.")
+
   private String id;
 
-  @ApiModelProperty(example = "false", value = "This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.")
  /**
-   * This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
-  **/
+  * This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.
+  */
+  @ApiModelProperty(example = "false", value = "This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.")
+
   private Boolean isSharedPartner;
 
-  @ApiModelProperty(value = "Metadata for the business member/business partner/employer.")
-  @Valid
  /**
-   * Metadata for the business member/business partner/employer.
-  **/
+  * Metadata for the business member/business partner/employer.
+  */
+  @ApiModelProperty(value = "Metadata for the business member/business partner/employer.")
+
+  @Valid
+
   private BusinessAccessUserSummary user;
  /**
    * Get assetsSummary

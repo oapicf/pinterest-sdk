@@ -19,20 +19,12 @@ class OAUTH_ACCESS_TOKEN_REQUEST_CLIENT_CREDENTIALS
 
 feature --Access
 
-    grant_type: detachable STRING_32
-      
     scope: detachable STRING_32
+      
+    grant_type: detachable STRING_32
       
 
 feature -- Change Element
-
-    set_grant_type (a_name: like grant_type)
-        -- Set 'grant_type' with 'a_name'.
-      do
-        grant_type := a_name
-      ensure
-        grant_type_set: grant_type = a_name
-      end
 
     set_scope (a_name: like scope)
         -- Set 'scope' with 'a_name'.
@@ -40,6 +32,14 @@ feature -- Change Element
         scope := a_name
       ensure
         scope_set: scope = a_name
+      end
+
+    set_grant_type (a_name: like grant_type)
+        -- Set 'grant_type' with 'a_name'.
+      do
+        grant_type := a_name
+      ensure
+        grant_type_set: grant_type = a_name
       end
 
 
@@ -50,14 +50,14 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass OAUTH_ACCESS_TOKEN_REQUEST_CLIENT_CREDENTIALS%N")
-        if attached grant_type as l_grant_type then
-          Result.append ("%Ngrant_type:")
-          Result.append (l_grant_type.out)
-          Result.append ("%N")
-        end
         if attached scope as l_scope then
           Result.append ("%Nscope:")
           Result.append (l_scope.out)
+          Result.append ("%N")
+        end
+        if attached grant_type as l_grant_type then
+          Result.append ("%Ngrant_type:")
+          Result.append (l_grant_type.out)
           Result.append ("%N")
         end
       end

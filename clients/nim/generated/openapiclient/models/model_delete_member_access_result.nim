@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type DeleteMemberAccessResult* = object
   ## The terminated asset access.
-  assetId*: string ## Unique identifier of the business asset.
-  memberId*: string ## Unique identifier of the business member.
+  assetId*: Option[string] ## Unique identifier of the business asset.
+  memberId*: Option[string] ## Unique identifier of the business member.
+
+
+# Custom JSON deserialization for DeleteMemberAccessResult with custom field names
+proc to*(node: JsonNode, T: typedesc[DeleteMemberAccessResult]): DeleteMemberAccessResult =
+  result = DeleteMemberAccessResult()
+  if node.kind == JObject:
+    if node.hasKey("asset_id") and node["asset_id"].kind != JNull:
+      result.assetId = some(to(node["asset_id"], typeof(result.assetId.get())))
+    if node.hasKey("member_id") and node["member_id"].kind != JNull:
+      result.memberId = some(to(node["member_id"], typeof(result.memberId.get())))
+
+# Custom JSON serialization for DeleteMemberAccessResult with custom field names
+proc `%`*(obj: DeleteMemberAccessResult): JsonNode =
+  result = newJObject()
+  if obj.assetId.isSome():
+    result["asset_id"] = %obj.assetId.get()
+  if obj.memberId.isSome():
+    result["member_id"] = %obj.memberId.get()
+

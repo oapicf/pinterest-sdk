@@ -8,8 +8,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
 
 @Canonical
 class ConversionTagCreate {
-    /* Conversion tag name. */
-    String name
     /* Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
     Boolean aemEnabled = false
     /* Metadata ingestion frequency. */
@@ -24,4 +22,6 @@ class ConversionTagCreate {
     Boolean aemDbEnabled = false
     /* Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information. */
     Boolean aemLocEnabled = false
+    /* Conversion tag name. */
+    String name
 }

@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
+	"io"
 	"net/http"
 	"strings"
 	"reflect"
@@ -54,47 +56,111 @@ func NewAdGroupsAPIController(s AdGroupsAPIServicer, opts ...AdGroupsAPIOption) 
 func (c *AdGroupsAPIController) Routes() Routes {
 	return Routes{
 		"AdGroupsList": Route{
+			"AdGroupsList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ad_groups",
 			c.AdGroupsList,
 		},
 		"AdGroupsCreate": Route{
+			"AdGroupsCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/ad_groups",
 			c.AdGroupsCreate,
 		},
 		"AdGroupsUpdate": Route{
+			"AdGroupsUpdate",
 			strings.ToUpper("Patch"),
 			"/v5/ad_accounts/{ad_account_id}/ad_groups",
 			c.AdGroupsUpdate,
 		},
 		"AdGroupsAnalytics": Route{
+			"AdGroupsAnalytics",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ad_groups/analytics",
 			c.AdGroupsAnalytics,
 		},
 		"AdGroupsTargetingAnalyticsGet": Route{
+			"AdGroupsTargetingAnalyticsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics",
 			c.AdGroupsTargetingAnalyticsGet,
 		},
 		"AdGroupsAudienceSizing": Route{
+			"AdGroupsAudienceSizing",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/ad_groups/audience_sizing",
 			c.AdGroupsAudienceSizing,
 		},
 		"AdGroupsGet": Route{
+			"AdGroupsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}",
 			c.AdGroupsGet,
 		},
 		"AdGroupsBidFloorGet": Route{
+			"AdGroupsBidFloorGet",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/bid_floor",
 			c.AdGroupsBidFloorGet,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the AdGroupsAPIController
+func (c *AdGroupsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"AdGroupsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups",
+			c.AdGroupsList,
+		},
+		Route{
+			"AdGroupsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups",
+			c.AdGroupsCreate,
+		},
+		Route{
+			"AdGroupsUpdate",
+			strings.ToUpper("Patch"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups",
+			c.AdGroupsUpdate,
+		},
+		Route{
+			"AdGroupsAnalytics",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/analytics",
+			c.AdGroupsAnalytics,
+		},
+		Route{
+			"AdGroupsTargetingAnalyticsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/targeting_analytics",
+			c.AdGroupsTargetingAnalyticsGet,
+		},
+		Route{
+			"AdGroupsAudienceSizing",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/audience_sizing",
+			c.AdGroupsAudienceSizing,
+		},
+		Route{
+			"AdGroupsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/ad_groups/{ad_group_id}",
+			c.AdGroupsGet,
+		},
+		Route{
+			"AdGroupsBidFloorGet",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/bid_floor",
+			c.AdGroupsBidFloorGet,
+		},
+	}
+}
+
+
 
 // AdGroupsList - List ad groups
 func (c *AdGroupsAPIController) AdGroupsList(w http.ResponseWriter, r *http.Request) {

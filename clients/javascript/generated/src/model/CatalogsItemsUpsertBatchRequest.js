@@ -13,7 +13,6 @@
 
 import ApiClient from '../ApiClient';
 import BatchOperation from './BatchOperation';
-import CatalogsItemsRequestLanguage from './CatalogsItemsRequestLanguage';
 import Country from './Country';
 import ItemUpsertBatchRecord from './ItemUpsertBatchRecord';
 
@@ -28,7 +27,7 @@ class CatalogsItemsUpsertBatchRequest {
      * Request object to upsert catalogs items
      * @alias module:model/CatalogsItemsUpsertBatchRequest
      * @param country {module:model/Country} 
-     * @param language {module:model/CatalogsItemsRequestLanguage} 
+     * @param language {module:model/CatalogsItemsUpsertBatchRequest.LanguageEnum} We recommend using the CatalogsLocale values.
      * @param operation {module:model/BatchOperation} 
      * @param items {Array.<module:model/ItemUpsertBatchRecord>} Array with catalogs items
      */
@@ -64,7 +63,7 @@ class CatalogsItemsUpsertBatchRequest {
                 obj['country'] = Country.constructFromObject(data['country']);
             }
             if (data.hasOwnProperty('language')) {
-                obj['language'] = CatalogsItemsRequestLanguage.constructFromObject(data['language']);
+                obj['language'] = ApiClient.convertToType(data['language'], 'String');
             }
             if (data.hasOwnProperty('operation')) {
                 obj['operation'] = BatchOperation.constructFromObject(data['operation']);
@@ -88,9 +87,13 @@ class CatalogsItemsUpsertBatchRequest {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
+        // ensure the json data is a string
+        if (data['language'] && !(typeof data['language'] === 'string' || data['language'] instanceof String)) {
+            throw new Error("Expected the field `language` to be a primitive type in the JSON string but got " + data['language']);
+        }
         // validate the optional field `language`
         if (data['language']) { // data not null
-          CatalogsItemsRequestLanguage.validateJSON(data['language']);
+          String.validateJSON(data['language']);
         }
         if (data['items']) { // data not null
             // ensure the json data is an array
@@ -117,7 +120,8 @@ CatalogsItemsUpsertBatchRequest.RequiredProperties = ["country", "language", "op
 CatalogsItemsUpsertBatchRequest.prototype['country'] = undefined;
 
 /**
- * @member {module:model/CatalogsItemsRequestLanguage} language
+ * We recommend using the CatalogsLocale values.
+ * @member {module:model/CatalogsItemsUpsertBatchRequest.LanguageEnum} language
  */
 CatalogsItemsUpsertBatchRequest.prototype['language'] = undefined;
 
@@ -134,6 +138,657 @@ CatalogsItemsUpsertBatchRequest.prototype['items'] = undefined;
 
 
 
+
+
+/**
+ * Allowed values for the <code>language</code> property.
+ * @enum {String}
+ * @readonly
+ */
+CatalogsItemsUpsertBatchRequest['LanguageEnum'] = {
+
+    /**
+     * value: "af-ZA"
+     * @const
+     */
+    "af-ZA": "af-ZA",
+
+    /**
+     * value: "ar-SA"
+     * @const
+     */
+    "ar-SA": "ar-SA",
+
+    /**
+     * value: "bg-BG"
+     * @const
+     */
+    "bg-BG": "bg-BG",
+
+    /**
+     * value: "bn-IN"
+     * @const
+     */
+    "bn-IN": "bn-IN",
+
+    /**
+     * value: "cs-CZ"
+     * @const
+     */
+    "cs-CZ": "cs-CZ",
+
+    /**
+     * value: "da-DK"
+     * @const
+     */
+    "da-DK": "da-DK",
+
+    /**
+     * value: "de"
+     * @const
+     */
+    "de": "de",
+
+    /**
+     * value: "el-GR"
+     * @const
+     */
+    "el-GR": "el-GR",
+
+    /**
+     * value: "en-AU"
+     * @const
+     */
+    "en-AU": "en-AU",
+
+    /**
+     * value: "en-CA"
+     * @const
+     */
+    "en-CA": "en-CA",
+
+    /**
+     * value: "en-GB"
+     * @const
+     */
+    "en-GB": "en-GB",
+
+    /**
+     * value: "en-IN"
+     * @const
+     */
+    "en-IN": "en-IN",
+
+    /**
+     * value: "en-US"
+     * @const
+     */
+    "en-US": "en-US",
+
+    /**
+     * value: "es-419"
+     * @const
+     */
+    "es-419": "es-419",
+
+    /**
+     * value: "es-AR"
+     * @const
+     */
+    "es-AR": "es-AR",
+
+    /**
+     * value: "es-ES"
+     * @const
+     */
+    "es-ES": "es-ES",
+
+    /**
+     * value: "es-MX"
+     * @const
+     */
+    "es-MX": "es-MX",
+
+    /**
+     * value: "fi-FI"
+     * @const
+     */
+    "fi-FI": "fi-FI",
+
+    /**
+     * value: "fr"
+     * @const
+     */
+    "fr": "fr",
+
+    /**
+     * value: "fr-CA"
+     * @const
+     */
+    "fr-CA": "fr-CA",
+
+    /**
+     * value: "he-IL"
+     * @const
+     */
+    "he-IL": "he-IL",
+
+    /**
+     * value: "hi-IN"
+     * @const
+     */
+    "hi-IN": "hi-IN",
+
+    /**
+     * value: "hr-HR"
+     * @const
+     */
+    "hr-HR": "hr-HR",
+
+    /**
+     * value: "hu-HU"
+     * @const
+     */
+    "hu-HU": "hu-HU",
+
+    /**
+     * value: "id-ID"
+     * @const
+     */
+    "id-ID": "id-ID",
+
+    /**
+     * value: "it"
+     * @const
+     */
+    "it": "it",
+
+    /**
+     * value: "ja"
+     * @const
+     */
+    "ja": "ja",
+
+    /**
+     * value: "ko-KR"
+     * @const
+     */
+    "ko-KR": "ko-KR",
+
+    /**
+     * value: "ms-MY"
+     * @const
+     */
+    "ms-MY": "ms-MY",
+
+    /**
+     * value: "nb-NO"
+     * @const
+     */
+    "nb-NO": "nb-NO",
+
+    /**
+     * value: "nl"
+     * @const
+     */
+    "nl": "nl",
+
+    /**
+     * value: "pl-PL"
+     * @const
+     */
+    "pl-PL": "pl-PL",
+
+    /**
+     * value: "pt-BR"
+     * @const
+     */
+    "pt-BR": "pt-BR",
+
+    /**
+     * value: "pt-PT"
+     * @const
+     */
+    "pt-PT": "pt-PT",
+
+    /**
+     * value: "ro-RO"
+     * @const
+     */
+    "ro-RO": "ro-RO",
+
+    /**
+     * value: "ru-RU"
+     * @const
+     */
+    "ru-RU": "ru-RU",
+
+    /**
+     * value: "sk-SK"
+     * @const
+     */
+    "sk-SK": "sk-SK",
+
+    /**
+     * value: "sv-SE"
+     * @const
+     */
+    "sv-SE": "sv-SE",
+
+    /**
+     * value: "te-IN"
+     * @const
+     */
+    "te-IN": "te-IN",
+
+    /**
+     * value: "th-TH"
+     * @const
+     */
+    "th-TH": "th-TH",
+
+    /**
+     * value: "tl-PH"
+     * @const
+     */
+    "tl-PH": "tl-PH",
+
+    /**
+     * value: "tr"
+     * @const
+     */
+    "tr": "tr",
+
+    /**
+     * value: "uk-UA"
+     * @const
+     */
+    "uk-UA": "uk-UA",
+
+    /**
+     * value: "vi-VN"
+     * @const
+     */
+    "vi-VN": "vi-VN",
+
+    /**
+     * value: "zh-CN"
+     * @const
+     */
+    "zh-CN": "zh-CN",
+
+    /**
+     * value: "zh-TW"
+     * @const
+     */
+    "zh-TW": "zh-TW",
+
+    /**
+     * value: "AM"
+     * @const
+     */
+    "AM": "AM",
+
+    /**
+     * value: "AR"
+     * @const
+     */
+    "AR": "AR",
+
+    /**
+     * value: "AZ"
+     * @const
+     */
+    "AZ": "AZ",
+
+    /**
+     * value: "BG"
+     * @const
+     */
+    "BG": "BG",
+
+    /**
+     * value: "BN"
+     * @const
+     */
+    "BN": "BN",
+
+    /**
+     * value: "BS"
+     * @const
+     */
+    "BS": "BS",
+
+    /**
+     * value: "CA"
+     * @const
+     */
+    "CA": "CA",
+
+    /**
+     * value: "CS"
+     * @const
+     */
+    "CS": "CS",
+
+    /**
+     * value: "DA"
+     * @const
+     */
+    "DA": "DA",
+
+    /**
+     * value: "DV"
+     * @const
+     */
+    "DV": "DV",
+
+    /**
+     * value: "DZ"
+     * @const
+     */
+    "DZ": "DZ",
+
+    /**
+     * value: "DE"
+     * @const
+     */
+    "DE": "DE",
+
+    /**
+     * value: "EL"
+     * @const
+     */
+    "EL": "EL",
+
+    /**
+     * value: "EN"
+     * @const
+     */
+    "EN": "EN",
+
+    /**
+     * value: "ES"
+     * @const
+     */
+    "ES": "ES",
+
+    /**
+     * value: "ET"
+     * @const
+     */
+    "ET": "ET",
+
+    /**
+     * value: "FA"
+     * @const
+     */
+    "FA": "FA",
+
+    /**
+     * value: "FI"
+     * @const
+     */
+    "FI": "FI",
+
+    /**
+     * value: "FR"
+     * @const
+     */
+    "FR": "FR",
+
+    /**
+     * value: "HE"
+     * @const
+     */
+    "HE": "HE",
+
+    /**
+     * value: "HI"
+     * @const
+     */
+    "HI": "HI",
+
+    /**
+     * value: "HR"
+     * @const
+     */
+    "HR": "HR",
+
+    /**
+     * value: "HU"
+     * @const
+     */
+    "HU": "HU",
+
+    /**
+     * value: "HY"
+     * @const
+     */
+    "HY": "HY",
+
+    /**
+     * value: "ID"
+     * @const
+     */
+    "ID": "ID",
+
+    /**
+     * value: "IN"
+     * @const
+     */
+    "IN": "IN",
+
+    /**
+     * value: "IS"
+     * @const
+     */
+    "IS": "IS",
+
+    /**
+     * value: "IT"
+     * @const
+     */
+    "IT": "IT",
+
+    /**
+     * value: "IW"
+     * @const
+     */
+    "IW": "IW",
+
+    /**
+     * value: "JA"
+     * @const
+     */
+    "JA": "JA",
+
+    /**
+     * value: "KA"
+     * @const
+     */
+    "KA": "KA",
+
+    /**
+     * value: "KM"
+     * @const
+     */
+    "KM": "KM",
+
+    /**
+     * value: "KO"
+     * @const
+     */
+    "KO": "KO",
+
+    /**
+     * value: "LO"
+     * @const
+     */
+    "LO": "LO",
+
+    /**
+     * value: "LT"
+     * @const
+     */
+    "LT": "LT",
+
+    /**
+     * value: "LV"
+     * @const
+     */
+    "LV": "LV",
+
+    /**
+     * value: "MK"
+     * @const
+     */
+    "MK": "MK",
+
+    /**
+     * value: "MN"
+     * @const
+     */
+    "MN": "MN",
+
+    /**
+     * value: "MS"
+     * @const
+     */
+    "MS": "MS",
+
+    /**
+     * value: "MY"
+     * @const
+     */
+    "MY": "MY",
+
+    /**
+     * value: "NB"
+     * @const
+     */
+    "NB": "NB",
+
+    /**
+     * value: "NE"
+     * @const
+     */
+    "NE": "NE",
+
+    /**
+     * value: "NL"
+     * @const
+     */
+    "NL": "NL",
+
+    /**
+     * value: "NO"
+     * @const
+     */
+    "NO": "NO",
+
+    /**
+     * value: "PL"
+     * @const
+     */
+    "PL": "PL",
+
+    /**
+     * value: "PT"
+     * @const
+     */
+    "PT": "PT",
+
+    /**
+     * value: "RO"
+     * @const
+     */
+    "RO": "RO",
+
+    /**
+     * value: "RU"
+     * @const
+     */
+    "RU": "RU",
+
+    /**
+     * value: "SK"
+     * @const
+     */
+    "SK": "SK",
+
+    /**
+     * value: "SL"
+     * @const
+     */
+    "SL": "SL",
+
+    /**
+     * value: "SQ"
+     * @const
+     */
+    "SQ": "SQ",
+
+    /**
+     * value: "SR"
+     * @const
+     */
+    "SR": "SR",
+
+    /**
+     * value: "SV"
+     * @const
+     */
+    "SV": "SV",
+
+    /**
+     * value: "TL"
+     * @const
+     */
+    "TL": "TL",
+
+    /**
+     * value: "UK"
+     * @const
+     */
+    "UK": "UK",
+
+    /**
+     * value: "VI"
+     * @const
+     */
+    "VI": "VI",
+
+    /**
+     * value: "TE"
+     * @const
+     */
+    "TE": "TE",
+
+    /**
+     * value: "TH"
+     * @const
+     */
+    "TH": "TH",
+
+    /**
+     * value: "TR"
+     * @const
+     */
+    "TR": "TR",
+
+    /**
+     * value: "XX"
+     * @const
+     */
+    "XX": "XX",
+
+    /**
+     * value: "ZH"
+     * @const
+     */
+    "ZH": "ZH"
+};
 
 
 

@@ -49,10 +49,10 @@ data class ItemResponse (
 
     /* The pins mapped to the item */
     @Json(name = "pins")
-    override val pins: kotlin.collections.List<Pin>? = null,
+    val pins: kotlin.collections.List<Pin>? = null,
 
     @Json(name = "attributes")
-    override val attributes: CatalogsCreativeAssetsAttributes? = null,
+    val attributes: CatalogsCreativeAssetsAttributes? = null,
 
     /* The catalog hotel id in the merchant namespace */
     @Json(name = "hotel_id")

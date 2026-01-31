@@ -50,7 +50,7 @@ use OpenAPI\Server\Model\DeleteMemberAccessResultsResponseArray;
 use OpenAPI\Server\Model\DeletePartnerAssetAccessBody;
 use OpenAPI\Server\Model\DeletePartnerAssetsResultsResponseArray;
 use OpenAPI\Server\Model\Error;
-use OpenAPI\Server\Model\OpenAPIServerModelPartnerTypeAnyType;
+use OpenAPI\Server\Model\OpenAPIServerModelPartnerType;
 use OpenAPI\Server\Model\PermissionsWithOwner;
 use OpenAPI\Server\Model\UpdateAssetGroupBody;
 use OpenAPI\Server\Model\UpdateAssetGroupResponse;
@@ -1186,7 +1186,7 @@ class BusinessAccessAssetsController extends Controller
         try {
             $businessId = $this->deserialize($businessId, 'string', 'string');
             $partnerId = $this->deserialize($partnerId, 'string', 'string');
-            $partnerType = $this->deserialize($partnerType, 'OpenAPIServerModelPartnerTypeAnyType', 'string');
+            $partnerType = $this->deserialize($partnerType, '\OpenAPI\Server\Model\OpenAPIServerModelPartnerType', 'string');
             $assetType = $this->deserialize($assetType, 'string', 'string');
             $startIndex = $this->deserialize($startIndex, 'int', 'string');
             $pageSize = $this->deserialize($pageSize, 'int', 'string');
@@ -1225,8 +1225,7 @@ class BusinessAccessAssetsController extends Controller
             return $response;
         }
         $asserts = [];
-        $asserts[] = new Assert\Type("OpenAPIServerModelPartnerTypeAnyType");
-        $asserts[] = new Assert\Valid();
+        $asserts[] = new Assert\Type("\OpenAPI\Server\Model\OpenAPIServerModelPartnerType");
         $response = $this->validate($partnerType, $asserts);
         if ($response instanceof Response) {
             return $response;

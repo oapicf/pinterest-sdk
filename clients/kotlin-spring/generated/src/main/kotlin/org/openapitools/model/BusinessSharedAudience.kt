@@ -34,7 +34,7 @@ data class BusinessSharedAudience(
 
     @Schema(example = "null", required = true, description = "List of business IDs to share with or revoke from.")
     @get:JsonProperty("recipient_business_ids", required = true) val recipientBusinessIds: kotlin.collections.List<kotlin.String>
-    ) {
+) {
 
 }
 

@@ -5,6 +5,12 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
+                key: `${keyPrefix}scope`,
+                label: `[${labelPrefix}scope]`,
+                required: true,
+                type: 'string',
+            },
+            {
                 key: `${keyPrefix}grant_type`,
                 label: `[${labelPrefix}grant_type]`,
                 required: true,
@@ -15,19 +21,13 @@ module.exports = {
                     'client_credentials',
                 ],
             },
-            {
-                key: `${keyPrefix}scope`,
-                label: `[${labelPrefix}scope]`,
-                required: true,
-                type: 'string',
-            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'grant_type': bundle.inputData?.[`${keyPrefix}grant_type`],
             'scope': bundle.inputData?.[`${keyPrefix}scope`],
+            'grant_type': bundle.inputData?.[`${keyPrefix}grant_type`],
         }
     },
 }

@@ -3,15 +3,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GrantType** | **String** |  | 
 **Scope** | **String** |  | 
+**GrantType** | **String** |  | 
 
 ## Examples
 
 - Prepare the resource
 ```powershell
-$OauthAccessTokenRequestClientCredentials = Initialize-PSOpenAPIToolsOauthAccessTokenRequestClientCredentials  -GrantType null `
- -Scope null
+$OauthAccessTokenRequestClientCredentials = Initialize-PSOpenAPIToolsOauthAccessTokenRequestClientCredentials  -Scope null `
+ -GrantType null
 ```
 
 - Convert the resource to JSON

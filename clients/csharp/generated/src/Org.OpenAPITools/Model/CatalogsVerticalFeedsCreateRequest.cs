@@ -138,9 +138,6 @@ namespace Org.OpenAPITools.Model
             CatalogsCreativeAssetsFeedsCreateRequest? catalogsCreativeAssetsFeedsCreateRequest = null;
             CatalogsHotelFeedsCreateRequest? catalogsHotelFeedsCreateRequest = null;
             CatalogsRetailFeedsCreateRequest? catalogsRetailFeedsCreateRequest = null;
-            CatalogsCreativeAssetsFeedsCreateRequest? catalogsCreativeAssetsFeedsCreateRequest = null;
-            CatalogsHotelFeedsCreateRequest? catalogsHotelFeedsCreateRequest = null;
-            CatalogsRetailFeedsCreateRequest? catalogsRetailFeedsCreateRequest = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -169,21 +166,6 @@ namespace Org.OpenAPITools.Model
                             catalogsHotelFeedsCreateRequest = JsonSerializer.Deserialize<CatalogsHotelFeedsCreateRequest>(ref utf8JsonReaderCatalogsHotelFeedsCreateRequest, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("RETAIL") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsRetailFeedsCreateRequest = utf8JsonReader;
-                            catalogsRetailFeedsCreateRequest = JsonSerializer.Deserialize<CatalogsRetailFeedsCreateRequest>(ref utf8JsonReaderCatalogsRetailFeedsCreateRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsCreativeAssetsFeedsCreateRequest") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsCreativeAssetsFeedsCreateRequest = utf8JsonReader;
-                            catalogsCreativeAssetsFeedsCreateRequest = JsonSerializer.Deserialize<CatalogsCreativeAssetsFeedsCreateRequest>(ref utf8JsonReaderCatalogsCreativeAssetsFeedsCreateRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsHotelFeedsCreateRequest") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsHotelFeedsCreateRequest = utf8JsonReader;
-                            catalogsHotelFeedsCreateRequest = JsonSerializer.Deserialize<CatalogsHotelFeedsCreateRequest>(ref utf8JsonReaderCatalogsHotelFeedsCreateRequest, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsRetailFeedsCreateRequest") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsRetailFeedsCreateRequest = utf8JsonReader;
                             catalogsRetailFeedsCreateRequest = JsonSerializer.Deserialize<CatalogsRetailFeedsCreateRequest>(ref utf8JsonReaderCatalogsRetailFeedsCreateRequest, jsonSerializerOptions);
@@ -223,15 +205,6 @@ namespace Org.OpenAPITools.Model
 
             if (catalogType.IsSet && catalogType.Value == null)
                 throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsVerticalFeedsCreateRequest.");
-
-            if (catalogsCreativeAssetsFeedsCreateRequest != null)
-                return new CatalogsVerticalFeedsCreateRequest(catalogsCreativeAssetsFeedsCreateRequest);
-
-            if (catalogsHotelFeedsCreateRequest != null)
-                return new CatalogsVerticalFeedsCreateRequest(catalogsHotelFeedsCreateRequest);
-
-            if (catalogsRetailFeedsCreateRequest != null)
-                return new CatalogsVerticalFeedsCreateRequest(catalogsRetailFeedsCreateRequest);
 
             if (catalogsCreativeAssetsFeedsCreateRequest != null)
                 return new CatalogsVerticalFeedsCreateRequest(catalogsCreativeAssetsFeedsCreateRequest);

@@ -147,7 +147,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BudgetType budgetType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(budgetType.ToString());
+            writer.WriteStringValue(BudgetTypeValueConverter.ToJsonValue(budgetType).ToString());
         }
     }
 
@@ -178,14 +178,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the BudgetType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="budgetType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BudgetType? budgetType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(budgetType?.ToString() ?? "null");
+            writer.WriteStringValue(budgetType.HasValue ? BudgetTypeValueConverter.ToJsonValue(budgetType.Value).ToString() : "null");
         }
     }
 }

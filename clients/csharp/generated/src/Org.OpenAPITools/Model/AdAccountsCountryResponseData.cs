@@ -186,8 +186,7 @@ namespace Org.OpenAPITools.Model
                             currency = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "index":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                index = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            index = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "name":
                             name = new Option<string?>(utf8JsonReader.GetString()!);

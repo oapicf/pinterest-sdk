@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OrderLineSingleResponse  {
   
   @ApiModelProperty(value = "")
+
   private OrderLineResponse data;
  /**
    * Get data

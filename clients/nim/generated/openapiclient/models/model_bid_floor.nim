@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type BidFloor* = object
   ## 
-  bidFloors*: seq[int] ## A list of bid floors in micro currency. For example, [100000, 200000]
-  `type`*: string ## Always the string 'bidfloor'
+  bidFloors*: Option[seq[int]] ## A list of bid floors in micro currency. For example, [100000, 200000]
+  `type`*: Option[string] ## Always the string 'bidfloor'
+
+
+# Custom JSON deserialization for BidFloor with custom field names
+proc to*(node: JsonNode, T: typedesc[BidFloor]): BidFloor =
+  result = BidFloor()
+  if node.kind == JObject:
+    if node.hasKey("bid_floors") and node["bid_floors"].kind != JNull:
+      result.bidFloors = some(to(node["bid_floors"], typeof(result.bidFloors.get())))
+    if node.hasKey("type") and node["type"].kind != JNull:
+      result.`type` = some(to(node["type"], typeof(result.`type`.get())))
+
+# Custom JSON serialization for BidFloor with custom field names
+proc `%`*(obj: BidFloor): JsonNode =
+  result = newJObject()
+  if obj.bidFloors.isSome():
+    result["bid_floors"] = %obj.bidFloors.get()
+  if obj.`type`.isSome():
+    result["type"] = %obj.`type`.get()
+

@@ -1,39 +1,44 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.Date;
 import org.openapitools.model.CatalogsType;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Catalog entity
- **/
+ * Catalog entity
+ */
 @ApiModel(description="Catalog entity")
 
 public class Catalog  {
   
   @ApiModelProperty(example = "2022-03-14T15:15:22Z", required = true, value = "")
+
   private Date createdAt;
 
-  @ApiModelProperty(example = "864344156814050986", required = true, value = "ID of the catalog entity.")
  /**
-   * ID of the catalog entity.
-  **/
+  * ID of the catalog entity.
+  */
+  @ApiModelProperty(example = "864344156814050986", required = true, value = "ID of the catalog entity.")
+
   private String id;
 
   @ApiModelProperty(example = "2022-03-14T15:16:34Z", required = true, value = "")
+
   private Date updatedAt;
 
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a catalog entity.")
  /**
-   * A human-friendly name associated to a catalog entity.
-  **/
+  * A human-friendly name associated to a catalog entity.
+  */
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a catalog entity.")
+
   private String name;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsType catalogType;
  /**
    * Get createdAt

@@ -97,7 +97,7 @@ data class ConversionEventsDataInner(
 
     @Schema(example = "en", description = "Two-character ISO-639-1 language code indicating the user's language.")
     @get:JsonProperty("language") val language: kotlin.String? = null
-    ) {
+) {
 
 }
 

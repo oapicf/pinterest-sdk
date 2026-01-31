@@ -11,24 +11,9 @@
  */
 
 /**
- * A request to exchange a refresh token for a new access token.
+ * OASOauthAccessTokenRequestRefresh
  */
 public class OASOauthAccessTokenRequestRefresh implements OAS.MappedProperties {
-    /**
-     * Gets or Sets grantType
-     */
-    public enum GrantTypeEnum {
-        AUTHORIZATION_CODE,
-        REFRESH_TOKEN,
-        CLIENT_CREDENTIALS
-    }
-
-    /**
-     * Get grantType
-     * @return grantType
-     */
-    public GrantTypeEnum grantType { get; set; }
-
     /**
      * Get refreshToken
      * @return refreshToken
@@ -47,10 +32,25 @@ public class OASOauthAccessTokenRequestRefresh implements OAS.MappedProperties {
      */
     public Boolean refreshOn { get; set; }
 
+    /**
+     * Gets or Sets grantType
+     */
+    public enum GrantTypeEnum {
+        AUTHORIZATION_CODE,
+        REFRESH_TOKEN,
+        CLIENT_CREDENTIALS
+    }
+
+    /**
+     * Get grantType
+     * @return grantType
+     */
+    public GrantTypeEnum grantType { get; set; }
+
     private static final Map<String, String> propertyMappings = new Map<String, String>{
-        'grant_type' => 'grantType',
         'refresh_token' => 'refreshToken',
-        'refresh_on' => 'refreshOn'
+        'refresh_on' => 'refreshOn',
+        'grant_type' => 'grantType'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -58,9 +58,9 @@ public class OASOauthAccessTokenRequestRefresh implements OAS.MappedProperties {
     }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
-        'grant_type' => 'grantType',
         'refresh_token' => 'refreshToken',
-        'refresh_on' => 'refreshOn'
+        'refresh_on' => 'refreshOn',
+        'grant_type' => 'grantType'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -68,9 +68,9 @@ public class OASOauthAccessTokenRequestRefresh implements OAS.MappedProperties {
     }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
-        'grant_type' => 'grantType',
         'refresh_token' => 'refreshToken',
-        'refresh_on' => 'refreshOn'
+        'refresh_on' => 'refreshOn',
+        'grant_type' => 'grantType'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -79,30 +79,30 @@ public class OASOauthAccessTokenRequestRefresh implements OAS.MappedProperties {
 
     public static OASOauthAccessTokenRequestRefresh getExample() {
         OASOauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = new OASOauthAccessTokenRequestRefresh();
-          oauthAccessTokenRequestRefresh.grantType = GrantTypeEnum.AUTHORIZATION_CODE;
           oauthAccessTokenRequestRefresh.refreshToken = '';
           oauthAccessTokenRequestRefresh.scope = '';
           oauthAccessTokenRequestRefresh.refreshOn = true;
+          oauthAccessTokenRequestRefresh.grantType = GrantTypeEnum.AUTHORIZATION_CODE;
         return oauthAccessTokenRequestRefresh;
     }
 
     public Boolean equals(Object obj) {
         if (obj instanceof OASOauthAccessTokenRequestRefresh) {           
             OASOauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = (OASOauthAccessTokenRequestRefresh) obj;
-            return this.grantType == oauthAccessTokenRequestRefresh.grantType
-                && this.refreshToken == oauthAccessTokenRequestRefresh.refreshToken
+            return this.refreshToken == oauthAccessTokenRequestRefresh.refreshToken
                 && this.scope == oauthAccessTokenRequestRefresh.scope
-                && this.refreshOn == oauthAccessTokenRequestRefresh.refreshOn;
+                && this.refreshOn == oauthAccessTokenRequestRefresh.refreshOn
+                && this.grantType == oauthAccessTokenRequestRefresh.grantType;
         }
         return false;
     }
 
     public Integer hashCode() {
         Integer hashCode = 43;
-        hashCode = (17 * hashCode) + (grantType == null ? 0 : System.hashCode(grantType));
         hashCode = (17 * hashCode) + (refreshToken == null ? 0 : System.hashCode(refreshToken));
         hashCode = (17 * hashCode) + (scope == null ? 0 : System.hashCode(scope));
         hashCode = (17 * hashCode) + (refreshOn == null ? 0 : System.hashCode(refreshOn));
+        hashCode = (17 * hashCode) + (grantType == null ? 0 : System.hashCode(grantType));
         return hashCode;
     }
 }

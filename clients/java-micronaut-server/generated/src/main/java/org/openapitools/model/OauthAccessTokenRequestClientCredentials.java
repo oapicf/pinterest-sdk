@@ -23,17 +23,19 @@ import javax.annotation.Generated;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
- * A request to receive a client token.
+ * OauthAccessTokenRequestClientCredentials
  */
-@Schema(name = "OauthAccessTokenRequestClientCredentials", description = "A request to receive a client token.")
 @JsonPropertyOrder({
-  OauthAccessTokenRequestClientCredentials.JSON_PROPERTY_GRANT_TYPE,
-  OauthAccessTokenRequestClientCredentials.JSON_PROPERTY_SCOPE
+  OauthAccessTokenRequestClientCredentials.JSON_PROPERTY_SCOPE,
+  OauthAccessTokenRequestClientCredentials.JSON_PROPERTY_GRANT_TYPE
 })
 @JsonTypeName("OauthAccessTokenRequestClientCredentials")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-01-26T05:36:06.173633742Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class OauthAccessTokenRequestClientCredentials {
+    public static final String JSON_PROPERTY_SCOPE = "scope";
+    private String scope;
+
     /**
      * Gets or Sets grantType
      */
@@ -71,34 +73,8 @@ public class OauthAccessTokenRequestClientCredentials {
     public static final String JSON_PROPERTY_GRANT_TYPE = "grant_type";
     private GrantTypeEnum grantType;
 
-    public static final String JSON_PROPERTY_SCOPE = "scope";
-    private String scope;
-
-    public OauthAccessTokenRequestClientCredentials(GrantTypeEnum grantType, String scope) {
-        this.grantType = grantType;
+    public OauthAccessTokenRequestClientCredentials(String scope, GrantTypeEnum grantType) {
         this.scope = scope;
-    }
-
-    public OauthAccessTokenRequestClientCredentials grantType(GrantTypeEnum grantType) {
-        this.grantType = grantType;
-        return this;
-    }
-
-    /**
-     * Get grantType
-     * @return grantType
-     */
-    @NotNull
-    @Schema(name = "grant_type", requiredMode = Schema.RequiredMode.REQUIRED)
-    @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public GrantTypeEnum getGrantType() {
-        return grantType;
-    }
-
-    @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setGrantType(GrantTypeEnum grantType) {
         this.grantType = grantType;
     }
 
@@ -125,6 +101,29 @@ public class OauthAccessTokenRequestClientCredentials {
         this.scope = scope;
     }
 
+    public OauthAccessTokenRequestClientCredentials grantType(GrantTypeEnum grantType) {
+        this.grantType = grantType;
+        return this;
+    }
+
+    /**
+     * Get grantType
+     * @return grantType
+     */
+    @NotNull
+    @Schema(name = "grant_type", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public GrantTypeEnum getGrantType() {
+        return grantType;
+    }
+
+    @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
+    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    public void setGrantType(GrantTypeEnum grantType) {
+        this.grantType = grantType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -134,21 +133,21 @@ public class OauthAccessTokenRequestClientCredentials {
             return false;
         }
         OauthAccessTokenRequestClientCredentials oauthAccessTokenRequestClientCredentials = (OauthAccessTokenRequestClientCredentials) o;
-        return Objects.equals(this.grantType, oauthAccessTokenRequestClientCredentials.grantType) &&
-            Objects.equals(this.scope, oauthAccessTokenRequestClientCredentials.scope);
+        return Objects.equals(this.scope, oauthAccessTokenRequestClientCredentials.scope) &&
+            Objects.equals(this.grantType, oauthAccessTokenRequestClientCredentials.grantType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(grantType, scope);
+        return Objects.hash(scope, grantType);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class OauthAccessTokenRequestClientCredentials {\n");
-        sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
         sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+        sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
         sb.append("}");
         return sb.toString();
     }

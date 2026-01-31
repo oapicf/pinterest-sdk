@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **country** | [**Country**](Country.md) |  |  |
-| **language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  |  |
+| **language** | **String** | We recommend using the CatalogsLocale values. |  |
 | **filters** | [**CatalogsItemsPostFilters**](CatalogsItemsPostFilters.md) |  |  |
 
 ## Example

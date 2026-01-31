@@ -152,14 +152,20 @@ LeadAdsApi <- R6::R6Class(
         stop("Missing required parameter `subscription_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling LeadAdsApi$AdAccountsSubscriptionsDelById, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling LeadAdsApi$AdAccountsSubscriptionsDelById, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling LeadAdsApi$AdAccountsSubscriptionsDelById, must conform to the pattern ^\\d+$.")
       }
 
-      if (!str_detect(`subscription_id`, "^\\d+$")) {
+      if (!missing(`subscription_id`) && is.null(`subscription_id`)) {
+        stop("Invalid value for `subscription_id` when calling LeadAdsApi$AdAccountsSubscriptionsDelById, `subscription_id` is not nullable")
+      }
+      if (!is.null(`subscription_id`) && !stringr::str_detect(`subscription_id`, "^\\d+$")) {
         stop("Invalid value for `subscription_id` when calling LeadAdsApi$AdAccountsSubscriptionsDelById, must conform to the pattern ^\\d+$.")
       }
 
@@ -262,14 +268,20 @@ LeadAdsApi <- R6::R6Class(
         stop("Missing required parameter `subscription_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling LeadAdsApi$AdAccountsSubscriptionsGetById, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling LeadAdsApi$AdAccountsSubscriptionsGetById, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling LeadAdsApi$AdAccountsSubscriptionsGetById, must conform to the pattern ^\\d+$.")
       }
 
-      if (!str_detect(`subscription_id`, "^\\d+$")) {
+      if (!missing(`subscription_id`) && is.null(`subscription_id`)) {
+        stop("Invalid value for `subscription_id` when calling LeadAdsApi$AdAccountsSubscriptionsGetById, `subscription_id` is not nullable")
+      }
+      if (!is.null(`subscription_id`) && !stringr::str_detect(`subscription_id`, "^\\d+$")) {
         stop("Invalid value for `subscription_id` when calling LeadAdsApi$AdAccountsSubscriptionsGetById, must conform to the pattern ^\\d+$.")
       }
 
@@ -381,20 +393,29 @@ LeadAdsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling LeadAdsApi$AdAccountsSubscriptionsGetList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling LeadAdsApi$AdAccountsSubscriptionsGetList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling LeadAdsApi$AdAccountsSubscriptionsGetList, must conform to the pattern ^\\d+$.")
       }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling LeadAdsApi$AdAccountsSubscriptionsGetList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling LeadAdsApi$AdAccountsSubscriptionsGetList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling LeadAdsApi$AdAccountsSubscriptionsGetList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling LeadAdsApi$AdAccountsSubscriptionsGetList, `bookmark` is not nullable")
+      }
 
       query_params[["page_size"]] <- `page_size`
 
@@ -506,13 +527,19 @@ LeadAdsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_create_subscription_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling LeadAdsApi$AdAccountsSubscriptionsPost, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling LeadAdsApi$AdAccountsSubscriptionsPost, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling LeadAdsApi$AdAccountsSubscriptionsPost, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`ad_account_create_subscription_request`) && is.null(`ad_account_create_subscription_request`)) {
+        stop("Invalid value for `ad_account_create_subscription_request` when calling LeadAdsApi$AdAccountsSubscriptionsPost, `ad_account_create_subscription_request` is not nullable")
+      }
 
       if (!is.null(`ad_account_create_subscription_request`)) {
         local_var_body <- `ad_account_create_subscription_request`$toJSONString()

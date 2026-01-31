@@ -284,27 +284,57 @@ AdGroupsApi <- R6::R6Class(
         stop("Missing required parameter `granularity`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsAnalytics, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdGroupsApi$AdGroupsAnalytics, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsAnalytics, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling AdGroupsApi$AdGroupsAnalytics, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling AdGroupsApi$AdGroupsAnalytics, `end_date` is not nullable")
+      }
 
-      if (length(`ad_group_ids`) > 100) {
+      if (!missing(`ad_group_ids`) && is.null(`ad_group_ids`)) {
+        stop("Invalid value for `ad_group_ids` when calling AdGroupsApi$AdGroupsAnalytics, `ad_group_ids` is not nullable")
+      }
+      if (!is.null(`ad_group_ids`) && length(`ad_group_ids`) > 100) {
         stop("Invalid length for `ad_group_ids` when calling AdGroupsApi$AdGroupsAnalytics, number of items must be less than or equal to 100.")
       }
-      if (length(`ad_group_ids`) < 1) {
+      if (!is.null(`ad_group_ids`) && length(`ad_group_ids`) < 1) {
         stop("Invalid length for `ad_group_ids` when calling AdGroupsApi$AdGroupsAnalytics, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`columns`) && is.null(`columns`)) {
+        stop("Invalid value for `columns` when calling AdGroupsApi$AdGroupsAnalytics, `columns` is not nullable")
+      }
 
+      if (!missing(`granularity`) && is.null(`granularity`)) {
+        stop("Invalid value for `granularity` when calling AdGroupsApi$AdGroupsAnalytics, `granularity` is not nullable")
+      }
 
+      if (!missing(`click_window_days`) && is.null(`click_window_days`)) {
+        stop("Invalid value for `click_window_days` when calling AdGroupsApi$AdGroupsAnalytics, `click_window_days` is not nullable")
+      }
 
+      if (!missing(`engagement_window_days`) && is.null(`engagement_window_days`)) {
+        stop("Invalid value for `engagement_window_days` when calling AdGroupsApi$AdGroupsAnalytics, `engagement_window_days` is not nullable")
+      }
 
+      if (!missing(`view_window_days`) && is.null(`view_window_days`)) {
+        stop("Invalid value for `view_window_days` when calling AdGroupsApi$AdGroupsAnalytics, `view_window_days` is not nullable")
+      }
 
+      if (!missing(`conversion_report_time`) && is.null(`conversion_report_time`)) {
+        stop("Invalid value for `conversion_report_time` when calling AdGroupsApi$AdGroupsAnalytics, `conversion_report_time` is not nullable")
+      }
 
       query_params[["start_date"]] <- `start_date`
 
@@ -448,13 +478,19 @@ AdGroupsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsAudienceSizing, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdGroupsApi$AdGroupsAudienceSizing, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsAudienceSizing, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`ad_group_audience_sizing_request`) && is.null(`ad_group_audience_sizing_request`)) {
+        stop("Invalid value for `ad_group_audience_sizing_request` when calling AdGroupsApi$AdGroupsAudienceSizing, `ad_group_audience_sizing_request` is not nullable")
+      }
 
       if (!is.null(`ad_group_audience_sizing_request`)) {
         local_var_body <- `ad_group_audience_sizing_request`$toJSONString()
@@ -568,13 +604,19 @@ AdGroupsApi <- R6::R6Class(
         stop("Missing required parameter `bid_floor_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsBidFloorGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdGroupsApi$AdGroupsBidFloorGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsBidFloorGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bid_floor_request`) && is.null(`bid_floor_request`)) {
+        stop("Invalid value for `bid_floor_request` when calling AdGroupsApi$AdGroupsBidFloorGet, `bid_floor_request` is not nullable")
+      }
 
       if (!is.null(`bid_floor_request`)) {
         local_var_body <- `bid_floor_request`$toJSONString()
@@ -688,17 +730,23 @@ AdGroupsApi <- R6::R6Class(
         stop("Missing required parameter `ad_group_create_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdGroupsApi$AdGroupsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsCreate, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`ad_group_create_request`) > 30) {
+      if (!missing(`ad_group_create_request`) && is.null(`ad_group_create_request`)) {
+        stop("Invalid value for `ad_group_create_request` when calling AdGroupsApi$AdGroupsCreate, `ad_group_create_request` is not nullable")
+      }
+      if (!is.null(`ad_group_create_request`) && length(`ad_group_create_request`) > 30) {
         stop("Invalid length for `ad_group_create_request` when calling AdGroupsApi$AdGroupsCreate, number of items must be less than or equal to 30.")
       }
-      if (length(`ad_group_create_request`) < 1) {
+      if (!is.null(`ad_group_create_request`) && length(`ad_group_create_request`) < 1) {
         stop("Invalid length for `ad_group_create_request` when calling AdGroupsApi$AdGroupsCreate, number of items must be greater than or equal to 1.")
       }
 
@@ -817,17 +865,23 @@ AdGroupsApi <- R6::R6Class(
         stop("Missing required parameter `ad_group_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdGroupsApi$AdGroupsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_group_id`) > 18) {
+      if (!missing(`ad_group_id`) && is.null(`ad_group_id`)) {
+        stop("Invalid value for `ad_group_id` when calling AdGroupsApi$AdGroupsGet, `ad_group_id` is not nullable")
+      }
+      if (!is.null(`ad_group_id`) && nchar(`ad_group_id`) > 18) {
         stop("Invalid length for `ad_group_id` when calling AdGroupsApi$AdGroupsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_group_id`, "^\\d+$")) {
+      if (!is.null(`ad_group_id`) && !stringr::str_detect(`ad_group_id`, "^\\d+$")) {
         stop("Invalid value for `ad_group_id` when calling AdGroupsApi$AdGroupsGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -949,37 +1003,61 @@ AdGroupsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdGroupsApi$AdGroupsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsList, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`campaign_ids`) > 100) {
+      if (!missing(`campaign_ids`) && is.null(`campaign_ids`)) {
+        stop("Invalid value for `campaign_ids` when calling AdGroupsApi$AdGroupsList, `campaign_ids` is not nullable")
+      }
+      if (!is.null(`campaign_ids`) && length(`campaign_ids`) > 100) {
         stop("Invalid length for `campaign_ids` when calling AdGroupsApi$AdGroupsList, number of items must be less than or equal to 100.")
       }
-      if (length(`campaign_ids`) < 1) {
+      if (!is.null(`campaign_ids`) && length(`campaign_ids`) < 1) {
         stop("Invalid length for `campaign_ids` when calling AdGroupsApi$AdGroupsList, number of items must be greater than or equal to 1.")
       }
 
-      if (length(`ad_group_ids`) > 100) {
+      if (!missing(`ad_group_ids`) && is.null(`ad_group_ids`)) {
+        stop("Invalid value for `ad_group_ids` when calling AdGroupsApi$AdGroupsList, `ad_group_ids` is not nullable")
+      }
+      if (!is.null(`ad_group_ids`) && length(`ad_group_ids`) > 100) {
         stop("Invalid length for `ad_group_ids` when calling AdGroupsApi$AdGroupsList, number of items must be less than or equal to 100.")
       }
-      if (length(`ad_group_ids`) < 1) {
+      if (!is.null(`ad_group_ids`) && length(`ad_group_ids`) < 1) {
         stop("Invalid length for `ad_group_ids` when calling AdGroupsApi$AdGroupsList, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`entity_statuses`) && is.null(`entity_statuses`)) {
+        stop("Invalid value for `entity_statuses` when calling AdGroupsApi$AdGroupsList, `entity_statuses` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling AdGroupsApi$AdGroupsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling AdGroupsApi$AdGroupsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling AdGroupsApi$AdGroupsList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`order`) && is.null(`order`)) {
+        stop("Invalid value for `order` when calling AdGroupsApi$AdGroupsList, `order` is not nullable")
+      }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling AdGroupsApi$AdGroupsList, `bookmark` is not nullable")
+      }
 
+      if (!missing(`translate_interests_to_names`) && is.null(`translate_interests_to_names`)) {
+        stop("Invalid value for `translate_interests_to_names` when calling AdGroupsApi$AdGroupsList, `translate_interests_to_names` is not nullable")
+      }
 
       # explore
       for (query_item in `campaign_ids`) {
@@ -1157,35 +1235,71 @@ AdGroupsApi <- R6::R6Class(
         stop("Missing required parameter `granularity`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`ad_group_ids`) > 100) {
+      if (!missing(`ad_group_ids`) && is.null(`ad_group_ids`)) {
+        stop("Invalid value for `ad_group_ids` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, `ad_group_ids` is not nullable")
+      }
+      if (!is.null(`ad_group_ids`) && length(`ad_group_ids`) > 100) {
         stop("Invalid length for `ad_group_ids` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, number of items must be less than or equal to 100.")
       }
-      if (length(`ad_group_ids`) < 1) {
+      if (!is.null(`ad_group_ids`) && length(`ad_group_ids`) < 1) {
         stop("Invalid length for `ad_group_ids` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, `end_date` is not nullable")
+      }
 
-      if (length(`targeting_types`) > 15) {
+      if (!missing(`targeting_types`) && is.null(`targeting_types`)) {
+        stop("Invalid value for `targeting_types` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, `targeting_types` is not nullable")
+      }
+      if (!is.null(`targeting_types`) && length(`targeting_types`) > 15) {
         stop("Invalid length for `targeting_types` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, number of items must be less than or equal to 15.")
       }
-      if (length(`targeting_types`) < 1) {
+      if (!is.null(`targeting_types`) && length(`targeting_types`) < 1) {
         stop("Invalid length for `targeting_types` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`columns`) && is.null(`columns`)) {
+        stop("Invalid value for `columns` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, `columns` is not nullable")
+      }
 
+      if (!missing(`granularity`) && is.null(`granularity`)) {
+        stop("Invalid value for `granularity` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, `granularity` is not nullable")
+      }
 
+      if (!missing(`click_window_days`) && is.null(`click_window_days`)) {
+        stop("Invalid value for `click_window_days` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, `click_window_days` is not nullable")
+      }
 
+      if (!missing(`engagement_window_days`) && is.null(`engagement_window_days`)) {
+        stop("Invalid value for `engagement_window_days` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, `engagement_window_days` is not nullable")
+      }
 
+      if (!missing(`view_window_days`) && is.null(`view_window_days`)) {
+        stop("Invalid value for `view_window_days` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, `view_window_days` is not nullable")
+      }
 
+      if (!missing(`conversion_report_time`) && is.null(`conversion_report_time`)) {
+        stop("Invalid value for `conversion_report_time` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, `conversion_report_time` is not nullable")
+      }
 
+      if (!missing(`attribution_types`) && is.null(`attribution_types`)) {
+        stop("Invalid value for `attribution_types` when calling AdGroupsApi$AdGroupsTargetingAnalyticsGet, `attribution_types` is not nullable")
+      }
 
       # explore
       for (query_item in `ad_group_ids`) {
@@ -1338,17 +1452,23 @@ AdGroupsApi <- R6::R6Class(
         stop("Missing required parameter `ad_group_update_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsUpdate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling AdGroupsApi$AdGroupsUpdate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling AdGroupsApi$AdGroupsUpdate, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`ad_group_update_request`) > 30) {
+      if (!missing(`ad_group_update_request`) && is.null(`ad_group_update_request`)) {
+        stop("Invalid value for `ad_group_update_request` when calling AdGroupsApi$AdGroupsUpdate, `ad_group_update_request` is not nullable")
+      }
+      if (!is.null(`ad_group_update_request`) && length(`ad_group_update_request`) > 30) {
         stop("Invalid length for `ad_group_update_request` when calling AdGroupsApi$AdGroupsUpdate, number of items must be less than or equal to 30.")
       }
-      if (length(`ad_group_update_request`) < 1) {
+      if (!is.null(`ad_group_update_request`) && length(`ad_group_update_request`) < 1) {
         stop("Invalid length for `ad_group_update_request` when calling AdGroupsApi$AdGroupsUpdate, number of items must be greater than or equal to 1.")
       }
 

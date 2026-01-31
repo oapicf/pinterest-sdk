@@ -27,15 +27,10 @@ class LeadFormCreateRequest {
      * Constructs a new <code>LeadFormCreateRequest</code>.
      * @alias module:model/LeadFormCreateRequest
      * @implements module:model/LeadFormCommon
-     * @param name {String} Internal name of the lead form.
-     * @param privacyPolicyLink {String} A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-     * @param hasAcceptedTerms {Boolean} Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
-     * @param completionMessage {String} A message for people who complete the form to let them know what happens next.
-     * @param questions {Array.<module:model/LeadFormQuestion>} List of questions to be displayed on the lead form.
      */
-    constructor(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, questions) { 
+    constructor() { 
         LeadFormCommon.initialize(this);
-        LeadFormCreateRequest.initialize(this, name, privacyPolicyLink, hasAcceptedTerms, completionMessage, questions);
+        LeadFormCreateRequest.initialize(this);
     }
 
     /**
@@ -43,12 +38,7 @@ class LeadFormCreateRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, name, privacyPolicyLink, hasAcceptedTerms, completionMessage, questions) { 
-        obj['name'] = name;
-        obj['privacy_policy_link'] = privacyPolicyLink;
-        obj['has_accepted_terms'] = hasAcceptedTerms;
-        obj['completion_message'] = completionMessage;
-        obj['questions'] = questions;
+    static initialize(obj) { 
     }
 
     /**
@@ -97,12 +87,6 @@ class LeadFormCreateRequest {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>LeadFormCreateRequest</code>.
      */
     static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of LeadFormCreateRequest.RequiredProperties) {
-            if (!data.hasOwnProperty(property)) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
         // ensure the json data is a string
         if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
             throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
@@ -146,7 +130,7 @@ class LeadFormCreateRequest {
 
 }
 
-LeadFormCreateRequest.RequiredProperties = ["name", "privacy_policy_link", "has_accepted_terms", "completion_message", "questions"];
+
 
 /**
  * Internal name of the lead form.

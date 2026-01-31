@@ -12,14 +12,10 @@
 /**
  * Product availability.
  */
-export type NonNullableProductAvailabilityType = 'IN_STOCK' | 'OUT_OF_STOCK' | 'PREORDER';
-
 export const NonNullableProductAvailabilityType = {
-
-    InStock: 'IN_STOCK' as NonNullableProductAvailabilityType,
-
-    OutOfStock: 'OUT_OF_STOCK' as NonNullableProductAvailabilityType,
-
-    Preorder: 'PREORDER' as NonNullableProductAvailabilityType
-};
+    InStock: 'IN_STOCK',
+    OutOfStock: 'OUT_OF_STOCK',
+    Preorder: 'PREORDER'
+} as const;
+export type NonNullableProductAvailabilityType = typeof NonNullableProductAvailabilityType[keyof typeof NonNullableProductAvailabilityType];
 

@@ -15,7 +15,6 @@ package com.github.oapicf.pinterestsdk.model;
 
 import java.util.Objects;
 import com.github.oapicf.pinterestsdk.model.BatchOperation;
-import com.github.oapicf.pinterestsdk.model.CatalogsItemsRequestLanguage;
 import com.github.oapicf.pinterestsdk.model.Country;
 import com.github.oapicf.pinterestsdk.model.ItemUpsertBatchRecord;
 import com.google.gson.TypeAdapter;
@@ -54,17 +53,279 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object to upsert catalogs items
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemsUpsertBatchRequest {
   public static final String SERIALIZED_NAME_COUNTRY = "country";
   @SerializedName(SERIALIZED_NAME_COUNTRY)
   @javax.annotation.Nonnull
   private Country country;
 
+  /**
+   * We recommend using the CatalogsLocale values.
+   */
+  @JsonAdapter(LanguageEnum.Adapter.class)
+  public enum LanguageEnum {
+    AF_ZA("af-ZA"),
+    
+    AR_SA("ar-SA"),
+    
+    BG_BG("bg-BG"),
+    
+    BN_IN("bn-IN"),
+    
+    CS_CZ("cs-CZ"),
+    
+    DA_DK("da-DK"),
+    
+    DE("de"),
+    
+    EL_GR("el-GR"),
+    
+    EN_AU("en-AU"),
+    
+    EN_CA("en-CA"),
+    
+    EN_GB("en-GB"),
+    
+    EN_IN("en-IN"),
+    
+    EN_US("en-US"),
+    
+    ES_419("es-419"),
+    
+    ES_AR("es-AR"),
+    
+    ES_ES("es-ES"),
+    
+    ES_MX("es-MX"),
+    
+    FI_FI("fi-FI"),
+    
+    FR("fr"),
+    
+    FR_CA("fr-CA"),
+    
+    HE_IL("he-IL"),
+    
+    HI_IN("hi-IN"),
+    
+    HR_HR("hr-HR"),
+    
+    HU_HU("hu-HU"),
+    
+    ID_ID("id-ID"),
+    
+    IT("it"),
+    
+    JA("ja"),
+    
+    KO_KR("ko-KR"),
+    
+    MS_MY("ms-MY"),
+    
+    NB_NO("nb-NO"),
+    
+    NL("nl"),
+    
+    PL_PL("pl-PL"),
+    
+    PT_BR("pt-BR"),
+    
+    PT_PT("pt-PT"),
+    
+    RO_RO("ro-RO"),
+    
+    RU_RU("ru-RU"),
+    
+    SK_SK("sk-SK"),
+    
+    SV_SE("sv-SE"),
+    
+    TE_IN("te-IN"),
+    
+    TH_TH("th-TH"),
+    
+    TL_PH("tl-PH"),
+    
+    TR("tr"),
+    
+    UK_UA("uk-UA"),
+    
+    VI_VN("vi-VN"),
+    
+    ZH_CN("zh-CN"),
+    
+    ZH_TW("zh-TW"),
+    
+    AM("AM"),
+    
+    AR("AR"),
+    
+    AZ("AZ"),
+    
+    BG("BG"),
+    
+    BN("BN"),
+    
+    BS("BS"),
+    
+    CA("CA"),
+    
+    CS("CS"),
+    
+    DA("DA"),
+    
+    DV("DV"),
+    
+    DZ("DZ"),
+    
+    DE2("DE"),
+    
+    EL("EL"),
+    
+    EN("EN"),
+    
+    ES("ES"),
+    
+    ET("ET"),
+    
+    FA("FA"),
+    
+    FI("FI"),
+    
+    FR2("FR"),
+    
+    HE("HE"),
+    
+    HI("HI"),
+    
+    HR("HR"),
+    
+    HU("HU"),
+    
+    HY("HY"),
+    
+    ID("ID"),
+    
+    IN("IN"),
+    
+    IS("IS"),
+    
+    IT2("IT"),
+    
+    IW("IW"),
+    
+    JA2("JA"),
+    
+    KA("KA"),
+    
+    KM("KM"),
+    
+    KO("KO"),
+    
+    LO("LO"),
+    
+    LT("LT"),
+    
+    LV("LV"),
+    
+    MK("MK"),
+    
+    MN("MN"),
+    
+    MS("MS"),
+    
+    MY("MY"),
+    
+    NB("NB"),
+    
+    NE("NE"),
+    
+    NL2("NL"),
+    
+    NO("NO"),
+    
+    PL("PL"),
+    
+    PT("PT"),
+    
+    RO("RO"),
+    
+    RU("RU"),
+    
+    SK("SK"),
+    
+    SL("SL"),
+    
+    SQ("SQ"),
+    
+    SR("SR"),
+    
+    SV("SV"),
+    
+    TL("TL"),
+    
+    UK("UK"),
+    
+    VI("VI"),
+    
+    TE("TE"),
+    
+    TH("TH"),
+    
+    TR2("TR"),
+    
+    XX("XX"),
+    
+    ZH("ZH");
+
+    private String value;
+
+    LanguageEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static LanguageEnum fromValue(String value) {
+      for (LanguageEnum b : LanguageEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<LanguageEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final LanguageEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public LanguageEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return LanguageEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      LanguageEnum.fromValue(value);
+    }
+  }
+
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
   @javax.annotation.Nonnull
-  private CatalogsItemsRequestLanguage language;
+  private LanguageEnum language;
 
   public static final String SERIALIZED_NAME_OPERATION = "operation";
   @SerializedName(SERIALIZED_NAME_OPERATION)
@@ -98,21 +359,21 @@ public class CatalogsItemsUpsertBatchRequest {
   }
 
 
-  public CatalogsItemsUpsertBatchRequest language(@javax.annotation.Nonnull CatalogsItemsRequestLanguage language) {
+  public CatalogsItemsUpsertBatchRequest language(@javax.annotation.Nonnull LanguageEnum language) {
     this.language = language;
     return this;
   }
 
   /**
-   * Get language
+   * We recommend using the CatalogsLocale values.
    * @return language
    */
   @javax.annotation.Nonnull
-  public CatalogsItemsRequestLanguage getLanguage() {
+  public LanguageEnum getLanguage() {
     return language;
   }
 
-  public void setLanguage(@javax.annotation.Nonnull CatalogsItemsRequestLanguage language) {
+  public void setLanguage(@javax.annotation.Nonnull LanguageEnum language) {
     this.language = language;
   }
 
@@ -213,18 +474,10 @@ public class CatalogsItemsUpsertBatchRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("country");
-    openapiFields.add("language");
-    openapiFields.add("operation");
-    openapiFields.add("items");
+    openapiFields = new HashSet<String>(Arrays.asList("country", "language", "operation", "items"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("country");
-    openapiRequiredFields.add("language");
-    openapiRequiredFields.add("operation");
-    openapiRequiredFields.add("items");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("country", "language", "operation", "items"));
   }
 
   /**
@@ -236,7 +489,7 @@ public class CatalogsItemsUpsertBatchRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsItemsUpsertBatchRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsItemsUpsertBatchRequest is not found in the empty JSON string", CatalogsItemsUpsertBatchRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsItemsUpsertBatchRequest is not found in the empty JSON string", CatalogsItemsUpsertBatchRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -244,26 +497,31 @@ public class CatalogsItemsUpsertBatchRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsItemsUpsertBatchRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsItemsUpsertBatchRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsItemsUpsertBatchRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CatalogsItemsUpsertBatchRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `country`
       Country.validateJsonElement(jsonObj.get("country"));
+      if (!jsonObj.get("language").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("language").toString()));
+      }
       // validate the required field `language`
-      CatalogsItemsRequestLanguage.validateJsonElement(jsonObj.get("language"));
+      String.validateJsonElement(jsonObj.get("language"));
+      // validate the required field `language`
+      LanguageEnum.validateJsonElement(jsonObj.get("language"));
       // validate the required field `operation`
       BatchOperation.validateJsonElement(jsonObj.get("operation"));
       // ensure the json data is an array
       if (!jsonObj.get("items").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `items` to be an array in the JSON string but got `%s`", jsonObj.get("items").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `items` to be an array in the JSON string but got `%s`", jsonObj.get("items").toString()));
       }
 
       JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");

@@ -10,19 +10,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class KeywordsCommon  {
   
-  @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
  /**
-   * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-  **/
+  * </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+  */
+  @ApiModelProperty(value = "</p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.")
+
   private Integer bid;
 
   @ApiModelProperty(required = true, value = "")
+
   private MatchTypeResponse matchType;
 
-  @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
  /**
-   * Keyword value (120 chars max).
-  **/
+  * Keyword value (120 chars max).
+  */
+  @ApiModelProperty(required = true, value = "Keyword value (120 chars max).")
+
   private String value;
  /**
    * &lt;/p&gt;&lt;strong&gt;Note:&lt;/strong&gt; bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.

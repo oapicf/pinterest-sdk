@@ -21,7 +21,6 @@ local openapiclient_pin = require "openapiclient.model.pin"
 local openapiclient_pin_analytics_metrics_response = require "openapiclient.model.pin_analytics_metrics_response"
 local openapiclient_pin_create = require "openapiclient.model.pin_create"
 local openapiclient_pin_update = require "openapiclient.model.pin_update"
-local openapiclient_pins_analytics_metric_types_parameter_inner = require "openapiclient.model.pins_analytics_metric_types_parameter_inner"
 local openapiclient_pins_list_200_response = require "openapiclient.model.pins_list_200_response"
 local openapiclient_pins_save_request = require "openapiclient.model.pins_save_request"
 

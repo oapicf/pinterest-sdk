@@ -162,16 +162,16 @@ data class AdsAnalyticsCreateAsyncRequest(
     @Schema(example = "BY_ID", description = "Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.")
     @get:JsonProperty("primary_sort") val primarySort: AdsAnalyticsCreateAsyncRequest.PrimarySort? = null,
 
-    @get:Min(0)
-    @get:Max(23)
+    @get:Min(value=0)
+    @get:Max(value=23)
     @Schema(example = "null", description = "Which hour of the start date to begin the report. The entire day will be included if no start hour is provided. Only allowed for hourly reports.")
     @get:JsonProperty("start_hour") val startHour: kotlin.Int? = null,
 
-    @get:Min(0)
-    @get:Max(23)
+    @get:Min(value=0)
+    @get:Max(value=23)
     @Schema(example = "null", description = "Which hour of the end date to stop the report (inclusive). For example, with an end_date of '2020-01-01' and end_hour of '15', the report will contain metrics up to '2020-01-01 14:59:59'. The entire day will be included if no end hour is provided. Only allowed for hourly reports.")
     @get:JsonProperty("end_hour") val endHour: kotlin.Int? = null
-    ) {
+) {
 
     /**
     * Whether to first sort the report by date or by entity ID of the reporting entity level. Date will be used as the first level key for JSON reports that use BY_DATE. BY_DATE is recommended for large requests.
@@ -186,7 +186,8 @@ data class AdsAnalyticsCreateAsyncRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): PrimarySort {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdsAnalyticsCreateAsyncRequest'")
             }
         }
     }

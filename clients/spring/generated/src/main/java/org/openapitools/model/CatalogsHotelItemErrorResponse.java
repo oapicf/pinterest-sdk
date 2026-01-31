@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelItemErrorResponse", description = "Object describing a hotel item error")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
 
   private CatalogsType catalogType;
@@ -71,7 +71,7 @@ public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
     this.catalogType = catalogType;
   }
 
-  public CatalogsHotelItemErrorResponse hotelId(String hotelId) {
+  public CatalogsHotelItemErrorResponse hotelId(@Nullable String hotelId) {
     this.hotelId = hotelId;
     return this;
   }
@@ -83,11 +83,11 @@ public class CatalogsHotelItemErrorResponse implements ItemResponseAnyOf1 {
   
   @Schema(name = "hotel_id", example = "DS0294-M", description = "The catalog hotel id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("hotel_id")
-  public String getHotelId() {
+  public @Nullable String getHotelId() {
     return hotelId;
   }
 
-  public void setHotelId(String hotelId) {
+  public void setHotelId(@Nullable String hotelId) {
     this.hotelId = hotelId;
   }
 

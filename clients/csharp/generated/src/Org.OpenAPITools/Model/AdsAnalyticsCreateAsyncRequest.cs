@@ -672,8 +672,7 @@ namespace Org.OpenAPITools.Model
                                 granularity = new Option<Granularity?>(GranularityValueConverter.FromStringOrDefault(granularityRawValue));
                             break;
                         case "columns":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                columns = new Option<List<ReportingColumnAsync>?>(JsonSerializer.Deserialize<List<ReportingColumnAsync>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            columns = new Option<List<ReportingColumnAsync>?>(JsonSerializer.Deserialize<List<ReportingColumnAsync>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "level":
                             string? levelRawValue = utf8JsonReader.GetString();
@@ -701,56 +700,43 @@ namespace Org.OpenAPITools.Model
                                 conversionReportTime = new Option<ConversionReportTimeType?>(ConversionReportTimeTypeValueConverter.FromStringOrDefault(conversionReportTimeRawValue));
                             break;
                         case "attribution_types":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                attributionTypes = new Option<List<ConversionReportAttributionType>?>(JsonSerializer.Deserialize<List<ConversionReportAttributionType>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            attributionTypes = new Option<List<ConversionReportAttributionType>?>(JsonSerializer.Deserialize<List<ConversionReportAttributionType>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "campaign_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                campaignIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            campaignIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "campaign_statuses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                campaignStatuses = new Option<List<CampaignSummaryStatus>?>(JsonSerializer.Deserialize<List<CampaignSummaryStatus>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            campaignStatuses = new Option<List<CampaignSummaryStatus>?>(JsonSerializer.Deserialize<List<CampaignSummaryStatus>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "campaign_objective_types":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                campaignObjectiveTypes = new Option<List<ObjectiveType>?>(JsonSerializer.Deserialize<List<ObjectiveType>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            campaignObjectiveTypes = new Option<List<ObjectiveType>?>(JsonSerializer.Deserialize<List<ObjectiveType>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ad_group_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                adGroupIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            adGroupIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ad_group_statuses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                adGroupStatuses = new Option<List<AdGroupSummaryStatus>?>(JsonSerializer.Deserialize<List<AdGroupSummaryStatus>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            adGroupStatuses = new Option<List<AdGroupSummaryStatus>?>(JsonSerializer.Deserialize<List<AdGroupSummaryStatus>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ad_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                adIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            adIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ad_statuses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                adStatuses = new Option<List<PinPromotionSummaryStatus>?>(JsonSerializer.Deserialize<List<PinPromotionSummaryStatus>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            adStatuses = new Option<List<PinPromotionSummaryStatus>?>(JsonSerializer.Deserialize<List<PinPromotionSummaryStatus>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "product_group_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                productGroupIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            productGroupIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "product_group_statuses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                productGroupStatuses = new Option<List<ProductGroupSummaryStatus>?>(JsonSerializer.Deserialize<List<ProductGroupSummaryStatus>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            productGroupStatuses = new Option<List<ProductGroupSummaryStatus>?>(JsonSerializer.Deserialize<List<ProductGroupSummaryStatus>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "product_item_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                productItemIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            productItemIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "targeting_types":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                targetingTypes = new Option<List<AdsAnalyticsTargetingType>?>(JsonSerializer.Deserialize<List<AdsAnalyticsTargetingType>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            targetingTypes = new Option<List<AdsAnalyticsTargetingType>?>(JsonSerializer.Deserialize<List<AdsAnalyticsTargetingType>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "metrics_filters":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                metricsFilters = new Option<List<AdsAnalyticsMetricsFilter>?>(JsonSerializer.Deserialize<List<AdsAnalyticsMetricsFilter>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            metricsFilters = new Option<List<AdsAnalyticsMetricsFilter>?>(JsonSerializer.Deserialize<List<AdsAnalyticsMetricsFilter>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "report_format":
                             string? reportFormatRawValue = utf8JsonReader.GetString();
@@ -763,12 +749,10 @@ namespace Org.OpenAPITools.Model
                                 primarySort = new Option<AdsAnalyticsCreateAsyncRequest.PrimarySortEnum?>(AdsAnalyticsCreateAsyncRequest.PrimarySortEnumFromStringOrDefault(primarySortRawValue));
                             break;
                         case "start_hour":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                startHour = new Option<int?>(utf8JsonReader.GetInt32());
+                            startHour = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "end_hour":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                endHour = new Option<int?>(utf8JsonReader.GetInt32());
+                            endHour = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

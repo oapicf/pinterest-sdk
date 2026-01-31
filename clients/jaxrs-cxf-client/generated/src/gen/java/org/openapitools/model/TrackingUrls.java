@@ -1,34 +1,39 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
- **/
+ * Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.
+ */
 @ApiModel(description="Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for each event type. Tracking URLs set at the ad group or ad level can override those set at the campaign level. For more information, see <a href=\"https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking\" target=\"_blank\">Third-party and dynamic tracking</a>.")
 
 public class TrackingUrls  {
   
   @ApiModelProperty(value = "")
+
   private List<String> impression = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private List<String> click = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private List<String> engagement = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private List<String> buyableButton = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private List<String> audienceVerification = new ArrayList<>();
  /**
    * Get impression

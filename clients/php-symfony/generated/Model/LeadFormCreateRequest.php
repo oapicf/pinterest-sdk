@@ -50,7 +50,6 @@ class LeadFormCreateRequest
      * @SerializedName("name")
      * @Type("string")
     */
-    #[Assert\NotNull]
     #[Assert\Type("string")]
     protected ?string $name = null;
 
@@ -61,7 +60,6 @@ class LeadFormCreateRequest
      * @SerializedName("privacy_policy_link")
      * @Type("string")
     */
-    #[Assert\NotNull]
     #[Assert\Type("string")]
     protected ?string $privacyPolicyLink = null;
 
@@ -72,7 +70,6 @@ class LeadFormCreateRequest
      * @SerializedName("has_accepted_terms")
      * @Type("bool")
     */
-    #[Assert\NotNull]
     #[Assert\Type("bool")]
     protected ?bool $hasAcceptedTerms = null;
 
@@ -83,7 +80,6 @@ class LeadFormCreateRequest
      * @SerializedName("completion_message")
      * @Type("string")
     */
-    #[Assert\NotNull]
     #[Assert\Type("string")]
     protected ?string $completionMessage = null;
 
@@ -112,8 +108,6 @@ class LeadFormCreateRequest
      * @SerializedName("questions")
      * @Type("array<OpenAPI\Server\Model\LeadFormQuestion>")
     */
-    #[Assert\NotNull]
-    #[Assert\Valid]
     #[Assert\All([
         new Assert\Type("OpenAPI\Server\Model\LeadFormQuestion"),
     ])]
@@ -170,7 +164,7 @@ class LeadFormCreateRequest
     *
     * @return $this
     */
-    public function setName(?string $name): self
+    public function setName(?string $name = null): self
     {
         $this->name = $name;
 
@@ -197,7 +191,7 @@ class LeadFormCreateRequest
     *
     * @return $this
     */
-    public function setPrivacyPolicyLink(?string $privacyPolicyLink): self
+    public function setPrivacyPolicyLink(?string $privacyPolicyLink = null): self
     {
         $this->privacyPolicyLink = $privacyPolicyLink;
 
@@ -224,7 +218,7 @@ class LeadFormCreateRequest
     *
     * @return $this
     */
-    public function setHasAcceptedTerms(?bool $hasAcceptedTerms): self
+    public function setHasAcceptedTerms(?bool $hasAcceptedTerms = null): self
     {
         $this->hasAcceptedTerms = $hasAcceptedTerms;
 
@@ -251,7 +245,7 @@ class LeadFormCreateRequest
     *
     * @return $this
     */
-    public function setCompletionMessage(?string $completionMessage): self
+    public function setCompletionMessage(?string $completionMessage = null): self
     {
         $this->completionMessage = $completionMessage;
 
@@ -359,7 +353,7 @@ class LeadFormCreateRequest
     *
     * @return $this
     */
-    public function setQuestions(?array $questions): self
+    public function setQuestions(?array $questions = null): self
     {
         $this->questions = $questions;
 

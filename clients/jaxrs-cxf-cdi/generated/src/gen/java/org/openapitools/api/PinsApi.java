@@ -7,7 +7,6 @@ import org.openapitools.model.Pin;
 import org.openapitools.model.PinAnalyticsMetricsResponse;
 import org.openapitools.model.PinCreate;
 import org.openapitools.model.PinUpdate;
-import org.openapitools.model.PinsAnalyticsMetricTypesParameterInner;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.PinsSaveRequest;
 import org.openapitools.api.PinsApiService;
@@ -33,10 +32,10 @@ import javax.validation.Valid;
 @Path("/pins")
 @RequestScoped
 
-@Api(description = "the pins API")
+@Api
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2025-05-10T05:40:26.530137127Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-01-26T05:37:19.298233885Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 
 public class PinsApi  {
 
@@ -64,7 +63,7 @@ public class PinsApi  {
         @ApiResponse(code = 404, message = "Pin not found.", response = Error.class),
         @ApiResponse(code = 429, message = "This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response multiPinsAnalytics( @NotNull  @Size(min=1,max=100)@ApiParam(value = "List of Pin IDs.",required=true)  @QueryParam("pin_ids") List<@Pattern(regexp = "^\\d+$")String> pinIds,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull @ApiParam(value = "Pin metric types to get data for.",required=true)  @QueryParam("metric_types") List<PinsAnalyticsMetricTypesParameterInner> metricTypes, @ApiParam(value = "Apps or devices to get data for, default is all.", allowableValues="ALL, MOBILE, TABLET, WEB", defaultValue="ALL") @DefaultValue("ALL")  @QueryParam("app_types") String appTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.")  @QueryParam("ad_account_id") String adAccountId) {
+    public Response multiPinsAnalytics( @NotNull  @Size(min=1,max=100)@ApiParam(value = "List of Pin IDs.",required=true)  @QueryParam("pin_ids") List<@Pattern(regexp = "^\\d+$")String> pinIds,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull @ApiParam(value = "Pin metric types to get data for.",required=true)  @QueryParam("metric_types") List<String> metricTypes, @ApiParam(value = "Apps or devices to get data for, default is all.", allowableValues="ALL, MOBILE, TABLET, WEB", defaultValue="ALL") @DefaultValue("ALL")  @QueryParam("app_types") String appTypes,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.")  @QueryParam("ad_account_id") String adAccountId) {
         return delegate.multiPinsAnalytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId, securityContext);
     }
 
@@ -86,7 +85,7 @@ public class PinsApi  {
         @ApiResponse(code = 403, message = "Not authorized to access board or Pin.", response = Error.class),
         @ApiResponse(code = 404, message = "Pin not found.", response = Error.class),
         @ApiResponse(code = 200, message = "Unexpected error", response = Error.class) })
-    public Response pinsAnalytics(@ApiParam(value = "Unique identifier of a Pin.",required=true) @PathParam("pin_id") String pinId,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull @ApiParam(value = "Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.",required=true)  @QueryParam("metric_types") List<PinsAnalyticsMetricTypesParameterInner> metricTypes, @ApiParam(value = "Apps or devices to get data for, default is all.", allowableValues="ALL, MOBILE, TABLET, WEB", defaultValue="ALL") @DefaultValue("ALL")  @QueryParam("app_types") String appTypes, @ApiParam(value = "How to split the data into groups. Not including this param means data won't be split.", allowableValues="NO_SPLIT, APP_TYPE", defaultValue="NO_SPLIT") @DefaultValue("NO_SPLIT")  @QueryParam("split_field") String splitField,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.")  @QueryParam("ad_account_id") String adAccountId) {
+    public Response pinsAnalytics(@ApiParam(value = "Unique identifier of a Pin.",required=true) @PathParam("pin_id") String pinId,  @NotNull @ApiParam(value = "Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.",required=true)  @QueryParam("start_date") LocalDate startDate,  @NotNull @ApiParam(value = "Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.",required=true)  @QueryParam("end_date") LocalDate endDate,  @NotNull @ApiParam(value = "Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.",required=true)  @QueryParam("metric_types") List<String> metricTypes, @ApiParam(value = "Apps or devices to get data for, default is all.", allowableValues="ALL, MOBILE, TABLET, WEB", defaultValue="ALL") @DefaultValue("ALL")  @QueryParam("app_types") String appTypes, @ApiParam(value = "How to split the data into groups. Not including this param means data won't be split.", allowableValues="NO_SPLIT, APP_TYPE", defaultValue="NO_SPLIT") @DefaultValue("NO_SPLIT")  @QueryParam("split_field") String splitField,  @Pattern(regexp="^\\d+$") @Size(max=18)@ApiParam(value = "Unique identifier of an ad account.")  @QueryParam("ad_account_id") String adAccountId) {
         return delegate.pinsAnalytics(pinId, startDate, endDate, metricTypes, appTypes, splitField, adAccountId, securityContext);
     }
 

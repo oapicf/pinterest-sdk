@@ -67,12 +67,8 @@ class BillingController extends Controller
 
         $adsCreditRedeemRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\AdsCreditRedeemRequest::class);
 
-        try {
-            $apiResult = $this->api->adsCreditRedeem($adAccountId, $adsCreditRedeemRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adsCreditRedeem($adAccountId, $adsCreditRedeemRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdsCreditRedeemResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -132,12 +128,8 @@ class BillingController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->adsCreditsDiscountsGet($adAccountId, $bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adsCreditsDiscountsGet($adAccountId, $bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdsCreditsDiscountsGet200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -193,18 +185,14 @@ class BillingController extends Controller
         }
 
 
-        $isActive = $request->bool('isActive');
+        $isActive = $request->boolean('isActive');
 
         $bookmark = $request->string('bookmark')->value();
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->billingProfilesGet($adAccountId, $isActive, $bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->billingProfilesGet($adAccountId, $isActive, $bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BillingProfilesGet200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -248,12 +236,8 @@ class BillingController extends Controller
         }
 
 
-        try {
-            $apiResult = $this->api->ssioAccountsGet($adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->ssioAccountsGet($adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SSIOAccountResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -297,12 +281,8 @@ class BillingController extends Controller
 
         $sSIOCreateInsertionOrderRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SSIOCreateInsertionOrderRequest::class);
 
-        try {
-            $apiResult = $this->api->ssioInsertionOrderCreate($adAccountId, $sSIOCreateInsertionOrderRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->ssioInsertionOrderCreate($adAccountId, $sSIOCreateInsertionOrderRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SSIOCreateInsertionOrderResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -346,12 +326,8 @@ class BillingController extends Controller
 
         $sSIOEditInsertionOrderRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SSIOEditInsertionOrderRequest::class);
 
-        try {
-            $apiResult = $this->api->ssioInsertionOrderEdit($adAccountId, $sSIOEditInsertionOrderRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->ssioInsertionOrderEdit($adAccountId, $sSIOEditInsertionOrderRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SSIOEditInsertionOrderResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -411,12 +387,8 @@ class BillingController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->ssioInsertionOrdersStatusGetByAdAccount($adAccountId, $bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->ssioInsertionOrdersStatusGetByAdAccount($adAccountId, $bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SsioInsertionOrdersStatusGetByAdAccount200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -469,12 +441,8 @@ class BillingController extends Controller
 
 
 
-        try {
-            $apiResult = $this->api->ssioInsertionOrdersStatusGetByPinOrderId($adAccountId, $pinOrderId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->ssioInsertionOrdersStatusGetByPinOrderId($adAccountId, $pinOrderId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SSIOInsertionOrderStatusResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -539,12 +507,8 @@ class BillingController extends Controller
 
         $pinOrderId = $request->string('pinOrderId')->value();
 
-        try {
-            $apiResult = $this->api->ssioOrderLinesGetByAdAccount($adAccountId, $bookmark, $pageSize, $pinOrderId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->ssioOrderLinesGetByAdAccount($adAccountId, $bookmark, $pageSize, $pinOrderId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SsioOrderLinesGetByAdAccount200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

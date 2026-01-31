@@ -16,14 +16,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BusinessAssetsGet200Response  {
   
-  @ApiModelProperty(required = true, value = "List of assets the requesting business has access to.")
-  @Valid
  /**
-   * List of assets the requesting business has access to.
-  **/
+  * List of assets the requesting business has access to.
+  */
+  @ApiModelProperty(required = true, value = "List of assets the requesting business has access to.")
+
+  @Valid
+
   private List<@Valid GetBusinessAssetsResponse> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * List of assets the requesting business has access to.

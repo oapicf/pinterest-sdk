@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  * ProductGroupPromotionCreateRequestElement
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupPromotionCreateRequestElement {
 
   private @Nullable String id;
@@ -65,7 +65,7 @@ public class ProductGroupPromotionCreateRequestElement {
 
   private @Nullable CreativeType creativeType;
 
-  public ProductGroupPromotionCreateRequestElement id(String id) {
+  public ProductGroupPromotionCreateRequestElement id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -77,15 +77,15 @@ public class ProductGroupPromotionCreateRequestElement {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "2680059592705", description = "ID of the product group promotion.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public ProductGroupPromotionCreateRequestElement adGroupId(String adGroupId) {
+  public ProductGroupPromotionCreateRequestElement adGroupId(@Nullable String adGroupId) {
     this.adGroupId = adGroupId;
     return this;
   }
@@ -97,11 +97,11 @@ public class ProductGroupPromotionCreateRequestElement {
   @Pattern(regexp = "^(AG)?\\d+$") 
   @Schema(name = "ad_group_id", example = "2680059592705", description = "ID of the ad group the product group belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_group_id")
-  public String getAdGroupId() {
+  public @Nullable String getAdGroupId() {
     return adGroupId;
   }
 
-  public void setAdGroupId(String adGroupId) {
+  public void setAdGroupId(@Nullable String adGroupId) {
     this.adGroupId = adGroupId;
   }
 
@@ -265,7 +265,7 @@ public class ProductGroupPromotionCreateRequestElement {
     this.isMdl = isMdl;
   }
 
-  public ProductGroupPromotionCreateRequestElement status(EntityStatus status) {
+  public ProductGroupPromotionCreateRequestElement status(@Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -277,11 +277,11 @@ public class ProductGroupPromotionCreateRequestElement {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public EntityStatus getStatus() {
+  public @Nullable EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 
@@ -405,7 +405,7 @@ public class ProductGroupPromotionCreateRequestElement {
     this.gridClickType = gridClickType;
   }
 
-  public ProductGroupPromotionCreateRequestElement creativeType(CreativeType creativeType) {
+  public ProductGroupPromotionCreateRequestElement creativeType(@Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
     return this;
   }
@@ -417,11 +417,11 @@ public class ProductGroupPromotionCreateRequestElement {
   @Valid 
   @Schema(name = "creative_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_type")
-  public CreativeType getCreativeType() {
+  public @Nullable CreativeType getCreativeType() {
     return creativeType;
   }
 
-  public void setCreativeType(CreativeType creativeType) {
+  public void setCreativeType(@Nullable CreativeType creativeType) {
     this.creativeType = creativeType;
   }
 

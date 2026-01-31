@@ -1,15 +1,15 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Product counts for a Retail CatalogsProductGroup
- **/
+ * Product counts for a Retail CatalogsProductGroup
+ */
 @ApiModel(description="Product counts for a Retail CatalogsProductGroup")
 
 public class CatalogsRetailProductGroupProductCounts  {
@@ -45,21 +45,27 @@ RETAIL(String.valueOf("RETAIL"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private BigDecimal inStock;
 
   @ApiModelProperty(required = true, value = "")
+
   private BigDecimal outOfStock;
 
   @ApiModelProperty(required = true, value = "")
+
   private BigDecimal preorder;
 
   @ApiModelProperty(required = true, value = "")
+
   private BigDecimal total;
 
   @ApiModelProperty(value = "")
+
   private BigDecimal videos;
  /**
    * Get catalogType

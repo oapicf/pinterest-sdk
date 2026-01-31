@@ -93,7 +93,7 @@ private:
     /// <remarks>
     /// Get Ad Accounts countries
     /// </remarks>
-    virtual void ad_account_countries_get(Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_account_countries_get( Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get available metrics&#39; definitions
     /// </summary>
@@ -101,7 +101,7 @@ private:
     /// Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
     /// </remarks>
     /// <param name="reportType">Report type. (optional, default to &quot;&quot;)</param>
-    virtual void delivery_metrics_get(const std::optional<std::string> &reportType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void delivery_metrics_get( const std::optional<std::string> &reportType, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get interest details
     /// </summary>
@@ -109,14 +109,14 @@ private:
     /// &lt;p&gt;Get details of a specific interest given interest ID.&lt;/p&gt; &lt;p&gt;Click &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid&#x3D;118370875\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; for a spreadsheet listing interests and their IDs.&lt;/p&gt;
     /// </remarks>
     /// <param name="interestId">Unique identifier of an interest.</param>
-    virtual void interest_targeting_options_get(const std::string &interestId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void interest_targeting_options_get( const std::string &interestId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get lead form questions
     /// </summary>
     /// <remarks>
     /// Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/beta-and-advanced-access/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
     /// </remarks>
-    virtual void lead_form_questions_get(Pistache::Http::ResponseWriter &response) = 0;
+    virtual void lead_form_questions_get( Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get metrics ready state
     /// </summary>
@@ -124,7 +124,7 @@ private:
     /// Learn whether conversion or non-conversion metrics are finalized and ready to query.
     /// </remarks>
     /// <param name="date">Analytics reports request date (UTC). Format: YYYY-MM-DD</param>
-    virtual void metrics_ready_state_get(const std::optional<std::string> &date, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void metrics_ready_state_get( const std::optional<std::string> &date, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get targeting options
     /// </summary>
@@ -136,7 +136,7 @@ private:
     /// <param name="oauthSignature">Oauth signature (optional, default to &quot;&quot;)</param>
     /// <param name="timestamp">Timestamp (optional, default to &quot;&quot;)</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void targeting_options_get(const std::string &targetingType, const std::optional<std::string> &clientId, const std::optional<std::string> &oauthSignature, const std::optional<std::string> &timestamp, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void targeting_options_get( const std::string &targetingType, const std::optional<std::string> &clientId, const std::optional<std::string> &oauthSignature, const std::optional<std::string> &timestamp, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

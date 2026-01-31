@@ -132,7 +132,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AudienceShareType audienceShareType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(audienceShareType.ToString());
+            writer.WriteStringValue(AudienceShareTypeValueConverter.ToJsonValue(audienceShareType).ToString());
         }
     }
 
@@ -163,14 +163,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the AudienceShareType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="audienceShareType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AudienceShareType? audienceShareType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(audienceShareType?.ToString() ?? "null");
+            writer.WriteStringValue(audienceShareType.HasValue ? AudienceShareTypeValueConverter.ToJsonValue(audienceShareType.Value).ToString() : "null");
         }
     }
 }

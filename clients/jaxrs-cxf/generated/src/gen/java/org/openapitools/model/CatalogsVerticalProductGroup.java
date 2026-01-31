@@ -61,69 +61,86 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
-  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the creative assets product group.")
  /**
-   * ID of the creative assets product group.
-  **/
+  * ID of the creative assets product group.
+  */
+  @ApiModelProperty(example = "443727193917", required = true, value = "ID of the creative assets product group.")
+
   private String id;
 
-  @ApiModelProperty(example = "Most Popular", value = "Name of creative assets product group")
  /**
-   * Name of creative assets product group
-  **/
+  * Name of creative assets product group
+  */
+  @ApiModelProperty(example = "Most Popular", value = "Name of creative assets product group")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
-  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
  /**
-   * boolean indicator of whether the product group is being featured or not
-  **/
+  * boolean indicator of whether the product group is being featured or not
+  */
+  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
+
   private Boolean isFeatured;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsProductGroupType type;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsProductGroupStatus status;
 
-  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
  /**
-   * Unix timestamp in seconds of when catalog product group was created.
-  **/
+  * Unix timestamp in seconds of when catalog product group was created.
+  */
+  @ApiModelProperty(example = "1621350033000", value = "Unix timestamp in seconds of when catalog product group was created.")
+
   private Integer createdAt;
 
-  @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
  /**
-   * Unix timestamp in seconds of last time catalog product group was updated.
-  **/
+  * Unix timestamp in seconds of last time catalog product group was updated.
+  */
+  @ApiModelProperty(example = "1622742155000", value = "Unix timestamp in seconds of last time catalog product group was updated.")
+
   private Integer updatedAt;
 
-  @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
  /**
-   * Catalog id pertaining to the creative assets product group.
-  **/
+  * Catalog id pertaining to the creative assets product group.
+  */
+  @ApiModelProperty(required = true, value = "Catalog id pertaining to the creative assets product group.")
+
   private String catalogId;
 
-  @ApiModelProperty(example = "2680059592705", required = true, value = "id of the catalogs feed belonging to this catalog product group")
  /**
-   * id of the catalogs feed belonging to this catalog product group
-  **/
+  * id of the catalogs feed belonging to this catalog product group
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "id of the catalogs feed belonging to this catalog product group")
+
   private String feedId;
 
   @ApiModelProperty(value = "")
+
   private String country;
 
   @ApiModelProperty(value = "")
+
   private String locale;
  /**
    * Get catalogType

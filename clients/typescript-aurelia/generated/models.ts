@@ -1727,11 +1727,10 @@ export interface AudienceCreateRequest {
    * Audience description.
    */
   description?: string;
-  audience_type: AudienceCreateRequest1AudienceType;
-}
-
-
-export interface AudienceCreateRequest1AudienceType {
+  /**
+   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+   */
+  audience_type: AudienceType;
 }
 
 
@@ -3152,7 +3151,10 @@ export type CatalogsCreativeAssetsBatchItemOperationEnum = 'DELETE';
 export interface CatalogsCreativeAssetsBatchRequest {
   catalog_type: CatalogsCreativeAssetsBatchRequestCatalogTypeEnum;
   country: Country;
-  language: CatalogsItemsRequestLanguage;
+  /**
+   * We recommend using the CatalogsLocale values.
+   */
+  language: CatalogsCreativeAssetsBatchRequestLanguageEnum;
   /**
    * Array with creative assets item operations
    */
@@ -3167,6 +3169,11 @@ export interface CatalogsCreativeAssetsBatchRequest {
  * Enum for the catalog_type property.
  */
 export type CatalogsCreativeAssetsBatchRequestCatalogTypeEnum = 'CREATIVE_ASSETS';
+
+/**
+ * Enum for the language property.
+ */
+export type CatalogsCreativeAssetsBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 
 
 /**
@@ -4265,7 +4272,10 @@ export type CatalogsHotelBatchItemOperationEnum = 'DELETE';
 export interface CatalogsHotelBatchRequest {
   catalog_type: CatalogsHotelBatchRequestCatalogTypeEnum;
   country: Country;
-  language: CatalogsItemsRequestLanguage;
+  /**
+   * We recommend using the CatalogsLocale values.
+   */
+  language: CatalogsHotelBatchRequestLanguageEnum;
   /**
    * Array with catalogs item operations
    */
@@ -4280,6 +4290,11 @@ export interface CatalogsHotelBatchRequest {
  * Enum for the catalog_type property.
  */
 export type CatalogsHotelBatchRequestCatalogTypeEnum = 'HOTEL';
+
+/**
+ * Enum for the language property.
+ */
+export type CatalogsHotelBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 
 
 /**
@@ -4777,7 +4792,10 @@ export type CatalogsItemsBatchRequest = CatalogsItemsCreateBatchRequest | Catalo
  */
 export interface CatalogsItemsCreateBatchRequest {
   country: Country;
-  language: CatalogsItemsRequestLanguage;
+  /**
+   * We recommend using the CatalogsLocale values.
+   */
+  language: CatalogsItemsCreateBatchRequestLanguageEnum;
   operation: BatchOperation;
   /**
    * Array with catalogs items
@@ -4785,13 +4803,21 @@ export interface CatalogsItemsCreateBatchRequest {
   items: Array<ItemCreateBatchRecord>;
 }
 
+/**
+ * Enum for the language property.
+ */
+export type CatalogsItemsCreateBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
+
 
 /**
  * Request object to delete catalogs items
  */
 export interface CatalogsItemsDeleteBatchRequest {
   country: Country;
-  language: CatalogsItemsRequestLanguage;
+  /**
+   * We recommend using the CatalogsLocale values.
+   */
+  language: CatalogsItemsDeleteBatchRequestLanguageEnum;
   operation: BatchOperation;
   /**
    * Array with catalogs items
@@ -4799,19 +4825,32 @@ export interface CatalogsItemsDeleteBatchRequest {
   items: Array<ItemDeleteBatchRecord>;
 }
 
+/**
+ * Enum for the language property.
+ */
+export type CatalogsItemsDeleteBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
+
 
 /**
  * Request object to discontinue catalogs items
  */
 export interface CatalogsItemsDeleteDiscontinuedBatchRequest {
   country: Country;
-  language: CatalogsItemsRequestLanguage;
+  /**
+   * We recommend using the CatalogsLocale values.
+   */
+  language: CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum;
   operation: BatchOperation;
   /**
    * Array with catalogs items
    */
   items: Array<ItemDeleteDiscontinuedBatchRecord>;
 }
+
+/**
+ * Enum for the language property.
+ */
+export type CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 
 /**
  * @type CatalogsItemsFilters
@@ -4831,16 +4870,17 @@ export type CatalogsItemsPostFilters = CatalogsCreativeAssetsItemsPostFilter | C
  */
 export interface CatalogsItemsRequest {
   country: Country;
-  language: CatalogsItemsRequestLanguage;
+  /**
+   * We recommend using the CatalogsLocale values.
+   */
+  language: CatalogsItemsRequestLanguageEnum;
   filters: CatalogsItemsPostFilters;
 }
 
-
 /**
- * We recommend using the CatalogsLocale values.
+ * Enum for the language property.
  */
-export interface CatalogsItemsRequestLanguage {
-}
+export type CatalogsItemsRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 
 
 /**
@@ -4848,7 +4888,10 @@ export interface CatalogsItemsRequestLanguage {
  */
 export interface CatalogsItemsUpdateBatchRequest {
   country: Country;
-  language: CatalogsItemsRequestLanguage;
+  /**
+   * We recommend using the CatalogsLocale values.
+   */
+  language: CatalogsItemsUpdateBatchRequestLanguageEnum;
   operation: BatchOperation;
   /**
    * Array with catalogs items
@@ -4856,19 +4899,32 @@ export interface CatalogsItemsUpdateBatchRequest {
   items: Array<ItemUpdateBatchRecord>;
 }
 
+/**
+ * Enum for the language property.
+ */
+export type CatalogsItemsUpdateBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
+
 
 /**
  * Request object to upsert catalogs items
  */
 export interface CatalogsItemsUpsertBatchRequest {
   country: Country;
-  language: CatalogsItemsRequestLanguage;
+  /**
+   * We recommend using the CatalogsLocale values.
+   */
+  language: CatalogsItemsUpsertBatchRequestLanguageEnum;
   operation: BatchOperation;
   /**
    * Array with catalogs items
    */
   items: Array<ItemUpsertBatchRecord>;
 }
+
+/**
+ * Enum for the language property.
+ */
+export type CatalogsItemsUpsertBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 
 
 export interface CatalogsList200Response {
@@ -5248,7 +5304,10 @@ export type CatalogsReportStats = CatalogsReportDistributionStats | CatalogsRepo
 export interface CatalogsRetailBatchRequest {
   catalog_type: CatalogsRetailBatchRequestCatalogTypeEnum;
   country: Country;
-  language: CatalogsItemsRequestLanguage;
+  /**
+   * We recommend using the CatalogsLocale values.
+   */
+  language: CatalogsRetailBatchRequestLanguageEnum;
   /**
    * Array with catalogs item operations
    */
@@ -5259,6 +5318,11 @@ export interface CatalogsRetailBatchRequest {
  * Enum for the catalog_type property.
  */
 export type CatalogsRetailBatchRequestCatalogTypeEnum = 'RETAIL';
+
+/**
+ * Enum for the language property.
+ */
+export type CatalogsRetailBatchRequestLanguageEnum = 'af-ZA' | 'ar-SA' | 'bg-BG' | 'bn-IN' | 'cs-CZ' | 'da-DK' | 'de' | 'el-GR' | 'en-AU' | 'en-CA' | 'en-GB' | 'en-IN' | 'en-US' | 'es-419' | 'es-AR' | 'es-ES' | 'es-MX' | 'fi-FI' | 'fr' | 'fr-CA' | 'he-IL' | 'hi-IN' | 'hr-HR' | 'hu-HU' | 'id-ID' | 'it' | 'ja' | 'ko-KR' | 'ms-MY' | 'nb-NO' | 'nl' | 'pl-PL' | 'pt-BR' | 'pt-PT' | 'ro-RO' | 'ru-RU' | 'sk-SK' | 'sv-SE' | 'te-IN' | 'th-TH' | 'tl-PH' | 'tr' | 'uk-UA' | 'vi-VN' | 'zh-CN' | 'zh-TW' | 'AM' | 'AR' | 'AZ' | 'BG' | 'BN' | 'BS' | 'CA' | 'CS' | 'DA' | 'DV' | 'DZ' | 'DE' | 'EL' | 'EN' | 'ES' | 'ET' | 'FA' | 'FI' | 'FR' | 'HE' | 'HI' | 'HR' | 'HU' | 'HY' | 'ID' | 'IN' | 'IS' | 'IT' | 'IW' | 'JA' | 'KA' | 'KM' | 'KO' | 'LO' | 'LT' | 'LV' | 'MK' | 'MN' | 'MS' | 'MY' | 'NB' | 'NE' | 'NL' | 'NO' | 'PL' | 'PT' | 'RO' | 'RU' | 'SK' | 'SL' | 'SQ' | 'SR' | 'SV' | 'TL' | 'UK' | 'VI' | 'TE' | 'TH' | 'TR' | 'XX' | 'ZH';
 
 
 export interface CatalogsRetailBatchRequestItemsInner {
@@ -6349,10 +6413,6 @@ export interface ConversionTagConfigs {
 
 export interface ConversionTagCreate {
   /**
-   * Conversion tag name.
-   */
-  name: string;
-  /**
    * Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    */
   aem_enabled?: boolean;
@@ -6380,6 +6440,10 @@ export interface ConversionTagCreate {
    * Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
    */
   aem_loc_enabled?: boolean;
+  /**
+   * Conversion tag name.
+   */
+  name: string;
 }
 
 
@@ -6548,6 +6612,10 @@ export interface CreateInvitesResultsResponseArrayItemsInnerInvite {
 
 export interface CreateMMMReportRequest {
   /**
+   * A List of countries for filtering
+   */
+  countries?: Array<TargetingAdvertiserCountry>;
+  /**
    * Name of the Marketing Mix Modeling (MMM) report
    */
   report_name: string;
@@ -6575,10 +6643,6 @@ export interface CreateMMMReportRequest {
    * Metric and entity columns
    */
   columns: Array<MMMReportingColumn>;
-  /**
-   * A List of countries for filtering
-   */
-  countries?: Array<TargetingAdvertiserCountry>;
 }
 
 /**
@@ -7585,22 +7649,7 @@ export interface InviteAssetsSummaryProfilesInner {
 }
 
 
-/**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
- */
 export interface InviteBusinessRoleBinding {
-  /**
-   * Unique identifier for the business that created the invite/request.
-   */
-  created_by_business_id?: string;
-  /**
-   * Unique identifier for the user that created the invite/request.
-   */
-  created_by_user_id?: string;
-  /**
-   * Metadata for the user that updated the invite/request.
-   */
-  user?: BusinessAccessUserSummary;
   /**
    * Unique identifier of the invite/request.
    */
@@ -7610,6 +7659,18 @@ export interface InviteBusinessRoleBinding {
    * Indicates whether the invite/request was received.
    */
   is_received_invite?: boolean;
+  /**
+   * Metadata for the user that updated the invite/request.
+   */
+  user?: object;
+  /**
+   * Unique identifier for the business that created the invite/request.
+   */
+  created_by_business_id?: string;
+  /**
+   * Unique identifier for the user that created the invite/request.
+   */
+  created_by_user_id?: string;
 }
 
 
@@ -7637,23 +7698,6 @@ export interface InviteExceptionResponse {
 
 
 export interface InviteResponse {
-  assets_summary?: InviteAssetsSummary;
-  /**
-   * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-   */
-  business_roles?: Array<string>;
-  /**
-   * Metadata for the business that created the invite/request.
-   */
-  created_by_business?: BusinessAccessUserSummary;
-  /**
-   * Metadata for the user that created the invite/request.
-   */
-  created_by_user?: BusinessAccessUserSummary;
-  /**
-   * The time the invite/request was created. Returned in milliseconds.
-   */
-  created_time?: number;
   /**
    * Unique identifier of the invite/request.
    */
@@ -7667,6 +7711,23 @@ export interface InviteResponse {
    * Metadata for the member/partner that was sent the invite/request.
    */
   user?: BusinessAccessUserSummary;
+  assets_summary?: InviteAssetsSummary;
+  /**
+   * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+   */
+  business_roles?: Array<string>;
+  /**
+   * Metadata for the business that created the invite/request.
+   */
+  created_by_business?: object;
+  /**
+   * Metadata for the user that created the invite/request.
+   */
+  created_by_user?: object;
+  /**
+   * The time the invite/request was created. Returned in milliseconds.
+   */
+  created_time?: number;
 }
 
 
@@ -8162,9 +8223,10 @@ export interface ItemResponse {
    */
   item_id?: string;
   /**
-   * Array with the errors for the item id requested
+   * The pins mapped to the item
    */
-  errors?: Array<ItemValidationEvent>;
+  pins?: Array<Pin>;
+  attributes?: CatalogsCreativeAssetsAttributes;
   /**
    * The catalog hotel id in the merchant namespace
    */
@@ -8173,6 +8235,10 @@ export interface ItemResponse {
    * The catalog creative assets id in the merchant namespace
    */
   creative_assets_id?: string;
+  /**
+   * Array with the errors for the item id requested
+   */
+  errors?: Array<ItemValidationEvent>;
 }
 
 /**
@@ -8441,19 +8507,19 @@ export interface LeadFormCreateRequest {
   /**
    * Internal name of the lead form.
    */
-  name: string;
+  name?: string;
   /**
    * A link to the advertiser\'s privacy policy. This will be included in the lead form\'s disclosure language.
    */
-  privacy_policy_link: string;
+  privacy_policy_link?: string;
   /**
    * Whether the advertiser has accepted Pinterest\'s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest\'s <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
    */
-  has_accepted_terms: boolean;
+  has_accepted_terms?: boolean;
   /**
    * A message for people who complete the form to let them know what happens next.
    */
-  completion_message: string;
+  completion_message?: string;
   status?: LeadFormStatus;
   /**
    * Additional disclosure language to be included in the lead form.
@@ -8462,7 +8528,7 @@ export interface LeadFormCreateRequest {
   /**
    * List of questions to be displayed on the lead form.
    */
-  questions: Array<LeadFormQuestion>;
+  questions?: Array<LeadFormQuestion>;
   /**
    * List of additional policy links to be displayed on the lead form.
    */
@@ -8872,12 +8938,9 @@ export type NullableCatalogsItemFieldType = 'ITEM_ID' | 'ITEM_GROUP_ID' | 'TITLE
  */
 export type NullableCurrency = 'AED' | 'AFN' | 'ALL' | 'AMD' | 'ANG' | 'AOA' | 'ARS' | 'AUD' | 'AWG' | 'AZN' | 'BAM' | 'BBD' | 'BDT' | 'BGN' | 'BHD' | 'BIF' | 'BMD' | 'BND' | 'BOB' | 'BRL' | 'BSD' | 'BTN' | 'BWP' | 'BYN' | 'BYR' | 'BZD' | 'CAD' | 'CDF' | 'CHF' | 'CLP' | 'CNY' | 'COP' | 'CRC' | 'CUC' | 'CUP' | 'CVE' | 'CZK' | 'DJF' | 'DKK' | 'DOP' | 'DZD' | 'EGP' | 'ERN' | 'ETB' | 'EUR' | 'FJD' | 'FKP' | 'GBP' | 'GEL' | 'GGP' | 'GHS' | 'GIP' | 'GMD' | 'GNF' | 'GTQ' | 'GYD' | 'HKD' | 'HNL' | 'HRK' | 'HTG' | 'HUF' | 'IDR' | 'ILS' | 'IMP' | 'INR' | 'IQD' | 'IRR' | 'ISK' | 'JEP' | 'JMD' | 'JOD' | 'JPY' | 'KES' | 'KGS' | 'KHR' | 'KMF' | 'KPW' | 'KRW' | 'KWD' | 'KYD' | 'KZT' | 'LAK' | 'LBP' | 'LKR' | 'LRD' | 'LSL' | 'LYD' | 'MAD' | 'MDL' | 'MGA' | 'MKD' | 'MMK' | 'MNT' | 'MOP' | 'MRO' | 'MUR' | 'MVR' | 'MWK' | 'MXN' | 'MYR' | 'MZN' | 'NAD' | 'NGN' | 'NIO' | 'NOK' | 'NPR' | 'NZD' | 'OMR' | 'PAB' | 'PEN' | 'PGK' | 'PHP' | 'PKR' | 'PLN' | 'PYG' | 'QAR' | 'RON' | 'RSD' | 'RUB' | 'RWF' | 'SAR' | 'SBD' | 'SCR' | 'SDG' | 'SEK' | 'SGD' | 'SHP' | 'SLL' | 'SOS' | 'SPL' | 'SRD' | 'STD' | 'SVC' | 'SYP' | 'SZL' | 'THB' | 'TJS' | 'TMT' | 'TND' | 'TOP' | 'TRY' | 'TTD' | 'TVD' | 'TWD' | 'TZS' | 'UAH' | 'UGX' | 'USD' | 'UYU' | 'UZS' | 'VEF' | 'VND' | 'VUV' | 'WST' | 'XAF' | 'XCD' | 'XDR' | 'XOF' | 'XPF' | 'YER' | 'ZAR' | 'ZMW' | 'ZWD' | '';
 
-/**
- * A request to receive a client token.
- */
 export interface OauthAccessTokenRequestClientCredentials {
-  grant_type: OauthAccessTokenRequestClientCredentialsGrantTypeEnum;
   scope: string;
+  grant_type: OauthAccessTokenRequestClientCredentialsGrantTypeEnum;
 }
 
 /**
@@ -8886,13 +8949,10 @@ export interface OauthAccessTokenRequestClientCredentials {
 export type OauthAccessTokenRequestClientCredentialsGrantTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
 
 
-/**
- * A request to exchange an authorization code for an access token.
- */
 export interface OauthAccessTokenRequestCode {
-  grant_type: OauthAccessTokenRequestCodeGrantTypeEnum;
   code: string;
   redirect_uri: string;
+  grant_type: OauthAccessTokenRequestCodeGrantTypeEnum;
 }
 
 /**
@@ -8901,17 +8961,14 @@ export interface OauthAccessTokenRequestCode {
 export type OauthAccessTokenRequestCodeGrantTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
 
 
-/**
- * A request to exchange a refresh token for a new access token.
- */
 export interface OauthAccessTokenRequestRefresh {
-  grant_type: OauthAccessTokenRequestRefreshGrantTypeEnum;
   refresh_token: string;
   scope?: string;
   /**
    * Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
    */
   refresh_on?: boolean;
+  grant_type: OauthAccessTokenRequestRefreshGrantTypeEnum;
 }
 
 /**
@@ -8954,17 +9011,14 @@ export interface OauthAccessTokenResponseClientCredentials {
 export type OauthAccessTokenResponseClientCredentialsResponseTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
 
 
-/**
- * A successful OAuth access token response for the authorization code flow.
- */
 export interface OauthAccessTokenResponseCode {
+  refresh_token: string;
+  refresh_token_expires_in: number;
   response_type?: OauthAccessTokenResponseCodeResponseTypeEnum;
   access_token: string;
   token_type: string;
   expires_in: number;
   scope: string;
-  refresh_token: string;
-  refresh_token_expires_in: number;
 }
 
 /**
@@ -8973,18 +9027,15 @@ export interface OauthAccessTokenResponseCode {
 export type OauthAccessTokenResponseCodeResponseTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
 
 
-/**
- * A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
- */
 export interface OauthAccessTokenResponseEverlastingRefresh {
+  refresh_token: string;
+  refresh_token_expires_in: number;
+  refresh_token_expires_at: number;
   response_type?: OauthAccessTokenResponseEverlastingRefreshResponseTypeEnum;
   access_token: string;
   token_type: string;
   expires_in: number;
   scope: string;
-  refresh_token: string;
-  refresh_token_expires_in: number;
-  refresh_token_expires_at: number;
 }
 
 /**
@@ -8993,17 +9044,14 @@ export interface OauthAccessTokenResponseEverlastingRefresh {
 export type OauthAccessTokenResponseEverlastingRefreshResponseTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
 
 
-/**
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
- */
 export interface OauthAccessTokenResponseIntegrationRefresh {
+  refresh_token: string;
+  refresh_token_expires_in: number;
   response_type?: OauthAccessTokenResponseIntegrationRefreshResponseTypeEnum;
   access_token: string;
   token_type: string;
   expires_in: number;
   scope: string;
-  refresh_token: string;
-  refresh_token_expires_in: number;
 }
 
 /**
@@ -9714,12 +9762,6 @@ export interface PinUpdateCarouselSlotsInner {
    */
   link?: string;
 }
-
-/**
- * @type PinsAnalyticsMetricTypesParameterInner
- * @export
- */
-export type PinsAnalyticsMetricTypesParameterInner = string;
 
 
 export interface PinsList200Response {

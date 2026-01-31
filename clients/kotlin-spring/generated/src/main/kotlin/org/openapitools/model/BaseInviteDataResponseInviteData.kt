@@ -37,7 +37,7 @@ data class BaseInviteDataResponseInviteData(
 
     @Schema(example = "1646767577816", description = "The date and time the invite/request was sent/created. Returned in milliseconds.")
     @get:JsonProperty("sent_at") val sentAt: kotlin.Int? = null
-    ) {
+) {
 
 }
 

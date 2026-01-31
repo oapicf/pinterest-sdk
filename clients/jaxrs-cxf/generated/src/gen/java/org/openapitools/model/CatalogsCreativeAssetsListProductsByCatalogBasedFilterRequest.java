@@ -2,18 +2,18 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object to list products for a given creative assets catalog_id and product group filter.
- **/
+ * Request object to list products for a given creative assets catalog_id and product group filter.
+ */
 @ApiModel(description="Request object to list products for a given creative assets catalog_id and product group filter.")
 
 public class CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest  {
@@ -51,16 +51,20 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
  /**
-   * Catalog id pertaining to the creative assets product group.
-  **/
+  * Catalog id pertaining to the creative assets product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
+
   private String catalogId;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsCreativeAssetsProductGroupFilters filters;
  /**
    * Get catalogType

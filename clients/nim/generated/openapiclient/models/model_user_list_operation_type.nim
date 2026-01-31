@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type UserListOperationType* = object
-  ## User list operation type (add or remove)
+type UserListOperationType* {.pure.} = enum
+  ADD
+  REMOVE
+
+func `%`*(v: UserListOperationType): JsonNode =
+  result = case v:
+    of UserListOperationType.ADD: %"ADD"
+    of UserListOperationType.REMOVE: %"REMOVE"
+
+func `$`*(v: UserListOperationType): string =
+  result = case v:
+    of UserListOperationType.ADD: $("ADD")
+    of UserListOperationType.REMOVE: $("REMOVE")
+
+proc to*(node: JsonNode, T: typedesc[UserListOperationType]): UserListOperationType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum UserListOperationType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ADD"):
+    return UserListOperationType.ADD
+  of $("REMOVE"):
+    return UserListOperationType.REMOVE
+  else:
+    raise newException(ValueError, "Invalid enum value for UserListOperationType: " & strVal)
+

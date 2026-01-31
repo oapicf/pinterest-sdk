@@ -8,52 +8,60 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LineItem  {
   
-  @ApiModelProperty(example = "Parker", value = "Product brand. For example, \"Parker\".")
  /**
-   * Product brand. For example, \"Parker\".
-  **/
+  * Product brand. For example, \"Parker\".
+  */
+  @ApiModelProperty(example = "Parker", value = "Product brand. For example, \"Parker\".")
+
   private String productBrand;
 
-  @ApiModelProperty(example = "Shoes", value = "Product category. For example, \"Shoes\".")
  /**
-   * Product category. For example, \"Shoes\".
-  **/
+  * Product category. For example, \"Shoes\".
+  */
+  @ApiModelProperty(example = "Shoes", value = "Product category. For example, \"Shoes\".")
+
   private String productCategory;
 
-  @ApiModelProperty(example = "1414", value = "Product ID. For example, 1414.")
  /**
-   * Product ID. For example, 1414.
-  **/
+  * Product ID. For example, 1414.
+  */
+  @ApiModelProperty(example = "1414", value = "Product ID. For example, 1414.")
+
   private Integer productId;
 
-  @ApiModelProperty(example = "Parker Boots", value = "Product name. For example, \"Parker Boots\".")
  /**
-   * Product name. For example, \"Parker Boots\".
-  **/
+  * Product name. For example, \"Parker Boots\".
+  */
+  @ApiModelProperty(example = "Parker Boots", value = "Product name. For example, \"Parker Boots\".")
+
   private String productName;
 
-  @ApiModelProperty(example = "99.99", value = "Product price. For example, \"99.99\".")
  /**
-   * Product price. For example, \"99.99\".
-  **/
+  * Product price. For example, \"99.99\".
+  */
+  @ApiModelProperty(example = "99.99", value = "Product price. For example, \"99.99\".")
+
   private String productPrice;
 
-  @ApiModelProperty(example = "2", value = "Product quantity. For example, 2.")
  /**
-   * Product quantity. For example, 2.
-  **/
+  * Product quantity. For example, 2.
+  */
+  @ApiModelProperty(example = "2", value = "Product quantity. For example, 2.")
+
   private Integer productQuantity;
 
-  @ApiModelProperty(example = "Red", value = "Product variant. For example, \"Red\".")
  /**
-   * Product variant. For example, \"Red\".
-  **/
+  * Product variant. For example, \"Red\".
+  */
+  @ApiModelProperty(example = "Red", value = "Product variant. For example, \"Red\".")
+
   private String productVariant;
 
-  @ApiModelProperty(example = "1414-34832", value = "Product variant ID. For example, \"1414-34832\".")
  /**
-   * Product variant ID. For example, \"1414-34832\".
-  **/
+  * Product variant ID. For example, \"1414-34832\".
+  */
+  @ApiModelProperty(example = "1414-34832", value = "Product variant ID. For example, \"1414-34832\".")
+
   private String productVariantId;
  /**
    * Product brand. For example, \&quot;Parker\&quot;.

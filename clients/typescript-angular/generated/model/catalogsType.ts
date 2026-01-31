@@ -12,14 +12,10 @@
 /**
  * Type of the catalog entity.
  */
-export type CatalogsType = 'RETAIL' | 'HOTEL' | 'CREATIVE_ASSETS';
-
 export const CatalogsType = {
-
-    Retail: 'RETAIL' as CatalogsType,
-
-    Hotel: 'HOTEL' as CatalogsType,
-
-    CreativeAssets: 'CREATIVE_ASSETS' as CatalogsType
-};
+    Retail: 'RETAIL',
+    Hotel: 'HOTEL',
+    CreativeAssets: 'CREATIVE_ASSETS'
+} as const;
+export type CatalogsType = typeof CatalogsType[keyof typeof CatalogsType];
 

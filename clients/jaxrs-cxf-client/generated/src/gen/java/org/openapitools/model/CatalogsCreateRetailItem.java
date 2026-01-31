@@ -1,23 +1,24 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.ItemAttributesRequest;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * An item to be created
- **/
+ * An item to be created
+ */
 @ApiModel(description="An item to be created")
 
 public class CatalogsCreateRetailItem  {
   
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog item id in the merchant namespace")
  /**
-   * The catalog item id in the merchant namespace
-  **/
+  * The catalog item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog item id in the merchant namespace")
+
   private String itemId;
 
 public enum OperationEnum {
@@ -51,9 +52,11 @@ CREATE(String.valueOf("CREATE"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private OperationEnum operation;
 
   @ApiModelProperty(required = true, value = "")
+
   private ItemAttributesRequest attributes;
  /**
    * The catalog item id in the merchant namespace

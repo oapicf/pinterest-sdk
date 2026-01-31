@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * Interest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Interest {
 
   private @Nullable String canonicalUrl;
@@ -30,7 +30,7 @@ public class Interest {
 
   private @Nullable String name;
 
-  public Interest canonicalUrl(String canonicalUrl) {
+  public Interest canonicalUrl(@Nullable String canonicalUrl) {
     this.canonicalUrl = canonicalUrl;
     return this;
   }
@@ -42,15 +42,15 @@ public class Interest {
   
   @Schema(name = "canonical_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("canonical_url")
-  public String getCanonicalUrl() {
+  public @Nullable String getCanonicalUrl() {
     return canonicalUrl;
   }
 
-  public void setCanonicalUrl(String canonicalUrl) {
+  public void setCanonicalUrl(@Nullable String canonicalUrl) {
     this.canonicalUrl = canonicalUrl;
   }
 
-  public Interest id(String id) {
+  public Interest id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -62,15 +62,15 @@ public class Interest {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "903972677830", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public Interest key(String key) {
+  public Interest key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -82,15 +82,15 @@ public class Interest {
   
   @Schema(name = "key", example = "man cave", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
-  public String getKey() {
+  public @Nullable String getKey() {
     return key;
   }
 
-  public void setKey(String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 
-  public Interest name(String name) {
+  public Interest name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -102,11 +102,11 @@ public class Interest {
   
   @Schema(name = "name", example = "Man cave", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 

@@ -9,16 +9,61 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_pin_update_carousel_slots_inner
 
 type PinUpdate* = object
   ## Pin fields for updates
-  altText*: string ## Pin's alternative text.
-  boardId*: string ## The id of the board to move the Pin onto.
-  boardSectionId*: string ## <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
-  description*: string ## Pin description - 800 characters maximum.
-  link*: string ## URL viewer is taken to when they click pin.
-  title*: string ## The native pin title that creators explicitly prefer to display.
-  carouselSlots*: seq[PinUpdate_carousel_slots_inner] ## Carousel Pin slots data.
-  note*: string ## Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+  altText*: Option[string] ## Pin's alternative text.
+  boardId*: Option[string] ## The id of the board to move the Pin onto.
+  boardSectionId*: Option[string] ## <a href=\"https://help.pinterest.com/en/article/create-a-board-section\">Board section</a> ID.
+  description*: Option[string] ## Pin description - 800 characters maximum.
+  link*: Option[string] ## URL viewer is taken to when they click pin.
+  title*: Option[string] ## The native pin title that creators explicitly prefer to display.
+  carouselSlots*: Option[seq[PinUpdate_carousel_slots_inner]] ## Carousel Pin slots data.
+  note*: Option[string] ## Private note for this Pin. <a href=\"https://help.pinterest.com/en/article/add-notes-to-your-pins\">Learn more</a>.
+
+
+# Custom JSON deserialization for PinUpdate with custom field names
+proc to*(node: JsonNode, T: typedesc[PinUpdate]): PinUpdate =
+  result = PinUpdate()
+  if node.kind == JObject:
+    if node.hasKey("alt_text") and node["alt_text"].kind != JNull:
+      result.altText = some(to(node["alt_text"], typeof(result.altText.get())))
+    if node.hasKey("board_id") and node["board_id"].kind != JNull:
+      result.boardId = some(to(node["board_id"], typeof(result.boardId.get())))
+    if node.hasKey("board_section_id") and node["board_section_id"].kind != JNull:
+      result.boardSectionId = some(to(node["board_section_id"], typeof(result.boardSectionId.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("link") and node["link"].kind != JNull:
+      result.link = some(to(node["link"], typeof(result.link.get())))
+    if node.hasKey("title") and node["title"].kind != JNull:
+      result.title = some(to(node["title"], typeof(result.title.get())))
+    if node.hasKey("carousel_slots") and node["carousel_slots"].kind != JNull:
+      result.carouselSlots = some(to(node["carousel_slots"], typeof(result.carouselSlots.get())))
+    if node.hasKey("note") and node["note"].kind != JNull:
+      result.note = some(to(node["note"], typeof(result.note.get())))
+
+# Custom JSON serialization for PinUpdate with custom field names
+proc `%`*(obj: PinUpdate): JsonNode =
+  result = newJObject()
+  if obj.altText.isSome():
+    result["alt_text"] = %obj.altText.get()
+  if obj.boardId.isSome():
+    result["board_id"] = %obj.boardId.get()
+  if obj.boardSectionId.isSome():
+    result["board_section_id"] = %obj.boardSectionId.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  if obj.link.isSome():
+    result["link"] = %obj.link.get()
+  if obj.title.isSome():
+    result["title"] = %obj.title.get()
+  if obj.carouselSlots.isSome():
+    result["carousel_slots"] = %obj.carouselSlots.get()
+  if obj.note.isSome():
+    result["note"] = %obj.note.get()
+

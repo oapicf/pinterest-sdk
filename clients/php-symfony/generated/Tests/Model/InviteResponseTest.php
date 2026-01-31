@@ -87,6 +87,50 @@ class InviteResponseTest extends TestCase
     }
 
     /**
+     * Test attribute "id"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyId(): void
+    {
+        $this->markTestSkipped('Test for property id not implemented');
+    }
+
+    /**
+     * Test attribute "inviteData"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyInviteData(): void
+    {
+        $this->markTestSkipped('Test for property inviteData not implemented');
+    }
+
+    /**
+     * Test attribute "isReceivedInvite"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyIsReceivedInvite(): void
+    {
+        $this->markTestSkipped('Test for property isReceivedInvite not implemented');
+    }
+
+    /**
+     * Test attribute "user"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyUser(): void
+    {
+        $this->markTestSkipped('Test for property user not implemented');
+    }
+
+    /**
      * Test attribute "assetsSummary"
      *
      * @group unit
@@ -139,49 +183,5 @@ class InviteResponseTest extends TestCase
     public function testPropertyCreatedTime(): void
     {
         $this->markTestSkipped('Test for property createdTime not implemented');
-    }
-
-    /**
-     * Test attribute "id"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyId(): void
-    {
-        $this->markTestSkipped('Test for property id not implemented');
-    }
-
-    /**
-     * Test attribute "inviteData"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyInviteData(): void
-    {
-        $this->markTestSkipped('Test for property inviteData not implemented');
-    }
-
-    /**
-     * Test attribute "isReceivedInvite"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyIsReceivedInvite(): void
-    {
-        $this->markTestSkipped('Test for property isReceivedInvite not implemented');
-    }
-
-    /**
-     * Test attribute "user"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyUser(): void
-    {
-        $this->markTestSkipped('Test for property user not implemented');
     }
 }

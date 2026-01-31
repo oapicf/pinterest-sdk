@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsItemValidationWarnings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemValidationWarnings {
   public static final String SERIALIZED_NAME_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G = "AD_LINK_FORMAT_WARNING";
   @SerializedName(SERIALIZED_NAME_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G)
@@ -1240,54 +1240,10 @@ public class CatalogsItemValidationWarnings {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("AD_LINK_FORMAT_WARNING");
-    openapiFields.add("AD_LINK_SAME_AS_LINK");
-    openapiFields.add("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG");
-    openapiFields.add("ADDITIONAL_IMAGE_LINK_WARNING");
-    openapiFields.add("ADWORDS_FORMAT_WARNING");
-    openapiFields.add("ADWORDS_SAME_AS_LINK");
-    openapiFields.add("AGE_GROUP_INVALID");
-    openapiFields.add("SIZE_SYSTEM_INVALID");
-    openapiFields.add("ANDROID_DEEP_LINK_INVALID");
-    openapiFields.add("AVAILABILITY_DATE_INVALID");
-    openapiFields.add("COUNTRY_DOES_NOT_MAP_TO_CURRENCY");
-    openapiFields.add("CUSTOM_LABEL_LENGTH_TOO_LONG");
-    openapiFields.add("DESCRIPTION_LENGTH_TOO_LONG");
-    openapiFields.add("EXPIRATION_DATE_INVALID");
-    openapiFields.add("GENDER_INVALID");
-    openapiFields.add("GTIN_INVALID");
-    openapiFields.add("IMAGE_LINK_WARNING");
-    openapiFields.add("IOS_DEEP_LINK_INVALID");
-    openapiFields.add("IS_BUNDLE_INVALID");
-    openapiFields.add("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE");
-    openapiFields.add("LINK_FORMAT_WARNING");
-    openapiFields.add("MIN_AD_PRICE_INVALID");
-    openapiFields.add("MPN_INVALID");
-    openapiFields.add("MULTIPACK_INVALID");
-    openapiFields.add("OPTIONAL_CONDITION_INVALID");
-    openapiFields.add("OPTIONAL_CONDITION_MISSING");
-    openapiFields.add("OPTIONAL_PRODUCT_CATEGORY_INVALID");
-    openapiFields.add("OPTIONAL_PRODUCT_CATEGORY_MISSING");
-    openapiFields.add("PRODUCT_CATEGORY_DEPTH_WARNING");
-    openapiFields.add("PRODUCT_TYPE_LENGTH_TOO_LONG");
-    openapiFields.add("SALES_PRICE_INVALID");
-    openapiFields.add("SALES_PRICE_TOO_LOW");
-    openapiFields.add("SALES_PRICE_TOO_HIGH");
-    openapiFields.add("SALE_DATE_INVALID");
-    openapiFields.add("SHIPPING_INVALID");
-    openapiFields.add("SHIPPING_HEIGHT_INVALID");
-    openapiFields.add("SHIPPING_WEIGHT_INVALID");
-    openapiFields.add("SHIPPING_WIDTH_INVALID");
-    openapiFields.add("SIZE_TYPE_INVALID");
-    openapiFields.add("TAX_INVALID");
-    openapiFields.add("TITLE_LENGTH_TOO_LONG");
-    openapiFields.add("TOO_MANY_ADDITIONAL_IMAGE_LINKS");
-    openapiFields.add("UTM_SOURCE_AUTO_CORRECTED");
-    openapiFields.add("WEIGHT_UNIT_INVALID");
+    openapiFields = new HashSet<String>(Arrays.asList("AD_LINK_FORMAT_WARNING", "AD_LINK_SAME_AS_LINK", "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG", "ADDITIONAL_IMAGE_LINK_WARNING", "ADWORDS_FORMAT_WARNING", "ADWORDS_SAME_AS_LINK", "AGE_GROUP_INVALID", "SIZE_SYSTEM_INVALID", "ANDROID_DEEP_LINK_INVALID", "AVAILABILITY_DATE_INVALID", "COUNTRY_DOES_NOT_MAP_TO_CURRENCY", "CUSTOM_LABEL_LENGTH_TOO_LONG", "DESCRIPTION_LENGTH_TOO_LONG", "EXPIRATION_DATE_INVALID", "GENDER_INVALID", "GTIN_INVALID", "IMAGE_LINK_WARNING", "IOS_DEEP_LINK_INVALID", "IS_BUNDLE_INVALID", "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE", "LINK_FORMAT_WARNING", "MIN_AD_PRICE_INVALID", "MPN_INVALID", "MULTIPACK_INVALID", "OPTIONAL_CONDITION_INVALID", "OPTIONAL_CONDITION_MISSING", "OPTIONAL_PRODUCT_CATEGORY_INVALID", "OPTIONAL_PRODUCT_CATEGORY_MISSING", "PRODUCT_CATEGORY_DEPTH_WARNING", "PRODUCT_TYPE_LENGTH_TOO_LONG", "SALES_PRICE_INVALID", "SALES_PRICE_TOO_LOW", "SALES_PRICE_TOO_HIGH", "SALE_DATE_INVALID", "SHIPPING_INVALID", "SHIPPING_HEIGHT_INVALID", "SHIPPING_WEIGHT_INVALID", "SHIPPING_WIDTH_INVALID", "SIZE_TYPE_INVALID", "TAX_INVALID", "TITLE_LENGTH_TOO_LONG", "TOO_MANY_ADDITIONAL_IMAGE_LINKS", "UTM_SOURCE_AUTO_CORRECTED", "WEIGHT_UNIT_INVALID"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -1299,7 +1255,7 @@ public class CatalogsItemValidationWarnings {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsItemValidationWarnings.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsItemValidationWarnings is not found in the empty JSON string", CatalogsItemValidationWarnings.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsItemValidationWarnings is not found in the empty JSON string", CatalogsItemValidationWarnings.openapiRequiredFields.toString()));
         }
       }
 
@@ -1307,7 +1263,7 @@ public class CatalogsItemValidationWarnings {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsItemValidationWarnings.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsItemValidationWarnings` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsItemValidationWarnings` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

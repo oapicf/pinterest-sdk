@@ -27,7 +27,7 @@ data class AuthRespondInvitesBodyInvitesInnerAction(
     @get:Size(min=1)
     @Schema(example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", description = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. ")
     @get:JsonProperty("asset_id_to_permissions") val assetIdToPermissions: kotlin.collections.Map<kotlin.String, kotlin.collections.List<Permissions>>? = null
-    ) {
+) {
 
 }
 

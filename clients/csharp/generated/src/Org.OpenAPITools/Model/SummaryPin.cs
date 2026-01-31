@@ -202,8 +202,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "media":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                media = new Option<PinMedia?>(JsonSerializer.Deserialize<PinMedia>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            media = new Option<PinMedia?>(JsonSerializer.Deserialize<PinMedia>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "alt_text":
                             altText = new Option<string?>(utf8JsonReader.GetString());

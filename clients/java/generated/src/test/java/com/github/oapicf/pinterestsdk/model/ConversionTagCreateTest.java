@@ -95,4 +95,12 @@ public class ConversionTagCreateTest {
         // TODO: test aemLocEnabled
     }
 
+    /**
+     * Test the property 'name'
+     */
+    @Test
+    public void nameTest() {
+        // TODO: test name
+    }
+
 }

@@ -23,6 +23,98 @@
 namespace OpenAPI
 {
 
+inline FString ToString(const OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum& Value)
+{
+	switch (Value)
+	{
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::Impression:
+		return TEXT("IMPRESSION");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::OutboundClick:
+		return TEXT("OUTBOUND_CLICK");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::PinClick:
+		return TEXT("PIN_CLICK");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::Save:
+		return TEXT("SAVE");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::SaveRate:
+		return TEXT("SAVE_RATE");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::TotalComments:
+		return TEXT("TOTAL_COMMENTS");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::TotalReactions:
+		return TEXT("TOTAL_REACTIONS");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::UserFollow:
+		return TEXT("USER_FOLLOW");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::ProfileVisit:
+		return TEXT("PROFILE_VISIT");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::VideoMrcView:
+		return TEXT("VIDEO_MRC_VIEW");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::VIDEO10SVIEW:
+		return TEXT("VIDEO_10S_VIEW");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::QUARTILE95PERCENTVIEW:
+		return TEXT("QUARTILE_95_PERCENT_VIEW");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::VIDEOV50WATCHTIME:
+		return TEXT("VIDEO_V50_WATCH_TIME");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::VideoStart:
+		return TEXT("VIDEO_START");
+	case OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::VideoAvgWatchTime:
+		return TEXT("VIDEO_AVG_WATCH_TIME");
+	}
+
+	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum Value (%d)"), (int)Value);
+	return TEXT("");
+}
+
+FString OpenAPIPinsApi::MultiPinsAnalyticsRequest::EnumToString(const OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum& EnumValue)
+{
+	return ToString(EnumValue);
+}
+
+inline bool FromString(const FString& EnumAsString, OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum& Value)
+{
+	static TMap<FString, OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum> StringToEnum = { 
+		{ TEXT("IMPRESSION"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::Impression },
+		{ TEXT("OUTBOUND_CLICK"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::OutboundClick },
+		{ TEXT("PIN_CLICK"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::PinClick },
+		{ TEXT("SAVE"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::Save },
+		{ TEXT("SAVE_RATE"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::SaveRate },
+		{ TEXT("TOTAL_COMMENTS"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::TotalComments },
+		{ TEXT("TOTAL_REACTIONS"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::TotalReactions },
+		{ TEXT("USER_FOLLOW"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::UserFollow },
+		{ TEXT("PROFILE_VISIT"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::ProfileVisit },
+		{ TEXT("VIDEO_MRC_VIEW"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::VideoMrcView },
+		{ TEXT("VIDEO_10S_VIEW"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::VIDEO10SVIEW },
+		{ TEXT("QUARTILE_95_PERCENT_VIEW"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::QUARTILE95PERCENTVIEW },
+		{ TEXT("VIDEO_V50_WATCH_TIME"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::VIDEOV50WATCHTIME },
+		{ TEXT("VIDEO_START"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::VideoStart },
+		{ TEXT("VIDEO_AVG_WATCH_TIME"), OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum::VideoAvgWatchTime }, };
+
+	const auto Found = StringToEnum.Find(EnumAsString);
+	if(Found)
+		Value = *Found;
+
+	return Found != nullptr;
+}
+
+bool OpenAPIPinsApi::MultiPinsAnalyticsRequest::EnumFromString(const FString& EnumAsString, OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum& EnumValue)
+{
+	return FromString(EnumAsString, EnumValue);
+}
+
+inline void WriteJsonValue(JsonWriter& Writer, const OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum& Value)
+{
+	WriteJsonValue(Writer, ToString(Value));
+}
+
+inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPIPinsApi::MultiPinsAnalyticsRequest::MetricTypesEnum& Value)
+{
+	FString TmpValue;
+	if (JsonValue->TryGetString(TmpValue))
+	{
+		if(FromString(TmpValue, Value))
+			return true;
+	}
+	return false;
+}
+
 inline FString ToString(const OpenAPIPinsApi::MultiPinsAnalyticsRequest::AppTypesEnum& Value)
 {
 	switch (Value)
@@ -143,6 +235,98 @@ void OpenAPIPinsApi::MultiPinsAnalyticsResponse::SetHttpResponseCode(EHttpRespon
 bool OpenAPIPinsApi::MultiPinsAnalyticsResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
+}
+
+inline FString ToString(const OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum& Value)
+{
+	switch (Value)
+	{
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::Impression:
+		return TEXT("IMPRESSION");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::OutboundClick:
+		return TEXT("OUTBOUND_CLICK");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::PinClick:
+		return TEXT("PIN_CLICK");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::Save:
+		return TEXT("SAVE");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::SaveRate:
+		return TEXT("SAVE_RATE");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::TotalComments:
+		return TEXT("TOTAL_COMMENTS");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::TotalReactions:
+		return TEXT("TOTAL_REACTIONS");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::UserFollow:
+		return TEXT("USER_FOLLOW");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::ProfileVisit:
+		return TEXT("PROFILE_VISIT");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::VideoMrcView:
+		return TEXT("VIDEO_MRC_VIEW");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::VIDEO10SVIEW:
+		return TEXT("VIDEO_10S_VIEW");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::QUARTILE95PERCENTVIEW:
+		return TEXT("QUARTILE_95_PERCENT_VIEW");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::VIDEOV50WATCHTIME:
+		return TEXT("VIDEO_V50_WATCH_TIME");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::VideoStart:
+		return TEXT("VIDEO_START");
+	case OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::VideoAvgWatchTime:
+		return TEXT("VIDEO_AVG_WATCH_TIME");
+	}
+
+	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum Value (%d)"), (int)Value);
+	return TEXT("");
+}
+
+FString OpenAPIPinsApi::PinsAnalyticsRequest::EnumToString(const OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum& EnumValue)
+{
+	return ToString(EnumValue);
+}
+
+inline bool FromString(const FString& EnumAsString, OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum& Value)
+{
+	static TMap<FString, OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum> StringToEnum = { 
+		{ TEXT("IMPRESSION"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::Impression },
+		{ TEXT("OUTBOUND_CLICK"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::OutboundClick },
+		{ TEXT("PIN_CLICK"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::PinClick },
+		{ TEXT("SAVE"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::Save },
+		{ TEXT("SAVE_RATE"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::SaveRate },
+		{ TEXT("TOTAL_COMMENTS"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::TotalComments },
+		{ TEXT("TOTAL_REACTIONS"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::TotalReactions },
+		{ TEXT("USER_FOLLOW"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::UserFollow },
+		{ TEXT("PROFILE_VISIT"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::ProfileVisit },
+		{ TEXT("VIDEO_MRC_VIEW"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::VideoMrcView },
+		{ TEXT("VIDEO_10S_VIEW"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::VIDEO10SVIEW },
+		{ TEXT("QUARTILE_95_PERCENT_VIEW"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::QUARTILE95PERCENTVIEW },
+		{ TEXT("VIDEO_V50_WATCH_TIME"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::VIDEOV50WATCHTIME },
+		{ TEXT("VIDEO_START"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::VideoStart },
+		{ TEXT("VIDEO_AVG_WATCH_TIME"), OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum::VideoAvgWatchTime }, };
+
+	const auto Found = StringToEnum.Find(EnumAsString);
+	if(Found)
+		Value = *Found;
+
+	return Found != nullptr;
+}
+
+bool OpenAPIPinsApi::PinsAnalyticsRequest::EnumFromString(const FString& EnumAsString, OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum& EnumValue)
+{
+	return FromString(EnumAsString, EnumValue);
+}
+
+inline void WriteJsonValue(JsonWriter& Writer, const OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum& Value)
+{
+	WriteJsonValue(Writer, ToString(Value));
+}
+
+inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPIPinsApi::PinsAnalyticsRequest::MetricTypesEnum& Value)
+{
+	FString TmpValue;
+	if (JsonValue->TryGetString(TmpValue))
+	{
+		if(FromString(TmpValue, Value))
+			return true;
+	}
+	return false;
 }
 
 inline FString ToString(const OpenAPIPinsApi::PinsAnalyticsRequest::AppTypesEnum& Value)

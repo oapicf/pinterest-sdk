@@ -49,11 +49,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CreateAssetGroupResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"asset_group\" : {\n    \"profiles_ids\" : [ \"630433785246278264\" ],\n    \"owner\" : \"{}\",\n    \"created_time\" : 1646767577816,\n    \"updated_time\" : 1646767577816,\n    \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ],\n    \"ad_accounts_ids\" : [ \"549755885175\" ],\n    \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\",\n    \"id\" : \"666791336903426391\",\n    \"created_by\" : \"{}\",\n    \"asset_group_name\" : \"Canada Ad Accounts\"\n  }\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -61,7 +61,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CreateAssetGroupResponse>(exampleJson)
-            : default(CreateAssetGroupResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -87,11 +87,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(DeleteAssetGroupResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"deleted_asset_groups\" : [ \"deleted_asset_groups\", \"deleted_asset_groups\" ],\n  \"exceptions\" : [ {\n    \"asset_group_id\" : \"666791336903426391\",\n    \"code\" : 29,\n    \"message\" : \"You are not permitted to access that resource.\"\n  }, {\n    \"asset_group_id\" : \"666791336903426391\",\n    \"code\" : 29,\n    \"message\" : \"You are not permitted to access that resource.\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -99,7 +99,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<DeleteAssetGroupResponse>(exampleJson)
-            : default(DeleteAssetGroupResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -125,11 +125,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(UpdateAssetGroupResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"updated_asset_groups\" : [ {\n    \"profiles_ids\" : [ \"630433785246278264\" ],\n    \"owner\" : \"{}\",\n    \"created_time\" : 1646767577816,\n    \"updated_time\" : 1646767577816,\n    \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ],\n    \"ad_accounts_ids\" : [ \"549755885175\" ],\n    \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\",\n    \"id\" : \"666791336903426391\",\n    \"created_by\" : \"{}\",\n    \"asset_group_name\" : \"Canada Ad Accounts\"\n  }, {\n    \"profiles_ids\" : [ \"630433785246278264\" ],\n    \"owner\" : \"{}\",\n    \"created_time\" : 1646767577816,\n    \"updated_time\" : 1646767577816,\n    \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ],\n    \"ad_accounts_ids\" : [ \"549755885175\" ],\n    \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\",\n    \"id\" : \"666791336903426391\",\n    \"created_by\" : \"{}\",\n    \"asset_group_name\" : \"Canada Ad Accounts\"\n  } ],\n  \"exceptions\" : [ {\n    \"asset_group_id\" : \"666791336903426391\",\n    \"code\" : 29,\n    \"message\" : \"You are not permitted to access that resource.\"\n  }, {\n    \"asset_group_id\" : \"666791336903426391\",\n    \"code\" : 29,\n    \"message\" : \"You are not permitted to access that resource.\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -137,7 +137,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<UpdateAssetGroupResponse>(exampleJson)
-            : default(UpdateAssetGroupResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -163,16 +163,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(BusinessAssetMembersGet200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n    \"user\" : {\n      \"id\" : \"383791336903426391\",\n      \"email\" : \"business0101@business.com\",\n      \"username\" : \"business0101\"\n    }\n  }, {\n    \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n    \"user\" : {\n      \"id\" : \"383791336903426391\",\n      \"email\" : \"business0101@business.com\",\n      \"username\" : \"business0101\"\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<BusinessAssetMembersGet200Response>(exampleJson)
-            : default(BusinessAssetMembersGet200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -198,16 +198,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(BusinessAssetPartnersGet200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n    \"user\" : {\n      \"id\" : \"383791336903426391\",\n      \"email\" : \"business0101@business.com\",\n      \"username\" : \"business0101\"\n    }\n  }, {\n    \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n    \"user\" : {\n      \"id\" : \"383791336903426391\",\n      \"email\" : \"business0101@business.com\",\n      \"username\" : \"business0101\"\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<BusinessAssetPartnersGet200Response>(exampleJson)
-            : default(BusinessAssetPartnersGet200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -236,16 +236,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(BusinessAssetsGet200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"asset_type\" : \"AD_ACCOUNT\",\n    \"asset_id\" : \"549755885175\",\n    \"asset_group_info\" : {\n      \"profiles_ids\" : [ \"630433785246278264\" ],\n      \"owner\" : \"{}\",\n      \"created_time\" : 1646767577816,\n      \"updated_time\" : 1646767577816,\n      \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ],\n      \"ad_accounts_ids\" : [ \"549755885175\" ],\n      \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\",\n      \"id\" : \"666791336903426391\",\n      \"created_by\" : \"{}\",\n      \"asset_group_name\" : \"Canada Ad Accounts\"\n    }\n  }, {\n    \"asset_type\" : \"AD_ACCOUNT\",\n    \"asset_id\" : \"549755885175\",\n    \"asset_group_info\" : {\n      \"profiles_ids\" : [ \"630433785246278264\" ],\n      \"owner\" : \"{}\",\n      \"created_time\" : 1646767577816,\n      \"updated_time\" : 1646767577816,\n      \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ],\n      \"ad_accounts_ids\" : [ \"549755885175\" ],\n      \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\",\n      \"id\" : \"666791336903426391\",\n      \"created_by\" : \"{}\",\n      \"asset_group_name\" : \"Canada Ad Accounts\"\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<BusinessAssetsGet200Response>(exampleJson)
-            : default(BusinessAssetsGet200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -272,16 +272,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(BusinessMemberAssetsGet200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n    \"asset_type\" : \"AD_ACCOUNT\",\n    \"asset_id\" : \"549755885175\",\n    \"asset_group_info\" : {\n      \"profiles_ids\" : [ \"630433785246278264\" ],\n      \"owner\" : \"{}\",\n      \"created_time\" : 1646767577816,\n      \"updated_time\" : 1646767577816,\n      \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ],\n      \"ad_accounts_ids\" : [ \"549755885175\" ],\n      \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\",\n      \"id\" : \"666791336903426391\",\n      \"created_by\" : \"{}\",\n      \"asset_group_name\" : \"Canada Ad Accounts\"\n    }\n  }, {\n    \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n    \"asset_type\" : \"AD_ACCOUNT\",\n    \"asset_id\" : \"549755885175\",\n    \"asset_group_info\" : {\n      \"profiles_ids\" : [ \"630433785246278264\" ],\n      \"owner\" : \"{}\",\n      \"created_time\" : 1646767577816,\n      \"updated_time\" : 1646767577816,\n      \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ],\n      \"ad_accounts_ids\" : [ \"549755885175\" ],\n      \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\",\n      \"id\" : \"666791336903426391\",\n      \"created_by\" : \"{}\",\n      \"asset_group_name\" : \"Canada Ad Accounts\"\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<BusinessMemberAssetsGet200Response>(exampleJson)
-            : default(BusinessMemberAssetsGet200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -305,16 +305,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(DeleteMemberAccessResultsResponseArray));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"member_id\" : \"140943737684417\",\n    \"asset_id\" : \"549755885175\"\n  }, {\n    \"member_id\" : \"140943737684417\",\n    \"asset_id\" : \"549755885175\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<DeleteMemberAccessResultsResponseArray>(exampleJson)
-            : default(DeleteMemberAccessResultsResponseArray);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -338,16 +338,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(UpdateMemberAssetsResultsResponseArray));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"response\" : {\n      \"member_id\" : \"140943737684417\",\n      \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n      \"asset_id\" : \"549755885175\"\n    }\n  }, {\n    \"response\" : {\n      \"member_id\" : \"140943737684417\",\n      \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n      \"asset_id\" : \"549755885175\"\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<UpdateMemberAssetsResultsResponseArray>(exampleJson)
-            : default(UpdateMemberAssetsResultsResponseArray);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -375,16 +375,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(BusinessPartnerAssetAccessGet200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n    \"asset_type\" : \"AD_ACCOUNT\",\n    \"asset_id\" : \"549755885175\",\n    \"asset_group_info\" : {\n      \"profiles_ids\" : [ \"630433785246278264\" ],\n      \"owner\" : \"{}\",\n      \"created_time\" : 1646767577816,\n      \"updated_time\" : 1646767577816,\n      \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ],\n      \"ad_accounts_ids\" : [ \"549755885175\" ],\n      \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\",\n      \"id\" : \"666791336903426391\",\n      \"created_by\" : \"{}\",\n      \"asset_group_name\" : \"Canada Ad Accounts\"\n    }\n  }, {\n    \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n    \"asset_type\" : \"AD_ACCOUNT\",\n    \"asset_id\" : \"549755885175\",\n    \"asset_group_info\" : {\n      \"profiles_ids\" : [ \"630433785246278264\" ],\n      \"owner\" : \"{}\",\n      \"created_time\" : 1646767577816,\n      \"updated_time\" : 1646767577816,\n      \"asset_group_types\" : [ \"LOCATION_OR_LANGUAGE\" ],\n      \"ad_accounts_ids\" : [ \"549755885175\" ],\n      \"asset_group_description\" : \"Asset group that has ad accounts used in Canada\",\n      \"id\" : \"666791336903426391\",\n      \"created_by\" : \"{}\",\n      \"asset_group_name\" : \"Canada Ad Accounts\"\n    }\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<BusinessPartnerAssetAccessGet200Response>(exampleJson)
-            : default(BusinessPartnerAssetAccessGet200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -408,16 +408,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(DeletePartnerAssetsResultsResponseArray));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"partner_id\" : \"140943737684417\",\n    \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n    \"is_shared_partner\" : false,\n    \"asset_type\" : \"AD_ACCOUNT\",\n    \"asset_id\" : \"549755885175\"\n  }, {\n    \"partner_id\" : \"140943737684417\",\n    \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n    \"is_shared_partner\" : false,\n    \"asset_type\" : \"AD_ACCOUNT\",\n    \"asset_id\" : \"549755885175\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<DeletePartnerAssetsResultsResponseArray>(exampleJson)
-            : default(DeletePartnerAssetsResultsResponseArray);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -441,16 +441,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(UpdatePartnerAssetsResultsResponseArray));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"partner_id\" : \"140943737684417\",\n    \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n    \"asset_type\" : \"AD_ACCOUNT\",\n    \"asset_id\" : \"549755885175\"\n  }, {\n    \"partner_id\" : \"140943737684417\",\n    \"permissions\" : [ \"FINANCE_MANAGER\", \"CATALOGS_MANAGER\", \"AUDIENCE_MANAGER\" ],\n    \"asset_type\" : \"AD_ACCOUNT\",\n    \"asset_id\" : \"549755885175\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<UpdatePartnerAssetsResultsResponseArray>(exampleJson)
-            : default(UpdatePartnerAssetsResultsResponseArray);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

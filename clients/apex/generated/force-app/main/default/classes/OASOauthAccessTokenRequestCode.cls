@@ -11,9 +11,21 @@
  */
 
 /**
- * A request to exchange an authorization code for an access token.
+ * OASOauthAccessTokenRequestCode
  */
 public class OASOauthAccessTokenRequestCode implements OAS.MappedProperties {
+    /**
+     * Get code
+     * @return code
+     */
+    public String code { get; set; }
+
+    /**
+     * Get redirectUri
+     * @return redirectUri
+     */
+    public String redirectUri { get; set; }
+
     /**
      * Gets or Sets grantType
      */
@@ -29,21 +41,9 @@ public class OASOauthAccessTokenRequestCode implements OAS.MappedProperties {
      */
     public GrantTypeEnum grantType { get; set; }
 
-    /**
-     * Get code
-     * @return code
-     */
-    public String code { get; set; }
-
-    /**
-     * Get redirectUri
-     * @return redirectUri
-     */
-    public String redirectUri { get; set; }
-
     private static final Map<String, String> propertyMappings = new Map<String, String>{
-        'grant_type' => 'grantType',
-        'redirect_uri' => 'redirectUri'
+        'redirect_uri' => 'redirectUri',
+        'grant_type' => 'grantType'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -51,8 +51,8 @@ public class OASOauthAccessTokenRequestCode implements OAS.MappedProperties {
     }
 
     private static final Map<String, String> propertyMappings = new Map<String, String>{
-        'grant_type' => 'grantType',
-        'redirect_uri' => 'redirectUri'
+        'redirect_uri' => 'redirectUri',
+        'grant_type' => 'grantType'
     };
 
     public Map<String, String> getPropertyMappings() {
@@ -61,27 +61,27 @@ public class OASOauthAccessTokenRequestCode implements OAS.MappedProperties {
 
     public static OASOauthAccessTokenRequestCode getExample() {
         OASOauthAccessTokenRequestCode oauthAccessTokenRequestCode = new OASOauthAccessTokenRequestCode();
-          oauthAccessTokenRequestCode.grantType = GrantTypeEnum.AUTHORIZATION_CODE;
           oauthAccessTokenRequestCode.code = '';
           oauthAccessTokenRequestCode.redirectUri = '';
+          oauthAccessTokenRequestCode.grantType = GrantTypeEnum.AUTHORIZATION_CODE;
         return oauthAccessTokenRequestCode;
     }
 
     public Boolean equals(Object obj) {
         if (obj instanceof OASOauthAccessTokenRequestCode) {           
             OASOauthAccessTokenRequestCode oauthAccessTokenRequestCode = (OASOauthAccessTokenRequestCode) obj;
-            return this.grantType == oauthAccessTokenRequestCode.grantType
-                && this.code == oauthAccessTokenRequestCode.code
-                && this.redirectUri == oauthAccessTokenRequestCode.redirectUri;
+            return this.code == oauthAccessTokenRequestCode.code
+                && this.redirectUri == oauthAccessTokenRequestCode.redirectUri
+                && this.grantType == oauthAccessTokenRequestCode.grantType;
         }
         return false;
     }
 
     public Integer hashCode() {
         Integer hashCode = 43;
-        hashCode = (17 * hashCode) + (grantType == null ? 0 : System.hashCode(grantType));
         hashCode = (17 * hashCode) + (code == null ? 0 : System.hashCode(code));
         hashCode = (17 * hashCode) + (redirectUri == null ? 0 : System.hashCode(redirectUri));
+        hashCode = (17 * hashCode) + (grantType == null ? 0 : System.hashCode(grantType));
         return hashCode;
     }
 }

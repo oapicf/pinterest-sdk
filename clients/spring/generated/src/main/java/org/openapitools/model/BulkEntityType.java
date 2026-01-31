@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Refers ads entity type
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum BulkEntityType {
   
   CAMPAIGN("CAMPAIGN"),
@@ -33,7 +33,7 @@ public enum BulkEntityType {
   
   KEYWORD("KEYWORD");
 
-  private String value;
+  private final String value;
 
   BulkEntityType(String value) {
     this.value = value;

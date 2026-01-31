@@ -9,11 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_data_status
 
 type AnalyticsDailyMetrics* = object
   ## 
-  dataStatus*: DataStatus
-  date*: string ## Metrics date (UTC): YYYY-MM-DD.
-  metrics*: Table[string, float] ## The metric name and daily value for each requested metric
+  dataStatus*: Option[DataStatus]
+  date*: Option[string] ## Metrics date (UTC): YYYY-MM-DD.
+  metrics*: Option[Table[string, float]] ## The metric name and daily value for each requested metric
+
+
+# Custom JSON deserialization for AnalyticsDailyMetrics with custom field names
+proc to*(node: JsonNode, T: typedesc[AnalyticsDailyMetrics]): AnalyticsDailyMetrics =
+  result = AnalyticsDailyMetrics()
+  if node.kind == JObject:
+    if node.hasKey("data_status") and node["data_status"].kind != JNull:
+      result.dataStatus = some(to(node["data_status"], typeof(result.dataStatus.get())))
+    if node.hasKey("date") and node["date"].kind != JNull:
+      result.date = some(to(node["date"], typeof(result.date.get())))
+    if node.hasKey("metrics") and node["metrics"].kind != JNull:
+      result.metrics = some(to(node["metrics"], typeof(result.metrics.get())))
+
+# Custom JSON serialization for AnalyticsDailyMetrics with custom field names
+proc `%`*(obj: AnalyticsDailyMetrics): JsonNode =
+  result = newJObject()
+  if obj.dataStatus.isSome():
+    result["data_status"] = %obj.dataStatus.get()
+  if obj.date.isSome():
+    result["date"] = %obj.date.get()
+  if obj.metrics.isSome():
+    result["metrics"] = %obj.metrics.get()
+

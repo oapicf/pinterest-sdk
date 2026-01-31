@@ -9,8 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type DeletedMembersResponse* = object
   ## An object with a list of members that were deleted.
-  deletedMembers*: seq[string] ## List of members whose business membership have been terminated.
+  deletedMembers*: Option[seq[string]] ## List of members whose business membership have been terminated.
+
+
+# Custom JSON deserialization for DeletedMembersResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[DeletedMembersResponse]): DeletedMembersResponse =
+  result = DeletedMembersResponse()
+  if node.kind == JObject:
+    if node.hasKey("deleted_members") and node["deleted_members"].kind != JNull:
+      result.deletedMembers = some(to(node["deleted_members"], typeof(result.deletedMembers.get())))
+
+# Custom JSON serialization for DeletedMembersResponse with custom field names
+proc `%`*(obj: DeletedMembersResponse): JsonNode =
+  result = newJObject()
+  if obj.deletedMembers.isSome():
+    result["deleted_members"] = %obj.deletedMembers.get()
+

@@ -13,13 +13,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MediaList200Response  {
   
-  @ApiModelProperty(required = true, value = "Media")
  /**
-   * Media
-  **/
+  * Media
+  */
+  @ApiModelProperty(required = true, value = "Media")
+
   private List<MediaUploadDetails> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * Media

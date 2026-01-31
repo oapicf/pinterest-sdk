@@ -20,14 +20,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "DeleteMemberAccessResult", description = "The terminated asset access.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeleteMemberAccessResult {
 
   private @Nullable String assetId;
 
   private @Nullable String memberId;
 
-  public DeleteMemberAccessResult assetId(String assetId) {
+  public DeleteMemberAccessResult assetId(@Nullable String assetId) {
     this.assetId = assetId;
     return this;
   }
@@ -39,15 +39,15 @@ public class DeleteMemberAccessResult {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "asset_id", example = "549755885175", description = "Unique identifier of the business asset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_id")
-  public String getAssetId() {
+  public @Nullable String getAssetId() {
     return assetId;
   }
 
-  public void setAssetId(String assetId) {
+  public void setAssetId(@Nullable String assetId) {
     this.assetId = assetId;
   }
 
-  public DeleteMemberAccessResult memberId(String memberId) {
+  public DeleteMemberAccessResult memberId(@Nullable String memberId) {
     this.memberId = memberId;
     return this;
   }
@@ -59,11 +59,11 @@ public class DeleteMemberAccessResult {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "member_id", example = "140943737684417", description = "Unique identifier of the business member.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("member_id")
-  public String getMemberId() {
+  public @Nullable String getMemberId() {
     return memberId;
   }
 
-  public void setMemberId(String memberId) {
+  public void setMemberId(@Nullable String memberId) {
     this.memberId = memberId;
   }
 

@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsRetailProductGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailProductGroup {
   /**
    * Gets or Sets catalogType
@@ -529,29 +529,10 @@ public class CatalogsRetailProductGroup {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("catalog_type");
-    openapiFields.add("id");
-    openapiFields.add("name");
-    openapiFields.add("description");
-    openapiFields.add("filters");
-    openapiFields.add("is_featured");
-    openapiFields.add("type");
-    openapiFields.add("status");
-    openapiFields.add("created_at");
-    openapiFields.add("updated_at");
-    openapiFields.add("catalog_id");
-    openapiFields.add("feed_id");
-    openapiFields.add("country");
-    openapiFields.add("locale");
+    openapiFields = new HashSet<String>(Arrays.asList("catalog_type", "id", "name", "description", "filters", "is_featured", "type", "status", "created_at", "updated_at", "catalog_id", "feed_id", "country", "locale"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("catalog_type");
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("filters");
-    openapiRequiredFields.add("catalog_id");
-    openapiRequiredFields.add("feed_id");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("catalog_type", "id", "filters", "catalog_id", "feed_id"));
   }
 
   /**
@@ -563,7 +544,7 @@ public class CatalogsRetailProductGroup {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsRetailProductGroup.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsRetailProductGroup is not found in the empty JSON string", CatalogsRetailProductGroup.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsRetailProductGroup is not found in the empty JSON string", CatalogsRetailProductGroup.openapiRequiredFields.toString()));
         }
       }
 
@@ -571,30 +552,30 @@ public class CatalogsRetailProductGroup {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsRetailProductGroup.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsRetailProductGroup` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsRetailProductGroup` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CatalogsRetailProductGroup.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("catalog_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `catalog_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `catalog_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_type").toString()));
       }
       // validate the required field `catalog_type`
       CatalogTypeEnum.validateJsonElement(jsonObj.get("catalog_type"));
       if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the required field `filters`
       CatalogsProductGroupFilters.validateJsonElement(jsonObj.get("filters"));
@@ -607,16 +588,16 @@ public class CatalogsRetailProductGroup {
         CatalogsProductGroupStatus.validateJsonElement(jsonObj.get("status"));
       }
       if (!jsonObj.get("catalog_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `catalog_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `catalog_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_id").toString()));
       }
       if ((jsonObj.get("feed_id") != null && !jsonObj.get("feed_id").isJsonNull()) && !jsonObj.get("feed_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `feed_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("feed_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `feed_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("feed_id").toString()));
       }
       if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull()) && !jsonObj.get("country").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `country` to be a primitive type in the JSON string but got `%s`", jsonObj.get("country").toString()));
       }
       if ((jsonObj.get("locale") != null && !jsonObj.get("locale").isJsonNull()) && !jsonObj.get("locale").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `locale` to be a primitive type in the JSON string but got `%s`", jsonObj.get("locale").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `locale` to be a primitive type in the JSON string but got `%s`", jsonObj.get("locale").toString()));
       }
   }
 

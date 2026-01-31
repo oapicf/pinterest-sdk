@@ -54,6 +54,24 @@
       //expect(instance).to.be.a(PinterestSdk.OauthAccessTokenResponseEverlastingRefresh);
     });
 
+    it('should have the property refreshToken (base name: "refresh_token")', function() {
+      // uncomment below and update the code to test the property refreshToken
+      //var instance = new PinterestSdk.OauthAccessTokenResponseEverlastingRefresh();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property refreshTokenExpiresIn (base name: "refresh_token_expires_in")', function() {
+      // uncomment below and update the code to test the property refreshTokenExpiresIn
+      //var instance = new PinterestSdk.OauthAccessTokenResponseEverlastingRefresh();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property refreshTokenExpiresAt (base name: "refresh_token_expires_at")', function() {
+      // uncomment below and update the code to test the property refreshTokenExpiresAt
+      //var instance = new PinterestSdk.OauthAccessTokenResponseEverlastingRefresh();
+      //expect(instance).to.be();
+    });
+
     it('should have the property responseType (base name: "response_type")', function() {
       // uncomment below and update the code to test the property responseType
       //var instance = new PinterestSdk.OauthAccessTokenResponseEverlastingRefresh();
@@ -80,24 +98,6 @@
 
     it('should have the property scope (base name: "scope")', function() {
       // uncomment below and update the code to test the property scope
-      //var instance = new PinterestSdk.OauthAccessTokenResponseEverlastingRefresh();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property refreshToken (base name: "refresh_token")', function() {
-      // uncomment below and update the code to test the property refreshToken
-      //var instance = new PinterestSdk.OauthAccessTokenResponseEverlastingRefresh();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property refreshTokenExpiresIn (base name: "refresh_token_expires_in")', function() {
-      // uncomment below and update the code to test the property refreshTokenExpiresIn
-      //var instance = new PinterestSdk.OauthAccessTokenResponseEverlastingRefresh();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property refreshTokenExpiresAt (base name: "refresh_token_expires_at")', function() {
-      // uncomment below and update the code to test the property refreshTokenExpiresAt
       //var instance = new PinterestSdk.OauthAccessTokenResponseEverlastingRefresh();
       //expect(instance).to.be();
     });

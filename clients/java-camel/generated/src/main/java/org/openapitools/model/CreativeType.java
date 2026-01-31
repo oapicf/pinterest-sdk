@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Ad creative type enum. For update, only draft ads may update creative type. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum CreativeType {
   
   REGULAR("REGULAR"),
@@ -43,7 +43,7 @@ public enum CreativeType {
   
   QUIZ("QUIZ");
 
-  private String value;
+  private final String value;
 
   CreativeType(String value) {
     this.value = value;

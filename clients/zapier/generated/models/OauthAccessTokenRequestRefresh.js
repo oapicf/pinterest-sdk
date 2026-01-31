@@ -5,17 +5,6 @@ module.exports = {
         const {keyPrefix, labelPrefix} = utils.buildKeyAndLabel(prefix, isInput, isArrayChild)
         return [
             {
-                key: `${keyPrefix}grant_type`,
-                label: `[${labelPrefix}grant_type]`,
-                required: true,
-                type: 'string',
-                choices: [
-                    'authorization_code',
-                    'refresh_token',
-                    'client_credentials',
-                ],
-            },
-            {
                 key: `${keyPrefix}refresh_token`,
                 label: `[${labelPrefix}refresh_token]`,
                 required: true,
@@ -31,15 +20,26 @@ module.exports = {
                 label: `Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\". - [${labelPrefix}refresh_on]`,
                 type: 'boolean',
             },
+            {
+                key: `${keyPrefix}grant_type`,
+                label: `[${labelPrefix}grant_type]`,
+                required: true,
+                type: 'string',
+                choices: [
+                    'authorization_code',
+                    'refresh_token',
+                    'client_credentials',
+                ],
+            },
         ]
     },
     mapping: (bundle, prefix = '') => {
         const {keyPrefix} = utils.buildKeyAndLabel(prefix)
         return {
-            'grant_type': bundle.inputData?.[`${keyPrefix}grant_type`],
             'refresh_token': bundle.inputData?.[`${keyPrefix}refresh_token`],
             'scope': bundle.inputData?.[`${keyPrefix}scope`],
             'refresh_on': bundle.inputData?.[`${keyPrefix}refresh_on`],
+            'grant_type': bundle.inputData?.[`${keyPrefix}grant_type`],
         }
     },
 }

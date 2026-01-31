@@ -26,14 +26,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ItemCreateBatchRecord", description = "Object describing an item batch record to create items")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemCreateBatchRecord implements ItemBatchRecord {
 
   private @Nullable String itemId;
 
   private @Nullable ItemAttributesRequest attributes;
 
-  public ItemCreateBatchRecord itemId(String itemId) {
+  public ItemCreateBatchRecord itemId(@Nullable String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -45,15 +45,15 @@ public class ItemCreateBatchRecord implements ItemBatchRecord {
   
   @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_id")
-  public String getItemId() {
+  public @Nullable String getItemId() {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@Nullable String itemId) {
     this.itemId = itemId;
   }
 
-  public ItemCreateBatchRecord attributes(ItemAttributesRequest attributes) {
+  public ItemCreateBatchRecord attributes(@Nullable ItemAttributesRequest attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -65,11 +65,11 @@ public class ItemCreateBatchRecord implements ItemBatchRecord {
   @Valid 
   @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attributes")
-  public ItemAttributesRequest getAttributes() {
+  public @Nullable ItemAttributesRequest getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(ItemAttributesRequest attributes) {
+  public void setAttributes(@Nullable ItemAttributesRequest attributes) {
     this.attributes = attributes;
   }
 

@@ -9,7 +9,103 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type Role* = object
-  ## An internal role type used on business access, EMPLOYEE, ADMIN.
+type Role* {.pure.} = enum
+  UNKNOWN
+  OWNER
+  ADMIN
+  ANALYST
+  SOSREADER
+  FINANCEMANAGER
+  AUDIENCEMANAGER
+  CAMPAIGNMANAGER
+  CATALOGSMANAGER
+  RESTRICTEDOWNER
+  PROFILEMANAGER
+  PROFILEPUBLISHER
+  RESOURCEPINNERLISTOWNER
+  RESOURCEPINNERLISTREADER
+  BIZPINNERLISTSHARER
+  RESOURCECONVERSIONTAGSREADER
+
+func `%`*(v: Role): JsonNode =
+  result = case v:
+    of Role.UNKNOWN: %"UNKNOWN"
+    of Role.OWNER: %"OWNER"
+    of Role.ADMIN: %"ADMIN"
+    of Role.ANALYST: %"ANALYST"
+    of Role.SOSREADER: %"SOS_READER"
+    of Role.FINANCEMANAGER: %"FINANCE_MANAGER"
+    of Role.AUDIENCEMANAGER: %"AUDIENCE_MANAGER"
+    of Role.CAMPAIGNMANAGER: %"CAMPAIGN_MANAGER"
+    of Role.CATALOGSMANAGER: %"CATALOGS_MANAGER"
+    of Role.RESTRICTEDOWNER: %"RESTRICTED_OWNER"
+    of Role.PROFILEMANAGER: %"PROFILE_MANAGER"
+    of Role.PROFILEPUBLISHER: %"PROFILE_PUBLISHER"
+    of Role.RESOURCEPINNERLISTOWNER: %"RESOURCE_PINNER_LIST_OWNER"
+    of Role.RESOURCEPINNERLISTREADER: %"RESOURCE_PINNER_LIST_READER"
+    of Role.BIZPINNERLISTSHARER: %"BIZ_PINNER_LIST_SHARER"
+    of Role.RESOURCECONVERSIONTAGSREADER: %"RESOURCE_CONVERSION_TAGS_READER"
+
+func `$`*(v: Role): string =
+  result = case v:
+    of Role.UNKNOWN: $("UNKNOWN")
+    of Role.OWNER: $("OWNER")
+    of Role.ADMIN: $("ADMIN")
+    of Role.ANALYST: $("ANALYST")
+    of Role.SOSREADER: $("SOS_READER")
+    of Role.FINANCEMANAGER: $("FINANCE_MANAGER")
+    of Role.AUDIENCEMANAGER: $("AUDIENCE_MANAGER")
+    of Role.CAMPAIGNMANAGER: $("CAMPAIGN_MANAGER")
+    of Role.CATALOGSMANAGER: $("CATALOGS_MANAGER")
+    of Role.RESTRICTEDOWNER: $("RESTRICTED_OWNER")
+    of Role.PROFILEMANAGER: $("PROFILE_MANAGER")
+    of Role.PROFILEPUBLISHER: $("PROFILE_PUBLISHER")
+    of Role.RESOURCEPINNERLISTOWNER: $("RESOURCE_PINNER_LIST_OWNER")
+    of Role.RESOURCEPINNERLISTREADER: $("RESOURCE_PINNER_LIST_READER")
+    of Role.BIZPINNERLISTSHARER: $("BIZ_PINNER_LIST_SHARER")
+    of Role.RESOURCECONVERSIONTAGSREADER: $("RESOURCE_CONVERSION_TAGS_READER")
+
+proc to*(node: JsonNode, T: typedesc[Role]): Role =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Role, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("UNKNOWN"):
+    return Role.UNKNOWN
+  of $("OWNER"):
+    return Role.OWNER
+  of $("ADMIN"):
+    return Role.ADMIN
+  of $("ANALYST"):
+    return Role.ANALYST
+  of $("SOS_READER"):
+    return Role.SOSREADER
+  of $("FINANCE_MANAGER"):
+    return Role.FINANCEMANAGER
+  of $("AUDIENCE_MANAGER"):
+    return Role.AUDIENCEMANAGER
+  of $("CAMPAIGN_MANAGER"):
+    return Role.CAMPAIGNMANAGER
+  of $("CATALOGS_MANAGER"):
+    return Role.CATALOGSMANAGER
+  of $("RESTRICTED_OWNER"):
+    return Role.RESTRICTEDOWNER
+  of $("PROFILE_MANAGER"):
+    return Role.PROFILEMANAGER
+  of $("PROFILE_PUBLISHER"):
+    return Role.PROFILEPUBLISHER
+  of $("RESOURCE_PINNER_LIST_OWNER"):
+    return Role.RESOURCEPINNERLISTOWNER
+  of $("RESOURCE_PINNER_LIST_READER"):
+    return Role.RESOURCEPINNERLISTREADER
+  of $("BIZ_PINNER_LIST_SHARER"):
+    return Role.BIZPINNERLISTSHARER
+  of $("RESOURCE_CONVERSION_TAGS_READER"):
+    return Role.RESOURCECONVERSIONTAGSREADER
+  else:
+    raise newException(ValueError, "Invalid enum value for Role: " & strVal)
+

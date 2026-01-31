@@ -25,7 +25,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "OauthAccessTokenResponse", description = "A successful OAuth access token response.")
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenResponse {
 
   /**
@@ -38,7 +38,7 @@ public class OauthAccessTokenResponse {
     
     CLIENT_CREDENTIALS("client_credentials");
 
-    private String value;
+    private final String value;
 
     ResponseTypeEnum(String value) {
       this.value = value;
@@ -89,7 +89,7 @@ public class OauthAccessTokenResponse {
     this.scope = scope;
   }
 
-  public OauthAccessTokenResponse responseType(ResponseTypeEnum responseType) {
+  public OauthAccessTokenResponse responseType(@Nullable ResponseTypeEnum responseType) {
     this.responseType = responseType;
     return this;
   }
@@ -101,11 +101,11 @@ public class OauthAccessTokenResponse {
   
   @Schema(name = "response_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("response_type")
-  public ResponseTypeEnum getResponseType() {
+  public @Nullable ResponseTypeEnum getResponseType() {
     return responseType;
   }
 
-  public void setResponseType(ResponseTypeEnum responseType) {
+  public void setResponseType(@Nullable ResponseTypeEnum responseType) {
     this.responseType = responseType;
   }
 

@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_role
 
 type SharedAudienceResponseCommon* = object
   ## 
-  audienceId*: string ## Audience ID that was shared
-  permissions*: seq[Role]
+  audienceId*: Option[string] ## Audience ID that was shared
+  permissions*: Option[seq[Role]]
+
+
+# Custom JSON deserialization for SharedAudienceResponseCommon with custom field names
+proc to*(node: JsonNode, T: typedesc[SharedAudienceResponseCommon]): SharedAudienceResponseCommon =
+  result = SharedAudienceResponseCommon()
+  if node.kind == JObject:
+    if node.hasKey("audience_id") and node["audience_id"].kind != JNull:
+      result.audienceId = some(to(node["audience_id"], typeof(result.audienceId.get())))
+    if node.hasKey("permissions") and node["permissions"].kind != JNull:
+      result.permissions = some(to(node["permissions"], typeof(result.permissions.get())))
+
+# Custom JSON serialization for SharedAudienceResponseCommon with custom field names
+proc `%`*(obj: SharedAudienceResponseCommon): JsonNode =
+  result = newJObject()
+  if obj.audienceId.isSome():
+    result["audience_id"] = %obj.audienceId.get()
+  if obj.permissions.isSome():
+    result["permissions"] = %obj.permissions.get()
+

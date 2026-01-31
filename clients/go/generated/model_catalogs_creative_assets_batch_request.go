@@ -24,7 +24,8 @@ var _ MappedNullable = &CatalogsCreativeAssetsBatchRequest{}
 type CatalogsCreativeAssetsBatchRequest struct {
 	CatalogType string `json:"catalog_type"`
 	Country Country `json:"country"`
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 	// Array with creative assets item operations
 	Items []CatalogsCreativeAssetsBatchItem `json:"items"`
 	// Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
@@ -37,7 +38,7 @@ type _CatalogsCreativeAssetsBatchRequest CatalogsCreativeAssetsBatchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsCreativeAssetsBatchRequest(catalogType string, country Country, language CatalogsItemsRequestLanguage, items []CatalogsCreativeAssetsBatchItem) *CatalogsCreativeAssetsBatchRequest {
+func NewCatalogsCreativeAssetsBatchRequest(catalogType string, country Country, language string, items []CatalogsCreativeAssetsBatchItem) *CatalogsCreativeAssetsBatchRequest {
 	this := CatalogsCreativeAssetsBatchRequest{}
 	this.CatalogType = catalogType
 	this.Country = country
@@ -103,9 +104,9 @@ func (o *CatalogsCreativeAssetsBatchRequest) SetCountry(v Country) {
 }
 
 // GetLanguage returns the Language field value
-func (o *CatalogsCreativeAssetsBatchRequest) GetLanguage() CatalogsItemsRequestLanguage {
+func (o *CatalogsCreativeAssetsBatchRequest) GetLanguage() string {
 	if o == nil {
-		var ret CatalogsItemsRequestLanguage
+		var ret string
 		return ret
 	}
 
@@ -114,7 +115,7 @@ func (o *CatalogsCreativeAssetsBatchRequest) GetLanguage() CatalogsItemsRequestL
 
 // GetLanguageOk returns a tuple with the Language field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsCreativeAssetsBatchRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool) {
+func (o *CatalogsCreativeAssetsBatchRequest) GetLanguageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,7 +123,7 @@ func (o *CatalogsCreativeAssetsBatchRequest) GetLanguageOk() (*CatalogsItemsRequ
 }
 
 // SetLanguage sets field value
-func (o *CatalogsCreativeAssetsBatchRequest) SetLanguage(v CatalogsItemsRequestLanguage) {
+func (o *CatalogsCreativeAssetsBatchRequest) SetLanguage(v string) {
 	o.Language = v
 }
 

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_quiz_pin_question
 import model_quiz_pin_result
@@ -19,19 +21,67 @@ type TieBreakerType* {.pure.} = enum
 
 type QuizPinData* = object
   ## This field includes all quiz data including questions, options, and results.
-  questions*: seq[QuizPinQuestion]
-  results*: seq[QuizPinResult]
-  tieBreakerType*: TieBreakerType ## Quiz ad tie breaker type, default is RANDOM
-  tieBreakerCustomResult*: QuizPinResult
+  questions*: Option[seq[QuizPinQuestion]]
+  results*: Option[seq[QuizPinResult]]
+  tieBreakerType*: Option[TieBreakerType] ## Quiz ad tie breaker type, default is RANDOM
+  tieBreakerCustomResult*: Option[QuizPinResult]
 
 func `%`*(v: TieBreakerType): JsonNode =
-  let str = case v:
-    of TieBreakerType.RANDOM: "RANDOM"
-    of TieBreakerType.CUSTOM: "CUSTOM"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of TieBreakerType.RANDOM: %"RANDOM"
+    of TieBreakerType.CUSTOM: %"CUSTOM"
 func `$`*(v: TieBreakerType): string =
   result = case v:
-    of TieBreakerType.RANDOM: "RANDOM"
-    of TieBreakerType.CUSTOM: "CUSTOM"
+    of TieBreakerType.RANDOM: $("RANDOM")
+    of TieBreakerType.CUSTOM: $("CUSTOM")
+
+proc to*(node: JsonNode, T: typedesc[TieBreakerType]): TieBreakerType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum TieBreakerType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RANDOM"):
+    return TieBreakerType.RANDOM
+  of $("CUSTOM"):
+    return TieBreakerType.CUSTOM
+  else:
+    raise newException(ValueError, "Invalid enum value for TieBreakerType: " & strVal)
+
+
+# Custom JSON deserialization for QuizPinData with custom field names
+proc to*(node: JsonNode, T: typedesc[QuizPinData]): QuizPinData =
+  result = QuizPinData()
+  if node.kind == JObject:
+    if node.hasKey("questions") and node["questions"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["questions"]
+      if arrayNode.kind == JArray:
+        var arr: seq[QuizPinQuestion] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, QuizPinQuestion))
+        result.questions = some(arr)
+    if node.hasKey("results") and node["results"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["results"]
+      if arrayNode.kind == JArray:
+        var arr: seq[QuizPinResult] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, QuizPinResult))
+        result.results = some(arr)
+    if node.hasKey("tie_breaker_type") and node["tie_breaker_type"].kind != JNull:
+      result.tieBreakerType = some(to(node["tie_breaker_type"], TieBreakerType))
+    if node.hasKey("tie_breaker_custom_result") and node["tie_breaker_custom_result"].kind != JNull:
+      result.tieBreakerCustomResult = some(to(node["tie_breaker_custom_result"], typeof(result.tieBreakerCustomResult.get())))
+
+# Custom JSON serialization for QuizPinData with custom field names
+proc `%`*(obj: QuizPinData): JsonNode =
+  result = newJObject()
+  if obj.questions.isSome():
+    result["questions"] = %obj.questions.get()
+  if obj.results.isSome():
+    result["results"] = %obj.results.get()
+  if obj.tieBreakerType.isSome():
+    result["tie_breaker_type"] = %obj.tieBreakerType.get()
+  if obj.tieBreakerCustomResult.isSome():
+    result["tie_breaker_custom_result"] = %obj.tieBreakerCustomResult.get()
+

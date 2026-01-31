@@ -309,15 +309,24 @@ BoardsApi <- R6::R6Class(
         stop("Missing required parameter `board_section`.")
       }
 
-      if (!str_detect(`board_id`, "^\\d+$")) {
+      if (!missing(`board_id`) && is.null(`board_id`)) {
+        stop("Invalid value for `board_id` when calling BoardsApi$BoardSectionsCreate, `board_id` is not nullable")
+      }
+      if (!is.null(`board_id`) && !stringr::str_detect(`board_id`, "^\\d+$")) {
         stop("Invalid value for `board_id` when calling BoardsApi$BoardSectionsCreate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`board_section`) && is.null(`board_section`)) {
+        stop("Invalid value for `board_section` when calling BoardsApi$BoardSectionsCreate, `board_section` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardSectionsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BoardsApi$BoardSectionsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardSectionsCreate, must conform to the pattern ^\\d+$.")
       }
 
@@ -435,18 +444,27 @@ BoardsApi <- R6::R6Class(
         stop("Missing required parameter `section_id`.")
       }
 
-      if (!str_detect(`board_id`, "^\\d+$")) {
+      if (!missing(`board_id`) && is.null(`board_id`)) {
+        stop("Invalid value for `board_id` when calling BoardsApi$BoardSectionsDelete, `board_id` is not nullable")
+      }
+      if (!is.null(`board_id`) && !stringr::str_detect(`board_id`, "^\\d+$")) {
         stop("Invalid value for `board_id` when calling BoardsApi$BoardSectionsDelete, must conform to the pattern ^\\d+$.")
       }
 
-      if (!str_detect(`section_id`, "^\\d+$")) {
+      if (!missing(`section_id`) && is.null(`section_id`)) {
+        stop("Invalid value for `section_id` when calling BoardsApi$BoardSectionsDelete, `section_id` is not nullable")
+      }
+      if (!is.null(`section_id`) && !stringr::str_detect(`section_id`, "^\\d+$")) {
         stop("Invalid value for `section_id` when calling BoardsApi$BoardSectionsDelete, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardSectionsDelete, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BoardsApi$BoardSectionsDelete, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardSectionsDelete, must conform to the pattern ^\\d+$.")
       }
 
@@ -551,22 +569,34 @@ BoardsApi <- R6::R6Class(
         stop("Missing required parameter `board_id`.")
       }
 
-      if (!str_detect(`board_id`, "^\\d+$")) {
+      if (!missing(`board_id`) && is.null(`board_id`)) {
+        stop("Invalid value for `board_id` when calling BoardsApi$BoardSectionsList, `board_id` is not nullable")
+      }
+      if (!is.null(`board_id`) && !stringr::str_detect(`board_id`, "^\\d+$")) {
         stop("Invalid value for `board_id` when calling BoardsApi$BoardSectionsList, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardSectionsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BoardsApi$BoardSectionsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardSectionsList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BoardsApi$BoardSectionsList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BoardsApi$BoardSectionsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BoardsApi$BoardSectionsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BoardsApi$BoardSectionsList, must be bigger than or equal to 1.")
       }
 
@@ -691,26 +721,41 @@ BoardsApi <- R6::R6Class(
         stop("Missing required parameter `section_id`.")
       }
 
-      if (!str_detect(`board_id`, "^\\d+$")) {
+      if (!missing(`board_id`) && is.null(`board_id`)) {
+        stop("Invalid value for `board_id` when calling BoardsApi$BoardSectionsListPins, `board_id` is not nullable")
+      }
+      if (!is.null(`board_id`) && !stringr::str_detect(`board_id`, "^\\d+$")) {
         stop("Invalid value for `board_id` when calling BoardsApi$BoardSectionsListPins, must conform to the pattern ^\\d+$.")
       }
 
-      if (!str_detect(`section_id`, "^\\d+$")) {
+      if (!missing(`section_id`) && is.null(`section_id`)) {
+        stop("Invalid value for `section_id` when calling BoardsApi$BoardSectionsListPins, `section_id` is not nullable")
+      }
+      if (!is.null(`section_id`) && !stringr::str_detect(`section_id`, "^\\d+$")) {
         stop("Invalid value for `section_id` when calling BoardsApi$BoardSectionsListPins, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardSectionsListPins, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BoardsApi$BoardSectionsListPins, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardSectionsListPins, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BoardsApi$BoardSectionsListPins, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BoardsApi$BoardSectionsListPins, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BoardsApi$BoardSectionsListPins, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BoardsApi$BoardSectionsListPins, must be bigger than or equal to 1.")
       }
 
@@ -841,19 +886,31 @@ BoardsApi <- R6::R6Class(
         stop("Missing required parameter `board_section`.")
       }
 
-      if (!str_detect(`board_id`, "^\\d+$")) {
+      if (!missing(`board_id`) && is.null(`board_id`)) {
+        stop("Invalid value for `board_id` when calling BoardsApi$BoardSectionsUpdate, `board_id` is not nullable")
+      }
+      if (!is.null(`board_id`) && !stringr::str_detect(`board_id`, "^\\d+$")) {
         stop("Invalid value for `board_id` when calling BoardsApi$BoardSectionsUpdate, must conform to the pattern ^\\d+$.")
       }
 
-      if (!str_detect(`section_id`, "^\\d+$")) {
+      if (!missing(`section_id`) && is.null(`section_id`)) {
+        stop("Invalid value for `section_id` when calling BoardsApi$BoardSectionsUpdate, `section_id` is not nullable")
+      }
+      if (!is.null(`section_id`) && !stringr::str_detect(`section_id`, "^\\d+$")) {
         stop("Invalid value for `section_id` when calling BoardsApi$BoardSectionsUpdate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`board_section`) && is.null(`board_section`)) {
+        stop("Invalid value for `board_section` when calling BoardsApi$BoardSectionsUpdate, `board_section` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardSectionsUpdate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BoardsApi$BoardSectionsUpdate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardSectionsUpdate, must conform to the pattern ^\\d+$.")
       }
 
@@ -971,11 +1028,17 @@ BoardsApi <- R6::R6Class(
         stop("Missing required parameter `board`.")
       }
 
+      if (!missing(`board`) && is.null(`board`)) {
+        stop("Invalid value for `board` when calling BoardsApi$BoardsCreate, `board` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BoardsApi$BoardsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardsCreate, must conform to the pattern ^\\d+$.")
       }
 
@@ -1083,14 +1146,20 @@ BoardsApi <- R6::R6Class(
         stop("Missing required parameter `board_id`.")
       }
 
-      if (!str_detect(`board_id`, "^\\d+$")) {
+      if (!missing(`board_id`) && is.null(`board_id`)) {
+        stop("Invalid value for `board_id` when calling BoardsApi$BoardsDelete, `board_id` is not nullable")
+      }
+      if (!is.null(`board_id`) && !stringr::str_detect(`board_id`, "^\\d+$")) {
         stop("Invalid value for `board_id` when calling BoardsApi$BoardsDelete, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardsDelete, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BoardsApi$BoardsDelete, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardsDelete, must conform to the pattern ^\\d+$.")
       }
 
@@ -1187,14 +1256,20 @@ BoardsApi <- R6::R6Class(
         stop("Missing required parameter `board_id`.")
       }
 
-      if (!str_detect(`board_id`, "^\\d+$")) {
+      if (!missing(`board_id`) && is.null(`board_id`)) {
+        stop("Invalid value for `board_id` when calling BoardsApi$BoardsGet, `board_id` is not nullable")
+      }
+      if (!is.null(`board_id`) && !stringr::str_detect(`board_id`, "^\\d+$")) {
         stop("Invalid value for `board_id` when calling BoardsApi$BoardsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BoardsApi$BoardsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardsGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -1305,21 +1380,33 @@ BoardsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BoardsApi$BoardsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardsList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BoardsApi$BoardsList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BoardsApi$BoardsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BoardsApi$BoardsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BoardsApi$BoardsList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`privacy`) && is.null(`privacy`)) {
+        stop("Invalid value for `privacy` when calling BoardsApi$BoardsList, `privacy` is not nullable")
+      }
 
       query_params[["ad_account_id"]] <- `ad_account_id`
 
@@ -1441,26 +1528,44 @@ BoardsApi <- R6::R6Class(
         stop("Missing required parameter `board_id`.")
       }
 
-      if (!str_detect(`board_id`, "^\\d+$")) {
+      if (!missing(`board_id`) && is.null(`board_id`)) {
+        stop("Invalid value for `board_id` when calling BoardsApi$BoardsListPins, `board_id` is not nullable")
+      }
+      if (!is.null(`board_id`) && !stringr::str_detect(`board_id`, "^\\d+$")) {
         stop("Invalid value for `board_id` when calling BoardsApi$BoardsListPins, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BoardsApi$BoardsListPins, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BoardsApi$BoardsListPins, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BoardsApi$BoardsListPins, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BoardsApi$BoardsListPins, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`creative_types`) && is.null(`creative_types`)) {
+        stop("Invalid value for `creative_types` when calling BoardsApi$BoardsListPins, `creative_types` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardsListPins, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BoardsApi$BoardsListPins, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardsListPins, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`pin_metrics`) && is.null(`pin_metrics`)) {
+        stop("Invalid value for `pin_metrics` when calling BoardsApi$BoardsListPins, `pin_metrics` is not nullable")
+      }
 
       query_params[["bookmark"]] <- `bookmark`
 
@@ -1590,15 +1695,24 @@ BoardsApi <- R6::R6Class(
         stop("Missing required parameter `board_update`.")
       }
 
-      if (!str_detect(`board_id`, "^\\d+$")) {
+      if (!missing(`board_id`) && is.null(`board_id`)) {
+        stop("Invalid value for `board_id` when calling BoardsApi$BoardsUpdate, `board_id` is not nullable")
+      }
+      if (!is.null(`board_id`) && !stringr::str_detect(`board_id`, "^\\d+$")) {
         stop("Invalid value for `board_id` when calling BoardsApi$BoardsUpdate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`board_update`) && is.null(`board_update`)) {
+        stop("Invalid value for `board_update` when calling BoardsApi$BoardsUpdate, `board_update` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardsUpdate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling BoardsApi$BoardsUpdate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling BoardsApi$BoardsUpdate, must conform to the pattern ^\\d+$.")
       }
 

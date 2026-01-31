@@ -138,12 +138,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                data = new Option<AdResponse?>(JsonSerializer.Deserialize<AdResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            data = new Option<AdResponse?>(JsonSerializer.Deserialize<AdResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "exceptions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exceptions = new Option<Exception?>(JsonSerializer.Deserialize<Exception>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            exceptions = new Option<Exception?>(JsonSerializer.Deserialize<Exception>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

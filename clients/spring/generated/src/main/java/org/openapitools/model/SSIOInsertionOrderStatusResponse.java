@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * SSIOInsertionOrderStatusResponse
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOInsertionOrderStatusResponse {
 
   private @Nullable String pinOrderId;
@@ -31,7 +31,7 @@ public class SSIOInsertionOrderStatusResponse {
 
   private JsonNullable<String> creationTime = JsonNullable.<String>undefined();
 
-  public SSIOInsertionOrderStatusResponse pinOrderId(String pinOrderId) {
+  public SSIOInsertionOrderStatusResponse pinOrderId(@Nullable String pinOrderId) {
     this.pinOrderId = pinOrderId;
     return this;
   }
@@ -43,15 +43,15 @@ public class SSIOInsertionOrderStatusResponse {
   
   @Schema(name = "pin_order_id", example = "0Q01N0000015hekSAB", description = "Salesforce order id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_order_id")
-  public String getPinOrderId() {
+  public @Nullable String getPinOrderId() {
     return pinOrderId;
   }
 
-  public void setPinOrderId(String pinOrderId) {
+  public void setPinOrderId(@Nullable String pinOrderId) {
     this.pinOrderId = pinOrderId;
   }
 
-  public SSIOInsertionOrderStatusResponse status(String status) {
+  public SSIOInsertionOrderStatusResponse status(@Nullable String status) {
     this.status = status;
     return this;
   }
@@ -63,11 +63,11 @@ public class SSIOInsertionOrderStatusResponse {
   
   @Schema(name = "status", example = "Approved", description = "Salesforce insertion order status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public String getStatus() {
+  public @Nullable String getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@Nullable String status) {
     this.status = status;
   }
 

@@ -23,7 +23,7 @@ data class CreativeAssetsIdFilter(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("CREATIVE_ASSETS_ID", required = true) val CREATIVE_ASSETS_ID: CatalogsProductGroupMultipleStringCriteria
-    ) {
+) {
 
 }
 

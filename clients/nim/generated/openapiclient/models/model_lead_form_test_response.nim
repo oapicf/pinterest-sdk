@@ -9,8 +9,25 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type LeadFormTestResponse* = object
   ## Response for lead data test API.
-  subscriptionId*: string ## Subscription ID.
+  subscriptionId*: Option[string] ## Subscription ID.
+
+
+# Custom JSON deserialization for LeadFormTestResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[LeadFormTestResponse]): LeadFormTestResponse =
+  result = LeadFormTestResponse()
+  if node.kind == JObject:
+    if node.hasKey("subscription_id") and node["subscription_id"].kind != JNull:
+      result.subscriptionId = some(to(node["subscription_id"], typeof(result.subscriptionId.get())))
+
+# Custom JSON serialization for LeadFormTestResponse with custom field names
+proc `%`*(obj: LeadFormTestResponse): JsonNode =
+  result = newJObject()
+  if obj.subscriptionId.isSome():
+    result["subscription_id"] = %obj.subscriptionId.get()
+

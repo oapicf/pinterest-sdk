@@ -147,7 +147,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ProductAvailabilityType productAvailabilityType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(productAvailabilityType.ToString());
+            writer.WriteStringValue(ProductAvailabilityTypeValueConverter.ToJsonValue(productAvailabilityType).ToString());
         }
     }
 
@@ -178,14 +178,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the ProductAvailabilityType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="productAvailabilityType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ProductAvailabilityType? productAvailabilityType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(productAvailabilityType?.ToString() ?? "null");
+            writer.WriteStringValue(productAvailabilityType.HasValue ? ProductAvailabilityTypeValueConverter.ToJsonValue(productAvailabilityType.Value).ToString() : "null");
         }
     }
 }

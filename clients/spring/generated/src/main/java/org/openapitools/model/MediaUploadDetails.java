@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "MediaUploadDetails", description = "Media upload details")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MediaUploadDetails {
 
   private @Nullable String mediaId;
@@ -32,7 +32,7 @@ public class MediaUploadDetails {
 
   private @Nullable MediaUploadStatus status;
 
-  public MediaUploadDetails mediaId(String mediaId) {
+  public MediaUploadDetails mediaId(@Nullable String mediaId) {
     this.mediaId = mediaId;
     return this;
   }
@@ -44,15 +44,15 @@ public class MediaUploadDetails {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "media_id", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_id")
-  public String getMediaId() {
+  public @Nullable String getMediaId() {
     return mediaId;
   }
 
-  public void setMediaId(String mediaId) {
+  public void setMediaId(@Nullable String mediaId) {
     this.mediaId = mediaId;
   }
 
-  public MediaUploadDetails mediaType(MediaUploadType mediaType) {
+  public MediaUploadDetails mediaType(@Nullable MediaUploadType mediaType) {
     this.mediaType = mediaType;
     return this;
   }
@@ -64,15 +64,15 @@ public class MediaUploadDetails {
   @Valid 
   @Schema(name = "media_type", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_type")
-  public MediaUploadType getMediaType() {
+  public @Nullable MediaUploadType getMediaType() {
     return mediaType;
   }
 
-  public void setMediaType(MediaUploadType mediaType) {
+  public void setMediaType(@Nullable MediaUploadType mediaType) {
     this.mediaType = mediaType;
   }
 
-  public MediaUploadDetails status(MediaUploadStatus status) {
+  public MediaUploadDetails status(@Nullable MediaUploadStatus status) {
     this.status = status;
     return this;
   }
@@ -84,11 +84,11 @@ public class MediaUploadDetails {
   @Valid 
   @Schema(name = "status", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public MediaUploadStatus getStatus() {
+  public @Nullable MediaUploadStatus getStatus() {
     return status;
   }
 
-  public void setStatus(MediaUploadStatus status) {
+  public void setStatus(@Nullable MediaUploadStatus status) {
     this.status = status;
   }
 

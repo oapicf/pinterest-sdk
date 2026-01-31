@@ -9,7 +9,53 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type UserListType* = object
-  ## User list type
+type UserListType* {.pure.} = enum
+  EMAIL
+  IDFA
+  MAID
+  LRID
+  DLXID
+  HASHEDPINNERID
+
+func `%`*(v: UserListType): JsonNode =
+  result = case v:
+    of UserListType.EMAIL: %"EMAIL"
+    of UserListType.IDFA: %"IDFA"
+    of UserListType.MAID: %"MAID"
+    of UserListType.LRID: %"LR_ID"
+    of UserListType.DLXID: %"DLX_ID"
+    of UserListType.HASHEDPINNERID: %"HASHED_PINNER_ID"
+
+func `$`*(v: UserListType): string =
+  result = case v:
+    of UserListType.EMAIL: $("EMAIL")
+    of UserListType.IDFA: $("IDFA")
+    of UserListType.MAID: $("MAID")
+    of UserListType.LRID: $("LR_ID")
+    of UserListType.DLXID: $("DLX_ID")
+    of UserListType.HASHEDPINNERID: $("HASHED_PINNER_ID")
+
+proc to*(node: JsonNode, T: typedesc[UserListType]): UserListType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum UserListType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("EMAIL"):
+    return UserListType.EMAIL
+  of $("IDFA"):
+    return UserListType.IDFA
+  of $("MAID"):
+    return UserListType.MAID
+  of $("LR_ID"):
+    return UserListType.LRID
+  of $("DLX_ID"):
+    return UserListType.DLXID
+  of $("HASHED_PINNER_ID"):
+    return UserListType.HASHEDPINNERID
+  else:
+    raise newException(ValueError, "Invalid enum value for UserListType: " & strVal)
+

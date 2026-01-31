@@ -3,17 +3,42 @@ package model
 import play.api.libs.json._
 
 /**
-  * A request to exchange an authorization code for an access token.
+  * Represents the Swagger definition for OauthAccessTokenRequestCode.
+  * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class OauthAccessTokenRequestCode(
-  grantType: OauthAccessTokenRequestCode.GrantType.Value,
   code: String,
-  redirectUri: String
+  redirectUri: String,
+  grantType: OauthAccessTokenRequestCode.GrantType.Value
+  additionalProperties: 
 )
 
 object OauthAccessTokenRequestCode {
-  implicit lazy val oauthAccessTokenRequestCodeJsonFormat: Format[OauthAccessTokenRequestCode] = Json.format[OauthAccessTokenRequestCode]
+  implicit lazy val oauthAccessTokenRequestCodeJsonFormat: Format[OauthAccessTokenRequestCode] = {
+    val realJsonFormat = Json.format[OauthAccessTokenRequestCode]
+    val declaredPropNames = Set("code", "redirectUri", "grantType")
+    
+    Format(
+      Reads {
+        case JsObject(xs) =>
+          val declaredProps = xs.filterKeys(declaredPropNames)
+          val additionalProps = JsObject(xs -- declaredPropNames)
+          val restructuredProps = declaredProps + ("additionalProperties" -> additionalProps)
+          val newObj = JsObject(restructuredProps)
+          realJsonFormat.reads(newObj)
+        case _ =>
+          JsError("error.expected.jsobject")
+      },
+      Writes { oauthAccessTokenRequestCode =>
+        val jsObj = realJsonFormat.writes(oauthAccessTokenRequestCode)
+        val additionalProps = jsObj.value("additionalProperties").as[JsObject]
+        val declaredProps = jsObj - "additionalProperties"
+        val newObj = declaredProps ++ additionalProps
+        newObj
+      }
+    )
+  }
 
   // noinspection TypeAnnotation
   object GrantType extends Enumeration {

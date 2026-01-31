@@ -1,31 +1,9 @@
 goog.provide('API.Client.InviteBusinessRoleBinding');
 
 /**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
  * @record
  */
 API.Client.InviteBusinessRoleBinding = function() {}
-
-/**
- * Unique identifier for the business that created the invite/request.
- * @type {!string}
- * @export
- */
-API.Client.InviteBusinessRoleBinding.prototype.createdByBusinessId;
-
-/**
- * Unique identifier for the user that created the invite/request.
- * @type {!string}
- * @export
- */
-API.Client.InviteBusinessRoleBinding.prototype.createdByUserId;
-
-/**
- * Metadata for the user that updated the invite/request.
- * @type {!API.Client.BusinessAccessUserSummary}
- * @export
- */
-API.Client.InviteBusinessRoleBinding.prototype.user;
 
 /**
  * Unique identifier of the invite/request.
@@ -46,4 +24,25 @@ API.Client.InviteBusinessRoleBinding.prototype.inviteData;
  * @export
  */
 API.Client.InviteBusinessRoleBinding.prototype.isReceivedInvite;
+
+/**
+ * Metadata for the user that updated the invite/request.
+ * @type {!API.Client.Object}
+ * @export
+ */
+API.Client.InviteBusinessRoleBinding.prototype.user;
+
+/**
+ * Unique identifier for the business that created the invite/request.
+ * @type {!string}
+ * @export
+ */
+API.Client.InviteBusinessRoleBinding.prototype.createdByBusinessId;
+
+/**
+ * Unique identifier for the user that created the invite/request.
+ * @type {!string}
+ * @export
+ */
+API.Client.InviteBusinessRoleBinding.prototype.createdByUserId;
 

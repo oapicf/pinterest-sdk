@@ -16,18 +16,18 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * A request to receive a client token.
- * @param grantType 
+ * 
  * @param scope 
+ * @param grantType 
  */
 data class OauthAccessTokenRequestClientCredentials(
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("grant_type", required = true) val grantType: OauthAccessTokenRequestClientCredentials.GrantType,
+    @get:JsonProperty("scope", required = true) val scope: kotlin.String,
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("scope", required = true) val scope: kotlin.String
-    ) {
+    @get:JsonProperty("grant_type", required = true) val grantType: OauthAccessTokenRequestClientCredentials.GrantType
+) {
 
     /**
     * 
@@ -43,7 +43,8 @@ data class OauthAccessTokenRequestClientCredentials(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): GrantType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OauthAccessTokenRequestClientCredentials'")
             }
         }
     }

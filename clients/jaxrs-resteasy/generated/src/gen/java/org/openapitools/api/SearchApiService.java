@@ -4,6 +4,7 @@ import org.openapitools.api.*;
 import org.openapitools.model.*;
 
 
+
 import org.openapitools.model.Error;
 import org.openapitools.model.PinsList200Response;
 import org.openapitools.model.SearchPartnerPins200Response;
@@ -19,7 +20,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2025-05-10T05:40:40.818990358Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface SearchApiService {
       Response searchPartnerPins(String term,String countryCode,String bookmark,String locale,Integer limit,SecurityContext securityContext)
       throws NotFoundException;
@@ -27,4 +28,6 @@ public interface SearchApiService {
       throws NotFoundException;
       Response searchUserPinsList(String query,String adAccountId,String bookmark,SecurityContext securityContext)
       throws NotFoundException;
+
+
 }

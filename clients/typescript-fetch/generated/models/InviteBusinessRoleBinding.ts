@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { BusinessAccessUserSummary } from './BusinessAccessUserSummary';
-import {
-    BusinessAccessUserSummaryFromJSON,
-    BusinessAccessUserSummaryFromJSONTyped,
-    BusinessAccessUserSummaryToJSON,
-    BusinessAccessUserSummaryToJSONTyped,
-} from './BusinessAccessUserSummary';
 import type { BaseInviteDataResponseInviteData } from './BaseInviteDataResponseInviteData';
 import {
     BaseInviteDataResponseInviteDataFromJSON,
@@ -29,29 +22,11 @@ import {
 } from './BaseInviteDataResponseInviteData';
 
 /**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+ * 
  * @export
  * @interface InviteBusinessRoleBinding
  */
 export interface InviteBusinessRoleBinding {
-    /**
-     * Unique identifier for the business that created the invite/request.
-     * @type {string}
-     * @memberof InviteBusinessRoleBinding
-     */
-    createdByBusinessId?: string;
-    /**
-     * Unique identifier for the user that created the invite/request.
-     * @type {string}
-     * @memberof InviteBusinessRoleBinding
-     */
-    createdByUserId?: string;
-    /**
-     * Metadata for the user that updated the invite/request.
-     * @type {BusinessAccessUserSummary}
-     * @memberof InviteBusinessRoleBinding
-     */
-    user?: BusinessAccessUserSummary;
     /**
      * Unique identifier of the invite/request.
      * @type {string}
@@ -70,6 +45,24 @@ export interface InviteBusinessRoleBinding {
      * @memberof InviteBusinessRoleBinding
      */
     isReceivedInvite?: boolean;
+    /**
+     * Metadata for the user that updated the invite/request.
+     * @type {object}
+     * @memberof InviteBusinessRoleBinding
+     */
+    user?: object;
+    /**
+     * Unique identifier for the business that created the invite/request.
+     * @type {string}
+     * @memberof InviteBusinessRoleBinding
+     */
+    createdByBusinessId?: string;
+    /**
+     * Unique identifier for the user that created the invite/request.
+     * @type {string}
+     * @memberof InviteBusinessRoleBinding
+     */
+    createdByUserId?: string;
 }
 
 /**
@@ -89,12 +82,12 @@ export function InviteBusinessRoleBindingFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-        'createdByBusinessId': json['created_by_business_id'] == null ? undefined : json['created_by_business_id'],
-        'createdByUserId': json['created_by_user_id'] == null ? undefined : json['created_by_user_id'],
-        'user': json['user'] == null ? undefined : BusinessAccessUserSummaryFromJSON(json['user']),
         'id': json['id'] == null ? undefined : json['id'],
         'inviteData': json['invite_data'] == null ? undefined : BaseInviteDataResponseInviteDataFromJSON(json['invite_data']),
         'isReceivedInvite': json['is_received_invite'] == null ? undefined : json['is_received_invite'],
+        'user': json['user'] == null ? undefined : json['user'],
+        'createdByBusinessId': json['created_by_business_id'] == null ? undefined : json['created_by_business_id'],
+        'createdByUserId': json['created_by_user_id'] == null ? undefined : json['created_by_user_id'],
     };
 }
 
@@ -109,12 +102,12 @@ export function InviteBusinessRoleBindingToJSONTyped(value?: InviteBusinessRoleB
 
     return {
         
-        'created_by_business_id': value['createdByBusinessId'],
-        'created_by_user_id': value['createdByUserId'],
-        'user': BusinessAccessUserSummaryToJSON(value['user']),
         'id': value['id'],
         'invite_data': BaseInviteDataResponseInviteDataToJSON(value['inviteData']),
         'is_received_invite': value['isReceivedInvite'],
+        'user': value['user'],
+        'created_by_business_id': value['createdByBusinessId'],
+        'created_by_user_id': value['createdByUserId'],
     };
 }
 

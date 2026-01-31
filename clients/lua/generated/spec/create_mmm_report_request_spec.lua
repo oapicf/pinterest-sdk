@@ -16,6 +16,13 @@ Please update as you see appropriate
 describe("create_mmm_report_request", function()
   local openapiclient_create_mmm_report_request = require "openapiclient.model.create_mmm_report_request"
 
+  -- unit tests for the property 'countries'
+  describe("property countries test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for the property 'report_name'
   describe("property report_name test", function()
     it("should work", function()
@@ -60,13 +67,6 @@ describe("create_mmm_report_request", function()
 
   -- unit tests for the property 'columns'
   describe("property columns test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'countries'
-  describe("property countries test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

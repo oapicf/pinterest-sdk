@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Hotel product metadata entity
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelProductMetadata {
   public static final String SERIALIZED_NAME_HOTEL_ID = "hotel_id";
   @SerializedName(SERIALIZED_NAME_HOTEL_ID)
@@ -121,12 +121,10 @@ public class CatalogsHotelProductMetadata {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("hotel_id");
+    openapiFields = new HashSet<String>(Arrays.asList("hotel_id"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("hotel_id");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("hotel_id"));
   }
 
   /**
@@ -138,7 +136,7 @@ public class CatalogsHotelProductMetadata {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsHotelProductMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsHotelProductMetadata is not found in the empty JSON string", CatalogsHotelProductMetadata.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsHotelProductMetadata is not found in the empty JSON string", CatalogsHotelProductMetadata.openapiRequiredFields.toString()));
         }
       }
 
@@ -146,19 +144,19 @@ public class CatalogsHotelProductMetadata {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsHotelProductMetadata.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsHotelProductMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsHotelProductMetadata` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CatalogsHotelProductMetadata.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("hotel_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `hotel_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hotel_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `hotel_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hotel_id").toString()));
       }
   }
 

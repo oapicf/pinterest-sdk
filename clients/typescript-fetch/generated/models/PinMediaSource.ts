@@ -84,7 +84,7 @@ export function PinMediaSourceFromJSONTyped(json: any, ignoreDiscriminator: bool
         case 'video_id':
             return Object.assign({}, PinMediaSourceVideoIDFromJSONTyped(json, true), { sourceType: 'video_id' } as const);
         default:
-            throw new Error(`No variant of PinMediaSource exists with 'sourceType=${json['sourceType']}'`);
+            return json;
     }
 }
 
@@ -110,8 +110,7 @@ export function PinMediaSourceToJSONTyped(value?: PinMediaSource | null, ignoreD
         case 'video_id':
             return Object.assign({}, PinMediaSourceVideoIDToJSON(value), { sourceType: 'video_id' } as const);
         default:
-            throw new Error(`No variant of PinMediaSource exists with 'sourceType=${value['sourceType']}'`);
+            return value;
     }
-
 }
 

@@ -34,7 +34,7 @@ import javax.validation.Valid;
   BidFloorRequest.JSON_PROPERTY_BID_FLOOR_SPECS,
   BidFloorRequest.JSON_PROPERTY_TARGETING_SPEC
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BidFloorRequest   {
   public static final String JSON_PROPERTY_BID_FLOOR_SPECS = "bid_floor_specs";
   @JsonProperty(JSON_PROPERTY_BID_FLOOR_SPECS)

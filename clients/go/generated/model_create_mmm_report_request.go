@@ -22,6 +22,8 @@ var _ MappedNullable = &CreateMMMReportRequest{}
 
 // CreateMMMReportRequest struct for CreateMMMReportRequest
 type CreateMMMReportRequest struct {
+	// A List of countries for filtering
+	Countries []TargetingAdvertiserCountry `json:"countries,omitempty"`
 	// Name of the Marketing Mix Modeling (MMM) report
 	ReportName string `json:"report_name"`
 	// Metric report start date (UTC). Format: YYYY-MM-DD
@@ -36,8 +38,6 @@ type CreateMMMReportRequest struct {
 	TargetingTypes []MMMReportingTargetingType `json:"targeting_types"`
 	// Metric and entity columns
 	Columns []MMMReportingColumn `json:"columns"`
-	// A List of countries for filtering
-	Countries []TargetingAdvertiserCountry `json:"countries,omitempty"`
 }
 
 type _CreateMMMReportRequest CreateMMMReportRequest
@@ -48,6 +48,13 @@ type _CreateMMMReportRequest CreateMMMReportRequest
 // will change when the set of required properties is changed
 func NewCreateMMMReportRequest(reportName string, startDate string, endDate string, granularity string, level string, targetingTypes []MMMReportingTargetingType, columns []MMMReportingColumn) *CreateMMMReportRequest {
 	this := CreateMMMReportRequest{}
+	this.ReportName = reportName
+	this.StartDate = startDate
+	this.EndDate = endDate
+	this.Granularity = granularity
+	this.Level = level
+	this.TargetingTypes = targetingTypes
+	this.Columns = columns
 	return &this
 }
 
@@ -57,6 +64,38 @@ func NewCreateMMMReportRequest(reportName string, startDate string, endDate stri
 func NewCreateMMMReportRequestWithDefaults() *CreateMMMReportRequest {
 	this := CreateMMMReportRequest{}
 	return &this
+}
+
+// GetCountries returns the Countries field value if set, zero value otherwise.
+func (o *CreateMMMReportRequest) GetCountries() []TargetingAdvertiserCountry {
+	if o == nil || IsNil(o.Countries) {
+		var ret []TargetingAdvertiserCountry
+		return ret
+	}
+	return o.Countries
+}
+
+// GetCountriesOk returns a tuple with the Countries field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateMMMReportRequest) GetCountriesOk() ([]TargetingAdvertiserCountry, bool) {
+	if o == nil || IsNil(o.Countries) {
+		return nil, false
+	}
+	return o.Countries, true
+}
+
+// HasCountries returns a boolean if a field has been set.
+func (o *CreateMMMReportRequest) HasCountries() bool {
+	if o != nil && !IsNil(o.Countries) {
+		return true
+	}
+
+	return false
+}
+
+// SetCountries gets a reference to the given []TargetingAdvertiserCountry and assigns it to the Countries field.
+func (o *CreateMMMReportRequest) SetCountries(v []TargetingAdvertiserCountry) {
+	o.Countries = v
 }
 
 // GetReportName returns the ReportName field value
@@ -227,38 +266,6 @@ func (o *CreateMMMReportRequest) SetColumns(v []MMMReportingColumn) {
 	o.Columns = v
 }
 
-// GetCountries returns the Countries field value if set, zero value otherwise.
-func (o *CreateMMMReportRequest) GetCountries() []TargetingAdvertiserCountry {
-	if o == nil || IsNil(o.Countries) {
-		var ret []TargetingAdvertiserCountry
-		return ret
-	}
-	return o.Countries
-}
-
-// GetCountriesOk returns a tuple with the Countries field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateMMMReportRequest) GetCountriesOk() ([]TargetingAdvertiserCountry, bool) {
-	if o == nil || IsNil(o.Countries) {
-		return nil, false
-	}
-	return o.Countries, true
-}
-
-// HasCountries returns a boolean if a field has been set.
-func (o *CreateMMMReportRequest) HasCountries() bool {
-	if o != nil && !IsNil(o.Countries) {
-		return true
-	}
-
-	return false
-}
-
-// SetCountries gets a reference to the given []TargetingAdvertiserCountry and assigns it to the Countries field.
-func (o *CreateMMMReportRequest) SetCountries(v []TargetingAdvertiserCountry) {
-	o.Countries = v
-}
-
 func (o CreateMMMReportRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -269,6 +276,9 @@ func (o CreateMMMReportRequest) MarshalJSON() ([]byte, error) {
 
 func (o CreateMMMReportRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Countries) {
+		toSerialize["countries"] = o.Countries
+	}
 	toSerialize["report_name"] = o.ReportName
 	toSerialize["start_date"] = o.StartDate
 	toSerialize["end_date"] = o.EndDate
@@ -276,9 +286,6 @@ func (o CreateMMMReportRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["level"] = o.Level
 	toSerialize["targeting_types"] = o.TargetingTypes
 	toSerialize["columns"] = o.Columns
-	if !IsNil(o.Countries) {
-		toSerialize["countries"] = o.Countries
-	}
 	return toSerialize, nil
 }
 

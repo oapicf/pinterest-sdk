@@ -28,7 +28,7 @@ data class CatalogsProductGroupPricingCurrencyCriteria(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("operator", required = true) val `operator`: CatalogsProductGroupPricingCurrencyCriteria.`Operator`,
 
-    @get:DecimalMin("0")
+    @get:DecimalMin(value="0")
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("value", required = true) val `value`: java.math.BigDecimal,
 
@@ -38,7 +38,7 @@ data class CatalogsProductGroupPricingCurrencyCriteria(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("negated") val negated: kotlin.Boolean? = false
-    ) {
+) {
 
     /**
     * 
@@ -55,7 +55,8 @@ data class CatalogsProductGroupPricingCurrencyCriteria(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): `Operator` {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsProductGroupPricingCurrencyCriteria'")
             }
         }
     }

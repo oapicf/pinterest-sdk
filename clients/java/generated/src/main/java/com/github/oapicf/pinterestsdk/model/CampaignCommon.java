@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Campaign Data
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CampaignCommon {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
@@ -369,20 +369,10 @@ public class CampaignCommon {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ad_account_id");
-    openapiFields.add("name");
-    openapiFields.add("status");
-    openapiFields.add("lifetime_spend_cap");
-    openapiFields.add("daily_spend_cap");
-    openapiFields.add("order_line_id");
-    openapiFields.add("tracking_urls");
-    openapiFields.add("start_time");
-    openapiFields.add("end_time");
-    openapiFields.add("is_flexible_daily_budgets");
+    openapiFields = new HashSet<String>(Arrays.asList("ad_account_id", "name", "status", "lifetime_spend_cap", "daily_spend_cap", "order_line_id", "tracking_urls", "start_time", "end_time", "is_flexible_daily_budgets"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -394,7 +384,7 @@ public class CampaignCommon {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CampaignCommon.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CampaignCommon is not found in the empty JSON string", CampaignCommon.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CampaignCommon is not found in the empty JSON string", CampaignCommon.openapiRequiredFields.toString()));
         }
       }
 
@@ -402,22 +392,22 @@ public class CampaignCommon {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CampaignCommon.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CampaignCommon` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CampaignCommon` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("ad_account_id") != null && !jsonObj.get("ad_account_id").isJsonNull()) && !jsonObj.get("ad_account_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the optional field `status`
       if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
         EntityStatus.validateJsonElement(jsonObj.get("status"));
       }
       if ((jsonObj.get("order_line_id") != null && !jsonObj.get("order_line_id").isJsonNull()) && !jsonObj.get("order_line_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `order_line_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("order_line_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `order_line_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("order_line_id").toString()));
       }
       // validate the optional field `tracking_urls`
       if (jsonObj.get("tracking_urls") != null && !jsonObj.get("tracking_urls").isJsonNull()) {

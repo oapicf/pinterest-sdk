@@ -24,16 +24,23 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * A request to exchange an authorization code for an access token.
+ * OauthAccessTokenRequestCode
  */
-@ApiModel(description = "A request to exchange an authorization code for an access token.")
 @JsonPropertyOrder({
-  OauthAccessTokenRequestCode.JSON_PROPERTY_GRANT_TYPE,
   OauthAccessTokenRequestCode.JSON_PROPERTY_CODE,
-  OauthAccessTokenRequestCode.JSON_PROPERTY_REDIRECT_URI
+  OauthAccessTokenRequestCode.JSON_PROPERTY_REDIRECT_URI,
+  OauthAccessTokenRequestCode.JSON_PROPERTY_GRANT_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenRequestCode   {
+  public static final String JSON_PROPERTY_CODE = "code";
+  @JsonProperty(JSON_PROPERTY_CODE)
+  private String code;
+
+  public static final String JSON_PROPERTY_REDIRECT_URI = "redirect_uri";
+  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+  private String redirectUri;
+
   /**
    * Gets or Sets grantType
    */
@@ -50,8 +57,12 @@ public class OauthAccessTokenRequestCode   {
       this.value = value;
     }
 
-    @Override
     @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
     public String toString() {
       return String.valueOf(value);
     }
@@ -70,34 +81,6 @@ public class OauthAccessTokenRequestCode   {
   public static final String JSON_PROPERTY_GRANT_TYPE = "grant_type";
   @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
   private GrantTypeEnum grantType;
-
-  public static final String JSON_PROPERTY_CODE = "code";
-  @JsonProperty(JSON_PROPERTY_CODE)
-  private String code;
-
-  public static final String JSON_PROPERTY_REDIRECT_URI = "redirect_uri";
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
-  private String redirectUri;
-
-  public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
-    this.grantType = grantType;
-    return this;
-  }
-
-  /**
-   * Get grantType
-   * @return grantType
-   **/
-  @JsonProperty(value = "grant_type")
-  @ApiModelProperty(required = true, value = "")
-  @NotNull 
-  public GrantTypeEnum getGrantType() {
-    return grantType;
-  }
-
-  public void setGrantType(GrantTypeEnum grantType) {
-    this.grantType = grantType;
-  }
 
   public OauthAccessTokenRequestCode code(String code) {
     this.code = code;
@@ -139,6 +122,26 @@ public class OauthAccessTokenRequestCode   {
     this.redirectUri = redirectUri;
   }
 
+  public OauthAccessTokenRequestCode grantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+  /**
+   * Get grantType
+   * @return grantType
+   **/
+  @JsonProperty(value = "grant_type")
+  @ApiModelProperty(required = true, value = "")
+  @NotNull 
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -149,14 +152,14 @@ public class OauthAccessTokenRequestCode   {
       return false;
     }
     OauthAccessTokenRequestCode oauthAccessTokenRequestCode = (OauthAccessTokenRequestCode) o;
-    return Objects.equals(this.grantType, oauthAccessTokenRequestCode.grantType) &&
-        Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
-        Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri);
+    return Objects.equals(this.code, oauthAccessTokenRequestCode.code) &&
+        Objects.equals(this.redirectUri, oauthAccessTokenRequestCode.redirectUri) &&
+        Objects.equals(this.grantType, oauthAccessTokenRequestCode.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, code, redirectUri);
+    return Objects.hash(code, redirectUri, grantType);
   }
 
   @Override
@@ -164,9 +167,9 @@ public class OauthAccessTokenRequestCode   {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestCode {\n");
     
-    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

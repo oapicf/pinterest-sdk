@@ -35,7 +35,7 @@ data class CatalogsCreativeAssetsProduct(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("pin", required = true) val pin: Pin?
-    ) {
+) {
 
     /**
     * 
@@ -49,7 +49,8 @@ data class CatalogsCreativeAssetsProduct(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsCreativeAssetsProduct'")
             }
         }
     }

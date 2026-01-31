@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsFeedsCreateRequest;
 import org.openapitools.model.CatalogsFeedCredentials;
@@ -85,7 +84,8 @@ public class CatalogsVerticalFeedsCreateRequest  {
   private ProductAvailabilityType defaultAvailability;
 
   @ApiModelProperty(value = "")
-  private CatalogsStatus status;
+  @Valid
+  private CatalogsStatus status = "ACTIVE";
 
  /**
   * Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.

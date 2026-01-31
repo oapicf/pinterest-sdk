@@ -46,7 +46,7 @@ import javax.validation.Valid;
   CatalogsHotelFeedsCreateRequest.JSON_PROPERTY_CATALOG_ID,
   CatalogsHotelFeedsCreateRequest.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelFeedsCreateRequest   {
   public static final String JSON_PROPERTY_DEFAULT_CURRENCY = "default_currency";
   @JsonProperty(JSON_PROPERTY_DEFAULT_CURRENCY)
@@ -86,7 +86,7 @@ public class CatalogsHotelFeedsCreateRequest   {
 
   public static final String JSON_PROPERTY_STATUS = "status";
   @JsonProperty(JSON_PROPERTY_STATUS)
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   public CatalogsHotelFeedsCreateRequest defaultCurrency(NullableCurrency defaultCurrency) {
     this.defaultCurrency = defaultCurrency;

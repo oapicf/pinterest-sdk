@@ -12,8 +12,6 @@ module ConversionTagCreate =
 
   [<CLIMutable>]
   type ConversionTagCreate = {
-    [<JsonProperty(PropertyName = "name")>]
-    Name : string;
     [<JsonProperty(PropertyName = "aem_enabled")>]
     AemEnabled : bool option;
     [<JsonProperty(PropertyName = "md_frequency")>]
@@ -28,6 +26,8 @@ module ConversionTagCreate =
     AemDbEnabled : bool option;
     [<JsonProperty(PropertyName = "aem_loc_enabled")>]
     AemLocEnabled : bool option;
+    [<JsonProperty(PropertyName = "name")>]
+    Name : string;
   }
 
   //#endregion

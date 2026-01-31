@@ -413,35 +413,28 @@ namespace Org.OpenAPITools.Model
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "created_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
+                            createdAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "board_pins_modified_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                boardPinsModifiedAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
+                            boardPinsModifiedAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "description":
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "collaborator_count":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                collaboratorCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            collaboratorCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "pin_count":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pinCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            pinCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "follower_count":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                followerCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            followerCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "media":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                media = new Option<BoardMedia?>(JsonSerializer.Deserialize<BoardMedia>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            media = new Option<BoardMedia?>(JsonSerializer.Deserialize<BoardMedia>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "owner":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                owner = new Option<BoardOwner?>(JsonSerializer.Deserialize<BoardOwner>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            owner = new Option<BoardOwner?>(JsonSerializer.Deserialize<BoardOwner>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "privacy":
                             string? privacyRawValue = utf8JsonReader.GetString();

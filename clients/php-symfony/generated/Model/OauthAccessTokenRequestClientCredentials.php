@@ -37,8 +37,6 @@ use JMS\Serializer\Annotation\SerializedName;
 /**
  * Class representing the OauthAccessTokenRequestClientCredentials model.
  *
- * A request to receive a client token.
- *
  * @package OpenAPI\Server\Model
  * @author  OpenAPI Generator team
  */
@@ -46,6 +44,15 @@ use JMS\Serializer\Annotation\SerializedName;
 class OauthAccessTokenRequestClientCredentials 
 {
         /**
+     * @var string|null
+     * @SerializedName("scope")
+     * @Type("string")
+    */
+    #[Assert\NotNull]
+    #[Assert\Type("string")]
+    protected ?string $scope = null;
+
+    /**
      * @var string|null
      * @SerializedName("grant_type")
      * @Type("string")
@@ -56,52 +63,16 @@ class OauthAccessTokenRequestClientCredentials
     protected ?string $grantType = null;
 
     /**
-     * @var string|null
-     * @SerializedName("scope")
-     * @Type("string")
-    */
-    #[Assert\NotNull]
-    #[Assert\Type("string")]
-    protected ?string $scope = null;
-
-    /**
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(?array $data = null)
     {
         if (is_array($data)) {
-            $this->grantType = array_key_exists('grantType', $data) ? $data['grantType'] : $this->grantType;
             $this->scope = array_key_exists('scope', $data) ? $data['scope'] : $this->scope;
+            $this->grantType = array_key_exists('grantType', $data) ? $data['grantType'] : $this->grantType;
         }
     }
-
-    /**
-     * Gets grantType.
-     *
-     * @return string|null
-     */
-    public function getGrantType(): ?string
-    {
-        return $this->grantType;
-    }
-
-    /**
-    * Sets grantType.
-    *
-    * @param string|null $grantType
-    *
-    * @return $this
-    */
-    public function setGrantType(?string $grantType): self
-    {
-        $this->grantType = $grantType;
-
-        return $this;
-    }
-
-
-
 
     /**
      * Gets scope.
@@ -123,6 +94,33 @@ class OauthAccessTokenRequestClientCredentials
     public function setScope(?string $scope): self
     {
         $this->scope = $scope;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets grantType.
+     *
+     * @return string|null
+     */
+    public function getGrantType(): ?string
+    {
+        return $this->grantType;
+    }
+
+    /**
+    * Sets grantType.
+    *
+    * @param string|null $grantType
+    *
+    * @return $this
+    */
+    public function setGrantType(?string $grantType): self
+    {
+        $this->grantType = $grantType;
 
         return $this;
     }

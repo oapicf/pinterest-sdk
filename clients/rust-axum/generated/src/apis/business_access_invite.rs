@@ -86,6 +86,8 @@ pub enum RespondBusinessAccessInvitesResponse {
 }
 
 
+
+
 /// BusinessAccessInvite
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -95,6 +97,7 @@ pub trait BusinessAccessInvite<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// AssetAccessRequestsSlashCreate - POST /v5/businesses/{business_id}/requests/assets/access
     async fn asset_access_requests_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -107,6 +110,7 @@ pub trait BusinessAccessInvite<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// CancelInvitesOrRequests - DELETE /v5/businesses/{business_id}/invites
     async fn cancel_invites_or_requests(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -119,6 +123,7 @@ pub trait BusinessAccessInvite<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// CreateAssetInvites - POST /v5/businesses/{business_id}/invites/assets/access
     async fn create_asset_invites(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -131,6 +136,7 @@ pub trait BusinessAccessInvite<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// CreateMembershipOrPartnershipInvites - POST /v5/businesses/{business_id}/invites
     async fn create_membership_or_partnership_invites(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -143,6 +149,7 @@ pub trait BusinessAccessInvite<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// GetSlashInvites - GET /v5/businesses/{business_id}/invites
     async fn get_slash_invites(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -155,6 +162,7 @@ pub trait BusinessAccessInvite<E: std::fmt::Debug + Send + Sync + 'static = ()>:
     /// RespondBusinessAccessInvites - PATCH /v5/businesses/invites
     async fn respond_business_access_invites(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

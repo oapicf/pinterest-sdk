@@ -54,11 +54,11 @@ export interface TargetingTemplateGetResponseData {
     valid?: boolean | null;
 }
 export namespace TargetingTemplateGetResponseData {
-    export type StatusEnum = 'ACTIVE' | 'DELETED';
     export const StatusEnum = {
-        Active: 'ACTIVE' as StatusEnum,
-        Deleted: 'DELETED' as StatusEnum
-    };
+        Active: 'ACTIVE',
+        Deleted: 'DELETED'
+    } as const;
+    export type StatusEnum = typeof StatusEnum[keyof typeof StatusEnum];
 }
 
 

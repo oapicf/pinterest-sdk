@@ -19,14 +19,14 @@ local function cast_invite_business_role_binding(t)
 	return setmetatable(t, invite_business_role_binding_mt)
 end
 
-local function new_invite_business_role_binding(created_by_business_id, created_by_user_id, user, id, invite_data, is_received_invite)
+local function new_invite_business_role_binding(id, invite_data, is_received_invite, user, created_by_business_id, created_by_user_id)
 	return cast_invite_business_role_binding({
-		["created_by_business_id"] = created_by_business_id;
-		["created_by_user_id"] = created_by_user_id;
-		["user"] = user;
 		["id"] = id;
 		["invite_data"] = invite_data;
 		["is_received_invite"] = is_received_invite;
+		["user"] = user;
+		["created_by_business_id"] = created_by_business_id;
+		["created_by_user_id"] = created_by_user_id;
 	})
 end
 

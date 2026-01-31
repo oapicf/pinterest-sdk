@@ -55,7 +55,7 @@ function Initialize-AssetIdPermissions {
         }
 
         if (!$AssetId -and $AssetId.length -lt 1) {
-            throw "invalid value for 'AssetId', the character length must be great than or equal to 1."
+            throw "invalid value for 'AssetId', the character length must be greater than or equal to 1."
         }
 
 

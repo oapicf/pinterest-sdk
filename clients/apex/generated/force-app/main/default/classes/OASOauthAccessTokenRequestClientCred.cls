@@ -11,9 +11,15 @@
  */
 
 /**
- * A request to receive a client token.
+ * OASOauthAccessTokenRequestClientCred
  */
 public class OASOauthAccessTokenRequestClientCred implements OAS.MappedProperties {
+    /**
+     * Get scope
+     * @return scope
+     */
+    public String scope { get; set; }
+
     /**
      * Gets or Sets grantType
      */
@@ -29,12 +35,6 @@ public class OASOauthAccessTokenRequestClientCred implements OAS.MappedPropertie
      */
     public GrantTypeEnum grantType { get; set; }
 
-    /**
-     * Get scope
-     * @return scope
-     */
-    public String scope { get; set; }
-
     private static final Map<String, String> propertyMappings = new Map<String, String>{
         'grant_type' => 'grantType'
     };
@@ -45,24 +45,24 @@ public class OASOauthAccessTokenRequestClientCred implements OAS.MappedPropertie
 
     public static OASOauthAccessTokenRequestClientCred getExample() {
         OASOauthAccessTokenRequestClientCred oauthAccessTokenRequestClientCredentials = new OASOauthAccessTokenRequestClientCred();
-          oauthAccessTokenRequestClientCredentials.grantType = GrantTypeEnum.AUTHORIZATION_CODE;
           oauthAccessTokenRequestClientCredentials.scope = '';
+          oauthAccessTokenRequestClientCredentials.grantType = GrantTypeEnum.AUTHORIZATION_CODE;
         return oauthAccessTokenRequestClientCredentials;
     }
 
     public Boolean equals(Object obj) {
         if (obj instanceof OASOauthAccessTokenRequestClientCred) {           
             OASOauthAccessTokenRequestClientCred oauthAccessTokenRequestClientCredentials = (OASOauthAccessTokenRequestClientCred) obj;
-            return this.grantType == oauthAccessTokenRequestClientCredentials.grantType
-                && this.scope == oauthAccessTokenRequestClientCredentials.scope;
+            return this.scope == oauthAccessTokenRequestClientCredentials.scope
+                && this.grantType == oauthAccessTokenRequestClientCredentials.grantType;
         }
         return false;
     }
 
     public Integer hashCode() {
         Integer hashCode = 43;
-        hashCode = (17 * hashCode) + (grantType == null ? 0 : System.hashCode(grantType));
         hashCode = (17 * hashCode) + (scope == null ? 0 : System.hashCode(scope));
+        hashCode = (17 * hashCode) + (grantType == null ? 0 : System.hashCode(grantType));
         return hashCode;
     }
 }

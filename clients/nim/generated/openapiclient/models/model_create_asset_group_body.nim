@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_asset_group_type
 
@@ -17,3 +19,23 @@ type CreateAssetGroupBody* = object
   assetGroupName*: string ## Asset Group name
   assetGroupDescription*: string ## Asset group description
   assetGroupTypes*: seq[AssetGroupType] ## Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.
+
+
+# Custom JSON deserialization for CreateAssetGroupBody with custom field names
+proc to*(node: JsonNode, T: typedesc[CreateAssetGroupBody]): CreateAssetGroupBody =
+  result = CreateAssetGroupBody()
+  if node.kind == JObject:
+    if node.hasKey("asset_group_name"):
+      result.assetGroupName = to(node["asset_group_name"], string)
+    if node.hasKey("asset_group_description"):
+      result.assetGroupDescription = to(node["asset_group_description"], string)
+    if node.hasKey("asset_group_types"):
+      result.assetGroupTypes = to(node["asset_group_types"], seq[AssetGroupType])
+
+# Custom JSON serialization for CreateAssetGroupBody with custom field names
+proc `%`*(obj: CreateAssetGroupBody): JsonNode =
+  result = newJObject()
+  result["asset_group_name"] = %obj.assetGroupName
+  result["asset_group_description"] = %obj.assetGroupDescription
+  result["asset_group_types"] = %obj.assetGroupTypes
+

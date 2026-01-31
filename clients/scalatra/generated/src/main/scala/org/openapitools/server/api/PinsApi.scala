@@ -18,7 +18,6 @@ import org.openapitools.server.model.Pin
 import org.openapitools.server.model.PinAnalyticsMetricsResponse
 import org.openapitools.server.model.PinCreate
 import org.openapitools.server.model.PinUpdate
-import org.openapitools.server.model.PinsAnalyticsMetricTypesParameterInner
 import org.openapitools.server.model.PinsList200Response
 import org.openapitools.server.model.PinsSaveRequest
 
@@ -49,7 +48,7 @@ class PinsApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val multiPinsAnalyticsOperation = (apiOperation[Map[String, Map[String, PinAnalyticsMetricsResponse]]]("multiPinsAnalytics")
     summary "Get multiple Pin analytics"
-    parameters(queryParam[List[String]]("pinIds").description("").defaultValue(List.empty[String] ), queryParam[LocalDate]("startDate").description(""), queryParam[LocalDate]("endDate").description(""), queryParam[List[PinsAnalyticsMetricTypesParameterInner]]("metricTypes").description("").defaultValue(List.empty[PinsAnalyticsMetricTypesParameterInner] ), queryParam[String]("appTypes").description("").optional.defaultValue(ALL), queryParam[String]("adAccountId").description("").optional)
+    parameters(queryParam[List[String]]("pinIds").description("").defaultValue(List.empty[String] ), queryParam[LocalDate]("startDate").description(""), queryParam[LocalDate]("endDate").description(""), queryParam[List[String]]("metricTypes").description("").defaultValue(List.empty[String] ), queryParam[String]("appTypes").description("").optional.defaultValue(ALL), queryParam[String]("adAccountId").description("").optional)
   )
 
   get("/pins/analytics", operation(multiPinsAnalyticsOperation)) {
@@ -91,7 +90,7 @@ class PinsApi(implicit val swagger: Swagger) extends ScalatraServlet
 
   val pinsAnalyticsOperation = (apiOperation[Map[String, PinAnalyticsMetricsResponse]]("pinsAnalytics")
     summary "Get Pin analytics"
-    parameters(pathParam[String]("pinId").description(""), queryParam[LocalDate]("startDate").description(""), queryParam[LocalDate]("endDate").description(""), queryParam[List[PinsAnalyticsMetricTypesParameterInner]]("metricTypes").description("").defaultValue(List.empty[PinsAnalyticsMetricTypesParameterInner] ), queryParam[String]("appTypes").description("").optional.defaultValue(ALL), queryParam[String]("splitField").description("").optional.defaultValue(NO_SPLIT), queryParam[String]("adAccountId").description("").optional)
+    parameters(pathParam[String]("pinId").description(""), queryParam[LocalDate]("startDate").description(""), queryParam[LocalDate]("endDate").description(""), queryParam[List[String]]("metricTypes").description("").defaultValue(List.empty[String] ), queryParam[String]("appTypes").description("").optional.defaultValue(ALL), queryParam[String]("splitField").description("").optional.defaultValue(NO_SPLIT), queryParam[String]("adAccountId").description("").optional)
   )
 
   get("/pins/:pin_id/analytics", operation(pinsAnalyticsOperation)) {

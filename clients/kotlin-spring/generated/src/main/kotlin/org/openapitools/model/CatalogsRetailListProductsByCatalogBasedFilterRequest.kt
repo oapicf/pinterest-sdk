@@ -46,7 +46,7 @@ data class CatalogsRetailListProductsByCatalogBasedFilterRequest(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("locale", required = true) val locale: CatalogsLocale
-    ) {
+) {
 
     /**
     * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
@@ -60,7 +60,8 @@ data class CatalogsRetailListProductsByCatalogBasedFilterRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsRetailListProductsByCatalogBasedFilterRequest'")
             }
         }
     }

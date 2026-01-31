@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_multiple_media_types_criteria
 import model_catalogs_product_group_multiple_string_criteria
@@ -28,19 +30,126 @@ import model_google_product_category5_filter
 import model_google_product_category6_filter
 import model_media_type_filter
 
+# AnyOf type
+type CatalogsCreativeAssetsProductGroupFilterKeysKind* {.pure.} = enum
+  CreativeAssetsIdFilterVariant
+  CustomLabel0FilterVariant
+  CustomLabel1FilterVariant
+  CustomLabel2FilterVariant
+  CustomLabel3FilterVariant
+  CustomLabel4FilterVariant
+  GoogleProductCategory6FilterVariant
+  GoogleProductCategory5FilterVariant
+  GoogleProductCategory4FilterVariant
+  GoogleProductCategory3FilterVariant
+  GoogleProductCategory2FilterVariant
+  GoogleProductCategory1FilterVariant
+  GoogleProductCategory0FilterVariant
+  MediaTypeFilterVariant
+
 type CatalogsCreativeAssetsProductGroupFilterKeys* = object
   ## 
-  CREATIVE_ASSETS_ID*: CatalogsProductGroupMultipleStringCriteria
-  CUSTOM_LABEL_0*: CatalogsProductGroupMultipleStringCriteria
-  CUSTOM_LABEL_1*: CatalogsProductGroupMultipleStringCriteria
-  CUSTOM_LABEL_2*: CatalogsProductGroupMultipleStringCriteria
-  CUSTOM_LABEL_3*: CatalogsProductGroupMultipleStringCriteria
-  CUSTOM_LABEL_4*: CatalogsProductGroupMultipleStringCriteria
-  GOOGLE_PRODUCT_CATEGORY_6*: CatalogsProductGroupMultipleStringListCriteria
-  GOOGLE_PRODUCT_CATEGORY_5*: CatalogsProductGroupMultipleStringListCriteria
-  GOOGLE_PRODUCT_CATEGORY_4*: CatalogsProductGroupMultipleStringListCriteria
-  GOOGLE_PRODUCT_CATEGORY_3*: CatalogsProductGroupMultipleStringListCriteria
-  GOOGLE_PRODUCT_CATEGORY_2*: CatalogsProductGroupMultipleStringListCriteria
-  GOOGLE_PRODUCT_CATEGORY_1*: CatalogsProductGroupMultipleStringListCriteria
-  GOOGLE_PRODUCT_CATEGORY_0*: CatalogsProductGroupMultipleStringListCriteria
-  MEDIA_TYPE*: CatalogsProductGroupMultipleMediaTypesCriteria
+  case kind*: CatalogsCreativeAssetsProductGroupFilterKeysKind
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.CreativeAssetsIdFilterVariant:
+    CreativeAssetsIdFilterValue*: CreativeAssetsIdFilter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.CustomLabel0FilterVariant:
+    CustomLabel0FilterValue*: CustomLabel0Filter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.CustomLabel1FilterVariant:
+    CustomLabel1FilterValue*: CustomLabel1Filter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.CustomLabel2FilterVariant:
+    CustomLabel2FilterValue*: CustomLabel2Filter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.CustomLabel3FilterVariant:
+    CustomLabel3FilterValue*: CustomLabel3Filter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.CustomLabel4FilterVariant:
+    CustomLabel4FilterValue*: CustomLabel4Filter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory6FilterVariant:
+    GoogleProductCategory6FilterValue*: GoogleProductCategory6Filter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory5FilterVariant:
+    GoogleProductCategory5FilterValue*: GoogleProductCategory5Filter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory4FilterVariant:
+    GoogleProductCategory4FilterValue*: GoogleProductCategory4Filter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory3FilterVariant:
+    GoogleProductCategory3FilterValue*: GoogleProductCategory3Filter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory2FilterVariant:
+    GoogleProductCategory2FilterValue*: GoogleProductCategory2Filter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory1FilterVariant:
+    GoogleProductCategory1FilterValue*: GoogleProductCategory1Filter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory0FilterVariant:
+    GoogleProductCategory0FilterValue*: GoogleProductCategory0Filter
+  of CatalogsCreativeAssetsProductGroupFilterKeysKind.MediaTypeFilterVariant:
+    MediaTypeFilterValue*: MediaTypeFilter
+
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsProductGroupFilterKeys]): CatalogsCreativeAssetsProductGroupFilterKeys =
+  ## Custom deserializer for anyOf type - tries each variant
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.CreativeAssetsIdFilterVariant, CreativeAssetsIdFilterValue: to(node, CreativeAssetsIdFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CreativeAssetsIdFilter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.CustomLabel0FilterVariant, CustomLabel0FilterValue: to(node, CustomLabel0Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CustomLabel0Filter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.CustomLabel1FilterVariant, CustomLabel1FilterValue: to(node, CustomLabel1Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CustomLabel1Filter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.CustomLabel2FilterVariant, CustomLabel2FilterValue: to(node, CustomLabel2Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CustomLabel2Filter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.CustomLabel3FilterVariant, CustomLabel3FilterValue: to(node, CustomLabel3Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CustomLabel3Filter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.CustomLabel4FilterVariant, CustomLabel4FilterValue: to(node, CustomLabel4Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CustomLabel4Filter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory6FilterVariant, GoogleProductCategory6FilterValue: to(node, GoogleProductCategory6Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as GoogleProductCategory6Filter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory5FilterVariant, GoogleProductCategory5FilterValue: to(node, GoogleProductCategory5Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as GoogleProductCategory5Filter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory4FilterVariant, GoogleProductCategory4FilterValue: to(node, GoogleProductCategory4Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as GoogleProductCategory4Filter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory3FilterVariant, GoogleProductCategory3FilterValue: to(node, GoogleProductCategory3Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as GoogleProductCategory3Filter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory2FilterVariant, GoogleProductCategory2FilterValue: to(node, GoogleProductCategory2Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as GoogleProductCategory2Filter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory1FilterVariant, GoogleProductCategory1FilterValue: to(node, GoogleProductCategory1Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as GoogleProductCategory1Filter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.GoogleProductCategory0FilterVariant, GoogleProductCategory0FilterValue: to(node, GoogleProductCategory0Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as GoogleProductCategory0Filter: ", e.msg
+  try:
+    return CatalogsCreativeAssetsProductGroupFilterKeys(kind: CatalogsCreativeAssetsProductGroupFilterKeysKind.MediaTypeFilterVariant, MediaTypeFilterValue: to(node, MediaTypeFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as MediaTypeFilter: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsCreativeAssetsProductGroupFilterKeys. JSON: " & $node)
+

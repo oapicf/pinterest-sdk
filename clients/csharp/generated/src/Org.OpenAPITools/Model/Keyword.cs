@@ -260,8 +260,7 @@ namespace Org.OpenAPITools.Model
                             value = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "bid":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                bid = new Option<int?>(utf8JsonReader.GetInt32());
+                            bid = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "match_type":
                             string? matchTypeRawValue = utf8JsonReader.GetString();
@@ -269,8 +268,7 @@ namespace Org.OpenAPITools.Model
                                 matchType = new Option<MatchTypeResponse?>(MatchTypeResponseValueConverter.FromStringOrDefault(matchTypeRawValue));
                             break;
                         case "archived":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                archived = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            archived = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString()!);

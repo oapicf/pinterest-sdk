@@ -8,10 +8,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BillingProfilesResponse  {
   
-  @ApiModelProperty(example = "12312451231", value = "Billing ID.")
  /**
-   * Billing ID.
-  **/
+  * Billing ID.
+  */
+  @ApiModelProperty(example = "12312451231", value = "Billing ID.")
+
   private String id;
 
 public enum CardTypeEnum {
@@ -44,10 +45,11 @@ UNKNOWN(String.valueOf("UNKNOWN")), VISA(String.valueOf("VISA")), MASTERCARD(Str
     }
 }
 
-  @ApiModelProperty(example = "VISA", value = "Type of the card.")
  /**
-   * Type of the card.
-  **/
+  * Type of the card.
+  */
+  @ApiModelProperty(example = "VISA", value = "Type of the card.")
+
   private CardTypeEnum cardType;
 
 public enum StatusEnum {
@@ -80,16 +82,18 @@ UNSPECIFIED(String.valueOf("UNSPECIFIED")), VALID(String.valueOf("VALID")), INVA
     }
 }
 
-  @ApiModelProperty(example = "INVALID", value = "Status of the billing.")
  /**
-   * Status of the billing.
-  **/
+  * Status of the billing.
+  */
+  @ApiModelProperty(example = "INVALID", value = "Status of the billing.")
+
   private StatusEnum status;
 
-  @ApiModelProperty(example = "12312451231", value = "Advertiser ID of the billing.")
  /**
-   * Advertiser ID of the billing.
-  **/
+  * Advertiser ID of the billing.
+  */
+  @ApiModelProperty(example = "12312451231", value = "Advertiser ID of the billing.")
+
   private String advertiserId;
 
 public enum PaymentMethodBrandEnum {
@@ -122,10 +126,11 @@ UNKNOWN(String.valueOf("UNKNOWN")), VISA(String.valueOf("VISA")), MASTERCARD(Str
     }
 }
 
-  @ApiModelProperty(example = "VISA", value = "Brand of the payment method.")
  /**
-   * Brand of the payment method.
-  **/
+  * Brand of the payment method.
+  */
+  @ApiModelProperty(example = "VISA", value = "Brand of the payment method.")
+
   private PaymentMethodBrandEnum paymentMethodBrand;
  /**
    * Billing ID.

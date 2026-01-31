@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * KeywordUpdate
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class KeywordUpdate {
 
   private String id;
@@ -62,7 +62,7 @@ public class KeywordUpdate {
     this.id = id;
   }
 
-  public KeywordUpdate archived(Boolean archived) {
+  public KeywordUpdate archived(@Nullable Boolean archived) {
     this.archived = archived;
     return this;
   }
@@ -74,11 +74,11 @@ public class KeywordUpdate {
   
   @Schema(name = "archived", example = "false", description = "Is keyword archived?", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("archived")
-  public Boolean getArchived() {
+  public @Nullable Boolean getArchived() {
     return archived;
   }
 
-  public void setArchived(Boolean archived) {
+  public void setArchived(@Nullable Boolean archived) {
     this.archived = archived;
   }
 

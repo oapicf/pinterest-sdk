@@ -4,8 +4,9 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import org.openapitools.model.AudienceCreateRequest1AudienceType;
+import com.fasterxml.jackson.annotation.JsonValue;
 import org.openapitools.model.AudienceRule;
+import org.openapitools.model.AudienceType;
 import org.springframework.lang.Nullable;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -21,7 +22,7 @@ import javax.annotation.Generated;
  * AudienceCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceCreateRequest {
 
   private @Nullable String adAccountId;
@@ -32,7 +33,7 @@ public class AudienceCreateRequest {
 
   private @Nullable String description;
 
-  private AudienceCreateRequest1AudienceType audienceType;
+  private AudienceType audienceType;
 
   public AudienceCreateRequest() {
     super();
@@ -41,13 +42,13 @@ public class AudienceCreateRequest {
   /**
    * Constructor with only required parameters
    */
-  public AudienceCreateRequest(String name, AudienceRule rule, AudienceCreateRequest1AudienceType audienceType) {
+  public AudienceCreateRequest(String name, AudienceRule rule, AudienceType audienceType) {
     this.name = name;
     this.rule = rule;
     this.audienceType = audienceType;
   }
 
-  public AudienceCreateRequest adAccountId(String adAccountId) {
+  public AudienceCreateRequest adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -59,11 +60,11 @@ public class AudienceCreateRequest {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
@@ -107,7 +108,7 @@ public class AudienceCreateRequest {
     this.rule = rule;
   }
 
-  public AudienceCreateRequest description(String description) {
+  public AudienceCreateRequest description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -119,31 +120,31 @@ public class AudienceCreateRequest {
   
   @Schema(name = "description", example = "string", description = "Audience description.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
-  public String getDescription() {
+  public @Nullable String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
-  public AudienceCreateRequest audienceType(AudienceCreateRequest1AudienceType audienceType) {
+  public AudienceCreateRequest audienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
     return this;
   }
 
   /**
-   * Get audienceType
+   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
    * @return audienceType
    */
   @NotNull @Valid 
-  @Schema(name = "audience_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Schema(name = "audience_type", description = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("audience_type")
-  public AudienceCreateRequest1AudienceType getAudienceType() {
+  public AudienceType getAudienceType() {
     return audienceType;
   }
 
-  public void setAudienceType(AudienceCreateRequest1AudienceType audienceType) {
+  public void setAudienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
   }
 

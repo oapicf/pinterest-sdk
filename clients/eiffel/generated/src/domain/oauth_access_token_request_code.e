@@ -19,22 +19,14 @@ class OAUTH_ACCESS_TOKEN_REQUEST_CODE
 
 feature --Access
 
-    grant_type: detachable STRING_32
-      
     code: detachable STRING_32
       
     redirect_uri: detachable STRING_32
       
+    grant_type: detachable STRING_32
+      
 
 feature -- Change Element
-
-    set_grant_type (a_name: like grant_type)
-        -- Set 'grant_type' with 'a_name'.
-      do
-        grant_type := a_name
-      ensure
-        grant_type_set: grant_type = a_name
-      end
 
     set_code (a_name: like code)
         -- Set 'code' with 'a_name'.
@@ -52,6 +44,14 @@ feature -- Change Element
         redirect_uri_set: redirect_uri = a_name
       end
 
+    set_grant_type (a_name: like grant_type)
+        -- Set 'grant_type' with 'a_name'.
+      do
+        grant_type := a_name
+      ensure
+        grant_type_set: grant_type = a_name
+      end
+
 
  feature -- Status Report
 
@@ -60,11 +60,6 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass OAUTH_ACCESS_TOKEN_REQUEST_CODE%N")
-        if attached grant_type as l_grant_type then
-          Result.append ("%Ngrant_type:")
-          Result.append (l_grant_type.out)
-          Result.append ("%N")
-        end
         if attached code as l_code then
           Result.append ("%Ncode:")
           Result.append (l_code.out)
@@ -73,6 +68,11 @@ feature -- Change Element
         if attached redirect_uri as l_redirect_uri then
           Result.append ("%Nredirect_uri:")
           Result.append (l_redirect_uri.out)
+          Result.append ("%N")
+        end
+        if attached grant_type as l_grant_type then
+          Result.append ("%Ngrant_type:")
+          Result.append (l_grant_type.out)
           Result.append ("%N")
         end
       end

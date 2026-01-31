@@ -201,8 +201,7 @@ namespace Org.OpenAPITools.Model
                             link = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "images":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                images = new Option<ImageMetadataImages?>(JsonSerializer.Deserialize<ImageMetadataImages>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            images = new Option<ImageMetadataImages?>(JsonSerializer.Deserialize<ImageMetadataImages>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

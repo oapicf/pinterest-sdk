@@ -209,8 +209,7 @@ namespace Org.OpenAPITools.Model
                                 catalogType = new Option<CatalogsCreativeAssetsItemsFilter.CatalogTypeEnum?>(CatalogsCreativeAssetsItemsFilter.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
                             break;
                         case "creative_assets_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                creativeAssetsIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            creativeAssetsIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "catalog_id":
                             catalogId = new Option<string?>(utf8JsonReader.GetString()!);

@@ -54,7 +54,7 @@ data class CatalogsRetailProductGroupCreateRequest(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("description") val description: kotlin.String? = null
-    ) {
+) {
 
     /**
     * Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
@@ -68,7 +68,8 @@ data class CatalogsRetailProductGroupCreateRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsRetailProductGroupCreateRequest'")
             }
         }
     }

@@ -29,7 +29,7 @@ data class TargetingTemplateAudienceSizingReachEstimate(
 
     @Schema(example = "79365000", description = "")
     @get:JsonProperty("upper_bound") val upperBound: kotlin.Long? = null
-    ) {
+) {
 
 }
 

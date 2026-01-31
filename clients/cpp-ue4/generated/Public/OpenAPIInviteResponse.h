@@ -32,15 +32,6 @@ public:
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 	void WriteJson(JsonWriter& Writer) const final;
 
-	TOptional<OpenAPIInviteAssetsSummary> AssetsSummary;
-	/* The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
-	TOptional<TArray<FString>> BusinessRoles;
-	/* Metadata for the business that created the invite/request. */
-	TOptional<OpenAPIBusinessAccessUserSummary> CreatedByBusiness;
-	/* Metadata for the user that created the invite/request. */
-	TOptional<OpenAPIBusinessAccessUserSummary> CreatedByUser;
-	/* The time the invite/request was created. Returned in milliseconds. */
-	TOptional<int32> CreatedTime;
 	/* Unique identifier of the invite/request. */
 	TOptional<FString> Id;
 	TOptional<OpenAPIBaseInviteDataResponseInviteData> InviteData;
@@ -48,6 +39,15 @@ public:
 	TOptional<bool> IsReceivedInvite;
 	/* Metadata for the member/partner that was sent the invite/request. */
 	TOptional<OpenAPIBusinessAccessUserSummary> User;
+	TOptional<OpenAPIInviteAssetsSummary> AssetsSummary;
+	/* The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
+	TOptional<TArray<FString>> BusinessRoles;
+	/* Metadata for the business that created the invite/request. */
+	TOptional<TSharedPtr<FJsonObject>> CreatedByBusiness;
+	/* Metadata for the user that created the invite/request. */
+	TOptional<TSharedPtr<FJsonObject>> CreatedByUser;
+	/* The time the invite/request was created. Returned in milliseconds. */
+	TOptional<int32> CreatedTime;
 };
 
 }

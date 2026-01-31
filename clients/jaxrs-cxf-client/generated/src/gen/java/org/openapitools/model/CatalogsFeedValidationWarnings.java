@@ -8,88 +8,102 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsFeedValidationWarnings  {
   
-  @ApiModelProperty(value = "Some items have ad links that are formatted incorrectly.")
  /**
-   * Some items have ad links that are formatted incorrectly.
-  **/
+  * Some items have ad links that are formatted incorrectly.
+  */
+  @ApiModelProperty(value = "Some items have ad links that are formatted incorrectly.")
+
   private Integer AD_LINK_FORMAT_WARNING;
 
-  @ApiModelProperty(value = "Some items have ad link URLs that are duplicates of the link URLs for those items.")
  /**
-   * Some items have ad link URLs that are duplicates of the link URLs for those items.
-  **/
+  * Some items have ad link URLs that are duplicates of the link URLs for those items.
+  */
+  @ApiModelProperty(value = "Some items have ad link URLs that are duplicates of the link URLs for those items.")
+
   private Integer AD_LINK_SAME_AS_LINK;
 
-  @ApiModelProperty(value = "The title for some items were truncated because they contain too many characters.")
  /**
-   * The title for some items were truncated because they contain too many characters.
-  **/
+  * The title for some items were truncated because they contain too many characters.
+  */
+  @ApiModelProperty(value = "The title for some items were truncated because they contain too many characters.")
+
   private Integer TITLE_LENGTH_TOO_LONG;
 
-  @ApiModelProperty(value = "The description for some items were truncated because they contain too many characters.")
  /**
-   * The description for some items were truncated because they contain too many characters.
-  **/
+  * The description for some items were truncated because they contain too many characters.
+  */
+  @ApiModelProperty(value = "The description for some items were truncated because they contain too many characters.")
+
   private Integer DESCRIPTION_LENGTH_TOO_LONG;
 
-  @ApiModelProperty(value = "Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
  /**
-   * Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-  **/
+  * Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+  */
+  @ApiModelProperty(value = "Some items have gender values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
+
   private Integer GENDER_INVALID;
 
-  @ApiModelProperty(value = "Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
  /**
-   * Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-  **/
+  * Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+  */
+  @ApiModelProperty(value = "Some items have age group values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
+
   private Integer AGE_GROUP_INVALID;
 
-  @ApiModelProperty(value = "Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
  /**
-   * Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-  **/
+  * Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+  */
+  @ApiModelProperty(value = "Some items have size type values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
+
   private Integer SIZE_TYPE_INVALID;
 
-  @ApiModelProperty(value = "Some items have size system values which are not one of the supported size systems.")
  /**
-   * Some items have size system values which are not one of the supported size systems.
-  **/
+  * Some items have size system values which are not one of the supported size systems.
+  */
+  @ApiModelProperty(value = "Some items have size system values which are not one of the supported size systems.")
+
   private Integer SIZE_SYSTEM_INVALID;
 
-  @ApiModelProperty(value = "Some items have an invalid product link which contains invalid UTM tracking paramaters.")
  /**
-   * Some items have an invalid product link which contains invalid UTM tracking paramaters.
-  **/
+  * Some items have an invalid product link which contains invalid UTM tracking paramaters.
+  */
+  @ApiModelProperty(value = "Some items have an invalid product link which contains invalid UTM tracking paramaters.")
+
   private Integer LINK_FORMAT_WARNING;
 
-  @ApiModelProperty(value = "Some items have sale price values that are higher than the original price of the item.")
  /**
-   * Some items have sale price values that are higher than the original price of the item.
-  **/
+  * Some items have sale price values that are higher than the original price of the item.
+  */
+  @ApiModelProperty(value = "Some items have sale price values that are higher than the original price of the item.")
+
   private Integer SALES_PRICE_INVALID;
 
-  @ApiModelProperty(value = "Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.")
  /**
-   * Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
-  **/
+  * Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.
+  */
+  @ApiModelProperty(value = "Some items only have 1 or 2 levels of google_product_category values, which may limit visibility in recommendations, search results and shopping experiences.")
+
   private Integer PRODUCT_CATEGORY_DEPTH_WARNING;
 
-  @ApiModelProperty(value = "Some items have adwords_redirect links that are formatted incorrectly.")
  /**
-   * Some items have adwords_redirect links that are formatted incorrectly.
-  **/
+  * Some items have adwords_redirect links that are formatted incorrectly.
+  */
+  @ApiModelProperty(value = "Some items have adwords_redirect links that are formatted incorrectly.")
+
   private Integer ADWORDS_FORMAT_WARNING;
 
-  @ApiModelProperty(value = "Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.")
  /**
-   * Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
-  **/
+  * Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.
+  */
+  @ApiModelProperty(value = "Some items have adwords_redirect URLs that are duplicates of the link URLs for those items.")
+
   private Integer ADWORDS_SAME_AS_LINK;
 
-  @ApiModelProperty(value = "Your feed contains duplicate headers.")
  /**
-   * Your feed contains duplicate headers.
-  **/
+  * Your feed contains duplicate headers.
+  */
+  @ApiModelProperty(value = "Your feed contains duplicate headers.")
+
   private Integer DUPLICATE_HEADERS;
 
 public enum FETCHSAMESIGNATUREEnum {
@@ -122,214 +136,249 @@ NUMBER_1(Integer.valueOf(1));
     }
 }
 
-  @ApiModelProperty(value = "Ingestion completed early because there are no changes to your feed since the last successful update.")
  /**
-   * Ingestion completed early because there are no changes to your feed since the last successful update.
-  **/
+  * Ingestion completed early because there are no changes to your feed since the last successful update.
+  */
+  @ApiModelProperty(value = "Ingestion completed early because there are no changes to your feed since the last successful update.")
+
   private FETCHSAMESIGNATUREEnum FETCH_SAME_SIGNATURE;
 
-  @ApiModelProperty(value = "Some items have additional_image_link URLs that contain too many characters, so those items will not be published.")
  /**
-   * Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
-  **/
+  * Some items have additional_image_link URLs that contain too many characters, so those items will not be published.
+  */
+  @ApiModelProperty(value = "Some items have additional_image_link URLs that contain too many characters, so those items will not be published.")
+
   private Integer ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 
-  @ApiModelProperty(value = "Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.")
  /**
-   * Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.
-  **/
+  * Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.
+  */
+  @ApiModelProperty(value = "Some items have additional_image_link URLs that are formatted incorrectly and will not be published with your items.")
+
   private Integer ADDITIONAL_IMAGE_LINK_WARNING;
 
-  @ApiModelProperty(value = "Some items have image_link URLs that are formatted incorrectly and will not be published with those items.")
  /**
-   * Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
-  **/
+  * Some items have image_link URLs that are formatted incorrectly and will not be published with those items.
+  */
+  @ApiModelProperty(value = "Some items have image_link URLs that are formatted incorrectly and will not be published with those items.")
+
   private Integer IMAGE_LINK_WARNING;
 
-  @ApiModelProperty(value = "Some items have shipping values that are formatted incorrectly.")
  /**
-   * Some items have shipping values that are formatted incorrectly.
-  **/
+  * Some items have shipping values that are formatted incorrectly.
+  */
+  @ApiModelProperty(value = "Some items have shipping values that are formatted incorrectly.")
+
   private Integer SHIPPING_INVALID;
 
-  @ApiModelProperty(value = "Some items have tax values that are formatted incorrectly.")
  /**
-   * Some items have tax values that are formatted incorrectly.
-  **/
+  * Some items have tax values that are formatted incorrectly.
+  */
+  @ApiModelProperty(value = "Some items have tax values that are formatted incorrectly.")
+
   private Integer TAX_INVALID;
 
-  @ApiModelProperty(value = "Some items have invalid shipping_weight values.")
  /**
-   * Some items have invalid shipping_weight values.
-  **/
+  * Some items have invalid shipping_weight values.
+  */
+  @ApiModelProperty(value = "Some items have invalid shipping_weight values.")
+
   private Integer SHIPPING_WEIGHT_INVALID;
 
-  @ApiModelProperty(value = "Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.")
  /**
-   * Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
-  **/
+  * Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.
+  */
+  @ApiModelProperty(value = "Some items have expiration_date values that are formatted incorrectly, those items will be published without an expiration date.")
+
   private Integer EXPIRATION_DATE_INVALID;
 
-  @ApiModelProperty(value = "Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.")
  /**
-   * Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
-  **/
+  * Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.
+  */
+  @ApiModelProperty(value = "Some items have availability_date values that are formatted incorrectly, those items will be published without an availability date.")
+
   private Integer AVAILABILITY_DATE_INVALID;
 
-  @ApiModelProperty(value = "Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.")
  /**
-   * Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
-  **/
+  * Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.
+  */
+  @ApiModelProperty(value = "Some items have sale_price_effective_date values that are formatted incorrectly, those items will be published without a sale date.")
+
   private Integer SALE_DATE_INVALID;
 
-  @ApiModelProperty(value = "Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.")
  /**
-   * Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
-  **/
+  * Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.
+  */
+  @ApiModelProperty(value = "Some items have weight_unit values that are formatted incorrectly, those items will be published without a weight unit.")
+
   private Integer WEIGHT_UNIT_INVALID;
 
-  @ApiModelProperty(value = "Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.")
  /**
-   * Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
-  **/
+  * Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.
+  */
+  @ApiModelProperty(value = "Some items have is_bundle values that are formatted incorrectly, those items will be published without being bundled with other products.")
+
   private Integer IS_BUNDLE_INVALID;
 
-  @ApiModelProperty(value = "Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.")
  /**
-   * Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
-  **/
+  * Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.
+  */
+  @ApiModelProperty(value = "Some items have updated_time values thate are formatted incorrectly, those items will be published without an updated time.")
+
   private Integer UPDATED_TIME_INVALID;
 
-  @ApiModelProperty(value = "Some items have custom_label values that are too long, those items will be published without that custom label.")
  /**
-   * Some items have custom_label values that are too long, those items will be published without that custom label.
-  **/
+  * Some items have custom_label values that are too long, those items will be published without that custom label.
+  */
+  @ApiModelProperty(value = "Some items have custom_label values that are too long, those items will be published without that custom label.")
+
   private Integer CUSTOM_LABEL_LENGTH_TOO_LONG;
 
-  @ApiModelProperty(value = "Some items have product_type values that are too long, those items will be published without that product type.")
  /**
-   * Some items have product_type values that are too long, those items will be published without that product type.
-  **/
+  * Some items have product_type values that are too long, those items will be published without that product type.
+  */
+  @ApiModelProperty(value = "Some items have product_type values that are too long, those items will be published without that product type.")
+
   private Integer PRODUCT_TYPE_LENGTH_TOO_LONG;
 
-  @ApiModelProperty(value = "Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.")
  /**
-   * Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
-  **/
+  * Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.
+  */
+  @ApiModelProperty(value = "Some items have additional_image_link values that exceed the limit for additional images, those items will be published without some of your images.")
+
   private Integer TOO_MANY_ADDITIONAL_IMAGE_LINKS;
 
-  @ApiModelProperty(value = "Some items have invalid multipack values.")
  /**
-   * Some items have invalid multipack values.
-  **/
+  * Some items have invalid multipack values.
+  */
+  @ApiModelProperty(value = "Some items have invalid multipack values.")
+
   private Integer MULTIPACK_INVALID;
 
-  @ApiModelProperty(value = "The product count has increased or decreased significantly compared to the last successful ingestion.")
  /**
-   * The product count has increased or decreased significantly compared to the last successful ingestion.
-  **/
+  * The product count has increased or decreased significantly compared to the last successful ingestion.
+  */
+  @ApiModelProperty(value = "The product count has increased or decreased significantly compared to the last successful ingestion.")
+
   private Integer INDEXED_PRODUCT_COUNT_LARGE_DELTA;
 
-  @ApiModelProperty(value = "Some items include additional_image_links that can't be found.")
  /**
-   * Some items include additional_image_links that can't be found.
-  **/
+  * Some items include additional_image_links that can't be found.
+  */
+  @ApiModelProperty(value = "Some items include additional_image_links that can't be found.")
+
   private Integer ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 
-  @ApiModelProperty(value = "Some items are missing a google_product_category.")
  /**
-   * Some items are missing a google_product_category.
-  **/
+  * Some items are missing a google_product_category.
+  */
+  @ApiModelProperty(value = "Some items are missing a google_product_category.")
+
   private Integer OPTIONAL_PRODUCT_CATEGORY_MISSING;
 
-  @ApiModelProperty(value = "Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.")
  /**
-   * Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
-  **/
+  * Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.
+  */
+  @ApiModelProperty(value = "Some items include google_product_category values that are not formatted correctly according to the GPC taxonomy.")
+
   private Integer OPTIONAL_PRODUCT_CATEGORY_INVALID;
 
-  @ApiModelProperty(value = "Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.")
  /**
-   * Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
-  **/
+  * Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.
+  */
+  @ApiModelProperty(value = "Some items are missing a condition value, which may limit visibility in recommendations, search results and shopping experiences.")
+
   private Integer OPTIONAL_CONDITION_MISSING;
 
-  @ApiModelProperty(value = "Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
  /**
-   * Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
-  **/
+  * Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.
+  */
+  @ApiModelProperty(value = "Some items include condition values that are formatted incorrectly, which may limit visibility in recommendations, search results and shopping experiences.")
+
   private Integer OPTIONAL_CONDITION_INVALID;
 
-  @ApiModelProperty(value = "Some items include invalid ios_deep_link values.")
  /**
-   * Some items include invalid ios_deep_link values.
-  **/
+  * Some items include invalid ios_deep_link values.
+  */
+  @ApiModelProperty(value = "Some items include invalid ios_deep_link values.")
+
   private Integer IOS_DEEP_LINK_INVALID;
 
-  @ApiModelProperty(value = "Some items include invalid android_deep_link.")
  /**
-   * Some items include invalid android_deep_link.
-  **/
+  * Some items include invalid android_deep_link.
+  */
+  @ApiModelProperty(value = "Some items include invalid android_deep_link.")
+
   private Integer ANDROID_DEEP_LINK_INVALID;
 
-  @ApiModelProperty(value = "Some items include utm_source values that are formatted incorrectly and have been automatically corrected.")
  /**
-   * Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
-  **/
+  * Some items include utm_source values that are formatted incorrectly and have been automatically corrected.
+  */
+  @ApiModelProperty(value = "Some items include utm_source values that are formatted incorrectly and have been automatically corrected.")
+
   private Integer UTM_SOURCE_AUTO_CORRECTED;
 
-  @ApiModelProperty(value = "Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.")
  /**
-   * Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.
-  **/
+  * Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.
+  */
+  @ApiModelProperty(value = "Some items include a currency that doesn't match the usual currency for the location where that product is sold or shipped.")
+
   private Integer COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 
-  @ApiModelProperty(value = "Some items include min_ad_price values that are formatted incorrectly.")
  /**
-   * Some items include min_ad_price values that are formatted incorrectly.
-  **/
+  * Some items include min_ad_price values that are formatted incorrectly.
+  */
+  @ApiModelProperty(value = "Some items include min_ad_price values that are formatted incorrectly.")
+
   private Integer MIN_AD_PRICE_INVALID;
 
-  @ApiModelProperty(value = "Some items include incorrectly formatted GTINs.")
  /**
-   * Some items include incorrectly formatted GTINs.
-  **/
+  * Some items include incorrectly formatted GTINs.
+  */
+  @ApiModelProperty(value = "Some items include incorrectly formatted GTINs.")
+
   private Integer GTIN_INVALID;
 
-  @ApiModelProperty(value = "Some items include inconsistent currencies in price fields.")
  /**
-   * Some items include inconsistent currencies in price fields.
-  **/
+  * Some items include inconsistent currencies in price fields.
+  */
+  @ApiModelProperty(value = "Some items include inconsistent currencies in price fields.")
+
   private Integer INCONSISTENT_CURRENCY_VALUES;
 
-  @ApiModelProperty(value = "Some items include sales price that is much lower than the list price.")
  /**
-   * Some items include sales price that is much lower than the list price.
-  **/
+  * Some items include sales price that is much lower than the list price.
+  */
+  @ApiModelProperty(value = "Some items include sales price that is much lower than the list price.")
+
   private Integer SALES_PRICE_TOO_LOW;
 
-  @ApiModelProperty(value = "Some items include incorrectly formatted shipping_width.")
  /**
-   * Some items include incorrectly formatted shipping_width.
-  **/
+  * Some items include incorrectly formatted shipping_width.
+  */
+  @ApiModelProperty(value = "Some items include incorrectly formatted shipping_width.")
+
   private Integer SHIPPING_WIDTH_INVALID;
 
-  @ApiModelProperty(value = "Some items include incorrectly formatted shipping_height.")
  /**
-   * Some items include incorrectly formatted shipping_height.
-  **/
+  * Some items include incorrectly formatted shipping_height.
+  */
+  @ApiModelProperty(value = "Some items include incorrectly formatted shipping_height.")
+
   private Integer SHIPPING_HEIGHT_INVALID;
 
-  @ApiModelProperty(value = "Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.")
  /**
-   * Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
-  **/
+  * Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.
+  */
+  @ApiModelProperty(value = "Some items include a sales price that is higher than the list price. The sales price has been defaulted to the list price.")
+
   private Integer SALES_PRICE_TOO_HIGH;
 
-  @ApiModelProperty(value = "Some items include incorrectly formatted MPNs.")
  /**
-   * Some items include incorrectly formatted MPNs.
-  **/
+  * Some items include incorrectly formatted MPNs.
+  */
+  @ApiModelProperty(value = "Some items include incorrectly formatted MPNs.")
+
   private Integer MPN_INVALID;
  /**
    * Some items have ad links that are formatted incorrectly.

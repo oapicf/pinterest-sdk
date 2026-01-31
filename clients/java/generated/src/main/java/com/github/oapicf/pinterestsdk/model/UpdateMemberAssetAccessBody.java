@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * An object with a list of all the new accesses.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdateMemberAssetAccessBody {
   public static final String SERIALIZED_NAME_ACCESSES = "accesses";
   @SerializedName(SERIALIZED_NAME_ACCESSES)
@@ -132,12 +132,10 @@ public class UpdateMemberAssetAccessBody {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("accesses");
+    openapiFields = new HashSet<String>(Arrays.asList("accesses"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("accesses");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("accesses"));
   }
 
   /**
@@ -149,7 +147,7 @@ public class UpdateMemberAssetAccessBody {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!UpdateMemberAssetAccessBody.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateMemberAssetAccessBody is not found in the empty JSON string", UpdateMemberAssetAccessBody.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in UpdateMemberAssetAccessBody is not found in the empty JSON string", UpdateMemberAssetAccessBody.openapiRequiredFields.toString()));
         }
       }
 
@@ -157,20 +155,20 @@ public class UpdateMemberAssetAccessBody {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!UpdateMemberAssetAccessBody.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateMemberAssetAccessBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `UpdateMemberAssetAccessBody` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : UpdateMemberAssetAccessBody.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
       if (!jsonObj.get("accesses").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `accesses` to be an array in the JSON string but got `%s`", jsonObj.get("accesses").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `accesses` to be an array in the JSON string but got `%s`", jsonObj.get("accesses").toString()));
       }
 
       JsonArray jsonArrayaccesses = jsonObj.getAsJsonArray("accesses");

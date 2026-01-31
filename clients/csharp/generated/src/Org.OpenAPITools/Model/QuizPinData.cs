@@ -240,12 +240,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "questions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                questions = new Option<List<QuizPinQuestion>?>(JsonSerializer.Deserialize<List<QuizPinQuestion>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            questions = new Option<List<QuizPinQuestion>?>(JsonSerializer.Deserialize<List<QuizPinQuestion>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "results":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                results = new Option<List<QuizPinResult>?>(JsonSerializer.Deserialize<List<QuizPinResult>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            results = new Option<List<QuizPinResult>?>(JsonSerializer.Deserialize<List<QuizPinResult>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "tie_breaker_type":
                             string? tieBreakerTypeRawValue = utf8JsonReader.GetString();
@@ -253,8 +251,7 @@ namespace Org.OpenAPITools.Model
                                 tieBreakerType = new Option<QuizPinData.TieBreakerTypeEnum?>(QuizPinData.TieBreakerTypeEnumFromStringOrDefault(tieBreakerTypeRawValue));
                             break;
                         case "tie_breaker_custom_result":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tieBreakerCustomResult = new Option<QuizPinResult?>(JsonSerializer.Deserialize<QuizPinResult>(ref utf8JsonReader, jsonSerializerOptions));
+                            tieBreakerCustomResult = new Option<QuizPinResult?>(JsonSerializer.Deserialize<QuizPinResult>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

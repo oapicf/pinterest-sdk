@@ -1,27 +1,28 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request to create test data for lead data test API.
- **/
+ * Request to create test data for lead data test API.
+ */
 @ApiModel(description="Request to create test data for lead data test API.")
 
 public class LeadFormTestRequest  {
   
-  @ApiModelProperty(example = "[\"John\",\"Doe\",\"abc@email.com\",\"987654321\"]", required = true, value = "Test lead answers. Should follow the creation order.")
  /**
-   * Test lead answers. Should follow the creation order.
-  **/
+  * Test lead answers. Should follow the creation order.
+  */
+  @ApiModelProperty(example = "[\"John\",\"Doe\",\"abc@email.com\",\"987654321\"]", required = true, value = "Test lead answers. Should follow the creation order.")
+
   private List<String> answers = new ArrayList<>();
  /**
    * Test lead answers. Should follow the creation order.

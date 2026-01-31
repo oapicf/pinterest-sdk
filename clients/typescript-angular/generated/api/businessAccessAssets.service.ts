@@ -11,10 +11,10 @@
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent, HttpParameterCodec, HttpContext 
+         HttpResponse, HttpEvent, HttpContext 
         }       from '@angular/common/http';
-import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
+import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
 import { BusinessAssetMembersGet200Response } from '../model/businessAssetMembersGet200Response';
@@ -78,10 +78,12 @@ export class BusinessAccessAssetsService extends BaseService {
     /**
      * Create a new asset group.
      * Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+     * @endpoint post /businesses/{business_id}/asset_groups
      * @param businessId Unique identifier of the requesting business.
      * @param createAssetGroupBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public assetGroupCreate(businessId: string, createAssetGroupBody: CreateAssetGroupBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<CreateAssetGroupResponse>;
     public assetGroupCreate(businessId: string, createAssetGroupBody: CreateAssetGroupBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<CreateAssetGroupResponse>>;
@@ -132,15 +134,16 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/asset_groups`;
-        return this.httpClient.request<CreateAssetGroupResponse>('post', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<CreateAssetGroupResponse>('post', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: createAssetGroupBody,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -149,10 +152,12 @@ export class BusinessAccessAssetsService extends BaseService {
     /**
      * Delete asset groups.
      * Delete a batch of asset groups.
+     * @endpoint delete /businesses/{business_id}/asset_groups
      * @param businessId Unique identifier of the requesting business.
      * @param deleteAssetGroupBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public assetGroupDelete(businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeleteAssetGroupResponse>;
     public assetGroupDelete(businessId: string, deleteAssetGroupBody: DeleteAssetGroupBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeleteAssetGroupResponse>>;
@@ -203,15 +208,16 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/asset_groups`;
-        return this.httpClient.request<DeleteAssetGroupResponse>('delete', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<DeleteAssetGroupResponse>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: deleteAssetGroupBody,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -220,10 +226,12 @@ export class BusinessAccessAssetsService extends BaseService {
     /**
      * Update asset groups.
      * Update a batch of asset groups with the specified parameters.
+     * @endpoint patch /businesses/{business_id}/asset_groups
      * @param businessId Unique identifier of the requesting business.
      * @param updateAssetGroupBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public assetGroupUpdate(businessId: string, updateAssetGroupBody: UpdateAssetGroupBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<UpdateAssetGroupResponse>;
     public assetGroupUpdate(businessId: string, updateAssetGroupBody: UpdateAssetGroupBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UpdateAssetGroupResponse>>;
@@ -274,15 +282,16 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/asset_groups`;
-        return this.httpClient.request<UpdateAssetGroupResponse>('patch', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<UpdateAssetGroupResponse>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: updateAssetGroupBody,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -291,6 +300,7 @@ export class BusinessAccessAssetsService extends BaseService {
     /**
      * Get members with access to asset
      * Get all the members the requesting business has granted access to on the given asset.
+     * @endpoint get /businesses/{business_id}/assets/{asset_id}/members
      * @param businessId Unique identifier of the requesting business.
      * @param assetId Unique identifier of a business asset.
      * @param bookmark Cursor used to fetch the next page of items
@@ -298,6 +308,7 @@ export class BusinessAccessAssetsService extends BaseService {
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public businessAssetMembersGet(businessId: string, assetId: string, bookmark?: string, pageSize?: number, startIndex?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessAssetMembersGet200Response>;
     public businessAssetMembersGet(businessId: string, assetId: string, bookmark?: string, pageSize?: number, startIndex?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessAssetMembersGet200Response>>;
@@ -310,13 +321,34 @@ export class BusinessAccessAssetsService extends BaseService {
             throw new Error('Required parameter assetId was null or undefined when calling businessAssetMembersGet.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>startIndex, 'start_index');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'start_index',
+            <any>startIndex,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -347,15 +379,16 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/assets/${this.configuration.encodeParam({name: "assetId", value: assetId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/members`;
-        return this.httpClient.request<BusinessAssetMembersGet200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BusinessAssetMembersGet200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -364,6 +397,7 @@ export class BusinessAccessAssetsService extends BaseService {
     /**
      * Get partners with access to asset
      * Get all the partners the requesting business has granted access to on the given asset. Note: If the asset has been shared with you, an empty array will be returned. This is because an asset shared with you cannot be shared with a different partner.
+     * @endpoint get /businesses/{business_id}/assets/{asset_id}/partners
      * @param businessId Unique identifier of the requesting business.
      * @param assetId Unique identifier of a business asset.
      * @param startIndex An index to start fetching the results from. Only the results starting from this index will be returned.
@@ -371,6 +405,7 @@ export class BusinessAccessAssetsService extends BaseService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessAssetPartnersGet200Response>;
     public businessAssetPartnersGet(businessId: string, assetId: string, startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessAssetPartnersGet200Response>>;
@@ -383,13 +418,34 @@ export class BusinessAccessAssetsService extends BaseService {
             throw new Error('Required parameter assetId was null or undefined when calling businessAssetPartnersGet.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>startIndex, 'start_index');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'start_index',
+            <any>startIndex,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -420,15 +476,16 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/assets/${this.configuration.encodeParam({name: "assetId", value: assetId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/partners`;
-        return this.httpClient.request<BusinessAssetPartnersGet200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BusinessAssetPartnersGet200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -437,6 +494,7 @@ export class BusinessAccessAssetsService extends BaseService {
     /**
      * List business assets
      * Get all the assets the requesting business has access to. This includes assets the business owns and assets the business has access to through partnerships.
+     * @endpoint get /businesses/{business_id}/assets
      * @param businessId Unique identifier of the requesting business.
      * @param permissions A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.
      * @param childAssetId A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
@@ -447,6 +505,7 @@ export class BusinessAccessAssetsService extends BaseService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public businessAssetsGet(businessId: string, permissions?: Array<PermissionsWithOwner>, childAssetId?: string, assetGroupId?: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessAssetsGet200Response>;
     public businessAssetsGet(businessId: string, permissions?: Array<PermissionsWithOwner>, childAssetId?: string, assetGroupId?: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessAssetsGet200Response>>;
@@ -456,25 +515,70 @@ export class BusinessAccessAssetsService extends BaseService {
             throw new Error('Required parameter businessId was null or undefined when calling businessAssetsGet.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        if (permissions) {
-            permissions.forEach((element) => {
-                localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-                  <any>element, 'permissions');
-            })
-        }
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>childAssetId, 'child_asset_id');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>assetGroupId, 'asset_group_id');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>assetType, 'asset_type');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>startIndex, 'start_index');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'permissions',
+            <any>permissions,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'child_asset_id',
+            <any>childAssetId,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'asset_group_id',
+            <any>assetGroupId,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'asset_type',
+            <any>assetType,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'start_index',
+            <any>startIndex,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -505,15 +609,16 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/assets`;
-        return this.httpClient.request<BusinessAssetsGet200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BusinessAssetsGet200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -522,6 +627,7 @@ export class BusinessAccessAssetsService extends BaseService {
     /**
      * Get assets assigned to a member
      * Get assets on which you assigned asset permissions to the given member. Can be used to: - get all assets, regardless of asset type or - get assets of one asset type by using the asset_type query. The return response will include the permissions the member has to that asset and the asset type.
+     * @endpoint get /businesses/{business_id}/members/{member_id}/assets
      * @param businessId Unique identifier of the requesting business.
      * @param memberId The member id to fetch assets for.
      * @param assetType A resource type to filter the assets by. Only assets of the specified type will be returned.
@@ -530,6 +636,7 @@ export class BusinessAccessAssetsService extends BaseService {
      * @param pageSize Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;\&#39;/docs/reference/pagination/\&#39;&gt;Pagination&lt;/a&gt; for more information.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessMemberAssetsGet200Response>;
     public businessMemberAssetsGet(businessId: string, memberId: string, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, bookmark?: string, pageSize?: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessMemberAssetsGet200Response>>;
@@ -542,15 +649,43 @@ export class BusinessAccessAssetsService extends BaseService {
             throw new Error('Required parameter memberId was null or undefined when calling businessMemberAssetsGet.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>assetType, 'asset_type');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>startIndex, 'start_index');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'asset_type',
+            <any>assetType,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'start_index',
+            <any>startIndex,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -581,15 +716,16 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/members/${this.configuration.encodeParam({name: "memberId", value: memberId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/assets`;
-        return this.httpClient.request<BusinessMemberAssetsGet200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BusinessMemberAssetsGet200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -598,10 +734,12 @@ export class BusinessAccessAssetsService extends BaseService {
     /**
      * Delete member access to asset
      * Terminate multiple members\&#39; access to an asset.
+     * @endpoint delete /businesses/{business_id}/members/assets/access
      * @param businessId Unique identifier of the requesting business.
      * @param businessMembersAssetAccessDeleteRequest List member assset permissions to delete.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeleteMemberAccessResultsResponseArray>;
     public businessMembersAssetAccessDelete(businessId: string, businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeleteMemberAccessResultsResponseArray>>;
@@ -652,15 +790,16 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/members/assets/access`;
-        return this.httpClient.request<DeleteMemberAccessResultsResponseArray>('delete', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<DeleteMemberAccessResultsResponseArray>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: businessMembersAssetAccessDeleteRequest,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -669,10 +808,12 @@ export class BusinessAccessAssetsService extends BaseService {
     /**
      * Assign/Update member asset permissions
      * Grant multiple members access to assets and/or update multiple member\&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+     * @endpoint patch /businesses/{business_id}/members/assets/access
      * @param businessId Unique identifier of the requesting business.
      * @param updateMemberAssetAccessBody List of member asset permissions to create or update.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public businessMembersAssetAccessUpdate(businessId: string, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<UpdateMemberAssetsResultsResponseArray>;
     public businessMembersAssetAccessUpdate(businessId: string, updateMemberAssetAccessBody: UpdateMemberAssetAccessBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UpdateMemberAssetsResultsResponseArray>>;
@@ -723,15 +864,16 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/members/assets/access`;
-        return this.httpClient.request<UpdateMemberAssetsResultsResponseArray>('patch', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<UpdateMemberAssetsResultsResponseArray>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: updateMemberAssetAccessBody,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -740,6 +882,7 @@ export class BusinessAccessAssetsService extends BaseService {
     /**
      * Get assets assigned to a partner or assets assigned by a partner
      * Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type&#x3D;INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type&#x3D;EXTERNAL, you will retrieve the partner\&#39;s business assets that the partner has granted you access to.
+     * @endpoint get /businesses/{business_id}/partners/{partner_id}/assets
      * @param businessId Unique identifier of the requesting business.
      * @param partnerId The partner id to be bound to the Business
      * @param partnerType Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner\&#39;s business asset.
@@ -749,6 +892,7 @@ export class BusinessAccessAssetsService extends BaseService {
      * @param bookmark Cursor used to fetch the next page of items
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, pageSize?: number, bookmark?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<BusinessPartnerAssetAccessGet200Response>;
     public businessPartnerAssetAccessGet(businessId: string, partnerId: string, partnerType?: PartnerType, assetType?: 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP', startIndex?: number, pageSize?: number, bookmark?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BusinessPartnerAssetAccessGet200Response>>;
@@ -761,17 +905,52 @@ export class BusinessAccessAssetsService extends BaseService {
             throw new Error('Required parameter partnerId was null or undefined when calling businessPartnerAssetAccessGet.');
         }
 
-        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>partnerType, 'partner_type');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>assetType, 'asset_type');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>startIndex, 'start_index');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>pageSize, 'page_size');
-        localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-          <any>bookmark, 'bookmark');
+        let localVarQueryParameters = new OpenApiHttpParams(this.encoder);
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'partner_type',
+            <any>partnerType,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'asset_type',
+            <any>assetType,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'start_index',
+            <any>startIndex,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'page_size',
+            <any>pageSize,
+            QueryParamStyle.Form,
+            true,
+        );
+
+
+        localVarQueryParameters = this.addToHttpParams(
+            localVarQueryParameters,
+            'bookmark',
+            <any>bookmark,
+            QueryParamStyle.Form,
+            true,
+        );
+
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -802,15 +981,16 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/partners/${this.configuration.encodeParam({name: "partnerId", value: partnerId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/assets`;
-        return this.httpClient.request<BusinessPartnerAssetAccessGet200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<BusinessPartnerAssetAccessGet200Response>('get', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                params: localVarQueryParameters,
+                params: localVarQueryParameters.toHttpParams(),
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -819,10 +999,12 @@ export class BusinessAccessAssetsService extends BaseService {
     /**
      * Delete partner access to asset
      * Terminate multiple partners\&#39; access to an asset. If - partner_type&#x3D;INTERNAL: You will terminate a partner\&#39;s asset access to your business assets. - partner_type&#x3D;EXTERNAL: You will terminate your own access to your partner\&#39;s business assets.
+     * @endpoint delete /businesses/{business_id}/partners/assets
      * @param businessId Unique identifier of the requesting business.
      * @param deletePartnerAssetAccessBody 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<DeletePartnerAssetsResultsResponseArray>;
     public deletePartnerAssetAccessHandlerImpl(businessId: string, deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<DeletePartnerAssetsResultsResponseArray>>;
@@ -873,15 +1055,16 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/partners/assets`;
-        return this.httpClient.request<DeletePartnerAssetsResultsResponseArray>('delete', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<DeletePartnerAssetsResultsResponseArray>('delete', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: deletePartnerAssetAccessBody,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );
@@ -890,10 +1073,12 @@ export class BusinessAccessAssetsService extends BaseService {
     /**
      * Assign/Update partner asset permissions
      * Grant multiple partners access to assets and/or update multiple partner\&#39;s exisiting permissions to an asset. If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them. To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
+     * @endpoint patch /businesses/{business_id}/partners/assets
      * @param businessId Unique identifier of the requesting business.
      * @param updatePartnerAssetAccessBody A list of assets and permissions to assign to your partners.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
+     * @param options additional options
      */
     public updatePartnerAssetAccessHandlerImpl(businessId: string, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<UpdatePartnerAssetsResultsResponseArray>;
     public updatePartnerAssetAccessHandlerImpl(businessId: string, updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<UpdatePartnerAssetsResultsResponseArray>>;
@@ -944,15 +1129,16 @@ export class BusinessAccessAssetsService extends BaseService {
         }
 
         let localVarPath = `/businesses/${this.configuration.encodeParam({name: "businessId", value: businessId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/partners/assets`;
-        return this.httpClient.request<UpdatePartnerAssetsResultsResponseArray>('patch', `${this.configuration.basePath}${localVarPath}`,
+        const { basePath, withCredentials } = this.configuration;
+        return this.httpClient.request<UpdatePartnerAssetsResultsResponseArray>('patch', `${basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: updatePartnerAssetAccessBody,
                 responseType: <any>responseType_,
-                withCredentials: this.configuration.withCredentials,
+                ...(withCredentials ? { withCredentials } : {}),
                 headers: localVarHeaders,
                 observe: observe,
-                transferCache: localVarTransferCache,
+                ...(localVarTransferCache !== undefined ? { transferCache: localVarTransferCache } : {}),
                 reportProgress: reportProgress
             }
         );

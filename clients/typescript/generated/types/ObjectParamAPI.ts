@@ -82,7 +82,6 @@ import { AudienceCategory } from '../models/AudienceCategory';
 import { AudienceCommon } from '../models/AudienceCommon';
 import { AudienceCreateCustomRequest } from '../models/AudienceCreateCustomRequest';
 import { AudienceCreateRequest } from '../models/AudienceCreateRequest';
-import { AudienceCreateRequest1AudienceType } from '../models/AudienceCreateRequest1AudienceType';
 import { AudienceDataParty } from '../models/AudienceDataParty';
 import { AudienceDefinition } from '../models/AudienceDefinition';
 import { AudienceDefinitionResponse } from '../models/AudienceDefinitionResponse';
@@ -260,7 +259,6 @@ import { CatalogsItemsDeleteDiscontinuedBatchRequest } from '../models/CatalogsI
 import { CatalogsItemsFilters } from '../models/CatalogsItemsFilters';
 import { CatalogsItemsPostFilters } from '../models/CatalogsItemsPostFilters';
 import { CatalogsItemsRequest } from '../models/CatalogsItemsRequest';
-import { CatalogsItemsRequestLanguage } from '../models/CatalogsItemsRequestLanguage';
 import { CatalogsItemsUpdateBatchRequest } from '../models/CatalogsItemsUpdateBatchRequest';
 import { CatalogsItemsUpsertBatchRequest } from '../models/CatalogsItemsUpsertBatchRequest';
 import { CatalogsList200Response } from '../models/CatalogsList200Response';
@@ -594,7 +592,6 @@ import { PinMediaWithVideos } from '../models/PinMediaWithVideos';
 import { PinPromotionSummaryStatus } from '../models/PinPromotionSummaryStatus';
 import { PinUpdate } from '../models/PinUpdate';
 import { PinUpdateCarouselSlotsInner } from '../models/PinUpdateCarouselSlotsInner';
-import { PinsAnalyticsMetricTypesParameterInner } from '../models/PinsAnalyticsMetricTypesParameterInner';
 import { PinsList200Response } from '../models/PinsList200Response';
 import { PinsSaveRequest } from '../models/PinsSaveRequest';
 import { PinterestTagEventData } from '../models/PinterestTagEventData';
@@ -8140,10 +8137,10 @@ export interface PinsApiMultiPinsAnalyticsRequest {
     /**
      * Pin metric types to get data for.
      * Defaults to: undefined
-     * @type Array&lt;PinsAnalyticsMetricTypesParameterInner&gt;
+     * @type Array&lt;&#39;IMPRESSION&#39; | &#39;OUTBOUND_CLICK&#39; | &#39;PIN_CLICK&#39; | &#39;SAVE&#39; | &#39;SAVE_RATE&#39; | &#39;TOTAL_COMMENTS&#39; | &#39;TOTAL_REACTIONS&#39; | &#39;USER_FOLLOW&#39; | &#39;PROFILE_VISIT&#39; | &#39;VIDEO_MRC_VIEW&#39; | &#39;VIDEO_10S_VIEW&#39; | &#39;QUARTILE_95_PERCENT_VIEW&#39; | &#39;VIDEO_V50_WATCH_TIME&#39; | &#39;VIDEO_START&#39; | &#39;VIDEO_AVG_WATCH_TIME&#39;&gt;
      * @memberof PinsApimultiPinsAnalytics
      */
-    metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>
+    metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>
     /**
      * Apps or devices to get data for, default is all.
      * Defaults to: &#39;ALL&#39;
@@ -8185,10 +8182,10 @@ export interface PinsApiPinsAnalyticsRequest {
     /**
      * Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.
      * Defaults to: undefined
-     * @type Array&lt;PinsAnalyticsMetricTypesParameterInner&gt;
+     * @type Array&lt;&#39;IMPRESSION&#39; | &#39;OUTBOUND_CLICK&#39; | &#39;PIN_CLICK&#39; | &#39;SAVE&#39; | &#39;SAVE_RATE&#39; | &#39;TOTAL_COMMENTS&#39; | &#39;TOTAL_REACTIONS&#39; | &#39;USER_FOLLOW&#39; | &#39;PROFILE_VISIT&#39; | &#39;VIDEO_MRC_VIEW&#39; | &#39;VIDEO_10S_VIEW&#39; | &#39;QUARTILE_95_PERCENT_VIEW&#39; | &#39;VIDEO_V50_WATCH_TIME&#39; | &#39;VIDEO_START&#39; | &#39;VIDEO_AVG_WATCH_TIME&#39;&gt;
      * @memberof PinsApipinsAnalytics
      */
-    metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>
+    metricTypes: Array<'IMPRESSION' | 'OUTBOUND_CLICK' | 'PIN_CLICK' | 'SAVE' | 'SAVE_RATE' | 'TOTAL_COMMENTS' | 'TOTAL_REACTIONS' | 'USER_FOLLOW' | 'PROFILE_VISIT' | 'VIDEO_MRC_VIEW' | 'VIDEO_10S_VIEW' | 'QUARTILE_95_PERCENT_VIEW' | 'VIDEO_V50_WATCH_TIME' | 'VIDEO_START' | 'VIDEO_AVG_WATCH_TIME'>
     /**
      * Apps or devices to get data for, default is all.
      * Defaults to: &#39;ALL&#39;

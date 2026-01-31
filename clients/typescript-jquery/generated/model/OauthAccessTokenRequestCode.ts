@@ -12,15 +12,12 @@
 
 import * as models from './models';
 
-/**
- * A request to exchange an authorization code for an access token.
- */
 export interface OauthAccessTokenRequestCode {
-    grant_type: OauthAccessTokenRequestCode.GrantTypeEnum;
-
     code: string;
 
     redirect_uri: string;
+
+    grant_type: OauthAccessTokenRequestCode.GrantTypeEnum;
 
 }
 export namespace OauthAccessTokenRequestCode {

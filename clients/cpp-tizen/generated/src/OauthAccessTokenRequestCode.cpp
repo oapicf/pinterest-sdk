@@ -23,19 +23,14 @@ OauthAccessTokenRequestCode::~OauthAccessTokenRequestCode()
 void
 OauthAccessTokenRequestCode::__init()
 {
-	//grant_type = std::string();
 	//code = std::string();
 	//redirect_uri = std::string();
+	//grant_type = std::string();
 }
 
 void
 OauthAccessTokenRequestCode::__cleanup()
 {
-	//if(grant_type != NULL) {
-	//
-	//delete grant_type;
-	//grant_type = NULL;
-	//}
 	//if(code != NULL) {
 	//
 	//delete code;
@@ -46,6 +41,11 @@ OauthAccessTokenRequestCode::__cleanup()
 	//delete redirect_uri;
 	//redirect_uri = NULL;
 	//}
+	//if(grant_type != NULL) {
+	//
+	//delete grant_type;
+	//grant_type = NULL;
+	//}
 	//
 }
 
@@ -54,17 +54,6 @@ OauthAccessTokenRequestCode::fromJson(char* jsonStr)
 {
 	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
 	JsonNode *node;
-	const gchar *grant_typeKey = "grant_type";
-	node = json_object_get_member(pJsonObject, grant_typeKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&grant_type, node, "std::string", "");
-		} else {
-			
-		}
-	}
 	const gchar *codeKey = "code";
 	node = json_object_get_member(pJsonObject, codeKey);
 	if (node !=NULL) {
@@ -87,6 +76,17 @@ OauthAccessTokenRequestCode::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *grant_typeKey = "grant_type";
+	node = json_object_get_member(pJsonObject, grant_typeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&grant_type, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 OauthAccessTokenRequestCode::OauthAccessTokenRequestCode(char* json)
@@ -99,15 +99,6 @@ OauthAccessTokenRequestCode::toJson()
 {
 	JsonObject *pJsonObject = json_object_new();
 	JsonNode *node;
-	if (isprimitive("std::string")) {
-		std::string obj = getGrantType();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
-		
-	}
-	const gchar *grant_typeKey = "grant_type";
-	json_object_set_member(pJsonObject, grant_typeKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getCode();
 		node = converttoJson(&obj, "std::string", "");
@@ -126,24 +117,21 @@ OauthAccessTokenRequestCode::toJson()
 	}
 	const gchar *redirect_uriKey = "redirect_uri";
 	json_object_set_member(pJsonObject, redirect_uriKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getGrantType();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *grant_typeKey = "grant_type";
+	json_object_set_member(pJsonObject, grant_typeKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
 	char * ret = json_to_string(node, false);
 	json_node_free(node);
 	return ret;
-}
-
-std::string
-OauthAccessTokenRequestCode::getGrantType()
-{
-	return grant_type;
-}
-
-void
-OauthAccessTokenRequestCode::setGrantType(std::string  grant_type)
-{
-	this->grant_type = grant_type;
 }
 
 std::string
@@ -168,6 +156,18 @@ void
 OauthAccessTokenRequestCode::setRedirectUri(std::string  redirect_uri)
 {
 	this->redirect_uri = redirect_uri;
+}
+
+std::string
+OauthAccessTokenRequestCode::getGrantType()
+{
+	return grant_type;
+}
+
+void
+OauthAccessTokenRequestCode::setGrantType(std::string  grant_type)
+{
+	this->grant_type = grant_type;
 }
 
 

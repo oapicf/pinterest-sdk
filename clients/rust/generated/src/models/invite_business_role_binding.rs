@@ -11,18 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// InviteBusinessRoleBinding : An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct InviteBusinessRoleBinding {
-    /// Unique identifier for the business that created the invite/request.
-    #[serde(rename = "created_by_business_id", skip_serializing_if = "Option::is_none")]
-    pub created_by_business_id: Option<String>,
-    /// Unique identifier for the user that created the invite/request.
-    #[serde(rename = "created_by_user_id", skip_serializing_if = "Option::is_none")]
-    pub created_by_user_id: Option<String>,
-    /// Metadata for the user that updated the invite/request.
-    #[serde(rename = "user", skip_serializing_if = "Option::is_none")]
-    pub user: Option<Box<models::BusinessAccessUserSummary>>,
     /// Unique identifier of the invite/request.
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
@@ -31,18 +21,26 @@ pub struct InviteBusinessRoleBinding {
     /// Indicates whether the invite/request was received.
     #[serde(rename = "is_received_invite", skip_serializing_if = "Option::is_none")]
     pub is_received_invite: Option<bool>,
+    /// Metadata for the user that updated the invite/request.
+    #[serde(rename = "user", skip_serializing_if = "Option::is_none")]
+    pub user: Option<serde_json::Value>,
+    /// Unique identifier for the business that created the invite/request.
+    #[serde(rename = "created_by_business_id", skip_serializing_if = "Option::is_none")]
+    pub created_by_business_id: Option<String>,
+    /// Unique identifier for the user that created the invite/request.
+    #[serde(rename = "created_by_user_id", skip_serializing_if = "Option::is_none")]
+    pub created_by_user_id: Option<String>,
 }
 
 impl InviteBusinessRoleBinding {
-    /// An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
     pub fn new() -> InviteBusinessRoleBinding {
         InviteBusinessRoleBinding {
-            created_by_business_id: None,
-            created_by_user_id: None,
-            user: None,
             id: None,
             invite_data: None,
             is_received_invite: None,
+            user: None,
+            created_by_business_id: None,
+            created_by_user_id: None,
         }
     }
 }

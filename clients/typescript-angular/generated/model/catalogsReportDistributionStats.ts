@@ -41,10 +41,10 @@ export interface CatalogsReportDistributionStats {
     ineligible_for_organic?: boolean;
 }
 export namespace CatalogsReportDistributionStats {
-    export type ReportTypeEnum = 'DISTRIBUTION_ISSUES';
     export const ReportTypeEnum = {
-        DistributionIssues: 'DISTRIBUTION_ISSUES' as ReportTypeEnum
-    };
+        DistributionIssues: 'DISTRIBUTION_ISSUES'
+    } as const;
+    export type ReportTypeEnum = typeof ReportTypeEnum[keyof typeof ReportTypeEnum];
 }
 
 

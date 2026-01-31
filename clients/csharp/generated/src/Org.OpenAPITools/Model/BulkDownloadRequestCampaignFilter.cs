@@ -224,12 +224,10 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "campaign_status":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                campaignStatus = new Option<List<CampaignSummaryStatus>?>(JsonSerializer.Deserialize<List<CampaignSummaryStatus>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            campaignStatus = new Option<List<CampaignSummaryStatus>?>(JsonSerializer.Deserialize<List<CampaignSummaryStatus>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "objective_type":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                objectiveType = new Option<List<ObjectiveType>?>(JsonSerializer.Deserialize<List<ObjectiveType>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            objectiveType = new Option<List<ObjectiveType>?>(JsonSerializer.Deserialize<List<ObjectiveType>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

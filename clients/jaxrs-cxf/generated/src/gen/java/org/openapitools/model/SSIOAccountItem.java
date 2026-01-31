@@ -14,59 +14,69 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SSIOAccountItem  {
   
-  @ApiModelProperty(example = "0011N00001LW8kAQAT", value = "Salesforce id for billto_info")
  /**
-   * Salesforce id for billto_info
-  **/
+  * Salesforce id for billto_info
+  */
+  @ApiModelProperty(example = "0011N00001LW8kAQAT", value = "Salesforce id for billto_info")
+
   private String id;
 
-  @ApiModelProperty(example = "a2S1N000000bKHgUAM", value = "Salesforce id for IO Terms and Conditions")
  /**
-   * Salesforce id for IO Terms and Conditions
-  **/
+  * Salesforce id for IO Terms and Conditions
+  */
+  @ApiModelProperty(example = "a2S1N000000bKHgUAM", value = "Salesforce id for IO Terms and Conditions")
+
   private String ioTermsId;
 
-  @ApiModelProperty(example = "The IO is governed by the terms available at https://business.pinterest.com/en/pinterest-advertising-services-agreement/. If a budget is listed on this IO, the parties agree that Advertiser (or if applicable, its Agency) may apply any of the budget to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees. The terms of the Agreement supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.", value = "Salesforce text for IO Terms and Conditions")
  /**
-   * Salesforce text for IO Terms and Conditions
-  **/
+  * Salesforce text for IO Terms and Conditions
+  */
+  @ApiModelProperty(example = "The IO is governed by the terms available at https://business.pinterest.com/en/pinterest-advertising-services-agreement/. If a budget is listed on this IO, the parties agree that Advertiser (or if applicable, its Agency) may apply any of the budget to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees. The terms of the Agreement supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.", value = "Salesforce text for IO Terms and Conditions")
+
   private String ioTerms;
 
-  @ApiModelProperty(example = "a2S1N000000bKIOUA2", value = "Salesforce id for US Terms and Conditions")
  /**
-   * Salesforce id for US Terms and Conditions
-  **/
+  * Salesforce id for US Terms and Conditions
+  */
+  @ApiModelProperty(example = "a2S1N000000bKIOUA2", value = "Salesforce id for US Terms and Conditions")
+
   private String usTermsId;
 
-  @ApiModelProperty(example = "This Insertion Order (\"IO\") is subject to the Pinterest Addendum To IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0), as executed by Pinterest, Inc. and GroupM Worldwide LLC on May 7, 2014 and Amendment No. 1 to Pinterest Addendum to IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0) as executed by Pinterest, Inc. and GroupM Worldwide LLC on August 20, 2015. The parties agree that Agency may apply any of the budget listed on this IO to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees.The terms of the Addendum supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.", value = "Salesforce text for US Terms and Conditions")
  /**
-   * Salesforce text for US Terms and Conditions
-  **/
+  * Salesforce text for US Terms and Conditions
+  */
+  @ApiModelProperty(example = "This Insertion Order (\"IO\") is subject to the Pinterest Addendum To IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0), as executed by Pinterest, Inc. and GroupM Worldwide LLC on May 7, 2014 and Amendment No. 1 to Pinterest Addendum to IAB Standard Terms and Conditions for Internet Advertising For Media Buys One Year or Less (Version 3.0) as executed by Pinterest, Inc. and GroupM Worldwide LLC on August 20, 2015. The parties agree that Agency may apply any of the budget listed on this IO to any auction bid type or ad product. Price will be determined by auction closing price, plus any applicable non-auction fees.The terms of the Addendum supersede any terms on this IO. ANY ADDITIONAL TERMS AND CONDITIONS ON THIS IO ARE NULL AND VOID.", value = "Salesforce text for US Terms and Conditions")
+
   private String usTerms;
 
-  @ApiModelProperty(example = "a2S1N000000bKHhUAM", value = "Salesforce id for Rest of the World Terms and Conditions")
  /**
-   * Salesforce id for Rest of the World Terms and Conditions
-  **/
+  * Salesforce id for Rest of the World Terms and Conditions
+  */
+  @ApiModelProperty(example = "a2S1N000000bKHhUAM", value = "Salesforce id for Rest of the World Terms and Conditions")
+
   private String rowTermsId;
 
-  @ApiModelProperty(example = "The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", value = "Salesforce text for Rest of the World Terms and Conditions")
  /**
-   * Salesforce text for Rest of the World Terms and Conditions
-  **/
+  * Salesforce text for Rest of the World Terms and Conditions
+  */
+  @ApiModelProperty(example = "The IO is governed by the terms available at  https://business.pinterest.com/en-gb/pinterest-advertising-services-agreement", value = "Salesforce text for Rest of the World Terms and Conditions")
+
   private String rowTerms;
 
-  @ApiModelProperty(example = "Pinterest Paper", value = "Insertion Order Type - Pinterest Paper or Agency Paper")
  /**
-   * Insertion Order Type - Pinterest Paper or Agency Paper
-  **/
+  * Insertion Order Type - Pinterest Paper or Agency Paper
+  */
+  @ApiModelProperty(example = "Pinterest Paper", value = "Insertion Order Type - Pinterest Paper or Agency Paper")
+
   private String ioType;
 
-  @ApiModelProperty(value = "Address information that is associated with this account.")
-  @Valid
  /**
-   * Address information that is associated with this account.
-  **/
+  * Address information that is associated with this account.
+  */
+  @ApiModelProperty(value = "Address information that is associated with this account.")
+
+  @Valid
+
   private List<@Valid SSIOAccountAddress> addresses = new ArrayList<>();
  /**
    * Salesforce id for billto_info

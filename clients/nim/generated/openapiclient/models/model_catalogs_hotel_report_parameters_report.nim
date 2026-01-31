@@ -9,29 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_report_distribution_issue_filter
 import model_catalogs_report_feed_ingestion_filter
 
-type ReportType* {.pure.} = enum
-  FEEDINGESTIONISSUES
-  DISTRIBUTIONISSUES
+# OneOf type
+type CatalogsHotelReportParametersReportKind* {.pure.} = enum
+  CatalogsReportFeedIngestionFilterVariant
+  CatalogsReportDistributionIssueFilterVariant
 
 type CatalogsHotelReportParametersReport* = object
   ## 
-  reportType*: ReportType
-  feedId*: string ## ID of the feed entity.
-  processingResultId*: string ## Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list). If not provided, default to most recent completed processing result.
-  catalogId*: string ## Unique identifier of a catalog. If not given, oldest catalog will be used
+  case kind*: CatalogsHotelReportParametersReportKind
+  of CatalogsHotelReportParametersReportKind.CatalogsReportFeedIngestionFilterVariant:
+    CatalogsReportFeedIngestionFilterValue*: CatalogsReportFeedIngestionFilter
+  of CatalogsHotelReportParametersReportKind.CatalogsReportDistributionIssueFilterVariant:
+    CatalogsReportDistributionIssueFilterValue*: CatalogsReportDistributionIssueFilter
 
-func `%`*(v: ReportType): JsonNode =
-  let str = case v:
-    of ReportType.FEEDINGESTIONISSUES: "FEED_INGESTION_ISSUES"
-    of ReportType.DISTRIBUTIONISSUES: "DISTRIBUTION_ISSUES"
+proc to*(node: JsonNode, T: typedesc[CatalogsHotelReportParametersReport]): CatalogsHotelReportParametersReport =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsHotelReportParametersReport(kind: CatalogsHotelReportParametersReportKind.CatalogsReportFeedIngestionFilterVariant, CatalogsReportFeedIngestionFilterValue: to(node, CatalogsReportFeedIngestionFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsReportFeedIngestionFilter: ", e.msg
+  try:
+    return CatalogsHotelReportParametersReport(kind: CatalogsHotelReportParametersReportKind.CatalogsReportDistributionIssueFilterVariant, CatalogsReportDistributionIssueFilterValue: to(node, CatalogsReportDistributionIssueFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsReportDistributionIssueFilter: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsHotelReportParametersReport. JSON: " & $node)
 
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: ReportType): string =
-  result = case v:
-    of ReportType.FEEDINGESTIONISSUES: "FEED_INGESTION_ISSUES"
-    of ReportType.DISTRIBUTIONISSUES: "DISTRIBUTION_ISSUES"

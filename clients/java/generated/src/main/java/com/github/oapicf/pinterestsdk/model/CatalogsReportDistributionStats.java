@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsReportDistributionStats
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsReportDistributionStats {
   /**
    * Gets or Sets reportType
@@ -353,18 +353,10 @@ public class CatalogsReportDistributionStats {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("report_type");
-    openapiFields.add("catalog_id");
-    openapiFields.add("code");
-    openapiFields.add("code_label");
-    openapiFields.add("message");
-    openapiFields.add("occurrences");
-    openapiFields.add("ineligible_for_ads");
-    openapiFields.add("ineligible_for_organic");
+    openapiFields = new HashSet<String>(Arrays.asList("report_type", "catalog_id", "code", "code_label", "message", "occurrences", "ineligible_for_ads", "ineligible_for_organic"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -376,7 +368,7 @@ public class CatalogsReportDistributionStats {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsReportDistributionStats.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsReportDistributionStats is not found in the empty JSON string", CatalogsReportDistributionStats.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsReportDistributionStats is not found in the empty JSON string", CatalogsReportDistributionStats.openapiRequiredFields.toString()));
         }
       }
 
@@ -384,25 +376,25 @@ public class CatalogsReportDistributionStats {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsReportDistributionStats.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsReportDistributionStats` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsReportDistributionStats` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("report_type") != null && !jsonObj.get("report_type").isJsonNull()) && !jsonObj.get("report_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `report_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("report_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `report_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("report_type").toString()));
       }
       // validate the optional field `report_type`
       if (jsonObj.get("report_type") != null && !jsonObj.get("report_type").isJsonNull()) {
         ReportTypeEnum.validateJsonElement(jsonObj.get("report_type"));
       }
       if ((jsonObj.get("catalog_id") != null && !jsonObj.get("catalog_id").isJsonNull()) && !jsonObj.get("catalog_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `catalog_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `catalog_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("catalog_id").toString()));
       }
       if ((jsonObj.get("code_label") != null && !jsonObj.get("code_label").isJsonNull()) && !jsonObj.get("code_label").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `code_label` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code_label").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `code_label` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code_label").toString()));
       }
       if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
   }
 

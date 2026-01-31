@@ -71,7 +71,7 @@ export function AdAccountAnalyticsResponseInnerToJSONTyped(value?: AdAccountAnal
         
             ...value,
         'AD_ACCOUNT_ID': value['aDACCOUNTID'],
-        'DATE': value['dATE'] == null ? undefined : ((value['dATE']).toISOString().substring(0,10)),
+        'DATE': value['dATE'] == null ? value['dATE'] : value['dATE'].toISOString().substring(0,10),
     };
 }
 

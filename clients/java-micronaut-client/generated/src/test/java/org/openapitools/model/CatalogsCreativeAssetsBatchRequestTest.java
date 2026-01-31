@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.CatalogsCreativeAssetsBatchItem;
-import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.Country;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;

@@ -9,7 +9,6 @@ import org.openapitools.models.Pin
 import org.openapitools.models.PinAnalyticsMetricsResponse
 import org.openapitools.models.PinCreate
 import org.openapitools.models.PinUpdate
-import org.openapitools.models.PinsAnalyticsMetricTypesParameterInner
 import org.openapitools.models.PinsList200Response
 import org.openapitools.models.PinsSaveRequest
 import scala.collection.immutable.Seq
@@ -68,7 +67,7 @@ object PinsApi {
         * @return An endpoint representing a Map[String, Map]
         */
         private def multiPins/analytics(da: DataAccessor): Endpoint[Map[String, Map]] =
-        get("pins" :: "analytics" :: params("pin_ids") :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("metric_types") :: paramOption("app_types") :: paramOption("ad_account_id")) { (pinIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, metricTypes: Seq[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String], adAccountId: Option[String]) =>
+        get("pins" :: "analytics" :: params("pin_ids") :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("metric_types") :: paramOption("app_types") :: paramOption("ad_account_id")) { (pinIds: Seq[String], startDate: LocalDateTime, endDate: LocalDateTime, metricTypes: Seq[String], appTypes: Option[String], adAccountId: Option[String]) =>
           da.Pins_multiPins/analytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)
@@ -82,7 +81,7 @@ object PinsApi {
         * @return An endpoint representing a Map[String, PinAnalyticsMetricsResponse]
         */
         private def pins/analytics(da: DataAccessor): Endpoint[Map[String, PinAnalyticsMetricsResponse]] =
-        get("pins" :: string :: "analytics" :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("metric_types") :: paramOption("app_types") :: paramOption("split_field") :: paramOption("ad_account_id")) { (pinId: String, startDate: LocalDateTime, endDate: LocalDateTime, metricTypes: Seq[PinsAnalyticsMetricTypesParameterInner], appTypes: Option[String], splitField: Option[String], adAccountId: Option[String]) =>
+        get("pins" :: string :: "analytics" :: param("start_date").map(_.toLocalDateTime) :: param("end_date").map(_.toLocalDateTime) :: params("metric_types") :: paramOption("app_types") :: paramOption("split_field") :: paramOption("ad_account_id")) { (pinId: String, startDate: LocalDateTime, endDate: LocalDateTime, metricTypes: Seq[String], appTypes: Option[String], splitField: Option[String], adAccountId: Option[String]) =>
           da.Pins_pins/analytics(pinId, startDate, endDate, metricTypes, appTypes, splitField, adAccountId) match {
             case Left(error) => checkError(error)
             case Right(data) => Ok(data)

@@ -22,7 +22,7 @@ data class DeleteAssetGroupBody(
     @get:Size(min=1,max=50) 
     @Schema(example = "[\"666791336903426391\",\"666791336903426392\"]", required = true, description = "List of ids of asset groups to be deleted")
     @get:JsonProperty("asset_groups_to_delete", required = true) val assetGroupsToDelete: kotlin.collections.List<kotlin.String>
-    ) {
+) {
 
 }
 

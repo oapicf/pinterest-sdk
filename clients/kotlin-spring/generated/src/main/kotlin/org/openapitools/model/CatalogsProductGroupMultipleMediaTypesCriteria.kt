@@ -27,7 +27,7 @@ data class CatalogsProductGroupMultipleMediaTypesCriteria(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("negated") val negated: kotlin.Boolean? = false
-    ) {
+) {
 
 }
 

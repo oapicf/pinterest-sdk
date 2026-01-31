@@ -30,7 +30,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "Pin", description = "Pin")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class Pin {
 
   private @Nullable String id;
@@ -72,7 +72,7 @@ public class Pin {
 
   private JsonNullable<Object> pinMetrics = JsonNullable.<Object>undefined();
 
-  public Pin id(String id) {
+  public Pin id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -84,15 +84,15 @@ public class Pin {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", accessMode = Schema.AccessMode.READ_ONLY, example = "813744226420795884", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public Pin createdAt(OffsetDateTime createdAt) {
+  public Pin createdAt(@Nullable OffsetDateTime createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -104,11 +104,11 @@ public class Pin {
   @Valid 
   @Schema(name = "created_at", accessMode = Schema.AccessMode.READ_ONLY, example = "2020-01-01T20:10:40Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_at")
-  public OffsetDateTime getCreatedAt() {
+  public @Nullable OffsetDateTime getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(OffsetDateTime createdAt) {
+  public void setCreatedAt(@Nullable OffsetDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -232,7 +232,7 @@ public class Pin {
     this.creativeType = creativeType;
   }
 
-  public Pin boardId(String boardId) {
+  public Pin boardId(@Nullable String boardId) {
     this.boardId = boardId;
     return this;
   }
@@ -244,11 +244,11 @@ public class Pin {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "board_id", description = "The board to which this Pin belongs.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_id")
-  public String getBoardId() {
+  public @Nullable String getBoardId() {
     return boardId;
   }
 
-  public void setBoardId(String boardId) {
+  public void setBoardId(@Nullable String boardId) {
     this.boardId = boardId;
   }
 
@@ -272,7 +272,7 @@ public class Pin {
     this.boardSectionId = boardSectionId;
   }
 
-  public Pin boardOwner(BoardOwner boardOwner) {
+  public Pin boardOwner(@Nullable BoardOwner boardOwner) {
     this.boardOwner = boardOwner;
     return this;
   }
@@ -284,15 +284,15 @@ public class Pin {
   @Valid 
   @Schema(name = "board_owner", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("board_owner")
-  public BoardOwner getBoardOwner() {
+  public @Nullable BoardOwner getBoardOwner() {
     return boardOwner;
   }
 
-  public void setBoardOwner(BoardOwner boardOwner) {
+  public void setBoardOwner(@Nullable BoardOwner boardOwner) {
     this.boardOwner = boardOwner;
   }
 
-  public Pin isOwner(Boolean isOwner) {
+  public Pin isOwner(@Nullable Boolean isOwner) {
     this.isOwner = isOwner;
     return this;
   }
@@ -304,15 +304,15 @@ public class Pin {
   
   @Schema(name = "is_owner", accessMode = Schema.AccessMode.READ_ONLY, description = "Whether the \"operation user_account\" is the Pin owner.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_owner")
-  public Boolean getIsOwner() {
+  public @Nullable Boolean getIsOwner() {
     return isOwner;
   }
 
-  public void setIsOwner(Boolean isOwner) {
+  public void setIsOwner(@Nullable Boolean isOwner) {
     this.isOwner = isOwner;
   }
 
-  public Pin media(PinMedia media) {
+  public Pin media(@Nullable PinMedia media) {
     this.media = media;
     return this;
   }
@@ -324,15 +324,15 @@ public class Pin {
   @Valid 
   @Schema(name = "media", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media")
-  public PinMedia getMedia() {
+  public @Nullable PinMedia getMedia() {
     return media;
   }
 
-  public void setMedia(PinMedia media) {
+  public void setMedia(@Nullable PinMedia media) {
     this.media = media;
   }
 
-  public Pin mediaSource(PinMediaSource mediaSource) {
+  public Pin mediaSource(@Nullable PinMediaSource mediaSource) {
     this.mediaSource = mediaSource;
     return this;
   }
@@ -344,11 +344,11 @@ public class Pin {
   @Valid 
   @Schema(name = "media_source", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_source")
-  public PinMediaSource getMediaSource() {
+  public @Nullable PinMediaSource getMediaSource() {
     return mediaSource;
   }
 
-  public void setMediaSource(PinMediaSource mediaSource) {
+  public void setMediaSource(@Nullable PinMediaSource mediaSource) {
     this.mediaSource = mediaSource;
   }
 
@@ -372,7 +372,7 @@ public class Pin {
     this.parentPinId = parentPinId;
   }
 
-  public Pin isStandard(Boolean isStandard) {
+  public Pin isStandard(@Nullable Boolean isStandard) {
     this.isStandard = isStandard;
     return this;
   }
@@ -384,15 +384,15 @@ public class Pin {
   
   @Schema(name = "is_standard", description = "Whether the Pin is standard or not. See documentation on <a href=\"/docs/api-features/content-overview/\">Changes to Pin creation</a> for more information.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_standard")
-  public Boolean getIsStandard() {
+  public @Nullable Boolean getIsStandard() {
     return isStandard;
   }
 
-  public void setIsStandard(Boolean isStandard) {
+  public void setIsStandard(@Nullable Boolean isStandard) {
     this.isStandard = isStandard;
   }
 
-  public Pin hasBeenPromoted(Boolean hasBeenPromoted) {
+  public Pin hasBeenPromoted(@Nullable Boolean hasBeenPromoted) {
     this.hasBeenPromoted = hasBeenPromoted;
     return this;
   }
@@ -404,11 +404,11 @@ public class Pin {
   
   @Schema(name = "has_been_promoted", accessMode = Schema.AccessMode.READ_ONLY, description = "Whether the Pin has been promoted or not.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("has_been_promoted")
-  public Boolean getHasBeenPromoted() {
+  public @Nullable Boolean getHasBeenPromoted() {
     return hasBeenPromoted;
   }
 
-  public void setHasBeenPromoted(Boolean hasBeenPromoted) {
+  public void setHasBeenPromoted(@Nullable Boolean hasBeenPromoted) {
     this.hasBeenPromoted = hasBeenPromoted;
   }
 

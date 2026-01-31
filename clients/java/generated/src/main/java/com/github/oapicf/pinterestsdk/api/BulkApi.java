@@ -92,7 +92,7 @@ public class BulkApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkDownloadCreateCall(String adAccountId, BulkDownloadRequest bulkDownloadRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call bulkDownloadCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BulkDownloadRequest bulkDownloadRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -139,7 +139,7 @@ public class BulkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkDownloadCreateValidateBeforeCall(String adAccountId, BulkDownloadRequest bulkDownloadRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call bulkDownloadCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BulkDownloadRequest bulkDownloadRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling bulkDownloadCreate(Async)");
@@ -169,7 +169,7 @@ public class BulkApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BulkDownloadResponse bulkDownloadCreate(String adAccountId, BulkDownloadRequest bulkDownloadRequest) throws ApiException {
+    public BulkDownloadResponse bulkDownloadCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BulkDownloadRequest bulkDownloadRequest) throws ApiException {
         ApiResponse<BulkDownloadResponse> localVarResp = bulkDownloadCreateWithHttpInfo(adAccountId, bulkDownloadRequest);
         return localVarResp.getData();
     }
@@ -189,7 +189,7 @@ public class BulkApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BulkDownloadResponse> bulkDownloadCreateWithHttpInfo(String adAccountId, BulkDownloadRequest bulkDownloadRequest) throws ApiException {
+    public ApiResponse<BulkDownloadResponse> bulkDownloadCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BulkDownloadRequest bulkDownloadRequest) throws ApiException {
         okhttp3.Call localVarCall = bulkDownloadCreateValidateBeforeCall(adAccountId, bulkDownloadRequest, null);
         Type localVarReturnType = new TypeToken<BulkDownloadResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -211,7 +211,7 @@ public class BulkApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkDownloadCreateAsync(String adAccountId, BulkDownloadRequest bulkDownloadRequest, final ApiCallback<BulkDownloadResponse> _callback) throws ApiException {
+    public okhttp3.Call bulkDownloadCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BulkDownloadRequest bulkDownloadRequest, final ApiCallback<BulkDownloadResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = bulkDownloadCreateValidateBeforeCall(adAccountId, bulkDownloadRequest, _callback);
         Type localVarReturnType = new TypeToken<BulkDownloadResponse>(){}.getType();
@@ -234,7 +234,7 @@ public class BulkApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkRequestGetCall(String adAccountId, String bulkRequestId, Boolean includeDetails, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call bulkRequestGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String bulkRequestId, @javax.annotation.Nullable Boolean includeDetails, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -285,7 +285,7 @@ public class BulkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkRequestGetValidateBeforeCall(String adAccountId, String bulkRequestId, Boolean includeDetails, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call bulkRequestGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String bulkRequestId, @javax.annotation.Nullable Boolean includeDetails, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling bulkRequestGet(Async)");
@@ -316,7 +316,7 @@ public class BulkApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BulkUpsertStatusResponse bulkRequestGet(String adAccountId, String bulkRequestId, Boolean includeDetails) throws ApiException {
+    public BulkUpsertStatusResponse bulkRequestGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String bulkRequestId, @javax.annotation.Nullable Boolean includeDetails) throws ApiException {
         ApiResponse<BulkUpsertStatusResponse> localVarResp = bulkRequestGetWithHttpInfo(adAccountId, bulkRequestId, includeDetails);
         return localVarResp.getData();
     }
@@ -337,7 +337,7 @@ public class BulkApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BulkUpsertStatusResponse> bulkRequestGetWithHttpInfo(String adAccountId, String bulkRequestId, Boolean includeDetails) throws ApiException {
+    public ApiResponse<BulkUpsertStatusResponse> bulkRequestGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String bulkRequestId, @javax.annotation.Nullable Boolean includeDetails) throws ApiException {
         okhttp3.Call localVarCall = bulkRequestGetValidateBeforeCall(adAccountId, bulkRequestId, includeDetails, null);
         Type localVarReturnType = new TypeToken<BulkUpsertStatusResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -360,7 +360,7 @@ public class BulkApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkRequestGetAsync(String adAccountId, String bulkRequestId, Boolean includeDetails, final ApiCallback<BulkUpsertStatusResponse> _callback) throws ApiException {
+    public okhttp3.Call bulkRequestGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String bulkRequestId, @javax.annotation.Nullable Boolean includeDetails, final ApiCallback<BulkUpsertStatusResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = bulkRequestGetValidateBeforeCall(adAccountId, bulkRequestId, includeDetails, _callback);
         Type localVarReturnType = new TypeToken<BulkUpsertStatusResponse>(){}.getType();
@@ -382,7 +382,7 @@ public class BulkApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkUpsertCreateCall(String adAccountId, BulkUpsertRequest bulkUpsertRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call bulkUpsertCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BulkUpsertRequest bulkUpsertRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -429,7 +429,7 @@ public class BulkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bulkUpsertCreateValidateBeforeCall(String adAccountId, BulkUpsertRequest bulkUpsertRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call bulkUpsertCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BulkUpsertRequest bulkUpsertRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling bulkUpsertCreate(Async)");
@@ -459,7 +459,7 @@ public class BulkApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BulkUpsertResponse bulkUpsertCreate(String adAccountId, BulkUpsertRequest bulkUpsertRequest) throws ApiException {
+    public BulkUpsertResponse bulkUpsertCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BulkUpsertRequest bulkUpsertRequest) throws ApiException {
         ApiResponse<BulkUpsertResponse> localVarResp = bulkUpsertCreateWithHttpInfo(adAccountId, bulkUpsertRequest);
         return localVarResp.getData();
     }
@@ -479,7 +479,7 @@ public class BulkApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BulkUpsertResponse> bulkUpsertCreateWithHttpInfo(String adAccountId, BulkUpsertRequest bulkUpsertRequest) throws ApiException {
+    public ApiResponse<BulkUpsertResponse> bulkUpsertCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BulkUpsertRequest bulkUpsertRequest) throws ApiException {
         okhttp3.Call localVarCall = bulkUpsertCreateValidateBeforeCall(adAccountId, bulkUpsertRequest, null);
         Type localVarReturnType = new TypeToken<BulkUpsertResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -501,7 +501,7 @@ public class BulkApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bulkUpsertCreateAsync(String adAccountId, BulkUpsertRequest bulkUpsertRequest, final ApiCallback<BulkUpsertResponse> _callback) throws ApiException {
+    public okhttp3.Call bulkUpsertCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BulkUpsertRequest bulkUpsertRequest, final ApiCallback<BulkUpsertResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = bulkUpsertCreateValidateBeforeCall(adAccountId, bulkUpsertRequest, _callback);
         Type localVarReturnType = new TypeToken<BulkUpsertResponse>(){}.getType();

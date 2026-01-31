@@ -3,14 +3,6 @@ Protected Class ConversionTagCreate
 
 	#tag Property, Flags = &h0
 		#tag Note
-			Conversion tag name.
-		#tag EndNote
-		name As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		#tag Note
 			Whether Automatic Enhanced Match email is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information.
 		#tag EndNote
 		aem_enabled As Xoson.O.OptionalBoolean
@@ -65,6 +57,14 @@ Protected Class ConversionTagCreate
 	#tag EndProperty
 
 
+	#tag Property, Flags = &h0
+		#tag Note
+			Conversion tag name.
+		#tag EndNote
+		name As String
+	#tag EndProperty
+
+
 
 
 
@@ -99,14 +99,6 @@ Protected Class ConversionTagCreate
 			Group="Position"
 			InitialValue="0"
 			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="name"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -163,6 +155,14 @@ Protected Class ConversionTagCreate
 			Group="Behavior"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="name"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

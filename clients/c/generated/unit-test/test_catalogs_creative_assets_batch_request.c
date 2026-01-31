@@ -16,7 +16,8 @@
 #include "../model/catalogs_creative_assets_batch_request.h"
 catalogs_creative_assets_batch_request_t* instantiate_catalogs_creative_assets_batch_request(int include_optional);
 
-#include "test_catalogs_items_request_language.c"
+
+// it is enum. Work in Progress
 
 
 catalogs_creative_assets_batch_request_t* instantiate_catalogs_creative_assets_batch_request(int include_optional) {
@@ -25,7 +26,7 @@ catalogs_creative_assets_batch_request_t* instantiate_catalogs_creative_assets_b
     catalogs_creative_assets_batch_request = catalogs_creative_assets_batch_request_create(
       pinterest_rest_api_catalogs_creative_assets_batch_request_CATALOGTYPE_CREATIVE_ASSETS,
       pinterest_rest_api_catalogs_creative_assets_batch_request__"US",
-      null,
+      pinterest_rest_api_catalogs_creative_assets_batch_request_LANGUAGE_af-ZA,
       list_createList(),
       "2680059592705"
     );
@@ -33,7 +34,7 @@ catalogs_creative_assets_batch_request_t* instantiate_catalogs_creative_assets_b
     catalogs_creative_assets_batch_request = catalogs_creative_assets_batch_request_create(
       pinterest_rest_api_catalogs_creative_assets_batch_request_CATALOGTYPE_CREATIVE_ASSETS,
       pinterest_rest_api_catalogs_creative_assets_batch_request__"US",
-      null,
+      pinterest_rest_api_catalogs_creative_assets_batch_request_LANGUAGE_af-ZA,
       list_createList(),
       "2680059592705"
     );

@@ -20,25 +20,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class MultipleProductGroupsInner  {
   
   @ApiModelProperty(required = true, value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
-  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
  /**
-   * boolean indicator of whether the product group is being featured or not
-  **/
+  * boolean indicator of whether the product group is being featured or not
+  */
+  @ApiModelProperty(value = "boolean indicator of whether the product group is being featured or not")
+
   private Boolean isFeatured = false;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupFiltersRequest filters;
 
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
  /**
-   * Catalog Feed id pertaining to the catalog product group.
-  **/
+  * Catalog Feed id pertaining to the catalog product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog Feed id pertaining to the catalog product group.")
+
   private String feedId;
  /**
    * Get name

@@ -21,7 +21,7 @@ data class CatalogsCreateReportResponse(
 
     @Schema(example = "null", description = "Token to be used to get the report")
     @get:JsonProperty("token") val token: kotlin.String? = null
-    ) {
+) {
 
 }
 

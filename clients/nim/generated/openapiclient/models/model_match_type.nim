@@ -9,7 +9,48 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type MatchType* = object
-  ## Keyword match type
+type MatchType* {.pure.} = enum
+  BROAD
+  PHRASE
+  EXACT
+  EXACTNEGATIVE
+  PHRASENEGATIVE
+
+func `%`*(v: MatchType): JsonNode =
+  result = case v:
+    of MatchType.BROAD: %"BROAD"
+    of MatchType.PHRASE: %"PHRASE"
+    of MatchType.EXACT: %"EXACT"
+    of MatchType.EXACTNEGATIVE: %"EXACT_NEGATIVE"
+    of MatchType.PHRASENEGATIVE: %"PHRASE_NEGATIVE"
+
+func `$`*(v: MatchType): string =
+  result = case v:
+    of MatchType.BROAD: $("BROAD")
+    of MatchType.PHRASE: $("PHRASE")
+    of MatchType.EXACT: $("EXACT")
+    of MatchType.EXACTNEGATIVE: $("EXACT_NEGATIVE")
+    of MatchType.PHRASENEGATIVE: $("PHRASE_NEGATIVE")
+
+proc to*(node: JsonNode, T: typedesc[MatchType]): MatchType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum MatchType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("BROAD"):
+    return MatchType.BROAD
+  of $("PHRASE"):
+    return MatchType.PHRASE
+  of $("EXACT"):
+    return MatchType.EXACT
+  of $("EXACT_NEGATIVE"):
+    return MatchType.EXACTNEGATIVE
+  of $("PHRASE_NEGATIVE"):
+    return MatchType.PHRASENEGATIVE
+  else:
+    raise newException(ValueError, "Invalid enum value for MatchType: " & strVal)
+

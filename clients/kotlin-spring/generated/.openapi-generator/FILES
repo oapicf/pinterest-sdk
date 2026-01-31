@@ -26,6 +26,7 @@ src/main/kotlin/org/openapitools/api/TermsApiController.kt
 src/main/kotlin/org/openapitools/api/TrendsApiController.kt
 src/main/kotlin/org/openapitools/api/UserAccountApiController.kt
 src/main/kotlin/org/openapitools/api/UsersApiController.kt
+src/main/kotlin/org/openapitools/configuration/EnumConverterConfiguration.kt
 src/main/kotlin/org/openapitools/model/Account.kt
 src/main/kotlin/org/openapitools/model/ActionType.kt
 src/main/kotlin/org/openapitools/model/AdAccount.kt
@@ -106,7 +107,6 @@ src/main/kotlin/org/openapitools/model/AudienceCategory.kt
 src/main/kotlin/org/openapitools/model/AudienceCommon.kt
 src/main/kotlin/org/openapitools/model/AudienceCreateCustomRequest.kt
 src/main/kotlin/org/openapitools/model/AudienceCreateRequest.kt
-src/main/kotlin/org/openapitools/model/AudienceCreateRequest1AudienceType.kt
 src/main/kotlin/org/openapitools/model/AudienceDataParty.kt
 src/main/kotlin/org/openapitools/model/AudienceDefinition.kt
 src/main/kotlin/org/openapitools/model/AudienceDefinitionResponse.kt
@@ -284,7 +284,6 @@ src/main/kotlin/org/openapitools/model/CatalogsItemsDeleteDiscontinuedBatchReque
 src/main/kotlin/org/openapitools/model/CatalogsItemsFilters.kt
 src/main/kotlin/org/openapitools/model/CatalogsItemsPostFilters.kt
 src/main/kotlin/org/openapitools/model/CatalogsItemsRequest.kt
-src/main/kotlin/org/openapitools/model/CatalogsItemsRequestLanguage.kt
 src/main/kotlin/org/openapitools/model/CatalogsItemsUpdateBatchRequest.kt
 src/main/kotlin/org/openapitools/model/CatalogsItemsUpsertBatchRequest.kt
 src/main/kotlin/org/openapitools/model/CatalogsList200Response.kt
@@ -618,7 +617,6 @@ src/main/kotlin/org/openapitools/model/PinMediaWithVideos.kt
 src/main/kotlin/org/openapitools/model/PinPromotionSummaryStatus.kt
 src/main/kotlin/org/openapitools/model/PinUpdate.kt
 src/main/kotlin/org/openapitools/model/PinUpdateCarouselSlotsInner.kt
-src/main/kotlin/org/openapitools/model/PinsAnalyticsMetricTypesParameterInner.kt
 src/main/kotlin/org/openapitools/model/PinsList200Response.kt
 src/main/kotlin/org/openapitools/model/PinsSaveRequest.kt
 src/main/kotlin/org/openapitools/model/PinterestTagEventData.kt

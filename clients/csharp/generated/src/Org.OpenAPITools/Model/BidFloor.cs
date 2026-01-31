@@ -142,8 +142,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "bid_floors":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                bidFloors = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            bidFloors = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "type":
                             type = new Option<string?>(utf8JsonReader.GetString()!);

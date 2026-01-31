@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  * UserBusinessRoleBinding
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserBusinessRoleBinding {
 
   private JsonNullable<BusinessMemberAssetsSummary> assetsSummary = JsonNullable.<BusinessMemberAssetsSummary>undefined();
@@ -154,7 +154,7 @@ public class UserBusinessRoleBinding {
     this.createdTime = createdTime;
   }
 
-  public UserBusinessRoleBinding id(String id) {
+  public UserBusinessRoleBinding id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -166,15 +166,15 @@ public class UserBusinessRoleBinding {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "383791336903426391", description = "Unique identifier of the business member/business partner/employer.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public UserBusinessRoleBinding isSharedPartner(Boolean isSharedPartner) {
+  public UserBusinessRoleBinding isSharedPartner(@Nullable Boolean isSharedPartner) {
     this.isSharedPartner = isSharedPartner;
     return this;
   }
@@ -186,11 +186,11 @@ public class UserBusinessRoleBinding {
   
   @Schema(name = "is_shared_partner", example = "false", description = "This field is only relevant when business_role=\"PARTNER\". <br>If is_shared_partner=FALSE, the partner can access your business assets. If assets_summary is not empty, the assets listed are your business assets the partner has access to. <br>If is_shared_partner=TRUE, you can access the partner's business asset. If assets_summary is not empty, the assets listed are the partner's business assets you have access to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_shared_partner")
-  public Boolean getIsSharedPartner() {
+  public @Nullable Boolean getIsSharedPartner() {
     return isSharedPartner;
   }
 
-  public void setIsSharedPartner(Boolean isSharedPartner) {
+  public void setIsSharedPartner(@Nullable Boolean isSharedPartner) {
     this.isSharedPartner = isSharedPartner;
   }
 

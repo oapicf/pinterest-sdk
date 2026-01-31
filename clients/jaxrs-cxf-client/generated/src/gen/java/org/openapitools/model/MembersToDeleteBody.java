@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class MembersToDeleteBody  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<MembersToDeleteBodyMembersInner> members = new ArrayList<>();
  /**
    * Get members

@@ -11,7 +11,7 @@ void main() {
     //
     // <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>  Get analytics for multiple pins owned by the \"operation user_account\" - or on a group board that has been shared with this account. - The maximum number of pins supported in a single request is 100. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
     //
-    //Future<BuiltMap<String, BuiltMap<String, PinAnalyticsMetricsResponse>>> multiPinsAnalytics(BuiltList<String> pinIds, Date startDate, Date endDate, BuiltList<PinsAnalyticsMetricTypesParameterInner> metricTypes, { String appTypes, String adAccountId }) async
+    //Future<BuiltMap<String, BuiltMap<String, PinAnalyticsMetricsResponse>>> multiPinsAnalytics(BuiltList<String> pinIds, Date startDate, Date endDate, BuiltList<String> metricTypes, { String appTypes, String adAccountId }) async
     test('test multiPinsAnalytics', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Get analytics for a Pin owned by the \"operation user_account\" - or on a group board that has been shared with this account. - By default, the \"operation user_account\" is the token user_account.  Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <a href=\"/docs/api/v5/#operation/ad_accounts/list\">List ad accounts</a>) to use the owner of that ad_account as the \"operation user_account\". In order to do this, the token user_account must have one of the following <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a> roles on the ad_account:  - For Pins on public or protected boards: Admin, Analyst. - For Pins on secret boards: Admin.  If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
     //
-    //Future<BuiltMap<String, PinAnalyticsMetricsResponse>> pinsAnalytics(String pinId, Date startDate, Date endDate, BuiltList<PinsAnalyticsMetricTypesParameterInner> metricTypes, { String appTypes, String splitField, String adAccountId }) async
+    //Future<BuiltMap<String, PinAnalyticsMetricsResponse>> pinsAnalytics(String pinId, Date startDate, Date endDate, BuiltList<String> metricTypes, { String appTypes, String splitField, String adAccountId }) async
     test('test pinsAnalytics', () async {
       // TODO
     });

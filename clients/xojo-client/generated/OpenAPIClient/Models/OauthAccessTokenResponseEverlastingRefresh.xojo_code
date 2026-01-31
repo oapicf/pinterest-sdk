@@ -2,6 +2,21 @@
 Protected Class OauthAccessTokenResponseEverlastingRefresh
 
 	#tag Property, Flags = &h0
+		refresh_token As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		refresh_token_expires_in As Integer
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		refresh_token_expires_at As Integer
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
 		response_type As Xoson.O.OptionalString
 	#tag EndProperty
 
@@ -23,21 +38,6 @@ Protected Class OauthAccessTokenResponseEverlastingRefresh
 
 	#tag Property, Flags = &h0
 		scope As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		refresh_token As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		refresh_token_expires_in As Integer
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
-		refresh_token_expires_at As Integer
 	#tag EndProperty
 
 
@@ -101,6 +101,30 @@ Protected Class OauthAccessTokenResponseEverlastingRefresh
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="refresh_token"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="String"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="refresh_token_expires_in"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="refresh_token_expires_at"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="access_token"
 			Visible=false
 			Group="Behavior"
@@ -130,30 +154,6 @@ Protected Class OauthAccessTokenResponseEverlastingRefresh
 			Group="Behavior"
 			InitialValue=""
 			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="refresh_token"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="String"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="refresh_token_expires_in"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="refresh_token_expires_at"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

@@ -9,12 +9,41 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_bulk_reporting_job_status
 
 type CreateMMMReportResponseData* = object
   ## 
-  reportStatus*: BulkReportingJobStatus
-  token*: string
-  message*: string
-  status*: string
+  reportStatus*: Option[BulkReportingJobStatus]
+  token*: Option[string]
+  message*: Option[string]
+  status*: Option[string]
+
+
+# Custom JSON deserialization for CreateMMMReportResponseData with custom field names
+proc to*(node: JsonNode, T: typedesc[CreateMMMReportResponseData]): CreateMMMReportResponseData =
+  result = CreateMMMReportResponseData()
+  if node.kind == JObject:
+    if node.hasKey("report_status") and node["report_status"].kind != JNull:
+      result.reportStatus = some(to(node["report_status"], typeof(result.reportStatus.get())))
+    if node.hasKey("token") and node["token"].kind != JNull:
+      result.token = some(to(node["token"], typeof(result.token.get())))
+    if node.hasKey("message") and node["message"].kind != JNull:
+      result.message = some(to(node["message"], typeof(result.message.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+
+# Custom JSON serialization for CreateMMMReportResponseData with custom field names
+proc `%`*(obj: CreateMMMReportResponseData): JsonNode =
+  result = newJObject()
+  if obj.reportStatus.isSome():
+    result["report_status"] = %obj.reportStatus.get()
+  if obj.token.isSome():
+    result["token"] = %obj.token.get()
+  if obj.message.isSome():
+    result["message"] = %obj.message.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+

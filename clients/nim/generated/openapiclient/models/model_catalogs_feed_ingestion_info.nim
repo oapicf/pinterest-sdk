@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogsFeedIngestionInfo* = object
   ## 
-  IN_STOCK*: int ## The number of ingested products that are in stock.
-  OUT_OF_STOCK*: int ## The number of ingested products that are in out of stock.
-  PREORDER*: int ## The number of ingested products that are in preorder.
+  IN_STOCK*: Option[int] ## The number of ingested products that are in stock.
+  OUT_OF_STOCK*: Option[int] ## The number of ingested products that are in out of stock.
+  PREORDER*: Option[int] ## The number of ingested products that are in preorder.
+

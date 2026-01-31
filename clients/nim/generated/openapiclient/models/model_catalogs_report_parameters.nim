@@ -9,13 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_hotel_report_parameters
 import model_catalogs_hotel_report_parameters_report
 import model_catalogs_retail_report_parameters
 import model_catalogs_type
 
+# OneOf type
+type CatalogsReportParametersKind* {.pure.} = enum
+  CatalogsRetailReportParametersVariant
+  CatalogsHotelReportParametersVariant
+
 type CatalogsReportParameters* = object
   ## Report parameters
-  catalogType*: CatalogsType
-  report*: CatalogsHotelReportParameters_report
+  case kind*: CatalogsReportParametersKind
+  of CatalogsReportParametersKind.CatalogsRetailReportParametersVariant:
+    CatalogsRetailReportParametersValue*: CatalogsRetailReportParameters
+  of CatalogsReportParametersKind.CatalogsHotelReportParametersVariant:
+    CatalogsHotelReportParametersValue*: CatalogsHotelReportParameters
+
+proc to*(node: JsonNode, T: typedesc[CatalogsReportParameters]): CatalogsReportParameters =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsReportParameters(kind: CatalogsReportParametersKind.CatalogsRetailReportParametersVariant, CatalogsRetailReportParametersValue: to(node, CatalogsRetailReportParameters))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailReportParameters: ", e.msg
+  try:
+    return CatalogsReportParameters(kind: CatalogsReportParametersKind.CatalogsHotelReportParametersVariant, CatalogsHotelReportParametersValue: to(node, CatalogsHotelReportParameters))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelReportParameters: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsReportParameters. JSON: " & $node)
+

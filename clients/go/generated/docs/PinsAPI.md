@@ -40,7 +40,7 @@ func main() {
 	pinIds := []string{"Inner_example"} // []string | List of Pin IDs.
 	startDate := time.Now() // string | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 	endDate := time.Now() // string | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-	metricTypes := []openapiclient.PinsAnalyticsMetricTypesParameterInner{openapiclient.pins_analytics_metric_types_parameter_inner{String: new(string)}} // []PinsAnalyticsMetricTypesParameterInner | Pin metric types to get data for.
+	metricTypes := []string{"MetricTypes_example"} // []string | Pin metric types to get data for.
 	appTypes := "appTypes_example" // string | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
  **pinIds** | **[]string** | List of Pin IDs. | 
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **metricTypes** | [**[]PinsAnalyticsMetricTypesParameterInner**](PinsAnalyticsMetricTypesParameterInner.md) | Pin metric types to get data for. | 
+ **metricTypes** | **[]string** | Pin metric types to get data for. | 
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [default to &quot;ALL&quot;]
  **adAccountId** | **string** | Unique identifier of an ad account. | 
 
@@ -117,7 +117,7 @@ func main() {
 	pinId := "pinId_example" // string | Unique identifier of a Pin.
 	startDate := time.Now() // string | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 	endDate := time.Now() // string | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-	metricTypes := []openapiclient.PinsAnalyticsMetricTypesParameterInner{openapiclient.pins_analytics_metric_types_parameter_inner{String: new(string)}} // []PinsAnalyticsMetricTypesParameterInner | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+	metricTypes := []string{"MetricTypes_example"} // []string | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 	appTypes := "appTypes_example" // string | Apps or devices to get data for, default is all. (optional) (default to "ALL")
 	splitField := "splitField_example" // string | How to split the data into groups. Not including this param means data won't be split. (optional) (default to "NO_SPLIT")
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **metricTypes** | [**[]PinsAnalyticsMetricTypesParameterInner**](PinsAnalyticsMetricTypesParameterInner.md) | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
+ **metricTypes** | **[]string** | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [default to &quot;ALL&quot;]
  **splitField** | **string** | How to split the data into groups. Not including this param means data won&#39;t be split. | [default to &quot;NO_SPLIT&quot;]
  **adAccountId** | **string** | Unique identifier of an ad account. | 

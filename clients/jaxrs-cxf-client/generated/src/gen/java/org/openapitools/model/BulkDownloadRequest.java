@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,39 +7,45 @@ import org.openapitools.model.BulkDownloadRequestCampaignFilter;
 import org.openapitools.model.BulkEntityType;
 import org.openapitools.model.BulkOutputFormat;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Ad entities to get in bulk request.
- **/
+ * Ad entities to get in bulk request.
+ */
 @ApiModel(description="Ad entities to get in bulk request.")
 
 public class BulkDownloadRequest  {
   
-  @ApiModelProperty(example = "[\"CAMPAIGN\",\"AD_GROUP\"]", value = "All entity types specified will be downloaded. Fewer types result in faster downloads.")
  /**
-   * All entity types specified will be downloaded. Fewer types result in faster downloads.
-  **/
+  * All entity types specified will be downloaded. Fewer types result in faster downloads.
+  */
+  @ApiModelProperty(example = "[\"CAMPAIGN\",\"AD_GROUP\"]", value = "All entity types specified will be downloaded. Fewer types result in faster downloads.")
+
   private List<BulkEntityType> entityTypes = new ArrayList<>();
 
-  @ApiModelProperty(value = "All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.")
  /**
-   * All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
-  **/
+  * All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
+  */
+  @ApiModelProperty(value = "All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.")
+
   private List<String> entityIds = new ArrayList<>();
 
-  @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp to retrieve all entities that have changed since this time.")
  /**
-   * Unix UTC timestamp to retrieve all entities that have changed since this time.
-  **/
+  * Unix UTC timestamp to retrieve all entities that have changed since this time.
+  */
+  @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp to retrieve all entities that have changed since this time.")
+
   private String updatedSince;
 
   @ApiModelProperty(value = "")
+
   private BulkDownloadRequestCampaignFilter campaignFilter;
 
   @ApiModelProperty(value = "")
+
   private BulkOutputFormat outputFormat = "JSON";
  /**
    * All entity types specified will be downloaded. Fewer types result in faster downloads.

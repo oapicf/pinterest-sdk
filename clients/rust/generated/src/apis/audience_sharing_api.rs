@@ -84,21 +84,21 @@ pub enum UpdateBusinessToBusinessSharedAudienceError {
 /// List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
 pub async fn ad_accounts_audiences_shared_accounts_slash_list(configuration: &configuration::Configuration, ad_account_id: &str, audience_id: &str, account_type: models::AudienceAccountType, page_size: Option<i32>, bookmark: Option<&str>) -> Result<models::AdAccountsAudiencesSharedAccountsList200Response, Error<AdAccountsAudiencesSharedAccountsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_audience_id = audience_id;
-    let p_account_type = account_type;
-    let p_page_size = page_size;
-    let p_bookmark = bookmark;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_audience_id = audience_id;
+    let p_query_account_type = account_type;
+    let p_query_page_size = page_size;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/shared/accounts", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/shared/accounts", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("audience_id", &p_audience_id.to_string())]);
-    req_builder = req_builder.query(&[("account_type", &p_account_type.to_string())]);
-    if let Some(ref param_value) = p_page_size {
+    req_builder = req_builder.query(&[("audience_id", &p_query_audience_id.to_string())]);
+    req_builder = req_builder.query(&[("account_type", &p_query_account_type.to_string())]);
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -136,21 +136,21 @@ pub async fn ad_accounts_audiences_shared_accounts_slash_list(configuration: &co
 /// List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
 pub async fn business_account_audiences_shared_accounts_slash_list(configuration: &configuration::Configuration, business_id: &str, audience_id: &str, account_type: models::AudienceAccountType, page_size: Option<i32>, bookmark: Option<&str>) -> Result<models::AdAccountsAudiencesSharedAccountsList200Response, Error<BusinessAccountAudiencesSharedAccountsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_audience_id = audience_id;
-    let p_account_type = account_type;
-    let p_page_size = page_size;
-    let p_bookmark = bookmark;
+    let p_path_business_id = business_id;
+    let p_query_audience_id = audience_id;
+    let p_query_account_type = account_type;
+    let p_query_page_size = page_size;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/businesses/{business_id}/audiences/shared/accounts", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/audiences/shared/accounts", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("audience_id", &p_audience_id.to_string())]);
-    req_builder = req_builder.query(&[("account_type", &p_account_type.to_string())]);
-    if let Some(ref param_value) = p_page_size {
+    req_builder = req_builder.query(&[("audience_id", &p_query_audience_id.to_string())]);
+    req_builder = req_builder.query(&[("account_type", &p_query_account_type.to_string())]);
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -188,21 +188,21 @@ pub async fn business_account_audiences_shared_accounts_slash_list(configuration
 /// Get a list of received audiences for the given business.
 pub async fn shared_audiences_for_business_slash_list(configuration: &configuration::Configuration, business_id: &str, bookmark: Option<&str>, order: Option<&str>, page_size: Option<i32>) -> Result<models::AudiencesList200Response, Error<SharedAudiencesForBusinessSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_bookmark = bookmark;
-    let p_order = order;
-    let p_page_size = page_size;
+    let p_path_business_id = business_id;
+    let p_query_bookmark = bookmark;
+    let p_query_order = order;
+    let p_query_page_size = page_size;
 
-    let uri_str = format!("{}/businesses/{business_id}/audiences", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/audiences", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_order {
-        req_builder = req_builder.query(&[("order", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_order {
+        req_builder = req_builder.query(&[("order", &serde_json::to_string(param_value)?)]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -240,10 +240,10 @@ pub async fn shared_audiences_for_business_slash_list(configuration: &configurat
 /// From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same <a href='https://help.pinterest.com/en/business/article/create-and-manage-accounts'>Pinterest Business Hierarchy</a> as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
 pub async fn update_ad_account_to_ad_account_shared_audience(configuration: &configuration::Configuration, ad_account_id: &str, shared_audience: models::SharedAudience) -> Result<models::SharedAudienceResponse, Error<UpdateAdAccountToAdAccountSharedAudienceError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_shared_audience = shared_audience;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_shared_audience = shared_audience;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -252,7 +252,7 @@ pub async fn update_ad_account_to_ad_account_shared_audience(configuration: &con
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_shared_audience);
+    req_builder = req_builder.json(&p_body_shared_audience);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -282,10 +282,10 @@ pub async fn update_ad_account_to_ad_account_shared_audience(configuration: &con
 /// From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
 pub async fn update_ad_account_to_business_shared_audience(configuration: &configuration::Configuration, ad_account_id: &str, business_shared_audience: models::BusinessSharedAudience) -> Result<models::BusinessSharedAudienceResponse, Error<UpdateAdAccountToBusinessSharedAudienceError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_business_shared_audience = business_shared_audience;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_business_shared_audience = business_shared_audience;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/businesses/shared", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/audiences/businesses/shared", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -294,7 +294,7 @@ pub async fn update_ad_account_to_business_shared_audience(configuration: &confi
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_business_shared_audience);
+    req_builder = req_builder.json(&p_body_business_shared_audience);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -324,10 +324,10 @@ pub async fn update_ad_account_to_business_shared_audience(configuration: &confi
 /// From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. <ul> <li>If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.</li> <li>If the business is the recipient of the audience, it can share with any of its owned ad accounts.</li> </ul> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
 pub async fn update_business_to_ad_account_shared_audience(configuration: &configuration::Configuration, business_id: &str, shared_audience: models::SharedAudience) -> Result<models::SharedAudienceResponse, Error<UpdateBusinessToAdAccountSharedAudienceError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_shared_audience = shared_audience;
+    let p_path_business_id = business_id;
+    let p_body_shared_audience = shared_audience;
 
-    let uri_str = format!("{}/businesses/{business_id}/audiences/ad_accounts/shared", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/audiences/ad_accounts/shared", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -336,7 +336,7 @@ pub async fn update_business_to_ad_account_shared_audience(configuration: &confi
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_shared_audience);
+    req_builder = req_builder.json(&p_body_shared_audience);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -366,10 +366,10 @@ pub async fn update_business_to_ad_account_shared_audience(configuration: &confi
 /// From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.<br> This endpoint is not available to all apps.<a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.
 pub async fn update_business_to_business_shared_audience(configuration: &configuration::Configuration, business_id: &str, business_shared_audience: models::BusinessSharedAudience) -> Result<models::BusinessSharedAudienceResponse, Error<UpdateBusinessToBusinessSharedAudienceError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_business_id = business_id;
-    let p_business_shared_audience = business_shared_audience;
+    let p_path_business_id = business_id;
+    let p_body_business_shared_audience = business_shared_audience;
 
-    let uri_str = format!("{}/businesses/{business_id}/audiences/businesses/shared", configuration.base_path, business_id=crate::apis::urlencode(p_business_id));
+    let uri_str = format!("{}/businesses/{business_id}/audiences/businesses/shared", configuration.base_path, business_id=crate::apis::urlencode(p_path_business_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -378,7 +378,7 @@ pub async fn update_business_to_business_shared_audience(configuration: &configu
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_business_shared_audience);
+    req_builder = req_builder.json(&p_body_business_shared_audience);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

@@ -13,11 +13,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsFeedValidationDetails  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedValidationErrors errors;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedValidationWarnings warnings;
  /**
    * Get errors

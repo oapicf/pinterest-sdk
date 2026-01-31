@@ -31,7 +31,7 @@ data class BusinessSharedAudienceResponse(
 
     @Schema(example = "[\"549755885175\"]", description = "Business IDs that received the audience")
     @get:JsonProperty("recipient_business_ids") val recipientBusinessIds: kotlin.collections.List<kotlin.String>? = null
-    ) {
+) {
 
 }
 

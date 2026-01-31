@@ -344,12 +344,10 @@ namespace Org.OpenAPITools.Model
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "rule":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                rule = new Option<AudienceRule?>(JsonSerializer.Deserialize<AudienceRule>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            rule = new Option<AudienceRule?>(JsonSerializer.Deserialize<AudienceRule>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "size":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                size = new Option<int?>(utf8JsonReader.GetInt32());
+                            size = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "status":
                             status = new Option<string?>(utf8JsonReader.GetString()!);
@@ -358,12 +356,10 @@ namespace Org.OpenAPITools.Model
                             type = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "created_timestamp":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdTimestamp = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdTimestamp = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "updated_timestamp":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedTimestamp = new Option<int?>(utf8JsonReader.GetInt32());
+                            updatedTimestamp = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

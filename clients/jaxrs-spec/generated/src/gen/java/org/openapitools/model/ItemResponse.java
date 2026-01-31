@@ -21,19 +21,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Object describing an item record
  **/
 @ApiModel(description = "Object describing an item record")
 @JsonTypeName("ItemResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2025-05-10T05:40:54.952063144Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-01-26T05:38:03.166641305Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemResponse   {
   private CatalogsType catalogType;
   private String itemId;
-  private @Valid List<@Valid ItemValidationEvent> errors = new ArrayList<>();
+  private @Valid List<@Valid Pin> pins;
+  private CatalogsCreativeAssetsAttributes attributes;
   private String hotelId;
   private String creativeAssetsId;
+  private @Valid List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
   public ItemResponse() {
   }
@@ -85,41 +88,60 @@ public class ItemResponse   {
   }
 
   /**
-   * Array with the errors for the item id requested
+   * The pins mapped to the item
    **/
-  public ItemResponse errors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
+  public ItemResponse pins(List<@Valid Pin> pins) {
+    this.pins = pins;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-  @JsonProperty("errors")
-  @Valid public List<@Valid ItemValidationEvent> getErrors() {
-    return errors;
+  @ApiModelProperty(value = "The pins mapped to the item")
+  @JsonProperty("pins")
+  @Valid  @Size(max=11)public List<@Valid Pin> getPins() {
+    return pins;
   }
 
-  @JsonProperty("errors")
-  public void setErrors(List<@Valid ItemValidationEvent> errors) {
-    this.errors = errors;
+  @JsonProperty("pins")
+  public void setPins(List<@Valid Pin> pins) {
+    this.pins = pins;
   }
 
-  public ItemResponse addErrorsItem(ItemValidationEvent errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
+  public ItemResponse addPinsItem(Pin pinsItem) {
+    if (this.pins == null) {
+      this.pins = new ArrayList<>();
     }
 
-    this.errors.add(errorsItem);
+    this.pins.add(pinsItem);
     return this;
   }
 
-  public ItemResponse removeErrorsItem(ItemValidationEvent errorsItem) {
-    if (errorsItem != null && this.errors != null) {
-      this.errors.remove(errorsItem);
+  public ItemResponse removePinsItem(Pin pinsItem) {
+    if (pinsItem != null && this.pins != null) {
+      this.pins.remove(pinsItem);
     }
 
     return this;
   }
+  /**
+   **/
+  public ItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  @Valid public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  @JsonProperty("attributes")
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
+
   /**
    * The catalog hotel id in the merchant namespace
    **/
@@ -160,6 +182,42 @@ public class ItemResponse   {
     this.creativeAssetsId = creativeAssetsId;
   }
 
+  /**
+   * Array with the errors for the item id requested
+   **/
+  public ItemResponse errors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Array with the errors for the item id requested")
+  @JsonProperty("errors")
+  @Valid public List<@Valid ItemValidationEvent> getErrors() {
+    return errors;
+  }
+
+  @JsonProperty("errors")
+  public void setErrors(List<@Valid ItemValidationEvent> errors) {
+    this.errors = errors;
+  }
+
+  public ItemResponse addErrorsItem(ItemValidationEvent errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+
+    this.errors.add(errorsItem);
+    return this;
+  }
+
+  public ItemResponse removeErrorsItem(ItemValidationEvent errorsItem) {
+    if (errorsItem != null && this.errors != null) {
+      this.errors.remove(errorsItem);
+    }
+
+    return this;
+  }
 
   @Override
   public boolean equals(Object o) {
@@ -172,14 +230,16 @@ public class ItemResponse   {
     ItemResponse itemResponse = (ItemResponse) o;
     return Objects.equals(this.catalogType, itemResponse.catalogType) &&
         Objects.equals(this.itemId, itemResponse.itemId) &&
-        Objects.equals(this.errors, itemResponse.errors) &&
+        Objects.equals(this.pins, itemResponse.pins) &&
+        Objects.equals(this.attributes, itemResponse.attributes) &&
         Objects.equals(this.hotelId, itemResponse.hotelId) &&
-        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId);
+        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId) &&
+        Objects.equals(this.errors, itemResponse.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
+    return Objects.hash(catalogType, itemId, pins, attributes, hotelId, creativeAssetsId, errors);
   }
 
   @Override
@@ -189,9 +249,11 @@ public class ItemResponse   {
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

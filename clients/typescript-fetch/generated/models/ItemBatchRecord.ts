@@ -63,6 +63,9 @@ export function ItemBatchRecordFromJSONTyped(json: any, ignoreDiscriminator: boo
     if (json == null) {
         return json;
     }
+    if (typeof json !== 'object') {
+        return json;
+    }
     if (instanceOfItemCreateBatchRecord(json)) {
         return ItemCreateBatchRecordFromJSONTyped(json, true);
     }
@@ -78,7 +81,6 @@ export function ItemBatchRecordFromJSONTyped(json: any, ignoreDiscriminator: boo
     if (instanceOfItemUpsertBatchRecord(json)) {
         return ItemUpsertBatchRecordFromJSONTyped(json, true);
     }
-
     return {} as any;
 }
 
@@ -90,7 +92,9 @@ export function ItemBatchRecordToJSONTyped(value?: ItemBatchRecord | null, ignor
     if (value == null) {
         return value;
     }
-
+    if (typeof value !== 'object') {
+        return value;
+    }
     if (instanceOfItemCreateBatchRecord(value)) {
         return ItemCreateBatchRecordToJSON(value as ItemCreateBatchRecord);
     }
@@ -106,7 +110,6 @@ export function ItemBatchRecordToJSONTyped(value?: ItemBatchRecord | null, ignor
     if (instanceOfItemUpsertBatchRecord(value)) {
         return ItemUpsertBatchRecordToJSON(value as ItemUpsertBatchRecord);
     }
-
     return {};
 }
 

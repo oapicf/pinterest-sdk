@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class OptimizationGoalMetadataScrollupGoalMetadata  {
   
   @ApiModelProperty(value = "")
+
   private String scrollupGoalValueInMicroCurrency;
  /**
    * Get scrollupGoalValueInMicroCurrency

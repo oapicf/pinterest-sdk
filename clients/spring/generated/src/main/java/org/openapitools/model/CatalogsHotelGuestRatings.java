@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelGuestRatings", description = "If specified, you must provide all properties")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelGuestRatings {
 
   private @Nullable BigDecimal score;
@@ -32,7 +32,7 @@ public class CatalogsHotelGuestRatings {
 
   private @Nullable String ratingSystem;
 
-  public CatalogsHotelGuestRatings score(BigDecimal score) {
+  public CatalogsHotelGuestRatings score(@Nullable BigDecimal score) {
     this.score = score;
     return this;
   }
@@ -44,15 +44,15 @@ public class CatalogsHotelGuestRatings {
   @Valid 
   @Schema(name = "score", description = "Your hotel's rating.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("score")
-  public BigDecimal getScore() {
+  public @Nullable BigDecimal getScore() {
     return score;
   }
 
-  public void setScore(BigDecimal score) {
+  public void setScore(@Nullable BigDecimal score) {
     this.score = score;
   }
 
-  public CatalogsHotelGuestRatings numberOfReviewers(Integer numberOfReviewers) {
+  public CatalogsHotelGuestRatings numberOfReviewers(@Nullable Integer numberOfReviewers) {
     this.numberOfReviewers = numberOfReviewers;
     return this;
   }
@@ -64,15 +64,15 @@ public class CatalogsHotelGuestRatings {
   
   @Schema(name = "number_of_reviewers", description = "Total number of people who have rated this hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("number_of_reviewers")
-  public Integer getNumberOfReviewers() {
+  public @Nullable Integer getNumberOfReviewers() {
     return numberOfReviewers;
   }
 
-  public void setNumberOfReviewers(Integer numberOfReviewers) {
+  public void setNumberOfReviewers(@Nullable Integer numberOfReviewers) {
     this.numberOfReviewers = numberOfReviewers;
   }
 
-  public CatalogsHotelGuestRatings maxScore(BigDecimal maxScore) {
+  public CatalogsHotelGuestRatings maxScore(@Nullable BigDecimal maxScore) {
     this.maxScore = maxScore;
     return this;
   }
@@ -84,15 +84,15 @@ public class CatalogsHotelGuestRatings {
   @Valid 
   @Schema(name = "max_score", description = "Max value for the hotel rating score.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("max_score")
-  public BigDecimal getMaxScore() {
+  public @Nullable BigDecimal getMaxScore() {
     return maxScore;
   }
 
-  public void setMaxScore(BigDecimal maxScore) {
+  public void setMaxScore(@Nullable BigDecimal maxScore) {
     this.maxScore = maxScore;
   }
 
-  public CatalogsHotelGuestRatings ratingSystem(String ratingSystem) {
+  public CatalogsHotelGuestRatings ratingSystem(@Nullable String ratingSystem) {
     this.ratingSystem = ratingSystem;
     return this;
   }
@@ -104,11 +104,11 @@ public class CatalogsHotelGuestRatings {
   
   @Schema(name = "rating_system", description = "System you use for guest reviews.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("rating_system")
-  public String getRatingSystem() {
+  public @Nullable String getRatingSystem() {
     return ratingSystem;
   }
 
-  public void setRatingSystem(String ratingSystem) {
+  public void setRatingSystem(@Nullable String ratingSystem) {
     this.ratingSystem = ratingSystem;
   }
 

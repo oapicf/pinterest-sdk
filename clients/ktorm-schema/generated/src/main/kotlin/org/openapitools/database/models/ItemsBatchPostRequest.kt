@@ -21,7 +21,7 @@ import .*
  * 
  * @param catalogType 
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param items Array with catalogs items
  * @param operation 
  * @param catalogId Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
@@ -29,7 +29,7 @@ import .*
 object ItemsBatchPostRequests : BaseTable<ItemsBatchPostRequest>("items_batch_post_request") {
     val catalogType = text("catalog_type").transform({ ItemsBatchPostRequest.CatalogType.valueOf(it) }, { it.value })
     val country = long("country")
-    val language = long("language")
+    val language = text("language").transform({ ItemsBatchPostRequest.Language.valueOf(it) }, { it.value }) /* We recommend using the CatalogsLocale values. */
     val operation = long("operation")
     val catalogId = text("catalog_id") /* null */ /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */
 
@@ -39,7 +39,7 @@ object ItemsBatchPostRequests : BaseTable<ItemsBatchPostRequest>("items_batch_po
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = ItemsBatchPostRequest(
         catalogType = row[catalogType] ?: ItemsBatchPostRequest.CatalogType.valueOf("") /* kotlin.String */,
         country = Countrys.createEntity(row, withReferences) /* Country */,
-        language = CatalogsItemsRequestLanguages.createEntity(row, withReferences) /* CatalogsItemsRequestLanguage */,
+        language = row[language] ?: ItemsBatchPostRequest.Language.valueOf("") /* kotlin.String */ /* We recommend using the CatalogsLocale values. */,
         items = emptyList() /* kotlin.Array<ItemDeleteBatchRecord> */ /* Array with catalogs items */,
         operation = BatchOperations.createEntity(row, withReferences) /* BatchOperation */,
         catalogId = row[catalogId]  /* kotlin.String? */ /* Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog */

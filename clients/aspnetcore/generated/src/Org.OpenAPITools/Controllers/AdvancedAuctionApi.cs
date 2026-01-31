@@ -55,17 +55,17 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdvancedAuctionItems));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(500, default(Error));
+            // return StatusCode(500, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"catalog_id\" : \"2680059592705\",\n  \"items\" : [ {\n    \"country\" : \"US\",\n    \"bid_options\" : {\n      \"bid_in_micro_currency\" : 5000000,\n      \"placement_multipliers\" : {\n        \"browse\" : 0.9,\n        \"search\" : 1.2\n      },\n      \"app_type_multipliers\" : {\n        \"android_mobile\" : 1.1,\n        \"android_tablet\" : 1.1,\n        \"ipad\" : 1.2,\n        \"iphone\" : 1.2,\n        \"web\" : 0.9,\n        \"web_mobile\" : 0.8\n      }\n    },\n    \"item_id\" : \"DS0294-M\",\n    \"language\" : \"EN\"\n  }, {\n    \"country\" : \"US\",\n    \"bid_options\" : {\n      \"bid_in_micro_currency\" : 5000000,\n      \"placement_multipliers\" : {\n        \"browse\" : 0.9,\n        \"search\" : 1.2\n      },\n      \"app_type_multipliers\" : {\n        \"android_mobile\" : 1.1,\n        \"android_tablet\" : 1.1,\n        \"ipad\" : 1.2,\n        \"iphone\" : 1.2,\n        \"web\" : 0.9,\n        \"web_mobile\" : 0.8\n      }\n    },\n    \"item_id\" : \"DS0294-M\",\n    \"language\" : \"EN\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -76,7 +76,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdvancedAuctionItems>(exampleJson)
-            : default(AdvancedAuctionItems);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -108,17 +108,17 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AdvancedAuctionProcessedItems));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(401, default(Error));
+            // return StatusCode(401, default);
             //TODO: Uncomment the next line to return response 403 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(403, default(Error));
+            // return StatusCode(403, default);
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(500, default(Error));
+            // return StatusCode(500, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"catalog_id\" : \"2680059592705\",\n  \"items\" : [ {\n    \"operation\" : \"UPSERT\",\n    \"errors\" : [ {\n      \"code\" : 6,\n      \"message\" : \"Bid in micro currency should be non-negative\"\n    }, {\n      \"code\" : 6,\n      \"message\" : \"Bid in micro currency should be non-negative\"\n    } ]\n  }, {\n    \"operation\" : \"UPSERT\",\n    \"errors\" : [ {\n      \"code\" : 6,\n      \"message\" : \"Bid in micro currency should be non-negative\"\n    }, {\n      \"code\" : 6,\n      \"message\" : \"Bid in micro currency should be non-negative\"\n    } ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -129,7 +129,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AdvancedAuctionProcessedItems>(exampleJson)
-            : default(AdvancedAuctionProcessedItems);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

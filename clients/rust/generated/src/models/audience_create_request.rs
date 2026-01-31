@@ -24,18 +24,19 @@ pub struct AudienceCreateRequest {
     /// Audience description.
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
+    /// <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
     #[serde(rename = "audience_type")]
-    pub audience_type: Box<models::AudienceCreateRequest1AudienceType>,
+    pub audience_type: models::AudienceType,
 }
 
 impl AudienceCreateRequest {
-    pub fn new(name: String, rule: models::AudienceRule, audience_type: models::AudienceCreateRequest1AudienceType) -> AudienceCreateRequest {
+    pub fn new(name: String, rule: models::AudienceRule, audience_type: models::AudienceType) -> AudienceCreateRequest {
         AudienceCreateRequest {
             ad_account_id: None,
             name,
             rule: Box::new(rule),
             description: None,
-            audience_type: Box::new(audience_type),
+            audience_type,
         }
     }
 }

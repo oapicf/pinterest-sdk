@@ -2,17 +2,17 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Video ID-based media source
- **/
+ * Video ID-based media source
+ */
 @ApiModel(description="Video ID-based media source")
 
 public class PinMediaSourceVideoID  {
@@ -50,12 +50,14 @@ VIDEO_ID(String.valueOf("video_id"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private SourceTypeEnum sourceType;
 
-  @ApiModelProperty(value = "Cover image url.")
  /**
-   * Cover image url.
-  **/
+  * Cover image url.
+  */
+  @ApiModelProperty(value = "Cover image url.")
+
   private String coverImageUrl;
 
 public enum CoverImageContentTypeEnum {
@@ -90,25 +92,29 @@ IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"))
     }
 }
 
-  @ApiModelProperty(value = "Content type for cover image Base64.")
  /**
-   * Content type for cover image Base64.
-  **/
+  * Content type for cover image Base64.
+  */
+  @ApiModelProperty(value = "Content type for cover image Base64.")
+
   private CoverImageContentTypeEnum coverImageContentType;
 
-  @ApiModelProperty(value = "Cover image Base64.")
  /**
-   * Cover image Base64.
-  **/
+  * Cover image Base64.
+  */
+  @ApiModelProperty(value = "Cover image Base64.")
+
   private String coverImageData;
 
   @ApiModelProperty(required = true, value = "")
+
   private String mediaId;
 
-  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
  /**
-   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-  **/
+  * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+  */
+  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
+
   private Boolean isStandard = true;
  /**
    * Get sourceType

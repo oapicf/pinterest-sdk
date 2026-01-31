@@ -73,7 +73,7 @@ data class CatalogsCreativeAssetsAttributes(
 
     @Schema(example = "https://scene.example.com/image/image_v2.mp4", description = "The creative assets video.")
     @get:JsonProperty("video_link") val videoLink: kotlin.String? = null
-    ) {
+) {
 
 }
 

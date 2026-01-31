@@ -33,7 +33,7 @@ import javax.annotation.Generated;
  * AdGroupCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupCreateRequest {
 
   private String name;
@@ -78,7 +78,7 @@ public class AdGroupCreateRequest {
     
     TARGET_AVG("TARGET_AVG");
 
-    private String value;
+    private final String value;
 
     BidStrategyTypeEnum(String value) {
       this.value = value;
@@ -143,7 +143,7 @@ public class AdGroupCreateRequest {
     this.name = name;
   }
 
-  public AdGroupCreateRequest status(EntityStatus status) {
+  public AdGroupCreateRequest status(@Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -155,11 +155,11 @@ public class AdGroupCreateRequest {
   @Valid 
   @Schema(name = "status", description = "Ad group/entity status.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public EntityStatus getStatus() {
+  public @Nullable EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 
@@ -283,7 +283,7 @@ public class AdGroupCreateRequest {
     this.endTime = endTime;
   }
 
-  public AdGroupCreateRequest targetingSpec(TargetingSpec targetingSpec) {
+  public AdGroupCreateRequest targetingSpec(@Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
     return this;
   }
@@ -295,15 +295,15 @@ public class AdGroupCreateRequest {
   @Valid 
   @Schema(name = "targeting_spec", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
+  public @Nullable TargetingSpec getTargetingSpec() {
     return targetingSpec;
   }
 
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
+  public void setTargetingSpec(@Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
   }
 
-  public AdGroupCreateRequest lifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
+  public AdGroupCreateRequest lifetimeFrequencyCap(@Nullable Integer lifetimeFrequencyCap) {
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
     return this;
   }
@@ -315,11 +315,11 @@ public class AdGroupCreateRequest {
   
   @Schema(name = "lifetime_frequency_cap", example = "100", description = "Set a limit to the number of times a promoted pin from this campaign can be impressed by a pinner within the past rolling 30 days. Only available for CPM (cost per mille (1000 impressions))  ad groups. A CPM ad group has an IMPRESSION <a href=\"/docs/redoc/#section/Billable-event\">billable_event</a> value. This field **REQUIRES** the `end_time` field.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("lifetime_frequency_cap")
-  public Integer getLifetimeFrequencyCap() {
+  public @Nullable Integer getLifetimeFrequencyCap() {
     return lifetimeFrequencyCap;
   }
 
-  public void setLifetimeFrequencyCap(Integer lifetimeFrequencyCap) {
+  public void setLifetimeFrequencyCap(@Nullable Integer lifetimeFrequencyCap) {
     this.lifetimeFrequencyCap = lifetimeFrequencyCap;
   }
 
@@ -343,7 +343,7 @@ public class AdGroupCreateRequest {
     this.trackingUrls = trackingUrls;
   }
 
-  public AdGroupCreateRequest autoTargetingEnabled(Boolean autoTargetingEnabled) {
+  public AdGroupCreateRequest autoTargetingEnabled(@Nullable Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
     return this;
   }
@@ -355,15 +355,15 @@ public class AdGroupCreateRequest {
   
   @Schema(name = "auto_targeting_enabled", example = "true", description = "Enable auto-targeting for ad group.Default value is True. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("auto_targeting_enabled")
-  public Boolean getAutoTargetingEnabled() {
+  public @Nullable Boolean getAutoTargetingEnabled() {
     return autoTargetingEnabled;
   }
 
-  public void setAutoTargetingEnabled(Boolean autoTargetingEnabled) {
+  public void setAutoTargetingEnabled(@Nullable Boolean autoTargetingEnabled) {
     this.autoTargetingEnabled = autoTargetingEnabled;
   }
 
-  public AdGroupCreateRequest placementGroup(PlacementGroupType placementGroup) {
+  public AdGroupCreateRequest placementGroup(@Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
     return this;
   }
@@ -375,11 +375,11 @@ public class AdGroupCreateRequest {
   @Valid 
   @Schema(name = "placement_group", description = "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("placement_group")
-  public PlacementGroupType getPlacementGroup() {
+  public @Nullable PlacementGroupType getPlacementGroup() {
     return placementGroup;
   }
 
-  public void setPlacementGroup(PlacementGroupType placementGroup) {
+  public void setPlacementGroup(@Nullable PlacementGroupType placementGroup) {
     this.placementGroup = placementGroup;
   }
 

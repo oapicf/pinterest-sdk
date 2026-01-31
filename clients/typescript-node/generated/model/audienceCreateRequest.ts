@@ -11,8 +11,8 @@
  */
 
 import { RequestFile } from './models';
-import { AudienceCreateRequest1AudienceType } from './audienceCreateRequest1AudienceType';
 import { AudienceRule } from './audienceRule';
+import { AudienceType } from './audienceType';
 
 export class AudienceCreateRequest {
     /**
@@ -28,7 +28,10 @@ export class AudienceCreateRequest {
     * Audience description.
     */
     'description'?: string;
-    'audienceType': AudienceCreateRequest1AudienceType;
+    /**
+    * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+    */
+    'audienceType': AudienceType;
 
     static discriminator: string | undefined = undefined;
 
@@ -56,7 +59,7 @@ export class AudienceCreateRequest {
         {
             "name": "audienceType",
             "baseName": "audience_type",
-            "type": "AudienceCreateRequest1AudienceType"
+            "type": "AudienceType"
         }    ];
 
     static getAttributeTypeMap() {
@@ -64,3 +67,5 @@ export class AudienceCreateRequest {
     }
 }
 
+export namespace AudienceCreateRequest {
+}

@@ -155,15 +155,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "question_id":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                questionId = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            questionId = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "question_text":
                             questionText = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "options":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                options = new Option<List<QuizPinOption>?>(JsonSerializer.Deserialize<List<QuizPinOption>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            options = new Option<List<QuizPinOption>?>(JsonSerializer.Deserialize<List<QuizPinOption>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

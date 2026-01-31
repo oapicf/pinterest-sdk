@@ -33,7 +33,6 @@ import com.github.oapicf.pinterestsdk.model.Pin;
 import com.github.oapicf.pinterestsdk.model.PinAnalyticsMetricsResponse;
 import com.github.oapicf.pinterestsdk.model.PinCreate;
 import com.github.oapicf.pinterestsdk.model.PinUpdate;
-import com.github.oapicf.pinterestsdk.model.PinsAnalyticsMetricTypesParameterInner;
 import com.github.oapicf.pinterestsdk.model.PinsList200Response;
 import com.github.oapicf.pinterestsdk.model.PinsSaveRequest;
 
@@ -103,7 +102,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call multiPinsAnalyticsCall(List<String> pinIds, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call multiPinsAnalyticsCall(@javax.annotation.Nonnull List<String> pinIds, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> metricTypes, @javax.annotation.Nullable String appTypes, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -172,7 +171,7 @@ public class PinsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call multiPinsAnalyticsValidateBeforeCall(List<String> pinIds, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call multiPinsAnalyticsValidateBeforeCall(@javax.annotation.Nonnull List<String> pinIds, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> metricTypes, @javax.annotation.Nullable String appTypes, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'pinIds' is set
         if (pinIds == null) {
             throw new ApiException("Missing the required parameter 'pinIds' when calling multiPinsAnalytics(Async)");
@@ -220,7 +219,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Map<String, PinAnalyticsMetricsResponse>> multiPinsAnalytics(List<String> pinIds, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId) throws ApiException {
+    public Map<String, Map<String, PinAnalyticsMetricsResponse>> multiPinsAnalytics(@javax.annotation.Nonnull List<String> pinIds, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> metricTypes, @javax.annotation.Nullable String appTypes, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<Map<String, Map<String, PinAnalyticsMetricsResponse>>> localVarResp = multiPinsAnalyticsWithHttpInfo(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId);
         return localVarResp.getData();
     }
@@ -248,7 +247,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Map<String, PinAnalyticsMetricsResponse>>> multiPinsAnalyticsWithHttpInfo(List<String> pinIds, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId) throws ApiException {
+    public ApiResponse<Map<String, Map<String, PinAnalyticsMetricsResponse>>> multiPinsAnalyticsWithHttpInfo(@javax.annotation.Nonnull List<String> pinIds, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> metricTypes, @javax.annotation.Nullable String appTypes, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = multiPinsAnalyticsValidateBeforeCall(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId, null);
         Type localVarReturnType = new TypeToken<Map<String, Map<String, PinAnalyticsMetricsResponse>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -278,7 +277,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call multiPinsAnalyticsAsync(List<String> pinIds, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String adAccountId, final ApiCallback<Map<String, Map<String, PinAnalyticsMetricsResponse>>> _callback) throws ApiException {
+    public okhttp3.Call multiPinsAnalyticsAsync(@javax.annotation.Nonnull List<String> pinIds, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> metricTypes, @javax.annotation.Nullable String appTypes, @javax.annotation.Nullable String adAccountId, final ApiCallback<Map<String, Map<String, PinAnalyticsMetricsResponse>>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = multiPinsAnalyticsValidateBeforeCall(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<Map<String, Map<String, PinAnalyticsMetricsResponse>>>(){}.getType();
@@ -308,7 +307,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsAnalyticsCall(String pinId, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call pinsAnalyticsCall(@javax.annotation.Nonnull String pinId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> metricTypes, @javax.annotation.Nullable String appTypes, @javax.annotation.Nullable String splitField, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -378,7 +377,7 @@ public class PinsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call pinsAnalyticsValidateBeforeCall(String pinId, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call pinsAnalyticsValidateBeforeCall(@javax.annotation.Nonnull String pinId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> metricTypes, @javax.annotation.Nullable String appTypes, @javax.annotation.Nullable String splitField, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'pinId' is set
         if (pinId == null) {
             throw new ApiException("Missing the required parameter 'pinId' when calling pinsAnalytics(Async)");
@@ -426,7 +425,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, PinAnalyticsMetricsResponse> pinsAnalytics(String pinId, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId) throws ApiException {
+    public Map<String, PinAnalyticsMetricsResponse> pinsAnalytics(@javax.annotation.Nonnull String pinId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> metricTypes, @javax.annotation.Nullable String appTypes, @javax.annotation.Nullable String splitField, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<Map<String, PinAnalyticsMetricsResponse>> localVarResp = pinsAnalyticsWithHttpInfo(pinId, startDate, endDate, metricTypes, appTypes, splitField, adAccountId);
         return localVarResp.getData();
     }
@@ -454,7 +453,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, PinAnalyticsMetricsResponse>> pinsAnalyticsWithHttpInfo(String pinId, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId) throws ApiException {
+    public ApiResponse<Map<String, PinAnalyticsMetricsResponse>> pinsAnalyticsWithHttpInfo(@javax.annotation.Nonnull String pinId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> metricTypes, @javax.annotation.Nullable String appTypes, @javax.annotation.Nullable String splitField, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = pinsAnalyticsValidateBeforeCall(pinId, startDate, endDate, metricTypes, appTypes, splitField, adAccountId, null);
         Type localVarReturnType = new TypeToken<Map<String, PinAnalyticsMetricsResponse>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -484,7 +483,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsAnalyticsAsync(String pinId, LocalDate startDate, LocalDate endDate, List<PinsAnalyticsMetricTypesParameterInner> metricTypes, String appTypes, String splitField, String adAccountId, final ApiCallback<Map<String, PinAnalyticsMetricsResponse>> _callback) throws ApiException {
+    public okhttp3.Call pinsAnalyticsAsync(@javax.annotation.Nonnull String pinId, @javax.annotation.Nonnull LocalDate startDate, @javax.annotation.Nonnull LocalDate endDate, @javax.annotation.Nonnull List<String> metricTypes, @javax.annotation.Nullable String appTypes, @javax.annotation.Nullable String splitField, @javax.annotation.Nullable String adAccountId, final ApiCallback<Map<String, PinAnalyticsMetricsResponse>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = pinsAnalyticsValidateBeforeCall(pinId, startDate, endDate, metricTypes, appTypes, splitField, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<Map<String, PinAnalyticsMetricsResponse>>(){}.getType();
@@ -510,7 +509,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsCreateCall(PinCreate pinCreate, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call pinsCreateCall(@javax.annotation.Nullable PinCreate pinCreate, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -560,7 +559,7 @@ public class PinsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call pinsCreateValidateBeforeCall(PinCreate pinCreate, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call pinsCreateValidateBeforeCall(@javax.annotation.Nullable PinCreate pinCreate, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'pinCreate' is set
         if (pinCreate == null) {
             throw new ApiException("Missing the required parameter 'pinCreate' when calling pinsCreate(Async)");
@@ -589,7 +588,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public Pin pinsCreate(PinCreate pinCreate, String adAccountId) throws ApiException {
+    public Pin pinsCreate(@javax.annotation.Nullable PinCreate pinCreate, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<Pin> localVarResp = pinsCreateWithHttpInfo(pinCreate, adAccountId);
         return localVarResp.getData();
     }
@@ -613,7 +612,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Pin> pinsCreateWithHttpInfo(PinCreate pinCreate, String adAccountId) throws ApiException {
+    public ApiResponse<Pin> pinsCreateWithHttpInfo(@javax.annotation.Nullable PinCreate pinCreate, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = pinsCreateValidateBeforeCall(pinCreate, adAccountId, null);
         Type localVarReturnType = new TypeToken<Pin>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -639,7 +638,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsCreateAsync(PinCreate pinCreate, String adAccountId, final ApiCallback<Pin> _callback) throws ApiException {
+    public okhttp3.Call pinsCreateAsync(@javax.annotation.Nullable PinCreate pinCreate, @javax.annotation.Nullable String adAccountId, final ApiCallback<Pin> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = pinsCreateValidateBeforeCall(pinCreate, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<Pin>(){}.getType();
@@ -663,7 +662,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsDeleteCall(String pinId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call pinsDeleteCall(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -713,7 +712,7 @@ public class PinsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call pinsDeleteValidateBeforeCall(String pinId, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call pinsDeleteValidateBeforeCall(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'pinId' is set
         if (pinId == null) {
             throw new ApiException("Missing the required parameter 'pinId' when calling pinsDelete(Async)");
@@ -739,7 +738,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public void pinsDelete(String pinId, String adAccountId) throws ApiException {
+    public void pinsDelete(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         pinsDeleteWithHttpInfo(pinId, adAccountId);
     }
 
@@ -760,7 +759,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> pinsDeleteWithHttpInfo(String pinId, String adAccountId) throws ApiException {
+    public ApiResponse<Void> pinsDeleteWithHttpInfo(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = pinsDeleteValidateBeforeCall(pinId, adAccountId, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -783,7 +782,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsDeleteAsync(String pinId, String adAccountId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call pinsDeleteAsync(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable String adAccountId, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = pinsDeleteValidateBeforeCall(pinId, adAccountId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
@@ -807,7 +806,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsGetCall(String pinId, Boolean pinMetrics, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call pinsGetCall(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable Boolean pinMetrics, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -861,7 +860,7 @@ public class PinsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call pinsGetValidateBeforeCall(String pinId, Boolean pinMetrics, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call pinsGetValidateBeforeCall(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable Boolean pinMetrics, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'pinId' is set
         if (pinId == null) {
             throw new ApiException("Missing the required parameter 'pinId' when calling pinsGet(Async)");
@@ -889,7 +888,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public Pin pinsGet(String pinId, Boolean pinMetrics, String adAccountId) throws ApiException {
+    public Pin pinsGet(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable Boolean pinMetrics, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<Pin> localVarResp = pinsGetWithHttpInfo(pinId, pinMetrics, adAccountId);
         return localVarResp.getData();
     }
@@ -912,7 +911,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Pin> pinsGetWithHttpInfo(String pinId, Boolean pinMetrics, String adAccountId) throws ApiException {
+    public ApiResponse<Pin> pinsGetWithHttpInfo(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable Boolean pinMetrics, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = pinsGetValidateBeforeCall(pinId, pinMetrics, adAccountId, null);
         Type localVarReturnType = new TypeToken<Pin>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -937,7 +936,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsGetAsync(String pinId, Boolean pinMetrics, String adAccountId, final ApiCallback<Pin> _callback) throws ApiException {
+    public okhttp3.Call pinsGetAsync(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable Boolean pinMetrics, @javax.annotation.Nullable String adAccountId, final ApiCallback<Pin> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = pinsGetValidateBeforeCall(pinId, pinMetrics, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<Pin>(){}.getType();
@@ -966,7 +965,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsListCall(String bookmark, Integer pageSize, String pinFilter, Boolean includeProtectedPins, String pinType, List<String> creativeTypes, String adAccountId, Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call pinsListCall(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pinFilter, @javax.annotation.Nullable Boolean includeProtectedPins, @javax.annotation.Nullable String pinType, @javax.annotation.Nullable List<String> creativeTypes, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1043,7 +1042,7 @@ public class PinsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call pinsListValidateBeforeCall(String bookmark, Integer pageSize, String pinFilter, Boolean includeProtectedPins, String pinType, List<String> creativeTypes, String adAccountId, Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call pinsListValidateBeforeCall(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pinFilter, @javax.annotation.Nullable Boolean includeProtectedPins, @javax.annotation.Nullable String pinType, @javax.annotation.Nullable List<String> creativeTypes, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics, final ApiCallback _callback) throws ApiException {
         return pinsListCall(bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics, _callback);
 
     }
@@ -1070,7 +1069,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public PinsList200Response pinsList(String bookmark, Integer pageSize, String pinFilter, Boolean includeProtectedPins, String pinType, List<String> creativeTypes, String adAccountId, Boolean pinMetrics) throws ApiException {
+    public PinsList200Response pinsList(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pinFilter, @javax.annotation.Nullable Boolean includeProtectedPins, @javax.annotation.Nullable String pinType, @javax.annotation.Nullable List<String> creativeTypes, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics) throws ApiException {
         ApiResponse<PinsList200Response> localVarResp = pinsListWithHttpInfo(bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics);
         return localVarResp.getData();
     }
@@ -1097,7 +1096,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PinsList200Response> pinsListWithHttpInfo(String bookmark, Integer pageSize, String pinFilter, Boolean includeProtectedPins, String pinType, List<String> creativeTypes, String adAccountId, Boolean pinMetrics) throws ApiException {
+    public ApiResponse<PinsList200Response> pinsListWithHttpInfo(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pinFilter, @javax.annotation.Nullable Boolean includeProtectedPins, @javax.annotation.Nullable String pinType, @javax.annotation.Nullable List<String> creativeTypes, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics) throws ApiException {
         okhttp3.Call localVarCall = pinsListValidateBeforeCall(bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics, null);
         Type localVarReturnType = new TypeToken<PinsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1126,7 +1125,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsListAsync(String bookmark, Integer pageSize, String pinFilter, Boolean includeProtectedPins, String pinType, List<String> creativeTypes, String adAccountId, Boolean pinMetrics, final ApiCallback<PinsList200Response> _callback) throws ApiException {
+    public okhttp3.Call pinsListAsync(@javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pinFilter, @javax.annotation.Nullable Boolean includeProtectedPins, @javax.annotation.Nullable String pinType, @javax.annotation.Nullable List<String> creativeTypes, @javax.annotation.Nullable String adAccountId, @javax.annotation.Nullable Boolean pinMetrics, final ApiCallback<PinsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = pinsListValidateBeforeCall(bookmark, pageSize, pinFilter, includeProtectedPins, pinType, creativeTypes, adAccountId, pinMetrics, _callback);
         Type localVarReturnType = new TypeToken<PinsList200Response>(){}.getType();
@@ -1151,7 +1150,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsSaveCall(String pinId, PinsSaveRequest pinsSaveRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call pinsSaveCall(@javax.annotation.Nonnull String pinId, @javax.annotation.Nonnull PinsSaveRequest pinsSaveRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1202,7 +1201,7 @@ public class PinsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call pinsSaveValidateBeforeCall(String pinId, PinsSaveRequest pinsSaveRequest, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call pinsSaveValidateBeforeCall(@javax.annotation.Nonnull String pinId, @javax.annotation.Nonnull PinsSaveRequest pinsSaveRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'pinId' is set
         if (pinId == null) {
             throw new ApiException("Missing the required parameter 'pinId' when calling pinsSave(Async)");
@@ -1235,7 +1234,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public Pin pinsSave(String pinId, PinsSaveRequest pinsSaveRequest, String adAccountId) throws ApiException {
+    public Pin pinsSave(@javax.annotation.Nonnull String pinId, @javax.annotation.Nonnull PinsSaveRequest pinsSaveRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<Pin> localVarResp = pinsSaveWithHttpInfo(pinId, pinsSaveRequest, adAccountId);
         return localVarResp.getData();
     }
@@ -1258,7 +1257,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Pin> pinsSaveWithHttpInfo(String pinId, PinsSaveRequest pinsSaveRequest, String adAccountId) throws ApiException {
+    public ApiResponse<Pin> pinsSaveWithHttpInfo(@javax.annotation.Nonnull String pinId, @javax.annotation.Nonnull PinsSaveRequest pinsSaveRequest, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = pinsSaveValidateBeforeCall(pinId, pinsSaveRequest, adAccountId, null);
         Type localVarReturnType = new TypeToken<Pin>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1283,7 +1282,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsSaveAsync(String pinId, PinsSaveRequest pinsSaveRequest, String adAccountId, final ApiCallback<Pin> _callback) throws ApiException {
+    public okhttp3.Call pinsSaveAsync(@javax.annotation.Nonnull String pinId, @javax.annotation.Nonnull PinsSaveRequest pinsSaveRequest, @javax.annotation.Nullable String adAccountId, final ApiCallback<Pin> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = pinsSaveValidateBeforeCall(pinId, pinsSaveRequest, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<Pin>(){}.getType();
@@ -1309,7 +1308,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsUpdateCall(String pinId, PinUpdate pinUpdate, String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call pinsUpdateCall(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable PinUpdate pinUpdate, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1360,7 +1359,7 @@ public class PinsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call pinsUpdateValidateBeforeCall(String pinId, PinUpdate pinUpdate, String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call pinsUpdateValidateBeforeCall(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable PinUpdate pinUpdate, @javax.annotation.Nullable String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'pinId' is set
         if (pinId == null) {
             throw new ApiException("Missing the required parameter 'pinId' when calling pinsUpdate(Async)");
@@ -1394,7 +1393,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public Pin pinsUpdate(String pinId, PinUpdate pinUpdate, String adAccountId) throws ApiException {
+    public Pin pinsUpdate(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable PinUpdate pinUpdate, @javax.annotation.Nullable String adAccountId) throws ApiException {
         ApiResponse<Pin> localVarResp = pinsUpdateWithHttpInfo(pinId, pinUpdate, adAccountId);
         return localVarResp.getData();
     }
@@ -1418,7 +1417,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Pin> pinsUpdateWithHttpInfo(String pinId, PinUpdate pinUpdate, String adAccountId) throws ApiException {
+    public ApiResponse<Pin> pinsUpdateWithHttpInfo(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable PinUpdate pinUpdate, @javax.annotation.Nullable String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = pinsUpdateValidateBeforeCall(pinId, pinUpdate, adAccountId, null);
         Type localVarReturnType = new TypeToken<Pin>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1444,7 +1443,7 @@ public class PinsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call pinsUpdateAsync(String pinId, PinUpdate pinUpdate, String adAccountId, final ApiCallback<Pin> _callback) throws ApiException {
+    public okhttp3.Call pinsUpdateAsync(@javax.annotation.Nonnull String pinId, @javax.annotation.Nullable PinUpdate pinUpdate, @javax.annotation.Nullable String adAccountId, final ApiCallback<Pin> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = pinsUpdateValidateBeforeCall(pinId, pinUpdate, adAccountId, _callback);
         Type localVarReturnType = new TypeToken<Pin>(){}.getType();

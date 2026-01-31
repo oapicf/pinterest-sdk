@@ -49,11 +49,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(TargetingTemplateGetResponseData));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"sizing\" : {\n    \"reach_estimate\" : {\n      \"estimate\" : 63492000,\n      \"lower_bound\" : 47619000,\n      \"upper_bound\" : 79365000\n    }\n  },\n  \"created_time\" : 1432744744,\n  \"updated_time\" : 1432744744,\n  \"keywords\" : [ {\n    \"value\" : \"cats\",\n    \"match_type\" : \"EXACT_NEGATIVE\"\n  } ],\n  \"auto_targeting_enabled\" : true,\n  \"tracking_urls\" : {\n    \"impression\" : [ \"URL1\", \"URL2\" ],\n    \"click\" : [ \"URL1\", \"URL2\" ],\n    \"engagement\" : [ \"URL1\", \"URL2\" ],\n    \"buyable_button\" : [ \"URL1\", \"URL2\" ],\n    \"audience_verification\" : [ \"URL1\", \"URL2\" ]\n  },\n  \"ad_account_id\" : \"549755885175\",\n  \"targeting_attributes\" : {\n    \"GEO\" : [ \"GEO\", \"GEO\" ],\n    \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ],\n    \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ],\n    \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ],\n    \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ],\n    \"SHOPPING_RETARGETING\" : [ {\n      \"lookback_window\" : 30,\n      \"exclusion_window\" : 14,\n      \"tag_types\" : [ 0, 6 ]\n    }, {\n      \"lookback_window\" : 30,\n      \"exclusion_window\" : 14,\n      \"tag_types\" : [ 0, 6 ]\n    } ],\n    \"GENDER\" : [ \"unknown\", \"unknown\" ],\n    \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ],\n    \"APPTYPE\" : [ \"ipad\", \"iphone\" ],\n    \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ],\n    \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ]\n  },\n  \"valid\" : true,\n  \"name\" : \"Gaming\",\n  \"id\" : \"643\",\n  \"placement_group\" : \"ALL\",\n  \"status\" : \"ACTIVE\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -61,7 +61,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<TargetingTemplateGetResponseData>(exampleJson)
-            : default(TargetingTemplateGetResponseData);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -90,11 +90,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(TargetingTemplateList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"targeting_attributes\" : {\n      \"GEO\" : [ \"GEO\", \"GEO\" ],\n      \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ],\n      \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ],\n      \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ],\n      \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ],\n      \"SHOPPING_RETARGETING\" : [ {\n        \"lookback_window\" : 30,\n        \"exclusion_window\" : 14,\n        \"tag_types\" : [ 0, 6 ]\n      }, {\n        \"lookback_window\" : 30,\n        \"exclusion_window\" : 14,\n        \"tag_types\" : [ 0, 6 ]\n      } ],\n      \"GENDER\" : [ \"unknown\", \"unknown\" ],\n      \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ],\n      \"APPTYPE\" : [ \"ipad\", \"iphone\" ],\n      \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ],\n      \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ]\n    },\n    \"sizing\" : {\n      \"reach_estimate\" : {\n        \"estimate\" : 63492000,\n        \"lower_bound\" : 47619000,\n        \"upper_bound\" : 79365000\n      }\n    },\n    \"created_time\" : 1432744744,\n    \"updated_time\" : 1432744744,\n    \"keywords\" : [ {\n      \"value\" : \"cats\",\n      \"match_type\" : \"EXACT_NEGATIVE\"\n    } ],\n    \"name\" : \"Gaming\",\n    \"id\" : \"643\",\n    \"auto_targeting_enabled\" : true,\n    \"placement_group\" : \"ALL\",\n    \"tracking_urls\" : {\n      \"impression\" : [ \"URL1\", \"URL2\" ],\n      \"click\" : [ \"URL1\", \"URL2\" ],\n      \"engagement\" : [ \"URL1\", \"URL2\" ],\n      \"buyable_button\" : [ \"URL1\", \"URL2\" ],\n      \"audience_verification\" : [ \"URL1\", \"URL2\" ]\n    },\n    \"ad_account_id\" : \"549755885175\",\n    \"status\" : \"ACTIVE\"\n  }, {\n    \"targeting_attributes\" : {\n      \"GEO\" : [ \"GEO\", \"GEO\" ],\n      \"LOCATION\" : [ \"LOCATION\", \"LOCATION\" ],\n      \"LOCALE\" : [ \"LOCALE\", \"LOCALE\" ],\n      \"AGE_BUCKET\" : [ \"35-44\", \"50-54\" ],\n      \"AUDIENCE_INCLUDE\" : [ \"AUDIENCE_INCLUDE\", \"AUDIENCE_INCLUDE\" ],\n      \"SHOPPING_RETARGETING\" : [ {\n        \"lookback_window\" : 30,\n        \"exclusion_window\" : 14,\n        \"tag_types\" : [ 0, 6 ]\n      }, {\n        \"lookback_window\" : 30,\n        \"exclusion_window\" : 14,\n        \"tag_types\" : [ 0, 6 ]\n      } ],\n      \"GENDER\" : [ \"unknown\", \"unknown\" ],\n      \"TARGETING_STRATEGY\" : [ \"CHOOSE_YOUR_OWN\", \"CHOOSE_YOUR_OWN\" ],\n      \"APPTYPE\" : [ \"ipad\", \"iphone\" ],\n      \"AUDIENCE_EXCLUDE\" : [ \"AUDIENCE_EXCLUDE\", \"AUDIENCE_EXCLUDE\" ],\n      \"INTEREST\" : [ \"INTEREST\", \"INTEREST\" ]\n    },\n    \"sizing\" : {\n      \"reach_estimate\" : {\n        \"estimate\" : 63492000,\n        \"lower_bound\" : 47619000,\n        \"upper_bound\" : 79365000\n      }\n    },\n    \"created_time\" : 1432744744,\n    \"updated_time\" : 1432744744,\n    \"keywords\" : [ {\n      \"value\" : \"cats\",\n      \"match_type\" : \"EXACT_NEGATIVE\"\n    } ],\n    \"name\" : \"Gaming\",\n    \"id\" : \"643\",\n    \"auto_targeting_enabled\" : true,\n    \"placement_group\" : \"ALL\",\n    \"tracking_urls\" : {\n      \"impression\" : [ \"URL1\", \"URL2\" ],\n      \"click\" : [ \"URL1\", \"URL2\" ],\n      \"engagement\" : [ \"URL1\", \"URL2\" ],\n      \"buyable_button\" : [ \"URL1\", \"URL2\" ],\n      \"audience_verification\" : [ \"URL1\", \"URL2\" ]\n    },\n    \"ad_account_id\" : \"549755885175\",\n    \"status\" : \"ACTIVE\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -102,7 +102,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<TargetingTemplateList200Response>(exampleJson)
-            : default(TargetingTemplateList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -129,9 +129,9 @@ namespace Org.OpenAPITools.Controllers
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
 
             throw new NotImplementedException();
         }

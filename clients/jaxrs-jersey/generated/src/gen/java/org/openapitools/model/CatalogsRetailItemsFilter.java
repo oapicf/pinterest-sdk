@@ -34,7 +34,7 @@ import javax.validation.Valid;
   CatalogsRetailItemsFilter.JSON_PROPERTY_ITEM_IDS,
   CatalogsRetailItemsFilter.JSON_PROPERTY_CATALOG_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsRetailItemsFilter   {
   /**
    * Gets or Sets catalogType
@@ -48,8 +48,12 @@ public class CatalogsRetailItemsFilter   {
       this.value = value;
     }
 
-    @Override
     @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
     public String toString() {
       return String.valueOf(value);
     }

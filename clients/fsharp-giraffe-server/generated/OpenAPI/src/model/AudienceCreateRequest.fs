@@ -2,8 +2,8 @@ namespace OpenAPI.Model
 
 open System
 open System.Collections.Generic
-open OpenAPI.Model.AudienceCreateRequest1AudienceType
 open OpenAPI.Model.AudienceRule
+open OpenAPI.Model.AudienceType
 
 module AudienceCreateRequest =
 
@@ -15,6 +15,6 @@ module AudienceCreateRequest =
     Name : string;
     Rule : AudienceRule;
     Description : string;
-    AudienceType : AudienceCreateRequest1AudienceType;
+    AudienceType : AudienceType;
   }
   //#endregion

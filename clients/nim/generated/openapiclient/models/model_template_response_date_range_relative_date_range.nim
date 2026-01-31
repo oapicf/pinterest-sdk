@@ -9,10 +9,35 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type TemplateResponseDateRangeRelativeDateRange* = object
   ## The relative date range of the template
-  `type`*: string ## The date range type
-  startDaysInPast*: float ## The start date of the date range
-  endDaysInPast*: float ## The end date of the date range
+  `type`*: Option[string] ## The date range type
+  startDaysInPast*: Option[float] ## The start date of the date range
+  endDaysInPast*: Option[float] ## The end date of the date range
+
+
+# Custom JSON deserialization for TemplateResponseDateRangeRelativeDateRange with custom field names
+proc to*(node: JsonNode, T: typedesc[TemplateResponseDateRangeRelativeDateRange]): TemplateResponseDateRangeRelativeDateRange =
+  result = TemplateResponseDateRangeRelativeDateRange()
+  if node.kind == JObject:
+    if node.hasKey("type") and node["type"].kind != JNull:
+      result.`type` = some(to(node["type"], typeof(result.`type`.get())))
+    if node.hasKey("start_days_in_past") and node["start_days_in_past"].kind != JNull:
+      result.startDaysInPast = some(to(node["start_days_in_past"], typeof(result.startDaysInPast.get())))
+    if node.hasKey("end_days_in_past") and node["end_days_in_past"].kind != JNull:
+      result.endDaysInPast = some(to(node["end_days_in_past"], typeof(result.endDaysInPast.get())))
+
+# Custom JSON serialization for TemplateResponseDateRangeRelativeDateRange with custom field names
+proc `%`*(obj: TemplateResponseDateRangeRelativeDateRange): JsonNode =
+  result = newJObject()
+  if obj.`type`.isSome():
+    result["type"] = %obj.`type`.get()
+  if obj.startDaysInPast.isSome():
+    result["start_days_in_past"] = %obj.startDaysInPast.get()
+  if obj.endDaysInPast.isSome():
+    result["end_days_in_past"] = %obj.endDaysInPast.get()
+

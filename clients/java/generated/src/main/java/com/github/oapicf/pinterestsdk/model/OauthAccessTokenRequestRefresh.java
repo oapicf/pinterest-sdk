@@ -46,10 +46,25 @@ import java.util.Set;
 import com.github.oapicf.pinterestsdk.JSON;
 
 /**
- * A request to exchange a refresh token for a new access token.
+ * OauthAccessTokenRequestRefresh
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenRequestRefresh {
+  public static final String SERIALIZED_NAME_REFRESH_TOKEN = "refresh_token";
+  @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN)
+  @javax.annotation.Nonnull
+  private String refreshToken;
+
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  @javax.annotation.Nullable
+  private String scope;
+
+  public static final String SERIALIZED_NAME_REFRESH_ON = "refresh_on";
+  @SerializedName(SERIALIZED_NAME_REFRESH_ON)
+  @javax.annotation.Nullable
+  private Boolean refreshOn;
+
   /**
    * Gets or Sets grantType
    */
@@ -109,42 +124,8 @@ public class OauthAccessTokenRequestRefresh {
   @javax.annotation.Nonnull
   private GrantTypeEnum grantType;
 
-  public static final String SERIALIZED_NAME_REFRESH_TOKEN = "refresh_token";
-  @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN)
-  @javax.annotation.Nonnull
-  private String refreshToken;
-
-  public static final String SERIALIZED_NAME_SCOPE = "scope";
-  @SerializedName(SERIALIZED_NAME_SCOPE)
-  @javax.annotation.Nullable
-  private String scope;
-
-  public static final String SERIALIZED_NAME_REFRESH_ON = "refresh_on";
-  @SerializedName(SERIALIZED_NAME_REFRESH_ON)
-  @javax.annotation.Nullable
-  private Boolean refreshOn;
-
   public OauthAccessTokenRequestRefresh() {
   }
-
-  public OauthAccessTokenRequestRefresh grantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
-    this.grantType = grantType;
-    return this;
-  }
-
-  /**
-   * Get grantType
-   * @return grantType
-   */
-  @javax.annotation.Nonnull
-  public GrantTypeEnum getGrantType() {
-    return grantType;
-  }
-
-  public void setGrantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
-    this.grantType = grantType;
-  }
-
 
   public OauthAccessTokenRequestRefresh refreshToken(@javax.annotation.Nonnull String refreshToken) {
     this.refreshToken = refreshToken;
@@ -203,6 +184,25 @@ public class OauthAccessTokenRequestRefresh {
   }
 
 
+  public OauthAccessTokenRequestRefresh grantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+  /**
+   * Get grantType
+   * @return grantType
+   */
+  @javax.annotation.Nonnull
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+
+  public void setGrantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -213,25 +213,25 @@ public class OauthAccessTokenRequestRefresh {
       return false;
     }
     OauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = (OauthAccessTokenRequestRefresh) o;
-    return Objects.equals(this.grantType, oauthAccessTokenRequestRefresh.grantType) &&
-        Objects.equals(this.refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
+    return Objects.equals(this.refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
         Objects.equals(this.scope, oauthAccessTokenRequestRefresh.scope) &&
-        Objects.equals(this.refreshOn, oauthAccessTokenRequestRefresh.refreshOn);
+        Objects.equals(this.refreshOn, oauthAccessTokenRequestRefresh.refreshOn) &&
+        Objects.equals(this.grantType, oauthAccessTokenRequestRefresh.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, refreshToken, scope, refreshOn);
+    return Objects.hash(refreshToken, scope, refreshOn, grantType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestRefresh {\n");
-    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    refreshOn: ").append(toIndentedString(refreshOn)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -253,15 +253,10 @@ public class OauthAccessTokenRequestRefresh {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("refresh_token");
-    openapiFields.add("scope");
-    openapiFields.add("refresh_on");
+    openapiFields = new HashSet<String>(Arrays.asList("refresh_token", "scope", "refresh_on", "grant_type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("grant_type");
-    openapiRequiredFields.add("refresh_token");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("refresh_token", "grant_type"));
   }
 
   /**
@@ -273,7 +268,7 @@ public class OauthAccessTokenRequestRefresh {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!OauthAccessTokenRequestRefresh.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in OauthAccessTokenRequestRefresh is not found in the empty JSON string", OauthAccessTokenRequestRefresh.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in OauthAccessTokenRequestRefresh is not found in the empty JSON string", OauthAccessTokenRequestRefresh.openapiRequiredFields.toString()));
         }
       }
 
@@ -281,28 +276,28 @@ public class OauthAccessTokenRequestRefresh {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!OauthAccessTokenRequestRefresh.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `OauthAccessTokenRequestRefresh` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `OauthAccessTokenRequestRefresh` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : OauthAccessTokenRequestRefresh.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("refresh_token").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `refresh_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("refresh_token").toString()));
+      }
+      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+      }
       if (!jsonObj.get("grant_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `grant_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("grant_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `grant_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("grant_type").toString()));
       }
       // validate the required field `grant_type`
       GrantTypeEnum.validateJsonElement(jsonObj.get("grant_type"));
-      if (!jsonObj.get("refresh_token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `refresh_token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("refresh_token").toString()));
-      }
-      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

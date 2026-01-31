@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "AudienceDemographicValue", description = "Demographic detail for a single audience demographic")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceDemographicValue {
 
   private @Nullable String key;
@@ -30,7 +30,7 @@ public class AudienceDemographicValue {
 
   private @Nullable BigDecimal ratio;
 
-  public AudienceDemographicValue key(String key) {
+  public AudienceDemographicValue key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -42,15 +42,15 @@ public class AudienceDemographicValue {
   
   @Schema(name = "key", example = "us", description = "Unique key for demographic item", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("key")
-  public String getKey() {
+  public @Nullable String getKey() {
     return key;
   }
 
-  public void setKey(String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 
-  public AudienceDemographicValue name(String name) {
+  public AudienceDemographicValue name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -62,15 +62,15 @@ public class AudienceDemographicValue {
   
   @Schema(name = "name", example = "United States", description = "Display name for demographic", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public AudienceDemographicValue ratio(BigDecimal ratio) {
+  public AudienceDemographicValue ratio(@Nullable BigDecimal ratio) {
     this.ratio = ratio;
     return this;
   }
@@ -82,11 +82,11 @@ public class AudienceDemographicValue {
   @Valid 
   @Schema(name = "ratio", example = "0.551", description = "Value of demographic item as a percent of total audience", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ratio")
-  public BigDecimal getRatio() {
+  public @Nullable BigDecimal getRatio() {
     return ratio;
   }
 
-  public void setRatio(BigDecimal ratio) {
+  public void setRatio(@Nullable BigDecimal ratio) {
     this.ratio = ratio;
   }
 

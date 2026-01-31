@@ -149,9 +149,9 @@
     },
     {
       "name": "type",
-      "type": ["null", "string"],
+      "type": ["string", "null"],
       "doc": "Always \"adgroup\".",
-      "default": null
+      "default": "adgroup"
     },
     {
       "name": "conversion_learning_mode_type",

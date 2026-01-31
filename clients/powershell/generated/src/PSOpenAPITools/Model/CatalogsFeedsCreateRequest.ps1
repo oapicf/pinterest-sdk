@@ -76,8 +76,9 @@ function Initialize-CatalogsFeedsCreateRequest {
         [PSCustomObject]
         ${DefaultAvailability},
         [Parameter(Position = 9, ValueFromPipelineByPropertyName = $true)]
+        [ValidateSet("ACTIVE", "INACTIVE")]
         [PSCustomObject]
-        ${Status}
+        ${Status} = "ACTIVE"
     )
 
     Process {

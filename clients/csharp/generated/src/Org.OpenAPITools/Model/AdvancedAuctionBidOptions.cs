@@ -157,16 +157,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "bid_in_micro_currency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                bidInMicroCurrency = new Option<long?>(utf8JsonReader.GetInt64());
+                            bidInMicroCurrency = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "app_type_multipliers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                appTypeMultipliers = new Option<AppTypeMultipliers?>(JsonSerializer.Deserialize<AppTypeMultipliers>(ref utf8JsonReader, jsonSerializerOptions));
+                            appTypeMultipliers = new Option<AppTypeMultipliers?>(JsonSerializer.Deserialize<AppTypeMultipliers>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "placement_multipliers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                placementMultipliers = new Option<PlacementMultipliers?>(JsonSerializer.Deserialize<PlacementMultipliers>(ref utf8JsonReader, jsonSerializerOptions));
+                            placementMultipliers = new Option<PlacementMultipliers?>(JsonSerializer.Deserialize<PlacementMultipliers>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

@@ -202,8 +202,7 @@ namespace Org.OpenAPITools.Model
                                 billableEvent = new Option<ActionType?>(ActionTypeValueConverter.FromStringOrDefault(billableEventRawValue));
                             break;
                         case "countries":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                countries = new Option<List<Country>?>(JsonSerializer.Deserialize<List<Country>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            countries = new Option<List<Country>?>(JsonSerializer.Deserialize<List<Country>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "objective_type":
                             string? objectiveTypeRawValue = utf8JsonReader.GetString();
@@ -211,8 +210,7 @@ namespace Org.OpenAPITools.Model
                                 objectiveType = new Option<ObjectiveType?>(ObjectiveTypeValueConverter.FromStringOrDefault(objectiveTypeRawValue));
                             break;
                         case "optimization_goal_metadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                optimizationGoalMetadata = new Option<OptimizationGoalMetadata?>(JsonSerializer.Deserialize<OptimizationGoalMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            optimizationGoalMetadata = new Option<OptimizationGoalMetadata?>(JsonSerializer.Deserialize<OptimizationGoalMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "creative_type":
                             string? creativeTypeRawValue = utf8JsonReader.GetString();

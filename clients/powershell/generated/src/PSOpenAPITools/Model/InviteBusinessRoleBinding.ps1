@@ -13,20 +13,20 @@ No summary available.
 
 .DESCRIPTION
 
-An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+No description available.
 
-.PARAMETER CreatedByBusinessId
-Unique identifier for the business that created the invite/request.
-.PARAMETER CreatedByUserId
-Unique identifier for the user that created the invite/request.
-.PARAMETER User
-Metadata for the user that updated the invite/request.
 .PARAMETER Id
 Unique identifier of the invite/request.
 .PARAMETER InviteData
 No description available.
 .PARAMETER IsReceivedInvite
 Indicates whether the invite/request was received.
+.PARAMETER User
+Metadata for the user that updated the invite/request.
+.PARAMETER CreatedByBusinessId
+Unique identifier for the business that created the invite/request.
+.PARAMETER CreatedByUserId
+Unique identifier for the user that created the invite/request.
 .OUTPUTS
 
 InviteBusinessRoleBinding<PSCustomObject>
@@ -36,24 +36,24 @@ function Initialize-InviteBusinessRoleBinding {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${CreatedByBusinessId},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${CreatedByUserId},
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject]
-        ${User},
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [ValidatePattern("^\d+$")]
         [String]
         ${Id},
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject]
         ${InviteData},
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [System.Nullable[Boolean]]
-        ${IsReceivedInvite}
+        ${IsReceivedInvite},
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject]
+        ${User},
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CreatedByBusinessId},
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${CreatedByUserId}
     )
 
     Process {
@@ -62,12 +62,12 @@ function Initialize-InviteBusinessRoleBinding {
 
 
         $PSO = [PSCustomObject]@{
-            "created_by_business_id" = ${CreatedByBusinessId}
-            "created_by_user_id" = ${CreatedByUserId}
-            "user" = ${User}
             "id" = ${Id}
             "invite_data" = ${InviteData}
             "is_received_invite" = ${IsReceivedInvite}
+            "user" = ${User}
+            "created_by_business_id" = ${CreatedByBusinessId}
+            "created_by_user_id" = ${CreatedByUserId}
         }
 
 
@@ -105,29 +105,11 @@ function ConvertFrom-JsonToInviteBusinessRoleBinding {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in InviteBusinessRoleBinding
-        $AllProperties = ("created_by_business_id", "created_by_user_id", "user", "id", "invite_data", "is_received_invite")
+        $AllProperties = ("id", "invite_data", "is_received_invite", "user", "created_by_business_id", "created_by_user_id")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
             }
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "created_by_business_id"))) { #optional property not found
-            $CreatedByBusinessId = $null
-        } else {
-            $CreatedByBusinessId = $JsonParameters.PSobject.Properties["created_by_business_id"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "created_by_user_id"))) { #optional property not found
-            $CreatedByUserId = $null
-        } else {
-            $CreatedByUserId = $JsonParameters.PSobject.Properties["created_by_user_id"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "user"))) { #optional property not found
-            $User = $null
-        } else {
-            $User = $JsonParameters.PSobject.Properties["user"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "id"))) { #optional property not found
@@ -148,13 +130,31 @@ function ConvertFrom-JsonToInviteBusinessRoleBinding {
             $IsReceivedInvite = $JsonParameters.PSobject.Properties["is_received_invite"].value
         }
 
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "user"))) { #optional property not found
+            $User = $null
+        } else {
+            $User = $JsonParameters.PSobject.Properties["user"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "created_by_business_id"))) { #optional property not found
+            $CreatedByBusinessId = $null
+        } else {
+            $CreatedByBusinessId = $JsonParameters.PSobject.Properties["created_by_business_id"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "created_by_user_id"))) { #optional property not found
+            $CreatedByUserId = $null
+        } else {
+            $CreatedByUserId = $JsonParameters.PSobject.Properties["created_by_user_id"].value
+        }
+
         $PSO = [PSCustomObject]@{
-            "created_by_business_id" = ${CreatedByBusinessId}
-            "created_by_user_id" = ${CreatedByUserId}
-            "user" = ${User}
             "id" = ${Id}
             "invite_data" = ${InviteData}
             "is_received_invite" = ${IsReceivedInvite}
+            "user" = ${User}
+            "created_by_business_id" = ${CreatedByBusinessId}
+            "created_by_user_id" = ${CreatedByUserId}
         }
 
         return $PSO

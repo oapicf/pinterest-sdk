@@ -119,7 +119,6 @@ models/model_audience_category.go
 models/model_audience_common.go
 models/model_audience_create_custom_request.go
 models/model_audience_create_request.go
-models/model_audience_create_request_1_audience_type.go
 models/model_audience_data_party.go
 models/model_audience_definition.go
 models/model_audience_definition_response.go
@@ -297,7 +296,6 @@ models/model_catalogs_items_delete_discontinued_batch_request.go
 models/model_catalogs_items_filters.go
 models/model_catalogs_items_post_filters.go
 models/model_catalogs_items_request.go
-models/model_catalogs_items_request_language.go
 models/model_catalogs_items_update_batch_request.go
 models/model_catalogs_items_upsert_batch_request.go
 models/model_catalogs_list_200_response.go
@@ -631,7 +629,6 @@ models/model_pin_media_with_videos.go
 models/model_pin_promotion_summary_status.go
 models/model_pin_update.go
 models/model_pin_update_carousel_slots_inner.go
-models/model_pins_analytics_metric_types_parameter_inner.go
 models/model_pins_list_200_response.go
 models/model_pins_save_request.go
 models/model_pinterest_tag_event_data.go

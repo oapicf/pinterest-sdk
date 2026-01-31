@@ -90,7 +90,7 @@ data class CatalogsCreativeAssetsFeed(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", required = true, description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type.")
     @get:JsonProperty("catalog_id", required = true) val catalogId: kotlin.String?
-    ) {
+) {
 
 }
 

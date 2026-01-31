@@ -26,7 +26,8 @@ void main() {
       // TODO
     });
 
-    // CatalogsItemsRequestLanguage language
+    // We recommend using the CatalogsLocale values.
+    // String language
     test('to test the property `language`', () async {
       // TODO
     });

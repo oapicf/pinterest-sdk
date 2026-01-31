@@ -9,7 +9,6 @@
 
 
 #include <string>
-#include "CatalogsItemsRequest_language.h"
 #include "CatalogsRetailBatchRequest_items_inner.h"
 #include "Country.h"
 #include <list>
@@ -63,13 +62,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCountry(Country  country);
-	/*! \brief Get 
+	/*! \brief Get We recommend using the CatalogsLocale values.
 	 */
-	CatalogsItemsRequest_language getLanguage();
+	std::string getLanguage();
 
-	/*! \brief Set 
+	/*! \brief Set We recommend using the CatalogsLocale values.
 	 */
-	void setLanguage(CatalogsItemsRequest_language  language);
+	void setLanguage(std::string  language);
 	/*! \brief Get Array with catalogs item operations
 	 */
 	std::list<CatalogsRetailBatchRequest_items_inner> getItems();
@@ -81,7 +80,7 @@ public:
 private:
 	std::string catalog_type;
 	Country country;
-	CatalogsItemsRequest_language language;
+	std::string language;
 	std::list <CatalogsRetailBatchRequest_items_inner>items;
 	void __init();
 	void __cleanup();

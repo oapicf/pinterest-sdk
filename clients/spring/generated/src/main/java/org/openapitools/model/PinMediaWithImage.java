@@ -26,12 +26,12 @@ import javax.annotation.Generated;
 
 @Schema(name = "PinMediaWithImage", description = "Pin with image.")
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaWithImage extends PinMedia {
 
   private @Nullable PinMediaWithImageAllOfImages images;
 
-  public PinMediaWithImage images(PinMediaWithImageAllOfImages images) {
+  public PinMediaWithImage images(@Nullable PinMediaWithImageAllOfImages images) {
     this.images = images;
     return this;
   }
@@ -43,11 +43,11 @@ public class PinMediaWithImage extends PinMedia {
   @Valid 
   @Schema(name = "images", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("images")
-  public PinMediaWithImageAllOfImages getImages() {
+  public @Nullable PinMediaWithImageAllOfImages getImages() {
     return images;
   }
 
-  public void setImages(PinMediaWithImageAllOfImages images) {
+  public void setImages(@Nullable PinMediaWithImageAllOfImages images) {
     this.images = images;
   }
 

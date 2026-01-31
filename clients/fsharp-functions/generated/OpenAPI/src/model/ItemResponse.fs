@@ -20,12 +20,16 @@ module ItemResponse =
     CatalogType : CatalogsType;
     [<JsonProperty(PropertyName = "item_id")>]
     ItemId : string;
-    [<JsonProperty(PropertyName = "errors")>]
-    Errors : ItemValidationEvent[];
+    [<JsonProperty(PropertyName = "pins")>]
+    Pins : Pin[];
+    [<JsonProperty(PropertyName = "attributes")>]
+    Attributes : CatalogsCreativeAssetsAttributes;
     [<JsonProperty(PropertyName = "hotel_id")>]
     HotelId : string;
     [<JsonProperty(PropertyName = "creative_assets_id")>]
     CreativeAssetsId : string;
+    [<JsonProperty(PropertyName = "errors")>]
+    Errors : ItemValidationEvent[];
   }
 
   //#endregion

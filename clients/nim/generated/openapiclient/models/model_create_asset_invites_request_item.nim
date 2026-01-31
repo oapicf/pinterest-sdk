@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_invite_type
 import model_permissions
@@ -18,3 +20,23 @@ type CreateAssetInvitesRequestItem* = object
   inviteId*: string ## Unique identifier of an invite.
   inviteType*: InviteType
   assetIdToPermissions*: Table[string, seq[Permissions]] ## An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+
+
+# Custom JSON deserialization for CreateAssetInvitesRequestItem with custom field names
+proc to*(node: JsonNode, T: typedesc[CreateAssetInvitesRequestItem]): CreateAssetInvitesRequestItem =
+  result = CreateAssetInvitesRequestItem()
+  if node.kind == JObject:
+    if node.hasKey("invite_id"):
+      result.inviteId = to(node["invite_id"], string)
+    if node.hasKey("invite_type"):
+      result.inviteType = to(node["invite_type"], InviteType)
+    if node.hasKey("asset_id_to_permissions"):
+      result.assetIdToPermissions = to(node["asset_id_to_permissions"], Table[string, seq[Permissions]])
+
+# Custom JSON serialization for CreateAssetInvitesRequestItem with custom field names
+proc `%`*(obj: CreateAssetInvitesRequestItem): JsonNode =
+  result = newJObject()
+  result["invite_id"] = %obj.inviteId
+  result["invite_type"] = %obj.inviteType
+  result["asset_id_to_permissions"] = %obj.assetIdToPermissions
+

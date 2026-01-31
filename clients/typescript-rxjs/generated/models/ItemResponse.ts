@@ -38,11 +38,16 @@ export interface ItemResponse {
      */
     item_id?: string;
     /**
-     * Array with the errors for the item id requested
-     * @type {Array<ItemValidationEvent>}
+     * The pins mapped to the item
+     * @type {Array<Pin>}
      * @memberof ItemResponse
      */
-    errors?: Array<ItemValidationEvent>;
+    pins?: Array<Pin> | null;
+    /**
+     * @type {CatalogsCreativeAssetsAttributes}
+     * @memberof ItemResponse
+     */
+    attributes?: CatalogsCreativeAssetsAttributes;
     /**
      * The catalog hotel id in the merchant namespace
      * @type {string}
@@ -55,6 +60,12 @@ export interface ItemResponse {
      * @memberof ItemResponse
      */
     creative_assets_id?: string;
+    /**
+     * Array with the errors for the item id requested
+     * @type {Array<ItemValidationEvent>}
+     * @memberof ItemResponse
+     */
+    errors?: Array<ItemValidationEvent>;
 }
 
 

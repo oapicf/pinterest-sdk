@@ -21,8 +21,8 @@ namespace org::openapitools::server::model
 
 OauthAccessTokenRequestClientCredentials::OauthAccessTokenRequestClientCredentials()
 {
-    m_Grant_type = "";
     m_Scope = "";
+    m_Grant_type = "";
     
 }
 
@@ -54,10 +54,10 @@ bool OauthAccessTokenRequestClientCredentials::operator==(const OauthAccessToken
     return
     
     
-    (getGrantType() == rhs.getGrantType())
+    (getScope() == rhs.getScope())
      &&
     
-    (getScope() == rhs.getScope())
+    (getGrantType() == rhs.getGrantType())
     
     
     ;
@@ -71,26 +71,18 @@ bool OauthAccessTokenRequestClientCredentials::operator!=(const OauthAccessToken
 void to_json(nlohmann::json& j, const OauthAccessTokenRequestClientCredentials& o)
 {
     j = nlohmann::json::object();
-    j["grant_type"] = o.m_Grant_type;
     j["scope"] = o.m_Scope;
+    j["grant_type"] = o.m_Grant_type;
     
 }
 
 void from_json(const nlohmann::json& j, OauthAccessTokenRequestClientCredentials& o)
 {
-    j.at("grant_type").get_to(o.m_Grant_type);
     j.at("scope").get_to(o.m_Scope);
+    j.at("grant_type").get_to(o.m_Grant_type);
     
 }
 
-std::string OauthAccessTokenRequestClientCredentials::getGrantType() const
-{
-    return m_Grant_type;
-}
-void OauthAccessTokenRequestClientCredentials::setGrantType(std::string const& value)
-{
-    m_Grant_type = value;
-}
 std::string OauthAccessTokenRequestClientCredentials::getScope() const
 {
     return m_Scope;
@@ -98,6 +90,14 @@ std::string OauthAccessTokenRequestClientCredentials::getScope() const
 void OauthAccessTokenRequestClientCredentials::setScope(std::string const& value)
 {
     m_Scope = value;
+}
+std::string OauthAccessTokenRequestClientCredentials::getGrantType() const
+{
+    return m_Grant_type;
+}
+void OauthAccessTokenRequestClientCredentials::setGrantType(std::string const& value)
+{
+    m_Grant_type = value;
 }
 
 

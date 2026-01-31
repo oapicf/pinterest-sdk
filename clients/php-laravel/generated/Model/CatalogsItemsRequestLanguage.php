@@ -27,16 +27,113 @@ namespace OpenAPI\Server\Model;
  * CatalogsItemsRequestLanguage
  * @description We recommend using the CatalogsLocale values.
  */
-use Crell\Serde\Renaming\Cases;
-use Crell\Serde\Attributes as Serde;
-
-#[Serde\ClassSettings(renameWith: Cases::snake_case)]
-class CatalogsItemsRequestLanguage
+enum CatalogsItemsRequestLanguage: string
 {
-    /**
-    */
-
-    public function __construct(
-    ) {}
+        case AF_ZA = 'af-ZA';
+        case AR_SA = 'ar-SA';
+        case BG_BG = 'bg-BG';
+        case BN_IN = 'bn-IN';
+        case CS_CZ = 'cs-CZ';
+        case DA_DK = 'da-DK';
+        case DE = 'de';
+        case EL_GR = 'el-GR';
+        case EN_AU = 'en-AU';
+        case EN_CA = 'en-CA';
+        case EN_GB = 'en-GB';
+        case EN_IN = 'en-IN';
+        case EN_US = 'en-US';
+        case ES_419 = 'es-419';
+        case ES_AR = 'es-AR';
+        case ES_ES = 'es-ES';
+        case ES_MX = 'es-MX';
+        case FI_FI = 'fi-FI';
+        case FR = 'fr';
+        case FR_CA = 'fr-CA';
+        case HE_IL = 'he-IL';
+        case HI_IN = 'hi-IN';
+        case HR_HR = 'hr-HR';
+        case HU_HU = 'hu-HU';
+        case ID_ID = 'id-ID';
+        case IT = 'it';
+        case JA = 'ja';
+        case KO_KR = 'ko-KR';
+        case MS_MY = 'ms-MY';
+        case NB_NO = 'nb-NO';
+        case NL = 'nl';
+        case PL_PL = 'pl-PL';
+        case PT_BR = 'pt-BR';
+        case PT_PT = 'pt-PT';
+        case RO_RO = 'ro-RO';
+        case RU_RU = 'ru-RU';
+        case SK_SK = 'sk-SK';
+        case SV_SE = 'sv-SE';
+        case TE_IN = 'te-IN';
+        case TH_TH = 'th-TH';
+        case TL_PH = 'tl-PH';
+        case TR = 'tr';
+        case UK_UA = 'uk-UA';
+        case VI_VN = 'vi-VN';
+        case ZH_CN = 'zh-CN';
+        case ZH_TW = 'zh-TW';
+        case AM = 'AM';
+        case AR = 'AR';
+        case AZ = 'AZ';
+        case BG = 'BG';
+        case BN = 'BN';
+        case BS = 'BS';
+        case CA = 'CA';
+        case CS = 'CS';
+        case DA = 'DA';
+        case DV = 'DV';
+        case DZ = 'DZ';
+        case DE2 = 'DE';
+        case EL = 'EL';
+        case EN = 'EN';
+        case ES = 'ES';
+        case ET = 'ET';
+        case FA = 'FA';
+        case FI = 'FI';
+        case FR2 = 'FR';
+        case HE = 'HE';
+        case HI = 'HI';
+        case HR = 'HR';
+        case HU = 'HU';
+        case HY = 'HY';
+        case ID = 'ID';
+        case IN = 'IN';
+        case IS = 'IS';
+        case IT2 = 'IT';
+        case IW = 'IW';
+        case JA2 = 'JA';
+        case KA = 'KA';
+        case KM = 'KM';
+        case KO = 'KO';
+        case LO = 'LO';
+        case LT = 'LT';
+        case LV = 'LV';
+        case MK = 'MK';
+        case MN = 'MN';
+        case MS = 'MS';
+        case MY = 'MY';
+        case NB = 'NB';
+        case NE = 'NE';
+        case NL2 = 'NL';
+        case NO = 'NO';
+        case PL = 'PL';
+        case PT = 'PT';
+        case RO = 'RO';
+        case RU = 'RU';
+        case SK = 'SK';
+        case SL = 'SL';
+        case SQ = 'SQ';
+        case SR = 'SR';
+        case SV = 'SV';
+        case TL = 'TL';
+        case UK = 'UK';
+        case VI = 'VI';
+        case TE = 'TE';
+        case TH = 'TH';
+        case TR2 = 'TR';
+        case XX = 'XX';
+        case ZH = 'ZH';
 }
-

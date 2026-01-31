@@ -13,13 +13,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BoardsList200Response  {
   
-  @ApiModelProperty(required = true, value = "Boards")
  /**
-   * Boards
-  **/
+  * Boards
+  */
+  @ApiModelProperty(required = true, value = "Boards")
+
   private List<Board> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * Boards

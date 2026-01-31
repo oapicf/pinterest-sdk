@@ -9,10 +9,35 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type UpdateAssetGroupResponseExceptionsInner* = object
   ## 
-  code*: int ## Error code associated with the error editing asset group.
-  message*: string ## Error message associated with the error editing asset group.
-  assetGroupId*: string ## Asset group id of the exception.
+  code*: Option[int] ## Error code associated with the error editing asset group.
+  message*: Option[string] ## Error message associated with the error editing asset group.
+  assetGroupId*: Option[string] ## Asset group id of the exception.
+
+
+# Custom JSON deserialization for UpdateAssetGroupResponseExceptionsInner with custom field names
+proc to*(node: JsonNode, T: typedesc[UpdateAssetGroupResponseExceptionsInner]): UpdateAssetGroupResponseExceptionsInner =
+  result = UpdateAssetGroupResponseExceptionsInner()
+  if node.kind == JObject:
+    if node.hasKey("code") and node["code"].kind != JNull:
+      result.code = some(to(node["code"], typeof(result.code.get())))
+    if node.hasKey("message") and node["message"].kind != JNull:
+      result.message = some(to(node["message"], typeof(result.message.get())))
+    if node.hasKey("asset_group_id") and node["asset_group_id"].kind != JNull:
+      result.assetGroupId = some(to(node["asset_group_id"], typeof(result.assetGroupId.get())))
+
+# Custom JSON serialization for UpdateAssetGroupResponseExceptionsInner with custom field names
+proc `%`*(obj: UpdateAssetGroupResponseExceptionsInner): JsonNode =
+  result = newJObject()
+  if obj.code.isSome():
+    result["code"] = %obj.code.get()
+  if obj.message.isSome():
+    result["message"] = %obj.message.get()
+  if obj.assetGroupId.isSome():
+    result["asset_group_id"] = %obj.assetGroupId.get()
+

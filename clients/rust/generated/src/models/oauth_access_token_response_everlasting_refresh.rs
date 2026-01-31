@@ -11,9 +11,14 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// OauthAccessTokenResponseEverlastingRefresh : A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct OauthAccessTokenResponseEverlastingRefresh {
+    #[serde(rename = "refresh_token")]
+    pub refresh_token: String,
+    #[serde(rename = "refresh_token_expires_in")]
+    pub refresh_token_expires_in: i32,
+    #[serde(rename = "refresh_token_expires_at")]
+    pub refresh_token_expires_at: i32,
     #[serde(rename = "response_type", skip_serializing_if = "Option::is_none")]
     pub response_type: Option<ResponseType>,
     #[serde(rename = "access_token")]
@@ -24,26 +29,19 @@ pub struct OauthAccessTokenResponseEverlastingRefresh {
     pub expires_in: i32,
     #[serde(rename = "scope")]
     pub scope: String,
-    #[serde(rename = "refresh_token")]
-    pub refresh_token: String,
-    #[serde(rename = "refresh_token_expires_in")]
-    pub refresh_token_expires_in: i32,
-    #[serde(rename = "refresh_token_expires_at")]
-    pub refresh_token_expires_at: i32,
 }
 
 impl OauthAccessTokenResponseEverlastingRefresh {
-    /// A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
-    pub fn new(access_token: String, token_type: String, expires_in: i32, scope: String, refresh_token: String, refresh_token_expires_in: i32, refresh_token_expires_at: i32) -> OauthAccessTokenResponseEverlastingRefresh {
+    pub fn new(refresh_token: String, refresh_token_expires_in: i32, refresh_token_expires_at: i32, access_token: String, token_type: String, expires_in: i32, scope: String) -> OauthAccessTokenResponseEverlastingRefresh {
         OauthAccessTokenResponseEverlastingRefresh {
+            refresh_token,
+            refresh_token_expires_in,
+            refresh_token_expires_at,
             response_type: None,
             access_token,
             token_type,
             expires_in,
             scope,
-            refresh_token,
-            refresh_token_expires_in,
-            refresh_token_expires_at,
         }
     }
 }

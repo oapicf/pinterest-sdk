@@ -33,7 +33,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelItemResponse", description = "Object describing a hotel record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelItemResponse implements ItemResponseAnyOf {
 
   private CatalogsType catalogType;
@@ -76,7 +76,7 @@ public class CatalogsHotelItemResponse implements ItemResponseAnyOf {
     this.catalogType = catalogType;
   }
 
-  public CatalogsHotelItemResponse hotelId(String hotelId) {
+  public CatalogsHotelItemResponse hotelId(@Nullable String hotelId) {
     this.hotelId = hotelId;
     return this;
   }
@@ -88,11 +88,11 @@ public class CatalogsHotelItemResponse implements ItemResponseAnyOf {
   
   @Schema(name = "hotel_id", example = "DS0294-M", description = "The catalog hotel id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("hotel_id")
-  public String getHotelId() {
+  public @Nullable String getHotelId() {
     return hotelId;
   }
 
-  public void setHotelId(String hotelId) {
+  public void setHotelId(@Nullable String hotelId) {
     this.hotelId = hotelId;
   }
 
@@ -124,7 +124,7 @@ public class CatalogsHotelItemResponse implements ItemResponseAnyOf {
     this.pins = pins;
   }
 
-  public CatalogsHotelItemResponse attributes(CatalogsHotelAttributes attributes) {
+  public CatalogsHotelItemResponse attributes(@Nullable CatalogsHotelAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -136,11 +136,11 @@ public class CatalogsHotelItemResponse implements ItemResponseAnyOf {
   @Valid 
   @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attributes")
-  public CatalogsHotelAttributes getAttributes() {
+  public @Nullable CatalogsHotelAttributes getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(CatalogsHotelAttributes attributes) {
+  public void setAttributes(@Nullable CatalogsHotelAttributes attributes) {
     this.attributes = attributes;
   }
 

@@ -12,7 +12,7 @@ module OauthAccessTokenRequestClientCredentials =
   //#endregion
 
   type OauthAccessTokenRequestClientCredentials = {
-    GrantType : GrantTypeEnum;
     Scope : string;
+    GrantType : GrantTypeEnum;
   }
   //#endregion

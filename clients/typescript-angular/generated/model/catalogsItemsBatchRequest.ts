@@ -14,7 +14,6 @@ import { CatalogsItemsUpdateBatchRequest } from './catalogsItemsUpdateBatchReque
 import { Country } from './country';
 import { BatchOperation } from './batchOperation';
 import { CatalogsItemsDeleteBatchRequest } from './catalogsItemsDeleteBatchRequest';
-import { CatalogsItemsRequestLanguage } from './catalogsItemsRequestLanguage';
 import { CatalogsItemsDeleteDiscontinuedBatchRequest } from './catalogsItemsDeleteDiscontinuedBatchRequest';
 
 

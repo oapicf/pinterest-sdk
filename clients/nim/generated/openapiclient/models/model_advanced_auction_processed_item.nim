@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_advanced_auction_bid_options
 import model_advanced_auction_items_submit_record
@@ -25,5 +27,39 @@ type AdvancedAuctionProcessedItem* = object
   country*: Country
   language*: Language
   bidOptions*: AdvancedAuctionBidOptions
-  updateMask*: seq[UpdateMaskBidOptionField] ## The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
-  errors*: seq[AdvancedAuctionOperationError] ## Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+  updateMask*: Option[seq[UpdateMaskBidOptionField]] ## The list of item bid option fields to be set or updated. Fields specified in the updated mask without a value specified in the `bid_options` object in the body will be set to `null`. If an item bid option record is being created, fields not specified in the update mask will be initialized to `null`.
+  errors*: Option[seq[AdvancedAuctionOperationError]] ## Array with validation errors for the supplied item bid option modification operation. A non empty errors list means this single item operation was not applied.
+
+
+# Custom JSON deserialization for AdvancedAuctionProcessedItem with custom field names
+proc to*(node: JsonNode, T: typedesc[AdvancedAuctionProcessedItem]): AdvancedAuctionProcessedItem =
+  result = AdvancedAuctionProcessedItem()
+  if node.kind == JObject:
+    if node.hasKey("operation"):
+      result.operation = to(node["operation"], AdvancedAuctionOperation)
+    if node.hasKey("item_id"):
+      result.itemId = to(node["item_id"], string)
+    if node.hasKey("country"):
+      result.country = to(node["country"], Country)
+    if node.hasKey("language"):
+      result.language = to(node["language"], Language)
+    if node.hasKey("bid_options"):
+      result.bidOptions = to(node["bid_options"], AdvancedAuctionBidOptions)
+    if node.hasKey("update_mask") and node["update_mask"].kind != JNull:
+      result.updateMask = some(to(node["update_mask"], typeof(result.updateMask.get())))
+    if node.hasKey("errors") and node["errors"].kind != JNull:
+      result.errors = some(to(node["errors"], typeof(result.errors.get())))
+
+# Custom JSON serialization for AdvancedAuctionProcessedItem with custom field names
+proc `%`*(obj: AdvancedAuctionProcessedItem): JsonNode =
+  result = newJObject()
+  result["operation"] = %obj.operation
+  result["item_id"] = %obj.itemId
+  result["country"] = %obj.country
+  result["language"] = %obj.language
+  result["bid_options"] = %obj.bidOptions
+  if obj.updateMask.isSome():
+    result["update_mask"] = %obj.updateMask.get()
+  if obj.errors.isSome():
+    result["errors"] = %obj.errors.get()
+

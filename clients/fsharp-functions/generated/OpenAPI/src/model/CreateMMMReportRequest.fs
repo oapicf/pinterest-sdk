@@ -13,6 +13,8 @@ module CreateMMMReportRequest =
 
   [<CLIMutable>]
   type CreateMMMReportRequest = {
+    [<JsonProperty(PropertyName = "countries")>]
+    Countries : TargetingAdvertiserCountry[];
     [<JsonProperty(PropertyName = "report_name")>]
     ReportName : string;
     [<JsonProperty(PropertyName = "start_date")>]
@@ -27,8 +29,6 @@ module CreateMMMReportRequest =
     TargetingTypes : MMMReportingTargetingType[];
     [<JsonProperty(PropertyName = "columns")>]
     Columns : MMMReportingColumn[];
-    [<JsonProperty(PropertyName = "countries")>]
-    Countries : TargetingAdvertiserCountry[];
   }
 
   //#endregion

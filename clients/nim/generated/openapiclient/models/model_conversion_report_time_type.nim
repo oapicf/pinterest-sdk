@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type ConversionReportTimeType* = object
-  ## Conversion report time type
+type ConversionReportTimeType* {.pure.} = enum
+  TIMEOFADACTION
+  TIMEOFCONVERSION
+
+func `%`*(v: ConversionReportTimeType): JsonNode =
+  result = case v:
+    of ConversionReportTimeType.TIMEOFADACTION: %"TIME_OF_AD_ACTION"
+    of ConversionReportTimeType.TIMEOFCONVERSION: %"TIME_OF_CONVERSION"
+
+func `$`*(v: ConversionReportTimeType): string =
+  result = case v:
+    of ConversionReportTimeType.TIMEOFADACTION: $("TIME_OF_AD_ACTION")
+    of ConversionReportTimeType.TIMEOFCONVERSION: $("TIME_OF_CONVERSION")
+
+proc to*(node: JsonNode, T: typedesc[ConversionReportTimeType]): ConversionReportTimeType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ConversionReportTimeType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("TIME_OF_AD_ACTION"):
+    return ConversionReportTimeType.TIMEOFADACTION
+  of $("TIME_OF_CONVERSION"):
+    return ConversionReportTimeType.TIMEOFCONVERSION
+  else:
+    raise newException(ValueError, "Invalid enum value for ConversionReportTimeType: " & strVal)
+

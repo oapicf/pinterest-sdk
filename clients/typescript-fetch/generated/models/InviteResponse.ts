@@ -42,36 +42,6 @@ import {
  */
 export interface InviteResponse {
     /**
-     * 
-     * @type {InviteAssetsSummary}
-     * @memberof InviteResponse
-     */
-    assetsSummary?: InviteAssetsSummary | null;
-    /**
-     * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-     * @type {Array<string>}
-     * @memberof InviteResponse
-     */
-    businessRoles?: Array<string>;
-    /**
-     * Metadata for the business that created the invite/request.
-     * @type {BusinessAccessUserSummary}
-     * @memberof InviteResponse
-     */
-    createdByBusiness?: BusinessAccessUserSummary | null;
-    /**
-     * Metadata for the user that created the invite/request.
-     * @type {BusinessAccessUserSummary}
-     * @memberof InviteResponse
-     */
-    createdByUser?: BusinessAccessUserSummary | null;
-    /**
-     * The time the invite/request was created. Returned in milliseconds.
-     * @type {number}
-     * @memberof InviteResponse
-     */
-    createdTime?: number;
-    /**
      * Unique identifier of the invite/request.
      * @type {string}
      * @memberof InviteResponse
@@ -95,6 +65,36 @@ export interface InviteResponse {
      * @memberof InviteResponse
      */
     user?: BusinessAccessUserSummary;
+    /**
+     * 
+     * @type {InviteAssetsSummary}
+     * @memberof InviteResponse
+     */
+    assetsSummary?: InviteAssetsSummary | null;
+    /**
+     * The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+     * @type {Array<string>}
+     * @memberof InviteResponse
+     */
+    businessRoles?: Array<string>;
+    /**
+     * Metadata for the business that created the invite/request.
+     * @type {object}
+     * @memberof InviteResponse
+     */
+    createdByBusiness?: object | null;
+    /**
+     * Metadata for the user that created the invite/request.
+     * @type {object}
+     * @memberof InviteResponse
+     */
+    createdByUser?: object | null;
+    /**
+     * The time the invite/request was created. Returned in milliseconds.
+     * @type {number}
+     * @memberof InviteResponse
+     */
+    createdTime?: number;
 }
 
 /**
@@ -114,15 +114,15 @@ export function InviteResponseFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'assetsSummary': json['assets_summary'] == null ? undefined : InviteAssetsSummaryFromJSON(json['assets_summary']),
-        'businessRoles': json['business_roles'] == null ? undefined : json['business_roles'],
-        'createdByBusiness': json['created_by_business'] == null ? undefined : BusinessAccessUserSummaryFromJSON(json['created_by_business']),
-        'createdByUser': json['created_by_user'] == null ? undefined : BusinessAccessUserSummaryFromJSON(json['created_by_user']),
-        'createdTime': json['created_time'] == null ? undefined : json['created_time'],
         'id': json['id'] == null ? undefined : json['id'],
         'inviteData': json['invite_data'] == null ? undefined : BaseInviteDataResponseInviteDataFromJSON(json['invite_data']),
         'isReceivedInvite': json['is_received_invite'] == null ? undefined : json['is_received_invite'],
         'user': json['user'] == null ? undefined : BusinessAccessUserSummaryFromJSON(json['user']),
+        'assetsSummary': json['assets_summary'] == null ? undefined : InviteAssetsSummaryFromJSON(json['assets_summary']),
+        'businessRoles': json['business_roles'] == null ? undefined : json['business_roles'],
+        'createdByBusiness': json['created_by_business'] == null ? undefined : json['created_by_business'],
+        'createdByUser': json['created_by_user'] == null ? undefined : json['created_by_user'],
+        'createdTime': json['created_time'] == null ? undefined : json['created_time'],
     };
 }
 
@@ -137,15 +137,15 @@ export function InviteResponseToJSONTyped(value?: InviteResponse | null, ignoreD
 
     return {
         
-        'assets_summary': InviteAssetsSummaryToJSON(value['assetsSummary']),
-        'business_roles': value['businessRoles'],
-        'created_by_business': BusinessAccessUserSummaryToJSON(value['createdByBusiness']),
-        'created_by_user': BusinessAccessUserSummaryToJSON(value['createdByUser']),
-        'created_time': value['createdTime'],
         'id': value['id'],
         'invite_data': BaseInviteDataResponseInviteDataToJSON(value['inviteData']),
         'is_received_invite': value['isReceivedInvite'],
         'user': BusinessAccessUserSummaryToJSON(value['user']),
+        'assets_summary': InviteAssetsSummaryToJSON(value['assetsSummary']),
+        'business_roles': value['businessRoles'],
+        'created_by_business': value['createdByBusiness'],
+        'created_by_user': value['createdByUser'],
+        'created_time': value['createdTime'],
     };
 }
 

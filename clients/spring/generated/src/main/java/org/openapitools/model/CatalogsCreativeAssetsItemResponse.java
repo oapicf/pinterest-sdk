@@ -33,7 +33,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsItemResponse", description = "Object describing a hotel record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsItemResponse implements ItemResponseAnyOf {
 
   private CatalogsType catalogType;
@@ -76,7 +76,7 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseAnyOf {
     this.catalogType = catalogType;
   }
 
-  public CatalogsCreativeAssetsItemResponse creativeAssetsId(String creativeAssetsId) {
+  public CatalogsCreativeAssetsItemResponse creativeAssetsId(@Nullable String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
     return this;
   }
@@ -88,11 +88,11 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseAnyOf {
   
   @Schema(name = "creative_assets_id", example = "DS0294-M", description = "The catalog creative assets id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creative_assets_id")
-  public String getCreativeAssetsId() {
+  public @Nullable String getCreativeAssetsId() {
     return creativeAssetsId;
   }
 
-  public void setCreativeAssetsId(String creativeAssetsId) {
+  public void setCreativeAssetsId(@Nullable String creativeAssetsId) {
     this.creativeAssetsId = creativeAssetsId;
   }
 
@@ -124,7 +124,7 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseAnyOf {
     this.pins = pins;
   }
 
-  public CatalogsCreativeAssetsItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
+  public CatalogsCreativeAssetsItemResponse attributes(@Nullable CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -136,11 +136,11 @@ public class CatalogsCreativeAssetsItemResponse implements ItemResponseAnyOf {
   @Valid 
   @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attributes")
-  public CatalogsCreativeAssetsAttributes getAttributes() {
+  public @Nullable CatalogsCreativeAssetsAttributes getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+  public void setAttributes(@Nullable CatalogsCreativeAssetsAttributes attributes) {
     this.attributes = attributes;
   }
 

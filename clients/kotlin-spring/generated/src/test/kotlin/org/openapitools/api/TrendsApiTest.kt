@@ -27,6 +27,7 @@ class TrendsApiTest {
         val includeKeywords: kotlin.collections.List<kotlin.String>? = TODO()
         val normalizeAgainstGroup: kotlin.Boolean = TODO()
         val limit: kotlin.Int = TODO()
+        
         val response: ResponseEntity<TrendingKeywordsResponse> = api.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit)
 
         // TODO: test validations

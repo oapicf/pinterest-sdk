@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **catalogType** | `CatalogsType` |  | 
 **defaultCountry** | `Country` |  | 
 **defaultAvailability** | `ProductAvailabilityType` |  |  [optional property]
-**status** | [`CatalogsStatus`](CatalogsStatus.md) |  |  [optional property]
+**status** | `CatalogsStatus` |  |  [optional property]
 
 
 

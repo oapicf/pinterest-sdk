@@ -94,7 +94,7 @@ public class KeywordsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5cd41130");
+            .accept("[Ljava.lang.String;@cbaa846");
         request.getParameters()
             .add("country_code", "US") // The query parameter format should be 
             .add("keywords", String.valueOf(Arrays.asList("example"))); // The query parameter format should be csv
@@ -145,7 +145,7 @@ public class KeywordsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@6e87f07b");
+            .accept("[Ljava.lang.String;@1a823633");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, KeywordsResponse.class);
@@ -196,7 +196,7 @@ public class KeywordsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5d41cff1");
+            .accept("[Ljava.lang.String;@3779df1c");
         request.getParameters()
             .add("campaign_id", "example") // The query parameter format should be 
             .add("ad_group_id", "123123123") // The query parameter format should be 
@@ -250,7 +250,7 @@ public class KeywordsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@3beada7");
+            .accept("[Ljava.lang.String;@69764b66");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, KeywordsResponse.class);
@@ -304,7 +304,7 @@ public class KeywordsControllerTest {
             put("trend_type", TrendType.fromValue("growing"));
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7f9f7171");
+            .accept("[Ljava.lang.String;@30572696");
         request.getParameters()
             .add("interests", Arrays.asList("example")) // The query format should be multi
             .add("genders", Arrays.asList("example")) // The query format should be multi

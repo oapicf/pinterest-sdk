@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_product_group_filters
 
@@ -17,17 +19,51 @@ type CatalogType* {.pure.} = enum
 
 type CatalogsCreativeAssetsProductGroupUpdateRequest* = object
   ## Request object for updating a creative assets product group.
-  catalogType*: CatalogType
-  name*: string
-  description*: string
-  filters*: CatalogsCreativeAssetsProductGroupFilters
+  catalogType*: Option[CatalogType]
+  name*: Option[string]
+  description*: Option[string]
+  filters*: Option[CatalogsCreativeAssetsProductGroupFilters]
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.CREATIVEASSETS: %"CREATIVE_ASSETS"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
+    of CatalogType.CREATIVEASSETS: $("CREATIVE_ASSETS")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CREATIVE_ASSETS"):
+    return CatalogType.CREATIVEASSETS
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsProductGroupUpdateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsProductGroupUpdateRequest]): CatalogsCreativeAssetsProductGroupUpdateRequest =
+  result = CatalogsCreativeAssetsProductGroupUpdateRequest()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type") and node["catalog_type"].kind != JNull:
+      result.catalogType = some(to(node["catalog_type"], CatalogType))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("filters") and node["filters"].kind != JNull:
+      result.filters = some(to(node["filters"], typeof(result.filters.get())))
+
+# Custom JSON serialization for CatalogsCreativeAssetsProductGroupUpdateRequest with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsProductGroupUpdateRequest): JsonNode =
+  result = newJObject()
+  if obj.catalogType.isSome():
+    result["catalog_type"] = %obj.catalogType.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  if obj.filters.isSome():
+    result["filters"] = %obj.filters.get()
+

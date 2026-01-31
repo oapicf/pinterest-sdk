@@ -239,7 +239,7 @@ object BusinessAccessAssetsApi {
     } yield resp
   }
 
-  def businessPartnerAssetAccessGet(host: String, businessId: String, partnerId: String, partnerType: PartnerType, assetType: String = AD_ACCOUNT, startIndex: Integer = 0, pageSize: Integer = 25, bookmark: String)(implicit partnerTypeQuery: QueryParam[PartnerType], assetTypeQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[BusinessPartnerAssetAccessGet200Response] = {
+  def businessPartnerAssetAccessGet(host: String, businessId: String, partnerId: String, partnerType: PartnerType = INTERNAL, assetType: String = AD_ACCOUNT, startIndex: Integer = 0, pageSize: Integer = 25, bookmark: String)(implicit partnerTypeQuery: QueryParam[PartnerType], assetTypeQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[BusinessPartnerAssetAccessGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BusinessPartnerAssetAccessGet200Response] = jsonOf[BusinessPartnerAssetAccessGet200Response]
 
     val path = "/businesses/{business_id}/partners/{partner_id}/assets".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "partner_id" + "\\}",escape(partnerId.toString))
@@ -498,7 +498,7 @@ class HttpServiceBusinessAccessAssetsApi(service: HttpService) {
     } yield resp
   }
 
-  def businessPartnerAssetAccessGet(businessId: String, partnerId: String, partnerType: PartnerType, assetType: String = AD_ACCOUNT, startIndex: Integer = 0, pageSize: Integer = 25, bookmark: String)(implicit partnerTypeQuery: QueryParam[PartnerType], assetTypeQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[BusinessPartnerAssetAccessGet200Response] = {
+  def businessPartnerAssetAccessGet(businessId: String, partnerId: String, partnerType: PartnerType = INTERNAL, assetType: String = AD_ACCOUNT, startIndex: Integer = 0, pageSize: Integer = 25, bookmark: String)(implicit partnerTypeQuery: QueryParam[PartnerType], assetTypeQuery: QueryParam[String], startIndexQuery: QueryParam[Integer], pageSizeQuery: QueryParam[Integer], bookmarkQuery: QueryParam[String]): Task[BusinessPartnerAssetAccessGet200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[BusinessPartnerAssetAccessGet200Response] = jsonOf[BusinessPartnerAssetAccessGet200Response]
 
     val path = "/businesses/{business_id}/partners/{partner_id}/assets".replaceAll("\\{" + "business_id" + "\\}",escape(businessId.toString)).replaceAll("\\{" + "partner_id" + "\\}",escape(partnerId.toString))

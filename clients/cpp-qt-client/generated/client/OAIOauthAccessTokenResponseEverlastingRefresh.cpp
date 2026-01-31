@@ -34,6 +34,15 @@ OAIOauthAccessTokenResponseEverlastingRefresh::~OAIOauthAccessTokenResponseEverl
 
 void OAIOauthAccessTokenResponseEverlastingRefresh::initializeModel() {
 
+    m_refresh_token_isSet = false;
+    m_refresh_token_isValid = false;
+
+    m_refresh_token_expires_in_isSet = false;
+    m_refresh_token_expires_in_isValid = false;
+
+    m_refresh_token_expires_at_isSet = false;
+    m_refresh_token_expires_at_isValid = false;
+
     m_response_type_isSet = false;
     m_response_type_isValid = false;
 
@@ -48,15 +57,6 @@ void OAIOauthAccessTokenResponseEverlastingRefresh::initializeModel() {
 
     m_scope_isSet = false;
     m_scope_isValid = false;
-
-    m_refresh_token_isSet = false;
-    m_refresh_token_isValid = false;
-
-    m_refresh_token_expires_in_isSet = false;
-    m_refresh_token_expires_in_isValid = false;
-
-    m_refresh_token_expires_at_isSet = false;
-    m_refresh_token_expires_at_isValid = false;
 }
 
 void OAIOauthAccessTokenResponseEverlastingRefresh::fromJson(QString jsonString) {
@@ -67,6 +67,15 @@ void OAIOauthAccessTokenResponseEverlastingRefresh::fromJson(QString jsonString)
 }
 
 void OAIOauthAccessTokenResponseEverlastingRefresh::fromJsonObject(QJsonObject json) {
+
+    m_refresh_token_isValid = ::OpenAPI::fromJsonValue(m_refresh_token, json[QString("refresh_token")]);
+    m_refresh_token_isSet = !json[QString("refresh_token")].isNull() && m_refresh_token_isValid;
+
+    m_refresh_token_expires_in_isValid = ::OpenAPI::fromJsonValue(m_refresh_token_expires_in, json[QString("refresh_token_expires_in")]);
+    m_refresh_token_expires_in_isSet = !json[QString("refresh_token_expires_in")].isNull() && m_refresh_token_expires_in_isValid;
+
+    m_refresh_token_expires_at_isValid = ::OpenAPI::fromJsonValue(m_refresh_token_expires_at, json[QString("refresh_token_expires_at")]);
+    m_refresh_token_expires_at_isSet = !json[QString("refresh_token_expires_at")].isNull() && m_refresh_token_expires_at_isValid;
 
     m_response_type_isValid = ::OpenAPI::fromJsonValue(m_response_type, json[QString("response_type")]);
     m_response_type_isSet = !json[QString("response_type")].isNull() && m_response_type_isValid;
@@ -82,15 +91,6 @@ void OAIOauthAccessTokenResponseEverlastingRefresh::fromJsonObject(QJsonObject j
 
     m_scope_isValid = ::OpenAPI::fromJsonValue(m_scope, json[QString("scope")]);
     m_scope_isSet = !json[QString("scope")].isNull() && m_scope_isValid;
-
-    m_refresh_token_isValid = ::OpenAPI::fromJsonValue(m_refresh_token, json[QString("refresh_token")]);
-    m_refresh_token_isSet = !json[QString("refresh_token")].isNull() && m_refresh_token_isValid;
-
-    m_refresh_token_expires_in_isValid = ::OpenAPI::fromJsonValue(m_refresh_token_expires_in, json[QString("refresh_token_expires_in")]);
-    m_refresh_token_expires_in_isSet = !json[QString("refresh_token_expires_in")].isNull() && m_refresh_token_expires_in_isValid;
-
-    m_refresh_token_expires_at_isValid = ::OpenAPI::fromJsonValue(m_refresh_token_expires_at, json[QString("refresh_token_expires_at")]);
-    m_refresh_token_expires_at_isSet = !json[QString("refresh_token_expires_at")].isNull() && m_refresh_token_expires_at_isValid;
 }
 
 QString OAIOauthAccessTokenResponseEverlastingRefresh::asJson() const {
@@ -102,6 +102,15 @@ QString OAIOauthAccessTokenResponseEverlastingRefresh::asJson() const {
 
 QJsonObject OAIOauthAccessTokenResponseEverlastingRefresh::asJsonObject() const {
     QJsonObject obj;
+    if (m_refresh_token_isSet) {
+        obj.insert(QString("refresh_token"), ::OpenAPI::toJsonValue(m_refresh_token));
+    }
+    if (m_refresh_token_expires_in_isSet) {
+        obj.insert(QString("refresh_token_expires_in"), ::OpenAPI::toJsonValue(m_refresh_token_expires_in));
+    }
+    if (m_refresh_token_expires_at_isSet) {
+        obj.insert(QString("refresh_token_expires_at"), ::OpenAPI::toJsonValue(m_refresh_token_expires_at));
+    }
     if (m_response_type_isSet) {
         obj.insert(QString("response_type"), ::OpenAPI::toJsonValue(m_response_type));
     }
@@ -117,16 +126,55 @@ QJsonObject OAIOauthAccessTokenResponseEverlastingRefresh::asJsonObject() const 
     if (m_scope_isSet) {
         obj.insert(QString("scope"), ::OpenAPI::toJsonValue(m_scope));
     }
-    if (m_refresh_token_isSet) {
-        obj.insert(QString("refresh_token"), ::OpenAPI::toJsonValue(m_refresh_token));
-    }
-    if (m_refresh_token_expires_in_isSet) {
-        obj.insert(QString("refresh_token_expires_in"), ::OpenAPI::toJsonValue(m_refresh_token_expires_in));
-    }
-    if (m_refresh_token_expires_at_isSet) {
-        obj.insert(QString("refresh_token_expires_at"), ::OpenAPI::toJsonValue(m_refresh_token_expires_at));
-    }
     return obj;
+}
+
+QString OAIOauthAccessTokenResponseEverlastingRefresh::getRefreshToken() const {
+    return m_refresh_token;
+}
+void OAIOauthAccessTokenResponseEverlastingRefresh::setRefreshToken(const QString &refresh_token) {
+    m_refresh_token = refresh_token;
+    m_refresh_token_isSet = true;
+}
+
+bool OAIOauthAccessTokenResponseEverlastingRefresh::is_refresh_token_Set() const{
+    return m_refresh_token_isSet;
+}
+
+bool OAIOauthAccessTokenResponseEverlastingRefresh::is_refresh_token_Valid() const{
+    return m_refresh_token_isValid;
+}
+
+qint32 OAIOauthAccessTokenResponseEverlastingRefresh::getRefreshTokenExpiresIn() const {
+    return m_refresh_token_expires_in;
+}
+void OAIOauthAccessTokenResponseEverlastingRefresh::setRefreshTokenExpiresIn(const qint32 &refresh_token_expires_in) {
+    m_refresh_token_expires_in = refresh_token_expires_in;
+    m_refresh_token_expires_in_isSet = true;
+}
+
+bool OAIOauthAccessTokenResponseEverlastingRefresh::is_refresh_token_expires_in_Set() const{
+    return m_refresh_token_expires_in_isSet;
+}
+
+bool OAIOauthAccessTokenResponseEverlastingRefresh::is_refresh_token_expires_in_Valid() const{
+    return m_refresh_token_expires_in_isValid;
+}
+
+qint32 OAIOauthAccessTokenResponseEverlastingRefresh::getRefreshTokenExpiresAt() const {
+    return m_refresh_token_expires_at;
+}
+void OAIOauthAccessTokenResponseEverlastingRefresh::setRefreshTokenExpiresAt(const qint32 &refresh_token_expires_at) {
+    m_refresh_token_expires_at = refresh_token_expires_at;
+    m_refresh_token_expires_at_isSet = true;
+}
+
+bool OAIOauthAccessTokenResponseEverlastingRefresh::is_refresh_token_expires_at_Set() const{
+    return m_refresh_token_expires_at_isSet;
+}
+
+bool OAIOauthAccessTokenResponseEverlastingRefresh::is_refresh_token_expires_at_Valid() const{
+    return m_refresh_token_expires_at_isValid;
 }
 
 QString OAIOauthAccessTokenResponseEverlastingRefresh::getResponseType() const {
@@ -209,57 +257,24 @@ bool OAIOauthAccessTokenResponseEverlastingRefresh::is_scope_Valid() const{
     return m_scope_isValid;
 }
 
-QString OAIOauthAccessTokenResponseEverlastingRefresh::getRefreshToken() const {
-    return m_refresh_token;
-}
-void OAIOauthAccessTokenResponseEverlastingRefresh::setRefreshToken(const QString &refresh_token) {
-    m_refresh_token = refresh_token;
-    m_refresh_token_isSet = true;
-}
-
-bool OAIOauthAccessTokenResponseEverlastingRefresh::is_refresh_token_Set() const{
-    return m_refresh_token_isSet;
-}
-
-bool OAIOauthAccessTokenResponseEverlastingRefresh::is_refresh_token_Valid() const{
-    return m_refresh_token_isValid;
-}
-
-qint32 OAIOauthAccessTokenResponseEverlastingRefresh::getRefreshTokenExpiresIn() const {
-    return m_refresh_token_expires_in;
-}
-void OAIOauthAccessTokenResponseEverlastingRefresh::setRefreshTokenExpiresIn(const qint32 &refresh_token_expires_in) {
-    m_refresh_token_expires_in = refresh_token_expires_in;
-    m_refresh_token_expires_in_isSet = true;
-}
-
-bool OAIOauthAccessTokenResponseEverlastingRefresh::is_refresh_token_expires_in_Set() const{
-    return m_refresh_token_expires_in_isSet;
-}
-
-bool OAIOauthAccessTokenResponseEverlastingRefresh::is_refresh_token_expires_in_Valid() const{
-    return m_refresh_token_expires_in_isValid;
-}
-
-qint32 OAIOauthAccessTokenResponseEverlastingRefresh::getRefreshTokenExpiresAt() const {
-    return m_refresh_token_expires_at;
-}
-void OAIOauthAccessTokenResponseEverlastingRefresh::setRefreshTokenExpiresAt(const qint32 &refresh_token_expires_at) {
-    m_refresh_token_expires_at = refresh_token_expires_at;
-    m_refresh_token_expires_at_isSet = true;
-}
-
-bool OAIOauthAccessTokenResponseEverlastingRefresh::is_refresh_token_expires_at_Set() const{
-    return m_refresh_token_expires_at_isSet;
-}
-
-bool OAIOauthAccessTokenResponseEverlastingRefresh::is_refresh_token_expires_at_Valid() const{
-    return m_refresh_token_expires_at_isValid;
-}
-
 bool OAIOauthAccessTokenResponseEverlastingRefresh::isSet() const {
     bool isObjectUpdated = false;
     do {
+        if (m_refresh_token_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_refresh_token_expires_in_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_refresh_token_expires_at_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
         if (m_response_type_isSet) {
             isObjectUpdated = true;
             break;
@@ -284,28 +299,13 @@ bool OAIOauthAccessTokenResponseEverlastingRefresh::isSet() const {
             isObjectUpdated = true;
             break;
         }
-
-        if (m_refresh_token_isSet) {
-            isObjectUpdated = true;
-            break;
-        }
-
-        if (m_refresh_token_expires_in_isSet) {
-            isObjectUpdated = true;
-            break;
-        }
-
-        if (m_refresh_token_expires_at_isSet) {
-            isObjectUpdated = true;
-            break;
-        }
     } while (false);
     return isObjectUpdated;
 }
 
 bool OAIOauthAccessTokenResponseEverlastingRefresh::isValid() const {
     // only required properties are required for the object to be considered valid
-    return m_access_token_isValid && m_token_type_isValid && m_expires_in_isValid && m_scope_isValid && m_refresh_token_isValid && m_refresh_token_expires_in_isValid && m_refresh_token_expires_at_isValid && true;
+    return m_refresh_token_isValid && m_refresh_token_expires_in_isValid && m_refresh_token_expires_at_isValid && m_access_token_isValid && m_token_type_isValid && m_expires_in_isValid && m_scope_isValid && true;
 }
 
 } // namespace OpenAPI

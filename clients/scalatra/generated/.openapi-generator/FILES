@@ -122,7 +122,6 @@ src/main/scala/org/openapitools/server/model/AudienceCategory.scala
 src/main/scala/org/openapitools/server/model/AudienceCommon.scala
 src/main/scala/org/openapitools/server/model/AudienceCreateCustomRequest.scala
 src/main/scala/org/openapitools/server/model/AudienceCreateRequest.scala
-src/main/scala/org/openapitools/server/model/AudienceCreateRequest1AudienceType.scala
 src/main/scala/org/openapitools/server/model/AudienceDataParty.scala
 src/main/scala/org/openapitools/server/model/AudienceDefinition.scala
 src/main/scala/org/openapitools/server/model/AudienceDefinitionResponse.scala
@@ -300,7 +299,6 @@ src/main/scala/org/openapitools/server/model/CatalogsItemsDeleteDiscontinuedBatc
 src/main/scala/org/openapitools/server/model/CatalogsItemsFilters.scala
 src/main/scala/org/openapitools/server/model/CatalogsItemsPostFilters.scala
 src/main/scala/org/openapitools/server/model/CatalogsItemsRequest.scala
-src/main/scala/org/openapitools/server/model/CatalogsItemsRequestLanguage.scala
 src/main/scala/org/openapitools/server/model/CatalogsItemsUpdateBatchRequest.scala
 src/main/scala/org/openapitools/server/model/CatalogsItemsUpsertBatchRequest.scala
 src/main/scala/org/openapitools/server/model/CatalogsList200Response.scala
@@ -634,7 +632,6 @@ src/main/scala/org/openapitools/server/model/PinMediaWithVideos.scala
 src/main/scala/org/openapitools/server/model/PinPromotionSummaryStatus.scala
 src/main/scala/org/openapitools/server/model/PinUpdate.scala
 src/main/scala/org/openapitools/server/model/PinUpdateCarouselSlotsInner.scala
-src/main/scala/org/openapitools/server/model/PinsAnalyticsMetricTypesParameterInner.scala
 src/main/scala/org/openapitools/server/model/PinsList200Response.scala
 src/main/scala/org/openapitools/server/model/PinsSaveRequest.scala
 src/main/scala/org/openapitools/server/model/PinterestTagEventData.scala

@@ -77,6 +77,8 @@ pub enum TrendingKeywordsSlashListResponse {
 }
 
 
+
+
 /// Keywords
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -86,6 +88,7 @@ pub trait Keywords<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// CountryKeywordsMetricsSlashGet - GET /v5/ad_accounts/{ad_account_id}/keywords/metrics
     async fn country_keywords_metrics_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -98,6 +101,7 @@ pub trait Keywords<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// KeywordsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/keywords
     async fn keywords_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -110,6 +114,7 @@ pub trait Keywords<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// KeywordsSlashGet - GET /v5/ad_accounts/{ad_account_id}/keywords
     async fn keywords_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -122,6 +127,7 @@ pub trait Keywords<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// KeywordsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/keywords
     async fn keywords_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -134,6 +140,7 @@ pub trait Keywords<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::Erro
     /// TrendingKeywordsSlashList - GET /v5/trends/keywords/{region}/top/{trend_type}
     async fn trending_keywords_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

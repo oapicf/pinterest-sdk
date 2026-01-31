@@ -9,12 +9,45 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogsHotelAddress* = object
   ## 
-  addr1*: string ## Primary street address of hotel.
-  city*: string ## City where the hotel is located.
-  region*: string ## State, county, province, where the hotel is located.
-  country*: string ## Country where the hotel is located.
-  postalCode*: string ## Required for countries with a postal code system. Postal or zip code of the hotel.
+  addr1*: Option[string] ## Primary street address of hotel.
+  city*: Option[string] ## City where the hotel is located.
+  region*: Option[string] ## State, county, province, where the hotel is located.
+  country*: Option[string] ## Country where the hotel is located.
+  postalCode*: Option[string] ## Required for countries with a postal code system. Postal or zip code of the hotel.
+
+
+# Custom JSON deserialization for CatalogsHotelAddress with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsHotelAddress]): CatalogsHotelAddress =
+  result = CatalogsHotelAddress()
+  if node.kind == JObject:
+    if node.hasKey("addr1") and node["addr1"].kind != JNull:
+      result.addr1 = some(to(node["addr1"], typeof(result.addr1.get())))
+    if node.hasKey("city") and node["city"].kind != JNull:
+      result.city = some(to(node["city"], typeof(result.city.get())))
+    if node.hasKey("region") and node["region"].kind != JNull:
+      result.region = some(to(node["region"], typeof(result.region.get())))
+    if node.hasKey("country") and node["country"].kind != JNull:
+      result.country = some(to(node["country"], typeof(result.country.get())))
+    if node.hasKey("postal_code") and node["postal_code"].kind != JNull:
+      result.postalCode = some(to(node["postal_code"], typeof(result.postalCode.get())))
+
+# Custom JSON serialization for CatalogsHotelAddress with custom field names
+proc `%`*(obj: CatalogsHotelAddress): JsonNode =
+  result = newJObject()
+  if obj.addr1.isSome():
+    result["addr1"] = %obj.addr1.get()
+  if obj.city.isSome():
+    result["city"] = %obj.city.get()
+  if obj.region.isSome():
+    result["region"] = %obj.region.get()
+  if obj.country.isSome():
+    result["country"] = %obj.country.get()
+  if obj.postalCode.isSome():
+    result["postal_code"] = %obj.postalCode.get()
+

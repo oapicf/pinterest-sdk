@@ -27,7 +27,7 @@ data class SharedAudienceResponseCommon(
     @field:Valid
     @Schema(example = "[\"RESOURCE_PINNER_LIST_READER\",\"RESOURCE_PINNER_LIST_OWNER\"]", description = "")
     @get:JsonProperty("permissions") val permissions: kotlin.collections.List<Role>? = null
-    ) {
+) {
 
 }
 

@@ -9,7 +9,123 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type MMMReportingColumn* = object
-  ## Marketing Mix Modeling (MMM) Reporting Columns
+type MMMReportingColumn* {.pure.} = enum
+  SPENDINDOLLAR
+  SPENDINMICRODOLLAR
+  ECPCINDOLLAR
+  ECTR
+  CAMPAIGNNAME
+  TOTALENGAGEMENT
+  EENGAGEMENTRATE
+  ECPMINDOLLAR
+  CAMPAIGNID
+  ADVERTISERID
+  ADGROUPID
+  ADGROUPNAME
+  CLICKTHROUGH1
+  IMPRESSION1
+  CLICKTHROUGH2
+  IMPRESSION2
+  TOTALCLICKTHROUGH
+  TOTALIMPRESSION
+  ADVERTISERNAME
+  SPENDORDERLINEPAIDTYPE
+
+func `%`*(v: MMMReportingColumn): JsonNode =
+  result = case v:
+    of MMMReportingColumn.SPENDINDOLLAR: %"SPEND_IN_DOLLAR"
+    of MMMReportingColumn.SPENDINMICRODOLLAR: %"SPEND_IN_MICRO_DOLLAR"
+    of MMMReportingColumn.ECPCINDOLLAR: %"ECPC_IN_DOLLAR"
+    of MMMReportingColumn.ECTR: %"ECTR"
+    of MMMReportingColumn.CAMPAIGNNAME: %"CAMPAIGN_NAME"
+    of MMMReportingColumn.TOTALENGAGEMENT: %"TOTAL_ENGAGEMENT"
+    of MMMReportingColumn.EENGAGEMENTRATE: %"EENGAGEMENT_RATE"
+    of MMMReportingColumn.ECPMINDOLLAR: %"ECPM_IN_DOLLAR"
+    of MMMReportingColumn.CAMPAIGNID: %"CAMPAIGN_ID"
+    of MMMReportingColumn.ADVERTISERID: %"ADVERTISER_ID"
+    of MMMReportingColumn.ADGROUPID: %"AD_GROUP_ID"
+    of MMMReportingColumn.ADGROUPNAME: %"AD_GROUP_NAME"
+    of MMMReportingColumn.CLICKTHROUGH1: %"CLICKTHROUGH_1"
+    of MMMReportingColumn.IMPRESSION1: %"IMPRESSION_1"
+    of MMMReportingColumn.CLICKTHROUGH2: %"CLICKTHROUGH_2"
+    of MMMReportingColumn.IMPRESSION2: %"IMPRESSION_2"
+    of MMMReportingColumn.TOTALCLICKTHROUGH: %"TOTAL_CLICKTHROUGH"
+    of MMMReportingColumn.TOTALIMPRESSION: %"TOTAL_IMPRESSION"
+    of MMMReportingColumn.ADVERTISERNAME: %"ADVERTISER_NAME"
+    of MMMReportingColumn.SPENDORDERLINEPAIDTYPE: %"SPEND_ORDER_LINE_PAID_TYPE"
+
+func `$`*(v: MMMReportingColumn): string =
+  result = case v:
+    of MMMReportingColumn.SPENDINDOLLAR: $("SPEND_IN_DOLLAR")
+    of MMMReportingColumn.SPENDINMICRODOLLAR: $("SPEND_IN_MICRO_DOLLAR")
+    of MMMReportingColumn.ECPCINDOLLAR: $("ECPC_IN_DOLLAR")
+    of MMMReportingColumn.ECTR: $("ECTR")
+    of MMMReportingColumn.CAMPAIGNNAME: $("CAMPAIGN_NAME")
+    of MMMReportingColumn.TOTALENGAGEMENT: $("TOTAL_ENGAGEMENT")
+    of MMMReportingColumn.EENGAGEMENTRATE: $("EENGAGEMENT_RATE")
+    of MMMReportingColumn.ECPMINDOLLAR: $("ECPM_IN_DOLLAR")
+    of MMMReportingColumn.CAMPAIGNID: $("CAMPAIGN_ID")
+    of MMMReportingColumn.ADVERTISERID: $("ADVERTISER_ID")
+    of MMMReportingColumn.ADGROUPID: $("AD_GROUP_ID")
+    of MMMReportingColumn.ADGROUPNAME: $("AD_GROUP_NAME")
+    of MMMReportingColumn.CLICKTHROUGH1: $("CLICKTHROUGH_1")
+    of MMMReportingColumn.IMPRESSION1: $("IMPRESSION_1")
+    of MMMReportingColumn.CLICKTHROUGH2: $("CLICKTHROUGH_2")
+    of MMMReportingColumn.IMPRESSION2: $("IMPRESSION_2")
+    of MMMReportingColumn.TOTALCLICKTHROUGH: $("TOTAL_CLICKTHROUGH")
+    of MMMReportingColumn.TOTALIMPRESSION: $("TOTAL_IMPRESSION")
+    of MMMReportingColumn.ADVERTISERNAME: $("ADVERTISER_NAME")
+    of MMMReportingColumn.SPENDORDERLINEPAIDTYPE: $("SPEND_ORDER_LINE_PAID_TYPE")
+
+proc to*(node: JsonNode, T: typedesc[MMMReportingColumn]): MMMReportingColumn =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum MMMReportingColumn, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("SPEND_IN_DOLLAR"):
+    return MMMReportingColumn.SPENDINDOLLAR
+  of $("SPEND_IN_MICRO_DOLLAR"):
+    return MMMReportingColumn.SPENDINMICRODOLLAR
+  of $("ECPC_IN_DOLLAR"):
+    return MMMReportingColumn.ECPCINDOLLAR
+  of $("ECTR"):
+    return MMMReportingColumn.ECTR
+  of $("CAMPAIGN_NAME"):
+    return MMMReportingColumn.CAMPAIGNNAME
+  of $("TOTAL_ENGAGEMENT"):
+    return MMMReportingColumn.TOTALENGAGEMENT
+  of $("EENGAGEMENT_RATE"):
+    return MMMReportingColumn.EENGAGEMENTRATE
+  of $("ECPM_IN_DOLLAR"):
+    return MMMReportingColumn.ECPMINDOLLAR
+  of $("CAMPAIGN_ID"):
+    return MMMReportingColumn.CAMPAIGNID
+  of $("ADVERTISER_ID"):
+    return MMMReportingColumn.ADVERTISERID
+  of $("AD_GROUP_ID"):
+    return MMMReportingColumn.ADGROUPID
+  of $("AD_GROUP_NAME"):
+    return MMMReportingColumn.ADGROUPNAME
+  of $("CLICKTHROUGH_1"):
+    return MMMReportingColumn.CLICKTHROUGH1
+  of $("IMPRESSION_1"):
+    return MMMReportingColumn.IMPRESSION1
+  of $("CLICKTHROUGH_2"):
+    return MMMReportingColumn.CLICKTHROUGH2
+  of $("IMPRESSION_2"):
+    return MMMReportingColumn.IMPRESSION2
+  of $("TOTAL_CLICKTHROUGH"):
+    return MMMReportingColumn.TOTALCLICKTHROUGH
+  of $("TOTAL_IMPRESSION"):
+    return MMMReportingColumn.TOTALIMPRESSION
+  of $("ADVERTISER_NAME"):
+    return MMMReportingColumn.ADVERTISERNAME
+  of $("SPEND_ORDER_LINE_PAID_TYPE"):
+    return MMMReportingColumn.SPENDORDERLINEPAIDTYPE
+  else:
+    raise newException(ValueError, "Invalid enum value for MMMReportingColumn: " & strVal)
+

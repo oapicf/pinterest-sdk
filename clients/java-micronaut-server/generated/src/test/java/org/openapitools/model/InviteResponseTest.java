@@ -58,4 +58,44 @@ public class InviteResponseTest {
         // TODO: test user
     }
 
+    /**
+     * Test the property 'assetsSummary'
+     */
+    @Test
+    public void assetsSummaryTest() {
+        // TODO: test assetsSummary
+    }
+
+    /**
+     * Test the property 'businessRoles'
+     */
+    @Test
+    public void businessRolesTest() {
+        // TODO: test businessRoles
+    }
+
+    /**
+     * Test the property 'createdByBusiness'
+     */
+    @Test
+    public void createdByBusinessTest() {
+        // TODO: test createdByBusiness
+    }
+
+    /**
+     * Test the property 'createdByUser'
+     */
+    @Test
+    public void createdByUserTest() {
+        // TODO: test createdByUser
+    }
+
+    /**
+     * Test the property 'createdTime'
+     */
+    @Test
+    public void createdTimeTest() {
+        // TODO: test createdTime
+    }
+
 }

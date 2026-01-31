@@ -191,12 +191,10 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "child_interests":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                childInterests = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            childInterests = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "level":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                level = new Option<int?>(utf8JsonReader.GetInt32());
+                            level = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

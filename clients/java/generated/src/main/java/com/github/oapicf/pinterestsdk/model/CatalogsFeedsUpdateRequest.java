@@ -55,7 +55,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request object for updating a feed.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedsUpdateRequest {
   public static final String SERIALIZED_NAME_DEFAULT_AVAILABILITY = "default_availability";
   @SerializedName(SERIALIZED_NAME_DEFAULT_AVAILABILITY)
@@ -321,18 +321,10 @@ public class CatalogsFeedsUpdateRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("default_availability");
-    openapiFields.add("default_currency");
-    openapiFields.add("name");
-    openapiFields.add("format");
-    openapiFields.add("credentials");
-    openapiFields.add("location");
-    openapiFields.add("preferred_processing_schedule");
-    openapiFields.add("status");
+    openapiFields = new HashSet<String>(Arrays.asList("default_availability", "default_currency", "name", "format", "credentials", "location", "preferred_processing_schedule", "status"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -344,7 +336,7 @@ public class CatalogsFeedsUpdateRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsFeedsUpdateRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsFeedsUpdateRequest is not found in the empty JSON string", CatalogsFeedsUpdateRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsFeedsUpdateRequest is not found in the empty JSON string", CatalogsFeedsUpdateRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -352,7 +344,7 @@ public class CatalogsFeedsUpdateRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsFeedsUpdateRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsFeedsUpdateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsFeedsUpdateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -365,7 +357,7 @@ public class CatalogsFeedsUpdateRequest {
         NullableCurrency.validateJsonElement(jsonObj.get("default_currency"));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the optional field `format`
       if (jsonObj.get("format") != null && !jsonObj.get("format").isJsonNull()) {
@@ -376,7 +368,7 @@ public class CatalogsFeedsUpdateRequest {
         CatalogsFeedCredentials.validateJsonElement(jsonObj.get("credentials"));
       }
       if ((jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) && !jsonObj.get("location").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
       }
       // validate the optional field `preferred_processing_schedule`
       if (jsonObj.get("preferred_processing_schedule") != null && !jsonObj.get("preferred_processing_schedule").isJsonNull()) {

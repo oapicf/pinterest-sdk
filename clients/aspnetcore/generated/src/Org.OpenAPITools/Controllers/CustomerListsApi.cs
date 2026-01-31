@@ -47,16 +47,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CustomerList));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"created_time\" : 1452208622,\n  \"updated_time\" : 1461269616,\n  \"name\" : \"The Glengarry Glen Ross leads\",\n  \"num_removed_user_records\" : 0,\n  \"id\" : \"643\",\n  \"num_uploaded_user_records\" : 11,\n  \"type\" : \"customerlist\",\n  \"num_batches\" : 2,\n  \"exceptions\" : \"{}\",\n  \"ad_account_id\" : \"549756359984\",\n  \"status\" : \"PROCESSING\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CustomerList>(exampleJson)
-            : default(CustomerList);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -79,16 +79,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CustomerList));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"created_time\" : 1452208622,\n  \"updated_time\" : 1461269616,\n  \"name\" : \"The Glengarry Glen Ross leads\",\n  \"num_removed_user_records\" : 0,\n  \"id\" : \"643\",\n  \"num_uploaded_user_records\" : 11,\n  \"type\" : \"customerlist\",\n  \"num_batches\" : 2,\n  \"exceptions\" : \"{}\",\n  \"ad_account_id\" : \"549756359984\",\n  \"status\" : \"PROCESSING\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CustomerList>(exampleJson)
-            : default(CustomerList);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -113,16 +113,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CustomerListsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"created_time\" : 1452208622,\n    \"updated_time\" : 1461269616,\n    \"name\" : \"The Glengarry Glen Ross leads\",\n    \"num_removed_user_records\" : 0,\n    \"id\" : \"643\",\n    \"num_uploaded_user_records\" : 11,\n    \"type\" : \"customerlist\",\n    \"num_batches\" : 2,\n    \"exceptions\" : \"{}\",\n    \"ad_account_id\" : \"549756359984\",\n    \"status\" : \"PROCESSING\"\n  }, {\n    \"created_time\" : 1452208622,\n    \"updated_time\" : 1461269616,\n    \"name\" : \"The Glengarry Glen Ross leads\",\n    \"num_removed_user_records\" : 0,\n    \"id\" : \"643\",\n    \"num_uploaded_user_records\" : 11,\n    \"type\" : \"customerlist\",\n    \"num_batches\" : 2,\n    \"exceptions\" : \"{}\",\n    \"ad_account_id\" : \"549756359984\",\n    \"status\" : \"PROCESSING\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CustomerListsList200Response>(exampleJson)
-            : default(CustomerListsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -147,16 +147,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(CustomerList));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"created_time\" : 1452208622,\n  \"updated_time\" : 1461269616,\n  \"name\" : \"The Glengarry Glen Ross leads\",\n  \"num_removed_user_records\" : 0,\n  \"id\" : \"643\",\n  \"num_uploaded_user_records\" : 11,\n  \"type\" : \"customerlist\",\n  \"num_batches\" : 2,\n  \"exceptions\" : \"{}\",\n  \"ad_account_id\" : \"549756359984\",\n  \"status\" : \"PROCESSING\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CustomerList>(exampleJson)
-            : default(CustomerList);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

@@ -66,14 +66,16 @@ class CatalogsCreativeAssetsBatchRequest
     protected ?Country $country = null;
 
     /**
-     * @var CatalogsItemsRequestLanguage|null
+     * We recommend using the CatalogsLocale values.
+     *
+     * @var string|null
      * @SerializedName("language")
-     * @Type("OpenAPI\Server\Model\CatalogsItemsRequestLanguage")
+     * @Type("string")
     */
     #[Assert\NotNull]
-    #[Assert\Valid]
-    #[Assert\Type("OpenAPI\Server\Model\CatalogsItemsRequestLanguage")]
-    protected ?CatalogsItemsRequestLanguage $language = null;
+    #[Assert\Choice(['af-ZA', 'ar-SA', 'bg-BG', 'bn-IN', 'cs-CZ', 'da-DK', 'de', 'el-GR', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-US', 'es-419', 'es-AR', 'es-ES', 'es-MX', 'fi-FI', 'fr', 'fr-CA', 'he-IL', 'hi-IN', 'hr-HR', 'hu-HU', 'id-ID', 'it', 'ja', 'ko-KR', 'ms-MY', 'nb-NO', 'nl', 'pl-PL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sk-SK', 'sv-SE', 'te-IN', 'th-TH', 'tl-PH', 'tr', 'uk-UA', 'vi-VN', 'zh-CN', 'zh-TW', 'AM', 'AR', 'AZ', 'BG', 'BN', 'BS', 'CA', 'CS', 'DA', 'DV', 'DZ', 'DE', 'EL', 'EN', 'ES', 'ET', 'FA', 'FI', 'FR', 'HE', 'HI', 'HR', 'HU', 'HY', 'ID', 'IN', 'IS', 'IT', 'IW', 'JA', 'KA', 'KM', 'KO', 'LO', 'LT', 'LV', 'MK', 'MN', 'MS', 'MY', 'NB', 'NE', 'NL', 'NO', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'SQ', 'SR', 'SV', 'TL', 'UK', 'VI', 'TE', 'TH', 'TR', 'XX', 'ZH'])]
+    #[Assert\Type("string")]
+    protected ?string $language = null;
 
     /**
      * Array with creative assets item operations
@@ -201,9 +203,9 @@ class CatalogsCreativeAssetsBatchRequest
     /**
      * Gets language.
      *
-     * @return CatalogsItemsRequestLanguage|null
+     * @return string|null
      */
-    public function getLanguage(): ?CatalogsItemsRequestLanguage
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
@@ -211,11 +213,11 @@ class CatalogsCreativeAssetsBatchRequest
     /**
     * Sets language.
     *
-    * @param CatalogsItemsRequestLanguage|null $language
+    * @param string|null $language  We recommend using the CatalogsLocale values.
     *
     * @return $this
     */
-    public function setLanguage(?CatalogsItemsRequestLanguage $language): self
+    public function setLanguage(?string $language): self
     {
         $this->language = $language;
 

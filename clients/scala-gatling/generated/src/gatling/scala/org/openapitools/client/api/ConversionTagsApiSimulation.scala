@@ -140,8 +140,8 @@ class ConversionTagsApiSimulation extends Simulation {
         .exec(http("pageVisitConversionTagsGet")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/conversion_tags/page_visit")
         .queryParam("page_size","${page_size}")
-        .queryParam("order","${order}")
         .queryParam("bookmark","${bookmark}")
+        .queryParam("order","${order}")
 )
 
     // Run scnpageVisitConversionTagsGet with warm up and reach a constant rate for entire duration

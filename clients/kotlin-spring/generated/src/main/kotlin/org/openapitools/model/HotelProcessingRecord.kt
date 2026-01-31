@@ -40,7 +40,7 @@ data class HotelProcessingRecord(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("status") val status: ItemProcessingStatus? = null
-    ) {
+) {
 
 }
 

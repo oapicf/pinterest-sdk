@@ -2,26 +2,27 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsHotelAttributes;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * A hotel item to be created.
- **/
+ * A hotel item to be created.
+ */
 @ApiModel(description="A hotel item to be created.")
 
 public class CatalogsCreateHotelItem  {
   
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog hotel id in the merchant namespace")
  /**
-   * The catalog hotel id in the merchant namespace
-  **/
+  * The catalog hotel id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog hotel id in the merchant namespace")
+
   private String hotelId;
 
 public enum OperationEnum {
@@ -57,10 +58,13 @@ CREATE(String.valueOf("CREATE"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private OperationEnum operation;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsHotelAttributes attributes;
  /**
    * The catalog hotel id in the merchant namespace

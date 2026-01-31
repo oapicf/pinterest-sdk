@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_object
 
@@ -16,4 +18,5 @@ type DetailedError* = object
   ## Used for including extra details to a base error
   code*: int
   message*: string
-  details*: object
+  details*: JsonNode
+

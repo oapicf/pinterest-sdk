@@ -23,7 +23,7 @@ data class PlacementMultipliers(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("PLACEMENT") val PLACEMENT: PlacementMultipliers.PLACEMENT? = null
-    ) : kotlin.collections.HashMap<String, kotlin.Double>{
+) : kotlin.collections.HashMap<String, kotlin.Double>() {
 
     /**
     * 
@@ -38,7 +38,8 @@ data class PlacementMultipliers(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): PLACEMENT {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PlacementMultipliers'")
             }
         }
     }

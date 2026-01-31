@@ -30,7 +30,7 @@ data class SharedAudienceCommon(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("operation_type") val operationType: OperationType? = null
-    ) {
+) {
 
 }
 

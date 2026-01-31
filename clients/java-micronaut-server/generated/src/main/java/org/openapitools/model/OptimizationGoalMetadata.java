@@ -34,7 +34,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   OptimizationGoalMetadata.JSON_PROPERTY_SCROLLUP_GOAL_METADATA
 })
 @JsonTypeName("OptimizationGoalMetadata")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-01-26T05:36:06.173633742Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class OptimizationGoalMetadata {
     public static final String JSON_PROPERTY_CONVERSION_TAG_V3_GOAL_METADATA = "conversion_tag_v3_goal_metadata";

@@ -22,6 +22,7 @@ namespace org::openapitools::server::model
 CatalogsHotelBatchRequest::CatalogsHotelBatchRequest()
 {
     m_Catalog_type = "";
+    m_Language = "";
     m_Catalog_id = "";
     m_Catalog_idIsSet = false;
     
@@ -164,11 +165,11 @@ void CatalogsHotelBatchRequest::setCountry(org::openapitools::server::model::Cou
 {
     m_Country = value;
 }
-org::openapitools::server::model::CatalogsItemsRequest_language CatalogsHotelBatchRequest::getLanguage() const
+std::string CatalogsHotelBatchRequest::getLanguage() const
 {
     return m_Language;
 }
-void CatalogsHotelBatchRequest::setLanguage(org::openapitools::server::model::CatalogsItemsRequest_language const& value)
+void CatalogsHotelBatchRequest::setLanguage(std::string const& value)
 {
     m_Language = value;
 }

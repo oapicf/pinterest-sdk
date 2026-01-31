@@ -35,7 +35,7 @@ data class CatalogsRetailItemErrorResponse(
     @field:Valid
     @Schema(example = "null", description = "Array with the errors for the item id requested")
     @get:JsonProperty("errors") val errors: kotlin.collections.List<ItemValidationEvent>? = null
-    ) {
+) {
 
 }
 

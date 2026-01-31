@@ -68,12 +68,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->catalogsCreate($catalogsCreateRequest, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->catalogsCreate($catalogsCreateRequest, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Catalog) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -137,12 +133,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->catalogsList($bookmark, $pageSize, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->catalogsList($bookmark, $pageSize, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -215,14 +207,10 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        $pinMetrics = $request->bool('pinMetrics');
+        $pinMetrics = $request->boolean('pinMetrics');
 
-        try {
-            $apiResult = $this->api->catalogsProductGroupPinsList($productGroupId, $bookmark, $pageSize, $adAccountId, $pinMetrics);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->catalogsProductGroupPinsList($productGroupId, $bookmark, $pageSize, $adAccountId, $pinMetrics);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsProductGroupPinsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -275,12 +263,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->catalogsProductGroupsCreate($multipleProductGroupsInner, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->catalogsProductGroupsCreate($multipleProductGroupsInner, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsVerticalProductGroup) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 201);
@@ -337,12 +321,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->catalogsProductGroupsCreateMany($multipleProductGroupsInner, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->catalogsProductGroupsCreateMany($multipleProductGroupsInner, $adAccountId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -409,12 +389,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->catalogsProductGroupsDelete($productGroupId, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->catalogsProductGroupsDelete($productGroupId, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent204) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 204);
@@ -486,12 +462,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->catalogsProductGroupsDeleteMany($id, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->catalogsProductGroupsDeleteMany($id, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent204) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 204);
@@ -557,12 +529,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->catalogsProductGroupsGet($productGroupId, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->catalogsProductGroupsGet($productGroupId, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsVerticalProductGroup) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -657,12 +625,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->catalogsProductGroupsList($id, $feedId, $catalogId, $bookmark, $pageSize, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->catalogsProductGroupsList($id, $feedId, $catalogId, $bookmark, $pageSize, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsProductGroupsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -732,12 +696,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->catalogsProductGroupsProductCountsGet($productGroupId, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->catalogsProductGroupsProductCountsGet($productGroupId, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsProductGroupProductCountsVertical) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -787,12 +747,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->catalogsProductGroupsUpdate($productGroupId, $catalogsProductGroupsUpdateRequest, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->catalogsProductGroupsUpdate($productGroupId, $catalogsProductGroupsUpdateRequest, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsVerticalProductGroup) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -874,12 +830,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->feedProcessingResultsList($feedId, $bookmark, $pageSize, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->feedProcessingResultsList($feedId, $bookmark, $pageSize, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\FeedProcessingResultsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -932,12 +884,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->feedsCreate($feedsCreateRequest, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->feedsCreate($feedsCreateRequest, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsFeed) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 201);
@@ -1011,12 +959,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->feedsDelete($feedId, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->feedsDelete($feedId, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent204) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 204);
@@ -1082,12 +1026,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->feedsGet($feedId, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->feedsGet($feedId, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsFeed) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1149,12 +1089,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->feedsIngest($feedId, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->feedsIngest($feedId, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsFeedIngestion) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1228,12 +1164,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->feedsList($bookmark, $pageSize, $catalogId, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->feedsList($bookmark, $pageSize, $catalogId, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\FeedsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1283,12 +1215,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->feedsUpdate($feedId, $feedsUpdateRequest, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->feedsUpdate($feedId, $feedsUpdateRequest, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsFeed) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1349,12 +1277,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->itemsBatchGet($batchId, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->itemsBatchGet($batchId, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsItemsBatch) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1411,12 +1335,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->itemsBatchPost($itemsBatchPostRequest, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->itemsBatchPost($itemsBatchPostRequest, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsItemsBatch) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1494,12 +1414,8 @@ class CatalogsController extends Controller
 
         $filters = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\CatalogsRetailItemsFilter|\OpenAPI\Server\Model\CatalogsHotelItemsFilter|\OpenAPI\Server\Model\CatalogsCreativeAssetsItemsFilter::class);
 
-        try {
-            $apiResult = $this->api->itemsGet($country, $language, $adAccountId, $itemIds, $filters);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->itemsGet($country, $language, $adAccountId, $itemIds, $filters);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsItems) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1582,12 +1498,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->itemsIssuesList($processingResultId, $bookmark, $pageSize, $itemNumbers, $itemValidationIssue, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->itemsIssuesList($processingResultId, $bookmark, $pageSize, $itemNumbers, $itemValidationIssue, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ItemsIssuesList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1640,12 +1552,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->itemsPost($catalogsItemsRequest, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->itemsPost($catalogsItemsRequest, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsItems) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1702,14 +1610,10 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        $pinMetrics = $request->bool('pinMetrics');
+        $pinMetrics = $request->boolean('pinMetrics');
 
-        try {
-            $apiResult = $this->api->productsByProductGroupFilterList($catalogsListProductsByFilterRequest, $bookmark, $pageSize, $adAccountId, $pinMetrics);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->productsByProductGroupFilterList($catalogsListProductsByFilterRequest, $bookmark, $pageSize, $adAccountId, $pinMetrics);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsProductGroupPinsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1758,12 +1662,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->reportsCreate($catalogsReportParameters, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->reportsCreate($catalogsReportParameters, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsCreateReportResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1821,12 +1721,8 @@ class CatalogsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->reportsGet($token, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->reportsGet($token, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\CatalogsReport) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -1895,12 +1791,8 @@ class CatalogsController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->reportsStats($parameters, $adAccountId, $pageSize, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->reportsStats($parameters, $adAccountId, $pageSize, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\ReportsStats200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

@@ -20,14 +20,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Status for catalogs entities. Present in catalogs_feed values. When a feed is deleted, the response will inform DELETED as status.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum CatalogsStatus {
   
   ACTIVE("ACTIVE"),
   
   INACTIVE("INACTIVE");
 
-  private String value;
+  private final String value;
 
   CatalogsStatus(String value) {
     this.value = value;

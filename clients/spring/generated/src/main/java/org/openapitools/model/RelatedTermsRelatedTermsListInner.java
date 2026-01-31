@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("RelatedTerms_related_terms_list_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class RelatedTermsRelatedTermsListInner {
 
   private @Nullable String term;
@@ -32,7 +32,7 @@ public class RelatedTermsRelatedTermsListInner {
   @Valid
   private List<String> relatedTerms = new ArrayList<>();
 
-  public RelatedTermsRelatedTermsListInner term(String term) {
+  public RelatedTermsRelatedTermsListInner term(@Nullable String term) {
     this.term = term;
     return this;
   }
@@ -44,11 +44,11 @@ public class RelatedTermsRelatedTermsListInner {
   
   @Schema(name = "term", example = "clothes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("term")
-  public String getTerm() {
+  public @Nullable String getTerm() {
     return term;
   }
 
-  public void setTerm(String term) {
+  public void setTerm(@Nullable String term) {
     this.term = term;
   }
 

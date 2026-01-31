@@ -62,7 +62,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsHotelBatchItem.class.getName());
 
@@ -132,7 +132,7 @@ public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsCreateHotelItem failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreateHotelItem failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsCreateHotelItem'", e);
                     }
                     // deserialize CatalogsUpsertHotelItem
@@ -145,7 +145,7 @@ public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsUpsertHotelItem failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsUpsertHotelItem failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsUpsertHotelItem'", e);
                     }
                     // deserialize CatalogsUpdateHotelItem
@@ -158,7 +158,7 @@ public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsUpdateHotelItem failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsUpdateHotelItem failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsUpdateHotelItem'", e);
                     }
                     // deserialize CatalogsDeleteHotelItem
@@ -171,11 +171,11 @@ public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsDeleteHotelItem failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsDeleteHotelItem failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsDeleteHotelItem'", e);
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CatalogsHotelBatchItem: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CatalogsHotelBatchItem: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -307,7 +307,7 @@ public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
             CatalogsCreateHotelItem.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsCreateHotelItem failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsCreateHotelItem failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsUpsertHotelItem
@@ -315,7 +315,7 @@ public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
             CatalogsUpsertHotelItem.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsUpsertHotelItem failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsUpsertHotelItem failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsUpdateHotelItem
@@ -323,7 +323,7 @@ public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
             CatalogsUpdateHotelItem.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsUpdateHotelItem failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsUpdateHotelItem failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsDeleteHotelItem
@@ -331,10 +331,10 @@ public class CatalogsHotelBatchItem extends AbstractOpenApiSchema {
             CatalogsDeleteHotelItem.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsDeleteHotelItem failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsDeleteHotelItem failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        throw new IOException(String.format("The JSON string is invalid for CatalogsHotelBatchItem with anyOf schemas: CatalogsCreateHotelItem, CatalogsDeleteHotelItem, CatalogsUpdateHotelItem, CatalogsUpsertHotelItem. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+        throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CatalogsHotelBatchItem with anyOf schemas: CatalogsCreateHotelItem, CatalogsDeleteHotelItem, CatalogsUpdateHotelItem, CatalogsUpsertHotelItem. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
     }
 
     /**

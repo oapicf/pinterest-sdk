@@ -23,7 +23,6 @@ import org.openapitools.client.models.BatchOperation
 import org.openapitools.client.models.CatalogsItemsCreateBatchRequest
 import org.openapitools.client.models.CatalogsItemsDeleteBatchRequest
 import org.openapitools.client.models.CatalogsItemsDeleteDiscontinuedBatchRequest
-import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.CatalogsItemsUpdateBatchRequest
 import org.openapitools.client.models.CatalogsItemsUpsertBatchRequest
 import org.openapitools.client.models.Country
@@ -40,7 +39,7 @@ class CatalogsItemsBatchRequestTest : ShouldSpec() {
             //modelInstance.country shouldBe ("TODO")
         }
 
-        // to test the property `language`
+        // to test the property `language` - We recommend using the CatalogsLocale values.
         should("test language") {
             // uncomment below to test the property
             //modelInstance.language shouldBe ("TODO")

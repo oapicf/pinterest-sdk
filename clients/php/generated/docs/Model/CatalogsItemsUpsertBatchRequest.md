@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**\OpenAPI\Client\Model\Country**](Country.md) |  |
-**language** | [**\OpenAPI\Client\Model\CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  |
+**language** | **string** | We recommend using the CatalogsLocale values. |
 **operation** | [**\OpenAPI\Client\Model\BatchOperation**](BatchOperation.md) |  |
 **items** | [**\OpenAPI\Client\Model\ItemUpsertBatchRecord[]**](ItemUpsertBatchRecord.md) | Array with catalogs items |
 

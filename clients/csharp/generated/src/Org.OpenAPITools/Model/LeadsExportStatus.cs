@@ -147,7 +147,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, LeadsExportStatus leadsExportStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(leadsExportStatus.ToString());
+            writer.WriteStringValue(LeadsExportStatusValueConverter.ToJsonValue(leadsExportStatus).ToString());
         }
     }
 
@@ -178,14 +178,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the LeadsExportStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="leadsExportStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, LeadsExportStatus? leadsExportStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(leadsExportStatus?.ToString() ?? "null");
+            writer.WriteStringValue(leadsExportStatus.HasValue ? LeadsExportStatusValueConverter.ToJsonValue(leadsExportStatus.Value).ToString() : "null");
         }
     }
 }

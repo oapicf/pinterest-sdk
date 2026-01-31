@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.openapitools.client.model.AudienceType._
 
 case class AudienceCreateRequest(
   /* Ad account ID. */
@@ -20,6 +21,10 @@ case class AudienceCreateRequest(
   rule: AudienceRule,
   /* Audience description. */
   description: Option[String] = None,
-  audienceType: AudienceCreateRequest1AudienceType
+  /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
+  audienceType: AudienceType
 )
 
+object AudienceCreateRequestEnums {
+
+}

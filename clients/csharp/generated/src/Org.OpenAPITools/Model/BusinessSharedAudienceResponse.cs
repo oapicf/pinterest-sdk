@@ -163,12 +163,10 @@ namespace Org.OpenAPITools.Model
                             audienceId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "permissions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                permissions = new Option<List<Role>?>(JsonSerializer.Deserialize<List<Role>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            permissions = new Option<List<Role>?>(JsonSerializer.Deserialize<List<Role>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "recipient_business_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                recipientBusinessIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            recipientBusinessIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

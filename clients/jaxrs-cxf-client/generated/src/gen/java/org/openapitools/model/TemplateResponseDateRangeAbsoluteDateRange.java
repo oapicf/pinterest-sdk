@@ -1,35 +1,38 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * The absolute date range of the template
- **/
+ * The absolute date range of the template
+ */
 @ApiModel(description="The absolute date range of the template")
 
 public class TemplateResponseDateRangeAbsoluteDateRange  {
   
-  @ApiModelProperty(example = "absolute", value = "The date range type")
  /**
-   * The date range type
-  **/
+  * The date range type
+  */
+  @ApiModelProperty(example = "absolute", value = "The date range type")
+
   private String type;
 
-  @ApiModelProperty(example = "0.8008281904610115", value = "The start date of the date range")
  /**
-   * The start date of the date range
-  **/
+  * The start date of the date range
+  */
+  @ApiModelProperty(example = "0.8008281904610115", value = "The start date of the date range")
+
   private BigDecimal startDate;
 
-  @ApiModelProperty(example = "6.027456183070403", value = "The end date of the date range")
  /**
-   * The end date of the date range
-  **/
+  * The end date of the date range
+  */
+  @ApiModelProperty(example = "6.027456183070403", value = "The end date of the date range")
+
   private BigDecimal endDate;
  /**
    * The date range type

@@ -187,13 +187,19 @@ ProductGroupPromotionsApi <- R6::R6Class(
         stop("Missing required parameter `product_group_promotion_create_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsCreate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`product_group_promotion_create_request`) && is.null(`product_group_promotion_create_request`)) {
+        stop("Invalid value for `product_group_promotion_create_request` when calling ProductGroupPromotionsApi$ProductGroupPromotionsCreate, `product_group_promotion_create_request` is not nullable")
+      }
 
       if (!is.null(`product_group_promotion_create_request`)) {
         local_var_body <- `product_group_promotion_create_request`$toJSONString()
@@ -307,17 +313,23 @@ ProductGroupPromotionsApi <- R6::R6Class(
         stop("Missing required parameter `product_group_promotion_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`product_group_promotion_id`) > 18) {
+      if (!missing(`product_group_promotion_id`) && is.null(`product_group_promotion_id`)) {
+        stop("Invalid value for `product_group_promotion_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsGet, `product_group_promotion_id` is not nullable")
+      }
+      if (!is.null(`product_group_promotion_id`) && nchar(`product_group_promotion_id`) > 18) {
         stop("Invalid length for `product_group_promotion_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`product_group_promotion_id`, "^\\d+$")) {
+      if (!is.null(`product_group_promotion_id`) && !stringr::str_detect(`product_group_promotion_id`, "^\\d+$")) {
         stop("Invalid value for `product_group_promotion_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -437,36 +449,57 @@ ProductGroupPromotionsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`product_group_promotion_ids`) > 100) {
+      if (!missing(`product_group_promotion_ids`) && is.null(`product_group_promotion_ids`)) {
+        stop("Invalid value for `product_group_promotion_ids` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, `product_group_promotion_ids` is not nullable")
+      }
+      if (!is.null(`product_group_promotion_ids`) && length(`product_group_promotion_ids`) > 100) {
         stop("Invalid length for `product_group_promotion_ids` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, number of items must be less than or equal to 100.")
       }
-      if (length(`product_group_promotion_ids`) < 1) {
+      if (!is.null(`product_group_promotion_ids`) && length(`product_group_promotion_ids`) < 1) {
         stop("Invalid length for `product_group_promotion_ids` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`entity_statuses`) && is.null(`entity_statuses`)) {
+        stop("Invalid value for `entity_statuses` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, `entity_statuses` is not nullable")
+      }
 
-      if (nchar(`ad_group_id`) > 18) {
+      if (!missing(`ad_group_id`) && is.null(`ad_group_id`)) {
+        stop("Invalid value for `ad_group_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, `ad_group_id` is not nullable")
+      }
+      if (!is.null(`ad_group_id`) && nchar(`ad_group_id`) > 18) {
         stop("Invalid length for `ad_group_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_group_id`, "^\\d+$")) {
+      if (!is.null(`ad_group_id`) && !stringr::str_detect(`ad_group_id`, "^\\d+$")) {
         stop("Invalid value for `ad_group_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, must conform to the pattern ^\\d+$.")
       }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`order`) && is.null(`order`)) {
+        stop("Invalid value for `order` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, `order` is not nullable")
+      }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling ProductGroupPromotionsApi$ProductGroupPromotionsList, `bookmark` is not nullable")
+      }
 
       # explore
       for (query_item in `product_group_promotion_ids`) {
@@ -599,13 +632,19 @@ ProductGroupPromotionsApi <- R6::R6Class(
         stop("Missing required parameter `product_group_promotion_update_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsUpdate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsUpdate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupPromotionsUpdate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`product_group_promotion_update_request`) && is.null(`product_group_promotion_update_request`)) {
+        stop("Invalid value for `product_group_promotion_update_request` when calling ProductGroupPromotionsApi$ProductGroupPromotionsUpdate, `product_group_promotion_update_request` is not nullable")
+      }
 
       if (!is.null(`product_group_promotion_update_request`)) {
         local_var_body <- `product_group_promotion_update_request`$toJSONString()
@@ -751,27 +790,57 @@ ProductGroupPromotionsApi <- R6::R6Class(
         stop("Missing required parameter `granularity`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, `end_date` is not nullable")
+      }
 
-      if (length(`product_group_ids`) > 100) {
+      if (!missing(`product_group_ids`) && is.null(`product_group_ids`)) {
+        stop("Invalid value for `product_group_ids` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, `product_group_ids` is not nullable")
+      }
+      if (!is.null(`product_group_ids`) && length(`product_group_ids`) > 100) {
         stop("Invalid length for `product_group_ids` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, number of items must be less than or equal to 100.")
       }
-      if (length(`product_group_ids`) < 1) {
+      if (!is.null(`product_group_ids`) && length(`product_group_ids`) < 1) {
         stop("Invalid length for `product_group_ids` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`columns`) && is.null(`columns`)) {
+        stop("Invalid value for `columns` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, `columns` is not nullable")
+      }
 
+      if (!missing(`granularity`) && is.null(`granularity`)) {
+        stop("Invalid value for `granularity` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, `granularity` is not nullable")
+      }
 
+      if (!missing(`click_window_days`) && is.null(`click_window_days`)) {
+        stop("Invalid value for `click_window_days` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, `click_window_days` is not nullable")
+      }
 
+      if (!missing(`engagement_window_days`) && is.null(`engagement_window_days`)) {
+        stop("Invalid value for `engagement_window_days` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, `engagement_window_days` is not nullable")
+      }
 
+      if (!missing(`view_window_days`) && is.null(`view_window_days`)) {
+        stop("Invalid value for `view_window_days` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, `view_window_days` is not nullable")
+      }
 
+      if (!missing(`conversion_report_time`) && is.null(`conversion_report_time`)) {
+        stop("Invalid value for `conversion_report_time` when calling ProductGroupPromotionsApi$ProductGroupsAnalytics, `conversion_report_time` is not nullable")
+      }
 
       query_params[["start_date"]] <- `start_date`
 

@@ -70,12 +70,8 @@ class TermsController extends Controller
 
         $terms = $request->get('terms');
 
-        try {
-            $apiResult = $this->api->termsRelatedList($terms);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->termsRelatedList($terms);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\RelatedTerms) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -129,12 +125,8 @@ class TermsController extends Controller
 
         $limit = $request->integer('limit');
 
-        try {
-            $apiResult = $this->api->termsSuggestedList($term, $limit);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->termsSuggestedList($term, $limit);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);

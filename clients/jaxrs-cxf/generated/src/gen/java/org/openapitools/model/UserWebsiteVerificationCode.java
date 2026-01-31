@@ -10,34 +10,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserWebsiteVerificationCode  {
   
-  @ApiModelProperty(example = "e1edcc1a43976c646367e9c6c9a9b7b6", value = "Code to check against the user claiming the website")
  /**
-   * Code to check against the user claiming the website
-  **/
+  * Code to check against the user claiming the website
+  */
+  @ApiModelProperty(example = "e1edcc1a43976c646367e9c6c9a9b7b6", value = "Code to check against the user claiming the website")
+
   private String verificationCode;
 
-  @ApiModelProperty(example = "pinterest-site-verification=e1edcc1a43976c646367e9c6c9a9b7b6", value = "DNS TXT record to check against for the website to be claimed")
  /**
-   * DNS TXT record to check against for the website to be claimed
-  **/
+  * DNS TXT record to check against for the website to be claimed
+  */
+  @ApiModelProperty(example = "pinterest-site-verification=e1edcc1a43976c646367e9c6c9a9b7b6", value = "DNS TXT record to check against for the website to be claimed")
+
   private String dnsTxtRecord;
 
-  @ApiModelProperty(example = "<meta name=\"p:domain_verify\" content=\"e1edcc1a43976c646367e9c6c9a9b7b6\"/>", value = "Metatag the verification process searchs for the website to be claimed")
  /**
-   * Metatag the verification process searchs for the website to be claimed
-  **/
+  * Metatag the verification process searchs for the website to be claimed
+  */
+  @ApiModelProperty(example = "<meta name=\"p:domain_verify\" content=\"e1edcc1a43976c646367e9c6c9a9b7b6\"/>", value = "Metatag the verification process searchs for the website to be claimed")
+
   private String metatag;
 
-  @ApiModelProperty(example = "pinterest-e1edc.html", value = "File expected to find on the website being claimed")
  /**
-   * File expected to find on the website being claimed
-  **/
+  * File expected to find on the website being claimed
+  */
+  @ApiModelProperty(example = "pinterest-e1edc.html", value = "File expected to find on the website being claimed")
+
   private String filename;
 
-  @ApiModelProperty(value = "A full html file to upload to the website in order for it to be claimed")
  /**
-   * A full html file to upload to the website in order for it to be claimed
-  **/
+  * A full html file to upload to the website in order for it to be claimed
+  */
+  @ApiModelProperty(value = "A full html file to upload to the website in order for it to be claimed")
+
   private String fileContent;
  /**
    * Code to check against the user claiming the website

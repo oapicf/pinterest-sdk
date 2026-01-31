@@ -250,8 +250,6 @@ OpenAPIClient/Model/OAIAudienceCreateCustomRequest.h
 OpenAPIClient/Model/OAIAudienceCreateCustomRequest.m
 OpenAPIClient/Model/OAIAudienceCreateRequest.h
 OpenAPIClient/Model/OAIAudienceCreateRequest.m
-OpenAPIClient/Model/OAIAudienceCreateRequest1AudienceType.h
-OpenAPIClient/Model/OAIAudienceCreateRequest1AudienceType.m
 OpenAPIClient/Model/OAIAudienceDataParty.h
 OpenAPIClient/Model/OAIAudienceDataParty.m
 OpenAPIClient/Model/OAIAudienceDefinition.h
@@ -606,8 +604,6 @@ OpenAPIClient/Model/OAICatalogsItemsPostFilters.h
 OpenAPIClient/Model/OAICatalogsItemsPostFilters.m
 OpenAPIClient/Model/OAICatalogsItemsRequest.h
 OpenAPIClient/Model/OAICatalogsItemsRequest.m
-OpenAPIClient/Model/OAICatalogsItemsRequestLanguage.h
-OpenAPIClient/Model/OAICatalogsItemsRequestLanguage.m
 OpenAPIClient/Model/OAICatalogsItemsUpdateBatchRequest.h
 OpenAPIClient/Model/OAICatalogsItemsUpdateBatchRequest.m
 OpenAPIClient/Model/OAICatalogsItemsUpsertBatchRequest.h
@@ -1274,8 +1270,6 @@ OpenAPIClient/Model/OAIPinUpdate.h
 OpenAPIClient/Model/OAIPinUpdate.m
 OpenAPIClient/Model/OAIPinUpdateCarouselSlotsInner.h
 OpenAPIClient/Model/OAIPinUpdateCarouselSlotsInner.m
-OpenAPIClient/Model/OAIPinsAnalyticsMetricTypesParameterInner.h
-OpenAPIClient/Model/OAIPinsAnalyticsMetricTypesParameterInner.m
 OpenAPIClient/Model/OAIPinsList200Response.h
 OpenAPIClient/Model/OAIPinsList200Response.m
 OpenAPIClient/Model/OAIPinsSaveRequest.h
@@ -1611,7 +1605,6 @@ docs/OAIAudienceCategory.md
 docs/OAIAudienceCommon.md
 docs/OAIAudienceCreateCustomRequest.md
 docs/OAIAudienceCreateRequest.md
-docs/OAIAudienceCreateRequest1AudienceType.md
 docs/OAIAudienceDataParty.md
 docs/OAIAudienceDefinition.md
 docs/OAIAudienceDefinitionResponse.md
@@ -1800,7 +1793,6 @@ docs/OAICatalogsItemsDeleteDiscontinuedBatchRequest.md
 docs/OAICatalogsItemsFilters.md
 docs/OAICatalogsItemsPostFilters.md
 docs/OAICatalogsItemsRequest.md
-docs/OAICatalogsItemsRequestLanguage.md
 docs/OAICatalogsItemsUpdateBatchRequest.md
 docs/OAICatalogsItemsUpsertBatchRequest.md
 docs/OAICatalogsList200Response.md
@@ -2145,7 +2137,6 @@ docs/OAIPinMediaWithVideos.md
 docs/OAIPinPromotionSummaryStatus.md
 docs/OAIPinUpdate.md
 docs/OAIPinUpdateCarouselSlotsInner.md
-docs/OAIPinsAnalyticsMetricTypesParameterInner.md
 docs/OAIPinsApi.md
 docs/OAIPinsList200Response.md
 docs/OAIPinsSaveRequest.md

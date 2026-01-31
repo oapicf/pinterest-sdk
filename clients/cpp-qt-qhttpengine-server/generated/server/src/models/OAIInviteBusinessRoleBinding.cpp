@@ -34,15 +34,6 @@ OAIInviteBusinessRoleBinding::~OAIInviteBusinessRoleBinding() {}
 
 void OAIInviteBusinessRoleBinding::initializeModel() {
 
-    m_created_by_business_id_isSet = false;
-    m_created_by_business_id_isValid = false;
-
-    m_created_by_user_id_isSet = false;
-    m_created_by_user_id_isValid = false;
-
-    m_user_isSet = false;
-    m_user_isValid = false;
-
     m_id_isSet = false;
     m_id_isValid = false;
 
@@ -51,6 +42,15 @@ void OAIInviteBusinessRoleBinding::initializeModel() {
 
     m_is_received_invite_isSet = false;
     m_is_received_invite_isValid = false;
+
+    m_user_isSet = false;
+    m_user_isValid = false;
+
+    m_created_by_business_id_isSet = false;
+    m_created_by_business_id_isValid = false;
+
+    m_created_by_user_id_isSet = false;
+    m_created_by_user_id_isValid = false;
 }
 
 void OAIInviteBusinessRoleBinding::fromJson(QString jsonString) {
@@ -62,15 +62,6 @@ void OAIInviteBusinessRoleBinding::fromJson(QString jsonString) {
 
 void OAIInviteBusinessRoleBinding::fromJsonObject(QJsonObject json) {
 
-    m_created_by_business_id_isValid = ::OpenAPI::fromJsonValue(created_by_business_id, json[QString("created_by_business_id")]);
-    m_created_by_business_id_isSet = !json[QString("created_by_business_id")].isNull() && m_created_by_business_id_isValid;
-
-    m_created_by_user_id_isValid = ::OpenAPI::fromJsonValue(created_by_user_id, json[QString("created_by_user_id")]);
-    m_created_by_user_id_isSet = !json[QString("created_by_user_id")].isNull() && m_created_by_user_id_isValid;
-
-    m_user_isValid = ::OpenAPI::fromJsonValue(user, json[QString("user")]);
-    m_user_isSet = !json[QString("user")].isNull() && m_user_isValid;
-
     m_id_isValid = ::OpenAPI::fromJsonValue(id, json[QString("id")]);
     m_id_isSet = !json[QString("id")].isNull() && m_id_isValid;
 
@@ -79,6 +70,15 @@ void OAIInviteBusinessRoleBinding::fromJsonObject(QJsonObject json) {
 
     m_is_received_invite_isValid = ::OpenAPI::fromJsonValue(is_received_invite, json[QString("is_received_invite")]);
     m_is_received_invite_isSet = !json[QString("is_received_invite")].isNull() && m_is_received_invite_isValid;
+
+    m_user_isValid = ::OpenAPI::fromJsonValue(user, json[QString("user")]);
+    m_user_isSet = !json[QString("user")].isNull() && m_user_isValid;
+
+    m_created_by_business_id_isValid = ::OpenAPI::fromJsonValue(created_by_business_id, json[QString("created_by_business_id")]);
+    m_created_by_business_id_isSet = !json[QString("created_by_business_id")].isNull() && m_created_by_business_id_isValid;
+
+    m_created_by_user_id_isValid = ::OpenAPI::fromJsonValue(created_by_user_id, json[QString("created_by_user_id")]);
+    m_created_by_user_id_isSet = !json[QString("created_by_user_id")].isNull() && m_created_by_user_id_isValid;
 }
 
 QString OAIInviteBusinessRoleBinding::asJson() const {
@@ -90,15 +90,6 @@ QString OAIInviteBusinessRoleBinding::asJson() const {
 
 QJsonObject OAIInviteBusinessRoleBinding::asJsonObject() const {
     QJsonObject obj;
-    if (m_created_by_business_id_isSet) {
-        obj.insert(QString("created_by_business_id"), ::OpenAPI::toJsonValue(created_by_business_id));
-    }
-    if (m_created_by_user_id_isSet) {
-        obj.insert(QString("created_by_user_id"), ::OpenAPI::toJsonValue(created_by_user_id));
-    }
-    if (user.isSet()) {
-        obj.insert(QString("user"), ::OpenAPI::toJsonValue(user));
-    }
     if (m_id_isSet) {
         obj.insert(QString("id"), ::OpenAPI::toJsonValue(id));
     }
@@ -108,55 +99,16 @@ QJsonObject OAIInviteBusinessRoleBinding::asJsonObject() const {
     if (m_is_received_invite_isSet) {
         obj.insert(QString("is_received_invite"), ::OpenAPI::toJsonValue(is_received_invite));
     }
+    if (m_user_isSet) {
+        obj.insert(QString("user"), ::OpenAPI::toJsonValue(user));
+    }
+    if (m_created_by_business_id_isSet) {
+        obj.insert(QString("created_by_business_id"), ::OpenAPI::toJsonValue(created_by_business_id));
+    }
+    if (m_created_by_user_id_isSet) {
+        obj.insert(QString("created_by_user_id"), ::OpenAPI::toJsonValue(created_by_user_id));
+    }
     return obj;
-}
-
-QString OAIInviteBusinessRoleBinding::getCreatedByBusinessId() const {
-    return created_by_business_id;
-}
-void OAIInviteBusinessRoleBinding::setCreatedByBusinessId(const QString &created_by_business_id) {
-    this->created_by_business_id = created_by_business_id;
-    this->m_created_by_business_id_isSet = true;
-}
-
-bool OAIInviteBusinessRoleBinding::is_created_by_business_id_Set() const{
-    return m_created_by_business_id_isSet;
-}
-
-bool OAIInviteBusinessRoleBinding::is_created_by_business_id_Valid() const{
-    return m_created_by_business_id_isValid;
-}
-
-QString OAIInviteBusinessRoleBinding::getCreatedByUserId() const {
-    return created_by_user_id;
-}
-void OAIInviteBusinessRoleBinding::setCreatedByUserId(const QString &created_by_user_id) {
-    this->created_by_user_id = created_by_user_id;
-    this->m_created_by_user_id_isSet = true;
-}
-
-bool OAIInviteBusinessRoleBinding::is_created_by_user_id_Set() const{
-    return m_created_by_user_id_isSet;
-}
-
-bool OAIInviteBusinessRoleBinding::is_created_by_user_id_Valid() const{
-    return m_created_by_user_id_isValid;
-}
-
-OAIBusinessAccessUserSummary OAIInviteBusinessRoleBinding::getUser() const {
-    return user;
-}
-void OAIInviteBusinessRoleBinding::setUser(const OAIBusinessAccessUserSummary &user) {
-    this->user = user;
-    this->m_user_isSet = true;
-}
-
-bool OAIInviteBusinessRoleBinding::is_user_Set() const{
-    return m_user_isSet;
-}
-
-bool OAIInviteBusinessRoleBinding::is_user_Valid() const{
-    return m_user_isValid;
 }
 
 QString OAIInviteBusinessRoleBinding::getId() const {
@@ -207,24 +159,57 @@ bool OAIInviteBusinessRoleBinding::is_is_received_invite_Valid() const{
     return m_is_received_invite_isValid;
 }
 
+OAIObject OAIInviteBusinessRoleBinding::getUser() const {
+    return user;
+}
+void OAIInviteBusinessRoleBinding::setUser(const OAIObject &user) {
+    this->user = user;
+    this->m_user_isSet = true;
+}
+
+bool OAIInviteBusinessRoleBinding::is_user_Set() const{
+    return m_user_isSet;
+}
+
+bool OAIInviteBusinessRoleBinding::is_user_Valid() const{
+    return m_user_isValid;
+}
+
+QString OAIInviteBusinessRoleBinding::getCreatedByBusinessId() const {
+    return created_by_business_id;
+}
+void OAIInviteBusinessRoleBinding::setCreatedByBusinessId(const QString &created_by_business_id) {
+    this->created_by_business_id = created_by_business_id;
+    this->m_created_by_business_id_isSet = true;
+}
+
+bool OAIInviteBusinessRoleBinding::is_created_by_business_id_Set() const{
+    return m_created_by_business_id_isSet;
+}
+
+bool OAIInviteBusinessRoleBinding::is_created_by_business_id_Valid() const{
+    return m_created_by_business_id_isValid;
+}
+
+QString OAIInviteBusinessRoleBinding::getCreatedByUserId() const {
+    return created_by_user_id;
+}
+void OAIInviteBusinessRoleBinding::setCreatedByUserId(const QString &created_by_user_id) {
+    this->created_by_user_id = created_by_user_id;
+    this->m_created_by_user_id_isSet = true;
+}
+
+bool OAIInviteBusinessRoleBinding::is_created_by_user_id_Set() const{
+    return m_created_by_user_id_isSet;
+}
+
+bool OAIInviteBusinessRoleBinding::is_created_by_user_id_Valid() const{
+    return m_created_by_user_id_isValid;
+}
+
 bool OAIInviteBusinessRoleBinding::isSet() const {
     bool isObjectUpdated = false;
     do {
-        if (m_created_by_business_id_isSet) {
-            isObjectUpdated = true;
-            break;
-        }
-
-        if (m_created_by_user_id_isSet) {
-            isObjectUpdated = true;
-            break;
-        }
-
-        if (user.isSet()) {
-            isObjectUpdated = true;
-            break;
-        }
-
         if (m_id_isSet) {
             isObjectUpdated = true;
             break;
@@ -236,6 +221,21 @@ bool OAIInviteBusinessRoleBinding::isSet() const {
         }
 
         if (m_is_received_invite_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_user_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_created_by_business_id_isSet) {
+            isObjectUpdated = true;
+            break;
+        }
+
+        if (m_created_by_user_id_isSet) {
             isObjectUpdated = true;
             break;
         }

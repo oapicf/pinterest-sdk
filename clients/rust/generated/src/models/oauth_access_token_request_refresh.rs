@@ -11,11 +11,8 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// OauthAccessTokenRequestRefresh : A request to exchange a refresh token for a new access token.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct OauthAccessTokenRequestRefresh {
-    #[serde(rename = "grant_type")]
-    pub grant_type: GrantType,
     #[serde(rename = "refresh_token")]
     pub refresh_token: String,
     #[serde(rename = "scope", skip_serializing_if = "Option::is_none")]
@@ -23,16 +20,17 @@ pub struct OauthAccessTokenRequestRefresh {
     /// Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
     #[serde(rename = "refresh_on", skip_serializing_if = "Option::is_none")]
     pub refresh_on: Option<bool>,
+    #[serde(rename = "grant_type")]
+    pub grant_type: GrantType,
 }
 
 impl OauthAccessTokenRequestRefresh {
-    /// A request to exchange a refresh token for a new access token.
-    pub fn new(grant_type: GrantType, refresh_token: String) -> OauthAccessTokenRequestRefresh {
+    pub fn new(refresh_token: String, grant_type: GrantType) -> OauthAccessTokenRequestRefresh {
         OauthAccessTokenRequestRefresh {
-            grant_type,
             refresh_token,
             scope: None,
             refresh_on: None,
+            grant_type,
         }
     }
 }

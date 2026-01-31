@@ -89,7 +89,7 @@ private:
     /// </remarks>
     /// <param name="advancedAuctionItemsGetRequest">Request object used to get bid options values for a batch of retail catalog items</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void advanced_auction_items_get_post(const org::openapitools::server::model::AdvancedAuctionItemsGetRequest &advancedAuctionItemsGetRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void advanced_auction_items_get_post( const org::openapitools::server::model::AdvancedAuctionItemsGetRequest &advancedAuctionItemsGetRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Operate on item level bid options
     /// </summary>
@@ -98,7 +98,7 @@ private:
     /// </remarks>
     /// <param name="advancedAuctionItemsSubmitRequest">Request object used to upsert or delete bid options for a batch of retail catalog items</param>
     /// <param name="adAccountId">Unique identifier of an ad account. (optional, default to &quot;&quot;)</param>
-    virtual void advanced_auction_items_submit_post(const org::openapitools::server::model::AdvancedAuctionItemsSubmitRequest &advancedAuctionItemsSubmitRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void advanced_auction_items_submit_post( const org::openapitools::server::model::AdvancedAuctionItemsSubmitRequest &advancedAuctionItemsSubmitRequest, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

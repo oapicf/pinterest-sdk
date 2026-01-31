@@ -1,7 +1,7 @@
 /*
  * OauthAccessTokenRequestRefresh.h
  *
- * A request to exchange a refresh token for a new access token.
+ * 
  */
 
 #ifndef _OauthAccessTokenRequestRefresh_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief A request to exchange a refresh token for a new access token.
+/*! \brief 
  *
  *  \ingroup Models
  *
@@ -47,13 +47,6 @@ public:
 
 	/*! \brief Get 
 	 */
-	std::string getGrantType();
-
-	/*! \brief Set 
-	 */
-	void setGrantType(std::string  grant_type);
-	/*! \brief Get 
-	 */
 	std::string getRefreshToken();
 
 	/*! \brief Set 
@@ -73,12 +66,19 @@ public:
 	/*! \brief Set Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
 	 */
 	void setRefreshOn(bool  refresh_on);
+	/*! \brief Get 
+	 */
+	std::string getGrantType();
+
+	/*! \brief Set 
+	 */
+	void setGrantType(std::string  grant_type);
 
 private:
-	std::string grant_type;
 	std::string refresh_token;
 	std::string scope;
 	bool refresh_on;
+	std::string grant_type;
 	void __init();
 	void __cleanup();
 

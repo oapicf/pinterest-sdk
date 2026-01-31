@@ -18,20 +18,23 @@ import .*
 
 
 /**
- * A request to exchange an authorization code for an access token.
+ * 
  * @param code 
  * @param redirectUri 
+ * @param grantType 
  */
 object OauthAccessTokenRequestCodes : BaseTable<OauthAccessTokenRequestCode>("OauthAccessTokenRequestCode") {
     val code = text("code")
     val redirectUri = text("redirect_uri")
+    val grantType = text("grant_type").transform({ OauthAccessTokenRequestCode.GrantType.valueOf(it) }, { it.value })
 
     /**
      * Create an entity of type OauthAccessTokenRequestCode from the model
      */
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = OauthAccessTokenRequestCode(
         code = row[code] ?: "" /* kotlin.String */,
-        redirectUri = row[redirectUri] ?: "" /* kotlin.String */
+        redirectUri = row[redirectUri] ?: "" /* kotlin.String */,
+        grantType = row[grantType] ?: OauthAccessTokenRequestCode.GrantType.valueOf("") /* kotlin.String */
     )
 
     /**
@@ -51,6 +54,7 @@ object OauthAccessTokenRequestCodes : BaseTable<OauthAccessTokenRequestCode>("Oa
         this.apply {
             set(OauthAccessTokenRequestCodes.code, entity.code)
             set(OauthAccessTokenRequestCodes.redirectUri, entity.redirectUri)
+            set(OauthAccessTokenRequestCodes.grantType, entity.grantType)
         }
     }
 

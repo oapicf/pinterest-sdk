@@ -180,14 +180,14 @@ namespace Org.OpenAPITools.Model
 
             if (catalogsProductGroupFiltersRequest.CatalogsProductGroupFiltersRequestAnyOfOption.IsSet && catalogsProductGroupFiltersRequest.CatalogsProductGroupFiltersRequestAnyOfOption.Value != null)
             {
-                CatalogsProductGroupFiltersRequestAnyOfJsonConverter CatalogsProductGroupFiltersRequestAnyOfJsonConverter = (CatalogsProductGroupFiltersRequestAnyOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsProductGroupFiltersRequest.CatalogsProductGroupFiltersRequestAnyOfOption.Value.GetType()));
-                CatalogsProductGroupFiltersRequestAnyOfJsonConverter.WriteProperties(writer, catalogsProductGroupFiltersRequest.CatalogsProductGroupFiltersRequestAnyOfOption.Value, jsonSerializerOptions);
+                CatalogsProductGroupFiltersRequestAnyOfJsonConverter catalogsProductGroupFiltersRequestAnyOfJsonConverter = (CatalogsProductGroupFiltersRequestAnyOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsProductGroupFiltersRequest.CatalogsProductGroupFiltersRequestAnyOfOption.Value.GetType()));
+                catalogsProductGroupFiltersRequestAnyOfJsonConverter.WriteProperties(writer, catalogsProductGroupFiltersRequest.CatalogsProductGroupFiltersRequestAnyOfOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsProductGroupFiltersRequest.CatalogsProductGroupFiltersRequestAnyOf1Option.IsSet && catalogsProductGroupFiltersRequest.CatalogsProductGroupFiltersRequestAnyOf1Option.Value != null)
             {
-                CatalogsProductGroupFiltersRequestAnyOf1JsonConverter CatalogsProductGroupFiltersRequestAnyOf1JsonConverter = (CatalogsProductGroupFiltersRequestAnyOf1JsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsProductGroupFiltersRequest.CatalogsProductGroupFiltersRequestAnyOf1Option.Value.GetType()));
-                CatalogsProductGroupFiltersRequestAnyOf1JsonConverter.WriteProperties(writer, catalogsProductGroupFiltersRequest.CatalogsProductGroupFiltersRequestAnyOf1Option.Value, jsonSerializerOptions);
+                CatalogsProductGroupFiltersRequestAnyOf1JsonConverter catalogsProductGroupFiltersRequestAnyOf1JsonConverter = (CatalogsProductGroupFiltersRequestAnyOf1JsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsProductGroupFiltersRequest.CatalogsProductGroupFiltersRequestAnyOf1Option.Value.GetType()));
+                catalogsProductGroupFiltersRequestAnyOf1JsonConverter.WriteProperties(writer, catalogsProductGroupFiltersRequest.CatalogsProductGroupFiltersRequestAnyOf1Option.Value, jsonSerializerOptions);
             }
 
             WriteProperties(writer, catalogsProductGroupFiltersRequest, jsonSerializerOptions);

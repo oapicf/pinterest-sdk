@@ -70,8 +70,11 @@ export class ResourcesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/resources/ad_account_countries`;
+
         const response = await this.request({
-            path: `/resources/ad_account_countries`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -107,8 +110,11 @@ export class ResourcesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read", "pins:read", "user_accounts:read"]);
         }
 
+
+        let urlPath = `/resources/delivery_metrics`;
+
         const response = await this.request({
-            path: `/resources/delivery_metrics`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -147,8 +153,12 @@ export class ResourcesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/resources/targeting/interests/{interest_id}`;
+        urlPath = urlPath.replace(`{${"interest_id"}}`, encodeURIComponent(String(requestParameters['interestId'])));
+
         const response = await this.request({
-            path: `/resources/targeting/interests/{interest_id}`.replace(`{${"interest_id"}}`, encodeURIComponent(String(requestParameters['interestId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -180,8 +190,11 @@ export class ResourcesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/resources/lead_form_questions`;
+
         const response = await this.request({
-            path: `/resources/lead_form_questions`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -223,8 +236,11 @@ export class ResourcesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/resources/metrics_ready_state`;
+
         const response = await this.request({
-            path: `/resources/metrics_ready_state`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -279,8 +295,12 @@ export class ResourcesApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/resources/targeting/{targeting_type}`;
+        urlPath = urlPath.replace(`{${"targeting_type"}}`, encodeURIComponent(String(requestParameters['targetingType'])));
+
         const response = await this.request({
-            path: `/resources/targeting/{targeting_type}`.replace(`{${"targeting_type"}}`, encodeURIComponent(String(requestParameters['targetingType']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

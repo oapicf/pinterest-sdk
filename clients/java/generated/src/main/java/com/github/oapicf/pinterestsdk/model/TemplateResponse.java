@@ -56,7 +56,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Template fields
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -4236,35 +4236,10 @@ public class TemplateResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("ad_account_id");
-    openapiFields.add("ad_account_ids");
-    openapiFields.add("user_id");
-    openapiFields.add("name");
-    openapiFields.add("report_start_relative_days_in_past");
-    openapiFields.add("report_end_relative_days_in_past");
-    openapiFields.add("date_range");
-    openapiFields.add("report_level");
-    openapiFields.add("report_format");
-    openapiFields.add("columns");
-    openapiFields.add("granularity");
-    openapiFields.add("view_window_days");
-    openapiFields.add("click_window_days");
-    openapiFields.add("engagement_window_days");
-    openapiFields.add("conversion_report_time_type");
-    openapiFields.add("filters_json");
-    openapiFields.add("is_owned_by_user");
-    openapiFields.add("is_scheduled");
-    openapiFields.add("creation_source");
-    openapiFields.add("is_deleted");
-    openapiFields.add("updated_time");
-    openapiFields.add("custom_column_ids");
-    openapiFields.add("type");
-    openapiFields.add("ingestion_sources");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "ad_account_id", "ad_account_ids", "user_id", "name", "report_start_relative_days_in_past", "report_end_relative_days_in_past", "date_range", "report_level", "report_format", "columns", "granularity", "view_window_days", "click_window_days", "engagement_window_days", "conversion_report_time_type", "filters_json", "is_owned_by_user", "is_scheduled", "creation_source", "is_deleted", "updated_time", "custom_column_ids", "type", "ingestion_sources"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -4276,7 +4251,7 @@ public class TemplateResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!TemplateResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in TemplateResponse is not found in the empty JSON string", TemplateResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in TemplateResponse is not found in the empty JSON string", TemplateResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -4284,25 +4259,25 @@ public class TemplateResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!TemplateResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TemplateResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `TemplateResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("ad_account_id") != null && !jsonObj.get("ad_account_id").isJsonNull()) && !jsonObj.get("ad_account_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("ad_account_ids") != null && !jsonObj.get("ad_account_ids").isJsonNull() && !jsonObj.get("ad_account_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_account_ids` to be an array in the JSON string but got `%s`", jsonObj.get("ad_account_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_account_ids` to be an array in the JSON string but got `%s`", jsonObj.get("ad_account_ids").toString()));
       }
       if ((jsonObj.get("user_id") != null && !jsonObj.get("user_id").isJsonNull()) && !jsonObj.get("user_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `user_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `user_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user_id").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the optional field `date_range`
       if (jsonObj.get("date_range") != null && !jsonObj.get("date_range").isJsonNull()) {
@@ -4318,24 +4293,24 @@ public class TemplateResponse {
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("columns") != null && !jsonObj.get("columns").isJsonNull() && !jsonObj.get("columns").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `columns` to be an array in the JSON string but got `%s`", jsonObj.get("columns").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `columns` to be an array in the JSON string but got `%s`", jsonObj.get("columns").toString()));
       }
       // validate the optional field `granularity`
       if (jsonObj.get("granularity") != null && !jsonObj.get("granularity").isJsonNull()) {
         Granularity.validateJsonElement(jsonObj.get("granularity"));
       }
       if ((jsonObj.get("conversion_report_time_type") != null && !jsonObj.get("conversion_report_time_type").isJsonNull()) && !jsonObj.get("conversion_report_time_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `conversion_report_time_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_report_time_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `conversion_report_time_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_report_time_type").toString()));
       }
       // validate the optional field `conversion_report_time_type`
       if (jsonObj.get("conversion_report_time_type") != null && !jsonObj.get("conversion_report_time_type").isJsonNull()) {
         ConversionReportTimeTypeEnum.validateJsonElement(jsonObj.get("conversion_report_time_type"));
       }
       if ((jsonObj.get("filters_json") != null && !jsonObj.get("filters_json").isJsonNull()) && !jsonObj.get("filters_json").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `filters_json` to be a primitive type in the JSON string but got `%s`", jsonObj.get("filters_json").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `filters_json` to be a primitive type in the JSON string but got `%s`", jsonObj.get("filters_json").toString()));
       }
       if ((jsonObj.get("creation_source") != null && !jsonObj.get("creation_source").isJsonNull()) && !jsonObj.get("creation_source").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `creation_source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creation_source").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `creation_source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creation_source").toString()));
       }
       // validate the optional field `creation_source`
       if (jsonObj.get("creation_source") != null && !jsonObj.get("creation_source").isJsonNull()) {
@@ -4343,10 +4318,10 @@ public class TemplateResponse {
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("custom_column_ids") != null && !jsonObj.get("custom_column_ids").isJsonNull() && !jsonObj.get("custom_column_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `custom_column_ids` to be an array in the JSON string but got `%s`", jsonObj.get("custom_column_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `custom_column_ids` to be an array in the JSON string but got `%s`", jsonObj.get("custom_column_ids").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // validate the optional field `type`
       if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
@@ -4354,7 +4329,7 @@ public class TemplateResponse {
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("ingestion_sources") != null && !jsonObj.get("ingestion_sources").isJsonNull() && !jsonObj.get("ingestion_sources").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ingestion_sources` to be an array in the JSON string but got `%s`", jsonObj.get("ingestion_sources").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ingestion_sources` to be an array in the JSON string but got `%s`", jsonObj.get("ingestion_sources").toString()));
       }
   }
 

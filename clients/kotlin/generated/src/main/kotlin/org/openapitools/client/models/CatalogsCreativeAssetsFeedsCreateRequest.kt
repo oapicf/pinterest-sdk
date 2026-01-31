@@ -80,7 +80,7 @@ data class CatalogsCreativeAssetsFeedsCreateRequest (
     val catalogId: kotlin.String? = null,
 
     @Json(name = "status")
-    val status: CatalogsStatus? = null
+    val status: CatalogsStatus? = "ACTIVE"
 
 ) {
 

@@ -36,12 +36,12 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = PinMediaWithVideo.class, name = "video")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMedia {
 
   private @Nullable String mediaType;
 
-  public PinMedia mediaType(String mediaType) {
+  public PinMedia mediaType(@Nullable String mediaType) {
     this.mediaType = mediaType;
     return this;
   }
@@ -53,11 +53,11 @@ public class PinMedia {
   
   @Schema(name = "media_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("media_type")
-  public String getMediaType() {
+  public @Nullable String getMediaType() {
     return mediaType;
   }
 
-  public void setMediaType(String mediaType) {
+  public void setMediaType(@Nullable String mediaType) {
     this.mediaType = mediaType;
   }
 

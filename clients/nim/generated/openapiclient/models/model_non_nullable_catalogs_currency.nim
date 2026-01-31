@@ -9,7 +9,838 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type NonNullableCatalogsCurrency* = object
-  ## Currency Codes from ISO 4217.
+type NonNullableCatalogsCurrency* {.pure.} = enum
+  AED
+  AFN
+  ALL
+  AMD
+  ANG
+  AOA
+  ARS
+  AUD
+  AWG
+  AZN
+  BAM
+  BBD
+  BDT
+  BGN
+  BHD
+  BIF
+  BMD
+  BND
+  BOB
+  BRL
+  BSD
+  BTN
+  BWP
+  BYN
+  BYR
+  BZD
+  CAD
+  CDF
+  CHF
+  CLP
+  CNY
+  COP
+  CRC
+  CUC
+  CUP
+  CVE
+  CZK
+  DJF
+  DKK
+  DOP
+  DZD
+  EGP
+  ERN
+  ETB
+  EUR
+  FJD
+  FKP
+  GBP
+  GEL
+  GGP
+  GHS
+  GIP
+  GMD
+  GNF
+  GTQ
+  GYD
+  HKD
+  HNL
+  HRK
+  HTG
+  HUF
+  IDR
+  ILS
+  IMP
+  INR
+  IQD
+  IRR
+  ISK
+  JEP
+  JMD
+  JOD
+  JPY
+  KES
+  KGS
+  KHR
+  KMF
+  KPW
+  KRW
+  KWD
+  KYD
+  KZT
+  LAK
+  LBP
+  LKR
+  LRD
+  LSL
+  LYD
+  MAD
+  MDL
+  MGA
+  MKD
+  MMK
+  MNT
+  MOP
+  MRO
+  MUR
+  MVR
+  MWK
+  MXN
+  MYR
+  MZN
+  NAD
+  NGN
+  NIO
+  NOK
+  NPR
+  NZD
+  OMR
+  PAB
+  PEN
+  PGK
+  PHP
+  PKR
+  PLN
+  PYG
+  QAR
+  RON
+  RSD
+  RUB
+  RWF
+  SAR
+  SBD
+  SCR
+  SDG
+  SEK
+  SGD
+  SHP
+  SLL
+  SOS
+  SPL
+  SRD
+  STD
+  SVC
+  SYP
+  SZL
+  THB
+  TJS
+  TMT
+  TND
+  TOP
+  TRY
+  TTD
+  TVD
+  TWD
+  TZS
+  UAH
+  UGX
+  USD
+  UYU
+  UZS
+  VEF
+  VND
+  VUV
+  WST
+  XAF
+  XCD
+  XDR
+  XOF
+  XPF
+  YER
+  ZAR
+  ZMW
+  ZWD
+
+func `%`*(v: NonNullableCatalogsCurrency): JsonNode =
+  result = case v:
+    of NonNullableCatalogsCurrency.AED: %"AED"
+    of NonNullableCatalogsCurrency.AFN: %"AFN"
+    of NonNullableCatalogsCurrency.ALL: %"ALL"
+    of NonNullableCatalogsCurrency.AMD: %"AMD"
+    of NonNullableCatalogsCurrency.ANG: %"ANG"
+    of NonNullableCatalogsCurrency.AOA: %"AOA"
+    of NonNullableCatalogsCurrency.ARS: %"ARS"
+    of NonNullableCatalogsCurrency.AUD: %"AUD"
+    of NonNullableCatalogsCurrency.AWG: %"AWG"
+    of NonNullableCatalogsCurrency.AZN: %"AZN"
+    of NonNullableCatalogsCurrency.BAM: %"BAM"
+    of NonNullableCatalogsCurrency.BBD: %"BBD"
+    of NonNullableCatalogsCurrency.BDT: %"BDT"
+    of NonNullableCatalogsCurrency.BGN: %"BGN"
+    of NonNullableCatalogsCurrency.BHD: %"BHD"
+    of NonNullableCatalogsCurrency.BIF: %"BIF"
+    of NonNullableCatalogsCurrency.BMD: %"BMD"
+    of NonNullableCatalogsCurrency.BND: %"BND"
+    of NonNullableCatalogsCurrency.BOB: %"BOB"
+    of NonNullableCatalogsCurrency.BRL: %"BRL"
+    of NonNullableCatalogsCurrency.BSD: %"BSD"
+    of NonNullableCatalogsCurrency.BTN: %"BTN"
+    of NonNullableCatalogsCurrency.BWP: %"BWP"
+    of NonNullableCatalogsCurrency.BYN: %"BYN"
+    of NonNullableCatalogsCurrency.BYR: %"BYR"
+    of NonNullableCatalogsCurrency.BZD: %"BZD"
+    of NonNullableCatalogsCurrency.CAD: %"CAD"
+    of NonNullableCatalogsCurrency.CDF: %"CDF"
+    of NonNullableCatalogsCurrency.CHF: %"CHF"
+    of NonNullableCatalogsCurrency.CLP: %"CLP"
+    of NonNullableCatalogsCurrency.CNY: %"CNY"
+    of NonNullableCatalogsCurrency.COP: %"COP"
+    of NonNullableCatalogsCurrency.CRC: %"CRC"
+    of NonNullableCatalogsCurrency.CUC: %"CUC"
+    of NonNullableCatalogsCurrency.CUP: %"CUP"
+    of NonNullableCatalogsCurrency.CVE: %"CVE"
+    of NonNullableCatalogsCurrency.CZK: %"CZK"
+    of NonNullableCatalogsCurrency.DJF: %"DJF"
+    of NonNullableCatalogsCurrency.DKK: %"DKK"
+    of NonNullableCatalogsCurrency.DOP: %"DOP"
+    of NonNullableCatalogsCurrency.DZD: %"DZD"
+    of NonNullableCatalogsCurrency.EGP: %"EGP"
+    of NonNullableCatalogsCurrency.ERN: %"ERN"
+    of NonNullableCatalogsCurrency.ETB: %"ETB"
+    of NonNullableCatalogsCurrency.EUR: %"EUR"
+    of NonNullableCatalogsCurrency.FJD: %"FJD"
+    of NonNullableCatalogsCurrency.FKP: %"FKP"
+    of NonNullableCatalogsCurrency.GBP: %"GBP"
+    of NonNullableCatalogsCurrency.GEL: %"GEL"
+    of NonNullableCatalogsCurrency.GGP: %"GGP"
+    of NonNullableCatalogsCurrency.GHS: %"GHS"
+    of NonNullableCatalogsCurrency.GIP: %"GIP"
+    of NonNullableCatalogsCurrency.GMD: %"GMD"
+    of NonNullableCatalogsCurrency.GNF: %"GNF"
+    of NonNullableCatalogsCurrency.GTQ: %"GTQ"
+    of NonNullableCatalogsCurrency.GYD: %"GYD"
+    of NonNullableCatalogsCurrency.HKD: %"HKD"
+    of NonNullableCatalogsCurrency.HNL: %"HNL"
+    of NonNullableCatalogsCurrency.HRK: %"HRK"
+    of NonNullableCatalogsCurrency.HTG: %"HTG"
+    of NonNullableCatalogsCurrency.HUF: %"HUF"
+    of NonNullableCatalogsCurrency.IDR: %"IDR"
+    of NonNullableCatalogsCurrency.ILS: %"ILS"
+    of NonNullableCatalogsCurrency.IMP: %"IMP"
+    of NonNullableCatalogsCurrency.INR: %"INR"
+    of NonNullableCatalogsCurrency.IQD: %"IQD"
+    of NonNullableCatalogsCurrency.IRR: %"IRR"
+    of NonNullableCatalogsCurrency.ISK: %"ISK"
+    of NonNullableCatalogsCurrency.JEP: %"JEP"
+    of NonNullableCatalogsCurrency.JMD: %"JMD"
+    of NonNullableCatalogsCurrency.JOD: %"JOD"
+    of NonNullableCatalogsCurrency.JPY: %"JPY"
+    of NonNullableCatalogsCurrency.KES: %"KES"
+    of NonNullableCatalogsCurrency.KGS: %"KGS"
+    of NonNullableCatalogsCurrency.KHR: %"KHR"
+    of NonNullableCatalogsCurrency.KMF: %"KMF"
+    of NonNullableCatalogsCurrency.KPW: %"KPW"
+    of NonNullableCatalogsCurrency.KRW: %"KRW"
+    of NonNullableCatalogsCurrency.KWD: %"KWD"
+    of NonNullableCatalogsCurrency.KYD: %"KYD"
+    of NonNullableCatalogsCurrency.KZT: %"KZT"
+    of NonNullableCatalogsCurrency.LAK: %"LAK"
+    of NonNullableCatalogsCurrency.LBP: %"LBP"
+    of NonNullableCatalogsCurrency.LKR: %"LKR"
+    of NonNullableCatalogsCurrency.LRD: %"LRD"
+    of NonNullableCatalogsCurrency.LSL: %"LSL"
+    of NonNullableCatalogsCurrency.LYD: %"LYD"
+    of NonNullableCatalogsCurrency.MAD: %"MAD"
+    of NonNullableCatalogsCurrency.MDL: %"MDL"
+    of NonNullableCatalogsCurrency.MGA: %"MGA"
+    of NonNullableCatalogsCurrency.MKD: %"MKD"
+    of NonNullableCatalogsCurrency.MMK: %"MMK"
+    of NonNullableCatalogsCurrency.MNT: %"MNT"
+    of NonNullableCatalogsCurrency.MOP: %"MOP"
+    of NonNullableCatalogsCurrency.MRO: %"MRO"
+    of NonNullableCatalogsCurrency.MUR: %"MUR"
+    of NonNullableCatalogsCurrency.MVR: %"MVR"
+    of NonNullableCatalogsCurrency.MWK: %"MWK"
+    of NonNullableCatalogsCurrency.MXN: %"MXN"
+    of NonNullableCatalogsCurrency.MYR: %"MYR"
+    of NonNullableCatalogsCurrency.MZN: %"MZN"
+    of NonNullableCatalogsCurrency.NAD: %"NAD"
+    of NonNullableCatalogsCurrency.NGN: %"NGN"
+    of NonNullableCatalogsCurrency.NIO: %"NIO"
+    of NonNullableCatalogsCurrency.NOK: %"NOK"
+    of NonNullableCatalogsCurrency.NPR: %"NPR"
+    of NonNullableCatalogsCurrency.NZD: %"NZD"
+    of NonNullableCatalogsCurrency.OMR: %"OMR"
+    of NonNullableCatalogsCurrency.PAB: %"PAB"
+    of NonNullableCatalogsCurrency.PEN: %"PEN"
+    of NonNullableCatalogsCurrency.PGK: %"PGK"
+    of NonNullableCatalogsCurrency.PHP: %"PHP"
+    of NonNullableCatalogsCurrency.PKR: %"PKR"
+    of NonNullableCatalogsCurrency.PLN: %"PLN"
+    of NonNullableCatalogsCurrency.PYG: %"PYG"
+    of NonNullableCatalogsCurrency.QAR: %"QAR"
+    of NonNullableCatalogsCurrency.RON: %"RON"
+    of NonNullableCatalogsCurrency.RSD: %"RSD"
+    of NonNullableCatalogsCurrency.RUB: %"RUB"
+    of NonNullableCatalogsCurrency.RWF: %"RWF"
+    of NonNullableCatalogsCurrency.SAR: %"SAR"
+    of NonNullableCatalogsCurrency.SBD: %"SBD"
+    of NonNullableCatalogsCurrency.SCR: %"SCR"
+    of NonNullableCatalogsCurrency.SDG: %"SDG"
+    of NonNullableCatalogsCurrency.SEK: %"SEK"
+    of NonNullableCatalogsCurrency.SGD: %"SGD"
+    of NonNullableCatalogsCurrency.SHP: %"SHP"
+    of NonNullableCatalogsCurrency.SLL: %"SLL"
+    of NonNullableCatalogsCurrency.SOS: %"SOS"
+    of NonNullableCatalogsCurrency.SPL: %"SPL"
+    of NonNullableCatalogsCurrency.SRD: %"SRD"
+    of NonNullableCatalogsCurrency.STD: %"STD"
+    of NonNullableCatalogsCurrency.SVC: %"SVC"
+    of NonNullableCatalogsCurrency.SYP: %"SYP"
+    of NonNullableCatalogsCurrency.SZL: %"SZL"
+    of NonNullableCatalogsCurrency.THB: %"THB"
+    of NonNullableCatalogsCurrency.TJS: %"TJS"
+    of NonNullableCatalogsCurrency.TMT: %"TMT"
+    of NonNullableCatalogsCurrency.TND: %"TND"
+    of NonNullableCatalogsCurrency.TOP: %"TOP"
+    of NonNullableCatalogsCurrency.TRY: %"TRY"
+    of NonNullableCatalogsCurrency.TTD: %"TTD"
+    of NonNullableCatalogsCurrency.TVD: %"TVD"
+    of NonNullableCatalogsCurrency.TWD: %"TWD"
+    of NonNullableCatalogsCurrency.TZS: %"TZS"
+    of NonNullableCatalogsCurrency.UAH: %"UAH"
+    of NonNullableCatalogsCurrency.UGX: %"UGX"
+    of NonNullableCatalogsCurrency.USD: %"USD"
+    of NonNullableCatalogsCurrency.UYU: %"UYU"
+    of NonNullableCatalogsCurrency.UZS: %"UZS"
+    of NonNullableCatalogsCurrency.VEF: %"VEF"
+    of NonNullableCatalogsCurrency.VND: %"VND"
+    of NonNullableCatalogsCurrency.VUV: %"VUV"
+    of NonNullableCatalogsCurrency.WST: %"WST"
+    of NonNullableCatalogsCurrency.XAF: %"XAF"
+    of NonNullableCatalogsCurrency.XCD: %"XCD"
+    of NonNullableCatalogsCurrency.XDR: %"XDR"
+    of NonNullableCatalogsCurrency.XOF: %"XOF"
+    of NonNullableCatalogsCurrency.XPF: %"XPF"
+    of NonNullableCatalogsCurrency.YER: %"YER"
+    of NonNullableCatalogsCurrency.ZAR: %"ZAR"
+    of NonNullableCatalogsCurrency.ZMW: %"ZMW"
+    of NonNullableCatalogsCurrency.ZWD: %"ZWD"
+
+func `$`*(v: NonNullableCatalogsCurrency): string =
+  result = case v:
+    of NonNullableCatalogsCurrency.AED: $("AED")
+    of NonNullableCatalogsCurrency.AFN: $("AFN")
+    of NonNullableCatalogsCurrency.ALL: $("ALL")
+    of NonNullableCatalogsCurrency.AMD: $("AMD")
+    of NonNullableCatalogsCurrency.ANG: $("ANG")
+    of NonNullableCatalogsCurrency.AOA: $("AOA")
+    of NonNullableCatalogsCurrency.ARS: $("ARS")
+    of NonNullableCatalogsCurrency.AUD: $("AUD")
+    of NonNullableCatalogsCurrency.AWG: $("AWG")
+    of NonNullableCatalogsCurrency.AZN: $("AZN")
+    of NonNullableCatalogsCurrency.BAM: $("BAM")
+    of NonNullableCatalogsCurrency.BBD: $("BBD")
+    of NonNullableCatalogsCurrency.BDT: $("BDT")
+    of NonNullableCatalogsCurrency.BGN: $("BGN")
+    of NonNullableCatalogsCurrency.BHD: $("BHD")
+    of NonNullableCatalogsCurrency.BIF: $("BIF")
+    of NonNullableCatalogsCurrency.BMD: $("BMD")
+    of NonNullableCatalogsCurrency.BND: $("BND")
+    of NonNullableCatalogsCurrency.BOB: $("BOB")
+    of NonNullableCatalogsCurrency.BRL: $("BRL")
+    of NonNullableCatalogsCurrency.BSD: $("BSD")
+    of NonNullableCatalogsCurrency.BTN: $("BTN")
+    of NonNullableCatalogsCurrency.BWP: $("BWP")
+    of NonNullableCatalogsCurrency.BYN: $("BYN")
+    of NonNullableCatalogsCurrency.BYR: $("BYR")
+    of NonNullableCatalogsCurrency.BZD: $("BZD")
+    of NonNullableCatalogsCurrency.CAD: $("CAD")
+    of NonNullableCatalogsCurrency.CDF: $("CDF")
+    of NonNullableCatalogsCurrency.CHF: $("CHF")
+    of NonNullableCatalogsCurrency.CLP: $("CLP")
+    of NonNullableCatalogsCurrency.CNY: $("CNY")
+    of NonNullableCatalogsCurrency.COP: $("COP")
+    of NonNullableCatalogsCurrency.CRC: $("CRC")
+    of NonNullableCatalogsCurrency.CUC: $("CUC")
+    of NonNullableCatalogsCurrency.CUP: $("CUP")
+    of NonNullableCatalogsCurrency.CVE: $("CVE")
+    of NonNullableCatalogsCurrency.CZK: $("CZK")
+    of NonNullableCatalogsCurrency.DJF: $("DJF")
+    of NonNullableCatalogsCurrency.DKK: $("DKK")
+    of NonNullableCatalogsCurrency.DOP: $("DOP")
+    of NonNullableCatalogsCurrency.DZD: $("DZD")
+    of NonNullableCatalogsCurrency.EGP: $("EGP")
+    of NonNullableCatalogsCurrency.ERN: $("ERN")
+    of NonNullableCatalogsCurrency.ETB: $("ETB")
+    of NonNullableCatalogsCurrency.EUR: $("EUR")
+    of NonNullableCatalogsCurrency.FJD: $("FJD")
+    of NonNullableCatalogsCurrency.FKP: $("FKP")
+    of NonNullableCatalogsCurrency.GBP: $("GBP")
+    of NonNullableCatalogsCurrency.GEL: $("GEL")
+    of NonNullableCatalogsCurrency.GGP: $("GGP")
+    of NonNullableCatalogsCurrency.GHS: $("GHS")
+    of NonNullableCatalogsCurrency.GIP: $("GIP")
+    of NonNullableCatalogsCurrency.GMD: $("GMD")
+    of NonNullableCatalogsCurrency.GNF: $("GNF")
+    of NonNullableCatalogsCurrency.GTQ: $("GTQ")
+    of NonNullableCatalogsCurrency.GYD: $("GYD")
+    of NonNullableCatalogsCurrency.HKD: $("HKD")
+    of NonNullableCatalogsCurrency.HNL: $("HNL")
+    of NonNullableCatalogsCurrency.HRK: $("HRK")
+    of NonNullableCatalogsCurrency.HTG: $("HTG")
+    of NonNullableCatalogsCurrency.HUF: $("HUF")
+    of NonNullableCatalogsCurrency.IDR: $("IDR")
+    of NonNullableCatalogsCurrency.ILS: $("ILS")
+    of NonNullableCatalogsCurrency.IMP: $("IMP")
+    of NonNullableCatalogsCurrency.INR: $("INR")
+    of NonNullableCatalogsCurrency.IQD: $("IQD")
+    of NonNullableCatalogsCurrency.IRR: $("IRR")
+    of NonNullableCatalogsCurrency.ISK: $("ISK")
+    of NonNullableCatalogsCurrency.JEP: $("JEP")
+    of NonNullableCatalogsCurrency.JMD: $("JMD")
+    of NonNullableCatalogsCurrency.JOD: $("JOD")
+    of NonNullableCatalogsCurrency.JPY: $("JPY")
+    of NonNullableCatalogsCurrency.KES: $("KES")
+    of NonNullableCatalogsCurrency.KGS: $("KGS")
+    of NonNullableCatalogsCurrency.KHR: $("KHR")
+    of NonNullableCatalogsCurrency.KMF: $("KMF")
+    of NonNullableCatalogsCurrency.KPW: $("KPW")
+    of NonNullableCatalogsCurrency.KRW: $("KRW")
+    of NonNullableCatalogsCurrency.KWD: $("KWD")
+    of NonNullableCatalogsCurrency.KYD: $("KYD")
+    of NonNullableCatalogsCurrency.KZT: $("KZT")
+    of NonNullableCatalogsCurrency.LAK: $("LAK")
+    of NonNullableCatalogsCurrency.LBP: $("LBP")
+    of NonNullableCatalogsCurrency.LKR: $("LKR")
+    of NonNullableCatalogsCurrency.LRD: $("LRD")
+    of NonNullableCatalogsCurrency.LSL: $("LSL")
+    of NonNullableCatalogsCurrency.LYD: $("LYD")
+    of NonNullableCatalogsCurrency.MAD: $("MAD")
+    of NonNullableCatalogsCurrency.MDL: $("MDL")
+    of NonNullableCatalogsCurrency.MGA: $("MGA")
+    of NonNullableCatalogsCurrency.MKD: $("MKD")
+    of NonNullableCatalogsCurrency.MMK: $("MMK")
+    of NonNullableCatalogsCurrency.MNT: $("MNT")
+    of NonNullableCatalogsCurrency.MOP: $("MOP")
+    of NonNullableCatalogsCurrency.MRO: $("MRO")
+    of NonNullableCatalogsCurrency.MUR: $("MUR")
+    of NonNullableCatalogsCurrency.MVR: $("MVR")
+    of NonNullableCatalogsCurrency.MWK: $("MWK")
+    of NonNullableCatalogsCurrency.MXN: $("MXN")
+    of NonNullableCatalogsCurrency.MYR: $("MYR")
+    of NonNullableCatalogsCurrency.MZN: $("MZN")
+    of NonNullableCatalogsCurrency.NAD: $("NAD")
+    of NonNullableCatalogsCurrency.NGN: $("NGN")
+    of NonNullableCatalogsCurrency.NIO: $("NIO")
+    of NonNullableCatalogsCurrency.NOK: $("NOK")
+    of NonNullableCatalogsCurrency.NPR: $("NPR")
+    of NonNullableCatalogsCurrency.NZD: $("NZD")
+    of NonNullableCatalogsCurrency.OMR: $("OMR")
+    of NonNullableCatalogsCurrency.PAB: $("PAB")
+    of NonNullableCatalogsCurrency.PEN: $("PEN")
+    of NonNullableCatalogsCurrency.PGK: $("PGK")
+    of NonNullableCatalogsCurrency.PHP: $("PHP")
+    of NonNullableCatalogsCurrency.PKR: $("PKR")
+    of NonNullableCatalogsCurrency.PLN: $("PLN")
+    of NonNullableCatalogsCurrency.PYG: $("PYG")
+    of NonNullableCatalogsCurrency.QAR: $("QAR")
+    of NonNullableCatalogsCurrency.RON: $("RON")
+    of NonNullableCatalogsCurrency.RSD: $("RSD")
+    of NonNullableCatalogsCurrency.RUB: $("RUB")
+    of NonNullableCatalogsCurrency.RWF: $("RWF")
+    of NonNullableCatalogsCurrency.SAR: $("SAR")
+    of NonNullableCatalogsCurrency.SBD: $("SBD")
+    of NonNullableCatalogsCurrency.SCR: $("SCR")
+    of NonNullableCatalogsCurrency.SDG: $("SDG")
+    of NonNullableCatalogsCurrency.SEK: $("SEK")
+    of NonNullableCatalogsCurrency.SGD: $("SGD")
+    of NonNullableCatalogsCurrency.SHP: $("SHP")
+    of NonNullableCatalogsCurrency.SLL: $("SLL")
+    of NonNullableCatalogsCurrency.SOS: $("SOS")
+    of NonNullableCatalogsCurrency.SPL: $("SPL")
+    of NonNullableCatalogsCurrency.SRD: $("SRD")
+    of NonNullableCatalogsCurrency.STD: $("STD")
+    of NonNullableCatalogsCurrency.SVC: $("SVC")
+    of NonNullableCatalogsCurrency.SYP: $("SYP")
+    of NonNullableCatalogsCurrency.SZL: $("SZL")
+    of NonNullableCatalogsCurrency.THB: $("THB")
+    of NonNullableCatalogsCurrency.TJS: $("TJS")
+    of NonNullableCatalogsCurrency.TMT: $("TMT")
+    of NonNullableCatalogsCurrency.TND: $("TND")
+    of NonNullableCatalogsCurrency.TOP: $("TOP")
+    of NonNullableCatalogsCurrency.TRY: $("TRY")
+    of NonNullableCatalogsCurrency.TTD: $("TTD")
+    of NonNullableCatalogsCurrency.TVD: $("TVD")
+    of NonNullableCatalogsCurrency.TWD: $("TWD")
+    of NonNullableCatalogsCurrency.TZS: $("TZS")
+    of NonNullableCatalogsCurrency.UAH: $("UAH")
+    of NonNullableCatalogsCurrency.UGX: $("UGX")
+    of NonNullableCatalogsCurrency.USD: $("USD")
+    of NonNullableCatalogsCurrency.UYU: $("UYU")
+    of NonNullableCatalogsCurrency.UZS: $("UZS")
+    of NonNullableCatalogsCurrency.VEF: $("VEF")
+    of NonNullableCatalogsCurrency.VND: $("VND")
+    of NonNullableCatalogsCurrency.VUV: $("VUV")
+    of NonNullableCatalogsCurrency.WST: $("WST")
+    of NonNullableCatalogsCurrency.XAF: $("XAF")
+    of NonNullableCatalogsCurrency.XCD: $("XCD")
+    of NonNullableCatalogsCurrency.XDR: $("XDR")
+    of NonNullableCatalogsCurrency.XOF: $("XOF")
+    of NonNullableCatalogsCurrency.XPF: $("XPF")
+    of NonNullableCatalogsCurrency.YER: $("YER")
+    of NonNullableCatalogsCurrency.ZAR: $("ZAR")
+    of NonNullableCatalogsCurrency.ZMW: $("ZMW")
+    of NonNullableCatalogsCurrency.ZWD: $("ZWD")
+
+proc to*(node: JsonNode, T: typedesc[NonNullableCatalogsCurrency]): NonNullableCatalogsCurrency =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum NonNullableCatalogsCurrency, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("AED"):
+    return NonNullableCatalogsCurrency.AED
+  of $("AFN"):
+    return NonNullableCatalogsCurrency.AFN
+  of $("ALL"):
+    return NonNullableCatalogsCurrency.ALL
+  of $("AMD"):
+    return NonNullableCatalogsCurrency.AMD
+  of $("ANG"):
+    return NonNullableCatalogsCurrency.ANG
+  of $("AOA"):
+    return NonNullableCatalogsCurrency.AOA
+  of $("ARS"):
+    return NonNullableCatalogsCurrency.ARS
+  of $("AUD"):
+    return NonNullableCatalogsCurrency.AUD
+  of $("AWG"):
+    return NonNullableCatalogsCurrency.AWG
+  of $("AZN"):
+    return NonNullableCatalogsCurrency.AZN
+  of $("BAM"):
+    return NonNullableCatalogsCurrency.BAM
+  of $("BBD"):
+    return NonNullableCatalogsCurrency.BBD
+  of $("BDT"):
+    return NonNullableCatalogsCurrency.BDT
+  of $("BGN"):
+    return NonNullableCatalogsCurrency.BGN
+  of $("BHD"):
+    return NonNullableCatalogsCurrency.BHD
+  of $("BIF"):
+    return NonNullableCatalogsCurrency.BIF
+  of $("BMD"):
+    return NonNullableCatalogsCurrency.BMD
+  of $("BND"):
+    return NonNullableCatalogsCurrency.BND
+  of $("BOB"):
+    return NonNullableCatalogsCurrency.BOB
+  of $("BRL"):
+    return NonNullableCatalogsCurrency.BRL
+  of $("BSD"):
+    return NonNullableCatalogsCurrency.BSD
+  of $("BTN"):
+    return NonNullableCatalogsCurrency.BTN
+  of $("BWP"):
+    return NonNullableCatalogsCurrency.BWP
+  of $("BYN"):
+    return NonNullableCatalogsCurrency.BYN
+  of $("BYR"):
+    return NonNullableCatalogsCurrency.BYR
+  of $("BZD"):
+    return NonNullableCatalogsCurrency.BZD
+  of $("CAD"):
+    return NonNullableCatalogsCurrency.CAD
+  of $("CDF"):
+    return NonNullableCatalogsCurrency.CDF
+  of $("CHF"):
+    return NonNullableCatalogsCurrency.CHF
+  of $("CLP"):
+    return NonNullableCatalogsCurrency.CLP
+  of $("CNY"):
+    return NonNullableCatalogsCurrency.CNY
+  of $("COP"):
+    return NonNullableCatalogsCurrency.COP
+  of $("CRC"):
+    return NonNullableCatalogsCurrency.CRC
+  of $("CUC"):
+    return NonNullableCatalogsCurrency.CUC
+  of $("CUP"):
+    return NonNullableCatalogsCurrency.CUP
+  of $("CVE"):
+    return NonNullableCatalogsCurrency.CVE
+  of $("CZK"):
+    return NonNullableCatalogsCurrency.CZK
+  of $("DJF"):
+    return NonNullableCatalogsCurrency.DJF
+  of $("DKK"):
+    return NonNullableCatalogsCurrency.DKK
+  of $("DOP"):
+    return NonNullableCatalogsCurrency.DOP
+  of $("DZD"):
+    return NonNullableCatalogsCurrency.DZD
+  of $("EGP"):
+    return NonNullableCatalogsCurrency.EGP
+  of $("ERN"):
+    return NonNullableCatalogsCurrency.ERN
+  of $("ETB"):
+    return NonNullableCatalogsCurrency.ETB
+  of $("EUR"):
+    return NonNullableCatalogsCurrency.EUR
+  of $("FJD"):
+    return NonNullableCatalogsCurrency.FJD
+  of $("FKP"):
+    return NonNullableCatalogsCurrency.FKP
+  of $("GBP"):
+    return NonNullableCatalogsCurrency.GBP
+  of $("GEL"):
+    return NonNullableCatalogsCurrency.GEL
+  of $("GGP"):
+    return NonNullableCatalogsCurrency.GGP
+  of $("GHS"):
+    return NonNullableCatalogsCurrency.GHS
+  of $("GIP"):
+    return NonNullableCatalogsCurrency.GIP
+  of $("GMD"):
+    return NonNullableCatalogsCurrency.GMD
+  of $("GNF"):
+    return NonNullableCatalogsCurrency.GNF
+  of $("GTQ"):
+    return NonNullableCatalogsCurrency.GTQ
+  of $("GYD"):
+    return NonNullableCatalogsCurrency.GYD
+  of $("HKD"):
+    return NonNullableCatalogsCurrency.HKD
+  of $("HNL"):
+    return NonNullableCatalogsCurrency.HNL
+  of $("HRK"):
+    return NonNullableCatalogsCurrency.HRK
+  of $("HTG"):
+    return NonNullableCatalogsCurrency.HTG
+  of $("HUF"):
+    return NonNullableCatalogsCurrency.HUF
+  of $("IDR"):
+    return NonNullableCatalogsCurrency.IDR
+  of $("ILS"):
+    return NonNullableCatalogsCurrency.ILS
+  of $("IMP"):
+    return NonNullableCatalogsCurrency.IMP
+  of $("INR"):
+    return NonNullableCatalogsCurrency.INR
+  of $("IQD"):
+    return NonNullableCatalogsCurrency.IQD
+  of $("IRR"):
+    return NonNullableCatalogsCurrency.IRR
+  of $("ISK"):
+    return NonNullableCatalogsCurrency.ISK
+  of $("JEP"):
+    return NonNullableCatalogsCurrency.JEP
+  of $("JMD"):
+    return NonNullableCatalogsCurrency.JMD
+  of $("JOD"):
+    return NonNullableCatalogsCurrency.JOD
+  of $("JPY"):
+    return NonNullableCatalogsCurrency.JPY
+  of $("KES"):
+    return NonNullableCatalogsCurrency.KES
+  of $("KGS"):
+    return NonNullableCatalogsCurrency.KGS
+  of $("KHR"):
+    return NonNullableCatalogsCurrency.KHR
+  of $("KMF"):
+    return NonNullableCatalogsCurrency.KMF
+  of $("KPW"):
+    return NonNullableCatalogsCurrency.KPW
+  of $("KRW"):
+    return NonNullableCatalogsCurrency.KRW
+  of $("KWD"):
+    return NonNullableCatalogsCurrency.KWD
+  of $("KYD"):
+    return NonNullableCatalogsCurrency.KYD
+  of $("KZT"):
+    return NonNullableCatalogsCurrency.KZT
+  of $("LAK"):
+    return NonNullableCatalogsCurrency.LAK
+  of $("LBP"):
+    return NonNullableCatalogsCurrency.LBP
+  of $("LKR"):
+    return NonNullableCatalogsCurrency.LKR
+  of $("LRD"):
+    return NonNullableCatalogsCurrency.LRD
+  of $("LSL"):
+    return NonNullableCatalogsCurrency.LSL
+  of $("LYD"):
+    return NonNullableCatalogsCurrency.LYD
+  of $("MAD"):
+    return NonNullableCatalogsCurrency.MAD
+  of $("MDL"):
+    return NonNullableCatalogsCurrency.MDL
+  of $("MGA"):
+    return NonNullableCatalogsCurrency.MGA
+  of $("MKD"):
+    return NonNullableCatalogsCurrency.MKD
+  of $("MMK"):
+    return NonNullableCatalogsCurrency.MMK
+  of $("MNT"):
+    return NonNullableCatalogsCurrency.MNT
+  of $("MOP"):
+    return NonNullableCatalogsCurrency.MOP
+  of $("MRO"):
+    return NonNullableCatalogsCurrency.MRO
+  of $("MUR"):
+    return NonNullableCatalogsCurrency.MUR
+  of $("MVR"):
+    return NonNullableCatalogsCurrency.MVR
+  of $("MWK"):
+    return NonNullableCatalogsCurrency.MWK
+  of $("MXN"):
+    return NonNullableCatalogsCurrency.MXN
+  of $("MYR"):
+    return NonNullableCatalogsCurrency.MYR
+  of $("MZN"):
+    return NonNullableCatalogsCurrency.MZN
+  of $("NAD"):
+    return NonNullableCatalogsCurrency.NAD
+  of $("NGN"):
+    return NonNullableCatalogsCurrency.NGN
+  of $("NIO"):
+    return NonNullableCatalogsCurrency.NIO
+  of $("NOK"):
+    return NonNullableCatalogsCurrency.NOK
+  of $("NPR"):
+    return NonNullableCatalogsCurrency.NPR
+  of $("NZD"):
+    return NonNullableCatalogsCurrency.NZD
+  of $("OMR"):
+    return NonNullableCatalogsCurrency.OMR
+  of $("PAB"):
+    return NonNullableCatalogsCurrency.PAB
+  of $("PEN"):
+    return NonNullableCatalogsCurrency.PEN
+  of $("PGK"):
+    return NonNullableCatalogsCurrency.PGK
+  of $("PHP"):
+    return NonNullableCatalogsCurrency.PHP
+  of $("PKR"):
+    return NonNullableCatalogsCurrency.PKR
+  of $("PLN"):
+    return NonNullableCatalogsCurrency.PLN
+  of $("PYG"):
+    return NonNullableCatalogsCurrency.PYG
+  of $("QAR"):
+    return NonNullableCatalogsCurrency.QAR
+  of $("RON"):
+    return NonNullableCatalogsCurrency.RON
+  of $("RSD"):
+    return NonNullableCatalogsCurrency.RSD
+  of $("RUB"):
+    return NonNullableCatalogsCurrency.RUB
+  of $("RWF"):
+    return NonNullableCatalogsCurrency.RWF
+  of $("SAR"):
+    return NonNullableCatalogsCurrency.SAR
+  of $("SBD"):
+    return NonNullableCatalogsCurrency.SBD
+  of $("SCR"):
+    return NonNullableCatalogsCurrency.SCR
+  of $("SDG"):
+    return NonNullableCatalogsCurrency.SDG
+  of $("SEK"):
+    return NonNullableCatalogsCurrency.SEK
+  of $("SGD"):
+    return NonNullableCatalogsCurrency.SGD
+  of $("SHP"):
+    return NonNullableCatalogsCurrency.SHP
+  of $("SLL"):
+    return NonNullableCatalogsCurrency.SLL
+  of $("SOS"):
+    return NonNullableCatalogsCurrency.SOS
+  of $("SPL"):
+    return NonNullableCatalogsCurrency.SPL
+  of $("SRD"):
+    return NonNullableCatalogsCurrency.SRD
+  of $("STD"):
+    return NonNullableCatalogsCurrency.STD
+  of $("SVC"):
+    return NonNullableCatalogsCurrency.SVC
+  of $("SYP"):
+    return NonNullableCatalogsCurrency.SYP
+  of $("SZL"):
+    return NonNullableCatalogsCurrency.SZL
+  of $("THB"):
+    return NonNullableCatalogsCurrency.THB
+  of $("TJS"):
+    return NonNullableCatalogsCurrency.TJS
+  of $("TMT"):
+    return NonNullableCatalogsCurrency.TMT
+  of $("TND"):
+    return NonNullableCatalogsCurrency.TND
+  of $("TOP"):
+    return NonNullableCatalogsCurrency.TOP
+  of $("TRY"):
+    return NonNullableCatalogsCurrency.TRY
+  of $("TTD"):
+    return NonNullableCatalogsCurrency.TTD
+  of $("TVD"):
+    return NonNullableCatalogsCurrency.TVD
+  of $("TWD"):
+    return NonNullableCatalogsCurrency.TWD
+  of $("TZS"):
+    return NonNullableCatalogsCurrency.TZS
+  of $("UAH"):
+    return NonNullableCatalogsCurrency.UAH
+  of $("UGX"):
+    return NonNullableCatalogsCurrency.UGX
+  of $("USD"):
+    return NonNullableCatalogsCurrency.USD
+  of $("UYU"):
+    return NonNullableCatalogsCurrency.UYU
+  of $("UZS"):
+    return NonNullableCatalogsCurrency.UZS
+  of $("VEF"):
+    return NonNullableCatalogsCurrency.VEF
+  of $("VND"):
+    return NonNullableCatalogsCurrency.VND
+  of $("VUV"):
+    return NonNullableCatalogsCurrency.VUV
+  of $("WST"):
+    return NonNullableCatalogsCurrency.WST
+  of $("XAF"):
+    return NonNullableCatalogsCurrency.XAF
+  of $("XCD"):
+    return NonNullableCatalogsCurrency.XCD
+  of $("XDR"):
+    return NonNullableCatalogsCurrency.XDR
+  of $("XOF"):
+    return NonNullableCatalogsCurrency.XOF
+  of $("XPF"):
+    return NonNullableCatalogsCurrency.XPF
+  of $("YER"):
+    return NonNullableCatalogsCurrency.YER
+  of $("ZAR"):
+    return NonNullableCatalogsCurrency.ZAR
+  of $("ZMW"):
+    return NonNullableCatalogsCurrency.ZMW
+  of $("ZWD"):
+    return NonNullableCatalogsCurrency.ZWD
+  else:
+    raise newException(ValueError, "Invalid enum value for NonNullableCatalogsCurrency: " & strVal)
+

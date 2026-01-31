@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  * OptimizationGoalMetadata
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2025-05-10T05:39:31.012858315Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-01-26T05:36:23.872474322Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadata   {
   @JsonProperty("conversion_tag_v3_goal_metadata")
   private OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;

@@ -122,8 +122,6 @@ namespace Org.OpenAPITools.Model
 
             CatalogsHotelReportParameters? catalogsHotelReportParameters = null;
             CatalogsRetailReportParameters? catalogsRetailReportParameters = null;
-            CatalogsHotelReportParameters? catalogsHotelReportParameters = null;
-            CatalogsRetailReportParameters? catalogsRetailReportParameters = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -147,16 +145,6 @@ namespace Org.OpenAPITools.Model
                             catalogsHotelReportParameters = JsonSerializer.Deserialize<CatalogsHotelReportParameters>(ref utf8JsonReaderCatalogsHotelReportParameters, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("RETAIL") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsRetailReportParameters = utf8JsonReader;
-                            catalogsRetailReportParameters = JsonSerializer.Deserialize<CatalogsRetailReportParameters>(ref utf8JsonReaderCatalogsRetailReportParameters, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsHotelReportParameters") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsHotelReportParameters = utf8JsonReader;
-                            catalogsHotelReportParameters = JsonSerializer.Deserialize<CatalogsHotelReportParameters>(ref utf8JsonReaderCatalogsHotelReportParameters, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsRetailReportParameters") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsRetailReportParameters = utf8JsonReader;
                             catalogsRetailReportParameters = JsonSerializer.Deserialize<CatalogsRetailReportParameters>(ref utf8JsonReaderCatalogsRetailReportParameters, jsonSerializerOptions);
@@ -196,12 +184,6 @@ namespace Org.OpenAPITools.Model
 
             if (catalogType.IsSet && catalogType.Value == null)
                 throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsReportParameters.");
-
-            if (catalogsHotelReportParameters != null)
-                return new CatalogsReportParameters(catalogsHotelReportParameters);
-
-            if (catalogsRetailReportParameters != null)
-                return new CatalogsReportParameters(catalogsRetailReportParameters);
 
             if (catalogsHotelReportParameters != null)
                 return new CatalogsReportParameters(catalogsHotelReportParameters);

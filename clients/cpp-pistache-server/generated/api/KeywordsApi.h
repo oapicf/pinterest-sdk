@@ -99,7 +99,7 @@ private:
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="countryCode">Two letter country code (ISO 3166-1 alpha-2)</param>
     /// <param name="keywords">Comma-separated keywords</param>
-    virtual void country_keywords_metrics_get(const std::string &adAccountId, const std::optional<std::string> &countryCode, const std::optional<std::vector<std::string>> &keywords, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void country_keywords_metrics_get( const std::string &adAccountId, const std::optional<std::string> &countryCode, const std::optional<std::vector<std::string>> &keywords, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create keywords
     /// </summary>
@@ -108,7 +108,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="keywordsRequest"></param>
-    virtual void keywords_create(const std::string &adAccountId, const org::openapitools::server::model::KeywordsRequest &keywordsRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void keywords_create( const std::string &adAccountId, const org::openapitools::server::model::KeywordsRequest &keywordsRequest, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get keywords
     /// </summary>
@@ -121,7 +121,7 @@ private:
     /// <param name="matchTypes">Keyword &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type&lt;/a&gt; (optional, default to std::vector&lt;std::shared_ptr&lt;MatchType&gt;&gt;())</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void keywords_get(const std::string &adAccountId, const std::optional<std::string> &campaignId, const std::optional<std::string> &adGroupId, const std::optional<std::vector<org::openapitools::server::model::MatchType>> &matchTypes, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void keywords_get( const std::string &adAccountId, const std::optional<std::string> &campaignId, const std::optional<std::string> &adGroupId, const std::optional<std::vector<org::openapitools::server::model::MatchType>> &matchTypes, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Update keywords
     /// </summary>
@@ -130,7 +130,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="keywordUpdateBody"></param>
-    virtual void keywords_update(const std::string &adAccountId, const org::openapitools::server::model::KeywordUpdateBody &keywordUpdateBody, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void keywords_update( const std::string &adAccountId, const org::openapitools::server::model::KeywordUpdateBody &keywordUpdateBody, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// List trending keywords
     /// </summary>
@@ -145,7 +145,7 @@ private:
     /// <param name="includeKeywords">If set, filters the results to top trends which include at least one of the specified keywords.&lt;br /&gt; If unset, no keyword filtering logic is applied. (optional, default to std::vector&lt;std::shared_ptr&lt;std::string&gt;&gt;())</param>
     /// <param name="normalizeAgainstGroup">Governs how the resulting time series data will be normalized to a [0-100] scale.&lt;br /&gt; By default (&#x60;false&#x60;), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword&#39;s time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.&lt;br /&gt; If set to &#x60;true&#x60;, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords. (optional, default to false)</param>
     /// <param name="limit">The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a &#x60;limit&#x60; of 50 will return the top 50 trends. (optional, default to 50)</param>
-    virtual void trending_keywords_list(const TrendsSupportedRegion &region, const TrendType &trendType, const std::optional<std::vector<std::string>> &interests, const std::optional<std::vector<std::string>> &genders, const std::optional<std::vector<std::string>> &ages, const std::optional<std::vector<std::string>> &includeKeywords, const std::optional<bool> &normalizeAgainstGroup, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void trending_keywords_list( const TrendsSupportedRegion &region, const TrendType &trendType, const std::optional<std::vector<std::string>> &interests, const std::optional<std::vector<std::string>> &genders, const std::optional<std::vector<std::string>> &ages, const std::optional<std::vector<std::string>> &includeKeywords, const std::optional<bool> &normalizeAgainstGroup, const std::optional<int32_t> &limit, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

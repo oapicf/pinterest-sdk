@@ -21,7 +21,6 @@
 
 #include "CatalogsRetailBatchRequest_items_inner.h"
 #include "Country.h"
-#include "CatalogsItemsRequest_language.h"
 #include <string>
 #include <vector>
 #include <nlohmann/json.hpp>
@@ -73,10 +72,10 @@ public:
     org::openapitools::server::model::Country getCountry() const;
     void setCountry(org::openapitools::server::model::Country const& value);
     /// <summary>
-    /// 
+    /// We recommend using the CatalogsLocale values.
     /// </summary>
-    org::openapitools::server::model::CatalogsItemsRequest_language getLanguage() const;
-    void setLanguage(org::openapitools::server::model::CatalogsItemsRequest_language const& value);
+    std::string getLanguage() const;
+    void setLanguage(std::string const& value);
     /// <summary>
     /// Array with catalogs item operations
     /// </summary>
@@ -90,7 +89,7 @@ protected:
 
     org::openapitools::server::model::Country m_Country;
 
-    org::openapitools::server::model::CatalogsItemsRequest_language m_Language;
+    std::string m_Language;
 
     std::vector<org::openapitools::server::model::CatalogsRetailBatchRequest_items_inner> m_Items;
 

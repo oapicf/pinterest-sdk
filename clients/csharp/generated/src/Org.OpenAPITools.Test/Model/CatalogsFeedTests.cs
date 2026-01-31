@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -56,138 +55,12 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'CreatedAt'
-        /// </summary>
-        [Fact]
-        public void CreatedAtTest()
-        {
-            // TODO unit test for the property 'CreatedAt'
-        }
-
-        /// <summary>
-        /// Test the property 'Id'
-        /// </summary>
-        [Fact]
-        public void IdTest()
-        {
-            // TODO unit test for the property 'Id'
-        }
-
-        /// <summary>
-        /// Test the property 'UpdatedAt'
-        /// </summary>
-        [Fact]
-        public void UpdatedAtTest()
-        {
-            // TODO unit test for the property 'UpdatedAt'
-        }
-
-        /// <summary>
-        /// Test the property 'Name'
-        /// </summary>
-        [Fact]
-        public void NameTest()
-        {
-            // TODO unit test for the property 'Name'
-        }
-
-        /// <summary>
-        /// Test the property 'Format'
-        /// </summary>
-        [Fact]
-        public void FormatTest()
-        {
-            // TODO unit test for the property 'Format'
-        }
-
-        /// <summary>
         /// Test the property 'CatalogType'
         /// </summary>
         [Fact]
         public void CatalogTypeTest()
         {
             // TODO unit test for the property 'CatalogType'
-        }
-
-        /// <summary>
-        /// Test the property 'Credentials'
-        /// </summary>
-        [Fact]
-        public void CredentialsTest()
-        {
-            // TODO unit test for the property 'Credentials'
-        }
-
-        /// <summary>
-        /// Test the property 'Location'
-        /// </summary>
-        [Fact]
-        public void LocationTest()
-        {
-            // TODO unit test for the property 'Location'
-        }
-
-        /// <summary>
-        /// Test the property 'PreferredProcessingSchedule'
-        /// </summary>
-        [Fact]
-        public void PreferredProcessingScheduleTest()
-        {
-            // TODO unit test for the property 'PreferredProcessingSchedule'
-        }
-
-        /// <summary>
-        /// Test the property 'Status'
-        /// </summary>
-        [Fact]
-        public void StatusTest()
-        {
-            // TODO unit test for the property 'Status'
-        }
-
-        /// <summary>
-        /// Test the property 'DefaultCurrency'
-        /// </summary>
-        [Fact]
-        public void DefaultCurrencyTest()
-        {
-            // TODO unit test for the property 'DefaultCurrency'
-        }
-
-        /// <summary>
-        /// Test the property 'DefaultLocale'
-        /// </summary>
-        [Fact]
-        public void DefaultLocaleTest()
-        {
-            // TODO unit test for the property 'DefaultLocale'
-        }
-
-        /// <summary>
-        /// Test the property 'DefaultCountry'
-        /// </summary>
-        [Fact]
-        public void DefaultCountryTest()
-        {
-            // TODO unit test for the property 'DefaultCountry'
-        }
-
-        /// <summary>
-        /// Test the property 'DefaultAvailability'
-        /// </summary>
-        [Fact]
-        public void DefaultAvailabilityTest()
-        {
-            // TODO unit test for the property 'DefaultAvailability'
-        }
-
-        /// <summary>
-        /// Test the property 'CatalogId'
-        /// </summary>
-        [Fact]
-        public void CatalogIdTest()
-        {
-            // TODO unit test for the property 'CatalogId'
         }
     }
 }

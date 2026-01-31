@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GrantType** | **string** |  | 
 **RefreshToken** | **string** |  | 
 **Scope** | Pointer to **string** |  | [optional] 
 **RefreshOn** | Pointer to **bool** | Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;. | [optional] 
+**GrantType** | **string** |  | 
 
 ## Methods
 
 ### NewOauthAccessTokenRequestRefresh
 
-`func NewOauthAccessTokenRequestRefresh(grantType string, refreshToken string, ) *OauthAccessTokenRequestRefresh`
+`func NewOauthAccessTokenRequestRefresh(refreshToken string, grantType string, ) *OauthAccessTokenRequestRefresh`
 
 NewOauthAccessTokenRequestRefresh instantiates a new OauthAccessTokenRequestRefresh object
 This constructor will assign default values to properties that have it defined,
@@ -27,26 +27,6 @@ will change when the set of required properties is changed
 NewOauthAccessTokenRequestRefreshWithDefaults instantiates a new OauthAccessTokenRequestRefresh object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetGrantType
-
-`func (o *OauthAccessTokenRequestRefresh) GetGrantType() string`
-
-GetGrantType returns the GrantType field if non-nil, zero value otherwise.
-
-### GetGrantTypeOk
-
-`func (o *OauthAccessTokenRequestRefresh) GetGrantTypeOk() (*string, bool)`
-
-GetGrantTypeOk returns a tuple with the GrantType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGrantType
-
-`func (o *OauthAccessTokenRequestRefresh) SetGrantType(v string)`
-
-SetGrantType sets GrantType field to given value.
-
 
 ### GetRefreshToken
 
@@ -117,6 +97,26 @@ SetRefreshOn sets RefreshOn field to given value.
 `func (o *OauthAccessTokenRequestRefresh) HasRefreshOn() bool`
 
 HasRefreshOn returns a boolean if a field has been set.
+
+### GetGrantType
+
+`func (o *OauthAccessTokenRequestRefresh) GetGrantType() string`
+
+GetGrantType returns the GrantType field if non-nil, zero value otherwise.
+
+### GetGrantTypeOk
+
+`func (o *OauthAccessTokenRequestRefresh) GetGrantTypeOk() (*string, bool)`
+
+GetGrantTypeOk returns a tuple with the GrantType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrantType
+
+`func (o *OauthAccessTokenRequestRefresh) SetGrantType(v string)`
+
+SetGrantType sets GrantType field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

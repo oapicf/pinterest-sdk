@@ -146,15 +146,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "width":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                width = new Option<int?>(utf8JsonReader.GetInt32());
+                            width = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "url":
                             url = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "height":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                height = new Option<int?>(utf8JsonReader.GetInt32());
+                            height = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

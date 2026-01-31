@@ -9,7 +9,73 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type CreativeType* = object
-  ## Ad creative type enum. For update, only draft ads may update creative type. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
+type CreativeType* {.pure.} = enum
+  REGULAR
+  VIDEO
+  SHOPPING
+  CAROUSEL
+  MAXVIDEO
+  SHOPTHEPIN
+  COLLECTION
+  IDEA
+  SHOWCASE
+  QUIZ
+
+func `%`*(v: CreativeType): JsonNode =
+  result = case v:
+    of CreativeType.REGULAR: %"REGULAR"
+    of CreativeType.VIDEO: %"VIDEO"
+    of CreativeType.SHOPPING: %"SHOPPING"
+    of CreativeType.CAROUSEL: %"CAROUSEL"
+    of CreativeType.MAXVIDEO: %"MAX_VIDEO"
+    of CreativeType.SHOPTHEPIN: %"SHOP_THE_PIN"
+    of CreativeType.COLLECTION: %"COLLECTION"
+    of CreativeType.IDEA: %"IDEA"
+    of CreativeType.SHOWCASE: %"SHOWCASE"
+    of CreativeType.QUIZ: %"QUIZ"
+
+func `$`*(v: CreativeType): string =
+  result = case v:
+    of CreativeType.REGULAR: $("REGULAR")
+    of CreativeType.VIDEO: $("VIDEO")
+    of CreativeType.SHOPPING: $("SHOPPING")
+    of CreativeType.CAROUSEL: $("CAROUSEL")
+    of CreativeType.MAXVIDEO: $("MAX_VIDEO")
+    of CreativeType.SHOPTHEPIN: $("SHOP_THE_PIN")
+    of CreativeType.COLLECTION: $("COLLECTION")
+    of CreativeType.IDEA: $("IDEA")
+    of CreativeType.SHOWCASE: $("SHOWCASE")
+    of CreativeType.QUIZ: $("QUIZ")
+
+proc to*(node: JsonNode, T: typedesc[CreativeType]): CreativeType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CreativeType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("REGULAR"):
+    return CreativeType.REGULAR
+  of $("VIDEO"):
+    return CreativeType.VIDEO
+  of $("SHOPPING"):
+    return CreativeType.SHOPPING
+  of $("CAROUSEL"):
+    return CreativeType.CAROUSEL
+  of $("MAX_VIDEO"):
+    return CreativeType.MAXVIDEO
+  of $("SHOP_THE_PIN"):
+    return CreativeType.SHOPTHEPIN
+  of $("COLLECTION"):
+    return CreativeType.COLLECTION
+  of $("IDEA"):
+    return CreativeType.IDEA
+  of $("SHOWCASE"):
+    return CreativeType.SHOWCASE
+  of $("QUIZ"):
+    return CreativeType.QUIZ
+  else:
+    raise newException(ValueError, "Invalid enum value for CreativeType: " & strVal)
+

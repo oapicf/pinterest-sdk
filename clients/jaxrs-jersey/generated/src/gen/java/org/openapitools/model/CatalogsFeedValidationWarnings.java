@@ -77,7 +77,7 @@ import javax.validation.Valid;
   CatalogsFeedValidationWarnings.JSON_PROPERTY_S_A_L_E_S_P_R_I_C_E_T_O_O_H_I_G_H,
   CatalogsFeedValidationWarnings.JSON_PROPERTY_M_P_N_I_N_V_A_L_I_D
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedValidationWarnings   {
   public static final String JSON_PROPERTY_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G = "AD_LINK_FORMAT_WARNING";
   @JsonProperty(JSON_PROPERTY_A_D_L_I_N_K_F_O_R_M_A_T_W_A_R_N_I_N_G)
@@ -147,8 +147,12 @@ public class CatalogsFeedValidationWarnings   {
       this.value = value;
     }
 
-    @Override
     @JsonValue
+    public Integer getValue() {
+      return value;
+    }
+
+    @Override
     public String toString() {
       return String.valueOf(value);
     }

@@ -12,7 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ProductType4Filter  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringListCriteria PRODUCT_TYPE_4;
  /**
    * Get PRODUCT_TYPE_4

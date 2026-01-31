@@ -117,7 +117,7 @@ data class AdUpdateRequest(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "394205773611545468", description = "Pin ID. This field may only be updated for draft ads.")
     @get:JsonProperty("pin_id") val pinId: kotlin.String? = null
-    ) {
+) {
 
     /**
     * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
@@ -148,7 +148,8 @@ data class AdUpdateRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CustomizableCtaType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdUpdateRequest'")
             }
         }
     }

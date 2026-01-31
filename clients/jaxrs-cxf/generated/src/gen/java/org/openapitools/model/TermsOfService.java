@@ -11,28 +11,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TermsOfService  {
   
-  @ApiModelProperty(example = "2650449554526", value = "The ID of the terms of service")
  /**
-   * The ID of the terms of service
-  **/
+  * The ID of the terms of service
+  */
+  @ApiModelProperty(example = "2650449554526", value = "The ID of the terms of service")
+
   private String id;
 
-  @ApiModelProperty(example = "example test", value = "The terms of service content")
  /**
-   * The terms of service content
-  **/
+  * The terms of service content
+  */
+  @ApiModelProperty(example = "example test", value = "The terms of service content")
+
   private String html;
 
-  @ApiModelProperty(example = "true", value = "Whether the ad account has accepted terms of service.")
  /**
-   * Whether the ad account has accepted terms of service.
-  **/
+  * Whether the ad account has accepted terms of service.
+  */
+  @ApiModelProperty(example = "true", value = "Whether the ad account has accepted terms of service.")
+
   private Boolean hasAccepted;
 
-  @ApiModelProperty(example = "549755885175", value = "The ID of the ad account.")
  /**
-   * The ID of the ad account.
-  **/
+  * The ID of the ad account.
+  */
+  @ApiModelProperty(example = "549755885175", value = "The ID of the ad account.")
+
   private String adAccountId;
  /**
    * The ID of the terms of service

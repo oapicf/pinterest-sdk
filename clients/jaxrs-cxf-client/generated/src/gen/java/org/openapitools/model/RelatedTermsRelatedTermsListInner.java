@@ -12,9 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class RelatedTermsRelatedTermsListInner  {
   
   @ApiModelProperty(example = "clothes", value = "")
+
   private String term;
 
   @ApiModelProperty(example = "[\"shoes\",\"cute clothes\"]", value = "")
+
   private List<String> relatedTerms = new ArrayList<>();
  /**
    * Get term

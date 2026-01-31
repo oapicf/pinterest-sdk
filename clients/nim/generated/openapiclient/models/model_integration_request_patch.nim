@@ -9,19 +9,80 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type IntegrationRequestPatch* = object
   ## Schema used for updating the integration metadata.
-  connectedMerchantId*: string
-  connectedAdvertiserId*: string
-  connectedLbaId*: string
-  connectedTagId*: string
-  partnerAccessToken*: string
-  partnerRefreshToken*: string
-  partnerPrimaryEmail*: string
-  partnerAccessTokenExpiry*: float
-  partnerRefreshTokenExpiry*: float
-  scopes*: string
-  additionalId1*: string
-  partnerMetadata*: string
+  connectedMerchantId*: Option[string]
+  connectedAdvertiserId*: Option[string]
+  connectedLbaId*: Option[string]
+  connectedTagId*: Option[string]
+  partnerAccessToken*: Option[string]
+  partnerRefreshToken*: Option[string]
+  partnerPrimaryEmail*: Option[string]
+  partnerAccessTokenExpiry*: Option[float]
+  partnerRefreshTokenExpiry*: Option[float]
+  scopes*: Option[string]
+  additionalId1*: Option[string]
+  partnerMetadata*: Option[string]
+
+
+# Custom JSON deserialization for IntegrationRequestPatch with custom field names
+proc to*(node: JsonNode, T: typedesc[IntegrationRequestPatch]): IntegrationRequestPatch =
+  result = IntegrationRequestPatch()
+  if node.kind == JObject:
+    if node.hasKey("connected_merchant_id") and node["connected_merchant_id"].kind != JNull:
+      result.connectedMerchantId = some(to(node["connected_merchant_id"], typeof(result.connectedMerchantId.get())))
+    if node.hasKey("connected_advertiser_id") and node["connected_advertiser_id"].kind != JNull:
+      result.connectedAdvertiserId = some(to(node["connected_advertiser_id"], typeof(result.connectedAdvertiserId.get())))
+    if node.hasKey("connected_lba_id") and node["connected_lba_id"].kind != JNull:
+      result.connectedLbaId = some(to(node["connected_lba_id"], typeof(result.connectedLbaId.get())))
+    if node.hasKey("connected_tag_id") and node["connected_tag_id"].kind != JNull:
+      result.connectedTagId = some(to(node["connected_tag_id"], typeof(result.connectedTagId.get())))
+    if node.hasKey("partner_access_token") and node["partner_access_token"].kind != JNull:
+      result.partnerAccessToken = some(to(node["partner_access_token"], typeof(result.partnerAccessToken.get())))
+    if node.hasKey("partner_refresh_token") and node["partner_refresh_token"].kind != JNull:
+      result.partnerRefreshToken = some(to(node["partner_refresh_token"], typeof(result.partnerRefreshToken.get())))
+    if node.hasKey("partner_primary_email") and node["partner_primary_email"].kind != JNull:
+      result.partnerPrimaryEmail = some(to(node["partner_primary_email"], typeof(result.partnerPrimaryEmail.get())))
+    if node.hasKey("partner_access_token_expiry") and node["partner_access_token_expiry"].kind != JNull:
+      result.partnerAccessTokenExpiry = some(to(node["partner_access_token_expiry"], typeof(result.partnerAccessTokenExpiry.get())))
+    if node.hasKey("partner_refresh_token_expiry") and node["partner_refresh_token_expiry"].kind != JNull:
+      result.partnerRefreshTokenExpiry = some(to(node["partner_refresh_token_expiry"], typeof(result.partnerRefreshTokenExpiry.get())))
+    if node.hasKey("scopes") and node["scopes"].kind != JNull:
+      result.scopes = some(to(node["scopes"], typeof(result.scopes.get())))
+    if node.hasKey("additional_id_1") and node["additional_id_1"].kind != JNull:
+      result.additionalId1 = some(to(node["additional_id_1"], typeof(result.additionalId1.get())))
+    if node.hasKey("partner_metadata") and node["partner_metadata"].kind != JNull:
+      result.partnerMetadata = some(to(node["partner_metadata"], typeof(result.partnerMetadata.get())))
+
+# Custom JSON serialization for IntegrationRequestPatch with custom field names
+proc `%`*(obj: IntegrationRequestPatch): JsonNode =
+  result = newJObject()
+  if obj.connectedMerchantId.isSome():
+    result["connected_merchant_id"] = %obj.connectedMerchantId.get()
+  if obj.connectedAdvertiserId.isSome():
+    result["connected_advertiser_id"] = %obj.connectedAdvertiserId.get()
+  if obj.connectedLbaId.isSome():
+    result["connected_lba_id"] = %obj.connectedLbaId.get()
+  if obj.connectedTagId.isSome():
+    result["connected_tag_id"] = %obj.connectedTagId.get()
+  if obj.partnerAccessToken.isSome():
+    result["partner_access_token"] = %obj.partnerAccessToken.get()
+  if obj.partnerRefreshToken.isSome():
+    result["partner_refresh_token"] = %obj.partnerRefreshToken.get()
+  if obj.partnerPrimaryEmail.isSome():
+    result["partner_primary_email"] = %obj.partnerPrimaryEmail.get()
+  if obj.partnerAccessTokenExpiry.isSome():
+    result["partner_access_token_expiry"] = %obj.partnerAccessTokenExpiry.get()
+  if obj.partnerRefreshTokenExpiry.isSome():
+    result["partner_refresh_token_expiry"] = %obj.partnerRefreshTokenExpiry.get()
+  if obj.scopes.isSome():
+    result["scopes"] = %obj.scopes.get()
+  if obj.additionalId1.isSome():
+    result["additional_id_1"] = %obj.additionalId1.get()
+  if obj.partnerMetadata.isSome():
+    result["partner_metadata"] = %obj.partnerMetadata.get()
+

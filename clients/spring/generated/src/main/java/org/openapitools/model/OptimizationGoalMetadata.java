@@ -22,7 +22,7 @@ import javax.annotation.Generated;
  * OptimizationGoalMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OptimizationGoalMetadata {
 
   private @Nullable OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata;
@@ -31,7 +31,7 @@ public class OptimizationGoalMetadata {
 
   private @Nullable OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata;
 
-  public OptimizationGoalMetadata conversionTagV3GoalMetadata(OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
+  public OptimizationGoalMetadata conversionTagV3GoalMetadata(@Nullable OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
     this.conversionTagV3GoalMetadata = conversionTagV3GoalMetadata;
     return this;
   }
@@ -43,15 +43,15 @@ public class OptimizationGoalMetadata {
   @Valid 
   @Schema(name = "conversion_tag_v3_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_tag_v3_goal_metadata")
-  public OptimizationGoalMetadataConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
+  public @Nullable OptimizationGoalMetadataConversionTagV3GoalMetadata getConversionTagV3GoalMetadata() {
     return conversionTagV3GoalMetadata;
   }
 
-  public void setConversionTagV3GoalMetadata(OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
+  public void setConversionTagV3GoalMetadata(@Nullable OptimizationGoalMetadataConversionTagV3GoalMetadata conversionTagV3GoalMetadata) {
     this.conversionTagV3GoalMetadata = conversionTagV3GoalMetadata;
   }
 
-  public OptimizationGoalMetadata frequencyGoalMetadata(OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata) {
+  public OptimizationGoalMetadata frequencyGoalMetadata(@Nullable OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata) {
     this.frequencyGoalMetadata = frequencyGoalMetadata;
     return this;
   }
@@ -63,15 +63,15 @@ public class OptimizationGoalMetadata {
   @Valid 
   @Schema(name = "frequency_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("frequency_goal_metadata")
-  public OptimizationGoalMetadataFrequencyGoalMetadata getFrequencyGoalMetadata() {
+  public @Nullable OptimizationGoalMetadataFrequencyGoalMetadata getFrequencyGoalMetadata() {
     return frequencyGoalMetadata;
   }
 
-  public void setFrequencyGoalMetadata(OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata) {
+  public void setFrequencyGoalMetadata(@Nullable OptimizationGoalMetadataFrequencyGoalMetadata frequencyGoalMetadata) {
     this.frequencyGoalMetadata = frequencyGoalMetadata;
   }
 
-  public OptimizationGoalMetadata scrollupGoalMetadata(OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata) {
+  public OptimizationGoalMetadata scrollupGoalMetadata(@Nullable OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata) {
     this.scrollupGoalMetadata = scrollupGoalMetadata;
     return this;
   }
@@ -83,11 +83,11 @@ public class OptimizationGoalMetadata {
   @Valid 
   @Schema(name = "scrollup_goal_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scrollup_goal_metadata")
-  public OptimizationGoalMetadataScrollupGoalMetadata getScrollupGoalMetadata() {
+  public @Nullable OptimizationGoalMetadataScrollupGoalMetadata getScrollupGoalMetadata() {
     return scrollupGoalMetadata;
   }
 
-  public void setScrollupGoalMetadata(OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata) {
+  public void setScrollupGoalMetadata(@Nullable OptimizationGoalMetadataScrollupGoalMetadata scrollupGoalMetadata) {
     this.scrollupGoalMetadata = scrollupGoalMetadata;
   }
 

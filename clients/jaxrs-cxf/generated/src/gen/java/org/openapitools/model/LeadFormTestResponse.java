@@ -1,24 +1,25 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Response for lead data test API.
- **/
+ * Response for lead data test API.
+ */
 @ApiModel(description="Response for lead data test API.")
 
 public class LeadFormTestResponse  {
   
-  @ApiModelProperty(example = "8078432025948590686", value = "Subscription ID.")
  /**
-   * Subscription ID.
-  **/
+  * Subscription ID.
+  */
+  @ApiModelProperty(example = "8078432025948590686", value = "Subscription ID.")
+
   private String subscriptionId;
  /**
    * Subscription ID.

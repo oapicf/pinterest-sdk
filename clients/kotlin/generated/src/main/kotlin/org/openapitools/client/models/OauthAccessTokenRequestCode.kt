@@ -20,10 +20,11 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * A request to exchange an authorization code for an access token.
+ * 
  *
  * @param code 
  * @param redirectUri 
+ * @param grantType 
  */
 
 
@@ -33,7 +34,10 @@ data class OauthAccessTokenRequestCode (
     val code: kotlin.String,
 
     @Json(name = "redirect_uri")
-    val redirectUri: kotlin.String
+    val redirectUri: kotlin.String,
+
+    @Json(name = "grant_type")
+    val grantType: OauthAccessTokenRequestCode.GrantType
 
 ) {
 

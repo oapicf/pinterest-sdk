@@ -133,7 +133,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ConversionReportTimeType conversionReportTimeType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(conversionReportTimeType.ToString());
+            writer.WriteStringValue(ConversionReportTimeTypeValueConverter.ToJsonValue(conversionReportTimeType).ToString());
         }
     }
 
@@ -164,14 +164,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the ConversionReportTimeType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="conversionReportTimeType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ConversionReportTimeType? conversionReportTimeType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(conversionReportTimeType?.ToString() ?? "null");
+            writer.WriteStringValue(conversionReportTimeType.HasValue ? ConversionReportTimeTypeValueConverter.ToJsonValue(conversionReportTimeType.Value).ToString() : "null");
         }
     }
 }

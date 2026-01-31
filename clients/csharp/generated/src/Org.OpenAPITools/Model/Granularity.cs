@@ -175,7 +175,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Granularity granularity, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(granularity.ToString());
+            writer.WriteStringValue(GranularityValueConverter.ToJsonValue(granularity).ToString());
         }
     }
 
@@ -206,14 +206,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the Granularity to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="granularity"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Granularity? granularity, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(granularity?.ToString() ?? "null");
+            writer.WriteStringValue(granularity.HasValue ? GranularityValueConverter.ToJsonValue(granularity.Value).ToString() : "null");
         }
     }
 }

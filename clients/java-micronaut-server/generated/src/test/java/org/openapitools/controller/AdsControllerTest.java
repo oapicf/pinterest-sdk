@@ -98,7 +98,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@5c9caa3b");
+            .accept("[Ljava.lang.String;@8a4f94f");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdPreviewURLResponse.class);
@@ -155,7 +155,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@1f1d8f8");
+            .accept("[Ljava.lang.String;@4624f134");
         request.getParameters()
             .add("ad_ids", Arrays.asList("example")) // The query format should be multi
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -224,7 +224,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5113d1f2");
+            .accept("[Ljava.lang.String;@48e9436e");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -284,7 +284,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@67bec6a9");
+            .accept("[Ljava.lang.String;@5d3310a6");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdArrayResponse.class);
@@ -332,7 +332,7 @@ public class AdsControllerTest {
             put("ad_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5eca7517");
+            .accept("[Ljava.lang.String;@7272f4ce");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdResponse.class);
@@ -385,7 +385,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5173402e");
+            .accept("[Ljava.lang.String;@13be06e5");
         request.getParameters()
             .add("campaign_ids", Arrays.asList("example")) // The query format should be multi
             .add("ad_group_ids", Arrays.asList("example")) // The query format should be multi
@@ -441,7 +441,7 @@ public class AdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@1e2097b3");
+            .accept("[Ljava.lang.String;@114ec5cf");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdArrayResponse.class);

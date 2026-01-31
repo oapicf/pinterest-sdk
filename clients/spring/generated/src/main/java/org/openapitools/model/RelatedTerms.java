@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * RelatedTerms
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class RelatedTerms {
 
   private @Nullable String id;
@@ -33,7 +33,7 @@ public class RelatedTerms {
   @Valid
   private List<@Valid RelatedTermsRelatedTermsListInner> relatedTermsList = new ArrayList<>();
 
-  public RelatedTerms id(String id) {
+  public RelatedTerms id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -45,15 +45,15 @@ public class RelatedTerms {
   
   @Schema(name = "id", example = "clothes", description = "First input term. For example, if you pass \"?terms=clothes,workout\", then id will be \"clothes\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public RelatedTerms relatedTermCount(Integer relatedTermCount) {
+  public RelatedTerms relatedTermCount(@Nullable Integer relatedTermCount) {
     this.relatedTermCount = relatedTermCount;
     return this;
   }
@@ -65,11 +65,11 @@ public class RelatedTerms {
   
   @Schema(name = "related_term_count", example = "2", description = "Total number of related terms returned", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("related_term_count")
-  public Integer getRelatedTermCount() {
+  public @Nullable Integer getRelatedTermCount() {
     return relatedTermCount;
   }
 
-  public void setRelatedTermCount(Integer relatedTermCount) {
+  public void setRelatedTermCount(@Nullable Integer relatedTermCount) {
     this.relatedTermCount = relatedTermCount;
   }
 

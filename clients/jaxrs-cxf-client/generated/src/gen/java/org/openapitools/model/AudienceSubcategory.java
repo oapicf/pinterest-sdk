@@ -9,34 +9,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AudienceSubcategory  {
   
-  @ApiModelProperty(example = "958862518888", value = "Interest unique key (same as ID).")
  /**
-   * Interest unique key (same as ID).
-  **/
+  * Interest unique key (same as ID).
+  */
+  @ApiModelProperty(example = "958862518888", value = "Interest unique key (same as ID).")
+
   private String key;
 
-  @ApiModelProperty(example = "travel destinations", value = "Subinterest name.")
  /**
-   * Subinterest name.
-  **/
+  * Subinterest name.
+  */
+  @ApiModelProperty(example = "travel destinations", value = "Subinterest name.")
+
   private String name;
 
-  @ApiModelProperty(example = "0.482", value = "Subinterest's percent of category's total audience.")
  /**
-   * Subinterest's percent of category's total audience.
-  **/
+  * Subinterest's percent of category's total audience.
+  */
+  @ApiModelProperty(example = "0.482", value = "Subinterest's percent of category's total audience.")
+
   private BigDecimal ratio;
 
-  @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
  /**
-   * Subinterest affinity index.
-  **/
+  * Subinterest affinity index.
+  */
+  @ApiModelProperty(example = "1.2", value = "Subinterest affinity index.")
+
   private BigDecimal index;
 
-  @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
  /**
-   * Subinterest ID.
-  **/
+  * Subinterest ID.
+  */
+  @ApiModelProperty(example = "958862518888", value = "Subinterest ID.")
+
   private String id;
  /**
    * Interest unique key (same as ID).

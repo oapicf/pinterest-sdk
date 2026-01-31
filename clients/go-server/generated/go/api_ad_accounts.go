@@ -53,67 +53,159 @@ func NewAdAccountsAPIController(s AdAccountsAPIServicer, opts ...AdAccountsAPIOp
 func (c *AdAccountsAPIController) Routes() Routes {
 	return Routes{
 		"AdAccountsList": Route{
+			"AdAccountsList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts",
 			c.AdAccountsList,
 		},
 		"AdAccountsCreate": Route{
+			"AdAccountsCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts",
 			c.AdAccountsCreate,
 		},
 		"AdAccountsGet": Route{
+			"AdAccountsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}",
 			c.AdAccountsGet,
 		},
 		"AdAccountAnalytics": Route{
+			"AdAccountAnalytics",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/analytics",
 			c.AdAccountAnalytics,
 		},
 		"AnalyticsGetMmmReport": Route{
+			"AnalyticsGetMmmReport",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/mmm_reports",
 			c.AnalyticsGetMmmReport,
 		},
 		"AnalyticsCreateMmmReport": Route{
+			"AnalyticsCreateMmmReport",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/mmm_reports",
 			c.AnalyticsCreateMmmReport,
 		},
 		"AnalyticsGetReport": Route{
+			"AnalyticsGetReport",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/reports",
 			c.AnalyticsGetReport,
 		},
 		"AnalyticsCreateReport": Route{
+			"AnalyticsCreateReport",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/reports",
 			c.AnalyticsCreateReport,
 		},
 		"SandboxDelete": Route{
+			"SandboxDelete",
 			strings.ToUpper("Delete"),
 			"/v5/ad_accounts/{ad_account_id}/sandbox",
 			c.SandboxDelete,
 		},
 		"AdAccountTargetingAnalyticsGet": Route{
+			"AdAccountTargetingAnalyticsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/targeting_analytics",
 			c.AdAccountTargetingAnalyticsGet,
 		},
 		"TemplatesList": Route{
+			"TemplatesList",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/templates",
 			c.TemplatesList,
 		},
 		"AnalyticsCreateTemplateReport": Route{
+			"AnalyticsCreateTemplateReport",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/templates/{template_id}/reports",
 			c.AnalyticsCreateTemplateReport,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the AdAccountsAPIController
+func (c *AdAccountsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"AdAccountsList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts",
+			c.AdAccountsList,
+		},
+		Route{
+			"AdAccountsCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts",
+			c.AdAccountsCreate,
+		},
+		Route{
+			"AdAccountsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}",
+			c.AdAccountsGet,
+		},
+		Route{
+			"AdAccountAnalytics",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/analytics",
+			c.AdAccountAnalytics,
+		},
+		Route{
+			"AnalyticsGetMmmReport",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/mmm_reports",
+			c.AnalyticsGetMmmReport,
+		},
+		Route{
+			"AnalyticsCreateMmmReport",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/mmm_reports",
+			c.AnalyticsCreateMmmReport,
+		},
+		Route{
+			"AnalyticsGetReport",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/reports",
+			c.AnalyticsGetReport,
+		},
+		Route{
+			"AnalyticsCreateReport",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/reports",
+			c.AnalyticsCreateReport,
+		},
+		Route{
+			"SandboxDelete",
+			strings.ToUpper("Delete"),
+			"/v5/ad_accounts/{ad_account_id}/sandbox",
+			c.SandboxDelete,
+		},
+		Route{
+			"AdAccountTargetingAnalyticsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/targeting_analytics",
+			c.AdAccountTargetingAnalyticsGet,
+		},
+		Route{
+			"TemplatesList",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/templates",
+			c.TemplatesList,
+		},
+		Route{
+			"AnalyticsCreateTemplateReport",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/templates/{template_id}/reports",
+			c.AnalyticsCreateTemplateReport,
+		},
+	}
+}
+
+
 
 // AdAccountsList - List ad accounts
 func (c *AdAccountsAPIController) AdAccountsList(w http.ResponseWriter, r *http.Request) {

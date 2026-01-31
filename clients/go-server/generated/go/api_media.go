@@ -53,22 +53,51 @@ func NewMediaAPIController(s MediaAPIServicer, opts ...MediaAPIOption) *MediaAPI
 func (c *MediaAPIController) Routes() Routes {
 	return Routes{
 		"MediaList": Route{
+			"MediaList",
 			strings.ToUpper("Get"),
 			"/v5/media",
 			c.MediaList,
 		},
 		"MediaCreate": Route{
+			"MediaCreate",
 			strings.ToUpper("Post"),
 			"/v5/media",
 			c.MediaCreate,
 		},
 		"MediaGet": Route{
+			"MediaGet",
 			strings.ToUpper("Get"),
 			"/v5/media/{media_id}",
 			c.MediaGet,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the MediaAPIController
+func (c *MediaAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"MediaList",
+			strings.ToUpper("Get"),
+			"/v5/media",
+			c.MediaList,
+		},
+		Route{
+			"MediaCreate",
+			strings.ToUpper("Post"),
+			"/v5/media",
+			c.MediaCreate,
+		},
+		Route{
+			"MediaGet",
+			strings.ToUpper("Get"),
+			"/v5/media/{media_id}",
+			c.MediaGet,
+		},
+	}
+}
+
+
 
 // MediaList - List media uploads
 func (c *MediaAPIController) MediaList(w http.ResponseWriter, r *http.Request) {

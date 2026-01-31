@@ -13,17 +13,11 @@
 
 import { exists, mapValues } from '../runtime';
 /**
- * A request to exchange a refresh token for a new access token.
+ * 
  * @export
  * @interface OauthAccessTokenRequestRefresh
  */
 export interface OauthAccessTokenRequestRefresh  {
-    /**
-     * 
-     * @type {string}
-     * @memberof OauthAccessTokenRequestRefresh
-     */
-    grantType: OauthAccessTokenRequestRefreshGrantTypeEnum;
     /**
      * 
      * @type {string}
@@ -42,14 +36,20 @@ export interface OauthAccessTokenRequestRefresh  {
      * @memberof OauthAccessTokenRequestRefresh
      */
     refreshOn?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenRequestRefresh
+     */
+    grantType: OauthAccessTokenRequestRefreshGrantTypeEnum;
 }
 
 export function OauthAccessTokenRequestRefreshFromJSON(json: any): OauthAccessTokenRequestRefresh {
     return {
-        'grantType': json['grant_type'],
         'refreshToken': json['refresh_token'],
         'scope': !exists(json, 'scope') ? undefined : json['scope'],
         'refreshOn': !exists(json, 'refresh_on') ? undefined : json['refresh_on'],
+        'grantType': json['grant_type'],
     };
 }
 
@@ -58,10 +58,10 @@ export function OauthAccessTokenRequestRefreshToJSON(value?: OauthAccessTokenReq
         return undefined;
     }
     return {
-        'grant_type': value.grantType,
         'refresh_token': value.refreshToken,
         'scope': value.scope,
         'refresh_on': value.refreshOn,
+        'grant_type': value.grantType,
     };
 }
 

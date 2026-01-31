@@ -111,6 +111,8 @@ pub enum AdsSlashUpdateResponse {
 }
 
 
+
+
 /// Ads
 #[async_trait]
 #[allow(clippy::ptr_arg)]
@@ -120,6 +122,7 @@ pub trait Ads<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHand
     /// AdPreviewsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/ad_previews
     async fn ad_previews_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -132,6 +135,7 @@ pub trait Ads<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHand
     /// AdTargetingAnalyticsSlashGet - GET /v5/ad_accounts/{ad_account_id}/ads/targeting_analytics
     async fn ad_targeting_analytics_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -144,6 +148,7 @@ pub trait Ads<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHand
     /// AdsSlashAnalytics - GET /v5/ad_accounts/{ad_account_id}/ads/analytics
     async fn ads_slash_analytics(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -156,6 +161,7 @@ pub trait Ads<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHand
     /// AdsSlashCreate - POST /v5/ad_accounts/{ad_account_id}/ads
     async fn ads_slash_create(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -168,6 +174,7 @@ pub trait Ads<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHand
     /// AdsSlashGet - GET /v5/ad_accounts/{ad_account_id}/ads/{ad_id}
     async fn ads_slash_get(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -179,6 +186,7 @@ pub trait Ads<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHand
     /// AdsSlashList - GET /v5/ad_accounts/{ad_account_id}/ads
     async fn ads_slash_list(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,
@@ -191,6 +199,7 @@ pub trait Ads<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHand
     /// AdsSlashUpdate - PATCH /v5/ad_accounts/{ad_account_id}/ads
     async fn ads_slash_update(
     &self,
+    
     method: &Method,
     host: &Host,
     cookies: &CookieJar,

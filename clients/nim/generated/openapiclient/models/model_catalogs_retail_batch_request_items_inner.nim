@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_create_retail_item
 import model_catalogs_delete_retail_item
@@ -17,22 +19,46 @@ import model_catalogs_upsert_retail_item
 import model_item_attributes_request
 import model_update_mask_field_type
 
-type Operation* {.pure.} = enum
-  DELETE
+# AnyOf type
+type CatalogsRetailBatchRequestItemsInnerKind* {.pure.} = enum
+  CatalogsCreateRetailItemVariant
+  CatalogsUpdateRetailItemVariant
+  CatalogsUpsertRetailItemVariant
+  CatalogsDeleteRetailItemVariant
 
 type CatalogsRetailBatchRequestItemsInner* = object
   ## 
-  itemId*: string ## The catalog item id in the merchant namespace
-  operation*: Operation
-  attributes*: ItemAttributesRequest
-  updateMask*: seq[UpdateMaskFieldType] ## The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+  case kind*: CatalogsRetailBatchRequestItemsInnerKind
+  of CatalogsRetailBatchRequestItemsInnerKind.CatalogsCreateRetailItemVariant:
+    CatalogsCreateRetailItemValue*: CatalogsCreateRetailItem
+  of CatalogsRetailBatchRequestItemsInnerKind.CatalogsUpdateRetailItemVariant:
+    CatalogsUpdateRetailItemValue*: CatalogsUpdateRetailItem
+  of CatalogsRetailBatchRequestItemsInnerKind.CatalogsUpsertRetailItemVariant:
+    CatalogsUpsertRetailItemValue*: CatalogsUpsertRetailItem
+  of CatalogsRetailBatchRequestItemsInnerKind.CatalogsDeleteRetailItemVariant:
+    CatalogsDeleteRetailItemValue*: CatalogsDeleteRetailItem
 
-func `%`*(v: Operation): JsonNode =
-  let str = case v:
-    of Operation.DELETE: "DELETE"
+proc to*(node: JsonNode, T: typedesc[CatalogsRetailBatchRequestItemsInner]): CatalogsRetailBatchRequestItemsInner =
+  ## Custom deserializer for anyOf type - tries each variant
+  try:
+    return CatalogsRetailBatchRequestItemsInner(kind: CatalogsRetailBatchRequestItemsInnerKind.CatalogsCreateRetailItemVariant, CatalogsCreateRetailItemValue: to(node, CatalogsCreateRetailItem))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreateRetailItem: ", e.msg
+  try:
+    return CatalogsRetailBatchRequestItemsInner(kind: CatalogsRetailBatchRequestItemsInnerKind.CatalogsUpdateRetailItemVariant, CatalogsUpdateRetailItemValue: to(node, CatalogsUpdateRetailItem))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsUpdateRetailItem: ", e.msg
+  try:
+    return CatalogsRetailBatchRequestItemsInner(kind: CatalogsRetailBatchRequestItemsInnerKind.CatalogsUpsertRetailItemVariant, CatalogsUpsertRetailItemValue: to(node, CatalogsUpsertRetailItem))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsUpsertRetailItem: ", e.msg
+  try:
+    return CatalogsRetailBatchRequestItemsInner(kind: CatalogsRetailBatchRequestItemsInnerKind.CatalogsDeleteRetailItemVariant, CatalogsDeleteRetailItemValue: to(node, CatalogsDeleteRetailItem))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsDeleteRetailItem: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsRetailBatchRequestItemsInner. JSON: " & $node)
 
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: Operation): string =
-  result = case v:
-    of Operation.DELETE: "DELETE"

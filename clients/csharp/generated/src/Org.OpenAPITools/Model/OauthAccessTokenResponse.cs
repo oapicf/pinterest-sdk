@@ -246,8 +246,7 @@ namespace Org.OpenAPITools.Model
                             accessToken = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "expires_in":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                expiresIn = new Option<int?>(utf8JsonReader.GetInt32());
+                            expiresIn = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "scope":
                             scope = new Option<string?>(utf8JsonReader.GetString()!);

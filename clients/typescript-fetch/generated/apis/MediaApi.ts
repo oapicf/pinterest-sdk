@@ -72,8 +72,11 @@ export class MediaApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["pins:read", "pins:write"]);
         }
 
+
+        let urlPath = `/media`;
+
         const response = await this.request({
-            path: `/media`,
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -113,8 +116,12 @@ export class MediaApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["pins:read"]);
         }
 
+
+        let urlPath = `/media/{media_id}`;
+        urlPath = urlPath.replace(`{${"media_id"}}`, encodeURIComponent(String(requestParameters['mediaId'])));
+
         const response = await this.request({
-            path: `/media/{media_id}`.replace(`{${"media_id"}}`, encodeURIComponent(String(requestParameters['mediaId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -154,8 +161,11 @@ export class MediaApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["pins:read"]);
         }
 
+
+        let urlPath = `/media`;
+
         const response = await this.request({
-            path: `/media`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

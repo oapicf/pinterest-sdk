@@ -333,8 +333,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "campaign_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                campaignIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            campaignIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString()!);
@@ -349,20 +348,16 @@ namespace Org.OpenAPITools.Model
                             purchaseOrderId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "start_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                startTime = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            startTime = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "end_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                endTime = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            endTime = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "budget":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                budget = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            budget = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "paid_budget":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                paidBudget = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            paidBudget = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "status":
                             string? statusRawValue = utf8JsonReader.GetString();

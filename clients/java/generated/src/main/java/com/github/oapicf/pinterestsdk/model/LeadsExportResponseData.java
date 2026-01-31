@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * LeadsExportResponseData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadsExportResponseData {
   public static final String SERIALIZED_NAME_EXPORT_STATUS = "export_status";
   @SerializedName(SERIALIZED_NAME_EXPORT_STATUS)
@@ -160,12 +160,10 @@ public class LeadsExportResponseData {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("export_status");
-    openapiFields.add("download_url");
+    openapiFields = new HashSet<String>(Arrays.asList("export_status", "download_url"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -177,7 +175,7 @@ public class LeadsExportResponseData {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!LeadsExportResponseData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LeadsExportResponseData is not found in the empty JSON string", LeadsExportResponseData.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in LeadsExportResponseData is not found in the empty JSON string", LeadsExportResponseData.openapiRequiredFields.toString()));
         }
       }
 
@@ -185,7 +183,7 @@ public class LeadsExportResponseData {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!LeadsExportResponseData.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LeadsExportResponseData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `LeadsExportResponseData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -194,7 +192,7 @@ public class LeadsExportResponseData {
         LeadsExportStatus.validateJsonElement(jsonObj.get("export_status"));
       }
       if ((jsonObj.get("download_url") != null && !jsonObj.get("download_url").isJsonNull()) && !jsonObj.get("download_url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `download_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("download_url").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `download_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("download_url").toString()));
       }
   }
 

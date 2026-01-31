@@ -150,7 +150,7 @@ data class AdGroupResponse(
     @field:Valid
     @Schema(example = "null", description = "[DCA] The Dynamic creative assets to use for DCA. Dynamic Creative Assembly (DCA) accepts basic creative assets of an ad (image, video, title, call to action, logo etc). Then it automatically generates optimized ad combinations based on these assets.")
     @get:JsonProperty("dca_assets") val dcaAssets: kotlin.Any? = null
-    ) {
+) {
 
     /**
     * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID.
@@ -166,7 +166,8 @@ data class AdGroupResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): BidStrategyType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdGroupResponse'")
             }
         }
     }
@@ -184,7 +185,8 @@ data class AdGroupResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ConversionLearningModeType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdGroupResponse'")
             }
         }
     }

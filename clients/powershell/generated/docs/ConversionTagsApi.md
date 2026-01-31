@@ -29,7 +29,7 @@ $Configuration = Get-Configuration
 $Configuration.AccessToken = "YOUR_ACCESS_TOKEN"
 
 $AdAccountId = "MyAdAccountId" # String | Unique identifier of an ad account.
-$ConversionTagCreate = Initialize-ConversionTagCreate -Name "ACME Tools Tag" -AemEnabled $true -MdFrequency 0.6 -AemFnlnEnabled $true -AemPhEnabled $true -AemGeEnabled $true -AemDbEnabled $true -AemLocEnabled $true # ConversionTagCreate | Conversion Tag to create
+$ConversionTagCreate = Initialize-ConversionTagCreate -AemEnabled $true -MdFrequency 0.6 -AemFnlnEnabled $true -AemPhEnabled $true -AemGeEnabled $true -AemDbEnabled $true -AemLocEnabled $true -Name "ACME Tools Tag" # ConversionTagCreate | Conversion Tag to create
 
 # Create conversion tag
 try {

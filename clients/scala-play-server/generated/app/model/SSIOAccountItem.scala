@@ -14,7 +14,7 @@ import play.api.libs.json._
   * @param ioType Insertion Order Type - Pinterest Paper or Agency Paper
   * @param addresses Address information that is associated with this account.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2025-05-10T05:44:38.070631387Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-01-26T05:47:41.394513697Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 case class SSIOAccountItem(
   id: Option[String],
   ioTermsId: Option[String],

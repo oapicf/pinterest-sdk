@@ -12,12 +12,9 @@
 /**
  * Format of generated report
  */
-export type DataOutputFormat = 'JSON' | 'CSV';
-
 export const DataOutputFormat = {
-
-    Json: 'JSON' as DataOutputFormat,
-
-    Csv: 'CSV' as DataOutputFormat
-};
+    Json: 'JSON',
+    Csv: 'CSV'
+} as const;
+export type DataOutputFormat = typeof DataOutputFormat[keyof typeof DataOutputFormat];
 

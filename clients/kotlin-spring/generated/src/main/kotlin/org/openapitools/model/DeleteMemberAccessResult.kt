@@ -27,7 +27,7 @@ data class DeleteMemberAccessResult(
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "140943737684417", description = "Unique identifier of the business member.")
     @get:JsonProperty("member_id") val memberId: kotlin.String? = null
-    ) {
+) {
 
 }
 

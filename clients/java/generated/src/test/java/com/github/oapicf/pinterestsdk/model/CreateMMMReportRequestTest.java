@@ -50,4 +50,60 @@ public class CreateMMMReportRequestTest {
         // TODO: test countries
     }
 
+    /**
+     * Test the property 'reportName'
+     */
+    @Test
+    public void reportNameTest() {
+        // TODO: test reportName
+    }
+
+    /**
+     * Test the property 'startDate'
+     */
+    @Test
+    public void startDateTest() {
+        // TODO: test startDate
+    }
+
+    /**
+     * Test the property 'endDate'
+     */
+    @Test
+    public void endDateTest() {
+        // TODO: test endDate
+    }
+
+    /**
+     * Test the property 'granularity'
+     */
+    @Test
+    public void granularityTest() {
+        // TODO: test granularity
+    }
+
+    /**
+     * Test the property 'level'
+     */
+    @Test
+    public void levelTest() {
+        // TODO: test level
+    }
+
+    /**
+     * Test the property 'targetingTypes'
+     */
+    @Test
+    public void targetingTypesTest() {
+        // TODO: test targetingTypes
+    }
+
+    /**
+     * Test the property 'columns'
+     */
+    @Test
+    public void columnsTest() {
+        // TODO: test columns
+    }
+
 }

@@ -139,13 +139,19 @@ TargetingTemplateApi <- R6::R6Class(
         stop("Missing required parameter `targeting_template_create`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling TargetingTemplateApi$TargetingTemplateCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling TargetingTemplateApi$TargetingTemplateCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling TargetingTemplateApi$TargetingTemplateCreate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`targeting_template_create`) && is.null(`targeting_template_create`)) {
+        stop("Invalid value for `targeting_template_create` when calling TargetingTemplateApi$TargetingTemplateCreate, `targeting_template_create` is not nullable")
+      }
 
       if (!is.null(`targeting_template_create`)) {
         local_var_body <- `targeting_template_create`$toJSONString()
@@ -263,23 +269,41 @@ TargetingTemplateApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling TargetingTemplateApi$TargetingTemplateList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling TargetingTemplateApi$TargetingTemplateList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling TargetingTemplateApi$TargetingTemplateList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`order`) && is.null(`order`)) {
+        stop("Invalid value for `order` when calling TargetingTemplateApi$TargetingTemplateList, `order` is not nullable")
+      }
 
+      if (!missing(`include_sizing`) && is.null(`include_sizing`)) {
+        stop("Invalid value for `include_sizing` when calling TargetingTemplateApi$TargetingTemplateList, `include_sizing` is not nullable")
+      }
 
+      if (!missing(`search_query`) && is.null(`search_query`)) {
+        stop("Invalid value for `search_query` when calling TargetingTemplateApi$TargetingTemplateList, `search_query` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling TargetingTemplateApi$TargetingTemplateList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling TargetingTemplateApi$TargetingTemplateList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling TargetingTemplateApi$TargetingTemplateList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling TargetingTemplateApi$TargetingTemplateList, `bookmark` is not nullable")
+      }
 
       if (!is.null(`order`) && !(`order` %in% c("ASCENDING", "DESCENDING"))) {
         stop("Invalid value for order when calling TargetingTemplateApi$TargetingTemplateList. Must be [ASCENDING, DESCENDING].")
@@ -398,13 +422,19 @@ TargetingTemplateApi <- R6::R6Class(
         stop("Missing required parameter `targeting_template_update_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling TargetingTemplateApi$TargetingTemplateUpdate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling TargetingTemplateApi$TargetingTemplateUpdate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling TargetingTemplateApi$TargetingTemplateUpdate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`targeting_template_update_request`) && is.null(`targeting_template_update_request`)) {
+        stop("Invalid value for `targeting_template_update_request` when calling TargetingTemplateApi$TargetingTemplateUpdate, `targeting_template_update_request` is not nullable")
+      }
 
       if (!is.null(`targeting_template_update_request`)) {
         local_var_body <- `targeting_template_update_request`$toJSONString()

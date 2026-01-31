@@ -164,12 +164,10 @@ namespace Org.OpenAPITools.Model
                             type = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "start_days_in_past":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                startDaysInPast = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            startDaysInPast = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "end_days_in_past":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                endDaysInPast = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            endDaysInPast = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         default:
                             break;

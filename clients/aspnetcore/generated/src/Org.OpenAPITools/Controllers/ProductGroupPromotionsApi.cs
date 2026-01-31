@@ -47,16 +47,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ProductGroupPromotionResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"data\" : {\n      \"catalog_product_group_id\" : \"1231235\",\n      \"bid_in_micro_currency\" : 14000000,\n      \"relative_definition\" : \"product_type_1='beverage appliances'\",\n      \"slideshow_collections_description\" : \"slideshow description\",\n      \"collections_hero_pin_id\" : \"123123\",\n      \"catalog_product_group_name\" : \"catalogProductGroupName\",\n      \"slideshow_collections_title\" : \"slideshow title\",\n      \"is_mdl\" : true,\n      \"parent_id\" : \"1231234\",\n      \"grid_click_type\" : \"CLOSEUP\",\n      \"creative_type\" : \"REGULAR\",\n      \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\",\n      \"id\" : \"2680059592705\",\n      \"ad_group_id\" : \"2680059592705\",\n      \"collections_hero_destination_url\" : \"http://www.pinterest.com\",\n      \"included\" : true,\n      \"tracking_url\" : \"https://www.pinterest.com\",\n      \"status\" : \"ACTIVE\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  }, {\n    \"data\" : {\n      \"catalog_product_group_id\" : \"1231235\",\n      \"bid_in_micro_currency\" : 14000000,\n      \"relative_definition\" : \"product_type_1='beverage appliances'\",\n      \"slideshow_collections_description\" : \"slideshow description\",\n      \"collections_hero_pin_id\" : \"123123\",\n      \"catalog_product_group_name\" : \"catalogProductGroupName\",\n      \"slideshow_collections_title\" : \"slideshow title\",\n      \"is_mdl\" : true,\n      \"parent_id\" : \"1231234\",\n      \"grid_click_type\" : \"CLOSEUP\",\n      \"creative_type\" : \"REGULAR\",\n      \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\",\n      \"id\" : \"2680059592705\",\n      \"ad_group_id\" : \"2680059592705\",\n      \"collections_hero_destination_url\" : \"http://www.pinterest.com\",\n      \"included\" : true,\n      \"tracking_url\" : \"https://www.pinterest.com\",\n      \"status\" : \"ACTIVE\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ProductGroupPromotionResponse>(exampleJson)
-            : default(ProductGroupPromotionResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -79,16 +79,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ProductGroupPromotionResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"data\" : {\n      \"catalog_product_group_id\" : \"1231235\",\n      \"bid_in_micro_currency\" : 14000000,\n      \"relative_definition\" : \"product_type_1='beverage appliances'\",\n      \"slideshow_collections_description\" : \"slideshow description\",\n      \"collections_hero_pin_id\" : \"123123\",\n      \"catalog_product_group_name\" : \"catalogProductGroupName\",\n      \"slideshow_collections_title\" : \"slideshow title\",\n      \"is_mdl\" : true,\n      \"parent_id\" : \"1231234\",\n      \"grid_click_type\" : \"CLOSEUP\",\n      \"creative_type\" : \"REGULAR\",\n      \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\",\n      \"id\" : \"2680059592705\",\n      \"ad_group_id\" : \"2680059592705\",\n      \"collections_hero_destination_url\" : \"http://www.pinterest.com\",\n      \"included\" : true,\n      \"tracking_url\" : \"https://www.pinterest.com\",\n      \"status\" : \"ACTIVE\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  }, {\n    \"data\" : {\n      \"catalog_product_group_id\" : \"1231235\",\n      \"bid_in_micro_currency\" : 14000000,\n      \"relative_definition\" : \"product_type_1='beverage appliances'\",\n      \"slideshow_collections_description\" : \"slideshow description\",\n      \"collections_hero_pin_id\" : \"123123\",\n      \"catalog_product_group_name\" : \"catalogProductGroupName\",\n      \"slideshow_collections_title\" : \"slideshow title\",\n      \"is_mdl\" : true,\n      \"parent_id\" : \"1231234\",\n      \"grid_click_type\" : \"CLOSEUP\",\n      \"creative_type\" : \"REGULAR\",\n      \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\",\n      \"id\" : \"2680059592705\",\n      \"ad_group_id\" : \"2680059592705\",\n      \"collections_hero_destination_url\" : \"http://www.pinterest.com\",\n      \"included\" : true,\n      \"tracking_url\" : \"https://www.pinterest.com\",\n      \"status\" : \"ACTIVE\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ProductGroupPromotionResponse>(exampleJson)
-            : default(ProductGroupPromotionResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -116,16 +116,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ProductGroupPromotionsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"data\" : {\n      \"catalog_product_group_id\" : \"1231235\",\n      \"bid_in_micro_currency\" : 14000000,\n      \"relative_definition\" : \"product_type_1='beverage appliances'\",\n      \"slideshow_collections_description\" : \"slideshow description\",\n      \"collections_hero_pin_id\" : \"123123\",\n      \"catalog_product_group_name\" : \"catalogProductGroupName\",\n      \"slideshow_collections_title\" : \"slideshow title\",\n      \"is_mdl\" : true,\n      \"parent_id\" : \"1231234\",\n      \"grid_click_type\" : \"CLOSEUP\",\n      \"creative_type\" : \"REGULAR\",\n      \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\",\n      \"id\" : \"2680059592705\",\n      \"ad_group_id\" : \"2680059592705\",\n      \"collections_hero_destination_url\" : \"http://www.pinterest.com\",\n      \"included\" : true,\n      \"tracking_url\" : \"https://www.pinterest.com\",\n      \"status\" : \"ACTIVE\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  }, {\n    \"data\" : {\n      \"catalog_product_group_id\" : \"1231235\",\n      \"bid_in_micro_currency\" : 14000000,\n      \"relative_definition\" : \"product_type_1='beverage appliances'\",\n      \"slideshow_collections_description\" : \"slideshow description\",\n      \"collections_hero_pin_id\" : \"123123\",\n      \"catalog_product_group_name\" : \"catalogProductGroupName\",\n      \"slideshow_collections_title\" : \"slideshow title\",\n      \"is_mdl\" : true,\n      \"parent_id\" : \"1231234\",\n      \"grid_click_type\" : \"CLOSEUP\",\n      \"creative_type\" : \"REGULAR\",\n      \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\",\n      \"id\" : \"2680059592705\",\n      \"ad_group_id\" : \"2680059592705\",\n      \"collections_hero_destination_url\" : \"http://www.pinterest.com\",\n      \"included\" : true,\n      \"tracking_url\" : \"https://www.pinterest.com\",\n      \"status\" : \"ACTIVE\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ProductGroupPromotionsList200Response>(exampleJson)
-            : default(ProductGroupPromotionsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -149,16 +149,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ProductGroupPromotionResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"data\" : {\n      \"catalog_product_group_id\" : \"1231235\",\n      \"bid_in_micro_currency\" : 14000000,\n      \"relative_definition\" : \"product_type_1='beverage appliances'\",\n      \"slideshow_collections_description\" : \"slideshow description\",\n      \"collections_hero_pin_id\" : \"123123\",\n      \"catalog_product_group_name\" : \"catalogProductGroupName\",\n      \"slideshow_collections_title\" : \"slideshow title\",\n      \"is_mdl\" : true,\n      \"parent_id\" : \"1231234\",\n      \"grid_click_type\" : \"CLOSEUP\",\n      \"creative_type\" : \"REGULAR\",\n      \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\",\n      \"id\" : \"2680059592705\",\n      \"ad_group_id\" : \"2680059592705\",\n      \"collections_hero_destination_url\" : \"http://www.pinterest.com\",\n      \"included\" : true,\n      \"tracking_url\" : \"https://www.pinterest.com\",\n      \"status\" : \"ACTIVE\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  }, {\n    \"data\" : {\n      \"catalog_product_group_id\" : \"1231235\",\n      \"bid_in_micro_currency\" : 14000000,\n      \"relative_definition\" : \"product_type_1='beverage appliances'\",\n      \"slideshow_collections_description\" : \"slideshow description\",\n      \"collections_hero_pin_id\" : \"123123\",\n      \"catalog_product_group_name\" : \"catalogProductGroupName\",\n      \"slideshow_collections_title\" : \"slideshow title\",\n      \"is_mdl\" : true,\n      \"parent_id\" : \"1231234\",\n      \"grid_click_type\" : \"CLOSEUP\",\n      \"creative_type\" : \"REGULAR\",\n      \"definition\" : \"*/product_type_0='kitchen'/product_type_1='beverage appliances'\",\n      \"id\" : \"2680059592705\",\n      \"ad_group_id\" : \"2680059592705\",\n      \"collections_hero_destination_url\" : \"http://www.pinterest.com\",\n      \"included\" : true,\n      \"tracking_url\" : \"https://www.pinterest.com\",\n      \"status\" : \"ACTIVE\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ProductGroupPromotionResponse>(exampleJson)
-            : default(ProductGroupPromotionResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -191,11 +191,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<ProductGroupAnalyticsResponseInner>));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "[ {\n  \"DATE\" : \"2021-04-01\",\n  \"PRODUCT_GROUP_ID\" : \"74629351736530\",\n  \"SPEND_IN_DOLLAR\" : 30,\n  \"TOTAL_CLICKTHROUGH\" : 216\n}, {\n  \"DATE\" : \"2021-04-01\",\n  \"PRODUCT_GROUP_ID\" : \"74629351736530\",\n  \"SPEND_IN_DOLLAR\" : 30,\n  \"TOTAL_CLICKTHROUGH\" : 216\n} ]";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -203,7 +203,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<ProductGroupAnalyticsResponseInner>>(exampleJson)
-            : default(List<ProductGroupAnalyticsResponseInner>);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

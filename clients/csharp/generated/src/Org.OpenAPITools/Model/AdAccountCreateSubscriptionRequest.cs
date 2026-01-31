@@ -210,8 +210,7 @@ namespace Org.OpenAPITools.Model
                             partnerRefreshToken = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "partner_metadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                partnerMetadata = new Option<AdAccountCreateSubscriptionRequestPartnerMetadata?>(JsonSerializer.Deserialize<AdAccountCreateSubscriptionRequestPartnerMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            partnerMetadata = new Option<AdAccountCreateSubscriptionRequestPartnerMetadata?>(JsonSerializer.Deserialize<AdAccountCreateSubscriptionRequestPartnerMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

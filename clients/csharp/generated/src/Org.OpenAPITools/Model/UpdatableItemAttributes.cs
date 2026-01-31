@@ -964,8 +964,7 @@ namespace Org.OpenAPITools.Model
                             adLink = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "adult":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                adult = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            adult = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "age_group":
                             ageGroup = new Option<string?>(utf8JsonReader.GetString());
@@ -974,15 +973,13 @@ namespace Org.OpenAPITools.Model
                             availability = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "average_review_rating":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                averageReviewRating = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            averageReviewRating = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "brand":
                             brand = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "checkout_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                checkoutEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            checkoutEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "color":
                             color = new Option<string?>(utf8JsonReader.GetString());
@@ -1009,8 +1006,7 @@ namespace Org.OpenAPITools.Model
                             description = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "free_shipping_label":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                freeShippingLabel = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            freeShippingLabel = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "free_shipping_limit":
                             freeShippingLimit = new Option<string?>(utf8JsonReader.GetString());
@@ -1022,8 +1018,7 @@ namespace Org.OpenAPITools.Model
                             googleProductCategory = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "gtin":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                gtin = new Option<int?>(utf8JsonReader.GetInt32());
+                            gtin = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString()!);
@@ -1032,8 +1027,7 @@ namespace Org.OpenAPITools.Model
                             itemGroupId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "last_updated_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lastUpdatedTime = new Option<long?>(utf8JsonReader.GetInt64());
+                            lastUpdatedTime = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "link":
                             link = new Option<string?>(utf8JsonReader.GetString()!);
@@ -1051,12 +1045,10 @@ namespace Org.OpenAPITools.Model
                             mpn = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "number_of_ratings":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numberOfRatings = new Option<int?>(utf8JsonReader.GetInt32());
+                            numberOfRatings = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "number_of_reviews":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numberOfReviews = new Option<int?>(utf8JsonReader.GetInt32());
+                            numberOfReviews = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "pattern":
                             pattern = new Option<string?>(utf8JsonReader.GetString());
@@ -1098,12 +1090,10 @@ namespace Org.OpenAPITools.Model
                             title = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "variant_names":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                variantNames = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            variantNames = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "variant_values":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                variantValues = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            variantValues = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

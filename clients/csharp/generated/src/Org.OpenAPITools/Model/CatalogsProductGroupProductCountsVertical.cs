@@ -138,9 +138,6 @@ namespace Org.OpenAPITools.Model
             CatalogsCreativeAssetsProductGroupProductCounts? catalogsCreativeAssetsProductGroupProductCounts = null;
             CatalogsHotelProductGroupProductCounts? catalogsHotelProductGroupProductCounts = null;
             CatalogsRetailProductGroupProductCounts? catalogsRetailProductGroupProductCounts = null;
-            CatalogsCreativeAssetsProductGroupProductCounts? catalogsCreativeAssetsProductGroupProductCounts = null;
-            CatalogsHotelProductGroupProductCounts? catalogsHotelProductGroupProductCounts = null;
-            CatalogsRetailProductGroupProductCounts? catalogsRetailProductGroupProductCounts = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -169,21 +166,6 @@ namespace Org.OpenAPITools.Model
                             catalogsHotelProductGroupProductCounts = JsonSerializer.Deserialize<CatalogsHotelProductGroupProductCounts>(ref utf8JsonReaderCatalogsHotelProductGroupProductCounts, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("RETAIL") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsRetailProductGroupProductCounts = utf8JsonReader;
-                            catalogsRetailProductGroupProductCounts = JsonSerializer.Deserialize<CatalogsRetailProductGroupProductCounts>(ref utf8JsonReaderCatalogsRetailProductGroupProductCounts, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsCreativeAssetsProductGroupProductCounts") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsCreativeAssetsProductGroupProductCounts = utf8JsonReader;
-                            catalogsCreativeAssetsProductGroupProductCounts = JsonSerializer.Deserialize<CatalogsCreativeAssetsProductGroupProductCounts>(ref utf8JsonReaderCatalogsCreativeAssetsProductGroupProductCounts, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsHotelProductGroupProductCounts") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsHotelProductGroupProductCounts = utf8JsonReader;
-                            catalogsHotelProductGroupProductCounts = JsonSerializer.Deserialize<CatalogsHotelProductGroupProductCounts>(ref utf8JsonReaderCatalogsHotelProductGroupProductCounts, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsRetailProductGroupProductCounts") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsRetailProductGroupProductCounts = utf8JsonReader;
                             catalogsRetailProductGroupProductCounts = JsonSerializer.Deserialize<CatalogsRetailProductGroupProductCounts>(ref utf8JsonReaderCatalogsRetailProductGroupProductCounts, jsonSerializerOptions);
@@ -223,15 +205,6 @@ namespace Org.OpenAPITools.Model
 
             if (catalogType.IsSet && catalogType.Value == null)
                 throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsProductGroupProductCountsVertical.");
-
-            if (catalogsCreativeAssetsProductGroupProductCounts != null)
-                return new CatalogsProductGroupProductCountsVertical(catalogsCreativeAssetsProductGroupProductCounts);
-
-            if (catalogsHotelProductGroupProductCounts != null)
-                return new CatalogsProductGroupProductCountsVertical(catalogsHotelProductGroupProductCounts);
-
-            if (catalogsRetailProductGroupProductCounts != null)
-                return new CatalogsProductGroupProductCountsVertical(catalogsRetailProductGroupProductCounts);
 
             if (catalogsCreativeAssetsProductGroupProductCounts != null)
                 return new CatalogsProductGroupProductCountsVertical(catalogsCreativeAssetsProductGroupProductCounts);

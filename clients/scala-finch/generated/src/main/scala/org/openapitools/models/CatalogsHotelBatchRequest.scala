@@ -6,7 +6,6 @@ import io.circe.generic.semiauto._
 import io.circe.java8.time._
 import org.openapitools._
 import org.openapitools.models.CatalogsHotelBatchItem
-import org.openapitools.models.CatalogsItemsRequestLanguage
 import org.openapitools.models.Country
 import scala.collection.immutable.Seq
 
@@ -14,13 +13,13 @@ import scala.collection.immutable.Seq
  * Request object to update catalogs hotel items
  * @param catalogUnderscoretype 
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param items Array with catalogs item operations
  * @param catalogUnderscoreid Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog
  */
 case class CatalogsHotelBatchRequest(catalogUnderscoretype: String,
                 country: Country,
-                language: CatalogsItemsRequestLanguage,
+                language: String,
                 items: Seq[CatalogsHotelBatchItem],
                 catalogUnderscoreid: Option[String]
                 )

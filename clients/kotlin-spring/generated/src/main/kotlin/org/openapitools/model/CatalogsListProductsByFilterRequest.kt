@@ -49,7 +49,7 @@ data class CatalogsListProductsByFilterRequest(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("locale", required = true) override val locale: CatalogsLocale
-    ) {
+) {
 
 }
 

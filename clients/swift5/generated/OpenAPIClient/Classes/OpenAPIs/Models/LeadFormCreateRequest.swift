@@ -19,18 +19,18 @@ public struct LeadFormCreateRequest: Codable, JSONEncodable, Hashable {
     /** A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. */
     public var privacyPolicyLink: String?
     /** Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO */
-    public var hasAcceptedTerms: Bool
+    public var hasAcceptedTerms: Bool?
     /** A message for people who complete the form to let them know what happens next. */
     public var completionMessage: String?
     public var status: LeadFormStatus?
     /** Additional disclosure language to be included in the lead form. */
     public var disclosureLanguage: String?
     /** List of questions to be displayed on the lead form. */
-    public var questions: [LeadFormQuestion]
+    public var questions: [LeadFormQuestion]?
     /** List of additional policy links to be displayed on the lead form. */
     public var policyLinks: [LeadFormCommonPolicyLinksInner]?
 
-    public init(name: String?, privacyPolicyLink: String?, hasAcceptedTerms: Bool, completionMessage: String?, status: LeadFormStatus? = nil, disclosureLanguage: String? = nil, questions: [LeadFormQuestion], policyLinks: [LeadFormCommonPolicyLinksInner]? = nil) {
+    public init(name: String? = nil, privacyPolicyLink: String? = nil, hasAcceptedTerms: Bool? = nil, completionMessage: String? = nil, status: LeadFormStatus? = nil, disclosureLanguage: String? = nil, questions: [LeadFormQuestion]? = nil, policyLinks: [LeadFormCommonPolicyLinksInner]? = nil) {
         self.name = name
         self.privacyPolicyLink = privacyPolicyLink
         self.hasAcceptedTerms = hasAcceptedTerms
@@ -56,13 +56,13 @@ public struct LeadFormCreateRequest: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-        try container.encode(privacyPolicyLink, forKey: .privacyPolicyLink)
-        try container.encode(hasAcceptedTerms, forKey: .hasAcceptedTerms)
-        try container.encode(completionMessage, forKey: .completionMessage)
+        try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(privacyPolicyLink, forKey: .privacyPolicyLink)
+        try container.encodeIfPresent(hasAcceptedTerms, forKey: .hasAcceptedTerms)
+        try container.encodeIfPresent(completionMessage, forKey: .completionMessage)
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(disclosureLanguage, forKey: .disclosureLanguage)
-        try container.encode(questions, forKey: .questions)
+        try container.encodeIfPresent(questions, forKey: .questions)
         try container.encodeIfPresent(policyLinks, forKey: .policyLinks)
     }
 }

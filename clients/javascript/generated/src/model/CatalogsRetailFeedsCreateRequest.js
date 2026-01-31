@@ -56,6 +56,7 @@ class CatalogsRetailFeedsCreateRequest {
         obj['location'] = location;
         obj['catalog_type'] = catalogType;
         obj['default_country'] = defaultCountry;
+        obj['status'] = 'ACTIVE';
     }
 
     /**
@@ -138,14 +139,6 @@ class CatalogsRetailFeedsCreateRequest {
         if (data['preferred_processing_schedule']) { // data not null
           CatalogsFeedProcessingSchedule.validateJSON(data['preferred_processing_schedule']);
         }
-        // ensure the json data is a string
-        if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
-            throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
-        }
-        // validate the optional field `status`
-        if (data['status']) { // data not null
-          CatalogsStatus.validateJSON(data['status']);
-        }
 
         return true;
     }
@@ -209,8 +202,9 @@ CatalogsRetailFeedsCreateRequest.prototype['default_availability'] = undefined;
 
 /**
  * @member {module:model/CatalogsStatus} status
+ * @default 'ACTIVE'
  */
-CatalogsRetailFeedsCreateRequest.prototype['status'] = undefined;
+CatalogsRetailFeedsCreateRequest.prototype['status'] = 'ACTIVE';
 
 
 

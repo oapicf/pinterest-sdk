@@ -48,7 +48,7 @@ export function CatalogsReportParametersFromJSONTyped(json: any, ignoreDiscrimin
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailReportParametersFromJSONTyped(json, true), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsReportParameters exists with 'catalogType=${json['catalogType']}'`);
+            return json;
     }
 }
 
@@ -66,8 +66,7 @@ export function CatalogsReportParametersToJSONTyped(value?: CatalogsReportParame
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailReportParametersToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsReportParameters exists with 'catalogType=${value['catalogType']}'`);
+            return value;
     }
-
 }
 

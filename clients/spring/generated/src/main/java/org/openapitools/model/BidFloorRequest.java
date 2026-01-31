@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * BidFloorRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BidFloorRequest {
 
   @Valid
@@ -71,7 +71,7 @@ public class BidFloorRequest {
     this.bidFloorSpecs = bidFloorSpecs;
   }
 
-  public BidFloorRequest targetingSpec(TargetingSpec targetingSpec) {
+  public BidFloorRequest targetingSpec(@Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
     return this;
   }
@@ -83,11 +83,11 @@ public class BidFloorRequest {
   @Valid 
   @Schema(name = "targeting_spec", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("targeting_spec")
-  public TargetingSpec getTargetingSpec() {
+  public @Nullable TargetingSpec getTargetingSpec() {
     return targetingSpec;
   }
 
-  public void setTargetingSpec(TargetingSpec targetingSpec) {
+  public void setTargetingSpec(@Nullable TargetingSpec targetingSpec) {
     this.targetingSpec = targetingSpec;
   }
 

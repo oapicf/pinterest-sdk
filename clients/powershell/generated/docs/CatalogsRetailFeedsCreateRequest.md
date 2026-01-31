@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **CatalogType** | [**CatalogsType**](CatalogsType.md) |  | 
 **DefaultCountry** | [**Country**](Country.md) |  | 
 **DefaultAvailability** | [**ProductAvailabilityType**](ProductAvailabilityType.md) |  | [optional] 
-**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] 
+**Status** | [**CatalogsStatus**](CatalogsStatus.md) |  | [optional] [default to "ACTIVE"]
 
 ## Examples
 

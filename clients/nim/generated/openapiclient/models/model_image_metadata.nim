@@ -9,13 +9,46 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_image_metadata_images
 
 type ImageMetadata* = object
   ## 
-  itemType*: string
-  title*: string
-  description*: string
-  link*: string
-  images*: ImageMetadata_images
+  itemType*: Option[string]
+  title*: Option[string]
+  description*: Option[string]
+  link*: Option[string]
+  images*: Option[ImageMetadata_images]
+
+
+# Custom JSON deserialization for ImageMetadata with custom field names
+proc to*(node: JsonNode, T: typedesc[ImageMetadata]): ImageMetadata =
+  result = ImageMetadata()
+  if node.kind == JObject:
+    if node.hasKey("item_type") and node["item_type"].kind != JNull:
+      result.itemType = some(to(node["item_type"], typeof(result.itemType.get())))
+    if node.hasKey("title") and node["title"].kind != JNull:
+      result.title = some(to(node["title"], typeof(result.title.get())))
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("link") and node["link"].kind != JNull:
+      result.link = some(to(node["link"], typeof(result.link.get())))
+    if node.hasKey("images") and node["images"].kind != JNull:
+      result.images = some(to(node["images"], typeof(result.images.get())))
+
+# Custom JSON serialization for ImageMetadata with custom field names
+proc `%`*(obj: ImageMetadata): JsonNode =
+  result = newJObject()
+  if obj.itemType.isSome():
+    result["item_type"] = %obj.itemType.get()
+  if obj.title.isSome():
+    result["title"] = %obj.title.get()
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  if obj.link.isSome():
+    result["link"] = %obj.link.get()
+  if obj.images.isSome():
+    result["images"] = %obj.images.get()
+

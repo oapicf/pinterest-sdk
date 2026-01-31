@@ -4,7 +4,6 @@ open System
 open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.CatalogsCreativeAssetsBatchItem
-open OpenAPI.Model.CatalogsItemsRequestLanguage
 open OpenAPI.Model.Country
 
 module CatalogsCreativeAssetsBatchRequest =
@@ -18,7 +17,7 @@ module CatalogsCreativeAssetsBatchRequest =
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
     [<JsonProperty(PropertyName = "language")>]
-    Language : CatalogsItemsRequestLanguage;
+    Language : string;
     [<JsonProperty(PropertyName = "items")>]
     Items : CatalogsCreativeAssetsBatchItem[];
     [<JsonProperty(PropertyName = "catalog_id")>]

@@ -28,10 +28,10 @@ import {
     UpdateMaskFieldTypeToJSONTyped,
 } from './UpdateMaskFieldType';
 
-import { CatalogsCreateRetailItem, CatalogsCreateRetailItemFromJSONTyped, CatalogsCreateRetailItemToJSON, CatalogsCreateRetailItemToJSONTyped } from './CatalogsCreateRetailItem';
-import { CatalogsDeleteRetailItem, CatalogsDeleteRetailItemFromJSONTyped, CatalogsDeleteRetailItemToJSON, CatalogsDeleteRetailItemToJSONTyped } from './CatalogsDeleteRetailItem';
-import { CatalogsUpdateRetailItem, CatalogsUpdateRetailItemFromJSONTyped, CatalogsUpdateRetailItemToJSON, CatalogsUpdateRetailItemToJSONTyped } from './CatalogsUpdateRetailItem';
-import { CatalogsUpsertRetailItem, CatalogsUpsertRetailItemFromJSONTyped, CatalogsUpsertRetailItemToJSON, CatalogsUpsertRetailItemToJSONTyped } from './CatalogsUpsertRetailItem';
+import { type CatalogsCreateRetailItem, CatalogsCreateRetailItemFromJSONTyped, CatalogsCreateRetailItemToJSON, CatalogsCreateRetailItemToJSONTyped } from './CatalogsCreateRetailItem';
+import { type CatalogsDeleteRetailItem, CatalogsDeleteRetailItemFromJSONTyped, CatalogsDeleteRetailItemToJSON, CatalogsDeleteRetailItemToJSONTyped } from './CatalogsDeleteRetailItem';
+import { type CatalogsUpdateRetailItem, CatalogsUpdateRetailItemFromJSONTyped, CatalogsUpdateRetailItemToJSON, CatalogsUpdateRetailItemToJSONTyped } from './CatalogsUpdateRetailItem';
+import { type CatalogsUpsertRetailItem, CatalogsUpsertRetailItemFromJSONTyped, CatalogsUpsertRetailItemToJSON, CatalogsUpsertRetailItemToJSONTyped } from './CatalogsUpsertRetailItem';
 /**
  * 
  * @export
@@ -105,6 +105,7 @@ export function CatalogsRetailBatchRequestItemsInnerFromJSONTyped(json: any, ign
         if (json['operation'] === 'UPSERT') {
             return CatalogsUpsertRetailItemFromJSONTyped(json, ignoreDiscriminator);
         }
+
     }
     return {
         
@@ -135,7 +136,7 @@ export function CatalogsRetailBatchRequestItemsInnerToJSONTyped(value?: Catalogs
             case 'UPSERT':
                 return CatalogsUpsertRetailItemToJSONTyped(value as CatalogsUpsertRetailItem, ignoreDiscriminator);
             default:
-                throw new Error(`No variant of CatalogsRetailBatchRequestItemsInner exists with 'operation=${value['operation']}'`);
+                return value;
         }
     }
 

@@ -4,7 +4,6 @@
 #import "OAIPinAnalyticsMetricsResponse.h"
 #import "OAIPinCreate.h"
 #import "OAIPinUpdate.h"
-#import "OAIPinsAnalyticsMetricTypesParameterInner.h"
 #import "OAIPinsList200Response.h"
 #import "OAIPinsSaveRequest.h"
 #import "OAIApi.h"
@@ -51,7 +50,7 @@ extern NSInteger kOAIPinsApiMissingParamErrorCode;
 -(NSURLSessionTask*) multiPinsAnalyticsWithPinIds: (NSArray<NSString*>*) pinIds
     startDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    metricTypes: (NSArray<OAIPinsAnalyticsMetricTypesParameterInner>*) metricTypes
+    metricTypes: (NSArray<NSString*>*) metricTypes
     appTypes: (NSString*) appTypes
     adAccountId: (NSString*) adAccountId
     completionHandler: (void (^)(NSDictionary<NSString*, NSDictionary*>* output, NSError* error)) handler;
@@ -78,7 +77,7 @@ extern NSInteger kOAIPinsApiMissingParamErrorCode;
 -(NSURLSessionTask*) pinsAnalyticsWithPinId: (NSString*) pinId
     startDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    metricTypes: (NSArray<OAIPinsAnalyticsMetricTypesParameterInner>*) metricTypes
+    metricTypes: (NSArray<NSString*>*) metricTypes
     appTypes: (NSString*) appTypes
     splitField: (NSString*) splitField
     adAccountId: (NSString*) adAccountId

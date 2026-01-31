@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type BusinessRole* = object
-  ## The access level a member/partner has to the business. Values are case-sensitive. <br> - EMPLOYEE: Can only view and access assets you assign to them. They cannot see details about other employees, partners, or other assets. <br> - BIZ_ADMIN: Have full control of roles and can add employees and partners as well as grant asset access. <br> - PARTNER: Can only view and access assets you assign them to/or they assign to you.
+type BusinessRole* {.pure.} = enum
+  EMPLOYEE
+  BIZADMIN
+  PARTNER
+
+func `%`*(v: BusinessRole): JsonNode =
+  result = case v:
+    of BusinessRole.EMPLOYEE: %"EMPLOYEE"
+    of BusinessRole.BIZADMIN: %"BIZ_ADMIN"
+    of BusinessRole.PARTNER: %"PARTNER"
+
+func `$`*(v: BusinessRole): string =
+  result = case v:
+    of BusinessRole.EMPLOYEE: $("EMPLOYEE")
+    of BusinessRole.BIZADMIN: $("BIZ_ADMIN")
+    of BusinessRole.PARTNER: $("PARTNER")
+
+proc to*(node: JsonNode, T: typedesc[BusinessRole]): BusinessRole =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum BusinessRole, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("EMPLOYEE"):
+    return BusinessRole.EMPLOYEE
+  of $("BIZ_ADMIN"):
+    return BusinessRole.BIZADMIN
+  of $("PARTNER"):
+    return BusinessRole.PARTNER
+  else:
+    raise newException(ValueError, "Invalid enum value for BusinessRole: " & strVal)
+

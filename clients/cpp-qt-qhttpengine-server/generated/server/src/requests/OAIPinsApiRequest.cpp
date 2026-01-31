@@ -75,7 +75,7 @@ void OAIPinsApiRequest::multiPins_analyticsRequest(){
         fromStringValue(socket->queryString().value("app_types"), app_types);
     }
     
-    QList<OAIPins_analytics_metric_types_parameter_inner> metric_types;
+    QList<QString> metric_types;
     if(socket->queryString().keys().contains("metric_types")){
         fromStringValue(socket->queryString().values("metric_types"), metric_types);
     }
@@ -111,7 +111,7 @@ void OAIPinsApiRequest::pins_analyticsRequest(const QString& pin_idstr){
         fromStringValue(socket->queryString().value("app_types"), app_types);
     }
     
-    QList<OAIPins_analytics_metric_types_parameter_inner> metric_types;
+    QList<QString> metric_types;
     if(socket->queryString().keys().contains("metric_types")){
         fromStringValue(socket->queryString().values("metric_types"), metric_types);
     }

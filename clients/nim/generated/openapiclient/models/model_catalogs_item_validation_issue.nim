@@ -9,7 +9,358 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type CatalogsItemValidationIssue* = object
-  ## 
+type CatalogsItemValidationIssue* {.pure.} = enum
+  ADLINKFORMATWARNING
+  ADLINKSAMEASLINK
+  ADDITIONALIMAGELINKLENGTHTOOLONG
+  ADDITIONALIMAGELINKWARNING
+  ADULTINVALID
+  ADWORDSFORMATINVALID
+  ADWORDSFORMATWARNING
+  ADWORDSSAMEASLINK
+  AGEGROUPINVALID
+  ANDROIDDEEPLINKINVALID
+  AVAILABILITYDATEINVALID
+  AVAILABILITYINVALID
+  BLOCKLISTEDIMAGESIGNATURE
+  COUNTRYDOESNOTMAPTOCURRENCY
+  CUSTOMLABELLENGTHTOOLONG
+  DESCRIPTIONLENGTHTOOLONG
+  DESCRIPTIONMISSING
+  DUPLICATEPRODUCTS
+  EXPIRATIONDATEINVALID
+  GENDERINVALID
+  GTININVALID
+  IMAGELINKINVALID
+  IMAGELINKLENGTHTOOLONG
+  IMAGELINKMISSING
+  IMAGELINKWARNING
+  INVALIDDOMAIN
+  IOSDEEPLINKINVALID
+  ISBUNDLEINVALID
+  ITEMADDITIONALIMAGEDOWNLOADFAILURE
+  ITEMMAINIMAGEDOWNLOADFAILURE
+  ITEMIDMISSING
+  LINKFORMATINVALID
+  LINKFORMATWARNING
+  LINKLENGTHTOOLONG
+  LISTPRICEINVALID
+  MAXITEMSPERITEMGROUPEXCEEDED
+  MINADPRICEINVALID
+  MPNINVALID
+  MULTIPACKINVALID
+  OPTIONALCONDITIONINVALID
+  OPTIONALCONDITIONMISSING
+  OPTIONALPRODUCTCATEGORYINVALID
+  OPTIONALPRODUCTCATEGORYMISSING
+  PARSELINEERROR
+  PINJOINCONTENTUNSAFE
+  PRICECANNOTBEDETERMINED
+  PRICEMISSING
+  PRODUCTCATEGORYDEPTHWARNING
+  PRODUCTLINKMISSING
+  PRODUCTPRICEINVALID
+  PRODUCTTYPELENGTHTOOLONG
+  SALEDATEINVALID
+  SALESPRICEINVALID
+  SALESPRICETOOHIGH
+  SALESPRICETOOLOW
+  SHIPPINGINVALID
+  SHIPPINGHEIGHTINVALID
+  SHIPPINGWEIGHTINVALID
+  SHIPPINGWIDTHINVALID
+  SIZESYSTEMINVALID
+  SIZETYPEINVALID
+  TAXINVALID
+  TITLELENGTHTOOLONG
+  TITLEMISSING
+  TOOMANYADDITIONALIMAGELINKS
+  UTMSOURCEAUTOCORRECTED
+  WEIGHTUNITINVALID
+
+func `%`*(v: CatalogsItemValidationIssue): JsonNode =
+  result = case v:
+    of CatalogsItemValidationIssue.ADLINKFORMATWARNING: %"AD_LINK_FORMAT_WARNING"
+    of CatalogsItemValidationIssue.ADLINKSAMEASLINK: %"AD_LINK_SAME_AS_LINK"
+    of CatalogsItemValidationIssue.ADDITIONALIMAGELINKLENGTHTOOLONG: %"ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG"
+    of CatalogsItemValidationIssue.ADDITIONALIMAGELINKWARNING: %"ADDITIONAL_IMAGE_LINK_WARNING"
+    of CatalogsItemValidationIssue.ADULTINVALID: %"ADULT_INVALID"
+    of CatalogsItemValidationIssue.ADWORDSFORMATINVALID: %"ADWORDS_FORMAT_INVALID"
+    of CatalogsItemValidationIssue.ADWORDSFORMATWARNING: %"ADWORDS_FORMAT_WARNING"
+    of CatalogsItemValidationIssue.ADWORDSSAMEASLINK: %"ADWORDS_SAME_AS_LINK"
+    of CatalogsItemValidationIssue.AGEGROUPINVALID: %"AGE_GROUP_INVALID"
+    of CatalogsItemValidationIssue.ANDROIDDEEPLINKINVALID: %"ANDROID_DEEP_LINK_INVALID"
+    of CatalogsItemValidationIssue.AVAILABILITYDATEINVALID: %"AVAILABILITY_DATE_INVALID"
+    of CatalogsItemValidationIssue.AVAILABILITYINVALID: %"AVAILABILITY_INVALID"
+    of CatalogsItemValidationIssue.BLOCKLISTEDIMAGESIGNATURE: %"BLOCKLISTED_IMAGE_SIGNATURE"
+    of CatalogsItemValidationIssue.COUNTRYDOESNOTMAPTOCURRENCY: %"COUNTRY_DOES_NOT_MAP_TO_CURRENCY"
+    of CatalogsItemValidationIssue.CUSTOMLABELLENGTHTOOLONG: %"CUSTOM_LABEL_LENGTH_TOO_LONG"
+    of CatalogsItemValidationIssue.DESCRIPTIONLENGTHTOOLONG: %"DESCRIPTION_LENGTH_TOO_LONG"
+    of CatalogsItemValidationIssue.DESCRIPTIONMISSING: %"DESCRIPTION_MISSING"
+    of CatalogsItemValidationIssue.DUPLICATEPRODUCTS: %"DUPLICATE_PRODUCTS"
+    of CatalogsItemValidationIssue.EXPIRATIONDATEINVALID: %"EXPIRATION_DATE_INVALID"
+    of CatalogsItemValidationIssue.GENDERINVALID: %"GENDER_INVALID"
+    of CatalogsItemValidationIssue.GTININVALID: %"GTIN_INVALID"
+    of CatalogsItemValidationIssue.IMAGELINKINVALID: %"IMAGE_LINK_INVALID"
+    of CatalogsItemValidationIssue.IMAGELINKLENGTHTOOLONG: %"IMAGE_LINK_LENGTH_TOO_LONG"
+    of CatalogsItemValidationIssue.IMAGELINKMISSING: %"IMAGE_LINK_MISSING"
+    of CatalogsItemValidationIssue.IMAGELINKWARNING: %"IMAGE_LINK_WARNING"
+    of CatalogsItemValidationIssue.INVALIDDOMAIN: %"INVALID_DOMAIN"
+    of CatalogsItemValidationIssue.IOSDEEPLINKINVALID: %"IOS_DEEP_LINK_INVALID"
+    of CatalogsItemValidationIssue.ISBUNDLEINVALID: %"IS_BUNDLE_INVALID"
+    of CatalogsItemValidationIssue.ITEMADDITIONALIMAGEDOWNLOADFAILURE: %"ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE"
+    of CatalogsItemValidationIssue.ITEMMAINIMAGEDOWNLOADFAILURE: %"ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE"
+    of CatalogsItemValidationIssue.ITEMIDMISSING: %"ITEMID_MISSING"
+    of CatalogsItemValidationIssue.LINKFORMATINVALID: %"LINK_FORMAT_INVALID"
+    of CatalogsItemValidationIssue.LINKFORMATWARNING: %"LINK_FORMAT_WARNING"
+    of CatalogsItemValidationIssue.LINKLENGTHTOOLONG: %"LINK_LENGTH_TOO_LONG"
+    of CatalogsItemValidationIssue.LISTPRICEINVALID: %"LIST_PRICE_INVALID"
+    of CatalogsItemValidationIssue.MAXITEMSPERITEMGROUPEXCEEDED: %"MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED"
+    of CatalogsItemValidationIssue.MINADPRICEINVALID: %"MIN_AD_PRICE_INVALID"
+    of CatalogsItemValidationIssue.MPNINVALID: %"MPN_INVALID"
+    of CatalogsItemValidationIssue.MULTIPACKINVALID: %"MULTIPACK_INVALID"
+    of CatalogsItemValidationIssue.OPTIONALCONDITIONINVALID: %"OPTIONAL_CONDITION_INVALID"
+    of CatalogsItemValidationIssue.OPTIONALCONDITIONMISSING: %"OPTIONAL_CONDITION_MISSING"
+    of CatalogsItemValidationIssue.OPTIONALPRODUCTCATEGORYINVALID: %"OPTIONAL_PRODUCT_CATEGORY_INVALID"
+    of CatalogsItemValidationIssue.OPTIONALPRODUCTCATEGORYMISSING: %"OPTIONAL_PRODUCT_CATEGORY_MISSING"
+    of CatalogsItemValidationIssue.PARSELINEERROR: %"PARSE_LINE_ERROR"
+    of CatalogsItemValidationIssue.PINJOINCONTENTUNSAFE: %"PINJOIN_CONTENT_UNSAFE"
+    of CatalogsItemValidationIssue.PRICECANNOTBEDETERMINED: %"PRICE_CANNOT_BE_DETERMINED"
+    of CatalogsItemValidationIssue.PRICEMISSING: %"PRICE_MISSING"
+    of CatalogsItemValidationIssue.PRODUCTCATEGORYDEPTHWARNING: %"PRODUCT_CATEGORY_DEPTH_WARNING"
+    of CatalogsItemValidationIssue.PRODUCTLINKMISSING: %"PRODUCT_LINK_MISSING"
+    of CatalogsItemValidationIssue.PRODUCTPRICEINVALID: %"PRODUCT_PRICE_INVALID"
+    of CatalogsItemValidationIssue.PRODUCTTYPELENGTHTOOLONG: %"PRODUCT_TYPE_LENGTH_TOO_LONG"
+    of CatalogsItemValidationIssue.SALEDATEINVALID: %"SALE_DATE_INVALID"
+    of CatalogsItemValidationIssue.SALESPRICEINVALID: %"SALES_PRICE_INVALID"
+    of CatalogsItemValidationIssue.SALESPRICETOOHIGH: %"SALES_PRICE_TOO_HIGH"
+    of CatalogsItemValidationIssue.SALESPRICETOOLOW: %"SALES_PRICE_TOO_LOW"
+    of CatalogsItemValidationIssue.SHIPPINGINVALID: %"SHIPPING_INVALID"
+    of CatalogsItemValidationIssue.SHIPPINGHEIGHTINVALID: %"SHIPPING_HEIGHT_INVALID"
+    of CatalogsItemValidationIssue.SHIPPINGWEIGHTINVALID: %"SHIPPING_WEIGHT_INVALID"
+    of CatalogsItemValidationIssue.SHIPPINGWIDTHINVALID: %"SHIPPING_WIDTH_INVALID"
+    of CatalogsItemValidationIssue.SIZESYSTEMINVALID: %"SIZE_SYSTEM_INVALID"
+    of CatalogsItemValidationIssue.SIZETYPEINVALID: %"SIZE_TYPE_INVALID"
+    of CatalogsItemValidationIssue.TAXINVALID: %"TAX_INVALID"
+    of CatalogsItemValidationIssue.TITLELENGTHTOOLONG: %"TITLE_LENGTH_TOO_LONG"
+    of CatalogsItemValidationIssue.TITLEMISSING: %"TITLE_MISSING"
+    of CatalogsItemValidationIssue.TOOMANYADDITIONALIMAGELINKS: %"TOO_MANY_ADDITIONAL_IMAGE_LINKS"
+    of CatalogsItemValidationIssue.UTMSOURCEAUTOCORRECTED: %"UTM_SOURCE_AUTO_CORRECTED"
+    of CatalogsItemValidationIssue.WEIGHTUNITINVALID: %"WEIGHT_UNIT_INVALID"
+
+func `$`*(v: CatalogsItemValidationIssue): string =
+  result = case v:
+    of CatalogsItemValidationIssue.ADLINKFORMATWARNING: $("AD_LINK_FORMAT_WARNING")
+    of CatalogsItemValidationIssue.ADLINKSAMEASLINK: $("AD_LINK_SAME_AS_LINK")
+    of CatalogsItemValidationIssue.ADDITIONALIMAGELINKLENGTHTOOLONG: $("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG")
+    of CatalogsItemValidationIssue.ADDITIONALIMAGELINKWARNING: $("ADDITIONAL_IMAGE_LINK_WARNING")
+    of CatalogsItemValidationIssue.ADULTINVALID: $("ADULT_INVALID")
+    of CatalogsItemValidationIssue.ADWORDSFORMATINVALID: $("ADWORDS_FORMAT_INVALID")
+    of CatalogsItemValidationIssue.ADWORDSFORMATWARNING: $("ADWORDS_FORMAT_WARNING")
+    of CatalogsItemValidationIssue.ADWORDSSAMEASLINK: $("ADWORDS_SAME_AS_LINK")
+    of CatalogsItemValidationIssue.AGEGROUPINVALID: $("AGE_GROUP_INVALID")
+    of CatalogsItemValidationIssue.ANDROIDDEEPLINKINVALID: $("ANDROID_DEEP_LINK_INVALID")
+    of CatalogsItemValidationIssue.AVAILABILITYDATEINVALID: $("AVAILABILITY_DATE_INVALID")
+    of CatalogsItemValidationIssue.AVAILABILITYINVALID: $("AVAILABILITY_INVALID")
+    of CatalogsItemValidationIssue.BLOCKLISTEDIMAGESIGNATURE: $("BLOCKLISTED_IMAGE_SIGNATURE")
+    of CatalogsItemValidationIssue.COUNTRYDOESNOTMAPTOCURRENCY: $("COUNTRY_DOES_NOT_MAP_TO_CURRENCY")
+    of CatalogsItemValidationIssue.CUSTOMLABELLENGTHTOOLONG: $("CUSTOM_LABEL_LENGTH_TOO_LONG")
+    of CatalogsItemValidationIssue.DESCRIPTIONLENGTHTOOLONG: $("DESCRIPTION_LENGTH_TOO_LONG")
+    of CatalogsItemValidationIssue.DESCRIPTIONMISSING: $("DESCRIPTION_MISSING")
+    of CatalogsItemValidationIssue.DUPLICATEPRODUCTS: $("DUPLICATE_PRODUCTS")
+    of CatalogsItemValidationIssue.EXPIRATIONDATEINVALID: $("EXPIRATION_DATE_INVALID")
+    of CatalogsItemValidationIssue.GENDERINVALID: $("GENDER_INVALID")
+    of CatalogsItemValidationIssue.GTININVALID: $("GTIN_INVALID")
+    of CatalogsItemValidationIssue.IMAGELINKINVALID: $("IMAGE_LINK_INVALID")
+    of CatalogsItemValidationIssue.IMAGELINKLENGTHTOOLONG: $("IMAGE_LINK_LENGTH_TOO_LONG")
+    of CatalogsItemValidationIssue.IMAGELINKMISSING: $("IMAGE_LINK_MISSING")
+    of CatalogsItemValidationIssue.IMAGELINKWARNING: $("IMAGE_LINK_WARNING")
+    of CatalogsItemValidationIssue.INVALIDDOMAIN: $("INVALID_DOMAIN")
+    of CatalogsItemValidationIssue.IOSDEEPLINKINVALID: $("IOS_DEEP_LINK_INVALID")
+    of CatalogsItemValidationIssue.ISBUNDLEINVALID: $("IS_BUNDLE_INVALID")
+    of CatalogsItemValidationIssue.ITEMADDITIONALIMAGEDOWNLOADFAILURE: $("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE")
+    of CatalogsItemValidationIssue.ITEMMAINIMAGEDOWNLOADFAILURE: $("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE")
+    of CatalogsItemValidationIssue.ITEMIDMISSING: $("ITEMID_MISSING")
+    of CatalogsItemValidationIssue.LINKFORMATINVALID: $("LINK_FORMAT_INVALID")
+    of CatalogsItemValidationIssue.LINKFORMATWARNING: $("LINK_FORMAT_WARNING")
+    of CatalogsItemValidationIssue.LINKLENGTHTOOLONG: $("LINK_LENGTH_TOO_LONG")
+    of CatalogsItemValidationIssue.LISTPRICEINVALID: $("LIST_PRICE_INVALID")
+    of CatalogsItemValidationIssue.MAXITEMSPERITEMGROUPEXCEEDED: $("MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED")
+    of CatalogsItemValidationIssue.MINADPRICEINVALID: $("MIN_AD_PRICE_INVALID")
+    of CatalogsItemValidationIssue.MPNINVALID: $("MPN_INVALID")
+    of CatalogsItemValidationIssue.MULTIPACKINVALID: $("MULTIPACK_INVALID")
+    of CatalogsItemValidationIssue.OPTIONALCONDITIONINVALID: $("OPTIONAL_CONDITION_INVALID")
+    of CatalogsItemValidationIssue.OPTIONALCONDITIONMISSING: $("OPTIONAL_CONDITION_MISSING")
+    of CatalogsItemValidationIssue.OPTIONALPRODUCTCATEGORYINVALID: $("OPTIONAL_PRODUCT_CATEGORY_INVALID")
+    of CatalogsItemValidationIssue.OPTIONALPRODUCTCATEGORYMISSING: $("OPTIONAL_PRODUCT_CATEGORY_MISSING")
+    of CatalogsItemValidationIssue.PARSELINEERROR: $("PARSE_LINE_ERROR")
+    of CatalogsItemValidationIssue.PINJOINCONTENTUNSAFE: $("PINJOIN_CONTENT_UNSAFE")
+    of CatalogsItemValidationIssue.PRICECANNOTBEDETERMINED: $("PRICE_CANNOT_BE_DETERMINED")
+    of CatalogsItemValidationIssue.PRICEMISSING: $("PRICE_MISSING")
+    of CatalogsItemValidationIssue.PRODUCTCATEGORYDEPTHWARNING: $("PRODUCT_CATEGORY_DEPTH_WARNING")
+    of CatalogsItemValidationIssue.PRODUCTLINKMISSING: $("PRODUCT_LINK_MISSING")
+    of CatalogsItemValidationIssue.PRODUCTPRICEINVALID: $("PRODUCT_PRICE_INVALID")
+    of CatalogsItemValidationIssue.PRODUCTTYPELENGTHTOOLONG: $("PRODUCT_TYPE_LENGTH_TOO_LONG")
+    of CatalogsItemValidationIssue.SALEDATEINVALID: $("SALE_DATE_INVALID")
+    of CatalogsItemValidationIssue.SALESPRICEINVALID: $("SALES_PRICE_INVALID")
+    of CatalogsItemValidationIssue.SALESPRICETOOHIGH: $("SALES_PRICE_TOO_HIGH")
+    of CatalogsItemValidationIssue.SALESPRICETOOLOW: $("SALES_PRICE_TOO_LOW")
+    of CatalogsItemValidationIssue.SHIPPINGINVALID: $("SHIPPING_INVALID")
+    of CatalogsItemValidationIssue.SHIPPINGHEIGHTINVALID: $("SHIPPING_HEIGHT_INVALID")
+    of CatalogsItemValidationIssue.SHIPPINGWEIGHTINVALID: $("SHIPPING_WEIGHT_INVALID")
+    of CatalogsItemValidationIssue.SHIPPINGWIDTHINVALID: $("SHIPPING_WIDTH_INVALID")
+    of CatalogsItemValidationIssue.SIZESYSTEMINVALID: $("SIZE_SYSTEM_INVALID")
+    of CatalogsItemValidationIssue.SIZETYPEINVALID: $("SIZE_TYPE_INVALID")
+    of CatalogsItemValidationIssue.TAXINVALID: $("TAX_INVALID")
+    of CatalogsItemValidationIssue.TITLELENGTHTOOLONG: $("TITLE_LENGTH_TOO_LONG")
+    of CatalogsItemValidationIssue.TITLEMISSING: $("TITLE_MISSING")
+    of CatalogsItemValidationIssue.TOOMANYADDITIONALIMAGELINKS: $("TOO_MANY_ADDITIONAL_IMAGE_LINKS")
+    of CatalogsItemValidationIssue.UTMSOURCEAUTOCORRECTED: $("UTM_SOURCE_AUTO_CORRECTED")
+    of CatalogsItemValidationIssue.WEIGHTUNITINVALID: $("WEIGHT_UNIT_INVALID")
+
+proc to*(node: JsonNode, T: typedesc[CatalogsItemValidationIssue]): CatalogsItemValidationIssue =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogsItemValidationIssue, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("AD_LINK_FORMAT_WARNING"):
+    return CatalogsItemValidationIssue.ADLINKFORMATWARNING
+  of $("AD_LINK_SAME_AS_LINK"):
+    return CatalogsItemValidationIssue.ADLINKSAMEASLINK
+  of $("ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG"):
+    return CatalogsItemValidationIssue.ADDITIONALIMAGELINKLENGTHTOOLONG
+  of $("ADDITIONAL_IMAGE_LINK_WARNING"):
+    return CatalogsItemValidationIssue.ADDITIONALIMAGELINKWARNING
+  of $("ADULT_INVALID"):
+    return CatalogsItemValidationIssue.ADULTINVALID
+  of $("ADWORDS_FORMAT_INVALID"):
+    return CatalogsItemValidationIssue.ADWORDSFORMATINVALID
+  of $("ADWORDS_FORMAT_WARNING"):
+    return CatalogsItemValidationIssue.ADWORDSFORMATWARNING
+  of $("ADWORDS_SAME_AS_LINK"):
+    return CatalogsItemValidationIssue.ADWORDSSAMEASLINK
+  of $("AGE_GROUP_INVALID"):
+    return CatalogsItemValidationIssue.AGEGROUPINVALID
+  of $("ANDROID_DEEP_LINK_INVALID"):
+    return CatalogsItemValidationIssue.ANDROIDDEEPLINKINVALID
+  of $("AVAILABILITY_DATE_INVALID"):
+    return CatalogsItemValidationIssue.AVAILABILITYDATEINVALID
+  of $("AVAILABILITY_INVALID"):
+    return CatalogsItemValidationIssue.AVAILABILITYINVALID
+  of $("BLOCKLISTED_IMAGE_SIGNATURE"):
+    return CatalogsItemValidationIssue.BLOCKLISTEDIMAGESIGNATURE
+  of $("COUNTRY_DOES_NOT_MAP_TO_CURRENCY"):
+    return CatalogsItemValidationIssue.COUNTRYDOESNOTMAPTOCURRENCY
+  of $("CUSTOM_LABEL_LENGTH_TOO_LONG"):
+    return CatalogsItemValidationIssue.CUSTOMLABELLENGTHTOOLONG
+  of $("DESCRIPTION_LENGTH_TOO_LONG"):
+    return CatalogsItemValidationIssue.DESCRIPTIONLENGTHTOOLONG
+  of $("DESCRIPTION_MISSING"):
+    return CatalogsItemValidationIssue.DESCRIPTIONMISSING
+  of $("DUPLICATE_PRODUCTS"):
+    return CatalogsItemValidationIssue.DUPLICATEPRODUCTS
+  of $("EXPIRATION_DATE_INVALID"):
+    return CatalogsItemValidationIssue.EXPIRATIONDATEINVALID
+  of $("GENDER_INVALID"):
+    return CatalogsItemValidationIssue.GENDERINVALID
+  of $("GTIN_INVALID"):
+    return CatalogsItemValidationIssue.GTININVALID
+  of $("IMAGE_LINK_INVALID"):
+    return CatalogsItemValidationIssue.IMAGELINKINVALID
+  of $("IMAGE_LINK_LENGTH_TOO_LONG"):
+    return CatalogsItemValidationIssue.IMAGELINKLENGTHTOOLONG
+  of $("IMAGE_LINK_MISSING"):
+    return CatalogsItemValidationIssue.IMAGELINKMISSING
+  of $("IMAGE_LINK_WARNING"):
+    return CatalogsItemValidationIssue.IMAGELINKWARNING
+  of $("INVALID_DOMAIN"):
+    return CatalogsItemValidationIssue.INVALIDDOMAIN
+  of $("IOS_DEEP_LINK_INVALID"):
+    return CatalogsItemValidationIssue.IOSDEEPLINKINVALID
+  of $("IS_BUNDLE_INVALID"):
+    return CatalogsItemValidationIssue.ISBUNDLEINVALID
+  of $("ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE"):
+    return CatalogsItemValidationIssue.ITEMADDITIONALIMAGEDOWNLOADFAILURE
+  of $("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE"):
+    return CatalogsItemValidationIssue.ITEMMAINIMAGEDOWNLOADFAILURE
+  of $("ITEMID_MISSING"):
+    return CatalogsItemValidationIssue.ITEMIDMISSING
+  of $("LINK_FORMAT_INVALID"):
+    return CatalogsItemValidationIssue.LINKFORMATINVALID
+  of $("LINK_FORMAT_WARNING"):
+    return CatalogsItemValidationIssue.LINKFORMATWARNING
+  of $("LINK_LENGTH_TOO_LONG"):
+    return CatalogsItemValidationIssue.LINKLENGTHTOOLONG
+  of $("LIST_PRICE_INVALID"):
+    return CatalogsItemValidationIssue.LISTPRICEINVALID
+  of $("MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED"):
+    return CatalogsItemValidationIssue.MAXITEMSPERITEMGROUPEXCEEDED
+  of $("MIN_AD_PRICE_INVALID"):
+    return CatalogsItemValidationIssue.MINADPRICEINVALID
+  of $("MPN_INVALID"):
+    return CatalogsItemValidationIssue.MPNINVALID
+  of $("MULTIPACK_INVALID"):
+    return CatalogsItemValidationIssue.MULTIPACKINVALID
+  of $("OPTIONAL_CONDITION_INVALID"):
+    return CatalogsItemValidationIssue.OPTIONALCONDITIONINVALID
+  of $("OPTIONAL_CONDITION_MISSING"):
+    return CatalogsItemValidationIssue.OPTIONALCONDITIONMISSING
+  of $("OPTIONAL_PRODUCT_CATEGORY_INVALID"):
+    return CatalogsItemValidationIssue.OPTIONALPRODUCTCATEGORYINVALID
+  of $("OPTIONAL_PRODUCT_CATEGORY_MISSING"):
+    return CatalogsItemValidationIssue.OPTIONALPRODUCTCATEGORYMISSING
+  of $("PARSE_LINE_ERROR"):
+    return CatalogsItemValidationIssue.PARSELINEERROR
+  of $("PINJOIN_CONTENT_UNSAFE"):
+    return CatalogsItemValidationIssue.PINJOINCONTENTUNSAFE
+  of $("PRICE_CANNOT_BE_DETERMINED"):
+    return CatalogsItemValidationIssue.PRICECANNOTBEDETERMINED
+  of $("PRICE_MISSING"):
+    return CatalogsItemValidationIssue.PRICEMISSING
+  of $("PRODUCT_CATEGORY_DEPTH_WARNING"):
+    return CatalogsItemValidationIssue.PRODUCTCATEGORYDEPTHWARNING
+  of $("PRODUCT_LINK_MISSING"):
+    return CatalogsItemValidationIssue.PRODUCTLINKMISSING
+  of $("PRODUCT_PRICE_INVALID"):
+    return CatalogsItemValidationIssue.PRODUCTPRICEINVALID
+  of $("PRODUCT_TYPE_LENGTH_TOO_LONG"):
+    return CatalogsItemValidationIssue.PRODUCTTYPELENGTHTOOLONG
+  of $("SALE_DATE_INVALID"):
+    return CatalogsItemValidationIssue.SALEDATEINVALID
+  of $("SALES_PRICE_INVALID"):
+    return CatalogsItemValidationIssue.SALESPRICEINVALID
+  of $("SALES_PRICE_TOO_HIGH"):
+    return CatalogsItemValidationIssue.SALESPRICETOOHIGH
+  of $("SALES_PRICE_TOO_LOW"):
+    return CatalogsItemValidationIssue.SALESPRICETOOLOW
+  of $("SHIPPING_INVALID"):
+    return CatalogsItemValidationIssue.SHIPPINGINVALID
+  of $("SHIPPING_HEIGHT_INVALID"):
+    return CatalogsItemValidationIssue.SHIPPINGHEIGHTINVALID
+  of $("SHIPPING_WEIGHT_INVALID"):
+    return CatalogsItemValidationIssue.SHIPPINGWEIGHTINVALID
+  of $("SHIPPING_WIDTH_INVALID"):
+    return CatalogsItemValidationIssue.SHIPPINGWIDTHINVALID
+  of $("SIZE_SYSTEM_INVALID"):
+    return CatalogsItemValidationIssue.SIZESYSTEMINVALID
+  of $("SIZE_TYPE_INVALID"):
+    return CatalogsItemValidationIssue.SIZETYPEINVALID
+  of $("TAX_INVALID"):
+    return CatalogsItemValidationIssue.TAXINVALID
+  of $("TITLE_LENGTH_TOO_LONG"):
+    return CatalogsItemValidationIssue.TITLELENGTHTOOLONG
+  of $("TITLE_MISSING"):
+    return CatalogsItemValidationIssue.TITLEMISSING
+  of $("TOO_MANY_ADDITIONAL_IMAGE_LINKS"):
+    return CatalogsItemValidationIssue.TOOMANYADDITIONALIMAGELINKS
+  of $("UTM_SOURCE_AUTO_CORRECTED"):
+    return CatalogsItemValidationIssue.UTMSOURCEAUTOCORRECTED
+  of $("WEIGHT_UNIT_INVALID"):
+    return CatalogsItemValidationIssue.WEIGHTUNITINVALID
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogsItemValidationIssue: " & strVal)
+

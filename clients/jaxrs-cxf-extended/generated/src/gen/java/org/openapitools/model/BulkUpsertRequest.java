@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.BulkUpsertRequestCreate;
 import org.openapitools.model.BulkUpsertRequestUpdate;
 import javax.validation.constraints.*;

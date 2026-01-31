@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -56,33 +55,6 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'CreatedByBusinessId'
-        /// </summary>
-        [Fact]
-        public void CreatedByBusinessIdTest()
-        {
-            // TODO unit test for the property 'CreatedByBusinessId'
-        }
-
-        /// <summary>
-        /// Test the property 'CreatedByUserId'
-        /// </summary>
-        [Fact]
-        public void CreatedByUserIdTest()
-        {
-            // TODO unit test for the property 'CreatedByUserId'
-        }
-
-        /// <summary>
-        /// Test the property 'User'
-        /// </summary>
-        [Fact]
-        public void UserTest()
-        {
-            // TODO unit test for the property 'User'
-        }
-
-        /// <summary>
         /// Test the property 'Id'
         /// </summary>
         [Fact]
@@ -107,6 +79,33 @@ namespace Org.OpenAPITools.Test.Model
         public void IsReceivedInviteTest()
         {
             // TODO unit test for the property 'IsReceivedInvite'
+        }
+
+        /// <summary>
+        /// Test the property 'User'
+        /// </summary>
+        [Fact]
+        public void UserTest()
+        {
+            // TODO unit test for the property 'User'
+        }
+
+        /// <summary>
+        /// Test the property 'CreatedByBusinessId'
+        /// </summary>
+        [Fact]
+        public void CreatedByBusinessIdTest()
+        {
+            // TODO unit test for the property 'CreatedByBusinessId'
+        }
+
+        /// <summary>
+        /// Test the property 'CreatedByUserId'
+        /// </summary>
+        [Fact]
+        public void CreatedByUserIdTest()
+        {
+            // TODO unit test for the property 'CreatedByUserId'
         }
     }
 }

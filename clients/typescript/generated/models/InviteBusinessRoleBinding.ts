@@ -11,25 +11,9 @@
  */
 
 import { BaseInviteDataResponseInviteData } from '../models/BaseInviteDataResponseInviteData';
-import { BusinessAccessUserSummary } from '../models/BusinessAccessUserSummary';
 import { HttpFile } from '../http/http';
 
-/**
-* An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
-*/
 export class InviteBusinessRoleBinding {
-    /**
-    * Unique identifier for the business that created the invite/request.
-    */
-    'createdByBusinessId'?: string;
-    /**
-    * Unique identifier for the user that created the invite/request.
-    */
-    'createdByUserId'?: string;
-    /**
-    * Metadata for the user that updated the invite/request.
-    */
-    'user'?: BusinessAccessUserSummary;
     /**
     * Unique identifier of the invite/request.
     */
@@ -39,30 +23,24 @@ export class InviteBusinessRoleBinding {
     * Indicates whether the invite/request was received.
     */
     'isReceivedInvite'?: boolean;
+    /**
+    * Metadata for the user that updated the invite/request.
+    */
+    'user'?: any;
+    /**
+    * Unique identifier for the business that created the invite/request.
+    */
+    'createdByBusinessId'?: string;
+    /**
+    * Unique identifier for the user that created the invite/request.
+    */
+    'createdByUserId'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "createdByBusinessId",
-            "baseName": "created_by_business_id",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "createdByUserId",
-            "baseName": "created_by_user_id",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "user",
-            "baseName": "user",
-            "type": "BusinessAccessUserSummary",
-            "format": ""
-        },
         {
             "name": "id",
             "baseName": "id",
@@ -79,6 +57,24 @@ export class InviteBusinessRoleBinding {
             "name": "isReceivedInvite",
             "baseName": "is_received_invite",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "user",
+            "baseName": "user",
+            "type": "any",
+            "format": ""
+        },
+        {
+            "name": "createdByBusinessId",
+            "baseName": "created_by_business_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "createdByUserId",
+            "baseName": "created_by_user_id",
+            "type": "string",
             "format": ""
         }    ];
 

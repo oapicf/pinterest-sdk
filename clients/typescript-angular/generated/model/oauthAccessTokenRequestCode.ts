@@ -9,21 +9,18 @@
  */
 
 
-/**
- * A request to exchange an authorization code for an access token.
- */
 export interface OauthAccessTokenRequestCode { 
-    grant_type: OauthAccessTokenRequestCode.GrantTypeEnum;
     code: string;
     redirect_uri: string;
+    grant_type: OauthAccessTokenRequestCode.GrantTypeEnum;
 }
 export namespace OauthAccessTokenRequestCode {
-    export type GrantTypeEnum = 'authorization_code' | 'refresh_token' | 'client_credentials';
     export const GrantTypeEnum = {
-        AuthorizationCode: 'authorization_code' as GrantTypeEnum,
-        RefreshToken: 'refresh_token' as GrantTypeEnum,
-        ClientCredentials: 'client_credentials' as GrantTypeEnum
-    };
+        AuthorizationCode: 'authorization_code',
+        RefreshToken: 'refresh_token',
+        ClientCredentials: 'client_credentials'
+    } as const;
+    export type GrantTypeEnum = typeof GrantTypeEnum[keyof typeof GrantTypeEnum];
 }
 
 

@@ -9,7 +9,48 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type BulkEntityType* = object
-  ## Refers ads entity type
+type BulkEntityType* {.pure.} = enum
+  CAMPAIGN
+  ADGROUP
+  PRODUCTGROUP
+  AD
+  KEYWORD
+
+func `%`*(v: BulkEntityType): JsonNode =
+  result = case v:
+    of BulkEntityType.CAMPAIGN: %"CAMPAIGN"
+    of BulkEntityType.ADGROUP: %"AD_GROUP"
+    of BulkEntityType.PRODUCTGROUP: %"PRODUCT_GROUP"
+    of BulkEntityType.AD: %"AD"
+    of BulkEntityType.KEYWORD: %"KEYWORD"
+
+func `$`*(v: BulkEntityType): string =
+  result = case v:
+    of BulkEntityType.CAMPAIGN: $("CAMPAIGN")
+    of BulkEntityType.ADGROUP: $("AD_GROUP")
+    of BulkEntityType.PRODUCTGROUP: $("PRODUCT_GROUP")
+    of BulkEntityType.AD: $("AD")
+    of BulkEntityType.KEYWORD: $("KEYWORD")
+
+proc to*(node: JsonNode, T: typedesc[BulkEntityType]): BulkEntityType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum BulkEntityType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CAMPAIGN"):
+    return BulkEntityType.CAMPAIGN
+  of $("AD_GROUP"):
+    return BulkEntityType.ADGROUP
+  of $("PRODUCT_GROUP"):
+    return BulkEntityType.PRODUCTGROUP
+  of $("AD"):
+    return BulkEntityType.AD
+  of $("KEYWORD"):
+    return BulkEntityType.KEYWORD
+  else:
+    raise newException(ValueError, "Invalid enum value for BulkEntityType: " & strVal)
+

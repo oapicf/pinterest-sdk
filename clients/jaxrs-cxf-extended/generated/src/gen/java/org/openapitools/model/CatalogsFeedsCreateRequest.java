@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsFeedCredentials;
 import org.openapitools.model.CatalogsFeedProcessingSchedule;
@@ -68,7 +67,8 @@ public class CatalogsFeedsCreateRequest  {
   private ProductAvailabilityType defaultAvailability;
 
   @ApiModelProperty(value = "")
-  private CatalogsStatus status;
+  @Valid
+  private CatalogsStatus status = "ACTIVE";
  /**
   * Get defaultCurrency
   * @return defaultCurrency

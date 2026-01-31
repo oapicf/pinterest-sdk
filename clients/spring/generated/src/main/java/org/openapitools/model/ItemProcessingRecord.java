@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ItemProcessingRecord", description = "Object describing an item processing record")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemProcessingRecord {
 
   private @Nullable String itemId;
@@ -39,7 +39,7 @@ public class ItemProcessingRecord {
 
   private @Nullable ItemProcessingStatus status;
 
-  public ItemProcessingRecord itemId(String itemId) {
+  public ItemProcessingRecord itemId(@Nullable String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -51,11 +51,11 @@ public class ItemProcessingRecord {
   
   @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_id")
-  public String getItemId() {
+  public @Nullable String getItemId() {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@Nullable String itemId) {
     this.itemId = itemId;
   }
 
@@ -115,7 +115,7 @@ public class ItemProcessingRecord {
     this.warnings = warnings;
   }
 
-  public ItemProcessingRecord status(ItemProcessingStatus status) {
+  public ItemProcessingRecord status(@Nullable ItemProcessingStatus status) {
     this.status = status;
     return this;
   }
@@ -127,11 +127,11 @@ public class ItemProcessingRecord {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public ItemProcessingStatus getStatus() {
+  public @Nullable ItemProcessingStatus getStatus() {
     return status;
   }
 
-  public void setStatus(ItemProcessingStatus status) {
+  public void setStatus(@Nullable ItemProcessingStatus status) {
     this.status = status;
   }
 

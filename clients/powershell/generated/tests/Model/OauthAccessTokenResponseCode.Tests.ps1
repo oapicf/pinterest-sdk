@@ -10,7 +10,7 @@ Describe -tag 'PSOpenAPITools' -name 'OauthAccessTokenResponseCode' {
     Context 'OauthAccessTokenResponseCode' {
         It 'Initialize-OauthAccessTokenResponseCode' {
             # a simple test to create an object
-            #$NewObject = Initialize-OauthAccessTokenResponseCode -ResponseType "TEST_VALUE" -AccessToken "TEST_VALUE" -TokenType "TEST_VALUE" -ExpiresIn "TEST_VALUE" -Scope "TEST_VALUE" -RefreshToken "TEST_VALUE" -RefreshTokenExpiresIn "TEST_VALUE"
+            #$NewObject = Initialize-OauthAccessTokenResponseCode -RefreshToken "TEST_VALUE" -RefreshTokenExpiresIn "TEST_VALUE" -ResponseType "TEST_VALUE" -AccessToken "TEST_VALUE" -TokenType "TEST_VALUE" -ExpiresIn "TEST_VALUE" -Scope "TEST_VALUE"
             #$NewObject | Should -BeOfType OauthAccessTokenResponseCode
             #$NewObject.property | Should -Be 0
         }

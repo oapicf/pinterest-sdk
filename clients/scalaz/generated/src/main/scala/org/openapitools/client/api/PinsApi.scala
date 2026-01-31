@@ -27,7 +27,6 @@ import org.openapitools.client.api.Pin
 import org.openapitools.client.api.PinAnalyticsMetricsResponse
 import org.openapitools.client.api.PinCreate
 import org.openapitools.client.api.PinUpdate
-import org.openapitools.client.api.PinsAnalyticsMetricTypesParameterInner
 import org.openapitools.client.api.PinsList200Response
 import org.openapitools.client.api.PinsSaveRequest
 
@@ -37,7 +36,7 @@ object PinsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def multiPinsAnalytics(host: String, pinIds: List[String] = List.empty[String] , startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner] = List.empty[PinsAnalyticsMetricTypesParameterInner] , appTypes: String = ALL, adAccountId: String)(implicit pinIdsQuery: QueryParam[List[String]], startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], appTypesQuery: QueryParam[String], metricTypesQuery: QueryParam[List[PinsAnalyticsMetricTypesParameterInner]], adAccountIdQuery: QueryParam[String]): Task[Map[String, Map[String, PinAnalyticsMetricsResponse]]] = {
+  def multiPinsAnalytics(host: String, pinIds: List[String] = List.empty[String] , startDate: LocalDate, endDate: LocalDate, metricTypes: List[String] = List.empty[String] , appTypes: String = ALL, adAccountId: String)(implicit pinIdsQuery: QueryParam[List[String]], startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], appTypesQuery: QueryParam[String], metricTypesQuery: QueryParam[List[String]], adAccountIdQuery: QueryParam[String]): Task[Map[String, Map[String, PinAnalyticsMetricsResponse]]] = {
     implicit val returnTypeDecoder: EntityDecoder[Map[String, Map[String, PinAnalyticsMetricsResponse]]] = jsonOf[Map[String, Map[String, PinAnalyticsMetricsResponse]]]
 
     val path = "/pins/analytics"
@@ -58,7 +57,7 @@ object PinsApi {
     } yield resp
   }
 
-  def pinsAnalytics(host: String, pinId: String, startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner] = List.empty[PinsAnalyticsMetricTypesParameterInner] , appTypes: String = ALL, splitField: String = NO_SPLIT, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], appTypesQuery: QueryParam[String], metricTypesQuery: QueryParam[List[PinsAnalyticsMetricTypesParameterInner]], splitFieldQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[Map[String, PinAnalyticsMetricsResponse]] = {
+  def pinsAnalytics(host: String, pinId: String, startDate: LocalDate, endDate: LocalDate, metricTypes: List[String] = List.empty[String] , appTypes: String = ALL, splitField: String = NO_SPLIT, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], appTypesQuery: QueryParam[String], metricTypesQuery: QueryParam[List[String]], splitFieldQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[Map[String, PinAnalyticsMetricsResponse]] = {
     implicit val returnTypeDecoder: EntityDecoder[Map[String, PinAnalyticsMetricsResponse]] = jsonOf[Map[String, PinAnalyticsMetricsResponse]]
 
     val path = "/pins/{pin_id}/analytics".replaceAll("\\{" + "pin_id" + "\\}",escape(pinId.toString))
@@ -210,7 +209,7 @@ class HttpServicePinsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def multiPinsAnalytics(pinIds: List[String] = List.empty[String] , startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner] = List.empty[PinsAnalyticsMetricTypesParameterInner] , appTypes: String = ALL, adAccountId: String)(implicit pinIdsQuery: QueryParam[List[String]], startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], appTypesQuery: QueryParam[String], metricTypesQuery: QueryParam[List[PinsAnalyticsMetricTypesParameterInner]], adAccountIdQuery: QueryParam[String]): Task[Map[String, Map[String, PinAnalyticsMetricsResponse]]] = {
+  def multiPinsAnalytics(pinIds: List[String] = List.empty[String] , startDate: LocalDate, endDate: LocalDate, metricTypes: List[String] = List.empty[String] , appTypes: String = ALL, adAccountId: String)(implicit pinIdsQuery: QueryParam[List[String]], startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], appTypesQuery: QueryParam[String], metricTypesQuery: QueryParam[List[String]], adAccountIdQuery: QueryParam[String]): Task[Map[String, Map[String, PinAnalyticsMetricsResponse]]] = {
     implicit val returnTypeDecoder: EntityDecoder[Map[String, Map[String, PinAnalyticsMetricsResponse]]] = jsonOf[Map[String, Map[String, PinAnalyticsMetricsResponse]]]
 
     val path = "/pins/analytics"
@@ -231,7 +230,7 @@ class HttpServicePinsApi(service: HttpService) {
     } yield resp
   }
 
-  def pinsAnalytics(pinId: String, startDate: LocalDate, endDate: LocalDate, metricTypes: List[PinsAnalyticsMetricTypesParameterInner] = List.empty[PinsAnalyticsMetricTypesParameterInner] , appTypes: String = ALL, splitField: String = NO_SPLIT, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], appTypesQuery: QueryParam[String], metricTypesQuery: QueryParam[List[PinsAnalyticsMetricTypesParameterInner]], splitFieldQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[Map[String, PinAnalyticsMetricsResponse]] = {
+  def pinsAnalytics(pinId: String, startDate: LocalDate, endDate: LocalDate, metricTypes: List[String] = List.empty[String] , appTypes: String = ALL, splitField: String = NO_SPLIT, adAccountId: String)(implicit startDateQuery: QueryParam[LocalDate], endDateQuery: QueryParam[LocalDate], appTypesQuery: QueryParam[String], metricTypesQuery: QueryParam[List[String]], splitFieldQuery: QueryParam[String], adAccountIdQuery: QueryParam[String]): Task[Map[String, PinAnalyticsMetricsResponse]] = {
     implicit val returnTypeDecoder: EntityDecoder[Map[String, PinAnalyticsMetricsResponse]] = jsonOf[Map[String, PinAnalyticsMetricsResponse]]
 
     val path = "/pins/{pin_id}/analytics".replaceAll("\\{" + "pin_id" + "\\}",escape(pinId.toString))

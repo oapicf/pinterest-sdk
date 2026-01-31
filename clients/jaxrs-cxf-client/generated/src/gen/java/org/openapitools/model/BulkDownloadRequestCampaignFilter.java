@@ -13,28 +13,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BulkDownloadRequestCampaignFilter  {
   
-  @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp.")
  /**
-   * Unix UTC timestamp.
-  **/
+  * Unix UTC timestamp.
+  */
+  @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp.")
+
   private String startTime;
 
-  @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp.")
  /**
-   * Unix UTC timestamp.
-  **/
+  * Unix UTC timestamp.
+  */
+  @ApiModelProperty(example = "1622848072", value = "Unix UTC timestamp.")
+
   private String endTime;
 
-  @ApiModelProperty(example = "campaign name", value = "Campaign name")
  /**
-   * Campaign name
-  **/
+  * Campaign name
+  */
+  @ApiModelProperty(example = "campaign name", value = "Campaign name")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private List<CampaignSummaryStatus> campaignStatus = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private List<ObjectiveType> objectiveType = new ArrayList<>();
  /**
    * Unix UTC timestamp.

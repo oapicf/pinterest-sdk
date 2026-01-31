@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -62,105 +61,6 @@ namespace Org.OpenAPITools.Test.Model
         public void SourceTypeTest()
         {
             // TODO unit test for the property 'SourceType'
-        }
-
-        /// <summary>
-        /// Test the property 'ContentType'
-        /// </summary>
-        [Fact]
-        public void ContentTypeTest()
-        {
-            // TODO unit test for the property 'ContentType'
-        }
-
-        /// <summary>
-        /// Test the property 'Data'
-        /// </summary>
-        [Fact]
-        public void DataTest()
-        {
-            // TODO unit test for the property 'Data'
-        }
-
-        /// <summary>
-        /// Test the property 'IsStandard'
-        /// </summary>
-        [Fact]
-        public void IsStandardTest()
-        {
-            // TODO unit test for the property 'IsStandard'
-        }
-
-        /// <summary>
-        /// Test the property 'Url'
-        /// </summary>
-        [Fact]
-        public void UrlTest()
-        {
-            // TODO unit test for the property 'Url'
-        }
-
-        /// <summary>
-        /// Test the property 'CoverImageUrl'
-        /// </summary>
-        [Fact]
-        public void CoverImageUrlTest()
-        {
-            // TODO unit test for the property 'CoverImageUrl'
-        }
-
-        /// <summary>
-        /// Test the property 'CoverImageContentType'
-        /// </summary>
-        [Fact]
-        public void CoverImageContentTypeTest()
-        {
-            // TODO unit test for the property 'CoverImageContentType'
-        }
-
-        /// <summary>
-        /// Test the property 'CoverImageData'
-        /// </summary>
-        [Fact]
-        public void CoverImageDataTest()
-        {
-            // TODO unit test for the property 'CoverImageData'
-        }
-
-        /// <summary>
-        /// Test the property 'MediaId'
-        /// </summary>
-        [Fact]
-        public void MediaIdTest()
-        {
-            // TODO unit test for the property 'MediaId'
-        }
-
-        /// <summary>
-        /// Test the property 'Items'
-        /// </summary>
-        [Fact]
-        public void ItemsTest()
-        {
-            // TODO unit test for the property 'Items'
-        }
-
-        /// <summary>
-        /// Test the property 'Index'
-        /// </summary>
-        [Fact]
-        public void IndexTest()
-        {
-            // TODO unit test for the property 'Index'
-        }
-
-        /// <summary>
-        /// Test the property 'IsAffiliateLink'
-        /// </summary>
-        [Fact]
-        public void IsAffiliateLinkTest()
-        {
-            // TODO unit test for the property 'IsAffiliateLink'
         }
     }
 }

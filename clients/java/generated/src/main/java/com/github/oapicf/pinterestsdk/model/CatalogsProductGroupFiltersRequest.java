@@ -62,7 +62,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupFiltersRequest extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsProductGroupFiltersRequest.class.getName());
 
@@ -118,7 +118,7 @@ public class CatalogsProductGroupFiltersRequest extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsProductGroupFiltersRequestAnyOf failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsProductGroupFiltersRequestAnyOf failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsProductGroupFiltersRequestAnyOf'", e);
                     }
                     // deserialize CatalogsProductGroupFiltersRequestAnyOf1
@@ -131,11 +131,11 @@ public class CatalogsProductGroupFiltersRequest extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CatalogsProductGroupFiltersRequestAnyOf1 failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsProductGroupFiltersRequestAnyOf1 failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CatalogsProductGroupFiltersRequestAnyOf1'", e);
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CatalogsProductGroupFiltersRequest: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CatalogsProductGroupFiltersRequest: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -233,7 +233,7 @@ public class CatalogsProductGroupFiltersRequest extends AbstractOpenApiSchema {
             CatalogsProductGroupFiltersRequestAnyOf.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsProductGroupFiltersRequestAnyOf failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsProductGroupFiltersRequestAnyOf failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CatalogsProductGroupFiltersRequestAnyOf1
@@ -241,10 +241,10 @@ public class CatalogsProductGroupFiltersRequest extends AbstractOpenApiSchema {
             CatalogsProductGroupFiltersRequestAnyOf1.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CatalogsProductGroupFiltersRequestAnyOf1 failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CatalogsProductGroupFiltersRequestAnyOf1 failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        throw new IOException(String.format("The JSON string is invalid for CatalogsProductGroupFiltersRequest with anyOf schemas: CatalogsProductGroupFiltersRequestAnyOf, CatalogsProductGroupFiltersRequestAnyOf1. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+        throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CatalogsProductGroupFiltersRequest with anyOf schemas: CatalogsProductGroupFiltersRequestAnyOf, CatalogsProductGroupFiltersRequestAnyOf1. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
     }
 
     /**

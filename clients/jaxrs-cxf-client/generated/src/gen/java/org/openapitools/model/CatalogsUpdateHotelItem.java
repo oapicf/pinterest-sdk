@@ -1,23 +1,24 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsUpdatableHotelAttributes;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object describing an hotel item batch record
- **/
+ * Object describing an hotel item batch record
+ */
 @ApiModel(description="Object describing an hotel item batch record")
 
 public class CatalogsUpdateHotelItem  {
   
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog hotel item id in the merchant namespace")
  /**
-   * The catalog hotel item id in the merchant namespace
-  **/
+  * The catalog hotel item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog hotel item id in the merchant namespace")
+
   private String hotelId;
 
 public enum OperationEnum {
@@ -51,9 +52,11 @@ UPDATE(String.valueOf("UPDATE"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private OperationEnum operation;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsUpdatableHotelAttributes attributes;
  /**
    * The catalog hotel item id in the merchant namespace

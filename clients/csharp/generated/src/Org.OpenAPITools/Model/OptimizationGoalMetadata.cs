@@ -155,16 +155,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "conversion_tag_v3_goal_metadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                conversionTagV3GoalMetadata = new Option<OptimizationGoalMetadataConversionTagV3GoalMetadata?>(JsonSerializer.Deserialize<OptimizationGoalMetadataConversionTagV3GoalMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            conversionTagV3GoalMetadata = new Option<OptimizationGoalMetadataConversionTagV3GoalMetadata?>(JsonSerializer.Deserialize<OptimizationGoalMetadataConversionTagV3GoalMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "frequency_goal_metadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                frequencyGoalMetadata = new Option<OptimizationGoalMetadataFrequencyGoalMetadata?>(JsonSerializer.Deserialize<OptimizationGoalMetadataFrequencyGoalMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            frequencyGoalMetadata = new Option<OptimizationGoalMetadataFrequencyGoalMetadata?>(JsonSerializer.Deserialize<OptimizationGoalMetadataFrequencyGoalMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "scrollup_goal_metadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                scrollupGoalMetadata = new Option<OptimizationGoalMetadataScrollupGoalMetadata?>(JsonSerializer.Deserialize<OptimizationGoalMetadataScrollupGoalMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            scrollupGoalMetadata = new Option<OptimizationGoalMetadataScrollupGoalMetadata?>(JsonSerializer.Deserialize<OptimizationGoalMetadataScrollupGoalMetadata>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

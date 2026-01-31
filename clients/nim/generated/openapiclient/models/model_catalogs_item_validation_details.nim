@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_nullable_catalogs_item_field_type
 
 type CatalogsItemValidationDetails* = object
   ## 
-  attributeName*: NullableCatalogsItemFieldType
-  providedValue*: string ## Provided value that caused the validation issue.
+  attributeName*: Option[NullableCatalogsItemFieldType]
+  providedValue*: Option[string] ## Provided value that caused the validation issue.
+
+
+# Custom JSON deserialization for CatalogsItemValidationDetails with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsItemValidationDetails]): CatalogsItemValidationDetails =
+  result = CatalogsItemValidationDetails()
+  if node.kind == JObject:
+    if node.hasKey("attribute_name") and node["attribute_name"].kind != JNull:
+      result.attributeName = some(to(node["attribute_name"], typeof(result.attributeName.get())))
+    if node.hasKey("provided_value") and node["provided_value"].kind != JNull:
+      result.providedValue = some(to(node["provided_value"], typeof(result.providedValue.get())))
+
+# Custom JSON serialization for CatalogsItemValidationDetails with custom field names
+proc `%`*(obj: CatalogsItemValidationDetails): JsonNode =
+  result = newJObject()
+  if obj.attributeName.isSome():
+    result["attribute_name"] = %obj.attributeName.get()
+  if obj.providedValue.isSome():
+    result["provided_value"] = %obj.providedValue.get()
+

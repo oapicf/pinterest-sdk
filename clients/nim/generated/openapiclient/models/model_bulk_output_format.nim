@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type BulkOutputFormat* = object
-  ## Bulk file output format
+type BulkOutputFormat* {.pure.} = enum
+  CSV
+  JSON
+
+func `%`*(v: BulkOutputFormat): JsonNode =
+  result = case v:
+    of BulkOutputFormat.CSV: %"CSV"
+    of BulkOutputFormat.JSON: %"JSON"
+
+func `$`*(v: BulkOutputFormat): string =
+  result = case v:
+    of BulkOutputFormat.CSV: $("CSV")
+    of BulkOutputFormat.JSON: $("JSON")
+
+proc to*(node: JsonNode, T: typedesc[BulkOutputFormat]): BulkOutputFormat =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum BulkOutputFormat, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CSV"):
+    return BulkOutputFormat.CSV
+  of $("JSON"):
+    return BulkOutputFormat.JSON
+  else:
+    raise newException(ValueError, "Invalid enum value for BulkOutputFormat: " & strVal)
+

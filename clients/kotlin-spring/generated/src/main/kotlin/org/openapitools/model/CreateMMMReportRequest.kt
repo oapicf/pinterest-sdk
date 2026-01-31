@@ -60,7 +60,7 @@ data class CreateMMMReportRequest(
     @field:Valid
     @Schema(example = "null", description = "A List of countries for filtering")
     @get:JsonProperty("countries") val countries: kotlin.collections.List<TargetingAdvertiserCountry>? = null
-    ) {
+) {
 
     /**
     * DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.
@@ -75,7 +75,8 @@ data class CreateMMMReportRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Granularity {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CreateMMMReportRequest'")
             }
         }
     }
@@ -93,7 +94,8 @@ data class CreateMMMReportRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Level {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CreateMMMReportRequest'")
             }
         }
     }

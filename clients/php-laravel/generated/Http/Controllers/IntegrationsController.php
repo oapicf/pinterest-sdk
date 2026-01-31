@@ -69,12 +69,8 @@ class IntegrationsController extends Controller
         }
 
 
-        try {
-            $apiResult = $this->api->integrationsCommerceDel($externalBusinessId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->integrationsCommerceDel($externalBusinessId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent204) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 204);
@@ -116,12 +112,8 @@ class IntegrationsController extends Controller
         }
 
 
-        try {
-            $apiResult = $this->api->integrationsCommerceGet($externalBusinessId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->integrationsCommerceGet($externalBusinessId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\IntegrationMetadata) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -169,12 +161,8 @@ class IntegrationsController extends Controller
 
         $integrationRequestPatch = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\IntegrationRequestPatch::class);
 
-        try {
-            $apiResult = $this->api->integrationsCommercePatch($externalBusinessId, $integrationRequestPatch);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->integrationsCommercePatch($externalBusinessId, $integrationRequestPatch);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\IntegrationMetadata) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -221,12 +209,8 @@ class IntegrationsController extends Controller
 
         $integrationRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\IntegrationRequest::class);
 
-        try {
-            $apiResult = $this->api->integrationsCommercePost($integrationRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->integrationsCommercePost($integrationRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\IntegrationMetadata) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -276,12 +260,8 @@ class IntegrationsController extends Controller
         }
 
 
-        try {
-            $apiResult = $this->api->integrationsGetById($id);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->integrationsGetById($id);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\IntegrationRecord) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -334,12 +314,8 @@ class IntegrationsController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->integrationsGetList($bookmark, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->integrationsGetList($bookmark, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\IntegrationsGetList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -378,12 +354,8 @@ class IntegrationsController extends Controller
 
         $integrationLogsRequest = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\IntegrationLogsRequest::class);
 
-        try {
-            $apiResult = $this->api->integrationsLogsPost($integrationLogsRequest);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->integrationsLogsPost($integrationLogsRequest);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\IntegrationLogsSuccessResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

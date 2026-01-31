@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
+import org.openapitools.api.OauthApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -31,7 +32,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${api.base-path:/v5}")
+@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
 class OauthApiController() {
 
     @Operation(
@@ -53,11 +54,19 @@ See <a href='/docs/getting-started/authentication-and-scopes/'>Authentication</a
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/oauth/token"],
+        value = [PATH_OAUTH_TOKEN /* "/oauth/token" */],
         produces = ["application/json"],
         consumes = ["application/x-www-form-urlencoded"]
     )
-    fun oauthToken(@Parameter(description = "", required = true, schema = Schema(allowableValues = ["authorization_code", "refresh_token", "client_credentials"])) @RequestParam(value = "grant_type", required = true) grantType: kotlin.String ): ResponseEntity<OauthAccessTokenResponse> {
+    fun oauthToken(
+        @Parameter(description = "", required = true, schema = Schema(allowableValues = ["authorization_code", "refresh_token", "client_credentials"])) @Valid @RequestParam(value = "grant_type", required = true) grantType: kotlin.String
+    ): ResponseEntity<OauthAccessTokenResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    companion object {
+        //for your own safety never directly reuse these path definitions in tests
+        const val BASE_PATH: String = "/v5"
+        const val PATH_OAUTH_TOKEN: String = "/oauth/token"
     }
 }

@@ -94,7 +94,7 @@ public class AudienceSharingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@20381e51");
+            .accept("[Ljava.lang.String;@3eeece33");
         request.getParameters()
             .add("audience_id", "example") // The query parameter format should be 
             .add("account_type", String.valueOf(AudienceAccountType.fromValue("AD_ACCOUNT"))) // The query parameter format should be 
@@ -149,7 +149,7 @@ public class AudienceSharingControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@470602f8");
+            .accept("[Ljava.lang.String;@7015e045");
         request.getParameters()
             .add("audience_id", "example") // The query parameter format should be 
             .add("account_type", String.valueOf(AudienceAccountType.fromValue("AD_ACCOUNT"))) // The query parameter format should be 
@@ -203,7 +203,7 @@ public class AudienceSharingControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3c47011f");
+            .accept("[Ljava.lang.String;@659d6f74");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("order", "ASCENDING") // The query parameter format should be 
@@ -255,7 +255,7 @@ public class AudienceSharingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@2e478638");
+            .accept("[Ljava.lang.String;@7792e75e");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SharedAudienceResponse.class);
@@ -303,7 +303,7 @@ public class AudienceSharingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@4e6ddf37");
+            .accept("[Ljava.lang.String;@3f4520c9");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BusinessSharedAudienceResponse.class);
@@ -351,7 +351,7 @@ public class AudienceSharingControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@390b15c0");
+            .accept("[Ljava.lang.String;@608df8ac");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SharedAudienceResponse.class);
@@ -399,7 +399,7 @@ public class AudienceSharingControllerTest {
             put("business_id", "729090764583391194");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@3dc0b407");
+            .accept("[Ljava.lang.String;@6ee5cd06");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BusinessSharedAudienceResponse.class);

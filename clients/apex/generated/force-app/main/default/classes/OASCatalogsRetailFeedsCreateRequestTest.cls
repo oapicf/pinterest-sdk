@@ -80,4 +80,20 @@ private class OASCatalogsRetailFeedsCreateRequestTest {
         System.assertEquals('defaultCountry', x-property-mappings.get('default_country'));
         System.assertEquals('defaultAvailability', x-property-mappings.get('default_availability'));
     }
+
+    @isTest
+    private static void defaultValuesPopulated() {
+        OASCatalogsRetailFeedsCreateRequest catalogsRetailFeedsCreateRequest = new OASCatalogsRetailFeedsCreateRequest();
+        System.assertEquals('ACTIVE', catalogsRetailFeedsCreateRequest.status);
+        System.assertEquals(null, catalogsRetailFeedsCreateRequest.defaultCurrency);
+        System.assertEquals(null, catalogsRetailFeedsCreateRequest.name);
+        System.assertEquals(null, catalogsRetailFeedsCreateRequest.format);
+        System.assertEquals(null, catalogsRetailFeedsCreateRequest.defaultLocale);
+        System.assertEquals(null, catalogsRetailFeedsCreateRequest.credentials);
+        System.assertEquals(null, catalogsRetailFeedsCreateRequest.location);
+        System.assertEquals(null, catalogsRetailFeedsCreateRequest.preferredProcessingSchedule);
+        System.assertEquals(null, catalogsRetailFeedsCreateRequest.catalogType);
+        System.assertEquals(null, catalogsRetailFeedsCreateRequest.defaultCountry);
+        System.assertEquals(null, catalogsRetailFeedsCreateRequest.defaultAvailability);
+    }
 }

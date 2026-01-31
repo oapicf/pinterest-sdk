@@ -385,7 +385,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, MMMReportingColumn mMMReportingColumn, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(mMMReportingColumn.ToString());
+            writer.WriteStringValue(MMMReportingColumnValueConverter.ToJsonValue(mMMReportingColumn).ToString());
         }
     }
 
@@ -416,14 +416,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the MMMReportingColumn to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="mMMReportingColumn"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, MMMReportingColumn? mMMReportingColumn, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(mMMReportingColumn?.ToString() ?? "null");
+            writer.WriteStringValue(mMMReportingColumn.HasValue ? MMMReportingColumnValueConverter.ToJsonValue(mMMReportingColumn.Value).ToString() : "null");
         }
     }
 }

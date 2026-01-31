@@ -26,7 +26,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "TopVideoPinsAnalyticsResponse_pins_inner", description = "Array with metrics, status, and pin id for the requested metric")
 @JsonTypeName("TopVideoPinsAnalyticsResponse_pins_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TopVideoPinsAnalyticsResponsePinsInner {
 
   @Valid
@@ -93,7 +93,7 @@ public class TopVideoPinsAnalyticsResponsePinsInner {
     this.dataStatus = dataStatus;
   }
 
-  public TopVideoPinsAnalyticsResponsePinsInner pinId(String pinId) {
+  public TopVideoPinsAnalyticsResponsePinsInner pinId(@Nullable String pinId) {
     this.pinId = pinId;
     return this;
   }
@@ -105,11 +105,11 @@ public class TopVideoPinsAnalyticsResponsePinsInner {
   
   @Schema(name = "pin_id", example = "642396334344813594", description = "The pin id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("pin_id")
-  public String getPinId() {
+  public @Nullable String getPinId() {
     return pinId;
   }
 
-  public void setPinId(String pinId) {
+  public void setPinId(@Nullable String pinId) {
     this.pinId = pinId;
   }
 

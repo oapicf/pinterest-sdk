@@ -21,13 +21,13 @@ import scala.collection.immutable.Seq
  * @param questions List of questions to be displayed on the lead form.
  * @param policyUnderscorelinks List of additional policy links to be displayed on the lead form.
  */
-case class LeadFormCreateRequest(name: String,
-                privacyUnderscorepolicyUnderscorelink: String,
-                hasUnderscoreacceptedUnderscoreterms: Boolean,
-                completionUnderscoremessage: String,
+case class LeadFormCreateRequest(name: Option[String],
+                privacyUnderscorepolicyUnderscorelink: Option[String],
+                hasUnderscoreacceptedUnderscoreterms: Option[Boolean],
+                completionUnderscoremessage: Option[String],
                 status: Option[LeadFormStatus],
                 disclosureUnderscorelanguage: Option[String],
-                questions: Seq[LeadFormQuestion],
+                questions: Option[Seq[LeadFormQuestion]],
                 policyUnderscorelinks: Option[Seq[LeadFormCommonPolicyLinksInner]]
                 )
 

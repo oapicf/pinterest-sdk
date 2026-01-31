@@ -12,16 +12,11 @@
 /**
  * The enhanced match status of the tag
  */
-export type EnhancedMatchStatusType = 'UNKNOWN' | 'NOT_VALIDATED' | 'VALIDATING_IN_PROGRESS' | 'VALIDATION_COMPLETE';
-
 export const EnhancedMatchStatusType = {
-
-    Unknown: 'UNKNOWN' as EnhancedMatchStatusType,
-
-    NotValidated: 'NOT_VALIDATED' as EnhancedMatchStatusType,
-
-    ValidatingInProgress: 'VALIDATING_IN_PROGRESS' as EnhancedMatchStatusType,
-
-    ValidationComplete: 'VALIDATION_COMPLETE' as EnhancedMatchStatusType
-};
+    Unknown: 'UNKNOWN',
+    NotValidated: 'NOT_VALIDATED',
+    ValidatingInProgress: 'VALIDATING_IN_PROGRESS',
+    ValidationComplete: 'VALIDATION_COMPLETE'
+} as const;
+export type EnhancedMatchStatusType = typeof EnhancedMatchStatusType[keyof typeof EnhancedMatchStatusType];
 

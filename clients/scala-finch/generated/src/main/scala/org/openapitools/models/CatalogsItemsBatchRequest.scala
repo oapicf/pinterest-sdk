@@ -9,7 +9,6 @@ import org.openapitools.models.BatchOperation
 import org.openapitools.models.CatalogsItemsCreateBatchRequest
 import org.openapitools.models.CatalogsItemsDeleteBatchRequest
 import org.openapitools.models.CatalogsItemsDeleteDiscontinuedBatchRequest
-import org.openapitools.models.CatalogsItemsRequestLanguage
 import org.openapitools.models.CatalogsItemsUpdateBatchRequest
 import org.openapitools.models.CatalogsItemsUpsertBatchRequest
 import org.openapitools.models.Country
@@ -19,12 +18,12 @@ import scala.collection.immutable.Seq
 /**
  * Request object of catalogs items batch
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param operation 
  * @param items Array with catalogs items
  */
 case class CatalogsItemsBatchRequest(country: Country,
-                language: CatalogsItemsRequestLanguage,
+                language: String,
                 operation: BatchOperation,
                 items: Seq[ItemDeleteBatchRecord]
                 )

@@ -222,12 +222,10 @@ namespace Org.OpenAPITools.Model
                             batchId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "created_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdTime = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
+                            createdTime = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "completed_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                completedTime = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
+                            completedTime = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "status":
                             string? statusRawValue = utf8JsonReader.GetString();
@@ -235,8 +233,7 @@ namespace Org.OpenAPITools.Model
                                 status = new Option<BatchOperationStatus?>(BatchOperationStatusValueConverter.FromStringOrDefault(statusRawValue));
                             break;
                         case "items":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                items = new Option<List<HotelProcessingRecord>?>(JsonSerializer.Deserialize<List<HotelProcessingRecord>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            items = new Option<List<HotelProcessingRecord>?>(JsonSerializer.Deserialize<List<HotelProcessingRecord>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

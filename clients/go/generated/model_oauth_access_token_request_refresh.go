@@ -20,13 +20,13 @@ import (
 // checks if the OauthAccessTokenRequestRefresh type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OauthAccessTokenRequestRefresh{}
 
-// OauthAccessTokenRequestRefresh A request to exchange a refresh token for a new access token.
+// OauthAccessTokenRequestRefresh struct for OauthAccessTokenRequestRefresh
 type OauthAccessTokenRequestRefresh struct {
-	GrantType string `json:"grant_type"`
 	RefreshToken string `json:"refresh_token"`
 	Scope *string `json:"scope,omitempty"`
 	// Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".
 	RefreshOn *bool `json:"refresh_on,omitempty"`
+	GrantType string `json:"grant_type"`
 }
 
 type _OauthAccessTokenRequestRefresh OauthAccessTokenRequestRefresh
@@ -35,9 +35,10 @@ type _OauthAccessTokenRequestRefresh OauthAccessTokenRequestRefresh
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOauthAccessTokenRequestRefresh(grantType string, refreshToken string) *OauthAccessTokenRequestRefresh {
+func NewOauthAccessTokenRequestRefresh(refreshToken string, grantType string) *OauthAccessTokenRequestRefresh {
 	this := OauthAccessTokenRequestRefresh{}
 	this.RefreshToken = refreshToken
+	this.GrantType = grantType
 	return &this
 }
 
@@ -47,30 +48,6 @@ func NewOauthAccessTokenRequestRefresh(grantType string, refreshToken string) *O
 func NewOauthAccessTokenRequestRefreshWithDefaults() *OauthAccessTokenRequestRefresh {
 	this := OauthAccessTokenRequestRefresh{}
 	return &this
-}
-
-// GetGrantType returns the GrantType field value
-func (o *OauthAccessTokenRequestRefresh) GetGrantType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.GrantType
-}
-
-// GetGrantTypeOk returns a tuple with the GrantType field value
-// and a boolean to check if the value has been set.
-func (o *OauthAccessTokenRequestRefresh) GetGrantTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.GrantType, true
-}
-
-// SetGrantType sets field value
-func (o *OauthAccessTokenRequestRefresh) SetGrantType(v string) {
-	o.GrantType = v
 }
 
 // GetRefreshToken returns the RefreshToken field value
@@ -161,6 +138,30 @@ func (o *OauthAccessTokenRequestRefresh) SetRefreshOn(v bool) {
 	o.RefreshOn = &v
 }
 
+// GetGrantType returns the GrantType field value
+func (o *OauthAccessTokenRequestRefresh) GetGrantType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.GrantType
+}
+
+// GetGrantTypeOk returns a tuple with the GrantType field value
+// and a boolean to check if the value has been set.
+func (o *OauthAccessTokenRequestRefresh) GetGrantTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GrantType, true
+}
+
+// SetGrantType sets field value
+func (o *OauthAccessTokenRequestRefresh) SetGrantType(v string) {
+	o.GrantType = v
+}
+
 func (o OauthAccessTokenRequestRefresh) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -171,7 +172,6 @@ func (o OauthAccessTokenRequestRefresh) MarshalJSON() ([]byte, error) {
 
 func (o OauthAccessTokenRequestRefresh) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["grant_type"] = o.GrantType
 	toSerialize["refresh_token"] = o.RefreshToken
 	if !IsNil(o.Scope) {
 		toSerialize["scope"] = o.Scope
@@ -179,6 +179,7 @@ func (o OauthAccessTokenRequestRefresh) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.RefreshOn) {
 		toSerialize["refresh_on"] = o.RefreshOn
 	}
+	toSerialize["grant_type"] = o.GrantType
 	return toSerialize, nil
 }
 
@@ -187,8 +188,8 @@ func (o *OauthAccessTokenRequestRefresh) UnmarshalJSON(data []byte) (err error) 
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"grant_type",
 		"refresh_token",
+		"grant_type",
 	}
 
 	allProperties := make(map[string]interface{})

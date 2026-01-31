@@ -127,7 +127,6 @@ include/CppRestOpenAPIClient/model/AudienceCategory.h
 include/CppRestOpenAPIClient/model/AudienceCommon.h
 include/CppRestOpenAPIClient/model/AudienceCreateCustomRequest.h
 include/CppRestOpenAPIClient/model/AudienceCreateRequest.h
-include/CppRestOpenAPIClient/model/AudienceCreateRequest_1_audience_type.h
 include/CppRestOpenAPIClient/model/AudienceDataParty.h
 include/CppRestOpenAPIClient/model/AudienceDefinition.h
 include/CppRestOpenAPIClient/model/AudienceDefinitionResponse.h
@@ -305,7 +304,6 @@ include/CppRestOpenAPIClient/model/CatalogsItemsDeleteDiscontinuedBatchRequest.h
 include/CppRestOpenAPIClient/model/CatalogsItemsFilters.h
 include/CppRestOpenAPIClient/model/CatalogsItemsPostFilters.h
 include/CppRestOpenAPIClient/model/CatalogsItemsRequest.h
-include/CppRestOpenAPIClient/model/CatalogsItemsRequest_language.h
 include/CppRestOpenAPIClient/model/CatalogsItemsUpdateBatchRequest.h
 include/CppRestOpenAPIClient/model/CatalogsItemsUpsertBatchRequest.h
 include/CppRestOpenAPIClient/model/CatalogsListProductsByFeedBasedFilter.h
@@ -639,7 +637,6 @@ include/CppRestOpenAPIClient/model/PinMediaWithVideos.h
 include/CppRestOpenAPIClient/model/PinPromotionSummaryStatus.h
 include/CppRestOpenAPIClient/model/PinUpdate.h
 include/CppRestOpenAPIClient/model/PinUpdate_carousel_slots_inner.h
-include/CppRestOpenAPIClient/model/Pins_analytics_metric_types_parameter_inner.h
 include/CppRestOpenAPIClient/model/Pins_list_200_response.h
 include/CppRestOpenAPIClient/model/Pins_save_request.h
 include/CppRestOpenAPIClient/model/PinterestTagEventData.h
@@ -888,7 +885,6 @@ src/model/AudienceCategory.cpp
 src/model/AudienceCommon.cpp
 src/model/AudienceCreateCustomRequest.cpp
 src/model/AudienceCreateRequest.cpp
-src/model/AudienceCreateRequest_1_audience_type.cpp
 src/model/AudienceDataParty.cpp
 src/model/AudienceDefinition.cpp
 src/model/AudienceDefinitionResponse.cpp
@@ -1066,7 +1062,6 @@ src/model/CatalogsItemsDeleteDiscontinuedBatchRequest.cpp
 src/model/CatalogsItemsFilters.cpp
 src/model/CatalogsItemsPostFilters.cpp
 src/model/CatalogsItemsRequest.cpp
-src/model/CatalogsItemsRequest_language.cpp
 src/model/CatalogsItemsUpdateBatchRequest.cpp
 src/model/CatalogsItemsUpsertBatchRequest.cpp
 src/model/CatalogsListProductsByFeedBasedFilter.cpp
@@ -1400,7 +1395,6 @@ src/model/PinMediaWithVideos.cpp
 src/model/PinPromotionSummaryStatus.cpp
 src/model/PinUpdate.cpp
 src/model/PinUpdate_carousel_slots_inner.cpp
-src/model/Pins_analytics_metric_types_parameter_inner.cpp
 src/model/Pins_list_200_response.cpp
 src/model/Pins_save_request.cpp
 src/model/PinterestTagEventData.cpp

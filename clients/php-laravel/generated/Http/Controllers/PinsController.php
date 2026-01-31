@@ -99,12 +99,8 @@ class PinsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->multiPinsAnalytics($pinIds, $startDate, $endDate, $metricTypes, $appTypes, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->multiPinsAnalytics($pinIds, $startDate, $endDate, $metricTypes, $appTypes, $adAccountId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -194,12 +190,8 @@ class PinsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->pinsAnalytics($pinId, $startDate, $endDate, $metricTypes, $appTypes, $splitField, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->pinsAnalytics($pinId, $startDate, $endDate, $metricTypes, $appTypes, $splitField, $adAccountId);
 
         if (is_array($apiResult)) {
             $serialized = array_map(fn ($item) => $this->serde->serialize($item, format: 'array'), $apiResult);
@@ -253,12 +245,8 @@ class PinsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->pinsCreate($pinCreate, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->pinsCreate($pinCreate, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Pin) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 201);
@@ -323,12 +311,8 @@ class PinsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->pinsDelete($pinId, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->pinsDelete($pinId, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\NoContent204) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 204);
@@ -386,16 +370,12 @@ class PinsController extends Controller
         }
 
 
-        $pinMetrics = $request->bool('pinMetrics');
+        $pinMetrics = $request->boolean('pinMetrics');
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->pinsGet($pinId, $pinMetrics, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->pinsGet($pinId, $pinMetrics, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Pin) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -472,7 +452,7 @@ class PinsController extends Controller
 
         $pinFilter = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinsListPinFilterParameter::class);
 
-        $includeProtectedPins = $request->bool('includeProtectedPins');
+        $includeProtectedPins = $request->boolean('includeProtectedPins');
 
         $pinType = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\PinsListPinTypeParameter::class);
 
@@ -480,14 +460,10 @@ class PinsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        $pinMetrics = $request->bool('pinMetrics');
+        $pinMetrics = $request->boolean('pinMetrics');
 
-        try {
-            $apiResult = $this->api->pinsList($bookmark, $pageSize, $pinFilter, $includeProtectedPins, $pinType, $creativeTypes, $adAccountId, $pinMetrics);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->pinsList($bookmark, $pageSize, $pinFilter, $includeProtectedPins, $pinType, $creativeTypes, $adAccountId, $pinMetrics);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PinsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -533,12 +509,8 @@ class PinsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->pinsSave($pinId, $pinsSaveRequest, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->pinsSave($pinId, $pinsSaveRequest, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Pin) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 201);
@@ -588,12 +560,8 @@ class PinsController extends Controller
 
         $adAccountId = $request->string('adAccountId')->value();
 
-        try {
-            $apiResult = $this->api->pinsUpdate($pinId, $pinUpdate, $adAccountId);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->pinsUpdate($pinId, $pinUpdate, $adAccountId);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\Pin) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

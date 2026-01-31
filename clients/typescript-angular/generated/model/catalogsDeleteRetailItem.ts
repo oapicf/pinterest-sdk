@@ -20,10 +20,10 @@ export interface CatalogsDeleteRetailItem {
     operation: CatalogsDeleteRetailItem.OperationEnum;
 }
 export namespace CatalogsDeleteRetailItem {
-    export type OperationEnum = 'DELETE';
     export const OperationEnum = {
-        Delete: 'DELETE' as OperationEnum
-    };
+        Delete: 'DELETE'
+    } as const;
+    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }
 
 

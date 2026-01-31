@@ -1,26 +1,28 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.BusinessRoleForMembers;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Single instance of a business member to have its role updated
- **/
+ * Single instance of a business member to have its role updated
+ */
 @ApiModel(description="Single instance of a business member to have its role updated")
 
 public class UpdateMemberBusinessRoleBody  {
   
   @ApiModelProperty(required = true, value = "")
+
   private BusinessRoleForMembers businessRole;
 
-  @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member")
  /**
-   * Unique identifier of the member
-  **/
+  * Unique identifier of the member
+  */
+  @ApiModelProperty(example = "140943737684417", required = true, value = "Unique identifier of the member")
+
   private String memberId;
  /**
    * Get businessRole

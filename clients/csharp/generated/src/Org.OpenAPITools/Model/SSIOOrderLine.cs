@@ -553,12 +553,10 @@ namespace Org.OpenAPITools.Model
                             lastModifiedDateTime = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "start_date":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                startDate = new Option<DateOnly?>(JsonSerializer.Deserialize<DateOnly?>(ref utf8JsonReader, jsonSerializerOptions));
+                            startDate = new Option<DateOnly?>(JsonSerializer.Deserialize<DateOnly?>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "end_date":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                endDate = new Option<DateOnly?>(JsonSerializer.Deserialize<DateOnly?>(ref utf8JsonReader, jsonSerializerOptions));
+                            endDate = new Option<DateOnly?>(JsonSerializer.Deserialize<DateOnly?>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "bill_to_company_name":
                             billToCompanyName = new Option<string?>(utf8JsonReader.GetString());
@@ -605,12 +603,10 @@ namespace Org.OpenAPITools.Model
                             acceptedTermsTime = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "budget_amount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                budgetAmount = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            budgetAmount = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "estimated_monthly_spend":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                estimatedMonthlySpend = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            estimatedMonthlySpend = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         default:
                             break;

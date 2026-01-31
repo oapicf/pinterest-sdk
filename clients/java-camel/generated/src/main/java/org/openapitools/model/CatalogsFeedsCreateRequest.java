@@ -32,7 +32,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "CatalogsFeedsCreateRequest", description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
 
   private JsonNullable<NullableCurrency> defaultCurrency = JsonNullable.<NullableCurrency>undefined();
@@ -53,7 +53,7 @@ public class CatalogsFeedsCreateRequest implements FeedsCreateRequest {
 
   private JsonNullable<ProductAvailabilityType> defaultAvailability = JsonNullable.<ProductAvailabilityType>undefined();
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   public CatalogsFeedsCreateRequest() {
     super();

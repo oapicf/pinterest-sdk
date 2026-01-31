@@ -29,12 +29,12 @@ export interface CreateMembershipOrPartnershipInvitesBody {
     partners?: Array<string>;
 }
 export namespace CreateMembershipOrPartnershipInvitesBody {
-    export type BusinessRoleEnum = 'EMPLOYEE' | 'BIZ_ADMIN' | 'PARTNER';
     export const BusinessRoleEnum = {
-        Employee: 'EMPLOYEE' as BusinessRoleEnum,
-        BizAdmin: 'BIZ_ADMIN' as BusinessRoleEnum,
-        Partner: 'PARTNER' as BusinessRoleEnum
-    };
+        Employee: 'EMPLOYEE',
+        BizAdmin: 'BIZ_ADMIN',
+        Partner: 'PARTNER'
+    } as const;
+    export type BusinessRoleEnum = typeof BusinessRoleEnum[keyof typeof BusinessRoleEnum];
 }
 
 

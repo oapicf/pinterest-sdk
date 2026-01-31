@@ -21,12 +21,12 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "TargetingTemplateAudienceSizing", description = "Gets an audience size estimate for a set of given targeting spec data. <p>Returns:</p> An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate. ")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateAudienceSizing {
 
   private @Nullable TargetingTemplateAudienceSizingReachEstimate reachEstimate;
 
-  public TargetingTemplateAudienceSizing reachEstimate(TargetingTemplateAudienceSizingReachEstimate reachEstimate) {
+  public TargetingTemplateAudienceSizing reachEstimate(@Nullable TargetingTemplateAudienceSizingReachEstimate reachEstimate) {
     this.reachEstimate = reachEstimate;
     return this;
   }
@@ -38,11 +38,11 @@ public class TargetingTemplateAudienceSizing {
   @Valid 
   @Schema(name = "reach_estimate", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("reach_estimate")
-  public TargetingTemplateAudienceSizingReachEstimate getReachEstimate() {
+  public @Nullable TargetingTemplateAudienceSizingReachEstimate getReachEstimate() {
     return reachEstimate;
   }
 
-  public void setReachEstimate(TargetingTemplateAudienceSizingReachEstimate reachEstimate) {
+  public void setReachEstimate(@Nullable TargetingTemplateAudienceSizingReachEstimate reachEstimate) {
     this.reachEstimate = reachEstimate;
   }
 

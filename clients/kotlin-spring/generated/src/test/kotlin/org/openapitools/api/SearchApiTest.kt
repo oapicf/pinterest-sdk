@@ -24,6 +24,7 @@ class SearchApiTest {
         val bookmark: kotlin.String? = TODO()
         val locale: kotlin.String? = TODO()
         val limit: kotlin.Int = TODO()
+        
         val response: ResponseEntity<SearchPartnerPins200Response> = api.searchPartnerPins(term, countryCode, bookmark, locale, limit)
 
         // TODO: test validations
@@ -41,6 +42,7 @@ class SearchApiTest {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val query: kotlin.String? = TODO()
+        
         val response: ResponseEntity<SearchUserBoardsGet200Response> = api.searchUserBoardsGet(adAccountId, bookmark, pageSize, query)
 
         // TODO: test validations
@@ -57,6 +59,7 @@ class SearchApiTest {
         val query: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<PinsList200Response> = api.searchUserPinsList(query, adAccountId, bookmark)
 
         // TODO: test validations

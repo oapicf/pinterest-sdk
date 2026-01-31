@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_feed_credentials
 import model_catalogs_feed_processing_schedule
@@ -22,14 +24,63 @@ import model_product_availability_type
 
 type CatalogsRetailFeedsCreateRequest* = object
   ## Request object for creating a retail feed.
-  defaultCurrency*: NullableCurrency
+  defaultCurrency*: Option[NullableCurrency]
   name*: string ## A human-friendly name associated to a given feed.
   format*: CatalogsFormat
   defaultLocale*: CatalogsFeedsCreateRequest_default_locale
-  credentials*: CatalogsFeedCredentials
+  credentials*: Option[CatalogsFeedCredentials]
   location*: string ## The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  preferredProcessingSchedule*: CatalogsFeedProcessingSchedule
+  preferredProcessingSchedule*: Option[CatalogsFeedProcessingSchedule]
   catalogType*: CatalogsType
   defaultCountry*: Country
-  defaultAvailability*: ProductAvailabilityType
-  status*: CatalogsStatus
+  defaultAvailability*: Option[ProductAvailabilityType]
+  status*: Option[CatalogsStatus]
+
+
+# Custom JSON deserialization for CatalogsRetailFeedsCreateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsRetailFeedsCreateRequest]): CatalogsRetailFeedsCreateRequest =
+  result = CatalogsRetailFeedsCreateRequest()
+  if node.kind == JObject:
+    if node.hasKey("default_currency") and node["default_currency"].kind != JNull:
+      result.defaultCurrency = some(to(node["default_currency"], typeof(result.defaultCurrency.get())))
+    if node.hasKey("name"):
+      result.name = to(node["name"], string)
+    if node.hasKey("format"):
+      result.format = to(node["format"], CatalogsFormat)
+    if node.hasKey("default_locale"):
+      result.defaultLocale = to(node["default_locale"], CatalogsFeedsCreateRequest_default_locale)
+    if node.hasKey("credentials") and node["credentials"].kind != JNull:
+      result.credentials = some(to(node["credentials"], typeof(result.credentials.get())))
+    if node.hasKey("location"):
+      result.location = to(node["location"], string)
+    if node.hasKey("preferred_processing_schedule") and node["preferred_processing_schedule"].kind != JNull:
+      result.preferredProcessingSchedule = some(to(node["preferred_processing_schedule"], typeof(result.preferredProcessingSchedule.get())))
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogsType)
+    if node.hasKey("default_country"):
+      result.defaultCountry = to(node["default_country"], Country)
+    if node.hasKey("default_availability") and node["default_availability"].kind != JNull:
+      result.defaultAvailability = some(to(node["default_availability"], typeof(result.defaultAvailability.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+
+# Custom JSON serialization for CatalogsRetailFeedsCreateRequest with custom field names
+proc `%`*(obj: CatalogsRetailFeedsCreateRequest): JsonNode =
+  result = newJObject()
+  if obj.defaultCurrency.isSome():
+    result["default_currency"] = %obj.defaultCurrency.get()
+  result["name"] = %obj.name
+  result["format"] = %obj.format
+  result["default_locale"] = %obj.defaultLocale
+  if obj.credentials.isSome():
+    result["credentials"] = %obj.credentials.get()
+  result["location"] = %obj.location
+  if obj.preferredProcessingSchedule.isSome():
+    result["preferred_processing_schedule"] = %obj.preferredProcessingSchedule.get()
+  result["catalog_type"] = %obj.catalogType
+  result["default_country"] = %obj.defaultCountry
+  if obj.defaultAvailability.isSome():
+    result["default_availability"] = %obj.defaultAvailability.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+

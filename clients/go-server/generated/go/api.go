@@ -788,8 +788,8 @@ type PinsAPIServicer interface {
 	PinsGet(context.Context, string, bool, string) (ImplResponse, error)
 	PinsDelete(context.Context, string, string) (ImplResponse, error)
 	PinsUpdate(context.Context, string, *PinUpdate, string) (ImplResponse, error)
-	PinsAnalytics(context.Context, string, string, string, []PinsAnalyticsMetricTypesParameterInner, string, string, string) (ImplResponse, error)
-	MultiPinsAnalytics(context.Context, []string, string, string, []PinsAnalyticsMetricTypesParameterInner, string, string) (ImplResponse, error)
+	PinsAnalytics(context.Context, string, string, string, []string, string, string, string) (ImplResponse, error)
+	MultiPinsAnalytics(context.Context, []string, string, string, []string, string, string) (ImplResponse, error)
 	PinsSave(context.Context, string, PinsSaveRequest, string) (ImplResponse, error)
 }
 

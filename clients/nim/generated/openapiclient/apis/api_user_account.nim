@@ -30,21 +30,18 @@ import ../models/model_user_summary
 import ../models/model_user_website_summary
 import ../models/model_user_website_verification_code
 import ../models/model_user_website_verify_request
-import ../models/model_boards_user_follows_list_200_response
-import ../models/model_followers_list_200_response
-import ../models/model_user_account_followed_interests_200_response
-import ../models/model_user_following_get_200_response
-import ../models/model_user_websites_get_200_response
+import ../models/model_boards_user_follows_list200response
+import ../models/model_followers_list200response
+import ../models/model_user_account_followed_interests200response
+import ../models/model_user_following_get200response
+import ../models/model_user_websites_get200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -56,14 +53,18 @@ template constructResult[T](response: Response): untyped =
 
 proc boardsUserFollowsList*(httpClient: HttpClient, bookmark: string, pageSize: int, explicitFollowing: bool, adAccountId: string): (Option[boards_user_follows_list_200_response], Response) =
   ## List following boards
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("explicit_following", $explicitFollowing), # Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $explicitFollowing != "":
+    query_params_list.add(("explicit_following", $explicitFollowing))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/user_account/following/boards" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/user_account/following/boards" & "?" & url_encoded_query_params)
   constructResult[boards_user_follows_list_200_response](response)
 
 
@@ -77,12 +78,14 @@ proc followUserUpdate*(httpClient: HttpClient, username: string, followUserReque
 
 proc followersList*(httpClient: HttpClient, bookmark: string, pageSize: int): (Option[followers_list_200_response], Response) =
   ## List followers
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/user_account/followers" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/user_account/followers" & "?" & url_encoded_query_params)
   constructResult[followers_list_200_response](response)
 
 
@@ -95,136 +98,175 @@ proc linkedBusinessAccountsGet*(httpClient: HttpClient): (Option[seq[LinkedBusin
 
 proc unverifyWebsiteDelete*(httpClient: HttpClient, website: string): Response =
   ## Unverify website
-  let query_for_api_call = encodeQuery([
-    ("website", $website), # Website with path or domain only
-  ])
-  httpClient.delete(basepath & "/user_account/websites" & "?" & query_for_api_call)
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("website", $website))
+  let url_encoded_query_params = encodeQuery(query_params_list)
+  httpClient.delete(basepath & "/user_account/websites" & "?" & url_encoded_query_params)
+
 
 
 proc userAccountAnalytics*(httpClient: HttpClient, startDate: string, endDate: string, fromClaimedContent: string, pinFormat: string, appTypes: string, contentType: string, source: string, metricTypes: seq[MetricTypes], splitField: string, adAccountId: string): (Option[Table[string, AnalyticsMetricsResponse]], Response) =
   ## Get user account analytics
-  let query_for_api_call = encodeQuery([
-    ("start_date", $startDate), # Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-    ("end_date", $endDate), # Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    ("from_claimed_content", $fromClaimedContent), # Filter on Pins that match your claimed domain.
-    ("pin_format", $pinFormat), # Pin formats to get data for, default is all.
-    ("app_types", $appTypes), # Apps or devices to get data for, default is all.
-    ("content_type", $contentType), # Filter to paid or organic data. Default is all.
-    ("source", $source), # Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-    ("metric_types", $metricTypes.join(",")), # Metric types to get data for, default is all. 
-    ("split_field", $splitField), # How to split the data into groups. Not including this param means data won't be split.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("start_date", $startDate))
+  query_params_list.add(("end_date", $endDate))
+  if $fromClaimedContent != "":
+    query_params_list.add(("from_claimed_content", $fromClaimedContent))
+  if $pinFormat != "":
+    query_params_list.add(("pin_format", $pinFormat))
+  if $appTypes != "":
+    query_params_list.add(("app_types", $appTypes))
+  if $contentType != "":
+    query_params_list.add(("content_type", $contentType))
+  if $source != "":
+    query_params_list.add(("source", $source))
+  if metricTypes.len > 0:
+    query_params_list.add(("metric_types", $metricTypes.join(",")))
+  if $splitField != "":
+    query_params_list.add(("split_field", $splitField))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/user_account/analytics" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/user_account/analytics" & "?" & url_encoded_query_params)
   constructResult[Table[string, AnalyticsMetricsResponse]](response)
 
 
 proc userAccountAnalyticsTopPins*(httpClient: HttpClient, startDate: string, endDate: string, sortBy: string, fromClaimedContent: string, pinFormat: string, appTypes: string, contentType: string, source: string, metricTypes: seq[MetricTypes], numOfPins: int, createdInLastNDays: CreatedInLastNDays, adAccountId: string): (Option[TopPinsAnalyticsResponse], Response) =
   ## Get user account top pins analytics
-  let query_for_api_call = encodeQuery([
-    ("start_date", $startDate), # Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-    ("end_date", $endDate), # Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    ("sort_by", $sortBy), # Specify sorting order for metrics
-    ("from_claimed_content", $fromClaimedContent), # Filter on Pins that match your claimed domain.
-    ("pin_format", $pinFormat), # Pin formats to get data for, default is all.
-    ("app_types", $appTypes), # Apps or devices to get data for, default is all.
-    ("content_type", $contentType), # Filter to paid or organic data. Default is all.
-    ("source", $source), # Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-    ("metric_types", $metricTypes.join(",")), # Metric types to get data for, default is all. 
-    ("num_of_pins", $numOfPins), # Number of pins to include, default is 10. Max is 50.
-    ("created_in_last_n_days", $createdInLastNDays), # Get metrics for pins created in the last \"n\" days.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("start_date", $startDate))
+  query_params_list.add(("end_date", $endDate))
+  query_params_list.add(("sort_by", $sortBy))
+  if $fromClaimedContent != "":
+    query_params_list.add(("from_claimed_content", $fromClaimedContent))
+  if $pinFormat != "":
+    query_params_list.add(("pin_format", $pinFormat))
+  if $appTypes != "":
+    query_params_list.add(("app_types", $appTypes))
+  if $contentType != "":
+    query_params_list.add(("content_type", $contentType))
+  if $source != "":
+    query_params_list.add(("source", $source))
+  if metricTypes.len > 0:
+    query_params_list.add(("metric_types", $metricTypes.join(",")))
+  if $numOfPins != "":
+    query_params_list.add(("num_of_pins", $numOfPins))
+  if $createdInLastNDays != "":
+    query_params_list.add(("created_in_last_n_days", $createdInLastNDays))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/user_account/analytics/top_pins" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/user_account/analytics/top_pins" & "?" & url_encoded_query_params)
   constructResult[TopPinsAnalyticsResponse](response)
 
 
 proc userAccountAnalyticsTopVideoPins*(httpClient: HttpClient, startDate: string, endDate: string, sortBy: string, fromClaimedContent: string, pinFormat: string, appTypes: string, contentType: string, source: string, metricTypes: seq[MetricTypes], numOfPins: int, createdInLastNDays: CreatedInLastNDays, adAccountId: string): (Option[TopVideoPinsAnalyticsResponse], Response) =
   ## Get user account top video pins analytics
-  let query_for_api_call = encodeQuery([
-    ("start_date", $startDate), # Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
-    ("end_date", $endDate), # Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-    ("sort_by", $sortBy), # Specify sorting order for video metrics
-    ("from_claimed_content", $fromClaimedContent), # Filter on Pins that match your claimed domain.
-    ("pin_format", $pinFormat), # Pin formats to get data for, default is all.
-    ("app_types", $appTypes), # Apps or devices to get data for, default is all.
-    ("content_type", $contentType), # Filter to paid or organic data. Default is all.
-    ("source", $source), # Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-    ("metric_types", $metricTypes.join(",")), # Metric types to get video data for, default is all. 
-    ("num_of_pins", $numOfPins), # Number of pins to include, default is 10. Max is 50.
-    ("created_in_last_n_days", $createdInLastNDays), # Get metrics for pins created in the last \"n\" days.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("start_date", $startDate))
+  query_params_list.add(("end_date", $endDate))
+  query_params_list.add(("sort_by", $sortBy))
+  if $fromClaimedContent != "":
+    query_params_list.add(("from_claimed_content", $fromClaimedContent))
+  if $pinFormat != "":
+    query_params_list.add(("pin_format", $pinFormat))
+  if $appTypes != "":
+    query_params_list.add(("app_types", $appTypes))
+  if $contentType != "":
+    query_params_list.add(("content_type", $contentType))
+  if $source != "":
+    query_params_list.add(("source", $source))
+  if metricTypes.len > 0:
+    query_params_list.add(("metric_types", $metricTypes.join(",")))
+  if $numOfPins != "":
+    query_params_list.add(("num_of_pins", $numOfPins))
+  if $createdInLastNDays != "":
+    query_params_list.add(("created_in_last_n_days", $createdInLastNDays))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/user_account/analytics/top_video_pins" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/user_account/analytics/top_video_pins" & "?" & url_encoded_query_params)
   constructResult[TopVideoPinsAnalyticsResponse](response)
 
 
 proc userAccountFollowedInterests*(httpClient: HttpClient, username: string, bookmark: string, pageSize: int): (Option[user_account_followed_interests_200_response], Response) =
   ## List following interests
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/users/{username}/interests/follow" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/users/{username}/interests/follow" & "?" & url_encoded_query_params)
   constructResult[user_account_followed_interests_200_response](response)
 
 
 proc userAccountGet*(httpClient: HttpClient, adAccountId: string): (Option[Account], Response) =
   ## Get user account
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/user_account" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/user_account" & "?" & url_encoded_query_params)
   constructResult[Account](response)
 
 
 proc userFollowingGet*(httpClient: HttpClient, bookmark: string, pageSize: int, feedType: string, explicitFollowing: bool, adAccountId: string): (Option[user_following_get_200_response], Response) =
   ## List following
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("feed_type", $feedType), # Thrift param specifying what type of followees will be kept. Default to include all followees.
-    ("explicit_following", $explicitFollowing), # Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $feedType != "":
+    query_params_list.add(("feed_type", $feedType))
+  if $explicitFollowing != "":
+    query_params_list.add(("explicit_following", $explicitFollowing))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/user_account/following" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/user_account/following" & "?" & url_encoded_query_params)
   constructResult[user_following_get_200_response](response)
 
 
 proc userWebsitesGet*(httpClient: HttpClient, bookmark: string, pageSize: int): (Option[user_websites_get_200_response], Response) =
   ## Get user websites
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/user_account/websites" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/user_account/websites" & "?" & url_encoded_query_params)
   constructResult[user_websites_get_200_response](response)
 
 
 proc verifyWebsiteUpdate*(httpClient: HttpClient, userWebsiteVerifyRequest: UserWebsiteVerifyRequest, adAccountId: string): (Option[UserWebsiteSummary], Response) =
   ## Verify website
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/user_account/websites" & "?" & query_for_api_call, $(%userWebsiteVerifyRequest))
+  let response = httpClient.post(basepath & "/user_account/websites" & "?" & url_encoded_query_params, $(%userWebsiteVerifyRequest))
   constructResult[UserWebsiteSummary](response)
 
 
 proc websiteVerificationGet*(httpClient: HttpClient, adAccountId: string): (Option[UserWebsiteVerificationCode], Response) =
   ## Get user verification code for website claiming
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/user_account/websites/verification" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/user_account/websites/verification" & "?" & url_encoded_query_params)
   constructResult[UserWebsiteVerificationCode](response)
 

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsHotelListProductsByCatalogBasedFilterRequest;
@@ -15,13 +14,14 @@ import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object to list products for a given catalog_id and product group filter.
- **/
+ * Request object to list products for a given catalog_id and product group filter.
+ */
 @ApiModel(description="Request object to list products for a given catalog_id and product group filter.")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
@@ -65,24 +65,32 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
  /**
-   * Catalog id pertaining to the creative assets product group.
-  **/
+  * Catalog id pertaining to the creative assets product group.
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the creative assets product group.")
+
   private String catalogId;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private Country country;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsLocale locale;
  /**
    * Get catalogType

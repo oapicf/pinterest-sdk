@@ -33,96 +33,96 @@ namespace Org.OpenAPITools.Models
             /// Enum UNKNOWNEnum for UNKNOWN
             /// </summary>
             [EnumMember(Value = "UNKNOWN")]
-            UNKNOWNEnum = 1,
+            UNKNOWNEnum,
             
             /// <summary>
             /// Enum OWNEREnum for OWNER
             /// </summary>
             [EnumMember(Value = "OWNER")]
-            OWNEREnum = 2,
+            OWNEREnum,
             
             /// <summary>
             /// Enum ADMINEnum for ADMIN
             /// </summary>
             [EnumMember(Value = "ADMIN")]
-            ADMINEnum = 3,
+            ADMINEnum,
             
             /// <summary>
             /// Enum ANALYSTEnum for ANALYST
             /// </summary>
             [EnumMember(Value = "ANALYST")]
-            ANALYSTEnum = 4,
+            ANALYSTEnum,
             
             /// <summary>
             /// Enum SOSREADEREnum for SOS_READER
             /// </summary>
             [EnumMember(Value = "SOS_READER")]
-            SOSREADEREnum = 5,
+            SOSREADEREnum,
             
             /// <summary>
             /// Enum FINANCEMANAGEREnum for FINANCE_MANAGER
             /// </summary>
             [EnumMember(Value = "FINANCE_MANAGER")]
-            FINANCEMANAGEREnum = 6,
+            FINANCEMANAGEREnum,
             
             /// <summary>
             /// Enum AUDIENCEMANAGEREnum for AUDIENCE_MANAGER
             /// </summary>
             [EnumMember(Value = "AUDIENCE_MANAGER")]
-            AUDIENCEMANAGEREnum = 7,
+            AUDIENCEMANAGEREnum,
             
             /// <summary>
             /// Enum CAMPAIGNMANAGEREnum for CAMPAIGN_MANAGER
             /// </summary>
             [EnumMember(Value = "CAMPAIGN_MANAGER")]
-            CAMPAIGNMANAGEREnum = 8,
+            CAMPAIGNMANAGEREnum,
             
             /// <summary>
             /// Enum CATALOGSMANAGEREnum for CATALOGS_MANAGER
             /// </summary>
             [EnumMember(Value = "CATALOGS_MANAGER")]
-            CATALOGSMANAGEREnum = 9,
+            CATALOGSMANAGEREnum,
             
             /// <summary>
             /// Enum RESTRICTEDOWNEREnum for RESTRICTED_OWNER
             /// </summary>
             [EnumMember(Value = "RESTRICTED_OWNER")]
-            RESTRICTEDOWNEREnum = 10,
+            RESTRICTEDOWNEREnum,
             
             /// <summary>
             /// Enum PROFILEMANAGEREnum for PROFILE_MANAGER
             /// </summary>
             [EnumMember(Value = "PROFILE_MANAGER")]
-            PROFILEMANAGEREnum = 11,
+            PROFILEMANAGEREnum,
             
             /// <summary>
             /// Enum PROFILEPUBLISHEREnum for PROFILE_PUBLISHER
             /// </summary>
             [EnumMember(Value = "PROFILE_PUBLISHER")]
-            PROFILEPUBLISHEREnum = 12,
+            PROFILEPUBLISHEREnum,
             
             /// <summary>
             /// Enum RESOURCEPINNERLISTOWNEREnum for RESOURCE_PINNER_LIST_OWNER
             /// </summary>
             [EnumMember(Value = "RESOURCE_PINNER_LIST_OWNER")]
-            RESOURCEPINNERLISTOWNEREnum = 13,
+            RESOURCEPINNERLISTOWNEREnum,
             
             /// <summary>
             /// Enum RESOURCEPINNERLISTREADEREnum for RESOURCE_PINNER_LIST_READER
             /// </summary>
             [EnumMember(Value = "RESOURCE_PINNER_LIST_READER")]
-            RESOURCEPINNERLISTREADEREnum = 14,
+            RESOURCEPINNERLISTREADEREnum,
             
             /// <summary>
             /// Enum BIZPINNERLISTSHAREREnum for BIZ_PINNER_LIST_SHARER
             /// </summary>
             [EnumMember(Value = "BIZ_PINNER_LIST_SHARER")]
-            BIZPINNERLISTSHAREREnum = 15,
+            BIZPINNERLISTSHAREREnum,
             
             /// <summary>
             /// Enum RESOURCECONVERSIONTAGSREADEREnum for RESOURCE_CONVERSION_TAGS_READER
             /// </summary>
             [EnumMember(Value = "RESOURCE_CONVERSION_TAGS_READER")]
-            RESOURCECONVERSIONTAGSREADEREnum = 16
+            RESOURCECONVERSIONTAGSREADEREnum
         }
 }

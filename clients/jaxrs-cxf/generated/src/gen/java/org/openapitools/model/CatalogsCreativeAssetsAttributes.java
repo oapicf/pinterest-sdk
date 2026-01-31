@@ -11,88 +11,102 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsCreativeAssetsAttributes  {
   
-  @ApiModelProperty(value = "The name of the creative assets.")
  /**
-   * The name of the creative assets.
-  **/
+  * The name of the creative assets.
+  */
+  @ApiModelProperty(value = "The name of the creative assets.")
+
   private String title;
 
-  @ApiModelProperty(value = "Brief description of the creative assets.")
  /**
-   * Brief description of the creative assets.
-  **/
+  * Brief description of the creative assets.
+  */
+  @ApiModelProperty(value = "Brief description of the creative assets.")
+
   private String description;
 
-  @ApiModelProperty(value = "Link to the creative assets page.")
  /**
-   * Link to the creative assets page.
-  **/
+  * Link to the creative assets page.
+  */
+  @ApiModelProperty(value = "Link to the creative assets page.")
+
   private String link;
 
-  @ApiModelProperty(value = "IOS deep link to the creative assets page.")
  /**
-   * IOS deep link to the creative assets page.
-  **/
+  * IOS deep link to the creative assets page.
+  */
+  @ApiModelProperty(value = "IOS deep link to the creative assets page.")
+
   private String iosDeepLink;
 
-  @ApiModelProperty(value = "Link to the creative assets page.")
  /**
-   * Link to the creative assets page.
-  **/
+  * Link to the creative assets page.
+  */
+  @ApiModelProperty(value = "Link to the creative assets page.")
+
   private String androidDeepLink;
 
-  @ApiModelProperty(value = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.")
  /**
-   * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
-  **/
+  * The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.
+  */
+  @ApiModelProperty(value = "The categorization of the product based on the standardized Google Product Taxonomy. This is a set taxonomy. Both the text values and numeric codes are accepted.")
+
   private String googleProductCategory;
 
-  @ApiModelProperty(value = "Custom grouping of creative assets.")
  /**
-   * Custom grouping of creative assets.
-  **/
+  * Custom grouping of creative assets.
+  */
+  @ApiModelProperty(value = "Custom grouping of creative assets.")
+
   private String customLabel0;
 
-  @ApiModelProperty(value = "Custom grouping of creative assets.")
  /**
-   * Custom grouping of creative assets.
-  **/
+  * Custom grouping of creative assets.
+  */
+  @ApiModelProperty(value = "Custom grouping of creative assets.")
+
   private String customLabel1;
 
-  @ApiModelProperty(value = "Custom grouping of creative assets.")
  /**
-   * Custom grouping of creative assets.
-  **/
+  * Custom grouping of creative assets.
+  */
+  @ApiModelProperty(value = "Custom grouping of creative assets.")
+
   private String customLabel2;
 
-  @ApiModelProperty(value = "Custom grouping of creative assets.")
  /**
-   * Custom grouping of creative assets.
-  **/
+  * Custom grouping of creative assets.
+  */
+  @ApiModelProperty(value = "Custom grouping of creative assets.")
+
   private String customLabel3;
 
-  @ApiModelProperty(value = "Custom grouping of creative assets.")
  /**
-   * Custom grouping of creative assets.
-  **/
+  * Custom grouping of creative assets.
+  */
+  @ApiModelProperty(value = "Custom grouping of creative assets.")
+
   private String customLabel4;
 
-  @ApiModelProperty(value = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.")
  /**
-   * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
-  **/
+  * Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.
+  */
+  @ApiModelProperty(value = "Visibility of the creative assets. Must be one of the following values (upper or lowercase): ‘visible’, ‘hidden’.")
+
   private String visibility;
 
-  @ApiModelProperty(example = "https://scene.example.com/image/image_v2.jpg", value = "The creative assets image.")
  /**
-   * The creative assets image.
-  **/
+  * The creative assets image.
+  */
+  @ApiModelProperty(example = "https://scene.example.com/image/image_v2.jpg", value = "The creative assets image.")
+
   private String imageLink;
 
-  @ApiModelProperty(example = "https://scene.example.com/image/image_v2.mp4", value = "The creative assets video.")
  /**
-   * The creative assets video.
-  **/
+  * The creative assets video.
+  */
+  @ApiModelProperty(example = "https://scene.example.com/image/image_v2.mp4", value = "The creative assets video.")
+
   private String videoLink;
  /**
    * The name of the creative assets.

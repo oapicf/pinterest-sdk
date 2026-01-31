@@ -159,12 +159,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "metrics":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                metrics = new Option<Dictionary<string, decimal>?>(JsonSerializer.Deserialize<Dictionary<string, decimal>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            metrics = new Option<Dictionary<string, decimal>?>(JsonSerializer.Deserialize<Dictionary<string, decimal>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "data_status":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dataStatus = new Option<Dictionary<string, DataStatus>?>(JsonSerializer.Deserialize<Dictionary<string, DataStatus>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            dataStatus = new Option<Dictionary<string, DataStatus>?>(JsonSerializer.Deserialize<Dictionary<string, DataStatus>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "pin_id":
                             pinId = new Option<string?>(utf8JsonReader.GetString()!);

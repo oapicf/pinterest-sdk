@@ -12,12 +12,9 @@
 /**
  * Reporting columns for sync reporting data filter
  */
-export type AdsAnalyticsFilterColumn = 'SPEND_IN_DOLLAR' | 'TOTAL_IMPRESSION';
-
 export const AdsAnalyticsFilterColumn = {
-
-    SpendInDollar: 'SPEND_IN_DOLLAR' as AdsAnalyticsFilterColumn,
-
-    TotalImpression: 'TOTAL_IMPRESSION' as AdsAnalyticsFilterColumn
-};
+    SpendInDollar: 'SPEND_IN_DOLLAR',
+    TotalImpression: 'TOTAL_IMPRESSION'
+} as const;
+export type AdsAnalyticsFilterColumn = typeof AdsAnalyticsFilterColumn[keyof typeof AdsAnalyticsFilterColumn];
 

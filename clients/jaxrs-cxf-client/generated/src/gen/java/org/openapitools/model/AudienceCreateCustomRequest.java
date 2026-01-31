@@ -11,28 +11,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AudienceCreateCustomRequest  {
   
-  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
  /**
-   * Ad account ID.
-  **/
+  * Ad account ID.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "string", required = true, value = "Audience name.")
  /**
-   * Audience name.
-  **/
+  * Audience name.
+  */
+  @ApiModelProperty(example = "string", required = true, value = "Audience name.")
+
   private String name;
 
   @ApiModelProperty(required = true, value = "")
+
   private AudienceRule rule;
 
   @ApiModelProperty(required = true, value = "")
+
   private AudienceSharingType sharingType;
 
   @ApiModelProperty(required = true, value = "")
+
   private AudienceDataParty dataParty;
 
   @ApiModelProperty(example = "DLX Demographics", value = "")
+
   private String category;
  /**
    * Ad account ID.

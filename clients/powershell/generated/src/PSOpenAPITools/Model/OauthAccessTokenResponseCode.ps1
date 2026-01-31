@@ -13,8 +13,12 @@ No summary available.
 
 .DESCRIPTION
 
-A successful OAuth access token response for the authorization code flow.
+No description available.
 
+.PARAMETER RefreshToken
+No description available.
+.PARAMETER RefreshTokenExpiresIn
+No description available.
 .PARAMETER ResponseType
 No description available.
 .PARAMETER AccessToken
@@ -25,10 +29,6 @@ No description available.
 No description available.
 .PARAMETER Scope
 No description available.
-.PARAMETER RefreshToken
-No description available.
-.PARAMETER RefreshTokenExpiresIn
-No description available.
 .OUTPUTS
 
 OauthAccessTokenResponseCode<PSCustomObject>
@@ -38,32 +38,40 @@ function Initialize-OauthAccessTokenResponseCode {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${RefreshToken},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [Int32]
+        ${RefreshTokenExpiresIn},
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("authorization_code", "refresh_token", "client_credentials")]
         [String]
         ${ResponseType},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${AccessToken},
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${TokenType} = "bearer",
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
-        [Int32]
-        ${ExpiresIn},
         [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${Scope},
+        ${TokenType} = "bearer",
         [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [String]
-        ${RefreshToken},
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [Int32]
-        ${RefreshTokenExpiresIn}
+        ${ExpiresIn},
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${Scope}
     )
 
     Process {
         'Creating PSCustomObject: PSOpenAPITools => OauthAccessTokenResponseCode' | Write-Debug
         $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        if ($null -eq $RefreshToken) {
+            throw "invalid value for 'RefreshToken', 'RefreshToken' cannot be null."
+        }
+
+        if ($null -eq $RefreshTokenExpiresIn) {
+            throw "invalid value for 'RefreshTokenExpiresIn', 'RefreshTokenExpiresIn' cannot be null."
+        }
 
         if ($null -eq $AccessToken) {
             throw "invalid value for 'AccessToken', 'AccessToken' cannot be null."
@@ -81,23 +89,15 @@ function Initialize-OauthAccessTokenResponseCode {
             throw "invalid value for 'Scope', 'Scope' cannot be null."
         }
 
-        if ($null -eq $RefreshToken) {
-            throw "invalid value for 'RefreshToken', 'RefreshToken' cannot be null."
-        }
-
-        if ($null -eq $RefreshTokenExpiresIn) {
-            throw "invalid value for 'RefreshTokenExpiresIn', 'RefreshTokenExpiresIn' cannot be null."
-        }
-
 
         $PSO = [PSCustomObject]@{
+            "refresh_token" = ${RefreshToken}
+            "refresh_token_expires_in" = ${RefreshTokenExpiresIn}
             "response_type" = ${ResponseType}
             "access_token" = ${AccessToken}
             "token_type" = ${TokenType}
             "expires_in" = ${ExpiresIn}
             "scope" = ${Scope}
-            "refresh_token" = ${RefreshToken}
-            "refresh_token_expires_in" = ${RefreshTokenExpiresIn}
         }
 
 
@@ -135,7 +135,7 @@ function ConvertFrom-JsonToOauthAccessTokenResponseCode {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in OauthAccessTokenResponseCode
-        $AllProperties = ("response_type", "access_token", "token_type", "expires_in", "scope", "refresh_token", "refresh_token_expires_in")
+        $AllProperties = ("refresh_token", "refresh_token_expires_in", "response_type", "access_token", "token_type", "expires_in", "scope")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -143,7 +143,19 @@ function ConvertFrom-JsonToOauthAccessTokenResponseCode {
         }
 
         If ([string]::IsNullOrEmpty($Json) -or $Json -eq "{}") { # empty json
-            throw "Error! Empty JSON cannot be serialized due to the required property 'access_token' missing."
+            throw "Error! Empty JSON cannot be serialized due to the required property 'refresh_token' missing."
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "refresh_token"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'refresh_token' missing."
+        } else {
+            $RefreshToken = $JsonParameters.PSobject.Properties["refresh_token"].value
+        }
+
+        if (!([bool]($JsonParameters.PSobject.Properties.name -match "refresh_token_expires_in"))) {
+            throw "Error! JSON cannot be serialized due to the required property 'refresh_token_expires_in' missing."
+        } else {
+            $RefreshTokenExpiresIn = $JsonParameters.PSobject.Properties["refresh_token_expires_in"].value
         }
 
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "access_token"))) {
@@ -170,18 +182,6 @@ function ConvertFrom-JsonToOauthAccessTokenResponseCode {
             $Scope = $JsonParameters.PSobject.Properties["scope"].value
         }
 
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "refresh_token"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'refresh_token' missing."
-        } else {
-            $RefreshToken = $JsonParameters.PSobject.Properties["refresh_token"].value
-        }
-
-        if (!([bool]($JsonParameters.PSobject.Properties.name -match "refresh_token_expires_in"))) {
-            throw "Error! JSON cannot be serialized due to the required property 'refresh_token_expires_in' missing."
-        } else {
-            $RefreshTokenExpiresIn = $JsonParameters.PSobject.Properties["refresh_token_expires_in"].value
-        }
-
         if (!([bool]($JsonParameters.PSobject.Properties.name -match "response_type"))) { #optional property not found
             $ResponseType = $null
         } else {
@@ -189,13 +189,13 @@ function ConvertFrom-JsonToOauthAccessTokenResponseCode {
         }
 
         $PSO = [PSCustomObject]@{
+            "refresh_token" = ${RefreshToken}
+            "refresh_token_expires_in" = ${RefreshTokenExpiresIn}
             "response_type" = ${ResponseType}
             "access_token" = ${AccessToken}
             "token_type" = ${TokenType}
             "expires_in" = ${ExpiresIn}
             "scope" = ${Scope}
-            "refresh_token" = ${RefreshToken}
-            "refresh_token_expires_in" = ${RefreshTokenExpiresIn}
         }
 
         return $PSO

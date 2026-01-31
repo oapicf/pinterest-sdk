@@ -23,27 +23,27 @@ pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_e oau
 }
 
 static oauth_access_token_request_client_credentials_t *oauth_access_token_request_client_credentials_create_internal(
-    pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_e grant_type,
-    char *scope
+    char *scope,
+    pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_e grant_type
     ) {
     oauth_access_token_request_client_credentials_t *oauth_access_token_request_client_credentials_local_var = malloc(sizeof(oauth_access_token_request_client_credentials_t));
     if (!oauth_access_token_request_client_credentials_local_var) {
         return NULL;
     }
-    oauth_access_token_request_client_credentials_local_var->grant_type = grant_type;
     oauth_access_token_request_client_credentials_local_var->scope = scope;
+    oauth_access_token_request_client_credentials_local_var->grant_type = grant_type;
 
     oauth_access_token_request_client_credentials_local_var->_library_owned = 1;
     return oauth_access_token_request_client_credentials_local_var;
 }
 
 __attribute__((deprecated)) oauth_access_token_request_client_credentials_t *oauth_access_token_request_client_credentials_create(
-    pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_e grant_type,
-    char *scope
+    char *scope,
+    pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_e grant_type
     ) {
     return oauth_access_token_request_client_credentials_create_internal (
-        grant_type,
-        scope
+        scope,
+        grant_type
         );
 }
 
@@ -66,6 +66,15 @@ void oauth_access_token_request_client_credentials_free(oauth_access_token_reque
 cJSON *oauth_access_token_request_client_credentials_convertToJSON(oauth_access_token_request_client_credentials_t *oauth_access_token_request_client_credentials) {
     cJSON *item = cJSON_CreateObject();
 
+    // oauth_access_token_request_client_credentials->scope
+    if (!oauth_access_token_request_client_credentials->scope) {
+        goto fail;
+    }
+    if(cJSON_AddStringToObject(item, "scope", oauth_access_token_request_client_credentials->scope) == NULL) {
+    goto fail; //String
+    }
+
+
     // oauth_access_token_request_client_credentials->grant_type
     if (pinterest_rest_api_oauth_access_token_request_client_credentials_GRANTTYPE_NULL == oauth_access_token_request_client_credentials->grant_type) {
         goto fail;
@@ -73,15 +82,6 @@ cJSON *oauth_access_token_request_client_credentials_convertToJSON(oauth_access_
     if(cJSON_AddStringToObject(item, "grant_type", oauth_access_token_request_client_credentials_grant_type_ToString(oauth_access_token_request_client_credentials->grant_type)) == NULL)
     {
     goto fail; //Enum
-    }
-
-
-    // oauth_access_token_request_client_credentials->scope
-    if (!oauth_access_token_request_client_credentials->scope) {
-        goto fail;
-    }
-    if(cJSON_AddStringToObject(item, "scope", oauth_access_token_request_client_credentials->scope) == NULL) {
-    goto fail; //String
     }
 
     return item;
@@ -95,6 +95,21 @@ fail:
 oauth_access_token_request_client_credentials_t *oauth_access_token_request_client_credentials_parseFromJSON(cJSON *oauth_access_token_request_client_credentialsJSON){
 
     oauth_access_token_request_client_credentials_t *oauth_access_token_request_client_credentials_local_var = NULL;
+
+    // oauth_access_token_request_client_credentials->scope
+    cJSON *scope = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_client_credentialsJSON, "scope");
+    if (cJSON_IsNull(scope)) {
+        scope = NULL;
+    }
+    if (!scope) {
+        goto end;
+    }
+
+    
+    if(!cJSON_IsString(scope))
+    {
+    goto end; //String
+    }
 
     // oauth_access_token_request_client_credentials->grant_type
     cJSON *grant_type = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_client_credentialsJSON, "grant_type");
@@ -113,25 +128,10 @@ oauth_access_token_request_client_credentials_t *oauth_access_token_request_clie
     }
     grant_typeVariable = oauth_access_token_request_client_credentials_grant_type_FromString(grant_type->valuestring);
 
-    // oauth_access_token_request_client_credentials->scope
-    cJSON *scope = cJSON_GetObjectItemCaseSensitive(oauth_access_token_request_client_credentialsJSON, "scope");
-    if (cJSON_IsNull(scope)) {
-        scope = NULL;
-    }
-    if (!scope) {
-        goto end;
-    }
-
-    
-    if(!cJSON_IsString(scope))
-    {
-    goto end; //String
-    }
-
 
     oauth_access_token_request_client_credentials_local_var = oauth_access_token_request_client_credentials_create_internal (
-        grant_typeVariable,
-        strdup(scope->valuestring)
+        strdup(scope->valuestring),
+        grant_typeVariable
         );
 
     return oauth_access_token_request_client_credentials_local_var;

@@ -11,9 +11,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Error  {
   
   @ApiModelProperty(required = true, value = "")
+
   private Integer code;
 
   @ApiModelProperty(required = true, value = "")
+
   private String message;
  /**
    * Get code

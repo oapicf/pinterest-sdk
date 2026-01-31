@@ -19,16 +19,6 @@ class INVITE_RESPONSE
 
 feature --Access
 
-    assets_summary: detachable INVITE_ASSETS_SUMMARY
-      
-    business_roles: detachable LIST [STRING_32]
-      -- The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
-    created_by_business: detachable BUSINESS_ACCESS_USER_SUMMARY
-      -- Metadata for the business that created the invite/request.
-    created_by_user: detachable BUSINESS_ACCESS_USER_SUMMARY
-      -- Metadata for the user that created the invite/request.
-    created_time: INTEGER_32
-      -- The time the invite/request was created. Returned in milliseconds.
     id: detachable STRING_32
       -- Unique identifier of the invite/request.
     invite_data: detachable BASE_INVITE_DATA_RESPONSE_INVITE_DATA
@@ -37,8 +27,50 @@ feature --Access
       -- Indicates whether the invite/request was received.
     user: detachable BUSINESS_ACCESS_USER_SUMMARY
       -- Metadata for the member/partner that was sent the invite/request.
+    assets_summary: detachable INVITE_ASSETS_SUMMARY
+      
+    business_roles: detachable LIST [STRING_32]
+      -- The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.
+    created_by_business: detachable ANY
+      -- Metadata for the business that created the invite/request.
+    created_by_user: detachable ANY
+      -- Metadata for the user that created the invite/request.
+    created_time: INTEGER_32
+      -- The time the invite/request was created. Returned in milliseconds.
 
 feature -- Change Element
+
+    set_id (a_name: like id)
+        -- Set 'id' with 'a_name'.
+      do
+        id := a_name
+      ensure
+        id_set: id = a_name
+      end
+
+    set_invite_data (a_name: like invite_data)
+        -- Set 'invite_data' with 'a_name'.
+      do
+        invite_data := a_name
+      ensure
+        invite_data_set: invite_data = a_name
+      end
+
+    set_is_received_invite (a_name: like is_received_invite)
+        -- Set 'is_received_invite' with 'a_name'.
+      do
+        is_received_invite := a_name
+      ensure
+        is_received_invite_set: is_received_invite = a_name
+      end
+
+    set_user (a_name: like user)
+        -- Set 'user' with 'a_name'.
+      do
+        user := a_name
+      ensure
+        user_set: user = a_name
+      end
 
     set_assets_summary (a_name: like assets_summary)
         -- Set 'assets_summary' with 'a_name'.
@@ -80,38 +112,6 @@ feature -- Change Element
         created_time_set: created_time = a_name
       end
 
-    set_id (a_name: like id)
-        -- Set 'id' with 'a_name'.
-      do
-        id := a_name
-      ensure
-        id_set: id = a_name
-      end
-
-    set_invite_data (a_name: like invite_data)
-        -- Set 'invite_data' with 'a_name'.
-      do
-        invite_data := a_name
-      ensure
-        invite_data_set: invite_data = a_name
-      end
-
-    set_is_received_invite (a_name: like is_received_invite)
-        -- Set 'is_received_invite' with 'a_name'.
-      do
-        is_received_invite := a_name
-      ensure
-        is_received_invite_set: is_received_invite = a_name
-      end
-
-    set_user (a_name: like user)
-        -- Set 'user' with 'a_name'.
-      do
-        user := a_name
-      ensure
-        user_set: user = a_name
-      end
-
 
  feature -- Status Report
 
@@ -120,6 +120,26 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass INVITE_RESPONSE%N")
+        if attached id as l_id then
+          Result.append ("%Nid:")
+          Result.append (l_id.out)
+          Result.append ("%N")
+        end
+        if attached invite_data as l_invite_data then
+          Result.append ("%Ninvite_data:")
+          Result.append (l_invite_data.out)
+          Result.append ("%N")
+        end
+        if attached is_received_invite as l_is_received_invite then
+          Result.append ("%Nis_received_invite:")
+          Result.append (l_is_received_invite.out)
+          Result.append ("%N")
+        end
+        if attached user as l_user then
+          Result.append ("%Nuser:")
+          Result.append (l_user.out)
+          Result.append ("%N")
+        end
         if attached assets_summary as l_assets_summary then
           Result.append ("%Nassets_summary:")
           Result.append (l_assets_summary.out)
@@ -145,26 +165,6 @@ feature -- Change Element
         if attached created_time as l_created_time then
           Result.append ("%Ncreated_time:")
           Result.append (l_created_time.out)
-          Result.append ("%N")
-        end
-        if attached id as l_id then
-          Result.append ("%Nid:")
-          Result.append (l_id.out)
-          Result.append ("%N")
-        end
-        if attached invite_data as l_invite_data then
-          Result.append ("%Ninvite_data:")
-          Result.append (l_invite_data.out)
-          Result.append ("%N")
-        end
-        if attached is_received_invite as l_is_received_invite then
-          Result.append ("%Nis_received_invite:")
-          Result.append (l_is_received_invite.out)
-          Result.append ("%N")
-        end
-        if attached user as l_user then
-          Result.append ("%Nuser:")
-          Result.append (l_user.out)
           Result.append ("%N")
         end
       end

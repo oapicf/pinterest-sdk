@@ -34,7 +34,6 @@
 #include "PinAnalyticsMetricsResponse.h"
 #include "PinCreate.h"
 #include "PinUpdate.h"
-#include "Pins_analytics_metric_types_parameter_inner.h"
 #include "Pins_list_200_response.h"
 #include "Pins_save_request.h"
 #include <map>
@@ -51,8 +50,8 @@ public:
     explicit PinsApiImpl(const std::shared_ptr<Pistache::Rest::Router>& rtr);
     ~PinsApiImpl() override = default;
 
-    void multi_pins_analytics(const std::optional<std::vector<std::string>> &pinIds, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<org::openapitools::server::model::Pins_analytics_metric_types_parameter_inner>> &metricTypes, const std::optional<std::string> &appTypes, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response);
-    void pins_analytics(const std::string &pinId, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<org::openapitools::server::model::Pins_analytics_metric_types_parameter_inner>> &metricTypes, const std::optional<std::string> &appTypes, const std::optional<std::string> &splitField, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response);
+    void multi_pins_analytics(const std::optional<std::vector<std::string>> &pinIds, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<std::string>> &metricTypes, const std::optional<std::string> &appTypes, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response);
+    void pins_analytics(const std::string &pinId, const std::optional<std::string> &startDate, const std::optional<std::string> &endDate, const std::optional<std::vector<std::string>> &metricTypes, const std::optional<std::string> &appTypes, const std::optional<std::string> &splitField, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response);
     void pins_create(const PinCreate &pinCreate, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response);
     void pins_delete(const std::string &pinId, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response);
     void pins_get(const std::string &pinId, const std::optional<bool> &pinMetrics, const std::optional<std::string> &adAccountId, Pistache::Http::ResponseWriter &response);

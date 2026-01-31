@@ -321,8 +321,7 @@ namespace Org.OpenAPITools.Model
                             catalogId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "code":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                code = new Option<int?>(utf8JsonReader.GetInt32());
+                            code = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "code_label":
                             codeLabel = new Option<string?>(utf8JsonReader.GetString()!);
@@ -331,16 +330,13 @@ namespace Org.OpenAPITools.Model
                             message = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "occurrences":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                occurrences = new Option<int?>(utf8JsonReader.GetInt32());
+                            occurrences = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ineligible_for_ads":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ineligibleForAds = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            ineligibleForAds = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "ineligible_for_organic":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ineligibleForOrganic = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            ineligibleForOrganic = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

@@ -38,7 +38,7 @@ pub struct CatalogsCreativeAssetsFeedsCreateRequest {
     #[serde(rename = "catalog_id", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub catalog_id: Option<Option<String>>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
-    pub status: Option<Box<models::CatalogsStatus>>,
+    pub status: Option<models::CatalogsStatus>,
 }
 
 impl CatalogsCreativeAssetsFeedsCreateRequest {

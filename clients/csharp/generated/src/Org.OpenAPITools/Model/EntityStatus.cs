@@ -175,7 +175,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EntityStatus entityStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(entityStatus.ToString());
+            writer.WriteStringValue(EntityStatusValueConverter.ToJsonValue(entityStatus).ToString());
         }
     }
 
@@ -206,14 +206,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the EntityStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="entityStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EntityStatus? entityStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(entityStatus?.ToString() ?? "null");
+            writer.WriteStringValue(entityStatus.HasValue ? EntityStatusValueConverter.ToJsonValue(entityStatus.Value).ToString() : "null");
         }
     }
 }

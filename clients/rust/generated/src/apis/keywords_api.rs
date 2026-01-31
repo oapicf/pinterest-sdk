@@ -60,17 +60,17 @@ pub enum TrendingKeywordsSlashListError {
 /// See keyword metrics for a specified country, aggregated across all of Pinterest. (Definitions are available from the \"Get delivery metrics definitions\" <a href=\"/docs/api/v5/#operation/delivery_metrics/get\">API endpoint</a>).
 pub async fn country_keywords_metrics_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, country_code: &str, keywords: Vec<String>) -> Result<models::KeywordsMetricsArrayResponse, Error<CountryKeywordsMetricsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_country_code = country_code;
-    let p_keywords = keywords;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_country_code = country_code;
+    let p_query_keywords = keywords;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/keywords/metrics", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/keywords/metrics", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("country_code", &p_country_code.to_string())]);
+    req_builder = req_builder.query(&[("country_code", &p_query_country_code.to_string())]);
     req_builder = match "csv" {
-        "multi" => req_builder.query(&p_keywords.into_iter().map(|p| ("keywords".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-        _ => req_builder.query(&[("keywords", &p_keywords.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+        "multi" => req_builder.query(&p_query_keywords.into_iter().map(|p| ("keywords".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+        _ => req_builder.query(&[("keywords", &p_query_keywords.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
     };
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -107,10 +107,10 @@ pub async fn country_keywords_metrics_slash_get(configuration: &configuration::C
 /// <p>Create keywords for following entity types(advertiser, campaign, ad group or ad).</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a  target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul> <p><b>Rate limit</b>: <a href=\"/docs/reference/rate-limits/\">WRITE</a>.</p>
 pub async fn keywords_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, keywords_request: models::KeywordsRequest) -> Result<models::KeywordsResponse, Error<KeywordsSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_keywords_request = keywords_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_keywords_request = keywords_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/keywords", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/keywords", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -119,7 +119,7 @@ pub async fn keywords_slash_create(configuration: &configuration::Configuration,
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_keywords_request);
+    req_builder = req_builder.json(&p_body_keywords_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -149,32 +149,32 @@ pub async fn keywords_slash_create(configuration: &configuration::Configuration,
 /// <p>Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.</p> <p>For more information, see <a target=\"_blank\" href=\"https://help.pinterest.com/en/business/article/keyword-targeting\">Keyword targeting</a>.</p> <p><b>Notes:</b></p> <ul style=\"list-style-type: square;\"> <li>Advertisers and campaigns can only be assigned keywords with excluding ('_NEGATIVE').</li> <li>All keyword match types are available for ad groups.</li> </ul> <p>For more information on match types, see <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type enums</a>.</p> <p><b>Returns:</b></p> <ul style=\"list-style-type: square;\"> <li><p>A successful call returns an object containing an array of new keyword objects and an empty &quot;errors&quot; object array.</p></li> <li><p>An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &quot;errors&quot; object array:</p> <pre class=\"last literal-block\"> { \"keywords\": [], \"errors\": [ { \"data\": { \"archived\": null, \"match_type\": \"EXACT\", \"parent_type\": null, \"value\": \"foobar\", \"parent_id\": null, \"type\": \"keyword\", \"id\": null }, \"error_messages\": [ \"Advertisers and Campaigns only accept excluded targeting attributes.\" ] } } </pre></li> </ul>
 pub async fn keywords_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, campaign_id: Option<&str>, ad_group_id: Option<&str>, match_types: Option<Vec<models::MatchType>>, page_size: Option<i32>, bookmark: Option<&str>) -> Result<models::KeywordsGet200Response, Error<KeywordsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_campaign_id = campaign_id;
-    let p_ad_group_id = ad_group_id;
-    let p_match_types = match_types;
-    let p_page_size = page_size;
-    let p_bookmark = bookmark;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_campaign_id = campaign_id;
+    let p_query_ad_group_id = ad_group_id;
+    let p_query_match_types = match_types;
+    let p_query_page_size = page_size;
+    let p_query_bookmark = bookmark;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/keywords", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/keywords", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_campaign_id {
+    if let Some(ref param_value) = p_query_campaign_id {
         req_builder = req_builder.query(&[("campaign_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_ad_group_id {
+    if let Some(ref param_value) = p_query_ad_group_id {
         req_builder = req_builder.query(&[("ad_group_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_match_types {
+    if let Some(ref param_value) = p_query_match_types {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("match_types".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("match_types", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -212,10 +212,10 @@ pub async fn keywords_slash_get(configuration: &configuration::Configuration, ad
 /// <p>Update one or more keywords' bid and archived fields.</p> <p>Archiving a keyword effectively deletes it - keywords no longer receive metrics and no longer visible within the parent entity's keywords list.</p>
 pub async fn keywords_slash_update(configuration: &configuration::Configuration, ad_account_id: &str, keyword_update_body: models::KeywordUpdateBody) -> Result<models::KeywordsResponse, Error<KeywordsSlashUpdateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_keyword_update_body = keyword_update_body;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_keyword_update_body = keyword_update_body;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/keywords", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/keywords", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -224,7 +224,7 @@ pub async fn keywords_slash_update(configuration: &configuration::Configuration,
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_keyword_update_body);
+    req_builder = req_builder.json(&p_body_keyword_update_body);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -254,46 +254,46 @@ pub async fn keywords_slash_update(configuration: &configuration::Configuration,
 /// <p>Get the top trending search keywords among the Pinterest user audience.</p> <p>Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.</p> <p>Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.</p> <p>For an interactive way to explore this data, please visit <a href=\"https://trends.pinterest.com\">trends.pinterest.com</a>. 
 pub async fn trending_keywords_slash_list(configuration: &configuration::Configuration, region: models::TrendsSupportedRegion, trend_type: models::TrendType, interests: Option<Vec<String>>, genders: Option<Vec<String>>, ages: Option<Vec<String>>, include_keywords: Option<Vec<String>>, normalize_against_group: Option<bool>, limit: Option<i32>) -> Result<models::TrendingKeywordsResponse, Error<TrendingKeywordsSlashListError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_region = region;
-    let p_trend_type = trend_type;
-    let p_interests = interests;
-    let p_genders = genders;
-    let p_ages = ages;
-    let p_include_keywords = include_keywords;
-    let p_normalize_against_group = normalize_against_group;
-    let p_limit = limit;
+    let p_path_region = region;
+    let p_path_trend_type = trend_type;
+    let p_query_interests = interests;
+    let p_query_genders = genders;
+    let p_query_ages = ages;
+    let p_query_include_keywords = include_keywords;
+    let p_query_normalize_against_group = normalize_against_group;
+    let p_query_limit = limit;
 
-    let uri_str = format!("{}/trends/keywords/{region}/top/{trend_type}", configuration.base_path, region=p_region.to_string(), trend_type=p_trend_type.to_string());
+    let uri_str = format!("{}/trends/keywords/{region}/top/{trend_type}", configuration.base_path, region=p_path_region.to_string(), trend_type=p_path_trend_type.to_string());
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_interests {
+    if let Some(ref param_value) = p_query_interests {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("interests".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("interests", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_genders {
+    if let Some(ref param_value) = p_query_genders {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("genders".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("genders", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_ages {
+    if let Some(ref param_value) = p_query_ages {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("ages".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("ages", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_include_keywords {
+    if let Some(ref param_value) = p_query_include_keywords {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("include_keywords".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("include_keywords", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_normalize_against_group {
+    if let Some(ref param_value) = p_query_normalize_against_group {
         req_builder = req_builder.query(&[("normalize_against_group", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_limit {
+    if let Some(ref param_value) = p_query_limit {
         req_builder = req_builder.query(&[("limit", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

@@ -201,8 +201,7 @@ namespace Org.OpenAPITools.Model
                             destinationUrl = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "result_id":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                resultId = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            resultId = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         default:
                             break;

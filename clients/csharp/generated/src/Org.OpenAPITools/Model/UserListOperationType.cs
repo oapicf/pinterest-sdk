@@ -133,7 +133,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, UserListOperationType userListOperationType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(userListOperationType.ToString());
+            writer.WriteStringValue(UserListOperationTypeValueConverter.ToJsonValue(userListOperationType).ToString());
         }
     }
 
@@ -164,14 +164,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the UserListOperationType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="userListOperationType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, UserListOperationType? userListOperationType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(userListOperationType?.ToString() ?? "null");
+            writer.WriteStringValue(userListOperationType.HasValue ? UserListOperationTypeValueConverter.ToJsonValue(userListOperationType.Value).ToString() : "null");
         }
     }
 }

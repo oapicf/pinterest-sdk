@@ -9,12 +9,37 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_filter_keys
 import model_catalogs_product_group_filters_all_of
 import model_catalogs_product_group_filters_any_of
 
+# AnyOf type
+type CatalogsProductGroupFiltersKind* {.pure.} = enum
+  CatalogsProductGroupFiltersAnyOfVariant
+  CatalogsProductGroupFiltersAllOfVariant
+
 type CatalogsProductGroupFilters* = object
   ## Object holding a group of filters for a catalog product group
-  anyOf*: seq[CatalogsProductGroupFilterKeys]
-  allOf*: seq[CatalogsProductGroupFilterKeys]
+  case kind*: CatalogsProductGroupFiltersKind
+  of CatalogsProductGroupFiltersKind.CatalogsProductGroupFiltersAnyOfVariant:
+    CatalogsProductGroupFiltersAnyOfValue*: CatalogsProductGroupFiltersAnyOf
+  of CatalogsProductGroupFiltersKind.CatalogsProductGroupFiltersAllOfVariant:
+    CatalogsProductGroupFiltersAllOfValue*: CatalogsProductGroupFiltersAllOf
+
+proc to*(node: JsonNode, T: typedesc[CatalogsProductGroupFilters]): CatalogsProductGroupFilters =
+  ## Custom deserializer for anyOf type - tries each variant
+  try:
+    return CatalogsProductGroupFilters(kind: CatalogsProductGroupFiltersKind.CatalogsProductGroupFiltersAnyOfVariant, CatalogsProductGroupFiltersAnyOfValue: to(node, CatalogsProductGroupFiltersAnyOf))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsProductGroupFiltersAnyOf: ", e.msg
+  try:
+    return CatalogsProductGroupFilters(kind: CatalogsProductGroupFiltersKind.CatalogsProductGroupFiltersAllOfVariant, CatalogsProductGroupFiltersAllOfValue: to(node, CatalogsProductGroupFiltersAllOf))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsProductGroupFiltersAllOf: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsProductGroupFilters. JSON: " & $node)
+

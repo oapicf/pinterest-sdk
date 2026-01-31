@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,45 +8,52 @@ import org.openapitools.model.AudienceCategory;
 import org.openapitools.model.AudienceDemographics;
 import org.openapitools.model.AudienceInsightType;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Audience interests and demographics.
- **/
+ * Audience interests and demographics.
+ */
 @ApiModel(description="Audience interests and demographics.")
 
 public class AudienceInsightsResponse  {
   
-  @ApiModelProperty(value = "Category interest distribution")
  /**
-   * Category interest distribution
-  **/
+  * Category interest distribution
+  */
+  @ApiModelProperty(value = "Category interest distribution")
+
   private List<AudienceCategory> categories = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private AudienceDemographics demographics;
 
   @ApiModelProperty(value = "")
+
   private AudienceInsightType type = AudienceInsightType.YOUR_TOTAL_AUDIENCE;
 
-  @ApiModelProperty(example = "2022-10-09", value = "Generation date")
  /**
-   * Generation date
-  **/
+  * Generation date
+  */
+  @ApiModelProperty(example = "2022-10-09", value = "Generation date")
+
   private String date;
 
-  @ApiModelProperty(example = "10000", value = "Population count.")
  /**
-   * Population count.
-  **/
+  * Population count.
+  */
+  @ApiModelProperty(example = "10000", value = "Population count.")
+
   private Integer size;
 
-  @ApiModelProperty(example = "true", value = "Indicates whether the audience size has been rounded up to the next highest upper boundary.")
  /**
-   * Indicates whether the audience size has been rounded up to the next highest upper boundary.
-  **/
+  * Indicates whether the audience size has been rounded up to the next highest upper boundary.
+  */
+  @ApiModelProperty(example = "true", value = "Indicates whether the audience size has been rounded up to the next highest upper boundary.")
+
   private Boolean sizeIsUpperBound;
  /**
    * Category interest distribution

@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_ad_accounts_country_response_data
 
 type AdAccountsCountryResponse* = object
   ## 
-  items*: seq[AdAccountsCountryResponseData]
+  items*: Option[seq[AdAccountsCountryResponseData]]
+

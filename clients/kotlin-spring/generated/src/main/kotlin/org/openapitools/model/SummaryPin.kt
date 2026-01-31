@@ -41,7 +41,7 @@ data class SummaryPin(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("description") val description: kotlin.String? = null
-    ) {
+) {
 
 }
 

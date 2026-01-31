@@ -338,8 +338,9 @@ func (a *ConversionTagsAPIService) ConversionTagsListExecute(r ApiConversionTags
 	if r.filterDeleted != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter_deleted", r.filterDeleted, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.filterDeleted = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter_deleted", defaultValue, "form", "")
+        r.filterDeleted = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -593,8 +594,9 @@ func (a *ConversionTagsAPIService) PageVisitConversionTagsGetExecute(r ApiPageVi
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.order != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "order", r.order, "form", "")

@@ -9,7 +9,52 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type ConversionAttributionWindowDays* = object
-  ## 
+type ConversionAttributionWindowDays* {.pure.} = enum
+  `0`
+  `1`
+  `7`
+  `14`
+  `30`
+  `60`
+
+func `%`*(v: ConversionAttributionWindowDays): JsonNode =
+  result = case v:
+    of ConversionAttributionWindowDays.`0`: %(0)
+    of ConversionAttributionWindowDays.`1`: %(1)
+    of ConversionAttributionWindowDays.`7`: %(7)
+    of ConversionAttributionWindowDays.`14`: %(14)
+    of ConversionAttributionWindowDays.`30`: %(30)
+    of ConversionAttributionWindowDays.`60`: %(60)
+
+func `$`*(v: ConversionAttributionWindowDays): string =
+  result = case v:
+    of ConversionAttributionWindowDays.`0`: $(0)
+    of ConversionAttributionWindowDays.`1`: $(1)
+    of ConversionAttributionWindowDays.`7`: $(7)
+    of ConversionAttributionWindowDays.`14`: $(14)
+    of ConversionAttributionWindowDays.`30`: $(30)
+    of ConversionAttributionWindowDays.`60`: $(60)
+proc to*(node: JsonNode, T: typedesc[ConversionAttributionWindowDays]): ConversionAttributionWindowDays =
+  if node.kind != JInt:
+    raise newException(ValueError, "Expected integer for enum ConversionAttributionWindowDays, got " & $node.kind)
+  let intVal = node.getInt()
+  case intVal:
+  of 0:
+    return ConversionAttributionWindowDays.`0`
+  of 1:
+    return ConversionAttributionWindowDays.`1`
+  of 7:
+    return ConversionAttributionWindowDays.`7`
+  of 14:
+    return ConversionAttributionWindowDays.`14`
+  of 30:
+    return ConversionAttributionWindowDays.`30`
+  of 60:
+    return ConversionAttributionWindowDays.`60`
+  else:
+    raise newException(ValueError, "Invalid enum value for ConversionAttributionWindowDays: " & $intVal)
+

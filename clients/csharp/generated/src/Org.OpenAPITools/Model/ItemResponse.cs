@@ -209,22 +209,6 @@ namespace Org.OpenAPITools.Model
             if (catalogType.IsSet && catalogType.Value == null)
                 throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class ItemResponse.");
 
-            if (catalogsCreativeAssetsItemErrorResponse != null)
-                return new ItemResponse(catalogsCreativeAssetsItemErrorResponse);
-
-            if (catalogsHotelItemErrorResponse != null)
-                return new ItemResponse(catalogsHotelItemErrorResponse);
-
-            if (catalogsRetailItemErrorResponse != null)
-                return new ItemResponse(catalogsRetailItemErrorResponse);
-
-            if (itemResponseAnyOf != null)
-                return new ItemResponse(itemResponseAnyOf);
-
-            if (itemResponseAnyOf1 != null)
-                return new ItemResponse(itemResponseAnyOf1);
-
-            throw new JsonException();
             Option<ItemResponseAnyOf?> itemResponseAnyOfParsedValue = itemResponseAnyOf == null
                 ? default
                 : new Option<ItemResponseAnyOf?>(itemResponseAnyOf);

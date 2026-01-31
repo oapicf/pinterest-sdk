@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**grantType** | **String** |  | 
 **scope** | **String** |  | 
+**grantType** | **String** |  | 
 
 
 

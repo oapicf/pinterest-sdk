@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_create_hotel_item
 import model_catalogs_delete_hotel_item
@@ -16,21 +18,46 @@ import model_catalogs_updatable_hotel_attributes
 import model_catalogs_update_hotel_item
 import model_catalogs_upsert_hotel_item
 
-type Operation* {.pure.} = enum
-  DELETE
+# AnyOf type
+type CatalogsHotelBatchItemKind* {.pure.} = enum
+  CatalogsCreateHotelItemVariant
+  CatalogsUpsertHotelItemVariant
+  CatalogsUpdateHotelItemVariant
+  CatalogsDeleteHotelItemVariant
 
 type CatalogsHotelBatchItem* = object
   ## Hotel batch item
-  hotelId*: string ## The catalog hotel id in the merchant namespace
-  operation*: Operation
-  attributes*: CatalogsUpdatableHotelAttributes
+  case kind*: CatalogsHotelBatchItemKind
+  of CatalogsHotelBatchItemKind.CatalogsCreateHotelItemVariant:
+    CatalogsCreateHotelItemValue*: CatalogsCreateHotelItem
+  of CatalogsHotelBatchItemKind.CatalogsUpsertHotelItemVariant:
+    CatalogsUpsertHotelItemValue*: CatalogsUpsertHotelItem
+  of CatalogsHotelBatchItemKind.CatalogsUpdateHotelItemVariant:
+    CatalogsUpdateHotelItemValue*: CatalogsUpdateHotelItem
+  of CatalogsHotelBatchItemKind.CatalogsDeleteHotelItemVariant:
+    CatalogsDeleteHotelItemValue*: CatalogsDeleteHotelItem
 
-func `%`*(v: Operation): JsonNode =
-  let str = case v:
-    of Operation.DELETE: "DELETE"
+proc to*(node: JsonNode, T: typedesc[CatalogsHotelBatchItem]): CatalogsHotelBatchItem =
+  ## Custom deserializer for anyOf type - tries each variant
+  try:
+    return CatalogsHotelBatchItem(kind: CatalogsHotelBatchItemKind.CatalogsCreateHotelItemVariant, CatalogsCreateHotelItemValue: to(node, CatalogsCreateHotelItem))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreateHotelItem: ", e.msg
+  try:
+    return CatalogsHotelBatchItem(kind: CatalogsHotelBatchItemKind.CatalogsUpsertHotelItemVariant, CatalogsUpsertHotelItemValue: to(node, CatalogsUpsertHotelItem))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsUpsertHotelItem: ", e.msg
+  try:
+    return CatalogsHotelBatchItem(kind: CatalogsHotelBatchItemKind.CatalogsUpdateHotelItemVariant, CatalogsUpdateHotelItemValue: to(node, CatalogsUpdateHotelItem))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsUpdateHotelItem: ", e.msg
+  try:
+    return CatalogsHotelBatchItem(kind: CatalogsHotelBatchItemKind.CatalogsDeleteHotelItemVariant, CatalogsDeleteHotelItemValue: to(node, CatalogsDeleteHotelItem))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsDeleteHotelItem: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsHotelBatchItem. JSON: " & $node)
 
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: Operation): string =
-  result = case v:
-    of Operation.DELETE: "DELETE"

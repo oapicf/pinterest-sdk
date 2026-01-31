@@ -22,10 +22,10 @@ export interface CatalogsUpsertHotelItem {
     attributes: CatalogsHotelAttributes;
 }
 export namespace CatalogsUpsertHotelItem {
-    export type OperationEnum = 'UPSERT';
     export const OperationEnum = {
-        Upsert: 'UPSERT' as OperationEnum
-    };
+        Upsert: 'UPSERT'
+    } as const;
+    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }
 
 

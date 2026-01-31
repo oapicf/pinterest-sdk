@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLog", description = "Schema for log sent from an integration application.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLog {
 
   private Integer clientTimestamp;
@@ -38,7 +38,7 @@ public class IntegrationLog {
     
     API("API");
 
-    private String value;
+    private final String value;
 
     EventTypeEnum(String value) {
       this.value = value;
@@ -77,7 +77,7 @@ public class IntegrationLog {
     
     ERROR("ERROR");
 
-    private String value;
+    private final String value;
 
     LogLevelEnum(String value) {
       this.value = value;

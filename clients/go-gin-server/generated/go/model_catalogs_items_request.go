@@ -15,7 +15,8 @@ type CatalogsItemsRequest struct {
 
 	Country Country `json:"country"`
 
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 
 	Filters CatalogsItemsPostFilters `json:"filters"`
 }

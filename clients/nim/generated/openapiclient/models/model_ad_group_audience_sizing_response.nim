@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type AdGroupAudienceSizingResponse* = object
   ## 
-  audienceSizeLowerBound*: float ## The lower confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
-  audienceSizeUpperBound*: float ## The upper confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
+  audienceSizeLowerBound*: Option[float] ## The lower confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
+  audienceSizeUpperBound*: Option[float] ## The upper confidence bound of the estimated potential audience size. \"Potential audience size\" estimates the number of people you may be able to reach per month with your campaign. It is based on historical advertising data and the targeting criteria you select. It does not guarantee results or take into account factors such as bid, budget, schedule, seasonality or product experiments.
+
+
+# Custom JSON deserialization for AdGroupAudienceSizingResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[AdGroupAudienceSizingResponse]): AdGroupAudienceSizingResponse =
+  result = AdGroupAudienceSizingResponse()
+  if node.kind == JObject:
+    if node.hasKey("audience_size_lower_bound") and node["audience_size_lower_bound"].kind != JNull:
+      result.audienceSizeLowerBound = some(to(node["audience_size_lower_bound"], typeof(result.audienceSizeLowerBound.get())))
+    if node.hasKey("audience_size_upper_bound") and node["audience_size_upper_bound"].kind != JNull:
+      result.audienceSizeUpperBound = some(to(node["audience_size_upper_bound"], typeof(result.audienceSizeUpperBound.get())))
+
+# Custom JSON serialization for AdGroupAudienceSizingResponse with custom field names
+proc `%`*(obj: AdGroupAudienceSizingResponse): JsonNode =
+  result = newJObject()
+  if obj.audienceSizeLowerBound.isSome():
+    result["audience_size_lower_bound"] = %obj.audienceSizeLowerBound.get()
+  if obj.audienceSizeUpperBound.isSome():
+    result["audience_size_upper_bound"] = %obj.audienceSizeUpperBound.get()
+

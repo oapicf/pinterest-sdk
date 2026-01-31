@@ -26,47 +26,66 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class FeedsCreateRequest  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private NullableCurrency defaultCurrency;
 
-  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
  /**
-   * A human-friendly name associated to a given feed.
-  **/
+  * A human-friendly name associated to a given feed.
+  */
+  @ApiModelProperty(required = true, value = "A human-friendly name associated to a given feed.")
+
   private String name;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFormat format;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsFeedsCreateRequestDefaultLocale defaultLocale;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsFeedCredentials credentials;
 
-  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
  /**
-   * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  **/
+  * The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  */
+  @ApiModelProperty(required = true, value = "The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.")
+
   private String location;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsFeedProcessingSchedule preferredProcessingSchedule;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private Country defaultCountry;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private ProductAvailabilityType defaultAvailability;
 
   @ApiModelProperty(value = "")
-  private CatalogsStatus status;
+
+  @Valid
+
+  private CatalogsStatus status = "ACTIVE";
  /**
    * Get defaultCurrency
    * @return defaultCurrency

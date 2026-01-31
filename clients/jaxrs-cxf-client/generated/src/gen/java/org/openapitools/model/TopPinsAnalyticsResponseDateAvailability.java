@@ -10,9 +10,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TopPinsAnalyticsResponseDateAvailability  {
   
   @ApiModelProperty(example = "1649116799000", value = "")
+
   private BigDecimal latestAvailableTimestamp;
 
   @ApiModelProperty(example = "false", value = "")
+
   private Boolean isRealtime;
  /**
    * Get latestAvailableTimestamp

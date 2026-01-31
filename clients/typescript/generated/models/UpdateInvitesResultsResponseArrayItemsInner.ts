@@ -16,7 +16,7 @@ import { HttpFile } from '../http/http';
 
 export class UpdateInvitesResultsResponseArrayItemsInner {
     'exception'?: InviteExceptionResponse | null;
-    'invite'?: InviteBusinessRoleBinding | null;
+    'invite'?: InviteBusinessRoleBinding;
 
     static readonly discriminator: string | undefined = undefined;
 

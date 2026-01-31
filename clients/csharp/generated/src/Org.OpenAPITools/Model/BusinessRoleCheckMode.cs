@@ -133,7 +133,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BusinessRoleCheckMode businessRoleCheckMode, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(businessRoleCheckMode.ToString());
+            writer.WriteStringValue(BusinessRoleCheckModeValueConverter.ToJsonValue(businessRoleCheckMode).ToString());
         }
     }
 
@@ -164,14 +164,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the BusinessRoleCheckMode to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="businessRoleCheckMode"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, BusinessRoleCheckMode? businessRoleCheckMode, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(businessRoleCheckMode?.ToString() ?? "null");
+            writer.WriteStringValue(businessRoleCheckMode.HasValue ? BusinessRoleCheckModeValueConverter.ToJsonValue(businessRoleCheckMode.Value).ToString() : "null");
         }
     }
 }

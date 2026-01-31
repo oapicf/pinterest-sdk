@@ -44,7 +44,7 @@ public class CatalogsHotelFeedsCreateRequest   {
 
   private String catalogId;
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   /**
    **/

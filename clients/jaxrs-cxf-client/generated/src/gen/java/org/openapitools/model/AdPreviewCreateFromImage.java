@@ -8,16 +8,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdPreviewCreateFromImage  {
   
-  @ApiModelProperty(example = "https://somewebsite.com/someimage.jpg", required = true, value = "Image URL.")
  /**
-   * Image URL.
-  **/
+  * Image URL.
+  */
+  @ApiModelProperty(example = "https://somewebsite.com/someimage.jpg", required = true, value = "Image URL.")
+
   private String imageUrl;
 
-  @ApiModelProperty(example = "My Preview Image", required = true, value = "Title displayed below ad.")
  /**
-   * Title displayed below ad.
-  **/
+  * Title displayed below ad.
+  */
+  @ApiModelProperty(example = "My Preview Image", required = true, value = "Title displayed below ad.")
+
   private String title;
  /**
    * Image URL.

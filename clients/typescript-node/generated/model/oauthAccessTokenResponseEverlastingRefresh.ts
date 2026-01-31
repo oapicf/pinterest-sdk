@@ -12,22 +12,34 @@
 
 import { RequestFile } from './models';
 
-/**
-* A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
-*/
 export class OauthAccessTokenResponseEverlastingRefresh {
+    'refreshToken': string;
+    'refreshTokenExpiresIn': number;
+    'refreshTokenExpiresAt': number;
     'responseType'?: OauthAccessTokenResponseEverlastingRefresh.ResponseTypeEnum;
     'accessToken': string;
     'tokenType': string = 'bearer';
     'expiresIn': number;
     'scope': string;
-    'refreshToken': string;
-    'refreshTokenExpiresIn': number;
-    'refreshTokenExpiresAt': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            "name": "refreshToken",
+            "baseName": "refresh_token",
+            "type": "string"
+        },
+        {
+            "name": "refreshTokenExpiresIn",
+            "baseName": "refresh_token_expires_in",
+            "type": "number"
+        },
+        {
+            "name": "refreshTokenExpiresAt",
+            "baseName": "refresh_token_expires_at",
+            "type": "number"
+        },
         {
             "name": "responseType",
             "baseName": "response_type",
@@ -52,21 +64,6 @@ export class OauthAccessTokenResponseEverlastingRefresh {
             "name": "scope",
             "baseName": "scope",
             "type": "string"
-        },
-        {
-            "name": "refreshToken",
-            "baseName": "refresh_token",
-            "type": "string"
-        },
-        {
-            "name": "refreshTokenExpiresIn",
-            "baseName": "refresh_token_expires_in",
-            "type": "number"
-        },
-        {
-            "name": "refreshTokenExpiresAt",
-            "baseName": "refresh_token_expires_at",
-            "type": "number"
         }    ];
 
     static getAttributeTypeMap() {

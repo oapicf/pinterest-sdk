@@ -37,8 +37,6 @@ use JMS\Serializer\Annotation\SerializedName;
 /**
  * Class representing the OauthAccessTokenResponseEverlastingRefresh model.
  *
- * A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
- *
  * @package OpenAPI\Server\Model
  * @author  OpenAPI Generator team
  */
@@ -46,6 +44,33 @@ use JMS\Serializer\Annotation\SerializedName;
 class OauthAccessTokenResponseEverlastingRefresh 
 {
         /**
+     * @var string|null
+     * @SerializedName("refresh_token")
+     * @Type("string")
+    */
+    #[Assert\NotNull]
+    #[Assert\Type("string")]
+    protected ?string $refreshToken = null;
+
+    /**
+     * @var int|null
+     * @SerializedName("refresh_token_expires_in")
+     * @Type("int")
+    */
+    #[Assert\NotNull]
+    #[Assert\Type("int")]
+    protected ?int $refreshTokenExpiresIn = null;
+
+    /**
+     * @var int|null
+     * @SerializedName("refresh_token_expires_at")
+     * @Type("int")
+    */
+    #[Assert\NotNull]
+    #[Assert\Type("int")]
+    protected ?int $refreshTokenExpiresAt = null;
+
+    /**
      * @var string|null
      * @SerializedName("response_type")
      * @Type("string")
@@ -91,49 +116,103 @@ class OauthAccessTokenResponseEverlastingRefresh
     protected ?string $scope = null;
 
     /**
-     * @var string|null
-     * @SerializedName("refresh_token")
-     * @Type("string")
-    */
-    #[Assert\NotNull]
-    #[Assert\Type("string")]
-    protected ?string $refreshToken = null;
-
-    /**
-     * @var int|null
-     * @SerializedName("refresh_token_expires_in")
-     * @Type("int")
-    */
-    #[Assert\NotNull]
-    #[Assert\Type("int")]
-    protected ?int $refreshTokenExpiresIn = null;
-
-    /**
-     * @var int|null
-     * @SerializedName("refresh_token_expires_at")
-     * @Type("int")
-    */
-    #[Assert\NotNull]
-    #[Assert\Type("int")]
-    protected ?int $refreshTokenExpiresAt = null;
-
-    /**
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(?array $data = null)
     {
         if (is_array($data)) {
+            $this->refreshToken = array_key_exists('refreshToken', $data) ? $data['refreshToken'] : $this->refreshToken;
+            $this->refreshTokenExpiresIn = array_key_exists('refreshTokenExpiresIn', $data) ? $data['refreshTokenExpiresIn'] : $this->refreshTokenExpiresIn;
+            $this->refreshTokenExpiresAt = array_key_exists('refreshTokenExpiresAt', $data) ? $data['refreshTokenExpiresAt'] : $this->refreshTokenExpiresAt;
             $this->responseType = array_key_exists('responseType', $data) ? $data['responseType'] : $this->responseType;
             $this->accessToken = array_key_exists('accessToken', $data) ? $data['accessToken'] : $this->accessToken;
             $this->tokenType = array_key_exists('tokenType', $data) ? $data['tokenType'] : $this->tokenType;
             $this->expiresIn = array_key_exists('expiresIn', $data) ? $data['expiresIn'] : $this->expiresIn;
             $this->scope = array_key_exists('scope', $data) ? $data['scope'] : $this->scope;
-            $this->refreshToken = array_key_exists('refreshToken', $data) ? $data['refreshToken'] : $this->refreshToken;
-            $this->refreshTokenExpiresIn = array_key_exists('refreshTokenExpiresIn', $data) ? $data['refreshTokenExpiresIn'] : $this->refreshTokenExpiresIn;
-            $this->refreshTokenExpiresAt = array_key_exists('refreshTokenExpiresAt', $data) ? $data['refreshTokenExpiresAt'] : $this->refreshTokenExpiresAt;
         }
     }
+
+    /**
+     * Gets refreshToken.
+     *
+     * @return string|null
+     */
+    public function getRefreshToken(): ?string
+    {
+        return $this->refreshToken;
+    }
+
+    /**
+    * Sets refreshToken.
+    *
+    * @param string|null $refreshToken
+    *
+    * @return $this
+    */
+    public function setRefreshToken(?string $refreshToken): self
+    {
+        $this->refreshToken = $refreshToken;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets refreshTokenExpiresIn.
+     *
+     * @return int|null
+     */
+    public function getRefreshTokenExpiresIn(): ?int
+    {
+        return $this->refreshTokenExpiresIn;
+    }
+
+    /**
+    * Sets refreshTokenExpiresIn.
+    *
+    * @param int|null $refreshTokenExpiresIn
+    *
+    * @return $this
+    */
+    public function setRefreshTokenExpiresIn(?int $refreshTokenExpiresIn): self
+    {
+        $this->refreshTokenExpiresIn = $refreshTokenExpiresIn;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets refreshTokenExpiresAt.
+     *
+     * @return int|null
+     */
+    public function getRefreshTokenExpiresAt(): ?int
+    {
+        return $this->refreshTokenExpiresAt;
+    }
+
+    /**
+    * Sets refreshTokenExpiresAt.
+    *
+    * @param int|null $refreshTokenExpiresAt
+    *
+    * @return $this
+    */
+    public function setRefreshTokenExpiresAt(?int $refreshTokenExpiresAt): self
+    {
+        $this->refreshTokenExpiresAt = $refreshTokenExpiresAt;
+
+        return $this;
+    }
+
+
+
 
     /**
      * Gets responseType.
@@ -263,87 +342,6 @@ class OauthAccessTokenResponseEverlastingRefresh
     public function setScope(?string $scope): self
     {
         $this->scope = $scope;
-
-        return $this;
-    }
-
-
-
-
-    /**
-     * Gets refreshToken.
-     *
-     * @return string|null
-     */
-    public function getRefreshToken(): ?string
-    {
-        return $this->refreshToken;
-    }
-
-    /**
-    * Sets refreshToken.
-    *
-    * @param string|null $refreshToken
-    *
-    * @return $this
-    */
-    public function setRefreshToken(?string $refreshToken): self
-    {
-        $this->refreshToken = $refreshToken;
-
-        return $this;
-    }
-
-
-
-
-    /**
-     * Gets refreshTokenExpiresIn.
-     *
-     * @return int|null
-     */
-    public function getRefreshTokenExpiresIn(): ?int
-    {
-        return $this->refreshTokenExpiresIn;
-    }
-
-    /**
-    * Sets refreshTokenExpiresIn.
-    *
-    * @param int|null $refreshTokenExpiresIn
-    *
-    * @return $this
-    */
-    public function setRefreshTokenExpiresIn(?int $refreshTokenExpiresIn): self
-    {
-        $this->refreshTokenExpiresIn = $refreshTokenExpiresIn;
-
-        return $this;
-    }
-
-
-
-
-    /**
-     * Gets refreshTokenExpiresAt.
-     *
-     * @return int|null
-     */
-    public function getRefreshTokenExpiresAt(): ?int
-    {
-        return $this->refreshTokenExpiresAt;
-    }
-
-    /**
-    * Sets refreshTokenExpiresAt.
-    *
-    * @param int|null $refreshTokenExpiresAt
-    *
-    * @return $this
-    */
-    public function setRefreshTokenExpiresAt(?int $refreshTokenExpiresAt): self
-    {
-        $this->refreshTokenExpiresAt = $refreshTokenExpiresAt;
 
         return $this;
     }

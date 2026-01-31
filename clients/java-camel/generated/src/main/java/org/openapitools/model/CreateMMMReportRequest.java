@@ -25,8 +25,11 @@ import javax.annotation.Generated;
  * CreateMMMReportRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateMMMReportRequest {
+
+  @Valid
+  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
 
   private String reportName;
 
@@ -42,7 +45,7 @@ public class CreateMMMReportRequest {
     
     WEEK("WEEK");
 
-    private String value;
+    private final String value;
 
     GranularityEnum(String value) {
       this.value = value;
@@ -79,7 +82,7 @@ public class CreateMMMReportRequest {
     
     AD_GROUP_TARGETING("AD_GROUP_TARGETING");
 
-    private String value;
+    private final String value;
 
     LevelEnum(String value) {
       this.value = value;
@@ -114,9 +117,6 @@ public class CreateMMMReportRequest {
   @Valid
   private List<MMMReportingColumn> columns = new ArrayList<>();
 
-  @Valid
-  private List<TargetingAdvertiserCountry> countries = new ArrayList<>();
-
   public CreateMMMReportRequest() {
     super();
   }
@@ -132,6 +132,34 @@ public class CreateMMMReportRequest {
     this.level = level;
     this.targetingTypes = targetingTypes;
     this.columns = columns;
+  }
+
+  public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
+    return this;
+  }
+
+  public CreateMMMReportRequest addCountriesItem(TargetingAdvertiserCountry countriesItem) {
+    if (this.countries == null) {
+      this.countries = new ArrayList<>();
+    }
+    this.countries.add(countriesItem);
+    return this;
+  }
+
+  /**
+   * A List of countries for filtering
+   * @return countries
+   */
+  @Valid 
+  @Schema(name = "countries", description = "A List of countries for filtering", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("countries")
+  public List<TargetingAdvertiserCountry> getCountries() {
+    return countries;
+  }
+
+  public void setCountries(List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
   }
 
   public CreateMMMReportRequest reportName(String reportName) {
@@ -290,34 +318,6 @@ public class CreateMMMReportRequest {
     this.columns = columns;
   }
 
-  public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-    return this;
-  }
-
-  public CreateMMMReportRequest addCountriesItem(TargetingAdvertiserCountry countriesItem) {
-    if (this.countries == null) {
-      this.countries = new ArrayList<>();
-    }
-    this.countries.add(countriesItem);
-    return this;
-  }
-
-  /**
-   * A List of countries for filtering
-   * @return countries
-   */
-  @Valid 
-  @Schema(name = "countries", description = "A List of countries for filtering", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("countries")
-  public List<TargetingAdvertiserCountry> getCountries() {
-    return countries;
-  }
-
-  public void setCountries(List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -327,25 +327,26 @@ public class CreateMMMReportRequest {
       return false;
     }
     CreateMMMReportRequest createMMMReportRequest = (CreateMMMReportRequest) o;
-    return Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
+    return Objects.equals(this.countries, createMMMReportRequest.countries) &&
+        Objects.equals(this.reportName, createMMMReportRequest.reportName) &&
         Objects.equals(this.startDate, createMMMReportRequest.startDate) &&
         Objects.equals(this.endDate, createMMMReportRequest.endDate) &&
         Objects.equals(this.granularity, createMMMReportRequest.granularity) &&
         Objects.equals(this.level, createMMMReportRequest.level) &&
         Objects.equals(this.targetingTypes, createMMMReportRequest.targetingTypes) &&
-        Objects.equals(this.columns, createMMMReportRequest.columns) &&
-        Objects.equals(this.countries, createMMMReportRequest.countries);
+        Objects.equals(this.columns, createMMMReportRequest.columns);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportName, startDate, endDate, granularity, level, targetingTypes, columns, countries);
+    return Objects.hash(countries, reportName, startDate, endDate, granularity, level, targetingTypes, columns);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateMMMReportRequest {\n");
+    sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
@@ -353,7 +354,6 @@ public class CreateMMMReportRequest {
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    targetingTypes: ").append(toIndentedString(targetingTypes)).append("\n");
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
-    sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("}");
     return sb.toString();
   }

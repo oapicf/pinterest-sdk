@@ -1,28 +1,30 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * The counts can be null early in the process.
- **/
+ * The counts can be null early in the process.
+ */
 @ApiModel(description="The counts can be null early in the process.")
 
 public class CatalogsFeedProductCounts  {
   
-  @ApiModelProperty(value = "The number of products in the feed file.")
  /**
-   * The number of products in the feed file.
-  **/
+  * The number of products in the feed file.
+  */
+  @ApiModelProperty(value = "The number of products in the feed file.")
+
   private Integer original;
 
-  @ApiModelProperty(value = "The number of products successfully ingested from the feed file.")
  /**
-   * The number of products successfully ingested from the feed file.
-  **/
+  * The number of products successfully ingested from the feed file.
+  */
+  @ApiModelProperty(value = "The number of products successfully ingested from the feed file.")
+
   private Integer ingested;
  /**
    * The number of products in the feed file.

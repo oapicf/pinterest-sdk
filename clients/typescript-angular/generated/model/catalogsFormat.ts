@@ -12,14 +12,10 @@
 /**
  * The file format of a feed.
  */
-export type CatalogsFormat = 'TSV' | 'CSV' | 'XML';
-
 export const CatalogsFormat = {
-
-    Tsv: 'TSV' as CatalogsFormat,
-
-    Csv: 'CSV' as CatalogsFormat,
-
-    Xml: 'XML' as CatalogsFormat
-};
+    Tsv: 'TSV',
+    Csv: 'CSV',
+    Xml: 'XML'
+} as const;
+export type CatalogsFormat = typeof CatalogsFormat[keyof typeof CatalogsFormat];
 

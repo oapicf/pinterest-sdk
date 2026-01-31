@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * CatalogsItemValidationErrors
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemValidationErrors {
 
   private @Nullable CatalogsItemValidationDetails ADULT_INVALID;
@@ -69,7 +69,7 @@ public class CatalogsItemValidationErrors {
 
   private @Nullable CatalogsItemValidationDetails TITLE_MISSING;
 
-  public CatalogsItemValidationErrors ADULT_INVALID(CatalogsItemValidationDetails ADULT_INVALID) {
+  public CatalogsItemValidationErrors ADULT_INVALID(@Nullable CatalogsItemValidationDetails ADULT_INVALID) {
     this.ADULT_INVALID = ADULT_INVALID;
     return this;
   }
@@ -81,15 +81,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "ADULT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADULT_INVALID")
-  public CatalogsItemValidationDetails getADULTINVALID() {
+  public @Nullable CatalogsItemValidationDetails getADULTINVALID() {
     return ADULT_INVALID;
   }
 
-  public void setADULTINVALID(CatalogsItemValidationDetails ADULT_INVALID) {
+  public void setADULTINVALID(@Nullable CatalogsItemValidationDetails ADULT_INVALID) {
     this.ADULT_INVALID = ADULT_INVALID;
   }
 
-  public CatalogsItemValidationErrors ADWORDS_FORMAT_INVALID(CatalogsItemValidationDetails ADWORDS_FORMAT_INVALID) {
+  public CatalogsItemValidationErrors ADWORDS_FORMAT_INVALID(@Nullable CatalogsItemValidationDetails ADWORDS_FORMAT_INVALID) {
     this.ADWORDS_FORMAT_INVALID = ADWORDS_FORMAT_INVALID;
     return this;
   }
@@ -101,15 +101,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "ADWORDS_FORMAT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ADWORDS_FORMAT_INVALID")
-  public CatalogsItemValidationDetails getADWORDSFORMATINVALID() {
+  public @Nullable CatalogsItemValidationDetails getADWORDSFORMATINVALID() {
     return ADWORDS_FORMAT_INVALID;
   }
 
-  public void setADWORDSFORMATINVALID(CatalogsItemValidationDetails ADWORDS_FORMAT_INVALID) {
+  public void setADWORDSFORMATINVALID(@Nullable CatalogsItemValidationDetails ADWORDS_FORMAT_INVALID) {
     this.ADWORDS_FORMAT_INVALID = ADWORDS_FORMAT_INVALID;
   }
 
-  public CatalogsItemValidationErrors AVAILABILITY_INVALID(CatalogsItemValidationDetails AVAILABILITY_INVALID) {
+  public CatalogsItemValidationErrors AVAILABILITY_INVALID(@Nullable CatalogsItemValidationDetails AVAILABILITY_INVALID) {
     this.AVAILABILITY_INVALID = AVAILABILITY_INVALID;
     return this;
   }
@@ -121,15 +121,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "AVAILABILITY_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("AVAILABILITY_INVALID")
-  public CatalogsItemValidationDetails getAVAILABILITYINVALID() {
+  public @Nullable CatalogsItemValidationDetails getAVAILABILITYINVALID() {
     return AVAILABILITY_INVALID;
   }
 
-  public void setAVAILABILITYINVALID(CatalogsItemValidationDetails AVAILABILITY_INVALID) {
+  public void setAVAILABILITYINVALID(@Nullable CatalogsItemValidationDetails AVAILABILITY_INVALID) {
     this.AVAILABILITY_INVALID = AVAILABILITY_INVALID;
   }
 
-  public CatalogsItemValidationErrors BLOCKLISTED_IMAGE_SIGNATURE(CatalogsItemValidationDetails BLOCKLISTED_IMAGE_SIGNATURE) {
+  public CatalogsItemValidationErrors BLOCKLISTED_IMAGE_SIGNATURE(@Nullable CatalogsItemValidationDetails BLOCKLISTED_IMAGE_SIGNATURE) {
     this.BLOCKLISTED_IMAGE_SIGNATURE = BLOCKLISTED_IMAGE_SIGNATURE;
     return this;
   }
@@ -141,15 +141,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "BLOCKLISTED_IMAGE_SIGNATURE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("BLOCKLISTED_IMAGE_SIGNATURE")
-  public CatalogsItemValidationDetails getBLOCKLISTEDIMAGESIGNATURE() {
+  public @Nullable CatalogsItemValidationDetails getBLOCKLISTEDIMAGESIGNATURE() {
     return BLOCKLISTED_IMAGE_SIGNATURE;
   }
 
-  public void setBLOCKLISTEDIMAGESIGNATURE(CatalogsItemValidationDetails BLOCKLISTED_IMAGE_SIGNATURE) {
+  public void setBLOCKLISTEDIMAGESIGNATURE(@Nullable CatalogsItemValidationDetails BLOCKLISTED_IMAGE_SIGNATURE) {
     this.BLOCKLISTED_IMAGE_SIGNATURE = BLOCKLISTED_IMAGE_SIGNATURE;
   }
 
-  public CatalogsItemValidationErrors DESCRIPTION_MISSING(CatalogsItemValidationDetails DESCRIPTION_MISSING) {
+  public CatalogsItemValidationErrors DESCRIPTION_MISSING(@Nullable CatalogsItemValidationDetails DESCRIPTION_MISSING) {
     this.DESCRIPTION_MISSING = DESCRIPTION_MISSING;
     return this;
   }
@@ -161,15 +161,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "DESCRIPTION_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DESCRIPTION_MISSING")
-  public CatalogsItemValidationDetails getDESCRIPTIONMISSING() {
+  public @Nullable CatalogsItemValidationDetails getDESCRIPTIONMISSING() {
     return DESCRIPTION_MISSING;
   }
 
-  public void setDESCRIPTIONMISSING(CatalogsItemValidationDetails DESCRIPTION_MISSING) {
+  public void setDESCRIPTIONMISSING(@Nullable CatalogsItemValidationDetails DESCRIPTION_MISSING) {
     this.DESCRIPTION_MISSING = DESCRIPTION_MISSING;
   }
 
-  public CatalogsItemValidationErrors DUPLICATE_PRODUCTS(CatalogsItemValidationDetails DUPLICATE_PRODUCTS) {
+  public CatalogsItemValidationErrors DUPLICATE_PRODUCTS(@Nullable CatalogsItemValidationDetails DUPLICATE_PRODUCTS) {
     this.DUPLICATE_PRODUCTS = DUPLICATE_PRODUCTS;
     return this;
   }
@@ -181,15 +181,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "DUPLICATE_PRODUCTS", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DUPLICATE_PRODUCTS")
-  public CatalogsItemValidationDetails getDUPLICATEPRODUCTS() {
+  public @Nullable CatalogsItemValidationDetails getDUPLICATEPRODUCTS() {
     return DUPLICATE_PRODUCTS;
   }
 
-  public void setDUPLICATEPRODUCTS(CatalogsItemValidationDetails DUPLICATE_PRODUCTS) {
+  public void setDUPLICATEPRODUCTS(@Nullable CatalogsItemValidationDetails DUPLICATE_PRODUCTS) {
     this.DUPLICATE_PRODUCTS = DUPLICATE_PRODUCTS;
   }
 
-  public CatalogsItemValidationErrors IMAGE_LINK_INVALID(CatalogsItemValidationDetails IMAGE_LINK_INVALID) {
+  public CatalogsItemValidationErrors IMAGE_LINK_INVALID(@Nullable CatalogsItemValidationDetails IMAGE_LINK_INVALID) {
     this.IMAGE_LINK_INVALID = IMAGE_LINK_INVALID;
     return this;
   }
@@ -201,15 +201,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "IMAGE_LINK_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_INVALID")
-  public CatalogsItemValidationDetails getIMAGELINKINVALID() {
+  public @Nullable CatalogsItemValidationDetails getIMAGELINKINVALID() {
     return IMAGE_LINK_INVALID;
   }
 
-  public void setIMAGELINKINVALID(CatalogsItemValidationDetails IMAGE_LINK_INVALID) {
+  public void setIMAGELINKINVALID(@Nullable CatalogsItemValidationDetails IMAGE_LINK_INVALID) {
     this.IMAGE_LINK_INVALID = IMAGE_LINK_INVALID;
   }
 
-  public CatalogsItemValidationErrors IMAGE_LINK_LENGTH_TOO_LONG(CatalogsItemValidationDetails IMAGE_LINK_LENGTH_TOO_LONG) {
+  public CatalogsItemValidationErrors IMAGE_LINK_LENGTH_TOO_LONG(@Nullable CatalogsItemValidationDetails IMAGE_LINK_LENGTH_TOO_LONG) {
     this.IMAGE_LINK_LENGTH_TOO_LONG = IMAGE_LINK_LENGTH_TOO_LONG;
     return this;
   }
@@ -221,15 +221,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "IMAGE_LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_LENGTH_TOO_LONG")
-  public CatalogsItemValidationDetails getIMAGELINKLENGTHTOOLONG() {
+  public @Nullable CatalogsItemValidationDetails getIMAGELINKLENGTHTOOLONG() {
     return IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
-  public void setIMAGELINKLENGTHTOOLONG(CatalogsItemValidationDetails IMAGE_LINK_LENGTH_TOO_LONG) {
+  public void setIMAGELINKLENGTHTOOLONG(@Nullable CatalogsItemValidationDetails IMAGE_LINK_LENGTH_TOO_LONG) {
     this.IMAGE_LINK_LENGTH_TOO_LONG = IMAGE_LINK_LENGTH_TOO_LONG;
   }
 
-  public CatalogsItemValidationErrors IMAGE_LINK_MISSING(CatalogsItemValidationDetails IMAGE_LINK_MISSING) {
+  public CatalogsItemValidationErrors IMAGE_LINK_MISSING(@Nullable CatalogsItemValidationDetails IMAGE_LINK_MISSING) {
     this.IMAGE_LINK_MISSING = IMAGE_LINK_MISSING;
     return this;
   }
@@ -241,15 +241,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "IMAGE_LINK_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("IMAGE_LINK_MISSING")
-  public CatalogsItemValidationDetails getIMAGELINKMISSING() {
+  public @Nullable CatalogsItemValidationDetails getIMAGELINKMISSING() {
     return IMAGE_LINK_MISSING;
   }
 
-  public void setIMAGELINKMISSING(CatalogsItemValidationDetails IMAGE_LINK_MISSING) {
+  public void setIMAGELINKMISSING(@Nullable CatalogsItemValidationDetails IMAGE_LINK_MISSING) {
     this.IMAGE_LINK_MISSING = IMAGE_LINK_MISSING;
   }
 
-  public CatalogsItemValidationErrors INVALID_DOMAIN(CatalogsItemValidationDetails INVALID_DOMAIN) {
+  public CatalogsItemValidationErrors INVALID_DOMAIN(@Nullable CatalogsItemValidationDetails INVALID_DOMAIN) {
     this.INVALID_DOMAIN = INVALID_DOMAIN;
     return this;
   }
@@ -261,15 +261,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "INVALID_DOMAIN", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("INVALID_DOMAIN")
-  public CatalogsItemValidationDetails getINVALIDDOMAIN() {
+  public @Nullable CatalogsItemValidationDetails getINVALIDDOMAIN() {
     return INVALID_DOMAIN;
   }
 
-  public void setINVALIDDOMAIN(CatalogsItemValidationDetails INVALID_DOMAIN) {
+  public void setINVALIDDOMAIN(@Nullable CatalogsItemValidationDetails INVALID_DOMAIN) {
     this.INVALID_DOMAIN = INVALID_DOMAIN;
   }
 
-  public CatalogsItemValidationErrors ITEMID_MISSING(CatalogsItemValidationDetails ITEMID_MISSING) {
+  public CatalogsItemValidationErrors ITEMID_MISSING(@Nullable CatalogsItemValidationDetails ITEMID_MISSING) {
     this.ITEMID_MISSING = ITEMID_MISSING;
     return this;
   }
@@ -281,15 +281,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "ITEMID_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEMID_MISSING")
-  public CatalogsItemValidationDetails getITEMIDMISSING() {
+  public @Nullable CatalogsItemValidationDetails getITEMIDMISSING() {
     return ITEMID_MISSING;
   }
 
-  public void setITEMIDMISSING(CatalogsItemValidationDetails ITEMID_MISSING) {
+  public void setITEMIDMISSING(@Nullable CatalogsItemValidationDetails ITEMID_MISSING) {
     this.ITEMID_MISSING = ITEMID_MISSING;
   }
 
-  public CatalogsItemValidationErrors ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE(CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
+  public CatalogsItemValidationErrors ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE(@Nullable CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
     return this;
   }
@@ -301,15 +301,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE")
-  public CatalogsItemValidationDetails getITEMMAINIMAGEDOWNLOADFAILURE() {
+  public @Nullable CatalogsItemValidationDetails getITEMMAINIMAGEDOWNLOADFAILURE() {
     return ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
   }
 
-  public void setITEMMAINIMAGEDOWNLOADFAILURE(CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
+  public void setITEMMAINIMAGEDOWNLOADFAILURE(@Nullable CatalogsItemValidationDetails ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE) {
     this.ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE = ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
   }
 
-  public CatalogsItemValidationErrors LINK_FORMAT_INVALID(CatalogsItemValidationDetails LINK_FORMAT_INVALID) {
+  public CatalogsItemValidationErrors LINK_FORMAT_INVALID(@Nullable CatalogsItemValidationDetails LINK_FORMAT_INVALID) {
     this.LINK_FORMAT_INVALID = LINK_FORMAT_INVALID;
     return this;
   }
@@ -321,15 +321,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "LINK_FORMAT_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_FORMAT_INVALID")
-  public CatalogsItemValidationDetails getLINKFORMATINVALID() {
+  public @Nullable CatalogsItemValidationDetails getLINKFORMATINVALID() {
     return LINK_FORMAT_INVALID;
   }
 
-  public void setLINKFORMATINVALID(CatalogsItemValidationDetails LINK_FORMAT_INVALID) {
+  public void setLINKFORMATINVALID(@Nullable CatalogsItemValidationDetails LINK_FORMAT_INVALID) {
     this.LINK_FORMAT_INVALID = LINK_FORMAT_INVALID;
   }
 
-  public CatalogsItemValidationErrors LINK_LENGTH_TOO_LONG(CatalogsItemValidationDetails LINK_LENGTH_TOO_LONG) {
+  public CatalogsItemValidationErrors LINK_LENGTH_TOO_LONG(@Nullable CatalogsItemValidationDetails LINK_LENGTH_TOO_LONG) {
     this.LINK_LENGTH_TOO_LONG = LINK_LENGTH_TOO_LONG;
     return this;
   }
@@ -341,15 +341,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "LINK_LENGTH_TOO_LONG", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LINK_LENGTH_TOO_LONG")
-  public CatalogsItemValidationDetails getLINKLENGTHTOOLONG() {
+  public @Nullable CatalogsItemValidationDetails getLINKLENGTHTOOLONG() {
     return LINK_LENGTH_TOO_LONG;
   }
 
-  public void setLINKLENGTHTOOLONG(CatalogsItemValidationDetails LINK_LENGTH_TOO_LONG) {
+  public void setLINKLENGTHTOOLONG(@Nullable CatalogsItemValidationDetails LINK_LENGTH_TOO_LONG) {
     this.LINK_LENGTH_TOO_LONG = LINK_LENGTH_TOO_LONG;
   }
 
-  public CatalogsItemValidationErrors LIST_PRICE_INVALID(CatalogsItemValidationDetails LIST_PRICE_INVALID) {
+  public CatalogsItemValidationErrors LIST_PRICE_INVALID(@Nullable CatalogsItemValidationDetails LIST_PRICE_INVALID) {
     this.LIST_PRICE_INVALID = LIST_PRICE_INVALID;
     return this;
   }
@@ -361,15 +361,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "LIST_PRICE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("LIST_PRICE_INVALID")
-  public CatalogsItemValidationDetails getLISTPRICEINVALID() {
+  public @Nullable CatalogsItemValidationDetails getLISTPRICEINVALID() {
     return LIST_PRICE_INVALID;
   }
 
-  public void setLISTPRICEINVALID(CatalogsItemValidationDetails LIST_PRICE_INVALID) {
+  public void setLISTPRICEINVALID(@Nullable CatalogsItemValidationDetails LIST_PRICE_INVALID) {
     this.LIST_PRICE_INVALID = LIST_PRICE_INVALID;
   }
 
-  public CatalogsItemValidationErrors MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED(CatalogsItemValidationDetails MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
+  public CatalogsItemValidationErrors MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED(@Nullable CatalogsItemValidationDetails MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
     this.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
     return this;
   }
@@ -381,15 +381,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED")
-  public CatalogsItemValidationDetails getMAXITEMSPERITEMGROUPEXCEEDED() {
+  public @Nullable CatalogsItemValidationDetails getMAXITEMSPERITEMGROUPEXCEEDED() {
     return MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
   }
 
-  public void setMAXITEMSPERITEMGROUPEXCEEDED(CatalogsItemValidationDetails MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
+  public void setMAXITEMSPERITEMGROUPEXCEEDED(@Nullable CatalogsItemValidationDetails MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED) {
     this.MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED = MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
   }
 
-  public CatalogsItemValidationErrors PARSE_LINE_ERROR(CatalogsItemValidationDetails PARSE_LINE_ERROR) {
+  public CatalogsItemValidationErrors PARSE_LINE_ERROR(@Nullable CatalogsItemValidationDetails PARSE_LINE_ERROR) {
     this.PARSE_LINE_ERROR = PARSE_LINE_ERROR;
     return this;
   }
@@ -401,15 +401,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "PARSE_LINE_ERROR", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PARSE_LINE_ERROR")
-  public CatalogsItemValidationDetails getPARSELINEERROR() {
+  public @Nullable CatalogsItemValidationDetails getPARSELINEERROR() {
     return PARSE_LINE_ERROR;
   }
 
-  public void setPARSELINEERROR(CatalogsItemValidationDetails PARSE_LINE_ERROR) {
+  public void setPARSELINEERROR(@Nullable CatalogsItemValidationDetails PARSE_LINE_ERROR) {
     this.PARSE_LINE_ERROR = PARSE_LINE_ERROR;
   }
 
-  public CatalogsItemValidationErrors PINJOIN_CONTENT_UNSAFE(CatalogsItemValidationDetails PINJOIN_CONTENT_UNSAFE) {
+  public CatalogsItemValidationErrors PINJOIN_CONTENT_UNSAFE(@Nullable CatalogsItemValidationDetails PINJOIN_CONTENT_UNSAFE) {
     this.PINJOIN_CONTENT_UNSAFE = PINJOIN_CONTENT_UNSAFE;
     return this;
   }
@@ -421,15 +421,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "PINJOIN_CONTENT_UNSAFE", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PINJOIN_CONTENT_UNSAFE")
-  public CatalogsItemValidationDetails getPINJOINCONTENTUNSAFE() {
+  public @Nullable CatalogsItemValidationDetails getPINJOINCONTENTUNSAFE() {
     return PINJOIN_CONTENT_UNSAFE;
   }
 
-  public void setPINJOINCONTENTUNSAFE(CatalogsItemValidationDetails PINJOIN_CONTENT_UNSAFE) {
+  public void setPINJOINCONTENTUNSAFE(@Nullable CatalogsItemValidationDetails PINJOIN_CONTENT_UNSAFE) {
     this.PINJOIN_CONTENT_UNSAFE = PINJOIN_CONTENT_UNSAFE;
   }
 
-  public CatalogsItemValidationErrors PRICE_CANNOT_BE_DETERMINED(CatalogsItemValidationDetails PRICE_CANNOT_BE_DETERMINED) {
+  public CatalogsItemValidationErrors PRICE_CANNOT_BE_DETERMINED(@Nullable CatalogsItemValidationDetails PRICE_CANNOT_BE_DETERMINED) {
     this.PRICE_CANNOT_BE_DETERMINED = PRICE_CANNOT_BE_DETERMINED;
     return this;
   }
@@ -441,15 +441,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "PRICE_CANNOT_BE_DETERMINED", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRICE_CANNOT_BE_DETERMINED")
-  public CatalogsItemValidationDetails getPRICECANNOTBEDETERMINED() {
+  public @Nullable CatalogsItemValidationDetails getPRICECANNOTBEDETERMINED() {
     return PRICE_CANNOT_BE_DETERMINED;
   }
 
-  public void setPRICECANNOTBEDETERMINED(CatalogsItemValidationDetails PRICE_CANNOT_BE_DETERMINED) {
+  public void setPRICECANNOTBEDETERMINED(@Nullable CatalogsItemValidationDetails PRICE_CANNOT_BE_DETERMINED) {
     this.PRICE_CANNOT_BE_DETERMINED = PRICE_CANNOT_BE_DETERMINED;
   }
 
-  public CatalogsItemValidationErrors PRICE_MISSING(CatalogsItemValidationDetails PRICE_MISSING) {
+  public CatalogsItemValidationErrors PRICE_MISSING(@Nullable CatalogsItemValidationDetails PRICE_MISSING) {
     this.PRICE_MISSING = PRICE_MISSING;
     return this;
   }
@@ -461,15 +461,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "PRICE_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRICE_MISSING")
-  public CatalogsItemValidationDetails getPRICEMISSING() {
+  public @Nullable CatalogsItemValidationDetails getPRICEMISSING() {
     return PRICE_MISSING;
   }
 
-  public void setPRICEMISSING(CatalogsItemValidationDetails PRICE_MISSING) {
+  public void setPRICEMISSING(@Nullable CatalogsItemValidationDetails PRICE_MISSING) {
     this.PRICE_MISSING = PRICE_MISSING;
   }
 
-  public CatalogsItemValidationErrors PRODUCT_LINK_MISSING(CatalogsItemValidationDetails PRODUCT_LINK_MISSING) {
+  public CatalogsItemValidationErrors PRODUCT_LINK_MISSING(@Nullable CatalogsItemValidationDetails PRODUCT_LINK_MISSING) {
     this.PRODUCT_LINK_MISSING = PRODUCT_LINK_MISSING;
     return this;
   }
@@ -481,15 +481,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "PRODUCT_LINK_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_LINK_MISSING")
-  public CatalogsItemValidationDetails getPRODUCTLINKMISSING() {
+  public @Nullable CatalogsItemValidationDetails getPRODUCTLINKMISSING() {
     return PRODUCT_LINK_MISSING;
   }
 
-  public void setPRODUCTLINKMISSING(CatalogsItemValidationDetails PRODUCT_LINK_MISSING) {
+  public void setPRODUCTLINKMISSING(@Nullable CatalogsItemValidationDetails PRODUCT_LINK_MISSING) {
     this.PRODUCT_LINK_MISSING = PRODUCT_LINK_MISSING;
   }
 
-  public CatalogsItemValidationErrors PRODUCT_PRICE_INVALID(CatalogsItemValidationDetails PRODUCT_PRICE_INVALID) {
+  public CatalogsItemValidationErrors PRODUCT_PRICE_INVALID(@Nullable CatalogsItemValidationDetails PRODUCT_PRICE_INVALID) {
     this.PRODUCT_PRICE_INVALID = PRODUCT_PRICE_INVALID;
     return this;
   }
@@ -501,15 +501,15 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "PRODUCT_PRICE_INVALID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("PRODUCT_PRICE_INVALID")
-  public CatalogsItemValidationDetails getPRODUCTPRICEINVALID() {
+  public @Nullable CatalogsItemValidationDetails getPRODUCTPRICEINVALID() {
     return PRODUCT_PRICE_INVALID;
   }
 
-  public void setPRODUCTPRICEINVALID(CatalogsItemValidationDetails PRODUCT_PRICE_INVALID) {
+  public void setPRODUCTPRICEINVALID(@Nullable CatalogsItemValidationDetails PRODUCT_PRICE_INVALID) {
     this.PRODUCT_PRICE_INVALID = PRODUCT_PRICE_INVALID;
   }
 
-  public CatalogsItemValidationErrors TITLE_MISSING(CatalogsItemValidationDetails TITLE_MISSING) {
+  public CatalogsItemValidationErrors TITLE_MISSING(@Nullable CatalogsItemValidationDetails TITLE_MISSING) {
     this.TITLE_MISSING = TITLE_MISSING;
     return this;
   }
@@ -521,11 +521,11 @@ public class CatalogsItemValidationErrors {
   @Valid 
   @Schema(name = "TITLE_MISSING", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("TITLE_MISSING")
-  public CatalogsItemValidationDetails getTITLEMISSING() {
+  public @Nullable CatalogsItemValidationDetails getTITLEMISSING() {
     return TITLE_MISSING;
   }
 
-  public void setTITLEMISSING(CatalogsItemValidationDetails TITLE_MISSING) {
+  public void setTITLEMISSING(@Nullable CatalogsItemValidationDetails TITLE_MISSING) {
     this.TITLE_MISSING = TITLE_MISSING;
   }
 

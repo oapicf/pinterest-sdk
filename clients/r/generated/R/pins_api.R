@@ -20,7 +20,7 @@
 #' var_pin_ids <- c("inner_example") # array[character] | List of Pin IDs.
 #' var_start_date <- "start_date_example" # character | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 #' var_end_date <- "end_date_example" # character | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-#' var_metric_types <- c(pins_analytics_metric_types_parameter_inner$new()) # array[PinsAnalyticsMetricTypesParameterInner] | Pin metric types to get data for.
+#' var_metric_types <- c("IMPRESSION") # array[character] | Pin metric types to get data for.
 #' var_app_types <- "ALL" # character | Apps or devices to get data for, default is all. (Optional)
 #' var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
 #'
@@ -45,7 +45,7 @@
 #' var_pin_id <- "pin_id_example" # character | Unique identifier of a Pin.
 #' var_start_date <- "start_date_example" # character | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 #' var_end_date <- "end_date_example" # character | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-#' var_metric_types <- c(pins_analytics_metric_types_parameter_inner$new()) # array[PinsAnalyticsMetricTypesParameterInner] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+#' var_metric_types <- c("IMPRESSION") # array[character] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 #' var_app_types <- "ALL" # character | Apps or devices to get data for, default is all. (Optional)
 #' var_split_field <- "NO_SPLIT" # character | How to split the data into groups. Not including this param means data won't be split. (Optional)
 #' var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account. (Optional)
@@ -271,21 +271,39 @@ PinsApi <- R6::R6Class(
         stop("Missing required parameter `metric_types`.")
       }
 
-      if (length(`pin_ids`) > 100) {
+      if (!missing(`pin_ids`) && is.null(`pin_ids`)) {
+        stop("Invalid value for `pin_ids` when calling PinsApi$MultiPinsAnalytics, `pin_ids` is not nullable")
+      }
+      if (!is.null(`pin_ids`) && length(`pin_ids`) > 100) {
         stop("Invalid length for `pin_ids` when calling PinsApi$MultiPinsAnalytics, number of items must be less than or equal to 100.")
       }
-      if (length(`pin_ids`) < 1) {
+      if (!is.null(`pin_ids`) && length(`pin_ids`) < 1) {
         stop("Invalid length for `pin_ids` when calling PinsApi$MultiPinsAnalytics, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling PinsApi$MultiPinsAnalytics, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling PinsApi$MultiPinsAnalytics, `end_date` is not nullable")
+      }
 
+      if (!missing(`metric_types`) && is.null(`metric_types`)) {
+        stop("Invalid value for `metric_types` when calling PinsApi$MultiPinsAnalytics, `metric_types` is not nullable")
+      }
 
+      if (!missing(`app_types`) && is.null(`app_types`)) {
+        stop("Invalid value for `app_types` when calling PinsApi$MultiPinsAnalytics, `app_types` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling PinsApi$MultiPinsAnalytics, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling PinsApi$MultiPinsAnalytics, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling PinsApi$MultiPinsAnalytics, must conform to the pattern ^\\d+$.")
       }
 
@@ -304,6 +322,12 @@ PinsApi <- R6::R6Class(
       query_params[["app_types"]] <- `app_types`
 
       # no explore
+      # validate enum values
+      for (query_item in `metric_types`) {
+        if (!is.null(query_item) && !(query_item %in% c("IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "TOTAL_COMMENTS", "TOTAL_REACTIONS", "USER_FOLLOW", "PROFILE_VISIT", "VIDEO_MRC_VIEW", "VIDEO_10S_VIEW", "QUARTILE_95_PERCENT_VIEW", "VIDEO_V50_WATCH_TIME", "VIDEO_START", "VIDEO_AVG_WATCH_TIME"))) {
+          stop("Invalid value for metric_types when calling PinsApi$MultiPinsAnalytics. Must be [IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE, SAVE_RATE, TOTAL_COMMENTS, TOTAL_REACTIONS, USER_FOLLOW, PROFILE_VISIT, VIDEO_MRC_VIEW, VIDEO_10S_VIEW, QUARTILE_95_PERCENT_VIEW, VIDEO_V50_WATCH_TIME, VIDEO_START, VIDEO_AVG_WATCH_TIME].")
+        }
+      }
       query_params[["metric_types"]] <- I(paste(lapply(`metric_types`, URLencode, reserved = TRUE), collapse = ","))
 
       query_params[["ad_account_id"]] <- `ad_account_id`
@@ -431,16 +455,37 @@ PinsApi <- R6::R6Class(
         stop("Missing required parameter `metric_types`.")
       }
 
+      if (!missing(`pin_id`) && is.null(`pin_id`)) {
+        stop("Invalid value for `pin_id` when calling PinsApi$PinsAnalytics, `pin_id` is not nullable")
+      }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling PinsApi$PinsAnalytics, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling PinsApi$PinsAnalytics, `end_date` is not nullable")
+      }
 
+      if (!missing(`metric_types`) && is.null(`metric_types`)) {
+        stop("Invalid value for `metric_types` when calling PinsApi$PinsAnalytics, `metric_types` is not nullable")
+      }
 
+      if (!missing(`app_types`) && is.null(`app_types`)) {
+        stop("Invalid value for `app_types` when calling PinsApi$PinsAnalytics, `app_types` is not nullable")
+      }
 
+      if (!missing(`split_field`) && is.null(`split_field`)) {
+        stop("Invalid value for `split_field` when calling PinsApi$PinsAnalytics, `split_field` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling PinsApi$PinsAnalytics, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling PinsApi$PinsAnalytics, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling PinsApi$PinsAnalytics, must conform to the pattern ^\\d+$.")
       }
 
@@ -454,6 +499,12 @@ PinsApi <- R6::R6Class(
       query_params[["app_types"]] <- `app_types`
 
       # no explore
+      # validate enum values
+      for (query_item in `metric_types`) {
+        if (!is.null(query_item) && !(query_item %in% c("IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "TOTAL_COMMENTS", "TOTAL_REACTIONS", "USER_FOLLOW", "PROFILE_VISIT", "VIDEO_MRC_VIEW", "VIDEO_10S_VIEW", "QUARTILE_95_PERCENT_VIEW", "VIDEO_V50_WATCH_TIME", "VIDEO_START", "VIDEO_AVG_WATCH_TIME"))) {
+          stop("Invalid value for metric_types when calling PinsApi$PinsAnalytics. Must be [IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE, SAVE_RATE, TOTAL_COMMENTS, TOTAL_REACTIONS, USER_FOLLOW, PROFILE_VISIT, VIDEO_MRC_VIEW, VIDEO_10S_VIEW, QUARTILE_95_PERCENT_VIEW, VIDEO_V50_WATCH_TIME, VIDEO_START, VIDEO_AVG_WATCH_TIME].")
+        }
+      }
       query_params[["metric_types"]] <- I(paste(lapply(`metric_types`, URLencode, reserved = TRUE), collapse = ","))
 
       if (!is.null(`split_field`) && !(`split_field` %in% c("NO_SPLIT", "APP_TYPE"))) {
@@ -569,10 +620,13 @@ PinsApi <- R6::R6Class(
       }
 
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling PinsApi$PinsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling PinsApi$PinsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling PinsApi$PinsCreate, must conform to the pattern ^\\d+$.")
       }
 
@@ -680,11 +734,17 @@ PinsApi <- R6::R6Class(
         stop("Missing required parameter `pin_id`.")
       }
 
+      if (!missing(`pin_id`) && is.null(`pin_id`)) {
+        stop("Invalid value for `pin_id` when calling PinsApi$PinsDelete, `pin_id` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling PinsApi$PinsDelete, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling PinsApi$PinsDelete, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling PinsApi$PinsDelete, must conform to the pattern ^\\d+$.")
       }
 
@@ -783,12 +843,21 @@ PinsApi <- R6::R6Class(
         stop("Missing required parameter `pin_id`.")
       }
 
+      if (!missing(`pin_id`) && is.null(`pin_id`)) {
+        stop("Invalid value for `pin_id` when calling PinsApi$PinsGet, `pin_id` is not nullable")
+      }
 
+      if (!missing(`pin_metrics`) && is.null(`pin_metrics`)) {
+        stop("Invalid value for `pin_metrics` when calling PinsApi$PinsGet, `pin_metrics` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling PinsApi$PinsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling PinsApi$PinsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling PinsApi$PinsGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -909,25 +978,49 @@ PinsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling PinsApi$PinsList, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling PinsApi$PinsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling PinsApi$PinsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling PinsApi$PinsList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`pin_filter`) && is.null(`pin_filter`)) {
+        stop("Invalid value for `pin_filter` when calling PinsApi$PinsList, `pin_filter` is not nullable")
+      }
 
+      if (!missing(`include_protected_pins`) && is.null(`include_protected_pins`)) {
+        stop("Invalid value for `include_protected_pins` when calling PinsApi$PinsList, `include_protected_pins` is not nullable")
+      }
 
+      if (!missing(`pin_type`) && is.null(`pin_type`)) {
+        stop("Invalid value for `pin_type` when calling PinsApi$PinsList, `pin_type` is not nullable")
+      }
 
+      if (!missing(`creative_types`) && is.null(`creative_types`)) {
+        stop("Invalid value for `creative_types` when calling PinsApi$PinsList, `creative_types` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling PinsApi$PinsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling PinsApi$PinsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling PinsApi$PinsList, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`pin_metrics`) && is.null(`pin_metrics`)) {
+        stop("Invalid value for `pin_metrics` when calling PinsApi$PinsList, `pin_metrics` is not nullable")
+      }
 
       query_params[["bookmark"]] <- `bookmark`
 
@@ -1065,12 +1158,21 @@ PinsApi <- R6::R6Class(
         stop("Missing required parameter `pins_save_request`.")
       }
 
+      if (!missing(`pin_id`) && is.null(`pin_id`)) {
+        stop("Invalid value for `pin_id` when calling PinsApi$PinsSave, `pin_id` is not nullable")
+      }
 
+      if (!missing(`pins_save_request`) && is.null(`pins_save_request`)) {
+        stop("Invalid value for `pins_save_request` when calling PinsApi$PinsSave, `pins_save_request` is not nullable")
+      }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling PinsApi$PinsSave, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling PinsApi$PinsSave, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling PinsApi$PinsSave, must conform to the pattern ^\\d+$.")
       }
 
@@ -1190,12 +1292,18 @@ PinsApi <- R6::R6Class(
         stop("Missing required parameter `pin_update`.")
       }
 
+      if (!missing(`pin_id`) && is.null(`pin_id`)) {
+        stop("Invalid value for `pin_id` when calling PinsApi$PinsUpdate, `pin_id` is not nullable")
+      }
 
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling PinsApi$PinsUpdate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling PinsApi$PinsUpdate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling PinsApi$PinsUpdate, must conform to the pattern ^\\d+$.")
       }
 

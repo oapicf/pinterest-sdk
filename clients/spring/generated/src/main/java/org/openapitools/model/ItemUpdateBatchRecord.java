@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "ItemUpdateBatchRecord", description = "Object describing an item batch record to update items")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemUpdateBatchRecord implements ItemBatchRecord {
 
   private @Nullable String itemId;
@@ -37,7 +37,7 @@ public class ItemUpdateBatchRecord implements ItemBatchRecord {
   @Valid
   private JsonNullable<List<UpdateMaskFieldType>> updateMask = JsonNullable.<List<UpdateMaskFieldType>>undefined();
 
-  public ItemUpdateBatchRecord itemId(String itemId) {
+  public ItemUpdateBatchRecord itemId(@Nullable String itemId) {
     this.itemId = itemId;
     return this;
   }
@@ -49,15 +49,15 @@ public class ItemUpdateBatchRecord implements ItemBatchRecord {
   
   @Schema(name = "item_id", example = "DS0294-M", description = "The catalog item id in the merchant namespace", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_id")
-  public String getItemId() {
+  public @Nullable String getItemId() {
     return itemId;
   }
 
-  public void setItemId(String itemId) {
+  public void setItemId(@Nullable String itemId) {
     this.itemId = itemId;
   }
 
-  public ItemUpdateBatchRecord attributes(UpdatableItemAttributes attributes) {
+  public ItemUpdateBatchRecord attributes(@Nullable UpdatableItemAttributes attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -69,11 +69,11 @@ public class ItemUpdateBatchRecord implements ItemBatchRecord {
   @Valid 
   @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("attributes")
-  public UpdatableItemAttributes getAttributes() {
+  public @Nullable UpdatableItemAttributes getAttributes() {
     return attributes;
   }
 
-  public void setAttributes(UpdatableItemAttributes attributes) {
+  public void setAttributes(@Nullable UpdatableItemAttributes attributes) {
     this.attributes = attributes;
   }
 

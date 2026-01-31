@@ -19,6 +19,8 @@ class CREATE_MMM_REPORT_REQUEST
 
 feature --Access
 
+    countries: detachable LIST [TARGETING_ADVERTISER_COUNTRY]
+      -- A List of countries for filtering
     report_name: detachable STRING_32
       -- Name of the Marketing Mix Modeling (MMM) report
     start_date: detachable STRING_32
@@ -33,10 +35,16 @@ feature --Access
       -- List of targeting types
     columns: detachable LIST [MMM_REPORTING_COLUMN]
       -- Metric and entity columns
-    countries: detachable LIST [TARGETING_ADVERTISER_COUNTRY]
-      -- A List of countries for filtering
 
 feature -- Change Element
+
+    set_countries (a_name: like countries)
+        -- Set 'countries' with 'a_name'.
+      do
+        countries := a_name
+      ensure
+        countries_set: countries = a_name
+      end
 
     set_report_name (a_name: like report_name)
         -- Set 'report_name' with 'a_name'.
@@ -94,14 +102,6 @@ feature -- Change Element
         columns_set: columns = a_name
       end
 
-    set_countries (a_name: like countries)
-        -- Set 'countries' with 'a_name'.
-      do
-        countries := a_name
-      ensure
-        countries_set: countries = a_name
-      end
-
 
  feature -- Status Report
 
@@ -110,6 +110,13 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass CREATE_MMM_REPORT_REQUEST%N")
+        if attached countries as l_countries then
+          across l_countries as ic loop
+            Result.append ("%N countries:")
+            Result.append (ic.item.out)
+            Result.append ("%N")
+          end
+        end
         if attached report_name as l_report_name then
           Result.append ("%Nreport_name:")
           Result.append (l_report_name.out)
@@ -145,13 +152,6 @@ feature -- Change Element
         if attached columns as l_columns then
           across l_columns as ic loop
             Result.append ("%N columns:")
-            Result.append (ic.item.out)
-            Result.append ("%N")
-          end
-        end
-        if attached countries as l_countries then
-          across l_countries as ic loop
-            Result.append ("%N countries:")
             Result.append (ic.item.out)
             Result.append ("%N")
           end

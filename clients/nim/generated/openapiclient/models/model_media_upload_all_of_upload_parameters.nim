@@ -9,15 +9,60 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type MediaUploadAllOfUploadParameters* = object
   ## The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
-  xAmzDate*: string
-  xAmzSignature*: string
-  xAmzSecurityToken*: string
-  xAmzAlgorithm*: string
-  key*: string
-  policy*: string
-  xAmzCredential*: string
-  contentType*: string
+  xAmzDate*: Option[string]
+  xAmzSignature*: Option[string]
+  xAmzSecurityToken*: Option[string]
+  xAmzAlgorithm*: Option[string]
+  key*: Option[string]
+  policy*: Option[string]
+  xAmzCredential*: Option[string]
+  contentType*: Option[string]
+
+
+# Custom JSON deserialization for MediaUploadAllOfUploadParameters with custom field names
+proc to*(node: JsonNode, T: typedesc[MediaUploadAllOfUploadParameters]): MediaUploadAllOfUploadParameters =
+  result = MediaUploadAllOfUploadParameters()
+  if node.kind == JObject:
+    if node.hasKey("x-amz-date") and node["x-amz-date"].kind != JNull:
+      result.xAmzDate = some(to(node["x-amz-date"], typeof(result.xAmzDate.get())))
+    if node.hasKey("x-amz-signature") and node["x-amz-signature"].kind != JNull:
+      result.xAmzSignature = some(to(node["x-amz-signature"], typeof(result.xAmzSignature.get())))
+    if node.hasKey("x-amz-security-token") and node["x-amz-security-token"].kind != JNull:
+      result.xAmzSecurityToken = some(to(node["x-amz-security-token"], typeof(result.xAmzSecurityToken.get())))
+    if node.hasKey("x-amz-algorithm") and node["x-amz-algorithm"].kind != JNull:
+      result.xAmzAlgorithm = some(to(node["x-amz-algorithm"], typeof(result.xAmzAlgorithm.get())))
+    if node.hasKey("key") and node["key"].kind != JNull:
+      result.key = some(to(node["key"], typeof(result.key.get())))
+    if node.hasKey("policy") and node["policy"].kind != JNull:
+      result.policy = some(to(node["policy"], typeof(result.policy.get())))
+    if node.hasKey("x-amz-credential") and node["x-amz-credential"].kind != JNull:
+      result.xAmzCredential = some(to(node["x-amz-credential"], typeof(result.xAmzCredential.get())))
+    if node.hasKey("Content-Type") and node["Content-Type"].kind != JNull:
+      result.contentType = some(to(node["Content-Type"], typeof(result.contentType.get())))
+
+# Custom JSON serialization for MediaUploadAllOfUploadParameters with custom field names
+proc `%`*(obj: MediaUploadAllOfUploadParameters): JsonNode =
+  result = newJObject()
+  if obj.xAmzDate.isSome():
+    result["x-amz-date"] = %obj.xAmzDate.get()
+  if obj.xAmzSignature.isSome():
+    result["x-amz-signature"] = %obj.xAmzSignature.get()
+  if obj.xAmzSecurityToken.isSome():
+    result["x-amz-security-token"] = %obj.xAmzSecurityToken.get()
+  if obj.xAmzAlgorithm.isSome():
+    result["x-amz-algorithm"] = %obj.xAmzAlgorithm.get()
+  if obj.key.isSome():
+    result["key"] = %obj.key.get()
+  if obj.policy.isSome():
+    result["policy"] = %obj.policy.get()
+  if obj.xAmzCredential.isSome():
+    result["x-amz-credential"] = %obj.xAmzCredential.get()
+  if obj.contentType.isSome():
+    result["Content-Type"] = %obj.contentType.get()
+

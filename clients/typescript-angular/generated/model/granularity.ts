@@ -12,18 +12,12 @@
 /**
  * Granularity
  */
-export type Granularity = 'TOTAL' | 'DAY' | 'HOUR' | 'WEEK' | 'MONTH';
-
 export const Granularity = {
-
-    Total: 'TOTAL' as Granularity,
-
-    Day: 'DAY' as Granularity,
-
-    Hour: 'HOUR' as Granularity,
-
-    Week: 'WEEK' as Granularity,
-
-    Month: 'MONTH' as Granularity
-};
+    Total: 'TOTAL',
+    Day: 'DAY',
+    Hour: 'HOUR',
+    Week: 'WEEK',
+    Month: 'MONTH'
+} as const;
+export type Granularity = typeof Granularity[keyof typeof Granularity];
 

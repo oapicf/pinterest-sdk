@@ -91,7 +91,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="subscriptionId">Unique identifier of a subscription.</param>
-    virtual void ad_accounts_subscriptions_del_by_id(const std::string &adAccountId, const std::string &subscriptionId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_accounts_subscriptions_del_by_id( const std::string &adAccountId, const std::string &subscriptionId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get lead ads subscription
     /// </summary>
@@ -100,7 +100,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="subscriptionId">Unique identifier of a subscription.</param>
-    virtual void ad_accounts_subscriptions_get_by_id(const std::string &adAccountId, const std::string &subscriptionId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_accounts_subscriptions_get_by_id( const std::string &adAccountId, const std::string &subscriptionId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get lead ads subscriptions
     /// </summary>
@@ -110,7 +110,7 @@ private:
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="pageSize">Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. (optional, default to 25)</param>
     /// <param name="bookmark">Cursor used to fetch the next page of items (optional, default to &quot;&quot;)</param>
-    virtual void ad_accounts_subscriptions_get_list(const std::string &adAccountId, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_accounts_subscriptions_get_list( const std::string &adAccountId, const std::optional<int32_t> &pageSize, const std::optional<std::string> &bookmark, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Create lead ads subscription
     /// </summary>
@@ -119,7 +119,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="adAccountCreateSubscriptionRequest">Subscription to create.</param>
-    virtual void ad_accounts_subscriptions_post(const std::string &adAccountId, const org::openapitools::server::model::AdAccountCreateSubscriptionRequest &adAccountCreateSubscriptionRequest, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void ad_accounts_subscriptions_post( const std::string &adAccountId, const org::openapitools::server::model::AdAccountCreateSubscriptionRequest &adAccountCreateSubscriptionRequest, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

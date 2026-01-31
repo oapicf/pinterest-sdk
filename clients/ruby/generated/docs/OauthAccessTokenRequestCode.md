@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **grant_type** | **String** |  |  |
 | **code** | **String** |  |  |
 | **redirect_uri** | **String** |  |  |
+| **grant_type** | **String** |  |  |
 
 ## Example
 
@@ -14,9 +14,9 @@
 require 'pinterest_sdk'
 
 instance = PinterestSdkClient::OauthAccessTokenRequestCode.new(
-  grant_type: null,
   code: null,
-  redirect_uri: null
+  redirect_uri: null,
+  grant_type: null
 )
 ```
 

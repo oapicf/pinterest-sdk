@@ -9,7 +9,48 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type Granularity* = object
-  ## Granularity
+type Granularity* {.pure.} = enum
+  TOTAL
+  DAY
+  HOUR
+  WEEK
+  MONTH
+
+func `%`*(v: Granularity): JsonNode =
+  result = case v:
+    of Granularity.TOTAL: %"TOTAL"
+    of Granularity.DAY: %"DAY"
+    of Granularity.HOUR: %"HOUR"
+    of Granularity.WEEK: %"WEEK"
+    of Granularity.MONTH: %"MONTH"
+
+func `$`*(v: Granularity): string =
+  result = case v:
+    of Granularity.TOTAL: $("TOTAL")
+    of Granularity.DAY: $("DAY")
+    of Granularity.HOUR: $("HOUR")
+    of Granularity.WEEK: $("WEEK")
+    of Granularity.MONTH: $("MONTH")
+
+proc to*(node: JsonNode, T: typedesc[Granularity]): Granularity =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Granularity, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("TOTAL"):
+    return Granularity.TOTAL
+  of $("DAY"):
+    return Granularity.DAY
+  of $("HOUR"):
+    return Granularity.HOUR
+  of $("WEEK"):
+    return Granularity.WEEK
+  of $("MONTH"):
+    return Granularity.MONTH
+  else:
+    raise newException(ValueError, "Invalid enum value for Granularity: " & strVal)
+

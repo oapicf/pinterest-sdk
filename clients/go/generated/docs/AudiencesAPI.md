@@ -34,7 +34,7 @@ import (
 
 func main() {
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account.
-	audienceCreateRequest := *openapiclient.NewAudienceCreateRequest("string", *openapiclient.NewAudienceRule(), *openapiclient.NewAudienceCreateRequest1AudienceType()) // AudienceCreateRequest | List of ads to create, size limit [1, 30]
+	audienceCreateRequest := *openapiclient.NewAudienceCreateRequest("string", *openapiclient.NewAudienceRule(), openapiclient.AudienceType("CUSTOMER_LIST")) // AudienceCreateRequest | List of ads to create, size limit [1, 30]
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

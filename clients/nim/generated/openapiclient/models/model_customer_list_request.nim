@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_object
 import model_user_list_type
@@ -17,5 +19,30 @@ type CustomerListRequest* = object
   ## 
   name*: string ## Customer list name.
   records*: string ## Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
-  listType*: UserListType
-  exceptions*: object ## Customer list errors.
+  listType*: Option[UserListType]
+  exceptions*: Option[JsonNode] ## Customer list errors.
+
+
+# Custom JSON deserialization for CustomerListRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CustomerListRequest]): CustomerListRequest =
+  result = CustomerListRequest()
+  if node.kind == JObject:
+    if node.hasKey("name"):
+      result.name = to(node["name"], string)
+    if node.hasKey("records"):
+      result.records = to(node["records"], string)
+    if node.hasKey("list_type") and node["list_type"].kind != JNull:
+      result.listType = some(to(node["list_type"], typeof(result.listType.get())))
+    if node.hasKey("exceptions") and node["exceptions"].kind != JNull:
+      result.exceptions = some(to(node["exceptions"], typeof(result.exceptions.get())))
+
+# Custom JSON serialization for CustomerListRequest with custom field names
+proc `%`*(obj: CustomerListRequest): JsonNode =
+  result = newJObject()
+  result["name"] = %obj.name
+  result["records"] = %obj.records
+  if obj.listType.isSome():
+    result["list_type"] = %obj.listType.get()
+  if obj.exceptions.isSome():
+    result["exceptions"] = %obj.exceptions.get()
+

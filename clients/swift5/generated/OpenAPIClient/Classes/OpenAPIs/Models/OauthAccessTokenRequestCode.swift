@@ -10,7 +10,6 @@ import Foundation
 import AnyCodable
 #endif
 
-/** A request to exchange an authorization code for an access token. */
 public struct OauthAccessTokenRequestCode: Codable, JSONEncodable, Hashable {
 
     public enum GrantType: String, Codable, CaseIterable {
@@ -18,29 +17,29 @@ public struct OauthAccessTokenRequestCode: Codable, JSONEncodable, Hashable {
         case refreshToken = "refresh_token"
         case clientCredentials = "client_credentials"
     }
-    public var grantType: GrantType
     public var code: String
     public var redirectUri: String
+    public var grantType: GrantType
 
-    public init(grantType: GrantType, code: String, redirectUri: String) {
-        self.grantType = grantType
+    public init(code: String, redirectUri: String, grantType: GrantType) {
         self.code = code
         self.redirectUri = redirectUri
+        self.grantType = grantType
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case grantType = "grant_type"
         case code
         case redirectUri = "redirect_uri"
+        case grantType = "grant_type"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(grantType, forKey: .grantType)
         try container.encode(code, forKey: .code)
         try container.encode(redirectUri, forKey: .redirectUri)
+        try container.encode(grantType, forKey: .grantType)
     }
 }
 

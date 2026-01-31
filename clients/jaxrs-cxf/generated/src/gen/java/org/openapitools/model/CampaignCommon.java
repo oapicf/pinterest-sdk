@@ -2,78 +2,90 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.EntityStatus;
 import org.openapitools.model.TrackingUrls;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Campaign Data
- **/
+ * Campaign Data
+ */
 @ApiModel(description="Campaign Data")
 
 public class CampaignCommon  {
   
-  @ApiModelProperty(example = "549755885175", value = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.")
  /**
-   * Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
-  **/
+  * Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "ACME Tools", value = "Campaign name.")
  /**
-   * Campaign name.
-  **/
+  * Campaign name.
+  */
+  @ApiModelProperty(example = "ACME Tools", value = "Campaign name.")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private EntityStatus status;
 
-  @ApiModelProperty(example = "1432744744", value = "Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.")
  /**
-   * Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
-  **/
+  * Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
+  */
+  @ApiModelProperty(example = "1432744744", value = "Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.")
+
   private Integer lifetimeSpendCap;
 
-  @ApiModelProperty(example = "1432744744", value = "Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.")
  /**
-   * Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
-  **/
+  * Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
+  */
+  @ApiModelProperty(example = "1432744744", value = "Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.")
+
   private Integer dailySpendCap;
 
-  @ApiModelProperty(example = "549755885175", value = "Order line ID that appears on the invoice.")
  /**
-   * Order line ID that appears on the invoice.
-  **/
+  * Order line ID that appears on the invoice.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Order line ID that appears on the invoice.")
+
   private String orderLineId;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private TrackingUrls trackingUrls;
 
-  @ApiModelProperty(example = "1580865126", value = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
  /**
-   * Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  **/
+  * Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+  */
+  @ApiModelProperty(example = "1580865126", value = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
+
   private Integer startTime;
 
-  @ApiModelProperty(example = "1644023526", value = "Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
  /**
-   * Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  **/
+  * Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+  */
+  @ApiModelProperty(example = "1644023526", value = "Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
+
   private Integer endTime;
 
-  @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
  /**
-   * Determine if a campaign has flexible daily budgets setup.
-  **/
+  * Determine if a campaign has flexible daily budgets setup.
+  */
+  @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
+
   private Boolean isFlexibleDailyBudgets;
  /**
    * Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.

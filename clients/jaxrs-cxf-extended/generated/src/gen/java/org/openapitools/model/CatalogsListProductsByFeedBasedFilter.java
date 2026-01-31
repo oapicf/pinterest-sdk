@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsProductGroupFilters;
 import javax.validation.constraints.*;
 import javax.validation.Valid;

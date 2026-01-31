@@ -14,21 +14,21 @@ package org.openapitools.client.model
 import org.openapitools.client.core.ApiModel
 
 case class InviteResponse (
-  assetsSummary: Option[InviteAssetsSummary] = None,
-  /* The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
-  businessRoles: Option[Seq[String]] = None,
-  /* Metadata for the business that created the invite/request. */
-  createdByBusiness: Option[BusinessAccessUserSummary] = None,
-  /* Metadata for the user that created the invite/request. */
-  createdByUser: Option[BusinessAccessUserSummary] = None,
-  /* The time the invite/request was created. Returned in milliseconds. */
-  createdTime: Option[Int] = None,
   /* Unique identifier of the invite/request. */
   id: Option[String] = None,
   inviteData: Option[BaseInviteDataResponseInviteData] = None,
   /* Indicates whether the invite/request was received. */
   isReceivedInvite: Option[Boolean] = None,
   /* Metadata for the member/partner that was sent the invite/request. */
-  user: Option[BusinessAccessUserSummary] = None
+  user: Option[BusinessAccessUserSummary] = None,
+  assetsSummary: Option[InviteAssetsSummary] = None,
+  /* The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. */
+  businessRoles: Option[Seq[String]] = None,
+  /* Metadata for the business that created the invite/request. */
+  createdByBusiness: Option[Any] = None,
+  /* Metadata for the user that created the invite/request. */
+  createdByUser: Option[Any] = None,
+  /* The time the invite/request was created. Returned in milliseconds. */
+  createdTime: Option[Int] = None
 ) extends ApiModel
 

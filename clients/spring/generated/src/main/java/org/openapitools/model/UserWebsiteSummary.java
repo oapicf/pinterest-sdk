@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * UserWebsiteSummary
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UserWebsiteSummary {
 
   private @Nullable String website;
@@ -28,7 +28,7 @@ public class UserWebsiteSummary {
 
   private @Nullable String verifiedAt;
 
-  public UserWebsiteSummary website(String website) {
+  public UserWebsiteSummary website(@Nullable String website) {
     this.website = website;
     return this;
   }
@@ -40,15 +40,15 @@ public class UserWebsiteSummary {
   
   @Schema(name = "website", example = "mysite.test", description = "Website with path or domain only", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("website")
-  public String getWebsite() {
+  public @Nullable String getWebsite() {
     return website;
   }
 
-  public void setWebsite(String website) {
+  public void setWebsite(@Nullable String website) {
     this.website = website;
   }
 
-  public UserWebsiteSummary status(String status) {
+  public UserWebsiteSummary status(@Nullable String status) {
     this.status = status;
     return this;
   }
@@ -60,15 +60,15 @@ public class UserWebsiteSummary {
   
   @Schema(name = "status", example = "success", description = "Status of the verification process", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public String getStatus() {
+  public @Nullable String getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(@Nullable String status) {
     this.status = status;
   }
 
-  public UserWebsiteSummary verifiedAt(String verifiedAt) {
+  public UserWebsiteSummary verifiedAt(@Nullable String verifiedAt) {
     this.verifiedAt = verifiedAt;
     return this;
   }
@@ -80,11 +80,11 @@ public class UserWebsiteSummary {
   
   @Schema(name = "verified_at", example = "2022-12-14T21:03:01.602000", description = "UTC timestamp when the verification happened - sometimes missing", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("verified_at")
-  public String getVerifiedAt() {
+  public @Nullable String getVerifiedAt() {
     return verifiedAt;
   }
 
-  public void setVerifiedAt(String verifiedAt) {
+  public void setVerifiedAt(@Nullable String verifiedAt) {
     this.verifiedAt = verifiedAt;
   }
 

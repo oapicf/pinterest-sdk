@@ -27,17 +27,17 @@ pub enum TermsOfServiceSlashGetError {
 /// Get the text of the terms of service and see whether the advertiser has accepted the terms of service.
 pub async fn terms_of_service_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, include_html: Option<bool>, tos_type: Option<&str>) -> Result<models::TermsOfService, Error<TermsOfServiceSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_include_html = include_html;
-    let p_tos_type = tos_type;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_include_html = include_html;
+    let p_query_tos_type = tos_type;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/terms_of_service", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/terms_of_service", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_include_html {
+    if let Some(ref param_value) = p_query_include_html {
         req_builder = req_builder.query(&[("include_html", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_tos_type {
+    if let Some(ref param_value) = p_query_tos_type {
         req_builder = req_builder.query(&[("tos_type", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

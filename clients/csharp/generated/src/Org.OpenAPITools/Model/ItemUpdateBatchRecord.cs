@@ -162,12 +162,10 @@ namespace Org.OpenAPITools.Model
                             itemId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "attributes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                attributes = new Option<UpdatableItemAttributes?>(JsonSerializer.Deserialize<UpdatableItemAttributes>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            attributes = new Option<UpdatableItemAttributes?>(JsonSerializer.Deserialize<UpdatableItemAttributes>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "update_mask":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updateMask = new Option<List<UpdateMaskFieldType>?>(JsonSerializer.Deserialize<List<UpdateMaskFieldType>>(ref utf8JsonReader, jsonSerializerOptions));
+                            updateMask = new Option<List<UpdateMaskFieldType>?>(JsonSerializer.Deserialize<List<UpdateMaskFieldType>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsItemValidationDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsItemValidationDetails {
   public static final String SERIALIZED_NAME_ATTRIBUTE_NAME = "attribute_name";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTE_NAME)
@@ -148,14 +148,10 @@ public class CatalogsItemValidationDetails {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("attribute_name");
-    openapiFields.add("provided_value");
+    openapiFields = new HashSet<String>(Arrays.asList("attribute_name", "provided_value"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("attribute_name");
-    openapiRequiredFields.add("provided_value");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("attribute_name", "provided_value"));
   }
 
   /**
@@ -167,7 +163,7 @@ public class CatalogsItemValidationDetails {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!CatalogsItemValidationDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CatalogsItemValidationDetails is not found in the empty JSON string", CatalogsItemValidationDetails.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in CatalogsItemValidationDetails is not found in the empty JSON string", CatalogsItemValidationDetails.openapiRequiredFields.toString()));
         }
       }
 
@@ -175,21 +171,21 @@ public class CatalogsItemValidationDetails {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!CatalogsItemValidationDetails.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CatalogsItemValidationDetails` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CatalogsItemValidationDetails` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : CatalogsItemValidationDetails.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `attribute_name`
       NullableCatalogsItemFieldType.validateJsonElement(jsonObj.get("attribute_name"));
       if ((jsonObj.get("provided_value") != null && !jsonObj.get("provided_value").isJsonNull()) && !jsonObj.get("provided_value").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `provided_value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("provided_value").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `provided_value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("provided_value").toString()));
       }
   }
 

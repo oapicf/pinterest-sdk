@@ -37,14 +37,10 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsCreateCreativeAssetsItem.class, name = "CREATE"),
   @JsonSubTypes.Type(value = CatalogsDeleteCreativeAssetsItem.class, name = "DELETE"),
   @JsonSubTypes.Type(value = CatalogsUpdateCreativeAssetsItem.class, name = "UPDATE"),
-  @JsonSubTypes.Type(value = CatalogsUpsertCreativeAssetsItem.class, name = "UPSERT"),
-  @JsonSubTypes.Type(value = CatalogsCreateCreativeAssetsItem.class, name = "CatalogsCreateCreativeAssetsItem"),
-  @JsonSubTypes.Type(value = CatalogsDeleteCreativeAssetsItem.class, name = "CatalogsDeleteCreativeAssetsItem"),
-  @JsonSubTypes.Type(value = CatalogsUpdateCreativeAssetsItem.class, name = "CatalogsUpdateCreativeAssetsItem"),
-  @JsonSubTypes.Type(value = CatalogsUpsertCreativeAssetsItem.class, name = "CatalogsUpsertCreativeAssetsItem")
+  @JsonSubTypes.Type(value = CatalogsUpsertCreativeAssetsItem.class, name = "UPSERT")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsCreativeAssetsBatchItem {
 
   private String creativeAssetsId;
@@ -55,7 +51,7 @@ public class CatalogsCreativeAssetsBatchItem {
   public enum OperationEnum {
     DELETE("DELETE");
 
-    private String value;
+    private final String value;
 
     OperationEnum(String value) {
       this.value = value;

@@ -48,15 +48,15 @@ data class Board(
     @Schema(example = "My favorite summer recipes", description = "")
     @get:JsonProperty("description") val description: kotlin.String? = null,
 
-    @get:Min(0)
+    @get:Min(value=0)
     @Schema(example = "17", readOnly = true, description = "Count of collaborators on the board.")
     @get:JsonProperty("collaborator_count") val collaboratorCount: kotlin.Int? = null,
 
-    @get:Min(0)
+    @get:Min(value=0)
     @Schema(example = "5", readOnly = true, description = "Count of pins on the board.")
     @get:JsonProperty("pin_count") val pinCount: kotlin.Int? = null,
 
-    @get:Min(0)
+    @get:Min(value=0)
     @Schema(example = "13", readOnly = true, description = "Board follower count.")
     @get:JsonProperty("follower_count") val followerCount: kotlin.Int? = null,
 
@@ -70,7 +70,7 @@ data class Board(
 
     @Schema(example = "null", description = "Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>")
     @get:JsonProperty("privacy") val privacy: Board.Privacy? = Privacy.PUBLIC
-    ) {
+) {
 
     /**
     * Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>
@@ -86,7 +86,8 @@ data class Board(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Privacy {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Board'")
             }
         }
     }

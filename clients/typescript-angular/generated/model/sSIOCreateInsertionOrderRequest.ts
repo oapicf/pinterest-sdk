@@ -98,11 +98,11 @@ export interface SSIOCreateInsertionOrderRequest {
     currency_info: Currency;
 }
 export namespace SSIOCreateInsertionOrderRequest {
-    export type OrderLineTypeEnum = 'BUDGET' | 'PERPETUALS';
     export const OrderLineTypeEnum = {
-        Budget: 'BUDGET' as OrderLineTypeEnum,
-        Perpetuals: 'PERPETUALS' as OrderLineTypeEnum
-    };
+        Budget: 'BUDGET',
+        Perpetuals: 'PERPETUALS'
+    } as const;
+    export type OrderLineTypeEnum = typeof OrderLineTypeEnum[keyof typeof OrderLineTypeEnum];
 }
 
 

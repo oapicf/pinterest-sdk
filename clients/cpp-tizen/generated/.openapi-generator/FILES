@@ -169,8 +169,6 @@ src/AudienceCreateCustomRequest.cpp
 src/AudienceCreateCustomRequest.h
 src/AudienceCreateRequest.cpp
 src/AudienceCreateRequest.h
-src/AudienceCreateRequest1AudienceType.cpp
-src/AudienceCreateRequest1AudienceType.h
 src/AudienceDataParty.cpp
 src/AudienceDataParty.h
 src/AudienceDefinition.cpp
@@ -545,8 +543,6 @@ src/CatalogsItemsPostFilters.cpp
 src/CatalogsItemsPostFilters.h
 src/CatalogsItemsRequest.cpp
 src/CatalogsItemsRequest.h
-src/CatalogsItemsRequestLanguage.cpp
-src/CatalogsItemsRequestLanguage.h
 src/CatalogsItemsUpdateBatchRequest.cpp
 src/CatalogsItemsUpdateBatchRequest.h
 src/CatalogsItemsUpsertBatchRequest.cpp
@@ -1244,8 +1240,6 @@ src/PinUpdate.cpp
 src/PinUpdate.h
 src/PinUpdateCarouselSlotsInner.cpp
 src/PinUpdateCarouselSlotsInner.h
-src/PinsAnalyticsMetricTypesParameterInner.cpp
-src/PinsAnalyticsMetricTypesParameterInner.h
 src/PinsList200Response.cpp
 src/PinsList200Response.h
 src/PinsManager.cpp

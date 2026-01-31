@@ -46,7 +46,7 @@ public class FeedsCreateRequest   {
 
   private ProductAvailabilityType defaultAvailability;
 
-  private CatalogsStatus status;
+  private CatalogsStatus status = "ACTIVE";
 
   /**
    **/

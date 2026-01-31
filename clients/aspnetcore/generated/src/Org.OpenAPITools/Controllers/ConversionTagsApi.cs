@@ -47,16 +47,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ConversionTagResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"code_snippet\" : \"<script type=text/javascript> [...]\",\n  \"configs\" : {\n    \"aem_fnln_enabled\" : true,\n    \"aem_enabled\" : true,\n    \"aem_db_enabled\" : true,\n    \"md_frequency\" : 0.6,\n    \"aem_ph_enabled\" : true,\n    \"aem_ge_enabled\" : true,\n    \"aem_loc_enabled\" : true\n  },\n  \"name\" : \"ACME Checkout Test Tag\",\n  \"enhanced_match_status\" : \"VALIDATION_COMPLETE\",\n  \"id\" : \"2617998078212\",\n  \"last_fired_time_ms\" : 1599030000000,\n  \"version\" : \"3\",\n  \"ad_account_id\" : \"549755885175\",\n  \"status\" : \"ACTIVE\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ConversionTagResponse>(exampleJson)
-            : default(ConversionTagResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -79,16 +79,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ConversionTagResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"code_snippet\" : \"<script type=text/javascript> [...]\",\n  \"configs\" : {\n    \"aem_fnln_enabled\" : true,\n    \"aem_enabled\" : true,\n    \"aem_db_enabled\" : true,\n    \"md_frequency\" : 0.6,\n    \"aem_ph_enabled\" : true,\n    \"aem_ge_enabled\" : true,\n    \"aem_loc_enabled\" : true\n  },\n  \"name\" : \"ACME Checkout Test Tag\",\n  \"enhanced_match_status\" : \"VALIDATION_COMPLETE\",\n  \"id\" : \"2617998078212\",\n  \"last_fired_time_ms\" : 1599030000000,\n  \"version\" : \"3\",\n  \"ad_account_id\" : \"549755885175\",\n  \"status\" : \"ACTIVE\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ConversionTagResponse>(exampleJson)
-            : default(ConversionTagResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -111,16 +111,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ConversionTagListResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"code_snippet\" : \"<script type=text/javascript> [...]\",\n    \"configs\" : {\n      \"aem_fnln_enabled\" : true,\n      \"aem_enabled\" : true,\n      \"aem_db_enabled\" : true,\n      \"md_frequency\" : 0.6,\n      \"aem_ph_enabled\" : true,\n      \"aem_ge_enabled\" : true,\n      \"aem_loc_enabled\" : true\n    },\n    \"name\" : \"ACME Checkout Test Tag\",\n    \"enhanced_match_status\" : \"VALIDATION_COMPLETE\",\n    \"id\" : \"2617998078212\",\n    \"last_fired_time_ms\" : 1599030000000,\n    \"version\" : \"3\",\n    \"ad_account_id\" : \"549755885175\",\n    \"status\" : \"ACTIVE\"\n  }, {\n    \"code_snippet\" : \"<script type=text/javascript> [...]\",\n    \"configs\" : {\n      \"aem_fnln_enabled\" : true,\n      \"aem_enabled\" : true,\n      \"aem_db_enabled\" : true,\n      \"md_frequency\" : 0.6,\n      \"aem_ph_enabled\" : true,\n      \"aem_ge_enabled\" : true,\n      \"aem_loc_enabled\" : true\n    },\n    \"name\" : \"ACME Checkout Test Tag\",\n    \"enhanced_match_status\" : \"VALIDATION_COMPLETE\",\n    \"id\" : \"2617998078212\",\n    \"last_fired_time_ms\" : 1599030000000,\n    \"version\" : \"3\",\n    \"ad_account_id\" : \"549755885175\",\n    \"status\" : \"ACTIVE\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<ConversionTagListResponse>(exampleJson)
-            : default(ConversionTagListResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -142,9 +142,9 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(Dictionary<string, List<ConversionEventResponse>>));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"12345\" : [ {\n    \"conversion_event\" : \"PAGE_LOAD\",\n    \"created_time\" : 1564768710,\n    \"conversion_tag_id\" : \"2614324385652\",\n    \"ad_account_id\" : \"549757463328\"\n  }, {\n    \"conversion_event\" : \"CHECKOUT\",\n    \"created_time\" : 1564710210,\n    \"conversion_tag_id\" : \"2614324315793\",\n    \"ad_account_id\" : \"549757463328\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -176,16 +176,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(PageVisitConversionTagsGet200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"created_time\" : 1564768710,\n    \"conversion_tag_id\" : \"2614324385652\",\n    \"conversion_event\" : \"conversion_event\",\n    \"ad_account_id\" : \"549757463328\"\n  }, {\n    \"created_time\" : 1564768710,\n    \"conversion_tag_id\" : \"2614324385652\",\n    \"conversion_event\" : \"conversion_event\",\n    \"ad_account_id\" : \"549757463328\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<PageVisitConversionTagsGet200Response>(exampleJson)
-            : default(PageVisitConversionTagsGet200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

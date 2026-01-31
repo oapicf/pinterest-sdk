@@ -1413,7 +1413,7 @@ import (
 )
 
 func main() {
-	itemsBatchPostRequest := openapiclient.items_batch_post_request{CatalogsItemsBatchRequest: openapiclient.CatalogsItemsBatchRequest{CatalogsItemsCreateBatchRequest: openapiclient.NewCatalogsItemsCreateBatchRequest(openapiclient.Country("AD"), *openapiclient.NewCatalogsItemsRequestLanguage(), openapiclient.BatchOperation("UPDATE"), []openapiclient.ItemCreateBatchRecord{*openapiclient.NewItemCreateBatchRecord()})}} // ItemsBatchPostRequest | Request object used to create catalogs items in a batch
+	itemsBatchPostRequest := openapiclient.items_batch_post_request{CatalogsItemsBatchRequest: openapiclient.CatalogsItemsBatchRequest{CatalogsItemsCreateBatchRequest: openapiclient.NewCatalogsItemsCreateBatchRequest(openapiclient.Country("AD"), "Language_example", openapiclient.BatchOperation("UPDATE"), []openapiclient.ItemCreateBatchRecord{*openapiclient.NewItemCreateBatchRecord()})}} // ItemsBatchPostRequest | Request object used to create catalogs items in a batch
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -1635,7 +1635,7 @@ import (
 )
 
 func main() {
-	catalogsItemsRequest := *openapiclient.NewCatalogsItemsRequest(openapiclient.Country("AD"), *openapiclient.NewCatalogsItemsRequestLanguage(), openapiclient.CatalogsItemsPostFilters{CatalogsCreativeAssetsItemsPostFilter: openapiclient.NewCatalogsCreativeAssetsItemsPostFilter("CatalogType_example", []string{"CreativeAssetsIds_example"})}) // CatalogsItemsRequest | Request object used to get catalogs items
+	catalogsItemsRequest := *openapiclient.NewCatalogsItemsRequest(openapiclient.Country("AD"), "Language_example", openapiclient.CatalogsItemsPostFilters{CatalogsCreativeAssetsItemsPostFilter: openapiclient.NewCatalogsCreativeAssetsItemsPostFilter("CatalogType_example", []string{"CreativeAssetsIds_example"})}) // CatalogsItemsRequest | Request object used to get catalogs items
 	adAccountId := "adAccountId_example" // string | Unique identifier of an ad account. (optional)
 
 	configuration := openapiclient.NewConfiguration()

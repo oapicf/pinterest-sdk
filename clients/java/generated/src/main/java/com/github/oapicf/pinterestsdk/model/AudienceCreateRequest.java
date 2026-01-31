@@ -14,8 +14,8 @@
 package com.github.oapicf.pinterestsdk.model;
 
 import java.util.Objects;
-import com.github.oapicf.pinterestsdk.model.AudienceCreateRequest1AudienceType;
 import com.github.oapicf.pinterestsdk.model.AudienceRule;
+import com.github.oapicf.pinterestsdk.model.AudienceType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * AudienceCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceCreateRequest {
   public static final String SERIALIZED_NAME_AD_ACCOUNT_ID = "ad_account_id";
   @SerializedName(SERIALIZED_NAME_AD_ACCOUNT_ID)
@@ -75,7 +75,7 @@ public class AudienceCreateRequest {
   public static final String SERIALIZED_NAME_AUDIENCE_TYPE = "audience_type";
   @SerializedName(SERIALIZED_NAME_AUDIENCE_TYPE)
   @javax.annotation.Nonnull
-  private AudienceCreateRequest1AudienceType audienceType;
+  private AudienceType audienceType;
 
   public AudienceCreateRequest() {
   }
@@ -156,21 +156,21 @@ public class AudienceCreateRequest {
   }
 
 
-  public AudienceCreateRequest audienceType(@javax.annotation.Nonnull AudienceCreateRequest1AudienceType audienceType) {
+  public AudienceCreateRequest audienceType(@javax.annotation.Nonnull AudienceType audienceType) {
     this.audienceType = audienceType;
     return this;
   }
 
   /**
-   * Get audienceType
+   * &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
    * @return audienceType
    */
   @javax.annotation.Nonnull
-  public AudienceCreateRequest1AudienceType getAudienceType() {
+  public AudienceType getAudienceType() {
     return audienceType;
   }
 
-  public void setAudienceType(@javax.annotation.Nonnull AudienceCreateRequest1AudienceType audienceType) {
+  public void setAudienceType(@javax.annotation.Nonnull AudienceType audienceType) {
     this.audienceType = audienceType;
   }
 
@@ -227,18 +227,10 @@ public class AudienceCreateRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ad_account_id");
-    openapiFields.add("name");
-    openapiFields.add("rule");
-    openapiFields.add("description");
-    openapiFields.add("audience_type");
+    openapiFields = new HashSet<String>(Arrays.asList("ad_account_id", "name", "rule", "description", "audience_type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("rule");
-    openapiRequiredFields.add("audience_type");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("name", "rule", "audience_type"));
   }
 
   /**
@@ -250,7 +242,7 @@ public class AudienceCreateRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AudienceCreateRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AudienceCreateRequest is not found in the empty JSON string", AudienceCreateRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in AudienceCreateRequest is not found in the empty JSON string", AudienceCreateRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -258,30 +250,30 @@ public class AudienceCreateRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AudienceCreateRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AudienceCreateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AudienceCreateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AudienceCreateRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("ad_account_id") != null && !jsonObj.get("ad_account_id").isJsonNull()) && !jsonObj.get("ad_account_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the required field `rule`
       AudienceRule.validateJsonElement(jsonObj.get("rule"));
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the required field `audience_type`
-      AudienceCreateRequest1AudienceType.validateJsonElement(jsonObj.get("audience_type"));
+      AudienceType.validateJsonElement(jsonObj.get("audience_type"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

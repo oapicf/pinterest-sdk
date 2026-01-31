@@ -6,15 +6,15 @@
   "fields": [
     {
       "name": "auto_targeting_enabled",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.",
-      "default": null
+      "default": true
     },
     {
       "name": "placement_group",
-      "type": ["null", "model.PlacementGroupType"],
+      "type": ["model.PlacementGroupType", "null"],
       "doc": "<a href=\"/docs/redoc/#section/Placement-group\">Placement group</a>.",
-      "default": null
+      "default": PlacementGroupType.ALL
     },
     {
       "name": "creative_types",

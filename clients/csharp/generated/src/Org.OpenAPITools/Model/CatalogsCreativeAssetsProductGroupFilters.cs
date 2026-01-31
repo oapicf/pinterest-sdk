@@ -180,14 +180,14 @@ namespace Org.OpenAPITools.Model
 
             if (catalogsCreativeAssetsProductGroupFilters.CatalogsCreativeAssetsProductGroupFiltersAnyOfOption.IsSet && catalogsCreativeAssetsProductGroupFilters.CatalogsCreativeAssetsProductGroupFiltersAnyOfOption.Value != null)
             {
-                CatalogsCreativeAssetsProductGroupFiltersAnyOfJsonConverter CatalogsCreativeAssetsProductGroupFiltersAnyOfJsonConverter = (CatalogsCreativeAssetsProductGroupFiltersAnyOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilters.CatalogsCreativeAssetsProductGroupFiltersAnyOfOption.Value.GetType()));
-                CatalogsCreativeAssetsProductGroupFiltersAnyOfJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilters.CatalogsCreativeAssetsProductGroupFiltersAnyOfOption.Value, jsonSerializerOptions);
+                CatalogsCreativeAssetsProductGroupFiltersAnyOfJsonConverter catalogsCreativeAssetsProductGroupFiltersAnyOfJsonConverter = (CatalogsCreativeAssetsProductGroupFiltersAnyOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilters.CatalogsCreativeAssetsProductGroupFiltersAnyOfOption.Value.GetType()));
+                catalogsCreativeAssetsProductGroupFiltersAnyOfJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilters.CatalogsCreativeAssetsProductGroupFiltersAnyOfOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsCreativeAssetsProductGroupFilters.CatalogsCreativeAssetsProductGroupFiltersAllOfOption.IsSet && catalogsCreativeAssetsProductGroupFilters.CatalogsCreativeAssetsProductGroupFiltersAllOfOption.Value != null)
             {
-                CatalogsCreativeAssetsProductGroupFiltersAllOfJsonConverter CatalogsCreativeAssetsProductGroupFiltersAllOfJsonConverter = (CatalogsCreativeAssetsProductGroupFiltersAllOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilters.CatalogsCreativeAssetsProductGroupFiltersAllOfOption.Value.GetType()));
-                CatalogsCreativeAssetsProductGroupFiltersAllOfJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilters.CatalogsCreativeAssetsProductGroupFiltersAllOfOption.Value, jsonSerializerOptions);
+                CatalogsCreativeAssetsProductGroupFiltersAllOfJsonConverter catalogsCreativeAssetsProductGroupFiltersAllOfJsonConverter = (CatalogsCreativeAssetsProductGroupFiltersAllOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsCreativeAssetsProductGroupFilters.CatalogsCreativeAssetsProductGroupFiltersAllOfOption.Value.GetType()));
+                catalogsCreativeAssetsProductGroupFiltersAllOfJsonConverter.WriteProperties(writer, catalogsCreativeAssetsProductGroupFilters.CatalogsCreativeAssetsProductGroupFiltersAllOfOption.Value, jsonSerializerOptions);
             }
 
             WriteProperties(writer, catalogsCreativeAssetsProductGroupFilters, jsonSerializerOptions);

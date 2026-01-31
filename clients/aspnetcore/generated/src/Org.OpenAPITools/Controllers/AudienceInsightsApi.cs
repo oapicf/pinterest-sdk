@@ -46,16 +46,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AudienceInsightsResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"date\" : \"2022-10-09\",\n  \"size\" : 10000,\n  \"categories\" : [ {\n    \"name\" : \"travel\",\n    \"index\" : 1.2,\n    \"id\" : \"1234567\",\n    \"subcategories\" : [ {\n      \"name\" : \"travel destinations\",\n      \"index\" : 1.2,\n      \"id\" : \"958862518888\",\n      \"key\" : \"958862518888\",\n      \"ratio\" : 0.482\n    }, {\n      \"name\" : \"travel destinations\",\n      \"index\" : 1.2,\n      \"id\" : \"958862518888\",\n      \"key\" : \"958862518888\",\n      \"ratio\" : 0.482\n    } ],\n    \"key\" : \"1234567\",\n    \"ratio\" : 0.551\n  }, {\n    \"name\" : \"travel\",\n    \"index\" : 1.2,\n    \"id\" : \"1234567\",\n    \"subcategories\" : [ {\n      \"name\" : \"travel destinations\",\n      \"index\" : 1.2,\n      \"id\" : \"958862518888\",\n      \"key\" : \"958862518888\",\n      \"ratio\" : 0.482\n    }, {\n      \"name\" : \"travel destinations\",\n      \"index\" : 1.2,\n      \"id\" : \"958862518888\",\n      \"key\" : \"958862518888\",\n      \"ratio\" : 0.482\n    } ],\n    \"key\" : \"1234567\",\n    \"ratio\" : 0.551\n  } ],\n  \"type\" : \"YOUR_TOTAL_AUDIENCE\",\n  \"size_is_upper_bound\" : true,\n  \"demographics\" : {\n    \"devices\" : [ {\n      \"name\" : \"United States\",\n      \"key\" : \"us\",\n      \"ratio\" : 0.551\n    }, {\n      \"name\" : \"United States\",\n      \"key\" : \"us\",\n      \"ratio\" : 0.551\n    } ],\n    \"ages\" : [ {\n      \"name\" : \"United States\",\n      \"key\" : \"us\",\n      \"ratio\" : 0.551\n    }, {\n      \"name\" : \"United States\",\n      \"key\" : \"us\",\n      \"ratio\" : 0.551\n    } ],\n    \"genders\" : [ {\n      \"name\" : \"United States\",\n      \"key\" : \"us\",\n      \"ratio\" : 0.551\n    }, {\n      \"name\" : \"United States\",\n      \"key\" : \"us\",\n      \"ratio\" : 0.551\n    } ],\n    \"countries\" : [ {\n      \"name\" : \"United States\",\n      \"key\" : \"us\",\n      \"ratio\" : 0.551\n    }, {\n      \"name\" : \"United States\",\n      \"key\" : \"us\",\n      \"ratio\" : 0.551\n    } ],\n    \"metros\" : [ {\n      \"name\" : \"United States\",\n      \"key\" : \"us\",\n      \"ratio\" : 0.551\n    }, {\n      \"name\" : \"United States\",\n      \"key\" : \"us\",\n      \"ratio\" : 0.551\n    } ]\n  }\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AudienceInsightsResponse>(exampleJson)
-            : default(AudienceInsightsResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -77,16 +77,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(AudienceDefinitionResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"date\" : \"2022-10-09\",\n    \"scope\" : \"PARTNER\",\n    \"type\" : \"IMPRESSION_PLUS_ENGAGEMENT\"\n  }, {\n    \"date\" : \"2022-10-09\",\n    \"scope\" : \"PARTNER\",\n    \"type\" : \"IMPRESSION_PLUS_ENGAGEMENT\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<AudienceDefinitionResponse>(exampleJson)
-            : default(AudienceDefinitionResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

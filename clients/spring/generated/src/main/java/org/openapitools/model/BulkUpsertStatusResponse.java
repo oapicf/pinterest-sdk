@@ -22,14 +22,14 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "BulkUpsertStatusResponse", description = "ID of the bulk request.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkUpsertStatusResponse {
 
   private @Nullable BulkUpsertStatus status;
 
   private @Nullable String resultUrl;
 
-  public BulkUpsertStatusResponse status(BulkUpsertStatus status) {
+  public BulkUpsertStatusResponse status(@Nullable BulkUpsertStatus status) {
     this.status = status;
     return this;
   }
@@ -41,15 +41,15 @@ public class BulkUpsertStatusResponse {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public BulkUpsertStatus getStatus() {
+  public @Nullable BulkUpsertStatus getStatus() {
     return status;
   }
 
-  public void setStatus(BulkUpsertStatus status) {
+  public void setStatus(@Nullable BulkUpsertStatus status) {
     this.status = status;
   }
 
-  public BulkUpsertStatusResponse resultUrl(String resultUrl) {
+  public BulkUpsertStatusResponse resultUrl(@Nullable String resultUrl) {
     this.resultUrl = resultUrl;
     return this;
   }
@@ -61,11 +61,11 @@ public class BulkUpsertStatusResponse {
   
   @Schema(name = "result_url", example = "https://pinterest-waterloo.s3.us-east-1.amazonaws.com/bulk_framework/AD_ENTITY_UPSERT/549763856637-1659122537-0b4d77d3-f620-48ce-bec9-616106afb8d4/(...)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("result_url")
-  public String getResultUrl() {
+  public @Nullable String getResultUrl() {
     return resultUrl;
   }
 
-  public void setResultUrl(String resultUrl) {
+  public void setResultUrl(@Nullable String resultUrl) {
     this.resultUrl = resultUrl;
   }
 

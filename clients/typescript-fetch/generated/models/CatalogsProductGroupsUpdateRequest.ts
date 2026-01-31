@@ -42,13 +42,15 @@ export function CatalogsProductGroupsUpdateRequestFromJSONTyped(json: any, ignor
     if (json == null) {
         return json;
     }
+    if (typeof json !== 'object') {
+        return json;
+    }
     if (instanceOfCatalogsProductGroupUpdateRequest(json)) {
         return CatalogsProductGroupUpdateRequestFromJSONTyped(json, true);
     }
     if (instanceOfCatalogsVerticalProductGroupUpdateRequest(json)) {
         return CatalogsVerticalProductGroupUpdateRequestFromJSONTyped(json, true);
     }
-
     return {} as any;
 }
 
@@ -60,14 +62,15 @@ export function CatalogsProductGroupsUpdateRequestToJSONTyped(value?: CatalogsPr
     if (value == null) {
         return value;
     }
-
+    if (typeof value !== 'object') {
+        return value;
+    }
     if (instanceOfCatalogsProductGroupUpdateRequest(value)) {
         return CatalogsProductGroupUpdateRequestToJSON(value as CatalogsProductGroupUpdateRequest);
     }
     if (instanceOfCatalogsVerticalProductGroupUpdateRequest(value)) {
         return CatalogsVerticalProductGroupUpdateRequestToJSON(value as CatalogsVerticalProductGroupUpdateRequest);
     }
-
     return {};
 }
 

@@ -16,22 +16,22 @@ import javax.validation.Valid
 import io.swagger.v3.oas.annotations.media.Schema
 
 /**
- * A request to exchange an authorization code for an access token.
- * @param grantType 
+ * 
  * @param code 
  * @param redirectUri 
+ * @param grantType 
  */
 data class OauthAccessTokenRequestCode(
-
-    @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("grant_type", required = true) val grantType: OauthAccessTokenRequestCode.GrantType,
 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("code", required = true) val code: kotlin.String,
 
     @Schema(example = "null", required = true, description = "")
-    @get:JsonProperty("redirect_uri", required = true) val redirectUri: kotlin.String
-    ) {
+    @get:JsonProperty("redirect_uri", required = true) val redirectUri: kotlin.String,
+
+    @Schema(example = "null", required = true, description = "")
+    @get:JsonProperty("grant_type", required = true) val grantType: OauthAccessTokenRequestCode.GrantType
+) {
 
     /**
     * 
@@ -47,7 +47,8 @@ data class OauthAccessTokenRequestCode(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): GrantType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'OauthAccessTokenRequestCode'")
             }
         }
     }

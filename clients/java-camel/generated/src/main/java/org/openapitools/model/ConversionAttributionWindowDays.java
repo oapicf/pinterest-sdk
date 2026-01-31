@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Gets or Sets ConversionAttributionWindowDays
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum ConversionAttributionWindowDays {
   
   NUMBER_0(0),
@@ -35,7 +35,7 @@ public enum ConversionAttributionWindowDays {
   
   NUMBER_60(60);
 
-  private Integer value;
+  private final Integer value;
 
   ConversionAttributionWindowDays(Integer value) {
     this.value = value;

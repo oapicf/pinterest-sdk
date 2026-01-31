@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type MediaType* = object
-  ## 
+type MediaType* {.pure.} = enum
+  IMAGE
+  VIDEO
+
+func `%`*(v: MediaType): JsonNode =
+  result = case v:
+    of MediaType.IMAGE: %"IMAGE"
+    of MediaType.VIDEO: %"VIDEO"
+
+func `$`*(v: MediaType): string =
+  result = case v:
+    of MediaType.IMAGE: $("IMAGE")
+    of MediaType.VIDEO: $("VIDEO")
+
+proc to*(node: JsonNode, T: typedesc[MediaType]): MediaType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum MediaType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("IMAGE"):
+    return MediaType.IMAGE
+  of $("VIDEO"):
+    return MediaType.VIDEO
+  else:
+    raise newException(ValueError, "Invalid enum value for MediaType: " & strVal)
+

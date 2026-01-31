@@ -29,26 +29,26 @@ data class CatalogsRetailProductGroupProductCounts(
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("catalog_type", required = true) val catalogType: CatalogsRetailProductGroupProductCounts.CatalogType,
 
-    @get:DecimalMin("0")
+    @get:DecimalMin(value="0")
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("in_stock", required = true) val inStock: java.math.BigDecimal,
 
-    @get:DecimalMin("0")
+    @get:DecimalMin(value="0")
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("out_of_stock", required = true) val outOfStock: java.math.BigDecimal,
 
-    @get:DecimalMin("0")
+    @get:DecimalMin(value="0")
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("preorder", required = true) val preorder: java.math.BigDecimal,
 
-    @get:DecimalMin("0")
+    @get:DecimalMin(value="0")
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("total", required = true) val total: java.math.BigDecimal,
 
-    @get:DecimalMin("0")
+    @get:DecimalMin(value="0")
     @Schema(example = "null", description = "")
     @get:JsonProperty("videos") val videos: java.math.BigDecimal? = null
-    ) {
+) {
 
     /**
     * 
@@ -62,7 +62,8 @@ data class CatalogsRetailProductGroupProductCounts(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsRetailProductGroupProductCounts'")
             }
         }
     }

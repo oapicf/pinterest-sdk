@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_type
 
@@ -17,5 +19,32 @@ type Catalog* = object
   createdAt*: string
   id*: string ## ID of the catalog entity.
   updatedAt*: string
-  name*: string ## A human-friendly name associated to a catalog entity.
+  name*: Option[string] ## A human-friendly name associated to a catalog entity.
   catalogType*: CatalogsType
+
+
+# Custom JSON deserialization for Catalog with custom field names
+proc to*(node: JsonNode, T: typedesc[Catalog]): Catalog =
+  result = Catalog()
+  if node.kind == JObject:
+    if node.hasKey("created_at"):
+      result.createdAt = to(node["created_at"], string)
+    if node.hasKey("id"):
+      result.id = to(node["id"], string)
+    if node.hasKey("updated_at"):
+      result.updatedAt = to(node["updated_at"], string)
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogsType)
+
+# Custom JSON serialization for Catalog with custom field names
+proc `%`*(obj: Catalog): JsonNode =
+  result = newJObject()
+  result["created_at"] = %obj.createdAt
+  result["id"] = %obj.id
+  result["updated_at"] = %obj.updatedAt
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  result["catalog_type"] = %obj.catalogType
+

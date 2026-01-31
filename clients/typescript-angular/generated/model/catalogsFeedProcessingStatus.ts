@@ -9,14 +9,10 @@
  */
 
 
-export type CatalogsFeedProcessingStatus = 'COMPLETED' | 'FAILED' | 'PROCESSING';
-
 export const CatalogsFeedProcessingStatus = {
-
-    Completed: 'COMPLETED' as CatalogsFeedProcessingStatus,
-
-    Failed: 'FAILED' as CatalogsFeedProcessingStatus,
-
-    Processing: 'PROCESSING' as CatalogsFeedProcessingStatus
-};
+    Completed: 'COMPLETED',
+    Failed: 'FAILED',
+    Processing: 'PROCESSING'
+} as const;
+export type CatalogsFeedProcessingStatus = typeof CatalogsFeedProcessingStatus[keyof typeof CatalogsFeedProcessingStatus];
 

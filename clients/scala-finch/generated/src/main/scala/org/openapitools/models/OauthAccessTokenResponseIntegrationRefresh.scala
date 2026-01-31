@@ -7,22 +7,22 @@ import io.circe.java8.time._
 import org.openapitools._
 
 /**
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
+ * 
+ * @param refreshUnderscoretoken 
+ * @param refreshUnderscoretokenUnderscoreexpiresUnderscorein 
  * @param responseUnderscoretype 
  * @param accessUnderscoretoken 
  * @param tokenUnderscoretype 
  * @param expiresUnderscorein 
  * @param scope 
- * @param refreshUnderscoretoken 
- * @param refreshUnderscoretokenUnderscoreexpiresUnderscorein 
  */
-case class OauthAccessTokenResponseIntegrationRefresh(responseUnderscoretype: Option[String],
+case class OauthAccessTokenResponseIntegrationRefresh(refreshUnderscoretoken: String,
+                refreshUnderscoretokenUnderscoreexpiresUnderscorein: Int,
+                responseUnderscoretype: Option[String],
                 accessUnderscoretoken: String,
                 tokenUnderscoretype: String,
                 expiresUnderscorein: Int,
-                scope: String,
-                refreshUnderscoretoken: String,
-                refreshUnderscoretokenUnderscoreexpiresUnderscorein: Int
+                scope: String
                 )
 
 object OauthAccessTokenResponseIntegrationRefresh {

@@ -98,10 +98,10 @@ pub enum SsioOrderLinesSlashGetByAdAccountError {
 /// Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 pub async fn ads_credit_slash_redeem(configuration: &configuration::Configuration, ad_account_id: &str, ads_credit_redeem_request: models::AdsCreditRedeemRequest) -> Result<models::AdsCreditRedeemResponse, Error<AdsCreditSlashRedeemError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_ads_credit_redeem_request = ads_credit_redeem_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_ads_credit_redeem_request = ads_credit_redeem_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads_credit/redeem", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads_credit/redeem", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -110,7 +110,7 @@ pub async fn ads_credit_slash_redeem(configuration: &configuration::Configuratio
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_ads_credit_redeem_request);
+    req_builder = req_builder.json(&p_body_ads_credit_redeem_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -140,17 +140,17 @@ pub async fn ads_credit_slash_redeem(configuration: &configuration::Configuratio
 /// Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 pub async fn ads_credits_discounts_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::AdsCreditsDiscountsGet200Response, Error<AdsCreditsDiscountsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads_credit/discounts", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ads_credit/discounts", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -188,19 +188,19 @@ pub async fn ads_credits_discounts_slash_get(configuration: &configuration::Conf
 /// Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 pub async fn billing_profiles_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, is_active: bool, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::BillingProfilesGet200Response, Error<BillingProfilesSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_is_active = is_active;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_is_active = is_active;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/billing_profiles", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/billing_profiles", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("is_active", &p_is_active.to_string())]);
-    if let Some(ref param_value) = p_bookmark {
+    req_builder = req_builder.query(&[("is_active", &p_query_is_active.to_string())]);
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -238,9 +238,9 @@ pub async fn billing_profiles_slash_get(configuration: &configuration::Configura
 /// Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
 pub async fn ssio_accounts_slash_get(configuration: &configuration::Configuration, ad_account_id: &str) -> Result<models::SsioAccountResponse, Error<SsioAccountsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
+    let p_path_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ssio/accounts", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ssio/accounts", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -278,10 +278,10 @@ pub async fn ssio_accounts_slash_get(configuration: &configuration::Configuratio
 /// Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
 pub async fn ssio_insertion_order_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, ssio_create_insertion_order_request: models::SsioCreateInsertionOrderRequest) -> Result<models::SsioCreateInsertionOrderResponse, Error<SsioInsertionOrderSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_ssio_create_insertion_order_request = ssio_create_insertion_order_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_ssio_create_insertion_order_request = ssio_create_insertion_order_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ssio/insertion_orders", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ssio/insertion_orders", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -290,7 +290,7 @@ pub async fn ssio_insertion_order_slash_create(configuration: &configuration::Co
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_ssio_create_insertion_order_request);
+    req_builder = req_builder.json(&p_body_ssio_create_insertion_order_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -320,10 +320,10 @@ pub async fn ssio_insertion_order_slash_create(configuration: &configuration::Co
 /// Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
 pub async fn ssio_insertion_order_slash_edit(configuration: &configuration::Configuration, ad_account_id: &str, ssio_edit_insertion_order_request: models::SsioEditInsertionOrderRequest) -> Result<models::SsioEditInsertionOrderResponse, Error<SsioInsertionOrderSlashEditError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_ssio_edit_insertion_order_request = ssio_edit_insertion_order_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_ssio_edit_insertion_order_request = ssio_edit_insertion_order_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ssio/insertion_orders", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ssio/insertion_orders", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PATCH, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -332,7 +332,7 @@ pub async fn ssio_insertion_order_slash_edit(configuration: &configuration::Conf
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_ssio_edit_insertion_order_request);
+    req_builder = req_builder.json(&p_body_ssio_edit_insertion_order_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -362,17 +362,17 @@ pub async fn ssio_insertion_order_slash_edit(configuration: &configuration::Conf
 /// Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
 pub async fn ssio_insertion_orders_status_slash_get_by_ad_account(configuration: &configuration::Configuration, ad_account_id: &str, bookmark: Option<&str>, page_size: Option<i32>) -> Result<models::SsioInsertionOrdersStatusGetByAdAccount200Response, Error<SsioInsertionOrdersStatusSlashGetByAdAccountError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ssio/insertion_orders/status", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ssio/insertion_orders/status", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -410,10 +410,10 @@ pub async fn ssio_insertion_orders_status_slash_get_by_ad_account(configuration:
 /// Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
 pub async fn ssio_insertion_orders_status_slash_get_by_pin_order_id(configuration: &configuration::Configuration, ad_account_id: &str, pin_order_id: &str) -> Result<models::SsioInsertionOrderStatusResponse, Error<SsioInsertionOrdersStatusSlashGetByPinOrderIdError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_pin_order_id = pin_order_id;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_pin_order_id = pin_order_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), pin_order_id=crate::apis::urlencode(p_pin_order_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), pin_order_id=crate::apis::urlencode(p_path_pin_order_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -451,21 +451,21 @@ pub async fn ssio_insertion_orders_status_slash_get_by_pin_order_id(configuratio
 /// Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
 pub async fn ssio_order_lines_slash_get_by_ad_account(configuration: &configuration::Configuration, ad_account_id: &str, bookmark: Option<&str>, page_size: Option<i32>, pin_order_id: Option<&str>) -> Result<models::SsioOrderLinesGetByAdAccount200Response, Error<SsioOrderLinesSlashGetByAdAccountError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_bookmark = bookmark;
-    let p_page_size = page_size;
-    let p_pin_order_id = pin_order_id;
+    let p_path_ad_account_id = ad_account_id;
+    let p_query_bookmark = bookmark;
+    let p_query_page_size = page_size;
+    let p_query_pin_order_id = pin_order_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ssio/order_lines", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/ssio/order_lines", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_bookmark {
+    if let Some(ref param_value) = p_query_bookmark {
         req_builder = req_builder.query(&[("bookmark", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_page_size {
+    if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("page_size", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_pin_order_id {
+    if let Some(ref param_value) = p_query_pin_order_id {
         req_builder = req_builder.query(&[("pin_order_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

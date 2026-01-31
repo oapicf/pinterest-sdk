@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
  */
 
 @JsonTypeName("ProductGroupAnalyticsResponse_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupAnalyticsResponseInner {
 
   private String PRODUCT_GROUP_ID;
@@ -66,7 +66,7 @@ public class ProductGroupAnalyticsResponseInner {
     this.PRODUCT_GROUP_ID = PRODUCT_GROUP_ID;
   }
 
-  public ProductGroupAnalyticsResponseInner DATE(LocalDate DATE) {
+  public ProductGroupAnalyticsResponseInner DATE(@Nullable LocalDate DATE) {
     this.DATE = DATE;
     return this;
   }
@@ -78,11 +78,11 @@ public class ProductGroupAnalyticsResponseInner {
   @Valid 
   @Schema(name = "DATE", description = "Current metrics date. Only returned when granularity is a time-based value (`DAY`, `HOUR`, `WEEK`, `MONTH`)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("DATE")
-  public LocalDate getDATE() {
+  public @Nullable LocalDate getDATE() {
     return DATE;
   }
 
-  public void setDATE(LocalDate DATE) {
+  public void setDATE(@Nullable LocalDate DATE) {
     this.DATE = DATE;
   }
     /**

@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type ActionType* = object
-  ## Ad group billable event type. For update, only draft ad groups may update billable event.
+type ActionType* {.pure.} = enum
+  CLICKTHROUGH
+  IMPRESSION
+  VIDEOV50MRC
+
+func `%`*(v: ActionType): JsonNode =
+  result = case v:
+    of ActionType.CLICKTHROUGH: %"CLICKTHROUGH"
+    of ActionType.IMPRESSION: %"IMPRESSION"
+    of ActionType.VIDEOV50MRC: %"VIDEO_V_50_MRC"
+
+func `$`*(v: ActionType): string =
+  result = case v:
+    of ActionType.CLICKTHROUGH: $("CLICKTHROUGH")
+    of ActionType.IMPRESSION: $("IMPRESSION")
+    of ActionType.VIDEOV50MRC: $("VIDEO_V_50_MRC")
+
+proc to*(node: JsonNode, T: typedesc[ActionType]): ActionType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ActionType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CLICKTHROUGH"):
+    return ActionType.CLICKTHROUGH
+  of $("IMPRESSION"):
+    return ActionType.IMPRESSION
+  of $("VIDEO_V_50_MRC"):
+    return ActionType.VIDEOV50MRC
+  else:
+    raise newException(ValueError, "Invalid enum value for ActionType: " & strVal)
+

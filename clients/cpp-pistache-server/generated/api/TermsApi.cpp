@@ -23,8 +23,7 @@ const std::string TermsApi::base = "/v5";
 
 TermsApi::TermsApi(const std::shared_ptr<Pistache::Rest::Router>& rtr)
     : ApiBase(rtr)
-{
-}
+{}
 
 void TermsApi::init() {
     setupRoutes();
@@ -40,14 +39,12 @@ void TermsApi::setupRoutes() {
     router->addCustomHandler(Routes::bind(&TermsApi::terms_api_default_handler, this));
 }
 
-void TermsApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void TermsApi::handleParsingException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleParsingException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> TermsApi::handleParsingException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> TermsApi::handleParsingException(const std::exception& ex) const noexcept {
     try {
         throw;
     } catch (nlohmann::detail::exception &e) {
@@ -59,83 +56,143 @@ std::pair<Pistache::Http::Code, std::string> TermsApi::handleParsingException(co
     }
 }
 
-void TermsApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept
-{
+void TermsApi::handleOperationException(const std::exception& ex, Pistache::Http::ResponseWriter &response) const noexcept {
     std::pair<Pistache::Http::Code, std::string> codeAndError = handleOperationException(ex);
     response.send(codeAndError.first, codeAndError.second);
 }
 
-std::pair<Pistache::Http::Code, std::string> TermsApi::handleOperationException(const std::exception& ex) const noexcept
-{
+std::pair<Pistache::Http::Code, std::string> TermsApi::handleOperationException(const std::exception& ex) const noexcept {
     return std::make_pair(Pistache::Http::Code::Internal_Server_Error, ex.what());
 }
 
-void TermsApi::terms_related_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+void TermsApi::terms_related_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto termsQuery = request.query().get("terms");
-    std::optional<std::vector<std::string>> terms;
-    if(termsQuery.has_value()){
-        std::vector<std::string> valueQuery_instance;
-        if(fromStringValue(termsQuery.value(), valueQuery_instance)){
-            terms = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto termsQuery = request.query().get("terms");
+        std::optional<std::vector<std::string>> terms;
+        if (termsQuery.has_value()) {
+            std::vector<std::string> valueQuery_instance;
+            if (fromStringValue(termsQuery.value(), valueQuery_instance)) {
+                terms = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->terms_related_list(terms, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->terms_related_list(terms, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/terms/related" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
-void TermsApi::terms_suggested_list_handler(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response) {
+
+void TermsApi::terms_suggested_list_handler(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response) {
     try {
 
-
-    // Getting the query params
-    auto termQuery = request.query().get("term");
-    std::optional<std::string> term;
-    if(termQuery.has_value()){
-        std::string valueQuery_instance;
-        if(fromStringValue(termQuery.value(), valueQuery_instance)){
-            term = valueQuery_instance;
+        
+        
+        // Getting the query params
+        auto termQuery = request.query().get("term");
+        std::optional<std::string> term;
+        if (termQuery.has_value()) {
+            std::string valueQuery_instance;
+            if (fromStringValue(termQuery.value(), valueQuery_instance)) {
+                term = valueQuery_instance;
+            }
         }
-    }
-    auto limitQuery = request.query().get("limit");
-    std::optional<int32_t> limit;
-    if(limitQuery.has_value()){
-        int32_t valueQuery_instance;
-        if(fromStringValue(limitQuery.value(), valueQuery_instance)){
-            limit = valueQuery_instance;
+        auto limitQuery = request.query().get("limit");
+        std::optional<int32_t> limit;
+        if (limitQuery.has_value()) {
+            int32_t valueQuery_instance;
+            if (fromStringValue(limitQuery.value(), valueQuery_instance)) {
+                limit = valueQuery_instance;
+            }
         }
-    }
     
-    try {
-        this->terms_suggested_list(term, limit, response);
-    } catch (Pistache::Http::HttpError &e) {
-        response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
-        return;
-    } catch (std::exception &e) {
-        this->handleOperationException(e, response);
-        return;
-    }
+
+
+        try {
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+
+
+
+
+
+            this->terms_suggested_list(term, limit, response);
+            } catch (Pistache::Http::HttpError &e) {
+                response.send(static_cast<Pistache::Http::Code>(e.code()), e.what());
+                return;
+            } catch (std::exception &e) {
+                this->handleOperationException(e, response);
+                return;
+            }
 
     } catch (std::exception &e) {
         response.send(Pistache::Http::Code::Internal_Server_Error, e.what());
     }
 
+#ifndef HTTP_BASIC_AUTH_DEFINED
+#define HTTP_BASIC_AUTH_DEFINED 0
+#endif
+#ifndef HTTP_BEARER_AUTH_DEFINED
+#define HTTP_BEARER_AUTH_DEFINED 0
+#endif
+#define REST_PATH "/terms/suggested" 
+    static_assert(HTTP_BASIC_AUTH_DEFINED + HTTP_BEARER_AUTH_DEFINED < 2, "Path '" REST_PATH "' has more than one security scheme specified, and the Pistache server generator does not support that.");
+#undef REST_PATH
+#ifdef HTTP_BEARER_AUTH_DEFINED
+#undef HTTP_BEARER_AUTH_DEFINED
+#endif
+#ifdef HTTP_BASIC_AUTH_DEFINED
+#undef HTTP_BASIC_AUTH_DEFINED
+#endif
+
 }
+
 
 void TermsApi::terms_api_default_handler(const Pistache::Rest::Request &, Pistache::Http::ResponseWriter response) {
     response.send(Pistache::Http::Code::Not_Found, "The requested method does not exist");

@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -62,123 +61,6 @@ namespace Org.OpenAPITools.Test.Model
         public void CatalogTypeTest()
         {
             // TODO unit test for the property 'CatalogType'
-        }
-
-        /// <summary>
-        /// Test the property 'Id'
-        /// </summary>
-        [Fact]
-        public void IdTest()
-        {
-            // TODO unit test for the property 'Id'
-        }
-
-        /// <summary>
-        /// Test the property 'Name'
-        /// </summary>
-        [Fact]
-        public void NameTest()
-        {
-            // TODO unit test for the property 'Name'
-        }
-
-        /// <summary>
-        /// Test the property 'Description'
-        /// </summary>
-        [Fact]
-        public void DescriptionTest()
-        {
-            // TODO unit test for the property 'Description'
-        }
-
-        /// <summary>
-        /// Test the property 'Filters'
-        /// </summary>
-        [Fact]
-        public void FiltersTest()
-        {
-            // TODO unit test for the property 'Filters'
-        }
-
-        /// <summary>
-        /// Test the property 'IsFeatured'
-        /// </summary>
-        [Fact]
-        public void IsFeaturedTest()
-        {
-            // TODO unit test for the property 'IsFeatured'
-        }
-
-        /// <summary>
-        /// Test the property 'Type'
-        /// </summary>
-        [Fact]
-        public void TypeTest()
-        {
-            // TODO unit test for the property 'Type'
-        }
-
-        /// <summary>
-        /// Test the property 'Status'
-        /// </summary>
-        [Fact]
-        public void StatusTest()
-        {
-            // TODO unit test for the property 'Status'
-        }
-
-        /// <summary>
-        /// Test the property 'CreatedAt'
-        /// </summary>
-        [Fact]
-        public void CreatedAtTest()
-        {
-            // TODO unit test for the property 'CreatedAt'
-        }
-
-        /// <summary>
-        /// Test the property 'UpdatedAt'
-        /// </summary>
-        [Fact]
-        public void UpdatedAtTest()
-        {
-            // TODO unit test for the property 'UpdatedAt'
-        }
-
-        /// <summary>
-        /// Test the property 'CatalogId'
-        /// </summary>
-        [Fact]
-        public void CatalogIdTest()
-        {
-            // TODO unit test for the property 'CatalogId'
-        }
-
-        /// <summary>
-        /// Test the property 'FeedId'
-        /// </summary>
-        [Fact]
-        public void FeedIdTest()
-        {
-            // TODO unit test for the property 'FeedId'
-        }
-
-        /// <summary>
-        /// Test the property 'Country'
-        /// </summary>
-        [Fact]
-        public void CountryTest()
-        {
-            // TODO unit test for the property 'Country'
-        }
-
-        /// <summary>
-        /// Test the property 'Locale'
-        /// </summary>
-        [Fact]
-        public void LocaleTest()
-        {
-            // TODO unit test for the property 'Locale'
         }
     }
 }

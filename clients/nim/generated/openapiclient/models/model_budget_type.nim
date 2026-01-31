@@ -9,7 +9,38 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type BudgetType* = object
-  ## Budget type. If DAILY, an ad group's daily spend will not exceed the budget parameter value. If LIFETIME, the end_time parameter is **REQUIRED**, and the ad group spend is spread evenly between the ad group `start_time` and `end_time` range. A CBO campaign automatically generates ad group budgets from its campaign budget to maximize campaign outcome. For CBO campaigns, only \"CBO_ADGROUP\" is allowed. For WEB_SESSIONS campaigns, only \"LIFETIME\" is allowed. For update, only draft ad groups may update budget type.
+type BudgetType* {.pure.} = enum
+  DAILY
+  LIFETIME
+  CBOADGROUP
+
+func `%`*(v: BudgetType): JsonNode =
+  result = case v:
+    of BudgetType.DAILY: %"DAILY"
+    of BudgetType.LIFETIME: %"LIFETIME"
+    of BudgetType.CBOADGROUP: %"CBO_ADGROUP"
+
+func `$`*(v: BudgetType): string =
+  result = case v:
+    of BudgetType.DAILY: $("DAILY")
+    of BudgetType.LIFETIME: $("LIFETIME")
+    of BudgetType.CBOADGROUP: $("CBO_ADGROUP")
+
+proc to*(node: JsonNode, T: typedesc[BudgetType]): BudgetType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum BudgetType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("DAILY"):
+    return BudgetType.DAILY
+  of $("LIFETIME"):
+    return BudgetType.LIFETIME
+  of $("CBO_ADGROUP"):
+    return BudgetType.CBOADGROUP
+  else:
+    raise newException(ValueError, "Invalid enum value for BudgetType: " & strVal)
+

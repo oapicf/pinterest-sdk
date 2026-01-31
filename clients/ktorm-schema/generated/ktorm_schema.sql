@@ -1394,7 +1394,7 @@ CREATE TABLE IF NOT EXISTS `AudienceCreateCustomRequest` (
 CREATE TABLE IF NOT EXISTS `AudienceCreateRequest` (
   `name` text NOT NULL /*Audience name.*/,
   `rule` long NOT NULL,
-  `audience_type` long NOT NULL,
+  `audience_type` long NOT NULL /*&lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.*/,
   `ad_account_id` text /*Ad account ID.*/,
   `description` text /*Audience description.*/
 ); 
@@ -2754,7 +2754,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsBatchItem` (
 CREATE TABLE IF NOT EXISTS `CatalogsCreativeAssetsBatchRequest` (
   `catalog_type` text NOT NULL,
   `country` long NOT NULL,
-  `language` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
   `catalog_id` text /*Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog*/
 );  /*Request object to update catalogs creative assets items*/
 
@@ -3508,7 +3508,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsHotelBatchItem` (
 CREATE TABLE IF NOT EXISTS `CatalogsHotelBatchRequest` (
   `catalog_type` text NOT NULL,
   `country` long NOT NULL,
-  `language` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
   `catalog_id` text /*Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog*/
 );  /*Request object to update catalogs hotel items*/
 
@@ -4024,7 +4024,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsBatchCreativeAssetsProcessingRecord` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsBatchRequest` (
   `country` long NOT NULL,
-  `language` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
   `operation` long NOT NULL,
 );  /*Request object of catalogs items batch*/
 
@@ -4044,7 +4044,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsBatchRequestItemDeleteBatchRecord` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsCreateBatchRequest` (
   `country` long NOT NULL,
-  `language` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
   `operation` long NOT NULL,
 );  /*Request object to create catalogs items*/
 
@@ -4064,7 +4064,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsCreateBatchRequestItemCreateBatchRecord
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsDeleteBatchRequest` (
   `country` long NOT NULL,
-  `language` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
   `operation` long NOT NULL,
 );  /*Request object to delete catalogs items*/
 
@@ -4084,7 +4084,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsDeleteBatchRequestItemDeleteBatchRecord
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsDeleteDiscontinuedBatchRequest` (
   `country` long NOT NULL,
-  `language` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
   `operation` long NOT NULL,
 );  /*Request object to discontinue catalogs items*/
 
@@ -4172,7 +4172,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsPostFiltersCreativeAssetsIds` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsRequest` (
   `country` long NOT NULL,
-  `language` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
   `filters` long NOT NULL
 );  /*Request object of catalogs items*/
 
@@ -4184,7 +4184,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsRequest` (
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsUpdateBatchRequest` (
   `country` long NOT NULL,
-  `language` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
   `operation` long NOT NULL,
 );  /*Request object to update catalogs items*/
 
@@ -4204,7 +4204,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsItemsUpdateBatchRequestItemUpdateBatchRecord
 
 CREATE TABLE IF NOT EXISTS `CatalogsItemsUpsertBatchRequest` (
   `country` long NOT NULL,
-  `language` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
   `operation` long NOT NULL,
 );  /*Request object to upsert catalogs items*/
 
@@ -4732,7 +4732,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsReportStats` (
 CREATE TABLE IF NOT EXISTS `CatalogsRetailBatchRequest` (
   `catalog_type` text NOT NULL,
   `country` long NOT NULL,
-  `language` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
 );  /*A request object that can have multiple operations on a single retail batch*/
 
 -- --------------------------------------------------------------------------
@@ -5180,7 +5180,7 @@ CREATE TABLE IF NOT EXISTS `CatalogsUpsertRetailItem` (
 CREATE TABLE IF NOT EXISTS `CatalogsVerticalBatchRequest` (
   `catalog_type` text NOT NULL,
   `country` long NOT NULL,
-  `language` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
   `catalog_id` text /*Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog*/
 );  /*A request object that can have multiple operations on a single batch*/
 
@@ -5585,6 +5585,7 @@ CREATE TABLE IF NOT EXISTS `ConversionTagConfigs` (
 --
 
 CREATE TABLE IF NOT EXISTS `ConversionTagCreate` (
+  `name` text NOT NULL /*Conversion tag name.*/,
   `aem_enabled` boolean /*Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/,
   `md_frequency` decimal /*Metadata ingestion frequency.*/,
   `aem_fnln_enabled` boolean /*Whether Automatic Enhanced Match name is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information.*/,
@@ -5796,7 +5797,28 @@ CREATE TABLE IF NOT EXISTS `CreateInvitesResultsResponseArray_items_inner_invite
 --
 
 CREATE TABLE IF NOT EXISTS `CreateMMMReportRequest` (
+  `report_name` text NOT NULL /*Name of the Marketing Mix Modeling (MMM) report*/,
+  `start_date` text NOT NULL /*Metric report start date (UTC). Format: YYYY-MM-DD*/,
+  `end_date` text NOT NULL /*Metric report end date (UTC). Format: YYYY-MM-DD*/,
+  `granularity` text NOT NULL /*DAY - metrics are broken down daily.&lt;br&gt; WEEK - metrics are broken down weekly.*/,
+  `level` text NOT NULL /*Level of the report*/,
 ); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateMMMReportRequestMMMReportingTargetingType` generated from model 'CreateMMMReportRequestMMMReportingTargetingType'
+
+CREATE TABLE IF NOT EXISTS `CreateMMMReportRequestMMMReportingTargetingType` (
+  `createMMMReportRequest` long NOT NULL
+  `mMMReportingTargetingType` long NOT NULL
+);
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `CreateMMMReportRequestMMMReportingColumn` generated from model 'CreateMMMReportRequestMMMReportingColumn'
+
+CREATE TABLE IF NOT EXISTS `CreateMMMReportRequestMMMReportingColumn` (
+  `createMMMReportRequest` long NOT NULL
+  `mMMReportingColumn` long NOT NULL
+);
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `CreateMMMReportRequestTargetingAdvertiserCountry` generated from model 'CreateMMMReportRequestTargetingAdvertiserCountry'
@@ -6954,15 +6976,16 @@ CREATE TABLE IF NOT EXISTS `InviteAssetsSummaryProfilesInnerPermissions` (
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `InviteBusinessRoleBinding` generated from model 'inviteBusinessRoleBinding'
--- An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
 --
 
 CREATE TABLE IF NOT EXISTS `InviteBusinessRoleBinding` (
   `id` text PRIMARY KEY /*Unique identifier of the invite/request.*/,
   `invite_data` long,
   `is_received_invite` boolean /*Indicates whether the invite/request was received.*/,
-  `user` long /*Metadata for the member/partner that was sent the invite/request.*/
-);  /*An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.*/
+  `user` blob /*Metadata for the user that updated the invite/request.*/,
+  `created_by_business_id` text /*Unique identifier for the business that created the invite/request.*/,
+  `created_by_user_id` text /*Unique identifier for the user that created the invite/request.*/
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -6993,8 +7016,20 @@ CREATE TABLE IF NOT EXISTS `InviteResponse` (
   `id` text PRIMARY KEY /*Unique identifier of the invite/request.*/,
   `invite_data` long,
   `is_received_invite` boolean /*Indicates whether the invite/request was received.*/,
-  `user` long /*Metadata for the member/partner that was sent the invite/request.*/
+  `user` long /*Metadata for the member/partner that was sent the invite/request.*/,
+  `assets_summary` long,
+  `created_by_business` blob /*Metadata for the business that created the invite/request.*/,
+  `created_by_user` blob /*Metadata for the user that created the invite/request.*/,
+  `created_time` int /*The time the invite/request was created. Returned in milliseconds.*/
 ); 
+
+-- --------------------------------------------------------------------------
+-- Table structure for table `InviteResponseBusinessRoles` generated from model 'InviteResponseBusinessRoles'
+
+CREATE TABLE IF NOT EXISTS `InviteResponseBusinessRoles` (
+  `inviteResponse` long NOT NULL
+  `businessRoles` text NOT NULL
+);
 
 
 -- --------------------------------------------------------------------------
@@ -7373,7 +7408,7 @@ CREATE TABLE IF NOT EXISTS `ItemValidationEvent` (
 CREATE TABLE IF NOT EXISTS `items_batch_post_request` (
   `catalog_type` text NOT NULL,
   `country` long NOT NULL,
-  `language` long NOT NULL,
+  `language` text NOT NULL /*We recommend using the CatalogsLocale values.*/,
   `operation` long NOT NULL,
   `catalog_id` text /*Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog*/
 ); 
@@ -7649,10 +7684,10 @@ CREATE TABLE IF NOT EXISTS `LeadFormCommon_policy_links_inner` (
 --
 
 CREATE TABLE IF NOT EXISTS `LeadFormCreateRequest` (
-  `name` text NOT NULL /*Internal name of the lead form.*/,
-  `privacy_policy_link` text NOT NULL /*A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.*/,
-  `has_accepted_terms` boolean NOT NULL /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
-  `completion_message` text NOT NULL /*A message for people who complete the form to let them know what happens next.*/,
+  `name` text /*Internal name of the lead form.*/,
+  `privacy_policy_link` text /*A link to the advertiser&#39;s privacy policy. This will be included in the lead form&#39;s disclosure language.*/,
+  `has_accepted_terms` boolean /*Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO*/,
+  `completion_message` text /*A message for people who complete the form to let them know what happens next.*/,
   `status` long,
   `disclosure_language` text /*Additional disclosure language to be included in the lead form.*/,
 ); 
@@ -8018,35 +8053,35 @@ CREATE TABLE IF NOT EXISTS `multiple_product_groups_inner` (
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `OauthAccessTokenRequestClientCredentials` generated from model 'oauthAccessTokenRequestClientCredentials'
--- A request to receive a client token.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestClientCredentials` (
-  `scope` text NOT NULL
-);  /*A request to receive a client token.*/
+  `scope` text NOT NULL,
+  `grant_type` text NOT NULL
+); 
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `OauthAccessTokenRequestCode` generated from model 'oauthAccessTokenRequestCode'
--- A request to exchange an authorization code for an access token.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestCode` (
   `code` text NOT NULL,
-  `redirect_uri` text NOT NULL
-);  /*A request to exchange an authorization code for an access token.*/
+  `redirect_uri` text NOT NULL,
+  `grant_type` text NOT NULL
+); 
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `OauthAccessTokenRequestRefresh` generated from model 'oauthAccessTokenRequestRefresh'
--- A request to exchange a refresh token for a new access token.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenRequestRefresh` (
   `refresh_token` text NOT NULL,
+  `grant_type` text NOT NULL,
   `scope` text,
   `refresh_on` boolean /*Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.*/
-);  /*A request to exchange a refresh token for a new access token.*/
+); 
 
 
 -- --------------------------------------------------------------------------
@@ -8079,36 +8114,48 @@ CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseClientCredentials` (
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `OauthAccessTokenResponseCode` generated from model 'oauthAccessTokenResponseCode'
--- A successful OAuth access token response for the authorization code flow.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseCode` (
   `refresh_token` text NOT NULL,
-  `refresh_token_expires_in` int NOT NULL
-);  /*A successful OAuth access token response for the authorization code flow.*/
+  `refresh_token_expires_in` int NOT NULL,
+  `access_token` text NOT NULL,
+  `token_type` text NOT NULL,
+  `expires_in` int NOT NULL,
+  `scope` text NOT NULL,
+  `response_type` text
+); 
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `OauthAccessTokenResponseEverlastingRefresh` generated from model 'oauthAccessTokenResponseEverlastingRefresh'
--- A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseEverlastingRefresh` (
   `refresh_token` text NOT NULL,
   `refresh_token_expires_in` int NOT NULL,
-  `refresh_token_expires_at` int NOT NULL
-);  /*A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.*/
+  `refresh_token_expires_at` int NOT NULL,
+  `access_token` text NOT NULL,
+  `token_type` text NOT NULL,
+  `expires_in` int NOT NULL,
+  `scope` text NOT NULL,
+  `response_type` text
+); 
 
 
 -- --------------------------------------------------------------------------
 -- Table structure for table `OauthAccessTokenResponseIntegrationRefresh` generated from model 'oauthAccessTokenResponseIntegrationRefresh'
--- A successful OAuth access token response for the refresh token flow, with an added refresh token.
 --
 
 CREATE TABLE IF NOT EXISTS `OauthAccessTokenResponseIntegrationRefresh` (
   `refresh_token` text NOT NULL,
-  `refresh_token_expires_in` int NOT NULL
-);  /*A successful OAuth access token response for the refresh token flow, with an added refresh token.*/
+  `refresh_token_expires_in` int NOT NULL,
+  `access_token` text NOT NULL,
+  `token_type` text NOT NULL,
+  `expires_in` int NOT NULL,
+  `scope` text NOT NULL,
+  `response_type` text
+); 
 
 
 -- --------------------------------------------------------------------------

@@ -155,8 +155,7 @@ namespace Org.OpenAPITools.Model
                                 operationType = new Option<OperationType?>(OperationTypeValueConverter.FromStringOrDefault(operationTypeRawValue));
                             break;
                         case "recipient_business_ids":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                recipientBusinessIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            recipientBusinessIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

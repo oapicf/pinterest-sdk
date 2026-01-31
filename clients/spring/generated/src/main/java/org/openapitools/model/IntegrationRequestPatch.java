@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationRequestPatch", description = "Schema used for updating the integration metadata.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationRequestPatch {
 
   private @Nullable String connectedMerchantId;
@@ -48,7 +48,7 @@ public class IntegrationRequestPatch {
 
   private @Nullable String partnerMetadata;
 
-  public IntegrationRequestPatch connectedMerchantId(String connectedMerchantId) {
+  public IntegrationRequestPatch connectedMerchantId(@Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
     return this;
   }
@@ -60,15 +60,15 @@ public class IntegrationRequestPatch {
   
   @Schema(name = "connected_merchant_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_merchant_id")
-  public String getConnectedMerchantId() {
+  public @Nullable String getConnectedMerchantId() {
     return connectedMerchantId;
   }
 
-  public void setConnectedMerchantId(String connectedMerchantId) {
+  public void setConnectedMerchantId(@Nullable String connectedMerchantId) {
     this.connectedMerchantId = connectedMerchantId;
   }
 
-  public IntegrationRequestPatch connectedAdvertiserId(String connectedAdvertiserId) {
+  public IntegrationRequestPatch connectedAdvertiserId(@Nullable String connectedAdvertiserId) {
     this.connectedAdvertiserId = connectedAdvertiserId;
     return this;
   }
@@ -80,15 +80,15 @@ public class IntegrationRequestPatch {
   
   @Schema(name = "connected_advertiser_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_advertiser_id")
-  public String getConnectedAdvertiserId() {
+  public @Nullable String getConnectedAdvertiserId() {
     return connectedAdvertiserId;
   }
 
-  public void setConnectedAdvertiserId(String connectedAdvertiserId) {
+  public void setConnectedAdvertiserId(@Nullable String connectedAdvertiserId) {
     this.connectedAdvertiserId = connectedAdvertiserId;
   }
 
-  public IntegrationRequestPatch connectedLbaId(String connectedLbaId) {
+  public IntegrationRequestPatch connectedLbaId(@Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
     return this;
   }
@@ -100,15 +100,15 @@ public class IntegrationRequestPatch {
   
   @Schema(name = "connected_lba_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_lba_id")
-  public String getConnectedLbaId() {
+  public @Nullable String getConnectedLbaId() {
     return connectedLbaId;
   }
 
-  public void setConnectedLbaId(String connectedLbaId) {
+  public void setConnectedLbaId(@Nullable String connectedLbaId) {
     this.connectedLbaId = connectedLbaId;
   }
 
-  public IntegrationRequestPatch connectedTagId(String connectedTagId) {
+  public IntegrationRequestPatch connectedTagId(@Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
     return this;
   }
@@ -120,15 +120,15 @@ public class IntegrationRequestPatch {
   
   @Schema(name = "connected_tag_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("connected_tag_id")
-  public String getConnectedTagId() {
+  public @Nullable String getConnectedTagId() {
     return connectedTagId;
   }
 
-  public void setConnectedTagId(String connectedTagId) {
+  public void setConnectedTagId(@Nullable String connectedTagId) {
     this.connectedTagId = connectedTagId;
   }
 
-  public IntegrationRequestPatch partnerAccessToken(String partnerAccessToken) {
+  public IntegrationRequestPatch partnerAccessToken(@Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
     return this;
   }
@@ -140,15 +140,15 @@ public class IntegrationRequestPatch {
   
   @Schema(name = "partner_access_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_access_token")
-  public String getPartnerAccessToken() {
+  public @Nullable String getPartnerAccessToken() {
     return partnerAccessToken;
   }
 
-  public void setPartnerAccessToken(String partnerAccessToken) {
+  public void setPartnerAccessToken(@Nullable String partnerAccessToken) {
     this.partnerAccessToken = partnerAccessToken;
   }
 
-  public IntegrationRequestPatch partnerRefreshToken(String partnerRefreshToken) {
+  public IntegrationRequestPatch partnerRefreshToken(@Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
     return this;
   }
@@ -160,15 +160,15 @@ public class IntegrationRequestPatch {
   
   @Schema(name = "partner_refresh_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_refresh_token")
-  public String getPartnerRefreshToken() {
+  public @Nullable String getPartnerRefreshToken() {
     return partnerRefreshToken;
   }
 
-  public void setPartnerRefreshToken(String partnerRefreshToken) {
+  public void setPartnerRefreshToken(@Nullable String partnerRefreshToken) {
     this.partnerRefreshToken = partnerRefreshToken;
   }
 
-  public IntegrationRequestPatch partnerPrimaryEmail(String partnerPrimaryEmail) {
+  public IntegrationRequestPatch partnerPrimaryEmail(@Nullable String partnerPrimaryEmail) {
     this.partnerPrimaryEmail = partnerPrimaryEmail;
     return this;
   }
@@ -180,15 +180,15 @@ public class IntegrationRequestPatch {
   
   @Schema(name = "partner_primary_email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_primary_email")
-  public String getPartnerPrimaryEmail() {
+  public @Nullable String getPartnerPrimaryEmail() {
     return partnerPrimaryEmail;
   }
 
-  public void setPartnerPrimaryEmail(String partnerPrimaryEmail) {
+  public void setPartnerPrimaryEmail(@Nullable String partnerPrimaryEmail) {
     this.partnerPrimaryEmail = partnerPrimaryEmail;
   }
 
-  public IntegrationRequestPatch partnerAccessTokenExpiry(BigDecimal partnerAccessTokenExpiry) {
+  public IntegrationRequestPatch partnerAccessTokenExpiry(@Nullable BigDecimal partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
     return this;
   }
@@ -200,15 +200,15 @@ public class IntegrationRequestPatch {
   @Valid 
   @Schema(name = "partner_access_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_access_token_expiry")
-  public BigDecimal getPartnerAccessTokenExpiry() {
+  public @Nullable BigDecimal getPartnerAccessTokenExpiry() {
     return partnerAccessTokenExpiry;
   }
 
-  public void setPartnerAccessTokenExpiry(BigDecimal partnerAccessTokenExpiry) {
+  public void setPartnerAccessTokenExpiry(@Nullable BigDecimal partnerAccessTokenExpiry) {
     this.partnerAccessTokenExpiry = partnerAccessTokenExpiry;
   }
 
-  public IntegrationRequestPatch partnerRefreshTokenExpiry(BigDecimal partnerRefreshTokenExpiry) {
+  public IntegrationRequestPatch partnerRefreshTokenExpiry(@Nullable BigDecimal partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
     return this;
   }
@@ -220,15 +220,15 @@ public class IntegrationRequestPatch {
   @Valid 
   @Schema(name = "partner_refresh_token_expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_refresh_token_expiry")
-  public BigDecimal getPartnerRefreshTokenExpiry() {
+  public @Nullable BigDecimal getPartnerRefreshTokenExpiry() {
     return partnerRefreshTokenExpiry;
   }
 
-  public void setPartnerRefreshTokenExpiry(BigDecimal partnerRefreshTokenExpiry) {
+  public void setPartnerRefreshTokenExpiry(@Nullable BigDecimal partnerRefreshTokenExpiry) {
     this.partnerRefreshTokenExpiry = partnerRefreshTokenExpiry;
   }
 
-  public IntegrationRequestPatch scopes(String scopes) {
+  public IntegrationRequestPatch scopes(@Nullable String scopes) {
     this.scopes = scopes;
     return this;
   }
@@ -240,15 +240,15 @@ public class IntegrationRequestPatch {
   
   @Schema(name = "scopes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scopes")
-  public String getScopes() {
+  public @Nullable String getScopes() {
     return scopes;
   }
 
-  public void setScopes(String scopes) {
+  public void setScopes(@Nullable String scopes) {
     this.scopes = scopes;
   }
 
-  public IntegrationRequestPatch additionalId1(String additionalId1) {
+  public IntegrationRequestPatch additionalId1(@Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
     return this;
   }
@@ -260,15 +260,15 @@ public class IntegrationRequestPatch {
   
   @Schema(name = "additional_id_1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("additional_id_1")
-  public String getAdditionalId1() {
+  public @Nullable String getAdditionalId1() {
     return additionalId1;
   }
 
-  public void setAdditionalId1(String additionalId1) {
+  public void setAdditionalId1(@Nullable String additionalId1) {
     this.additionalId1 = additionalId1;
   }
 
-  public IntegrationRequestPatch partnerMetadata(String partnerMetadata) {
+  public IntegrationRequestPatch partnerMetadata(@Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
     return this;
   }
@@ -280,11 +280,11 @@ public class IntegrationRequestPatch {
   
   @Schema(name = "partner_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_metadata")
-  public String getPartnerMetadata() {
+  public @Nullable String getPartnerMetadata() {
     return partnerMetadata;
   }
 
-  public void setPartnerMetadata(String partnerMetadata) {
+  public void setPartnerMetadata(@Nullable String partnerMetadata) {
     this.partnerMetadata = partnerMetadata;
   }
 

@@ -85,27 +85,27 @@ export interface AdCreateRequest {
     pin_id: string;
 }
 export namespace AdCreateRequest {
-    export type CustomizableCtaTypeEnum = 'GET_OFFER' | 'LEARN_MORE' | 'ORDER_NOW' | 'SHOP_NOW' | 'SIGN_UP' | 'SUBSCRIBE' | 'BUY_NOW' | 'CONTACT_US' | 'GET_QUOTE' | 'VISIT_SITE' | 'APPLY_NOW' | 'BOOK_NOW' | 'REQUEST_DEMO' | 'REGISTER_NOW' | 'FIND_A_DEALER' | 'ADD_TO_CART' | 'WATCH_NOW' | 'READ_MORE';
     export const CustomizableCtaTypeEnum = {
-        GetOffer: 'GET_OFFER' as CustomizableCtaTypeEnum,
-        LearnMore: 'LEARN_MORE' as CustomizableCtaTypeEnum,
-        OrderNow: 'ORDER_NOW' as CustomizableCtaTypeEnum,
-        ShopNow: 'SHOP_NOW' as CustomizableCtaTypeEnum,
-        SignUp: 'SIGN_UP' as CustomizableCtaTypeEnum,
-        Subscribe: 'SUBSCRIBE' as CustomizableCtaTypeEnum,
-        BuyNow: 'BUY_NOW' as CustomizableCtaTypeEnum,
-        ContactUs: 'CONTACT_US' as CustomizableCtaTypeEnum,
-        GetQuote: 'GET_QUOTE' as CustomizableCtaTypeEnum,
-        VisitSite: 'VISIT_SITE' as CustomizableCtaTypeEnum,
-        ApplyNow: 'APPLY_NOW' as CustomizableCtaTypeEnum,
-        BookNow: 'BOOK_NOW' as CustomizableCtaTypeEnum,
-        RequestDemo: 'REQUEST_DEMO' as CustomizableCtaTypeEnum,
-        RegisterNow: 'REGISTER_NOW' as CustomizableCtaTypeEnum,
-        FindADealer: 'FIND_A_DEALER' as CustomizableCtaTypeEnum,
-        AddToCart: 'ADD_TO_CART' as CustomizableCtaTypeEnum,
-        WatchNow: 'WATCH_NOW' as CustomizableCtaTypeEnum,
-        ReadMore: 'READ_MORE' as CustomizableCtaTypeEnum
-    };
+        GetOffer: 'GET_OFFER',
+        LearnMore: 'LEARN_MORE',
+        OrderNow: 'ORDER_NOW',
+        ShopNow: 'SHOP_NOW',
+        SignUp: 'SIGN_UP',
+        Subscribe: 'SUBSCRIBE',
+        BuyNow: 'BUY_NOW',
+        ContactUs: 'CONTACT_US',
+        GetQuote: 'GET_QUOTE',
+        VisitSite: 'VISIT_SITE',
+        ApplyNow: 'APPLY_NOW',
+        BookNow: 'BOOK_NOW',
+        RequestDemo: 'REQUEST_DEMO',
+        RegisterNow: 'REGISTER_NOW',
+        FindADealer: 'FIND_A_DEALER',
+        AddToCart: 'ADD_TO_CART',
+        WatchNow: 'WATCH_NOW',
+        ReadMore: 'READ_MORE'
+    } as const;
+    export type CustomizableCtaTypeEnum = typeof CustomizableCtaTypeEnum[keyof typeof CustomizableCtaTypeEnum];
 }
 
 

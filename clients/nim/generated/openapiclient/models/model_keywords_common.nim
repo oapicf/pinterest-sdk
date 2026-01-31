@@ -9,11 +9,35 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_match_type_response
 
 type KeywordsCommon* = object
   ## 
-  bid*: int ## </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-  matchType*: MatchTypeResponse
+  bid*: Option[int] ## </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+  matchType*: Option[MatchTypeResponse]
   value*: string ## Keyword value (120 chars max).
+
+
+# Custom JSON deserialization for KeywordsCommon with custom field names
+proc to*(node: JsonNode, T: typedesc[KeywordsCommon]): KeywordsCommon =
+  result = KeywordsCommon()
+  if node.kind == JObject:
+    if node.hasKey("bid") and node["bid"].kind != JNull:
+      result.bid = some(to(node["bid"], typeof(result.bid.get())))
+    if node.hasKey("match_type") and node["match_type"].kind != JNull:
+      result.matchType = some(to(node["match_type"], typeof(result.matchType.get())))
+    if node.hasKey("value"):
+      result.value = to(node["value"], string)
+
+# Custom JSON serialization for KeywordsCommon with custom field names
+proc `%`*(obj: KeywordsCommon): JsonNode =
+  result = newJObject()
+  if obj.bid.isSome():
+    result["bid"] = %obj.bid.get()
+  if obj.matchType.isSome():
+    result["match_type"] = %obj.matchType.get()
+  result["value"] = %obj.value
+

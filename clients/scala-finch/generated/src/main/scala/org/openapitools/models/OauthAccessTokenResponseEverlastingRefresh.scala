@@ -7,24 +7,24 @@ import io.circe.java8.time._
 import org.openapitools._
 
 /**
- * A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.
+ * 
+ * @param refreshUnderscoretoken 
+ * @param refreshUnderscoretokenUnderscoreexpiresUnderscorein 
+ * @param refreshUnderscoretokenUnderscoreexpiresUnderscoreat 
  * @param responseUnderscoretype 
  * @param accessUnderscoretoken 
  * @param tokenUnderscoretype 
  * @param expiresUnderscorein 
  * @param scope 
- * @param refreshUnderscoretoken 
- * @param refreshUnderscoretokenUnderscoreexpiresUnderscorein 
- * @param refreshUnderscoretokenUnderscoreexpiresUnderscoreat 
  */
-case class OauthAccessTokenResponseEverlastingRefresh(responseUnderscoretype: Option[String],
+case class OauthAccessTokenResponseEverlastingRefresh(refreshUnderscoretoken: String,
+                refreshUnderscoretokenUnderscoreexpiresUnderscorein: Int,
+                refreshUnderscoretokenUnderscoreexpiresUnderscoreat: Int,
+                responseUnderscoretype: Option[String],
                 accessUnderscoretoken: String,
                 tokenUnderscoretype: String,
                 expiresUnderscorein: Int,
-                scope: String,
-                refreshUnderscoretoken: String,
-                refreshUnderscoretokenUnderscoreexpiresUnderscorein: Int,
-                refreshUnderscoretokenUnderscoreexpiresUnderscoreat: Int
+                scope: String
                 )
 
 object OauthAccessTokenResponseEverlastingRefresh {

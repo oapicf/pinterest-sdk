@@ -65,7 +65,7 @@
     },
     {
       "name": "privacy",
-      "type": ["null", {
+      "type": [{
         "type": "enum",
         "name": "Board_privacy",
         "symbols": [
@@ -73,9 +73,9 @@
           "PROTECTED",
           "SECRET"
         ]
-      }],
+      }, "null"],
       "doc": "Privacy setting for a board. Learn more about <a href=\"https://help.pinterest.com/en/article/secret-boards\">secret boards</a> and <a href=\"https://help.pinterest.com/en/business/article/protected-boards\">protected boards</a>",
-      "default": null
+      "default": PrivacyEnum.PUBLIC
     }
   ]
 

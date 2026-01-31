@@ -38,7 +38,7 @@ data class CustomerListRequest(
     @field:Valid
     @Schema(example = "null", description = "Customer list errors.")
     @get:JsonProperty("exceptions") val exceptions: kotlin.Any? = null
-    ) {
+) {
 
 }
 

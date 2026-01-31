@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **name** | **String** | Audience name. | 
 **rule** | [**AudienceRule**](AudienceRule.md) |  | 
 **description** | **String** | Audience description. |  [optional]
-**audienceType** | [**AudienceCreateRequest1AudienceType**](AudienceCreateRequest1AudienceType.md) |  | 
+**audienceType** | [**AudienceType**](AudienceType.md) | &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. | 
 
 
 

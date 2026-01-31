@@ -22,14 +22,14 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("TopPinsAnalyticsResponse_date_availability")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TopPinsAnalyticsResponseDateAvailability {
 
   private @Nullable BigDecimal latestAvailableTimestamp;
 
   private @Nullable Boolean isRealtime;
 
-  public TopPinsAnalyticsResponseDateAvailability latestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
+  public TopPinsAnalyticsResponseDateAvailability latestAvailableTimestamp(@Nullable BigDecimal latestAvailableTimestamp) {
     this.latestAvailableTimestamp = latestAvailableTimestamp;
     return this;
   }
@@ -41,15 +41,15 @@ public class TopPinsAnalyticsResponseDateAvailability {
   @Valid 
   @Schema(name = "latest_available_timestamp", example = "1649116799000", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("latest_available_timestamp")
-  public BigDecimal getLatestAvailableTimestamp() {
+  public @Nullable BigDecimal getLatestAvailableTimestamp() {
     return latestAvailableTimestamp;
   }
 
-  public void setLatestAvailableTimestamp(BigDecimal latestAvailableTimestamp) {
+  public void setLatestAvailableTimestamp(@Nullable BigDecimal latestAvailableTimestamp) {
     this.latestAvailableTimestamp = latestAvailableTimestamp;
   }
 
-  public TopPinsAnalyticsResponseDateAvailability isRealtime(Boolean isRealtime) {
+  public TopPinsAnalyticsResponseDateAvailability isRealtime(@Nullable Boolean isRealtime) {
     this.isRealtime = isRealtime;
     return this;
   }
@@ -61,11 +61,11 @@ public class TopPinsAnalyticsResponseDateAvailability {
   
   @Schema(name = "is_realtime", example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_realtime")
-  public Boolean getIsRealtime() {
+  public @Nullable Boolean getIsRealtime() {
     return isRealtime;
   }
 
-  public void setIsRealtime(Boolean isRealtime) {
+  public void setIsRealtime(@Nullable Boolean isRealtime) {
     this.isRealtime = isRealtime;
   }
 

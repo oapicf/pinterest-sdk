@@ -9,7 +9,88 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AdsAnalyticsTargetingType* = object
-  ## Reporting targeting type
+type AdsAnalyticsTargetingType* {.pure.} = enum
+  KEYWORD
+  APPTYPE
+  GENDER
+  LOCATION
+  PLACEMENT
+  COUNTRY
+  TARGETEDINTEREST
+  PINNERINTEREST
+  AUDIENCEINCLUDE
+  GEO
+  AGEBUCKET
+  REGION
+  AGEBUCKETANDGENDER
+
+func `%`*(v: AdsAnalyticsTargetingType): JsonNode =
+  result = case v:
+    of AdsAnalyticsTargetingType.KEYWORD: %"KEYWORD"
+    of AdsAnalyticsTargetingType.APPTYPE: %"APPTYPE"
+    of AdsAnalyticsTargetingType.GENDER: %"GENDER"
+    of AdsAnalyticsTargetingType.LOCATION: %"LOCATION"
+    of AdsAnalyticsTargetingType.PLACEMENT: %"PLACEMENT"
+    of AdsAnalyticsTargetingType.COUNTRY: %"COUNTRY"
+    of AdsAnalyticsTargetingType.TARGETEDINTEREST: %"TARGETED_INTEREST"
+    of AdsAnalyticsTargetingType.PINNERINTEREST: %"PINNER_INTEREST"
+    of AdsAnalyticsTargetingType.AUDIENCEINCLUDE: %"AUDIENCE_INCLUDE"
+    of AdsAnalyticsTargetingType.GEO: %"GEO"
+    of AdsAnalyticsTargetingType.AGEBUCKET: %"AGE_BUCKET"
+    of AdsAnalyticsTargetingType.REGION: %"REGION"
+    of AdsAnalyticsTargetingType.AGEBUCKETANDGENDER: %"AGE_BUCKET_AND_GENDER"
+
+func `$`*(v: AdsAnalyticsTargetingType): string =
+  result = case v:
+    of AdsAnalyticsTargetingType.KEYWORD: $("KEYWORD")
+    of AdsAnalyticsTargetingType.APPTYPE: $("APPTYPE")
+    of AdsAnalyticsTargetingType.GENDER: $("GENDER")
+    of AdsAnalyticsTargetingType.LOCATION: $("LOCATION")
+    of AdsAnalyticsTargetingType.PLACEMENT: $("PLACEMENT")
+    of AdsAnalyticsTargetingType.COUNTRY: $("COUNTRY")
+    of AdsAnalyticsTargetingType.TARGETEDINTEREST: $("TARGETED_INTEREST")
+    of AdsAnalyticsTargetingType.PINNERINTEREST: $("PINNER_INTEREST")
+    of AdsAnalyticsTargetingType.AUDIENCEINCLUDE: $("AUDIENCE_INCLUDE")
+    of AdsAnalyticsTargetingType.GEO: $("GEO")
+    of AdsAnalyticsTargetingType.AGEBUCKET: $("AGE_BUCKET")
+    of AdsAnalyticsTargetingType.REGION: $("REGION")
+    of AdsAnalyticsTargetingType.AGEBUCKETANDGENDER: $("AGE_BUCKET_AND_GENDER")
+
+proc to*(node: JsonNode, T: typedesc[AdsAnalyticsTargetingType]): AdsAnalyticsTargetingType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AdsAnalyticsTargetingType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("KEYWORD"):
+    return AdsAnalyticsTargetingType.KEYWORD
+  of $("APPTYPE"):
+    return AdsAnalyticsTargetingType.APPTYPE
+  of $("GENDER"):
+    return AdsAnalyticsTargetingType.GENDER
+  of $("LOCATION"):
+    return AdsAnalyticsTargetingType.LOCATION
+  of $("PLACEMENT"):
+    return AdsAnalyticsTargetingType.PLACEMENT
+  of $("COUNTRY"):
+    return AdsAnalyticsTargetingType.COUNTRY
+  of $("TARGETED_INTEREST"):
+    return AdsAnalyticsTargetingType.TARGETEDINTEREST
+  of $("PINNER_INTEREST"):
+    return AdsAnalyticsTargetingType.PINNERINTEREST
+  of $("AUDIENCE_INCLUDE"):
+    return AdsAnalyticsTargetingType.AUDIENCEINCLUDE
+  of $("GEO"):
+    return AdsAnalyticsTargetingType.GEO
+  of $("AGE_BUCKET"):
+    return AdsAnalyticsTargetingType.AGEBUCKET
+  of $("REGION"):
+    return AdsAnalyticsTargetingType.REGION
+  of $("AGE_BUCKET_AND_GENDER"):
+    return AdsAnalyticsTargetingType.AGEBUCKETANDGENDER
+  else:
+    raise newException(ValueError, "Invalid enum value for AdsAnalyticsTargetingType: " & strVal)
+

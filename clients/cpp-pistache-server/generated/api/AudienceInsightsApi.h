@@ -87,7 +87,7 @@ private:
     /// Get the scope and type of available audiences, which along with a date, is an audience that has recently had an interaction (referred to here as a type) on pins. Interacted pins can belong to at least the most common **partner** or **Pinterest** scopes. This means that user interactions made on advertiser or partner pins will have the **partner** scope. You can also have user interactions performed in general on Pinterest with the **Pinterest** scope. In that case, you can then use the returned type and scope values together on requests to other endpoints to retrieve insight metrics for a desired audience.
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
-    virtual void audience_insights_scope_and_type_get(const std::string &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void audience_insights_scope_and_type_get( const std::string &adAccountId, Pistache::Http::ResponseWriter &response) = 0;
     /// <summary>
     /// Get audience insights
     /// </summary>
@@ -96,7 +96,7 @@ private:
     /// </remarks>
     /// <param name="adAccountId">Unique identifier of an ad account.</param>
     /// <param name="audienceInsightType">Type of audience insights.</param>
-    virtual void audience_insights_get(const std::string &adAccountId, const std::optional<org::openapitools::server::model::AudienceInsightType> &audienceInsightType, Pistache::Http::ResponseWriter &response) = 0;
+    virtual void audience_insights_get( const std::string &adAccountId, const std::optional<org::openapitools::server::model::AudienceInsightType> &audienceInsightType, Pistache::Http::ResponseWriter &response) = 0;
 
 };
 

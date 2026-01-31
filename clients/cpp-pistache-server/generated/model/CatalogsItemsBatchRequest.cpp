@@ -21,6 +21,7 @@ namespace org::openapitools::server::model
 
 CatalogsItemsBatchRequest::CatalogsItemsBatchRequest()
 {
+    m_Language = "";
     
 }
 
@@ -43,11 +44,7 @@ bool CatalogsItemsBatchRequest::validate(std::stringstream& msg, const std::stri
     bool success = true;
     const std::string _pathPrefix = pathPrefix.empty() ? "CatalogsItemsBatchRequest" : pathPrefix;
 
-            
-    if (!m_Language.validate(msg, _pathPrefix + ".language")) {
-        msg << _pathPrefix << ": Language is invalid;";
-        success = false;
-    }         
+                     
     
     /* Items */ {
         const std::vector<org::openapitools::server::model::ItemDeleteBatchRecord>& value = m_Items;
@@ -124,11 +121,11 @@ void CatalogsItemsBatchRequest::setCountry(org::openapitools::server::model::Cou
 {
     m_Country = value;
 }
-org::openapitools::server::model::CatalogsItemsRequest_language CatalogsItemsBatchRequest::getLanguage() const
+std::string CatalogsItemsBatchRequest::getLanguage() const
 {
     return m_Language;
 }
-void CatalogsItemsBatchRequest::setLanguage(org::openapitools::server::model::CatalogsItemsRequest_language const& value)
+void CatalogsItemsBatchRequest::setLanguage(std::string const& value)
 {
     m_Language = value;
 }

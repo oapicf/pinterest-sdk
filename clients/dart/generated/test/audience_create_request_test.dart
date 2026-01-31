@@ -39,7 +39,8 @@ void main() {
       // TODO
     });
 
-    // AudienceCreateRequest1AudienceType audienceType
+    // <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+    // AudienceType audienceType
     test('to test the property `audienceType`', () async {
       // TODO
     });

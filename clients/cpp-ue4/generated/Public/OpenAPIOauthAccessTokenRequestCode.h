@@ -20,7 +20,7 @@ namespace OpenAPI
 /*
  * OpenAPIOauthAccessTokenRequestCode
  *
- * A request to exchange an authorization code for an access token.
+ * 
  */
 class OPENAPI_API OpenAPIOauthAccessTokenRequestCode : public Model
 {
@@ -29,6 +29,8 @@ public:
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 	void WriteJson(JsonWriter& Writer) const final;
 
+	FString Code;
+	FString RedirectUri;
 	enum class GrantTypeEnum
 	{
 		AuthorizationCode,
@@ -39,8 +41,6 @@ public:
 	static FString EnumToString(const GrantTypeEnum& EnumValue);
 	static bool EnumFromString(const FString& EnumAsString, GrantTypeEnum& EnumValue);
 	GrantTypeEnum GrantType;
-	FString Code;
-	FString RedirectUri;
 };
 
 }

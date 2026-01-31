@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_update_member_asset_access_body_accesses_inner
 
 type UpdateMemberAssetAccessBody* = object
   ## An object with a list of all the new accesses.
   accesses*: seq[UpdateMemberAssetAccessBody_accesses_inner]
+

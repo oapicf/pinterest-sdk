@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,43 +11,60 @@ import org.openapitools.model.ItemResponseAnyOf1;
 import org.openapitools.model.ItemValidationEvent;
 import org.openapitools.model.Pin;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object describing an item record
- **/
+ * Object describing an item record
+ */
 @ApiModel(description="Object describing an item record")
 
 public class ItemResponse  {
   
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsType catalogType;
 
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
  /**
-   * The catalog item id in the merchant namespace
-  **/
+  * The catalog item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
+
   private String itemId;
 
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
  /**
-   * Array with the errors for the item id requested
-  **/
-  private List<ItemValidationEvent> errors = new ArrayList<>();
+  * The pins mapped to the item
+  */
+  @ApiModelProperty(value = "The pins mapped to the item")
 
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
+  private List<Pin> pins;
+
+  @ApiModelProperty(value = "")
+
+  private CatalogsCreativeAssetsAttributes attributes;
+
  /**
-   * The catalog hotel id in the merchant namespace
-  **/
+  * The catalog hotel id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
+
   private String hotelId;
 
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
  /**
-   * The catalog creative assets id in the merchant namespace
-  **/
+  * The catalog creative assets id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
+
   private String creativeAssetsId;
+
+ /**
+  * Array with the errors for the item id requested
+  */
+  @ApiModelProperty(value = "Array with the errors for the item id requested")
+
+  private List<ItemValidationEvent> errors = new ArrayList<>();
  /**
    * Get catalogType
    * @return catalogType
@@ -86,25 +102,43 @@ public class ItemResponse  {
   }
 
  /**
-   * Array with the errors for the item id requested
-   * @return errors
+   * The pins mapped to the item
+   * @return pins
   **/
-  @JsonProperty("errors")
-  public List<ItemValidationEvent> getErrors() {
-    return errors;
+  @JsonProperty("pins")
+  public List<Pin> getPins() {
+    return pins;
   }
 
-  public void setErrors(List<ItemValidationEvent> errors) {
-    this.errors = errors;
+  public void setPins(List<Pin> pins) {
+    this.pins = pins;
   }
 
-  public ItemResponse errors(List<ItemValidationEvent> errors) {
-    this.errors = errors;
+  public ItemResponse pins(List<Pin> pins) {
+    this.pins = pins;
     return this;
   }
 
-  public ItemResponse addErrorsItem(ItemValidationEvent errorsItem) {
-    this.errors.add(errorsItem);
+  public ItemResponse addPinsItem(Pin pinsItem) {
+    this.pins.add(pinsItem);
+    return this;
+  }
+
+ /**
+   * Get attributes
+   * @return attributes
+  **/
+  @JsonProperty("attributes")
+  public CatalogsCreativeAssetsAttributes getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
+  }
+
+  public ItemResponse attributes(CatalogsCreativeAssetsAttributes attributes) {
+    this.attributes = attributes;
     return this;
   }
 
@@ -144,6 +178,29 @@ public class ItemResponse  {
     return this;
   }
 
+ /**
+   * Array with the errors for the item id requested
+   * @return errors
+  **/
+  @JsonProperty("errors")
+  public List<ItemValidationEvent> getErrors() {
+    return errors;
+  }
+
+  public void setErrors(List<ItemValidationEvent> errors) {
+    this.errors = errors;
+  }
+
+  public ItemResponse errors(List<ItemValidationEvent> errors) {
+    this.errors = errors;
+    return this;
+  }
+
+  public ItemResponse addErrorsItem(ItemValidationEvent errorsItem) {
+    this.errors.add(errorsItem);
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -155,14 +212,16 @@ public class ItemResponse  {
     ItemResponse itemResponse = (ItemResponse) o;
     return Objects.equals(this.catalogType, itemResponse.catalogType) &&
         Objects.equals(this.itemId, itemResponse.itemId) &&
-        Objects.equals(this.errors, itemResponse.errors) &&
+        Objects.equals(this.pins, itemResponse.pins) &&
+        Objects.equals(this.attributes, itemResponse.attributes) &&
         Objects.equals(this.hotelId, itemResponse.hotelId) &&
-        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId);
+        Objects.equals(this.creativeAssetsId, itemResponse.creativeAssetsId) &&
+        Objects.equals(this.errors, itemResponse.errors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(catalogType, itemId, errors, hotelId, creativeAssetsId);
+    return Objects.hash(catalogType, itemId, pins, attributes, hotelId, creativeAssetsId, errors);
   }
 
   @Override
@@ -172,9 +231,11 @@ public class ItemResponse  {
     
     sb.append("    catalogType: ").append(toIndentedString(catalogType)).append("\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    pins: ").append(toIndentedString(pins)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    hotelId: ").append(toIndentedString(hotelId)).append("\n");
     sb.append("    creativeAssetsId: ").append(toIndentedString(creativeAssetsId)).append("\n");
+    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("}");
     return sb.toString();
   }

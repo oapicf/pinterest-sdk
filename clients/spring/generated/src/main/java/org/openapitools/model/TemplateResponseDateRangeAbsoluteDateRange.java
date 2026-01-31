@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "TemplateResponse_date_range_absolute_date_range", description = "The absolute date range of the template")
 @JsonTypeName("TemplateResponse_date_range_absolute_date_range")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponseDateRangeAbsoluteDateRange {
 
   private @Nullable String type;
@@ -32,7 +32,7 @@ public class TemplateResponseDateRangeAbsoluteDateRange {
 
   private @Nullable BigDecimal endDate;
 
-  public TemplateResponseDateRangeAbsoluteDateRange type(String type) {
+  public TemplateResponseDateRangeAbsoluteDateRange type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -44,15 +44,15 @@ public class TemplateResponseDateRangeAbsoluteDateRange {
   
   @Schema(name = "type", example = "absolute", description = "The date range type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public String getType() {
+  public @Nullable String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
-  public TemplateResponseDateRangeAbsoluteDateRange startDate(BigDecimal startDate) {
+  public TemplateResponseDateRangeAbsoluteDateRange startDate(@Nullable BigDecimal startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -64,15 +64,15 @@ public class TemplateResponseDateRangeAbsoluteDateRange {
   @Valid 
   @Schema(name = "start_date", example = "0.8008281904610115", description = "The start date of the date range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("start_date")
-  public BigDecimal getStartDate() {
+  public @Nullable BigDecimal getStartDate() {
     return startDate;
   }
 
-  public void setStartDate(BigDecimal startDate) {
+  public void setStartDate(@Nullable BigDecimal startDate) {
     this.startDate = startDate;
   }
 
-  public TemplateResponseDateRangeAbsoluteDateRange endDate(BigDecimal endDate) {
+  public TemplateResponseDateRangeAbsoluteDateRange endDate(@Nullable BigDecimal endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -84,11 +84,11 @@ public class TemplateResponseDateRangeAbsoluteDateRange {
   @Valid 
   @Schema(name = "end_date", example = "6.027456183070403", description = "The end date of the date range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("end_date")
-  public BigDecimal getEndDate() {
+  public @Nullable BigDecimal getEndDate() {
     return endDate;
   }
 
-  public void setEndDate(BigDecimal endDate) {
+  public void setEndDate(@Nullable BigDecimal endDate) {
     this.endDate = endDate;
   }
 

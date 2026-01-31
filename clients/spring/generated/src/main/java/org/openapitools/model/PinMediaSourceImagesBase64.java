@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinMediaSourceImagesBase64", description = "Multiple Base64-encoded images media source")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceImagesBase64 implements PinMediaSource {
 
   /**
@@ -37,7 +37,7 @@ public class PinMediaSourceImagesBase64 implements PinMediaSource {
   public enum SourceTypeEnum {
     MULTIPLE_IMAGE_BASE64("multiple_image_base64");
 
-    private String value;
+    private final String value;
 
     SourceTypeEnum(String value) {
       this.value = value;
@@ -82,7 +82,7 @@ public class PinMediaSourceImagesBase64 implements PinMediaSource {
     this.items = items;
   }
 
-  public PinMediaSourceImagesBase64 sourceType(SourceTypeEnum sourceType) {
+  public PinMediaSourceImagesBase64 sourceType(@Nullable SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
     return this;
   }
@@ -94,11 +94,11 @@ public class PinMediaSourceImagesBase64 implements PinMediaSource {
   
   @Schema(name = "source_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("source_type")
-  public SourceTypeEnum getSourceType() {
+  public @Nullable SourceTypeEnum getSourceType() {
     return sourceType;
   }
 
-  public void setSourceType(SourceTypeEnum sourceType) {
+  public void setSourceType(@Nullable SourceTypeEnum sourceType) {
     this.sourceType = sourceType;
   }
 
@@ -130,7 +130,7 @@ public class PinMediaSourceImagesBase64 implements PinMediaSource {
     this.items = items;
   }
 
-  public PinMediaSourceImagesBase64 index(Integer index) {
+  public PinMediaSourceImagesBase64 index(@Nullable Integer index) {
     this.index = index;
     return this;
   }
@@ -140,14 +140,14 @@ public class PinMediaSourceImagesBase64 implements PinMediaSource {
    * minimum: 0
    * @return index
    */
-  @Min(0) 
+  @Min(value = 0) 
   @Schema(name = "index", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("index")
-  public Integer getIndex() {
+  public @Nullable Integer getIndex() {
     return index;
   }
 
-  public void setIndex(Integer index) {
+  public void setIndex(@Nullable Integer index) {
     this.index = index;
   }
 

@@ -9,13 +9,43 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_filters_request
 
 type CatalogsProductGroupCreateRequest* = object
   ## Request object for creating a product group.
   name*: string
-  description*: string
-  isFeatured*: bool ## boolean indicator of whether the product group is being featured or not
+  description*: Option[string]
+  isFeatured*: Option[bool] ## boolean indicator of whether the product group is being featured or not
   filters*: CatalogsProductGroupFiltersRequest
   feedId*: string ## Catalog Feed id pertaining to the catalog product group.
+
+
+# Custom JSON deserialization for CatalogsProductGroupCreateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsProductGroupCreateRequest]): CatalogsProductGroupCreateRequest =
+  result = CatalogsProductGroupCreateRequest()
+  if node.kind == JObject:
+    if node.hasKey("name"):
+      result.name = to(node["name"], string)
+    if node.hasKey("description") and node["description"].kind != JNull:
+      result.description = some(to(node["description"], typeof(result.description.get())))
+    if node.hasKey("is_featured") and node["is_featured"].kind != JNull:
+      result.isFeatured = some(to(node["is_featured"], typeof(result.isFeatured.get())))
+    if node.hasKey("filters"):
+      result.filters = to(node["filters"], CatalogsProductGroupFiltersRequest)
+    if node.hasKey("feed_id"):
+      result.feedId = to(node["feed_id"], string)
+
+# Custom JSON serialization for CatalogsProductGroupCreateRequest with custom field names
+proc `%`*(obj: CatalogsProductGroupCreateRequest): JsonNode =
+  result = newJObject()
+  result["name"] = %obj.name
+  if obj.description.isSome():
+    result["description"] = %obj.description.get()
+  if obj.isFeatured.isSome():
+    result["is_featured"] = %obj.isFeatured.get()
+  result["filters"] = %obj.filters
+  result["feed_id"] = %obj.feedId
+

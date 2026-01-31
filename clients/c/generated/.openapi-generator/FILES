@@ -184,7 +184,6 @@ docs/audience_category.md
 docs/audience_common.md
 docs/audience_create_custom_request.md
 docs/audience_create_request.md
-docs/audience_create_request_1_audience_type.md
 docs/audience_data_party.md
 docs/audience_definition.md
 docs/audience_definition_response.md
@@ -362,7 +361,6 @@ docs/catalogs_items_delete_discontinued_batch_request.md
 docs/catalogs_items_filters.md
 docs/catalogs_items_post_filters.md
 docs/catalogs_items_request.md
-docs/catalogs_items_request_language.md
 docs/catalogs_items_update_batch_request.md
 docs/catalogs_items_upsert_batch_request.md
 docs/catalogs_list_200_response.md
@@ -696,7 +694,6 @@ docs/pin_media_with_videos.md
 docs/pin_promotion_summary_status.md
 docs/pin_update.md
 docs/pin_update_carousel_slots_inner.md
-docs/pins_analytics_metric_types_parameter_inner.md
 docs/pins_list_200_response.md
 docs/pins_save_request.md
 docs/pinterest_tag_event_data.md
@@ -991,8 +988,6 @@ model/audience_create_custom_request.c
 model/audience_create_custom_request.h
 model/audience_create_request.c
 model/audience_create_request.h
-model/audience_create_request_1_audience_type.c
-model/audience_create_request_1_audience_type.h
 model/audience_data_party.c
 model/audience_data_party.h
 model/audience_definition.c
@@ -1347,8 +1342,6 @@ model/catalogs_items_post_filters.c
 model/catalogs_items_post_filters.h
 model/catalogs_items_request.c
 model/catalogs_items_request.h
-model/catalogs_items_request_language.c
-model/catalogs_items_request_language.h
 model/catalogs_items_update_batch_request.c
 model/catalogs_items_update_batch_request.h
 model/catalogs_items_upsert_batch_request.c
@@ -2017,8 +2010,6 @@ model/pin_update.c
 model/pin_update.h
 model/pin_update_carousel_slots_inner.c
 model/pin_update_carousel_slots_inner.h
-model/pins_analytics_metric_types_parameter_inner.c
-model/pins_analytics_metric_types_parameter_inner.h
 model/pins_list_200_response.c
 model/pins_list_200_response.h
 model/pins_save_request.c

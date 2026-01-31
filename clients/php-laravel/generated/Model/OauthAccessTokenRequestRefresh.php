@@ -25,7 +25,6 @@ namespace OpenAPI\Server\Model;
 
 /**
  * OauthAccessTokenRequestRefresh
- * @description A request to exchange a refresh token for a new access token.
  */
 use Crell\Serde\Renaming\Cases;
 use Crell\Serde\Attributes as Serde;
@@ -36,9 +35,6 @@ class OauthAccessTokenRequestRefresh
     /**
     *
     * 
-    * @param string $grantType
-    *
-    * 
     * @param string $refreshToken
     *
     * 
@@ -46,13 +42,16 @@ class OauthAccessTokenRequestRefresh
     *
     * Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.
     * @param bool $refreshOn
+    *
+    * 
+    * @param \OpenAPI\Server\Model\OauthAccessTokenRequestGrantType $grantType
     */
 
     public function __construct(
-        public string $grantType,
         public string $refreshToken,
         public string $scope,
         public bool $refreshOn,
+        public \OpenAPI\Server\Model\OauthAccessTokenRequestGrantType $grantType,
     ) {}
 }
 

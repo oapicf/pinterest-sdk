@@ -66,7 +66,7 @@ class CatalogsCreativeAssetsFeedsCreateRequest
     * @param null | string $catalogId
     *
     * 
-    * @param \OpenAPI\Server\Model\CatalogsFeedsCreateRequestStatus $status
+    * @param \OpenAPI\Server\Model\CatalogsStatus $status
     */
 
     public function __construct(
@@ -76,7 +76,7 @@ class CatalogsCreativeAssetsFeedsCreateRequest
         public \OpenAPI\Server\Model\Country $defaultCountry,
         public string $location,
         public \OpenAPI\Server\Model\CatalogsType $catalogType,
-        public \OpenAPI\Server\Model\CatalogsFeedsCreateRequestStatus $status,
+        public \OpenAPI\Server\Model\CatalogsStatus $status = self::\OpenAPI\Server\Model\CatalogsStatus_ACTIVE,
         public ?\OpenAPI\Server\Model\NullableCurrency $defaultCurrency = null,
         public ?\OpenAPI\Server\Model\CatalogsFeedCredentials $credentials = null,
         public ?\OpenAPI\Server\Model\CatalogsFeedProcessingSchedule $preferredProcessingSchedule = null,

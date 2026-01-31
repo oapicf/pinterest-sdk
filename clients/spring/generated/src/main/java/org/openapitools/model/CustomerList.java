@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * CustomerList
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CustomerList {
 
   private @Nullable String adAccountId;
@@ -50,7 +50,7 @@ public class CustomerList {
     
     UPLOADING("UPLOADING");
 
-    private String value;
+    private final String value;
 
     StatusEnum(String value) {
       this.value = value;
@@ -85,7 +85,7 @@ public class CustomerList {
 
   private @Nullable Object exceptions;
 
-  public CustomerList adAccountId(String adAccountId) {
+  public CustomerList adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -97,15 +97,15 @@ public class CustomerList {
   
   @Schema(name = "ad_account_id", example = "549756359984", description = "Associated ad account ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
-  public CustomerList createdTime(BigDecimal createdTime) {
+  public CustomerList createdTime(@Nullable BigDecimal createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -117,15 +117,15 @@ public class CustomerList {
   @Valid 
   @Schema(name = "created_time", example = "1452208622", description = "Creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
-  public BigDecimal getCreatedTime() {
+  public @Nullable BigDecimal getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(BigDecimal createdTime) {
+  public void setCreatedTime(@Nullable BigDecimal createdTime) {
     this.createdTime = createdTime;
   }
 
-  public CustomerList id(String id) {
+  public CustomerList id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -137,15 +137,15 @@ public class CustomerList {
   
   @Schema(name = "id", example = "643", description = "Customer list ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public CustomerList name(String name) {
+  public CustomerList name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -157,15 +157,15 @@ public class CustomerList {
   
   @Schema(name = "name", example = "The Glengarry Glen Ross leads", description = "Customer list name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public CustomerList numBatches(BigDecimal numBatches) {
+  public CustomerList numBatches(@Nullable BigDecimal numBatches) {
     this.numBatches = numBatches;
     return this;
   }
@@ -177,15 +177,15 @@ public class CustomerList {
   @Valid 
   @Schema(name = "num_batches", example = "2", description = "Total number of list updates.  List creation counts as one batch. Each <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append</a> or <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call counts as another. List creation via the Ads Manager UI could result in more than one batch since the UI breaks up large lists.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("num_batches")
-  public BigDecimal getNumBatches() {
+  public @Nullable BigDecimal getNumBatches() {
     return numBatches;
   }
 
-  public void setNumBatches(BigDecimal numBatches) {
+  public void setNumBatches(@Nullable BigDecimal numBatches) {
     this.numBatches = numBatches;
   }
 
-  public CustomerList numRemovedUserRecords(BigDecimal numRemovedUserRecords) {
+  public CustomerList numRemovedUserRecords(@Nullable BigDecimal numRemovedUserRecords) {
     this.numRemovedUserRecords = numRemovedUserRecords;
     return this;
   }
@@ -197,15 +197,15 @@ public class CustomerList {
   @Valid 
   @Schema(name = "num_removed_user_records", example = "0", description = "Number of removed user records. In a <a href=\"/docs/redoc/#operation/ads_v3_customer_list_remove_handler_PUT\">Remove API</a> call, this counter increases even if the user is not found in the list.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("num_removed_user_records")
-  public BigDecimal getNumRemovedUserRecords() {
+  public @Nullable BigDecimal getNumRemovedUserRecords() {
     return numRemovedUserRecords;
   }
 
-  public void setNumRemovedUserRecords(BigDecimal numRemovedUserRecords) {
+  public void setNumRemovedUserRecords(@Nullable BigDecimal numRemovedUserRecords) {
     this.numRemovedUserRecords = numRemovedUserRecords;
   }
 
-  public CustomerList numUploadedUserRecords(BigDecimal numUploadedUserRecords) {
+  public CustomerList numUploadedUserRecords(@Nullable BigDecimal numUploadedUserRecords) {
     this.numUploadedUserRecords = numUploadedUserRecords;
     return this;
   }
@@ -217,15 +217,15 @@ public class CustomerList {
   @Valid 
   @Schema(name = "num_uploaded_user_records", example = "11", description = "Number of uploaded user records. In an <a href=\"/docs/redoc/#operation/ads_v3_customer_list_add_handler_PUT\">Append API</a> call, this counter increases even if the uploaded user is already in the list.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("num_uploaded_user_records")
-  public BigDecimal getNumUploadedUserRecords() {
+  public @Nullable BigDecimal getNumUploadedUserRecords() {
     return numUploadedUserRecords;
   }
 
-  public void setNumUploadedUserRecords(BigDecimal numUploadedUserRecords) {
+  public void setNumUploadedUserRecords(@Nullable BigDecimal numUploadedUserRecords) {
     this.numUploadedUserRecords = numUploadedUserRecords;
   }
 
-  public CustomerList status(StatusEnum status) {
+  public CustomerList status(@Nullable StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -237,15 +237,15 @@ public class CustomerList {
   
   @Schema(name = "status", example = "PROCESSING", description = "Customer list status. TOO_SMALL - the list has less than 100 Pinterest users.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public StatusEnum getStatus() {
+  public @Nullable StatusEnum getStatus() {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(@Nullable StatusEnum status) {
     this.status = status;
   }
 
-  public CustomerList type(String type) {
+  public CustomerList type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -257,15 +257,15 @@ public class CustomerList {
   
   @Schema(name = "type", example = "customerlist", description = "Always \"customerlist\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public String getType() {
+  public @Nullable String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
-  public CustomerList updatedTime(BigDecimal updatedTime) {
+  public CustomerList updatedTime(@Nullable BigDecimal updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -277,15 +277,15 @@ public class CustomerList {
   @Valid 
   @Schema(name = "updated_time", example = "1461269616", description = "Last update time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")
-  public BigDecimal getUpdatedTime() {
+  public @Nullable BigDecimal getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(BigDecimal updatedTime) {
+  public void setUpdatedTime(@Nullable BigDecimal updatedTime) {
     this.updatedTime = updatedTime;
   }
 
-  public CustomerList exceptions(Object exceptions) {
+  public CustomerList exceptions(@Nullable Object exceptions) {
     this.exceptions = exceptions;
     return this;
   }
@@ -297,11 +297,11 @@ public class CustomerList {
   
   @Schema(name = "exceptions", description = "Customer list errors", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("exceptions")
-  public Object getExceptions() {
+  public @Nullable Object getExceptions() {
     return exceptions;
   }
 
-  public void setExceptions(Object exceptions) {
+  public void setExceptions(@Nullable Object exceptions) {
     this.exceptions = exceptions;
   }
 

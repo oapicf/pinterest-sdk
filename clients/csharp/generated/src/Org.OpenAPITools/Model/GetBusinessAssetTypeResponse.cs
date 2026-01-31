@@ -161,7 +161,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, GetBusinessAssetTypeResponse getBusinessAssetTypeResponse, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(getBusinessAssetTypeResponse.ToString());
+            writer.WriteStringValue(GetBusinessAssetTypeResponseValueConverter.ToJsonValue(getBusinessAssetTypeResponse).ToString());
         }
     }
 
@@ -192,14 +192,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the GetBusinessAssetTypeResponse to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="getBusinessAssetTypeResponse"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, GetBusinessAssetTypeResponse? getBusinessAssetTypeResponse, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(getBusinessAssetTypeResponse?.ToString() ?? "null");
+            writer.WriteStringValue(getBusinessAssetTypeResponse.HasValue ? GetBusinessAssetTypeResponseValueConverter.ToJsonValue(getBusinessAssetTypeResponse.Value).ToString() : "null");
         }
     }
 }

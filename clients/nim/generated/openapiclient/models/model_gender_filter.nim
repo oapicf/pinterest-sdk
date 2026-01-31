@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_product_group_multiple_gender_criteria
 
 type GenderFilter* = object
   ## 
   GENDER*: CatalogsProductGroupMultipleGenderCriteria
+

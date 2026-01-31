@@ -9,11 +9,40 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type Interest* = object
   ## 
-  canonicalUrl*: string
-  id*: string
-  key*: string
-  name*: string
+  canonicalUrl*: Option[string]
+  id*: Option[string]
+  key*: Option[string]
+  name*: Option[string]
+
+
+# Custom JSON deserialization for Interest with custom field names
+proc to*(node: JsonNode, T: typedesc[Interest]): Interest =
+  result = Interest()
+  if node.kind == JObject:
+    if node.hasKey("canonical_url") and node["canonical_url"].kind != JNull:
+      result.canonicalUrl = some(to(node["canonical_url"], typeof(result.canonicalUrl.get())))
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("key") and node["key"].kind != JNull:
+      result.key = some(to(node["key"], typeof(result.key.get())))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+
+# Custom JSON serialization for Interest with custom field names
+proc `%`*(obj: Interest): JsonNode =
+  result = newJObject()
+  if obj.canonicalUrl.isSome():
+    result["canonical_url"] = %obj.canonicalUrl.get()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.key.isSome():
+    result["key"] = %obj.key.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+

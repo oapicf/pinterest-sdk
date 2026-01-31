@@ -41,7 +41,7 @@ MyApp.add_route('GET', '/v5/pins/analytics', {
     {
       "name" => "metric_types",
       "description" => "Pin metric types to get data for.",
-      "dataType" => "Array<pins_analytics_metric_types_parameter_inner>",
+      "dataType" => "Array<String>",
       "collectionFormat" => "csv",
       "paramType" => "query",
     },
@@ -93,7 +93,7 @@ MyApp.add_route('GET', '/v5/pins/{pin_id}/analytics', {
     {
       "name" => "metric_types",
       "description" => "Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;.",
-      "dataType" => "Array<pins_analytics_metric_types_parameter_inner>",
+      "dataType" => "Array<String>",
       "collectionFormat" => "csv",
       "paramType" => "query",
     },

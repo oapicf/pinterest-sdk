@@ -19,7 +19,6 @@ catalogs_hotel_feeds_create_request_t* instantiate_catalogs_hotel_feeds_create_r
 #include "test_catalogs_feeds_create_request_default_locale.c"
 #include "test_catalogs_feed_credentials.c"
 #include "test_catalogs_feed_processing_schedule.c"
-#include "test_catalogs_status.c"
 
 
 catalogs_hotel_feeds_create_request_t* instantiate_catalogs_hotel_feeds_create_request(int include_optional) {
@@ -37,7 +36,7 @@ catalogs_hotel_feeds_create_request_t* instantiate_catalogs_hotel_feeds_create_r
       instantiate_catalogs_feed_processing_schedule(0),
       pinterest_rest_api_catalogs_hotel_feeds_create_request__RETAIL,
       "a",
-      "0"
+      ACTIVE
     );
   } else {
     catalogs_hotel_feeds_create_request = catalogs_hotel_feeds_create_request_create(
@@ -50,7 +49,7 @@ catalogs_hotel_feeds_create_request_t* instantiate_catalogs_hotel_feeds_create_r
       NULL,
       pinterest_rest_api_catalogs_hotel_feeds_create_request__RETAIL,
       "a",
-      "0"
+      ACTIVE
     );
   }
 

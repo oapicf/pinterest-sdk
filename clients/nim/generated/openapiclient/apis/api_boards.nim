@@ -22,19 +22,16 @@ import ../models/model_board
 import ../models/model_board_section
 import ../models/model_board_update
 import ../models/model_error
-import ../models/model_board_sections_list_200_response
-import ../models/model_boards_list_200_response
-import ../models/model_boards_list_pins_200_response
+import ../models/model_board_sections_list200response
+import ../models/model_boards_list200response
+import ../models/model_boards_list_pins200response
 
 const basepath = "https://api.pinterest.com/v5"
 
 template constructResult[T](response: Response): untyped =
   if response.code in {Http200, Http201, Http202, Http204, Http206}:
     try:
-      when name(stripGenericParams(T.typedesc).typedesc) == name(Table):
-        (some(json.to(parseJson(response.body), T.typedesc)), response)
-      else:
-        (some(marshal.to[T](response.body)), response)
+      (some(to(parseJson(response.body), T)), response)
     except JsonParsingError:
       # The server returned a malformed response though the response code is 2XX
       # TODO: need better error handling
@@ -47,120 +44,144 @@ template constructResult[T](response: Response): untyped =
 proc boardSectionsCreate*(httpClient: HttpClient, boardId: string, boardSection: BoardSection, adAccountId: string): (Option[BoardSection], Response) =
   ## Create board section
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & fmt"/boards/{board_id}/sections" & "?" & query_for_api_call, $(%boardSection))
+  let response = httpClient.post(basepath & fmt"/boards/{board_id}/sections" & "?" & url_encoded_query_params, $(%boardSection))
   constructResult[BoardSection](response)
 
 
 proc boardSectionsDelete*(httpClient: HttpClient, boardId: string, sectionId: string, adAccountId: string): Response =
   ## Delete board section
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
-  httpClient.delete(basepath & fmt"/boards/{board_id}/sections/{section_id}" & "?" & query_for_api_call)
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
+  httpClient.delete(basepath & fmt"/boards/{board_id}/sections/{section_id}" & "?" & url_encoded_query_params)
+
 
 
 proc boardSectionsList*(httpClient: HttpClient, boardId: string, adAccountId: string, bookmark: string, pageSize: int): (Option[board_sections_list_200_response], Response) =
   ## List board sections
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/boards/{board_id}/sections" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/boards/{board_id}/sections" & "?" & url_encoded_query_params)
   constructResult[board_sections_list_200_response](response)
 
 
 proc boardSectionsListPins*(httpClient: HttpClient, boardId: string, sectionId: string, adAccountId: string, bookmark: string, pageSize: int): (Option[boards_list_pins_200_response], Response) =
   ## List Pins on board section
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/boards/{board_id}/sections/{section_id}/pins" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/boards/{board_id}/sections/{section_id}/pins" & "?" & url_encoded_query_params)
   constructResult[boards_list_pins_200_response](response)
 
 
 proc boardSectionsUpdate*(httpClient: HttpClient, boardId: string, sectionId: string, boardSection: BoardSection, adAccountId: string): (Option[BoardSection], Response) =
   ## Update board section
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.patch(basepath & fmt"/boards/{board_id}/sections/{section_id}" & "?" & query_for_api_call, $(%boardSection))
+  let response = httpClient.patch(basepath & fmt"/boards/{board_id}/sections/{section_id}" & "?" & url_encoded_query_params, $(%boardSection))
   constructResult[BoardSection](response)
 
 
 proc boardsCreate*(httpClient: HttpClient, board: Board, adAccountId: string): (Option[Board], Response) =
   ## Create board
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.post(basepath & "/boards" & "?" & query_for_api_call, $(%board))
+  let response = httpClient.post(basepath & "/boards" & "?" & url_encoded_query_params, $(%board))
   constructResult[Board](response)
 
 
 proc boardsDelete*(httpClient: HttpClient, boardId: string, adAccountId: string): Response =
   ## Delete board
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
-  httpClient.delete(basepath & fmt"/boards/{board_id}" & "?" & query_for_api_call)
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
+  httpClient.delete(basepath & fmt"/boards/{board_id}" & "?" & url_encoded_query_params)
+
 
 
 proc boardsGet*(httpClient: HttpClient, boardId: string, adAccountId: string): (Option[Board], Response) =
   ## Get board
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/boards/{board_id}" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/boards/{board_id}" & "?" & url_encoded_query_params)
   constructResult[Board](response)
 
 
 proc boardsList*(httpClient: HttpClient, adAccountId: string, bookmark: string, pageSize: int, privacy: string): (Option[boards_list_200_response], Response) =
   ## List boards
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("privacy", $privacy), # Privacy setting for a board.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if $privacy != "":
+    query_params_list.add(("privacy", $privacy))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/boards" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & "/boards" & "?" & url_encoded_query_params)
   constructResult[boards_list_200_response](response)
 
 
 proc boardsListPins*(httpClient: HttpClient, boardId: string, bookmark: string, pageSize: int, creativeTypes: seq[CreativeTypes], adAccountId: string, pinMetrics: bool): (Option[boards_list_pins_200_response], Response) =
   ## List Pins on board
-  let query_for_api_call = encodeQuery([
-    ("bookmark", $bookmark), # Cursor used to fetch the next page of items
-    ("page_size", $pageSize), # Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-    ("creative_types", $creativeTypes.join(",")), # Pin creative types filter. </p><strong>Note:</strong> SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-    ("pin_metrics", $pinMetrics), # Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $bookmark != "":
+    query_params_list.add(("bookmark", $bookmark))
+  if $pageSize != "":
+    query_params_list.add(("page_size", $pageSize))
+  if creativeTypes.len > 0:
+    query_params_list.add(("creative_types", $creativeTypes.join(",")))
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  if $pinMetrics != "":
+    query_params_list.add(("pin_metrics", $pinMetrics))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & fmt"/boards/{board_id}/pins" & "?" & query_for_api_call)
+  let response = httpClient.get(basepath & fmt"/boards/{board_id}/pins" & "?" & url_encoded_query_params)
   constructResult[boards_list_pins_200_response](response)
 
 
 proc boardsUpdate*(httpClient: HttpClient, boardId: string, boardUpdate: BoardUpdate, adAccountId: string): (Option[Board], Response) =
   ## Update board
   httpClient.headers["Content-Type"] = "application/json"
-  let query_for_api_call = encodeQuery([
-    ("ad_account_id", $adAccountId), # Unique identifier of an ad account.
-  ])
+  var query_params_list: seq[(string, string)] = @[]
+  if $adAccountId != "":
+    query_params_list.add(("ad_account_id", $adAccountId))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.patch(basepath & fmt"/boards/{board_id}" & "?" & query_for_api_call, $(%boardUpdate))
+  let response = httpClient.patch(basepath & fmt"/boards/{board_id}" & "?" & url_encoded_query_params, $(%boardUpdate))
   constructResult[Board](response)
 

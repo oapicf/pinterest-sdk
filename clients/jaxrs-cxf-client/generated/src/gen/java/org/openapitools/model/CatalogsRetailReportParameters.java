@@ -1,15 +1,15 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.CatalogsHotelReportParametersReport;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Parameters for retail report
- **/
+ * Parameters for retail report
+ */
 @ApiModel(description="Parameters for retail report")
 
 public class CatalogsRetailReportParameters  {
@@ -45,9 +45,11 @@ RETAIL(String.valueOf("RETAIL"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsHotelReportParametersReport report;
  /**
    * Get catalogType

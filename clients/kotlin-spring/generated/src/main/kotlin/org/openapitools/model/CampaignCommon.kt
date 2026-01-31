@@ -65,7 +65,7 @@ data class CampaignCommon(
 
     @Schema(example = "true", description = "Determine if a campaign has flexible daily budgets setup.")
     @get:JsonProperty("is_flexible_daily_budgets") val isFlexibleDailyBudgets: kotlin.Boolean? = null
-    ) {
+) {
 
 }
 

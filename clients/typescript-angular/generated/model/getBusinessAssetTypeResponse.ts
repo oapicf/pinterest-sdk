@@ -12,16 +12,11 @@
 /**
  * Type of asset.
  */
-export type GetBusinessAssetTypeResponse = 'AD_ACCOUNT' | 'PROFILE' | 'ASSET_GROUP' | 'CONVERSION_TAG';
-
 export const GetBusinessAssetTypeResponse = {
-
-    AdAccount: 'AD_ACCOUNT' as GetBusinessAssetTypeResponse,
-
-    Profile: 'PROFILE' as GetBusinessAssetTypeResponse,
-
-    AssetGroup: 'ASSET_GROUP' as GetBusinessAssetTypeResponse,
-
-    ConversionTag: 'CONVERSION_TAG' as GetBusinessAssetTypeResponse
-};
+    AdAccount: 'AD_ACCOUNT',
+    Profile: 'PROFILE',
+    AssetGroup: 'ASSET_GROUP',
+    ConversionTag: 'CONVERSION_TAG'
+} as const;
+export type GetBusinessAssetTypeResponse = typeof GetBusinessAssetTypeResponse[keyof typeof GetBusinessAssetTypeResponse];
 

@@ -27,7 +27,7 @@ data class PinMediaSourcePinURL(
 
     @Schema(example = "null", description = "This is an affiliate link or sponsored product. The FTC requires disclosure for paid partnerships and affiliate products.")
     @get:JsonProperty("is_affiliate_link") val isAffiliateLink: kotlin.Boolean? = false
-    ) {
+) {
 
     /**
     * 
@@ -41,7 +41,8 @@ data class PinMediaSourcePinURL(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): SourceType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'PinMediaSourcePinURL'")
             }
         }
     }

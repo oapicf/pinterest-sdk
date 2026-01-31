@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * The list of parameter key/value pairs you will need to send with your POST request to upload your media file.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class MediaUploadAllOfUploadParameters {
   public static final String SERIALIZED_NAME_X_AMZ_DATE = "x-amz-date";
   @SerializedName(SERIALIZED_NAME_X_AMZ_DATE)
@@ -303,18 +303,10 @@ public class MediaUploadAllOfUploadParameters {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("x-amz-date");
-    openapiFields.add("x-amz-signature");
-    openapiFields.add("x-amz-security-token");
-    openapiFields.add("x-amz-algorithm");
-    openapiFields.add("key");
-    openapiFields.add("policy");
-    openapiFields.add("x-amz-credential");
-    openapiFields.add("Content-Type");
+    openapiFields = new HashSet<String>(Arrays.asList("x-amz-date", "x-amz-signature", "x-amz-security-token", "x-amz-algorithm", "key", "policy", "x-amz-credential", "Content-Type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -326,7 +318,7 @@ public class MediaUploadAllOfUploadParameters {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MediaUploadAllOfUploadParameters.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in MediaUploadAllOfUploadParameters is not found in the empty JSON string", MediaUploadAllOfUploadParameters.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in MediaUploadAllOfUploadParameters is not found in the empty JSON string", MediaUploadAllOfUploadParameters.openapiRequiredFields.toString()));
         }
       }
 
@@ -334,33 +326,33 @@ public class MediaUploadAllOfUploadParameters {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!MediaUploadAllOfUploadParameters.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `MediaUploadAllOfUploadParameters` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `MediaUploadAllOfUploadParameters` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("x-amz-date") != null && !jsonObj.get("x-amz-date").isJsonNull()) && !jsonObj.get("x-amz-date").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `x-amz-date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("x-amz-date").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `x-amz-date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("x-amz-date").toString()));
       }
       if ((jsonObj.get("x-amz-signature") != null && !jsonObj.get("x-amz-signature").isJsonNull()) && !jsonObj.get("x-amz-signature").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `x-amz-signature` to be a primitive type in the JSON string but got `%s`", jsonObj.get("x-amz-signature").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `x-amz-signature` to be a primitive type in the JSON string but got `%s`", jsonObj.get("x-amz-signature").toString()));
       }
       if ((jsonObj.get("x-amz-security-token") != null && !jsonObj.get("x-amz-security-token").isJsonNull()) && !jsonObj.get("x-amz-security-token").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `x-amz-security-token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("x-amz-security-token").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `x-amz-security-token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("x-amz-security-token").toString()));
       }
       if ((jsonObj.get("x-amz-algorithm") != null && !jsonObj.get("x-amz-algorithm").isJsonNull()) && !jsonObj.get("x-amz-algorithm").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `x-amz-algorithm` to be a primitive type in the JSON string but got `%s`", jsonObj.get("x-amz-algorithm").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `x-amz-algorithm` to be a primitive type in the JSON string but got `%s`", jsonObj.get("x-amz-algorithm").toString()));
       }
       if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
       }
       if ((jsonObj.get("policy") != null && !jsonObj.get("policy").isJsonNull()) && !jsonObj.get("policy").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `policy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("policy").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `policy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("policy").toString()));
       }
       if ((jsonObj.get("x-amz-credential") != null && !jsonObj.get("x-amz-credential").isJsonNull()) && !jsonObj.get("x-amz-credential").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `x-amz-credential` to be a primitive type in the JSON string but got `%s`", jsonObj.get("x-amz-credential").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `x-amz-credential` to be a primitive type in the JSON string but got `%s`", jsonObj.get("x-amz-credential").toString()));
       }
       if ((jsonObj.get("Content-Type") != null && !jsonObj.get("Content-Type").isJsonNull()) && !jsonObj.get("Content-Type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Content-Type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Content-Type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `Content-Type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Content-Type").toString()));
       }
   }
 

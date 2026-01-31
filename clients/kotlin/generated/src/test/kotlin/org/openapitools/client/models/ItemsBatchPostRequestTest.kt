@@ -21,7 +21,6 @@ import io.kotlintest.specs.ShouldSpec
 import org.openapitools.client.models.ItemsBatchPostRequest
 import org.openapitools.client.models.BatchOperation
 import org.openapitools.client.models.CatalogsItemsBatchRequest
-import org.openapitools.client.models.CatalogsItemsRequestLanguage
 import org.openapitools.client.models.CatalogsVerticalBatchRequest
 import org.openapitools.client.models.Country
 import org.openapitools.client.models.ItemDeleteBatchRecord
@@ -31,16 +30,28 @@ class ItemsBatchPostRequestTest : ShouldSpec() {
         // uncomment below to create an instance of ItemsBatchPostRequest
         //val modelInstance = ItemsBatchPostRequest()
 
+        // to test the property `catalogType`
+        should("test catalogType") {
+            // uncomment below to test the property
+            //modelInstance.catalogType shouldBe ("TODO")
+        }
+
         // to test the property `country`
         should("test country") {
             // uncomment below to test the property
             //modelInstance.country shouldBe ("TODO")
         }
 
-        // to test the property `language`
+        // to test the property `language` - We recommend using the CatalogsLocale values.
         should("test language") {
             // uncomment below to test the property
             //modelInstance.language shouldBe ("TODO")
+        }
+
+        // to test the property `items` - Array with catalogs items
+        should("test items") {
+            // uncomment below to test the property
+            //modelInstance.items shouldBe ("TODO")
         }
 
         // to test the property `operation`
@@ -49,10 +60,10 @@ class ItemsBatchPostRequestTest : ShouldSpec() {
             //modelInstance.operation shouldBe ("TODO")
         }
 
-        // to test the property `items` - Array with catalogs items
-        should("test items") {
+        // to test the property `catalogId` - Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
+        should("test catalogId") {
             // uncomment below to test the property
-            //modelInstance.items shouldBe ("TODO")
+            //modelInstance.catalogId shouldBe ("TODO")
         }
 
     }

@@ -20,7 +20,7 @@ namespace OpenAPI
 /*
  * OpenAPIOauthAccessTokenResponseIntegrationRefresh
  *
- * A successful OAuth access token response for the refresh token flow, with an added refresh token.
+ * 
  */
 class OPENAPI_API OpenAPIOauthAccessTokenResponseIntegrationRefresh : public Model
 {
@@ -29,6 +29,8 @@ public:
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 	void WriteJson(JsonWriter& Writer) const final;
 
+	FString RefreshToken;
+	int32 RefreshTokenExpiresIn = 0;
 	enum class ResponseTypeEnum
 	{
 		AuthorizationCode,
@@ -43,8 +45,6 @@ public:
 	FString TokenType = TEXT("bearer");
 	int32 ExpiresIn = 0;
 	FString Scope;
-	FString RefreshToken;
-	int32 RefreshTokenExpiresIn = 0;
 };
 
 }

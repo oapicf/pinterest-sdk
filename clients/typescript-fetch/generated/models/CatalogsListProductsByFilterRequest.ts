@@ -42,13 +42,15 @@ export function CatalogsListProductsByFilterRequestFromJSONTyped(json: any, igno
     if (json == null) {
         return json;
     }
+    if (typeof json !== 'object') {
+        return json;
+    }
     if (instanceOfCatalogsListProductsByFeedBasedFilter(json)) {
         return CatalogsListProductsByFeedBasedFilterFromJSONTyped(json, true);
     }
     if (instanceOfCatalogsVerticalsListProductsByCatalogBasedFilterRequest(json)) {
         return CatalogsVerticalsListProductsByCatalogBasedFilterRequestFromJSONTyped(json, true);
     }
-
     return {} as any;
 }
 
@@ -60,14 +62,15 @@ export function CatalogsListProductsByFilterRequestToJSONTyped(value?: CatalogsL
     if (value == null) {
         return value;
     }
-
+    if (typeof value !== 'object') {
+        return value;
+    }
     if (instanceOfCatalogsListProductsByFeedBasedFilter(value)) {
         return CatalogsListProductsByFeedBasedFilterToJSON(value as CatalogsListProductsByFeedBasedFilter);
     }
     if (instanceOfCatalogsVerticalsListProductsByCatalogBasedFilterRequest(value)) {
         return CatalogsVerticalsListProductsByCatalogBasedFilterRequestToJSON(value as CatalogsVerticalsListProductsByCatalogBasedFilterRequest);
     }
-
     return {};
 }
 

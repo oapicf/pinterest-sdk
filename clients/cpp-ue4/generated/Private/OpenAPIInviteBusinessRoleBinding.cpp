@@ -23,18 +23,6 @@ namespace OpenAPI
 void OpenAPIInviteBusinessRoleBinding::WriteJson(JsonWriter& Writer) const
 {
 	Writer->WriteObjectStart();
-	if (CreatedByBusinessId.IsSet())
-	{
-		Writer->WriteIdentifierPrefix(TEXT("created_by_business_id")); WriteJsonValue(Writer, CreatedByBusinessId.GetValue());
-	}
-	if (CreatedByUserId.IsSet())
-	{
-		Writer->WriteIdentifierPrefix(TEXT("created_by_user_id")); WriteJsonValue(Writer, CreatedByUserId.GetValue());
-	}
-	if (User.IsSet())
-	{
-		Writer->WriteIdentifierPrefix(TEXT("user")); WriteJsonValue(Writer, User.GetValue());
-	}
 	if (Id.IsSet())
 	{
 		Writer->WriteIdentifierPrefix(TEXT("id")); WriteJsonValue(Writer, Id.GetValue());
@@ -47,6 +35,18 @@ void OpenAPIInviteBusinessRoleBinding::WriteJson(JsonWriter& Writer) const
 	{
 		Writer->WriteIdentifierPrefix(TEXT("is_received_invite")); WriteJsonValue(Writer, IsReceivedInvite.GetValue());
 	}
+	if (User.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("user")); WriteJsonValue(Writer, User.GetValue());
+	}
+	if (CreatedByBusinessId.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("created_by_business_id")); WriteJsonValue(Writer, CreatedByBusinessId.GetValue());
+	}
+	if (CreatedByUserId.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("created_by_user_id")); WriteJsonValue(Writer, CreatedByUserId.GetValue());
+	}
 	Writer->WriteObjectEnd();
 }
 
@@ -58,12 +58,12 @@ bool OpenAPIInviteBusinessRoleBinding::FromJson(const TSharedPtr<FJsonValue>& Js
 
 	bool ParseSuccess = true;
 
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("created_by_business_id"), CreatedByBusinessId);
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("created_by_user_id"), CreatedByUserId);
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("user"), User);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("id"), Id);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("invite_data"), InviteData);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("is_received_invite"), IsReceivedInvite);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("user"), User);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("created_by_business_id"), CreatedByBusinessId);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("created_by_user_id"), CreatedByUserId);
 
 	return ParseSuccess;
 }

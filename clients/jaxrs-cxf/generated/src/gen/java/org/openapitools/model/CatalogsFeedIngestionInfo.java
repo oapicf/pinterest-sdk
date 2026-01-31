@@ -10,22 +10,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsFeedIngestionInfo  {
   
-  @ApiModelProperty(value = "The number of ingested products that are in stock.")
  /**
-   * The number of ingested products that are in stock.
-  **/
+  * The number of ingested products that are in stock.
+  */
+  @ApiModelProperty(value = "The number of ingested products that are in stock.")
+
   private Integer IN_STOCK;
 
-  @ApiModelProperty(value = "The number of ingested products that are in out of stock.")
  /**
-   * The number of ingested products that are in out of stock.
-  **/
+  * The number of ingested products that are in out of stock.
+  */
+  @ApiModelProperty(value = "The number of ingested products that are in out of stock.")
+
   private Integer OUT_OF_STOCK;
 
-  @ApiModelProperty(value = "The number of ingested products that are in preorder.")
  /**
-   * The number of ingested products that are in preorder.
-  **/
+  * The number of ingested products that are in preorder.
+  */
+  @ApiModelProperty(value = "The number of ingested products that are in preorder.")
+
   private Integer PREORDER;
  /**
    * The number of ingested products that are in stock.

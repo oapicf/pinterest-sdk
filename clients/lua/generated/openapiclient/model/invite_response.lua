@@ -19,17 +19,17 @@ local function cast_invite_response(t)
 	return setmetatable(t, invite_response_mt)
 end
 
-local function new_invite_response(assets_summary, business_roles, created_by_business, created_by_user, created_time, id, invite_data, is_received_invite, user)
+local function new_invite_response(id, invite_data, is_received_invite, user, assets_summary, business_roles, created_by_business, created_by_user, created_time)
 	return cast_invite_response({
+		["id"] = id;
+		["invite_data"] = invite_data;
+		["is_received_invite"] = is_received_invite;
+		["user"] = user;
 		["assets_summary"] = assets_summary;
 		["business_roles"] = business_roles;
 		["created_by_business"] = created_by_business;
 		["created_by_user"] = created_by_user;
 		["created_time"] = created_time;
-		["id"] = id;
-		["invite_data"] = invite_data;
-		["is_received_invite"] = is_received_invite;
-		["user"] = user;
 	})
 end
 

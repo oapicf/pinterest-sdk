@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_product_group_promotion_create_request_element
 
@@ -16,3 +18,25 @@ type ProductGroupPromotionCreateRequest* = object
   ## 
   adGroupId*: string ## ID of the Ad Group the Product Group Promotion belongs to.
   productGroupPromotion*: seq[ProductGroupPromotionCreateRequestElement]
+
+
+# Custom JSON deserialization for ProductGroupPromotionCreateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[ProductGroupPromotionCreateRequest]): ProductGroupPromotionCreateRequest =
+  result = ProductGroupPromotionCreateRequest()
+  if node.kind == JObject:
+    if node.hasKey("ad_group_id"):
+      result.adGroupId = to(node["ad_group_id"], string)
+    if node.hasKey("product_group_promotion"):
+      # Array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["product_group_promotion"]
+      if arrayNode.kind == JArray:
+        result.productGroupPromotion = @[]
+        for item in arrayNode.items:
+          result.productGroupPromotion.add(to(item, ProductGroupPromotionCreateRequestElement))
+
+# Custom JSON serialization for ProductGroupPromotionCreateRequest with custom field names
+proc `%`*(obj: ProductGroupPromotionCreateRequest): JsonNode =
+  result = newJObject()
+  result["ad_group_id"] = %obj.adGroupId
+  result["product_group_promotion"] = %obj.productGroupPromotion
+

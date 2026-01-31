@@ -12,7 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreativeAssetsIdFilter  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsProductGroupMultipleStringCriteria CREATIVE_ASSETS_ID;
  /**
    * Get CREATIVE_ASSETS_ID

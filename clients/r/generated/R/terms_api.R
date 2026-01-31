@@ -113,6 +113,9 @@ TermsApi <- R6::R6Class(
         stop("Missing required parameter `terms`.")
       }
 
+      if (!missing(`terms`) && is.null(`terms`)) {
+        stop("Invalid value for `terms` when calling TermsApi$TermsRelatedList, `terms` is not nullable")
+      }
 
       # explore
       for (query_item in `terms`) {
@@ -217,11 +220,17 @@ TermsApi <- R6::R6Class(
         stop("Missing required parameter `term`.")
       }
 
+      if (!missing(`term`) && is.null(`term`)) {
+        stop("Invalid value for `term` when calling TermsApi$TermsSuggestedList, `term` is not nullable")
+      }
 
-      if (`limit` > 10) {
+      if (!missing(`limit`) && is.null(`limit`)) {
+        stop("Invalid value for `limit` when calling TermsApi$TermsSuggestedList, `limit` is not nullable")
+      }
+      if (!is.null(`limit`) && `limit` >  10) {
         stop("Invalid value for `limit` when calling TermsApi$TermsSuggestedList, must be smaller than or equal to 10.")
       }
-      if (`limit` < 1) {
+      if (!is.null(`limit`) && `limit` <  1) {
         stop("Invalid value for `limit` when calling TermsApi$TermsSuggestedList, must be bigger than or equal to 1.")
       }
 

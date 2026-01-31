@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "accesses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                accesses = new Option<List<DeletePartnerAssetAccessBodyAccessesInner>?>(JsonSerializer.Deserialize<List<DeletePartnerAssetAccessBodyAccessesInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            accesses = new Option<List<DeletePartnerAssetAccessBodyAccessesInner>?>(JsonSerializer.Deserialize<List<DeletePartnerAssetAccessBodyAccessesInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -250,8 +250,7 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "owner":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                owner = new Option<AdAccountOwner?>(JsonSerializer.Deserialize<AdAccountOwner>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            owner = new Option<AdAccountOwner?>(JsonSerializer.Deserialize<AdAccountOwner>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "country":
                             string? countryRawValue = utf8JsonReader.GetString();
@@ -264,16 +263,13 @@ namespace Org.OpenAPITools.Model
                                 currency = new Option<Currency?>(CurrencyValueConverter.FromStringOrDefault(currencyRawValue));
                             break;
                         case "permissions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                permissions = new Option<List<BusinessAccessRole>?>(JsonSerializer.Deserialize<List<BusinessAccessRole>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            permissions = new Option<List<BusinessAccessRole>?>(JsonSerializer.Deserialize<List<BusinessAccessRole>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "created_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "updated_time":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedTime = new Option<int?>(utf8JsonReader.GetInt32());
+                            updatedTime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

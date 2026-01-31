@@ -1,7 +1,6 @@
 package apimodels;
 
 import apimodels.BaseInviteDataResponseInviteData;
-import apimodels.BusinessAccessUserSummary;
 import com.fasterxml.jackson.annotation.*;
 import java.util.Set;
 import javax.validation.*;
@@ -9,24 +8,11 @@ import java.util.Objects;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 /**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+ * InviteBusinessRoleBinding
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2025-05-10T05:39:37.342741110Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-01-26T05:36:31.031329119Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class InviteBusinessRoleBinding   {
-  @JsonProperty("created_by_business_id")
-  
-  private String createdByBusinessId;
-
-  @JsonProperty("created_by_user_id")
-  
-  private String createdByUserId;
-
-  @JsonProperty("user")
-  @Valid
-
-  private BusinessAccessUserSummary user;
-
   @JsonProperty("id")
   @Pattern(regexp="^\\d+$")
 
@@ -41,56 +27,17 @@ public class InviteBusinessRoleBinding   {
   
   private Boolean isReceivedInvite;
 
-  public InviteBusinessRoleBinding createdByBusinessId(String createdByBusinessId) {
-    this.createdByBusinessId = createdByBusinessId;
-    return this;
-  }
+  @JsonProperty("user")
+  
+  private Object user;
 
-   /**
-   * Unique identifier for the business that created the invite/request.
-   * @return createdByBusinessId
-  **/
-  public String getCreatedByBusinessId() {
-    return createdByBusinessId;
-  }
+  @JsonProperty("created_by_business_id")
+  
+  private String createdByBusinessId;
 
-  public void setCreatedByBusinessId(String createdByBusinessId) {
-    this.createdByBusinessId = createdByBusinessId;
-  }
-
-  public InviteBusinessRoleBinding createdByUserId(String createdByUserId) {
-    this.createdByUserId = createdByUserId;
-    return this;
-  }
-
-   /**
-   * Unique identifier for the user that created the invite/request.
-   * @return createdByUserId
-  **/
-  public String getCreatedByUserId() {
-    return createdByUserId;
-  }
-
-  public void setCreatedByUserId(String createdByUserId) {
-    this.createdByUserId = createdByUserId;
-  }
-
-  public InviteBusinessRoleBinding user(BusinessAccessUserSummary user) {
-    this.user = user;
-    return this;
-  }
-
-   /**
-   * Metadata for the user that updated the invite/request.
-   * @return user
-  **/
-  public BusinessAccessUserSummary getUser() {
-    return user;
-  }
-
-  public void setUser(BusinessAccessUserSummary user) {
-    this.user = user;
-  }
+  @JsonProperty("created_by_user_id")
+  
+  private String createdByUserId;
 
   public InviteBusinessRoleBinding id(String id) {
     this.id = id;
@@ -143,6 +90,57 @@ public class InviteBusinessRoleBinding   {
     this.isReceivedInvite = isReceivedInvite;
   }
 
+  public InviteBusinessRoleBinding user(Object user) {
+    this.user = user;
+    return this;
+  }
+
+   /**
+   * Metadata for the user that updated the invite/request.
+   * @return user
+  **/
+  public Object getUser() {
+    return user;
+  }
+
+  public void setUser(Object user) {
+    this.user = user;
+  }
+
+  public InviteBusinessRoleBinding createdByBusinessId(String createdByBusinessId) {
+    this.createdByBusinessId = createdByBusinessId;
+    return this;
+  }
+
+   /**
+   * Unique identifier for the business that created the invite/request.
+   * @return createdByBusinessId
+  **/
+  public String getCreatedByBusinessId() {
+    return createdByBusinessId;
+  }
+
+  public void setCreatedByBusinessId(String createdByBusinessId) {
+    this.createdByBusinessId = createdByBusinessId;
+  }
+
+  public InviteBusinessRoleBinding createdByUserId(String createdByUserId) {
+    this.createdByUserId = createdByUserId;
+    return this;
+  }
+
+   /**
+   * Unique identifier for the user that created the invite/request.
+   * @return createdByUserId
+  **/
+  public String getCreatedByUserId() {
+    return createdByUserId;
+  }
+
+  public void setCreatedByUserId(String createdByUserId) {
+    this.createdByUserId = createdByUserId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -153,17 +151,17 @@ public class InviteBusinessRoleBinding   {
       return false;
     }
     InviteBusinessRoleBinding inviteBusinessRoleBinding = (InviteBusinessRoleBinding) o;
-    return Objects.equals(createdByBusinessId, inviteBusinessRoleBinding.createdByBusinessId) &&
-        Objects.equals(createdByUserId, inviteBusinessRoleBinding.createdByUserId) &&
-        Objects.equals(user, inviteBusinessRoleBinding.user) &&
-        Objects.equals(id, inviteBusinessRoleBinding.id) &&
+    return Objects.equals(id, inviteBusinessRoleBinding.id) &&
         Objects.equals(inviteData, inviteBusinessRoleBinding.inviteData) &&
-        Objects.equals(isReceivedInvite, inviteBusinessRoleBinding.isReceivedInvite);
+        Objects.equals(isReceivedInvite, inviteBusinessRoleBinding.isReceivedInvite) &&
+        Objects.equals(user, inviteBusinessRoleBinding.user) &&
+        Objects.equals(createdByBusinessId, inviteBusinessRoleBinding.createdByBusinessId) &&
+        Objects.equals(createdByUserId, inviteBusinessRoleBinding.createdByUserId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdByBusinessId, createdByUserId, user, id, inviteData, isReceivedInvite);
+    return Objects.hash(id, inviteData, isReceivedInvite, user, createdByBusinessId, createdByUserId);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
@@ -172,12 +170,12 @@ public class InviteBusinessRoleBinding   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InviteBusinessRoleBinding {\n");
     
-    sb.append("    createdByBusinessId: ").append(toIndentedString(createdByBusinessId)).append("\n");
-    sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
     sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
+    sb.append("    user: ").append(toIndentedString(user)).append("\n");
+    sb.append("    createdByBusinessId: ").append(toIndentedString(createdByBusinessId)).append("\n");
+    sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

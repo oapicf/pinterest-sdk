@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("PinAnalyticsMetricsResponse_daily_metrics_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinAnalyticsMetricsResponseDailyMetricsInner {
 
   private @Nullable DataStatus dataStatus;
@@ -36,7 +36,7 @@ public class PinAnalyticsMetricsResponseDailyMetricsInner {
   @Valid
   private Map<String, BigDecimal> metrics = new HashMap<>();
 
-  public PinAnalyticsMetricsResponseDailyMetricsInner dataStatus(DataStatus dataStatus) {
+  public PinAnalyticsMetricsResponseDailyMetricsInner dataStatus(@Nullable DataStatus dataStatus) {
     this.dataStatus = dataStatus;
     return this;
   }
@@ -48,15 +48,15 @@ public class PinAnalyticsMetricsResponseDailyMetricsInner {
   @Valid 
   @Schema(name = "data_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data_status")
-  public DataStatus getDataStatus() {
+  public @Nullable DataStatus getDataStatus() {
     return dataStatus;
   }
 
-  public void setDataStatus(DataStatus dataStatus) {
+  public void setDataStatus(@Nullable DataStatus dataStatus) {
     this.dataStatus = dataStatus;
   }
 
-  public PinAnalyticsMetricsResponseDailyMetricsInner date(String date) {
+  public PinAnalyticsMetricsResponseDailyMetricsInner date(@Nullable String date) {
     this.date = date;
     return this;
   }
@@ -68,11 +68,11 @@ public class PinAnalyticsMetricsResponseDailyMetricsInner {
   
   @Schema(name = "date", example = "2019-12-01", description = "Metrics date (UTC): YYYY-MM-DD.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("date")
-  public String getDate() {
+  public @Nullable String getDate() {
     return date;
   }
 
-  public void setDate(String date) {
+  public void setDate(@Nullable String date) {
     this.date = date;
   }
 

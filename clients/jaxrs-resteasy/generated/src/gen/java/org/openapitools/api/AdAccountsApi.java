@@ -146,7 +146,7 @@ import javax.validation.Valid;
 
 
 @io.swagger.annotations.Api(description = "the ad_accounts API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2025-05-10T05:40:40.818990358Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-01-26T05:37:39.071651219Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdAccountsApi  {
 
     @Inject AdAccountsApiService service;

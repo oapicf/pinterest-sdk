@@ -12,12 +12,9 @@
 /**
  * Specifies if the partner is internal or external.
  */
-export type BusinessRoleCheckMode = 'INTERNAL' | 'EXTERNAL';
-
 export const BusinessRoleCheckMode = {
-
-    Internal: 'INTERNAL' as BusinessRoleCheckMode,
-
-    External: 'EXTERNAL' as BusinessRoleCheckMode
-};
+    Internal: 'INTERNAL',
+    External: 'EXTERNAL'
+} as const;
+export type BusinessRoleCheckMode = typeof BusinessRoleCheckMode[keyof typeof BusinessRoleCheckMode];
 

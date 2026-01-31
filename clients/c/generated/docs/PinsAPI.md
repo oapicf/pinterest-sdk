@@ -30,7 +30,7 @@ Name | Type | Description  | Notes
 **pin_ids** | **[list_t](char.md) \*** | List of Pin IDs. | 
 **start_date** | **char** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
 **end_date** | **char** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
-**metric_types** | **[list_t](pins_analytics_metric_types_parameter_inner.md) \*** | Pin metric types to get data for. | 
+**metric_types** | **[list_t](char.md) \*** | Pin metric types to get data for. | 
 **app_types** | **pinterest_rest_api_multiPinsAnalytics_app_types_e** | Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 **pin_id** | **char \*** | Unique identifier of a Pin. | 
 **start_date** | **char** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
 **end_date** | **char** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
-**metric_types** | **[list_t](pins_analytics_metric_types_parameter_inner.md) \*** | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
+**metric_types** | **[list_t](char.md) \*** | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
 **app_types** | **pinterest_rest_api_pinsAnalytics_app_types_e** | Apps or devices to get data for, default is all. | [optional] [default to &#39;ALL&#39;]
 **split_field** | **pinterest_rest_api_pinsAnalytics_split_field_e** | How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to &#39;NO_SPLIT&#39;]
 **ad_account_id** | **char \*** | Unique identifier of an ad account. | [optional] 

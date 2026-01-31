@@ -9,16 +9,46 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_items_filter
 import model_catalogs_hotel_items_filter
 import model_catalogs_retail_items_filter
 import model_catalogs_type
 
+# OneOf type
+type CatalogsItemsFiltersKind* {.pure.} = enum
+  CatalogsRetailItemsFilterVariant
+  CatalogsHotelItemsFilterVariant
+  CatalogsCreativeAssetsItemsFilterVariant
+
 type CatalogsItemsFilters* = object
   ## 
-  catalogType*: CatalogsType
-  itemIds*: seq[string]
-  catalogId*: string ## Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog
-  hotelIds*: seq[string]
-  creativeAssetsIds*: seq[string]
+  case kind*: CatalogsItemsFiltersKind
+  of CatalogsItemsFiltersKind.CatalogsRetailItemsFilterVariant:
+    CatalogsRetailItemsFilterValue*: CatalogsRetailItemsFilter
+  of CatalogsItemsFiltersKind.CatalogsHotelItemsFilterVariant:
+    CatalogsHotelItemsFilterValue*: CatalogsHotelItemsFilter
+  of CatalogsItemsFiltersKind.CatalogsCreativeAssetsItemsFilterVariant:
+    CatalogsCreativeAssetsItemsFilterValue*: CatalogsCreativeAssetsItemsFilter
+
+proc to*(node: JsonNode, T: typedesc[CatalogsItemsFilters]): CatalogsItemsFilters =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsItemsFilters(kind: CatalogsItemsFiltersKind.CatalogsRetailItemsFilterVariant, CatalogsRetailItemsFilterValue: to(node, CatalogsRetailItemsFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsRetailItemsFilter: ", e.msg
+  try:
+    return CatalogsItemsFilters(kind: CatalogsItemsFiltersKind.CatalogsHotelItemsFilterVariant, CatalogsHotelItemsFilterValue: to(node, CatalogsHotelItemsFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsHotelItemsFilter: ", e.msg
+  try:
+    return CatalogsItemsFilters(kind: CatalogsItemsFiltersKind.CatalogsCreativeAssetsItemsFilterVariant, CatalogsCreativeAssetsItemsFilterValue: to(node, CatalogsCreativeAssetsItemsFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreativeAssetsItemsFilter: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsItemsFilters. JSON: " & $node)
+

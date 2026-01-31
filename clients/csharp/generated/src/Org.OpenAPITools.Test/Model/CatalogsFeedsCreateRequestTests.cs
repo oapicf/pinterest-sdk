@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -56,15 +55,6 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'DefaultCurrency'
-        /// </summary>
-        [Fact]
-        public void DefaultCurrencyTest()
-        {
-            // TODO unit test for the property 'DefaultCurrency'
-        }
-
-        /// <summary>
         /// Test the property 'Name'
         /// </summary>
         [Fact]
@@ -83,6 +73,24 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'Location'
+        /// </summary>
+        [Fact]
+        public void LocationTest()
+        {
+            // TODO unit test for the property 'Location'
+        }
+
+        /// <summary>
+        /// Test the property 'DefaultCurrency'
+        /// </summary>
+        [Fact]
+        public void DefaultCurrencyTest()
+        {
+            // TODO unit test for the property 'DefaultCurrency'
+        }
+
+        /// <summary>
         /// Test the property 'DefaultLocale'
         /// </summary>
         [Fact]
@@ -98,15 +106,6 @@ namespace Org.OpenAPITools.Test.Model
         public void CredentialsTest()
         {
             // TODO unit test for the property 'Credentials'
-        }
-
-        /// <summary>
-        /// Test the property 'Location'
-        /// </summary>
-        [Fact]
-        public void LocationTest()
-        {
-            // TODO unit test for the property 'Location'
         }
 
         /// <summary>

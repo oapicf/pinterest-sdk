@@ -145,8 +145,7 @@ namespace Org.OpenAPITools.Model
                             imageCoverUrl = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "pin_thumbnail_urls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pinThumbnailUrls = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            pinThumbnailUrls = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

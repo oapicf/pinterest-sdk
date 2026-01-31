@@ -132,7 +132,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AdvancedAuctionOperation advancedAuctionOperation, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(advancedAuctionOperation.ToString());
+            writer.WriteStringValue(AdvancedAuctionOperationValueConverter.ToJsonValue(advancedAuctionOperation).ToString());
         }
     }
 
@@ -163,14 +163,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the AdvancedAuctionOperation to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="advancedAuctionOperation"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AdvancedAuctionOperation? advancedAuctionOperation, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(advancedAuctionOperation?.ToString() ?? "null");
+            writer.WriteStringValue(advancedAuctionOperation.HasValue ? AdvancedAuctionOperationValueConverter.ToJsonValue(advancedAuctionOperation.Value).ToString() : "null");
         }
     }
 }

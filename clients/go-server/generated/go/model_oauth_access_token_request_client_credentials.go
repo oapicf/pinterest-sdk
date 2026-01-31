@@ -14,19 +14,18 @@ package openapi
 
 
 
-// OauthAccessTokenRequestClientCredentials - A request to receive a client token.
 type OauthAccessTokenRequestClientCredentials struct {
 
-	GrantType string `json:"grant_type"`
-
 	Scope string `json:"scope"`
+
+	GrantType string `json:"grant_type"`
 }
 
 // AssertOauthAccessTokenRequestClientCredentialsRequired checks if the required fields are not zero-ed
 func AssertOauthAccessTokenRequestClientCredentialsRequired(obj OauthAccessTokenRequestClientCredentials) error {
 	elements := map[string]interface{}{
-		"grant_type": obj.GrantType,
 		"scope": obj.Scope,
+		"grant_type": obj.GrantType,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

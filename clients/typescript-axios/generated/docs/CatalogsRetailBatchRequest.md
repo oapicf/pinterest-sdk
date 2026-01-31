@@ -1,0 +1,27 @@
+# CatalogsRetailBatchRequest
+
+A request object that can have multiple operations on a single retail batch
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**catalog_type** | **string** |  | [default to undefined]
+**country** | [**Country**](Country.md) |  | [default to undefined]
+**language** | **string** | We recommend using the CatalogsLocale values. | [default to undefined]
+**items** | [**Array&lt;CatalogsRetailBatchRequestItemsInner&gt;**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations | [default to undefined]
+
+## Example
+
+```typescript
+import { CatalogsRetailBatchRequest } from './api';
+
+const instance: CatalogsRetailBatchRequest = {
+    catalog_type,
+    country,
+    language,
+    items,
+};
+```
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

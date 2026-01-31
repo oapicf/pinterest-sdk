@@ -10,135 +10,179 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsItemValidationWarnings  {
   
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails AD_LINK_FORMAT_WARNING;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails AD_LINK_SAME_AS_LINK;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails ADDITIONAL_IMAGE_LINK_WARNING;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails ADWORDS_FORMAT_WARNING;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails ADWORDS_SAME_AS_LINK;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails AGE_GROUP_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails SIZE_SYSTEM_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails ANDROID_DEEP_LINK_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails AVAILABILITY_DATE_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails COUNTRY_DOES_NOT_MAP_TO_CURRENCY;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails CUSTOM_LABEL_LENGTH_TOO_LONG;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails DESCRIPTION_LENGTH_TOO_LONG;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails EXPIRATION_DATE_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails GENDER_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails GTIN_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails IMAGE_LINK_WARNING;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails IOS_DEEP_LINK_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails IS_BUNDLE_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails LINK_FORMAT_WARNING;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails MIN_AD_PRICE_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails MPN_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails MULTIPACK_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails OPTIONAL_CONDITION_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails OPTIONAL_CONDITION_MISSING;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails OPTIONAL_PRODUCT_CATEGORY_MISSING;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails PRODUCT_CATEGORY_DEPTH_WARNING;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails PRODUCT_TYPE_LENGTH_TOO_LONG;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails SALES_PRICE_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails SALES_PRICE_TOO_LOW;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails SALES_PRICE_TOO_HIGH;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails SALE_DATE_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails SHIPPING_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails SHIPPING_HEIGHT_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails SHIPPING_WEIGHT_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails SHIPPING_WIDTH_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails SIZE_TYPE_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails TAX_INVALID;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails TITLE_LENGTH_TOO_LONG;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails TOO_MANY_ADDITIONAL_IMAGE_LINKS;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails UTM_SOURCE_AUTO_CORRECTED;
 
   @ApiModelProperty(value = "")
+
   private CatalogsItemValidationDetails WEIGHT_UNIT_INVALID;
  /**
    * Get AD_LINK_FORMAT_WARNING

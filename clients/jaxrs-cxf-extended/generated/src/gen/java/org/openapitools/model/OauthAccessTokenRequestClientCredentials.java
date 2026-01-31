@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -11,13 +10,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-/**
- * A request to receive a client token.
- */
-@ApiModel(description="A request to receive a client token.")
-
 public class OauthAccessTokenRequestClientCredentials  {
   
+  @ApiModelProperty(required = true, value = "")
+  private String scope;
+
 public enum GrantTypeEnum {
 
     @JsonProperty("authorization_code") AUTHORIZATION_CODE(String.valueOf("authorization_code")),
@@ -51,34 +48,6 @@ public enum GrantTypeEnum {
 
   @ApiModelProperty(required = true, value = "")
   private GrantTypeEnum grantType;
-
-  @ApiModelProperty(required = true, value = "")
-  private String scope;
- /**
-  * Get grantType
-  * @return grantType
-  */
-  @JsonProperty("grant_type")
-  @NotNull
-  public String getGrantType() {
-    return grantType == null ? null : grantType.value();
-  }
-
-  /**
-   * Sets the <code>grantType</code> property.
-   */
- public void setGrantType(GrantTypeEnum grantType) {
-    this.grantType = grantType;
-  }
-
-  /**
-   * Sets the <code>grantType</code> property.
-   */
-  public OauthAccessTokenRequestClientCredentials grantType(GrantTypeEnum grantType) {
-    this.grantType = grantType;
-    return this;
-  }
-
  /**
   * Get scope
   * @return scope
@@ -104,6 +73,31 @@ public enum GrantTypeEnum {
     return this;
   }
 
+ /**
+  * Get grantType
+  * @return grantType
+  */
+  @JsonProperty("grant_type")
+  @NotNull
+  public String getGrantType() {
+    return grantType == null ? null : grantType.value();
+  }
+
+  /**
+   * Sets the <code>grantType</code> property.
+   */
+ public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+  }
+
+  /**
+   * Sets the <code>grantType</code> property.
+   */
+  public OauthAccessTokenRequestClientCredentials grantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,13 +108,13 @@ public enum GrantTypeEnum {
       return false;
     }
     OauthAccessTokenRequestClientCredentials oauthAccessTokenRequestClientCredentials = (OauthAccessTokenRequestClientCredentials) o;
-    return Objects.equals(this.grantType, oauthAccessTokenRequestClientCredentials.grantType) &&
-        Objects.equals(this.scope, oauthAccessTokenRequestClientCredentials.scope);
+    return Objects.equals(this.scope, oauthAccessTokenRequestClientCredentials.scope) &&
+        Objects.equals(this.grantType, oauthAccessTokenRequestClientCredentials.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, scope);
+    return Objects.hash(scope, grantType);
   }
 
   @Override
@@ -128,8 +122,8 @@ public enum GrantTypeEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestClientCredentials {\n");
     
-    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

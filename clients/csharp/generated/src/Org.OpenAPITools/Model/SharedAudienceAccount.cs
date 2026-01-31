@@ -239,8 +239,7 @@ namespace Org.OpenAPITools.Model
                                 accountType = new Option<SharedAudienceAccount.AccountTypeEnum?>(SharedAudienceAccount.AccountTypeEnumFromStringOrDefault(accountTypeRawValue));
                             break;
                         case "shared_on_timestamp":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sharedOnTimestamp = new Option<int?>(utf8JsonReader.GetInt32());
+                            sharedOnTimestamp = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

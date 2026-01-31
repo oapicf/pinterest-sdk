@@ -13,49 +13,58 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ConversionTagResponse  {
   
-  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
  /**
-   * Ad account ID.
-  **/
+  * Ad account ID.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Ad account ID.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "<script type=text/javascript> [...]", value = "Tag code snippet.")
  /**
-   * Tag code snippet.
-  **/
+  * Tag code snippet.
+  */
+  @ApiModelProperty(example = "<script type=text/javascript> [...]", value = "Tag code snippet.")
+
   private String codeSnippet;
 
   @ApiModelProperty(value = "")
+
   private EnhancedMatchStatusType enhancedMatchStatus;
 
-  @ApiModelProperty(example = "2617998078212", value = "Tag ID.")
  /**
-   * Tag ID.
-  **/
+  * Tag ID.
+  */
+  @ApiModelProperty(example = "2617998078212", value = "Tag ID.")
+
   private String id;
 
-  @ApiModelProperty(example = "1599030000000", value = "Time for the last event fired.")
  /**
-   * Time for the last event fired.
-  **/
+  * Time for the last event fired.
+  */
+  @ApiModelProperty(example = "1599030000000", value = "Time for the last event fired.")
+
   private BigDecimal lastFiredTimeMs;
 
-  @ApiModelProperty(example = "ACME Checkout Test Tag", value = "Conversion tag name.")
  /**
-   * Conversion tag name.
-  **/
+  * Conversion tag name.
+  */
+  @ApiModelProperty(example = "ACME Checkout Test Tag", value = "Conversion tag name.")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private EntityStatus status;
 
-  @ApiModelProperty(example = "3", value = "Version number.")
  /**
-   * Version number.
-  **/
+  * Version number.
+  */
+  @ApiModelProperty(example = "3", value = "Version number.")
+
   private String version;
 
   @ApiModelProperty(value = "")
+
   private ConversionTagConfigs configs;
  /**
    * Ad account ID.

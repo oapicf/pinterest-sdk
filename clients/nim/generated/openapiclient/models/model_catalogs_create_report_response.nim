@@ -9,8 +9,11 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogsCreateReportResponse* = object
   ## 
-  token*: string ## Token to be used to get the report
+  token*: Option[string] ## Token to be used to get the report
+

@@ -1,7 +1,6 @@
 package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;

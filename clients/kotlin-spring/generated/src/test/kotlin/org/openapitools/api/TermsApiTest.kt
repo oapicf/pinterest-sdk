@@ -18,6 +18,7 @@ class TermsApiTest {
     @Test
     fun termsRelatedListTest() {
         val terms: kotlin.collections.List<kotlin.String> = TODO()
+        
         val response: ResponseEntity<RelatedTerms> = api.termsRelatedList(terms)
 
         // TODO: test validations
@@ -33,6 +34,7 @@ class TermsApiTest {
     fun termsSuggestedListTest() {
         val term: kotlin.String = TODO()
         val limit: kotlin.Int = TODO()
+        
         val response: ResponseEntity<List<kotlin.String>> = api.termsSuggestedList(term, limit)
 
         // TODO: test validations

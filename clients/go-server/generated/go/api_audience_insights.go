@@ -52,17 +52,39 @@ func NewAudienceInsightsAPIController(s AudienceInsightsAPIServicer, opts ...Aud
 func (c *AudienceInsightsAPIController) Routes() Routes {
 	return Routes{
 		"AudienceInsightsGet": Route{
+			"AudienceInsightsGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/audience_insights",
 			c.AudienceInsightsGet,
 		},
 		"AudienceInsightsScopeAndTypeGet": Route{
+			"AudienceInsightsScopeAndTypeGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/insights/audiences",
 			c.AudienceInsightsScopeAndTypeGet,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the AudienceInsightsAPIController
+func (c *AudienceInsightsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"AudienceInsightsGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/audience_insights",
+			c.AudienceInsightsGet,
+		},
+		Route{
+			"AudienceInsightsScopeAndTypeGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/insights/audiences",
+			c.AudienceInsightsScopeAndTypeGet,
+		},
+	}
+}
+
+
 
 // AudienceInsightsGet - Get audience insights
 func (c *AudienceInsightsAPIController) AudienceInsightsGet(w http.ResponseWriter, r *http.Request) {

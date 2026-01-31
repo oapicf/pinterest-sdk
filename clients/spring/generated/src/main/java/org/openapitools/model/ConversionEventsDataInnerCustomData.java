@@ -28,7 +28,7 @@ import javax.annotation.Generated;
 
 @Schema(name = "ConversionEvents_data_inner_custom_data", description = "Object containing other custom data.")
 @JsonTypeName("ConversionEvents_data_inner_custom_data")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventsDataInnerCustomData {
 
   private JsonNullable<String> currency = JsonNullable.<String>undefined();
@@ -213,7 +213,7 @@ public class ConversionEventsDataInnerCustomData {
     this.contents = contents;
   }
 
-  public ConversionEventsDataInnerCustomData numItems(Long numItems) {
+  public ConversionEventsDataInnerCustomData numItems(@Nullable Long numItems) {
     this.numItems = numItems;
     return this;
   }
@@ -225,11 +225,11 @@ public class ConversionEventsDataInnerCustomData {
   
   @Schema(name = "num_items", example = "2", description = "Total number of products of the event. For example, the total number of items purchased in a checkout event. We recommend using this if you are a merchant for AddToCart and Checkouts. For detail, please check <a href=\"https://help.pinterest.com/en/business/article/before-you-get-started-with-catalogs\" target=\"_blank\">here</a> (Install the Pinterest tag section).", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("num_items")
-  public Long getNumItems() {
+  public @Nullable Long getNumItems() {
     return numItems;
   }
 
-  public void setNumItems(Long numItems) {
+  public void setNumItems(@Nullable Long numItems) {
     this.numItems = numItems;
   }
 

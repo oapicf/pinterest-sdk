@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type ConversionReportAttributionType* = object
-  ## Attribution type. Refers to the Pinterest Tag endpoints
+type ConversionReportAttributionType* {.pure.} = enum
+  INDIVIDUAL
+  HOUSEHOLD
+
+func `%`*(v: ConversionReportAttributionType): JsonNode =
+  result = case v:
+    of ConversionReportAttributionType.INDIVIDUAL: %"INDIVIDUAL"
+    of ConversionReportAttributionType.HOUSEHOLD: %"HOUSEHOLD"
+
+func `$`*(v: ConversionReportAttributionType): string =
+  result = case v:
+    of ConversionReportAttributionType.INDIVIDUAL: $("INDIVIDUAL")
+    of ConversionReportAttributionType.HOUSEHOLD: $("HOUSEHOLD")
+
+proc to*(node: JsonNode, T: typedesc[ConversionReportAttributionType]): ConversionReportAttributionType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ConversionReportAttributionType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("INDIVIDUAL"):
+    return ConversionReportAttributionType.INDIVIDUAL
+  of $("HOUSEHOLD"):
+    return ConversionReportAttributionType.HOUSEHOLD
+  else:
+    raise newException(ValueError, "Invalid enum value for ConversionReportAttributionType: " & strVal)
+

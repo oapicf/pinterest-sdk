@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_audience_insight_category_common
 
 type AudienceInsightCategoryArrayResponse* = object
   ## 
-  items*: seq[AudienceInsightCategoryCommon]
+  items*: Option[seq[AudienceInsightCategoryCommon]]
+

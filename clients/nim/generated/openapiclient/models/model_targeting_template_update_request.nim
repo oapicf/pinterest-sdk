@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type OperationType* {.pure.} = enum
@@ -20,11 +22,35 @@ type TargetingTemplateUpdateRequest* = object
   id*: string ## Targeting template ID
 
 func `%`*(v: OperationType): JsonNode =
-  let str = case v:
-    of OperationType.REMOVE: "REMOVE"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of OperationType.REMOVE: %"REMOVE"
 func `$`*(v: OperationType): string =
   result = case v:
-    of OperationType.REMOVE: "REMOVE"
+    of OperationType.REMOVE: $("REMOVE")
+
+proc to*(node: JsonNode, T: typedesc[OperationType]): OperationType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum OperationType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("REMOVE"):
+    return OperationType.REMOVE
+  else:
+    raise newException(ValueError, "Invalid enum value for OperationType: " & strVal)
+
+
+# Custom JSON deserialization for TargetingTemplateUpdateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[TargetingTemplateUpdateRequest]): TargetingTemplateUpdateRequest =
+  result = TargetingTemplateUpdateRequest()
+  if node.kind == JObject:
+    if node.hasKey("operation_type"):
+      result.operationType = to(node["operation_type"], OperationType)
+    if node.hasKey("id"):
+      result.id = to(node["id"], string)
+
+# Custom JSON serialization for TargetingTemplateUpdateRequest with custom field names
+proc `%`*(obj: TargetingTemplateUpdateRequest): JsonNode =
+  result = newJObject()
+  result["operation_type"] = %obj.operationType
+  result["id"] = %obj.id
+

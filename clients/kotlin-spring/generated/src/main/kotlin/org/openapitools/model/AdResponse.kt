@@ -161,7 +161,7 @@ data class AdResponse(
     @field:Valid
     @Schema(example = "null", description = "Ad summary status")
     @get:JsonProperty("summary_status") val summaryStatus: PinPromotionSummaryStatus? = null
-    ) {
+) {
 
     /**
     * Select a call to action (CTA) to display below your ad. Available only for ads with direct links enabled. CTA options for consideration and conversion campaigns are LEARN_MORE, SHOP_NOW, BOOK_NOW, SIGN_UP, VISIT_SITE, BUY_NOW, GET_OFFER, ORDER_NOW, ADD_TO_CART (for conversion campaigns with add to cart conversion events only)
@@ -192,7 +192,8 @@ data class AdResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CustomizableCtaType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdResponse'")
             }
         }
     }
@@ -256,7 +257,8 @@ data class AdResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): RejectedReasons {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdResponse'")
             }
         }
     }
@@ -276,7 +278,8 @@ data class AdResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): ReviewStatus {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdResponse'")
             }
         }
     }

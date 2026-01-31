@@ -7,7 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AudienceCreateRequest1AudienceType } from './audienceCreateRequest1AudienceType';
+import { AudienceType } from './audienceType';
 import { AudienceRule } from './audienceRule';
 
 
@@ -25,6 +25,12 @@ export interface AudienceCreateRequest {
      * Audience description.
      */
     description?: string;
-    audience_type: AudienceCreateRequest1AudienceType;
+    /**
+     * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
+     */
+    audience_type: AudienceType;
 }
+export namespace AudienceCreateRequest {
+}
+
 

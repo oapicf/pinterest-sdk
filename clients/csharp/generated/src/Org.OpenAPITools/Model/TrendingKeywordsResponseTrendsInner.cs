@@ -206,20 +206,16 @@ namespace Org.OpenAPITools.Model
                             keyword = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "pct_growth_wow":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pctGrowthWow = new Option<int?>(utf8JsonReader.GetInt32());
+                            pctGrowthWow = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "pct_growth_mom":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pctGrowthMom = new Option<int?>(utf8JsonReader.GetInt32());
+                            pctGrowthMom = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "pct_growth_yoy":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pctGrowthYoy = new Option<int?>(utf8JsonReader.GetInt32());
+                            pctGrowthYoy = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "time_series":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                timeSeries = new Option<TrendingKeywordsResponseTrendsInnerTimeSeries?>(JsonSerializer.Deserialize<TrendingKeywordsResponseTrendsInnerTimeSeries>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            timeSeries = new Option<TrendingKeywordsResponseTrendsInnerTimeSeries?>(JsonSerializer.Deserialize<TrendingKeywordsResponseTrendsInnerTimeSeries>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

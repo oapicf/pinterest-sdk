@@ -12,20 +12,13 @@
 /**
  * Possible status for a bulk reporting job
  */
-export type BulkReportingJobStatus = 'DOES_NOT_EXIST' | 'FINISHED' | 'IN_PROGRESS' | 'EXPIRED' | 'FAILED' | 'CANCELLED';
-
 export const BulkReportingJobStatus = {
-
-    DoesNotExist: 'DOES_NOT_EXIST' as BulkReportingJobStatus,
-
-    Finished: 'FINISHED' as BulkReportingJobStatus,
-
-    InProgress: 'IN_PROGRESS' as BulkReportingJobStatus,
-
-    Expired: 'EXPIRED' as BulkReportingJobStatus,
-
-    Failed: 'FAILED' as BulkReportingJobStatus,
-
-    Cancelled: 'CANCELLED' as BulkReportingJobStatus
-};
+    DoesNotExist: 'DOES_NOT_EXIST',
+    Finished: 'FINISHED',
+    InProgress: 'IN_PROGRESS',
+    Expired: 'EXPIRED',
+    Failed: 'FAILED',
+    Cancelled: 'CANCELLED'
+} as const;
+export type BulkReportingJobStatus = typeof BulkReportingJobStatus[keyof typeof BulkReportingJobStatus];
 

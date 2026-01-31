@@ -176,16 +176,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "score":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                score = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            score = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "number_of_reviewers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numberOfReviewers = new Option<int?>(utf8JsonReader.GetInt32());
+                            numberOfReviewers = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "max_score":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                maxScore = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            maxScore = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "rating_system":
                             ratingSystem = new Option<string?>(utf8JsonReader.GetString()!);

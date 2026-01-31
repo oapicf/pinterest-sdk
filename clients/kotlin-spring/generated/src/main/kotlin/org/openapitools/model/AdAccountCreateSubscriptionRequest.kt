@@ -40,7 +40,7 @@ data class AdAccountCreateSubscriptionRequest(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("partner_metadata") val partnerMetadata: AdAccountCreateSubscriptionRequestPartnerMetadata? = null
-    ) {
+) {
 
 }
 

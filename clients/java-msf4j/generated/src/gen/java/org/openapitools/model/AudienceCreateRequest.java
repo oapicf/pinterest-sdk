@@ -3,15 +3,16 @@ package org.openapitools.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.openapitools.model.AudienceCreateRequest1AudienceType;
 import org.openapitools.model.AudienceRule;
+import org.openapitools.model.AudienceType;
 
 /**
  * AudienceCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2025-05-10T05:39:24.501669360Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-01-26T05:36:17.223809908Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AudienceCreateRequest   {
   @JsonProperty("ad_account_id")
   private String adAccountId;
@@ -26,7 +27,7 @@ public class AudienceCreateRequest   {
   private String description;
 
   @JsonProperty("audience_type")
-  private AudienceCreateRequest1AudienceType audienceType;
+  private AudienceType audienceType;
 
   public AudienceCreateRequest adAccountId(String adAccountId) {
     this.adAccountId = adAccountId;
@@ -100,21 +101,21 @@ public class AudienceCreateRequest   {
     this.description = description;
   }
 
-  public AudienceCreateRequest audienceType(AudienceCreateRequest1AudienceType audienceType) {
+  public AudienceCreateRequest audienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
     return this;
   }
 
    /**
-   * Get audienceType
+   * <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
    * @return audienceType
   **/
-  @ApiModelProperty(required = true, value = "")
-  public AudienceCreateRequest1AudienceType getAudienceType() {
+  @ApiModelProperty(required = true, value = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.")
+  public AudienceType getAudienceType() {
     return audienceType;
   }
 
-  public void setAudienceType(AudienceCreateRequest1AudienceType audienceType) {
+  public void setAudienceType(AudienceType audienceType) {
     this.audienceType = audienceType;
   }
 

@@ -1,36 +1,39 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.openapitools.model.InviteType;
 import org.openapitools.model.Permissions;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object declaring an asset role update to an invite.
- **/
+ * Object declaring an asset role update to an invite.
+ */
 @ApiModel(description="Object declaring an asset role update to an invite.")
 
 public class CreateAssetInvitesRequestItem  {
   
-  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of an invite.")
  /**
-   * Unique identifier of an invite.
-  **/
+  * Unique identifier of an invite.
+  */
+  @ApiModelProperty(example = "1234567890123", required = true, value = "Unique identifier of an invite.")
+
   private String inviteId;
 
   @ApiModelProperty(required = true, value = "")
+
   private InviteType inviteType;
 
-  @ApiModelProperty(example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", required = true, value = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. ")
  /**
-   * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
-  **/
+  * An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. 
+  */
+  @ApiModelProperty(example = "{\"549760723247\":[\"ANALYST\"],\"549760723248\":[\"ANALYST\",\"ADMIN\"],\"809944451643622187\":[\"PROFILE_PUBLISHER\"]}", required = true, value = "An object mapping asset ids to lists of business permissions. This can be used to setting/requesting permissions on various assets. If accepting an invite or request, this object would be used to grant asset permissions to the member or partner. ")
+
   private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();
  /**
    * Unique identifier of an invite.

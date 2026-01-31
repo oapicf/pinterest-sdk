@@ -9,7 +9,43 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type LeadFormQuestionFieldType* = object
-  ## Lead form question field type
+type LeadFormQuestionFieldType* {.pure.} = enum
+  TEXTFIELD
+  TEXTAREA
+  RADIOLIST
+  CHECKBOX
+
+func `%`*(v: LeadFormQuestionFieldType): JsonNode =
+  result = case v:
+    of LeadFormQuestionFieldType.TEXTFIELD: %"TEXT_FIELD"
+    of LeadFormQuestionFieldType.TEXTAREA: %"TEXT_AREA"
+    of LeadFormQuestionFieldType.RADIOLIST: %"RADIO_LIST"
+    of LeadFormQuestionFieldType.CHECKBOX: %"CHECKBOX"
+
+func `$`*(v: LeadFormQuestionFieldType): string =
+  result = case v:
+    of LeadFormQuestionFieldType.TEXTFIELD: $("TEXT_FIELD")
+    of LeadFormQuestionFieldType.TEXTAREA: $("TEXT_AREA")
+    of LeadFormQuestionFieldType.RADIOLIST: $("RADIO_LIST")
+    of LeadFormQuestionFieldType.CHECKBOX: $("CHECKBOX")
+
+proc to*(node: JsonNode, T: typedesc[LeadFormQuestionFieldType]): LeadFormQuestionFieldType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum LeadFormQuestionFieldType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("TEXT_FIELD"):
+    return LeadFormQuestionFieldType.TEXTFIELD
+  of $("TEXT_AREA"):
+    return LeadFormQuestionFieldType.TEXTAREA
+  of $("RADIO_LIST"):
+    return LeadFormQuestionFieldType.RADIOLIST
+  of $("CHECKBOX"):
+    return LeadFormQuestionFieldType.CHECKBOX
+  else:
+    raise newException(ValueError, "Invalid enum value for LeadFormQuestionFieldType: " & strVal)
+

@@ -9,12 +9,9 @@
  */
 
 
-export type AudienceAccountType = 'AD_ACCOUNT' | 'BUSINESS_ACCOUNT';
-
 export const AudienceAccountType = {
-
-    AdAccount: 'AD_ACCOUNT' as AudienceAccountType,
-
-    BusinessAccount: 'BUSINESS_ACCOUNT' as AudienceAccountType
-};
+    AdAccount: 'AD_ACCOUNT',
+    BusinessAccount: 'BUSINESS_ACCOUNT'
+} as const;
+export type AudienceAccountType = typeof AudienceAccountType[keyof typeof AudienceAccountType];
 

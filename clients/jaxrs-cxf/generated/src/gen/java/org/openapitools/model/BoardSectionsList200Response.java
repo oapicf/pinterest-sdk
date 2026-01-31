@@ -16,14 +16,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BoardSectionsList200Response  {
   
-  @ApiModelProperty(required = true, value = "Board sections")
-  @Valid
  /**
-   * Board sections
-  **/
+  * Board sections
+  */
+  @ApiModelProperty(required = true, value = "Board sections")
+
+  @Valid
+
   private List<@Valid BoardSection> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * Board sections

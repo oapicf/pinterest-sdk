@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_advanced_auction_items_submit_record
 
@@ -16,3 +18,25 @@ type AdvancedAuctionItemsSubmitRequest* = object
   ## Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items
   catalogId*: string ## Catalog id pertaining to all items
   items*: seq[AdvancedAuctionItemsSubmitRecord] ## Array of item bid option operations
+
+
+# Custom JSON deserialization for AdvancedAuctionItemsSubmitRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[AdvancedAuctionItemsSubmitRequest]): AdvancedAuctionItemsSubmitRequest =
+  result = AdvancedAuctionItemsSubmitRequest()
+  if node.kind == JObject:
+    if node.hasKey("catalog_id"):
+      result.catalogId = to(node["catalog_id"], string)
+    if node.hasKey("items"):
+      # Array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["items"]
+      if arrayNode.kind == JArray:
+        result.items = @[]
+        for item in arrayNode.items:
+          result.items.add(to(item, AdvancedAuctionItemsSubmitRecord))
+
+# Custom JSON serialization for AdvancedAuctionItemsSubmitRequest with custom field names
+proc `%`*(obj: AdvancedAuctionItemsSubmitRequest): JsonNode =
+  result = newJObject()
+  result["catalog_id"] = %obj.catalogId
+  result["items"] = %obj.items
+

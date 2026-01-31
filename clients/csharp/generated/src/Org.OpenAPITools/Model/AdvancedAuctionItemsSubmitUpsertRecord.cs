@@ -171,12 +171,10 @@ namespace Org.OpenAPITools.Model
                                 language = new Option<Language?>(LanguageValueConverter.FromStringOrDefault(languageRawValue));
                             break;
                         case "bid_options":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                bidOptions = new Option<AdvancedAuctionBidOptions?>(JsonSerializer.Deserialize<AdvancedAuctionBidOptions>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            bidOptions = new Option<AdvancedAuctionBidOptions?>(JsonSerializer.Deserialize<AdvancedAuctionBidOptions>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "update_mask":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updateMask = new Option<List<UpdateMaskBidOptionField>?>(JsonSerializer.Deserialize<List<UpdateMaskBidOptionField>>(ref utf8JsonReader, jsonSerializerOptions));
+                            updateMask = new Option<List<UpdateMaskBidOptionField>?>(JsonSerializer.Deserialize<List<UpdateMaskBidOptionField>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

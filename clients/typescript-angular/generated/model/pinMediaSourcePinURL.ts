@@ -20,10 +20,10 @@ export interface PinMediaSourcePinURL {
     is_affiliate_link?: boolean;
 }
 export namespace PinMediaSourcePinURL {
-    export type SourceTypeEnum = 'pin_url';
     export const SourceTypeEnum = {
-        PinUrl: 'pin_url' as SourceTypeEnum
-    };
+        PinUrl: 'pin_url'
+    } as const;
+    export type SourceTypeEnum = typeof SourceTypeEnum[keyof typeof SourceTypeEnum];
 }
 
 

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_lead_form_common_policy_links_inner
 import model_lead_form_question
@@ -16,11 +18,60 @@ import model_lead_form_status
 
 type LeadFormCommon* = object
   ## Creation fields
-  name*: string ## Internal name of the lead form.
-  privacyPolicyLink*: string ## A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-  hasAcceptedTerms*: bool ## Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
-  completionMessage*: string ## A message for people who complete the form to let them know what happens next.
-  status*: LeadFormStatus
-  disclosureLanguage*: string ## Additional disclosure language to be included in the lead form.
-  questions*: seq[LeadFormQuestion] ## List of questions to be displayed on the lead form.
-  policyLinks*: seq[LeadFormCommon_policy_links_inner] ## List of additional policy links to be displayed on the lead form.
+  name*: Option[string] ## Internal name of the lead form.
+  privacyPolicyLink*: Option[string] ## A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
+  hasAcceptedTerms*: Option[bool] ## Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
+  completionMessage*: Option[string] ## A message for people who complete the form to let them know what happens next.
+  status*: Option[LeadFormStatus]
+  disclosureLanguage*: Option[string] ## Additional disclosure language to be included in the lead form.
+  questions*: Option[seq[LeadFormQuestion]] ## List of questions to be displayed on the lead form.
+  policyLinks*: Option[seq[LeadFormCommon_policy_links_inner]] ## List of additional policy links to be displayed on the lead form.
+
+
+# Custom JSON deserialization for LeadFormCommon with custom field names
+proc to*(node: JsonNode, T: typedesc[LeadFormCommon]): LeadFormCommon =
+  result = LeadFormCommon()
+  if node.kind == JObject:
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("privacy_policy_link") and node["privacy_policy_link"].kind != JNull:
+      result.privacyPolicyLink = some(to(node["privacy_policy_link"], typeof(result.privacyPolicyLink.get())))
+    if node.hasKey("has_accepted_terms") and node["has_accepted_terms"].kind != JNull:
+      result.hasAcceptedTerms = some(to(node["has_accepted_terms"], typeof(result.hasAcceptedTerms.get())))
+    if node.hasKey("completion_message") and node["completion_message"].kind != JNull:
+      result.completionMessage = some(to(node["completion_message"], typeof(result.completionMessage.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+    if node.hasKey("disclosure_language") and node["disclosure_language"].kind != JNull:
+      result.disclosureLanguage = some(to(node["disclosure_language"], typeof(result.disclosureLanguage.get())))
+    if node.hasKey("questions") and node["questions"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["questions"]
+      if arrayNode.kind == JArray:
+        var arr: seq[LeadFormQuestion] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, LeadFormQuestion))
+        result.questions = some(arr)
+    if node.hasKey("policy_links") and node["policy_links"].kind != JNull:
+      result.policyLinks = some(to(node["policy_links"], typeof(result.policyLinks.get())))
+
+# Custom JSON serialization for LeadFormCommon with custom field names
+proc `%`*(obj: LeadFormCommon): JsonNode =
+  result = newJObject()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.privacyPolicyLink.isSome():
+    result["privacy_policy_link"] = %obj.privacyPolicyLink.get()
+  if obj.hasAcceptedTerms.isSome():
+    result["has_accepted_terms"] = %obj.hasAcceptedTerms.get()
+  if obj.completionMessage.isSome():
+    result["completion_message"] = %obj.completionMessage.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  if obj.disclosureLanguage.isSome():
+    result["disclosure_language"] = %obj.disclosureLanguage.get()
+  if obj.questions.isSome():
+    result["questions"] = %obj.questions.get()
+  if obj.policyLinks.isSome():
+    result["policy_links"] = %obj.policyLinks.get()
+

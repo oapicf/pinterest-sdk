@@ -34,6 +34,7 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ConversionTagCreate" /> class.
         /// </summary>
+        /// <param name="name">Conversion tag name.</param>
         /// <param name="aemEnabled">Whether Automatic Enhanced Match email is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. (default to false)</param>
         /// <param name="mdFrequency">Metadata ingestion frequency. (default to 1M)</param>
         /// <param name="aemFnlnEnabled">Whether Automatic Enhanced Match name is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. (default to false)</param>
@@ -41,10 +42,10 @@ namespace Org.OpenAPITools.Model
         /// <param name="aemGeEnabled">Whether Automatic Enhanced Match gender is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. (default to false)</param>
         /// <param name="aemDbEnabled">Whether Automatic Enhanced Match birthdate is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. (default to false)</param>
         /// <param name="aemLocEnabled">Whether Automatic Enhanced Match location is enabled. See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/enhanced-match\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Enhanced match&lt;/a&gt; for more information. (default to false)</param>
-        /// <param name="name">Conversion tag name.</param>
         [JsonConstructor]
-        public ConversionTagCreate(Option<bool?> aemEnabled = default, Option<decimal?> mdFrequency = default, Option<bool?> aemFnlnEnabled = default, Option<bool?> aemPhEnabled = default, Option<bool?> aemGeEnabled = default, Option<bool?> aemDbEnabled = default, Option<bool?> aemLocEnabled = default, string name)
+        public ConversionTagCreate(string name, Option<bool?> aemEnabled = default, Option<decimal?> mdFrequency = default, Option<bool?> aemFnlnEnabled = default, Option<bool?> aemPhEnabled = default, Option<bool?> aemGeEnabled = default, Option<bool?> aemDbEnabled = default, Option<bool?> aemLocEnabled = default)
         {
+            Name = name;
             AemEnabledOption = aemEnabled;
             MdFrequencyOption = mdFrequency;
             AemFnlnEnabledOption = aemFnlnEnabled;
@@ -52,11 +53,18 @@ namespace Org.OpenAPITools.Model
             AemGeEnabledOption = aemGeEnabled;
             AemDbEnabledOption = aemDbEnabled;
             AemLocEnabledOption = aemLocEnabled;
-            Name = name;
             OnCreated();
         }
 
         partial void OnCreated();
+
+        /// <summary>
+        /// Conversion tag name.
+        /// </summary>
+        /// <value>Conversion tag name.</value>
+        /* <example>ACME Tools Tag</example> */
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Used to track the state of AemEnabled
@@ -164,14 +172,6 @@ namespace Org.OpenAPITools.Model
         public bool? AemLocEnabled { get { return this.AemLocEnabledOption; } set { this.AemLocEnabledOption = new(value); } }
 
         /// <summary>
-        /// Conversion tag name.
-        /// </summary>
-        /// <value>Conversion tag name.</value>
-        /* <example>ACME Tools Tag</example> */
-        [JsonPropertyName("name")]
-        public string Name { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -224,6 +224,7 @@ namespace Org.OpenAPITools.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
+            Option<string?> name = default;
             Option<bool?> aemEnabled = default;
             Option<decimal?> mdFrequency = default;
             Option<bool?> aemFnlnEnabled = default;
@@ -231,7 +232,6 @@ namespace Org.OpenAPITools.Model
             Option<bool?> aemGeEnabled = default;
             Option<bool?> aemDbEnabled = default;
             Option<bool?> aemLocEnabled = default;
-            Option<string?> name = default;
 
             while (utf8JsonReader.Read())
             {
@@ -248,36 +248,29 @@ namespace Org.OpenAPITools.Model
 
                     switch (localVarJsonPropertyName)
                     {
-                        case "aem_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aemEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
-                            break;
-                        case "md_frequency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                mdFrequency = new Option<decimal?>(utf8JsonReader.GetDecimal());
-                            break;
-                        case "aem_fnln_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aemFnlnEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
-                            break;
-                        case "aem_ph_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aemPhEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
-                            break;
-                        case "aem_ge_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aemGeEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
-                            break;
-                        case "aem_db_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aemDbEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
-                            break;
-                        case "aem_loc_enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                aemLocEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
-                            break;
                         case "name":
                             name = new Option<string?>(utf8JsonReader.GetString()!);
+                            break;
+                        case "aem_enabled":
+                            aemEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
+                        case "md_frequency":
+                            mdFrequency = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
+                            break;
+                        case "aem_fnln_enabled":
+                            aemFnlnEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
+                        case "aem_ph_enabled":
+                            aemPhEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
+                        case "aem_ge_enabled":
+                            aemGeEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
+                        case "aem_db_enabled":
+                            aemDbEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
+                        case "aem_loc_enabled":
+                            aemLocEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;
@@ -291,7 +284,7 @@ namespace Org.OpenAPITools.Model
             if (name.IsSet && name.Value == null)
                 throw new ArgumentNullException(nameof(name), "Property is not nullable for class ConversionTagCreate.");
 
-            return new ConversionTagCreate(aemEnabled, mdFrequency, aemFnlnEnabled, aemPhEnabled, aemGeEnabled, aemDbEnabled, aemLocEnabled, name.Value!);
+            return new ConversionTagCreate(name.Value!, aemEnabled, mdFrequency, aemFnlnEnabled, aemPhEnabled, aemGeEnabled, aemDbEnabled, aemLocEnabled);
         }
 
         /// <summary>
@@ -320,6 +313,8 @@ namespace Org.OpenAPITools.Model
         {
             if (conversionTagCreate.Name == null)
                 throw new ArgumentNullException(nameof(conversionTagCreate.Name), "Property is required for class ConversionTagCreate.");
+
+            writer.WriteString("name", conversionTagCreate.Name);
 
             if (conversionTagCreate.AemEnabledOption.IsSet)
                 if (conversionTagCreate.AemEnabledOption.Value != null)
@@ -362,8 +357,6 @@ namespace Org.OpenAPITools.Model
                     writer.WriteBoolean("aem_loc_enabled", conversionTagCreate.AemLocEnabledOption.Value!.Value);
                 else
                     writer.WriteNull("aem_loc_enabled");
-
-            writer.WriteString("name", conversionTagCreate.Name);
         }
     }
 }

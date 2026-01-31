@@ -53,17 +53,39 @@ func NewLeadsExportAPIController(s LeadsExportAPIServicer, opts ...LeadsExportAP
 func (c *LeadsExportAPIController) Routes() Routes {
 	return Routes{
 		"LeadsExportCreate": Route{
+			"LeadsExportCreate",
 			strings.ToUpper("Post"),
 			"/v5/ad_accounts/{ad_account_id}/leads_export",
 			c.LeadsExportCreate,
 		},
 		"LeadsExportGet": Route{
+			"LeadsExportGet",
 			strings.ToUpper("Get"),
 			"/v5/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}",
 			c.LeadsExportGet,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the LeadsExportAPIController
+func (c *LeadsExportAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"LeadsExportCreate",
+			strings.ToUpper("Post"),
+			"/v5/ad_accounts/{ad_account_id}/leads_export",
+			c.LeadsExportCreate,
+		},
+		Route{
+			"LeadsExportGet",
+			strings.ToUpper("Get"),
+			"/v5/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}",
+			c.LeadsExportGet,
+		},
+	}
+}
+
+
 
 // LeadsExportCreate - Create a request to export leads collected from a lead ad
 func (c *LeadsExportAPIController) LeadsExportCreate(w http.ResponseWriter, r *http.Request) {

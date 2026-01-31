@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * VideoMetadata
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class VideoMetadata {
 
   private @Nullable String itemType;
@@ -38,7 +38,7 @@ public class VideoMetadata {
 
   private @Nullable Integer width;
 
-  public VideoMetadata itemType(String itemType) {
+  public VideoMetadata itemType(@Nullable String itemType) {
     this.itemType = itemType;
     return this;
   }
@@ -50,15 +50,15 @@ public class VideoMetadata {
   
   @Schema(name = "item_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("item_type")
-  public String getItemType() {
+  public @Nullable String getItemType() {
     return itemType;
   }
 
-  public void setItemType(String itemType) {
+  public void setItemType(@Nullable String itemType) {
     this.itemType = itemType;
   }
 
-  public VideoMetadata coverImageUrl(String coverImageUrl) {
+  public VideoMetadata coverImageUrl(@Nullable String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
     return this;
   }
@@ -70,11 +70,11 @@ public class VideoMetadata {
   
   @Schema(name = "cover_image_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cover_image_url")
-  public String getCoverImageUrl() {
+  public @Nullable String getCoverImageUrl() {
     return coverImageUrl;
   }
 
-  public void setCoverImageUrl(String coverImageUrl) {
+  public void setCoverImageUrl(@Nullable String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
   }
 
@@ -98,7 +98,7 @@ public class VideoMetadata {
     this.videoUrl = videoUrl;
   }
 
-  public VideoMetadata duration(BigDecimal duration) {
+  public VideoMetadata duration(@Nullable BigDecimal duration) {
     this.duration = duration;
     return this;
   }
@@ -110,15 +110,15 @@ public class VideoMetadata {
   @Valid 
   @Schema(name = "duration", description = "Duration (in milliseconds)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("duration")
-  public BigDecimal getDuration() {
+  public @Nullable BigDecimal getDuration() {
     return duration;
   }
 
-  public void setDuration(BigDecimal duration) {
+  public void setDuration(@Nullable BigDecimal duration) {
     this.duration = duration;
   }
 
-  public VideoMetadata height(Integer height) {
+  public VideoMetadata height(@Nullable Integer height) {
     this.height = height;
     return this;
   }
@@ -130,15 +130,15 @@ public class VideoMetadata {
   
   @Schema(name = "height", description = "Height (in pixels)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("height")
-  public Integer getHeight() {
+  public @Nullable Integer getHeight() {
     return height;
   }
 
-  public void setHeight(Integer height) {
+  public void setHeight(@Nullable Integer height) {
     this.height = height;
   }
 
-  public VideoMetadata width(Integer width) {
+  public VideoMetadata width(@Nullable Integer width) {
     this.width = width;
     return this;
   }
@@ -150,11 +150,11 @@ public class VideoMetadata {
   
   @Schema(name = "width", description = "Width (in pixels)", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("width")
-  public Integer getWidth() {
+  public @Nullable Integer getWidth() {
     return width;
   }
 
-  public void setWidth(Integer width) {
+  public void setWidth(@Nullable Integer width) {
     this.width = width;
   }
 

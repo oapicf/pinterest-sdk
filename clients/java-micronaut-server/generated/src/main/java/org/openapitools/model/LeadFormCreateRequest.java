@@ -43,7 +43,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   LeadFormCreateRequest.JSON_PROPERTY_POLICY_LINKS
 })
 @JsonTypeName("LeadFormCreateRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-01-26T05:36:06.173633742Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class LeadFormCreateRequest {
     public static final String JSON_PROPERTY_NAME = "name";
@@ -65,17 +65,12 @@ public class LeadFormCreateRequest {
     private String disclosureLanguage;
 
     public static final String JSON_PROPERTY_QUESTIONS = "questions";
-    private List<@Valid LeadFormQuestion> questions = new ArrayList<>();
+    private List<@Valid LeadFormQuestion> questions = null;
 
     public static final String JSON_PROPERTY_POLICY_LINKS = "policy_links";
     private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = null;
 
-    public LeadFormCreateRequest(String name, String privacyPolicyLink, Boolean hasAcceptedTerms, String completionMessage, List<@Valid LeadFormQuestion> questions) {
-        this.name = name;
-        this.privacyPolicyLink = privacyPolicyLink;
-        this.hasAcceptedTerms = hasAcceptedTerms;
-        this.completionMessage = completionMessage;
-        this.questions = questions;
+    public LeadFormCreateRequest() {
     }
 
     public LeadFormCreateRequest name(String name) {
@@ -88,15 +83,15 @@ public class LeadFormCreateRequest {
      * @return name
      */
     @Nullable
-    @Schema(name = "name", example = "Lead Form 3/14/2023", description = "Internal name of the lead form.", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "name", example = "Lead Form 3/14/2023", description = "Internal name of the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty(JSON_PROPERTY_NAME)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public String getName() {
         return name;
     }
 
     @JsonProperty(JSON_PROPERTY_NAME)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public void setName(String name) {
         this.name = name;
     }
@@ -111,15 +106,15 @@ public class LeadFormCreateRequest {
      * @return privacyPolicyLink
      */
     @Nullable
-    @Schema(name = "privacy_policy_link", example = "https://www.advertisername.com/privacy-policy", description = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "privacy_policy_link", example = "https://www.advertisername.com/privacy-policy", description = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty(JSON_PROPERTY_PRIVACY_POLICY_LINK)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public String getPrivacyPolicyLink() {
         return privacyPolicyLink;
     }
 
     @JsonProperty(JSON_PROPERTY_PRIVACY_POLICY_LINK)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public void setPrivacyPolicyLink(String privacyPolicyLink) {
         this.privacyPolicyLink = privacyPolicyLink;
     }
@@ -133,16 +128,16 @@ public class LeadFormCreateRequest {
      * Whether the advertiser has accepted Pinterest&#39;s terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest&#39;s &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/lead-ad-terms\&quot;&gt;Lead Ad Terms&lt;/a&gt;. As a reminder, all advertising on Pinterest is subject to the &lt;a href&#x3D;\&quot;https://business.pinterest.com/en/pinterest-advertising-services-agreement/\&quot;&gt;Pinterest Advertising Services Agreement&lt;/a&gt; or an equivalent agreement as set forth on an IO
      * @return hasAcceptedTerms
      */
-    @NotNull
-    @Schema(name = "has_accepted_terms", example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Nullable
+    @Schema(name = "has_accepted_terms", example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty(JSON_PROPERTY_HAS_ACCEPTED_TERMS)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public Boolean getHasAcceptedTerms() {
         return hasAcceptedTerms;
     }
 
     @JsonProperty(JSON_PROPERTY_HAS_ACCEPTED_TERMS)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public void setHasAcceptedTerms(Boolean hasAcceptedTerms) {
         this.hasAcceptedTerms = hasAcceptedTerms;
     }
@@ -157,15 +152,15 @@ public class LeadFormCreateRequest {
      * @return completionMessage
      */
     @Nullable
-    @Schema(name = "completion_message", example = "Thank you for submitting. We will contact you soon.", description = "A message for people who complete the form to let them know what happens next.", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "completion_message", example = "Thank you for submitting. We will contact you soon.", description = "A message for people who complete the form to let them know what happens next.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty(JSON_PROPERTY_COMPLETION_MESSAGE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public String getCompletionMessage() {
         return completionMessage;
     }
 
     @JsonProperty(JSON_PROPERTY_COMPLETION_MESSAGE)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public void setCompletionMessage(String completionMessage) {
         this.completionMessage = completionMessage;
     }
@@ -222,6 +217,9 @@ public class LeadFormCreateRequest {
     }
 
     public LeadFormCreateRequest addQuestionsItem(LeadFormQuestion questionsItem) {
+        if (this.questions == null) {
+            this.questions = new ArrayList<>();
+        }
         this.questions.add(questionsItem);
         return this;
     }
@@ -230,17 +228,17 @@ public class LeadFormCreateRequest {
      * List of questions to be displayed on the lead form.
      * @return questions
      */
-    @NotNull
+    @Nullable
     @Size(min=0, max=10)
-    @Schema(name = "questions", example = "[{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}]", description = "List of questions to be displayed on the lead form.", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "questions", example = "[{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}]", description = "List of questions to be displayed on the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty(JSON_PROPERTY_QUESTIONS)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public List<@Valid LeadFormQuestion> getQuestions() {
         return questions;
     }
 
     @JsonProperty(JSON_PROPERTY_QUESTIONS)
-    @JsonInclude(value = JsonInclude.Include.ALWAYS)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
     public void setQuestions(List<@Valid LeadFormQuestion> questions) {
         this.questions = questions;
     }

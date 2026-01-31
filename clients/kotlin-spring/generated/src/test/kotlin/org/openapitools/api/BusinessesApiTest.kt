@@ -68,6 +68,7 @@ class BusinessesApiTest {
     fun assetAccessRequestsCreateTest() {
         val businessId: kotlin.String = TODO()
         val createAssetAccessRequestBody: CreateAssetAccessRequestBody = TODO()
+        
         val response: ResponseEntity<CreateAssetAccessRequestResponse> = api.assetAccessRequestsCreate(businessId, createAssetAccessRequestBody)
 
         // TODO: test validations
@@ -83,6 +84,7 @@ class BusinessesApiTest {
     fun assetGroupCreateTest() {
         val businessId: kotlin.String = TODO()
         val createAssetGroupBody: CreateAssetGroupBody = TODO()
+        
         val response: ResponseEntity<CreateAssetGroupResponse> = api.assetGroupCreate(businessId, createAssetGroupBody)
 
         // TODO: test validations
@@ -98,6 +100,7 @@ class BusinessesApiTest {
     fun assetGroupDeleteTest() {
         val businessId: kotlin.String = TODO()
         val deleteAssetGroupBody: DeleteAssetGroupBody = TODO()
+        
         val response: ResponseEntity<DeleteAssetGroupResponse> = api.assetGroupDelete(businessId, deleteAssetGroupBody)
 
         // TODO: test validations
@@ -113,6 +116,7 @@ class BusinessesApiTest {
     fun assetGroupUpdateTest() {
         val businessId: kotlin.String = TODO()
         val updateAssetGroupBody: UpdateAssetGroupBody = TODO()
+        
         val response: ResponseEntity<UpdateAssetGroupResponse> = api.assetGroupUpdate(businessId, updateAssetGroupBody)
 
         // TODO: test validations
@@ -131,6 +135,7 @@ class BusinessesApiTest {
         val accountType: AudienceAccountType = TODO()
         val pageSize: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<AdAccountsAudiencesSharedAccountsList200Response> = api.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, pageSize, bookmark)
 
         // TODO: test validations
@@ -149,6 +154,7 @@ class BusinessesApiTest {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val startIndex: kotlin.Int = TODO()
+        
         val response: ResponseEntity<BusinessAssetMembersGet200Response> = api.businessAssetMembersGet(businessId, assetId, bookmark, pageSize, startIndex)
 
         // TODO: test validations
@@ -167,6 +173,7 @@ class BusinessesApiTest {
         val startIndex: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<BusinessAssetPartnersGet200Response> = api.businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize)
 
         // TODO: test validations
@@ -188,6 +195,7 @@ class BusinessesApiTest {
         val startIndex: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<BusinessAssetsGet200Response> = api.businessAssetsGet(businessId, permissions, childAssetId, assetGroupId, assetType, startIndex, bookmark, pageSize)
 
         // TODO: test validations
@@ -207,6 +215,7 @@ class BusinessesApiTest {
         val startIndex: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<BusinessMemberAssetsGet200Response> = api.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize)
 
         // TODO: test validations
@@ -222,6 +231,7 @@ class BusinessesApiTest {
     fun businessMembersAssetAccessDeleteTest() {
         val businessId: kotlin.String = TODO()
         val businessMembersAssetAccessDeleteRequest: BusinessMembersAssetAccessDeleteRequest = TODO()
+        
         val response: ResponseEntity<DeleteMemberAccessResultsResponseArray> = api.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest)
 
         // TODO: test validations
@@ -237,6 +247,7 @@ class BusinessesApiTest {
     fun businessMembersAssetAccessUpdateTest() {
         val businessId: kotlin.String = TODO()
         val updateMemberAssetAccessBody: UpdateMemberAssetAccessBody = TODO()
+        
         val response: ResponseEntity<UpdateMemberAssetsResultsResponseArray> = api.businessMembersAssetAccessUpdate(businessId, updateMemberAssetAccessBody)
 
         // TODO: test validations
@@ -257,6 +268,7 @@ class BusinessesApiTest {
         val startIndex: kotlin.Int = TODO()
         val pageSize: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<BusinessPartnerAssetAccessGet200Response> = api.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark)
 
         // TODO: test validations
@@ -272,6 +284,7 @@ class BusinessesApiTest {
     fun cancelInvitesOrRequestsTest() {
         val businessId: kotlin.String = TODO()
         val cancelInvitesBody: CancelInvitesBody = TODO()
+        
         val response: ResponseEntity<DeleteInvitesResultsResponseArray> = api.cancelInvitesOrRequests(businessId, cancelInvitesBody)
 
         // TODO: test validations
@@ -287,6 +300,7 @@ class BusinessesApiTest {
     fun createAssetInvitesTest() {
         val businessId: kotlin.String = TODO()
         val createAssetInvitesRequest: CreateAssetInvitesRequest = TODO()
+        
         val response: ResponseEntity<UpdateInvitesResultsResponseArray> = api.createAssetInvites(businessId, createAssetInvitesRequest)
 
         // TODO: test validations
@@ -302,6 +316,7 @@ class BusinessesApiTest {
     fun createMembershipOrPartnershipInvitesTest() {
         val businessId: kotlin.String = TODO()
         val createMembershipOrPartnershipInvitesBody: CreateMembershipOrPartnershipInvitesBody = TODO()
+        
         val response: ResponseEntity<CreateInvitesResultsResponseArray> = api.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody)
 
         // TODO: test validations
@@ -317,6 +332,7 @@ class BusinessesApiTest {
     fun deleteBusinessMembershipTest() {
         val businessId: kotlin.String = TODO()
         val membersToDeleteBody: MembersToDeleteBody = TODO()
+        
         val response: ResponseEntity<DeletedMembersResponse> = api.deleteBusinessMembership(businessId, membersToDeleteBody)
 
         // TODO: test validations
@@ -332,6 +348,7 @@ class BusinessesApiTest {
     fun deleteBusinessPartnersTest() {
         val businessId: kotlin.String = TODO()
         val deletePartnersRequest: DeletePartnersRequest = TODO()
+        
         val response: ResponseEntity<DeletePartnersResponse> = api.deleteBusinessPartners(businessId, deletePartnersRequest)
 
         // TODO: test validations
@@ -347,6 +364,7 @@ class BusinessesApiTest {
     fun deletePartnerAssetAccessHandlerImplTest() {
         val businessId: kotlin.String = TODO()
         val deletePartnerAssetAccessBody: DeletePartnerAssetAccessBody = TODO()
+        
         val response: ResponseEntity<DeletePartnerAssetsResultsResponseArray> = api.deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody)
 
         // TODO: test validations
@@ -362,6 +380,7 @@ class BusinessesApiTest {
     fun getBusinessEmployersTest() {
         val pageSize: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<GetBusinessEmployers200Response> = api.getBusinessEmployers(pageSize, bookmark)
 
         // TODO: test validations
@@ -382,6 +401,7 @@ class BusinessesApiTest {
         val startIndex: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<GetBusinessMembers200Response> = api.getBusinessMembers(businessId, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
 
         // TODO: test validations
@@ -402,6 +422,7 @@ class BusinessesApiTest {
         val startIndex: kotlin.Int = TODO()
         val pageSize: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<GetBusinessPartners200Response> = api.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark)
 
         // TODO: test validations
@@ -421,6 +442,7 @@ class BusinessesApiTest {
         val inviteType: InviteType? = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<GetInvites200Response> = api.getInvites(businessId, isMember, inviteStatus, inviteType, bookmark, pageSize)
 
         // TODO: test validations
@@ -435,6 +457,7 @@ class BusinessesApiTest {
     @Test
     fun respondBusinessAccessInvitesTest() {
         val authRespondInvitesBody: AuthRespondInvitesBody = TODO()
+        
         val response: ResponseEntity<RespondToInvitesResponseArray> = api.respondBusinessAccessInvites(authRespondInvitesBody)
 
         // TODO: test validations
@@ -452,6 +475,7 @@ class BusinessesApiTest {
         val bookmark: kotlin.String? = TODO()
         val order: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<AudiencesList200Response> = api.sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize)
 
         // TODO: test validations
@@ -467,6 +491,7 @@ class BusinessesApiTest {
     fun updateBusinessMembershipsTest() {
         val businessId: kotlin.String = TODO()
         val updateMemberBusinessRoleBody: kotlin.collections.List<UpdateMemberBusinessRoleBody> = TODO()
+        
         val response: ResponseEntity<UpdateMemberResultsResponseArray> = api.updateBusinessMemberships(businessId, updateMemberBusinessRoleBody)
 
         // TODO: test validations
@@ -482,6 +507,7 @@ class BusinessesApiTest {
     fun updateBusinessToAdAccountSharedAudienceTest() {
         val businessId: kotlin.String = TODO()
         val sharedAudience: SharedAudience = TODO()
+        
         val response: ResponseEntity<SharedAudienceResponse> = api.updateBusinessToAdAccountSharedAudience(businessId, sharedAudience)
 
         // TODO: test validations
@@ -497,6 +523,7 @@ class BusinessesApiTest {
     fun updateBusinessToBusinessSharedAudienceTest() {
         val businessId: kotlin.String = TODO()
         val businessSharedAudience: BusinessSharedAudience = TODO()
+        
         val response: ResponseEntity<BusinessSharedAudienceResponse> = api.updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience)
 
         // TODO: test validations
@@ -512,6 +539,7 @@ class BusinessesApiTest {
     fun updatePartnerAssetAccessHandlerImplTest() {
         val businessId: kotlin.String = TODO()
         val updatePartnerAssetAccessBody: UpdatePartnerAssetAccessBody = TODO()
+        
         val response: ResponseEntity<UpdatePartnerAssetsResultsResponseArray> = api.updatePartnerAssetAccessHandlerImpl(businessId, updatePartnerAssetAccessBody)
 
         // TODO: test validations

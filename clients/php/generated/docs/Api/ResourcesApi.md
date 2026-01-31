@@ -1,5 +1,7 @@
 # OpenAPI\Client\ResourcesApi
 
+View metadata about available metrics and targeting options in the Pinterest API.
+
 All URIs are relative to https://api.pinterest.com/v5, except if the operation defines another base path.
 
 | Method | HTTP request | Description |

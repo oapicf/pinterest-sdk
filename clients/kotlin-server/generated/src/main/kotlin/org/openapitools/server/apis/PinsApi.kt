@@ -30,7 +30,6 @@ import org.openapitools.server.models.Pin
 import org.openapitools.server.models.PinAnalyticsMetricsResponse
 import org.openapitools.server.models.PinCreate
 import org.openapitools.server.models.PinUpdate
-import org.openapitools.server.models.PinsAnalyticsMetricTypesParameterInner
 import org.openapitools.server.models.PinsList200Response
 import org.openapitools.server.models.PinsSaveRequest
 

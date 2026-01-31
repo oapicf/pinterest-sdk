@@ -186,19 +186,16 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "created_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
+                            createdAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "updated_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
+                            updatedAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "ingestion_details":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ingestionDetails = new Option<CatalogsFeedIngestionDetails?>(JsonSerializer.Deserialize<CatalogsFeedIngestionDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            ingestionDetails = new Option<CatalogsFeedIngestionDetails?>(JsonSerializer.Deserialize<CatalogsFeedIngestionDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "status":
                             string? statusRawValue = utf8JsonReader.GetString();
@@ -206,12 +203,10 @@ namespace Org.OpenAPITools.Model
                                 status = new Option<CatalogsFeedProcessingStatus?>(CatalogsFeedProcessingStatusValueConverter.FromStringOrDefault(statusRawValue));
                             break;
                         case "validation_details":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                validationDetails = new Option<CatalogsFeedValidationDetails?>(JsonSerializer.Deserialize<CatalogsFeedValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            validationDetails = new Option<CatalogsFeedValidationDetails?>(JsonSerializer.Deserialize<CatalogsFeedValidationDetails>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "product_counts":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                productCounts = new Option<CatalogsFeedProductCounts?>(JsonSerializer.Deserialize<CatalogsFeedProductCounts>(ref utf8JsonReader, jsonSerializerOptions));
+                            productCounts = new Option<CatalogsFeedProductCounts?>(JsonSerializer.Deserialize<CatalogsFeedProductCounts>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

@@ -82,7 +82,6 @@ HEADERS += \
     $${PWD}/OAIAudienceCommon.h \
     $${PWD}/OAIAudienceCreateCustomRequest.h \
     $${PWD}/OAIAudienceCreateRequest.h \
-    $${PWD}/OAIAudienceCreateRequest_1_audience_type.h \
     $${PWD}/OAIAudienceDataParty.h \
     $${PWD}/OAIAudienceDefinition.h \
     $${PWD}/OAIAudienceDefinitionResponse.h \
@@ -260,7 +259,6 @@ HEADERS += \
     $${PWD}/OAICatalogsItemsFilters.h \
     $${PWD}/OAICatalogsItemsPostFilters.h \
     $${PWD}/OAICatalogsItemsRequest.h \
-    $${PWD}/OAICatalogsItemsRequest_language.h \
     $${PWD}/OAICatalogsItemsUpdateBatchRequest.h \
     $${PWD}/OAICatalogsItemsUpsertBatchRequest.h \
     $${PWD}/OAICatalogsListProductsByFeedBasedFilter.h \
@@ -594,7 +592,6 @@ HEADERS += \
     $${PWD}/OAIPinPromotionSummaryStatus.h \
     $${PWD}/OAIPinUpdate.h \
     $${PWD}/OAIPinUpdate_carousel_slots_inner.h \
-    $${PWD}/OAIPins_analytics_metric_types_parameter_inner.h \
     $${PWD}/OAIPins_list_200_response.h \
     $${PWD}/OAIPins_save_request.h \
     $${PWD}/OAIPinterestTagEventData.h \
@@ -847,7 +844,6 @@ SOURCES += \
     $${PWD}/OAIAudienceCommon.cpp \
     $${PWD}/OAIAudienceCreateCustomRequest.cpp \
     $${PWD}/OAIAudienceCreateRequest.cpp \
-    $${PWD}/OAIAudienceCreateRequest_1_audience_type.cpp \
     $${PWD}/OAIAudienceDataParty.cpp \
     $${PWD}/OAIAudienceDefinition.cpp \
     $${PWD}/OAIAudienceDefinitionResponse.cpp \
@@ -1025,7 +1021,6 @@ SOURCES += \
     $${PWD}/OAICatalogsItemsFilters.cpp \
     $${PWD}/OAICatalogsItemsPostFilters.cpp \
     $${PWD}/OAICatalogsItemsRequest.cpp \
-    $${PWD}/OAICatalogsItemsRequest_language.cpp \
     $${PWD}/OAICatalogsItemsUpdateBatchRequest.cpp \
     $${PWD}/OAICatalogsItemsUpsertBatchRequest.cpp \
     $${PWD}/OAICatalogsListProductsByFeedBasedFilter.cpp \
@@ -1359,7 +1354,6 @@ SOURCES += \
     $${PWD}/OAIPinPromotionSummaryStatus.cpp \
     $${PWD}/OAIPinUpdate.cpp \
     $${PWD}/OAIPinUpdate_carousel_slots_inner.cpp \
-    $${PWD}/OAIPins_analytics_metric_types_parameter_inner.cpp \
     $${PWD}/OAIPins_list_200_response.cpp \
     $${PWD}/OAIPins_save_request.cpp \
     $${PWD}/OAIPinterestTagEventData.cpp \

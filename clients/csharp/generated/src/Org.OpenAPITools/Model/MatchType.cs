@@ -175,7 +175,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, MatchType matchType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(matchType.ToString());
+            writer.WriteStringValue(MatchTypeValueConverter.ToJsonValue(matchType).ToString());
         }
     }
 
@@ -206,14 +206,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the MatchType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="matchType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, MatchType? matchType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(matchType?.ToString() ?? "null");
+            writer.WriteStringValue(matchType.HasValue ? MatchTypeValueConverter.ToJsonValue(matchType.Value).ToString() : "null");
         }
     }
 }

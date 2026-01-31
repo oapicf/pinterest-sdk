@@ -301,8 +301,7 @@ namespace Org.OpenAPITools.Model
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "filters":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                filters = new Option<CatalogsHotelProductGroupFilters?>(JsonSerializer.Deserialize<CatalogsHotelProductGroupFilters>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            filters = new Option<CatalogsHotelProductGroupFilters?>(JsonSerializer.Deserialize<CatalogsHotelProductGroupFilters>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "catalog_id":
                             catalogId = new Option<string?>(utf8JsonReader.GetString()!);
@@ -314,12 +313,10 @@ namespace Org.OpenAPITools.Model
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "created_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdAt = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdAt = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "updated_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedAt = new Option<int?>(utf8JsonReader.GetInt32());
+                            updatedAt = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

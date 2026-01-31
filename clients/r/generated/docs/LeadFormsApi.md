@@ -136,7 +136,7 @@ library(openapi)
 #
 # prepare function argument(s)
 var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-var_lead_form_create_request <- c(LeadFormCreateRequest$new("name_example", "privacy_policy_link_example", "has_accepted_terms_example", "completion_message_example", c(LeadFormQuestion$new(LeadFormQuestionType$new(), LeadFormQuestionFieldType$new(), "custom_question_label_example", c("custom_question_options_example"))), LeadFormStatus$new(), "disclosure_language_example", c(LeadFormCommon_policy_links_inner$new("label_example", "link_example")))) # array[LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
+var_lead_form_create_request <- c(LeadFormCreateRequest$new("name_example", "privacy_policy_link_example", "has_accepted_terms_example", "completion_message_example", LeadFormStatus$new(), "disclosure_language_example", c(LeadFormQuestion$new(LeadFormQuestionType$new(), LeadFormQuestionFieldType$new(), "custom_question_label_example", c("custom_question_options_example"))), c(LeadFormCommon_policy_links_inner$new("label_example", "link_example")))) # array[LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
 
 api_instance <- LeadFormsApi$new()
 # Configure OAuth2 access token for authorization: pinterest_oauth2

@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type DeleteInvitesResultsResponseArrayItemsInnerException* = object
   ## An exception object if there is an error performing the cancellation. It will only be provided if there is an error.
-  inviteId*: string ## Unique identifier of an invite.
-  message*: string ## Error message associated with the error in performing the action on the invite/request.
+  inviteId*: Option[string] ## Unique identifier of an invite.
+  message*: Option[string] ## Error message associated with the error in performing the action on the invite/request.
+
+
+# Custom JSON deserialization for DeleteInvitesResultsResponseArrayItemsInnerException with custom field names
+proc to*(node: JsonNode, T: typedesc[DeleteInvitesResultsResponseArrayItemsInnerException]): DeleteInvitesResultsResponseArrayItemsInnerException =
+  result = DeleteInvitesResultsResponseArrayItemsInnerException()
+  if node.kind == JObject:
+    if node.hasKey("invite_id") and node["invite_id"].kind != JNull:
+      result.inviteId = some(to(node["invite_id"], typeof(result.inviteId.get())))
+    if node.hasKey("message") and node["message"].kind != JNull:
+      result.message = some(to(node["message"], typeof(result.message.get())))
+
+# Custom JSON serialization for DeleteInvitesResultsResponseArrayItemsInnerException with custom field names
+proc `%`*(obj: DeleteInvitesResultsResponseArrayItemsInnerException): JsonNode =
+  result = newJObject()
+  if obj.inviteId.isSome():
+    result["invite_id"] = %obj.inviteId.get()
+  if obj.message.isSome():
+    result["message"] = %obj.message.get()
+

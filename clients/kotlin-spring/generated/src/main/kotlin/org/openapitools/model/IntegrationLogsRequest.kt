@@ -24,7 +24,7 @@ data class IntegrationLogsRequest(
     @get:Size(min=1,max=250) 
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("logs", required = true) val logs: kotlin.collections.List<IntegrationLog>
-    ) {
+) {
 
 }
 

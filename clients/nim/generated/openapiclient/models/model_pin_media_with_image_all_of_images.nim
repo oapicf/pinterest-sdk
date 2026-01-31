@@ -9,12 +9,15 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_object
 
 type PinMediaWithImageAllOfImages* = object
   ## 
-  `150x150`*: object
-  `400x300`*: object
-  `600x`*: object
-  `1200x`*: object
+  `150x150`*: Option[JsonNode]
+  `400x300`*: Option[JsonNode]
+  `600x`*: Option[JsonNode]
+  `1200x`*: Option[JsonNode]
+

@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_delete_invites_results_response_array_items_inner
 
 type DeleteInvitesResultsResponseArray* = object
   ## Response to delete invites sent to Members or Partners, if there is an exception, return the exception mapped with the invite id
-  items*: seq[DeleteInvitesResultsResponseArray_items_inner] ## List of invite/Request deletion status. If there is an error, an exception object will be returned. If the invite/request was successfully cancelled, an invite object will be returned for the invite that was cancelled.
+  items*: Option[seq[DeleteInvitesResultsResponseArray_items_inner]] ## List of invite/Request deletion status. If there is an error, an exception object will be returned. If the invite/request was successfully cancelled, an invite object will be returned for the invite that was cancelled.
+

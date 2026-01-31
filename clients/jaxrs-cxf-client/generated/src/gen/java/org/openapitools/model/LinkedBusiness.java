@@ -8,34 +8,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LinkedBusiness  {
   
-  @ApiModelProperty(example = "username", value = "Username")
  /**
-   * Username
-  **/
+  * Username
+  */
+  @ApiModelProperty(example = "username", value = "Username")
+
   private String username;
 
-  @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_small_url")
  /**
-   * image_small_url
-  **/
+  * image_small_url
+  */
+  @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_small_url")
+
   private String imageSmallUrl;
 
-  @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_medium_url")
  /**
-   * image_medium_url
-  **/
+  * image_medium_url
+  */
+  @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_medium_url")
+
   private String imageMediumUrl;
 
-  @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_large_url")
  /**
-   * image_large_url
-  **/
+  * image_large_url
+  */
+  @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_large_url")
+
   private String imageLargeUrl;
 
-  @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_xlarge_url")
  /**
-   * image_xlarge_url
-  **/
+  * image_xlarge_url
+  */
+  @ApiModelProperty(example = "https://www.example.com/dj23454f53dfk2324.jpg", value = "image_xlarge_url")
+
   private String imageXlargeUrl;
  /**
    * Username

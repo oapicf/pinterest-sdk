@@ -46,16 +46,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(201, default(MediaUpload));
+            // return StatusCode(201, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"media_id\" : \"12345\",\n  \"media_type\" : \"video\",\n  \"upload_url\" : \"https://pinterest-media-upload.s3-accelerate.amazonaws.com/\",\n  \"upload_parameters\" : {\n    \"x-amz-data\" : \"20220127T185143Z\",\n    \"x-amz-signature\" : \"fcd6309a6aaee213348666a72abed8b44552a43acb6b340e8e1b288d21a5fe92\",\n    \"key\" : \"uploads/11/aa/22/3:video:203014033110991560:5212123920968240771\",\n    \"policy\" : \"eyJleHBpcmF0aW9uIjoiMj..==\",\n    \"x-amz-credential\" : \"ASIA6QZJ64OPIKV7FRVX/20220127/us-east-1/s3/aws4_request\",\n    \"x-amz-security-token\" : \"IQoJb3JpZ2luX2VjEJr...==\",\n    \"x-amz-algorithm\" : \"AWS4-HMAC-SHA256\",\n    \"Content-Type\" : \"multipart/form-data\"\n  }\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<MediaUpload>(exampleJson)
-            : default(MediaUpload);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -79,11 +79,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(MediaUploadDetails));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"media_id\" : \"12345\",\n  \"media_type\" : \"video\",\n  \"status\" : \"succeeded\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -91,7 +91,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<MediaUploadDetails>(exampleJson)
-            : default(MediaUploadDetails);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -114,16 +114,16 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(MediaList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"media_id\" : \"12345\",\n    \"media_type\" : \"video\",\n    \"status\" : \"succeeded\"\n  }, {\n    \"media_id\" : \"12345\",\n    \"media_type\" : \"video\",\n    \"status\" : \"succeeded\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<MediaList200Response>(exampleJson)
-            : default(MediaList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

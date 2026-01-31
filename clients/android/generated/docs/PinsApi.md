@@ -33,7 +33,7 @@ PinsApi apiInstance = new PinsApi();
 List<String> pinIds = null; // List<String> | List of Pin IDs.
 Date startDate = null; // Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 Date endDate = null; // Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-List<PinsAnalyticsMetricTypesParameterInner> metricTypes = null; // List<PinsAnalyticsMetricTypesParameterInner> | Pin metric types to get data for.
+List<String> metricTypes = null; // List<String> | Pin metric types to get data for.
 String appTypes = ALL; // String | Apps or devices to get data for, default is all.
 String adAccountId = null; // String | Unique identifier of an ad account.
 try {
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
  **pinIds** | [**List&lt;String&gt;**](String.md)| List of Pin IDs. | [default to null]
  **startDate** | **Date**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **endDate** | **Date**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
- **metricTypes** | [**List&lt;PinsAnalyticsMetricTypesParameterInner&gt;**](PinsAnalyticsMetricTypesParameterInner.md)| Pin metric types to get data for. | [default to null]
+ **metricTypes** | [**List&lt;String&gt;**](String.md)| Pin metric types to get data for. | [default to null] [enum: IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE, SAVE_RATE, TOTAL_COMMENTS, TOTAL_REACTIONS, USER_FOLLOW, PROFILE_VISIT, VIDEO_MRC_VIEW, VIDEO_10S_VIEW, QUARTILE_95_PERCENT_VIEW, VIDEO_V50_WATCH_TIME, VIDEO_START, VIDEO_AVG_WATCH_TIME]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]
 
@@ -89,7 +89,7 @@ PinsApi apiInstance = new PinsApi();
 String pinId = null; // String | Unique identifier of a Pin.
 Date startDate = null; // Date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 Date endDate = null; // Date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-List<PinsAnalyticsMetricTypesParameterInner> metricTypes = null; // List<PinsAnalyticsMetricTypesParameterInner> | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+List<String> metricTypes = null; // List<String> | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 String appTypes = ALL; // String | Apps or devices to get data for, default is all.
 String splitField = NO_SPLIT; // String | How to split the data into groups. Not including this param means data won't be split.
 String adAccountId = null; // String | Unique identifier of an ad account.
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
  **pinId** | **String**| Unique identifier of a Pin. | [default to null]
  **startDate** | **Date**| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **endDate** | **Date**| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
- **metricTypes** | [**List&lt;PinsAnalyticsMetricTypesParameterInner&gt;**](PinsAnalyticsMetricTypesParameterInner.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | [default to null]
+ **metricTypes** | [**List&lt;String&gt;**](String.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | [default to null] [enum: IMPRESSION, OUTBOUND_CLICK, PIN_CLICK, SAVE, SAVE_RATE, TOTAL_COMMENTS, TOTAL_REACTIONS, USER_FOLLOW, PROFILE_VISIT, VIDEO_MRC_VIEW, VIDEO_10S_VIEW, QUARTILE_95_PERCENT_VIEW, VIDEO_V50_WATCH_TIME, VIDEO_START, VIDEO_AVG_WATCH_TIME]
  **appTypes** | **String**| Apps or devices to get data for, default is all. | [optional] [default to ALL] [enum: ALL, MOBILE, TABLET, WEB]
  **splitField** | **String**| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to NO_SPLIT] [enum: NO_SPLIT, APP_TYPE]
  **adAccountId** | **String**| Unique identifier of an ad account. | [optional] [default to null]

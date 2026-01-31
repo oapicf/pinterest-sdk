@@ -15,7 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ConversionTagListResponse  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid ConversionTagResponse> items = new ArrayList<>();
  /**
    * Get items

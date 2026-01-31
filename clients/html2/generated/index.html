@@ -3064,18 +3064,14 @@ ul.nav-tabs {
         "$ref" : "#/components/schemas/AudienceDescription"
       },
       "audience_type" : {
-        "$ref" : "#/components/schemas/AudienceCreateRequest_1_audience_type"
+        "title" : "audience_type",
+        "type" : "string",
+        "description" : "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/AudienceType"
+        } ]
       }
     }
-  } ]
-};
-    defs["AudienceCreateRequest_1_audience_type"] = {
-  "type" : "string",
-  "allOf" : [ {
-    "$ref" : "#/components/schemas/AudienceType"
-  }, {
-    "title" : "audience_type",
-    "description" : "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive."
   } ]
 };
     defs["AudienceDataParty"] = {
@@ -5070,7 +5066,9 @@ ul.nav-tabs {
       "$ref" : "#/components/schemas/Country"
     },
     "language" : {
-      "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+      "type" : "string",
+      "description" : "We recommend using the CatalogsLocale values.",
+      "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ]
     },
     "items" : {
       "maxItems" : 1000,
@@ -5191,9 +5189,8 @@ ul.nav-tabs {
       "type" : "string",
       "allOf" : [ {
         "$ref" : "#/components/schemas/CatalogsStatus"
-      }, {
-        "default" : "ACTIVE"
-      } ]
+      } ],
+      "default" : "ACTIVE"
     }
   },
   "additionalProperties" : false,
@@ -6284,9 +6281,8 @@ ul.nav-tabs {
       "type" : "string",
       "allOf" : [ {
         "$ref" : "#/components/schemas/CatalogsStatus"
-      }, {
-        "default" : "ACTIVE"
-      } ]
+      } ],
+      "default" : "ACTIVE"
     }
   },
   "additionalProperties" : false,
@@ -6442,7 +6438,9 @@ ul.nav-tabs {
       "$ref" : "#/components/schemas/Country"
     },
     "language" : {
-      "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+      "type" : "string",
+      "description" : "We recommend using the CatalogsLocale values.",
+      "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ]
     },
     "items" : {
       "maxItems" : 1000,
@@ -6557,9 +6555,8 @@ ul.nav-tabs {
       "type" : "string",
       "allOf" : [ {
         "$ref" : "#/components/schemas/CatalogsStatus"
-      }, {
-        "default" : "ACTIVE"
-      } ]
+      } ],
+      "default" : "ACTIVE"
     }
   },
   "additionalProperties" : false,
@@ -7334,7 +7331,9 @@ ul.nav-tabs {
       "$ref" : "#/components/schemas/Country"
     },
     "language" : {
-      "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+      "type" : "string",
+      "description" : "We recommend using the CatalogsLocale values.",
+      "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ]
     },
     "operation" : {
       "$ref" : "#/components/schemas/BatchOperation"
@@ -7360,7 +7359,9 @@ ul.nav-tabs {
       "$ref" : "#/components/schemas/Country"
     },
     "language" : {
-      "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+      "type" : "string",
+      "description" : "We recommend using the CatalogsLocale values.",
+      "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ]
     },
     "operation" : {
       "$ref" : "#/components/schemas/BatchOperation"
@@ -7384,7 +7385,9 @@ ul.nav-tabs {
       "$ref" : "#/components/schemas/Country"
     },
     "language" : {
-      "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+      "type" : "string",
+      "description" : "We recommend using the CatalogsLocale values.",
+      "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ]
     },
     "operation" : {
       "$ref" : "#/components/schemas/BatchOperation"
@@ -7456,7 +7459,9 @@ ul.nav-tabs {
       "$ref" : "#/components/schemas/Country"
     },
     "language" : {
-      "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+      "type" : "string",
+      "description" : "We recommend using the CatalogsLocale values.",
+      "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ]
     },
     "filters" : {
       "$ref" : "#/components/schemas/CatalogsItemsPostFilters"
@@ -7464,14 +7469,6 @@ ul.nav-tabs {
   },
   "additionalProperties" : false,
   "description" : "Request object of catalogs items"
-};
-    defs["CatalogsItemsRequest_language"] = {
-  "description" : "We recommend using the CatalogsLocale values.",
-  "anyOf" : [ {
-    "$ref" : "#/components/schemas/CatalogsLocale"
-  }, {
-    "$ref" : "#/components/schemas/Language"
-  } ]
 };
     defs["CatalogsItemsUpdateBatchRequest"] = {
   "required" : [ "country", "items", "language", "operation" ],
@@ -7481,7 +7478,9 @@ ul.nav-tabs {
       "$ref" : "#/components/schemas/Country"
     },
     "language" : {
-      "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+      "type" : "string",
+      "description" : "We recommend using the CatalogsLocale values.",
+      "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ]
     },
     "operation" : {
       "$ref" : "#/components/schemas/BatchOperation"
@@ -7507,7 +7506,9 @@ ul.nav-tabs {
       "$ref" : "#/components/schemas/Country"
     },
     "language" : {
-      "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+      "type" : "string",
+      "description" : "We recommend using the CatalogsLocale values.",
+      "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ]
     },
     "operation" : {
       "$ref" : "#/components/schemas/BatchOperation"
@@ -8201,7 +8202,9 @@ ul.nav-tabs {
       "$ref" : "#/components/schemas/Country"
     },
     "language" : {
-      "$ref" : "#/components/schemas/CatalogsItemsRequest_language"
+      "type" : "string",
+      "description" : "We recommend using the CatalogsLocale values.",
+      "enum" : [ "af-ZA", "ar-SA", "bg-BG", "bn-IN", "cs-CZ", "da-DK", "de", "el-GR", "en-AU", "en-CA", "en-GB", "en-IN", "en-US", "es-419", "es-AR", "es-ES", "es-MX", "fi-FI", "fr", "fr-CA", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it", "ja", "ko-KR", "ms-MY", "nb-NO", "nl", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sv-SE", "te-IN", "th-TH", "tl-PH", "tr", "uk-UA", "vi-VN", "zh-CN", "zh-TW", "AM", "AR", "AZ", "BG", "BN", "BS", "CA", "CS", "DA", "DV", "DZ", "DE", "EL", "EN", "ES", "ET", "FA", "FI", "FR", "HE", "HI", "HR", "HU", "HY", "ID", "IN", "IS", "IT", "IW", "JA", "KA", "KM", "KO", "LO", "LT", "LV", "MK", "MN", "MS", "MY", "NB", "NE", "NL", "NO", "PL", "PT", "RO", "RU", "SK", "SL", "SQ", "SR", "SV", "TL", "UK", "VI", "TE", "TH", "TR", "XX", "ZH" ]
     },
     "items" : {
       "maxItems" : 1000,
@@ -8330,9 +8333,8 @@ ul.nav-tabs {
       "type" : "string",
       "allOf" : [ {
         "$ref" : "#/components/schemas/CatalogsStatus"
-      }, {
-        "default" : "ACTIVE"
-      } ]
+      } ],
+      "default" : "ACTIVE"
     }
   },
   "additionalProperties" : false,
@@ -9852,23 +9854,26 @@ ul.nav-tabs {
   }
 };
     defs["ConversionTagCreate"] = {
-  "title" : "ConversionTagCreate",
-  "required" : [ "name" ],
   "type" : "object",
-  "properties" : {
-    "name" : {
-      "title" : "name",
-      "type" : "string",
-      "description" : "Conversion tag name.",
-      "example" : "ACME Tools Tag"
-    }
-  },
-  "example" : {
-    "name" : "ACME Tools Tag"
-  },
   "allOf" : [ {
     "$ref" : "#/components/schemas/ConversionTagConfigs"
-  } ]
+  }, {
+    "title" : "ConversionTagCreate",
+    "required" : [ "name" ],
+    "type" : "object",
+    "properties" : {
+      "name" : {
+        "title" : "name",
+        "type" : "string",
+        "description" : "Conversion tag name.",
+        "example" : "ACME Tools Tag"
+      }
+    },
+    "example" : {
+      "name" : "ACME Tools Tag"
+    }
+  } ],
+  "example" : null
 };
     defs["ConversionTagListResponse"] = {
   "type" : "object",
@@ -10084,55 +10089,7 @@ ul.nav-tabs {
   "nullable" : true
 };
     defs["CreateMMMReportRequest"] = {
-  "required" : [ "columns", "end_date", "granularity", "level", "report_name", "start_date", "targeting_types" ],
   "type" : "object",
-  "properties" : {
-    "report_name" : {
-      "title" : "report_name",
-      "type" : "string",
-      "description" : "Name of the Marketing Mix Modeling (MMM) report"
-    },
-    "start_date" : {
-      "pattern" : "^(\\d{4})-(\\d{2})-(\\d{2})$",
-      "type" : "string",
-      "description" : "Metric report start date (UTC). Format: YYYY-MM-DD",
-      "example" : "2020-12-20"
-    },
-    "end_date" : {
-      "pattern" : "^(\\d{4})-(\\d{2})-(\\d{2})$",
-      "type" : "string",
-      "description" : "Metric report end date (UTC). Format: YYYY-MM-DD",
-      "example" : "2020-12-20"
-    },
-    "granularity" : {
-      "type" : "string",
-      "description" : "DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.",
-      "enum" : [ "DAY", "WEEK" ]
-    },
-    "level" : {
-      "type" : "string",
-      "description" : "Level of the report",
-      "enum" : [ "CAMPAIGN_TARGETING", "AD_GROUP_TARGETING" ]
-    },
-    "targeting_types" : {
-      "title" : "targeting_types",
-      "maxItems" : 5,
-      "minItems" : 1,
-      "type" : "array",
-      "description" : "List of targeting types",
-      "example" : [ "GENDER" ],
-      "items" : {
-        "$ref" : "#/components/schemas/MMMReportingTargetingType"
-      }
-    },
-    "columns" : {
-      "type" : "array",
-      "description" : "Metric and entity columns",
-      "items" : {
-        "$ref" : "#/components/schemas/MMMReportingColumn"
-      }
-    }
-  },
   "allOf" : [ {
     "type" : "object",
     "properties" : {
@@ -10144,7 +10101,59 @@ ul.nav-tabs {
         }
       }
     }
-  } ]
+  }, {
+    "required" : [ "columns", "end_date", "granularity", "level", "report_name", "start_date", "targeting_types" ],
+    "type" : "object",
+    "properties" : {
+      "report_name" : {
+        "title" : "report_name",
+        "type" : "string",
+        "description" : "Name of the Marketing Mix Modeling (MMM) report"
+      },
+      "start_date" : {
+        "pattern" : "^(\\d{4})-(\\d{2})-(\\d{2})$",
+        "type" : "string",
+        "description" : "Metric report start date (UTC). Format: YYYY-MM-DD",
+        "example" : "2020-12-20"
+      },
+      "end_date" : {
+        "pattern" : "^(\\d{4})-(\\d{2})-(\\d{2})$",
+        "type" : "string",
+        "description" : "Metric report end date (UTC). Format: YYYY-MM-DD",
+        "example" : "2020-12-20"
+      },
+      "granularity" : {
+        "type" : "string",
+        "description" : "DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly.",
+        "enum" : [ "DAY", "WEEK" ]
+      },
+      "level" : {
+        "type" : "string",
+        "description" : "Level of the report",
+        "enum" : [ "CAMPAIGN_TARGETING", "AD_GROUP_TARGETING" ]
+      },
+      "targeting_types" : {
+        "title" : "targeting_types",
+        "maxItems" : 5,
+        "minItems" : 1,
+        "type" : "array",
+        "description" : "List of targeting types",
+        "example" : [ "GENDER" ],
+        "items" : {
+          "$ref" : "#/components/schemas/MMMReportingTargetingType"
+        }
+      },
+      "columns" : {
+        "type" : "array",
+        "description" : "Metric and entity columns",
+        "items" : {
+          "$ref" : "#/components/schemas/MMMReportingColumn"
+        }
+      }
+    },
+    "example" : null
+  } ],
+  "example" : null
 };
     defs["CreateMMMReportResponse"] = {
   "type" : "object",
@@ -11845,30 +11854,30 @@ ul.nav-tabs {
 };
     defs["InviteBusinessRoleBinding"] = {
   "type" : "object",
-  "properties" : {
-    "created_by_business_id" : {
-      "type" : "string",
-      "description" : "Unique identifier for the business that created the invite/request.",
-      "example" : "1234567890123"
-    },
-    "created_by_user_id" : {
-      "type" : "string",
-      "description" : "Unique identifier for the user that created the invite/request.",
-      "example" : "1234567890123"
-    },
-    "user" : {
-      "type" : "object",
-      "description" : "Metadata for the user that updated the invite/request.",
-      "allOf" : [ {
-        "$ref" : "#/components/schemas/BusinessAccessUserSummary"
-      } ]
-    }
-  },
-  "description" : "An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.",
-  "nullable" : true,
   "allOf" : [ {
     "$ref" : "#/components/schemas/BaseInviteDataResponse"
-  } ]
+  }, {
+    "type" : "object",
+    "properties" : {
+      "created_by_business_id" : {
+        "type" : "string",
+        "description" : "Unique identifier for the business that created the invite/request.",
+        "example" : "1234567890123"
+      },
+      "created_by_user_id" : {
+        "type" : "string",
+        "description" : "Unique identifier for the user that created the invite/request.",
+        "example" : "1234567890123"
+      },
+      "user" : {
+        "$ref" : "#/components/schemas/InviteBusinessRoleBinding_allOf_user"
+      }
+    },
+    "description" : "An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.",
+    "nullable" : true,
+    "example" : null
+  } ],
+  "example" : null
 };
     defs["InviteExceptionResponse"] = {
   "type" : "object",
@@ -11906,43 +11915,37 @@ ul.nav-tabs {
 };
     defs["InviteResponse"] = {
   "type" : "object",
-  "properties" : {
-    "assets_summary" : {
-      "$ref" : "#/components/schemas/InviteAssetsSummary"
-    },
-    "business_roles" : {
-      "type" : "array",
-      "description" : "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.",
-      "example" : [ "BIZ_ADMIN" ],
-      "items" : {
-        "$ref" : "#/components/schemas/BusinessRoleResponse"
-      }
-    },
-    "created_by_business" : {
-      "type" : "object",
-      "description" : "Metadata for the business that created the invite/request.",
-      "nullable" : true,
-      "allOf" : [ {
-        "$ref" : "#/components/schemas/BusinessAccessUserSummary"
-      } ]
-    },
-    "created_by_user" : {
-      "type" : "object",
-      "description" : "Metadata for the user that created the invite/request.",
-      "nullable" : true,
-      "allOf" : [ {
-        "$ref" : "#/components/schemas/BusinessAccessUserSummary"
-      } ]
-    },
-    "created_time" : {
-      "type" : "integer",
-      "description" : "The time the invite/request was created. Returned in milliseconds.",
-      "example" : 1646767577816
-    }
-  },
   "allOf" : [ {
     "$ref" : "#/components/schemas/BaseInviteDataResponse"
-  } ]
+  }, {
+    "type" : "object",
+    "properties" : {
+      "assets_summary" : {
+        "$ref" : "#/components/schemas/InviteAssetsSummary"
+      },
+      "business_roles" : {
+        "type" : "array",
+        "description" : "The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER.",
+        "example" : [ "BIZ_ADMIN" ],
+        "items" : {
+          "$ref" : "#/components/schemas/BusinessRoleResponse"
+        }
+      },
+      "created_by_business" : {
+        "$ref" : "#/components/schemas/InviteResponse_allOf_created_by_business"
+      },
+      "created_by_user" : {
+        "$ref" : "#/components/schemas/InviteResponse_allOf_created_by_user"
+      },
+      "created_time" : {
+        "type" : "integer",
+        "description" : "The time the invite/request was created. Returned in milliseconds.",
+        "example" : 1646767577816
+      }
+    },
+    "example" : null
+  } ],
+  "example" : null
 };
     defs["InviteStatus"] = {
   "type" : "string",
@@ -12602,8 +12605,6 @@ ul.nav-tabs {
   "type" : "object",
   "allOf" : [ {
     "$ref" : "#/components/schemas/LeadFormCommon"
-  }, {
-    "required" : [ "completion_message", "has_accepted_terms", "name", "privacy_policy_link", "questions" ]
   } ]
 };
     defs["LeadFormQuestion"] = {
@@ -13323,16 +13324,7 @@ ul.nav-tabs {
   "enum" : [ "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BYN", "BYR", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY", "COP", "CRC", "CUC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GGP", "GHS", "GIP", "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "IMP", "INR", "IQD", "IRR", "ISK", "JEP", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRO", "MUR", "MVR", "MWK", "MXN", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLL", "SOS", "SPL", "SRD", "STD", "SVC", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TVD", "TWD", "TZS", "UAH", "UGX", "USD", "UYU", "UZS", "VEF", "VND", "VUV", "WST", "XAF", "XCD", "XDR", "XOF", "XPF", "YER", "ZAR", "ZMW", "ZWD", null ]
 };
     defs["OauthAccessTokenRequestClientCredentials"] = {
-  "title" : "client_credentials",
-  "required" : [ "grant_type" ],
   "type" : "object",
-  "properties" : {
-    "grant_type" : {
-      "type" : "string",
-      "enum" : [ "authorization_code", "refresh_token", "client_credentials" ]
-    }
-  },
-  "description" : "A request to receive a client token.",
   "allOf" : [ {
     "required" : [ "scope" ],
     "type" : "object",
@@ -13341,19 +13333,23 @@ ul.nav-tabs {
         "type" : "string"
       }
     }
-  } ]
+  }, {
+    "title" : "client_credentials",
+    "required" : [ "grant_type" ],
+    "type" : "object",
+    "properties" : {
+      "grant_type" : {
+        "type" : "string",
+        "enum" : [ "authorization_code", "refresh_token", "client_credentials" ]
+      }
+    },
+    "description" : "A request to receive a client token.",
+    "example" : null
+  } ],
+  "example" : null
 };
     defs["OauthAccessTokenRequestCode"] = {
-  "title" : "authorization_code",
-  "required" : [ "grant_type" ],
   "type" : "object",
-  "properties" : {
-    "grant_type" : {
-      "type" : "string",
-      "enum" : [ "authorization_code", "refresh_token", "client_credentials" ]
-    }
-  },
-  "description" : "A request to exchange an authorization code for an access token.",
   "allOf" : [ {
     "required" : [ "code", "redirect_uri" ],
     "type" : "object",
@@ -13365,19 +13361,23 @@ ul.nav-tabs {
         "type" : "string"
       }
     }
-  } ]
+  }, {
+    "title" : "authorization_code",
+    "required" : [ "grant_type" ],
+    "type" : "object",
+    "properties" : {
+      "grant_type" : {
+        "type" : "string",
+        "enum" : [ "authorization_code", "refresh_token", "client_credentials" ]
+      }
+    },
+    "description" : "A request to exchange an authorization code for an access token.",
+    "example" : null
+  } ],
+  "example" : null
 };
     defs["OauthAccessTokenRequestRefresh"] = {
-  "title" : "refresh_token",
-  "required" : [ "grant_type" ],
   "type" : "object",
-  "properties" : {
-    "grant_type" : {
-      "type" : "string",
-      "enum" : [ "authorization_code", "refresh_token", "client_credentials" ]
-    }
-  },
-  "description" : "A request to exchange a refresh token for a new access token.",
   "allOf" : [ {
     "required" : [ "refresh_token" ],
     "type" : "object",
@@ -13393,7 +13393,20 @@ ul.nav-tabs {
         "description" : "Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\"."
       }
     }
-  } ]
+  }, {
+    "title" : "refresh_token",
+    "required" : [ "grant_type" ],
+    "type" : "object",
+    "properties" : {
+      "grant_type" : {
+        "type" : "string",
+        "enum" : [ "authorization_code", "refresh_token", "client_credentials" ]
+      }
+    },
+    "description" : "A request to exchange a refresh token for a new access token.",
+    "example" : null
+  } ],
+  "example" : null
 };
     defs["OauthAccessTokenResponse"] = {
   "title" : "OAuth access token response",
@@ -13456,29 +13469,7 @@ ul.nav-tabs {
   "description" : "A successful OAuth client token response for the client token flow."
 };
     defs["OauthAccessTokenResponseCode"] = {
-  "title" : "OAuth access token response",
-  "required" : [ "access_token", "expires_in", "scope", "token_type" ],
   "type" : "object",
-  "properties" : {
-    "response_type" : {
-      "type" : "string",
-      "enum" : [ "authorization_code", "refresh_token", "client_credentials" ]
-    },
-    "access_token" : {
-      "type" : "string"
-    },
-    "token_type" : {
-      "type" : "string",
-      "default" : "bearer"
-    },
-    "expires_in" : {
-      "type" : "integer"
-    },
-    "scope" : {
-      "type" : "string"
-    }
-  },
-  "description" : "A successful OAuth access token response for the authorization code flow.",
   "allOf" : [ {
     "required" : [ "refresh_token", "refresh_token_expires_in" ],
     "type" : "object",
@@ -13490,32 +13481,36 @@ ul.nav-tabs {
         "type" : "integer"
       }
     }
-  } ]
+  }, {
+    "title" : "OAuth access token response",
+    "required" : [ "access_token", "expires_in", "scope", "token_type" ],
+    "type" : "object",
+    "properties" : {
+      "response_type" : {
+        "type" : "string",
+        "enum" : [ "authorization_code", "refresh_token", "client_credentials" ]
+      },
+      "access_token" : {
+        "type" : "string"
+      },
+      "token_type" : {
+        "type" : "string",
+        "default" : "bearer"
+      },
+      "expires_in" : {
+        "type" : "integer"
+      },
+      "scope" : {
+        "type" : "string"
+      }
+    },
+    "description" : "A successful OAuth access token response for the authorization code flow.",
+    "example" : null
+  } ],
+  "example" : null
 };
     defs["OauthAccessTokenResponseEverlastingRefresh"] = {
-  "title" : "OAuth access token response",
-  "required" : [ "access_token", "expires_in", "scope", "token_type" ],
   "type" : "object",
-  "properties" : {
-    "response_type" : {
-      "type" : "string",
-      "enum" : [ "authorization_code", "refresh_token", "client_credentials" ]
-    },
-    "access_token" : {
-      "type" : "string"
-    },
-    "token_type" : {
-      "type" : "string",
-      "default" : "bearer"
-    },
-    "expires_in" : {
-      "type" : "integer"
-    },
-    "scope" : {
-      "type" : "string"
-    }
-  },
-  "description" : "A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.",
   "allOf" : [ {
     "required" : [ "refresh_token", "refresh_token_expires_at", "refresh_token_expires_in" ],
     "type" : "object",
@@ -13530,32 +13525,36 @@ ul.nav-tabs {
         "type" : "integer"
       }
     }
-  } ]
+  }, {
+    "title" : "OAuth access token response",
+    "required" : [ "access_token", "expires_in", "scope", "token_type" ],
+    "type" : "object",
+    "properties" : {
+      "response_type" : {
+        "type" : "string",
+        "enum" : [ "authorization_code", "refresh_token", "client_credentials" ]
+      },
+      "access_token" : {
+        "type" : "string"
+      },
+      "token_type" : {
+        "type" : "string",
+        "default" : "bearer"
+      },
+      "expires_in" : {
+        "type" : "integer"
+      },
+      "scope" : {
+        "type" : "string"
+      }
+    },
+    "description" : "A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.",
+    "example" : null
+  } ],
+  "example" : null
 };
     defs["OauthAccessTokenResponseIntegrationRefresh"] = {
-  "title" : "OAuth access token response",
-  "required" : [ "access_token", "expires_in", "scope", "token_type" ],
   "type" : "object",
-  "properties" : {
-    "response_type" : {
-      "type" : "string",
-      "enum" : [ "authorization_code", "refresh_token", "client_credentials" ]
-    },
-    "access_token" : {
-      "type" : "string"
-    },
-    "token_type" : {
-      "type" : "string",
-      "default" : "bearer"
-    },
-    "expires_in" : {
-      "type" : "integer"
-    },
-    "scope" : {
-      "type" : "string"
-    }
-  },
-  "description" : "A successful OAuth access token response for the refresh token flow, with an added refresh token.",
   "allOf" : [ {
     "required" : [ "refresh_token", "refresh_token_expires_in" ],
     "type" : "object",
@@ -13567,7 +13566,33 @@ ul.nav-tabs {
         "type" : "integer"
       }
     }
-  } ]
+  }, {
+    "title" : "OAuth access token response",
+    "required" : [ "access_token", "expires_in", "scope", "token_type" ],
+    "type" : "object",
+    "properties" : {
+      "response_type" : {
+        "type" : "string",
+        "enum" : [ "authorization_code", "refresh_token", "client_credentials" ]
+      },
+      "access_token" : {
+        "type" : "string"
+      },
+      "token_type" : {
+        "type" : "string",
+        "default" : "bearer"
+      },
+      "expires_in" : {
+        "type" : "integer"
+      },
+      "scope" : {
+        "type" : "string"
+      }
+    },
+    "description" : "A successful OAuth access token response for the refresh token flow, with an added refresh token.",
+    "example" : null
+  } ],
+  "example" : null
 };
     defs["OauthAccessTokenResponseRefresh"] = {
   "title" : "OAuth access token response",
@@ -14734,17 +14759,6 @@ ul.nav-tabs {
       "description" : "Carousel Pin slot link."
     }
   }
-};
-    defs["pins_analytics_metric_types_parameter_inner"] = {
-  "oneOf" : [ {
-    "type" : "string",
-    "description" : "Standard Pin metric types",
-    "enum" : [ "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "TOTAL_COMMENTS", "TOTAL_REACTIONS", "USER_FOLLOW", "PROFILE_VISIT" ]
-  }, {
-    "type" : "string",
-    "description" : "Video Pin metric types",
-    "enum" : [ "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "VIDEO_MRC_VIEW", "VIDEO_10S_VIEW", "QUARTILE_95_PERCENT_VIEW", "VIDEO_V50_WATCH_TIME", "VIDEO_START", "VIDEO_AVG_WATCH_TIME", "TOTAL_COMMENTS", "TOTAL_REACTIONS" ]
-  } ]
 };
     defs["pins_list_200_response"] = {
   "allOf" : [ {
@@ -21923,6 +21937,7 @@ the report when it is ready. NOTE: An additional limit of 5 queries per minute p
   &quot;level&quot; : &quot;CAMPAIGN_TARGETING&quot;,
   &quot;granularity&quot; : &quot;DAY&quot;,
   &quot;columns&quot; : [ &quot;SPEND_IN_DOLLAR&quot;, &quot;SPEND_IN_DOLLAR&quot; ],
+  &quot;countries&quot; : [ &quot;US&quot;, &quot;US&quot; ],
   &quot;report_name&quot; : &quot;report_name&quot;,
   &quot;targeting_types&quot; : [ &quot;GENDER&quot; ],
   &quot;start_date&quot; : &quot;2020-12-20&quot;
@@ -32430,6 +32445,9 @@ $(document).ready(function() {
                                 </div>
                                 <input id='responses-Ads-adPreviews/create-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Ads-adPreviews/create-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Ads-adPreviews/create-title-default"></h3>
                             <p id="examples-Ads-adPreviews/create-description-default" class="marked"></p>
@@ -37323,6 +37341,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-AdvancedAuction-advancedAuctionItemsGet/post-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-AdvancedAuction-advancedAuctionItemsGet/post-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-AdvancedAuction-advancedAuctionItemsGet/post-title-401"></h3>
                             <p id="examples-AdvancedAuction-advancedAuctionItemsGet/post-description-401" class="marked"></p>
@@ -37407,6 +37428,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-AdvancedAuction-advancedAuctionItemsGet/post-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-AdvancedAuction-advancedAuctionItemsGet/post-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-AdvancedAuction-advancedAuctionItemsGet/post-title-403"></h3>
                             <p id="examples-AdvancedAuction-advancedAuctionItemsGet/post-description-403" class="marked"></p>
@@ -38204,6 +38228,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-AdvancedAuction-advancedAuctionItemsSubmit/post-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-AdvancedAuction-advancedAuctionItemsSubmit/post-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-AdvancedAuction-advancedAuctionItemsSubmit/post-title-401"></h3>
                             <p id="examples-AdvancedAuction-advancedAuctionItemsSubmit/post-description-401" class="marked"></p>
@@ -38288,6 +38315,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-AdvancedAuction-advancedAuctionItemsSubmit/post-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-AdvancedAuction-advancedAuctionItemsSubmit/post-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-AdvancedAuction-advancedAuctionItemsSubmit/post-title-403"></h3>
                             <p id="examples-AdvancedAuction-advancedAuctionItemsSubmit/post-description-403" class="marked"></p>
@@ -44274,7 +44304,7 @@ For more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;ht
  -H "Content-Type: application/json" \
  "https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/audiences" \
  -d '{
-  &quot;audience_type&quot; : { },
+  &quot;audience_type&quot; : &quot;audience_type&quot;,
   &quot;name&quot; : &quot;string&quot;,
   &quot;rule&quot; : {
     &quot;country&quot; : &quot;US&quot;,
@@ -47890,6 +47920,9 @@ $(document).ready(function() {
                                 </div>
                                 <input id='responses-Billing-adsCredit/redeem-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Billing-adsCredit/redeem-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Billing-adsCredit/redeem-title-default"></h3>
                             <p id="examples-Billing-adsCredit/redeem-description-default" class="marked"></p>
@@ -68958,7 +68991,7 @@ String *businessId = 729090764583391194; // Unique identifier of the requesting 
 String *partnerId = 729090764583391194; // The partner id to be bound to the Business (default to null)
 PartnerType *partnerType = INTERNAL; // Specifies whether to fetch internal or external (shared) partners.
 If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br>
-If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional) (default to null)
+If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional) (default to INTERNAL)
 String *assetType = AD_ACCOUNT; // A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to AD_ACCOUNT)
 Integer *startIndex = 0; // An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 Integer *pageSize = 56; // Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
@@ -69041,7 +69074,7 @@ namespace Example
             var partnerId = 729090764583391194;  // String | The partner id to be bound to the Business (default to null)
             var partnerType = new PartnerType(); // PartnerType | Specifies whether to fetch internal or external (shared) partners.
 If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br>
-If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)  (default to null)
+If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)  (default to INTERNAL)
             var assetType = AD_ACCOUNT;  // String | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)  (default to AD_ACCOUNT)
             var startIndex = 0;  // Integer | An index to start fetching the results from. Only the results starting from this index will be returned. (optional)  (default to 0)
             var pageSize = 56;  // Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
@@ -69133,7 +69166,7 @@ businessId = 729090764583391194 # String | Unique identifier of the requesting b
 partnerId = 729090764583391194 # String | The partner id to be bound to the Business (default to null)
 partnerType = INTERNAL # PartnerType | Specifies whether to fetch internal or external (shared) partners.
 If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br>
-If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional) (default to null)
+If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional) (default to INTERNAL)
 assetType = AD_ACCOUNT # String | A resource type to filter the assets by. Only assets of the specified type will be returned. (optional) (default to AD_ACCOUNT)
 startIndex = 0 # Integer | An index to start fetching the results from. Only the results starting from this index will be returned. (optional) (default to 0)
 pageSize = 56 # Integer | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional) (default to 25)
@@ -82460,6 +82493,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogs/create-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogs/create-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogs/create-title-401"></h3>
                             <p id="examples-Catalogs-catalogs/create-description-401" class="marked"></p>
@@ -82544,6 +82580,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogs/create-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogs/create-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogs/create-title-default"></h3>
                             <p id="examples-Catalogs-catalogs/create-description-default" class="marked"></p>
@@ -83170,6 +83209,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogs/list-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogs/list-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogs/list-title-401"></h3>
                             <p id="examples-Catalogs-catalogs/list-description-401" class="marked"></p>
@@ -83254,6 +83296,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogs/list-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogs/list-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogs/list-title-default"></h3>
                             <p id="examples-Catalogs-catalogs/list-description-default" class="marked"></p>
@@ -83962,6 +84007,9 @@ Specify whether to return 90d and lifetime Pin metrics. Total comments and total
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroupPins/list-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroupPins/list-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroupPins/list-title-401"></h3>
                             <p id="examples-Catalogs-catalogsProductGroupPins/list-description-401" class="marked"></p>
@@ -84046,6 +84094,9 @@ Specify whether to return 90d and lifetime Pin metrics. Total comments and total
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroupPins/list-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroupPins/list-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroupPins/list-title-404"></h3>
                             <p id="examples-Catalogs-catalogsProductGroupPins/list-description-404" class="marked"></p>
@@ -84130,6 +84181,9 @@ Specify whether to return 90d and lifetime Pin metrics. Total comments and total
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroupPins/list-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroupPins/list-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroupPins/list-title-default"></h3>
                             <p id="examples-Catalogs-catalogsProductGroupPins/list-description-default" class="marked"></p>
@@ -84906,6 +84960,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/create-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/create-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/create-title-401"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/create-description-401" class="marked"></p>
@@ -84990,6 +85047,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/create-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/create-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/create-title-403"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/create-description-403" class="marked"></p>
@@ -85080,6 +85140,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/create-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/create-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/create-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/create-title-409"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/create-description-409" class="marked"></p>
@@ -85182,6 +85248,18 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/create-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/create-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/create-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/create-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/create-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/create-title-default"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/create-description-default" class="marked"></p>
@@ -85988,6 +86066,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/createMany-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/createMany-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/createMany-title-401"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/createMany-description-401" class="marked"></p>
@@ -86072,6 +86153,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/createMany-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/createMany-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/createMany-title-403"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/createMany-description-403" class="marked"></p>
@@ -86162,6 +86246,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/createMany-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/createMany-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/createMany-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/createMany-title-409"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/createMany-description-409" class="marked"></p>
@@ -86264,6 +86354,18 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/createMany-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/createMany-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/createMany-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/createMany-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/createMany-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/createMany-title-default"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/createMany-description-default" class="marked"></p>
@@ -86848,6 +86950,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/delete-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/delete-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/delete-title-401"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/delete-description-401" class="marked"></p>
@@ -86932,6 +87037,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/delete-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/delete-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/delete-title-403"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/delete-description-403" class="marked"></p>
@@ -87022,6 +87130,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/delete-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/delete-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/delete-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/delete-title-404"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/delete-description-404" class="marked"></p>
@@ -87106,6 +87220,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/delete-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/delete-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/delete-title-409"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/delete-description-409" class="marked"></p>
@@ -87202,6 +87319,15 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/delete-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/delete-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/delete-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/delete-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/delete-title-default"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/delete-description-default" class="marked"></p>
@@ -87779,6 +87905,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/deleteMany-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/deleteMany-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/deleteMany-title-403"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/deleteMany-description-403" class="marked"></p>
@@ -87869,6 +87998,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/deleteMany-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/deleteMany-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/deleteMany-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/deleteMany-title-404"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/deleteMany-description-404" class="marked"></p>
@@ -87953,6 +88088,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/deleteMany-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/deleteMany-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/deleteMany-title-409"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/deleteMany-description-409" class="marked"></p>
@@ -88049,6 +88187,15 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/deleteMany-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/deleteMany-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/deleteMany-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/deleteMany-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/deleteMany-title-default"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/deleteMany-description-default" class="marked"></p>
@@ -88654,6 +88801,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/get-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/get-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/get-title-401"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/get-description-401" class="marked"></p>
@@ -88738,6 +88888,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/get-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/get-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/get-title-403"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/get-description-403" class="marked"></p>
@@ -88828,6 +88981,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/get-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/get-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/get-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/get-title-404"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/get-description-404" class="marked"></p>
@@ -88912,6 +89071,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/get-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/get-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/get-title-409"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/get-description-409" class="marked"></p>
@@ -88996,6 +89158,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/get-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/get-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/get-title-default"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/get-description-default" class="marked"></p>
@@ -89715,6 +89880,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/list-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/list-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/list-title-401"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/list-description-401" class="marked"></p>
@@ -89799,6 +89967,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/list-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/list-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/list-title-403"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/list-description-403" class="marked"></p>
@@ -89889,6 +90060,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/list-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/list-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/list-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/list-title-404"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/list-description-404" class="marked"></p>
@@ -89973,6 +90150,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/list-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/list-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/list-title-409"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/list-description-409" class="marked"></p>
@@ -90057,6 +90237,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/list-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/list-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/list-title-default"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/list-description-default" class="marked"></p>
@@ -90662,6 +90845,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/productCountsGet-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/productCountsGet-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/productCountsGet-title-409"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/productCountsGet-description-409" class="marked"></p>
@@ -90746,6 +90932,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/productCountsGet-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/productCountsGet-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/productCountsGet-title-default"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/productCountsGet-description-default" class="marked"></p>
@@ -91416,6 +91605,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/update-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/update-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/update-title-401"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/update-description-401" class="marked"></p>
@@ -91500,6 +91692,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/update-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/update-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/update-title-403"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/update-description-403" class="marked"></p>
@@ -91590,6 +91785,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/update-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/update-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/update-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/update-title-404"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/update-description-404" class="marked"></p>
@@ -91674,6 +91875,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/update-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/update-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/update-title-409"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/update-description-409" class="marked"></p>
@@ -91782,6 +91986,21 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-catalogsProductGroups/update-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/update-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/update-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/update-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/update-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-catalogsProductGroups/update-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-catalogsProductGroups/update-title-default"></h3>
                             <p id="examples-Catalogs-catalogsProductGroups/update-description-default" class="marked"></p>
@@ -92449,6 +92668,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feedProcessingResults/list-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feedProcessingResults/list-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feedProcessingResults/list-title-401"></h3>
                             <p id="examples-Catalogs-feedProcessingResults/list-description-401" class="marked"></p>
@@ -92533,6 +92755,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feedProcessingResults/list-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feedProcessingResults/list-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feedProcessingResults/list-title-404"></h3>
                             <p id="examples-Catalogs-feedProcessingResults/list-description-404" class="marked"></p>
@@ -92617,6 +92842,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feedProcessingResults/list-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feedProcessingResults/list-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feedProcessingResults/list-title-default"></h3>
                             <p id="examples-Catalogs-feedProcessingResults/list-description-default" class="marked"></p>
@@ -93288,6 +93516,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/create-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/create-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/create-title-401"></h3>
                             <p id="examples-Catalogs-feeds/create-description-401" class="marked"></p>
@@ -93372,6 +93603,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/create-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/create-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/create-title-403"></h3>
                             <p id="examples-Catalogs-feeds/create-description-403" class="marked"></p>
@@ -93462,6 +93696,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/create-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/create-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/create-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/create-title-409"></h3>
                             <p id="examples-Catalogs-feeds/create-description-409" class="marked"></p>
@@ -93552,6 +93792,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/create-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/create-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/create-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/create-title-422"></h3>
                             <p id="examples-Catalogs-feeds/create-description-422" class="marked"></p>
@@ -93636,6 +93882,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/create-422-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/create-422-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/create-title-501"></h3>
                             <p id="examples-Catalogs-feeds/create-description-501" class="marked"></p>
@@ -93720,6 +93969,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/create-501-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/create-501-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/create-title-default"></h3>
                             <p id="examples-Catalogs-feeds/create-description-default" class="marked"></p>
@@ -94342,6 +94594,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/delete-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/delete-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/delete-title-403"></h3>
                             <p id="examples-Catalogs-feeds/delete-description-403" class="marked"></p>
@@ -94432,6 +94687,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/delete-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/delete-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/delete-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/delete-title-404"></h3>
                             <p id="examples-Catalogs-feeds/delete-description-404" class="marked"></p>
@@ -94516,6 +94777,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/delete-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/delete-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/delete-title-409"></h3>
                             <p id="examples-Catalogs-feeds/delete-description-409" class="marked"></p>
@@ -94600,6 +94864,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/delete-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/delete-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/delete-title-default"></h3>
                             <p id="examples-Catalogs-feeds/delete-description-default" class="marked"></p>
@@ -95233,6 +95500,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/get-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/get-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/get-title-401"></h3>
                             <p id="examples-Catalogs-feeds/get-description-401" class="marked"></p>
@@ -95317,6 +95587,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/get-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/get-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/get-title-404"></h3>
                             <p id="examples-Catalogs-feeds/get-description-404" class="marked"></p>
@@ -95401,6 +95674,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/get-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/get-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/get-title-default"></h3>
                             <p id="examples-Catalogs-feeds/get-description-default" class="marked"></p>
@@ -96007,6 +96283,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/ingest-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/ingest-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/ingest-title-403"></h3>
                             <p id="examples-Catalogs-feeds/ingest-description-403" class="marked"></p>
@@ -96097,6 +96376,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/ingest-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/ingest-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/ingest-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/ingest-title-404"></h3>
                             <p id="examples-Catalogs-feeds/ingest-description-404" class="marked"></p>
@@ -96181,6 +96466,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/ingest-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/ingest-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/ingest-title-default"></h3>
                             <p id="examples-Catalogs-feeds/ingest-description-default" class="marked"></p>
@@ -96866,6 +97154,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/list-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/list-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/list-title-401"></h3>
                             <p id="examples-Catalogs-feeds/list-description-401" class="marked"></p>
@@ -96950,6 +97241,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/list-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/list-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/list-title-default"></h3>
                             <p id="examples-Catalogs-feeds/list-description-default" class="marked"></p>
@@ -97658,6 +97952,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/update-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/update-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/update-title-403"></h3>
                             <p id="examples-Catalogs-feeds/update-description-403" class="marked"></p>
@@ -97748,6 +98045,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/update-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/update-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/update-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/update-title-404"></h3>
                             <p id="examples-Catalogs-feeds/update-description-404" class="marked"></p>
@@ -97832,6 +98135,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-feeds/update-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-feeds/update-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-feeds/update-title-default"></h3>
                             <p id="examples-Catalogs-feeds/update-description-default" class="marked"></p>
@@ -98526,6 +98832,9 @@ Identifies items to be retrieved. This is a required parameter.
                                 </div>
                                 <input id='responses-Catalogs-items/get-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-items/get-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-items/get-title-401"></h3>
                             <p id="examples-Catalogs-items/get-description-401" class="marked"></p>
@@ -98610,6 +98919,9 @@ Identifies items to be retrieved. This is a required parameter.
                                 </div>
                                 <input id='responses-Catalogs-items/get-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-items/get-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-items/get-title-403"></h3>
                             <p id="examples-Catalogs-items/get-description-403" class="marked"></p>
@@ -99319,6 +99631,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-items/post-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-items/post-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-items/post-title-401"></h3>
                             <p id="examples-Catalogs-items/post-description-401" class="marked"></p>
@@ -99403,6 +99718,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-items/post-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-items/post-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-items/post-title-403"></h3>
                             <p id="examples-Catalogs-items/post-description-403" class="marked"></p>
@@ -100110,6 +100428,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-itemsBatch/get-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-itemsBatch/get-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-itemsBatch/get-title-403"></h3>
                             <p id="examples-Catalogs-itemsBatch/get-description-403" class="marked"></p>
@@ -100270,6 +100591,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-itemsBatch/get-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-itemsBatch/get-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-itemsBatch/get-title-405"></h3>
                             <p id="examples-Catalogs-itemsBatch/get-description-405" class="marked"></p>
@@ -100357,6 +100681,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-itemsBatch/get-405-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-itemsBatch/get-405-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-itemsBatch/get-title-default"></h3>
                             <p id="examples-Catalogs-itemsBatch/get-description-default" class="marked"></p>
@@ -101024,6 +101351,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-itemsBatch/post-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-itemsBatch/post-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-itemsBatch/post-title-401"></h3>
                             <p id="examples-Catalogs-itemsBatch/post-description-401" class="marked"></p>
@@ -101108,6 +101438,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-itemsBatch/post-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-itemsBatch/post-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-itemsBatch/post-title-403"></h3>
                             <p id="examples-Catalogs-itemsBatch/post-description-403" class="marked"></p>
@@ -101915,6 +102248,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-itemsIssues/list-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-itemsIssues/list-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-itemsIssues/list-title-404"></h3>
                             <p id="examples-Catalogs-itemsIssues/list-description-404" class="marked"></p>
@@ -101999,6 +102335,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-itemsIssues/list-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-itemsIssues/list-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-itemsIssues/list-title-501"></h3>
                             <p id="examples-Catalogs-itemsIssues/list-description-501" class="marked"></p>
@@ -102083,6 +102422,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-itemsIssues/list-501-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-itemsIssues/list-501-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-itemsIssues/list-title-default"></h3>
                             <p id="examples-Catalogs-itemsIssues/list-description-default" class="marked"></p>
@@ -102832,6 +103174,9 @@ Specify whether to return 90d and lifetime Pin metrics. Total comments and total
                                 </div>
                                 <input id='responses-Catalogs-productsByProductGroupFilter/list-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-productsByProductGroupFilter/list-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-productsByProductGroupFilter/list-title-409"></h3>
                             <p id="examples-Catalogs-productsByProductGroupFilter/list-description-409" class="marked"></p>
@@ -102922,6 +103267,12 @@ Specify whether to return 90d and lifetime Pin metrics. Total comments and total
                                 </div>
                                 <input id='responses-Catalogs-productsByProductGroupFilter/list-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-productsByProductGroupFilter/list-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-productsByProductGroupFilter/list-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-productsByProductGroupFilter/list-title-default"></h3>
                             <p id="examples-Catalogs-productsByProductGroupFilter/list-description-default" class="marked"></p>
@@ -103560,6 +103911,15 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-reports/create-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-reports/create-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-reports/create-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Catalogs-reports/create-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-reports/create-title-409"></h3>
                             <p id="examples-Catalogs-reports/create-description-409" class="marked"></p>
@@ -103644,6 +104004,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Catalogs-reports/create-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-reports/create-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-reports/create-title-default"></h3>
                             <p id="examples-Catalogs-reports/create-description-default" class="marked"></p>
@@ -104240,6 +104603,9 @@ Token returned from async build report call
                                 </div>
                                 <input id='responses-Catalogs-reports/get-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-reports/get-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-reports/get-title-409"></h3>
                             <p id="examples-Catalogs-reports/get-description-409" class="marked"></p>
@@ -104324,6 +104690,9 @@ Token returned from async build report call
                                 </div>
                                 <input id='responses-Catalogs-reports/get-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-reports/get-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-reports/get-title-default"></h3>
                             <p id="examples-Catalogs-reports/get-description-default" class="marked"></p>
@@ -104982,6 +105351,9 @@ Contains the parameters for report identification.
                                 </div>
                                 <input id='responses-Catalogs-reports/stats-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Catalogs-reports/stats-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Catalogs-reports/stats-title-default"></h3>
                             <p id="examples-Catalogs-reports/stats-description-default" class="marked"></p>
@@ -106065,6 +106437,9 @@ Warning: If you use this query parameter, be certain that it is off (set to fals
                                 </div>
                                 <input id='responses-ConversionEvents-events/create-401-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-ConversionEvents-events/create-401-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-ConversionEvents-events/create-title-403"></h3>
                             <p id="examples-ConversionEvents-events/create-description-403" class="marked"></p>
@@ -106149,6 +106524,9 @@ Warning: If you use this query parameter, be certain that it is off (set to fals
                                 </div>
                                 <input id='responses-ConversionEvents-events/create-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-ConversionEvents-events/create-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-ConversionEvents-events/create-title-422"></h3>
                             <p id="examples-ConversionEvents-events/create-description-422" class="marked"></p>
@@ -106514,7 +106892,14 @@ For more information, see:&lt;p/&gt;
  -H "Content-Type: application/json" \
  "https://api.pinterest.com/v5/ad_accounts/{ad_account_id}/conversion_tags" \
  -d '{
-  &quot;name&quot; : &quot;ACME Tools Tag&quot;
+  &quot;aem_fnln_enabled&quot; : true,
+  &quot;aem_enabled&quot; : true,
+  &quot;aem_db_enabled&quot; : true,
+  &quot;name&quot; : &quot;ACME Tools Tag&quot;,
+  &quot;md_frequency&quot; : 0.6,
+  &quot;aem_ph_enabled&quot; : true,
+  &quot;aem_ge_enabled&quot; : true,
+  &quot;aem_loc_enabled&quot; : true
 }'
 </code></pre>
                           </div>
@@ -111849,6 +112234,9 @@ Integration ID.
                                 </div>
                                 <input id='responses-Integrations-integrations/getById-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Integrations-integrations/getById-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Integrations-integrations/getById-title-default"></h3>
                             <p id="examples-Integrations-integrations/getById-description-default" class="marked"></p>
@@ -113373,6 +113761,9 @@ External business ID for the integration.
                                 </div>
                                 <input id='responses-Integrations-integrationsCommerce/get-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Integrations-integrationsCommerce/get-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Integrations-integrationsCommerce/get-title-409"></h3>
                             <p id="examples-Integrations-integrationsCommerce/get-description-409" class="marked"></p>
@@ -113457,6 +113848,9 @@ External business ID for the integration.
                                 </div>
                                 <input id='responses-Integrations-integrationsCommerce/get-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Integrations-integrationsCommerce/get-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Integrations-integrationsCommerce/get-title-default"></h3>
                             <p id="examples-Integrations-integrationsCommerce/get-description-default" class="marked"></p>
@@ -114094,6 +114488,9 @@ $(document).ready(function() {
                                 </div>
                                 <input id='responses-Integrations-integrationsCommerce/patch-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Integrations-integrationsCommerce/patch-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Integrations-integrationsCommerce/patch-title-409"></h3>
                             <p id="examples-Integrations-integrationsCommerce/patch-description-409" class="marked"></p>
@@ -114178,6 +114575,9 @@ $(document).ready(function() {
                                 </div>
                                 <input id='responses-Integrations-integrationsCommerce/patch-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Integrations-integrationsCommerce/patch-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Integrations-integrationsCommerce/patch-title-default"></h3>
                             <p id="examples-Integrations-integrationsCommerce/patch-description-default" class="marked"></p>
@@ -114775,6 +115175,9 @@ $(document).ready(function() {
                                 </div>
                                 <input id='responses-Integrations-integrationsCommerce/post-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Integrations-integrationsCommerce/post-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Integrations-integrationsCommerce/post-title-409"></h3>
                             <p id="examples-Integrations-integrationsCommerce/post-description-409" class="marked"></p>
@@ -114859,6 +115262,9 @@ $(document).ready(function() {
                                 </div>
                                 <input id='responses-Integrations-integrationsCommerce/post-409-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Integrations-integrationsCommerce/post-409-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Integrations-integrationsCommerce/post-title-default"></h3>
                             <p id="examples-Integrations-integrationsCommerce/post-description-default" class="marked"></p>
@@ -119902,6 +120308,9 @@ Unique identifier of a subscription.
                                 </div>
                                 <input id='responses-LeadAds-adAccountsSubscriptions/delById-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-LeadAds-adAccountsSubscriptions/delById-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-LeadAds-adAccountsSubscriptions/delById-title-404"></h3>
                             <p id="examples-LeadAds-adAccountsSubscriptions/delById-description-404" class="marked"></p>
@@ -119986,6 +120395,9 @@ Unique identifier of a subscription.
                                 </div>
                                 <input id='responses-LeadAds-adAccountsSubscriptions/delById-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-LeadAds-adAccountsSubscriptions/delById-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-LeadAds-adAccountsSubscriptions/delById-title-default"></h3>
                             <p id="examples-LeadAds-adAccountsSubscriptions/delById-description-default" class="marked"></p>
@@ -120663,6 +121075,9 @@ Unique identifier of a subscription.
                                 </div>
                                 <input id='responses-LeadAds-adAccountsSubscriptions/getById-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-LeadAds-adAccountsSubscriptions/getById-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-LeadAds-adAccountsSubscriptions/getById-title-404"></h3>
                             <p id="examples-LeadAds-adAccountsSubscriptions/getById-description-404" class="marked"></p>
@@ -120747,6 +121162,9 @@ Unique identifier of a subscription.
                                 </div>
                                 <input id='responses-LeadAds-adAccountsSubscriptions/getById-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-LeadAds-adAccountsSubscriptions/getById-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-LeadAds-adAccountsSubscriptions/getById-title-default"></h3>
                             <p id="examples-LeadAds-adAccountsSubscriptions/getById-description-default" class="marked"></p>
@@ -121381,6 +121799,9 @@ Cursor used to fetch the next page of items
                                 </div>
                                 <input id='responses-LeadAds-adAccountsSubscriptions/getList-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-LeadAds-adAccountsSubscriptions/getList-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-LeadAds-adAccountsSubscriptions/getList-title-default"></h3>
                             <p id="examples-LeadAds-adAccountsSubscriptions/getList-description-default" class="marked"></p>
@@ -122092,6 +122513,9 @@ $(document).ready(function() {
                                 </div>
                                 <input id='responses-LeadAds-adAccountsSubscriptions/post-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-LeadAds-adAccountsSubscriptions/post-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-LeadAds-adAccountsSubscriptions/post-title-default"></h3>
                             <p id="examples-LeadAds-adAccountsSubscriptions/post-description-default" class="marked"></p>
@@ -130125,7 +130549,7 @@ public class PinsApiExample {
         array[String] pinIds = ; // array[String] | List of Pin IDs.
         date startDate = 2013-10-20; // date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
         date endDate = 2013-10-20; // date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-        array[pins_analytics_metric_types_parameter_inner] metricTypes = ; // array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for.
+        array[String] metricTypes = ; // array[String] | Pin metric types to get data for.
         String appTypes = appTypes_example; // String | Apps or devices to get data for, default is all.
         String adAccountId = adAccountId_example; // String | Unique identifier of an ad account.
 
@@ -130149,7 +130573,7 @@ final api_instance = DefaultApi();
 final array[String] pinIds = new array[String](); // array[String] | List of Pin IDs.
 final date startDate = new date(); // date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 final date endDate = new date(); // date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-final array[pins_analytics_metric_types_parameter_inner] metricTypes = new array[pins_analytics_metric_types_parameter_inner](); // array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for.
+final array[String] metricTypes = new array[String](); // array[String] | Pin metric types to get data for.
 final String appTypes = new String(); // String | Apps or devices to get data for, default is all.
 final String adAccountId = new String(); // String | Unique identifier of an ad account.
 
@@ -130172,7 +130596,7 @@ public class PinsApiExample {
         array[String] pinIds = ; // array[String] | List of Pin IDs.
         date startDate = 2013-10-20; // date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
         date endDate = 2013-10-20; // date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-        array[pins_analytics_metric_types_parameter_inner] metricTypes = ; // array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for.
+        array[String] metricTypes = ; // array[String] | Pin metric types to get data for.
         String appTypes = appTypes_example; // String | Apps or devices to get data for, default is all.
         String adAccountId = adAccountId_example; // String | Unique identifier of an ad account.
 
@@ -130205,7 +130629,7 @@ PinsApi *apiInstance = [[PinsApi alloc] init];
 array[String] *pinIds = ; // List of Pin IDs. (default to null)
 date *startDate = 2013-10-20; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (default to null)
 date *endDate = 2013-10-20; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. (default to null)
-array[pins_analytics_metric_types_parameter_inner] *metricTypes = ; // Pin metric types to get data for. (default to null)
+array[String] *metricTypes = ; // Pin metric types to get data for. (default to null)
 String *appTypes = appTypes_example; // Apps or devices to get data for, default is all. (optional) (default to ALL)
 String *adAccountId = adAccountId_example; // Unique identifier of an ad account. (optional) (default to null)
 
@@ -130244,7 +130668,7 @@ var api = new PinterestRestApi.PinsApi()
 var pinIds = ; // {array[String]} List of Pin IDs.
 var startDate = 2013-10-20; // {date} Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 var endDate = 2013-10-20; // {date} Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-var metricTypes = ; // {array[pins_analytics_metric_types_parameter_inner]} Pin metric types to get data for.
+var metricTypes = ; // {array[String]} Pin metric types to get data for.
 var opts = {
   'appTypes': appTypes_example, // {String} Apps or devices to get data for, default is all.
   'adAccountId': adAccountId_example // {String} Unique identifier of an ad account.
@@ -130287,7 +130711,7 @@ namespace Example
             var pinIds = new array[String](); // array[String] | List of Pin IDs. (default to null)
             var startDate = 2013-10-20;  // date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (default to null)
             var endDate = 2013-10-20;  // date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. (default to null)
-            var metricTypes = new array[pins_analytics_metric_types_parameter_inner](); // array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for. (default to null)
+            var metricTypes = new array[String](); // array[String] | Pin metric types to get data for. (default to null)
             var appTypes = appTypes_example;  // String | Apps or devices to get data for, default is all. (optional)  (default to ALL)
             var adAccountId = adAccountId_example;  // String | Unique identifier of an ad account. (optional)  (default to null)
 
@@ -130319,7 +130743,7 @@ $api_instance = new OpenAPITools\Client\Api\PinsApi();
 $pinIds = ; // array[String] | List of Pin IDs.
 $startDate = 2013-10-20; // date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $endDate = 2013-10-20; // date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-$metricTypes = ; // array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for.
+$metricTypes = ; // array[String] | Pin metric types to get data for.
 $appTypes = appTypes_example; // String | Apps or devices to get data for, default is all.
 $adAccountId = adAccountId_example; // String | Unique identifier of an ad account.
 
@@ -130348,7 +130772,7 @@ my $api_instance = WWW::OPenAPIClient::PinsApi->new();
 my $pinIds = []; # array[String] | List of Pin IDs.
 my $startDate = 2013-10-20; # date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 my $endDate = 2013-10-20; # date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-my $metricTypes = []; # array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for.
+my $metricTypes = []; # array[String] | Pin metric types to get data for.
 my $appTypes = appTypes_example; # String | Apps or devices to get data for, default is all.
 my $adAccountId = adAccountId_example; # String | Unique identifier of an ad account.
 
@@ -130379,7 +130803,7 @@ api_instance = openapi_client.PinsApi()
 pinIds =  # array[String] | List of Pin IDs. (default to null)
 startDate = 2013-10-20 # date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (default to null)
 endDate = 2013-10-20 # date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. (default to null)
-metricTypes =  # array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for. (default to null)
+metricTypes =  # array[String] | Pin metric types to get data for. (default to null)
 appTypes = appTypes_example # String | Apps or devices to get data for, default is all. (optional) (default to ALL)
 adAccountId = adAccountId_example # String | Unique identifier of an ad account. (optional) (default to null)
 
@@ -130398,7 +130822,7 @@ pub fn main() {
     let pinIds = ; // array[String]
     let startDate = 2013-10-20; // date
     let endDate = 2013-10-20; // date
-    let metricTypes = ; // array[pins_analytics_metric_types_parameter_inner]
+    let metricTypes = ; // array[String]
     let appTypes = appTypes_example; // String
     let adAccountId = adAccountId_example; // String
 
@@ -130551,7 +130975,7 @@ Apps or devices to get data for, default is all.
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    array[pins_analytics_metric_types_parameter_inner]
+                    array[String]
                 </span>
 
                     <div class="inner description marked">
@@ -131141,7 +131565,7 @@ public class PinsApiExample {
         String pinId = pinId_example; // String | Unique identifier of a Pin.
         date startDate = 2013-10-20; // date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
         date endDate = 2013-10-20; // date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-        array[pins_analytics_metric_types_parameter_inner] metricTypes = ; // array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+        array[String] metricTypes = ; // array[String] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
         String appTypes = appTypes_example; // String | Apps or devices to get data for, default is all.
         String splitField = splitField_example; // String | How to split the data into groups. Not including this param means data won't be split.
         String adAccountId = adAccountId_example; // String | Unique identifier of an ad account.
@@ -131166,7 +131590,7 @@ final api_instance = DefaultApi();
 final String pinId = new String(); // String | Unique identifier of a Pin.
 final date startDate = new date(); // date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 final date endDate = new date(); // date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-final array[pins_analytics_metric_types_parameter_inner] metricTypes = new array[pins_analytics_metric_types_parameter_inner](); // array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+final array[String] metricTypes = new array[String](); // array[String] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 final String appTypes = new String(); // String | Apps or devices to get data for, default is all.
 final String splitField = new String(); // String | How to split the data into groups. Not including this param means data won't be split.
 final String adAccountId = new String(); // String | Unique identifier of an ad account.
@@ -131190,7 +131614,7 @@ public class PinsApiExample {
         String pinId = pinId_example; // String | Unique identifier of a Pin.
         date startDate = 2013-10-20; // date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
         date endDate = 2013-10-20; // date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-        array[pins_analytics_metric_types_parameter_inner] metricTypes = ; // array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+        array[String] metricTypes = ; // array[String] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
         String appTypes = appTypes_example; // String | Apps or devices to get data for, default is all.
         String splitField = splitField_example; // String | How to split the data into groups. Not including this param means data won't be split.
         String adAccountId = adAccountId_example; // String | Unique identifier of an ad account.
@@ -131224,7 +131648,7 @@ PinsApi *apiInstance = [[PinsApi alloc] init];
 String *pinId = pinId_example; // Unique identifier of a Pin. (default to null)
 date *startDate = 2013-10-20; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (default to null)
 date *endDate = 2013-10-20; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. (default to null)
-array[pins_analytics_metric_types_parameter_inner] *metricTypes = ; // Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>. (default to null)
+array[String] *metricTypes = ; // Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>. (default to null)
 String *appTypes = appTypes_example; // Apps or devices to get data for, default is all. (optional) (default to ALL)
 String *splitField = splitField_example; // How to split the data into groups. Not including this param means data won't be split. (optional) (default to NO_SPLIT)
 String *adAccountId = adAccountId_example; // Unique identifier of an ad account. (optional) (default to null)
@@ -131265,7 +131689,7 @@ var api = new PinterestRestApi.PinsApi()
 var pinId = pinId_example; // {String} Unique identifier of a Pin.
 var startDate = 2013-10-20; // {date} Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 var endDate = 2013-10-20; // {date} Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-var metricTypes = ; // {array[pins_analytics_metric_types_parameter_inner]} Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+var metricTypes = ; // {array[String]} Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 var opts = {
   'appTypes': appTypes_example, // {String} Apps or devices to get data for, default is all.
   'splitField': splitField_example, // {String} How to split the data into groups. Not including this param means data won't be split.
@@ -131309,7 +131733,7 @@ namespace Example
             var pinId = pinId_example;  // String | Unique identifier of a Pin. (default to null)
             var startDate = 2013-10-20;  // date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (default to null)
             var endDate = 2013-10-20;  // date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. (default to null)
-            var metricTypes = new array[pins_analytics_metric_types_parameter_inner](); // array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>. (default to null)
+            var metricTypes = new array[String](); // array[String] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>. (default to null)
             var appTypes = appTypes_example;  // String | Apps or devices to get data for, default is all. (optional)  (default to ALL)
             var splitField = splitField_example;  // String | How to split the data into groups. Not including this param means data won't be split. (optional)  (default to NO_SPLIT)
             var adAccountId = adAccountId_example;  // String | Unique identifier of an ad account. (optional)  (default to null)
@@ -131342,7 +131766,7 @@ $api_instance = new OpenAPITools\Client\Api\PinsApi();
 $pinId = pinId_example; // String | Unique identifier of a Pin.
 $startDate = 2013-10-20; // date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 $endDate = 2013-10-20; // date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-$metricTypes = ; // array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+$metricTypes = ; // array[String] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 $appTypes = appTypes_example; // String | Apps or devices to get data for, default is all.
 $splitField = splitField_example; // String | How to split the data into groups. Not including this param means data won't be split.
 $adAccountId = adAccountId_example; // String | Unique identifier of an ad account.
@@ -131372,7 +131796,7 @@ my $api_instance = WWW::OPenAPIClient::PinsApi->new();
 my $pinId = pinId_example; # String | Unique identifier of a Pin.
 my $startDate = 2013-10-20; # date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 my $endDate = 2013-10-20; # date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-my $metricTypes = []; # array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+my $metricTypes = []; # array[String] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 my $appTypes = appTypes_example; # String | Apps or devices to get data for, default is all.
 my $splitField = splitField_example; # String | How to split the data into groups. Not including this param means data won't be split.
 my $adAccountId = adAccountId_example; # String | Unique identifier of an ad account.
@@ -131404,7 +131828,7 @@ api_instance = openapi_client.PinsApi()
 pinId = pinId_example # String | Unique identifier of a Pin. (default to null)
 startDate = 2013-10-20 # date | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. (default to null)
 endDate = 2013-10-20 # date | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. (default to null)
-metricTypes =  # array[pins_analytics_metric_types_parameter_inner] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>. (default to null)
+metricTypes =  # array[String] | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>. (default to null)
 appTypes = appTypes_example # String | Apps or devices to get data for, default is all. (optional) (default to ALL)
 splitField = splitField_example # String | How to split the data into groups. Not including this param means data won't be split. (optional) (default to NO_SPLIT)
 adAccountId = adAccountId_example # String | Unique identifier of an ad account. (optional) (default to null)
@@ -131424,7 +131848,7 @@ pub fn main() {
     let pinId = pinId_example; // String
     let startDate = 2013-10-20; // date
     let endDate = 2013-10-20; // date
-    let metricTypes = ; // array[pins_analytics_metric_types_parameter_inner]
+    let metricTypes = ; // array[String]
     let appTypes = appTypes_example; // String
     let splitField = splitField_example; // String
     let adAccountId = adAccountId_example; // String
@@ -131585,7 +132009,7 @@ Apps or devices to get data for, default is all.
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    array[pins_analytics_metric_types_parameter_inner]
+                    array[String]
                 </span>
 
                     <div class="inner description marked">
@@ -132615,6 +133039,9 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Pins-pins/create-400-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Pins-pins/create-400-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Pins-pins/create-title-403"></h3>
                             <p id="examples-Pins-pins/create-description-403" class="marked"></p>
@@ -132705,6 +133132,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Pins-pins/create-403-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Pins-pins/create-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Pins-pins/create-403-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Pins-pins/create-title-404"></h3>
                             <p id="examples-Pins-pins/create-description-404" class="marked"></p>
@@ -132795,6 +133228,12 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Pins-pins/create-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Pins-pins/create-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Pins-pins/create-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Pins-pins/create-title-429"></h3>
                             <p id="examples-Pins-pins/create-description-429" class="marked"></p>
@@ -135897,6 +136336,15 @@ Unique identifier of an ad account.
                                 </div>
                                 <input id='responses-Pins-pins/save-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Pins-pins/save-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Pins-pins/save-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
+                                <div class="tab-pane" id="examples-Pins-pins/save-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Pins-pins/save-title-default"></h3>
                             <p id="examples-Pins-pins/save-description-default" class="marked"></p>
@@ -144804,6 +145252,9 @@ Cursor used to fetch the next page of items
                                 </div>
                                 <input id='responses-Search-searchUserPins/list-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-Search-searchUserPins/list-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-Search-searchUserPins/list-title-default"></h3>
                             <p id="examples-Search-searchUserPins/list-description-default" class="marked"></p>
@@ -149809,6 +150260,9 @@ $(document).ready(function() {
                                 </div>
                                 <input id='responses-UserAccount-followUser/update-404-schema-data' type='hidden' value=''></input>
                               </div>
+                                <div class="tab-pane" id="examples-UserAccount-followUser/update-404-example">
+                                  <pre class="prettyprint"><code class="json"></code></pre>
+                                </div>
                             </div>
                             <h3 id="examples-UserAccount-followUser/update-title-default"></h3>
                             <p id="examples-UserAccount-followUser/update-description-default" class="marked"></p>

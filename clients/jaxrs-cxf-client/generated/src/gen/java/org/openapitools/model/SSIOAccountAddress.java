@@ -8,28 +8,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SSIOAccountAddress  {
   
-  @ApiModelProperty(example = "475 Brannan Street, San Francisco, CA 94103", value = "Address display")
  /**
-   * Address display
-  **/
+  * Address display
+  */
+  @ApiModelProperty(example = "475 Brannan Street, San Francisco, CA 94103", value = "Address display")
+
   private String display;
 
-  @ApiModelProperty(example = "Billing", value = "Purpose for which the address is used, usually Billing or Businness")
  /**
-   * Purpose for which the address is used, usually Billing or Businness
-  **/
+  * Purpose for which the address is used, usually Billing or Businness
+  */
+  @ApiModelProperty(example = "Billing", value = "Purpose for which the address is used, usually Billing or Businness")
+
   private String purpose;
 
-  @ApiModelProperty(example = "a1C1N000004MUrLUAW", value = "Salesforce id for address")
  /**
-   * Salesforce id for address
-  **/
+  * Salesforce id for address
+  */
+  @ApiModelProperty(example = "a1C1N000004MUrLUAW", value = "Salesforce id for address")
+
   private String addressId;
 
-  @ApiModelProperty(example = "PIN US OU", value = "Legal entity for this insertion order")
  /**
-   * Legal entity for this insertion order
-  **/
+  * Legal entity for this insertion order
+  */
+  @ApiModelProperty(example = "PIN US OU", value = "Legal entity for this insertion order")
+
   private String orderLegalEntity;
  /**
    * Address display

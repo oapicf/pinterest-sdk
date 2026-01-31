@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogType* {.pure.} = enum
@@ -18,14 +20,42 @@ type CatalogsRetailItemsPostFilter* = object
   ## 
   catalogType*: CatalogType
   itemIds*: seq[string]
-  catalogId*: string ## Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
+  catalogId*: Option[string] ## Catalog id pertaining to the retail item. If not provided, default to oldest retail catalog
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.RETAIL: "RETAIL"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.RETAIL: %"RETAIL"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.RETAIL: "RETAIL"
+    of CatalogType.RETAIL: $("RETAIL")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("RETAIL"):
+    return CatalogType.RETAIL
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsRetailItemsPostFilter with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsRetailItemsPostFilter]): CatalogsRetailItemsPostFilter =
+  result = CatalogsRetailItemsPostFilter()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("item_ids"):
+      result.itemIds = to(node["item_ids"], seq[string])
+    if node.hasKey("catalog_id") and node["catalog_id"].kind != JNull:
+      result.catalogId = some(to(node["catalog_id"], typeof(result.catalogId.get())))
+
+# Custom JSON serialization for CatalogsRetailItemsPostFilter with custom field names
+proc `%`*(obj: CatalogsRetailItemsPostFilter): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["item_ids"] = %obj.itemIds
+  if obj.catalogId.isSome():
+    result["catalog_id"] = %obj.catalogId.get()
+

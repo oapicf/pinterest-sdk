@@ -9,21 +9,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PinMediaSourceImagesURLItemsInner  {
   
   @ApiModelProperty(value = "")
+
   private String title;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
-  @ApiModelProperty(value = "Destination link for the image.")
  /**
-   * Destination link for the image.
-  **/
+  * Destination link for the image.
+  */
+  @ApiModelProperty(value = "Destination link for the image.")
+
   private String link;
 
-  @ApiModelProperty(required = true, value = "URL of image to upload.")
  /**
-   * URL of image to upload.
-  **/
+  * URL of image to upload.
+  */
+  @ApiModelProperty(required = true, value = "URL of image to upload.")
+
   private String url;
  /**
    * Get title

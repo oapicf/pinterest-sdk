@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**OAICountry***](OAICountry.md) |  | 
-**language** | [**OAICatalogsItemsRequestLanguage***](OAICatalogsItemsRequestLanguage.md) |  | 
+**language** | **NSString*** | We recommend using the CatalogsLocale values. | 
 **operation** | [**OAIBatchOperation***](OAIBatchOperation.md) |  | 
 **items** | [**NSArray&lt;OAIItemDeleteDiscontinuedBatchRecord&gt;***](OAIItemDeleteDiscontinuedBatchRecord.md) | Array with catalogs items | 
 

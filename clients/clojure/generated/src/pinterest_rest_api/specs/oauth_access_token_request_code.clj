@@ -7,9 +7,9 @@
 
 (def oauth-access-token-request-code-data
   {
-   (ds/req :grant_type) string?
    (ds/req :code) string?
    (ds/req :redirect_uri) string?
+   (ds/req :grant_type) string?
    })
 
 (def oauth-access-token-request-code-spec

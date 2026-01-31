@@ -5,6 +5,27 @@ context("Test OauthAccessTokenResponseEverlastingRefresh")
 
 model_instance <- OauthAccessTokenResponseEverlastingRefresh$new()
 
+test_that("refresh_token", {
+  # tests for the property `refresh_token` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`refresh_token`, "EXPECTED_RESULT")
+})
+
+test_that("refresh_token_expires_in", {
+  # tests for the property `refresh_token_expires_in` (integer)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`refresh_token_expires_in`, "EXPECTED_RESULT")
+})
+
+test_that("refresh_token_expires_at", {
+  # tests for the property `refresh_token_expires_at` (integer)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`refresh_token_expires_at`, "EXPECTED_RESULT")
+})
+
 test_that("response_type", {
   # tests for the property `response_type` (character)
 
@@ -38,25 +59,4 @@ test_that("scope", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`scope`, "EXPECTED_RESULT")
-})
-
-test_that("refresh_token", {
-  # tests for the property `refresh_token` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`refresh_token`, "EXPECTED_RESULT")
-})
-
-test_that("refresh_token_expires_in", {
-  # tests for the property `refresh_token_expires_in` (integer)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`refresh_token_expires_in`, "EXPECTED_RESULT")
-})
-
-test_that("refresh_token_expires_at", {
-  # tests for the property `refresh_token_expires_at` (integer)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`refresh_token_expires_at`, "EXPECTED_RESULT")
 })

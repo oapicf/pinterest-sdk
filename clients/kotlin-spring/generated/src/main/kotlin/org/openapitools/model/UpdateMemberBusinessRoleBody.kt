@@ -31,7 +31,7 @@ data class UpdateMemberBusinessRoleBody(
     @get:Size(max=25)
     @Schema(example = "140943737684417", required = true, description = "Unique identifier of the member")
     @get:JsonProperty("member_id", required = true) val memberId: kotlin.String
-    ) {
+) {
 
 }
 

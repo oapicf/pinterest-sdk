@@ -23,7 +23,8 @@ var _ MappedNullable = &CatalogsItemsRequest{}
 // CatalogsItemsRequest Request object of catalogs items
 type CatalogsItemsRequest struct {
 	Country Country `json:"country"`
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 	Filters CatalogsItemsPostFilters `json:"filters"`
 }
 
@@ -33,7 +34,7 @@ type _CatalogsItemsRequest CatalogsItemsRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCatalogsItemsRequest(country Country, language CatalogsItemsRequestLanguage, filters CatalogsItemsPostFilters) *CatalogsItemsRequest {
+func NewCatalogsItemsRequest(country Country, language string, filters CatalogsItemsPostFilters) *CatalogsItemsRequest {
 	this := CatalogsItemsRequest{}
 	this.Country = country
 	this.Language = language
@@ -74,9 +75,9 @@ func (o *CatalogsItemsRequest) SetCountry(v Country) {
 }
 
 // GetLanguage returns the Language field value
-func (o *CatalogsItemsRequest) GetLanguage() CatalogsItemsRequestLanguage {
+func (o *CatalogsItemsRequest) GetLanguage() string {
 	if o == nil {
-		var ret CatalogsItemsRequestLanguage
+		var ret string
 		return ret
 	}
 
@@ -85,7 +86,7 @@ func (o *CatalogsItemsRequest) GetLanguage() CatalogsItemsRequestLanguage {
 
 // GetLanguageOk returns a tuple with the Language field value
 // and a boolean to check if the value has been set.
-func (o *CatalogsItemsRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, bool) {
+func (o *CatalogsItemsRequest) GetLanguageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +94,7 @@ func (o *CatalogsItemsRequest) GetLanguageOk() (*CatalogsItemsRequestLanguage, b
 }
 
 // SetLanguage sets field value
-func (o *CatalogsItemsRequest) SetLanguage(v CatalogsItemsRequestLanguage) {
+func (o *CatalogsItemsRequest) SetLanguage(v string) {
 	o.Language = v
 }
 

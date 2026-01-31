@@ -82,12 +82,12 @@ data class FeedsCreateRequest(
 
     @field:Valid
     @Schema(example = "null", description = "")
-    @get:JsonProperty("status") val status: CatalogsStatus? = null,
+    @get:JsonProperty("status") val status: CatalogsStatus? = "ACTIVE",
 
     @get:Pattern(regexp="^\\d+$")
     @Schema(example = "null", description = "Catalog id pertaining to the feed. If not provided, feed will use a default catalog based on type. At the moment a catalog can not have multiple creative assets feeds but this will change in the future.")
     @get:JsonProperty("catalog_id") override val catalogId: kotlin.String? = null
-    ) {
+) {
 
 }
 

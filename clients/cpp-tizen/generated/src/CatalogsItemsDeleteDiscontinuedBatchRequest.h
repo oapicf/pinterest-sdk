@@ -10,7 +10,6 @@
 
 #include <string>
 #include "BatchOperation.h"
-#include "CatalogsItemsRequest_language.h"
 #include "Country.h"
 #include "ItemDeleteDiscontinuedBatchRecord.h"
 #include <list>
@@ -57,13 +56,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setCountry(Country  country);
-	/*! \brief Get 
+	/*! \brief Get We recommend using the CatalogsLocale values.
 	 */
-	CatalogsItemsRequest_language getLanguage();
+	std::string getLanguage();
 
-	/*! \brief Set 
+	/*! \brief Set We recommend using the CatalogsLocale values.
 	 */
-	void setLanguage(CatalogsItemsRequest_language  language);
+	void setLanguage(std::string  language);
 	/*! \brief Get 
 	 */
 	BatchOperation getOperation();
@@ -81,7 +80,7 @@ public:
 
 private:
 	Country country;
-	CatalogsItemsRequest_language language;
+	std::string language;
 	BatchOperation operation;
 	std::list <ItemDeleteDiscontinuedBatchRecord>items;
 	void __init();

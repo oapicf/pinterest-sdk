@@ -25,6 +25,7 @@ class BoardsApiTest {
         val boardId: kotlin.String = TODO()
         val boardSection: BoardSection = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<BoardSection> = api.boardSectionsCreate(boardId, boardSection, adAccountId)
 
         // TODO: test validations
@@ -41,6 +42,7 @@ class BoardsApiTest {
         val boardId: kotlin.String = TODO()
         val sectionId: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<Unit> = api.boardSectionsDelete(boardId, sectionId, adAccountId)
 
         // TODO: test validations
@@ -58,6 +60,7 @@ class BoardsApiTest {
         val adAccountId: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<BoardSectionsList200Response> = api.boardSectionsList(boardId, adAccountId, bookmark, pageSize)
 
         // TODO: test validations
@@ -76,6 +79,7 @@ class BoardsApiTest {
         val adAccountId: kotlin.String? = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         val response: ResponseEntity<BoardsListPins200Response> = api.boardSectionsListPins(boardId, sectionId, adAccountId, bookmark, pageSize)
 
         // TODO: test validations
@@ -93,6 +97,7 @@ class BoardsApiTest {
         val sectionId: kotlin.String = TODO()
         val boardSection: BoardSection = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<BoardSection> = api.boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId)
 
         // TODO: test validations
@@ -108,6 +113,7 @@ class BoardsApiTest {
     fun boardsCreateTest() {
         val board: Board = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<Board> = api.boardsCreate(board, adAccountId)
 
         // TODO: test validations
@@ -123,6 +129,7 @@ class BoardsApiTest {
     fun boardsDeleteTest() {
         val boardId: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<Unit> = api.boardsDelete(boardId, adAccountId)
 
         // TODO: test validations
@@ -138,6 +145,7 @@ class BoardsApiTest {
     fun boardsGetTest() {
         val boardId: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<Board> = api.boardsGet(boardId, adAccountId)
 
         // TODO: test validations
@@ -155,6 +163,7 @@ class BoardsApiTest {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val privacy: kotlin.String? = TODO()
+        
         val response: ResponseEntity<BoardsList200Response> = api.boardsList(adAccountId, bookmark, pageSize, privacy)
 
         // TODO: test validations
@@ -174,6 +183,7 @@ class BoardsApiTest {
         val creativeTypes: kotlin.collections.List<kotlin.String>? = TODO()
         val adAccountId: kotlin.String? = TODO()
         val pinMetrics: kotlin.Boolean = TODO()
+        
         val response: ResponseEntity<BoardsListPins200Response> = api.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
 
         // TODO: test validations
@@ -190,6 +200,7 @@ class BoardsApiTest {
         val boardId: kotlin.String = TODO()
         val boardUpdate: BoardUpdate = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<Board> = api.boardsUpdate(boardId, boardUpdate, adAccountId)
 
         // TODO: test validations

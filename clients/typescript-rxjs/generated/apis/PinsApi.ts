@@ -20,7 +20,6 @@ import type {
     PinAnalyticsMetricsResponse,
     PinCreate,
     PinUpdate,
-    PinsAnalyticsMetricTypesParameterInner,
     PinsList200Response,
     PinsSaveRequest,
 } from '../models';
@@ -29,7 +28,7 @@ export interface MultiPinsAnalyticsRequest {
     pinIds: Array<string>;
     startDate: string;
     endDate: string;
-    metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>;
+    metricTypes: Array<MultiPinsAnalyticsMetricTypesEnum>;
     appTypes?: MultiPinsAnalyticsAppTypesEnum;
     adAccountId?: string;
 }
@@ -38,7 +37,7 @@ export interface PinsAnalyticsRequest {
     pinId: string;
     startDate: string;
     endDate: string;
-    metricTypes: Array<PinsAnalyticsMetricTypesParameterInner>;
+    metricTypes: Array<PinsAnalyticsMetricTypesEnum>;
     appTypes?: PinsAnalyticsAppTypesEnum;
     splitField?: PinsAnalyticsSplitFieldEnum;
     adAccountId?: string;
@@ -403,11 +402,53 @@ export class PinsApi extends BaseAPI {
  * @export
  * @enum {string}
  */
+export enum MultiPinsAnalyticsMetricTypesEnum {
+    Impression = 'IMPRESSION',
+    OutboundClick = 'OUTBOUND_CLICK',
+    PinClick = 'PIN_CLICK',
+    Save = 'SAVE',
+    SaveRate = 'SAVE_RATE',
+    TotalComments = 'TOTAL_COMMENTS',
+    TotalReactions = 'TOTAL_REACTIONS',
+    UserFollow = 'USER_FOLLOW',
+    ProfileVisit = 'PROFILE_VISIT',
+    VideoMrcView = 'VIDEO_MRC_VIEW',
+    Video10SView = 'VIDEO_10S_VIEW',
+    Quartile95PercentView = 'QUARTILE_95_PERCENT_VIEW',
+    VideoV50WatchTime = 'VIDEO_V50_WATCH_TIME',
+    VideoStart = 'VIDEO_START',
+    VideoAvgWatchTime = 'VIDEO_AVG_WATCH_TIME'
+}
+/**
+ * @export
+ * @enum {string}
+ */
 export enum MultiPinsAnalyticsAppTypesEnum {
     All = 'ALL',
     Mobile = 'MOBILE',
     Tablet = 'TABLET',
     Web = 'WEB'
+}
+/**
+ * @export
+ * @enum {string}
+ */
+export enum PinsAnalyticsMetricTypesEnum {
+    Impression = 'IMPRESSION',
+    OutboundClick = 'OUTBOUND_CLICK',
+    PinClick = 'PIN_CLICK',
+    Save = 'SAVE',
+    SaveRate = 'SAVE_RATE',
+    TotalComments = 'TOTAL_COMMENTS',
+    TotalReactions = 'TOTAL_REACTIONS',
+    UserFollow = 'USER_FOLLOW',
+    ProfileVisit = 'PROFILE_VISIT',
+    VideoMrcView = 'VIDEO_MRC_VIEW',
+    Video10SView = 'VIDEO_10S_VIEW',
+    Quartile95PercentView = 'QUARTILE_95_PERCENT_VIEW',
+    VideoV50WatchTime = 'VIDEO_V50_WATCH_TIME',
+    VideoStart = 'VIDEO_START',
+    VideoAvgWatchTime = 'VIDEO_AVG_WATCH_TIME'
 }
 /**
  * @export

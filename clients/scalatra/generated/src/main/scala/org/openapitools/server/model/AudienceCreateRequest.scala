@@ -23,6 +23,7 @@ case class AudienceCreateRequest(
   /* Audience description. */
   description: Option[String],
 
-  audienceType: AudienceCreateRequest1AudienceType
+  /* <a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. */
+  audienceType: AudienceType
 
  )

@@ -1,30 +1,33 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.Country;
 import org.openapitools.model.Language;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Object uniquely identifying a retail catalog item
- **/
+ * Object uniquely identifying a retail catalog item
+ */
 @ApiModel(description="Object uniquely identifying a retail catalog item")
 
 public class AdvancedAuctionKey  {
   
-  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
  /**
-   * The catalog retail item id in the merchant namespace
-  **/
+  * The catalog retail item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", required = true, value = "The catalog retail item id in the merchant namespace")
+
   private String itemId;
 
   @ApiModelProperty(required = true, value = "")
+
   private Country country;
 
   @ApiModelProperty(required = true, value = "")
+
   private Language language;
  /**
    * The catalog retail item id in the merchant namespace

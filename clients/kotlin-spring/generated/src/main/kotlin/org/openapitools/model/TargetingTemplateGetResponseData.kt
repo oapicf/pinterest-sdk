@@ -83,7 +83,7 @@ data class TargetingTemplateGetResponseData(
 
     @Schema(example = "true", description = "Inform if the targeting template is valid (ex. would be false if has revoked audience)")
     @get:JsonProperty("valid") val valid: kotlin.Boolean? = null
-    ) {
+) {
 
     /**
     * Indicate targeting template is active or Deleted
@@ -98,7 +98,8 @@ data class TargetingTemplateGetResponseData(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): Status {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'TargetingTemplateGetResponseData'")
             }
         }
     }

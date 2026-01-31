@@ -181,8 +181,7 @@ namespace Org.OpenAPITools.Model
                                 catalogType = new Option<CatalogsRetailReportParameters.CatalogTypeEnum?>(CatalogsRetailReportParameters.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
                             break;
                         case "report":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                report = new Option<CatalogsHotelReportParametersReport?>(JsonSerializer.Deserialize<CatalogsHotelReportParametersReport>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            report = new Option<CatalogsHotelReportParametersReport?>(JsonSerializer.Deserialize<CatalogsHotelReportParametersReport>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

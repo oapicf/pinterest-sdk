@@ -31,6 +31,9 @@
 
 @interface OAICreateMMMReportRequest : OAIObject
 
+/* A List of countries for filtering [optional]
+ */
+@property(nonatomic) NSArray<OAITargetingAdvertiserCountry>* countries;
 /* Name of the Marketing Mix Modeling (MMM) report 
  */
 @property(nonatomic) NSString* reportName;
@@ -52,8 +55,5 @@
 /* Metric and entity columns 
  */
 @property(nonatomic) NSArray<OAIMMMReportingColumn>* columns;
-/* A List of countries for filtering [optional]
- */
-@property(nonatomic) NSArray<OAITargetingAdvertiserCountry>* countries;
 
 @end

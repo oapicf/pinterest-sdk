@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
+import org.openapitools.api.IntegrationsApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -38,7 +39,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${api.base-path:/v5}")
+@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
 class IntegrationsApiController() {
 
     @Operation(
@@ -53,10 +54,12 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/integrations/commerce/{external_business_id}"],
+        value = [PATH_INTEGRATIONS_COMMERCE_DEL /* "/integrations/commerce/{external_business_id}" */],
         produces = ["application/json"]
     )
-    fun integrationsCommerceDel(@Parameter(description = "External business ID for the integration.", required = true) @PathVariable("external_business_id") externalBusinessId: kotlin.String): ResponseEntity<Unit> {
+    fun integrationsCommerceDel(
+        @Parameter(description = "External business ID for the integration.", required = true) @PathVariable("external_business_id") externalBusinessId: kotlin.String
+    ): ResponseEntity<Unit> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -74,10 +77,12 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/integrations/commerce/{external_business_id}"],
+        value = [PATH_INTEGRATIONS_COMMERCE_GET /* "/integrations/commerce/{external_business_id}" */],
         produces = ["application/json"]
     )
-    fun integrationsCommerceGet(@Parameter(description = "External business ID for the integration.", required = true) @PathVariable("external_business_id") externalBusinessId: kotlin.String): ResponseEntity<IntegrationMetadata> {
+    fun integrationsCommerceGet(
+        @Parameter(description = "External business ID for the integration.", required = true) @PathVariable("external_business_id") externalBusinessId: kotlin.String
+    ): ResponseEntity<IntegrationMetadata> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -95,11 +100,14 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/integrations/commerce/{external_business_id}"],
+        value = [PATH_INTEGRATIONS_COMMERCE_PATCH /* "/integrations/commerce/{external_business_id}" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun integrationsCommercePatch(@Parameter(description = "External business ID for the integration.", required = true) @PathVariable("external_business_id") externalBusinessId: kotlin.String,@Parameter(description = "Parameters to get create/update the Integration Metadata") @Valid @RequestBody(required = false) integrationRequestPatch: IntegrationRequestPatch?): ResponseEntity<IntegrationMetadata> {
+    fun integrationsCommercePatch(
+        @Parameter(description = "External business ID for the integration.", required = true) @PathVariable("external_business_id") externalBusinessId: kotlin.String,
+        @Parameter(description = "Parameters to get create/update the Integration Metadata") @Valid @RequestBody(required = false) integrationRequestPatch: IntegrationRequestPatch?
+    ): ResponseEntity<IntegrationMetadata> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -117,11 +125,13 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/integrations/commerce"],
+        value = [PATH_INTEGRATIONS_COMMERCE_POST /* "/integrations/commerce" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun integrationsCommercePost(@Parameter(description = "Parameters to get create/update the Integration Metadata") @Valid @RequestBody(required = false) integrationRequest: IntegrationRequest?): ResponseEntity<IntegrationMetadata> {
+    fun integrationsCommercePost(
+        @Parameter(description = "Parameters to get create/update the Integration Metadata") @Valid @RequestBody(required = false) integrationRequest: IntegrationRequest?
+    ): ResponseEntity<IntegrationMetadata> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -138,10 +148,12 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/integrations/{id}"],
+        value = [PATH_INTEGRATIONS_GET_BY_ID /* "/integrations/{id}" */],
         produces = ["application/json"]
     )
-    fun integrationsGetById(@Parameter(description = "Integration ID.", required = true) @PathVariable("id") id: kotlin.String): ResponseEntity<IntegrationRecord> {
+    fun integrationsGetById(
+        @Parameter(description = "Integration ID.", required = true) @PathVariable("id") id: kotlin.String
+    ): ResponseEntity<IntegrationRecord> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -157,10 +169,13 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/integrations"],
+        value = [PATH_INTEGRATIONS_GET_LIST /* "/integrations" */],
         produces = ["application/json"]
     )
-    fun integrationsGetList(@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int): ResponseEntity<IntegrationsGetList200Response> {
+    fun integrationsGetList(
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int
+    ): ResponseEntity<IntegrationsGetList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -177,11 +192,25 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/integrations/logs"],
+        value = [PATH_INTEGRATIONS_LOGS_POST /* "/integrations/logs" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun integrationsLogsPost(@Parameter(description = "Ingest log information from external integration application.", required = true) @Valid @RequestBody integrationLogsRequest: IntegrationLogsRequest): ResponseEntity<IntegrationLogsSuccessResponse> {
+    fun integrationsLogsPost(
+        @Parameter(description = "Ingest log information from external integration application.", required = true) @Valid @RequestBody integrationLogsRequest: IntegrationLogsRequest
+    ): ResponseEntity<IntegrationLogsSuccessResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    companion object {
+        //for your own safety never directly reuse these path definitions in tests
+        const val BASE_PATH: String = "/v5"
+        const val PATH_INTEGRATIONS_COMMERCE_DEL: String = "/integrations/commerce/{external_business_id}"
+        const val PATH_INTEGRATIONS_COMMERCE_GET: String = "/integrations/commerce/{external_business_id}"
+        const val PATH_INTEGRATIONS_COMMERCE_PATCH: String = "/integrations/commerce/{external_business_id}"
+        const val PATH_INTEGRATIONS_COMMERCE_POST: String = "/integrations/commerce"
+        const val PATH_INTEGRATIONS_GET_BY_ID: String = "/integrations/{id}"
+        const val PATH_INTEGRATIONS_GET_LIST: String = "/integrations"
+        const val PATH_INTEGRATIONS_LOGS_POST: String = "/integrations/logs"
     }
 }

@@ -23,7 +23,6 @@ namespace OpenAPI
 void OpenAPIConversionTagCreate::WriteJson(JsonWriter& Writer) const
 {
 	Writer->WriteObjectStart();
-	Writer->WriteIdentifierPrefix(TEXT("name")); WriteJsonValue(Writer, Name);
 	if (AemEnabled.IsSet())
 	{
 		Writer->WriteIdentifierPrefix(TEXT("aem_enabled")); WriteJsonValue(Writer, AemEnabled.GetValue());
@@ -52,6 +51,7 @@ void OpenAPIConversionTagCreate::WriteJson(JsonWriter& Writer) const
 	{
 		Writer->WriteIdentifierPrefix(TEXT("aem_loc_enabled")); WriteJsonValue(Writer, AemLocEnabled.GetValue());
 	}
+	Writer->WriteIdentifierPrefix(TEXT("name")); WriteJsonValue(Writer, Name);
 	Writer->WriteObjectEnd();
 }
 
@@ -63,7 +63,6 @@ bool OpenAPIConversionTagCreate::FromJson(const TSharedPtr<FJsonValue>& JsonValu
 
 	bool ParseSuccess = true;
 
-	ParseSuccess &= TryGetJsonValue(*Object, TEXT("name"), Name);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("aem_enabled"), AemEnabled);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("md_frequency"), MdFrequency);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("aem_fnln_enabled"), AemFnlnEnabled);
@@ -71,6 +70,7 @@ bool OpenAPIConversionTagCreate::FromJson(const TSharedPtr<FJsonValue>& JsonValu
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("aem_ge_enabled"), AemGeEnabled);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("aem_db_enabled"), AemDbEnabled);
 	ParseSuccess &= TryGetJsonValue(*Object, TEXT("aem_loc_enabled"), AemLocEnabled);
+	ParseSuccess &= TryGetJsonValue(*Object, TEXT("name"), Name);
 
 	return ParseSuccess;
 }

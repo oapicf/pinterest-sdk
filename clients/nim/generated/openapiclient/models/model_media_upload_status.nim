@@ -9,7 +9,43 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type MediaUploadStatus* = object
-  ## Media upload status
+type MediaUploadStatus* {.pure.} = enum
+  Registered
+  Processing
+  Succeeded
+  Failed
+
+func `%`*(v: MediaUploadStatus): JsonNode =
+  result = case v:
+    of MediaUploadStatus.Registered: %"registered"
+    of MediaUploadStatus.Processing: %"processing"
+    of MediaUploadStatus.Succeeded: %"succeeded"
+    of MediaUploadStatus.Failed: %"failed"
+
+func `$`*(v: MediaUploadStatus): string =
+  result = case v:
+    of MediaUploadStatus.Registered: $("registered")
+    of MediaUploadStatus.Processing: $("processing")
+    of MediaUploadStatus.Succeeded: $("succeeded")
+    of MediaUploadStatus.Failed: $("failed")
+
+proc to*(node: JsonNode, T: typedesc[MediaUploadStatus]): MediaUploadStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum MediaUploadStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("registered"):
+    return MediaUploadStatus.Registered
+  of $("processing"):
+    return MediaUploadStatus.Processing
+  of $("succeeded"):
+    return MediaUploadStatus.Succeeded
+  of $("failed"):
+    return MediaUploadStatus.Failed
+  else:
+    raise newException(ValueError, "Invalid enum value for MediaUploadStatus: " & strVal)
+

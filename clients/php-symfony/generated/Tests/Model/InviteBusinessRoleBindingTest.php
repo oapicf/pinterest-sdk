@@ -37,7 +37,7 @@ use PHPUnit\Framework\TestCase;
  * InviteBusinessRoleBindingTest Class Doc Comment
  *
  * @category    Class
- * @description An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+ * @description InviteBusinessRoleBinding
  * @package     OpenAPI\Server\Tests\Model
  * @author      openapi-generator contributors
  * @link        https://github.com/openapitools/openapi-generator
@@ -87,39 +87,6 @@ class InviteBusinessRoleBindingTest extends TestCase
     }
 
     /**
-     * Test attribute "createdByBusinessId"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyCreatedByBusinessId(): void
-    {
-        $this->markTestSkipped('Test for property createdByBusinessId not implemented');
-    }
-
-    /**
-     * Test attribute "createdByUserId"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyCreatedByUserId(): void
-    {
-        $this->markTestSkipped('Test for property createdByUserId not implemented');
-    }
-
-    /**
-     * Test attribute "user"
-     *
-     * @group unit
-     * @small
-     */
-    public function testPropertyUser(): void
-    {
-        $this->markTestSkipped('Test for property user not implemented');
-    }
-
-    /**
      * Test attribute "id"
      *
      * @group unit
@@ -150,5 +117,38 @@ class InviteBusinessRoleBindingTest extends TestCase
     public function testPropertyIsReceivedInvite(): void
     {
         $this->markTestSkipped('Test for property isReceivedInvite not implemented');
+    }
+
+    /**
+     * Test attribute "user"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyUser(): void
+    {
+        $this->markTestSkipped('Test for property user not implemented');
+    }
+
+    /**
+     * Test attribute "createdByBusinessId"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyCreatedByBusinessId(): void
+    {
+        $this->markTestSkipped('Test for property createdByBusinessId not implemented');
+    }
+
+    /**
+     * Test attribute "createdByUserId"
+     *
+     * @group unit
+     * @small
+     */
+    public function testPropertyCreatedByUserId(): void
+    {
+        $this->markTestSkipped('Test for property createdByUserId not implemented');
     }
 }

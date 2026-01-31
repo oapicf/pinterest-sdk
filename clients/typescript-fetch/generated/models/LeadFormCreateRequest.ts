@@ -46,13 +46,13 @@ export interface LeadFormCreateRequest {
      * @type {string}
      * @memberof LeadFormCreateRequest
      */
-    name: string | null;
+    name?: string | null;
     /**
      * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
      * @type {string}
      * @memberof LeadFormCreateRequest
      */
-    privacyPolicyLink: string | null;
+    privacyPolicyLink?: string | null;
     /**
      * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.
      * 
@@ -61,13 +61,13 @@ export interface LeadFormCreateRequest {
      * @type {boolean}
      * @memberof LeadFormCreateRequest
      */
-    hasAcceptedTerms: boolean;
+    hasAcceptedTerms?: boolean;
     /**
      * A message for people who complete the form to let them know what happens next.
      * @type {string}
      * @memberof LeadFormCreateRequest
      */
-    completionMessage: string | null;
+    completionMessage?: string | null;
     /**
      * 
      * @type {LeadFormStatus}
@@ -85,7 +85,7 @@ export interface LeadFormCreateRequest {
      * @type {Array<LeadFormQuestion>}
      * @memberof LeadFormCreateRequest
      */
-    questions: Array<LeadFormQuestion>;
+    questions?: Array<LeadFormQuestion>;
     /**
      * List of additional policy links to be displayed on the lead form.
      * @type {Array<LeadFormCommonPolicyLinksInner>}
@@ -100,11 +100,6 @@ export interface LeadFormCreateRequest {
  * Check if a given object implements the LeadFormCreateRequest interface.
  */
 export function instanceOfLeadFormCreateRequest(value: object): value is LeadFormCreateRequest {
-    if (!('name' in value) || value['name'] === undefined) return false;
-    if (!('privacyPolicyLink' in value) || value['privacyPolicyLink'] === undefined) return false;
-    if (!('hasAcceptedTerms' in value) || value['hasAcceptedTerms'] === undefined) return false;
-    if (!('completionMessage' in value) || value['completionMessage'] === undefined) return false;
-    if (!('questions' in value) || value['questions'] === undefined) return false;
     return true;
 }
 
@@ -118,13 +113,13 @@ export function LeadFormCreateRequestFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'name': json['name'],
-        'privacyPolicyLink': json['privacy_policy_link'],
-        'hasAcceptedTerms': json['has_accepted_terms'],
-        'completionMessage': json['completion_message'],
+        'name': json['name'] == null ? undefined : json['name'],
+        'privacyPolicyLink': json['privacy_policy_link'] == null ? undefined : json['privacy_policy_link'],
+        'hasAcceptedTerms': json['has_accepted_terms'] == null ? undefined : json['has_accepted_terms'],
+        'completionMessage': json['completion_message'] == null ? undefined : json['completion_message'],
         'status': json['status'] == null ? undefined : LeadFormStatusFromJSON(json['status']),
         'disclosureLanguage': json['disclosure_language'] == null ? undefined : json['disclosure_language'],
-        'questions': ((json['questions'] as Array<any>).map(LeadFormQuestionFromJSON)),
+        'questions': json['questions'] == null ? undefined : ((json['questions'] as Array<any>).map(LeadFormQuestionFromJSON)),
         'policyLinks': json['policy_links'] == null ? undefined : ((json['policy_links'] as Array<any>).map(LeadFormCommonPolicyLinksInnerFromJSON)),
     };
 }
@@ -146,7 +141,7 @@ export function LeadFormCreateRequestToJSONTyped(value?: LeadFormCreateRequest |
         'completion_message': value['completionMessage'],
         'status': LeadFormStatusToJSON(value['status']),
         'disclosure_language': value['disclosureLanguage'],
-        'questions': ((value['questions'] as Array<any>).map(LeadFormQuestionToJSON)),
+        'questions': value['questions'] == null ? undefined : ((value['questions'] as Array<any>).map(LeadFormQuestionToJSON)),
         'policy_links': value['policyLinks'] == null ? undefined : ((value['policyLinks'] as Array<any>).map(LeadFormCommonPolicyLinksInnerToJSON)),
     };
 }

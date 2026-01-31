@@ -18,11 +18,11 @@ export interface BoardUpdate {
     privacy?: BoardUpdate.PrivacyEnum;
 }
 export namespace BoardUpdate {
-    export type PrivacyEnum = 'PUBLIC' | 'SECRET';
     export const PrivacyEnum = {
-        Public: 'PUBLIC' as PrivacyEnum,
-        Secret: 'SECRET' as PrivacyEnum
-    };
+        Public: 'PUBLIC',
+        Secret: 'SECRET'
+    } as const;
+    export type PrivacyEnum = typeof PrivacyEnum[keyof typeof PrivacyEnum];
 }
 
 

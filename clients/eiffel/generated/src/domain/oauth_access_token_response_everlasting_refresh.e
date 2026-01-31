@@ -19,6 +19,12 @@ class OAUTH_ACCESS_TOKEN_RESPONSE_EVERLASTING_REFRESH
 
 feature --Access
 
+    refresh_token: detachable STRING_32
+      
+    refresh_token_expires_in: INTEGER_32
+      
+    refresh_token_expires_at: INTEGER_32
+      
     response_type: detachable STRING_32
       
     access_token: detachable STRING_32
@@ -29,14 +35,32 @@ feature --Access
       
     scope: detachable STRING_32
       
-    refresh_token: detachable STRING_32
-      
-    refresh_token_expires_in: INTEGER_32
-      
-    refresh_token_expires_at: INTEGER_32
-      
 
 feature -- Change Element
+
+    set_refresh_token (a_name: like refresh_token)
+        -- Set 'refresh_token' with 'a_name'.
+      do
+        refresh_token := a_name
+      ensure
+        refresh_token_set: refresh_token = a_name
+      end
+
+    set_refresh_token_expires_in (a_name: like refresh_token_expires_in)
+        -- Set 'refresh_token_expires_in' with 'a_name'.
+      do
+        refresh_token_expires_in := a_name
+      ensure
+        refresh_token_expires_in_set: refresh_token_expires_in = a_name
+      end
+
+    set_refresh_token_expires_at (a_name: like refresh_token_expires_at)
+        -- Set 'refresh_token_expires_at' with 'a_name'.
+      do
+        refresh_token_expires_at := a_name
+      ensure
+        refresh_token_expires_at_set: refresh_token_expires_at = a_name
+      end
 
     set_response_type (a_name: like response_type)
         -- Set 'response_type' with 'a_name'.
@@ -78,30 +102,6 @@ feature -- Change Element
         scope_set: scope = a_name
       end
 
-    set_refresh_token (a_name: like refresh_token)
-        -- Set 'refresh_token' with 'a_name'.
-      do
-        refresh_token := a_name
-      ensure
-        refresh_token_set: refresh_token = a_name
-      end
-
-    set_refresh_token_expires_in (a_name: like refresh_token_expires_in)
-        -- Set 'refresh_token_expires_in' with 'a_name'.
-      do
-        refresh_token_expires_in := a_name
-      ensure
-        refresh_token_expires_in_set: refresh_token_expires_in = a_name
-      end
-
-    set_refresh_token_expires_at (a_name: like refresh_token_expires_at)
-        -- Set 'refresh_token_expires_at' with 'a_name'.
-      do
-        refresh_token_expires_at := a_name
-      ensure
-        refresh_token_expires_at_set: refresh_token_expires_at = a_name
-      end
-
 
  feature -- Status Report
 
@@ -110,6 +110,21 @@ feature -- Change Element
       do
         create Result.make_empty
         Result.append("%Nclass OAUTH_ACCESS_TOKEN_RESPONSE_EVERLASTING_REFRESH%N")
+        if attached refresh_token as l_refresh_token then
+          Result.append ("%Nrefresh_token:")
+          Result.append (l_refresh_token.out)
+          Result.append ("%N")
+        end
+        if attached refresh_token_expires_in as l_refresh_token_expires_in then
+          Result.append ("%Nrefresh_token_expires_in:")
+          Result.append (l_refresh_token_expires_in.out)
+          Result.append ("%N")
+        end
+        if attached refresh_token_expires_at as l_refresh_token_expires_at then
+          Result.append ("%Nrefresh_token_expires_at:")
+          Result.append (l_refresh_token_expires_at.out)
+          Result.append ("%N")
+        end
         if attached response_type as l_response_type then
           Result.append ("%Nresponse_type:")
           Result.append (l_response_type.out)
@@ -133,21 +148,6 @@ feature -- Change Element
         if attached scope as l_scope then
           Result.append ("%Nscope:")
           Result.append (l_scope.out)
-          Result.append ("%N")
-        end
-        if attached refresh_token as l_refresh_token then
-          Result.append ("%Nrefresh_token:")
-          Result.append (l_refresh_token.out)
-          Result.append ("%N")
-        end
-        if attached refresh_token_expires_in as l_refresh_token_expires_in then
-          Result.append ("%Nrefresh_token_expires_in:")
-          Result.append (l_refresh_token_expires_in.out)
-          Result.append ("%N")
-        end
-        if attached refresh_token_expires_at as l_refresh_token_expires_at then
-          Result.append ("%Nrefresh_token_expires_at:")
-          Result.append (l_refresh_token_expires_at.out)
           Result.append ("%N")
         end
       end

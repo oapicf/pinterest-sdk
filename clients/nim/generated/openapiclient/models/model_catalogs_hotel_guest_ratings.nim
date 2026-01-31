@@ -9,11 +9,40 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type CatalogsHotelGuestRatings* = object
   ## If specified, you must provide all properties
-  score*: float ## Your hotel's rating.
-  numberOfReviewers*: int ## Total number of people who have rated this hotel.
-  maxScore*: float ## Max value for the hotel rating score.
-  ratingSystem*: string ## System you use for guest reviews.
+  score*: Option[float] ## Your hotel's rating.
+  numberOfReviewers*: Option[int] ## Total number of people who have rated this hotel.
+  maxScore*: Option[float] ## Max value for the hotel rating score.
+  ratingSystem*: Option[string] ## System you use for guest reviews.
+
+
+# Custom JSON deserialization for CatalogsHotelGuestRatings with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsHotelGuestRatings]): CatalogsHotelGuestRatings =
+  result = CatalogsHotelGuestRatings()
+  if node.kind == JObject:
+    if node.hasKey("score") and node["score"].kind != JNull:
+      result.score = some(to(node["score"], typeof(result.score.get())))
+    if node.hasKey("number_of_reviewers") and node["number_of_reviewers"].kind != JNull:
+      result.numberOfReviewers = some(to(node["number_of_reviewers"], typeof(result.numberOfReviewers.get())))
+    if node.hasKey("max_score") and node["max_score"].kind != JNull:
+      result.maxScore = some(to(node["max_score"], typeof(result.maxScore.get())))
+    if node.hasKey("rating_system") and node["rating_system"].kind != JNull:
+      result.ratingSystem = some(to(node["rating_system"], typeof(result.ratingSystem.get())))
+
+# Custom JSON serialization for CatalogsHotelGuestRatings with custom field names
+proc `%`*(obj: CatalogsHotelGuestRatings): JsonNode =
+  result = newJObject()
+  if obj.score.isSome():
+    result["score"] = %obj.score.get()
+  if obj.numberOfReviewers.isSome():
+    result["number_of_reviewers"] = %obj.numberOfReviewers.get()
+  if obj.maxScore.isSome():
+    result["max_score"] = %obj.maxScore.get()
+  if obj.ratingSystem.isSome():
+    result["rating_system"] = %obj.ratingSystem.get()
+

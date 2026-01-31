@@ -254,35 +254,71 @@ CampaignsApi <- R6::R6Class(
         stop("Missing required parameter `granularity`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CampaignsApi$CampaignTargetingAnalyticsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CampaignsApi$CampaignTargetingAnalyticsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CampaignsApi$CampaignTargetingAnalyticsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`campaign_ids`) > 100) {
+      if (!missing(`campaign_ids`) && is.null(`campaign_ids`)) {
+        stop("Invalid value for `campaign_ids` when calling CampaignsApi$CampaignTargetingAnalyticsGet, `campaign_ids` is not nullable")
+      }
+      if (!is.null(`campaign_ids`) && length(`campaign_ids`) > 100) {
         stop("Invalid length for `campaign_ids` when calling CampaignsApi$CampaignTargetingAnalyticsGet, number of items must be less than or equal to 100.")
       }
-      if (length(`campaign_ids`) < 1) {
+      if (!is.null(`campaign_ids`) && length(`campaign_ids`) < 1) {
         stop("Invalid length for `campaign_ids` when calling CampaignsApi$CampaignTargetingAnalyticsGet, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling CampaignsApi$CampaignTargetingAnalyticsGet, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling CampaignsApi$CampaignTargetingAnalyticsGet, `end_date` is not nullable")
+      }
 
-      if (length(`targeting_types`) > 14) {
+      if (!missing(`targeting_types`) && is.null(`targeting_types`)) {
+        stop("Invalid value for `targeting_types` when calling CampaignsApi$CampaignTargetingAnalyticsGet, `targeting_types` is not nullable")
+      }
+      if (!is.null(`targeting_types`) && length(`targeting_types`) > 14) {
         stop("Invalid length for `targeting_types` when calling CampaignsApi$CampaignTargetingAnalyticsGet, number of items must be less than or equal to 14.")
       }
-      if (length(`targeting_types`) < 1) {
+      if (!is.null(`targeting_types`) && length(`targeting_types`) < 1) {
         stop("Invalid length for `targeting_types` when calling CampaignsApi$CampaignTargetingAnalyticsGet, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`columns`) && is.null(`columns`)) {
+        stop("Invalid value for `columns` when calling CampaignsApi$CampaignTargetingAnalyticsGet, `columns` is not nullable")
+      }
 
+      if (!missing(`granularity`) && is.null(`granularity`)) {
+        stop("Invalid value for `granularity` when calling CampaignsApi$CampaignTargetingAnalyticsGet, `granularity` is not nullable")
+      }
 
+      if (!missing(`click_window_days`) && is.null(`click_window_days`)) {
+        stop("Invalid value for `click_window_days` when calling CampaignsApi$CampaignTargetingAnalyticsGet, `click_window_days` is not nullable")
+      }
 
+      if (!missing(`engagement_window_days`) && is.null(`engagement_window_days`)) {
+        stop("Invalid value for `engagement_window_days` when calling CampaignsApi$CampaignTargetingAnalyticsGet, `engagement_window_days` is not nullable")
+      }
 
+      if (!missing(`view_window_days`) && is.null(`view_window_days`)) {
+        stop("Invalid value for `view_window_days` when calling CampaignsApi$CampaignTargetingAnalyticsGet, `view_window_days` is not nullable")
+      }
 
+      if (!missing(`conversion_report_time`) && is.null(`conversion_report_time`)) {
+        stop("Invalid value for `conversion_report_time` when calling CampaignsApi$CampaignTargetingAnalyticsGet, `conversion_report_time` is not nullable")
+      }
 
+      if (!missing(`attribution_types`) && is.null(`attribution_types`)) {
+        stop("Invalid value for `attribution_types` when calling CampaignsApi$CampaignTargetingAnalyticsGet, `attribution_types` is not nullable")
+      }
 
       # explore
       for (query_item in `campaign_ids`) {
@@ -467,27 +503,57 @@ CampaignsApi <- R6::R6Class(
         stop("Missing required parameter `granularity`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CampaignsApi$CampaignsAnalytics, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CampaignsApi$CampaignsAnalytics, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CampaignsApi$CampaignsAnalytics, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`start_date`) && is.null(`start_date`)) {
+        stop("Invalid value for `start_date` when calling CampaignsApi$CampaignsAnalytics, `start_date` is not nullable")
+      }
 
+      if (!missing(`end_date`) && is.null(`end_date`)) {
+        stop("Invalid value for `end_date` when calling CampaignsApi$CampaignsAnalytics, `end_date` is not nullable")
+      }
 
-      if (length(`campaign_ids`) > 100) {
+      if (!missing(`campaign_ids`) && is.null(`campaign_ids`)) {
+        stop("Invalid value for `campaign_ids` when calling CampaignsApi$CampaignsAnalytics, `campaign_ids` is not nullable")
+      }
+      if (!is.null(`campaign_ids`) && length(`campaign_ids`) > 100) {
         stop("Invalid length for `campaign_ids` when calling CampaignsApi$CampaignsAnalytics, number of items must be less than or equal to 100.")
       }
-      if (length(`campaign_ids`) < 1) {
+      if (!is.null(`campaign_ids`) && length(`campaign_ids`) < 1) {
         stop("Invalid length for `campaign_ids` when calling CampaignsApi$CampaignsAnalytics, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`columns`) && is.null(`columns`)) {
+        stop("Invalid value for `columns` when calling CampaignsApi$CampaignsAnalytics, `columns` is not nullable")
+      }
 
+      if (!missing(`granularity`) && is.null(`granularity`)) {
+        stop("Invalid value for `granularity` when calling CampaignsApi$CampaignsAnalytics, `granularity` is not nullable")
+      }
 
+      if (!missing(`click_window_days`) && is.null(`click_window_days`)) {
+        stop("Invalid value for `click_window_days` when calling CampaignsApi$CampaignsAnalytics, `click_window_days` is not nullable")
+      }
 
+      if (!missing(`engagement_window_days`) && is.null(`engagement_window_days`)) {
+        stop("Invalid value for `engagement_window_days` when calling CampaignsApi$CampaignsAnalytics, `engagement_window_days` is not nullable")
+      }
 
+      if (!missing(`view_window_days`) && is.null(`view_window_days`)) {
+        stop("Invalid value for `view_window_days` when calling CampaignsApi$CampaignsAnalytics, `view_window_days` is not nullable")
+      }
 
+      if (!missing(`conversion_report_time`) && is.null(`conversion_report_time`)) {
+        stop("Invalid value for `conversion_report_time` when calling CampaignsApi$CampaignsAnalytics, `conversion_report_time` is not nullable")
+      }
 
       query_params[["start_date"]] <- `start_date`
 
@@ -635,17 +701,23 @@ CampaignsApi <- R6::R6Class(
         stop("Missing required parameter `campaign_create_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CampaignsApi$CampaignsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CampaignsApi$CampaignsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CampaignsApi$CampaignsCreate, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`campaign_create_request`) > 30) {
+      if (!missing(`campaign_create_request`) && is.null(`campaign_create_request`)) {
+        stop("Invalid value for `campaign_create_request` when calling CampaignsApi$CampaignsCreate, `campaign_create_request` is not nullable")
+      }
+      if (!is.null(`campaign_create_request`) && length(`campaign_create_request`) > 30) {
         stop("Invalid length for `campaign_create_request` when calling CampaignsApi$CampaignsCreate, number of items must be less than or equal to 30.")
       }
-      if (length(`campaign_create_request`) < 1) {
+      if (!is.null(`campaign_create_request`) && length(`campaign_create_request`) < 1) {
         stop("Invalid length for `campaign_create_request` when calling CampaignsApi$CampaignsCreate, number of items must be greater than or equal to 1.")
       }
 
@@ -764,17 +836,23 @@ CampaignsApi <- R6::R6Class(
         stop("Missing required parameter `campaign_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CampaignsApi$CampaignsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CampaignsApi$CampaignsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CampaignsApi$CampaignsGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (nchar(`campaign_id`) > 18) {
+      if (!missing(`campaign_id`) && is.null(`campaign_id`)) {
+        stop("Invalid value for `campaign_id` when calling CampaignsApi$CampaignsGet, `campaign_id` is not nullable")
+      }
+      if (!is.null(`campaign_id`) && nchar(`campaign_id`) > 18) {
         stop("Invalid length for `campaign_id` when calling CampaignsApi$CampaignsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`campaign_id`, "^\\d+$")) {
+      if (!is.null(`campaign_id`) && !stringr::str_detect(`campaign_id`, "^\\d+$")) {
         stop("Invalid value for `campaign_id` when calling CampaignsApi$CampaignsGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -892,29 +970,47 @@ CampaignsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CampaignsApi$CampaignsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CampaignsApi$CampaignsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CampaignsApi$CampaignsList, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`campaign_ids`) > 100) {
+      if (!missing(`campaign_ids`) && is.null(`campaign_ids`)) {
+        stop("Invalid value for `campaign_ids` when calling CampaignsApi$CampaignsList, `campaign_ids` is not nullable")
+      }
+      if (!is.null(`campaign_ids`) && length(`campaign_ids`) > 100) {
         stop("Invalid length for `campaign_ids` when calling CampaignsApi$CampaignsList, number of items must be less than or equal to 100.")
       }
-      if (length(`campaign_ids`) < 1) {
+      if (!is.null(`campaign_ids`) && length(`campaign_ids`) < 1) {
         stop("Invalid length for `campaign_ids` when calling CampaignsApi$CampaignsList, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`entity_statuses`) && is.null(`entity_statuses`)) {
+        stop("Invalid value for `entity_statuses` when calling CampaignsApi$CampaignsList, `entity_statuses` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling CampaignsApi$CampaignsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling CampaignsApi$CampaignsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling CampaignsApi$CampaignsList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`order`) && is.null(`order`)) {
+        stop("Invalid value for `order` when calling CampaignsApi$CampaignsList, `order` is not nullable")
+      }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling CampaignsApi$CampaignsList, `bookmark` is not nullable")
+      }
 
       # explore
       for (query_item in `campaign_ids`) {
@@ -1045,17 +1141,23 @@ CampaignsApi <- R6::R6Class(
         stop("Missing required parameter `campaign_update_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling CampaignsApi$CampaignsUpdate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling CampaignsApi$CampaignsUpdate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling CampaignsApi$CampaignsUpdate, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`campaign_update_request`) > 30) {
+      if (!missing(`campaign_update_request`) && is.null(`campaign_update_request`)) {
+        stop("Invalid value for `campaign_update_request` when calling CampaignsApi$CampaignsUpdate, `campaign_update_request` is not nullable")
+      }
+      if (!is.null(`campaign_update_request`) && length(`campaign_update_request`) > 30) {
         stop("Invalid length for `campaign_update_request` when calling CampaignsApi$CampaignsUpdate, number of items must be less than or equal to 30.")
       }
-      if (length(`campaign_update_request`) < 1) {
+      if (!is.null(`campaign_update_request`) && length(`campaign_update_request`) < 1) {
         stop("Invalid length for `campaign_update_request` when calling CampaignsApi$CampaignsUpdate, number of items must be greater than or equal to 1.")
       }
 

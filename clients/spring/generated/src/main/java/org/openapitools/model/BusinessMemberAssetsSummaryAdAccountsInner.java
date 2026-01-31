@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  */
 
 @JsonTypeName("BusinessMemberAssetsSummary_ad_accounts_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BusinessMemberAssetsSummaryAdAccountsInner {
 
   private @Nullable String id;
@@ -32,7 +32,7 @@ public class BusinessMemberAssetsSummaryAdAccountsInner {
   @Valid
   private List<String> permissions = new ArrayList<>();
 
-  public BusinessMemberAssetsSummaryAdAccountsInner id(String id) {
+  public BusinessMemberAssetsSummaryAdAccountsInner id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -44,11 +44,11 @@ public class BusinessMemberAssetsSummaryAdAccountsInner {
   @Pattern(regexp = "^\\d+$") @Size(min = 1, max = 20) 
   @Schema(name = "id", example = "549755885175", description = "Unique identifier of a business ad account.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 

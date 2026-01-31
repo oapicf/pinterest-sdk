@@ -1,4 +1,4 @@
-/**
+/*
  * Pinterest REST API
  * Pinterest's REST API
  *
@@ -19,8 +19,6 @@ import com.google.gson.annotations.SerializedName;
 @ApiModel(description = "")
 public class ConversionTagCreate {
   
-  @SerializedName("name")
-  private String name = null;
   @SerializedName("aem_enabled")
   private Boolean aemEnabled = false;
   @SerializedName("md_frequency")
@@ -35,17 +33,8 @@ public class ConversionTagCreate {
   private Boolean aemDbEnabled = false;
   @SerializedName("aem_loc_enabled")
   private Boolean aemLocEnabled = false;
-
-  /**
-   * Conversion tag name.
-   **/
-  @ApiModelProperty(required = true, value = "Conversion tag name.")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
+  @SerializedName("name")
+  private String name = null;
 
   /**
    * Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.
@@ -124,6 +113,17 @@ public class ConversionTagCreate {
     this.aemLocEnabled = aemLocEnabled;
   }
 
+  /**
+   * Conversion tag name.
+   **/
+  @ApiModelProperty(required = true, value = "Conversion tag name.")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -134,20 +134,19 @@ public class ConversionTagCreate {
       return false;
     }
     ConversionTagCreate conversionTagCreate = (ConversionTagCreate) o;
-    return (this.name == null ? conversionTagCreate.name == null : this.name.equals(conversionTagCreate.name)) &&
-        (this.aemEnabled == null ? conversionTagCreate.aemEnabled == null : this.aemEnabled.equals(conversionTagCreate.aemEnabled)) &&
+    return (this.aemEnabled == null ? conversionTagCreate.aemEnabled == null : this.aemEnabled.equals(conversionTagCreate.aemEnabled)) &&
         (this.mdFrequency == null ? conversionTagCreate.mdFrequency == null : this.mdFrequency.equals(conversionTagCreate.mdFrequency)) &&
         (this.aemFnlnEnabled == null ? conversionTagCreate.aemFnlnEnabled == null : this.aemFnlnEnabled.equals(conversionTagCreate.aemFnlnEnabled)) &&
         (this.aemPhEnabled == null ? conversionTagCreate.aemPhEnabled == null : this.aemPhEnabled.equals(conversionTagCreate.aemPhEnabled)) &&
         (this.aemGeEnabled == null ? conversionTagCreate.aemGeEnabled == null : this.aemGeEnabled.equals(conversionTagCreate.aemGeEnabled)) &&
         (this.aemDbEnabled == null ? conversionTagCreate.aemDbEnabled == null : this.aemDbEnabled.equals(conversionTagCreate.aemDbEnabled)) &&
-        (this.aemLocEnabled == null ? conversionTagCreate.aemLocEnabled == null : this.aemLocEnabled.equals(conversionTagCreate.aemLocEnabled));
+        (this.aemLocEnabled == null ? conversionTagCreate.aemLocEnabled == null : this.aemLocEnabled.equals(conversionTagCreate.aemLocEnabled)) &&
+        (this.name == null ? conversionTagCreate.name == null : this.name.equals(conversionTagCreate.name));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
-    result = 31 * result + (this.name == null ? 0: this.name.hashCode());
     result = 31 * result + (this.aemEnabled == null ? 0: this.aemEnabled.hashCode());
     result = 31 * result + (this.mdFrequency == null ? 0: this.mdFrequency.hashCode());
     result = 31 * result + (this.aemFnlnEnabled == null ? 0: this.aemFnlnEnabled.hashCode());
@@ -155,6 +154,7 @@ public class ConversionTagCreate {
     result = 31 * result + (this.aemGeEnabled == null ? 0: this.aemGeEnabled.hashCode());
     result = 31 * result + (this.aemDbEnabled == null ? 0: this.aemDbEnabled.hashCode());
     result = 31 * result + (this.aemLocEnabled == null ? 0: this.aemLocEnabled.hashCode());
+    result = 31 * result + (this.name == null ? 0: this.name.hashCode());
     return result;
   }
 
@@ -163,7 +163,6 @@ public class ConversionTagCreate {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConversionTagCreate {\n");
     
-    sb.append("  name: ").append(name).append("\n");
     sb.append("  aemEnabled: ").append(aemEnabled).append("\n");
     sb.append("  mdFrequency: ").append(mdFrequency).append("\n");
     sb.append("  aemFnlnEnabled: ").append(aemFnlnEnabled).append("\n");
@@ -171,6 +170,7 @@ public class ConversionTagCreate {
     sb.append("  aemGeEnabled: ").append(aemGeEnabled).append("\n");
     sb.append("  aemDbEnabled: ").append(aemDbEnabled).append("\n");
     sb.append("  aemLocEnabled: ").append(aemLocEnabled).append("\n");
+    sb.append("  name: ").append(name).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -55,7 +55,7 @@
 #'
 #' library(openapi)
 #' var_ad_account_id <- "ad_account_id_example" # character | Unique identifier of an ad account.
-#' var_lead_form_create_request <- c(LeadFormCreateRequest$new("name_example", "privacy_policy_link_example", "has_accepted_terms_example", "completion_message_example", c(LeadFormQuestion$new(LeadFormQuestionType$new(), LeadFormQuestionFieldType$new(), "custom_question_label_example", c("custom_question_options_example"))), LeadFormStatus$new(), "disclosure_language_example", c(LeadFormCommon_policy_links_inner$new("label_example", "link_example")))) # array[LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
+#' var_lead_form_create_request <- c(LeadFormCreateRequest$new("name_example", "privacy_policy_link_example", "has_accepted_terms_example", "completion_message_example", LeadFormStatus$new(), "disclosure_language_example", c(LeadFormQuestion$new(LeadFormQuestionType$new(), LeadFormQuestionFieldType$new(), "custom_question_label_example", c("custom_question_options_example"))), c(LeadFormCommon_policy_links_inner$new("label_example", "link_example")))) # array[LeadFormCreateRequest] | List of lead forms to create, size limit [1, 30].
 #'
 #' #Create lead forms
 #' api_instance <- LeadFormsApi$new()
@@ -177,14 +177,20 @@ LeadFormsApi <- R6::R6Class(
         stop("Missing required parameter `lead_form_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling LeadFormsApi$LeadFormGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling LeadFormsApi$LeadFormGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling LeadFormsApi$LeadFormGet, must conform to the pattern ^\\d+$.")
       }
 
-      if (!str_detect(`lead_form_id`, "^\\d+$")) {
+      if (!missing(`lead_form_id`) && is.null(`lead_form_id`)) {
+        stop("Invalid value for `lead_form_id` when calling LeadFormsApi$LeadFormGet, `lead_form_id` is not nullable")
+      }
+      if (!is.null(`lead_form_id`) && !stringr::str_detect(`lead_form_id`, "^\\d+$")) {
         stop("Invalid value for `lead_form_id` when calling LeadFormsApi$LeadFormGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -304,17 +310,26 @@ LeadFormsApi <- R6::R6Class(
         stop("Missing required parameter `lead_form_test_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling LeadFormsApi$LeadFormTestCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling LeadFormsApi$LeadFormTestCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling LeadFormsApi$LeadFormTestCreate, must conform to the pattern ^\\d+$.")
       }
 
-      if (!str_detect(`lead_form_id`, "^\\d+$")) {
+      if (!missing(`lead_form_id`) && is.null(`lead_form_id`)) {
+        stop("Invalid value for `lead_form_id` when calling LeadFormsApi$LeadFormTestCreate, `lead_form_id` is not nullable")
+      }
+      if (!is.null(`lead_form_id`) && !stringr::str_detect(`lead_form_id`, "^\\d+$")) {
         stop("Invalid value for `lead_form_id` when calling LeadFormsApi$LeadFormTestCreate, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`lead_form_test_request`) && is.null(`lead_form_test_request`)) {
+        stop("Invalid value for `lead_form_test_request` when calling LeadFormsApi$LeadFormTestCreate, `lead_form_test_request` is not nullable")
+      }
 
       if (!is.null(`lead_form_test_request`)) {
         local_var_body <- `lead_form_test_request`$toJSONString()
@@ -432,17 +447,23 @@ LeadFormsApi <- R6::R6Class(
         stop("Missing required parameter `lead_form_create_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling LeadFormsApi$LeadFormsCreate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling LeadFormsApi$LeadFormsCreate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling LeadFormsApi$LeadFormsCreate, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`lead_form_create_request`) > 30) {
+      if (!missing(`lead_form_create_request`) && is.null(`lead_form_create_request`)) {
+        stop("Invalid value for `lead_form_create_request` when calling LeadFormsApi$LeadFormsCreate, `lead_form_create_request` is not nullable")
+      }
+      if (!is.null(`lead_form_create_request`) && length(`lead_form_create_request`) > 30) {
         stop("Invalid length for `lead_form_create_request` when calling LeadFormsApi$LeadFormsCreate, number of items must be less than or equal to 30.")
       }
-      if (length(`lead_form_create_request`) < 1) {
+      if (!is.null(`lead_form_create_request`) && length(`lead_form_create_request`) < 1) {
         stop("Invalid length for `lead_form_create_request` when calling LeadFormsApi$LeadFormsCreate, number of items must be greater than or equal to 1.")
       }
 
@@ -561,21 +582,33 @@ LeadFormsApi <- R6::R6Class(
         stop("Missing required parameter `ad_account_id`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling LeadFormsApi$LeadFormsList, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling LeadFormsApi$LeadFormsList, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling LeadFormsApi$LeadFormsList, must conform to the pattern ^\\d+$.")
       }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling LeadFormsApi$LeadFormsList, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling LeadFormsApi$LeadFormsList, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling LeadFormsApi$LeadFormsList, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`order`) && is.null(`order`)) {
+        stop("Invalid value for `order` when calling LeadFormsApi$LeadFormsList, `order` is not nullable")
+      }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling LeadFormsApi$LeadFormsList, `bookmark` is not nullable")
+      }
 
       query_params[["page_size"]] <- `page_size`
 
@@ -692,17 +725,23 @@ LeadFormsApi <- R6::R6Class(
         stop("Missing required parameter `lead_form_update_request`.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling LeadFormsApi$LeadFormsUpdate, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling LeadFormsApi$LeadFormsUpdate, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling LeadFormsApi$LeadFormsUpdate, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`lead_form_update_request`) > 30) {
+      if (!missing(`lead_form_update_request`) && is.null(`lead_form_update_request`)) {
+        stop("Invalid value for `lead_form_update_request` when calling LeadFormsApi$LeadFormsUpdate, `lead_form_update_request` is not nullable")
+      }
+      if (!is.null(`lead_form_update_request`) && length(`lead_form_update_request`) > 30) {
         stop("Invalid length for `lead_form_update_request` when calling LeadFormsApi$LeadFormsUpdate, number of items must be less than or equal to 30.")
       }
-      if (length(`lead_form_update_request`) < 1) {
+      if (!is.null(`lead_form_update_request`) && length(`lead_form_update_request`) < 1) {
         stop("Invalid length for `lead_form_update_request` when calling LeadFormsApi$LeadFormsUpdate, number of items must be greater than or equal to 1.")
       }
 

@@ -29,7 +29,7 @@ data class UpdateInvitesResultsResponseArrayItemsInner(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("invite") val invite: InviteBusinessRoleBinding? = null
-    ) {
+) {
 
 }
 

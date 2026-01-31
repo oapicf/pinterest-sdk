@@ -21,13 +21,13 @@ import .*
  * A request object that can have multiple operations on a single retail batch
  * @param catalogType 
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param items Array with catalogs item operations
  */
 object CatalogsRetailBatchRequests : BaseTable<CatalogsRetailBatchRequest>("CatalogsRetailBatchRequest") {
     val catalogType = text("catalog_type").transform({ CatalogsRetailBatchRequest.CatalogType.valueOf(it) }, { it.value })
     val country = long("country")
-    val language = long("language")
+    val language = text("language").transform({ CatalogsRetailBatchRequest.Language.valueOf(it) }, { it.value }) /* We recommend using the CatalogsLocale values. */
 
     /**
      * Create an entity of type CatalogsRetailBatchRequest from the model
@@ -35,7 +35,7 @@ object CatalogsRetailBatchRequests : BaseTable<CatalogsRetailBatchRequest>("Cata
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = CatalogsRetailBatchRequest(
         catalogType = row[catalogType] ?: CatalogsRetailBatchRequest.CatalogType.valueOf("") /* kotlin.String */,
         country = Countrys.createEntity(row, withReferences) /* Country */,
-        language = CatalogsItemsRequestLanguages.createEntity(row, withReferences) /* CatalogsItemsRequestLanguage */,
+        language = row[language] ?: CatalogsRetailBatchRequest.Language.valueOf("") /* kotlin.String */ /* We recommend using the CatalogsLocale values. */,
         items = emptyList() /* kotlin.Array<CatalogsRetailBatchRequestItemsInner> */ /* Array with catalogs item operations */
     )
 

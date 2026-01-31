@@ -17,12 +17,17 @@ import java.util.*;
 import javax.annotation.Generated;
 
 /**
- * A request to exchange a refresh token for a new access token.
+ * OauthAccessTokenRequestRefresh
  */
 
-@Schema(name = "OauthAccessTokenRequestRefresh", description = "A request to exchange a refresh token for a new access token.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class OauthAccessTokenRequestRefresh {
+
+  private String refreshToken;
+
+  private @Nullable String scope;
+
+  private @Nullable Boolean refreshOn;
 
   /**
    * Gets or Sets grantType
@@ -34,7 +39,7 @@ public class OauthAccessTokenRequestRefresh {
     
     CLIENT_CREDENTIALS("client_credentials");
 
-    private String value;
+    private final String value;
 
     GrantTypeEnum(String value) {
       this.value = value;
@@ -63,12 +68,6 @@ public class OauthAccessTokenRequestRefresh {
 
   private GrantTypeEnum grantType;
 
-  private String refreshToken;
-
-  private @Nullable String scope;
-
-  private @Nullable Boolean refreshOn;
-
   public OauthAccessTokenRequestRefresh() {
     super();
   }
@@ -76,28 +75,8 @@ public class OauthAccessTokenRequestRefresh {
   /**
    * Constructor with only required parameters
    */
-  public OauthAccessTokenRequestRefresh(GrantTypeEnum grantType, String refreshToken) {
-    this.grantType = grantType;
+  public OauthAccessTokenRequestRefresh(String refreshToken, GrantTypeEnum grantType) {
     this.refreshToken = refreshToken;
-  }
-
-  public OauthAccessTokenRequestRefresh grantType(GrantTypeEnum grantType) {
-    this.grantType = grantType;
-    return this;
-  }
-
-  /**
-   * Get grantType
-   * @return grantType
-   */
-  @NotNull 
-  @Schema(name = "grant_type", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("grant_type")
-  public GrantTypeEnum getGrantType() {
-    return grantType;
-  }
-
-  public void setGrantType(GrantTypeEnum grantType) {
     this.grantType = grantType;
   }
 
@@ -121,7 +100,7 @@ public class OauthAccessTokenRequestRefresh {
     this.refreshToken = refreshToken;
   }
 
-  public OauthAccessTokenRequestRefresh scope(String scope) {
+  public OauthAccessTokenRequestRefresh scope(@Nullable String scope) {
     this.scope = scope;
     return this;
   }
@@ -133,15 +112,15 @@ public class OauthAccessTokenRequestRefresh {
   
   @Schema(name = "scope", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("scope")
-  public String getScope() {
+  public @Nullable String getScope() {
     return scope;
   }
 
-  public void setScope(String scope) {
+  public void setScope(@Nullable String scope) {
     this.scope = scope;
   }
 
-  public OauthAccessTokenRequestRefresh refreshOn(Boolean refreshOn) {
+  public OauthAccessTokenRequestRefresh refreshOn(@Nullable Boolean refreshOn) {
     this.refreshOn = refreshOn;
     return this;
   }
@@ -153,12 +132,32 @@ public class OauthAccessTokenRequestRefresh {
   
   @Schema(name = "refresh_on", description = "Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \"everlasting_refresh\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("refresh_on")
-  public Boolean getRefreshOn() {
+  public @Nullable Boolean getRefreshOn() {
     return refreshOn;
   }
 
-  public void setRefreshOn(Boolean refreshOn) {
+  public void setRefreshOn(@Nullable Boolean refreshOn) {
     this.refreshOn = refreshOn;
+  }
+
+  public OauthAccessTokenRequestRefresh grantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
+    return this;
+  }
+
+  /**
+   * Get grantType
+   * @return grantType
+   */
+  @NotNull 
+  @Schema(name = "grant_type", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("grant_type")
+  public GrantTypeEnum getGrantType() {
+    return grantType;
+  }
+
+  public void setGrantType(GrantTypeEnum grantType) {
+    this.grantType = grantType;
   }
 
   @Override
@@ -170,25 +169,25 @@ public class OauthAccessTokenRequestRefresh {
       return false;
     }
     OauthAccessTokenRequestRefresh oauthAccessTokenRequestRefresh = (OauthAccessTokenRequestRefresh) o;
-    return Objects.equals(this.grantType, oauthAccessTokenRequestRefresh.grantType) &&
-        Objects.equals(this.refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
+    return Objects.equals(this.refreshToken, oauthAccessTokenRequestRefresh.refreshToken) &&
         Objects.equals(this.scope, oauthAccessTokenRequestRefresh.scope) &&
-        Objects.equals(this.refreshOn, oauthAccessTokenRequestRefresh.refreshOn);
+        Objects.equals(this.refreshOn, oauthAccessTokenRequestRefresh.refreshOn) &&
+        Objects.equals(this.grantType, oauthAccessTokenRequestRefresh.grantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, refreshToken, scope, refreshOn);
+    return Objects.hash(refreshToken, scope, refreshOn, grantType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OauthAccessTokenRequestRefresh {\n");
-    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    refreshOn: ").append(toIndentedString(refreshOn)).append("\n");
+    sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

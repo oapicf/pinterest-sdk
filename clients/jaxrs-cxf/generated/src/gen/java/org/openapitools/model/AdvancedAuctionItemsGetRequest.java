@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,28 +7,32 @@ import org.openapitools.model.AdvancedAuctionItemsGetRecord;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object used to get bid options values for a batch of retail catalog items
- **/
+ * Request object used to get bid options values for a batch of retail catalog items
+ */
 @ApiModel(description="Request object used to get bid options values for a batch of retail catalog items")
 
 public class AdvancedAuctionItemsGetRequest  {
   
-  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail item")
  /**
-   * Catalog id pertaining to the retail item
-  **/
+  * Catalog id pertaining to the retail item
+  */
+  @ApiModelProperty(example = "2680059592705", required = true, value = "Catalog id pertaining to the retail item")
+
   private String catalogId;
 
-  @ApiModelProperty(required = true, value = "A list of retail catalog items to fetch bid options for")
-  @Valid
  /**
-   * A list of retail catalog items to fetch bid options for
-  **/
+  * A list of retail catalog items to fetch bid options for
+  */
+  @ApiModelProperty(required = true, value = "A list of retail catalog items to fetch bid options for")
+
+  @Valid
+
   private List<AdvancedAuctionItemsGetRecord> items = new ArrayList<>();
  /**
    * Catalog id pertaining to the retail item

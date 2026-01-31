@@ -31,7 +31,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "TemplateResponse", description = "Template fields")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TemplateResponse {
 
   private @Nullable String id;
@@ -3231,7 +3231,7 @@ public class TemplateResponse {
     
     TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE("TOTAL_OFFLINE_UNKNOWN_CONVERSION_PRODUCT_COUNT_UNIQUE");
 
-    private String value;
+    private final String value;
 
     ColumnsEnum(String value) {
       this.value = value;
@@ -3277,7 +3277,7 @@ public class TemplateResponse {
     
     TIME_OF_CONVERSION("TIME_OF_CONVERSION");
 
-    private String value;
+    private final String value;
 
     ConversionReportTimeTypeEnum(String value) {
       this.value = value;
@@ -3322,7 +3322,7 @@ public class TemplateResponse {
     
     ADS_MANAGER_REPORT_BUILDER("ADS_MANAGER_REPORT_BUILDER");
 
-    private String value;
+    private final String value;
 
     CreationSourceEnum(String value) {
       this.value = value;
@@ -3370,7 +3370,7 @@ public class TemplateResponse {
     
     TABLE("TABLE");
 
-    private String value;
+    private final String value;
 
     TypeEnum(String value) {
       this.value = value;
@@ -3413,7 +3413,7 @@ public class TemplateResponse {
     
     NATIVE("NATIVE");
 
-    private String value;
+    private final String value;
 
     IngestionSourcesEnum(String value) {
       this.value = value;
@@ -3443,7 +3443,7 @@ public class TemplateResponse {
   @Valid
   private JsonNullable<List<IngestionSourcesEnum>> ingestionSources = JsonNullable.<List<IngestionSourcesEnum>>undefined();
 
-  public TemplateResponse id(String id) {
+  public TemplateResponse id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -3455,15 +3455,15 @@ public class TemplateResponse {
   
   @Schema(name = "id", example = "6739202847590", description = "Template ID", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public TemplateResponse adAccountId(String adAccountId) {
+  public TemplateResponse adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -3475,11 +3475,11 @@ public class TemplateResponse {
   
   @Schema(name = "ad_account_id", example = "547664674848", description = "ID of the Ad Account that owns the template", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
@@ -3511,7 +3511,7 @@ public class TemplateResponse {
     this.adAccountIds = adAccountIds;
   }
 
-  public TemplateResponse userId(String userId) {
+  public TemplateResponse userId(@Nullable String userId) {
     this.userId = userId;
     return this;
   }
@@ -3523,11 +3523,11 @@ public class TemplateResponse {
   
   @Schema(name = "user_id", example = "784762938748396", description = "ID of the user who created the template", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("user_id")
-  public String getUserId() {
+  public @Nullable String getUserId() {
     return userId;
   }
 
-  public void setUserId(String userId) {
+  public void setUserId(@Nullable String userId) {
     this.userId = userId;
   }
 
@@ -3551,7 +3551,7 @@ public class TemplateResponse {
     this.name = name;
   }
 
-  public TemplateResponse reportStartRelativeDaysInPast(BigDecimal reportStartRelativeDaysInPast) {
+  public TemplateResponse reportStartRelativeDaysInPast(@Nullable BigDecimal reportStartRelativeDaysInPast) {
     this.reportStartRelativeDaysInPast = reportStartRelativeDaysInPast;
     return this;
   }
@@ -3563,15 +3563,15 @@ public class TemplateResponse {
   @Valid 
   @Schema(name = "report_start_relative_days_in_past", example = "7", description = "The number of days prior to the day the report will be delivered at which the report will start", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("report_start_relative_days_in_past")
-  public BigDecimal getReportStartRelativeDaysInPast() {
+  public @Nullable BigDecimal getReportStartRelativeDaysInPast() {
     return reportStartRelativeDaysInPast;
   }
 
-  public void setReportStartRelativeDaysInPast(BigDecimal reportStartRelativeDaysInPast) {
+  public void setReportStartRelativeDaysInPast(@Nullable BigDecimal reportStartRelativeDaysInPast) {
     this.reportStartRelativeDaysInPast = reportStartRelativeDaysInPast;
   }
 
-  public TemplateResponse reportEndRelativeDaysInPast(BigDecimal reportEndRelativeDaysInPast) {
+  public TemplateResponse reportEndRelativeDaysInPast(@Nullable BigDecimal reportEndRelativeDaysInPast) {
     this.reportEndRelativeDaysInPast = reportEndRelativeDaysInPast;
     return this;
   }
@@ -3583,15 +3583,15 @@ public class TemplateResponse {
   @Valid 
   @Schema(name = "report_end_relative_days_in_past", example = "7", description = "The number of days prior to the day the report will be delivered at which the report will end", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("report_end_relative_days_in_past")
-  public BigDecimal getReportEndRelativeDaysInPast() {
+  public @Nullable BigDecimal getReportEndRelativeDaysInPast() {
     return reportEndRelativeDaysInPast;
   }
 
-  public void setReportEndRelativeDaysInPast(BigDecimal reportEndRelativeDaysInPast) {
+  public void setReportEndRelativeDaysInPast(@Nullable BigDecimal reportEndRelativeDaysInPast) {
     this.reportEndRelativeDaysInPast = reportEndRelativeDaysInPast;
   }
 
-  public TemplateResponse dateRange(TemplateResponseDateRange dateRange) {
+  public TemplateResponse dateRange(@Nullable TemplateResponseDateRange dateRange) {
     this.dateRange = dateRange;
     return this;
   }
@@ -3603,15 +3603,15 @@ public class TemplateResponse {
   @Valid 
   @Schema(name = "date_range", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("date_range")
-  public TemplateResponseDateRange getDateRange() {
+  public @Nullable TemplateResponseDateRange getDateRange() {
     return dateRange;
   }
 
-  public void setDateRange(TemplateResponseDateRange dateRange) {
+  public void setDateRange(@Nullable TemplateResponseDateRange dateRange) {
     this.dateRange = dateRange;
   }
 
-  public TemplateResponse reportLevel(MetricsReportingLevel reportLevel) {
+  public TemplateResponse reportLevel(@Nullable MetricsReportingLevel reportLevel) {
     this.reportLevel = reportLevel;
     return this;
   }
@@ -3623,15 +3623,15 @@ public class TemplateResponse {
   @Valid 
   @Schema(name = "report_level", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("report_level")
-  public MetricsReportingLevel getReportLevel() {
+  public @Nullable MetricsReportingLevel getReportLevel() {
     return reportLevel;
   }
 
-  public void setReportLevel(MetricsReportingLevel reportLevel) {
+  public void setReportLevel(@Nullable MetricsReportingLevel reportLevel) {
     this.reportLevel = reportLevel;
   }
 
-  public TemplateResponse reportFormat(DataOutputFormat reportFormat) {
+  public TemplateResponse reportFormat(@Nullable DataOutputFormat reportFormat) {
     this.reportFormat = reportFormat;
     return this;
   }
@@ -3643,11 +3643,11 @@ public class TemplateResponse {
   @Valid 
   @Schema(name = "report_format", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("report_format")
-  public DataOutputFormat getReportFormat() {
+  public @Nullable DataOutputFormat getReportFormat() {
     return reportFormat;
   }
 
-  public void setReportFormat(DataOutputFormat reportFormat) {
+  public void setReportFormat(@Nullable DataOutputFormat reportFormat) {
     this.reportFormat = reportFormat;
   }
 
@@ -3679,7 +3679,7 @@ public class TemplateResponse {
     this.columns = columns;
   }
 
-  public TemplateResponse granularity(Granularity granularity) {
+  public TemplateResponse granularity(@Nullable Granularity granularity) {
     this.granularity = granularity;
     return this;
   }
@@ -3691,15 +3691,15 @@ public class TemplateResponse {
   @Valid 
   @Schema(name = "granularity", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("granularity")
-  public Granularity getGranularity() {
+  public @Nullable Granularity getGranularity() {
     return granularity;
   }
 
-  public void setGranularity(Granularity granularity) {
+  public void setGranularity(@Nullable Granularity granularity) {
     this.granularity = granularity;
   }
 
-  public TemplateResponse viewWindowDays(BigDecimal viewWindowDays) {
+  public TemplateResponse viewWindowDays(@Nullable BigDecimal viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
     return this;
   }
@@ -3711,15 +3711,15 @@ public class TemplateResponse {
   @Valid 
   @Schema(name = "view_window_days", example = "7", description = "The length of the sliding window over which view conversions will be attributed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("view_window_days")
-  public BigDecimal getViewWindowDays() {
+  public @Nullable BigDecimal getViewWindowDays() {
     return viewWindowDays;
   }
 
-  public void setViewWindowDays(BigDecimal viewWindowDays) {
+  public void setViewWindowDays(@Nullable BigDecimal viewWindowDays) {
     this.viewWindowDays = viewWindowDays;
   }
 
-  public TemplateResponse clickWindowDays(BigDecimal clickWindowDays) {
+  public TemplateResponse clickWindowDays(@Nullable BigDecimal clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
     return this;
   }
@@ -3731,15 +3731,15 @@ public class TemplateResponse {
   @Valid 
   @Schema(name = "click_window_days", example = "7", description = "The length of the sliding window over which click conversions will be attributed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("click_window_days")
-  public BigDecimal getClickWindowDays() {
+  public @Nullable BigDecimal getClickWindowDays() {
     return clickWindowDays;
   }
 
-  public void setClickWindowDays(BigDecimal clickWindowDays) {
+  public void setClickWindowDays(@Nullable BigDecimal clickWindowDays) {
     this.clickWindowDays = clickWindowDays;
   }
 
-  public TemplateResponse engagementWindowDays(BigDecimal engagementWindowDays) {
+  public TemplateResponse engagementWindowDays(@Nullable BigDecimal engagementWindowDays) {
     this.engagementWindowDays = engagementWindowDays;
     return this;
   }
@@ -3751,15 +3751,15 @@ public class TemplateResponse {
   @Valid 
   @Schema(name = "engagement_window_days", example = "7", description = "The length of the sliding window over which engagement conversions will be attributed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("engagement_window_days")
-  public BigDecimal getEngagementWindowDays() {
+  public @Nullable BigDecimal getEngagementWindowDays() {
     return engagementWindowDays;
   }
 
-  public void setEngagementWindowDays(BigDecimal engagementWindowDays) {
+  public void setEngagementWindowDays(@Nullable BigDecimal engagementWindowDays) {
     this.engagementWindowDays = engagementWindowDays;
   }
 
-  public TemplateResponse conversionReportTimeType(ConversionReportTimeTypeEnum conversionReportTimeType) {
+  public TemplateResponse conversionReportTimeType(@Nullable ConversionReportTimeTypeEnum conversionReportTimeType) {
     this.conversionReportTimeType = conversionReportTimeType;
     return this;
   }
@@ -3771,11 +3771,11 @@ public class TemplateResponse {
   
   @Schema(name = "conversion_report_time_type", example = "TIME_OF_AD_ACTION", description = "Conversion report time type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("conversion_report_time_type")
-  public ConversionReportTimeTypeEnum getConversionReportTimeType() {
+  public @Nullable ConversionReportTimeTypeEnum getConversionReportTimeType() {
     return conversionReportTimeType;
   }
 
-  public void setConversionReportTimeType(ConversionReportTimeTypeEnum conversionReportTimeType) {
+  public void setConversionReportTimeType(@Nullable ConversionReportTimeTypeEnum conversionReportTimeType) {
     this.conversionReportTimeType = conversionReportTimeType;
   }
 
@@ -3799,7 +3799,7 @@ public class TemplateResponse {
     this.filtersJson = filtersJson;
   }
 
-  public TemplateResponse isOwnedByUser(Boolean isOwnedByUser) {
+  public TemplateResponse isOwnedByUser(@Nullable Boolean isOwnedByUser) {
     this.isOwnedByUser = isOwnedByUser;
     return this;
   }
@@ -3811,15 +3811,15 @@ public class TemplateResponse {
   
   @Schema(name = "is_owned_by_user", example = "true", description = "A boolean value that indicates if the user owns the template", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_owned_by_user")
-  public Boolean getIsOwnedByUser() {
+  public @Nullable Boolean getIsOwnedByUser() {
     return isOwnedByUser;
   }
 
-  public void setIsOwnedByUser(Boolean isOwnedByUser) {
+  public void setIsOwnedByUser(@Nullable Boolean isOwnedByUser) {
     this.isOwnedByUser = isOwnedByUser;
   }
 
-  public TemplateResponse isScheduled(Boolean isScheduled) {
+  public TemplateResponse isScheduled(@Nullable Boolean isScheduled) {
     this.isScheduled = isScheduled;
     return this;
   }
@@ -3831,15 +3831,15 @@ public class TemplateResponse {
   
   @Schema(name = "is_scheduled", example = "true", description = "A boolean value that indicates if this template has been used to create a scheduled report", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("is_scheduled")
-  public Boolean getIsScheduled() {
+  public @Nullable Boolean getIsScheduled() {
     return isScheduled;
   }
 
-  public void setIsScheduled(Boolean isScheduled) {
+  public void setIsScheduled(@Nullable Boolean isScheduled) {
     this.isScheduled = isScheduled;
   }
 
-  public TemplateResponse creationSource(CreationSourceEnum creationSource) {
+  public TemplateResponse creationSource(@Nullable CreationSourceEnum creationSource) {
     this.creationSource = creationSource;
     return this;
   }
@@ -3851,11 +3851,11 @@ public class TemplateResponse {
   
   @Schema(name = "creation_source", example = "ADS_MANAGER_REPORT_BUILDER", description = "The surface used to create this template", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("creation_source")
-  public CreationSourceEnum getCreationSource() {
+  public @Nullable CreationSourceEnum getCreationSource() {
     return creationSource;
   }
 
-  public void setCreationSource(CreationSourceEnum creationSource) {
+  public void setCreationSource(@Nullable CreationSourceEnum creationSource) {
     this.creationSource = creationSource;
   }
 
@@ -3879,7 +3879,7 @@ public class TemplateResponse {
     this.isDeleted = isDeleted;
   }
 
-  public TemplateResponse updatedTime(BigDecimal updatedTime) {
+  public TemplateResponse updatedTime(@Nullable BigDecimal updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -3891,11 +3891,11 @@ public class TemplateResponse {
   @Valid 
   @Schema(name = "updated_time", example = "1432744744", description = "Time of last update in seconds since Unix epoch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")
-  public BigDecimal getUpdatedTime() {
+  public @Nullable BigDecimal getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(BigDecimal updatedTime) {
+  public void setUpdatedTime(@Nullable BigDecimal updatedTime) {
     this.updatedTime = updatedTime;
   }
 
@@ -3927,7 +3927,7 @@ public class TemplateResponse {
     this.customColumnIds = customColumnIds;
   }
 
-  public TemplateResponse type(TypeEnum type) {
+  public TemplateResponse type(@Nullable TypeEnum type) {
     this.type = type;
     return this;
   }
@@ -3939,11 +3939,11 @@ public class TemplateResponse {
   
   @Schema(name = "type", example = "BULK", description = "Reporting template type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public TypeEnum getType() {
+  public @Nullable TypeEnum getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(@Nullable TypeEnum type) {
     this.type = type;
   }
 

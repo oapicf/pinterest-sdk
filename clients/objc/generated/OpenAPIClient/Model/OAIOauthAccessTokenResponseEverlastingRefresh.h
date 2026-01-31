@@ -23,6 +23,12 @@
 @interface OAIOauthAccessTokenResponseEverlastingRefresh : OAIObject
 
 
+@property(nonatomic) NSString* refreshToken;
+
+@property(nonatomic) NSNumber* refreshTokenExpiresIn;
+
+@property(nonatomic) NSNumber* refreshTokenExpiresAt;
+
 @property(nonatomic) NSString* responseType;
 
 @property(nonatomic) NSString* accessToken;
@@ -32,11 +38,5 @@
 @property(nonatomic) NSNumber* expiresIn;
 
 @property(nonatomic) NSString* scope;
-
-@property(nonatomic) NSString* refreshToken;
-
-@property(nonatomic) NSNumber* refreshTokenExpiresIn;
-
-@property(nonatomic) NSNumber* refreshTokenExpiresAt;
 
 @end

@@ -1,10 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
+
 #include "BusinessAccessAssetsAPI.h"
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
+#define MAX_NUMBER_LENGTH_LONG 21
 
 // Functions for enum PERMISSIONS for BusinessAccessAssetsAPI_businessAssetsGet
 
@@ -1517,7 +1519,7 @@ end:
 // Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type=INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type=EXTERNAL, you will retrieve the partner's business assets that the partner has granted you access to.
 //
 business_partner_asset_access_get_200_response_t*
-BusinessAccessAssetsAPI_businessPartnerAssetAccessGet(apiClient_t *apiClient, char *business_id, char *partner_id, partner_type_t *partner_type, pinterest_rest_api_businessPartnerAssetAccessGet_asset_type_e asset_type, int *start_index, int *page_size, char *bookmark)
+BusinessAccessAssetsAPI_businessPartnerAssetAccessGet(apiClient_t *apiClient, char *business_id, char *partner_id, partner_type, pinterest_rest_api_businessPartnerAssetAccessGet_asset_type_e asset_type, int *start_index, int *page_size, char *bookmark)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -1563,7 +1565,7 @@ BusinessAccessAssetsAPI_businessPartnerAssetAccessGet(apiClient_t *apiClient, ch
 
     // query parameters
     char *keyQuery_partner_type = NULL;
-    partner_type_t * valueQuery_partner_type ;
+     valueQuery_partner_type ;
     keyValuePair_t *keyPairQuery_partner_type = 0;
     if (partner_type)
     {

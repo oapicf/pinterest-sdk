@@ -25,9 +25,11 @@ import io.swagger.v3.oas.annotations.media.Schema
  * Object describing an item record
  * @param catalogType 
  * @param itemId The catalog item id in the merchant namespace
- * @param errors Array with the errors for the item id requested
+ * @param pins The pins mapped to the item
+ * @param attributes 
  * @param hotelId The catalog hotel id in the merchant namespace
  * @param creativeAssetsId The catalog creative assets id in the merchant namespace
+ * @param errors Array with the errors for the item id requested
  */
 data class ItemResponse(
 
@@ -39,8 +41,13 @@ data class ItemResponse(
     @get:JsonProperty("item_id") val itemId: kotlin.String? = null,
 
     @field:Valid
-    @Schema(example = "null", description = "Array with the errors for the item id requested")
-    @get:JsonProperty("errors") val errors: kotlin.collections.List<ItemValidationEvent>? = null,
+    @get:Size(max=11)
+    @Schema(example = "null", description = "The pins mapped to the item")
+    @get:JsonProperty("pins") val pins: kotlin.collections.List<Pin>? = null,
+
+    @field:Valid
+    @Schema(example = "null", description = "")
+    @get:JsonProperty("attributes") val attributes: CatalogsCreativeAssetsAttributes? = null,
 
     @Schema(example = "DS0294-M", description = "The catalog hotel id in the merchant namespace")
     @get:JsonProperty("hotel_id") val hotelId: kotlin.String? = null,
@@ -49,14 +56,9 @@ data class ItemResponse(
     @get:JsonProperty("creative_assets_id") val creativeAssetsId: kotlin.String? = null,
 
     @field:Valid
-    @get:Size(max=11)
-    @Schema(example = "null", description = "The pins mapped to the item")
-    @get:JsonProperty("pins") override val pins: kotlin.collections.List<Pin>? = null,
-
-    @field:Valid
-    @Schema(example = "null", description = "")
-    @get:JsonProperty("attributes") override val attributes: CatalogsCreativeAssetsAttributes? = null
-    ) {
+    @Schema(example = "null", description = "Array with the errors for the item id requested")
+    @get:JsonProperty("errors") val errors: kotlin.collections.List<ItemValidationEvent>? = null
+) {
 
 }
 

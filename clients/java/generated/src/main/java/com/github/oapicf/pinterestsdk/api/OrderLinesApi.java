@@ -89,7 +89,7 @@ public class OrderLinesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call orderLinesGetCall(String adAccountId, String orderLineId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call orderLinesGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String orderLineId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -136,7 +136,7 @@ public class OrderLinesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call orderLinesGetValidateBeforeCall(String adAccountId, String orderLineId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call orderLinesGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String orderLineId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling orderLinesGet(Async)");
@@ -166,7 +166,7 @@ public class OrderLinesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public OrderLine orderLinesGet(String adAccountId, String orderLineId) throws ApiException {
+    public OrderLine orderLinesGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String orderLineId) throws ApiException {
         ApiResponse<OrderLine> localVarResp = orderLinesGetWithHttpInfo(adAccountId, orderLineId);
         return localVarResp.getData();
     }
@@ -186,7 +186,7 @@ public class OrderLinesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OrderLine> orderLinesGetWithHttpInfo(String adAccountId, String orderLineId) throws ApiException {
+    public ApiResponse<OrderLine> orderLinesGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String orderLineId) throws ApiException {
         okhttp3.Call localVarCall = orderLinesGetValidateBeforeCall(adAccountId, orderLineId, null);
         Type localVarReturnType = new TypeToken<OrderLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -208,7 +208,7 @@ public class OrderLinesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call orderLinesGetAsync(String adAccountId, String orderLineId, final ApiCallback<OrderLine> _callback) throws ApiException {
+    public okhttp3.Call orderLinesGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String orderLineId, final ApiCallback<OrderLine> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = orderLinesGetValidateBeforeCall(adAccountId, orderLineId, _callback);
         Type localVarReturnType = new TypeToken<OrderLine>(){}.getType();
@@ -232,7 +232,7 @@ public class OrderLinesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call orderLinesListCall(String adAccountId, Integer pageSize, String order, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call orderLinesListCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -290,7 +290,7 @@ public class OrderLinesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call orderLinesListValidateBeforeCall(String adAccountId, Integer pageSize, String order, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call orderLinesListValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling orderLinesList(Async)");
@@ -317,7 +317,7 @@ public class OrderLinesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public OrderLinesList200Response orderLinesList(String adAccountId, Integer pageSize, String order, String bookmark) throws ApiException {
+    public OrderLinesList200Response orderLinesList(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<OrderLinesList200Response> localVarResp = orderLinesListWithHttpInfo(adAccountId, pageSize, order, bookmark);
         return localVarResp.getData();
     }
@@ -339,7 +339,7 @@ public class OrderLinesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OrderLinesList200Response> orderLinesListWithHttpInfo(String adAccountId, Integer pageSize, String order, String bookmark) throws ApiException {
+    public ApiResponse<OrderLinesList200Response> orderLinesListWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = orderLinesListValidateBeforeCall(adAccountId, pageSize, order, bookmark, null);
         Type localVarReturnType = new TypeToken<OrderLinesList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -363,7 +363,7 @@ public class OrderLinesApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call orderLinesListAsync(String adAccountId, Integer pageSize, String order, String bookmark, final ApiCallback<OrderLinesList200Response> _callback) throws ApiException {
+    public okhttp3.Call orderLinesListAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String order, @javax.annotation.Nullable String bookmark, final ApiCallback<OrderLinesList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = orderLinesListValidateBeforeCall(adAccountId, pageSize, order, bookmark, _callback);
         Type localVarReturnType = new TypeToken<OrderLinesList200Response>(){}.getType();

@@ -10,12 +10,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TargetingTemplateKeyword  {
   
   @ApiModelProperty(value = "")
+
   private MatchType matchType;
 
-  @ApiModelProperty(example = "couples halloween costumes", value = "The keyword targeting (120 chars max).")
  /**
-   * The keyword targeting (120 chars max).
-  **/
+  * The keyword targeting (120 chars max).
+  */
+  @ApiModelProperty(example = "couples halloween costumes", value = "The keyword targeting (120 chars max).")
+
   private String value;
  /**
    * Get matchType

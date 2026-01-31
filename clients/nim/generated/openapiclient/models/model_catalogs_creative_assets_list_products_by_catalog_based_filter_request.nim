@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_creative_assets_product_group_filters
 
@@ -22,11 +24,38 @@ type CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest* = object
   filters*: CatalogsCreativeAssetsProductGroupFilters
 
 func `%`*(v: CatalogType): JsonNode =
-  let str = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of CatalogType.CREATIVEASSETS: %"CREATIVE_ASSETS"
 func `$`*(v: CatalogType): string =
   result = case v:
-    of CatalogType.CREATIVEASSETS: "CREATIVE_ASSETS"
+    of CatalogType.CREATIVEASSETS: $("CREATIVE_ASSETS")
+
+proc to*(node: JsonNode, T: typedesc[CatalogType]): CatalogType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum CatalogType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CREATIVE_ASSETS"):
+    return CatalogType.CREATIVEASSETS
+  else:
+    raise newException(ValueError, "Invalid enum value for CatalogType: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest]): CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest =
+  result = CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest()
+  if node.kind == JObject:
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogType)
+    if node.hasKey("catalog_id"):
+      result.catalogId = to(node["catalog_id"], string)
+    if node.hasKey("filters"):
+      result.filters = to(node["filters"], CatalogsCreativeAssetsProductGroupFilters)
+
+# Custom JSON serialization for CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequest): JsonNode =
+  result = newJObject()
+  result["catalog_type"] = %obj.catalogType
+  result["catalog_id"] = %obj.catalogId
+  result["filters"] = %obj.filters
+

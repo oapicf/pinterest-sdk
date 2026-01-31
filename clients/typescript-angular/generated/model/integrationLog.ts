@@ -48,17 +48,17 @@ export interface IntegrationLog {
     request?: IntegrationLogClientRequest;
 }
 export namespace IntegrationLog {
-    export type EventTypeEnum = 'APP' | 'API';
     export const EventTypeEnum = {
-        App: 'APP' as EventTypeEnum,
-        Api: 'API' as EventTypeEnum
-    };
-    export type LogLevelEnum = 'INFO' | 'WARN' | 'ERROR';
+        App: 'APP',
+        Api: 'API'
+    } as const;
+    export type EventTypeEnum = typeof EventTypeEnum[keyof typeof EventTypeEnum];
     export const LogLevelEnum = {
-        Info: 'INFO' as LogLevelEnum,
-        Warn: 'WARN' as LogLevelEnum,
-        Error: 'ERROR' as LogLevelEnum
-    };
+        Info: 'INFO',
+        Warn: 'WARN',
+        Error: 'ERROR'
+    } as const;
+    export type LogLevelEnum = typeof LogLevelEnum[keyof typeof LogLevelEnum];
 }
 
 

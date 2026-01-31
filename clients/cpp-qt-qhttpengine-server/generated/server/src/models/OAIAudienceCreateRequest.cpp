@@ -166,10 +166,10 @@ bool OAIAudienceCreateRequest::is_description_Valid() const{
     return m_description_isValid;
 }
 
-OAIAudienceCreateRequest_1_audience_type OAIAudienceCreateRequest::getAudienceType() const {
+OAIAudienceType OAIAudienceCreateRequest::getAudienceType() const {
     return audience_type;
 }
-void OAIAudienceCreateRequest::setAudienceType(const OAIAudienceCreateRequest_1_audience_type &audience_type) {
+void OAIAudienceCreateRequest::setAudienceType(const OAIAudienceType &audience_type) {
     this->audience_type = audience_type;
     this->m_audience_type_isSet = true;
 }

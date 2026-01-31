@@ -45,6 +45,7 @@ class CatalogsApiTest {
     fun catalogsCreateTest() {
         val catalogsCreateRequest: CatalogsCreateRequest = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<Catalog> = api.catalogsCreate(catalogsCreateRequest, adAccountId)
 
         // TODO: test validations
@@ -61,6 +62,7 @@ class CatalogsApiTest {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsList200Response> = api.catalogsList(bookmark, pageSize, adAccountId)
 
         // TODO: test validations
@@ -79,6 +81,7 @@ class CatalogsApiTest {
         val pageSize: kotlin.Int = TODO()
         val adAccountId: kotlin.String? = TODO()
         val pinMetrics: kotlin.Boolean = TODO()
+        
         val response: ResponseEntity<CatalogsProductGroupPinsList200Response> = api.catalogsProductGroupPinsList(productGroupId, bookmark, pageSize, adAccountId, pinMetrics)
 
         // TODO: test validations
@@ -94,6 +97,7 @@ class CatalogsApiTest {
     fun catalogsProductGroupsCreateTest() {
         val multipleProductGroupsInner: MultipleProductGroupsInner = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsVerticalProductGroup> = api.catalogsProductGroupsCreate(multipleProductGroupsInner, adAccountId)
 
         // TODO: test validations
@@ -109,6 +113,7 @@ class CatalogsApiTest {
     fun catalogsProductGroupsCreateManyTest() {
         val multipleProductGroupsInner: kotlin.collections.List<MultipleProductGroupsInner> = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<List<kotlin.String>> = api.catalogsProductGroupsCreateMany(multipleProductGroupsInner, adAccountId)
 
         // TODO: test validations
@@ -124,6 +129,7 @@ class CatalogsApiTest {
     fun catalogsProductGroupsDeleteTest() {
         val productGroupId: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<Unit> = api.catalogsProductGroupsDelete(productGroupId, adAccountId)
 
         // TODO: test validations
@@ -139,6 +145,7 @@ class CatalogsApiTest {
     fun catalogsProductGroupsDeleteManyTest() {
         val id: kotlin.collections.List<kotlin.Int> = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<Unit> = api.catalogsProductGroupsDeleteMany(id, adAccountId)
 
         // TODO: test validations
@@ -154,6 +161,7 @@ class CatalogsApiTest {
     fun catalogsProductGroupsGetTest() {
         val productGroupId: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsVerticalProductGroup> = api.catalogsProductGroupsGet(productGroupId, adAccountId)
 
         // TODO: test validations
@@ -173,6 +181,7 @@ class CatalogsApiTest {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsProductGroupsList200Response> = api.catalogsProductGroupsList(id, feedId, catalogId, bookmark, pageSize, adAccountId)
 
         // TODO: test validations
@@ -188,6 +197,7 @@ class CatalogsApiTest {
     fun catalogsProductGroupsProductCountsGetTest() {
         val productGroupId: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsProductGroupProductCountsVertical> = api.catalogsProductGroupsProductCountsGet(productGroupId, adAccountId)
 
         // TODO: test validations
@@ -204,6 +214,7 @@ class CatalogsApiTest {
         val productGroupId: kotlin.String = TODO()
         val catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsVerticalProductGroup> = api.catalogsProductGroupsUpdate(productGroupId, catalogsProductGroupsUpdateRequest, adAccountId)
 
         // TODO: test validations
@@ -221,6 +232,7 @@ class CatalogsApiTest {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<FeedProcessingResultsList200Response> = api.feedProcessingResultsList(feedId, bookmark, pageSize, adAccountId)
 
         // TODO: test validations
@@ -236,6 +248,7 @@ class CatalogsApiTest {
     fun feedsCreateTest() {
         val feedsCreateRequest: FeedsCreateRequest = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsFeed> = api.feedsCreate(feedsCreateRequest, adAccountId)
 
         // TODO: test validations
@@ -251,6 +264,7 @@ class CatalogsApiTest {
     fun feedsDeleteTest() {
         val feedId: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<Unit> = api.feedsDelete(feedId, adAccountId)
 
         // TODO: test validations
@@ -266,6 +280,7 @@ class CatalogsApiTest {
     fun feedsGetTest() {
         val feedId: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsFeed> = api.feedsGet(feedId, adAccountId)
 
         // TODO: test validations
@@ -281,6 +296,7 @@ class CatalogsApiTest {
     fun feedsIngestTest() {
         val feedId: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsFeedIngestion> = api.feedsIngest(feedId, adAccountId)
 
         // TODO: test validations
@@ -298,6 +314,7 @@ class CatalogsApiTest {
         val pageSize: kotlin.Int = TODO()
         val catalogId: kotlin.String? = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<FeedsList200Response> = api.feedsList(bookmark, pageSize, catalogId, adAccountId)
 
         // TODO: test validations
@@ -314,6 +331,7 @@ class CatalogsApiTest {
         val feedId: kotlin.String = TODO()
         val feedsUpdateRequest: FeedsUpdateRequest = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsFeed> = api.feedsUpdate(feedId, feedsUpdateRequest, adAccountId)
 
         // TODO: test validations
@@ -329,6 +347,7 @@ class CatalogsApiTest {
     fun itemsBatchGetTest() {
         val batchId: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsItemsBatch> = api.itemsBatchGet(batchId, adAccountId)
 
         // TODO: test validations
@@ -344,6 +363,7 @@ class CatalogsApiTest {
     fun itemsBatchPostTest() {
         val itemsBatchPostRequest: ItemsBatchPostRequest = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsItemsBatch> = api.itemsBatchPost(itemsBatchPostRequest, adAccountId)
 
         // TODO: test validations
@@ -362,6 +382,7 @@ class CatalogsApiTest {
         val adAccountId: kotlin.String? = TODO()
         val itemIds: kotlin.collections.List<kotlin.String>? = TODO()
         val filters: CatalogsItemsFilters? = TODO()
+        
         val response: ResponseEntity<CatalogsItems> = api.itemsGet(country, language, adAccountId, itemIds, filters)
 
         // TODO: test validations
@@ -381,6 +402,7 @@ class CatalogsApiTest {
         val itemNumbers: kotlin.collections.List<kotlin.Int>? = TODO()
         val itemValidationIssue: CatalogsItemValidationIssue? = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<ItemsIssuesList200Response> = api.itemsIssuesList(processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId)
 
         // TODO: test validations
@@ -396,6 +418,7 @@ class CatalogsApiTest {
     fun itemsPostTest() {
         val catalogsItemsRequest: CatalogsItemsRequest = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsItems> = api.itemsPost(catalogsItemsRequest, adAccountId)
 
         // TODO: test validations
@@ -414,6 +437,7 @@ class CatalogsApiTest {
         val pageSize: kotlin.Int = TODO()
         val adAccountId: kotlin.String? = TODO()
         val pinMetrics: kotlin.Boolean = TODO()
+        
         val response: ResponseEntity<CatalogsProductGroupPinsList200Response> = api.productsByProductGroupFilterList(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics)
 
         // TODO: test validations
@@ -429,6 +453,7 @@ class CatalogsApiTest {
     fun reportsCreateTest() {
         val catalogsReportParameters: CatalogsReportParameters = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsCreateReportResponse> = api.reportsCreate(catalogsReportParameters, adAccountId)
 
         // TODO: test validations
@@ -444,6 +469,7 @@ class CatalogsApiTest {
     fun reportsGetTest() {
         val token: kotlin.String = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         val response: ResponseEntity<CatalogsReport> = api.reportsGet(token, adAccountId)
 
         // TODO: test validations
@@ -461,6 +487,7 @@ class CatalogsApiTest {
         val adAccountId: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         val bookmark: kotlin.String? = TODO()
+        
         val response: ResponseEntity<ReportsStats200Response> = api.reportsStats(parameters, adAccountId, pageSize, bookmark)
 
         // TODO: test validations

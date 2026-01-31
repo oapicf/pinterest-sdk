@@ -78,7 +78,6 @@ export * from '../models/AudienceCategory';
 export * from '../models/AudienceCommon';
 export * from '../models/AudienceCreateCustomRequest';
 export * from '../models/AudienceCreateRequest';
-export * from '../models/AudienceCreateRequest1AudienceType';
 export * from '../models/AudienceDataParty';
 export * from '../models/AudienceDefinition';
 export * from '../models/AudienceDefinitionResponse';
@@ -256,7 +255,6 @@ export * from '../models/CatalogsItemsDeleteDiscontinuedBatchRequest';
 export * from '../models/CatalogsItemsFilters';
 export * from '../models/CatalogsItemsPostFilters';
 export * from '../models/CatalogsItemsRequest';
-export * from '../models/CatalogsItemsRequestLanguage';
 export * from '../models/CatalogsItemsUpdateBatchRequest';
 export * from '../models/CatalogsItemsUpsertBatchRequest';
 export * from '../models/CatalogsList200Response';
@@ -590,7 +588,6 @@ export * from '../models/PinMediaWithVideos';
 export * from '../models/PinPromotionSummaryStatus';
 export * from '../models/PinUpdate';
 export * from '../models/PinUpdateCarouselSlotsInner';
-export * from '../models/PinsAnalyticsMetricTypesParameterInner';
 export * from '../models/PinsList200Response';
 export * from '../models/PinsSaveRequest';
 export * from '../models/PinterestTagEventData';
@@ -796,8 +793,7 @@ import { AudienceAccountType } from '../models/AudienceAccountType';
 import { AudienceCategory } from '../models/AudienceCategory';
 import { AudienceCommon } from '../models/AudienceCommon';
 import { AudienceCreateCustomRequest       } from '../models/AudienceCreateCustomRequest';
-import { AudienceCreateRequest } from '../models/AudienceCreateRequest';
-import { AudienceCreateRequest1AudienceType } from '../models/AudienceCreateRequest1AudienceType';
+import { AudienceCreateRequest      } from '../models/AudienceCreateRequest';
 import { AudienceDataParty } from '../models/AudienceDataParty';
 import { AudienceDefinition } from '../models/AudienceDefinition';
 import { AudienceDefinitionResponse } from '../models/AudienceDefinitionResponse';
@@ -892,7 +888,7 @@ import { CatalogsCreateRequest, CatalogsCreateRequestCatalogTypeEnum    } from '
 import { CatalogsCreateRetailItem , CatalogsCreateRetailItemOperationEnum    } from '../models/CatalogsCreateRetailItem';
 import { CatalogsCreativeAssetsAttributes } from '../models/CatalogsCreativeAssetsAttributes';
 import { CatalogsCreativeAssetsBatchItem , CatalogsCreativeAssetsBatchItemOperationEnum    } from '../models/CatalogsCreativeAssetsBatchItem';
-import { CatalogsCreativeAssetsBatchRequest, CatalogsCreativeAssetsBatchRequestCatalogTypeEnum       } from '../models/CatalogsCreativeAssetsBatchRequest';
+import { CatalogsCreativeAssetsBatchRequest, CatalogsCreativeAssetsBatchRequestCatalogTypeEnum   , CatalogsCreativeAssetsBatchRequestLanguageEnum     } from '../models/CatalogsCreativeAssetsBatchRequest';
 import { CatalogsCreativeAssetsFeed               } from '../models/CatalogsCreativeAssetsFeed';
 import { CatalogsCreativeAssetsFeedsCreateRequest            } from '../models/CatalogsCreativeAssetsFeedsCreateRequest';
 import { CatalogsCreativeAssetsFeedsUpdateRequest         } from '../models/CatalogsCreativeAssetsFeedsUpdateRequest';
@@ -938,7 +934,7 @@ import { CatalogsHotelAddress } from '../models/CatalogsHotelAddress';
 import { CatalogsHotelAttributes } from '../models/CatalogsHotelAttributes';
 import { CatalogsHotelAttributesAllOfMainImage } from '../models/CatalogsHotelAttributesAllOfMainImage';
 import { CatalogsHotelBatchItem , CatalogsHotelBatchItemOperationEnum    } from '../models/CatalogsHotelBatchItem';
-import { CatalogsHotelBatchRequest, CatalogsHotelBatchRequestCatalogTypeEnum       } from '../models/CatalogsHotelBatchRequest';
+import { CatalogsHotelBatchRequest, CatalogsHotelBatchRequestCatalogTypeEnum   , CatalogsHotelBatchRequestLanguageEnum     } from '../models/CatalogsHotelBatchRequest';
 import { CatalogsHotelFeed              } from '../models/CatalogsHotelFeed';
 import { CatalogsHotelFeedsCreateRequest           } from '../models/CatalogsHotelFeedsCreateRequest';
 import { CatalogsHotelFeedsUpdateRequest         } from '../models/CatalogsHotelFeedsUpdateRequest';
@@ -969,15 +965,14 @@ import { CatalogsItemValidationWarnings } from '../models/CatalogsItemValidation
 import { CatalogsItems } from '../models/CatalogsItems';
 import { CatalogsItemsBatchClass } from '../models/CatalogsItemsBatch';
 import { CatalogsItemsBatchRequestClass } from '../models/CatalogsItemsBatchRequest';
-import { CatalogsItemsCreateBatchRequest     } from '../models/CatalogsItemsCreateBatchRequest';
-import { CatalogsItemsDeleteBatchRequest     } from '../models/CatalogsItemsDeleteBatchRequest';
-import { CatalogsItemsDeleteDiscontinuedBatchRequest     } from '../models/CatalogsItemsDeleteDiscontinuedBatchRequest';
+import { CatalogsItemsCreateBatchRequest , CatalogsItemsCreateBatchRequestLanguageEnum     } from '../models/CatalogsItemsCreateBatchRequest';
+import { CatalogsItemsDeleteBatchRequest , CatalogsItemsDeleteBatchRequestLanguageEnum     } from '../models/CatalogsItemsDeleteBatchRequest';
+import { CatalogsItemsDeleteDiscontinuedBatchRequest , CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum     } from '../models/CatalogsItemsDeleteDiscontinuedBatchRequest';
 import { CatalogsItemsFiltersClass } from '../models/CatalogsItemsFilters';
 import { CatalogsItemsPostFiltersClass } from '../models/CatalogsItemsPostFilters';
-import { CatalogsItemsRequest    } from '../models/CatalogsItemsRequest';
-import { CatalogsItemsRequestLanguage } from '../models/CatalogsItemsRequestLanguage';
-import { CatalogsItemsUpdateBatchRequest     } from '../models/CatalogsItemsUpdateBatchRequest';
-import { CatalogsItemsUpsertBatchRequest     } from '../models/CatalogsItemsUpsertBatchRequest';
+import { CatalogsItemsRequest , CatalogsItemsRequestLanguageEnum    } from '../models/CatalogsItemsRequest';
+import { CatalogsItemsUpdateBatchRequest , CatalogsItemsUpdateBatchRequestLanguageEnum     } from '../models/CatalogsItemsUpdateBatchRequest';
+import { CatalogsItemsUpsertBatchRequest , CatalogsItemsUpsertBatchRequestLanguageEnum     } from '../models/CatalogsItemsUpsertBatchRequest';
 import { CatalogsList200Response } from '../models/CatalogsList200Response';
 import { CatalogsListProductsByFeedBasedFilter } from '../models/CatalogsListProductsByFeedBasedFilter';
 import { CatalogsListProductsByFilterRequestClass } from '../models/CatalogsListProductsByFilterRequest';
@@ -1013,7 +1008,7 @@ import { CatalogsReportFeedIngestionFilter, CatalogsReportFeedIngestionFilterRep
 import { CatalogsReportFeedIngestionStats, CatalogsReportFeedIngestionStatsReportTypeEnum       , CatalogsReportFeedIngestionStatsSeverityEnum   } from '../models/CatalogsReportFeedIngestionStats';
 import { CatalogsReportParametersClass } from '../models/CatalogsReportParameters';
 import { CatalogsReportStatsClass } from '../models/CatalogsReportStats';
-import { CatalogsRetailBatchRequest, CatalogsRetailBatchRequestCatalogTypeEnum      } from '../models/CatalogsRetailBatchRequest';
+import { CatalogsRetailBatchRequest, CatalogsRetailBatchRequestCatalogTypeEnum   , CatalogsRetailBatchRequestLanguageEnum    } from '../models/CatalogsRetailBatchRequest';
 import { CatalogsRetailBatchRequestItemsInner , CatalogsRetailBatchRequestItemsInnerOperationEnum     } from '../models/CatalogsRetailBatchRequestItemsInner';
 import { CatalogsRetailFeed               } from '../models/CatalogsRetailFeed';
 import { CatalogsRetailFeedsCreateRequest            } from '../models/CatalogsRetailFeedsCreateRequest';
@@ -1082,7 +1077,7 @@ import { CreateAssetInvitesRequestItem    } from '../models/CreateAssetInvitesRe
 import { CreateInvitesResultsResponseArray } from '../models/CreateInvitesResultsResponseArray';
 import { CreateInvitesResultsResponseArrayItemsInner } from '../models/CreateInvitesResultsResponseArrayItemsInner';
 import { CreateInvitesResultsResponseArrayItemsInnerInvite } from '../models/CreateInvitesResultsResponseArrayItemsInnerInvite';
-import { CreateMMMReportRequest   , CreateMMMReportRequestGranularityEnum  , CreateMMMReportRequestLevelEnum      } from '../models/CreateMMMReportRequest';
+import { CreateMMMReportRequest    , CreateMMMReportRequestGranularityEnum  , CreateMMMReportRequestLevelEnum     } from '../models/CreateMMMReportRequest';
 import { CreateMMMReportResponse } from '../models/CreateMMMReportResponse';
 import { CreateMMMReportResponseData     } from '../models/CreateMMMReportResponseData';
 import { CreateMembershipOrPartnershipInvitesBody, CreateMembershipOrPartnershipInvitesBodyBusinessRoleEnum      } from '../models/CreateMembershipOrPartnershipInvitesBody';
@@ -1188,7 +1183,7 @@ import { ItemGroupIdFilter } from '../models/ItemGroupIdFilter';
 import { ItemIdFilter } from '../models/ItemIdFilter';
 import { ItemProcessingRecord     } from '../models/ItemProcessingRecord';
 import { ItemProcessingStatus } from '../models/ItemProcessingStatus';
-import { ItemResponse      } from '../models/ItemResponse';
+import { ItemResponse        } from '../models/ItemResponse';
 import { ItemResponseAnyOfClass } from '../models/ItemResponseAnyOf';
 import { ItemResponseAnyOf1Class } from '../models/ItemResponseAnyOf1';
 import { ItemUpdateBatchRecord } from '../models/ItemUpdateBatchRecord';
@@ -1254,14 +1249,14 @@ import { NonNullableCatalogsCurrency } from '../models/NonNullableCatalogsCurren
 import { NonNullableProductAvailabilityType } from '../models/NonNullableProductAvailabilityType';
 import { NullableCatalogsItemFieldType } from '../models/NullableCatalogsItemFieldType';
 import { NullableCurrency } from '../models/NullableCurrency';
-import { OauthAccessTokenRequestClientCredentials, OauthAccessTokenRequestClientCredentialsGrantTypeEnum    } from '../models/OauthAccessTokenRequestClientCredentials';
-import { OauthAccessTokenRequestCode, OauthAccessTokenRequestCodeGrantTypeEnum     } from '../models/OauthAccessTokenRequestCode';
-import { OauthAccessTokenRequestRefresh, OauthAccessTokenRequestRefreshGrantTypeEnum      } from '../models/OauthAccessTokenRequestRefresh';
+import { OauthAccessTokenRequestClientCredentials , OauthAccessTokenRequestClientCredentialsGrantTypeEnum   } from '../models/OauthAccessTokenRequestClientCredentials';
+import { OauthAccessTokenRequestCode  , OauthAccessTokenRequestCodeGrantTypeEnum   } from '../models/OauthAccessTokenRequestCode';
+import { OauthAccessTokenRequestRefresh   , OauthAccessTokenRequestRefreshGrantTypeEnum   } from '../models/OauthAccessTokenRequestRefresh';
 import { OauthAccessTokenResponse, OauthAccessTokenResponseResponseTypeEnum       } from '../models/OauthAccessTokenResponse';
 import { OauthAccessTokenResponseClientCredentials, OauthAccessTokenResponseClientCredentialsResponseTypeEnum       } from '../models/OauthAccessTokenResponseClientCredentials';
-import { OauthAccessTokenResponseCode, OauthAccessTokenResponseCodeResponseTypeEnum         } from '../models/OauthAccessTokenResponseCode';
-import { OauthAccessTokenResponseEverlastingRefresh, OauthAccessTokenResponseEverlastingRefreshResponseTypeEnum          } from '../models/OauthAccessTokenResponseEverlastingRefresh';
-import { OauthAccessTokenResponseIntegrationRefresh, OauthAccessTokenResponseIntegrationRefreshResponseTypeEnum         } from '../models/OauthAccessTokenResponseIntegrationRefresh';
+import { OauthAccessTokenResponseCode  , OauthAccessTokenResponseCodeResponseTypeEnum       } from '../models/OauthAccessTokenResponseCode';
+import { OauthAccessTokenResponseEverlastingRefresh   , OauthAccessTokenResponseEverlastingRefreshResponseTypeEnum       } from '../models/OauthAccessTokenResponseEverlastingRefresh';
+import { OauthAccessTokenResponseIntegrationRefresh  , OauthAccessTokenResponseIntegrationRefreshResponseTypeEnum       } from '../models/OauthAccessTokenResponseIntegrationRefresh';
 import { OauthAccessTokenResponseRefresh, OauthAccessTokenResponseRefreshResponseTypeEnum       } from '../models/OauthAccessTokenResponseRefresh';
 import { ObjectiveType } from '../models/ObjectiveType';
 import { OperationType } from '../models/OperationType';
@@ -1309,7 +1304,6 @@ import { PinMediaWithVideos } from '../models/PinMediaWithVideos';
 import { PinPromotionSummaryStatus } from '../models/PinPromotionSummaryStatus';
 import { PinUpdate } from '../models/PinUpdate';
 import { PinUpdateCarouselSlotsInner } from '../models/PinUpdateCarouselSlotsInner';
-import { PinsAnalyticsMetricTypesParameterInnerClass } from '../models/PinsAnalyticsMetricTypesParameterInner';
 import { PinsList200Response } from '../models/PinsList200Response';
 import { PinsSaveRequest } from '../models/PinsSaveRequest';
 import { PinterestTagEventData            } from '../models/PinterestTagEventData';
@@ -1504,6 +1498,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CatalogsCreateRetailItemOperationEnum",
     "CatalogsCreativeAssetsBatchItemOperationEnum",
     "CatalogsCreativeAssetsBatchRequestCatalogTypeEnum",
+    "CatalogsCreativeAssetsBatchRequestLanguageEnum",
     "CatalogsCreativeAssetsItemsFilterCatalogTypeEnum",
     "CatalogsCreativeAssetsItemsPostFilterCatalogTypeEnum",
     "CatalogsCreativeAssetsListProductsByCatalogBasedFilterRequestCatalogTypeEnum",
@@ -1522,6 +1517,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CatalogsFormat",
     "CatalogsHotelBatchItemOperationEnum",
     "CatalogsHotelBatchRequestCatalogTypeEnum",
+    "CatalogsHotelBatchRequestLanguageEnum",
     "CatalogsHotelItemsFilterCatalogTypeEnum",
     "CatalogsHotelItemsPostFilterCatalogTypeEnum",
     "CatalogsHotelListProductsByCatalogBasedFilterRequestCatalogTypeEnum",
@@ -1533,6 +1529,13 @@ let enumsMap: Set<string> = new Set<string>([
     "CatalogsHotelReportParametersCatalogTypeEnum",
     "CatalogsHotelReportParametersReportReportTypeEnum",
     "CatalogsItemValidationIssue",
+    "CatalogsItemsBatchRequestLanguageEnum",
+    "CatalogsItemsCreateBatchRequestLanguageEnum",
+    "CatalogsItemsDeleteBatchRequestLanguageEnum",
+    "CatalogsItemsDeleteDiscontinuedBatchRequestLanguageEnum",
+    "CatalogsItemsRequestLanguageEnum",
+    "CatalogsItemsUpdateBatchRequestLanguageEnum",
+    "CatalogsItemsUpsertBatchRequestLanguageEnum",
     "CatalogsLocale",
     "CatalogsProductGroupPricingCurrencyCriteriaOperatorEnum",
     "CatalogsProductGroupStatus",
@@ -1546,6 +1549,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CatalogsReportStatsReportTypeEnum",
     "CatalogsReportStatsSeverityEnum",
     "CatalogsRetailBatchRequestCatalogTypeEnum",
+    "CatalogsRetailBatchRequestLanguageEnum",
     "CatalogsRetailBatchRequestItemsInnerOperationEnum",
     "CatalogsRetailItemsFilterCatalogTypeEnum",
     "CatalogsRetailItemsPostFilterCatalogTypeEnum",
@@ -1565,6 +1569,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CatalogsUpsertHotelItemOperationEnum",
     "CatalogsUpsertRetailItemOperationEnum",
     "CatalogsVerticalBatchRequestCatalogTypeEnum",
+    "CatalogsVerticalBatchRequestLanguageEnum",
     "CatalogsVerticalProductGroupCatalogTypeEnum",
     "CatalogsVerticalProductGroupCreateRequestCatalogTypeEnum",
     "CatalogsVerticalProductGroupUpdateRequestCatalogTypeEnum",
@@ -1600,6 +1605,8 @@ let enumsMap: Set<string> = new Set<string>([
     "InviteStatus",
     "InviteType",
     "ItemProcessingStatus",
+    "ItemsBatchPostRequestCatalogTypeEnum",
+    "ItemsBatchPostRequestLanguageEnum",
     "Language",
     "LeadFormQuestionFieldType",
     "LeadFormQuestionType",
@@ -1757,7 +1764,6 @@ let typeMap: {[index: string]: any} = {
     "AudienceCommon": AudienceCommon,
     "AudienceCreateCustomRequest": AudienceCreateCustomRequest,
     "AudienceCreateRequest": AudienceCreateRequest,
-    "AudienceCreateRequest1AudienceType": AudienceCreateRequest1AudienceType,
     "AudienceDefinition": AudienceDefinition,
     "AudienceDefinitionResponse": AudienceDefinitionResponse,
     "AudienceDemographicValue": AudienceDemographicValue,
@@ -1914,7 +1920,6 @@ let typeMap: {[index: string]: any} = {
     "CatalogsItemsFilters": CatalogsItemsFiltersClass,
     "CatalogsItemsPostFilters": CatalogsItemsPostFiltersClass,
     "CatalogsItemsRequest": CatalogsItemsRequest,
-    "CatalogsItemsRequestLanguage": CatalogsItemsRequestLanguage,
     "CatalogsItemsUpdateBatchRequest": CatalogsItemsUpdateBatchRequest,
     "CatalogsItemsUpsertBatchRequest": CatalogsItemsUpsertBatchRequest,
     "CatalogsList200Response": CatalogsList200Response,
@@ -2196,7 +2201,6 @@ let typeMap: {[index: string]: any} = {
     "PinMediaWithVideos": PinMediaWithVideos,
     "PinUpdate": PinUpdate,
     "PinUpdateCarouselSlotsInner": PinUpdateCarouselSlotsInner,
-    "PinsAnalyticsMetricTypesParameterInner": PinsAnalyticsMetricTypesParameterInnerClass,
     "PinsList200Response": PinsList200Response,
     "PinsSaveRequest": PinsSaveRequest,
     "PinterestTagEventData": PinterestTagEventData,
@@ -2438,13 +2442,16 @@ export class ObjectSerializer {
             }
             return transformedData;
         } else if (type === "Date") {
+            if (!(data instanceof Date)) {
+                return data;
+            }
             if (format == "date") {
                 let month = data.getMonth()+1
-                month = month < 10 ? "0" + month.toString() : month.toString()
+                let monthStr = month < 10 ? "0" + month.toString() : month.toString()
                 let day = data.getDate();
-                day = day < 10 ? "0" + day.toString() : day.toString();
+                let dayStr = day < 10 ? "0" + day.toString() : day.toString();
 
-                return data.getFullYear() + "-" + month + "-" + day;
+                return data.getFullYear() + "-" + monthStr + "-" + dayStr;
             } else {
                 return data.toISOString();
             }

@@ -29,7 +29,7 @@ data class LeadsExportResponseData(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("download_url") val downloadUrl: kotlin.String? = null
-    ) {
+) {
 
 }
 

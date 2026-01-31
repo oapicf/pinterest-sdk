@@ -15,6 +15,8 @@ No summary available.
 
 No description available.
 
+.PARAMETER Countries
+A List of countries for filtering
 .PARAMETER ReportName
 Name of the Marketing Mix Modeling (MMM) report
 .PARAMETER StartDate
@@ -29,8 +31,6 @@ Level of the report
 List of targeting types
 .PARAMETER Columns
 Metric and entity columns
-.PARAMETER Countries
-A List of countries for filtering
 .OUTPUTS
 
 CreateMMMReportRequest<PSCustomObject>
@@ -40,33 +40,33 @@ function Initialize-CreateMMMReportRequest {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
+        [PSCustomObject[]]
+        ${Countries},
+        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
         [String]
         ${ReportName},
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [ValidatePattern("^(\d{4})-(\d{2})-(\d{2})$")]
-        [String]
-        ${StartDate},
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = $true)]
         [ValidatePattern("^(\d{4})-(\d{2})-(\d{2})$")]
         [String]
-        ${EndDate},
+        ${StartDate},
         [Parameter(Position = 3, ValueFromPipelineByPropertyName = $true)]
+        [ValidatePattern("^(\d{4})-(\d{2})-(\d{2})$")]
+        [String]
+        ${EndDate},
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("DAY", "WEEK")]
         [String]
         ${Granularity},
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
         [ValidateSet("CAMPAIGN_TARGETING", "AD_GROUP_TARGETING")]
         [String]
         ${Level},
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = $true)]
-        [PSCustomObject[]]
-        ${TargetingTypes},
         [Parameter(Position = 6, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
-        ${Columns},
+        ${TargetingTypes},
         [Parameter(Position = 7, ValueFromPipelineByPropertyName = $true)]
         [PSCustomObject[]]
-        ${Countries}
+        ${Columns}
     )
 
     Process {
@@ -111,6 +111,7 @@ function Initialize-CreateMMMReportRequest {
 
 
         $PSO = [PSCustomObject]@{
+            "countries" = ${Countries}
             "report_name" = ${ReportName}
             "start_date" = ${StartDate}
             "end_date" = ${EndDate}
@@ -118,7 +119,6 @@ function Initialize-CreateMMMReportRequest {
             "level" = ${Level}
             "targeting_types" = ${TargetingTypes}
             "columns" = ${Columns}
-            "countries" = ${Countries}
         }
 
 
@@ -156,7 +156,7 @@ function ConvertFrom-JsonToCreateMMMReportRequest {
         $JsonParameters = ConvertFrom-Json -InputObject $Json
 
         # check if Json contains properties not defined in CreateMMMReportRequest
-        $AllProperties = ("report_name", "start_date", "end_date", "granularity", "level", "targeting_types", "columns", "countries")
+        $AllProperties = ("countries", "report_name", "start_date", "end_date", "granularity", "level", "targeting_types", "columns")
         foreach ($name in $JsonParameters.PsObject.Properties.Name) {
             if (!($AllProperties.Contains($name))) {
                 throw "Error! JSON key '$name' not found in the properties: $($AllProperties)"
@@ -216,6 +216,7 @@ function ConvertFrom-JsonToCreateMMMReportRequest {
         }
 
         $PSO = [PSCustomObject]@{
+            "countries" = ${Countries}
             "report_name" = ${ReportName}
             "start_date" = ${StartDate}
             "end_date" = ${EndDate}
@@ -223,7 +224,6 @@ function ConvertFrom-JsonToCreateMMMReportRequest {
             "level" = ${Level}
             "targeting_types" = ${TargetingTypes}
             "columns" = ${Columns}
-            "countries" = ${Countries}
         }
 
         return $PSO

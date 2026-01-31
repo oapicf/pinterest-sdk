@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Multiple images urls-based media source
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceImagesURL {
   /**
    * Gets or Sets sourceType
@@ -235,14 +235,10 @@ public class PinMediaSourceImagesURL {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("source_type");
-    openapiFields.add("items");
-    openapiFields.add("index");
+    openapiFields = new HashSet<String>(Arrays.asList("source_type", "items", "index"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("items");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("items"));
   }
 
   /**
@@ -254,7 +250,7 @@ public class PinMediaSourceImagesURL {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PinMediaSourceImagesURL.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PinMediaSourceImagesURL is not found in the empty JSON string", PinMediaSourceImagesURL.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in PinMediaSourceImagesURL is not found in the empty JSON string", PinMediaSourceImagesURL.openapiRequiredFields.toString()));
         }
       }
 
@@ -262,19 +258,19 @@ public class PinMediaSourceImagesURL {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!PinMediaSourceImagesURL.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PinMediaSourceImagesURL` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PinMediaSourceImagesURL` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : PinMediaSourceImagesURL.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("source_type") != null && !jsonObj.get("source_type").isJsonNull()) && !jsonObj.get("source_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `source_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `source_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_type").toString()));
       }
       // validate the optional field `source_type`
       if (jsonObj.get("source_type") != null && !jsonObj.get("source_type").isJsonNull()) {
@@ -282,7 +278,7 @@ public class PinMediaSourceImagesURL {
       }
       // ensure the json data is an array
       if (!jsonObj.get("items").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `items` to be an array in the JSON string but got `%s`", jsonObj.get("items").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `items` to be an array in the JSON string but got `%s`", jsonObj.get("items").toString()));
       }
 
       JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");

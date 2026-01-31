@@ -124,7 +124,6 @@ OpenAPIClient/Classes/OpenAPIs/Models/AudienceCategory.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AudienceCommon.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AudienceCreateCustomRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AudienceCreateRequest.swift
-OpenAPIClient/Classes/OpenAPIs/Models/AudienceCreateRequest1AudienceType.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AudienceDataParty.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AudienceDefinition.swift
 OpenAPIClient/Classes/OpenAPIs/Models/AudienceDefinitionResponse.swift
@@ -302,7 +301,6 @@ OpenAPIClient/Classes/OpenAPIs/Models/CatalogsItemsDeleteDiscontinuedBatchReques
 OpenAPIClient/Classes/OpenAPIs/Models/CatalogsItemsFilters.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CatalogsItemsPostFilters.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CatalogsItemsRequest.swift
-OpenAPIClient/Classes/OpenAPIs/Models/CatalogsItemsRequestLanguage.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CatalogsItemsUpdateBatchRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CatalogsItemsUpsertBatchRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CatalogsList200Response.swift
@@ -636,7 +634,6 @@ OpenAPIClient/Classes/OpenAPIs/Models/PinMediaWithVideos.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PinPromotionSummaryStatus.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PinUpdate.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PinUpdateCarouselSlotsInner.swift
-OpenAPIClient/Classes/OpenAPIs/Models/PinsAnalyticsMetricTypesParameterInner.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PinsList200Response.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PinsSaveRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PinterestTagEventData.swift
@@ -852,7 +849,6 @@ docs/AudienceCategory.md
 docs/AudienceCommon.md
 docs/AudienceCreateCustomRequest.md
 docs/AudienceCreateRequest.md
-docs/AudienceCreateRequest1AudienceType.md
 docs/AudienceDataParty.md
 docs/AudienceDefinition.md
 docs/AudienceDefinitionResponse.md
@@ -1041,7 +1037,6 @@ docs/CatalogsItemsDeleteDiscontinuedBatchRequest.md
 docs/CatalogsItemsFilters.md
 docs/CatalogsItemsPostFilters.md
 docs/CatalogsItemsRequest.md
-docs/CatalogsItemsRequestLanguage.md
 docs/CatalogsItemsUpdateBatchRequest.md
 docs/CatalogsItemsUpsertBatchRequest.md
 docs/CatalogsList200Response.md
@@ -1387,7 +1382,6 @@ docs/PinPromotionSummaryStatus.md
 docs/PinUpdate.md
 docs/PinUpdateCarouselSlotsInner.md
 docs/PinsAPI.md
-docs/PinsAnalyticsMetricTypesParameterInner.md
 docs/PinsList200Response.md
 docs/PinsSaveRequest.md
 docs/PinterestTagEventData.md

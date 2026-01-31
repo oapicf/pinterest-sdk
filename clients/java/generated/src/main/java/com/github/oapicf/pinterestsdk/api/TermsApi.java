@@ -88,7 +88,7 @@ public class TermsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call termsRelatedListCall(List<String> terms, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call termsRelatedListCall(@javax.annotation.Nonnull List<String> terms, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,7 +137,7 @@ public class TermsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call termsRelatedListValidateBeforeCall(List<String> terms, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call termsRelatedListValidateBeforeCall(@javax.annotation.Nonnull List<String> terms, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'terms' is set
         if (terms == null) {
             throw new ApiException("Missing the required parameter 'terms' when calling termsRelatedList(Async)");
@@ -162,7 +162,7 @@ public class TermsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public RelatedTerms termsRelatedList(List<String> terms) throws ApiException {
+    public RelatedTerms termsRelatedList(@javax.annotation.Nonnull List<String> terms) throws ApiException {
         ApiResponse<RelatedTerms> localVarResp = termsRelatedListWithHttpInfo(terms);
         return localVarResp.getData();
     }
@@ -182,7 +182,7 @@ public class TermsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RelatedTerms> termsRelatedListWithHttpInfo(List<String> terms) throws ApiException {
+    public ApiResponse<RelatedTerms> termsRelatedListWithHttpInfo(@javax.annotation.Nonnull List<String> terms) throws ApiException {
         okhttp3.Call localVarCall = termsRelatedListValidateBeforeCall(terms, null);
         Type localVarReturnType = new TypeToken<RelatedTerms>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -204,7 +204,7 @@ public class TermsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call termsRelatedListAsync(List<String> terms, final ApiCallback<RelatedTerms> _callback) throws ApiException {
+    public okhttp3.Call termsRelatedListAsync(@javax.annotation.Nonnull List<String> terms, final ApiCallback<RelatedTerms> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = termsRelatedListValidateBeforeCall(terms, _callback);
         Type localVarReturnType = new TypeToken<RelatedTerms>(){}.getType();
@@ -227,7 +227,7 @@ public class TermsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call termsSuggestedListCall(String term, Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call termsSuggestedListCall(@javax.annotation.Nonnull String term, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -280,7 +280,7 @@ public class TermsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call termsSuggestedListValidateBeforeCall(String term, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call termsSuggestedListValidateBeforeCall(@javax.annotation.Nonnull String term, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'term' is set
         if (term == null) {
             throw new ApiException("Missing the required parameter 'term' when calling termsSuggestedList(Async)");
@@ -306,7 +306,7 @@ public class TermsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public List<String> termsSuggestedList(String term, Integer limit) throws ApiException {
+    public List<String> termsSuggestedList(@javax.annotation.Nonnull String term, @javax.annotation.Nullable Integer limit) throws ApiException {
         ApiResponse<List<String>> localVarResp = termsSuggestedListWithHttpInfo(term, limit);
         return localVarResp.getData();
     }
@@ -327,7 +327,7 @@ public class TermsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<String>> termsSuggestedListWithHttpInfo(String term, Integer limit) throws ApiException {
+    public ApiResponse<List<String>> termsSuggestedListWithHttpInfo(@javax.annotation.Nonnull String term, @javax.annotation.Nullable Integer limit) throws ApiException {
         okhttp3.Call localVarCall = termsSuggestedListValidateBeforeCall(term, limit, null);
         Type localVarReturnType = new TypeToken<List<String>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -350,7 +350,7 @@ public class TermsApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call termsSuggestedListAsync(String term, Integer limit, final ApiCallback<List<String>> _callback) throws ApiException {
+    public okhttp3.Call termsSuggestedListAsync(@javax.annotation.Nonnull String term, @javax.annotation.Nullable Integer limit, final ApiCallback<List<String>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = termsSuggestedListValidateBeforeCall(term, limit, _callback);
         Type localVarReturnType = new TypeToken<List<String>>(){}.getType();

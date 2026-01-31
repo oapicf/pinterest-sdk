@@ -216,11 +216,11 @@ cJSON *catalogs_hotel_feeds_create_request_convertToJSON(catalogs_hotel_feeds_cr
     if(catalogs_hotel_feeds_create_request->status) {
     cJSON *status_local_JSON = catalogs_status_convertToJSON(catalogs_hotel_feeds_create_request->status);
     if(status_local_JSON == NULL) {
-    goto fail; //model
+        goto fail; // custom
     }
     cJSON_AddItemToObject(item, "status", status_local_JSON);
     if(item->child == NULL) {
-    goto fail;
+        goto fail;
     }
     }
 
@@ -368,7 +368,7 @@ catalogs_hotel_feeds_create_request_t *catalogs_hotel_feeds_create_request_parse
         status = NULL;
     }
     if (status) { 
-    status_local_nonprim = catalogs_status_parseFromJSON(status); //nonprimitive
+    status_local_nonprim = catalogs_status_parseFromJSON(status); //custom
     }
 
 

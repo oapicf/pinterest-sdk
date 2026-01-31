@@ -21,34 +21,11 @@ using Org.OpenAPITools.Converters;
 namespace Org.OpenAPITools.Models
 { 
     /// <summary>
-    /// An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+    /// 
     /// </summary>
     [DataContract]
     public partial class InviteBusinessRoleBinding : IEquatable<InviteBusinessRoleBinding>
     {
-        /// <summary>
-        /// Unique identifier for the business that created the invite/request.
-        /// </summary>
-        /// <value>Unique identifier for the business that created the invite/request.</value>
-        /* <example>1234567890123</example> */
-        [DataMember(Name="created_by_business_id", EmitDefaultValue=false)]
-        public string CreatedByBusinessId { get; set; }
-
-        /// <summary>
-        /// Unique identifier for the user that created the invite/request.
-        /// </summary>
-        /// <value>Unique identifier for the user that created the invite/request.</value>
-        /* <example>1234567890123</example> */
-        [DataMember(Name="created_by_user_id", EmitDefaultValue=false)]
-        public string CreatedByUserId { get; set; }
-
-        /// <summary>
-        /// Metadata for the user that updated the invite/request.
-        /// </summary>
-        /// <value>Metadata for the user that updated the invite/request.</value>
-        [DataMember(Name="user", EmitDefaultValue=false)]
-        public BusinessAccessUserSummary User { get; set; }
-
         /// <summary>
         /// Unique identifier of the invite/request.
         /// </summary>
@@ -72,6 +49,29 @@ namespace Org.OpenAPITools.Models
         public bool IsReceivedInvite { get; set; }
 
         /// <summary>
+        /// Metadata for the user that updated the invite/request.
+        /// </summary>
+        /// <value>Metadata for the user that updated the invite/request.</value>
+        [DataMember(Name="user", EmitDefaultValue=false)]
+        public Object User { get; set; }
+
+        /// <summary>
+        /// Unique identifier for the business that created the invite/request.
+        /// </summary>
+        /// <value>Unique identifier for the business that created the invite/request.</value>
+        /* <example>1234567890123</example> */
+        [DataMember(Name="created_by_business_id", EmitDefaultValue=false)]
+        public string CreatedByBusinessId { get; set; }
+
+        /// <summary>
+        /// Unique identifier for the user that created the invite/request.
+        /// </summary>
+        /// <value>Unique identifier for the user that created the invite/request.</value>
+        /* <example>1234567890123</example> */
+        [DataMember(Name="created_by_user_id", EmitDefaultValue=false)]
+        public string CreatedByUserId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -79,12 +79,12 @@ namespace Org.OpenAPITools.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InviteBusinessRoleBinding {\n");
-            sb.Append("  CreatedByBusinessId: ").Append(CreatedByBusinessId).Append("\n");
-            sb.Append("  CreatedByUserId: ").Append(CreatedByUserId).Append("\n");
-            sb.Append("  User: ").Append(User).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  InviteData: ").Append(InviteData).Append("\n");
             sb.Append("  IsReceivedInvite: ").Append(IsReceivedInvite).Append("\n");
+            sb.Append("  User: ").Append(User).Append("\n");
+            sb.Append("  CreatedByBusinessId: ").Append(CreatedByBusinessId).Append("\n");
+            sb.Append("  CreatedByUserId: ").Append(CreatedByUserId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -122,21 +122,6 @@ namespace Org.OpenAPITools.Models
 
             return 
                 (
-                    CreatedByBusinessId == other.CreatedByBusinessId ||
-                    CreatedByBusinessId != null &&
-                    CreatedByBusinessId.Equals(other.CreatedByBusinessId)
-                ) && 
-                (
-                    CreatedByUserId == other.CreatedByUserId ||
-                    CreatedByUserId != null &&
-                    CreatedByUserId.Equals(other.CreatedByUserId)
-                ) && 
-                (
-                    User == other.User ||
-                    User != null &&
-                    User.Equals(other.User)
-                ) && 
-                (
                     Id == other.Id ||
                     Id != null &&
                     Id.Equals(other.Id)
@@ -150,6 +135,21 @@ namespace Org.OpenAPITools.Models
                     IsReceivedInvite == other.IsReceivedInvite ||
                     
                     IsReceivedInvite.Equals(other.IsReceivedInvite)
+                ) && 
+                (
+                    User == other.User ||
+                    User != null &&
+                    User.Equals(other.User)
+                ) && 
+                (
+                    CreatedByBusinessId == other.CreatedByBusinessId ||
+                    CreatedByBusinessId != null &&
+                    CreatedByBusinessId.Equals(other.CreatedByBusinessId)
+                ) && 
+                (
+                    CreatedByUserId == other.CreatedByUserId ||
+                    CreatedByUserId != null &&
+                    CreatedByUserId.Equals(other.CreatedByUserId)
                 );
         }
 
@@ -163,18 +163,18 @@ namespace Org.OpenAPITools.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (CreatedByBusinessId != null)
-                    hashCode = hashCode * 59 + CreatedByBusinessId.GetHashCode();
-                    if (CreatedByUserId != null)
-                    hashCode = hashCode * 59 + CreatedByUserId.GetHashCode();
-                    if (User != null)
-                    hashCode = hashCode * 59 + User.GetHashCode();
                     if (Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
                     if (InviteData != null)
                     hashCode = hashCode * 59 + InviteData.GetHashCode();
                     
                     hashCode = hashCode * 59 + IsReceivedInvite.GetHashCode();
+                    if (User != null)
+                    hashCode = hashCode * 59 + User.GetHashCode();
+                    if (CreatedByBusinessId != null)
+                    hashCode = hashCode * 59 + CreatedByBusinessId.GetHashCode();
+                    if (CreatedByUserId != null)
+                    hashCode = hashCode * 59 + CreatedByUserId.GetHashCode();
                 return hashCode;
             }
         }

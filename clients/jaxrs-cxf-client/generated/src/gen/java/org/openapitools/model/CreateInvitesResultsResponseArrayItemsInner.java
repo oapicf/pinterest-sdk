@@ -12,9 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreateInvitesResultsResponseArrayItemsInner  {
   
   @ApiModelProperty(value = "")
+
   private InviteExceptionResponse exception;
 
   @ApiModelProperty(value = "")
+
   private CreateInvitesResultsResponseArrayItemsInnerInvite invite;
  /**
    * Get exception

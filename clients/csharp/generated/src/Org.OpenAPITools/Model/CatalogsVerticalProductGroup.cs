@@ -190,9 +190,6 @@ namespace Org.OpenAPITools.Model
             CatalogsCreativeAssetsProductGroup? catalogsCreativeAssetsProductGroup = null;
             CatalogsHotelProductGroup? catalogsHotelProductGroup = null;
             CatalogsRetailProductGroup? catalogsRetailProductGroup = null;
-            CatalogsCreativeAssetsProductGroup? catalogsCreativeAssetsProductGroup = null;
-            CatalogsHotelProductGroup? catalogsHotelProductGroup = null;
-            CatalogsRetailProductGroup? catalogsRetailProductGroup = null;
 
             Utf8JsonReader utf8JsonReaderDiscriminator = utf8JsonReader;
             while (utf8JsonReaderDiscriminator.Read())
@@ -221,21 +218,6 @@ namespace Org.OpenAPITools.Model
                             catalogsHotelProductGroup = JsonSerializer.Deserialize<CatalogsHotelProductGroup>(ref utf8JsonReaderCatalogsHotelProductGroup, jsonSerializerOptions);
                         }
                         if (discriminator?.Equals("RETAIL") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsRetailProductGroup = utf8JsonReader;
-                            catalogsRetailProductGroup = JsonSerializer.Deserialize<CatalogsRetailProductGroup>(ref utf8JsonReaderCatalogsRetailProductGroup, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsCreativeAssetsProductGroup") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsCreativeAssetsProductGroup = utf8JsonReader;
-                            catalogsCreativeAssetsProductGroup = JsonSerializer.Deserialize<CatalogsCreativeAssetsProductGroup>(ref utf8JsonReaderCatalogsCreativeAssetsProductGroup, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsHotelProductGroup") ?? false)
-                        {
-                            Utf8JsonReader utf8JsonReaderCatalogsHotelProductGroup = utf8JsonReader;
-                            catalogsHotelProductGroup = JsonSerializer.Deserialize<CatalogsHotelProductGroup>(ref utf8JsonReaderCatalogsHotelProductGroup, jsonSerializerOptions);
-                        }
-                        if (discriminator?.Equals("CatalogsRetailProductGroup") ?? false)
                         {
                             Utf8JsonReader utf8JsonReaderCatalogsRetailProductGroup = utf8JsonReader;
                             catalogsRetailProductGroup = JsonSerializer.Deserialize<CatalogsRetailProductGroup>(ref utf8JsonReaderCatalogsRetailProductGroup, jsonSerializerOptions);
@@ -275,15 +257,6 @@ namespace Org.OpenAPITools.Model
 
             if (catalogType.IsSet && catalogType.Value == null)
                 throw new ArgumentNullException(nameof(catalogType), "Property is not nullable for class CatalogsVerticalProductGroup.");
-
-            if (catalogsCreativeAssetsProductGroup != null)
-                return new CatalogsVerticalProductGroup(catalogsCreativeAssetsProductGroup);
-
-            if (catalogsHotelProductGroup != null)
-                return new CatalogsVerticalProductGroup(catalogsHotelProductGroup);
-
-            if (catalogsRetailProductGroup != null)
-                return new CatalogsVerticalProductGroup(catalogsRetailProductGroup);
 
             if (catalogsCreativeAssetsProductGroup != null)
                 return new CatalogsVerticalProductGroup(catalogsCreativeAssetsProductGroup);

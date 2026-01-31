@@ -15,7 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AdArrayResponse  {
   
   @ApiModelProperty(value = "")
+
   @Valid
+
   private List<@Valid AdArrayResponseElement> items = new ArrayList<>();
  /**
    * Get items

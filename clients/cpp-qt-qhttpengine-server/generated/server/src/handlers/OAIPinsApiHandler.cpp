@@ -29,7 +29,7 @@ OAIPinsApiHandler::~OAIPinsApiHandler(){
 
 }
 
-void OAIPinsApiHandler::multiPins_analytics(QList<QString> pin_ids, QDate start_date, QDate end_date, QList<OAIPins_analytics_metric_types_parameter_inner> metric_types, QString app_types, QString ad_account_id) {
+void OAIPinsApiHandler::multiPins_analytics(QList<QString> pin_ids, QDate start_date, QDate end_date, QList<QString> metric_types, QString app_types, QString ad_account_id) {
     Q_UNUSED(pin_ids);
     Q_UNUSED(start_date);
     Q_UNUSED(end_date);
@@ -43,7 +43,7 @@ void OAIPinsApiHandler::multiPins_analytics(QList<QString> pin_ids, QDate start_
         reqObj->multiPins_analyticsResponse(res);
     }
 }
-void OAIPinsApiHandler::pins_analytics(QString pin_id, QDate start_date, QDate end_date, QList<OAIPins_analytics_metric_types_parameter_inner> metric_types, QString app_types, QString split_field, QString ad_account_id) {
+void OAIPinsApiHandler::pins_analytics(QString pin_id, QDate start_date, QDate end_date, QList<QString> metric_types, QString app_types, QString split_field, QString ad_account_id) {
     Q_UNUSED(pin_id);
     Q_UNUSED(start_date);
     Q_UNUSED(end_date);

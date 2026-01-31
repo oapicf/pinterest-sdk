@@ -13,9 +13,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class KeywordError  {
   
   @ApiModelProperty(value = "")
+
   private Keyword data;
 
   @ApiModelProperty(value = "")
+
   private List<String> errorMessages = new ArrayList<>();
  /**
    * Get data

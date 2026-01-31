@@ -1,10 +1,55 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
+
 #include "PinsAPI.h"
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
+#define MAX_NUMBER_LENGTH_LONG 21
+
+// Functions for enum METRICTYPES for PinsAPI_multiPinsAnalytics
+
+static char* multiPinsAnalytics_METRICTYPES_ToString(pinterest_rest_api_multiPinsAnalytics_metric_types_e METRICTYPES){
+    char *METRICTYPESArray[] =  { "NULL", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "TOTAL_COMMENTS", "TOTAL_REACTIONS", "USER_FOLLOW", "PROFILE_VISIT", "VIDEO_MRC_VIEW", "VIDEO_10S_VIEW", "QUARTILE_95_PERCENT_VIEW", "VIDEO_V50_WATCH_TIME", "VIDEO_START", "VIDEO_AVG_WATCH_TIME" };
+    return METRICTYPESArray[METRICTYPES];
+}
+
+static pinterest_rest_api_multiPinsAnalytics_metric_types_e multiPinsAnalytics_METRICTYPES_FromString(char* METRICTYPES){
+    int stringToReturn = 0;
+    char *METRICTYPESArray[] =  { "NULL", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "TOTAL_COMMENTS", "TOTAL_REACTIONS", "USER_FOLLOW", "PROFILE_VISIT", "VIDEO_MRC_VIEW", "VIDEO_10S_VIEW", "QUARTILE_95_PERCENT_VIEW", "VIDEO_V50_WATCH_TIME", "VIDEO_START", "VIDEO_AVG_WATCH_TIME" };
+    size_t sizeofArray = sizeof(METRICTYPESArray) / sizeof(METRICTYPESArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(METRICTYPES, METRICTYPESArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+
+/*
+// Function multiPinsAnalytics_METRICTYPES_convertToJSON is not currently used,
+// since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
+//
+static cJSON *multiPinsAnalytics_METRICTYPES_convertToJSON(pinterest_rest_api_multiPinsAnalytics_metric_types_e METRICTYPES) {
+    cJSON *item = cJSON_CreateObject();
+    return item;
+    fail:
+    cJSON_Delete(item);
+    return NULL;
+}
+
+// Function multiPinsAnalytics_METRICTYPES_parseFromJSON is not currently used,
+// since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
+//
+static pinterest_rest_api_multiPinsAnalytics_metric_types_e multiPinsAnalytics_METRICTYPES_parseFromJSON(cJSON* METRICTYPESJSON) {
+    pinterest_rest_api_multiPinsAnalytics_metric_types_e METRICTYPESVariable = 0;
+    return METRICTYPESVariable;
+end:
+    return 0;
+}
+*/
 
 // Functions for enum APPTYPES for PinsAPI_multiPinsAnalytics
 
@@ -53,6 +98,49 @@ static pinterest_rest_api_multiPinsAnalytics_app_types_e multiPinsAnalytics_APPT
     }
     APPTYPESVariable = multiPinsAnalytics_APPTYPES_FromString(APPTYPESVar->valuestring);
     return APPTYPESVariable;
+end:
+    return 0;
+}
+*/
+
+// Functions for enum METRICTYPES for PinsAPI_pinsAnalytics
+
+static char* pinsAnalytics_METRICTYPES_ToString(pinterest_rest_api_pinsAnalytics_metric_types_e METRICTYPES){
+    char *METRICTYPESArray[] =  { "NULL", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "TOTAL_COMMENTS", "TOTAL_REACTIONS", "USER_FOLLOW", "PROFILE_VISIT", "VIDEO_MRC_VIEW", "VIDEO_10S_VIEW", "QUARTILE_95_PERCENT_VIEW", "VIDEO_V50_WATCH_TIME", "VIDEO_START", "VIDEO_AVG_WATCH_TIME" };
+    return METRICTYPESArray[METRICTYPES];
+}
+
+static pinterest_rest_api_pinsAnalytics_metric_types_e pinsAnalytics_METRICTYPES_FromString(char* METRICTYPES){
+    int stringToReturn = 0;
+    char *METRICTYPESArray[] =  { "NULL", "IMPRESSION", "OUTBOUND_CLICK", "PIN_CLICK", "SAVE", "SAVE_RATE", "TOTAL_COMMENTS", "TOTAL_REACTIONS", "USER_FOLLOW", "PROFILE_VISIT", "VIDEO_MRC_VIEW", "VIDEO_10S_VIEW", "QUARTILE_95_PERCENT_VIEW", "VIDEO_V50_WATCH_TIME", "VIDEO_START", "VIDEO_AVG_WATCH_TIME" };
+    size_t sizeofArray = sizeof(METRICTYPESArray) / sizeof(METRICTYPESArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(METRICTYPES, METRICTYPESArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+
+/*
+// Function pinsAnalytics_METRICTYPES_convertToJSON is not currently used,
+// since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
+//
+static cJSON *pinsAnalytics_METRICTYPES_convertToJSON(pinterest_rest_api_pinsAnalytics_metric_types_e METRICTYPES) {
+    cJSON *item = cJSON_CreateObject();
+    return item;
+    fail:
+    cJSON_Delete(item);
+    return NULL;
+}
+
+// Function pinsAnalytics_METRICTYPES_parseFromJSON is not currently used,
+// since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
+//
+static pinterest_rest_api_pinsAnalytics_metric_types_e pinsAnalytics_METRICTYPES_parseFromJSON(cJSON* METRICTYPESJSON) {
+    pinterest_rest_api_pinsAnalytics_metric_types_e METRICTYPESVariable = 0;
+    return METRICTYPESVariable;
 end:
     return 0;
 }

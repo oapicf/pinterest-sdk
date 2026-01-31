@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_feed_credentials
 import model_catalogs_feed_processing_schedule
@@ -19,11 +21,53 @@ import model_nullable_currency
 
 type CatalogsCreativeAssetsFeedsUpdateRequest* = object
   ## Request object for updating a feed.
-  defaultCurrency*: NullableCurrency
-  name*: string ## A human-friendly name associated to a given feed.
-  format*: CatalogsFormat
-  credentials*: CatalogsFeedCredentials
-  location*: string ## The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
-  preferredProcessingSchedule*: CatalogsFeedProcessingSchedule
-  status*: CatalogsStatus
+  defaultCurrency*: Option[NullableCurrency]
+  name*: Option[string] ## A human-friendly name associated to a given feed.
+  format*: Option[CatalogsFormat]
+  credentials*: Option[CatalogsFeedCredentials]
+  location*: Option[string] ## The URL where a feed is available for download. This URL is what Pinterest will use to download a feed for processing.
+  preferredProcessingSchedule*: Option[CatalogsFeedProcessingSchedule]
+  status*: Option[CatalogsStatus]
   catalogType*: CatalogsType
+
+
+# Custom JSON deserialization for CatalogsCreativeAssetsFeedsUpdateRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsFeedsUpdateRequest]): CatalogsCreativeAssetsFeedsUpdateRequest =
+  result = CatalogsCreativeAssetsFeedsUpdateRequest()
+  if node.kind == JObject:
+    if node.hasKey("default_currency") and node["default_currency"].kind != JNull:
+      result.defaultCurrency = some(to(node["default_currency"], typeof(result.defaultCurrency.get())))
+    if node.hasKey("name") and node["name"].kind != JNull:
+      result.name = some(to(node["name"], typeof(result.name.get())))
+    if node.hasKey("format") and node["format"].kind != JNull:
+      result.format = some(to(node["format"], typeof(result.format.get())))
+    if node.hasKey("credentials") and node["credentials"].kind != JNull:
+      result.credentials = some(to(node["credentials"], typeof(result.credentials.get())))
+    if node.hasKey("location") and node["location"].kind != JNull:
+      result.location = some(to(node["location"], typeof(result.location.get())))
+    if node.hasKey("preferred_processing_schedule") and node["preferred_processing_schedule"].kind != JNull:
+      result.preferredProcessingSchedule = some(to(node["preferred_processing_schedule"], typeof(result.preferredProcessingSchedule.get())))
+    if node.hasKey("status") and node["status"].kind != JNull:
+      result.status = some(to(node["status"], typeof(result.status.get())))
+    if node.hasKey("catalog_type"):
+      result.catalogType = to(node["catalog_type"], CatalogsType)
+
+# Custom JSON serialization for CatalogsCreativeAssetsFeedsUpdateRequest with custom field names
+proc `%`*(obj: CatalogsCreativeAssetsFeedsUpdateRequest): JsonNode =
+  result = newJObject()
+  if obj.defaultCurrency.isSome():
+    result["default_currency"] = %obj.defaultCurrency.get()
+  if obj.name.isSome():
+    result["name"] = %obj.name.get()
+  if obj.format.isSome():
+    result["format"] = %obj.format.get()
+  if obj.credentials.isSome():
+    result["credentials"] = %obj.credentials.get()
+  if obj.location.isSome():
+    result["location"] = %obj.location.get()
+  if obj.preferredProcessingSchedule.isSome():
+    result["preferred_processing_schedule"] = %obj.preferredProcessingSchedule.get()
+  if obj.status.isSome():
+    result["status"] = %obj.status.get()
+  result["catalog_type"] = %obj.catalogType
+

@@ -38,10 +38,10 @@ pub enum LeadsExportSlashGetError {
 /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Create an export of leads collected from a lead ad. This returns a lead_export_id  token that you can use to download the export when it is ready.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
 pub async fn leads_export_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, leads_export_create_request: models::LeadsExportCreateRequest) -> Result<models::LeadsExportCreateResponse, Error<LeadsExportSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_leads_export_create_request = leads_export_create_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_leads_export_create_request = leads_export_create_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/leads_export", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/leads_export", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -50,7 +50,7 @@ pub async fn leads_export_slash_create(configuration: &configuration::Configurat
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_leads_export_create_request);
+    req_builder = req_builder.json(&p_body_leads_export_create_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -80,10 +80,10 @@ pub async fn leads_export_slash_create(configuration: &configuration::Configurat
 /// <strong>This feature is currently in beta and not available to all apps, if you're interested in joining the beta, please reach out to your Pinterest account manager.</strong>  Get the export of leads collected from a lead ad. This returns a URL to a list of lead export given a lead_export_id token returned from the create a lead export call. You can use the URL to download the report.  Note: Lead ad data will be available up to 30 days after the lead has been submitted.  For more, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/lead-ads\">Lead ads</a>.
 pub async fn leads_export_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, leads_export_id: &str) -> Result<models::LeadsExportResponseData, Error<LeadsExportSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_leads_export_id = leads_export_id;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_leads_export_id = leads_export_id;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), leads_export_id=crate::apis::urlencode(p_leads_export_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), leads_export_id=crate::apis::urlencode(p_path_leads_export_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {

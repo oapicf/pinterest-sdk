@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * SSIOAccountAddress
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class SSIOAccountAddress {
 
   private @Nullable String display;
@@ -30,7 +30,7 @@ public class SSIOAccountAddress {
 
   private @Nullable String orderLegalEntity;
 
-  public SSIOAccountAddress display(String display) {
+  public SSIOAccountAddress display(@Nullable String display) {
     this.display = display;
     return this;
   }
@@ -42,15 +42,15 @@ public class SSIOAccountAddress {
   
   @Schema(name = "display", example = "475 Brannan Street, San Francisco, CA 94103", description = "Address display", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("display")
-  public String getDisplay() {
+  public @Nullable String getDisplay() {
     return display;
   }
 
-  public void setDisplay(String display) {
+  public void setDisplay(@Nullable String display) {
     this.display = display;
   }
 
-  public SSIOAccountAddress purpose(String purpose) {
+  public SSIOAccountAddress purpose(@Nullable String purpose) {
     this.purpose = purpose;
     return this;
   }
@@ -62,15 +62,15 @@ public class SSIOAccountAddress {
   
   @Schema(name = "purpose", example = "Billing", description = "Purpose for which the address is used, usually Billing or Businness", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("purpose")
-  public String getPurpose() {
+  public @Nullable String getPurpose() {
     return purpose;
   }
 
-  public void setPurpose(String purpose) {
+  public void setPurpose(@Nullable String purpose) {
     this.purpose = purpose;
   }
 
-  public SSIOAccountAddress addressId(String addressId) {
+  public SSIOAccountAddress addressId(@Nullable String addressId) {
     this.addressId = addressId;
     return this;
   }
@@ -82,15 +82,15 @@ public class SSIOAccountAddress {
   
   @Schema(name = "address_id", example = "a1C1N000004MUrLUAW", description = "Salesforce id for address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("address_id")
-  public String getAddressId() {
+  public @Nullable String getAddressId() {
     return addressId;
   }
 
-  public void setAddressId(String addressId) {
+  public void setAddressId(@Nullable String addressId) {
     this.addressId = addressId;
   }
 
-  public SSIOAccountAddress orderLegalEntity(String orderLegalEntity) {
+  public SSIOAccountAddress orderLegalEntity(@Nullable String orderLegalEntity) {
     this.orderLegalEntity = orderLegalEntity;
     return this;
   }
@@ -102,11 +102,11 @@ public class SSIOAccountAddress {
   
   @Schema(name = "order_legal_entity", example = "PIN US OU", description = "Legal entity for this insertion order", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("order_legal_entity")
-  public String getOrderLegalEntity() {
+  public @Nullable String getOrderLegalEntity() {
     return orderLegalEntity;
   }
 
-  public void setOrderLegalEntity(String orderLegalEntity) {
+  public void setOrderLegalEntity(@Nullable String orderLegalEntity) {
     this.orderLegalEntity = orderLegalEntity;
   }
 

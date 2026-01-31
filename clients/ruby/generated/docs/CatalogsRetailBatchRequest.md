@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **catalog_type** | **String** |  |  |
 | **country** | [**Country**](Country.md) |  |  |
-| **language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  |  |
+| **language** | **String** | We recommend using the CatalogsLocale values. |  |
 | **items** | [**Array&lt;CatalogsRetailBatchRequestItemsInner&gt;**](CatalogsRetailBatchRequestItemsInner.md) | Array with catalogs item operations |  |
 
 ## Example

@@ -15,7 +15,6 @@ package org.openapitools.model;
 import java.util.Objects;
 import java.util.Arrays;
 import org.openapitools.model.BaseInviteDataResponseInviteData;
-import org.openapitools.model.BusinessAccessUserSummary;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.validation.constraints.*;
@@ -25,30 +24,20 @@ import javax.annotation.Generated;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
+ * InviteBusinessRoleBinding
  */
-@Schema(name = "InviteBusinessRoleBinding", description = "An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.")
 @JsonPropertyOrder({
-  InviteBusinessRoleBinding.JSON_PROPERTY_CREATED_BY_BUSINESS_ID,
-  InviteBusinessRoleBinding.JSON_PROPERTY_CREATED_BY_USER_ID,
-  InviteBusinessRoleBinding.JSON_PROPERTY_USER,
   InviteBusinessRoleBinding.JSON_PROPERTY_ID,
   InviteBusinessRoleBinding.JSON_PROPERTY_INVITE_DATA,
-  InviteBusinessRoleBinding.JSON_PROPERTY_IS_RECEIVED_INVITE
+  InviteBusinessRoleBinding.JSON_PROPERTY_IS_RECEIVED_INVITE,
+  InviteBusinessRoleBinding.JSON_PROPERTY_USER,
+  InviteBusinessRoleBinding.JSON_PROPERTY_CREATED_BY_BUSINESS_ID,
+  InviteBusinessRoleBinding.JSON_PROPERTY_CREATED_BY_USER_ID
 })
 @JsonTypeName("InviteBusinessRoleBinding")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-01-26T05:36:06.173633742Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class InviteBusinessRoleBinding {
-    public static final String JSON_PROPERTY_CREATED_BY_BUSINESS_ID = "created_by_business_id";
-    private String createdByBusinessId;
-
-    public static final String JSON_PROPERTY_CREATED_BY_USER_ID = "created_by_user_id";
-    private String createdByUserId;
-
-    public static final String JSON_PROPERTY_USER = "user";
-    private BusinessAccessUserSummary user;
-
     public static final String JSON_PROPERTY_ID = "id";
     private String id;
 
@@ -58,77 +47,16 @@ public class InviteBusinessRoleBinding {
     public static final String JSON_PROPERTY_IS_RECEIVED_INVITE = "is_received_invite";
     private Boolean isReceivedInvite;
 
+    public static final String JSON_PROPERTY_USER = "user";
+    private Object user;
+
+    public static final String JSON_PROPERTY_CREATED_BY_BUSINESS_ID = "created_by_business_id";
+    private String createdByBusinessId;
+
+    public static final String JSON_PROPERTY_CREATED_BY_USER_ID = "created_by_user_id";
+    private String createdByUserId;
+
     public InviteBusinessRoleBinding() {
-    }
-
-    public InviteBusinessRoleBinding createdByBusinessId(String createdByBusinessId) {
-        this.createdByBusinessId = createdByBusinessId;
-        return this;
-    }
-
-    /**
-     * Unique identifier for the business that created the invite/request.
-     * @return createdByBusinessId
-     */
-    @Nullable
-    @Schema(name = "created_by_business_id", example = "1234567890123", description = "Unique identifier for the business that created the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty(JSON_PROPERTY_CREATED_BY_BUSINESS_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public String getCreatedByBusinessId() {
-        return createdByBusinessId;
-    }
-
-    @JsonProperty(JSON_PROPERTY_CREATED_BY_BUSINESS_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreatedByBusinessId(String createdByBusinessId) {
-        this.createdByBusinessId = createdByBusinessId;
-    }
-
-    public InviteBusinessRoleBinding createdByUserId(String createdByUserId) {
-        this.createdByUserId = createdByUserId;
-        return this;
-    }
-
-    /**
-     * Unique identifier for the user that created the invite/request.
-     * @return createdByUserId
-     */
-    @Nullable
-    @Schema(name = "created_by_user_id", example = "1234567890123", description = "Unique identifier for the user that created the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty(JSON_PROPERTY_CREATED_BY_USER_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public String getCreatedByUserId() {
-        return createdByUserId;
-    }
-
-    @JsonProperty(JSON_PROPERTY_CREATED_BY_USER_ID)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setCreatedByUserId(String createdByUserId) {
-        this.createdByUserId = createdByUserId;
-    }
-
-    public InviteBusinessRoleBinding user(BusinessAccessUserSummary user) {
-        this.user = user;
-        return this;
-    }
-
-    /**
-     * Metadata for the user that updated the invite/request.
-     * @return user
-     */
-    @Valid
-    @Nullable
-    @Schema(name = "user", description = "Metadata for the user that updated the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty(JSON_PROPERTY_USER)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public BusinessAccessUserSummary getUser() {
-        return user;
-    }
-
-    @JsonProperty(JSON_PROPERTY_USER)
-    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public void setUser(BusinessAccessUserSummary user) {
-        this.user = user;
     }
 
     public InviteBusinessRoleBinding id(String id) {
@@ -202,6 +130,75 @@ public class InviteBusinessRoleBinding {
         this.isReceivedInvite = isReceivedInvite;
     }
 
+    public InviteBusinessRoleBinding user(Object user) {
+        this.user = user;
+        return this;
+    }
+
+    /**
+     * Metadata for the user that updated the invite/request.
+     * @return user
+     */
+    @Nullable
+    @Schema(name = "user", description = "Metadata for the user that updated the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty(JSON_PROPERTY_USER)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public Object getUser() {
+        return user;
+    }
+
+    @JsonProperty(JSON_PROPERTY_USER)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setUser(Object user) {
+        this.user = user;
+    }
+
+    public InviteBusinessRoleBinding createdByBusinessId(String createdByBusinessId) {
+        this.createdByBusinessId = createdByBusinessId;
+        return this;
+    }
+
+    /**
+     * Unique identifier for the business that created the invite/request.
+     * @return createdByBusinessId
+     */
+    @Nullable
+    @Schema(name = "created_by_business_id", example = "1234567890123", description = "Unique identifier for the business that created the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty(JSON_PROPERTY_CREATED_BY_BUSINESS_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public String getCreatedByBusinessId() {
+        return createdByBusinessId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREATED_BY_BUSINESS_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCreatedByBusinessId(String createdByBusinessId) {
+        this.createdByBusinessId = createdByBusinessId;
+    }
+
+    public InviteBusinessRoleBinding createdByUserId(String createdByUserId) {
+        this.createdByUserId = createdByUserId;
+        return this;
+    }
+
+    /**
+     * Unique identifier for the user that created the invite/request.
+     * @return createdByUserId
+     */
+    @Nullable
+    @Schema(name = "created_by_user_id", example = "1234567890123", description = "Unique identifier for the user that created the invite/request.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty(JSON_PROPERTY_CREATED_BY_USER_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public String getCreatedByUserId() {
+        return createdByUserId;
+    }
+
+    @JsonProperty(JSON_PROPERTY_CREATED_BY_USER_ID)
+    @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+    public void setCreatedByUserId(String createdByUserId) {
+        this.createdByUserId = createdByUserId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -211,29 +208,29 @@ public class InviteBusinessRoleBinding {
             return false;
         }
         InviteBusinessRoleBinding inviteBusinessRoleBinding = (InviteBusinessRoleBinding) o;
-        return Objects.equals(this.createdByBusinessId, inviteBusinessRoleBinding.createdByBusinessId) &&
-            Objects.equals(this.createdByUserId, inviteBusinessRoleBinding.createdByUserId) &&
-            Objects.equals(this.user, inviteBusinessRoleBinding.user) &&
-            Objects.equals(this.id, inviteBusinessRoleBinding.id) &&
+        return Objects.equals(this.id, inviteBusinessRoleBinding.id) &&
             Objects.equals(this.inviteData, inviteBusinessRoleBinding.inviteData) &&
-            Objects.equals(this.isReceivedInvite, inviteBusinessRoleBinding.isReceivedInvite);
+            Objects.equals(this.isReceivedInvite, inviteBusinessRoleBinding.isReceivedInvite) &&
+            Objects.equals(this.user, inviteBusinessRoleBinding.user) &&
+            Objects.equals(this.createdByBusinessId, inviteBusinessRoleBinding.createdByBusinessId) &&
+            Objects.equals(this.createdByUserId, inviteBusinessRoleBinding.createdByUserId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(createdByBusinessId, createdByUserId, user, id, inviteData, isReceivedInvite);
+        return Objects.hash(id, inviteData, isReceivedInvite, user, createdByBusinessId, createdByUserId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class InviteBusinessRoleBinding {\n");
-        sb.append("    createdByBusinessId: ").append(toIndentedString(createdByBusinessId)).append("\n");
-        sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
-        sb.append("    user: ").append(toIndentedString(user)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    inviteData: ").append(toIndentedString(inviteData)).append("\n");
         sb.append("    isReceivedInvite: ").append(toIndentedString(isReceivedInvite)).append("\n");
+        sb.append("    user: ").append(toIndentedString(user)).append("\n");
+        sb.append("    createdByBusinessId: ").append(toIndentedString(createdByBusinessId)).append("\n");
+        sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
         sb.append("}");
         return sb.toString();
     }

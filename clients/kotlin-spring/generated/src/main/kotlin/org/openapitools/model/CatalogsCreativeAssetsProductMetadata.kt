@@ -29,7 +29,7 @@ data class CatalogsCreativeAssetsProductMetadata(
     @field:Valid
     @Schema(example = "null", required = true, description = "")
     @get:JsonProperty("visibility", required = true) val visibility: CreativeAssetsVisibilityType
-    ) {
+) {
 
 }
 

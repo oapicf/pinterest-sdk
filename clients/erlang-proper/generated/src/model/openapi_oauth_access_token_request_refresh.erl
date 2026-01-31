@@ -9,10 +9,10 @@
 -export_type([openapi_oauth_access_token_request_refresh/0]).
 
 -type openapi_oauth_access_token_request_refresh() ::
-  [ {'grant_type', binary() }
-  | {'refresh_token', binary() }
+  [ {'refresh_token', binary() }
   | {'scope', binary() }
   | {'refresh_on', boolean() }
+  | {'grant_type', binary() }
   ].
 
 
@@ -20,10 +20,10 @@ openapi_oauth_access_token_request_refresh() ->
     openapi_oauth_access_token_request_refresh([]).
 
 openapi_oauth_access_token_request_refresh(Fields) ->
-  Default = [ {'grant_type', elements([<<"authorization_code">>, <<"refresh_token">>, <<"client_credentials">>]) }
-            , {'refresh_token', binary() }
+  Default = [ {'refresh_token', binary() }
             , {'scope', binary() }
             , {'refresh_on', boolean() }
+            , {'grant_type', elements([<<"authorization_code">>, <<"refresh_token">>, <<"client_credentials">>]) }
             ],
   lists:ukeymerge(1, lists:sort(Fields), lists:sort(Default)).
 

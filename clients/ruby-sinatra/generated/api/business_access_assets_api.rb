@@ -388,7 +388,7 @@ MyApp.add_route('GET', '/v5/businesses/{business_id}/partners/{partner_id}/asset
       "name" => "partner_type",
       "description" => "Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset.",
       "dataType" => "PartnerType",
-      "allowableValues" => "",
+      "allowableValues" => "[INTERNAL, EXTERNAL]",
       "paramType" => "query",
     },
     {

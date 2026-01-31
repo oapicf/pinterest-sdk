@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "UpdatePartnerAssetsResult", description = "An object containing the permissions a business partner has on the asset.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class UpdatePartnerAssetsResult {
 
   private @Nullable String assetId;
@@ -35,7 +35,7 @@ public class UpdatePartnerAssetsResult {
   @Valid
   private List<String> permissions = new ArrayList<>();
 
-  public UpdatePartnerAssetsResult assetId(String assetId) {
+  public UpdatePartnerAssetsResult assetId(@Nullable String assetId) {
     this.assetId = assetId;
     return this;
   }
@@ -47,15 +47,15 @@ public class UpdatePartnerAssetsResult {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "asset_id", example = "549755885175", description = "Unique identifier of a business asset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_id")
-  public String getAssetId() {
+  public @Nullable String getAssetId() {
     return assetId;
   }
 
-  public void setAssetId(String assetId) {
+  public void setAssetId(@Nullable String assetId) {
     this.assetId = assetId;
   }
 
-  public UpdatePartnerAssetsResult assetType(String assetType) {
+  public UpdatePartnerAssetsResult assetType(@Nullable String assetType) {
     this.assetType = assetType;
     return this;
   }
@@ -67,15 +67,15 @@ public class UpdatePartnerAssetsResult {
   
   @Schema(name = "asset_type", example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_type")
-  public String getAssetType() {
+  public @Nullable String getAssetType() {
     return assetType;
   }
 
-  public void setAssetType(String assetType) {
+  public void setAssetType(@Nullable String assetType) {
     this.assetType = assetType;
   }
 
-  public UpdatePartnerAssetsResult partnerId(String partnerId) {
+  public UpdatePartnerAssetsResult partnerId(@Nullable String partnerId) {
     this.partnerId = partnerId;
     return this;
   }
@@ -87,11 +87,11 @@ public class UpdatePartnerAssetsResult {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "partner_id", example = "140943737684417", description = "Unique identifier of a business partner.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("partner_id")
-  public String getPartnerId() {
+  public @Nullable String getPartnerId() {
     return partnerId;
   }
 
-  public void setPartnerId(String partnerId) {
+  public void setPartnerId(@Nullable String partnerId) {
     this.partnerId = partnerId;
   }
 

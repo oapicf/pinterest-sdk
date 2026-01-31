@@ -138,12 +138,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                data = new Option<CampaignCreateResponseData?>(JsonSerializer.Deserialize<CampaignCreateResponseData>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            data = new Option<CampaignCreateResponseData?>(JsonSerializer.Deserialize<CampaignCreateResponseData>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "exceptions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exceptions = new Option<List<Exception>?>(JsonSerializer.Deserialize<List<Exception>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            exceptions = new Option<List<Exception>?>(JsonSerializer.Deserialize<List<Exception>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

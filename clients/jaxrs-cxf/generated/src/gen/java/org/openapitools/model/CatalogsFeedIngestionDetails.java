@@ -14,15 +14,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CatalogsFeedIngestionDetails  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedIngestionErrors errors;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedIngestionInfo info;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsFeedIngestionWarnings warnings;
  /**
    * Get errors

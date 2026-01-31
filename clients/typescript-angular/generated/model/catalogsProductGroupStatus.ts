@@ -9,12 +9,9 @@
  */
 
 
-export type CatalogsProductGroupStatus = 'ACTIVE' | 'INACTIVE';
-
 export const CatalogsProductGroupStatus = {
-
-    Active: 'ACTIVE' as CatalogsProductGroupStatus,
-
-    Inactive: 'INACTIVE' as CatalogsProductGroupStatus
-};
+    Active: 'ACTIVE',
+    Inactive: 'INACTIVE'
+} as const;
+export type CatalogsProductGroupStatus = typeof CatalogsProductGroupStatus[keyof typeof CatalogsProductGroupStatus];
 

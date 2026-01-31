@@ -13,16 +13,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OrderLineResponse  {
   
-  @ApiModelProperty(value = "Error list if update(s) fail.")
  /**
-   * Error list if update(s) fail.
-  **/
+  * Error list if update(s) fail.
+  */
+  @ApiModelProperty(value = "Error list if update(s) fail.")
+
   private List<OrderLineError> errors = new ArrayList<>();
 
-  @ApiModelProperty(value = "Order Line object array.")
  /**
-   * Order Line object array.
-  **/
+  * Order Line object array.
+  */
+  @ApiModelProperty(value = "Order Line object array.")
+
   private List<OrderLine> orderLine = new ArrayList<>();
  /**
    * Error list if update(s) fail.

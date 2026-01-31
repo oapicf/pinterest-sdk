@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | [**Country**](Country.md) |  | 
-**language** | [**CatalogsItemsRequestLanguage**](CatalogsItemsRequestLanguage.md) |  | 
+**language** | **String** | We recommend using the CatalogsLocale values. | 
 **operation** | [**BatchOperation**](BatchOperation.md) |  | 
 **items** | [ItemCreateBatchRecord] | Array with catalogs items | 
 

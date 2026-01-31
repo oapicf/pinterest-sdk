@@ -33,7 +33,7 @@ import javax.validation.Valid;
   CatalogsUpdateCreativeAssetsItem.JSON_PROPERTY_OPERATION,
   CatalogsUpdateCreativeAssetsItem.JSON_PROPERTY_ATTRIBUTES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsUpdateCreativeAssetsItem   {
   public static final String JSON_PROPERTY_CREATIVE_ASSETS_ID = "creative_assets_id";
   @JsonProperty(JSON_PROPERTY_CREATIVE_ASSETS_ID)
@@ -51,8 +51,12 @@ public class CatalogsUpdateCreativeAssetsItem   {
       this.value = value;
     }
 
-    @Override
     @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
     public String toString() {
       return String.valueOf(value);
     }

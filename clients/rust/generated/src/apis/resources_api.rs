@@ -105,13 +105,13 @@ pub async fn ad_account_countries_slash_get(configuration: &configuration::Confi
 /// Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The `display_name` attribute will match how the metric is named in our native tools like Ads Manager. See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <a href='/docs/api-features/ads-reporting/'>Ads Analytics</a> for more information.
 pub async fn delivery_metrics_slash_get(configuration: &configuration::Configuration, report_type: Option<&str>) -> Result<models::DeliveryMetricsResponse, Error<DeliveryMetricsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_report_type = report_type;
+    let p_query_report_type = report_type;
 
     let uri_str = format!("{}/resources/delivery_metrics", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_report_type {
-        req_builder = req_builder.query(&[("report_type", &param_value.to_string())]);
+    if let Some(ref param_value) = p_query_report_type {
+        req_builder = req_builder.query(&[("report_type", &serde_json::to_string(param_value)?)]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -148,9 +148,9 @@ pub async fn delivery_metrics_slash_get(configuration: &configuration::Configura
 /// <p>Get details of a specific interest given interest ID.</p> <p>Click <a href=\"https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid=118370875\" target=\"_blank\">here</a> for a spreadsheet listing interests and their IDs.</p>
 pub async fn interest_targeting_options_slash_get(configuration: &configuration::Configuration, interest_id: &str) -> Result<models::SingleInterestTargetingOptionResponse, Error<InterestTargetingOptionsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_interest_id = interest_id;
+    let p_path_interest_id = interest_id;
 
-    let uri_str = format!("{}/resources/targeting/interests/{interest_id}", configuration.base_path, interest_id=crate::apis::urlencode(p_interest_id));
+    let uri_str = format!("{}/resources/targeting/interests/{interest_id}", configuration.base_path, interest_id=crate::apis::urlencode(p_path_interest_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -215,12 +215,12 @@ pub async fn lead_form_questions_slash_get(configuration: &configuration::Config
 /// Learn whether conversion or non-conversion metrics are finalized and ready to query.
 pub async fn metrics_ready_state_slash_get(configuration: &configuration::Configuration, date: &str) -> Result<models::BookClosedResponse, Error<MetricsReadyStateSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_date = date;
+    let p_query_date = date;
 
     let uri_str = format!("{}/resources/metrics_ready_state", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("date", &p_date.to_string())]);
+    req_builder = req_builder.query(&[("date", &p_query_date.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -256,25 +256,25 @@ pub async fn metrics_ready_state_slash_get(configuration: &configuration::Config
 /// <p>You can use targeting values in ads placement to define your intended audience. </p> <p>Targeting metrics are organized around targeting specifications.</p> <p>For more information on ads targeting, see <a class=\"reference external\" href=\"https://help.pinterest.com/en/business/article/audience-targeting\" target=\"_blank\">Audience targeting</a>.</p> <p><b>Sample return:</b></p> <pre class=\"literal-block\"> [{&quot;36313&quot;: &quot;Australia: Moreton Bay - North&quot;, &quot;124735&quot;: &quot;Canada: North Battleford&quot;, &quot;36109&quot;: &quot;Australia: Murray&quot;, &quot;36108&quot;: &quot;Australia: Mid North Coast&quot;, &quot;36101&quot;: &quot;Australia: Capital Region&quot;, &quot;811&quot;: &quot;U.S.: Reno&quot;, &quot;36103&quot;: &quot;Australia: Central West&quot;, &quot;36102&quot;: &quot;Australia: Central Coast&quot;, &quot;36105&quot;: &quot;Australia: Far West and Orana&quot;, &quot;36104&quot;: &quot;Australia: Coffs Harbour - Grafton&quot;, &quot;36107&quot;: &quot;Australia: Illawarra&quot;, &quot;36106&quot;: &quot;Australia: Hunter Valley Exc Newcastle&quot;, &quot;554017&quot;: &quot;New Zealand: Wanganui&quot;, &quot;554016&quot;: &quot;New Zealand: Marlborough&quot;, &quot;554015&quot;: &quot;New Zealand: Gisborne&quot;, &quot;554014&quot;: &quot;New Zealand: Tararua&quot;, &quot;554013&quot;: &quot;New Zealand: Invercargill&quot;, &quot;GR&quot;: &quot;Greece&quot;, &quot;554011&quot;: &quot;New Zealand: Whangarei&quot;, &quot;554010&quot;: &quot;New Zealand: Far North&quot;, &quot;717&quot;: &quot;U.S.: Quincy-Hannibal-Keokuk&quot;, &quot;716&quot;: &quot;U.S.: Baton Rouge&quot;,...}] </pre>
 pub async fn targeting_options_slash_get(configuration: &configuration::Configuration, targeting_type: &str, client_id: Option<&str>, oauth_signature: Option<&str>, timestamp: Option<&str>, ad_account_id: Option<&str>) -> Result<Vec<serde_json::Value>, Error<TargetingOptionsSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_targeting_type = targeting_type;
-    let p_client_id = client_id;
-    let p_oauth_signature = oauth_signature;
-    let p_timestamp = timestamp;
-    let p_ad_account_id = ad_account_id;
+    let p_path_targeting_type = targeting_type;
+    let p_query_client_id = client_id;
+    let p_query_oauth_signature = oauth_signature;
+    let p_query_timestamp = timestamp;
+    let p_query_ad_account_id = ad_account_id;
 
-    let uri_str = format!("{}/resources/targeting/{targeting_type}", configuration.base_path, targeting_type=crate::apis::urlencode(p_targeting_type));
+    let uri_str = format!("{}/resources/targeting/{targeting_type}", configuration.base_path, targeting_type=crate::apis::urlencode(p_path_targeting_type));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_client_id {
+    if let Some(ref param_value) = p_query_client_id {
         req_builder = req_builder.query(&[("client_id", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_oauth_signature {
+    if let Some(ref param_value) = p_query_oauth_signature {
         req_builder = req_builder.query(&[("oauth_signature", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_timestamp {
+    if let Some(ref param_value) = p_query_timestamp {
         req_builder = req_builder.query(&[("timestamp", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_ad_account_id {
+    if let Some(ref param_value) = p_query_ad_account_id {
         req_builder = req_builder.query(&[("ad_account_id", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {

@@ -9,7 +9,53 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type BulkReportingJobStatus* = object
-  ## Possible status for a bulk reporting job
+type BulkReportingJobStatus* {.pure.} = enum
+  DOESNOTEXIST
+  FINISHED
+  INPROGRESS
+  EXPIRED
+  FAILED
+  CANCELLED
+
+func `%`*(v: BulkReportingJobStatus): JsonNode =
+  result = case v:
+    of BulkReportingJobStatus.DOESNOTEXIST: %"DOES_NOT_EXIST"
+    of BulkReportingJobStatus.FINISHED: %"FINISHED"
+    of BulkReportingJobStatus.INPROGRESS: %"IN_PROGRESS"
+    of BulkReportingJobStatus.EXPIRED: %"EXPIRED"
+    of BulkReportingJobStatus.FAILED: %"FAILED"
+    of BulkReportingJobStatus.CANCELLED: %"CANCELLED"
+
+func `$`*(v: BulkReportingJobStatus): string =
+  result = case v:
+    of BulkReportingJobStatus.DOESNOTEXIST: $("DOES_NOT_EXIST")
+    of BulkReportingJobStatus.FINISHED: $("FINISHED")
+    of BulkReportingJobStatus.INPROGRESS: $("IN_PROGRESS")
+    of BulkReportingJobStatus.EXPIRED: $("EXPIRED")
+    of BulkReportingJobStatus.FAILED: $("FAILED")
+    of BulkReportingJobStatus.CANCELLED: $("CANCELLED")
+
+proc to*(node: JsonNode, T: typedesc[BulkReportingJobStatus]): BulkReportingJobStatus =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum BulkReportingJobStatus, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("DOES_NOT_EXIST"):
+    return BulkReportingJobStatus.DOESNOTEXIST
+  of $("FINISHED"):
+    return BulkReportingJobStatus.FINISHED
+  of $("IN_PROGRESS"):
+    return BulkReportingJobStatus.INPROGRESS
+  of $("EXPIRED"):
+    return BulkReportingJobStatus.EXPIRED
+  of $("FAILED"):
+    return BulkReportingJobStatus.FAILED
+  of $("CANCELLED"):
+    return BulkReportingJobStatus.CANCELLED
+  else:
+    raise newException(ValueError, "Invalid enum value for BulkReportingJobStatus: " & strVal)
+

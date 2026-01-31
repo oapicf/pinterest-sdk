@@ -22,7 +22,7 @@ feature -- Test routines
             l_pin_ids: LIST [STRING_32]
             l_start_date: DATE
             l_end_date: DATE
-            l_metric_types: LIST [PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER]
+            l_metric_types: LIST [STRING_32]
             l_app_types: STRING_32
             l_ad_account_id: STRING_32
         do
@@ -30,7 +30,7 @@ feature -- Test routines
             -- create {ARRAYED_LIST [STRING_32]} l_pin_ids.make (2)
             -- l_start_date
             -- l_end_date
-            -- create {ARRAYED_LIST [PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER]} l_metric_types.make (2)
+            -- create {ARRAYED_LIST [STRING_32]} l_metric_types.make (2)
 
             -- l_response := api.multi_pins_analytics(l_pin_ids, l_start_date, l_end_date, l_metric_types, l_app_types, l_ad_account_id)
             assert ("not_implemented", False)
@@ -45,7 +45,7 @@ feature -- Test routines
             l_pin_id: STRING_32
             l_start_date: DATE
             l_end_date: DATE
-            l_metric_types: LIST [PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER]
+            l_metric_types: LIST [STRING_32]
             l_app_types: STRING_32
             l_split_field: STRING_32
             l_ad_account_id: STRING_32
@@ -54,7 +54,7 @@ feature -- Test routines
             -- l_pin_id
             -- l_start_date
             -- l_end_date
-            -- create {ARRAYED_LIST [PINS_ANALYTICS_METRIC_TYPES_PARAMETER_INNER]} l_metric_types.make (2)
+            -- create {ARRAYED_LIST [STRING_32]} l_metric_types.make (2)
 
             -- l_response := api.pins_analytics(l_pin_id, l_start_date, l_end_date, l_metric_types, l_app_types, l_split_field, l_ad_account_id)
             assert ("not_implemented", False)

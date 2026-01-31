@@ -17,8 +17,11 @@ import org.openapitools.model.TargetingAdvertiserCountry;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2025-05-10T05:38:59.250229241Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-01-26T05:35:48.681345349Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateMMMReportRequest   {
+  @JsonProperty("countries")
+  private List<TargetingAdvertiserCountry> countries = null;
+
   @JsonProperty("report_name")
   private String reportName;
 
@@ -102,8 +105,23 @@ public class CreateMMMReportRequest   {
   @JsonProperty("columns")
   private List<MMMReportingColumn> columns = new ArrayList<>();
 
+  /**
+   * A List of countries for filtering
+   **/
+  public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "A List of countries for filtering")
   @JsonProperty("countries")
-  private List<TargetingAdvertiserCountry> countries = null;
+  public List<TargetingAdvertiserCountry> getCountries() {
+    return countries;
+  }
+  public void setCountries(List<TargetingAdvertiserCountry> countries) {
+    this.countries = countries;
+  }
 
   /**
    * Name of the Marketing Mix Modeling (MMM) report
@@ -231,24 +249,6 @@ public class CreateMMMReportRequest   {
     this.columns = columns;
   }
 
-  /**
-   * A List of countries for filtering
-   **/
-  public CreateMMMReportRequest countries(List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "A List of countries for filtering")
-  @JsonProperty("countries")
-  public List<TargetingAdvertiserCountry> getCountries() {
-    return countries;
-  }
-  public void setCountries(List<TargetingAdvertiserCountry> countries) {
-    this.countries = countries;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -259,19 +259,19 @@ public class CreateMMMReportRequest   {
       return false;
     }
     CreateMMMReportRequest createMMMReportRequest = (CreateMMMReportRequest) o;
-    return Objects.equals(reportName, createMMMReportRequest.reportName) &&
+    return Objects.equals(countries, createMMMReportRequest.countries) &&
+        Objects.equals(reportName, createMMMReportRequest.reportName) &&
         Objects.equals(startDate, createMMMReportRequest.startDate) &&
         Objects.equals(endDate, createMMMReportRequest.endDate) &&
         Objects.equals(granularity, createMMMReportRequest.granularity) &&
         Objects.equals(level, createMMMReportRequest.level) &&
         Objects.equals(targetingTypes, createMMMReportRequest.targetingTypes) &&
-        Objects.equals(columns, createMMMReportRequest.columns) &&
-        Objects.equals(countries, createMMMReportRequest.countries);
+        Objects.equals(columns, createMMMReportRequest.columns);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportName, startDate, endDate, granularity, level, targetingTypes, columns, countries);
+    return Objects.hash(countries, reportName, startDate, endDate, granularity, level, targetingTypes, columns);
   }
 
   @Override
@@ -279,6 +279,7 @@ public class CreateMMMReportRequest   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateMMMReportRequest {\n");
     
+    sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("    reportName: ").append(toIndentedString(reportName)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
@@ -286,7 +287,6 @@ public class CreateMMMReportRequest   {
     sb.append("    level: ").append(toIndentedString(level)).append("\n");
     sb.append("    targetingTypes: ").append(toIndentedString(targetingTypes)).append("\n");
     sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
-    sb.append("    countries: ").append(toIndentedString(countries)).append("\n");
     sb.append("}");
     return sb.toString();
   }

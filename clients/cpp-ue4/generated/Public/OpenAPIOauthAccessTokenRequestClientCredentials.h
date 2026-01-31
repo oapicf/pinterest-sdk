@@ -20,7 +20,7 @@ namespace OpenAPI
 /*
  * OpenAPIOauthAccessTokenRequestClientCredentials
  *
- * A request to receive a client token.
+ * 
  */
 class OPENAPI_API OpenAPIOauthAccessTokenRequestClientCredentials : public Model
 {
@@ -29,6 +29,7 @@ public:
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 	void WriteJson(JsonWriter& Writer) const final;
 
+	FString Scope;
 	enum class GrantTypeEnum
 	{
 		AuthorizationCode,
@@ -39,7 +40,6 @@ public:
 	static FString EnumToString(const GrantTypeEnum& EnumValue);
 	static bool EnumFromString(const FString& EnumAsString, GrantTypeEnum& EnumValue);
 	GrantTypeEnum GrantType;
-	FString Scope;
 };
 
 }

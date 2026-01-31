@@ -1,68 +1,85 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Integration record
- **/
+ * Integration record
+ */
 @ApiModel(description="Integration record")
 
 public class IntegrationRecord  {
   
   @ApiModelProperty(value = "")
+
   private String id;
 
   @ApiModelProperty(value = "")
+
   private String externalBusinessId;
 
   @ApiModelProperty(value = "")
+
   private String connectedMerchantId;
 
   @ApiModelProperty(value = "")
+
   private String connectedUserId;
 
   @ApiModelProperty(value = "")
+
   private String connectedAdvertiserId;
 
   @ApiModelProperty(value = "")
+
   private String connectedLbaId;
 
   @ApiModelProperty(value = "")
+
   private String connectedTagId;
 
   @ApiModelProperty(value = "")
+
   private String partnerAccessToken;
 
   @ApiModelProperty(value = "")
+
   private String partnerRefreshToken;
 
   @ApiModelProperty(value = "")
+
   private String partnerPrimaryEmail;
 
   @ApiModelProperty(value = "")
+
   private Integer partnerAccessTokenExpiry;
 
   @ApiModelProperty(value = "")
+
   private Integer partnerRefreshTokenExpiry;
 
   @ApiModelProperty(value = "")
+
   private String scopes;
 
   @ApiModelProperty(value = "")
+
   private String partnerMetadata;
 
   @ApiModelProperty(value = "")
+
   private String additionalId1;
 
   @ApiModelProperty(value = "")
+
   private Integer createdTime;
 
   @ApiModelProperty(value = "")
+
   private Integer updatedTime;
  /**
    * Get id

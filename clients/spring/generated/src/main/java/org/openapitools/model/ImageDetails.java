@@ -19,12 +19,12 @@ import javax.annotation.Generated;
  * ImageDetails
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ImageDetails {
 
   private Integer width;
 
-  private JsonNullable<@Min(100) Integer> height = JsonNullable.<Integer>undefined();
+  private JsonNullable<@Min(value = 100) Integer> height = JsonNullable.<Integer>undefined();
 
   private String url;
 
@@ -51,7 +51,7 @@ public class ImageDetails {
    * minimum: 100
    * @return width
    */
-  @NotNull @Min(100) 
+  @NotNull @Min(value = 100) 
   @Schema(name = "width", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("width")
   public Integer getWidth() {
@@ -72,10 +72,10 @@ public class ImageDetails {
    * minimum: 100
    * @return height
    */
-  @NotNull @Min(100) 
+  @NotNull @Min(value = 100) 
   @Schema(name = "height", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("height")
-  public JsonNullable<@Min(100) Integer> getHeight() {
+  public JsonNullable<@Min(value = 100) Integer> getHeight() {
     return height;
   }
 

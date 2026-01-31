@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -53,6 +52,15 @@ namespace Org.OpenAPITools.Test.Model
         {
             // TODO uncomment below to test "IsType" AdGroupUpdateRequest
             //Assert.IsType<AdGroupUpdateRequest>(instance);
+        }
+
+        /// <summary>
+        /// Test the property 'Id'
+        /// </summary>
+        [Fact]
+        public void IdTest()
+        {
+            // TODO unit test for the property 'Id'
         }
 
         /// <summary>
@@ -215,15 +223,6 @@ namespace Org.OpenAPITools.Test.Model
         public void TargetingTemplateIdsTest()
         {
             // TODO unit test for the property 'TargetingTemplateIds'
-        }
-
-        /// <summary>
-        /// Test the property 'Id'
-        /// </summary>
-        [Fact]
-        public void IdTest()
-        {
-            // TODO unit test for the property 'Id'
         }
     }
 }

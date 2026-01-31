@@ -50,22 +50,51 @@ func NewSearchAPIController(s SearchAPIServicer, opts ...SearchAPIOption) *Searc
 func (c *SearchAPIController) Routes() Routes {
 	return Routes{
 		"SearchUserBoardsGet": Route{
+			"SearchUserBoardsGet",
 			strings.ToUpper("Get"),
 			"/v5/search/boards",
 			c.SearchUserBoardsGet,
 		},
 		"SearchUserPinsList": Route{
+			"SearchUserPinsList",
 			strings.ToUpper("Get"),
 			"/v5/search/pins",
 			c.SearchUserPinsList,
 		},
 		"SearchPartnerPins": Route{
+			"SearchPartnerPins",
 			strings.ToUpper("Get"),
 			"/v5/search/partner/pins",
 			c.SearchPartnerPins,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the SearchAPIController
+func (c *SearchAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"SearchUserBoardsGet",
+			strings.ToUpper("Get"),
+			"/v5/search/boards",
+			c.SearchUserBoardsGet,
+		},
+		Route{
+			"SearchUserPinsList",
+			strings.ToUpper("Get"),
+			"/v5/search/pins",
+			c.SearchUserPinsList,
+		},
+		Route{
+			"SearchPartnerPins",
+			strings.ToUpper("Get"),
+			"/v5/search/partner/pins",
+			c.SearchPartnerPins,
+		},
+	}
+}
+
+
 
 // SearchUserBoardsGet - Search user's boards
 func (c *SearchAPIController) SearchUserBoardsGet(w http.ResponseWriter, r *http.Request) {

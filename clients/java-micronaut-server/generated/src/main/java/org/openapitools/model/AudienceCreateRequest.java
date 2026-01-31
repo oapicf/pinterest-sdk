@@ -14,8 +14,8 @@ package org.openapitools.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import org.openapitools.model.AudienceCreateRequest1AudienceType;
 import org.openapitools.model.AudienceRule;
+import org.openapitools.model.AudienceType;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.validation.constraints.*;
@@ -35,7 +35,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   AudienceCreateRequest.JSON_PROPERTY_AUDIENCE_TYPE
 })
 @JsonTypeName("AudienceCreateRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2025-05-10T05:39:14.747146068Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-01-26T05:36:06.173633742Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Introspected
 public class AudienceCreateRequest {
     public static final String JSON_PROPERTY_AD_ACCOUNT_ID = "ad_account_id";
@@ -51,9 +51,9 @@ public class AudienceCreateRequest {
     private String description;
 
     public static final String JSON_PROPERTY_AUDIENCE_TYPE = "audience_type";
-    private AudienceCreateRequest1AudienceType audienceType;
+    private AudienceType audienceType;
 
-    public AudienceCreateRequest(String name, AudienceRule rule, AudienceCreateRequest1AudienceType audienceType) {
+    public AudienceCreateRequest(String name, AudienceRule rule, AudienceType audienceType) {
         this.name = name;
         this.rule = rule;
         this.audienceType = audienceType;
@@ -153,27 +153,26 @@ public class AudienceCreateRequest {
         this.description = description;
     }
 
-    public AudienceCreateRequest audienceType(AudienceCreateRequest1AudienceType audienceType) {
+    public AudienceCreateRequest audienceType(AudienceType audienceType) {
         this.audienceType = audienceType;
         return this;
     }
 
     /**
-     * Get audienceType
+     * &lt;a href&#x3D;\&quot;/docs/reference/glossary/#Audience Types\&quot;&gt;Audience types&lt;/a&gt;: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.
      * @return audienceType
      */
-    @Valid
     @NotNull
-    @Schema(name = "audience_type", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "audience_type", description = "<a href=\"/docs/reference/glossary/#Audience Types\">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty(JSON_PROPERTY_AUDIENCE_TYPE)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public AudienceCreateRequest1AudienceType getAudienceType() {
+    public AudienceType getAudienceType() {
         return audienceType;
     }
 
     @JsonProperty(JSON_PROPERTY_AUDIENCE_TYPE)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public void setAudienceType(AudienceCreateRequest1AudienceType audienceType) {
+    public void setAudienceType(AudienceType audienceType) {
         this.audienceType = audienceType;
     }
 

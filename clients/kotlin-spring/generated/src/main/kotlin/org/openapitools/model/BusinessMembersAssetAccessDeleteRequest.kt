@@ -24,7 +24,7 @@ data class BusinessMembersAssetAccessDeleteRequest(
     @get:Size(min=1,max=100) 
     @Schema(example = "null", required = true, description = "List of members asset access to be deleted")
     @get:JsonProperty("accesses", required = true) val accesses: kotlin.collections.List<BusinessMembersAssetAccessDeleteRequestAccessesInner>
-    ) {
+) {
 
 }
 

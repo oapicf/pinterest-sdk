@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ProductGroupPromotionCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupPromotionCreateRequest {
   public static final String SERIALIZED_NAME_AD_GROUP_ID = "ad_group_id";
   @SerializedName(SERIALIZED_NAME_AD_GROUP_ID)
@@ -158,14 +158,10 @@ public class ProductGroupPromotionCreateRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("ad_group_id");
-    openapiFields.add("product_group_promotion");
+    openapiFields = new HashSet<String>(Arrays.asList("ad_group_id", "product_group_promotion"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("ad_group_id");
-    openapiRequiredFields.add("product_group_promotion");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("ad_group_id", "product_group_promotion"));
   }
 
   /**
@@ -177,7 +173,7 @@ public class ProductGroupPromotionCreateRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ProductGroupPromotionCreateRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ProductGroupPromotionCreateRequest is not found in the empty JSON string", ProductGroupPromotionCreateRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ProductGroupPromotionCreateRequest is not found in the empty JSON string", ProductGroupPromotionCreateRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -185,23 +181,23 @@ public class ProductGroupPromotionCreateRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ProductGroupPromotionCreateRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ProductGroupPromotionCreateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ProductGroupPromotionCreateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ProductGroupPromotionCreateRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("ad_group_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_group_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_group_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_group_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_group_id").toString()));
       }
       // ensure the json data is an array
       if (!jsonObj.get("product_group_promotion").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `product_group_promotion` to be an array in the JSON string but got `%s`", jsonObj.get("product_group_promotion").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `product_group_promotion` to be an array in the JSON string but got `%s`", jsonObj.get("product_group_promotion").toString()));
       }
 
       JsonArray jsonArrayproductGroupPromotion = jsonObj.getAsJsonArray("product_group_promotion");

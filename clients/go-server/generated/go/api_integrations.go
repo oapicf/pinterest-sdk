@@ -13,6 +13,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"errors"
+	"io"
 	"net/http"
 	"strings"
 
@@ -53,42 +55,99 @@ func NewIntegrationsAPIController(s IntegrationsAPIServicer, opts ...Integration
 func (c *IntegrationsAPIController) Routes() Routes {
 	return Routes{
 		"IntegrationsCommercePost": Route{
+			"IntegrationsCommercePost",
 			strings.ToUpper("Post"),
 			"/v5/integrations/commerce",
 			c.IntegrationsCommercePost,
 		},
 		"IntegrationsCommerceGet": Route{
+			"IntegrationsCommerceGet",
 			strings.ToUpper("Get"),
 			"/v5/integrations/commerce/{external_business_id}",
 			c.IntegrationsCommerceGet,
 		},
 		"IntegrationsCommerceDel": Route{
+			"IntegrationsCommerceDel",
 			strings.ToUpper("Delete"),
 			"/v5/integrations/commerce/{external_business_id}",
 			c.IntegrationsCommerceDel,
 		},
 		"IntegrationsCommercePatch": Route{
+			"IntegrationsCommercePatch",
 			strings.ToUpper("Patch"),
 			"/v5/integrations/commerce/{external_business_id}",
 			c.IntegrationsCommercePatch,
 		},
 		"IntegrationsLogsPost": Route{
+			"IntegrationsLogsPost",
 			strings.ToUpper("Post"),
 			"/v5/integrations/logs",
 			c.IntegrationsLogsPost,
 		},
 		"IntegrationsGetList": Route{
+			"IntegrationsGetList",
 			strings.ToUpper("Get"),
 			"/v5/integrations",
 			c.IntegrationsGetList,
 		},
 		"IntegrationsGetById": Route{
+			"IntegrationsGetById",
 			strings.ToUpper("Get"),
 			"/v5/integrations/{id}",
 			c.IntegrationsGetById,
 		},
 	}
 }
+
+// OrderedRoutes returns all the api routes in a deterministic order for the IntegrationsAPIController
+func (c *IntegrationsAPIController) OrderedRoutes() []Route {
+	return []Route{
+		Route{
+			"IntegrationsCommercePost",
+			strings.ToUpper("Post"),
+			"/v5/integrations/commerce",
+			c.IntegrationsCommercePost,
+		},
+		Route{
+			"IntegrationsCommerceGet",
+			strings.ToUpper("Get"),
+			"/v5/integrations/commerce/{external_business_id}",
+			c.IntegrationsCommerceGet,
+		},
+		Route{
+			"IntegrationsCommerceDel",
+			strings.ToUpper("Delete"),
+			"/v5/integrations/commerce/{external_business_id}",
+			c.IntegrationsCommerceDel,
+		},
+		Route{
+			"IntegrationsCommercePatch",
+			strings.ToUpper("Patch"),
+			"/v5/integrations/commerce/{external_business_id}",
+			c.IntegrationsCommercePatch,
+		},
+		Route{
+			"IntegrationsLogsPost",
+			strings.ToUpper("Post"),
+			"/v5/integrations/logs",
+			c.IntegrationsLogsPost,
+		},
+		Route{
+			"IntegrationsGetList",
+			strings.ToUpper("Get"),
+			"/v5/integrations",
+			c.IntegrationsGetList,
+		},
+		Route{
+			"IntegrationsGetById",
+			strings.ToUpper("Get"),
+			"/v5/integrations/{id}",
+			c.IntegrationsGetById,
+		},
+	}
+}
+
+
 
 // IntegrationsCommercePost - Create commerce integration
 func (c *IntegrationsAPIController) IntegrationsCommercePost(w http.ResponseWriter, r *http.Request) {

@@ -28,7 +28,7 @@ import javax.annotation.Generated;
  * CatalogsHotelAttributes
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelAttributes {
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
@@ -151,7 +151,7 @@ public class CatalogsHotelAttributes {
     this.brand = brand;
   }
 
-  public CatalogsHotelAttributes latitude(BigDecimal latitude) {
+  public CatalogsHotelAttributes latitude(@Nullable BigDecimal latitude) {
     this.latitude = latitude;
     return this;
   }
@@ -163,11 +163,11 @@ public class CatalogsHotelAttributes {
   @Valid 
   @Schema(name = "latitude", description = "Latitude of the hotel.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("latitude")
-  public BigDecimal getLatitude() {
+  public @Nullable BigDecimal getLatitude() {
     return latitude;
   }
 
-  public void setLatitude(BigDecimal latitude) {
+  public void setLatitude(@Nullable BigDecimal latitude) {
     this.latitude = latitude;
   }
 
@@ -219,7 +219,7 @@ public class CatalogsHotelAttributes {
     this.neighborhood = neighborhood;
   }
 
-  public CatalogsHotelAttributes address(CatalogsHotelAddress address) {
+  public CatalogsHotelAttributes address(@Nullable CatalogsHotelAddress address) {
     this.address = address;
     return this;
   }
@@ -231,11 +231,11 @@ public class CatalogsHotelAttributes {
   @Valid 
   @Schema(name = "address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("address")
-  public CatalogsHotelAddress getAddress() {
+  public @Nullable CatalogsHotelAddress getAddress() {
     return address;
   }
 
-  public void setAddress(CatalogsHotelAddress address) {
+  public void setAddress(@Nullable CatalogsHotelAddress address) {
     this.address = address;
   }
 
@@ -399,7 +399,7 @@ public class CatalogsHotelAttributes {
     this.salePrice = salePrice;
   }
 
-  public CatalogsHotelAttributes guestRatings(CatalogsHotelGuestRatings guestRatings) {
+  public CatalogsHotelAttributes guestRatings(@Nullable CatalogsHotelGuestRatings guestRatings) {
     this.guestRatings = guestRatings;
     return this;
   }
@@ -411,15 +411,15 @@ public class CatalogsHotelAttributes {
   @Valid 
   @Schema(name = "guest_ratings", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("guest_ratings")
-  public CatalogsHotelGuestRatings getGuestRatings() {
+  public @Nullable CatalogsHotelGuestRatings getGuestRatings() {
     return guestRatings;
   }
 
-  public void setGuestRatings(CatalogsHotelGuestRatings guestRatings) {
+  public void setGuestRatings(@Nullable CatalogsHotelGuestRatings guestRatings) {
     this.guestRatings = guestRatings;
   }
 
-  public CatalogsHotelAttributes mainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
+  public CatalogsHotelAttributes mainImage(@Nullable CatalogsHotelAttributesAllOfMainImage mainImage) {
     this.mainImage = mainImage;
     return this;
   }
@@ -431,11 +431,11 @@ public class CatalogsHotelAttributes {
   @Valid 
   @Schema(name = "main_image", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("main_image")
-  public CatalogsHotelAttributesAllOfMainImage getMainImage() {
+  public @Nullable CatalogsHotelAttributesAllOfMainImage getMainImage() {
     return mainImage;
   }
 
-  public void setMainImage(CatalogsHotelAttributesAllOfMainImage mainImage) {
+  public void setMainImage(@Nullable CatalogsHotelAttributesAllOfMainImage mainImage) {
     this.mainImage = mainImage;
   }
 

@@ -51,7 +51,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * DeletePartnersRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class DeletePartnersRequest {
   public static final String SERIALIZED_NAME_PARTNER_IDS = "partner_ids";
   @SerializedName(SERIALIZED_NAME_PARTNER_IDS)
@@ -169,13 +169,10 @@ public class DeletePartnersRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("partner_ids");
-    openapiFields.add("partner_type");
+    openapiFields = new HashSet<String>(Arrays.asList("partner_ids", "partner_type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("partner_ids");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("partner_ids"));
   }
 
   /**
@@ -187,7 +184,7 @@ public class DeletePartnersRequest {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!DeletePartnersRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DeletePartnersRequest is not found in the empty JSON string", DeletePartnersRequest.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in DeletePartnersRequest is not found in the empty JSON string", DeletePartnersRequest.openapiRequiredFields.toString()));
         }
       }
 
@@ -195,14 +192,14 @@ public class DeletePartnersRequest {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!DeletePartnersRequest.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeletePartnersRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `DeletePartnersRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : DeletePartnersRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -210,10 +207,10 @@ public class DeletePartnersRequest {
       if (jsonObj.get("partner_ids") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("partner_ids").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `partner_ids` to be an array in the JSON string but got `%s`", jsonObj.get("partner_ids").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `partner_ids` to be an array in the JSON string but got `%s`", jsonObj.get("partner_ids").toString()));
       }
       if ((jsonObj.get("partner_type") != null && !jsonObj.get("partner_type").isJsonNull()) && !jsonObj.get("partner_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `partner_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("partner_type").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `partner_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("partner_type").toString()));
       }
       // validate the optional field `partner_type`
       if (jsonObj.get("partner_type") != null && !jsonObj.get("partner_type").isJsonNull()) {

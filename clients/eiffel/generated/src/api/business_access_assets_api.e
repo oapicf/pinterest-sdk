@@ -438,7 +438,7 @@ feature -- API Access
 			-- 
 			-- argument: partner_id The partner id to be bound to the Business (required)
 			-- 
-			-- argument: partner_type Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to null)
+			-- argument: partner_type Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. (optional, default to INTERNAL)
 			-- 
 			-- argument: asset_type A resource type to filter the assets by. Only assets of the specified type will be returned. (optional, default to AD_ACCOUNT)
 			-- 

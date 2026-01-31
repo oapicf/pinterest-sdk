@@ -205,8 +205,7 @@ namespace Org.OpenAPITools.Model
                             mediaType = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "images":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                images = new Option<PinMediaWithImageAllOfImages?>(JsonSerializer.Deserialize<PinMediaWithImageAllOfImages>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            images = new Option<PinMediaWithImageAllOfImages?>(JsonSerializer.Deserialize<PinMediaWithImageAllOfImages>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "cover_image_url":
                             coverImageUrl = new Option<string?>(utf8JsonReader.GetString()!);
@@ -215,16 +214,13 @@ namespace Org.OpenAPITools.Model
                             videoUrl = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "duration":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                duration = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            duration = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "height":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                height = new Option<int?>(utf8JsonReader.GetInt32());
+                            height = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "width":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                width = new Option<int?>(utf8JsonReader.GetInt32());
+                            width = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

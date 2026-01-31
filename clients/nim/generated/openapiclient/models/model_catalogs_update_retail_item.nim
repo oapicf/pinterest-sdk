@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_updatable_item_attributes
 import model_update_mask_field_type
@@ -21,14 +23,45 @@ type CatalogsUpdateRetailItem* = object
   itemId*: string ## The catalog item id in the merchant namespace
   operation*: Operation
   attributes*: UpdatableItemAttributes
-  updateMask*: seq[UpdateMaskFieldType] ## The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
+  updateMask*: Option[seq[UpdateMaskFieldType]] ## The list of product attributes to be updated. Attributes specified in the update mask without a value specified in the body will be deleted from the product item.
 
 func `%`*(v: Operation): JsonNode =
-  let str = case v:
-    of Operation.UPDATE: "UPDATE"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Operation.UPDATE: %"UPDATE"
 func `$`*(v: Operation): string =
   result = case v:
-    of Operation.UPDATE: "UPDATE"
+    of Operation.UPDATE: $("UPDATE")
+
+proc to*(node: JsonNode, T: typedesc[Operation]): Operation =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Operation, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("UPDATE"):
+    return Operation.UPDATE
+  else:
+    raise newException(ValueError, "Invalid enum value for Operation: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsUpdateRetailItem with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsUpdateRetailItem]): CatalogsUpdateRetailItem =
+  result = CatalogsUpdateRetailItem()
+  if node.kind == JObject:
+    if node.hasKey("item_id"):
+      result.itemId = to(node["item_id"], string)
+    if node.hasKey("operation"):
+      result.operation = to(node["operation"], Operation)
+    if node.hasKey("attributes"):
+      result.attributes = to(node["attributes"], UpdatableItemAttributes)
+    if node.hasKey("update_mask") and node["update_mask"].kind != JNull:
+      result.updateMask = some(to(node["update_mask"], typeof(result.updateMask.get())))
+
+# Custom JSON serialization for CatalogsUpdateRetailItem with custom field names
+proc `%`*(obj: CatalogsUpdateRetailItem): JsonNode =
+  result = newJObject()
+  result["item_id"] = %obj.itemId
+  result["operation"] = %obj.operation
+  result["attributes"] = %obj.attributes
+  if obj.updateMask.isSome():
+    result["update_mask"] = %obj.updateMask.get()
+

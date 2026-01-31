@@ -10,16 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserSummary  {
   
-  @ApiModelProperty(example = "username", value = "Username")
  /**
-   * Username
-  **/
+  * Username
+  */
+  @ApiModelProperty(example = "username", value = "Username")
+
   private String username;
 
-  @ApiModelProperty(example = "user", value = "Always \"user\"")
  /**
-   * Always \"user\"
-  **/
+  * Always \"user\"
+  */
+  @ApiModelProperty(example = "user", value = "Always \"user\"")
+
   private String type;
  /**
    * Username

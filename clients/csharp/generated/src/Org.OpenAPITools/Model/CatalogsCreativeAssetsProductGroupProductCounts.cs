@@ -203,12 +203,10 @@ namespace Org.OpenAPITools.Model
                                 catalogType = new Option<CatalogsCreativeAssetsProductGroupProductCounts.CatalogTypeEnum?>(CatalogsCreativeAssetsProductGroupProductCounts.CatalogTypeEnumFromStringOrDefault(catalogTypeRawValue));
                             break;
                         case "total":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                total = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            total = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "videos":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                videos = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            videos = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         default:
                             break;

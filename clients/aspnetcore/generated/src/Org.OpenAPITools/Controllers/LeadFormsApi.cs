@@ -50,13 +50,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(LeadFormResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"completion_message\" : \"Thank you for submitting. We will contact you soon.\",\n  \"created_time\" : 1451431341,\n  \"updated_time\" : 1451431341,\n  \"disclosure_language\" : \"By entering your personal information, you agree that your data will be collected and used.\",\n  \"name\" : \"Lead Form 3/14/2023\",\n  \"questions\" : [ {\n    \"question_type\" : \"CUSTOM\",\n    \"custom_question_field_type\" : \"CHECKBOX\",\n    \"custom_question_label\" : \"What is your favorite animal?\",\n    \"custom_question_options\" : [ \"Dog\", \"Cat\", \"Bird\", \"Turtle\" ]\n  } ],\n  \"policy_links\" : [ {\n    \"label\" : \"Copyright\",\n    \"link\" : \"https://policy.pinterest.com/en/copyright\"\n  } ],\n  \"has_accepted_terms\" : false,\n  \"id\" : \"7765300871171\",\n  \"privacy_policy_link\" : \"https://www.advertisername.com/privacy-policy\",\n  \"status\" : \"DRAFT\",\n  \"ad_account_id\" : \"549755885175\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -65,7 +65,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<LeadFormResponse>(exampleJson)
-            : default(LeadFormResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -94,13 +94,13 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(LeadFormTestResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(Error));
+            // return StatusCode(404, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"subscription_id\" : \"8078432025948590686\"\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -109,7 +109,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<LeadFormTestResponse>(exampleJson)
-            : default(LeadFormTestResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -135,11 +135,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(LeadFormArrayResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"data\" : {\n      \"completion_message\" : \"Thank you for submitting. We will contact you soon.\",\n      \"created_time\" : 1451431341,\n      \"updated_time\" : 1451431341,\n      \"disclosure_language\" : \"By entering your personal information, you agree that your data will be collected and used.\",\n      \"name\" : \"Lead Form 3/14/2023\",\n      \"questions\" : [ {\n        \"question_type\" : \"CUSTOM\",\n        \"custom_question_field_type\" : \"CHECKBOX\",\n        \"custom_question_label\" : \"What is your favorite animal?\",\n        \"custom_question_options\" : [ \"Dog\", \"Cat\", \"Bird\", \"Turtle\" ]\n      } ],\n      \"policy_links\" : [ {\n        \"label\" : \"Copyright\",\n        \"link\" : \"https://policy.pinterest.com/en/copyright\"\n      } ],\n      \"has_accepted_terms\" : false,\n      \"id\" : \"7765300871171\",\n      \"privacy_policy_link\" : \"https://www.advertisername.com/privacy-policy\",\n      \"status\" : \"DRAFT\",\n      \"ad_account_id\" : \"549755885175\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  }, {\n    \"data\" : {\n      \"completion_message\" : \"Thank you for submitting. We will contact you soon.\",\n      \"created_time\" : 1451431341,\n      \"updated_time\" : 1451431341,\n      \"disclosure_language\" : \"By entering your personal information, you agree that your data will be collected and used.\",\n      \"name\" : \"Lead Form 3/14/2023\",\n      \"questions\" : [ {\n        \"question_type\" : \"CUSTOM\",\n        \"custom_question_field_type\" : \"CHECKBOX\",\n        \"custom_question_label\" : \"What is your favorite animal?\",\n        \"custom_question_options\" : [ \"Dog\", \"Cat\", \"Bird\", \"Turtle\" ]\n      } ],\n      \"policy_links\" : [ {\n        \"label\" : \"Copyright\",\n        \"link\" : \"https://policy.pinterest.com/en/copyright\"\n      } ],\n      \"has_accepted_terms\" : false,\n      \"id\" : \"7765300871171\",\n      \"privacy_policy_link\" : \"https://www.advertisername.com/privacy-policy\",\n      \"status\" : \"DRAFT\",\n      \"ad_account_id\" : \"549755885175\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -147,7 +147,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<LeadFormArrayResponse>(exampleJson)
-            : default(LeadFormArrayResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -174,11 +174,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(LeadFormsList200Response));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"bookmark\" : \"bookmark\",\n  \"items\" : [ {\n    \"completion_message\" : \"Thank you for submitting. We will contact you soon.\",\n    \"created_time\" : 1451431341,\n    \"updated_time\" : 1451431341,\n    \"disclosure_language\" : \"By entering your personal information, you agree that your data will be collected and used.\",\n    \"name\" : \"Lead Form 3/14/2023\",\n    \"questions\" : [ {\n      \"question_type\" : \"CUSTOM\",\n      \"custom_question_field_type\" : \"CHECKBOX\",\n      \"custom_question_label\" : \"What is your favorite animal?\",\n      \"custom_question_options\" : [ \"Dog\", \"Cat\", \"Bird\", \"Turtle\" ]\n    } ],\n    \"policy_links\" : [ {\n      \"label\" : \"Copyright\",\n      \"link\" : \"https://policy.pinterest.com/en/copyright\"\n    } ],\n    \"has_accepted_terms\" : false,\n    \"id\" : \"7765300871171\",\n    \"privacy_policy_link\" : \"https://www.advertisername.com/privacy-policy\",\n    \"status\" : \"DRAFT\",\n    \"ad_account_id\" : \"549755885175\"\n  }, {\n    \"completion_message\" : \"Thank you for submitting. We will contact you soon.\",\n    \"created_time\" : 1451431341,\n    \"updated_time\" : 1451431341,\n    \"disclosure_language\" : \"By entering your personal information, you agree that your data will be collected and used.\",\n    \"name\" : \"Lead Form 3/14/2023\",\n    \"questions\" : [ {\n      \"question_type\" : \"CUSTOM\",\n      \"custom_question_field_type\" : \"CHECKBOX\",\n      \"custom_question_label\" : \"What is your favorite animal?\",\n      \"custom_question_options\" : [ \"Dog\", \"Cat\", \"Bird\", \"Turtle\" ]\n    } ],\n    \"policy_links\" : [ {\n      \"label\" : \"Copyright\",\n      \"link\" : \"https://policy.pinterest.com/en/copyright\"\n    } ],\n    \"has_accepted_terms\" : false,\n    \"id\" : \"7765300871171\",\n    \"privacy_policy_link\" : \"https://www.advertisername.com/privacy-policy\",\n    \"status\" : \"DRAFT\",\n    \"ad_account_id\" : \"549755885175\"\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -186,7 +186,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<LeadFormsList200Response>(exampleJson)
-            : default(LeadFormsList200Response);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -212,11 +212,11 @@ namespace Org.OpenAPITools.Controllers
         {
 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(LeadFormArrayResponse));
+            // return StatusCode(200, default);
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(Error));
+            // return StatusCode(400, default);
             //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
+            // return StatusCode(0, default);
             string exampleJson = null;
             exampleJson = "{\n  \"items\" : [ {\n    \"data\" : {\n      \"completion_message\" : \"Thank you for submitting. We will contact you soon.\",\n      \"created_time\" : 1451431341,\n      \"updated_time\" : 1451431341,\n      \"disclosure_language\" : \"By entering your personal information, you agree that your data will be collected and used.\",\n      \"name\" : \"Lead Form 3/14/2023\",\n      \"questions\" : [ {\n        \"question_type\" : \"CUSTOM\",\n        \"custom_question_field_type\" : \"CHECKBOX\",\n        \"custom_question_label\" : \"What is your favorite animal?\",\n        \"custom_question_options\" : [ \"Dog\", \"Cat\", \"Bird\", \"Turtle\" ]\n      } ],\n      \"policy_links\" : [ {\n        \"label\" : \"Copyright\",\n        \"link\" : \"https://policy.pinterest.com/en/copyright\"\n      } ],\n      \"has_accepted_terms\" : false,\n      \"id\" : \"7765300871171\",\n      \"privacy_policy_link\" : \"https://www.advertisername.com/privacy-policy\",\n      \"status\" : \"DRAFT\",\n      \"ad_account_id\" : \"549755885175\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  }, {\n    \"data\" : {\n      \"completion_message\" : \"Thank you for submitting. We will contact you soon.\",\n      \"created_time\" : 1451431341,\n      \"updated_time\" : 1451431341,\n      \"disclosure_language\" : \"By entering your personal information, you agree that your data will be collected and used.\",\n      \"name\" : \"Lead Form 3/14/2023\",\n      \"questions\" : [ {\n        \"question_type\" : \"CUSTOM\",\n        \"custom_question_field_type\" : \"CHECKBOX\",\n        \"custom_question_label\" : \"What is your favorite animal?\",\n        \"custom_question_options\" : [ \"Dog\", \"Cat\", \"Bird\", \"Turtle\" ]\n      } ],\n      \"policy_links\" : [ {\n        \"label\" : \"Copyright\",\n        \"link\" : \"https://policy.pinterest.com/en/copyright\"\n      } ],\n      \"has_accepted_terms\" : false,\n      \"id\" : \"7765300871171\",\n      \"privacy_policy_link\" : \"https://www.advertisername.com/privacy-policy\",\n      \"status\" : \"DRAFT\",\n      \"ad_account_id\" : \"549755885175\"\n    },\n    \"exceptions\" : [ {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    }, {\n      \"code\" : 2,\n      \"message\" : \"Advertiser not found.\"\n    } ]\n  } ]\n}";
             exampleJson = "{\n  \"code\" : 0,\n  \"message\" : \"message\"\n}";
@@ -224,7 +224,7 @@ namespace Org.OpenAPITools.Controllers
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<LeadFormArrayResponse>(exampleJson)
-            : default(LeadFormArrayResponse);
+            : default;
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

@@ -20,13 +20,13 @@ import .*
 /**
  * Request object to upsert catalogs items
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param operation 
  * @param items Array with catalogs items
  */
 object CatalogsItemsUpsertBatchRequests : BaseTable<CatalogsItemsUpsertBatchRequest>("CatalogsItemsUpsertBatchRequest") {
     val country = long("country")
-    val language = long("language")
+    val language = text("language").transform({ CatalogsItemsUpsertBatchRequest.Language.valueOf(it) }, { it.value }) /* We recommend using the CatalogsLocale values. */
     val operation = long("operation")
 
     /**
@@ -34,7 +34,7 @@ object CatalogsItemsUpsertBatchRequests : BaseTable<CatalogsItemsUpsertBatchRequ
      */
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = CatalogsItemsUpsertBatchRequest(
         country = Countrys.createEntity(row, withReferences) /* Country */,
-        language = CatalogsItemsRequestLanguages.createEntity(row, withReferences) /* CatalogsItemsRequestLanguage */,
+        language = row[language] ?: CatalogsItemsUpsertBatchRequest.Language.valueOf("") /* kotlin.String */ /* We recommend using the CatalogsLocale values. */,
         operation = BatchOperations.createEntity(row, withReferences) /* BatchOperation */,
         items = emptyList() /* kotlin.Array<ItemUpsertBatchRecord> */ /* Array with catalogs items */
     )

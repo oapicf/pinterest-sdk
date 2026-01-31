@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Country ID from ISO 3166-1 alpha-2.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum AdCountry {
   
   AD("AD"),
@@ -519,7 +519,7 @@ public enum AdCountry {
   
   ZW("ZW");
 
-  private String value;
+  private final String value;
 
   AdCountry(String value) {
     this.value = value;

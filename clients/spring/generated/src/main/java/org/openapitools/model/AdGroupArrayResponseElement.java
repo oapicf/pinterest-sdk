@@ -24,7 +24,7 @@ import javax.annotation.Generated;
  * AdGroupArrayResponseElement
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class AdGroupArrayResponseElement {
 
   private @Nullable AdGroupResponse data;
@@ -32,7 +32,7 @@ public class AdGroupArrayResponseElement {
   @Valid
   private List<@Valid Exception> exceptions = new ArrayList<>();
 
-  public AdGroupArrayResponseElement data(AdGroupResponse data) {
+  public AdGroupArrayResponseElement data(@Nullable AdGroupResponse data) {
     this.data = data;
     return this;
   }
@@ -44,11 +44,11 @@ public class AdGroupArrayResponseElement {
   @Valid 
   @Schema(name = "data", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("data")
-  public AdGroupResponse getData() {
+  public @Nullable AdGroupResponse getData() {
     return data;
   }
 
-  public void setData(AdGroupResponse data) {
+  public void setData(@Nullable AdGroupResponse data) {
     this.data = data;
   }
 

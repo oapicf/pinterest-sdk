@@ -12,16 +12,11 @@
 /**
  * Campaign placement group type
  */
-export type PlacementGroupType = 'ALL' | 'SEARCH' | 'BROWSE' | 'OTHER';
-
 export const PlacementGroupType = {
-
-    All: 'ALL' as PlacementGroupType,
-
-    Search: 'SEARCH' as PlacementGroupType,
-
-    Browse: 'BROWSE' as PlacementGroupType,
-
-    Other: 'OTHER' as PlacementGroupType
-};
+    All: 'ALL',
+    Search: 'SEARCH',
+    Browse: 'BROWSE',
+    Other: 'OTHER'
+} as const;
+export type PlacementGroupType = typeof PlacementGroupType[keyof typeof PlacementGroupType];
 

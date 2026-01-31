@@ -9,28 +9,32 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdAccountCreateSubscriptionResponse  {
   
-  @ApiModelProperty(example = "8078432025948590686", value = "Subscription ID.")
  /**
-   * Subscription ID.
-  **/
+  * Subscription ID.
+  */
+  @ApiModelProperty(example = "8078432025948590686", value = "Subscription ID.")
+
   private String id;
 
-  @ApiModelProperty(example = "ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54", value = "Base64 encoded key for client to decrypt lead data.")
  /**
-   * Base64 encoded key for client to decrypt lead data.
-  **/
+  * Base64 encoded key for client to decrypt lead data.
+  */
+  @ApiModelProperty(example = "ucvxbV2Tdss0vNeYsdh4Qfa/1Khm2b0PqXvXeTTZh54", value = "Base64 encoded key for client to decrypt lead data.")
+
   private String cryptographicKey;
 
-  @ApiModelProperty(example = "AES-256-GCM", value = "Lead data encryption algorithm.")
  /**
-   * Lead data encryption algorithm.
-  **/
+  * Lead data encryption algorithm.
+  */
+  @ApiModelProperty(example = "AES-256-GCM", value = "Lead data encryption algorithm.")
+
   private String cryptographicAlgorithm;
 
-  @ApiModelProperty(example = "1699209842000", value = "Subscription creation time. Unix timestamp in milliseconds.")
  /**
-   * Subscription creation time. Unix timestamp in milliseconds.
-  **/
+  * Subscription creation time. Unix timestamp in milliseconds.
+  */
+  @ApiModelProperty(example = "1699209842000", value = "Subscription creation time. Unix timestamp in milliseconds.")
+
   private Integer createdTime;
  /**
    * Subscription ID.

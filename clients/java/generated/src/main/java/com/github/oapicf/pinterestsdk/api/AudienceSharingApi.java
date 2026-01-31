@@ -99,7 +99,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adAccountsAudiencesSharedAccountsListCall(String adAccountId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call adAccountsAudiencesSharedAccountsListCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nonnull AudienceAccountType accountType, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -161,7 +161,7 @@ public class AudienceSharingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call adAccountsAudiencesSharedAccountsListValidateBeforeCall(String adAccountId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call adAccountsAudiencesSharedAccountsListValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nonnull AudienceAccountType accountType, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling adAccountsAudiencesSharedAccountsList(Async)");
@@ -201,7 +201,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(String adAccountId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark) throws ApiException {
+    public AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nonnull AudienceAccountType accountType, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<AdAccountsAudiencesSharedAccountsList200Response> localVarResp = adAccountsAudiencesSharedAccountsListWithHttpInfo(adAccountId, audienceId, accountType, pageSize, bookmark);
         return localVarResp.getData();
     }
@@ -226,7 +226,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdAccountsAudiencesSharedAccountsList200Response> adAccountsAudiencesSharedAccountsListWithHttpInfo(String adAccountId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark) throws ApiException {
+    public ApiResponse<AdAccountsAudiencesSharedAccountsList200Response> adAccountsAudiencesSharedAccountsListWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nonnull AudienceAccountType accountType, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = adAccountsAudiencesSharedAccountsListValidateBeforeCall(adAccountId, audienceId, accountType, pageSize, bookmark, null);
         Type localVarReturnType = new TypeToken<AdAccountsAudiencesSharedAccountsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -253,7 +253,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adAccountsAudiencesSharedAccountsListAsync(String adAccountId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark, final ApiCallback<AdAccountsAudiencesSharedAccountsList200Response> _callback) throws ApiException {
+    public okhttp3.Call adAccountsAudiencesSharedAccountsListAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nonnull AudienceAccountType accountType, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback<AdAccountsAudiencesSharedAccountsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = adAccountsAudiencesSharedAccountsListValidateBeforeCall(adAccountId, audienceId, accountType, pageSize, bookmark, _callback);
         Type localVarReturnType = new TypeToken<AdAccountsAudiencesSharedAccountsList200Response>(){}.getType();
@@ -280,7 +280,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessAccountAudiencesSharedAccountsListCall(String businessId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call businessAccountAudiencesSharedAccountsListCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nonnull AudienceAccountType accountType, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -342,7 +342,7 @@ public class AudienceSharingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call businessAccountAudiencesSharedAccountsListValidateBeforeCall(String businessId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call businessAccountAudiencesSharedAccountsListValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nonnull AudienceAccountType accountType, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling businessAccountAudiencesSharedAccountsList(Async)");
@@ -382,7 +382,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(String businessId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark) throws ApiException {
+    public AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nonnull AudienceAccountType accountType, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<AdAccountsAudiencesSharedAccountsList200Response> localVarResp = businessAccountAudiencesSharedAccountsListWithHttpInfo(businessId, audienceId, accountType, pageSize, bookmark);
         return localVarResp.getData();
     }
@@ -407,7 +407,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdAccountsAudiencesSharedAccountsList200Response> businessAccountAudiencesSharedAccountsListWithHttpInfo(String businessId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark) throws ApiException {
+    public ApiResponse<AdAccountsAudiencesSharedAccountsList200Response> businessAccountAudiencesSharedAccountsListWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nonnull AudienceAccountType accountType, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = businessAccountAudiencesSharedAccountsListValidateBeforeCall(businessId, audienceId, accountType, pageSize, bookmark, null);
         Type localVarReturnType = new TypeToken<AdAccountsAudiencesSharedAccountsList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -434,7 +434,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call businessAccountAudiencesSharedAccountsListAsync(String businessId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark, final ApiCallback<AdAccountsAudiencesSharedAccountsList200Response> _callback) throws ApiException {
+    public okhttp3.Call businessAccountAudiencesSharedAccountsListAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull String audienceId, @javax.annotation.Nonnull AudienceAccountType accountType, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback<AdAccountsAudiencesSharedAccountsList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = businessAccountAudiencesSharedAccountsListValidateBeforeCall(businessId, audienceId, accountType, pageSize, bookmark, _callback);
         Type localVarReturnType = new TypeToken<AdAccountsAudiencesSharedAccountsList200Response>(){}.getType();
@@ -459,7 +459,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call sharedAudiencesForBusinessListCall(String businessId, String bookmark, String order, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call sharedAudiencesForBusinessListCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -517,7 +517,7 @@ public class AudienceSharingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call sharedAudiencesForBusinessListValidateBeforeCall(String businessId, String bookmark, String order, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call sharedAudiencesForBusinessListValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling sharedAudiencesForBusinessList(Async)");
@@ -545,7 +545,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public AudiencesList200Response sharedAudiencesForBusinessList(String businessId, String bookmark, String order, Integer pageSize) throws ApiException {
+    public AudiencesList200Response sharedAudiencesForBusinessList(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<AudiencesList200Response> localVarResp = sharedAudiencesForBusinessListWithHttpInfo(businessId, bookmark, order, pageSize);
         return localVarResp.getData();
     }
@@ -568,7 +568,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AudiencesList200Response> sharedAudiencesForBusinessListWithHttpInfo(String businessId, String bookmark, String order, Integer pageSize) throws ApiException {
+    public ApiResponse<AudiencesList200Response> sharedAudiencesForBusinessListWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = sharedAudiencesForBusinessListValidateBeforeCall(businessId, bookmark, order, pageSize, null);
         Type localVarReturnType = new TypeToken<AudiencesList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -593,7 +593,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call sharedAudiencesForBusinessListAsync(String businessId, String bookmark, String order, Integer pageSize, final ApiCallback<AudiencesList200Response> _callback) throws ApiException {
+    public okhttp3.Call sharedAudiencesForBusinessListAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer pageSize, final ApiCallback<AudiencesList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = sharedAudiencesForBusinessListValidateBeforeCall(businessId, bookmark, order, pageSize, _callback);
         Type localVarReturnType = new TypeToken<AudiencesList200Response>(){}.getType();
@@ -616,7 +616,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAdAccountToAdAccountSharedAudienceCall(String adAccountId, SharedAudience sharedAudience, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAdAccountToAdAccountSharedAudienceCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SharedAudience sharedAudience, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -663,7 +663,7 @@ public class AudienceSharingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAdAccountToAdAccountSharedAudienceValidateBeforeCall(String adAccountId, SharedAudience sharedAudience, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAdAccountToAdAccountSharedAudienceValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SharedAudience sharedAudience, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling updateAdAccountToAdAccountSharedAudience(Async)");
@@ -694,7 +694,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public SharedAudienceResponse updateAdAccountToAdAccountSharedAudience(String adAccountId, SharedAudience sharedAudience) throws ApiException {
+    public SharedAudienceResponse updateAdAccountToAdAccountSharedAudience(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SharedAudience sharedAudience) throws ApiException {
         ApiResponse<SharedAudienceResponse> localVarResp = updateAdAccountToAdAccountSharedAudienceWithHttpInfo(adAccountId, sharedAudience);
         return localVarResp.getData();
     }
@@ -715,7 +715,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SharedAudienceResponse> updateAdAccountToAdAccountSharedAudienceWithHttpInfo(String adAccountId, SharedAudience sharedAudience) throws ApiException {
+    public ApiResponse<SharedAudienceResponse> updateAdAccountToAdAccountSharedAudienceWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SharedAudience sharedAudience) throws ApiException {
         okhttp3.Call localVarCall = updateAdAccountToAdAccountSharedAudienceValidateBeforeCall(adAccountId, sharedAudience, null);
         Type localVarReturnType = new TypeToken<SharedAudienceResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -738,7 +738,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAdAccountToAdAccountSharedAudienceAsync(String adAccountId, SharedAudience sharedAudience, final ApiCallback<SharedAudienceResponse> _callback) throws ApiException {
+    public okhttp3.Call updateAdAccountToAdAccountSharedAudienceAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SharedAudience sharedAudience, final ApiCallback<SharedAudienceResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateAdAccountToAdAccountSharedAudienceValidateBeforeCall(adAccountId, sharedAudience, _callback);
         Type localVarReturnType = new TypeToken<SharedAudienceResponse>(){}.getType();
@@ -761,7 +761,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAdAccountToBusinessSharedAudienceCall(String adAccountId, BusinessSharedAudience businessSharedAudience, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateAdAccountToBusinessSharedAudienceCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BusinessSharedAudience businessSharedAudience, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -808,7 +808,7 @@ public class AudienceSharingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAdAccountToBusinessSharedAudienceValidateBeforeCall(String adAccountId, BusinessSharedAudience businessSharedAudience, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAdAccountToBusinessSharedAudienceValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BusinessSharedAudience businessSharedAudience, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling updateAdAccountToBusinessSharedAudience(Async)");
@@ -839,7 +839,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BusinessSharedAudienceResponse updateAdAccountToBusinessSharedAudience(String adAccountId, BusinessSharedAudience businessSharedAudience) throws ApiException {
+    public BusinessSharedAudienceResponse updateAdAccountToBusinessSharedAudience(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BusinessSharedAudience businessSharedAudience) throws ApiException {
         ApiResponse<BusinessSharedAudienceResponse> localVarResp = updateAdAccountToBusinessSharedAudienceWithHttpInfo(adAccountId, businessSharedAudience);
         return localVarResp.getData();
     }
@@ -860,7 +860,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BusinessSharedAudienceResponse> updateAdAccountToBusinessSharedAudienceWithHttpInfo(String adAccountId, BusinessSharedAudience businessSharedAudience) throws ApiException {
+    public ApiResponse<BusinessSharedAudienceResponse> updateAdAccountToBusinessSharedAudienceWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BusinessSharedAudience businessSharedAudience) throws ApiException {
         okhttp3.Call localVarCall = updateAdAccountToBusinessSharedAudienceValidateBeforeCall(adAccountId, businessSharedAudience, null);
         Type localVarReturnType = new TypeToken<BusinessSharedAudienceResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -883,7 +883,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAdAccountToBusinessSharedAudienceAsync(String adAccountId, BusinessSharedAudience businessSharedAudience, final ApiCallback<BusinessSharedAudienceResponse> _callback) throws ApiException {
+    public okhttp3.Call updateAdAccountToBusinessSharedAudienceAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull BusinessSharedAudience businessSharedAudience, final ApiCallback<BusinessSharedAudienceResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateAdAccountToBusinessSharedAudienceValidateBeforeCall(adAccountId, businessSharedAudience, _callback);
         Type localVarReturnType = new TypeToken<BusinessSharedAudienceResponse>(){}.getType();
@@ -906,7 +906,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateBusinessToAdAccountSharedAudienceCall(String businessId, SharedAudience sharedAudience, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateBusinessToAdAccountSharedAudienceCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull SharedAudience sharedAudience, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -953,7 +953,7 @@ public class AudienceSharingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateBusinessToAdAccountSharedAudienceValidateBeforeCall(String businessId, SharedAudience sharedAudience, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateBusinessToAdAccountSharedAudienceValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull SharedAudience sharedAudience, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling updateBusinessToAdAccountSharedAudience(Async)");
@@ -984,7 +984,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public SharedAudienceResponse updateBusinessToAdAccountSharedAudience(String businessId, SharedAudience sharedAudience) throws ApiException {
+    public SharedAudienceResponse updateBusinessToAdAccountSharedAudience(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull SharedAudience sharedAudience) throws ApiException {
         ApiResponse<SharedAudienceResponse> localVarResp = updateBusinessToAdAccountSharedAudienceWithHttpInfo(businessId, sharedAudience);
         return localVarResp.getData();
     }
@@ -1005,7 +1005,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SharedAudienceResponse> updateBusinessToAdAccountSharedAudienceWithHttpInfo(String businessId, SharedAudience sharedAudience) throws ApiException {
+    public ApiResponse<SharedAudienceResponse> updateBusinessToAdAccountSharedAudienceWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull SharedAudience sharedAudience) throws ApiException {
         okhttp3.Call localVarCall = updateBusinessToAdAccountSharedAudienceValidateBeforeCall(businessId, sharedAudience, null);
         Type localVarReturnType = new TypeToken<SharedAudienceResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1028,7 +1028,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateBusinessToAdAccountSharedAudienceAsync(String businessId, SharedAudience sharedAudience, final ApiCallback<SharedAudienceResponse> _callback) throws ApiException {
+    public okhttp3.Call updateBusinessToAdAccountSharedAudienceAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull SharedAudience sharedAudience, final ApiCallback<SharedAudienceResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateBusinessToAdAccountSharedAudienceValidateBeforeCall(businessId, sharedAudience, _callback);
         Type localVarReturnType = new TypeToken<SharedAudienceResponse>(){}.getType();
@@ -1051,7 +1051,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateBusinessToBusinessSharedAudienceCall(String businessId, BusinessSharedAudience businessSharedAudience, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateBusinessToBusinessSharedAudienceCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull BusinessSharedAudience businessSharedAudience, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1098,7 +1098,7 @@ public class AudienceSharingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateBusinessToBusinessSharedAudienceValidateBeforeCall(String businessId, BusinessSharedAudience businessSharedAudience, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateBusinessToBusinessSharedAudienceValidateBeforeCall(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull BusinessSharedAudience businessSharedAudience, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'businessId' is set
         if (businessId == null) {
             throw new ApiException("Missing the required parameter 'businessId' when calling updateBusinessToBusinessSharedAudience(Async)");
@@ -1129,7 +1129,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public BusinessSharedAudienceResponse updateBusinessToBusinessSharedAudience(String businessId, BusinessSharedAudience businessSharedAudience) throws ApiException {
+    public BusinessSharedAudienceResponse updateBusinessToBusinessSharedAudience(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull BusinessSharedAudience businessSharedAudience) throws ApiException {
         ApiResponse<BusinessSharedAudienceResponse> localVarResp = updateBusinessToBusinessSharedAudienceWithHttpInfo(businessId, businessSharedAudience);
         return localVarResp.getData();
     }
@@ -1150,7 +1150,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BusinessSharedAudienceResponse> updateBusinessToBusinessSharedAudienceWithHttpInfo(String businessId, BusinessSharedAudience businessSharedAudience) throws ApiException {
+    public ApiResponse<BusinessSharedAudienceResponse> updateBusinessToBusinessSharedAudienceWithHttpInfo(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull BusinessSharedAudience businessSharedAudience) throws ApiException {
         okhttp3.Call localVarCall = updateBusinessToBusinessSharedAudienceValidateBeforeCall(businessId, businessSharedAudience, null);
         Type localVarReturnType = new TypeToken<BusinessSharedAudienceResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1173,7 +1173,7 @@ public class AudienceSharingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateBusinessToBusinessSharedAudienceAsync(String businessId, BusinessSharedAudience businessSharedAudience, final ApiCallback<BusinessSharedAudienceResponse> _callback) throws ApiException {
+    public okhttp3.Call updateBusinessToBusinessSharedAudienceAsync(@javax.annotation.Nonnull String businessId, @javax.annotation.Nonnull BusinessSharedAudience businessSharedAudience, final ApiCallback<BusinessSharedAudienceResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateBusinessToBusinessSharedAudienceValidateBeforeCall(businessId, businessSharedAudience, _callback);
         Type localVarReturnType = new TypeToken<BusinessSharedAudienceResponse>(){}.getType();

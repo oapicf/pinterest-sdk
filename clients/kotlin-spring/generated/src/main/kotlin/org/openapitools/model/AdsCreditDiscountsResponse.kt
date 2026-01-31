@@ -48,7 +48,7 @@ data class AdsCreditDiscountsResponse(
 
     @Schema(example = "125000000", description = "The credits left to spend.")
     @get:JsonProperty("remainingDiscountInMicroCurrency") val remainingDiscountInMicroCurrency: java.math.BigDecimal? = null
-    ) {
+) {
 
     /**
     * The type of discount of this credit
@@ -81,7 +81,8 @@ data class AdsCreditDiscountsResponse(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): DiscountType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'AdsCreditDiscountsResponse'")
             }
         }
     }

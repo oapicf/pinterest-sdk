@@ -31,32 +31,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ItemResponseAnyOf1  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private CatalogsType catalogType;
 
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
  /**
-   * The catalog item id in the merchant namespace
-  **/
+  * The catalog item id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog item id in the merchant namespace")
+
   private String itemId;
 
-  @ApiModelProperty(value = "Array with the errors for the item id requested")
-  @Valid
  /**
-   * Array with the errors for the item id requested
-  **/
+  * Array with the errors for the item id requested
+  */
+  @ApiModelProperty(value = "Array with the errors for the item id requested")
+
+  @Valid
+
   private List<@Valid ItemValidationEvent> errors = new ArrayList<>();
 
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
  /**
-   * The catalog hotel id in the merchant namespace
-  **/
+  * The catalog hotel id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog hotel id in the merchant namespace")
+
   private String hotelId;
 
-  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
  /**
-   * The catalog creative assets id in the merchant namespace
-  **/
+  * The catalog creative assets id in the merchant namespace
+  */
+  @ApiModelProperty(example = "DS0294-M", value = "The catalog creative assets id in the merchant namespace")
+
   private String creativeAssetsId;
  /**
    * Get catalogType

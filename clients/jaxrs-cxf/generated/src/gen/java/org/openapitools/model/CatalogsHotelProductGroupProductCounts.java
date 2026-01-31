@@ -2,18 +2,18 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.math.BigDecimal;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Product counts for a Hotel CatalogsProductGroup
- **/
+ * Product counts for a Hotel CatalogsProductGroup
+ */
 @ApiModel(description="Product counts for a Hotel CatalogsProductGroup")
 
 public class CatalogsHotelProductGroupProductCounts  {
@@ -51,10 +51,13 @@ HOTEL(String.valueOf("HOTEL"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private BigDecimal total;
  /**
    * Get catalogType

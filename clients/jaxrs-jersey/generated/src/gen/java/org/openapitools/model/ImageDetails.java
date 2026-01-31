@@ -30,7 +30,7 @@ import javax.validation.Valid;
   ImageDetails.JSON_PROPERTY_HEIGHT,
   ImageDetails.JSON_PROPERTY_URL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2025-05-10T05:40:33.668687276Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-01-26T05:37:28.314128517Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ImageDetails   {
   public static final String JSON_PROPERTY_WIDTH = "width";
   @JsonProperty(JSON_PROPERTY_WIDTH)

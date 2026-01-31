@@ -20,12 +20,12 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLogsSuccessResponse", description = "Response when logs are successfully processed.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class IntegrationLogsSuccessResponse {
 
   private @Nullable String message;
 
-  public IntegrationLogsSuccessResponse message(String message) {
+  public IntegrationLogsSuccessResponse message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -37,11 +37,11 @@ public class IntegrationLogsSuccessResponse {
   
   @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("message")
-  public String getMessage() {
+  public @Nullable String getMessage() {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 

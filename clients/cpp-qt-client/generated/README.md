@@ -5,7 +5,7 @@
 Pinterest REST API
 
 - API version: 5.14.0
-- Generator version: 7.12.0
+- Generator version: 7.18.0
 
 Pinterest's REST API
 

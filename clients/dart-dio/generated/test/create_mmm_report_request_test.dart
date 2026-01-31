@@ -7,6 +7,12 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(CreateMMMReportRequest, () {
+    // A List of countries for filtering
+    // BuiltList<TargetingAdvertiserCountry> countries
+    test('to test the property `countries`', () async {
+      // TODO
+    });
+
     // Name of the Marketing Mix Modeling (MMM) report
     // String reportName
     test('to test the property `reportName`', () async {
@@ -46,12 +52,6 @@ void main() {
     // Metric and entity columns
     // BuiltList<MMMReportingColumn> columns
     test('to test the property `columns`', () async {
-      // TODO
-    });
-
-    // A List of countries for filtering
-    // BuiltList<TargetingAdvertiserCountry> countries
-    test('to test the property `countries`', () async {
       // TODO
     });
 

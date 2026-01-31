@@ -35,9 +35,9 @@
     },
     {
       "name": "budget_type",
-      "type": ["null", "model.BudgetType"],
+      "type": ["model.BudgetType", "null"],
       "doc": "",
-      "default": null
+      "default": BudgetType.DAILY
     },
     {
       "name": "start_time",
@@ -83,9 +83,9 @@
     },
     {
       "name": "pacing_delivery_type",
-      "type": ["null", "model.PacingDeliveryType"],
+      "type": ["model.PacingDeliveryType", "null"],
       "doc": "",
-      "default": null
+      "default": PacingDeliveryType.STANDARD
     },
     {
       "name": "campaign_id",

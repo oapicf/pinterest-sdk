@@ -19,7 +19,7 @@ Method | HTTP request | Description
 -(NSURLSessionTask*) multiPinsAnalyticsWithPinIds: (NSArray<NSString*>*) pinIds
     startDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    metricTypes: (NSArray<OAIPinsAnalyticsMetricTypesParameterInner>*) metricTypes
+    metricTypes: (NSArray<NSString*>*) metricTypes
     appTypes: (NSString*) appTypes
     adAccountId: (NSString*) adAccountId
         completionHandler: (void (^)(NSDictionary<NSString*, NSDictionary*>* output, NSError* error)) handler;
@@ -43,7 +43,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 NSArray<NSString*>* pinIds = @[@"pinIds_example"]; // List of Pin IDs.
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-NSArray<OAIPinsAnalyticsMetricTypesParameterInner>* metricTypes = @[[[OAIPinsAnalyticsMetricTypesParameterInner alloc] init]]; // Pin metric types to get data for.
+NSArray<NSString*>* metricTypes = @[@"metricTypes_example"]; // Pin metric types to get data for.
 NSString* appTypes = @"ALL"; // Apps or devices to get data for, default is all. (optional) (default to @"ALL")
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
  **pinIds** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of Pin IDs. | 
  **startDate** | **NSDate***| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **NSDate***| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **metricTypes** | [**NSArray&lt;OAIPinsAnalyticsMetricTypesParameterInner&gt;***](OAIPinsAnalyticsMetricTypesParameterInner*.md)| Pin metric types to get data for. | 
+ **metricTypes** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Pin metric types to get data for. | 
  **appTypes** | **NSString***| Apps or devices to get data for, default is all. | [optional] [default to @&quot;ALL&quot;]
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) pinsAnalyticsWithPinId: (NSString*) pinId
     startDate: (NSDate*) startDate
     endDate: (NSDate*) endDate
-    metricTypes: (NSArray<OAIPinsAnalyticsMetricTypesParameterInner>*) metricTypes
+    metricTypes: (NSArray<NSString*>*) metricTypes
     appTypes: (NSString*) appTypes
     splitField: (NSString*) splitField
     adAccountId: (NSString*) adAccountId
@@ -122,7 +122,7 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 NSString* pinId = @"pinId_example"; // Unique identifier of a Pin.
 NSDate* startDate = @"2013-10-20T19:20:30+01:00"; // Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
 NSDate* endDate = @"2013-10-20T19:20:30+01:00"; // Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-NSArray<OAIPinsAnalyticsMetricTypesParameterInner>* metricTypes = @[[[OAIPinsAnalyticsMetricTypesParameterInner alloc] init]]; // Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+NSArray<NSString*>* metricTypes = @[@"metricTypes_example"]; // Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
 NSString* appTypes = @"ALL"; // Apps or devices to get data for, default is all. (optional) (default to @"ALL")
 NSString* splitField = @"NO_SPLIT"; // How to split the data into groups. Not including this param means data won't be split. (optional) (default to @"NO_SPLIT")
 NSString* adAccountId = @"adAccountId_example"; // Unique identifier of an ad account. (optional)
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
  **pinId** | **NSString***| Unique identifier of a Pin. | 
  **startDate** | **NSDate***| Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | 
  **endDate** | **NSDate***| Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | 
- **metricTypes** | [**NSArray&lt;OAIPinsAnalyticsMetricTypesParameterInner&gt;***](OAIPinsAnalyticsMetricTypesParameterInner*.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
+ **metricTypes** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt;, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than &lt;code&gt;NO_SPLIT&lt;/code&gt;. | 
  **appTypes** | **NSString***| Apps or devices to get data for, default is all. | [optional] [default to @&quot;ALL&quot;]
  **splitField** | **NSString***| How to split the data into groups. Not including this param means data won&#39;t be split. | [optional] [default to @&quot;NO_SPLIT&quot;]
  **adAccountId** | **NSString***| Unique identifier of an ad account. | [optional] 

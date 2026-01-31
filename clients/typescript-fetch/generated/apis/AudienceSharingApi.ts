@@ -139,8 +139,12 @@ export class AudienceSharingApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:read"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/audiences/shared/accounts`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/audiences/shared/accounts`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -209,8 +213,12 @@ export class AudienceSharingApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/audiences/shared/accounts`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/audiences/shared/accounts`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -261,8 +269,12 @@ export class AudienceSharingApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:read"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/audiences`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/audiences`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -310,8 +322,12 @@ export class AudienceSharingApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -360,8 +376,12 @@ export class AudienceSharingApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["ads:write"]);
         }
 
+
+        let urlPath = `/ad_accounts/{ad_account_id}/audiences/businesses/shared`;
+        urlPath = urlPath.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId'])));
+
         const response = await this.request({
-            path: `/ad_accounts/{ad_account_id}/audiences/businesses/shared`.replace(`{${"ad_account_id"}}`, encodeURIComponent(String(requestParameters['adAccountId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -410,8 +430,12 @@ export class AudienceSharingApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/audiences/ad_accounts/shared`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/audiences/ad_accounts/shared`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -460,8 +484,12 @@ export class AudienceSharingApi extends runtime.BaseAPI {
             headerParameters["Authorization"] = await this.configuration.accessToken("pinterest_oauth2", ["biz_access:write"]);
         }
 
+
+        let urlPath = `/businesses/{business_id}/audiences/businesses/shared`;
+        urlPath = urlPath.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId'])));
+
         const response = await this.request({
-            path: `/businesses/{business_id}/audiences/businesses/shared`.replace(`{${"business_id"}}`, encodeURIComponent(String(requestParameters['businessId']))),
+            path: urlPath,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,

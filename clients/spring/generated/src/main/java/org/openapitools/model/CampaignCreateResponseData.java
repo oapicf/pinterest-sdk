@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  * CampaignCreateResponseData
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CampaignCreateResponseData {
 
   private @Nullable String adAccountId;
@@ -68,7 +68,7 @@ public class CampaignCreateResponseData {
 
   private @Nullable CampaignSummaryStatus summaryStatus;
 
-  public CampaignCreateResponseData adAccountId(String adAccountId) {
+  public CampaignCreateResponseData adAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
     return this;
   }
@@ -80,15 +80,15 @@ public class CampaignCreateResponseData {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "ad_account_id", example = "549755885175", description = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_account_id")
-  public String getAdAccountId() {
+  public @Nullable String getAdAccountId() {
     return adAccountId;
   }
 
-  public void setAdAccountId(String adAccountId) {
+  public void setAdAccountId(@Nullable String adAccountId) {
     this.adAccountId = adAccountId;
   }
 
-  public CampaignCreateResponseData name(String name) {
+  public CampaignCreateResponseData name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -100,15 +100,15 @@ public class CampaignCreateResponseData {
   
   @Schema(name = "name", example = "ACME Tools", description = "Campaign name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
-  public CampaignCreateResponseData status(EntityStatus status) {
+  public CampaignCreateResponseData status(@Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -120,11 +120,11 @@ public class CampaignCreateResponseData {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public EntityStatus getStatus() {
+  public @Nullable EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 
@@ -308,7 +308,7 @@ public class CampaignCreateResponseData {
     this.isAutomatedCampaign = isAutomatedCampaign;
   }
 
-  public CampaignCreateResponseData id(String id) {
+  public CampaignCreateResponseData id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -320,15 +320,15 @@ public class CampaignCreateResponseData {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "549755885175", description = "Campaign ID.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public CampaignCreateResponseData objectiveType(ObjectiveType objectiveType) {
+  public CampaignCreateResponseData objectiveType(@Nullable ObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
     return this;
   }
@@ -340,15 +340,15 @@ public class CampaignCreateResponseData {
   @Valid 
   @Schema(name = "objective_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("objective_type")
-  public ObjectiveType getObjectiveType() {
+  public @Nullable ObjectiveType getObjectiveType() {
     return objectiveType;
   }
 
-  public void setObjectiveType(ObjectiveType objectiveType) {
+  public void setObjectiveType(@Nullable ObjectiveType objectiveType) {
     this.objectiveType = objectiveType;
   }
 
-  public CampaignCreateResponseData createdTime(Integer createdTime) {
+  public CampaignCreateResponseData createdTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -360,15 +360,15 @@ public class CampaignCreateResponseData {
   
   @Schema(name = "created_time", example = "1432744744", description = "Campaign creation time. Unix timestamp in seconds.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("created_time")
-  public Integer getCreatedTime() {
+  public @Nullable Integer getCreatedTime() {
     return createdTime;
   }
 
-  public void setCreatedTime(Integer createdTime) {
+  public void setCreatedTime(@Nullable Integer createdTime) {
     this.createdTime = createdTime;
   }
 
-  public CampaignCreateResponseData updatedTime(Integer updatedTime) {
+  public CampaignCreateResponseData updatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
     return this;
   }
@@ -380,15 +380,15 @@ public class CampaignCreateResponseData {
   
   @Schema(name = "updated_time", example = "1432744744", description = "UTC timestamp. Last update time.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("updated_time")
-  public Integer getUpdatedTime() {
+  public @Nullable Integer getUpdatedTime() {
     return updatedTime;
   }
 
-  public void setUpdatedTime(Integer updatedTime) {
+  public void setUpdatedTime(@Nullable Integer updatedTime) {
     this.updatedTime = updatedTime;
   }
 
-  public CampaignCreateResponseData type(String type) {
+  public CampaignCreateResponseData type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -400,11 +400,11 @@ public class CampaignCreateResponseData {
   
   @Schema(name = "type", example = "campaign", description = "Always \"campaign\".", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("type")
-  public String getType() {
+  public @Nullable String getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
@@ -428,7 +428,7 @@ public class CampaignCreateResponseData {
     this.isCampaignBudgetOptimization = isCampaignBudgetOptimization;
   }
 
-  public CampaignCreateResponseData summaryStatus(CampaignSummaryStatus summaryStatus) {
+  public CampaignCreateResponseData summaryStatus(@Nullable CampaignSummaryStatus summaryStatus) {
     this.summaryStatus = summaryStatus;
     return this;
   }
@@ -440,11 +440,11 @@ public class CampaignCreateResponseData {
   @Valid 
   @Schema(name = "summary_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("summary_status")
-  public CampaignSummaryStatus getSummaryStatus() {
+  public @Nullable CampaignSummaryStatus getSummaryStatus() {
     return summaryStatus;
   }
 
-  public void setSummaryStatus(CampaignSummaryStatus summaryStatus) {
+  public void setSummaryStatus(@Nullable CampaignSummaryStatus summaryStatus) {
     this.summaryStatus = summaryStatus;
   }
 

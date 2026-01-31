@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
  **pinIds** | [**array[string]**](string.md) | List of Pin IDs. | [default to null]
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
- **metricTypes** | [**array[PinsAnalyticsMetricTypesParameterInner]**](PinsAnalyticsMetricTypesParameterInner.md) | Pin metric types to get data for. | [default to null]
+ **metricTypes** | [**array[string]**](string.md) | Pin metric types to get data for. | [default to null]
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [optional] [default to ALL]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]
 
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
  **pinId** | **string** | Unique identifier of a Pin. | [default to null]
  **startDate** | **string** | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today. | [default to null]
  **endDate** | **string** | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date. | [default to null]
- **metricTypes** | [**array[PinsAnalyticsMetricTypesParameterInner]**](PinsAnalyticsMetricTypesParameterInner.md) | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>. | [default to null]
+ **metricTypes** | [**array[string]**](string.md) | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>. | [default to null]
  **appTypes** | **string** | Apps or devices to get data for, default is all. | [optional] [default to ALL]
  **splitField** | **string** | How to split the data into groups. Not including this param means data won't be split. | [optional] [default to NO_SPLIT]
  **adAccountId** | **string** | Unique identifier of an ad account. | [optional] [default to null]

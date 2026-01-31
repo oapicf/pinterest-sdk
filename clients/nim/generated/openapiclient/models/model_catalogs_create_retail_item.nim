@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_item_attributes_request
 
@@ -22,11 +24,38 @@ type CatalogsCreateRetailItem* = object
   attributes*: ItemAttributesRequest
 
 func `%`*(v: Operation): JsonNode =
-  let str = case v:
-    of Operation.CREATE: "CREATE"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of Operation.CREATE: %"CREATE"
 func `$`*(v: Operation): string =
   result = case v:
-    of Operation.CREATE: "CREATE"
+    of Operation.CREATE: $("CREATE")
+
+proc to*(node: JsonNode, T: typedesc[Operation]): Operation =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum Operation, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("CREATE"):
+    return Operation.CREATE
+  else:
+    raise newException(ValueError, "Invalid enum value for Operation: " & strVal)
+
+
+# Custom JSON deserialization for CatalogsCreateRetailItem with custom field names
+proc to*(node: JsonNode, T: typedesc[CatalogsCreateRetailItem]): CatalogsCreateRetailItem =
+  result = CatalogsCreateRetailItem()
+  if node.kind == JObject:
+    if node.hasKey("item_id"):
+      result.itemId = to(node["item_id"], string)
+    if node.hasKey("operation"):
+      result.operation = to(node["operation"], Operation)
+    if node.hasKey("attributes"):
+      result.attributes = to(node["attributes"], ItemAttributesRequest)
+
+# Custom JSON serialization for CatalogsCreateRetailItem with custom field names
+proc `%`*(obj: CatalogsCreateRetailItem): JsonNode =
+  result = newJObject()
+  result["item_id"] = %obj.itemId
+  result["operation"] = %obj.operation
+  result["attributes"] = %obj.attributes
+

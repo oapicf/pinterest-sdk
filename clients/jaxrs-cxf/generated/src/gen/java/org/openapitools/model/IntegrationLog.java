@@ -2,28 +2,29 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.IntegrationLogClientError;
 import org.openapitools.model.IntegrationLogClientRequest;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Schema for log sent from an integration application.
- **/
+ * Schema for log sent from an integration application.
+ */
 @ApiModel(description="Schema for log sent from an integration application.")
 
 public class IntegrationLog  {
   
-  @ApiModelProperty(required = true, value = "Timestamp in milliseconds of when the log was executed at the client.")
  /**
-   * Timestamp in milliseconds of when the log was executed at the client.
-  **/
+  * Timestamp in milliseconds of when the log was executed at the client.
+  */
+  @ApiModelProperty(required = true, value = "Timestamp in milliseconds of when the log was executed at the client.")
+
   private Integer clientTimestamp;
 
 public enum EventTypeEnum {
@@ -58,10 +59,11 @@ APP(String.valueOf("APP")), API(String.valueOf("API"));
     }
 }
 
-  @ApiModelProperty(required = true, value = "Log event type")
  /**
-   * Log event type
-  **/
+  * Log event type
+  */
+  @ApiModelProperty(required = true, value = "Log event type")
+
   private EventTypeEnum eventType;
 
 public enum LogLevelEnum {
@@ -96,51 +98,64 @@ INFO(String.valueOf("INFO")), WARN(String.valueOf("WARN")), ERROR(String.valueOf
     }
 }
 
-  @ApiModelProperty(required = true, value = "Log level type")
  /**
-   * Log level type
-  **/
+  * Log level type
+  */
+  @ApiModelProperty(required = true, value = "Log level type")
+
   private LogLevelEnum logLevel;
 
   @ApiModelProperty(value = "")
+
   private String externalBusinessId;
 
   @ApiModelProperty(value = "")
+
   private String advertiserId;
 
   @ApiModelProperty(value = "")
+
   private String merchantId;
 
   @ApiModelProperty(value = "")
+
   private String tagId;
 
   @ApiModelProperty(value = "")
+
   private String feedProfileId;
 
-  @ApiModelProperty(value = "Explanation of the event that occured.")
  /**
-   * Explanation of the event that occured.
-  **/
+  * Explanation of the event that occured.
+  */
+  @ApiModelProperty(value = "Explanation of the event that occured.")
+
   private String message;
 
-  @ApiModelProperty(value = "Version number of the integration application.")
  /**
-   * Version number of the integration application.
-  **/
+  * Version number of the integration application.
+  */
+  @ApiModelProperty(value = "Version number of the integration application.")
+
   private String appVersionNumber;
 
-  @ApiModelProperty(value = "Version number of the platform the integration application is running on.")
  /**
-   * Version number of the platform the integration application is running on.
-  **/
+  * Version number of the platform the integration application is running on.
+  */
+  @ApiModelProperty(value = "Version number of the platform the integration application is running on.")
+
   private String platformVersionNumber;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private IntegrationLogClientError error;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private IntegrationLogClientRequest request;
  /**
    * Timestamp in milliseconds of when the log was executed at the client.

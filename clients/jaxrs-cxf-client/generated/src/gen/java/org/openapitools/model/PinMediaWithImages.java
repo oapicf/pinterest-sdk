@@ -1,24 +1,25 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.model.ImageMetadata;
 import org.openapitools.model.PinMedia;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Pin with multiple images.
- **/
+ * Pin with multiple images.
+ */
 @ApiModel(description="Pin with multiple images.")
 
 public class PinMediaWithImages extends PinMedia {
   
   @ApiModelProperty(value = "")
+
   private List<ImageMetadata> items = new ArrayList<>();
  /**
    * Get items

@@ -61,7 +61,7 @@ data class AssetGroupBinding(
     @field:Valid
     @Schema(example = "null", description = "The data of the user that created the asset group.")
     @get:JsonProperty("created_by") val createdBy: BusinessAccessUserSummary? = null
-    ) {
+) {
 
 }
 

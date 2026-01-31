@@ -9,11 +9,32 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_campaign_create_response_data
 import model_exception
 
 type CampaignCreateResponseItem* = object
   ## 
-  data*: CampaignCreateResponseData
-  exceptions*: seq[Exception]
+  data*: Option[CampaignCreateResponseData]
+  exceptions*: Option[seq[Exception]]
+
+
+# Custom JSON deserialization for CampaignCreateResponseItem with custom field names
+proc to*(node: JsonNode, T: typedesc[CampaignCreateResponseItem]): CampaignCreateResponseItem =
+  result = CampaignCreateResponseItem()
+  if node.kind == JObject:
+    if node.hasKey("data") and node["data"].kind != JNull:
+      result.data = some(to(node["data"], typeof(result.data.get())))
+    if node.hasKey("exceptions") and node["exceptions"].kind != JNull:
+      result.exceptions = some(to(node["exceptions"], typeof(result.exceptions.get())))
+
+# Custom JSON serialization for CampaignCreateResponseItem with custom field names
+proc `%`*(obj: CampaignCreateResponseItem): JsonNode =
+  result = newJObject()
+  if obj.data.isSome():
+    result["data"] = %obj.data.get()
+  if obj.exceptions.isSome():
+    result["exceptions"] = %obj.exceptions.get()
+

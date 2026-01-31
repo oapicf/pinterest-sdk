@@ -9,11 +9,37 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type IntegrationLogsInvalidLogResponseRejectedLogsInner* = object
   ## 
-  logIndex*: int ## Index of the log in the batch.
+  logIndex*: Option[int] ## Index of the log in the batch.
   field*: string ## The field name containing an invalid value.
   value*: string ## The value that is invalid.
   reason*: string ## The reason the value is invalid.
+
+
+# Custom JSON deserialization for IntegrationLogsInvalidLogResponseRejectedLogsInner with custom field names
+proc to*(node: JsonNode, T: typedesc[IntegrationLogsInvalidLogResponseRejectedLogsInner]): IntegrationLogsInvalidLogResponseRejectedLogsInner =
+  result = IntegrationLogsInvalidLogResponseRejectedLogsInner()
+  if node.kind == JObject:
+    if node.hasKey("log_index") and node["log_index"].kind != JNull:
+      result.logIndex = some(to(node["log_index"], typeof(result.logIndex.get())))
+    if node.hasKey("field"):
+      result.field = to(node["field"], string)
+    if node.hasKey("value"):
+      result.value = to(node["value"], string)
+    if node.hasKey("reason"):
+      result.reason = to(node["reason"], string)
+
+# Custom JSON serialization for IntegrationLogsInvalidLogResponseRejectedLogsInner with custom field names
+proc `%`*(obj: IntegrationLogsInvalidLogResponseRejectedLogsInner): JsonNode =
+  result = newJObject()
+  if obj.logIndex.isSome():
+    result["log_index"] = %obj.logIndex.get()
+  result["field"] = %obj.field
+  result["value"] = %obj.value
+  result["reason"] = %obj.reason
+

@@ -48,7 +48,7 @@ export function AdvancedAuctionItemsSubmitRecordFromJSONTyped(json: any, ignoreD
         case 'UPSERT':
             return Object.assign({}, AdvancedAuctionItemsSubmitUpsertRecordFromJSONTyped(json, true), { operation: 'UPSERT' } as const);
         default:
-            throw new Error(`No variant of AdvancedAuctionItemsSubmitRecord exists with 'operation=${json['operation']}'`);
+            return json;
     }
 }
 
@@ -66,8 +66,7 @@ export function AdvancedAuctionItemsSubmitRecordToJSONTyped(value?: AdvancedAuct
         case 'UPSERT':
             return Object.assign({}, AdvancedAuctionItemsSubmitUpsertRecordToJSON(value), { operation: 'UPSERT' } as const);
         default:
-            throw new Error(`No variant of AdvancedAuctionItemsSubmitRecord exists with 'operation=${value['operation']}'`);
+            return value;
     }
-
 }
 

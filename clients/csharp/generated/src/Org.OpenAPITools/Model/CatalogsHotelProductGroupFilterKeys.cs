@@ -327,56 +327,56 @@ namespace Org.OpenAPITools.Model
 
             if (catalogsHotelProductGroupFilterKeys.PriceFilterOption.IsSet && catalogsHotelProductGroupFilterKeys.PriceFilterOption.Value != null)
             {
-                PriceFilterJsonConverter PriceFilterJsonConverter = (PriceFilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.PriceFilterOption.Value.GetType()));
-                PriceFilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.PriceFilterOption.Value, jsonSerializerOptions);
+                PriceFilterJsonConverter priceFilterJsonConverter = (PriceFilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.PriceFilterOption.Value.GetType()));
+                priceFilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.PriceFilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsHotelProductGroupFilterKeys.HotelIdFilterOption.IsSet && catalogsHotelProductGroupFilterKeys.HotelIdFilterOption.Value != null)
             {
-                HotelIdFilterJsonConverter HotelIdFilterJsonConverter = (HotelIdFilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.HotelIdFilterOption.Value.GetType()));
-                HotelIdFilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.HotelIdFilterOption.Value, jsonSerializerOptions);
+                HotelIdFilterJsonConverter hotelIdFilterJsonConverter = (HotelIdFilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.HotelIdFilterOption.Value.GetType()));
+                hotelIdFilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.HotelIdFilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsHotelProductGroupFilterKeys.BrandFilterOption.IsSet && catalogsHotelProductGroupFilterKeys.BrandFilterOption.Value != null)
             {
-                BrandFilterJsonConverter BrandFilterJsonConverter = (BrandFilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.BrandFilterOption.Value.GetType()));
-                BrandFilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.BrandFilterOption.Value, jsonSerializerOptions);
+                BrandFilterJsonConverter brandFilterJsonConverter = (BrandFilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.BrandFilterOption.Value.GetType()));
+                brandFilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.BrandFilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsHotelProductGroupFilterKeys.CustomLabel0FilterOption.IsSet && catalogsHotelProductGroupFilterKeys.CustomLabel0FilterOption.Value != null)
             {
-                CustomLabel0FilterJsonConverter CustomLabel0FilterJsonConverter = (CustomLabel0FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.CustomLabel0FilterOption.Value.GetType()));
-                CustomLabel0FilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.CustomLabel0FilterOption.Value, jsonSerializerOptions);
+                CustomLabel0FilterJsonConverter customLabel0FilterJsonConverter = (CustomLabel0FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.CustomLabel0FilterOption.Value.GetType()));
+                customLabel0FilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.CustomLabel0FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsHotelProductGroupFilterKeys.CustomLabel1FilterOption.IsSet && catalogsHotelProductGroupFilterKeys.CustomLabel1FilterOption.Value != null)
             {
-                CustomLabel1FilterJsonConverter CustomLabel1FilterJsonConverter = (CustomLabel1FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.CustomLabel1FilterOption.Value.GetType()));
-                CustomLabel1FilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.CustomLabel1FilterOption.Value, jsonSerializerOptions);
+                CustomLabel1FilterJsonConverter customLabel1FilterJsonConverter = (CustomLabel1FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.CustomLabel1FilterOption.Value.GetType()));
+                customLabel1FilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.CustomLabel1FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsHotelProductGroupFilterKeys.CustomLabel2FilterOption.IsSet && catalogsHotelProductGroupFilterKeys.CustomLabel2FilterOption.Value != null)
             {
-                CustomLabel2FilterJsonConverter CustomLabel2FilterJsonConverter = (CustomLabel2FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.CustomLabel2FilterOption.Value.GetType()));
-                CustomLabel2FilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.CustomLabel2FilterOption.Value, jsonSerializerOptions);
+                CustomLabel2FilterJsonConverter customLabel2FilterJsonConverter = (CustomLabel2FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.CustomLabel2FilterOption.Value.GetType()));
+                customLabel2FilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.CustomLabel2FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsHotelProductGroupFilterKeys.CustomLabel3FilterOption.IsSet && catalogsHotelProductGroupFilterKeys.CustomLabel3FilterOption.Value != null)
             {
-                CustomLabel3FilterJsonConverter CustomLabel3FilterJsonConverter = (CustomLabel3FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.CustomLabel3FilterOption.Value.GetType()));
-                CustomLabel3FilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.CustomLabel3FilterOption.Value, jsonSerializerOptions);
+                CustomLabel3FilterJsonConverter customLabel3FilterJsonConverter = (CustomLabel3FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.CustomLabel3FilterOption.Value.GetType()));
+                customLabel3FilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.CustomLabel3FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsHotelProductGroupFilterKeys.CustomLabel4FilterOption.IsSet && catalogsHotelProductGroupFilterKeys.CustomLabel4FilterOption.Value != null)
             {
-                CustomLabel4FilterJsonConverter CustomLabel4FilterJsonConverter = (CustomLabel4FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.CustomLabel4FilterOption.Value.GetType()));
-                CustomLabel4FilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.CustomLabel4FilterOption.Value, jsonSerializerOptions);
+                CustomLabel4FilterJsonConverter customLabel4FilterJsonConverter = (CustomLabel4FilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.CustomLabel4FilterOption.Value.GetType()));
+                customLabel4FilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.CustomLabel4FilterOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsHotelProductGroupFilterKeys.CountryFilterOption.IsSet && catalogsHotelProductGroupFilterKeys.CountryFilterOption.Value != null)
             {
-                CountryFilterJsonConverter CountryFilterJsonConverter = (CountryFilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.CountryFilterOption.Value.GetType()));
-                CountryFilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.CountryFilterOption.Value, jsonSerializerOptions);
+                CountryFilterJsonConverter countryFilterJsonConverter = (CountryFilterJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsHotelProductGroupFilterKeys.CountryFilterOption.Value.GetType()));
+                countryFilterJsonConverter.WriteProperties(writer, catalogsHotelProductGroupFilterKeys.CountryFilterOption.Value, jsonSerializerOptions);
             }
 
             WriteProperties(writer, catalogsHotelProductGroupFilterKeys, jsonSerializerOptions);

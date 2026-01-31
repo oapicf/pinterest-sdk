@@ -7,10 +7,10 @@
 
 (def oauth-access-token-request-refresh-data
   {
-   (ds/req :grant_type) string?
    (ds/req :refresh_token) string?
    (ds/opt :scope) string?
    (ds/opt :refresh_on) boolean?
+   (ds/req :grant_type) string?
    })
 
 (def oauth-access-token-request-refresh-spec

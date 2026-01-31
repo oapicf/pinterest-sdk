@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_keyword
 
 type KeywordError* = object
   ## 
-  data*: Keyword
-  errorMessages*: seq[string]
+  data*: Option[Keyword]
+  errorMessages*: Option[seq[string]]
+
+
+# Custom JSON deserialization for KeywordError with custom field names
+proc to*(node: JsonNode, T: typedesc[KeywordError]): KeywordError =
+  result = KeywordError()
+  if node.kind == JObject:
+    if node.hasKey("data") and node["data"].kind != JNull:
+      result.data = some(to(node["data"], typeof(result.data.get())))
+    if node.hasKey("error_messages") and node["error_messages"].kind != JNull:
+      result.errorMessages = some(to(node["error_messages"], typeof(result.errorMessages.get())))
+
+# Custom JSON serialization for KeywordError with custom field names
+proc `%`*(obj: KeywordError): JsonNode =
+  result = newJObject()
+  if obj.data.isSome():
+    result["data"] = %obj.data.get()
+  if obj.errorMessages.isSome():
+    result["error_messages"] = %obj.errorMessages.get()
+

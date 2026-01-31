@@ -41,12 +41,15 @@ RETAIL(String.valueOf("RETAIL"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(required = true, value = "")
+
   private CatalogsRetailProductMetadata metadata;
 
   @ApiModelProperty(required = true, value = "")
+
   private Pin pin;
  /**
    * Get catalogType

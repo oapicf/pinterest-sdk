@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Possible status for a bulk reporting job
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum BulkReportingJobStatus {
   
   DOES_NOT_EXIST("DOES_NOT_EXIST"),
@@ -35,7 +35,7 @@ public enum BulkReportingJobStatus {
   
   CANCELLED("CANCELLED");
 
-  private String value;
+  private final String value;
 
   BulkReportingJobStatus(String value) {
     this.value = value;

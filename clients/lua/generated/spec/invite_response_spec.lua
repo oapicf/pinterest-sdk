@@ -16,6 +16,34 @@ Please update as you see appropriate
 describe("invite_response", function()
   local openapiclient_invite_response = require "openapiclient.model.invite_response"
 
+  -- unit tests for the property 'id'
+  describe("property id test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'invite_data'
+  describe("property invite_data test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'is_received_invite'
+  describe("property is_received_invite test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'user'
+  describe("property user test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for the property 'assets_summary'
   describe("property assets_summary test", function()
     it("should work", function()
@@ -46,34 +74,6 @@ describe("invite_response", function()
 
   -- unit tests for the property 'created_time'
   describe("property created_time test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'id'
-  describe("property id test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'invite_data'
-  describe("property invite_data test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'is_received_invite'
-  describe("property is_received_invite test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for the property 'user'
-  describe("property user test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

@@ -26,7 +26,7 @@ import javax.annotation.Generated;
  * ItemAttributesRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ItemAttributesRequest {
 
   private JsonNullable<String> adLink = JsonNullable.<String>undefined();
@@ -190,7 +190,7 @@ public class ItemAttributesRequest {
     this.ageGroup = ageGroup;
   }
 
-  public ItemAttributesRequest availability(String availability) {
+  public ItemAttributesRequest availability(@Nullable String availability) {
     this.availability = availability;
     return this;
   }
@@ -202,11 +202,11 @@ public class ItemAttributesRequest {
   
   @Schema(name = "availability", example = "in stock", description = "The availability of the product. Must be one of the following values (upper or lowercased): ‘in stock’, ‘out of stock’ , ‘preorder’.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("availability")
-  public String getAvailability() {
+  public @Nullable String getAvailability() {
     return availability;
   }
 
-  public void setAvailability(String availability) {
+  public void setAvailability(@Nullable String availability) {
     this.availability = availability;
   }
 
@@ -416,7 +416,7 @@ public class ItemAttributesRequest {
     this.customLabel4 = customLabel4;
   }
 
-  public ItemAttributesRequest description(String description) {
+  public ItemAttributesRequest description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -428,11 +428,11 @@ public class ItemAttributesRequest {
   
   @Schema(name = "description", example = "Casual fit denim shirt made with the finest quality Japanese denim.", description = "<p><= 10000 characters</p> <p>The description of the product.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("description")
-  public String getDescription() {
+  public @Nullable String getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
@@ -536,7 +536,7 @@ public class ItemAttributesRequest {
     this.gtin = gtin;
   }
 
-  public ItemAttributesRequest id(String id) {
+  public ItemAttributesRequest id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -550,7 +550,7 @@ public class ItemAttributesRequest {
   @Schema(name = "id", example = "DS0294-L", description = "<p><= 127 characters</p> <p>The user-created unique ID that represents the product. Only Unicode characters are accepted.</p>", deprecated = true, requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
   @Deprecated
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
@@ -558,7 +558,7 @@ public class ItemAttributesRequest {
    * @deprecated
    */
   @Deprecated
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
@@ -602,7 +602,7 @@ public class ItemAttributesRequest {
     this.lastUpdatedTime = lastUpdatedTime;
   }
 
-  public ItemAttributesRequest link(String link) {
+  public ItemAttributesRequest link(@Nullable String link) {
     this.link = link;
     return this;
   }
@@ -614,11 +614,11 @@ public class ItemAttributesRequest {
   
   @Schema(name = "link", example = "https://www.example.com/cat/womens-clothing/denim-shirt-0294", description = "<p><= 511 characters</p> <p>The landing page for the product.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("link")
-  public String getLink() {
+  public @Nullable String getLink() {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@Nullable String link) {
     this.link = link;
   }
 
@@ -762,7 +762,7 @@ public class ItemAttributesRequest {
     this.pattern = pattern;
   }
 
-  public ItemAttributesRequest price(String price) {
+  public ItemAttributesRequest price(@Nullable String price) {
     this.price = price;
     return this;
   }
@@ -774,11 +774,11 @@ public class ItemAttributesRequest {
   
   @Schema(name = "price", example = "24.99 USD", description = "The price of the product. It supports the following formats, \"24.99 USD\", \"24.99USD\" and \"24.99\". If the currency is not included, we default to US dollars.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("price")
-  public String getPrice() {
+  public @Nullable String getPrice() {
     return price;
   }
 
-  public void setPrice(String price) {
+  public void setPrice(@Nullable String price) {
     this.price = price;
   }
 
@@ -982,7 +982,7 @@ public class ItemAttributesRequest {
     this.tax = tax;
   }
 
-  public ItemAttributesRequest title(String title) {
+  public ItemAttributesRequest title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -994,11 +994,11 @@ public class ItemAttributesRequest {
   
   @Schema(name = "title", example = "Women’s denim shirt, large", description = "<p><= 500 characters</p> <p>The name of the product.</p>", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
-  public String getTitle() {
+  public @Nullable String getTitle() {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
@@ -1086,7 +1086,7 @@ public class ItemAttributesRequest {
     this.additionalImageLink = additionalImageLink;
   }
 
-  public ItemAttributesRequest imageLink(ItemAttributesRequestAllOfImageLink imageLink) {
+  public ItemAttributesRequest imageLink(@Nullable ItemAttributesRequestAllOfImageLink imageLink) {
     this.imageLink = imageLink;
     return this;
   }
@@ -1098,11 +1098,11 @@ public class ItemAttributesRequest {
   @Valid 
   @Schema(name = "image_link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("image_link")
-  public ItemAttributesRequestAllOfImageLink getImageLink() {
+  public @Nullable ItemAttributesRequestAllOfImageLink getImageLink() {
     return imageLink;
   }
 
-  public void setImageLink(ItemAttributesRequestAllOfImageLink imageLink) {
+  public void setImageLink(@Nullable ItemAttributesRequestAllOfImageLink imageLink) {
     this.imageLink = imageLink;
   }
 

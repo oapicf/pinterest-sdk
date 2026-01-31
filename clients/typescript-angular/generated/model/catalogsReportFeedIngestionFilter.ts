@@ -21,10 +21,10 @@ export interface CatalogsReportFeedIngestionFilter {
     processing_result_id?: string;
 }
 export namespace CatalogsReportFeedIngestionFilter {
-    export type ReportTypeEnum = 'FEED_INGESTION_ISSUES';
     export const ReportTypeEnum = {
-        FeedIngestionIssues: 'FEED_INGESTION_ISSUES' as ReportTypeEnum
-    };
+        FeedIngestionIssues: 'FEED_INGESTION_ISSUES'
+    } as const;
+    export type ReportTypeEnum = typeof ReportTypeEnum[keyof typeof ReportTypeEnum];
 }
 
 

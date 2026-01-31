@@ -113,7 +113,7 @@ data class SSIOOrderLine(
 
     @Schema(example = "null", description = "If Ongoing (perpetual) order line, the estimated monthly spend")
     @get:JsonProperty("estimated_monthly_spend") val estimatedMonthlySpend: java.math.BigDecimal? = null
-    ) {
+) {
 
 }
 

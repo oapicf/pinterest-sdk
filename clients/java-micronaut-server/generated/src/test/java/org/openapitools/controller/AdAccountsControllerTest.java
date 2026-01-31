@@ -107,7 +107,7 @@ public class AdAccountsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@737bfc4e");
+            .accept("[Ljava.lang.String;@5cc156f7");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -172,7 +172,7 @@ public class AdAccountsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@df3dcd3");
+            .accept("[Ljava.lang.String;@79a11b84");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -227,7 +227,7 @@ public class AdAccountsControllerTest {
         AdAccountCreateRequest body = new AdAccountCreateRequest();
         String uri = UriTemplate.of("/ad_accounts").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@2146c8af");
+            .accept("[Ljava.lang.String;@2f018ca9");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdAccount.class);
@@ -273,7 +273,7 @@ public class AdAccountsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@73e33720");
+            .accept("[Ljava.lang.String;@5dde9c5d");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdAccount.class);
@@ -318,7 +318,7 @@ public class AdAccountsControllerTest {
         // given
         String uri = UriTemplate.of("/ad_accounts").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6542a5cf");
+            .accept("[Ljava.lang.String;@3361b54c");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -345,7 +345,7 @@ public class AdAccountsControllerTest {
     void analyticsCreateMmmReportMethodTest() {
         // given
         String adAccountId = "example";
-        CreateMMMReportRequest createMMMReportRequest = new CreateMMMReportRequest("example", "2020-12-20", "2020-12-20", "example", "example", Arrays.asList(), Arrays.asList());
+        CreateMMMReportRequest createMMMReportRequest = new CreateMMMReportRequest();
 
         // when
         CreateMMMReportResponse result = controller.analyticsCreateMmmReport(adAccountId, createMMMReportRequest).block();
@@ -364,13 +364,13 @@ public class AdAccountsControllerTest {
     @Disabled("Not Implemented")
     void analyticsCreateMmmReportClientApiTest() throws IOException {
         // given
-        CreateMMMReportRequest body = new CreateMMMReportRequest("example", "2020-12-20", "2020-12-20", "example", "example", Arrays.asList(), Arrays.asList());
+        CreateMMMReportRequest body = new CreateMMMReportRequest();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/mmm_reports").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@76c4e8f0");
+            .accept("[Ljava.lang.String;@426de59f");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CreateMMMReportResponse.class);
@@ -418,7 +418,7 @@ public class AdAccountsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@61d05537");
+            .accept("[Ljava.lang.String;@61aa5dbf");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdsAnalyticsCreateAsyncResponse.class);
@@ -469,7 +469,7 @@ public class AdAccountsControllerTest {
             put("template_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, null)
-            .accept("[Ljava.lang.String;@b60341a");
+            .accept("[Ljava.lang.String;@483f19a3");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -520,7 +520,7 @@ public class AdAccountsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7bfc9464");
+            .accept("[Ljava.lang.String;@764a1e3d");
         request.getParameters()
             .add("token", "example"); // The query parameter format should be 
 
@@ -569,7 +569,7 @@ public class AdAccountsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2a2e7083");
+            .accept("[Ljava.lang.String;@5ba64c76");
         request.getParameters()
             .add("token", "example"); // The query parameter format should be 
 
@@ -617,7 +617,7 @@ public class AdAccountsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@49b4e11c");
+            .accept("[Ljava.lang.String;@68d2b518");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, String.class);
@@ -666,7 +666,7 @@ public class AdAccountsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@43fedcd4");
+            .accept("[Ljava.lang.String;@58105ba0");
         request.getParameters()
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("order", "ASCENDING") // The query parameter format should be 

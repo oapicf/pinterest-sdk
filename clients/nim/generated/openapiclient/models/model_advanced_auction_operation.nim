@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AdvancedAuctionOperation* = object
-  ## 
+type AdvancedAuctionOperation* {.pure.} = enum
+  UPSERT
+  DELETE
+
+func `%`*(v: AdvancedAuctionOperation): JsonNode =
+  result = case v:
+    of AdvancedAuctionOperation.UPSERT: %"UPSERT"
+    of AdvancedAuctionOperation.DELETE: %"DELETE"
+
+func `$`*(v: AdvancedAuctionOperation): string =
+  result = case v:
+    of AdvancedAuctionOperation.UPSERT: $("UPSERT")
+    of AdvancedAuctionOperation.DELETE: $("DELETE")
+
+proc to*(node: JsonNode, T: typedesc[AdvancedAuctionOperation]): AdvancedAuctionOperation =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AdvancedAuctionOperation, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("UPSERT"):
+    return AdvancedAuctionOperation.UPSERT
+  of $("DELETE"):
+    return AdvancedAuctionOperation.DELETE
+  else:
+    raise newException(ValueError, "Invalid enum value for AdvancedAuctionOperation: " & strVal)
+

@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_top_pins_analytics_response_date_availability
 import model_top_pins_analytics_response_pins_inner
@@ -22,24 +24,62 @@ type SortBy* {.pure.} = enum
 
 type TopPinsAnalyticsResponse* = object
   ## 
-  dateAvailability*: TopPinsAnalyticsResponse_date_availability
-  pins*: seq[TopPinsAnalyticsResponse_pins_inner]
-  sortBy*: SortBy
+  dateAvailability*: Option[TopPinsAnalyticsResponse_date_availability]
+  pins*: Option[seq[TopPinsAnalyticsResponse_pins_inner]]
+  sortBy*: Option[SortBy]
 
 func `%`*(v: SortBy): JsonNode =
-  let str = case v:
-    of SortBy.ENGAGEMENT: "ENGAGEMENT"
-    of SortBy.SAVE: "SAVE"
-    of SortBy.IMPRESSION: "IMPRESSION"
-    of SortBy.OUTBOUNDCLICK: "OUTBOUND_CLICK"
-    of SortBy.PINCLICK: "PIN_CLICK"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of SortBy.ENGAGEMENT: %"ENGAGEMENT"
+    of SortBy.SAVE: %"SAVE"
+    of SortBy.IMPRESSION: %"IMPRESSION"
+    of SortBy.OUTBOUNDCLICK: %"OUTBOUND_CLICK"
+    of SortBy.PINCLICK: %"PIN_CLICK"
 func `$`*(v: SortBy): string =
   result = case v:
-    of SortBy.ENGAGEMENT: "ENGAGEMENT"
-    of SortBy.SAVE: "SAVE"
-    of SortBy.IMPRESSION: "IMPRESSION"
-    of SortBy.OUTBOUNDCLICK: "OUTBOUND_CLICK"
-    of SortBy.PINCLICK: "PIN_CLICK"
+    of SortBy.ENGAGEMENT: $("ENGAGEMENT")
+    of SortBy.SAVE: $("SAVE")
+    of SortBy.IMPRESSION: $("IMPRESSION")
+    of SortBy.OUTBOUNDCLICK: $("OUTBOUND_CLICK")
+    of SortBy.PINCLICK: $("PIN_CLICK")
+
+proc to*(node: JsonNode, T: typedesc[SortBy]): SortBy =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum SortBy, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("ENGAGEMENT"):
+    return SortBy.ENGAGEMENT
+  of $("SAVE"):
+    return SortBy.SAVE
+  of $("IMPRESSION"):
+    return SortBy.IMPRESSION
+  of $("OUTBOUND_CLICK"):
+    return SortBy.OUTBOUNDCLICK
+  of $("PIN_CLICK"):
+    return SortBy.PINCLICK
+  else:
+    raise newException(ValueError, "Invalid enum value for SortBy: " & strVal)
+
+
+# Custom JSON deserialization for TopPinsAnalyticsResponse with custom field names
+proc to*(node: JsonNode, T: typedesc[TopPinsAnalyticsResponse]): TopPinsAnalyticsResponse =
+  result = TopPinsAnalyticsResponse()
+  if node.kind == JObject:
+    if node.hasKey("date_availability") and node["date_availability"].kind != JNull:
+      result.dateAvailability = some(to(node["date_availability"], typeof(result.dateAvailability.get())))
+    if node.hasKey("pins") and node["pins"].kind != JNull:
+      result.pins = some(to(node["pins"], typeof(result.pins.get())))
+    if node.hasKey("sort_by") and node["sort_by"].kind != JNull:
+      result.sortBy = some(to(node["sort_by"], SortBy))
+
+# Custom JSON serialization for TopPinsAnalyticsResponse with custom field names
+proc `%`*(obj: TopPinsAnalyticsResponse): JsonNode =
+  result = newJObject()
+  if obj.dateAvailability.isSome():
+    result["date_availability"] = %obj.dateAvailability.get()
+  if obj.pins.isSome():
+    result["pins"] = %obj.pins.get()
+  if obj.sortBy.isSome():
+    result["sort_by"] = %obj.sortBy.get()
+

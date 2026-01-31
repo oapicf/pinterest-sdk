@@ -91,7 +91,7 @@ import com.google.gson.JsonParseException;
 
 import com.github.oapicf.pinterestsdk.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CatalogsProductGroupFilterKeys.class.getName());
 
@@ -329,7 +329,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MinPriceFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MinPriceFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MinPriceFilter'", e);
                     }
                     // deserialize MaxPriceFilter
@@ -342,7 +342,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MaxPriceFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MaxPriceFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MaxPriceFilter'", e);
                     }
                     // deserialize CurrencyFilter
@@ -355,7 +355,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CurrencyFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CurrencyFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CurrencyFilter'", e);
                     }
                     // deserialize ItemIdFilter
@@ -368,7 +368,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ItemIdFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemIdFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ItemIdFilter'", e);
                     }
                     // deserialize AvailabilityFilter
@@ -381,7 +381,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for AvailabilityFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for AvailabilityFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'AvailabilityFilter'", e);
                     }
                     // deserialize BrandFilter
@@ -394,7 +394,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for BrandFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for BrandFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'BrandFilter'", e);
                     }
                     // deserialize ConditionFilter
@@ -407,7 +407,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ConditionFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ConditionFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ConditionFilter'", e);
                     }
                     // deserialize CustomLabel0Filter
@@ -420,7 +420,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CustomLabel0Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel0Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CustomLabel0Filter'", e);
                     }
                     // deserialize CustomLabel1Filter
@@ -433,7 +433,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CustomLabel1Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel1Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CustomLabel1Filter'", e);
                     }
                     // deserialize CustomLabel2Filter
@@ -446,7 +446,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CustomLabel2Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel2Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CustomLabel2Filter'", e);
                     }
                     // deserialize CustomLabel3Filter
@@ -459,7 +459,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CustomLabel3Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel3Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CustomLabel3Filter'", e);
                     }
                     // deserialize CustomLabel4Filter
@@ -472,7 +472,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for CustomLabel4Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel4Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'CustomLabel4Filter'", e);
                     }
                     // deserialize ItemGroupIdFilter
@@ -485,7 +485,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ItemGroupIdFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemGroupIdFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ItemGroupIdFilter'", e);
                     }
                     // deserialize GenderFilter
@@ -498,7 +498,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GenderFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GenderFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GenderFilter'", e);
                     }
                     // deserialize MediaTypeFilter
@@ -511,7 +511,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for MediaTypeFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MediaTypeFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'MediaTypeFilter'", e);
                     }
                     // deserialize ProductType4Filter
@@ -524,7 +524,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ProductType4Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ProductType4Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ProductType4Filter'", e);
                     }
                     // deserialize ProductType3Filter
@@ -537,7 +537,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ProductType3Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ProductType3Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ProductType3Filter'", e);
                     }
                     // deserialize ProductType2Filter
@@ -550,7 +550,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ProductType2Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ProductType2Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ProductType2Filter'", e);
                     }
                     // deserialize ProductType1Filter
@@ -563,7 +563,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ProductType1Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ProductType1Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ProductType1Filter'", e);
                     }
                     // deserialize ProductType0Filter
@@ -576,7 +576,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ProductType0Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ProductType0Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ProductType0Filter'", e);
                     }
                     // deserialize GoogleProductCategory6Filter
@@ -589,7 +589,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory6Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory6Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory6Filter'", e);
                     }
                     // deserialize GoogleProductCategory5Filter
@@ -602,7 +602,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory5Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory5Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory5Filter'", e);
                     }
                     // deserialize GoogleProductCategory4Filter
@@ -615,7 +615,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory4Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory4Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory4Filter'", e);
                     }
                     // deserialize GoogleProductCategory3Filter
@@ -628,7 +628,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory3Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory3Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory3Filter'", e);
                     }
                     // deserialize GoogleProductCategory2Filter
@@ -641,7 +641,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory2Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory2Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory2Filter'", e);
                     }
                     // deserialize GoogleProductCategory1Filter
@@ -654,7 +654,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory1Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory1Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory1Filter'", e);
                     }
                     // deserialize GoogleProductCategory0Filter
@@ -667,7 +667,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for GoogleProductCategory0Filter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory0Filter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'GoogleProductCategory0Filter'", e);
                     }
                     // deserialize ProductGroupReferenceFilter
@@ -680,11 +680,11 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ProductGroupReferenceFilter failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ProductGroupReferenceFilter failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ProductGroupReferenceFilter'", e);
                     }
 
-                    throw new IOException(String.format("Failed deserialization for CatalogsProductGroupFilterKeys: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for CatalogsProductGroupFilterKeys: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -1224,7 +1224,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             MinPriceFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for MinPriceFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MinPriceFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with MaxPriceFilter
@@ -1232,7 +1232,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             MaxPriceFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for MaxPriceFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MaxPriceFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CurrencyFilter
@@ -1240,7 +1240,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             CurrencyFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CurrencyFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CurrencyFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ItemIdFilter
@@ -1248,7 +1248,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             ItemIdFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ItemIdFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemIdFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with AvailabilityFilter
@@ -1256,7 +1256,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             AvailabilityFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for AvailabilityFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for AvailabilityFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with BrandFilter
@@ -1264,7 +1264,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             BrandFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for BrandFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for BrandFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ConditionFilter
@@ -1272,7 +1272,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             ConditionFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ConditionFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ConditionFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CustomLabel0Filter
@@ -1280,7 +1280,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             CustomLabel0Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CustomLabel0Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel0Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CustomLabel1Filter
@@ -1288,7 +1288,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             CustomLabel1Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CustomLabel1Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel1Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CustomLabel2Filter
@@ -1296,7 +1296,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             CustomLabel2Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CustomLabel2Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel2Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CustomLabel3Filter
@@ -1304,7 +1304,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             CustomLabel3Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CustomLabel3Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel3Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CustomLabel4Filter
@@ -1312,7 +1312,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             CustomLabel4Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for CustomLabel4Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for CustomLabel4Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ItemGroupIdFilter
@@ -1320,7 +1320,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             ItemGroupIdFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ItemGroupIdFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ItemGroupIdFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GenderFilter
@@ -1328,7 +1328,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             GenderFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GenderFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GenderFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with MediaTypeFilter
@@ -1336,7 +1336,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             MediaTypeFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for MediaTypeFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for MediaTypeFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ProductType4Filter
@@ -1344,7 +1344,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             ProductType4Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ProductType4Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ProductType4Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ProductType3Filter
@@ -1352,7 +1352,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             ProductType3Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ProductType3Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ProductType3Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ProductType2Filter
@@ -1360,7 +1360,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             ProductType2Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ProductType2Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ProductType2Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ProductType1Filter
@@ -1368,7 +1368,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             ProductType1Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ProductType1Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ProductType1Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ProductType0Filter
@@ -1376,7 +1376,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             ProductType0Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ProductType0Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ProductType0Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory6Filter
@@ -1384,7 +1384,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             GoogleProductCategory6Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory6Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory6Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory5Filter
@@ -1392,7 +1392,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             GoogleProductCategory5Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory5Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory5Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory4Filter
@@ -1400,7 +1400,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             GoogleProductCategory4Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory4Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory4Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory3Filter
@@ -1408,7 +1408,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             GoogleProductCategory3Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory3Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory3Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory2Filter
@@ -1416,7 +1416,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             GoogleProductCategory2Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory2Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory2Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory1Filter
@@ -1424,7 +1424,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             GoogleProductCategory1Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory1Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory1Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with GoogleProductCategory0Filter
@@ -1432,7 +1432,7 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             GoogleProductCategory0Filter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for GoogleProductCategory0Filter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for GoogleProductCategory0Filter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ProductGroupReferenceFilter
@@ -1440,10 +1440,10 @@ public class CatalogsProductGroupFilterKeys extends AbstractOpenApiSchema {
             ProductGroupReferenceFilter.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ProductGroupReferenceFilter failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(java.util.Locale.ROOT, "Deserialization for ProductGroupReferenceFilter failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        throw new IOException(String.format("The JSON string is invalid for CatalogsProductGroupFilterKeys with anyOf schemas: AvailabilityFilter, BrandFilter, ConditionFilter, CurrencyFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GenderFilter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, ItemGroupIdFilter, ItemIdFilter, MaxPriceFilter, MediaTypeFilter, MinPriceFilter, ProductGroupReferenceFilter, ProductType0Filter, ProductType1Filter, ProductType2Filter, ProductType3Filter, ProductType4Filter. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+        throw new IOException(String.format(java.util.Locale.ROOT, "The JSON string is invalid for CatalogsProductGroupFilterKeys with anyOf schemas: AvailabilityFilter, BrandFilter, ConditionFilter, CurrencyFilter, CustomLabel0Filter, CustomLabel1Filter, CustomLabel2Filter, CustomLabel3Filter, CustomLabel4Filter, GenderFilter, GoogleProductCategory0Filter, GoogleProductCategory1Filter, GoogleProductCategory2Filter, GoogleProductCategory3Filter, GoogleProductCategory4Filter, GoogleProductCategory5Filter, GoogleProductCategory6Filter, ItemGroupIdFilter, ItemIdFilter, MaxPriceFilter, MediaTypeFilter, MinPriceFilter, ProductGroupReferenceFilter, ProductType0Filter, ProductType1Filter, ProductType2Filter, ProductType3Filter, ProductType4Filter. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
     }
 
     /**

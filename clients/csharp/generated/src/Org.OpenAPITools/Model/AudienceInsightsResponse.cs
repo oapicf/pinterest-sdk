@@ -223,12 +223,10 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "categories":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                categories = new Option<List<AudienceCategory>?>(JsonSerializer.Deserialize<List<AudienceCategory>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            categories = new Option<List<AudienceCategory>?>(JsonSerializer.Deserialize<List<AudienceCategory>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "demographics":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                demographics = new Option<AudienceDemographics?>(JsonSerializer.Deserialize<AudienceDemographics>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            demographics = new Option<AudienceDemographics?>(JsonSerializer.Deserialize<AudienceDemographics>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "type":
                             string? typeRawValue = utf8JsonReader.GetString();
@@ -239,12 +237,10 @@ namespace Org.OpenAPITools.Model
                             date = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "size":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                size = new Option<int?>(utf8JsonReader.GetInt32());
+                            size = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "size_is_upper_bound":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sizeIsUpperBound = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            sizeIsUpperBound = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

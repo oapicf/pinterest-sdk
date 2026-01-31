@@ -68,7 +68,7 @@ data class Account(
 
     @Schema(example = "163", readOnly = true, description = "User account monthly views.")
     @get:JsonProperty("monthly_views") val monthlyViews: kotlin.Int? = null
-    ) {
+) {
 
     /**
     * Type of account
@@ -83,7 +83,8 @@ data class Account(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): AccountType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'Account'")
             }
         }
     }

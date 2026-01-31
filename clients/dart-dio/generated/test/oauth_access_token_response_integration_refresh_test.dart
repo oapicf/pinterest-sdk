@@ -7,6 +7,16 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(OauthAccessTokenResponseIntegrationRefresh, () {
+    // String refreshToken
+    test('to test the property `refreshToken`', () async {
+      // TODO
+    });
+
+    // int refreshTokenExpiresIn
+    test('to test the property `refreshTokenExpiresIn`', () async {
+      // TODO
+    });
+
     // String responseType
     test('to test the property `responseType`', () async {
       // TODO
@@ -29,16 +39,6 @@ void main() {
 
     // String scope
     test('to test the property `scope`', () async {
-      // TODO
-    });
-
-    // String refreshToken
-    test('to test the property `refreshToken`', () async {
-      // TODO
-    });
-
-    // int refreshTokenExpiresIn
-    test('to test the property `refreshTokenExpiresIn`', () async {
       // TODO
     });
 

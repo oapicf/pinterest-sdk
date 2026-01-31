@@ -21,12 +21,12 @@ namespace org::openapitools::server::model
 
 CreateMMMReportRequest::CreateMMMReportRequest()
 {
+    m_CountriesIsSet = false;
     m_Report_name = "";
     m_Start_date = "";
     m_End_date = "";
     m_Granularity = "";
     m_Level = "";
-    m_CountriesIsSet = false;
     
 }
 
@@ -49,6 +49,29 @@ bool CreateMMMReportRequest::validate(std::stringstream& msg, const std::string&
     bool success = true;
     const std::string _pathPrefix = pathPrefix.empty() ? "CreateMMMReportRequest" : pathPrefix;
 
+         
+    if (countriesIsSet())
+    {
+        const std::vector<org::openapitools::server::model::TargetingAdvertiserCountry>& value = m_Countries;
+        const std::string currentValuePath = _pathPrefix + ".countries";
+                
+        
+        { // Recursive validation of array elements
+            const std::string oldValuePath = currentValuePath;
+            int i = 0;
+            for (const org::openapitools::server::model::TargetingAdvertiserCountry& value : value)
+            { 
+                const std::string currentValuePath = oldValuePath + "[" + std::to_string(i) + "]";
+                        
+        success = value.validate(msg, currentValuePath) && success;
+        
+        
+ 
+                i++;
+            }
+        }
+
+    }
              
     
     /* Start_date */ {
@@ -123,29 +146,6 @@ bool CreateMMMReportRequest::validate(std::stringstream& msg, const std::string&
         }
 
     }
-         
-    if (countriesIsSet())
-    {
-        const std::vector<org::openapitools::server::model::TargetingAdvertiserCountry>& value = m_Countries;
-        const std::string currentValuePath = _pathPrefix + ".countries";
-                
-        
-        { // Recursive validation of array elements
-            const std::string oldValuePath = currentValuePath;
-            int i = 0;
-            for (const org::openapitools::server::model::TargetingAdvertiserCountry& value : value)
-            { 
-                const std::string currentValuePath = oldValuePath + "[" + std::to_string(i) + "]";
-                        
-        success = value.validate(msg, currentValuePath) && success;
-        
-        
- 
-                i++;
-            }
-        }
-
-    }
     
     return success;
 }
@@ -154,6 +154,9 @@ bool CreateMMMReportRequest::operator==(const CreateMMMReportRequest& rhs) const
 {
     return
     
+    
+    
+    ((!countriesIsSet() && !rhs.countriesIsSet()) || (countriesIsSet() && rhs.countriesIsSet() && getCountries() == rhs.getCountries())) &&
     
     (getReportName() == rhs.getReportName())
      &&
@@ -174,10 +177,7 @@ bool CreateMMMReportRequest::operator==(const CreateMMMReportRequest& rhs) const
      &&
     
     (getColumns() == rhs.getColumns())
-     &&
     
-    
-    ((!countriesIsSet() && !rhs.countriesIsSet()) || (countriesIsSet() && rhs.countriesIsSet() && getCountries() == rhs.getCountries()))
     
     ;
 }
@@ -190,6 +190,8 @@ bool CreateMMMReportRequest::operator!=(const CreateMMMReportRequest& rhs) const
 void to_json(nlohmann::json& j, const CreateMMMReportRequest& o)
 {
     j = nlohmann::json::object();
+    if(o.countriesIsSet() || !o.m_Countries.empty())
+        j["countries"] = o.m_Countries;
     j["report_name"] = o.m_Report_name;
     j["start_date"] = o.m_Start_date;
     j["end_date"] = o.m_End_date;
@@ -197,13 +199,16 @@ void to_json(nlohmann::json& j, const CreateMMMReportRequest& o)
     j["level"] = o.m_Level;
     j["targeting_types"] = o.m_Targeting_types;
     j["columns"] = o.m_Columns;
-    if(o.countriesIsSet() || !o.m_Countries.empty())
-        j["countries"] = o.m_Countries;
     
 }
 
 void from_json(const nlohmann::json& j, CreateMMMReportRequest& o)
 {
+    if(j.find("countries") != j.end())
+    {
+        j.at("countries").get_to(o.m_Countries);
+        o.m_CountriesIsSet = true;
+    } 
     j.at("report_name").get_to(o.m_Report_name);
     j.at("start_date").get_to(o.m_Start_date);
     j.at("end_date").get_to(o.m_End_date);
@@ -211,14 +216,26 @@ void from_json(const nlohmann::json& j, CreateMMMReportRequest& o)
     j.at("level").get_to(o.m_Level);
     j.at("targeting_types").get_to(o.m_Targeting_types);
     j.at("columns").get_to(o.m_Columns);
-    if(j.find("countries") != j.end())
-    {
-        j.at("countries").get_to(o.m_Countries);
-        o.m_CountriesIsSet = true;
-    } 
     
 }
 
+std::vector<org::openapitools::server::model::TargetingAdvertiserCountry> CreateMMMReportRequest::getCountries() const
+{
+    return m_Countries;
+}
+void CreateMMMReportRequest::setCountries(std::vector<org::openapitools::server::model::TargetingAdvertiserCountry> const& value)
+{
+    m_Countries = value;
+    m_CountriesIsSet = true;
+}
+bool CreateMMMReportRequest::countriesIsSet() const
+{
+    return m_CountriesIsSet;
+}
+void CreateMMMReportRequest::unsetCountries()
+{
+    m_CountriesIsSet = false;
+}
 std::string CreateMMMReportRequest::getReportName() const
 {
     return m_Report_name;
@@ -274,23 +291,6 @@ std::vector<org::openapitools::server::model::MMMReportingColumn> CreateMMMRepor
 void CreateMMMReportRequest::setColumns(std::vector<org::openapitools::server::model::MMMReportingColumn> const& value)
 {
     m_Columns = value;
-}
-std::vector<org::openapitools::server::model::TargetingAdvertiserCountry> CreateMMMReportRequest::getCountries() const
-{
-    return m_Countries;
-}
-void CreateMMMReportRequest::setCountries(std::vector<org::openapitools::server::model::TargetingAdvertiserCountry> const& value)
-{
-    m_Countries = value;
-    m_CountriesIsSet = true;
-}
-bool CreateMMMReportRequest::countriesIsSet() const
-{
-    return m_CountriesIsSet;
-}
-void CreateMMMReportRequest::unsetCountries()
-{
-    m_CountriesIsSet = false;
 }
 
 

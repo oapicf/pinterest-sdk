@@ -9,9 +9,12 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_lead_form_array_response_items_inner
 
 type LeadFormArrayResponse* = object
   ## 
-  items*: seq[LeadFormArrayResponse_items_inner]
+  items*: Option[seq[LeadFormArrayResponse_items_inner]]
+

@@ -17,61 +17,6 @@ Delete lead ads subscription
 
 Delete an existing lead ads webhook subscription by ID. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class AdAccountsSubscriptionsDelByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new LeadAdsApi(config);
-            var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
-            var subscriptionId = "subscriptionId_example";  // string | Unique identifier of a subscription.
-
-            try
-            {
-                // Delete lead ads subscription
-                apiInstance.AdAccountsSubscriptionsDelById(adAccountId, subscriptionId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling LeadAdsApi.AdAccountsSubscriptionsDelById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AdAccountsSubscriptionsDelByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Delete lead ads subscription
-    apiInstance.AdAccountsSubscriptionsDelByIdWithHttpInfo(adAccountId, subscriptionId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling LeadAdsApi.AdAccountsSubscriptionsDelByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -113,65 +58,6 @@ Get lead ads subscription
 
 Get a specific lead ads subscription record. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class AdAccountsSubscriptionsGetByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new LeadAdsApi(config);
-            var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
-            var subscriptionId = "subscriptionId_example";  // string | Unique identifier of a subscription.
-
-            try
-            {
-                // Get lead ads subscription
-                AdAccountGetSubscriptionResponse result = apiInstance.AdAccountsSubscriptionsGetById(adAccountId, subscriptionId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling LeadAdsApi.AdAccountsSubscriptionsGetById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AdAccountsSubscriptionsGetByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get lead ads subscription
-    ApiResponse<AdAccountGetSubscriptionResponse> response = apiInstance.AdAccountsSubscriptionsGetByIdWithHttpInfo(adAccountId, subscriptionId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling LeadAdsApi.AdAccountsSubscriptionsGetByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -213,66 +99,6 @@ Get lead ads subscriptions
 
 Get the advertiser's list of lead ads subscriptions. - Only requests for the OWNER or ADMIN of the ad_account will be allowed.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class AdAccountsSubscriptionsGetListExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new LeadAdsApi(config);
-            var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
-            var pageSize = 25;  // int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)  (default to 25)
-            var bookmark = "bookmark_example";  // string | Cursor used to fetch the next page of items (optional) 
-
-            try
-            {
-                // Get lead ads subscriptions
-                AdAccountsSubscriptionsGetList200Response result = apiInstance.AdAccountsSubscriptionsGetList(adAccountId, pageSize, bookmark);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling LeadAdsApi.AdAccountsSubscriptionsGetList: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AdAccountsSubscriptionsGetListWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get lead ads subscriptions
-    ApiResponse<AdAccountsSubscriptionsGetList200Response> response = apiInstance.AdAccountsSubscriptionsGetListWithHttpInfo(adAccountId, pageSize, bookmark);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling LeadAdsApi.AdAccountsSubscriptionsGetListWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -313,65 +139,6 @@ Create lead ads subscription
 
 Create a lead ads webhook subscription. Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to the subscriber. Subscriptions can exist for a specific lead form or at ad account level. - Only requests for the OWNER or ADMIN of the ad_account will be allowed. - Advertisers can set up multiple integrations using ad_account_id + lead_form_id but only one integration per unique records. - For data security, egress lead data is encrypted with AES-256-GCM.  <strong>This endpoint is currently in beta and not available to all apps. <a href='/docs/getting-started/beta-and-advanced-access/'>Learn more</a>.</strong>
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class AdAccountsSubscriptionsPostExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.pinterest.com/v5";
-            // Configure OAuth2 access token for authorization: pinterest_oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new LeadAdsApi(config);
-            var adAccountId = "adAccountId_example";  // string | Unique identifier of an ad account.
-            var adAccountCreateSubscriptionRequest = new AdAccountCreateSubscriptionRequest(); // AdAccountCreateSubscriptionRequest | Subscription to create.
-
-            try
-            {
-                // Create lead ads subscription
-                AdAccountCreateSubscriptionResponse result = apiInstance.AdAccountsSubscriptionsPost(adAccountId, adAccountCreateSubscriptionRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling LeadAdsApi.AdAccountsSubscriptionsPost: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AdAccountsSubscriptionsPostWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Create lead ads subscription
-    ApiResponse<AdAccountCreateSubscriptionResponse> response = apiInstance.AdAccountsSubscriptionsPostWithHttpInfo(adAccountId, adAccountCreateSubscriptionRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling LeadAdsApi.AdAccountsSubscriptionsPostWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

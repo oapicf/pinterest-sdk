@@ -100,7 +100,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adsCreditRedeemCall(String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call adsCreditRedeemCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AdsCreditRedeemRequest adsCreditRedeemRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -147,7 +147,7 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call adsCreditRedeemValidateBeforeCall(String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call adsCreditRedeemValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AdsCreditRedeemRequest adsCreditRedeemRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling adsCreditRedeem(Async)");
@@ -178,7 +178,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public AdsCreditRedeemResponse adsCreditRedeem(String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest) throws ApiException {
+    public AdsCreditRedeemResponse adsCreditRedeem(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AdsCreditRedeemRequest adsCreditRedeemRequest) throws ApiException {
         ApiResponse<AdsCreditRedeemResponse> localVarResp = adsCreditRedeemWithHttpInfo(adAccountId, adsCreditRedeemRequest);
         return localVarResp.getData();
     }
@@ -199,7 +199,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdsCreditRedeemResponse> adsCreditRedeemWithHttpInfo(String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest) throws ApiException {
+    public ApiResponse<AdsCreditRedeemResponse> adsCreditRedeemWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AdsCreditRedeemRequest adsCreditRedeemRequest) throws ApiException {
         okhttp3.Call localVarCall = adsCreditRedeemValidateBeforeCall(adAccountId, adsCreditRedeemRequest, null);
         Type localVarReturnType = new TypeToken<AdsCreditRedeemResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -222,7 +222,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adsCreditRedeemAsync(String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest, final ApiCallback<AdsCreditRedeemResponse> _callback) throws ApiException {
+    public okhttp3.Call adsCreditRedeemAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull AdsCreditRedeemRequest adsCreditRedeemRequest, final ApiCallback<AdsCreditRedeemResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = adsCreditRedeemValidateBeforeCall(adAccountId, adsCreditRedeemRequest, _callback);
         Type localVarReturnType = new TypeToken<AdsCreditRedeemResponse>(){}.getType();
@@ -245,7 +245,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adsCreditsDiscountsGetCall(String adAccountId, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call adsCreditsDiscountsGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -299,7 +299,7 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call adsCreditsDiscountsGetValidateBeforeCall(String adAccountId, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call adsCreditsDiscountsGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling adsCreditsDiscountsGet(Async)");
@@ -325,7 +325,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public AdsCreditsDiscountsGet200Response adsCreditsDiscountsGet(String adAccountId, String bookmark, Integer pageSize) throws ApiException {
+    public AdsCreditsDiscountsGet200Response adsCreditsDiscountsGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<AdsCreditsDiscountsGet200Response> localVarResp = adsCreditsDiscountsGetWithHttpInfo(adAccountId, bookmark, pageSize);
         return localVarResp.getData();
     }
@@ -346,7 +346,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdsCreditsDiscountsGet200Response> adsCreditsDiscountsGetWithHttpInfo(String adAccountId, String bookmark, Integer pageSize) throws ApiException {
+    public ApiResponse<AdsCreditsDiscountsGet200Response> adsCreditsDiscountsGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = adsCreditsDiscountsGetValidateBeforeCall(adAccountId, bookmark, pageSize, null);
         Type localVarReturnType = new TypeToken<AdsCreditsDiscountsGet200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -369,7 +369,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call adsCreditsDiscountsGetAsync(String adAccountId, String bookmark, Integer pageSize, final ApiCallback<AdsCreditsDiscountsGet200Response> _callback) throws ApiException {
+    public okhttp3.Call adsCreditsDiscountsGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback<AdsCreditsDiscountsGet200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = adsCreditsDiscountsGetValidateBeforeCall(adAccountId, bookmark, pageSize, _callback);
         Type localVarReturnType = new TypeToken<AdsCreditsDiscountsGet200Response>(){}.getType();
@@ -393,7 +393,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call billingProfilesGetCall(String adAccountId, Boolean isActive, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call billingProfilesGetCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull Boolean isActive, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -451,7 +451,7 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call billingProfilesGetValidateBeforeCall(String adAccountId, Boolean isActive, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call billingProfilesGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull Boolean isActive, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling billingProfilesGet(Async)");
@@ -483,7 +483,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public BillingProfilesGet200Response billingProfilesGet(String adAccountId, Boolean isActive, String bookmark, Integer pageSize) throws ApiException {
+    public BillingProfilesGet200Response billingProfilesGet(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull Boolean isActive, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<BillingProfilesGet200Response> localVarResp = billingProfilesGetWithHttpInfo(adAccountId, isActive, bookmark, pageSize);
         return localVarResp.getData();
     }
@@ -505,7 +505,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BillingProfilesGet200Response> billingProfilesGetWithHttpInfo(String adAccountId, Boolean isActive, String bookmark, Integer pageSize) throws ApiException {
+    public ApiResponse<BillingProfilesGet200Response> billingProfilesGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull Boolean isActive, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = billingProfilesGetValidateBeforeCall(adAccountId, isActive, bookmark, pageSize, null);
         Type localVarReturnType = new TypeToken<BillingProfilesGet200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -529,7 +529,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call billingProfilesGetAsync(String adAccountId, Boolean isActive, String bookmark, Integer pageSize, final ApiCallback<BillingProfilesGet200Response> _callback) throws ApiException {
+    public okhttp3.Call billingProfilesGetAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull Boolean isActive, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback<BillingProfilesGet200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = billingProfilesGetValidateBeforeCall(adAccountId, isActive, bookmark, pageSize, _callback);
         Type localVarReturnType = new TypeToken<BillingProfilesGet200Response>(){}.getType();
@@ -551,7 +551,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ssioAccountsGetCall(String adAccountId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call ssioAccountsGetCall(@javax.annotation.Nonnull String adAccountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -597,7 +597,7 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ssioAccountsGetValidateBeforeCall(String adAccountId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call ssioAccountsGetValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling ssioAccountsGet(Async)");
@@ -622,7 +622,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public SSIOAccountResponse ssioAccountsGet(String adAccountId) throws ApiException {
+    public SSIOAccountResponse ssioAccountsGet(@javax.annotation.Nonnull String adAccountId) throws ApiException {
         ApiResponse<SSIOAccountResponse> localVarResp = ssioAccountsGetWithHttpInfo(adAccountId);
         return localVarResp.getData();
     }
@@ -642,7 +642,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SSIOAccountResponse> ssioAccountsGetWithHttpInfo(String adAccountId) throws ApiException {
+    public ApiResponse<SSIOAccountResponse> ssioAccountsGetWithHttpInfo(@javax.annotation.Nonnull String adAccountId) throws ApiException {
         okhttp3.Call localVarCall = ssioAccountsGetValidateBeforeCall(adAccountId, null);
         Type localVarReturnType = new TypeToken<SSIOAccountResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -664,7 +664,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ssioAccountsGetAsync(String adAccountId, final ApiCallback<SSIOAccountResponse> _callback) throws ApiException {
+    public okhttp3.Call ssioAccountsGetAsync(@javax.annotation.Nonnull String adAccountId, final ApiCallback<SSIOAccountResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = ssioAccountsGetValidateBeforeCall(adAccountId, _callback);
         Type localVarReturnType = new TypeToken<SSIOAccountResponse>(){}.getType();
@@ -687,7 +687,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ssioInsertionOrderCreateCall(String adAccountId, SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call ssioInsertionOrderCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -734,7 +734,7 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ssioInsertionOrderCreateValidateBeforeCall(String adAccountId, SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call ssioInsertionOrderCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling ssioInsertionOrderCreate(Async)");
@@ -765,7 +765,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public SSIOCreateInsertionOrderResponse ssioInsertionOrderCreate(String adAccountId, SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest) throws ApiException {
+    public SSIOCreateInsertionOrderResponse ssioInsertionOrderCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest) throws ApiException {
         ApiResponse<SSIOCreateInsertionOrderResponse> localVarResp = ssioInsertionOrderCreateWithHttpInfo(adAccountId, ssIOCreateInsertionOrderRequest);
         return localVarResp.getData();
     }
@@ -786,7 +786,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SSIOCreateInsertionOrderResponse> ssioInsertionOrderCreateWithHttpInfo(String adAccountId, SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest) throws ApiException {
+    public ApiResponse<SSIOCreateInsertionOrderResponse> ssioInsertionOrderCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest) throws ApiException {
         okhttp3.Call localVarCall = ssioInsertionOrderCreateValidateBeforeCall(adAccountId, ssIOCreateInsertionOrderRequest, null);
         Type localVarReturnType = new TypeToken<SSIOCreateInsertionOrderResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -809,7 +809,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ssioInsertionOrderCreateAsync(String adAccountId, SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest, final ApiCallback<SSIOCreateInsertionOrderResponse> _callback) throws ApiException {
+    public okhttp3.Call ssioInsertionOrderCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest, final ApiCallback<SSIOCreateInsertionOrderResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = ssioInsertionOrderCreateValidateBeforeCall(adAccountId, ssIOCreateInsertionOrderRequest, _callback);
         Type localVarReturnType = new TypeToken<SSIOCreateInsertionOrderResponse>(){}.getType();
@@ -832,7 +832,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ssioInsertionOrderEditCall(String adAccountId, SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call ssioInsertionOrderEditCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -879,7 +879,7 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ssioInsertionOrderEditValidateBeforeCall(String adAccountId, SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call ssioInsertionOrderEditValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling ssioInsertionOrderEdit(Async)");
@@ -910,7 +910,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public SSIOEditInsertionOrderResponse ssioInsertionOrderEdit(String adAccountId, SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest) throws ApiException {
+    public SSIOEditInsertionOrderResponse ssioInsertionOrderEdit(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest) throws ApiException {
         ApiResponse<SSIOEditInsertionOrderResponse> localVarResp = ssioInsertionOrderEditWithHttpInfo(adAccountId, ssIOEditInsertionOrderRequest);
         return localVarResp.getData();
     }
@@ -931,7 +931,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SSIOEditInsertionOrderResponse> ssioInsertionOrderEditWithHttpInfo(String adAccountId, SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest) throws ApiException {
+    public ApiResponse<SSIOEditInsertionOrderResponse> ssioInsertionOrderEditWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest) throws ApiException {
         okhttp3.Call localVarCall = ssioInsertionOrderEditValidateBeforeCall(adAccountId, ssIOEditInsertionOrderRequest, null);
         Type localVarReturnType = new TypeToken<SSIOEditInsertionOrderResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -954,7 +954,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ssioInsertionOrderEditAsync(String adAccountId, SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest, final ApiCallback<SSIOEditInsertionOrderResponse> _callback) throws ApiException {
+    public okhttp3.Call ssioInsertionOrderEditAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest, final ApiCallback<SSIOEditInsertionOrderResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = ssioInsertionOrderEditValidateBeforeCall(adAccountId, ssIOEditInsertionOrderRequest, _callback);
         Type localVarReturnType = new TypeToken<SSIOEditInsertionOrderResponse>(){}.getType();
@@ -978,7 +978,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ssioInsertionOrdersStatusGetByAdAccountCall(String adAccountId, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call ssioInsertionOrdersStatusGetByAdAccountCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1032,7 +1032,7 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ssioInsertionOrdersStatusGetByAdAccountValidateBeforeCall(String adAccountId, String bookmark, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call ssioInsertionOrdersStatusGetByAdAccountValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling ssioInsertionOrdersStatusGetByAdAccount(Async)");
@@ -1059,7 +1059,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public SsioInsertionOrdersStatusGetByAdAccount200Response ssioInsertionOrdersStatusGetByAdAccount(String adAccountId, String bookmark, Integer pageSize) throws ApiException {
+    public SsioInsertionOrdersStatusGetByAdAccount200Response ssioInsertionOrdersStatusGetByAdAccount(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<SsioInsertionOrdersStatusGetByAdAccount200Response> localVarResp = ssioInsertionOrdersStatusGetByAdAccountWithHttpInfo(adAccountId, bookmark, pageSize);
         return localVarResp.getData();
     }
@@ -1081,7 +1081,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SsioInsertionOrdersStatusGetByAdAccount200Response> ssioInsertionOrdersStatusGetByAdAccountWithHttpInfo(String adAccountId, String bookmark, Integer pageSize) throws ApiException {
+    public ApiResponse<SsioInsertionOrdersStatusGetByAdAccount200Response> ssioInsertionOrdersStatusGetByAdAccountWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = ssioInsertionOrdersStatusGetByAdAccountValidateBeforeCall(adAccountId, bookmark, pageSize, null);
         Type localVarReturnType = new TypeToken<SsioInsertionOrdersStatusGetByAdAccount200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1105,7 +1105,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ssioInsertionOrdersStatusGetByAdAccountAsync(String adAccountId, String bookmark, Integer pageSize, final ApiCallback<SsioInsertionOrdersStatusGetByAdAccount200Response> _callback) throws ApiException {
+    public okhttp3.Call ssioInsertionOrdersStatusGetByAdAccountAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, final ApiCallback<SsioInsertionOrdersStatusGetByAdAccount200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = ssioInsertionOrdersStatusGetByAdAccountValidateBeforeCall(adAccountId, bookmark, pageSize, _callback);
         Type localVarReturnType = new TypeToken<SsioInsertionOrdersStatusGetByAdAccount200Response>(){}.getType();
@@ -1128,7 +1128,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ssioInsertionOrdersStatusGetByPinOrderIdCall(String adAccountId, String pinOrderId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call ssioInsertionOrdersStatusGetByPinOrderIdCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String pinOrderId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1175,7 +1175,7 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ssioInsertionOrdersStatusGetByPinOrderIdValidateBeforeCall(String adAccountId, String pinOrderId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call ssioInsertionOrdersStatusGetByPinOrderIdValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String pinOrderId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling ssioInsertionOrdersStatusGetByPinOrderId(Async)");
@@ -1206,7 +1206,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public SSIOInsertionOrderStatusResponse ssioInsertionOrdersStatusGetByPinOrderId(String adAccountId, String pinOrderId) throws ApiException {
+    public SSIOInsertionOrderStatusResponse ssioInsertionOrdersStatusGetByPinOrderId(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String pinOrderId) throws ApiException {
         ApiResponse<SSIOInsertionOrderStatusResponse> localVarResp = ssioInsertionOrdersStatusGetByPinOrderIdWithHttpInfo(adAccountId, pinOrderId);
         return localVarResp.getData();
     }
@@ -1227,7 +1227,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SSIOInsertionOrderStatusResponse> ssioInsertionOrdersStatusGetByPinOrderIdWithHttpInfo(String adAccountId, String pinOrderId) throws ApiException {
+    public ApiResponse<SSIOInsertionOrderStatusResponse> ssioInsertionOrdersStatusGetByPinOrderIdWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String pinOrderId) throws ApiException {
         okhttp3.Call localVarCall = ssioInsertionOrdersStatusGetByPinOrderIdValidateBeforeCall(adAccountId, pinOrderId, null);
         Type localVarReturnType = new TypeToken<SSIOInsertionOrderStatusResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1250,7 +1250,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ssioInsertionOrdersStatusGetByPinOrderIdAsync(String adAccountId, String pinOrderId, final ApiCallback<SSIOInsertionOrderStatusResponse> _callback) throws ApiException {
+    public okhttp3.Call ssioInsertionOrdersStatusGetByPinOrderIdAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull String pinOrderId, final ApiCallback<SSIOInsertionOrderStatusResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = ssioInsertionOrdersStatusGetByPinOrderIdValidateBeforeCall(adAccountId, pinOrderId, _callback);
         Type localVarReturnType = new TypeToken<SSIOInsertionOrderStatusResponse>(){}.getType();
@@ -1275,7 +1275,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ssioOrderLinesGetByAdAccountCall(String adAccountId, String bookmark, Integer pageSize, String pinOrderId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call ssioOrderLinesGetByAdAccountCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pinOrderId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1333,7 +1333,7 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call ssioOrderLinesGetByAdAccountValidateBeforeCall(String adAccountId, String bookmark, Integer pageSize, String pinOrderId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call ssioOrderLinesGetByAdAccountValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pinOrderId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling ssioOrderLinesGetByAdAccount(Async)");
@@ -1361,7 +1361,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(String adAccountId, String bookmark, Integer pageSize, String pinOrderId) throws ApiException {
+    public SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pinOrderId) throws ApiException {
         ApiResponse<SsioOrderLinesGetByAdAccount200Response> localVarResp = ssioOrderLinesGetByAdAccountWithHttpInfo(adAccountId, bookmark, pageSize, pinOrderId);
         return localVarResp.getData();
     }
@@ -1384,7 +1384,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SsioOrderLinesGetByAdAccount200Response> ssioOrderLinesGetByAdAccountWithHttpInfo(String adAccountId, String bookmark, Integer pageSize, String pinOrderId) throws ApiException {
+    public ApiResponse<SsioOrderLinesGetByAdAccount200Response> ssioOrderLinesGetByAdAccountWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pinOrderId) throws ApiException {
         okhttp3.Call localVarCall = ssioOrderLinesGetByAdAccountValidateBeforeCall(adAccountId, bookmark, pageSize, pinOrderId, null);
         Type localVarReturnType = new TypeToken<SsioOrderLinesGetByAdAccount200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1409,7 +1409,7 @@ public class BillingApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call ssioOrderLinesGetByAdAccountAsync(String adAccountId, String bookmark, Integer pageSize, String pinOrderId, final ApiCallback<SsioOrderLinesGetByAdAccount200Response> _callback) throws ApiException {
+    public okhttp3.Call ssioOrderLinesGetByAdAccountAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String bookmark, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String pinOrderId, final ApiCallback<SsioOrderLinesGetByAdAccount200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = ssioOrderLinesGetByAdAccountValidateBeforeCall(adAccountId, bookmark, pageSize, pinOrderId, _callback);
         Type localVarReturnType = new TypeToken<SsioOrderLinesGetByAdAccount200Response>(){}.getType();

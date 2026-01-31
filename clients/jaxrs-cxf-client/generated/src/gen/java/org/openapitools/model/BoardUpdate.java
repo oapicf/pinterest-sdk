@@ -1,23 +1,25 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Board fields for updates
- **/
+ * Board fields for updates
+ */
 @ApiModel(description="Board fields for updates")
 
 public class BoardUpdate  {
   
   @ApiModelProperty(example = "Summer Recipes", value = "")
+
   private String name;
 
   @ApiModelProperty(example = "My favorite summer recipes", value = "")
+
   private String description;
 
 public enum PrivacyEnum {
@@ -51,6 +53,7 @@ PUBLIC(String.valueOf("PUBLIC")), SECRET(String.valueOf("SECRET"));
 }
 
   @ApiModelProperty(value = "")
+
   private PrivacyEnum privacy;
  /**
    * Get name

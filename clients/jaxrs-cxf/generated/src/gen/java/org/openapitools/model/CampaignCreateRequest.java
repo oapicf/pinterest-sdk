@@ -16,76 +16,92 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CampaignCreateRequest  {
   
-  @ApiModelProperty(example = "549755885175", required = true, value = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.")
  /**
-   * Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
-  **/
+  * Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.
+  */
+  @ApiModelProperty(example = "549755885175", required = true, value = "Campaign's Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.")
+
   private String adAccountId;
 
-  @ApiModelProperty(example = "ACME Tools", required = true, value = "Campaign name.")
  /**
-   * Campaign name.
-  **/
+  * Campaign name.
+  */
+  @ApiModelProperty(example = "ACME Tools", required = true, value = "Campaign name.")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private EntityStatus status = "ACTIVE";
 
-  @ApiModelProperty(example = "1432744744", value = "Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.")
  /**
-   * Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
-  **/
+  * Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.
+  */
+  @ApiModelProperty(example = "1432744744", value = "Campaign total spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"daily_spend_cap\" cannot be set at the same time.")
+
   private Integer lifetimeSpendCap;
 
-  @ApiModelProperty(example = "1432744744", value = "Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.")
  /**
-   * Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
-  **/
+  * Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.
+  */
+  @ApiModelProperty(example = "1432744744", value = "Campaign daily spending cap. Required for Campaign Budget Optimization (CBO) campaigns. This and \"lifetime_spend_cap\" cannot be set at the same time.")
+
   private Integer dailySpendCap;
 
-  @ApiModelProperty(example = "549755885175", value = "Order line ID that appears on the invoice.")
  /**
-   * Order line ID that appears on the invoice.
-  **/
+  * Order line ID that appears on the invoice.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Order line ID that appears on the invoice.")
+
   private String orderLineId;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private TrackingUrls trackingUrls;
 
-  @ApiModelProperty(example = "1580865126", value = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
  /**
-   * Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  **/
+  * Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+  */
+  @ApiModelProperty(example = "1580865126", value = "Campaign start time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
+
   private Integer startTime;
 
-  @ApiModelProperty(example = "1644023526", value = "Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
  /**
-   * Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
-  **/
+  * Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.
+  */
+  @ApiModelProperty(example = "1644023526", value = "Campaign end time. Unix timestamp in seconds. Only used for Campaign Budget Optimization (CBO) campaigns.")
+
   private Integer endTime;
 
-  @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
  /**
-   * Determine if a campaign has flexible daily budgets setup.
-  **/
+  * Determine if a campaign has flexible daily budgets setup.
+  */
+  @ApiModelProperty(example = "true", value = "Determine if a campaign has flexible daily budgets setup.")
+
   private Boolean isFlexibleDailyBudgets = false;
 
-  @ApiModelProperty(example = "0", value = "When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.")
  /**
-   * When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
-  **/
+  * When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.
+  */
+  @ApiModelProperty(example = "0", value = "When transitioning from campaign budget optimization to non-campaign budget optimization, the default_ad_group_budget_in_micro_currency will propagate to each child ad groups daily budget. Unit is micro currency of the associated advertiser account.")
+
   private Integer defaultAdGroupBudgetInMicroCurrency;
 
-  @ApiModelProperty(example = "true", value = "Specifies whether the campaign was created in the automated campaign flow")
  /**
-   * Specifies whether the campaign was created in the automated campaign flow
-  **/
+  * Specifies whether the campaign was created in the automated campaign flow
+  */
+  @ApiModelProperty(example = "true", value = "Specifies whether the campaign was created in the automated campaign flow")
+
   private Boolean isAutomatedCampaign = false;
 
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private ObjectiveType objectiveType;
  /**
    * Campaign&#39;s Advertiser ID. If you want to create a campaign in a Business Account shared account you need to specify the Business Access advertiser ID in both the query path param as well as the request body schema.

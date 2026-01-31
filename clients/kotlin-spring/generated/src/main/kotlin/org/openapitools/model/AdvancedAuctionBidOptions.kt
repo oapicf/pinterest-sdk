@@ -33,7 +33,7 @@ data class AdvancedAuctionBidOptions(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("placement_multipliers") val placementMultipliers: PlacementMultipliers? = null
-    ) {
+) {
 
 }
 

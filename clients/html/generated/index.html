@@ -2927,6 +2927,9 @@ You can view the returned preview URL on a webpage or iframe for 7 days, after w
     <h4 class="field-label">400</h4>
     Invalid Pin parameters response
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -3931,9 +3934,15 @@ items. default: null </div><div class="param">bookmark (optional)</div>
     <h4 class="field-label">400</h4>
     Invalid request parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Not authenticated to get item bid options
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Not authorized to get item bid options
         <a href="#Error">Error</a>
@@ -4057,9 +4066,15 @@ items. default: null </div><div class="param">bookmark (optional)</div>
     <h4 class="field-label">400</h4>
     Invalid request parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Not authenticated to post item bid options
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Not authorized to post item bid options
         <a href="#Error">Error</a>
@@ -5756,6 +5771,9 @@ Note that higher-value IDs are associated with more-recently added items. defaul
     <h4 class="field-label">400</h4>
     Error thrown when unable to redeem offer code.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -8730,7 +8748,7 @@ granted your partner access to. If you specify:</p>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Specifies whether to fetch internal or external (shared) partners.
 If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br>
-If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. default: null </div><div class="param">asset_type (optional)</div>
+If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. default: INTERNAL </div><div class="param">asset_type (optional)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A resource type to filter the assets by. Only assets of the specified type will be returned. default: AD_ACCOUNT </div><div class="param">start_index (optional)</div>
 
@@ -9233,8 +9251,16 @@ assets.
     },
     "invite" : {
       "created_by_business_id" : "1234567890123",
+      "invite_data" : {
+        "invite_type" : "MEMBER_INVITE",
+        "sent_at" : 1646767577816,
+        "last_updated_time" : 1646767577816,
+        "invite_expiration" : 1709748104775,
+        "invite_status" : "PENDING"
+      },
+      "id" : "383791336903426391",
       "created_by_user_id" : "1234567890123",
-      "user" : "{}"
+      "is_received_invite" : true
     }
   }, {
     "exception" : {
@@ -9245,8 +9271,16 @@ assets.
     },
     "invite" : {
       "created_by_business_id" : "1234567890123",
+      "invite_data" : {
+        "invite_type" : "MEMBER_INVITE",
+        "sent_at" : 1646767577816,
+        "last_updated_time" : 1646767577816,
+        "invite_expiration" : 1709748104775,
+        "invite_status" : "PENDING"
+      },
+      "id" : "383791336903426391",
       "created_by_user_id" : "1234567890123",
-      "user" : "{}"
+      "is_received_invite" : true
     }
   } ]
 }</code></pre>
@@ -9451,8 +9485,16 @@ https://help.pinterest.com/en/business/article/profile-permissions-in-business-a
       } ]
     },
     "business_roles" : [ "BIZ_ADMIN" ],
-    "created_by_business" : "{}",
-    "created_by_user" : "{}"
+    "invite_data" : {
+      "invite_type" : "MEMBER_INVITE",
+      "sent_at" : 1646767577816,
+      "last_updated_time" : 1646767577816,
+      "invite_expiration" : 1709748104775,
+      "invite_status" : "PENDING"
+    },
+    "id" : "383791336903426391",
+    "user" : "{}",
+    "is_received_invite" : true
   }, {
     "created_time" : 1646767577816,
     "assets_summary" : {
@@ -9472,8 +9514,16 @@ https://help.pinterest.com/en/business/article/profile-permissions-in-business-a
       } ]
     },
     "business_roles" : [ "BIZ_ADMIN" ],
-    "created_by_business" : "{}",
-    "created_by_user" : "{}"
+    "invite_data" : {
+      "invite_type" : "MEMBER_INVITE",
+      "sent_at" : 1646767577816,
+      "last_updated_time" : 1646767577816,
+      "invite_expiration" : 1709748104775,
+      "invite_status" : "PENDING"
+    },
+    "id" : "383791336903426391",
+    "user" : "{}",
+    "is_received_invite" : true
   } ]
 }</code></pre>
     <h3 class="field-label">Example data</h3>
@@ -10984,9 +11034,15 @@ items. default: null </div><div class="param">bookmark (optional)</div>
     <h4 class="field-label">400</h4>
     Invalid parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -11080,9 +11136,15 @@ items. default: null </div><div class="param">bookmark (optional)</div>
     <h4 class="field-label">400</h4>
     Invalid parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -11182,12 +11244,21 @@ items. default: null </div><div class="param">bookmark (optional)</div>
     <h4 class="field-label">400</h4>
     Invalid parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Catalogs product group not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -11317,15 +11388,39 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid body.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Forbidden. Account not approved for catalog product group mutations yet.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Conflict. Can't create this catalogs product group with this value.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -11426,15 +11521,39 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid body.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Forbidden. Account not approved for catalog product group mutations yet.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Conflict. Can't create this catalogs product group with this value.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -11525,18 +11644,42 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid catalogs product group id parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Forbidden. Account not approved for catalog product group mutations yet.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Catalogs product group not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Conflict. Can't delete this catalogs product group.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -11617,15 +11760,36 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Forbidden. Account not approved for catalog product group mutations yet.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Catalogs product group not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Conflict. Can't delete this catalogs product group.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -11753,18 +11917,36 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid catalogs product group id parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Forbidden. Account not approved for catalog product group mutations yet.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Catalogs product group not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Conflict. Can't get a catalogs product group without an existing catalog.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -11928,18 +12110,36 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid feed parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Forbidden. Account not approved for catalog product group mutations yet.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Data feed not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Conflict. Can't create this catalogs product group with this value.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -12022,9 +12222,15 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">404</h4>
     Product Group Not Found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Can't access this feature without an existing catalog.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -12166,18 +12372,48 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Forbidden. Account not approved for catalog product group mutations yet.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Catalogs product group not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Conflict. Can't update this catalogs product group to this value.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -12515,12 +12751,21 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Feed not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -12657,21 +12902,45 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid feed parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Business account required.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     User website required.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">422</h4>
     Unique feed name is required.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">501</h4>
     Not implemented (absent &quot;default_country&quot; or &quot;default_locale&quot;).
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -12756,15 +13025,30 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid feed parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Forbidden. Account not approved for feed mutations yet.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Data feed not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Conflict. Can't delete a feed with active promotions.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -12872,12 +13156,21 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid feed parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Data feed not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -12967,12 +13260,24 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid feed parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Forbidden. Account not approved for feed mutations yet.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Data feed not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -13098,9 +13403,15 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -13222,12 +13533,24 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid feed parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Forbidden. Account not approved for feed mutations yet.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Data feed not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -13322,9 +13645,15 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid request parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Not authorized to access catalogs items
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Not authorized to access catalogs items
         <a href="#Error">Error</a>
@@ -13427,9 +13756,15 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">400</h4>
     Invalid request
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Not authorized to access catalogs items
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Not authorized to access catalogs items
         <a href="#Error">Error</a>
@@ -13526,15 +13861,24 @@ If you require access, please reach out to your partner manager.</p>
     <h4 class="field-label">401</h4>
     Not authenticated to access catalogs items batch
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Not authorized to access catalogs items batch
         <a href="#Error">Error</a>
     <h4 class="field-label">404</h4>
     Catalogs items batch not found
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">405</h4>
     Method Not Allowed.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -13634,9 +13978,15 @@ If you require access, please reach out to your partner manager.</li>
     <h4 class="field-label">400</h4>
     Invalid request parameters.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">401</h4>
     Not authenticated to post catalogs items
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Not authorized to post catalogs items
         <a href="#Error">Error</a>
@@ -14288,12 +14638,21 @@ If you require access, please reach out to your partner manager.</li>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Processing Result not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">501</h4>
     Not implemented.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -14395,9 +14754,18 @@ If you require access, please reach out to your partner manager.</li>
     <h4 class="field-label">401</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Conflict. Can't get products.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -14485,9 +14853,21 @@ If you require access, please reach out to your partner manager.</li>
     <h4 class="field-label">404</h4>
     Entity (e.g., catalog, feed or processing_result) not found
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Can't access this feature without an existing catalog.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -14567,9 +14947,15 @@ If you require access, please reach out to your partner manager.</li>
     <h4 class="field-label">400</h4>
     The token you provided is not valid or has expired.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Can't access this feature without an existing catalog.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -14650,6 +15036,9 @@ If you require access, please reach out to your partner manager.</li>
     <h4 class="field-label">401</h4>
     Not authorized to access catalogs
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -14785,9 +15174,15 @@ Warning: If you use this query parameter, be certain that it is off (set to fals
     <h4 class="field-label">401</h4>
     Not authorized to send conversion events
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     Unauthorized access.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">422</h4>
     Not all events were successfully processed.
         <a href="#DetailedError">DetailedError</a>
@@ -15620,6 +16015,9 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     <h4 class="field-label">404</h4>
     Integration not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -15845,9 +16243,15 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     <h4 class="field-label">404</h4>
     Integration not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Can't access this integration metadata.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -15944,9 +16348,15 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     <h4 class="field-label">404</h4>
     Integration not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Can't access this integration metadata.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -16037,9 +16447,15 @@ Note: If you're interested in joining the beta, please reach out to your Pintere
     <h4 class="field-label">404</h4>
     Integration not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">409</h4>
     Can't access this integration metadata.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -16753,9 +17169,15 @@ If set to <code>true</code>, the data will be normalized as a group.  The peak s
     <h4 class="field-label">403</h4>
     You are not authorized to delete this subscription.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Subscription not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -16850,9 +17272,15 @@ If set to <code>true</code>, the data will be normalized as a group.  The peak s
     <h4 class="field-label">403</h4>
     Can't access this subscription.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Subscription not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -16951,6 +17379,9 @@ If set to <code>true</code>, the data will be normalized as a group.  The peak s
     <h4 class="field-label">403</h4>
     Can't access this subscription.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -17047,6 +17478,9 @@ Subscriptions allow Pinterest to deliver lead data from Ads Manager directly to 
     <h4 class="field-label">403</h4>
     Can't access this subscription.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error.
         <a href="#Error">Error</a>
@@ -18595,12 +19029,27 @@ an object within a short time window.
     <h4 class="field-label">400</h4>
     Invalid Pin parameters response
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">403</h4>
     The Pin's image is too small, too large or is broken
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">404</h4>
     Board or section not found
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">429</h4>
     This request exceeded a rate limit. This can happen if the client exceeds one
 of the published rate limits or if multiple write operations are applied to
@@ -19099,6 +19548,15 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     <h4 class="field-label">404</h4>
     Board or Pin not found.
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -20517,6 +20975,9 @@ See <a href='/docs/api-features/analytics-overview/'>Organic Analytics</a> and <
     <h4 class="field-label">404</h4>
     User not found
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -21275,6 +21736,9 @@ Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', 
     <h4 class="field-label">404</h4>
     User not found
         <a href="#Error">Error</a>
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: </div>
+    <pre class="example"><code></code></pre>
     <h4 class="field-label">default</h4>
     Unexpected error
         <a href="#Error">Error</a>
@@ -22372,7 +22836,6 @@ Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', 
     <li><a href="#AudienceCommon"><code>AudienceCommon</code> - AudienceCommon</a></li>
     <li><a href="#AudienceCreateCustomRequest"><code>AudienceCreateCustomRequest</code> - </a></li>
     <li><a href="#AudienceCreateRequest"><code>AudienceCreateRequest</code> - </a></li>
-    <li><a href="#AudienceCreateRequest_1_audience_type"><code>AudienceCreateRequest_1_audience_type</code> - </a></li>
     <li><a href="#AudienceDataParty"><code>AudienceDataParty</code> - </a></li>
     <li><a href="#AudienceDefinition"><code>AudienceDefinition</code> - AudienceDefinition</a></li>
     <li><a href="#AudienceDefinitionResponse"><code>AudienceDefinitionResponse</code> - </a></li>
@@ -22536,7 +22999,6 @@ Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', 
     <li><a href="#CatalogsItemsFilters"><code>CatalogsItemsFilters</code> - </a></li>
     <li><a href="#CatalogsItemsPostFilters"><code>CatalogsItemsPostFilters</code> - </a></li>
     <li><a href="#CatalogsItemsRequest"><code>CatalogsItemsRequest</code> - </a></li>
-    <li><a href="#CatalogsItemsRequest_language"><code>CatalogsItemsRequest_language</code> - </a></li>
     <li><a href="#CatalogsItemsUpdateBatchRequest"><code>CatalogsItemsUpdateBatchRequest</code> - </a></li>
     <li><a href="#CatalogsItemsUpsertBatchRequest"><code>CatalogsItemsUpsertBatchRequest</code> - </a></li>
     <li><a href="#CatalogsListProductsByFeedBasedFilter"><code>CatalogsListProductsByFeedBasedFilter</code> - feed based product group</a></li>
@@ -22621,7 +23083,7 @@ Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', 
     <li><a href="#ConversionReportTimeType"><code>ConversionReportTimeType</code> - </a></li>
     <li><a href="#ConversionTagCommon"><code>ConversionTagCommon</code> - ConversionTagCommon</a></li>
     <li><a href="#ConversionTagConfigs"><code>ConversionTagConfigs</code> - ConversionTagConfigs</a></li>
-    <li><a href="#ConversionTagCreate"><code>ConversionTagCreate</code> - ConversionTagCreate</a></li>
+    <li><a href="#ConversionTagCreate"><code>ConversionTagCreate</code> - </a></li>
     <li><a href="#ConversionTagListResponse"><code>ConversionTagListResponse</code> - </a></li>
     <li><a href="#ConversionTagResponse"><code>ConversionTagResponse</code> - ConversionTagResponse</a></li>
     <li><a href="#ConversionTagType"><code>ConversionTagType</code> - ConversionTagType</a></li>
@@ -22793,14 +23255,14 @@ Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', 
     <li><a href="#NonNullableProductAvailabilityType"><code>NonNullableProductAvailabilityType</code> - </a></li>
     <li><a href="#NullableCatalogsItemFieldType"><code>NullableCatalogsItemFieldType</code> - </a></li>
     <li><a href="#NullableCurrency"><code>NullableCurrency</code> - </a></li>
-    <li><a href="#OauthAccessTokenRequestClientCredentials"><code>OauthAccessTokenRequestClientCredentials</code> - client_credentials</a></li>
-    <li><a href="#OauthAccessTokenRequestCode"><code>OauthAccessTokenRequestCode</code> - authorization_code</a></li>
-    <li><a href="#OauthAccessTokenRequestRefresh"><code>OauthAccessTokenRequestRefresh</code> - refresh_token</a></li>
+    <li><a href="#OauthAccessTokenRequestClientCredentials"><code>OauthAccessTokenRequestClientCredentials</code> - </a></li>
+    <li><a href="#OauthAccessTokenRequestCode"><code>OauthAccessTokenRequestCode</code> - </a></li>
+    <li><a href="#OauthAccessTokenRequestRefresh"><code>OauthAccessTokenRequestRefresh</code> - </a></li>
     <li><a href="#OauthAccessTokenResponse"><code>OauthAccessTokenResponse</code> - OAuth access token response</a></li>
     <li><a href="#OauthAccessTokenResponseClientCredentials"><code>OauthAccessTokenResponseClientCredentials</code> - OAuth client token response</a></li>
-    <li><a href="#OauthAccessTokenResponseCode"><code>OauthAccessTokenResponseCode</code> - OAuth access token response</a></li>
-    <li><a href="#OauthAccessTokenResponseEverlastingRefresh"><code>OauthAccessTokenResponseEverlastingRefresh</code> - OAuth access token response</a></li>
-    <li><a href="#OauthAccessTokenResponseIntegrationRefresh"><code>OauthAccessTokenResponseIntegrationRefresh</code> - OAuth access token response</a></li>
+    <li><a href="#OauthAccessTokenResponseCode"><code>OauthAccessTokenResponseCode</code> - </a></li>
+    <li><a href="#OauthAccessTokenResponseEverlastingRefresh"><code>OauthAccessTokenResponseEverlastingRefresh</code> - </a></li>
+    <li><a href="#OauthAccessTokenResponseIntegrationRefresh"><code>OauthAccessTokenResponseIntegrationRefresh</code> - </a></li>
     <li><a href="#OauthAccessTokenResponseRefresh"><code>OauthAccessTokenResponseRefresh</code> - OAuth access token response</a></li>
     <li><a href="#ObjectiveType"><code>ObjectiveType</code> - </a></li>
     <li><a href="#OperationType"><code>OperationType</code> - </a></li>
@@ -23002,7 +23464,6 @@ Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', 
     <li><a href="#multiple_product_groups_inner"><code>multiple_product_groups_inner</code> - </a></li>
     <li><a href="#order_lines_list_200_response"><code>order_lines_list_200_response</code> - </a></li>
     <li><a href="#page_visit_conversion_tags_get_200_response"><code>page_visit_conversion_tags_get_200_response</code> - </a></li>
-    <li><a href="#pins_analytics_metric_types_parameter_inner"><code>pins_analytics_metric_types_parameter_inner</code> - </a></li>
     <li><a href="#pins_list_200_response"><code>pins_list_200_response</code> - </a></li>
     <li><a href="#pins_save_request"><code>pins_save_request</code> - </a></li>
     <li><a href="#product_group_promotions_list_200_response"><code>product_group_promotions_list_200_response</code> - </a></li>
@@ -23888,14 +24349,8 @@ A non empty errors list means this single item operation was not applied. </div>
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Audience name. </div>
 <div class="param">rule </div><div class="param-desc"><span class="param-type"><a href="#AudienceRule">AudienceRule</a></span>  </div>
 <div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Audience description. </div>
-<div class="param">audience_type </div><div class="param-desc"><span class="param-type"><a href="#AudienceCreateRequest_1_audience_type">AudienceCreateRequest_1_audience_type</a></span>  </div>
+<div class="param">audience_type </div><div class="param-desc"><span class="param-type"><a href="#AudienceType">AudienceType</a></span> <a href="/docs/reference/glossary/#Audience Types">Audience types</a>: ACTALIKE, ENGAGEMENT, CUSTOMER_LIST and VISITOR. Values are case-sensitive. </div>
     </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="AudienceCreateRequest_1_audience_type"><code>AudienceCreateRequest_1_audience_type</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-          </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="AudienceDataParty"><code>AudienceDataParty</code> - </a> <a class="up" href="#__Models">Up</a></h3>
@@ -24689,7 +25144,9 @@ They cannot see details about other employees, partners, or other assets.
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">CREATIVE_ASSETS</div>
 <div class="param">country </div><div class="param-desc"><span class="param-type"><a href="#Country">Country</a></span>  </div>
-<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsRequest_language">CatalogsItemsRequest_language</a></span>  </div>
+<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> We recommend using the CatalogsLocale values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">af-ZA</div><div class="param-enum">ar-SA</div><div class="param-enum">bg-BG</div><div class="param-enum">bn-IN</div><div class="param-enum">cs-CZ</div><div class="param-enum">da-DK</div><div class="param-enum">de</div><div class="param-enum">el-GR</div><div class="param-enum">en-AU</div><div class="param-enum">en-CA</div><div class="param-enum">en-GB</div><div class="param-enum">en-IN</div><div class="param-enum">en-US</div><div class="param-enum">es-419</div><div class="param-enum">es-AR</div><div class="param-enum">es-ES</div><div class="param-enum">es-MX</div><div class="param-enum">fi-FI</div><div class="param-enum">fr</div><div class="param-enum">fr-CA</div><div class="param-enum">he-IL</div><div class="param-enum">hi-IN</div><div class="param-enum">hr-HR</div><div class="param-enum">hu-HU</div><div class="param-enum">id-ID</div><div class="param-enum">it</div><div class="param-enum">ja</div><div class="param-enum">ko-KR</div><div class="param-enum">ms-MY</div><div class="param-enum">nb-NO</div><div class="param-enum">nl</div><div class="param-enum">pl-PL</div><div class="param-enum">pt-BR</div><div class="param-enum">pt-PT</div><div class="param-enum">ro-RO</div><div class="param-enum">ru-RU</div><div class="param-enum">sk-SK</div><div class="param-enum">sv-SE</div><div class="param-enum">te-IN</div><div class="param-enum">th-TH</div><div class="param-enum">tl-PH</div><div class="param-enum">tr</div><div class="param-enum">uk-UA</div><div class="param-enum">vi-VN</div><div class="param-enum">zh-CN</div><div class="param-enum">zh-TW</div><div class="param-enum">AM</div><div class="param-enum">AR</div><div class="param-enum">AZ</div><div class="param-enum">BG</div><div class="param-enum">BN</div><div class="param-enum">BS</div><div class="param-enum">CA</div><div class="param-enum">CS</div><div class="param-enum">DA</div><div class="param-enum">DV</div><div class="param-enum">DZ</div><div class="param-enum">DE</div><div class="param-enum">EL</div><div class="param-enum">EN</div><div class="param-enum">ES</div><div class="param-enum">ET</div><div class="param-enum">FA</div><div class="param-enum">FI</div><div class="param-enum">FR</div><div class="param-enum">HE</div><div class="param-enum">HI</div><div class="param-enum">HR</div><div class="param-enum">HU</div><div class="param-enum">HY</div><div class="param-enum">ID</div><div class="param-enum">IN</div><div class="param-enum">IS</div><div class="param-enum">IT</div><div class="param-enum">IW</div><div class="param-enum">JA</div><div class="param-enum">KA</div><div class="param-enum">KM</div><div class="param-enum">KO</div><div class="param-enum">LO</div><div class="param-enum">LT</div><div class="param-enum">LV</div><div class="param-enum">MK</div><div class="param-enum">MN</div><div class="param-enum">MS</div><div class="param-enum">MY</div><div class="param-enum">NB</div><div class="param-enum">NE</div><div class="param-enum">NL</div><div class="param-enum">NO</div><div class="param-enum">PL</div><div class="param-enum">PT</div><div class="param-enum">RO</div><div class="param-enum">RU</div><div class="param-enum">SK</div><div class="param-enum">SL</div><div class="param-enum">SQ</div><div class="param-enum">SR</div><div class="param-enum">SV</div><div class="param-enum">TL</div><div class="param-enum">UK</div><div class="param-enum">VI</div><div class="param-enum">TE</div><div class="param-enum">TH</div><div class="param-enum">TR</div><div class="param-enum">XX</div><div class="param-enum">ZH</div>
 <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#CatalogsCreativeAssetsBatchItem">array[CatalogsCreativeAssetsBatchItem]</a></span> Array with creative assets item operations </div>
 <div class="param">catalog_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog </div>
     </div>  <!-- field-items -->
@@ -25303,7 +25760,9 @@ with http:// or https://.</p>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">HOTEL</div>
 <div class="param">country </div><div class="param-desc"><span class="param-type"><a href="#Country">Country</a></span>  </div>
-<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsRequest_language">CatalogsItemsRequest_language</a></span>  </div>
+<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> We recommend using the CatalogsLocale values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">af-ZA</div><div class="param-enum">ar-SA</div><div class="param-enum">bg-BG</div><div class="param-enum">bn-IN</div><div class="param-enum">cs-CZ</div><div class="param-enum">da-DK</div><div class="param-enum">de</div><div class="param-enum">el-GR</div><div class="param-enum">en-AU</div><div class="param-enum">en-CA</div><div class="param-enum">en-GB</div><div class="param-enum">en-IN</div><div class="param-enum">en-US</div><div class="param-enum">es-419</div><div class="param-enum">es-AR</div><div class="param-enum">es-ES</div><div class="param-enum">es-MX</div><div class="param-enum">fi-FI</div><div class="param-enum">fr</div><div class="param-enum">fr-CA</div><div class="param-enum">he-IL</div><div class="param-enum">hi-IN</div><div class="param-enum">hr-HR</div><div class="param-enum">hu-HU</div><div class="param-enum">id-ID</div><div class="param-enum">it</div><div class="param-enum">ja</div><div class="param-enum">ko-KR</div><div class="param-enum">ms-MY</div><div class="param-enum">nb-NO</div><div class="param-enum">nl</div><div class="param-enum">pl-PL</div><div class="param-enum">pt-BR</div><div class="param-enum">pt-PT</div><div class="param-enum">ro-RO</div><div class="param-enum">ru-RU</div><div class="param-enum">sk-SK</div><div class="param-enum">sv-SE</div><div class="param-enum">te-IN</div><div class="param-enum">th-TH</div><div class="param-enum">tl-PH</div><div class="param-enum">tr</div><div class="param-enum">uk-UA</div><div class="param-enum">vi-VN</div><div class="param-enum">zh-CN</div><div class="param-enum">zh-TW</div><div class="param-enum">AM</div><div class="param-enum">AR</div><div class="param-enum">AZ</div><div class="param-enum">BG</div><div class="param-enum">BN</div><div class="param-enum">BS</div><div class="param-enum">CA</div><div class="param-enum">CS</div><div class="param-enum">DA</div><div class="param-enum">DV</div><div class="param-enum">DZ</div><div class="param-enum">DE</div><div class="param-enum">EL</div><div class="param-enum">EN</div><div class="param-enum">ES</div><div class="param-enum">ET</div><div class="param-enum">FA</div><div class="param-enum">FI</div><div class="param-enum">FR</div><div class="param-enum">HE</div><div class="param-enum">HI</div><div class="param-enum">HR</div><div class="param-enum">HU</div><div class="param-enum">HY</div><div class="param-enum">ID</div><div class="param-enum">IN</div><div class="param-enum">IS</div><div class="param-enum">IT</div><div class="param-enum">IW</div><div class="param-enum">JA</div><div class="param-enum">KA</div><div class="param-enum">KM</div><div class="param-enum">KO</div><div class="param-enum">LO</div><div class="param-enum">LT</div><div class="param-enum">LV</div><div class="param-enum">MK</div><div class="param-enum">MN</div><div class="param-enum">MS</div><div class="param-enum">MY</div><div class="param-enum">NB</div><div class="param-enum">NE</div><div class="param-enum">NL</div><div class="param-enum">NO</div><div class="param-enum">PL</div><div class="param-enum">PT</div><div class="param-enum">RO</div><div class="param-enum">RU</div><div class="param-enum">SK</div><div class="param-enum">SL</div><div class="param-enum">SQ</div><div class="param-enum">SR</div><div class="param-enum">SV</div><div class="param-enum">TL</div><div class="param-enum">UK</div><div class="param-enum">VI</div><div class="param-enum">TE</div><div class="param-enum">TH</div><div class="param-enum">TR</div><div class="param-enum">XX</div><div class="param-enum">ZH</div>
 <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#CatalogsHotelBatchItem">array[CatalogsHotelBatchItem]</a></span> Array with catalogs item operations </div>
 <div class="param">catalog_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Catalog id pertaining to the hotel item. If not provided, default to oldest hotel catalog </div>
     </div>  <!-- field-items -->
@@ -25686,7 +26145,9 @@ with http:// or https://.</p>
     <div class='model-description'>Request object of catalogs items batch</div>
     <div class="field-items">
       <div class="param">country </div><div class="param-desc"><span class="param-type"><a href="#Country">Country</a></span>  </div>
-<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsRequest_language">CatalogsItemsRequest_language</a></span>  </div>
+<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> We recommend using the CatalogsLocale values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">af-ZA</div><div class="param-enum">ar-SA</div><div class="param-enum">bg-BG</div><div class="param-enum">bn-IN</div><div class="param-enum">cs-CZ</div><div class="param-enum">da-DK</div><div class="param-enum">de</div><div class="param-enum">el-GR</div><div class="param-enum">en-AU</div><div class="param-enum">en-CA</div><div class="param-enum">en-GB</div><div class="param-enum">en-IN</div><div class="param-enum">en-US</div><div class="param-enum">es-419</div><div class="param-enum">es-AR</div><div class="param-enum">es-ES</div><div class="param-enum">es-MX</div><div class="param-enum">fi-FI</div><div class="param-enum">fr</div><div class="param-enum">fr-CA</div><div class="param-enum">he-IL</div><div class="param-enum">hi-IN</div><div class="param-enum">hr-HR</div><div class="param-enum">hu-HU</div><div class="param-enum">id-ID</div><div class="param-enum">it</div><div class="param-enum">ja</div><div class="param-enum">ko-KR</div><div class="param-enum">ms-MY</div><div class="param-enum">nb-NO</div><div class="param-enum">nl</div><div class="param-enum">pl-PL</div><div class="param-enum">pt-BR</div><div class="param-enum">pt-PT</div><div class="param-enum">ro-RO</div><div class="param-enum">ru-RU</div><div class="param-enum">sk-SK</div><div class="param-enum">sv-SE</div><div class="param-enum">te-IN</div><div class="param-enum">th-TH</div><div class="param-enum">tl-PH</div><div class="param-enum">tr</div><div class="param-enum">uk-UA</div><div class="param-enum">vi-VN</div><div class="param-enum">zh-CN</div><div class="param-enum">zh-TW</div><div class="param-enum">AM</div><div class="param-enum">AR</div><div class="param-enum">AZ</div><div class="param-enum">BG</div><div class="param-enum">BN</div><div class="param-enum">BS</div><div class="param-enum">CA</div><div class="param-enum">CS</div><div class="param-enum">DA</div><div class="param-enum">DV</div><div class="param-enum">DZ</div><div class="param-enum">DE</div><div class="param-enum">EL</div><div class="param-enum">EN</div><div class="param-enum">ES</div><div class="param-enum">ET</div><div class="param-enum">FA</div><div class="param-enum">FI</div><div class="param-enum">FR</div><div class="param-enum">HE</div><div class="param-enum">HI</div><div class="param-enum">HR</div><div class="param-enum">HU</div><div class="param-enum">HY</div><div class="param-enum">ID</div><div class="param-enum">IN</div><div class="param-enum">IS</div><div class="param-enum">IT</div><div class="param-enum">IW</div><div class="param-enum">JA</div><div class="param-enum">KA</div><div class="param-enum">KM</div><div class="param-enum">KO</div><div class="param-enum">LO</div><div class="param-enum">LT</div><div class="param-enum">LV</div><div class="param-enum">MK</div><div class="param-enum">MN</div><div class="param-enum">MS</div><div class="param-enum">MY</div><div class="param-enum">NB</div><div class="param-enum">NE</div><div class="param-enum">NL</div><div class="param-enum">NO</div><div class="param-enum">PL</div><div class="param-enum">PT</div><div class="param-enum">RO</div><div class="param-enum">RU</div><div class="param-enum">SK</div><div class="param-enum">SL</div><div class="param-enum">SQ</div><div class="param-enum">SR</div><div class="param-enum">SV</div><div class="param-enum">TL</div><div class="param-enum">UK</div><div class="param-enum">VI</div><div class="param-enum">TE</div><div class="param-enum">TH</div><div class="param-enum">TR</div><div class="param-enum">XX</div><div class="param-enum">ZH</div>
 <div class="param">operation </div><div class="param-desc"><span class="param-type"><a href="#BatchOperation">BatchOperation</a></span>  </div>
 <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#ItemDeleteBatchRecord">array[ItemDeleteBatchRecord]</a></span> Array with catalogs items </div>
     </div>  <!-- field-items -->
@@ -25696,7 +26157,9 @@ with http:// or https://.</p>
     <div class='model-description'>Request object to create catalogs items</div>
     <div class="field-items">
       <div class="param">country </div><div class="param-desc"><span class="param-type"><a href="#Country">Country</a></span>  </div>
-<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsRequest_language">CatalogsItemsRequest_language</a></span>  </div>
+<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> We recommend using the CatalogsLocale values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">af-ZA</div><div class="param-enum">ar-SA</div><div class="param-enum">bg-BG</div><div class="param-enum">bn-IN</div><div class="param-enum">cs-CZ</div><div class="param-enum">da-DK</div><div class="param-enum">de</div><div class="param-enum">el-GR</div><div class="param-enum">en-AU</div><div class="param-enum">en-CA</div><div class="param-enum">en-GB</div><div class="param-enum">en-IN</div><div class="param-enum">en-US</div><div class="param-enum">es-419</div><div class="param-enum">es-AR</div><div class="param-enum">es-ES</div><div class="param-enum">es-MX</div><div class="param-enum">fi-FI</div><div class="param-enum">fr</div><div class="param-enum">fr-CA</div><div class="param-enum">he-IL</div><div class="param-enum">hi-IN</div><div class="param-enum">hr-HR</div><div class="param-enum">hu-HU</div><div class="param-enum">id-ID</div><div class="param-enum">it</div><div class="param-enum">ja</div><div class="param-enum">ko-KR</div><div class="param-enum">ms-MY</div><div class="param-enum">nb-NO</div><div class="param-enum">nl</div><div class="param-enum">pl-PL</div><div class="param-enum">pt-BR</div><div class="param-enum">pt-PT</div><div class="param-enum">ro-RO</div><div class="param-enum">ru-RU</div><div class="param-enum">sk-SK</div><div class="param-enum">sv-SE</div><div class="param-enum">te-IN</div><div class="param-enum">th-TH</div><div class="param-enum">tl-PH</div><div class="param-enum">tr</div><div class="param-enum">uk-UA</div><div class="param-enum">vi-VN</div><div class="param-enum">zh-CN</div><div class="param-enum">zh-TW</div><div class="param-enum">AM</div><div class="param-enum">AR</div><div class="param-enum">AZ</div><div class="param-enum">BG</div><div class="param-enum">BN</div><div class="param-enum">BS</div><div class="param-enum">CA</div><div class="param-enum">CS</div><div class="param-enum">DA</div><div class="param-enum">DV</div><div class="param-enum">DZ</div><div class="param-enum">DE</div><div class="param-enum">EL</div><div class="param-enum">EN</div><div class="param-enum">ES</div><div class="param-enum">ET</div><div class="param-enum">FA</div><div class="param-enum">FI</div><div class="param-enum">FR</div><div class="param-enum">HE</div><div class="param-enum">HI</div><div class="param-enum">HR</div><div class="param-enum">HU</div><div class="param-enum">HY</div><div class="param-enum">ID</div><div class="param-enum">IN</div><div class="param-enum">IS</div><div class="param-enum">IT</div><div class="param-enum">IW</div><div class="param-enum">JA</div><div class="param-enum">KA</div><div class="param-enum">KM</div><div class="param-enum">KO</div><div class="param-enum">LO</div><div class="param-enum">LT</div><div class="param-enum">LV</div><div class="param-enum">MK</div><div class="param-enum">MN</div><div class="param-enum">MS</div><div class="param-enum">MY</div><div class="param-enum">NB</div><div class="param-enum">NE</div><div class="param-enum">NL</div><div class="param-enum">NO</div><div class="param-enum">PL</div><div class="param-enum">PT</div><div class="param-enum">RO</div><div class="param-enum">RU</div><div class="param-enum">SK</div><div class="param-enum">SL</div><div class="param-enum">SQ</div><div class="param-enum">SR</div><div class="param-enum">SV</div><div class="param-enum">TL</div><div class="param-enum">UK</div><div class="param-enum">VI</div><div class="param-enum">TE</div><div class="param-enum">TH</div><div class="param-enum">TR</div><div class="param-enum">XX</div><div class="param-enum">ZH</div>
 <div class="param">operation </div><div class="param-desc"><span class="param-type"><a href="#BatchOperation">BatchOperation</a></span>  </div>
 <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#ItemCreateBatchRecord">array[ItemCreateBatchRecord]</a></span> Array with catalogs items </div>
     </div>  <!-- field-items -->
@@ -25706,7 +26169,9 @@ with http:// or https://.</p>
     <div class='model-description'>Request object to delete catalogs items</div>
     <div class="field-items">
       <div class="param">country </div><div class="param-desc"><span class="param-type"><a href="#Country">Country</a></span>  </div>
-<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsRequest_language">CatalogsItemsRequest_language</a></span>  </div>
+<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> We recommend using the CatalogsLocale values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">af-ZA</div><div class="param-enum">ar-SA</div><div class="param-enum">bg-BG</div><div class="param-enum">bn-IN</div><div class="param-enum">cs-CZ</div><div class="param-enum">da-DK</div><div class="param-enum">de</div><div class="param-enum">el-GR</div><div class="param-enum">en-AU</div><div class="param-enum">en-CA</div><div class="param-enum">en-GB</div><div class="param-enum">en-IN</div><div class="param-enum">en-US</div><div class="param-enum">es-419</div><div class="param-enum">es-AR</div><div class="param-enum">es-ES</div><div class="param-enum">es-MX</div><div class="param-enum">fi-FI</div><div class="param-enum">fr</div><div class="param-enum">fr-CA</div><div class="param-enum">he-IL</div><div class="param-enum">hi-IN</div><div class="param-enum">hr-HR</div><div class="param-enum">hu-HU</div><div class="param-enum">id-ID</div><div class="param-enum">it</div><div class="param-enum">ja</div><div class="param-enum">ko-KR</div><div class="param-enum">ms-MY</div><div class="param-enum">nb-NO</div><div class="param-enum">nl</div><div class="param-enum">pl-PL</div><div class="param-enum">pt-BR</div><div class="param-enum">pt-PT</div><div class="param-enum">ro-RO</div><div class="param-enum">ru-RU</div><div class="param-enum">sk-SK</div><div class="param-enum">sv-SE</div><div class="param-enum">te-IN</div><div class="param-enum">th-TH</div><div class="param-enum">tl-PH</div><div class="param-enum">tr</div><div class="param-enum">uk-UA</div><div class="param-enum">vi-VN</div><div class="param-enum">zh-CN</div><div class="param-enum">zh-TW</div><div class="param-enum">AM</div><div class="param-enum">AR</div><div class="param-enum">AZ</div><div class="param-enum">BG</div><div class="param-enum">BN</div><div class="param-enum">BS</div><div class="param-enum">CA</div><div class="param-enum">CS</div><div class="param-enum">DA</div><div class="param-enum">DV</div><div class="param-enum">DZ</div><div class="param-enum">DE</div><div class="param-enum">EL</div><div class="param-enum">EN</div><div class="param-enum">ES</div><div class="param-enum">ET</div><div class="param-enum">FA</div><div class="param-enum">FI</div><div class="param-enum">FR</div><div class="param-enum">HE</div><div class="param-enum">HI</div><div class="param-enum">HR</div><div class="param-enum">HU</div><div class="param-enum">HY</div><div class="param-enum">ID</div><div class="param-enum">IN</div><div class="param-enum">IS</div><div class="param-enum">IT</div><div class="param-enum">IW</div><div class="param-enum">JA</div><div class="param-enum">KA</div><div class="param-enum">KM</div><div class="param-enum">KO</div><div class="param-enum">LO</div><div class="param-enum">LT</div><div class="param-enum">LV</div><div class="param-enum">MK</div><div class="param-enum">MN</div><div class="param-enum">MS</div><div class="param-enum">MY</div><div class="param-enum">NB</div><div class="param-enum">NE</div><div class="param-enum">NL</div><div class="param-enum">NO</div><div class="param-enum">PL</div><div class="param-enum">PT</div><div class="param-enum">RO</div><div class="param-enum">RU</div><div class="param-enum">SK</div><div class="param-enum">SL</div><div class="param-enum">SQ</div><div class="param-enum">SR</div><div class="param-enum">SV</div><div class="param-enum">TL</div><div class="param-enum">UK</div><div class="param-enum">VI</div><div class="param-enum">TE</div><div class="param-enum">TH</div><div class="param-enum">TR</div><div class="param-enum">XX</div><div class="param-enum">ZH</div>
 <div class="param">operation </div><div class="param-desc"><span class="param-type"><a href="#BatchOperation">BatchOperation</a></span>  </div>
 <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#ItemDeleteBatchRecord">array[ItemDeleteBatchRecord]</a></span> Array with catalogs items </div>
     </div>  <!-- field-items -->
@@ -25716,7 +26181,9 @@ with http:// or https://.</p>
     <div class='model-description'>Request object to discontinue catalogs items</div>
     <div class="field-items">
       <div class="param">country </div><div class="param-desc"><span class="param-type"><a href="#Country">Country</a></span>  </div>
-<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsRequest_language">CatalogsItemsRequest_language</a></span>  </div>
+<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> We recommend using the CatalogsLocale values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">af-ZA</div><div class="param-enum">ar-SA</div><div class="param-enum">bg-BG</div><div class="param-enum">bn-IN</div><div class="param-enum">cs-CZ</div><div class="param-enum">da-DK</div><div class="param-enum">de</div><div class="param-enum">el-GR</div><div class="param-enum">en-AU</div><div class="param-enum">en-CA</div><div class="param-enum">en-GB</div><div class="param-enum">en-IN</div><div class="param-enum">en-US</div><div class="param-enum">es-419</div><div class="param-enum">es-AR</div><div class="param-enum">es-ES</div><div class="param-enum">es-MX</div><div class="param-enum">fi-FI</div><div class="param-enum">fr</div><div class="param-enum">fr-CA</div><div class="param-enum">he-IL</div><div class="param-enum">hi-IN</div><div class="param-enum">hr-HR</div><div class="param-enum">hu-HU</div><div class="param-enum">id-ID</div><div class="param-enum">it</div><div class="param-enum">ja</div><div class="param-enum">ko-KR</div><div class="param-enum">ms-MY</div><div class="param-enum">nb-NO</div><div class="param-enum">nl</div><div class="param-enum">pl-PL</div><div class="param-enum">pt-BR</div><div class="param-enum">pt-PT</div><div class="param-enum">ro-RO</div><div class="param-enum">ru-RU</div><div class="param-enum">sk-SK</div><div class="param-enum">sv-SE</div><div class="param-enum">te-IN</div><div class="param-enum">th-TH</div><div class="param-enum">tl-PH</div><div class="param-enum">tr</div><div class="param-enum">uk-UA</div><div class="param-enum">vi-VN</div><div class="param-enum">zh-CN</div><div class="param-enum">zh-TW</div><div class="param-enum">AM</div><div class="param-enum">AR</div><div class="param-enum">AZ</div><div class="param-enum">BG</div><div class="param-enum">BN</div><div class="param-enum">BS</div><div class="param-enum">CA</div><div class="param-enum">CS</div><div class="param-enum">DA</div><div class="param-enum">DV</div><div class="param-enum">DZ</div><div class="param-enum">DE</div><div class="param-enum">EL</div><div class="param-enum">EN</div><div class="param-enum">ES</div><div class="param-enum">ET</div><div class="param-enum">FA</div><div class="param-enum">FI</div><div class="param-enum">FR</div><div class="param-enum">HE</div><div class="param-enum">HI</div><div class="param-enum">HR</div><div class="param-enum">HU</div><div class="param-enum">HY</div><div class="param-enum">ID</div><div class="param-enum">IN</div><div class="param-enum">IS</div><div class="param-enum">IT</div><div class="param-enum">IW</div><div class="param-enum">JA</div><div class="param-enum">KA</div><div class="param-enum">KM</div><div class="param-enum">KO</div><div class="param-enum">LO</div><div class="param-enum">LT</div><div class="param-enum">LV</div><div class="param-enum">MK</div><div class="param-enum">MN</div><div class="param-enum">MS</div><div class="param-enum">MY</div><div class="param-enum">NB</div><div class="param-enum">NE</div><div class="param-enum">NL</div><div class="param-enum">NO</div><div class="param-enum">PL</div><div class="param-enum">PT</div><div class="param-enum">RO</div><div class="param-enum">RU</div><div class="param-enum">SK</div><div class="param-enum">SL</div><div class="param-enum">SQ</div><div class="param-enum">SR</div><div class="param-enum">SV</div><div class="param-enum">TL</div><div class="param-enum">UK</div><div class="param-enum">VI</div><div class="param-enum">TE</div><div class="param-enum">TH</div><div class="param-enum">TR</div><div class="param-enum">XX</div><div class="param-enum">ZH</div>
 <div class="param">operation </div><div class="param-desc"><span class="param-type"><a href="#BatchOperation">BatchOperation</a></span>  </div>
 <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#ItemDeleteDiscontinuedBatchRecord">array[ItemDeleteDiscontinuedBatchRecord]</a></span> Array with catalogs items </div>
     </div>  <!-- field-items -->
@@ -25748,22 +26215,20 @@ with http:// or https://.</p>
     <div class='model-description'>Request object of catalogs items</div>
     <div class="field-items">
       <div class="param">country </div><div class="param-desc"><span class="param-type"><a href="#Country">Country</a></span>  </div>
-<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsRequest_language">CatalogsItemsRequest_language</a></span>  </div>
+<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> We recommend using the CatalogsLocale values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">af-ZA</div><div class="param-enum">ar-SA</div><div class="param-enum">bg-BG</div><div class="param-enum">bn-IN</div><div class="param-enum">cs-CZ</div><div class="param-enum">da-DK</div><div class="param-enum">de</div><div class="param-enum">el-GR</div><div class="param-enum">en-AU</div><div class="param-enum">en-CA</div><div class="param-enum">en-GB</div><div class="param-enum">en-IN</div><div class="param-enum">en-US</div><div class="param-enum">es-419</div><div class="param-enum">es-AR</div><div class="param-enum">es-ES</div><div class="param-enum">es-MX</div><div class="param-enum">fi-FI</div><div class="param-enum">fr</div><div class="param-enum">fr-CA</div><div class="param-enum">he-IL</div><div class="param-enum">hi-IN</div><div class="param-enum">hr-HR</div><div class="param-enum">hu-HU</div><div class="param-enum">id-ID</div><div class="param-enum">it</div><div class="param-enum">ja</div><div class="param-enum">ko-KR</div><div class="param-enum">ms-MY</div><div class="param-enum">nb-NO</div><div class="param-enum">nl</div><div class="param-enum">pl-PL</div><div class="param-enum">pt-BR</div><div class="param-enum">pt-PT</div><div class="param-enum">ro-RO</div><div class="param-enum">ru-RU</div><div class="param-enum">sk-SK</div><div class="param-enum">sv-SE</div><div class="param-enum">te-IN</div><div class="param-enum">th-TH</div><div class="param-enum">tl-PH</div><div class="param-enum">tr</div><div class="param-enum">uk-UA</div><div class="param-enum">vi-VN</div><div class="param-enum">zh-CN</div><div class="param-enum">zh-TW</div><div class="param-enum">AM</div><div class="param-enum">AR</div><div class="param-enum">AZ</div><div class="param-enum">BG</div><div class="param-enum">BN</div><div class="param-enum">BS</div><div class="param-enum">CA</div><div class="param-enum">CS</div><div class="param-enum">DA</div><div class="param-enum">DV</div><div class="param-enum">DZ</div><div class="param-enum">DE</div><div class="param-enum">EL</div><div class="param-enum">EN</div><div class="param-enum">ES</div><div class="param-enum">ET</div><div class="param-enum">FA</div><div class="param-enum">FI</div><div class="param-enum">FR</div><div class="param-enum">HE</div><div class="param-enum">HI</div><div class="param-enum">HR</div><div class="param-enum">HU</div><div class="param-enum">HY</div><div class="param-enum">ID</div><div class="param-enum">IN</div><div class="param-enum">IS</div><div class="param-enum">IT</div><div class="param-enum">IW</div><div class="param-enum">JA</div><div class="param-enum">KA</div><div class="param-enum">KM</div><div class="param-enum">KO</div><div class="param-enum">LO</div><div class="param-enum">LT</div><div class="param-enum">LV</div><div class="param-enum">MK</div><div class="param-enum">MN</div><div class="param-enum">MS</div><div class="param-enum">MY</div><div class="param-enum">NB</div><div class="param-enum">NE</div><div class="param-enum">NL</div><div class="param-enum">NO</div><div class="param-enum">PL</div><div class="param-enum">PT</div><div class="param-enum">RO</div><div class="param-enum">RU</div><div class="param-enum">SK</div><div class="param-enum">SL</div><div class="param-enum">SQ</div><div class="param-enum">SR</div><div class="param-enum">SV</div><div class="param-enum">TL</div><div class="param-enum">UK</div><div class="param-enum">VI</div><div class="param-enum">TE</div><div class="param-enum">TH</div><div class="param-enum">TR</div><div class="param-enum">XX</div><div class="param-enum">ZH</div>
 <div class="param">filters </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsPostFilters">CatalogsItemsPostFilters</a></span>  </div>
     </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="CatalogsItemsRequest_language"><code>CatalogsItemsRequest_language</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>We recommend using the CatalogsLocale values.</div>
-    <div class="field-items">
-          </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="CatalogsItemsUpdateBatchRequest"><code>CatalogsItemsUpdateBatchRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>Request object to update catalogs items</div>
     <div class="field-items">
       <div class="param">country </div><div class="param-desc"><span class="param-type"><a href="#Country">Country</a></span>  </div>
-<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsRequest_language">CatalogsItemsRequest_language</a></span>  </div>
+<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> We recommend using the CatalogsLocale values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">af-ZA</div><div class="param-enum">ar-SA</div><div class="param-enum">bg-BG</div><div class="param-enum">bn-IN</div><div class="param-enum">cs-CZ</div><div class="param-enum">da-DK</div><div class="param-enum">de</div><div class="param-enum">el-GR</div><div class="param-enum">en-AU</div><div class="param-enum">en-CA</div><div class="param-enum">en-GB</div><div class="param-enum">en-IN</div><div class="param-enum">en-US</div><div class="param-enum">es-419</div><div class="param-enum">es-AR</div><div class="param-enum">es-ES</div><div class="param-enum">es-MX</div><div class="param-enum">fi-FI</div><div class="param-enum">fr</div><div class="param-enum">fr-CA</div><div class="param-enum">he-IL</div><div class="param-enum">hi-IN</div><div class="param-enum">hr-HR</div><div class="param-enum">hu-HU</div><div class="param-enum">id-ID</div><div class="param-enum">it</div><div class="param-enum">ja</div><div class="param-enum">ko-KR</div><div class="param-enum">ms-MY</div><div class="param-enum">nb-NO</div><div class="param-enum">nl</div><div class="param-enum">pl-PL</div><div class="param-enum">pt-BR</div><div class="param-enum">pt-PT</div><div class="param-enum">ro-RO</div><div class="param-enum">ru-RU</div><div class="param-enum">sk-SK</div><div class="param-enum">sv-SE</div><div class="param-enum">te-IN</div><div class="param-enum">th-TH</div><div class="param-enum">tl-PH</div><div class="param-enum">tr</div><div class="param-enum">uk-UA</div><div class="param-enum">vi-VN</div><div class="param-enum">zh-CN</div><div class="param-enum">zh-TW</div><div class="param-enum">AM</div><div class="param-enum">AR</div><div class="param-enum">AZ</div><div class="param-enum">BG</div><div class="param-enum">BN</div><div class="param-enum">BS</div><div class="param-enum">CA</div><div class="param-enum">CS</div><div class="param-enum">DA</div><div class="param-enum">DV</div><div class="param-enum">DZ</div><div class="param-enum">DE</div><div class="param-enum">EL</div><div class="param-enum">EN</div><div class="param-enum">ES</div><div class="param-enum">ET</div><div class="param-enum">FA</div><div class="param-enum">FI</div><div class="param-enum">FR</div><div class="param-enum">HE</div><div class="param-enum">HI</div><div class="param-enum">HR</div><div class="param-enum">HU</div><div class="param-enum">HY</div><div class="param-enum">ID</div><div class="param-enum">IN</div><div class="param-enum">IS</div><div class="param-enum">IT</div><div class="param-enum">IW</div><div class="param-enum">JA</div><div class="param-enum">KA</div><div class="param-enum">KM</div><div class="param-enum">KO</div><div class="param-enum">LO</div><div class="param-enum">LT</div><div class="param-enum">LV</div><div class="param-enum">MK</div><div class="param-enum">MN</div><div class="param-enum">MS</div><div class="param-enum">MY</div><div class="param-enum">NB</div><div class="param-enum">NE</div><div class="param-enum">NL</div><div class="param-enum">NO</div><div class="param-enum">PL</div><div class="param-enum">PT</div><div class="param-enum">RO</div><div class="param-enum">RU</div><div class="param-enum">SK</div><div class="param-enum">SL</div><div class="param-enum">SQ</div><div class="param-enum">SR</div><div class="param-enum">SV</div><div class="param-enum">TL</div><div class="param-enum">UK</div><div class="param-enum">VI</div><div class="param-enum">TE</div><div class="param-enum">TH</div><div class="param-enum">TR</div><div class="param-enum">XX</div><div class="param-enum">ZH</div>
 <div class="param">operation </div><div class="param-desc"><span class="param-type"><a href="#BatchOperation">BatchOperation</a></span>  </div>
 <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#ItemUpdateBatchRecord">array[ItemUpdateBatchRecord]</a></span> Array with catalogs items </div>
     </div>  <!-- field-items -->
@@ -25773,7 +26238,9 @@ with http:// or https://.</p>
     <div class='model-description'>Request object to upsert catalogs items</div>
     <div class="field-items">
       <div class="param">country </div><div class="param-desc"><span class="param-type"><a href="#Country">Country</a></span>  </div>
-<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsRequest_language">CatalogsItemsRequest_language</a></span>  </div>
+<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> We recommend using the CatalogsLocale values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">af-ZA</div><div class="param-enum">ar-SA</div><div class="param-enum">bg-BG</div><div class="param-enum">bn-IN</div><div class="param-enum">cs-CZ</div><div class="param-enum">da-DK</div><div class="param-enum">de</div><div class="param-enum">el-GR</div><div class="param-enum">en-AU</div><div class="param-enum">en-CA</div><div class="param-enum">en-GB</div><div class="param-enum">en-IN</div><div class="param-enum">en-US</div><div class="param-enum">es-419</div><div class="param-enum">es-AR</div><div class="param-enum">es-ES</div><div class="param-enum">es-MX</div><div class="param-enum">fi-FI</div><div class="param-enum">fr</div><div class="param-enum">fr-CA</div><div class="param-enum">he-IL</div><div class="param-enum">hi-IN</div><div class="param-enum">hr-HR</div><div class="param-enum">hu-HU</div><div class="param-enum">id-ID</div><div class="param-enum">it</div><div class="param-enum">ja</div><div class="param-enum">ko-KR</div><div class="param-enum">ms-MY</div><div class="param-enum">nb-NO</div><div class="param-enum">nl</div><div class="param-enum">pl-PL</div><div class="param-enum">pt-BR</div><div class="param-enum">pt-PT</div><div class="param-enum">ro-RO</div><div class="param-enum">ru-RU</div><div class="param-enum">sk-SK</div><div class="param-enum">sv-SE</div><div class="param-enum">te-IN</div><div class="param-enum">th-TH</div><div class="param-enum">tl-PH</div><div class="param-enum">tr</div><div class="param-enum">uk-UA</div><div class="param-enum">vi-VN</div><div class="param-enum">zh-CN</div><div class="param-enum">zh-TW</div><div class="param-enum">AM</div><div class="param-enum">AR</div><div class="param-enum">AZ</div><div class="param-enum">BG</div><div class="param-enum">BN</div><div class="param-enum">BS</div><div class="param-enum">CA</div><div class="param-enum">CS</div><div class="param-enum">DA</div><div class="param-enum">DV</div><div class="param-enum">DZ</div><div class="param-enum">DE</div><div class="param-enum">EL</div><div class="param-enum">EN</div><div class="param-enum">ES</div><div class="param-enum">ET</div><div class="param-enum">FA</div><div class="param-enum">FI</div><div class="param-enum">FR</div><div class="param-enum">HE</div><div class="param-enum">HI</div><div class="param-enum">HR</div><div class="param-enum">HU</div><div class="param-enum">HY</div><div class="param-enum">ID</div><div class="param-enum">IN</div><div class="param-enum">IS</div><div class="param-enum">IT</div><div class="param-enum">IW</div><div class="param-enum">JA</div><div class="param-enum">KA</div><div class="param-enum">KM</div><div class="param-enum">KO</div><div class="param-enum">LO</div><div class="param-enum">LT</div><div class="param-enum">LV</div><div class="param-enum">MK</div><div class="param-enum">MN</div><div class="param-enum">MS</div><div class="param-enum">MY</div><div class="param-enum">NB</div><div class="param-enum">NE</div><div class="param-enum">NL</div><div class="param-enum">NO</div><div class="param-enum">PL</div><div class="param-enum">PT</div><div class="param-enum">RO</div><div class="param-enum">RU</div><div class="param-enum">SK</div><div class="param-enum">SL</div><div class="param-enum">SQ</div><div class="param-enum">SR</div><div class="param-enum">SV</div><div class="param-enum">TL</div><div class="param-enum">UK</div><div class="param-enum">VI</div><div class="param-enum">TE</div><div class="param-enum">TH</div><div class="param-enum">TR</div><div class="param-enum">XX</div><div class="param-enum">ZH</div>
 <div class="param">operation </div><div class="param-desc"><span class="param-type"><a href="#BatchOperation">BatchOperation</a></span>  </div>
 <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#ItemUpsertBatchRecord">array[ItemUpsertBatchRecord]</a></span> Array with catalogs items </div>
     </div>  <!-- field-items -->
@@ -26105,7 +26572,9 @@ with http:// or https://.</p>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">RETAIL</div>
 <div class="param">country </div><div class="param-desc"><span class="param-type"><a href="#Country">Country</a></span>  </div>
-<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsRequest_language">CatalogsItemsRequest_language</a></span>  </div>
+<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> We recommend using the CatalogsLocale values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">af-ZA</div><div class="param-enum">ar-SA</div><div class="param-enum">bg-BG</div><div class="param-enum">bn-IN</div><div class="param-enum">cs-CZ</div><div class="param-enum">da-DK</div><div class="param-enum">de</div><div class="param-enum">el-GR</div><div class="param-enum">en-AU</div><div class="param-enum">en-CA</div><div class="param-enum">en-GB</div><div class="param-enum">en-IN</div><div class="param-enum">en-US</div><div class="param-enum">es-419</div><div class="param-enum">es-AR</div><div class="param-enum">es-ES</div><div class="param-enum">es-MX</div><div class="param-enum">fi-FI</div><div class="param-enum">fr</div><div class="param-enum">fr-CA</div><div class="param-enum">he-IL</div><div class="param-enum">hi-IN</div><div class="param-enum">hr-HR</div><div class="param-enum">hu-HU</div><div class="param-enum">id-ID</div><div class="param-enum">it</div><div class="param-enum">ja</div><div class="param-enum">ko-KR</div><div class="param-enum">ms-MY</div><div class="param-enum">nb-NO</div><div class="param-enum">nl</div><div class="param-enum">pl-PL</div><div class="param-enum">pt-BR</div><div class="param-enum">pt-PT</div><div class="param-enum">ro-RO</div><div class="param-enum">ru-RU</div><div class="param-enum">sk-SK</div><div class="param-enum">sv-SE</div><div class="param-enum">te-IN</div><div class="param-enum">th-TH</div><div class="param-enum">tl-PH</div><div class="param-enum">tr</div><div class="param-enum">uk-UA</div><div class="param-enum">vi-VN</div><div class="param-enum">zh-CN</div><div class="param-enum">zh-TW</div><div class="param-enum">AM</div><div class="param-enum">AR</div><div class="param-enum">AZ</div><div class="param-enum">BG</div><div class="param-enum">BN</div><div class="param-enum">BS</div><div class="param-enum">CA</div><div class="param-enum">CS</div><div class="param-enum">DA</div><div class="param-enum">DV</div><div class="param-enum">DZ</div><div class="param-enum">DE</div><div class="param-enum">EL</div><div class="param-enum">EN</div><div class="param-enum">ES</div><div class="param-enum">ET</div><div class="param-enum">FA</div><div class="param-enum">FI</div><div class="param-enum">FR</div><div class="param-enum">HE</div><div class="param-enum">HI</div><div class="param-enum">HR</div><div class="param-enum">HU</div><div class="param-enum">HY</div><div class="param-enum">ID</div><div class="param-enum">IN</div><div class="param-enum">IS</div><div class="param-enum">IT</div><div class="param-enum">IW</div><div class="param-enum">JA</div><div class="param-enum">KA</div><div class="param-enum">KM</div><div class="param-enum">KO</div><div class="param-enum">LO</div><div class="param-enum">LT</div><div class="param-enum">LV</div><div class="param-enum">MK</div><div class="param-enum">MN</div><div class="param-enum">MS</div><div class="param-enum">MY</div><div class="param-enum">NB</div><div class="param-enum">NE</div><div class="param-enum">NL</div><div class="param-enum">NO</div><div class="param-enum">PL</div><div class="param-enum">PT</div><div class="param-enum">RO</div><div class="param-enum">RU</div><div class="param-enum">SK</div><div class="param-enum">SL</div><div class="param-enum">SQ</div><div class="param-enum">SR</div><div class="param-enum">SV</div><div class="param-enum">TL</div><div class="param-enum">UK</div><div class="param-enum">VI</div><div class="param-enum">TE</div><div class="param-enum">TH</div><div class="param-enum">TR</div><div class="param-enum">XX</div><div class="param-enum">ZH</div>
 <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#CatalogsRetailBatchRequest_items_inner">array[CatalogsRetailBatchRequest_items_inner]</a></span> Array with catalogs item operations </div>
     </div>  <!-- field-items -->
   </div>
@@ -26465,7 +26934,9 @@ with http:// or https://.</p>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">CREATIVE_ASSETS</div>
 <div class="param">country </div><div class="param-desc"><span class="param-type"><a href="#Country">Country</a></span>  </div>
-<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsRequest_language">CatalogsItemsRequest_language</a></span>  </div>
+<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> We recommend using the CatalogsLocale values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">af-ZA</div><div class="param-enum">ar-SA</div><div class="param-enum">bg-BG</div><div class="param-enum">bn-IN</div><div class="param-enum">cs-CZ</div><div class="param-enum">da-DK</div><div class="param-enum">de</div><div class="param-enum">el-GR</div><div class="param-enum">en-AU</div><div class="param-enum">en-CA</div><div class="param-enum">en-GB</div><div class="param-enum">en-IN</div><div class="param-enum">en-US</div><div class="param-enum">es-419</div><div class="param-enum">es-AR</div><div class="param-enum">es-ES</div><div class="param-enum">es-MX</div><div class="param-enum">fi-FI</div><div class="param-enum">fr</div><div class="param-enum">fr-CA</div><div class="param-enum">he-IL</div><div class="param-enum">hi-IN</div><div class="param-enum">hr-HR</div><div class="param-enum">hu-HU</div><div class="param-enum">id-ID</div><div class="param-enum">it</div><div class="param-enum">ja</div><div class="param-enum">ko-KR</div><div class="param-enum">ms-MY</div><div class="param-enum">nb-NO</div><div class="param-enum">nl</div><div class="param-enum">pl-PL</div><div class="param-enum">pt-BR</div><div class="param-enum">pt-PT</div><div class="param-enum">ro-RO</div><div class="param-enum">ru-RU</div><div class="param-enum">sk-SK</div><div class="param-enum">sv-SE</div><div class="param-enum">te-IN</div><div class="param-enum">th-TH</div><div class="param-enum">tl-PH</div><div class="param-enum">tr</div><div class="param-enum">uk-UA</div><div class="param-enum">vi-VN</div><div class="param-enum">zh-CN</div><div class="param-enum">zh-TW</div><div class="param-enum">AM</div><div class="param-enum">AR</div><div class="param-enum">AZ</div><div class="param-enum">BG</div><div class="param-enum">BN</div><div class="param-enum">BS</div><div class="param-enum">CA</div><div class="param-enum">CS</div><div class="param-enum">DA</div><div class="param-enum">DV</div><div class="param-enum">DZ</div><div class="param-enum">DE</div><div class="param-enum">EL</div><div class="param-enum">EN</div><div class="param-enum">ES</div><div class="param-enum">ET</div><div class="param-enum">FA</div><div class="param-enum">FI</div><div class="param-enum">FR</div><div class="param-enum">HE</div><div class="param-enum">HI</div><div class="param-enum">HR</div><div class="param-enum">HU</div><div class="param-enum">HY</div><div class="param-enum">ID</div><div class="param-enum">IN</div><div class="param-enum">IS</div><div class="param-enum">IT</div><div class="param-enum">IW</div><div class="param-enum">JA</div><div class="param-enum">KA</div><div class="param-enum">KM</div><div class="param-enum">KO</div><div class="param-enum">LO</div><div class="param-enum">LT</div><div class="param-enum">LV</div><div class="param-enum">MK</div><div class="param-enum">MN</div><div class="param-enum">MS</div><div class="param-enum">MY</div><div class="param-enum">NB</div><div class="param-enum">NE</div><div class="param-enum">NL</div><div class="param-enum">NO</div><div class="param-enum">PL</div><div class="param-enum">PT</div><div class="param-enum">RO</div><div class="param-enum">RU</div><div class="param-enum">SK</div><div class="param-enum">SL</div><div class="param-enum">SQ</div><div class="param-enum">SR</div><div class="param-enum">SV</div><div class="param-enum">TL</div><div class="param-enum">UK</div><div class="param-enum">VI</div><div class="param-enum">TE</div><div class="param-enum">TH</div><div class="param-enum">TR</div><div class="param-enum">XX</div><div class="param-enum">ZH</div>
 <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#CatalogsCreativeAssetsBatchItem">array[CatalogsCreativeAssetsBatchItem]</a></span> Array with creative assets item operations </div>
 <div class="param">catalog_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog </div>
     </div>  <!-- field-items -->
@@ -26785,17 +27256,17 @@ with http:// or https://.</p>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="ConversionTagCreate"><code>ConversionTagCreate</code> - ConversionTagCreate</a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="ConversionTagCreate"><code>ConversionTagCreate</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Conversion tag name. </div>
-<div class="param">aem_enabled (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Whether Automatic Enhanced Match email is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information. </div>
+      <div class="param">aem_enabled (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Whether Automatic Enhanced Match email is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information. </div>
 <div class="param">md_frequency (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Metadata ingestion frequency. </div>
 <div class="param">aem_fnln_enabled (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Whether Automatic Enhanced Match name is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information. </div>
 <div class="param">aem_ph_enabled (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Whether Automatic Enhanced Match phone is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information. </div>
 <div class="param">aem_ge_enabled (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Whether Automatic Enhanced Match gender is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information. </div>
 <div class="param">aem_db_enabled (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Whether Automatic Enhanced Match birthdate is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information. </div>
 <div class="param">aem_loc_enabled (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Whether Automatic Enhanced Match location is enabled. See <a href="https://help.pinterest.com/en/business/article/enhanced-match" target="_blank">Enhanced match</a> for more information. </div>
+<div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Conversion tag name. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -26929,7 +27400,8 @@ with http:// or https://.</p>
     <h3><a name="CreateMMMReportRequest"><code>CreateMMMReportRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">report_name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the Marketing Mix Modeling (MMM) report </div>
+      <div class="param">countries (optional)</div><div class="param-desc"><span class="param-type"><a href="#TargetingAdvertiserCountry">array[TargetingAdvertiserCountry]</a></span> A List of countries for filtering </div>
+<div class="param">report_name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the Marketing Mix Modeling (MMM) report </div>
 <div class="param">start_date </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Metric report start date (UTC). Format: YYYY-MM-DD </div>
 <div class="param">end_date </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Metric report end date (UTC). Format: YYYY-MM-DD </div>
 <div class="param">granularity </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> DAY - metrics are broken down daily.<br> WEEK - metrics are broken down weekly. </div>
@@ -26940,7 +27412,6 @@ with http:// or https://.</p>
         <div class="param-enum">CAMPAIGN_TARGETING</div><div class="param-enum">AD_GROUP_TARGETING</div>
 <div class="param">targeting_types </div><div class="param-desc"><span class="param-type"><a href="#MMMReportingTargetingType">array[MMMReportingTargetingType]</a></span> List of targeting types </div>
 <div class="param">columns </div><div class="param-desc"><span class="param-type"><a href="#MMMReportingColumn">array[MMMReportingColumn]</a></span> Metric and entity columns </div>
-<div class="param">countries (optional)</div><div class="param-desc"><span class="param-type"><a href="#TargetingAdvertiserCountry">array[TargetingAdvertiserCountry]</a></span> A List of countries for filtering </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -27664,14 +28135,14 @@ A non empty errors list causes the item processing to fail. </div>
   </div>
   <div class="model">
     <h3><a name="InviteBusinessRoleBinding"><code>InviteBusinessRoleBinding</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.</div>
+    <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">created_by_business_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Unique identifier for the business that created the invite/request. </div>
-<div class="param">created_by_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Unique identifier for the user that created the invite/request. </div>
-<div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#BusinessAccessUserSummary">BusinessAccessUserSummary</a></span> Metadata for the user that updated the invite/request. </div>
-<div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Unique identifier of the invite/request. </div>
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Unique identifier of the invite/request. </div>
 <div class="param">invite_data (optional)</div><div class="param-desc"><span class="param-type"><a href="#BaseInviteDataResponse_invite_data">BaseInviteDataResponse_invite_data</a></span>  </div>
 <div class="param">is_received_invite (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Indicates whether the invite/request was received. </div>
+<div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Metadata for the user that updated the invite/request. </div>
+<div class="param">created_by_business_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Unique identifier for the business that created the invite/request. </div>
+<div class="param">created_by_user_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Unique identifier for the user that created the invite/request. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -27688,15 +28159,15 @@ A non empty errors list causes the item processing to fail. </div>
     <h3><a name="InviteResponse"><code>InviteResponse</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">assets_summary (optional)</div><div class="param-desc"><span class="param-type"><a href="#InviteAssetsSummary">InviteAssetsSummary</a></span>  </div>
-<div class="param">business_roles (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. </div>
-<div class="param">created_by_business (optional)</div><div class="param-desc"><span class="param-type"><a href="#BusinessAccessUserSummary">BusinessAccessUserSummary</a></span> Metadata for the business that created the invite/request. </div>
-<div class="param">created_by_user (optional)</div><div class="param-desc"><span class="param-type"><a href="#BusinessAccessUserSummary">BusinessAccessUserSummary</a></span> Metadata for the user that created the invite/request. </div>
-<div class="param">created_time (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The time the invite/request was created. Returned in milliseconds. </div>
-<div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Unique identifier of the invite/request. </div>
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Unique identifier of the invite/request. </div>
 <div class="param">invite_data (optional)</div><div class="param-desc"><span class="param-type"><a href="#BaseInviteDataResponse_invite_data">BaseInviteDataResponse_invite_data</a></span>  </div>
 <div class="param">is_received_invite (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Indicates whether the invite/request was received. </div>
 <div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#BusinessAccessUserSummary">BusinessAccessUserSummary</a></span> Metadata for the member/partner that was sent the invite/request. </div>
+<div class="param">assets_summary (optional)</div><div class="param-desc"><span class="param-type"><a href="#InviteAssetsSummary">InviteAssetsSummary</a></span>  </div>
+<div class="param">business_roles (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> The access level a user would be granted on the business if the invite/request is accepted. This can be EMPLOYEE, BIZ_ADMIN, or PARTNER. </div>
+<div class="param">created_by_business (optional)</div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Metadata for the business that created the invite/request. </div>
+<div class="param">created_by_user (optional)</div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Metadata for the user that created the invite/request. </div>
+<div class="param">created_time (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> The time the invite/request was created. Returned in milliseconds. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -28170,16 +28641,16 @@ compliance with the privacy policy you share with Pinterest, and (ii) you will c
     <h3><a name="LeadFormCreateRequest"><code>LeadFormCreateRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Internal name of the lead form. </div>
-<div class="param">privacy_policy_link </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. </div>
-<div class="param">has_accepted_terms </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> <p>Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.</p>
+      <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Internal name of the lead form. </div>
+<div class="param">privacy_policy_link (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language. </div>
+<div class="param">has_accepted_terms (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> <p>Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.</p>
 <p>By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in
 compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href="https://policy.pinterest.com/en/lead-ad-terms">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href="https://business.pinterest.com/en/pinterest-advertising-services-agreement/">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO</p>
  </div>
-<div class="param">completion_message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A message for people who complete the form to let them know what happens next. </div>
+<div class="param">completion_message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A message for people who complete the form to let them know what happens next. </div>
 <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#LeadFormStatus">LeadFormStatus</a></span>  </div>
 <div class="param">disclosure_language (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Additional disclosure language to be included in the lead form. </div>
-<div class="param">questions </div><div class="param-desc"><span class="param-type"><a href="#LeadFormQuestion">array[LeadFormQuestion]</a></span> List of questions to be displayed on the lead form. </div>
+<div class="param">questions (optional)</div><div class="param-desc"><span class="param-type"><a href="#LeadFormQuestion">array[LeadFormQuestion]</a></span> List of questions to be displayed on the lead form. </div>
 <div class="param">policy_links (optional)</div><div class="param-desc"><span class="param-type"><a href="#LeadFormCommon_policy_links_inner">array[LeadFormCommon_policy_links_inner]</a></span> List of additional policy links to be displayed on the lead form. </div>
     </div>  <!-- field-items -->
   </div>
@@ -28484,36 +28955,36 @@ They cannot see details about other employees, external partners or other ad acc
           </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="OauthAccessTokenRequestClientCredentials"><code>OauthAccessTokenRequestClientCredentials</code> - client_credentials</a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>A request to receive a client token.</div>
+    <h3><a name="OauthAccessTokenRequestClientCredentials"><code>OauthAccessTokenRequestClientCredentials</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">grant_type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">scope </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">grant_type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">authorization_code</div><div class="param-enum">refresh_token</div><div class="param-enum">client_credentials</div>
-<div class="param">scope </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="OauthAccessTokenRequestCode"><code>OauthAccessTokenRequestCode</code> - authorization_code</a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>A request to exchange an authorization code for an access token.</div>
+    <h3><a name="OauthAccessTokenRequestCode"><code>OauthAccessTokenRequestCode</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">grant_type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-        <div class="param-enum-header">Enum:</div>
-        <div class="param-enum">authorization_code</div><div class="param-enum">refresh_token</div><div class="param-enum">client_credentials</div>
-<div class="param">code </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">code </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">redirect_uri </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">grant_type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">authorization_code</div><div class="param-enum">refresh_token</div><div class="param-enum">client_credentials</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="OauthAccessTokenRequestRefresh"><code>OauthAccessTokenRequestRefresh</code> - refresh_token</a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>A request to exchange a refresh token for a new access token.</div>
+    <h3><a name="OauthAccessTokenRequestRefresh"><code>OauthAccessTokenRequestRefresh</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">grant_type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-        <div class="param-enum-header">Enum:</div>
-        <div class="param-enum">authorization_code</div><div class="param-enum">refresh_token</div><div class="param-enum">client_credentials</div>
-<div class="param">refresh_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">refresh_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">scope (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">refresh_on (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Setting this field to <code>true</code> will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to &quot;everlasting_refresh&quot;. </div>
+<div class="param">grant_type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">authorization_code</div><div class="param-enum">refresh_token</div><div class="param-enum">client_credentials</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -28543,49 +29014,49 @@ They cannot see details about other employees, external partners or other ad acc
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="OauthAccessTokenResponseCode"><code>OauthAccessTokenResponseCode</code> - OAuth access token response</a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>A successful OAuth access token response for the authorization code flow.</div>
+    <h3><a name="OauthAccessTokenResponseCode"><code>OauthAccessTokenResponseCode</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">response_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">refresh_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">refresh_token_expires_in </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">response_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">authorization_code</div><div class="param-enum">refresh_token</div><div class="param-enum">client_credentials</div>
 <div class="param">access_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">token_type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">expires_in </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
 <div class="param">scope </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">refresh_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">refresh_token_expires_in </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="OauthAccessTokenResponseEverlastingRefresh"><code>OauthAccessTokenResponseEverlastingRefresh</code> - OAuth access token response</a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>A successful OAuth access token response for the refresh token flow, with an added everlasting refresh token.</div>
+    <h3><a name="OauthAccessTokenResponseEverlastingRefresh"><code>OauthAccessTokenResponseEverlastingRefresh</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">response_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-        <div class="param-enum-header">Enum:</div>
-        <div class="param-enum">authorization_code</div><div class="param-enum">refresh_token</div><div class="param-enum">client_credentials</div>
-<div class="param">access_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">token_type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">expires_in </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">scope </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">refresh_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">refresh_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">refresh_token_expires_in </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
 <div class="param">refresh_token_expires_at </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="OauthAccessTokenResponseIntegrationRefresh"><code>OauthAccessTokenResponseIntegrationRefresh</code> - OAuth access token response</a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>A successful OAuth access token response for the refresh token flow, with an added refresh token.</div>
-    <div class="field-items">
-      <div class="param">response_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">response_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">authorization_code</div><div class="param-enum">refresh_token</div><div class="param-enum">client_credentials</div>
 <div class="param">access_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">token_type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">expires_in </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
 <div class="param">scope </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">refresh_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="OauthAccessTokenResponseIntegrationRefresh"><code>OauthAccessTokenResponseIntegrationRefresh</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">refresh_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">refresh_token_expires_in </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">response_type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">authorization_code</div><div class="param-enum">refresh_token</div><div class="param-enum">client_credentials</div>
+<div class="param">access_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">token_type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">expires_in </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">scope </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -30612,7 +31083,9 @@ is not empty, the assets listed are the partner's business assets you have acces
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">CREATIVE_ASSETS</div>
 <div class="param">country </div><div class="param-desc"><span class="param-type"><a href="#Country">Country</a></span>  </div>
-<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#CatalogsItemsRequest_language">CatalogsItemsRequest_language</a></span>  </div>
+<div class="param">language </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> We recommend using the CatalogsLocale values. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">af-ZA</div><div class="param-enum">ar-SA</div><div class="param-enum">bg-BG</div><div class="param-enum">bn-IN</div><div class="param-enum">cs-CZ</div><div class="param-enum">da-DK</div><div class="param-enum">de</div><div class="param-enum">el-GR</div><div class="param-enum">en-AU</div><div class="param-enum">en-CA</div><div class="param-enum">en-GB</div><div class="param-enum">en-IN</div><div class="param-enum">en-US</div><div class="param-enum">es-419</div><div class="param-enum">es-AR</div><div class="param-enum">es-ES</div><div class="param-enum">es-MX</div><div class="param-enum">fi-FI</div><div class="param-enum">fr</div><div class="param-enum">fr-CA</div><div class="param-enum">he-IL</div><div class="param-enum">hi-IN</div><div class="param-enum">hr-HR</div><div class="param-enum">hu-HU</div><div class="param-enum">id-ID</div><div class="param-enum">it</div><div class="param-enum">ja</div><div class="param-enum">ko-KR</div><div class="param-enum">ms-MY</div><div class="param-enum">nb-NO</div><div class="param-enum">nl</div><div class="param-enum">pl-PL</div><div class="param-enum">pt-BR</div><div class="param-enum">pt-PT</div><div class="param-enum">ro-RO</div><div class="param-enum">ru-RU</div><div class="param-enum">sk-SK</div><div class="param-enum">sv-SE</div><div class="param-enum">te-IN</div><div class="param-enum">th-TH</div><div class="param-enum">tl-PH</div><div class="param-enum">tr</div><div class="param-enum">uk-UA</div><div class="param-enum">vi-VN</div><div class="param-enum">zh-CN</div><div class="param-enum">zh-TW</div><div class="param-enum">AM</div><div class="param-enum">AR</div><div class="param-enum">AZ</div><div class="param-enum">BG</div><div class="param-enum">BN</div><div class="param-enum">BS</div><div class="param-enum">CA</div><div class="param-enum">CS</div><div class="param-enum">DA</div><div class="param-enum">DV</div><div class="param-enum">DZ</div><div class="param-enum">DE</div><div class="param-enum">EL</div><div class="param-enum">EN</div><div class="param-enum">ES</div><div class="param-enum">ET</div><div class="param-enum">FA</div><div class="param-enum">FI</div><div class="param-enum">FR</div><div class="param-enum">HE</div><div class="param-enum">HI</div><div class="param-enum">HR</div><div class="param-enum">HU</div><div class="param-enum">HY</div><div class="param-enum">ID</div><div class="param-enum">IN</div><div class="param-enum">IS</div><div class="param-enum">IT</div><div class="param-enum">IW</div><div class="param-enum">JA</div><div class="param-enum">KA</div><div class="param-enum">KM</div><div class="param-enum">KO</div><div class="param-enum">LO</div><div class="param-enum">LT</div><div class="param-enum">LV</div><div class="param-enum">MK</div><div class="param-enum">MN</div><div class="param-enum">MS</div><div class="param-enum">MY</div><div class="param-enum">NB</div><div class="param-enum">NE</div><div class="param-enum">NL</div><div class="param-enum">NO</div><div class="param-enum">PL</div><div class="param-enum">PT</div><div class="param-enum">RO</div><div class="param-enum">RU</div><div class="param-enum">SK</div><div class="param-enum">SL</div><div class="param-enum">SQ</div><div class="param-enum">SR</div><div class="param-enum">SV</div><div class="param-enum">TL</div><div class="param-enum">UK</div><div class="param-enum">VI</div><div class="param-enum">TE</div><div class="param-enum">TH</div><div class="param-enum">TR</div><div class="param-enum">XX</div><div class="param-enum">ZH</div>
 <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#ItemDeleteBatchRecord">array[ItemDeleteBatchRecord]</a></span> Array with catalogs items </div>
 <div class="param">catalog_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Catalog id pertaining to the creative assets item. If not provided, default to oldest creative assets catalog </div>
 <div class="param">operation </div><div class="param-desc"><span class="param-type"><a href="#BatchOperation">BatchOperation</a></span>  </div>
@@ -30682,12 +31155,6 @@ is not empty, the assets listed are the partner's business assets you have acces
       <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#ConversionEventResponse">array[ConversionEventResponse]</a></span>  </div>
 <div class="param">bookmark (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="pins_analytics_metric_types_parameter_inner"><code>pins_analytics_metric_types_parameter_inner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-          </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="pins_list_200_response"><code>pins_list_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>

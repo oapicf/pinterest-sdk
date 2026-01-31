@@ -15,7 +15,6 @@ import org.openapitools.model.BatchOperation;
 import org.openapitools.model.CatalogsItemsCreateBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteBatchRequest;
 import org.openapitools.model.CatalogsItemsDeleteDiscontinuedBatchRequest;
-import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.CatalogsItemsUpdateBatchRequest;
 import org.openapitools.model.CatalogsItemsUpsertBatchRequest;
 import org.openapitools.model.Country;
@@ -42,15 +41,10 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsItemsDeleteBatchRequest.class, name = "DELETE"),
   @JsonSubTypes.Type(value = CatalogsItemsDeleteDiscontinuedBatchRequest.class, name = "DELETE_DISCONTINUED"),
   @JsonSubTypes.Type(value = CatalogsItemsUpdateBatchRequest.class, name = "UPDATE"),
-  @JsonSubTypes.Type(value = CatalogsItemsUpsertBatchRequest.class, name = "UPSERT"),
-  @JsonSubTypes.Type(value = CatalogsItemsCreateBatchRequest.class, name = "CatalogsItemsCreateBatchRequest"),
-  @JsonSubTypes.Type(value = CatalogsItemsDeleteBatchRequest.class, name = "CatalogsItemsDeleteBatchRequest"),
-  @JsonSubTypes.Type(value = CatalogsItemsDeleteDiscontinuedBatchRequest.class, name = "CatalogsItemsDeleteDiscontinuedBatchRequest"),
-  @JsonSubTypes.Type(value = CatalogsItemsUpdateBatchRequest.class, name = "CatalogsItemsUpdateBatchRequest"),
-  @JsonSubTypes.Type(value = CatalogsItemsUpsertBatchRequest.class, name = "CatalogsItemsUpsertBatchRequest")
+  @JsonSubTypes.Type(value = CatalogsItemsUpsertBatchRequest.class, name = "UPSERT")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public interface CatalogsItemsBatchRequest extends ItemsBatchPostRequest {
     public String getOperation();
 }

@@ -81,7 +81,7 @@ QJsonObject OAICatalogsItemsDeleteDiscontinuedBatchRequest::asJsonObject() const
     if (m_country.isSet()) {
         obj.insert(QString("country"), ::OpenAPI::toJsonValue(m_country));
     }
-    if (m_language.isSet()) {
+    if (m_language_isSet) {
         obj.insert(QString("language"), ::OpenAPI::toJsonValue(m_language));
     }
     if (m_operation.isSet()) {
@@ -109,10 +109,10 @@ bool OAICatalogsItemsDeleteDiscontinuedBatchRequest::is_country_Valid() const{
     return m_country_isValid;
 }
 
-OAICatalogsItemsRequest_language OAICatalogsItemsDeleteDiscontinuedBatchRequest::getLanguage() const {
+QString OAICatalogsItemsDeleteDiscontinuedBatchRequest::getLanguage() const {
     return m_language;
 }
-void OAICatalogsItemsDeleteDiscontinuedBatchRequest::setLanguage(const OAICatalogsItemsRequest_language &language) {
+void OAICatalogsItemsDeleteDiscontinuedBatchRequest::setLanguage(const QString &language) {
     m_language = language;
     m_language_isSet = true;
 }
@@ -165,7 +165,7 @@ bool OAICatalogsItemsDeleteDiscontinuedBatchRequest::isSet() const {
             break;
         }
 
-        if (m_language.isSet()) {
+        if (m_language_isSet) {
             isObjectUpdated = true;
             break;
         }

@@ -57,7 +57,7 @@ export function CatalogsProductFromJSONTyped(json: any, ignoreDiscriminator: boo
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailProductFromJSONTyped(json, true), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsProduct exists with 'catalogType=${json['catalogType']}'`);
+            return json;
     }
 }
 
@@ -77,8 +77,7 @@ export function CatalogsProductToJSONTyped(value?: CatalogsProduct | null, ignor
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailProductToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsProduct exists with 'catalogType=${value['catalogType']}'`);
+            return value;
     }
-
 }
 

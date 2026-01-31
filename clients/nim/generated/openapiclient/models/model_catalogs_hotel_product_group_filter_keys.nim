@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_brand_filter
 import model_catalogs_product_group_multiple_countries_criteria
@@ -23,14 +25,86 @@ import model_custom_label4_filter
 import model_hotel_id_filter
 import model_price_filter
 
+# AnyOf type
+type CatalogsHotelProductGroupFilterKeysKind* {.pure.} = enum
+  PriceFilterVariant
+  HotelIdFilterVariant
+  BrandFilterVariant
+  CustomLabel0FilterVariant
+  CustomLabel1FilterVariant
+  CustomLabel2FilterVariant
+  CustomLabel3FilterVariant
+  CustomLabel4FilterVariant
+  CountryFilterVariant
+
 type CatalogsHotelProductGroupFilterKeys* = object
   ## 
-  PRICE*: catalogs_product_group_pricing_currency_criteria
-  HOTEL_ID*: CatalogsProductGroupMultipleStringCriteria
-  BRAND*: CatalogsProductGroupMultipleStringCriteria
-  CUSTOM_LABEL_0*: CatalogsProductGroupMultipleStringCriteria
-  CUSTOM_LABEL_1*: CatalogsProductGroupMultipleStringCriteria
-  CUSTOM_LABEL_2*: CatalogsProductGroupMultipleStringCriteria
-  CUSTOM_LABEL_3*: CatalogsProductGroupMultipleStringCriteria
-  CUSTOM_LABEL_4*: CatalogsProductGroupMultipleStringCriteria
-  COUNTRY*: CatalogsProductGroupMultipleCountriesCriteria
+  case kind*: CatalogsHotelProductGroupFilterKeysKind
+  of CatalogsHotelProductGroupFilterKeysKind.PriceFilterVariant:
+    PriceFilterValue*: PriceFilter
+  of CatalogsHotelProductGroupFilterKeysKind.HotelIdFilterVariant:
+    HotelIdFilterValue*: HotelIdFilter
+  of CatalogsHotelProductGroupFilterKeysKind.BrandFilterVariant:
+    BrandFilterValue*: BrandFilter
+  of CatalogsHotelProductGroupFilterKeysKind.CustomLabel0FilterVariant:
+    CustomLabel0FilterValue*: CustomLabel0Filter
+  of CatalogsHotelProductGroupFilterKeysKind.CustomLabel1FilterVariant:
+    CustomLabel1FilterValue*: CustomLabel1Filter
+  of CatalogsHotelProductGroupFilterKeysKind.CustomLabel2FilterVariant:
+    CustomLabel2FilterValue*: CustomLabel2Filter
+  of CatalogsHotelProductGroupFilterKeysKind.CustomLabel3FilterVariant:
+    CustomLabel3FilterValue*: CustomLabel3Filter
+  of CatalogsHotelProductGroupFilterKeysKind.CustomLabel4FilterVariant:
+    CustomLabel4FilterValue*: CustomLabel4Filter
+  of CatalogsHotelProductGroupFilterKeysKind.CountryFilterVariant:
+    CountryFilterValue*: CountryFilter
+
+proc to*(node: JsonNode, T: typedesc[CatalogsHotelProductGroupFilterKeys]): CatalogsHotelProductGroupFilterKeys =
+  ## Custom deserializer for anyOf type - tries each variant
+  try:
+    return CatalogsHotelProductGroupFilterKeys(kind: CatalogsHotelProductGroupFilterKeysKind.PriceFilterVariant, PriceFilterValue: to(node, PriceFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as PriceFilter: ", e.msg
+  try:
+    return CatalogsHotelProductGroupFilterKeys(kind: CatalogsHotelProductGroupFilterKeysKind.HotelIdFilterVariant, HotelIdFilterValue: to(node, HotelIdFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as HotelIdFilter: ", e.msg
+  try:
+    return CatalogsHotelProductGroupFilterKeys(kind: CatalogsHotelProductGroupFilterKeysKind.BrandFilterVariant, BrandFilterValue: to(node, BrandFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as BrandFilter: ", e.msg
+  try:
+    return CatalogsHotelProductGroupFilterKeys(kind: CatalogsHotelProductGroupFilterKeysKind.CustomLabel0FilterVariant, CustomLabel0FilterValue: to(node, CustomLabel0Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CustomLabel0Filter: ", e.msg
+  try:
+    return CatalogsHotelProductGroupFilterKeys(kind: CatalogsHotelProductGroupFilterKeysKind.CustomLabel1FilterVariant, CustomLabel1FilterValue: to(node, CustomLabel1Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CustomLabel1Filter: ", e.msg
+  try:
+    return CatalogsHotelProductGroupFilterKeys(kind: CatalogsHotelProductGroupFilterKeysKind.CustomLabel2FilterVariant, CustomLabel2FilterValue: to(node, CustomLabel2Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CustomLabel2Filter: ", e.msg
+  try:
+    return CatalogsHotelProductGroupFilterKeys(kind: CatalogsHotelProductGroupFilterKeysKind.CustomLabel3FilterVariant, CustomLabel3FilterValue: to(node, CustomLabel3Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CustomLabel3Filter: ", e.msg
+  try:
+    return CatalogsHotelProductGroupFilterKeys(kind: CatalogsHotelProductGroupFilterKeysKind.CustomLabel4FilterVariant, CustomLabel4FilterValue: to(node, CustomLabel4Filter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CustomLabel4Filter: ", e.msg
+  try:
+    return CatalogsHotelProductGroupFilterKeys(kind: CatalogsHotelProductGroupFilterKeysKind.CountryFilterVariant, CountryFilterValue: to(node, CountryFilter))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CountryFilter: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsHotelProductGroupFilterKeys. JSON: " & $node)
+

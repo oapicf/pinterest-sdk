@@ -1,32 +1,35 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.model.AssetGroupBinding;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * An object containing the permissions a business has on the asset.
- **/
+ * An object containing the permissions a business has on the asset.
+ */
 @ApiModel(description="An object containing the permissions a business has on the asset.")
 
 public class GetBusinessAssetsResponse  {
   
-  @ApiModelProperty(example = "549755885175", value = "Unique identifier of a business asset.")
  /**
-   * Unique identifier of a business asset.
-  **/
+  * Unique identifier of a business asset.
+  */
+  @ApiModelProperty(example = "549755885175", value = "Unique identifier of a business asset.")
+
   private String assetId;
 
-  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
  /**
-   * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
-  **/
+  * Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  */
+  @ApiModelProperty(example = "AD_ACCOUNT", value = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.")
+
   private String assetType;
 
   @ApiModelProperty(value = "")
+
   private AssetGroupBinding assetGroupInfo;
  /**
    * Unique identifier of a business asset.

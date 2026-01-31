@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupUpdateRequest;
@@ -16,13 +15,14 @@ import org.openapitools.model.Country;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for updating a catalog based product group.
- **/
+ * Request object for updating a catalog based product group.
+ */
 @ApiModel(description="Request object for updating a catalog based product group.")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
@@ -66,24 +66,33 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 }
 
   @ApiModelProperty(value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private Country country;
 
   @ApiModelProperty(value = "")
+
   @Valid
+
   private CatalogsLocale locale;
  /**
    * Get catalogType

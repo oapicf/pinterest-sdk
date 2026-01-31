@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "PinMediaSourceVideoID", description = "Video ID-based media source")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMediaSourceVideoID implements PinMediaSource {
 
   /**
@@ -36,7 +36,7 @@ public class PinMediaSourceVideoID implements PinMediaSource {
   public enum SourceTypeEnum {
     VIDEO_ID("video_id");
 
-    private String value;
+    private final String value;
 
     SourceTypeEnum(String value) {
       this.value = value;
@@ -75,7 +75,7 @@ public class PinMediaSourceVideoID implements PinMediaSource {
     
     IMAGE_PNG("image/png");
 
-    private String value;
+    private final String value;
 
     CoverImageContentTypeEnum(String value) {
       this.value = value;
@@ -142,7 +142,7 @@ public class PinMediaSourceVideoID implements PinMediaSource {
     this.sourceType = sourceType;
   }
 
-  public PinMediaSourceVideoID coverImageUrl(String coverImageUrl) {
+  public PinMediaSourceVideoID coverImageUrl(@Nullable String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
     return this;
   }
@@ -154,15 +154,15 @@ public class PinMediaSourceVideoID implements PinMediaSource {
   
   @Schema(name = "cover_image_url", description = "Cover image url.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cover_image_url")
-  public String getCoverImageUrl() {
+  public @Nullable String getCoverImageUrl() {
     return coverImageUrl;
   }
 
-  public void setCoverImageUrl(String coverImageUrl) {
+  public void setCoverImageUrl(@Nullable String coverImageUrl) {
     this.coverImageUrl = coverImageUrl;
   }
 
-  public PinMediaSourceVideoID coverImageContentType(CoverImageContentTypeEnum coverImageContentType) {
+  public PinMediaSourceVideoID coverImageContentType(@Nullable CoverImageContentTypeEnum coverImageContentType) {
     this.coverImageContentType = coverImageContentType;
     return this;
   }
@@ -174,15 +174,15 @@ public class PinMediaSourceVideoID implements PinMediaSource {
   
   @Schema(name = "cover_image_content_type", description = "Content type for cover image Base64.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cover_image_content_type")
-  public CoverImageContentTypeEnum getCoverImageContentType() {
+  public @Nullable CoverImageContentTypeEnum getCoverImageContentType() {
     return coverImageContentType;
   }
 
-  public void setCoverImageContentType(CoverImageContentTypeEnum coverImageContentType) {
+  public void setCoverImageContentType(@Nullable CoverImageContentTypeEnum coverImageContentType) {
     this.coverImageContentType = coverImageContentType;
   }
 
-  public PinMediaSourceVideoID coverImageData(String coverImageData) {
+  public PinMediaSourceVideoID coverImageData(@Nullable String coverImageData) {
     this.coverImageData = coverImageData;
     return this;
   }
@@ -194,11 +194,11 @@ public class PinMediaSourceVideoID implements PinMediaSource {
   
   @Schema(name = "cover_image_data", description = "Cover image Base64.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("cover_image_data")
-  public String getCoverImageData() {
+  public @Nullable String getCoverImageData() {
     return coverImageData;
   }
 
-  public void setCoverImageData(String coverImageData) {
+  public void setCoverImageData(@Nullable String coverImageData) {
     this.coverImageData = coverImageData;
   }
 

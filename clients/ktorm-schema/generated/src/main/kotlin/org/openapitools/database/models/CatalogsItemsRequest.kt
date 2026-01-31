@@ -20,12 +20,12 @@ import .*
 /**
  * Request object of catalogs items
  * @param country 
- * @param language 
+ * @param language We recommend using the CatalogsLocale values.
  * @param filters 
  */
 object CatalogsItemsRequests : BaseTable<CatalogsItemsRequest>("CatalogsItemsRequest") {
     val country = long("country")
-    val language = long("language")
+    val language = text("language").transform({ CatalogsItemsRequest.Language.valueOf(it) }, { it.value }) /* We recommend using the CatalogsLocale values. */
     val filters = long("filters")
 
     /**
@@ -33,7 +33,7 @@ object CatalogsItemsRequests : BaseTable<CatalogsItemsRequest>("CatalogsItemsReq
      */
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = CatalogsItemsRequest(
         country = Countrys.createEntity(row, withReferences) /* Country */,
-        language = CatalogsItemsRequestLanguages.createEntity(row, withReferences) /* CatalogsItemsRequestLanguage */,
+        language = row[language] ?: CatalogsItemsRequest.Language.valueOf("") /* kotlin.String */ /* We recommend using the CatalogsLocale values. */,
         filters = CatalogsItemsPostFilterss.createEntity(row, withReferences) /* CatalogsItemsPostFilters */
     )
 

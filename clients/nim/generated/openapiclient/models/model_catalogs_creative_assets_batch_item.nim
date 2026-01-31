@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_create_creative_assets_item
 import model_catalogs_delete_creative_assets_item
@@ -16,21 +18,46 @@ import model_catalogs_updatable_creative_assets_attributes
 import model_catalogs_update_creative_assets_item
 import model_catalogs_upsert_creative_assets_item
 
-type Operation* {.pure.} = enum
-  DELETE
+# AnyOf type
+type CatalogsCreativeAssetsBatchItemKind* {.pure.} = enum
+  CatalogsCreateCreativeAssetsItemVariant
+  CatalogsUpsertCreativeAssetsItemVariant
+  CatalogsUpdateCreativeAssetsItemVariant
+  CatalogsDeleteCreativeAssetsItemVariant
 
 type CatalogsCreativeAssetsBatchItem* = object
   ## Creative assets batch item
-  creativeAssetsId*: string ## The catalog creative assets id in the merchant namespace
-  operation*: Operation
-  attributes*: CatalogsUpdatableCreativeAssetsAttributes
+  case kind*: CatalogsCreativeAssetsBatchItemKind
+  of CatalogsCreativeAssetsBatchItemKind.CatalogsCreateCreativeAssetsItemVariant:
+    CatalogsCreateCreativeAssetsItemValue*: CatalogsCreateCreativeAssetsItem
+  of CatalogsCreativeAssetsBatchItemKind.CatalogsUpsertCreativeAssetsItemVariant:
+    CatalogsUpsertCreativeAssetsItemValue*: CatalogsUpsertCreativeAssetsItem
+  of CatalogsCreativeAssetsBatchItemKind.CatalogsUpdateCreativeAssetsItemVariant:
+    CatalogsUpdateCreativeAssetsItemValue*: CatalogsUpdateCreativeAssetsItem
+  of CatalogsCreativeAssetsBatchItemKind.CatalogsDeleteCreativeAssetsItemVariant:
+    CatalogsDeleteCreativeAssetsItemValue*: CatalogsDeleteCreativeAssetsItem
 
-func `%`*(v: Operation): JsonNode =
-  let str = case v:
-    of Operation.DELETE: "DELETE"
+proc to*(node: JsonNode, T: typedesc[CatalogsCreativeAssetsBatchItem]): CatalogsCreativeAssetsBatchItem =
+  ## Custom deserializer for anyOf type - tries each variant
+  try:
+    return CatalogsCreativeAssetsBatchItem(kind: CatalogsCreativeAssetsBatchItemKind.CatalogsCreateCreativeAssetsItemVariant, CatalogsCreateCreativeAssetsItemValue: to(node, CatalogsCreateCreativeAssetsItem))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsCreateCreativeAssetsItem: ", e.msg
+  try:
+    return CatalogsCreativeAssetsBatchItem(kind: CatalogsCreativeAssetsBatchItemKind.CatalogsUpsertCreativeAssetsItemVariant, CatalogsUpsertCreativeAssetsItemValue: to(node, CatalogsUpsertCreativeAssetsItem))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsUpsertCreativeAssetsItem: ", e.msg
+  try:
+    return CatalogsCreativeAssetsBatchItem(kind: CatalogsCreativeAssetsBatchItemKind.CatalogsUpdateCreativeAssetsItemVariant, CatalogsUpdateCreativeAssetsItemValue: to(node, CatalogsUpdateCreativeAssetsItem))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsUpdateCreativeAssetsItem: ", e.msg
+  try:
+    return CatalogsCreativeAssetsBatchItem(kind: CatalogsCreativeAssetsBatchItemKind.CatalogsDeleteCreativeAssetsItemVariant, CatalogsDeleteCreativeAssetsItemValue: to(node, CatalogsDeleteCreativeAssetsItem))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsDeleteCreativeAssetsItem: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsCreativeAssetsBatchItem. JSON: " & $node)
 
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: Operation): string =
-  result = case v:
-    of Operation.DELETE: "DELETE"

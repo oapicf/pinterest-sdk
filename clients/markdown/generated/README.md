@@ -7,97 +7,97 @@ All URIs are relative to *https://api.pinterest.com/v5*
 
 | Class | Method | HTTP request | Description |
 |------------ | ------------- | ------------- | -------------|
-| *AdAccountsApi* | [**adAccount/analytics**](Apis/AdAccountsApi.md#adaccount/analytics) | **GET** /ad_accounts/{ad_account_id}/analytics | Get ad account analytics |
-*AdAccountsApi* | [**adAccountTargetingAnalytics/get**](Apis/AdAccountsApi.md#adaccounttargetinganalytics/get) | **GET** /ad_accounts/{ad_account_id}/targeting_analytics | Get targeting analytics for an ad account |
-*AdAccountsApi* | [**adAccounts/create**](Apis/AdAccountsApi.md#adaccounts/create) | **POST** /ad_accounts | Create ad account |
-*AdAccountsApi* | [**adAccounts/get**](Apis/AdAccountsApi.md#adaccounts/get) | **GET** /ad_accounts/{ad_account_id} | Get ad account |
-*AdAccountsApi* | [**adAccounts/list**](Apis/AdAccountsApi.md#adaccounts/list) | **GET** /ad_accounts | List ad accounts |
-*AdAccountsApi* | [**analytics/createMmmReport**](Apis/AdAccountsApi.md#analytics/createmmmreport) | **POST** /ad_accounts/{ad_account_id}/mmm_reports | Create a request for a Marketing Mix Modeling (MMM) report |
-*AdAccountsApi* | [**analytics/createReport**](Apis/AdAccountsApi.md#analytics/createreport) | **POST** /ad_accounts/{ad_account_id}/reports | Create async request for an account analytics report |
-*AdAccountsApi* | [**analytics/createTemplateReport**](Apis/AdAccountsApi.md#analytics/createtemplatereport) | **POST** /ad_accounts/{ad_account_id}/templates/{template_id}/reports | Create async request for an analytics report using a template |
-*AdAccountsApi* | [**analytics/getMmmReport**](Apis/AdAccountsApi.md#analytics/getmmmreport) | **GET** /ad_accounts/{ad_account_id}/mmm_reports | Get advertiser Marketing Mix Modeling (MMM) report. |
-*AdAccountsApi* | [**analytics/getReport**](Apis/AdAccountsApi.md#analytics/getreport) | **GET** /ad_accounts/{ad_account_id}/reports | Get the account analytics report created by the async call |
+| *AdAccountsApi* | [**adAccount/analytics**](Apis/AdAccountsApi.md#adAccount/analytics) | **GET** /ad_accounts/{ad_account_id}/analytics | Get ad account analytics |
+*AdAccountsApi* | [**adAccountTargetingAnalytics/get**](Apis/AdAccountsApi.md#adAccountTargetingAnalytics/get) | **GET** /ad_accounts/{ad_account_id}/targeting_analytics | Get targeting analytics for an ad account |
+*AdAccountsApi* | [**adAccounts/create**](Apis/AdAccountsApi.md#adAccounts/create) | **POST** /ad_accounts | Create ad account |
+*AdAccountsApi* | [**adAccounts/get**](Apis/AdAccountsApi.md#adAccounts/get) | **GET** /ad_accounts/{ad_account_id} | Get ad account |
+*AdAccountsApi* | [**adAccounts/list**](Apis/AdAccountsApi.md#adAccounts/list) | **GET** /ad_accounts | List ad accounts |
+*AdAccountsApi* | [**analytics/createMmmReport**](Apis/AdAccountsApi.md#analytics/createMmmReport) | **POST** /ad_accounts/{ad_account_id}/mmm_reports | Create a request for a Marketing Mix Modeling (MMM) report |
+*AdAccountsApi* | [**analytics/createReport**](Apis/AdAccountsApi.md#analytics/createReport) | **POST** /ad_accounts/{ad_account_id}/reports | Create async request for an account analytics report |
+*AdAccountsApi* | [**analytics/createTemplateReport**](Apis/AdAccountsApi.md#analytics/createTemplateReport) | **POST** /ad_accounts/{ad_account_id}/templates/{template_id}/reports | Create async request for an analytics report using a template |
+*AdAccountsApi* | [**analytics/getMmmReport**](Apis/AdAccountsApi.md#analytics/getMmmReport) | **GET** /ad_accounts/{ad_account_id}/mmm_reports | Get advertiser Marketing Mix Modeling (MMM) report. |
+*AdAccountsApi* | [**analytics/getReport**](Apis/AdAccountsApi.md#analytics/getReport) | **GET** /ad_accounts/{ad_account_id}/reports | Get the account analytics report created by the async call |
 *AdAccountsApi* | [**sandbox/delete**](Apis/AdAccountsApi.md#sandbox/delete) | **DELETE** /ad_accounts/{ad_account_id}/sandbox | Delete ads data for ad account in API Sandbox |
 *AdAccountsApi* | [**templates/list**](Apis/AdAccountsApi.md#templates/list) | **GET** /ad_accounts/{ad_account_id}/templates | List templates |
-| *AdGroupsApi* | [**adGroups/analytics**](Apis/AdGroupsApi.md#adgroups/analytics) | **GET** /ad_accounts/{ad_account_id}/ad_groups/analytics | Get ad group analytics |
-*AdGroupsApi* | [**adGroups/audienceSizing**](Apis/AdGroupsApi.md#adgroups/audiencesizing) | **POST** /ad_accounts/{ad_account_id}/ad_groups/audience_sizing | Get audience sizing |
-*AdGroupsApi* | [**adGroups/create**](Apis/AdGroupsApi.md#adgroups/create) | **POST** /ad_accounts/{ad_account_id}/ad_groups | Create ad groups |
-*AdGroupsApi* | [**adGroups/get**](Apis/AdGroupsApi.md#adgroups/get) | **GET** /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id} | Get ad group |
-*AdGroupsApi* | [**adGroups/list**](Apis/AdGroupsApi.md#adgroups/list) | **GET** /ad_accounts/{ad_account_id}/ad_groups | List ad groups |
-*AdGroupsApi* | [**adGroups/update**](Apis/AdGroupsApi.md#adgroups/update) | **PATCH** /ad_accounts/{ad_account_id}/ad_groups | Update ad groups |
-*AdGroupsApi* | [**adGroupsBidFloor/get**](Apis/AdGroupsApi.md#adgroupsbidfloor/get) | **POST** /ad_accounts/{ad_account_id}/bid_floor | Get bid floors |
-*AdGroupsApi* | [**adGroupsTargetingAnalytics/get**](Apis/AdGroupsApi.md#adgroupstargetinganalytics/get) | **GET** /ad_accounts/{ad_account_id}/ad_groups/targeting_analytics | Get targeting analytics for ad groups |
-| *AdsApi* | [**adPreviews/create**](Apis/AdsApi.md#adpreviews/create) | **POST** /ad_accounts/{ad_account_id}/ad_previews | Create ad preview with pin or image |
-*AdsApi* | [**adTargetingAnalytics/get**](Apis/AdsApi.md#adtargetinganalytics/get) | **GET** /ad_accounts/{ad_account_id}/ads/targeting_analytics | Get targeting analytics for ads |
+| *AdGroupsApi* | [**adGroups/analytics**](Apis/AdGroupsApi.md#adGroups/analytics) | **GET** /ad_accounts/{ad_account_id}/ad_groups/analytics | Get ad group analytics |
+*AdGroupsApi* | [**adGroups/audienceSizing**](Apis/AdGroupsApi.md#adGroups/audienceSizing) | **POST** /ad_accounts/{ad_account_id}/ad_groups/audience_sizing | Get audience sizing |
+*AdGroupsApi* | [**adGroups/create**](Apis/AdGroupsApi.md#adGroups/create) | **POST** /ad_accounts/{ad_account_id}/ad_groups | Create ad groups |
+*AdGroupsApi* | [**adGroups/get**](Apis/AdGroupsApi.md#adGroups/get) | **GET** /ad_accounts/{ad_account_id}/ad_groups/{ad_group_id} | Get ad group |
+*AdGroupsApi* | [**adGroups/list**](Apis/AdGroupsApi.md#adGroups/list) | **GET** /ad_accounts/{ad_account_id}/ad_groups | List ad groups |
+*AdGroupsApi* | [**adGroups/update**](Apis/AdGroupsApi.md#adGroups/update) | **PATCH** /ad_accounts/{ad_account_id}/ad_groups | Update ad groups |
+*AdGroupsApi* | [**adGroupsBidFloor/get**](Apis/AdGroupsApi.md#adGroupsBidFloor/get) | **POST** /ad_accounts/{ad_account_id}/bid_floor | Get bid floors |
+*AdGroupsApi* | [**adGroupsTargetingAnalytics/get**](Apis/AdGroupsApi.md#adGroupsTargetingAnalytics/get) | **GET** /ad_accounts/{ad_account_id}/ad_groups/targeting_analytics | Get targeting analytics for ad groups |
+| *AdsApi* | [**adPreviews/create**](Apis/AdsApi.md#adPreviews/create) | **POST** /ad_accounts/{ad_account_id}/ad_previews | Create ad preview with pin or image |
+*AdsApi* | [**adTargetingAnalytics/get**](Apis/AdsApi.md#adTargetingAnalytics/get) | **GET** /ad_accounts/{ad_account_id}/ads/targeting_analytics | Get targeting analytics for ads |
 *AdsApi* | [**ads/analytics**](Apis/AdsApi.md#ads/analytics) | **GET** /ad_accounts/{ad_account_id}/ads/analytics | Get ad analytics |
 *AdsApi* | [**ads/create**](Apis/AdsApi.md#ads/create) | **POST** /ad_accounts/{ad_account_id}/ads | Create ads |
 *AdsApi* | [**ads/get**](Apis/AdsApi.md#ads/get) | **GET** /ad_accounts/{ad_account_id}/ads/{ad_id} | Get ad |
 *AdsApi* | [**ads/list**](Apis/AdsApi.md#ads/list) | **GET** /ad_accounts/{ad_account_id}/ads | List ads |
 *AdsApi* | [**ads/update**](Apis/AdsApi.md#ads/update) | **PATCH** /ad_accounts/{ad_account_id}/ads | Update ads |
-| *AdvancedAuctionApi* | [**advancedAuctionItemsGet/post**](Apis/AdvancedAuctionApi.md#advancedauctionitemsget/post) | **POST** /advanced_auction/items/get | Get item bid options (POST) |
-*AdvancedAuctionApi* | [**advancedAuctionItemsSubmit/post**](Apis/AdvancedAuctionApi.md#advancedauctionitemssubmit/post) | **POST** /advanced_auction/items/submit | Operate on item level bid options |
-| *AudienceInsightsApi* | [**audienceInsights/get**](Apis/AudienceInsightsApi.md#audienceinsights/get) | **GET** /ad_accounts/{ad_account_id}/audience_insights | Get audience insights |
-*AudienceInsightsApi* | [**audienceInsightsScopeAndType/get**](Apis/AudienceInsightsApi.md#audienceinsightsscopeandtype/get) | **GET** /ad_accounts/{ad_account_id}/insights/audiences | Get audience insights scope and type |
-| *AudienceSharingApi* | [**adAccountsAudiencesSharedAccounts/list**](Apis/AudienceSharingApi.md#adaccountsaudiencessharedaccounts/list) | **GET** /ad_accounts/{ad_account_id}/audiences/shared/accounts | List accounts with access to an audience owned by an ad account |
-*AudienceSharingApi* | [**businessAccountAudiencesSharedAccounts/list**](Apis/AudienceSharingApi.md#businessaccountaudiencessharedaccounts/list) | **GET** /businesses/{business_id}/audiences/shared/accounts | List accounts with access to an audience owned by a business |
-*AudienceSharingApi* | [**sharedAudiencesForBusiness/list**](Apis/AudienceSharingApi.md#sharedaudiencesforbusiness/list) | **GET** /businesses/{business_id}/audiences | List received audiences for a business |
-*AudienceSharingApi* | [**updateAdAccountToAdAccountSharedAudience**](Apis/AudienceSharingApi.md#updateadaccounttoadaccountsharedaudience) | **PATCH** /ad_accounts/{ad_account_id}/audiences/ad_accounts/shared | Update audience sharing between ad accounts |
-*AudienceSharingApi* | [**updateAdAccountToBusinessSharedAudience**](Apis/AudienceSharingApi.md#updateadaccounttobusinesssharedaudience) | **PATCH** /ad_accounts/{ad_account_id}/audiences/businesses/shared | Update audience sharing from an ad account to businesses |
-*AudienceSharingApi* | [**updateBusinessToAdAccountSharedAudience**](Apis/AudienceSharingApi.md#updatebusinesstoadaccountsharedaudience) | **PATCH** /businesses/{business_id}/audiences/ad_accounts/shared | Update audience sharing from a business to ad accounts |
-*AudienceSharingApi* | [**updateBusinessToBusinessSharedAudience**](Apis/AudienceSharingApi.md#updatebusinesstobusinesssharedaudience) | **PATCH** /businesses/{business_id}/audiences/businesses/shared | Update audience sharing between businesses |
+| *AdvancedAuctionApi* | [**advancedAuctionItemsGet/post**](Apis/AdvancedAuctionApi.md#advancedAuctionItemsGet/post) | **POST** /advanced_auction/items/get | Get item bid options (POST) |
+*AdvancedAuctionApi* | [**advancedAuctionItemsSubmit/post**](Apis/AdvancedAuctionApi.md#advancedAuctionItemsSubmit/post) | **POST** /advanced_auction/items/submit | Operate on item level bid options |
+| *AudienceInsightsApi* | [**audienceInsights/get**](Apis/AudienceInsightsApi.md#audienceInsights/get) | **GET** /ad_accounts/{ad_account_id}/audience_insights | Get audience insights |
+*AudienceInsightsApi* | [**audienceInsightsScopeAndType/get**](Apis/AudienceInsightsApi.md#audienceInsightsScopeAndType/get) | **GET** /ad_accounts/{ad_account_id}/insights/audiences | Get audience insights scope and type |
+| *AudienceSharingApi* | [**adAccountsAudiencesSharedAccounts/list**](Apis/AudienceSharingApi.md#adAccountsAudiencesSharedAccounts/list) | **GET** /ad_accounts/{ad_account_id}/audiences/shared/accounts | List accounts with access to an audience owned by an ad account |
+*AudienceSharingApi* | [**businessAccountAudiencesSharedAccounts/list**](Apis/AudienceSharingApi.md#businessAccountAudiencesSharedAccounts/list) | **GET** /businesses/{business_id}/audiences/shared/accounts | List accounts with access to an audience owned by a business |
+*AudienceSharingApi* | [**sharedAudiencesForBusiness/list**](Apis/AudienceSharingApi.md#sharedAudiencesForBusiness/list) | **GET** /businesses/{business_id}/audiences | List received audiences for a business |
+*AudienceSharingApi* | [**updateAdAccountToAdAccountSharedAudience**](Apis/AudienceSharingApi.md#updateAdAccountToAdAccountSharedAudience) | **PATCH** /ad_accounts/{ad_account_id}/audiences/ad_accounts/shared | Update audience sharing between ad accounts |
+*AudienceSharingApi* | [**updateAdAccountToBusinessSharedAudience**](Apis/AudienceSharingApi.md#updateAdAccountToBusinessSharedAudience) | **PATCH** /ad_accounts/{ad_account_id}/audiences/businesses/shared | Update audience sharing from an ad account to businesses |
+*AudienceSharingApi* | [**updateBusinessToAdAccountSharedAudience**](Apis/AudienceSharingApi.md#updateBusinessToAdAccountSharedAudience) | **PATCH** /businesses/{business_id}/audiences/ad_accounts/shared | Update audience sharing from a business to ad accounts |
+*AudienceSharingApi* | [**updateBusinessToBusinessSharedAudience**](Apis/AudienceSharingApi.md#updateBusinessToBusinessSharedAudience) | **PATCH** /businesses/{business_id}/audiences/businesses/shared | Update audience sharing between businesses |
 | *AudiencesApi* | [**audiences/create**](Apis/AudiencesApi.md#audiences/create) | **POST** /ad_accounts/{ad_account_id}/audiences | Create audience |
-*AudiencesApi* | [**audiences/createCustom**](Apis/AudiencesApi.md#audiences/createcustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience |
+*AudiencesApi* | [**audiences/createCustom**](Apis/AudiencesApi.md#audiences/createCustom) | **POST** /ad_accounts/{ad_account_id}/audiences/custom | Create custom audience |
 *AudiencesApi* | [**audiences/get**](Apis/AudiencesApi.md#audiences/get) | **GET** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Get audience |
 *AudiencesApi* | [**audiences/list**](Apis/AudiencesApi.md#audiences/list) | **GET** /ad_accounts/{ad_account_id}/audiences | List audiences |
 *AudiencesApi* | [**audiences/update**](Apis/AudiencesApi.md#audiences/update) | **PATCH** /ad_accounts/{ad_account_id}/audiences/{audience_id} | Update audience |
-| *BillingApi* | [**adsCredit/redeem**](Apis/BillingApi.md#adscredit/redeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits |
-*BillingApi* | [**adsCreditsDiscounts/get**](Apis/BillingApi.md#adscreditsdiscounts/get) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts |
-*BillingApi* | [**billingProfiles/get**](Apis/BillingApi.md#billingprofiles/get) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles |
-*BillingApi* | [**ssioAccounts/get**](Apis/BillingApi.md#ssioaccounts/get) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information. |
-*BillingApi* | [**ssioInsertionOrder/create**](Apis/BillingApi.md#ssioinsertionorder/create) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO. |
-*BillingApi* | [**ssioInsertionOrder/edit**](Apis/BillingApi.md#ssioinsertionorder/edit) | **PATCH** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Edit insertion order through SSIO. |
-*BillingApi* | [**ssioInsertionOrdersStatus/getByAdAccount**](Apis/BillingApi.md#ssioinsertionordersstatus/getbyadaccount) | **GET** /ad_accounts/{ad_account_id}/ssio/insertion_orders/status | Get insertion order status by ad account id. |
-*BillingApi* | [**ssioInsertionOrdersStatus/getByPinOrderId**](Apis/BillingApi.md#ssioinsertionordersstatus/getbypinorderid) | **GET** /ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status | Get insertion order status by pin order id. |
-*BillingApi* | [**ssioOrderLines/getByAdAccount**](Apis/BillingApi.md#ssioorderlines/getbyadaccount) | **GET** /ad_accounts/{ad_account_id}/ssio/order_lines | Get Salesforce order lines by ad account id. |
-| *BoardsApi* | [**boardSections/create**](Apis/BoardsApi.md#boardsections/create) | **POST** /boards/{board_id}/sections | Create board section |
-*BoardsApi* | [**boardSections/delete**](Apis/BoardsApi.md#boardsections/delete) | **DELETE** /boards/{board_id}/sections/{section_id} | Delete board section |
-*BoardsApi* | [**boardSections/list**](Apis/BoardsApi.md#boardsections/list) | **GET** /boards/{board_id}/sections | List board sections |
-*BoardsApi* | [**boardSections/listPins**](Apis/BoardsApi.md#boardsections/listpins) | **GET** /boards/{board_id}/sections/{section_id}/pins | List Pins on board section |
-*BoardsApi* | [**boardSections/update**](Apis/BoardsApi.md#boardsections/update) | **PATCH** /boards/{board_id}/sections/{section_id} | Update board section |
+| *BillingApi* | [**adsCredit/redeem**](Apis/BillingApi.md#adsCredit/redeem) | **POST** /ad_accounts/{ad_account_id}/ads_credit/redeem | Redeem ad credits |
+*BillingApi* | [**adsCreditsDiscounts/get**](Apis/BillingApi.md#adsCreditsDiscounts/get) | **GET** /ad_accounts/{ad_account_id}/ads_credit/discounts | Get ads credit discounts |
+*BillingApi* | [**billingProfiles/get**](Apis/BillingApi.md#billingProfiles/get) | **GET** /ad_accounts/{ad_account_id}/billing_profiles | Get billing profiles |
+*BillingApi* | [**ssioAccounts/get**](Apis/BillingApi.md#ssioAccounts/get) | **GET** /ad_accounts/{ad_account_id}/ssio/accounts | Get Salesforce account details including bill-to information. |
+*BillingApi* | [**ssioInsertionOrder/create**](Apis/BillingApi.md#ssioInsertionOrder/create) | **POST** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Create insertion order through SSIO. |
+*BillingApi* | [**ssioInsertionOrder/edit**](Apis/BillingApi.md#ssioInsertionOrder/edit) | **PATCH** /ad_accounts/{ad_account_id}/ssio/insertion_orders | Edit insertion order through SSIO. |
+*BillingApi* | [**ssioInsertionOrdersStatus/getByAdAccount**](Apis/BillingApi.md#ssioInsertionOrdersStatus/getByAdAccount) | **GET** /ad_accounts/{ad_account_id}/ssio/insertion_orders/status | Get insertion order status by ad account id. |
+*BillingApi* | [**ssioInsertionOrdersStatus/getByPinOrderId**](Apis/BillingApi.md#ssioInsertionOrdersStatus/getByPinOrderId) | **GET** /ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status | Get insertion order status by pin order id. |
+*BillingApi* | [**ssioOrderLines/getByAdAccount**](Apis/BillingApi.md#ssioOrderLines/getByAdAccount) | **GET** /ad_accounts/{ad_account_id}/ssio/order_lines | Get Salesforce order lines by ad account id. |
+| *BoardsApi* | [**boardSections/create**](Apis/BoardsApi.md#boardSections/create) | **POST** /boards/{board_id}/sections | Create board section |
+*BoardsApi* | [**boardSections/delete**](Apis/BoardsApi.md#boardSections/delete) | **DELETE** /boards/{board_id}/sections/{section_id} | Delete board section |
+*BoardsApi* | [**boardSections/list**](Apis/BoardsApi.md#boardSections/list) | **GET** /boards/{board_id}/sections | List board sections |
+*BoardsApi* | [**boardSections/listPins**](Apis/BoardsApi.md#boardSections/listPins) | **GET** /boards/{board_id}/sections/{section_id}/pins | List Pins on board section |
+*BoardsApi* | [**boardSections/update**](Apis/BoardsApi.md#boardSections/update) | **PATCH** /boards/{board_id}/sections/{section_id} | Update board section |
 *BoardsApi* | [**boards/create**](Apis/BoardsApi.md#boards/create) | **POST** /boards | Create board |
 *BoardsApi* | [**boards/delete**](Apis/BoardsApi.md#boards/delete) | **DELETE** /boards/{board_id} | Delete board |
 *BoardsApi* | [**boards/get**](Apis/BoardsApi.md#boards/get) | **GET** /boards/{board_id} | Get board |
 *BoardsApi* | [**boards/list**](Apis/BoardsApi.md#boards/list) | **GET** /boards | List boards |
-*BoardsApi* | [**boards/listPins**](Apis/BoardsApi.md#boards/listpins) | **GET** /boards/{board_id}/pins | List Pins on board |
+*BoardsApi* | [**boards/listPins**](Apis/BoardsApi.md#boards/listPins) | **GET** /boards/{board_id}/pins | List Pins on board |
 *BoardsApi* | [**boards/update**](Apis/BoardsApi.md#boards/update) | **PATCH** /boards/{board_id} | Update board |
-| *BulkApi* | [**bulkDownload/create**](Apis/BulkApi.md#bulkdownload/create) | **POST** /ad_accounts/{ad_account_id}/bulk/download | Get advertiser entities in bulk |
-*BulkApi* | [**bulkRequest/get**](Apis/BulkApi.md#bulkrequest/get) | **GET** /ad_accounts/{ad_account_id}/bulk/{bulk_request_id} | Download advertiser entities in bulk |
-*BulkApi* | [**bulkUpsert/create**](Apis/BulkApi.md#bulkupsert/create) | **POST** /ad_accounts/{ad_account_id}/bulk/upsert | Create/update ad entities in bulk |
-| *BusinessAccessAssetsApi* | [**assetGroup/create**](Apis/BusinessAccessAssetsApi.md#assetgroup/create) | **POST** /businesses/{business_id}/asset_groups | Create a new asset group. |
-*BusinessAccessAssetsApi* | [**assetGroup/delete**](Apis/BusinessAccessAssetsApi.md#assetgroup/delete) | **DELETE** /businesses/{business_id}/asset_groups | Delete asset groups. |
-*BusinessAccessAssetsApi* | [**assetGroup/update**](Apis/BusinessAccessAssetsApi.md#assetgroup/update) | **PATCH** /businesses/{business_id}/asset_groups | Update asset groups. |
-*BusinessAccessAssetsApi* | [**businessAssetMembers/get**](Apis/BusinessAccessAssetsApi.md#businessassetmembers/get) | **GET** /businesses/{business_id}/assets/{asset_id}/members | Get members with access to asset |
-*BusinessAccessAssetsApi* | [**businessAssetPartners/get**](Apis/BusinessAccessAssetsApi.md#businessassetpartners/get) | **GET** /businesses/{business_id}/assets/{asset_id}/partners | Get partners with access to asset |
-*BusinessAccessAssetsApi* | [**businessAssets/get**](Apis/BusinessAccessAssetsApi.md#businessassets/get) | **GET** /businesses/{business_id}/assets | List business assets |
-*BusinessAccessAssetsApi* | [**businessMemberAssets/get**](Apis/BusinessAccessAssetsApi.md#businessmemberassets/get) | **GET** /businesses/{business_id}/members/{member_id}/assets | Get assets assigned to a member |
-*BusinessAccessAssetsApi* | [**businessMembersAssetAccess/delete**](Apis/BusinessAccessAssetsApi.md#businessmembersassetaccess/delete) | **DELETE** /businesses/{business_id}/members/assets/access | Delete member access to asset |
-*BusinessAccessAssetsApi* | [**businessMembersAssetAccess/update**](Apis/BusinessAccessAssetsApi.md#businessmembersassetaccess/update) | **PATCH** /businesses/{business_id}/members/assets/access | Assign/Update member asset permissions |
-*BusinessAccessAssetsApi* | [**businessPartnerAssetAccess/get**](Apis/BusinessAccessAssetsApi.md#businesspartnerassetaccess/get) | **GET** /businesses/{business_id}/partners/{partner_id}/assets | Get assets assigned to a partner or assets assigned by a partner |
-*BusinessAccessAssetsApi* | [**deletePartnerAssetAccessHandlerImpl**](Apis/BusinessAccessAssetsApi.md#deletepartnerassetaccesshandlerimpl) | **DELETE** /businesses/{business_id}/partners/assets | Delete partner access to asset |
-*BusinessAccessAssetsApi* | [**updatePartnerAssetAccessHandlerImpl**](Apis/BusinessAccessAssetsApi.md#updatepartnerassetaccesshandlerimpl) | **PATCH** /businesses/{business_id}/partners/assets | Assign/Update partner asset permissions |
-| *BusinessAccessInviteApi* | [**assetAccessRequests/create**](Apis/BusinessAccessInviteApi.md#assetaccessrequests/create) | **POST** /businesses/{business_id}/requests/assets/access | Create a request to access an existing partner's assets. |
-*BusinessAccessInviteApi* | [**cancelInvitesOrRequests**](Apis/BusinessAccessInviteApi.md#cancelinvitesorrequests) | **DELETE** /businesses/{business_id}/invites | Cancel invites/requests |
-*BusinessAccessInviteApi* | [**createAssetInvites**](Apis/BusinessAccessInviteApi.md#createassetinvites) | **POST** /businesses/{business_id}/invites/assets/access | Update invite/request with an asset permission |
-*BusinessAccessInviteApi* | [**createMembershipOrPartnershipInvites**](Apis/BusinessAccessInviteApi.md#createmembershiporpartnershipinvites) | **POST** /businesses/{business_id}/invites | Create invites or requests |
+| *BulkApi* | [**bulkDownload/create**](Apis/BulkApi.md#bulkDownload/create) | **POST** /ad_accounts/{ad_account_id}/bulk/download | Get advertiser entities in bulk |
+*BulkApi* | [**bulkRequest/get**](Apis/BulkApi.md#bulkRequest/get) | **GET** /ad_accounts/{ad_account_id}/bulk/{bulk_request_id} | Download advertiser entities in bulk |
+*BulkApi* | [**bulkUpsert/create**](Apis/BulkApi.md#bulkUpsert/create) | **POST** /ad_accounts/{ad_account_id}/bulk/upsert | Create/update ad entities in bulk |
+| *BusinessAccessAssetsApi* | [**assetGroup/create**](Apis/BusinessAccessAssetsApi.md#assetGroup/create) | **POST** /businesses/{business_id}/asset_groups | Create a new asset group. |
+*BusinessAccessAssetsApi* | [**assetGroup/delete**](Apis/BusinessAccessAssetsApi.md#assetGroup/delete) | **DELETE** /businesses/{business_id}/asset_groups | Delete asset groups. |
+*BusinessAccessAssetsApi* | [**assetGroup/update**](Apis/BusinessAccessAssetsApi.md#assetGroup/update) | **PATCH** /businesses/{business_id}/asset_groups | Update asset groups. |
+*BusinessAccessAssetsApi* | [**businessAssetMembers/get**](Apis/BusinessAccessAssetsApi.md#businessAssetMembers/get) | **GET** /businesses/{business_id}/assets/{asset_id}/members | Get members with access to asset |
+*BusinessAccessAssetsApi* | [**businessAssetPartners/get**](Apis/BusinessAccessAssetsApi.md#businessAssetPartners/get) | **GET** /businesses/{business_id}/assets/{asset_id}/partners | Get partners with access to asset |
+*BusinessAccessAssetsApi* | [**businessAssets/get**](Apis/BusinessAccessAssetsApi.md#businessAssets/get) | **GET** /businesses/{business_id}/assets | List business assets |
+*BusinessAccessAssetsApi* | [**businessMemberAssets/get**](Apis/BusinessAccessAssetsApi.md#businessMemberAssets/get) | **GET** /businesses/{business_id}/members/{member_id}/assets | Get assets assigned to a member |
+*BusinessAccessAssetsApi* | [**businessMembersAssetAccess/delete**](Apis/BusinessAccessAssetsApi.md#businessMembersAssetAccess/delete) | **DELETE** /businesses/{business_id}/members/assets/access | Delete member access to asset |
+*BusinessAccessAssetsApi* | [**businessMembersAssetAccess/update**](Apis/BusinessAccessAssetsApi.md#businessMembersAssetAccess/update) | **PATCH** /businesses/{business_id}/members/assets/access | Assign/Update member asset permissions |
+*BusinessAccessAssetsApi* | [**businessPartnerAssetAccess/get**](Apis/BusinessAccessAssetsApi.md#businessPartnerAssetAccess/get) | **GET** /businesses/{business_id}/partners/{partner_id}/assets | Get assets assigned to a partner or assets assigned by a partner |
+*BusinessAccessAssetsApi* | [**deletePartnerAssetAccessHandlerImpl**](Apis/BusinessAccessAssetsApi.md#deletePartnerAssetAccessHandlerImpl) | **DELETE** /businesses/{business_id}/partners/assets | Delete partner access to asset |
+*BusinessAccessAssetsApi* | [**updatePartnerAssetAccessHandlerImpl**](Apis/BusinessAccessAssetsApi.md#updatePartnerAssetAccessHandlerImpl) | **PATCH** /businesses/{business_id}/partners/assets | Assign/Update partner asset permissions |
+| *BusinessAccessInviteApi* | [**assetAccessRequests/create**](Apis/BusinessAccessInviteApi.md#assetAccessRequests/create) | **POST** /businesses/{business_id}/requests/assets/access | Create a request to access an existing partner's assets. |
+*BusinessAccessInviteApi* | [**cancelInvitesOrRequests**](Apis/BusinessAccessInviteApi.md#cancelInvitesOrRequests) | **DELETE** /businesses/{business_id}/invites | Cancel invites/requests |
+*BusinessAccessInviteApi* | [**createAssetInvites**](Apis/BusinessAccessInviteApi.md#createAssetInvites) | **POST** /businesses/{business_id}/invites/assets/access | Update invite/request with an asset permission |
+*BusinessAccessInviteApi* | [**createMembershipOrPartnershipInvites**](Apis/BusinessAccessInviteApi.md#createMembershipOrPartnershipInvites) | **POST** /businesses/{business_id}/invites | Create invites or requests |
 *BusinessAccessInviteApi* | [**get/invites**](Apis/BusinessAccessInviteApi.md#get/invites) | **GET** /businesses/{business_id}/invites | Get invites/requests |
-*BusinessAccessInviteApi* | [**respondBusinessAccessInvites**](Apis/BusinessAccessInviteApi.md#respondbusinessaccessinvites) | **PATCH** /businesses/invites | Accept or decline an invite/request |
-| *BusinessAccessRelationshipsApi* | [**deleteBusinessMembership**](Apis/BusinessAccessRelationshipsApi.md#deletebusinessmembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships |
-*BusinessAccessRelationshipsApi* | [**deleteBusinessPartners**](Apis/BusinessAccessRelationshipsApi.md#deletebusinesspartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships |
-*BusinessAccessRelationshipsApi* | [**get/businessEmployers**](Apis/BusinessAccessRelationshipsApi.md#get/businessemployers) | **GET** /businesses/employers | List business employers for user |
-*BusinessAccessRelationshipsApi* | [**get/businessMembers**](Apis/BusinessAccessRelationshipsApi.md#get/businessmembers) | **GET** /businesses/{business_id}/members | Get business members |
-*BusinessAccessRelationshipsApi* | [**get/businessPartners**](Apis/BusinessAccessRelationshipsApi.md#get/businesspartners) | **GET** /businesses/{business_id}/partners | Get business partners |
-*BusinessAccessRelationshipsApi* | [**update/businessMemberships**](Apis/BusinessAccessRelationshipsApi.md#update/businessmemberships) | **PATCH** /businesses/{business_id}/members | Update member's business role |
-| *CampaignsApi* | [**campaignTargetingAnalytics/get**](Apis/CampaignsApi.md#campaigntargetinganalytics/get) | **GET** /ad_accounts/{ad_account_id}/campaigns/targeting_analytics | Get targeting analytics for campaigns |
+*BusinessAccessInviteApi* | [**respondBusinessAccessInvites**](Apis/BusinessAccessInviteApi.md#respondBusinessAccessInvites) | **PATCH** /businesses/invites | Accept or decline an invite/request |
+| *BusinessAccessRelationshipsApi* | [**deleteBusinessMembership**](Apis/BusinessAccessRelationshipsApi.md#deleteBusinessMembership) | **DELETE** /businesses/{business_id}/members | Terminate business memberships |
+*BusinessAccessRelationshipsApi* | [**deleteBusinessPartners**](Apis/BusinessAccessRelationshipsApi.md#deleteBusinessPartners) | **DELETE** /businesses/{business_id}/partners | Terminate business partnerships |
+*BusinessAccessRelationshipsApi* | [**get/businessEmployers**](Apis/BusinessAccessRelationshipsApi.md#get/businessEmployers) | **GET** /businesses/employers | List business employers for user |
+*BusinessAccessRelationshipsApi* | [**get/businessMembers**](Apis/BusinessAccessRelationshipsApi.md#get/businessMembers) | **GET** /businesses/{business_id}/members | Get business members |
+*BusinessAccessRelationshipsApi* | [**get/businessPartners**](Apis/BusinessAccessRelationshipsApi.md#get/businessPartners) | **GET** /businesses/{business_id}/partners | Get business partners |
+*BusinessAccessRelationshipsApi* | [**update/businessMemberships**](Apis/BusinessAccessRelationshipsApi.md#update/businessMemberships) | **PATCH** /businesses/{business_id}/members | Update member's business role |
+| *CampaignsApi* | [**campaignTargetingAnalytics/get**](Apis/CampaignsApi.md#campaignTargetingAnalytics/get) | **GET** /ad_accounts/{ad_account_id}/campaigns/targeting_analytics | Get targeting analytics for campaigns |
 *CampaignsApi* | [**campaigns/analytics**](Apis/CampaignsApi.md#campaigns/analytics) | **GET** /ad_accounts/{ad_account_id}/campaigns/analytics | Get campaign analytics |
 *CampaignsApi* | [**campaigns/create**](Apis/CampaignsApi.md#campaigns/create) | **POST** /ad_accounts/{ad_account_id}/campaigns | Create campaigns |
 *CampaignsApi* | [**campaigns/get**](Apis/CampaignsApi.md#campaigns/get) | **GET** /ad_accounts/{ad_account_id}/campaigns/{campaign_id} | Get campaign |
@@ -105,16 +105,16 @@ All URIs are relative to *https://api.pinterest.com/v5*
 *CampaignsApi* | [**campaigns/update**](Apis/CampaignsApi.md#campaigns/update) | **PATCH** /ad_accounts/{ad_account_id}/campaigns | Update campaigns |
 | *CatalogsApi* | [**catalogs/create**](Apis/CatalogsApi.md#catalogs/create) | **POST** /catalogs | Create catalog |
 *CatalogsApi* | [**catalogs/list**](Apis/CatalogsApi.md#catalogs/list) | **GET** /catalogs | List catalogs |
-*CatalogsApi* | [**catalogsProductGroupPins/list**](Apis/CatalogsApi.md#catalogsproductgrouppins/list) | **GET** /catalogs/product_groups/{product_group_id}/products | List products by product group |
-*CatalogsApi* | [**catalogsProductGroups/create**](Apis/CatalogsApi.md#catalogsproductgroups/create) | **POST** /catalogs/product_groups | Create product group |
-*CatalogsApi* | [**catalogsProductGroups/createMany**](Apis/CatalogsApi.md#catalogsproductgroups/createmany) | **POST** /catalogs/product_groups/multiple | Create product groups |
-*CatalogsApi* | [**catalogsProductGroups/delete**](Apis/CatalogsApi.md#catalogsproductgroups/delete) | **DELETE** /catalogs/product_groups/{product_group_id} | Delete product group |
-*CatalogsApi* | [**catalogsProductGroups/deleteMany**](Apis/CatalogsApi.md#catalogsproductgroups/deletemany) | **DELETE** /catalogs/product_groups/multiple | Delete product groups |
-*CatalogsApi* | [**catalogsProductGroups/get**](Apis/CatalogsApi.md#catalogsproductgroups/get) | **GET** /catalogs/product_groups/{product_group_id} | Get product group |
-*CatalogsApi* | [**catalogsProductGroups/list**](Apis/CatalogsApi.md#catalogsproductgroups/list) | **GET** /catalogs/product_groups | List product groups |
-*CatalogsApi* | [**catalogsProductGroups/productCountsGet**](Apis/CatalogsApi.md#catalogsproductgroups/productcountsget) | **GET** /catalogs/product_groups/{product_group_id}/product_counts | Get product counts |
-*CatalogsApi* | [**catalogsProductGroups/update**](Apis/CatalogsApi.md#catalogsproductgroups/update) | **PATCH** /catalogs/product_groups/{product_group_id} | Update single product group |
-*CatalogsApi* | [**feedProcessingResults/list**](Apis/CatalogsApi.md#feedprocessingresults/list) | **GET** /catalogs/feeds/{feed_id}/processing_results | List feed processing results |
+*CatalogsApi* | [**catalogsProductGroupPins/list**](Apis/CatalogsApi.md#catalogsProductGroupPins/list) | **GET** /catalogs/product_groups/{product_group_id}/products | List products by product group |
+*CatalogsApi* | [**catalogsProductGroups/create**](Apis/CatalogsApi.md#catalogsProductGroups/create) | **POST** /catalogs/product_groups | Create product group |
+*CatalogsApi* | [**catalogsProductGroups/createMany**](Apis/CatalogsApi.md#catalogsProductGroups/createMany) | **POST** /catalogs/product_groups/multiple | Create product groups |
+*CatalogsApi* | [**catalogsProductGroups/delete**](Apis/CatalogsApi.md#catalogsProductGroups/delete) | **DELETE** /catalogs/product_groups/{product_group_id} | Delete product group |
+*CatalogsApi* | [**catalogsProductGroups/deleteMany**](Apis/CatalogsApi.md#catalogsProductGroups/deleteMany) | **DELETE** /catalogs/product_groups/multiple | Delete product groups |
+*CatalogsApi* | [**catalogsProductGroups/get**](Apis/CatalogsApi.md#catalogsProductGroups/get) | **GET** /catalogs/product_groups/{product_group_id} | Get product group |
+*CatalogsApi* | [**catalogsProductGroups/list**](Apis/CatalogsApi.md#catalogsProductGroups/list) | **GET** /catalogs/product_groups | List product groups |
+*CatalogsApi* | [**catalogsProductGroups/productCountsGet**](Apis/CatalogsApi.md#catalogsProductGroups/productCountsGet) | **GET** /catalogs/product_groups/{product_group_id}/product_counts | Get product counts |
+*CatalogsApi* | [**catalogsProductGroups/update**](Apis/CatalogsApi.md#catalogsProductGroups/update) | **PATCH** /catalogs/product_groups/{product_group_id} | Update single product group |
+*CatalogsApi* | [**feedProcessingResults/list**](Apis/CatalogsApi.md#feedProcessingResults/list) | **GET** /catalogs/feeds/{feed_id}/processing_results | List feed processing results |
 *CatalogsApi* | [**feeds/create**](Apis/CatalogsApi.md#feeds/create) | **POST** /catalogs/feeds | Create feed |
 *CatalogsApi* | [**feeds/delete**](Apis/CatalogsApi.md#feeds/delete) | **DELETE** /catalogs/feeds/{feed_id} | Delete feed |
 *CatalogsApi* | [**feeds/get**](Apis/CatalogsApi.md#feeds/get) | **GET** /catalogs/feeds/{feed_id} | Get feed |
@@ -123,53 +123,53 @@ All URIs are relative to *https://api.pinterest.com/v5*
 *CatalogsApi* | [**feeds/update**](Apis/CatalogsApi.md#feeds/update) | **PATCH** /catalogs/feeds/{feed_id} | Update feed |
 *CatalogsApi* | [**items/get**](Apis/CatalogsApi.md#items/get) | **GET** /catalogs/items | Get catalogs items |
 *CatalogsApi* | [**items/post**](Apis/CatalogsApi.md#items/post) | **POST** /catalogs/items | Get catalogs items (POST) |
-*CatalogsApi* | [**itemsBatch/get**](Apis/CatalogsApi.md#itemsbatch/get) | **GET** /catalogs/items/batch/{batch_id} | Get item batch status |
-*CatalogsApi* | [**itemsBatch/post**](Apis/CatalogsApi.md#itemsbatch/post) | **POST** /catalogs/items/batch | Operate on item batch |
-*CatalogsApi* | [**itemsIssues/list**](Apis/CatalogsApi.md#itemsissues/list) | **GET** /catalogs/processing_results/{processing_result_id}/item_issues | List item issues |
-*CatalogsApi* | [**productsByProductGroupFilter/list**](Apis/CatalogsApi.md#productsbyproductgroupfilter/list) | **POST** /catalogs/products/get_by_product_group_filters | List products by filter |
+*CatalogsApi* | [**itemsBatch/get**](Apis/CatalogsApi.md#itemsBatch/get) | **GET** /catalogs/items/batch/{batch_id} | Get item batch status |
+*CatalogsApi* | [**itemsBatch/post**](Apis/CatalogsApi.md#itemsBatch/post) | **POST** /catalogs/items/batch | Operate on item batch |
+*CatalogsApi* | [**itemsIssues/list**](Apis/CatalogsApi.md#itemsIssues/list) | **GET** /catalogs/processing_results/{processing_result_id}/item_issues | List item issues |
+*CatalogsApi* | [**productsByProductGroupFilter/list**](Apis/CatalogsApi.md#productsByProductGroupFilter/list) | **POST** /catalogs/products/get_by_product_group_filters | List products by filter |
 *CatalogsApi* | [**reports/create**](Apis/CatalogsApi.md#reports/create) | **POST** /catalogs/reports | Build catalogs report |
 *CatalogsApi* | [**reports/get**](Apis/CatalogsApi.md#reports/get) | **GET** /catalogs/reports | Get catalogs report |
 *CatalogsApi* | [**reports/stats**](Apis/CatalogsApi.md#reports/stats) | **GET** /catalogs/reports/stats | List report stats |
 | *ConversionEventsApi* | [**events/create**](Apis/ConversionEventsApi.md#events/create) | **POST** /ad_accounts/{ad_account_id}/events | Send conversions |
-| *ConversionTagsApi* | [**conversionTags/create**](Apis/ConversionTagsApi.md#conversiontags/create) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag |
-*ConversionTagsApi* | [**conversionTags/get**](Apis/ConversionTagsApi.md#conversiontags/get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag |
-*ConversionTagsApi* | [**conversionTags/list**](Apis/ConversionTagsApi.md#conversiontags/list) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags |
-*ConversionTagsApi* | [**ocpmEligibleConversionTags/get**](Apis/ConversionTagsApi.md#ocpmeligibleconversiontags/get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags |
-*ConversionTagsApi* | [**pageVisitConversionTags/get**](Apis/ConversionTagsApi.md#pagevisitconversiontags/get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags |
-| *CustomerListsApi* | [**customerLists/create**](Apis/CustomerListsApi.md#customerlists/create) | **POST** /ad_accounts/{ad_account_id}/customer_lists | Create customer lists |
-*CustomerListsApi* | [**customerLists/get**](Apis/CustomerListsApi.md#customerlists/get) | **GET** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id} | Get customer list |
-*CustomerListsApi* | [**customerLists/list**](Apis/CustomerListsApi.md#customerlists/list) | **GET** /ad_accounts/{ad_account_id}/customer_lists | Get customer lists |
-*CustomerListsApi* | [**customerLists/update**](Apis/CustomerListsApi.md#customerlists/update) | **PATCH** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id} | Update customer list |
-| *IntegrationsApi* | [**integrations/getById**](Apis/IntegrationsApi.md#integrations/getbyid) | **GET** /integrations/{id} | Get integration metadata |
-*IntegrationsApi* | [**integrations/getList**](Apis/IntegrationsApi.md#integrations/getlist) | **GET** /integrations | Get integration metadata list |
-*IntegrationsApi* | [**integrationsCommerce/del**](Apis/IntegrationsApi.md#integrationscommerce/del) | **DELETE** /integrations/commerce/{external_business_id} | Delete commerce integration |
-*IntegrationsApi* | [**integrationsCommerce/get**](Apis/IntegrationsApi.md#integrationscommerce/get) | **GET** /integrations/commerce/{external_business_id} | Get commerce integration |
-*IntegrationsApi* | [**integrationsCommerce/patch**](Apis/IntegrationsApi.md#integrationscommerce/patch) | **PATCH** /integrations/commerce/{external_business_id} | Update commerce integration |
-*IntegrationsApi* | [**integrationsCommerce/post**](Apis/IntegrationsApi.md#integrationscommerce/post) | **POST** /integrations/commerce | Create commerce integration |
-*IntegrationsApi* | [**integrationsLogs/post**](Apis/IntegrationsApi.md#integrationslogs/post) | **POST** /integrations/logs | Receives batched logs from integration applications. |
-| *KeywordsApi* | [**countryKeywordsMetrics/get**](Apis/KeywordsApi.md#countrykeywordsmetrics/get) | **GET** /ad_accounts/{ad_account_id}/keywords/metrics | Get country's keyword metrics |
+| *ConversionTagsApi* | [**conversionTags/create**](Apis/ConversionTagsApi.md#conversionTags/create) | **POST** /ad_accounts/{ad_account_id}/conversion_tags | Create conversion tag |
+*ConversionTagsApi* | [**conversionTags/get**](Apis/ConversionTagsApi.md#conversionTags/get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id} | Get conversion tag |
+*ConversionTagsApi* | [**conversionTags/list**](Apis/ConversionTagsApi.md#conversionTags/list) | **GET** /ad_accounts/{ad_account_id}/conversion_tags | Get conversion tags |
+*ConversionTagsApi* | [**ocpmEligibleConversionTags/get**](Apis/ConversionTagsApi.md#ocpmEligibleConversionTags/get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/ocpm_eligible | Get Ocpm eligible conversion tags |
+*ConversionTagsApi* | [**pageVisitConversionTags/get**](Apis/ConversionTagsApi.md#pageVisitConversionTags/get) | **GET** /ad_accounts/{ad_account_id}/conversion_tags/page_visit | Get page visit conversion tags |
+| *CustomerListsApi* | [**customerLists/create**](Apis/CustomerListsApi.md#customerLists/create) | **POST** /ad_accounts/{ad_account_id}/customer_lists | Create customer lists |
+*CustomerListsApi* | [**customerLists/get**](Apis/CustomerListsApi.md#customerLists/get) | **GET** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id} | Get customer list |
+*CustomerListsApi* | [**customerLists/list**](Apis/CustomerListsApi.md#customerLists/list) | **GET** /ad_accounts/{ad_account_id}/customer_lists | Get customer lists |
+*CustomerListsApi* | [**customerLists/update**](Apis/CustomerListsApi.md#customerLists/update) | **PATCH** /ad_accounts/{ad_account_id}/customer_lists/{customer_list_id} | Update customer list |
+| *IntegrationsApi* | [**integrations/getById**](Apis/IntegrationsApi.md#integrations/getById) | **GET** /integrations/{id} | Get integration metadata |
+*IntegrationsApi* | [**integrations/getList**](Apis/IntegrationsApi.md#integrations/getList) | **GET** /integrations | Get integration metadata list |
+*IntegrationsApi* | [**integrationsCommerce/del**](Apis/IntegrationsApi.md#integrationsCommerce/del) | **DELETE** /integrations/commerce/{external_business_id} | Delete commerce integration |
+*IntegrationsApi* | [**integrationsCommerce/get**](Apis/IntegrationsApi.md#integrationsCommerce/get) | **GET** /integrations/commerce/{external_business_id} | Get commerce integration |
+*IntegrationsApi* | [**integrationsCommerce/patch**](Apis/IntegrationsApi.md#integrationsCommerce/patch) | **PATCH** /integrations/commerce/{external_business_id} | Update commerce integration |
+*IntegrationsApi* | [**integrationsCommerce/post**](Apis/IntegrationsApi.md#integrationsCommerce/post) | **POST** /integrations/commerce | Create commerce integration |
+*IntegrationsApi* | [**integrationsLogs/post**](Apis/IntegrationsApi.md#integrationsLogs/post) | **POST** /integrations/logs | Receives batched logs from integration applications. |
+| *KeywordsApi* | [**countryKeywordsMetrics/get**](Apis/KeywordsApi.md#countryKeywordsMetrics/get) | **GET** /ad_accounts/{ad_account_id}/keywords/metrics | Get country's keyword metrics |
 *KeywordsApi* | [**keywords/create**](Apis/KeywordsApi.md#keywords/create) | **POST** /ad_accounts/{ad_account_id}/keywords | Create keywords |
 *KeywordsApi* | [**keywords/get**](Apis/KeywordsApi.md#keywords/get) | **GET** /ad_accounts/{ad_account_id}/keywords | Get keywords |
 *KeywordsApi* | [**keywords/update**](Apis/KeywordsApi.md#keywords/update) | **PATCH** /ad_accounts/{ad_account_id}/keywords | Update keywords |
-*KeywordsApi* | [**trendingKeywords/list**](Apis/KeywordsApi.md#trendingkeywords/list) | **GET** /trends/keywords/{region}/top/{trend_type} | List trending keywords |
-| *LeadAdsApi* | [**adAccountsSubscriptions/delById**](Apis/LeadAdsApi.md#adaccountssubscriptions/delbyid) | **DELETE** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Delete lead ads subscription |
-*LeadAdsApi* | [**adAccountsSubscriptions/getById**](Apis/LeadAdsApi.md#adaccountssubscriptions/getbyid) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription |
-*LeadAdsApi* | [**adAccountsSubscriptions/getList**](Apis/LeadAdsApi.md#adaccountssubscriptions/getlist) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions | Get lead ads subscriptions |
-*LeadAdsApi* | [**adAccountsSubscriptions/post**](Apis/LeadAdsApi.md#adaccountssubscriptions/post) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription |
-| *LeadFormsApi* | [**leadForm/get**](Apis/LeadFormsApi.md#leadform/get) | **GET** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id} | Get lead form by id |
-*LeadFormsApi* | [**leadFormTest/create**](Apis/LeadFormsApi.md#leadformtest/create) | **POST** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test | Create lead form test data |
-*LeadFormsApi* | [**leadForms/create**](Apis/LeadFormsApi.md#leadforms/create) | **POST** /ad_accounts/{ad_account_id}/lead_forms | Create lead forms |
-*LeadFormsApi* | [**leadForms/list**](Apis/LeadFormsApi.md#leadforms/list) | **GET** /ad_accounts/{ad_account_id}/lead_forms | List lead forms |
-*LeadFormsApi* | [**leadForms/update**](Apis/LeadFormsApi.md#leadforms/update) | **PATCH** /ad_accounts/{ad_account_id}/lead_forms | Update lead forms |
-| *LeadsExportApi* | [**leadsExport/create**](Apis/LeadsExportApi.md#leadsexport/create) | **POST** /ad_accounts/{ad_account_id}/leads_export | Create a request to export leads collected from a lead ad |
-*LeadsExportApi* | [**leadsExport/get**](Apis/LeadsExportApi.md#leadsexport/get) | **GET** /ad_accounts/{ad_account_id}/leads_export/{leads_export_id} | Get the lead export from the lead export create call |
+*KeywordsApi* | [**trendingKeywords/list**](Apis/KeywordsApi.md#trendingKeywords/list) | **GET** /trends/keywords/{region}/top/{trend_type} | List trending keywords |
+| *LeadAdsApi* | [**adAccountsSubscriptions/delById**](Apis/LeadAdsApi.md#adAccountsSubscriptions/delById) | **DELETE** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Delete lead ads subscription |
+*LeadAdsApi* | [**adAccountsSubscriptions/getById**](Apis/LeadAdsApi.md#adAccountsSubscriptions/getById) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id} | Get lead ads subscription |
+*LeadAdsApi* | [**adAccountsSubscriptions/getList**](Apis/LeadAdsApi.md#adAccountsSubscriptions/getList) | **GET** /ad_accounts/{ad_account_id}/leads/subscriptions | Get lead ads subscriptions |
+*LeadAdsApi* | [**adAccountsSubscriptions/post**](Apis/LeadAdsApi.md#adAccountsSubscriptions/post) | **POST** /ad_accounts/{ad_account_id}/leads/subscriptions | Create lead ads subscription |
+| *LeadFormsApi* | [**leadForm/get**](Apis/LeadFormsApi.md#leadForm/get) | **GET** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id} | Get lead form by id |
+*LeadFormsApi* | [**leadFormTest/create**](Apis/LeadFormsApi.md#leadFormTest/create) | **POST** /ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test | Create lead form test data |
+*LeadFormsApi* | [**leadForms/create**](Apis/LeadFormsApi.md#leadForms/create) | **POST** /ad_accounts/{ad_account_id}/lead_forms | Create lead forms |
+*LeadFormsApi* | [**leadForms/list**](Apis/LeadFormsApi.md#leadForms/list) | **GET** /ad_accounts/{ad_account_id}/lead_forms | List lead forms |
+*LeadFormsApi* | [**leadForms/update**](Apis/LeadFormsApi.md#leadForms/update) | **PATCH** /ad_accounts/{ad_account_id}/lead_forms | Update lead forms |
+| *LeadsExportApi* | [**leadsExport/create**](Apis/LeadsExportApi.md#leadsExport/create) | **POST** /ad_accounts/{ad_account_id}/leads_export | Create a request to export leads collected from a lead ad |
+*LeadsExportApi* | [**leadsExport/get**](Apis/LeadsExportApi.md#leadsExport/get) | **GET** /ad_accounts/{ad_account_id}/leads_export/{leads_export_id} | Get the lead export from the lead export create call |
 | *MediaApi* | [**media/create**](Apis/MediaApi.md#media/create) | **POST** /media | Register media upload |
 *MediaApi* | [**media/get**](Apis/MediaApi.md#media/get) | **GET** /media/{media_id} | Get media upload details |
 *MediaApi* | [**media/list**](Apis/MediaApi.md#media/list) | **GET** /media | List media uploads |
 | *OauthApi* | [**oauth/token**](Apis/OauthApi.md#oauth/token) | **POST** /oauth/token | Generate OAuth access token |
-| *OrderLinesApi* | [**orderLines/get**](Apis/OrderLinesApi.md#orderlines/get) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line |
-*OrderLinesApi* | [**orderLines/list**](Apis/OrderLinesApi.md#orderlines/list) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines |
-| *PinsApi* | [**multiPins/analytics**](Apis/PinsApi.md#multipins/analytics) | **GET** /pins/analytics | Get multiple Pin analytics |
+| *OrderLinesApi* | [**orderLines/get**](Apis/OrderLinesApi.md#orderLines/get) | **GET** /ad_accounts/{ad_account_id}/order_lines/{order_line_id} | Get order line |
+*OrderLinesApi* | [**orderLines/list**](Apis/OrderLinesApi.md#orderLines/list) | **GET** /ad_accounts/{ad_account_id}/order_lines | Get order lines |
+| *PinsApi* | [**multiPins/analytics**](Apis/PinsApi.md#multiPins/analytics) | **GET** /pins/analytics | Get multiple Pin analytics |
 *PinsApi* | [**pins/analytics**](Apis/PinsApi.md#pins/analytics) | **GET** /pins/{pin_id}/analytics | Get Pin analytics |
 *PinsApi* | [**pins/create**](Apis/PinsApi.md#pins/create) | **POST** /pins | Create Pin |
 *PinsApi* | [**pins/delete**](Apis/PinsApi.md#pins/delete) | **DELETE** /pins/{pin_id} | Delete Pin |
@@ -177,40 +177,40 @@ All URIs are relative to *https://api.pinterest.com/v5*
 *PinsApi* | [**pins/list**](Apis/PinsApi.md#pins/list) | **GET** /pins | List Pins |
 *PinsApi* | [**pins/save**](Apis/PinsApi.md#pins/save) | **POST** /pins/{pin_id}/save | Save Pin |
 *PinsApi* | [**pins/update**](Apis/PinsApi.md#pins/update) | **PATCH** /pins/{pin_id} | Update Pin |
-| *ProductGroupPromotionsApi* | [**productGroupPromotions/create**](Apis/ProductGroupPromotionsApi.md#productgrouppromotions/create) | **POST** /ad_accounts/{ad_account_id}/product_group_promotions | Create product group promotions |
-*ProductGroupPromotionsApi* | [**productGroupPromotions/get**](Apis/ProductGroupPromotionsApi.md#productgrouppromotions/get) | **GET** /ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id} | Get a product group promotion by id |
-*ProductGroupPromotionsApi* | [**productGroupPromotions/list**](Apis/ProductGroupPromotionsApi.md#productgrouppromotions/list) | **GET** /ad_accounts/{ad_account_id}/product_group_promotions | Get product group promotions |
-*ProductGroupPromotionsApi* | [**productGroupPromotions/update**](Apis/ProductGroupPromotionsApi.md#productgrouppromotions/update) | **PATCH** /ad_accounts/{ad_account_id}/product_group_promotions | Update product group promotions |
-*ProductGroupPromotionsApi* | [**productGroups/analytics**](Apis/ProductGroupPromotionsApi.md#productgroups/analytics) | **GET** /ad_accounts/{ad_account_id}/product_groups/analytics | Get product group analytics |
-| *ResourcesApi* | [**adAccountCountries/get**](Apis/ResourcesApi.md#adaccountcountries/get) | **GET** /resources/ad_account_countries | Get ad accounts countries |
-*ResourcesApi* | [**deliveryMetrics/get**](Apis/ResourcesApi.md#deliverymetrics/get) | **GET** /resources/delivery_metrics | Get available metrics' definitions |
-*ResourcesApi* | [**interestTargetingOptions/get**](Apis/ResourcesApi.md#interesttargetingoptions/get) | **GET** /resources/targeting/interests/{interest_id} | Get interest details |
-*ResourcesApi* | [**leadFormQuestions/get**](Apis/ResourcesApi.md#leadformquestions/get) | **GET** /resources/lead_form_questions | Get lead form questions |
-*ResourcesApi* | [**metricsReadyState/get**](Apis/ResourcesApi.md#metricsreadystate/get) | **GET** /resources/metrics_ready_state | Get metrics ready state |
-*ResourcesApi* | [**targetingOptions/get**](Apis/ResourcesApi.md#targetingoptions/get) | **GET** /resources/targeting/{targeting_type} | Get targeting options |
-| *SearchApi* | [**searchPartnerPins**](Apis/SearchApi.md#searchpartnerpins) | **GET** /search/partner/pins | Search pins by a given search term |
-*SearchApi* | [**searchUserBoards/get**](Apis/SearchApi.md#searchuserboards/get) | **GET** /search/boards | Search user's boards |
-*SearchApi* | [**searchUserPins/list**](Apis/SearchApi.md#searchuserpins/list) | **GET** /search/pins | Search user's Pins |
-| *TargetingTemplateApi* | [**targetingTemplate/create**](Apis/TargetingTemplateApi.md#targetingtemplate/create) | **POST** /ad_accounts/{ad_account_id}/targeting_templates | Create targeting templates |
-*TargetingTemplateApi* | [**targetingTemplate/list**](Apis/TargetingTemplateApi.md#targetingtemplate/list) | **GET** /ad_accounts/{ad_account_id}/targeting_templates | List targeting templates |
-*TargetingTemplateApi* | [**targetingTemplate/update**](Apis/TargetingTemplateApi.md#targetingtemplate/update) | **PATCH** /ad_accounts/{ad_account_id}/targeting_templates | Update targeting templates |
-| *TermsApi* | [**termsRelated/list**](Apis/TermsApi.md#termsrelated/list) | **GET** /terms/related | List related terms |
-*TermsApi* | [**termsSuggested/list**](Apis/TermsApi.md#termssuggested/list) | **GET** /terms/suggested | List suggested terms |
-| *TermsOfServiceApi* | [**termsOfService/get**](Apis/TermsOfServiceApi.md#termsofservice/get) | **GET** /ad_accounts/{ad_account_id}/terms_of_service | Get terms of service |
-| *UserAccountApi* | [**boardsUserFollows/list**](Apis/UserAccountApi.md#boardsuserfollows/list) | **GET** /user_account/following/boards | List following boards |
-*UserAccountApi* | [**followUser/update**](Apis/UserAccountApi.md#followuser/update) | **POST** /user_account/following/{username} | Follow user |
+| *ProductGroupPromotionsApi* | [**productGroupPromotions/create**](Apis/ProductGroupPromotionsApi.md#productGroupPromotions/create) | **POST** /ad_accounts/{ad_account_id}/product_group_promotions | Create product group promotions |
+*ProductGroupPromotionsApi* | [**productGroupPromotions/get**](Apis/ProductGroupPromotionsApi.md#productGroupPromotions/get) | **GET** /ad_accounts/{ad_account_id}/product_group_promotions/{product_group_promotion_id} | Get a product group promotion by id |
+*ProductGroupPromotionsApi* | [**productGroupPromotions/list**](Apis/ProductGroupPromotionsApi.md#productGroupPromotions/list) | **GET** /ad_accounts/{ad_account_id}/product_group_promotions | Get product group promotions |
+*ProductGroupPromotionsApi* | [**productGroupPromotions/update**](Apis/ProductGroupPromotionsApi.md#productGroupPromotions/update) | **PATCH** /ad_accounts/{ad_account_id}/product_group_promotions | Update product group promotions |
+*ProductGroupPromotionsApi* | [**productGroups/analytics**](Apis/ProductGroupPromotionsApi.md#productGroups/analytics) | **GET** /ad_accounts/{ad_account_id}/product_groups/analytics | Get product group analytics |
+| *ResourcesApi* | [**adAccountCountries/get**](Apis/ResourcesApi.md#adAccountCountries/get) | **GET** /resources/ad_account_countries | Get ad accounts countries |
+*ResourcesApi* | [**deliveryMetrics/get**](Apis/ResourcesApi.md#deliveryMetrics/get) | **GET** /resources/delivery_metrics | Get available metrics' definitions |
+*ResourcesApi* | [**interestTargetingOptions/get**](Apis/ResourcesApi.md#interestTargetingOptions/get) | **GET** /resources/targeting/interests/{interest_id} | Get interest details |
+*ResourcesApi* | [**leadFormQuestions/get**](Apis/ResourcesApi.md#leadFormQuestions/get) | **GET** /resources/lead_form_questions | Get lead form questions |
+*ResourcesApi* | [**metricsReadyState/get**](Apis/ResourcesApi.md#metricsReadyState/get) | **GET** /resources/metrics_ready_state | Get metrics ready state |
+*ResourcesApi* | [**targetingOptions/get**](Apis/ResourcesApi.md#targetingOptions/get) | **GET** /resources/targeting/{targeting_type} | Get targeting options |
+| *SearchApi* | [**searchPartnerPins**](Apis/SearchApi.md#searchPartnerPins) | **GET** /search/partner/pins | Search pins by a given search term |
+*SearchApi* | [**searchUserBoards/get**](Apis/SearchApi.md#searchUserBoards/get) | **GET** /search/boards | Search user's boards |
+*SearchApi* | [**searchUserPins/list**](Apis/SearchApi.md#searchUserPins/list) | **GET** /search/pins | Search user's Pins |
+| *TargetingTemplateApi* | [**targetingTemplate/create**](Apis/TargetingTemplateApi.md#targetingTemplate/create) | **POST** /ad_accounts/{ad_account_id}/targeting_templates | Create targeting templates |
+*TargetingTemplateApi* | [**targetingTemplate/list**](Apis/TargetingTemplateApi.md#targetingTemplate/list) | **GET** /ad_accounts/{ad_account_id}/targeting_templates | List targeting templates |
+*TargetingTemplateApi* | [**targetingTemplate/update**](Apis/TargetingTemplateApi.md#targetingTemplate/update) | **PATCH** /ad_accounts/{ad_account_id}/targeting_templates | Update targeting templates |
+| *TermsApi* | [**termsRelated/list**](Apis/TermsApi.md#termsRelated/list) | **GET** /terms/related | List related terms |
+*TermsApi* | [**termsSuggested/list**](Apis/TermsApi.md#termsSuggested/list) | **GET** /terms/suggested | List suggested terms |
+| *TermsOfServiceApi* | [**termsOfService/get**](Apis/TermsOfServiceApi.md#termsOfService/get) | **GET** /ad_accounts/{ad_account_id}/terms_of_service | Get terms of service |
+| *UserAccountApi* | [**boardsUserFollows/list**](Apis/UserAccountApi.md#boardsUserFollows/list) | **GET** /user_account/following/boards | List following boards |
+*UserAccountApi* | [**followUser/update**](Apis/UserAccountApi.md#followUser/update) | **POST** /user_account/following/{username} | Follow user |
 *UserAccountApi* | [**followers/list**](Apis/UserAccountApi.md#followers/list) | **GET** /user_account/followers | List followers |
-*UserAccountApi* | [**linkedBusinessAccounts/get**](Apis/UserAccountApi.md#linkedbusinessaccounts/get) | **GET** /user_account/businesses | List linked businesses |
-*UserAccountApi* | [**unverifyWebsite/delete**](Apis/UserAccountApi.md#unverifywebsite/delete) | **DELETE** /user_account/websites | Unverify website |
-*UserAccountApi* | [**userAccount/analytics**](Apis/UserAccountApi.md#useraccount/analytics) | **GET** /user_account/analytics | Get user account analytics |
-*UserAccountApi* | [**userAccount/analytics/topPins**](Apis/UserAccountApi.md#useraccount/analytics/toppins) | **GET** /user_account/analytics/top_pins | Get user account top pins analytics |
-*UserAccountApi* | [**userAccount/analytics/topVideoPins**](Apis/UserAccountApi.md#useraccount/analytics/topvideopins) | **GET** /user_account/analytics/top_video_pins | Get user account top video pins analytics |
-*UserAccountApi* | [**userAccount/followedInterests**](Apis/UserAccountApi.md#useraccount/followedinterests) | **GET** /users/{username}/interests/follow | List following interests |
-*UserAccountApi* | [**userAccount/get**](Apis/UserAccountApi.md#useraccount/get) | **GET** /user_account | Get user account |
-*UserAccountApi* | [**userFollowing/get**](Apis/UserAccountApi.md#userfollowing/get) | **GET** /user_account/following | List following |
-*UserAccountApi* | [**userWebsites/get**](Apis/UserAccountApi.md#userwebsites/get) | **GET** /user_account/websites | Get user websites |
-*UserAccountApi* | [**verifyWebsite/update**](Apis/UserAccountApi.md#verifywebsite/update) | **POST** /user_account/websites | Verify website |
-*UserAccountApi* | [**websiteVerification/get**](Apis/UserAccountApi.md#websiteverification/get) | **GET** /user_account/websites/verification | Get user verification code for website claiming |
+*UserAccountApi* | [**linkedBusinessAccounts/get**](Apis/UserAccountApi.md#linkedBusinessAccounts/get) | **GET** /user_account/businesses | List linked businesses |
+*UserAccountApi* | [**unverifyWebsite/delete**](Apis/UserAccountApi.md#unverifyWebsite/delete) | **DELETE** /user_account/websites | Unverify website |
+*UserAccountApi* | [**userAccount/analytics**](Apis/UserAccountApi.md#userAccount/analytics) | **GET** /user_account/analytics | Get user account analytics |
+*UserAccountApi* | [**userAccount/analytics/topPins**](Apis/UserAccountApi.md#userAccount/analytics/topPins) | **GET** /user_account/analytics/top_pins | Get user account top pins analytics |
+*UserAccountApi* | [**userAccount/analytics/topVideoPins**](Apis/UserAccountApi.md#userAccount/analytics/topVideoPins) | **GET** /user_account/analytics/top_video_pins | Get user account top video pins analytics |
+*UserAccountApi* | [**userAccount/followedInterests**](Apis/UserAccountApi.md#userAccount/followedInterests) | **GET** /users/{username}/interests/follow | List following interests |
+*UserAccountApi* | [**userAccount/get**](Apis/UserAccountApi.md#userAccount/get) | **GET** /user_account | Get user account |
+*UserAccountApi* | [**userFollowing/get**](Apis/UserAccountApi.md#userFollowing/get) | **GET** /user_account/following | List following |
+*UserAccountApi* | [**userWebsites/get**](Apis/UserAccountApi.md#userWebsites/get) | **GET** /user_account/websites | Get user websites |
+*UserAccountApi* | [**verifyWebsite/update**](Apis/UserAccountApi.md#verifyWebsite/update) | **POST** /user_account/websites | Verify website |
+*UserAccountApi* | [**websiteVerification/get**](Apis/UserAccountApi.md#websiteVerification/get) | **GET** /user_account/websites/verification | Get user verification code for website claiming |
 
 
 <a name="documentation-for-models"></a>
@@ -290,7 +290,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [AudienceCommon](./Models/AudienceCommon.md)
  - [AudienceCreateCustomRequest](./Models/AudienceCreateCustomRequest.md)
  - [AudienceCreateRequest](./Models/AudienceCreateRequest.md)
- - [AudienceCreateRequest_1_audience_type](./Models/AudienceCreateRequest_1_audience_type.md)
  - [AudienceDataParty](./Models/AudienceDataParty.md)
  - [AudienceDefinition](./Models/AudienceDefinition.md)
  - [AudienceDefinitionResponse](./Models/AudienceDefinitionResponse.md)
@@ -454,7 +453,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [CatalogsItemsFilters](./Models/CatalogsItemsFilters.md)
  - [CatalogsItemsPostFilters](./Models/CatalogsItemsPostFilters.md)
  - [CatalogsItemsRequest](./Models/CatalogsItemsRequest.md)
- - [CatalogsItemsRequest_language](./Models/CatalogsItemsRequest_language.md)
  - [CatalogsItemsUpdateBatchRequest](./Models/CatalogsItemsUpdateBatchRequest.md)
  - [CatalogsItemsUpsertBatchRequest](./Models/CatalogsItemsUpsertBatchRequest.md)
  - [CatalogsListProductsByFeedBasedFilter](./Models/CatalogsListProductsByFeedBasedFilter.md)
@@ -920,7 +918,6 @@ All URIs are relative to *https://api.pinterest.com/v5*
  - [multiple_product_groups_inner](./Models/multiple_product_groups_inner.md)
  - [order_lines_list_200_response](./Models/order_lines_list_200_response.md)
  - [page_visit_conversion_tags_get_200_response](./Models/page_visit_conversion_tags_get_200_response.md)
- - [pins_analytics_metric_types_parameter_inner](./Models/pins_analytics_metric_types_parameter_inner.md)
  - [pins_list_200_response](./Models/pins_list_200_response.md)
  - [pins_save_request](./Models/pins_save_request.md)
  - [product_group_promotions_list_200_response](./Models/product_group_promotions_list_200_response.md)

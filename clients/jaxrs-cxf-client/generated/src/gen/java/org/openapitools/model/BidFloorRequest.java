@@ -14,9 +14,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BidFloorRequest  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<BidFloorSpec> bidFloorSpecs = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private TargetingSpec targetingSpec;
  /**
    * Get bidFloorSpecs

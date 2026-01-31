@@ -57,7 +57,7 @@ export function CatalogsVerticalFeedsUpdateRequestFromJSONTyped(json: any, ignor
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailFeedsUpdateRequestFromJSONTyped(json, true), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsVerticalFeedsUpdateRequest exists with 'catalogType=${json['catalogType']}'`);
+            return json;
     }
 }
 
@@ -77,8 +77,7 @@ export function CatalogsVerticalFeedsUpdateRequestToJSONTyped(value?: CatalogsVe
         case 'RETAIL':
             return Object.assign({}, CatalogsRetailFeedsUpdateRequestToJSON(value), { catalogType: 'RETAIL' } as const);
         default:
-            throw new Error(`No variant of CatalogsVerticalFeedsUpdateRequest exists with 'catalogType=${value['catalogType']}'`);
+            return value;
     }
-
 }
 

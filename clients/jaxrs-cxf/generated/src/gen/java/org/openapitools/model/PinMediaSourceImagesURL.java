@@ -2,7 +2,6 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,13 +9,14 @@ import org.openapitools.model.PinMediaSourceImagesURLItemsInner;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Multiple images urls-based media source
- **/
+ * Multiple images urls-based media source
+ */
 @ApiModel(description="Multiple images urls-based media source")
 
 public class PinMediaSourceImagesURL  {
@@ -54,16 +54,20 @@ MULTIPLE_IMAGE_URLS(String.valueOf("multiple_image_urls"));
 }
 
   @ApiModelProperty(value = "")
+
   private SourceTypeEnum sourceType;
 
-  @ApiModelProperty(required = true, value = "Array with image objects.")
-  @Valid
  /**
-   * Array with image objects.
-  **/
+  * Array with image objects.
+  */
+  @ApiModelProperty(required = true, value = "Array with image objects.")
+
+  @Valid
+
   private List<@Valid PinMediaSourceImagesURLItemsInner> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private Integer index;
  /**
    * Get sourceType

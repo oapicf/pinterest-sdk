@@ -9,9 +9,30 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_create_asset_invites_request_item
 
 type CreateAssetInvitesRequest* = object
   ## Request body for updating asset roles for existing invites.
   invites*: seq[CreateAssetInvitesRequestItem]
+
+
+# Custom JSON deserialization for CreateAssetInvitesRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[CreateAssetInvitesRequest]): CreateAssetInvitesRequest =
+  result = CreateAssetInvitesRequest()
+  if node.kind == JObject:
+    if node.hasKey("invites"):
+      # Array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["invites"]
+      if arrayNode.kind == JArray:
+        result.invites = @[]
+        for item in arrayNode.items:
+          result.invites.add(to(item, CreateAssetInvitesRequestItem))
+
+# Custom JSON serialization for CreateAssetInvitesRequest with custom field names
+proc `%`*(obj: CreateAssetInvitesRequest): JsonNode =
+  result = newJObject()
+  result["invites"] = %obj.invites
+

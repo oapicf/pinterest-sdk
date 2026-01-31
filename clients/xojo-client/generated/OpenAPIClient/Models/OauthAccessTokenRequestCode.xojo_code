@@ -2,17 +2,17 @@
 Protected Class OauthAccessTokenRequestCode
 
 	#tag Property, Flags = &h0
-		grant_type As String
-	#tag EndProperty
-
-
-	#tag Property, Flags = &h0
 		code As String
 	#tag EndProperty
 
 
 	#tag Property, Flags = &h0
 		redirect_uri As String
+	#tag EndProperty
+
+
+	#tag Property, Flags = &h0
+		grant_type As String
 	#tag EndProperty
 
 

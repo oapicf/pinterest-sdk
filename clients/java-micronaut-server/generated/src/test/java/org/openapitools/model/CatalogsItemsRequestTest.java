@@ -1,7 +1,6 @@
 package org.openapitools.model;
 
 import org.openapitools.model.CatalogsItemsPostFilters;
-import org.openapitools.model.CatalogsItemsRequestLanguage;
 import org.openapitools.model.Country;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;

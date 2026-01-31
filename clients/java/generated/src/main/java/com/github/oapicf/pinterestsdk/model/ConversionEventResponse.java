@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ConversionEventResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ConversionEventResponse {
   public static final String SERIALIZED_NAME_CONVERSION_EVENT = "conversion_event";
   @SerializedName(SERIALIZED_NAME_CONVERSION_EVENT)
@@ -200,14 +200,10 @@ public class ConversionEventResponse {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("conversion_event");
-    openapiFields.add("conversion_tag_id");
-    openapiFields.add("ad_account_id");
-    openapiFields.add("created_time");
+    openapiFields = new HashSet<String>(Arrays.asList("conversion_event", "conversion_tag_id", "ad_account_id", "created_time"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -219,7 +215,7 @@ public class ConversionEventResponse {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ConversionEventResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ConversionEventResponse is not found in the empty JSON string", ConversionEventResponse.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in ConversionEventResponse is not found in the empty JSON string", ConversionEventResponse.openapiRequiredFields.toString()));
         }
       }
 
@@ -227,22 +223,22 @@ public class ConversionEventResponse {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ConversionEventResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConversionEventResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ConversionEventResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("conversion_event") != null && !jsonObj.get("conversion_event").isJsonNull()) && !jsonObj.get("conversion_event").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `conversion_event` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_event").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `conversion_event` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_event").toString()));
       }
       // validate the optional field `conversion_event`
       if (jsonObj.get("conversion_event") != null && !jsonObj.get("conversion_event").isJsonNull()) {
         ConversionTagType.validateJsonElement(jsonObj.get("conversion_event"));
       }
       if ((jsonObj.get("conversion_tag_id") != null && !jsonObj.get("conversion_tag_id").isJsonNull()) && !jsonObj.get("conversion_tag_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `conversion_tag_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_tag_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `conversion_tag_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conversion_tag_id").toString()));
       }
       if ((jsonObj.get("ad_account_id") != null && !jsonObj.get("ad_account_id").isJsonNull()) && !jsonObj.get("ad_account_id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ad_account_id").toString()));
       }
   }
 

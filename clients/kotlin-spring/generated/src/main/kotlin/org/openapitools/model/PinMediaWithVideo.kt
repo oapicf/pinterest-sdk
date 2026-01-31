@@ -47,7 +47,7 @@ data class PinMediaWithVideo(
 
     @Schema(example = "null", description = "")
     @get:JsonProperty("media_type") override val mediaType: kotlin.String? = null
-    ) : PinMedia{
+) : PinMedia {
 
 }
 

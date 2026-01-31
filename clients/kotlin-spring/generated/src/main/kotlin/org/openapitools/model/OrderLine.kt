@@ -72,7 +72,7 @@ data class OrderLine(
     @field:Valid
     @Schema(example = "null", description = "Order line paid type.")
     @get:JsonProperty("paid_type") val paidType: OrderLinePaidType? = null
-    ) {
+) {
 
 }
 

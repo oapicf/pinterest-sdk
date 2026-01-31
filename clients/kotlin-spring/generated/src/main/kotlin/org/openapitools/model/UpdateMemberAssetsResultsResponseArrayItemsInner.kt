@@ -23,7 +23,7 @@ data class UpdateMemberAssetsResultsResponseArrayItemsInner(
     @field:Valid
     @Schema(example = "null", description = "")
     @get:JsonProperty("response") val response: UsersForIndividualAssetResponse? = null
-    ) {
+) {
 
 }
 

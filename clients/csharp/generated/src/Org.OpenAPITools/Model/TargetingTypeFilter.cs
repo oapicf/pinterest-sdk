@@ -122,8 +122,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "targeting_types":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                targetingTypes = new Option<List<AdsAnalyticsTargetingType>?>(JsonSerializer.Deserialize<List<AdsAnalyticsTargetingType>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            targetingTypes = new Option<List<AdsAnalyticsTargetingType>?>(JsonSerializer.Deserialize<List<AdsAnalyticsTargetingType>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

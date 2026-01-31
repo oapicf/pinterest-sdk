@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AudienceShareType* = object
-  ## 
+type AudienceShareType* {.pure.} = enum
+  SHARED
+  RECEIVED
+
+func `%`*(v: AudienceShareType): JsonNode =
+  result = case v:
+    of AudienceShareType.SHARED: %"SHARED"
+    of AudienceShareType.RECEIVED: %"RECEIVED"
+
+func `$`*(v: AudienceShareType): string =
+  result = case v:
+    of AudienceShareType.SHARED: $("SHARED")
+    of AudienceShareType.RECEIVED: $("RECEIVED")
+
+proc to*(node: JsonNode, T: typedesc[AudienceShareType]): AudienceShareType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AudienceShareType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("SHARED"):
+    return AudienceShareType.SHARED
+  of $("RECEIVED"):
+    return AudienceShareType.RECEIVED
+  else:
+    raise newException(ValueError, "Invalid enum value for AudienceShareType: " & strVal)
+

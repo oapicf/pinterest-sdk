@@ -43,10 +43,10 @@ pub enum BulkUpsertSlashCreateError {
 /// Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, and/or keywords; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
 pub async fn bulk_download_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, bulk_download_request: models::BulkDownloadRequest) -> Result<models::BulkDownloadResponse, Error<BulkDownloadSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_bulk_download_request = bulk_download_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_bulk_download_request = bulk_download_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/bulk/download", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/bulk/download", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -55,7 +55,7 @@ pub async fn bulk_download_slash_create(configuration: &configuration::Configura
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_bulk_download_request);
+    req_builder = req_builder.json(&p_body_bulk_download_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -85,14 +85,14 @@ pub async fn bulk_download_slash_create(configuration: &configuration::Configura
 /// Get the status of a bulk request by <code>request_id</code>, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
 pub async fn bulk_request_slash_get(configuration: &configuration::Configuration, ad_account_id: &str, bulk_request_id: &str, include_details: Option<bool>) -> Result<models::BulkUpsertStatusResponse, Error<BulkRequestSlashGetError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_bulk_request_id = bulk_request_id;
-    let p_include_details = include_details;
+    let p_path_ad_account_id = ad_account_id;
+    let p_path_bulk_request_id = bulk_request_id;
+    let p_query_include_details = include_details;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id), bulk_request_id=crate::apis::urlencode(p_bulk_request_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/bulk/{bulk_request_id}", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id), bulk_request_id=crate::apis::urlencode(p_path_bulk_request_id));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_include_details {
+    if let Some(ref param_value) = p_query_include_details {
         req_builder = req_builder.query(&[("include_details", &param_value.to_string())]);
     }
     if let Some(ref user_agent) = configuration.user_agent {
@@ -130,10 +130,10 @@ pub async fn bulk_request_slash_get(configuration: &configuration::Configuration
 /// Either create or update any combination of campaigns, ad groups, product groups, ads, or keywords. Note that this request will be processed asynchronously; the response will include a <code>request_id</code> that can be used to obtain the status of the request.
 pub async fn bulk_upsert_slash_create(configuration: &configuration::Configuration, ad_account_id: &str, bulk_upsert_request: models::BulkUpsertRequest) -> Result<models::BulkUpsertResponse, Error<BulkUpsertSlashCreateError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_ad_account_id = ad_account_id;
-    let p_bulk_upsert_request = bulk_upsert_request;
+    let p_path_ad_account_id = ad_account_id;
+    let p_body_bulk_upsert_request = bulk_upsert_request;
 
-    let uri_str = format!("{}/ad_accounts/{ad_account_id}/bulk/upsert", configuration.base_path, ad_account_id=crate::apis::urlencode(p_ad_account_id));
+    let uri_str = format!("{}/ad_accounts/{ad_account_id}/bulk/upsert", configuration.base_path, ad_account_id=crate::apis::urlencode(p_path_ad_account_id));
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
     if let Some(ref user_agent) = configuration.user_agent {
@@ -142,7 +142,7 @@ pub async fn bulk_upsert_slash_create(configuration: &configuration::Configurati
     if let Some(ref token) = configuration.oauth_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_bulk_upsert_request);
+    req_builder = req_builder.json(&p_body_bulk_upsert_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

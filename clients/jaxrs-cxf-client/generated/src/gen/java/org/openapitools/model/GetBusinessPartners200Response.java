@@ -13,13 +13,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GetBusinessPartners200Response  {
   
-  @ApiModelProperty(required = true, value = "List of business partners.")
  /**
-   * List of business partners.
-  **/
+  * List of business partners.
+  */
+  @ApiModelProperty(required = true, value = "List of business partners.")
+
   private List<UserBusinessRoleBinding> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * List of business partners.

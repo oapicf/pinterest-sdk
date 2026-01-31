@@ -31,7 +31,7 @@ data class CreateAssetGroupBody(
     @field:Valid
     @Schema(example = "[\"BRAND\",\"LOCATION_OR_LANGUAGE\",\"PRODUCT_LINE\",\"OTHER\"]", required = true, description = "Asset Group Types. Note: The asset group types are used for user reference and categorization purposes only and do not impact the functionality of the asset group.")
     @get:JsonProperty("asset_group_types", required = true) val assetGroupTypes: kotlin.collections.List<AssetGroupType>
-    ) {
+) {
 
 }
 

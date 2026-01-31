@@ -320,7 +320,7 @@ try {
 | **permissions** | [**kotlin.collections.List&lt;PermissionsWithOwner&gt;**](PermissionsWithOwner.md)| A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned. | [optional] |
 | **childAssetId** | **kotlin.String**| A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child. | [optional] |
 | **assetGroupId** | **kotlin.String**| An asset group unique identifier. Used to fetch assets contained within the specified asset group. | [optional] |
-| **assetType** | **kotlin.String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP] |
+| **assetType** | **kotlin.String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AssetType.AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP] |
 | **startIndex** | **kotlin.Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
@@ -378,7 +378,7 @@ try {
 ### Parameters
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **memberId** | **kotlin.String**| The member id to fetch assets for. | |
-| **assetType** | **kotlin.String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP] |
+| **assetType** | **kotlin.String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AssetType.AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP] |
 | **startIndex** | **kotlin.Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **bookmark** | **kotlin.String**| Cursor used to fetch the next page of items | [optional] |
 | Name | Type | Description  | Notes |
@@ -537,8 +537,8 @@ try {
 ### Parameters
 | **businessId** | **kotlin.String**| Unique identifier of the requesting business. | |
 | **partnerId** | **kotlin.String**| The partner id to be bound to the Business | |
-| **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] |
-| **assetType** | **kotlin.String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP] |
+| **partnerType** | [**PartnerType**](.md)| Specifies whether to fetch internal or external (shared) partners. If partner_type&#x3D;INTERNAL, the asset being queried is for accesses the partner has to your business assets.&lt;br&gt; If partner_type&#x3D;EXTERNAL, the asset being queried is for the accesses you have to the partner&#39;s business asset. | [optional] [enum: INTERNAL, EXTERNAL] |
+| **assetType** | **kotlin.String**| A resource type to filter the assets by. Only assets of the specified type will be returned. | [optional] [default to AssetType.AD_ACCOUNT] [enum: AD_ACCOUNT, PROFILE, ASSET_GROUP] |
 | **startIndex** | **kotlin.Int**| An index to start fetching the results from. Only the results starting from this index will be returned. | [optional] [default to 0] |
 | **pageSize** | **kotlin.Int**| Maximum number of items to include in a single page of the response. See documentation on &lt;a href&#x3D;&#39;/docs/reference/pagination/&#39;&gt;Pagination&lt;/a&gt; for more information. | [optional] [default to 25] |
 | Name | Type | Description  | Notes |

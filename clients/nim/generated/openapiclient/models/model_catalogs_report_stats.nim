@@ -9,50 +9,36 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_catalogs_report_distribution_stats
 import model_catalogs_report_feed_ingestion_stats
 
-type ReportType* {.pure.} = enum
-  FEEDINGESTIONISSUES
-  DISTRIBUTIONISSUES
-
-type Severity* {.pure.} = enum
-  WARN
-  ERROR
+# OneOf type
+type CatalogsReportStatsKind* {.pure.} = enum
+  CatalogsReportFeedIngestionStatsVariant
+  CatalogsReportDistributionStatsVariant
 
 type CatalogsReportStats* = object
   ## Diagnostics aggregated numbers
-  reportType*: ReportType
-  catalogId*: string ## ID of the catalog entity.
-  code*: int ## The event code that a diagnostics aggregated number references
-  codeLabel*: string ## A human-friendly label for the event code (e.g, 'SPAM')
-  message*: string ## Title message describing the diagnostic issue
-  occurrences*: int ## Number of occurrences of the issue
-  severity*: Severity ## An ERROR means that items have been dropped, while a WARN denotes that items have been ingested despite an issue
-  ineligibleForAds*: bool ## Indicates if issue makes items ineligible for ads distribution
-  ineligibleForOrganic*: bool ## Indicates if issue makes items ineligible for organic distribution
+  case kind*: CatalogsReportStatsKind
+  of CatalogsReportStatsKind.CatalogsReportFeedIngestionStatsVariant:
+    CatalogsReportFeedIngestionStatsValue*: CatalogsReportFeedIngestionStats
+  of CatalogsReportStatsKind.CatalogsReportDistributionStatsVariant:
+    CatalogsReportDistributionStatsValue*: CatalogsReportDistributionStats
 
-func `%`*(v: ReportType): JsonNode =
-  let str = case v:
-    of ReportType.FEEDINGESTIONISSUES: "FEED_INGESTION_ISSUES"
-    of ReportType.DISTRIBUTIONISSUES: "DISTRIBUTION_ISSUES"
+proc to*(node: JsonNode, T: typedesc[CatalogsReportStats]): CatalogsReportStats =
+  ## Custom deserializer for oneOf type - tries each variant
+  try:
+    return CatalogsReportStats(kind: CatalogsReportStatsKind.CatalogsReportFeedIngestionStatsVariant, CatalogsReportFeedIngestionStatsValue: to(node, CatalogsReportFeedIngestionStats))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsReportFeedIngestionStats: ", e.msg
+  try:
+    return CatalogsReportStats(kind: CatalogsReportStatsKind.CatalogsReportDistributionStatsVariant, CatalogsReportDistributionStatsValue: to(node, CatalogsReportDistributionStats))
+  except Exception as e:
+    when defined(debug):
+      echo "Failed to deserialize as CatalogsReportDistributionStats: ", e.msg
+  raise newException(ValueError, "Unable to deserialize into any variant of CatalogsReportStats. JSON: " & $node)
 
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: ReportType): string =
-  result = case v:
-    of ReportType.FEEDINGESTIONISSUES: "FEED_INGESTION_ISSUES"
-    of ReportType.DISTRIBUTIONISSUES: "DISTRIBUTION_ISSUES"
-
-func `%`*(v: Severity): JsonNode =
-  let str = case v:
-    of Severity.WARN: "WARN"
-    of Severity.ERROR: "ERROR"
-
-  JsonNode(kind: JString, str: str)
-
-func `$`*(v: Severity): string =
-  result = case v:
-    of Severity.WARN: "WARN"
-    of Severity.ERROR: "ERROR"

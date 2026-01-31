@@ -155,16 +155,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "dynamic_date_range":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dynamicDateRange = new Option<TemplateResponseDateRangeDynamicDateRange?>(JsonSerializer.Deserialize<TemplateResponseDateRangeDynamicDateRange>(ref utf8JsonReader, jsonSerializerOptions));
+                            dynamicDateRange = new Option<TemplateResponseDateRangeDynamicDateRange?>(JsonSerializer.Deserialize<TemplateResponseDateRangeDynamicDateRange>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "relative_date_range":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                relativeDateRange = new Option<TemplateResponseDateRangeRelativeDateRange?>(JsonSerializer.Deserialize<TemplateResponseDateRangeRelativeDateRange>(ref utf8JsonReader, jsonSerializerOptions));
+                            relativeDateRange = new Option<TemplateResponseDateRangeRelativeDateRange?>(JsonSerializer.Deserialize<TemplateResponseDateRangeRelativeDateRange>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "absolute_date_range":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                absoluteDateRange = new Option<TemplateResponseDateRangeAbsoluteDateRange?>(JsonSerializer.Deserialize<TemplateResponseDateRangeAbsoluteDateRange>(ref utf8JsonReader, jsonSerializerOptions));
+                            absoluteDateRange = new Option<TemplateResponseDateRangeAbsoluteDateRange?>(JsonSerializer.Deserialize<TemplateResponseDateRangeAbsoluteDateRange>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

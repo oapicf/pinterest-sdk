@@ -122,7 +122,6 @@ docs/AudienceCategory.md
 docs/AudienceCommon.md
 docs/AudienceCreateCustomRequest.md
 docs/AudienceCreateRequest.md
-docs/AudienceCreateRequest1AudienceType.md
 docs/AudienceDataParty.md
 docs/AudienceDefinition.md
 docs/AudienceDefinitionResponse.md
@@ -311,7 +310,6 @@ docs/CatalogsItemsDeleteDiscontinuedBatchRequest.md
 docs/CatalogsItemsFilters.md
 docs/CatalogsItemsPostFilters.md
 docs/CatalogsItemsRequest.md
-docs/CatalogsItemsRequestLanguage.md
 docs/CatalogsItemsUpdateBatchRequest.md
 docs/CatalogsItemsUpsertBatchRequest.md
 docs/CatalogsList200Response.md
@@ -657,7 +655,6 @@ docs/PinPromotionSummaryStatus.md
 docs/PinUpdate.md
 docs/PinUpdateCarouselSlotsInner.md
 docs/PinsAPI.md
-docs/PinsAnalyticsMetricTypesParameterInner.md
 docs/PinsList200Response.md
 docs/PinsSaveRequest.md
 docs/PinterestTagEventData.md
@@ -873,7 +870,6 @@ model_audience_category.go
 model_audience_common.go
 model_audience_create_custom_request.go
 model_audience_create_request.go
-model_audience_create_request_1_audience_type.go
 model_audience_data_party.go
 model_audience_definition.go
 model_audience_definition_response.go
@@ -1051,7 +1047,6 @@ model_catalogs_items_delete_discontinued_batch_request.go
 model_catalogs_items_filters.go
 model_catalogs_items_post_filters.go
 model_catalogs_items_request.go
-model_catalogs_items_request_language.go
 model_catalogs_items_update_batch_request.go
 model_catalogs_items_upsert_batch_request.go
 model_catalogs_list_200_response.go
@@ -1385,7 +1380,6 @@ model_pin_media_with_videos.go
 model_pin_promotion_summary_status.go
 model_pin_update.go
 model_pin_update_carousel_slots_inner.go
-model_pins_analytics_metric_types_parameter_inner.go
 model_pins_list_200_response.go
 model_pins_save_request.go
 model_pinterest_tag_event_data.go

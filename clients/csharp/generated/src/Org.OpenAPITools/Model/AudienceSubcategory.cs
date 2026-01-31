@@ -205,12 +205,10 @@ namespace Org.OpenAPITools.Model
                             name = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "ratio":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ratio = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            ratio = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "index":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                index = new Option<decimal?>(utf8JsonReader.GetDecimal());
+                            index = new Option<decimal?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (decimal?)null : utf8JsonReader.GetDecimal());
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString()!);

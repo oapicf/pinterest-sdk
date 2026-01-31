@@ -5,7 +5,6 @@ open System.Collections.Generic
 open Newtonsoft.Json
 open OpenAPI.Model.BatchOperation
 open OpenAPI.Model.CatalogsItemsBatchRequest
-open OpenAPI.Model.CatalogsItemsRequestLanguage
 open OpenAPI.Model.CatalogsVerticalBatchRequest
 open OpenAPI.Model.Country
 open OpenAPI.Model.ItemDeleteBatchRecord
@@ -16,14 +15,18 @@ module ItemsBatchPostRequest =
 
   [<CLIMutable>]
   type ItemsBatchPostRequest = {
+    [<JsonProperty(PropertyName = "catalog_type")>]
+    CatalogType : string;
     [<JsonProperty(PropertyName = "country")>]
     Country : Country;
     [<JsonProperty(PropertyName = "language")>]
-    Language : CatalogsItemsRequestLanguage;
-    [<JsonProperty(PropertyName = "operation")>]
-    Operation : BatchOperation;
+    Language : string;
     [<JsonProperty(PropertyName = "items")>]
     Items : ItemDeleteBatchRecord[];
+    [<JsonProperty(PropertyName = "catalog_id")>]
+    CatalogId : string;
+    [<JsonProperty(PropertyName = "operation")>]
+    Operation : BatchOperation;
   }
 
   //#endregion

@@ -2,17 +2,17 @@ package org.openapitools.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Base64-encoded image media source
- **/
+ * Base64-encoded image media source
+ */
 @ApiModel(description="Base64-encoded image media source")
 
 public class PinMediaSourceImageBase64  {
@@ -50,6 +50,7 @@ IMAGE_BASE64(String.valueOf("image_base64"));
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private SourceTypeEnum sourceType;
 
 public enum ContentTypeEnum {
@@ -85,15 +86,18 @@ IMAGE_JPEG(String.valueOf("image/jpeg")), IMAGE_PNG(String.valueOf("image/png"))
 }
 
   @ApiModelProperty(required = true, value = "")
+
   private ContentTypeEnum contentType;
 
   @ApiModelProperty(required = true, value = "")
+
   private String data;
 
-  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
  /**
-   * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
-  **/
+  * Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.
+  */
+  @ApiModelProperty(value = "Set the parameter to false to create the new simplified Pin instead of the standard pin. Currently the field is only available to a list of beta users.")
+
   private Boolean isStandard = true;
  /**
    * Get sourceType

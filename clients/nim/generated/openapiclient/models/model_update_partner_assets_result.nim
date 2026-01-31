@@ -9,11 +9,40 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type UpdatePartnerAssetsResult* = object
   ## An object containing the permissions a business partner has on the asset.
-  assetId*: string ## Unique identifier of a business asset.
-  assetType*: string ## Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
-  partnerId*: string ## Unique identifier of a business partner.
-  permissions*: seq[string] ## Permission levels member or partner has on an asset.
+  assetId*: Option[string] ## Unique identifier of a business asset.
+  assetType*: Option[string] ## Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.
+  partnerId*: Option[string] ## Unique identifier of a business partner.
+  permissions*: Option[seq[string]] ## Permission levels member or partner has on an asset.
+
+
+# Custom JSON deserialization for UpdatePartnerAssetsResult with custom field names
+proc to*(node: JsonNode, T: typedesc[UpdatePartnerAssetsResult]): UpdatePartnerAssetsResult =
+  result = UpdatePartnerAssetsResult()
+  if node.kind == JObject:
+    if node.hasKey("asset_id") and node["asset_id"].kind != JNull:
+      result.assetId = some(to(node["asset_id"], typeof(result.assetId.get())))
+    if node.hasKey("asset_type") and node["asset_type"].kind != JNull:
+      result.assetType = some(to(node["asset_type"], typeof(result.assetType.get())))
+    if node.hasKey("partner_id") and node["partner_id"].kind != JNull:
+      result.partnerId = some(to(node["partner_id"], typeof(result.partnerId.get())))
+    if node.hasKey("permissions") and node["permissions"].kind != JNull:
+      result.permissions = some(to(node["permissions"], typeof(result.permissions.get())))
+
+# Custom JSON serialization for UpdatePartnerAssetsResult with custom field names
+proc `%`*(obj: UpdatePartnerAssetsResult): JsonNode =
+  result = newJObject()
+  if obj.assetId.isSome():
+    result["asset_id"] = %obj.assetId.get()
+  if obj.assetType.isSome():
+    result["asset_type"] = %obj.assetType.get()
+  if obj.partnerId.isSome():
+    result["partner_id"] = %obj.partnerId.get()
+  if obj.permissions.isSome():
+    result["permissions"] = %obj.permissions.get()
+

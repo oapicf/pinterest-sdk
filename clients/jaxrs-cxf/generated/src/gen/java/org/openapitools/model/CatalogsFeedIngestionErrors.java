@@ -12,10 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsFeedIngestionErrors  {
   
-  @ApiModelProperty(value = "We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.")
  /**
-   * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
-  **/
+  * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.
+  */
+  @ApiModelProperty(value = "We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.")
+
   private Integer LINE_LEVEL_INTERNAL_ERROR;
 
 public enum LARGEPRODUCTCOUNTDECREASEEnum {
@@ -50,46 +51,53 @@ NUMBER_1(Integer.valueOf(1));
     }
 }
 
-  @ApiModelProperty(value = "The product count has decreased by more than 99% compared to the last successful ingestion.")
  /**
-   * The product count has decreased by more than 99% compared to the last successful ingestion.
-  **/
+  * The product count has decreased by more than 99% compared to the last successful ingestion.
+  */
+  @ApiModelProperty(value = "The product count has decreased by more than 99% compared to the last successful ingestion.")
+
   private LARGEPRODUCTCOUNTDECREASEEnum LARGE_PRODUCT_COUNT_DECREASE;
 
-  @ApiModelProperty(value = "We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.")
  /**
-   * We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
-  **/
+  * We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.
+  */
+  @ApiModelProperty(value = "We detected an issue with your account and are not currently ingesting your items. Please review our policies at policy.pinterest.com/community-guidelines#section-spam or contact us at help.pinterest.com/contact for more information.")
+
   private Integer ACCOUNT_FLAGGED;
 
-  @ApiModelProperty(value = "We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.")
  /**
-   * We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
-  **/
+  * We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.
+  */
+  @ApiModelProperty(value = "We experienced a technical difficulty and were unable to download some images. The next download attempt will happen in 24 hours.")
+
   private Integer IMAGE_LEVEL_INTERNAL_ERROR;
 
-  @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
  /**
-   * Image files are unreadable. Please upload new files to continue.
-  **/
+  * Image files are unreadable. Please upload new files to continue.
+  */
+  @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
+
   private Integer IMAGE_FILE_NOT_ACCESSIBLE;
 
-  @ApiModelProperty(value = "Image files are unreadable. Please check your link and upload new files to continue.")
  /**
-   * Image files are unreadable. Please check your link and upload new files to continue.
-  **/
+  * Image files are unreadable. Please check your link and upload new files to continue.
+  */
+  @ApiModelProperty(value = "Image files are unreadable. Please check your link and upload new files to continue.")
+
   private Integer IMAGE_MALFORMED_URL;
 
-  @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
  /**
-   * Image files are unreadable. Please upload new files to continue.
-  **/
+  * Image files are unreadable. Please upload new files to continue.
+  */
+  @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
+
   private Integer IMAGE_FILE_NOT_FOUND;
 
-  @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
  /**
-   * Image files are unreadable. Please upload new files to continue.
-  **/
+  * Image files are unreadable. Please upload new files to continue.
+  */
+  @ApiModelProperty(value = "Image files are unreadable. Please upload new files to continue.")
+
   private Integer IMAGE_INVALID_FILE;
  /**
    * We experienced a technical difficulty and were unable to ingest this some items. The next ingestion will happen in 24 hours.

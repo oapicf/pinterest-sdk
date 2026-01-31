@@ -22,10 +22,10 @@ export interface CatalogsUpdateHotelItem {
     attributes: CatalogsUpdatableHotelAttributes;
 }
 export namespace CatalogsUpdateHotelItem {
-    export type OperationEnum = 'UPDATE';
     export const OperationEnum = {
-        Update: 'UPDATE' as OperationEnum
-    };
+        Update: 'UPDATE'
+    } as const;
+    export type OperationEnum = typeof OperationEnum[keyof typeof OperationEnum];
 }
 
 

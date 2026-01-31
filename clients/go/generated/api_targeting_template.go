@@ -257,8 +257,9 @@ func (a *TargetingTemplateAPIService) TargetingTemplateListExecute(r ApiTargetin
 	if r.includeSizing != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "include_sizing", r.includeSizing, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.includeSizing = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "include_sizing", defaultValue, "form", "")
+        r.includeSizing = &defaultValue
 	}
 	if r.searchQuery != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "search_query", r.searchQuery, "form", "")
@@ -266,8 +267,9 @@ func (a *TargetingTemplateAPIService) TargetingTemplateListExecute(r ApiTargetin
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int32 = 25
-		r.pageSize = &defaultValue
+        var defaultValue int32 = 25
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page_size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.bookmark != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "bookmark", r.bookmark, "form", "")

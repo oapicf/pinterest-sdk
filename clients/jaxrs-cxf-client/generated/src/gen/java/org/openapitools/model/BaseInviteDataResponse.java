@@ -10,25 +10,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BaseInviteDataResponse  {
   
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
  /**
-   * Unique identifier of the invite/request.
-  **/
+  * Unique identifier of the invite/request.
+  */
+  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
+
   private String id;
 
   @ApiModelProperty(value = "")
+
   private BaseInviteDataResponseInviteData inviteData;
 
-  @ApiModelProperty(value = "Indicates whether the invite/request was received.")
  /**
-   * Indicates whether the invite/request was received.
-  **/
+  * Indicates whether the invite/request was received.
+  */
+  @ApiModelProperty(value = "Indicates whether the invite/request was received.")
+
   private Boolean isReceivedInvite;
 
-  @ApiModelProperty(value = "Metadata for the member/partner that was sent the invite/request.")
  /**
-   * Metadata for the member/partner that was sent the invite/request.
-  **/
+  * Metadata for the member/partner that was sent the invite/request.
+  */
+  @ApiModelProperty(value = "Metadata for the member/partner that was sent the invite/request.")
+
   private BusinessAccessUserSummary user;
  /**
    * Unique identifier of the invite/request.

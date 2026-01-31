@@ -5,7 +5,6 @@ import org.openapitools.server.api.model.Pin
 import org.openapitools.server.api.model.PinAnalyticsMetricsResponse
 import org.openapitools.server.api.model.PinCreate
 import org.openapitools.server.api.model.PinUpdate
-import org.openapitools.server.api.model.PinsAnalyticsMetricTypesParameterInner
 import org.openapitools.server.api.model.PinsList200Response
 import org.openapitools.server.api.model.PinsSaveRequest
 import io.vertx.core.Vertx
@@ -26,10 +25,10 @@ interface PinsApi  {
     fun init(vertx:Vertx,config:JsonObject)
     /* multiPinsAnalytics
      * Get multiple Pin analytics */
-    suspend fun multiPinsAnalytics(pinIds:kotlin.Array<kotlin.String>?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,metricTypes:kotlin.Array<PinsAnalyticsMetricTypesParameterInner>?,appTypes:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>>
+    suspend fun multiPinsAnalytics(pinIds:kotlin.Array<kotlin.String>?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,metricTypes:kotlin.Array<kotlin.String>?,appTypes:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>>
     /* pinsAnalytics
      * Get Pin analytics */
-    suspend fun pinsAnalytics(pinId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,metricTypes:kotlin.Array<PinsAnalyticsMetricTypesParameterInner>?,appTypes:kotlin.String?,splitField:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>
+    suspend fun pinsAnalytics(pinId:kotlin.String?,startDate:java.time.LocalDate?,endDate:java.time.LocalDate?,metricTypes:kotlin.Array<kotlin.String>?,appTypes:kotlin.String?,splitField:kotlin.String?,adAccountId:kotlin.String?,context:OperationRequest):Response<kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>>
     /* pinsCreate
      * Create Pin */
     suspend fun pinsCreate(pinCreate:PinCreate?,adAccountId:kotlin.String?,context:OperationRequest):Response<Pin>

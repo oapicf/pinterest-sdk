@@ -91,7 +91,7 @@ public class IntegrationsControllerTest {
             put("external_business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@1aa959e2");
+            .accept("[Ljava.lang.String;@86ee2f8");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
@@ -137,7 +137,7 @@ public class IntegrationsControllerTest {
             put("external_business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@10615dc8");
+            .accept("[Ljava.lang.String;@327b6296");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, IntegrationMetadata.class);
@@ -185,7 +185,7 @@ public class IntegrationsControllerTest {
             put("external_business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@e2bfcfb");
+            .accept("[Ljava.lang.String;@2bf461ff");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, IntegrationMetadata.class);
@@ -229,7 +229,7 @@ public class IntegrationsControllerTest {
         IntegrationRequest body = new IntegrationRequest();
         String uri = UriTemplate.of("/integrations/commerce").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@4c165a61");
+            .accept("[Ljava.lang.String;@67bc6d94");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, IntegrationMetadata.class);
@@ -275,7 +275,7 @@ public class IntegrationsControllerTest {
             put("id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@1ca06c48");
+            .accept("[Ljava.lang.String;@183a3ab9");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, IntegrationRecord.class);
@@ -319,7 +319,7 @@ public class IntegrationsControllerTest {
         // given
         String uri = UriTemplate.of("/integrations").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@635fd09");
+            .accept("[Ljava.lang.String;@71bc94fa");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -366,7 +366,7 @@ public class IntegrationsControllerTest {
         IntegrationLogsRequest body = new IntegrationLogsRequest(Arrays.asList());
         String uri = UriTemplate.of("/integrations/logs").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@57281510");
+            .accept("[Ljava.lang.String;@79cff8ab");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, IntegrationLogsSuccessResponse.class);

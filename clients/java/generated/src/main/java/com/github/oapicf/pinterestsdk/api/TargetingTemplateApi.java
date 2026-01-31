@@ -92,7 +92,7 @@ public class TargetingTemplateApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call targetingTemplateCreateCall(String adAccountId, TargetingTemplateCreate targetingTemplateCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call targetingTemplateCreateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull TargetingTemplateCreate targetingTemplateCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -139,7 +139,7 @@ public class TargetingTemplateApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call targetingTemplateCreateValidateBeforeCall(String adAccountId, TargetingTemplateCreate targetingTemplateCreate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call targetingTemplateCreateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull TargetingTemplateCreate targetingTemplateCreate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling targetingTemplateCreate(Async)");
@@ -170,7 +170,7 @@ public class TargetingTemplateApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public TargetingTemplateGetResponseData targetingTemplateCreate(String adAccountId, TargetingTemplateCreate targetingTemplateCreate) throws ApiException {
+    public TargetingTemplateGetResponseData targetingTemplateCreate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull TargetingTemplateCreate targetingTemplateCreate) throws ApiException {
         ApiResponse<TargetingTemplateGetResponseData> localVarResp = targetingTemplateCreateWithHttpInfo(adAccountId, targetingTemplateCreate);
         return localVarResp.getData();
     }
@@ -191,7 +191,7 @@ public class TargetingTemplateApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TargetingTemplateGetResponseData> targetingTemplateCreateWithHttpInfo(String adAccountId, TargetingTemplateCreate targetingTemplateCreate) throws ApiException {
+    public ApiResponse<TargetingTemplateGetResponseData> targetingTemplateCreateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull TargetingTemplateCreate targetingTemplateCreate) throws ApiException {
         okhttp3.Call localVarCall = targetingTemplateCreateValidateBeforeCall(adAccountId, targetingTemplateCreate, null);
         Type localVarReturnType = new TypeToken<TargetingTemplateGetResponseData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -214,7 +214,7 @@ public class TargetingTemplateApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call targetingTemplateCreateAsync(String adAccountId, TargetingTemplateCreate targetingTemplateCreate, final ApiCallback<TargetingTemplateGetResponseData> _callback) throws ApiException {
+    public okhttp3.Call targetingTemplateCreateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull TargetingTemplateCreate targetingTemplateCreate, final ApiCallback<TargetingTemplateGetResponseData> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = targetingTemplateCreateValidateBeforeCall(adAccountId, targetingTemplateCreate, _callback);
         Type localVarReturnType = new TypeToken<TargetingTemplateGetResponseData>(){}.getType();
@@ -241,7 +241,7 @@ public class TargetingTemplateApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call targetingTemplateListCall(String adAccountId, String order, Boolean includeSizing, String searchQuery, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call targetingTemplateListCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String order, @javax.annotation.Nullable Boolean includeSizing, @javax.annotation.Nullable String searchQuery, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -307,7 +307,7 @@ public class TargetingTemplateApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call targetingTemplateListValidateBeforeCall(String adAccountId, String order, Boolean includeSizing, String searchQuery, Integer pageSize, String bookmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call targetingTemplateListValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String order, @javax.annotation.Nullable Boolean includeSizing, @javax.annotation.Nullable String searchQuery, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling targetingTemplateList(Async)");
@@ -337,7 +337,7 @@ public class TargetingTemplateApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public TargetingTemplateList200Response targetingTemplateList(String adAccountId, String order, Boolean includeSizing, String searchQuery, Integer pageSize, String bookmark) throws ApiException {
+    public TargetingTemplateList200Response targetingTemplateList(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String order, @javax.annotation.Nullable Boolean includeSizing, @javax.annotation.Nullable String searchQuery, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         ApiResponse<TargetingTemplateList200Response> localVarResp = targetingTemplateListWithHttpInfo(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark);
         return localVarResp.getData();
     }
@@ -362,7 +362,7 @@ public class TargetingTemplateApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TargetingTemplateList200Response> targetingTemplateListWithHttpInfo(String adAccountId, String order, Boolean includeSizing, String searchQuery, Integer pageSize, String bookmark) throws ApiException {
+    public ApiResponse<TargetingTemplateList200Response> targetingTemplateListWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String order, @javax.annotation.Nullable Boolean includeSizing, @javax.annotation.Nullable String searchQuery, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark) throws ApiException {
         okhttp3.Call localVarCall = targetingTemplateListValidateBeforeCall(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark, null);
         Type localVarReturnType = new TypeToken<TargetingTemplateList200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -389,7 +389,7 @@ public class TargetingTemplateApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call targetingTemplateListAsync(String adAccountId, String order, Boolean includeSizing, String searchQuery, Integer pageSize, String bookmark, final ApiCallback<TargetingTemplateList200Response> _callback) throws ApiException {
+    public okhttp3.Call targetingTemplateListAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nullable String order, @javax.annotation.Nullable Boolean includeSizing, @javax.annotation.Nullable String searchQuery, @javax.annotation.Nullable Integer pageSize, @javax.annotation.Nullable String bookmark, final ApiCallback<TargetingTemplateList200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = targetingTemplateListValidateBeforeCall(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark, _callback);
         Type localVarReturnType = new TypeToken<TargetingTemplateList200Response>(){}.getType();
@@ -412,7 +412,7 @@ public class TargetingTemplateApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call targetingTemplateUpdateCall(String adAccountId, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call targetingTemplateUpdateCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull TargetingTemplateUpdateRequest targetingTemplateUpdateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -459,7 +459,7 @@ public class TargetingTemplateApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call targetingTemplateUpdateValidateBeforeCall(String adAccountId, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call targetingTemplateUpdateValidateBeforeCall(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull TargetingTemplateUpdateRequest targetingTemplateUpdateRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'adAccountId' is set
         if (adAccountId == null) {
             throw new ApiException("Missing the required parameter 'adAccountId' when calling targetingTemplateUpdate(Async)");
@@ -489,7 +489,7 @@ public class TargetingTemplateApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public void targetingTemplateUpdate(String adAccountId, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest) throws ApiException {
+    public void targetingTemplateUpdate(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull TargetingTemplateUpdateRequest targetingTemplateUpdateRequest) throws ApiException {
         targetingTemplateUpdateWithHttpInfo(adAccountId, targetingTemplateUpdateRequest);
     }
 
@@ -509,7 +509,7 @@ public class TargetingTemplateApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> targetingTemplateUpdateWithHttpInfo(String adAccountId, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest) throws ApiException {
+    public ApiResponse<Void> targetingTemplateUpdateWithHttpInfo(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull TargetingTemplateUpdateRequest targetingTemplateUpdateRequest) throws ApiException {
         okhttp3.Call localVarCall = targetingTemplateUpdateValidateBeforeCall(adAccountId, targetingTemplateUpdateRequest, null);
         return localVarApiClient.execute(localVarCall);
     }
@@ -531,7 +531,7 @@ public class TargetingTemplateApi {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call targetingTemplateUpdateAsync(String adAccountId, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call targetingTemplateUpdateAsync(@javax.annotation.Nonnull String adAccountId, @javax.annotation.Nonnull TargetingTemplateUpdateRequest targetingTemplateUpdateRequest, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = targetingTemplateUpdateValidateBeforeCall(adAccountId, targetingTemplateUpdateRequest, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);

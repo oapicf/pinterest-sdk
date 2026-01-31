@@ -27,7 +27,7 @@ import javax.annotation.Generated;
  * LeadFormCreateRequest
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2025-05-10T05:40:03.307751810Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-01-26T05:36:51.900957200Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class LeadFormCreateRequest {
 
   private JsonNullable<String> name = JsonNullable.<String>undefined();
@@ -48,21 +48,6 @@ public class LeadFormCreateRequest {
   @Valid
   private List<@Valid LeadFormCommonPolicyLinksInner> policyLinks = new ArrayList<>();
 
-  public LeadFormCreateRequest() {
-    super();
-  }
-
-  /**
-   * Constructor with only required parameters
-   */
-  public LeadFormCreateRequest(String name, String privacyPolicyLink, Boolean hasAcceptedTerms, String completionMessage, List<@Valid LeadFormQuestion> questions) {
-    this.name = JsonNullable.of(name);
-    this.privacyPolicyLink = JsonNullable.of(privacyPolicyLink);
-    this.hasAcceptedTerms = hasAcceptedTerms;
-    this.completionMessage = JsonNullable.of(completionMessage);
-    this.questions = questions;
-  }
-
   public LeadFormCreateRequest name(String name) {
     this.name = JsonNullable.of(name);
     return this;
@@ -72,8 +57,8 @@ public class LeadFormCreateRequest {
    * Internal name of the lead form.
    * @return name
    */
-  @NotNull 
-  @Schema(name = "name", example = "Lead Form 3/14/2023", description = "Internal name of the lead form.", requiredMode = Schema.RequiredMode.REQUIRED)
+  
+  @Schema(name = "name", example = "Lead Form 3/14/2023", description = "Internal name of the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
   public JsonNullable<String> getName() {
     return name;
@@ -92,8 +77,8 @@ public class LeadFormCreateRequest {
    * A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
    * @return privacyPolicyLink
    */
-  @NotNull 
-  @Schema(name = "privacy_policy_link", example = "https://www.advertisername.com/privacy-policy", description = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.", requiredMode = Schema.RequiredMode.REQUIRED)
+  
+  @Schema(name = "privacy_policy_link", example = "https://www.advertisername.com/privacy-policy", description = "A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("privacy_policy_link")
   public JsonNullable<String> getPrivacyPolicyLink() {
     return privacyPolicyLink;
@@ -112,8 +97,8 @@ public class LeadFormCreateRequest {
    * Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
    * @return hasAcceptedTerms
    */
-  @NotNull 
-  @Schema(name = "has_accepted_terms", example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO", requiredMode = Schema.RequiredMode.REQUIRED)
+  
+  @Schema(name = "has_accepted_terms", example = "false", description = "Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("has_accepted_terms")
   public Boolean getHasAcceptedTerms() {
     return hasAcceptedTerms;
@@ -132,8 +117,8 @@ public class LeadFormCreateRequest {
    * A message for people who complete the form to let them know what happens next.
    * @return completionMessage
    */
-  @NotNull 
-  @Schema(name = "completion_message", example = "Thank you for submitting. We will contact you soon.", description = "A message for people who complete the form to let them know what happens next.", requiredMode = Schema.RequiredMode.REQUIRED)
+  
+  @Schema(name = "completion_message", example = "Thank you for submitting. We will contact you soon.", description = "A message for people who complete the form to let them know what happens next.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("completion_message")
   public JsonNullable<String> getCompletionMessage() {
     return completionMessage;
@@ -200,8 +185,8 @@ public class LeadFormCreateRequest {
    * List of questions to be displayed on the lead form.
    * @return questions
    */
-  @NotNull @Valid @Size(min = 0, max = 10) 
-  @Schema(name = "questions", example = "[{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}]", description = "List of questions to be displayed on the lead form.", requiredMode = Schema.RequiredMode.REQUIRED)
+  @Valid @Size(min = 0, max = 10) 
+  @Schema(name = "questions", example = "[{question_type=CUSTOM, custom_question_field_type=CHECKBOX, custom_question_label=What is your favorite animal?, custom_question_options=[Dog, Cat, Bird, Turtle]}]", description = "List of questions to be displayed on the lead form.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("questions")
   public List<@Valid LeadFormQuestion> getQuestions() {
     return questions;
@@ -248,10 +233,10 @@ public class LeadFormCreateRequest {
       return false;
     }
     LeadFormCreateRequest leadFormCreateRequest = (LeadFormCreateRequest) o;
-    return Objects.equals(this.name, leadFormCreateRequest.name) &&
-        Objects.equals(this.privacyPolicyLink, leadFormCreateRequest.privacyPolicyLink) &&
+    return equalsNullable(this.name, leadFormCreateRequest.name) &&
+        equalsNullable(this.privacyPolicyLink, leadFormCreateRequest.privacyPolicyLink) &&
         Objects.equals(this.hasAcceptedTerms, leadFormCreateRequest.hasAcceptedTerms) &&
-        Objects.equals(this.completionMessage, leadFormCreateRequest.completionMessage) &&
+        equalsNullable(this.completionMessage, leadFormCreateRequest.completionMessage) &&
         Objects.equals(this.status, leadFormCreateRequest.status) &&
         equalsNullable(this.disclosureLanguage, leadFormCreateRequest.disclosureLanguage) &&
         Objects.equals(this.questions, leadFormCreateRequest.questions) &&
@@ -264,7 +249,7 @@ public class LeadFormCreateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, privacyPolicyLink, hasAcceptedTerms, completionMessage, status, hashCodeNullable(disclosureLanguage), questions, policyLinks);
+    return Objects.hash(hashCodeNullable(name), hashCodeNullable(privacyPolicyLink), hasAcceptedTerms, hashCodeNullable(completionMessage), status, hashCodeNullable(disclosureLanguage), questions, policyLinks);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {

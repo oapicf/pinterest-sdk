@@ -21,6 +21,7 @@ namespace org::openapitools::server::model
 
 CatalogsItemsDeleteDiscontinuedBatchRequest::CatalogsItemsDeleteDiscontinuedBatchRequest()
 {
+    m_Language = "";
     
 }
 
@@ -124,11 +125,11 @@ void CatalogsItemsDeleteDiscontinuedBatchRequest::setCountry(org::openapitools::
 {
     m_Country = value;
 }
-org::openapitools::server::model::CatalogsItemsRequest_language CatalogsItemsDeleteDiscontinuedBatchRequest::getLanguage() const
+std::string CatalogsItemsDeleteDiscontinuedBatchRequest::getLanguage() const
 {
     return m_Language;
 }
-void CatalogsItemsDeleteDiscontinuedBatchRequest::setLanguage(org::openapitools::server::model::CatalogsItemsRequest_language const& value)
+void CatalogsItemsDeleteDiscontinuedBatchRequest::setLanguage(std::string const& value)
 {
     m_Language = value;
 }

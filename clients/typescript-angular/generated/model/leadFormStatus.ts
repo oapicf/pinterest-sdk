@@ -12,12 +12,9 @@
 /**
  * Status of the lead form
  */
-export type LeadFormStatus = 'DRAFT' | 'ACTIVE';
-
 export const LeadFormStatus = {
-
-    Draft: 'DRAFT' as LeadFormStatus,
-
-    Active: 'ACTIVE' as LeadFormStatus
-};
+    Draft: 'DRAFT',
+    Active: 'ACTIVE'
+} as const;
+export type LeadFormStatus = typeof LeadFormStatus[keyof typeof LeadFormStatus];
 

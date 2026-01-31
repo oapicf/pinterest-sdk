@@ -14,22 +14,21 @@ package openapi
 
 
 
-// OauthAccessTokenRequestCode - A request to exchange an authorization code for an access token.
 type OauthAccessTokenRequestCode struct {
-
-	GrantType string `json:"grant_type"`
 
 	Code string `json:"code"`
 
 	RedirectUri string `json:"redirect_uri"`
+
+	GrantType string `json:"grant_type"`
 }
 
 // AssertOauthAccessTokenRequestCodeRequired checks if the required fields are not zero-ed
 func AssertOauthAccessTokenRequestCodeRequired(obj OauthAccessTokenRequestCode) error {
 	elements := map[string]interface{}{
-		"grant_type": obj.GrantType,
 		"code": obj.Code,
 		"redirect_uri": obj.RedirectUri,
+		"grant_type": obj.GrantType,
 	}
 	for name, el := range elements {
 		if isZero := IsZeroValue(el); isZero {

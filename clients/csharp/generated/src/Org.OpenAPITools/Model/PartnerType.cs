@@ -132,7 +132,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, PartnerType partnerType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(partnerType.ToString());
+            writer.WriteStringValue(PartnerTypeValueConverter.ToJsonValue(partnerType).ToString());
         }
     }
 
@@ -163,14 +163,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the PartnerType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="partnerType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, PartnerType? partnerType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(partnerType?.ToString() ?? "null");
+            writer.WriteStringValue(partnerType.HasValue ? PartnerTypeValueConverter.ToJsonValue(partnerType.Value).ToString() : "null");
         }
     }
 }

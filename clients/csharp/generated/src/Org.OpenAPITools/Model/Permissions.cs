@@ -202,7 +202,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Permissions permissions, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(permissions.ToString());
+            writer.WriteStringValue(PermissionsValueConverter.ToJsonValue(permissions).ToString());
         }
     }
 
@@ -233,14 +233,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the Permissions to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="permissions"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, Permissions? permissions, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(permissions?.ToString() ?? "null");
+            writer.WriteStringValue(permissions.HasValue ? PermissionsValueConverter.ToJsonValue(permissions.Value).ToString() : "null");
         }
     }
 }

@@ -162,12 +162,10 @@ namespace Org.OpenAPITools.Model
                             date = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "type":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                type = new Option<string?>(JsonSerializer.Deserialize<string>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            type = new Option<string?>(JsonSerializer.Deserialize<string>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "scope":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                scope = new Option<string?>(JsonSerializer.Deserialize<string>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            scope = new Option<string?>(JsonSerializer.Deserialize<string>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

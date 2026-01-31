@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type PartnerType* {.pure.} = enum
@@ -19,16 +21,46 @@ type DeletePartnerAssetAccessBodyAccessesInner* = object
   ## 
   partnerId*: string ## Unique identifier of a business partner to update asset access to.
   assetId*: string ## Unique identifier of the business asset.
-  partnerType*: PartnerType ## If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
+  partnerType*: Option[PartnerType] ## If partner_type=INTERNAL, the deleted asset access is for the access the partner has to your business asset.<br> If partner_type=EXTERNAL, the deleted asset access is for the access you have to the partner's business asset.
 
 func `%`*(v: PartnerType): JsonNode =
-  let str = case v:
-    of PartnerType.INTERNAL: "INTERNAL"
-    of PartnerType.EXTERNAL: "EXTERNAL"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of PartnerType.INTERNAL: %"INTERNAL"
+    of PartnerType.EXTERNAL: %"EXTERNAL"
 func `$`*(v: PartnerType): string =
   result = case v:
-    of PartnerType.INTERNAL: "INTERNAL"
-    of PartnerType.EXTERNAL: "EXTERNAL"
+    of PartnerType.INTERNAL: $("INTERNAL")
+    of PartnerType.EXTERNAL: $("EXTERNAL")
+
+proc to*(node: JsonNode, T: typedesc[PartnerType]): PartnerType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum PartnerType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("INTERNAL"):
+    return PartnerType.INTERNAL
+  of $("EXTERNAL"):
+    return PartnerType.EXTERNAL
+  else:
+    raise newException(ValueError, "Invalid enum value for PartnerType: " & strVal)
+
+
+# Custom JSON deserialization for DeletePartnerAssetAccessBodyAccessesInner with custom field names
+proc to*(node: JsonNode, T: typedesc[DeletePartnerAssetAccessBodyAccessesInner]): DeletePartnerAssetAccessBodyAccessesInner =
+  result = DeletePartnerAssetAccessBodyAccessesInner()
+  if node.kind == JObject:
+    if node.hasKey("partner_id"):
+      result.partnerId = to(node["partner_id"], string)
+    if node.hasKey("asset_id"):
+      result.assetId = to(node["asset_id"], string)
+    if node.hasKey("partner_type") and node["partner_type"].kind != JNull:
+      result.partnerType = some(to(node["partner_type"], PartnerType))
+
+# Custom JSON serialization for DeletePartnerAssetAccessBodyAccessesInner with custom field names
+proc `%`*(obj: DeletePartnerAssetAccessBodyAccessesInner): JsonNode =
+  result = newJObject()
+  result["partner_id"] = %obj.partnerId
+  result["asset_id"] = %obj.assetId
+  if obj.partnerType.isSome():
+    result["partner_type"] = %obj.partnerType.get()
+

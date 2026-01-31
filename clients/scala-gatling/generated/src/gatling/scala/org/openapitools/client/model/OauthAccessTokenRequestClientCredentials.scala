@@ -3,14 +3,14 @@ package org.openapitools.client.model
 
 
 case class OauthAccessTokenRequestClientCredentials (
-    _grantType: String,
-    _scope: String
+    _scope: String,
+    _grantType: String
 )
 object OauthAccessTokenRequestClientCredentials {
-    def toStringBody(var_grantType: Object, var_scope: Object) =
+    def toStringBody(var_scope: Object, var_grantType: Object) =
         s"""
         | {
-        | "grantType":$var_grantType,"scope":$var_scope
+        | "scope":$var_scope,"grantType":$var_grantType
         | }
         """.stripMargin
 }

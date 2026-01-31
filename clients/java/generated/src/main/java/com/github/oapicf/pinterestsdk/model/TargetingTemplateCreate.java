@@ -55,7 +55,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * TargetingTemplateCreate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateCreate {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -277,18 +277,10 @@ public class TargetingTemplateCreate {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("name");
-    openapiFields.add("auto_targeting_enabled");
-    openapiFields.add("targeting_attributes");
-    openapiFields.add("placement_group");
-    openapiFields.add("keywords");
-    openapiFields.add("tracking_urls");
+    openapiFields = new HashSet<String>(Arrays.asList("name", "auto_targeting_enabled", "targeting_attributes", "placement_group", "keywords", "tracking_urls"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("targeting_attributes");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("name", "targeting_attributes"));
   }
 
   /**
@@ -300,7 +292,7 @@ public class TargetingTemplateCreate {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!TargetingTemplateCreate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in TargetingTemplateCreate is not found in the empty JSON string", TargetingTemplateCreate.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in TargetingTemplateCreate is not found in the empty JSON string", TargetingTemplateCreate.openapiRequiredFields.toString()));
         }
       }
 
@@ -308,19 +300,19 @@ public class TargetingTemplateCreate {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!TargetingTemplateCreate.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TargetingTemplateCreate` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `TargetingTemplateCreate` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : TargetingTemplateCreate.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the required field `targeting_attributes`
       TargetingSpec.validateJsonElement(jsonObj.get("targeting_attributes"));
@@ -333,7 +325,7 @@ public class TargetingTemplateCreate {
         if (jsonArraykeywords != null) {
           // ensure the json data is an array
           if (!jsonObj.get("keywords").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `keywords` to be an array in the JSON string but got `%s`", jsonObj.get("keywords").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `keywords` to be an array in the JSON string but got `%s`", jsonObj.get("keywords").toString()));
           }
 
           // validate the optional field `keywords` (array)

@@ -16,7 +16,7 @@ private class OASPinsApiTest {
             'pinIds' => new List<String>{''},
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
-            'metricTypes' => new List<OASPinsAnalyticsMetricTypesParameter>{OASPinsAnalyticsMetricTypesParameter.getExample()},
+            'metricTypes' => new List<String>{'IMPRESSION'},
             'appTypes' => ALL,
             'adAccountId' => 'null'
         };
@@ -127,7 +127,7 @@ private class OASPinsApiTest {
             'pinId' => 'null',
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
-            'metricTypes' => new List<OASPinsAnalyticsMetricTypesParameter>{OASPinsAnalyticsMetricTypesParameter.getExample()},
+            'metricTypes' => new List<String>{'IMPRESSION'},
             'appTypes' => ALL,
             'splitField' => NO_SPLIT,
             'adAccountId' => 'null'

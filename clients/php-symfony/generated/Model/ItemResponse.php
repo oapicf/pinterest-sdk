@@ -66,16 +66,25 @@ class ItemResponse
     protected ?string $itemId = null;
 
     /**
-     * Array with the errors for the item id requested
+     * The pins mapped to the item
      *
-     * @var ItemValidationEvent[]|null
-     * @SerializedName("errors")
-     * @Type("array<OpenAPI\Server\Model\ItemValidationEvent>")
+     * @var Pin[]|null
+     * @SerializedName("pins")
+     * @Type("array<OpenAPI\Server\Model\Pin>")
     */
     #[Assert\All([
-        new Assert\Type("OpenAPI\Server\Model\ItemValidationEvent"),
+        new Assert\Type("OpenAPI\Server\Model\Pin"),
     ])]
-    protected ?array $errors = null;
+    #[Assert\Count(max: 11)]
+    protected ?array $pins = null;
+
+    /**
+     * @var CatalogsCreativeAssetsAttributes|null
+     * @SerializedName("attributes")
+     * @Type("OpenAPI\Server\Model\CatalogsCreativeAssetsAttributes")
+    */
+    #[Assert\Type("OpenAPI\Server\Model\CatalogsCreativeAssetsAttributes")]
+    protected ?CatalogsCreativeAssetsAttributes $attributes = null;
 
     /**
      * The catalog hotel id in the merchant namespace
@@ -98,6 +107,18 @@ class ItemResponse
     protected ?string $creativeAssetsId = null;
 
     /**
+     * Array with the errors for the item id requested
+     *
+     * @var ItemValidationEvent[]|null
+     * @SerializedName("errors")
+     * @Type("array<OpenAPI\Server\Model\ItemValidationEvent>")
+    */
+    #[Assert\All([
+        new Assert\Type("OpenAPI\Server\Model\ItemValidationEvent"),
+    ])]
+    protected ?array $errors = null;
+
+    /**
      * Constructor
      * @param array|null $data Associated array of property values initializing the model
      */
@@ -106,9 +127,11 @@ class ItemResponse
         if (is_array($data)) {
             $this->catalogType = array_key_exists('catalogType', $data) ? $data['catalogType'] : $this->catalogType;
             $this->itemId = array_key_exists('itemId', $data) ? $data['itemId'] : $this->itemId;
-            $this->errors = array_key_exists('errors', $data) ? $data['errors'] : $this->errors;
+            $this->pins = array_key_exists('pins', $data) ? $data['pins'] : $this->pins;
+            $this->attributes = array_key_exists('attributes', $data) ? $data['attributes'] : $this->attributes;
             $this->hotelId = array_key_exists('hotelId', $data) ? $data['hotelId'] : $this->hotelId;
             $this->creativeAssetsId = array_key_exists('creativeAssetsId', $data) ? $data['creativeAssetsId'] : $this->creativeAssetsId;
+            $this->errors = array_key_exists('errors', $data) ? $data['errors'] : $this->errors;
         }
     }
 
@@ -194,25 +217,52 @@ class ItemResponse
 
 
     /**
-     * Gets errors.
+     * Gets pins.
      *
-     * @return ItemValidationEvent[]|null
+     * @return Pin[]|null
      */
-    public function getErrors(): ?array
+    public function getPins(): ?array
     {
-        return $this->errors;
+        return $this->pins;
     }
 
     /**
-    * Sets errors.
+    * Sets pins.
     *
-    * @param ItemValidationEvent[]|null $errors  Array with the errors for the item id requested
+    * @param Pin[]|null $pins  The pins mapped to the item
     *
     * @return $this
     */
-    public function setErrors(?array $errors = null): self
+    public function setPins(?array $pins = null): self
     {
-        $this->errors = $errors;
+        $this->pins = $pins;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets attributes.
+     *
+     * @return CatalogsCreativeAssetsAttributes|null
+     */
+    public function getAttributes(): ?CatalogsCreativeAssetsAttributes
+    {
+        return $this->attributes;
+    }
+
+    /**
+    * Sets attributes.
+    *
+    * @param CatalogsCreativeAssetsAttributes|null $attributes
+    *
+    * @return $this
+    */
+    public function setAttributes(?CatalogsCreativeAssetsAttributes $attributes = null): self
+    {
+        $this->attributes = $attributes;
 
         return $this;
     }
@@ -267,6 +317,33 @@ class ItemResponse
     public function setCreativeAssetsId(?string $creativeAssetsId = null): self
     {
         $this->creativeAssetsId = $creativeAssetsId;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Gets errors.
+     *
+     * @return ItemValidationEvent[]|null
+     */
+    public function getErrors(): ?array
+    {
+        return $this->errors;
+    }
+
+    /**
+    * Sets errors.
+    *
+    * @param ItemValidationEvent[]|null $errors  Array with the errors for the item id requested
+    *
+    * @return $this
+    */
+    public function setErrors(?array $errors = null): self
+    {
+        $this->errors = $errors;
 
         return $this;
     }

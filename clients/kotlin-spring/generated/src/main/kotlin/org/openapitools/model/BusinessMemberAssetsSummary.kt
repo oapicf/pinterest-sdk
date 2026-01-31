@@ -29,7 +29,7 @@ data class BusinessMemberAssetsSummary(
     @field:Valid
     @Schema(example = "null", description = "List of profile IDs and respective permission levels.")
     @get:JsonProperty("profiles") val profiles: kotlin.collections.List<BusinessMemberAssetsSummaryProfilesInner>? = null
-    ) {
+) {
 
 }
 

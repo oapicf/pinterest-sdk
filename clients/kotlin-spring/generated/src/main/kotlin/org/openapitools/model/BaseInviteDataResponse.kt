@@ -38,7 +38,7 @@ data class BaseInviteDataResponse(
     @field:Valid
     @Schema(example = "null", description = "Metadata for the member/partner that was sent the invite/request.")
     @get:JsonProperty("user") val user: BusinessAccessUserSummary? = null
-    ) {
+) {
 
 }
 

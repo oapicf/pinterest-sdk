@@ -18,20 +18,36 @@ import .*
 
 
 /**
- * A successful OAuth access token response for the authorization code flow.
+ * 
  * @param refreshToken 
  * @param refreshTokenExpiresIn 
+ * @param accessToken 
+ * @param tokenType 
+ * @param expiresIn 
+ * @param scope 
+ * @param responseType 
  */
 object OauthAccessTokenResponseCodes : BaseTable<OauthAccessTokenResponseCode>("OauthAccessTokenResponseCode") {
     val refreshToken = text("refresh_token")
     val refreshTokenExpiresIn = int("refresh_token_expires_in")
+    val accessToken = text("access_token")
+    val tokenType = text("token_type")
+    val expiresIn = int("expires_in")
+    val scope = text("scope")
+    val responseType = text("response_type").transform({ OauthAccessTokenResponseCode.ResponseType.valueOf(it ?: "authorization_code") }, { it.value }) /* null */
+
 
     /**
      * Create an entity of type OauthAccessTokenResponseCode from the model
      */
     override fun doCreateEntity(row: QueryRowSet, withReferences: Boolean) = OauthAccessTokenResponseCode(
         refreshToken = row[refreshToken] ?: "" /* kotlin.String */,
-        refreshTokenExpiresIn = row[refreshTokenExpiresIn] ?: 0 /* kotlin.Int */
+        refreshTokenExpiresIn = row[refreshTokenExpiresIn] ?: 0 /* kotlin.Int */,
+        accessToken = row[accessToken] ?: "" /* kotlin.String */,
+        tokenType = row[tokenType] ?: "" /* kotlin.String */,
+        expiresIn = row[expiresIn] ?: 0 /* kotlin.Int */,
+        scope = row[scope] ?: "" /* kotlin.String */,
+        responseType = row[responseType]  /* kotlin.String? */
     )
 
     /**
@@ -51,6 +67,11 @@ object OauthAccessTokenResponseCodes : BaseTable<OauthAccessTokenResponseCode>("
         this.apply {
             set(OauthAccessTokenResponseCodes.refreshToken, entity.refreshToken)
             set(OauthAccessTokenResponseCodes.refreshTokenExpiresIn, entity.refreshTokenExpiresIn)
+            set(OauthAccessTokenResponseCodes.accessToken, entity.accessToken)
+            set(OauthAccessTokenResponseCodes.tokenType, entity.tokenType)
+            set(OauthAccessTokenResponseCodes.expiresIn, entity.expiresIn)
+            set(OauthAccessTokenResponseCodes.scope, entity.scope)
+            set(OauthAccessTokenResponseCodes.responseType, entity.responseType)
         }
     }
 

@@ -29,7 +29,7 @@ import javax.annotation.Generated;
  * TargetingTemplateCommon
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class TargetingTemplateCommon {
 
   private @Nullable String name;
@@ -45,7 +45,7 @@ public class TargetingTemplateCommon {
 
   private JsonNullable<TrackingUrls> trackingUrls = JsonNullable.<TrackingUrls>undefined();
 
-  public TargetingTemplateCommon name(String name) {
+  public TargetingTemplateCommon name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -57,11 +57,11 @@ public class TargetingTemplateCommon {
   
   @Schema(name = "name", example = "Gaming", description = "targeting template name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
-  public String getName() {
+  public @Nullable String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
@@ -85,7 +85,7 @@ public class TargetingTemplateCommon {
     this.autoTargetingEnabled = autoTargetingEnabled;
   }
 
-  public TargetingTemplateCommon targetingAttributes(TargetingSpec targetingAttributes) {
+  public TargetingTemplateCommon targetingAttributes(@Nullable TargetingSpec targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
     return this;
   }
@@ -97,11 +97,11 @@ public class TargetingTemplateCommon {
   @Valid 
   @Schema(name = "targeting_attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("targeting_attributes")
-  public TargetingSpec getTargetingAttributes() {
+  public @Nullable TargetingSpec getTargetingAttributes() {
     return targetingAttributes;
   }
 
-  public void setTargetingAttributes(TargetingSpec targetingAttributes) {
+  public void setTargetingAttributes(@Nullable TargetingSpec targetingAttributes) {
     this.targetingAttributes = targetingAttributes;
   }
 

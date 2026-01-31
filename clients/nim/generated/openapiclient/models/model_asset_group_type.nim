@@ -9,7 +9,43 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AssetGroupType* = object
-  ## Asset group type
+type AssetGroupType* {.pure.} = enum
+  BRAND
+  LOCATIONORLANGUAGE
+  PRODUCTLINE
+  OTHER
+
+func `%`*(v: AssetGroupType): JsonNode =
+  result = case v:
+    of AssetGroupType.BRAND: %"BRAND"
+    of AssetGroupType.LOCATIONORLANGUAGE: %"LOCATION_OR_LANGUAGE"
+    of AssetGroupType.PRODUCTLINE: %"PRODUCT_LINE"
+    of AssetGroupType.OTHER: %"OTHER"
+
+func `$`*(v: AssetGroupType): string =
+  result = case v:
+    of AssetGroupType.BRAND: $("BRAND")
+    of AssetGroupType.LOCATIONORLANGUAGE: $("LOCATION_OR_LANGUAGE")
+    of AssetGroupType.PRODUCTLINE: $("PRODUCT_LINE")
+    of AssetGroupType.OTHER: $("OTHER")
+
+proc to*(node: JsonNode, T: typedesc[AssetGroupType]): AssetGroupType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AssetGroupType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("BRAND"):
+    return AssetGroupType.BRAND
+  of $("LOCATION_OR_LANGUAGE"):
+    return AssetGroupType.LOCATIONORLANGUAGE
+  of $("PRODUCT_LINE"):
+    return AssetGroupType.PRODUCTLINE
+  of $("OTHER"):
+    return AssetGroupType.OTHER
+  else:
+    raise newException(ValueError, "Invalid enum value for AssetGroupType: " & strVal)
+

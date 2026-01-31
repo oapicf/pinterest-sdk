@@ -245,7 +245,7 @@ namespace Org.OpenAPITools.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CreativeType creativeType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(creativeType.ToString());
+            writer.WriteStringValue(CreativeTypeValueConverter.ToJsonValue(creativeType).ToString());
         }
     }
 
@@ -276,14 +276,14 @@ namespace Org.OpenAPITools.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the CreativeType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="creativeType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, CreativeType? creativeType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(creativeType?.ToString() ?? "null");
+            writer.WriteStringValue(creativeType.HasValue ? CreativeTypeValueConverter.ToJsonValue(creativeType.Value).ToString() : "null");
         }
     }
 }

@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  */
 
 @Schema(name = "GetBusinessAssetsResponse", description = "An object containing the permissions a business has on the asset.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class GetBusinessAssetsResponse {
 
   private @Nullable String assetId;
@@ -30,7 +30,7 @@ public class GetBusinessAssetsResponse {
 
   private @Nullable AssetGroupBinding assetGroupInfo;
 
-  public GetBusinessAssetsResponse assetId(String assetId) {
+  public GetBusinessAssetsResponse assetId(@Nullable String assetId) {
     this.assetId = assetId;
     return this;
   }
@@ -42,15 +42,15 @@ public class GetBusinessAssetsResponse {
   @Pattern(regexp = "^\\d+$") @Size(min = 1, max = 20) 
   @Schema(name = "asset_id", example = "549755885175", description = "Unique identifier of a business asset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_id")
-  public String getAssetId() {
+  public @Nullable String getAssetId() {
     return assetId;
   }
 
-  public void setAssetId(String assetId) {
+  public void setAssetId(@Nullable String assetId) {
     this.assetId = assetId;
   }
 
-  public GetBusinessAssetsResponse assetType(String assetType) {
+  public GetBusinessAssetsResponse assetType(@Nullable String assetType) {
     this.assetType = assetType;
     return this;
   }
@@ -62,15 +62,15 @@ public class GetBusinessAssetsResponse {
   
   @Schema(name = "asset_type", example = "AD_ACCOUNT", description = "Type of asset. Currently we only support AD_ACCOUNT and PROFILE, and ASSET_GROUP.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_type")
-  public String getAssetType() {
+  public @Nullable String getAssetType() {
     return assetType;
   }
 
-  public void setAssetType(String assetType) {
+  public void setAssetType(@Nullable String assetType) {
     this.assetType = assetType;
   }
 
-  public GetBusinessAssetsResponse assetGroupInfo(AssetGroupBinding assetGroupInfo) {
+  public GetBusinessAssetsResponse assetGroupInfo(@Nullable AssetGroupBinding assetGroupInfo) {
     this.assetGroupInfo = assetGroupInfo;
     return this;
   }
@@ -82,11 +82,11 @@ public class GetBusinessAssetsResponse {
   @Valid 
   @Schema(name = "asset_group_info", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("asset_group_info")
-  public AssetGroupBinding getAssetGroupInfo() {
+  public @Nullable AssetGroupBinding getAssetGroupInfo() {
     return assetGroupInfo;
   }
 
-  public void setAssetGroupInfo(AssetGroupBinding assetGroupInfo) {
+  public void setAssetGroupInfo(@Nullable AssetGroupBinding assetGroupInfo) {
     this.assetGroupInfo = assetGroupInfo;
   }
 

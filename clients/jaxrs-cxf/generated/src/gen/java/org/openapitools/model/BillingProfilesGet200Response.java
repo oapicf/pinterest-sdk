@@ -17,10 +17,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BillingProfilesGet200Response  {
   
   @ApiModelProperty(required = true, value = "")
+
   @Valid
+
   private List<@Valid BillingProfilesResponse> items = new ArrayList<>();
 
   @ApiModelProperty(value = "")
+
   private String bookmark;
  /**
    * Get items

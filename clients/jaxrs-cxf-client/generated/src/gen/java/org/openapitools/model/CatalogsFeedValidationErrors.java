@@ -8,202 +8,235 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CatalogsFeedValidationErrors  {
   
-  @ApiModelProperty(value = "Pinterest couldn't download your feed.")
  /**
-   * Pinterest couldn't download your feed.
-  **/
+  * Pinterest couldn't download your feed.
+  */
+  @ApiModelProperty(value = "Pinterest couldn't download your feed.")
+
   private Integer FETCH_ERROR;
 
-  @ApiModelProperty(value = "Your feed wasn't ingested because it hasn’t changed in the previous 90 days.")
  /**
-   * Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
-  **/
+  * Your feed wasn't ingested because it hasn’t changed in the previous 90 days.
+  */
+  @ApiModelProperty(value = "Your feed wasn't ingested because it hasn’t changed in the previous 90 days.")
+
   private Integer FETCH_INACTIVE_FEED_ERROR;
 
-  @ApiModelProperty(value = "Your feed includes data with an unsupported encoding format.")
  /**
-   * Your feed includes data with an unsupported encoding format.
-  **/
+  * Your feed includes data with an unsupported encoding format.
+  */
+  @ApiModelProperty(value = "Your feed includes data with an unsupported encoding format.")
+
   private Integer ENCODING_ERROR;
 
-  @ApiModelProperty(value = "Your feed includes data with formatting errors.")
  /**
-   * Your feed includes data with formatting errors.
-  **/
+  * Your feed includes data with formatting errors.
+  */
+  @ApiModelProperty(value = "Your feed includes data with formatting errors.")
+
   private Integer DELIMITER_ERROR;
 
-  @ApiModelProperty(value = "Your feed is missing some required column headers.")
  /**
-   * Your feed is missing some required column headers.
-  **/
+  * Your feed is missing some required column headers.
+  */
+  @ApiModelProperty(value = "Your feed is missing some required column headers.")
+
   private Integer REQUIRED_COLUMNS_MISSING;
 
-  @ApiModelProperty(value = "Some products are duplicated.")
  /**
-   * Some products are duplicated.
-  **/
+  * Some products are duplicated.
+  */
+  @ApiModelProperty(value = "Some products are duplicated.")
+
   private Integer DUPLICATE_PRODUCTS;
 
-  @ApiModelProperty(value = "Some image links are formatted incorrectly.")
  /**
-   * Some image links are formatted incorrectly.
-  **/
+  * Some image links are formatted incorrectly.
+  */
+  @ApiModelProperty(value = "Some image links are formatted incorrectly.")
+
   private Integer IMAGE_LINK_INVALID;
 
-  @ApiModelProperty(value = "Some items are missing an item id in their product metadata, those items will not be published.")
  /**
-   * Some items are missing an item id in their product metadata, those items will not be published.
-  **/
+  * Some items are missing an item id in their product metadata, those items will not be published.
+  */
+  @ApiModelProperty(value = "Some items are missing an item id in their product metadata, those items will not be published.")
+
   private Integer ITEMID_MISSING;
 
-  @ApiModelProperty(value = "Some items are missing a title in their product metadata, those items will not be published.")
  /**
-   * Some items are missing a title in their product metadata, those items will not be published.
-  **/
+  * Some items are missing a title in their product metadata, those items will not be published.
+  */
+  @ApiModelProperty(value = "Some items are missing a title in their product metadata, those items will not be published.")
+
   private Integer TITLE_MISSING;
 
-  @ApiModelProperty(value = "Some items are missing a description in their product metadata, those items will not be published.")
  /**
-   * Some items are missing a description in their product metadata, those items will not be published.
-  **/
+  * Some items are missing a description in their product metadata, those items will not be published.
+  */
+  @ApiModelProperty(value = "Some items are missing a description in their product metadata, those items will not be published.")
+
   private Integer DESCRIPTION_MISSING;
 
-  @ApiModelProperty(value = "Some items are missing a link URL in their product metadata, those items will not be published.")
  /**
-   * Some items are missing a link URL in their product metadata, those items will not be published.
-  **/
+  * Some items are missing a link URL in their product metadata, those items will not be published.
+  */
+  @ApiModelProperty(value = "Some items are missing a link URL in their product metadata, those items will not be published.")
+
   private Integer PRODUCT_LINK_MISSING;
 
-  @ApiModelProperty(value = "Some items are missing an image link URL in their product metadata, those items will not be published.")
  /**
-   * Some items are missing an image link URL in their product metadata, those items will not be published.
-  **/
+  * Some items are missing an image link URL in their product metadata, those items will not be published.
+  */
+  @ApiModelProperty(value = "Some items are missing an image link URL in their product metadata, those items will not be published.")
+
   private Integer IMAGE_LINK_MISSING;
 
-  @ApiModelProperty(value = "Some items are missing an availability value in their product metadata, those items will not be published.")
  /**
-   * Some items are missing an availability value in their product metadata, those items will not be published.
-  **/
+  * Some items are missing an availability value in their product metadata, those items will not be published.
+  */
+  @ApiModelProperty(value = "Some items are missing an availability value in their product metadata, those items will not be published.")
+
   private Integer AVAILABILITY_INVALID;
 
-  @ApiModelProperty(value = "Some items have price formatting errors in their product metadata, those items will not be published.")
  /**
-   * Some items have price formatting errors in their product metadata, those items will not be published.
-  **/
+  * Some items have price formatting errors in their product metadata, those items will not be published.
+  */
+  @ApiModelProperty(value = "Some items have price formatting errors in their product metadata, those items will not be published.")
+
   private Integer PRODUCT_PRICE_INVALID;
 
-  @ApiModelProperty(value = "Some link values are formatted incorrectly.")
  /**
-   * Some link values are formatted incorrectly.
-  **/
+  * Some link values are formatted incorrectly.
+  */
+  @ApiModelProperty(value = "Some link values are formatted incorrectly.")
+
   private Integer LINK_FORMAT_INVALID;
 
-  @ApiModelProperty(value = "Your feed contains formatting errors for some items.")
  /**
-   * Your feed contains formatting errors for some items.
-  **/
+  * Your feed contains formatting errors for some items.
+  */
+  @ApiModelProperty(value = "Your feed contains formatting errors for some items.")
+
   private Integer PARSE_LINE_ERROR;
 
-  @ApiModelProperty(value = "Some adwords links contain too many characters.")
  /**
-   * Some adwords links contain too many characters.
-  **/
+  * Some adwords links contain too many characters.
+  */
+  @ApiModelProperty(value = "Some adwords links contain too many characters.")
+
   private Integer ADWORDS_FORMAT_INVALID;
 
-  @ApiModelProperty(value = "We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.")
  /**
-   * We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.
-  **/
+  * We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.
+  */
+  @ApiModelProperty(value = "We experienced a technical difficulty and were unable to ingest your feed. The next ingestion will happen in 24 hours.")
+
   private Integer INTERNAL_SERVICE_ERROR;
 
-  @ApiModelProperty(value = "Your merchant domain needs to be claimed.")
  /**
-   * Your merchant domain needs to be claimed.
-  **/
+  * Your merchant domain needs to be claimed.
+  */
+  @ApiModelProperty(value = "Your merchant domain needs to be claimed.")
+
   private Integer NO_VERIFIED_DOMAIN;
 
-  @ApiModelProperty(value = "Some items have invalid adult values.")
  /**
-   * Some items have invalid adult values.
-  **/
+  * Some items have invalid adult values.
+  */
+  @ApiModelProperty(value = "Some items have invalid adult values.")
+
   private Integer ADULT_INVALID;
 
-  @ApiModelProperty(value = "Some items have image_link URLs that contain too many characters, so those items will not be published.")
  /**
-   * Some items have image_link URLs that contain too many characters, so those items will not be published.
-  **/
+  * Some items have image_link URLs that contain too many characters, so those items will not be published.
+  */
+  @ApiModelProperty(value = "Some items have image_link URLs that contain too many characters, so those items will not be published.")
+
   private Integer IMAGE_LINK_LENGTH_TOO_LONG;
 
-  @ApiModelProperty(value = "Some of your product link values don't match the verified domain associated with this account.")
  /**
-   * Some of your product link values don't match the verified domain associated with this account.
-  **/
+  * Some of your product link values don't match the verified domain associated with this account.
+  */
+  @ApiModelProperty(value = "Some of your product link values don't match the verified domain associated with this account.")
+
   private Integer INVALID_DOMAIN;
 
-  @ApiModelProperty(value = "Your feed contains too many items, some items will not be published.")
  /**
-   * Your feed contains too many items, some items will not be published.
-  **/
+  * Your feed contains too many items, some items will not be published.
+  */
+  @ApiModelProperty(value = "Your feed contains too many items, some items will not be published.")
+
   private Integer FEED_LENGTH_TOO_LONG;
 
-  @ApiModelProperty(value = "Some product links contain too many characters, those items will not be published.")
  /**
-   * Some product links contain too many characters, those items will not be published.
-  **/
+  * Some product links contain too many characters, those items will not be published.
+  */
+  @ApiModelProperty(value = "Some product links contain too many characters, those items will not be published.")
+
   private Integer LINK_LENGTH_TOO_LONG;
 
-  @ApiModelProperty(value = "Your feed couldn't be validated because the xml file is formatted incorrectly.")
  /**
-   * Your feed couldn't be validated because the xml file is formatted incorrectly.
-  **/
+  * Your feed couldn't be validated because the xml file is formatted incorrectly.
+  */
+  @ApiModelProperty(value = "Your feed couldn't be validated because the xml file is formatted incorrectly.")
+
   private Integer MALFORMED_XML;
 
-  @ApiModelProperty(value = "Some products are missing a price, those items will not be published.")
  /**
-   * Some products are missing a price, those items will not be published.
-  **/
+  * Some products are missing a price, those items will not be published.
+  */
+  @ApiModelProperty(value = "Some products are missing a price, those items will not be published.")
+
   private Integer PRICE_MISSING;
 
-  @ApiModelProperty(value = "Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.")
  /**
-   * Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.
-  **/
+  * Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.
+  */
+  @ApiModelProperty(value = "Your feed couldn't be validated because the file doesn't contain the minimum number of lines required.")
+
   private Integer FEED_TOO_SMALL;
 
-  @ApiModelProperty(value = "Some items exceed the maximum number of items per item group, those items will not be published.")
  /**
-   * Some items exceed the maximum number of items per item group, those items will not be published.
-  **/
+  * Some items exceed the maximum number of items per item group, those items will not be published.
+  */
+  @ApiModelProperty(value = "Some items exceed the maximum number of items per item group, those items will not be published.")
+
   private Integer MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED;
 
-  @ApiModelProperty(value = "Some items' main images can't be found.")
  /**
-   * Some items' main images can't be found.
-  **/
+  * Some items' main images can't be found.
+  */
+  @ApiModelProperty(value = "Some items' main images can't be found.")
+
   private Integer ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE;
 
-  @ApiModelProperty(value = "Some items were not published because they don't meet Pinterest's Merchant Guidelines.")
  /**
-   * Some items were not published because they don't meet Pinterest's Merchant Guidelines.
-  **/
+  * Some items were not published because they don't meet Pinterest's Merchant Guidelines.
+  */
+  @ApiModelProperty(value = "Some items were not published because they don't meet Pinterest's Merchant Guidelines.")
+
   private Integer PINJOIN_CONTENT_UNSAFE;
 
-  @ApiModelProperty(value = "Some items were not published because they don't meet Pinterest's Merchant Guidelines.")
  /**
-   * Some items were not published because they don't meet Pinterest's Merchant Guidelines.
-  **/
+  * Some items were not published because they don't meet Pinterest's Merchant Guidelines.
+  */
+  @ApiModelProperty(value = "Some items were not published because they don't meet Pinterest's Merchant Guidelines.")
+
   private Integer BLOCKLISTED_IMAGE_SIGNATURE;
 
-  @ApiModelProperty(value = "Some items have list price formatting errors in their product metadata, those items will not be published.")
  /**
-   * Some items have list price formatting errors in their product metadata, those items will not be published.
-  **/
+  * Some items have list price formatting errors in their product metadata, those items will not be published.
+  */
+  @ApiModelProperty(value = "Some items have list price formatting errors in their product metadata, those items will not be published.")
+
   private Integer LIST_PRICE_INVALID;
 
-  @ApiModelProperty(value = "Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.")
  /**
-   * Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.
-  **/
+  * Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.
+  */
+  @ApiModelProperty(value = "Some items were not published because price cannot be determined. The price, list price, and sale price are all different, so those items will not be published.")
+
   private Integer PRICE_CANNOT_BE_DETERMINED;
  /**
    * Pinterest couldn&#39;t download your feed.

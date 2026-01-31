@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * An internal role type used on business access, EMPLOYEE, ADMIN.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum Role {
   
   UNKNOWN("UNKNOWN"),
@@ -55,7 +55,7 @@ public enum Role {
   
   RESOURCE_CONVERSION_TAGS_READER("RESOURCE_CONVERSION_TAGS_READER");
 
-  private String value;
+  private final String value;
 
   Role(String value) {
     this.value = value;

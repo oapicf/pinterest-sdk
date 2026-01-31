@@ -265,6 +265,9 @@ ResourcesApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`report_type`) && is.null(`report_type`)) {
+        stop("Invalid value for `report_type` when calling ResourcesApi$DeliveryMetricsGet, `report_type` is not nullable")
+      }
 
       if (!is.null(`report_type`) && !(`report_type` %in% c("SYNC", "ASYNC"))) {
         stop("Invalid value for report_type when calling ResourcesApi$DeliveryMetricsGet. Must be [SYNC, ASYNC].")
@@ -367,10 +370,13 @@ ResourcesApi <- R6::R6Class(
         stop("Missing required parameter `interest_id`.")
       }
 
-      if (nchar(`interest_id`) > 18) {
+      if (!missing(`interest_id`) && is.null(`interest_id`)) {
+        stop("Invalid value for `interest_id` when calling ResourcesApi$InterestTargetingOptionsGet, `interest_id` is not nullable")
+      }
+      if (!is.null(`interest_id`) && nchar(`interest_id`) > 18) {
         stop("Invalid length for `interest_id` when calling ResourcesApi$InterestTargetingOptionsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`interest_id`, "^\\d+$")) {
+      if (!is.null(`interest_id`) && !stringr::str_detect(`interest_id`, "^\\d+$")) {
         stop("Invalid value for `interest_id` when calling ResourcesApi$InterestTargetingOptionsGet, must conform to the pattern ^\\d+$.")
       }
 
@@ -551,7 +557,10 @@ ResourcesApi <- R6::R6Class(
         stop("Missing required parameter `date`.")
       }
 
-      if (!str_detect(`date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
+      if (!missing(`date`) && is.null(`date`)) {
+        stop("Invalid value for `date` when calling ResourcesApi$MetricsReadyStateGet, `date` is not nullable")
+      }
+      if (!is.null(`date`) && !stringr::str_detect(`date`, "^(\\d{4})-(\\d{2})-(\\d{2})$")) {
         stop("Invalid value for `date` when calling ResourcesApi$MetricsReadyStateGet, must conform to the pattern ^(\\d{4})-(\\d{2})-(\\d{2})$.")
       }
 
@@ -661,23 +670,38 @@ ResourcesApi <- R6::R6Class(
         stop("Missing required parameter `targeting_type`.")
       }
 
+      if (!missing(`targeting_type`) && is.null(`targeting_type`)) {
+        stop("Invalid value for `targeting_type` when calling ResourcesApi$TargetingOptionsGet, `targeting_type` is not nullable")
+      }
 
-      if (nchar(`client_id`) > 18) {
+      if (!missing(`client_id`) && is.null(`client_id`)) {
+        stop("Invalid value for `client_id` when calling ResourcesApi$TargetingOptionsGet, `client_id` is not nullable")
+      }
+      if (!is.null(`client_id`) && nchar(`client_id`) > 18) {
         stop("Invalid length for `client_id` when calling ResourcesApi$TargetingOptionsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`client_id`, "^\\d+$")) {
+      if (!is.null(`client_id`) && !stringr::str_detect(`client_id`, "^\\d+$")) {
         stop("Invalid value for `client_id` when calling ResourcesApi$TargetingOptionsGet, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`oauth_signature`) && is.null(`oauth_signature`)) {
+        stop("Invalid value for `oauth_signature` when calling ResourcesApi$TargetingOptionsGet, `oauth_signature` is not nullable")
+      }
 
-      if (!str_detect(`timestamp`, "\\d+")) {
+      if (!missing(`timestamp`) && is.null(`timestamp`)) {
+        stop("Invalid value for `timestamp` when calling ResourcesApi$TargetingOptionsGet, `timestamp` is not nullable")
+      }
+      if (!is.null(`timestamp`) && !stringr::str_detect(`timestamp`, "\\d+")) {
         stop("Invalid value for `timestamp` when calling ResourcesApi$TargetingOptionsGet, must conform to the pattern \\d+.")
       }
 
-      if (nchar(`ad_account_id`) > 18) {
+      if (!missing(`ad_account_id`) && is.null(`ad_account_id`)) {
+        stop("Invalid value for `ad_account_id` when calling ResourcesApi$TargetingOptionsGet, `ad_account_id` is not nullable")
+      }
+      if (!is.null(`ad_account_id`) && nchar(`ad_account_id`) > 18) {
         stop("Invalid length for `ad_account_id` when calling ResourcesApi$TargetingOptionsGet, must be smaller than or equal to 18.")
       }
-      if (!str_detect(`ad_account_id`, "^\\d+$")) {
+      if (!is.null(`ad_account_id`) && !stringr::str_detect(`ad_account_id`, "^\\d+$")) {
         stop("Invalid value for `ad_account_id` when calling ResourcesApi$TargetingOptionsGet, must conform to the pattern ^\\d+$.")
       }
 

@@ -9,10 +9,31 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_order_line
 
 type OrderLineError* = object
   ## 
-  data*: OrderLine
-  errorMessages*: seq[string]
+  data*: Option[OrderLine]
+  errorMessages*: Option[seq[string]]
+
+
+# Custom JSON deserialization for OrderLineError with custom field names
+proc to*(node: JsonNode, T: typedesc[OrderLineError]): OrderLineError =
+  result = OrderLineError()
+  if node.kind == JObject:
+    if node.hasKey("data") and node["data"].kind != JNull:
+      result.data = some(to(node["data"], typeof(result.data.get())))
+    if node.hasKey("error_messages") and node["error_messages"].kind != JNull:
+      result.errorMessages = some(to(node["error_messages"], typeof(result.errorMessages.get())))
+
+# Custom JSON serialization for OrderLineError with custom field names
+proc `%`*(obj: OrderLineError): JsonNode =
+  result = newJObject()
+  if obj.data.isSome():
+    result["data"] = %obj.data.get()
+  if obj.errorMessages.isSome():
+    result["error_messages"] = %obj.errorMessages.get()
+

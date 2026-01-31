@@ -180,14 +180,14 @@ namespace Org.OpenAPITools.Model
 
             if (catalogsProductGroupFilters.CatalogsProductGroupFiltersAnyOfOption.IsSet && catalogsProductGroupFilters.CatalogsProductGroupFiltersAnyOfOption.Value != null)
             {
-                CatalogsProductGroupFiltersAnyOfJsonConverter CatalogsProductGroupFiltersAnyOfJsonConverter = (CatalogsProductGroupFiltersAnyOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsProductGroupFilters.CatalogsProductGroupFiltersAnyOfOption.Value.GetType()));
-                CatalogsProductGroupFiltersAnyOfJsonConverter.WriteProperties(writer, catalogsProductGroupFilters.CatalogsProductGroupFiltersAnyOfOption.Value, jsonSerializerOptions);
+                CatalogsProductGroupFiltersAnyOfJsonConverter catalogsProductGroupFiltersAnyOfJsonConverter = (CatalogsProductGroupFiltersAnyOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsProductGroupFilters.CatalogsProductGroupFiltersAnyOfOption.Value.GetType()));
+                catalogsProductGroupFiltersAnyOfJsonConverter.WriteProperties(writer, catalogsProductGroupFilters.CatalogsProductGroupFiltersAnyOfOption.Value, jsonSerializerOptions);
             }
 
             if (catalogsProductGroupFilters.CatalogsProductGroupFiltersAllOfOption.IsSet && catalogsProductGroupFilters.CatalogsProductGroupFiltersAllOfOption.Value != null)
             {
-                CatalogsProductGroupFiltersAllOfJsonConverter CatalogsProductGroupFiltersAllOfJsonConverter = (CatalogsProductGroupFiltersAllOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsProductGroupFilters.CatalogsProductGroupFiltersAllOfOption.Value.GetType()));
-                CatalogsProductGroupFiltersAllOfJsonConverter.WriteProperties(writer, catalogsProductGroupFilters.CatalogsProductGroupFiltersAllOfOption.Value, jsonSerializerOptions);
+                CatalogsProductGroupFiltersAllOfJsonConverter catalogsProductGroupFiltersAllOfJsonConverter = (CatalogsProductGroupFiltersAllOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(catalogsProductGroupFilters.CatalogsProductGroupFiltersAllOfOption.Value.GetType()));
+                catalogsProductGroupFiltersAllOfJsonConverter.WriteProperties(writer, catalogsProductGroupFilters.CatalogsProductGroupFiltersAllOfOption.Value, jsonSerializerOptions);
             }
 
             WriteProperties(writer, catalogsProductGroupFilters, jsonSerializerOptions);

@@ -163,12 +163,10 @@ namespace Org.OpenAPITools.Model
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "related_term_count":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                relatedTermCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            relatedTermCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "related_terms_list":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                relatedTermsList = new Option<List<RelatedTermsRelatedTermsListInner>?>(JsonSerializer.Deserialize<List<RelatedTermsRelatedTermsListInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            relatedTermsList = new Option<List<RelatedTermsRelatedTermsListInner>?>(JsonSerializer.Deserialize<List<RelatedTermsRelatedTermsListInner>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

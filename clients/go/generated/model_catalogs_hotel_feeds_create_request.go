@@ -50,6 +50,8 @@ func NewCatalogsHotelFeedsCreateRequest(name string, format CatalogsFormat, defa
 	this.DefaultLocale = defaultLocale
 	this.Location = location
 	this.CatalogType = catalogType
+	var status CatalogsStatus = ACTIVE
+	this.Status = &status
 	return &this
 }
 
@@ -58,6 +60,8 @@ func NewCatalogsHotelFeedsCreateRequest(name string, format CatalogsFormat, defa
 // but it doesn't guarantee that properties required by API are set
 func NewCatalogsHotelFeedsCreateRequestWithDefaults() *CatalogsHotelFeedsCreateRequest {
 	this := CatalogsHotelFeedsCreateRequest{}
+	var status CatalogsStatus = ACTIVE
+	this.Status = &status
 	return &this
 }
 

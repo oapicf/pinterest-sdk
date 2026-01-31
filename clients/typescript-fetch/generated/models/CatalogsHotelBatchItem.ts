@@ -21,10 +21,10 @@ import {
     CatalogsUpdatableHotelAttributesToJSONTyped,
 } from './CatalogsUpdatableHotelAttributes';
 
-import { CatalogsCreateHotelItem, CatalogsCreateHotelItemFromJSONTyped, CatalogsCreateHotelItemToJSON, CatalogsCreateHotelItemToJSONTyped } from './CatalogsCreateHotelItem';
-import { CatalogsDeleteHotelItem, CatalogsDeleteHotelItemFromJSONTyped, CatalogsDeleteHotelItemToJSON, CatalogsDeleteHotelItemToJSONTyped } from './CatalogsDeleteHotelItem';
-import { CatalogsUpdateHotelItem, CatalogsUpdateHotelItemFromJSONTyped, CatalogsUpdateHotelItemToJSON, CatalogsUpdateHotelItemToJSONTyped } from './CatalogsUpdateHotelItem';
-import { CatalogsUpsertHotelItem, CatalogsUpsertHotelItemFromJSONTyped, CatalogsUpsertHotelItemToJSON, CatalogsUpsertHotelItemToJSONTyped } from './CatalogsUpsertHotelItem';
+import { type CatalogsCreateHotelItem, CatalogsCreateHotelItemFromJSONTyped, CatalogsCreateHotelItemToJSON, CatalogsCreateHotelItemToJSONTyped } from './CatalogsCreateHotelItem';
+import { type CatalogsDeleteHotelItem, CatalogsDeleteHotelItemFromJSONTyped, CatalogsDeleteHotelItemToJSON, CatalogsDeleteHotelItemToJSONTyped } from './CatalogsDeleteHotelItem';
+import { type CatalogsUpdateHotelItem, CatalogsUpdateHotelItemFromJSONTyped, CatalogsUpdateHotelItemToJSON, CatalogsUpdateHotelItemToJSONTyped } from './CatalogsUpdateHotelItem';
+import { type CatalogsUpsertHotelItem, CatalogsUpsertHotelItemFromJSONTyped, CatalogsUpsertHotelItemToJSON, CatalogsUpsertHotelItemToJSONTyped } from './CatalogsUpsertHotelItem';
 /**
  * Hotel batch item
  * @export
@@ -92,6 +92,7 @@ export function CatalogsHotelBatchItemFromJSONTyped(json: any, ignoreDiscriminat
         if (json['operation'] === 'UPSERT') {
             return CatalogsUpsertHotelItemFromJSONTyped(json, ignoreDiscriminator);
         }
+
     }
     return {
         
@@ -121,7 +122,7 @@ export function CatalogsHotelBatchItemToJSONTyped(value?: CatalogsHotelBatchItem
             case 'UPSERT':
                 return CatalogsUpsertHotelItemToJSONTyped(value as CatalogsUpsertHotelItem, ignoreDiscriminator);
             default:
-                throw new Error(`No variant of CatalogsHotelBatchItem exists with 'operation=${value['operation']}'`);
+                return value;
         }
     }
 

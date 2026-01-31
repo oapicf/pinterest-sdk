@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_placement_group_type
 import model_targeting_spec
@@ -18,8 +20,47 @@ import model_tracking_urls
 type TargetingTemplateCreate* = object
   ## 
   name*: string ## Name of targeting template.
-  autoTargetingEnabled*: bool ## Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
+  autoTargetingEnabled*: Option[bool] ## Enable auto-targeting for ad group. Also known as <a href=\"https://help.pinterest.com/en/business/article/expanded-targeting\" target=\"_blank\">\"expanded targeting\"</a>.
   targetingAttributes*: TargetingSpec
-  placementGroup*: PlacementGroupType
-  keywords*: seq[TargetingTemplateKeyword]
-  trackingUrls*: TrackingUrls
+  placementGroup*: Option[PlacementGroupType]
+  keywords*: Option[seq[TargetingTemplateKeyword]]
+  trackingUrls*: Option[TrackingUrls]
+
+
+# Custom JSON deserialization for TargetingTemplateCreate with custom field names
+proc to*(node: JsonNode, T: typedesc[TargetingTemplateCreate]): TargetingTemplateCreate =
+  result = TargetingTemplateCreate()
+  if node.kind == JObject:
+    if node.hasKey("name"):
+      result.name = to(node["name"], string)
+    if node.hasKey("auto_targeting_enabled") and node["auto_targeting_enabled"].kind != JNull:
+      result.autoTargetingEnabled = some(to(node["auto_targeting_enabled"], typeof(result.autoTargetingEnabled.get())))
+    if node.hasKey("targeting_attributes"):
+      result.targetingAttributes = to(node["targeting_attributes"], TargetingSpec)
+    if node.hasKey("placement_group") and node["placement_group"].kind != JNull:
+      result.placementGroup = some(to(node["placement_group"], typeof(result.placementGroup.get())))
+    if node.hasKey("keywords") and node["keywords"].kind != JNull:
+      # Optional array of types with custom JSON - manually iterate and deserialize
+      let arrayNode = node["keywords"]
+      if arrayNode.kind == JArray:
+        var arr: seq[TargetingTemplateKeyword] = @[]
+        for item in arrayNode.items:
+          arr.add(to(item, TargetingTemplateKeyword))
+        result.keywords = some(arr)
+    if node.hasKey("tracking_urls") and node["tracking_urls"].kind != JNull:
+      result.trackingUrls = some(to(node["tracking_urls"], typeof(result.trackingUrls.get())))
+
+# Custom JSON serialization for TargetingTemplateCreate with custom field names
+proc `%`*(obj: TargetingTemplateCreate): JsonNode =
+  result = newJObject()
+  result["name"] = %obj.name
+  if obj.autoTargetingEnabled.isSome():
+    result["auto_targeting_enabled"] = %obj.autoTargetingEnabled.get()
+  result["targeting_attributes"] = %obj.targetingAttributes
+  if obj.placementGroup.isSome():
+    result["placement_group"] = %obj.placementGroup.get()
+  if obj.keywords.isSome():
+    result["keywords"] = %obj.keywords.get()
+  if obj.trackingUrls.isSome():
+    result["tracking_urls"] = %obj.trackingUrls.get()
+

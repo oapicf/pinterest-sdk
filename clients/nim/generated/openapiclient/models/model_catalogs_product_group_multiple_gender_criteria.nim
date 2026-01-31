@@ -9,10 +9,13 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_gender
 
 type CatalogsProductGroupMultipleGenderCriteria* = object
   ## 
   values*: seq[Gender]
-  negated*: bool
+  negated*: Option[bool]
+

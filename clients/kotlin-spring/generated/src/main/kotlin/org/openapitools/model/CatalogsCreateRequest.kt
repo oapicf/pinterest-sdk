@@ -27,7 +27,7 @@ data class CatalogsCreateRequest(
 
     @Schema(example = "null", required = true, description = "A human-friendly name associated to a given catalog.")
     @get:JsonProperty("name", required = true) val name: kotlin.String
-    ) {
+) {
 
     /**
     * Type of the catalog entity.
@@ -41,7 +41,8 @@ data class CatalogsCreateRequest(
             @JvmStatic
             @JsonCreator
             fun forValue(value: kotlin.String): CatalogType {
-                return values().first{it -> it.value == value}
+                return values().firstOrNull{it -> it.value == value}
+                    ?: throw IllegalArgumentException("Unexpected value '$value' for enum 'CatalogsCreateRequest'")
             }
         }
     }

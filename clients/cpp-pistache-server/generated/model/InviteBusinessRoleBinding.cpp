@@ -21,16 +21,16 @@ namespace org::openapitools::server::model
 
 InviteBusinessRoleBinding::InviteBusinessRoleBinding()
 {
-    m_Created_by_business_id = "";
-    m_Created_by_business_idIsSet = false;
-    m_Created_by_user_id = "";
-    m_Created_by_user_idIsSet = false;
-    m_UserIsSet = false;
     m_Id = "";
     m_IdIsSet = false;
     m_Invite_dataIsSet = false;
     m_Is_received_invite = false;
     m_Is_received_inviteIsSet = false;
+    m_UserIsSet = false;
+    m_Created_by_business_id = "";
+    m_Created_by_business_idIsSet = false;
+    m_Created_by_user_id = "";
+    m_Created_by_user_idIsSet = false;
     
 }
 
@@ -53,7 +53,7 @@ bool InviteBusinessRoleBinding::validate(std::stringstream& msg, const std::stri
     bool success = true;
     const std::string _pathPrefix = pathPrefix.empty() ? "InviteBusinessRoleBinding" : pathPrefix;
 
-                     
+         
     if (idIsSet())
     {
         const std::string& value = m_Id;
@@ -62,7 +62,7 @@ bool InviteBusinessRoleBinding::validate(std::stringstream& msg, const std::stri
         
 
     }
-            
+                        
     return success;
 }
 
@@ -72,22 +72,22 @@ bool InviteBusinessRoleBinding::operator==(const InviteBusinessRoleBinding& rhs)
     
     
     
-    ((!createdByBusinessIdIsSet() && !rhs.createdByBusinessIdIsSet()) || (createdByBusinessIdIsSet() && rhs.createdByBusinessIdIsSet() && getCreatedByBusinessId() == rhs.getCreatedByBusinessId())) &&
-    
-    
-    ((!createdByUserIdIsSet() && !rhs.createdByUserIdIsSet()) || (createdByUserIdIsSet() && rhs.createdByUserIdIsSet() && getCreatedByUserId() == rhs.getCreatedByUserId())) &&
-    
-    
-    ((!userIsSet() && !rhs.userIsSet()) || (userIsSet() && rhs.userIsSet() && getUser() == rhs.getUser())) &&
-    
-    
     ((!idIsSet() && !rhs.idIsSet()) || (idIsSet() && rhs.idIsSet() && getId() == rhs.getId())) &&
     
     
     ((!inviteDataIsSet() && !rhs.inviteDataIsSet()) || (inviteDataIsSet() && rhs.inviteDataIsSet() && getInviteData() == rhs.getInviteData())) &&
     
     
-    ((!isReceivedInviteIsSet() && !rhs.isReceivedInviteIsSet()) || (isReceivedInviteIsSet() && rhs.isReceivedInviteIsSet() && isIsReceivedInvite() == rhs.isIsReceivedInvite()))
+    ((!isReceivedInviteIsSet() && !rhs.isReceivedInviteIsSet()) || (isReceivedInviteIsSet() && rhs.isReceivedInviteIsSet() && isIsReceivedInvite() == rhs.isIsReceivedInvite())) &&
+    
+    
+    ((!userIsSet() && !rhs.userIsSet()) || (userIsSet() && rhs.userIsSet() && getUser() == rhs.getUser())) &&
+    
+    
+    ((!createdByBusinessIdIsSet() && !rhs.createdByBusinessIdIsSet()) || (createdByBusinessIdIsSet() && rhs.createdByBusinessIdIsSet() && getCreatedByBusinessId() == rhs.getCreatedByBusinessId())) &&
+    
+    
+    ((!createdByUserIdIsSet() && !rhs.createdByUserIdIsSet()) || (createdByUserIdIsSet() && rhs.createdByUserIdIsSet() && getCreatedByUserId() == rhs.getCreatedByUserId()))
     
     ;
 }
@@ -100,38 +100,23 @@ bool InviteBusinessRoleBinding::operator!=(const InviteBusinessRoleBinding& rhs)
 void to_json(nlohmann::json& j, const InviteBusinessRoleBinding& o)
 {
     j = nlohmann::json::object();
-    if(o.createdByBusinessIdIsSet())
-        j["created_by_business_id"] = o.m_Created_by_business_id;
-    if(o.createdByUserIdIsSet())
-        j["created_by_user_id"] = o.m_Created_by_user_id;
-    if(o.userIsSet())
-        j["user"] = o.m_User;
     if(o.idIsSet())
         j["id"] = o.m_Id;
     if(o.inviteDataIsSet())
         j["invite_data"] = o.m_Invite_data;
     if(o.isReceivedInviteIsSet())
         j["is_received_invite"] = o.m_Is_received_invite;
+    if(o.userIsSet())
+        j["user"] = o.m_User;
+    if(o.createdByBusinessIdIsSet())
+        j["created_by_business_id"] = o.m_Created_by_business_id;
+    if(o.createdByUserIdIsSet())
+        j["created_by_user_id"] = o.m_Created_by_user_id;
     
 }
 
 void from_json(const nlohmann::json& j, InviteBusinessRoleBinding& o)
 {
-    if(j.find("created_by_business_id") != j.end())
-    {
-        j.at("created_by_business_id").get_to(o.m_Created_by_business_id);
-        o.m_Created_by_business_idIsSet = true;
-    } 
-    if(j.find("created_by_user_id") != j.end())
-    {
-        j.at("created_by_user_id").get_to(o.m_Created_by_user_id);
-        o.m_Created_by_user_idIsSet = true;
-    } 
-    if(j.find("user") != j.end())
-    {
-        j.at("user").get_to(o.m_User);
-        o.m_UserIsSet = true;
-    } 
     if(j.find("id") != j.end())
     {
         j.at("id").get_to(o.m_Id);
@@ -147,60 +132,24 @@ void from_json(const nlohmann::json& j, InviteBusinessRoleBinding& o)
         j.at("is_received_invite").get_to(o.m_Is_received_invite);
         o.m_Is_received_inviteIsSet = true;
     } 
+    if(j.find("user") != j.end())
+    {
+        j.at("user").get_to(o.m_User);
+        o.m_UserIsSet = true;
+    } 
+    if(j.find("created_by_business_id") != j.end())
+    {
+        j.at("created_by_business_id").get_to(o.m_Created_by_business_id);
+        o.m_Created_by_business_idIsSet = true;
+    } 
+    if(j.find("created_by_user_id") != j.end())
+    {
+        j.at("created_by_user_id").get_to(o.m_Created_by_user_id);
+        o.m_Created_by_user_idIsSet = true;
+    } 
     
 }
 
-std::string InviteBusinessRoleBinding::getCreatedByBusinessId() const
-{
-    return m_Created_by_business_id;
-}
-void InviteBusinessRoleBinding::setCreatedByBusinessId(std::string const& value)
-{
-    m_Created_by_business_id = value;
-    m_Created_by_business_idIsSet = true;
-}
-bool InviteBusinessRoleBinding::createdByBusinessIdIsSet() const
-{
-    return m_Created_by_business_idIsSet;
-}
-void InviteBusinessRoleBinding::unsetCreated_by_business_id()
-{
-    m_Created_by_business_idIsSet = false;
-}
-std::string InviteBusinessRoleBinding::getCreatedByUserId() const
-{
-    return m_Created_by_user_id;
-}
-void InviteBusinessRoleBinding::setCreatedByUserId(std::string const& value)
-{
-    m_Created_by_user_id = value;
-    m_Created_by_user_idIsSet = true;
-}
-bool InviteBusinessRoleBinding::createdByUserIdIsSet() const
-{
-    return m_Created_by_user_idIsSet;
-}
-void InviteBusinessRoleBinding::unsetCreated_by_user_id()
-{
-    m_Created_by_user_idIsSet = false;
-}
-org::openapitools::server::model::BusinessAccessUserSummary InviteBusinessRoleBinding::getUser() const
-{
-    return m_User;
-}
-void InviteBusinessRoleBinding::setUser(org::openapitools::server::model::BusinessAccessUserSummary const& value)
-{
-    m_User = value;
-    m_UserIsSet = true;
-}
-bool InviteBusinessRoleBinding::userIsSet() const
-{
-    return m_UserIsSet;
-}
-void InviteBusinessRoleBinding::unsetUser()
-{
-    m_UserIsSet = false;
-}
 std::string InviteBusinessRoleBinding::getId() const
 {
     return m_Id;
@@ -251,6 +200,57 @@ bool InviteBusinessRoleBinding::isReceivedInviteIsSet() const
 void InviteBusinessRoleBinding::unsetIs_received_invite()
 {
     m_Is_received_inviteIsSet = false;
+}
+nlohmann::json InviteBusinessRoleBinding::getUser() const
+{
+    return m_User;
+}
+void InviteBusinessRoleBinding::setUser(nlohmann::json const& value)
+{
+    m_User = value;
+    m_UserIsSet = true;
+}
+bool InviteBusinessRoleBinding::userIsSet() const
+{
+    return m_UserIsSet;
+}
+void InviteBusinessRoleBinding::unsetUser()
+{
+    m_UserIsSet = false;
+}
+std::string InviteBusinessRoleBinding::getCreatedByBusinessId() const
+{
+    return m_Created_by_business_id;
+}
+void InviteBusinessRoleBinding::setCreatedByBusinessId(std::string const& value)
+{
+    m_Created_by_business_id = value;
+    m_Created_by_business_idIsSet = true;
+}
+bool InviteBusinessRoleBinding::createdByBusinessIdIsSet() const
+{
+    return m_Created_by_business_idIsSet;
+}
+void InviteBusinessRoleBinding::unsetCreated_by_business_id()
+{
+    m_Created_by_business_idIsSet = false;
+}
+std::string InviteBusinessRoleBinding::getCreatedByUserId() const
+{
+    return m_Created_by_user_id;
+}
+void InviteBusinessRoleBinding::setCreatedByUserId(std::string const& value)
+{
+    m_Created_by_user_id = value;
+    m_Created_by_user_idIsSet = true;
+}
+bool InviteBusinessRoleBinding::createdByUserIdIsSet() const
+{
+    return m_Created_by_user_idIsSet;
+}
+void InviteBusinessRoleBinding::unsetCreated_by_user_id()
+{
+    m_Created_by_user_idIsSet = false;
 }
 
 

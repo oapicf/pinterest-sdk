@@ -67,7 +67,7 @@ data class ConversionEventsDataInnerCustomData(
 
     @Schema(example = "ss-company", description = "Named partner. Not required, this is for Pinterest internal use only. Please do not use this unless specifically guided.")
     @get:JsonProperty("np") val np: kotlin.String? = null
-    ) {
+) {
 
 }
 

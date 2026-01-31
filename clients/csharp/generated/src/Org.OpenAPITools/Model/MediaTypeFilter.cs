@@ -114,8 +114,7 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "MEDIA_TYPE":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                mEDIATYPE = new Option<CatalogsProductGroupMultipleMediaTypesCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleMediaTypesCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            mEDIATYPE = new Option<CatalogsProductGroupMultipleMediaTypesCriteria?>(JsonSerializer.Deserialize<CatalogsProductGroupMultipleMediaTypesCriteria>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

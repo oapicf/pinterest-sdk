@@ -6,45 +6,45 @@
   "fields": [
     {
       "name": "aem_enabled",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "Whether Automatic Enhanced Match email is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.",
-      "default": null
+      "default": false
     },
     {
       "name": "md_frequency",
-      "type": ["null", "double"],
+      "type": ["double", "null"],
       "doc": "Metadata ingestion frequency.",
-      "default": null
+      "default": 1
     },
     {
       "name": "aem_fnln_enabled",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "Whether Automatic Enhanced Match name is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.",
-      "default": null
+      "default": false
     },
     {
       "name": "aem_ph_enabled",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "Whether Automatic Enhanced Match phone is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.",
-      "default": null
+      "default": false
     },
     {
       "name": "aem_ge_enabled",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "Whether Automatic Enhanced Match gender is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.",
-      "default": null
+      "default": false
     },
     {
       "name": "aem_db_enabled",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "Whether Automatic Enhanced Match birthdate is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.",
-      "default": null
+      "default": false
     },
     {
       "name": "aem_loc_enabled",
-      "type": ["null", "boolean"],
+      "type": ["boolean", "null"],
       "doc": "Whether Automatic Enhanced Match location is enabled. See <a href=\"https://help.pinterest.com/en/business/article/enhanced-match\" target=\"_blank\">Enhanced match</a> for more information.",
-      "default": null
+      "default": false
     }
   ]
 

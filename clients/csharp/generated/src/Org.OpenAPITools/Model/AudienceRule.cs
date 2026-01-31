@@ -517,8 +517,7 @@ namespace Org.OpenAPITools.Model
                             customerListId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "engagement_domain":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                engagementDomain = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            engagementDomain = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "engagement_type":
                             engagementType = new Option<string?>(utf8JsonReader.GetString()!);
@@ -527,59 +526,46 @@ namespace Org.OpenAPITools.Model
                             varEvent = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "event_data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                eventData = new Option<PinterestTagEventData?>(JsonSerializer.Deserialize<PinterestTagEventData>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            eventData = new Option<PinterestTagEventData?>(JsonSerializer.Deserialize<PinterestTagEventData>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "percentage":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                percentage = new Option<int?>(utf8JsonReader.GetInt32());
+                            percentage = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "pin_id":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pinId = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            pinId = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "prefill":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                prefill = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            prefill = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "retention_days":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                retentionDays = new Option<int?>(utf8JsonReader.GetInt32());
+                            retentionDays = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "seed_id":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                seedId = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            seedId = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "url":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                url = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            url = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "visitor_source_id":
                             visitorSourceId = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "event_source":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                eventSource = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            eventSource = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ingestion_source":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ingestionSource = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            ingestionSource = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "engager_type":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                engagerType = new Option<int?>(utf8JsonReader.GetInt32());
+                            engagerType = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "campaign_id":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                campaignId = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            campaignId = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ad_id":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                adId = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            adId = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "objective_type":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                objectiveType = new Option<List<ObjectiveType>?>(JsonSerializer.Deserialize<List<ObjectiveType>>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            objectiveType = new Option<List<ObjectiveType>?>(JsonSerializer.Deserialize<List<ObjectiveType>>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ad_account_id":
                             adAccountId = new Option<string?>(utf8JsonReader.GetString()!);

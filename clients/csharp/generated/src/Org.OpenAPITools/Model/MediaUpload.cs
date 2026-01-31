@@ -186,8 +186,7 @@ namespace Org.OpenAPITools.Model
                             uploadUrl = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "upload_parameters":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                uploadParameters = new Option<MediaUploadAllOfUploadParameters?>(JsonSerializer.Deserialize<MediaUploadAllOfUploadParameters>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            uploadParameters = new Option<MediaUploadAllOfUploadParameters?>(JsonSerializer.Deserialize<MediaUploadAllOfUploadParameters>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

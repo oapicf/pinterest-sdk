@@ -55,7 +55,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Request for creation of entities in bulk.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class BulkUpsertRequestCreate {
   public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
@@ -272,15 +272,10 @@ public class BulkUpsertRequestCreate {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("campaigns");
-    openapiFields.add("ad_groups");
-    openapiFields.add("ads");
-    openapiFields.add("product_groups");
-    openapiFields.add("keywords");
+    openapiFields = new HashSet<String>(Arrays.asList("campaigns", "ad_groups", "ads", "product_groups", "keywords"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -292,7 +287,7 @@ public class BulkUpsertRequestCreate {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!BulkUpsertRequestCreate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in BulkUpsertRequestCreate is not found in the empty JSON string", BulkUpsertRequestCreate.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in BulkUpsertRequestCreate is not found in the empty JSON string", BulkUpsertRequestCreate.openapiRequiredFields.toString()));
         }
       }
 
@@ -300,7 +295,7 @@ public class BulkUpsertRequestCreate {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!BulkUpsertRequestCreate.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BulkUpsertRequestCreate` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The field `%s` in the JSON string is not defined in the `BulkUpsertRequestCreate` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -309,7 +304,7 @@ public class BulkUpsertRequestCreate {
         if (jsonArraycampaigns != null) {
           // ensure the json data is an array
           if (!jsonObj.get("campaigns").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `campaigns` to be an array in the JSON string but got `%s`", jsonObj.get("campaigns").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `campaigns` to be an array in the JSON string but got `%s`", jsonObj.get("campaigns").toString()));
           }
 
           // validate the optional field `campaigns` (array)
@@ -323,7 +318,7 @@ public class BulkUpsertRequestCreate {
         if (jsonArrayadGroups != null) {
           // ensure the json data is an array
           if (!jsonObj.get("ad_groups").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `ad_groups` to be an array in the JSON string but got `%s`", jsonObj.get("ad_groups").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ad_groups` to be an array in the JSON string but got `%s`", jsonObj.get("ad_groups").toString()));
           }
 
           // validate the optional field `ad_groups` (array)
@@ -337,7 +332,7 @@ public class BulkUpsertRequestCreate {
         if (jsonArrayads != null) {
           // ensure the json data is an array
           if (!jsonObj.get("ads").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `ads` to be an array in the JSON string but got `%s`", jsonObj.get("ads").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `ads` to be an array in the JSON string but got `%s`", jsonObj.get("ads").toString()));
           }
 
           // validate the optional field `ads` (array)
@@ -351,7 +346,7 @@ public class BulkUpsertRequestCreate {
         if (jsonArrayproductGroups != null) {
           // ensure the json data is an array
           if (!jsonObj.get("product_groups").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `product_groups` to be an array in the JSON string but got `%s`", jsonObj.get("product_groups").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `product_groups` to be an array in the JSON string but got `%s`", jsonObj.get("product_groups").toString()));
           }
 
           // validate the optional field `product_groups` (array)
@@ -365,7 +360,7 @@ public class BulkUpsertRequestCreate {
         if (jsonArraykeywords != null) {
           // ensure the json data is an array
           if (!jsonObj.get("keywords").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `keywords` to be an array in the JSON string but got `%s`", jsonObj.get("keywords").toString()));
+            throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "Expected the field `keywords` to be an array in the JSON string but got `%s`", jsonObj.get("keywords").toString()));
           }
 
           // validate the optional field `keywords` (array)

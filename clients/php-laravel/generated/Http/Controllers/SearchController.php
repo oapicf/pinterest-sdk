@@ -93,12 +93,8 @@ class SearchController extends Controller
 
         $limit = $request->integer('limit');
 
-        try {
-            $apiResult = $this->api->searchPartnerPins($term, $countryCode, $bookmark, $locale, $limit);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->searchPartnerPins($term, $countryCode, $bookmark, $locale, $limit);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SearchPartnerPins200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -163,12 +159,8 @@ class SearchController extends Controller
 
         $query = $request->string('query')->value();
 
-        try {
-            $apiResult = $this->api->searchUserBoardsGet($adAccountId, $bookmark, $pageSize, $query);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->searchUserBoardsGet($adAccountId, $bookmark, $pageSize, $query);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SearchUserBoardsGet200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -223,12 +215,8 @@ class SearchController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->searchUserPinsList($query, $adAccountId, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->searchUserPinsList($query, $adAccountId, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\PinsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

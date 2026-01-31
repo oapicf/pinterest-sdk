@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Gets or Sets CatalogsItemValidationIssue
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public enum CatalogsItemValidationIssue {
   
   AD_LINK_FORMAT_WARNING("AD_LINK_FORMAT_WARNING"),
@@ -157,7 +157,7 @@ public enum CatalogsItemValidationIssue {
   
   WEIGHT_UNIT_INVALID("WEIGHT_UNIT_INVALID");
 
-  private String value;
+  private final String value;
 
   CatalogsItemValidationIssue(String value) {
     this.value = value;

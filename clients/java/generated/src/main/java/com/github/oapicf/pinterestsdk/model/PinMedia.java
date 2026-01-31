@@ -48,7 +48,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Pin media objects.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-05-10T05:38:42.745346573Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-01-26T05:35:30.063452770Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class PinMedia {
   public static final String SERIALIZED_NAME_MEDIA_TYPE = "media_type";
   @SerializedName(SERIALIZED_NAME_MEDIA_TYPE)
@@ -122,11 +122,10 @@ public class PinMedia {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("media_type");
+    openapiFields = new HashSet<String>(Arrays.asList("media_type"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
@@ -138,7 +137,7 @@ public class PinMedia {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PinMedia.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PinMedia is not found in the empty JSON string", PinMedia.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The required field(s) %s in PinMedia is not found in the empty JSON string", PinMedia.openapiRequiredFields.toString()));
         }
       }
 
@@ -160,7 +159,7 @@ public class PinMedia {
           PinMediaWithVideo.validateJsonElement(jsonElement);
           break;
         default:
-          throw new IllegalArgumentException(String.format("The value of the `media_type` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
+          throw new IllegalArgumentException(String.format(java.util.Locale.ROOT, "The value of the `media_type` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }
 

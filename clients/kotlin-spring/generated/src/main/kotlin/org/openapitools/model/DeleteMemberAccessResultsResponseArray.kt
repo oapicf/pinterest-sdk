@@ -23,7 +23,7 @@ data class DeleteMemberAccessResultsResponseArray(
     @field:Valid
     @Schema(example = "null", description = "List of member asset permissions that were deleted.")
     @get:JsonProperty("items") val items: kotlin.collections.List<DeleteMemberAccessResult>? = null
-    ) {
+) {
 
 }
 

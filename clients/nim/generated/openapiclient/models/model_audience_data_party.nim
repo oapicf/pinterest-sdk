@@ -9,7 +9,33 @@
 
 import json
 import tables
+import marshal
+import options
 
 
-type AudienceDataParty* = object
-  ## Whether the data is owned by the partner (1p) or by the data provider (3p)
+type AudienceDataParty* {.pure.} = enum
+  `1p`
+  `3p`
+
+func `%`*(v: AudienceDataParty): JsonNode =
+  result = case v:
+    of AudienceDataParty.`1p`: %"1p"
+    of AudienceDataParty.`3p`: %"3p"
+
+func `$`*(v: AudienceDataParty): string =
+  result = case v:
+    of AudienceDataParty.`1p`: $("1p")
+    of AudienceDataParty.`3p`: $("3p")
+
+proc to*(node: JsonNode, T: typedesc[AudienceDataParty]): AudienceDataParty =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum AudienceDataParty, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("1p"):
+    return AudienceDataParty.`1p`
+  of $("3p"):
+    return AudienceDataParty.`3p`
+  else:
+    raise newException(ValueError, "Invalid enum value for AudienceDataParty: " & strVal)
+

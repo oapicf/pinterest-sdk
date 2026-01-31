@@ -75,7 +75,7 @@ data class CatalogsFeedsCreateRequest (
     val defaultAvailability: ProductAvailabilityType? = null,
 
     @Json(name = "status")
-    val status: CatalogsStatus? = null
+    val status: CatalogsStatus? = "ACTIVE"
 
 ) {
 

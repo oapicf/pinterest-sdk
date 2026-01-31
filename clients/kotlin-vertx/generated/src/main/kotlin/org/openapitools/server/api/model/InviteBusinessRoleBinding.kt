@@ -12,35 +12,34 @@
 package org.openapitools.server.api.model
 
 import org.openapitools.server.api.model.BaseInviteDataResponseInviteData
-import org.openapitools.server.api.model.BusinessAccessUserSummary
 
         
 import com.google.gson.annotations.SerializedName
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 /**
- * An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.
- * @param createdByBusinessId Unique identifier for the business that created the invite/request.
- * @param createdByUserId Unique identifier for the user that created the invite/request.
- * @param user Metadata for the user that updated the invite/request.
+ * 
  * @param id Unique identifier of the invite/request.
  * @param inviteData 
  * @param isReceivedInvite Indicates whether the invite/request was received.
+ * @param user Metadata for the user that updated the invite/request.
+ * @param createdByBusinessId Unique identifier for the business that created the invite/request.
+ * @param createdByUserId Unique identifier for the user that created the invite/request.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class InviteBusinessRoleBinding (
-    /* Unique identifier for the business that created the invite/request. */
-    val createdByBusinessId: kotlin.String? = null,
-    /* Unique identifier for the user that created the invite/request. */
-    val createdByUserId: kotlin.String? = null,
-    /* Metadata for the user that updated the invite/request. */
-    val user: BusinessAccessUserSummary? = null,
     /* Unique identifier of the invite/request. */
     val id: kotlin.String? = null,
     val inviteData: BaseInviteDataResponseInviteData? = null,
     /* Indicates whether the invite/request was received. */
-    val isReceivedInvite: kotlin.Boolean? = null
+    val isReceivedInvite: kotlin.Boolean? = null,
+    /* Metadata for the user that updated the invite/request. */
+    val user: kotlin.Any? = null,
+    /* Unique identifier for the business that created the invite/request. */
+    val createdByBusinessId: kotlin.String? = null,
+    /* Unique identifier for the user that created the invite/request. */
+    val createdByUserId: kotlin.String? = null
 ) {
 
 }

@@ -16,13 +16,6 @@ Please update as you see appropriate
 describe("conversion_tag_create", function()
   local openapiclient_conversion_tag_create = require "openapiclient.model.conversion_tag_create"
 
-  -- unit tests for the property 'name'
-  describe("property name test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for the property 'aem_enabled'
   describe("property aem_enabled test", function()
     it("should work", function()
@@ -67,6 +60,13 @@ describe("conversion_tag_create", function()
 
   -- unit tests for the property 'aem_loc_enabled'
   describe("property aem_loc_enabled test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'name'
+  describe("property name test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

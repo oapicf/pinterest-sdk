@@ -19,7 +19,8 @@ type CatalogsItemsRequest struct {
 
 	Country Country `json:"country"`
 
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 
 	Filters CatalogsItemsPostFilters `json:"filters"`
 }
@@ -37,7 +38,7 @@ func AssertCatalogsItemsRequestRequired(obj CatalogsItemsRequest) error {
 		}
 	}
 
-	if err := AssertCatalogsItemsRequestLanguageRequired(obj.Language); err != nil {
+	if err := AssertstringRequired(obj.Language); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemsPostFiltersRequired(obj.Filters); err != nil {
@@ -48,7 +49,7 @@ func AssertCatalogsItemsRequestRequired(obj CatalogsItemsRequest) error {
 
 // AssertCatalogsItemsRequestConstraints checks if the values respects the defined constraints
 func AssertCatalogsItemsRequestConstraints(obj CatalogsItemsRequest) error {
-	if err := AssertCatalogsItemsRequestLanguageConstraints(obj.Language); err != nil {
+	if err := AssertstringConstraints(obj.Language); err != nil {
 		return err
 	}
 	if err := AssertCatalogsItemsPostFiltersConstraints(obj.Filters); err != nil {

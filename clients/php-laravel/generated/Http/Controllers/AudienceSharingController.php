@@ -96,12 +96,8 @@ class AudienceSharingController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->adAccountsAudiencesSharedAccountsList($adAccountId, $audienceId, $accountType, $pageSize, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->adAccountsAudiencesSharedAccountsList($adAccountId, $audienceId, $accountType, $pageSize, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdAccountsAudiencesSharedAccountsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -179,12 +175,8 @@ class AudienceSharingController extends Controller
 
         $bookmark = $request->string('bookmark')->value();
 
-        try {
-            $apiResult = $this->api->businessAccountAudiencesSharedAccountsList($businessId, $audienceId, $accountType, $pageSize, $bookmark);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->businessAccountAudiencesSharedAccountsList($businessId, $audienceId, $accountType, $pageSize, $bookmark);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AdAccountsAudiencesSharedAccountsList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -253,12 +245,8 @@ class AudienceSharingController extends Controller
 
         $pageSize = $request->integer('pageSize');
 
-        try {
-            $apiResult = $this->api->sharedAudiencesForBusinessList($businessId, $bookmark, $order, $pageSize);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->sharedAudiencesForBusinessList($businessId, $bookmark, $order, $pageSize);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\AudiencesList200Response) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -302,12 +290,8 @@ class AudienceSharingController extends Controller
 
         $sharedAudience = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SharedAudience::class);
 
-        try {
-            $apiResult = $this->api->updateAdAccountToAdAccountSharedAudience($adAccountId, $sharedAudience);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->updateAdAccountToAdAccountSharedAudience($adAccountId, $sharedAudience);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SharedAudienceResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -351,12 +335,8 @@ class AudienceSharingController extends Controller
 
         $businessSharedAudience = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BusinessSharedAudience::class);
 
-        try {
-            $apiResult = $this->api->updateAdAccountToBusinessSharedAudience($adAccountId, $businessSharedAudience);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->updateAdAccountToBusinessSharedAudience($adAccountId, $businessSharedAudience);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BusinessSharedAudienceResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -400,12 +380,8 @@ class AudienceSharingController extends Controller
 
         $sharedAudience = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\SharedAudience::class);
 
-        try {
-            $apiResult = $this->api->updateBusinessToAdAccountSharedAudience($businessId, $sharedAudience);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->updateBusinessToAdAccountSharedAudience($businessId, $sharedAudience);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\SharedAudienceResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);
@@ -449,12 +425,8 @@ class AudienceSharingController extends Controller
 
         $businessSharedAudience = $this->serde->deserialize($request->getContent(), from: 'json', to: \OpenAPI\Server\Model\BusinessSharedAudience::class);
 
-        try {
-            $apiResult = $this->api->updateBusinessToBusinessSharedAudience($businessId, $businessSharedAudience);
-        } catch (\Exception $exception) {
-            // This shouldn't happen
-            return response()->json(['error' => $exception->getMessage()], 500);
-        }
+
+        $apiResult = $this->api->updateBusinessToBusinessSharedAudience($businessId, $businessSharedAudience);
 
         if ($apiResult instanceof \OpenAPI\Server\Model\BusinessSharedAudienceResponse) {
             return response()->json($this->serde->serialize($apiResult, format: 'array'), 200);

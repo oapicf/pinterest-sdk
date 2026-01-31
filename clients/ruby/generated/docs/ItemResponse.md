@@ -6,9 +6,11 @@
 | ---- | ---- | ----------- | ----- |
 | **catalog_type** | [**CatalogsType**](CatalogsType.md) |  |  |
 | **item_id** | **String** | The catalog item id in the merchant namespace | [optional] |
-| **errors** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] |
+| **pins** | [**Array&lt;Pin&gt;**](Pin.md) | The pins mapped to the item | [optional] |
+| **attributes** | [**CatalogsCreativeAssetsAttributes**](CatalogsCreativeAssetsAttributes.md) |  | [optional] |
 | **hotel_id** | **String** | The catalog hotel id in the merchant namespace | [optional] |
 | **creative_assets_id** | **String** | The catalog creative assets id in the merchant namespace | [optional] |
+| **errors** | [**Array&lt;ItemValidationEvent&gt;**](ItemValidationEvent.md) | Array with the errors for the item id requested | [optional] |
 
 ## Example
 
@@ -18,9 +20,11 @@ require 'pinterest_sdk'
 instance = PinterestSdkClient::ItemResponse.new(
   catalog_type: null,
   item_id: DS0294-M,
-  errors: null,
+  pins: null,
+  attributes: null,
   hotel_id: DS0294-M,
-  creative_assets_id: DS0294-M
+  creative_assets_id: DS0294-M,
+  errors: null
 )
 ```
 

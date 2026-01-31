@@ -38,14 +38,10 @@ import javax.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsCreateHotelItem.class, name = "CREATE"),
   @JsonSubTypes.Type(value = CatalogsDeleteHotelItem.class, name = "DELETE"),
   @JsonSubTypes.Type(value = CatalogsUpdateHotelItem.class, name = "UPDATE"),
-  @JsonSubTypes.Type(value = CatalogsUpsertHotelItem.class, name = "UPSERT"),
-  @JsonSubTypes.Type(value = CatalogsCreateHotelItem.class, name = "CatalogsCreateHotelItem"),
-  @JsonSubTypes.Type(value = CatalogsDeleteHotelItem.class, name = "CatalogsDeleteHotelItem"),
-  @JsonSubTypes.Type(value = CatalogsUpdateHotelItem.class, name = "CatalogsUpdateHotelItem"),
-  @JsonSubTypes.Type(value = CatalogsUpsertHotelItem.class, name = "CatalogsUpsertHotelItem")
+  @JsonSubTypes.Type(value = CatalogsUpsertHotelItem.class, name = "UPSERT")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CatalogsHotelBatchItem {
 
   private String hotelId;
@@ -56,7 +52,7 @@ public class CatalogsHotelBatchItem {
   public enum OperationEnum {
     DELETE("DELETE");
 
-    private String value;
+    private final String value;
 
     OperationEnum(String value) {
       this.value = value;

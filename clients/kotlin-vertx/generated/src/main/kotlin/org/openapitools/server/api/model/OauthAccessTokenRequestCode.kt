@@ -17,17 +17,17 @@ import com.google.gson.annotations.SerializedName
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 /**
- * A request to exchange an authorization code for an access token.
- * @param grantType 
+ * 
  * @param code 
  * @param redirectUri 
+ * @param grantType 
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class OauthAccessTokenRequestCode (
-    @SerializedName("grantType") private val _grantType: OauthAccessTokenRequestCode.GrantType?,
     @SerializedName("code") private val _code: kotlin.String?,
-    @SerializedName("redirectUri") private val _redirectUri: kotlin.String?
+    @SerializedName("redirectUri") private val _redirectUri: kotlin.String?,
+    @SerializedName("grantType") private val _grantType: OauthAccessTokenRequestCode.GrantType?
 ) {
 
     /**
@@ -44,11 +44,11 @@ data class OauthAccessTokenRequestCode (
     
     }
 
-        val grantType get() = _grantType ?: throw IllegalArgumentException("grantType is required")
-                    
         val code get() = _code ?: throw IllegalArgumentException("code is required")
                     
         val redirectUri get() = _redirectUri ?: throw IllegalArgumentException("redirectUri is required")
+                    
+        val grantType get() = _grantType ?: throw IllegalArgumentException("grantType is required")
                     
 }
 

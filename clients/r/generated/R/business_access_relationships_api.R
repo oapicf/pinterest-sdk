@@ -202,16 +202,22 @@ BusinessAccessRelationshipsApi <- R6::R6Class(
         stop("Missing required parameter `members_to_delete_body`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessRelationshipsApi$DeleteBusinessMembership, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessRelationshipsApi$DeleteBusinessMembership, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessRelationshipsApi$DeleteBusinessMembership, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessRelationshipsApi$DeleteBusinessMembership, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`members_to_delete_body`) && is.null(`members_to_delete_body`)) {
+        stop("Invalid value for `members_to_delete_body` when calling BusinessAccessRelationshipsApi$DeleteBusinessMembership, `members_to_delete_body` is not nullable")
+      }
 
       if (!is.null(`members_to_delete_body`)) {
         local_var_body <- `members_to_delete_body`$toJSONString()
@@ -325,16 +331,22 @@ BusinessAccessRelationshipsApi <- R6::R6Class(
         stop("Missing required parameter `delete_partners_request`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessRelationshipsApi$DeleteBusinessPartners, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessRelationshipsApi$DeleteBusinessPartners, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessRelationshipsApi$DeleteBusinessPartners, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessRelationshipsApi$DeleteBusinessPartners, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`delete_partners_request`) && is.null(`delete_partners_request`)) {
+        stop("Invalid value for `delete_partners_request` when calling BusinessAccessRelationshipsApi$DeleteBusinessPartners, `delete_partners_request` is not nullable")
+      }
 
       if (!is.null(`delete_partners_request`)) {
         local_var_body <- `delete_partners_request`$toJSONString()
@@ -440,13 +452,19 @@ BusinessAccessRelationshipsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BusinessAccessRelationshipsApi$GetBusinessEmployers, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BusinessAccessRelationshipsApi$GetBusinessEmployers, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BusinessAccessRelationshipsApi$GetBusinessEmployers, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BusinessAccessRelationshipsApi$GetBusinessEmployers, `bookmark` is not nullable")
+      }
 
       query_params[["page_size"]] <- `page_size`
 
@@ -560,31 +578,52 @@ BusinessAccessRelationshipsApi <- R6::R6Class(
         stop("Missing required parameter `business_id`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`assets_summary`) && is.null(`assets_summary`)) {
+        stop("Invalid value for `assets_summary` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, `assets_summary` is not nullable")
+      }
 
+      if (!missing(`business_roles`) && is.null(`business_roles`)) {
+        stop("Invalid value for `business_roles` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, `business_roles` is not nullable")
+      }
 
-      if (nchar(`member_ids`) > 500) {
+      if (!missing(`member_ids`) && is.null(`member_ids`)) {
+        stop("Invalid value for `member_ids` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, `member_ids` is not nullable")
+      }
+      if (!is.null(`member_ids`) && nchar(`member_ids`) > 500) {
         stop("Invalid length for `member_ids` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, must be smaller than or equal to 500.")
       }
 
-      if (`start_index` < 0) {
+      if (!missing(`start_index`) && is.null(`start_index`)) {
+        stop("Invalid value for `start_index` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, `start_index` is not nullable")
+      }
+      if (!is.null(`start_index`) && `start_index` <  0) {
         stop("Invalid value for `start_index` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, must be bigger than or equal to 0.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, `bookmark` is not nullable")
+      }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BusinessAccessRelationshipsApi$GetBusinessMembers, must be bigger than or equal to 1.")
       }
 
@@ -715,33 +754,54 @@ BusinessAccessRelationshipsApi <- R6::R6Class(
         stop("Missing required parameter `business_id`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, must conform to the pattern ^\\d+$.")
       }
 
+      if (!missing(`assets_summary`) && is.null(`assets_summary`)) {
+        stop("Invalid value for `assets_summary` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, `assets_summary` is not nullable")
+      }
 
+      if (!missing(`partner_type`) && is.null(`partner_type`)) {
+        stop("Invalid value for `partner_type` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, `partner_type` is not nullable")
+      }
 
-      if (nchar(`partner_ids`) > 500) {
+      if (!missing(`partner_ids`) && is.null(`partner_ids`)) {
+        stop("Invalid value for `partner_ids` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, `partner_ids` is not nullable")
+      }
+      if (!is.null(`partner_ids`) && nchar(`partner_ids`) > 500) {
         stop("Invalid length for `partner_ids` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, must be smaller than or equal to 500.")
       }
 
-      if (`start_index` < 0) {
+      if (!missing(`start_index`) && is.null(`start_index`)) {
+        stop("Invalid value for `start_index` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, `start_index` is not nullable")
+      }
+      if (!is.null(`start_index`) && `start_index` <  0) {
         stop("Invalid value for `start_index` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, must be bigger than or equal to 0.")
       }
 
-      if (`page_size` > 250) {
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, `page_size` is not nullable")
+      }
+      if (!is.null(`page_size`) && `page_size` >  250) {
         stop("Invalid value for `page_size` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, must be smaller than or equal to 250.")
       }
-      if (`page_size` < 1) {
+      if (!is.null(`page_size`) && `page_size` <  1) {
         stop("Invalid value for `page_size` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, must be bigger than or equal to 1.")
       }
 
+      if (!missing(`bookmark`) && is.null(`bookmark`)) {
+        stop("Invalid value for `bookmark` when calling BusinessAccessRelationshipsApi$GetBusinessPartners, `bookmark` is not nullable")
+      }
 
       query_params[["assets_summary"]] <- `assets_summary`
 
@@ -861,17 +921,23 @@ BusinessAccessRelationshipsApi <- R6::R6Class(
         stop("Missing required parameter `update_member_business_role_body`.")
       }
 
-      if (nchar(`business_id`) > 20) {
+      if (!missing(`business_id`) && is.null(`business_id`)) {
+        stop("Invalid value for `business_id` when calling BusinessAccessRelationshipsApi$UpdateBusinessMemberships, `business_id` is not nullable")
+      }
+      if (!is.null(`business_id`) && nchar(`business_id`) > 20) {
         stop("Invalid length for `business_id` when calling BusinessAccessRelationshipsApi$UpdateBusinessMemberships, must be smaller than or equal to 20.")
       }
-      if (nchar(`business_id`) < 1) {
+      if (!is.null(`business_id`) && nchar(`business_id`) < 1) {
         stop("Invalid length for `business_id` when calling BusinessAccessRelationshipsApi$UpdateBusinessMemberships, must be bigger than or equal to 1.")
       }
-      if (!str_detect(`business_id`, "^\\d+$")) {
+      if (!is.null(`business_id`) && !stringr::str_detect(`business_id`, "^\\d+$")) {
         stop("Invalid value for `business_id` when calling BusinessAccessRelationshipsApi$UpdateBusinessMemberships, must conform to the pattern ^\\d+$.")
       }
 
-      if (length(`update_member_business_role_body`) < 1) {
+      if (!missing(`update_member_business_role_body`) && is.null(`update_member_business_role_body`)) {
+        stop("Invalid value for `update_member_business_role_body` when calling BusinessAccessRelationshipsApi$UpdateBusinessMemberships, `update_member_business_role_body` is not nullable")
+      }
+      if (!is.null(`update_member_business_role_body`) && length(`update_member_business_role_body`) < 1) {
         stop("Invalid length for `update_member_business_role_body` when calling BusinessAccessRelationshipsApi$UpdateBusinessMemberships, number of items must be greater than or equal to 1.")
       }
 

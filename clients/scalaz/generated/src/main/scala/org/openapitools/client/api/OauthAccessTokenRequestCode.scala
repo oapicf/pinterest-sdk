@@ -12,9 +12,9 @@ import org.joda.time.DateTime
 import OauthAccessTokenRequestCode._
 
 case class OauthAccessTokenRequestCode (
-  grantType: GrantType,
-code: String,
-redirectUri: String)
+  code: String,
+redirectUri: String,
+grantType: GrantType)
 
 object OauthAccessTokenRequestCode {
   import DateTimeCodecs._

@@ -27,7 +27,7 @@ import org.openapitools.model.CreateAssetAccessRequestErrorMessageInner;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2025-05-10T05:39:45.096615976Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-01-26T05:36:38.375136112Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class CreateAssetAccessRequestResponse   {
   
   private List<CreateAssetAccessRequestErrorMessageInner> exceptions;

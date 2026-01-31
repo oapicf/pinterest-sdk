@@ -27,7 +27,7 @@ using Org.OpenAPITools.Client;
 namespace Org.OpenAPITools.Model
 {
     /// <summary>
-    /// A request to exchange a refresh token for a new access token.
+    /// OauthAccessTokenRequestRefresh
     /// </summary>
     public partial class OauthAccessTokenRequestRefresh : IValidatableObject
     {
@@ -35,16 +35,16 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="OauthAccessTokenRequestRefresh" /> class.
         /// </summary>
         /// <param name="refreshToken">refreshToken</param>
+        /// <param name="grantType">grantType</param>
         /// <param name="scope">scope</param>
         /// <param name="refreshOn">Setting this field to &lt;code&gt;true&lt;/code&gt; will add a new refresh token to your 200 response, as well as the refresh_token_expires_in and refresh_token_expires_at fields. To see the structure of this payload, set the 200 response_type to \&quot;everlasting_refresh\&quot;.</param>
-        /// <param name="grantType">grantType</param>
         [JsonConstructor]
-        public OauthAccessTokenRequestRefresh(string refreshToken, Option<string?> scope = default, Option<bool?> refreshOn = default, GrantTypeEnum grantType)
+        public OauthAccessTokenRequestRefresh(string refreshToken, GrantTypeEnum grantType, Option<string?> scope = default, Option<bool?> refreshOn = default)
         {
             RefreshToken = refreshToken;
+            GrantType = grantType;
             ScopeOption = scope;
             RefreshOnOption = refreshOn;
-            GrantType = grantType;
             OnCreated();
         }
 
@@ -177,8 +177,8 @@ namespace Org.OpenAPITools.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class OauthAccessTokenRequestRefresh {\n");
-            sb.Append("  GrantType: ").Append(GrantType).Append("\n");
             sb.Append("  RefreshToken: ").Append(RefreshToken).Append("\n");
+            sb.Append("  GrantType: ").Append(GrantType).Append("\n");
             sb.Append("  Scope: ").Append(Scope).Append("\n");
             sb.Append("  RefreshOn: ").Append(RefreshOn).Append("\n");
             sb.Append("}\n");
@@ -219,9 +219,9 @@ namespace Org.OpenAPITools.Model
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
             Option<string?> refreshToken = default;
+            Option<OauthAccessTokenRequestRefresh.GrantTypeEnum?> grantType = default;
             Option<string?> scope = default;
             Option<bool?> refreshOn = default;
-            Option<OauthAccessTokenRequestRefresh.GrantTypeEnum?> grantType = default;
 
             while (utf8JsonReader.Read())
             {
@@ -241,17 +241,16 @@ namespace Org.OpenAPITools.Model
                         case "refresh_token":
                             refreshToken = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
-                        case "scope":
-                            scope = new Option<string?>(utf8JsonReader.GetString()!);
-                            break;
-                        case "refresh_on":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                refreshOn = new Option<bool?>(utf8JsonReader.GetBoolean());
-                            break;
                         case "grant_type":
                             string? grantTypeRawValue = utf8JsonReader.GetString();
                             if (grantTypeRawValue != null)
                                 grantType = new Option<OauthAccessTokenRequestRefresh.GrantTypeEnum?>(OauthAccessTokenRequestRefresh.GrantTypeEnumFromStringOrDefault(grantTypeRawValue));
+                            break;
+                        case "scope":
+                            scope = new Option<string?>(utf8JsonReader.GetString()!);
+                            break;
+                        case "refresh_on":
+                            refreshOn = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;
@@ -268,16 +267,16 @@ namespace Org.OpenAPITools.Model
             if (refreshToken.IsSet && refreshToken.Value == null)
                 throw new ArgumentNullException(nameof(refreshToken), "Property is not nullable for class OauthAccessTokenRequestRefresh.");
 
+            if (grantType.IsSet && grantType.Value == null)
+                throw new ArgumentNullException(nameof(grantType), "Property is not nullable for class OauthAccessTokenRequestRefresh.");
+
             if (scope.IsSet && scope.Value == null)
                 throw new ArgumentNullException(nameof(scope), "Property is not nullable for class OauthAccessTokenRequestRefresh.");
 
             if (refreshOn.IsSet && refreshOn.Value == null)
                 throw new ArgumentNullException(nameof(refreshOn), "Property is not nullable for class OauthAccessTokenRequestRefresh.");
 
-            if (grantType.IsSet && grantType.Value == null)
-                throw new ArgumentNullException(nameof(grantType), "Property is not nullable for class OauthAccessTokenRequestRefresh.");
-
-            return new OauthAccessTokenRequestRefresh(refreshToken.Value!, scope, refreshOn, grantType.Value!.Value!);
+            return new OauthAccessTokenRequestRefresh(refreshToken.Value!, grantType.Value!.Value!, scope, refreshOn);
         }
 
         /// <summary>
@@ -312,14 +311,13 @@ namespace Org.OpenAPITools.Model
 
             writer.WriteString("refresh_token", oauthAccessTokenRequestRefresh.RefreshToken);
 
+            var grantTypeRawValue = OauthAccessTokenRequestRefresh.GrantTypeEnumToJsonValue(oauthAccessTokenRequestRefresh.GrantType);
+            writer.WriteString("grant_type", grantTypeRawValue);
             if (oauthAccessTokenRequestRefresh.ScopeOption.IsSet)
                 writer.WriteString("scope", oauthAccessTokenRequestRefresh.Scope);
 
             if (oauthAccessTokenRequestRefresh.RefreshOnOption.IsSet)
                 writer.WriteBoolean("refresh_on", oauthAccessTokenRequestRefresh.RefreshOnOption.Value!.Value);
-
-            var grantTypeRawValue = OauthAccessTokenRequestRefresh.GrantTypeEnumToJsonValue(oauthAccessTokenRequestRefresh.GrantType);
-            writer.WriteString("grant_type", grantTypeRawValue);
         }
     }
 }

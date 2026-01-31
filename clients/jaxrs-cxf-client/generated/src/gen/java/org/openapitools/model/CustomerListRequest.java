@@ -9,25 +9,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CustomerListRequest  {
   
-  @ApiModelProperty(example = "The Glengarry Glen Ross leads", required = true, value = "Customer list name.")
  /**
-   * Customer list name.
-  **/
+  * Customer list name.
+  */
+  @ApiModelProperty(example = "The Glengarry Glen Ross leads", required = true, value = "Customer list name.")
+
   private String name;
 
-  @ApiModelProperty(example = "email1@pinterest.com,email2@pinterest.com,..<more records>", required = true, value = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.")
  /**
-   * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
-  **/
+  * Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.
+  */
+  @ApiModelProperty(example = "email1@pinterest.com,email2@pinterest.com,..<more records>", required = true, value = "Records list. Can be any combination of emails, MAIDs, or IDFAs. Emails must be lowercase and can be plain text or hashed using SHA1, SHA256, or MD5. MAIDs and IDFAs must be hashed with SHA1, SHA256, or MD5.")
+
   private String records;
 
   @ApiModelProperty(value = "")
+
   private UserListType listType = "EMAIL";
 
-  @ApiModelProperty(value = "Customer list errors.")
  /**
-   * Customer list errors.
-  **/
+  * Customer list errors.
+  */
+  @ApiModelProperty(value = "Customer list errors.")
+
   private Object exceptions;
  /**
    * Customer list name.

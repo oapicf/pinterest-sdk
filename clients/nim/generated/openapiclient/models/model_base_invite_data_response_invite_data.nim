@@ -9,12 +9,45 @@
 
 import json
 import tables
+import marshal
+import options
 
 
 type BaseInviteDataResponseInviteData* = object
   ## Metadata for the invite/request.
-  inviteExpiration*: int ## The date and time when the invite/request will expire. Returned in milliseconds.
-  inviteStatus*: string ## The current status of the invite. The invite can be in one of the following states PENDING, ACCEPTED, DECLINED, CANCELLED, EXPIRED.
-  inviteType*: string ## The type of invite. <br>'MEMBER_INVITE' is to invite a member to access your business assets. <br>'PARTNER_INVITE' is to invite a partner to access your business assets. <br>'PARTNER_REQUEST' is to request access a partner's business assets.
-  lastUpdatedTime*: int ## The date and time the invite/request was last updated. Returned in milliseconds.
-  sentAt*: int ## The date and time the invite/request was sent/created. Returned in milliseconds.
+  inviteExpiration*: Option[int] ## The date and time when the invite/request will expire. Returned in milliseconds.
+  inviteStatus*: Option[string] ## The current status of the invite. The invite can be in one of the following states PENDING, ACCEPTED, DECLINED, CANCELLED, EXPIRED.
+  inviteType*: Option[string] ## The type of invite. <br>'MEMBER_INVITE' is to invite a member to access your business assets. <br>'PARTNER_INVITE' is to invite a partner to access your business assets. <br>'PARTNER_REQUEST' is to request access a partner's business assets.
+  lastUpdatedTime*: Option[int] ## The date and time the invite/request was last updated. Returned in milliseconds.
+  sentAt*: Option[int] ## The date and time the invite/request was sent/created. Returned in milliseconds.
+
+
+# Custom JSON deserialization for BaseInviteDataResponseInviteData with custom field names
+proc to*(node: JsonNode, T: typedesc[BaseInviteDataResponseInviteData]): BaseInviteDataResponseInviteData =
+  result = BaseInviteDataResponseInviteData()
+  if node.kind == JObject:
+    if node.hasKey("invite_expiration") and node["invite_expiration"].kind != JNull:
+      result.inviteExpiration = some(to(node["invite_expiration"], typeof(result.inviteExpiration.get())))
+    if node.hasKey("invite_status") and node["invite_status"].kind != JNull:
+      result.inviteStatus = some(to(node["invite_status"], typeof(result.inviteStatus.get())))
+    if node.hasKey("invite_type") and node["invite_type"].kind != JNull:
+      result.inviteType = some(to(node["invite_type"], typeof(result.inviteType.get())))
+    if node.hasKey("last_updated_time") and node["last_updated_time"].kind != JNull:
+      result.lastUpdatedTime = some(to(node["last_updated_time"], typeof(result.lastUpdatedTime.get())))
+    if node.hasKey("sent_at") and node["sent_at"].kind != JNull:
+      result.sentAt = some(to(node["sent_at"], typeof(result.sentAt.get())))
+
+# Custom JSON serialization for BaseInviteDataResponseInviteData with custom field names
+proc `%`*(obj: BaseInviteDataResponseInviteData): JsonNode =
+  result = newJObject()
+  if obj.inviteExpiration.isSome():
+    result["invite_expiration"] = %obj.inviteExpiration.get()
+  if obj.inviteStatus.isSome():
+    result["invite_status"] = %obj.inviteStatus.get()
+  if obj.inviteType.isSome():
+    result["invite_type"] = %obj.inviteType.get()
+  if obj.lastUpdatedTime.isSome():
+    result["last_updated_time"] = %obj.lastUpdatedTime.get()
+  if obj.sentAt.isSome():
+    result["sent_at"] = %obj.sentAt.get()
+

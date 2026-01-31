@@ -14,17 +14,11 @@
 
 import { mapValues } from '../runtime';
 /**
- * A request to exchange a refresh token for a new access token.
+ * 
  * @export
  * @interface OauthAccessTokenRequestRefresh
  */
 export interface OauthAccessTokenRequestRefresh {
-    /**
-     * 
-     * @type {string}
-     * @memberof OauthAccessTokenRequestRefresh
-     */
-    grantType: OauthAccessTokenRequestRefreshGrantTypeEnum;
     /**
      * 
      * @type {string}
@@ -43,6 +37,12 @@ export interface OauthAccessTokenRequestRefresh {
      * @memberof OauthAccessTokenRequestRefresh
      */
     refreshOn?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof OauthAccessTokenRequestRefresh
+     */
+    grantType: OauthAccessTokenRequestRefreshGrantTypeEnum;
 }
 
 
@@ -61,8 +61,8 @@ export type OauthAccessTokenRequestRefreshGrantTypeEnum = typeof OauthAccessToke
  * Check if a given object implements the OauthAccessTokenRequestRefresh interface.
  */
 export function instanceOfOauthAccessTokenRequestRefresh(value: object): value is OauthAccessTokenRequestRefresh {
-    if (!('grantType' in value) || value['grantType'] === undefined) return false;
     if (!('refreshToken' in value) || value['refreshToken'] === undefined) return false;
+    if (!('grantType' in value) || value['grantType'] === undefined) return false;
     return true;
 }
 
@@ -76,10 +76,10 @@ export function OauthAccessTokenRequestRefreshFromJSONTyped(json: any, ignoreDis
     }
     return {
         
-        'grantType': json['grant_type'],
         'refreshToken': json['refresh_token'],
         'scope': json['scope'] == null ? undefined : json['scope'],
         'refreshOn': json['refresh_on'] == null ? undefined : json['refresh_on'],
+        'grantType': json['grant_type'],
     };
 }
 
@@ -94,10 +94,10 @@ export function OauthAccessTokenRequestRefreshToJSONTyped(value?: OauthAccessTok
 
     return {
         
-        'grant_type': value['grantType'],
         'refresh_token': value['refreshToken'],
         'scope': value['scope'],
         'refresh_on': value['refreshOn'],
+        'grant_type': value['grantType'],
     };
 }
 

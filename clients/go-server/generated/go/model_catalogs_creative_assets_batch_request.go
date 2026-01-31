@@ -21,7 +21,8 @@ type CatalogsCreativeAssetsBatchRequest struct {
 
 	Country Country `json:"country"`
 
-	Language CatalogsItemsRequestLanguage `json:"language"`
+	// We recommend using the CatalogsLocale values.
+	Language string `json:"language"`
 
 	// Array with creative assets item operations
 	Items []CatalogsCreativeAssetsBatchItem `json:"items"`
@@ -44,7 +45,7 @@ func AssertCatalogsCreativeAssetsBatchRequestRequired(obj CatalogsCreativeAssets
 		}
 	}
 
-	if err := AssertCatalogsItemsRequestLanguageRequired(obj.Language); err != nil {
+	if err := AssertstringRequired(obj.Language); err != nil {
 		return err
 	}
 	for _, el := range obj.Items {
@@ -57,7 +58,7 @@ func AssertCatalogsCreativeAssetsBatchRequestRequired(obj CatalogsCreativeAssets
 
 // AssertCatalogsCreativeAssetsBatchRequestConstraints checks if the values respects the defined constraints
 func AssertCatalogsCreativeAssetsBatchRequestConstraints(obj CatalogsCreativeAssetsBatchRequest) error {
-	if err := AssertCatalogsItemsRequestLanguageConstraints(obj.Language); err != nil {
+	if err := AssertstringConstraints(obj.Language); err != nil {
 		return err
 	}
 	for _, el := range obj.Items {

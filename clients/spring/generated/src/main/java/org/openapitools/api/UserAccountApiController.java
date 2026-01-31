@@ -10,6 +10,7 @@ import org.openapitools.model.FollowersList200Response;
 import org.openapitools.model.LinkedBusiness;
 import java.time.LocalDate;
 import java.util.Map;
+import org.springframework.lang.Nullable;
 import org.openapitools.model.TopPinsAnalyticsResponse;
 import org.openapitools.model.TopVideoPinsAnalyticsResponse;
 import org.openapitools.model.UserFollowingFeedType;
@@ -44,7 +45,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-11-05T03:06:09.428113339Z[Etc/UTC]", comments = "Generator version: 7.9.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-25T14:29:26.456489381Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 @Controller
 @RequestMapping("${openapi.pinterestREST.base-path:/v5}")
 public class UserAccountApiController implements UserAccountApi {

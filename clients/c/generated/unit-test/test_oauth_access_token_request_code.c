@@ -22,15 +22,15 @@ oauth_access_token_request_code_t* instantiate_oauth_access_token_request_code(i
   oauth_access_token_request_code_t* oauth_access_token_request_code = NULL;
   if (include_optional) {
     oauth_access_token_request_code = oauth_access_token_request_code_create(
-      pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_authorization_code,
       "0",
-      "0"
+      "0",
+      pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_authorization_code
     );
   } else {
     oauth_access_token_request_code = oauth_access_token_request_code_create(
-      pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_authorization_code,
       "0",
-      "0"
+      "0",
+      pinterest_rest_api_oauth_access_token_request_code_GRANTTYPE_authorization_code
     );
   }
 

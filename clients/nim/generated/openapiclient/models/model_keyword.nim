@@ -9,16 +9,60 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_match_type_response
 
 type Keyword* = object
   ## 
-  bid*: int ## </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
-  matchType*: MatchTypeResponse
+  bid*: Option[int] ## </p><strong>Note:</strong> bid field has been deprecated. Input will not be set and field will return null. Keyword custom bid in microcurrency - null if inherited from parent ad group.
+  matchType*: Option[MatchTypeResponse]
   value*: string ## Keyword value (120 chars max).
-  archived*: bool
-  id*: string ## Keyword ID .
-  parentId*: string ## Keyword parent entity ID (advertiser, campaign, ad group).
-  parentType*: string ## Parent entity type
-  `type`*: string ## Always keyword
+  archived*: Option[bool]
+  id*: Option[string] ## Keyword ID .
+  parentId*: Option[string] ## Keyword parent entity ID (advertiser, campaign, ad group).
+  parentType*: Option[string] ## Parent entity type
+  `type`*: Option[string] ## Always keyword
+
+
+# Custom JSON deserialization for Keyword with custom field names
+proc to*(node: JsonNode, T: typedesc[Keyword]): Keyword =
+  result = Keyword()
+  if node.kind == JObject:
+    if node.hasKey("bid") and node["bid"].kind != JNull:
+      result.bid = some(to(node["bid"], typeof(result.bid.get())))
+    if node.hasKey("match_type") and node["match_type"].kind != JNull:
+      result.matchType = some(to(node["match_type"], typeof(result.matchType.get())))
+    if node.hasKey("value"):
+      result.value = to(node["value"], string)
+    if node.hasKey("archived") and node["archived"].kind != JNull:
+      result.archived = some(to(node["archived"], typeof(result.archived.get())))
+    if node.hasKey("id") and node["id"].kind != JNull:
+      result.id = some(to(node["id"], typeof(result.id.get())))
+    if node.hasKey("parent_id") and node["parent_id"].kind != JNull:
+      result.parentId = some(to(node["parent_id"], typeof(result.parentId.get())))
+    if node.hasKey("parent_type") and node["parent_type"].kind != JNull:
+      result.parentType = some(to(node["parent_type"], typeof(result.parentType.get())))
+    if node.hasKey("type") and node["type"].kind != JNull:
+      result.`type` = some(to(node["type"], typeof(result.`type`.get())))
+
+# Custom JSON serialization for Keyword with custom field names
+proc `%`*(obj: Keyword): JsonNode =
+  result = newJObject()
+  if obj.bid.isSome():
+    result["bid"] = %obj.bid.get()
+  if obj.matchType.isSome():
+    result["match_type"] = %obj.matchType.get()
+  result["value"] = %obj.value
+  if obj.archived.isSome():
+    result["archived"] = %obj.archived.get()
+  if obj.id.isSome():
+    result["id"] = %obj.id.get()
+  if obj.parentId.isSome():
+    result["parent_id"] = %obj.parentId.get()
+  if obj.parentType.isSome():
+    result["parent_type"] = %obj.parentType.get()
+  if obj.`type`.isSome():
+    result["type"] = %obj.`type`.get()
+

@@ -14,40 +14,40 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct LeadFormCreateRequest {
     /// Internal name of the lead form.
-    #[serde(rename = "name", deserialize_with = "Option::deserialize")]
-    pub name: Option<String>,
+    #[serde(rename = "name", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub name: Option<Option<String>>,
     /// A link to the advertiser's privacy policy. This will be included in the lead form's disclosure language.
-    #[serde(rename = "privacy_policy_link", deserialize_with = "Option::deserialize")]
-    pub privacy_policy_link: Option<String>,
+    #[serde(rename = "privacy_policy_link", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub privacy_policy_link: Option<Option<String>>,
     /// Whether the advertiser has accepted Pinterest's terms of service for creating a lead ad.  By sending us TRUE for this parameter, you agree that (i) you will use any personal information received in compliance with the privacy policy you share with Pinterest, and (ii) you will comply with Pinterest's <a href=\"https://policy.pinterest.com/en/lead-ad-terms\">Lead Ad Terms</a>. As a reminder, all advertising on Pinterest is subject to the <a href=\"https://business.pinterest.com/en/pinterest-advertising-services-agreement/\">Pinterest Advertising Services Agreement</a> or an equivalent agreement as set forth on an IO
-    #[serde(rename = "has_accepted_terms")]
-    pub has_accepted_terms: bool,
+    #[serde(rename = "has_accepted_terms", skip_serializing_if = "Option::is_none")]
+    pub has_accepted_terms: Option<bool>,
     /// A message for people who complete the form to let them know what happens next.
-    #[serde(rename = "completion_message", deserialize_with = "Option::deserialize")]
-    pub completion_message: Option<String>,
+    #[serde(rename = "completion_message", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub completion_message: Option<Option<String>>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<models::LeadFormStatus>,
     /// Additional disclosure language to be included in the lead form.
     #[serde(rename = "disclosure_language", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub disclosure_language: Option<Option<String>>,
     /// List of questions to be displayed on the lead form.
-    #[serde(rename = "questions")]
-    pub questions: Vec<models::LeadFormQuestion>,
+    #[serde(rename = "questions", skip_serializing_if = "Option::is_none")]
+    pub questions: Option<Vec<models::LeadFormQuestion>>,
     /// List of additional policy links to be displayed on the lead form.
     #[serde(rename = "policy_links", skip_serializing_if = "Option::is_none")]
     pub policy_links: Option<Vec<models::LeadFormCommonPolicyLinksInner>>,
 }
 
 impl LeadFormCreateRequest {
-    pub fn new(name: Option<String>, privacy_policy_link: Option<String>, has_accepted_terms: bool, completion_message: Option<String>, questions: Vec<models::LeadFormQuestion>) -> LeadFormCreateRequest {
+    pub fn new() -> LeadFormCreateRequest {
         LeadFormCreateRequest {
-            name,
-            privacy_policy_link,
-            has_accepted_terms,
-            completion_message,
+            name: None,
+            privacy_policy_link: None,
+            has_accepted_terms: None,
+            completion_message: None,
             status: None,
             disclosure_language: None,
-            questions,
+            questions: None,
             policy_links: None,
         }
     }

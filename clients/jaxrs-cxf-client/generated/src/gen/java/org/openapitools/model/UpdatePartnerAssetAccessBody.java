@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UpdatePartnerAssetAccessBody  {
   
   @ApiModelProperty(required = true, value = "")
+
   private List<UpdatePartnerAssetAccessBodyAccessesInner> accesses = new ArrayList<>();
  /**
    * Get accesses

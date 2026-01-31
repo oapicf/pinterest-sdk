@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -65,6 +64,15 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'MediaId'
+        /// </summary>
+        [Fact]
+        public void MediaIdTest()
+        {
+            // TODO unit test for the property 'MediaId'
+        }
+
+        /// <summary>
         /// Test the property 'CoverImageUrl'
         /// </summary>
         [Fact]
@@ -89,15 +97,6 @@ namespace Org.OpenAPITools.Test.Model
         public void CoverImageDataTest()
         {
             // TODO unit test for the property 'CoverImageData'
-        }
-
-        /// <summary>
-        /// Test the property 'MediaId'
-        /// </summary>
-        [Fact]
-        public void MediaIdTest()
-        {
-            // TODO unit test for the property 'MediaId'
         }
 
         /// <summary>

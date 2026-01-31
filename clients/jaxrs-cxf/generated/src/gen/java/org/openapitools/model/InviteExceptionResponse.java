@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,39 +7,44 @@ import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * An exception object if there is an error performing the action. Will only be provided if there is an error.
- **/
+ * An exception object if there is an error performing the action. Will only be provided if there is an error.
+ */
 @ApiModel(description="An exception object if there is an error performing the action. Will only be provided if there is an error.")
 
 public class InviteExceptionResponse  {
   
-  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
  /**
-   * Unique identifier of the invite/request.
-  **/
+  * Unique identifier of the invite/request.
+  */
+  @ApiModelProperty(example = "383791336903426391", value = "Unique identifier of the invite/request.")
+
   private String inviteOrRequestId;
 
-  @ApiModelProperty(example = "403", value = "Error code associated with the error in performing the action on the invite/request.")
  /**
-   * Error code associated with the error in performing the action on the invite/request.
-  **/
+  * Error code associated with the error in performing the action on the invite/request.
+  */
+  @ApiModelProperty(example = "403", value = "Error code associated with the error in performing the action on the invite/request.")
+
   private Integer code;
 
-  @ApiModelProperty(example = "You hit the maximum number of pending invites allowed.", value = "Error message associated with the error in performing the action on the invite/request.")
  /**
-   * Error message associated with the error in performing the action on the invite/request.
-  **/
+  * Error message associated with the error in performing the action on the invite/request.
+  */
+  @ApiModelProperty(example = "You hit the maximum number of pending invites allowed.", value = "Error message associated with the error in performing the action on the invite/request.")
+
   private String message;
 
-  @ApiModelProperty(example = "[\"businessMember0101\",\"business+member@business.com\"]", value = "A list of users' usernames or emails OR a list of partner ids that caused the error.")
  /**
-   * A list of users' usernames or emails OR a list of partner ids that caused the error.
-  **/
+  * A list of users' usernames or emails OR a list of partner ids that caused the error.
+  */
+  @ApiModelProperty(example = "[\"businessMember0101\",\"business+member@business.com\"]", value = "A list of users' usernames or emails OR a list of partner ids that caused the error.")
+
   private List<String> usersOrPartnerIds;
  /**
    * Unique identifier of the invite/request.

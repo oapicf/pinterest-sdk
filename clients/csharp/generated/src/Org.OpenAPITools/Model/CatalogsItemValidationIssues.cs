@@ -148,16 +148,13 @@ namespace Org.OpenAPITools.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "item_number":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                itemNumber = new Option<int?>(utf8JsonReader.GetInt32());
+                            itemNumber = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "errors":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                errors = new Option<CatalogsItemValidationErrors?>(JsonSerializer.Deserialize<CatalogsItemValidationErrors>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            errors = new Option<CatalogsItemValidationErrors?>(JsonSerializer.Deserialize<CatalogsItemValidationErrors>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "warnings":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                warnings = new Option<CatalogsItemValidationWarnings?>(JsonSerializer.Deserialize<CatalogsItemValidationWarnings>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            warnings = new Option<CatalogsItemValidationWarnings?>(JsonSerializer.Deserialize<CatalogsItemValidationWarnings>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "item_id":
                             itemId = new Option<string?>(utf8JsonReader.GetString());

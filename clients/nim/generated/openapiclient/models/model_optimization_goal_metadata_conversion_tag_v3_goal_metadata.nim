@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_optimization_goal_metadata_conversion_tag_v3_goal_metadata_attribution_windows
 
@@ -30,49 +32,118 @@ type LearningModeType* {.pure.} = enum
 
 type OptimizationGoalMetadataConversionTagV3GoalMetadata* = object
   ## 
-  attributionWindows*: OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_attribution_windows
-  conversionEvent*: ConversionEvent
-  conversionTagId*: string
-  cpaGoalValueInMicroCurrency*: string
-  isRoasOptimized*: bool ## ROAS optimization is not supported
-  learningModeType*: LearningModeType ## Conversion learning model type
+  attributionWindows*: Option[OptimizationGoalMetadata_conversion_tag_v3_goal_metadata_attribution_windows]
+  conversionEvent*: Option[ConversionEvent]
+  conversionTagId*: Option[string]
+  cpaGoalValueInMicroCurrency*: Option[string]
+  isRoasOptimized*: Option[bool] ## ROAS optimization is not supported
+  learningModeType*: Option[LearningModeType] ## Conversion learning model type
 
 func `%`*(v: ConversionEvent): JsonNode =
-  let str = case v:
-    of ConversionEvent.PAGEVISIT: "PAGE_VISIT"
-    of ConversionEvent.SIGNUP: "SIGNUP"
-    of ConversionEvent.CHECKOUT: "CHECKOUT"
-    of ConversionEvent.CUSTOM: "CUSTOM"
-    of ConversionEvent.VIEWCATEGORY: "VIEW_CATEGORY"
-    of ConversionEvent.SEARCH: "SEARCH"
-    of ConversionEvent.ADDTOCART: "ADD_TO_CART"
-    of ConversionEvent.WATCHVIDEO: "WATCH_VIDEO"
-    of ConversionEvent.LEAD: "LEAD"
-    of ConversionEvent.APPINSTALL: "APP_INSTALL"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of ConversionEvent.PAGEVISIT: %"PAGE_VISIT"
+    of ConversionEvent.SIGNUP: %"SIGNUP"
+    of ConversionEvent.CHECKOUT: %"CHECKOUT"
+    of ConversionEvent.CUSTOM: %"CUSTOM"
+    of ConversionEvent.VIEWCATEGORY: %"VIEW_CATEGORY"
+    of ConversionEvent.SEARCH: %"SEARCH"
+    of ConversionEvent.ADDTOCART: %"ADD_TO_CART"
+    of ConversionEvent.WATCHVIDEO: %"WATCH_VIDEO"
+    of ConversionEvent.LEAD: %"LEAD"
+    of ConversionEvent.APPINSTALL: %"APP_INSTALL"
 func `$`*(v: ConversionEvent): string =
   result = case v:
-    of ConversionEvent.PAGEVISIT: "PAGE_VISIT"
-    of ConversionEvent.SIGNUP: "SIGNUP"
-    of ConversionEvent.CHECKOUT: "CHECKOUT"
-    of ConversionEvent.CUSTOM: "CUSTOM"
-    of ConversionEvent.VIEWCATEGORY: "VIEW_CATEGORY"
-    of ConversionEvent.SEARCH: "SEARCH"
-    of ConversionEvent.ADDTOCART: "ADD_TO_CART"
-    of ConversionEvent.WATCHVIDEO: "WATCH_VIDEO"
-    of ConversionEvent.LEAD: "LEAD"
-    of ConversionEvent.APPINSTALL: "APP_INSTALL"
+    of ConversionEvent.PAGEVISIT: $("PAGE_VISIT")
+    of ConversionEvent.SIGNUP: $("SIGNUP")
+    of ConversionEvent.CHECKOUT: $("CHECKOUT")
+    of ConversionEvent.CUSTOM: $("CUSTOM")
+    of ConversionEvent.VIEWCATEGORY: $("VIEW_CATEGORY")
+    of ConversionEvent.SEARCH: $("SEARCH")
+    of ConversionEvent.ADDTOCART: $("ADD_TO_CART")
+    of ConversionEvent.WATCHVIDEO: $("WATCH_VIDEO")
+    of ConversionEvent.LEAD: $("LEAD")
+    of ConversionEvent.APPINSTALL: $("APP_INSTALL")
+
+proc to*(node: JsonNode, T: typedesc[ConversionEvent]): ConversionEvent =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum ConversionEvent, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("PAGE_VISIT"):
+    return ConversionEvent.PAGEVISIT
+  of $("SIGNUP"):
+    return ConversionEvent.SIGNUP
+  of $("CHECKOUT"):
+    return ConversionEvent.CHECKOUT
+  of $("CUSTOM"):
+    return ConversionEvent.CUSTOM
+  of $("VIEW_CATEGORY"):
+    return ConversionEvent.VIEWCATEGORY
+  of $("SEARCH"):
+    return ConversionEvent.SEARCH
+  of $("ADD_TO_CART"):
+    return ConversionEvent.ADDTOCART
+  of $("WATCH_VIDEO"):
+    return ConversionEvent.WATCHVIDEO
+  of $("LEAD"):
+    return ConversionEvent.LEAD
+  of $("APP_INSTALL"):
+    return ConversionEvent.APPINSTALL
+  else:
+    raise newException(ValueError, "Invalid enum value for ConversionEvent: " & strVal)
 
 func `%`*(v: LearningModeType): JsonNode =
-  let str = case v:
-    of LearningModeType.NOTACTIVE: "NOT_ACTIVE"
-    of LearningModeType.ACTIVE: "ACTIVE"
-
-  JsonNode(kind: JString, str: str)
-
+  result = case v:
+    of LearningModeType.NOTACTIVE: %"NOT_ACTIVE"
+    of LearningModeType.ACTIVE: %"ACTIVE"
 func `$`*(v: LearningModeType): string =
   result = case v:
-    of LearningModeType.NOTACTIVE: "NOT_ACTIVE"
-    of LearningModeType.ACTIVE: "ACTIVE"
+    of LearningModeType.NOTACTIVE: $("NOT_ACTIVE")
+    of LearningModeType.ACTIVE: $("ACTIVE")
+
+proc to*(node: JsonNode, T: typedesc[LearningModeType]): LearningModeType =
+  if node.kind != JString:
+    raise newException(ValueError, "Expected string for enum LearningModeType, got " & $node.kind)
+  let strVal = node.getStr()
+  case strVal:
+  of $("NOT_ACTIVE"):
+    return LearningModeType.NOTACTIVE
+  of $("ACTIVE"):
+    return LearningModeType.ACTIVE
+  else:
+    raise newException(ValueError, "Invalid enum value for LearningModeType: " & strVal)
+
+
+# Custom JSON deserialization for OptimizationGoalMetadataConversionTagV3GoalMetadata with custom field names
+proc to*(node: JsonNode, T: typedesc[OptimizationGoalMetadataConversionTagV3GoalMetadata]): OptimizationGoalMetadataConversionTagV3GoalMetadata =
+  result = OptimizationGoalMetadataConversionTagV3GoalMetadata()
+  if node.kind == JObject:
+    if node.hasKey("attribution_windows") and node["attribution_windows"].kind != JNull:
+      result.attributionWindows = some(to(node["attribution_windows"], typeof(result.attributionWindows.get())))
+    if node.hasKey("conversion_event") and node["conversion_event"].kind != JNull:
+      result.conversionEvent = some(to(node["conversion_event"], ConversionEvent))
+    if node.hasKey("conversion_tag_id") and node["conversion_tag_id"].kind != JNull:
+      result.conversionTagId = some(to(node["conversion_tag_id"], typeof(result.conversionTagId.get())))
+    if node.hasKey("cpa_goal_value_in_micro_currency") and node["cpa_goal_value_in_micro_currency"].kind != JNull:
+      result.cpaGoalValueInMicroCurrency = some(to(node["cpa_goal_value_in_micro_currency"], typeof(result.cpaGoalValueInMicroCurrency.get())))
+    if node.hasKey("is_roas_optimized") and node["is_roas_optimized"].kind != JNull:
+      result.isRoasOptimized = some(to(node["is_roas_optimized"], typeof(result.isRoasOptimized.get())))
+    if node.hasKey("learning_mode_type") and node["learning_mode_type"].kind != JNull:
+      result.learningModeType = some(to(node["learning_mode_type"], LearningModeType))
+
+# Custom JSON serialization for OptimizationGoalMetadataConversionTagV3GoalMetadata with custom field names
+proc `%`*(obj: OptimizationGoalMetadataConversionTagV3GoalMetadata): JsonNode =
+  result = newJObject()
+  if obj.attributionWindows.isSome():
+    result["attribution_windows"] = %obj.attributionWindows.get()
+  if obj.conversionEvent.isSome():
+    result["conversion_event"] = %obj.conversionEvent.get()
+  if obj.conversionTagId.isSome():
+    result["conversion_tag_id"] = %obj.conversionTagId.get()
+  if obj.cpaGoalValueInMicroCurrency.isSome():
+    result["cpa_goal_value_in_micro_currency"] = %obj.cpaGoalValueInMicroCurrency.get()
+  if obj.isRoasOptimized.isSome():
+    result["is_roas_optimized"] = %obj.isRoasOptimized.get()
+  if obj.learningModeType.isSome():
+    result["learning_mode_type"] = %obj.learningModeType.get()
+

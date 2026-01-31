@@ -9,6 +9,8 @@
 
 import json
 import tables
+import marshal
+import options
 
 import model_bulk_download_request_campaign_filter
 import model_bulk_entity_type
@@ -16,8 +18,39 @@ import model_bulk_output_format
 
 type BulkDownloadRequest* = object
   ## Ad entities to get in bulk request.
-  entityTypes*: seq[BulkEntityType] ## All entity types specified will be downloaded. Fewer types result in faster downloads.
-  entityIds*: seq[string] ## All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
-  updatedSince*: string ## Unix UTC timestamp to retrieve all entities that have changed since this time.
-  campaignFilter*: BulkDownloadRequest_campaign_filter
-  outputFormat*: BulkOutputFormat
+  entityTypes*: Option[seq[BulkEntityType]] ## All entity types specified will be downloaded. Fewer types result in faster downloads.
+  entityIds*: Option[seq[string]] ## All entities specified by these IDs as well as their children and grandchildren will be downloaded if the entity type is one of the types requested to be downloaded.
+  updatedSince*: Option[string] ## Unix UTC timestamp to retrieve all entities that have changed since this time.
+  campaignFilter*: Option[BulkDownloadRequest_campaign_filter]
+  outputFormat*: Option[BulkOutputFormat]
+
+
+# Custom JSON deserialization for BulkDownloadRequest with custom field names
+proc to*(node: JsonNode, T: typedesc[BulkDownloadRequest]): BulkDownloadRequest =
+  result = BulkDownloadRequest()
+  if node.kind == JObject:
+    if node.hasKey("entity_types") and node["entity_types"].kind != JNull:
+      result.entityTypes = some(to(node["entity_types"], typeof(result.entityTypes.get())))
+    if node.hasKey("entity_ids") and node["entity_ids"].kind != JNull:
+      result.entityIds = some(to(node["entity_ids"], typeof(result.entityIds.get())))
+    if node.hasKey("updated_since") and node["updated_since"].kind != JNull:
+      result.updatedSince = some(to(node["updated_since"], typeof(result.updatedSince.get())))
+    if node.hasKey("campaign_filter") and node["campaign_filter"].kind != JNull:
+      result.campaignFilter = some(to(node["campaign_filter"], typeof(result.campaignFilter.get())))
+    if node.hasKey("output_format") and node["output_format"].kind != JNull:
+      result.outputFormat = some(to(node["output_format"], typeof(result.outputFormat.get())))
+
+# Custom JSON serialization for BulkDownloadRequest with custom field names
+proc `%`*(obj: BulkDownloadRequest): JsonNode =
+  result = newJObject()
+  if obj.entityTypes.isSome():
+    result["entity_types"] = %obj.entityTypes.get()
+  if obj.entityIds.isSome():
+    result["entity_ids"] = %obj.entityIds.get()
+  if obj.updatedSince.isSome():
+    result["updated_since"] = %obj.updatedSince.get()
+  if obj.campaignFilter.isSome():
+    result["campaign_filter"] = %obj.campaignFilter.get()
+  if obj.outputFormat.isSome():
+    result["output_format"] = %obj.outputFormat.get()
+

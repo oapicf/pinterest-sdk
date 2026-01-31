@@ -501,8 +501,7 @@ namespace Org.OpenAPITools.Model
                             id = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "created_at":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
+                            createdAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "link":
                             link = new Option<string?>(utf8JsonReader.GetString());
@@ -531,38 +530,31 @@ namespace Org.OpenAPITools.Model
                             boardSectionId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "board_owner":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                boardOwner = new Option<BoardOwner?>(JsonSerializer.Deserialize<BoardOwner>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            boardOwner = new Option<BoardOwner?>(JsonSerializer.Deserialize<BoardOwner>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "is_owner":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isOwner = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isOwner = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "media":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                media = new Option<PinMedia?>(JsonSerializer.Deserialize<PinMedia>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            media = new Option<PinMedia?>(JsonSerializer.Deserialize<PinMedia>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "media_source":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                mediaSource = new Option<PinMediaSource?>(JsonSerializer.Deserialize<PinMediaSource>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            mediaSource = new Option<PinMediaSource?>(JsonSerializer.Deserialize<PinMediaSource>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "parent_pin_id":
                             parentPinId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "is_standard":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isStandard = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isStandard = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "has_been_promoted":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hasBeenPromoted = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            hasBeenPromoted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "note":
                             note = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "pin_metrics":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pinMetrics = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions));
+                            pinMetrics = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

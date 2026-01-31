@@ -164,8 +164,7 @@ namespace Org.OpenAPITools.Model
                             attribute = new Option<string?>(utf8JsonReader.GetString()!);
                             break;
                         case "code":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                code = new Option<int?>(utf8JsonReader.GetInt32());
+                            code = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "message":
                             message = new Option<string?>(utf8JsonReader.GetString()!);

@@ -1,6 +1,5 @@
 package org.openapitools.model;
 
-import io.swagger.annotations.ApiModel;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupFilters;
 import org.openapitools.model.CatalogsCreativeAssetsProductGroupUpdateRequest;
@@ -9,13 +8,14 @@ import org.openapitools.model.CatalogsLocale;
 import org.openapitools.model.CatalogsRetailProductGroupUpdateRequest;
 import org.openapitools.model.Country;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
-  * Request object for updating a catalog based product group.
- **/
+ * Request object for updating a catalog based product group.
+ */
 @ApiModel(description="Request object for updating a catalog based product group.")
 
 public class CatalogsVerticalProductGroupUpdateRequest  {
@@ -51,21 +51,27 @@ CREATIVE_ASSETS(String.valueOf("CREATIVE_ASSETS"));
 }
 
   @ApiModelProperty(value = "")
+
   private CatalogTypeEnum catalogType;
 
   @ApiModelProperty(value = "")
+
   private String name;
 
   @ApiModelProperty(value = "")
+
   private String description;
 
   @ApiModelProperty(value = "")
+
   private CatalogsCreativeAssetsProductGroupFilters filters;
 
   @ApiModelProperty(value = "")
+
   private Country country;
 
   @ApiModelProperty(value = "")
+
   private CatalogsLocale locale;
  /**
    * Get catalogType

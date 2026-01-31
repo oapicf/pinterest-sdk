@@ -25,7 +25,7 @@ import javax.annotation.Generated;
  * ProductGroupPromotion
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-05-10T05:44:55.211680506Z[Etc/UTC]", comments = "Generator version: 7.12.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-26T05:48:22.520185154Z[Etc/UTC]", comments = "Generator version: 7.18.0")
 public class ProductGroupPromotion {
 
   private @Nullable String id;
@@ -62,7 +62,7 @@ public class ProductGroupPromotion {
 
   private JsonNullable<GridClickType> gridClickType = JsonNullable.<GridClickType>undefined();
 
-  public ProductGroupPromotion id(String id) {
+  public ProductGroupPromotion id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -74,15 +74,15 @@ public class ProductGroupPromotion {
   @Pattern(regexp = "^\\d+$") 
   @Schema(name = "id", example = "2680059592705", description = "ID of the product group promotion.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public String getId() {
+  public @Nullable String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
-  public ProductGroupPromotion adGroupId(String adGroupId) {
+  public ProductGroupPromotion adGroupId(@Nullable String adGroupId) {
     this.adGroupId = adGroupId;
     return this;
   }
@@ -94,11 +94,11 @@ public class ProductGroupPromotion {
   @Pattern(regexp = "^(AG)?\\d+$") 
   @Schema(name = "ad_group_id", example = "2680059592705", description = "ID of the ad group the product group belongs to.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("ad_group_id")
-  public String getAdGroupId() {
+  public @Nullable String getAdGroupId() {
     return adGroupId;
   }
 
-  public void setAdGroupId(String adGroupId) {
+  public void setAdGroupId(@Nullable String adGroupId) {
     this.adGroupId = adGroupId;
   }
 
@@ -262,7 +262,7 @@ public class ProductGroupPromotion {
     this.isMdl = isMdl;
   }
 
-  public ProductGroupPromotion status(EntityStatus status) {
+  public ProductGroupPromotion status(@Nullable EntityStatus status) {
     this.status = status;
     return this;
   }
@@ -274,11 +274,11 @@ public class ProductGroupPromotion {
   @Valid 
   @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("status")
-  public EntityStatus getStatus() {
+  public @Nullable EntityStatus getStatus() {
     return status;
   }
 
-  public void setStatus(EntityStatus status) {
+  public void setStatus(@Nullable EntityStatus status) {
     this.status = status;
   }
 

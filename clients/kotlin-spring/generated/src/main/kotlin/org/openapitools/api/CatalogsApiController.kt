@@ -41,6 +41,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.beans.factory.annotation.Autowired
+import org.openapitools.api.CatalogsApiController.Companion.BASE_PATH
 
 import javax.validation.Valid
 import javax.validation.constraints.DecimalMax
@@ -57,7 +58,7 @@ import kotlin.collections.Map
 
 @RestController
 @Validated
-@RequestMapping("\${api.base-path:/v5}")
+@RequestMapping("\${openapi.pinterestREST.base-path:\${api.base-path:$BASE_PATH}}")
 class CatalogsApiController() {
 
     @Operation(
@@ -80,11 +81,14 @@ Note: this API only supports the catalog type of HOTEL for now.""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/catalogs"],
+        value = [PATH_CATALOGS_CREATE /* "/catalogs" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun catalogsCreate(@Parameter(description = "Request object used to created a feed.", required = true) @Valid @RequestBody catalogsCreateRequest: CatalogsCreateRequest,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<Catalog> {
+    fun catalogsCreate(
+        @Parameter(description = "Request object used to created a feed.", required = true) @Valid @RequestBody catalogsCreateRequest: CatalogsCreateRequest,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<Catalog> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -106,10 +110,14 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs"],
+        value = [PATH_CATALOGS_LIST /* "/catalogs" */],
         produces = ["application/json"]
     )
-    fun catalogsList(@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsList200Response> {
+    fun catalogsList(
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -132,10 +140,16 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs/product_groups/{product_group_id}/products"],
+        value = [PATH_CATALOGS_PRODUCT_GROUP_PINS_LIST /* "/catalogs/product_groups/{product_group_id}/products" */],
         produces = ["application/json"]
     )
-    fun catalogsProductGroupPinsList(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a product group", required = true) @PathVariable("product_group_id") productGroupId: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") pinMetrics: kotlin.Boolean): ResponseEntity<CatalogsProductGroupPinsList200Response> {
+    fun catalogsProductGroupPinsList(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a product group", required = true) @PathVariable("product_group_id") productGroupId: kotlin.String,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
+        @Parameter(description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") pinMetrics: kotlin.Boolean
+    ): ResponseEntity<CatalogsProductGroupPinsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -162,11 +176,14 @@ If you require access, please reach out to your partner manager.""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/catalogs/product_groups"],
+        value = [PATH_CATALOGS_PRODUCT_GROUPS_CREATE /* "/catalogs/product_groups" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun catalogsProductGroupsCreate(@Parameter(description = "Request object used to create a single catalogs product groups.", required = true) @Valid @RequestBody multipleProductGroupsInner: MultipleProductGroupsInner,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsVerticalProductGroup> {
+    fun catalogsProductGroupsCreate(
+        @Parameter(description = "Request object used to create a single catalogs product groups.", required = true) @Valid @RequestBody multipleProductGroupsInner: MultipleProductGroupsInner,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsVerticalProductGroup> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -193,11 +210,14 @@ If you require access, please reach out to your partner manager.""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/catalogs/product_groups/multiple"],
+        value = [PATH_CATALOGS_PRODUCT_GROUPS_CREATE_MANY /* "/catalogs/product_groups/multiple" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun catalogsProductGroupsCreateMany(@Parameter(description = "Request object used to create one or more catalogs product groups.", required = true) @Valid @RequestBody multipleProductGroupsInner: kotlin.collections.List<MultipleProductGroupsInner>,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<List<kotlin.String>> {
+    fun catalogsProductGroupsCreateMany(
+        @Parameter(description = "Request object used to create one or more catalogs product groups.", required = true) @Valid @RequestBody multipleProductGroupsInner: kotlin.collections.List<MultipleProductGroupsInner>,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<List<kotlin.String>> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -222,10 +242,13 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/catalogs/product_groups/{product_group_id}"],
+        value = [PATH_CATALOGS_PRODUCT_GROUPS_DELETE /* "/catalogs/product_groups/{product_group_id}" */],
         produces = ["application/json"]
     )
-    fun catalogsProductGroupsDelete(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a product group", required = true) @PathVariable("product_group_id") productGroupId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<Unit> {
+    fun catalogsProductGroupsDelete(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a product group", required = true) @PathVariable("product_group_id") productGroupId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<Unit> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -249,10 +272,13 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/catalogs/product_groups/multiple"],
+        value = [PATH_CATALOGS_PRODUCT_GROUPS_DELETE_MANY /* "/catalogs/product_groups/multiple" */],
         produces = ["application/json"]
     )
-    fun catalogsProductGroupsDeleteMany(@NotNull @Size(min=1,max=1000) @Parameter(description = "Comma-separated list of product group ids", required = true) @Valid @RequestParam(value = "id", required = true) id: kotlin.collections.List<kotlin.Int>,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<Unit> {
+    fun catalogsProductGroupsDeleteMany(
+        @NotNull @Size(min=1,max=1000) @Parameter(description = "Comma-separated list of product group ids", required = true) @Valid @RequestParam(value = "id", required = true) id: kotlin.collections.List<kotlin.Int>,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<Unit> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -277,10 +303,13 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs/product_groups/{product_group_id}"],
+        value = [PATH_CATALOGS_PRODUCT_GROUPS_GET /* "/catalogs/product_groups/{product_group_id}" */],
         produces = ["application/json"]
     )
-    fun catalogsProductGroupsGet(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a product group", required = true) @PathVariable("product_group_id") productGroupId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsVerticalProductGroup> {
+    fun catalogsProductGroupsGet(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a product group", required = true) @PathVariable("product_group_id") productGroupId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsVerticalProductGroup> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -305,10 +334,17 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs/product_groups"],
+        value = [PATH_CATALOGS_PRODUCT_GROUPS_LIST /* "/catalogs/product_groups" */],
         produces = ["application/json"]
     )
-    fun catalogsProductGroupsList(@Size(min=1,max=1000) @Parameter(description = "Comma-separated list of product group ids") @Valid @RequestParam(value = "id", required = false) id: kotlin.collections.List<kotlin.Int>?,@Pattern(regexp="^\\d+$") @Parameter(description = "Filter entities for a given feed_id. If not given, all feeds are considered.") @Valid @RequestParam(value = "feed_id", required = false) feedId: kotlin.String?,@Pattern(regexp="^\\d+$") @Parameter(description = "Filter entities for a given catalog_id. If not given, all catalogs are considered.") @Valid @RequestParam(value = "catalog_id", required = false) catalogId: kotlin.String?,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsProductGroupsList200Response> {
+    fun catalogsProductGroupsList(
+        @Size(min=1,max=1000) @Parameter(description = "Comma-separated list of product group ids") @Valid @RequestParam(value = "id", required = false) id: kotlin.collections.List<kotlin.Int>?,
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Filter entities for a given feed_id. If not given, all feeds are considered.") @Valid @RequestParam(value = "feed_id", required = false) feedId: kotlin.String?,
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Filter entities for a given catalog_id. If not given, all catalogs are considered.") @Valid @RequestParam(value = "catalog_id", required = false) catalogId: kotlin.String?,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsProductGroupsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -330,10 +366,13 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs/product_groups/{product_group_id}/product_counts"],
+        value = [PATH_CATALOGS_PRODUCT_GROUPS_PRODUCT_COUNTS_GET /* "/catalogs/product_groups/{product_group_id}/product_counts" */],
         produces = ["application/json"]
     )
-    fun catalogsProductGroupsProductCountsGet(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a product group", required = true) @PathVariable("product_group_id") productGroupId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsProductGroupProductCountsVertical> {
+    fun catalogsProductGroupsProductCountsGet(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a product group", required = true) @PathVariable("product_group_id") productGroupId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsProductGroupProductCountsVertical> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -361,11 +400,15 @@ If you require access, please reach out to your partner manager.""",
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/catalogs/product_groups/{product_group_id}"],
+        value = [PATH_CATALOGS_PRODUCT_GROUPS_UPDATE /* "/catalogs/product_groups/{product_group_id}" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun catalogsProductGroupsUpdate(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a product group", required = true) @PathVariable("product_group_id") productGroupId: kotlin.String,@Parameter(description = "Request object used to Update a catalogs product group.", required = true) @Valid @RequestBody catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsVerticalProductGroup> {
+    fun catalogsProductGroupsUpdate(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a product group", required = true) @PathVariable("product_group_id") productGroupId: kotlin.String,
+        @Parameter(description = "Request object used to Update a catalogs product group.", required = true) @Valid @RequestBody catalogsProductGroupsUpdateRequest: CatalogsProductGroupsUpdateRequest,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsVerticalProductGroup> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -388,10 +431,15 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs/feeds/{feed_id}/processing_results"],
+        value = [PATH_FEED_PROCESSING_RESULTS_LIST /* "/catalogs/feeds/{feed_id}/processing_results" */],
         produces = ["application/json"]
     )
-    fun feedProcessingResultsList(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a feed", required = true) @PathVariable("feed_id") feedId: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<FeedProcessingResultsList200Response> {
+    fun feedProcessingResultsList(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a feed", required = true) @PathVariable("feed_id") feedId: kotlin.String,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<FeedProcessingResultsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -424,11 +472,14 @@ If you require access, please reach out to your partner manager.""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/catalogs/feeds"],
+        value = [PATH_FEEDS_CREATE /* "/catalogs/feeds" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun feedsCreate(@Parameter(description = "Request object used to created a feed.", required = true) @Valid @RequestBody feedsCreateRequest: FeedsCreateRequest,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsFeed> {
+    fun feedsCreate(
+        @Parameter(description = "Request object used to created a feed.", required = true) @Valid @RequestBody feedsCreateRequest: FeedsCreateRequest,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsFeed> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -452,10 +503,13 @@ For Retail partners, refer to <a href='https://help.pinterest.com/en/business/ar
     )
     @RequestMapping(
         method = [RequestMethod.DELETE],
-        value = ["/catalogs/feeds/{feed_id}"],
+        value = [PATH_FEEDS_DELETE /* "/catalogs/feeds/{feed_id}" */],
         produces = ["application/json"]
     )
-    fun feedsDelete(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a feed", required = true) @PathVariable("feed_id") feedId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<Unit> {
+    fun feedsDelete(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a feed", required = true) @PathVariable("feed_id") feedId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<Unit> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -478,10 +532,13 @@ For Retail partners, refer to <a href='https://help.pinterest.com/en/business/ar
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs/feeds/{feed_id}"],
+        value = [PATH_FEEDS_GET /* "/catalogs/feeds/{feed_id}" */],
         produces = ["application/json"]
     )
-    fun feedsGet(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a feed", required = true) @PathVariable("feed_id") feedId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsFeed> {
+    fun feedsGet(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a feed", required = true) @PathVariable("feed_id") feedId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsFeed> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -505,10 +562,13 @@ Note: This endpoint is restricted to a specific group of users. If you require a
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/catalogs/feeds/{feed_id}/ingest"],
+        value = [PATH_FEEDS_INGEST /* "/catalogs/feeds/{feed_id}/ingest" */],
         produces = ["application/json"]
     )
-    fun feedsIngest(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a feed", required = true) @PathVariable("feed_id") feedId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsFeedIngestion> {
+    fun feedsIngest(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a feed", required = true) @PathVariable("feed_id") feedId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsFeedIngestion> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -530,10 +590,15 @@ For Retail partners, refer to <a href='https://help.pinterest.com/en/business/ar
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs/feeds"],
+        value = [PATH_FEEDS_LIST /* "/catalogs/feeds" */],
         produces = ["application/json"]
     )
-    fun feedsList(@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Pattern(regexp="^\\d+$") @Parameter(description = "Filter entities for a given catalog_id. If not given, all catalogs are considered.") @Valid @RequestParam(value = "catalog_id", required = false) catalogId: kotlin.String?,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<FeedsList200Response> {
+    fun feedsList(
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Filter entities for a given catalog_id. If not given, all catalogs are considered.") @Valid @RequestParam(value = "catalog_id", required = false) catalogId: kotlin.String?,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<FeedsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -559,11 +624,15 @@ If you require access, please reach out to your partner manager.""",
     )
     @RequestMapping(
         method = [RequestMethod.PATCH],
-        value = ["/catalogs/feeds/{feed_id}"],
+        value = [PATH_FEEDS_UPDATE /* "/catalogs/feeds/{feed_id}" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun feedsUpdate(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a feed", required = true) @PathVariable("feed_id") feedId: kotlin.String,@Parameter(description = "Request object used to update a feed.", required = true) @Valid @RequestBody feedsUpdateRequest: FeedsUpdateRequest,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsFeed> {
+    fun feedsUpdate(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a feed", required = true) @PathVariable("feed_id") feedId: kotlin.String,
+        @Parameter(description = "Request object used to update a feed.", required = true) @Valid @RequestBody feedsUpdateRequest: FeedsUpdateRequest,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsFeed> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -585,10 +654,13 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs/items/batch/{batch_id}"],
+        value = [PATH_ITEMS_BATCH_GET /* "/catalogs/items/batch/{batch_id}" */],
         produces = ["application/json"]
     )
-    fun itemsBatchGet(@Parameter(description = "Id of a catalogs items batch to fetch", required = true) @PathVariable("batch_id") batchId: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsItemsBatch> {
+    fun itemsBatchGet(
+        @Parameter(description = "Id of a catalogs items batch to fetch", required = true) @PathVariable("batch_id") batchId: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsItemsBatch> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -614,11 +686,14 @@ If you require access, please reach out to your partner manager.
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/catalogs/items/batch"],
+        value = [PATH_ITEMS_BATCH_POST /* "/catalogs/items/batch" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun itemsBatchPost(@Parameter(description = "Request object used to create catalogs items in a batch", required = true) @Valid @RequestBody itemsBatchPostRequest: ItemsBatchPostRequest,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsItemsBatch> {
+    fun itemsBatchPost(
+        @Parameter(description = "Request object used to create catalogs items in a batch", required = true) @Valid @RequestBody itemsBatchPostRequest: ItemsBatchPostRequest,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsItemsBatch> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -641,10 +716,16 @@ Note: this endpoint is deprecated and will be deleted soon. Please use <a href='
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs/items"],
+        value = [PATH_ITEMS_GET /* "/catalogs/items" */],
         produces = ["application/json"]
     )
-    fun itemsGet(@NotNull @Parameter(description = "Country for the Catalogs Items", required = true) @Valid @RequestParam(value = "country", required = true) country: kotlin.String,@NotNull @Parameter(description = "Language for the Catalogs Items", required = true) @Valid @RequestParam(value = "language", required = true) language: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "This parameter is deprecated. Use filters instead.") @Valid @RequestParam(value = "item_ids", required = false) itemIds: kotlin.collections.List<kotlin.String>?,@Parameter(description = "Identifies items to be retrieved. This is a required parameter.") @Valid filters: CatalogsItemsFilters?): ResponseEntity<CatalogsItems> {
+    fun itemsGet(
+        @NotNull @Parameter(description = "Country for the Catalogs Items", required = true) @Valid @RequestParam(value = "country", required = true) country: kotlin.String,
+        @NotNull @Parameter(description = "Language for the Catalogs Items", required = true) @Valid @RequestParam(value = "language", required = true) language: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
+        @Parameter(description = "This parameter is deprecated. Use filters instead.") @Valid @RequestParam(value = "item_ids", required = false) itemIds: kotlin.collections.List<kotlin.String>?,
+        @Parameter(description = "Identifies items to be retrieved. This is a required parameter.") @Valid filters: CatalogsItemsFilters?
+    ): ResponseEntity<CatalogsItems> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -669,10 +750,17 @@ Note: To get a list of all affected items instead of sampled issues, please refe
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs/processing_results/{processing_result_id}/item_issues"],
+        value = [PATH_ITEMS_ISSUES_LIST /* "/catalogs/processing_results/{processing_result_id}/item_issues" */],
         produces = ["application/json"]
     )
-    fun itemsIssuesList(@Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).", required = true) @PathVariable("processing_result_id") processingResultId: kotlin.String,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.") @Valid @RequestParam(value = "item_numbers", required = false) itemNumbers: kotlin.collections.List<kotlin.Int>?,@Parameter(description = "Filter item validation issues that have a given type of item validation issue.", schema = Schema(allowableValues = ["AD_LINK_FORMAT_WARNING", "AD_LINK_SAME_AS_LINK", "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG", "ADDITIONAL_IMAGE_LINK_WARNING", "ADULT_INVALID", "ADWORDS_FORMAT_INVALID", "ADWORDS_FORMAT_WARNING", "ADWORDS_SAME_AS_LINK", "AGE_GROUP_INVALID", "ANDROID_DEEP_LINK_INVALID", "AVAILABILITY_DATE_INVALID", "AVAILABILITY_INVALID", "BLOCKLISTED_IMAGE_SIGNATURE", "COUNTRY_DOES_NOT_MAP_TO_CURRENCY", "CUSTOM_LABEL_LENGTH_TOO_LONG", "DESCRIPTION_LENGTH_TOO_LONG", "DESCRIPTION_MISSING", "DUPLICATE_PRODUCTS", "EXPIRATION_DATE_INVALID", "GENDER_INVALID", "GTIN_INVALID", "IMAGE_LINK_INVALID", "IMAGE_LINK_LENGTH_TOO_LONG", "IMAGE_LINK_MISSING", "IMAGE_LINK_WARNING", "INVALID_DOMAIN", "IOS_DEEP_LINK_INVALID", "IS_BUNDLE_INVALID", "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE", "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE", "ITEMID_MISSING", "LINK_FORMAT_INVALID", "LINK_FORMAT_WARNING", "LINK_LENGTH_TOO_LONG", "LIST_PRICE_INVALID", "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED", "MIN_AD_PRICE_INVALID", "MPN_INVALID", "MULTIPACK_INVALID", "OPTIONAL_CONDITION_INVALID", "OPTIONAL_CONDITION_MISSING", "OPTIONAL_PRODUCT_CATEGORY_INVALID", "OPTIONAL_PRODUCT_CATEGORY_MISSING", "PARSE_LINE_ERROR", "PINJOIN_CONTENT_UNSAFE", "PRICE_CANNOT_BE_DETERMINED", "PRICE_MISSING", "PRODUCT_CATEGORY_DEPTH_WARNING", "PRODUCT_LINK_MISSING", "PRODUCT_PRICE_INVALID", "PRODUCT_TYPE_LENGTH_TOO_LONG", "SALE_DATE_INVALID", "SALES_PRICE_INVALID", "SALES_PRICE_TOO_HIGH", "SALES_PRICE_TOO_LOW", "SHIPPING_INVALID", "SHIPPING_HEIGHT_INVALID", "SHIPPING_WEIGHT_INVALID", "SHIPPING_WIDTH_INVALID", "SIZE_SYSTEM_INVALID", "SIZE_TYPE_INVALID", "TAX_INVALID", "TITLE_LENGTH_TOO_LONG", "TITLE_MISSING", "TOO_MANY_ADDITIONAL_IMAGE_LINKS", "UTM_SOURCE_AUTO_CORRECTED", "WEIGHT_UNIT_INVALID"])) @Valid @RequestParam(value = "item_validation_issue", required = false) itemValidationIssue: CatalogsItemValidationIssue?,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<ItemsIssuesList200Response> {
+    fun itemsIssuesList(
+        @Pattern(regexp="^\\d+$") @Parameter(description = "Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).", required = true) @PathVariable("processing_result_id") processingResultId: kotlin.String,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.") @Valid @RequestParam(value = "item_numbers", required = false) itemNumbers: kotlin.collections.List<kotlin.Int>?,
+        @Parameter(description = "Filter item validation issues that have a given type of item validation issue.", schema = Schema(allowableValues = ["AD_LINK_FORMAT_WARNING", "AD_LINK_SAME_AS_LINK", "ADDITIONAL_IMAGE_LINK_LENGTH_TOO_LONG", "ADDITIONAL_IMAGE_LINK_WARNING", "ADULT_INVALID", "ADWORDS_FORMAT_INVALID", "ADWORDS_FORMAT_WARNING", "ADWORDS_SAME_AS_LINK", "AGE_GROUP_INVALID", "ANDROID_DEEP_LINK_INVALID", "AVAILABILITY_DATE_INVALID", "AVAILABILITY_INVALID", "BLOCKLISTED_IMAGE_SIGNATURE", "COUNTRY_DOES_NOT_MAP_TO_CURRENCY", "CUSTOM_LABEL_LENGTH_TOO_LONG", "DESCRIPTION_LENGTH_TOO_LONG", "DESCRIPTION_MISSING", "DUPLICATE_PRODUCTS", "EXPIRATION_DATE_INVALID", "GENDER_INVALID", "GTIN_INVALID", "IMAGE_LINK_INVALID", "IMAGE_LINK_LENGTH_TOO_LONG", "IMAGE_LINK_MISSING", "IMAGE_LINK_WARNING", "INVALID_DOMAIN", "IOS_DEEP_LINK_INVALID", "IS_BUNDLE_INVALID", "ITEM_ADDITIONAL_IMAGE_DOWNLOAD_FAILURE", "ITEM_MAIN_IMAGE_DOWNLOAD_FAILURE", "ITEMID_MISSING", "LINK_FORMAT_INVALID", "LINK_FORMAT_WARNING", "LINK_LENGTH_TOO_LONG", "LIST_PRICE_INVALID", "MAX_ITEMS_PER_ITEM_GROUP_EXCEEDED", "MIN_AD_PRICE_INVALID", "MPN_INVALID", "MULTIPACK_INVALID", "OPTIONAL_CONDITION_INVALID", "OPTIONAL_CONDITION_MISSING", "OPTIONAL_PRODUCT_CATEGORY_INVALID", "OPTIONAL_PRODUCT_CATEGORY_MISSING", "PARSE_LINE_ERROR", "PINJOIN_CONTENT_UNSAFE", "PRICE_CANNOT_BE_DETERMINED", "PRICE_MISSING", "PRODUCT_CATEGORY_DEPTH_WARNING", "PRODUCT_LINK_MISSING", "PRODUCT_PRICE_INVALID", "PRODUCT_TYPE_LENGTH_TOO_LONG", "SALE_DATE_INVALID", "SALES_PRICE_INVALID", "SALES_PRICE_TOO_HIGH", "SALES_PRICE_TOO_LOW", "SHIPPING_INVALID", "SHIPPING_HEIGHT_INVALID", "SHIPPING_WEIGHT_INVALID", "SHIPPING_WIDTH_INVALID", "SIZE_SYSTEM_INVALID", "SIZE_TYPE_INVALID", "TAX_INVALID", "TITLE_LENGTH_TOO_LONG", "TITLE_MISSING", "TOO_MANY_ADDITIONAL_IMAGE_LINKS", "UTM_SOURCE_AUTO_CORRECTED", "WEIGHT_UNIT_INVALID"])) @Valid @RequestParam(value = "item_validation_issue", required = false) itemValidationIssue: CatalogsItemValidationIssue?,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<ItemsIssuesList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -696,11 +784,14 @@ If you require access, please reach out to your partner manager.""",
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/catalogs/items"],
+        value = [PATH_ITEMS_POST /* "/catalogs/items" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun itemsPost(@Parameter(description = "Request object used to get catalogs items", required = true) @Valid @RequestBody catalogsItemsRequest: CatalogsItemsRequest,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsItems> {
+    fun itemsPost(
+        @Parameter(description = "Request object used to get catalogs items", required = true) @Valid @RequestBody catalogsItemsRequest: CatalogsItemsRequest,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsItems> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -725,11 +816,17 @@ Note: This endpoint only supports RETAIL catalog at the moment.
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/catalogs/products/get_by_product_group_filters"],
+        value = [PATH_PRODUCTS_BY_PRODUCT_GROUP_FILTER_LIST /* "/catalogs/products/get_by_product_group_filters" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun productsByProductGroupFilterList(@Parameter(description = "Object holding a group of filters for a catalog product group", required = true) @Valid @RequestBody catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Parameter(description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") pinMetrics: kotlin.Boolean): ResponseEntity<CatalogsProductGroupPinsList200Response> {
+    fun productsByProductGroupFilterList(
+        @Parameter(description = "Object holding a group of filters for a catalog product group", required = true) @Valid @RequestBody catalogsListProductsByFilterRequest: CatalogsListProductsByFilterRequest,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
+        @Parameter(description = "Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before <code>2023-03-20</code> lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.", schema = Schema(defaultValue = "false")) @Valid @RequestParam(value = "pin_metrics", required = false, defaultValue = "false") pinMetrics: kotlin.Boolean
+    ): ResponseEntity<CatalogsProductGroupPinsList200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -749,11 +846,14 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     )
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/catalogs/reports"],
+        value = [PATH_REPORTS_CREATE /* "/catalogs/reports" */],
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun reportsCreate(@Parameter(description = "Request object to asynchronously create a report.", required = true) @Valid @RequestBody catalogsReportParameters: CatalogsReportParameters,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsCreateReportResponse> {
+    fun reportsCreate(
+        @Parameter(description = "Request object to asynchronously create a report.", required = true) @Valid @RequestBody catalogsReportParameters: CatalogsReportParameters,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsCreateReportResponse> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -773,10 +873,13 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs/reports"],
+        value = [PATH_REPORTS_GET /* "/catalogs/reports" */],
         produces = ["application/json"]
     )
-    fun reportsGet(@NotNull @Parameter(description = "Token returned from async build report call", required = true) @Valid @RequestParam(value = "token", required = true) token: kotlin.String,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?): ResponseEntity<CatalogsReport> {
+    fun reportsGet(
+        @NotNull @Parameter(description = "Token returned from async build report call", required = true) @Valid @RequestParam(value = "token", required = true) token: kotlin.String,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?
+    ): ResponseEntity<CatalogsReport> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
     }
 
@@ -795,10 +898,47 @@ Optional: Business Access: Specify an <code>ad_account_id</code> (obtained via <
     )
     @RequestMapping(
         method = [RequestMethod.GET],
-        value = ["/catalogs/reports/stats"],
+        value = [PATH_REPORTS_STATS /* "/catalogs/reports/stats" */],
         produces = ["application/json"]
     )
-    fun reportsStats(@NotNull @Parameter(description = "Contains the parameters for report identification.", required = true) @Valid parameters: CatalogsReportParameters,@Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,@Min(1) @Max(250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,@Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?): ResponseEntity<ReportsStats200Response> {
+    fun reportsStats(
+        @NotNull @Parameter(description = "Contains the parameters for report identification.", required = true) @Valid parameters: CatalogsReportParameters,
+        @Pattern(regexp="^\\d+$") @Size(max=18) @Parameter(description = "Unique identifier of an ad account.") @Valid @RequestParam(value = "ad_account_id", required = false) adAccountId: kotlin.String?,
+        @Min(value=1) @Max(value=250) @Parameter(description = "Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.", schema = Schema(defaultValue = "25")) @Valid @RequestParam(value = "page_size", required = false, defaultValue = "25") pageSize: kotlin.Int,
+        @Parameter(description = "Cursor used to fetch the next page of items") @Valid @RequestParam(value = "bookmark", required = false) bookmark: kotlin.String?
+    ): ResponseEntity<ReportsStats200Response> {
         return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+    }
+
+    companion object {
+        //for your own safety never directly reuse these path definitions in tests
+        const val BASE_PATH: String = "/v5"
+        const val PATH_CATALOGS_CREATE: String = "/catalogs"
+        const val PATH_CATALOGS_LIST: String = "/catalogs"
+        const val PATH_CATALOGS_PRODUCT_GROUP_PINS_LIST: String = "/catalogs/product_groups/{product_group_id}/products"
+        const val PATH_CATALOGS_PRODUCT_GROUPS_CREATE: String = "/catalogs/product_groups"
+        const val PATH_CATALOGS_PRODUCT_GROUPS_CREATE_MANY: String = "/catalogs/product_groups/multiple"
+        const val PATH_CATALOGS_PRODUCT_GROUPS_DELETE: String = "/catalogs/product_groups/{product_group_id}"
+        const val PATH_CATALOGS_PRODUCT_GROUPS_DELETE_MANY: String = "/catalogs/product_groups/multiple"
+        const val PATH_CATALOGS_PRODUCT_GROUPS_GET: String = "/catalogs/product_groups/{product_group_id}"
+        const val PATH_CATALOGS_PRODUCT_GROUPS_LIST: String = "/catalogs/product_groups"
+        const val PATH_CATALOGS_PRODUCT_GROUPS_PRODUCT_COUNTS_GET: String = "/catalogs/product_groups/{product_group_id}/product_counts"
+        const val PATH_CATALOGS_PRODUCT_GROUPS_UPDATE: String = "/catalogs/product_groups/{product_group_id}"
+        const val PATH_FEED_PROCESSING_RESULTS_LIST: String = "/catalogs/feeds/{feed_id}/processing_results"
+        const val PATH_FEEDS_CREATE: String = "/catalogs/feeds"
+        const val PATH_FEEDS_DELETE: String = "/catalogs/feeds/{feed_id}"
+        const val PATH_FEEDS_GET: String = "/catalogs/feeds/{feed_id}"
+        const val PATH_FEEDS_INGEST: String = "/catalogs/feeds/{feed_id}/ingest"
+        const val PATH_FEEDS_LIST: String = "/catalogs/feeds"
+        const val PATH_FEEDS_UPDATE: String = "/catalogs/feeds/{feed_id}"
+        const val PATH_ITEMS_BATCH_GET: String = "/catalogs/items/batch/{batch_id}"
+        const val PATH_ITEMS_BATCH_POST: String = "/catalogs/items/batch"
+        const val PATH_ITEMS_GET: String = "/catalogs/items"
+        const val PATH_ITEMS_ISSUES_LIST: String = "/catalogs/processing_results/{processing_result_id}/item_issues"
+        const val PATH_ITEMS_POST: String = "/catalogs/items"
+        const val PATH_PRODUCTS_BY_PRODUCT_GROUP_FILTER_LIST: String = "/catalogs/products/get_by_product_group_filters"
+        const val PATH_REPORTS_CREATE: String = "/catalogs/reports"
+        const val PATH_REPORTS_GET: String = "/catalogs/reports"
+        const val PATH_REPORTS_STATS: String = "/catalogs/reports/stats"
     }
 }
